@@ -16,4 +16,4 @@ pwm.SetDuty(0.5f);
 
 ---
 
-[← Previous](FlexCan.md) | [Documentation Index](index.md) | [Next →](PeriodicTimer.md)
+[← Previous](SfFlexCan.md) | [Documentation Index](index.md) | [Next →](PeriodicTimer.md)

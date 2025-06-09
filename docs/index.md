@@ -15,10 +15,13 @@ This directory contains short guides for each internal interface class. Use the 
 - [SpiBus](SpiBus.md)
 - [SfSpiBus](SfSpiBus.md)
 - [FlexCan](FlexCan.md)
+- [SfFlexCan](SfFlexCan.md)
 - [PwmOutput](PwmOutput.md)
 - [PeriodicTimer](PeriodicTimer.md)
 - [UartDriver](UartDriver.md)
 - [SfUartDriver](SfUartDriver.md)
 - [DacOutput](DacOutput.md)
+- [RmtOutput](RmtOutput.md)
+- [NvsStorage](NvsStorage.md)
 
 Return to the [project README](../README.md).

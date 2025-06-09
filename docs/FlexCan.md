@@ -17,4 +17,4 @@ can.Write(f);
 
 ---
 
-[← Previous](SfSpiBus.md) | [Documentation Index](index.md) | [Next →](PwmOutput.md)
+[← Previous](SfSpiBus.md) | [Documentation Index](index.md) | [Next →](SfFlexCan.md)

@@ -7,6 +7,7 @@ idf_component_register(
         src/DigitalOutput.cpp
         src/Esp32C6Adc.cpp
         src/FlexCan.cpp
+        src/SfFlexCan.cpp
         src/I2cBus.cpp
         src/SfSpiBus.cpp
         src/SfI2cBus.cpp
@@ -16,5 +17,7 @@ idf_component_register(
         src/UartDriver.cpp
         src/SfUartDriver.cpp
         src/DacOutput.cpp
+        src/RmtOutput.cpp
+        src/NvsStorage.cpp
     INCLUDE_DIRS "inc"
 )
