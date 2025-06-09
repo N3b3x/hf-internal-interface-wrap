@@ -6,7 +6,7 @@
  *
  * @note This implementation is intended for use with ESP-IDF. Pin configuration is handled via gpio_config().
  */
-#include <internal_interface_drivers/DigitalOutput.h>
+#include "DigitalOutput.h"
 #include "driver/gpio.h"
 
 DigitalOutput::DigitalOutput(gpio_num_t pinArg, ActiveState activeStateArg, State initialStateArg) noexcept :

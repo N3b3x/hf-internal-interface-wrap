@@ -12,10 +12,10 @@
  * in its constructor and inactive in its destructor (RAII pattern).
  */
 
-#include "UTILITIES/common/DigitalOutputGuard.h"
+#include "DigitalOutputGuard.h"
 #include "UTILITIES/common/ThingsToString.h"
 
-#include "HAL/internal_interface_drivers/DigitalOutput.h"
+#include "DigitalOutput.h"
 #include "HAL/component_handlers/ConsolePort.h"
 
 //==============================================================//

@@ -12,7 +12,7 @@
 //     they are initialized the first time a pin in manipulated.
 // </summary>
 // -----------------------------------------------------------------------
-#include <internal_interface_drivers/DigitalInput.h>
+#include "DigitalInput.h"
 #include "driver/gpio.h"
 
 ///----------------------------------------------------------------

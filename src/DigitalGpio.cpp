@@ -7,7 +7,7 @@
  * @note This implementation is intended for use with ESP-IDF. Pin configuration is expected
  *       to be handled by derived classes or via the PinCfg/gpio_config_esp32c6.hpp utilities.
  */
-#include <internal_interface_drivers/DigitalGpio.h>
+#include "DigitalGpio.h"
 #include "driver/gpio.h"
 
 const char* DigitalGpio::ToString(Mode mode) noexcept {

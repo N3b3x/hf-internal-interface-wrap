@@ -9,7 +9,7 @@
 #ifndef HAL_INTERNAL_INTERFACE_DRIVERS_ESP32C6ADC_H_
 #define HAL_INTERNAL_INTERFACE_DRIVERS_ESP32C6ADC_H_
 
-#include <internal_interface_drivers/BaseAdc.h>
+#include "BaseAdc.h"
 #include "driver/adc.h"
 #include <cstdint>
 

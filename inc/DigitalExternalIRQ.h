@@ -10,7 +10,7 @@
 #ifndef DIGITALEXTERNALIRQ_H
 #define DIGITALEXTERNALIRQ_H
 
-#include <internal_interface_drivers/DigitalInput.h>
+#include "DigitalInput.h"
 #include <driver/gpio.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/semphr.h>
