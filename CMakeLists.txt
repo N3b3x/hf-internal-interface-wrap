@@ -14,6 +14,7 @@ idf_component_register(
         src/PwmOutput.cpp
         src/PeriodicTimer.cpp
         src/UartDriver.cpp
+        src/SfUartDriver.cpp
         src/DacOutput.cpp
     INCLUDE_DIRS "inc"
 )

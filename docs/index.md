@@ -18,6 +18,7 @@ This directory contains short guides for each internal interface class. Use the 
 - [PwmOutput](PwmOutput.md)
 - [PeriodicTimer](PeriodicTimer.md)
 - [UartDriver](UartDriver.md)
+- [SfUartDriver](SfUartDriver.md)
 - [DacOutput](DacOutput.md)
 
 Return to the [project README](../README.md).
