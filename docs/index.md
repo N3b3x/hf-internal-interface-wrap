@@ -17,5 +17,7 @@ This directory contains short guides for each internal interface class. Use the 
 - [FlexCan](FlexCan.md)
 - [PwmOutput](PwmOutput.md)
 - [PeriodicTimer](PeriodicTimer.md)
+- [UartDriver](UartDriver.md)
+- [DacOutput](DacOutput.md)
 
 Return to the [project README](../README.md).
