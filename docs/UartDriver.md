@@ -24,4 +24,4 @@ serial.Write(reinterpret_cast<const uint8_t*>(msg), sizeof(msg));
 
 ---
 
-[← Previous](PeriodicTimer.md) | [Documentation Index](index.md) | [Next →](DacOutput.md)
+[← Previous](PeriodicTimer.md) | [Documentation Index](index.md) | [Next →](SfUartDriver.md)

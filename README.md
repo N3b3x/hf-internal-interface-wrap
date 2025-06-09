@@ -1,24 +1,24 @@
 # HF-IID-ESPIDF
 
-Internal Interface Drivers – wrappers for the ESP‑IDF to be used in the HardFOC controller. 🏎️
+Internal Interface Drivers – handy wrappers for ESP‑IDF used by the HardFOC controller. 🏎️ These abstractions keep your code tidy and portable across ESP32 variants.
 
 For detailed API guides see [docs/index.md](docs/index.md).
 
 ## IID‑ESPIDF Overview
 
-This component bundles the internal interface drivers and platform specific utilities used by the HardFOC project. The drivers provide low level access to GPIO, ADC and bus interfaces for ESP‑IDF targets. Utility code such as the base thread framework and the ThreadX compatibility layer are also included here as they depend on the underlying RTOS implementation.
+This component bundles a growing collection of interface drivers and utilities. They hide verbose ESP‑IDF boilerplate while staying small and reusable. Alongside the hardware helpers you will also find base thread frameworks and RTOS utilities used across the HardFOC ecosystem.
 
-Each abstraction is intentionally tiny and header only where possible. You simply create the object and call `Open()` or `Start()` when ready. Behind the scenes the verbose ESP‑IDF calls are made for you. This means you can write compact applications that remain portable between boards and even other MCU families that reuse the same interface layer.
+Each abstraction is intentionally tiny and header only where possible. Create an object, call `Open()` or `Start()` and off you go. All the ESP‑IDF ceremony is performed behind the scenes so your code stays compact and portable between boards – and even other MCU families that reuse the same interface layer.
 
 
 ### Contents
 - `BaseGpio`, `DigitalInput`, `DigitalOutput` ⚙️
-- Bus drivers like `SpiBus`, `I2cBus` and their thread safe versions 🚌
-- Thread aware versions `SfSpiBus` and `SfI2cBus` 🧵
+- Bus drivers `SpiBus` and `I2cBus` 🚌
+- Thread‑safe variants `SfSpiBus`, `SfI2cBus` and `SfUartDriver` 🧵
 - `FlexCan` for CAN peripherals 🚐
-- `PwmOutput` abstraction for LEDC based PWM generation 🎛️
+- `PwmOutput` abstraction for LEDC PWM generation 🎛️
 - `PeriodicTimer` helper built on `esp_timer` ⏲️
-- `UartDriver` serial helper 📡
+- `UartDriver` and `SfUartDriver` serial helpers 📡
 - `DacOutput` for analog voltages 🎚️
 - Platform utilities from `UTILITIES/common` (timers, mutex helpers, base threads) 🧰
 
@@ -58,6 +58,21 @@ PeriodicTimer timer(&Blink);
 void app_main() {
     timer.Start(500000); // 0.5 second period
 }
+```
+
+### SfUartDriver example
+```cpp
+SemaphoreHandle_t m = xSemaphoreCreateMutex();
+uart_config_t cfg = {
+    .baud_rate = 115200,
+    .data_bits = UART_DATA_8_BITS,
+    .parity = UART_PARITY_DISABLE,
+    .stop_bits = UART_STOP_BITS_1,
+    .flow_ctrl = UART_HW_FLOWCTRL_DISABLE
+};
+SfUartDriver serial(UART_NUM_1, cfg, GPIO_NUM_1, GPIO_NUM_3, m);
+serial.Open();
+serial.Write(reinterpret_cast<const uint8_t*>("hi"), 2);
 ```
 
 ### License

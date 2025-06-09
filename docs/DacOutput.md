@@ -15,4 +15,4 @@ dac.SetValue(128); // mid‑scale output
 
 ---
 
-[← Previous](UartDriver.md) | [Documentation Index](index.md)
+[← Previous](SfUartDriver.md) | [Documentation Index](index.md)
