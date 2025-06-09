@@ -13,5 +13,7 @@ idf_component_register(
         src/SpiBus.cpp
         src/PwmOutput.cpp
         src/PeriodicTimer.cpp
+        src/UartDriver.cpp
+        src/DacOutput.cpp
     INCLUDE_DIRS "inc"
 )
