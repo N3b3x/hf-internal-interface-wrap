@@ -16,5 +16,6 @@ This directory contains short guides for each internal interface class. Use the 
 - [SfSpiBus](SfSpiBus.md)
 - [FlexCan](FlexCan.md)
 - [PwmOutput](PwmOutput.md)
+- [PeriodicTimer](PeriodicTimer.md)
 
 Return to the [project README](../README.md).
