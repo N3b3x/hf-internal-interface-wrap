@@ -1,6 +1,6 @@
 # HF-IID-ESPIDF
 
-Internal Interface Drivers - wrappers for the ESP-IDF to be used in the HardFOC controller.
+Internal Interface Drivers - wrappers for the ESP-IDF to be used in the HardFOC controller. 🏎️
 
 For detailed API guides see [docs/index.md](docs/index.md).
 
@@ -8,11 +8,14 @@ For detailed API guides see [docs/index.md](docs/index.md).
 
 This component bundles the internal interface drivers and platform specific utilities used by the HardFOC project. The drivers provide low level access to GPIO, ADC and bus interfaces for ESP‑IDF targets. Utility code such as the base thread framework and the ThreadX compatibility layer are also included here as they depend on the underlying RTOS implementation.
 
+Each abstraction aims to hide the verbose ESP‑IDF APIs behind a tiny C++ class while still exposing all the necessary flexibility.  Add the component to your project and you can easily reuse these drivers across boards and applications.
+
 ### Contents
 - `BaseGpio`, `DigitalInput`, `DigitalOutput` ⚙️
 - Bus drivers like `SpiBus`, `I2cBus` and their thread safe versions 🚌
 - Platform utilities from `UTILITIES/common` (timers, mutex helpers, base threads) 🧰
-- New `PwmOutput` abstraction for LEDC based PWM generation 🎛️
+- `PwmOutput` abstraction for LEDC based PWM generation 🎛️
+- `PeriodicTimer` helper built on `esp_timer` ⏲️
 
 ### Usage
 Add `iid-espidf` to your component requirements. The component exports the include directories for both the driver headers and the utilities and depends on FreeRTOS.
@@ -34,6 +37,21 @@ PwmOutput pwm(GPIO_NUM_4, LEDC_CHANNEL_0, LEDC_TIMER_0, 5000,
 void app_main() {
     pwm.Start();
     pwm.SetDuty(0.5f); // 50% duty cycle
+}
+```
+
+### PeriodicTimer example
+```cpp
+#include "PeriodicTimer.h"
+
+static void Blink(void*) {
+    // toggle LED
+}
+
+PeriodicTimer timer(&Blink);
+
+void app_main() {
+    timer.Start(500000); // 0.5 second period
 }
 ```
 

@@ -12,5 +12,6 @@ idf_component_register(
         src/SfI2cBus.cpp
         src/SpiBus.cpp
         src/PwmOutput.cpp
+        src/PeriodicTimer.cpp
     INCLUDE_DIRS "inc"
 )
