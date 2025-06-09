@@ -11,5 +11,6 @@ idf_component_register(
         src/SfSpiBus.cpp
         src/SfI2cBus.cpp
         src/SpiBus.cpp
+        src/PwmOutput.cpp
     INCLUDE_DIRS "inc"
 )
