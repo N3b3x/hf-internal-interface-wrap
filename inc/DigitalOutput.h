@@ -10,7 +10,7 @@
 #ifndef DIGITALOUTPUT_H
 #define DIGITALOUTPUT_H
 
-#include <internal_interface_drivers/DigitalGpio.h>
+#include "DigitalGpio.h"
 #include "driver/gpio.h"
 #include <string>
 

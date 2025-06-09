@@ -6,7 +6,7 @@
  *
  * @note This implementation is intended for use with ESP-IDF. Pin configuration is handled via gpio_config().
  */
-#include <internal_interface_drivers/Esp32C6Adc.h>
+#include "Esp32C6Adc.h"
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
 #include <unistd.h>

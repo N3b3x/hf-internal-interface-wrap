@@ -11,7 +11,7 @@
 #ifndef DIGITALINPUT_H
 #define DIGITALINPUT_H
 
-#include <internal_interface_drivers/DigitalGpio.h>
+#include "DigitalGpio.h"
 #include "driver/gpio.h"
 
 /**

@@ -10,7 +10,7 @@
 #ifndef DIGITALGPIO_H
 #define DIGITALGPIO_H
 
-#include <internal_interface_drivers/BaseGpio.h>
+#include "BaseGpio.h"
 #include "driver/gpio.h"
 
 /**

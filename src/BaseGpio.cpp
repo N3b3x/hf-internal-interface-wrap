@@ -13,7 +13,7 @@
 // </summary>
 // -----------------------------------------------------------------------
 
-#include <internal_interface_drivers/BaseGpio.h>
+#include "BaseGpio.h"
 
 /**
  * @file BaseGpio.cpp

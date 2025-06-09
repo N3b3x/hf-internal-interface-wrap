@@ -1,4 +1,4 @@
-#include <internal_interface_drivers/DigitalExternalIRQ.h>
+#include "DigitalExternalIRQ.h"
 #include <driver/gpio.h>
 #include <esp_err.h>
 
