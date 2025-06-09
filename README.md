@@ -2,6 +2,8 @@
 
 Internal Interface Drivers - wrappers for the ESP-IDF to be used in the HardFOC controller.
 
+For detailed API guides see [docs/index.md](docs/index.md).
+
 ## IID‑ESPIDF Overview
 
 This component bundles the internal interface drivers and platform specific utilities used by the HardFOC project. The drivers provide low level access to GPIO, ADC and bus interfaces for ESP‑IDF targets. Utility code such as the base thread framework and the ThreadX compatibility layer are also included here as they depend on the underlying RTOS implementation.
