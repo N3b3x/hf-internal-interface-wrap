@@ -13,7 +13,9 @@ underlying RTOS implementation.
 
 ## Contents
 - Internal interface driver implementations located in the parent
-  directory (`BaseGpio`, `DigitalInput`, `SpiBus` ...).
+  directory (`BaseGpio`, `DigitalInput`, `SpiBus`, `I2cBus` ...).
+- Thread-safe variants such as `SfSpiBus` and `SfI2cBus` which rely on
+  the HF-RTOSW-ESPIDF mutex APIs.
 - Platform dependent utilities from `UTILITIES/common` (e.g.
   `BaseThread`, mutex helpers, timing utilities).
 
