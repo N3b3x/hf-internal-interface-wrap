@@ -8,8 +8,8 @@
 #include <cstdio>
 
 FlexCan::FlexCan(uint8_t portArg, uint32_t baudRateArg) noexcept
-    : port(portArg), baudRate(baudRateArg), initialized(false),
-      txPin((gpio_num_t)TWAI_TX_PIN), rxPin((gpio_num_t)TWAI_RX_PIN) {}
+    : port(portArg), baudRate(baudRateArg), initialized(false), txPin((gpio_num_t)TWAI_TX_PIN),
+      rxPin((gpio_num_t)TWAI_RX_PIN) {}
 
 FlexCan::~FlexCan() noexcept {
   if (initialized) {
@@ -21,8 +21,7 @@ bool FlexCan::Open() noexcept {
   if (initialized)
     return true;
 
-  twai_general_config_t g_config =
-      TWAI_GENERAL_CONFIG_DEFAULT(txPin, rxPin, TWAI_MODE_NORMAL);
+  twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(txPin, rxPin, TWAI_MODE_NORMAL);
   g_config.tx_queue_len = 5;
   g_config.rx_queue_len = 5;
 

@@ -47,29 +47,28 @@ bool I2cBus::Write(uint8_t addr, const uint8_t *data, uint16_t sizeBytes,
                    uint32_t timeoutMsec) noexcept {
   if (!initialized)
     return false;
-  esp_err_t ret = i2c_master_write_to_device(i2cPort, addr, data, sizeBytes,
-                                             pdMS_TO_TICKS(timeoutMsec));
+  esp_err_t ret =
+      i2c_master_write_to_device(i2cPort, addr, data, sizeBytes, pdMS_TO_TICKS(timeoutMsec));
   return ret == ESP_OK;
 }
 
-bool I2cBus::Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes,
-                  uint32_t timeoutMsec) noexcept {
-  if (!initialized)
-    return false;
-  esp_err_t ret = i2c_master_read_from_device(i2cPort, addr, data, sizeBytes,
-                                              pdMS_TO_TICKS(timeoutMsec));
-  return ret == ESP_OK;
-}
-
-bool I2cBus::WriteRead(uint8_t addr, const uint8_t *txData,
-                       uint16_t txSizeBytes, uint8_t *rxData,
-                       uint16_t rxSizeBytes, uint32_t timeoutMsec) noexcept {
+bool I2cBus::Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec) noexcept {
   if (!initialized)
     return false;
   esp_err_t ret =
-      i2c_master_write_read_device(i2cPort, addr, txData, txSizeBytes, rxData,
-                                   rxSizeBytes, pdMS_TO_TICKS(timeoutMsec));
+      i2c_master_read_from_device(i2cPort, addr, data, sizeBytes, pdMS_TO_TICKS(timeoutMsec));
   return ret == ESP_OK;
 }
 
-uint32_t I2cBus::GetClockHz() const noexcept { return config.master.clk_speed; }
+bool I2cBus::WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, uint8_t *rxData,
+                       uint16_t rxSizeBytes, uint32_t timeoutMsec) noexcept {
+  if (!initialized)
+    return false;
+  esp_err_t ret = i2c_master_write_read_device(i2cPort, addr, txData, txSizeBytes, rxData,
+                                               rxSizeBytes, pdMS_TO_TICKS(timeoutMsec));
+  return ret == ESP_OK;
+}
+
+uint32_t I2cBus::GetClockHz() const noexcept {
+  return config.master.clk_speed;
+}

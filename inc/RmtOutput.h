@@ -10,8 +10,7 @@
  */
 class RmtOutput {
 public:
-  RmtOutput(rmt_channel_t channel, gpio_num_t pin,
-            uint32_t clk_div = 80) noexcept;
+  RmtOutput(rmt_channel_t channel, gpio_num_t pin, uint32_t clk_div = 80) noexcept;
   ~RmtOutput() noexcept;
   RmtOutput(const RmtOutput &) = delete;
   RmtOutput &operator=(const RmtOutput &) = delete;
@@ -19,10 +18,11 @@ public:
   bool Open() noexcept;
   void Close() noexcept;
 
-  bool Write(const rmt_item32_t *items, size_t len,
-             bool wait_tx_done = true) noexcept;
+  bool Write(const rmt_item32_t *items, size_t len, bool wait_tx_done = true) noexcept;
 
-  bool IsOpen() const noexcept { return installed; }
+  bool IsOpen() const noexcept {
+    return installed;
+  }
 
 private:
   rmt_channel_t chan;

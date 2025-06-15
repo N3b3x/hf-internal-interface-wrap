@@ -12,10 +12,8 @@
 #include "esp_adc_cal.h"
 #include <unistd.h>
 
-Esp32C6Adc::Esp32C6Adc(adc_unit_t adc_unit, adc_atten_t attenuation,
-                       adc_bits_width_t width)
-    : adcUnit(adc_unit), attenuation(attenuation), width(width),
-      initialized(false) {}
+Esp32C6Adc::Esp32C6Adc(adc_unit_t adc_unit, adc_atten_t attenuation, adc_bits_width_t width)
+    : adcUnit(adc_unit), attenuation(attenuation), width(width), initialized(false) {}
 
 Esp32C6Adc::~Esp32C6Adc() noexcept {}
 
@@ -26,9 +24,9 @@ bool Esp32C6Adc::Initialize() noexcept {
   return true;
 }
 
-BaseAdc::AdcErr Esp32C6Adc::ReadChannelCount(
-    uint8_t channel_num, uint32_t &channel_reading_count,
-    uint8_t numOfSamplesToAvg, uint32_t timeBetweenSamples) noexcept {
+BaseAdc::AdcErr Esp32C6Adc::ReadChannelCount(uint8_t channel_num, uint32_t &channel_reading_count,
+                                             uint8_t numOfSamplesToAvg,
+                                             uint32_t timeBetweenSamples) noexcept {
   if (!EnsureInitialized())
     return AdcErr::ADC_ERR_FAILURE;
   uint32_t sum = 0;
@@ -50,33 +48,28 @@ BaseAdc::AdcErr Esp32C6Adc::ReadChannelCount(
   return AdcErr::ADC_SUCCESS;
 }
 
-BaseAdc::AdcErr Esp32C6Adc::ReadChannelV(uint8_t channel_num,
-                                         float &channel_reading_v,
+BaseAdc::AdcErr Esp32C6Adc::ReadChannelV(uint8_t channel_num, float &channel_reading_v,
                                          uint8_t numOfSamplesToAvg,
                                          uint32_t timeBetweenSamples) noexcept {
   uint32_t count = 0;
-  auto err = ReadChannelCount(channel_num, count, numOfSamplesToAvg,
-                              timeBetweenSamples);
+  auto err = ReadChannelCount(channel_num, count, numOfSamplesToAvg, timeBetweenSamples);
   if (err != AdcErr::ADC_SUCCESS)
     return err;
   // Use ESP-IDF calibration API if available
   esp_adc_cal_characteristics_t characteristics;
-  esp_adc_cal_value_t val_type = esp_adc_cal_characterize(
-      adcUnit, attenuation, width, 0, &characteristics);
-  channel_reading_v = esp_adc_cal_raw_to_voltage(count, &characteristics) /
-                      1000.0f; // Convert mV to V
+  esp_adc_cal_value_t val_type =
+      esp_adc_cal_characterize(adcUnit, attenuation, width, 0, &characteristics);
+  channel_reading_v =
+      esp_adc_cal_raw_to_voltage(count, &characteristics) / 1000.0f; // Convert mV to V
   return AdcErr::ADC_SUCCESS;
 }
 
-BaseAdc::AdcErr Esp32C6Adc::ReadChannel(uint8_t channel_num,
-                                        uint32_t &channel_reading_count,
-                                        float &channel_reading_v,
-                                        uint8_t numOfSamplesToAvg,
+BaseAdc::AdcErr Esp32C6Adc::ReadChannel(uint8_t channel_num, uint32_t &channel_reading_count,
+                                        float &channel_reading_v, uint8_t numOfSamplesToAvg,
                                         uint32_t timeBetweenSamples) noexcept {
-  auto err = ReadChannelCount(channel_num, channel_reading_count,
-                              numOfSamplesToAvg, timeBetweenSamples);
+  auto err =
+      ReadChannelCount(channel_num, channel_reading_count, numOfSamplesToAvg, timeBetweenSamples);
   if (err != AdcErr::ADC_SUCCESS)
     return err;
-  return ReadChannelV(channel_num, channel_reading_v, numOfSamplesToAvg,
-                      timeBetweenSamples);
+  return ReadChannelV(channel_num, channel_reading_v, numOfSamplesToAvg, timeBetweenSamples);
 }

@@ -35,14 +35,12 @@ static constexpr bool verbose = false;
  *
  * The constructor sets the associated DigitalOutput instance active.
  */
-DigitalOutputGuard::DigitalOutputGuard(DigitalOutput &output)
-    : p_output_(&output) {
+DigitalOutputGuard::DigitalOutputGuard(DigitalOutput &output) : p_output_(&output) {
   bool active = p_output_->SetActive();
   if (active) {
-    WRITE_CONDITIONAL(
-        verbose,
-        "DigitalOutputGuard() - Digital output - %s - successfully set ACTIVE",
-        PinToString(p_output_->GetPin()));
+    WRITE_CONDITIONAL(verbose,
+                      "DigitalOutputGuard() - Digital output - %s - successfully set ACTIVE",
+                      PinToString(p_output_->GetPin()));
   } else {
     WRITE_CONDITIONAL(verbose,
                       "DigitalOutputGuard() - Digital output - %s - !!! FAILED "
@@ -57,14 +55,12 @@ DigitalOutputGuard::DigitalOutputGuard(DigitalOutput &output)
  *
  * The constructor sets the associated DigitalOutput instance active.
  */
-DigitalOutputGuard::DigitalOutputGuard(DigitalOutput *output)
-    : p_output_(output) {
+DigitalOutputGuard::DigitalOutputGuard(DigitalOutput *output) : p_output_(output) {
   bool active = p_output_->SetActive();
   if (active) {
-    WRITE_CONDITIONAL(
-        verbose,
-        "DigitalOutputGuard() - Digital output - %s - successfully set ACTIVE",
-        PinToString(p_output_->GetPin()));
+    WRITE_CONDITIONAL(verbose,
+                      "DigitalOutputGuard() - Digital output - %s - successfully set ACTIVE",
+                      PinToString(p_output_->GetPin()));
   } else {
     WRITE_CONDITIONAL(verbose,
                       "DigitalOutputGuard() - Digital output - %s - !!! FAILED "

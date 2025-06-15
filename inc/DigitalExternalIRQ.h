@@ -24,8 +24,7 @@ public:
    * @param interruptType ESP-IDF interrupt type (e.g. GPIO_INTR_POSEDGE).
    * @param activeState   Logical active level of the pin.
    */
-  DigitalExternalIRQ(gpio_num_t pin,
-                     gpio_int_type_t interruptType = GPIO_INTR_POSEDGE,
+  DigitalExternalIRQ(gpio_num_t pin, gpio_int_type_t interruptType = GPIO_INTR_POSEDGE,
                      ActiveState activeState = ActiveState::High) noexcept;
 
   DigitalExternalIRQ(const DigitalExternalIRQ &) = delete;

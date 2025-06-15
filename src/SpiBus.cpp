@@ -21,8 +21,7 @@ static const char *TAG = "SpiBus";
 
 SpiBus::SpiBus(spi_host_device_t host, const spi_bus_config_t &buscfg,
                const spi_device_interface_config_t &devcfg) noexcept
-    : spiHost(host), spiHandle(nullptr), busConfig(buscfg), devConfig(devcfg),
-      initialized(false) {
+    : spiHost(host), spiHandle(nullptr), busConfig(buscfg), devConfig(devcfg), initialized(false) {
   // No additional initialization required here.
 }
 
@@ -58,8 +57,7 @@ bool SpiBus::Close() noexcept {
   return true;
 }
 
-bool SpiBus::Write(const uint8_t *data, uint16_t sizeBytes,
-                   uint32_t /*timeoutMsec*/) noexcept {
+bool SpiBus::Write(const uint8_t *data, uint16_t sizeBytes, uint32_t /*timeoutMsec*/) noexcept {
   if (!initialized)
     return false;
   spi_transaction_t t = {};
@@ -70,8 +68,7 @@ bool SpiBus::Write(const uint8_t *data, uint16_t sizeBytes,
   return (ret == ESP_OK);
 }
 
-bool SpiBus::Read(uint8_t *data, uint16_t sizeBytes,
-                  uint32_t /*timeoutMsec*/) noexcept {
+bool SpiBus::Read(uint8_t *data, uint16_t sizeBytes, uint32_t /*timeoutMsec*/) noexcept {
   if (!initialized)
     return false;
   spi_transaction_t t = {};

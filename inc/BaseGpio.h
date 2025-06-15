@@ -25,8 +25,7 @@ public:
    * @brief Constructor allocates an instance of the class with a specified pin.
    * @param pinArg GPIO pin number (gpio_num_t)
    */
-  explicit BaseGpio(gpio_num_t pinArg) noexcept
-      : pin(pinArg), initialized(false) {
+  explicit BaseGpio(gpio_num_t pinArg) noexcept : pin(pinArg), initialized(false) {
     // No code at this time
   }
 
@@ -48,7 +47,9 @@ public:
   /**
    * @brief Returns true if the pin is initialized.
    */
-  bool IsInitialized() const noexcept { return initialized; }
+  bool IsInitialized() const noexcept {
+    return initialized;
+  }
 
   /**
    * @brief Ensures the pin is initialized (lazy initialization).
@@ -72,14 +73,18 @@ public:
    * @brief Returns the GPIO pin number.
    * @return gpio_num_t pin number.
    */
-  gpio_num_t GetPin() const noexcept { return pin; }
+  gpio_num_t GetPin() const noexcept {
+    return pin;
+  }
 
   /**
    * @brief Returns the ESP-IDF pin configuration flags (to be implemented by
    * derived classes if needed).
    * @return uint32_t pin configuration flags.
    */
-  virtual uint32_t GetPinConfiguration() const noexcept { return 0; }
+  virtual uint32_t GetPinConfiguration() const noexcept {
+    return 0;
+  }
 
 protected:
   const gpio_num_t pin; ///< ESP32-C6 GPIO pin number

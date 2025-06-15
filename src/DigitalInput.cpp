@@ -27,8 +27,7 @@
 /// <param name="pin">Pin on that bank 0..16 </param>
 /// <param name="activeState"Indicates whether set bit is activeC</param>
 
-DigitalInput::DigitalInput(gpio_num_t pinArg,
-                           ActiveState activeStateArg) noexcept
+DigitalInput::DigitalInput(gpio_num_t pinArg, ActiveState activeStateArg) noexcept
     : DigitalGpio(pinArg, activeStateArg) {
   // No code at this time
 }

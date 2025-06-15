@@ -46,10 +46,9 @@ public:
    * is 0).
    * @return Error status indicating the success or failure of the operation.
    */
-  virtual AdcErr
-  ReadChannelV(uint8_t channel_num, float &channel_reading_v,
-               uint8_t numOfSamplesToAvg = 1,
-               uint32_t timeBetweenSamples = 0) noexcept override;
+  virtual AdcErr ReadChannelV(uint8_t channel_num, float &channel_reading_v,
+                              uint8_t numOfSamplesToAvg = 1,
+                              uint32_t timeBetweenSamples = 0) noexcept override;
 
   /**
    * @brief Reads the specified channel and returns the raw ADC count.
@@ -60,10 +59,9 @@ public:
    * is 0).
    * @return Error status indicating the success or failure of the operation.
    */
-  virtual AdcErr
-  ReadChannelCount(uint8_t channel_num, uint32_t &channel_reading_count,
-                   uint8_t numOfSamplesToAvg = 1,
-                   uint32_t timeBetweenSamples = 0) noexcept override;
+  virtual AdcErr ReadChannelCount(uint8_t channel_num, uint32_t &channel_reading_count,
+                                  uint8_t numOfSamplesToAvg = 1,
+                                  uint32_t timeBetweenSamples = 0) noexcept override;
 
   /**
    * @brief Reads the specified channel and returns both raw count and voltage.
@@ -75,10 +73,8 @@ public:
    * is 0).
    * @return Error status indicating the success or failure of the operation.
    */
-  virtual AdcErr ReadChannel(uint8_t channel_num,
-                             uint32_t &channel_reading_count,
-                             float &channel_reading_v,
-                             uint8_t numOfSamplesToAvg = 1,
+  virtual AdcErr ReadChannel(uint8_t channel_num, uint32_t &channel_reading_count,
+                             float &channel_reading_v, uint8_t numOfSamplesToAvg = 1,
                              uint32_t timeBetweenSamples = 0) noexcept override;
 
 private:

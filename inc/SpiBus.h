@@ -63,8 +63,7 @@ public:
    * compatibility)
    * @return true if the data was sent successfully, false otherwise
    */
-  bool Write(const uint8_t *data, uint16_t sizeBytes,
-             uint32_t timeoutMsec = 0) noexcept;
+  bool Write(const uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec = 0) noexcept;
 
   /**
    * @brief Read a block of data over the SPI bus (blocking).
@@ -74,8 +73,7 @@ public:
    * compatibility)
    * @return true if the data was read successfully, false otherwise
    */
-  bool Read(uint8_t *data, uint16_t sizeBytes,
-            uint32_t timeoutMsec = 0) noexcept;
+  bool Read(uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec = 0) noexcept;
 
   /**
    * @brief Write and read a block of data over the SPI bus (full-duplex,
@@ -100,7 +98,9 @@ public:
    * @brief Check if the class is initialized.
    * @return true if initialized, false otherwise
    */
-  bool IsInitialized() const noexcept { return initialized; }
+  bool IsInitialized() const noexcept {
+    return initialized;
+  }
 
 private:
   spi_host_device_t spiHost;               ///< ESP-IDF SPI host

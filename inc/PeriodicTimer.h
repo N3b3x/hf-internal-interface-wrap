@@ -42,7 +42,9 @@ public:
   /**
    * @brief Check if the timer is currently running.
    */
-  bool IsRunning() const noexcept { return running; }
+  bool IsRunning() const noexcept {
+    return running;
+  }
 
 private:
   static void Dispatch(void *arg);

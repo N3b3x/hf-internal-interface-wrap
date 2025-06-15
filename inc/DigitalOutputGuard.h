@@ -54,8 +54,7 @@ public:
   ~DigitalOutputGuard();
 
 private:
-  DigitalOutput
-      *p_output_; ///< Reference to the managed DigitalOutput instance.
+  DigitalOutput *p_output_; ///< Reference to the managed DigitalOutput instance.
 };
 
 #endif /* HAL_INTERNAL_INTERFACE_DRIVERS_DIGITALOUTPUTGUARD_H_ */

@@ -8,10 +8,9 @@
 
 static const char *TAG = "SfUartDriver";
 
-SfUartDriver::SfUartDriver(uart_port_t p, const uart_config_t &cfg, int tx,
-                           int rx, SemaphoreHandle_t mtx) noexcept
-    : port(p), config(cfg), txPin(tx), rxPin(rx), mutex(mtx),
-      initialized(false) {}
+SfUartDriver::SfUartDriver(uart_port_t p, const uart_config_t &cfg, int tx, int rx,
+                           SemaphoreHandle_t mtx) noexcept
+    : port(p), config(cfg), txPin(tx), rxPin(rx), mutex(mtx), initialized(false) {}
 
 SfUartDriver::~SfUartDriver() noexcept {
   if (initialized) {
@@ -27,16 +26,14 @@ bool SfUartDriver::Open() noexcept {
     ESP_LOGE(TAG, "param config failed: %d", err);
     return false;
   }
-  err =
-      uart_set_pin(port, txPin, rxPin, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+  err = uart_set_pin(port, txPin, rxPin, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "set pin failed: %d", err);
     return false;
   }
-  err = uart_driver_install(
-      port, config.rx_flow_ctrl_thresh ? config.rx_flow_ctrl_thresh : 256,
-      config.rx_flow_ctrl_thresh ? config.rx_flow_ctrl_thresh : 256, 0, nullptr,
-      0);
+  err = uart_driver_install(port, config.rx_flow_ctrl_thresh ? config.rx_flow_ctrl_thresh : 256,
+                            config.rx_flow_ctrl_thresh ? config.rx_flow_ctrl_thresh : 256, 0,
+                            nullptr, 0);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "driver install failed: %d", err);
     return false;
@@ -53,8 +50,7 @@ bool SfUartDriver::Close() noexcept {
   return true;
 }
 
-bool SfUartDriver::Write(const uint8_t *data, uint16_t length,
-                         uint32_t timeoutMsec) noexcept {
+bool SfUartDriver::Write(const uint8_t *data, uint16_t length, uint32_t timeoutMsec) noexcept {
   if (!initialized)
     return false;
   if (xSemaphoreTake(mutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)
@@ -64,8 +60,7 @@ bool SfUartDriver::Write(const uint8_t *data, uint16_t length,
   return ret == length;
 }
 
-bool SfUartDriver::Read(uint8_t *data, uint16_t length,
-                        TickType_t ticksToWait) noexcept {
+bool SfUartDriver::Read(uint8_t *data, uint16_t length, TickType_t ticksToWait) noexcept {
   if (!initialized)
     return false;
   if (xSemaphoreTake(mutex, ticksToWait) != pdTRUE)
