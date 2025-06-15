@@ -23,8 +23,7 @@ SfSpiBus::SfSpiBus(spi_host_device_t host, const spi_bus_config_t &buscfg,
                    const spi_device_interface_config_t &devcfg,
                    SemaphoreHandle_t mutexHandle) noexcept
     : spiHost(host), spiHandle(nullptr), busConfig(buscfg), devConfig(devcfg),
-      busMutex(mutexHandle), initialized(false),
-      csPin((gpio_num_t)devcfg.spics_io_num) {
+      busMutex(mutexHandle), initialized(false), csPin((gpio_num_t)devcfg.spics_io_num) {
   // No additional initialization required here.
 }
 
@@ -64,8 +63,7 @@ bool SfSpiBus::Close() noexcept {
   return true;
 }
 
-bool SfSpiBus::Write(const uint8_t *data, uint16_t sizeBytes,
-                     uint32_t timeoutMsec) noexcept {
+bool SfSpiBus::Write(const uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec) noexcept {
   if (!initialized)
     return false;
   if (xSemaphoreTake(busMutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)
@@ -81,8 +79,7 @@ bool SfSpiBus::Write(const uint8_t *data, uint16_t sizeBytes,
   return (ret == ESP_OK);
 }
 
-bool SfSpiBus::Read(uint8_t *data, uint16_t sizeBytes,
-                    uint32_t timeoutMsec) noexcept {
+bool SfSpiBus::Read(uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec) noexcept {
   if (!initialized)
     return false;
   if (xSemaphoreTake(busMutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)
@@ -98,8 +95,8 @@ bool SfSpiBus::Read(uint8_t *data, uint16_t sizeBytes,
   return (ret == ESP_OK);
 }
 
-bool SfSpiBus::WriteRead(const uint8_t *write_data, uint8_t *read_data,
-                         uint16_t sizeBytes, uint32_t timeoutMsec) noexcept {
+bool SfSpiBus::WriteRead(const uint8_t *write_data, uint8_t *read_data, uint16_t sizeBytes,
+                         uint32_t timeoutMsec) noexcept {
   if (!initialized)
     return false;
   if (xSemaphoreTake(busMutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)

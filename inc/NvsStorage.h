@@ -39,7 +39,9 @@ public:
   bool Commit() noexcept;
 
   /** Check if the handle is valid. */
-  bool IsOpened() const noexcept { return handle != 0; }
+  bool IsOpened() const noexcept {
+    return handle != 0;
+  }
 
 private:
   const char *nsName;  ///< Namespace string

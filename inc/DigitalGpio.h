@@ -106,7 +106,9 @@ protected:
    * @brief Checks if the pin is active low.
    * @return True if the pin is active low, false otherwise.
    */
-  bool IsActiveLow() const noexcept { return activeState == ActiveState::Low; }
+  bool IsActiveLow() const noexcept {
+    return activeState == ActiveState::Low;
+  }
 
   /**
    * @brief Fetches the resistance configuration of the pin (ESP-IDF style).

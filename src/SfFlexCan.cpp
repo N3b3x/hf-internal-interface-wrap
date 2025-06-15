@@ -5,8 +5,7 @@
 
 #include "SfFlexCan.h"
 
-SfFlexCan::SfFlexCan(uint8_t port, uint32_t baudRate,
-                     SemaphoreHandle_t mtx) noexcept
+SfFlexCan::SfFlexCan(uint8_t port, uint32_t baudRate, SemaphoreHandle_t mtx) noexcept
     : base(port, baudRate), mutex(mtx), initialized(false) {}
 
 SfFlexCan::~SfFlexCan() noexcept {
@@ -31,8 +30,7 @@ bool SfFlexCan::Close() noexcept {
   return true;
 }
 
-bool SfFlexCan::Write(const FlexCan::Frame &frame,
-                      uint32_t timeoutMsec) noexcept {
+bool SfFlexCan::Write(const FlexCan::Frame &frame, uint32_t timeoutMsec) noexcept {
   if (!initialized)
     return false;
   if (xSemaphoreTake(mutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)
@@ -56,4 +54,6 @@ bool SfFlexCan::Lock(uint32_t timeoutMsec) noexcept {
   return xSemaphoreTake(mutex, pdMS_TO_TICKS(timeoutMsec)) == pdTRUE;
 }
 
-bool SfFlexCan::Unlock() noexcept { return xSemaphoreGive(mutex) == pdTRUE; }
+bool SfFlexCan::Unlock() noexcept {
+  return xSemaphoreGive(mutex) == pdTRUE;
+}

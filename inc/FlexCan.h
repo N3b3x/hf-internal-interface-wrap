@@ -73,12 +73,16 @@ public:
   /**
    * @brief Get the configured baud rate.
    */
-  uint32_t GetBaudRate() const noexcept { return baudRate; }
+  uint32_t GetBaudRate() const noexcept {
+    return baudRate;
+  }
 
   /**
    * @brief Check if the controller is initialized.
    */
-  bool IsInitialized() const noexcept { return initialized; }
+  bool IsInitialized() const noexcept {
+    return initialized;
+  }
 
 private:
   uint8_t port;      ///< Controller port

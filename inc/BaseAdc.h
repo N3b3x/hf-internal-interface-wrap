@@ -61,7 +61,9 @@ public:
    * @brief Checks if the class is initialized.
    * @return true if initialized, false otherwise
    */
-  bool IsInitialized() const noexcept { return initialized; }
+  bool IsInitialized() const noexcept {
+    return initialized;
+  }
 
   /**
    * @brief Initializes the ADC peripheral (must be implemented by derived
@@ -74,14 +76,11 @@ public:
   virtual AdcErr ReadChannelV(uint8_t channel_num, float &channel_reading_v,
                               uint8_t numOfSamplesToAvg = 1,
                               uint32_t timeBetweenSamples = 0) noexcept = 0;
-  virtual AdcErr ReadChannelCount(uint8_t channel_num,
-                                  uint32_t &channel_reading_count,
+  virtual AdcErr ReadChannelCount(uint8_t channel_num, uint32_t &channel_reading_count,
                                   uint8_t numOfSamplesToAvg = 1,
                                   uint32_t timeBetweenSamples = 0) noexcept = 0;
-  virtual AdcErr ReadChannel(uint8_t channel_num,
-                             uint32_t &channel_reading_count,
-                             float &channel_reading_v,
-                             uint8_t numOfSamplesToAvg = 1,
+  virtual AdcErr ReadChannel(uint8_t channel_num, uint32_t &channel_reading_count,
+                             float &channel_reading_v, uint8_t numOfSamplesToAvg = 1,
                              uint32_t timeBetweenSamples = 0) noexcept = 0;
 
 protected:

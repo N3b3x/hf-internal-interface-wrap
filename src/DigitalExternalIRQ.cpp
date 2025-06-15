@@ -2,8 +2,7 @@
 #include <driver/gpio.h>
 #include <esp_err.h>
 
-DigitalExternalIRQ::DigitalExternalIRQ(gpio_num_t pinArg,
-                                       gpio_int_type_t interruptType,
+DigitalExternalIRQ::DigitalExternalIRQ(gpio_num_t pinArg, gpio_int_type_t interruptType,
                                        ActiveState activeStateArg) noexcept
     : DigitalInput(pinArg, activeStateArg), intrType(interruptType),
       binSem(xSemaphoreCreateBinary()), enabled(false) {}

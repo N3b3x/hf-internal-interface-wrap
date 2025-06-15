@@ -26,8 +26,7 @@ public:
    * @param cfg I2C configuration structure
    * @param mutexHandle Mutex used for locking during transfers
    */
-  SfI2cBus(i2c_port_t port, const i2c_config_t &cfg,
-           SemaphoreHandle_t mutexHandle) noexcept;
+  SfI2cBus(i2c_port_t port, const i2c_config_t &cfg, SemaphoreHandle_t mutexHandle) noexcept;
 
   /**
    * @brief Destructor closes the bus.
@@ -47,21 +46,18 @@ public:
   /**
    * @brief Write to a device in a thread-safe manner.
    */
-  bool Write(uint8_t addr, const uint8_t *data, uint16_t sizeBytes,
-             uint32_t timeoutMsec) noexcept;
+  bool Write(uint8_t addr, const uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec) noexcept;
 
   /**
    * @brief Read from a device in a thread-safe manner.
    */
-  bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes,
-            uint32_t timeoutMsec) noexcept;
+  bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec) noexcept;
 
   /**
    * @brief Combined write then read operation.
    */
-  bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes,
-                 uint8_t *rxData, uint16_t rxSizeBytes,
-                 uint32_t timeoutMsec) noexcept;
+  bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, uint8_t *rxData,
+                 uint16_t rxSizeBytes, uint32_t timeoutMsec) noexcept;
 
   /**
    * @brief Lock the bus for exclusive access.
@@ -81,7 +77,9 @@ public:
   /**
    * @brief Check initialization state.
    */
-  bool IsInitialized() const noexcept { return initialized; }
+  bool IsInitialized() const noexcept {
+    return initialized;
+  }
 
 private:
   i2c_port_t i2cPort;         ///< Port number

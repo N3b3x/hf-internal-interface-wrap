@@ -8,8 +8,7 @@
 
 static const char *TAG = "SfI2cBus";
 
-SfI2cBus::SfI2cBus(i2c_port_t port, const i2c_config_t &cfg,
-                   SemaphoreHandle_t mutexHandle) noexcept
+SfI2cBus::SfI2cBus(i2c_port_t port, const i2c_config_t &cfg, SemaphoreHandle_t mutexHandle) noexcept
     : i2cPort(port), config(cfg), busMutex(mutexHandle), initialized(false) {}
 
 SfI2cBus::~SfI2cBus() noexcept {
@@ -49,8 +48,8 @@ bool SfI2cBus::Write(uint8_t addr, const uint8_t *data, uint16_t sizeBytes,
     return false;
   if (xSemaphoreTake(busMutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)
     return false;
-  esp_err_t ret = i2c_master_write_to_device(i2cPort, addr, data, sizeBytes,
-                                             pdMS_TO_TICKS(timeoutMsec));
+  esp_err_t ret =
+      i2c_master_write_to_device(i2cPort, addr, data, sizeBytes, pdMS_TO_TICKS(timeoutMsec));
   xSemaphoreGive(busMutex);
   return ret == ESP_OK;
 }
@@ -61,22 +60,20 @@ bool SfI2cBus::Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes,
     return false;
   if (xSemaphoreTake(busMutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)
     return false;
-  esp_err_t ret = i2c_master_read_from_device(i2cPort, addr, data, sizeBytes,
-                                              pdMS_TO_TICKS(timeoutMsec));
+  esp_err_t ret =
+      i2c_master_read_from_device(i2cPort, addr, data, sizeBytes, pdMS_TO_TICKS(timeoutMsec));
   xSemaphoreGive(busMutex);
   return ret == ESP_OK;
 }
 
-bool SfI2cBus::WriteRead(uint8_t addr, const uint8_t *txData,
-                         uint16_t txSizeBytes, uint8_t *rxData,
+bool SfI2cBus::WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, uint8_t *rxData,
                          uint16_t rxSizeBytes, uint32_t timeoutMsec) noexcept {
   if (!initialized)
     return false;
   if (xSemaphoreTake(busMutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)
     return false;
-  esp_err_t ret =
-      i2c_master_write_read_device(i2cPort, addr, txData, txSizeBytes, rxData,
-                                   rxSizeBytes, pdMS_TO_TICKS(timeoutMsec));
+  esp_err_t ret = i2c_master_write_read_device(i2cPort, addr, txData, txSizeBytes, rxData,
+                                               rxSizeBytes, pdMS_TO_TICKS(timeoutMsec));
   xSemaphoreGive(busMutex);
   return ret == ESP_OK;
 }

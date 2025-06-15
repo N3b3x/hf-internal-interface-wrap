@@ -61,8 +61,7 @@ public:
    * @param timeoutMsec Timeout in milliseconds
    * @return true if read succeeded
    */
-  bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes,
-            uint32_t timeoutMsec = 1000) noexcept;
+  bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec = 1000) noexcept;
 
   /**
    * @brief Write then read from a slave device without releasing the bus.
@@ -74,9 +73,8 @@ public:
    * @param timeoutMsec Timeout in milliseconds
    * @return true if transaction succeeded
    */
-  bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes,
-                 uint8_t *rxData, uint16_t rxSizeBytes,
-                 uint32_t timeoutMsec = 1000) noexcept;
+  bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, uint8_t *rxData,
+                 uint16_t rxSizeBytes, uint32_t timeoutMsec = 1000) noexcept;
 
   /**
    * @brief Get the configured clock speed.
@@ -87,7 +85,9 @@ public:
   /**
    * @brief Check if the bus is initialized.
    */
-  bool IsInitialized() const noexcept { return initialized; }
+  bool IsInitialized() const noexcept {
+    return initialized;
+  }
 
 private:
   i2c_port_t i2cPort;  ///< I2C port

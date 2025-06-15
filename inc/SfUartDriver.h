@@ -23,8 +23,8 @@ public:
    * @param rxPin GPIO used for RX
    * @param mutexHandle Mutex used for locking during transfers
    */
-  SfUartDriver(uart_port_t port, const uart_config_t &config, int txPin,
-               int rxPin, SemaphoreHandle_t mutexHandle) noexcept;
+  SfUartDriver(uart_port_t port, const uart_config_t &config, int txPin, int rxPin,
+               SemaphoreHandle_t mutexHandle) noexcept;
   ~SfUartDriver() noexcept;
   SfUartDriver(const SfUartDriver &) = delete;
   SfUartDriver &operator=(const SfUartDriver &) = delete;
@@ -39,7 +39,9 @@ public:
   bool Lock() noexcept;   ///< Manually lock the mutex
   bool Unlock() noexcept; ///< Unlock the mutex
 
-  bool IsInitialized() const noexcept { return initialized; }
+  bool IsInitialized() const noexcept {
+    return initialized;
+  }
 
 private:
   uart_port_t port;

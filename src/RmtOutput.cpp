@@ -1,10 +1,11 @@
 #include "RmtOutput.h"
 
-RmtOutput::RmtOutput(rmt_channel_t channel, gpio_num_t pin,
-                     uint32_t clk_div) noexcept
+RmtOutput::RmtOutput(rmt_channel_t channel, gpio_num_t pin, uint32_t clk_div) noexcept
     : chan(channel), gpio(pin), div(clk_div), installed(false) {}
 
-RmtOutput::~RmtOutput() noexcept { Close(); }
+RmtOutput::~RmtOutput() noexcept {
+  Close();
+}
 
 bool RmtOutput::Open() noexcept {
   if (installed)
@@ -32,8 +33,7 @@ void RmtOutput::Close() noexcept {
   }
 }
 
-bool RmtOutput::Write(const rmt_item32_t *items, size_t len,
-                      bool wait_tx_done) noexcept {
+bool RmtOutput::Write(const rmt_item32_t *items, size_t len, bool wait_tx_done) noexcept {
   if (!installed)
     return false;
   return rmt_write_items(chan, items, len, wait_tx_done) == ESP_OK;

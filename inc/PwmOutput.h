@@ -27,9 +27,8 @@ public:
    * @param resolution Timer resolution (e.g. LEDC_TIMER_13_BIT)
    * @param activeState Signal active state
    */
-  PwmOutput(gpio_num_t pin, ledc_channel_t channel, ledc_timer_t timer,
-            uint32_t freqHz, ledc_timer_bit_t resolution,
-            ActiveState activeState = ActiveState::High) noexcept;
+  PwmOutput(gpio_num_t pin, ledc_channel_t channel, ledc_timer_t timer, uint32_t freqHz,
+            ledc_timer_bit_t resolution, ActiveState activeState = ActiveState::High) noexcept;
 
   PwmOutput(const PwmOutput &) = delete;
   PwmOutput &operator=(const PwmOutput &) = delete;
@@ -60,7 +59,9 @@ public:
   /**
    * @brief Get the configured frequency in Hz.
    */
-  uint32_t GetFrequency() const noexcept { return frequency; }
+  uint32_t GetFrequency() const noexcept {
+    return frequency;
+  }
 
 private:
   virtual bool Initialize() noexcept override;

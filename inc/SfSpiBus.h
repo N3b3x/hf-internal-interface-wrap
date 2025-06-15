@@ -42,8 +42,7 @@ public:
    * @param mutexHandle FreeRTOS mutex handle for thread safety
    */
   SfSpiBus(spi_host_device_t host, const spi_bus_config_t &buscfg,
-           const spi_device_interface_config_t &devcfg,
-           SemaphoreHandle_t mutexHandle) noexcept;
+           const spi_device_interface_config_t &devcfg, SemaphoreHandle_t mutexHandle) noexcept;
 
   /**
    * @brief Destructor. Closes the SPI bus if initialized.
@@ -69,8 +68,7 @@ public:
    * @param timeoutMsec Timeout in milliseconds for acquiring the mutex
    * @return true if the data was sent successfully, false otherwise
    */
-  bool Write(const uint8_t *data, uint16_t sizeBytes,
-             uint32_t timeoutMsec) noexcept;
+  bool Write(const uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec) noexcept;
 
   /**
    * @brief Read a block of data over the SPI bus (blocking, software CS).
@@ -90,8 +88,8 @@ public:
    * @param timeoutMsec Timeout in milliseconds for acquiring the mutex
    * @return true if the transaction was successful, false otherwise
    */
-  bool WriteRead(const uint8_t *write_data, uint8_t *read_data,
-                 uint16_t sizeBytes, uint32_t timeoutMsec) noexcept;
+  bool WriteRead(const uint8_t *write_data, uint8_t *read_data, uint16_t sizeBytes,
+                 uint32_t timeoutMsec) noexcept;
 
   /**
    * @brief Lock the SPI bus for exclusive access.
@@ -116,7 +114,9 @@ public:
    * @brief Check if the class is initialized.
    * @return true if initialized, false otherwise
    */
-  bool IsInitialized() const noexcept { return initialized; }
+  bool IsInitialized() const noexcept {
+    return initialized;
+  }
 
 private:
   bool Initialize() noexcept;
@@ -129,7 +129,7 @@ private:
   spi_device_interface_config_t devConfig; ///< SPI device configuration
   SemaphoreHandle_t busMutex;              ///< FreeRTOS mutex for thread safety
   bool initialized;                        ///< Initialization state
-  gpio_num_t csPin; ///< Chip select GPIO pin (software-controlled)
+  gpio_num_t csPin;                        ///< Chip select GPIO pin (software-controlled)
 };
 
 #endif // SFSPIBUS_H_

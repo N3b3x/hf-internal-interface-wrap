@@ -1,14 +1,15 @@
 #include "PwmOutput.h"
 #include "driver/ledc.h"
 
-PwmOutput::PwmOutput(gpio_num_t pinArg, ledc_channel_t channelArg,
-                     ledc_timer_t timerArg, uint32_t freqHz,
-                     ledc_timer_bit_t resolutionArg,
+PwmOutput::PwmOutput(gpio_num_t pinArg, ledc_channel_t channelArg, ledc_timer_t timerArg,
+                     uint32_t freqHz, ledc_timer_bit_t resolutionArg,
                      ActiveState activeStateArg) noexcept
-    : DigitalGpio(pinArg, activeStateArg), channel(channelArg), timer(timerArg),
-      frequency(freqHz), resolution(resolutionArg) {}
+    : DigitalGpio(pinArg, activeStateArg), channel(channelArg), timer(timerArg), frequency(freqHz),
+      resolution(resolutionArg) {}
 
-PwmOutput::~PwmOutput() noexcept { Stop(); }
+PwmOutput::~PwmOutput() noexcept {
+  Stop();
+}
 
 bool PwmOutput::Initialize() noexcept {
   ledc_timer_config_t timer_conf = {};
@@ -42,8 +43,7 @@ bool PwmOutput::Start() noexcept {
 bool PwmOutput::Stop() noexcept {
   if (!initialized)
     return true;
-  return ledc_stop(LEDC_LOW_SPEED_MODE, channel, IsActiveHigh() ? 0 : 1) ==
-         ESP_OK;
+  return ledc_stop(LEDC_LOW_SPEED_MODE, channel, IsActiveHigh() ? 0 : 1) == ESP_OK;
 }
 
 bool PwmOutput::SetDuty(float duty) noexcept {

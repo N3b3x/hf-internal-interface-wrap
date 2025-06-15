@@ -18,8 +18,7 @@ bool NvsStorage::Open() noexcept {
   if (handle)
     return true;
   esp_err_t err = nvs_flash_init();
-  if (err != ESP_OK && err != ESP_ERR_NVS_NO_FREE_PAGES &&
-      err != ESP_ERR_NVS_NEW_VERSION_FOUND) {
+  if (err != ESP_OK && err != ESP_ERR_NVS_NO_FREE_PAGES && err != ESP_ERR_NVS_NEW_VERSION_FOUND) {
     return false;
   }
   if (err != ESP_OK) {
