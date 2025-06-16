@@ -2,7 +2,8 @@
 #define DACOUTPUT_H
 
 #include <cstdint>
-#include <driver/dac_common.h>
+#include <driver/dac_types.h>
+#include <driver/dac_oneshot.h>
 
 /**
  * @file DacOutput.h
@@ -25,6 +26,7 @@ public:
 
 private:
   dac_channel_t channel;
+  dac_oneshot_handle_t handle;
   bool enabled;
 };
 

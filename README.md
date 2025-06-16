@@ -2,6 +2,8 @@
 
 Internal Interface Drivers – handy wrappers for ESP‑IDF used by the HardFOC controller. 🏎️ These abstractions keep your code tidy and portable across ESP32 variants.
 
+> **Note:** This component requires **ESP-IDF v5.5 or newer**.
+
 For detailed API guides see [docs/index.md](docs/index.md).
 
 ## IID‑ESPIDF Overview
