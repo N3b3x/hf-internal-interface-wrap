@@ -1,9 +1,15 @@
 #ifndef DACOUTPUT_H
 #define DACOUTPUT_H
 
+#include "esp_idf_version.h"
 #include <cstdint>
-#include <driver/dac_types.h>
+
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 5, 0)
 #include <driver/dac_oneshot.h>
+#include <driver/dac_types.h>
+#else
+#include <driver/dac_common.h>
+#endif
 
 /**
  * @file DacOutput.h
@@ -26,7 +32,9 @@ public:
 
 private:
   dac_channel_t channel;
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 5, 0)
   dac_oneshot_handle_t handle;
+#endif
   bool enabled;
 };
 
