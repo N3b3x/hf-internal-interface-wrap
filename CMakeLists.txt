@@ -17,7 +17,7 @@ idf_component_register(
         src/UartDriver.cpp
         src/SfUartDriver.cpp
         src/DacOutput.cpp
-        src/RmtOutput.cpp
+        src/RMT.cpp
         src/NvsStorage.cpp
     INCLUDE_DIRS "inc"
 )

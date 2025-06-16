@@ -1,13 +1,13 @@
-#include "RmtOutput.h"
+#include "RMT.hpp"
 
-RmtOutput::RmtOutput(rmt_channel_t channel, gpio_num_t pin, uint32_t clk_div) noexcept
+RMT::RMT(rmt_channel_t channel, gpio_num_t pin, uint32_t clk_div) noexcept
     : chan(channel), gpio(pin), div(clk_div), installed(false) {}
 
-RmtOutput::~RmtOutput() noexcept {
+RMT::~RMT() noexcept {
   Close();
 }
 
-bool RmtOutput::Open() noexcept {
+bool RMT::Open() noexcept {
   if (installed)
     return true;
   uint32_t resolution = 80'000'000 / div;
@@ -17,12 +17,12 @@ bool RmtOutput::Open() noexcept {
   return true;
 }
 
-void RmtOutput::Close() noexcept {
+void RMT::Close() noexcept {
   tx.reset();
   installed = false;
 }
 
-bool RmtOutput::Write(const rmt_item32_t *items, size_t len, bool wait_tx_done) noexcept {
+bool RMT::Write(const rmt_item32_t *items, size_t len, bool wait_tx_done) noexcept {
   (void)wait_tx_done;
   if (!installed || !tx)
     return false;

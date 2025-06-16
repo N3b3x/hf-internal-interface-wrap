@@ -1,4 +1,4 @@
-# RmtOutput Class Guide
+# RMT Class Guide
 
 Wrapper around the ESP‑IDF RMT API for transmitting pulse sequences. 📡
 
@@ -9,7 +9,7 @@ Wrapper around the ESP‑IDF RMT API for transmitting pulse sequences. 📡
 
 ## Example
 ```cpp
-RmtOutput rmt(RMT_CHANNEL_0, GPIO_NUM_18, 80);
+RMT rmt(RMT_CHANNEL_0, GPIO_NUM_18, 80);
 rmt.Open();
 rmt_item32_t item = {};
 item.level0 = 1;

@@ -21,7 +21,7 @@ Each abstraction is intentionally tiny and header only where possible. Create an
 - `PeriodicTimer` helper built on `esp_timer` ⏲️
 - `UartDriver` and `SfUartDriver` serial helpers 📡
 - `DacOutput` for analog voltages 🎚️
-- `RmtOutput` wrapper for the RMT peripheral 📡
+- `RMT` wrapper for the RMT peripheral 📡
 - `NvsStorage` for saving settings 💾
 - Platform utilities from `UTILITIES/common` (timers, mutex helpers, base threads) 🧰
 
@@ -79,9 +79,9 @@ serial.Write(reinterpret_cast<const uint8_t*>("hi"), 2);
 ```
 
 
-### RmtOutput example
+### RMT example
 ```cpp
-RmtOutput rmt(RMT_CHANNEL_0, GPIO_NUM_18, 80);
+RMT rmt(RMT_CHANNEL_0, GPIO_NUM_18, 80);
 rmt.Open();
 rmt_item32_t item = {};
 item.level0 = 1;
