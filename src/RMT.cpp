@@ -30,16 +30,15 @@ void RMT::Close() noexcept {
   rx.reset();
 }
 
-bool RMT::Write(const rmt_item32_t *items, size_t len, bool wait_tx_done) noexcept {
+bool RMT::Write(const rmt_symbol_word_t *items, size_t len, bool wait_tx_done) noexcept {
   (void)wait_tx_done;
   if (!tx)
     return false;
-  return tx->transmit(reinterpret_cast<const rmt_symbol_word_t *>(items), len) == ESP_OK;
+  return tx->transmit(items, len) == ESP_OK;
 }
 
-bool RMT::Receive(rmt_item32_t *buffer, size_t buffer_symbols, size_t *out_symbols) noexcept {
+bool RMT::Receive(rmt_symbol_word_t *buffer, size_t buffer_symbols, size_t *out_symbols) noexcept {
   if (!rx)
     return false;
-  return rx->receive(reinterpret_cast<rmt_symbol_word_t *>(buffer), buffer_symbols, out_symbols) ==
-         ESP_OK;
+  return rx->receive(buffer, buffer_symbols, out_symbols) == ESP_OK;
 }

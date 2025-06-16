@@ -291,8 +291,8 @@ public:
   bool OpenRx(uint32_t idle_threshold_us = 1000, uint32_t filter_ns = 200) noexcept;
   void Close() noexcept;
 
-  bool Write(const rmt_item32_t *items, size_t len, bool wait_tx_done = true) noexcept;
-  bool Receive(rmt_item32_t *buffer, size_t buffer_symbols, size_t *out_symbols) noexcept;
+  bool Write(const rmt_symbol_word_t *items, size_t len, bool wait_tx_done = true) noexcept;
+  bool Receive(rmt_symbol_word_t *buffer, size_t buffer_symbols, size_t *out_symbols) noexcept;
 
   bool IsTxOpen() const noexcept {
     return static_cast<bool>(tx);
