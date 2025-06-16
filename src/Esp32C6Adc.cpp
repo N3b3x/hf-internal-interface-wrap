@@ -8,13 +8,13 @@
  * is handled via gpio_config().
  */
 #include "Esp32C6Adc.h"
-#include "esp_adc/adc_oneshot.h"
 #include "esp_adc/adc_cali.h"
 #include "esp_adc/adc_cali_scheme.h"
+#include "esp_adc/adc_oneshot.h"
 #include <unistd.h>
 
 Esp32C6Adc::Esp32C6Adc(adc_unit_t adc_unit, adc_atten_t attenuation, adc_bitwidth_t width)
-    : adcUnit(adc_unit), attenuation(attenuation), width(width), initialized(false), 
+    : adcUnit(adc_unit), attenuation(attenuation), width(width), initialized(false),
       adc_handle(nullptr), cali_handle(nullptr) {}
 
 Esp32C6Adc::~Esp32C6Adc() noexcept {
@@ -37,7 +37,7 @@ bool Esp32C6Adc::Initialize() noexcept {
 
   // Configure ADC oneshot unit
   adc_oneshot_unit_init_cfg_t init_config1 = {
-    .unit_id = adcUnit,
+      .unit_id = adcUnit,
   };
   esp_err_t ret = adc_oneshot_new_unit(&init_config1, &adc_handle);
   if (ret != ESP_OK) {
@@ -47,16 +47,16 @@ bool Esp32C6Adc::Initialize() noexcept {
   // Configure ADC calibration
 #if ADC_CALI_SCHEME_CURVE_FITTING_SUPPORTED
   adc_cali_curve_fitting_config_t cali_config = {
-    .unit_id = adcUnit,
-    .atten = attenuation,
-    .bitwidth = width,
+      .unit_id = adcUnit,
+      .atten = attenuation,
+      .bitwidth = width,
   };
   ret = adc_cali_create_scheme_curve_fitting(&cali_config, &cali_handle);
 #elif ADC_CALI_SCHEME_LINE_FITTING_SUPPORTED
   adc_cali_line_fitting_config_t cali_config = {
-    .unit_id = adcUnit,
-    .atten = attenuation,
-    .bitwidth = width,
+      .unit_id = adcUnit,
+      .atten = attenuation,
+      .bitwidth = width,
   };
   ret = adc_cali_create_scheme_line_fitting(&cali_config, &cali_handle);
 #endif
@@ -78,8 +78,8 @@ BaseAdc::AdcErr Esp32C6Adc::ReadChannelCount(uint8_t channel_num, uint32_t &chan
 
   // Configure channel
   adc_oneshot_chan_cfg_t config = {
-    .atten = attenuation,
-    .bitwidth = width,
+      .atten = attenuation,
+      .bitwidth = width,
   };
   esp_err_t ret = adc_oneshot_config_channel(adc_handle, (adc_channel_t)channel_num, &config);
   if (ret != ESP_OK) {
@@ -132,7 +132,7 @@ BaseAdc::AdcErr Esp32C6Adc::ReadChannelV(uint8_t channel_num, float &channel_rea
   } else if (attenuation == ADC_ATTEN_DB_12) {
     max_voltage = 3.9f;
   }
-  
+
   uint32_t max_count = (1 << 12); // Assuming 12-bit ADC
   if (width == ADC_BITWIDTH_9) {
     max_count = (1 << 9);
@@ -141,7 +141,7 @@ BaseAdc::AdcErr Esp32C6Adc::ReadChannelV(uint8_t channel_num, float &channel_rea
   } else if (width == ADC_BITWIDTH_11) {
     max_count = (1 << 11);
   }
-  
+
   channel_reading_v = (count * max_voltage) / max_count;
   return AdcErr::ADC_SUCCESS;
 }

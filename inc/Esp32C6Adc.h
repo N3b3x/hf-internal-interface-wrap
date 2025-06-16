@@ -12,20 +12,19 @@
 #define HAL_INTERNAL_INTERFACE_DRIVERS_ESP32C6ADC_H_
 
 #include "BaseAdc.h"
-#include "esp_adc/adc_oneshot.h"
 #include "esp_adc/adc_cali.h"
 #include "esp_adc/adc_cali_scheme.h"
+#include "esp_adc/adc_oneshot.h"
 #include <cstdint>
 
 class Esp32C6Adc : public BaseAdc {
-public:  /**
-   * @brief Constructor for ESP32-C6 ADC driver.
-   * @param adc_unit ADC unit (ADC_UNIT_1 or ADC_UNIT_2)
-   * @param attenuation ADC attenuation (ADC_ATTEN_DB_0, etc.)
-   * @param width ADC width (ADC_BITWIDTH_12, etc.)
-   */
-  Esp32C6Adc(adc_unit_t adc_unit, adc_atten_t attenuation,
-             adc_bitwidth_t width = ADC_BITWIDTH_12);
+public: /**
+         * @brief Constructor for ESP32-C6 ADC driver.
+         * @param adc_unit ADC unit (ADC_UNIT_1 or ADC_UNIT_2)
+         * @param attenuation ADC attenuation (ADC_ATTEN_DB_0, etc.)
+         * @param width ADC width (ADC_BITWIDTH_12, etc.)
+         */
+  Esp32C6Adc(adc_unit_t adc_unit, adc_atten_t attenuation, adc_bitwidth_t width = ADC_BITWIDTH_12);
 
   /**
    * @brief Destructor.

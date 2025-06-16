@@ -36,8 +36,7 @@ public:
    * @param txPinArg GPIO pin for TWAI TX (default: GPIO_NUM_21)
    * @param rxPinArg GPIO pin for TWAI RX (default: GPIO_NUM_22)
    */
-  FlexCan(uint8_t portArg, uint32_t baudRateArg, 
-          gpio_num_t txPinArg = GPIO_NUM_21, 
+  FlexCan(uint8_t portArg, uint32_t baudRateArg, gpio_num_t txPinArg = GPIO_NUM_21,
           gpio_num_t rxPinArg = GPIO_NUM_22) noexcept;
 
   /**
