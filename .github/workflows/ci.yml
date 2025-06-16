@@ -60,6 +60,8 @@ jobs:
             cp -r examples/esp32/main ${{ env.BUILD_PATH }}/main
             # Copy shared example helpers
             cp -r examples/common ${{ env.BUILD_PATH }}/common
+            # Adjust include path for shared helpers when building inside CI project
+            sed -i "s|../../common|../common|" ${{ env.BUILD_PATH }}/main/CMakeLists.txt
             idf.py -C ${{ env.BUILD_PATH }} -DIDF_TARGET=${{ env.IDF_TARGET }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} build
             idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt
             idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json
