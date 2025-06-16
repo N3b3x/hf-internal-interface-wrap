@@ -20,7 +20,6 @@ This directory contains short guides for each internal interface class. Use the 
 - [PeriodicTimer](PeriodicTimer.md)
 - [UartDriver](UartDriver.md)
 - [SfUartDriver](SfUartDriver.md)
-- [DacOutput](DacOutput.md)
 - [RMT](RMT.md)
 - [NvsStorage](NvsStorage.md)
 
