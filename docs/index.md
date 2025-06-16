@@ -21,7 +21,7 @@ This directory contains short guides for each internal interface class. Use the 
 - [UartDriver](UartDriver.md)
 - [SfUartDriver](SfUartDriver.md)
 - [DacOutput](DacOutput.md)
-- [RmtOutput](RmtOutput.md)
+- [RMT](RMT.md)
 - [NvsStorage](NvsStorage.md)
 
 Return to the [project README](../README.md).

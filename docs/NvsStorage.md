@@ -18,4 +18,4 @@ store.GetU32("boot_count", val);
 
 ---
 
-[← Previous](RmtOutput.md) | [Documentation Index](index.md)
+[← Previous](RMT.md) | [Documentation Index](index.md)
