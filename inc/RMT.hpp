@@ -287,21 +287,29 @@ public:
   RMT(const RMT &) = delete;
   RMT &operator=(const RMT &) = delete;
 
-  bool Open() noexcept;
+  bool OpenTx() noexcept;
+  bool OpenRx(uint32_t idle_threshold_us = 1000, uint32_t filter_ns = 200) noexcept;
   void Close() noexcept;
 
   bool Write(const rmt_item32_t *items, size_t len, bool wait_tx_done = true) noexcept;
+  bool Receive(rmt_item32_t *buffer, size_t buffer_symbols, size_t *out_symbols) noexcept;
 
+  bool IsTxOpen() const noexcept {
+    return static_cast<bool>(tx);
+  }
+  bool IsRxOpen() const noexcept {
+    return static_cast<bool>(rx);
+  }
   bool IsOpen() const noexcept {
-    return installed;
+    return IsTxOpen() || IsRxOpen();
   }
 
 private:
   rmt_channel_t chan;
   gpio_num_t gpio;
   uint32_t div;
-  bool installed;
   std::unique_ptr<iid::RmtTx> tx;
+  std::unique_ptr<iid::RmtRx> rx;
 };
 
 #endif // RMT_CLASS_HPP

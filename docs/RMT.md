@@ -1,22 +1,26 @@
 # RMT Class Guide
 
-Wrapper around the ESP‑IDF RMT API for transmitting pulse sequences. 📡
+Wrapper around the ESP‑IDF RMT API for transmitting or receiving pulse sequences. 📡
 
 ## Features
-- Install and configure a TX channel
+- Configure a channel for TX or RX on demand
 - Send arrays of `rmt_item32_t`
+- Receive `rmt_item32_t` buffers
 - RAII cleanup of the driver
 
 ## Example
 ```cpp
 RMT rmt(RMT_CHANNEL_0, GPIO_NUM_18, 80);
-rmt.Open();
+rmt.OpenTx();
 rmt_item32_t item = {};
 item.level0 = 1;
 item.duration0 = 500;
 item.level1 = 0;
 item.duration1 = 500;
 rmt.Write(&item, 1);
+
+// Switch to RX later
+// rmt.OpenRx();
 ```
 
 ---
