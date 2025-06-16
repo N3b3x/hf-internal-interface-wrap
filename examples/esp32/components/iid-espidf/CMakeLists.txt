@@ -20,5 +20,5 @@ idf_component_register(
         "../../../src/RMT.cpp"
         "../../../src/NvsStorage.cpp"
     INCLUDE_DIRS "../../../inc"
-    REQUIRES driver esp_adc freertos esp_timer nvs nvs_flash
+    REQUIRES driver esp_adc freertos esp_timer nvs_flash
 )
