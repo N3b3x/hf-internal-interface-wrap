@@ -25,7 +25,7 @@ defaults:
 
 jobs:
   build:
-    name: Build \u279c ${{ matrix.idf_version }} \u00b7 ${{ matrix.build_type }}
+    name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
