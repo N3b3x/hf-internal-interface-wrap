@@ -6,10 +6,9 @@
 #include "FlexCan.h"
 #include <cstdio>
 
-FlexCan::FlexCan(uint8_t portArg, uint32_t baudRateArg, 
-                 gpio_num_t txPinArg, gpio_num_t rxPinArg) noexcept
-    : port(portArg), baudRate(baudRateArg), initialized(false), 
-      txPin(txPinArg), rxPin(rxPinArg) {}
+FlexCan::FlexCan(uint8_t portArg, uint32_t baudRateArg, gpio_num_t txPinArg,
+                 gpio_num_t rxPinArg) noexcept
+    : port(portArg), baudRate(baudRateArg), initialized(false), txPin(txPinArg), rxPin(rxPinArg) {}
 
 FlexCan::~FlexCan() noexcept {
   if (initialized) {
@@ -23,7 +22,7 @@ bool FlexCan::Open() noexcept {
 
   // Configure TWAI general settings
   twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(txPin, rxPin, TWAI_MODE_NORMAL);
-  g_config.tx_queue_len = 10;  // Increased queue length for better performance
+  g_config.tx_queue_len = 10; // Increased queue length for better performance
   g_config.rx_queue_len = 10;
 
   // Accept all messages - can be customized later if needed
@@ -103,7 +102,7 @@ bool FlexCan::Write(const Frame &frame) noexcept {
   msg.extd = frame.extended ? 1 : 0;
   msg.rtr = frame.rtr ? 1 : 0;
   msg.data_length_code = frame.dlc;
-  
+
   // Copy data bytes
   for (uint8_t i = 0; i < frame.dlc && i < 8; ++i) {
     msg.data[i] = frame.data[i];
@@ -129,12 +128,12 @@ bool FlexCan::Read(Frame &frame, uint32_t timeoutMs) noexcept {
   frame.extended = (msg.extd != 0);
   frame.rtr = (msg.rtr != 0);
   frame.dlc = msg.data_length_code;
-  
+
   // Clear data array first
   for (uint8_t i = 0; i < 8; ++i) {
     frame.data[i] = 0;
   }
-  
+
   // Copy received data
   for (uint8_t i = 0; i < frame.dlc && i < 8; ++i) {
     frame.data[i] = msg.data[i];
