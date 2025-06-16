@@ -16,4 +16,4 @@ serial.Write(reinterpret_cast<const uint8_t*>("hi"), 2);
 
 ---
 
-[← Previous](UartDriver.md) | [Documentation Index](index.md) | [Next →](DacOutput.md)
+[← Previous](UartDriver.md) | [Documentation Index](index.md) | [Next →](RMT.md)
