@@ -84,7 +84,7 @@ serial.Write(reinterpret_cast<const uint8_t*>("hi"), 2);
 ```cpp
 RMT rmt(RMT_CHANNEL_0, GPIO_NUM_18, 80);
 rmt.OpenTx();
-rmt_item32_t item = {};
+rmt_symbol_word_t item = {};
 item.level0 = 1;
 item.duration0 = 500;
 item.level1 = 0;
