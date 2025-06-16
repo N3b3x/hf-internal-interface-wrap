@@ -1,5 +1,0 @@
-name: iid-espidf
-version: "0.1.0"
-description: "HardFOC Internal Interface Drivers for ESP-IDF"
-dependencies:
-  idf: ">=5.5"

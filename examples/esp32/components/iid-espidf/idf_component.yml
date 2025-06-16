@@ -1,0 +1,15 @@
+name: iid-espidf
+version: "0.1.0"
+description: "HardFOC Internal Interface Drivers for ESP-IDF"
+maintainers:
+  - "HardFOC"
+targets:
+  - esp32
+  - esp32c6
+repository: https://github.com/N3b3x/hf-internal-interface-wrap
+issues: https://github.com/N3b3x/hf-internal-interface-wrap/issues
+include_dirs:
+  - ../../../src
+## Optional dependencies etc. But not required.
+dependencies:
+  idf: ">=5.5"
