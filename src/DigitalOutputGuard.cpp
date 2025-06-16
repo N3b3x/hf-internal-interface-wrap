@@ -15,10 +15,7 @@ active
  */
 
 #include "DigitalOutputGuard.h"
-#include "UTILITIES/common/ThingsToString.h"
-
 #include "DigitalOutput.h"
-#include "HAL/component_handlers/ConsolePort.h"
 
 //==============================================================//
 // VERBOSE??
@@ -37,16 +34,6 @@ static constexpr bool verbose = false;
  */
 DigitalOutputGuard::DigitalOutputGuard(DigitalOutput &output) : p_output_(&output) {
   bool active = p_output_->SetActive();
-  if (active) {
-    WRITE_CONDITIONAL(verbose,
-                      "DigitalOutputGuard() - Digital output - %s - successfully set ACTIVE",
-                      PinToString(p_output_->GetPin()));
-  } else {
-    WRITE_CONDITIONAL(verbose,
-                      "DigitalOutputGuard() - Digital output - %s - !!! FAILED "
-                      "!!! to set ACTIVE",
-                      PinToString(p_output_->GetPin()));
-  }
 }
 
 /**
@@ -57,16 +44,6 @@ DigitalOutputGuard::DigitalOutputGuard(DigitalOutput &output) : p_output_(&outpu
  */
 DigitalOutputGuard::DigitalOutputGuard(DigitalOutput *output) : p_output_(output) {
   bool active = p_output_->SetActive();
-  if (active) {
-    WRITE_CONDITIONAL(verbose,
-                      "DigitalOutputGuard() - Digital output - %s - successfully set ACTIVE",
-                      PinToString(p_output_->GetPin()));
-  } else {
-    WRITE_CONDITIONAL(verbose,
-                      "DigitalOutputGuard() - Digital output - %s - !!! FAILED "
-                      "!!! to set ACTIVE",
-                      PinToString(p_output_->GetPin()));
-  }
 }
 
 /**
@@ -76,15 +53,4 @@ DigitalOutputGuard::DigitalOutputGuard(DigitalOutput *output) : p_output_(output
  */
 DigitalOutputGuard::~DigitalOutputGuard() {
   bool inactive = p_output_->SetInactive();
-  if (inactive) {
-    WRITE_CONDITIONAL(verbose,
-                      "~DigitalOutputGuard() - Digital output - %s - "
-                      "successfully set INACTIVE",
-                      PinToString(p_output_->GetPin()));
-  } else {
-    WRITE_CONDITIONAL(verbose,
-                      "~DigitalOutputGuard() - Digital output - %s - !!! "
-                      "FAILED !!! to set INACTIVE",
-                      PinToString(p_output_->GetPin()));
-  }
 }

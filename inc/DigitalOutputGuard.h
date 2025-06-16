@@ -18,7 +18,6 @@ active
 #define HAL_INTERNAL_INTERFACE_DRIVERS_DIGITALOUTPUTGUARD_H_
 
 #include "DigitalOutput.h"
-#include "UTILITIES/common/ThingsToString.h"
 
 /**
  * @class DigitalOutputGuard
