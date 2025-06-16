@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.23)
 
 idf_component_register(
     SRCS
-        ../../src/BaseGpio.cpp
         ../../src/DigitalExternalIRQ.cpp
         ../../src/DigitalGpio.cpp
         ../../src/DigitalInput.cpp
