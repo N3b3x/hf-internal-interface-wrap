@@ -15,7 +15,6 @@
 #ifndef HAL_INTERNAL_INTERFACE_DRIVERS_BASEADC_H_
 #define HAL_INTERNAL_INTERFACE_DRIVERS_BASEADC_H_
 
-#include "driver/adc.h"
 #include <cstdint>
 
 /**
