@@ -4,7 +4,6 @@
  */
 
 #include "FlexCan.h"
-#include <PinCfg/gpio_config_esp32c6.hpp>
 #include <cstdio>
 
 FlexCan::FlexCan(uint8_t portArg, uint32_t baudRateArg) noexcept

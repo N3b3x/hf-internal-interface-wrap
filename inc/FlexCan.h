@@ -11,7 +11,6 @@
 
 #include "driver/gpio.h"
 #include "driver/twai.h"
-#include <PinCfg/gpio_config_esp32c6.hpp>
 #include <cstdint>
 
 /**

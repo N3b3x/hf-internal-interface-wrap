@@ -82,7 +82,6 @@ bool DigitalOutput::SetInactive() noexcept {
 
 bool DigitalOutput::Toggle() noexcept {
   if (EnsureInitialized()) {
-    int level = gpio_get_level(pin);
     if (IsActive()) {
       return SetInactive();
     } else {
