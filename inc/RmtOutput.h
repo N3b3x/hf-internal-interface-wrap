@@ -2,7 +2,9 @@
 #define RMT_OUTPUT_H
 
 #include "driver/gpio.h"
-#include "driver/rmt.h"
+#include "driver/rmt_types.h"
+#include "rmt_wrapper.hpp"
+#include <memory>
 
 /**
  * @file RmtOutput.h
@@ -29,6 +31,7 @@ private:
   gpio_num_t gpio;
   uint32_t div;
   bool installed;
+  std::unique_ptr<iid::RmtTx> tx;
 };
 
 #endif // RMT_OUTPUT_H
