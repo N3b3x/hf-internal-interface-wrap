@@ -29,13 +29,16 @@ public:
     bool extended;   ///< True if extended ID
     bool rtr;        ///< Remote transmission request
   };
-
   /**
    * @brief Constructor.
-   * @param portArg CAN controller port number
+   * @param portArg CAN controller port number (currently unused on ESP32)
    * @param baudRateArg Bus baud rate in bit/s
+   * @param txPinArg GPIO pin for TWAI TX (default: GPIO_NUM_21)
+   * @param rxPinArg GPIO pin for TWAI RX (default: GPIO_NUM_22)
    */
-  FlexCan(uint8_t portArg, uint32_t baudRateArg) noexcept;
+  FlexCan(uint8_t portArg, uint32_t baudRateArg, 
+          gpio_num_t txPinArg = GPIO_NUM_21, 
+          gpio_num_t rxPinArg = GPIO_NUM_22) noexcept;
 
   /**
    * @brief Destructor.
@@ -60,7 +63,6 @@ public:
    * @return true if transmitted
    */
   bool Write(const Frame &frame) noexcept;
-
   /**
    * @brief Read a CAN frame.
    * @param frame Destination frame
@@ -70,10 +72,35 @@ public:
   bool Read(Frame &frame, uint32_t timeoutMs = 0) noexcept;
 
   /**
+   * @brief Check if there are pending messages in the receive queue.
+   * @return Number of pending messages, or 0 if none
+   */
+  uint32_t Available() noexcept;
+
+  /**
+   * @brief Get the current bus state.
+   * @return TWAI state
+   */
+  twai_state_t GetState() noexcept;
+  /**
    * @brief Get the configured baud rate.
    */
   uint32_t GetBaudRate() const noexcept {
     return baudRate;
+  }
+
+  /**
+   * @brief Get the configured TX pin.
+   */
+  gpio_num_t GetTxPin() const noexcept {
+    return txPin;
+  }
+
+  /**
+   * @brief Get the configured RX pin.
+   */
+  gpio_num_t GetRxPin() const noexcept {
+    return rxPin;
   }
 
   /**
