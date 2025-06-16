@@ -5,6 +5,7 @@ Tiny helper around the ESP‑IDF DAC functions for generating analog voltages.
 ## Highlights
 - Enable/disable a DAC channel
 - Write 8‑bit values with `SetValue()`
+- Based on ESP‑IDF's `dac_oneshot` driver (v5.5+)
 
 ## Example
 ```cpp
