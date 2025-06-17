@@ -38,6 +38,8 @@ bool Esp32C6Adc::Initialize() noexcept {
   // Configure ADC oneshot unit
   adc_oneshot_unit_init_cfg_t init_config1 = {
       .unit_id = adcUnit,
+      .clk_src = ADC_DIGI_CLK_SRC_DEFAULT, // Added missing initializer
+      .ulp_mode = ADC_ULP_MODE_DISABLE // Added missing initializer
   };
   esp_err_t ret = adc_oneshot_new_unit(&init_config1, &adc_handle);
   if (ret != ESP_OK) {
@@ -48,15 +50,17 @@ bool Esp32C6Adc::Initialize() noexcept {
 #if ADC_CALI_SCHEME_CURVE_FITTING_SUPPORTED
   adc_cali_curve_fitting_config_t cali_config = {
       .unit_id = adcUnit,
+      .chan = ADC_CHANNEL_0, // Added missing initializer
       .atten = attenuation,
-      .bitwidth = width,
+      .bitwidth = width
   };
   ret = adc_cali_create_scheme_curve_fitting(&cali_config, &cali_handle);
 #elif ADC_CALI_SCHEME_LINE_FITTING_SUPPORTED
   adc_cali_line_fitting_config_t cali_config = {
       .unit_id = adcUnit,
+      .chan = ADC_CHANNEL_0, // Added missing initializer
       .atten = attenuation,
-      .bitwidth = width,
+      .bitwidth = width
   };
   ret = adc_cali_create_scheme_line_fitting(&cali_config, &cali_handle);
 #endif
