@@ -5,8 +5,8 @@
 #ifndef NVSSTORAGE_H_
 #define NVSSTORAGE_H_
 
-#include <cstdint>
 #include "nvs_flash.h"
+#include <cstdint>
 
 /**
  * @class NvsStorage
