@@ -4,11 +4,11 @@
  * Copyright © 2023 Nebula Tech Corporation. All Rights Reserved.
  * This file is part of HardFOC and is licensed under the GNU General Public
  * License v3.0 or later.
- * 
+ *
  * @file DigitalOutputGuard.cpp
  * @brief Source file for the DigitalOutputGuard class.
  *
- * The DigitalOutputGuard class ensures that a DigitalOutput instance is set 
+ * The DigitalOutputGuard class ensures that a DigitalOutput instance is set
  * active in its constructor and inactive in its destructor (RAII pattern).
  */
 
