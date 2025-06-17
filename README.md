@@ -22,7 +22,7 @@ Each abstraction is intentionally tiny and header only where possible. Create an
 - `PwmOutput` abstraction for LEDC PWM generation 🎛️
 - `PeriodicTimer` helper built on `esp_timer` ⏲️
 - `UartDriver` and `SfUartDriver` serial helpers 📡
-- `RMT` wrapper for the RMT peripheral with TX/RX control 📡
+ - `RMT` header-only wrapper for the RMT peripheral with TX/RX control 📡
 - `NvsStorage` for saving settings 💾
 - Platform utilities from `UTILITIES/common` (timers, mutex helpers, base threads) 🧰
 

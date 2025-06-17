@@ -1,6 +1,6 @@
 # RMT Class Guide
 
-Wrapper around the ESP‑IDF RMT API for transmitting or receiving pulse sequences. 📡
+Header-only wrapper around the ESP‑IDF RMT API for transmitting or receiving pulse sequences. 📡
 
 ## Features
 - Configure a channel for TX or RX on demand

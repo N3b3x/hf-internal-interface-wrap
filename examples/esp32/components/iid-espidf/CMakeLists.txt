@@ -17,7 +17,6 @@ idf_component_register(
         "../../../src/PeriodicTimer.cpp"
         "../../../src/UartDriver.cpp"
         "../../../src/SfUartDriver.cpp"
-        "../../../src/RMT.cpp"
         "../../../src/NvsStorage.cpp"
     INCLUDE_DIRS "../../../inc"
     REQUIRES driver esp_adc freertos esp_timer nvs_flash
