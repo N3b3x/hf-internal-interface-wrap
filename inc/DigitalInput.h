@@ -41,14 +41,7 @@ public:
   DigitalInput &operator=(const DigitalInput &) = delete;
   /**
    * @brief Default destructor.
-   */
-  virtual ~DigitalInput() override = default;
-
-  /**
-   * @brief Checks if the logical pin state is active.
-   * @return True if the pin is active, false otherwise.
-   */
-  bool IsActive() noexcept;
+   */  virtual ~DigitalInput() override = default;
 
   /**
    * @brief Fetches the current state of the pin.

@@ -48,23 +48,27 @@ bool DigitalInput::Initialize() noexcept {
   return gpio_config(&io_conf) == ESP_OK;
 }
 
+bool DigitalInput::IsPinAvailable() const noexcept {
+  // For legacy compatibility, assume all pins are available
+  // In practice, this should check against reserved pins
+  return pin >= 0 && pin <= 30;
+}
+
+uint8_t DigitalInput::GetMaxPins() const noexcept {
+  return 31; // ESP32-C6 has 31 GPIO pins (0-30)
+}
+
+HfGpioErr DigitalInput::IsActiveImpl(bool& is_active) noexcept {
+  int level = gpio_get_level(pin);
+  is_active = IsActiveHigh() ? (level != 0) : (level == 0);
+  return HfGpioErr::GPIO_SUCCESS;
+}
+
 ///------------------------------------------------------------------
 /// <summary>
 /// This function identifies the logical pin state.
 /// </summary>
 ///< returns>true if the pin is logically set, false otherwise</returns>
-
-bool DigitalInput::IsActive() noexcept {
-  if (EnsureInitialized()) {
-    int level = gpio_get_level(pin);
-    if (IsActiveHigh()) {
-      return level == 1;
-    } else {
-      return level == 0;
-    }
-  }
-  return false;
-}
 
 ///------------------------------------------------------------------
 /// <summary>

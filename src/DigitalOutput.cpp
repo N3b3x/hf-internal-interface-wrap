@@ -40,53 +40,52 @@ bool DigitalOutput::Initialize() noexcept {
   return ok;
 }
 
+bool DigitalOutput::IsPinAvailable() const noexcept {
+  // For legacy compatibility, assume all pins are available
+  // In practice, this should check against reserved pins
+  return pin >= 0 && pin <= 30;
+}
+
+uint8_t DigitalOutput::GetMaxPins() const noexcept {
+  return 31; // ESP32-C6 has 31 GPIO pins (0-30)
+}
+
 DigitalGpio::Mode DigitalOutput::OutputMode() const noexcept {
   // For ESP32, open-drain can be set in derived class if needed.
   // Here, always return PushPull for default implementation.
   return Mode::PushPull;
 }
 
-bool DigitalOutput::IsActive() noexcept {
-  if (EnsureInitialized()) {
-    int level = gpio_get_level(pin);
-    if (IsActiveHigh()) {
-      return level == 1;
-    } else {
-      return level == 0;
-    }
+HfGpioErr DigitalOutput::SetActiveImpl() noexcept {
+  if (IsActiveHigh()) {
+    return gpio_set_level(pin, 1) == ESP_OK ? HfGpioErr::GPIO_SUCCESS : HfGpioErr::GPIO_ERR_WRITE_FAILURE;
+  } else {
+    return gpio_set_level(pin, 0) == ESP_OK ? HfGpioErr::GPIO_SUCCESS : HfGpioErr::GPIO_ERR_WRITE_FAILURE;
   }
-  return false;
 }
 
-bool DigitalOutput::SetActive() noexcept {
-  if (EnsureInitialized()) {
-    if (IsActiveHigh()) {
-      return gpio_set_level(pin, 1) == ESP_OK;
-    } else {
-      return gpio_set_level(pin, 0) == ESP_OK;
-    }
+HfGpioErr DigitalOutput::SetInactiveImpl() noexcept {
+  if (IsActiveHigh()) {
+    return gpio_set_level(pin, 0) == ESP_OK ? HfGpioErr::GPIO_SUCCESS : HfGpioErr::GPIO_ERR_WRITE_FAILURE;
+  } else {
+    return gpio_set_level(pin, 1) == ESP_OK ? HfGpioErr::GPIO_SUCCESS : HfGpioErr::GPIO_ERR_WRITE_FAILURE;
   }
-  return false;
 }
 
-bool DigitalOutput::SetInactive() noexcept {
-  if (EnsureInitialized()) {
-    if (IsActiveHigh()) {
-      return gpio_set_level(pin, 0) == ESP_OK;
-    } else {
-      return gpio_set_level(pin, 1) == ESP_OK;
-    }
+HfGpioErr DigitalOutput::ToggleImpl() noexcept {
+  bool is_active;
+  HfGpioErr result = IsActiveImpl(is_active);
+  if (result != HfGpioErr::GPIO_SUCCESS) {
+    return result;
   }
-  return false;
+  
+  return is_active ? SetInactiveImpl() : SetActiveImpl();
 }
 
-bool DigitalOutput::Toggle() noexcept {
-  if (EnsureInitialized()) {
-    if (IsActive()) {
-      return SetInactive();
-    } else {
-      return SetActive();
-    }
-  }
-  return false;
+HfGpioErr DigitalOutput::IsActiveImpl(bool& is_active) noexcept {
+  int level = gpio_get_level(pin);
+  is_active = IsActiveHigh() ? (level != 0) : (level == 0);
+  return HfGpioErr::GPIO_SUCCESS;
 }
+
+

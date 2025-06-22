@@ -14,144 +14,194 @@
 #include <unistd.h>
 
 Esp32C6Adc::Esp32C6Adc(adc_unit_t adc_unit, adc_atten_t attenuation, adc_bitwidth_t width)
-    : adcUnit(adc_unit), attenuation(attenuation), width(width), initialized(false),
-      adc_handle(nullptr), cali_handle(nullptr) {}
+    : BaseAdc(), adcUnit_(adc_unit), attenuation_(attenuation), width_(width),
+      adc_handle_(nullptr), cali_handle_(nullptr) {
+    // ESP32-C6 only supports ADC_UNIT_1
+    if (adc_unit != ADC_UNIT_1) {
+        // Log warning or handle error as needed
+        adcUnit_ = ADC_UNIT_1;  // Force to ADC1
+    }
+}
 
 Esp32C6Adc::~Esp32C6Adc() noexcept {
-  if (cali_handle) {
-#if ADC_CALI_SCHEME_CURVE_FITTING_SUPPORTED
-    adc_cali_delete_scheme_curve_fitting(cali_handle);
-#elif ADC_CALI_SCHEME_LINE_FITTING_SUPPORTED
-    adc_cali_delete_scheme_line_fitting(cali_handle);
-#endif
-  }
-  if (adc_handle) {
-    adc_oneshot_del_unit(adc_handle);
-  }
+    Deinitialize();
 }
 
 bool Esp32C6Adc::Initialize() noexcept {
-  if (initialized) {
-    return true;
-  }
+    if (IsInitialized()) {
+        return true;
+    }
 
-  // Configure ADC oneshot unit
-  adc_oneshot_unit_init_cfg_t init_config1 = {
-      .unit_id = adcUnit,
-      .clk_src = ADC_DIGI_CLK_SRC_DEFAULT, // Added missing initializer
-      .ulp_mode = ADC_ULP_MODE_DISABLE     // Added missing initializer
-  };
-  esp_err_t ret = adc_oneshot_new_unit(&init_config1, &adc_handle);
-  if (ret != ESP_OK) {
-    return false;
-  }
+    // Configure ADC oneshot unit
+    adc_oneshot_unit_init_cfg_t init_config = {
+        .unit_id = adcUnit_,
+        .clk_src = ADC_DIGI_CLK_SRC_DEFAULT,
+        .ulp_mode = ADC_ULP_MODE_DISABLE
+    };
+    
+    esp_err_t ret = adc_oneshot_new_unit(&init_config, &adc_handle_);
+    if (ret != ESP_OK) {
+        return false;
+    }
 
-  // Configure ADC calibration
+    // Configure ADC calibration
 #if ADC_CALI_SCHEME_CURVE_FITTING_SUPPORTED
-  adc_cali_curve_fitting_config_t cali_config = {.unit_id = adcUnit,
-                                                 .chan = ADC_CHANNEL_0, // Added missing initializer
-                                                 .atten = attenuation,
-                                                 .bitwidth = width};
-  ret = adc_cali_create_scheme_curve_fitting(&cali_config, &cali_handle);
+    adc_cali_curve_fitting_config_t cali_config = {
+        .unit_id = adcUnit_,
+        .chan = ADC_CHANNEL_0,
+        .atten = attenuation_,
+        .bitwidth = width_
+    };
+    ret = adc_cali_create_scheme_curve_fitting(&cali_config, &cali_handle_);
 #elif ADC_CALI_SCHEME_LINE_FITTING_SUPPORTED
-  adc_cali_line_fitting_config_t cali_config = {.unit_id = adcUnit,
-                                                .chan = ADC_CHANNEL_0, // Added missing initializer
-                                                .atten = attenuation,
-                                                .bitwidth = width};
-  ret = adc_cali_create_scheme_line_fitting(&cali_config, &cali_handle);
+    adc_cali_line_fitting_config_t cali_config = {
+        .unit_id = adcUnit_,
+        .chan = ADC_CHANNEL_0,
+        .atten = attenuation_,
+        .bitwidth = width_
+    };
+    ret = adc_cali_create_scheme_line_fitting(&cali_config, &cali_handle_);
 #endif
 
-  if (ret != ESP_OK) {
-    // Calibration failed, but we can still use raw readings
-    cali_handle = nullptr;
-  }
-
-  initialized = true;
-  return true;
-}
-
-BaseAdc::AdcErr Esp32C6Adc::ReadChannelCount(uint8_t channel_num, uint32_t &channel_reading_count,
-                                             uint8_t numOfSamplesToAvg,
-                                             uint32_t timeBetweenSamples) noexcept {
-  if (!EnsureInitialized())
-    return AdcErr::ADC_ERR_FAILURE;
-
-  // Configure channel
-  adc_oneshot_chan_cfg_t config = {
-      .atten = attenuation,
-      .bitwidth = width,
-  };
-  esp_err_t ret = adc_oneshot_config_channel(adc_handle, (adc_channel_t)channel_num, &config);
-  if (ret != ESP_OK) {
-    return AdcErr::ADC_ERR_CHANNEL_NOT_FOUND;
-  }
-
-  uint32_t sum = 0;
-  for (uint8_t i = 0; i < numOfSamplesToAvg; ++i) {
-    int raw = 0;
-    ret = adc_oneshot_read(adc_handle, (adc_channel_t)channel_num, &raw);
     if (ret != ESP_OK) {
-      return AdcErr::ADC_ERR_CHANNEL_READ_ERR;
+        // Calibration failed, but we can still use raw readings
+        cali_handle_ = nullptr;
     }
-    sum += raw;
-    if (timeBetweenSamples > 0)
-      usleep(timeBetweenSamples * 1000);
-  }
-  channel_reading_count = sum / numOfSamplesToAvg;
-  return AdcErr::ADC_SUCCESS;
+
+    return BaseAdc::Initialize();  // Call parent to set initialized flag
 }
 
-BaseAdc::AdcErr Esp32C6Adc::ReadChannelV(uint8_t channel_num, float &channel_reading_v,
-                                         uint8_t numOfSamplesToAvg,
-                                         uint32_t timeBetweenSamples) noexcept {
-  uint32_t count = 0;
-  auto err = ReadChannelCount(channel_num, count, numOfSamplesToAvg, timeBetweenSamples);
-  if (err != AdcErr::ADC_SUCCESS)
-    return err;
-
-  // Use calibration if available
-  if (cali_handle) {
-    int voltage_mv = 0;
-    esp_err_t ret = adc_cali_raw_to_voltage(cali_handle, count, &voltage_mv);
-    if (ret == ESP_OK) {
-      channel_reading_v = voltage_mv / 1000.0f; // Convert mV to V
-      return AdcErr::ADC_SUCCESS;
+bool Esp32C6Adc::Deinitialize() noexcept {
+    if (cali_handle_) {
+#if ADC_CALI_SCHEME_CURVE_FITTING_SUPPORTED
+        adc_cali_delete_scheme_curve_fitting(cali_handle_);
+#elif ADC_CALI_SCHEME_LINE_FITTING_SUPPORTED
+        adc_cali_delete_scheme_line_fitting(cali_handle_);
+#endif
+        cali_handle_ = nullptr;
     }
-  }
-
-  // Fallback to simple linear conversion if calibration is not available
-  // This is a rough approximation for ESP32-C6 with 3.3V reference
-  // For 12-bit ADC: 4096 counts = 3.3V (assuming DB_11 attenuation)
-  float max_voltage = 3.3f;
-  if (attenuation == ADC_ATTEN_DB_0) {
-    max_voltage = 1.1f;
-  } else if (attenuation == ADC_ATTEN_DB_2_5) {
-    max_voltage = 1.5f;
-  } else if (attenuation == ADC_ATTEN_DB_6) {
-    max_voltage = 2.2f;
-  } else if (attenuation == ADC_ATTEN_DB_12) {
-    max_voltage = 3.9f;
-  }
-
-  uint32_t max_count = (1 << 12); // Assuming 12-bit ADC
-  if (width == ADC_BITWIDTH_9) {
-    max_count = (1 << 9);
-  } else if (width == ADC_BITWIDTH_10) {
-    max_count = (1 << 10);
-  } else if (width == ADC_BITWIDTH_11) {
-    max_count = (1 << 11);
-  }
-
-  channel_reading_v = (count * max_voltage) / max_count;
-  return AdcErr::ADC_SUCCESS;
+    
+    if (adc_handle_) {
+        adc_oneshot_del_unit(adc_handle_);
+        adc_handle_ = nullptr;
+    }
+    
+    return BaseAdc::Deinitialize();  // Call parent to clear initialized flag
 }
 
-BaseAdc::AdcErr Esp32C6Adc::ReadChannel(uint8_t channel_num, uint32_t &channel_reading_count,
-                                        float &channel_reading_v, uint8_t numOfSamplesToAvg,
-                                        uint32_t timeBetweenSamples) noexcept {
-  auto err =
-      ReadChannelCount(channel_num, channel_reading_count, numOfSamplesToAvg, timeBetweenSamples);
-  if (err != AdcErr::ADC_SUCCESS)
-    return err;
-  return ReadChannelV(channel_num, channel_reading_v, numOfSamplesToAvg, timeBetweenSamples);
+uint8_t Esp32C6Adc::GetMaxChannels() const noexcept {
+    return ESP32_C6_ADC1_MAX_CHANNELS;
+}
+
+bool Esp32C6Adc::IsChannelAvailable(uint8_t channel_num) const noexcept {
+    // ESP32-C6 ADC1 supports channels 0-6
+    return channel_num < ESP32_C6_ADC1_MAX_CHANNELS;
+}
+
+HfAdcErr Esp32C6Adc::ValidateChannel(uint8_t channel_num) const noexcept {
+    HfAdcErr baseValidation = ValidateReadParameters(channel_num, 1);
+    if (baseValidation != HfAdcErr::ADC_SUCCESS) {
+        return baseValidation;
+    }
+    
+    if (!IsChannelAvailable(channel_num)) {
+        return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
+    }
+    
+    return HfAdcErr::ADC_SUCCESS;
+}
+
+HfAdcErr Esp32C6Adc::ReadChannelCount(uint8_t channel_num, uint32_t &channel_reading_count,
+                                      uint8_t numOfSamplesToAvg,
+                                      uint32_t timeBetweenSamples) noexcept {
+    HfAdcErr validation = ValidateChannel(channel_num);
+    if (validation != HfAdcErr::ADC_SUCCESS) {
+        return validation;
+    }
+
+    if (numOfSamplesToAvg == 0) {
+        return HfAdcErr::ADC_ERR_INVALID_SAMPLE_COUNT;
+    }
+
+    // Configure channel
+    adc_oneshot_chan_cfg_t config = {
+        .atten = attenuation_,
+        .bitwidth = width_,
+    };
+    
+    esp_err_t ret = adc_oneshot_config_channel(adc_handle_, (adc_channel_t)channel_num, &config);
+    if (ret != ESP_OK) {
+        return HfAdcErr::ADC_ERR_CHANNEL_NOT_CONFIGURED;
+    }
+
+    uint32_t sum = 0;
+    for (uint8_t i = 0; i < numOfSamplesToAvg; ++i) {
+        int raw = 0;
+        ret = adc_oneshot_read(adc_handle_, (adc_channel_t)channel_num, &raw);
+        if (ret != ESP_OK) {
+            return HfAdcErr::ADC_ERR_CHANNEL_READ_ERR;
+        }
+        sum += static_cast<uint32_t>(raw);
+        
+        if (i < numOfSamplesToAvg - 1 && timeBetweenSamples > 0) {
+            usleep(timeBetweenSamples * 1000);  // Convert ms to us
+        }
+    }
+    
+    channel_reading_count = sum / numOfSamplesToAvg;
+    return HfAdcErr::ADC_SUCCESS;
+}
+
+HfAdcErr Esp32C6Adc::ReadChannelV(uint8_t channel_num, float &channel_reading_v,
+                                  uint8_t numOfSamplesToAvg,
+                                  uint32_t timeBetweenSamples) noexcept {
+    uint32_t raw_reading = 0;
+    HfAdcErr result = ReadChannelCount(channel_num, raw_reading, numOfSamplesToAvg, timeBetweenSamples);
+    
+    if (result != HfAdcErr::ADC_SUCCESS) {
+        return result;
+    }
+
+    // Convert raw reading to voltage
+    if (cali_handle_) {
+        int voltage_mv = 0;
+        esp_err_t ret = adc_cali_raw_to_voltage(cali_handle_, static_cast<int>(raw_reading), &voltage_mv);
+        if (ret == ESP_OK) {
+            channel_reading_v = static_cast<float>(voltage_mv) / 1000.0f;  // Convert mV to V
+            return HfAdcErr::ADC_SUCCESS;
+        }
+    }
+    
+    // Fallback to basic conversion if calibration is not available
+    // This is a simplified conversion - actual values depend on attenuation
+    const float VREF = 3.3f;  // Reference voltage for ESP32-C6
+    const uint32_t MAX_ADC_VALUE = (1 << static_cast<int>(width_)) - 1;  // 2^bits - 1
+    
+    channel_reading_v = (static_cast<float>(raw_reading) / static_cast<float>(MAX_ADC_VALUE)) * VREF;
+    return HfAdcErr::ADC_SUCCESS;
+}
+
+HfAdcErr Esp32C6Adc::ReadChannel(uint8_t channel_num, uint32_t &channel_reading_count,
+                                 float &channel_reading_v, uint8_t numOfSamplesToAvg,
+                                 uint32_t timeBetweenSamples) noexcept {
+    // Read the raw count first
+    HfAdcErr result = ReadChannelCount(channel_num, channel_reading_count, numOfSamplesToAvg, timeBetweenSamples);
+    if (result != HfAdcErr::ADC_SUCCESS) {
+        return result;
+    }    // Convert to voltage using the raw reading we just obtained
+    if (cali_handle_) {
+        int voltage_mv = 0;
+        esp_err_t ret = adc_cali_raw_to_voltage(cali_handle_, static_cast<int>(channel_reading_count), &voltage_mv);
+        if (ret == ESP_OK) {
+            channel_reading_v = static_cast<float>(voltage_mv) / 1000.0f;  // Convert mV to V
+            return HfAdcErr::ADC_SUCCESS;
+        }
+    }
+    
+    // Fallback to basic conversion
+    const float VREF = 3.3f;  // Reference voltage for ESP32-C6
+    const uint32_t MAX_ADC_VALUE = (1 << static_cast<int>(width_)) - 1;  // 2^bits - 1
+    
+    channel_reading_v = (static_cast<float>(channel_reading_count) / static_cast<float>(MAX_ADC_VALUE)) * VREF;
+    return HfAdcErr::ADC_SUCCESS;
 }

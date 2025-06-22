@@ -47,46 +47,35 @@ public:
    * @brief Destructor.
    */
   virtual ~DigitalOutput() override;
+  /**
+   * @brief Virtual function to initialize the peripheral (configures pin as
+   * output).
+   * @returns True if able to initialize, false otherwise.
+   */
+  bool Initialize() noexcept override;
 
+  // BaseGpio interface implementation
+  bool IsPinAvailable() const noexcept override;
+  uint8_t GetMaxPins() const noexcept override;
+  std::string_view GetDescription() const noexcept override { return "DigitalOutput"; }
+
+protected:
+  // DigitalGpio implementation
+  HfGpioErr SetActiveImpl() noexcept override;
+  HfGpioErr SetInactiveImpl() noexcept override;
+  HfGpioErr ToggleImpl() noexcept override;
+  HfGpioErr IsActiveImpl(bool& is_active) noexcept override;
+  gpio_mode_t GetDirection() const noexcept override { return GPIO_MODE_OUTPUT; }
+
+public:
   /**
    * @brief Helper function to return the output mode (PushPull/OpenDrain).
    * @returns The output mode.
    */
   Mode OutputMode() const noexcept;
 
-  /**
-   * @brief Helper function to return the logical state of the pin.
-   * @returns True if the pin is logically active, false otherwise.
-   */
-  bool IsActive() noexcept;
-
-  /**
-   * @brief Function to set the logical active state.
-   * @returns True if the operation was successful, false otherwise.
-   */
-  bool SetActive() noexcept;
-
-  /**
-   * @brief Function to reset the pin to the logical inactive state.
-   * @returns True if the operation was successful, false otherwise.
-   */
-  bool SetInactive() noexcept;
-
-  /**
-   * @brief Function to toggle the pin state.
-   * @returns True if the operation was successful, false otherwise.
-   */
-  bool Toggle() noexcept;
-
 private:
   const State initialState; ///< The initial state of the pin.
-
-  /**
-   * @brief Virtual function to initialize the peripheral (configures pin as
-   * output).
-   * @returns True if able to initialize, false otherwise.
-   */
-  virtual bool Initialize() noexcept override;
 };
 
 #endif // DIGITALOUTPUT_H

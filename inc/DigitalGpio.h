@@ -19,6 +19,8 @@
 /**
  * @class DigitalGpio
  * @brief Abstract base class for digital GPIO operations on ESP32-C6.
+ * @details This class extends BaseGpio with digital-specific functionality
+ *          including active state management and direction control.
  */
 class DigitalGpio : public BaseGpio {
 public:
@@ -78,7 +80,7 @@ protected:
    * @param activeStateArg Defines the active state of the pin.
    */
   DigitalGpio(gpio_num_t pinArg, ActiveState activeStateArg) noexcept
-      : BaseGpio(pinArg), activeState(activeStateArg) {
+      : BaseGpio(pinArg), activeState_(activeStateArg) {
     // No code at this time
   }
 
@@ -95,29 +97,88 @@ protected:
    */
   virtual ~DigitalGpio() = default;
 
+public:
+  // Implement BaseGpio interface with modern error handling
+  HfGpioErr SetActive() noexcept override {
+    HfGpioErr validation = ValidateBasicOperation();
+    if (validation != HfGpioErr::GPIO_SUCCESS) {
+      return validation;
+    }
+    return SetActiveImpl();
+  }
+
+  HfGpioErr SetInactive() noexcept override {
+    HfGpioErr validation = ValidateBasicOperation();
+    if (validation != HfGpioErr::GPIO_SUCCESS) {
+      return validation;
+    }
+    return SetInactiveImpl();
+  }
+
+  HfGpioErr Toggle() noexcept override {
+    HfGpioErr validation = ValidateBasicOperation();
+    if (validation != HfGpioErr::GPIO_SUCCESS) {
+      return validation;
+    }
+    return ToggleImpl();
+  }
+
+  HfGpioErr IsActive(bool& is_active) noexcept override {
+    HfGpioErr validation = ValidateBasicOperation();
+    if (validation != HfGpioErr::GPIO_SUCCESS) {
+      return validation;
+    }
+    return IsActiveImpl(is_active);
+  }
+
+  std::string_view GetDescription() const noexcept override {    return "DigitalGpio";
+  }
+
+protected:
+  // Pure virtual methods to be implemented by derived classes
+  virtual HfGpioErr SetActiveImpl() noexcept = 0;
+  virtual HfGpioErr SetInactiveImpl() noexcept = 0;
+  virtual HfGpioErr ToggleImpl() noexcept = 0;
+  virtual HfGpioErr IsActiveImpl(bool& is_active) noexcept = 0;
+
   /**
    * @brief Checks if the pin is active high.
    * @return True if the pin is active high, false otherwise.
    */
-  bool IsActiveHigh() const noexcept {
-    return activeState == ActiveState::High;
+  [[nodiscard]] bool IsActiveHigh() const noexcept {
+    return activeState_ == ActiveState::High;
   }
+  
   /**
    * @brief Checks if the pin is active low.
    * @return True if the pin is active low, false otherwise.
    */
-  bool IsActiveLow() const noexcept {
-    return activeState == ActiveState::Low;
+  [[nodiscard]] bool IsActiveLow() const noexcept {
+    return activeState_ == ActiveState::Low;
+  }
+
+  /**
+   * @brief Get the active state configuration.
+   * @return The active state of the pin.
+   */
+  [[nodiscard]] ActiveState GetActiveState() const noexcept {
+    return activeState_;
   }
 
   /**
    * @brief Fetches the resistance configuration of the pin (ESP-IDF style).
    * @return The resistance configuration of the pin.
    */
-  Resistance GetResistance() const noexcept;
+  virtual Resistance GetResistance() const noexcept;
+
+  /**
+   * @brief Get the GPIO direction (input/output).
+   * @return Direction of the GPIO pin.
+   */
+  virtual gpio_mode_t GetDirection() const noexcept = 0;
 
 private:
-  const ActiveState activeState; ///< Pin active state (high or low)
+  const ActiveState activeState_; ///< Pin active state (high or low)
 };
 
 #endif // DIGITALGPIO_H
