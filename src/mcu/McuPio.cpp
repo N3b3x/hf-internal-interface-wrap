@@ -6,12 +6,12 @@
  * ESP32's RMT (Remote Control Transceiver) peripheral. The RMT peripheral
  * provides hardware-accelerated symbol encoding/decoding with precise timing.
  */
-#include "../mcu/McuPio.h"
+#include "McuPio.h"
 #include <algorithm>
 #include <cstring>
 
 // Platform-specific includes and definitions
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     #include "esp_check.h"
     #include "esp_log.h"
     #include "soc/soc_caps.h"
@@ -65,7 +65,7 @@ HfPioErr McuPio::Initialize() noexcept {
         return HfPioErr::PIO_ERR_ALREADY_INITIALIZED;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     // Initialize all channels to default state
     for (auto& channel : channels_) {
         channel = ChannelState{};
@@ -194,7 +194,7 @@ HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol* symbols, size_t s
         return validation_result;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     auto& channel = channels_[channel_id];
     
     if (channel.tx_channel == nullptr) {
@@ -291,7 +291,7 @@ HfPioErr McuPio::StartReceive(uint8_t channel_id, PioSymbol* buffer, size_t buff
         return HfPioErr::PIO_ERR_INVALID_PARAMETER;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     auto& channel = channels_[channel_id];
     
     if (channel.rx_channel == nullptr) {
@@ -361,7 +361,7 @@ HfPioErr McuPio::StopReceive(uint8_t channel_id, size_t& symbols_received) noexc
         return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     // Stop reception
     channel.busy = false;
     channel.status.is_receiving = false;
@@ -465,7 +465,7 @@ HfPioErr McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz, 
         return HfPioErr::PIO_ERR_INVALID_PARAMETER;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     // Configure carrier modulation using RMT carrier configuration
     auto& channel = channels_[channel_id];
     
@@ -500,7 +500,7 @@ HfPioErr McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
         return HfPioErr::PIO_ERR_INVALID_CHANNEL;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     // Configure loopback mode
     ESP_LOGI(TAG, "Loopback %s for channel %d", enable ? "enabled" : "disabled", channel_id);
     return HfPioErr::PIO_SUCCESS;
@@ -541,7 +541,7 @@ HfPioErr McuPio::TransmitRawRmtSymbols(uint8_t channel_id, const rmt_symbol_word
         return HfPioErr::PIO_ERR_INVALID_PARAMETER;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     auto& channel = channels_[channel_id];
     
     if (channel.tx_channel == nullptr) {
@@ -613,7 +613,7 @@ HfPioErr McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, rmt_symbol_word_t* rmt
         return HfPioErr::PIO_ERR_INVALID_PARAMETER;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     auto& channel = channels_[channel_id];
     
     if (channel.rx_channel == nullptr) {
@@ -667,7 +667,7 @@ HfPioErr McuPio::CreateWS2812Encoder(uint8_t channel_id, uint32_t resolution_hz,
         return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     auto& channel = channels_[channel_id];
     
     // Calculate timing in RMT ticks
@@ -731,7 +731,7 @@ HfPioErr McuPio::TransmitWS2812(uint8_t channel_id, const uint8_t* grb_data, siz
         return HfPioErr::PIO_ERR_INVALID_PARAMETER;
     }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     auto& channel = channels_[channel_id];
     
     if (channel.tx_channel == nullptr) {
@@ -791,7 +791,7 @@ bool McuPio::IsValidChannelId(uint8_t channel_id) const noexcept {
     return channel_id < MAX_CHANNELS;
 }
 
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
 HfPioErr McuPio::ConvertToRmtSymbols(const PioSymbol* symbols, size_t symbol_count, 
                                     rmt_symbol_word_t* rmt_symbols, size_t& rmt_symbol_count) noexcept {
     if (symbol_count > MAX_SYMBOLS_PER_TRANSMISSION) {
@@ -910,7 +910,7 @@ bool McuPio::OnReceiveComplete(rmt_channel_handle_t* channel, const rmt_rx_done_
 #endif
 
 HfPioErr McuPio::InitializeChannel(uint8_t channel_id) noexcept {
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     auto& channel = channels_[channel_id];
     const auto& config = channel.config;
 
@@ -981,7 +981,7 @@ HfPioErr McuPio::InitializeChannel(uint8_t channel_id) noexcept {
 }
 
 HfPioErr McuPio::DeinitializeChannel(uint8_t channel_id) noexcept {
-#ifdef MCU_PLATFORM_ESP32
+#ifdef HF_MCU_FAMILY_ESP32
     auto& channel = channels_[channel_id];
 
     if (channel.tx_channel) {

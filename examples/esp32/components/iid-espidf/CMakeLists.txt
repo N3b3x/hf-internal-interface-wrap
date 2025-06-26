@@ -19,13 +19,10 @@ idf_component_register(    SRCS
         "../../../src/drivers/I2cBus.cpp"
         "../../../src/drivers/SpiBus.cpp"
         "../../../src/drivers/UartDriver.cpp"
-          # Utility Sources
+        # Utility Sources
         "../../../src/utils/DigitalOutputGuard.cpp"
         "../../../src/utils/PeriodicTimer.cpp"
         "../../../src/utils/NvsStorage.cpp"
-        
-        # Modern MCU Sources
-        "../../../src/mcu/McuInit.cpp"
         
     INCLUDE_DIRS 
         "../../../include"

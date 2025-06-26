@@ -6,24 +6,23 @@
  * adapts to the current MCU platform. Currently supports ESP32-C6, but designed
  * to be easily portable to other MCUs.
  */
-#include "../mcu/McuAdc.h"
+#include "McuAdc.h"
 #include <cmath>
 
-// Platform-specific includes and definitions
-#if defined(ESP_PLATFORM) || defined(IDF_VER)
+// Platform-specific includes via McuSelect.h (no need for manual detection)
+#ifdef HF_MCU_ESP32C6
     #include "esp_adc/adc_cali.h"
     #include "esp_adc/adc_cali_scheme.h"
     #include "esp_adc/adc_oneshot.h"
     #include "esp_adc/adc_continuous.h"
     #include <unistd.h>
-    #define MCU_PLATFORM_ESP32
 #endif
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-#if defined(MCU_PLATFORM_ESP32)
+#ifdef HF_MCU_ESP32C6
 McuAdc::McuAdc(hf_adc_unit_t adc_unit, uint32_t attenuation, hf_adc_resolution_t width)
     : BaseAdc(), unit_(adc_unit), attenuation_(attenuation), bitwidth_(width),
       adc_handle_(nullptr), cali_handle_(nullptr), cali_enable_(false), initialized_(false),
@@ -44,7 +43,7 @@ McuAdc::McuAdc(hf_adc_unit_t adc_unit, uint32_t attenuation, hf_adc_resolution_t
 
 McuAdc::~McuAdc() noexcept {
     Deinitialize();
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     // Clean up DMA resources if still allocated
     DeinitializeContinuousMode();
 #endif
@@ -59,7 +58,7 @@ bool McuAdc::Initialize() noexcept {
         return true;
     }
 
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     // Configure ADC oneshot unit
     adc_oneshot_unit_init_cfg_t init_config = {
         .unit_id = static_cast<adc_unit_t>(unit_),  // Map hf_adc_unit_t to adc_unit_t
@@ -93,7 +92,7 @@ bool McuAdc::Deinitialize() noexcept {
         return true;
     }
 
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     DeinitializeCalibration();
     
     if (adc_handle_) {
@@ -113,7 +112,7 @@ bool McuAdc::Deinitialize() noexcept {
 //==============================================================================
 
 uint8_t McuAdc::GetMaxChannels() const noexcept {
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     return 7;  // ESP32-C6 ADC1 has channels 0-6
 #else
     return 0;  // Unknown for other MCUs
@@ -121,7 +120,7 @@ uint8_t McuAdc::GetMaxChannels() const noexcept {
 }
 
 bool McuAdc::IsChannelAvailable(uint8_t channel_num) const noexcept {
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     return channel_num < GetMaxChannels();
 #else
     return false;
@@ -154,7 +153,7 @@ HfAdcErr McuAdc::ReadChannelCount(uint8_t channel_num, uint32_t &channel_reading
         return HfAdcErr::ADC_ERR_NOT_INITIALIZED;
     }
 
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     // Configure the specific channel
     adc_oneshot_chan_cfg_t config = {
         .atten = static_cast<adc_atten_t>(attenuation_),
@@ -202,7 +201,7 @@ HfAdcErr McuAdc::ReadChannelV(uint8_t channel_num, float &channel_reading_v,
         return result;
     }
 
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     if (cali_enable_) {
         int voltage_mv;
         esp_err_t ret = adc_cali_raw_to_voltage(static_cast<adc_cali_handle_t>(cali_handle_), static_cast<int>(raw_count), &voltage_mv);
@@ -239,7 +238,7 @@ HfAdcErr McuAdc::ReadChannel(uint8_t channel_num, uint32_t &channel_reading_coun
 //==============================================================================
 
 bool McuAdc::InitializeCalibration() noexcept {
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     cali_enable_ = false;
 
 #if ADC_CALI_SCHEME_CURVE_FITTING_SUPPORTED
@@ -277,7 +276,7 @@ bool McuAdc::InitializeCalibration() noexcept {
 }
 
 void McuAdc::DeinitializeCalibration() noexcept {
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     if (cali_enable_ && cali_handle_) {
 #if ADC_CALI_SCHEME_CURVE_FITTING_SUPPORTED
         adc_cali_delete_scheme_curve_fitting(cali_handle_);
@@ -290,7 +289,7 @@ void McuAdc::DeinitializeCalibration() noexcept {
 #endif
 }
 
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
 adc_channel_t McuAdc::GetMcuChannel(uint8_t channel_num) const noexcept {
     // Map generic channel numbers to ESP32-C6 ADC1 channels
     switch (channel_num) {
@@ -315,7 +314,7 @@ hf_adc_channel_t McuAdc::GetMcuChannel(uint8_t channel_num) const noexcept {
 //==============================================================================
 
 float McuAdc::CountToVoltage(uint32_t raw_count) const noexcept {
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     if (cali_enable_) {
         int voltage_mv;
         esp_err_t ret = adc_cali_raw_to_voltage(static_cast<adc_cali_handle_t>(cali_handle_), 
@@ -342,7 +341,7 @@ uint32_t McuAdc::GetMaxCount() const noexcept {
 }
 
 float McuAdc::GetReferenceVoltage() const noexcept {
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     // ESP32-C6 reference voltage depends on attenuation
     switch (attenuation_) {
         case 0: return 1.1f;   // 0dB
@@ -366,7 +365,7 @@ HfAdcErr McuAdc::ConfigureAdvanced(uint8_t channel_num,
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
     
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     // ESP32-C6 supports DMA mode for continuous conversion
     if (config.sampling_mode == SamplingMode::DMA || 
         config.sampling_mode == SamplingMode::Continuous) {
@@ -385,7 +384,7 @@ HfAdcErr McuAdc::StartContinuousSampling(uint8_t channel_num,
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
     
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     if (!adc_continuous_handle_) {
         return HfAdcErr::ADC_ERR_NOT_INITIALIZED;
     }
@@ -413,7 +412,7 @@ HfAdcErr McuAdc::StopContinuousSampling(uint8_t channel_num) noexcept {
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
     
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
     if (!adc_continuous_handle_ || !dma_mode_active_) {
         return HfAdcErr::ADC_ERR_NOT_INITIALIZED;
     }
@@ -438,7 +437,7 @@ HfAdcErr McuAdc::StopContinuousSampling(uint8_t channel_num) noexcept {
 // DMA AND CONTINUOUS CONVERSION IMPLEMENTATION (ESP32C6)
 //==============================================================================
 
-#ifdef ESP_PLATFORM
+#ifdef HF_MCU_FAMILY_ESP32
 #include "freertos/task.h"
 
 HfAdcErr McuAdc::InitializeContinuousMode(uint8_t channel_num, uint32_t sample_rate_hz) noexcept {

@@ -3,7 +3,7 @@
  * @brief Implementation of the SfUartDriver class.
  */
 
-#include "../thread_safe/SfUartDriver.h"
+#include "SfUartDriver.h"
 
 static const char *TAG = "SfUartDriver";
 

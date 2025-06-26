@@ -7,7 +7,7 @@
  * (Two-Wire Automotive Interface). All platform-specific types and 
  * implementations are isolated through McuTypes.h.
  */
-#include "../mcu/McuCan.h"
+#include "McuCan.h"
 #include <algorithm>
 #include <mutex>
 
@@ -104,8 +104,6 @@ bool McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
     }
 
     receive_callback_ = callback;
-    return true;
-}
     return true;
 }
 

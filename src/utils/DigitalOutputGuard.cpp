@@ -12,7 +12,7 @@
  * when used as outputs, ensuring proper state management and cleanup.
  */
 
-#include "../utils/DigitalOutputGuard.h"
+#include "DigitalOutputGuard.h"
 
 //==============================================================================
 // CONSTRUCTORS
