@@ -171,6 +171,7 @@ void app_main() {
 ```
 
 ### ADC example
+
 ```cpp
 #include "McuAdc.h"
 
@@ -189,6 +190,18 @@ void app_main() {
     hf_u32_t avg = adc.ReadAveraged(10);
 }
 ```
+### Building & Testing
+
+Follow these steps to build the library and run the unit tests:
+
+```bash
+$IDF_PATH/export.sh
+cd tests
+mkdir build && cd build
+cmake .. && make
+./test_runner
+```
+
 
 ### License
 
