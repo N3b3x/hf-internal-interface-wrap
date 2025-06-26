@@ -5,6 +5,7 @@ Platform-agnostic internal interface drivers – handy wrappers that provide uni
 > **Note:** This component supports multiple platforms through the hf_platform system. Currently includes ESP-IDF support (requires v5.5 or newer) with extensibility for other platforms.
 
 For detailed API guides see [docs/index.md](docs/index.md).
+For a list of headers and source files see the [Component Map](docs/ComponentMap.md).
 
 ## Platform-Agnostic Architecture
 
