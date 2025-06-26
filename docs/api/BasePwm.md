@@ -458,6 +458,5 @@ bool success = TestPwmFunctionality();
 
 ## 📝 See Also
 
-- [HardFOC PWM Architecture](../guides/pwm-architecture.md)
-- [Motor Control Guide](../guides/motor-control.md)
-- [PWM Best Practices](../guides/pwm-best-practices.md)
+- [PWM Guide](../guides/pwm-guide.md)
+- [Motor Control Example](../examples/motor-control.md)

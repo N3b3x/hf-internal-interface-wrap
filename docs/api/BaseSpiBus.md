@@ -466,6 +466,4 @@ bool success = TestSpiBusFunctionality();
 
 ## 📝 See Also
 
-- [HardFOC SPI Architecture](../guides/spi-architecture.md)
-- [SPI Device Integration Guide](../guides/spi-device-integration.md)
-- [High-Speed SPI Best Practices](../guides/high-speed-spi.md)
+- [SPI Guide](../guides/spi-guide.md)

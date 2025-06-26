@@ -563,6 +563,5 @@ bool success = TestUartFunctionality();
 
 ## 📝 See Also
 
-- [HardFOC UART Architecture](../guides/uart-architecture.md)
-- [Serial Protocol Implementation Guide](../guides/serial-protocols.md)
-- [UART Debugging and Troubleshooting](../guides/uart-debugging.md)
+- [Error Handling Best Practices](../guides/error-handling.md)
+

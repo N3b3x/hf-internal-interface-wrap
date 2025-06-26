@@ -464,7 +464,5 @@ bool success = TestPioFunctionality();
 
 ## 📝 See Also
 
-- [HardFOC PIO Architecture](../guides/pio-architecture.md)
-- [WS2812 LED Control Guide](../guides/ws2812-control.md)
-- [IR Remote Control Guide](../guides/ir-remote-control.md)
-- [Custom Protocol Development](../guides/custom-protocols.md)
+- [PIO Guide](../guides/pio-guide.md)
+- [WS2812 Example](../examples/ws2812-pio.md)

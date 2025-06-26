@@ -313,6 +313,5 @@ bool success = TestCanCommunication();
 
 ## 📝 See Also
 
-- [HardFOC CAN Architecture](../guides/can-architecture.md)
-- [CAN-FD Migration Guide](../guides/canfd-migration.md)
+- [CAN Guide](../guides/can-guide.md)
 - [Error Handling Best Practices](../guides/error-handling.md)
