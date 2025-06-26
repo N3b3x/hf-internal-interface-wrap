@@ -21,9 +21,11 @@
 - [🏗️ **Architecture**](#️-architecture) 
 - [📖 **API Reference**](#-api-reference)
 - [🚀 **Quick Start**](#-quick-start)
+- [🗺️ **Component Map**](ComponentMap.md)
 - [📋 **User Guides**](#-user-guides)
 - [💡 **Examples**](#-examples)
 - [🔧 **Development**](#-development)
+- [🕸️ **GitHub Pages**](guides/github-pages.md)
 
 ---
 
@@ -251,6 +253,7 @@ i2c_bus.ReadFrom(0x48, data, sizeof(data));
 | [🧪 **Testing Framework**](guides/testing-guide.md) | Unit testing and validation | QA Engineers |
 | [⚡ **Performance Optimization**](guides/performance-guide.md) | Real-time optimization | Advanced Users |
 | [🛡️ **Error Handling**](guides/error-handling.md) | Robust error management | All Users |
+| [🕸️ **GitHub Pages Workflow**](guides/github-pages.md) | Publish docs automatically | All Users |
 
 ---
 
