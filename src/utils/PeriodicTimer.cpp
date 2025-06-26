@@ -1,3 +1,8 @@
+/**
+ * @file PeriodicTimer.cpp
+ * @brief Implementation of the platform-agnostic periodic timer.
+ */
+
 #include "../utils/PeriodicTimer.h"
 
 static const char *TAG = "PeriodicTimer";
@@ -15,7 +20,8 @@ PeriodicTimer::~PeriodicTimer() noexcept {
 
 bool PeriodicTimer::CreateHandle() noexcept {
   if (handle)
-    return true;  hf_timer_create_args_t args = {};
+    return true;
+  hf_timer_create_args_t args = {};
   args.callback = &PeriodicTimer::Dispatch;
   args.arg = this;
   args.dispatch_method = HF_TIMER_TASK;
