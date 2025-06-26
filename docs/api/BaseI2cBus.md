@@ -357,6 +357,5 @@ bool success = TestI2cCommunication();
 
 ## 📝 See Also
 
-- [I2C Communication Guide](../guides/i2c-communication.md)
-- [Device Integration Examples](../examples/i2c-devices.md)
+- [I2C Guide](../guides/i2c-guide.md)
 - [Error Handling Best Practices](../guides/error-handling.md)
