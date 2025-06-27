@@ -192,8 +192,16 @@ using hf_pwm_duty_t = uint32_t;       ///< PWM duty cycle value
 using hf_can_message_id_t = uint32_t; ///< CAN message ID
 using hf_i2c_address_t = uint8_t;     ///< I2C device address
 
+// Low-level driver configuration structures
+using hf_i2c_config_t = i2c_config_t;                       ///< I2C config
+using hf_spi_bus_config_t = spi_bus_config_t;               ///< SPI bus config
+using hf_spi_device_config_t = spi_device_interface_config_t; ///< SPI device config
+using hf_uart_config_t = uart_config_t;                     ///< UART config
+
 // Platform-specific handles
 using hf_timer_handle_t = void *; ///< Timer handle (platform-specific)
+using hf_mutex_handle_t = SemaphoreHandle_t;   ///< RTOS mutex handle
+using hf_semaphore_handle_t = SemaphoreHandle_t; ///< Generic semaphore handle
 
 //==============================================================================
 // MCU-SPECIFIC STRUCTURES FOR TIMERS AND PWM

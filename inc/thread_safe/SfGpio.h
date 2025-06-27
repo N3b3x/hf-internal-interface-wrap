@@ -180,7 +180,7 @@ public:
 
 private:
   std::shared_ptr<BaseGpio> gpio_impl_; ///< Wrapped GPIO implementation
-  SemaphoreHandle_t mutex_;             ///< Mutex for thread safety
+  hf_mutex_handle_t mutex_;             ///< Mutex for thread safety
 
   /**
    * @brief Initialize mutex.

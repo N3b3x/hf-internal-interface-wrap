@@ -9,11 +9,10 @@
 #ifndef SFI2CBUS_H_
 #define SFI2CBUS_H_
 
-#include "McuI2c.h"
-#include "McuTypes.h"
+#include "../base/BaseI2c.h"
+#include "../utils/RtosMutex.h"
 #include <cstdint>
 #include <memory>
-#include <mutex>
 
 /**
  * @class SfI2cBus
@@ -25,7 +24,7 @@ public:
    * @brief Constructor for thread-safe I2C bus.
    * @param config I2C configuration
    */
-  explicit SfI2cBus(const I2cBusConfig &config) noexcept;
+  explicit SfI2cBus(std::unique_ptr<BaseI2c> i2c_impl) noexcept;
 
   ~SfI2cBus() noexcept;
 
@@ -46,28 +45,29 @@ public:
    * @brief Write to a device in a thread-safe manner.
    */
   bool Write(uint8_t addr, const uint8_t *data, uint16_t sizeBytes,
-             uint32_t timeoutMsec = 1000) noexcept;
+             uint32_t timeoutMsec = HF_TIMEOUT_DEFAULT) noexcept;
 
   /**
    * @brief Read from a device in a thread-safe manner.
    */
-  bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec = 1000) noexcept;
+  bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes,
+            uint32_t timeoutMsec = HF_TIMEOUT_DEFAULT) noexcept;
 
   /**
    * @brief Combined write then read operation.
    */
   bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, uint8_t *rxData,
-                 uint16_t rxSizeBytes, uint32_t timeoutMsec = 1000) noexcept;
+                 uint16_t rxSizeBytes, uint32_t timeoutMsec = HF_TIMEOUT_DEFAULT) noexcept;
 
   /**
    * @brief Lock the bus for exclusive access.
    */
-  bool Lock(uint32_t timeoutMsec = UINT32_MAX) noexcept;
+  bool LockBus(uint32_t timeoutMsec = HF_TIMEOUT_DEFAULT) noexcept;
 
   /**
    * @brief Unlock the bus.
    */
-  bool Unlock() noexcept;
+  bool UnlockBus() noexcept;
 
   /**
    * @brief Get the clock speed in Hz.
@@ -82,8 +82,8 @@ public:
   }
 
 private:
-  std::unique_ptr<I2cBus> i2c_bus_;
-  mutable std::mutex mutex_;
+  std::unique_ptr<BaseI2c> i2c_bus_;
+  RtosMutex busMutex_;
   bool initialized_;
 };
 

@@ -16,11 +16,10 @@
 #ifndef SFSPIBUS_H_
 #define SFSPIBUS_H_
 
-#include "../mcu/McuSpiBus.h"
-#include "../mcu/McuTypes.h"
+#include "../base/BaseSpi.h"
+#include "../utils/RtosMutex.h"
 #include <cstdint>
 #include <memory>
-#include <mutex>
 
 /**
  * @class SfSpiBus
@@ -36,7 +35,7 @@ public:
    * @brief Constructor for thread-safe SPI bus.
    * @param config SPI bus configuration
    */
-  explicit SfSpiBus(const SpiBusConfig &config) noexcept;
+  explicit SfSpiBus(std::unique_ptr<BaseSpi> spi_impl) noexcept;
 
   /**
    * @brief Destructor. Closes the SPI bus if initialized.
@@ -64,7 +63,8 @@ public:
    * @param sizeBytes Number of bytes to send
    * @return true if the data was sent successfully, false otherwise
    */
-  bool Write(const uint8_t *data, uint16_t sizeBytes) noexcept;
+  bool Write(const uint8_t *data, uint16_t sizeBytes,
+             uint32_t timeoutMsec = HF_TIMEOUT_DEFAULT) noexcept;
 
   /**
    * @brief Read a block of data over the SPI bus (blocking, software CS).
@@ -72,7 +72,7 @@ public:
    * @param sizeBytes Number of bytes to read
    * @return true if the data was read successfully, false otherwise
    */
-  bool Read(uint8_t *data, uint16_t sizeBytes) noexcept;
+  bool Read(uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec = HF_TIMEOUT_DEFAULT) noexcept;
 
   /**
    * @brief Write and read a block of data over the SPI bus (full-duplex,
@@ -82,20 +82,21 @@ public:
    * @param sizeBytes Number of bytes to transfer
    * @return true if the transaction was successful, false otherwise
    */
-  bool WriteRead(const uint8_t *write_data, uint8_t *read_data, uint16_t sizeBytes) noexcept;
+  bool WriteRead(const uint8_t *write_data, uint8_t *read_data, uint16_t sizeBytes,
+                 uint32_t timeoutMsec = HF_TIMEOUT_DEFAULT) noexcept;
 
   /**
    * @brief Lock the SPI bus for exclusive access.
    * @param timeoutMsec Timeout in milliseconds for acquiring the mutex
    * @return true if the mutex was acquired, false otherwise.
    */
-  bool Lock(uint32_t timeoutMsec = UINT32_MAX) noexcept;
+  bool LockBus(uint32_t timeoutMsec = HF_TIMEOUT_DEFAULT) noexcept;
 
   /**
    * @brief Unlock the SPI bus.
    * @return true if the mutex was released, false otherwise.
    */
-  bool Unlock() noexcept;
+  bool UnlockBus() noexcept;
 
   /**
    * @brief Get the configured SPI clock frequency in Hz.
@@ -111,18 +112,13 @@ public:
     return initialized_;
   }
 
-  /**
-   * @brief Get the SPI bus configuration.
-   * @return const reference to the SPI bus configuration
-   */
-  const SpiBusConfig &GetConfig() const noexcept {
-    return *spi_bus_;
-  }
-
 private:
-  std::unique_ptr<SpiBus> spi_bus_; ///< Underlying SPI bus implementation
-  mutable std::mutex mutex_;        ///< Mutex for thread safety
-  bool initialized_;                ///< Initialization state
+  bool SelectDevice() noexcept;
+  bool DeselectDevice() noexcept;
+
+  std::unique_ptr<BaseSpi> spi_bus_;
+  RtosMutex busMutex_;
+  bool initialized_;
 };
 
 #endif // SFSPIBUS_H_
