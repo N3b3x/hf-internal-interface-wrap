@@ -9,7 +9,6 @@
  */
 #include "McuCan.h"
 #include <algorithm>
-#include <mutex>
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR

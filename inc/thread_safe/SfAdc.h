@@ -280,11 +280,11 @@ private:
   // PRIVATE MEMBERS
   //==============================================================================
 
-  std::unique_ptr<BaseAdc> adc_impl_;  ///< Wrapped ADC implementation
-  mutable std::shared_mutex rw_mutex_; ///< Reader-writer mutex
-  std::atomic<bool> initialized_;      ///< Atomic initialization flag
-  uint32_t mutex_timeout_ms_;          ///< Mutex acquisition timeout in milliseconds
-  mutable ThreadingStats stats_;       ///< Threading statistics
+  std::unique_ptr<BaseAdc> adc_impl_; ///< Wrapped ADC implementation
+  mutable RtosSharedMutex rw_mutex_;  ///< Reader-writer mutex
+  std::atomic<bool> initialized_;     ///< Atomic initialization flag
+  uint32_t mutex_timeout_ms_;         ///< Mutex acquisition timeout in milliseconds
+  mutable ThreadingStats stats_;      ///< Threading statistics
 
   //==============================================================================
   // PRIVATE HELPER METHODS

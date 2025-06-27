@@ -44,7 +44,7 @@ SfAdc::~SfAdc() noexcept {
 //==============================================================================
 
 HfAdcErr SfAdc::Initialize() noexcept {
-  RtosUniqueLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
   if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
@@ -68,7 +68,7 @@ HfAdcErr SfAdc::Initialize() noexcept {
 }
 
 HfAdcErr SfAdc::Deinitialize() noexcept {
-  RtosUniqueLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
   if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
@@ -97,7 +97,7 @@ HfAdcErr SfAdc::Deinitialize() noexcept {
 
 HfAdcErr SfAdc::ConfigureChannel(hf_adc_channel_t channel,
                                  const AdcChannelConfig &config) noexcept {
-  RtosUniqueLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
   if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
@@ -116,7 +116,7 @@ HfAdcErr SfAdc::ConfigureChannel(hf_adc_channel_t channel,
 }
 
 HfAdcErr SfAdc::ReadChannel(hf_adc_channel_t channel, uint32_t &raw_value) noexcept {
-  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
   if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
@@ -135,7 +135,7 @@ HfAdcErr SfAdc::ReadChannel(hf_adc_channel_t channel, uint32_t &raw_value) noexc
 }
 
 HfAdcErr SfAdc::ReadChannelVoltage(hf_adc_channel_t channel, float &voltage_v) noexcept {
-  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
   if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
@@ -186,7 +186,7 @@ HfAdcErr SfAdc::ReadMultipleChannels(const hf_adc_channel_t *channels, uint32_t 
     return HfAdcErr::ADC_ERR_INVALID_PARAMETER;
   }
 
-  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
   if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
@@ -228,7 +228,7 @@ const char *SfAdc::GetErrorString(HfAdcErr error) const noexcept {
 }
 
 uint8_t SfAdc::GetMaxChannels() const noexcept {
-  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
   if (!lock.IsLocked() || !adc_impl_) {
     return 0;
   }
@@ -237,7 +237,7 @@ uint8_t SfAdc::GetMaxChannels() const noexcept {
 }
 
 bool SfAdc::IsChannelConfigured(hf_adc_channel_t channel) const noexcept {
-  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
   if (!lock.IsLocked() || !adc_impl_) {
     return false;
   }
