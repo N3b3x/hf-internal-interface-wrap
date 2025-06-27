@@ -13,6 +13,7 @@
 #ifndef MCU_ADC_H_
 #define MCU_ADC_H_
 
+#include "../utils/RtosMutex.h"
 #include "BaseAdc.h"
 #include "McuTypes.h"
 #include <cstdint>
@@ -655,7 +656,7 @@ private:
   AdcCalibrationConfig calibration_config_;       ///< Calibration configuration
 
   // State management
-  mutable std::mutex mutex_;        ///< Thread synchronization mutex
+  mutable RtosMutex mutex_;         ///< Thread synchronization mutex
   bool continuous_running_;         ///< Continuous mode status
   bool triggered_sampling_;         ///< Triggered sampling status
   AdcPowerMode current_power_mode_; ///< Current power mode
