@@ -113,7 +113,7 @@ using HfTimestampUs = uint32_t;
  * @return true if valid, false otherwise
  */
 constexpr bool IsValidPin(HfPinNumber pin) noexcept {
-    return pin >= 0 && pin <= HF_MAX_PIN_NUMBER;
+  return pin >= 0 && pin <= HF_MAX_PIN_NUMBER;
 }
 
 /**
@@ -122,7 +122,7 @@ constexpr bool IsValidPin(HfPinNumber pin) noexcept {
  * @return true if valid, false otherwise
  */
 constexpr bool IsValidPort(HfPortNumber port) noexcept {
-    return port != HF_INVALID_PORT;
+  return port != HF_INVALID_PORT;
 }
 
 /**
@@ -131,7 +131,7 @@ constexpr bool IsValidPort(HfPortNumber port) noexcept {
  * @return true if valid, false otherwise
  */
 constexpr bool IsValidHost(HfHostId host) noexcept {
-    return host != HF_INVALID_HOST;
+  return host != HF_INVALID_HOST;
 }
 
 /**
@@ -140,7 +140,7 @@ constexpr bool IsValidHost(HfHostId host) noexcept {
  * @return true if valid, false otherwise
  */
 constexpr bool IsValidChannel(HfChannelId channel) noexcept {
-    return channel != HF_INVALID_CHANNEL;
+  return channel != HF_INVALID_CHANNEL;
 }
 
 #endif // HAL_INTERNAL_INTERFACE_DRIVERS_HARDWARETYPES_H_

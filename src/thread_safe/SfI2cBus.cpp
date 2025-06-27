@@ -7,7 +7,8 @@
 
 static const char *TAG = "SfI2cBus";
 
-SfI2cBus::SfI2cBus(hf_i2c_port_t port, const hf_i2c_config_t &cfg, hf_semaphore_handle_t mutexHandle) noexcept
+SfI2cBus::SfI2cBus(hf_i2c_port_t port, const hf_i2c_config_t &cfg,
+                   hf_semaphore_handle_t mutexHandle) noexcept
     : i2cPort(port), config(cfg), busMutex(mutexHandle), initialized(false) {}
 
 SfI2cBus::~SfI2cBus() noexcept {

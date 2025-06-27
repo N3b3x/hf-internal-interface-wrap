@@ -3,10 +3,10 @@
  * @brief Unified GPIO base class for all digital GPIO implementations.
  *
  * @details This file contains the declaration of the BaseGpio abstract class, which provides
- *          a comprehensive GPIO abstraction that serves as the base for all GPIO 
+ *          a comprehensive GPIO abstraction that serves as the base for all GPIO
  *          implementations in the HardFOC system. It supports dynamic mode switching,
  *          configurable polarity, pull resistors, interrupt handling, and works across
- *          different hardware platforms including MCU GPIOs, I2C GPIO expanders, 
+ *          different hardware platforms including MCU GPIOs, I2C GPIO expanders,
  *          SPI GPIO expanders, and other GPIO hardware.
  *
  * @note This class is not thread-safe. Use appropriate synchronization if
@@ -24,54 +24,54 @@
  * @details X-macro pattern for comprehensive error enumeration. Each entry contains:
  *          X(NAME, VALUE, DESCRIPTION)
  */
-#define HF_GPIO_ERR_LIST(X) \
-  /* Success codes */ \
-  X(GPIO_SUCCESS, 0, "Success") \
-  \
-  /* General errors */ \
-  X(GPIO_ERR_FAILURE, 1, "General failure") \
-  X(GPIO_ERR_NOT_INITIALIZED, 2, "Not initialized") \
-  X(GPIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized") \
-  X(GPIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter") \
-  X(GPIO_ERR_NULL_POINTER, 5, "Null pointer") \
-  X(GPIO_ERR_OUT_OF_MEMORY, 6, "Out of memory") \
-  \
-  /* Pin errors */ \
-  X(GPIO_ERR_INVALID_PIN, 7, "Invalid pin") \
-  X(GPIO_ERR_PIN_NOT_FOUND, 8, "Pin not found") \
-  X(GPIO_ERR_PIN_NOT_CONFIGURED, 9, "Pin not configured") \
-  X(GPIO_ERR_PIN_ALREADY_REGISTERED, 10, "Pin already registered") \
-  X(GPIO_ERR_PIN_ACCESS_DENIED, 11, "Pin access denied") \
-  X(GPIO_ERR_PIN_BUSY, 12, "Pin busy") \
-  \
-  /* Hardware errors */ \
-  X(GPIO_ERR_HARDWARE_FAULT, 13, "Hardware fault") \
-  X(GPIO_ERR_COMMUNICATION_FAILURE, 14, "Communication failure") \
-  X(GPIO_ERR_DEVICE_NOT_RESPONDING, 15, "Device not responding") \
-  X(GPIO_ERR_TIMEOUT, 16, "Timeout") \
-  X(GPIO_ERR_VOLTAGE_OUT_OF_RANGE, 17, "Voltage out of range") \
-  \
-  /* Configuration errors */ \
-  X(GPIO_ERR_INVALID_CONFIGURATION, 18, "Invalid configuration") \
-  X(GPIO_ERR_UNSUPPORTED_OPERATION, 19, "Unsupported operation") \
-  X(GPIO_ERR_RESOURCE_BUSY, 20, "Resource busy") \
-  X(GPIO_ERR_RESOURCE_UNAVAILABLE, 21, "Resource unavailable") \
-  \
-  /* I/O errors */ \
-  X(GPIO_ERR_READ_FAILURE, 22, "Read failure") \
-  X(GPIO_ERR_WRITE_FAILURE, 23, "Write failure") \
-  X(GPIO_ERR_DIRECTION_MISMATCH, 24, "Direction mismatch") \
-  X(GPIO_ERR_PULL_RESISTOR_FAILURE, 25, "Pull resistor failure") \
-  \
-  /* Interrupt errors */ \
-  X(GPIO_ERR_INTERRUPT_NOT_SUPPORTED, 26, "Interrupt not supported") \
-  X(GPIO_ERR_INTERRUPT_ALREADY_ENABLED, 27, "Interrupt already enabled") \
-  X(GPIO_ERR_INTERRUPT_NOT_ENABLED, 28, "Interrupt not enabled") \
-  X(GPIO_ERR_INTERRUPT_HANDLER_FAILED, 29, "Interrupt handler failed") \
-  \
-  /* System errors */ \
-  X(GPIO_ERR_SYSTEM_ERROR, 30, "System error") \
-  X(GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied") \
+#define HF_GPIO_ERR_LIST(X)                                                                        \
+  /* Success codes */                                                                              \
+  X(GPIO_SUCCESS, 0, "Success")                                                                    \
+                                                                                                   \
+  /* General errors */                                                                             \
+  X(GPIO_ERR_FAILURE, 1, "General failure")                                                        \
+  X(GPIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
+  X(GPIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
+  X(GPIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
+  X(GPIO_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
+  X(GPIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
+                                                                                                   \
+  /* Pin errors */                                                                                 \
+  X(GPIO_ERR_INVALID_PIN, 7, "Invalid pin")                                                        \
+  X(GPIO_ERR_PIN_NOT_FOUND, 8, "Pin not found")                                                    \
+  X(GPIO_ERR_PIN_NOT_CONFIGURED, 9, "Pin not configured")                                          \
+  X(GPIO_ERR_PIN_ALREADY_REGISTERED, 10, "Pin already registered")                                 \
+  X(GPIO_ERR_PIN_ACCESS_DENIED, 11, "Pin access denied")                                           \
+  X(GPIO_ERR_PIN_BUSY, 12, "Pin busy")                                                             \
+                                                                                                   \
+  /* Hardware errors */                                                                            \
+  X(GPIO_ERR_HARDWARE_FAULT, 13, "Hardware fault")                                                 \
+  X(GPIO_ERR_COMMUNICATION_FAILURE, 14, "Communication failure")                                   \
+  X(GPIO_ERR_DEVICE_NOT_RESPONDING, 15, "Device not responding")                                   \
+  X(GPIO_ERR_TIMEOUT, 16, "Timeout")                                                               \
+  X(GPIO_ERR_VOLTAGE_OUT_OF_RANGE, 17, "Voltage out of range")                                     \
+                                                                                                   \
+  /* Configuration errors */                                                                       \
+  X(GPIO_ERR_INVALID_CONFIGURATION, 18, "Invalid configuration")                                   \
+  X(GPIO_ERR_UNSUPPORTED_OPERATION, 19, "Unsupported operation")                                   \
+  X(GPIO_ERR_RESOURCE_BUSY, 20, "Resource busy")                                                   \
+  X(GPIO_ERR_RESOURCE_UNAVAILABLE, 21, "Resource unavailable")                                     \
+                                                                                                   \
+  /* I/O errors */                                                                                 \
+  X(GPIO_ERR_READ_FAILURE, 22, "Read failure")                                                     \
+  X(GPIO_ERR_WRITE_FAILURE, 23, "Write failure")                                                   \
+  X(GPIO_ERR_DIRECTION_MISMATCH, 24, "Direction mismatch")                                         \
+  X(GPIO_ERR_PULL_RESISTOR_FAILURE, 25, "Pull resistor failure")                                   \
+                                                                                                   \
+  /* Interrupt errors */                                                                           \
+  X(GPIO_ERR_INTERRUPT_NOT_SUPPORTED, 26, "Interrupt not supported")                               \
+  X(GPIO_ERR_INTERRUPT_ALREADY_ENABLED, 27, "Interrupt already enabled")                           \
+  X(GPIO_ERR_INTERRUPT_NOT_ENABLED, 28, "Interrupt not enabled")                                   \
+  X(GPIO_ERR_INTERRUPT_HANDLER_FAILED, 29, "Interrupt handler failed")                             \
+                                                                                                   \
+  /* System errors */                                                                              \
+  X(GPIO_ERR_SYSTEM_ERROR, 30, "System error")                                                     \
+  X(GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied")                                           \
   X(GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")
 
 /**
@@ -82,7 +82,7 @@ enum class HfGpioErr : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_GPIO_ERR_LIST(X)
 #undef X
-  GPIO_ERR_COUNT  // Automatically calculated count
+      GPIO_ERR_COUNT // Automatically calculated count
 };
 
 /**
@@ -90,12 +90,15 @@ enum class HfGpioErr : uint8_t {
  * @param err The error code to convert
  * @return Pointer to error description string
  */
-constexpr const char* HfGpioErrToString(HfGpioErr err) noexcept {
+constexpr const char *HfGpioErrToString(HfGpioErr err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) case HfGpioErr::NAME: return DESC;
+#define X(NAME, VALUE, DESC)                                                                       \
+  case HfGpioErr::NAME:                                                                            \
+    return DESC;
     HF_GPIO_ERR_LIST(X)
 #undef X
-    default: return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 
@@ -110,7 +113,7 @@ constexpr const char* HfGpioErrToString(HfGpioErr err) noexcept {
  *          - Push-pull and open-drain output modes
  *          - Comprehensive error handling and validation
  *          - Lazy initialization pattern
- *          
+ *
  *          Derived classes implement platform-specific details for:
  *          - MCU GPIOs (ESP32C6, STM32, etc.)
  *          - I2C GPIO expanders (PCAL95555, etc.)
@@ -124,8 +127,8 @@ public:
    * @details Represents the logical state of a GPIO pin, independent of electrical polarity.
    */
   enum class State : uint8_t {
-    Inactive = 0,    ///< Logical inactive state
-    Active = 1       ///< Logical active state
+    Inactive = 0, ///< Logical inactive state
+    Active = 1    ///< Logical active state
   };
 
   /**
@@ -133,8 +136,8 @@ public:
    * @details Defines which electrical level corresponds to the logical "active" state.
    */
   enum class ActiveState : uint8_t {
-    Low = 0,         ///< Active state is electrical low
-    High = 1         ///< Active state is electrical high
+    Low = 0, ///< Active state is electrical low
+    High = 1 ///< Active state is electrical high
   };
 
   /**
@@ -142,8 +145,8 @@ public:
    * @details Defines whether the pin is configured as input or output.
    */
   enum class Direction : uint8_t {
-    Input = 0,       ///< Pin configured as input
-    Output = 1       ///< Pin configured as output
+    Input = 0, ///< Pin configured as input
+    Output = 1 ///< Pin configured as output
   };
 
   /**
@@ -151,8 +154,8 @@ public:
    * @details Defines the electrical characteristics of GPIO output pins.
    */
   enum class OutputMode : uint8_t {
-    PushPull = 0,    ///< Push-pull output (strong high and low)
-    OpenDrain = 1    ///< Open-drain output (strong low, high-impedance high)
+    PushPull = 0, ///< Push-pull output (strong high and low)
+    OpenDrain = 1 ///< Open-drain output (strong low, high-impedance high)
   };
 
   /**
@@ -160,9 +163,9 @@ public:
    * @details Defines the internal pull resistor configuration for GPIO pins.
    */
   enum class PullMode : uint8_t {
-    Floating = 0,    ///< No pull resistor (floating/high-impedance)
-    PullUp = 1,      ///< Internal pull-up resistor enabled
-    PullDown = 2     ///< Internal pull-down resistor enabled
+    Floating = 0, ///< No pull resistor (floating/high-impedance)
+    PullUp = 1,   ///< Internal pull-up resistor enabled
+    PullDown = 2  ///< Internal pull-down resistor enabled
   };
 
   /**
@@ -185,22 +188,23 @@ public:
    * @param trigger The trigger type that caused the interrupt
    * @param user_data User-provided data passed to callback
    */
-  using InterruptCallback = std::function<void(BaseGpio* gpio, InterruptTrigger trigger, void* user_data)>;
+  using InterruptCallback =
+      std::function<void(BaseGpio *gpio, InterruptTrigger trigger, void *user_data)>;
 
   /**
    * @brief GPIO interrupt status structure.
    */
   struct InterruptStatus {
-    bool is_enabled;                ///< Interrupt currently enabled
-    InterruptTrigger trigger_type;  ///< Current trigger configuration
-    uint32_t interrupt_count;       ///< Number of interrupts occurred
-    bool has_callback;              ///< Callback function is registered
+    bool is_enabled;               ///< Interrupt currently enabled
+    InterruptTrigger trigger_type; ///< Current trigger configuration
+    uint32_t interrupt_count;      ///< Number of interrupts occurred
+    bool has_callback;             ///< Callback function is registered
   };
 
   //==============================================================//
   // CONSTRUCTORS AND DESTRUCTOR
   //==============================================================//
-  
+
   /**
    * @brief Constructor for BaseGpio with full configuration.
    * @param pin_num Platform-agnostic GPIO pin identifier
@@ -208,22 +212,16 @@ public:
    * @param active_state Polarity configuration (High or Low active)
    * @param output_mode Output drive mode (PushPull or OpenDrain)
    * @param pull_mode Pull resistor configuration (Floating, PullUp, or PullDown)
-   * @details Initializes the GPIO with specified configuration. The pin is not 
+   * @details Initializes the GPIO with specified configuration. The pin is not
    *          physically configured until Initialize() is called.
    */
-  explicit BaseGpio(HfPinNumber pin_num, 
-                    Direction direction = Direction::Input,
+  explicit BaseGpio(HfPinNumber pin_num, Direction direction = Direction::Input,
                     ActiveState active_state = ActiveState::High,
                     OutputMode output_mode = OutputMode::PushPull,
                     PullMode pull_mode = PullMode::Floating) noexcept
-      : pin_(pin_num)
-      , initialized_(false)
-      , current_direction_(direction)
-      , active_state_(active_state)
-      , output_mode_(output_mode)
-      , pull_mode_(pull_mode)
-      , current_state_(State::Inactive) {
-  }
+      : pin_(pin_num), initialized_(false), current_direction_(direction),
+        active_state_(active_state), output_mode_(output_mode), pull_mode_(pull_mode),
+        current_state_(State::Inactive) {}
 
   /**
    * @brief Copy constructor is deleted to avoid copying instances.
@@ -469,7 +467,7 @@ public:
    * @param is_active Reference to store the result
    * @return HfGpioErr error code
    */
-  HfGpioErr IsActive(bool& is_active) noexcept {
+  HfGpioErr IsActive(bool &is_active) noexcept {
     HfGpioErr validation = ValidateBasicOperation();
     if (validation != HfGpioErr::GPIO_SUCCESS) {
       return validation;
@@ -501,7 +499,7 @@ public:
    * @brief Get human-readable description of this GPIO instance.
    * @return Pointer to description string
    */
-  [[nodiscard]] virtual const char* GetDescription() const noexcept = 0;
+  [[nodiscard]] virtual const char *GetDescription() const noexcept = 0;
 
   //==============================================================//
   // INTERRUPT FUNCTIONALITY
@@ -526,9 +524,9 @@ public:
    * @details Sets up interrupt configuration but does not enable it.
    *          Call EnableInterrupt() to actually start interrupt generation.
    */
-  virtual HfGpioErr ConfigureInterrupt(InterruptTrigger trigger, 
-                                       InterruptCallback callback = nullptr, 
-                                       void* user_data = nullptr) noexcept {
+  virtual HfGpioErr ConfigureInterrupt(InterruptTrigger trigger,
+                                       InterruptCallback callback = nullptr,
+                                       void *user_data = nullptr) noexcept {
     return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_SUPPORTED;
   }
 
@@ -567,7 +565,7 @@ public:
    * @param status Reference to store interrupt status
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
-  virtual HfGpioErr GetInterruptStatus(InterruptStatus& status) noexcept {
+  virtual HfGpioErr GetInterruptStatus(InterruptStatus &status) noexcept {
     return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_SUPPORTED;
   }
 
@@ -582,12 +580,12 @@ public:
   //==============================================================//
   // STRING CONVERSION UTILITIES
   //==============================================================//
-  static const char* ToString(State state) noexcept;
-  static const char* ToString(ActiveState active_state) noexcept;
-  static const char* ToString(Direction direction) noexcept;
-  static const char* ToString(OutputMode output_mode) noexcept;
-  static const char* ToString(PullMode pull_mode) noexcept;
-  static const char* ToString(InterruptTrigger trigger) noexcept;
+  static const char *ToString(State state) noexcept;
+  static const char *ToString(ActiveState active_state) noexcept;
+  static const char *ToString(Direction direction) noexcept;
+  static const char *ToString(OutputMode output_mode) noexcept;
+  static const char *ToString(PullMode pull_mode) noexcept;
+  static const char *ToString(InterruptTrigger trigger) noexcept;
 
   //==============================================================//
   // PURE VIRTUAL FUNCTIONS - MUST BE IMPLEMENTED BY DERIVED CLASSES
@@ -657,76 +655,99 @@ protected:
   virtual HfGpioErr SetActiveImpl() noexcept = 0;
   virtual HfGpioErr SetInactiveImpl() noexcept = 0;
   virtual HfGpioErr ToggleImpl() noexcept = 0;
-  virtual HfGpioErr IsActiveImpl(bool& is_active) noexcept = 0;
+  virtual HfGpioErr IsActiveImpl(bool &is_active) noexcept = 0;
 
 protected:
   //==============================================================//
   // MEMBER VARIABLES
   //==============================================================//
 
-  const HfPinNumber pin_;               ///< GPIO pin number/identifier
-  bool initialized_;                  ///< Initialization state flag
-  Direction current_direction_;       ///< Current pin direction
-  ActiveState active_state_;          ///< Active state polarity
-  OutputMode output_mode_;            ///< Output drive mode
-  PullMode pull_mode_;                ///< Pull resistor configuration
-  State current_state_;               ///< Current logical state
+  const HfPinNumber pin_;       ///< GPIO pin number/identifier
+  bool initialized_;            ///< Initialization state flag
+  Direction current_direction_; ///< Current pin direction
+  ActiveState active_state_;    ///< Active state polarity
+  OutputMode output_mode_;      ///< Output drive mode
+  PullMode pull_mode_;          ///< Pull resistor configuration
+  State current_state_;         ///< Current logical state
 };
 
 //==============================================================//
 // STRING CONVERSION IMPLEMENTATIONS
 //==============================================================//
 
-inline const char* BaseGpio::ToString(State state) noexcept {
+inline const char *BaseGpio::ToString(State state) noexcept {
   switch (state) {
-    case State::Active:   return "Active";
-    case State::Inactive: return "Inactive";
-    default:              return "Unknown";
+  case State::Active:
+    return "Active";
+  case State::Inactive:
+    return "Inactive";
+  default:
+    return "Unknown";
   }
 }
 
-inline const char* BaseGpio::ToString(ActiveState active_state) noexcept {
+inline const char *BaseGpio::ToString(ActiveState active_state) noexcept {
   switch (active_state) {
-    case ActiveState::High: return "ActiveHigh";
-    case ActiveState::Low:  return "ActiveLow";
-    default:                return "Unknown";
+  case ActiveState::High:
+    return "ActiveHigh";
+  case ActiveState::Low:
+    return "ActiveLow";
+  default:
+    return "Unknown";
   }
 }
 
-inline const char* BaseGpio::ToString(Direction direction) noexcept {
+inline const char *BaseGpio::ToString(Direction direction) noexcept {
   switch (direction) {
-    case Direction::Input:  return "Input";
-    case Direction::Output: return "Output";
-    default:                return "Unknown";
+  case Direction::Input:
+    return "Input";
+  case Direction::Output:
+    return "Output";
+  default:
+    return "Unknown";
   }
 }
 
-inline const char* BaseGpio::ToString(OutputMode output_mode) noexcept {
+inline const char *BaseGpio::ToString(OutputMode output_mode) noexcept {
   switch (output_mode) {
-    case OutputMode::PushPull:  return "PushPull";
-    case OutputMode::OpenDrain: return "OpenDrain";
-    default:                    return "Unknown";
+  case OutputMode::PushPull:
+    return "PushPull";
+  case OutputMode::OpenDrain:
+    return "OpenDrain";
+  default:
+    return "Unknown";
   }
 }
 
-inline const char* BaseGpio::ToString(PullMode pull_mode) noexcept {
+inline const char *BaseGpio::ToString(PullMode pull_mode) noexcept {
   switch (pull_mode) {
-    case PullMode::Floating: return "Floating";
-    case PullMode::PullUp:   return "PullUp";
-    case PullMode::PullDown: return "PullDown";
-    default:                 return "Unknown";
+  case PullMode::Floating:
+    return "Floating";
+  case PullMode::PullUp:
+    return "PullUp";
+  case PullMode::PullDown:
+    return "PullDown";
+  default:
+    return "Unknown";
   }
 }
 
-inline const char* BaseGpio::ToString(InterruptTrigger trigger) noexcept {
+inline const char *BaseGpio::ToString(InterruptTrigger trigger) noexcept {
   switch (trigger) {
-    case InterruptTrigger::None:        return "None";
-    case InterruptTrigger::RisingEdge:  return "RisingEdge";
-    case InterruptTrigger::FallingEdge: return "FallingEdge";
-    case InterruptTrigger::BothEdges:   return "BothEdges";
-    case InterruptTrigger::LowLevel:    return "LowLevel";
-    case InterruptTrigger::HighLevel:   return "HighLevel";
-    default:                            return "Unknown";
+  case InterruptTrigger::None:
+    return "None";
+  case InterruptTrigger::RisingEdge:
+    return "RisingEdge";
+  case InterruptTrigger::FallingEdge:
+    return "FallingEdge";
+  case InterruptTrigger::BothEdges:
+    return "BothEdges";
+  case InterruptTrigger::LowLevel:
+    return "LowLevel";
+  case InterruptTrigger::HighLevel:
+    return "HighLevel";
+  default:
+    return "Unknown";
   }
 }
 

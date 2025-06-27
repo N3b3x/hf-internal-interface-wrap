@@ -1,6 +1,7 @@
 /**
  * @file McuGpio.h
- * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF v5.5+ features.
+ * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF
+ * v5.5+ features.
  *
  * This file provides concrete implementations of the unified BaseGpio class
  * for microcontroller-based GPIO pins with support for both basic and advanced features.
@@ -21,84 +22,85 @@
  * @brief GPIO glitch filter types supported by ESP32C6.
  */
 enum class GpioGlitchFilterType : uint8_t {
-    None = 0,           ///< No glitch filter
-    Pin = 1,            ///< Pin glitch filter (fixed 2 clock cycles)
-    Flex = 2,           ///< Flexible glitch filter (configurable)
-    Both = 3            ///< Both pin and flex filters (maximum protection)
+  None = 0, ///< No glitch filter
+  Pin = 1,  ///< Pin glitch filter (fixed 2 clock cycles)
+  Flex = 2, ///< Flexible glitch filter (configurable)
+  Both = 3  ///< Both pin and flex filters (maximum protection)
 };
 
 /**
  * @brief GPIO drive capability levels for ESP32C6.
  */
 enum class GpioDriveCapability : uint8_t {
-    Weak = 0,           ///< ~5mA drive capability
-    Stronger = 1,       ///< ~10mA drive capability  
-    Medium = 2,         ///< ~20mA drive capability (default)
-    Strongest = 3       ///< ~40mA drive capability
+  Weak = 0,     ///< ~5mA drive capability
+  Stronger = 1, ///< ~10mA drive capability
+  Medium = 2,   ///< ~20mA drive capability (default)
+  Strongest = 3 ///< ~40mA drive capability
 };
 
 /**
  * @brief GPIO sleep configuration for power management.
  */
 struct GpioSleepConfig {
-    BaseGpio::Direction sleep_direction;    ///< Direction during sleep
-    BaseGpio::PullMode sleep_pull_mode;     ///< Pull resistors during sleep
-    bool sleep_output_enable;               ///< Output enabled during sleep
-    bool sleep_input_enable;                ///< Input enabled during sleep
-    bool hold_during_sleep;                 ///< Hold configuration during sleep
+  BaseGpio::Direction sleep_direction; ///< Direction during sleep
+  BaseGpio::PullMode sleep_pull_mode;  ///< Pull resistors during sleep
+  bool sleep_output_enable;            ///< Output enabled during sleep
+  bool sleep_input_enable;             ///< Input enabled during sleep
+  bool hold_during_sleep;              ///< Hold configuration during sleep
 };
 
 /**
  * @brief Flexible glitch filter configuration.
  */
 struct FlexGlitchFilterConfig {
-    uint32_t window_width_ns;               ///< Sample window width in nanoseconds
-    uint32_t window_threshold_ns;           ///< Threshold for filtering in nanoseconds
-    bool enable_on_init;                    ///< Enable filter immediately after creation
+  uint32_t window_width_ns;     ///< Sample window width in nanoseconds
+  uint32_t window_threshold_ns; ///< Threshold for filtering in nanoseconds
+  bool enable_on_init;          ///< Enable filter immediately after creation
 };
 
 /**
  * @brief GPIO wake-up configuration for deep sleep.
  */
 struct GpioWakeUpConfig {
-    BaseGpio::InterruptTrigger wake_trigger; ///< Wake-up trigger type
-    bool enable_rtc_wake;                   ///< Enable RTC domain wake-up
-    bool enable_ext1_wake;                  ///< Enable EXT1 wake-up source
-    uint8_t wake_level;                     ///< Wake-up level (0=low, 1=high)
+  BaseGpio::InterruptTrigger wake_trigger; ///< Wake-up trigger type
+  bool enable_rtc_wake;                    ///< Enable RTC domain wake-up
+  bool enable_ext1_wake;                   ///< Enable EXT1 wake-up source
+  uint8_t wake_level;                      ///< Wake-up level (0=low, 1=high)
 };
 
 /**
  * @brief GPIO configuration dump information.
  */
 struct GpioConfigDump {
-    uint8_t pin_number;                     ///< GPIO pin number
-    BaseGpio::Direction direction;          ///< Current direction
-    BaseGpio::PullMode pull_mode;           ///< Current pull mode
-    BaseGpio::OutputMode output_mode;       ///< Current output mode
-    GpioDriveCapability drive_capability;   ///< Current drive capability
-    bool input_enabled;                     ///< Input buffer enabled
-    bool output_enabled;                    ///< Output buffer enabled
-    bool open_drain;                        ///< Open drain mode
-    bool sleep_sel_enabled;                 ///< Sleep selection enabled
-    uint32_t function_select;               ///< IOMUX function selection
-    bool is_rtc_gpio;                       ///< Pin supports RTC GPIO
-    bool glitch_filter_enabled;             ///< Glitch filter enabled
-    GpioGlitchFilterType filter_type;       ///< Type of glitch filter
+  uint8_t pin_number;                   ///< GPIO pin number
+  BaseGpio::Direction direction;        ///< Current direction
+  BaseGpio::PullMode pull_mode;         ///< Current pull mode
+  BaseGpio::OutputMode output_mode;     ///< Current output mode
+  GpioDriveCapability drive_capability; ///< Current drive capability
+  bool input_enabled;                   ///< Input buffer enabled
+  bool output_enabled;                  ///< Output buffer enabled
+  bool open_drain;                      ///< Open drain mode
+  bool sleep_sel_enabled;               ///< Sleep selection enabled
+  uint32_t function_select;             ///< IOMUX function selection
+  bool is_rtc_gpio;                     ///< Pin supports RTC GPIO
+  bool glitch_filter_enabled;           ///< Glitch filter enabled
+  GpioGlitchFilterType filter_type;     ///< Type of glitch filter
 };
 
 /**
  * @class McuGpio
- * @brief Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+ features.
+ * @brief Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+
+ * features.
  * @details This class provides a comprehensive implementation of BaseGpio for MCU-based
  *          GPIO pins with support for both basic and advanced features including:
- *          
+ *
  *          **Basic Features:**
  *          - Dynamic switching between input and output modes
  *          - Active-high/active-low polarity configuration
  *          - Pull resistor configuration (floating, pull-up, pull-down)
  *          - Output drive modes (push-pull, open-drain)
  *          - Thread-safe state management
- *          
+ *
  *          **Advanced Features (ESP32C6/ESP-IDF v5.5+):**
  *          - Glitch filtering (pin and flexible filters)
  *          - RTC GPIO support for ultra-low power operations
@@ -107,7 +109,7 @@ struct GpioConfigDump {
  *          - Deep sleep wake-up configuration
  *          - Precise drive capability control (5mA to 40mA)
  *          - Advanced debugging and configuration dump
- *          
+ *
  * @note This class is designed to be platform-agnostic within the MCU domain.
  *       Platform-specific details are handled through conditional compilation.
  * @note Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality.
@@ -117,7 +119,7 @@ public:
   //==============================================================//
   // CONSTRUCTORS
   //==============================================================//
-    /**
+  /**
    * @brief Constructor for McuGpio with full configuration including advanced features.
    * @param pin_num Platform-agnostic GPIO pin number
    * @param direction Initial pin direction (Input or Output)
@@ -126,16 +128,15 @@ public:
    * @param pull_mode Pull resistor configuration (Floating, PullUp, or PullDown)
    * @param drive_capability Drive strength capability (Weak to Strongest)
    * @details Creates an MCU GPIO instance with the specified configuration including
-   *          advanced features support. The pin is not physically configured until 
-   *          Initialize() is called. The platform-agnostic pin number is converted 
+   *          advanced features support. The pin is not physically configured until
+   *          Initialize() is called. The platform-agnostic pin number is converted
    *          internally to MCU-specific type.
    */
-  explicit McuGpio(HfPinNumber pin_num, 
-                          Direction direction = Direction::Input,
-                          ActiveState active_state = ActiveState::High,
-                          OutputMode output_mode = OutputMode::PushPull,
-                          PullMode pull_mode = PullMode::Floating,
-                          GpioDriveCapability drive_capability = GpioDriveCapability::Medium) noexcept;
+  explicit McuGpio(HfPinNumber pin_num, Direction direction = Direction::Input,
+                   ActiveState active_state = ActiveState::High,
+                   OutputMode output_mode = OutputMode::PushPull,
+                   PullMode pull_mode = PullMode::Floating,
+                   GpioDriveCapability drive_capability = GpioDriveCapability::Medium) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup including interrupt resources.
@@ -179,7 +180,7 @@ public:
    * @brief Get human-readable description of this GPIO instance.
    * @return String view describing the MCU GPIO
    */
-  const char* GetDescription() const noexcept override;
+  const char *GetDescription() const noexcept override;
 
   //==============================================================//
   // INTERRUPT FUNCTIONALITY
@@ -198,9 +199,8 @@ public:
    * @param user_data User data passed to callback (optional)
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr ConfigureInterrupt(InterruptTrigger trigger, 
-                               InterruptCallback callback = nullptr, 
-                               void* user_data = nullptr) noexcept override;
+  HfGpioErr ConfigureInterrupt(InterruptTrigger trigger, InterruptCallback callback = nullptr,
+                               void *user_data = nullptr) noexcept override;
 
   /**
    * @brief Enable GPIO interrupt.
@@ -226,7 +226,7 @@ public:
    * @param status Reference to store interrupt status
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr GetInterruptStatus(InterruptStatus& status) noexcept override;
+  HfGpioErr GetInterruptStatus(InterruptStatus &status) noexcept override;
 
   /**
    * @brief Clear interrupt statistics/counters.
@@ -283,7 +283,7 @@ protected:
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    * @details Reads the current MCU pin electrical level and converts to logical state.
    */
-  HfGpioErr IsActiveImpl(bool& is_active) noexcept override;
+  HfGpioErr IsActiveImpl(bool &is_active) noexcept override;
 
   /**
    * @brief Platform-specific implementation for setting pull resistor mode.
@@ -309,7 +309,7 @@ protected:
    * @return Current drive capability level
    */
   [[nodiscard]] GpioDriveCapability GetDriveCapability() const noexcept {
-      return drive_capability_;
+    return drive_capability_;
   }
 
   /**
@@ -344,7 +344,7 @@ protected:
    * @details Flexible glitch filter allows precise control over filtering parameters.
    *          Pulses shorter than window_threshold_ns within window_width_ns are filtered.
    */
-  HfGpioErr ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig& config) noexcept;
+  HfGpioErr ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &config) noexcept;
 
   /**
    * @brief Enable all configured glitch filters.
@@ -371,7 +371,7 @@ protected:
    * @details Configures how the GPIO behaves during sleep modes.
    *          Essential for power-optimized applications.
    */
-  HfGpioErr ConfigureSleep(const GpioSleepConfig& config) noexcept;
+  HfGpioErr ConfigureSleep(const GpioSleepConfig &config) noexcept;
 
   /**
    * @brief Enable GPIO hold function.
@@ -389,7 +389,7 @@ protected:
    * @details Enables GPIO to wake the system from deep sleep.
    *          Essential for battery-powered applications.
    */
-  HfGpioErr ConfigureWakeUp(const GpioWakeUpConfig& config) noexcept;
+  HfGpioErr ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept;
 
   /**
    * @brief Get comprehensive GPIO configuration information.
@@ -421,7 +421,7 @@ private:
    * @brief Static interrupt service routine handler.
    * @param arg Pointer to McuGpio instance
    */
-  static void IRAM_ATTR InterruptHandler(void* arg) noexcept;
+  static void IRAM_ATTR InterruptHandler(void *arg) noexcept;
 
   /**
    * @brief Initialize interrupt semaphore (called from constructor).
@@ -443,27 +443,27 @@ private:
   //==============================================================//
 
   // Interrupt state
-  InterruptTrigger interrupt_trigger_;      ///< Current interrupt trigger type
-  InterruptCallback interrupt_callback_;   ///< User interrupt callback
-  void* interrupt_user_data_;              ///< User data for callback
-  bool interrupt_enabled_;                 ///< Interrupt currently enabled
-  uint32_t interrupt_count_;               ///< Number of interrupts occurred
-  void* platform_semaphore_;              ///< Platform-specific semaphore for WaitForInterrupt
+  InterruptTrigger interrupt_trigger_;   ///< Current interrupt trigger type
+  InterruptCallback interrupt_callback_; ///< User interrupt callback
+  void *interrupt_user_data_;            ///< User data for callback
+  bool interrupt_enabled_;               ///< Interrupt currently enabled
+  uint32_t interrupt_count_;             ///< Number of interrupts occurred
+  void *platform_semaphore_;             ///< Platform-specific semaphore for WaitForInterrupt
 
   // Advanced GPIO state
-  GpioDriveCapability drive_capability_;   ///< Current drive capability setting
-  GpioGlitchFilterType glitch_filter_type_; ///< Type of glitch filter configured
-  bool pin_glitch_filter_enabled_;        ///< Pin glitch filter enabled
-  bool flex_glitch_filter_enabled_;       ///< Flexible glitch filter enabled
+  GpioDriveCapability drive_capability_;      ///< Current drive capability setting
+  GpioGlitchFilterType glitch_filter_type_;   ///< Type of glitch filter configured
+  bool pin_glitch_filter_enabled_;            ///< Pin glitch filter enabled
+  bool flex_glitch_filter_enabled_;           ///< Flexible glitch filter enabled
   FlexGlitchFilterConfig flex_filter_config_; ///< Flexible filter configuration
-  GpioSleepConfig sleep_config_;           ///< Sleep configuration
-  bool hold_enabled_;                      ///< Hold function enabled
-  bool rtc_gpio_enabled_;                  ///< RTC GPIO functionality enabled
-  GpioWakeUpConfig wakeup_config_;         ///< Wake-up configuration
-  
+  GpioSleepConfig sleep_config_;              ///< Sleep configuration
+  bool hold_enabled_;                         ///< Hold function enabled
+  bool rtc_gpio_enabled_;                     ///< RTC GPIO functionality enabled
+  GpioWakeUpConfig wakeup_config_;            ///< Wake-up configuration
+
   // Platform-specific handles for advanced features
-  void* glitch_filter_handle_;             ///< Platform-specific glitch filter handle
-  void* rtc_gpio_handle_;                  ///< Platform-specific RTC GPIO handle
+  void *glitch_filter_handle_; ///< Platform-specific glitch filter handle
+  void *rtc_gpio_handle_;      ///< Platform-specific RTC GPIO handle
 };
 
 #endif // MCU_GPIO_H

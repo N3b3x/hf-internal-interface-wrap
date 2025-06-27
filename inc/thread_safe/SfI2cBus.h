@@ -25,12 +25,12 @@ public:
    * @brief Constructor for thread-safe I2C bus.
    * @param config I2C configuration
    */
-  explicit SfI2cBus(const I2cBusConfig& config) noexcept;
-  
+  explicit SfI2cBus(const I2cBusConfig &config) noexcept;
+
   ~SfI2cBus() noexcept;
-  
-  SfI2cBus(const SfI2cBus&) = delete;
-  SfI2cBus& operator=(const SfI2cBus&) = delete;
+
+  SfI2cBus(const SfI2cBus &) = delete;
+  SfI2cBus &operator=(const SfI2cBus &) = delete;
 
   /**
    * @brief Open and initialize the I2C port.
@@ -41,7 +41,7 @@ public:
    * @brief Close and de-initialize the I2C port.
    */
   bool Close() noexcept;
-  
+
   /**
    * @brief Write to a device in a thread-safe manner.
    */
@@ -51,14 +51,13 @@ public:
   /**
    * @brief Read from a device in a thread-safe manner.
    */
-  bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes,
-            uint32_t timeoutMsec = 1000) noexcept;
+  bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes, uint32_t timeoutMsec = 1000) noexcept;
 
   /**
    * @brief Combined write then read operation.
    */
-  bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, 
-                 uint8_t *rxData, uint16_t rxSizeBytes, uint32_t timeoutMsec = 1000) noexcept;
+  bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, uint8_t *rxData,
+                 uint16_t rxSizeBytes, uint32_t timeoutMsec = 1000) noexcept;
 
   /**
    * @brief Lock the bus for exclusive access.
@@ -69,7 +68,7 @@ public:
    * @brief Unlock the bus.
    */
   bool Unlock() noexcept;
-  
+
   /**
    * @brief Get the clock speed in Hz.
    */

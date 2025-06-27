@@ -44,10 +44,9 @@ For multi-threaded systems use `SfCan` which protects all operations with a mute
 
 ```cpp
 #include "SfCan.h"
-#include <mutex>
+#include "McuCan.h"
 
-std::mutex can_mutex;
-SfCan safe_can(HF_CAN_PORT_0, 500000, can_mutex);
+SfCan safe_can(std::make_unique<McuCan>(0, 500000));
 ```
 
 ## Tips

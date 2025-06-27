@@ -1,14 +1,14 @@
-# 🔗 BaseI2cBus API Documentation
+# 🔗 BaseI2c API Documentation
 
 ## 📋 Overview
 
-The `BaseI2cBus` class is an abstract base class that provides a unified, platform-agnostic interface for I2C (Inter-Integrated Circuit) bus communication in the HardFOC system. This class enables communication with various I2C devices such as sensors, EEPROMs, DACs, and other peripherals through a consistent API.
+The `BaseI2c` class is an abstract base class that provides a unified, platform-agnostic interface for I2C (Inter-Integrated Circuit) bus communication in the HardFOC system. This class enables communication with various I2C devices such as sensors, EEPROMs, DACs, and other peripherals through a consistent API.
 
 ## 🏗️ Class Hierarchy
 
 ```
-BaseI2cBus (Abstract Base Class)
-    ├── McuI2cBus (ESP32/STM32 hardware I2C)
+BaseI2c (Abstract Base Class)
+    ├── McuI2c (ESP32/STM32 hardware I2C)
     ├── BitBangI2c (Software I2C implementation)
     └── SfI2cBus (Thread-safe wrapper)
 ```
@@ -195,7 +195,7 @@ std::vector<uint8_t> ScanBus(uint32_t timeout_ms = 0) noexcept
 
 ### Basic I2C Communication
 ```cpp
-#include "mcu/McuI2cBus.h"
+#include "mcu/McuI2c.h"
 
 // Configure I2C bus
 I2cBusConfig config;
@@ -205,7 +205,7 @@ config.scl_pin = 22;
 config.clock_speed_hz = 400000;  // 400kHz Fast Mode
 
 // Create I2C instance
-auto i2c = std::make_unique<McuI2cBus>(config);
+auto i2c = std::make_unique<McuI2c>(config);
 
 // Initialize
 if (!i2c->EnsureInitialized()) {
@@ -325,19 +325,12 @@ custom_config.timeout_ms = 2000;           // 2s timeout for slow devices
 custom_config.tx_buffer_size = 128;        // Enable buffering
 custom_config.rx_buffer_size = 128;
 
-auto i2c_slow = std::make_unique<McuI2cBus>(custom_config);
+auto i2c_slow = std::make_unique<McuI2c>(custom_config);
 ```
 
 ## 🧪 Testing
 
-The BaseI2cBus class can be tested using:
-
-```cpp
-#include "tests/CommBusTests.h"
-
-// Run comprehensive I2C tests
-bool success = TestI2cCommunication();
-```
+Unit tests are not provided in this repository.
 
 ## ⚠️ Important Notes
 
@@ -352,7 +345,7 @@ bool success = TestI2cCommunication();
 
 - [`BaseGpio`](BaseGpio.md) - GPIO interface for I2C pin configuration
 - [`BaseAdc`](BaseAdc.md) - ADC interface following same pattern
-- [`McuI2cBus`](../mcu/McuI2cBus.md) - Hardware I2C implementation
+- [`McuI2c`](../mcu/McuI2c.md) - Hardware I2C implementation
 - [`SfI2cBus`](../thread_safe/SfI2cBus.md) - Thread-safe wrapper
 
 ## 📝 See Also

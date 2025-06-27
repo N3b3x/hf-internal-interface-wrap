@@ -120,9 +120,9 @@ public:
   }
 
 private:
-  std::unique_ptr<SpiBus> spi_bus_;        ///< Underlying SPI bus implementation
-  mutable std::mutex mutex_;              ///< Mutex for thread safety
-  bool initialized_;                      ///< Initialization state
+  std::unique_ptr<SpiBus> spi_bus_; ///< Underlying SPI bus implementation
+  mutable std::mutex mutex_;        ///< Mutex for thread safety
+  bool initialized_;                ///< Initialization state
 };
 
 #endif // SFSPIBUS_H_
