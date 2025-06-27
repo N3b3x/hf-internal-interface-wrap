@@ -550,7 +550,7 @@ void bidirectional_communication() {
 
 ### ✅ **Unit Test Coverage**
 
-The BaseGpio implementation includes comprehensive unit tests:
+Unit tests are not provided in this repository.
 
 ```cpp
 // Test initialization

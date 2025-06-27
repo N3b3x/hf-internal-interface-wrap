@@ -430,14 +430,7 @@ if (result != HfPwmErr::PWM_SUCCESS) {
 
 ## 🧪 Testing
 
-The BasePwm class can be tested using:
-
-```cpp
-#include "tests/PwmTests.h"
-
-// Run comprehensive PWM tests
-bool success = TestPwmFunctionality();
-```
+Unit tests are not provided in this repository.
 
 ## ⚠️ Important Notes
 

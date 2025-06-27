@@ -8,9 +8,9 @@ Communicate with a simple I2C temperature sensor.
 
 ## 🚀 Code
 ```cpp
-#include "McuI2cBus.h"
+#include "McuI2c.h"
 
-McuI2cBus i2c(HF_I2C_NUM_0, HF_GPIO_NUM_21, HF_GPIO_NUM_22, 400000);
+McuI2c i2c(HF_I2C_NUM_0, HF_GPIO_NUM_21, HF_GPIO_NUM_22, 400000);
 
 void app_main() {
     i2c.Open();

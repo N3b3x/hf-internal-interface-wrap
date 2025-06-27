@@ -286,14 +286,7 @@ if (!can->SendMessage(msg)) {
 
 ## 🧪 Testing
 
-The BaseCan class can be tested using:
-
-```cpp
-#include "tests/CommBusTests.h"
-
-// Run comprehensive CAN tests
-bool success = TestCanCommunication();
-```
+Unit tests are not provided in this repository.
 
 ## ⚠️ Important Notes
 

@@ -5,9 +5,9 @@ The I2C bus wrapper simplifies communication with sensors and peripheral chips.
 ## Initialization
 
 ```cpp
-#include "McuI2cBus.h"
+#include "McuI2c.h"
 
-McuI2cBus i2c(HF_I2C_NUM_0, HF_GPIO_NUM_21, HF_GPIO_NUM_22, 400000);
+McuI2c i2c(HF_I2C_NUM_0, HF_GPIO_NUM_21, HF_GPIO_NUM_22, 400000);
 i2c.Open();
 ```
 
@@ -40,10 +40,9 @@ Wrap the instance with `SfI2cBus` when shared across tasks.
 
 ```cpp
 #include "SfI2cBus.h"
-#include <mutex>
 
-std::mutex i2c_mutex;
-SfI2cBus safe_i2c(HF_I2C_NUM_0, HF_GPIO_NUM_21, HF_GPIO_NUM_22, 400000, i2c_mutex);
+I2cBusConfig cfg{/*params*/};
+SfI2cBus safe_i2c(cfg);
 ```
 
 Refer to the [Porting Guide](porting-guide.md) for implementing a new I2C backend.

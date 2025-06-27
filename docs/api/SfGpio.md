@@ -41,7 +41,7 @@ HardFOC::ThreadSafe::SfGpio safe_gpio(gpio_impl);
 
 // Now safe to use from multiple threads
 safe_gpio.setPinMode(2, HF_GPIO_MODE_OUTPUT);
-safe_gpio.setPinLevel(2, HF_GPIO_LEVEL_HIGH);
+safe_gpio.digitalWrite(2, true);
 ```
 
 ### Multi-Threaded LED Control
@@ -58,19 +58,18 @@ public:
     }
     
     void TurnOn() {
-        led_gpio_.setPinLevel(gpio_pin_, HF_GPIO_LEVEL_HIGH);
+        led_gpio_.digitalWrite(gpio_pin_, true);
     }
-    
+
     void TurnOff() {
-        led_gpio_.setPinLevel(gpio_pin_, HF_GPIO_LEVEL_LOW);
+        led_gpio_.digitalWrite(gpio_pin_, false);
     }
     
     void Toggle() {
         hf_gpio_level_t current_level;
-        if (led_gpio_.getPinLevel(gpio_pin_, current_level) == HF_OK) {
-            hf_gpio_level_t new_level = (current_level == HF_GPIO_LEVEL_HIGH) 
-                ? HF_GPIO_LEVEL_LOW : HF_GPIO_LEVEL_HIGH;
-            led_gpio_.setPinLevel(gpio_pin_, new_level);
+        bool current_level;
+        if (led_gpio_.digitalRead(gpio_pin_, &current_level) == HF_OK) {
+            led_gpio_.digitalWrite(gpio_pin_, !current_level);
         }
     }
 };
@@ -155,9 +154,9 @@ hf_return_code_t setPinDriveCapability(hf_gpio_num_t pin, hf_gpio_drive_cap_t dr
 
 ### Digital I/O Operations
 
-#### setPinLevel()
+#### digitalWrite()
 ```cpp
-hf_return_code_t setPinLevel(hf_gpio_num_t pin, hf_gpio_level_t level);
+hf_return_code_t digitalWrite(hf_gpio_num_t pin, bool level);
 ```
 - **Purpose**: Set output pin level atomically
 - **Parameters**:
@@ -165,9 +164,9 @@ hf_return_code_t setPinLevel(hf_gpio_num_t pin, hf_gpio_level_t level);
   - `level` - Output level (HF_GPIO_LEVEL_LOW, HF_GPIO_LEVEL_HIGH)
 - **Thread Safety**: ✅ Mutex protected
 
-#### getPinLevel()
+#### digitalRead()
 ```cpp
-hf_return_code_t getPinLevel(hf_gpio_num_t pin, hf_gpio_level_t& level);
+hf_return_code_t digitalRead(hf_gpio_num_t pin, bool* level);
 ```
 - **Purpose**: Read pin level atomically
 - **Parameters**:
@@ -212,11 +211,11 @@ The `SfGpio` class ensures thread safety through:
 SfGpio gpio(std::make_shared<McuDigitalGpio>(2));
 
 // Thread 1
-gpio.setPinLevel(2, HF_GPIO_LEVEL_HIGH);
+gpio.digitalWrite(2, true);
 
 // Thread 2 (concurrent access is safe)
 hf_gpio_level_t level;
-gpio.getPinLevel(2, level);
+gpio.digitalRead(2, &level);
 
 // Thread 3 (also safe)
 gpio.setPinMode(2, HF_GPIO_MODE_INPUT);
@@ -257,9 +256,9 @@ public:
     
     // Safe to call from ISR or any thread
     bool IsPressed() {
-        hf_gpio_level_t level;
-        if (button_gpio_.getPinLevel(button_pin_, level) == HF_OK) {
-            return (level == HF_GPIO_LEVEL_LOW); // Active low
+        bool level;
+        if (button_gpio_.digitalRead(button_pin_, &level) == HF_OK) {
+            return !level; // Active low
         }
         return false;
     }
@@ -278,12 +277,12 @@ public:
         : shared_gpio_(std::make_shared<McuDigitalGpio>(pin)) {}
     
     // Multiple threads can safely access
-    void SetHigh() { shared_gpio_.setPinLevel(pin_, HF_GPIO_LEVEL_HIGH); }
-    void SetLow() { shared_gpio_.setPinLevel(pin_, HF_GPIO_LEVEL_LOW); }
+    void SetHigh() { shared_gpio_.digitalWrite(pin_, true); }
+    void SetLow() { shared_gpio_.digitalWrite(pin_, false); }
     bool IsHigh() {
-        hf_gpio_level_t level;
-        return (shared_gpio_.getPinLevel(pin_, level) == HF_OK && 
-                level == HF_GPIO_LEVEL_HIGH);
+        bool level;
+        return (shared_gpio_.digitalRead(pin_, &level) == HF_OK &&
+                level);
     }
 };
 ```
@@ -303,7 +302,7 @@ All methods return `hf_return_code_t` values:
 ### Error Handling Example
 
 ```cpp
-hf_return_code_t result = gpio.setPinLevel(2, HF_GPIO_LEVEL_HIGH);
+hf_return_code_t result = gpio.digitalWrite(2, true);
 switch (result) {
     case HF_OK:
         printf("Pin set successfully\n");
@@ -336,14 +335,14 @@ SfGpio safe_gpio(gpio_impl);
 ```cpp
 // Good: Keep mutex-protected sections short
 void ProcessGpio() {
-    hf_gpio_level_t level;
-    gpio.getPinLevel(2, level);  // Short critical section
+    bool level;
+    gpio.digitalRead(2, &level);  // Short critical section
     
     // Process data outside critical section
     ProcessData(level);
     
     // Another short critical section
-    gpio.setPinLevel(3, processed_level);
+    gpio.digitalWrite(3, processed_level);
 }
 ```
 

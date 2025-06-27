@@ -21,16 +21,16 @@ This document lists the main header and source files in the project and provides
 | [`BaseAdc.h`](../include/base/BaseAdc.h) | *(header only)* | [BaseAdc](api/BaseAdc.md) |
 | [`BaseCan.h`](../include/base/BaseCan.h) | *(header only)* | [BaseCan](api/BaseCan.md) |
 | [`BaseGpio.h`](../include/base/BaseGpio.h) | *(header only)* | [BaseGpio](api/BaseGpio.md) |
-| [`BaseI2cBus.h`](../include/base/BaseI2cBus.h) | *(header only)* | [BaseI2cBus](api/BaseI2cBus.md) |
+| [`BaseI2c.h`](../include/base/BaseI2c.h) | *(header only)* | [BaseI2c](api/BaseI2c.md) |
 | [`BasePio.h`](../include/base/BasePio.h) | *(header only)* | [BasePio](api/BasePio.md) |
 | [`BasePwm.h`](../include/base/BasePwm.h) | *(header only)* | [BasePwm](api/BasePwm.md) |
-| [`BaseSpiBus.h`](../include/base/BaseSpiBus.h) | *(header only)* | [BaseSpiBus](api/BaseSpiBus.md) |
-| [`BaseUartDriver.h`](../include/base/BaseUartDriver.h) | *(header only)* | [BaseUartDriver](api/BaseUartDriver.md) |
+| [`BaseSpi.h`](../include/base/BaseSpi.h) | *(header only)* | [BaseSpi](api/BaseSpi.md) |
+| [`BaseUart.h`](../include/base/BaseUart.h) | *(header only)* | [BaseUart](api/BaseUart.md) |
 | [`McuDigitalGpio.h`](../include/mcu/McuDigitalGpio.h) | [`src/mcu/McuDigitalGpio.cpp`](../src/mcu/McuDigitalGpio.cpp) | [McuDigitalGpio](api/McuDigitalGpio.md) |
 | [`McuAdc.h`](../include/mcu/McuAdc.h) | [`src/mcu/McuAdc.cpp`](../src/mcu/McuAdc.cpp) | [McuAdc](api/McuAdc.md) |
-| [`McuI2cBus.h`](../include/mcu/McuI2cBus.h) | [`src/mcu/McuI2cBus.cpp`](../src/mcu/McuI2cBus.cpp) | API pending |
-| [`McuSpiBus.h`](../include/mcu/McuSpiBus.h) | [`src/mcu/McuSpiBus.cpp`](../src/mcu/McuSpiBus.cpp) | API pending |
-| [`McuUartDriver.h`](../include/mcu/McuUartDriver.h) | [`src/mcu/McuUartDriver.cpp`](../src/mcu/McuUartDriver.cpp) | API pending |
+| [`McuI2c.h`](../include/mcu/McuI2c.h) | [`src/mcu/McuI2c.cpp`](../src/mcu/McuI2c.cpp) | API pending |
+| [`McuSpi.h`](../include/mcu/McuSpi.h) | [`src/mcu/McuSpi.cpp`](../src/mcu/McuSpi.cpp) | API pending |
+| [`McuUart.h`](../include/mcu/McuUart.h) | [`src/mcu/McuUart.cpp`](../src/mcu/McuUart.cpp) | API pending |
 | [`McuCan.h`](../include/mcu/McuCan.h) | [`src/mcu/McuCan.cpp`](../src/mcu/McuCan.cpp) | API pending |
 | [`McuPwm.h`](../include/mcu/McuPwm.h) | [`src/mcu/McuPwm.cpp`](../src/mcu/McuPwm.cpp) | API pending |
 | [`McuPio.h`](../include/mcu/McuPio.h) | [`src/mcu/McuPio.cpp`](../src/mcu/McuPio.cpp) | API pending |

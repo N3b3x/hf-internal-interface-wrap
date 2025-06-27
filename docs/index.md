@@ -49,9 +49,9 @@ The **HardFOC Internal Interface Wrapper** provides a comprehensive, platform-ag
 |-----------|------------|-------------------|---------------------|
 | 🔌 **GPIO** | `BaseGpio` | `McuDigitalGpio` | `SfGpio` |
 | 📊 **ADC** | `BaseAdc` | `McuAdc` | `SfAdc` |
-| 🔄 **I2C** | `BaseI2cBus` | `McuI2cBus` | `SfI2cBus` |
-| ⚡ **SPI** | `BaseSpiBus` | `McuSpiBus` | `SfSpiBus` |
-| 📡 **UART** | `BaseUartDriver` | `McuUartDriver` | `SfUartDriver` |
+| 🔄 **I2C** | `BaseI2c` | `McuI2c` | `SfI2cBus` |
+| ⚡ **SPI** | `BaseSpi` | `McuSpi` | `SfSpiBus` |
+| 📡 **UART** | `BaseUart` | `McuUart` | `SfUartDriver` |
 | 🚗 **CAN** | `BaseCan` | `McuCan` | `SfCan` |
 | 🎛️ **PWM** | `BasePwm` | `McuPwm` | `SfPwm` |
 | 📻 **PIO** | `BasePio` | `McuPio` | - |
@@ -77,16 +77,16 @@ graph TB
     subgraph "🏛️ Abstract Base Layer"
         G[BaseGpio]
         H[BaseAdc] 
-        I[BaseI2cBus]
-        J[BaseSpiBus]
+        I[BaseI2c]
+        J[BaseSpi]
         K[BaseCan]
     end
     
     subgraph "⚙️ MCU Implementation Layer"
         L[McuDigitalGpio]
         M[McuAdc]
-        N[McuI2cBus]
-        O[McuSpiBus]
+        N[McuI2c]
+        O[McuSpi]
         P[McuCan]
     end
     
@@ -137,9 +137,9 @@ graph TB
 |-------|-------------|--------------|
 | [`BaseGpio`](api/BaseGpio.md) | 🔌 GPIO abstraction | Dynamic mode switching, pull resistors, interrupts |
 | [`BaseAdc`](api/BaseAdc.md) | 📊 ADC abstraction | Multi-channel, calibration, voltage conversion |
-| [`BaseI2cBus`](api/BaseI2cBus.md) | 🔄 I2C communication | Master mode, device scanning, error recovery |
-| [`BaseSpiBus`](api/BaseSpiBus.md) | ⚡ SPI communication | Full-duplex, configurable modes, DMA support |
-| [`BaseUartDriver`](api/BaseUartDriver.md) | 📡 UART communication | Async I/O, flow control, configurable parameters |
+| [`BaseI2c`](api/BaseI2c.md) | 🔄 I2C communication | Master mode, device scanning, error recovery |
+| [`BaseSpi`](api/BaseSpi.md) | ⚡ SPI communication | Full-duplex, configurable modes, DMA support |
+| [`BaseUart`](api/BaseUart.md) | 📡 UART communication | Async I/O, flow control, configurable parameters |
 | [`BaseCan`](api/BaseCan.md) | 🚗 CAN bus communication | Standard/Extended frames, filtering, error handling |
 | [`BasePwm`](api/BasePwm.md) | 🎛️ PWM generation | Multi-channel, frequency control, duty cycle |
 | [`BasePio`](api/BasePio.md) | 📻 Programmable I/O | Custom protocols, precise timing, hardware encoding |
@@ -150,9 +150,9 @@ graph TB
 |-------|-------------|------------------|
 | [`McuDigitalGpio`](api/McuDigitalGpio.md) | 🔌 ESP32-C6 GPIO | Native GPIO pins with validation |
 | [`McuAdc`](api/McuAdc.md) | 📊 ESP32-C6 ADC | ADC1/ADC2 with calibration |
-| [`McuI2cBus`](api/McuI2cBus.md) | 🔄 ESP32-C6 I2C | Hardware I2C controller |
-| [`McuSpiBus`](api/McuSpiBus.md) | ⚡ ESP32-C6 SPI | SPI2/SPI3 with DMA support |
-| [`McuUartDriver`](api/McuUartDriver.md) | 📡 ESP32-C6 UART | Hardware UART with DMA |
+| [`McuI2c`](api/McuI2c.md) | 🔄 ESP32-C6 I2C | Hardware I2C controller |
+| [`McuSpi`](api/McuSpi.md) | ⚡ ESP32-C6 SPI | SPI2/SPI3 with DMA support |
+| [`McuUart`](api/McuUart.md) | 📡 ESP32-C6 UART | Hardware UART with DMA |
 | [`McuCan`](api/McuCan.md) | 🚗 ESP32-C6 TWAI | TWAI controller integration |
 | [`McuPwm`](api/McuPwm.md) | 🎛️ ESP32-C6 LEDC | LEDC peripheral wrapper |
 | [`McuPio`](api/McuPio.md) | 📻 ESP32-C6 RMT | RMT-based programmable I/O |
@@ -291,19 +291,13 @@ i2c_bus.ReadFrom(0x48, data, sizeof(data));
 # Build the project
 idf.py build
 
-# Run tests
+# Flash the firmware
 idf.py -p /dev/ttyUSB0 flash monitor
 ```
 
 ### 🧪 **Testing**
 
-```bash
-# Run unit tests
-cd tests
-mkdir build && cd build
-cmake .. && make
-./test_runner
-```
+Unit tests are not included in this repository.
 
 ### 📊 **Documentation Generation**
 

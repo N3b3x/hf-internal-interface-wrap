@@ -16,7 +16,7 @@ This component provides a truly platform-agnostic hardware abstraction layer. Al
 - **No Conditional Compilation**: Interface classes are clean and portable
 - **Layered CAN Stack**: CanBus → FlexCan → SfCan with proper abstraction
 - **Legacy Compatibility**: Preserved useful utility functions like `IsActiveHigh()`
-- **Thread-Safe Variants**: Built-in thread safety using standard C++ mutexes
+- **Thread-Safe Variants**: Built-in thread safety. Most wrappers use `std::mutex`, while `SfGpio` manages its own FreeRTOS semaphore internally.
 
 Each abstraction is intentionally compact and header-focused where possible. Create an object, call `Open()` or `Start()` and off you go. All the platform-specific ceremony is performed behind the scenes so your code stays compact and portable between MCU families.
 
@@ -27,7 +27,7 @@ Each abstraction is intentionally compact and header-focused where possible. Cre
 - **CAN Stack**: `CanBus` (platform-agnostic) → `FlexCan` (compatibility) → `SfCan` (thread-safe)
 - **ADC**: `McuAdc` with legacy functions like `ReadVoltage()`, `ReadAveraged()`
 - **PWM**: `PwmOutput` with utilities like `SetDutyPercent()`, `GenerateSquareWave()`
-- **Thread-Safe Variants**: `SfI2cBus`, `SfSpiBus`, `SfUartDriver`, `SfCan` using standard C++ mutexes
+- **Thread-Safe Variants**: `SfI2cBus`, `SfSpiBus`, `SfUartDriver`, `SfCan` use `std::mutex`; `SfGpio` uses an internal FreeRTOS semaphore
 - **Timers**: `PeriodicTimer` with platform-agnostic callback support
 - **Storage**: `NvsStorage` for non-volatile key-value storage
 
@@ -110,9 +110,6 @@ void app_main() {
 ### SfUartDriver example
 ```cpp
 #include "SfUartDriver.h"
-#include <mutex>
-
-std::mutex uart_mutex;
 hf_uart_config_t cfg = {
     .baud_rate = 115200,
     .data_bits = HF_UART_DATA_8_BITS,
@@ -121,7 +118,7 @@ hf_uart_config_t cfg = {
     .flow_ctrl = HF_UART_HW_FLOWCTRL_DISABLE
 };
 
-SfUartDriver serial(HF_UART_NUM_1, cfg, HF_GPIO_NUM_1, HF_GPIO_NUM_3, uart_mutex);
+SfUartDriver serial(HF_UART_NUM_1, cfg, HF_GPIO_NUM_1, HF_GPIO_NUM_3);
 
 void app_main() {
     serial.Open();
@@ -132,10 +129,9 @@ void app_main() {
 ### Thread-Safe CAN example
 ```cpp
 #include "SfCan.h"
-#include <mutex>
+#include "McuCan.h"
 
-std::mutex can_mutex;
-SfCan can(0, 500000, can_mutex);
+SfCan can(std::make_unique<McuCan>(0, 500000));
 
 void app_main() {
     can.Open();
@@ -191,17 +187,16 @@ void app_main() {
     hf_u32_t avg = adc.ReadAveraged(10);
 }
 ```
-### Building & Testing
+### Building
 
-Follow these steps to build the library and run the unit tests:
+Follow these steps to build the library:
 
 ```bash
 $IDF_PATH/export.sh
-cd tests
-mkdir build && cd build
-cmake .. && make
-./test_runner
+idf.py build
 ```
+
+Unit tests are not included in this repository.
 
 
 ### License

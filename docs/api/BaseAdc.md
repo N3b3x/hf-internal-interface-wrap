@@ -568,7 +568,7 @@ public:
 
 ### ✅ **Unit Test Coverage**
 
-The BaseAdc implementation includes comprehensive unit tests:
+Unit tests are not provided in this repository.
 
 ```cpp
 // Test initialization
