@@ -39,7 +39,7 @@ bool McuSpi::Initialize() noexcept {
     return true;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   // Validate configuration
   if (config_.mosi_pin == HF_GPIO_INVALID && config_.miso_pin == HF_GPIO_INVALID) {
@@ -76,7 +76,7 @@ bool McuSpi::Deinitialize() noexcept {
     return true;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   bool result = PlatformDeinitialize();
   if (result) {
@@ -108,7 +108,7 @@ HfSpiErr McuSpi::SetChipSelect(bool active) noexcept {
     return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   if (config_.cs_pin != HF_GPIO_INVALID) {
@@ -392,7 +392,7 @@ bool McuSpi::PlatformDeinitialize() noexcept {
 
 HfSpiErr McuSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                                   uint32_t timeout_ms, bool manage_cs) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Configure device for this transfer

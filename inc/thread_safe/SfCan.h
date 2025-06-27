@@ -22,13 +22,12 @@
 #ifndef HAL_INTERNAL_INTERFACE_DRIVERS_SFCAN_H_
 #define HAL_INTERNAL_INTERFACE_DRIVERS_SFCAN_H_
 
+#include "../utils/RtosMutex.h"
 #include "BaseCan.h"
 #include "McuTypes.h"
 #include <atomic>
-#include <chrono>
 #include <cstdint>
 #include <memory>
-#include <shared_mutex>
 #include <vector>
 
 /**
@@ -110,14 +109,14 @@ public:
    *
    * @param timeout Timeout duration for mutex operations
    */
-  void SetMutexTimeout(std::chrono::milliseconds timeout) noexcept;
+  void SetMutexTimeout(uint32_t timeout_ms) noexcept;
 
   /**
    * @brief Get the current mutex timeout.
    *
    * @return Current mutex timeout duration
    */
-  std::chrono::milliseconds GetMutexTimeout() const noexcept;
+  uint32_t GetMutexTimeout() const noexcept;
 
   //==============================================================================
   // INITIALIZATION AND CONTROL
@@ -335,11 +334,11 @@ public:
   const BaseCan *GetImplementation() const noexcept;
 
 private:
-  std::unique_ptr<BaseCan> can_impl_;       ///< Underlying CAN implementation
-  std::atomic<bool> initialized_;           ///< Lock-free initialization flag
-  mutable std::shared_mutex rw_mutex_;      ///< Reader-writer mutex for thread safety
-  std::chrono::milliseconds mutex_timeout_; ///< Timeout for mutex operations
-  mutable ThreadingStats stats_;            ///< Threading performance statistics
+  std::unique_ptr<BaseCan> can_impl_; ///< Underlying CAN implementation
+  std::atomic<bool> initialized_;     ///< Lock-free initialization flag
+  mutable RtosSharedMutex rw_mutex_;  ///< Reader-writer mutex for thread safety
+  uint32_t mutex_timeout_ms_;         ///< Timeout for mutex operations in milliseconds
+  mutable ThreadingStats stats_;      ///< Threading performance statistics
 
   /**
    * @brief Update threading statistics.

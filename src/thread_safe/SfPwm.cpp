@@ -4,30 +4,32 @@
  */
 
 #include "../thread_safe/SfPwm.h"
-#include <chrono>
 
 namespace {
-constexpr std::chrono::milliseconds DEFAULT_TIMEOUT{100};
+constexpr uint32_t DEFAULT_TIMEOUT_MS{100};
 }
 
 SfPwm::SfPwm(std::unique_ptr<BasePwm> pwm_impl)
-    : pwm_impl_(std::move(pwm_impl)), is_initialized_(false), mutex_timeout_(DEFAULT_TIMEOUT) {}
+    : pwm_impl_(std::move(pwm_impl)), is_initialized_(false),
+      mutex_timeout_ms_(DEFAULT_TIMEOUT_MS) {}
 
 SfPwm::~SfPwm() {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   if (is_initialized_ && pwm_impl_) {
     pwm_impl_->Deinitialize();
   }
 }
 
-void SfPwm::SetMutexTimeout(std::chrono::milliseconds timeout) {
-  std::lock_guard<std::mutex> lock(mutex_);
-  mutex_timeout_ = timeout;
+void SfPwm::SetMutexTimeout(uint32_t timeout_ms) {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  if (lock.IsLocked()) {
+    mutex_timeout_ms_ = timeout_ms;
+  }
 }
 
 HfPwmErr SfPwm::Initialize() {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -48,8 +50,8 @@ HfPwmErr SfPwm::Initialize() {
 }
 
 HfPwmErr SfPwm::Deinitialize() {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -66,8 +68,8 @@ HfPwmErr SfPwm::Deinitialize() {
 }
 
 HfPwmErr SfPwm::ConfigureChannel(uint8_t channel_id, const PwmChannelConfig &config) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -79,8 +81,8 @@ HfPwmErr SfPwm::ConfigureChannel(uint8_t channel_id, const PwmChannelConfig &con
 }
 
 HfPwmErr SfPwm::SetDutyCycle(uint8_t channel_id, float duty_cycle) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -92,8 +94,8 @@ HfPwmErr SfPwm::SetDutyCycle(uint8_t channel_id, float duty_cycle) {
 }
 
 HfPwmErr SfPwm::SetFrequency(uint8_t channel_id, uint32_t frequency_hz) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -105,8 +107,8 @@ HfPwmErr SfPwm::SetFrequency(uint8_t channel_id, uint32_t frequency_hz) {
 }
 
 HfPwmErr SfPwm::Start(uint8_t channel_id) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -118,8 +120,8 @@ HfPwmErr SfPwm::Start(uint8_t channel_id) {
 }
 
 HfPwmErr SfPwm::Stop(uint8_t channel_id) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -131,8 +133,8 @@ HfPwmErr SfPwm::Stop(uint8_t channel_id) {
 }
 
 HfPwmErr SfPwm::GetDutyCycle(uint8_t channel_id, float &duty_cycle) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -144,8 +146,8 @@ HfPwmErr SfPwm::GetDutyCycle(uint8_t channel_id, float &duty_cycle) {
 }
 
 HfPwmErr SfPwm::GetFrequency(uint8_t channel_id, uint32_t &frequency_hz) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -157,8 +159,8 @@ HfPwmErr SfPwm::GetFrequency(uint8_t channel_id, uint32_t &frequency_hz) {
 }
 
 bool SfPwm::IsChannelActive(uint8_t channel_id) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return false; // Default to inactive on timeout
   }
 
@@ -170,8 +172,8 @@ bool SfPwm::IsChannelActive(uint8_t channel_id) {
 }
 
 uint8_t SfPwm::GetMaxChannels() {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return 0; // Default to no channels on timeout
   }
 
@@ -184,8 +186,8 @@ uint8_t SfPwm::GetMaxChannels() {
 
 // Advanced features (ESP32-specific)
 HfPwmErr SfPwm::SetPhase(uint8_t channel_id, float phase_degrees) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -197,8 +199,8 @@ HfPwmErr SfPwm::SetPhase(uint8_t channel_id, float phase_degrees) {
 }
 
 HfPwmErr SfPwm::ConfigureFade(uint8_t channel_id, const PwmFadeConfig &fade_config) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -210,8 +212,8 @@ HfPwmErr SfPwm::ConfigureFade(uint8_t channel_id, const PwmFadeConfig &fade_conf
 }
 
 HfPwmErr SfPwm::StartFade(uint8_t channel_id) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -224,8 +226,8 @@ HfPwmErr SfPwm::StartFade(uint8_t channel_id) {
 
 HfPwmErr SfPwm::ConfigureComplementary(uint8_t primary_channel, uint8_t secondary_channel,
                                        const PwmComplementaryConfig &comp_config) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -237,8 +239,8 @@ HfPwmErr SfPwm::ConfigureComplementary(uint8_t primary_channel, uint8_t secondar
 }
 
 HfPwmErr SfPwm::SetDeadTime(uint8_t channel_id, uint16_t dead_time_ns) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -252,8 +254,8 @@ HfPwmErr SfPwm::SetDeadTime(uint8_t channel_id, uint16_t dead_time_ns) {
 // Callback management
 HfPwmErr SfPwm::RegisterCallback(uint8_t channel_id, PwmCallbackType callback_type,
                                  PwmCallback callback, void *user_data) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -265,8 +267,8 @@ HfPwmErr SfPwm::RegisterCallback(uint8_t channel_id, PwmCallbackType callback_ty
 }
 
 HfPwmErr SfPwm::UnregisterCallback(uint8_t channel_id, PwmCallbackType callback_type) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -279,8 +281,8 @@ HfPwmErr SfPwm::UnregisterCallback(uint8_t channel_id, PwmCallbackType callback_
 
 // Multi-channel operations
 HfPwmErr SfPwm::StartMultiple(const uint8_t *channel_ids, uint8_t num_channels) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -292,8 +294,8 @@ HfPwmErr SfPwm::StartMultiple(const uint8_t *channel_ids, uint8_t num_channels) 
 }
 
 HfPwmErr SfPwm::StopMultiple(const uint8_t *channel_ids, uint8_t num_channels) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -306,8 +308,8 @@ HfPwmErr SfPwm::StopMultiple(const uint8_t *channel_ids, uint8_t num_channels) {
 
 HfPwmErr SfPwm::SetDutyCycleMultiple(const uint8_t *channel_ids, const float *duty_cycles,
                                      uint8_t num_channels) {
-  std::unique_lock<std::mutex> lock(mutex_, std::defer_lock);
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     return HfPwmErr::PWM_TIMEOUT;
   }
 
@@ -319,11 +321,11 @@ HfPwmErr SfPwm::SetDutyCycleMultiple(const uint8_t *channel_ids, const float *du
 }
 
 bool SfPwm::IsInitialized() const {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   return is_initialized_;
 }
 
 const BasePwm *SfPwm::GetImplementation() const {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   return pwm_impl_.get();
 }

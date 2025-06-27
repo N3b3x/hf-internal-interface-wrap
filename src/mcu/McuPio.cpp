@@ -53,7 +53,7 @@ McuPio::~McuPio() noexcept {
 //==============================================================================
 
 HfPioErr McuPio::Initialize() noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (initialized_) {
     ESP_LOGW(TAG, "Already initialized");
@@ -76,7 +76,7 @@ HfPioErr McuPio::Initialize() noexcept {
 }
 
 HfPioErr McuPio::Deinitialize() noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return HfPioErr::PIO_ERR_NOT_INITIALIZED;
@@ -101,7 +101,7 @@ HfPioErr McuPio::Deinitialize() noexcept {
 }
 
 bool McuPio::IsInitialized() const noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
   return initialized_;
 }
 
@@ -110,7 +110,7 @@ bool McuPio::IsInitialized() const noexcept {
 //==============================================================================
 
 HfPioErr McuPio::ConfigureChannel(uint8_t channel_id, const PioChannelConfig &config) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return HfPioErr::PIO_ERR_NOT_INITIALIZED;
@@ -154,7 +154,7 @@ HfPioErr McuPio::ConfigureChannel(uint8_t channel_id, const PioChannelConfig &co
 
 HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t symbol_count,
                           bool wait_completion) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return HfPioErr::PIO_ERR_NOT_INITIALIZED;
@@ -266,7 +266,7 @@ HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t s
 
 HfPioErr McuPio::StartReceive(uint8_t channel_id, PioSymbol *buffer, size_t buffer_size,
                               uint32_t timeout_us) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return HfPioErr::PIO_ERR_NOT_INITIALIZED;
@@ -348,7 +348,7 @@ HfPioErr McuPio::StartReceive(uint8_t channel_id, PioSymbol *buffer, size_t buff
 }
 
 HfPioErr McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return HfPioErr::PIO_ERR_NOT_INITIALIZED;
@@ -385,7 +385,7 @@ HfPioErr McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) noexc
 //==============================================================================
 
 bool McuPio::IsChannelBusy(uint8_t channel_id) const noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return false;
@@ -395,7 +395,7 @@ bool McuPio::IsChannelBusy(uint8_t channel_id) const noexcept {
 }
 
 HfPioErr McuPio::GetChannelStatus(uint8_t channel_id, PioChannelStatus &status) const noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return HfPioErr::PIO_ERR_INVALID_CHANNEL;
@@ -426,25 +426,25 @@ HfPioErr McuPio::GetCapabilities(PioCapabilities &capabilities) const noexcept {
 //==============================================================================
 
 void McuPio::SetTransmitCallback(PioTransmitCallback callback, void *user_data) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
   transmit_callback_ = callback;
   callback_user_data_ = user_data;
 }
 
 void McuPio::SetReceiveCallback(PioReceiveCallback callback, void *user_data) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
   receive_callback_ = callback;
   callback_user_data_ = user_data;
 }
 
 void McuPio::SetErrorCallback(PioErrorCallback callback, void *user_data) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
   error_callback_ = callback;
   callback_user_data_ = user_data;
 }
 
 void McuPio::ClearCallbacks() noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
   transmit_callback_ = nullptr;
   receive_callback_ = nullptr;
   error_callback_ = nullptr;
@@ -457,7 +457,7 @@ void McuPio::ClearCallbacks() noexcept {
 
 HfPioErr McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz,
                                   float duty_cycle) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return HfPioErr::PIO_ERR_INVALID_CHANNEL;
@@ -500,7 +500,7 @@ HfPioErr McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz,
 }
 
 HfPioErr McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return HfPioErr::PIO_ERR_INVALID_CHANNEL;
@@ -525,7 +525,7 @@ size_t McuPio::GetMaxSymbolCount() const noexcept {
 
 HfPioErr McuPio::TransmitRawRmtSymbols(uint8_t channel_id, const rmt_symbol_word_t *rmt_symbols,
                                        size_t symbol_count, bool wait_completion) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return HfPioErr::PIO_ERR_NOT_INITIALIZED;
@@ -599,7 +599,7 @@ HfPioErr McuPio::TransmitRawRmtSymbols(uint8_t channel_id, const rmt_symbol_word
 HfPioErr McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, rmt_symbol_word_t *rmt_buffer,
                                       size_t buffer_size, size_t &symbols_received,
                                       uint32_t timeout_us) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return HfPioErr::PIO_ERR_NOT_INITIALIZED;
@@ -664,7 +664,7 @@ HfPioErr McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, rmt_symbol_word_t *rmt
 
 HfPioErr McuPio::CreateWS2812Encoder(uint8_t channel_id, uint32_t resolution_hz, uint32_t t0h_ns,
                                      uint32_t t0l_ns, uint32_t t1h_ns, uint32_t t1l_ns) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return HfPioErr::PIO_ERR_INVALID_CHANNEL;
@@ -712,7 +712,7 @@ HfPioErr McuPio::CreateWS2812Encoder(uint8_t channel_id, uint32_t resolution_hz,
 
 HfPioErr McuPio::TransmitWS2812(uint8_t channel_id, const uint8_t *grb_data, size_t length,
                                 bool wait_completion) noexcept {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return HfPioErr::PIO_ERR_NOT_INITIALIZED;
@@ -855,7 +855,7 @@ bool McuPio::OnTransmitComplete(rmt_channel_handle_t *channel,
   // Find the channel ID by comparing channel handles
   for (uint8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (instance->channels_[i].tx_channel == channel) {
-      std::lock_guard<std::mutex> lock(instance->state_mutex_);
+      RtosUniqueLock<RtosMutex> lock(instance->state_mutex_);
 
       auto &ch = instance->channels_[i];
       ch.busy = false;
@@ -885,7 +885,7 @@ bool McuPio::OnReceiveComplete(rmt_channel_handle_t *channel, const rmt_rx_done_
   // Find the channel ID by comparing channel handles
   for (uint8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (instance->channels_[i].rx_channel == channel) {
-      std::lock_guard<std::mutex> lock(instance->state_mutex_);
+      RtosUniqueLock<RtosMutex> lock(instance->state_mutex_);
 
       auto &ch = instance->channels_[i];
 

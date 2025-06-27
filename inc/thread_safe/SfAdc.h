@@ -22,13 +22,11 @@
 #ifndef HAL_INTERNAL_INTERFACE_DRIVERS_SFADC_H_
 #define HAL_INTERNAL_INTERFACE_DRIVERS_SFADC_H_
 
+#include "../utils/RtosMutex.h"
 #include "BaseAdc.h"
 #include "McuTypes.h"
 #include <atomic>
-#include <chrono>
 #include <memory>
-#include <mutex>
-#include <shared_mutex>
 #include <vector>
 
 /**
@@ -90,7 +88,7 @@ public:
    * @brief Set mutex acquisition timeout for all operations.
    * @param timeout Maximum time to wait for mutex acquisition
    */
-  void SetMutexTimeout(std::chrono::milliseconds timeout) noexcept;
+  void SetMutexTimeout(uint32_t timeout_ms) noexcept;
 
   /**
    * @brief Initialize ADC with thread safety.
@@ -282,11 +280,11 @@ private:
   // PRIVATE MEMBERS
   //==============================================================================
 
-  std::unique_ptr<BaseAdc> adc_impl_;       ///< Wrapped ADC implementation
-  mutable std::shared_mutex rw_mutex_;      ///< Reader-writer mutex
-  std::atomic<bool> initialized_;           ///< Atomic initialization flag
-  std::chrono::milliseconds mutex_timeout_; ///< Mutex acquisition timeout
-  mutable ThreadingStats stats_;            ///< Threading statistics
+  std::unique_ptr<BaseAdc> adc_impl_;  ///< Wrapped ADC implementation
+  mutable std::shared_mutex rw_mutex_; ///< Reader-writer mutex
+  std::atomic<bool> initialized_;      ///< Atomic initialization flag
+  uint32_t mutex_timeout_ms_;          ///< Mutex acquisition timeout in milliseconds
+  mutable ThreadingStats stats_;       ///< Threading statistics
 
   //==============================================================================
   // PRIVATE HELPER METHODS
@@ -305,12 +303,12 @@ private:
   /**
    * @brief Update lock timing statistics.
    */
-  void UpdateLockStats(const std::chrono::steady_clock::time_point &start_time) const noexcept;
+  void UpdateLockStats(uint64_t start_time_us) const noexcept;
 
   /**
    * @brief Default mutex timeout (5 seconds).
    */
-  static constexpr std::chrono::milliseconds DEFAULT_TIMEOUT{5000};
+  static constexpr uint32_t DEFAULT_TIMEOUT_MS{5000};
 };
 
 #endif // HAL_INTERNAL_INTERFACE_DRIVERS_SFADC_H_

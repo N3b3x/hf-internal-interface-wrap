@@ -12,10 +12,10 @@
 #ifndef MCU_UART_H
 #define MCU_UART_H
 
+#include "../utils/RtosMutex.h"
 #include "BaseUart.h"
 #include "McuTypes.h"
 #include <cstdarg>
-#include <mutex>
 
 /**
  * @class McuUart
@@ -299,7 +299,7 @@ private:
   // PRIVATE MEMBERS                              //
   //==============================================//
 
-  mutable std::mutex mutex_;         ///< Thread safety mutex
+  mutable RtosMutex mutex_;          ///< Thread safety mutex
   hf_uart_handle_t platform_handle_; ///< Platform-specific UART handle
   HfUartErr last_error_;             ///< Last error that occurred
   uint32_t bytes_transmitted_;       ///< Total bytes transmitted

@@ -70,7 +70,7 @@ bool McuCan::Stop() noexcept {
 //==============================================================================
 
 bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return false;
@@ -80,7 +80,7 @@ bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcep
 }
 
 bool McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return false;
@@ -94,7 +94,7 @@ bool McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
 //==============================================================================
 
 bool McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return false;
@@ -105,7 +105,7 @@ bool McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
 }
 
 void McuCan::ClearReceiveCallback() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   receive_callback_ = nullptr;
 }
 
@@ -114,7 +114,7 @@ void McuCan::ClearReceiveCallback() noexcept {
 //==============================================================================
 
 bool McuCan::GetStatus(CanBusStatus &status) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return false;
@@ -124,7 +124,7 @@ bool McuCan::GetStatus(CanBusStatus &status) noexcept {
 }
 
 bool McuCan::Reset() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return false;
@@ -134,7 +134,7 @@ bool McuCan::Reset() noexcept {
 }
 
 bool McuCan::IsTransmitQueueFull() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return true;
@@ -144,7 +144,7 @@ bool McuCan::IsTransmitQueueFull() const noexcept {
 }
 
 bool McuCan::IsReceiveQueueEmpty() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return true;
@@ -154,7 +154,7 @@ bool McuCan::IsReceiveQueueEmpty() const noexcept {
 }
 
 uint32_t McuCan::GetTransmitErrorCount() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return 0;
@@ -164,7 +164,7 @@ uint32_t McuCan::GetTransmitErrorCount() const noexcept {
 }
 
 uint32_t McuCan::GetReceiveErrorCount() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return 0;
@@ -178,7 +178,7 @@ uint32_t McuCan::GetReceiveErrorCount() const noexcept {
 //==============================================================================
 
 bool McuCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return false;
@@ -188,7 +188,7 @@ bool McuCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noex
 }
 
 bool McuCan::ClearAcceptanceFilter() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return false;
