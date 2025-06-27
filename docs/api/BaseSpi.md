@@ -1,16 +1,16 @@
-# 🔄 BaseSpiBus API Documentation
+# 🔄 BaseSpi API Documentation
 
 ## 📋 Overview
 
-The `BaseSpiBus` class is an abstract base class that provides a unified, platform-agnostic interface for SPI (Serial Peripheral Interface) bus communication in the HardFOC system. This class enables high-speed communication with various SPI devices such as ADCs, DACs, sensors, displays, and external controllers.
+The `BaseSpi` class is an abstract base class that provides a unified, platform-agnostic interface for SPI (Serial Peripheral Interface) bus communication in the HardFOC system. This class enables high-speed communication with various SPI devices such as ADCs, DACs, sensors, displays, and external controllers.
 
 ## 🏗️ Class Hierarchy
 
 ```
-BaseSpiBus (Abstract Base Class)
-    ├── McuSpiBus (ESP32 SPI implementation)
-    ├── StmSpiBus (STM32 SPI implementation)
-    ├── BitBangSpiBus (Software SPI implementation)
+BaseSpi (Abstract Base Class)
+    ├── McuSpi (ESP32 SPI implementation)
+    ├── StmSpi (STM32 SPI implementation)
+    ├── BitBangSpi (Software SPI implementation)
     └── SfSpiBus (Thread-safe wrapper)
 ```
 
@@ -232,10 +232,10 @@ virtual HfSpiErr ReadRegister(uint8_t device_id, uint8_t reg_addr,
 
 ### Basic SPI Setup and Communication
 ```cpp
-#include "mcu/McuSpiBus.h"
+#include "mcu/McuSpi.h"
 
 // Create SPI instance
-auto spi = McuSpiBus::Create();
+auto spi = McuSpi::Create();
 
 // Configure SPI bus
 SpiBusConfig config;
@@ -438,14 +438,7 @@ BenchmarkTransfer("Write-only 64 bytes", [&]() {
 
 ## 🧪 Testing
 
-The BaseSpiBus class can be tested using:
-
-```cpp
-#include "tests/SpiBusTests.h"
-
-// Run comprehensive SPI tests
-bool success = TestSpiBusFunctionality();
-```
+Unit tests are not provided in this repository.
 
 ## ⚠️ Important Notes
 
@@ -459,9 +452,9 @@ bool success = TestSpiBusFunctionality();
 
 ## 🔗 Related Classes
 
-- [`BaseI2cBus`](BaseI2cBus.md) - I2C interface following same pattern
+- [`BaseI2c`](BaseI2c.md) - I2C interface following same pattern
 - [`BaseGpio`](BaseGpio.md) - GPIO interface for CS and other control pins
-- [`McuSpiBus`](../mcu/McuSpiBus.md) - ESP32 SPI implementation
+- [`McuSpi`](../mcu/McuSpi.md) - ESP32 SPI implementation
 - [`SfSpiBus`](../thread_safe/SfSpiBus.md) - Thread-safe wrapper
 
 ## 📝 See Also

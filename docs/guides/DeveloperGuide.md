@@ -143,7 +143,7 @@ auto gpio_impl = std::make_shared<McuDigitalGpio>(2);
 SfGpio safe_gpio(gpio_impl);
 
 // Safe to call from multiple threads
-safe_gpio.setPinLevel(2, HF_GPIO_LEVEL_HIGH);
+safe_gpio.digitalWrite(2, true);
 ```
 
 **When to use:** Multi-threaded applications, FreeRTOS tasks.
@@ -214,11 +214,11 @@ public:
     }
     
     void TurnOn() {
-        led_gpio_->setPinLevel(pin_, HF_GPIO_LEVEL_HIGH);
+        led_gpio_->digitalWrite(pin_, true);
     }
-    
+
     void TurnOff() {
-        led_gpio_->setPinLevel(pin_, HF_GPIO_LEVEL_LOW);
+        led_gpio_->digitalWrite(pin_, false);
     }
     
     void Blink(int duration_ms) {
@@ -470,7 +470,7 @@ fast_gpio.SetActive();     // ~1µs
 
 // Slower: Thread-safe wrapper
 SfGpio safe_gpio(gpio_impl);
-safe_gpio.setPinLevel(2, HF_GPIO_LEVEL_HIGH); // ~3µs (includes mutex)
+safe_gpio.digitalWrite(2, true); // ~3µs (includes mutex)
 ```
 
 ### 3. Memory Usage
@@ -691,8 +691,8 @@ void BenchmarkGpioOperations() {
     
     start = esp_timer_get_time();
     for (int i = 0; i < 1000; ++i) {
-        safe_gpio->setPinLevel(3, HF_GPIO_LEVEL_HIGH);
-        safe_gpio->setPinLevel(3, HF_GPIO_LEVEL_LOW);
+        safe_gpio->digitalWrite(3, true);
+        safe_gpio->digitalWrite(3, false);
     }
     end = esp_timer_get_time();
     

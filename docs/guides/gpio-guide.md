@@ -38,10 +38,8 @@ Interrupt callbacks run in an ISR context, so keep them short.
 
 ```cpp
 #include "SfGpio.h"
-#include <mutex>
 
-std::mutex gpio_mutex;
-SfGpio safe_led(std::make_shared<McuDigitalGpio>(HF_GPIO_NUM_2), gpio_mutex);
+SfGpio safe_led(std::make_shared<McuDigitalGpio>(HF_GPIO_NUM_2));
 ```
 
 ## Best Practices

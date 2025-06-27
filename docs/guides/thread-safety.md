@@ -6,14 +6,12 @@ Multi-threaded applications must coordinate access to hardware. The wrapper prov
 
 ```cpp
 #include "SfGpio.h"
-#include <mutex>
 
-std::mutex gpio_mutex;
 auto base = std::make_shared<McuDigitalGpio>(HF_GPIO_NUM_2);
-SfGpio safe_gpio(base, gpio_mutex);
+SfGpio safe_gpio(base); // SfGpio creates its own FreeRTOS mutex
 ```
 
-All member functions of `SfGpio` automatically acquire the provided mutex before delegating to `McuDigitalGpio`.
+All member functions of `SfGpio` automatically acquire an internal mutex before delegating to `McuDigitalGpio`.
 
 ## RAII Helpers
 
