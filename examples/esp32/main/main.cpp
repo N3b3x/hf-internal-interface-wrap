@@ -2,6 +2,10 @@
 #include "DummyDevice.hpp"
 #include "I2cBus.h"
 #include "McuSelect.h"
+
+#include "CommBusTests.cpp"
+#include "DigitalOutputGuardTest.cpp"
+#include "McuPioTest.cpp"
 #include <iostream>
 
 extern "C" void app_main(void) {
@@ -43,8 +47,12 @@ extern "C" void app_main(void) {
   // Use GPIO_NUM_8 for LED on ESP32-C6 (built-in LED pin)
   DigitalOutput led(GPIO_NUM_8, DigitalGpio::ActiveState::High);
   led.SetActive();
-  
+
   std::cout << "\n=== ESP32-C6 Hardware Initialization Complete ===" << std::endl;
   std::cout << "I2C Bus: GPIO6 (SDA), GPIO7 (SCL)" << std::endl;
   std::cout << "LED: GPIO8 (Active)" << std::endl;
+
+  RunDigitalOutputGuardTests();
+  RunMcuPioTests();
+  RunCommBusTests();
 }

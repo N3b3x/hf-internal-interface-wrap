@@ -234,7 +234,7 @@ void TestMoveSemantics() {
     std::cout << "✅ Move semantics test passed" << std::endl;
 }
 
-int main() {
+extern "C" int RunDigitalOutputGuardTests() {
     std::cout << "DigitalOutputGuard Test Suite" << std::endl;
     std::cout << "=============================" << std::endl;
     
