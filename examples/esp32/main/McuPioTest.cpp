@@ -3,7 +3,7 @@
  * @brief Unit tests for the ESP32 RMT-based McuPio implementation
  */
 
-#include "../mcu/McuPio.h"
+#include "McuPio.h"
 #include <cassert>
 #include <iostream>
 #include <vector>
@@ -174,7 +174,7 @@ void TestErrorCodeStrings() {
     std::cout << "✓ Error code string tests passed" << std::endl;
 }
 
-int main() {
+extern "C" int RunMcuPioTests() {
     try {
         TestErrorCodeStrings();
         
