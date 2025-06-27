@@ -36,7 +36,12 @@
 // #define HF_TARGET_MCU_ESP32       // ESP32 Classic Xtensa MCU
 // #define HF_TARGET_MCU_STM32F4     // STM32F4 series ARM Cortex-M4
 // #define HF_TARGET_MCU_STM32H7     // STM32H7 series ARM Cortex-M7
+
 // #define HF_TARGET_MCU_RP2040      // Raspberry Pi Pico RP2040
+
+// Optional thread safety support using RTOS-based mutexes
+// Uncomment to enable mutex protection in MCU drivers
+// #define HF_THREAD_SAFE
 
 //==============================================================================
 // AUTOMATIC PLATFORM CONFIGURATION BASED ON SELECTION

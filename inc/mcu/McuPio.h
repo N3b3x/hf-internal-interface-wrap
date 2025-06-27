@@ -18,10 +18,10 @@
 #ifndef MCU_PIO_H
 #define MCU_PIO_H
 
+#include "../utils/RtosMutex.h"
 #include "BasePio.h"
 #include "McuTypes.h"
 #include <array>
-#include <mutex>
 
 // Forward declarations for ESP32 RMT types
 #ifdef HF_MCU_FAMILY_ESP32
@@ -252,7 +252,7 @@ private:
 
   bool initialized_;
   std::array<ChannelState, MAX_CHANNELS> channels_;
-  mutable std::mutex state_mutex_;
+  mutable RtosMutex state_mutex_;
 
   // Callbacks
   PioTransmitCallback transmit_callback_;

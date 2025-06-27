@@ -35,7 +35,7 @@ bool McuI2c::Initialize() noexcept {
     return true;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   // Validate configuration
   if (config_.sda_pin == HF_GPIO_INVALID || config_.scl_pin == HF_GPIO_INVALID) {
@@ -62,7 +62,7 @@ bool McuI2c::Deinitialize() noexcept {
     return true;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   bool result = PlatformDeinitialize();
   if (result) {
@@ -86,7 +86,7 @@ HfI2cErr McuI2c::Write(uint8_t device_addr, const uint8_t *data, uint16_t length
     return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
@@ -143,7 +143,7 @@ HfI2cErr McuI2c::Read(uint8_t device_addr, uint8_t *data, uint16_t length,
     return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
@@ -201,7 +201,7 @@ HfI2cErr McuI2c::WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t
     return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
@@ -283,7 +283,7 @@ bool McuI2c::ResetBus() noexcept {
     return false;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Reset I2C bus by deinitializing and reinitializing

@@ -13,9 +13,9 @@
 #ifndef MCU_CAN_H
 #define MCU_CAN_H
 
+#include "../utils/RtosMutex.h"
 #include "BaseCan.h"
 #include "McuTypes.h"
-#include <mutex>
 
 /**
  * @class McuCan
@@ -123,7 +123,7 @@ public:
 private:
   CanBusConfig config_;                 ///< CAN bus configuration
   CanReceiveCallback receive_callback_; ///< User receive callback
-  mutable std::mutex mutex_;            ///< Thread safety mutex
+  mutable RtosMutex mutex_;             ///< Thread safety mutex
 
   // Platform-specific implementation methods
   bool PlatformInitialize() noexcept;

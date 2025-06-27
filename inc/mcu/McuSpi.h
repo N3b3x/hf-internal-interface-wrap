@@ -12,9 +12,9 @@
 #ifndef MCU_SPI_H
 #define MCU_SPI_H
 
+#include "../utils/RtosMutex.h"
 #include "BaseSpi.h"
 #include "McuTypes.h"
-#include <mutex>
 
 /**
  * @class McuSpi
@@ -242,7 +242,7 @@ private:
   // PRIVATE MEMBERS                              //
   //==============================================//
 
-  mutable std::mutex mutex_;        ///< Thread safety mutex
+  mutable RtosMutex mutex_;         ///< Thread safety mutex
   hf_spi_handle_t platform_handle_; ///< Platform-specific SPI handle
   HfSpiErr last_error_;             ///< Last error that occurred
   uint32_t transaction_count_;      ///< Number of transactions performed

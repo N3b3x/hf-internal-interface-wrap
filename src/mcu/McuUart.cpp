@@ -41,7 +41,7 @@ bool McuUart::Initialize() noexcept {
     return true;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   // Validate configuration
   if (!IsValidBaudRate(config_.baud_rate)) {
@@ -83,7 +83,7 @@ bool McuUart::Deinitialize() noexcept {
     return true;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   bool result = PlatformDeinitialize();
   if (result) {
@@ -106,7 +106,7 @@ HfUartErr McuUart::Write(const uint8_t *data, uint16_t length, uint32_t timeout_
     return HfUartErr::UART_SUCCESS;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   uint32_t timeout = GetTimeoutMs(timeout_ms);
@@ -151,7 +151,7 @@ HfUartErr McuUart::Read(uint8_t *data, uint16_t length, uint32_t timeout_ms) noe
     return HfUartErr::UART_ERR_INVALID_PARAMETER;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   uint32_t timeout = GetTimeoutMs(timeout_ms);

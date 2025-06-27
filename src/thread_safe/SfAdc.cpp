@@ -12,11 +12,10 @@
  */
 #include "../thread_safe/SfAdc.h"
 #include <algorithm>
-#include <chrono>
 
 namespace {
 // Default timeout for mutex operations (milliseconds)
-constexpr uint32_t DEFAULT_TIMEOUT = 5000;
+constexpr uint32_t DEFAULT_TIMEOUT_MS = 5000;
 
 // Maximum batch size for conversions
 constexpr size_t MAX_BATCH_SIZE = 32;
@@ -27,7 +26,7 @@ constexpr size_t MAX_BATCH_SIZE = 32;
 //==============================================================================
 
 SfAdc::SfAdc(std::unique_ptr<BaseAdc> adc_impl) noexcept
-    : adc_impl_(std::move(adc_impl)), initialized_(false), mutex_timeout_(DEFAULT_TIMEOUT),
+    : adc_impl_(std::move(adc_impl)), initialized_(false), mutex_timeout_ms_(DEFAULT_TIMEOUT_MS),
       stats_{} {
   if (!adc_impl_) {
     return;
@@ -45,8 +44,8 @@ SfAdc::~SfAdc() noexcept {
 //==============================================================================
 
 HfAdcErr SfAdc::Initialize() noexcept {
-  std::unique_lock<std::shared_mutex> lock(mutex_, std::chrono::milliseconds(mutex_timeout_));
-  if (!lock.owns_lock()) {
+  RtosUniqueLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
   }
@@ -69,8 +68,8 @@ HfAdcErr SfAdc::Initialize() noexcept {
 }
 
 HfAdcErr SfAdc::Deinitialize() noexcept {
-  std::unique_lock<std::shared_mutex> lock(mutex_, std::chrono::milliseconds(mutex_timeout_));
-  if (!lock.owns_lock()) {
+  RtosUniqueLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
   }
@@ -98,8 +97,8 @@ HfAdcErr SfAdc::Deinitialize() noexcept {
 
 HfAdcErr SfAdc::ConfigureChannel(hf_adc_channel_t channel,
                                  const AdcChannelConfig &config) noexcept {
-  std::unique_lock<std::shared_mutex> lock(mutex_, std::chrono::milliseconds(mutex_timeout_));
-  if (!lock.owns_lock()) {
+  RtosUniqueLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
   }
@@ -117,8 +116,8 @@ HfAdcErr SfAdc::ConfigureChannel(hf_adc_channel_t channel,
 }
 
 HfAdcErr SfAdc::ReadChannel(hf_adc_channel_t channel, uint32_t &raw_value) noexcept {
-  std::shared_lock<std::shared_mutex> lock(mutex_, std::chrono::milliseconds(mutex_timeout_));
-  if (!lock.owns_lock()) {
+  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
   }
@@ -136,8 +135,8 @@ HfAdcErr SfAdc::ReadChannel(hf_adc_channel_t channel, uint32_t &raw_value) noexc
 }
 
 HfAdcErr SfAdc::ReadChannelVoltage(hf_adc_channel_t channel, float &voltage_v) noexcept {
-  std::shared_lock<std::shared_mutex> lock(mutex_, std::chrono::milliseconds(mutex_timeout_));
-  if (!lock.owns_lock()) {
+  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
   }
@@ -158,8 +157,8 @@ HfAdcErr SfAdc::ReadChannelVoltage(hf_adc_channel_t channel, float &voltage_v) n
 // ADVANCED FEATURES
 //==============================================================================
 
-void SfAdc::SetMutexTimeout(std::chrono::milliseconds timeout) {
-  mutex_timeout_ = static_cast<uint32_t>(timeout.count());
+void SfAdc::SetMutexTimeout(uint32_t timeout_ms) {
+  mutex_timeout_ms_ = timeout_ms;
 }
 
 SfAdc::ThreadingStats SfAdc::GetThreadingStats() const {
@@ -187,8 +186,8 @@ HfAdcErr SfAdc::ReadMultipleChannels(const hf_adc_channel_t *channels, uint32_t 
     return HfAdcErr::ADC_ERR_INVALID_PARAMETER;
   }
 
-  std::shared_lock<std::shared_mutex> lock(mutex_, std::chrono::milliseconds(mutex_timeout_));
-  if (!lock.owns_lock()) {
+  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
     stats_.timeout_count_.fetch_add(1);
     return HfAdcErr::ADC_ERR_TIMEOUT;
   }
@@ -229,8 +228,8 @@ const char *SfAdc::GetErrorString(HfAdcErr error) const noexcept {
 }
 
 uint8_t SfAdc::GetMaxChannels() const noexcept {
-  std::shared_lock<std::shared_mutex> lock(mutex_, std::chrono::milliseconds(mutex_timeout_));
-  if (!lock.owns_lock() || !adc_impl_) {
+  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked() || !adc_impl_) {
     return 0;
   }
 
@@ -238,8 +237,8 @@ uint8_t SfAdc::GetMaxChannels() const noexcept {
 }
 
 bool SfAdc::IsChannelConfigured(hf_adc_channel_t channel) const noexcept {
-  std::shared_lock<std::shared_mutex> lock(mutex_, std::chrono::milliseconds(mutex_timeout_));
-  if (!lock.owns_lock() || !adc_impl_) {
+  RtosSharedLock<RtosSharedMutex> lock(mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked() || !adc_impl_) {
     return false;
   }
 

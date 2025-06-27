@@ -8,7 +8,6 @@
  */
 #include "McuPwm.h"
 #include <algorithm>
-#include <chrono>
 
 // Platform-specific includes and definitions
 #ifdef HF_MCU_FAMILY_ESP32
@@ -36,7 +35,7 @@ McuPwm::McuPwm(uint32_t base_clock_hz) noexcept
 }
 
 McuPwm::~McuPwm() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   if (initialized_) {
     ESP_LOGI(TAG, "McuPwm destructor - cleaning up");
     Deinitialize();
@@ -48,7 +47,7 @@ McuPwm::~McuPwm() noexcept {
 //==============================================================================
 
 HfPwmErr McuPwm::Initialize() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (initialized_) {
     ESP_LOGW(TAG, "PWM already initialized");
@@ -86,7 +85,7 @@ HfPwmErr McuPwm::Initialize() noexcept {
 }
 
 HfPwmErr McuPwm::Deinitialize() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -119,7 +118,7 @@ HfPwmErr McuPwm::Deinitialize() noexcept {
 }
 
 bool McuPwm::IsInitialized() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   return initialized_;
 }
 
@@ -128,7 +127,7 @@ bool McuPwm::IsInitialized() const noexcept {
 //==============================================================================
 
 HfPwmErr McuPwm::ConfigureChannel(HfChannelId channel_id, const PwmChannelConfig &config) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -191,7 +190,7 @@ HfPwmErr McuPwm::ConfigureChannel(HfChannelId channel_id, const PwmChannelConfig
 }
 
 HfPwmErr McuPwm::EnableChannel(HfChannelId channel_id) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -228,7 +227,7 @@ HfPwmErr McuPwm::EnableChannel(HfChannelId channel_id) noexcept {
 }
 
 HfPwmErr McuPwm::DisableChannel(HfChannelId channel_id) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -260,7 +259,7 @@ HfPwmErr McuPwm::DisableChannel(HfChannelId channel_id) noexcept {
 }
 
 bool McuPwm::IsChannelEnabled(HfChannelId channel_id) const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return false;
@@ -316,7 +315,7 @@ return HfPwmErr::PWM_SUCCESS;
 }
 
 HfPwmErr McuPwm::EnableChannel(uint8_t channel_id) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -359,7 +358,7 @@ HfPwmErr McuPwm::EnableChannel(uint8_t channel_id) noexcept {
 }
 
 HfPwmErr McuPwm::DisableChannel(uint8_t channel_id) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -399,7 +398,7 @@ HfPwmErr McuPwm::DisableChannel(uint8_t channel_id) noexcept {
 }
 
 bool McuPwm::IsChannelEnabled(uint8_t channel_id) const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return false;
@@ -413,7 +412,7 @@ bool McuPwm::IsChannelEnabled(uint8_t channel_id) const noexcept {
 //==============================================================================
 
 HfPwmErr McuPwm::SetDutyCycle(HfChannelId channel_id, float duty_cycle) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -439,7 +438,7 @@ HfPwmErr McuPwm::SetDutyCycle(HfChannelId channel_id, float duty_cycle) noexcept
 }
 
 HfPwmErr McuPwm::SetDutyCycleRaw(HfChannelId channel_id, uint32_t raw_value) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -476,7 +475,7 @@ HfPwmErr McuPwm::SetDutyCycleRaw(HfChannelId channel_id, uint32_t raw_value) noe
 }
 
 HfPwmErr McuPwm::SetFrequency(HfChannelId channel_id, HfFrequencyHz frequency_hz) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -531,7 +530,7 @@ HfPwmErr McuPwm::SetFrequency(HfChannelId channel_id, HfFrequencyHz frequency_hz
 }
 
 HfPwmErr McuPwm::SetPhaseShift(HfChannelId channel_id, float phase_shift_degrees) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -553,7 +552,7 @@ HfPwmErr McuPwm::SetPhaseShift(HfChannelId channel_id, float phase_shift_degrees
 //==============================================================================
 
 HfPwmErr McuPwm::StartAll() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -574,7 +573,7 @@ HfPwmErr McuPwm::StartAll() noexcept {
 }
 
 HfPwmErr McuPwm::StopAll() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -595,7 +594,7 @@ HfPwmErr McuPwm::StopAll() noexcept {
 }
 
 HfPwmErr McuPwm::UpdateAll() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -624,7 +623,7 @@ HfPwmErr McuPwm::UpdateAll() noexcept {
 HfPwmErr McuPwm::SetComplementaryOutput(HfChannelId primary_channel,
                                         HfChannelId complementary_channel,
                                         uint32_t deadtime_ns) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -664,7 +663,7 @@ HfPwmErr McuPwm::SetComplementaryOutput(HfChannelId primary_channel,
 //==============================================================================
 
 float McuPwm::GetDutyCycle(HfChannelId channel_id) const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return -1.0f;
@@ -675,7 +674,7 @@ float McuPwm::GetDutyCycle(HfChannelId channel_id) const noexcept {
 }
 
 HfFrequencyHz McuPwm::GetFrequency(HfChannelId channel_id) const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return 0;
@@ -685,7 +684,7 @@ HfFrequencyHz McuPwm::GetFrequency(HfChannelId channel_id) const noexcept {
 }
 
 HfPwmErr McuPwm::GetChannelStatus(HfChannelId channel_id, PwmChannelStatus &status) const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
@@ -723,7 +722,7 @@ HfPwmErr McuPwm::GetCapabilities(PwmCapabilities &capabilities) const noexcept {
 }
 
 HfPwmErr McuPwm::GetLastError(HfChannelId channel_id) const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
@@ -737,13 +736,13 @@ HfPwmErr McuPwm::GetLastError(HfChannelId channel_id) const noexcept {
 //==============================================================================
 
 void McuPwm::SetPeriodCallback(PwmPeriodCallback callback, void *user_data) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   period_callback_ = callback;
   period_callback_user_data_ = user_data;
 }
 
 void McuPwm::SetFaultCallback(PwmFaultCallback callback, void *user_data) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   fault_callback_ = callback;
   fault_callback_user_data_ = user_data;
 }
@@ -754,7 +753,7 @@ void McuPwm::SetFaultCallback(PwmFaultCallback callback, void *user_data) noexce
 
 HfPwmErr McuPwm::SetHardwareFade(HfChannelId channel_id, float target_duty_cycle,
                                  uint32_t fade_time_ms) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -812,7 +811,7 @@ HfPwmErr McuPwm::SetHardwareFade(HfChannelId channel_id, float target_duty_cycle
 }
 
 HfPwmErr McuPwm::StopHardwareFade(HfChannelId channel_id) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -845,7 +844,7 @@ HfPwmErr McuPwm::StopHardwareFade(HfChannelId channel_id) noexcept {
 }
 
 bool McuPwm::IsFadeActive(HfChannelId channel_id) const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return false;
@@ -855,7 +854,7 @@ bool McuPwm::IsFadeActive(HfChannelId channel_id) const noexcept {
 }
 
 HfPwmErr McuPwm::SetIdleLevel(HfChannelId channel_id, uint8_t idle_level) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
@@ -892,7 +891,7 @@ HfPwmErr McuPwm::SetIdleLevel(HfChannelId channel_id, uint8_t idle_level) noexce
 }
 
 int8_t McuPwm::GetTimerAssignment(HfChannelId channel_id) const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return -1;
@@ -902,7 +901,7 @@ int8_t McuPwm::GetTimerAssignment(HfChannelId channel_id) const noexcept {
 }
 
 HfPwmErr McuPwm::ForceTimerAssignment(HfChannelId channel_id, uint8_t timer_id) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
     return HfPwmErr::PWM_ERR_NOT_INITIALIZED;

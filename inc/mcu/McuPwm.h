@@ -18,10 +18,10 @@
 #ifndef MCU_PWM_H
 #define MCU_PWM_H
 
+#include "../utils/RtosMutex.h"
 #include "BasePwm.h"
 #include "McuTypes.h"
 #include <array>
-#include <mutex>
 
 /**
  * @class McuPwm
@@ -310,9 +310,9 @@ private:
   // MEMBER VARIABLES
   //==============================================================================
 
-  mutable std::mutex mutex_; ///< Thread safety mutex
-  bool initialized_;         ///< Initialization state
-  uint32_t base_clock_hz_;   ///< Base clock frequency
+  mutable RtosMutex mutex_; ///< Thread safety mutex
+  bool initialized_;        ///< Initialization state
+  uint32_t base_clock_hz_;  ///< Base clock frequency
 
   std::array<ChannelState, MAX_CHANNELS> channels_;                     ///< Channel states
   std::array<TimerState, MAX_TIMERS> timers_;                           ///< Timer states

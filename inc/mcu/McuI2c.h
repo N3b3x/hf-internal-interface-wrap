@@ -14,11 +14,11 @@
 #ifndef MCU_I2C_H
 #define MCU_I2C_H
 
+#include "../utils/RtosMutex.h"
 #include "BaseI2c.h"
 #include "McuTypes.h"
 #include <functional>
 #include <memory>
-#include <mutex>
 #include <unordered_map>
 #include <vector>
 
@@ -715,7 +715,7 @@ private:
   std::unordered_map<uint16_t, void *> device_handles_; ///< Device handles map
 
   // State management
-  mutable std::mutex mutex_;   ///< Thread synchronization mutex
+  mutable RtosMutex mutex_;    ///< Thread synchronization mutex
   HfI2cErr last_error_;        ///< Last error that occurred
   uint64_t transaction_count_; ///< Transaction counter
   bool bus_locked_;            ///< Bus lock status

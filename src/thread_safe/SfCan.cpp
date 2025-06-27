@@ -12,10 +12,9 @@
  */
 #include "../thread_safe/SfCan.h"
 #include <algorithm>
-#include <chrono>
 
 namespace {
-constexpr std::chrono::milliseconds DEFAULT_TIMEOUT{100};
+constexpr uint32_t DEFAULT_TIMEOUT_MS{100};
 constexpr uint32_t DEFAULT_BLOCKING_TIMEOUT = UINT32_MAX;
 } // namespace
 
@@ -24,11 +23,11 @@ constexpr uint32_t DEFAULT_BLOCKING_TIMEOUT = UINT32_MAX;
 //==============================================================================
 
 SfCan::SfCan(std::unique_ptr<BaseCan> can_impl) noexcept
-    : can_impl_(std::move(can_impl)), initialized_(false), mutex_timeout_(DEFAULT_TIMEOUT),
+    : can_impl_(std::move(can_impl)), initialized_(false), mutex_timeout_ms_(DEFAULT_TIMEOUT_MS),
       stats_{} {}
 
 SfCan::~SfCan() noexcept {
-  std::lock_guard<std::shared_mutex> lock(rw_mutex_);
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
   if (initialized_ && can_impl_) {
     can_impl_->Deinitialize();
   }
@@ -38,14 +37,16 @@ SfCan::~SfCan() noexcept {
 // CONFIGURATION AND CONTROL
 //==============================================================================
 
-void SfCan::SetMutexTimeout(std::chrono::milliseconds timeout) noexcept {
-  std::lock_guard<std::shared_mutex> lock(rw_mutex_);
-  mutex_timeout_ = timeout;
+void SfCan::SetMutexTimeout(uint32_t timeout_ms) noexcept {
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
+  if (lock.IsLocked()) {
+    mutex_timeout_ms_ = timeout_ms;
+  }
 }
 
-std::chrono::milliseconds SfCan::GetMutexTimeout() const noexcept {
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_);
-  return mutex_timeout_;
+uint32_t SfCan::GetMutexTimeout() const noexcept {
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
+  return lock.IsLocked() ? mutex_timeout_ms_ : 0;
 }
 
 //==============================================================================
@@ -53,10 +54,10 @@ std::chrono::milliseconds SfCan::GetMutexTimeout() const noexcept {
 //==============================================================================
 
 bool SfCan::Initialize() noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::unique_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -81,10 +82,10 @@ bool SfCan::Initialize() noexcept {
 }
 
 bool SfCan::Deinitialize() noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::unique_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -104,10 +105,10 @@ bool SfCan::Deinitialize() noexcept {
 }
 
 bool SfCan::Start() noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::unique_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -123,10 +124,10 @@ bool SfCan::Start() noexcept {
 }
 
 bool SfCan::Stop() noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::unique_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -146,10 +147,10 @@ bool SfCan::Stop() noexcept {
 //==============================================================================
 
 bool SfCan::SendMessage(const hf_can_message_t &message, uint32_t timeout_ms) noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -165,10 +166,10 @@ bool SfCan::SendMessage(const hf_can_message_t &message, uint32_t timeout_ms) no
 }
 
 bool SfCan::ReceiveMessage(hf_can_message_t &message, uint32_t timeout_ms) noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -213,10 +214,10 @@ bool SfCan::SendMultipleMessages(const std::vector<hf_can_message_t> &messages,
     return true;
   }
 
-  auto start_time = std::chrono::steady_clock::now();
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -244,10 +245,10 @@ size_t SfCan::SendMultipleMessagesPartial(const std::vector<hf_can_message_t> &m
     return 0;
   }
 
-  auto start_time = std::chrono::steady_clock::now();
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return 0;
   }
@@ -275,10 +276,10 @@ size_t SfCan::SendMultipleMessagesPartial(const std::vector<hf_can_message_t> &m
 //==============================================================================
 
 bool SfCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::unique_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -294,10 +295,10 @@ bool SfCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
 }
 
 void SfCan::ClearReceiveCallback() noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::unique_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return;
   }
@@ -316,10 +317,10 @@ void SfCan::ClearReceiveCallback() noexcept {
 //==============================================================================
 
 bool SfCan::GetStatus(CanBusStatus &status) noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -335,10 +336,10 @@ bool SfCan::GetStatus(CanBusStatus &status) noexcept {
 }
 
 bool SfCan::Reset() noexcept {
-  auto start_time = std::chrono::steady_clock::now();
-  std::unique_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  auto start_time = RtosTime::GetCurrentTimeUs();
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     UpdateStats(start_time, true);
     return false;
   }
@@ -362,9 +363,9 @@ bool SfCan::IsInitialized() const noexcept {
 }
 
 bool SfCan::IsTransmitQueueFull() const noexcept {
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     return true; // Conservative: assume full on timeout
   }
 
@@ -376,9 +377,9 @@ bool SfCan::IsTransmitQueueFull() const noexcept {
 }
 
 bool SfCan::IsReceiveQueueEmpty() const noexcept {
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_, std::defer_lock);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
 
-  if (!lock.try_lock_for(mutex_timeout_)) {
+  if (!lock.try_lock_for(mutex_timeout_ms_)) {
     return true; // Conservative: assume empty on timeout
   }
 
@@ -406,17 +407,17 @@ void SfCan::Unlock() noexcept {
 }
 
 SfCan::ThreadingStats SfCan::GetThreadingStats() const noexcept {
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
   return stats_;
 }
 
 void SfCan::ResetThreadingStats() noexcept {
-  std::lock_guard<std::shared_mutex> lock(rw_mutex_);
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
   stats_ = ThreadingStats{};
 }
 
 const BaseCan *SfCan::GetImplementation() const noexcept {
-  std::shared_lock<std::shared_mutex> lock(rw_mutex_);
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_);
   return can_impl_.get();
 }
 
@@ -424,20 +425,19 @@ const BaseCan *SfCan::GetImplementation() const noexcept {
 // PRIVATE HELPER METHODS
 //==============================================================================
 
-void SfCan::UpdateStats(const std::chrono::steady_clock::time_point &start_time,
-                        bool was_timeout) noexcept {
-  auto end_time = std::chrono::steady_clock::now();
-  auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
+void SfCan::UpdateStats(uint64_t start_time_us, bool was_timeout) noexcept {
+  uint64_t end_time_us = RtosTime::GetCurrentTimeUs();
+  uint64_t duration = end_time_us - start_time_us;
 
   if (was_timeout) {
     ++stats_.lock_contentions;
   }
 
   ++stats_.total_operations;
-  stats_.total_lock_time_us += static_cast<uint64_t>(duration.count());
+  stats_.total_lock_time_us += duration;
   stats_.average_lock_time_us = stats_.total_lock_time_us / stats_.total_operations;
 
-  if (duration.count() > static_cast<int64_t>(stats_.max_lock_time_us)) {
-    stats_.max_lock_time_us = static_cast<uint64_t>(duration.count());
+  if (duration > stats_.max_lock_time_us) {
+    stats_.max_lock_time_us = duration;
   }
 }

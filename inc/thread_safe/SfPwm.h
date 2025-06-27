@@ -15,9 +15,9 @@
 #include "../base/BasePwm.h"
 #include "../mcu/McuPwm.h"
 #include "../mcu/McuTypes.h"
+#include "../utils/RtosMutex.h"
 #include <cstdint>
 #include <memory>
-#include <mutex>
 
 /**
  * @class SfPwm
@@ -437,7 +437,7 @@ private:
   //==============================================================================
 
   std::unique_ptr<BasePwm> pwm_impl_; ///< Underlying PWM implementation
-  mutable std::timed_mutex mutex_;    ///< Thread safety mutex
+  mutable RtosMutex mutex_;           ///< Thread safety mutex
   Config config_;                     ///< Configuration
   bool initialized_;                  ///< Initialization state
 
