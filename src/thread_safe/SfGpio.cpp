@@ -16,25 +16,17 @@ namespace ThreadSafe {
 //==============================================================================
 
 SfGpio::SfGpio(std::shared_ptr<BaseGpio> gpio_impl)
-    : gpio_impl_(gpio_impl), mutex_(xSemaphoreCreateMutex()), initialized_(false) {
-  if (mutex_ == nullptr) {
-    // Handle mutex creation failure
-  }
-}
+    : gpio_impl_(std::move(gpio_impl)), initialized_(false) {}
 
-SfGpio::~SfGpio() {
-  if (mutex_ != nullptr) {
-    vSemaphoreDelete(mutex_);
-    mutex_ = nullptr;
-  }
-}
+SfGpio::~SfGpio() = default;
 
 //==============================================================================
 // INITIALIZATION AND CONFIGURATION
 //==============================================================================
 
 HfGpioErr SfGpio::Initialize() noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -46,12 +38,12 @@ HfGpioErr SfGpio::Initialize() noexcept {
     }
   }
 
-  GiveMutex();
   return result;
 }
 
 HfGpioErr SfGpio::Deinitialize() noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -63,12 +55,12 @@ HfGpioErr SfGpio::Deinitialize() noexcept {
     }
   }
 
-  GiveMutex();
   return result;
 }
 
 HfGpioErr SfGpio::ConfigurePin(hf_gpio_num_t pin, const GpioPinConfig &config) noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -77,7 +69,6 @@ HfGpioErr SfGpio::ConfigurePin(hf_gpio_num_t pin, const GpioPinConfig &config) n
     result = gpio_impl_->ConfigurePin(pin, config);
   }
 
-  GiveMutex();
   return result;
 }
 
@@ -86,7 +77,8 @@ HfGpioErr SfGpio::ConfigurePin(hf_gpio_num_t pin, const GpioPinConfig &config) n
 //==============================================================================
 
 HfGpioErr SfGpio::SetLevel(hf_gpio_num_t pin, bool level) noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -95,12 +87,12 @@ HfGpioErr SfGpio::SetLevel(hf_gpio_num_t pin, bool level) noexcept {
     result = gpio_impl_->SetLevel(pin, level);
   }
 
-  GiveMutex();
   return result;
 }
 
 HfGpioErr SfGpio::GetLevel(hf_gpio_num_t pin, bool &level) noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -109,12 +101,12 @@ HfGpioErr SfGpio::GetLevel(hf_gpio_num_t pin, bool &level) noexcept {
     result = gpio_impl_->GetLevel(pin, level);
   }
 
-  GiveMutex();
   return result;
 }
 
 HfGpioErr SfGpio::ToggleLevel(hf_gpio_num_t pin) noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -123,7 +115,6 @@ HfGpioErr SfGpio::ToggleLevel(hf_gpio_num_t pin) noexcept {
     result = gpio_impl_->ToggleLevel(pin);
   }
 
-  GiveMutex();
   return result;
 }
 
@@ -133,7 +124,8 @@ HfGpioErr SfGpio::ToggleLevel(hf_gpio_num_t pin) noexcept {
 
 HfGpioErr SfGpio::EnableInterrupt(hf_gpio_num_t pin, hf_gpio_intr_type_t intr_type,
                                   GpioIsrCallback callback, void *user_data) noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -142,12 +134,12 @@ HfGpioErr SfGpio::EnableInterrupt(hf_gpio_num_t pin, hf_gpio_intr_type_t intr_ty
     result = gpio_impl_->EnableInterrupt(pin, intr_type, callback, user_data);
   }
 
-  GiveMutex();
   return result;
 }
 
 HfGpioErr SfGpio::DisableInterrupt(hf_gpio_num_t pin) noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -156,7 +148,6 @@ HfGpioErr SfGpio::DisableInterrupt(hf_gpio_num_t pin) noexcept {
     result = gpio_impl_->DisableInterrupt(pin);
   }
 
-  GiveMutex();
   return result;
 }
 
@@ -165,7 +156,8 @@ HfGpioErr SfGpio::DisableInterrupt(hf_gpio_num_t pin) noexcept {
 //==============================================================================
 
 HfGpioErr SfGpio::SetDriveStrength(hf_gpio_num_t pin, hf_gpio_drive_cap_t strength) noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -174,12 +166,12 @@ HfGpioErr SfGpio::SetDriveStrength(hf_gpio_num_t pin, hf_gpio_drive_cap_t streng
     result = gpio_impl_->SetDriveStrength(pin, strength);
   }
 
-  GiveMutex();
   return result;
 }
 
 HfGpioErr SfGpio::GetDriveStrength(hf_gpio_num_t pin, hf_gpio_drive_cap_t &strength) noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
 
@@ -188,7 +180,6 @@ HfGpioErr SfGpio::GetDriveStrength(hf_gpio_num_t pin, hf_gpio_drive_cap_t &stren
     result = gpio_impl_->GetDriveStrength(pin, strength);
   }
 
-  GiveMutex();
   return result;
 }
 
@@ -208,7 +199,8 @@ const char *SfGpio::GetErrorString(HfGpioErr error) const noexcept {
 }
 
 bool SfGpio::IsPinValid(hf_gpio_num_t pin) const noexcept {
-  if (!TakeMutex()) {
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked()) {
     return false;
   }
 
@@ -217,29 +209,12 @@ bool SfGpio::IsPinValid(hf_gpio_num_t pin) const noexcept {
     result = gpio_impl_->IsPinValid(pin);
   }
 
-  GiveMutex();
   return result;
 }
 
 //==============================================================================
 // PRIVATE METHODS
 //==============================================================================
-
-bool SfGpio::TakeMutex(uint32_t timeout_ms) const noexcept {
-  if (mutex_ == nullptr) {
-    return false;
-  }
-
-  TickType_t timeout_ticks = (timeout_ms == UINT32_MAX) ? portMAX_DELAY : pdMS_TO_TICKS(timeout_ms);
-
-  return xSemaphoreTake(mutex_, timeout_ticks) == pdTRUE;
-}
-
-void SfGpio::GiveMutex() const noexcept {
-  if (mutex_ != nullptr) {
-    xSemaphoreGive(mutex_);
-  }
-}
 
 } // namespace ThreadSafe
 } // namespace HardFOC

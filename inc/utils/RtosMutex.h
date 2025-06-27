@@ -95,6 +95,20 @@ public:
     return handle_;
   }
 
+  // Convenience FreeRTOS-style API -------------------------------------------------
+  using LockGuard = RtosUniqueLock<RtosMutex>;
+
+  bool Take(uint32_t timeout_ms = 0) noexcept {
+    if (timeout_ms > 0) {
+      return try_lock_for(timeout_ms);
+    }
+    return lock();
+  }
+
+  void Give() noexcept {
+    unlock();
+  }
+
 private:
   SemaphoreHandle_t handle_;
 };

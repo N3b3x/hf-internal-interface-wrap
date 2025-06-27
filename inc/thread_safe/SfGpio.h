@@ -12,8 +12,7 @@
 
 #include "../base/BaseGpio.h"
 #include "../mcu/McuTypes.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
+#include "../utils/RtosMutex.h"
 #include <memory>
 
 namespace HardFOC {
@@ -180,32 +179,10 @@ public:
 
 private:
   std::shared_ptr<BaseGpio> gpio_impl_; ///< Wrapped GPIO implementation
-  hf_mutex_handle_t mutex_;             ///< Mutex for thread safety
+  mutable RtosMutex mutex_;             ///< Mutex for thread safety
+  bool initialized_;                    ///< Initialization state
 
-  /**
-   * @brief Initialize mutex.
-   *
-   * @return bool true on success, false on failure
-   */
-  bool initializeMutex();
-
-  /**
-   * @brief Cleanup mutex.
-   */
-  void cleanupMutex();
-
-  /**
-   * @brief Lock mutex with timeout.
-   *
-   * @param timeout_ms Timeout in milliseconds
-   * @return bool true if locked, false on timeout
-   */
-  bool lockMutex(hf_timeout_ms_t timeout_ms = HF_TIMEOUT_DEFAULT);
-
-  /**
-   * @brief Unlock mutex.
-   */
-  void unlockMutex();
+  // No explicit lock/unlock helpers needed with RtosMutex
 };
 
 } // namespace ThreadSafe
