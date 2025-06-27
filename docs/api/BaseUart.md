@@ -1,16 +1,16 @@
-# 📡 BaseUartDriver API Documentation
+# 📡 BaseUart API Documentation
 
 ## 📋 Overview
 
-The `BaseUartDriver` class is an abstract base class that provides a unified, platform-agnostic interface for UART (Universal Asynchronous Receiver-Transmitter) communication in the HardFOC system. This class enables serial communication with external devices, debugging interfaces, wireless modules, and other UART-based peripherals.
+The `BaseUart` class is an abstract base class that provides a unified, platform-agnostic interface for UART (Universal Asynchronous Receiver-Transmitter) communication in the HardFOC system. This class enables serial communication with external devices, debugging interfaces, wireless modules, and other UART-based peripherals.
 
 ## 🏗️ Class Hierarchy
 
 ```
-BaseUartDriver (Abstract Base Class)
-    ├── McuUartDriver (ESP32 UART implementation)
-    ├── StmUartDriver (STM32 UART implementation)
-    ├── VirtualUartDriver (USB CDC/Virtual COM port)
+BaseUart (Abstract Base Class)
+    ├── McuUart (ESP32 UART implementation)
+    ├── StmUart (STM32 UART implementation)
+    ├── VirtualUart (USB CDC/Virtual COM port)
     └── SfUartDriver (Thread-safe wrapper)
 ```
 
@@ -256,10 +256,10 @@ virtual HfUartErr SetReceiveCallback(UartReceiveCallback callback) noexcept = 0
 
 ### Basic UART Communication
 ```cpp
-#include "mcu/McuUartDriver.h"
+#include "mcu/McuUart.h"
 
 // Create UART instance
-auto uart = McuUartDriver::Create();
+auto uart = McuUart::Create();
 
 // Configure UART for debug console
 UartConfig config;
@@ -535,14 +535,7 @@ if (result != HfUartErr::UART_SUCCESS) {
 
 ## 🧪 Testing
 
-The BaseUartDriver class can be tested using:
-
-```cpp
-#include "tests/UartTests.h"
-
-// Run comprehensive UART tests
-bool success = TestUartFunctionality();
-```
+Unit tests are not provided in this repository.
 
 ## ⚠️ Important Notes
 
@@ -556,9 +549,9 @@ bool success = TestUartFunctionality();
 
 ## 🔗 Related Classes
 
-- [`BaseI2cBus`](BaseI2cBus.md) - I2C interface for different communication needs
-- [`BaseSpiBus`](BaseSpiBus.md) - SPI interface for high-speed synchronous communication
-- [`McuUartDriver`](../mcu/McuUartDriver.md) - ESP32 UART implementation
+- [`BaseI2c`](BaseI2c.md) - I2C interface for different communication needs
+- [`BaseSpi`](BaseSpi.md) - SPI interface for high-speed synchronous communication
+- [`McuUart`](../mcu/McuUart.md) - ESP32 UART implementation
 - [`SfUartDriver`](../thread_safe/SfUartDriver.md) - Thread-safe wrapper
 
 ## 📝 See Also

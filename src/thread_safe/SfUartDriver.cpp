@@ -7,8 +7,8 @@
 
 static const char *TAG = "SfUartDriver";
 
-SfUartDriver::SfUartDriver(hf_uart_port_t p, const hf_uart_config_t &cfg, hf_gpio_num_t tx, hf_gpio_num_t rx,
-                           hf_semaphore_handle_t mtx) noexcept
+SfUartDriver::SfUartDriver(hf_uart_port_t p, const hf_uart_config_t &cfg, hf_gpio_num_t tx,
+                           hf_gpio_num_t rx, hf_semaphore_handle_t mtx) noexcept
     : port(p), config(cfg), txPin(tx), rxPin(rx), mutex(mtx), initialized(false) {}
 
 SfUartDriver::~SfUartDriver() noexcept {

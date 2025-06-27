@@ -16,7 +16,8 @@ McuNvsStorage::~McuNvsStorage() noexcept {
 
 bool McuNvsStorage::Open() noexcept {
   if (handle)
-    return true;  hf_err_t err = HF_NVS_FLASH_INIT();
+    return true;
+  hf_err_t err = HF_NVS_FLASH_INIT();
   if (err != HF_OK && err != HF_ERR_NVS_NO_FREE_PAGES && err != HF_ERR_NVS_NEW_VERSION_FOUND) {
     return false;
   }

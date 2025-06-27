@@ -5,9 +5,9 @@ The SPI bus wrapper supports full-duplex transfers with configurable modes.
 ## Configuration
 
 ```cpp
-#include "McuSpiBus.h"
+#include "McuSpi.h"
 
-McuSpiBus spi(HF_SPI_HOST_1);
+McuSpi spi(HF_SPI_HOST_1);
 spi.Open(1000000, HF_SPI_MODE_0); // 1 MHz, mode 0
 ```
 

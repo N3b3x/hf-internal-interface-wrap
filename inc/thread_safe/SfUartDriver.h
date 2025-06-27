@@ -9,8 +9,8 @@
 #ifndef SFUARTDRIVER_H
 #define SFUARTDRIVER_H
 
-#include "../mcu/McuUartDriver.h"
 #include "../mcu/McuTypes.h"
+#include "../mcu/McuUartDriver.h"
 #include <cstdint>
 #include <memory>
 #include <mutex>
@@ -36,10 +36,8 @@ public:
   bool Open() noexcept;
   bool Close() noexcept;
 
-  bool Write(const uint8_t *data, uint16_t length,
-             uint32_t timeoutMsec = 1000) noexcept;
-  bool Read(uint8_t *data, uint16_t length,
-            uint32_t timeoutMsec = UINT32_MAX) noexcept;
+  bool Write(const uint8_t *data, uint16_t length, uint32_t timeoutMsec = 1000) noexcept;
+  bool Read(uint8_t *data, uint16_t length, uint32_t timeoutMsec = UINT32_MAX) noexcept;
 
   bool Lock(uint32_t timeoutMsec = UINT32_MAX) noexcept;
   bool Unlock() noexcept;

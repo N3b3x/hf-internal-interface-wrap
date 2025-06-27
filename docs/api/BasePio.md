@@ -436,14 +436,7 @@ if (result != HfPioErr::PIO_SUCCESS) {
 
 ## 🧪 Testing
 
-The BasePio class can be tested using:
-
-```cpp
-#include "tests/PioTests.h"
-
-// Run comprehensive PIO tests
-bool success = TestPioFunctionality();
-```
+Unit tests are not provided in this repository.
 
 ## ⚠️ Important Notes
 
