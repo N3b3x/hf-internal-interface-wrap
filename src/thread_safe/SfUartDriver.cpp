@@ -7,76 +7,68 @@
 
 static const char *TAG = "SfUartDriver";
 
-SfUartDriver::SfUartDriver(hf_uart_port_t p, const hf_uart_config_t &cfg, hf_gpio_num_t tx,
-                           hf_gpio_num_t rx, hf_semaphore_handle_t mtx) noexcept
-    : port(p), config(cfg), txPin(tx), rxPin(rx), mutex(mtx), initialized(false) {}
+SfUartDriver::SfUartDriver(std::unique_ptr<BaseUart> uart_impl) noexcept
+    : uart_driver_(std::move(uart_impl)), mutex_(), initialized_(false) {}
 
 SfUartDriver::~SfUartDriver() noexcept {
-  if (initialized) {
+  if (initialized_) {
     Close();
   }
 }
 
 bool SfUartDriver::Open() noexcept {
-  if (initialized)
+  if (initialized_)
     return true;
-  esp_err_t err = uart_param_config(port, &config);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "param config failed: %d", err);
+  if (!uart_driver_)
     return false;
-  }
-  err = uart_set_pin(port, txPin, rxPin, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "set pin failed: %d", err);
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked())
     return false;
-  }
-  err = uart_driver_install(port, config.rx_flow_ctrl_thresh ? config.rx_flow_ctrl_thresh : 256,
-                            config.rx_flow_ctrl_thresh ? config.rx_flow_ctrl_thresh : 256, 0,
-                            nullptr, 0);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "driver install failed: %d", err);
-    return false;
-  }
-  initialized = true;
-  return true;
+  initialized_ = uart_driver_->Open();
+  return initialized_;
 }
 
 bool SfUartDriver::Close() noexcept {
-  if (!initialized)
+  if (!initialized_)
     return true;
-  uart_driver_delete(port);
-  initialized = false;
-  return true;
+  if (!uart_driver_)
+    return false;
+  RtosMutex::LockGuard lock(mutex_);
+  if (!lock.IsLocked())
+    return false;
+  initialized_ = !uart_driver_->Close();
+  return !initialized_;
 }
 
 bool SfUartDriver::Write(const uint8_t *data, uint16_t length, uint32_t timeoutMsec) noexcept {
-  if (!initialized)
+  if (!initialized_ || !uart_driver_)
     return false;
-  if (xSemaphoreTake(mutex, pdMS_TO_TICKS(timeoutMsec)) != pdTRUE)
+  RtosMutex::LockGuard lock(mutex_, timeoutMsec);
+  if (!lock.IsLocked())
     return false;
-  int ret = uart_write_bytes(port, data, length);
-  xSemaphoreGive(mutex);
-  return ret == length;
+  return uart_driver_->Write(data, length, timeoutMsec) == HfUartErr::UART_SUCCESS;
 }
 
 bool SfUartDriver::Read(uint8_t *data, uint16_t length, TickType_t ticksToWait) noexcept {
-  if (!initialized)
+  if (!initialized_ || !uart_driver_)
     return false;
-  if (xSemaphoreTake(mutex, ticksToWait) != pdTRUE)
+  RtosMutex::LockGuard lock(
+      mutex_, ticksToWait == portMAX_DELAY ? HF_TIMEOUT_NEVER : (ticksToWait * portTICK_PERIOD_MS));
+  if (!lock.IsLocked())
     return false;
-  int ret = uart_read_bytes(port, data, length, ticksToWait);
-  xSemaphoreGive(mutex);
-  return ret == length;
+  return uart_driver_->Read(data, length, ticksToWait * portTICK_PERIOD_MS) ==
+         HfUartErr::UART_SUCCESS;
 }
 
 bool SfUartDriver::Lock() noexcept {
-  if (!initialized)
+  if (!initialized_)
     return false;
-  return xSemaphoreTake(mutex, portMAX_DELAY) == pdTRUE;
+  return mutex_.Take(HF_TIMEOUT_NEVER);
 }
 
 bool SfUartDriver::Unlock() noexcept {
-  if (!initialized)
+  if (!initialized_)
     return false;
-  return xSemaphoreGive(mutex) == pdTRUE;
+  mutex_.Give();
+  return true;
 }
