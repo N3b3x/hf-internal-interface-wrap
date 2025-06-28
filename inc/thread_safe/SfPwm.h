@@ -1,6 +1,9 @@
 /**
  * @file SfPwm.h
  * @brief Thread-safe PWM interface wrapper.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This file provides a thread-safe wrapper around the BasePwm interface for use
  * in multi-threaded applications. All operations are synchronized using mutexes

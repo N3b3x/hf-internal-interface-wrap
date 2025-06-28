@@ -1,11 +1,13 @@
 /**
  * @file BasePio.h
  * @brief Abstract base class for Programmable IO Channel implementations in the HardFOC system.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This header defines the abstract base class for precise, buffered digital signal I/O
  * that provides a consistent API across different PIO implementations.
- * Concrete implementations (like McuPio for ESP32 RMT, RP2040 PIO, STM32 TIM+DMA) inherit from this
- * class.
+ * Concrete implementations for various microcontrollers inherit from this class.
  *
  * @note This is a header-only abstract base class following the same pattern as
  * BaseCan/BaseAdc/BasePwm.
@@ -224,10 +226,9 @@ using PioErrorCallback = std::function<void(uint8_t channel_id, HfPioErr error, 
  * IR communication, stepper motor control, and custom protocols.
  *
  * The abstraction is designed to work with various hardware backends:
- * - ESP32: RMT (Remote Control Transceiver) peripheral
- * - RP2040: PIO (Programmable I/O) state machines
- * - STM32: Timer + DMA + GPIO combinations
- * - Generic: Software-based implementations
+ * - Dedicated peripherals (e.g. RMT or PIO engines)
+ * - Timer + DMA + GPIO combinations
+ * - Fully software-based implementations
  *
  * Key features:
  * - Precise timing control down to nanosecond resolution
