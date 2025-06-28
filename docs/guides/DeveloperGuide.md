@@ -428,12 +428,12 @@ public:
 // Good: Explicit thread safety where needed
 class ThreadSafeHardwareManager {
 private:
-    mutable std::mutex hardware_mutex_;
+    mutable RtosMutex hardware_mutex_;
     std::map<int, std::shared_ptr<SfGpio>> gpio_map_;
     
 public:
     std::shared_ptr<SfGpio> GetGpio(int pin) {
-        std::lock_guard<std::mutex> lock(hardware_mutex_);
+        RtosMutex::LockGuard lock(hardware_mutex_);
         
         auto it = gpio_map_.find(pin);
         if (it != gpio_map_.end()) {

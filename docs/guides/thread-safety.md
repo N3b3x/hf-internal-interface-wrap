@@ -26,8 +26,8 @@ Classes like `DigitalOutputGuard` temporarily change pin state and restore it wh
 Refer to the [Developer Guide](DeveloperGuide.md) for more advanced multi-threading patterns.
 
 ## 🧰 Choosing a Mutex Type
-- Use `std::mutex` for standard use cases
-- `std::recursive_mutex` may be necessary for nested locking
+- Use `RtosMutex` for standard mutex protection
+- `RtosSharedMutex` allows shared reader access when needed
 
 ## 🛠️ Troubleshooting
 - Deadlocks often indicate inconsistent lock order

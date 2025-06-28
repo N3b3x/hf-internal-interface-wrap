@@ -10,10 +10,10 @@ Collect data from multiple sensors using thread-safe wrappers.
 ```cpp
 #include "SfI2cBus.h"
 #include "SfUartDriver.h"
-#include <mutex>
+#include "RtosMutex.h"
 
-std::mutex i2c_mutex;
-std::mutex uart_mutex;
+RtosMutex i2c_mutex;
+RtosMutex uart_mutex;
 SfI2cBus i2c(0, 400000, i2c_mutex);
 SfUartDriver uart(1, {115200, HF_UART_DATA_8_BITS, HF_UART_PARITY_DISABLE, HF_UART_STOP_BITS_1, HF_UART_HW_FLOWCTRL_DISABLE}, HF_GPIO_NUM_1, HF_GPIO_NUM_3, uart_mutex);
 
