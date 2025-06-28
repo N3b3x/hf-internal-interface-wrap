@@ -1,10 +1,13 @@
 /**
  * @file BaseI2c.h
  * @brief Abstract base class for I2C bus implementations in the HardFOC system.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for I2C bus communication
  * that provides a consistent API across different I2C controller implementations.
- * Concrete implementations (like McuI2cBus for ESP32 I2C) inherit from this class.
+ * Concrete implementations for various microcontrollers inherit from this class.
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
@@ -138,10 +141,10 @@ struct I2cBusConfig {
  *          - Register-based communication utilities
  *          - Lazy initialization pattern
  *
- *          Derived classes implement platform-specific details for:
- *          - MCU I2C controllers (ESP32, STM32, etc.)
+ *          Derived classes implement platform-specific details such as:
+ *          - On-chip I2C controllers
  *          - Bit-banged I2C implementations
- *          - I2C bridge/adapter hardware
+ *          - I2C bridge or adapter hardware
  *
  * @note This is a header-only abstract base class - instantiate concrete implementations instead.
  * @note This class is not inherently thread-safe. Use appropriate synchronization if

@@ -244,3 +244,94 @@ bool SfAdc::IsChannelConfigured(hf_adc_channel_t channel) const noexcept {
 
   return adc_impl_->IsChannelConfigured(channel);
 }
+
+//==============================================================================
+// CONTINUOUS MODE
+//==============================================================================
+
+HfAdcErr SfAdc::StartContinuous(uint8_t channel_id, uint32_t sample_rate_hz) noexcept {
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
+    stats_.timeout_count_.fetch_add(1);
+    return HfAdcErr::ADC_ERR_TIMEOUT;
+  }
+  if (!adc_impl_) {
+    return HfAdcErr::ADC_ERR_NULL_POINTER;
+  }
+  BaseAdc::AdcAdvancedConfig cfg{};
+  cfg.sample_rate_hz = sample_rate_hz;
+  adc_impl_->ConfigureAdvanced(channel_id, cfg);
+  return adc_impl_->StartContinuousSampling(channel_id, conv_callback_, conv_user_data_);
+}
+
+HfAdcErr SfAdc::StopContinuous(uint8_t channel_id) noexcept {
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
+    stats_.timeout_count_.fetch_add(1);
+    return HfAdcErr::ADC_ERR_TIMEOUT;
+  }
+  if (!adc_impl_) {
+    return HfAdcErr::ADC_ERR_NULL_POINTER;
+  }
+  return adc_impl_->StopContinuousSampling(channel_id);
+}
+
+HfAdcErr SfAdc::ReadRawBatch(const std::vector<uint8_t> &channels,
+                             std::vector<uint16_t> &raw_values) noexcept {
+  raw_values.resize(channels.size());
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
+    stats_.timeout_count_.fetch_add(1);
+    return HfAdcErr::ADC_ERR_TIMEOUT;
+  }
+  if (!adc_impl_) {
+    return HfAdcErr::ADC_ERR_NULL_POINTER;
+  }
+  for (size_t i = 0; i < channels.size(); ++i) {
+    HfAdcErr err = adc_impl_->ReadChannelCount(channels[i], raw_values[i]);
+    if (err != HfAdcErr::ADC_SUCCESS) {
+      return err;
+    }
+  }
+  return HfAdcErr::ADC_SUCCESS;
+}
+
+HfAdcErr SfAdc::ReadVoltageBatch(const std::vector<uint8_t> &channels,
+                                 std::vector<float> &voltages) noexcept {
+  voltages.resize(channels.size());
+  RtosSharedLock<RtosSharedMutex> lock(rw_mutex_, mutex_timeout_ms_);
+  if (!lock.IsLocked()) {
+    stats_.timeout_count_.fetch_add(1);
+    return HfAdcErr::ADC_ERR_TIMEOUT;
+  }
+  if (!adc_impl_) {
+    return HfAdcErr::ADC_ERR_NULL_POINTER;
+  }
+  for (size_t i = 0; i < channels.size(); ++i) {
+    HfAdcErr err = adc_impl_->ReadChannelVoltage(channels[i], voltages[i]);
+    if (err != HfAdcErr::ADC_SUCCESS) {
+      return err;
+    }
+  }
+  return HfAdcErr::ADC_SUCCESS;
+}
+
+HfAdcErr SfAdc::SetConversionCallback(AdcConversionCallback callback, void *user_data) noexcept {
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
+  if (!lock.IsLocked()) {
+    return HfAdcErr::ADC_ERR_TIMEOUT;
+  }
+  conv_callback_ = callback;
+  conv_user_data_ = user_data;
+  return HfAdcErr::ADC_SUCCESS;
+}
+
+HfAdcErr SfAdc::SetErrorCallback(AdcErrorCallback callback, void *user_data) noexcept {
+  RtosUniqueLock<RtosSharedMutex> lock(rw_mutex_);
+  if (!lock.IsLocked()) {
+    return HfAdcErr::ADC_ERR_TIMEOUT;
+  }
+  error_callback_ = callback;
+  error_user_data_ = user_data;
+  return HfAdcErr::ADC_SUCCESS;
+}

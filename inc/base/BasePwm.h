@@ -1,10 +1,13 @@
 /**
  * @file BasePwm.h
  * @brief Abstract base class for PWM implementations in the HardFOC system.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for PWM generation
  * that provides a consistent API across different PWM implementations.
- * Concrete implementations (like McuPwm for ESP32 LEDC, external PWM ICs) inherit from this class.
+ * Concrete implementations for various platforms inherit from this class.
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan/BaseAdc.
  * @note Users should program against this interface, not specific implementations.
@@ -141,8 +144,7 @@ struct PwmTimerConfig {
   PwmAlignment alignment;     ///< Timer alignment mode
 
   PwmTimerConfig() noexcept
-      : timer_number(0), base_frequency_hz(80000000) // 80MHz typical for ESP32
-        ,
+      : timer_number(0), base_frequency_hz(80000000),
         resolution_bits(12), alignment(PwmAlignment::EdgeAligned) {}
 };
 
@@ -211,8 +213,7 @@ using PwmFaultCallback =
  * @brief Abstract base class for PWM implementations.
  *
  * This class defines the common interface that all PWM implementations must provide.
- * It supports both MCU-integrated PWM (like ESP32 LEDC) and external PWM ICs
- * (like PCA9685, TLC5940, etc.).
+ * It supports both on-chip PWM peripherals and external PWM controllers.
  *
  * Key features:
  * - Multi-channel PWM support
@@ -222,10 +223,7 @@ using PwmFaultCallback =
  * - Comprehensive error handling
  * - Thread-safe design when used with SfPwm wrapper
  *
- * Implementations:
- * - McuPwm: For MCU-integrated PWM controllers
- * - Pca9685Pwm: For PCA9685 I2C PWM IC
- * - Tlc5940Pwm: For TLC5940 SPI PWM IC
+ * Possible implementations include on-chip controllers or dedicated PWM chips.
  * - CustomPwm: For custom/proprietary PWM implementations
  */
 class BasePwm {

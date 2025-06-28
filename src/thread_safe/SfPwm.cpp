@@ -320,6 +320,30 @@ HfPwmErr SfPwm::SetDutyCycleMultiple(const uint8_t *channel_ids, const float *du
   return pwm_impl_->SetDutyCycleMultiple(channel_ids, duty_cycles, num_channels);
 }
 
+HfPwmErr SfPwm::SetComplementaryOutput(uint8_t primary_channel, uint8_t complementary_channel,
+                                       uint32_t deadtime_ns, uint32_t timeout_ms) {
+  RtosUniqueLock<RtosMutex> lock(mutex_, GetEffectiveTimeout(timeout_ms));
+  if (!lock.IsLocked()) {
+    return HfPwmErr::PWM_TIMEOUT;
+  }
+  if (!pwm_impl_ || !is_initialized_) {
+    return HfPwmErr::PWM_NOT_INITIALIZED;
+  }
+  return pwm_impl_->SetComplementaryOutput(primary_channel, complementary_channel, deadtime_ns);
+}
+
+HfPwmErr SfPwm::GetChannelStatus(uint8_t channel_id, PwmChannelStatus &status,
+                                 uint32_t timeout_ms) const {
+  RtosUniqueLock<RtosMutex> lock(mutex_, GetEffectiveTimeout(timeout_ms));
+  if (!lock.IsLocked()) {
+    return HfPwmErr::PWM_TIMEOUT;
+  }
+  if (!pwm_impl_ || !is_initialized_) {
+    return HfPwmErr::PWM_NOT_INITIALIZED;
+  }
+  return pwm_impl_->GetChannelStatus(channel_id, status);
+}
+
 bool SfPwm::IsInitialized() const {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   return is_initialized_;

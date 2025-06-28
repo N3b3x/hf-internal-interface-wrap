@@ -1,10 +1,13 @@
 /**
  * @file BaseCan.h
  * @brief Abstract base class for CAN bus implementations in the HardFOC system.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for CAN bus communication
  * that provides a consistent API across different CAN controller implementations.
- * Concrete implementations (like McuCan for ESP32 TWAI) inherit from this class.
+ * Concrete implementations for various microcontrollers inherit from this class.
  *
  * @note This is a header-only abstract base class following the same pattern as BaseAdc.
  * @note Users should program against this interface, not specific implementations.
@@ -208,9 +211,9 @@ using CanFdReceiveCallback =
  * must provide. It ensures a consistent API across different platforms and CAN
  * controller types, making the system extensible and maintainable.
  *
- * Concrete implementations Examples:
- * - McuCan: For microcontrollers with built-in CAN peripherals (ESP32 TWAI, STM32 CAN, etc.)
- * - ExtCanCan: For external CAN controllers via SPI (MCP2515, etc.)
+ * Concrete implementation examples:
+ * - Microcontrollers with integrated CAN peripherals
+ * - External CAN controllers via SPI (e.g. MCP2515)
  *
  * Features:
  * - Lazy initialization support (initialize on first use)

@@ -1,11 +1,13 @@
 /**
  * @file BasePeriodicTimer.h
  * @brief Abstract base class for periodic timer implementations in the HardFOC system.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for periodic timer functionality
  * that provides a consistent API across different timer implementations.
- * Concrete implementations (like McuPeriodicTimer for ESP32 timers, OS timers) inherit from this
- * class.
+ * Concrete implementations for various platforms inherit from this class.
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.

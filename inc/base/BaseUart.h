@@ -1,10 +1,13 @@
 /**
  * @file BaseUart.h
  * @brief Abstract base class for UART driver implementations in the HardFOC system.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for UART communication
  * that provides a consistent API across different UART controller implementations.
- * Concrete implementations (like McuUartDriver for ESP32 UART) inherit from this class.
+ * Concrete implementations for various microcontrollers inherit from this class.
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
@@ -149,11 +152,11 @@ struct UartConfig {
  *          - Printf-style formatted output
  *          - Lazy initialization pattern
  *
- *          Derived classes implement platform-specific details for:
- *          - MCU UART controllers (ESP32, STM32, etc.)
+ *          Derived classes implement platform-specific details such as:
+ *          - On-chip UART controllers
  *          - USB-to-serial adapters
- *          - Bluetooth/WiFi serial bridges
- *          - Bit-banged software UART implementations
+ *          - Wireless serial bridges
+ *          - Software UART implementations
  *
  * @note This is a header-only abstract base class - instantiate concrete implementations instead.
  * @note This class is not inherently thread-safe. Use appropriate synchronization if

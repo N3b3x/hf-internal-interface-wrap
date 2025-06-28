@@ -120,7 +120,7 @@ public:
    * @param raw_value Output raw value
    * @return ADC error code
    */
-  HfAdcErr ReadRaw(uint8_t channel_id, uint16_t &raw_value) noexcept;
+  HfAdcErr ReadChannel(hf_adc_channel_t channel_id, uint32_t &raw_value) noexcept;
 
   /**
    * @brief Read voltage value (thread-safe).
@@ -128,7 +128,7 @@ public:
    * @param voltage Output voltage value
    * @return ADC error code
    */
-  HfAdcErr ReadVoltage(uint8_t channel_id, float &voltage) noexcept;
+  HfAdcErr ReadChannelVoltage(hf_adc_channel_t channel_id, float &voltage) noexcept;
 
   /**
    * @brief Start continuous conversion (thread-safe).
@@ -158,6 +158,9 @@ public:
   HfAdcErr ReadRawBatch(const std::vector<uint8_t> &channels,
                         std::vector<uint16_t> &raw_values) noexcept;
 
+  HfAdcErr ReadMultipleChannels(const hf_adc_channel_t *channels, uint32_t *raw_values,
+                                size_t channel_count) noexcept;
+
   /**
    * @brief Read multiple channel voltages with single lock acquisition.
    * @param channels Vector of channel IDs to read
@@ -177,25 +180,13 @@ public:
    */
   bool IsInitialized() const noexcept;
 
+  bool IsChannelConfigured(hf_adc_channel_t channel) const noexcept;
+
   /**
    * @brief Get maximum number of channels (lock-free).
    * @return Maximum channels supported
    */
   uint8_t GetMaxChannels() const noexcept;
-
-  /**
-   * @brief Check if channel is active (atomic read where possible).
-   * @param channel_id Channel to check
-   * @return true if channel is active
-   */
-  bool IsChannelActive(uint8_t channel_id) const noexcept;
-
-  /**
-   * @brief Get ADC resolution for channel (lock-free where possible).
-   * @param channel_id Channel to query
-   * @return Resolution in bits
-   */
-  uint8_t GetChannelResolution(uint8_t channel_id) const noexcept;
 
   //==============================================================================
   // CALLBACK MANAGEMENT
@@ -285,6 +276,10 @@ private:
   std::atomic<bool> initialized_;     ///< Atomic initialization flag
   uint32_t mutex_timeout_ms_;         ///< Mutex acquisition timeout in milliseconds
   mutable ThreadingStats stats_;      ///< Threading statistics
+  AdcConversionCallback conv_callback_{};
+  void *conv_user_data_{nullptr};
+  AdcErrorCallback error_callback_{};
+  void *error_user_data_{nullptr};
 
   //==============================================================================
   // PRIVATE HELPER METHODS
