@@ -16,7 +16,7 @@ This component provides a truly platform-agnostic hardware abstraction layer. Al
 - **No Conditional Compilation**: Interface classes are clean and portable
 - **Layered CAN Stack**: CanBus → FlexCan → SfCan with proper abstraction
 - **Legacy Compatibility**: Preserved useful utility functions like `IsActiveHigh()`
-- **Thread-Safe Variants**: Built-in thread safety. Most wrappers use `std::mutex`, while `SfGpio` manages its own FreeRTOS semaphore internally.
+- **Thread-Safe Variants**: Built-in thread safety using `RtosMutex`. `SfGpio` manages its own FreeRTOS semaphore internally.
 
 Each abstraction is intentionally compact and header-focused where possible. Create an object, call `Open()` or `Start()` and off you go. All the platform-specific ceremony is performed behind the scenes so your code stays compact and portable between MCU families.
 
@@ -27,7 +27,7 @@ Each abstraction is intentionally compact and header-focused where possible. Cre
 - **CAN Stack**: `CanBus` (platform-agnostic) → `FlexCan` (compatibility) → `SfCan` (thread-safe)
 - **ADC**: `McuAdc` with legacy functions like `ReadVoltage()`, `ReadAveraged()`
 - **PWM**: `PwmOutput` with utilities like `SetDutyPercent()`, `GenerateSquareWave()`
-- **Thread-Safe Variants**: `SfI2cBus`, `SfSpiBus`, `SfUartDriver`, `SfCan` use `std::mutex`; `SfGpio` uses an internal FreeRTOS semaphore
+- **Thread-Safe Variants**: `SfI2cBus`, `SfSpiBus`, `SfUartDriver`, `SfCan` use `RtosMutex`; `SfGpio` uses an internal FreeRTOS semaphore
 - **Timers**: `PeriodicTimer` with platform-agnostic callback support
 - **Storage**: `NvsStorage` for non-volatile key-value storage
 
