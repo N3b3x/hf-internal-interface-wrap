@@ -1,6 +1,9 @@
 /**
  * @file BaseGpio.h
  * @brief Unified GPIO base class for all digital GPIO implementations.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @details This file contains the declaration of the BaseGpio abstract class, which provides
  *          a comprehensive GPIO abstraction that serves as the base for all GPIO
@@ -115,8 +118,8 @@ constexpr const char *HfGpioErrToString(HfGpioErr err) noexcept {
  *          - Lazy initialization pattern
  *
  *          Derived classes implement platform-specific details for:
- *          - MCU GPIOs (ESP32C6, STM32, etc.)
- *          - I2C GPIO expanders (PCAL95555, etc.)
+ *          - On-chip GPIO controllers
+ *          - I2C GPIO expanders
  *          - SPI GPIO expanders
  *          - Other GPIO hardware
  */

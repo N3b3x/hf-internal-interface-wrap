@@ -1,6 +1,9 @@
 /**
  * @file SfGpio.h
  * @brief Thread-safe GPIO interface wrapper.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This header provides a thread-safe wrapper around the base GPIO interface,
  * ensuring atomic operations and thread safety for multi-threaded applications.
@@ -85,7 +88,7 @@ public:
    * @param level Output level (true=high, false=low)
    * @return hf_return_code_t HF_OK on success, error code on failure
    */
-  hf_return_code_t digitalWrite(hf_gpio_num_t pin, bool level);
+  hf_return_code_t SetLevel(hf_gpio_num_t pin, bool level);
 
   /**
    * @brief Read digital input level (thread-safe).
@@ -94,7 +97,7 @@ public:
    * @param level Pointer to store the read level
    * @return hf_return_code_t HF_OK on success, error code on failure
    */
-  hf_return_code_t digitalRead(hf_gpio_num_t pin, bool *level);
+  hf_return_code_t GetLevel(hf_gpio_num_t pin, bool *level);
 
   /**
    * @brief Toggle digital output level (thread-safe).
@@ -102,7 +105,7 @@ public:
    * @param pin GPIO pin number
    * @return hf_return_code_t HF_OK on success, error code on failure
    */
-  hf_return_code_t digitalToggle(hf_gpio_num_t pin);
+  hf_return_code_t ToggleLevel(hf_gpio_num_t pin);
 
   //==============================================================================
   // THREAD-SAFE MULTI-PIN OPERATIONS

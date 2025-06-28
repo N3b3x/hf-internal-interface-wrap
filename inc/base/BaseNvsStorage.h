@@ -1,11 +1,13 @@
 /**
  * @file BaseNvsStorage.h
  * @brief Abstract base class for Non-Volatile Storage implementations in the HardFOC system.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for non-volatile storage
  * that provides a consistent API across different storage implementations.
- * Concrete implementations (like McuNvsStorage for ESP32 NVS, external EEPROM) inherit from this
- * class.
+ * Concrete implementations for various storage devices inherit from this class.
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
