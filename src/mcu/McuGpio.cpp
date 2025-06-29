@@ -638,6 +638,10 @@ HfGpioErr McuGpio::DisableInterrupt() noexcept {
 }
 
 HfGpioErr McuGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
+  if (!EnsureInitialized()) {
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+  }
+  
   if (!interrupt_enabled_) {
     return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_ENABLED;
   }
@@ -1038,53 +1042,6 @@ HfGpioErr McuGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexc
       hold_enabled_ = true;
       ESP_LOGD(TAG, "Hold enabled for GPIO%d", static_cast<int>(pin_));
     }
-  }
-
-  return HfGpioErr::GPIO_SUCCESS;
-  #else
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
-  #endif
-}
-
-HfGpioErr McuGpio::ConfigureWakeUp(const GpioWakeUpConfig &wakeup_config) noexcept {
-  wakeup_config_ = wakeup_config;
-
-  #ifdef HF_MCU_ESP32C6
-  if (wakeup_config.wake_trigger == InterruptTrigger::None) {
-    return HfGpioErr::GPIO_SUCCESS;
-  }
-
-  // Configure GPIO wake-up for deep sleep
-  if (wakeup_config.enable_rtc_wake && HF_GPIO_IS_VALID_RTC_GPIO(pin_)) {
-    uint64_t pin_mask = 1ULL << pin_;
-    uint64_t level_mask = wakeup_config.wake_level ? pin_mask : 0;
-    
-    esp_err_t ret = esp_sleep_enable_ext1_wakeup(pin_mask, 
-                    wakeup_config.wake_level ? ESP_EXT1_WAKEUP_ANY_HIGH : ESP_EXT1_WAKEUP_ANY_LOW);
-    if (ret != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to configure EXT1 wake-up for GPIO%d: %s", 
-               static_cast<int>(pin_), esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
-    }
-
-    ESP_LOGI(TAG, "EXT1 wake-up configured for GPIO%d (level: %s)", 
-             static_cast<int>(pin_), wakeup_config.wake_level ? "high" : "low");
-  }
-
-  // Configure general GPIO wake-up
-  if (wakeup_config.enable_ext1_wake) {
-    uint64_t pin_mask = 1ULL << pin_;
-    esp_deepsleep_gpio_wake_up_mode_t mode = wakeup_config.wake_level ? 
-      ESP_GPIO_WAKEUP_GPIO_HIGH : ESP_GPIO_WAKEUP_GPIO_LOW;
-    
-    esp_err_t ret = esp_deep_sleep_enable_gpio_wakeup(pin_mask, mode);
-    if (ret != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to configure GPIO wake-up for GPIO%d: %s", 
-               static_cast<int>(pin_), esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
-    }
-
-    ESP_LOGI(TAG, "GPIO wake-up configured for GPIO%d", static_cast<int>(pin_));
   }
 
   return HfGpioErr::GPIO_SUCCESS;

@@ -269,12 +269,6 @@ bool McuCan::Start() noexcept {
   
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Cannot start controller %d - not initialized", controller_id_);
-    stats_.last_error = HfCanErr::CAN_ERR_INVALID_STATE;
-    return false;
-  }
-  
   if (is_started_) {
     ESP_LOGD(TAG, "Controller %d already started", controller_id_);
     return true;
@@ -295,12 +289,13 @@ bool McuCan::Start() noexcept {
 }
 
 bool McuCan::Stop() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Cannot stop controller %d - not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for stop operation", controller_id_);
+    stats_.last_error = HfCanErr::CAN_ERR_INVALID_STATE;
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!is_started_) {
     ESP_LOGD(TAG, "Controller %d already stopped", controller_id_);
@@ -333,8 +328,8 @@ bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcep
   
   RtosSharedLock<RtosMutex> lock(mutex_);
   
-  if (!initialized_ || !is_started_) {
-    ESP_LOGE(TAG, "Controller %d not ready for transmission", controller_id_);
+  if (!is_started_) {
+    ESP_LOGE(TAG, "Controller %d not ready for transmission - not started", controller_id_);
     UpdateSendStatistics(false);
     return false;
   }
@@ -369,8 +364,8 @@ bool McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
   
   RtosSharedLock<RtosMutex> lock(mutex_);
   
-  if (!initialized_ || !is_started_) {
-    ESP_LOGE(TAG, "Controller %d not ready for reception", controller_id_);
+  if (!is_started_) {
+    ESP_LOGE(TAG, "Controller %d not ready for reception - not started", controller_id_);
     UpdateReceiveStatistics(false);
     return false;
   }
@@ -406,8 +401,8 @@ uint32_t McuCan::SendMessageBatch(const CanMessage *messages, uint32_t count,
   
   RtosSharedLock<RtosMutex> lock(mutex_);
   
-  if (!initialized_ || !is_started_) {
-    ESP_LOGE(TAG, "Controller %d not ready for batch transmission", controller_id_);
+  if (!is_started_) {
+    ESP_LOGE(TAG, "Controller %d not ready for batch transmission - not started", controller_id_);
     return 0;
   }
   
@@ -436,8 +431,8 @@ uint32_t McuCan::ReceiveMessageBatch(CanMessage *messages, uint32_t max_count,
   
   RtosSharedLock<RtosMutex> lock(mutex_);
   
-  if (!initialized_ || !is_started_) {
-    ESP_LOGE(TAG, "Controller %d not ready for batch reception", controller_id_);
+  if (!is_started_) {
+    ESP_LOGE(TAG, "Controller %d not ready for batch reception - not started", controller_id_);
     return 0;
   }
   
@@ -452,6 +447,11 @@ uint32_t McuCan::ReceiveMessageBatch(CanMessage *messages, uint32_t max_count,
 //==============================================================================
 
 bool McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for callback setup", controller_id_);
+    return false;
+  }
+  
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
   receive_callback_ = callback;
@@ -466,6 +466,11 @@ bool McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
 }
 
 void McuCan::ClearReceiveCallback() noexcept {
+  if (!EnsureInitialized()) {
+    ESP_LOGW(TAG, "Cannot clear callback - CAN controller %d not initialized", controller_id_);
+    return;
+  }
+  
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
   receive_callback_ = nullptr;
@@ -477,23 +482,23 @@ void McuCan::ClearReceiveCallback() noexcept {
 //==============================================================================
 
 bool McuCan::GetStatus(CanBusStatus &status) noexcept {
-  RtosSharedLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for status query", controller_id_);
     return false;
   }
+  
+  RtosSharedLock<RtosMutex> lock(mutex_);
   
   return PlatformGetStatus(status);
 }
 
 bool McuCan::Reset() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Cannot reset controller %d - not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for reset operation", controller_id_);
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   ESP_LOGI(TAG, "Resetting CAN controller %d", controller_id_);
   
@@ -535,12 +540,12 @@ bool McuCan::Reset() noexcept {
 //==============================================================================
 
 bool McuCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for filter configuration", controller_id_);
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!IsValidCanId(id, extended)) {
     ESP_LOGE(TAG, "Invalid filter ID: 0x%lX (extended: %d)", id, extended);
@@ -554,12 +559,12 @@ bool McuCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noex
 }
 
 bool McuCan::ClearAcceptanceFilter() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for filter clearing", controller_id_);
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   ESP_LOGI(TAG, "Clearing acceptance filter for controller %d", controller_id_);
   
@@ -568,12 +573,12 @@ bool McuCan::ClearAcceptanceFilter() noexcept {
 
 bool McuCan::ReconfigureAcceptanceFilter(uint32_t id, uint32_t mask, bool extended,
                                         bool single_filter) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for filter reconfiguration", controller_id_);
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!IsValidCanId(id, extended)) {
     ESP_LOGE(TAG, "Invalid filter ID: 0x%lX (extended: %d)", id, extended);
@@ -591,12 +596,12 @@ bool McuCan::ReconfigureAcceptanceFilter(uint32_t id, uint32_t mask, bool extend
 //==============================================================================
 
 bool McuCan::ConfigureSleepRetention(bool enable) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for sleep retention config", controller_id_);
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   ESP_LOGI(TAG, "Configuring sleep retention: %s for controller %d", 
            enable ? "enabled" : "disabled", controller_id_);
@@ -622,12 +627,12 @@ bool McuCan::ConfigureSleepRetention(bool enable) noexcept {
 }
 
 bool McuCan::ConfigureAlerts(uint32_t alerts) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for alert configuration", controller_id_);
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   ESP_LOGI(TAG, "Configuring alerts: 0x%lX for controller %d", alerts, controller_id_);
   
@@ -645,10 +650,15 @@ bool McuCan::ReadAlerts(uint32_t *alerts_out, uint32_t timeout_ms) noexcept {
     return false;
   }
   
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for alert reading", controller_id_);
+    return false;
+  }
+  
   RtosSharedLock<RtosMutex> lock(mutex_);
   
-  if (!initialized_ || !is_started_) {
-    ESP_LOGE(TAG, "Controller %d not ready for alert reading", controller_id_);
+  if (!is_started_) {
+    ESP_LOGE(TAG, "Controller %d not ready for alert reading - not started", controller_id_);
     return false;
   }
   
@@ -656,12 +666,12 @@ bool McuCan::ReadAlerts(uint32_t *alerts_out, uint32_t timeout_ms) noexcept {
 }
 
 bool McuCan::RecoverFromBusOff(bool force_reset) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for bus-off recovery", controller_id_);
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   ESP_LOGI(TAG, "Attempting bus-off recovery for controller %d (force: %d)", 
            controller_id_, force_reset);
@@ -739,63 +749,6 @@ void McuCan::ResetStatistics() noexcept {
   init_timestamp_ = GetCurrentTimestamp();
 }
 
-bool McuCan::IsTransmitQueueFull() const noexcept {
-  RtosSharedLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    return false;
-  }
-  
-  return PlatformIsTransmitQueueFull();
-}
-
-bool McuCan::IsReceiveQueueEmpty() const noexcept {
-  RtosSharedLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    return true;
-  }
-  
-  return PlatformIsReceiveQueueEmpty();
-}
-
-uint32_t McuCan::GetTransmitErrorCount() const noexcept {
-  RtosSharedLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    return 0;
-  }
-  
-  return PlatformGetTransmitErrorCount();
-}
-
-uint32_t McuCan::GetReceiveErrorCount() const noexcept {
-  RtosSharedLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    return 0;
-  }
-  
-  return PlatformGetReceiveErrorCount();
-}
-
-bool McuCan::GetQueueLevels(uint32_t *tx_level_out, uint32_t *rx_level_out) const noexcept {
-  if (!tx_level_out || !rx_level_out) {
-    ESP_LOGE(TAG, "Invalid queue level output pointers");
-    return false;
-  }
-  
-  RtosSharedLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    *tx_level_out = 0;
-    *rx_level_out = 0;
-    return false;
-  }
-  
-  return PlatformGetQueueLevels(tx_level_out, rx_level_out);
-}
-
 //==============================================================================
 // LAZY INITIALIZATION IMPLEMENTATION
 //==============================================================================
@@ -818,7 +771,8 @@ bool McuCan::EnsureInitialized() noexcept {
 bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  if (!initialized_) {
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller before sending message");
     return false;
   }
 
@@ -828,7 +782,8 @@ bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcep
 bool McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  if (!initialized_) {
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller before receiving message");
     return false;
   }
 
@@ -840,12 +795,12 @@ bool McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
 //==============================================================================
 
 bool McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Cannot set callback - controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize CAN controller %d for callback setup", controller_id_);
     return false;
   }
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   receive_callback_ = callback;
   
@@ -867,45 +822,6 @@ void McuCan::ClearReceiveCallback() noexcept {
 //==============================================================================
 // STATUS AND DIAGNOSTICS - Comprehensive Monitoring
 //==============================================================================
-
-bool McuCan::GetStatus(CanBusStatus &status) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Cannot get status - controller %d not initialized", controller_id_);
-    return false;
-  }
-  
-  bool success = PlatformGetStatus(status);
-  if (success) {
-    // Update queue statistics
-    UpdateQueueStatistics(status.tx_failed_count, status.rx_missed_count);
-  }
-  
-  return success;
-}
-
-bool McuCan::Reset() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Cannot reset - controller %d not initialized", controller_id_);
-    return false;
-  }
-  
-  ESP_LOGI(TAG, "Resetting CAN controller %d", controller_id_);
-  
-  bool success = PlatformReset();
-  if (success) {
-    // Reset statistics counters on successful reset
-    ResetStatistics();
-    ESP_LOGI(TAG, "Controller %d reset successful", controller_id_);
-  } else {
-    ESP_LOGE(TAG, "Controller %d reset failed", controller_id_);
-  }
-  
-  return success;
-}
 
 bool McuCan::GetStatistics(CanControllerStats *stats_out) const noexcept {
   if (!stats_out) {
@@ -994,6 +910,26 @@ uint32_t McuCan::GetReceiveErrorCount() const noexcept {
   return PlatformGetReceiveErrorCount();
 }
 
+uint32_t McuCan::GetArbitrationLostCount() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  if (!initialized_) {
+    return 0;
+  }
+  
+  return PlatformGetArbitrationLostCount();
+}
+
+uint32_t McuCan::GetBusErrorCount() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  if (!initialized_) {
+    return 0;
+  }
+  
+  return PlatformGetBusErrorCount();
+}
+
 bool McuCan::GetQueueLevels(uint32_t *tx_level_out, uint32_t *rx_level_out) const noexcept {
   if (!tx_level_out || !rx_level_out) {
     ESP_LOGE(TAG, "Invalid queue level output pointers");
@@ -1018,8 +954,8 @@ bool McuCan::GetQueueLevels(uint32_t *tx_level_out, uint32_t *rx_level_out) cons
 bool McuCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Cannot set filter - controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Cannot set filter - controller %d initialization failed", controller_id_);
     return false;
   }
   
@@ -1032,8 +968,8 @@ bool McuCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noex
 bool McuCan::ClearAcceptanceFilter() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Cannot clear filter - controller %d not initialized", controller_id_);
+  if (!EnsureInitialized()) {
+    ESP_LOGE(TAG, "Cannot clear filter - controller %d initialization failed", controller_id_);
     return false;
   }
   
@@ -1689,6 +1625,20 @@ void McuCan::StaticReceiveHandler(void *arg) {
   }
 }
 
+void McuCan::StaticAlertHandler(void *arg) {
+  McuCan *instance = static_cast<McuCan *>(arg);
+  if (instance) {
+    instance->HandleAlertInterrupt();
+  }
+}
+
+void McuCan::StaticErrorHandler(void *arg) {
+  McuCan *instance = static_cast<McuCan *>(arg);
+  if (instance) {
+    instance->HandleErrorInterrupt();
+  }
+}
+
 void McuCan::HandleReceiveInterrupt() {
   if (receive_callback_) {
     CanMessage message;
@@ -1698,52 +1648,40 @@ void McuCan::HandleReceiveInterrupt() {
   }
 }
 
-//==============================================================================
-// CAN-FD SUPPORT METHODS
-//==============================================================================
-
-bool McuCan::SupportsCanFD() const noexcept {
-  // ESP32-C6 TWAI does not support CAN-FD currently
-  return false;
+void McuCan::HandleAlertInterrupt() noexcept {
+  // Read current alerts from hardware
+  uint32_t alerts = 0;
+  if (PlatformReadAlerts(&alerts, 0)) {
+    current_alerts_ |= alerts;
+    
+    // Update statistics based on alert types
+    if (alerts & static_cast<uint32_t>(hf_twai_alert_t::HF_TWAI_ALERT_BUS_ERROR)) {
+      stats_.bus_error_count++;
+    }
+    if (alerts & static_cast<uint32_t>(hf_twai_alert_t::HF_TWAI_ALERT_ARBITRATION_LOST)) {
+      stats_.arbitration_lost_count++;
+    }
+    if (alerts & static_cast<uint32_t>(hf_twai_alert_t::HF_TWAI_ALERT_TX_FAILED)) {
+      stats_.tx_failed_count++;
+    }
+    
+    ESP_LOGD(TAG, "Alerts triggered: 0x%lX for controller %d", alerts, controller_id_);
+  }
 }
 
-bool McuCan::SetCanFDMode(bool enable, uint32_t data_baudrate, bool enable_brs) noexcept {
-  // ESP32-C6 TWAI does not support CAN-FD
-  (void)enable;
-  (void)data_baudrate;
-  (void)enable_brs;
-  return false;
-}
-
-bool McuCan::ConfigureCanFDTiming(uint16_t nominal_prescaler, uint8_t nominal_tseg1,
-                                  uint8_t nominal_tseg2, uint16_t data_prescaler,
-                                  uint8_t data_tseg1, uint8_t data_tseg2, uint8_t sjw) noexcept {
-  // ESP32-C6 TWAI does not support CAN-FD
-  (void)nominal_prescaler;
-  (void)nominal_tseg1;
-  (void)nominal_tseg2;
-  (void)data_prescaler;
-  (void)data_tseg1;
-  (void)data_tseg2;
-  (void)sjw;
-  return false;
-}
-
-bool McuCan::SetTransmitterDelayCompensation(uint8_t tdc_offset, uint8_t tdc_filter) noexcept {
-  // ESP32-C6 TWAI does not support CAN-FD
-  (void)tdc_offset;
-  (void)tdc_filter;
-  return false;
-}
-
-bool McuCan::GetCanFDCapabilities(uint8_t &max_data_bytes, uint32_t &max_nominal_baudrate,
-                                  uint32_t &max_data_baudrate, bool &supports_brs,
-                                  bool &supports_esi) noexcept {
-  // ESP32-C6 TWAI does not support CAN-FD, but we can return classic CAN limits
-  max_data_bytes = 8;             // Classic CAN limit
-  max_nominal_baudrate = 1000000; // 1 Mbps max for ESP32-C6
-  max_data_baudrate = 0;          // No data phase for classic CAN
-  supports_brs = false;           // No BRS support
-  supports_esi = false;           // No ESI support
-  return true;                    // Return true to indicate we can provide classic CAN capabilities
+void McuCan::HandleErrorInterrupt() noexcept {
+  // Read error state and counters
+  CanBusStatus status;
+  if (PlatformGetStatus(status)) {
+    last_error_code_ = static_cast<uint32_t>(status.error_state);
+    
+    // Update error statistics
+    UpdateErrorStatistics(static_cast<hf_can_error_state_t>(status.error_state));
+    
+    // Log significant error conditions
+    if (status.error_state != CanErrorState::ErrorActive) {
+      ESP_LOGW(TAG, "Error state changed to %d for controller %d", 
+               static_cast<int>(status.error_state), controller_id_);
+    }
+  }
 }
