@@ -72,6 +72,13 @@ using hf_twai_error_state_native_t = twai_error_state_t;
 // ESP32 Timer specific mappings
 using hf_esp_timer_handle_native_t = esp_timer_handle_t;
 
+// ESP32 SPI specific mappings
+using hf_spi_host_native_t = spi_host_device_t;
+using hf_spi_bus_config_native_t = spi_bus_config_t;
+using hf_spi_device_config_native_t = spi_device_interface_config_t;
+using hf_spi_transaction_native_t = spi_transaction_t;
+using hf_spi_device_handle_native_t = spi_device_handle_t;
+
 #else
 // Non-ESP32 platforms - use generic types
 using hf_adc_unit_native_t = uint8_t;
@@ -92,6 +99,12 @@ using hf_twai_status_info_native_t = struct { int dummy; };
 using hf_twai_mode_native_t = uint8_t;
 using hf_twai_error_state_native_t = uint8_t;
 using hf_esp_timer_handle_native_t = void*;
+
+using hf_spi_host_native_t = uint8_t;
+using hf_spi_bus_config_native_t = struct { int dummy; };
+using hf_spi_device_config_native_t = struct { int dummy; };
+using hf_spi_transaction_native_t = struct { int dummy; };
+using hf_spi_device_handle_native_t = void*;
 
 // Generic RTOS handle types for non-ESP32 platforms
 using SemaphoreHandle_t = void*;
@@ -388,6 +401,15 @@ using hf_can_filter_handle_t = void*;    ///< TWAI filter handle
 using hf_can_handle_t = void*;           ///< Generic handle for other platforms
 using hf_can_obj_config_t = void*;       ///< Generic config for other platforms  
 using hf_can_filter_handle_t = void*;    ///< Generic filter handle
+#endif
+
+/**
+ * @brief SPI device handle type for MCU SPI driver.
+ */
+#ifdef HF_MCU_FAMILY_ESP32
+using hf_spi_handle_t = spi_device_handle_t;
+#else
+using hf_spi_handle_t = void*;
 #endif
 
 /**
