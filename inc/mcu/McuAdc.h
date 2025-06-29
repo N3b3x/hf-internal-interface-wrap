@@ -27,6 +27,7 @@
 #include <unordered_map>
 #include <vector>
 
+// Forward declare ESP32-specific types to avoid including ESP-IDF headers when not on ESP32
 #ifdef HF_TARGET_MCU_ESP32C6
 #include "esp_adc/adc_cali.h"
 #include "esp_adc/adc_cali_scheme.h"
@@ -40,6 +41,10 @@
 #include "hal/adc_types.h"
 #include "soc/adc_channel.h"
 #endif
+
+// Type aliases for platform compatibility
+using hf_adc_unit_t = uint8_t;
+using hf_adc_resolution_t = uint8_t;
 
 //--------------------------------------
 //  Advanced ADC Configuration Types
@@ -279,6 +284,14 @@ public:
   explicit McuAdc(const AdcAdvancedConfig &config) noexcept;
 
   /**
+   * @brief Constructor with platform-specific parameters.
+   * @param adc_unit ADC unit number
+   * @param attenuation Attenuation setting  
+   * @param width Resolution setting
+   */
+  McuAdc(hf_adc_unit_t adc_unit, uint32_t attenuation, hf_adc_resolution_t width) noexcept;
+
+  /**
    * @brief Destructor - ensures proper cleanup.
    */
   ~McuAdc() noexcept override;
@@ -307,59 +320,47 @@ public:
 
   /**
    * @brief Check if a specific channel is available.
-   * @param channel_num Channel number to check
+   * @param channel_id Channel ID to check (using BaseAdc interface)
    * @return true if available, false otherwise
    */
-  bool IsChannelAvailable(uint8_t channel_num) const noexcept override;
+  [[nodiscard]] bool IsChannelAvailable(HfChannelId channel_id) const noexcept override;
 
   /**
-   * @brief Configure a channel with specified settings.
-   * @param channel_num Channel number to configure
-   * @param config Channel configuration
-   * @return HfAdcErr result code
+   * @brief Read channel voltage.
+   * @param channel_id Channel ID to read from
+   * @param channel_reading_v Reference to store voltage reading
+   * @param numOfSamplesToAvg Number of samples to average (default 1)
+   * @param timeBetweenSamples Time between samples in milliseconds (default 0)
+   * @return HfAdcErr error code
    */
-  HfAdcErr ConfigureChannel(uint8_t channel_num, const AdcChannelConfig &config) noexcept override;
+  HfAdcErr ReadChannelV(HfChannelId channel_id, float &channel_reading_v,
+                        uint8_t numOfSamplesToAvg = 1,
+                        HfTimeoutMs timeBetweenSamples = 0) noexcept override;
 
   /**
-   * @brief Perform a single ADC conversion.
-   * @param channel_num Channel number to read
-   * @param raw_value Reference to store raw ADC value
-   * @return HfAdcErr result code
+   * @brief Read channel count (raw ADC value).
+   * @param channel_id Channel ID to read from
+   * @param channel_reading_count Reference to store count reading
+   * @param numOfSamplesToAvg Number of samples to average (default 1)
+   * @param timeBetweenSamples Time between samples in milliseconds (default 0)
+   * @return HfAdcErr error code
    */
-  HfAdcErr ReadRaw(uint8_t channel_num, uint32_t &raw_value) noexcept override;
+  HfAdcErr ReadChannelCount(HfChannelId channel_id, uint32_t &channel_reading_count,
+                            uint8_t numOfSamplesToAvg = 1,
+                            HfTimeoutMs timeBetweenSamples = 0) noexcept override;
 
   /**
-   * @brief Perform ADC conversion and return calibrated voltage.
-   * @param channel_num Channel number to read
-   * @param voltage Reference to store voltage value
-   * @return HfAdcErr result code
+   * @brief Read both channel count and voltage.
+   * @param channel_id Channel ID to read from
+   * @param channel_reading_count Reference to store count reading
+   * @param channel_reading_v Reference to store voltage reading
+   * @param numOfSamplesToAvg Number of samples to average (default 1)
+   * @param timeBetweenSamples Time between samples in milliseconds (default 0)
+   * @return HfAdcErr error code
    */
-  HfAdcErr ReadVoltage(uint8_t channel_num, float &voltage) noexcept override;
-
-  /**
-   * @brief Perform multiple conversions and average the result.
-   * @param channel_num Channel number to read
-   * @param samples Number of samples to average
-   * @param raw_value Reference to store averaged raw value
-   * @return HfAdcErr result code
-   */
-  HfAdcErr ReadRawAveraged(uint8_t channel_num, uint8_t samples,
-                           uint32_t &raw_value) noexcept override;
-
-  /**
-   * @brief Get channel configuration.
-   * @param channel_num Channel number
-   * @param config Reference to store configuration
-   * @return HfAdcErr result code
-   */
-  HfAdcErr GetChannelConfig(uint8_t channel_num, AdcChannelConfig &config) const noexcept override;
-
-  /**
-   * @brief Read the internal temperature sensor.
-   * @param temperature Reference to store temperature in Celsius
-   * @return HfAdcErr result code
-   */
-  HfAdcErr ReadTemperature(float &temperature) noexcept override;
+  HfAdcErr ReadChannel(HfChannelId channel_id, uint32_t &channel_reading_count,
+                       float &channel_reading_v, uint8_t numOfSamplesToAvg = 1,
+                       HfTimeoutMs timeBetweenSamples = 0) noexcept override;
 
   //==============================================================================
   // ADVANCED ADC OPERATIONS
@@ -590,6 +591,47 @@ public:
    */
   HfAdcErr stopTriggeredSampling() noexcept;
 
+  //==============================================================================
+  // CALIBRATION SUPPORT (BaseAdc overrides)
+  //==============================================================================
+
+  /**
+   * @brief Perform ADC calibration for a specific channel
+   * @param channel_id Channel to calibrate
+   * @param config Calibration configuration
+   * @param progress_callback Optional progress callback for long operations
+   * @param user_data User data for progress callback
+   * @return HfAdcErr error code
+   */
+  HfAdcErr CalibrateChannel(HfChannelId channel_id, const CalibrationConfig &config,
+                            CalibrationProgressCallback progress_callback = nullptr,
+                            void *user_data = nullptr) noexcept override;
+
+  /**
+   * @brief Save calibration data to non-volatile storage
+   * @param channel_id Channel calibration to save
+   * @return HfAdcErr error code
+   */
+  HfAdcErr SaveCalibration(HfChannelId channel_id) noexcept override;
+
+  /**
+   * @brief Load calibration data from non-volatile storage
+   * @param channel_id Channel calibration to load
+   * @return HfAdcErr error code
+   */
+  HfAdcErr LoadCalibration(HfChannelId channel_id) noexcept override;
+
+  /**
+   * @brief Verify calibration accuracy using known reference
+   * @param channel_id Channel to verify
+   * @param reference_voltage Known reference voltage to test
+   * @param measured_voltage Output: voltage measured by ADC
+   * @param error_percent Output: percentage error from reference
+   * @return HfAdcErr error code
+   */
+  HfAdcErr VerifyCalibration(HfChannelId channel_id, float reference_voltage,
+                             float &measured_voltage, float &error_percent) noexcept override;
+
 private:
   //==============================================================================
   // PRIVATE METHODS
@@ -633,54 +675,85 @@ private:
    * @return HfAdcErr result code
    */
   HfAdcErr InitializeEsp32Filters() noexcept;
-
   /**
    * @brief Initialize ESP32 ADC monitors.
    * @return HfAdcErr result code
    */
   HfAdcErr InitializeEsp32Monitors() noexcept;
 
+  /**
+   * @brief Validate and adjust advanced configuration parameters.
+   */
+  void ValidateAdvancedConfig() noexcept;
+
+  /**
+   * @brief Initialize advanced ADC features.
+   * @return HfAdcErr result code
+   */
+  HfAdcErr InitializeAdvancedFeatures() noexcept;
+
+  /**
+   * @brief Initialize calibration system.
+   * @return true if successful, false otherwise
+   */
+  bool InitializeCalibration() noexcept;
+
+  /**
+   * @brief Deinitialize calibration system.
+   */
+  void DeinitializeCalibration() noexcept;
+
+  /**
+   * @brief Convert ESP-IDF error codes to HfAdcErr.
+   * @param esp_error ESP-IDF error code
+   * @return Corresponding HfAdcErr
+   */
+  HfAdcErr ConvertEspError(int32_t esp_error) noexcept;
+
+  /**
+   * @brief DMA data processing task (static function).
+   * @param pvParameters Pointer to McuAdc instance
+   */
+  static void DmaProcessingTask(void* pvParameters);
+
+  /**
+   * @brief Process DMA data and invoke callbacks.
+   * @param buffer Data buffer from DMA
+   * @param length Buffer length in bytes
+   * @return Number of samples processed
+   */
+  size_t ProcessDmaData(uint8_t* buffer, size_t length) noexcept;
+
   //==============================================================================
   // PRIVATE MEMBER VARIABLES
   //==============================================================================
-
   // Configuration
   AdcAdvancedConfig advanced_config_; ///< Advanced configuration
   bool use_advanced_config_;          ///< Flag indicating advanced config usage
   bool advanced_initialized_;         ///< Advanced features initialized flag
 
-  // Platform-specific handles
-  void *continuous_handle_;                             ///< Continuous mode handle
-  void *calibration_handle_;                            ///< Calibration handle
-  std::unordered_map<uint8_t, void *> filter_handles_;  ///< Filter handles
-  std::unordered_map<uint8_t, void *> monitor_handles_; ///< Monitor handles
-
-  // Channel configurations
-  std::vector<AdcFilterConfig> filter_configs_;   ///< Filter configurations
-  std::vector<AdcMonitorConfig> monitor_configs_; ///< Monitor configurations
-  AdcCalibrationConfig calibration_config_;       ///< Calibration configuration
-
-  // State management
-  mutable RtosMutex mutex_;         ///< Thread synchronization mutex
-  bool continuous_running_;         ///< Continuous mode status
-  bool triggered_sampling_;         ///< Triggered sampling status
-  AdcPowerMode current_power_mode_; ///< Current power mode
-
-  // Callback functions
-  AdcConversionCallback conversion_callback_; ///< Conversion callback
-  AdcThresholdCallback threshold_callback_;   ///< Threshold callback
-  AdcErrorCallback error_callback_;           ///< Error callback
-  void *callback_userdata_;                   ///< Callback user data
-
-  // Statistics and diagnostics
-  mutable AdcStatistics statistics_; ///< Operation statistics
-  AdcDiagnostics diagnostics_;       ///< Diagnostic information
-  uint64_t last_operation_time_;     ///< Last operation timestamp
-
-  // Platform-specific constants
-  static constexpr uint8_t MAX_CHANNELS_ESP32C6 = 7;
-  static constexpr uint8_t MAX_FILTERS = 2;
-  static constexpr uint8_t MAX_MONITORS = 2;
-  static constexpr uint32_t DEFAULT_SAMPLE_FREQ = 20000;
-  static constexpr size_t DEFAULT_BUFFER_SIZE = 4096;
+  // Platform-specific handles (using void* for platform independence)
+  void *adc_handle_;        ///< Main ADC handle
+  void *cali_handle_;       ///< Calibration handle  
+  bool cali_enable_;        ///< Calibration enabled flag
+  
+  // ESP32-specific members
+  hf_adc_unit_t unit_;      ///< ADC unit number
+  uint32_t attenuation_;    ///< Attenuation setting
+  hf_adc_resolution_t bitwidth_; ///< Resolution setting
+  
+#ifdef HF_MCU_FAMILY_ESP32
+  uint8_t *dma_buffer_;     ///< DMA buffer for continuous mode
+  void *adc_continuous_handle_; ///< Continuous mode handle
+  void *dma_task_handle_;   ///< DMA processing task handle
+  bool dma_mode_active_;    ///< DMA mode status
+  uint8_t current_dma_channel_; ///< Current DMA channel
+  
+  // Callback management
+  AdcCallback active_callback_;    ///< Active callback function
+  void *callback_user_data_;       ///< User data for callback
+  
+  // Constants
+  static constexpr size_t DMA_BUFFER_SIZE = 4096;
+#endif
 };

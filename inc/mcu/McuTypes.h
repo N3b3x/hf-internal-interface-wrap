@@ -21,6 +21,49 @@
 #include <cstdint>
 
 //==============================================================================
+// PLATFORM-SPECIFIC TYPE DEFINITIONS
+//==============================================================================
+
+#ifdef HF_MCU_FAMILY_ESP32
+// ESP32-specific includes and type definitions
+#include "driver/adc.h"
+#include "driver/gpio.h"
+#include "driver/i2c.h"
+#include "driver/spi_master.h"
+#include "driver/uart.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
+
+// ESP32 ADC specific mappings
+using hf_adc_unit_native_t = adc_unit_t;
+using hf_adc_channel_native_t = adc_channel_t;
+using hf_adc_atten_native_t = adc_atten_t;
+using hf_adc_bitwidth_native_t = adc_bitwidth_t;
+
+// ESP32 GPIO specific mappings
+using hf_gpio_num_native_t = gpio_num_t;
+using hf_gpio_mode_native_t = gpio_mode_t;
+using hf_gpio_pull_native_t = gpio_pull_mode_t;
+
+#else
+// Non-ESP32 platforms - use generic types
+using hf_adc_unit_native_t = uint8_t;
+using hf_adc_channel_native_t = uint8_t;
+using hf_adc_atten_native_t = uint8_t;
+using hf_adc_bitwidth_native_t = uint8_t;
+using hf_gpio_num_native_t = uint32_t;
+using hf_gpio_mode_native_t = uint8_t;
+using hf_gpio_pull_native_t = uint8_t;
+
+// Generic RTOS handle types for non-ESP32 platforms
+using SemaphoreHandle_t = void*;
+using i2c_config_t = struct { int dummy; };
+using spi_bus_config_t = struct { int dummy; };
+using spi_device_interface_config_t = struct { int dummy; };
+using uart_config_t = struct { int dummy; };
+#endif
+
+//==============================================================================
 // MCU-SPECIFIC TYPES (FOR INTERNAL MCU LAYER USE ONLY)
 //==============================================================================
 
