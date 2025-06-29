@@ -14,6 +14,7 @@
  */
 
 #include "McuI2c.h"
+#include <algorithm>
 #include <cstring>
 #include <utility>
 #include <vector>
@@ -134,6 +135,7 @@ HfI2cErr McuI2c::Write(uint8_t device_addr, const uint8_t *data, uint16_t length
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   uint32_t timeout = GetTimeoutMs(timeout_ms);
+  uint64_t start = esp_timer_get_time();
 
   // Create I2C command link
   i2c_cmd_handle_t cmd = i2c_cmd_link_create();
@@ -163,8 +165,12 @@ HfI2cErr McuI2c::Write(uint8_t device_addr, const uint8_t *data, uint16_t length
   i2c_cmd_link_delete(cmd);
 
   last_error_ = ConvertPlatformError(err);
+  uint64_t duration = esp_timer_get_time() - start;
+  UpdateStatistics(last_error_ == HfI2cErr::I2C_SUCCESS, length, duration);
+  if (last_error_ != HfI2cErr::I2C_SUCCESS) {
+    HandlePlatformError(err);
+  }
   transaction_count_++;
-
   return last_error_;
 #else
   last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
@@ -191,6 +197,7 @@ HfI2cErr McuI2c::Read(uint8_t device_addr, uint8_t *data, uint16_t length,
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   uint32_t timeout = GetTimeoutMs(timeout_ms);
+  uint64_t start = esp_timer_get_time();
 
   // Create I2C command link
   i2c_cmd_handle_t cmd = i2c_cmd_link_create();
@@ -221,8 +228,12 @@ HfI2cErr McuI2c::Read(uint8_t device_addr, uint8_t *data, uint16_t length,
   i2c_cmd_link_delete(cmd);
 
   last_error_ = ConvertPlatformError(err);
+  uint64_t duration = esp_timer_get_time() - start;
+  UpdateStatistics(last_error_ == HfI2cErr::I2C_SUCCESS, length, duration);
+  if (last_error_ != HfI2cErr::I2C_SUCCESS) {
+    HandlePlatformError(err);
+  }
   transaction_count_++;
-
   return last_error_;
 #else
   last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
@@ -249,6 +260,7 @@ HfI2cErr McuI2c::WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   uint32_t timeout = GetTimeoutMs(timeout_ms);
+  uint64_t start = esp_timer_get_time();
 
   // Create I2C command link
   i2c_cmd_handle_t cmd = i2c_cmd_link_create();
@@ -294,8 +306,13 @@ HfI2cErr McuI2c::WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t
   i2c_cmd_link_delete(cmd);
 
   last_error_ = ConvertPlatformError(err);
+  uint64_t duration = esp_timer_get_time() - start;
+  size_t bytes = tx_length + rx_length;
+  UpdateStatistics(last_error_ == HfI2cErr::I2C_SUCCESS, bytes, duration);
+  if (last_error_ != HfI2cErr::I2C_SUCCESS) {
+    HandlePlatformError(err);
+  }
   transaction_count_++;
-
   return last_error_;
 #else
   last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
@@ -406,51 +423,79 @@ HfI2cErr McuI2c::ConvertPlatformError(int32_t platform_error) noexcept {
 #endif
 }
 
+bool McuI2c::PlatformInitialize() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-esp_err_t err;
-if (use_advanced_config_) {
-  i2c_master_bus_config_t bus_conf = {};
-  bus_conf.clk_source = I2C_CLK_SRC_DEFAULT;
-  bus_conf.i2c_port = static_cast<i2c_port_t>(config_.port);
-  bus_conf.sda_io_num = config_.sda_pin;
-  bus_conf.scl_io_num = config_.scl_pin;
-  bus_conf.flags.enable_internal_pullup = config_.enable_pullups;
-  err = i2c_new_master_bus(&bus_conf, &master_bus_handle_);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "i2c_new_master_bus failed: %s", esp_err_to_name(err));
-    last_error_ = ConvertPlatformError(err);
+  esp_err_t err;
+  if (use_advanced_config_ && advanced_config_.busMode != HfI2cBusMode::MASTER) {
+    ESP_LOGE(TAG, "Only master mode is supported");
+    last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
     return false;
   }
-} else {
-  i2c_config_t conf = {};
-  conf.mode = I2C_MODE_MASTER;
-  conf.sda_io_num = static_cast<gpio_num_t>(config_.sda_pin);
-  conf.scl_io_num = static_cast<gpio_num_t>(config_.scl_pin);
-  conf.sda_pullup_en = config_.enable_pullups ? GPIO_PULLUP_ENABLE : GPIO_PULLUP_DISABLE;
-  conf.scl_pullup_en = config_.enable_pullups ? GPIO_PULLUP_ENABLE : GPIO_PULLUP_DISABLE;
-  conf.master.clk_speed = config_.clock_speed_hz;
-  err = i2c_param_config(static_cast<i2c_port_t>(config_.port), &conf);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "i2c_param_config failed: %s", esp_err_to_name(err));
-    last_error_ = ConvertPlatformError(err);
-    return false;
+  if (use_advanced_config_) {
+    i2c_master_bus_config_t bus_conf = {};
+    bus_conf.clk_source = (advanced_config_.clockSource == HfI2cClockSource::XTAL)
+                              ? I2C_CLK_SRC_XTAL
+                              : I2C_CLK_SRC_DEFAULT;
+    bus_conf.i2c_port = static_cast<i2c_port_t>(config_.port);
+    bus_conf.sda_io_num = config_.sda_pin;
+    bus_conf.scl_io_num = config_.scl_pin;
+    bus_conf.flags.enable_internal_pullup = config_.enable_pullups;
+    bus_conf.clk_speed = config_.clock_speed_hz;
+    if (advanced_config_.digitalFilterEnabled) {
+      bus_conf.glitch_filter = advanced_config_.digitalFilterLength;
+    } else {
+      bus_conf.glitch_filter = 0;
+    }
+    err = i2c_new_master_bus(&bus_conf, &master_bus_handle_);
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "i2c_new_master_bus failed: %s", esp_err_to_name(err));
+      last_error_ = ConvertPlatformError(err);
+      return false;
+    }
+    i2c_set_timeout(static_cast<i2c_port_t>(config_.port), advanced_config_.clockStretchingTimeout);
+    for (const auto &cfg : device_configs_) {
+      if (void *h = CreateEsp32DeviceHandle(cfg.first)) {
+        device_handles_[cfg.first] = h;
+      }
+    }
+  } else {
+    i2c_config_t conf = {};
+    conf.mode = I2C_MODE_MASTER;
+    conf.sda_io_num = static_cast<gpio_num_t>(config_.sda_pin);
+    conf.scl_io_num = static_cast<gpio_num_t>(config_.scl_pin);
+    conf.sda_pullup_en = config_.enable_pullups ? GPIO_PULLUP_ENABLE : GPIO_PULLUP_DISABLE;
+    conf.scl_pullup_en = config_.enable_pullups ? GPIO_PULLUP_ENABLE : GPIO_PULLUP_DISABLE;
+    conf.master.clk_speed = config_.clock_speed_hz;
+    err = i2c_param_config(static_cast<i2c_port_t>(config_.port), &conf);
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "i2c_param_config failed: %s", esp_err_to_name(err));
+      last_error_ = ConvertPlatformError(err);
+      return false;
+    }
+    err = i2c_driver_install(static_cast<i2c_port_t>(config_.port), conf.mode,
+                             config_.rx_buffer_size, config_.tx_buffer_size, 0);
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "i2c_driver_install failed: %s", esp_err_to_name(err));
+      last_error_ = ConvertPlatformError(err);
+      return false;
+    }
+    i2c_set_timeout(static_cast<i2c_port_t>(config_.port), advanced_config_.clockStretchingTimeout);
+    if (advanced_config_.digitalFilterEnabled) {
+      i2c_filter_enable(static_cast<i2c_port_t>(config_.port),
+                        advanced_config_.digitalFilterLength);
+    } else {
+      i2c_filter_disable(static_cast<i2c_port_t>(config_.port));
+    }
   }
-  err = i2c_driver_install(static_cast<i2c_port_t>(config_.port), conf.mode, config_.rx_buffer_size,
-                           config_.tx_buffer_size, 0);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "i2c_driver_install failed: %s", esp_err_to_name(err));
-    last_error_ = ConvertPlatformError(err);
-    return false;
-  }
-}
 
-ESP_LOGI(TAG, "I2C bus initialized on port %d, SDA=%d, SCL=%d, clock=%lu Hz", config_.port,
-         config_.sda_pin, config_.scl_pin, config_.clock_speed_hz);
-
-return true;
+  ESP_LOGI(TAG, "I2C bus initialized on port %d, SDA=%d, SCL=%d, clock=%lu Hz", config_.port,
+           config_.sda_pin, config_.scl_pin, config_.clock_speed_hz);
+  advanced_initialized_ = true;
+  return true;
 #else
-last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
-return false;
+  (void)advanced_config_;
+  last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
+  return false;
 #endif
 }
 
@@ -907,4 +952,50 @@ HfI2cErr McuI2c::removeDevice(uint16_t deviceAddress) noexcept {
   }
 #endif
   return HfI2cErr::I2C_SUCCESS;
+}
+
+void McuI2c::UpdateStatistics(bool success, size_t bytesTransferred,
+                              uint64_t operationTimeUs) noexcept {
+  if (!advanced_config_.statisticsEnabled) {
+    return;
+  }
+  statistics_.totalOperations++;
+  if (success) {
+    statistics_.successfulOperations++;
+  } else {
+    statistics_.failedOperations++;
+    if (last_error_ == HfI2cErr::I2C_ERR_TIMEOUT) {
+      statistics_.timeoutOperations++;
+    }
+    if (last_error_ == HfI2cErr::I2C_ERR_BUS_ERROR) {
+      statistics_.busErrorCount++;
+    }
+    if (last_error_ == HfI2cErr::I2C_ERR_BUS_ARBITRATION_LOST) {
+      statistics_.arbitrationLossCount++;
+    }
+  }
+
+  statistics_.bytesTransmitted += bytesTransferred;
+  statistics_.bytesReceived += bytesTransferred;
+
+  statistics_.maxOperationTimeUs = std::max(statistics_.maxOperationTimeUs, operationTimeUs);
+  statistics_.minOperationTimeUs = std::min(statistics_.minOperationTimeUs, operationTimeUs);
+  statistics_.averageOperationTimeUs =
+      ((statistics_.averageOperationTimeUs * (statistics_.totalOperations - 1)) + operationTimeUs) /
+      statistics_.totalOperations;
+}
+
+void McuI2c::HandlePlatformError(int32_t error) noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (!advanced_config_.diagnosticsEnabled) {
+    return;
+  }
+  diagnostics_.lastErrorCode = static_cast<uint32_t>(error);
+  diagnostics_.lastErrorTimestamp = esp_timer_get_time();
+  diagnostics_.consecutiveErrors++;
+  diagnostics_.busHealthy = false;
+  (void)error;
+#else
+  (void)error;
+#endif
 }
