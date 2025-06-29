@@ -38,6 +38,11 @@
 #include "hal/i2c_types.h"
 #endif
 
+// Type aliases to centralized types in McuTypes.h
+using I2cBusHandle = hf_i2c_master_bus_handle_t;
+using I2cDeviceHandle = hf_i2c_device_handle_t;
+using I2cCmdHandle = hf_i2c_cmd_handle_t;
+
 //--------------------------------------
 //  Advanced I2C Configuration
 //--------------------------------------
@@ -227,6 +232,17 @@ struct I2cDiagnostics {
 using I2cAsyncCallback =
     std::function<void(HfI2cErr result, size_t bytesTransferred, void *userData)>;
 using I2cEventCallback = std::function<void(int eventType, void *eventData, void *userData)>;
+
+/**
+ * @brief Event types reported via I2cEventCallback
+ */
+enum class I2cEventType : int {
+  WRITE_COMPLETE = 0, ///< Write transaction finished
+  READ_COMPLETE = 1,  ///< Read transaction finished
+  ERROR = 2,          ///< Error occurred during transaction
+  BUS_SUSPENDED = 3,  ///< Bus automatically suspended
+  BUS_RESUMED = 4     ///< Bus resumed from suspended state
+};
 
 /**
  * @class McuI2c
@@ -678,6 +694,22 @@ private:
   bool PlatformDeinitialize() noexcept;
 
   /**
+   * @brief Create auto suspend timer if enabled.
+   * @return true if successful, false otherwise
+   */
+  bool CreateAutoSuspendTimer() noexcept;
+
+  /**
+   * @brief Destroy auto suspend timer.
+   */
+  void DestroyAutoSuspendTimer() noexcept;
+
+  /**
+   * @brief Start auto suspend timer.
+   */
+  void StartAutoSuspendTimer() noexcept;
+
+  /**
    * @brief Update operation statistics.
    * @param success Operation success status
    * @param bytesTransferred Number of bytes transferred
@@ -702,7 +734,7 @@ private:
    * @param deviceAddr Device address
    * @return Device handle or nullptr on failure
    */
-  void *CreateEsp32DeviceHandle(uint16_t deviceAddr) noexcept;
+  I2cDeviceHandle CreateEsp32DeviceHandle(uint16_t deviceAddr) noexcept;
 
   //==============================================//
   // PRIVATE MEMBER VARIABLES                    //
@@ -714,9 +746,9 @@ private:
   bool use_advanced_config_;          ///< Flag indicating advanced config usage
 
   // Platform-specific handles
-  void *platform_handle_;                               ///< Platform-specific I2C handle
-  void *master_bus_handle_;                             ///< ESP32 master bus handle
-  std::unordered_map<uint16_t, void *> device_handles_; ///< Device handles map
+  I2cBusHandle platform_handle_;                                 ///< Platform-specific I2C handle
+  I2cBusHandle master_bus_handle_;                               ///< ESP32 master bus handle
+  std::unordered_map<uint16_t, I2cDeviceHandle> device_handles_; ///< Device handles map
 
   // State management
   mutable RtosMutex mutex_;    ///< Thread synchronization mutex
@@ -742,6 +774,7 @@ private:
   // Power management
   HfI2cPowerMode current_power_mode_; ///< Current power mode
   bool bus_suspended_;                ///< Bus suspension state
+  void *auto_suspend_timer_;          ///< Timer handle for auto suspend
 
   // Platform-specific constants
   static constexpr uint32_t DEFAULT_TIMEOUT_MS = 1000;

@@ -248,7 +248,7 @@ private:
   //==============================================//
 
   mutable RtosMutex mutex_;         ///< Thread safety mutex
-  hf_spi_handle_t platform_handle_; ///< Platform-specific SPI handle
+  hf_spi_handle_t platform_handle_; ///< Handle for the registered SPI device
   HfSpiErr last_error_;             ///< Last error that occurred
   uint32_t transaction_count_;      ///< Number of transactions performed
   bool cs_active_;                  ///< Current CS state

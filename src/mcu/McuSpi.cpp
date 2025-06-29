@@ -29,7 +29,7 @@ static const char *TAG = "McuSpi";
 //==============================================//
 
 McuSpi::McuSpi(const SpiBusConfig &config) noexcept
-    : BaseSpiBus(config), platform_handle_(nullptr), last_error_(HfSpiErr::SPI_SUCCESS),
+    : BaseSpi(config), platform_handle_(nullptr), last_error_(HfSpiErr::SPI_SUCCESS),
       transaction_count_(0), cs_active_(false), dma_enabled_(false),
       max_transfer_size_(4092) { // ESP32 default max transfer size
 }
@@ -371,6 +371,20 @@ bool McuSpi::PlatformInitialize() noexcept {
     gpio_set_level(static_cast<gpio_num_t>(config_.cs_pin), config_.cs_active_low ? 1 : 0);
   }
 
+  // Add device and keep handle
+  spi_device_interface_config_t dev_cfg = {};
+  dev_cfg.clock_speed_hz = config_.clock_speed_hz;
+  dev_cfg.mode = config_.mode;
+  dev_cfg.spics_io_num = -1; // Software CS
+  dev_cfg.queue_size = 1;
+  err = spi_bus_add_device(static_cast<spi_host_device_t>(config_.host), &dev_cfg, &platform_handle_);
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "spi_bus_add_device failed: %s", esp_err_to_name(err));
+    spi_bus_free(static_cast<spi_host_device_t>(config_.host));
+    last_error_ = ConvertPlatformError(err);
+    return false;
+  }
+
   ESP_LOGI(
       TAG,
       "SPI bus initialized on host %d, MOSI=%d, MISO=%d, SCLK=%d, CS=%d, mode=%d, clock=%lu Hz",
@@ -384,8 +398,12 @@ bool McuSpi::PlatformInitialize() noexcept {
 #endif
 }
 
-bool McuSpi::PlatformDeinitialize() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
+bool McuSpi::PlatformDeinitialize() noexcept {
+  if (platform_handle_) {
+    spi_bus_remove_device(platform_handle_);
+    platform_handle_ = nullptr;
+  }
   esp_err_t err = spi_bus_free(static_cast<spi_host_device_t>(config_.host));
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "spi_bus_free failed: %s", esp_err_to_name(err));
@@ -396,7 +414,7 @@ bool McuSpi::PlatformDeinitialize() noexcept {
   ESP_LOGI(TAG, "SPI bus deinitialized on host %d", config_.host);
   return true;
 #else
-  return false;
+bool McuSpi::PlatformDeinitialize() noexcept { return false; }
 #endif
 }
 
@@ -405,18 +423,8 @@ HfSpiErr McuSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
-  // Configure device for this transfer
-  spi_device_interface_config_t dev_cfg = {};
-  dev_cfg.clock_speed_hz = config_.clock_speed_hz;
-  dev_cfg.mode = config_.mode;
-  dev_cfg.spics_io_num = -1; // We manage CS manually
-  dev_cfg.queue_size = 1;
-
-  spi_device_handle_t dev_handle;
-  esp_err_t err =
-      spi_bus_add_device(static_cast<spi_host_device_t>(config_.host), &dev_cfg, &dev_handle);
-  if (err != ESP_OK) {
-    last_error_ = ConvertPlatformError(err);
+  if (!platform_handle_) {
+    last_error_ = HfSpiErr::SPI_ERR_NOT_INITIALIZED;
     return last_error_;
   }
 
@@ -431,17 +439,19 @@ HfSpiErr McuSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint
     SetChipSelect(true);
   }
 
-  // Perform transfer
+  // Acquire bus and perform transfer
   uint32_t timeout = GetTimeoutMs(timeout_ms);
-  err = spi_device_transmit(dev_handle, &trans);
+  esp_err_t err = spi_device_acquire_bus(platform_handle_, pdMS_TO_TICKS(timeout));
+  if (err == ESP_OK) {
+    err = spi_device_transmit(platform_handle_, &trans);
+    spi_device_release_bus(platform_handle_);
+  }
 
   // Release CS if we managed it
   if (manage_cs && config_.cs_pin != HF_GPIO_INVALID) {
     SetChipSelect(false);
   }
 
-  // Clean up
-  spi_bus_remove_device(dev_handle);
 
   last_error_ = ConvertPlatformError(err);
   transaction_count_++;

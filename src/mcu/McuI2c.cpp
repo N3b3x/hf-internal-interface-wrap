@@ -14,11 +14,17 @@
  */
 
 #include "McuI2c.h"
+#include <algorithm>
+#include <cstring>
+#include <utility>
+#include <vector>
 
 // Platform-specific includes via centralized McuSelect.h
 #ifdef HF_MCU_FAMILY_ESP32
 #include "driver/i2c.h"
+#include "driver/i2c_master.h"
 #include "esp_log.h"
+#include "esp_timer.h"
 static const char *TAG = "McuI2c";
 #endif
 
@@ -27,13 +33,43 @@ static const char *TAG = "McuI2c";
 //==============================================//
 
 McuI2c::McuI2c(const I2cBusConfig &config) noexcept
-    : BaseI2cBus(config), platform_handle_(nullptr), last_error_(HfI2cErr::I2C_SUCCESS),
-      transaction_count_(0), bus_locked_(false) {}
+    : BaseI2c(config), advanced_config_{}, config_(config), use_advanced_config_(false),
+      platform_handle_(nullptr), master_bus_handle_(nullptr), last_error_(HfI2cErr::I2C_SUCCESS),
+      transaction_count_(0), bus_locked_(false), advanced_initialized_(false),
+      next_operation_id_(0), event_callback_(nullptr), event_callback_userdata_(nullptr),
+      last_operation_time_(0), current_power_mode_(HfI2cPowerMode::FULL_POWER),
+      bus_suspended_(false), auto_suspend_timer_(nullptr) {}
+
+McuI2c::McuI2c(const I2cAdvancedConfig &config) noexcept : McuI2c(I2cBusConfig{}) {
+  advanced_config_ = config;
+  use_advanced_config_ = true;
+  config_.port = static_cast<HfPortNumber>(config.busNumber);
+  config_.clock_speed_hz = config.clockSpeed;
+  config_.sda_pin = config.sdaPin;
+  config_.scl_pin = config.sclPin;
+  config_.enable_pullups = config.pullupResistors;
+  config_.timeout_ms = config.timeoutMs;
+}
 
 McuI2c::~McuI2c() noexcept {
   if (initialized_) {
     Deinitialize();
   }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  for (auto &dev : device_handles_) {
+    if (dev.second) {
+      i2c_master_bus_rm_device(dev.second);
+    }
+  }
+  device_handles_.clear();
+
+  if (master_bus_handle_) {
+    i2c_del_master_bus(master_bus_handle_);
+    master_bus_handle_ = nullptr;
+  }
+  DestroyAutoSuspendTimer();
+#endif
 }
 
 //==============================================//
@@ -101,6 +137,7 @@ HfI2cErr McuI2c::Write(uint8_t device_addr, const uint8_t *data, uint16_t length
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   uint32_t timeout = GetTimeoutMs(timeout_ms);
+  uint64_t start = esp_timer_get_time();
 
   // Create I2C command link
   i2c_cmd_handle_t cmd = i2c_cmd_link_create();
@@ -130,8 +167,24 @@ HfI2cErr McuI2c::Write(uint8_t device_addr, const uint8_t *data, uint16_t length
   i2c_cmd_link_delete(cmd);
 
   last_error_ = ConvertPlatformError(err);
+  uint64_t duration = esp_timer_get_time() - start;
+  UpdateStatistics(last_error_ == HfI2cErr::I2C_SUCCESS, length, duration);
+  if (last_error_ != HfI2cErr::I2C_SUCCESS) {
+    HandlePlatformError(err);
+    if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+      event_callback_(static_cast<int>(I2cEventType::ERROR), &last_error_,
+                      event_callback_userdata_);
+    }
+  } else {
+    if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+      event_callback_(static_cast<int>(I2cEventType::WRITE_COMPLETE), nullptr,
+                      event_callback_userdata_);
+    }
+  }
+  if (advanced_config_.autoSuspendEnabled) {
+    StartAutoSuspendTimer();
+  }
   transaction_count_++;
-
   return last_error_;
 #else
   last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
@@ -158,6 +211,7 @@ HfI2cErr McuI2c::Read(uint8_t device_addr, uint8_t *data, uint16_t length,
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   uint32_t timeout = GetTimeoutMs(timeout_ms);
+  uint64_t start = esp_timer_get_time();
 
   // Create I2C command link
   i2c_cmd_handle_t cmd = i2c_cmd_link_create();
@@ -188,8 +242,24 @@ HfI2cErr McuI2c::Read(uint8_t device_addr, uint8_t *data, uint16_t length,
   i2c_cmd_link_delete(cmd);
 
   last_error_ = ConvertPlatformError(err);
+  uint64_t duration = esp_timer_get_time() - start;
+  UpdateStatistics(last_error_ == HfI2cErr::I2C_SUCCESS, length, duration);
+  if (last_error_ != HfI2cErr::I2C_SUCCESS) {
+    HandlePlatformError(err);
+    if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+      event_callback_(static_cast<int>(I2cEventType::ERROR), &last_error_,
+                      event_callback_userdata_);
+    }
+  } else {
+    if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+      event_callback_(static_cast<int>(I2cEventType::READ_COMPLETE), nullptr,
+                      event_callback_userdata_);
+    }
+  }
+  if (advanced_config_.autoSuspendEnabled) {
+    StartAutoSuspendTimer();
+  }
   transaction_count_++;
-
   return last_error_;
 #else
   last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
@@ -216,6 +286,7 @@ HfI2cErr McuI2c::WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   uint32_t timeout = GetTimeoutMs(timeout_ms);
+  uint64_t start = esp_timer_get_time();
 
   // Create I2C command link
   i2c_cmd_handle_t cmd = i2c_cmd_link_create();
@@ -261,8 +332,25 @@ HfI2cErr McuI2c::WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t
   i2c_cmd_link_delete(cmd);
 
   last_error_ = ConvertPlatformError(err);
+  uint64_t duration = esp_timer_get_time() - start;
+  size_t bytes = tx_length + rx_length;
+  UpdateStatistics(last_error_ == HfI2cErr::I2C_SUCCESS, bytes, duration);
+  if (last_error_ != HfI2cErr::I2C_SUCCESS) {
+    HandlePlatformError(err);
+    if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+      event_callback_(static_cast<int>(I2cEventType::ERROR), &last_error_,
+                      event_callback_userdata_);
+    }
+  } else {
+    if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+      event_callback_(static_cast<int>(I2cEventType::WRITE_COMPLETE), nullptr,
+                      event_callback_userdata_);
+    }
+  }
+  if (advanced_config_.autoSuspendEnabled) {
+    StartAutoSuspendTimer();
+  }
   transaction_count_++;
-
   return last_error_;
 #else
   last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
@@ -375,37 +463,87 @@ HfI2cErr McuI2c::ConvertPlatformError(int32_t platform_error) noexcept {
 
 bool McuI2c::PlatformInitialize() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  // Configure I2C parameters
-  i2c_config_t conf = {};
-  conf.mode = I2C_MODE_MASTER;
-  conf.sda_io_num = static_cast<gpio_num_t>(config_.sda_pin);
-  conf.scl_io_num = static_cast<gpio_num_t>(config_.scl_pin);
-  conf.sda_pullup_en = config_.enable_pullups ? GPIO_PULLUP_ENABLE : GPIO_PULLUP_DISABLE;
-  conf.scl_pullup_en = config_.enable_pullups ? GPIO_PULLUP_ENABLE : GPIO_PULLUP_DISABLE;
-  conf.master.clk_speed = config_.clock_speed_hz;
-
-  // Configure I2C
-  esp_err_t err = i2c_param_config(static_cast<i2c_port_t>(config_.port), &conf);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "i2c_param_config failed: %s", esp_err_to_name(err));
-    last_error_ = ConvertPlatformError(err);
+  esp_err_t err;
+  if (use_advanced_config_ && advanced_config_.busMode != HfI2cBusMode::MASTER) {
+    ESP_LOGE(TAG, "Only master mode is supported");
+    last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
     return false;
   }
-
-  // Install I2C driver
-  err = i2c_driver_install(static_cast<i2c_port_t>(config_.port), conf.mode, config_.rx_buffer_size,
-                           config_.tx_buffer_size, 0);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "i2c_driver_install failed: %s", esp_err_to_name(err));
-    last_error_ = ConvertPlatformError(err);
-    return false;
+  if (use_advanced_config_) {
+    i2c_master_bus_config_t bus_conf = {};
+    bus_conf.clk_source = (advanced_config_.clockSource == HfI2cClockSource::XTAL)
+                              ? I2C_CLK_SRC_XTAL
+                              : I2C_CLK_SRC_DEFAULT;
+    bus_conf.i2c_port = static_cast<i2c_port_t>(config_.port);
+    bus_conf.sda_io_num = config_.sda_pin;
+    bus_conf.scl_io_num = config_.scl_pin;
+    bus_conf.flags.enable_internal_pullup = config_.enable_pullups;
+    bus_conf.clk_speed = config_.clock_speed_hz;
+    if (advanced_config_.digitalFilterEnabled) {
+      bus_conf.glitch_filter = advanced_config_.digitalFilterLength;
+    } else {
+      bus_conf.glitch_filter = 0;
+    }
+#if defined(i2c_set_ana_filter)
+    i2c_set_ana_filter(static_cast<i2c_port_t>(config_.port), advanced_config_.analogFilterEnabled);
+#endif
+    err = i2c_new_master_bus(&bus_conf, &master_bus_handle_);
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "i2c_new_master_bus failed: %s", esp_err_to_name(err));
+      last_error_ = ConvertPlatformError(err);
+      return false;
+    }
+    i2c_set_timeout(static_cast<i2c_port_t>(config_.port), advanced_config_.clockStretchingTimeout);
+    for (const auto &cfg : device_configs_) {
+      if (I2cDeviceHandle h = CreateEsp32DeviceHandle(cfg.first)) {
+        device_handles_[cfg.first] = h;
+      }
+    }
+  } else {
+    i2c_config_t conf = {};
+    conf.mode = I2C_MODE_MASTER;
+    conf.sda_io_num = static_cast<gpio_num_t>(config_.sda_pin);
+    conf.scl_io_num = static_cast<gpio_num_t>(config_.scl_pin);
+    conf.sda_pullup_en = config_.enable_pullups ? GPIO_PULLUP_ENABLE : GPIO_PULLUP_DISABLE;
+    conf.scl_pullup_en = config_.enable_pullups ? GPIO_PULLUP_ENABLE : GPIO_PULLUP_DISABLE;
+    conf.master.clk_speed = config_.clock_speed_hz;
+    err = i2c_param_config(static_cast<i2c_port_t>(config_.port), &conf);
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "i2c_param_config failed: %s", esp_err_to_name(err));
+      last_error_ = ConvertPlatformError(err);
+      return false;
+    }
+    err = i2c_driver_install(static_cast<i2c_port_t>(config_.port), conf.mode,
+                             config_.rx_buffer_size, config_.tx_buffer_size, 0);
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "i2c_driver_install failed: %s", esp_err_to_name(err));
+      last_error_ = ConvertPlatformError(err);
+      return false;
+    }
+    i2c_set_timeout(static_cast<i2c_port_t>(config_.port), advanced_config_.clockStretchingTimeout);
+    if (advanced_config_.digitalFilterEnabled) {
+      i2c_filter_enable(static_cast<i2c_port_t>(config_.port),
+                        advanced_config_.digitalFilterLength);
+    } else {
+      i2c_filter_disable(static_cast<i2c_port_t>(config_.port));
+    }
+#if defined(i2c_set_ana_filter)
+    i2c_set_ana_filter(static_cast<i2c_port_t>(config_.port), advanced_config_.analogFilterEnabled);
+#endif
   }
 
   ESP_LOGI(TAG, "I2C bus initialized on port %d, SDA=%d, SCL=%d, clock=%lu Hz", config_.port,
            config_.sda_pin, config_.scl_pin, config_.clock_speed_hz);
-
+  advanced_initialized_ = true;
+#ifdef HF_MCU_FAMILY_ESP32
+  if (advanced_config_.autoSuspendEnabled) {
+    CreateAutoSuspendTimer();
+    StartAutoSuspendTimer();
+  }
+#endif
   return true;
 #else
+  (void)advanced_config_;
   last_error_ = HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
   return false;
 #endif
@@ -413,16 +551,593 @@ bool McuI2c::PlatformInitialize() noexcept {
 
 bool McuI2c::PlatformDeinitialize() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  esp_err_t err = i2c_driver_delete(static_cast<i2c_port_t>(config_.port));
+  esp_err_t err = ESP_OK;
+  if (use_advanced_config_ && master_bus_handle_) {
+    err = i2c_del_master_bus(master_bus_handle_);
+    master_bus_handle_ = nullptr;
+  } else {
+    err = i2c_driver_delete(static_cast<i2c_port_t>(config_.port));
+  }
+
   if (err != ESP_OK) {
-    ESP_LOGE(TAG, "i2c_driver_delete failed: %s", esp_err_to_name(err));
+    ESP_LOGE(TAG, "i2c bus delete failed: %s", esp_err_to_name(err));
     last_error_ = ConvertPlatformError(err);
     return false;
   }
+
+  DestroyAutoSuspendTimer();
 
   ESP_LOGI(TAG, "I2C bus deinitialized on port %d", config_.port);
   return true;
 #else
   return false;
+#endif
+}
+
+I2cDeviceHandle McuI2c::CreateEsp32DeviceHandle(uint16_t deviceAddr) noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (!master_bus_handle_) {
+    return nullptr;
+  }
+
+  i2c_device_config_t dev_conf = {};
+  dev_conf.addr_bit_len = I2C_ADDR_BIT_LEN_7;
+  dev_conf.device_address = deviceAddr;
+  dev_conf.scl_speed_hz = config_.clock_speed_hz;
+  i2c_master_dev_handle_t handle = nullptr;
+  esp_err_t err = i2c_master_bus_add_device(master_bus_handle_, &dev_conf, &handle);
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "bus_add_device failed: %s", esp_err_to_name(err));
+    return nullptr;
+  }
+  return handle;
+#else
+  (void)deviceAddr;
+  return nullptr;
+#endif
+}
+
+HfI2cErr McuI2c::InitializeEsp32Master() noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (master_bus_handle_) {
+    return HfI2cErr::I2C_SUCCESS;
+  }
+  i2c_master_bus_config_t bus_conf = {};
+  bus_conf.clk_source = I2C_CLK_SRC_DEFAULT;
+  bus_conf.i2c_port = static_cast<i2c_port_t>(config_.port);
+  bus_conf.sda_io_num = config_.sda_pin;
+  bus_conf.scl_io_num = config_.scl_pin;
+  bus_conf.flags.enable_internal_pullup = config_.enable_pullups;
+  esp_err_t err = i2c_new_master_bus(&bus_conf, &master_bus_handle_);
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "i2c_new_master_bus failed: %s", esp_err_to_name(err));
+    return ConvertPlatformError(err);
+  }
+  return HfI2cErr::I2C_SUCCESS;
+#else
+  return HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
+#endif
+}
+
+//==============================================//
+// ADVANCED CONFIGURATION METHODS               //
+//==============================================//
+
+HfI2cErr McuI2c::initializeAdvanced(const I2cAdvancedConfig &config) noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  if (initialized_) {
+    Deinitialize();
+  }
+
+  advanced_config_ = config;
+  use_advanced_config_ = true;
+  config_.port = static_cast<HfPortNumber>(config.busNumber);
+  config_.clock_speed_hz = config.clockSpeed;
+  config_.sda_pin = config.sdaPin;
+  config_.scl_pin = config.sclPin;
+  config_.enable_pullups = config.pullupResistors;
+  config_.timeout_ms = config.timeoutMs;
+
+  if (!Initialize()) {
+    return last_error_;
+  }
+
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+HfI2cErr McuI2c::reconfigure(const I2cAdvancedConfig &config) noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  if (initialized_) {
+    PlatformDeinitialize();
+  }
+  advanced_initialized_ = false;
+  advanced_config_ = config;
+  use_advanced_config_ = true;
+  config_.port = static_cast<HfPortNumber>(config.busNumber);
+  config_.clock_speed_hz = config.clockSpeed;
+  config_.sda_pin = config.sdaPin;
+  config_.scl_pin = config.sclPin;
+  config_.enable_pullups = config.pullupResistors;
+  config_.timeout_ms = config.timeoutMs;
+
+  if (!PlatformInitialize()) {
+    return last_error_;
+  }
+
+  initialized_ = true;
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+HfI2cErr McuI2c::configureDevice(const I2cDeviceConfig &deviceConfig) noexcept {
+  if (!IsValidDeviceAddress(static_cast<uint8_t>(deviceConfig.deviceAddress))) {
+    return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  device_configs_[deviceConfig.deviceAddress] = deviceConfig;
+
+#ifdef HF_MCU_FAMILY_ESP32
+  if (use_advanced_config_ && master_bus_handle_) {
+    I2cDeviceHandle handle = CreateEsp32DeviceHandle(deviceConfig.deviceAddress);
+    if (!handle) {
+      return HfI2cErr::I2C_ERR_OUT_OF_MEMORY;
+    }
+    device_handles_[deviceConfig.deviceAddress] = handle;
+  }
+#else
+  (void)deviceConfig;
+#endif
+
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+I2cAdvancedConfig McuI2c::getCurrentConfiguration() const noexcept {
+  if (use_advanced_config_) {
+    return advanced_config_;
+  }
+
+  I2cAdvancedConfig cfg;
+  cfg.busNumber = config_.port;
+  cfg.clockSpeed = config_.clock_speed_hz;
+  cfg.sdaPin = config_.sda_pin;
+  cfg.sclPin = config_.scl_pin;
+  cfg.pullupResistors = config_.enable_pullups;
+  cfg.timeoutMs = config_.timeout_ms;
+  return cfg;
+}
+
+HfI2cErr McuI2c::resetBus() noexcept {
+  return ResetBus() ? HfI2cErr::I2C_SUCCESS : HfI2cErr::I2C_ERR_FAILURE;
+}
+
+bool McuI2c::validateDevice(uint16_t deviceAddress) noexcept {
+  uint8_t tmp = 0;
+  HfI2cErr res = WriteRead(static_cast<uint8_t>(deviceAddress), nullptr, 0, &tmp, 0, 10);
+  return res == HfI2cErr::I2C_SUCCESS;
+}
+
+HfI2cErr McuI2c::writeRegister(uint16_t deviceAddr, uint8_t regAddr, uint8_t value) noexcept {
+  uint8_t buf[2] = {regAddr, value};
+  return Write(static_cast<uint8_t>(deviceAddr), buf, 2, config_.timeout_ms);
+}
+
+HfI2cErr McuI2c::readRegister(uint16_t deviceAddr, uint8_t regAddr, uint8_t &value) noexcept {
+  HfI2cErr res =
+      WriteRead(static_cast<uint8_t>(deviceAddr), &regAddr, 1, &value, 1, config_.timeout_ms);
+  return res;
+}
+
+HfI2cErr McuI2c::writeMultipleRegisters(uint16_t deviceAddr, uint8_t startRegAddr,
+                                        const std::vector<uint8_t> &data) noexcept {
+  std::vector<uint8_t> buffer;
+  buffer.reserve(data.size() + 1);
+  buffer.push_back(startRegAddr);
+  buffer.insert(buffer.end(), data.begin(), data.end());
+  return Write(static_cast<uint8_t>(deviceAddr), buffer.data(), buffer.size(), config_.timeout_ms);
+}
+
+HfI2cErr McuI2c::readMultipleRegisters(uint16_t deviceAddr, uint8_t startRegAddr,
+                                       std::vector<uint8_t> &data, size_t count) noexcept {
+  data.resize(count);
+  HfI2cErr res = WriteRead(static_cast<uint8_t>(deviceAddr), &startRegAddr, 1, data.data(), count,
+                           config_.timeout_ms);
+  return res;
+}
+
+//==============================================//
+// ASYNCHRONOUS OPERATIONS                      //
+//==============================================//
+
+namespace {
+struct AsyncOp {
+  McuI2c *obj;
+  bool read;
+  uint16_t addr;
+  std::vector<uint8_t> buffer;
+  I2cAsyncCallback cb;
+  void *user;
+  uint32_t id;
+};
+
+void AsyncTask(void *param) {
+  AsyncOp *op = static_cast<AsyncOp *>(param);
+  HfI2cErr res;
+  size_t transferred = 0;
+  if (op->read) {
+    res = op->obj->Read(static_cast<uint8_t>(op->addr), op->buffer.data(), op->buffer.size());
+    transferred = op->buffer.size();
+  } else {
+    res = op->obj->Write(static_cast<uint8_t>(op->addr), op->buffer.data(), op->buffer.size());
+    transferred = op->buffer.size();
+  }
+  if (op->cb) {
+    op->cb(res, transferred, op->user);
+  }
+  if (op->obj->event_callback_ && op->obj->advanced_config_.eventCallbacksEnabled) {
+    int type = op->read ? static_cast<int>(I2cEventType::READ_COMPLETE)
+                        : static_cast<int>(I2cEventType::WRITE_COMPLETE);
+    if (res != HfI2cErr::I2C_SUCCESS) {
+      type = static_cast<int>(I2cEventType::ERROR);
+    }
+    op->obj->event_callback_(type, &res, op->obj->event_callback_userdata_);
+  }
+  op->obj->async_operations_.erase(op->id);
+  delete op;
+  vTaskDelete(nullptr);
+}
+} // namespace
+
+HfI2cErr McuI2c::writeAsync(uint16_t deviceAddr, const std::vector<uint8_t> &data,
+                            I2cAsyncCallback callback, void *userData) noexcept {
+  if (!EnsureInitialized()) {
+    return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+  }
+
+  AsyncOp *op =
+      new AsyncOp{this, false, deviceAddr, data, callback, userData, next_operation_id_++};
+  async_operations_[op->id] = op;
+
+#ifdef HF_MCU_FAMILY_ESP32
+  xTaskCreate(AsyncTask, "i2c_wr", 4096, op, 5, nullptr);
+#else
+  // Fallback to blocking call
+  AsyncTask(op);
+#endif
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+HfI2cErr McuI2c::readAsync(uint16_t deviceAddr, size_t length, I2cAsyncCallback callback,
+                           void *userData) noexcept {
+  if (!EnsureInitialized()) {
+    return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+  }
+
+  std::vector<uint8_t> buffer(length);
+  AsyncOp *op = new AsyncOp{this,     true,     deviceAddr,          std::move(buffer),
+                            callback, userData, next_operation_id_++};
+  async_operations_[op->id] = op;
+
+#ifdef HF_MCU_FAMILY_ESP32
+  xTaskCreate(AsyncTask, "i2c_rd", 4096, op, 5, nullptr);
+#else
+  AsyncTask(op);
+#endif
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+HfI2cErr McuI2c::cancelAsyncOperation(uint32_t operationId) noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  auto it = async_operations_.find(operationId);
+  if (it == async_operations_.end()) {
+    return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+  }
+  // For simplicity, we do not cancel running task
+  return HfI2cErr::I2C_ERR_UNSUPPORTED_OPERATION;
+}
+
+void McuI2c::setEventCallback(I2cEventCallback callback, void *userData) noexcept {
+  event_callback_ = callback;
+  event_callback_userdata_ = userData;
+}
+
+//==============================================//
+// MULTI-BUFFER TRANSACTIONS                    //
+//==============================================//
+
+HfI2cErr
+McuI2c::executeMultiBufferTransaction(const I2cMultiBufferTransaction &transaction) noexcept {
+  if (!EnsureInitialized()) {
+    return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+  }
+
+  HfI2cErr result = HfI2cErr::I2C_SUCCESS;
+  for (const auto &buf : transaction.buffers) {
+    if (buf.isWrite) {
+      result = Write(static_cast<uint8_t>(transaction.deviceAddress), buf.data, buf.length,
+                     transaction.timeoutMs);
+    } else {
+      result = Read(static_cast<uint8_t>(transaction.deviceAddress),
+                    const_cast<uint8_t *>(buf.data), buf.length, transaction.timeoutMs);
+    }
+    if (result != HfI2cErr::I2C_SUCCESS) {
+      break;
+    }
+  }
+  return result;
+}
+
+HfI2cErr McuI2c::executeMultiBufferTransactionAsync(const I2cMultiBufferTransaction &transaction,
+                                                    I2cAsyncCallback callback,
+                                                    void *userData) noexcept {
+  // Simple implementation using task
+  std::vector<I2cCustomCommand> cmds;
+  for (const auto &buf : transaction.buffers) {
+    I2cCustomCommand cmd(buf.isWrite ? I2cCustomCommand::Type::WRITE
+                                     : I2cCustomCommand::Type::READ);
+    cmd.data.assign(buf.data, buf.data + buf.length);
+    cmds.push_back(std::move(cmd));
+  }
+  return executeCustomSequenceAsync(cmds, callback, userData);
+}
+
+//==============================================//
+// CUSTOM COMMAND SEQUENCES                     //
+//==============================================//
+
+HfI2cErr McuI2c::executeCustomSequence(const std::vector<I2cCustomCommand> &commands) noexcept {
+  if (!EnsureInitialized()) {
+    return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+  }
+
+  for (const auto &cmd : commands) {
+    switch (cmd.type) {
+    case I2cCustomCommand::Type::WRITE:
+      if (Write(static_cast<uint8_t>(advanced_config_.busNumber), cmd.data.data(),
+                cmd.data.size()) != HfI2cErr::I2C_SUCCESS) {
+        return last_error_;
+      }
+      break;
+    case I2cCustomCommand::Type::READ:
+      if (Read(static_cast<uint8_t>(advanced_config_.busNumber),
+               const_cast<uint8_t *>(cmd.data.data()), cmd.data.size()) != HfI2cErr::I2C_SUCCESS) {
+        return last_error_;
+      }
+      break;
+    case I2cCustomCommand::Type::DELAY:
+      vTaskDelay(pdMS_TO_TICKS(cmd.parameter));
+      break;
+    default:
+      break;
+    }
+  }
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+HfI2cErr McuI2c::executeCustomSequenceAsync(const std::vector<I2cCustomCommand> &commands,
+                                            I2cAsyncCallback callback, void *userData) noexcept {
+  // Launch a task that executes the sequence
+  struct SeqWrapper {
+    std::vector<I2cCustomCommand> cmds;
+    McuI2c *obj;
+    I2cAsyncCallback cb;
+    void *ud;
+  };
+
+  SeqWrapper *wrapper = new SeqWrapper{commands, this, callback, userData};
+
+#ifdef HF_MCU_FAMILY_ESP32
+  auto task = [](void *p) {
+    SeqWrapper *w = static_cast<SeqWrapper *>(p);
+    HfI2cErr res = w->obj->executeCustomSequence(w->cmds);
+    if (w->cb) {
+      w->cb(res, 0, w->ud);
+    }
+    if (w->obj->event_callback_ && w->obj->advanced_config_.eventCallbacksEnabled) {
+      int type = (res == HfI2cErr::I2C_SUCCESS) ? static_cast<int>(I2cEventType::WRITE_COMPLETE)
+                                                : static_cast<int>(I2cEventType::ERROR);
+      w->obj->event_callback_(type, &res, w->obj->event_callback_userdata_);
+    }
+    delete w;
+    vTaskDelete(nullptr);
+  };
+  xTaskCreate(task, "i2c_seq", 4096, wrapper, 5, nullptr);
+#else
+  HfI2cErr res = executeCustomSequence(commands);
+  if (callback) {
+    callback(res, 0, userData);
+  }
+  if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+    int type = (res == HfI2cErr::I2C_SUCCESS) ? static_cast<int>(I2cEventType::WRITE_COMPLETE)
+                                              : static_cast<int>(I2cEventType::ERROR);
+    event_callback_(type, &res, event_callback_userdata_);
+  }
+  delete wrapper;
+#endif
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+//==============================================//
+// POWER MANAGEMENT & STATS                     //
+//==============================================//
+
+HfI2cErr McuI2c::setPowerMode(HfI2cPowerMode mode) noexcept {
+  current_power_mode_ = mode;
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+HfI2cPowerMode McuI2c::getPowerMode() const noexcept {
+  return current_power_mode_;
+}
+
+HfI2cErr McuI2c::suspendBus() noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (auto_suspend_timer_) {
+    esp_timer_stop(static_cast<esp_timer_handle_t>(auto_suspend_timer_));
+  }
+#endif
+  bus_suspended_ = true;
+  if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+    event_callback_(static_cast<int>(I2cEventType::BUS_SUSPENDED), nullptr,
+                    event_callback_userdata_);
+  }
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+HfI2cErr McuI2c::resumeBus() noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (auto_suspend_timer_) {
+    esp_timer_stop(static_cast<esp_timer_handle_t>(auto_suspend_timer_));
+  }
+#endif
+  bus_suspended_ = false;
+  if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+    event_callback_(static_cast<int>(I2cEventType::BUS_RESUMED), nullptr, event_callback_userdata_);
+  }
+  if (advanced_config_.autoSuspendEnabled) {
+    StartAutoSuspendTimer();
+  }
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+I2cStatistics McuI2c::getStatistics() const noexcept {
+  return statistics_;
+}
+
+void McuI2c::resetStatistics() noexcept {
+  statistics_ = I2cStatistics{};
+}
+
+I2cDiagnostics McuI2c::getDiagnostics() noexcept {
+  return diagnostics_;
+}
+
+bool McuI2c::isBusHealthy() noexcept {
+  return diagnostics_.busHealthy && last_error_ == HfI2cErr::I2C_SUCCESS;
+}
+
+size_t McuI2c::scanDevices(std::vector<uint16_t> &foundDevices, uint16_t startAddr,
+                           uint16_t endAddr) noexcept {
+  foundDevices.clear();
+  for (uint16_t addr = startAddr; addr <= endAddr; ++addr) {
+    if (validateDevice(addr)) {
+      foundDevices.push_back(addr);
+    }
+  }
+  return foundDevices.size();
+}
+
+HfI2cErr McuI2c::addDevice(const I2cDeviceConfig &deviceConfig) noexcept {
+  return configureDevice(deviceConfig);
+}
+
+HfI2cErr McuI2c::removeDevice(uint16_t deviceAddress) noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  device_configs_.erase(deviceAddress);
+#ifdef HF_MCU_FAMILY_ESP32
+  auto it = device_handles_.find(deviceAddress);
+  if (it != device_handles_.end()) {
+    i2c_master_bus_rm_device(it->second);
+    device_handles_.erase(it);
+  }
+#endif
+  return HfI2cErr::I2C_SUCCESS;
+}
+
+void McuI2c::UpdateStatistics(bool success, size_t bytesTransferred,
+                              uint64_t operationTimeUs) noexcept {
+  if (!advanced_config_.statisticsEnabled) {
+    return;
+  }
+  statistics_.totalOperations++;
+  if (success) {
+    statistics_.successfulOperations++;
+  } else {
+    statistics_.failedOperations++;
+    if (last_error_ == HfI2cErr::I2C_ERR_TIMEOUT) {
+      statistics_.timeoutOperations++;
+    }
+    if (last_error_ == HfI2cErr::I2C_ERR_BUS_ERROR) {
+      statistics_.busErrorCount++;
+    }
+    if (last_error_ == HfI2cErr::I2C_ERR_BUS_ARBITRATION_LOST) {
+      statistics_.arbitrationLossCount++;
+    }
+  }
+
+  statistics_.bytesTransmitted += bytesTransferred;
+  statistics_.bytesReceived += bytesTransferred;
+
+  statistics_.maxOperationTimeUs = std::max(statistics_.maxOperationTimeUs, operationTimeUs);
+  statistics_.minOperationTimeUs = std::min(statistics_.minOperationTimeUs, operationTimeUs);
+  statistics_.averageOperationTimeUs =
+      ((statistics_.averageOperationTimeUs * (statistics_.totalOperations - 1)) + operationTimeUs) /
+      statistics_.totalOperations;
+}
+
+void McuI2c::HandlePlatformError(int32_t error) noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (!advanced_config_.diagnosticsEnabled) {
+    return;
+  }
+  diagnostics_.lastErrorCode = static_cast<uint32_t>(error);
+  diagnostics_.lastErrorTimestamp = esp_timer_get_time();
+  diagnostics_.consecutiveErrors++;
+  diagnostics_.busHealthy = false;
+  (void)error;
+#else
+  (void)error;
+#endif
+}
+
+bool McuI2c::CreateAutoSuspendTimer() noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (auto_suspend_timer_) {
+    return true;
+  }
+  esp_timer_create_args_t args = {};
+  args.callback = [](void *arg) {
+    auto *self = static_cast<McuI2c *>(arg);
+    if (self) {
+      self->suspendBus();
+      if (self->event_callback_ && self->advanced_config_.eventCallbacksEnabled) {
+        self->event_callback_(static_cast<int>(I2cEventType::BUS_SUSPENDED), nullptr,
+                              self->event_callback_userdata_);
+      }
+    }
+  };
+  args.arg = this;
+  args.dispatch_method = ESP_TIMER_TASK;
+  args.name = "i2c_auto_suspend";
+  esp_timer_handle_t handle;
+  esp_err_t ret = esp_timer_create(&args, &handle);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "auto suspend timer create failed: %s", esp_err_to_name(ret));
+    return false;
+  }
+  auto_suspend_timer_ = handle;
+  return true;
+#else
+  return false;
+#endif
+}
+
+void McuI2c::DestroyAutoSuspendTimer() noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (!auto_suspend_timer_) {
+    return;
+  }
+  esp_timer_handle_t handle = static_cast<esp_timer_handle_t>(auto_suspend_timer_);
+  esp_timer_delete(handle);
+  auto_suspend_timer_ = nullptr;
+#endif
+}
+
+void McuI2c::StartAutoSuspendTimer() noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  if (!auto_suspend_timer_) {
+    return;
+  }
+  esp_timer_start_once(static_cast<esp_timer_handle_t>(auto_suspend_timer_),
+                       advanced_config_.autoSuspendDelayMs * 1000ULL);
 #endif
 }
