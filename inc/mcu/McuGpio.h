@@ -12,83 +12,20 @@
  * @date 2025
  * @copyright HardFOC
  */
+
 #pragma once
 
 #include "BaseGpio.h"
 #include "McuTypes.h"
 
-//--------------------------------------
-//  Advanced GPIO Configuration Types
-//--------------------------------------
-
-/**
- * @brief GPIO glitch filter types supported by ESP32C6.
- */
-enum class GpioGlitchFilterType : uint8_t {
-  None = 0, ///< No glitch filter
-  Pin = 1,  ///< Pin glitch filter (fixed 2 clock cycles)
-  Flex = 2, ///< Flexible glitch filter (configurable)
-  Both = 3  ///< Both pin and flex filters (maximum protection)
-};
-
-/**
- * @brief GPIO drive capability levels for ESP32C6.
- */
-enum class GpioDriveCapability : uint8_t {
-  Weak = 0,     ///< ~5mA drive capability
-  Stronger = 1, ///< ~10mA drive capability
-  Medium = 2,   ///< ~20mA drive capability (default)
-  Strongest = 3 ///< ~40mA drive capability
-};
-
-/**
- * @brief GPIO sleep configuration for power management.
- */
-struct GpioSleepConfig {
-  BaseGpio::Direction sleep_direction; ///< Direction during sleep
-  BaseGpio::PullMode sleep_pull_mode;  ///< Pull resistors during sleep
-  bool sleep_output_enable;            ///< Output enabled during sleep
-  bool sleep_input_enable;             ///< Input enabled during sleep
-  bool hold_during_sleep;              ///< Hold configuration during sleep
-};
-
-/**
- * @brief Flexible glitch filter configuration.
- */
-struct FlexGlitchFilterConfig {
-  uint32_t window_width_ns;     ///< Sample window width in nanoseconds
-  uint32_t window_threshold_ns; ///< Threshold for filtering in nanoseconds
-  bool enable_on_init;          ///< Enable filter immediately after creation
-};
-
-/**
- * @brief GPIO wake-up configuration for deep sleep.
- */
-struct GpioWakeUpConfig {
-  BaseGpio::InterruptTrigger wake_trigger; ///< Wake-up trigger type
-  bool enable_rtc_wake;                    ///< Enable RTC domain wake-up
-  bool enable_ext1_wake;                   ///< Enable EXT1 wake-up source
-  uint8_t wake_level;                      ///< Wake-up level (0=low, 1=high)
-};
-
-/**
- * @brief GPIO configuration dump information.
- */
-struct GpioConfigDump {
-  uint8_t pin_number;                   ///< GPIO pin number
-  BaseGpio::Direction direction;        ///< Current direction
-  BaseGpio::PullMode pull_mode;         ///< Current pull mode
-  BaseGpio::OutputMode output_mode;     ///< Current output mode
-  GpioDriveCapability drive_capability; ///< Current drive capability
-  bool input_enabled;                   ///< Input buffer enabled
-  bool output_enabled;                  ///< Output buffer enabled
-  bool open_drain;                      ///< Open drain mode
-  bool sleep_sel_enabled;               ///< Sleep selection enabled
-  uint32_t function_select;             ///< IOMUX function selection
-  bool is_rtc_gpio;                     ///< Pin supports RTC GPIO
-  bool glitch_filter_enabled;           ///< Glitch filter enabled
-  GpioGlitchFilterType filter_type;     ///< Type of glitch filter
-};
+// Forward declarations - types are defined in McuTypes.h to avoid duplicates
+// Type aliases to centralized types in McuTypes.h (no duplicate type declarations)
+using GpioGlitchFilterType = hf_gpio_glitch_filter_type_t;
+using GpioDriveCapability = hf_gpio_drive_strength_t;
+using GpioSleepConfig = hf_gpio_sleep_config_t;
+using FlexGlitchFilterConfig = hf_gpio_flex_filter_config_t;
+using GpioWakeUpConfig = hf_gpio_wakeup_config_t;
+using GpioConfigDump = hf_gpio_status_info_t;
 
 /**
  * @class McuGpio
@@ -121,8 +58,7 @@ class McuGpio : public BaseGpio {
 public:
   //==============================================================//
   // CONSTRUCTORS
-  //==============================================================//
-  /**
+  //==============================================================//  /**
    * @brief Constructor for McuGpio with full configuration including advanced features.
    * @param pin_num Platform-agnostic GPIO pin number
    * @param direction Initial pin direction (Input or Output)
@@ -130,10 +66,10 @@ public:
    * @param output_mode Output drive mode (PushPull or OpenDrain)
    * @param pull_mode Pull resistor configuration (Floating, PullUp, or PullDown)
    * @param drive_capability Drive strength capability (Weak to Strongest)
-   * @details Creates an MCU GPIO instance with the specified configuration including
-   *          advanced features support. The pin is not physically configured until
-   *          Initialize() is called. The platform-agnostic pin number is converted
-   *          internally to MCU-specific type.
+   * @details Creates an MCU GPIO instance with the specified configuration.
+   *          **LAZY INITIALIZATION**: The pin is NOT physically configured until
+   *          the first call to EnsureInitialized(), Initialize(), or any GPIO operation.
+   *          This allows creating GPIO objects without immediate hardware access.
    */
   explicit McuGpio(HfPinNumber pin_num, Direction direction = Direction::Input,
                    ActiveState active_state = ActiveState::High,
@@ -236,6 +172,25 @@ public:
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr ClearInterruptStats() noexcept override;
+
+  //==============================================================//
+  // LAZY INITIALIZATION SUPPORT  
+  //==============================================================//
+
+  /**
+   * @brief Ensure the GPIO pin is initialized before use.
+   * @details This method implements lazy initialization - the GPIO is only
+   *          physically configured when first accessed. This allows creating
+   *          GPIO objects without immediate hardware configuration.
+   * @return true if initialization successful or already initialized, false otherwise
+   */
+  bool EnsureInitialized() noexcept;
+
+  /**
+   * @brief Check if the GPIO pin has been initialized.
+   * @return true if initialized, false otherwise
+   */
+  [[nodiscard]] bool IsInitialized() const noexcept { return initialized_; }
 
 protected:
   //==============================================================//
@@ -401,12 +356,70 @@ protected:
    *          Useful for debugging and system validation.
    */
   [[nodiscard]] GpioConfigDump GetConfigurationDump() const noexcept;
-
   /**
    * @brief Check if pin is currently held.
    * @return true if pin is in hold state
    */
   [[nodiscard]] bool IsHeld() const noexcept;
+
+  //==============================================================//
+  // STATIC UTILITY METHODS FOR ESP32C6 PIN VALIDATION
+  //==============================================================//
+
+  /**
+   * @brief Get pin capabilities for comprehensive feature detection.
+   * @param capabilities Output structure to store pin capabilities
+   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @details Provides comprehensive information about pin capabilities including
+   *          ADC, RTC, touch, strapping, and special function support.
+   */
+  HfGpioErr GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) const noexcept;
+
+  /**
+   * @brief Get detailed status information for diagnostics.
+   * @param status Output structure to store status information
+   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @details Provides comprehensive status information for debugging and monitoring.
+   */
+  HfGpioErr GetStatusInfo(hf_gpio_status_info_t &status) const noexcept;
+
+  /**
+   * @brief Get total interrupt count across all GPIO instances.
+   * @return Total number of GPIO interrupts that have occurred
+   * @details Thread-safe global interrupt counter for system monitoring.
+   */
+  static uint32_t GetTotalInterruptCount() noexcept;
+
+  /**
+   * @brief Get count of currently active GPIO instances.
+   * @return Number of GPIO instances currently initialized and active
+   * @details Thread-safe counter for resource monitoring.
+   */
+  static uint32_t GetActiveGpioCount() noexcept;
+
+  /**
+   * @brief Validate if a pin number is valid for the target platform.
+   * @param pin_num Pin number to validate
+   * @return true if pin is valid for GPIO use, false otherwise
+   * @details Platform-specific validation using centralized constants.
+   */
+  static bool IsValidPin(HfPinNumber pin_num) noexcept;
+
+  /**
+   * @brief Check if pin supports RTC GPIO functionality.
+   * @param pin_num Pin number to check
+   * @return true if pin supports RTC GPIO (deep sleep, analog functions)
+   * @details ESP32C6: GPIO0-7 support RTC functionality.
+   */
+  static bool IsRtcGpio(HfPinNumber pin_num) noexcept;
+
+  /**
+   * @brief Check if pin is a strapping pin requiring caution.
+   * @param pin_num Pin number to check
+   * @return true if pin is a strapping pin
+   * @details ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15.
+   */
+  static bool IsStrappingPin(HfPinNumber pin_num) noexcept;
 
 private:
   //==============================================================//
@@ -418,28 +431,51 @@ private:
    * @param trigger BaseGpio interrupt trigger enum
    * @return Platform-specific interrupt type value
    */
-  uint32_t ConvertInterruptTrigger(InterruptTrigger trigger) const noexcept;
+  #ifdef HF_MCU_FAMILY_ESP32
+  gpio_int_type_t MapInterruptTrigger(InterruptTrigger trigger) const noexcept;
+  #else
+  uint32_t MapInterruptTrigger(InterruptTrigger trigger) const noexcept;
+  #endif
 
   /**
    * @brief Static interrupt service routine handler.
    * @param arg Pointer to McuGpio instance
    */
-  static void IRAM_ATTR InterruptHandler(void *arg) noexcept;
+  #ifdef HF_MCU_FAMILY_ESP32
+  static void IRAM_ATTR StaticInterruptHandler(void *arg);
+  #else
+  static void StaticInterruptHandler(void *arg);
+  #endif
 
   /**
-   * @brief Initialize interrupt semaphore (called from constructor).
+   * @brief Handle interrupt in instance context.
    */
-  void InitializeInterruptSemaphore() noexcept;
+  #ifdef HF_MCU_FAMILY_ESP32
+  void IRAM_ATTR HandleInterrupt();
+  #else
+  void HandleInterrupt();
+  #endif
+
+  /**
+   * @brief Initialize advanced features during GPIO initialization.
+   * @return true if all advanced features initialized successfully
+   */
+  bool InitializeAdvancedFeatures() noexcept;
+
+  /**
+   * @brief Cleanup advanced feature resources.
+   */
+  void CleanupAdvancedFeatures() noexcept;
+
+  /**
+   * @brief Cleanup glitch filter resources.
+   */
+  void CleanupGlitchFilters() noexcept;
 
   /**
    * @brief Cleanup interrupt semaphore (called from destructor).
    */
   void CleanupInterruptSemaphore() noexcept;
-
-  uint32_t ConvertPullMode(PullMode pull_mode) const noexcept;
-  uint32_t ConvertOutputMode(OutputMode output_mode) const noexcept;
-  bool ValidatePinNumber() const noexcept;
-  HfGpioErr ApplyConfiguration() noexcept;
 
   //==============================================================//
   // MEMBER VARIABLES
@@ -450,7 +486,7 @@ private:
   InterruptCallback interrupt_callback_; ///< User interrupt callback
   void *interrupt_user_data_;            ///< User data for callback
   bool interrupt_enabled_;               ///< Interrupt currently enabled
-  uint32_t interrupt_count_;             ///< Number of interrupts occurred
+  std::atomic<uint32_t> interrupt_count_; ///< Number of interrupts occurred (thread-safe)
   void *platform_semaphore_;             ///< Platform-specific semaphore for WaitForInterrupt
 
   // Advanced GPIO state
@@ -467,4 +503,12 @@ private:
   // Platform-specific handles for advanced features
   void *glitch_filter_handle_; ///< Platform-specific glitch filter handle
   void *rtc_gpio_handle_;      ///< Platform-specific RTC GPIO handle
+
+  // Static members for ISR management
+  #ifdef HF_MCU_FAMILY_ESP32
+  static bool gpio_isr_handler_installed_; ///< Track if ISR service is installed
+  #endif
+
+  // Initialization state
+  bool initialized_; ///< Lazy initialization state
 };
