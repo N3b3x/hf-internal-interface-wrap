@@ -1,20 +1,20 @@
 /**
  * @file BaseCan.h
  * @brief Abstract base class for CAN bus implementations in the HardFOC system.
- * @author Nebiyu Tadesse
- * @date 2025
- * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for CAN bus communication
  * that provides a consistent API across different CAN controller implementations.
  * Concrete implementations for various microcontrollers inherit from this class.
+ * 
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @note This is a header-only abstract base class following the same pattern as BaseAdc.
  * @note Users should program against this interface, not specific implementations.
  */
 
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_BASECAN_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_BASECAN_H_
+#pragma once
 
 #include "HardwareTypes.h"
 #include <cstdint>
@@ -483,5 +483,3 @@ public:
 protected:
   bool initialized_; ///< Initialization state
 };
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_BASECAN_H_

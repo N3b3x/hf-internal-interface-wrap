@@ -4,8 +4,15 @@
  *
  * This file provides the implementation for ADC abstraction that automatically
  * adapts to the current MCU platform. Currently supports ESP32-C6, but designed
- * to be easily portable to other MCUs.
+ * to be easily portable to other MCUs. The implementation includes multi-channel
+ * conversions, calibration management, continuous sampling, and advanced features
+ * like threshold monitoring and DMA-accelerated operations.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
+
 #include "McuAdc.h"
 #include <cmath>
 

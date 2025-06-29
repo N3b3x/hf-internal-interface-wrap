@@ -1,15 +1,15 @@
 /**
- * Nebula Tech Corporation
- *
- * Copyright © 2023 Nebula Tech Corporation. All Rights Reserved.
- * This file is part of HardFOC and is licensed under the GNU General Public
- * License v3.0 or later.
- *
  * @file DigitalOutputGuard.cpp
  * @brief Implementation of the DigitalOutputGuard class for unified DigitalGpio.
  *
  * The DigitalOutputGuard class provides RAII management of DigitalGpio instances
- * when used as outputs, ensuring proper state management and cleanup.
+ * when used as outputs, ensuring proper state management and cleanup. This implementation
+ * guarantees safe automatic management of GPIO output states with guaranteed cleanup
+ * even in exception scenarios, ensuring proper resource management and pin state control.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "DigitalOutputGuard.h"

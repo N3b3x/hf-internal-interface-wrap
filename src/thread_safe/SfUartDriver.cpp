@@ -1,6 +1,16 @@
 /**
  * @file SfUartDriver.cpp
  * @brief Implementation of the SfUartDriver class.
+ *
+ * This file provides the implementation for thread-safe UART operations using
+ * mutex protection for multi-threaded environments. The implementation supports
+ * configurable serial communication, data transmission, flow control, and
+ * comprehensive error handling with thread safety guarantees for reliable
+ * concurrent access to UART functionality.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "SfUartDriver.h"

@@ -4,14 +4,18 @@
  *
  * This header provides a CAN bus implementation for microcontrollers with
  * built-in CAN peripherals. On ESP32, this wraps TWAI (Two-Wire Automotive Interface),
- * on STM32 it would wrap CAN peripheral, etc.
+ * on STM32 it would wrap CAN peripheral, etc. The implementation supports standard
+ * and extended CAN frames, filtering, error handling, and interrupt-driven operation.
  *
- * This is the primary CAN implementation for the ESP32C6 and similar MCUs
- * that have integrated CAN controllers with external transceivers.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note This is the primary CAN implementation for the ESP32C6 and similar MCUs
+ *       that have integrated CAN controllers with external transceivers.
  */
 
-#ifndef MCU_CAN_H
-#define MCU_CAN_H
+#pragma once
 
 #include "../utils/RtosMutex.h"
 #include "BaseCan.h"
@@ -148,5 +152,3 @@ private:
   static void StaticReceiveHandler(void *arg);
   void HandleReceiveInterrupt();
 };
-
-#endif // MCU_CAN_H

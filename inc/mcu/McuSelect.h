@@ -5,10 +5,14 @@
  * This header provides a SINGLE POINT OF CONTROL for MCU platform selection.
  * To select your target MCU, uncomment exactly ONE of the MCU selection defines below.
  * All platform-specific configuration is automatically handled based on your selection.
+ * This system enables compile-time platform detection and feature configuration.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
-#ifndef MCU_SELECT_H
-#define MCU_SELECT_H
+#pragma once
 
 //==============================================================================
 // USAGE INSTRUCTIONS - HOW TO SELECT YOUR MCU
@@ -419,5 +423,3 @@ extern "C" {
  *     #error "Unsupported MCU family"
  * #endif
  */
-
-#endif // MCU_SELECT_H

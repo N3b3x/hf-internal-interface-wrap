@@ -4,13 +4,19 @@
  *
  * This class provides thread-safe I2C operations using a platform-agnostic
  * interface. It wraps the I2cBus class and adds mutex protection for
- * multi-threaded environments.
+ * multi-threaded environments. The implementation supports master mode
+ * operations including read, write, and combined transactions with
+ * configurable timeouts and comprehensive error handling.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
-#ifndef SFI2CBUS_H_
-#define SFI2CBUS_H_
 
-#include "../base/BaseI2c.h"
-#include "../utils/RtosMutex.h"
+#pragma once
+
+#include "BaseI2c.h"
+#include "RtosMutex.h"
 #include <cstdint>
 #include <memory>
 
@@ -86,5 +92,3 @@ private:
   RtosMutex busMutex_;
   bool initialized_;
 };
-
-#endif // SFI2CBUS_H_

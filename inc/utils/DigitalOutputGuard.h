@@ -1,25 +1,25 @@
 /**
- * Nebula Tech Corporation
- *
- * Copyright © 2023 Nebula Tech Corporation.   All Rights Reserved.
- * This file is part of HardFOC and is licensed under the GNU General Public
- * License v3.0 or later.
- *
  * @file DigitalOutputGuard.h
  * @brief Header file for the DigitalOutputGuard class.
  *
  * The DigitalOutputGuard class ensures that a DigitalGpio instance is set to
  * output mode and active state in its constructor, and inactive in its destructor (RAII pattern).
- * This provides safe automatic management of GPIO output states.
+ * This provides safe automatic management of GPIO output states with guaranteed cleanup
+ * even in exception scenarios, ensuring proper resource management and pin state control.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_DIGITALOUTPUTGUARD_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_DIGITALOUTPUTGUARD_H_
+#pragma once
 
-#include "../base/BaseGpio.h"
+#include "BaseGpio.h"
 
 /**
- * @class DigitalOutputGuard * @brief RAII guard class for managing the state of a BaseGpio instance
+ * @brief 
+ * 
+ */
  * as output.
  *
  * The DigitalOutputGuard ensures that a BaseGpio instance is configured as output
@@ -118,5 +118,3 @@ private:
    */
   bool InitializeGuard(bool ensure_output_mode) noexcept;
 };
-
-#endif /* HAL_INTERNAL_INTERFACE_DRIVERS_DIGITALOUTPUTGUARD_H_ */

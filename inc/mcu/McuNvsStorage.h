@@ -4,12 +4,16 @@
  *
  * This header provides an NVS implementation for microcontrollers with
  * built-in non-volatile storage. On ESP32, this wraps the NVS (Non-Volatile Storage) API,
- * on other MCUs it would wrap EEPROM or flash storage, etc.
+ * on other MCUs it would wrap EEPROM or flash storage, etc. The implementation supports
+ * key-value storage, namespace management, and data persistence across power cycles.
  *
- * This is the primary NVS implementation for MCUs with integrated storage capabilities.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note This is the primary NVS implementation for MCUs with integrated storage capabilities.
  */
-#ifndef MCU_NVS_STORAGE_H_
-#define MCU_NVS_STORAGE_H_
+#pragma once
 
 #include "BaseNvsStorage.h"
 #include "McuTypes.h"
@@ -174,5 +178,3 @@ private:
 
   void *nvs_handle_; ///< Platform-specific NVS handle
 };
-
-#endif // MCU_NVS_STORAGE_H_

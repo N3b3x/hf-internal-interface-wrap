@@ -1,18 +1,24 @@
 /**
  * @file BaseAdc.h
- * @brief Abstract base class for ADC implementations in the HardFOC system
+ * @brief Abstract base class for ADC implementations in the HardFOC system.
  *
- * @details This file contains the declaration of the BaseAdc abstract class,
- *          which provides a common interface and features for all ADC implementations.
- *          ADC derived classes employ lazy initialization - they are initialized
- *          the first time a channel operation is performed.
+ * This file contains the declaration of the BaseAdc abstract class, which provides
+ * a common interface and comprehensive features for all ADC implementations.
+ * The class supports multi-channel conversions, calibration management, continuous
+ * sampling modes, threshold monitoring, and advanced ESP32C6-specific features.
+ * ADC derived classes employ lazy initialization - they are initialized the first
+ * time a channel operation is performed.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @note These functions are not thread or interrupt-safe and should be called
  *       with appropriate synchronization guards if used within an ISR or shared tasks.
+ * @note This is a header-only abstract base class following the same pattern as BaseCan.
  */
 
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_BASEADC_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_BASEADC_H_
+#pragma once
 
 #include "HardwareTypes.h"
 #include <cstdint>
@@ -577,5 +583,3 @@ protected:
 private:
   bool initialized_; ///< Initialization status
 };
-
-#endif /* HAL_INTERNAL_INTERFACE_DRIVERS_BASEADC_H_ */

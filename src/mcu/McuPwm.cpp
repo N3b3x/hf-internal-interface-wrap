@@ -4,7 +4,13 @@
  *
  * This file provides the implementation for PWM generation using the
  * microcontroller's built-in LEDC peripheral. All platform-specific types and
- * implementations are isolated through McuTypes.h.
+ * implementations are isolated through McuTypes.h. The implementation supports
+ * multiple channels, configurable frequency and resolution, complementary outputs
+ * with deadtime, hardware fade support, and interrupt-driven period callbacks.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 #include "McuPwm.h"
 #include <algorithm>

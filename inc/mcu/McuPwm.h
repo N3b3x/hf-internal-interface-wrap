@@ -4,19 +4,21 @@
  *
  * This header provides a PWM implementation for microcontrollers with
  * built-in PWM peripherals. On ESP32C6, this wraps the LEDC (LED Controller)
- * peripheral which provides high-resolution PWM generation.
+ * peripheral which provides high-resolution PWM generation. The implementation
+ * supports multiple channels, configurable frequency and resolution, complementary
+ * outputs with deadtime, and hardware fade support for smooth transitions.
  *
- * Features:
- * - Up to 8 PWM channels using LEDC peripheral
- * - Configurable frequency and resolution per channel
- * - Support for complementary outputs with deadtime
- * - Hardware fade support for smooth transitions
- * - Interrupt-driven period callbacks
- * - Multiple timer groups for independent frequency control
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note Features include up to 8 PWM channels using LEDC peripheral, configurable
+ *       frequency and resolution per channel, support for complementary outputs with
+ *       deadtime, hardware fade support, interrupt-driven period callbacks, and
+ *       multiple timer groups for independent frequency control.
  */
 
-#ifndef MCU_PWM_H
-#define MCU_PWM_H
+#pragma once
 
 #include "../utils/RtosMutex.h"
 #include "BasePwm.h"
@@ -325,5 +327,3 @@ private:
 
   HfPwmErr last_global_error_; ///< Last global error
 };
-
-#endif // MCU_PWM_H

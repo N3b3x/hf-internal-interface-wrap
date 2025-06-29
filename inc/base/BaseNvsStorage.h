@@ -1,20 +1,21 @@
 /**
  * @file BaseNvsStorage.h
  * @brief Abstract base class for Non-Volatile Storage implementations in the HardFOC system.
- * @author Nebiyu Tadesse
- * @date 2025
- * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for non-volatile storage
  * that provides a consistent API across different storage implementations.
- * Concrete implementations for various storage devices inherit from this class.
+ * Concrete implementations for various storage devices inherit from this class
+ * to provide key-value storage, settings persistence, and configuration management.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
  */
 
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_BASENVSSTORAGE_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_BASENVSSTORAGE_H_
+#pragma once
 
 #include "HardwareTypes.h"
 #include <cstdint>
@@ -256,5 +257,3 @@ private:
   const char *namespace_name_; ///< Storage namespace name
   bool initialized_;           ///< Initialization state flag
 };
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_BASENVSSTORAGE_H_

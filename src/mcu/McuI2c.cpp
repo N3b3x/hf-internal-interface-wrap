@@ -1,6 +1,16 @@
 /**
  * @file McuI2c.cpp
  * @brief Implementation of MCU-integrated I2C controller.
+ *
+ * This file provides the implementation for I2C bus communication using the
+ * microcontroller's built-in I2C peripheral. The implementation includes advanced
+ * ESP32C6/ESP-IDF v5.5+ features like the bus-device model, asynchronous operations,
+ * multi-buffer transactions, glitch filtering, and DMA acceleration for high-performance
+ * I2C communication with comprehensive error handling and power management.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "McuI2c.h"

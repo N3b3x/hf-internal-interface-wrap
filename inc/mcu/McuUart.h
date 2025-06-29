@@ -4,13 +4,18 @@
  *
  * This header provides a UART driver implementation for microcontrollers with
  * built-in UART peripherals. On ESP32, this wraps the UART driver,
- * on STM32 it would wrap the UART/USART peripheral, etc.
+ * on STM32 it would wrap the UART/USART peripheral, etc. The implementation
+ * supports configurable baud rates, data formats, flow control, and
+ * interrupt-driven or DMA-based data transfer for efficient communication.
  *
- * This is the primary UART implementation for MCUs with integrated UART controllers.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note This is the primary UART implementation for MCUs with integrated UART controllers.
  */
 
-#ifndef MCU_UART_H
-#define MCU_UART_H
+#pragma once
 
 #include "../utils/RtosMutex.h"
 #include "BaseUart.h"
@@ -311,5 +316,3 @@ private:
   static constexpr uint16_t PRINTF_BUFFER_SIZE = 256; ///< Printf buffer size
   char printf_buffer_[PRINTF_BUFFER_SIZE];            ///< Printf formatting buffer
 };
-
-#endif // MCU_UART_H

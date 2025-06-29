@@ -5,15 +5,20 @@
  * This class provides a comprehensive implementation of BaseAdc that automatically
  * adapts to the current MCU platform with support for both basic and advanced features.
  * On ESP32C6, it utilizes the latest ESP-IDF v5.5+ ADC features including continuous
- * mode, digital filters, threshold monitors, and advanced calibration.
+ * mode, digital filters, threshold monitors, and advanced calibration. The implementation
+ * includes multi-channel conversions, DMA support, and hardware-accelerated operations.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @note This class includes both basic and advanced ADC functionality in a unified interface.
  * @note Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality.
  */
-#ifndef MCU_ADC_H_
-#define MCU_ADC_H_
 
-#include "../utils/RtosMutex.h"
+#pragma once
+
+#include "RtosMutex.h"
 #include "BaseAdc.h"
 #include "McuTypes.h"
 #include <cstdint>
@@ -22,7 +27,7 @@
 #include <unordered_map>
 #include <vector>
 
-#ifdef ESP_PLATFORM
+#ifdef HF_TARGET_MCU_ESP32C6
 #include "esp_adc/adc_cali.h"
 #include "esp_adc/adc_cali_scheme.h"
 #include "esp_adc/adc_continuous.h"
@@ -679,5 +684,3 @@ private:
   static constexpr uint32_t DEFAULT_SAMPLE_FREQ = 20000;
   static constexpr size_t DEFAULT_BUFFER_SIZE = 4096;
 };
-
-#endif // MCU_ADC_H_

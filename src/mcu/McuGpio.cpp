@@ -6,6 +6,11 @@
  * for the unified BaseGpio class with advanced ESP32C6/ESP-IDF v5.5+ features.
  * It handles dynamic mode switching, pull resistor configuration, platform-specific
  * GPIO management, glitch filtering, power management, and RTC GPIO support.
+ * The implementation provides interrupt handling, debouncing, and hardware acceleration.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "McuGpio.h"

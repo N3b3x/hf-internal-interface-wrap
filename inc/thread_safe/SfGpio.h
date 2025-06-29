@@ -1,25 +1,24 @@
 /**
  * @file SfGpio.h
  * @brief Thread-safe GPIO interface wrapper.
- * @author Nebiyu Tadesse
- * @date 2025
- * @copyright HardFOC
  *
  * This header provides a thread-safe wrapper around the base GPIO interface,
  * ensuring atomic operations and thread safety for multi-threaded applications.
- * Uses composition pattern with mutex protection.
+ * Uses composition pattern with mutex protection to provide safe concurrent
+ * access to GPIO operations including pin configuration, state management,
+ * and interrupt handling across multiple tasks and threads.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
-#ifndef SF_GPIO_H
-#define SF_GPIO_H
+#pragma once
 
-#include "../base/BaseGpio.h"
-#include "../mcu/McuTypes.h"
-#include "../utils/RtosMutex.h"
+#include "BaseGpio.h"
+#include "McuTypes.h"
+#include "RtosMutex.h"
 #include <memory>
-
-namespace HardFOC {
-namespace ThreadSafe {
 
 /**
  * @brief Thread-safe GPIO interface wrapper.
@@ -187,8 +186,3 @@ private:
 
   // No explicit lock/unlock helpers needed with RtosMutex
 };
-
-} // namespace ThreadSafe
-} // namespace HardFOC
-
-#endif // SF_GPIO_H

@@ -1,6 +1,16 @@
 /**
  * @file McuUart.cpp
  * @brief Implementation of MCU-integrated UART controller.
+ *
+ * This file provides the implementation for UART communication using the
+ * microcontroller's built-in UART peripheral. The implementation supports
+ * configurable baud rates, data formats, flow control, and interrupt-driven
+ * or DMA-based data transfer for efficient serial communication with
+ * comprehensive error handling and platform abstraction.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "McuUart.h"

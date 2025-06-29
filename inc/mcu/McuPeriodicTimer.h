@@ -4,12 +4,16 @@
  *
  * This header provides a periodic timer implementation for microcontrollers with
  * built-in timer peripherals. On ESP32, this wraps the ESP timer API,
- * on other MCUs it would wrap hardware timers, etc.
+ * on other MCUs it would wrap hardware timers, etc. The implementation supports
+ * high-precision timing, periodic callbacks, and timer management features.
  *
- * This is the primary timer implementation for MCUs with integrated timer capabilities.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note This is the primary timer implementation for MCUs with integrated timer capabilities.
  */
-#ifndef MCU_PERIODIC_TIMER_H
-#define MCU_PERIODIC_TIMER_H
+#pragma once
 
 #include "BasePeriodicTimer.h"
 #include "McuTypes.h"
@@ -172,5 +176,3 @@ private:
    */
   static void TimerCallbackDispatcher(hf_timer_handle_t timer_handle);
 };
-
-#endif // MCU_PERIODIC_TIMER_H

@@ -5,24 +5,22 @@
  * This file provides an enhanced thread-safe wrapper around the BaseCan interface for use
  * in multi-threaded applications. All operations are synchronized using reader-writer mutexes
  * to ensure thread safety when multiple threads access the same CAN interface.
+ * The implementation includes lock-free read operations, batch message operations, advanced
+ * threading statistics, configurable timeouts, and comprehensive error handling.
  *
- * Key Features:
- * - Complete thread-safe wrapper for all BaseCan operations
- * - Lock-free read operations for improved performance
- * - Batch message operations with single lock acquisition
- * - Advanced threading statistics and diagnostics
- * - Configurable timeout for mutex operations
- * - Convenience methods (blocking/non-blocking variants)
- * - Reader-writer locks for better concurrent read performance
- * - Comprehensive error handling with thread context
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
- * This is the recommended interface for component handlers and application threads
- * that need CAN communication capabilities in multi-threaded environments.
+ * @note This is the recommended interface for component handlers and application threads
+ *       that need CAN communication capabilities in multi-threaded environments.
+ * @note Features complete thread-safe wrapper, lock-free reads, batch operations,
+ *       reader-writer locks for concurrent performance, and threading diagnostics.
  */
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_SFCAN_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_SFCAN_H_
 
-#include "../utils/RtosMutex.h"
+#pragma once
+
+#include "RtosMutex.h"
 #include "BaseCan.h"
 #include "McuTypes.h"
 #include <atomic>
@@ -349,5 +347,3 @@ private:
   void UpdateStats(const std::chrono::steady_clock::time_point &start_time,
                    bool was_timeout) noexcept;
 };
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_SFCAN_H_

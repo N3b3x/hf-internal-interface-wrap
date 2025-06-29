@@ -4,13 +4,16 @@
  *
  * This file implements the enhanced thread-safe wrapper around the BaseAdc interface
  * for safe use in multi-threaded applications with advanced features like:
- * - Lock-free read operations
- * - Batch conversion operations
- * - Advanced threading statistics
- * - Configurable timeout handling
- * - Non-blocking and blocking convenience methods
+ * lock-free read operations, batch conversion operations, advanced threading statistics,
+ * configurable timeout handling, and non-blocking convenience methods with comprehensive
+ * error handling and reader-writer mutex synchronization.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
-#include "../thread_safe/SfAdc.h"
+
+#include "SfAdc.h"
 #include <algorithm>
 
 namespace {

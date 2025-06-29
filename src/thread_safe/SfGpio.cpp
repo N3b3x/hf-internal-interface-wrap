@@ -4,9 +4,16 @@
  *
  * This file provides the implementation for the thread-safe GPIO wrapper,
  * ensuring atomic operations and thread safety for multi-threaded applications.
+ * The implementation uses composition pattern with mutex protection to provide
+ * safe concurrent access to GPIO operations including pin configuration,
+ * state management, and interrupt handling across multiple tasks and threads.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
-#include "../thread_safe/SfGpio.h"
+#include "SfGpio.h"
 
 namespace HardFOC {
 namespace ThreadSafe {

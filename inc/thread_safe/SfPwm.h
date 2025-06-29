@@ -1,24 +1,27 @@
 /**
  * @file SfPwm.h
  * @brief Thread-safe PWM interface wrapper.
- * @author Nebiyu Tadesse
- * @date 2025
- * @copyright HardFOC
  *
  * This file provides a thread-safe wrapper around the BasePwm interface for use
  * in multi-threaded applications. All operations are synchronized using mutexes
  * to ensure thread safety when multiple threads access the same PWM interface.
+ * The implementation supports channel configuration, duty cycle control,
+ * frequency adjustment, and advanced PWM features with full thread safety.
  *
- * This is the recommended interface for component handlers and application threads
- * that need PWM generation capabilities.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note This is the recommended interface for component handlers and application threads
+ *       that need PWM generation capabilities in multi-threaded environments.
  */
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_SFPWM_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_SFPWM_H_
 
-#include "../base/BasePwm.h"
-#include "../mcu/McuPwm.h"
-#include "../mcu/McuTypes.h"
-#include "../utils/RtosMutex.h"
+#pragma once
+
+#include "BasePwm.h"
+#include "McuPwm.h"
+#include "McuTypes.h"
+#include "RtosMutex.h"
 #include <cstdint>
 #include <memory>
 
@@ -449,5 +452,3 @@ private:
 
   static constexpr uint32_t DEFAULT_TIMEOUT_MS = 5000; ///< Default mutex timeout
 };
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_SFPWM_H_

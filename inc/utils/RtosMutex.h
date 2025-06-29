@@ -1,6 +1,22 @@
+/**
+ * @file RtosMutex.h
+ * @brief Cross-platform RTOS mutex and synchronization primitives.
+ *
+ * This header provides platform-agnostic mutex, lock guard, and timing utilities
+ * that work across different RTOS implementations (FreeRTOS on ESP32, STM32, RP2040).
+ * The implementation includes standard mutexes, shared mutexes for reader-writer patterns,
+ * RAII lock guards, and high-resolution timing functions for synchronization.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note Platform support includes ESP32 (FreeRTOS), STM32 (CMSIS-OS), and RP2040 (FreeRTOS).
+ */
+
 #pragma once
 
-#include "../mcu/McuSelect.h"
+#include "McuSelect.h"
 
 #ifdef HF_MCU_FAMILY_ESP32
 #include "freertos/FreeRTOS.h"

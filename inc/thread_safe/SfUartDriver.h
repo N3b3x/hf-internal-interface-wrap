@@ -4,13 +4,19 @@
  *
  * This class provides thread-safe UART operations using a platform-agnostic
  * interface. It wraps the UartDriver class and adds mutex protection for
- * multi-threaded environments.
+ * multi-threaded environments. The implementation supports configurable
+ * serial communication, data transmission, flow control, and comprehensive
+ * error handling with thread safety guarantees.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
-#ifndef SFUARTDRIVER_H
-#define SFUARTDRIVER_H
 
-#include "../base/BaseUart.h"
-#include "../utils/RtosMutex.h"
+#pragma once
+
+#include "BaseUart.h"
+#include "RtosMutex.h"
 #include <cstdint>
 #include <memory>
 
@@ -51,5 +57,3 @@ private:
   RtosMutex mutex_;
   bool initialized_;
 };
-
-#endif // SFUARTDRIVER_H

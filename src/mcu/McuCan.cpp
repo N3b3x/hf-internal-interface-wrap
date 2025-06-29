@@ -5,7 +5,12 @@
  * This file provides the implementation for CAN bus communication using the
  * microcontroller's built-in CAN peripheral. For ESP32, it wraps TWAI
  * (Two-Wire Automotive Interface). All platform-specific types and
- * implementations are isolated through McuTypes.h.
+ * implementations are isolated through McuTypes.h. The implementation supports
+ * standard and extended frames, filtering, error handling, and interrupt-driven operation.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 #include "McuCan.h"
 #include <algorithm>

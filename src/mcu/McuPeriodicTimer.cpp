@@ -1,6 +1,15 @@
 /**
  * @file McuPeriodicTimer.cpp
  * @brief Implementation of MCU-integrated periodic timer.
+ *
+ * This file provides the implementation for periodic timer functionality using
+ * the microcontroller's built-in timer peripherals. On ESP32, this wraps the
+ * ESP timer API for high-precision timing, periodic callbacks, and timer
+ * management with microsecond resolution and comprehensive error handling.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "McuPeriodicTimer.h"

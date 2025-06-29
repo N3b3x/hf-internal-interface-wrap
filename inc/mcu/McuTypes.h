@@ -4,13 +4,17 @@
  *
  * This header defines all MCU-specific types and constants that are used
  * throughout the internal interface wrap layer. By centralizing these definitions,
- * porting to new MCUs only requires updating this single file.
+ * porting to new MCUs only requires updating this single file. The types provide
+ * platform-specific configurations while maintaining interface compatibility.
  *
- * All interface classes (CAN, UART, I2C, SPI, GPIO, ADC, PIO, PWM) must use only these types.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note All interface classes (CAN, UART, I2C, SPI, GPIO, ADC, PIO, PWM) must use only these types.
  */
 
-#ifndef MCU_TYPES_H
-#define MCU_TYPES_H
+#pragma once
 
 #include "HardwareTypes.h"
 #include "McuSelect.h" // Central MCU platform selection
@@ -247,5 +251,3 @@ static constexpr hf_timeout_ms_t HF_TIMEOUT_DEFAULT = 1000;
 //==============================================================================
 
 // Communication types use platform-agnostic base types and hf_* MCU types defined above
-
-#endif // MCU_TYPES_H

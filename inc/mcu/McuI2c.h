@@ -5,14 +5,18 @@
  * This header provides a comprehensive I2C implementation that utilizes all the advanced
  * features available in ESP-IDF v5.5+ for ESP32C6, including the new bus-device model,
  * asynchronous operations, multi-buffer transactions, custom sequences, glitch filtering,
- * power management, and comprehensive error handling.
+ * power management, and comprehensive error handling. The implementation supports master
+ * and slave modes with DMA acceleration and interrupt-driven operation.
  *
- * This is the unified I2C implementation for MCUs with integrated I2C controllers,
- * including both basic and advanced features in a single class.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note This is the unified I2C implementation for MCUs with integrated I2C controllers,
+ *       including both basic and advanced features in a single class.
  */
 
-#ifndef MCU_I2C_H
-#define MCU_I2C_H
+#pragma once
 
 #include "../utils/RtosMutex.h"
 #include "BaseI2c.h"
@@ -744,5 +748,3 @@ private:
   static constexpr uint32_t MAX_TRANSFER_SIZE = 4092; // ESP32 limitation
   static constexpr uint8_t MAX_DEVICES = 127;         // Maximum I2C devices
 };
-
-#endif // MCU_I2C_H

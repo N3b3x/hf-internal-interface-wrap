@@ -4,13 +4,15 @@
  *
  * This file implements the enhanced thread-safe wrapper around the BaseCan interface
  * for safe use in multi-threaded applications with advanced features like:
- * - Lock-free read operations
- * - Batch message operations
- * - Advanced threading statistics
- * - Configurable timeout handling
- * - Non-blocking and blocking convenience methods
+ * lock-free read operations, batch message operations, advanced threading statistics,
+ * configurable timeout handling, and non-blocking convenience methods with comprehensive
+ * error handling and reader-writer mutex synchronization.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
-#include "../thread_safe/SfCan.h"
+#include "SfCan.h"
 #include <algorithm>
 
 namespace {

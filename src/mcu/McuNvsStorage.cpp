@@ -1,6 +1,15 @@
 /**
  * @file McuNvsStorage.cpp
  * @brief Implementation of the McuNvsStorage class.
+ *
+ * This file provides the implementation for MCU-integrated non-volatile storage
+ * using the platform's built-in NVS capabilities. On ESP32, this wraps the
+ * NVS (Non-Volatile Storage) API for key-value storage, namespace management,
+ * and data persistence across power cycles with comprehensive error handling.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "McuNvsStorage.h"

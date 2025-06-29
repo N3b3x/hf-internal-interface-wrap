@@ -1,6 +1,16 @@
 /**
  * @file McuSpi.cpp
  * @brief Implementation of MCU-integrated SPI controller.
+ *
+ * This file provides the implementation for SPI bus communication using the
+ * microcontroller's built-in SPI peripheral. The implementation supports
+ * full-duplex communication, configurable clock speeds, multiple chip select
+ * management, and DMA-accelerated transfers for high-performance applications
+ * with comprehensive error handling and platform abstraction.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "McuSpi.h"

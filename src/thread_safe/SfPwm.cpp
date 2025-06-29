@@ -1,9 +1,19 @@
 /**
  * @file SfPwm.cpp
  * @brief Thread-safe PWM interface wrapper implementation.
+ *
+ * This file provides the implementation for thread-safe PWM operations using
+ * mutex protection for multi-threaded environments. The implementation supports
+ * channel configuration, duty cycle control, frequency adjustment, and advanced
+ * PWM features with full thread safety, configurable timeouts, and comprehensive
+ * error handling for reliable concurrent access.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
-#include "../thread_safe/SfPwm.h"
+#include "SfPwm.h"
 
 namespace {
 constexpr uint32_t DEFAULT_TIMEOUT_MS{100};

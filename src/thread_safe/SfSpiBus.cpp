@@ -1,16 +1,15 @@
 /**
  * @file SfSpiBus.cpp
- * @brief Implementation of the SfSpiBus class for ESP32 (ESP-IDF), providing
- * SPI master communication with thread safety and software-controlled CS.
+ * @brief Implementation of the SfSpiBus class for ESP32 (ESP-IDF), providing SPI master communication with thread safety and software-controlled CS.
  *
  * This class abstracts the ESP-IDF SPI master driver and provides thread-safe
  * SPI transactions using FreeRTOS mutexes. It allows for software-controlled
- * chip select (CS) pin, supporting multi-device SPI buses.
+ * chip select (CS) pin, supporting multi-device SPI buses with full-duplex
+ * communication, configurable transfer parameters, and comprehensive error handling.
  *
- * @author Nebula Tech Corporation
- * @copyright Copyright © 2023 Nebula Tech Corporation. All Rights Reserved.
- * This file is part of HardFOC and is licensed under the GNU General Public
- * License v3.0 or later.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "SfSpiBus.h"

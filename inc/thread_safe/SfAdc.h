@@ -5,22 +5,19 @@
  * This file provides an enhanced thread-safe wrapper around the BaseAdc interface for use
  * in multi-threaded applications. All operations are synchronized using reader-writer mutexes
  * to ensure thread safety when multiple threads access the same ADC interface.
+ * The implementation includes lock-free read operations, batch conversions, advanced
+ * threading statistics, configurable timeouts, and comprehensive error handling.
  *
- * Key Features:
- * - Complete thread-safe wrapper for all BaseAdc operations
- * - Lock-free read operations for improved performance
- * - Batch conversion operations with single lock acquisition
- * - Advanced threading statistics and diagnostics
- * - Configurable timeout for mutex operations
- * - Convenience methods (blocking/non-blocking variants)
- * - Reader-writer locks for better concurrent read performance
- * - Comprehensive error handling with thread context
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
- * This is the recommended interface for component handlers and application threads
- * that need ADC conversion capabilities in multi-threaded environments.
+ * @note This is the recommended interface for component handlers and application threads
+ *       that need ADC conversion capabilities in multi-threaded environments.
+ * @note Features complete thread-safe wrapper, lock-free reads, batch operations,
+ *       reader-writer locks for concurrent performance, and threading diagnostics.
  */
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_SFADC_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_SFADC_H_
+#pragma once
 
 #include "../utils/RtosMutex.h"
 #include "BaseAdc.h"
@@ -310,5 +307,3 @@ private:
    */
   static constexpr uint32_t DEFAULT_TIMEOUT_MS{5000};
 };
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_SFADC_H_

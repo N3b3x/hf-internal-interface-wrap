@@ -1,20 +1,21 @@
 /**
  * @file BaseSpi.h
  * @brief Abstract base class for SPI bus implementations in the HardFOC system.
- * @author Nebiyu Tadesse
- * @date 2025
- * @copyright HardFOC
  *
  * This header-only file defines the abstract base class for SPI bus communication
  * that provides a consistent API across different SPI controller implementations.
- * Concrete implementations for various microcontrollers inherit from this class.
+ * Concrete implementations for various microcontrollers inherit from this class
+ * to provide high-speed serial communication, device selection, and transfer management.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
  */
 
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_BASESPI_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_BASESPI_H_
+#pragma once
 
 #include "HardwareTypes.h"
 #include <cstdint>
@@ -388,5 +389,3 @@ protected:
   SpiBusConfig config_; ///< Bus configuration
   bool initialized_;    ///< Initialization state
 };
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_BASESPI_H_

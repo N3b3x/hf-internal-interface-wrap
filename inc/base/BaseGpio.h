@@ -1,22 +1,23 @@
 /**
  * @file BaseGpio.h
  * @brief Unified GPIO base class for all digital GPIO implementations.
+ *
+ * This file contains the declaration of the BaseGpio abstract class, which provides
+ * a comprehensive GPIO abstraction that serves as the base for all GPIO
+ * implementations in the HardFOC system. It supports dynamic mode switching,
+ * configurable polarity, pull resistors, interrupt handling, and works across
+ * different hardware platforms including MCU GPIOs, I2C GPIO expanders,
+ * SPI GPIO expanders, and other GPIO hardware.
+ *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
- *
- * @details This file contains the declaration of the BaseGpio abstract class, which provides
- *          a comprehensive GPIO abstraction that serves as the base for all GPIO
- *          implementations in the HardFOC system. It supports dynamic mode switching,
- *          configurable polarity, pull resistors, interrupt handling, and works across
- *          different hardware platforms including MCU GPIOs, I2C GPIO expanders,
- *          SPI GPIO expanders, and other GPIO hardware.
- *
+ * 
  * @note This class is not thread-safe. Use appropriate synchronization if
  * accessed from multiple contexts.
  */
-#ifndef BASEGPIO_H
-#define BASEGPIO_H
+
+#pragma once
 
 #include "HardwareTypes.h"
 #include <cstdint>
@@ -753,5 +754,3 @@ inline const char *BaseGpio::ToString(InterruptTrigger trigger) noexcept {
     return "Unknown";
   }
 }
-
-#endif // BASEGPIO_H

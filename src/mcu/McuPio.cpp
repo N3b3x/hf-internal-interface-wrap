@@ -4,7 +4,13 @@
  *
  * This file provides the implementation for PIO operations using the
  * ESP32's RMT (Remote Control Transceiver) peripheral. The RMT peripheral
- * provides hardware-accelerated symbol encoding/decoding with precise timing.
+ * provides hardware-accelerated symbol encoding/decoding with precise timing
+ * for custom protocols, LED strips, IR communication, and other timing-critical
+ * applications with nanosecond-level precision and interrupt-driven operation.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 #include "McuPio.h"
 #include <algorithm>

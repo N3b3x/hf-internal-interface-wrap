@@ -4,13 +4,18 @@
  *
  * This header provides an SPI bus implementation for microcontrollers with
  * built-in SPI peripherals. On ESP32, this wraps the SPI driver,
- * on STM32 it would wrap the SPI peripheral, etc.
+ * on STM32 it would wrap the SPI peripheral, etc. The implementation supports
+ * full-duplex communication, configurable clock speeds, multiple chip select
+ * management, and DMA-accelerated transfers for high-performance applications.
  *
- * This is the primary SPI implementation for MCUs with integrated SPI controllers.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note This is the primary SPI implementation for MCUs with integrated SPI controllers.
  */
 
-#ifndef MCU_SPI_H
-#define MCU_SPI_H
+#pragma once
 
 #include "../utils/RtosMutex.h"
 #include "BaseSpi.h"
@@ -250,5 +255,3 @@ private:
   bool dma_enabled_;                ///< DMA enable state
   uint16_t max_transfer_size_;      ///< Maximum transfer size in bytes
 };
-
-#endif // MCU_SPI_H

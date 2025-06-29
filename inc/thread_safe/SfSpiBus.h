@@ -1,23 +1,22 @@
 /**
  * @file SfSpiBus.h
- * @brief Declaration of the SfSpiBus class, providing thread-safe SPI master
- * communication with software-controlled CS.
+ * @brief Thread-safe SPI master driver with software-controlled CS.
  *
  * This class abstracts the SPI master driver and provides thread-safe SPI
- * transactions using a standard C++ mutex. All configuration (bus, device,
- * pins, etc.) must be passed in by the caller.
+ * transactions using standard mutexes. All configuration (bus, device,
+ * pins, etc.) must be passed in by the caller. The implementation supports
+ * full-duplex communication, configurable transfer parameters, and
+ * software-controlled chip select for multi-device SPI buses.
  *
- * @author Nebula Tech Corporation
- * @copyright Copyright © 2023 Nebula Tech Corporation. All Rights Reserved.
- * This file is part of HardFOC and is licensed under the GNU General Public
- * License v3.0 or later.
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
-#ifndef SFSPIBUS_H_
-#define SFSPIBUS_H_
+#pragma once
 
-#include "../base/BaseSpi.h"
-#include "../utils/RtosMutex.h"
+#include "BaseSpi.h"
+#include "RtosMutex.h"
 #include <cstdint>
 #include <memory>
 
@@ -120,5 +119,3 @@ private:
   RtosMutex busMutex_;
   bool initialized_;
 };
-
-#endif // SFSPIBUS_H_

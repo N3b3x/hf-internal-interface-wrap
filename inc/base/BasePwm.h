@@ -1,20 +1,20 @@
 /**
  * @file BasePwm.h
  * @brief Abstract base class for PWM implementations in the HardFOC system.
- * @author Nebiyu Tadesse
- * @date 2025
- * @copyright HardFOC
- *
+ * 
  * This header-only file defines the abstract base class for PWM generation
  * that provides a consistent API across different PWM implementations.
  * Concrete implementations for various platforms inherit from this class.
+ * 
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan/BaseAdc.
  * @note Users should program against this interface, not specific implementations.
  */
 
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_BASEPWM_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_BASEPWM_H_
+#pragma once
 
 #include "HardwareTypes.h"
 #include <cstdint>
@@ -474,5 +474,3 @@ protected:
   BasePwm(BasePwm &&) = delete;
   BasePwm &operator=(BasePwm &&) = delete;
 };
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_BASEPWM_H_

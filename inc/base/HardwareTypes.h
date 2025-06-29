@@ -2,16 +2,20 @@
  * @file HardwareTypes.h
  * @brief Platform-agnostic hardware type definitions for the HardFOC system.
  *
- * @details This file defines platform-agnostic types used by base interface classes.
- *          These types provide a consistent API across different hardware platforms
- *          without exposing MCU-specific implementation details..
+ * This file defines platform-agnostic types used by base interface classes.
+ * These types provide a consistent API across different hardware platforms
+ * without exposing MCU-specific implementation details. All hardware
+ * abstraction layers use these common types for portability and consistency.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @note These types are designed to be platform-independent and should not include
  *       any MCU-specific headers or definitions.
  */
 
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_HARDWARETYPES_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_HARDWARETYPES_H_
+#pragma once
 
 #include <cstdint>
 #include <limits>
@@ -142,5 +146,3 @@ constexpr bool IsValidHost(HfHostId host) noexcept {
 constexpr bool IsValidChannel(HfChannelId channel) noexcept {
   return channel != HF_INVALID_CHANNEL;
 }
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_HARDWARETYPES_H_

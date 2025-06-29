@@ -1,6 +1,15 @@
 /**
  * @file SfI2cBus.cpp
  * @brief Implementation of the SfI2cBus class.
+ *
+ * This file provides the implementation for thread-safe I2C bus operations
+ * using mutex protection for multi-threaded environments. The implementation
+ * supports master mode operations including read, write, and combined transactions
+ * with configurable timeouts, bus locking mechanisms, and comprehensive error handling.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
 #include "SfI2cBus.h"

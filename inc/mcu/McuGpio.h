@@ -1,15 +1,18 @@
 /**
  * @file McuGpio.h
- * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF
- * v5.5+ features.
+ * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF v5.5+ features.
  *
  * This file provides concrete implementations of the unified BaseGpio class
  * for microcontroller-based GPIO pins with support for both basic and advanced features.
  * It supports dynamic mode switching, pull resistor configuration, various output drive modes,
  * and advanced ESP32C6-specific features like glitch filtering, power management, and RTC GPIO.
+ * The implementation includes interrupt handling, debouncing, and hardware-accelerated operations.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
-#ifndef MCU_GPIO_H
-#define MCU_GPIO_H
+#pragma once
 
 #include "BaseGpio.h"
 #include "McuTypes.h"
@@ -465,5 +468,3 @@ private:
   void *glitch_filter_handle_; ///< Platform-specific glitch filter handle
   void *rtc_gpio_handle_;      ///< Platform-specific RTC GPIO handle
 };
-
-#endif // MCU_GPIO_H

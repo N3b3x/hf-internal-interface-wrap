@@ -5,18 +5,19 @@
  * This header provides a PIO implementation for ESP32 microcontrollers using
  * the RMT (Remote Control Transceiver) peripheral. The RMT peripheral provides
  * precise timing control and hardware buffering ideal for PIO operations.
+ * The implementation supports custom protocols, LED strips, IR communication,
+ * and other timing-critical applications with nanosecond-level precision.
  *
- * Features:
- * - Up to 8 RMT channels (depending on ESP32 variant)
- * - Nanosecond-level timing precision
- * - Hardware symbol encoding/decoding
- * - Interrupt-driven operation
- * - Support for WS2812, IR, and custom protocols
- * - Configurable idle levels and carrier modulation
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note Features include up to 8 RMT channels, nanosecond-level timing precision,
+ *       hardware symbol encoding/decoding, interrupt-driven operation, support for
+ *       WS2812, IR, and custom protocols, and configurable idle levels with carrier modulation.
  */
 
-#ifndef MCU_PIO_H
-#define MCU_PIO_H
+#pragma once
 
 #include "../utils/RtosMutex.h"
 #include "BasePio.h"
@@ -325,5 +326,3 @@ private:
    */
   void InvokeErrorCallback(uint8_t channel_id, HfPioErr error) noexcept;
 };
-
-#endif // MCU_PIO_H

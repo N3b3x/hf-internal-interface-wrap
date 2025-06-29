@@ -1,20 +1,20 @@
 /**
  * @file BaseI2c.h
  * @brief Abstract base class for I2C bus implementations in the HardFOC system.
- * @author Nebiyu Tadesse
- * @date 2025
- * @copyright HardFOC
- *
+ * 
  * This header-only file defines the abstract base class for I2C bus communication
  * that provides a consistent API across different I2C controller implementations.
  * Concrete implementations for various microcontrollers inherit from this class.
+ * 
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
  */
 
-#ifndef HAL_INTERNAL_INTERFACE_DRIVERS_BaseI2c_H_
-#define HAL_INTERNAL_INTERFACE_DRIVERS_BaseI2c_H_
+#pragma once
 
 #include "HardwareTypes.h"
 #include <cstdint>
@@ -438,5 +438,3 @@ protected:
   I2cBusConfig config_; ///< Bus configuration
   bool initialized_;    ///< Initialization state
 };
-
-#endif // HAL_INTERNAL_INTERFACE_DRIVERS_BaseI2c_H_
