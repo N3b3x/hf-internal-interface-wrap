@@ -18,11 +18,20 @@
 
 // Platform-specific includes via centralized McuSelect.h (included in McuGpio.h)
 #ifdef HF_MCU_ESP32C6
-// ESP32-C6 specific includes (already included via McuSelect.h)
+// ESP32-C6 specific includes with ESP-IDF v5.5+ features
+#include "driver/gpio_filter.h"
+#include "driver/lp_io.h"
+#include "esp_log.h"
+#include "esp_sleep.h"
+#include "hal/gpio_types.h"
+#include "hal/rtc_io_types.h"
+#include "soc/clk_tree_defs.h"
 static const char *TAG = "McuGpio";
 #elif defined(HF_MCU_FAMILY_ESP32)
 // ESP32 family includes for advanced GPIO features
+#include "driver/gpio.h"
 #include "driver/rtc_io.h"
+#include "esp_log.h"
 #include "esp_sleep.h"
 #include "soc/rtc.h"
 static const char *TAG = "McuGpio";
@@ -71,7 +80,25 @@ McuGpio::~McuGpio() {
   if (interrupt_enabled_) {
     DisableInterrupt();
   }
+
+  // Clean up glitch filter resources
+#ifdef HF_MCU_FAMILY_ESP32
+  if (glitch_filter_handle_ != nullptr) {
+    gpio_glitch_filter_disable(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+    gpio_del_glitch_filter(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+    glitch_filter_handle_ = nullptr;
+  }
+  
+  if (rtc_gpio_handle_ != nullptr) {
+    gpio_glitch_filter_disable(static_cast<gpio_glitch_filter_handle_t>(rtc_gpio_handle_));
+    gpio_del_glitch_filter(static_cast<gpio_glitch_filter_handle_t>(rtc_gpio_handle_));
+    rtc_gpio_handle_ = nullptr;
+  }
+#endif
+
   CleanupInterruptSemaphore();
+  
+  ESP_LOGD(TAG, "McuGpio destroyed for pin %d", pin_);
 }
 
 //==============================================================================
@@ -274,7 +301,7 @@ bool McuGpio::SupportsInterrupts() const noexcept {
 HfGpioErr McuGpio::SetDirectionImpl(Direction direction) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   gpio_config_t io_conf = {};
-  io_conf.pin_bit_mask = (1ULL << pin);
+  io_conf.pin_bit_mask = (1ULL << pin_);
 
   if (direction == Direction::Input) {
     io_conf.mode = GPIO_MODE_INPUT;
@@ -337,7 +364,7 @@ HfGpioErr McuGpio::SetActiveImpl() noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
   bool level = StateToLevel(State::Active);
-  esp_err_t result = gpio_set_level(static_cast<gpio_num_t>(pin), level ? 1 : 0);
+  esp_err_t result = gpio_set_level(static_cast<gpio_num_t>(pin_), level ? 1 : 0);
 
   if (result != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set pin %d active: %s", pin_, esp_err_to_name(result));
@@ -358,7 +385,7 @@ HfGpioErr McuGpio::SetInactiveImpl() noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
   bool level = StateToLevel(State::Inactive);
-  esp_err_t result = gpio_set_level(static_cast<gpio_num_t>(pin), level ? 1 : 0);
+  esp_err_t result = gpio_set_level(static_cast<gpio_num_t>(pin_), level ? 1 : 0);
 
   if (result != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set pin %d inactive: %s", pin_, esp_err_to_name(result));
@@ -374,9 +401,9 @@ HfGpioErr McuGpio::SetInactiveImpl() noexcept {
 
 HfGpioErr McuGpio::IsActiveImpl(bool &is_active) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  int level = gpio_get_level(static_cast<gpio_num_t>(pin));
+  int level = gpio_get_level(static_cast<gpio_num_t>(pin_));
   if (level < 0) {
-    ESP_LOGE(TAG, "Failed to read pin %d level", pin);
+    ESP_LOGE(TAG, "Failed to read pin %d level", pin_);
     return HfGpioErr::GPIO_ERR_READ_FAILURE;
   }
 
@@ -398,14 +425,14 @@ HfGpioErr McuGpio::ToggleImpl() noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Read current level and invert it
-  int current_level = gpio_get_level(static_cast<gpio_num_t>(pin));
+  int current_level = gpio_get_level(static_cast<gpio_num_t>(pin_));
   if (current_level < 0) {
-    ESP_LOGE(TAG, "Failed to read pin %d level for toggle", pin);
+    ESP_LOGE(TAG, "Failed to read pin %d level for toggle", pin_);
     return HfGpioErr::GPIO_ERR_READ_FAILURE;
   }
 
   int new_level = current_level ? 0 : 1;
-  esp_err_t result = gpio_set_level(static_cast<gpio_num_t>(pin), new_level);
+  esp_err_t result = gpio_set_level(static_cast<gpio_num_t>(pin_), new_level);
 
   if (result != ESP_OK) {
     ESP_LOGE(TAG, "Failed to toggle pin %d: %s", pin_, esp_err_to_name(result));
@@ -668,15 +695,21 @@ HfGpioErr McuGpio::SetDriveCapability(GpioDriveCapability capability) noexcept {
     esp_drive_cap = GPIO_DRIVE_CAP_3; // ~40mA
     break;
   default:
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIG;
+    return HfGpioErr::GPIO_ERR_INVALID_PARAMETER;
   }
 
-  esp_err_t err = gpio_set_drive_capability(static_cast<gpio_num_t>(GetPinNumber()), esp_drive_cap);
+  esp_err_t err = gpio_set_drive_capability(static_cast<gpio_num_t>(pin_), esp_drive_cap);
   if (err == ESP_OK) {
     drive_capability_ = capability;
+    ESP_LOGD(TAG, "Set GPIO %d drive capability to %dmA", pin_, 
+             capability == GpioDriveCapability::Weak ? 5 :
+             capability == GpioDriveCapability::Stronger ? 10 :
+             capability == GpioDriveCapability::Medium ? 20 : 40);
     return HfGpioErr::GPIO_SUCCESS;
+  } else {
+    ESP_LOGE(TAG, "Failed to set drive capability for GPIO %d: %s", pin_, esp_err_to_name(err));
+    return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
   }
-  return HfGpioErr::GPIO_ERR_HARDWARE_FAILURE;
 #else
   // Store capability for non-ESP32 platforms
   drive_capability_ = capability;
@@ -694,71 +727,233 @@ bool McuGpio::SupportsGlitchFilter() const noexcept {
 
 HfGpioErr McuGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  // Note: Pin glitch filter configuration would be implemented here
-  // with ESP-IDF v5.5+ GPIO glitch filter APIs
-  pin_glitch_filter_enabled_ = enable;
+  if (!IsInitialized()) {
+    pin_glitch_filter_enabled_ = enable;
+    return HfGpioErr::GPIO_SUCCESS;
+  }
+
+  gpio_num_t pin = static_cast<gpio_num_t>(pin_);
+
   if (enable) {
+    // Create pin glitch filter using ESP-IDF v5.5+ API
+    gpio_pin_glitch_filter_config_t filter_config = {
+        .clk_src = GLITCH_FILTER_CLK_SRC_DEFAULT,
+        .gpio_num = pin,
+    };
+
+    gpio_glitch_filter_handle_t filter_handle = nullptr;
+    esp_err_t err = gpio_new_pin_glitch_filter(&filter_config, &filter_handle);
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to create pin glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    }
+
+    // Enable the filter
+    err = gpio_glitch_filter_enable(filter_handle);
+    if (err != ESP_OK) {
+      gpio_del_glitch_filter(filter_handle);
+      ESP_LOGE(TAG, "Failed to enable pin glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    }
+
+    // Clean up old filter if exists
+    if (glitch_filter_handle_ != nullptr) {
+      gpio_glitch_filter_disable(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+      gpio_del_glitch_filter(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+    }
+
+    glitch_filter_handle_ = filter_handle;
+    pin_glitch_filter_enabled_ = true;
+
+    // Update filter type state
     if (glitch_filter_type_ == GpioGlitchFilterType::None) {
       glitch_filter_type_ = GpioGlitchFilterType::Pin;
     } else if (glitch_filter_type_ == GpioGlitchFilterType::Flex) {
       glitch_filter_type_ = GpioGlitchFilterType::Both;
     }
+
+    ESP_LOGI(TAG, "Pin glitch filter enabled for GPIO %d", pin_);
   } else {
+    // Disable and clean up pin glitch filter
+    if (glitch_filter_handle_ != nullptr) {
+      esp_err_t err = gpio_glitch_filter_disable(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+      if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Failed to disable pin glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      }
+
+      err = gpio_del_glitch_filter(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+      if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Failed to delete pin glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      }
+
+      glitch_filter_handle_ = nullptr;
+    }
+
+    pin_glitch_filter_enabled_ = false;
+
+    // Update filter type state
     if (glitch_filter_type_ == GpioGlitchFilterType::Pin) {
       glitch_filter_type_ = GpioGlitchFilterType::None;
     } else if (glitch_filter_type_ == GpioGlitchFilterType::Both) {
       glitch_filter_type_ = GpioGlitchFilterType::Flex;
     }
+
+    ESP_LOGI(TAG, "Pin glitch filter disabled for GPIO %d", pin_);
   }
+
   return HfGpioErr::GPIO_SUCCESS;
 #else
-  return HfGpioErr::GPIO_ERR_UNSUPPORTED_OPERATION;
+  pin_glitch_filter_enabled_ = enable;
+  return HfGpioErr::GPIO_SUCCESS;
 #endif
 }
 
 HfGpioErr McuGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &config) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  // Store configuration for ESP-IDF v5.5+ implementation
+  if (!IsInitialized()) {
+    flex_filter_config_ = config;
+    flex_glitch_filter_enabled_ = true;
+    return HfGpioErr::GPIO_SUCCESS;
+  }
+
+  gpio_num_t pin = static_cast<gpio_num_t>(pin_);
+
+  // Create flexible glitch filter using ESP-IDF v5.5+ API
+  gpio_flex_glitch_filter_config_t filter_config = {
+      .clk_src = GLITCH_FILTER_CLK_SRC_DEFAULT,
+      .gpio_num = pin,
+      .window_width_ns = config.window_width_ns,
+      .window_thres_ns = config.window_threshold_ns,
+  };
+
+  gpio_glitch_filter_handle_t filter_handle = nullptr;
+  esp_err_t err = gpio_new_flex_glitch_filter(&filter_config, &filter_handle);
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to create flex glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+    if (err == ESP_ERR_NOT_FOUND) {
+      return HfGpioErr::GPIO_ERR_RESOURCE_UNAVAILABLE;
+    } else if (err == ESP_ERR_INVALID_ARG) {
+      return HfGpioErr::GPIO_ERR_INVALID_PARAMETER;
+    } else {
+      return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    }
+  }
+
+  // Enable the filter if requested
+  if (config.enable_on_init) {
+    err = gpio_glitch_filter_enable(filter_handle);
+    if (err != ESP_OK) {
+      gpio_del_glitch_filter(filter_handle);
+      ESP_LOGE(TAG, "Failed to enable flex glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    }
+  }
+
+  // Clean up old filter if exists and store new one
+  // Note: We use a separate handle for flex filter vs pin filter
+  if (rtc_gpio_handle_ != nullptr) {  // Reusing this handle for flex filter
+    gpio_glitch_filter_disable(static_cast<gpio_glitch_filter_handle_t>(rtc_gpio_handle_));
+    gpio_del_glitch_filter(static_cast<gpio_glitch_filter_handle_t>(rtc_gpio_handle_));
+  }
+
+  rtc_gpio_handle_ = filter_handle;
   flex_filter_config_ = config;
   flex_glitch_filter_enabled_ = true;
 
+  // Update filter type state
   if (glitch_filter_type_ == GpioGlitchFilterType::None) {
     glitch_filter_type_ = GpioGlitchFilterType::Flex;
   } else if (glitch_filter_type_ == GpioGlitchFilterType::Pin) {
     glitch_filter_type_ = GpioGlitchFilterType::Both;
   }
 
+  ESP_LOGI(TAG, "Flex glitch filter configured for GPIO %d (window: %lu ns, threshold: %lu ns)", 
+           pin_, config.window_width_ns, config.window_threshold_ns);
+
   return HfGpioErr::GPIO_SUCCESS;
 #else
-  return HfGpioErr::GPIO_ERR_UNSUPPORTED_OPERATION;
+  flex_filter_config_ = config;
+  flex_glitch_filter_enabled_ = true;
+  return HfGpioErr::GPIO_SUCCESS;
 #endif
 }
 
 HfGpioErr McuGpio::EnableGlitchFilters() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  // Implementation would enable all configured glitch filters
-  return HfGpioErr::GPIO_SUCCESS;
+  HfGpioErr result = HfGpioErr::GPIO_SUCCESS;
+
+  // Enable pin glitch filter if configured
+  if (pin_glitch_filter_enabled_ && glitch_filter_handle_ != nullptr) {
+    esp_err_t err = gpio_glitch_filter_enable(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to enable pin glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      result = HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    } else {
+      ESP_LOGD(TAG, "Pin glitch filter enabled for GPIO %d", pin_);
+    }
+  }
+
+  // Enable flex glitch filter if configured
+  if (flex_glitch_filter_enabled_ && rtc_gpio_handle_ != nullptr) {
+    esp_err_t err = gpio_glitch_filter_enable(static_cast<gpio_glitch_filter_handle_t>(rtc_gpio_handle_));
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to enable flex glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      result = HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    } else {
+      ESP_LOGD(TAG, "Flex glitch filter enabled for GPIO %d", pin_);
+    }
+  }
+
+  if (result == HfGpioErr::GPIO_SUCCESS) {
+    ESP_LOGI(TAG, "All glitch filters enabled for GPIO %d", pin_);
+  }
+
+  return result;
 #else
-  return HfGpioErr::GPIO_ERR_UNSUPPORTED_OPERATION;
+  return HfGpioErr::GPIO_SUCCESS;
 #endif
 }
 
 HfGpioErr McuGpio::DisableGlitchFilters() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  // Implementation would disable all glitch filters
-  pin_glitch_filter_enabled_ = false;
-  flex_glitch_filter_enabled_ = false;
-  glitch_filter_type_ = GpioGlitchFilterType::None;
-  return HfGpioErr::GPIO_SUCCESS;
+  HfGpioErr result = HfGpioErr::GPIO_SUCCESS;
+
+  // Disable pin glitch filter if active
+  if (pin_glitch_filter_enabled_ && glitch_filter_handle_ != nullptr) {
+    esp_err_t err = gpio_glitch_filter_disable(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+    if (err != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to disable pin glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      result = HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    } else {
+      ESP_LOGD(TAG, "Pin glitch filter disabled for GPIO %d", pin_);
+    }
+  }
+
+  // Disable flex glitch filter if active
+  if (flex_glitch_filter_enabled_ && rtc_gpio_handle_ != nullptr) {
+    esp_err_t err = gpio_glitch_filter_disable(static_cast<gpio_glitch_filter_handle_t>(rtc_gpio_handle_));
+    if (err != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to disable flex glitch filter for GPIO %d: %s", pin_, esp_err_to_name(err));
+      result = HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    } else {
+      ESP_LOGD(TAG, "Flex glitch filter disabled for GPIO %d", pin_);
+    }
+  }
+
+  if (result == HfGpioErr::GPIO_SUCCESS) {
+    ESP_LOGI(TAG, "All glitch filters disabled for GPIO %d", pin_);
+  }
+
+  return result;
 #else
-  return HfGpioErr::GPIO_ERR_UNSUPPORTED_OPERATION;
+  return HfGpioErr::GPIO_SUCCESS;
 #endif
 }
 
 bool McuGpio::SupportsRtcGpio() const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   // Check if pin supports RTC GPIO functionality
-  return rtc_gpio_is_valid_gpio(static_cast<gpio_num_t>(GetPinNumber()));
+  return rtc_gpio_is_valid_gpio(static_cast<gpio_num_t>(pin_));
 #else
   return false;
 #endif
@@ -769,17 +964,21 @@ HfGpioErr McuGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
   sleep_config_ = config;
 
   if (SupportsRtcGpio()) {
-    gpio_num_t pin = static_cast<gpio_num_t>(GetPinNumber());
+    gpio_num_t pin = static_cast<gpio_num_t>(pin_);
 
     // Configure sleep direction
     if (config.sleep_direction == Direction::Output) {
       esp_err_t err = rtc_gpio_set_direction(pin, RTC_GPIO_MODE_OUTPUT_ONLY);
-      if (err != ESP_OK)
-        return HfGpioErr::GPIO_ERR_HARDWARE_FAILURE;
+      if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to set RTC GPIO direction for pin %d: %s", pin_, esp_err_to_name(err));
+        return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+      }
     } else {
       esp_err_t err = rtc_gpio_set_direction(pin, RTC_GPIO_MODE_INPUT_ONLY);
-      if (err != ESP_OK)
-        return HfGpioErr::GPIO_ERR_HARDWARE_FAILURE;
+      if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to set RTC GPIO direction for pin %d: %s", pin_, esp_err_to_name(err));
+        return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+      }
     }
 
     // Configure pull resistors
@@ -797,6 +996,10 @@ HfGpioErr McuGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
     } else {
       rtc_gpio_hold_dis(pin);
     }
+
+    ESP_LOGI(TAG, "Sleep configuration applied for RTC GPIO %d", pin_);
+  } else {
+    ESP_LOGW(TAG, "Pin %d does not support RTC GPIO, sleep config stored but not applied", pin_);
   }
 
   return HfGpioErr::GPIO_SUCCESS;
@@ -811,19 +1014,23 @@ HfGpioErr McuGpio::ConfigureHold(bool enable) noexcept {
   hold_enabled_ = enable;
 
   if (SupportsRtcGpio()) {
-    gpio_num_t pin = static_cast<gpio_num_t>(GetPinNumber());
+    gpio_num_t pin = static_cast<gpio_num_t>(pin_);
     if (enable) {
       rtc_gpio_hold_en(pin);
+      ESP_LOGD(TAG, "RTC GPIO hold enabled for pin %d", pin_);
     } else {
       rtc_gpio_hold_dis(pin);
+      ESP_LOGD(TAG, "RTC GPIO hold disabled for pin %d", pin_);
     }
   } else {
     // Use digital GPIO hold for non-RTC pins
-    gpio_num_t pin = static_cast<gpio_num_t>(GetPinNumber());
+    gpio_num_t pin = static_cast<gpio_num_t>(pin_);
     if (enable) {
       gpio_hold_en(pin);
+      ESP_LOGD(TAG, "Digital GPIO hold enabled for pin %d", pin_);
     } else {
       gpio_hold_dis(pin);
+      ESP_LOGD(TAG, "Digital GPIO hold disabled for pin %d", pin_);
     }
   }
 
@@ -839,23 +1046,32 @@ HfGpioErr McuGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
   wakeup_config_ = config;
 
   if (config.enable_rtc_wake && SupportsRtcGpio()) {
-    gpio_num_t pin = static_cast<gpio_num_t>(GetPinNumber());
+    gpio_num_t pin = static_cast<gpio_num_t>(pin_);
 
     // Configure as RTC GPIO for wake-up
     esp_err_t err = rtc_gpio_init(pin);
-    if (err != ESP_OK)
-      return HfGpioErr::GPIO_ERR_HARDWARE_FAILURE;
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to initialize RTC GPIO %d: %s", pin_, esp_err_to_name(err));
+      return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    }
 
     // Set direction for wake-up
     err = rtc_gpio_set_direction(pin, RTC_GPIO_MODE_INPUT_ONLY);
-    if (err != ESP_OK)
-      return HfGpioErr::GPIO_ERR_HARDWARE_FAILURE;
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to set RTC GPIO direction for pin %d: %s", pin_, esp_err_to_name(err));
+      return HfGpioErr::GPIO_ERR_HARDWARE_FAULT;
+    }
 
     // Configure wake-up trigger
     if (config.wake_trigger == InterruptTrigger::RisingEdge ||
         config.wake_trigger == InterruptTrigger::BothEdges) {
       esp_sleep_enable_gpio_wakeup();
+      ESP_LOGI(TAG, "GPIO wake-up enabled for pin %d", pin_);
     }
+
+    ESP_LOGI(TAG, "Wake-up configuration applied for RTC GPIO %d", pin_);
+  } else if (config.enable_rtc_wake) {
+    ESP_LOGW(TAG, "Pin %d does not support RTC GPIO, wake-up config stored but not applied", pin_);
   }
 
   return HfGpioErr::GPIO_SUCCESS;
@@ -868,7 +1084,7 @@ HfGpioErr McuGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
 GpioConfigDump McuGpio::GetConfigurationDump() const noexcept {
   GpioConfigDump dump;
 
-  dump.pin_number = static_cast<uint8_t>(GetPinNumber());
+  dump.pin_number = static_cast<uint8_t>(pin_);
   dump.direction = GetDirection();
   dump.pull_mode = GetPullMode();
   dump.output_mode = GetOutputMode();

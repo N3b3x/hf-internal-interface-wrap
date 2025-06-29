@@ -26,8 +26,8 @@
 
 /**
  * @brief Platform-agnostic GPIO pin number type.
- * @details Uses int32_t to accommodate various MCU pin numbering schemes.
- *          Negative values indicate invalid or unassigned pins.
+ * @details Generic pin identifier that works across different hardware platforms.
+ *          Uses int32_t to handle both positive pin numbers and invalid (-1) values.
  */
 using HfPinNumber = int32_t;
 
@@ -88,12 +88,12 @@ using HfBaudRate = uint32_t;
 
 /**
  * @brief Platform-agnostic channel identifier type.
- * @details Used for ADC channels, PWM channels, PIO channels, etc.
+ * @details Used for ADC channels, PWM channels, etc.
  */
 using HfChannelId = uint32_t;
 
 /**
- * @brief Invalid channel constant.
+ * @brief Invalid channel constant for unassigned or invalid channels.
  */
 constexpr HfChannelId HF_INVALID_CHANNEL = std::numeric_limits<HfChannelId>::max();
 
