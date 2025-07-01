@@ -407,7 +407,8 @@ private:
   void ResetInternalState() noexcept;
   uint64_t GetCurrentTimestamp() const noexcept;
   
-  // Logging and debugging  void LogConfigurationDetails() const noexcept;
+  // Logging and debugging
+  void LogConfigurationDetails() const noexcept;
   void LogStatusInformation() const noexcept;
   const char* GetControllerStateString() const noexcept;
   const char* GetErrorStateString(hf_can_error_state_t state) const noexcept;

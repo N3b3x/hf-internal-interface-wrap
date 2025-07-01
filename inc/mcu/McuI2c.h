@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include "../utils/RtosMutex.h"
+#include "RtosMutex.h"
 #include "BaseI2c.h"
 #include "McuTypes.h"
 #include <functional>
@@ -42,44 +42,18 @@
 using I2cBusHandle = hf_i2c_master_bus_handle_t;
 using I2cDeviceHandle = hf_i2c_device_handle_t;
 using I2cCmdHandle = hf_i2c_cmd_handle_t;
+using I2cBusConfig = hf_i2c_master_bus_config_t;
+using I2cDeviceConfig = hf_i2c_device_config_t;
 
 //--------------------------------------
 //  Advanced I2C Configuration
 //--------------------------------------
 
-/**
- * @brief Clock source selection for I2C bus
- */
-enum class HfI2cClockSource : uint8_t {
-  DEFAULT = 0, ///< Default I2C source clock
-  XTAL = 1,    ///< External crystal (lower power)
-  RC_FAST = 2  ///< Internal 20MHz RC oscillator
-};
-
-/**
- * @brief I2C bus mode selection
- */
-enum class HfI2cBusMode : uint8_t {
-  MASTER = 0, ///< Master mode
-  SLAVE = 1   ///< Slave mode
-};
-
-/**
- * @brief I2C address bit width
- */
-enum class HfI2cAddressBits : uint8_t {
-  SEVEN_BIT = 7, ///< 7-bit addressing (standard)
-  TEN_BIT = 10   ///< 10-bit addressing (extended)
-};
-
-/**
- * @brief I2C power modes for energy efficiency
- */
-enum class HfI2cPowerMode : uint8_t {
-  FULL_POWER = 0, ///< Maximum performance, highest power
-  LOW_POWER = 1,  ///< Reduced power consumption
-  SLEEP = 2       ///< Minimal power, bus suspended
-};
+// Type aliases for centralized types from McuTypes.h
+using HfI2cClockSource = hf_i2c_clock_source_t;
+using HfI2cBusMode = hf_i2c_bus_mode_t;
+using HfI2cAddressBits = hf_i2c_address_bits_t;
+using HfI2cPowerMode = hf_i2c_power_mode_t;
 
 /**
  * @brief Advanced I2C configuration structure
@@ -115,15 +89,15 @@ struct I2cAdvancedConfig {
   // Statistics and diagnostics
   bool statisticsEnabled;  ///< Enable operation statistics
   bool diagnosticsEnabled; ///< Enable diagnostic features
-
   // Default constructor
   I2cAdvancedConfig()
       : busNumber(0), clockSpeed(100000), sclPin(-1), sdaPin(-1), pullupResistors(true),
-        timeoutMs(1000), clockSource(HfI2cClockSource::DEFAULT), busMode(HfI2cBusMode::MASTER),
+        timeoutMs(1000), clockSource(HfI2cClockSource::HF_I2C_CLK_SRC_DEFAULT), 
+        busMode(HfI2cBusMode::HF_I2C_BUS_MODE_MASTER),
         clockStretchingEnabled(true), clockStretchingTimeout(1000), digitalFilterEnabled(true),
         analogFilterEnabled(true), digitalFilterLength(7), asyncOperationsEnabled(false),
         maxConcurrentOperations(4), eventCallbacksEnabled(false),
-        powerMode(HfI2cPowerMode::FULL_POWER), autoSuspendEnabled(false), autoSuspendDelayMs(5000),
+        powerMode(HfI2cPowerMode::HF_I2C_POWER_MODE_FULL), autoSuspendEnabled(false), autoSuspendDelayMs(5000),
         statisticsEnabled(false), diagnosticsEnabled(false) {}
 };
 
@@ -137,9 +111,8 @@ struct I2cDeviceConfig {
   uint8_t retryCount;              ///< Number of retry attempts
   uint32_t clockStretchingTimeout; ///< Device clock stretching timeout
   bool requiresSpecialHandling;    ///< Device needs special handling
-
   I2cDeviceConfig()
-      : deviceAddress(0), addressBits(HfI2cAddressBits::SEVEN_BIT), timeoutMs(1000), retryCount(3),
+      : deviceAddress(0), addressBits(HfI2cAddressBits::HF_I2C_ADDR_BIT_LEN_7), timeoutMs(1000), retryCount(3),
         clockStretchingTimeout(1000), requiresSpecialHandling(false) {}
 };
 
@@ -233,16 +206,8 @@ using I2cAsyncCallback =
     std::function<void(HfI2cErr result, size_t bytesTransferred, void *userData)>;
 using I2cEventCallback = std::function<void(int eventType, void *eventData, void *userData)>;
 
-/**
- * @brief Event types reported via I2cEventCallback
- */
-enum class I2cEventType : int {
-  WRITE_COMPLETE = 0, ///< Write transaction finished
-  READ_COMPLETE = 1,  ///< Read transaction finished
-  ERROR = 2,          ///< Error occurred during transaction
-  BUS_SUSPENDED = 3,  ///< Bus automatically suspended
-  BUS_RESUMED = 4     ///< Bus resumed from suspended state
-};
+// Type alias for centralized event type
+using I2cEventType = hf_i2c_event_type_t;
 
 /**
  * @class McuI2c

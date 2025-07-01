@@ -37,7 +37,7 @@ McuI2c::McuI2c(const I2cBusConfig &config) noexcept
       platform_handle_(nullptr), master_bus_handle_(nullptr), last_error_(HfI2cErr::I2C_SUCCESS),
       transaction_count_(0), bus_locked_(false), advanced_initialized_(false),
       next_operation_id_(0), event_callback_(nullptr), event_callback_userdata_(nullptr),
-      last_operation_time_(0), current_power_mode_(HfI2cPowerMode::FULL_POWER),
+      last_operation_time_(0), current_power_mode_(HfI2cPowerMode::HF_I2C_POWER_MODE_FULL),
       bus_suspended_(false), auto_suspend_timer_(nullptr) {}
 
 McuI2c::McuI2c(const I2cAdvancedConfig &config) noexcept : McuI2c(I2cBusConfig{}) {
@@ -100,7 +100,8 @@ bool McuI2c::Initialize() noexcept {
   }
 
   last_error_ = HfI2cErr::I2C_SUCCESS;
-  return true;
+  initialized_ = true;
+  return initialized_;
 }
 
 bool McuI2c::Deinitialize() noexcept {
@@ -165,19 +166,18 @@ HfI2cErr McuI2c::Write(uint8_t device_addr, const uint8_t *data, uint16_t length
 
   // Clean up
   i2c_cmd_link_delete(cmd);
-
   last_error_ = ConvertPlatformError(err);
   uint64_t duration = esp_timer_get_time() - start;
   UpdateStatistics(last_error_ == HfI2cErr::I2C_SUCCESS, length, duration);
   if (last_error_ != HfI2cErr::I2C_SUCCESS) {
     HandlePlatformError(err);
     if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-      event_callback_(static_cast<int>(I2cEventType::ERROR), &last_error_,
+      event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_ERROR), &last_error_,
                       event_callback_userdata_);
     }
   } else {
     if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-      event_callback_(static_cast<int>(I2cEventType::WRITE_COMPLETE), nullptr,
+      event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_WRITE_COMPLETE), nullptr,
                       event_callback_userdata_);
     }
   }
@@ -247,12 +247,12 @@ HfI2cErr McuI2c::Read(uint8_t device_addr, uint8_t *data, uint16_t length,
   if (last_error_ != HfI2cErr::I2C_SUCCESS) {
     HandlePlatformError(err);
     if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-      event_callback_(static_cast<int>(I2cEventType::ERROR), &last_error_,
+      event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_ERROR), &last_error_,
                       event_callback_userdata_);
     }
   } else {
     if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-      event_callback_(static_cast<int>(I2cEventType::READ_COMPLETE), nullptr,
+      event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_READ_COMPLETE), nullptr,
                       event_callback_userdata_);
     }
   }
@@ -336,14 +336,14 @@ HfI2cErr McuI2c::WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t
   size_t bytes = tx_length + rx_length;
   UpdateStatistics(last_error_ == HfI2cErr::I2C_SUCCESS, bytes, duration);
   if (last_error_ != HfI2cErr::I2C_SUCCESS) {
-    HandlePlatformError(err);
+    HandlePlatformError(err);    
     if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-      event_callback_(static_cast<int>(I2cEventType::ERROR), &last_error_,
+      event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_ERROR), &last_error_,
                       event_callback_userdata_);
     }
   } else {
     if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-      event_callback_(static_cast<int>(I2cEventType::WRITE_COMPLETE), nullptr,
+      event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_WRITE_COMPLETE), nullptr,
                       event_callback_userdata_);
     }
   }
@@ -774,10 +774,10 @@ void AsyncTask(void *param) {
     op->cb(res, transferred, op->user);
   }
   if (op->obj->event_callback_ && op->obj->advanced_config_.eventCallbacksEnabled) {
-    int type = op->read ? static_cast<int>(I2cEventType::READ_COMPLETE)
-                        : static_cast<int>(I2cEventType::WRITE_COMPLETE);
+    int type = op->read ? static_cast<int>(I2cEventType::HF_I2C_EVENT_READ_COMPLETE)
+                        : static_cast<int>(I2cEventType::HF_I2C_EVENT_WRITE_COMPLETE);
     if (res != HfI2cErr::I2C_SUCCESS) {
-      type = static_cast<int>(I2cEventType::ERROR);
+      type = static_cast<int>(I2cEventType::HF_I2C_EVENT_ERROR);
     }
     op->obj->event_callback_(type, &res, op->obj->event_callback_userdata_);
   }
@@ -931,10 +931,9 @@ HfI2cErr McuI2c::executeCustomSequenceAsync(const std::vector<I2cCustomCommand> 
     HfI2cErr res = w->obj->executeCustomSequence(w->cmds);
     if (w->cb) {
       w->cb(res, 0, w->ud);
-    }
-    if (w->obj->event_callback_ && w->obj->advanced_config_.eventCallbacksEnabled) {
-      int type = (res == HfI2cErr::I2C_SUCCESS) ? static_cast<int>(I2cEventType::WRITE_COMPLETE)
-                                                : static_cast<int>(I2cEventType::ERROR);
+    }    if (w->obj->event_callback_ && w->obj->advanced_config_.eventCallbacksEnabled) {
+      int type = (res == HfI2cErr::I2C_SUCCESS) ? static_cast<int>(I2cEventType::HF_I2C_EVENT_WRITE_COMPLETE)
+                                                : static_cast<int>(I2cEventType::HF_I2C_EVENT_ERROR);
       w->obj->event_callback_(type, &res, w->obj->event_callback_userdata_);
     }
     delete w;
@@ -945,10 +944,9 @@ HfI2cErr McuI2c::executeCustomSequenceAsync(const std::vector<I2cCustomCommand> 
   HfI2cErr res = executeCustomSequence(commands);
   if (callback) {
     callback(res, 0, userData);
-  }
-  if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-    int type = (res == HfI2cErr::I2C_SUCCESS) ? static_cast<int>(I2cEventType::WRITE_COMPLETE)
-                                              : static_cast<int>(I2cEventType::ERROR);
+  }  if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
+    int type = (res == HfI2cErr::I2C_SUCCESS) ? static_cast<int>(I2cEventType::HF_I2C_EVENT_WRITE_COMPLETE)
+                                              : static_cast<int>(I2cEventType::HF_I2C_EVENT_ERROR);
     event_callback_(type, &res, event_callback_userdata_);
   }
   delete wrapper;
@@ -977,7 +975,7 @@ HfI2cErr McuI2c::suspendBus() noexcept {
 #endif
   bus_suspended_ = true;
   if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-    event_callback_(static_cast<int>(I2cEventType::BUS_SUSPENDED), nullptr,
+    event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_BUS_SUSPENDED), nullptr,
                     event_callback_userdata_);
   }
   return HfI2cErr::I2C_SUCCESS;
@@ -991,7 +989,7 @@ HfI2cErr McuI2c::resumeBus() noexcept {
 #endif
   bus_suspended_ = false;
   if (event_callback_ && advanced_config_.eventCallbacksEnabled) {
-    event_callback_(static_cast<int>(I2cEventType::BUS_RESUMED), nullptr, event_callback_userdata_);
+    event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_BUS_RESUMED), nullptr, event_callback_userdata_);
   }
   if (advanced_config_.autoSuspendEnabled) {
     StartAutoSuspendTimer();
@@ -1100,7 +1098,7 @@ bool McuI2c::CreateAutoSuspendTimer() noexcept {
     if (self) {
       self->suspendBus();
       if (self->event_callback_ && self->advanced_config_.eventCallbacksEnabled) {
-        self->event_callback_(static_cast<int>(I2cEventType::BUS_SUSPENDED), nullptr,
+        self->event_callback_(static_cast<int>(I2cEventType::HF_I2C_EVENT_BUS_SUSPENDED), nullptr,
                               self->event_callback_userdata_);
       }
     }

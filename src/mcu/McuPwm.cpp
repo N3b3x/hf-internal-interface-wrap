@@ -207,131 +207,6 @@ HfPwmErr McuPwm::EnableChannel(HfChannelId channel_id) noexcept {
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_CHANNEL);
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
-  }
-
-  if (channels_[channel_id].enabled) {
-    return HfPwmErr::PWM_SUCCESS; // Already enabled
-  }
-
-#ifdef HF_MCU_FAMILY_ESP32
-  esp_err_t ret = ledc_update_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id));
-  if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "ledc_update_duty failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
-  }
-
-  channels_[channel_id].enabled = true;
-  ESP_LOGD(TAG, "Channel %lu enabled", channel_id);
-  return HfPwmErr::PWM_SUCCESS;
-
-#else
-  return HfPwmErr::PWM_ERR_FAILURE;
-#endif
-}
-
-HfPwmErr McuPwm::DisableChannel(HfChannelId channel_id) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
-  }
-
-  if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
-  }
-
-  if (!channels_[channel_id].enabled) {
-    return HfPwmErr::PWM_SUCCESS; // Already disabled
-  }
-
-#ifdef HF_MCU_FAMILY_ESP32
-  esp_err_t ret = ledc_stop(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), 0);
-  if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "ledc_stop failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
-  }
-
-  channels_[channel_id].enabled = false;
-  ESP_LOGD(TAG, "Channel %lu disabled", channel_id);
-  return HfPwmErr::PWM_SUCCESS;
-
-#else
-  return HfPwmErr::PWM_ERR_FAILURE;
-#endif
-}
-
-bool McuPwm::IsChannelEnabled(HfChannelId channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
-    return false;
-  }
-
-  return channels_[channel_id].enabled;
-}
-
-if (!BasePwm::IsValidDutyCycle(config.initial_duty_cycle)) {
-  SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_DUTY_CYCLE);
-  return HfPwmErr::PWM_ERR_INVALID_DUTY_CYCLE;
-}
-
-if (!BasePwm::IsValidFrequency(config.frequency_hz, MIN_FREQUENCY, MAX_FREQUENCY)) {
-  SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_FREQUENCY);
-  return HfPwmErr::PWM_ERR_INVALID_FREQUENCY;
-}
-
-// Find or allocate a timer for this frequency/resolution combination
-int8_t timer_id = FindOrAllocateTimer(config.frequency_hz, config.resolution_bits);
-if (timer_id < 0) {
-  SetChannelError(channel_id, HfPwmErr::PWM_ERR_TIMER_CONFLICT);
-  return HfPwmErr::PWM_ERR_TIMER_CONFLICT;
-}
-
-// Configure the platform timer if needed
-HfPwmErr timer_result =
-    ConfigurePlatformTimer(timer_id, config.frequency_hz, config.resolution_bits);
-if (timer_result != HfPwmErr::PWM_SUCCESS) {
-  SetChannelError(channel_id, timer_result);
-  return timer_result;
-}
-
-// Configure the platform channel
-HfPwmErr channel_result = ConfigurePlatformChannel(channel_id, config, timer_id);
-if (channel_result != HfPwmErr::PWM_SUCCESS) {
-  SetChannelError(channel_id, channel_result);
-  return channel_result;
-}
-
-// Update internal state
-channels_[channel_id].configured = true;
-channels_[channel_id].config = config;
-channels_[channel_id].assigned_timer = timer_id;
-channels_[channel_id].raw_duty_value =
-    BasePwm::DutyCycleToRaw(config.initial_duty_cycle, config.resolution_bits);
-channels_[channel_id].last_error = HfPwmErr::PWM_SUCCESS;
-
-ESP_LOGI(TAG, "Channel %d configured: pin=%d, freq=%lu Hz, res=%d bits, timer=%d", channel_id,
-         config.output_pin, config.frequency_hz, config.resolution_bits, timer_id);
-
-return HfPwmErr::PWM_SUCCESS;
-}
-
-HfPwmErr McuPwm::EnableChannel(uint8_t channel_id) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
-  }
-
-  if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
-  }
-
-  if (!channels_[channel_id].configured) {
     SetChannelError(channel_id, HfPwmErr::PWM_ERR_CHANNEL_NOT_AVAILABLE);
     return HfPwmErr::PWM_ERR_CHANNEL_NOT_AVAILABLE;
   }
@@ -349,13 +224,13 @@ HfPwmErr McuPwm::EnableChannel(uint8_t channel_id) noexcept {
       );
 
   if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to enable channel %d: %s", channel_id, esp_err_to_name(ret));
+    ESP_LOGE(TAG, "Failed to enable channel %lu: %s", channel_id, esp_err_to_name(ret));
     SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
     return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
   }
 
   channels_[channel_id].enabled = true;
-  ESP_LOGI(TAG, "Channel %d enabled", channel_id);
+  ESP_LOGI(TAG, "Channel %lu enabled", channel_id);
   return HfPwmErr::PWM_SUCCESS;
 
 #else
@@ -363,7 +238,7 @@ HfPwmErr McuPwm::EnableChannel(uint8_t channel_id) noexcept {
 #endif
 }
 
-HfPwmErr McuPwm::DisableChannel(uint8_t channel_id) noexcept {
+HfPwmErr McuPwm::DisableChannel(HfChannelId channel_id) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
@@ -389,13 +264,13 @@ HfPwmErr McuPwm::DisableChannel(uint8_t channel_id) noexcept {
       ledc_stop(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), idle_level);
 
   if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to disable channel %d: %s", channel_id, esp_err_to_name(ret));
+    ESP_LOGE(TAG, "Failed to disable channel %lu: %s", channel_id, esp_err_to_name(ret));
     SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
     return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
   }
 
   channels_[channel_id].enabled = false;
-  ESP_LOGI(TAG, "Channel %d disabled", channel_id);
+  ESP_LOGI(TAG, "Channel %lu disabled", channel_id);
   return HfPwmErr::PWM_SUCCESS;
 
 #else
@@ -403,13 +278,12 @@ HfPwmErr McuPwm::DisableChannel(uint8_t channel_id) noexcept {
 #endif
 }
 
-bool McuPwm::IsChannelEnabled(uint8_t channel_id) const noexcept {
+bool McuPwm::IsChannelEnabled(HfChannelId channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return false;
   }
-
   return channels_[channel_id].enabled;
 }
 

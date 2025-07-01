@@ -375,8 +375,8 @@ bool McuGpio::Initialize() noexcept {
 
   ESP_LOGI(TAG, "Initialized pin %d as %s, %s, %s", pin_, ToString(current_direction_),
            ToString(active_state_), ToString(pull_mode_));
-
-  return true;
+  initialized_ = true;
+  return initialized_;
 }
 
 bool McuGpio::Deinitialize() noexcept {
@@ -847,6 +847,23 @@ HfGpioErr McuGpio::ToggleImpl() noexcept {
 
   State new_state = (current_state_ == State::Active) ? State::Inactive : State::Active;
   return WriteImpl(new_state);
+}
+
+HfGpioErr McuGpio::IsActiveImpl(bool &is_active) noexcept {
+  if (!EnsureInitialized()) {
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+  }
+  
+  if (current_direction_ != Direction::Input) {
+    return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
+  }
+
+  State current_state;
+  HfGpioErr result = ReadImpl(current_state);
+  if (result == HfGpioErr::GPIO_SUCCESS) {
+    is_active = (current_state == State::Active);
+  }
+  return result;
 }
 
 //==============================================================================

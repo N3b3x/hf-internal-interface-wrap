@@ -22,6 +22,8 @@
 #include "driver/gpio.h"
 #include "driver/uart.h"
 #include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 static const char *TAG = "McuUart";
 #endif
@@ -122,13 +124,13 @@ HfUartErr McuUart::Write(const uint8_t *data, uint16_t length, uint32_t timeout_
   uint32_t timeout = GetTimeoutMs(timeout_ms);
 
   tx_in_progress_ = true;
-  int bytes_written = uart_write_bytes(static_cast<uart_port_t>(port_),
+  int bytes_written = uart_write_bytes(static_cast<hf_uart_port_native_t>(port_),
                                        reinterpret_cast<const char *>(data), length);
 
   if (bytes_written >= 0) {
     // Wait for transmission to complete if timeout specified
     if (timeout > 0) {
-      esp_err_t err = uart_wait_tx_done(static_cast<uart_port_t>(port_), pdMS_TO_TICKS(timeout));
+      esp_err_t err = uart_wait_tx_done(static_cast<hf_uart_port_native_t>(port_), pdMS_TO_TICKS(timeout));
       if (err != ESP_OK) {
         tx_in_progress_ = false;
         last_error_ = HfUartErr::UART_ERR_TIMEOUT;
@@ -167,7 +169,7 @@ HfUartErr McuUart::Read(uint8_t *data, uint16_t length, uint32_t timeout_ms) noe
   uint32_t timeout = GetTimeoutMs(timeout_ms);
 
   int bytes_read =
-      uart_read_bytes(static_cast<uart_port_t>(port_), data, length, pdMS_TO_TICKS(timeout));
+      uart_read_bytes(static_cast<hf_uart_port_native_t>(port_), data, length, pdMS_TO_TICKS(timeout));
 
   if (bytes_read >= 0) {
     bytes_received_ += bytes_read;
@@ -191,7 +193,7 @@ uint16_t McuUart::BytesAvailable() noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
   size_t bytes_available = 0;
-  esp_err_t err = uart_get_buffered_data_len(static_cast<uart_port_t>(port_), &bytes_available);
+  esp_err_t err = uart_get_buffered_data_len(static_cast<hf_uart_port_native_t>(port_), &bytes_available);
   if (err == ESP_OK) {
     return static_cast<uint16_t>(bytes_available);
   }
@@ -207,7 +209,7 @@ HfUartErr McuUart::FlushTx() noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err =
-      uart_wait_tx_done(static_cast<uart_port_t>(port_), pdMS_TO_TICKS(config_.timeout_ms));
+      uart_wait_tx_done(static_cast<hf_uart_port_native_t>(port_), pdMS_TO_TICKS(config_.timeout_ms));
   last_error_ = ConvertPlatformError(err);
   return last_error_;
 #else
@@ -222,7 +224,7 @@ HfUartErr McuUart::FlushRx() noexcept {
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
-  esp_err_t err = uart_flush_input(static_cast<uart_port_t>(port_));
+  esp_err_t err = uart_flush_input(static_cast<hf_uart_port_native_t>(port_));
   last_error_ = ConvertPlatformError(err);
   return last_error_;
 #else
@@ -310,7 +312,7 @@ bool McuUart::SetRTS(bool active) noexcept {
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
-  esp_err_t err = uart_set_rts(static_cast<uart_port_t>(port_), active ? 1 : 0);
+  esp_err_t err = uart_set_rts(static_cast<hf_uart_port_native_t>(port_), active ? 1 : 0);
   return err == ESP_OK;
 #else
   (void)active;
@@ -338,7 +340,7 @@ bool McuUart::SendBreak(uint32_t duration_ms) noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Send break condition
-  esp_err_t err = uart_set_line_inverse(static_cast<uart_port_t>(port_), UART_SIGNAL_TXD_INV);
+  esp_err_t err = uart_set_line_inverse(static_cast<hf_uart_port_native_t>(port_), UART_SIGNAL_TXD_INV);
   if (err != ESP_OK) {
     return false;
   }
@@ -347,7 +349,7 @@ bool McuUart::SendBreak(uint32_t duration_ms) noexcept {
   vTaskDelay(pdMS_TO_TICKS(duration_ms));
 
   // Clear break condition
-  err = uart_set_line_inverse(static_cast<uart_port_t>(port_), 0);
+  err = uart_set_line_inverse(static_cast<hf_uart_port_native_t>(port_), 0);
   return err == ESP_OK;
 #else
   (void)duration_ms;
@@ -383,7 +385,7 @@ bool McuUart::SetLoopback(bool enable) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   // Configure loopback mode (connect TX to RX internally)
   uint32_t mode = enable ? UART_MODE_UART | UART_MODE_LOOPBACK : UART_MODE_UART;
-  esp_err_t err = uart_set_mode(static_cast<uart_port_t>(port_), mode);
+  esp_err_t err = uart_set_mode(static_cast<hf_uart_port_native_t>(port_), mode);
   return err == ESP_OK;
 #else
   (void)enable;
@@ -397,7 +399,7 @@ bool McuUart::WaitTransmitComplete(uint32_t timeout_ms) noexcept {
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
-  esp_err_t err = uart_wait_tx_done(static_cast<uart_port_t>(port_), pdMS_TO_TICKS(timeout_ms));
+  esp_err_t err = uart_wait_tx_done(static_cast<hf_uart_port_native_t>(port_), pdMS_TO_TICKS(timeout_ms));
   return err == ESP_OK;
 #else
   (void)timeout_ms;
@@ -407,26 +409,42 @@ bool McuUart::WaitTransmitComplete(uint32_t timeout_ms) noexcept {
 
 uint16_t McuUart::ReadUntil(uint8_t *data, uint16_t max_length, uint8_t terminator,
                             uint32_t timeout_ms) noexcept {
-  if (!EnsureInitialized() || !data || max_length == 0) {
+  if (!data || max_length == 0) {
     return 0;
   }
 
+  if (!EnsureInitialized()) {
+    return 0;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
   uint16_t bytes_read = 0;
-  uint32_t start_time = 0; // Platform-specific time implementation needed
+  uint32_t start_time = GetCurrentTimeMs();
+  uint32_t timeout = GetTimeoutMs(timeout_ms);
 
   while (bytes_read < max_length) {
+    // Check timeout
+    if (timeout > 0 && (GetCurrentTimeMs() - start_time) >= timeout) {
+      break;
+    }
+
+    // Try to read one byte
     uint8_t byte;
-    if (Read(&byte, 1, 100) == HfUartErr::UART_SUCCESS) { // 100ms per byte timeout
+    HfUartErr result = Read(&byte, 1, 100); // Short timeout for each byte
+    
+    if (result == HfUartErr::UART_SUCCESS) {
       data[bytes_read++] = byte;
+      
+      // Check if we found the terminator
       if (byte == terminator) {
         break;
       }
-    }
-
-    // Check overall timeout
-    // Platform-specific timeout check needed
-    if (timeout_ms > 0) {
-      // Simplified timeout check - should use platform timer
+    } else if (result == HfUartErr::UART_ERR_TIMEOUT) {
+      // Continue trying if we haven't hit the overall timeout
+      continue;
+    } else {
+      // Other error, stop reading
       break;
     }
   }
@@ -439,19 +457,60 @@ uint16_t McuUart::ReadLine(char *buffer, uint16_t max_length, uint32_t timeout_m
     return 0;
   }
 
-  uint16_t bytes_read =
-      ReadUntil(reinterpret_cast<uint8_t *>(buffer), max_length - 1, '\n', timeout_ms);
+  if (!EnsureInitialized()) {
+    return 0;
+  }
 
-  // Remove \r if present before \n
-  if (bytes_read > 0 && buffer[bytes_read - 1] == '\n') {
-    bytes_read--;
-    if (bytes_read > 0 && buffer[bytes_read - 1] == '\r') {
-      bytes_read--;
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  uint16_t chars_read = 0;
+  uint32_t start_time = GetCurrentTimeMs();
+  uint32_t timeout = GetTimeoutMs(timeout_ms);
+
+  while (chars_read < (max_length - 1)) { // Leave space for null terminator
+    // Check timeout
+    if (timeout > 0 && (GetCurrentTimeMs() - start_time) >= timeout) {
+      break;
+    }
+
+    // Try to read one character
+    uint8_t ch;
+    HfUartErr result = Read(&ch, 1, 100); // Short timeout for each character
+    
+    if (result == HfUartErr::UART_SUCCESS) {
+      // Handle line endings
+      if (ch == '\r') {
+        // CR - check for following LF
+        uint8_t next_ch;
+        HfUartErr next_result = Read(&next_ch, 1, 10); // Very short timeout for LF
+        if (next_result == HfUartErr::UART_SUCCESS && next_ch == '\n') {
+          // CRLF sequence - line complete
+          break;
+        } else {
+          // Just CR - line complete, put back the next character if any
+          // Note: ESP32 UART doesn't support unget, so we just ignore the peeked character
+          break;
+        }
+      } else if (ch == '\n') {
+        // LF - line complete
+        break;
+      } else {
+        // Regular character
+        buffer[chars_read++] = static_cast<char>(ch);
+      }
+    } else if (result == HfUartErr::UART_ERR_TIMEOUT) {
+      // Continue trying if we haven't hit the overall timeout
+      continue;
+    } else {
+      // Other error, stop reading
+      break;
     }
   }
 
-  buffer[bytes_read] = '\0'; // Null terminate
-  return bytes_read;
+  // Null-terminate the string
+  buffer[chars_read] = '\0';
+
+  return chars_read;
 }
 
 //==============================================//
@@ -484,10 +543,36 @@ HfUartErr McuUart::ConvertPlatformError(int32_t platform_error) noexcept {
 
 bool McuUart::PlatformInitialize() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
+  // Validate configuration
+  if (config_.baud_rate < 1200 || config_.baud_rate > 5000000) {
+    last_error_ = HfUartErr::UART_ERR_INVALID_BAUD_RATE;
+    return false;
+  }
+
+  if (config_.data_bits < 5 || config_.data_bits > 8) {
+    last_error_ = HfUartErr::UART_ERR_INVALID_DATA_BITS;
+    return false;
+  }
+
+  if (config_.parity > 2) {
+    last_error_ = HfUartErr::UART_ERR_INVALID_PARITY;
+    return false;
+  }
+
+  if (config_.stop_bits < 1 || config_.stop_bits > 2) {
+    last_error_ = HfUartErr::UART_ERR_INVALID_STOP_BITS;
+    return false;
+  }
+
+  if (config_.tx_pin == HF_INVALID_PIN || config_.rx_pin == HF_INVALID_PIN) {
+    last_error_ = HfUartErr::UART_ERR_PIN_CONFIGURATION_ERROR;
+    return false;
+  }
+
   // Configure UART parameters
-  uart_config_t uart_config = {};
+  hf_uart_config_native_t uart_config = {};
   uart_config.baud_rate = config_.baud_rate;
-  uart_config.data_bits = static_cast<uart_word_length_t>(config_.data_bits - 5);
+  uart_config.data_bits = static_cast<hf_uart_word_length_native_t>(config_.data_bits - 5);
 
   // Configure parity
   switch (config_.parity) {
@@ -511,7 +596,7 @@ bool McuUart::PlatformInitialize() noexcept {
   uart_config.source_clk = UART_SCLK_DEFAULT;
 
   // Configure UART
-  esp_err_t err = uart_param_config(static_cast<uart_port_t>(port_), &uart_config);
+  esp_err_t err = uart_param_config(static_cast<hf_uart_port_native_t>(port_), &uart_config);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "uart_param_config failed: %s", esp_err_to_name(err));
     last_error_ = ConvertPlatformError(err);
@@ -519,9 +604,9 @@ bool McuUart::PlatformInitialize() noexcept {
   }
 
   // Set pins
-  err = uart_set_pin(static_cast<uart_port_t>(port_), config_.tx_pin, config_.rx_pin,
-                     config_.use_hardware_flow_control ? config_.rts_pin : UART_PIN_NO_CHANGE,
-                     config_.use_hardware_flow_control ? config_.cts_pin : UART_PIN_NO_CHANGE);
+  err = uart_set_pin(static_cast<hf_uart_port_native_t>(port_), config_.tx_pin, config_.rx_pin,
+                     (config_.use_hardware_flow_control) ? config_.rts_pin : HF_INVALID_PIN,
+                     (config_.use_hardware_flow_control) ? config_.cts_pin : HF_INVALID_PIN);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "uart_set_pin failed: %s", esp_err_to_name(err));
     last_error_ = ConvertPlatformError(err);
@@ -529,7 +614,7 @@ bool McuUart::PlatformInitialize() noexcept {
   }
 
   // Install UART driver
-  err = uart_driver_install(static_cast<uart_port_t>(port_), config_.rx_buffer_size,
+  err = uart_driver_install(static_cast<hf_uart_port_native_t>(port_), config_.rx_buffer_size,
                             config_.tx_buffer_size, 0, nullptr, 0);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "uart_driver_install failed: %s", esp_err_to_name(err));
@@ -537,11 +622,12 @@ bool McuUart::PlatformInitialize() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "UART initialized on port %d, baud=%lu, TX=%d, RX=%d", port_, config_.baud_rate,
-           config_.tx_pin, config_.rx_pin);
-
+  initialized_ = true;
+  last_error_ = HfUartErr::UART_SUCCESS;
   return true;
 #else
+  (void)port_;
+  (void)config_;
   last_error_ = HfUartErr::UART_ERR_UNSUPPORTED_OPERATION;
   return false;
 #endif
@@ -549,16 +635,23 @@ bool McuUart::PlatformInitialize() noexcept {
 
 bool McuUart::PlatformDeinitialize() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  esp_err_t err = uart_driver_delete(static_cast<uart_port_t>(port_));
+  if (!initialized_) {
+    return true;
+  }
+
+  esp_err_t err = uart_driver_delete(static_cast<hf_uart_port_native_t>(port_));
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "uart_driver_delete failed: %s", esp_err_to_name(err));
     last_error_ = ConvertPlatformError(err);
     return false;
   }
 
-  ESP_LOGI(TAG, "UART deinitialized on port %d", port_);
+  initialized_ = false;
+  last_error_ = HfUartErr::UART_SUCCESS;
   return true;
 #else
+  (void)port_;
+  last_error_ = HfUartErr::UART_ERR_UNSUPPORTED_OPERATION;
   return false;
 #endif
 }
@@ -579,4 +672,17 @@ int McuUart::InternalPrintf(const char *format, va_list args) noexcept {
   HfUartErr result = Write(reinterpret_cast<const uint8_t *>(printf_buffer_), formatted_length);
 
   return (result == HfUartErr::UART_SUCCESS) ? formatted_length : -1;
+}
+
+//==============================================//
+// PRIVATE HELPER METHODS                      //
+//==============================================//
+
+uint32_t McuUart::GetCurrentTimeMs() const noexcept {
+#ifdef HF_MCU_FAMILY_ESP32
+  return static_cast<uint32_t>(esp_timer_get_time() / 1000);
+#else
+  // For other platforms, implement appropriate time function
+  return 0;
+#endif
 }

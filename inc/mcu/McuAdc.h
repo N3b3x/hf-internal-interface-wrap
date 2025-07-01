@@ -1,19 +1,44 @@
 /**
  * @file McuAdc.h
- * @brief Advanced platform-agnostic MCU ADC driver interface with ESP32C6/ESP-IDF v5.5+ features.
+ * @brief Advanced platform-agnostic MCU ADC driver with comprehensive ESP32C6/ESP-IDF v5.5+ features.
  *
- * This class provides a comprehensive implementation of BaseAdc that automatically
- * adapts to the current MCU platform with support for both basic and advanced features.
- * On ESP32C6, it utilizes the latest ESP-IDF v5.5+ ADC features including continuous
- * mode, digital filters, threshold monitors, and advanced calibration. The implementation
- * includes multi-channel conversions, DMA support, and hardware-accelerated operations.
+ * This class provides a comprehensive implementation of BaseAdc.
+ * On ESP32C6, it utilizes the latest ESP-IDF v5.5+ ADC capabilities including continuous
+ * mode with DMA, advanced digital filters, real-time threshold monitors, intelligent
+ * calibration systems, and hardware-accelerated operations.
+ *
+ * **Advanced ESP32C6/ESP-IDF v5.5+ Features:**
+ * - High-speed continuous sampling with DMA (up to 100kHz)
+ * - Hardware IIR digital filters for noise reduction
+ * - Real-time threshold monitors with interrupt notifications
+ * - Advanced calibration with multiple schemes and drift detection
+ * - Hardware oversampling and decimation for improved accuracy
+ * - Multiple trigger sources (Timer, GPIO, PWM, External)
+ * - Power management with ULP mode integration
+ * - Zero-crossing detection for AC signal analysis
+ * - Comprehensive statistics and diagnostic capabilities
+ *
+ * **Performance Optimizations:**
+ * - True lazy initialization for optimal resource usage
+ * - DMA-accelerated data transfers
+ * - Hardware-based signal conditioning
+ * - Intelligent adaptive algorithms
+ * - Multi-channel parallel operation
+ *
+ * **Robustness & Reliability:**
+ * - Thread-safe operation with mutex protection
+ * - Comprehensive error handling and recovery
+ * - Resource leak prevention with RAII
+ * - Extensive validation and bounds checking
+ * - Built-in system health monitoring
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
- * @note This class includes both basic and advanced ADC functionality in a unified interface.
+ * @note This class includes unified basic and advanced ADC functionality in a single interface.
  * @note Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality.
+ * @note Graceful feature degradation on older platforms and ESP-IDF versions.
  */
 
 #pragma once
@@ -47,61 +72,30 @@ using hf_adc_unit_t = uint8_t;
 using hf_adc_resolution_t = uint8_t;
 
 //--------------------------------------
-//  Advanced ADC Configuration Types
+//  Advanced ADC Configuration Types (using centralized types from McuTypes.h)
 //--------------------------------------
 
-/**
- * @brief ADC continuous mode sampling strategies.
- */
-enum class AdcSamplingStrategy : uint8_t {
-  Single = 0,      ///< Single-shot conversion
-  Continuous = 1,  ///< Continuous conversion with DMA
-  Burst = 2,       ///< Burst mode (fixed number of samples)
-  Triggered = 3,   ///< External trigger-based sampling
-  ZeroCrossing = 4 ///< Zero-crossing detection mode
-};
+// ADC type aliases (centralized in McuTypes.h)
+using AdcUnit             = hf_adc_unit_t;
+using AdcChannel          = hf_adc_channel_t;
+using AdcResolution       = hf_adc_resolution_t;
+using AdcAttenuation      = hf_adc_attenuation_t;
+using AdcSamplingStrategy = hf_adc_sampling_strategy_t;
+using AdcTriggerSource    = hf_adc_trigger_source_t;
+using AdcFilterType       = hf_adc_filter_type_t;
+using AdcPowerMode        = hf_adc_power_mode_t;
+using AdcCalibrationScheme= hf_adc_calibration_scheme_t;
 
-/**
- * @brief ADC trigger sources for advanced sampling.
- */
-enum class AdcTriggerSource : uint8_t {
-  Software = 0, ///< Software trigger (manual)
-  Timer = 1,    ///< Timer-based trigger
-  GPIO = 2,     ///< GPIO edge trigger
-  PWM = 3,      ///< PWM sync trigger
-  External = 4, ///< External trigger signal
-  ULP = 5       ///< ULP processor trigger
-};
+// Handles
+using AdcOneshotHandle    = hf_adc_oneshot_unit_handle_t;
+using AdcContinuousHandle = hf_adc_continuous_handle_t;
+using AdcCaliHandle       = hf_adc_cali_handle_t;
+using AdcFilterHandle     = hf_adc_filter_handle_t;
+using AdcMonitorHandle    = hf_adc_monitor_handle_t;
 
-/**
- * @brief ADC digital filter types supported by ESP32C6.
- */
-enum class AdcFilterType : uint8_t {
-  None = 0,         ///< No filtering
-  IIR = 1,          ///< IIR digital filter
-  FIR = 2,          ///< FIR digital filter (if available)
-  MovingAverage = 3 ///< Moving average filter
-};
-
-/**
- * @brief ADC power mode settings.
- */
-enum class AdcPowerMode : uint8_t {
-  FullPower = 0,     ///< Maximum performance, highest power
-  LowPower = 1,      ///< Reduced power consumption
-  UltraLowPower = 2, ///< Minimal power, reduced functionality
-  Sleep = 3          ///< Power-down mode
-};
-
-/**
- * @brief ADC calibration schemes.
- */
-enum class AdcCalibrationScheme : uint8_t {
-  None = 0,        ///< No calibration
-  LineFitting = 1, ///< Line fitting calibration
-  Curve = 2,       ///< Curve fitting calibration
-  TwoPoint = 3     ///< Two-point calibration
-};
+// Configuration structs
+using AdcContinuousConfig = hf_adc_continuous_config_t;
+using AdcChannelConfig    = hf_adc_channel_config_t;
 
 /**
  * @brief Continuous mode configuration structure.
@@ -387,43 +381,6 @@ public:
   AdcAdvancedConfig getCurrentConfiguration() const noexcept;
 
   //==============================================================================
-  // CONTINUOUS MODE OPERATIONS
-  //==============================================================================
-
-  /**
-   * @brief Start continuous mode sampling.
-   * @param channels Vector of channels to sample
-   * @param config Continuous mode configuration
-   * @return HfAdcErr result code
-   */
-  HfAdcErr startContinuous(const std::vector<uint8_t> &channels,
-                           const AdcContinuousConfig &config) noexcept;
-
-  /**
-   * @brief Stop continuous mode sampling.
-   * @return HfAdcErr result code
-   */
-  HfAdcErr stopContinuous() noexcept;
-
-  /**
-   * @brief Read samples from continuous mode.
-   * @param buffer Buffer to store samples
-   * @param maxSamples Maximum number of samples to read
-   * @param samplesRead Reference to store actual samples read
-   * @param timeoutMs Timeout in milliseconds
-   * @return HfAdcErr result code
-   */
-  HfAdcErr readContinuous(uint8_t *buffer, size_t maxSamples, size_t &samplesRead,
-                          uint32_t timeoutMs = 1000) noexcept;
-
-  /**
-   * @brief Set continuous mode callback.
-   * @param callback Callback function
-   * @param userData User data for callback
-   */
-  void setContinuousCallback(AdcConversionCallback callback, void *userData = nullptr) noexcept;
-
-  //==============================================================================
   // DIGITAL FILTER OPERATIONS
   //==============================================================================
 
@@ -502,6 +459,22 @@ public:
    */
   HfAdcErr rawToVoltage(uint8_t channelId, uint32_t rawValue, float &voltage) const noexcept;
 
+  /**
+   * @brief Convert raw value to voltage (utility method).
+   * @param channelId Channel ID
+   * @param rawValue Raw ADC value
+   * @return Voltage value
+   */
+  float convertRawToVoltage(uint8_t channelId, uint32_t rawValue) noexcept;
+
+  /**
+   * @brief Convert voltage to raw value.
+   * @param channelId Channel ID
+   * @param voltage Voltage value
+   * @return Raw ADC value
+   */
+  uint32_t convertVoltageToRaw(uint8_t channelId, float voltage) noexcept;
+
   //==============================================================================
   // POWER MANAGEMENT
   //==============================================================================
@@ -557,6 +530,19 @@ public:
    * @return true if ADC is healthy, false otherwise
    */
   bool isAdcHealthy() noexcept;
+
+  //==============================================================================
+  // DEMONSTRATION AND TESTING
+  //==============================================================================
+
+  /**
+   * @brief Demonstrate the statistics functionality by performing sample operations.
+   * 
+   * This function showcases the statistics and diagnostics features by performing
+   * multiple ADC operations and displaying the collected statistics and health
+   * information. Useful for testing and validating the statistics implementation.
+   */
+  void demonstrateStatistics() noexcept;
 
   //==============================================================================
   // ADVANCED FEATURES
@@ -632,6 +618,72 @@ public:
   HfAdcErr VerifyCalibration(HfChannelId channel_id, float reference_voltage,
                              float &measured_voltage, float &error_percent) noexcept override;
 
+  //==============================================================================
+  // ADDITIONAL BASEADC VIRTUAL FUNCTION OVERRIDES
+  //==============================================================================
+
+  /**
+   * @brief Configure advanced ADC features (BaseAdc override)
+   * @param channel_id Channel to configure
+   * @param config Advanced configuration
+   * @return HfAdcErr error code
+   */
+  HfAdcErr ConfigureAdvanced(HfChannelId channel_id, const AdcAdvancedConfig &config) noexcept override;
+
+  /**
+   * @brief Start continuous/DMA sampling with callback (BaseAdc override)
+   * @param channel_id Channel to sample
+   * @param callback Callback for sample data
+   * @param user_data User data for callback
+   * @return HfAdcErr error code
+   */
+  HfAdcErr StartContinuousSampling(HfChannelId channel_id, AdcCallback callback,
+                                   void *user_data = nullptr) noexcept override;
+
+  /**
+   * @brief Stop continuous/DMA sampling (BaseAdc override)
+   * @param channel_id Channel to stop
+   * @return HfAdcErr error code
+   */
+  HfAdcErr StopContinuousSampling(HfChannelId channel_id) noexcept override;
+
+  /**
+   * @brief Read multiple channels simultaneously (BaseAdc override)
+   * @param channel_ids Array of channel IDs
+   * @param num_channels Number of channels
+   * @param readings Array to store raw readings
+   * @param voltages Array to store voltage readings
+   * @return HfAdcErr error code
+   */
+  HfAdcErr ReadMultipleChannels(const HfChannelId *channel_ids, uint8_t num_channels,
+                                uint32_t *readings, float *voltages) noexcept override;
+
+  /**
+   * @brief Perform automatic calibration using known reference voltages (BaseAdc override)
+   * @param channel_id Channel to calibrate
+   * @param reference_voltages Array of known reference voltages
+   * @param num_references Number of reference voltages
+   * @param calibration_type Type of calibration to perform
+   * @return HfAdcErr error code
+   */
+  HfAdcErr AutoCalibrate(HfChannelId channel_id, const float *reference_voltages, uint8_t num_references,
+                         CalibrationType calibration_type = CalibrationType::TwoPoint) noexcept override;
+
+  /**
+   * @brief Clear/reset calibration for a channel (BaseAdc override)
+   * @param channel_id Channel to reset
+   * @return HfAdcErr error code
+   */
+  HfAdcErr ClearCalibration(HfChannelId channel_id) noexcept override;
+
+  /**
+   * @brief Get calibration status and information (BaseAdc override)
+   * @param channel_id Channel to query
+   * @param status Structure to fill with calibration status
+   * @return HfAdcErr error code
+   */
+  HfAdcErr GetCalibrationStatus(HfChannelId channel_id, CalibrationStatus &status) noexcept override;
+
 private:
   //==============================================================================
   // PRIVATE METHODS
@@ -663,23 +715,6 @@ private:
    * @param error Platform error code
    */
   void HandlePlatformError(int32_t error) noexcept;
-
-  /**
-   * @brief Initialize ESP32 ADC continuous mode.
-   * @return HfAdcErr result code
-   */
-  HfAdcErr InitializeEsp32Continuous() noexcept;
-
-  /**
-   * @brief Initialize ESP32 ADC filters.
-   * @return HfAdcErr result code
-   */
-  HfAdcErr InitializeEsp32Filters() noexcept;
-  /**
-   * @brief Initialize ESP32 ADC monitors.
-   * @return HfAdcErr result code
-   */
-  HfAdcErr InitializeEsp32Monitors() noexcept;
 
   /**
    * @brief Validate and adjust advanced configuration parameters.
@@ -748,12 +783,38 @@ private:
   void *dma_task_handle_;   ///< DMA processing task handle
   bool dma_mode_active_;    ///< DMA mode status
   uint8_t current_dma_channel_; ///< Current DMA channel
-  
-  // Callback management
+    // Callback management
   AdcCallback active_callback_;    ///< Active callback function
   void *callback_user_data_;       ///< User data for callback
   
   // Constants
   static constexpr size_t DMA_BUFFER_SIZE = 4096;
 #endif
+
+  // Advanced feature configurations and state
+  std::unordered_map<uint8_t, AdcFilterConfig> filter_configs_;    ///< Filter configurations per channel
+  std::unordered_map<uint8_t, AdcMonitorConfig> monitor_configs_;  ///< Monitor configurations per monitor ID
+  AdcCalibrationConfig calibration_config_;                       ///< Calibration configuration
+    // Advanced callbacks
+  AdcThresholdCallback threshold_callback_;             ///< Threshold monitor callback
+  void *threshold_callback_user_data_;                  ///< User data for threshold callback
+  
+  // Trigger configuration
+  AdcTriggerSource trigger_source_;                     ///< Current trigger source
+  uint32_t trigger_parameter_;                          ///< Trigger parameter
+  std::vector<uint8_t> triggered_channels_;             ///< Channels for triggered sampling
+  bool triggered_sampling_active_;                      ///< Triggered sampling status
+    // Statistics and diagnostics
+  mutable AdcStatistics statistics_;                    ///< Operation statistics
+  mutable AdcDiagnostics diagnostics_;                  ///< Diagnostic information
+  mutable RtosMutex mutex_;                             ///< Thread safety mutex
+  
+  /**
+   * @brief Update operation statistics.
+   * @param conversionTimeUs Conversion time in microseconds
+   * @param success Whether the operation was successful
+   */
+  void updateStatistics(uint64_t conversionTimeUs, bool success) const noexcept;
+  
+  static constexpr const char* TAG = "McuAdc";          ///< Logging tag
 };

@@ -58,7 +58,8 @@ class McuGpio : public BaseGpio {
 public:
   //==============================================================//
   // CONSTRUCTORS
-  //==============================================================//  /**
+  //==============================================================//  
+  /**
    * @brief Constructor for McuGpio with full configuration including advanced features.
    * @param pin_num Platform-agnostic GPIO pin number
    * @param direction Initial pin direction (Input or Output)

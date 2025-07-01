@@ -17,10 +17,26 @@
 
 #pragma once
 
-#include "../utils/RtosMutex.h"
+#include "RtosMutex.h"
 #include "BaseUart.h"
 #include "McuTypes.h"
 #include <cstdarg>
+
+// Type aliases to centralized types in McuTypes.h (no duplicate type declarations)
+using UartPort = hf_uart_port_native_t;
+using UartConfig = hf_uart_config_native_t;
+using UartWordLength = hf_uart_word_length_native_t;
+using UartParity = hf_uart_parity_native_t;
+using UartStopBits = hf_uart_stop_bits_native_t;
+using UartFlowControl = hf_uart_hw_flowcontrol_native_t;
+using UartSignalInv = hf_uart_signal_inv_native_t;
+using UartDataBits = hf_uart_data_bits_t;
+using UartParityType = hf_uart_parity_t;
+using UartStopBitsType = hf_uart_stop_bits_t;
+using UartFlowCtrlType = hf_uart_flow_ctrl_t;
+using UartStatistics = hf_uart_statistics_t;
+using UartFlowConfig = hf_uart_flow_config_t;
+using UartPowerConfig = hf_uart_power_config_t;
 
 /**
  * @class McuUart
@@ -234,6 +250,33 @@ private:
   HfUartErr ConvertPlatformError(int32_t platform_error) noexcept;
 
   /**
+   * @brief Get current time in milliseconds.
+   * @return Current time in milliseconds
+   */
+  uint32_t GetCurrentTimeMs() const noexcept;
+
+  /**
+   * @brief Get timeout value, converting 0 to default.
+   * @param timeout_ms Requested timeout (0 = use default)
+   * @return Effective timeout in milliseconds
+   */
+  uint32_t GetTimeoutMs(uint32_t timeout_ms) const noexcept {
+    return (timeout_ms == 0) ? config_.timeout_ms : timeout_ms;
+  }
+
+  /**
+   * @brief Platform-specific initialization.
+   * @return true if successful, false otherwise
+   */
+  bool PlatformInitialize() noexcept;
+
+  /**
+   * @brief Platform-specific deinitialization.
+   * @return true if successful, false otherwise
+   */
+  bool PlatformDeinitialize() noexcept;
+
+  /**
    * @brief Validate baud rate.
    * @param baud_rate Baud rate to validate
    * @return true if valid, false otherwise
@@ -271,26 +314,6 @@ private:
     return (stop_bits >= 1 && stop_bits <= 2);
   }
 
-  /**
-   * @brief Get timeout value (use default if timeout_ms is 0).
-   * @param timeout_ms Requested timeout
-   * @return Actual timeout to use
-   */
-  uint32_t GetTimeoutMs(uint32_t timeout_ms) const noexcept {
-    return (timeout_ms == 0) ? config_.timeout_ms : timeout_ms;
-  }
-
-  /**
-   * @brief Perform platform-specific initialization.
-   * @return true if successful, false otherwise
-   */
-  bool PlatformInitialize() noexcept;
-
-  /**
-   * @brief Perform platform-specific deinitialization.
-   * @return true if successful, false otherwise
-   */
-  bool PlatformDeinitialize() noexcept;
 
   /**
    * @brief Internal printf implementation with buffer management.

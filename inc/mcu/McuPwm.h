@@ -20,10 +20,25 @@
 
 #pragma once
 
-#include "../utils/RtosMutex.h"
+#include "RtosMutex.h"
 #include "BasePwm.h"
 #include "McuTypes.h"
 #include <array>
+
+// Type aliases to centralized types in McuTypes.h (no duplicate type declarations)
+using PwmChannelNative = hf_pwm_channel_native_t;
+using PwmTimerNative = hf_pwm_timer_native_t;
+using PwmModeNative = hf_pwm_mode_native_t;
+using PwmClockSource = hf_pwm_clock_source_t;
+using PwmResolution = hf_pwm_resolution_t;
+using PwmFadeMode = hf_pwm_fade_mode_t;
+using PwmIntrType = hf_pwm_intr_type_t;
+using PwmTimingConfig = hf_pwm_timing_config_t;
+using PwmChannelConfigNative = hf_pwm_channel_config_native_t;
+using PwmTimerConfigNative = hf_pwm_timer_config_native_t;
+using PwmFadeConfig = hf_pwm_fade_config_t;
+using PwmCapabilities = hf_pwm_capabilities_t;
+using PwmStatistics = hf_pwm_statistics_t;
 
 /**
  * @class McuPwm
@@ -55,11 +70,11 @@ public:
   // CONSTANTS
   //==============================================================================
 
-  static constexpr uint8_t MAX_CHANNELS = 8;          ///< Maximum PWM channels
-  static constexpr uint8_t MAX_TIMERS = 4;            ///< Maximum timer groups
-  static constexpr uint8_t MAX_RESOLUTION = 14;       ///< Maximum resolution bits
-  static constexpr uint32_t MIN_FREQUENCY = 1;        ///< Minimum frequency (Hz)
-  static constexpr uint32_t MAX_FREQUENCY = 40000000; ///< Maximum frequency (Hz)
+  static constexpr uint8_t MAX_CHANNELS = HF_PWM_MAX_CHANNELS;          ///< Maximum PWM channels
+  static constexpr uint8_t MAX_TIMERS = HF_PWM_MAX_TIMERS;              ///< Maximum timer groups
+  static constexpr uint8_t MAX_RESOLUTION = HF_PWM_MAX_RESOLUTION;      ///< Maximum resolution bits
+  static constexpr uint32_t MIN_FREQUENCY = HF_PWM_MIN_FREQUENCY;       ///< Minimum frequency (Hz)
+  static constexpr uint32_t MAX_FREQUENCY = HF_PWM_MAX_FREQUENCY;       ///< Maximum frequency (Hz)
 
   //==============================================================================
   // CONSTRUCTOR AND DESTRUCTOR

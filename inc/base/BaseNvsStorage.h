@@ -49,7 +49,19 @@
   X(NVS_ERR_STORAGE_FULL, 11, "Storage full")                                                      \
   X(NVS_ERR_INVALID_DATA, 12, "Invalid data")                                                      \
   X(NVS_ERR_READ_ONLY, 13, "Read only mode")                                                       \
-  X(NVS_ERR_CORRUPTED, 14, "Data corrupted")
+  X(NVS_ERR_CORRUPTED, 14, "Data corrupted")                                                       \
+  /* ESP32-C6 encryption and advanced feature errors */                                           \
+  X(NVS_ERR_ENCRYPTION_FAILED, 15, "Encryption operation failed")                                  \
+  X(NVS_ERR_DECRYPTION_FAILED, 16, "Decryption operation failed")                                  \
+  X(NVS_ERR_ENCRYPTION_NOT_CONFIGURED, 17, "Encryption not configured")                           \
+  X(NVS_ERR_ENCRYPTION_NOT_SUPPORTED, 18, "Encryption not supported")                             \
+  X(NVS_ERR_KEY_PARTITION_CORRUPTED, 19, "Key partition corrupted")                               \
+  X(NVS_ERR_WRONG_ENCRYPTION_SCHEME, 20, "Wrong encryption scheme")                               \
+  X(NVS_ERR_VERSION_MISMATCH, 21, "NVS version mismatch")                                         \
+  X(NVS_ERR_NO_FREE_PAGES, 22, "No free pages available")                                         \
+  X(NVS_ERR_PARTITION_NOT_FOUND, 23, "NVS partition not found")                                   \
+  X(NVS_ERR_ITERATOR_INVALID, 24, "Iterator invalid or expired")                                  \
+  X(NVS_ERR_SECURITY_VIOLATION, 25, "Security policy violation")
 
 // Generate enum class from X-macro
 enum class HfNvsErr : int32_t {

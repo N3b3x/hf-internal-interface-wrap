@@ -215,7 +215,7 @@ bool McuCan::Initialize() noexcept {
   stats_.last_error = HfCanErr::CAN_SUCCESS;
   
   ESP_LOGI(TAG, "CAN controller %d initialized successfully", controller_id_);
-  return true;
+  return initialized_;
 }
 
 bool McuCan::Deinitialize() noexcept {

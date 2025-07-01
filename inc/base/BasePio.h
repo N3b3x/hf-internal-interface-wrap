@@ -272,7 +272,20 @@ public:
    * @brief Check if the PIO is initialized
    * @return true if initialized, false otherwise
    */
-  virtual bool IsInitialized() const noexcept = 0;
+  [[nodiscard]] bool IsInitialized() const noexcept {
+    return initialized_;
+  }
+
+  /**
+   * @brief Ensures that the PIO is initialized (lazy initialization).
+   * @return true if the PIO is initialized, false otherwise.
+   */
+  bool EnsureInitialized() noexcept {
+    if (!initialized_) {
+      initialized_ = (Initialize() == HfPioErr::PIO_SUCCESS);
+    }
+    return initialized_;
+  }
 
   /**
    * @brief Configure a PIO channel
@@ -368,9 +381,11 @@ protected:
   /**
    * @brief Protected constructor
    */
-  BasePio() noexcept = default;
-
-private:
-  bool initialized_{false};
+  BasePio() noexcept : initialized_(false) {}
+  
+  /**
+   * @brief Initialization state tracking
+   */
+  bool initialized_;
 };
 
