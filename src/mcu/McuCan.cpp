@@ -110,15 +110,15 @@ static constexpr CanTimingEntry TIMING_TABLE[] = {
 // CONSTRUCTOR AND DESTRUCTOR - Enhanced for ESP32C6 Dual Controller Support
 //==============================================================================
 
-McuCan::McuCan(const CanBusConfig &config, CanControllerId controller_id, bool use_v2_api) noexcept
-    : BaseCan(config), controller_id_(controller_id), use_v2_api_(use_v2_api),
+McuCan::McuCan(const CanBusConfig &config, CanControllerId controller_id) noexcept
+    : BaseCan(config), controller_id_(controller_id),
       initialized_(false), receive_callback_(nullptr), stats_{}, init_timestamp_(0),
       twai_handle_(nullptr), handle_valid_(false), is_started_(false),
       current_alerts_(0), last_error_code_(0) {
   
   // **LAZY INITIALIZATION** - Store configuration but do NOT initialize hardware
-  ESP_LOGD(TAG, "Creating McuCan for controller %d (API v%d) - LAZY INIT", 
-           static_cast<int>(controller_id_), use_v2_api_ ? 2 : 1);
+  ESP_LOGD(TAG, "Creating McuCan for controller %d - LAZY INIT", 
+           static_cast<int>(controller_id_));
     
   // Validate controller ID using centralized macros from McuTypes.h
   #ifdef HF_MCU_ESP32C6
@@ -138,8 +138,8 @@ McuCan::McuCan(const CanBusConfig &config, CanControllerId controller_id, bool u
   stats_ = {}; // Zero-initialize stats
   stats_.last_error = HfCanErr::CAN_SUCCESS;
   
-  ESP_LOGD(TAG, "McuCan instance created - Controller: %d, API: v%d - awaiting first use",
-           static_cast<int>(controller_id_), use_v2_api_ ? 2 : 1);
+  ESP_LOGD(TAG, "McuCan instance created - Controller: %d - awaiting first use",
+           static_cast<int>(controller_id_));
 }
 
 McuCan::~McuCan() noexcept {
@@ -607,8 +607,8 @@ bool McuCan::ConfigureSleepRetention(bool enable) noexcept {
            enable ? "enabled" : "disabled", controller_id_);
   
   #ifdef HF_MCU_FAMILY_ESP32
-  if (use_v2_api_ && handle_valid_) {
-    esp_err_t err = HF_TWAI_CONFIGURE_SLEEP_RETENTION_V2(twai_handle_, enable);
+  if (handle_valid_) {
+    esp_err_t err = HF_TWAI_CONFIGURE_SLEEP_RETENTION(twai_handle_, enable);
     if (err == ESP_OK) {
       ESP_LOGI(TAG, "Sleep retention %s successfully", enable ? "enabled" : "disabled");
       return true;
@@ -987,30 +987,49 @@ bool McuCan::PlatformInitialize() noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   
-  if (use_v2_api_) {
-    // Use modern ESP-IDF v5.5+ handle-based API
-    err = HF_TWAI_DRIVER_INSTALL_V2(&general_config_, &timing_config_, &filter_config_, &twai_handle_);
-    if (err == ESP_OK) {
-      handle_valid_ = true;
-      ESP_LOGI(TAG, "TWAI driver installed successfully using v2 API (handle: %p)", twai_handle_);
-    } else {
-      ESP_LOGE(TAG, "Failed to install TWAI driver v2: %s", esp_err_to_name(err));
-      last_error_code_ = err;
-      return false;
-    }
+  // Build node configuration structure for ESP-IDF v5.5+ node-based API
+  twai_onchip_node_config_t node_config = {};
+  
+  // Configure I/O pins
+  node_config.io_cfg.tx = static_cast<gpio_num_t>(config_.tx_pin);
+  node_config.io_cfg.rx = static_cast<gpio_num_t>(config_.rx_pin);
+  node_config.io_cfg.quanta_clk_out = GPIO_NUM_NC; // Not used
+  node_config.io_cfg.bus_off_indicator = GPIO_NUM_NC; // Not used
+  
+  // Configure bit timing
+  node_config.bit_timing.bitrate = config_.baudrate;
+  
+  // Configure queue depths  
+  node_config.tx_queue_depth = config_.tx_queue_size;
+  
+  // Configure controller-specific settings
+  #ifdef HF_TARGET_MCU_ESP32C6
+  // ESP32-C6 specific configuration
+  node_config.clk_src = TWAI_CLK_SRC_DEFAULT; // Use default 40MHz APB clock
+  #endif
+  
+  // Configure flags for desired behavior
+  node_config.flags.enable_self_test = config_.loopback_mode;
+  node_config.flags.enable_listen_only = config_.silent_mode;
+  
+  // Set interrupt priority (higher number = higher priority)
+  node_config.intr_priority = 1;
+  
+  // Set retry behavior (-1 = infinite retries until bus-off)
+  node_config.fail_retry_cnt = -1;
+  
+  // Create the TWAI node using modern ESP-IDF v5.5+ API
+  err = HF_TWAI_NEW_NODE_ONCHIP(&node_config, &twai_handle_);
+  if (err == ESP_OK) {
+    handle_valid_ = true;
+    ESP_LOGI(TAG, "TWAI node created successfully (handle: %p)", twai_handle_);
+    return true;
   } else {
-    // Use legacy v1 API for backwards compatibility
-    err = HF_TWAI_DRIVER_INSTALL(&general_config_, &timing_config_, &filter_config_);
-    if (err == ESP_OK) {
-      ESP_LOGI(TAG, "TWAI driver installed successfully using v1 API");
-    } else {
-      ESP_LOGE(TAG, "Failed to install TWAI driver v1: %s", esp_err_to_name(err));
-      last_error_code_ = err;
-      return false;
-    }
+    ESP_LOGE(TAG, "Failed to create TWAI node: %s", esp_err_to_name(err));
+    last_error_code_ = err;
+    return false;
   }
   
-  return true;
   #else
   ESP_LOGW(TAG, "Platform initialization not implemented for non-ESP32 platforms");
   return false;
@@ -1023,22 +1042,16 @@ bool McuCan::PlatformDeinitialize() noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_DRIVER_UNINSTALL_V2(twai_handle_);
+  if (handle_valid_ && twai_handle_) {
+    // Delete the TWAI node using modern ESP-IDF v5.5+ API
+    err = HF_TWAI_DEL_NODE(twai_handle_);
     if (err == ESP_OK) {
-      ESP_LOGI(TAG, "TWAI driver uninstalled successfully using v2 API");
+      ESP_LOGI(TAG, "TWAI node deleted successfully");
     } else {
-      ESP_LOGW(TAG, "TWAI driver uninstall warning v2: %s", esp_err_to_name(err));
+      ESP_LOGW(TAG, "TWAI node deletion warning: %s", esp_err_to_name(err));
     }
     handle_valid_ = false;
     twai_handle_ = nullptr;
-  } else if (!use_v2_api_) {
-    err = HF_TWAI_DRIVER_UNINSTALL();
-    if (err == ESP_OK) {
-      ESP_LOGI(TAG, "TWAI driver uninstalled successfully using v1 API");
-    } else {
-      ESP_LOGW(TAG, "TWAI driver uninstall warning v1: %s", esp_err_to_name(err));
-    }
   }
   
   return true;
@@ -1053,29 +1066,22 @@ bool McuCan::PlatformStart() noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_START_V2(twai_handle_);
+  if (handle_valid_ && twai_handle_) {
+    // Enable the TWAI node using modern ESP-IDF v5.5+ API
+    err = HF_TWAI_NODE_ENABLE(twai_handle_);
     if (err == ESP_OK) {
-      ESP_LOGI(TAG, "TWAI controller started successfully using v2 API");
+      ESP_LOGI(TAG, "TWAI node enabled successfully");
       return true;
     } else {
-      ESP_LOGE(TAG, "Failed to start TWAI controller v2: %s", esp_err_to_name(err));
+      ESP_LOGE(TAG, "Failed to enable TWAI node: %s", esp_err_to_name(err));
       last_error_code_ = err;
       return false;
     }
-  } else if (!use_v2_api_) {
-    err = HF_TWAI_START();
-    if (err == ESP_OK) {
-      ESP_LOGI(TAG, "TWAI controller started successfully using v1 API");
-      return true;
-    } else {
-      ESP_LOGE(TAG, "Failed to start TWAI controller v1: %s", esp_err_to_name(err));
-      last_error_code_ = err;
-      return false;
-    }
+  } else {
+    ESP_LOGE(TAG, "Invalid TWAI handle for node start");
+    return false;
   }
   
-  return false;
   #else
   return false;
   #endif
@@ -1087,27 +1093,21 @@ bool McuCan::PlatformStop() noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_STOP_V2(twai_handle_);
+  if (handle_valid_ && twai_handle_) {
+    // Disable the TWAI node using modern ESP-IDF v5.5+ API
+    err = HF_TWAI_NODE_DISABLE(twai_handle_);
     if (err == ESP_OK) {
-      ESP_LOGI(TAG, "TWAI controller stopped successfully using v2 API");
+      ESP_LOGI(TAG, "TWAI node disabled successfully");
       return true;
     } else {
-      ESP_LOGW(TAG, "TWAI controller stop warning v2: %s", esp_err_to_name(err));
+      ESP_LOGW(TAG, "TWAI node disable warning: %s", esp_err_to_name(err));
       return false;
     }
-  } else if (!use_v2_api_) {
-    err = HF_TWAI_STOP();
-    if (err == ESP_OK) {
-      ESP_LOGI(TAG, "TWAI controller stopped successfully using v1 API");
-      return true;
-    } else {
-      ESP_LOGW(TAG, "TWAI controller stop warning v1: %s", esp_err_to_name(err));
-      return false;
-    }
+  } else {
+    ESP_LOGE(TAG, "Invalid TWAI handle for node stop");
+    return false;
   }
   
-  return false;
   #else
   return true;
   #endif
@@ -1115,20 +1115,19 @@ bool McuCan::PlatformStop() noexcept {
 
 bool McuCan::PlatformSendMessage(const CanMessage &message, uint32_t timeout_ms) noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
-  hf_twai_message_t native_message;
+  twai_message_t native_message;
   
   if (!ConvertToNativeMessage(message, native_message)) {
     ESP_LOGE(TAG, "Failed to convert message for transmission");
     return false;
   }
   
-  TickType_t ticks = (timeout_ms == 0) ? 0 : pdMS_TO_TICKS(timeout_ms);
+  uint32_t timeout_ticks = (timeout_ms == 0) ? 0 : pdMS_TO_TICKS(timeout_ms);
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_TRANSMIT_V2(twai_handle_, &native_message, ticks);
-  } else if (!use_v2_api_) {
-    err = HF_TWAI_TRANSMIT(&native_message, ticks);
+  if (handle_valid_ && twai_handle_) {
+    // Use modern ESP-IDF v5.5+ node-based API
+    err = HF_TWAI_NODE_TRANSMIT(twai_handle_, &native_message, timeout_ticks);
   } else {
     ESP_LOGE(TAG, "Invalid TWAI handle for message transmission");
     return false;
@@ -1152,15 +1151,14 @@ bool McuCan::PlatformSendMessage(const CanMessage &message, uint32_t timeout_ms)
 
 bool McuCan::PlatformReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
-  hf_twai_message_t native_message;
+  twai_message_t native_message;
   
-  TickType_t ticks = (timeout_ms == 0) ? 0 : pdMS_TO_TICKS(timeout_ms);
+  uint32_t timeout_ticks = (timeout_ms == 0) ? 0 : pdMS_TO_TICKS(timeout_ms);
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_RECEIVE_V2(twai_handle_, &native_message, ticks);
-  } else if (!use_v2_api_) {
-    err = HF_TWAI_RECEIVE(&native_message, ticks);
+  if (handle_valid_ && twai_handle_) {
+    // Use modern ESP-IDF v5.5+ node-based API
+    err = HF_TWAI_NODE_RECEIVE(twai_handle_, &native_message, timeout_ticks);
   } else {
     ESP_LOGE(TAG, "Invalid TWAI handle for message reception");
     return false;
@@ -1232,13 +1230,12 @@ uint32_t McuCan::PlatformReceiveMessageBatch(CanMessage *messages, uint32_t max_
 
 bool McuCan::PlatformGetStatus(CanBusStatus &status) noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
-  hf_twai_status_info_t native_status;
+  twai_status_info_t native_status;
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_GET_STATUS_INFO_V2(twai_handle_, &native_status);
-  } else if (!use_v2_api_) {
-    err = HF_TWAI_GET_STATUS_INFO(&native_status);
+  if (handle_valid_ && twai_handle_) {
+    // Use modern ESP-IDF v5.5+ node-based API
+    err = HF_TWAI_NODE_GET_STATUS(twai_handle_, &native_status);
   } else {
     ESP_LOGE(TAG, "Invalid TWAI handle for status retrieval");
     return false;
@@ -1270,19 +1267,16 @@ bool McuCan::PlatformReset() noexcept {
   
   // Clear transmit and receive queues
   esp_err_t err;
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_CLEAR_TRANSMIT_QUEUE_V2(twai_handle_);
+  if (handle_valid_) {
+    err = HF_TWAI_CLEAR_TRANSMIT_QUEUE(twai_handle_);
     if (err != ESP_OK) {
       ESP_LOGW(TAG, "Failed to clear TX queue: %s", esp_err_to_name(err));
     }
     
-    err = HF_TWAI_CLEAR_RECEIVE_QUEUE_V2(twai_handle_);
+    err = HF_TWAI_CLEAR_RECEIVE_QUEUE(twai_handle_);
     if (err != ESP_OK) {
       ESP_LOGW(TAG, "Failed to clear RX queue: %s", esp_err_to_name(err));
     }
-  } else if (!use_v2_api_) {
-    // Legacy API doesn't have separate queue clear functions
-    ESP_LOGD(TAG, "Using legacy API - queue clear not separately available");
   }
   
   // Restart if it was previously started
@@ -1300,15 +1294,12 @@ bool McuCan::PlatformGetNativeStatus(hf_twai_status_info_t &native_status) noexc
   #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_GET_STATUS_INFO_V2(twai_handle_, &native_status);
-  } else if (!use_v2_api_) {
-    err = HF_TWAI_GET_STATUS_INFO(&native_status);
-  } else {
-    return false;
+  if (handle_valid_) {
+    err = HF_TWAI_GET_STATUS_INFO(twai_handle_, &native_status);
+    return (err == ESP_OK);
   }
   
-  return (err == ESP_OK);
+  return false;
   #else
   return false;
   #endif
@@ -1391,8 +1382,8 @@ bool McuCan::PlatformConfigureAlerts(uint32_t alerts) noexcept {
   esp_err_t err;
   uint32_t previous_alerts = 0;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_RECONFIGURE_ALERTS_V2(twai_handle_, alerts, &previous_alerts);
+  if (handle_valid_) {
+    err = HF_TWAI_RECONFIGURE_ALERTS(twai_handle_, alerts, &previous_alerts);
     if (err == ESP_OK) {
       ESP_LOGI(TAG, "Alerts reconfigured successfully (previous: 0x%lX)", previous_alerts);
       return true;
@@ -1402,7 +1393,7 @@ bool McuCan::PlatformConfigureAlerts(uint32_t alerts) noexcept {
       return false;
     }
   } else {
-    ESP_LOGW(TAG, "Alert configuration requires v2 API");
+    ESP_LOGW(TAG, "Invalid handle for alert configuration");
     return false;
   }
   #else
@@ -1419,8 +1410,8 @@ bool McuCan::PlatformReadAlerts(uint32_t *alerts_out, uint32_t timeout_ms) noexc
   TickType_t ticks = (timeout_ms == 0) ? 0 : pdMS_TO_TICKS(timeout_ms);
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_READ_ALERTS_V2(twai_handle_, alerts_out, ticks);
+  if (handle_valid_) {
+    err = HF_TWAI_READ_ALERTS(twai_handle_, alerts_out, ticks);
     if (err == ESP_OK) {
       ESP_LOGV(TAG, "Alerts read successfully: 0x%lX", *alerts_out);
       return true;
@@ -1434,7 +1425,7 @@ bool McuCan::PlatformReadAlerts(uint32_t *alerts_out, uint32_t timeout_ms) noexc
       return false;
     }
   } else {
-    ESP_LOGW(TAG, "Alert reading requires v2 API");
+    ESP_LOGW(TAG, "Invalid handle for alert reading");
     return false;
   }
   #else
@@ -1449,8 +1440,8 @@ bool McuCan::PlatformRecoverFromError() noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err;
   
-  if (use_v2_api_ && handle_valid_) {
-    err = HF_TWAI_INITIATE_RECOVERY_V2(twai_handle_);
+  if (handle_valid_) {
+    err = HF_TWAI_INITIATE_RECOVERY(twai_handle_);
     if (err == ESP_OK) {
       ESP_LOGI(TAG, "Error recovery initiated successfully");
       return true;
@@ -1460,9 +1451,8 @@ bool McuCan::PlatformRecoverFromError() noexcept {
       return false;
     }
   } else {
-    // For legacy API, recovery involves reset
-    ESP_LOGI(TAG, "Using reset for error recovery (legacy API)");
-    return PlatformReset();
+    ESP_LOGW(TAG, "Invalid handle for error recovery");
+    return false;
   }
   #else
   return false;
@@ -1684,4 +1674,228 @@ void McuCan::HandleErrorInterrupt() noexcept {
                static_cast<int>(status.error_state), controller_id_);
     }
   }
+}
+
+//==============================================================================
+// MISSING HELPER FUNCTION IMPLEMENTATIONS
+//==============================================================================
+
+bool McuCan::ConvertToNativeMessage(const CanMessage &src, twai_message_t &dst) const noexcept {
+  // Clear the destination message
+  memset(&dst, 0, sizeof(dst));
+  
+  // Convert message ID and format
+  dst.identifier = src.id;
+  dst.extd = src.extended_id ? 1 : 0;
+  dst.rtr = src.remote_frame ? 1 : 0;
+  
+  // Convert data length
+  dst.data_length_code = src.dlc;
+  if (dst.data_length_code > 8) {
+    ESP_LOGE(TAG, "Invalid DLC %d, truncating to 8", dst.data_length_code);
+    dst.data_length_code = 8;
+  }
+  
+  // Copy data
+  if (!src.remote_frame && dst.data_length_code > 0) {
+    memcpy(dst.data, src.data, dst.data_length_code);
+  }
+  
+  return true;
+}
+
+bool McuCan::ConvertFromNativeMessage(const twai_message_t &src, CanMessage &dst) const noexcept {
+  // Convert message ID and format
+  dst.id = src.identifier;
+  dst.extended_id = (src.extd != 0);
+  dst.remote_frame = (src.rtr != 0);
+  
+  // Convert data length
+  dst.dlc = src.data_length_code;
+  if (dst.dlc > 8) {
+    ESP_LOGE(TAG, "Invalid DLC %d from native message, truncating to 8", dst.dlc);
+    dst.dlc = 8;
+  }
+  
+  // Copy data
+  if (!dst.remote_frame && dst.dlc > 0) {
+    memcpy(dst.data, src.data, dst.dlc);
+  } else {
+    memset(dst.data, 0, sizeof(dst.data));
+  }
+  
+  // Set timestamp (ESP32 TWAI doesn't provide timestamp in basic mode)
+  dst.timestamp = GetCurrentTimestamp() / 1000; // Convert to milliseconds
+  
+  return true;
+}
+
+bool McuCan::ConvertNativeStatus(const twai_status_info_t &native_status, CanBusStatus &status) const noexcept {
+  // Clear destination status
+  memset(&status, 0, sizeof(status));
+  
+  #ifdef HF_MCU_FAMILY_ESP32
+  // Convert error counters
+  status.tx_error_count = native_status.tx_error_counter;
+  status.rx_error_count = native_status.rx_error_counter;
+  
+  // Convert error state
+  status.bus_off = (native_status.state == TWAI_STATE_BUS_OFF);
+  status.error_warning = (native_status.state == TWAI_STATE_ERROR_WARNING);
+  status.error_passive = (native_status.state == TWAI_STATE_ERROR_PASSIVE);
+  
+  // Convert message counts (if available)
+  status.tx_failed_count = native_status.tx_failed_count;
+  status.rx_missed_count = native_status.rx_missed_count;
+  
+  // CAN-FD not supported on ESP32-C6
+  status.canfd_enabled = false;
+  status.canfd_brs_enabled = false;
+  status.nominal_baudrate = config_.baudrate;
+  status.data_baudrate = 0;
+  
+  return true;
+  #else
+  return false;
+  #endif
+}
+
+bool McuCan::ValidateConfiguration() const noexcept {
+  // Validate pin numbers
+  if (config_.tx_pin == HF_INVALID_PIN || config_.rx_pin == HF_INVALID_PIN) {
+    ESP_LOGE(TAG, "Invalid pin configuration - TX: %d, RX: %d", config_.tx_pin, config_.rx_pin);
+    return false;
+  }
+  
+  // Validate baud rate
+  if (!IsValidBaudRate(config_.baudrate)) {
+    ESP_LOGE(TAG, "Invalid baud rate: %lu", config_.baudrate);
+    return false;
+  }
+  
+  // Validate queue sizes
+  if (config_.tx_queue_size == 0 || config_.rx_queue_size == 0) {
+    ESP_LOGE(TAG, "Invalid queue sizes - TX: %d, RX: %d", config_.tx_queue_size, config_.rx_queue_size);
+    return false;
+  }
+  
+  return true;
+}
+
+bool McuCan::IsValidCanId(uint32_t id, bool extended) const noexcept {
+  if (extended) {
+    return id <= 0x1FFFFFFF; // 29-bit extended ID
+  } else {
+    return id <= 0x7FF; // 11-bit standard ID
+  }
+}
+
+bool McuCan::IsValidDataLength(uint8_t dlc) const noexcept {
+  return dlc <= 8; // Classic CAN supports up to 8 bytes
+}
+
+bool McuCan::IsValidBaudRate(uint32_t baud_rate) const noexcept {
+  // Check against our supported baud rates table
+  for (const auto &entry : TIMING_TABLE) {
+    if (entry.baud_rate == baud_rate) {
+      return true;
+    }
+  }
+  return false;
+}
+
+uint64_t McuCan::GetCurrentTimestamp() const noexcept {
+  #ifdef HF_MCU_FAMILY_ESP32
+  return esp_timer_get_time(); // Returns microseconds
+  #else
+  return 0;
+  #endif
+}
+
+void McuCan::UpdateSendStatistics(bool success) noexcept {
+  if (success) {
+    IncrementEventCounter(stats_.messages_sent);
+  } else {
+    IncrementEventCounter(stats_.send_failures);
+  }
+}
+
+void McuCan::UpdateReceiveStatistics(bool success) noexcept {
+  if (success) {
+    IncrementEventCounter(stats_.messages_received);
+  } else {
+    IncrementEventCounter(stats_.receive_failures);
+  }
+}
+
+void McuCan::UpdateErrorStatistics(hf_can_error_state_t error_state) noexcept {
+  switch (error_state) {
+    case static_cast<hf_can_error_state_t>(TWAI_STATE_BUS_OFF):
+      IncrementEventCounter(stats_.bus_off_events);
+      break;
+    case static_cast<hf_can_error_state_t>(TWAI_STATE_ERROR_PASSIVE):
+      IncrementEventCounter(stats_.error_passive_events);
+      break;
+    case static_cast<hf_can_error_state_t>(TWAI_STATE_ERROR_WARNING):
+      IncrementEventCounter(stats_.error_warning_events);
+      break;
+    default:
+      break;
+  }
+}
+
+void McuCan::IncrementEventCounter(uint64_t &counter) noexcept {
+  // Atomic increment for thread safety
+  counter++;
+}
+
+void McuCan::CleanupResources() noexcept {
+  // Reset handle state
+  handle_valid_ = false;
+  twai_handle_ = nullptr;
+  
+  // Clear callbacks
+  receive_callback_ = nullptr;
+  
+  // Reset alerts
+  current_alerts_ = 0;
+  last_error_code_ = 0;
+}
+
+void McuCan::ResetInternalState() noexcept {
+  initialized_ = false;
+  is_started_ = false;
+  
+  // Don't reset statistics here - they should persist until explicitly reset
+}
+
+void McuCan::LogConfigurationDetails() const noexcept {
+  ESP_LOGI(TAG, "CAN Configuration for Controller %d:", static_cast<int>(controller_id_));
+  ESP_LOGI(TAG, "  TX Pin: %d, RX Pin: %d", config_.tx_pin, config_.rx_pin);
+  ESP_LOGI(TAG, "  Baud Rate: %lu bps", config_.baudrate);
+  ESP_LOGI(TAG, "  TX Queue: %d, RX Queue: %d", config_.tx_queue_size, config_.rx_queue_size);
+  ESP_LOGI(TAG, "  Loopback: %s, Silent: %s", 
+           config_.loopback_mode ? "Yes" : "No",
+           config_.silent_mode ? "Yes" : "No");
+}
+
+// Build dummy implementations for unimplemented methods to prevent linking errors
+bool McuCan::BuildNativeGeneralConfig() noexcept { return true; }
+bool McuCan::BuildNativeTimingConfig() noexcept { return true; }
+bool McuCan::BuildNativeFilterConfig() noexcept { return true; }
+bool McuCan::PlatformGetNativeStatus(hf_can_status_info_t &native_status) noexcept { 
+  #ifdef HF_MCU_FAMILY_ESP32
+  if (handle_valid_ && twai_handle_) {
+    twai_status_info_t esp_status;
+    esp_err_t err = HF_TWAI_NODE_GET_STATUS(twai_handle_, &esp_status);
+    if (err == ESP_OK) {
+      // Copy to our generic structure
+      native_status.tx_error_counter = esp_status.tx_error_counter;
+      native_status.rx_error_counter = esp_status.rx_error_counter;
+      native_status.state = static_cast<uint8_t>(esp_status.state);
+      return true;
+    }
+  }
+  #endif
+  return false; 
 }

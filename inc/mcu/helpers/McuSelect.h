@@ -53,6 +53,7 @@
 
 // ESP32-C6 Configuration
 #ifdef HF_TARGET_MCU_ESP32C6
+
 #define HF_MCU_ESP32C6
 #define HF_MCU_FAMILY_ESP32
 #define HF_MCU_NAME "ESP32-C6"
@@ -69,8 +70,9 @@ extern "C" {
 #include "driver/i2c.h"
 #include "driver/ledc.h"
 #include "driver/spi_master.h"
-#include "driver/twai.h"
 #include "driver/uart.h"
+#include "driver/esp_twai.h"
+#include "driver/esp_twai_onchip.h" // ESP-IDF v5.5+ modern TWAI node API
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
 #include "freertos/task.h"

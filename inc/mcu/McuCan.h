@@ -69,13 +69,12 @@ public:
    * @brief Constructor with configuration and optional controller selection.
    * @param config CAN bus configuration parameters
    * @param controller_id TWAI controller ID (0 or 1 for ESP32C6, default: 0)
-   * @param use_v2_api Use modern ESP-IDF v5.5+ handle-based API (recommended: true)
    * @details **LAZY INITIALIZATION**: The CAN controller is NOT physically configured
    *          until the first call to EnsureInitialized(), Initialize(), or any CAN operation.
    *          This allows creating CAN objects without immediate hardware access.
+   *          ESP32C6 automatically uses the modern node-based TWAI API.
    */  explicit McuCan(const CanBusConfig &config, 
-                  CanControllerId controller_id = CanControllerId::HF_TWAI_CONTROLLER_0,
-                  bool use_v2_api = true) noexcept;
+                  CanControllerId controller_id = CanControllerId::HF_TWAI_CONTROLLER_0) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup and resource deallocation.
@@ -207,13 +206,7 @@ public:
     return controller_id_;
   }
 
-  /**
-   * @brief Check if using modern ESP-IDF v5.5+ handle-based API.
-   * @return true if using v2 API, false if using legacy API
-   */
-  bool IsUsingV2Api() const noexcept {
-    return use_v2_api_;
-  }
+  // Remove this method since ESP32C6 always uses modern node-based TWAI API
 
   /**
    * @brief Get comprehensive controller statistics.
@@ -275,7 +268,6 @@ private:
   // === Configuration and State ===
   CanBusConfig config_;                         ///< CAN bus configuration
   CanControllerId controller_id_;               ///< TWAI controller ID (0 or 1 for ESP32C6)
-  bool use_v2_api_;                             ///< Use ESP-IDF v5.5+ handle-based API
   bool initialized_;                            ///< Lazy initialization flag
   CanReceiveCallback receive_callback_;         ///< User receive callback
   mutable RtosMutex mutex_;                     ///< Thread safety mutex
