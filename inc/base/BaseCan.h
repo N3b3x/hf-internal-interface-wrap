@@ -6,12 +6,19 @@
  * that provides a consistent API across different CAN controller implementations.
  * Concrete implementations for various microcontrollers inherit from this class.
  * 
+ * ERROR HANDLING:
+ * - All CAN error codes are defined in this file using the HfCanErr enumeration
+ * - Lower-level types (McuTypes_CAN.h) maintain minimal error constants for compatibility
+ * - All virtual methods return HfCanErr for comprehensive error reporting
+ * - No legacy compatibility code - use CanMessage structure for all operations
+ * 
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
  * @note This is a header-only abstract base class following the same pattern as BaseAdc.
  * @note Users should program against this interface, not specific implementations.
+ * @note All legacy hf_can_message_t and bool-returning methods have been removed.
  */
 
 #pragma once
@@ -46,27 +53,53 @@
   X(CAN_ERR_BUS_ERROR, 8, "Bus error")                                                             \
   X(CAN_ERR_BUS_BUSY, 9, "Bus busy")                                                               \
   X(CAN_ERR_BUS_NOT_AVAILABLE, 10, "Bus not available")                                            \
+  X(CAN_ERR_BUS_RECOVERY_FAILED, 11, "Bus recovery failed")                                        \
+  X(CAN_ERR_BUS_ARBITRATION_LOST, 12, "Bus arbitration lost")                                      \
   /* Message errors */                                                                             \
-  X(CAN_ERR_MESSAGE_TIMEOUT, 11, "Message timeout")                                                \
-  X(CAN_ERR_MESSAGE_LOST, 12, "Message lost")                                                      \
-  X(CAN_ERR_MESSAGE_INVALID, 13, "Invalid message")                                                \
-  X(CAN_ERR_MESSAGE_TOO_LONG, 14, "Message too long")                                              \
-  X(CAN_ERR_QUEUE_FULL, 15, "Queue full")                                                          \
-  X(CAN_ERR_QUEUE_EMPTY, 16, "Queue empty")                                                        \
+  X(CAN_ERR_MESSAGE_TIMEOUT, 13, "Message timeout")                                                \
+  X(CAN_ERR_MESSAGE_LOST, 14, "Message lost")                                                      \
+  X(CAN_ERR_MESSAGE_INVALID, 15, "Invalid message")                                                \
+  X(CAN_ERR_MESSAGE_TOO_LONG, 16, "Message too long")                                              \
+  X(CAN_ERR_MESSAGE_INVALID_ID, 17, "Invalid message ID")                                          \
+  X(CAN_ERR_MESSAGE_INVALID_DLC, 18, "Invalid data length code")                                   \
+  X(CAN_ERR_QUEUE_FULL, 19, "Queue full")                                                          \
+  X(CAN_ERR_QUEUE_EMPTY, 20, "Queue empty")                                                        \
+  /* Transmission errors */                                                                        \
+  X(CAN_ERR_TX_FAILED, 21, "Transmission failed")                                                  \
+  X(CAN_ERR_TX_ABORTED, 22, "Transmission aborted")                                                \
+  X(CAN_ERR_TX_ERROR_PASSIVE, 23, "Transmit error passive")                                        \
+  X(CAN_ERR_TX_ERROR_WARNING, 24, "Transmit error warning")                                        \
+  /* Reception errors */                                                                           \
+  X(CAN_ERR_RX_OVERRUN, 25, "Receive overrun")                                                     \
+  X(CAN_ERR_RX_ERROR_PASSIVE, 26, "Receive error passive")                                         \
+  X(CAN_ERR_RX_ERROR_WARNING, 27, "Receive error warning")                                         \
+  X(CAN_ERR_RX_FIFO_FULL, 28, "Receive FIFO full")                                                 \
   /* Hardware errors */                                                                            \
-  X(CAN_ERR_HARDWARE_FAULT, 17, "Hardware fault")                                                  \
-  X(CAN_ERR_COMMUNICATION_FAILURE, 18, "Communication failure")                                    \
-  X(CAN_ERR_DEVICE_NOT_RESPONDING, 19, "Device not responding")                                    \
-  X(CAN_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")                                      \
+  X(CAN_ERR_HARDWARE_FAULT, 29, "Hardware fault")                                                  \
+  X(CAN_ERR_COMMUNICATION_FAILURE, 30, "Communication failure")                                    \
+  X(CAN_ERR_DEVICE_NOT_RESPONDING, 31, "Device not responding")                                    \
+  X(CAN_ERR_VOLTAGE_OUT_OF_RANGE, 32, "Voltage out of range")                                      \
+  X(CAN_ERR_CLOCK_ERROR, 33, "Clock error")                                                        \
+  X(CAN_ERR_TRANSCEIVER_ERROR, 34, "Transceiver error")                                            \
   /* Configuration errors */                                                                       \
-  X(CAN_ERR_INVALID_CONFIGURATION, 21, "Invalid configuration")                                    \
-  X(CAN_ERR_UNSUPPORTED_OPERATION, 22, "Unsupported operation")                                    \
-  X(CAN_ERR_INVALID_BAUD_RATE, 23, "Invalid baud rate")                                            \
-  X(CAN_ERR_FILTER_ERROR, 24, "Filter error")                                                      \
+  X(CAN_ERR_INVALID_CONFIGURATION, 35, "Invalid configuration")                                    \
+  X(CAN_ERR_UNSUPPORTED_OPERATION, 36, "Unsupported operation")                                    \
+  X(CAN_ERR_INVALID_BAUD_RATE, 37, "Invalid baud rate")                                            \
+  X(CAN_ERR_INVALID_CONTROLLER_ID, 38, "Invalid controller ID")                                    \
+  X(CAN_ERR_FILTER_ERROR, 39, "Filter error")                                                      \
+  X(CAN_ERR_FILTER_FULL, 40, "Filter table full")                                                  \
+  /* Protocol errors */                                                                            \
+  X(CAN_ERR_STUFF_ERROR, 41, "Bit stuffing error")                                                 \
+  X(CAN_ERR_FORM_ERROR, 42, "Frame format error")                                                  \
+  X(CAN_ERR_CRC_ERROR, 43, "CRC error")                                                            \
+  X(CAN_ERR_ACK_ERROR, 44, "Acknowledgment error")                                                 \
+  X(CAN_ERR_BIT_ERROR, 45, "Bit error")                                                            \
   /* System errors */                                                                              \
-  X(CAN_ERR_SYSTEM_ERROR, 25, "System error")                                                      \
-  X(CAN_ERR_PERMISSION_DENIED, 26, "Permission denied")                                            \
-  X(CAN_ERR_OPERATION_ABORTED, 27, "Operation aborted")
+  X(CAN_ERR_SYSTEM_ERROR, 46, "System error")                                                      \
+  X(CAN_ERR_PERMISSION_DENIED, 47, "Permission denied")                                            \
+  X(CAN_ERR_OPERATION_ABORTED, 48, "Operation aborted")                                            \
+  X(CAN_ERR_RESOURCE_BUSY, 49, "Resource busy")                                                    \
+  X(CAN_ERR_INVALID_STATE, 50, "Invalid state")
 
 enum class HfCanErr : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
@@ -112,40 +145,105 @@ struct CanBusConfig {
 
 /**
  * @brief Platform-agnostic CAN message structure.
- * @details Standard CAN message format compatible with classic CAN implementations.
- *          Supports both standard (11-bit) and extended (29-bit) identifiers.
+ * @details Comprehensive CAN message format with standard flags and metadata.
+ *          Supports both standard (11-bit) and extended (29-bit) identifiers,
+ *          with complete transmission control and diagnostic information.
  */
 struct CanMessage {
-  uint32_t id;        ///< CAN identifier (11 or 29-bit)
-  bool extended_id;   ///< Extended (29-bit) ID flag
-  bool remote_frame;  ///< Remote transmission request flag
-  uint8_t dlc;        ///< Data length code (0-8)
-  uint8_t data[8];    ///< Message data (max 8 bytes for classic CAN)
-  uint32_t timestamp; ///< Reception timestamp (implementation-specific)
+  // === Core CAN Message Fields ===
+  uint32_t id;     ///< Message ID (11 or 29-bit)
+  uint8_t dlc;     ///< Data length code (0-8 for classic CAN)
+  uint8_t data[8]; ///< Message data (max 8 bytes for classic CAN)
+
+  // === Standard CAN Flags ===
+  bool is_extended;  ///< Extended ID flag (29-bit vs 11-bit)
+  bool is_rtr;       ///< Remote transmission request flag
+  bool is_ss;        ///< Single shot flag (no retransmission)
+  bool is_self;      ///< Self reception request flag
+  bool dlc_non_comp; ///< DLC is non-compliant (> 8 for classic CAN)
+
+  // === Metadata and Diagnostics ===
+  uint64_t timestamp_us;    ///< Precise timestamp in microseconds
+  uint32_t sequence_number; ///< Message sequence number
+  uint8_t controller_id;    ///< Originating controller ID
+  uint8_t retry_count;      ///< Number of transmission retries
+  uint8_t error_count;      ///< Associated error count
+
+  // === CAN-FD Extended Fields (for future compatibility) ===
+  bool is_canfd;       ///< CAN-FD frame flag
+  bool is_brs;         ///< Bit Rate Switching flag (CAN-FD)
+  bool is_esi;         ///< Error State Indicator flag (CAN-FD)
+  uint8_t canfd_dlc;   ///< CAN-FD DLC (can be > 8)
 
   CanMessage() noexcept
-      : id(0), extended_id(false), remote_frame(false), dlc(0), data{}, timestamp(0) {}
+      : id(0), dlc(0), data{}, is_extended(false), is_rtr(false), is_ss(false), 
+        is_self(false), dlc_non_comp(false), timestamp_us(0), sequence_number(0),
+        controller_id(0), retry_count(0), error_count(0), is_canfd(false), 
+        is_brs(false), is_esi(false), canfd_dlc(0) {}
 
   /**
-   * @brief Get maximum data length for classic CAN
-   * @return Maximum allowed data length (8 bytes)
+   * @brief Get maximum data length for current frame type
+   * @return Maximum allowed data length (8 for classic CAN, up to 64 for CAN-FD)
    */
-  constexpr uint8_t GetMaxDataLength() const noexcept {
-    return 8;
+  constexpr uint8_t GetMaxDataLength() const noexcept { 
+    return is_canfd ? 64 : 8; 
   }
 
   /**
-   * @brief Validate DLC for classic CAN
+   * @brief Validate DLC for current frame type
    * @param dlc Data length code to validate
-   * @return true if valid (0-8), false otherwise
+   * @return true if valid for the frame type, false otherwise
    */
-  static constexpr bool IsValidDLC(uint8_t dlc) noexcept {
-    return dlc <= 8;
+  bool IsValidDLC(uint8_t dlc) const noexcept { 
+    return is_canfd ? (dlc <= 64) : (dlc <= 8); 
+  }
+
+  /**
+   * @brief Get effective DLC for the current frame type
+   * @return DLC value to use (canfd_dlc for CAN-FD, dlc for classic)
+   */
+  uint8_t GetEffectiveDLC() const noexcept {
+    return is_canfd ? canfd_dlc : dlc;
+  }
+
+  /**
+   * @brief Set message as standard CAN (11-bit ID)
+   */
+  void SetStandardFrame() noexcept { is_extended = false; }
+
+  /**
+   * @brief Set message as extended CAN (29-bit ID)
+   */
+  void SetExtendedFrame() noexcept { is_extended = true; }
+
+  /**
+   * @brief Set message as data frame
+   */
+  void SetDataFrame() noexcept { is_rtr = false; }
+
+  /**
+   * @brief Set message as remote transmission request
+   */
+  void SetRemoteFrame() noexcept { is_rtr = true; }
+
+  /**
+   * @brief Set single shot transmission (no retries)
+   */
+  void SetSingleShot() noexcept { is_ss = true; }
+
+  /**
+   * @brief Enable self-reception
+   */
+  void SetSelfReception() noexcept { is_self = true; }
+
+  /**
+   * @brief Check if message ID is valid for the frame type
+   * @return true if ID is within valid range
+   */
+  bool IsValidId() const noexcept {
+    return is_extended ? (id <= 0x1FFFFFFF) : (id <= 0x7FF);
   }
 };
-
-// For backward compatibility with existing code
-using hf_can_message_t = CanMessage;
 
 /**
  * @brief Enhanced CAN bus status information including CAN-FD metrics
@@ -247,7 +345,7 @@ public:
    */
   bool EnsureInitialized() noexcept {
     if (!initialized_) {
-      initialized_ = Initialize();
+      initialized_ = (Initialize() == HfCanErr::CAN_SUCCESS);
     }
     return initialized_;
   }
@@ -266,60 +364,51 @@ public:
 
   /**
    * @brief Initialize the CAN bus.
-   * @return true if successful, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool Initialize() noexcept = 0;
+  virtual HfCanErr Initialize() noexcept = 0;
 
   /**
    * @brief Deinitialize the CAN bus.
-   * @return true if successful, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool Deinitialize() noexcept = 0;
+  virtual HfCanErr Deinitialize() noexcept = 0;
 
   /**
    * @brief Send a CAN/CAN-FD message.
    * @param message Message to send (supports both classic CAN and CAN-FD)
    * @param timeout_ms Timeout in milliseconds (0 = no wait)
-   * @return true if sent successfully, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if sent successfully, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool SendMessage(const CanMessage &message, uint32_t timeout_ms = 1000) noexcept = 0;
+  virtual HfCanErr SendMessage(const CanMessage &message, uint32_t timeout_ms = 1000) noexcept = 0;
 
   /**
    * @brief Receive a CAN/CAN-FD message.
    * @param message Buffer to store received message
    * @param timeout_ms Timeout in milliseconds (0 = no wait)
-   * @return true if received successfully, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if received successfully, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool ReceiveMessage(CanMessage &message, uint32_t timeout_ms = 0) noexcept = 0;
-
-  // Backward compatibility methods
-  virtual bool SendMessage(const hf_can_message_t &message, uint32_t timeout_ms = 1000) noexcept {
-    return SendMessage(static_cast<const CanMessage &>(message), timeout_ms);
-  }
-
-  virtual bool ReceiveMessage(hf_can_message_t &message, uint32_t timeout_ms = 0) noexcept {
-    return ReceiveMessage(static_cast<CanMessage &>(message), timeout_ms);
-  }
+  virtual HfCanErr ReceiveMessage(CanMessage &message, uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Set receive callback for interrupt-driven reception.
    * @param callback Callback function to call when message is received
-   * @return true if callback set successfully, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if callback set successfully, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool SetReceiveCallback(CanReceiveCallback callback) noexcept = 0;
+  virtual HfCanErr SetReceiveCallback(CanReceiveCallback callback) noexcept = 0;
 
   /**
    * @brief Set enhanced CAN-FD receive callback with additional information.
    * @param callback Enhanced callback with reception information
-   * @return true if callback set successfully, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if callback set successfully, error code otherwise
    * @note Default implementation falls back to standard callback
    */
-  virtual bool SetReceiveCallbackFD(CanFdReceiveCallback callback) noexcept {
+  virtual HfCanErr SetReceiveCallbackFD(CanFdReceiveCallback callback) noexcept {
     // Default implementation: convert to standard callback
     if (!callback) {
       return SetReceiveCallback(nullptr);
@@ -342,34 +431,34 @@ public:
   /**
    * @brief Get current bus status including CAN-FD metrics.
    * @param status Buffer to store status information
-   * @return true if status retrieved successfully, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if status retrieved successfully, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool GetStatus(CanBusStatus &status) noexcept = 0;
+  virtual HfCanErr GetStatus(CanBusStatus &status) noexcept = 0;
 
   /**
    * @brief Reset the CAN controller (clear errors, restart).
-   * @return true if reset successful, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if reset successful, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool Reset() noexcept = 0;
+  virtual HfCanErr Reset() noexcept = 0;
 
   /**
    * @brief Set acceptance filter for incoming messages.
    * @param id CAN ID to accept
    * @param mask Acceptance mask (0 = don't care bits)
    * @param extended true for extended frames, false for standard
-   * @return true if filter set successfully, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if filter set successfully, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept = 0;
+  virtual HfCanErr SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept = 0;
 
   /**
    * @brief Clear all acceptance filters (accept all messages).
-   * @return true if cleared successfully, false otherwise
+   * @return HfCanErr::CAN_SUCCESS if cleared successfully, error code otherwise
    * @note Must be implemented by concrete classes.
    */
-  virtual bool ClearAcceptanceFilter() noexcept = 0;
+  virtual HfCanErr ClearAcceptanceFilter() noexcept = 0;
 
   //==============================================//
   // CAN-FD SPECIFIC METHODS (OPTIONAL)          //
@@ -378,7 +467,7 @@ public:
   /**
    * @brief Check if CAN-FD is supported by this implementation.
    * @return true if CAN-FD is supported, false otherwise
-   * @note Default implementation returns false for backward compatibility
+   * @note Default implementation returns false (classic CAN only)
    */
   virtual bool SupportsCanFD() const noexcept {
     return false;

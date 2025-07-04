@@ -48,7 +48,7 @@
  * if (sf_can.Initialize()) {
  *     sf_can.Start();
  *
- *     hf_can_message_t msg{};
+ *     CanMessage msg{};
  *     msg.id = 0x123;
  *     msg.dlc = 8;
  *     // ... fill msg.data
@@ -60,8 +60,9 @@
  *     sf_can.SendMessageNonBlocking(msg);
  *
  *     // Batch send multiple messages
- *     std::vector<hf_can_message_t> messages = { msg1, msg2, msg3 };
+ *     std::vector<CanMessage> messages = { msg1, msg2, msg3 };
  *     sf_can.SendMultipleMessages(messages);
+ * }
  * }
  * @endcode
  */
@@ -159,7 +160,7 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return True if message sent successfully, false otherwise
    */
-  bool SendMessage(const hf_can_message_t &message, uint32_t timeout_ms = 1000) noexcept;
+  bool SendMessage(const CanMessage &message, uint32_t timeout_ms = 1000) noexcept;
 
   /**
    * @brief Receive a CAN message with specified timeout.
@@ -168,7 +169,7 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return True if message received successfully, false otherwise
    */
-  bool ReceiveMessage(hf_can_message_t &message, uint32_t timeout_ms = 1000) noexcept;
+  bool ReceiveMessage(CanMessage &message, uint32_t timeout_ms = 1000) noexcept;
 
   //==============================================================================
   // CONVENIENCE METHODS
@@ -180,7 +181,7 @@ public:
    * @param message CAN message to send
    * @return True if message sent immediately, false if queue full
    */
-  bool SendMessageNonBlocking(const hf_can_message_t &message) noexcept;
+  bool SendMessageNonBlocking(const CanMessage &message) noexcept;
 
   /**
    * @brief Send a message with infinite blocking (timeout = MAX).
@@ -188,7 +189,7 @@ public:
    * @param message CAN message to send
    * @return True if message sent successfully, false on error
    */
-  bool SendMessageBlocking(const hf_can_message_t &message) noexcept;
+  bool SendMessageBlocking(const CanMessage &message) noexcept;
 
   /**
    * @brief Receive a message with no blocking (timeout = 0).
@@ -196,7 +197,7 @@ public:
    * @param message Reference to store received message
    * @return True if message received immediately, false if queue empty
    */
-  bool ReceiveMessageNonBlocking(hf_can_message_t &message) noexcept;
+  bool ReceiveMessageNonBlocking(CanMessage &message) noexcept;
 
   /**
    * @brief Receive a message with infinite blocking (timeout = MAX).
@@ -204,7 +205,7 @@ public:
    * @param message Reference to store received message
    * @return True if message received successfully, false on error
    */
-  bool ReceiveMessageBlocking(hf_can_message_t &message) noexcept;
+  bool ReceiveMessageBlocking(CanMessage &message) noexcept;
 
   //==============================================================================
   // BATCH OPERATIONS
@@ -217,7 +218,7 @@ public:
    * @param timeout_ms Timeout per message in milliseconds
    * @return True if all messages sent successfully, false on first failure
    */
-  bool SendMultipleMessages(const std::vector<hf_can_message_t> &messages,
+  bool SendMultipleMessages(const std::vector<CanMessage> &messages,
                             uint32_t timeout_ms = 1000) noexcept;
 
   /**
@@ -227,7 +228,7 @@ public:
    * @param timeout_ms Timeout per message in milliseconds
    * @return Number of messages successfully sent
    */
-  size_t SendMultipleMessagesPartial(const std::vector<hf_can_message_t> &messages,
+  size_t SendMultipleMessagesPartial(const std::vector<CanMessage> &messages,
                                      uint32_t timeout_ms = 1000) noexcept;
 
   //==============================================================================

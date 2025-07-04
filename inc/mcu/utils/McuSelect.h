@@ -14,7 +14,7 @@
 
 #pragma once
 
-//==============================================================================
+//==============================================;================================
 // USAGE INSTRUCTIONS - HOW TO SELECT YOUR MCU
 //==============================================================================
 /*
@@ -176,7 +176,7 @@ extern "C" {
 
 // ADC capabilities (ESP32-C6 specific)
 #define HF_MCU_HAS_ADC 1
-#define HF_MCU_ADC_MAX_CHANNELS 7 // ESP32-C6 has 7 ADC channels
+#define HF_MCU_ADC_MAX_CHANNELS 7 // ESP32-C6 has 7 ADC channels (0-6)
 #define HF_MCU_ADC_MAX_RESOLUTION 12
 #define HF_MCU_ADC_HAS_ATTENUATION 1
 #define HF_MCU_ADC_NUM_UNITS 1 // ESP32-C6 has only ADC1
@@ -201,14 +201,14 @@ extern "C" {
 
 // CAN capabilities (TWAI)
 #define HF_MCU_HAS_CAN 1
-#define HF_MCU_CAN_MAX_CONTROLLERS 1
+#define HF_MCU_CAN_MAX_CONTROLLERS 2
 #define HF_MCU_CAN_HAS_LISTEN_ONLY 1
 #define HF_MCU_CAN_HAS_SELF_TEST 1
 #define HF_MCU_CAN_PROTOCOL "TWAI"
 
 // PWM capabilities (LEDC)
 #define HF_MCU_HAS_PWM 1
-#define HF_MCU_PWM_MAX_CHANNELS 8 // ESP32-C6 has 8 LEDC channels
+#define HF_MCU_PWM_MAX_CHANNELS 6 // ESP32-C6 has 6 LEDC channels
 #define HF_MCU_PWM_MAX_FREQ_HZ 40000000
 #define HF_MCU_PWM_MAX_RESOLUTION 14 // ESP32-C6 max is 14-bit
 
@@ -272,83 +272,6 @@ extern "C" {
 #endif
 
 //==============================================================================
-// MCU TYPE MAPPING
-//==============================================================================
-
-// ESP32-C6 Type Mappings
-#ifdef HF_MCU_ESP32C6
-// GPIO type mappings
-#define HF_MCU_GPIO_NUM_TYPE gpio_num_t
-#define HF_MCU_GPIO_MODE_TYPE gpio_mode_t
-#define HF_MCU_GPIO_PULL_TYPE gpio_pull_mode_t
-#define HF_MCU_GPIO_INTR_TYPE gpio_int_type_t
-#define HF_MCU_GPIO_INVALID GPIO_NUM_NC
-
-// ADC type mappings
-#define HF_MCU_ADC_CHANNEL_TYPE adc_channel_t
-#define HF_MCU_ADC_UNIT_TYPE adc_unit_t
-#define HF_MCU_ADC_ATTEN_TYPE adc_atten_t
-#define HF_MCU_ADC_BITS_TYPE adc_bits_width_t
-
-// I2C type mappings
-#define HF_MCU_I2C_PORT_TYPE i2c_port_t
-#define HF_MCU_I2C_MODE_TYPE i2c_mode_t
-
-// SPI type mappings
-#define HF_MCU_SPI_HOST_TYPE spi_host_device_t
-
-// UART type mappings
-#define HF_MCU_UART_PORT_TYPE uart_port_t
-
-// CAN type mappings (TWAI for ESP32-C6)
-#define HF_MCU_CAN_MODE_TYPE twai_mode_t
-#define HF_MCU_CAN_TIMING_TYPE twai_timing_config_t
-#define HF_MCU_CAN_FILTER_TYPE twai_filter_config_t
-#define HF_MCU_CAN_MSG_TYPE twai_message_t
-
-// PWM type mappings
-#define HF_MCU_PWM_CHANNEL_TYPE ledc_channel_t
-#define HF_MCU_PWM_TIMER_TYPE ledc_timer_t
-#define HF_MCU_PWM_MODE_TYPE ledc_mode_t
-
-// ESP32 Classic Type Mappings
-#elif defined(HF_MCU_ESP32)
-// GPIO type mappings
-#define HF_MCU_GPIO_NUM_TYPE gpio_num_t
-#define HF_MCU_GPIO_MODE_TYPE gpio_mode_t
-#define HF_MCU_GPIO_PULL_TYPE gpio_pull_mode_t
-#define HF_MCU_GPIO_INTR_TYPE gpio_int_type_t
-#define HF_MCU_GPIO_INVALID GPIO_NUM_NC
-
-// ADC type mappings
-#define HF_MCU_ADC_CHANNEL_TYPE adc_channel_t
-#define HF_MCU_ADC_UNIT_TYPE adc_unit_t
-#define HF_MCU_ADC_ATTEN_TYPE adc_atten_t
-#define HF_MCU_ADC_BITS_TYPE adc_bits_width_t
-
-// I2C type mappings
-#define HF_MCU_I2C_PORT_TYPE i2c_port_t
-#define HF_MCU_I2C_MODE_TYPE i2c_mode_t
-
-// SPI type mappings
-#define HF_MCU_SPI_HOST_TYPE spi_host_device_t
-
-// UART type mappings
-#define HF_MCU_UART_PORT_TYPE uart_port_t
-
-// CAN type mappings (Classic CAN for ESP32)
-#define HF_MCU_CAN_MODE_TYPE can_mode_t
-#define HF_MCU_CAN_TIMING_TYPE can_timing_config_t
-#define HF_MCU_CAN_FILTER_TYPE can_filter_config_t
-#define HF_MCU_CAN_MSG_TYPE can_message_t
-
-// PWM type mappings
-#define HF_MCU_PWM_CHANNEL_TYPE ledc_channel_t
-#define HF_MCU_PWM_TIMER_TYPE ledc_timer_t
-#define HF_MCU_PWM_MODE_TYPE ledc_mode_t
-#endif
-
-//==============================================================================
 // MCU CONFIGURATION CONSTANTS
 //==============================================================================
 
@@ -404,24 +327,6 @@ extern "C" {
 #endif
 
 //==============================================================================
-// USAGE EXAMPLE IN IMPLEMENTATION FILES
+// END OF MCU SELECT HEADER
 //==============================================================================
-/*
- * In your .cpp files, use the family-level defines for platform-specific code:
- *
- * #include "McuSelect.h"   // Always include this first
- *
- * #ifdef HF_MCU_FAMILY_ESP32
- *     // ESP32-specific code (works for both ESP32 and ESP32-C6)
- *     #include "esp_log.h"
- *     ESP_LOGI("TAG", "Running on %s", HF_MCU_NAME);
- * #elif defined(HF_MCU_FAMILY_STM32)
- *     // STM32-specific code (works for STM32F4, STM32H7, etc.)
- *     printf("Running on %s\n", HF_MCU_NAME);
- * #elif defined(HF_MCU_FAMILY_RP2040)
- *     // RP2040-specific code
- *     printf("Running on %s\n", HF_MCU_NAME);
- * #else
- *     #error "Unsupported MCU family"
- * #endif
- */
+

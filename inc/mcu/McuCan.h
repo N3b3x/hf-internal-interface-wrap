@@ -22,30 +22,29 @@
 #include "McuTypes.h"
 
 // Type aliases to centralized types in McuTypes.h (no duplicate type declarations)
-using CanControllerId = hf_twai_controller_id_t;
-using CanMode = hf_twai_mode_t;
-using CanErrorState = hf_twai_error_state_t;
-using CanAlert = hf_twai_alert_t;
-using CanTimingConfig = hf_twai_timing_config_t;
-using CanGeneralConfig = hf_twai_general_config_t;
-using CanFilterConfig = hf_twai_filter_config_t;
-using CanMessageExt = hf_twai_message_t;
-using CanStatusInfo = hf_twai_status_info_t;
-using CanCapabilities = hf_twai_capabilities_t;
+using CanControllerId = hf_can_controller_id_t;
+using CanMode = hf_can_mode_t;
+using CanErrorState = hf_can_error_state_t;
+using CanAlert = hf_can_alert_t;
+using CanTimingConfig = hf_can_timing_config_t;
+using CanGeneralConfig = hf_can_general_config_t;
+using CanFilterConfig = hf_can_filter_config_t;
+using CanStatusInfo = hf_can_status_info_t;
+using CanCapabilities = hf_can_capabilities_t;
 
 /**
  * @class McuCan
- * @brief Advanced CAN bus implementation for ESP32C6 with ESP-IDF v5.5+ TWAI support.
+ * @brief Advanced CAN bus implementation for ESP32C6 with ESP-IDF v5.4.2+ TWAI support.
  *
  * This class provides comprehensive CAN communication using the ESP32C6's dual TWAI 
- * (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.5+ APIs.
+ * (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.4.2+ APIs.
  * The implementation leverages all advanced features including dual controller support,
  * sleep retention, comprehensive error handling, alert monitoring, and interrupt-driven
  * operation with robust error recovery mechanisms.
  *
  * Key Features:
  * - Dual TWAI controller support (ESP32C6 has 2 independent controllers)
- * - Modern ESP-IDF v5.5+ handle-based API with full thread safety
+ * - Modern ESP-IDF v5.4.2+ handle-based API with full thread safety
  * - Comprehensive error detection and bus recovery mechanisms
  * - Sleep retention for power-efficient operation
  * - Advanced filtering with runtime reconfiguration support
@@ -74,7 +73,7 @@ public:
    *          This allows creating CAN objects without immediate hardware access.
    *          ESP32C6 automatically uses the modern node-based TWAI API.
    */  explicit McuCan(const CanBusConfig &config, 
-                  CanControllerId controller_id = CanControllerId::HF_TWAI_CONTROLLER_0) noexcept;
+                  CanControllerId controller_id = CanControllerId::HF_CAN_CONTROLLER_0) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup and resource deallocation.
@@ -130,7 +129,7 @@ public:
    * @brief Enable/disable sleep retention for power management.
    * @param enable true to enable sleep retention, false to disable
    * @return true if configured successfully, false otherwise
-   * @note Requires ESP-IDF v5.5+ and ESP32C6 sleep retention support
+   * @note Requires ESP-IDF v5.4.2+ and ESP32C6 sleep retention support
    */
   bool ConfigureSleepRetention(bool enable) noexcept;
 
@@ -274,8 +273,8 @@ private:
   hf_can_statistics_t stats_;                   ///< Performance statistics (thread-safe)
   uint64_t init_timestamp_;                     ///< Initialization timestamp
 
-  // === ESP-IDF v5.5+ Handle Management ===
-  hf_can_handle_t twai_handle_;                 ///< ESP-IDF v5.5+ TWAI handle
+  // === ESP-IDF v5.4.2+ Handle Management ===
+  hf_can_handle_t twai_handle_;                 ///< ESP-IDF v5.4.2+ TWAI handle
   bool handle_valid_;                           ///< Handle validity flag
 
   // === Runtime State Tracking ===
@@ -330,8 +329,8 @@ private:
   bool ValidateConfiguration() const noexcept;
   
   // Message format conversion
-  bool ConvertToNativeMessage(const CanMessage &src, hf_can_message_t &dst) const noexcept;
-  bool ConvertFromNativeMessage(const hf_can_message_t &src, CanMessage &dst) const noexcept;
+  bool ConvertToNativeMessage(const CanMessage &src, hf_can_message_native_t &dst) const noexcept;
+  bool ConvertFromNativeMessage(const hf_can_message_native_t &src, CanMessage &dst) const noexcept;
   bool ConvertNativeStatus(const hf_can_status_info_t &native_status, CanBusStatus &status) const noexcept;
   
   // Timing calculations and validation
@@ -384,7 +383,7 @@ private:
   void HandleReceiveInterrupt() noexcept;
   void HandleAlertInterrupt() noexcept;
   void HandleErrorInterrupt() noexcept;
-  void ProcessIncomingMessage(const hf_can_message_t &native_message) noexcept;
+  void ProcessIncomingMessage(const hf_can_message_native_t &native_message) noexcept;
   
   // === Utility and Helper Methods ===
   
