@@ -71,7 +71,7 @@ namespace {
   
   // GPIO pin capabilities lookup table for ESP32C6
   #ifdef HF_MCU_ESP32C6
-  constexpr hf_gpio_pin_capabilities_t GPIO_PIN_CAPABILITIES[HF_GPIO_PIN_COUNT] = {
+  constexpr hf_gpio_pin_capabilities_t GPIO_PIN_CAPABILITIES[HF_MCU_GPIO_PIN_COUNT] = {
     // GPIO0-GPIO7: ADC and RTC capable
     {true, true, true, false, false, false, false, 0, 1, 0},  // GPIO0
     {true, true, true, false, false, false, false, 1, 1, 1},  // GPIO1
@@ -310,7 +310,7 @@ bool McuGpio::Deinitialize() noexcept {
 
 bool McuGpio::IsPinAvailable() const noexcept {
   #ifdef HF_MCU_ESP32C6
-  return pin_ >= 0 && pin_ <= HF_GPIO_MAX_PIN_NUMBER && 
+  return pin_ >= 0 && pin_ <= HF_MCU_GPIO_MAX_PIN_NUMBER && 
          GPIO_PIN_CAPABILITIES[pin_].is_valid_gpio;
   #else
   return pin_ >= 0 && pin_ < 32; // Generic validation
@@ -319,7 +319,7 @@ bool McuGpio::IsPinAvailable() const noexcept {
 
 uint8_t McuGpio::GetMaxPins() const noexcept {
   #ifdef HF_MCU_ESP32C6
-  return HF_GPIO_PIN_COUNT;
+  return HF_MCU_GPIO_PIN_COUNT;
   #else
   return 32; // Generic default
   #endif
@@ -1581,3 +1581,304 @@ bool McuGpio::EnsureInitialized() noexcept {
 }
 
 //==============================================================================
+// ETM (EVENT TASK MATRIX) IMPLEMENTATION FOR ESP32C6
+//==============================================================================
+
+#ifdef HF_MCU_ESP32C6
+// ESP32C6 ETM support includes
+#include "esp_etm.h"
+#include "driver/gpio_etm.h"
+
+// ETM handles storage
+static esp_etm_channel_handle_t etm_channels[HF_MCU_GPIO_ETM_CHANNEL_COUNT] = {nullptr};
+static gpio_etm_event_handle_t gpio_etm_events[HF_MCU_GPIO_PIN_COUNT] = {nullptr};
+static gpio_etm_task_handle_t gpio_etm_tasks[HF_MCU_GPIO_PIN_COUNT] = {nullptr};
+static uint8_t etm_channel_usage_count = 0;
+
+HfGpioErr McuGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
+  if (!EnsureInitialized()) {
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+  }
+
+  if (!HF_GPIO_SUPPORTS_ETM(pin_)) {
+    ESP_LOGW(TAG, "GPIO%d does not support ETM functionality", static_cast<int>(pin_));
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  }
+
+  esp_err_t ret;
+
+  // Clean up existing ETM configuration
+  CleanupETM();
+
+  if (!etm_config.enable_etm) {
+    ESP_LOGD(TAG, "ETM disabled for GPIO%d", static_cast<int>(pin_));
+    return HfGpioErr::GPIO_SUCCESS;
+  }
+
+  // Create ETM channel
+  esp_etm_channel_config_t channel_config = {};
+  ret = esp_etm_new_channel(&channel_config, &etm_channels[pin_]);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to create ETM channel for GPIO%d: %s", 
+             static_cast<int>(pin_), esp_err_to_name(ret));
+    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  // Create GPIO ETM event
+  gpio_etm_event_config_t event_config = {};
+  switch (etm_config.event_config.edge) {
+    case hf_gpio_etm_event_edge_t::HF_GPIO_ETM_EVENT_EDGE_POS:
+      event_config.edge = GPIO_ETM_EVENT_EDGE_POS;
+      break;
+    case hf_gpio_etm_event_edge_t::HF_GPIO_ETM_EVENT_EDGE_NEG:
+      event_config.edge = GPIO_ETM_EVENT_EDGE_NEG;
+      break;
+    case hf_gpio_etm_event_edge_t::HF_GPIO_ETM_EVENT_EDGE_ANY:
+      event_config.edge = GPIO_ETM_EVENT_EDGE_ANY;
+      break;
+    default:
+      event_config.edge = GPIO_ETM_EVENT_EDGE_POS;
+      break;
+  }
+
+  ret = gpio_new_etm_event(&event_config, &gpio_etm_events[pin_]);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to create GPIO ETM event for GPIO%d: %s", 
+             static_cast<int>(pin_), esp_err_to_name(ret));
+    esp_etm_del_channel(etm_channels[pin_]);
+    etm_channels[pin_] = nullptr;
+    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  // Bind GPIO to ETM event
+  if (etm_config.auto_bind_gpio) {
+    ret = gpio_etm_event_bind_gpio(gpio_etm_events[pin_], static_cast<int>(pin_));
+    if (ret != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to bind GPIO%d to ETM event: %s", 
+               static_cast<int>(pin_), esp_err_to_name(ret));
+      esp_etm_del_event(gpio_etm_events[pin_]);
+      esp_etm_del_channel(etm_channels[pin_]);
+      gpio_etm_events[pin_] = nullptr;
+      etm_channels[pin_] = nullptr;
+      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    }
+  }
+
+  // Create GPIO ETM task
+  gpio_etm_task_config_t task_config = {};
+  switch (etm_config.task_config.action) {
+    case hf_gpio_etm_task_action_t::HF_GPIO_ETM_TASK_ACTION_SET:
+      task_config.action = GPIO_ETM_TASK_ACTION_SET;
+      break;
+    case hf_gpio_etm_task_action_t::HF_GPIO_ETM_TASK_ACTION_CLR:
+      task_config.action = GPIO_ETM_TASK_ACTION_CLR;
+      break;
+    case hf_gpio_etm_task_action_t::HF_GPIO_ETM_TASK_ACTION_TOG:
+      task_config.action = GPIO_ETM_TASK_ACTION_TOG;
+      break;
+    default:
+      task_config.action = GPIO_ETM_TASK_ACTION_TOG;
+      break;
+  }
+
+  ret = gpio_new_etm_task(&task_config, &gpio_etm_tasks[pin_]);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to create GPIO ETM task for GPIO%d: %s", 
+             static_cast<int>(pin_), esp_err_to_name(ret));
+    esp_etm_del_event(gpio_etm_events[pin_]);
+    esp_etm_del_channel(etm_channels[pin_]);
+    gpio_etm_events[pin_] = nullptr;
+    etm_channels[pin_] = nullptr;
+    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  // Add GPIO to ETM task
+  if (etm_config.auto_bind_gpio) {
+    ret = gpio_etm_task_add_gpio(gpio_etm_tasks[pin_], static_cast<int>(pin_));
+    if (ret != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to add GPIO%d to ETM task: %s", 
+               static_cast<int>(pin_), esp_err_to_name(ret));
+      esp_etm_del_task(gpio_etm_tasks[pin_]);
+      esp_etm_del_event(gpio_etm_events[pin_]);
+      esp_etm_del_channel(etm_channels[pin_]);
+      gpio_etm_tasks[pin_] = nullptr;
+      gpio_etm_events[pin_] = nullptr;
+      etm_channels[pin_] = nullptr;
+      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    }
+  }
+
+  // Connect event and task to ETM channel
+  ret = esp_etm_channel_connect(etm_channels[pin_], gpio_etm_events[pin_], gpio_etm_tasks[pin_]);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to connect ETM event and task for GPIO%d: %s", 
+             static_cast<int>(pin_), esp_err_to_name(ret));
+    CleanupETM();
+    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  // Enable ETM channel if requested
+  if (etm_config.event_config.enable_on_init) {
+    ret = esp_etm_channel_enable(etm_channels[pin_]);
+    if (ret != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to enable ETM channel for GPIO%d: %s", 
+               static_cast<int>(pin_), esp_err_to_name(ret));
+      CleanupETM();
+      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    }
+  }
+
+  etm_channel_usage_count++;
+  
+  ESP_LOGI(TAG, "ETM configured for GPIO%d (event edge: %d, task action: %d, channel: %p)", 
+           static_cast<int>(pin_), 
+           static_cast<int>(etm_config.event_config.edge),
+           static_cast<int>(etm_config.task_config.action),
+           etm_channels[pin_]);
+
+  return HfGpioErr::GPIO_SUCCESS;
+}
+
+HfGpioErr McuGpio::EnableETM() noexcept {
+  if (!EnsureInitialized()) {
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+  }
+
+  if (!etm_channels[pin_]) {
+    ESP_LOGW(TAG, "No ETM channel configured for GPIO%d", static_cast<int>(pin_));
+    return HfGpioErr::GPIO_ERR_INVALID_STATE;
+  }
+
+  esp_err_t ret = esp_etm_channel_enable(etm_channels[pin_]);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to enable ETM channel for GPIO%d: %s", 
+             static_cast<int>(pin_), esp_err_to_name(ret));
+    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  ESP_LOGD(TAG, "ETM channel enabled for GPIO%d", static_cast<int>(pin_));
+  return HfGpioErr::GPIO_SUCCESS;
+}
+
+HfGpioErr McuGpio::DisableETM() noexcept {
+  if (!EnsureInitialized()) {
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+  }
+
+  if (!etm_channels[pin_]) {
+    ESP_LOGD(TAG, "No ETM channel to disable for GPIO%d", static_cast<int>(pin_));
+    return HfGpioErr::GPIO_SUCCESS;
+  }
+
+  esp_err_t ret = esp_etm_channel_disable(etm_channels[pin_]);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to disable ETM channel for GPIO%d: %s", 
+             static_cast<int>(pin_), esp_err_to_name(ret));
+    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  ESP_LOGD(TAG, "ETM channel disabled for GPIO%d", static_cast<int>(pin_));
+  return HfGpioErr::GPIO_SUCCESS;
+}
+
+void McuGpio::CleanupETM() noexcept {
+  if (etm_channels[pin_]) {
+    esp_etm_channel_disable(etm_channels[pin_]);
+    esp_etm_channel_connect(etm_channels[pin_], nullptr, nullptr);
+    esp_etm_del_channel(etm_channels[pin_]);
+    etm_channels[pin_] = nullptr;
+    etm_channel_usage_count--;
+  }
+
+  if (gpio_etm_tasks[pin_]) {
+    gpio_etm_task_rm_gpio(gpio_etm_tasks[pin_], static_cast<int>(pin_));
+    esp_etm_del_task(gpio_etm_tasks[pin_]);
+    gpio_etm_tasks[pin_] = nullptr;
+  }
+
+  if (gpio_etm_events[pin_]) {
+    esp_etm_del_event(gpio_etm_events[pin_]);
+    gpio_etm_events[pin_] = nullptr;
+  }
+}
+
+bool McuGpio::SupportsETM() const noexcept {
+  return HF_GPIO_SUPPORTS_ETM(pin_);
+}
+
+HfGpioErr McuGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
+  status.etm_enabled = (etm_channels[pin_] != nullptr);
+  status.event_handle = gpio_etm_events[pin_];
+  status.task_handle = gpio_etm_tasks[pin_];
+  status.channel_handle = etm_channels[pin_];
+  status.total_etm_channels_used = etm_channel_usage_count;
+  status.max_etm_channels = HF_MCU_GPIO_ETM_CHANNEL_COUNT;
+  
+  return HfGpioErr::GPIO_SUCCESS;
+}
+
+// Static ETM utility functions
+uint8_t McuGpio::GetETMChannelUsage() noexcept {
+  return etm_channel_usage_count;
+}
+
+uint8_t McuGpio::GetMaxETMChannels() noexcept {
+  return HF_MCU_GPIO_ETM_CHANNEL_COUNT;
+}
+
+HfGpioErr McuGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
+  if (!output_stream) {
+    output_stream = stdout;
+  }
+
+  esp_err_t ret = esp_etm_dump(output_stream);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to dump ETM configuration: %s", esp_err_to_name(ret));
+    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  return HfGpioErr::GPIO_SUCCESS;
+}
+
+#else
+// Stub implementations for non-ESP32C6 platforms
+
+HfGpioErr McuGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
+  ESP_LOGW(TAG, "ETM not supported on this platform");
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+}
+
+HfGpioErr McuGpio::EnableETM() noexcept {
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+}
+
+HfGpioErr McuGpio::DisableETM() noexcept {
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+}
+
+void McuGpio::CleanupETM() noexcept {
+  // No-op for non-ESP32C6
+}
+
+bool McuGpio::SupportsETM() const noexcept {
+  return false;
+}
+
+HfGpioErr McuGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
+  memset(& status, 0, sizeof(status));
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+}
+
+uint8_t McuGpio::GetETMChannelUsage() noexcept {
+  return 0;
+}
+
+uint8_t McuGpio::GetMaxETMChannels() noexcept {
+  return 0;
+}
+
+HfGpioErr McuGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+}
+
+#endif // HF_MCU_ESP32C6
