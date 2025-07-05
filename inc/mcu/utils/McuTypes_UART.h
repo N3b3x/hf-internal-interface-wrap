@@ -12,6 +12,8 @@
 
 #pragma once
 
+#include "HardwareTypes.h" // For basic hardware types
+#include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"
 #include "BaseUart.h" // For HfUartErr
 

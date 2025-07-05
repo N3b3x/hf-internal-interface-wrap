@@ -27,6 +27,8 @@
 #pragma once
 
 // Include the base common types first
+#include "HardwareTypes.h" // For basic hardware types
+#include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"
 
 // Include all peripheral-specific type definitions

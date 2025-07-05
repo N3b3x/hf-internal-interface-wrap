@@ -295,16 +295,16 @@ public:
   /**
    * @brief Set the pin direction (input or output).
    * @param direction New Direction setting (Input or Output)
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr SetDirection(Direction direction) noexcept {
     HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::GPIO_SUCCESS) {
+    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
       return validation;
     }
 
     HfGpioErr result = SetDirectionImpl(direction);
-    if (result == HfGpioErr::GPIO_SUCCESS) {
+    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
       current_direction_ = direction;
     }
     return result;
@@ -337,16 +337,16 @@ public:
   /**
    * @brief Set the output drive mode.
    * @param mode New OutputMode setting (PushPull or OpenDrain)
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr SetOutputMode(OutputMode mode) noexcept {
     HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::GPIO_SUCCESS) {
+    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
       return validation;
     }
 
     HfGpioErr result = SetOutputModeImpl(mode);
-    if (result == HfGpioErr::GPIO_SUCCESS) {
+    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
       output_mode_ = mode;
     }
     return result;
@@ -367,16 +367,16 @@ public:
   /**
    * @brief Set the pull resistor mode.
    * @param mode New PullMode setting (Floating, PullUp, or PullDown)
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr SetPullMode(PullMode mode) noexcept {
     HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::GPIO_SUCCESS) {
+    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
       return validation;
     }
 
     HfGpioErr result = SetPullModeImpl(mode);
-    if (result == HfGpioErr::GPIO_SUCCESS) {
+    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
       pull_mode_ = mode;
     }
     return result;
@@ -416,16 +416,16 @@ public:
 
   /**
    * @brief Set the GPIO to active state.
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr SetActive() noexcept {
     HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::GPIO_SUCCESS) {
+    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
       return validation;
     }
 
     HfGpioErr result = SetActiveImpl();
-    if (result == HfGpioErr::GPIO_SUCCESS) {
+    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
       current_state_ = State::Active;
     }
     return result;
@@ -433,16 +433,16 @@ public:
 
   /**
    * @brief Set the GPIO to inactive state.
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr SetInactive() noexcept {
     HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::GPIO_SUCCESS) {
+    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
       return validation;
     }
 
     HfGpioErr result = SetInactiveImpl();
-    if (result == HfGpioErr::GPIO_SUCCESS) {
+    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
       current_state_ = State::Inactive;
     }
     return result;
@@ -450,16 +450,16 @@ public:
 
   /**
    * @brief Toggle the GPIO state.
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr Toggle() noexcept {
     HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::GPIO_SUCCESS) {
+    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
       return validation;
     }
 
     HfGpioErr result = ToggleImpl();
-    if (result == HfGpioErr::GPIO_SUCCESS) {
+    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
       current_state_ = (current_state_ == State::Active) ? State::Inactive : State::Active;
     }
     return result;
@@ -468,16 +468,16 @@ public:
   /**
    * @brief Check if the GPIO is currently active.
    * @param is_active Reference to store the result
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr IsActive(bool &is_active) noexcept {
     HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::GPIO_SUCCESS) {
+    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
       return validation;
     }
 
     HfGpioErr result = IsActiveImpl(is_active);
-    if (result == HfGpioErr::GPIO_SUCCESS) {
+    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
       current_state_ = is_active ? State::Active : State::Inactive;
     }
     return result;
@@ -521,54 +521,54 @@ public:
    * @param trigger Interrupt trigger type
    * @param callback Callback function to invoke on interrupt (optional)
    * @param user_data User data passed to callback (optional)
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   virtual HfGpioErr ConfigureInterrupt(InterruptTrigger trigger, 
                                        InterruptCallback callback = nullptr,
                                        void *user_data = nullptr) noexcept {
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Enable GPIO interrupt.
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   virtual HfGpioErr EnableInterrupt() noexcept {
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Disable GPIO interrupt.
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   virtual HfGpioErr DisableInterrupt() noexcept {
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Wait for GPIO interrupt to occur.
    * @param timeout_ms Timeout in milliseconds (0 = wait forever)
-   * @return HfGpioErr::GPIO_SUCCESS if interrupt occurred, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if interrupt occurred, error code otherwise
    */
   virtual HfGpioErr WaitForInterrupt(uint32_t timeout_ms = 0) noexcept {
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Get interrupt status information.
    * @param status Reference to store status information
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   virtual HfGpioErr GetInterruptStatus(InterruptStatus &status) noexcept {
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Clear interrupt statistics.
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
    */
   virtual HfGpioErr ClearInterruptStats() noexcept {
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   //==============================================================//
@@ -611,12 +611,12 @@ protected:
    */
   [[nodiscard]] HfGpioErr ValidateBasicOperation() const noexcept {
     if (!initialized_) {
-      return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+      return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
     }
     if (!IsPinAvailable()) {
-      return HfGpioErr::GPIO_ERR_PIN_ACCESS_DENIED;
+      return HfGpioErr::HF_GPIO_ERR_PIN_ACCESS_DENIED;
     }
-    return HfGpioErr::GPIO_SUCCESS;
+    return HfGpioErr::HF_GPIO_SUCCESS;
   }
 
   /**

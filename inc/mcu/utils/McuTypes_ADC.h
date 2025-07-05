@@ -12,14 +12,17 @@
 
 #pragma once
 
+#include "HardwareTypes.h"  // For basic hardware types
+#include "McuSelect.h"      // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"
-#include "BaseAdc.h" // For HfAdcErr
+#include "BaseAdc.h"        // For HfAdcErr
 
 //==============================================================================
 // PLATFORM-SPECIFIC ADC DRIVER IMPORTS
 //==============================================================================
 
 #ifdef HF_MCU_FAMILY_ESP32
+
 // Include ESP-IDF ADC driver headers
 #include "esp_adc/adc_oneshot.h"      // Oneshot mode driver
 #include "esp_adc/adc_continuous.h"   // Continuous mode driver  
@@ -28,47 +31,14 @@
 #include "hal/adc_types.h"            // HAL ADC types
 #include "soc/adc_channel.h"          // SoC ADC channel mappings
 
-// ESP32 native ADC type mappings
-using hf_adc_unit_native_t = adc_unit_t;
-using hf_adc_channel_native_t = adc_channel_t;
-using hf_adc_atten_native_t = adc_atten_t;
-using hf_adc_bitwidth_native_t = adc_bitwidth_t;
-using hf_adc_ulp_mode_native_t = adc_ulp_mode_t;
-using hf_adc_oneshot_clk_src_native_t = adc_oneshot_clk_src_t;
-using hf_adc_continuous_clk_src_native_t = adc_continuous_clk_src_t;
-using hf_adc_digi_convert_mode_native_t = adc_digi_convert_mode_t;
-using hf_adc_digi_output_format_native_t = adc_digi_output_format_t;
-using hf_adc_cali_scheme_ver_native_t = adc_cali_scheme_ver_t;
-
-using hf_adc_oneshot_unit_handle_t = adc_oneshot_unit_handle_t;
-using hf_adc_continuous_handle_t = adc_continuous_handle_t;  
-using hf_adc_cali_handle_t = adc_cali_handle_t;
-using hf_adc_filter_handle_t = adc_iir_filter_handle_t;
-using hf_adc_monitor_handle_t = adc_monitor_handle_t;
 #else
-// Non-ESP32 platforms - use generic types
-using hf_adc_unit_native_t = uint8_t;
-using hf_adc_channel_native_t = uint8_t;
-using hf_adc_atten_native_t = uint8_t;
-using hf_adc_bitwidth_native_t = uint8_t;
-using hf_adc_ulp_mode_native_t = uint8_t;
-using hf_adc_oneshot_clk_src_native_t = uint8_t;
-using hf_adc_continuous_clk_src_native_t = uint8_t;
-using hf_adc_digi_convert_mode_native_t = uint8_t;
-using hf_adc_digi_output_format_native_t = uint8_t;
-using hf_adc_cali_scheme_ver_native_t = uint8_t;
 
+// PORT NEW PLATFORM TYPES HERE
 
-// Generic handle types for non-ESP32 platforms
-using hf_adc_oneshot_unit_handle_t = void*;
-using hf_adc_continuous_handle_t = void*;
-using hf_adc_cali_handle_t = void*;
-using hf_adc_filter_handle_t = void*;
-using hf_adc_monitor_handle_t = void*;
 #endif
 
 //==============================================================================
-// HF NATIVE ENUM MAPPINGS FROM ESP-IDF TYPES
+// PLATFORM-SPECIFIC ENUM MAPPINGS
 //==============================================================================
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -76,154 +46,102 @@ using hf_adc_monitor_handle_t = void*;
  * @brief HF ADC unit mapping from ESP-IDF native types.
  */
 enum class hf_adc_unit_t : uint8_t {
-  HF_ADC_UNIT_1 = ADC_UNIT_1,    ///< SAR ADC 1
-  HF_ADC_UNIT_2 = ADC_UNIT_2,    ///< SAR ADC 2
+  HF_ADC_UNIT_1 = adc_unit_t::ADC_UNIT_1,    ///< SAR ADC 1
+  HF_ADC_UNIT_2 = adc_unit_t::ADC_UNIT_2,    ///< SAR ADC 2
 };
 
 /**
  * @brief HF ADC channel mapping from ESP-IDF native types.
  */
 enum class hf_adc_channel_t : uint8_t {
-  HF_ADC_CHANNEL_0 = ADC_CHANNEL_0,
-  HF_ADC_CHANNEL_1 = ADC_CHANNEL_1,
-  HF_ADC_CHANNEL_2 = ADC_CHANNEL_2,
-  HF_ADC_CHANNEL_3 = ADC_CHANNEL_3,
-  HF_ADC_CHANNEL_4 = ADC_CHANNEL_4,
-  HF_ADC_CHANNEL_5 = ADC_CHANNEL_5,
-  HF_ADC_CHANNEL_6 = ADC_CHANNEL_6,
-  HF_ADC_CHANNEL_7 = ADC_CHANNEL_7,
-  HF_ADC_CHANNEL_8 = ADC_CHANNEL_8,
-  HF_ADC_CHANNEL_9 = ADC_CHANNEL_9,
+  HF_ADC_CHANNEL_0 = adc_channel_t::ADC_CHANNEL_0,
+  HF_ADC_CHANNEL_1 = adc_channel_t::ADC_CHANNEL_1,
+  HF_ADC_CHANNEL_2 = adc_channel_t::ADC_CHANNEL_2,
+  HF_ADC_CHANNEL_3 = adc_channel_t::ADC_CHANNEL_3,
+  HF_ADC_CHANNEL_4 = adc_channel_t::ADC_CHANNEL_4,
+  HF_ADC_CHANNEL_5 = adc_channel_t::ADC_CHANNEL_5,
+  HF_ADC_CHANNEL_6 = adc_channel_t::ADC_CHANNEL_6,
+  HF_ADC_CHANNEL_7 = adc_channel_t::ADC_CHANNEL_7,
+  HF_ADC_CHANNEL_8 = adc_channel_t::ADC_CHANNEL_8,
+  HF_ADC_CHANNEL_9 = adc_channel_t::ADC_CHANNEL_9,
 };
 
 /**
  * @brief HF ADC attenuation mapping from ESP-IDF native types.
  */
 enum class hf_adc_attenuation_t : uint8_t {
-  HF_ADC_ATTEN_DB_0 = ADC_ATTEN_DB_0,      ///< No input attenuation (~1.1V max)
-  HF_ADC_ATTEN_DB_2_5 = ADC_ATTEN_DB_2_5,  ///< 2.5dB attenuation (~1.5V max)
-  HF_ADC_ATTEN_DB_6 = ADC_ATTEN_DB_6,      ///< 6dB attenuation (~2.2V max)
-  HF_ADC_ATTEN_DB_11 = ADC_ATTEN_DB_11,    ///< 11dB attenuation (~3.9V max)
-  HF_ADC_ATTEN_DB_12 = ADC_ATTEN_DB_12,    ///< 12dB attenuation (same as 11dB)
+  HF_ADC_ATTEN_DB_0 = adc_atten_t::ADC_ATTEN_DB_0,      ///< No input attenuation (~1.1V max)
+  HF_ADC_ATTEN_DB_2_5 = adc_atten_t::ADC_ATTEN_DB_2_5,  ///< 2.5dB attenuation (~1.5V max)
+  HF_ADC_ATTEN_DB_6 = adc_atten_t::ADC_ATTEN_DB_6,      ///< 6dB attenuation (~2.2V max)
+  HF_ADC_ATTEN_DB_12 = adc_atten_t::ADC_ATTEN_DB_12,    ///< 12dB attenuation (same as 11dB)
 };
 
 /**
  * @brief HF ADC bitwidth mapping from ESP-IDF native types.
  */
 enum class hf_adc_bitwidth_t : uint8_t {
-  HF_ADC_BITWIDTH_DEFAULT = ADC_BITWIDTH_DEFAULT,  ///< Default width (max supported)
-  HF_ADC_BITWIDTH_9 = ADC_BITWIDTH_9,              ///< 9-bit resolution
-  HF_ADC_BITWIDTH_10 = ADC_BITWIDTH_10,            ///< 10-bit resolution
-  HF_ADC_BITWIDTH_11 = ADC_BITWIDTH_11,            ///< 11-bit resolution
-  HF_ADC_BITWIDTH_12 = ADC_BITWIDTH_12,            ///< 12-bit resolution
-  HF_ADC_BITWIDTH_13 = ADC_BITWIDTH_13,            ///< 13-bit resolution
+  HF_ADC_BITWIDTH_DEFAULT = adc_bitwidth_t::ADC_BITWIDTH_DEFAULT,  ///< Default width (max supported)
+  HF_ADC_BITWIDTH_9 = adc_bitwidth_t::ADC_BITWIDTH_9,              ///< 9-bit resolution
+  HF_ADC_BITWIDTH_10 = adc_bitwidth_t::ADC_BITWIDTH_10,            ///< 10-bit resolution
+  HF_ADC_BITWIDTH_11 = adc_bitwidth_t::ADC_BITWIDTH_11,            ///< 11-bit resolution
+  HF_ADC_BITWIDTH_12 = adc_bitwidth_t::ADC_BITWIDTH_12,            ///< 12-bit resolution
+  HF_ADC_BITWIDTH_13 = adc_bitwidth_t::ADC_BITWIDTH_13,            ///< 13-bit resolution
 };
 
 /**
  * @brief HF ADC ULP mode mapping from ESP-IDF native types.
  */
 enum class hf_adc_ulp_mode_t : uint8_t {
-  HF_ADC_ULP_MODE_DISABLE = ADC_ULP_MODE_DISABLE,  ///< ADC ULP mode disabled
-  HF_ADC_ULP_MODE_FSM = ADC_ULP_MODE_FSM,          ///< ADC controlled by ULP FSM
-  HF_ADC_ULP_MODE_RISCV = ADC_ULP_MODE_RISCV,      ///< ADC controlled by ULP RISCV
+  HF_ADC_ULP_MODE_DISABLE = adc_ulp_mode_t::ADC_ULP_MODE_DISABLE,  ///< ADC ULP mode disabled
+  HF_ADC_ULP_MODE_FSM = adc_ulp_mode_t::ADC_ULP_MODE_FSM,          ///< ADC controlled by ULP FSM
+  HF_ADC_ULP_MODE_RISCV = adc_ulp_mode_t::ADC_ULP_MODE_RISCV,      ///< ADC controlled by ULP RISCV
 };
 
 /**
  * @brief HF ADC continuous mode convert mode mapping from ESP-IDF native types.
  */
 enum class hf_adc_digi_convert_mode_t : uint8_t {
-  HF_ADC_CONV_SINGLE_UNIT_1 = ADC_CONV_SINGLE_UNIT_1,  ///< Only use ADC1
-  HF_ADC_CONV_SINGLE_UNIT_2 = ADC_CONV_SINGLE_UNIT_2,  ///< Only use ADC2  
-  HF_ADC_CONV_BOTH_UNIT = ADC_CONV_BOTH_UNIT,          ///< Use both ADC1 and ADC2 simultaneously
-  HF_ADC_CONV_ALTER_UNIT = ADC_CONV_ALTER_UNIT,        ///< Use both ADC1 and ADC2 alternately
+  HF_ADC_CONV_SINGLE_UNIT_1 = adc_digi_convert_mode_t::ADC_CONV_SINGLE_UNIT_1,  ///< Only use ADC1
+  HF_ADC_CONV_SINGLE_UNIT_2 = adc_digi_convert_mode_t::ADC_CONV_SINGLE_UNIT_2,  ///< Only use ADC2
+  HF_ADC_CONV_BOTH_UNIT = adc_digi_convert_mode_t::ADC_CONV_BOTH_UNIT,          ///< Use both ADC1 and ADC2 simultaneously
+  HF_ADC_CONV_ALTER_UNIT = adc_digi_convert_mode_t::ADC_CONV_ALTER_UNIT,        ///< Use both ADC1 and ADC2 alternately
 };
 
 /**
  * @brief HF ADC continuous mode output format mapping from ESP-IDF native types.
  */
 enum class hf_adc_digi_output_format_t : uint8_t {
-  HF_ADC_DIGI_OUTPUT_FORMAT_TYPE1 = ADC_DIGI_OUTPUT_FORMAT_TYPE1,  ///< Type1 format
-  HF_ADC_DIGI_OUTPUT_FORMAT_TYPE2 = ADC_DIGI_OUTPUT_FORMAT_TYPE2,  ///< Type2 format
+  HF_ADC_DIGI_OUTPUT_FORMAT_TYPE1 = adc_digi_output_format_t::ADC_DIGI_OUTPUT_FORMAT_TYPE1,  ///< Type1 format
+  HF_ADC_DIGI_OUTPUT_FORMAT_TYPE2 = adc_digi_output_format_t::ADC_DIGI_OUTPUT_FORMAT_TYPE2,  ///< Type2 format
 };
 
 /**
  * @brief HF ADC calibration scheme mapping from ESP-IDF native types.
  */
 enum class hf_adc_calibration_scheme_t : uint8_t {
-  HF_ADC_CALI_SCHEME_LINE_FITTING = ADC_CALI_SCHEME_VER_LINE_FITTING,    ///< Line fitting scheme
-  HF_ADC_CALI_SCHEME_CURVE_FITTING = ADC_CALI_SCHEME_VER_CURVE_FITTING,  ///< Curve fitting scheme
+  HF_ADC_CALI_SCHEME_LINE_FITTING = adc_cali_scheme_ver_t::ADC_CALI_SCHEME_VER_LINE_FITTING,    ///< Line fitting scheme
+  HF_ADC_CALI_SCHEME_CURVE_FITTING = adc_cali_scheme_ver_t::ADC_CALI_SCHEME_VER_CURVE_FITTING,  ///< Curve fitting scheme
 };
 
 /**
  * @brief HF ADC oneshot clock source mapping from ESP-IDF native types.
  */
 enum class hf_adc_oneshot_clk_src_t : uint8_t {
-  HF_ADC_ONESHOT_CLK_SRC_DEFAULT = 0,  ///< Default clock source (system chooses)
-  HF_ADC_ONESHOT_CLK_SRC_APB = 1,      ///< APB clock source
-  HF_ADC_ONESHOT_CLK_SRC_XTAL = 2,     ///< XTAL clock source
+  HF_ADC_ONESHOT_CLK_SRC_XTAL = soc_periph_adc_digi_clk_src_t::ADC_DIGI_CLK_SRC_XTAL,           ///< XTAL clock source
+  HF_ADC_ONESHOT_CLK_SRC_PLL_F80M = soc_periph_adc_digi_clk_src_t::ADC_DIGI_CLK_SRC_PLL_F80M,   ///< PLL_F80M clock source
+  HF_ADC_ONESHOT_CLK_SRC_RC_FAST = soc_periph_adc_digi_clk_src_t::ADC_DIGI_CLK_SRC_RC_FAST,     ///< RC_FAST clock source
+  HF_ADC_ONESHOT_CLK_SRC_DEFAULT = soc_periph_adc_digi_clk_src_t::ADC_DIGI_CLK_SRC_DEFAULT,     ///< Default clock source (PLL_F80M)
 };
 
 /**
  * @brief HF ADC continuous clock source mapping from ESP-IDF native types.
  */
 enum class hf_adc_continuous_clk_src_t : uint8_t {
-  HF_ADC_CONTINUOUS_CLK_SRC_DEFAULT = 0,  ///< Default clock source (system chooses)
-  HF_ADC_CONTINUOUS_CLK_SRC_APB = 1,      ///< APB clock source
-  HF_ADC_CONTINUOUS_CLK_SRC_XTAL = 2,     ///< XTAL clock source
+  HF_ADC_CONTINUOUS_CLK_SRC_XTAL = soc_periph_adc_digi_clk_src_t::ADC_DIGI_CLK_SRC_XTAL,           ///< XTAL clock source
+  HF_ADC_CONTINUOUS_CLK_SRC_PLL_F80M = soc_periph_adc_digi_clk_src_t::ADC_DIGI_CLK_SRC_PLL_F80M,   ///< PLL_F80M clock source
+  HF_ADC_CONTINUOUS_CLK_SRC_RC_FAST = soc_periph_adc_digi_clk_src_t::ADC_DIGI_CLK_SRC_RC_FAST,     ///< RC_FAST clock source
+  HF_ADC_CONTINUOUS_CLK_SRC_DEFAULT = soc_periph_adc_digi_clk_src_t::ADC_DIGI_CLK_SRC_DEFAULT,     ///< Default clock source (PLL_F80M)
 };
-
-#else
-// Non-ESP32 generic enum definitions
-enum class hf_adc_unit_t : uint8_t {
-  HF_ADC_UNIT_1 = 1,
-  HF_ADC_UNIT_2 = 2,
-};
-
-enum class hf_adc_channel_t : uint8_t {
-  HF_ADC_CHANNEL_0 = 0, HF_ADC_CHANNEL_1 = 1, HF_ADC_CHANNEL_2 = 2, HF_ADC_CHANNEL_3 = 3,
-  HF_ADC_CHANNEL_4 = 4, HF_ADC_CHANNEL_5 = 5, HF_ADC_CHANNEL_6 = 6, HF_ADC_CHANNEL_7 = 7,
-  HF_ADC_CHANNEL_8 = 8, HF_ADC_CHANNEL_9 = 9,
-};
-
-enum class hf_adc_attenuation_t : uint8_t {
-  HF_ADC_ATTEN_DB_0 = 0, HF_ADC_ATTEN_DB_2_5 = 1, HF_ADC_ATTEN_DB_6 = 2, 
-  HF_ADC_ATTEN_DB_11 = 3, HF_ADC_ATTEN_DB_12 = 3,
-};
-
-enum class hf_adc_bitwidth_t : uint8_t {
-  HF_ADC_BITWIDTH_DEFAULT = 12, HF_ADC_BITWIDTH_9 = 9, HF_ADC_BITWIDTH_10 = 10,
-  HF_ADC_BITWIDTH_11 = 11, HF_ADC_BITWIDTH_12 = 12, HF_ADC_BITWIDTH_13 = 13,
-};
-
-enum class hf_adc_ulp_mode_t : uint8_t {
-  HF_ADC_ULP_MODE_DISABLE = 0, HF_ADC_ULP_MODE_FSM = 1, HF_ADC_ULP_MODE_RISCV = 2,
-};
-
-enum class hf_adc_digi_convert_mode_t : uint8_t {
-  HF_ADC_CONV_SINGLE_UNIT_1 = 0, HF_ADC_CONV_SINGLE_UNIT_2 = 1,
-  HF_ADC_CONV_BOTH_UNIT = 2, HF_ADC_CONV_ALTER_UNIT = 3,
-};
-
-enum class hf_adc_digi_output_format_t : uint8_t {
-  HF_ADC_DIGI_OUTPUT_FORMAT_TYPE1 = 0, HF_ADC_DIGI_OUTPUT_FORMAT_TYPE2 = 1,
-};
-
-enum class hf_adc_calibration_scheme_t : uint8_t {
-  HF_ADC_CALI_SCHEME_LINE_FITTING = 0, HF_ADC_CALI_SCHEME_CURVE_FITTING = 1,
-};
-
-enum class hf_adc_oneshot_clk_src_t : uint8_t {
-  HF_ADC_ONESHOT_CLK_SRC_DEFAULT = 0, HF_ADC_ONESHOT_CLK_SRC_APB = 1, HF_ADC_ONESHOT_CLK_SRC_XTAL = 2,
-};
-
-enum class hf_adc_continuous_clk_src_t : uint8_t {
-  HF_ADC_CONTINUOUS_CLK_SRC_DEFAULT = 0, HF_ADC_CONTINUOUS_CLK_SRC_APB = 1, HF_ADC_CONTINUOUS_CLK_SRC_XTAL = 2,
-};
-#endif
-
-//==============================================================================
-// PLATFORM-AGNOSTIC ADC CONFIGURATION TYPES
-//==============================================================================
 
 /**
  * @brief ADC sampling strategy types.
@@ -319,8 +237,93 @@ struct hf_adc_channel_config_t {
         enable_filter(false), filter_coeff(2) {}
 };
 
+/**
+ * @brief ADC digital filter configuration.
+ */
+struct hf_adc_filter_config_t {
+  HfChannelId channelId;        ///< Channel to apply filter
+  hf_adc_filter_type_t filterType; ///< Type of filter
+  uint8_t filterCoeff;      ///< Filter coefficient (0-15 for IIR)
+  bool enabled;             ///< Enable/disable filter
+
+  hf_adc_filter_config_t()
+      : channelId(0), filterType(hf_adc_filter_type_t::None), filterCoeff(2), enabled(false) {}
+};
+
+/**
+ * @brief ADC threshold monitor configuration.
+ */
+struct hf_adc_monitor_config_t {
+  HfChannelId monitorId;       ///< Monitor ID (0-1 for ESP32C6)
+  HfChannelId channelId;       ///< Channel to monitor
+  uint32_t highThreshold;  ///< High threshold value
+  uint32_t lowThreshold;   ///< Low threshold value
+  bool highThresholdIntEn; ///< Enable high threshold interrupt
+  bool lowThresholdIntEn;  ///< Enable low threshold interrupt
+
+  hf_adc_monitor_config_t()
+      : monitorId(0), channelId(0), highThreshold(4000), lowThreshold(100),
+        highThresholdIntEn(false), lowThresholdIntEn(false) {}
+};
+
+/**
+ * @brief ADC calibration configuration.
+ */
+struct hf_adc_calibration_config_t {
+  hf_adc_calibration_scheme_t scheme; ///< Calibration scheme
+  uint32_t attenuation;        ///< Attenuation setting
+  uint32_t bitWidth;           ///< Bit width for calibration
+  bool autoCalibrate;          ///< Enable automatic calibration
+
+  hf_adc_calibration_config_t()
+      : scheme(hf_adc_calibration_scheme_t::LineFitting), attenuation(0), bitWidth(12),
+        autoCalibrate(true) {}
+};
+
+/**
+ * @brief Advanced ADC configuration structure.
+ */
+struct hf_adc_advanced_config_t {
+  // Basic configuration
+  uint8_t adcUnit;      ///< ADC unit (1 or 2)
+  uint32_t resolution;  ///< Resolution in bits (12, 11, 10, 9)
+  uint32_t attenuation; ///< Input attenuation
+  uint32_t sampleTime;  ///< Sample time setting
+
+  // Advanced configuration
+  hf_adc_sampling_strategy_t samplingStrategy; ///< Sampling strategy
+  hf_adc_trigger_source_t triggerSource;       ///< Trigger source
+  hf_adc_power_mode_t powerMode;               ///< Power mode setting
+  bool oversamplingEnabled;             ///< Enable hardware oversampling
+  uint8_t oversamplingRatio;            ///< Oversampling ratio (2^n)
+
+  // Continuous mode
+  bool continuousMode;                  ///< Enable continuous mode
+  hf_adc_continuous_config_t continuousConfig; ///< Continuous mode configuration
+
+  // Calibration
+  hf_adc_calibration_config_t calibrationConfig; ///< Calibration configuration
+
+  // Statistics and diagnostics
+  bool statisticsEnabled;  ///< Enable operation statistics
+  bool diagnosticsEnabled; ///< Enable diagnostic features
+
+  hf_adc_advanced_config_t()
+      : adcUnit(1), resolution(12), attenuation(0), sampleTime(0),
+        samplingStrategy(hf_adc_sampling_strategy_t::Single), triggerSource(hf_adc_trigger_source_t::Software),
+        powerMode(hf_adc_power_mode_t::FullPower), oversamplingEnabled(false), oversamplingRatio(1),
+        continuousMode(false), statisticsEnabled(false), diagnosticsEnabled(false) {}
+};
+
+
+#else
+
+// PORT NEW PLATFORM TYPES HERE
+
+#endif
+
 //==============================================================================
-// ESP32C6 ADC CONSTANTS AND VALIDATION MACROS
+// PLATFORM-SPECIFIC CONSTANTS AND VALIDATION MACROS
 //==============================================================================
 
 #ifdef HF_TARGET_MCU_ESP32C6
@@ -365,24 +368,49 @@ static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT = 1024;    // Default DMA
 #define HF_ADC_IS_VALID_ATTENUATION(atten) ((atten) <= 3)
 #define HF_ADC_IS_VALID_BUFFER_SIZE(size) \
   ((size) >= HF_ADC_DMA_BUFFER_SIZE_MIN && (size) <= HF_ADC_DMA_BUFFER_SIZE_MAX)
-#else
-// Generic constants for non-ESP32C6 platforms
-static constexpr uint8_t HF_ADC_MAX_UNITS = 2;
-static constexpr uint8_t HF_ADC_MAX_CHANNELS = 8;
-static constexpr uint32_t HF_ADC_MIN_SAMPLING_FREQ = 1;
-static constexpr uint32_t HF_ADC_MAX_SAMPLING_FREQ = 100000;
-static constexpr uint32_t HF_ADC_DEFAULT_SAMPLING_FREQ = 1000;
-static constexpr uint32_t HF_ADC_DMA_BUFFER_SIZE_MIN = 256;
-static constexpr uint32_t HF_ADC_DMA_BUFFER_SIZE_MAX = 4096;
-static constexpr uint32_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT = 1024;
 
-#define HF_ADC_IS_VALID_UNIT(unit) ((unit) <= HF_ADC_MAX_UNITS)
-#define HF_ADC_IS_VALID_CHANNEL(ch) ((ch) < HF_ADC_MAX_CHANNELS)
-#define HF_ADC_IS_VALID_SAMPLING_FREQ(freq) \
-  ((freq) >= HF_ADC_MIN_SAMPLING_FREQ && (freq) <= HF_ADC_MAX_SAMPLING_FREQ)
-#define HF_ADC_IS_VALID_RESOLUTION(res) \
-  ((res) >= 8 && (res) <= 12)
-#define HF_ADC_IS_VALID_ATTENUATION(atten) ((atten) <= 3)
-#define HF_ADC_IS_VALID_BUFFER_SIZE(size) \
-  ((size) >= HF_ADC_DMA_BUFFER_SIZE_MIN && (size) <= HF_ADC_DMA_BUFFER_SIZE_MAX)
+#else
+
+// PORT NEW PLATFORM TYPES HERE
+
 #endif
+
+//==============================================================================
+// PLATFORM-AGNOSTIC ADC DRIVER ENUMS
+//==============================================================================
+
+/**
+ * @brief ADC operation statistics.
+ */
+struct hf_adc_statistics_t {
+  uint64_t totalConversions;        ///< Total conversions performed
+  uint64_t successfulConversions;   ///< Successful conversions
+  uint64_t failedConversions;       ///< Failed conversions
+  uint64_t averageConversionTimeUs; ///< Average conversion time (microseconds)
+  uint64_t maxConversionTimeUs;     ///< Maximum conversion time
+  uint64_t minConversionTimeUs;     ///< Minimum conversion time
+  uint32_t calibrationCount;        ///< Number of calibrations performed
+  uint32_t thresholdViolations;     ///< Threshold monitor violations
+
+  hf_adc_statistics_t()
+      : totalConversions(0), successfulConversions(0), failedConversions(0),
+        averageConversionTimeUs(0), maxConversionTimeUs(0), minConversionTimeUs(UINT64_MAX),
+        calibrationCount(0), thresholdViolations(0) {}
+};
+
+/**
+ * @brief ADC diagnostic information.
+ */
+struct hf_adc_diagnostics_t {
+  bool adcHealthy;             ///< Overall ADC health status
+  HfAdcErr lastErrorCode;      ///< Last error code
+  uint64_t lastErrorTimestamp; ///< Last error timestamp
+  uint32_t consecutiveErrors;  ///< Consecutive error count
+  float temperatureC;         ///< ADC temperature (if available)
+  float referenceVoltage;     ///< Reference voltage
+  bool calibrationValid;       ///< Calibration validity
+
+  hf_adc_diagnostics_t()
+      : adcHealthy(true), lastErrorCode(HF_ADC_ERR_OK), lastErrorTimestamp(0), consecutiveErrors(0),
+        temperatureC(25.0f), referenceVoltage(3.3f), calibrationValid(false) {}
+};

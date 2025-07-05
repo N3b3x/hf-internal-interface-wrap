@@ -68,77 +68,109 @@ using ScopedLock = RtosUniqueLock<RtosMutex>;
 // CONSTRUCTORS AND DESTRUCTOR
 //==============================================================================
 
-McuAdc::McuAdc() noexcept 
-    : BaseAdc(), unit_(1), attenuation_(static_cast<uint32_t>(hf_adc_attenuation_t::HF_ADC_ATTEN_DB_11)), 
+McuAdc::McuAdc() noexcept
+    : BaseAdc(),
+      advanced_config_(),
+      use_advanced_config_(false),
+      advanced_initialized_(false),
+      adc_handle_(nullptr),
+      cali_handle_(nullptr),
+      cali_enable_(false),
+      unit_(1),
+      attenuation_(static_cast<uint32_t>(hf_adc_attenuation_t::HF_ADC_ATTEN_DB_11)),
       bitwidth_(static_cast<uint8_t>(hf_adc_resolution_t::HF_ADC_RES_12BIT)),
-      adc_handle_(nullptr), cali_handle_(nullptr), cali_enable_(false),
-      use_advanced_config_(false), advanced_initialized_(false),
-      statistics_(), diagnostics_(), mutex_()
 #ifdef HF_MCU_FAMILY_ESP32
-      , dma_buffer_(nullptr), adc_continuous_handle_(nullptr), dma_task_handle_(nullptr), 
-      dma_mode_active_(false), active_callback_(nullptr), callback_user_data_(nullptr),
-      current_dma_channel_(0)
+      dma_buffer_(nullptr),
+      adc_continuous_handle_(nullptr),
+      dma_task_handle_(nullptr),
+      dma_mode_active_(false),
+      current_dma_channel_(0),
+      active_callback_(nullptr),
+      callback_user_data_(nullptr),
 #endif
-{
-    ESP_LOGI(TAG, "ADC initialized with default config: Unit=%d, Atten=%d, Bits=%d", 
-             unit_, attenuation_, bitwidth_);
+      filter_configs_(),
+      monitor_configs_(),
+      calibration_config_(),
+      threshold_callback_(nullptr),
+      threshold_callback_user_data_(nullptr),
+      trigger_source_(hf_adc_trigger_source_t::Software),
+      trigger_parameter_(0),
+      triggered_channels_(),
+      triggered_sampling_active_(false),
+      statistics_(),
+      diagnostics_(),
+      mutex_() {
+  // Intentionally empty
 }
 
 McuAdc::McuAdc(hf_adc_unit_t adc_unit, uint32_t attenuation, hf_adc_resolution_t width) noexcept
-    : BaseAdc(), unit_(static_cast<uint8_t>(adc_unit)), attenuation_(attenuation), 
-      bitwidth_(static_cast<uint8_t>(width)), adc_handle_(nullptr),
-      cali_handle_(nullptr), cali_enable_(false), use_advanced_config_(false), 
-      advanced_initialized_(false), statistics_(), diagnostics_(), mutex_()
+    : BaseAdc(),
+      advanced_config_(),
+      use_advanced_config_(false),
+      advanced_initialized_(false),
+      adc_handle_(nullptr),
+      cali_handle_(nullptr),
+      cali_enable_(false),
+      unit_(static_cast<uint8_t>(adc_unit)),
+      attenuation_(attenuation),
+      bitwidth_(static_cast<uint8_t>(width)),
 #ifdef HF_MCU_FAMILY_ESP32
-      , dma_buffer_(nullptr), adc_continuous_handle_(nullptr), dma_task_handle_(nullptr), 
-      dma_mode_active_(false), active_callback_(nullptr), callback_user_data_(nullptr),
-      current_dma_channel_(0)
+      dma_buffer_(nullptr),
+      adc_continuous_handle_(nullptr),
+      dma_task_handle_(nullptr),
+      dma_mode_active_(false),
+      current_dma_channel_(0),
+      active_callback_(nullptr),
+      callback_user_data_(nullptr),
 #endif
-{
-    // ESP32-C6 only supports ADC_UNIT_1, validate and adjust if needed
-    if (unit_ != 1) {
-        ESP_LOGW(TAG, "ESP32C6 only supports ADC Unit 1, adjusting from %d to 1", unit_);
-        unit_ = 1;
-    }
-    
-    // Validate attenuation setting
-    if (attenuation_ > 3) {
-        ESP_LOGW(TAG, "Invalid attenuation %d, using 11dB default", attenuation_);
-        attenuation_ = static_cast<uint32_t>(hf_adc_attenuation_t::HF_ADC_ATTEN_DB_11);
-    }
-    
-    // Validate bit width (ESP32C6 supports 9-12 bits)
-    if (bitwidth_ < 9 || bitwidth_ > 12) {
-        ESP_LOGW(TAG, "Invalid bit width %d, using 12-bit default", bitwidth_);
-        bitwidth_ = 12;
-    }
-    
-    ESP_LOGI(TAG, "ADC initialized: Unit=%d, Atten=%d, Bits=%d", unit_, attenuation_, bitwidth_);
+      filter_configs_(),
+      monitor_configs_(),
+      calibration_config_(),
+      threshold_callback_(nullptr),
+      threshold_callback_user_data_(nullptr),
+      trigger_source_(hf_adc_trigger_source_t::Software),
+      trigger_parameter_(0),
+      triggered_channels_(),
+      triggered_sampling_active_(false),
+      statistics_(),
+      diagnostics_(),
+      mutex_() {
+  // Intentionally empty
 }
 
 McuAdc::McuAdc(const AdcAdvancedConfig &config) noexcept
-    : BaseAdc(), advanced_config_(config), use_advanced_config_(true), advanced_initialized_(false),
-      unit_(config.adcUnit), attenuation_(config.attenuation), bitwidth_(config.resolution),
-      adc_handle_(nullptr), cali_handle_(nullptr), cali_enable_(false),
-      statistics_(), diagnostics_(), mutex_()
+    : BaseAdc(),
+      advanced_config_(config),
+      use_advanced_config_(true),
+      advanced_initialized_(false),
+      adc_handle_(nullptr),
+      cali_handle_(nullptr),
+      cali_enable_(false),
+      unit_(config.adcUnit),
+      attenuation_(config.attenuation),
+      bitwidth_(config.resolution),
 #ifdef HF_MCU_FAMILY_ESP32
-      , dma_buffer_(nullptr), adc_continuous_handle_(nullptr), dma_task_handle_(nullptr), 
-      dma_mode_active_(false), active_callback_(nullptr), callback_user_data_(nullptr),
-      current_dma_channel_(0)
+      dma_buffer_(nullptr),
+      adc_continuous_handle_(nullptr),
+      dma_task_handle_(nullptr),
+      dma_mode_active_(false),
+      current_dma_channel_(0),
+      active_callback_(nullptr),
+      callback_user_data_(nullptr),
 #endif
-{
-    // ESP32-C6 validation
-    if (unit_ != 1) {
-        ESP_LOGW(TAG, "ESP32C6 only supports ADC Unit 1, adjusting from %d to 1", unit_);
-        unit_ = 1;
-        advanced_config_.adcUnit = 1;
-    }
-    
-    // Validate and adjust configuration parameters
-    ValidateAdvancedConfig();
-    
-    ESP_LOGI(TAG, "ADC initialized with advanced config: Unit=%d, Atten=%d, Bits=%d, Strategy=%d", 
-             unit_, attenuation_, bitwidth_, static_cast<int>(advanced_config_.samplingStrategy));
+      filter_configs_(),
+      monitor_configs_(),
+      calibration_config_(),
+      threshold_callback_(nullptr),
+      threshold_callback_user_data_(nullptr),
+      trigger_source_(config.triggerSource),
+      trigger_parameter_(0),
+      triggered_channels_(),
+      triggered_sampling_active_(false),
+      statistics_(),
+      diagnostics_(),
+      mutex_() {
+  // Intentionally empty
 }
 
 McuAdc::~McuAdc() noexcept {
@@ -200,13 +232,11 @@ bool McuAdc::Initialize() noexcept {
     }
 
     // Mark as initialized
-    initialized_ = true;
     ESP_LOGI(TAG, "ADC initialization completed successfully");
     return true;
 
 #else
     ESP_LOGW(TAG, "Non-ESP32 platform initialization not implemented");
-    initialized_ = true;
     return true;
 #endif
 }
@@ -1199,7 +1229,7 @@ HfAdcErr McuAdc::reconfigure(const AdcAdvancedConfig &config) noexcept {
     return initializeAdvanced(config);
 }
 
-HfAdcErr McuAdc::configureFilter(const AdcFilterConfig &config) noexcept {
+HfAdcErr McuAdc::configureFilter(const hf_adc_filter_config_t &config) noexcept {
     ESP_LOGI(TAG, "Configuring digital filter: channel=%d, type=%d, enabled=%s",
              config.channelId, static_cast<int>(config.filterType), config.enabled ? "yes" : "no");
     
@@ -1233,7 +1263,7 @@ HfAdcErr McuAdc::enableFilter(HfChannelId channelId, bool enable) noexcept {
     }
     
     // Create default filter config if none exists
-    AdcFilterConfig default_config;
+    hf_adc_filter_config_t default_config;
     default_config.channelId = channelId;
     default_config.enabled = enable;
     default_config.filterType = AdcFilterType::IIR;
@@ -1242,7 +1272,7 @@ HfAdcErr McuAdc::enableFilter(HfChannelId channelId, bool enable) noexcept {
     return configureFilter(default_config);
 }
 
-HfAdcErr McuAdc::getFilterConfig(HfChannelId channelId, AdcFilterConfig &config) const noexcept {
+HfAdcErr McuAdc::getFilterConfig(HfChannelId channelId, hf_adc_filter_config_t &config) const noexcept {
     auto it = filter_configs_.find(channelId);
     if (it != filter_configs_.end()) {
         config = it->second;
@@ -1251,7 +1281,7 @@ HfAdcErr McuAdc::getFilterConfig(HfChannelId channelId, AdcFilterConfig &config)
     return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
 }
 
-HfAdcErr McuAdc::configureMonitor(const AdcMonitorConfig &config) noexcept {
+HfAdcErr McuAdc::configureMonitor(const hf_adc_monitor_config_t &config) noexcept {
     ESP_LOGI(TAG, "Configuring threshold monitor: monitor=%d, channel=%d, low=%d, high=%d",
              config.monitorId, config.channelId, config.lowThreshold, config.highThreshold);
     
@@ -1302,7 +1332,7 @@ void McuAdc::setThresholdCallback(AdcThresholdCallback callback, void *userData)
     ESP_LOGD(TAG, "Threshold callback %s", callback ? "set" : "cleared");
 }
 
-HfAdcErr McuAdc::performCalibration(const AdcCalibrationConfig &config) noexcept {
+HfAdcErr McuAdc::performCalibration(const hf_adc_calibration_config_t &config) noexcept {
     ESP_LOGI(TAG, "Performing calibration with scheme %d", static_cast<int>(config.scheme));
     
     // Store calibration configuration
@@ -1338,12 +1368,12 @@ uint32_t McuAdc::convertVoltageToRaw(HfChannelId channelId, float voltage) noexc
     return static_cast<uint32_t>((voltage / reference_voltage) * max_count);
 }
 
-HfAdcErr McuAdc::setPowerMode(AdcPowerMode mode) noexcept {
+HfAdcErr McuAdc::setPowerMode(hf_adc_power_mode_t mode) noexcept {
     advanced_config_.powerMode = mode;
     return HfAdcErr::ADC_SUCCESS;
 }
 
-AdcPowerMode McuAdc::getPowerMode() const noexcept {
+hf_adc_power_mode_t McuAdc::getPowerMode() const noexcept {
     return advanced_config_.powerMode;
 }
 
@@ -1357,10 +1387,10 @@ HfAdcErr McuAdc::enterLowPowerMode() noexcept {
     
     // Configure for low power operation
     if (use_advanced_config_) {
-        advanced_config_.powerMode = AdcPowerMode::LowPower;
+        advanced_config_.powerMode = hf_adc_power_mode_t::LowPower;
     }
     
-    return setPowerMode(AdcPowerMode::LowPower);
+    return setPowerMode(hf_adc_power_mode_t::LowPower);
 }
 
 HfAdcErr McuAdc::exitLowPowerMode() noexcept {
@@ -1368,10 +1398,10 @@ HfAdcErr McuAdc::exitLowPowerMode() noexcept {
     
     // Configure for full power operation
     if (use_advanced_config_) {
-        advanced_config_.powerMode = AdcPowerMode::FullPower;
+        advanced_config_.powerMode = hf_adc_power_mode_t::FullPower;
     }
     
-    return setPowerMode(AdcPowerMode::FullPower);
+    return setPowerMode(hf_adc_power_mode_t::FullPower);
 }
 
 HfAdcErr McuAdc::enableOversampling(HfChannelId channelId, uint8_t ratio) noexcept {
@@ -1394,7 +1424,7 @@ HfAdcErr McuAdc::enableOversampling(HfChannelId channelId, uint8_t ratio) noexce
     return HfAdcErr::ADC_SUCCESS;
 }
 
-HfAdcErr McuAdc::configureTriggerSource(AdcTriggerSource source, uint32_t parameter) noexcept {
+HfAdcErr McuAdc::configureTriggerSource(hf_adc_trigger_source_t source, uint32_t parameter) noexcept {
     ESP_LOGI(TAG, "Configuring trigger source: %d, parameter=%d", static_cast<int>(source), parameter);
     
     // Store trigger configuration
@@ -1557,41 +1587,6 @@ HfAdcErr McuAdc::ClearCalibration(HfChannelId channel_id) noexcept {
     // Clear any stored calibration data (implementation would depend on storage mechanism)
     // For now, just log the operation
     ESP_LOGI(TAG, "Calibration cleared for channel %d", ch);
-    
-    return HfAdcErr::ADC_SUCCESS;
-}
-
-HfAdcErr McuAdc::GetCalibrationStatus(HfChannelId channel_id, CalibrationStatus &status) noexcept {
-    if (!IsChannelAvailable(channel_id)) {
-        ESP_LOGE(TAG, "Invalid channel ID for GetCalibrationStatus: %d", static_cast<int>(channel_id));
-        return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
-    }
-    
-    // Initialize status structure
-    status = CalibrationStatus(); // Default constructor sets defaults
-    
-    uint8_t ch = static_cast<uint8_t>(channel_id);
-    
-    // Check if ESP32 hardware calibration is available and active
-#ifdef HF_MCU_FAMILY_ESP32
-    if (cali_enable_ && cali_handle_) {
-        status.is_calibrated = true;
-        status.active_type = CalibrationType::Factory; // ESP32 uses factory calibration
-        status.accuracy_estimate = 0.95f; // ESP32 factory calibration is typically ~95% accurate
-        status.linearity_error = 0.02f;   // ~2% linearity error typical
-        status.successful_calibrations = 1;
-        ESP_LOGD(TAG, "Channel %d: ESP32 factory calibration active", ch);
-    } else {
-        status.is_calibrated = false;
-        status.active_type = CalibrationType::None;
-        ESP_LOGD(TAG, "Channel %d: No calibration active", ch);
-    }
-#else
-    // Non-ESP32 platforms
-    status.is_calibrated = false;
-    status.active_type = CalibrationType::None;
-    ESP_LOGD(TAG, "Channel %d: Platform calibration not implemented", ch);
-#endif
     
     return HfAdcErr::ADC_SUCCESS;
 }
@@ -1844,7 +1839,7 @@ bool McuAdc::ValidateAdcSystem() noexcept {
     }
     
     // Test 5: Resource management
-    AdcDiagnostics diag = getDiagnostics();
+    hf_adc_diagnostics_t diag = getDiagnostics();
     if (diag.adcHealthy) {
         ESP_LOGI(TAG, "Test 5 PASSED: ADC health check");
     } else {
@@ -1867,18 +1862,18 @@ bool McuAdc::ValidateAdcSystem() noexcept {
 // STATISTICS AND DIAGNOSTICS IMPLEMENTATION
 //==============================================================================
 
-AdcStatistics McuAdc::getStatistics() const noexcept {
+hf_adc_statistics_t McuAdc::getStatistics() const noexcept {
     ScopedLock lock(mutex_);
     return statistics_;
 }
 
 void McuAdc::resetStatistics() noexcept {
     ScopedLock lock(mutex_);
-    statistics_ = AdcStatistics();
+    statistics_ = hf_adc_statistics_t();
     ESP_LOGI(TAG, " ADC statistics reset");
 }
 
-AdcDiagnostics McuAdc::getDiagnostics() noexcept {
+hf_adc_diagnostics_t McuAdc::getDiagnostics() noexcept {
     ScopedLock lock(mutex_);
     
     // Update diagnostic information
@@ -2003,7 +1998,7 @@ void McuAdc::demonstrateStatistics() noexcept {
     }
     
     // Get and display statistics
-    AdcStatistics stats = getStatistics();
+    hf_adc_statistics_t stats = getStatistics();
     ESP_LOGI(TAG, "============= ADC STATISTICS REPORT =============");
     ESP_LOGI(TAG, "Total Conversions:        %llu", stats.totalConversions);
     ESP_LOGI(TAG, "Successful Conversions:   %llu", stats.successfulConversions);
@@ -2021,7 +2016,7 @@ void McuAdc::demonstrateStatistics() noexcept {
     }
     
     // Get and display diagnostics
-    AdcDiagnostics diag = getDiagnostics();
+    hf_adc_diagnostics_t diag = getDiagnostics();
     ESP_LOGI(TAG, "============= ADC DIAGNOSTICS REPORT =============");
     ESP_LOGI(TAG, "ADC Health Status:        %s", diag.adcHealthy ? "HEALTHY" : "UNHEALTHY");
     ESP_LOGI(TAG, "Calibration Valid:        %s", diag.calibrationValid ? "YES" : "NO");

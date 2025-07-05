@@ -39,6 +39,8 @@
 
 #pragma once
 
+#include "HardwareTypes.h" // For basic hardware types
+#include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"  // Base types and platform selection
 #include "BaseI2c.h"  // For HfI2cErr
 

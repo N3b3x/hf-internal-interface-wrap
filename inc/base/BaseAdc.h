@@ -25,11 +25,12 @@
 #include <functional>
 #include <string_view>
 
-//--------------------------------------
-//  HardFOC ADC Error Codes (Table)
-//--------------------------------------
+//=======================================//
+//  ADC Error Codes (Table)
+//=======================================//
+
 /**
- * @brief HardFOC ADC error codes
+ * @brief ADC error codes
  * @details Comprehensive error enumeration for all ADC operations in the system.
  *          This enumeration is used across all ADC-related classes to provide
  *          consistent error reporting and handling.
@@ -123,6 +124,10 @@ constexpr std::string_view HfAdcErrToString(HfAdcErr err) noexcept {
   }
 }
 
+//=======================================//
+//  BASE ADC CLASS
+//=======================================//
+
 /**
  * @class BaseAdc
  * @brief Base class for ADCs.
@@ -162,6 +167,17 @@ public:
   }
 
   /**
+   * @brief Ensures that the ADC is initialized (lazy initialization).
+   * @return true if the ADC is initialized, false otherwise.
+   */
+  bool EnsureDeinitialized() noexcept {
+    if (initialized_) {
+      initialized_ = !Deinitialize();
+    }
+    return initialized_;
+  }
+
+  /**
    * @brief Checks if the class is initialized.
    * @return true if initialized, false otherwise
    */
@@ -180,13 +196,10 @@ public:
   virtual bool Initialize() noexcept = 0;
 
   /**
-   * @brief Deinitializes the ADC peripheral.
+   * @brief Deinitializes the ADC peripheral (must be implemented by derived classes)..
    * @return True if deinitialization is successful, false otherwise.
    */
-  virtual bool Deinitialize() noexcept {
-    initialized_ = false;
-    return true;
-  }
+  virtual bool Deinitialize() noexcept = 0;
 
   /**
    * @brief Get the maximum number of channels supported by this ADC.
@@ -238,45 +251,10 @@ public:
                                float &channel_reading_v, uint8_t numOfSamplesToAvg = 1,
                                HfTimeoutMs timeBetweenSamples = 0) noexcept = 0;
 
-  /**
-   * @brief ADC trigger source enumeration for advanced sampling
-   */
-  enum class TriggerSource : uint8_t {
-    Software = 0, ///< Software trigger (manual)
-    Timer = 1,    ///< Timer-based trigger
-    GPIO = 2,     ///< GPIO edge trigger
-    PWM = 3,      ///< PWM sync trigger
-    External = 4  ///< External trigger signal
-  };
 
-  /**
-   * @brief ADC sampling mode configuration
-   */
-  enum class SamplingMode : uint8_t {
-    Single = 0,     ///< Single conversion
-    Continuous = 1, ///< Continuous conversion
-    Burst = 2,      ///< Burst mode (fixed number)
-    DMA = 3         ///< DMA-driven continuous
-  };
-
-  /**
-   * @brief Advanced ADC configuration structure
-   */
-  struct AdcAdvancedConfig {
-    TriggerSource trigger_source; ///< Trigger source
-    SamplingMode sampling_mode;   ///< Sampling mode
-    uint32_t sample_rate_hz;      ///< Desired sample rate
-    uint16_t buffer_size;         ///< DMA buffer size
-    bool enable_oversampling;     ///< Enable oversampling
-    uint8_t oversample_ratio;     ///< Oversampling ratio (2^n)
-    bool enable_filtering;        ///< Enable digital filtering
-    float filter_cutoff_hz;       ///< Filter cutoff frequency
-
-    AdcAdvancedConfig() noexcept
-        : trigger_source(TriggerSource::Software), sampling_mode(SamplingMode::Single),
-          sample_rate_hz(1000), buffer_size(512), enable_oversampling(false), oversample_ratio(4),
-          enable_filtering(false), filter_cutoff_hz(100.0f) {}
-  };
+  //==============================================//
+  // ADVANCED FEATURES (OPTIONAL IMPLEMENTATIONS) //
+  //==============================================//
 
   /**
    * @brief ADC callback for continuous/DMA operations
@@ -286,22 +264,30 @@ public:
    * @param user_data User-provided data
    */
   using AdcCallback = std::function<void(HfChannelId channel_id, const uint16_t *samples,
-                                         size_t num_samples, void *user_data)>;
-
-  //==============================================//
-  // ADVANCED FEATURES (OPTIONAL IMPLEMENTATIONS) //
-  //==============================================//
-
+                                          size_t num_samples, void *user_data)>;
+                                          
   /**
-   * @brief Configure advanced ADC features (DMA, triggering)
-   * @param channel_id Channel to configure
-   * @param config Advanced configuration
+   * @brief Read multiple channels simultaneously
+   * @param channel_ids Array of channel IDs
+   * @param num_channels Number of channels
+   * @param readings Array to store raw readings
+   * @param voltages Array to store voltage readings
    * @return HfAdcErr error code
-   * @note Default implementation returns unsupported operation
+   * @note Default implementation reads channels sequentially
    */
-  virtual HfAdcErr ConfigureAdvanced(HfChannelId channel_id,
-                                     const AdcAdvancedConfig &config) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
+  virtual HfAdcErr ReadMultipleChannels(const HfChannelId *channel_ids, uint8_t num_channels,
+                                        uint32_t *readings, float *voltages) noexcept {
+    if (!channel_ids || !readings || !voltages) {
+      return HfAdcErr::ADC_ERR_NULL_POINTER;
+    }
+
+    for (uint8_t i = 0; i < num_channels; ++i) {
+      HfAdcErr err = ReadChannel(channel_ids[i], readings[i], voltages[i]);
+      if (err != HfAdcErr::ADC_SUCCESS) {
+        return err;
+      }
+    }
+    return HfAdcErr::ADC_SUCCESS;
   }
 
   /**
@@ -327,102 +313,9 @@ public:
     return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
   }
 
-  /**
-   * @brief Read multiple channels simultaneously
-   * @param channel_ids Array of channel IDs
-   * @param num_channels Number of channels
-   * @param readings Array to store raw readings
-   * @param voltages Array to store voltage readings
-   * @return HfAdcErr error code
-   * @note Default implementation reads channels sequentially
-   */
-  virtual HfAdcErr ReadMultipleChannels(const HfChannelId *channel_ids, uint8_t num_channels,
-                                        uint32_t *readings, float *voltages) noexcept {
-    if (!channel_ids || !readings || !voltages) {
-      return HfAdcErr::ADC_ERR_NULL_POINTER;
-    }
-
-    for (uint8_t i = 0; i < num_channels; ++i) {
-      HfAdcErr err = ReadChannel(channel_ids[i], readings[i], voltages[i]);
-      if (err != HfAdcErr::ADC_SUCCESS) {
-        return err;
-      }
-    }
-    return HfAdcErr::ADC_SUCCESS;
-  }
-
   //==============================================//
-  // CALIBRATION SUPPORT                         //
+  // CALIBRATION SUPPORT                          //
   //==============================================//
-
-  /**
-   * @brief ADC calibration types
-   */
-  enum class CalibrationType : uint8_t {
-    None = 0,       ///< No calibration
-    TwoPoint = 1,   ///< Two-point linear calibration
-    MultiPoint = 2, ///< Multi-point interpolation calibration
-    Polynomial = 3, ///< Polynomial calibration
-    Factory = 4,    ///< Factory/hardware calibration
-    UserDefined = 5 ///< User-defined calibration algorithm
-  };
-
-  /**
-   * @brief Calibration point structure for two-point and multi-point calibration
-   */
-  struct CalibrationPoint {
-    float input_voltage;    ///< Known input voltage
-    uint32_t raw_reading;   ///< ADC raw reading for this voltage
-    float temperature_c;    ///< Temperature when calibration was performed
-    uint32_t timestamp_sec; ///< Unix timestamp of calibration
-
-    CalibrationPoint() noexcept
-        : input_voltage(0.0f), raw_reading(0), temperature_c(25.0f), timestamp_sec(0) {}
-
-    CalibrationPoint(float voltage, uint32_t raw, float temp = 25.0f) noexcept
-        : input_voltage(voltage), raw_reading(raw), temperature_c(temp), timestamp_sec(0) {
-    } // Implementation should set actual timestamp
-  };
-
-  /**
-   * @brief Calibration configuration structure
-   */
-  struct CalibrationConfig {
-    CalibrationType type;          ///< Calibration type
-    uint8_t num_points;            ///< Number of calibration points (max 16)
-    CalibrationPoint points[16];   ///< Calibration points array
-    float polynomial_coeffs[8];    ///< Polynomial coefficients (for polynomial type)
-    uint8_t polynomial_order;      ///< Polynomial order (2-7)
-    bool temperature_compensation; ///< Enable temperature compensation
-    float temp_coefficient_ppm_c;  ///< Temperature coefficient (ppm/°C)
-    bool enable_drift_detection;   ///< Enable calibration drift detection
-    float max_drift_threshold;     ///< Maximum allowed drift before re-cal needed
-
-    CalibrationConfig() noexcept
-        : type(CalibrationType::None), num_points(0), points{}, polynomial_coeffs{},
-          polynomial_order(2), temperature_compensation(false), temp_coefficient_ppm_c(0.0f),
-          enable_drift_detection(false), max_drift_threshold(0.05f) {}
-  };
-
-  /**
-   * @brief Calibration status and statistics
-   */
-  struct CalibrationStatus {
-    bool is_calibrated;               ///< Channel has valid calibration
-    CalibrationType active_type;      ///< Currently active calibration type
-    uint32_t calibration_timestamp;   ///< When calibration was performed
-    float accuracy_estimate;          ///< Estimated accuracy (% full scale)
-    float linearity_error;            ///< Linearity error (% full scale)
-    float drift_amount;               ///< Detected drift since last calibration
-    bool needs_recalibration;         ///< Calibration drift exceeded threshold
-    uint32_t successful_calibrations; ///< Count of successful calibrations
-    uint32_t failed_calibrations;     ///< Count of failed calibration attempts
-
-    CalibrationStatus() noexcept
-        : is_calibrated(false), active_type(CalibrationType::None), calibration_timestamp(0),
-          accuracy_estimate(0.0f), linearity_error(0.0f), drift_amount(0.0f),
-          needs_recalibration(false), successful_calibrations(0), failed_calibrations(0) {}
-  };
 
   /**
    * @brief Calibration progress callback for long operations
@@ -443,7 +336,7 @@ public:
    * @return HfAdcErr error code
    * @note Default implementation returns unsupported operation
    */
-  virtual HfAdcErr CalibrateChannel(HfChannelId channel_id, const CalibrationConfig &config,
+  virtual HfAdcErr CalibrateChannel(HfChannelId channel_id,
                                     CalibrationProgressCallback progress_callback = nullptr,
                                     void *user_data = nullptr) noexcept {
     return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
@@ -458,9 +351,9 @@ public:
    * @return HfAdcErr error code
    * @note Implementation should prompt user to apply each reference voltage
    */
-  virtual HfAdcErr
-  AutoCalibrate(HfChannelId channel_id, const float *reference_voltages, uint8_t num_references,
-                CalibrationType calibration_type = CalibrationType::TwoPoint) noexcept {
+  virtual HfAdcErr AutoCalibrate(HfChannelId channel_id,
+                                  const float *reference_voltages,
+                                  uint8_t num_references) noexcept {
     return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -492,17 +385,6 @@ public:
   }
 
   /**
-   * @brief Get calibration status and information
-   * @param channel_id Channel to query
-   * @param status Structure to fill with calibration status
-   * @return HfAdcErr error code
-   */
-  virtual HfAdcErr GetCalibrationStatus(HfChannelId channel_id,
-                                        CalibrationStatus &status) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
    * @brief Verify calibration accuracy using known reference
    * @param channel_id Channel to verify
    * @param reference_voltage Known reference voltage to test
@@ -529,39 +411,6 @@ public:
     float temp_delta = current_temp_c - calibration_temp_c;
     float compensation_factor = 1.0f + (temp_coefficient * temp_delta / 1000000.0f);
     return static_cast<uint32_t>(raw_reading * compensation_factor);
-  }
-
-  /**
-   * @brief Validate calibration configuration
-   * @param config Configuration to validate
-   * @return true if configuration is valid, false otherwise
-   */
-  static bool ValidateCalibrationConfig(const CalibrationConfig &config) noexcept {
-    if (config.type == CalibrationType::None) {
-      return true;
-    }
-
-    if (config.type == CalibrationType::TwoPoint && config.num_points < 2) {
-      return false;
-    }
-
-    if (config.type == CalibrationType::MultiPoint && config.num_points < 3) {
-      return false;
-    }
-
-    if (config.type == CalibrationType::Polynomial &&
-        (config.polynomial_order < 2 || config.polynomial_order > 7)) {
-      return false;
-    }
-
-    // Validate that calibration points are in ascending voltage order
-    for (uint8_t i = 1; i < config.num_points; ++i) {
-      if (config.points[i].input_voltage <= config.points[i - 1].input_voltage) {
-        return false;
-      }
-    }
-
-    return true;
   }
 
 protected:
