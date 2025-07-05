@@ -78,7 +78,7 @@ McuAdc::McuAdc() noexcept
       cali_enable_(false),
       unit_(1),
       attenuation_(static_cast<uint32_t>(hf_adc_attenuation_t::HF_ADC_ATTEN_DB_11)),
-      bitwidth_(static_cast<uint8_t>(hf_adc_resolution_t::HF_ADC_RES_12BIT)),
+      bitwidth_(static_cast<uint8_t>(hf_adc_bitwidth_t::HF_ADC_BITWIDTH_12)),
 #ifdef HF_MCU_FAMILY_ESP32
       dma_buffer_(nullptr),
       adc_continuous_handle_(nullptr),
@@ -93,7 +93,7 @@ McuAdc::McuAdc() noexcept
       calibration_config_(),
       threshold_callback_(nullptr),
       threshold_callback_user_data_(nullptr),
-      trigger_source_(hf_adc_trigger_source_t::Software),
+      trigger_source_(hf_adc_trigger_source_t::HF_ADC_TRIGGER_SOFTWARE),
       trigger_parameter_(0),
       triggered_channels_(),
       triggered_sampling_active_(false),
@@ -128,7 +128,7 @@ McuAdc::McuAdc(hf_adc_unit_t adc_unit, uint32_t attenuation, hf_adc_resolution_t
       calibration_config_(),
       threshold_callback_(nullptr),
       threshold_callback_user_data_(nullptr),
-      trigger_source_(hf_adc_trigger_source_t::Software),
+      trigger_source_(hf_adc_trigger_source_t::HF_ADC_TRIGGER_SOFTWARE),
       trigger_parameter_(0),
       triggered_channels_(),
       triggered_sampling_active_(false),
@@ -138,7 +138,7 @@ McuAdc::McuAdc(hf_adc_unit_t adc_unit, uint32_t attenuation, hf_adc_resolution_t
   // Intentionally empty
 }
 
-McuAdc::McuAdc(const AdcAdvancedConfig &config) noexcept
+McuAdc::McuAdc(const hf_adc_advanced_config_t &config) noexcept
     : BaseAdc(),
       advanced_config_(config),
       use_advanced_config_(true),
@@ -645,9 +645,9 @@ void McuAdc::ValidateAdvancedConfig() noexcept {
     }
     
     // Validate sampling strategy for ESP32C6 capabilities
-    if (advanced_config_.samplingStrategy == AdcSamplingStrategy::ZeroCrossing) {
+    if (advanced_config_.samplingStrategy == hf_adc_sampling_strategy_t::HF_ADC_SAMPLING_TRIGGERED) {
         ESP_LOGW(TAG, "Zero-crossing detection not implemented, using Single mode");
-        advanced_config_.samplingStrategy = AdcSamplingStrategy::Single;
+        advanced_config_.samplingStrategy = hf_adc_sampling_strategy_t::HF_ADC_SAMPLING_SINGLE;
     }
     
     // Validate continuous mode parameters
@@ -1063,7 +1063,7 @@ HfAdcErr McuAdc::ConvertEspError(esp_err_t esp_error) noexcept {
 // CALIBRATION SUPPORT IMPLEMENTATION (BaseAdc Interface Overrides)
 //==============================================================================
 
-HfAdcErr McuAdc::CalibrateChannel(HfChannelId channel_id, const CalibrationConfig &config,
+HfAdcErr McuAdc::CalibrateChannel(HfChannelId channel_id,
                                   CalibrationProgressCallback progress_callback,
                                   void *user_data) noexcept {
     if (!IsChannelAvailable(channel_id)) {
@@ -1106,8 +1106,6 @@ HfAdcErr McuAdc::CalibrateChannel(HfChannelId channel_id, const CalibrationConfi
              static_cast<int>(channel_id), calib_success ? "successful" : "failed");
 
     // Note: We return success even if calibration fails since the ADC can still function
-    // The config parameter is intentionally unused as ESP32C6 uses hardware calibration
-    (void)config;
     
     return HfAdcErr::ADC_SUCCESS;
 }
@@ -1191,7 +1189,7 @@ HfAdcErr McuAdc::LoadCalibration(HfChannelId channel_id) noexcept {
 // PUBLIC ADVANCED ADC OPERATIONS IMPLEMENTATION
 //==============================================================================
 
-HfAdcErr McuAdc::initializeAdvanced(const AdcAdvancedConfig &config) noexcept {
+HfAdcErr McuAdc::initializeAdvanced(const hf_adc_advanced_config_t &config) noexcept {
     ESP_LOGI(TAG, "Initializing ADC with advanced configuration");
     
     // Store the advanced configuration
@@ -1211,7 +1209,7 @@ HfAdcErr McuAdc::initializeAdvanced(const AdcAdvancedConfig &config) noexcept {
     return InitializeAdvancedFeatures();
 }
 
-HfAdcErr McuAdc::reconfigure(const AdcAdvancedConfig &config) noexcept {
+HfAdcErr McuAdc::reconfigure(const hf_adc_advanced_config_t &config) noexcept {
     ESP_LOGI(TAG, "Reconfiguring ADC with new advanced settings");
     
     // Store new configuration
@@ -1241,7 +1239,7 @@ HfAdcErr McuAdc::configureFilter(const hf_adc_filter_config_t &config) noexcept 
     filter_configs_[config.channelId] = config;
     
 #ifdef HF_MCU_FAMILY_ESP32
-    if (config.enabled && config.filterType != AdcFilterType::None) {
+    if (config.enabled && config.filterType != hf_adc_filter_type_t::HF_ADC_FILTER_NONE) {
         return ConfigureHardwareFilter(config.channelId, config.filterCoeff);
     }
 #endif
@@ -1266,7 +1264,7 @@ HfAdcErr McuAdc::enableFilter(HfChannelId channelId, bool enable) noexcept {
     hf_adc_filter_config_t default_config;
     default_config.channelId = channelId;
     default_config.enabled = enable;
-    default_config.filterType = AdcFilterType::IIR;
+    default_config.filterType = hf_adc_filter_type_t::HF_ADC_FILTER_IIR;
     default_config.filterCoeff = 2;
     
     return configureFilter(default_config);
@@ -1387,10 +1385,10 @@ HfAdcErr McuAdc::enterLowPowerMode() noexcept {
     
     // Configure for low power operation
     if (use_advanced_config_) {
-        advanced_config_.powerMode = hf_adc_power_mode_t::LowPower;
+        advanced_config_.powerMode = hf_adc_power_mode_t::HF_ADC_POWER_LOW;
     }
     
-    return setPowerMode(hf_adc_power_mode_t::LowPower);
+    return setPowerMode(hf_adc_power_mode_t::HF_ADC_POWER_LOW);
 }
 
 HfAdcErr McuAdc::exitLowPowerMode() noexcept {
@@ -1398,10 +1396,10 @@ HfAdcErr McuAdc::exitLowPowerMode() noexcept {
     
     // Configure for full power operation
     if (use_advanced_config_) {
-        advanced_config_.powerMode = hf_adc_power_mode_t::FullPower;
+        advanced_config_.powerMode = hf_adc_power_mode_t::HF_ADC_POWER_FULL;
     }
     
-    return setPowerMode(hf_adc_power_mode_t::FullPower);
+    return setPowerMode(hf_adc_power_mode_t::HF_ADC_POWER_FULL);
 }
 
 HfAdcErr McuAdc::enableOversampling(HfChannelId channelId, uint8_t ratio) noexcept {
@@ -1477,7 +1475,7 @@ HfAdcErr McuAdc::stopTriggeredSampling() noexcept {
 // MISSING BASEADC VIRTUAL FUNCTION IMPLEMENTATIONS
 //==============================================================================
 
-HfAdcErr McuAdc::ConfigureAdvanced(HfChannelId channel_id, const AdcAdvancedConfig &config) noexcept {
+HfAdcErr McuAdc::ConfigureAdvanced(HfChannelId channel_id, const hf_adc_advanced_config_t &config) noexcept {
     if (!IsChannelAvailable(channel_id)) {
         ESP_LOGE(TAG, "Invalid channel ID: %d", static_cast<int>(channel_id));
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
@@ -1527,8 +1525,8 @@ HfAdcErr McuAdc::ReadMultipleChannels(const HfChannelId *channel_ids, uint8_t nu
     return HfAdcErr::ADC_SUCCESS;
 }
 
-HfAdcErr McuAdc::AutoCalibrate(HfChannelId channel_id, const float *reference_voltages, 
-                               uint8_t num_references, CalibrationType calibration_type) noexcept {
+HfAdcErr McuAdc::AutoCalibrate(HfChannelId channel_id, const float *reference_voltages,
+                               uint8_t num_references) noexcept {
     if (!IsChannelAvailable(channel_id)) {
         ESP_LOGE(TAG, "Invalid channel ID for AutoCalibrate: %d", static_cast<int>(channel_id));
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
@@ -1547,13 +1545,8 @@ HfAdcErr McuAdc::AutoCalibrate(HfChannelId channel_id, const float *reference_vo
     ESP_LOGI(TAG, "Starting AutoCalibrate for channel %d with %d reference points", 
              static_cast<int>(channel_id), num_references);
     
-    // Create calibration config
-    CalibrationConfig config;
-    config.type = calibration_type;
-    config.num_points = num_references;
-    
-    // For automatic calibration, we would need user interaction to apply reference voltages
-    // This is a simplified implementation that assumes reference voltages are already applied
+    // For automatic calibration we simply sample the provided reference voltages
+    // and output the measured raw values for user analysis.
     for (uint8_t i = 0; i < num_references; ++i) {
         uint32_t raw_reading;
         HfAdcErr read_err = ReadChannelCount(channel_id, raw_reading, 10, 10); // 10 samples with 10ms delay
@@ -1562,15 +1555,12 @@ HfAdcErr McuAdc::AutoCalibrate(HfChannelId channel_id, const float *reference_vo
             return read_err;
         }
         
-        config.points[i].input_voltage = reference_voltages[i];
-        config.points[i].raw_reading = raw_reading;
-        config.points[i].temperature_c = 25.0f; // Assume room temperature
-        
-        ESP_LOGI(TAG, "Calibration point %d: %.3fV -> %d counts", i, reference_voltages[i], raw_reading);
+        ESP_LOGI(TAG, "Calibration point %d: %.3fV -> %d counts", i,
+                 reference_voltages[i], raw_reading);
     }
-    
-    // Apply the calibration
-    return CalibrateChannel(channel_id, config);
+
+    // Apply built in calibration if available
+    return CalibrateChannel(channel_id);
 }
 
 HfAdcErr McuAdc::ClearCalibration(HfChannelId channel_id) noexcept {
