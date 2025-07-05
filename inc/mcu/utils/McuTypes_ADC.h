@@ -88,6 +88,9 @@ enum class hf_adc_bitwidth_t : uint8_t {
   HF_ADC_BITWIDTH_13 = adc_bitwidth_t::ADC_BITWIDTH_13,            ///< 13-bit resolution
 };
 
+/// Alias for resolution enum used throughout the code base
+using hf_adc_resolution_t = hf_adc_bitwidth_t;
+
 /**
  * @brief HF ADC ULP mode mapping from ESP-IDF native types.
  */

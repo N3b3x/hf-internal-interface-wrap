@@ -207,7 +207,7 @@ public:
    * @param user_data User data for progress callback
    * @return HfAdcErr error code
    */
-  HfAdcErr CalibrateChannel(HfChannelId channel_id, const CalibrationConfig &config,
+  HfAdcErr CalibrateChannel(HfChannelId channel_id,
                             CalibrationProgressCallback progress_callback = nullptr,
                             void *user_data = nullptr) noexcept override;
 
@@ -220,7 +220,7 @@ public:
    * @return HfAdcErr error code
    */
   HfAdcErr AutoCalibrate(HfChannelId channel_id,
-                          const float *reference_voltages, 
+                          const float *reference_voltages,
                           uint8_t num_references) noexcept override;
 
   /**
