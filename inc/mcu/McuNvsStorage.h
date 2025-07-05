@@ -45,10 +45,7 @@
 #include "BaseNvsStorage.h"
 #include "McuTypes.h"        // Centralized MCU type definitions (includes NVS types)
 #include <cstdint>
-
-#ifdef HF_THREAD_SAFE
 #include "RtosMutex.h"      // Thread-safe mutex support if enabled
-#endif
 
 // ESP32-C6 NVS abstracted types for portability
 using NvsHandle = hf_nvs_handle_native_t;

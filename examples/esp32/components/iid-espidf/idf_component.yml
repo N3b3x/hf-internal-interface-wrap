@@ -12,4 +12,4 @@ include_dirs:
   - ../../../src
 ## Optional dependencies etc. But not required.
 dependencies:
-  idf: ">=5.5"
+  idf: ">=5.4"

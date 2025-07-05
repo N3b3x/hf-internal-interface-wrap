@@ -1,29 +1,19 @@
 cmake_minimum_required(VERSION 3.23)
 
-idf_component_register(    SRCS
-        # MCU Implementation Sources
-        "../../../../src/mcu/McuGpio.cpp"
-        "../../../../src/mcu/McuCan.cpp"
-        "../../../../src/mcu/McuPwm.cpp"
-        "../../../../src/mcu/McuAdc.cpp"
-        "../../../../src/mcu/McuPio.cpp"
-        "../../../../src/mcu/McuI2c.cpp"
-        "../../../../src/mcu/McuSpi.cpp"
-        "../../../../src/mcu/McuUart.cpp"
-        "../../../../src/mcu/McuNvsStorage.cpp"
-        "../../../../src/mcu/McuPeriodicTimer.cpp"
-        
-        # Thread-Safe Wrapper Sources
-        "../../../../src/thread_safe/SfCan.cpp"
-        "../../../../src/thread_safe/SfI2cBus.cpp"
-        "../../../../src/thread_safe/SfSpiBus.cpp"
-        "../../../../src/thread_safe/SfUartDriver.cpp"
-        "../../../../src/thread_safe/SfPwm.cpp"
-        "../../../../src/thread_safe/SfAdc.cpp"
-        "../../../../src/thread_safe/SfGpio.cpp"
-        
-        # Utility Sources
-        "../../../../src/utils/DigitalOutputGuard.cpp"
+# Collect all source files using glob patterns for easier maintenance
+file(GLOB_RECURSE MCU_SOURCES "../../../../src/mcu/*.cpp")
+file(GLOB_RECURSE THREAD_SAFE_SOURCES "../../../../src/thread_safe/*.cpp")
+file(GLOB_RECURSE UTILS_SOURCES "../../../../src/utils/*.cpp")
+
+# Combine all source files
+set(ALL_SOURCES
+    ${MCU_SOURCES}
+    ${THREAD_SAFE_SOURCES}
+    ${UTILS_SOURCES}
+)
+
+idf_component_register(
+    SRCS ${ALL_SOURCES}
         
     INCLUDE_DIRS 
         "../../../../inc"
