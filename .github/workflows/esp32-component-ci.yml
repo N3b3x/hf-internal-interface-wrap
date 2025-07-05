@@ -42,8 +42,6 @@ jobs:
       - name: Install build tools
         run: sudo apt-get update && sudo apt-get install -y clang-format
 
-      - name: Format check
-        run: clang-format --dry-run --Werror src/*.cpp inc/*.h examples/esp32/main/*.cpp
 
       - name: ESP-IDF build
         uses: espressif/esp-idf-ci-action@v1
@@ -61,6 +59,8 @@ jobs:
             idf.py -C ${{ env.BUILD_PATH }} -DIDF_TARGET=${{ env.IDF_TARGET }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} build
             idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt
             idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json
+      - name: Format check
+        run: clang-format --dry-run --Werror src/*.cpp inc/*.h examples/esp32/main/*.cpp
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
