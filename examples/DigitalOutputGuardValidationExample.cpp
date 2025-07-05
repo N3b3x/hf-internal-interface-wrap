@@ -166,17 +166,21 @@ void ActiveLowExample() {
 /**
  * @brief Main function demonstrating all DigitalOutputGuard examples
  */
+extern "C" void RunDigitalOutputGuardValidationExamples() {
+  BasicDigitalOutputGuardExample();
+  PreConfiguredOutputExample();
+  ErrorHandlingExample();
+  ActiveLowExample();
+}
+
+#ifdef RUN_DOG_VALIDATION_MAIN
 int main() {
   std::cout << "DigitalOutputGuard Validation Examples" << std::endl;
   std::cout << "======================================" << std::endl;
   std::cout << std::endl;
 
   try {
-    BasicDigitalOutputGuardExample();
-    PreConfiguredOutputExample();
-    ErrorHandlingExample();
-    ActiveLowExample();
-
+    RunDigitalOutputGuardValidationExamples();
     std::cout << "All examples completed successfully!" << std::endl;
   } catch (const std::exception &e) {
     std::cout << "Exception caught: " << e.what() << std::endl;
@@ -185,3 +189,4 @@ int main() {
 
   return 0;
 }
+#endif

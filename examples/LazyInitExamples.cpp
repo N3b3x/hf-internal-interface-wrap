@@ -215,3 +215,14 @@ void ErrorHandlingExample() {
 
 } // namespace Examples
 } // namespace HardFOC
+
+extern "C" void RunLazyInitExamples() {
+    using namespace HardFOC::Examples;
+    GpioLazyInitExample();
+#ifdef HF_MCU_ESP32C6
+    Esp32C6AdvancedGpioExample();
+#endif
+    CanLazyInitExample();
+    PerformanceBenefitExample();
+    ErrorHandlingExample();
+}

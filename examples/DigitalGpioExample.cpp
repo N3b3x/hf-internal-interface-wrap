@@ -240,3 +240,11 @@ void ExampleErrorHandling() {
     }
   }
 }
+
+extern "C" void RunDigitalGpioExamples() {
+  ExampleMcuGpioDynamicMode();
+  ExamplePcal95555GpioDynamicMode();
+  ExampleMixedGpioUsage();
+  ExampleConfigurationChanges();
+  ExampleErrorHandling();
+}

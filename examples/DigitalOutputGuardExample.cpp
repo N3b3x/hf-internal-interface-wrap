@@ -235,3 +235,13 @@ void PerformRiskyOperation() {
   // Simulate some operation that might throw
   // ...
 }
+
+extern "C" void RunDigitalOutputGuardExamples() {
+  ExampleBasicRAAI();
+  ExampleErrorHandling();
+  ExamplePreConfiguredOutput();
+  ExampleExceptionSafety();
+  ExampleCoordinatedControl();
+  ExamplePointerInterface();
+  ExampleLegacyCompatibility();
+}

@@ -302,56 +302,68 @@ private:
 };
 
 // Main example function
+static void RunAllExamples() {
+  std::cout << "=== McuPio Examples ===" << std::endl;
+
+  // Example 1: WS2812 LED control
+  std::cout << "\n1. WS2812 LED Control Example" << std::endl;
+  WS2812Controller led(0, 18); // Channel 0, GPIO 18
+
+  // Set LED to red
+  led.SetPixelColor(255, 0, 0);
+  std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+  // Set LED to green
+  led.SetPixelColor(0, 255, 0);
+  std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+  // Set LED to blue
+  led.SetPixelColor(0, 0, 255);
+  std::cout << "WS2812 LED colors sent successfully!" << std::endl;
+
+  // Example 2: IR Remote Control
+  std::cout << "\n2. IR Remote Control Example" << std::endl;
+  IRController ir(1, 19); // Channel 1, GPIO 19
+
+  // Send NEC command (e.g., TV power button)
+  ir.SendNECCommand(0x02, 0x20); // Address 0x02, Command 0x20
+  std::cout << "IR command sent successfully!" << std::endl;
+
+  // Example 3: Custom Protocol with Reception
+  std::cout << "\n3. Custom Protocol Example" << std::endl;
+  CustomProtocolExample custom(2, 20, 3, 21); // TX: Ch2/GPIO20, RX: Ch3/GPIO21
+
+  // Start receiving
+  custom.StartReceiving();
+
+  // Send some data
+  std::vector<uint8_t> test_data = {0xAA, 0x55, 0x12, 0x34};
+  custom.SendData(test_data);
+
+  // Wait for reception (in real application, this would be event-driven)
+  std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+  if (custom.IsReceptionComplete()) {
+    std::cout << "Custom protocol data received successfully!" << std::endl;
+  } else {
+    std::cout << "Custom protocol reception timeout" << std::endl;
+  }
+
+  std::cout << "\n=== All examples completed ===" << std::endl;
+}
+
+extern "C" void RunMcuPioExamples() {
+  try {
+    RunAllExamples();
+  } catch (const std::exception &e) {
+    std::cerr << "Error: " << e.what() << std::endl;
+  }
+}
+
+#ifdef RUN_MCU_PIO_EXAMPLE_MAIN
 int main() {
   try {
-    std::cout << "=== McuPio Examples ===" << std::endl;
-
-    // Example 1: WS2812 LED control
-    std::cout << "\n1. WS2812 LED Control Example" << std::endl;
-    WS2812Controller led(0, 18); // Channel 0, GPIO 18
-
-    // Set LED to red
-    led.SetPixelColor(255, 0, 0);
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-    // Set LED to green
-    led.SetPixelColor(0, 255, 0);
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-    // Set LED to blue
-    led.SetPixelColor(0, 0, 255);
-    std::cout << "WS2812 LED colors sent successfully!" << std::endl;
-
-    // Example 2: IR Remote Control
-    std::cout << "\n2. IR Remote Control Example" << std::endl;
-    IRController ir(1, 19); // Channel 1, GPIO 19
-
-    // Send NEC command (e.g., TV power button)
-    ir.SendNECCommand(0x02, 0x20); // Address 0x02, Command 0x20
-    std::cout << "IR command sent successfully!" << std::endl;
-
-    // Example 3: Custom Protocol with Reception
-    std::cout << "\n3. Custom Protocol Example" << std::endl;
-    CustomProtocolExample custom(2, 20, 3, 21); // TX: Ch2/GPIO20, RX: Ch3/GPIO21
-
-    // Start receiving
-    custom.StartReceiving();
-
-    // Send some data
-    std::vector<uint8_t> test_data = {0xAA, 0x55, 0x12, 0x34};
-    custom.SendData(test_data);
-
-    // Wait for reception (in real application, this would be event-driven)
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-    if (custom.IsReceptionComplete()) {
-      std::cout << "Custom protocol data received successfully!" << std::endl;
-    } else {
-      std::cout << "Custom protocol reception timeout" << std::endl;
-    }
-
-    std::cout << "\n=== All examples completed ===" << std::endl;
-
+    RunAllExamples();
   } catch (const std::exception &e) {
     std::cerr << "Error: " << e.what() << std::endl;
     return 1;
@@ -359,3 +371,4 @@ int main() {
 
   return 0;
 }
+#endif

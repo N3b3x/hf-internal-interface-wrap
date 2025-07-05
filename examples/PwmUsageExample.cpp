@@ -318,17 +318,21 @@ void AdvancedPwmExample() {
 /**
  * @brief Main function demonstrating all PWM examples.
  */
+extern "C" void RunPwmExamples() {
+  // Run all PWM usage examples sequentially
+  McuPwmExample();
+  ExternalPwmExample();
+  ThreadSafePwmExample();
+  AdvancedPwmExample();
+}
+
+#ifdef RUN_PWM_EXAMPLE_MAIN
 int main() {
   std::cout << "HardFOC PWM System Examples" << std::endl;
   std::cout << "===========================" << std::endl;
 
   try {
-    // Run all examples
-    McuPwmExample();
-    ExternalPwmExample();
-    ThreadSafePwmExample();
-    AdvancedPwmExample();
-
+    RunPwmExamples();
     std::cout << "\nAll PWM examples completed successfully!" << std::endl;
   } catch (const std::exception &e) {
     std::cout << "Error running PWM examples: " << e.what() << std::endl;
@@ -337,3 +341,4 @@ int main() {
 
   return 0;
 }
+#endif

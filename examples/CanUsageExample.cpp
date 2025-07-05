@@ -338,19 +338,22 @@ void AdvancedCanExample() {
 /**
  * @brief Main function demonstrating all CAN examples.
  */
+extern "C" void RunCanExamples() {
+  // Run all CAN usage examples sequentially
+  RawCanExample();
+  ThreadSafeCanExample();
+  MultiThreadedCanExample();
+  AdvancedCanExample();
+}
+
+#ifdef RUN_CAN_EXAMPLE_MAIN
 int main() {
   std::cout << "HardFOC CAN Interface Examples" << std::endl;
   std::cout << "==============================" << std::endl;
 
   try {
-    // Run all examples
-    RawCanExample();
-    ThreadSafeCanExample();
-    MultiThreadedCanExample();
-    AdvancedCanExample();
-
+    RunCanExamples();
     std::cout << "\n=== All CAN Examples Completed ===" << std::endl;
-
   } catch (const std::exception &e) {
     std::cerr << "Exception in CAN examples: " << e.what() << std::endl;
     return 1;
@@ -358,3 +361,4 @@ int main() {
 
   return 0;
 }
+#endif

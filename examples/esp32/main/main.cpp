@@ -6,6 +6,14 @@
 #include "CommBusTests.cpp"
 #include "DigitalOutputGuardTest.cpp"
 #include "McuPioTest.cpp"
+#include "../BasicUsageExamples.cpp"
+#include "../DigitalGpioExample.cpp"
+#include "../LazyInitExamples.cpp"
+#include "../DigitalOutputGuardExample.cpp"
+#include "../DigitalOutputGuardValidationExample.cpp"
+#include "../CanUsageExample.cpp"
+#include "../PwmUsageExample.cpp"
+#include "../McuPioExample.cpp"
 #include <iostream>
 
 extern "C" void app_main(void) {
@@ -55,4 +63,12 @@ extern "C" void app_main(void) {
   RunDigitalOutputGuardTests();
   RunMcuPioTests();
   RunCommBusTests();
+  RunBasicExamples();
+  RunDigitalGpioExamples();
+  RunLazyInitExamples();
+  RunDigitalOutputGuardExamples();
+  RunDigitalOutputGuardValidationExamples();
+  RunCanExamples();
+  RunPwmExamples();
+  RunMcuPioExamples();
 }
