@@ -535,11 +535,15 @@ using hf_gpio_etm_task_action_native_t = uint8_t;
 #define HF_GPIO_IS_VALID_GPIO(gpio_num) \
   ((gpio_num) >= 0 && (gpio_num) <= HF_MCU_GPIO_MAX_PIN_NUMBER)
 
+#define HF_GPIO_IS_VALID_PIN(gpio_num) HF_GPIO_IS_VALID_GPIO(gpio_num)
+
 #define HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num) \
   (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num))
 
 #define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) \
   ((gpio_num) >= 0 && (gpio_num) <= 7)
+
+#define HF_GPIO_IS_RTC_GPIO(gpio_num) HF_GPIO_IS_VALID_RTC_GPIO(gpio_num)
 
 #define HF_GPIO_IS_VALID_LP_IO(gpio_num) \
   ((gpio_num) >= 0 && (gpio_num) <= 7)
@@ -611,8 +615,10 @@ using hf_gpio_etm_task_action_native_t = uint8_t;
 
 #define HF_GPIO_IS_VALID_GPIO(gpio_num) \
   ((gpio_num) >= 0 && (gpio_num) < 32)
+#define HF_GPIO_IS_VALID_PIN(gpio_num) HF_GPIO_IS_VALID_GPIO(gpio_num)
 #define HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num) HF_GPIO_IS_VALID_GPIO(gpio_num)
 #define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) false
+#define HF_GPIO_IS_RTC_GPIO(gpio_num) false
 #define HF_GPIO_IS_VALID_LP_IO(gpio_num) false
 #define HF_GPIO_SUPPORTS_ADC(gpio_num) false
 #define HF_GPIO_IS_STRAPPING_PIN(gpio_num) false

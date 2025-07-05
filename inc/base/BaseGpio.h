@@ -30,60 +30,60 @@
  */
 #define HF_GPIO_ERR_LIST(X)                                                                        \
   /* Success codes */                                                                              \
-  X(GPIO_SUCCESS, 0, "Success")                                                                    \
+  X(HF_GPIO_SUCCESS, 0, "Success")                                                                    \
                                                                                                    \
   /* General errors */                                                                             \
-  X(GPIO_ERR_FAILURE, 1, "General failure")                                                        \
-  X(GPIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
-  X(GPIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
-  X(GPIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
-  X(GPIO_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
-  X(GPIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
+  X(HF_GPIO_ERR_FAILURE, 1, "General failure")                                                        \
+  X(HF_GPIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
+  X(HF_GPIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
+  X(HF_GPIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
+  X(HF_GPIO_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
+  X(HF_GPIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
                                                                                                    \
   /* Pin errors */                                                                                 \
-  X(GPIO_ERR_INVALID_PIN, 7, "Invalid pin")                                                        \
-  X(GPIO_ERR_PIN_NOT_FOUND, 8, "Pin not found")                                                    \
-  X(GPIO_ERR_PIN_NOT_CONFIGURED, 9, "Pin not configured")                                          \
-  X(GPIO_ERR_PIN_ALREADY_REGISTERED, 10, "Pin already registered")                                 \
-  X(GPIO_ERR_PIN_ACCESS_DENIED, 11, "Pin access denied")                                           \
-  X(GPIO_ERR_PIN_BUSY, 12, "Pin busy")                                                             \
+  X(HF_GPIO_ERR_INVALID_PIN, 7, "Invalid pin")                                                        \
+  X(HF_GPIO_ERR_PIN_NOT_FOUND, 8, "Pin not found")                                                    \
+  X(HF_GPIO_ERR_PIN_NOT_CONFIGURED, 9, "Pin not configured")                                          \
+  X(HF_GPIO_ERR_PIN_ALREADY_REGISTERED, 10, "Pin already registered")                                 \
+  X(HF_GPIO_ERR_PIN_ACCESS_DENIED, 11, "Pin access denied")                                           \
+  X(HF_GPIO_ERR_PIN_BUSY, 12, "Pin busy")                                                             \
                                                                                                    \
   /* Hardware errors */                                                                            \
-  X(GPIO_ERR_HARDWARE_FAULT, 13, "Hardware fault")                                                 \
-  X(GPIO_ERR_COMMUNICATION_FAILURE, 14, "Communication failure")                                   \
-  X(GPIO_ERR_DEVICE_NOT_RESPONDING, 15, "Device not responding")                                   \
-  X(GPIO_ERR_TIMEOUT, 16, "Timeout")                                                               \
-  X(GPIO_ERR_VOLTAGE_OUT_OF_RANGE, 17, "Voltage out of range")                                     \
+  X(HF_GPIO_ERR_HARDWARE_FAULT, 13, "Hardware fault")                                                 \
+  X(HF_GPIO_ERR_COMMUNICATION_FAILURE, 14, "Communication failure")                                   \
+  X(HF_GPIO_ERR_DEVICE_NOT_RESPONDING, 15, "Device not responding")                                   \
+  X(HF_GPIO_ERR_TIMEOUT, 16, "Timeout")                                                               \
+  X(HF_GPIO_ERR_VOLTAGE_OUT_OF_RANGE, 17, "Voltage out of range")                                     \
                                                                                                    \
   /* Configuration errors */                                                                       \
-  X(GPIO_ERR_INVALID_CONFIGURATION, 18, "Invalid configuration")                                   \
-  X(GPIO_ERR_UNSUPPORTED_OPERATION, 19, "Unsupported operation")                                   \
-  X(GPIO_ERR_RESOURCE_BUSY, 20, "Resource busy")                                                   \
-  X(GPIO_ERR_RESOURCE_UNAVAILABLE, 21, "Resource unavailable")                                     \
+  X(HF_GPIO_ERR_INVALID_CONFIGURATION, 18, "Invalid configuration")                                   \
+  X(HF_GPIO_ERR_UNSUPPORTED_OPERATION, 19, "Unsupported operation")                                   \
+  X(HF_GPIO_ERR_RESOURCE_BUSY, 20, "Resource busy")                                                   \
+  X(HF_GPIO_ERR_RESOURCE_UNAVAILABLE, 21, "Resource unavailable")                                     \
                                                                                                    \
   /* I/O errors */                                                                                 \
-  X(GPIO_ERR_READ_FAILURE, 22, "Read failure")                                                     \
-  X(GPIO_ERR_WRITE_FAILURE, 23, "Write failure")                                                   \
-  X(GPIO_ERR_DIRECTION_MISMATCH, 24, "Direction mismatch")                                         \
-  X(GPIO_ERR_PULL_RESISTOR_FAILURE, 25, "Pull resistor failure")                                   \
+  X(HF_GPIO_ERR_READ_FAILURE, 22, "Read failure")                                                     \
+  X(HF_GPIO_ERR_WRITE_FAILURE, 23, "Write failure")                                                   \
+  X(HF_GPIO_ERR_DIRECTION_MISMATCH, 24, "Direction mismatch")                                         \
+  X(HF_GPIO_ERR_PULL_RESISTOR_FAILURE, 25, "Pull resistor failure")                                   \
                                                                                                    \
   /* Interrupt errors */                                                                           \
-  X(GPIO_ERR_INTERRUPT_NOT_SUPPORTED, 26, "Interrupt not supported")                               \
-  X(GPIO_ERR_INTERRUPT_ALREADY_ENABLED, 27, "Interrupt already enabled")                           \
-  X(GPIO_ERR_INTERRUPT_NOT_ENABLED, 28, "Interrupt not enabled")                                   \
-  X(GPIO_ERR_INTERRUPT_HANDLER_FAILED, 29, "Interrupt handler failed")                             \
+  X(HF_GPIO_ERR_INTERRUPT_NOT_SUPPORTED, 26, "Interrupt not supported")                               \
+  X(HF_GPIO_ERR_INTERRUPT_ALREADY_ENABLED, 27, "Interrupt already enabled")                           \
+  X(HF_GPIO_ERR_INTERRUPT_NOT_ENABLED, 28, "Interrupt not enabled")                                   \
+  X(HF_GPIO_ERR_INTERRUPT_HANDLER_FAILED, 29, "Interrupt handler failed")                             \
                                                                                                    \
   /* System errors */                                                                              \
-  X(GPIO_ERR_SYSTEM_ERROR, 30, "System error")                                                     \
-  X(GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied")                                           \
-  X(GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")                                           \
+  X(HF_GPIO_ERR_SYSTEM_ERROR, 30, "System error")                                                     \
+  X(HF_GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied")                                           \
+  X(HF_GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")                                           \
                                                                                                    \
   /* Extended errors for McuGpio implementation */                                                 \
-  X(GPIO_ERR_NOT_SUPPORTED, 33, "Operation not supported")                                         \
-  X(GPIO_ERR_DRIVER_ERROR, 34, "Driver error")                                                     \
-  X(GPIO_ERR_INVALID_STATE, 35, "Invalid state")                                                   \
-  X(GPIO_ERR_INVALID_ARG, 36, "Invalid argument")                                                  \
-  X(GPIO_ERR_CALIBRATION_FAILURE, 37, "Calibration failure")
+  X(HF_GPIO_ERR_NOT_SUPPORTED, 33, "Operation not supported")                                         \
+  X(HF_GPIO_ERR_DRIVER_ERROR, 34, "Driver error")                                                     \
+  X(HF_GPIO_ERR_INVALID_STATE, 35, "Invalid state")                                                   \
+  X(HF_GPIO_ERR_INVALID_ARG, 36, "Invalid argument")                                                  \
+  X(HF_GPIO_ERR_CALIBRATION_FAILURE, 37, "Calibration failure")
 
 /**
  * @brief HardFOC GPIO error codes
@@ -93,7 +93,7 @@ enum class HfGpioErr : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_GPIO_ERR_LIST(X)
 #undef X
-      GPIO_ERR_COUNT // Automatically calculated count
+      HF_GPIO_ERR_COUNT // Automatically calculated count
 };
 
 /**

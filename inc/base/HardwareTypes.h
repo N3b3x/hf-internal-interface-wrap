@@ -108,6 +108,25 @@ using HfTimeoutMs = uint32_t;
 using HfTimestampUs = uint32_t;
 
 //==============================================================================
+// TIMEOUT CONSTANTS
+//==============================================================================
+
+/**
+ * @brief Default timeout value in milliseconds.
+ */
+constexpr HfTimeoutMs HF_TIMEOUT_DEFAULT = 1000;
+
+/**
+ * @brief No timeout (wait indefinitely).
+ */
+constexpr HfTimeoutMs HF_TIMEOUT_NONE = 0;
+
+/**
+ * @brief Maximum timeout value.
+ */
+constexpr HfTimeoutMs HF_TIMEOUT_MAX = std::numeric_limits<HfTimeoutMs>::max();
+
+//==============================================================================
 // VALIDATION FUNCTIONS
 //==============================================================================
 

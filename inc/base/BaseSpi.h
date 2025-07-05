@@ -363,7 +363,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool WriteByte(uint8_t data) noexcept {
-    return Write(&data, 1) == HfSpiErr::SPI_SUCCESS;
+    return Write(&data, 1, 0) == HfSpiErr::SPI_SUCCESS;
   }
 
   /**
@@ -372,7 +372,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool ReadByte(uint8_t &data) noexcept {
-    return Read(&data, 1) == HfSpiErr::SPI_SUCCESS;
+    return Read(&data, 1, 0) == HfSpiErr::SPI_SUCCESS;
   }
 
   /**
@@ -382,7 +382,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool TransferByte(uint8_t tx_data, uint8_t &rx_data) noexcept {
-    return Transfer(&tx_data, &rx_data, 1) == HfSpiErr::SPI_SUCCESS;
+    return Transfer(&tx_data, &rx_data, 1, 0) == HfSpiErr::SPI_SUCCESS;
   }
 
 protected:

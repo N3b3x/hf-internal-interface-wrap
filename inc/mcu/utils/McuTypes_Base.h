@@ -87,6 +87,10 @@ static constexpr hf_timeout_ms_t HF_TIMEOUT_NEVER = 0xFFFFFFFF;
 static constexpr hf_timeout_ms_t HF_TIMEOUT_IMMEDIATE = 0;
 static constexpr hf_timeout_ms_t HF_TIMEOUT_DEFAULT = 1000;
 
+// Missing ADC constants
+static constexpr uint32_t HF_ADC_DEFAULT_SAMPLING_FREQ = 1000U;
+static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT = 1024U;
+
 //==============================================================================
 // MCU TIMING CONVERSION MACROS
 //==============================================================================

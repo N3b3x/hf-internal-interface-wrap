@@ -345,7 +345,7 @@ public:
     while (str[len] != '\0') {
       len++;
     }
-    return Write(reinterpret_cast<const uint8_t *>(str), len) == HfUartErr::UART_SUCCESS;
+    return Write(reinterpret_cast<const uint8_t *>(str), len, 0) == HfUartErr::UART_SUCCESS;
   }
 
   /**
@@ -354,7 +354,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool WriteByte(uint8_t byte) noexcept {
-    return Write(&byte, 1) == HfUartErr::UART_SUCCESS;
+    return Write(&byte, 1, 0) == HfUartErr::UART_SUCCESS;
   }
 
   /**

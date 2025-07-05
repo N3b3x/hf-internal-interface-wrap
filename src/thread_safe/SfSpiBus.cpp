@@ -31,7 +31,7 @@ bool SfSpiBus::Open() noexcept {
     return true;
   if (!spi_bus_)
     return false;
-  RtosMutex::LockGuard lock(busMutex_);
+  MutexLockGuard lock(busMutex_);
   if (!lock.IsLocked())
     return false;
   initialized_ = spi_bus_->Open();
@@ -43,7 +43,7 @@ bool SfSpiBus::Close() noexcept {
     return true;
   if (!spi_bus_)
     return false;
-  RtosMutex::LockGuard lock(busMutex_);
+  MutexLockGuard lock(busMutex_);
   if (!lock.IsLocked())
     return false;
   initialized_ = !spi_bus_->Close();
