@@ -76,7 +76,14 @@
   /* System errors */                                                                              \
   X(GPIO_ERR_SYSTEM_ERROR, 30, "System error")                                                     \
   X(GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied")                                           \
-  X(GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")
+  X(GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")                                           \
+                                                                                                   \
+  /* Extended errors for McuGpio implementation */                                                 \
+  X(GPIO_ERR_NOT_SUPPORTED, 33, "Operation not supported")                                         \
+  X(GPIO_ERR_DRIVER_ERROR, 34, "Driver error")                                                     \
+  X(GPIO_ERR_INVALID_STATE, 35, "Invalid state")                                                   \
+  X(GPIO_ERR_INVALID_ARG, 36, "Invalid argument")                                                  \
+  X(GPIO_ERR_CALIBRATION_FAILURE, 37, "Calibration failure")
 
 /**
  * @brief HardFOC GPIO error codes
@@ -403,18 +410,18 @@ public:
     active_state_ = active_state;
   }
 
+  //==============================================================//
+  // STATE CONTROL METHODS
+  //==============================================================//
+
   /**
-   * @brief Set pin to active state.
-   * @return HfGpioErr error code
+   * @brief Set the GPIO to active state.
+   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr SetActive() noexcept {
     HfGpioErr validation = ValidateBasicOperation();
     if (validation != HfGpioErr::GPIO_SUCCESS) {
       return validation;
-    }
-
-    if (current_direction_ != Direction::Output) {
-      return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
     }
 
     HfGpioErr result = SetActiveImpl();
@@ -425,17 +432,13 @@ public:
   }
 
   /**
-   * @brief Set pin to inactive state.
-   * @return HfGpioErr error code
+   * @brief Set the GPIO to inactive state.
+   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr SetInactive() noexcept {
     HfGpioErr validation = ValidateBasicOperation();
     if (validation != HfGpioErr::GPIO_SUCCESS) {
       return validation;
-    }
-
-    if (current_direction_ != Direction::Output) {
-      return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
     }
 
     HfGpioErr result = SetInactiveImpl();
@@ -446,17 +449,13 @@ public:
   }
 
   /**
-   * @brief Toggle pin state.
-   * @return HfGpioErr error code
+   * @brief Toggle the GPIO state.
+   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr Toggle() noexcept {
     HfGpioErr validation = ValidateBasicOperation();
     if (validation != HfGpioErr::GPIO_SUCCESS) {
       return validation;
-    }
-
-    if (current_direction_ != Direction::Output) {
-      return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
     }
 
     HfGpioErr result = ToggleImpl();
@@ -467,9 +466,9 @@ public:
   }
 
   /**
-   * @brief Check if pin is in active state.
+   * @brief Check if the GPIO is currently active.
    * @param is_active Reference to store the result
-   * @return HfGpioErr error code
+   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
   HfGpioErr IsActive(bool &is_active) noexcept {
     HfGpioErr validation = ValidateBasicOperation();
@@ -506,17 +505,15 @@ public:
   [[nodiscard]] virtual const char *GetDescription() const noexcept = 0;
 
   //==============================================================//
-  // INTERRUPT FUNCTIONALITY
+  // INTERRUPT FUNCTIONALITY  
   //==============================================================//
 
   /**
-   * @brief Check if this GPIO supports interrupts.
+   * @brief Check if this GPIO implementation supports interrupts.
    * @return true if interrupts are supported, false otherwise
-   * @details Base implementation returns false. Derived classes should override
-   *          if they support interrupt functionality.
    */
   [[nodiscard]] virtual bool SupportsInterrupts() const noexcept {
-    return false;
+    return false; // Default implementation - no interrupt support
   }
 
   /**
@@ -525,60 +522,53 @@ public:
    * @param callback Callback function to invoke on interrupt (optional)
    * @param user_data User data passed to callback (optional)
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
-   * @details Sets up interrupt configuration but does not enable it.
-   *          Call EnableInterrupt() to actually start interrupt generation.
    */
-  virtual HfGpioErr ConfigureInterrupt(InterruptTrigger trigger,
+  virtual HfGpioErr ConfigureInterrupt(InterruptTrigger trigger, 
                                        InterruptCallback callback = nullptr,
                                        void *user_data = nullptr) noexcept {
-    return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Enable GPIO interrupt.
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
-   * @details Enables interrupt generation based on previously configured settings.
-   *          ConfigureInterrupt() must be called first.
    */
   virtual HfGpioErr EnableInterrupt() noexcept {
-    return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Disable GPIO interrupt.
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
-   * @details Disables interrupt generation but preserves configuration.
    */
   virtual HfGpioErr DisableInterrupt() noexcept {
-    return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
-   * @brief Wait for GPIO interrupt with timeout.
-   * @param timeout_ms Timeout in milliseconds (0 = no timeout)
+   * @brief Wait for GPIO interrupt to occur.
+   * @param timeout_ms Timeout in milliseconds (0 = wait forever)
    * @return HfGpioErr::GPIO_SUCCESS if interrupt occurred, error code otherwise
-   * @details Blocks until interrupt occurs or timeout expires.
-   *          Useful for polled interrupt handling without callbacks.
    */
   virtual HfGpioErr WaitForInterrupt(uint32_t timeout_ms = 0) noexcept {
-    return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
-   * @brief Get current interrupt status and statistics.
-   * @param status Reference to store interrupt status
+   * @brief Get interrupt status information.
+   * @param status Reference to store status information
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
   virtual HfGpioErr GetInterruptStatus(InterruptStatus &status) noexcept {
-    return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
-   * @brief Clear interrupt statistics/counters.
+   * @brief Clear interrupt statistics.
    * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
    */
   virtual HfGpioErr ClearInterruptStats() noexcept {
-    return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   //==============================================================//
@@ -650,6 +640,10 @@ protected:
   }
 
   //==============================================================//
+  // VALIDATION HELPERS
+  //==============================================================//
+
+  //==============================================================//
   // PURE VIRTUAL IMPLEMENTATIONS - PLATFORM SPECIFIC
   //==============================================================//
 
@@ -660,6 +654,7 @@ protected:
   virtual HfGpioErr SetInactiveImpl() noexcept = 0;
   virtual HfGpioErr ToggleImpl() noexcept = 0;
   virtual HfGpioErr IsActiveImpl(bool &is_active) noexcept = 0;
+  virtual PullMode GetPullModeImpl() const noexcept = 0;
 
 protected:
   //==============================================================//

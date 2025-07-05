@@ -111,8 +111,8 @@ static constexpr CanTimingEntry TIMING_TABLE[] = {
 //==============================================================================
 
 McuCan::McuCan(const CanBusConfig &config, CanControllerId controller_id) noexcept
-    : BaseCan(config), controller_id_(controller_id),
-      initialized_(false), receive_callback_(nullptr), stats_{}, init_timestamp_(0),
+    : BaseCan(), controller_id_(controller_id), config_(config),
+      receive_callback_(nullptr), stats_{}, init_timestamp_(0),
       twai_handle_(nullptr), handle_valid_(false), is_started_(false),
       current_alerts_(0), last_error_code_(0) {
   
@@ -163,12 +163,12 @@ McuCan::~McuCan() noexcept {
 // CORE INITIALIZATION AND DEINITIALIZATION - Production-Ready Implementation
 //==============================================================================
 
-bool McuCan::Initialize() noexcept {
+HfCanErr McuCan::Initialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (initialized_) {
     ESP_LOGW(TAG, "Controller %d already initialized", controller_id_);
-    return true;
+    return HfCanErr::CAN_SUCCESS;
   }
   
   ESP_LOGI(TAG, "Initializing CAN controller %d with ESP-IDF v5.5+ features", controller_id_);
@@ -177,14 +177,14 @@ bool McuCan::Initialize() noexcept {
   if (!ValidateConfiguration()) {
     ESP_LOGE(TAG, "Configuration validation failed for controller %d", controller_id_);
     stats_.last_error = HfCanErr::CAN_ERR_INVALID_CONFIGURATION;
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_CONFIGURATION;
   }
   
   // Build native configuration structures
   if (!BuildNativeGeneralConfig() || !BuildNativeTimingConfig() || !BuildNativeFilterConfig()) {
     ESP_LOGE(TAG, "Failed to build native configuration for controller %d", controller_id_);
     stats_.last_error = HfCanErr::CAN_ERR_INVALID_CONFIGURATION;
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_CONFIGURATION;
   }
   
   // Log configuration details for debugging
@@ -194,7 +194,7 @@ bool McuCan::Initialize() noexcept {
   if (!PlatformInitialize()) {
     ESP_LOGE(TAG, "Platform initialization failed for controller %d", controller_id_);
     CleanupResources();
-    return false;
+    return HfCanErr::CAN_ERR_FAILURE;
   }
   
   // Configure default alerts for comprehensive monitoring
@@ -215,15 +215,15 @@ bool McuCan::Initialize() noexcept {
   stats_.last_error = HfCanErr::CAN_SUCCESS;
   
   ESP_LOGI(TAG, "CAN controller %d initialized successfully", controller_id_);
-  return initialized_;
+  return HfCanErr::CAN_SUCCESS;
 }
 
-bool McuCan::Deinitialize() noexcept {
+HfCanErr McuCan::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!initialized_) {
     ESP_LOGD(TAG, "Controller %d already deinitialized", controller_id_);
-    return true;
+    return HfCanErr::CAN_SUCCESS;
   }
   
   ESP_LOGI(TAG, "Deinitializing CAN controller %d", controller_id_);
@@ -253,7 +253,7 @@ bool McuCan::Deinitialize() noexcept {
   initialized_ = false;
   
   ESP_LOGI(TAG, "CAN controller %d deinitialized successfully", controller_id_);
-  return true;
+  return HfCanErr::CAN_SUCCESS;
 }
 
 //==============================================================================
@@ -319,11 +319,11 @@ bool McuCan::Stop() noexcept {
 // MESSAGE TRANSMISSION AND RECEPTION - High-Performance Implementation
 //==============================================================================
 
-bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcept {
+HfCanErr McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize CAN controller %d", controller_id_);
     UpdateSendStatistics(false);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   RtosSharedLock<RtosMutex> lock(mutex_);
@@ -331,7 +331,7 @@ bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcep
   if (!is_started_) {
     ESP_LOGE(TAG, "Controller %d not ready for transmission - not started", controller_id_);
     UpdateSendStatistics(false);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   // Validate message parameters
@@ -340,7 +340,7 @@ bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcep
     ESP_LOGE(TAG, "Invalid message parameters - ID: 0x%lX, DLC: %d", message.id, message.dlc);
     stats_.last_error = HfCanErr::CAN_ERR_INVALID_PARAMETER;
     UpdateSendStatistics(false);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_PARAMETER;
   }
   
   bool success = PlatformSendMessage(message, timeout_ms);
@@ -348,18 +348,18 @@ bool McuCan::SendMessage(const CanMessage &message, uint32_t timeout_ms) noexcep
   
   if (success) {
     ESP_LOGV(TAG, "Message sent - ID: 0x%lX, DLC: %d", message.id, message.dlc);
+    return HfCanErr::CAN_SUCCESS;
   } else {
     ESP_LOGW(TAG, "Failed to send message - ID: 0x%lX, DLC: %d", message.id, message.dlc);
+    return HfCanErr::CAN_ERR_TIMEOUT;
   }
-  
-  return success;
 }
 
-bool McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
+HfCanErr McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize CAN controller %d", controller_id_);
     UpdateReceiveStatistics(false);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   RtosSharedLock<RtosMutex> lock(mutex_);
@@ -367,7 +367,7 @@ bool McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
   if (!is_started_) {
     ESP_LOGE(TAG, "Controller %d not ready for reception - not started", controller_id_);
     UpdateReceiveStatistics(false);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   bool success = PlatformReceiveMessage(message, timeout_ms);
@@ -375,11 +375,13 @@ bool McuCan::ReceiveMessage(CanMessage &message, uint32_t timeout_ms) noexcept {
   
   if (success) {
     ESP_LOGV(TAG, "Message received - ID: 0x%lX, DLC: %d", message.id, message.dlc);
-  } else if (timeout_ms > 0) {
-    ESP_LOGV(TAG, "No message received within %lu ms", timeout_ms);
+    return HfCanErr::CAN_SUCCESS;
+  } else {
+    if (timeout_ms > 0) {
+      ESP_LOGV(TAG, "No message received within %lu ms", timeout_ms);
+    }
+    return HfCanErr::CAN_ERR_TIMEOUT;
   }
-  
-  return success;
 }
 
 uint32_t McuCan::SendMessageBatch(const CanMessage *messages, uint32_t count,
@@ -446,10 +448,10 @@ uint32_t McuCan::ReceiveMessageBatch(CanMessage *messages, uint32_t max_count,
 // CALLBACK MANAGEMENT - Thread-Safe Implementation
 //==============================================================================
 
-bool McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
+HfCanErr McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
   if (!EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize CAN controller %d for callback setup", controller_id_);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   RtosUniqueLock<RtosMutex> lock(mutex_);
@@ -462,7 +464,7 @@ bool McuCan::SetReceiveCallback(CanReceiveCallback callback) noexcept {
     ESP_LOGI(TAG, "Receive callback cleared for controller %d", controller_id_);
   }
   
-  return true;
+  return HfCanErr::CAN_SUCCESS;
 }
 
 void McuCan::ClearReceiveCallback() noexcept {
@@ -481,21 +483,22 @@ void McuCan::ClearReceiveCallback() noexcept {
 // STATUS AND DIAGNOSTICS - Comprehensive Implementation
 //==============================================================================
 
-bool McuCan::GetStatus(CanBusStatus &status) noexcept {
+HfCanErr McuCan::GetStatus(CanBusStatus &status) noexcept {
   if (!EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize CAN controller %d for status query", controller_id_);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   RtosSharedLock<RtosMutex> lock(mutex_);
   
-  return PlatformGetStatus(status);
+  bool success = PlatformGetStatus(status);
+  return success ? HfCanErr::CAN_SUCCESS : HfCanErr::CAN_ERR_FAIL;
 }
 
-bool McuCan::Reset() noexcept {
+HfCanErr McuCan::Reset() noexcept {
   if (!EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize CAN controller %d for reset operation", controller_id_);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   RtosUniqueLock<RtosMutex> lock(mutex_);
@@ -527,48 +530,50 @@ bool McuCan::Reset() noexcept {
   
   if (success) {
     ESP_LOGI(TAG, "Controller %d reset successfully", controller_id_);
+    return HfCanErr::CAN_SUCCESS;
   } else {
     ESP_LOGE(TAG, "Failed to reset controller %d", controller_id_);
     stats_.last_error = HfCanErr::CAN_ERR_FAIL;
+    return HfCanErr::CAN_ERR_FAIL;
   }
-  
-  return success;
 }
 
 //==============================================================================
 // FILTER MANAGEMENT - Advanced Implementation
 //==============================================================================
 
-bool McuCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noexcept {
+HfCanErr McuCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noexcept {
   if (!EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize CAN controller %d for filter configuration", controller_id_);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!IsValidCanId(id, extended)) {
     ESP_LOGE(TAG, "Invalid filter ID: 0x%lX (extended: %d)", id, extended);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_PARAMETER;
   }
   
   ESP_LOGI(TAG, "Setting acceptance filter - ID: 0x%lX, Mask: 0x%lX, Extended: %d", 
            id, mask, extended);
   
-  return PlatformSetAcceptanceFilter(id, mask, extended);
+  bool success = PlatformSetAcceptanceFilter(id, mask, extended);
+  return success ? HfCanErr::CAN_SUCCESS : HfCanErr::CAN_ERR_FAIL;
 }
 
-bool McuCan::ClearAcceptanceFilter() noexcept {
+HfCanErr McuCan::ClearAcceptanceFilter() noexcept {
   if (!EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize CAN controller %d for filter clearing", controller_id_);
-    return false;
+    return HfCanErr::CAN_ERR_INVALID_STATE;
   }
   
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
   ESP_LOGI(TAG, "Clearing acceptance filter for controller %d", controller_id_);
   
-  return PlatformClearAcceptanceFilter();
+  bool success = PlatformClearAcceptanceFilter();
+  return success ? HfCanErr::CAN_SUCCESS : HfCanErr::CAN_ERR_FAIL;
 }
 
 bool McuCan::ReconfigureAcceptanceFilter(uint32_t id, uint32_t mask, bool extended,

@@ -13,6 +13,7 @@
 #pragma once
 
 #include "McuTypes_Base.h"
+#include "BaseUart.h" // For HfUartErr
 
 //==============================================================================
 // PLATFORM-SPECIFIC UART TYPE MAPPINGS

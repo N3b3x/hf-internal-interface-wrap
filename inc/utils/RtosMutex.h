@@ -112,8 +112,6 @@ public:
   }
 
   // Convenience FreeRTOS-style API -------------------------------------------------
-  using LockGuard = RtosUniqueLock<RtosMutex>;
-
   bool Take(uint32_t timeout_ms = 0) noexcept {
     if (timeout_ms > 0) {
       return try_lock_for(timeout_ms);
@@ -122,6 +120,23 @@ public:
   }
 
   void Give() noexcept {
+    unlock();
+  }
+
+  // Shared lock methods (delegated to regular mutex for simplicity)
+  bool lock_shared() noexcept {
+    return lock();
+  }
+
+  bool try_lock_shared() noexcept {
+    return try_lock();
+  }
+
+  bool try_lock_shared_for(uint32_t timeout_ms) noexcept {
+    return try_lock_for(timeout_ms);
+  }
+
+  void unlock_shared() noexcept {
     unlock();
   }
 
@@ -404,3 +419,14 @@ private:
   SharedMutex *mutex_;
   bool locked_;
 };
+
+//==============================================================================
+// CONVENIENCE TYPE ALIASES
+//==============================================================================
+
+/// @brief Convenience alias for unique lock guard
+template<typename Mutex>
+using RtosLockGuard = RtosUniqueLock<Mutex>;
+
+/// @brief Convenience alias for RtosMutex lock guard
+using MutexLockGuard = RtosUniqueLock<RtosMutex>;

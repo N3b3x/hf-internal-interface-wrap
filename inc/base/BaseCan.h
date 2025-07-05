@@ -98,8 +98,13 @@
   X(CAN_ERR_SYSTEM_ERROR, 46, "System error")                                                      \
   X(CAN_ERR_PERMISSION_DENIED, 47, "Permission denied")                                            \
   X(CAN_ERR_OPERATION_ABORTED, 48, "Operation aborted")                                            \
-  X(CAN_ERR_RESOURCE_BUSY, 49, "Resource busy")                                                    \
-  X(CAN_ERR_INVALID_STATE, 50, "Invalid state")
+                                                                                                   \
+  /* Extended CAN errors (for ESP32 compatibility) */                                             \
+  X(CAN_ERR_FAIL, 49, "Generic failure")                                                           \
+  X(CAN_ERR_RESOURCE_BUSY, 50, "Resource busy")                                                    \
+  X(CAN_ERR_INVALID_STATE, 51, "Invalid state")                                                    \
+  X(CAN_ERR_NOT_SUPPORTED, 52, "Not supported")                                                    \
+  X(CAN_ERR_TIMEOUT_ALT, 53, "Operation timeout")
 
 enum class HfCanErr : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,

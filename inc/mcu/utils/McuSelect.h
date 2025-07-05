@@ -71,8 +71,8 @@ extern "C" {
 #include "driver/ledc.h"
 #include "driver/spi_master.h"
 #include "driver/uart.h"
-#include "driver/esp_twai.h"
-#include "driver/esp_twai_onchip.h" // ESP-IDF v5.5+ modern TWAI node API
+#include "driver/twai.h"
+#include "hal/twai_types.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
 #include "freertos/task.h"

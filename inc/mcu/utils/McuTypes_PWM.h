@@ -14,6 +14,7 @@
 #pragma once
 
 #include "McuTypes_Base.h"
+#include "BasePwm.h" // For HfPwmErr
 
 //==============================================================================
 // ESP32C6 PWM/LEDC TYPES AND CONSTANTS (ESP-IDF v5.5+)
@@ -146,7 +147,7 @@ struct hf_pwm_channel_config_t {
   bool output_invert;               ///< Hardware output inversion
   
   hf_pwm_channel_config_t() noexcept
-      : gpio_pin(HF_INVALID_PIN), channel_id(0), timer_id(0),
+      : gpio_pin(static_cast<hf_gpio_num_t>(HF_INVALID_PIN)), channel_id(0), timer_id(0),
         speed_mode(hf_pwm_mode_t::HF_PWM_MODE_LOW_SPEED), duty_initial(0),
         intr_type(hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE), invert_output(false),
         hpoint(0), idle_level(0), output_invert(false) {}

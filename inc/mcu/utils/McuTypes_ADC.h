@@ -13,6 +13,7 @@
 #pragma once
 
 #include "McuTypes_Base.h"
+#include "BaseAdc.h" // For HfAdcErr
 
 //==============================================================================
 // PLATFORM-SPECIFIC ADC DRIVER IMPORTS

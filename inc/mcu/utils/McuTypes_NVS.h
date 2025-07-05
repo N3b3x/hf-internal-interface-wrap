@@ -13,6 +13,7 @@
 #pragma once
 
 #include "McuTypes_Base.h"
+#include "BaseNvsStorage.h" // For HfNvsErr
 
 #ifdef HF_MCU_FAMILY_ESP32
 // ESP32-C6 NVS native type aliases for abstraction

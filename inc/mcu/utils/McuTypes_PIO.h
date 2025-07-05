@@ -14,6 +14,7 @@
 #pragma once
 
 #include "McuTypes_Base.h"
+#include "BasePio.h" // For HfRmtErr
 
 //==============================================================================
 // ESP32C6 RMT (REMOTE CONTROL) PERIPHERAL TYPES - ESP-IDF v5.5+ FEATURES

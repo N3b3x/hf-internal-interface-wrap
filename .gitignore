@@ -31,3 +31,6 @@
 *.out
 *.app
 tests/build/
+
+**/build/
+**/dependencies.lock

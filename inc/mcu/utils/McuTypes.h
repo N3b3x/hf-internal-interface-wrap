@@ -37,7 +37,7 @@
 #include "McuTypes_SPI.h"
 #include "McuTypes_I2C.h"
 #include "McuTypes_PWM.h"
-#include "McuTypes_RMT.h"
+#include "McuTypes_PIO.h"
 
 //==============================================================================
 // BACKWARD COMPATIBILITY AND CONVENIENCE TYPES

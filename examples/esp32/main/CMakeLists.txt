@@ -1,5 +1,4 @@
 idf_component_register(
-    SRCS "main.cpp"
-    INCLUDE_DIRS "." ".." "../common"
-    REQUIRES iid-espidf
+    SRCS "simple_main.cpp"
+    INCLUDE_DIRS "."
 )

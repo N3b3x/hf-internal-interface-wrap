@@ -25,7 +25,7 @@
 #pragma once
 
 #include "McuTypes_Base.h"
-#include "McuSelect.h"
+#include "BaseGpio.h" // For HfGpioErr
 
 //==============================================================================
 // PLATFORM-SPECIFIC GPIO TYPE MAPPINGS
@@ -46,6 +46,11 @@ using hf_gpio_pull_native_t = uint8_t;
 //==============================================================================
 // MODERN ESP32C6 GPIO TYPES (ESP-IDF v5.5+)
 //==============================================================================
+
+/**
+ * @brief GPIO pin number type for ESP32C6.
+ */
+using hf_gpio_num_t = int32_t;
 
 /**
  * @brief Modern GPIO mode configuration with all ESP32C6 capabilities.
@@ -239,6 +244,7 @@ struct hf_gpio_etm_config_t {
  */
 struct hf_gpio_sleep_config_t {
   hf_gpio_mode_t sleep_mode;          ///< GPIO mode during sleep
+  hf_gpio_mode_t sleep_direction;     ///< GPIO direction during sleep (alias for sleep_mode)
   hf_gpio_pull_t sleep_pull_mode;     ///< Pull resistor configuration during sleep
   hf_gpio_drive_cap_t sleep_drive_strength; ///< Drive strength during sleep
   bool sleep_output_enable;           ///< Enable output during sleep
@@ -246,6 +252,7 @@ struct hf_gpio_sleep_config_t {
   bool hold_during_sleep;             ///< Hold configuration during sleep
   bool rtc_domain_enable;             ///< Route to RTC domain for ultra-low power
   bool slp_sel_enable;                ///< Enable automatic sleep selection
+  bool enable_sleep_retain;           ///< Enable sleep retention
 };
 
 /**

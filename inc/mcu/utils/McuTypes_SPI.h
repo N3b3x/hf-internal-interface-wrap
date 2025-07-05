@@ -13,6 +13,7 @@
 #pragma once
 
 #include "McuTypes_Base.h"
+#include "BaseSpi.h" // For HfSpiErr
 
 //==============================================================================
 // PLATFORM-SPECIFIC SPI TYPE MAPPINGS

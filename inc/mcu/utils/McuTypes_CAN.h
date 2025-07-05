@@ -15,6 +15,7 @@
 #pragma once
 
 #include "McuTypes_Base.h"
+#include "BaseCan.h" // For HfCanErr
 
 //==============================================================================
 // PLATFORM-SPECIFIC DRIVER IMPORTS
@@ -282,6 +283,40 @@ using hf_can_handle_t = twai_handle_t;
 using hf_can_handle_t = void *;
 #endif
 
+/**
+ * @brief Platform-agnostic CAN error code (for compatibility).
+ * @note This is a simple integer wrapper for platform-specific error codes.
+ *       Full error handling is provided by HfCanErr enum in BaseCan.h
+ */
+using hf_can_err_t = esp_err_t;
+
+/**
+ * @brief Alert config structure for CAN alerts.
+ */
+struct hf_can_alert_config_t {
+  uint32_t enabled_alerts;      ///< Bitmask of enabled alerts
+  uint32_t alert_queue_size;    ///< Alert queue size
+  uint32_t alert_timeout_ms;    ///< Alert timeout in milliseconds
+
+  hf_can_alert_config_t() noexcept
+      : enabled_alerts(static_cast<uint32_t>(hf_can_alert_t::HF_CAN_ALERT_ALL_ERRORS)),
+        alert_queue_size(10), alert_timeout_ms(1000) {}
+};
+
+/**
+ * @brief Power management config structure for CAN.
+ */
+struct hf_can_power_config_t {
+  hf_can_power_mode_t power_mode;    ///< Current power mode
+  bool auto_power_management;        ///< Enable automatic power management
+  uint32_t idle_timeout_ms;          ///< Idle timeout before power saving
+  uint32_t wakeup_timeout_ms;        ///< Wakeup timeout
+
+  hf_can_power_config_t() noexcept
+      : power_mode(hf_can_power_mode_t::HF_CAN_POWER_ACTIVE), auto_power_management(false),
+        idle_timeout_ms(5000), wakeup_timeout_ms(100) {}
+};
+
 //==============================================================================
 // HF CAN CONFIGURATION STRUCTURES
 //==============================================================================
@@ -469,6 +504,44 @@ struct hf_can_capabilities_t {
         supports_advanced_filters(false), supports_power_management(false), 
         num_hardware_filters(1) {}
 #endif
+};
+
+/**
+ * @brief Platform-agnostic CAN performance statistics.
+ * @details Comprehensive runtime statistics for monitoring and debugging.
+ */
+struct hf_can_statistics_t {
+  // Message counters
+  uint64_t messages_sent;         ///< Total messages successfully sent
+  uint64_t messages_received;     ///< Total messages successfully received
+  uint64_t bytes_transmitted;     ///< Total bytes transmitted
+  uint64_t bytes_received;        ///< Total bytes received
+  
+  // Error counters
+  uint32_t send_failures;         ///< Failed send operations
+  uint32_t receive_failures;      ///< Failed receive operations
+  uint32_t bus_error_count;       ///< Total bus errors
+  uint32_t arbitration_lost_count;///< Arbitration lost events
+  uint32_t tx_failed_count;       ///< Transmission failures
+  uint32_t bus_off_events;        ///< Bus-off occurrences
+  
+  // Performance metrics
+  uint64_t uptime_seconds;        ///< Total uptime in seconds
+  uint32_t last_activity_timestamp; ///< Last activity timestamp
+  HfCanErr last_error;            ///< Last error encountered
+  
+  // Queue statistics
+  uint32_t tx_queue_peak;         ///< Peak TX queue usage
+  uint32_t rx_queue_peak;         ///< Peak RX queue usage
+  uint32_t tx_queue_overflows;    ///< TX queue overflow count
+  uint32_t rx_queue_overflows;    ///< RX queue overflow count
+
+  hf_can_statistics_t() noexcept
+      : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
+        send_failures(0), receive_failures(0), bus_error_count(0), arbitration_lost_count(0),
+        tx_failed_count(0), bus_off_events(0), uptime_seconds(0), last_activity_timestamp(0),
+        last_error(HfCanErr::CAN_SUCCESS), tx_queue_peak(0), rx_queue_peak(0),
+        tx_queue_overflows(0), rx_queue_overflows(0) {}
 };
 
 //==============================================================================

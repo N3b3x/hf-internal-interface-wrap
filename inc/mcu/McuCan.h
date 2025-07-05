@@ -100,16 +100,16 @@ public:
   [[nodiscard]] bool IsInitialized() const noexcept { return initialized_; }
 
   // === Core BaseCan Interface Implementation ===
-  bool Initialize() noexcept override;
-  bool Deinitialize() noexcept override;
-  bool SendMessage(const CanMessage &message, uint32_t timeout_ms = 1000) noexcept override;
-  bool ReceiveMessage(CanMessage &message, uint32_t timeout_ms = 0) noexcept override;
-  bool SetReceiveCallback(CanReceiveCallback callback) noexcept override;
+  HfCanErr Initialize() noexcept override;
+  HfCanErr Deinitialize() noexcept override;
+  HfCanErr SendMessage(const CanMessage &message, uint32_t timeout_ms = 1000) noexcept override;
+  HfCanErr ReceiveMessage(CanMessage &message, uint32_t timeout_ms = 0) noexcept override;
+  HfCanErr SetReceiveCallback(CanReceiveCallback callback) noexcept override;
   void ClearReceiveCallback() noexcept override;
-  bool GetStatus(CanBusStatus &status) noexcept override;
-  bool Reset() noexcept override;
-  bool SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept override;
-  bool ClearAcceptanceFilter() noexcept override;
+  HfCanErr GetStatus(CanBusStatus &status) noexcept override;
+  HfCanErr Reset() noexcept override;
+  HfCanErr SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept override;
+  HfCanErr ClearAcceptanceFilter() noexcept override;
 
   // === Advanced ESP32C6-Specific Operations ===
 
@@ -267,7 +267,6 @@ private:
   // === Configuration and State ===
   CanBusConfig config_;                         ///< CAN bus configuration
   CanControllerId controller_id_;               ///< TWAI controller ID (0 or 1 for ESP32C6)
-  bool initialized_;                            ///< Lazy initialization flag
   CanReceiveCallback receive_callback_;         ///< User receive callback
   mutable RtosMutex mutex_;                     ///< Thread safety mutex
   hf_can_statistics_t stats_;                   ///< Performance statistics (thread-safe)

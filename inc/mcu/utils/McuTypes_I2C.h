@@ -39,7 +39,9 @@
 
 #pragma once
 
-#include "HardwareTypes.h"
+#include "McuTypes_Base.h"  // Base types and platform selection
+#include "BaseI2c.h"  // For HfI2cErr
+
 #include <functional>
 #include <vector>
 #include <atomic>
@@ -250,7 +252,7 @@ struct I2cMasterBusConfig {
      * @brief Default constructor with ESP32C6-optimized settings.
      */
     I2cMasterBusConfig() noexcept
-        : i2c_port(0), sda_io_num(static_cast<GpioNum>(HF_INVALID_PIN)), 
+        : i2c_port(static_cast<I2cPort>(0)), sda_io_num(static_cast<GpioNum>(HF_INVALID_PIN)), 
           scl_io_num(static_cast<GpioNum>(HF_INVALID_PIN)),
           enable_internal_pullup(true), clk_source(I2cClockSource::DEFAULT),
           clk_flags(0), glitch_ignore_cnt(I2cGlitchFilter::FILTER_7_CYCLES),
@@ -304,7 +306,7 @@ struct I2cSlaveConfig {
      * @brief Default constructor with standard slave settings.
      */
     I2cSlaveConfig() noexcept
-        : i2c_port(0), clk_source(I2cClockSource::DEFAULT),
+        : i2c_port(static_cast<I2cPort>(0)), clk_source(I2cClockSource::DEFAULT),
           scl_io_num(static_cast<GpioNum>(HF_INVALID_PIN)), 
           sda_io_num(static_cast<GpioNum>(HF_INVALID_PIN)),
           slave_addr(0), addr_bit_len(I2cAddressBits::ADDR_7_BIT),

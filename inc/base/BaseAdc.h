@@ -86,7 +86,19 @@
   /* System errors */                                                                              \
   X(ADC_ERR_SYSTEM_ERROR, 40, "System error")                                                      \
   X(ADC_ERR_PERMISSION_DENIED, 41, "Permission denied")                                            \
-  X(ADC_ERR_OPERATION_ABORTED, 42, "Operation aborted")
+  X(ADC_ERR_OPERATION_ABORTED, 42, "Operation aborted")                                            \
+                                                                                                   \
+  /* Extended ADC errors (for ESP32 compatibility) */                                             \
+  X(ADC_ERR_INITIALIZATION_FAILED, 43, "Initialization failed")                                    \
+  X(ADC_ERR_INVALID_PARAM, 44, "Invalid parameter")                                                \
+  X(ADC_ERR_TIMEOUT, 45, "Operation timeout")                                                      \
+  X(ADC_ERR_NOT_SUPPORTED, 46, "Not supported")                                                    \
+                                                                                                   \
+  /* Additional missing error codes */                                                             \
+  X(ADC_ERR_INVALID_STATE, 47, "Invalid state")                                                    \
+  X(ADC_ERR_DRIVER_ERROR, 48, "Driver error")                                                      \
+  X(ADC_ERR_DMA_ERROR, 49, "DMA error")                                                            \
+  X(ADC_ERR_FILTER_ERROR, 50, "Filter configuration error")
 
 enum class HfAdcErr : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,

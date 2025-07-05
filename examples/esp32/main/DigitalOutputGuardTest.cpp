@@ -7,7 +7,7 @@
  */
 
 #include "DigitalOutputGuard.h"
-#include "McuDigitalGpio.h"
+#include "DigitalGpio.h"
 #include <cassert>
 #include <iostream>
 
