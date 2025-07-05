@@ -129,6 +129,11 @@ struct hf_spi_diagnostics_t {
   uint32_t last_error;        ///< Last error code
   uint64_t total_transactions; ///< Total transactions performed
   uint64_t failed_transactions; ///< Failed transactions count
+  
+  hf_spi_diagnostics_t() noexcept
+      : is_initialized(false), is_bus_suspended(false), dma_enabled(false),
+        current_clock_speed(0), current_mode(0), max_transfer_size(0),
+        device_count(0), last_error(0), total_transactions(0), failed_transactions(0) {}
 };
 
 // Type alias for SPI diagnostics
@@ -157,12 +162,12 @@ enum class hf_spi_mode_t : uint8_t {
 
 /**
  * @brief ESP32C6 SPI host device enumeration.
- * @details ESP32C6 SPI controller mapping.
+ * @details ESP32C6 SPI controller mapping aligned with ESP-IDF v5.4.2+.
+ *          SPI1 is reserved for flash and not exposed to users.
  */
 enum class hf_spi_host_device_t : uint8_t {
-  HF_SPI_HOST_SPI1 = 0,  ///< SPI1 host (typically for flash)
-  HF_SPI_HOST_SPI2 = 1,  ///< SPI2 host (general purpose)
-  HF_SPI_HOST_SPI3 = 2,  ///< SPI3 host (general purpose)
+  HF_SPI2_HOST = 1,      ///< SPI2 host (general purpose) - ESP-IDF SPI2_HOST
+  HF_SPI3_HOST = 2,      ///< SPI3 host (general purpose) - ESP-IDF SPI3_HOST  
   HF_SPI_HOST_MAX = 3,   ///< Maximum number of SPI hosts
 };
 
@@ -212,7 +217,7 @@ using hf_spi_handle_t = void *;
  * @brief SPI transaction result and diagnostics.
  * @details Performance monitoring and error tracking for SPI operations.
  */
-struct hf_spi_diagnostics_t {
+struct hf_spi_transaction_diagnostics_t {
   uint32_t total_transactions;     ///< Total number of transactions
   uint32_t successful_transactions; ///< Number of successful transactions
   uint32_t failed_transactions;    ///< Number of failed transactions
@@ -224,7 +229,7 @@ struct hf_spi_diagnostics_t {
   uint64_t last_activity_timestamp; ///< Last activity timestamp
   uint64_t initialization_timestamp; ///< Initialization timestamp
 
-  hf_spi_diagnostics_t() noexcept
+  hf_spi_transaction_diagnostics_t() noexcept
       : total_transactions(0), successful_transactions(0), failed_transactions(0),
         timeout_transactions(0), total_bytes_sent(0), total_bytes_received(0),
         max_transaction_time_us(0), min_transaction_time_us(0xFFFFFFFF),
@@ -259,16 +264,6 @@ static constexpr uint8_t HF_SPI_MAX_HOSTS = 2;
 #define HF_SPI_IS_VALID_MODE(mode) ((mode) >= 0 && (mode) <= 3)
 #define HF_SPI_IS_VALID_TRANSFER_SIZE(size) ((size) > 0 && (size) <= HF_SPI_MAX_TRANSFER_SIZE)
 #endif
-
-/**
- * @brief SPI validation macros for ESP32C6.
- */
-#define HF_SPI_IS_VALID_HOST(host) ((host) < static_cast<uint8_t>(hf_spi_host_device_t::HF_SPI_HOST_MAX))
-#define HF_SPI_IS_VALID_CLOCK_SPEED(speed) \
-  ((speed) >= HF_SPI_MIN_CLOCK_SPEED && (speed) <= HF_SPI_MAX_CLOCK_SPEED)
-#define HF_SPI_IS_VALID_MODE(mode) ((mode) >= 0 && (mode) <= 3)
-#define HF_SPI_IS_VALID_TRANSFER_SIZE(size) ((size) > 0 && (size) <= HF_SPI_MAX_TRANSFER_SIZE)
-
 
 // SPI diagnostics alias for convenience
 using SpiDiagnostics = hf_spi_diagnostics_t;

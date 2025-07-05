@@ -57,8 +57,7 @@
 #include "esp_adc/adc_cali.h"
 #include "esp_adc/adc_cali_scheme.h"
 #include "esp_adc/adc_continuous.h"
-#include "esp_adc/adc_filter.h"
-#include "esp_adc/adc_monitor.h"
+#include "esp_adc/adc_oneshot.h"
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
@@ -117,7 +116,7 @@ struct AdcContinuousConfig {
  * @brief ADC digital filter configuration.
  */
 struct AdcFilterConfig {
-  uint8_t channelId;        ///< Channel to apply filter
+  HfChannelId channelId;        ///< Channel to apply filter
   AdcFilterType filterType; ///< Type of filter
   uint8_t filterCoeff;      ///< Filter coefficient (0-15 for IIR)
   bool enabled;             ///< Enable/disable filter
@@ -130,8 +129,8 @@ struct AdcFilterConfig {
  * @brief ADC threshold monitor configuration.
  */
 struct AdcMonitorConfig {
-  uint8_t monitorId;       ///< Monitor ID (0-1 for ESP32C6)
-  uint8_t channelId;       ///< Channel to monitor
+  HfChannelId monitorId;       ///< Monitor ID (0-1 for ESP32C6)
+  HfChannelId channelId;       ///< Channel to monitor
   uint32_t highThreshold;  ///< High threshold value
   uint32_t lowThreshold;   ///< Low threshold value
   bool highThresholdIntEn; ///< Enable high threshold interrupt
@@ -397,7 +396,7 @@ public:
    * @param enable Enable/disable filter
    * @return HfAdcErr result code
    */
-  HfAdcErr enableFilter(uint8_t channelId, bool enable) noexcept;
+  HfAdcErr enableFilter(HfChannelId channelId, bool enable) noexcept;
 
   /**
    * @brief Get filter configuration for a channel.
@@ -405,7 +404,7 @@ public:
    * @param config Reference to store configuration
    * @return HfAdcErr result code
    */
-  HfAdcErr getFilterConfig(uint8_t channelId, AdcFilterConfig &config) const noexcept;
+  HfAdcErr getFilterConfig(HfChannelId channelId, AdcFilterConfig &config) const noexcept;
 
   //==============================================================================
   // THRESHOLD MONITOR OPERATIONS
@@ -424,7 +423,7 @@ public:
    * @param enable Enable/disable monitor
    * @return HfAdcErr result code
    */
-  HfAdcErr enableMonitor(uint8_t monitorId, bool enable) noexcept;
+  HfAdcErr enableMonitor(HfChannelId monitorId, bool enable) noexcept;
 
   /**
    * @brief Set threshold callback.
@@ -457,7 +456,7 @@ public:
    * @param voltage Reference to store voltage
    * @return HfAdcErr result code
    */
-  HfAdcErr rawToVoltage(uint8_t channelId, uint32_t rawValue, float &voltage) const noexcept;
+  HfAdcErr rawToVoltage(HfChannelId channelId, uint32_t rawValue, float &voltage) const noexcept;
 
   /**
    * @brief Convert raw value to voltage (utility method).
@@ -465,7 +464,7 @@ public:
    * @param rawValue Raw ADC value
    * @return Voltage value
    */
-  float convertRawToVoltage(uint8_t channelId, uint32_t rawValue) noexcept;
+  float convertRawToVoltage(HfChannelId channelId, uint32_t rawValue) noexcept;
 
   /**
    * @brief Convert voltage to raw value.
@@ -473,7 +472,7 @@ public:
    * @param voltage Voltage value
    * @return Raw ADC value
    */
-  uint32_t convertVoltageToRaw(uint8_t channelId, float voltage) noexcept;
+  uint32_t convertVoltageToRaw(HfChannelId channelId, float voltage) noexcept;
 
   //==============================================================================
   // POWER MANAGEMENT
@@ -554,7 +553,7 @@ public:
    * @param ratio Oversampling ratio (2^n)
    * @return HfAdcErr result code
    */
-  HfAdcErr enableOversampling(uint8_t channelId, uint8_t ratio) noexcept;
+  HfAdcErr enableOversampling(HfChannelId channelId, uint8_t ratio) noexcept;
 
   /**
    * @brief Configure trigger source.
@@ -569,7 +568,7 @@ public:
    * @param channels Vector of channels to sample
    * @return HfAdcErr result code
    */
-  HfAdcErr startTriggeredSampling(const std::vector<uint8_t> &channels) noexcept;
+  HfAdcErr startTriggeredSampling(const std::vector<HfChannelId> &channels) noexcept;
 
   /**
    * @brief Stop triggered sampling.
@@ -648,6 +647,12 @@ public:
   HfAdcErr StopContinuousSampling(HfChannelId channel_id) noexcept override;
 
   /**
+   * @brief Stop continuous sampling (convenience method).
+   * @return HfAdcErr result code
+   */
+  HfAdcErr StopContinuousSampling() noexcept;
+
+  /**
    * @brief Read multiple channels simultaneously (BaseAdc override)
    * @param channel_ids Array of channel IDs
    * @param num_channels Number of channels
@@ -701,20 +706,23 @@ private:
    * @param channelNum Channel number to validate
    * @return true if valid, false otherwise
    */
-  bool IsValidChannel(uint8_t channelNum) const noexcept;
-
-  /**
-   * @brief Update operation statistics.
-   * @param success Operation success status
-   * @param operationTimeUs Operation time in microseconds
-   */
-  void UpdateStatistics(bool success, uint64_t operationTimeUs) noexcept;
+  bool IsValidChannel(HfChannelId channelNum) const noexcept {
+    return HF_ADC_IS_VALID_CHANNEL(channelNum);
+  }
 
   /**
    * @brief Handle platform-specific error.
    * @param error Platform error code
    */
-  void HandlePlatformError(int32_t error) noexcept;
+  void HandlePlatformError(int32_t error) noexcept {
+    // Convert to HfAdcErr and log the error
+    HfAdcErr hfError = ConvertPlatformError(error);
+    
+    // Update diagnostics
+    diagnostics_.consecutiveErrors++;
+    diagnostics_.lastErrorCode = static_cast<uint32_t>(hfError);
+    diagnostics_.adcHealthy = false;
+  }
 
   /**
    * @brief Validate and adjust advanced configuration parameters.
@@ -739,13 +747,6 @@ private:
   void DeinitializeCalibration() noexcept;
 
   /**
-   * @brief Convert ESP-IDF error codes to HfAdcErr.
-   * @param esp_error ESP-IDF error code
-   * @return Corresponding HfAdcErr
-   */
-  HfAdcErr ConvertEspError(int32_t esp_error) noexcept;
-
-  /**
    * @brief DMA data processing task (static function).
    * @param pvParameters Pointer to McuAdc instance
    */
@@ -762,6 +763,7 @@ private:
   //==============================================================================
   // PRIVATE MEMBER VARIABLES
   //==============================================================================
+  
   // Configuration
   AdcAdvancedConfig advanced_config_; ///< Advanced configuration
   bool use_advanced_config_;          ///< Flag indicating advanced config usage
@@ -792,8 +794,8 @@ private:
 #endif
 
   // Advanced feature configurations and state
-  std::unordered_map<uint8_t, AdcFilterConfig> filter_configs_;    ///< Filter configurations per channel
-  std::unordered_map<uint8_t, AdcMonitorConfig> monitor_configs_;  ///< Monitor configurations per monitor ID
+  std::unordered_map<HfChannelId, AdcFilterConfig> filter_configs_;    ///< Filter configurations per channel
+  std::unordered_map<HfChannelId, AdcMonitorConfig> monitor_configs_;  ///< Monitor configurations per monitor ID
   AdcCalibrationConfig calibration_config_;                       ///< Calibration configuration
     // Advanced callbacks
   AdcThresholdCallback threshold_callback_;             ///< Threshold monitor callback
@@ -802,7 +804,7 @@ private:
   // Trigger configuration
   AdcTriggerSource trigger_source_;                     ///< Current trigger source
   uint32_t trigger_parameter_;                          ///< Trigger parameter
-  std::vector<uint8_t> triggered_channels_;             ///< Channels for triggered sampling
+  std::vector<HfChannelId> triggered_channels_;             ///< Channels for triggered sampling
   bool triggered_sampling_active_;                      ///< Triggered sampling status
     // Statistics and diagnostics
   mutable AdcStatistics statistics_;                    ///< Operation statistics
@@ -817,4 +819,59 @@ private:
   void updateStatistics(uint64_t conversionTimeUs, bool success) const noexcept;
   
   static constexpr const char* TAG = "McuAdc";          ///< Logging tag
+
+  //==============================================================================
+  // ESP32C6 HARDWARE FEATURE IMPLEMENTATIONS (PRIVATE METHODS)
+  //==============================================================================
+
+#ifdef HF_MCU_FAMILY_ESP32
+  /**
+   * @brief Configure ESP32C6 hardware IIR filter for a channel.
+   * @param channelId Channel ID to configure filter for
+   * @param filterCoeff Filter coefficient (2, 4, 8, 16, 32, 64)
+   * @return HfAdcErr result code
+   */
+  HfAdcErr ConfigureHardwareFilter(HfChannelId channelId, uint8_t filterCoeff) noexcept;
+
+  /**
+   * @brief Configure ESP32C6 threshold monitor for a channel.
+   * @param channelId Channel ID to monitor
+   * @param lowThreshold Low threshold value
+   * @param highThreshold High threshold value
+   * @param callback Callback function for threshold events
+   * @return HfAdcErr result code
+   */
+  HfAdcErr ConfigureThresholdMonitor(HfChannelId channelId, uint32_t lowThreshold, uint32_t highThreshold,
+                                     std::function<void(uint8_t, uint8_t, uint32_t, bool, void*)> callback) noexcept;
+
+  /**
+   * @brief Configure ESP32C6 hardware oversampling.
+   * @param channelId Channel ID to configure oversampling for
+   * @param oversampleRatio Oversampling ratio (power of 2)
+   * @param decimationFactor Decimation factor
+   * @return HfAdcErr result code
+   */
+  HfAdcErr ConfigureOversampling(HfChannelId channelId, uint8_t oversampleRatio, uint8_t decimationFactor) noexcept;
+
+  /**
+   * @brief Initialize ESP32C6 continuous mode with DMA.
+   * @param channel_num Channel number to configure for continuous mode
+   * @param sample_rate_hz Sampling rate in Hz
+   * @return HfAdcErr result code
+   */
+  HfAdcErr InitializeContinuousMode(HfChannelId channel_num, uint32_t sample_rate_hz) noexcept;
+
+  /**
+   * @brief Deinitialize ESP32C6 continuous mode and clean up resources.
+   * @return HfAdcErr result code
+   */
+  HfAdcErr DeinitializeContinuousMode() noexcept;
+
+  /**
+   * @brief Get ESP32C6 ADC channel mapping.
+   * @param channel_num Generic channel number
+   * @return ESP32C6-specific ADC channel
+   */
+  adc_channel_t GetMcuChannel(HfChannelId channel_num) const noexcept;
+#endif
 };

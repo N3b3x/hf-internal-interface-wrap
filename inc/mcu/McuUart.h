@@ -37,6 +37,11 @@ using UartFlowCtrlType = hf_uart_flow_ctrl_t;
 using UartStatistics = hf_uart_statistics_t;
 using UartFlowConfig = hf_uart_flow_config_t;
 using UartPowerConfig = hf_uart_power_config_t;
+using UartMode = hf_uart_mode_t;
+using UartPatternConfig = hf_uart_pattern_config_t;
+using UartRs485Config = hf_uart_rs485_config_t;
+using UartIrdaConfig = hf_uart_irda_config_t;
+using UartWakeupConfig = hf_uart_wakeup_config_t;
 
 /**
  * @class McuUart
@@ -237,6 +242,136 @@ public:
    */
   uint16_t ReadLine(char *buffer, uint16_t max_length, uint32_t timeout_ms) noexcept;
 
+  //==============================================//
+  // ESP32C6 ADVANCED FEATURES                   //
+  //==============================================//
+
+  /**
+   * @brief Configure UART communication mode (standard, RS485, IrDA, etc.).
+   * @param mode UART communication mode
+   * @return true if successful, false otherwise
+   */
+  bool SetCommunicationMode(UartMode mode) noexcept;
+
+  /**
+   * @brief Get current UART communication mode.
+   * @return Current communication mode
+   */
+  UartMode GetCommunicationMode() const noexcept;
+
+  /**
+   * @brief Configure RS485 mode settings.
+   * @param rs485_config RS485 configuration parameters
+   * @return true if successful, false otherwise
+   */
+  bool ConfigureRS485(const UartRs485Config &rs485_config) noexcept;
+
+  /**
+   * @brief Check if RS485 collision was detected.
+   * @return true if collision detected, false otherwise
+   */
+  bool IsRS485CollisionDetected() noexcept;
+
+  /**
+   * @brief Configure IrDA infrared communication mode.
+   * @param irda_config IrDA configuration parameters
+   * @return true if successful, false otherwise
+   */
+  bool ConfigureIrDA(const UartIrdaConfig &irda_config) noexcept;
+
+  /**
+   * @brief Enable/configure pattern detection for AT commands.
+   * @param pattern_config Pattern detection configuration
+   * @return true if successful, false otherwise
+   */
+  bool ConfigurePatternDetection(const UartPatternConfig &pattern_config) noexcept;
+
+  /**
+   * @brief Disable pattern detection.
+   * @return true if successful, false otherwise
+   */
+  bool DisablePatternDetection() noexcept;
+
+  /**
+   * @brief Get detected pattern position in buffer.
+   * @param pop_position If true, remove the position from queue
+   * @return Pattern position in buffer, or -1 if none found
+   */
+  int GetPatternPosition(bool pop_position = false) noexcept;
+
+  /**
+   * @brief Configure software flow control (XON/XOFF).
+   * @param enable Enable software flow control
+   * @param xon_threshold Low water mark for XON
+   * @param xoff_threshold High water mark for XOFF
+   * @return true if successful, false otherwise
+   */
+  bool ConfigureSoftwareFlowControl(bool enable, uint8_t xon_threshold = 20, 
+                                   uint8_t xoff_threshold = 80) noexcept;
+
+  /**
+   * @brief Configure UART wakeup from light sleep.
+   * @param wakeup_config Wakeup configuration parameters
+   * @return true if successful, false otherwise
+   */
+  bool ConfigureWakeup(const UartWakeupConfig &wakeup_config) noexcept;
+
+  /**
+   * @brief Configure UART power management settings.
+   * @param power_config Power management configuration
+   * @return true if successful, false otherwise
+   */
+  bool ConfigurePowerManagement(const UartPowerConfig &power_config) noexcept;
+
+  /**
+   * @brief Configure RX FIFO full threshold for interrupt generation.
+   * @param threshold Threshold value (bytes)
+   * @return true if successful, false otherwise
+   */
+  bool SetRxFullThreshold(uint8_t threshold) noexcept;
+
+  /**
+   * @brief Configure TX FIFO empty threshold for interrupt generation.
+   * @param threshold Threshold value (bytes)
+   * @return true if successful, false otherwise
+   */
+  bool SetTxEmptyThreshold(uint8_t threshold) noexcept;
+
+  /**
+   * @brief Configure RX timeout threshold.
+   * @param timeout_threshold Timeout in symbol periods (1-126)
+   * @return true if successful, false otherwise
+   */
+  bool SetRxTimeoutThreshold(uint8_t timeout_threshold) noexcept;
+
+  /**
+   * @brief Enable/disable RX interrupts.
+   * @param enable True to enable, false to disable
+   * @return true if successful, false otherwise
+   */
+  bool EnableRxInterrupts(bool enable) noexcept;
+
+  /**
+   * @brief Enable/disable TX interrupts.
+   * @param enable True to enable, false to disable
+   * @param threshold TX FIFO threshold for interrupt (0-127)
+   * @return true if successful, false otherwise
+   */
+  bool EnableTxInterrupts(bool enable, uint8_t threshold = 10) noexcept;
+
+  /**
+   * @brief Configure line signal inversion.
+   * @param inverse_mask Bit mask of signals to invert (see uart_signal_inv_t)
+   * @return true if successful, false otherwise
+   */
+  bool SetSignalInversion(uint32_t inverse_mask) noexcept;
+
+  /**
+   * @brief Get comprehensive UART statistics.
+   * @return UART statistics structure
+   */
+  UartStatistics GetStatistics() const noexcept;
+
 private:
   //==============================================//
   // PRIVATE METHODS                              //
@@ -323,6 +458,14 @@ private:
    */
   int InternalPrintf(const char *format, va_list args) noexcept;
 
+  /**
+   * @brief Ensure UART is initialized, initialize if needed.
+   * @return true if initialized, false on error
+   */
+  bool EnsureInitialized() noexcept {
+    return initialized_ || Initialize();
+  }
+
   //==============================================//
   // PRIVATE MEMBERS                              //
   //==============================================//
@@ -334,6 +477,19 @@ private:
   uint32_t bytes_received_;          ///< Total bytes received
   bool break_detected_;              ///< Break condition flag
   bool tx_in_progress_;              ///< Transmission in progress flag
+
+  // Advanced configuration members
+  UartMode current_mode_;            ///< Current UART communication mode
+  UartRs485Config rs485_config_;     ///< RS485 configuration
+  UartIrdaConfig irda_config_;       ///< IrDA configuration
+  UartPatternConfig pattern_config_; ///< Pattern detection configuration
+  UartWakeupConfig wakeup_config_;   ///< Wakeup configuration
+  UartPowerConfig power_config_;     ///< Power management configuration
+  UartFlowConfig flow_config_;       ///< Flow control configuration
+  UartStatistics statistics_;        ///< Communication statistics
+  bool pattern_detection_enabled_;   ///< Pattern detection status
+  bool software_flow_enabled_;       ///< Software flow control status
+  bool wakeup_enabled_;              ///< Wakeup functionality status
 
   // Printf buffer management
   static constexpr uint16_t PRINTF_BUFFER_SIZE = 256; ///< Printf buffer size

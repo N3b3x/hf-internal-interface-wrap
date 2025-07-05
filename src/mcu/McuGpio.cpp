@@ -763,6 +763,49 @@ HfGpioErr McuGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
+PullMode McuGpio::GetPullModeImpl() const noexcept {
+  if (!initialized_) {
+    return pull_mode_; // Return cached value if not initialized
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  // Read actual hardware pull resistor state from ESP32 GPIO registers
+  if (HF_GPIO_IS_VALID_GPIO(pin_)) {
+    gpio_pull_mode_t hw_pull_mode = gpio_get_pull_mode(static_cast<gpio_num_t>(pin_));
+    
+    // Convert ESP-IDF pull mode to our PullMode enum
+    switch (hw_pull_mode) {
+      case GPIO_PULLUP_ONLY:
+        ESP_LOGV(TAG, "GPIO%d hardware pull mode: PULLUP_ONLY", static_cast<int>(pin_));
+        return PullMode::PullUp;
+        
+      case GPIO_PULLDOWN_ONLY:
+        ESP_LOGV(TAG, "GPIO%d hardware pull mode: PULLDOWN_ONLY", static_cast<int>(pin_));
+        return PullMode::PullDown;
+        
+      case GPIO_PULLUP_PULLDOWN:
+        // Both pull-up and pull-down enabled - this is unusual, log warning
+        ESP_LOGW(TAG, "GPIO%d has both pull-up and pull-down enabled, returning cached value", 
+                 static_cast<int>(pin_));
+        return pull_mode_;
+        
+      case GPIO_FLOATING:
+      default:
+        ESP_LOGV(TAG, "GPIO%d hardware pull mode: FLOATING", static_cast<int>(pin_));
+        return PullMode::Floating;
+    }
+  }
+  
+  ESP_LOGW(TAG, "GPIO%d is not valid for pull mode reading, returning cached value", 
+           static_cast<int>(pin_));
+#endif
+
+  // Fallback to cached value for non-ESP32 platforms or invalid pins
+  ESP_LOGV(TAG, "GPIO%d returning cached pull mode: %s", static_cast<int>(pin_), 
+           BaseGpio::ToString(pull_mode_));
+  return pull_mode_;
+}
+
 HfGpioErr McuGpio::SetOutputModeImpl(OutputMode output_mode) noexcept {
   output_mode_ = output_mode;
   
@@ -1882,3 +1925,194 @@ HfGpioErr McuGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
 }
 
 #endif // HF_MCU_ESP32C6
+
+//==============================================================================
+// PRIVATE HELPER FUNCTION IMPLEMENTATIONS
+//==============================================================================
+
+#ifdef HF_MCU_FAMILY_ESP32
+gpio_int_type_t McuGpio::MapInterruptTrigger(InterruptTrigger trigger) const noexcept {
+  switch (trigger) {
+    case InterruptTrigger::RisingEdge:
+      return GPIO_INTR_POSEDGE;
+    case InterruptTrigger::FallingEdge:
+      return GPIO_INTR_NEGEDGE;
+    case InterruptTrigger::BothEdges:
+      return GPIO_INTR_ANYEDGE;
+    case InterruptTrigger::LowLevel:
+      return GPIO_INTR_LOW_LEVEL;
+    case InterruptTrigger::HighLevel:
+      return GPIO_INTR_HIGH_LEVEL;
+    case InterruptTrigger::None:
+    default:
+      return GPIO_INTR_DISABLE;
+  }
+}
+#else
+uint32_t McuGpio::MapInterruptTrigger(InterruptTrigger trigger) const noexcept {
+  // Platform-specific mapping for non-ESP32 platforms
+  return static_cast<uint32_t>(trigger);
+}
+#endif
+
+#ifdef HF_MCU_FAMILY_ESP32
+void IRAM_ATTR McuGpio::StaticInterruptHandler(void *arg) {
+  McuGpio *gpio_instance = static_cast<McuGpio*>(arg);
+  if (gpio_instance) {
+    gpio_instance->HandleInterrupt();
+  }
+}
+#else
+void McuGpio::StaticInterruptHandler(void *arg) {
+  McuGpio *gpio_instance = static_cast<McuGpio*>(arg);
+  if (gpio_instance) {
+    gpio_instance->HandleInterrupt();
+  }
+}
+#endif
+
+#ifdef HF_MCU_FAMILY_ESP32
+void IRAM_ATTR McuGpio::HandleInterrupt() {
+  // Increment interrupt counter (thread-safe)
+  interrupt_count_.fetch_add(1, std::memory_order_relaxed);
+  g_total_gpio_interrupts.fetch_add(1, std::memory_order_relaxed);
+  
+  // Signal semaphore if available
+  if (platform_semaphore_) {
+    BaseType_t higher_priority_task_woken = pdFALSE;
+    xSemaphoreGiveFromISR(static_cast<SemaphoreHandle_t>(platform_semaphore_), 
+                          &higher_priority_task_woken);
+    if (higher_priority_task_woken == pdTRUE) {
+      portYIELD_FROM_ISR();
+    }
+  }
+  
+  // Call user callback if registered
+  if (interrupt_callback_) {
+    interrupt_callback_(interrupt_user_data_);
+  }
+}
+#else
+void McuGpio::HandleInterrupt() {
+  // Increment interrupt counter (thread-safe)
+  interrupt_count_.fetch_add(1, std::memory_order_relaxed);
+  g_total_gpio_interrupts.fetch_add(1, std::memory_order_relaxed);
+  
+  // Call user callback if registered
+  if (interrupt_callback_) {
+    interrupt_callback_(interrupt_user_data_);
+  }
+}
+#endif
+
+bool McuGpio::InitializeAdvancedFeatures() noexcept {
+  bool success = true;
+  
+  #ifdef HF_MCU_ESP32C6
+  // Initialize RTC GPIO if the pin supports it
+  if (HF_GPIO_IS_RTC_GPIO(pin_)) {
+    ESP_LOGD(TAG, "Pin GPIO%d supports RTC functionality", static_cast<int>(pin_));
+    rtc_gpio_enabled_ = true;
+  }
+  
+  // Initialize default sleep configuration for RTC-capable pins
+  if (rtc_gpio_enabled_) {
+    sleep_config_.sleep_direction = current_direction_;
+    sleep_config_.sleep_pull_mode = current_pull_mode_;
+    sleep_config_.sleep_output_enable = (current_direction_ == Direction::Output);
+    sleep_config_.sleep_input_enable = (current_direction_ == Direction::Input);
+    sleep_config_.hold_during_sleep = false;
+    
+    ESP_LOGD(TAG, "RTC GPIO features initialized for GPIO%d", static_cast<int>(pin_));
+  }
+  
+  // Initialize glitch filter configuration
+  glitch_filter_type_ = GpioGlitchFilterType::None;
+  pin_glitch_filter_enabled_ = false;
+  flex_glitch_filter_enabled_ = false;
+  
+  ESP_LOGD(TAG, "Advanced features initialized for GPIO%d", static_cast<int>(pin_));
+  #else
+  ESP_LOGD(TAG, "Basic GPIO initialization (no advanced features available)");
+  #endif
+  
+  return success;
+}
+
+void McuGpio::CleanupAdvancedFeatures() noexcept {
+  // Clean up glitch filters
+  CleanupGlitchFilters();
+  
+  // Clean up ETM resources
+  CleanupETM();
+  
+  #ifdef HF_MCU_ESP32C6
+  // Clean up RTC GPIO resources
+  if (rtc_gpio_enabled_ && HF_GPIO_IS_RTC_GPIO(pin_)) {
+    // Disable RTC GPIO functionality
+    esp_err_t ret = rtc_gpio_deinit(static_cast<gpio_num_t>(pin_));
+    if (ret != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to deinitialize RTC GPIO%d: %s", 
+               static_cast<int>(pin_), esp_err_to_name(ret));
+    } else {
+      ESP_LOGD(TAG, "RTC GPIO%d deinitialized", static_cast<int>(pin_));
+    }
+    rtc_gpio_enabled_ = false;
+    rtc_gpio_handle_ = nullptr;
+  }
+  
+  // Reset hold function
+  if (hold_enabled_) {
+    esp_err_t ret = gpio_hold_dis(static_cast<gpio_num_t>(pin_));
+    if (ret != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to disable hold for GPIO%d: %s", 
+               static_cast<int>(pin_), esp_err_to_name(ret));
+    } else {
+      ESP_LOGD(TAG, "Hold disabled for GPIO%d", static_cast<int>(pin_));
+    }
+    hold_enabled_ = false;
+  }
+  #endif
+  
+  ESP_LOGD(TAG, "Advanced features cleaned up for GPIO%d", static_cast<int>(pin_));
+}
+
+void McuGpio::CleanupGlitchFilters() noexcept {
+  #ifdef HF_MCU_ESP32C6
+  if (glitch_filter_handle_) {
+    // Disable and delete glitch filter
+    esp_err_t ret = gpio_glitch_filter_disable(
+      reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+    if (ret != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to disable glitch filter for GPIO%d: %s", 
+               static_cast<int>(pin_), esp_err_to_name(ret));
+    }
+    
+    ret = gpio_del_glitch_filter(
+      reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
+    if (ret != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to delete glitch filter for GPIO%d: %s", 
+               static_cast<int>(pin_), esp_err_to_name(ret));
+    } else {
+      ESP_LOGD(TAG, "Glitch filter cleaned up for GPIO%d", static_cast<int>(pin_));
+    }
+    
+    glitch_filter_handle_ = nullptr;
+  }
+  
+  // Reset glitch filter state
+  pin_glitch_filter_enabled_ = false;
+  flex_glitch_filter_enabled_ = false;
+  glitch_filter_type_ = GpioGlitchFilterType::None;
+  #endif
+}
+
+void McuGpio::CleanupInterruptSemaphore() noexcept {
+  #ifdef HF_MCU_FAMILY_ESP32
+  if (platform_semaphore_) {
+    vSemaphoreDelete(static_cast<SemaphoreHandle_t>(platform_semaphore_));
+    platform_semaphore_ = nullptr;
+    ESP_LOGD(TAG, "Interrupt semaphore cleaned up for GPIO%d", static_cast<int>(pin_));
+  }
+  #endif
+}

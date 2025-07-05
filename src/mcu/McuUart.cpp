@@ -34,8 +34,12 @@ static const char *TAG = "McuUart";
 
 McuUart::McuUart(HfPortNumber port, const UartConfig &config) noexcept
     : BaseUart(port, config), platform_handle_(nullptr), last_error_(HfUartErr::UART_SUCCESS),
-      bytes_transmitted_(0), bytes_received_(0), break_detected_(false), tx_in_progress_(false) {
+      bytes_transmitted_(0), bytes_received_(0), break_detected_(false), tx_in_progress_(false),
+      current_mode_(UartMode::HF_UART_MODE_UART), pattern_detection_enabled_(false),
+      software_flow_enabled_(false), wakeup_enabled_(false) {
   memset(printf_buffer_, 0, sizeof(printf_buffer_));
+  // Initialize statistics timestamp
+  statistics_.initialization_timestamp = GetCurrentTimeMs() * 1000; // Convert to microseconds
 }
 
 McuUart::~McuUart() noexcept {
@@ -86,6 +90,7 @@ bool McuUart::Initialize() noexcept {
     return false;
   }
 
+  initialized_ = true;
   last_error_ = HfUartErr::UART_SUCCESS;
   return true;
 }
@@ -99,6 +104,7 @@ bool McuUart::Deinitialize() noexcept {
 
   bool result = PlatformDeinitialize();
   if (result) {
+    initialized_ = false;
     last_error_ = HfUartErr::UART_SUCCESS;
   }
 
@@ -514,6 +520,339 @@ uint16_t McuUart::ReadLine(char *buffer, uint16_t max_length, uint32_t timeout_m
 }
 
 //==============================================//
+// ESP32C6 ADVANCED FEATURES IMPLEMENTATION    //
+//==============================================//
+
+bool McuUart::SetCommunicationMode(UartMode mode) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  uint32_t esp_mode;
+  switch (mode) {
+    case UartMode::HF_UART_MODE_UART:
+      esp_mode = UART_MODE_UART;
+      break;
+    case UartMode::HF_UART_MODE_RS485_HALF_DUPLEX:
+      esp_mode = UART_MODE_RS485_HALF_DUPLEX;
+      break;
+    case UartMode::HF_UART_MODE_IRDA:
+      esp_mode = UART_MODE_IRDA;
+      break;
+    case UartMode::HF_UART_MODE_RS485_COLLISION_DETECT:
+      esp_mode = UART_MODE_RS485_COLLISION_DETECT;
+      break;
+    case UartMode::HF_UART_MODE_RS485_APP_CTRL:
+      esp_mode = UART_MODE_RS485_APP_CTRL;
+      break;
+    default:
+      return false;
+  }
+
+  esp_err_t err = uart_set_mode(static_cast<hf_uart_port_native_t>(port_), 
+                                static_cast<uart_mode_t>(esp_mode));
+  if (err == ESP_OK) {
+    current_mode_ = mode;
+    return true;
+  }
+#else
+  (void)mode;
+#endif
+  return false;
+}
+
+UartMode McuUart::GetCommunicationMode() const noexcept {
+  return current_mode_;
+}
+
+bool McuUart::ConfigureRS485(const UartRs485Config &rs485_config) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  // Set RS485 mode first
+  if (!SetCommunicationMode(rs485_config.mode)) {
+    return false;
+  }
+
+  rs485_config_ = rs485_config;
+  return true;
+#else
+  (void)rs485_config;
+  return false;
+#endif
+}
+
+bool McuUart::IsRS485CollisionDetected() noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  bool collision_flag = false;
+  esp_err_t err = uart_get_collision_flag(static_cast<hf_uart_port_native_t>(port_), &collision_flag);
+  return (err == ESP_OK) && collision_flag;
+#else
+  return false;
+#endif
+}
+
+bool McuUart::ConfigureIrDA(const UartIrdaConfig &irda_config) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  if (irda_config.enable_irda) {
+    // Set IrDA mode
+    if (!SetCommunicationMode(UartMode::HF_UART_MODE_IRDA)) {
+      return false;
+    }
+
+    // Configure signal inversion if needed
+    uint32_t invert_mask = 0;
+    if (irda_config.invert_tx) invert_mask |= UART_SIGNAL_IRDA_TX_INV;
+    if (irda_config.invert_rx) invert_mask |= UART_SIGNAL_IRDA_RX_INV;
+
+    if (invert_mask != 0) {
+      esp_err_t err = uart_set_line_inverse(static_cast<hf_uart_port_native_t>(port_), invert_mask);
+      if (err != ESP_OK) {
+        return false;
+      }
+    }
+  }
+
+  irda_config_ = irda_config;
+  return true;
+#else
+  (void)irda_config;
+  return false;
+#endif
+}
+
+bool McuUart::ConfigurePatternDetection(const UartPatternConfig &pattern_config) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  if (pattern_config.enable_pattern_detection) {
+    esp_err_t err = uart_enable_pattern_det_baud_intr(
+        static_cast<hf_uart_port_native_t>(port_),
+        pattern_config.pattern_char,
+        pattern_config.pattern_char_num,
+        pattern_config.char_timeout,
+        pattern_config.post_idle,
+        pattern_config.pre_idle);
+    
+    if (err == ESP_OK) {
+      pattern_detection_enabled_ = true;
+      pattern_config_ = pattern_config;
+      return true;
+    }
+  } else {
+    return DisablePatternDetection();
+  }
+#else
+  (void)pattern_config;
+#endif
+  return false;
+}
+
+bool McuUart::DisablePatternDetection() noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  esp_err_t err = uart_disable_pattern_det_intr(static_cast<hf_uart_port_native_t>(port_));
+  if (err == ESP_OK) {
+    pattern_detection_enabled_ = false;
+    return true;
+  }
+#endif
+  return false;
+}
+
+int McuUart::GetPatternPosition(bool pop_position) noexcept {
+  if (!EnsureInitialized() || !pattern_detection_enabled_) {
+    return -1;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  if (pop_position) {
+    return uart_pattern_pop_pos(static_cast<hf_uart_port_native_t>(port_));
+  } else {
+    return uart_pattern_get_pos(static_cast<hf_uart_port_native_t>(port_));
+  }
+#else
+  (void)pop_position;
+  return -1;
+#endif
+}
+
+bool McuUart::ConfigureSoftwareFlowControl(bool enable, uint8_t xon_threshold, 
+                                          uint8_t xoff_threshold) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  esp_err_t err = uart_set_sw_flow_ctrl(static_cast<hf_uart_port_native_t>(port_), 
+                                        enable, xon_threshold, xoff_threshold);
+  if (err == ESP_OK) {
+    software_flow_enabled_ = enable;
+    flow_config_.enable_sw_flow_control = enable;
+    flow_config_.rx_flow_ctrl_thresh = xoff_threshold;
+    flow_config_.tx_flow_ctrl_thresh = xon_threshold;
+    return true;
+  }
+#else
+  (void)enable;
+  (void)xon_threshold;
+  (void)xoff_threshold;
+#endif
+  return false;
+}
+
+bool McuUart::ConfigureWakeup(const UartWakeupConfig &wakeup_config) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  if (wakeup_config.enable_wakeup) {
+    esp_err_t err = uart_set_wakeup_threshold(static_cast<hf_uart_port_native_t>(port_), 
+                                              wakeup_config.wakeup_threshold);
+    if (err == ESP_OK) {
+      wakeup_enabled_ = true;
+      wakeup_config_ = wakeup_config;
+      return true;
+    }
+  } else {
+    wakeup_enabled_ = false;
+    wakeup_config_ = wakeup_config;
+    return true;
+  }
+#else
+  (void)wakeup_config;
+#endif
+  return false;
+}
+
+bool McuUart::ConfigurePowerManagement(const UartPowerConfig &power_config) noexcept {
+  power_config_ = power_config;
+  // Power management configuration is typically set during initialization
+  // For runtime changes, a reinitialization might be required
+  return true;
+}
+
+bool McuUart::SetRxFullThreshold(uint8_t threshold) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  esp_err_t err = uart_set_rx_full_threshold(static_cast<hf_uart_port_native_t>(port_), threshold);
+  return err == ESP_OK;
+#else
+  (void)threshold;
+  return false;
+#endif
+}
+
+bool McuUart::SetTxEmptyThreshold(uint8_t threshold) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  esp_err_t err = uart_set_tx_empty_threshold(static_cast<hf_uart_port_native_t>(port_), threshold);
+  return err == ESP_OK;
+#else
+  (void)threshold;
+  return false;
+#endif
+}
+
+bool McuUart::SetRxTimeoutThreshold(uint8_t timeout_threshold) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  esp_err_t err = uart_set_rx_timeout(static_cast<hf_uart_port_native_t>(port_), timeout_threshold);
+  return err == ESP_OK;
+#else
+  (void)timeout_threshold;
+  return false;
+#endif
+}
+
+bool McuUart::EnableRxInterrupts(bool enable) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  esp_err_t err;
+  if (enable) {
+    err = uart_enable_rx_intr(static_cast<hf_uart_port_native_t>(port_));
+  } else {
+    err = uart_disable_rx_intr(static_cast<hf_uart_port_native_t>(port_));
+  }
+  return err == ESP_OK;
+#else
+  (void)enable;
+  return false;
+#endif
+}
+
+bool McuUart::EnableTxInterrupts(bool enable, uint8_t threshold) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  esp_err_t err;
+  if (enable) {
+    err = uart_enable_tx_intr(static_cast<hf_uart_port_native_t>(port_), 1, threshold);
+  } else {
+    err = uart_disable_tx_intr(static_cast<hf_uart_port_native_t>(port_));
+  }
+  return err == ESP_OK;
+#else
+  (void)enable;
+  (void)threshold;
+  return false;
+#endif
+}
+
+bool McuUart::SetSignalInversion(uint32_t inverse_mask) noexcept {
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  esp_err_t err = uart_set_line_inverse(static_cast<hf_uart_port_native_t>(port_), inverse_mask);
+  return err == ESP_OK;
+#else
+  (void)inverse_mask;
+  return false;
+#endif
+}
+
+UartStatistics McuUart::GetStatistics() const noexcept {
+  UartStatistics stats = statistics_;
+  stats.tx_byte_count = bytes_transmitted_;
+  stats.rx_byte_count = bytes_received_;
+  stats.last_activity_timestamp = GetCurrentTimeMs() * 1000; // Convert to microseconds
+  return stats;
+}
+
+//==============================================//
 // PRIVATE METHODS                              //
 //==============================================//
 
@@ -594,6 +933,9 @@ bool McuUart::PlatformInitialize() noexcept {
   uart_config.flow_ctrl =
       config_.use_hardware_flow_control ? UART_HW_FLOWCTRL_CTS_RTS : UART_HW_FLOWCTRL_DISABLE;
   uart_config.source_clk = UART_SCLK_DEFAULT;
+  
+  // Configure power management settings
+  uart_config.allow_pd = power_config_.allow_pd_in_light_sleep;
 
   // Configure UART
   esp_err_t err = uart_param_config(static_cast<hf_uart_port_native_t>(port_), &uart_config);

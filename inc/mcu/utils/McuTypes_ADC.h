@@ -38,6 +38,12 @@ using hf_adc_continuous_clk_src_native_t = adc_continuous_clk_src_t;
 using hf_adc_digi_convert_mode_native_t = adc_digi_convert_mode_t;
 using hf_adc_digi_output_format_native_t = adc_digi_output_format_t;
 using hf_adc_cali_scheme_ver_native_t = adc_cali_scheme_ver_t;
+
+using hf_adc_oneshot_unit_handle_t = adc_oneshot_unit_handle_t;
+using hf_adc_continuous_handle_t = adc_continuous_handle_t;  
+using hf_adc_cali_handle_t = adc_cali_handle_t;
+using hf_adc_filter_handle_t = adc_iir_filter_handle_t;
+using hf_adc_monitor_handle_t = adc_monitor_handle_t;
 #else
 // Non-ESP32 platforms - use generic types
 using hf_adc_unit_native_t = uint8_t;
@@ -50,6 +56,14 @@ using hf_adc_continuous_clk_src_native_t = uint8_t;
 using hf_adc_digi_convert_mode_native_t = uint8_t;
 using hf_adc_digi_output_format_native_t = uint8_t;
 using hf_adc_cali_scheme_ver_native_t = uint8_t;
+
+
+// Generic handle types for non-ESP32 platforms
+using hf_adc_oneshot_unit_handle_t = void*;
+using hf_adc_continuous_handle_t = void*;
+using hf_adc_cali_handle_t = void*;
+using hf_adc_filter_handle_t = void*;
+using hf_adc_monitor_handle_t = void*;
 #endif
 
 //==============================================================================

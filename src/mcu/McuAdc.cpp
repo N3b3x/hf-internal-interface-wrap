@@ -532,7 +532,7 @@ bool McuAdc::isCalibrationValid() const noexcept {
     return cali_enable_ && (cali_handle_ != nullptr);
 }
 
-HfAdcErr McuAdc::rawToVoltage(uint8_t channelId, uint32_t rawValue, float &voltage) const noexcept {
+HfAdcErr McuAdc::rawToVoltage(HfChannelId channelId, uint32_t rawValue, float &voltage) const noexcept {
     if (!IsChannelAvailable(channelId)) {
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
@@ -578,7 +578,7 @@ HfAdcErr McuAdc::rawToVoltage(uint8_t channelId, uint32_t rawValue, float &volta
 // HELPER FUNCTIONS AND UTILITY METHODS
 //==============================================================================
 
-adc_channel_t McuAdc::GetMcuChannel(uint8_t channel_num) const noexcept {
+adc_channel_t McuAdc::GetMcuChannel(HfChannelId channel_num) const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   // Map generic channel numbers to ESP32-C6 ADC1 channels
   switch (channel_num) {
@@ -702,7 +702,7 @@ float McuAdc::GetReferenceVoltage() const noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
 
-HfAdcErr McuAdc::InitializeContinuousMode(uint8_t channel_num, uint32_t sample_rate_hz) noexcept {
+HfAdcErr McuAdc::InitializeContinuousMode(HfChannelId channel_num, uint32_t sample_rate_hz) noexcept {
     if (adc_continuous_handle_) {
         ESP_LOGW(TAG, "Continuous mode already initialized");
         return HfAdcErr::ADC_ERR_ALREADY_INITIALIZED;
@@ -841,7 +841,7 @@ HfAdcErr McuAdc::DeinitializeContinuousMode() noexcept {
     return HfAdcErr::ADC_SUCCESS;
 }
 
-HfAdcErr McuAdc::StartContinuousSampling(uint8_t channel_num, AdcCallback callback,
+HfAdcErr McuAdc::StartContinuousSampling(HfChannelId channel_num, AdcCallback callback,
                                          void* user_data) noexcept {
     if (!IsChannelAvailable(channel_num)) {
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
@@ -878,7 +878,7 @@ HfAdcErr McuAdc::StartContinuousSampling(uint8_t channel_num, AdcCallback callba
     return HfAdcErr::ADC_SUCCESS;
 }
 
-HfAdcErr McuAdc::StopContinuousSampling(uint8_t channel_num) noexcept {
+HfAdcErr McuAdc::StopContinuousSampling(HfChannelId channel_num) noexcept {
     if (!IsChannelAvailable(channel_num)) {
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
@@ -904,6 +904,13 @@ HfAdcErr McuAdc::StopContinuousSampling(uint8_t channel_num) noexcept {
 
     ESP_LOGI(TAG, "Continuous sampling stopped successfully");
     return HfAdcErr::ADC_SUCCESS;
+}
+
+HfAdcErr McuAdc::StopContinuousSampling() noexcept {
+    if (dma_mode_active_ && current_dma_channel_ < GetMaxChannels()) {
+        return StopContinuousSampling(current_dma_channel_);
+    }
+    return HfAdcErr::ADC_ERR_NOT_INITIALIZED;
 }
 
 void McuAdc::DmaProcessingTask(void* pvParameters) {
@@ -1212,12 +1219,12 @@ HfAdcErr McuAdc::configureFilter(const AdcFilterConfig &config) noexcept {
     return HfAdcErr::ADC_SUCCESS;
 }
 
-HfAdcErr McuAdc::enableFilter(uint8_t channelId, bool enable) noexcept {
+HfAdcErr McuAdc::enableFilter(HfChannelId channelId, bool enable) noexcept {
     if (!IsChannelAvailable(channelId)) {
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
     
-    ESP_LOGI(TAG, "Filter %s for channel %d", enable ? "enabled" : "disabled", channelId);
+    ESP_LOGI(TAG, "Filter %s for channel %d", enable ? "enabled" : "disabled", static_cast<int>(channelId));
     
     // Update stored configuration
     if (filter_configs_.find(channelId) != filter_configs_.end()) {
@@ -1233,6 +1240,15 @@ HfAdcErr McuAdc::enableFilter(uint8_t channelId, bool enable) noexcept {
     default_config.filterCoeff = 2;
     
     return configureFilter(default_config);
+}
+
+HfAdcErr McuAdc::getFilterConfig(HfChannelId channelId, AdcFilterConfig &config) const noexcept {
+    auto it = filter_configs_.find(channelId);
+    if (it != filter_configs_.end()) {
+        config = it->second;
+        return HfAdcErr::ADC_SUCCESS;
+    }
+    return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
 }
 
 HfAdcErr McuAdc::configureMonitor(const AdcMonitorConfig &config) noexcept {
@@ -1265,8 +1281,8 @@ HfAdcErr McuAdc::configureMonitor(const AdcMonitorConfig &config) noexcept {
     return HfAdcErr::ADC_SUCCESS;
 }
 
-HfAdcErr McuAdc::enableMonitor(uint8_t monitorId, bool enable) noexcept {
-    ESP_LOGI(TAG, "Monitor %d %s", monitorId, enable ? "enabled" : "disabled");
+HfAdcErr McuAdc::enableMonitor(HfChannelId monitorId, bool enable) noexcept {
+    ESP_LOGI(TAG, "Monitor %d %s", static_cast<int>(monitorId), enable ? "enabled" : "disabled");
     
     // Find and update monitor configuration
     if (monitor_configs_.find(monitorId) != monitor_configs_.end()) {
@@ -1301,13 +1317,13 @@ HfAdcErr McuAdc::performCalibration(const AdcCalibrationConfig &config) noexcept
     return HfAdcErr::ADC_SUCCESS;
 }
 
-float McuAdc::convertRawToVoltage(uint8_t channelId, uint32_t rawValue) noexcept {
+float McuAdc::convertRawToVoltage(HfChannelId channelId, uint32_t rawValue) noexcept {
     float voltage = 0.0f;
     rawToVoltage(channelId, rawValue, voltage);
     return voltage;
 }
 
-uint32_t McuAdc::convertVoltageToRaw(uint8_t channelId, float voltage) noexcept {
+uint32_t McuAdc::convertVoltageToRaw(HfChannelId channelId, float voltage) noexcept {
     // Calculate raw value from voltage using current configuration
     float reference_voltage = GetReferenceVoltage();
     uint32_t max_count = GetMaxCount();
@@ -1320,6 +1336,15 @@ uint32_t McuAdc::convertVoltageToRaw(uint8_t channelId, float voltage) noexcept 
     }
     
     return static_cast<uint32_t>((voltage / reference_voltage) * max_count);
+}
+
+HfAdcErr McuAdc::setPowerMode(AdcPowerMode mode) noexcept {
+    advanced_config_.powerMode = mode;
+    return HfAdcErr::ADC_SUCCESS;
+}
+
+AdcPowerMode McuAdc::getPowerMode() const noexcept {
+    return advanced_config_.powerMode;
 }
 
 HfAdcErr McuAdc::enterLowPowerMode() noexcept {
@@ -1349,7 +1374,7 @@ HfAdcErr McuAdc::exitLowPowerMode() noexcept {
     return setPowerMode(AdcPowerMode::FullPower);
 }
 
-HfAdcErr McuAdc::enableOversampling(uint8_t channelId, uint8_t ratio) noexcept {
+HfAdcErr McuAdc::enableOversampling(HfChannelId channelId, uint8_t ratio) noexcept {
     if (!IsChannelAvailable(channelId)) {
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
@@ -1392,9 +1417,9 @@ HfAdcErr McuAdc::startTriggeredSampling(const std::vector<uint8_t> &channels) no
     }
     
     // Validate all channels
-    for (uint8_t channel : channels) {
+    for (HfChannelId channel : channels) {
         if (!IsChannelAvailable(channel)) {
-            ESP_LOGE(TAG, "Invalid channel %d for triggered sampling", channel);
+            ESP_LOGE(TAG, "Invalid channel %d for triggered sampling", static_cast<int>(channel));
             return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
         }
     }
@@ -1435,14 +1460,6 @@ HfAdcErr McuAdc::ConfigureAdvanced(HfChannelId channel_id, const AdcAdvancedConf
     // Validate and apply the configuration
     ValidateAdvancedConfig();
     return InitializeAdvancedFeatures();
-}
-
-HfAdcErr McuAdc::StartContinuousSampling(HfChannelId channel_id, AdcCallback callback, void *user_data) noexcept {
-    return StartContinuousSampling(static_cast<uint8_t>(channel_id), callback, user_data);
-}
-
-HfAdcErr McuAdc::StopContinuousSampling(HfChannelId channel_id) noexcept {
-    return StopContinuousSampling(static_cast<uint8_t>(channel_id));
 }
 
 HfAdcErr McuAdc::ReadMultipleChannels(const HfChannelId *channel_ids, uint8_t num_channels,
@@ -1580,366 +1597,193 @@ HfAdcErr McuAdc::GetCalibrationStatus(HfChannelId channel_id, CalibrationStatus 
 }
 
 //==============================================================================
-// CUTTING-EDGE ESP-IDF v5.5+ ADVANCED FEATURES
+// ESP32C6 HARDWARE FILTER AND MONITOR IMPLEMENTATION (ESP-IDF v5.5+)
 //==============================================================================
 
 #ifdef HF_MCU_FAMILY_ESP32
 
 /**
- * @brief Initialize hardware digital IIR filter for noise reduction
- * @param channel_id Channel to apply filter to
- * @param filter_coeff IIR filter coefficient (0-15, higher = more filtering)
+ * @brief Configure hardware IIR filter for a specific channel.
+ * @param channelId Channel to configure filter for
+ * @param filterCoeff Filter coefficient (2, 4, 8, 16, 32, 64)
  * @return HfAdcErr result code
  */
-HfAdcErr McuAdc::ConfigureHardwareFilter(HfChannelId channel_id, uint8_t filter_coeff) noexcept {
-    if (!IsChannelAvailable(channel_id)) {
+HfAdcErr McuAdc::ConfigureHardwareFilter(HfChannelId channelId, uint8_t filterCoeff) noexcept {
+    if (!IsChannelAvailable(channelId)) {
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
 
-    ESP_LOGI(TAG, "Configuring hardware IIR filter: channel=%d, coeff=%d", 
-             static_cast<int>(channel_id), filter_coeff);
-
-#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 1, 0)
-    // ESP-IDF v5.1+ ADC digital filter configuration
-    adc_digi_filter_config_t filter_config = {
-        .adc_unit = static_cast<adc_unit_t>(unit_),
-        .channel = GetMcuChannel(static_cast<uint8_t>(channel_id)),
-        .mode = ADC_DIGI_FILTER_IIR,  // IIR filter mode
-        .filter_level = std::min(filter_coeff, static_cast<uint8_t>(15)), // 0-15 range
-    };
-
-    esp_err_t ret = adc_digi_filter_set_config(&filter_config);
-    if (ret == ESP_OK) {
-        ret = adc_digi_filter_enable(static_cast<adc_unit_t>(unit_), 
-                                   GetMcuChannel(static_cast<uint8_t>(channel_id)), true);
-        if (ret == ESP_OK) {
-            ESP_LOGI(TAG, "Hardware IIR filter enabled successfully");
-            return HfAdcErr::ADC_SUCCESS;
-        }
-    }
-    
-    ESP_LOGE(TAG, "Failed to configure hardware filter: %s", esp_err_to_name(ret));
-    return HfAdcErr::ADC_ERR_HARDWARE_FAULT;
-#else
-    ESP_LOGW(TAG, "Hardware digital filter requires ESP-IDF v5.1+");
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-#endif
-}
-
-/**
- * @brief Configure hardware threshold monitor for real-time alerts
- * @param channel_id Channel to monitor
- * @param low_threshold Low threshold value (raw ADC counts)
- * @param high_threshold High threshold value (raw ADC counts) 
- * @param callback Callback function for threshold violations
- * @return HfAdcErr result code
- */
-HfAdcErr McuAdc::ConfigureThresholdMonitor(HfChannelId channel_id, uint32_t low_threshold, 
-                                         uint32_t high_threshold, AdcThresholdCallback callback) noexcept {
-    if (!IsChannelAvailable(channel_id)) {
-        return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
+    if (!adc_continuous_handle_) {
+        ESP_LOGW(TAG, "Hardware filter requires continuous mode to be initialized");
+        return HfAdcErr::ADC_ERR_NOT_INITIALIZED;
     }
 
-    ESP_LOGI(TAG, "Configuring threshold monitor: channel=%d, low=%d, high=%d", 
-             static_cast<int>(channel_id), low_threshold, high_threshold);
+    ESP_LOGI(TAG, "Configuring hardware IIR filter: channel=%d, coeff=%d", channelId, filterCoeff);
 
-#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 2, 0)
-    // ESP-IDF v5.2+ ADC monitor configuration
-    adc_monitor_config_t monitor_config = {
-        .adc_unit = static_cast<adc_unit_t>(unit_),
-        .channel = GetMcuChannel(static_cast<uint8_t>(channel_id)),
-        .h_threshold = high_threshold,
-        .l_threshold = low_threshold,
-    };
-
-    adc_monitor_handle_t monitor_handle;
-    esp_err_t ret = adc_new_monitor(&monitor_config, &monitor_handle);
-    if (ret == ESP_OK) {
-        // Store callback for this monitor (would need monitor handle management)
-        ESP_LOGI(TAG, "Threshold monitor configured successfully");
-        
-        // Enable the monitor
-        ret = adc_monitor_enable(monitor_handle);
-        if (ret == ESP_OK) {
-            ESP_LOGI(TAG, "Threshold monitor enabled");
-            return HfAdcErr::ADC_SUCCESS;
-        }
-    }
-    
-    ESP_LOGE(TAG, "Failed to configure threshold monitor: %s", esp_err_to_name(ret));
-    return HfAdcErr::ADC_ERR_HARDWARE_FAULT;
-#else
-    ESP_LOGW(TAG, "Hardware threshold monitor requires ESP-IDF v5.2+");
-    
-    // Software fallback implementation
-    ESP_LOGI(TAG, "Using software threshold monitoring as fallback");
-    // Store thresholds and callback for software monitoring during reads
-    return HfAdcErr::ADC_SUCCESS;
-#endif
-}
-
-/**
- * @brief Configure zero-crossing detection for AC signal analysis
- * @param channel_id Channel to monitor for zero crossings
- * @param callback Callback for zero-crossing events
- * @return HfAdcErr result code
- */
-HfAdcErr McuAdc::ConfigureZeroCrossingDetection(HfChannelId channel_id, 
-                                              std::function<void(uint64_t timestamp_us)> callback) noexcept {
-    if (!IsChannelAvailable(channel_id)) {
-        return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
-    }
-
-    ESP_LOGI(TAG, "Configuring zero-crossing detection for channel %d", static_cast<int>(channel_id));
-
-    // Zero-crossing detection implementation using high-speed continuous mode
-    AdcAdvancedConfig zero_cross_config;
-    zero_cross_config.samplingStrategy = AdcSamplingStrategy::Continuous;
-    zero_cross_config.triggerSource = AdcTriggerSource::Timer;
-    zero_cross_config.continuousMode = true;
-    zero_cross_config.continuousConfig.sampleFreqHz = 50000; // 50kHz for AC signal analysis
-    zero_cross_config.continuousConfig.bufferSize = 1024;
-    
-    // Store callback for zero-crossing events
-    // Implementation would track previous sample and detect sign changes
-    
-    ESP_LOGI(TAG, "Zero-crossing detection configured (software implementation)");
-    return HfAdcErr::ADC_SUCCESS;
-}
-
-/**
- * @brief Enable advanced oversampling with hardware decimation
- * @param channel_id Channel to apply oversampling to
- * @param oversample_ratio Oversampling ratio (2, 4, 8, 16, 32, 64, 128, 256)
- * @param decimation_ratio Decimation ratio for output rate reduction
- * @return HfAdcErr result code
- */
-HfAdcErr McuAdc::ConfigureOversampling(HfChannelId channel_id, uint16_t oversample_ratio, 
-                                     uint8_t decimation_ratio) noexcept {
-    if (!IsChannelAvailable(channel_id)) {
-        return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
-    }
-
-    // Validate oversampling ratio (must be power of 2)
-    if (oversample_ratio == 0 || (oversample_ratio & (oversample_ratio - 1)) != 0) {
-        ESP_LOGE(TAG, "Invalid oversample ratio %d (must be power of 2)", oversample_ratio);
+    // Validate filter coefficient (must be power of 2 between 2-64)
+    if (filterCoeff < 2 || filterCoeff > 64 || (filterCoeff & (filterCoeff - 1)) != 0) {
+        ESP_LOGE(TAG, "Invalid filter coefficient %d. Must be power of 2 between 2-64", filterCoeff);
         return HfAdcErr::ADC_ERR_INVALID_PARAMETER;
     }
 
-    ESP_LOGI(TAG, "Configuring oversampling: channel=%d, ratio=%d, decimation=%d", 
-             static_cast<int>(channel_id), oversample_ratio, decimation_ratio);
+    // Convert to ESP-IDF filter coefficient enum
+    adc_digi_iir_filter_coeff_t esp_coeff;
+    switch (filterCoeff) {
+        case 2:  esp_coeff = ADC_DIGI_IIR_FILTER_COEFF_2; break;
+        case 4:  esp_coeff = ADC_DIGI_IIR_FILTER_COEFF_4; break;
+        case 8:  esp_coeff = ADC_DIGI_IIR_FILTER_COEFF_8; break;
+        case 16: esp_coeff = ADC_DIGI_IIR_FILTER_COEFF_16; break;
+        case 32: esp_coeff = ADC_DIGI_IIR_FILTER_COEFF_32; break;
+        case 64: esp_coeff = ADC_DIGI_IIR_FILTER_COEFF_64; break;
+        default:
+            ESP_LOGE(TAG, "Unsupported filter coefficient %d", filterCoeff);
+            return HfAdcErr::ADC_ERR_INVALID_PARAMETER;
+    }
 
-#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 1, 0)
-    // ESP32C6 supports hardware oversampling in continuous mode
-    if (adc_continuous_handle_) {
-        // Configure oversampling in continuous mode
-        adc_continuous_oversample_config_t oversample_config = {
-            .oversample_ratio = oversample_ratio,
-            .decimation_ratio = decimation_ratio,
-            .enable_filter = true, // Enable anti-aliasing filter
+    // Configure IIR filter using ESP-IDF v5.5+ API
+    adc_continuous_iir_filter_config_t filter_config = {
+        .unit = static_cast<adc_unit_t>(unit_),
+        .channel = GetMcuChannel(channelId),
+        .coeff = esp_coeff
+    };
+
+    adc_iir_filter_handle_t filter_handle;
+    esp_err_t ret = adc_new_continuous_iir_filter(static_cast<adc_continuous_handle_t>(adc_continuous_handle_),
+                                                   &filter_config, &filter_handle);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to create IIR filter: %s", esp_err_to_name(ret));
+        return ConvertEspError(ret);
+    }
+
+    // Enable the filter
+    ret = adc_continuous_iir_filter_enable(filter_handle);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to enable IIR filter: %s", esp_err_to_name(ret));
+        adc_del_continuous_iir_filter(filter_handle);
+        return ConvertEspError(ret);
+    }
+
+    ESP_LOGI(TAG, "Hardware IIR filter configured and enabled successfully");
+    return HfAdcErr::ADC_SUCCESS;
+}
+
+/**
+ * @brief Configure threshold monitor for a specific channel.
+ * @param channelId Channel to monitor
+ * @param lowThreshold Low threshold value
+ * @param highThreshold High threshold value
+ * @param callback Callback function for threshold events
+ * @return HfAdcErr result code
+ */
+HfAdcErr McuAdc::ConfigureThresholdMonitor(HfChannelId channelId, uint32_t lowThreshold, 
+                                           uint32_t highThreshold, 
+                                           std::function<void(uint8_t, uint8_t, uint32_t, bool, void*)> callback) noexcept {
+    if (!IsChannelAvailable(channelId)) {
+        return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
+    }
+
+    if (!adc_continuous_handle_) {
+        ESP_LOGW(TAG, "Threshold monitor requires continuous mode to be initialized");
+        return HfAdcErr::ADC_ERR_NOT_INITIALIZED;
+    }
+
+    ESP_LOGI(TAG, "Configuring threshold monitor: channel=%d, low=%d, high=%d", 
+             channelId, lowThreshold, highThreshold);
+
+    // Configure monitor using ESP-IDF v5.5+ API
+    adc_monitor_config_t monitor_config = {
+        .adc_unit = static_cast<adc_unit_t>(unit_),
+        .channel = GetMcuChannel(channelId),
+        .h_threshold = static_cast<int>(highThreshold),
+        .l_threshold = static_cast<int>(lowThreshold)
+    };
+
+    adc_monitor_handle_t monitor_handle;
+    esp_err_t ret = adc_new_continuous_monitor(static_cast<adc_continuous_handle_t>(adc_continuous_handle_),
+                                               &monitor_config, &monitor_handle);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to create threshold monitor: %s", esp_err_to_name(ret));
+        return ConvertEspError(ret);
+    }
+
+    // Register callback if provided
+    if (callback) {
+        // Create callback wrapper that matches ESP-IDF signature
+        auto* callback_wrapper = new std::function<void(uint8_t, uint8_t, uint32_t, bool, void*)>(callback);
+        
+        adc_monitor_evt_cbs_t monitor_cbs = {
+            .on_over_high_thresh = [](adc_monitor_handle_t monitor_handle, 
+                                      const adc_monitor_evt_data_t *edata, void *user_data) -> bool {
+                auto* cb = static_cast<std::function<void(uint8_t, uint8_t, uint32_t, bool, void*)>*>(user_data);
+                if (cb && *cb) {
+                    (*cb)(0, edata->channel, edata->conversion_result, true, nullptr);
+                }
+                return false; // Don't yield from ISR
+            },
+            .on_below_low_thresh = [](adc_monitor_handle_t monitor_handle, 
+                                      const adc_monitor_evt_data_t *edata, void *user_data) -> bool {
+                auto* cb = static_cast<std::function<void(uint8_t, uint8_t, uint32_t, bool, void*)>*>(user_data);
+                if (cb && *cb) {
+                    (*cb)(0, edata->channel, edata->conversion_result, false, nullptr);
+                }
+                return false; // Don't yield from ISR
+            }
         };
-        
-        // This would be a hypothetical API for oversampling configuration
-        ESP_LOGI(TAG, "Hardware oversampling would be configured here");
-        return HfAdcErr::ADC_SUCCESS;
-    }
-#endif
 
-    // Software oversampling implementation for one-shot mode
-    ESP_LOGI(TAG, "Using software oversampling implementation");
+        ret = adc_monitor_register_event_callbacks(monitor_handle, &monitor_cbs, callback_wrapper);
+        if (ret != ESP_OK) {
+            ESP_LOGW(TAG, "Failed to register monitor callbacks: %s", esp_err_to_name(ret));
+            delete callback_wrapper;
+            // Continue without callbacks rather than failing
+        }
+    }
+
+    // Enable the monitor
+    ret = adc_continuous_monitor_enable(monitor_handle);
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to enable threshold monitor: %s", esp_err_to_name(ret));
+        adc_del_continuous_monitor(monitor_handle);
+        return ConvertEspError(ret);
+    }
+
+    ESP_LOGI(TAG, "Threshold monitor configured and enabled successfully");
     return HfAdcErr::ADC_SUCCESS;
 }
 
 /**
- * @brief Configure ULP (Ultra Low Power) processor integration
- * @param channel_id Channel for ULP monitoring
- * @param wake_threshold Threshold to wake main processor
- * @param sample_interval_ms ULP sampling interval in milliseconds
+ * @brief Configure hardware oversampling for improved accuracy.
+ * @param channelId Channel to configure oversampling for
+ * @param oversampleRatio Oversampling ratio (power of 2)
+ * @param decimationFactor Decimation factor
  * @return HfAdcErr result code
  */
-HfAdcErr McuAdc::ConfigureUlpIntegration(HfChannelId channel_id, uint32_t wake_threshold, 
-                                       uint32_t sample_interval_ms) noexcept {
-    if (!IsChannelAvailable(channel_id)) {
+HfAdcErr McuAdc::ConfigureOversampling(HfChannelId channelId, uint8_t oversampleRatio, uint8_t decimationFactor) noexcept {
+    if (!IsChannelAvailable(channelId)) {
         return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
     }
 
-    ESP_LOGI(TAG, "Configuring ULP integration: channel=%d, threshold=%d, interval=%dms", 
-             static_cast<int>(channel_id), wake_threshold, sample_interval_ms);
+    ESP_LOGI(TAG, "Configuring hardware oversampling: channel=%d, ratio=%d, decimation=%d", 
+             channelId, oversampleRatio, decimationFactor);
 
-#if CONFIG_IDF_TARGET_ESP32C6 && ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
-    // ESP32C6 ULP-RISC-V processor configuration for ADC monitoring
-    // This would configure the ULP to:
-    // 1. Sample ADC at regular intervals during deep sleep
-    // 2. Compare readings against threshold
-    // 3. Wake main processor when threshold is exceeded
-    
-    ESP_LOGI(TAG, "🔧 ULP-RISC-V ADC monitoring configuration");
-    ESP_LOGI(TAG, "📋 ULP program would monitor channel %d every %dms", 
-             static_cast<int>(channel_id), sample_interval_ms);
-    ESP_LOGI(TAG, "⏰ Main CPU wake on threshold: %d counts", wake_threshold);
-    
-    // Actual ULP program would be loaded and configured here
-    ESP_LOGI(TAG, "ULP integration configured successfully");
-    return HfAdcErr::ADC_SUCCESS;
-#else
-    ESP_LOGW(TAG, "ULP integration requires ESP32C6 with ESP-IDF v5.0+");
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-#endif
-}
-
-/**
- * @brief Perform advanced noise analysis and adaptive filtering
- * @param channel_id Channel to analyze
- * @param analysis_duration_ms Duration of analysis in milliseconds
- * @return Noise analysis results structure
- */
-struct NoiseAnalysisResult {
-    float noise_floor_mv;           // Noise floor in millivolts
-    float signal_to_noise_ratio_db; // SNR in decibels
-    float recommended_filter_coeff; // Recommended IIR filter coefficient
-    uint32_t sample_count;          // Number of samples analyzed
-};
-
-NoiseAnalysisResult McuAdc::PerformNoiseAnalysis(HfChannelId channel_id, 
-                                                uint32_t analysis_duration_ms) noexcept {
-    NoiseAnalysisResult result = {};
-    
-    if (!IsChannelAvailable(channel_id)) {
-        ESP_LOGE(TAG, "Invalid channel for noise analysis");
-        return result;
+    // Validate oversampling ratio (must be power of 2)
+    if (oversampleRatio < 1 || oversampleRatio > 16 || (oversampleRatio & (oversampleRatio - 1)) != 0) {
+        ESP_LOGE(TAG, "Invalid oversampling ratio %d. Must be power of 2 between 1-16", oversampleRatio);
+        return HfAdcErr::ADC_ERR_INVALID_PARAMETER;
     }
 
-    ESP_LOGI(TAG, "🔬 Performing advanced noise analysis: channel=%d, duration=%dms", 
-             static_cast<int>(channel_id), analysis_duration_ms);
+   
 
-    // Collect high-speed samples for statistical analysis
-    const uint32_t sample_rate = 10000; // 10kHz sampling
-    const uint32_t total_samples = (analysis_duration_ms * sample_rate) / 1000;
+    // For ESP32C6, oversampling is typically handled through multiple reads in software
+    // Hardware oversampling may be available in future ESP-IDF versions
+    ESP_LOGI(TAG, "Oversampling configuration stored (software implementation)");
     
-    std::vector<uint32_t> samples;
-    samples.reserve(total_samples);
-    
-    uint64_t start_time = esp_timer_get_time();
-    
-    // Collect samples at high speed
-    for (uint32_t i = 0; i < total_samples; ++i) {
-        uint32_t raw_value;
-        if (ReadChannelCount(channel_id, raw_value, 1, 0) == HfAdcErr::ADC_SUCCESS) {
-            samples.push_back(raw_value);
-        }
-        
-        // Precise timing control
-        while ((esp_timer_get_time() - start_time) < ((i + 1) * 1000000 / sample_rate)) {
-            // Wait for next sample time
-        }
-    }
-    
-    if (samples.size() < 100) {
-        ESP_LOGW(TAG, "Insufficient samples for noise analysis");
-        return result;
-    }
-    
-    // Statistical analysis
-    double sum = 0, sum_sq = 0;
-    for (uint32_t sample : samples) {
-        sum += sample;
-        sum_sq += sample * sample;
-    }
-    
-    double mean = sum / samples.size();
-    double variance = (sum_sq / samples.size()) - (mean * mean);
-    double std_dev = sqrt(variance);
-    
-    // Convert to voltage domain
-    float mean_voltage, std_dev_voltage;
-    rawToVoltage(static_cast<uint8_t>(channel_id), static_cast<uint32_t>(mean), mean_voltage);
-    rawToVoltage(static_cast<uint8_t>(channel_id), static_cast<uint32_t>(std_dev), std_dev_voltage);
-    
-    // Calculate results
-    result.noise_floor_mv = std_dev_voltage * 1000.0f;
-    result.signal_to_noise_ratio_db = 20.0f * log10f(mean_voltage / std_dev_voltage);
-    result.sample_count = samples.size();
-    
-    // Recommend filter coefficient based on noise level
-    if (result.noise_floor_mv > 50.0f) {
-        result.recommended_filter_coeff = 8;  // Heavy filtering
-    } else if (result.noise_floor_mv > 20.0f) {
-        result.recommended_filter_coeff = 4;  // Medium filtering
-    } else if (result.noise_floor_mv > 10.0f) {
-        result.recommended_filter_coeff = 2;  // Light filtering
-    } else {
-        result.recommended_filter_coeff = 0;  // No filtering needed
-    }
-    
-    ESP_LOGI(TAG, " Noise Analysis Results:");
-    ESP_LOGI(TAG, "   Noise Floor: %.2f mV", result.noise_floor_mv);
-    ESP_LOGI(TAG, "   SNR: %.1f dB", result.signal_to_noise_ratio_db);
-    ESP_LOGI(TAG, "   Recommended Filter: %d", static_cast<int>(result.recommended_filter_coeff));
-    ESP_LOGI(TAG, "   Samples Analyzed: %d", result.sample_count);
-    
-    return result;
-}
-
-/**
- * @brief Intelligent adaptive calibration with drift detection
- * @param channel_id Channel to monitor and recalibrate
- * @param reference_voltage Known reference voltage for verification
- * @return HfAdcErr result code
- */
-HfAdcErr McuAdc::PerformAdaptiveCalibration(HfChannelId channel_id, float reference_voltage) noexcept {
-    if (!IsChannelAvailable(channel_id)) {
-        return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
+    // Store configuration for use in read operations
+   
+    if (use_advanced_config_) {
+        advanced_config_.oversamplingEnabled = true;
+        advanced_config_.oversamplingRatio = oversampleRatio;
     }
 
-    ESP_LOGI(TAG, "Performing adaptive calibration verification: channel=%d, ref=%.3fV", 
-             static_cast<int>(channel_id), reference_voltage);
-
-    // Read current value multiple times for accuracy
-    const uint8_t num_samples = 20;
-    uint32_t raw_sum = 0;
-    uint8_t successful_reads = 0;
-    
-    for (uint8_t i = 0; i < num_samples; ++i) {
-        uint32_t raw_value;
-        if (ReadChannelCount(channel_id, raw_value, 1, 5) == HfAdcErr::ADC_SUCCESS) {
-            raw_sum += raw_value;
-            successful_reads++;
-        }
-    }
-    
-    if (successful_reads < num_samples / 2) {
-        ESP_LOGE(TAG, "Insufficient readings for calibration verification");
-        return HfAdcErr::ADC_ERR_CALIBRATION_VERIFICATION_FAILED;
-    }
-    
-    uint32_t avg_raw = raw_sum / successful_reads;
-    float measured_voltage;
-    rawToVoltage(static_cast<uint8_t>(channel_id), avg_raw, measured_voltage);
-    
-    float error_percent = abs(measured_voltage - reference_voltage) / reference_voltage * 100.0f;
-
-    ESP_LOGI(TAG, "Calibration Verification:");
-    ESP_LOGI(TAG, "   Reference: %.3f V", reference_voltage);
-    ESP_LOGI(TAG, "    Measured: %.3f V (raw: %d)", measured_voltage, avg_raw);
-    ESP_LOGI(TAG, "   Error: %.2f%%", error_percent);
-    
-    // Check if calibration drift is within acceptable limits
-    const float max_acceptable_error = 2.0f; // 2% maximum error
-    
-    if (error_percent > max_acceptable_error) {
-        ESP_LOGW(TAG, "Calibration drift detected: %.2f%% > %.1f%%", 
-                 error_percent, max_acceptable_error);
-        
-        // For ESP32C6, we can't modify eFuse calibration, but we can:
-        // 1. Log the drift for system monitoring
-        // 2. Apply software compensation if needed
-        // 3. Recommend hardware recalibration
-        
-        ESP_LOGW(TAG, "Calibration drift compensation recommended");
-        return HfAdcErr::ADC_ERR_CALIBRATION_DRIFT;
-    }
-    
-    ESP_LOGI(TAG, "Calibration verification passed - accuracy within spec");
     return HfAdcErr::ADC_SUCCESS;
 }
 

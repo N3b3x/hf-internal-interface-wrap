@@ -246,9 +246,23 @@ public:
 
   /**
    * @brief Get current SPI configuration.
-   * @return Current configuration
+   * @return Current SPI bus configuration
+   */
+  const SpiBusConfig& GetConfig() const noexcept {
+    return use_advanced_config_ ? advanced_config_.base_config : config_;
+  }
+
+  /**
+   * @brief Get current advanced configuration.
+   * @return Current advanced SPI configuration
    */
   SpiAdvancedConfig getCurrentConfiguration() const noexcept;
+
+  /**
+   * @brief Get current transfer mode.
+   * @return Current transfer mode
+   */
+  HfSpiTransferMode GetTransferMode() const noexcept;
 
   /**
    * @brief Reset the SPI bus and recover from errors.
@@ -528,7 +542,7 @@ private:
    * @return true if valid, false otherwise
    */
   bool IsValidMode(uint8_t mode) const noexcept {
-    return mode <= 3;
+  return HF_SPI_IS_VALID_MODE(mode);
   }
 
   /**
@@ -555,7 +569,10 @@ private:
    * @return Actual timeout to use
    */
   uint32_t GetTimeoutMs(uint32_t timeout_ms) const noexcept {
-    return (timeout_ms == 0) ? config_.timeout_ms : timeout_ms;
+    if (timeout_ms == 0) {
+      return use_advanced_config_ ? advanced_config_.timeout_ms : DEFAULT_TIMEOUT_MS;
+    }
+    return timeout_ms;
   }
 
   /**

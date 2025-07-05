@@ -43,6 +43,18 @@ using hf_uart_signal_inv_native_t = uint8_t;
 //==============================================================================
 
 /**
+ * @brief MCU-specific UART communication modes (ESP32C6 supported).
+ */
+enum class hf_uart_mode_t : uint8_t {
+  HF_UART_MODE_UART = 0,                    ///< Standard UART mode
+  HF_UART_MODE_RS485_HALF_DUPLEX = 1,      ///< RS485 half-duplex mode (auto RTS control)
+  HF_UART_MODE_IRDA = 2,                   ///< IrDA infrared communication mode
+  HF_UART_MODE_RS485_COLLISION_DETECT = 3, ///< RS485 with collision detection
+  HF_UART_MODE_RS485_APP_CTRL = 4,         ///< RS485 with application RTS control
+  HF_UART_MODE_LOOPBACK = 5,               ///< Loopback mode for testing
+};
+
+/**
  * @brief MCU-specific UART data bits configuration.
  */
 enum class hf_uart_data_bits_t : uint8_t {
@@ -157,6 +169,66 @@ struct hf_uart_power_config_t {
         wakeup_threshold(1), wakeup_timeout_ms(1000) {}
 };
 
+/**
+ * @brief MCU-specific UART pattern detection configuration.
+ * @details Settings for AT command pattern detection and similar applications.
+ */
+struct hf_uart_pattern_config_t {
+  bool enable_pattern_detection;   ///< Enable pattern detection feature
+  char pattern_char;              ///< Character to detect (e.g., '+' for AT commands)
+  uint8_t pattern_char_num;       ///< Number of consecutive pattern characters
+  uint16_t char_timeout;          ///< Timeout between pattern characters (baud cycles)
+  uint16_t post_idle;             ///< Idle time after last pattern char (baud cycles)
+  uint16_t pre_idle;              ///< Idle time before first pattern char (baud cycles)
+
+  hf_uart_pattern_config_t() noexcept
+      : enable_pattern_detection(false), pattern_char('+'), pattern_char_num(3),
+        char_timeout(9), post_idle(12), pre_idle(12) {}
+};
+
+/**
+ * @brief MCU-specific UART RS485 configuration.
+ * @details RS485 communication settings including collision detection.
+ */
+struct hf_uart_rs485_config_t {
+  hf_uart_mode_t mode;            ///< RS485 operating mode
+  bool enable_collision_detect;   ///< Enable collision detection
+  bool enable_echo_suppression;   ///< Suppress echo during transmission
+  bool auto_rts_control;          ///< Automatic RTS line control
+  uint16_t rts_delay_microsec;    ///< RTS assertion delay (microseconds)
+
+  hf_uart_rs485_config_t() noexcept
+      : mode(hf_uart_mode_t::HF_UART_MODE_UART), enable_collision_detect(false),
+        enable_echo_suppression(true), auto_rts_control(true), rts_delay_microsec(0) {}
+};
+
+/**
+ * @brief MCU-specific UART IrDA configuration.
+ * @details Infrared Data Association protocol settings.
+ */
+struct hf_uart_irda_config_t {
+  bool enable_irda;               ///< Enable IrDA mode
+  bool invert_tx;                 ///< Invert TX signal for IrDA
+  bool invert_rx;                 ///< Invert RX signal for IrDA
+  uint8_t duty_cycle;             ///< IrDA duty cycle (0-100%)
+
+  hf_uart_irda_config_t() noexcept
+      : enable_irda(false), invert_tx(false), invert_rx(false), duty_cycle(50) {}
+};
+
+/**
+ * @brief MCU-specific UART wakeup configuration.
+ * @details Sleep wakeup settings for low power applications.
+ */
+struct hf_uart_wakeup_config_t {
+  bool enable_wakeup;             ///< Enable UART wakeup from light sleep
+  uint8_t wakeup_threshold;       ///< Number of RX edges to trigger wakeup (3-1023)
+  bool use_ref_tick;              ///< Use REF_TICK as clock source during sleep
+
+  hf_uart_wakeup_config_t() noexcept
+      : enable_wakeup(false), wakeup_threshold(3), use_ref_tick(false) {}
+};
+
 //==============================================================================
 // MCU-SPECIFIC UART CONSTANTS
 //==============================================================================
@@ -200,6 +272,26 @@ static constexpr uint32_t HF_UART_BREAK_MAX_DURATION = 1000; ///< Maximum break 
 #define HF_UART_GET_CTS(port, cts) uart_get_cts(port, cts)
 #define HF_UART_SET_LINE_INVERSE(port, inverse_mask) uart_set_line_inverse(port, inverse_mask)
 #define HF_UART_SET_MODE(port, mode) uart_set_mode(port, mode)
+#define HF_UART_SET_SW_FLOW_CTRL(port, enable, xon_thresh, xoff_thresh) \
+  uart_set_sw_flow_ctrl(port, enable, xon_thresh, xoff_thresh)
+#define HF_UART_ENABLE_PATTERN_DET(port, pattern_chr, chr_num, chr_tout, post_idle, pre_idle) \
+  uart_enable_pattern_det_baud_intr(port, pattern_chr, chr_num, chr_tout, post_idle, pre_idle)
+#define HF_UART_DISABLE_PATTERN_DET(port) uart_disable_pattern_det_intr(port)
+#define HF_UART_PATTERN_POP_POS(port) uart_pattern_pop_pos(port)
+#define HF_UART_PATTERN_GET_POS(port) uart_pattern_get_pos(port)
+#define HF_UART_PATTERN_QUEUE_RESET(port, queue_length) uart_pattern_queue_reset(port, queue_length)
+#define HF_UART_SET_WAKEUP_THRESHOLD(port, threshold) uart_set_wakeup_threshold(port, threshold)
+#define HF_UART_GET_WAKEUP_THRESHOLD(port, threshold) uart_get_wakeup_threshold(port, threshold)
+#define HF_UART_GET_COLLISION_FLAG(port, flag) uart_get_collision_flag(port, flag)
+#define HF_UART_SET_RX_FULL_THRESHOLD(port, threshold) uart_set_rx_full_threshold(port, threshold)
+#define HF_UART_SET_TX_EMPTY_THRESHOLD(port, threshold) uart_set_tx_empty_threshold(port, threshold)
+#define HF_UART_SET_RX_TIMEOUT(port, tout_thresh) uart_set_rx_timeout(port, tout_thresh)
+#define HF_UART_ENABLE_RX_INTR(port) uart_enable_rx_intr(port)
+#define HF_UART_DISABLE_RX_INTR(port) uart_disable_rx_intr(port)
+#define HF_UART_ENABLE_TX_INTR(port, enable, thresh) uart_enable_tx_intr(port, enable, thresh)
+#define HF_UART_DISABLE_TX_INTR(port) uart_disable_tx_intr(port)
+#define HF_UART_SET_ALWAYS_RX_TIMEOUT(port, enable) uart_set_always_rx_timeout(port, enable)
+#define HF_UART_INTR_CONFIG(port, intr_conf) uart_intr_config(port, intr_conf)
 #else
 // Non-ESP32 platforms - placeholder definitions
 #define HF_UART_DRIVER_INSTALL(port, tx_size, rx_size, queue_size, queue, intr_flags) (-1)
@@ -221,4 +313,22 @@ static constexpr uint32_t HF_UART_BREAK_MAX_DURATION = 1000; ///< Maximum break 
 #define HF_UART_GET_CTS(port, cts) (-1)
 #define HF_UART_SET_LINE_INVERSE(port, inverse_mask) (-1)
 #define HF_UART_SET_MODE(port, mode) (-1)
+#define HF_UART_SET_SW_FLOW_CTRL(port, enable, xon_thresh, xoff_thresh) (-1)
+#define HF_UART_ENABLE_PATTERN_DET(port, pattern_chr, chr_num, chr_tout, post_idle, pre_idle) (-1)
+#define HF_UART_DISABLE_PATTERN_DET(port) (-1)
+#define HF_UART_PATTERN_POP_POS(port) (-1)
+#define HF_UART_PATTERN_GET_POS(port) (-1)
+#define HF_UART_PATTERN_QUEUE_RESET(port, queue_length) (-1)
+#define HF_UART_SET_WAKEUP_THRESHOLD(port, threshold) (-1)
+#define HF_UART_GET_WAKEUP_THRESHOLD(port, threshold) (-1)
+#define HF_UART_GET_COLLISION_FLAG(port, flag) (-1)
+#define HF_UART_SET_RX_FULL_THRESHOLD(port, threshold) (-1)
+#define HF_UART_SET_TX_EMPTY_THRESHOLD(port, threshold) (-1)
+#define HF_UART_SET_RX_TIMEOUT(port, tout_thresh) (-1)
+#define HF_UART_ENABLE_RX_INTR(port) (-1)
+#define HF_UART_DISABLE_RX_INTR(port) (-1)
+#define HF_UART_ENABLE_TX_INTR(port, enable, thresh) (-1)
+#define HF_UART_DISABLE_TX_INTR(port) (-1)
+#define HF_UART_SET_ALWAYS_RX_TIMEOUT(port, enable) (-1)
+#define HF_UART_INTR_CONFIG(port, intr_conf) (-1)
 #endif
