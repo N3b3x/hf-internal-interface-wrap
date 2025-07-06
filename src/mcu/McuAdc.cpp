@@ -73,12 +73,15 @@ McuAdc::McuAdc() noexcept
       advanced_config_(),
       use_advanced_config_(false),
       advanced_initialized_(false),
+
       adc_handle_(nullptr),
       cali_handle_(nullptr),
       cali_enable_(false),
+
       unit_(1),
       attenuation_(static_cast<uint32_t>(hf_adc_attenuation_t::HF_ADC_ATTEN_DB_11)),
       bitwidth_(static_cast<uint8_t>(hf_adc_bitwidth_t::HF_ADC_BITWIDTH_12)),
+
 #ifdef HF_MCU_FAMILY_ESP32
       dma_buffer_(nullptr),
       adc_continuous_handle_(nullptr),
@@ -88,15 +91,19 @@ McuAdc::McuAdc() noexcept
       active_callback_(nullptr),
       callback_user_data_(nullptr),
 #endif
+
       filter_configs_(),
       monitor_configs_(),
       calibration_config_(),
+
       threshold_callback_(nullptr),
       threshold_callback_user_data_(nullptr),
+
       trigger_source_(hf_adc_trigger_source_t::HF_ADC_TRIGGER_SOFTWARE),
       trigger_parameter_(0),
       triggered_channels_(),
       triggered_sampling_active_(false),
+      
       statistics_(),
       diagnostics_(),
       mutex_() {

@@ -291,6 +291,7 @@ public:
   // DIGITAL FILTER OPERATIONS
   //==============================================================================
 
+#ifdef HF_MCU_FAMILY_ESP32
   /**
    * @brief Configure digital filter for a channel.
    * @param config Filter configuration
@@ -314,10 +315,13 @@ public:
    */
   HfAdcErr getFilterConfig(HfChannelId channelId, hf_adc_filter_config_t &config) const noexcept;
 
+#endif // HF_MCU_FAMILY_ESP32
+
   //==============================================================================
   // THRESHOLD MONITOR OPERATIONS
   //==============================================================================
 
+#ifdef HF_MCU_FAMILY_ESP32
   /**
    * @brief Configure threshold monitor.
    * @param config Monitor configuration
@@ -339,6 +343,8 @@ public:
    * @param userData User data for callback
    */
   void setThresholdCallback(AdcThresholdCallback callback, void *userData = nullptr) noexcept;
+
+#endif // HF_MCU_FAMILY_ESP32
 
   //==============================================================================
   // CALIBRATION OPERATIONS
@@ -386,6 +392,8 @@ public:
   // ADVANCED FEATURES
   //==============================================================================
 
+#ifdef HF_MCU_FAMILY_ESP32
+
   /**
    * @brief Enable hardware oversampling.
    * @param channelId Channel ID
@@ -415,9 +423,13 @@ public:
    */
   HfAdcErr stopTriggeredSampling() noexcept;
 
+#endif // HF_MCU_FAMILY_ESP32
+
   //==============================================================================
   // POWER MANAGEMENT
   //==============================================================================
+
+#ifdef HF_MCU_FAMILY_ESP32
 
   /**
    * @brief Set power mode.
@@ -443,6 +455,8 @@ public:
    * @return HfAdcErr result code
    */
   HfAdcErr exitLowPowerMode() noexcept;
+
+#endif // HF_MCU_FAMILY_ESP32
 
   //==============================================================================
   // STATISTICS AND DIAGNOSTICS
@@ -556,70 +570,9 @@ private:
   size_t ProcessDmaData(uint8_t* buffer, size_t length) noexcept;
 
   //==============================================================================
-  // PRIVATE MEMBER VARIABLES
-  //==============================================================================
-  
-  // Configuration
-  hf_adc_advanced_config_t advanced_config_; ///< Advanced configuration
-  bool use_advanced_config_;          ///< Flag indicating advanced config usage
-  bool advanced_initialized_;         ///< Advanced features initialized flag
-
-  // Platform-specific handles (using void* for platform independence)
-  void *adc_handle_;        ///< Main ADC handle
-  void *cali_handle_;       ///< Calibration handle  
-  bool cali_enable_;        ///< Calibration enabled flag
-  
-  // ESP32-specific members
-  hf_adc_unit_t unit_;      ///< ADC unit number
-  uint32_t attenuation_;    ///< Attenuation setting
-  hf_adc_resolution_t bitwidth_; ///< Resolution setting
-  
-#ifdef HF_MCU_FAMILY_ESP32
-  uint8_t *dma_buffer_;     ///< DMA buffer for continuous mode
-  void *adc_continuous_handle_; ///< Continuous mode handle
-  void *dma_task_handle_;   ///< DMA processing task handle
-  bool dma_mode_active_;    ///< DMA mode status
-  uint8_t current_dma_channel_; ///< Current DMA channel
-    // Callback management
-  AdcCallback active_callback_;    ///< Active callback function
-  void *callback_user_data_;       ///< User data for callback
-  
-  // Constants
-  static constexpr size_t DMA_BUFFER_SIZE = 4096;
-#endif
-
-  // Advanced feature configurations and state
-  std::unordered_map<HfChannelId, hf_adc_filter_config_t> filter_configs_;    ///< Filter configurations per channel
-  std::unordered_map<HfChannelId, hf_adc_monitor_config_t> monitor_configs_;  ///< Monitor configurations per monitor ID
-  hf_adc_calibration_config_t calibration_config_;                       ///< Calibration configuration
-    // Advanced callbacks
-  AdcThresholdCallback threshold_callback_;             ///< Threshold monitor callback
-  void *threshold_callback_user_data_;                  ///< User data for threshold callback
-  
-  // Trigger configuration
-  hf_adc_trigger_source_t trigger_source_;                     ///< Current trigger source
-  uint32_t trigger_parameter_;                          ///< Trigger parameter
-  std::vector<HfChannelId> triggered_channels_;             ///< Channels for triggered sampling
-  bool triggered_sampling_active_;                      ///< Triggered sampling status
-    // Statistics and diagnostics
-  mutable hf_adc_statistics_t statistics_;                    ///< Operation statistics
-  mutable hf_adc_diagnostics_t diagnostics_;                  ///< Diagnostic information
-  mutable RtosMutex mutex_;                             ///< Thread safety mutex
-  
-  /**
-   * @brief Update operation statistics.
-   * @param conversionTimeUs Conversion time in microseconds
-   * @param success Whether the operation was successful
-   */
-  void updateStatistics(uint64_t conversionTimeUs, bool success) const noexcept;
-  
-  static constexpr const char* TAG = "McuAdc";          ///< Logging tag
-
-  //==============================================================================
   // ESP32C6 HARDWARE FEATURE IMPLEMENTATIONS (PRIVATE METHODS)
   //==============================================================================
 
-#ifdef HF_MCU_FAMILY_ESP32
   /**
    * @brief Configure ESP32C6 hardware IIR filter for a channel.
    * @param channelId Channel ID to configure filter for
@@ -668,5 +621,71 @@ private:
    * @return ESP32C6-specific ADC channel
    */
   adc_channel_t GetMcuChannel(HfChannelId channel_num) const noexcept;
+                 
+  /**
+   * @brief Update operation statistics.
+   * @param conversionTimeUs Conversion time in microseconds
+   * @param success Whether the operation was successful
+   */
+  void updateStatistics(uint64_t conversionTimeUs, bool success) const noexcept;
+  
+  //==============================================================================
+  // PRIVATE MEMBER VARIABLES
+  //==============================================================================
+  
+  // Configuration
+  hf_adc_advanced_config_t advanced_config_; ///< Advanced configuration
+  bool use_advanced_config_;                 ///< Flag indicating advanced config usage
+  bool advanced_initialized_;                ///< Advanced features initialized flag
+
+  // Platform-specific handles (using void* for platform independence)
+  void *adc_handle_;        ///< Main ADC handle
+  void *cali_handle_;       ///< Calibration handle  
+  bool cali_enable_;        ///< Calibration enabled flag
+  
+  // ESP32-specific members
+  hf_adc_unit_t unit_;                ///< ADC unit number
+  hf_adc_attenuation_t attenuation_;  ///< Attenuation setting
+  hf_adc_resolution_t bitwidth_;      ///< Resolution setting
+
+#ifdef HF_MCU_FAMILY_ESP32
+
+  uint8_t *dma_buffer_;         ///< DMA buffer for continuous mode
+  void *adc_continuous_handle_; ///< Continuous mode handle
+  void *dma_task_handle_;       ///< DMA processing task handle
+  bool dma_mode_active_;        ///< DMA mode status
+  uint8_t current_dma_channel_; ///< Current DMA channel
+
+  // Callback management
+  AdcCallback active_callback_;    ///< Active callback function
+  void *callback_user_data_;       ///< User data for callback
+  
+  // Constants
+  static constexpr size_t DMA_BUFFER_SIZE = 4096;
+
+#endif // HF_MCU_FAMILY_ESP32
+
+  // Advanced feature configurations and state
+  std::unordered_map<HfChannelId, hf_adc_filter_config_t> filter_configs_;    ///< Filter configurations per channel
+  std::unordered_map<HfChannelId, hf_adc_monitor_config_t> monitor_configs_;  ///< Monitor configurations per monitor ID
+  hf_adc_calibration_config_t calibration_config_;                            ///< Calibration configuration
+    
+  // Advanced callbacks
+  AdcThresholdCallback threshold_callback_;             ///< Threshold monitor callback
+  void *threshold_callback_user_data_;                  ///< User data for threshold callback
+  
+  // Trigger configuration
+  hf_adc_trigger_source_t trigger_source_;              ///< Current trigger source
+  uint32_t trigger_parameter_;                          ///< Trigger parameter
+  std::vector<HfChannelId> triggered_channels_;         ///< Channels for triggered sampling
+  bool triggered_sampling_active_;                      ///< Triggered sampling status
+
+  // Statistics and diagnostics
+  mutable hf_adc_statistics_t statistics_;              ///< Operation statistics
+  mutable hf_adc_diagnostics_t diagnostics_;            ///< Diagnostic information
+  mutable RtosMutex mutex_;                             ///< Mutex for thread safety    
+
+  static constexpr const char* TAG = "McuAdc";          ///< Logging tag
+
 #endif
 };
