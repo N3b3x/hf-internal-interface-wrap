@@ -1,5 +1,5 @@
 /**
- * @file McuGpio.h
+ * @file EspGpio.h
  * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF v5.5+ features.
  *
  * This file provides concrete implementations of the unified BaseGpio class
@@ -28,7 +28,7 @@ using GpioWakeUpConfig = hf_gpio_wakeup_config_t;
 using GpioConfigDump = hf_gpio_status_info_t;
 
 /**
- * @class McuGpio
+ * @class EspGpio
  * @brief Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+
  * features.
  * @details This class provides a comprehensive implementation of BaseGpio for MCU-based
@@ -54,13 +54,13 @@ using GpioConfigDump = hf_gpio_status_info_t;
  *       Platform-specific details are handled through conditional compilation.
  * @note Advanced features require ESP32C6 with ESP-IDF v5.5+ for full functionality.
  */
-class McuGpio : public BaseGpio {
+class EspGpio : public BaseGpio {
 public:
   //==============================================================//
   // CONSTRUCTORS
   //==============================================================//  
   /**
-   * @brief Constructor for McuGpio with full configuration including advanced features.
+   * @brief Constructor for EspGpio with full configuration including advanced features.
    * @param pin_num Platform-agnostic GPIO pin number
    * @param direction Initial pin direction (Input or Output)
    * @param active_state Polarity configuration (High or Low active)
@@ -72,7 +72,7 @@ public:
    *          the first call to EnsureInitialized(), Initialize(), or any GPIO operation.
    *          This allows creating GPIO objects without immediate hardware access.
    */
-  explicit McuGpio(HfPinNumber pin_num, Direction direction = Direction::Input,
+  explicit EspGpio(HfPinNumber pin_num, Direction direction = Direction::Input,
                    ActiveState active_state = ActiveState::High,
                    OutputMode output_mode = OutputMode::PushPull,
                    PullMode pull_mode = PullMode::Floating,
@@ -81,7 +81,7 @@ public:
   /**
    * @brief Destructor - ensures proper cleanup including interrupt resources.
    */
-  ~McuGpio() override;
+  ~EspGpio() override;
 
   //==============================================================//
   // BASEGPIO IMPLEMENTATION
@@ -505,7 +505,7 @@ private:
 
   /**
    * @brief Static interrupt service routine handler.
-   * @param arg Pointer to McuGpio instance
+   * @param arg Pointer to EspGpio instance
    */
   #ifdef HF_MCU_FAMILY_ESP32
   static void IRAM_ATTR StaticInterruptHandler(void *arg);

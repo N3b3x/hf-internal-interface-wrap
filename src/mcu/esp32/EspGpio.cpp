@@ -1,5 +1,5 @@
 /**
- * @file McuGpio.cpp
+ * @file EspGpio.cpp
  * @brief Production-quality ESP32C6 GPIO implementation with ESP-IDF v5.5+ advanced features.
  *
  * This file contains a world-class implementation of MCU-specific GPIO operations
@@ -16,7 +16,7 @@
  *       control suitable for mission-critical automotive and industrial applications.
  */
 
-#include "McuGpio.h"
+#include "EspGpio.h"
 #include <algorithm>
 #include <atomic>
 #include <cstring>
@@ -37,7 +37,7 @@
 #include "hal/rtc_io_types.h"
 #include "soc/clk_tree_defs.h"
 #include "soc/gpio_sig_map.h"
-static const char *TAG = "McuGpio";
+static const char *TAG = "EspGpio";
 #elif defined(HF_MCU_FAMILY_ESP32)
 // ESP32 family includes for advanced GPIO features
 #include "driver/gpio.h"
@@ -48,10 +48,10 @@ static const char *TAG = "McuGpio";
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
 #include "soc/rtc.h"
-static const char *TAG = "McuGpio";
+static const char *TAG = "EspGpio";
 #else
 // Provide stub implementations for non-ESP32 platforms
-static const char *TAG = "McuGpio";
+static const char *TAG = "EspGpio";
 #define ESP_LOGE(tag, format, ...)
 #define ESP_LOGW(tag, format, ...)
 #define ESP_LOGI(tag, format, ...)
@@ -118,7 +118,7 @@ namespace {
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-McuGpio::McuGpio(HfPinNumber pin_num, Direction direction, ActiveState active_state,
+EspGpio::EspGpio(HfPinNumber pin_num, Direction direction, ActiveState active_state,
                  OutputMode output_mode, PullMode pull_mode,
                  GpioDriveCapability drive_capability) noexcept
     : BaseGpio(pin_num, direction, active_state, output_mode, pull_mode),
@@ -171,12 +171,12 @@ McuGpio::McuGpio(HfPinNumber pin_num, Direction direction, ActiveState active_st
   // Increment active GPIO count for statistics
   g_active_gpio_count.fetch_add(1, std::memory_order_relaxed);
   
-  ESP_LOGD(TAG, "Created McuGpio instance for pin %d (LAZY INIT) with drive capability %d", 
+  ESP_LOGD(TAG, "Created EspGpio instance for pin %d (LAZY INIT) with drive capability %d", 
            static_cast<int>(pin_num), static_cast<int>(drive_capability));
 }
 
-McuGpio::~McuGpio() {
-  ESP_LOGD(TAG, "Destroying McuGpio instance for pin %d", static_cast<int>(pin_));
+EspGpio::~EspGpio() {
+  ESP_LOGD(TAG, "Destroying EspGpio instance for pin %d", static_cast<int>(pin_));
   
   // Disable interrupts before cleanup
   if (interrupt_enabled_) {
@@ -192,14 +192,14 @@ McuGpio::~McuGpio() {
   // Decrement active GPIO count
   g_active_gpio_count.fetch_sub(1, std::memory_order_relaxed);
   
-  ESP_LOGD(TAG, "McuGpio instance destroyed for pin %d", static_cast<int>(pin_));
+  ESP_LOGD(TAG, "EspGpio instance destroyed for pin %d", static_cast<int>(pin_));
 }
 
 //==============================================================================
 // BASEGPIO INTERFACE IMPLEMENTATION
 //==============================================================================
 
-bool McuGpio::Initialize() noexcept {
+bool EspGpio::Initialize() noexcept {
   if (initialized_) {
     ESP_LOGW(TAG, "GPIO%d already initialized", static_cast<int>(pin_));
     return true;
@@ -279,7 +279,7 @@ bool McuGpio::Initialize() noexcept {
   return true;
 }
 
-bool McuGpio::Deinitialize() noexcept {
+bool EspGpio::Deinitialize() noexcept {
   if (!initialized_) {
     return true;
   }
@@ -308,7 +308,7 @@ bool McuGpio::Deinitialize() noexcept {
   return true;
 }
 
-bool McuGpio::IsPinAvailable() const noexcept {
+bool EspGpio::IsPinAvailable() const noexcept {
   #ifdef HF_MCU_ESP32C6
   return pin_ >= 0 && pin_ <= HF_MCU_GPIO_MAX_PIN_NUMBER && 
          GPIO_PIN_CAPABILITIES[pin_].is_valid_gpio;
@@ -317,7 +317,7 @@ bool McuGpio::IsPinAvailable() const noexcept {
   #endif
 }
 
-uint8_t McuGpio::GetMaxPins() const noexcept {
+uint8_t EspGpio::GetMaxPins() const noexcept {
   #ifdef HF_MCU_ESP32C6
   return HF_MCU_GPIO_PIN_COUNT;
   #else
@@ -325,7 +325,7 @@ uint8_t McuGpio::GetMaxPins() const noexcept {
   #endif
 }
 
-const char *McuGpio::GetDescription() const noexcept {
+const char *EspGpio::GetDescription() const noexcept {
   static char desc_buffer[128];
   #ifdef HF_MCU_ESP32C6
   const auto& caps = GPIO_PIN_CAPABILITIES[pin_];
@@ -341,14 +341,14 @@ const char *McuGpio::GetDescription() const noexcept {
   return desc_buffer;
 }
   
-  ESP_LOGD(TAG, "McuGpio destroyed for pin %d", pin_);
+  ESP_LOGD(TAG, "EspGpio destroyed for pin %d", pin_);
 }
 
 //==============================================================================
 // BaseGpio Implementation
 //==============================================================================
 
-bool McuGpio::Initialize() noexcept {
+bool EspGpio::Initialize() noexcept {
   if (IsInitialized()) {
     ESP_LOGW(TAG, "Pin %d already initialized", pin_);
     return true;
@@ -379,7 +379,7 @@ bool McuGpio::Initialize() noexcept {
   return initialized_;
 }
 
-bool McuGpio::Deinitialize() noexcept {
+bool EspGpio::Deinitialize() noexcept {
   if (!IsInitialized()) {
     return true;
   }
@@ -404,7 +404,7 @@ bool McuGpio::Deinitialize() noexcept {
   return BaseGpio::Deinitialize();
 }
 
-bool McuGpio::IsPinAvailable() const noexcept {
+bool EspGpio::IsPinAvailable() const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   // Check if pin is valid for GPIO operations
   if (pin_ < 0 || pin_ >= GPIO_NUM_MAX) {
@@ -521,7 +521,7 @@ bool McuGpio::IsPinAvailable() const noexcept {
 #endif
 }
 
-uint8_t McuGpio::GetMaxPins() const noexcept {
+uint8_t EspGpio::GetMaxPins() const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   return GPIO_NUM_MAX;
 #else
@@ -529,11 +529,11 @@ uint8_t McuGpio::GetMaxPins() const noexcept {
 #endif
 }
 
-const char *McuGpio::GetDescription() const noexcept {
-  return "McuGpio - Unified MCU GPIO with dynamic mode switching";
+const char *EspGpio::GetDescription() const noexcept {
+  return "EspGpio - Unified MCU GPIO with dynamic mode switching";
 }
 
-bool McuGpio::SupportsInterrupts() const noexcept {
+bool EspGpio::SupportsInterrupts() const noexcept {
   return true; // All ESP32C6 GPIOs support interrupts
 }
 
@@ -541,7 +541,7 @@ bool McuGpio::SupportsInterrupts() const noexcept {
 // INTERRUPT FUNCTIONALITY IMPLEMENTATION
 //==============================================================================
 
-HfGpioErr McuGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallback callback,
+HfGpioErr EspGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallback callback,
                                       void *user_data) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
@@ -588,7 +588,7 @@ HfGpioErr McuGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallbac
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::EnableInterrupt() noexcept {
+HfGpioErr EspGpio::EnableInterrupt() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -611,7 +611,7 @@ HfGpioErr McuGpio::EnableInterrupt() noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::DisableInterrupt() noexcept {
+HfGpioErr EspGpio::DisableInterrupt() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -637,7 +637,7 @@ HfGpioErr McuGpio::DisableInterrupt() noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
+HfGpioErr EspGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -671,7 +671,7 @@ HfGpioErr McuGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
   #endif
 }
 
-HfGpioErr McuGpio::GetInterruptStatus(InterruptStatus &status) noexcept {
+HfGpioErr EspGpio::GetInterruptStatus(InterruptStatus &status) noexcept {
   status.is_enabled = interrupt_enabled_;
   status.trigger_type = interrupt_trigger_;
   status.interrupt_count = interrupt_count_.load(std::memory_order_relaxed);
@@ -679,7 +679,7 @@ HfGpioErr McuGpio::GetInterruptStatus(InterruptStatus &status) noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::ClearInterruptStats() noexcept {
+HfGpioErr EspGpio::ClearInterruptStats() noexcept {
   interrupt_count_.store(0, std::memory_order_relaxed);
   return HfGpioErr::GPIO_SUCCESS;
 }
@@ -688,7 +688,7 @@ HfGpioErr McuGpio::ClearInterruptStats() noexcept {
 // BASEGPIO PURE VIRTUAL IMPLEMENTATIONS
 //==============================================================================
 
-HfGpioErr McuGpio::SetDirectionImpl(Direction direction) noexcept {
+HfGpioErr EspGpio::SetDirectionImpl(Direction direction) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -729,7 +729,7 @@ HfGpioErr McuGpio::SetDirectionImpl(Direction direction) noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
+HfGpioErr EspGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -763,7 +763,7 @@ HfGpioErr McuGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-PullMode McuGpio::GetPullModeImpl() const noexcept {
+PullMode EspGpio::GetPullModeImpl() const noexcept {
   if (!initialized_) {
     return pull_mode_; // Return cached value if not initialized
   }
@@ -806,7 +806,7 @@ PullMode McuGpio::GetPullModeImpl() const noexcept {
   return pull_mode_;
 }
 
-HfGpioErr McuGpio::SetOutputModeImpl(OutputMode output_mode) noexcept {
+HfGpioErr EspGpio::SetOutputModeImpl(OutputMode output_mode) noexcept {
   output_mode_ = output_mode;
   
   // If already initialized as output, update the mode
@@ -817,7 +817,7 @@ HfGpioErr McuGpio::SetOutputModeImpl(OutputMode output_mode) noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::WriteImpl(State state) noexcept {
+HfGpioErr EspGpio::WriteImpl(State state) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -845,7 +845,7 @@ HfGpioErr McuGpio::WriteImpl(State state) noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::ReadImpl(State &state) noexcept {
+HfGpioErr EspGpio::ReadImpl(State &state) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -865,21 +865,21 @@ HfGpioErr McuGpio::ReadImpl(State &state) noexcept {
   #endif
 }
 
-HfGpioErr McuGpio::SetActiveImpl() noexcept {
+HfGpioErr EspGpio::SetActiveImpl() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
   return WriteImpl(State::Active);
 }
 
-HfGpioErr McuGpio::SetInactiveImpl() noexcept {
+HfGpioErr EspGpio::SetInactiveImpl() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
   return WriteImpl(State::Inactive);
 }
 
-HfGpioErr McuGpio::ToggleImpl() noexcept {
+HfGpioErr EspGpio::ToggleImpl() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -892,7 +892,7 @@ HfGpioErr McuGpio::ToggleImpl() noexcept {
   return WriteImpl(new_state);
 }
 
-HfGpioErr McuGpio::IsActiveImpl(bool &is_active) noexcept {
+HfGpioErr EspGpio::IsActiveImpl(bool &is_active) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -913,7 +913,7 @@ HfGpioErr McuGpio::IsActiveImpl(bool &is_active) noexcept {
 // ADVANCED ESP32C6 FEATURES IMPLEMENTATION
 //==============================================================================
 
-HfGpioErr McuGpio::SetDriveCapability(GpioDriveCapability capability) noexcept {
+HfGpioErr EspGpio::SetDriveCapability(GpioDriveCapability capability) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -952,7 +952,7 @@ HfGpioErr McuGpio::SetDriveCapability(GpioDriveCapability capability) noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
+HfGpioErr EspGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
                                          const FlexGlitchFilterConfig *flex_config) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
@@ -1033,7 +1033,7 @@ HfGpioErr McuGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
   #endif
 }
 
-HfGpioErr McuGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexcept {
+HfGpioErr EspGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexcept {
   sleep_config_ = sleep_config;
 
   #ifdef HF_MCU_ESP32C6
@@ -1110,7 +1110,7 @@ HfGpioErr McuGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexc
   #endif
 }
 
-bool McuGpio::SupportsGlitchFilter() const noexcept {
+bool EspGpio::SupportsGlitchFilter() const noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_GPIO_SUPPORTS_GLITCH_FILTER(pin_);
 #else
@@ -1118,7 +1118,7 @@ bool McuGpio::SupportsGlitchFilter() const noexcept {
 #endif
 }
 
-HfGpioErr McuGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
+HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1179,7 +1179,7 @@ HfGpioErr McuGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
 #endif
 }
 
-HfGpioErr McuGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &config) noexcept {
+HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &config) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1228,7 +1228,7 @@ HfGpioErr McuGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &confi
 #endif
 }
 
-HfGpioErr McuGpio::EnableGlitchFilters() noexcept {
+HfGpioErr EspGpio::EnableGlitchFilters() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1253,7 +1253,7 @@ HfGpioErr McuGpio::EnableGlitchFilters() noexcept {
 #endif
 }
 
-HfGpioErr McuGpio::DisableGlitchFilters() noexcept {
+HfGpioErr EspGpio::DisableGlitchFilters() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1278,7 +1278,7 @@ HfGpioErr McuGpio::DisableGlitchFilters() noexcept {
 #endif
 }
 
-bool McuGpio::SupportsRtcGpio() const noexcept {
+bool EspGpio::SupportsRtcGpio() const noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_GPIO_IS_RTC_CAPABLE(pin_);
 #else
@@ -1286,7 +1286,7 @@ bool McuGpio::SupportsRtcGpio() const noexcept {
 #endif
 }
 
-HfGpioErr McuGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
+HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1380,7 +1380,7 @@ HfGpioErr McuGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
 #endif
 }
 
-HfGpioErr McuGpio::ConfigureHold(bool enable) noexcept {
+HfGpioErr EspGpio::ConfigureHold(bool enable) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1422,7 +1422,7 @@ HfGpioErr McuGpio::ConfigureHold(bool enable) noexcept {
 #endif
 }
 
-HfGpioErr McuGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
+HfGpioErr EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1478,7 +1478,7 @@ HfGpioErr McuGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
 #endif
 }
 
-GpioConfigDump McuGpio::GetConfigurationDump() const noexcept {
+GpioConfigDump EspGpio::GetConfigurationDump() const noexcept {
   hf_gpio_status_info_t dump = {};
   
 #ifdef HF_MCU_ESP32C6
@@ -1498,11 +1498,11 @@ GpioConfigDump McuGpio::GetConfigurationDump() const noexcept {
   return dump;
 }
 
-bool McuGpio::IsHeld() const noexcept {
+bool EspGpio::IsHeld() const noexcept {
   return hold_enabled_;
 }
 
-HfGpioErr McuGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) const noexcept {
+HfGpioErr EspGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) const noexcept {
 #ifdef HF_MCU_ESP32C6
   capabilities.pin_number = pin_;
   capabilities.supports_input = true;
@@ -1535,11 +1535,11 @@ HfGpioErr McuGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) 
 #endif
 }
 
-HfGpioErr McuGpio::GetStatusInfo(hf_gpio_status_info_t &status) const noexcept {
+HfGpioErr EspGpio::GetStatusInfo(hf_gpio_status_info_t &status) const noexcept {
   return static_cast<HfGpioErr>(GetConfigurationDump());
 }
 
-uint32_t McuGpio::GetTotalInterruptCount() noexcept {
+uint32_t EspGpio::GetTotalInterruptCount() noexcept {
 #ifdef HF_MCU_ESP32C6
   return total_interrupt_count_.load();
 #else
@@ -1547,7 +1547,7 @@ uint32_t McuGpio::GetTotalInterruptCount() noexcept {
 #endif
 }
 
-uint32_t McuGpio::GetActiveGpioCount() noexcept {
+uint32_t EspGpio::GetActiveGpioCount() noexcept {
 #ifdef HF_MCU_ESP32C6
   return active_gpio_count_.load();
 #else
@@ -1555,7 +1555,7 @@ uint32_t McuGpio::GetActiveGpioCount() noexcept {
 #endif
 }
 
-bool McuGpio::IsValidPin(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsValidPin(HfPinNumber pin_num) noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_GPIO_IS_VALID_PIN(pin_num);
 #else
@@ -1563,7 +1563,7 @@ bool McuGpio::IsValidPin(HfPinNumber pin_num) noexcept {
 #endif
 }
 
-bool McuGpio::IsRtcGpio(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsRtcGpio(HfPinNumber pin_num) noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_GPIO_IS_RTC_CAPABLE(pin_num);
 #else
@@ -1571,7 +1571,7 @@ bool McuGpio::IsRtcGpio(HfPinNumber pin_num) noexcept {
 #endif
 }
 
-bool McuGpio::IsStrappingPin(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsStrappingPin(HfPinNumber pin_num) noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_GPIO_IS_STRAPPING_PIN(pin_num);
 #else
@@ -1583,36 +1583,36 @@ bool McuGpio::IsStrappingPin(HfPinNumber pin_num) noexcept {
 // STATIC UTILITY METHODS
 //==============================================================================
 
-uint32_t McuGpio::GetTotalInterruptCount() noexcept {
+uint32_t EspGpio::GetTotalInterruptCount() noexcept {
   return g_total_gpio_interrupts.load(std::memory_order_relaxed);
 }
 
-uint32_t McuGpio::GetActiveGpioCount() noexcept {
+uint32_t EspGpio::GetActiveGpioCount() noexcept {
   return g_active_gpio_count.load(std::memory_order_relaxed);
 }
 
-bool McuGpio::IsValidPin(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsValidPin(HfPinNumber pin_num) noexcept {
   return HF_GPIO_IS_VALID_GPIO(pin_num);
 }
 
-bool McuGpio::IsRtcGpio(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsRtcGpio(HfPinNumber pin_num) noexcept {
   return HF_GPIO_IS_VALID_RTC_GPIO(pin_num);
 }
 
-bool McuGpio::IsStrappingPin(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsStrappingPin(HfPinNumber pin_num) noexcept {
   return HF_GPIO_IS_STRAPPING_PIN(pin_num);
 }
 
 #ifdef HF_MCU_FAMILY_ESP32
 // Static flag to track ISR service installation
-bool McuGpio::gpio_isr_handler_installed_ = false;
+bool EspGpio::gpio_isr_handler_installed_ = false;
 #endif
 
 //==============================================================================
 // LAZY INITIALIZATION IMPLEMENTATION
 //==============================================================================
 
-bool McuGpio::EnsureInitialized() noexcept {
+bool EspGpio::EnsureInitialized() noexcept {
   if (initialized_) {
     return true;  // Already initialized
   }
@@ -1638,7 +1638,7 @@ static gpio_etm_event_handle_t gpio_etm_events[HF_MCU_GPIO_PIN_COUNT] = {nullptr
 static gpio_etm_task_handle_t gpio_etm_tasks[HF_MCU_GPIO_PIN_COUNT] = {nullptr};
 static uint8_t etm_channel_usage_count = 0;
 
-HfGpioErr McuGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
+HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1782,7 +1782,7 @@ HfGpioErr McuGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::EnableETM() noexcept {
+HfGpioErr EspGpio::EnableETM() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1803,7 +1803,7 @@ HfGpioErr McuGpio::EnableETM() noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-HfGpioErr McuGpio::DisableETM() noexcept {
+HfGpioErr EspGpio::DisableETM() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1824,7 +1824,7 @@ HfGpioErr McuGpio::DisableETM() noexcept {
   return HfGpioErr::GPIO_SUCCESS;
 }
 
-void McuGpio::CleanupETM() noexcept {
+void EspGpio::CleanupETM() noexcept {
   if (etm_channels[pin_]) {
     esp_etm_channel_disable(etm_channels[pin_]);
     esp_etm_channel_connect(etm_channels[pin_], nullptr, nullptr);
@@ -1845,11 +1845,11 @@ void McuGpio::CleanupETM() noexcept {
   }
 }
 
-bool McuGpio::SupportsETM() const noexcept {
+bool EspGpio::SupportsETM() const noexcept {
   return HF_GPIO_SUPPORTS_ETM(pin_);
 }
 
-HfGpioErr McuGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
+HfGpioErr EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
   status.etm_enabled = (etm_channels[pin_] != nullptr);
   status.event_handle = gpio_etm_events[pin_];
   status.task_handle = gpio_etm_tasks[pin_];
@@ -1861,15 +1861,15 @@ HfGpioErr McuGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
 }
 
 // Static ETM utility functions
-uint8_t McuGpio::GetETMChannelUsage() noexcept {
+uint8_t EspGpio::GetETMChannelUsage() noexcept {
   return etm_channel_usage_count;
 }
 
-uint8_t McuGpio::GetMaxETMChannels() noexcept {
+uint8_t EspGpio::GetMaxETMChannels() noexcept {
   return HF_MCU_GPIO_ETM_CHANNEL_COUNT;
 }
 
-HfGpioErr McuGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
+HfGpioErr EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
   if (!output_stream) {
     output_stream = stdout;
   }
@@ -1886,41 +1886,41 @@ HfGpioErr McuGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
 #else
 // Stub implementations for non-ESP32C6 platforms
 
-HfGpioErr McuGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
+HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
   ESP_LOGW(TAG, "ETM not supported on this platform");
   return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 }
 
-HfGpioErr McuGpio::EnableETM() noexcept {
+HfGpioErr EspGpio::EnableETM() noexcept {
   return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 }
 
-HfGpioErr McuGpio::DisableETM() noexcept {
+HfGpioErr EspGpio::DisableETM() noexcept {
   return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 }
 
-void McuGpio::CleanupETM() noexcept {
+void EspGpio::CleanupETM() noexcept {
   // No-op for non-ESP32C6
 }
 
-bool McuGpio::SupportsETM() const noexcept {
+bool EspGpio::SupportsETM() const noexcept {
   return false;
 }
 
-HfGpioErr McuGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
+HfGpioErr EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
   memset(& status, 0, sizeof(status));
   return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 }
 
-uint8_t McuGpio::GetETMChannelUsage() noexcept {
+uint8_t EspGpio::GetETMChannelUsage() noexcept {
   return 0;
 }
 
-uint8_t McuGpio::GetMaxETMChannels() noexcept {
+uint8_t EspGpio::GetMaxETMChannels() noexcept {
   return 0;
 }
 
-HfGpioErr McuGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
+HfGpioErr EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
   return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 }
 
@@ -1931,7 +1931,7 @@ HfGpioErr McuGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
 //==============================================================================
 
 #ifdef HF_MCU_FAMILY_ESP32
-gpio_int_type_t McuGpio::MapInterruptTrigger(InterruptTrigger trigger) const noexcept {
+gpio_int_type_t EspGpio::MapInterruptTrigger(InterruptTrigger trigger) const noexcept {
   switch (trigger) {
     case InterruptTrigger::RisingEdge:
       return GPIO_INTR_POSEDGE;
@@ -1949,22 +1949,22 @@ gpio_int_type_t McuGpio::MapInterruptTrigger(InterruptTrigger trigger) const noe
   }
 }
 #else
-uint32_t McuGpio::MapInterruptTrigger(InterruptTrigger trigger) const noexcept {
+uint32_t EspGpio::MapInterruptTrigger(InterruptTrigger trigger) const noexcept {
   // Platform-specific mapping for non-ESP32 platforms
   return static_cast<uint32_t>(trigger);
 }
 #endif
 
 #ifdef HF_MCU_FAMILY_ESP32
-void IRAM_ATTR McuGpio::StaticInterruptHandler(void *arg) {
-  McuGpio *gpio_instance = static_cast<McuGpio*>(arg);
+void IRAM_ATTR EspGpio::StaticInterruptHandler(void *arg) {
+  EspGpio *gpio_instance = static_cast<EspGpio*>(arg);
   if (gpio_instance) {
     gpio_instance->HandleInterrupt();
   }
 }
 #else
-void McuGpio::StaticInterruptHandler(void *arg) {
-  McuGpio *gpio_instance = static_cast<McuGpio*>(arg);
+void EspGpio::StaticInterruptHandler(void *arg) {
+  EspGpio *gpio_instance = static_cast<EspGpio*>(arg);
   if (gpio_instance) {
     gpio_instance->HandleInterrupt();
   }
@@ -1972,7 +1972,7 @@ void McuGpio::StaticInterruptHandler(void *arg) {
 #endif
 
 #ifdef HF_MCU_FAMILY_ESP32
-void IRAM_ATTR McuGpio::HandleInterrupt() {
+void IRAM_ATTR EspGpio::HandleInterrupt() {
   // Increment interrupt counter (thread-safe)
   interrupt_count_.fetch_add(1, std::memory_order_relaxed);
   g_total_gpio_interrupts.fetch_add(1, std::memory_order_relaxed);
@@ -1993,7 +1993,7 @@ void IRAM_ATTR McuGpio::HandleInterrupt() {
   }
 }
 #else
-void McuGpio::HandleInterrupt() {
+void EspGpio::HandleInterrupt() {
   // Increment interrupt counter (thread-safe)
   interrupt_count_.fetch_add(1, std::memory_order_relaxed);
   g_total_gpio_interrupts.fetch_add(1, std::memory_order_relaxed);
@@ -2005,7 +2005,7 @@ void McuGpio::HandleInterrupt() {
 }
 #endif
 
-bool McuGpio::InitializeAdvancedFeatures() noexcept {
+bool EspGpio::InitializeAdvancedFeatures() noexcept {
   bool success = true;
   
   #ifdef HF_MCU_ESP32C6
@@ -2039,7 +2039,7 @@ bool McuGpio::InitializeAdvancedFeatures() noexcept {
   return success;
 }
 
-void McuGpio::CleanupAdvancedFeatures() noexcept {
+void EspGpio::CleanupAdvancedFeatures() noexcept {
   // Clean up glitch filters
   CleanupGlitchFilters();
   
@@ -2077,7 +2077,7 @@ void McuGpio::CleanupAdvancedFeatures() noexcept {
   ESP_LOGD(TAG, "Advanced features cleaned up for GPIO%d", static_cast<int>(pin_));
 }
 
-void McuGpio::CleanupGlitchFilters() noexcept {
+void EspGpio::CleanupGlitchFilters() noexcept {
   #ifdef HF_MCU_ESP32C6
   if (glitch_filter_handle_) {
     // Disable and delete glitch filter
@@ -2107,7 +2107,7 @@ void McuGpio::CleanupGlitchFilters() noexcept {
   #endif
 }
 
-void McuGpio::CleanupInterruptSemaphore() noexcept {
+void EspGpio::CleanupInterruptSemaphore() noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
   if (platform_semaphore_) {
     vSemaphoreDelete(static_cast<SemaphoreHandle_t>(platform_semaphore_));

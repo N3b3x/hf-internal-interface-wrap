@@ -1,6 +1,6 @@
 /**
- * @file McuI2c.h
- * @brief Advanced MCU-integrated I2C controller for ESP-IDF v5.5+ with ESP32C6 support.
+ * @file EspI2c.h
+ * @brief Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with ESP32C6 support.
  *
  * This header provides a comprehensive I2C implementation that utilizes all the advanced
  * features available in ESP-IDF v5.5+ for ESP32C6. The implementation follows the new
@@ -47,7 +47,7 @@
  * bus_config.enable_internal_pullup = true;
  * 
  * // Create I2C instance
- * McuI2c i2c(bus_config);
+ * EspI2c i2c(bus_config);
  * if (!i2c.Initialize()) {
  *     // Handle initialization error
  * }
@@ -75,8 +75,8 @@
 #include <memory>
 
 /**
- * @class McuI2c
- * @brief Advanced MCU-integrated I2C controller implementation for ESP-IDF v5.5+.
+ * @class EspI2c
+ * @brief Advanced ESP32-integrated I2C controller implementation for ESP-IDF v5.5+.
  *
  * This class provides comprehensive I2C communication using the microcontroller's built-in
  * I2C peripheral with full support for ESP-IDF v5.5+ advanced features. The implementation
@@ -96,7 +96,7 @@
  * @note Asynchronous callbacks execute in interrupt context - keep them minimal.
  * @note The implementation automatically manages ESP-IDF v5.5+ resources.
  */
-class McuI2c : public BaseI2c {
+class EspI2c : public BaseI2c {
 public:
     //==========================================================================
     // CONSTRUCTORS AND DESTRUCTOR
@@ -106,20 +106,20 @@ public:
      * @brief Constructor with I2C master bus configuration.
      * @param config Master bus configuration with ESP-IDF v5.5+ features
      */
-    explicit McuI2c(const I2cMasterBusConfig& config) noexcept;
+    explicit EspI2c(const I2cMasterBusConfig& config) noexcept;
 
     /**
      * @brief Destructor - ensures proper cleanup of all resources.
      * @details Automatically deinitializes the bus, removes all devices,
      *          cancels pending operations, and releases allocated resources.
      */
-    ~McuI2c() noexcept override;
+    ~EspI2c() noexcept override;
 
     // Non-copyable, non-movable for safety
-    McuI2c(const McuI2c&) = delete;
-    McuI2c& operator=(const McuI2c&) = delete;
-    McuI2c(McuI2c&&) = delete;
-    McuI2c& operator=(McuI2c&&) = delete;
+    EspI2c(const EspI2c&) = delete;
+    EspI2c& operator=(const EspI2c&) = delete;
+    EspI2c(EspI2c&&) = delete;
+    EspI2c& operator=(EspI2c&&) = delete;
 
     //==========================================================================
     // CORE I2C OPERATIONS (BaseI2c Interface)
