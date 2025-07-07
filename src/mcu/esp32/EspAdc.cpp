@@ -31,28 +31,10 @@
 #ifdef HF_MCU_FAMILY_ESP32
 
 // ESP-IDF includes for ADC functionality
-#include "esp_adc/adc_oneshot.h"
-#include "esp_adc/adc_continuous.h"
-#include "esp_adc/adc_cali.h"
-#include "esp_adc/adc_cali_scheme.h"
-#include "esp_adc/adc_filter.h"
-#include "esp_adc/adc_monitor.h"
-#include "driver/gpio.h"
-#include "esp_timer.h"
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/semphr.h"
-#include "RtosMutex.h"
-
 #include <algorithm>
 #include <cstring>
 
 static const char* TAG = "EspAdc";
-
-// Type aliases for ESP-IDF types
-using adc_iir_filter_handle_t = struct adc_continuous_iir_filter_ctx_t*;
-using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
 
 // ESP32 ADC constants (variant-specific)
 static constexpr uint32_t ADC_MAX_RAW_VALUE = HF_ESP32_ADC_MAX_RAW_VALUE; // 12-bit ADC
@@ -213,6 +195,8 @@ EspAdc::EspAdc(const hf_adc_unit_config_t& config) noexcept
     : config_(config)
     , continuous_running_(false)
     , last_error_(hf_adc_err_t::ADC_SUCCESS)
+    , config_mutex_()
+    , stats_mutex_()
     , oneshot_handle_(nullptr)
     , continuous_handle_(nullptr)
     , calibration_handles_{}
@@ -670,8 +654,22 @@ hf_adc_err_t EspAdc::ConfigureContinuous(const hf_adc_continuous_config_t& confi
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
     }
     
-    if (config.conv_frame_size < HF_ADC_DMA_BUFFER_SIZE_MIN || 
-        config.conv_frame_size > HF_ADC_DMA_BUFFER_SIZE_MAX) {
+    // Count enabled channels for validation
+    uint32_t enabled_count = 0;
+    for (uint8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
+        if (config_.channel_configs[i].enabled) {
+            enabled_count++;
+        }
+    }
+    
+    if (enabled_count == 0) {
+        return hf_adc_err_t::ADC_ERR_CHANNEL_NOT_CONFIGURED;
+    }
+    
+    // Validate user-friendly parameters using utility functions
+    if (!IsValidContinuousConfig(config.samples_per_frame, enabled_count, config.max_store_frames)) {
+        ESP_LOGE(TAG, "Invalid continuous configuration: samples_per_frame=%lu, enabled_channels=%lu, max_store_frames=%lu",
+                 config.samples_per_frame, enabled_count, config.max_store_frames);
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
     }
     
@@ -1177,7 +1175,7 @@ hf_adc_err_t EspAdc::ReadMultipleChannels(const hf_channel_id_t* channel_ids, ui
 }
 
 // Static callback functions for ESP-IDF
-bool EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const void* edata, void* user_data) noexcept
+bool IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const void* edata, void* user_data) noexcept
 {
     auto* esp_adc = static_cast<EspAdc*>(user_data);
     
@@ -1195,12 +1193,10 @@ bool EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const void* edat
     hf_data.timestamp_us = esp_adc->GetCurrentTimeUs();
     
     // Call user callback
-    esp_adc->continuous_callback_(&hf_data, esp_adc->continuous_user_data_);
-    
-    return false; // Return false to continue receiving callbacks
+    return esp_adc->continuous_callback_(&hf_data, esp_adc->continuous_user_data_);
 }
 
-bool EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data, void* user_data) noexcept
+bool IRAM_ATTR EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data, void* user_data) noexcept
 {
     auto* esp_adc = static_cast<EspAdc*>(user_data);
     
@@ -1244,8 +1240,8 @@ hf_adc_err_t EspAdc::InitializeOneshot() noexcept
     // Create oneshot unit configuration
     adc_oneshot_unit_init_cfg_t init_config = {
         .unit_id = static_cast<adc_unit_t>(config_.unit_id),
-        .clk_src = ADC_RTC_CLK_SRC_DEFAULT,
-        .ulp_mode = ADC_ULP_MODE_DISABLE,
+        .clk_src = HF_ADC_ONESHOT_CLK_SRC,
+        .ulp_mode = HF_ADC_ULP_MODE,
     };
     
     esp_err_t esp_result = adc_oneshot_new_unit(&init_config, &oneshot_handle_);
@@ -1307,13 +1303,22 @@ hf_adc_err_t EspAdc::InitializeContinuous() noexcept
     }
     
     // Create continuous ADC configuration
+    // Calculate frame size and buffer pool size using user-friendly parameters
+    uint32_t frame_size = CalcFrameSize(config_.continuous_config.samples_per_frame, enabled_count);
+    uint32_t buffer_pool_size = CalcBufferPoolSize(config_.continuous_config.samples_per_frame, enabled_count, config_.continuous_config.max_store_frames);
+    
     adc_continuous_handle_cfg_t adc_config = {
-        .max_store_buf_size = config_.continuous_config.conv_frame_size,
-        .conv_frame_size = config_.continuous_config.conv_frame_size / enabled_count,
+        .max_store_buf_size = buffer_pool_size,
+        .conv_frame_size = frame_size,
         .flags = {
             .flush_pool = config_.continuous_config.flush_pool
         }
     };
+    
+    ESP_LOGI(TAG, "Continuous ADC config: samples_per_frame=%lu, enabled_channels=%u, max_store_frames=%lu", 
+             config_.continuous_config.samples_per_frame, enabled_count, config_.continuous_config.max_store_frames);
+    ESP_LOGI(TAG, "Calculated: frame_size=%lu bytes, buffer_pool_size=%lu bytes", 
+             frame_size, buffer_pool_size);
     
     esp_err_t esp_result = adc_continuous_new_handle(&adc_config, &continuous_handle_);
     if (esp_result != ESP_OK) {
@@ -1470,9 +1475,23 @@ hf_adc_err_t EspAdc::ValidateConfiguration() const noexcept
             return hf_adc_err_t::ADC_ERR_INVALID_CONFIGURATION;
         }
         
-        if (config_.continuous_config.conv_frame_size < 256 || 
-            config_.continuous_config.conv_frame_size > 4096) {
-            ESP_LOGE(TAG, "Invalid frame size: %ld", config_.continuous_config.conv_frame_size);
+        // Count enabled channels for validation
+        uint32_t enabled_count = 0;
+        for (uint8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
+            if (config_.channel_configs[i].enabled) {
+                enabled_count++;
+            }
+        }
+        
+        if (enabled_count == 0) {
+            ESP_LOGE(TAG, "No channels enabled for continuous mode");
+            return hf_adc_err_t::ADC_ERR_INVALID_CONFIGURATION;
+        }
+        
+        // Validate user-friendly parameters using utility functions
+        if (!IsValidContinuousConfig(config_.continuous_config.samples_per_frame, enabled_count, config_.continuous_config.max_store_frames)) {
+            ESP_LOGE(TAG, "Invalid continuous configuration: samples_per_frame=%lu, enabled_channels=%lu, max_store_frames=%lu",
+                     config_.continuous_config.samples_per_frame, enabled_count, config_.continuous_config.max_store_frames);
             return hf_adc_err_t::ADC_ERR_INVALID_CONFIGURATION;
         }
     }

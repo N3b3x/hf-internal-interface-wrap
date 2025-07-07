@@ -90,14 +90,18 @@ struct hf_adc_channel_config_t {
 
 /**
  * @brief ADC continuous mode configuration structure.
+ * 
+ * This structure provides a user-friendly way to configure continuous mode ADC.
+ * The frame size is automatically calculated based on samples_per_frame and enabled channels.
  */
 struct hf_adc_continuous_config_t {
     uint32_t sample_freq_hz;           ///< Sampling frequency in Hz
-    uint32_t conv_frame_size;          ///< Conversion frame size
+    uint32_t samples_per_frame;        ///< Number of samples per frame per enabled channel (64-1024 recommended)
+    uint32_t max_store_frames;         ///< Maximum number of frames to store in buffer pool (1-8 recommended)
     bool flush_pool;                   ///< Flush pool flag
 
     hf_adc_continuous_config_t()
-        : sample_freq_hz(1000), conv_frame_size(1024), flush_pool(false) {}
+        : sample_freq_hz(1000), samples_per_frame(64), max_store_frames(4), flush_pool(false) {}
 };
 
 /**
@@ -188,22 +192,138 @@ struct hf_adc_monitor_event_t {
 
 /**
  * @brief ADC continuous mode data callback function.
- * @param data Continuous data structure
- * @param user_data User-provided data
+ * 
+ * @warning This callback is executed in ISR context and must be ISR-safe:
+ * - Use only ISR-safe functions (no malloc, free, printf, etc.)
+ * - Keep execution time as short as possible
+ * - Avoid calling blocking functions or FreeRTOS APIs that are not ISR-safe
+ * - Use only stack variables or pre-allocated memory
+ * - Consider using xQueueSendFromISR() or similar to defer processing
+ * 
+ * @param data Continuous data structure containing sampled data
+ * @param user_data User-provided data pointer
  * @return true to yield to higher priority task, false to continue
  */
-using hf_adc_continuous_callback_t = std::function<bool(const hf_adc_continuous_data_t* data, void* user_data)>;
+using hf_adc_continuous_callback_t = bool (*)(const hf_adc_continuous_data_t* data, void* user_data);
 
 /**
  * @brief ADC threshold monitor callback function.
- * @param event Monitor event structure
- * @param user_data User-provided data
+ * 
+ * @warning This callback is executed in ISR context and must be ISR-safe:
+ * - Use only ISR-safe functions (no malloc, free, printf, etc.)
+ * - Keep execution time as short as possible
+ * - Avoid calling blocking functions or FreeRTOS APIs that are not ISR-safe
+ * - Use only stack variables or pre-allocated memory
+ * - Consider using xQueueSendFromISR() or similar to defer processing
+ * 
+ * @param event Monitor event structure containing threshold event details
+ * @param user_data User-provided data pointer
  */
-using hf_adc_monitor_callback_t = std::function<void(const hf_adc_monitor_event_t* event, void* user_data)>;
+using hf_adc_monitor_callback_t = void (*)(const hf_adc_monitor_event_t* event, void* user_data);
+
+/**
+ * @brief Example of ISR-safe ADC callback implementation
+ * 
+ * @code{.cpp}
+ * // Queue handle (global or class member)
+ * static QueueHandle_t adc_data_queue;
+ * 
+ * // ISR-safe callback function
+ * bool adc_continuous_callback(const hf_adc_continuous_data_t* data, void* user_data) {
+ *     // Create a lightweight message for the queue
+ *     AdcDataMessage msg;
+ *     msg.timestamp = data->timestamp_us;
+ *     msg.conversion_count = data->conversion_count;
+ *     msg.size = data->size;
+ *     
+ *     // Try to send to queue (non-blocking)
+ *     BaseType_t higher_priority_task_woken = pdFALSE;
+ *     if (xQueueSendFromISR(adc_data_queue, &msg, &higher_priority_task_woken) == pdTRUE) {
+ *         return higher_priority_task_woken == pdTRUE;
+ *     }
+ *     
+ *     return false; // Continue receiving callbacks
+ * }
+ * @endcode
+ */
 
 //==============================================================================
 // ESP32-C6 SPECIFIC CONSTANTS
 //==============================================================================
+
+#ifdef HF_MCU_ESP32C6
+
+/**
+ * @brief ESP32-C6 ADC continuous mode constants
+ */
+constexpr uint32_t HF_ESP32C6_ADC_DATA_BYTES_PER_CONV = SOC_ADC_DIGI_DATA_BYTES_PER_CONV;  ///< Bytes per conversion result from ESP-IDF
+constexpr uint32_t HF_ESP32C6_ADC_MIN_FRAME_SIZE = HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN;       ///< Minimum frame size (from EspAdc.h)
+constexpr uint32_t HF_ESP32C6_ADC_MAX_FRAME_SIZE = HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX;       ///< Maximum frame size (from EspAdc.h)
+constexpr uint32_t HF_ESP32C6_ADC_DEFAULT_FRAME_SIZE = HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT; ///< Default frame size (from EspAdc.h)
+
+/**
+ * @brief Calculate frame size in bytes based on samples per frame and enabled channels
+ * @param samples_per_frame Number of samples per frame per enabled channel
+ * @param enabled_channels Number of enabled channels
+ * @return Frame size in bytes
+ */
+inline constexpr uint32_t CalcFrameSize(uint32_t samples_per_frame, uint32_t enabled_channels) noexcept {
+    return samples_per_frame * enabled_channels * HF_ESP32C6_ADC_DATA_BYTES_PER_CONV;
+}
+
+/**
+ * @brief Calculate total buffer pool size based on frames and enabled channels
+ * @param samples_per_frame Number of samples per frame per enabled channel
+ * @param enabled_channels Number of enabled channels  
+ * @param max_store_frames Maximum frames to store
+ * @return Buffer pool size in bytes
+ */
+inline constexpr uint32_t CalcBufferPoolSize(uint32_t samples_per_frame, uint32_t enabled_channels, uint32_t max_store_frames) noexcept {
+    return CalcFrameSize(samples_per_frame, enabled_channels) * max_store_frames;
+}
+
+/**
+ * @brief Validate continuous mode configuration parameters
+ * @param samples_per_frame Number of samples per frame per enabled channel
+ * @param enabled_channels Number of enabled channels
+ * @param max_store_frames Maximum frames to store
+ * @return true if valid, false otherwise
+ */
+inline constexpr bool IsValidContinuousConfig(uint32_t samples_per_frame, uint32_t enabled_channels, uint32_t max_store_frames) noexcept {
+    if (enabled_channels == 0 || samples_per_frame == 0 || max_store_frames == 0) {
+        return false;
+    }
+    
+    uint32_t frame_size = CalcFrameSize(samples_per_frame, enabled_channels);
+    uint32_t pool_size = CalcBufferPoolSize(samples_per_frame, enabled_channels, max_store_frames);
+    
+    return (frame_size >= HF_ESP32C6_ADC_MIN_FRAME_SIZE) &&
+           (frame_size <= HF_ESP32C6_ADC_MAX_FRAME_SIZE) &&
+           (pool_size <= 32768) && // Reasonable max pool size (32KB)
+           ((frame_size % HF_ESP32C6_ADC_DATA_BYTES_PER_CONV) == 0);
+}
+
+/**
+ * @brief Validate that frame size is properly aligned
+ * @param frame_size Frame size in bytes
+ * @return true if valid, false otherwise
+ */
+inline constexpr bool IsValidFrameSize(uint32_t frame_size) noexcept {
+    return (frame_size >= HF_ESP32C6_ADC_MIN_FRAME_SIZE) &&
+           (frame_size <= HF_ESP32C6_ADC_MAX_FRAME_SIZE) &&
+           ((frame_size % HF_ESP32C6_ADC_DATA_BYTES_PER_CONV) == 0);
+}
+
+/**
+ * @brief Calculate number of conversion results that fit in a frame
+ * @param frame_size Frame size in bytes
+ * @return Number of conversion results
+ */
+inline constexpr uint32_t GetFrameResultCount(uint32_t frame_size) noexcept {
+    return frame_size / HF_ESP32C6_ADC_DATA_BYTES_PER_CONV;
+}
+
+#endif // HF_MCU_ESP32C6
 
 
 //==============================================================================

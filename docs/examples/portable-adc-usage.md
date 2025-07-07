@@ -55,6 +55,68 @@ The configuration is automatically handled based on your ESP32 variant selection
 - Sampling frequencies
 - Hardware limits
 
+## Continuous Mode Configuration
+
+The `EspAdc` class provides a user-friendly way to configure continuous mode ADC sampling. Instead of manually calculating frame sizes and buffer pool sizes, you specify intuitive parameters:
+
+### Configuration Parameters
+
+- **`samples_per_frame`**: Number of samples per frame **per enabled channel** (recommended: 64-1024)
+- **`max_store_frames`**: Maximum number of frames to store in the buffer pool (recommended: 1-8)
+- **`sample_freq_hz`**: Overall sampling frequency in Hz
+- **`flush_pool`**: Whether to flush the buffer pool on start
+
+### How Frame Size is Calculated
+
+The actual ESP-IDF frame size and buffer pool size are automatically calculated using:
+
+```cpp
+frame_size = samples_per_frame × enabled_channels × bytes_per_conversion
+buffer_pool_size = frame_size × max_store_frames
+```
+
+Where:
+- `bytes_per_conversion` = 4 bytes (ESP-IDF constant `SOC_ADC_DIGI_DATA_BYTES_PER_CONV`)
+- `enabled_channels` = count of channels with `.enabled = true`
+
+### Configuration Examples
+
+**Example 1: 2 channels, 256 samples per frame per channel**
+```cpp
+.continuous_config = {
+    .sample_freq_hz = 1000,         // 1kHz total sampling
+    .samples_per_frame = 256,       // 256 samples per frame per channel
+    .max_store_frames = 4,          // Buffer up to 4 frames
+    .flush_pool = false
+}
+// Results in:
+// - Frame size: 256 × 2 × 4 = 2048 bytes
+// - Buffer pool: 2048 × 4 = 8192 bytes
+// - Each frame contains 256 samples from each enabled channel
+```
+
+**Example 2: 1 channel, 512 samples per frame**
+```cpp
+.continuous_config = {
+    .sample_freq_hz = 10000,        // 10kHz sampling
+    .samples_per_frame = 512,       // 512 samples per frame per channel
+    .max_store_frames = 2,          // Buffer up to 2 frames
+    .flush_pool = true
+}
+// Results in:
+// - Frame size: 512 × 1 × 4 = 2048 bytes
+// - Buffer pool: 2048 × 2 = 4096 bytes
+// - Each frame contains 512 samples from the single enabled channel
+```
+
+### Validation
+
+The configuration is automatically validated to ensure:
+- Frame size is within ESP32 hardware limits (256-4096 bytes)
+- Frame size is properly aligned (multiple of 4 bytes)
+- Buffer pool size is reasonable (≤32KB)
+- At least one channel is enabled
+
 ## Usage Examples
 
 ### Example 1: Single ADC Unit (ESP32-C6, ESP32-S2, ESP32-C3, ESP32-C2, ESP32-H2)
@@ -162,8 +224,9 @@ hf_adc_unit_config_t adc_config = {
     .mode = hf_adc_mode_t::CONTINUOUS,
     .bit_width = hf_adc_bitwidth_t::WIDTH_12_BIT,
     .continuous_config = {
-        .sample_freq_hz = 1000,      // 1kHz sampling
-        .conv_frame_size = 1024,     // 1024 samples per frame
+        .sample_freq_hz = 1000,         // 1kHz sampling
+        .samples_per_frame = 256,       // 256 samples per frame per enabled channel
+        .max_store_frames = 4,          // Store up to 4 frames in buffer pool
         .flush_pool = false
     },
     .channel_configs = {
@@ -218,7 +281,8 @@ hf_adc_unit_config_t adc_config = {
     .bit_width = hf_adc_bitwidth_t::WIDTH_12_BIT,
     .continuous_config = {
         .sample_freq_hz = 1000,
-        .conv_frame_size = 1024,
+        .samples_per_frame = 256,       // 256 samples per frame per enabled channel
+        .max_store_frames = 4,          // Store up to 4 frames in buffer pool
         .flush_pool = false
     },
     .channel_configs = {
@@ -395,4 +459,58 @@ The EspAdc class is thread-safe and can be used from multiple threads. All opera
 - **Calibration**: Improves accuracy but uses more memory
 - **Multi-unit**: Each unit operates independently
 
-This portable design allows you to write code once and use it across all ESP32 variants by simply changing the MCU selection in `McuSelect.h`. 
+This portable design allows you to write code once and use it across all ESP32 variants by simply changing the MCU selection in `McuSelect.h`.
+
+## Ownership and Move Semantics
+
+> **Important**: The `EspAdc` class cannot be copied or moved due to hardware resource management.
+
+### Why Move Operations Are Disabled
+
+The `EspAdc` class manages ESP-IDF handles, mutexes, and callback state that are tightly coupled to hardware. Moving these resources would break the hardware abstraction layer and could lead to undefined behavior.
+
+### Alternative Patterns for Ownership Transfer
+
+If you need to transfer ownership of an EspAdc instance, use smart pointers:
+
+#### Option 1: std::unique_ptr (Recommended)
+```cpp
+#include <memory>
+
+// Create ADC instance
+auto adc = std::make_unique<EspAdc>(hf_adc_unit_config_t{.unit_id = 0});
+
+// Transfer ownership
+std::unique_ptr<EspAdc> transferred_adc = std::move(adc);
+```
+
+#### Option 2: std::shared_ptr (if shared ownership is needed)
+```cpp
+#include <memory>
+
+// Create ADC instance
+auto adc = std::make_shared<EspAdc>(hf_adc_unit_config_t{.unit_id = 0});
+
+// Share ownership
+std::shared_ptr<EspAdc> shared_adc = adc;
+```
+
+#### Option 3: Factory Pattern
+```cpp
+class AdcFactory {
+public:
+    static std::unique_ptr<EspAdc> CreateAdc(uint8_t unit_id) {
+        return std::make_unique<EspAdc>(hf_adc_unit_config_t{.unit_id = unit_id});
+    }
+};
+
+// Usage
+auto adc = AdcFactory::CreateAdc(0);
+```
+
+### Best Practices
+
+1. **Create in Same Thread**: Always create and destroy EspAdc instances in the same thread context
+2. **Use Smart Pointers**: When ownership transfer is needed, use `std::unique_ptr` or `std::shared_ptr`
+3. **Avoid Global Instances**: Don't create global EspAdc instances; use dependency injection instead
+4. **Proper Initialization**: Always call `Initialize()` before use and `Deinitialize()` when done

@@ -39,26 +39,27 @@
 #include <array>
 #include <atomic>
 
-// Forward declarations for ESP-IDF types to avoid including headers in header file
-struct adc_oneshot_unit_ctx_t;
-struct adc_continuous_ctx_t;
-struct adc_cali_scheme_t;
-struct adc_continuous_iir_filter_ctx_t;
-struct adc_monitor_ctx_t;
-
-// ESP-IDF handle type aliases
-using adc_oneshot_unit_handle_t = struct adc_oneshot_unit_ctx_t*;
-using adc_continuous_handle_t = struct adc_continuous_ctx_t*;
-using adc_cali_handle_t = struct adc_cali_scheme_t*;
-using adc_iir_filter_handle_t = struct adc_continuous_iir_filter_ctx_t*;
-using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
+// ESP-IDF includes for ADC functionality
+#include "esp_adc/adc_oneshot.h"
+#include "esp_adc/adc_continuous.h"
+#include "esp_adc/adc_cali.h"
+#include "esp_adc/adc_cali_scheme.h"
+#include "esp_adc/adc_filter.h"
+#include "esp_adc/adc_monitor.h"
+#include "driver/gpio.h"
+#include "esp_timer.h"
+#include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/semphr.h"
+#include "RtosMutex.h"
 
 //==============================================================================
 // ESP32 VARIANT-SPECIFIC ADC CONFIGURATION
 //==============================================================================
 
 // ESP32-C6 Configuration
-#ifdef HF_MCU_ESP32C6
+#if defined(HF_MCU_ESP32C6)
 #define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-C6 has 1 ADC unit (ADC1)
 #define HF_ESP32_ADC_MAX_CHANNELS 7                 ///< ESP32-C6 has 7 ADC channels (0-6)
 #define HF_ESP32_ADC_MAX_FILTERS 2                  ///< ESP32-C6 supports 2 IIR filters
@@ -71,6 +72,10 @@ using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
 
 // ESP32 Classic Configuration
 #elif defined(HF_MCU_ESP32)
@@ -87,6 +92,10 @@ using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
 
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+
 // ESP32-S2 Configuration
 #elif defined(HF_MCU_ESP32S2)
 #define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-S2 has 1 ADC unit (ADC1)
@@ -101,6 +110,10 @@ using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
 
 // ESP32-S3 Configuration
 #elif defined(HF_MCU_ESP32S3)
@@ -117,6 +130,10 @@ using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
 
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+
 // ESP32-C3 Configuration
 #elif defined(HF_MCU_ESP32C3)
 #define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-C3 has 1 ADC unit (ADC1)
@@ -131,6 +148,10 @@ using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
 
 // ESP32-C2 Configuration
 #elif defined(HF_MCU_ESP32C2)
@@ -147,6 +168,10 @@ using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
 
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+
 // ESP32-H2 Configuration
 #elif defined(HF_MCU_ESP32H2)
 #define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-H2 has 1 ADC unit (ADC1)
@@ -161,6 +186,10 @@ using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
 
 // Default fallback (should not be reached)
 #else
@@ -215,6 +244,10 @@ using adc_monitor_handle_t = struct adc_monitor_ctx_t*;
  * });
  * adc.StartContinuous();
  * @endcode
+ * 
+ * @note EspAdc instances cannot be copied or moved due to hardware resource management.
+ * @note If you need to transfer ownership, use std::unique_ptr<EspAdc> or similar smart pointers.
+ * @note Each EspAdc instance should be created and destroyed in the same thread context.
  */
 class EspAdc : public BaseAdc {
 public:
@@ -233,13 +266,15 @@ public:
    */
   ~EspAdc() noexcept override;
   
-  // Disable copy operations
+  // Disable copy and move operations
+  // Copy operations are disabled because EspAdc manages hardware resources
   EspAdc(const EspAdc&) = delete;
   EspAdc& operator=(const EspAdc&) = delete;
   
-  // Enable move operations  
-  EspAdc(EspAdc&& other) noexcept;
-  EspAdc& operator=(EspAdc&& other) noexcept;
+  // Move operations are disabled because EspAdc manages ESP-IDF handles,
+  // mutexes, and callback state that are tightly coupled to hardware
+  EspAdc(EspAdc&& other) = delete;
+  EspAdc& operator=(EspAdc&& other) = delete;
 
   //==============================================//
   // HARDWARE LIMITS (VARIANT-SPECIFIC)
@@ -258,6 +293,10 @@ public:
   static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_MIN = HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN;  ///< Minimum DMA buffer size
   static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_MAX = HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX;  ///< Maximum DMA buffer size
   static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT = HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT; ///< Default DMA buffer size
+  
+  static constexpr adc_oneshot_clk_src_t HF_ADC_ONESHOT_CLK_SRC = HF_ESP32_ADC_ONESHOT_CLK_SRC; ///< Clock source for one-shot mode
+  static constexpr adc_continuous_clk_src_t HF_ADC_CONTINUOUS_CLK_SRC = HF_ESP32_ADC_CONTINUOUS_CLK_SRC; ///< Clock source for continuous mode
+  static constexpr adc_ulp_mode_t HF_ADC_ULP_MODE = HF_ESP32_ADC_ULP_MODE; ///< ULP mode disabled by default
 
   //==============================================//
   // BASE CLASS IMPLEMENTATION (REQUIRED)
@@ -554,8 +593,8 @@ private:
   void UpdateDiagnostics(hf_adc_err_t error) noexcept;
 
   // Static callback functions for ESP-IDF
-  static bool ContinuousCallback(adc_continuous_handle_t handle, const void* edata, void* user_data) noexcept;
-  static bool MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data, void* user_data) noexcept;
+  static bool IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const void* edata, void* user_data) noexcept;
+  static bool IRAM_ATTR MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data, void* user_data) noexcept;
 
   //==============================================//
   // MEMBER VARIABLES
