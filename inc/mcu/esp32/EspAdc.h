@@ -550,13 +550,13 @@ public:
    * @brief Get ADC operation statistics
    * @return Statistics structure
    */
-  [[nodiscard]] hf_adc_statistics_t GetStatistics() const noexcept;
+  [[nodiscard]] hf_adc_statistics_t GetStatistics() const noexcept override;
 
   /**
    * @brief Get ADC diagnostic information
    * @return Diagnostics structure
    */
-  [[nodiscard]] hf_adc_diagnostics_t GetDiagnostics() const noexcept;
+  [[nodiscard]] hf_adc_diagnostics_t GetDiagnostics() const noexcept override;
 
   /**
    * @brief Reset statistics counters

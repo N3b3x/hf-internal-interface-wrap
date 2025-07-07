@@ -22,54 +22,6 @@
 #include <cstdint>
 
 //==============================================================================
-// PLATFORM-SPECIFIC INCLUDES AND BASIC TYPE DEFINITIONS
-//==============================================================================
-
-#ifdef HF_MCU_FAMILY_ESP32
-// ESP32-specific type definitions - includes already handled by McuSelect.h
-// Additional ESP-IDF includes for specific types only if needed
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// ESP32-specific includes and type definitions
-#include "driver/adc.h"
-#include "driver/gpio.h"
-#include "driver/i2c.h"
-#include "driver/i2c_master.h"
-#include "driver/spi_master.h"
-#include "driver/twai.h" // ESP-IDF v5.5+ TWAI driver
-#include "driver/uart.h"
-#include "driver/ledc.h"
-#include "esp_timer.h" // For esp_timer_handle_t
-#include "freertos/FreeRTOS.h"
-#include "freertos/queue.h" // For QueueHandle_t
-#include "freertos/semphr.h"
-
-#ifdef __cplusplus
-}
-#endif
-
-#else
-// Non-ESP32 platforms - use generic types
-// Generic RTOS handle types for non-ESP32 platforms
-using SemaphoreHandle_t = void *;
-using QueueHandle_t = void *;
-using i2c_config_t = struct {
-  int dummy;
-};
-using spi_bus_config_t = struct {
-  int dummy;
-};
-using spi_device_interface_config_t = struct {
-  int dummy;
-};
-using uart_config_t = struct {
-  int dummy;
-};
-#endif
-
-//==============================================================================
 // BASIC TYPE DEFINITIONS
 //==============================================================================
 

@@ -574,6 +574,105 @@ public:
     return received_count;
   }
 
+  //==============================================================================
+  // CAN STATISTICS AND DIAGNOSTICS TYPES (Platform-Agnostic)
+  //==============================================================================
+
+  /**
+   * @brief CAN bus statistics structure for monitoring performance and errors.
+   * @details This structure provides comprehensive runtime statistics for debugging,
+   *          monitoring, and performance analysis of CAN bus operations.
+   */
+  struct CanStatistics {
+      // Message counters
+      uint64_t messages_sent;          ///< Total messages successfully sent
+      uint64_t messages_received;      ///< Total messages successfully received
+      uint64_t bytes_transmitted;      ///< Total bytes transmitted
+      uint64_t bytes_received;         ///< Total bytes received
+      
+      // Error counters
+      uint32_t send_failures;          ///< Failed send operations
+      uint32_t receive_failures;       ///< Failed receive operations
+      uint32_t bus_error_count;        ///< Total bus errors
+      uint32_t arbitration_lost_count; ///< Arbitration lost events
+      uint32_t tx_failed_count;        ///< Transmission failures
+      uint32_t bus_off_events;         ///< Bus-off occurrences
+      uint32_t error_warning_events;   ///< Error warning events
+      
+      // Performance metrics
+      uint64_t uptime_seconds;         ///< Total uptime in seconds
+      uint32_t last_activity_timestamp;///< Last activity timestamp
+      HfCanErr last_error;             ///< Last error encountered
+      
+      // Queue statistics
+      uint32_t tx_queue_peak;          ///< Peak TX queue usage
+      uint32_t rx_queue_peak;          ///< Peak RX queue usage
+      uint32_t tx_queue_overflows;     ///< TX queue overflow count
+      uint32_t rx_queue_overflows;     ///< RX queue overflow count
+
+      CanStatistics() noexcept
+          : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
+            send_failures(0), receive_failures(0), bus_error_count(0), arbitration_lost_count(0),
+            tx_failed_count(0), bus_off_events(0), error_warning_events(0), uptime_seconds(0),
+            last_activity_timestamp(0), last_error(HfCanErr::CAN_SUCCESS), tx_queue_peak(0),
+            rx_queue_peak(0), tx_queue_overflows(0), rx_queue_overflows(0) {}
+  };
+
+  /**
+   * @brief CAN diagnostics structure for detailed error analysis.
+   * @details Provides detailed diagnostic information for troubleshooting
+   *          and monitoring CAN bus health and performance.
+   */
+  struct CanDiagnostics {
+    uint32_t tx_error_count;         ///< Transmit error counter
+    uint32_t rx_error_count;         ///< Receive error counter
+    uint32_t tx_queue_peak;          ///< Peak TX queue usage
+    uint32_t rx_queue_peak;          ///< Peak RX queue usage
+    uint32_t last_error_timestamp;   ///< Timestamp of last error
+    uint32_t controller_resets;      ///< Number of controller resets
+    uint32_t bus_load_percentage;    ///< Current bus load percentage
+    float bit_error_rate;            ///< Bit error rate (errors/bits)
+    
+    CanDiagnostics() noexcept
+        : tx_error_count(0), rx_error_count(0), tx_queue_peak(0), rx_queue_peak(0),
+          last_error_timestamp(0), controller_resets(0), bus_load_percentage(0), bit_error_rate(0.0f) {}
+  };
+
 protected:
   bool initialized_; ///< Initialization state
+
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS (Optional Override) //
+  //==============================================//
+
+  /**
+   * @brief Get CAN bus statistics.
+   * @param stats Reference to statistics structure to fill
+   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics
+   */
+  virtual HfCanErr GetStatistics(CanStatistics &stats) noexcept {
+    stats = CanStatistics{}; // Return empty statistics by default
+    return HfCanErr::CAN_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset CAN bus statistics.
+   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual HfCanErr ResetStatistics() noexcept {
+    return HfCanErr::CAN_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Get CAN bus diagnostics information.
+   * @param diagnostics Reference to diagnostics structure to fill
+   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics
+   */
+  virtual HfCanErr GetDiagnostics(CanDiagnostics &diagnostics) noexcept {
+    diagnostics = CanDiagnostics{}; // Return empty diagnostics by default
+    return HfCanErr::CAN_ERR_UNSUPPORTED_OPERATION;
+  }
 };
