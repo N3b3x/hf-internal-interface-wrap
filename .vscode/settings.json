@@ -1,5 +1,12 @@
 {
     "idf.espIdfPath": "/Users/nebex/esp/esp-idf",
     "idf.toolsPath": "/Users/nebex/.espressif",
-    "idf.pythonInstallPath": "/Users/nebex/miniconda3/bin/python3"
+    "idf.pythonInstallPath": "C:\\Users\\Owner\\.espressif\\tools\\idf-python\\3.8.7\\python.exe",
+    "files.associations": {
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "atomic": "cpp",
+        "memory": "cpp",
+        "array": "cpp"
+    }
 }

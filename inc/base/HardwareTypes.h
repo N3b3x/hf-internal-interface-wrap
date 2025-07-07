@@ -29,17 +29,17 @@
  * @details Generic pin identifier that works across different hardware platforms.
  *          Uses int32_t to handle both positive pin numbers and invalid (-1) values.
  */
-using HfPinNumber = int32_t;
+using hf_pin_num_t = int32_t;
 
 /**
  * @brief Invalid pin constant for unassigned or invalid pins.
  */
-constexpr HfPinNumber HF_INVALID_PIN = -1;
+constexpr hf_pin_num_t HF_INVALID_PIN = -1;
 
 /**
  * @brief Maximum pin number supported by the abstraction layer.
  */
-constexpr HfPinNumber HF_MAX_PIN_NUMBER = 255;
+constexpr hf_pin_num_t HF_MAX_PIN_NUMBER = 255;
 
 //==============================================================================
 // PLATFORM-AGNOSTIC PORT/CONTROLLER TYPES
@@ -50,37 +50,37 @@ constexpr HfPinNumber HF_MAX_PIN_NUMBER = 255;
  * @details Generic identifier for communication ports (I2C, SPI, UART, etc.).
  *          Uses uint32_t to accommodate various controller numbering schemes.
  */
-using HfPortNumber = uint32_t;
+using hf_port_num_t = uint32_t;
 
 /**
  * @brief Invalid port constant for unassigned or invalid ports.
  */
-constexpr HfPortNumber HF_INVALID_PORT = std::numeric_limits<HfPortNumber>::max();
+constexpr hf_port_num_t HF_INVALID_PORT = std::numeric_limits<hf_port_num_t>::max();
 
 /**
  * @brief Platform-agnostic host/controller identifier type.
  * @details Used for SPI hosts, I2C controllers, etc.
  */
-using HfHostId = uint32_t;
+using hf_host_id_t = uint32_t;
 
 /**
  * @brief Invalid host constant for unassigned or invalid hosts.
  */
-constexpr HfHostId HF_INVALID_HOST = std::numeric_limits<HfHostId>::max();
+constexpr hf_host_id_t HF_INVALID_HOST = std::numeric_limits<hf_host_id_t>::max();
 
 //==============================================================================
 // COMMUNICATION FREQUENCY TYPES
 //==============================================================================
 
 /**
- * @brief Platform-agnostic frequency type in Hz.
+ * @brief Platform-agnostic frequency type.
  */
-using HfFrequencyHz = uint32_t;
+using hf_frequency_t = uint32_t;
 
 /**
  * @brief Platform-agnostic baud rate type.
  */
-using HfBaudRate = uint32_t;
+using hf_baud_rate_t = uint32_t;
 
 //==============================================================================
 // CHANNEL AND TIMING TYPES
@@ -90,22 +90,17 @@ using HfBaudRate = uint32_t;
  * @brief Platform-agnostic channel identifier type.
  * @details Used for ADC channels, PWM channels, etc.
  */
-using HfChannelId = uint32_t;
+using hf_channel_id_t = uint32_t;
 
 /**
  * @brief Invalid channel constant for unassigned or invalid channels.
  */
-constexpr HfChannelId HF_INVALID_CHANNEL = std::numeric_limits<HfChannelId>::max();
+constexpr hf_channel_id_t HF_INVALID_CHANNEL = std::numeric_limits<hf_channel_id_t>::max();
 
 /**
- * @brief Platform-agnostic timeout type in milliseconds.
+ * @brief Platform-agnostic time type in milliseconds.
  */
-using HfTimeoutMs = uint32_t;
-
-/**
- * @brief Platform-agnostic timestamp type in microseconds.
- */
-using HfTimestampUs = uint32_t;
+using hf_time_t = uint32_t;
 
 //==============================================================================
 // TIMEOUT CONSTANTS
@@ -114,17 +109,17 @@ using HfTimestampUs = uint32_t;
 /**
  * @brief Default timeout value in milliseconds.
  */
-constexpr HfTimeoutMs HF_TIMEOUT_DEFAULT = 1000;
+constexpr hf_time_t HF_TIMEOUT_DEFAULT_MS = 1000;
 
 /**
  * @brief No timeout (wait indefinitely).
  */
-constexpr HfTimeoutMs HF_TIMEOUT_NONE = 0;
+constexpr hf_time_t HF_TIMEOUT_NONE = 0;
 
 /**
  * @brief Maximum timeout value.
  */
-constexpr HfTimeoutMs HF_TIMEOUT_MAX = std::numeric_limits<HfTimeoutMs>::max();
+constexpr hf_time_t HF_TIMEOUT_MAX = std::numeric_limits<hf_time_t>::max();
 
 //==============================================================================
 // VALIDATION FUNCTIONS
@@ -135,7 +130,7 @@ constexpr HfTimeoutMs HF_TIMEOUT_MAX = std::numeric_limits<HfTimeoutMs>::max();
  * @param pin Pin number to validate
  * @return true if valid, false otherwise
  */
-constexpr bool IsValidPin(HfPinNumber pin) noexcept {
+constexpr bool IsValidPin(hf_pin_num_t pin) noexcept {
   return pin >= 0 && pin <= HF_MAX_PIN_NUMBER;
 }
 
@@ -144,7 +139,7 @@ constexpr bool IsValidPin(HfPinNumber pin) noexcept {
  * @param port Port number to validate
  * @return true if valid, false otherwise
  */
-constexpr bool IsValidPort(HfPortNumber port) noexcept {
+constexpr bool IsValidPort(hf_port_num_t port) noexcept {
   return port != HF_INVALID_PORT;
 }
 
@@ -153,7 +148,7 @@ constexpr bool IsValidPort(HfPortNumber port) noexcept {
  * @param host Host ID to validate
  * @return true if valid, false otherwise
  */
-constexpr bool IsValidHost(HfHostId host) noexcept {
+constexpr bool IsValidHost(hf_host_id_t host) noexcept {
   return host != HF_INVALID_HOST;
 }
 
@@ -162,6 +157,6 @@ constexpr bool IsValidHost(HfHostId host) noexcept {
  * @param channel Channel ID to validate
  * @return true if valid, false otherwise
  */
-constexpr bool IsValidChannel(HfChannelId channel) noexcept {
+constexpr bool IsValidChannel(hf_channel_id_t channel) noexcept {
   return channel != HF_INVALID_CHANNEL;
 }

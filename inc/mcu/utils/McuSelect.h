@@ -14,7 +14,7 @@
 
 #pragma once
 
-//==============================================;================================
+//==============================================================================
 // USAGE INSTRUCTIONS - HOW TO SELECT YOUR MCU
 //==============================================================================
 /*
@@ -38,6 +38,11 @@
 
 #define HF_TARGET_MCU_ESP32C6 // ESP32-C6 RISC-V MCU (Primary target)
 // #define HF_TARGET_MCU_ESP32       // ESP32 Classic Xtensa MCU
+// #define HF_TARGET_MCU_ESP32S2     // ESP32-S2 Xtensa LX7 MCU
+// #define HF_TARGET_MCU_ESP32S3     // ESP32-S3 Xtensa LX7 MCU
+// #define HF_TARGET_MCU_ESP32C3     // ESP32-C3 RISC-V MCU
+// #define HF_TARGET_MCU_ESP32C2     // ESP32-C2 RISC-V MCU
+// #define HF_TARGET_MCU_ESP32H2     // ESP32-H2 RISC-V MCU
 // #define HF_TARGET_MCU_STM32F4     // STM32F4 series ARM Cortex-M4
 // #define HF_TARGET_MCU_STM32H7     // STM32H7 series ARM Cortex-M7
 
@@ -88,6 +93,46 @@ extern "C" {
 #define HF_MCU_NAME "ESP32"
 #define HF_MCU_ARCHITECTURE "Xtensa LX6"
 #define HF_MCU_VARIANT_CLASSIC
+
+// ESP32-S2 Configuration
+#elif defined(HF_TARGET_MCU_ESP32S2)
+#define HF_MCU_ESP32S2
+#define HF_MCU_FAMILY_ESP32
+#define HF_MCU_NAME "ESP32-S2"
+#define HF_MCU_ARCHITECTURE "Xtensa LX7"
+#define HF_MCU_VARIANT_S2
+
+// ESP32-S3 Configuration
+#elif defined(HF_TARGET_MCU_ESP32S3)
+#define HF_MCU_ESP32S3
+#define HF_MCU_FAMILY_ESP32
+#define HF_MCU_NAME "ESP32-S3"
+#define HF_MCU_ARCHITECTURE "Xtensa LX7"
+#define HF_MCU_VARIANT_S3
+
+// ESP32-C3 Configuration
+#elif defined(HF_TARGET_MCU_ESP32C3)
+#define HF_MCU_ESP32C3
+#define HF_MCU_FAMILY_ESP32
+#define HF_MCU_NAME "ESP32-C3"
+#define HF_MCU_ARCHITECTURE "RISC-V RV32IMC"
+#define HF_MCU_VARIANT_C3
+
+// ESP32-C2 Configuration
+#elif defined(HF_TARGET_MCU_ESP32C2)
+#define HF_MCU_ESP32C2
+#define HF_MCU_FAMILY_ESP32
+#define HF_MCU_NAME "ESP32-C2"
+#define HF_MCU_ARCHITECTURE "RISC-V RV32IMC"
+#define HF_MCU_VARIANT_C2
+
+// ESP32-H2 Configuration
+#elif defined(HF_TARGET_MCU_ESP32H2)
+#define HF_MCU_ESP32H2
+#define HF_MCU_FAMILY_ESP32
+#define HF_MCU_NAME "ESP32-H2"
+#define HF_MCU_ARCHITECTURE "RISC-V RV32IMC"
+#define HF_MCU_VARIANT_H2
 
 // ESP32 Classic specific includes
 #ifdef __cplusplus
@@ -145,8 +190,10 @@ extern "C" {
 // Count the number of selected target MCUs
 #define HF_TARGET_COUNT                                                                            \
   (defined(HF_TARGET_MCU_ESP32C6) + defined(HF_TARGET_MCU_ESP32) +                                 \
-   defined(HF_TARGET_MCU_STM32F4) + defined(HF_TARGET_MCU_STM32H7) +                               \
-   defined(HF_TARGET_MCU_RP2040))
+   defined(HF_TARGET_MCU_ESP32S2) + defined(HF_TARGET_MCU_ESP32S3) +                               \
+   defined(HF_TARGET_MCU_ESP32C3) + defined(HF_TARGET_MCU_ESP32C2) +                               \
+   defined(HF_TARGET_MCU_ESP32H2) + defined(HF_TARGET_MCU_STM32F4) +                               \
+   defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040))
 
 #if HF_TARGET_COUNT > 1
 #error                                                                                             \

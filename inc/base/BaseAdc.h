@@ -4,18 +4,16 @@
  *
  * This file contains the declaration of the BaseAdc abstract class, which provides
  * a common interface and comprehensive features for all ADC implementations.
- * The class supports multi-channel conversions, calibration management, continuous
- * sampling modes, threshold monitoring, and advanced ESP32C6-specific features.
- * ADC derived classes employ lazy initialization - they are initialized the first
- * time a channel operation is performed.
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
- *
- * @note These functions are not thread or interrupt-safe and should be called
- *       with appropriate synchronization guards if used within an ISR or shared tasks.
- * @note This is a header-only abstract base class following the same pattern as BaseCan.
+ * 
+ * @note This class defines the unified ADC API that all ADC controller implementations
+ * must provide. It ensures a consistent API across different platforms and ADC
+ * controller types, making the system extensible and maintainable.
+ * 
+ * @note This is a header-only abstract base class.
  */
 
 #pragma once
@@ -99,23 +97,31 @@
   X(ADC_ERR_INVALID_STATE, 47, "Invalid state")                                                    \
   X(ADC_ERR_DRIVER_ERROR, 48, "Driver error")                                                      \
   X(ADC_ERR_DMA_ERROR, 49, "DMA error")                                                            \
-  X(ADC_ERR_FILTER_ERROR, 50, "Filter configuration error")
+  X(ADC_ERR_FILTER_ERROR, 50, "Filter configuration error")                                        \
+  X(ADC_ERR_NO_CALLBACK, 51, "No callback provided")                                               \
+  X(ADC_ERR_NOT_STARTED, 52, "Operation not started")                                              \
+  X(ADC_ERR_CALIBRATION, 53, "Calibration error")                                                  \
+  X(ADC_ERR_BUSY, 54, "Resource busy")                                                             \
+  X(ADC_ERR_HARDWARE_FAILURE, 55, "Hardware failure")                                              \
+  X(ADC_ERR_INVALID_PARAM, 56, "Invalid parameter")                                                \
+  X(ADC_ERR_CHANNEL_DISABLED, 57, "Channel disabled")                                              \
+  X(ADC_ERR_TIMEOUT, 58, "Operation timeout")
 
-enum class HfAdcErr : uint8_t {
+enum class hf_adc_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_ADC_ERR_LIST(X)
 #undef X
 };
 
 /**
- * @brief Convert HfAdcErr to human-readable string
+ * @brief Convert hf_adc_err_t to human-readable string
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view HfAdcErrToString(HfAdcErr err) noexcept {
+constexpr std::string_view HfAdcErrToString(hf_adc_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
-  case HfAdcErr::NAME:                                                                             \
+  case hf_adc_err_t::NAME:                                                                         \
     return DESC;
     HF_ADC_ERR_LIST(X)
 #undef X
@@ -137,6 +143,11 @@ constexpr std::string_view HfAdcErrToString(HfAdcErr err) noexcept {
  */
 class BaseAdc {
 public:
+
+  //==============================================//
+  // CONSTRUCTION
+  //==============================================//
+
   /**
    * @brief Constructor
    */
@@ -154,6 +165,10 @@ public:
   // Allow move operations
   BaseAdc(BaseAdc &&) noexcept = default;
   BaseAdc &operator=(BaseAdc &&) noexcept = default;
+
+  //==============================================//
+  // LAZY-INITIALIZATION
+  //==============================================//
 
   /**
    * @brief Ensures that the ADC is initialized (lazy initialization).
@@ -186,7 +201,7 @@ public:
   }
 
   //==============================================//
-  // PURE VIRTUAL FUNCTIONS - MUST BE OVERRIDDEN  //
+  // PURE VIRTUAL FUNCTIONS [MUST BE OVERRIDDEN]  //
   //==============================================//
 
   /**
@@ -212,7 +227,7 @@ public:
    * @param channel_id Channel ID to check
    * @return true if channel is available, false otherwise
    */
-  [[nodiscard]] virtual bool IsChannelAvailable(HfChannelId channel_id) const noexcept = 0;
+  [[nodiscard]] virtual bool IsChannelAvailable(hf_channel_id_t channel_id) const noexcept = 0;
 
   /**
    * @brief Read channel voltage.
@@ -220,11 +235,12 @@ public:
    * @param channel_reading_v Reference to store voltage reading
    * @param numOfSamplesToAvg Number of samples to average (default 1)
    * @param timeBetweenSamples Time between samples in milliseconds (default 0)
-   * @return HfAdcErr error code
+   * @return hf_adc_err_t error code
    */
-  virtual HfAdcErr ReadChannelV(HfChannelId channel_id, float &channel_reading_v,
-                                uint8_t numOfSamplesToAvg = 1,
-                                HfTimeoutMs timeBetweenSamples = 0) noexcept = 0;
+  virtual hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id, 
+                                      float &channel_reading_v,
+                                      uint8_t numOfSamplesToAvg = 1,
+                                      hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
   /**
    * @brief Read channel count (raw ADC value).
@@ -232,11 +248,12 @@ public:
    * @param channel_reading_count Reference to store count reading
    * @param numOfSamplesToAvg Number of samples to average (default 1)
    * @param timeBetweenSamples Time between samples in milliseconds (default 0)
-   * @return HfAdcErr error code
+   * @return hf_adc_err_t error code
    */
-  virtual HfAdcErr ReadChannelCount(HfChannelId channel_id, uint32_t &channel_reading_count,
-                                    uint8_t numOfSamplesToAvg = 1,
-                                    HfTimeoutMs timeBetweenSamples = 0) noexcept = 0;
+  virtual hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id, 
+                                          uint32_t &channel_reading_count,
+                                          uint8_t numOfSamplesToAvg = 1,
+                                          hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
   /**
    * @brief Read both channel count and voltage.
@@ -245,202 +262,53 @@ public:
    * @param channel_reading_v Reference to store voltage reading
    * @param numOfSamplesToAvg Number of samples to average (default 1)
    * @param timeBetweenSamples Time between samples in milliseconds (default 0)
-   * @return HfAdcErr error code
+   * @return hf_adc_err_t error code
    */
-  virtual HfAdcErr ReadChannel(HfChannelId channel_id, uint32_t &channel_reading_count,
+  virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, uint32_t &channel_reading_count,
                                float &channel_reading_v, uint8_t numOfSamplesToAvg = 1,
-                               HfTimeoutMs timeBetweenSamples = 0) noexcept = 0;
-
+                               hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
   //==============================================//
-  // ADVANCED FEATURES (OPTIONAL IMPLEMENTATIONS) //
+  // (OPTIONAL IMPLEMENTATIONS)                   //
   //==============================================//
 
-  /**
-   * @brief ADC callback for continuous/DMA operations
-   * @param channel_id Channel that completed conversion
-   * @param samples Pointer to sample data
-   * @param num_samples Number of samples in buffer
-   * @param user_data User-provided data
-   */
-  using AdcCallback = std::function<void(HfChannelId channel_id, const uint16_t *samples,
-                                          size_t num_samples, void *user_data)>;
-                                          
   /**
    * @brief Read multiple channels simultaneously
    * @param channel_ids Array of channel IDs
    * @param num_channels Number of channels
    * @param readings Array to store raw readings
    * @param voltages Array to store voltage readings
-   * @return HfAdcErr error code
+   * @return hf_adc_err_t error code
    * @note Default implementation reads channels sequentially
    */
-  virtual HfAdcErr ReadMultipleChannels(const HfChannelId *channel_ids, uint8_t num_channels,
+  virtual hf_adc_err_t ReadMultipleChannels(const hf_channel_id_t *channel_ids, uint8_t num_channels,
                                         uint32_t *readings, float *voltages) noexcept {
     if (!channel_ids || !readings || !voltages) {
-      return HfAdcErr::ADC_ERR_NULL_POINTER;
+      return hf_adc_err_t::ADC_ERR_NULL_POINTER;
     }
 
     for (uint8_t i = 0; i < num_channels; ++i) {
-      HfAdcErr err = ReadChannel(channel_ids[i], readings[i], voltages[i]);
-      if (err != HfAdcErr::ADC_SUCCESS) {
+      hf_adc_err_t err = ReadChannel(channel_ids[i], readings[i], voltages[i]);
+      if (err != hf_adc_err_t::ADC_SUCCESS) {
         return err;
       }
     }
-    return HfAdcErr::ADC_SUCCESS;
-  }
-
-  /**
-   * @brief Start continuous/DMA sampling with callback
-   * @param channel_id Channel to sample
-   * @param callback Callback for sample data
-   * @param user_data User data for callback
-   * @return HfAdcErr error code
-   * @note Default implementation returns unsupported operation
-   */
-  virtual HfAdcErr StartContinuousSampling(HfChannelId channel_id, AdcCallback callback,
-                                           void *user_data = nullptr) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
-   * @brief Stop continuous/DMA sampling
-   * @param channel_id Channel to stop
-   * @return HfAdcErr error code
-   * @note Default implementation returns unsupported operation
-   */
-  virtual HfAdcErr StopContinuousSampling(HfChannelId channel_id) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
+    return hf_adc_err_t::ADC_SUCCESS;
   }
 
   //==============================================//
-  // CALIBRATION SUPPORT                          //
   //==============================================//
-
-  /**
-   * @brief Calibration progress callback for long operations
-   * @param channel_id Channel being calibrated
-   * @param progress_percent Progress percentage (0-100)
-   * @param current_step Description of current calibration step
-   * @param user_data User-provided data
-   */
-  using CalibrationProgressCallback = std::function<void(
-      HfChannelId channel_id, float progress_percent, const char *current_step, void *user_data)>;
-
-  /**
-   * @brief Perform ADC calibration for a specific channel
-   * @param channel_id Channel to calibrate
-   * @param config Calibration configuration
-   * @param progress_callback Optional progress callback for long operations
-   * @param user_data User data for progress callback
-   * @return HfAdcErr error code
-   * @note Default implementation returns unsupported operation
-   */
-  virtual HfAdcErr CalibrateChannel(HfChannelId channel_id,
-                                    CalibrationProgressCallback progress_callback = nullptr,
-                                    void *user_data = nullptr) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
-   * @brief Perform automatic calibration using known reference voltages
-   * @param channel_id Channel to calibrate
-   * @param reference_voltages Array of known reference voltages
-   * @param num_references Number of reference voltages
-   * @param calibration_type Type of calibration to perform
-   * @return HfAdcErr error code
-   * @note Implementation should prompt user to apply each reference voltage
-   */
-  virtual HfAdcErr AutoCalibrate(HfChannelId channel_id,
-                                  const float *reference_voltages,
-                                  uint8_t num_references) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
-   * @brief Save calibration data to non-volatile storage
-   * @param channel_id Channel calibration to save
-   * @return HfAdcErr error code
-   */
-  virtual HfAdcErr SaveCalibration(HfChannelId channel_id) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
-   * @brief Load calibration data from non-volatile storage
-   * @param channel_id Channel calibration to load
-   * @return HfAdcErr error code
-   */
-  virtual HfAdcErr LoadCalibration(HfChannelId channel_id) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
-   * @brief Clear/reset calibration for a channel
-   * @param channel_id Channel to reset
-   * @return HfAdcErr error code
-   */
-  virtual HfAdcErr ClearCalibration(HfChannelId channel_id) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
-   * @brief Verify calibration accuracy using known reference
-   * @param channel_id Channel to verify
-   * @param reference_voltage Known reference voltage to test
-   * @param measured_voltage Output: voltage measured by ADC
-   * @param error_percent Output: percentage error from reference
-   * @return HfAdcErr error code
-   */
-  virtual HfAdcErr VerifyCalibration(HfChannelId channel_id, float reference_voltage,
-                                     float &measured_voltage, float &error_percent) noexcept {
-    return HfAdcErr::ADC_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
-   * @brief Apply temperature compensation to a reading
-   * @param raw_reading Raw ADC reading
-   * @param current_temp_c Current temperature in Celsius
-   * @param calibration_temp_c Temperature when calibration was performed
-   * @param temp_coefficient Temperature coefficient (ppm/°C)
-   * @return Temperature-compensated reading
-   */
-  static uint32_t ApplyTemperatureCompensation(uint32_t raw_reading, float current_temp_c,
-                                               float calibration_temp_c,
-                                               float temp_coefficient) noexcept {
-    float temp_delta = current_temp_c - calibration_temp_c;
-    float compensation_factor = 1.0f + (temp_coefficient * temp_delta / 1000000.0f);
-    return static_cast<uint32_t>(raw_reading * compensation_factor);
-  }
 
 protected:
-  /**
-   * @brief Validate input parameters for read operations.
-   * @param channel_id Channel ID to validate
-   * @param numOfSamplesToAvg Number of samples to validate
-   * @return HfAdcErr validation result
-   */
-  [[nodiscard]] HfAdcErr ValidateReadParameters(HfChannelId channel_id,
-                                                uint8_t numOfSamplesToAvg) const noexcept {
-    if (!initialized_) {
-      return HfAdcErr::ADC_ERR_NOT_INITIALIZED;
-    }
 
-    if (numOfSamplesToAvg == 0 || numOfSamplesToAvg > 255) {
-      return HfAdcErr::ADC_ERR_INVALID_SAMPLE_COUNT;
-    }
-
-    if (channel_id >= GetMaxChannels()) {
-      return HfAdcErr::ADC_ERR_INVALID_CHANNEL;
-    }
-
-    if (!IsChannelAvailable(channel_id)) {
-      return HfAdcErr::ADC_ERR_CHANNEL_NOT_FOUND;
-    }
-
-    return HfAdcErr::ADC_SUCCESS;
-  }
+  //==============================================//
+  //==============================================//
 
 private:
+
+  //==============================================//
+  // VARIABLES                                    //
+  //==============================================//
+
   bool initialized_; ///< Initialization status
 };
