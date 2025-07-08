@@ -19,29 +19,8 @@
 
 #include "RtosMutex.h"
 #include "BaseUart.h"
-#include "McuTypes.h"
+#include "EspTypes_UART.h"
 #include <cstdarg>
-
-// Type aliases to centralized types in McuTypes.h (following naming convention)
-using hf_uart_port_alias_t = hf_uart_port_native_t;
-using hf_uart_config_alias_t = hf_uart_config_native_t;
-using hf_uart_word_length_alias_t = hf_uart_word_length_native_t;
-using hf_uart_parity_alias_t = hf_uart_parity_native_t;
-using hf_uart_stop_bits_alias_t = hf_uart_stop_bits_native_t;
-using hf_uart_flow_control_alias_t = hf_uart_hw_flowcontrol_native_t;
-using hf_uart_signal_inv_alias_t = hf_uart_signal_inv_native_t;
-using hf_uart_data_bits_alias_t = hf_uart_data_bits_t;
-using hf_uart_parity_type_alias_t = hf_uart_parity_t;
-using hf_uart_stop_bits_type_alias_t = hf_uart_stop_bits_t;
-using hf_uart_flow_ctrl_type_alias_t = hf_uart_flow_ctrl_t;
-using hf_uart_statistics_alias_t = hf_uart_statistics_t;
-using hf_uart_flow_config_alias_t = hf_uart_flow_config_t;
-using hf_uart_power_config_alias_t = hf_uart_power_config_t;
-using hf_uart_mode_alias_t = hf_uart_mode_t;
-using hf_uart_pattern_config_alias_t = hf_uart_pattern_config_t;
-using hf_uart_rs485_config_alias_t = hf_uart_rs485_config_t;
-using hf_uart_irda_config_alias_t = hf_uart_irda_config_t;
-using hf_uart_wakeup_config_alias_t = hf_uart_wakeup_config_t;
 
 /**
  * @class EspUart
@@ -71,7 +50,7 @@ public:
    * @param port Platform-agnostic UART port number
    * @param config UART configuration parameters
    */
-  EspUart(HfPortNumber port, const hf_uart_config_t &config) noexcept;
+  EspUart(hf_port_number_t port, const hf_uart_config_t &config) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup.
@@ -251,20 +230,20 @@ public:
    * @param mode UART communication mode
    * @return true if successful, false otherwise
    */
-  bool SetCommunicationMode(hf_uart_mode_alias_t mode) noexcept;
+  bool SetCommunicationMode(hf_uart_mode_t mode) noexcept;
 
   /**
    * @brief Get current UART communication mode.
    * @return Current communication mode
    */
-  hf_uart_mode_alias_t GetCommunicationMode() const noexcept;
+  hf_uart_mode_t GetCommunicationMode() const noexcept;
 
   /**
    * @brief Configure RS485 mode settings.
    * @param rs485_config RS485 configuration parameters
    * @return true if successful, false otherwise
    */
-  bool ConfigureRS485(const hf_uart_rs485_config_alias_t &rs485_config) noexcept;
+  bool ConfigureRS485(const hf_uart_rs485_config_t &rs485_config) noexcept;
 
   /**
    * @brief Check if RS485 collision was detected.
@@ -277,14 +256,14 @@ public:
    * @param irda_config IrDA configuration parameters
    * @return true if successful, false otherwise
    */
-  bool ConfigureIrDA(const hf_uart_irda_config_alias_t &irda_config) noexcept;
+  bool ConfigureIrDA(const hf_uart_irda_config_t &irda_config) noexcept;
 
   /**
    * @brief Enable/configure pattern detection for AT commands.
    * @param pattern_config Pattern detection configuration
    * @return true if successful, false otherwise
    */
-  bool ConfigurePatternDetection(const hf_uart_pattern_config_alias_t &pattern_config) noexcept;
+  bool ConfigurePatternDetection(const hf_uart_pattern_config_t &pattern_config) noexcept;
 
   /**
    * @brief Disable pattern detection.
@@ -314,14 +293,14 @@ public:
    * @param wakeup_config Wakeup configuration parameters
    * @return true if successful, false otherwise
    */
-  bool ConfigureWakeup(const hf_uart_wakeup_config_alias_t &wakeup_config) noexcept;
+  bool ConfigureWakeup(const hf_uart_wakeup_config_t &wakeup_config) noexcept;
 
   /**
    * @brief Configure UART power management settings.
    * @param power_config Power management configuration
    * @return true if successful, false otherwise
    */
-  bool ConfigurePowerManagement(const hf_uart_power_config_alias_t &power_config) noexcept;
+  bool ConfigurePowerManagement(const hf_uart_power_config_t &power_config) noexcept;
 
   /**
    * @brief Configure RX FIFO full threshold for interrupt generation.
@@ -370,7 +349,7 @@ public:
    * @brief Get comprehensive UART statistics.
    * @return UART statistics structure
    */
-  hf_uart_statistics_alias_t GetStatistics() const noexcept;
+  hf_uart_statistics_t GetStatistics() const noexcept;
 
 private:
   //==============================================//
@@ -437,7 +416,7 @@ private:
    * @return true if valid, false otherwise
    */
   bool IsValidParity(uint8_t parity) const noexcept {
-    return (parity <= 2); // 0=None, 1=Even, 2=Odd
+    return (parity >= 0 && parity <= 2);
   }
 
   /**
@@ -449,49 +428,33 @@ private:
     return (stop_bits >= 1 && stop_bits <= 2);
   }
 
-
   /**
-   * @brief Internal printf implementation with buffer management.
+   * @brief Internal printf implementation.
    * @param format Format string
-   * @param args Variable arguments list
+   * @param args Variable argument list
    * @return Number of characters written, or -1 on error
    */
   int InternalPrintf(const char *format, va_list args) noexcept;
 
   /**
-   * @brief Ensure UART is initialized, initialize if needed.
-   * @return true if initialized, false on error
+   * @brief Ensure UART is initialized.
+   * @return true if initialized, false otherwise
    */
   bool EnsureInitialized() noexcept {
-    return initialized_ || Initialize();
+    if (!initialized_) {
+      initialized_ = Initialize();
+    }
+    return initialized_;
   }
 
   //==============================================//
   // PRIVATE MEMBERS                              //
   //==============================================//
 
-  mutable RtosMutex mutex_;          ///< Thread safety mutex
-  hf_uart_handle_t platform_handle_; ///< Platform-specific UART handle
-  hf_uart_err_t last_error_;             ///< Last error that occurred
-  uint32_t bytes_transmitted_;       ///< Total bytes transmitted
-  uint32_t bytes_received_;          ///< Total bytes received
-  bool break_detected_;              ///< Break condition flag
-  bool tx_in_progress_;              ///< Transmission in progress flag
-
-  // Advanced configuration members
-  hf_uart_mode_alias_t current_mode_;            ///< Current UART communication mode
-  hf_uart_rs485_config_alias_t rs485_config_;     ///< RS485 configuration
-  hf_uart_irda_config_alias_t irda_config_;       ///< IrDA configuration
-  hf_uart_pattern_config_alias_t pattern_config_; ///< Pattern detection configuration
-  hf_uart_wakeup_config_alias_t wakeup_config_;   ///< Wakeup configuration
-  hf_uart_power_config_alias_t power_config_;     ///< Power management configuration
-  hf_uart_flow_config_alias_t flow_config_;       ///< Flow control configuration
-  hf_uart_statistics_alias_t statistics_;        ///< Communication statistics
-  bool pattern_detection_enabled_;   ///< Pattern detection status
-  bool software_flow_enabled_;       ///< Software flow control status
-  bool wakeup_enabled_;              ///< Wakeup functionality status
-
-  // Printf buffer management
-  static constexpr uint16_t PRINTF_BUFFER_SIZE = 256; ///< Printf buffer size
-  char printf_buffer_[PRINTF_BUFFER_SIZE];            ///< Printf formatting buffer
+  hf_uart_port_native_t uart_port_;           ///< Platform-specific UART port
+  hf_uart_config_native_t uart_config_;       ///< Platform-specific UART configuration
+  std::atomic<bool> initialized_{false};      ///< Initialization status
+  std::atomic<hf_uart_err_t> last_error_{hf_uart_err_t::UART_SUCCESS}; ///< Last error code
+  mutable RtosMutex mutex_;                   ///< Thread safety mutex
+  hf_uart_statistics_t statistics_;           ///< UART statistics
 };

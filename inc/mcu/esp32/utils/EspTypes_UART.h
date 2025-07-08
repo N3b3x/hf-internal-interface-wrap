@@ -1,5 +1,5 @@
 /**
- * @file McuTypes_UART.h
+ * @file EspTypes_UART.h
  * @brief MCU-specific UART type definitions for hardware abstraction.
  *
  * This header defines all UART-specific types and constants that are used
@@ -14,7 +14,7 @@
 
 #include "HardwareTypes.h" // For basic hardware types
 #include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
-#include "McuTypes_Base.h"
+#include "EspTypes_Base.h"
 #include "BaseUart.h" // For hf_uart_err_t
 
 //==============================================================================
@@ -198,16 +198,19 @@ struct hf_uart_rs485_config_t {
   bool enable_collision_detect;   ///< Enable collision detection
   bool enable_echo_suppression;   ///< Suppress echo during transmission
   bool auto_rts_control;          ///< Automatic RTS line control
-  uint16_t rts_delay_microsec;    ///< RTS assertion delay (microseconds)
+  uint32_t rts_delay_ms;          ///< RTS delay in milliseconds
+  uint32_t rts_timeout_ms;        ///< RTS timeout in milliseconds
+  uint32_t collision_timeout_ms;  ///< Collision detection timeout
 
   hf_uart_rs485_config_t() noexcept
-      : mode(hf_uart_mode_t::HF_UART_MODE_UART), enable_collision_detect(false),
-        enable_echo_suppression(true), auto_rts_control(true), rts_delay_microsec(0) {}
+      : mode(hf_uart_mode_t::HF_UART_MODE_RS485_HALF_DUPLEX), enable_collision_detect(false),
+        enable_echo_suppression(true), auto_rts_control(true), rts_delay_ms(0),
+        rts_timeout_ms(100), collision_timeout_ms(100) {}
 };
 
 /**
  * @brief MCU-specific UART IrDA configuration.
- * @details Infrared Data Association protocol settings.
+ * @details IrDA infrared communication settings.
  */
 struct hf_uart_irda_config_t {
   bool enable_irda;               ///< Enable IrDA mode
@@ -221,7 +224,7 @@ struct hf_uart_irda_config_t {
 
 /**
  * @brief MCU-specific UART wakeup configuration.
- * @details Sleep wakeup settings for low power applications.
+ * @details Wakeup settings for light sleep mode.
  */
 struct hf_uart_wakeup_config_t {
   bool enable_wakeup;             ///< Enable UART wakeup from light sleep
@@ -233,10 +236,10 @@ struct hf_uart_wakeup_config_t {
 };
 
 //==============================================================================
-// MCU-SPECIFIC UART CONSTANTS
+// UART CONSTANTS AND LIMITS
 //==============================================================================
 
-static constexpr hf_gpio_num_t HF_UART_IO_UNUSED = HF_INVALID_PIN;
+static constexpr hf_pin_num_t HF_UART_IO_UNUSED = HF_INVALID_PIN;
 static constexpr uint32_t HF_UART_MAX_PORTS = 3;          ///< ESP32C6 has 3 UART ports (0, 1, 2)
 static constexpr uint32_t HF_UART_DEFAULT_BUFFER_SIZE = 256; ///< Default buffer size (bytes)
 static constexpr uint32_t HF_UART_MIN_BAUD_RATE = 1200;   ///< Minimum supported baud rate
@@ -245,93 +248,40 @@ static constexpr uint32_t HF_UART_BREAK_MIN_DURATION = 1;  ///< Minimum break du
 static constexpr uint32_t HF_UART_BREAK_MAX_DURATION = 1000; ///< Maximum break duration (ms)
 
 //==============================================================================
-// UART FUNCTION MACROS
+// UART VALIDATION MACROS
 //==============================================================================
 
 /**
- * @brief MCU-specific UART driver function pointers for ESP-IDF abstraction.
- * @details Function-like macros that map to actual ESP-IDF UART functions.
+ * @brief Validate UART port number.
  */
-#ifdef HF_MCU_FAMILY_ESP32
-// ESP-IDF UART driver function mappings (will be resolved at compile time)
-#define HF_UART_DRIVER_INSTALL(port, tx_size, rx_size, queue_size, queue, intr_flags) \
-  uart_driver_install(port, tx_size, rx_size, queue_size, queue, intr_flags)
-#define HF_UART_DRIVER_DELETE(port) uart_driver_delete(port)
-#define HF_UART_PARAM_CONFIG(port, config) uart_param_config(port, config)
-#define HF_UART_SET_PIN(port, tx_pin, rx_pin, rts_pin, cts_pin) \
-  uart_set_pin(port, tx_pin, rx_pin, rts_pin, cts_pin)
-#define HF_UART_WRITE_BYTES(port, data, length) uart_write_bytes(port, data, length)
-#define HF_UART_READ_BYTES(port, data, length, timeout) uart_read_bytes(port, data, length, timeout)
-#define HF_UART_FLUSH(port) uart_flush(port)
-#define HF_UART_FLUSH_INPUT(port) uart_flush_input(port)
-#define HF_UART_GET_BUFFERED_DATA_LEN(port, length) uart_get_buffered_data_len(port, length)
-#define HF_UART_WAIT_TX_DONE(port, timeout) uart_wait_tx_done(port, timeout)
-#define HF_UART_SET_BAUDRATE(port, baudrate) uart_set_baudrate(port, baudrate)
-#define HF_UART_SET_WORD_LENGTH(port, data_bits) uart_set_word_length(port, data_bits)
-#define HF_UART_SET_PARITY(port, parity) uart_set_parity(port, parity)
-#define HF_UART_SET_STOP_BITS(port, stop_bits) uart_set_stop_bits(port, stop_bits)
-#define HF_UART_SET_HW_FLOW_CTRL(port, flow_ctrl, thresh) uart_set_hw_flow_ctrl(port, flow_ctrl, thresh)
-#define HF_UART_SET_RTS(port, level) uart_set_rts(port, level)
-#define HF_UART_GET_CTS(port, cts) uart_get_cts(port, cts)
-#define HF_UART_SET_LINE_INVERSE(port, inverse_mask) uart_set_line_inverse(port, inverse_mask)
-#define HF_UART_SET_MODE(port, mode) uart_set_mode(port, mode)
-#define HF_UART_SET_SW_FLOW_CTRL(port, enable, xon_thresh, xoff_thresh) \
-  uart_set_sw_flow_ctrl(port, enable, xon_thresh, xoff_thresh)
-#define HF_UART_ENABLE_PATTERN_DET(port, pattern_chr, chr_num, chr_tout, post_idle, pre_idle) \
-  uart_enable_pattern_det_baud_intr(port, pattern_chr, chr_num, chr_tout, post_idle, pre_idle)
-#define HF_UART_DISABLE_PATTERN_DET(port) uart_disable_pattern_det_intr(port)
-#define HF_UART_PATTERN_POP_POS(port) uart_pattern_pop_pos(port)
-#define HF_UART_PATTERN_GET_POS(port) uart_pattern_get_pos(port)
-#define HF_UART_PATTERN_QUEUE_RESET(port, queue_length) uart_pattern_queue_reset(port, queue_length)
-#define HF_UART_SET_WAKEUP_THRESHOLD(port, threshold) uart_set_wakeup_threshold(port, threshold)
-#define HF_UART_GET_WAKEUP_THRESHOLD(port, threshold) uart_get_wakeup_threshold(port, threshold)
-#define HF_UART_GET_COLLISION_FLAG(port, flag) uart_get_collision_flag(port, flag)
-#define HF_UART_SET_RX_FULL_THRESHOLD(port, threshold) uart_set_rx_full_threshold(port, threshold)
-#define HF_UART_SET_TX_EMPTY_THRESHOLD(port, threshold) uart_set_tx_empty_threshold(port, threshold)
-#define HF_UART_SET_RX_TIMEOUT(port, tout_thresh) uart_set_rx_timeout(port, tout_thresh)
-#define HF_UART_ENABLE_RX_INTR(port) uart_enable_rx_intr(port)
-#define HF_UART_DISABLE_RX_INTR(port) uart_disable_rx_intr(port)
-#define HF_UART_ENABLE_TX_INTR(port, enable, thresh) uart_enable_tx_intr(port, enable, thresh)
-#define HF_UART_DISABLE_TX_INTR(port) uart_disable_tx_intr(port)
-#define HF_UART_SET_ALWAYS_RX_TIMEOUT(port, enable) uart_set_always_rx_timeout(port, enable)
-#define HF_UART_INTR_CONFIG(port, intr_conf) uart_intr_config(port, intr_conf)
-#else
-// Non-ESP32 platforms - placeholder definitions
-#define HF_UART_DRIVER_INSTALL(port, tx_size, rx_size, queue_size, queue, intr_flags) (-1)
-#define HF_UART_DRIVER_DELETE(port) (-1)
-#define HF_UART_PARAM_CONFIG(port, config) (-1)
-#define HF_UART_SET_PIN(port, tx_pin, rx_pin, rts_pin, cts_pin) (-1)
-#define HF_UART_WRITE_BYTES(port, data, length) (-1)
-#define HF_UART_READ_BYTES(port, data, length, timeout) (-1)
-#define HF_UART_FLUSH(port) (-1)
-#define HF_UART_FLUSH_INPUT(port) (-1)
-#define HF_UART_GET_BUFFERED_DATA_LEN(port, length) (-1)
-#define HF_UART_WAIT_TX_DONE(port, timeout) (-1)
-#define HF_UART_SET_BAUDRATE(port, baudrate) (-1)
-#define HF_UART_SET_WORD_LENGTH(port, data_bits) (-1)
-#define HF_UART_SET_PARITY(port, parity) (-1)
-#define HF_UART_SET_STOP_BITS(port, stop_bits) (-1)
-#define HF_UART_SET_HW_FLOW_CTRL(port, flow_ctrl, thresh) (-1)
-#define HF_UART_SET_RTS(port, level) (-1)
-#define HF_UART_GET_CTS(port, cts) (-1)
-#define HF_UART_SET_LINE_INVERSE(port, inverse_mask) (-1)
-#define HF_UART_SET_MODE(port, mode) (-1)
-#define HF_UART_SET_SW_FLOW_CTRL(port, enable, xon_thresh, xoff_thresh) (-1)
-#define HF_UART_ENABLE_PATTERN_DET(port, pattern_chr, chr_num, chr_tout, post_idle, pre_idle) (-1)
-#define HF_UART_DISABLE_PATTERN_DET(port) (-1)
-#define HF_UART_PATTERN_POP_POS(port) (-1)
-#define HF_UART_PATTERN_GET_POS(port) (-1)
-#define HF_UART_PATTERN_QUEUE_RESET(port, queue_length) (-1)
-#define HF_UART_SET_WAKEUP_THRESHOLD(port, threshold) (-1)
-#define HF_UART_GET_WAKEUP_THRESHOLD(port, threshold) (-1)
-#define HF_UART_GET_COLLISION_FLAG(port, flag) (-1)
-#define HF_UART_SET_RX_FULL_THRESHOLD(port, threshold) (-1)
-#define HF_UART_SET_TX_EMPTY_THRESHOLD(port, threshold) (-1)
-#define HF_UART_SET_RX_TIMEOUT(port, tout_thresh) (-1)
-#define HF_UART_ENABLE_RX_INTR(port) (-1)
-#define HF_UART_DISABLE_RX_INTR(port) (-1)
-#define HF_UART_ENABLE_TX_INTR(port, enable, thresh) (-1)
-#define HF_UART_DISABLE_TX_INTR(port) (-1)
-#define HF_UART_SET_ALWAYS_RX_TIMEOUT(port, enable) (-1)
-#define HF_UART_INTR_CONFIG(port, intr_conf) (-1)
-#endif
+#define UART_IS_VALID_PORT(port) ((port) >= 0 && (port) < HF_UART_MAX_PORTS)
+
+/**
+ * @brief Validate UART baud rate.
+ */
+#define UART_IS_VALID_BAUD_RATE(baud) ((baud) >= HF_UART_MIN_BAUD_RATE && (baud) <= HF_UART_MAX_BAUD_RATE)
+
+/**
+ * @brief Validate UART data bits.
+ */
+#define UART_IS_VALID_DATA_BITS(bits) ((bits) >= 5 && (bits) <= 8)
+
+/**
+ * @brief Validate UART parity setting.
+ */
+#define UART_IS_VALID_PARITY(parity) ((parity) >= 0 && (parity) <= 2)
+
+/**
+ * @brief Validate UART stop bits.
+ */
+#define UART_IS_VALID_STOP_BITS(stop) ((stop) >= 1 && (stop) <= 2)
+
+/**
+ * @brief Validate UART buffer size.
+ */
+#define UART_IS_VALID_BUFFER_SIZE(size) ((size) > 0 && (size) <= 32768)
+
+/**
+ * @brief Validate UART break duration.
+ */
+#define UART_IS_VALID_BREAK_DURATION(duration) ((duration) >= HF_UART_BREAK_MIN_DURATION && (duration) <= HF_UART_BREAK_MAX_DURATION)

@@ -104,20 +104,20 @@ constexpr std::string_view hf_i2c_err_to_string(hf_i2c_err_t err) noexcept {
  * @details Comprehensive configuration for I2C bus initialization,
  *          supporting various platforms and I2C modes without MCU-specific types.
  */
-struct I2cBusConfig {
-  HfPortNumber port;            ///< I2C port number
-  HfPinNumber sda_pin;          ///< SDA pin number
-  HfPinNumber scl_pin;          ///< SCL pin number
-  HfFrequencyHz clock_speed_hz; ///< Clock speed in Hz (typically 100kHz or 400kHz)
+struct hf_i2c_bus_config_t {
+  hf_port_number_t port;            ///< I2C port number
+  hf_pin_num_t sda_pin;          ///< SDA pin number
+  hf_pin_num_t scl_pin;          ///< SCL pin number
+  hf_frequency_hz_t clock_speed_hz; ///< Clock speed in Hz (typically 100kHz or 400kHz)
   bool enable_pullups;          ///< Enable internal pull-up resistors
-  HfTimeoutMs timeout_ms;       ///< Default timeout for operations in milliseconds
+  hf_timeout_ms_t timeout_ms;       ///< Default timeout for operations in milliseconds
   uint16_t tx_buffer_size;      ///< Transmit buffer size (0 = no buffer/blocking mode)
   uint16_t rx_buffer_size;      ///< Receive buffer size (0 = no buffer/blocking mode)
 
   /**
    * @brief Default constructor with sensible defaults.
    */
-  I2cBusConfig() noexcept
+  hf_i2c_bus_config_t() noexcept
       : port(HF_INVALID_PORT), sda_pin(HF_INVALID_PIN), scl_pin(HF_INVALID_PIN),
         clock_speed_hz(100000),                                    // 100kHz standard mode
         enable_pullups(true), timeout_ms(1000), tx_buffer_size(0), // Blocking mode by default
@@ -156,7 +156,7 @@ public:
    * @brief Constructor with configuration.
    * @param config I2C bus configuration parameters
    */
-  explicit BaseI2c(const I2cBusConfig &config) noexcept : config_(config), initialized_(false) {}
+  explicit BaseI2c(const hf_i2c_bus_config_t &config) noexcept : config_(config), initialized_(false) {}
 
   /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
@@ -192,7 +192,7 @@ public:
    * @brief Get the bus configuration.
    * @return Reference to the current configuration
    */
-  [[nodiscard]] const I2cBusConfig &GetConfig() const noexcept {
+  [[nodiscard]] const hf_i2c_bus_config_t &GetConfig() const noexcept {
     return config_;
   }
 
@@ -203,176 +203,153 @@ public:
   /**
    * @brief Initialize the I2C bus.
    * @return true if successful, false otherwise
-   * @note Must be implemented by concrete classes.
    */
   virtual bool Initialize() noexcept = 0;
 
   /**
    * @brief Deinitialize the I2C bus.
    * @return true if successful, false otherwise
-   * @note Must be implemented by concrete classes.
    */
   virtual bool Deinitialize() noexcept = 0;
 
   /**
-   * @brief Write data to a slave device.
-   * @param device_addr 7-bit device address
-   * @param data Data buffer to transmit
+   * @brief Write data to an I2C device.
+   * @param device_addr 7-bit I2C device address
+   * @param data Pointer to data buffer to write
    * @param length Number of bytes to write
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
-   * @note Must be implemented by concrete classes.
    */
   virtual hf_i2c_err_t Write(uint8_t device_addr, const uint8_t *data, uint16_t length,
-                         uint32_t timeout_ms = 0) noexcept = 0;
+                          uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
-   * @brief Read data from a slave device.
-   * @param device_addr 7-bit device address
-   * @param data Buffer to store received data
+   * @brief Read data from an I2C device.
+   * @param device_addr 7-bit I2C device address
+   * @param data Pointer to buffer to store received data
    * @param length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
-   * @note Must be implemented by concrete classes.
    */
   virtual hf_i2c_err_t Read(uint8_t device_addr, uint8_t *data, uint16_t length,
-                        uint32_t timeout_ms = 0) noexcept = 0;
+                         uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
-   * @brief Write then read from a slave device without releasing the bus.
-   * @param device_addr 7-bit device address
-   * @param tx_data Data buffer to send
-   * @param tx_length Number of bytes to send
-   * @param rx_data Buffer to store received data
+   * @brief Write then read data from an I2C device.
+   * @param device_addr 7-bit I2C device address
+   * @param tx_data Pointer to data buffer to write
+   * @param tx_length Number of bytes to write
+   * @param rx_data Pointer to buffer to store received data
    * @param rx_length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
-   * @note Must be implemented by concrete classes.
    */
   virtual hf_i2c_err_t WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t tx_length,
-                             uint8_t *rx_data, uint16_t rx_length,
-                             uint32_t timeout_ms = 0) noexcept = 0;
+                              uint8_t *rx_data, uint16_t rx_length,
+                              uint32_t timeout_ms = 0) noexcept = 0;
 
   //==============================================//
-  // CONVENIENCE METHODS WITH DEFAULT IMPLEMENTATIONS //
+  // CONVENIENCE METHODS WITH DEFAULT IMPLEMENTATIONS
   //==============================================//
 
   /**
-   * @brief Legacy compatibility: Open and initialize the I2C port.
-   * @return true if open, false otherwise.
+   * @brief Open the I2C bus (alias for Initialize).
+   * @return true if successful, false otherwise
    */
   virtual bool Open() noexcept {
-    return EnsureInitialized();
+    return Initialize();
   }
 
   /**
-   * @brief Legacy compatibility: Close and de-initialize the I2C port.
-   * @return true if closed, false otherwise.
+   * @brief Close the I2C bus (alias for Deinitialize).
+   * @return true if successful, false otherwise
    */
   virtual bool Close() noexcept {
-    if (initialized_) {
-      initialized_ = !Deinitialize();
-      return !initialized_;
-    }
-    return true;
+    return Deinitialize();
   }
 
   /**
-   * @brief Legacy compatibility: Write with boolean return.
-   * @param addr 7-bit device address
-   * @param data Data buffer to transmit
+   * @brief Write data to an I2C device (simplified interface).
+   * @param addr 7-bit I2C device address
+   * @param data Pointer to data buffer to write
    * @param sizeBytes Number of bytes to write
    * @param timeoutMsec Timeout in milliseconds
-   * @return true if transmission succeeded
+   * @return true if successful, false otherwise
    */
   virtual bool Write(uint8_t addr, const uint8_t *data, uint16_t sizeBytes,
                      uint32_t timeoutMsec = 1000) noexcept {
-    if (!EnsureInitialized()) {
-      return false;
-    }
     return Write(addr, data, sizeBytes, timeoutMsec) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Legacy compatibility: Read with boolean return.
-   * @param addr 7-bit device address
-   * @param data Buffer to store received data
+   * @brief Read data from an I2C device (simplified interface).
+   * @param addr 7-bit I2C device address
+   * @param data Pointer to buffer to store received data
    * @param sizeBytes Number of bytes to read
    * @param timeoutMsec Timeout in milliseconds
-   * @return true if read succeeded
+   * @return true if successful, false otherwise
    */
   virtual bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes,
                     uint32_t timeoutMsec = 1000) noexcept {
-    if (!EnsureInitialized()) {
-      return false;
-    }
     return Read(addr, data, sizeBytes, timeoutMsec) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Legacy compatibility: WriteRead with boolean return.
-   * @param addr 7-bit device address
-   * @param txData Data buffer to send
-   * @param txSizeBytes Number of bytes to send
-   * @param rxData Buffer to store received data
+   * @brief Write then read data from an I2C device (simplified interface).
+   * @param addr 7-bit I2C device address
+   * @param txData Pointer to data buffer to write
+   * @param txSizeBytes Number of bytes to write
+   * @param rxData Pointer to buffer to store received data
    * @param rxSizeBytes Number of bytes to read
    * @param timeoutMsec Timeout in milliseconds
-   * @return true if transaction succeeded
+   * @return true if successful, false otherwise
    */
   virtual bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, uint8_t *rxData,
                          uint16_t rxSizeBytes, uint32_t timeoutMsec = 1000) noexcept {
-    if (!EnsureInitialized()) {
-      return false;
-    }
-    return WriteRead(addr, txData, txSizeBytes, rxData, rxSizeBytes, timeoutMsec) ==
-           hf_i2c_err_t::I2C_SUCCESS;
+    return WriteRead(addr, txData, txSizeBytes, rxData, rxSizeBytes, timeoutMsec) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Get the configured clock speed.
-   * @return Clock speed in Hz
+   * @brief Get the configured clock frequency.
+   * @return Clock frequency in Hz
    */
-  [[nodiscard]] virtual uint32_t GetClockHz() const noexcept {
+  [[nodiscard]] virtual hf_frequency_hz_t GetClockHz() const noexcept {
     return config_.clock_speed_hz;
   }
 
   /**
-   * @brief Check if a device is present at given address.
-   * @param device_addr 7-bit device address
+   * @brief Check if a device is present on the bus.
+   * @param device_addr 7-bit I2C device address
    * @return true if device responds, false otherwise
    */
   virtual bool IsDevicePresent(uint8_t device_addr) noexcept {
-    if (!EnsureInitialized()) {
-      return false;
-    }
-    // Try to write 0 bytes to the device - this will generate only the address
-    return Write(device_addr, nullptr, 0) == hf_i2c_err_t::I2C_SUCCESS;
+    // Try to read 1 byte from the device
+    uint8_t dummy;
+    return Read(device_addr, &dummy, 1, 100) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Scan for devices on the I2C bus.
-   * @param addresses Buffer to store found device addresses
-   * @param max_addresses Maximum number of addresses to find
+   * @brief Scan the I2C bus for devices.
+   * @param addresses Array to store found device addresses
+   * @param max_addresses Maximum number of addresses to store
    * @return Number of devices found
    */
   virtual uint8_t ScanBus(uint8_t *addresses, uint8_t max_addresses) noexcept {
-    if (!EnsureInitialized() || !addresses || max_addresses == 0) {
-      return 0;
-    }
-
-    uint8_t found = 0;
-    // Scan 7-bit addresses from 0x08 to 0x77 (avoiding reserved addresses)
-    for (uint8_t addr = 0x08; addr <= 0x77 && found < max_addresses; ++addr) {
+    uint8_t found_count = 0;
+    
+    // Scan addresses 0x08 to 0x77 (valid 7-bit addresses)
+    for (uint8_t addr = 0x08; addr <= 0x77 && found_count < max_addresses; addr++) {
       if (IsDevicePresent(addr)) {
-        addresses[found++] = addr;
+        addresses[found_count++] = addr;
       }
     }
-    return found;
+    
+    return found_count;
   }
 
   /**
-   * @brief Write single byte to device.
-   * @param device_addr 7-bit device address
+   * @brief Write a single byte to an I2C device.
+   * @param device_addr 7-bit I2C device address
    * @param data Byte to write
    * @return true if successful, false otherwise
    */
@@ -381,9 +358,9 @@ public:
   }
 
   /**
-   * @brief Read single byte from device.
-   * @param device_addr 7-bit device address
-   * @param data Output: byte read
+   * @brief Read a single byte from an I2C device.
+   * @param device_addr 7-bit I2C device address
+   * @param data Reference to store the read byte
    * @return true if successful, false otherwise
    */
   virtual bool ReadByte(uint8_t device_addr, uint8_t &data) noexcept {
@@ -391,10 +368,10 @@ public:
   }
 
   /**
-   * @brief Write to register (register address + data).
-   * @param device_addr 7-bit device address
+   * @brief Write to a register on an I2C device.
+   * @param device_addr 7-bit I2C device address
    * @param reg_addr Register address
-   * @param data Data to write
+   * @param data Data to write to register
    * @return true if successful, false otherwise
    */
   virtual bool WriteRegister(uint8_t device_addr, uint8_t reg_addr, uint8_t data) noexcept {
@@ -403,10 +380,10 @@ public:
   }
 
   /**
-   * @brief Read from register.
-   * @param device_addr 7-bit device address
+   * @brief Read from a register on an I2C device.
+   * @param device_addr 7-bit I2C device address
    * @param reg_addr Register address
-   * @param data Output: data read
+   * @param data Reference to store the read data
    * @return true if successful, false otherwise
    */
   virtual bool ReadRegister(uint8_t device_addr, uint8_t reg_addr, uint8_t &data) noexcept {
@@ -414,27 +391,27 @@ public:
   }
 
   /**
-   * @brief Read multiple bytes from register.
-   * @param device_addr 7-bit device address
-   * @param reg_addr Register address
-   * @param data Buffer to store data
-   * @param length Number of bytes to read
+   * @brief Read multiple registers from an I2C device.
+   * @param device_addr 7-bit I2C device address
+   * @param reg_addr Starting register address
+   * @param data Pointer to buffer to store read data
+   * @param length Number of registers to read
    * @return true if successful, false otherwise
    */
   virtual bool ReadRegisters(uint8_t device_addr, uint8_t reg_addr, uint8_t *data,
-                             uint16_t length) noexcept {
+                            uint16_t length) noexcept {
     return WriteRead(device_addr, &reg_addr, 1, data, length) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Get port number.
-   * @return I2C port number
+   * @brief Get the I2C port number.
+   * @return Port number
    */
-  [[nodiscard]] virtual HfPortNumber GetPort() const noexcept {
+  [[nodiscard]] virtual hf_port_number_t GetPort() const noexcept {
     return config_.port;
   }
 
 protected:
-  I2cBusConfig config_; ///< Bus configuration
-  bool initialized_;    ///< Initialization state
+  hf_i2c_bus_config_t config_; ///< I2C bus configuration
+  bool initialized_;            ///< Initialization status
 };

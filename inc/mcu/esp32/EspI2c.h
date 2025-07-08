@@ -42,8 +42,8 @@
  * // Create bus configuration
  * hf_i2c_master_bus_config_t bus_config;
  * bus_config.i2c_port = 0;
- * bus_config.sda_io_num = static_cast<GpioNum>(21);
- * bus_config.scl_io_num = static_cast<GpioNum>(22);
+ * bus_config.sda_io_num = static_cast<hf_pin_num_t>(21);
+ * bus_config.scl_io_num = static_cast<hf_pin_num_t>(22);
  * bus_config.enable_internal_pullup = true;
  * 
  * // Create I2C instance
@@ -67,7 +67,7 @@
 #pragma once
 
 #include "BaseI2c.h"
-#include "McuTypes_I2C.h"
+#include "EspTypes_I2C.h"
 #include "RtosMutex.h"
 #include <unordered_map>
 #include <vector>
@@ -203,18 +203,17 @@ public:
     hf_i2c_err_t RemoveDevice(uint16_t device_address) noexcept;
 
     /**
-     * @brief Check if a device is present at the given address.
+     * @brief Probe for device presence on the bus.
      * @param device_addr Device address to probe
      * @return true if device responds, false otherwise
-     * @note Uses ESP-IDF v5.5+ i2c_master_probe() internally
      */
     bool ProbeDevice(uint16_t device_addr) noexcept;
 
     /**
-     * @brief Scan for devices on the I2C bus.
+     * @brief Scan the I2C bus for devices.
      * @param found_devices Vector to store found device addresses
-     * @param start_addr Starting address for scan (default 0x08)
-     * @param end_addr Ending address for scan (default 0x77)
+     * @param start_addr Starting address for scan (default: 0x08)
+     * @param end_addr Ending address for scan (default: 0x77)
      * @return Number of devices found
      */
     size_t ScanDevices(std::vector<uint16_t>& found_devices,
@@ -226,38 +225,38 @@ public:
     //==========================================================================
 
     /**
-     * @brief Perform asynchronous write operation.
+     * @brief Write data asynchronously to an I2C device.
      * @param device_addr Device address
-     * @param data Data vector to write
-     * @param callback Callback function to invoke on completion
-     * @param user_data User data pointer for callback
-     * @return Operation result with operation ID for tracking
+     * @param data Data to write
+     * @param callback Callback function to call when operation completes
+     * @param user_data User data to pass to callback
+     * @return Operation result
      */
     hf_i2c_err_t WriteAsync(uint16_t device_addr, const std::vector<uint8_t>& data,
-                        hf_i2c_async_callback_t callback, void* user_data = nullptr) noexcept;
+                         hf_i2c_async_callback_t callback, void* user_data = nullptr) noexcept;
 
     /**
-     * @brief Perform asynchronous read operation.
+     * @brief Read data asynchronously from an I2C device.
      * @param device_addr Device address
      * @param length Number of bytes to read
-     * @param callback Callback function to invoke on completion
-     * @param user_data User data pointer for callback
-     * @return Operation result with operation ID for tracking
+     * @param callback Callback function to call when operation completes
+     * @param user_data User data to pass to callback
+     * @return Operation result
      */
     hf_i2c_err_t ReadAsync(uint16_t device_addr, size_t length, hf_i2c_async_callback_t callback,
-                       void* user_data = nullptr) noexcept;
+                        void* user_data = nullptr) noexcept;
 
     /**
-     * @brief Cancel a pending asynchronous operation.
-     * @param operation_id ID of the operation to cancel
+     * @brief Cancel an asynchronous operation.
+     * @param operation_id Operation ID to cancel
      * @return Operation result
      */
     hf_i2c_err_t CancelAsyncOperation(uint32_t operation_id) noexcept;
 
     /**
-     * @brief Set event callback for I2C operations.
-     * @param callback Callback function pointer
-     * @param user_data User data pointer for callback
+     * @brief Set event callback for I2C events.
+     * @param callback Event callback function
+     * @param user_data User data to pass to callback
      */
     void SetEventCallback(hf_i2c_event_callback_t callback, void* user_data = nullptr) noexcept;
 
@@ -267,45 +266,48 @@ public:
 
     /**
      * @brief Execute a multi-buffer transaction.
-     * @param transaction Multi-buffer transaction descriptor
+     * @param transaction Multi-buffer transaction configuration
      * @return Operation result
+     * @note Supports complex I2C protocols with multiple read/write sequences
      */
     hf_i2c_err_t ExecuteMultiBufferTransaction(const hf_i2c_multi_buffer_transaction_t& transaction) noexcept;
 
     /**
-     * @brief Execute a multi-buffer transaction asynchronously.
-     * @param transaction Multi-buffer transaction descriptor
-     * @param callback Callback function to invoke on completion
-     * @param user_data User data pointer for callback
-     * @return Operation result
-     */
-    hf_i2c_err_t ExecuteMultiBufferTransactionAsync(const hf_i2c_multi_buffer_transaction_t& transaction,
-                                                hf_i2c_async_callback_t callback,
-                                                void* user_data = nullptr) noexcept;
-
-    /**
-     * @brief Execute a sequence of custom I2C commands.
+     * @brief Execute a custom command sequence.
      * @param commands Vector of custom commands to execute
      * @return Operation result
+     * @note Provides flexibility for non-standard I2C protocols
      */
     hf_i2c_err_t ExecuteCustomSequence(const std::vector<hf_i2c_custom_command_t>& commands) noexcept;
 
     /**
-     * @brief Execute a sequence of custom I2C commands asynchronously.
+     * @brief Execute multi-buffer transaction asynchronously.
+     * @param transaction Multi-buffer transaction configuration
+     * @param callback Callback function to call when operation completes
+     * @param user_data User data to pass to callback
+     * @return Operation result
+     */
+    hf_i2c_err_t ExecuteMultiBufferTransactionAsync(const hf_i2c_multi_buffer_transaction_t& transaction,
+                                                 hf_i2c_async_callback_t callback,
+                                                 void* user_data = nullptr) noexcept;
+
+    /**
+     * @brief Execute custom command sequence asynchronously.
      * @param commands Vector of custom commands to execute
-     * @param callback Callback function to invoke on completion
-     * @param user_data User data pointer for callback
+     * @param callback Callback function to call when operation completes
+     * @param user_data User data to pass to callback
      * @return Operation result
      */
     hf_i2c_err_t ExecuteCustomSequenceAsync(const std::vector<hf_i2c_custom_command_t>& commands,
-                                        hf_i2c_async_callback_t callback, void* user_data = nullptr) noexcept;
+                                         hf_i2c_async_callback_t callback,
+                                         void* user_data = nullptr) noexcept;
 
     //==========================================================================
-    // REGISTER ACCESS UTILITIES
+    // REGISTER OPERATIONS
     //==========================================================================
 
     /**
-     * @brief Write to a device register.
+     * @brief Write to a register on an I2C device.
      * @param device_addr Device address
      * @param reg_addr Register address
      * @param value Value to write
@@ -314,7 +316,7 @@ public:
     hf_i2c_err_t WriteRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t value) noexcept;
 
     /**
-     * @brief Read from a device register.
+     * @brief Read from a register on an I2C device.
      * @param device_addr Device address
      * @param reg_addr Register address
      * @param value Reference to store read value
@@ -323,17 +325,17 @@ public:
     hf_i2c_err_t ReadRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t& value) noexcept;
 
     /**
-     * @brief Write to multiple consecutive registers.
+     * @brief Write multiple registers on an I2C device.
      * @param device_addr Device address
      * @param start_reg_addr Starting register address
      * @param data Vector of data to write
      * @return Operation result
      */
     hf_i2c_err_t WriteMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
-                                    const std::vector<uint8_t>& data) noexcept;
+                                     const std::vector<uint8_t>& data) noexcept;
 
     /**
-     * @brief Read from multiple consecutive registers.
+     * @brief Read multiple registers from an I2C device.
      * @param device_addr Device address
      * @param start_reg_addr Starting register address
      * @param data Vector to store read data
@@ -341,139 +343,118 @@ public:
      * @return Operation result
      */
     hf_i2c_err_t ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
-                                   std::vector<uint8_t>& data, size_t count) noexcept;
+                                    std::vector<uint8_t>& data, size_t count) noexcept;
 
     //==========================================================================
     // POWER MANAGEMENT
     //==========================================================================
 
     /**
-     * @brief Set I2C bus power mode.
-     * @param mode Desired power mode
+     * @brief Set I2C power mode.
+     * @param mode Power mode to set
      * @return Operation result
+     * @note Affects performance and power consumption
      */
     hf_i2c_err_t SetPowerMode(hf_i2c_power_mode_t mode) noexcept;
 
     /**
-     * @brief Get current I2C bus power mode.
+     * @brief Get current power mode.
      * @return Current power mode
      */
-    [[nodiscard]] hf_i2c_power_mode_t GetPowerMode() const noexcept;
+    hf_i2c_power_mode_t GetPowerMode() const noexcept {
+        return current_power_mode_.load();
+    }
 
     /**
-     * @brief Suspend I2C bus operations for power saving.
+     * @brief Suspend the I2C bus (low power mode).
      * @return Operation result
+     * @note Reduces power consumption but may require reinitialization
      */
     hf_i2c_err_t SuspendBus() noexcept;
 
     /**
-     * @brief Resume I2C bus operations from suspended state.
+     * @brief Resume the I2C bus from suspended state.
      * @return Operation result
+     * @note Restores normal operation after suspension
      */
     hf_i2c_err_t ResumeBus() noexcept;
 
     //==========================================================================
-    // MONITORING AND DIAGNOSTICS
+    // CONFIGURATION AND CONTROL
     //==========================================================================
 
     /**
-     * @brief Get I2C operation statistics.
-     * @return Current statistics snapshot
-     */
-    [[nodiscard]] hf_i2c_statistics_t GetStatistics() const noexcept;
-
-    /**
-     * @brief Reset I2C operation statistics.
-     */
-    void ResetStatistics() noexcept;
-
-    /**
-     * @brief Get I2C diagnostics information.
-     * @return Current diagnostics snapshot
-     */
-    [[nodiscard]] hf_i2c_diagnostics_t GetDiagnostics() noexcept;
-
-    /**
-     * @brief Check if I2C bus is healthy.
-     * @return true if bus is healthy, false otherwise
-     */
-    [[nodiscard]] bool IsBusHealthy() noexcept;
-
-    //==========================================================================
-    // ERROR RECOVERY
-    //==========================================================================
-
-    /**
-     * @brief Attempt to recover the I2C bus from error conditions.
-     * @return Operation result
-     */
-    hf_i2c_err_t RecoverBus() noexcept;
-
-    /**
-     * @brief Reset the I2C bus hardware.
-     * @return true if successful, false otherwise
-     */
-    bool ResetBus() noexcept;
-
-    //==========================================================================
-    // CONFIGURATION
-    //==========================================================================
-
-    /**
-     * @brief Get the current bus configuration.
-     * @return Reference to current configuration
-     */
-    [[nodiscard]] const hf_i2c_master_bus_config_t& GetConfig() const noexcept;
-
-    /**
-     * @brief Set clock speed for the bus.
+     * @brief Set I2C clock speed.
      * @param clock_speed_hz Clock speed in Hz
      * @return true if successful, false otherwise
+     * @note May require reinitialization of the bus
      */
     bool SetClockSpeed(uint32_t clock_speed_hz) noexcept;
 
     /**
      * @brief Enable or disable internal pull-up resistors.
-     * @param enable true to enable pull-ups, false to disable
+     * @param enable true to enable, false to disable
      * @return true if successful, false otherwise
      */
     bool SetPullUps(bool enable) noexcept;
 
+    /**
+     * @brief Get current clock speed.
+     * @return Current clock speed in Hz
+     */
+    uint32_t GetClockSpeed() const noexcept {
+        return bus_config_.clk_speed_hz;
+    }
+
+    /**
+     * @brief Get I2C bus statistics.
+     * @return Statistics structure
+     */
+    hf_i2c_statistics_t GetStatistics() const noexcept {
+        return statistics_;
+    }
+
+    /**
+     * @brief Get I2C bus diagnostics.
+     * @return Diagnostics structure
+     */
+    hf_i2c_diagnostics_t GetDiagnostics() const noexcept {
+        return diagnostics_;
+    }
+
+    /**
+     * @brief Reset I2C statistics.
+     */
+    void ResetStatistics() noexcept {
+        statistics_.Reset();
+    }
+
+    /**
+     * @brief Get the last error that occurred.
+     * @return Last error code
+     */
+    hf_i2c_err_t GetLastError() const noexcept {
+        return last_error_.load();
+    }
+
+    /**
+     * @brief Get the number of active devices on the bus.
+     * @return Number of active devices
+     */
+    size_t GetActiveDeviceCount() const noexcept {
+        std::lock_guard<RtosMutex> lock(mutex_);
+        return device_handles_.size();
+    }
+
+    /**
+     * @brief Check if the bus is healthy.
+     * @return true if healthy, false otherwise
+     */
+    bool IsBusHealthy() const noexcept {
+        return diagnostics_.bus_healthy;
+    }
+
 private:
-    //==========================================================================
-    // PRIVATE MEMBERS
-    //==========================================================================
-
-    // Configuration and state
-    hf_i2c_master_bus_config_t bus_config_;              ///< Bus configuration
-    std::atomic<bool> initialized_{false};       ///< Initialization state
-    std::atomic<hf_i2c_err_t> last_error_{hf_i2c_err_t::I2C_SUCCESS}; ///< Last error
-
-    // ESP-IDF v5.5+ handles
-    I2cMasterBusHandle master_bus_handle_{nullptr}; ///< Master bus handle
-    std::unordered_map<uint16_t, I2cMasterDevHandle> device_handles_; ///< Device handles
-    std::unordered_map<uint16_t, hf_i2c_device_config_t> device_configs_; ///< Device configurations
-
-    // Thread safety
-    mutable RtosMutex mutex_;                    ///< Mutex for thread safety
-    std::atomic<bool> bus_locked_{false};        ///< Bus lock status
-
-    // Asynchronous operations
-    std::unordered_map<uint32_t, void*> async_operations_; ///< Active async operations
-    std::atomic<uint32_t> next_operation_id_{1}; ///< Next operation ID
-    hf_i2c_event_callback_t event_callback_{nullptr};   ///< Event callback
-    void* event_callback_userdata_{nullptr};     ///< Event callback user data
-
-    // Monitoring and diagnostics
-    mutable hf_i2c_statistics_t statistics_;           ///< Operation statistics
-    hf_i2c_diagnostics_t diagnostics_;                 ///< Bus diagnostics
-    std::atomic<uint64_t> last_operation_time_us_{0}; ///< Last operation timestamp
-
-    // Power management
-    std::atomic<hf_i2c_power_mode_t> current_power_mode_{hf_i2c_power_mode_t::HF_I2C_POWER_FULL}; ///< Current power mode
-    std::atomic<bool> bus_suspended_{false};     ///< Bus suspension state
-    void* auto_suspend_timer_{nullptr};          ///< Auto-suspend timer
-
     //==========================================================================
     // PRIVATE METHODS
     //==========================================================================
@@ -483,27 +464,22 @@ private:
      * @param esp_error ESP-IDF esp_err_t error code
      * @return Corresponding hf_i2c_err_t error code
      */
-    [[nodiscard]] hf_i2c_err_t ConvertEspError(EspErr esp_error) const noexcept;
+    [[nodiscard]] hf_i2c_err_t ConvertEspError(hf_esp_err_native_t esp_error) const noexcept;
 
     /**
-     * @brief Get or create device handle for a given address.
+     * @brief Get or create device handle for given address.
      * @param device_addr Device address
-     * @return Device handle or nullptr on failure
+     * @return Device handle or nullptr if failed
      */
-    I2cMasterDevHandle GetOrCreateDeviceHandle(uint16_t device_addr) noexcept;
+    hf_i2c_master_dev_handle_native_t GetOrCreateDeviceHandle(uint16_t device_addr) noexcept;
 
     /**
-     * @brief Update operation statistics.
-     * @param success Whether the operation was successful
+     * @brief Update statistics with operation result.
+     * @param success Operation success status
      * @param bytes_transferred Number of bytes transferred
-     * @param operation_time_us Operation duration in microseconds
+     * @param operation_time_us Operation time in microseconds
      */
     void UpdateStatistics(bool success, size_t bytes_transferred, uint64_t operation_time_us) noexcept;
-
-    /**
-     * @brief Update diagnostics information.
-     */
-    void UpdateDiagnostics() noexcept;
 
     /**
      * @brief Validate device address.
@@ -515,30 +491,32 @@ private:
     /**
      * @brief Get effective timeout value.
      * @param timeout_ms Requested timeout (0 = use default)
-     * @return Effective timeout value
+     * @return Effective timeout in milliseconds
      */
     [[nodiscard]] uint32_t GetEffectiveTimeout(uint32_t timeout_ms) const noexcept;
 
-    /**
-     * @brief Create auto-suspend timer for power management.
-     * @return true if successful, false otherwise
-     */
-    bool CreateAutoSuspendTimer() noexcept;
-
-    /**
-     * @brief Destroy auto-suspend timer.
-     */
-    void DestroyAutoSuspendTimer() noexcept;
-
-    /**
-     * @brief Start or restart auto-suspend timer.
-     */
-    void StartAutoSuspendTimer() noexcept;
-
     //==========================================================================
-    // CONSTANTS
+    // PRIVATE MEMBERS
     //==========================================================================
 
-    static constexpr uint32_t AUTO_SUSPEND_DELAY_MS = 5000;  ///< Auto-suspend delay
-    static constexpr uint8_t MAX_DEVICES = 127;              ///< Maximum devices on bus
+    hf_i2c_master_bus_config_t bus_config_;                    ///< Bus configuration
+    hf_i2c_master_bus_handle_native_t master_bus_handle_;      ///< Master bus handle
+    std::unordered_map<uint16_t, hf_i2c_master_dev_handle_native_t> device_handles_; ///< Device handles
+    std::atomic<bool> initialized_{false};                     ///< Initialization status
+    std::atomic<bool> bus_suspended_{false};                   ///< Bus suspension status
+    std::atomic<hf_i2c_power_mode_t> current_power_mode_{hf_i2c_power_mode_t::HF_I2C_POWER_FULL}; ///< Current power mode
+    std::atomic<hf_i2c_err_t> last_error_{hf_i2c_err_t::I2C_SUCCESS}; ///< Last error code
+    std::atomic<uint64_t> last_operation_time_us_{0};          ///< Last operation timestamp
+
+    // Statistics and diagnostics
+    mutable hf_i2c_statistics_t statistics_;                   ///< Operation statistics
+    mutable hf_i2c_diagnostics_t diagnostics_;                 ///< Bus diagnostics
+
+    // Callbacks
+    hf_i2c_event_callback_t event_callback_{nullptr};          ///< Event callback
+    void* event_user_data_{nullptr};                           ///< Event callback user data
+
+    // Thread safety
+    mutable RtosMutex mutex_;                                  ///< Main mutex for thread safety
+    mutable RtosMutex stats_mutex_;                            ///< Statistics mutex
 };
