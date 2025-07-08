@@ -9,7 +9,7 @@
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
- * 
+ *
  * @note This is a header-only abstract base class following the same pattern as
  * BaseCan/BaseAdc/BasePwm.
  * @note Users should program against this interface, not specific implementations.
@@ -80,14 +80,14 @@ enum class hf_pio_err_t : uint8_t {
 };
 
 /**
- * @brief Convert HfPioErr to human-readable string
+ * @brief Convert hf_pio_err_t to human-readable string
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view HfPioErrToString(HfPioErr err) noexcept {
+constexpr std::string_view hf_pio_err_to_string(hf_pio_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
-  case HfPioErr::NAME:                                                                             \
+  case hf_pio_err_t::NAME:                                                                         \
     return DESC;
     HF_PIO_ERR_LIST(X)
 #undef X
@@ -128,50 +128,50 @@ enum class hf_pio_idle_state_t : uint8_t {
 /**
  * @brief PIO channel configuration structure
  */
-struct PioChannelConfig {
-  HfPinNumber gpio_pin;    ///< GPIO pin for PIO signal
-  PioDirection direction;  ///< Channel direction
-  uint32_t resolution_ns;  ///< Time resolution in nanoseconds
-  PioPolarity polarity;    ///< Signal polarity
-  PioIdleState idle_state; ///< Idle state
-  uint32_t timeout_us;     ///< Operation timeout in microseconds
-  size_t buffer_size;      ///< Buffer size for symbols/durations
+struct hf_pio_channel_config_t {
+  hf_pin_num_t gpio_pin;          ///< GPIO pin for PIO signal
+  hf_pio_direction_t direction;   ///< Channel direction
+  uint32_t resolution_ns;         ///< Time resolution in nanoseconds
+  hf_pio_polarity_t polarity;     ///< Signal polarity
+  hf_pio_idle_state_t idle_state; ///< Idle state
+  uint32_t timeout_us;            ///< Operation timeout in microseconds
+  size_t buffer_size;             ///< Buffer size for symbols/durations
 
-  PioChannelConfig() noexcept
+  hf_pio_channel_config_t() noexcept
       : gpio_pin(-1), direction(hf_pio_direction_t::Transmit), resolution_ns(1000),
-        polarity(hf_pio_polarity_t::Normal), idle_state(hf_pio_idle_state_t::Low), timeout_us(10000),
-        buffer_size(64) {}
+        polarity(hf_pio_polarity_t::Normal), idle_state(hf_pio_idle_state_t::Low),
+        timeout_us(10000), buffer_size(64) {}
 };
 
 /**
  * @brief PIO symbol structure for precise timing
  */
-struct PioSymbol {
+struct hf_pio_symbol_t {
   uint32_t duration; ///< Duration in resolution units
   bool level;        ///< Signal level (true = high, false = low)
 
-  PioSymbol() noexcept : duration(0), level(false) {}
-  PioSymbol(uint32_t dur, bool lvl) noexcept : duration(dur), level(lvl) {}
+  hf_pio_symbol_t() noexcept : duration(0), level(false) {}
+  hf_pio_symbol_t(uint32_t dur, bool lvl) noexcept : duration(dur), level(lvl) {}
 };
 
 /**
  * @brief PIO channel status information
  */
-struct PioChannelStatus {
+struct hf_pio_channel_status_t {
   bool is_initialized;      ///< Channel is initialized
   bool is_busy;             ///< Channel is currently busy
   bool is_transmitting;     ///< Channel is transmitting
   bool is_receiving;        ///< Channel is receiving
   size_t symbols_queued;    ///< Number of symbols in queue
   size_t symbols_processed; ///< Number of symbols processed
-  HfPioErr last_error;      ///< Last error that occurred
+  hf_pio_err_t last_error;  ///< Last error that occurred
   uint32_t timestamp_us;    ///< Timestamp of last operation
 };
 
 /**
  * @brief PIO capability information
  */
-struct PioCapabilities {
+struct hf_pio_capabilities_t {
   uint8_t max_channels;        ///< Maximum number of channels
   uint32_t min_resolution_ns;  ///< Minimum time resolution
   uint32_t max_resolution_ns;  ///< Maximum time resolution
@@ -192,7 +192,7 @@ struct PioCapabilities {
  * @param symbols_sent Number of symbols transmitted
  * @param user_data User-provided data
  */
-using PioTransmitCallback =
+using hf_pio_transmit_callback_t =
     std::function<void(uint8_t channel_id, size_t symbols_sent, void *user_data)>;
 
 /**
@@ -202,8 +202,8 @@ using PioTransmitCallback =
  * @param symbol_count Number of symbols received
  * @param user_data User-provided data
  */
-using PioReceiveCallback = std::function<void(uint8_t channel_id, const PioSymbol *symbols,
-                                              size_t symbol_count, void *user_data)>;
+using hf_pio_receive_callback_t = std::function<void(
+    uint8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count, void *user_data)>;
 
 /**
  * @brief Callback for PIO error events
@@ -211,7 +211,8 @@ using PioReceiveCallback = std::function<void(uint8_t channel_id, const PioSymbo
  * @param error Error that occurred
  * @param user_data User-provided data
  */
-using PioErrorCallback = std::function<void(uint8_t channel_id, HfPioErr error, void *user_data)>;
+using hf_pio_error_callback_t =
+    std::function<void(uint8_t channel_id, hf_pio_err_t error, void *user_data)>;
 
 //--------------------------------------
 //  Abstract Base Class
@@ -260,13 +261,13 @@ public:
    * @brief Initialize the PIO peripheral
    * @return Error code indicating success or failure
    */
-  virtual HfPioErr Initialize() noexcept = 0;
+  virtual hf_pio_err_t Initialize() noexcept = 0;
 
   /**
    * @brief Deinitialize the PIO peripheral
    * @return Error code indicating success or failure
    */
-  virtual HfPioErr Deinitialize() noexcept = 0;
+  virtual hf_pio_err_t Deinitialize() noexcept = 0;
 
   /**
    * @brief Check if the PIO is initialized
@@ -282,7 +283,7 @@ public:
    */
   bool EnsureInitialized() noexcept {
     if (!initialized_) {
-      initialized_ = (Initialize() == HfPioErr::PIO_SUCCESS);
+      initialized_ = (Initialize() == hf_pio_err_t::PIO_SUCCESS);
     }
     return initialized_;
   }
@@ -293,8 +294,8 @@ public:
    * @param config Channel configuration
    * @return Error code indicating success or failure
    */
-  virtual HfPioErr ConfigureChannel(uint8_t channel_id,
-                                    const PioChannelConfig &config) noexcept = 0;
+  virtual hf_pio_err_t ConfigureChannel(uint8_t channel_id,
+                                        const hf_pio_channel_config_t &config) noexcept = 0;
 
   /**
    * @brief Transmit a sequence of symbols
@@ -304,8 +305,8 @@ public:
    * @param wait_completion If true, block until transmission is complete
    * @return Error code indicating success or failure
    */
-  virtual HfPioErr Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t symbol_count,
-                            bool wait_completion = false) noexcept = 0;
+  virtual hf_pio_err_t Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols,
+                                size_t symbol_count, bool wait_completion = false) noexcept = 0;
 
   /**
    * @brief Start receiving symbols
@@ -315,8 +316,8 @@ public:
    * @param timeout_us Timeout in microseconds (0 = no timeout)
    * @return Error code indicating success or failure
    */
-  virtual HfPioErr StartReceive(uint8_t channel_id, PioSymbol *buffer, size_t buffer_size,
-                                uint32_t timeout_us = 0) noexcept = 0;
+  virtual hf_pio_err_t StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
+                                    uint32_t timeout_us = 0) noexcept = 0;
 
   /**
    * @brief Stop receiving and get the number of symbols received
@@ -324,7 +325,7 @@ public:
    * @param symbols_received [out] Number of symbols actually received
    * @return Error code indicating success or failure
    */
-  virtual HfPioErr StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept = 0;
+  virtual hf_pio_err_t StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept = 0;
 
   /**
    * @brief Check if a channel is currently busy
@@ -339,22 +340,22 @@ public:
    * @param status [out] Status information
    * @return Error code indicating success or failure
    */
-  virtual HfPioErr GetChannelStatus(uint8_t channel_id,
-                                    PioChannelStatus &status) const noexcept = 0;
+  virtual hf_pio_err_t GetChannelStatus(uint8_t channel_id,
+                                        hf_pio_channel_status_t &status) const noexcept = 0;
 
   /**
    * @brief Get PIO capabilities
    * @param capabilities [out] Capability information
    * @return Error code indicating success or failure
    */
-  virtual HfPioErr GetCapabilities(PioCapabilities &capabilities) const noexcept = 0;
+  virtual hf_pio_err_t GetCapabilities(hf_pio_capabilities_t &capabilities) const noexcept = 0;
 
   /**
    * @brief Set callback for transmission complete events
    * @param callback Callback function
    * @param user_data User data to pass to callback
    */
-  virtual void SetTransmitCallback(PioTransmitCallback callback,
+  virtual void SetTransmitCallback(hf_pio_transmit_callback_t callback,
                                    void *user_data = nullptr) noexcept = 0;
 
   /**
@@ -362,7 +363,7 @@ public:
    * @param callback Callback function
    * @param user_data User data to pass to callback
    */
-  virtual void SetReceiveCallback(PioReceiveCallback callback,
+  virtual void SetReceiveCallback(hf_pio_receive_callback_t callback,
                                   void *user_data = nullptr) noexcept = 0;
 
   /**
@@ -370,7 +371,8 @@ public:
    * @param callback Callback function
    * @param user_data User data to pass to callback
    */
-  virtual void SetErrorCallback(PioErrorCallback callback, void *user_data = nullptr) noexcept = 0;
+  virtual void SetErrorCallback(hf_pio_error_callback_t callback,
+                                void *user_data = nullptr) noexcept = 0;
 
   /**
    * @brief Clear all callbacks
@@ -382,10 +384,9 @@ protected:
    * @brief Protected constructor
    */
   BasePio() noexcept : initialized_(false) {}
-  
+
   /**
    * @brief Initialization state tracking
    */
   bool initialized_;
 };
-
