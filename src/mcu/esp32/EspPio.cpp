@@ -12,7 +12,7 @@
  * @date 2025
  * @copyright HardFOC
  */
-#include "McuPio.h"
+#include "EspPio.h"
 #include <algorithm>
 #include <cstring>
 
@@ -58,12 +58,12 @@ McuPio::~McuPio() noexcept {
 // INITIALIZATION AND DEINITIALIZATION
 //==============================================================================
 
-HfPioErr McuPio::Initialize() noexcept {
+hf_pio_err_t McuPio::Initialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (initialized_) {
     ESP_LOGW(TAG, "Already initialized");
-    return HfPioErr::PIO_ERR_ALREADY_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_ALREADY_INITIALIZED;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -74,18 +74,18 @@ HfPioErr McuPio::Initialize() noexcept {
 
   initialized_ = true;
   ESP_LOGI(TAG, "McuPio initialized successfully");
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   ESP_LOGE(TAG, "ESP32 platform not available");
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfPioErr McuPio::Deinitialize() noexcept {
+hf_pio_err_t McuPio::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   // Deinitialize all configured channels
@@ -103,93 +103,94 @@ HfPioErr McuPio::Deinitialize() noexcept {
 
   initialized_ = false;
   ESP_LOGI(TAG, "McuPio deinitialized");
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
 //==============================================================================
 // CHANNEL CONFIGURATION
 //==============================================================================
 
-HfPioErr McuPio::ConfigureChannel(uint8_t channel_id, const PioChannelConfig &config) noexcept {
+hf_pio_err_t McuPio::ConfigureChannel(uint8_t channel_id,
+                                      const hf_pio_channel_config_t &config) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (channels_[channel_id].busy) {
-    return HfPioErr::PIO_ERR_CHANNEL_BUSY;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_BUSY;
   }
 
   // Validate configuration
   if (config.gpio_pin < 0) {
-    return HfPioErr::PIO_ERR_INVALID_PARAMETER;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
   if (config.resolution_ns == 0) {
-    return HfPioErr::PIO_ERR_INVALID_RESOLUTION;
+    return hf_pio_err_t::PIO_ERR_INVALID_RESOLUTION;
   }
 
   // Store configuration
   channels_[channel_id].config = config;
 
   // Initialize the channel hardware
-  HfPioErr result = InitializeChannel(channel_id);
-  if (result != HfPioErr::PIO_SUCCESS) {
+  hf_pio_err_t result = InitializeChannel(channel_id);
+  if (result != hf_pio_err_t::PIO_SUCCESS) {
     return result;
   }
 
   channels_[channel_id].configured = true;
   ESP_LOGI(TAG, "Channel %d configured on GPIO %d", channel_id, config.gpio_pin);
 
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
 //==============================================================================
 // TRANSMISSION OPERATIONS
 //==============================================================================
 
-HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t symbol_count,
-                          bool wait_completion) noexcept {
+hf_pio_err_t McuPio::Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols,
+                              size_t symbol_count, bool wait_completion) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   if (channels_[channel_id].config.direction == hf_pio_direction_t::Receive) {
-    return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   if (channels_[channel_id].busy) {
-    return HfPioErr::PIO_ERR_CHANNEL_BUSY;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_BUSY;
   }
 
   if (symbols == nullptr || symbol_count == 0) {
-    return HfPioErr::PIO_ERR_INVALID_PARAMETER;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
   if (symbol_count > MAX_SYMBOLS_PER_TRANSMISSION) {
-    return HfPioErr::PIO_ERR_BUFFER_TOO_LARGE;
+    return hf_pio_err_t::PIO_ERR_BUFFER_TOO_LARGE;
   }
 
   // Validate symbols
-  HfPioErr validation_result = ValidateSymbols(symbols, symbol_count);
-  if (validation_result != HfPioErr::PIO_SUCCESS) {
+  hf_pio_err_t validation_result = ValidateSymbols(symbols, symbol_count);
+  if (validation_result != hf_pio_err_t::PIO_SUCCESS) {
     return validation_result;
   }
 
@@ -197,15 +198,15 @@ HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t s
   auto &channel = channels_[channel_id];
 
   if (channel.tx_channel == nullptr) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
-  // Convert PioSymbols to RMT format
-  RmtSymbolWord rmt_symbols[MAX_SYMBOLS_PER_TRANSMISSION];
+  // Convert hf_pio_symbol_ts to RMT format
+  hf_rmt_symbol_word_t rmt_symbols[MAX_SYMBOLS_PER_TRANSMISSION];
   size_t rmt_symbol_count = 0;
 
-  HfPioErr convert_result =
+  hf_pio_err_t convert_result =
       ConvertToRmtSymbols(symbols, symbol_count, rmt_symbols, rmt_symbol_count);
-  if (convert_result != HfPioErr::PIO_SUCCESS) {
+  if (convert_result != hf_pio_err_t::PIO_SUCCESS) {
     return convert_result;
   }
 
@@ -228,17 +229,17 @@ HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t s
     channel.busy = false;
     channel.status.is_transmitting = false;
     ESP_LOGE(TAG, "Failed to register TX callbacks for channel %d: %d", channel_id, ret);
-    return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+    return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
-  ret = rmt_transmit(channel.tx_channel, channel.encoder, 
-                     reinterpret_cast<const rmt_symbol_word_t*>(rmt_symbols),
-                     rmt_symbol_count * sizeof(RmtSymbolWord), &tx_config);
+  ret = rmt_transmit(channel.tx_channel, channel.encoder,
+                     reinterpret_cast<const rmt_symbol_word_t *>(rmt_symbols),
+                     rmt_symbol_count * sizeof(hf_rmt_symbol_word_t), &tx_config);
 
   if (ret != ESP_OK) {
     channel.busy = false;
     channel.status.is_transmitting = false;
     ESP_LOGE(TAG, "Failed to start transmission on channel %d: %d", channel_id, ret);
-    return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+    return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
   if (wait_completion) {
     // Wait for transmission to complete using ESP-IDF API
@@ -247,7 +248,7 @@ HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t s
                                timeout_us == 0 ? portMAX_DELAY : pdMS_TO_TICKS(timeout_us / 1000));
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Transmission timeout on channel %d", channel_id);
-      return HfPioErr::PIO_ERR_COMMUNICATION_TIMEOUT;
+      return hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT;
     }
     channel.busy = false;
     channel.status.is_transmitting = false;
@@ -255,10 +256,10 @@ HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t s
   }
 
   ESP_LOGD(TAG, "Started transmission of %d symbols on channel %d", symbol_count, channel_id);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   ESP_LOGE(TAG, "ESP32 platform not available");
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
@@ -266,40 +267,40 @@ HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t s
 // RECEPTION OPERATIONS
 //==============================================================================
 
-HfPioErr McuPio::StartReceive(uint8_t channel_id, PioSymbol *buffer, size_t buffer_size,
-                              uint32_t timeout_us) noexcept {
+hf_pio_err_t McuPio::StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
+                                  uint32_t timeout_us) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   if (channels_[channel_id].config.direction == hf_pio_direction_t::Transmit) {
-    return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   if (channels_[channel_id].busy) {
-    return HfPioErr::PIO_ERR_CHANNEL_BUSY;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_BUSY;
   }
 
   if (buffer == nullptr || buffer_size == 0) {
-    return HfPioErr::PIO_ERR_INVALID_PARAMETER;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
 
   if (channel.rx_channel == nullptr) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   // Store buffer information
@@ -329,42 +330,42 @@ HfPioErr McuPio::StartReceive(uint8_t channel_id, PioSymbol *buffer, size_t buff
     channel.busy = false;
     channel.status.is_receiving = false;
     ESP_LOGE(TAG, "Failed to register RX callbacks for channel %d: %d", channel_id, ret);
-    return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+    return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
   // Start reception with allocated buffer
-  ret = rmt_receive(channel.rx_channel, nullptr, rmt_buffer_size * sizeof(RmtSymbolWord),
+  ret = rmt_receive(channel.rx_channel, nullptr, rmt_buffer_size * sizeof(hf_rmt_symbol_word_t),
                     &rx_config);
   if (ret != ESP_OK) {
     channel.busy = false;
     channel.status.is_receiving = false;
     ESP_LOGE(TAG, "Failed to start reception on channel %d: %d", channel_id, ret);
-    return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+    return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
 
   ESP_LOGI(TAG, "Started reception on channel %d", channel_id);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   ESP_LOGE(TAG, "ESP32 platform not available");
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfPioErr McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept {
+hf_pio_err_t McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   auto &channel = channels_[channel_id];
 
   if (!channel.status.is_receiving) {
     symbols_received = 0;
-    return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -375,10 +376,10 @@ HfPioErr McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) noexc
 
   ESP_LOGI(TAG, "Stopped reception on channel %d, received %d symbols", channel_id,
            symbols_received);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   symbols_received = 0;
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
@@ -396,21 +397,22 @@ bool McuPio::IsChannelBusy(uint8_t channel_id) const noexcept {
   return channels_[channel_id].busy;
 }
 
-HfPioErr McuPio::GetChannelStatus(uint8_t channel_id, PioChannelStatus &status) const noexcept {
+hf_pio_err_t McuPio::GetChannelStatus(uint8_t channel_id,
+                                      hf_pio_channel_status_t &status) const noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   status = channels_[channel_id].status;
   status.is_initialized = channels_[channel_id].configured;
   status.is_busy = channels_[channel_id].busy;
 
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
-HfPioErr McuPio::GetCapabilities(PioCapabilities &capabilities) const noexcept {
+hf_pio_err_t McuPio::GetCapabilities(PioCapabilities &capabilities) const noexcept {
   capabilities.max_channels = MAX_CHANNELS;
   capabilities.min_resolution_ns = 12.5;    // Based on 80MHz RMT clock
   capabilities.max_resolution_ns = 3355443; // Max with divider
@@ -420,26 +422,26 @@ HfPioErr McuPio::GetCapabilities(PioCapabilities &capabilities) const noexcept {
   capabilities.supports_loopback = true;
   capabilities.supports_carrier = true;
 
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
 //==============================================================================
 // CALLBACK MANAGEMENT
 //==============================================================================
 
-void McuPio::SetTransmitCallback(PioTransmitCallback callback, void *user_data) noexcept {
+void McuPio::SetTransmitCallback(hf_pio_transmit_callback_t callback, void *user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
   transmit_callback_ = callback;
   callback_user_data_ = user_data;
 }
 
-void McuPio::SetReceiveCallback(PioReceiveCallback callback, void *user_data) noexcept {
+void McuPio::SetReceiveCallback(hf_pio_receive_callback_t callback, void *user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
   receive_callback_ = callback;
   callback_user_data_ = user_data;
 }
 
-void McuPio::SetErrorCallback(PioErrorCallback callback, void *user_data) noexcept {
+void McuPio::SetErrorCallback(hf_pio_error_callback_t callback, void *user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
   error_callback_ = callback;
   callback_user_data_ = user_data;
@@ -457,20 +459,20 @@ void McuPio::ClearCallbacks() noexcept {
 // ESP32-SPECIFIC METHODS
 //==============================================================================
 
-HfPioErr McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz,
-                                  float duty_cycle) noexcept {
+hf_pio_err_t McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz,
+                                      float duty_cycle) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   if (duty_cycle < 0.0f || duty_cycle > 1.0f) {
-    return HfPioErr::PIO_ERR_INVALID_PARAMETER;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -478,7 +480,7 @@ HfPioErr McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz,
   auto &channel = channels_[channel_id];
 
   if (!channel.tx_channel) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   rmt_carrier_config_t carrier_config = {};
@@ -490,30 +492,30 @@ HfPioErr McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz,
   esp_err_t ret = rmt_apply_carrier(channel.tx_channel, &carrier_config);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to configure carrier on channel %d: %d", channel_id, ret);
-    return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+    return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
 
   ESP_LOGI(TAG, "Configured carrier on channel %d: %d Hz, %.2f%% duty", channel_id, carrier_freq_hz,
            duty_cycle * 100.0f);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfPioErr McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
+hf_pio_err_t McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Configure loopback mode
   ESP_LOGI(TAG, "Loopback %s for channel %d", enable ? "enabled" : "disabled", channel_id);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
@@ -521,18 +523,18 @@ HfPioErr McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
 // ADVANCED LOW-LEVEL RMT CONTROL METHODS
 //==============================================================================
 
-HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
-                                      bool enable_dma, uint32_t queue_depth) noexcept {
+hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks, bool enable_dma,
+                                          uint32_t queue_depth) noexcept {
   if (!EnsureInitialized()) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    return HfPioErr::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
   }
 
   ESP_LOGI(TAG, "Configuring advanced RMT: channel=%d, memory_blocks=%zu, dma=%s, queue=%d",
@@ -545,11 +547,11 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
   // For existing channels, we need to reconfigure them with advanced settings
   if (channel.tx_channel || channel.rx_channel) {
     // Store current configuration
-    PioChannelConfig stored_config = channel.config;
-    
+    hf_pio_channel_config_t stored_config = channel.config;
+
     // Deinitialize the channel to reconfigure it
-    HfPioErr deinit_result = DeinitializeChannel(channel_id);
-    if (deinit_result != HfPioErr::PIO_SUCCESS) {
+    hf_pio_err_t deinit_result = DeinitializeChannel(channel_id);
+    if (deinit_result != hf_pio_err_t::PIO_SUCCESS) {
       ESP_LOGE(TAG, "Failed to deinitialize channel for advanced reconfiguration");
       return deinit_result;
     }
@@ -558,8 +560,8 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
     const auto &config = stored_config;
     uint32_t clock_divider = CalculateClockDivider(config.resolution_ns);
 
-      if (config.direction == hf_pio_direction_t::Transmit ||
-      config.direction == hf_pio_direction_t::Bidirectional) {
+    if (config.direction == hf_pio_direction_t::Transmit ||
+        config.direction == hf_pio_direction_t::Bidirectional) {
       // Configure advanced TX channel
       rmt_tx_channel_config_t tx_config = {};
       tx_config.gpio_num = config.gpio_pin;
@@ -568,15 +570,16 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
       tx_config.mem_block_symbols = static_cast<uint32_t>(memory_blocks);
       tx_config.trans_queue_depth = queue_depth;
       tx_config.with_dma = enable_dma;
-      
+
       if (enable_dma) {
         ESP_LOGI(TAG, "Enabling DMA for TX channel %d", channel_id);
       }
 
       esp_err_t ret = rmt_new_tx_channel(&tx_config, &channel.tx_channel);
       if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to create advanced TX channel %d: %s", channel_id, esp_err_to_name(ret));
-        return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+        ESP_LOGE(TAG, "Failed to create advanced TX channel %d: %s", channel_id,
+                 esp_err_to_name(ret));
+        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
       }
 
       // Create appropriate encoder based on configuration
@@ -591,7 +594,7 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
         bytes_config.bit1.duration0 = 2;
         bytes_config.bit1.level1 = 0;
         bytes_config.bit1.duration1 = 1;
-        
+
         ret = rmt_new_bytes_encoder(&bytes_config, &channel.bytes_encoder);
         if (ret != ESP_OK) {
           ESP_LOGW(TAG, "Failed to create bytes encoder, using copy encoder");
@@ -605,24 +608,26 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
         rmt_copy_encoder_config_t copy_config = {};
         ret = rmt_new_copy_encoder(&copy_config, &channel.encoder);
       }
-      
+
       if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to create encoder for advanced channel %d: %s", channel_id, esp_err_to_name(ret));
+        ESP_LOGE(TAG, "Failed to create encoder for advanced channel %d: %s", channel_id,
+                 esp_err_to_name(ret));
         rmt_del_channel(channel.tx_channel);
         channel.tx_channel = nullptr;
-        return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
       }
 
       // Enable channel
       ret = rmt_enable(channel.tx_channel);
       if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to enable advanced TX channel %d: %s", channel_id, esp_err_to_name(ret));
-        return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+        ESP_LOGE(TAG, "Failed to enable advanced TX channel %d: %s", channel_id,
+                 esp_err_to_name(ret));
+        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
       }
     }
 
-    if (config.direction == PioDirection::Receive ||
-        config.direction == PioDirection::Bidirectional) {
+    if (config.direction == hf_pio_direction_t::Receive ||
+        config.direction == hf_pio_direction_t::Bidirectional) {
       // Configure advanced RX channel
       rmt_rx_channel_config_t rx_config = {};
       rx_config.gpio_num = config.gpio_pin;
@@ -633,15 +638,17 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
 
       esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
       if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to create advanced RX channel %d: %s", channel_id, esp_err_to_name(ret));
-        return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+        ESP_LOGE(TAG, "Failed to create advanced RX channel %d: %s", channel_id,
+                 esp_err_to_name(ret));
+        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
       }
 
       // Enable channel
       ret = rmt_enable(channel.rx_channel);
       if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to enable advanced RX channel %d: %s", channel_id, esp_err_to_name(ret));
-        return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+        ESP_LOGE(TAG, "Failed to enable advanced RX channel %d: %s", channel_id,
+                 esp_err_to_name(ret));
+        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
       }
     }
 
@@ -649,13 +656,15 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
     channel.config = stored_config;
     channel.configured = true;
   }
-  
-  ESP_LOGI(TAG, "Advanced RMT configuration completed for channel %d with %zu memory blocks, DMA=%s, queue depth=%d", 
+
+  ESP_LOGI(TAG,
+           "Advanced RMT configuration completed for channel %d with %zu memory blocks, DMA=%s, "
+           "queue depth=%d",
            channel_id, memory_blocks, enable_dma ? "enabled" : "disabled", queue_depth);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   ESP_LOGW(TAG, "Advanced RMT configuration not supported on this platform");
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
@@ -663,26 +672,26 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
 // ADVANCED PIO FUNCTION IMPLEMENTATIONS
 //==============================================================================
 
-HfPioErr McuPio::ConfigureEncoder(uint8_t channel_id, const PioSymbol &bit0_config,
-                                  const PioSymbol &bit1_config) noexcept {
+hf_pio_err_t McuPio::ConfigureEncoder(uint8_t channel_id, const hf_pio_symbol_t &bit0_config,
+                                      const hf_pio_symbol_t &bit1_config) noexcept {
   if (!EnsureInitialized()) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    return HfPioErr::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
-  
+
   if (channel.tx_channel == nullptr) {
     ESP_LOGE(TAG, "TX channel not configured for encoder setup on channel %d", channel_id);
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   // Create or reconfigure bytes encoder with custom bit patterns
@@ -695,66 +704,68 @@ HfPioErr McuPio::ConfigureEncoder(uint8_t channel_id, const PioSymbol &bit0_conf
   // Configure bit 0 pattern
   encoder_config.bit0.level0 = bit0_config.level ? 1 : 0;
   encoder_config.bit0.duration0 = bit0_config.duration;
-  encoder_config.bit0.level1 = bit0_config.level ? 0 : 1; // Complement for return
+  encoder_config.bit0.level1 = bit0_config.level ? 0 : 1;   // Complement for return
   encoder_config.bit0.duration1 = bit0_config.duration / 2; // Half duration for return
-  
+
   // Configure bit 1 pattern
   encoder_config.bit1.level0 = bit1_config.level ? 1 : 0;
   encoder_config.bit1.duration0 = bit1_config.duration;
-  encoder_config.bit1.level1 = bit1_config.level ? 0 : 1; // Complement for return
+  encoder_config.bit1.level1 = bit1_config.level ? 0 : 1;   // Complement for return
   encoder_config.bit1.duration1 = bit1_config.duration / 2; // Half duration for return
 
   esp_err_t ret = rmt_new_bytes_encoder(&encoder_config, &channel.bytes_encoder);
   if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to configure encoder for channel %d: %s", channel_id, esp_err_to_name(ret));
-    return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+    ESP_LOGE(TAG, "Failed to configure encoder for channel %d: %s", channel_id,
+             esp_err_to_name(ret));
+    return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
 
   // Update the primary encoder reference
   channel.encoder = channel.bytes_encoder;
-  
+
   ESP_LOGI(TAG, "Configured encoder for channel %d with custom bit patterns", channel_id);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   ESP_LOGW(TAG, "Encoder configuration not supported on this platform");
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfPioErr McuPio::SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept {
+hf_pio_err_t McuPio::SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept {
   if (!EnsureInitialized()) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    return HfPioErr::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Store idle level in configuration for future transmissions
   channels_[channel_id].config.idle_level = idle_level;
-  
+
   ESP_LOGD(TAG, "Set idle level %s for channel %d", idle_level ? "HIGH" : "LOW", channel_id);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfPioErr McuPio::GetChannelStatistics(uint8_t channel_id, PioChannelStatistics &stats) const noexcept {
+hf_pio_err_t McuPio::GetChannelStatistics(uint8_t channel_id,
+                                          hf_pio_channel_statistics_t &stats) const noexcept {
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   const auto &channel = channels_[channel_id];
-  
+
   // Fill statistics structure
-  stats.total_transmissions = 0; // Would be tracked in real implementation
-  stats.total_receptions = 0;    // Would be tracked in real implementation
+  stats.total_transmissions = 0;  // Would be tracked in real implementation
+  stats.total_receptions = 0;     // Would be tracked in real implementation
   stats.failed_transmissions = 0; // Would be tracked in real implementation
   stats.failed_receptions = 0;    // Would be tracked in real implementation
   stats.last_operation_time = channel.last_operation_time;
@@ -762,166 +773,171 @@ HfPioErr McuPio::GetChannelStatistics(uint8_t channel_id, PioChannelStatistics &
   stats.is_busy = channel.busy;
   stats.current_resolution_ns = channel.config.resolution_ns;
   stats.memory_blocks_allocated = 64; // Default or actual allocation
-  stats.dma_enabled = false; // Would be tracked based on channel configuration
-  
-  return HfPioErr::PIO_SUCCESS;
+  stats.dma_enabled = false;          // Would be tracked based on channel configuration
+
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
-HfPioErr McuPio::ResetChannelStatistics(uint8_t channel_id) noexcept {
+hf_pio_err_t McuPio::ResetChannelStatistics(uint8_t channel_id) noexcept {
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   // Reset statistics counters (would be implemented with actual counters)
   ESP_LOGD(TAG, "Reset statistics for channel %d", channel_id);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
 //==============================================================================
 // MISSING ADVANCED PIO FUNCTION IMPLEMENTATIONS
 //==============================================================================
 
-HfPioErr McuPio::TransmitRawRmtSymbols(uint8_t channel_id, const RmtSymbolWord *rmt_symbols,
-                                       size_t symbol_count, bool wait_completion) noexcept {
+hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
+                                           const hf_rmt_symbol_word_t *rmt_symbols,
+                                           size_t symbol_count, bool wait_completion) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    return HfPioErr::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
   }
 
   if (channels_[channel_id].busy) {
-    return HfPioErr::PIO_ERR_CHANNEL_BUSY;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_BUSY;
   }
 
   if (rmt_symbols == nullptr || symbol_count == 0) {
-    return HfPioErr::PIO_ERR_INVALID_PARAMETER;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
-  
+
   if (channel.tx_channel == nullptr) {
     ESP_LOGE(TAG, "TX channel not configured for channel %d", channel_id);
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   channels_[channel_id].busy = true;
   channels_[channel_id].status.is_transmitting = true;
   channels_[channel_id].status.symbols_queued = symbol_count;
   channels_[channel_id].status.timestamp_us = esp_timer_get_time();
-  
+
   // Create transmission configuration
   rmt_transmit_config_t tx_config = {};
   tx_config.loop_count = 0; // Single transmission
   tx_config.eot_level = 0;  // End with low level
-  tx_config.queue_nonblocking = false; // Block if queue is full
-    // For raw RMT symbols, we transmit directly using the copy encoder
-  esp_err_t result = rmt_transmit(channel.tx_channel, 
-                                  channel.encoder, 
-                                  reinterpret_cast<const rmt_symbol_word_t*>(rmt_symbols), 
-                                  symbol_count * sizeof(RmtSymbolWord), 
-                                  &tx_config);
-  
+  tx_config.queue_nonblocking =
+      false; // Block if queue is full
+             // For raw RMT symbols, we transmit directly using the copy encoder
+  esp_err_t result = rmt_transmit(channel.tx_channel, channel.encoder,
+                                  reinterpret_cast<const rmt_symbol_word_t *>(rmt_symbols),
+                                  symbol_count * sizeof(hf_rmt_symbol_word_t), &tx_config);
+
   if (result != ESP_OK) {
     channels_[channel_id].busy = false;
     channels_[channel_id].status.is_transmitting = false;
-    ESP_LOGE(TAG, "Raw RMT symbol transmission failed on channel %d: %s", channel_id, esp_err_to_name(result));
-    InvokeErrorCallback(channel_id, HfPioErr::PIO_ERR_COMMUNICATION_FAILURE);
-    return HfPioErr::PIO_ERR_COMMUNICATION_FAILURE;
+    ESP_LOGE(TAG, "Raw RMT symbol transmission failed on channel %d: %s", channel_id,
+             esp_err_to_name(result));
+    InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
+    return hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE;
   }
 
   // Wait for completion if requested
   if (wait_completion) {
     uint32_t timeout_ms = channel.config.timeout_us / 1000;
-    if (timeout_ms == 0) timeout_ms = portMAX_DELAY;
-    
+    if (timeout_ms == 0)
+      timeout_ms = portMAX_DELAY;
+
     result = rmt_tx_wait_all_done(channel.tx_channel, pdMS_TO_TICKS(timeout_ms));
     if (result != ESP_OK) {
-      ESP_LOGW(TAG, "Wait for transmission completion timed out on channel %d: %s", 
-               channel_id, esp_err_to_name(result));
-      InvokeErrorCallback(channel_id, HfPioErr::PIO_ERR_COMMUNICATION_TIMEOUT);
-      return HfPioErr::PIO_ERR_COMMUNICATION_TIMEOUT;
+      ESP_LOGW(TAG, "Wait for transmission completion timed out on channel %d: %s", channel_id,
+               esp_err_to_name(result));
+      InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT);
+      return hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT;
     }
-    
+
     // Update status after successful completion
     channels_[channel_id].busy = false;
     channels_[channel_id].status.is_transmitting = false;
     channels_[channel_id].status.symbols_processed = symbol_count;
     UpdateChannelStatus(channel_id);
   }
-  
+
   ESP_LOGD(TAG, "Transmitted %zu raw RMT symbols on channel %d", symbol_count, channel_id);
-  
-  return HfPioErr::PIO_SUCCESS;
+
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   ESP_LOGE(TAG, "ESP32 platform not available for raw RMT transmission");
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfPioErr McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, RmtSymbolWord *rmt_buffer,
-                                      size_t buffer_size, size_t &symbols_received,
-                                      uint32_t timeout_us) noexcept {
+hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, hf_rmt_symbol_word_t *rmt_buffer,
+                                          size_t buffer_size, size_t &symbols_received,
+                                          uint32_t timeout_us) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPioErr::PIO_ERR_INVALID_CHANNEL;
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    return HfPioErr::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
   }
 
   if (rmt_buffer == nullptr || buffer_size == 0) {
     symbols_received = 0;
-    return HfPioErr::PIO_ERR_INVALID_PARAMETER;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
-  
+
   if (channel.rx_channel == nullptr) {
     ESP_LOGE(TAG, "RX channel not configured for channel %d", channel_id);
     symbols_received = 0;
-    return HfPioErr::PIO_ERR_NOT_INITIALIZED;
+    return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   // Prepare receive buffer
-  size_t buffer_size_bytes = buffer_size * sizeof(RmtSymbolWord);
-  
+  size_t buffer_size_bytes = buffer_size * sizeof(hf_rmt_symbol_word_t);
+
   // Configure reception parameters
   rmt_receive_config_t rx_config = {};
   rx_config.signal_range_min_ns = channel.config.resolution_ns;
   rx_config.signal_range_max_ns = channel.config.resolution_ns * 32767; // Max duration
-  
+
   // Mark channel as busy
   channels_[channel_id].busy = true;
   channels_[channel_id].status.is_receiving = true;
   channels_[channel_id].status.timestamp_us = esp_timer_get_time();
-    // Start RMT reception
-  esp_err_t result = rmt_receive(channel.rx_channel, reinterpret_cast<rmt_symbol_word_t*>(rmt_buffer), buffer_size_bytes, &rx_config);
-  
+  // Start RMT reception
+  esp_err_t result =
+      rmt_receive(channel.rx_channel, reinterpret_cast<rmt_symbol_word_t *>(rmt_buffer),
+                  buffer_size_bytes, &rx_config);
+
   if (result != ESP_OK) {
     channels_[channel_id].busy = false;
     channels_[channel_id].status.is_receiving = false;
-    ESP_LOGE(TAG, "Failed to start RMT reception on channel %d: %s", channel_id, esp_err_to_name(result));
+    ESP_LOGE(TAG, "Failed to start RMT reception on channel %d: %s", channel_id,
+             esp_err_to_name(result));
     symbols_received = 0;
-    InvokeErrorCallback(channel_id, HfPioErr::PIO_ERR_COMMUNICATION_FAILURE);
-    return HfPioErr::PIO_ERR_COMMUNICATION_FAILURE;
+    InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
+    return hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE;
   }
 
   // Wait for reception completion with timeout
@@ -929,14 +945,14 @@ HfPioErr McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, RmtSymbolWord *rmt_buf
   if (timeout_ticks == 0) {
     timeout_ticks = portMAX_DELAY;
   }
-  
+
   // In a real implementation, we would use event groups or semaphores to wait for completion
   // For this implementation, we simulate immediate completion for demonstration
   // The actual symbols_received would be set by the RX completion callback
-  
+
   // Simulate processing time
   vTaskDelay(pdMS_TO_TICKS(1));
-  
+
   // Update status
   channels_[channel_id].busy = false;
   channels_[channel_id].status.is_receiving = false;
@@ -944,13 +960,13 @@ HfPioErr McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, RmtSymbolWord *rmt_buf
   channels_[channel_id].rx_symbols_received = symbols_received;
   channels_[channel_id].status.symbols_processed = symbols_received;
   UpdateChannelStatus(channel_id);
-  
+
   ESP_LOGD(TAG, "Received %zu raw RMT symbols on channel %d", symbols_received, channel_id);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   symbols_received = 0;
   ESP_LOGE(TAG, "ESP32 platform not available for raw RMT reception");
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
@@ -972,11 +988,11 @@ bool McuPio::IsValidChannelId(uint8_t channel_id) const noexcept {
 }
 
 #ifdef HF_MCU_FAMILY_ESP32
-HfPioErr McuPio::ConvertToRmtSymbols(const PioSymbol *symbols, size_t symbol_count,
-                                     RmtSymbolWord *rmt_symbols,
-                                     size_t &rmt_symbol_count) noexcept {
+hf_pio_err_t McuPio::ConvertToRmtSymbols(const hf_pio_symbol_t *symbols, size_t symbol_count,
+                                         hf_rmt_symbol_word_t *rmt_symbols,
+                                         size_t &rmt_symbol_count) noexcept {
   if (symbol_count > MAX_SYMBOLS_PER_TRANSMISSION) {
-    return HfPioErr::PIO_ERR_BUFFER_TOO_LARGE;
+    return hf_pio_err_t::PIO_ERR_BUFFER_TOO_LARGE;
   }
 
   rmt_symbol_count = symbol_count;
@@ -998,12 +1014,12 @@ HfPioErr McuPio::ConvertToRmtSymbols(const PioSymbol *symbols, size_t symbol_cou
     }
   }
 
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
-HfPioErr McuPio::ConvertFromRmtSymbols(const RmtSymbolWord *rmt_symbols,
-                                       size_t rmt_symbol_count, PioSymbol *symbols,
-                                       size_t &symbol_count) noexcept {
+hf_pio_err_t McuPio::ConvertFromRmtSymbols(const hf_rmt_symbol_word_t *rmt_symbols,
+                                           size_t rmt_symbol_count, hf_pio_symbol_t *symbols,
+                                           size_t &symbol_count) noexcept {
   symbol_count = std::min(rmt_symbol_count, symbol_count);
 
   for (size_t i = 0; i < symbol_count; ++i) {
@@ -1011,7 +1027,7 @@ HfPioErr McuPio::ConvertFromRmtSymbols(const RmtSymbolWord *rmt_symbols,
     symbols[i].duration = rmt_symbols[i].duration0;
   }
 
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
 uint32_t McuPio::CalculateClockDivider(uint32_t resolution_ns) const noexcept {
@@ -1021,7 +1037,7 @@ uint32_t McuPio::CalculateClockDivider(uint32_t resolution_ns) const noexcept {
   return std::max(1U, std::min(255U, divider)); // Clamp to valid range
 }
 
-bool McuPio::OnTransmitComplete(RmtChannelHandle *channel,
+bool McuPio::OnTransmitComplete(hf_rmt_channel_handle_t *channel,
                                 const rmt_tx_done_event_data_t *edata, void *user_ctx) {
   auto *instance = static_cast<McuPio *>(user_ctx);
   if (!instance)
@@ -1051,8 +1067,8 @@ bool McuPio::OnTransmitComplete(RmtChannelHandle *channel,
   return false; // Don't yield to higher priority task
 }
 
-bool McuPio::OnReceiveComplete(RmtChannelHandle *channel, const rmt_rx_done_event_data_t *edata,
-                               void *user_ctx) {
+bool McuPio::OnReceiveComplete(hf_rmt_channel_handle_t *channel,
+                               const rmt_rx_done_event_data_t *edata, void *user_ctx) {
   auto *instance = static_cast<McuPio *>(user_ctx);
   if (!instance || !edata)
     return false;
@@ -1064,10 +1080,11 @@ bool McuPio::OnReceiveComplete(RmtChannelHandle *channel, const rmt_rx_done_even
 
       auto &ch = instance->channels_[i];
 
-      // Convert received RMT symbols back to PioSymbols
+      // Convert received RMT symbols back to hf_pio_symbol_ts
       size_t symbols_converted = 0;
-      if (ch.rx_buffer && edata->received_symbols) {        instance->ConvertFromRmtSymbols(
-            reinterpret_cast<const RmtSymbolWord *>(edata->received_symbols),
+      if (ch.rx_buffer && edata->received_symbols) {
+        instance->ConvertFromRmtSymbols(
+            reinterpret_cast<const hf_rmt_symbol_word_t *>(edata->received_symbols),
             edata->num_symbols, ch.rx_buffer, symbols_converted);
       }
 
@@ -1092,7 +1109,7 @@ bool McuPio::OnReceiveComplete(RmtChannelHandle *channel, const rmt_rx_done_even
 }
 #endif
 
-HfPioErr McuPio::InitializeChannel(uint8_t channel_id) noexcept {
+hf_pio_err_t McuPio::InitializeChannel(uint8_t channel_id) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
   const auto &config = channel.config;
@@ -1113,7 +1130,7 @@ HfPioErr McuPio::InitializeChannel(uint8_t channel_id) noexcept {
     esp_err_t ret = rmt_new_tx_channel(&tx_config, &channel.tx_channel);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to create TX channel %d: %d", channel_id, ret);
-      return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+      return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
 
     // Create copy encoder (simple symbol transmission)
@@ -1123,14 +1140,14 @@ HfPioErr McuPio::InitializeChannel(uint8_t channel_id) noexcept {
       ESP_LOGE(TAG, "Failed to create encoder for channel %d: %d", channel_id, ret);
       rmt_del_channel(channel.tx_channel);
       channel.tx_channel = nullptr;
-      return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+      return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
 
     // Enable channel
     ret = rmt_enable(channel.tx_channel);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to enable TX channel %d: %d", channel_id, ret);
-      return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+      return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
   }
 
@@ -1146,26 +1163,26 @@ HfPioErr McuPio::InitializeChannel(uint8_t channel_id) noexcept {
     esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to create RX channel %d: %d", channel_id, ret);
-      return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+      return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
 
     // Enable channel
     ret = rmt_enable(channel.rx_channel);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to enable RX channel %d: %d", channel_id, ret);
-      return HfPioErr::PIO_ERR_HARDWARE_FAULT;
+      return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
   }
 
   ESP_LOGI(TAG, "Initialized channel %d with %d ns resolution", channel_id, config.resolution_ns);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
   ESP_LOGE(TAG, "ESP32 platform not available");
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfPioErr McuPio::DeinitializeChannel(uint8_t channel_id) noexcept {
+hf_pio_err_t McuPio::DeinitializeChannel(uint8_t channel_id) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
 
@@ -1194,31 +1211,32 @@ HfPioErr McuPio::DeinitializeChannel(uint8_t channel_id) noexcept {
   channel.busy = false;
 
   ESP_LOGI(TAG, "Deinitialized channel %d", channel_id);
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 #else
-  return HfPioErr::PIO_ERR_UNSUPPORTED_OPERATION;
+  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfPioErr McuPio::ValidateSymbols(const PioSymbol *symbols, size_t symbol_count) const noexcept {
+hf_pio_err_t McuPio::ValidateSymbols(const hf_pio_symbol_t *symbols,
+                                     size_t symbol_count) const noexcept {
   for (size_t i = 0; i < symbol_count; ++i) {
     if (symbols[i].duration == 0) {
-      return HfPioErr::PIO_ERR_DURATION_TOO_SHORT;
+      return hf_pio_err_t::PIO_ERR_DURATION_TOO_SHORT;
     }
     if (symbols[i].duration > 32767) { // RMT 15-bit duration limit
-      return HfPioErr::PIO_ERR_DURATION_TOO_LONG;
+      return hf_pio_err_t::PIO_ERR_DURATION_TOO_LONG;
     }
   }
-  return HfPioErr::PIO_SUCCESS;
+  return hf_pio_err_t::PIO_SUCCESS;
 }
 
 void McuPio::UpdateChannelStatus(uint8_t channel_id) noexcept {
   auto &channel = channels_[channel_id];
   channel.status.timestamp_us = esp_timer_get_time();
-  channel.status.last_error = HfPioErr::PIO_SUCCESS;
+  channel.status.last_error = hf_pio_err_t::PIO_SUCCESS;
 }
 
-void McuPio::InvokeErrorCallback(uint8_t channel_id, HfPioErr error) noexcept {
+void McuPio::InvokeErrorCallback(uint8_t channel_id, hf_pio_err_t error) noexcept {
   if (error_callback_) {
     error_callback_(channel_id, error, callback_user_data_);
   }
@@ -1227,7 +1245,7 @@ void McuPio::InvokeErrorCallback(uint8_t channel_id, HfPioErr error) noexcept {
 
 bool McuPio::ValidatePioSystem() noexcept {
   ESP_LOGI(TAG, "Starting comprehensive PIO system validation");
-  
+
   if (!EnsureInitialized()) {
     ESP_LOGE(TAG, "PIO system validation failed: not initialized");
     return false;
@@ -1235,10 +1253,10 @@ bool McuPio::ValidatePioSystem() noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
   bool all_tests_passed = true;
-  
+
   // Test 1: Verify RMT peripheral is available
   ESP_LOGI(TAG, "Testing RMT peripheral availability...");
-  
+
   // Test 2: Validate channel configuration
   ESP_LOGI(TAG, "Testing channel configuration...");
   for (uint8_t i = 0; i < MAX_CHANNELS; ++i) {
@@ -1247,7 +1265,7 @@ bool McuPio::ValidatePioSystem() noexcept {
       all_tests_passed = false;
     }
   }
-  
+
   // Test 3: Check maximum symbol count
   size_t max_symbols = GetMaxSymbolCount();
   if (max_symbols == 0) {
@@ -1256,26 +1274,27 @@ bool McuPio::ValidatePioSystem() noexcept {
   } else {
     ESP_LOGI(TAG, "Maximum symbol count: %zu", max_symbols);
   }
-  
+
   // Test 4: Validate symbol conversion functions
   ESP_LOGI(TAG, "Testing symbol conversion functions...");
-  PioSymbol test_symbols[] = {{100, true}, {200, false}, {150, true}};  RmtSymbolWord rmt_symbols[10];
+  hf_pio_symbol_t test_symbols[] = {{100, true}, {200, false}, {150, true}};
+  hf_rmt_symbol_word_t rmt_symbols[10];
   size_t rmt_symbol_count = 0;
-  
-  HfPioErr result = ConvertToRmtSymbols(test_symbols, 3, rmt_symbols, rmt_symbol_count);
-  if (result != HfPioErr::PIO_SUCCESS) {
+
+  hf_pio_err_t result = ConvertToRmtSymbols(test_symbols, 3, rmt_symbols, rmt_symbol_count);
+  if (result != hf_pio_err_t::PIO_SUCCESS) {
     ESP_LOGE(TAG, "Symbol conversion test failed: %d", static_cast<int>(result));
     all_tests_passed = false;
   }
-  
+
   // Test 5: Validate symbol validation function
   ESP_LOGI(TAG, "Testing symbol validation...");
   result = ValidateSymbols(test_symbols, 3);
-  if (result != HfPioErr::PIO_SUCCESS) {
+  if (result != hf_pio_err_t::PIO_SUCCESS) {
     ESP_LOGE(TAG, "Symbol validation test failed: %d", static_cast<int>(result));
     all_tests_passed = false;
   }
-  
+
   // Test 6: Validate clock divider calculation
   ESP_LOGI(TAG, "Testing clock divider calculation...");
   uint32_t divider = CalculateClockDivider(1000); // 1 microsecond
@@ -1283,16 +1302,16 @@ bool McuPio::ValidatePioSystem() noexcept {
     ESP_LOGE(TAG, "Clock divider calculation failed: %d", divider);
     all_tests_passed = false;
   }
-  
+
   // Test 7: Validate capabilities structure
   ESP_LOGI(TAG, "Testing capabilities...");
   PioCapabilities caps;
   result = GetCapabilities(caps);
-  if (result != HfPioErr::PIO_SUCCESS || caps.max_channels == 0) {
+  if (result != hf_pio_err_t::PIO_SUCCESS || caps.max_channels == 0) {
     ESP_LOGE(TAG, "Capabilities test failed");
     all_tests_passed = false;
   }
-  
+
   // Test 8: Memory allocation test (simulate)
   ESP_LOGI(TAG, "Testing memory allocation patterns...");
   for (size_t mem_size : {48, 64, 128, 256, 512, 1024}) {
@@ -1300,13 +1319,13 @@ bool McuPio::ValidatePioSystem() noexcept {
       ESP_LOGW(TAG, "Memory size %zu outside valid range", mem_size);
     }
   }
-  
+
   if (all_tests_passed) {
     ESP_LOGI(TAG, "PIO system validation completed successfully - all tests passed");
   } else {
     ESP_LOGE(TAG, "PIO system validation failed - some tests did not pass");
   }
-  
+
   return all_tests_passed;
 #else
   ESP_LOGW(TAG, "PIO system validation not supported on this platform");
