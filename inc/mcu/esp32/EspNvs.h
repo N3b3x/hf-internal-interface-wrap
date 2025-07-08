@@ -1,5 +1,5 @@
 /**
- * @file McuNvsStorage.h
+ * @file EspNvs.h
  * @brief World-class ESP32-C6 NVS storage implementation with ESP-IDF v5.5+ features.
  *
  * This header provides a production-ready NVS implementation for microcontrollers with
@@ -48,13 +48,13 @@
 #include "RtosMutex.h"      // Thread-safe mutex support if enabled
 
 // ESP32-C6 NVS abstracted types for portability
-using NvsHandle = hf_nvs_handle_native_t;
-using NvsOpenMode = hf_nvs_open_mode_native_t;
-using NvsType = hf_nvs_type_native_t;
-using NvsIterator = hf_nvs_iterator_native_t;
+using hf_nvs_handle_t = hf_nvs_handle_native_t;
+using hf_nvs_open_mode_t = hf_nvs_open_mode_native_t;
+using hf_nvs_type_t = hf_nvs_type_native_t;
+using hf_nvs_iterator_t = hf_nvs_iterator_native_t;
 
 /**
- * @class McuNvsStorage
+ * @class EspNvs
  * @brief Production-ready MCU-integrated non-volatile storage implementation.
  *
  * This class provides comprehensive non-volatile storage using the microcontroller's
@@ -105,18 +105,18 @@ using NvsIterator = hf_nvs_iterator_native_t;
  * @see McuTypes.h for platform-specific type definitions
  * @see McuSelect.h for platform selection and configuration
  */
-class McuNvsStorage : public BaseNvsStorage {
+class EspNvs : public BaseNvsStorage {
 public:
   /**
    * @brief Constructor with namespace specification.
    * @param namespace_name Name of the storage namespace
    */
-  explicit McuNvsStorage(const char *namespace_name) noexcept;
+  explicit EspNvs(const char *namespace_name) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup.
    */
-  ~McuNvsStorage() noexcept override;
+  ~EspNvs() noexcept override;
 
   //==============================================//
   // OVERRIDDEN PURE VIRTUAL FUNCTIONS            //
@@ -124,39 +124,39 @@ public:
 
   /**
    * @brief Initialize the NVS system and open the namespace.
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr Initialize() noexcept override;
+  hf_nvs_err_t Initialize() noexcept override;
 
   /**
    * @brief Deinitialize the NVS system and close the namespace.
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr Deinitialize() noexcept override;
+  hf_nvs_err_t Deinitialize() noexcept override;
 
   /**
    * @brief Store a 32-bit unsigned integer value.
    * @param key Storage key (null-terminated string)
    * @param value Value to store
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr SetU32(const char *key, uint32_t value) noexcept override;
+  hf_nvs_err_t SetU32(const char *key, uint32_t value) noexcept override;
 
   /**
    * @brief Retrieve a 32-bit unsigned integer value.
    * @param key Storage key (null-terminated string)
    * @param value Reference to store the retrieved value
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr GetU32(const char *key, uint32_t &value) noexcept override;
+  hf_nvs_err_t GetU32(const char *key, uint32_t &value) noexcept override;
 
   /**
    * @brief Store a string value.
    * @param key Storage key (null-terminated string)
    * @param value String value to store
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr SetString(const char *key, const char *value) noexcept override;
+  hf_nvs_err_t SetString(const char *key, const char *value) noexcept override;
 
   /**
    * @brief Retrieve a string value.
@@ -164,9 +164,9 @@ public:
    * @param buffer Buffer to store the retrieved string
    * @param buffer_size Size of the buffer in bytes
    * @param actual_size Actual size of the string (optional)
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr GetString(const char *key, char *buffer, size_t buffer_size,
+  hf_nvs_err_t GetString(const char *key, char *buffer, size_t buffer_size,
                      size_t *actual_size = nullptr) noexcept override;
 
   /**
@@ -174,9 +174,9 @@ public:
    * @param key Storage key (null-terminated string)
    * @param data Pointer to data to store
    * @param data_size Size of data in bytes
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr SetBlob(const char *key, const void *data, size_t data_size) noexcept override;
+  hf_nvs_err_t SetBlob(const char *key, const void *data, size_t data_size) noexcept override;
 
   /**
    * @brief Retrieve binary data (blob).
@@ -184,23 +184,23 @@ public:
    * @param buffer Buffer to store the retrieved data
    * @param buffer_size Size of the buffer in bytes
    * @param actual_size Actual size of the data (optional)
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr GetBlob(const char *key, void *buffer, size_t buffer_size,
+  hf_nvs_err_t GetBlob(const char *key, void *buffer, size_t buffer_size,
                    size_t *actual_size = nullptr) noexcept override;
 
   /**
    * @brief Remove a key from storage.
    * @param key Storage key to remove
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr EraseKey(const char *key) noexcept override;
+  hf_nvs_err_t EraseKey(const char *key) noexcept override;
 
   /**
    * @brief Commit any pending writes to non-volatile storage.
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr Commit() noexcept override;
+  hf_nvs_err_t Commit() noexcept override;
 
   /**
    * @brief Check if a key exists in storage.
@@ -213,9 +213,9 @@ public:
    * @brief Get the size of a stored value.
    * @param key Storage key
    * @param size Reference to store the size
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  HfNvsErr GetSize(const char *key, size_t &size) noexcept override;
+  hf_nvs_err_t GetSize(const char *key, size_t &size) noexcept override;
 
   /**
    * @brief Get description of this NVS implementation.
@@ -246,10 +246,10 @@ private:
    *          to unified HardFOC error enumeration, including all encryption
    *          and advanced feature error conditions.
    * @param mcu_error MCU-specific error code (esp_err_t on ESP32)
-   * @return Corresponding HfNvsErr enumeration value
+   * @return Corresponding hf_nvs_err_t enumeration value
    * @note Supports all ESP-IDF v5.5+ NVS error codes including encryption
    */
-  HfNvsErr ConvertMcuError(int mcu_error) const noexcept;
+  hf_nvs_err_t ConvertMcuError(int mcu_error) const noexcept;
 
   /**
    * @brief Update operation statistics and performance counters.
