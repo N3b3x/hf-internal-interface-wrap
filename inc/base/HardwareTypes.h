@@ -73,9 +73,12 @@ constexpr hf_host_id_t HF_INVALID_HOST = std::numeric_limits<hf_host_id_t>::max(
 //==============================================================================
 
 /**
- * @brief Platform-agnostic frequency type.
+ * @brief Platform-agnostic frequency type (in Hz).
  */
-using hf_frequency_t = uint32_t;
+using hf_frequency_hz_t = uint32_t;
+
+///@brief Backward compatibility alias
+using hf_frequency_t = hf_frequency_hz_t;
 
 /**
  * @brief Platform-agnostic baud rate type.
@@ -101,6 +104,11 @@ constexpr hf_channel_id_t HF_INVALID_CHANNEL = std::numeric_limits<hf_channel_id
  * @brief Platform-agnostic time type in milliseconds.
  */
 using hf_time_t = uint32_t;
+
+/**
+ * @brief Timeout value in milliseconds.
+ */
+using hf_timeout_ms_t = hf_time_t;
 
 //==============================================================================
 // TIMEOUT CONSTANTS

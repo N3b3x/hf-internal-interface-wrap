@@ -18,17 +18,17 @@
 
 #pragma once
 
-#include "RtosMutex.h"
 #include "BaseSpi.h"
-#include "McuTypes.h"
+#include "EspTypes.h"
+#include "RtosMutex.h"
 #include <functional>
 #include <memory>
 #include <vector>
 
 #ifdef ESP_PLATFORM
+#include "driver/spi_common.h"
 #include "driver/spi_master.h"
 #include "driver/spi_slave.h"
-#include "driver/spi_common.h"
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
@@ -36,83 +36,77 @@
 #include "hal/spi_types.h"
 #endif
 
-// Type aliases to centralized types in McuTypes.h (following naming convention)
-using hf_spi_bus_config_alias_t = hf_spi_bus_config_t;
-using hf_spi_device_config_alias_t = hf_spi_device_interface_config_t;
-using hf_spi_transaction_alias_t = hf_spi_transaction_t;
-using hf_spi_device_handle_alias_t = hf_spi_device_handle_t;
-using hf_spi_host_device_alias_t = hf_spi_host_device_t;
+// No aliases - use types directly
 
 //--------------------------------------
 //  Advanced SPI Configuration
 //--------------------------------------
 
-// Type aliases for centralized types from McuTypes.h (following naming convention)
-using hf_spi_transfer_mode_alias_t = hf_spi_transfer_mode_t;
-using hf_spi_clock_source_alias_t = hf_spi_clock_source_t;
+// Use direct types for advanced configuration
 
 /**
  * @brief Advanced SPI configuration for ESP32C6/ESP-IDF v5.5+.
  */
 struct hf_spi_advanced_config_t {
   // Basic configuration
-  hf_spi_bus_config_alias_t base_config;         ///< Base SPI bus configuration
-  hf_spi_host_device_alias_t host_device;       ///< SPI host device (SPI2 for ESP32C6)
-  hf_spi_device_config_alias_t device_config;   ///< Device-specific configuration
-  
+  hf_spi_bus_config_t base_config;                ///< Base SPI bus configuration
+  hf_spi_host_device_t host_device;               ///< SPI host device (SPI2 for ESP32C6)
+  hf_spi_device_interface_config_t device_config; ///< Device-specific configuration
+
   // Advanced ESP32C6 features
-  hf_spi_transfer_mode_alias_t transfer_mode;  ///< Transfer mode (single/dual/quad/octal)
-  hf_spi_clock_source_alias_t clock_source;    ///< Clock source selection
-  bool dma_enabled;                 ///< Enable DMA acceleration
-  uint32_t dma_channel;             ///< DMA channel selection (auto if 0)
-  uint32_t max_transfer_size;       ///< Maximum transfer size in bytes
-  
+  hf_spi_transfer_mode_t transfer_mode; ///< Transfer mode (single/dual/quad/octal)
+  hf_spi_clock_source_t clock_source;   ///< Clock source selection
+  bool dma_enabled;                     ///< Enable DMA acceleration
+  uint32_t dma_channel;                 ///< DMA channel selection (auto if 0)
+  uint32_t max_transfer_size;           ///< Maximum transfer size in bytes
+
   // Performance and timing
-  bool use_iomux;                   ///< Use IOMUX for better performance
-  uint8_t input_delay_ns;           ///< Input delay compensation
-  uint8_t cs_setup_time;            ///< CS setup time (clock cycles)
-  uint8_t cs_hold_time;             ///< CS hold time (clock cycles)
-  
+  bool use_iomux;         ///< Use IOMUX for better performance
+  uint8_t input_delay_ns; ///< Input delay compensation
+  uint8_t cs_setup_time;  ///< CS setup time (clock cycles)
+  uint8_t cs_hold_time;   ///< CS hold time (clock cycles)
+
   // Power management
-  bool auto_suspend_enabled;        ///< Auto-suspend when idle
-  uint32_t suspend_delay_ms;        ///< Delay before auto-suspend
-  bool clock_gating_enabled;        ///< Enable clock gating for power saving
-  
+  bool auto_suspend_enabled; ///< Auto-suspend when idle
+  uint32_t suspend_delay_ms; ///< Delay before auto-suspend
+  bool clock_gating_enabled; ///< Enable clock gating for power saving
+
   // Queue and buffering
-  uint8_t transaction_queue_size;   ///< Transaction queue depth
-  bool polling_mode;                ///< Use polling instead of interrupts
-  uint32_t timeout_ms;              ///< Default operation timeout
-  
+  uint8_t transaction_queue_size; ///< Transaction queue depth
+  bool polling_mode;              ///< Use polling instead of interrupts
+  uint32_t timeout_ms;            ///< Default operation timeout
+
   // Diagnostics and monitoring
-  bool statistics_enabled;          ///< Enable operation statistics
-  bool error_recovery_enabled;      ///< Enable automatic error recovery
-  
+  bool statistics_enabled;     ///< Enable operation statistics
+  bool error_recovery_enabled; ///< Enable automatic error recovery
+
   // Default constructor
   hf_spi_advanced_config_t()
-      : host_device(hf_spi_host_device_alias_t::HF_SPI2_HOST), transfer_mode(hf_spi_transfer_mode_alias_t::HF_SPI_TRANSFER_MODE_SINGLE),
-        clock_source(hf_spi_clock_source_alias_t::HF_SPI_CLK_SRC_DEFAULT), dma_enabled(true), dma_channel(0),
-        max_transfer_size(4092), use_iomux(true), input_delay_ns(0), cs_setup_time(0), cs_hold_time(0),
-        auto_suspend_enabled(false), suspend_delay_ms(5000), clock_gating_enabled(false),
-        transaction_queue_size(7), polling_mode(false), timeout_ms(1000),
-        statistics_enabled(false), error_recovery_enabled(true) {}
+      : host_device(hf_spi_host_device_t::HF_SPI2_HOST),
+        transfer_mode(hf_spi_transfer_mode_t::HF_SPI_TRANSFER_MODE_SINGLE),
+        clock_source(hf_spi_clock_source_t::HF_SPI_CLK_SRC_DEFAULT), dma_enabled(true),
+        dma_channel(0), max_transfer_size(4092), use_iomux(true), input_delay_ns(0),
+        cs_setup_time(0), cs_hold_time(0), auto_suspend_enabled(false), suspend_delay_ms(5000),
+        clock_gating_enabled(false), transaction_queue_size(7), polling_mode(false),
+        timeout_ms(1000), statistics_enabled(false), error_recovery_enabled(true) {}
 };
 
 /**
  * @brief SPI operation statistics for performance monitoring.
  */
 struct hf_spi_statistics_t {
-  uint64_t total_transactions;      ///< Total transactions performed
-  uint64_t successful_transactions; ///< Successful transactions
-  uint64_t failed_transactions;     ///< Failed transactions
-  uint64_t timeout_transactions;    ///< Timed-out transactions
-  uint64_t bytes_transmitted;       ///< Total bytes transmitted
-  uint64_t bytes_received;          ///< Total bytes received
-  uint64_t average_transfer_time_us;///< Average transfer time (microseconds)
-  uint64_t max_transfer_time_us;    ///< Maximum transfer time
-  uint64_t min_transfer_time_us;    ///< Minimum transfer time
-  uint32_t dma_transfers;           ///< DMA-accelerated transfers
-  uint32_t polling_transfers;       ///< Polling-mode transfers
-  
+  uint64_t total_transactions;       ///< Total transactions performed
+  uint64_t successful_transactions;  ///< Successful transactions
+  uint64_t failed_transactions;      ///< Failed transactions
+  uint64_t timeout_transactions;     ///< Timed-out transactions
+  uint64_t bytes_transmitted;        ///< Total bytes transmitted
+  uint64_t bytes_received;           ///< Total bytes received
+  uint64_t average_transfer_time_us; ///< Average transfer time (microseconds)
+  uint64_t max_transfer_time_us;     ///< Maximum transfer time
+  uint64_t min_transfer_time_us;     ///< Minimum transfer time
+  uint32_t dma_transfers;            ///< DMA-accelerated transfers
+  uint32_t polling_transfers;        ///< Polling-mode transfers
+
   hf_spi_statistics_t()
       : total_transactions(0), successful_transactions(0), failed_transactions(0),
         timeout_transactions(0), bytes_transmitted(0), bytes_received(0),
@@ -124,25 +118,22 @@ struct hf_spi_statistics_t {
  * @brief SPI transfer descriptor for batch operations.
  */
 struct hf_spi_transfer_descriptor_t {
-  const uint8_t *tx_data;      ///< Transmit data (nullptr for read-only)
-  uint8_t *rx_data;            ///< Receive data (nullptr for write-only)
-  uint16_t length;             ///< Transfer length in bytes
-  uint32_t timeout_ms;         ///< Transfer timeout (0 = use default)
-  bool manage_cs;              ///< Manage CS for this transfer
-  uint32_t flags;              ///< Transfer-specific flags
-  
-  hf_spi_transfer_descriptor_t(const uint8_t *tx = nullptr, uint8_t *rx = nullptr,
-                       uint16_t len = 0, uint32_t timeout = 0, bool cs = true)
-      : tx_data(tx), rx_data(rx), length(len), timeout_ms(timeout),
-        manage_cs(cs), flags(0) {}
+  const uint8_t *tx_data; ///< Transmit data (nullptr for read-only)
+  uint8_t *rx_data;       ///< Receive data (nullptr for write-only)
+  uint16_t length;        ///< Transfer length in bytes
+  uint32_t timeout_ms;    ///< Transfer timeout (0 = use default)
+  bool manage_cs;         ///< Manage CS for this transfer
+  uint32_t flags;         ///< Transfer-specific flags
+
+  hf_spi_transfer_descriptor_t(const uint8_t *tx = nullptr, uint8_t *rx = nullptr, uint16_t len = 0,
+                               uint32_t timeout = 0, bool cs = true)
+      : tx_data(tx), rx_data(rx), length(len), timeout_ms(timeout), manage_cs(cs), flags(0) {}
 };
 
 // Callback function types (following naming convention)
-using hf_spi_async_callback_t = std::function<void(hf_spi_err_t result, size_t bytesTransferred, void *userData)>;
+using hf_spi_async_callback_t =
+    std::function<void(hf_spi_err_t result, size_t bytesTransferred, void *userData)>;
 using hf_spi_event_callback_t = std::function<void(int eventType, void *eventData, void *userData)>;
-
-// Type alias for centralized event type (following naming convention)
-using hf_spi_event_type_alias_t = hf_spi_event_type_t;
 
 /**
  * @class EspSpi
@@ -180,7 +171,7 @@ public:
    * @brief Constructor with basic configuration.
    * @param config SPI bus configuration parameters
    */
-  explicit EspSpi(const hf_spi_bus_config_alias_t &config) noexcept;
+  explicit EspSpi(const hf_spi_bus_config_t &config) noexcept;
 
   /**
    * @brief Constructor with advanced configuration.
@@ -217,7 +208,7 @@ public:
    * @return hf_spi_err_t result code
    */
   hf_spi_err_t Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                    uint32_t timeout_ms = 0) noexcept override;
+                        uint32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Assert/deassert the chip select signal.
@@ -248,7 +239,7 @@ public:
    * @brief Get current SPI configuration.
    * @return Current SPI bus configuration
    */
-  const hf_spi_bus_config_alias_t& GetConfig() const noexcept {
+  const hf_spi_bus_config_t &GetConfig() const noexcept {
     return use_advanced_config_ ? advanced_config_.base_config : config_;
   }
 
@@ -262,7 +253,7 @@ public:
    * @brief Get current transfer mode.
    * @return Current transfer mode
    */
-  hf_spi_transfer_mode_alias_t GetTransferMode() const noexcept;
+  hf_spi_transfer_mode_t GetTransferMode() const noexcept;
 
   /**
    * @brief Reset the SPI bus and recover from errors.
@@ -279,21 +270,21 @@ public:
    * @param device_config Device configuration
    * @return Device handle or nullptr on failure
    */
-  hf_spi_device_handle_alias_t addDevice(const hf_spi_device_config_alias_t &device_config) noexcept;
+  hf_spi_device_handle_t addDevice(const hf_spi_device_interface_config_t &device_config) noexcept;
 
   /**
    * @brief Remove a device from the SPI bus.
    * @param device_handle Device handle to remove
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t removeDevice(hf_spi_device_handle_alias_t device_handle) noexcept;
+  hf_spi_err_t removeDevice(hf_spi_device_handle_t device_handle) noexcept;
 
   /**
    * @brief Switch to a specific device.
    * @param device_handle Device handle to switch to
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t selectDevice(hf_spi_device_handle_alias_t device_handle) noexcept;
+  hf_spi_err_t selectDevice(hf_spi_device_handle_t device_handle) noexcept;
 
   //==============================================//
   // ADVANCED TRANSFER OPERATIONS                //
@@ -308,7 +299,7 @@ public:
    * @return hf_spi_err_t result code
    */
   hf_spi_err_t transferQuad(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                        uint32_t timeout_ms = 0) noexcept;
+                            uint32_t timeout_ms = 0) noexcept;
 
   /**
    * @brief Perform transfer using octal SPI mode (ESP32C6 specific).
@@ -319,7 +310,7 @@ public:
    * @return hf_spi_err_t result code
    */
   hf_spi_err_t transferOctal(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                         uint32_t timeout_ms = 0) noexcept;
+                             uint32_t timeout_ms = 0) noexcept;
 
   /**
    * @brief Perform DMA-accelerated transfer.
@@ -330,7 +321,7 @@ public:
    * @return hf_spi_err_t result code
    */
   hf_spi_err_t transferDma(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                       uint32_t timeout_ms = 0) noexcept;
+                           uint32_t timeout_ms = 0) noexcept;
 
   /**
    * @brief Perform batch transfers with single CS assertion.
@@ -354,7 +345,7 @@ public:
    * @return hf_spi_err_t result code
    */
   hf_spi_err_t transferAsync(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                         hf_spi_async_callback_t callback, void *userData = nullptr) noexcept;
+                             hf_spi_async_callback_t callback, void *userData = nullptr) noexcept;
 
   /**
    * @brief Cancel pending asynchronous operation.
@@ -397,7 +388,8 @@ public:
    * @param count Number of registers to write
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t writeMultipleRegisters(uint8_t start_reg_addr, const uint8_t *data, uint8_t count) noexcept;
+  hf_spi_err_t writeMultipleRegisters(uint8_t start_reg_addr, const uint8_t *data,
+                                      uint8_t count) noexcept;
 
   /**
    * @brief Read multiple registers sequentially.
@@ -436,9 +428,10 @@ public:
    * @param clock_source Clock source to use
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t setClockSource(hf_spi_clock_source_alias_t clock_source) noexcept;
+  hf_spi_err_t setClockSource(hf_spi_clock_source_t clock_source) noexcept;
 
-  //==============================================//  //==============================================//
+  //==============================================//
+  ////==============================================//
   // STATISTICS AND DIAGNOSTICS                  //
   //==============================================//
 
@@ -446,7 +439,7 @@ public:
    * @brief Get operation statistics.
    * @return Current statistics reference
    */
-  const hf_spi_statistics_t& getStatistics() const noexcept;
+  const hf_spi_statistics_t &getStatistics() const noexcept;
 
   /**
    * @brief Reset operation statistics.
@@ -457,7 +450,7 @@ public:
    * @brief Get comprehensive diagnostics information.
    * @return Diagnostics structure with current state
    */
-  hf_spi_diagnostics_alias_t getDiagnostics() const noexcept;
+  hf_spi_diagnostics_t getDiagnostics() const noexcept;
 
   /**
    * @brief Check if SPI bus is healthy.
@@ -522,7 +515,7 @@ public:
    * @brief Get current transfer mode.
    * @return Current transfer mode
    */
-  hf_spi_transfer_mode_alias_t GetTransferMode() const noexcept;
+  hf_spi_transfer_mode_t GetTransferMode() const noexcept;
 
 private:
   //==============================================//
@@ -542,7 +535,7 @@ private:
    * @return true if valid, false otherwise
    */
   bool IsValidMode(uint8_t mode) const noexcept {
-  return HF_SPI_IS_VALID_MODE(mode);
+    return HF_SPI_IS_VALID_MODE(mode);
   }
 
   /**
@@ -598,9 +591,9 @@ private:
    * @return hf_spi_err_t result code
    */
   hf_spi_err_t InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                            uint32_t timeout_ms, hf_spi_transfer_mode_alias_t transfer_mode, 
-                            bool manage_cs) noexcept;
-                            
+                                uint32_t timeout_ms, hf_spi_transfer_mode_t transfer_mode,
+                                bool manage_cs) noexcept;
+
   /**
    * @brief Update operation statistics.
    * @param success Operation success status
@@ -608,8 +601,8 @@ private:
    * @param transferTimeUs Transfer time in microseconds
    * @param usedDma Whether DMA was used
    */
-  void UpdateStatistics(bool success, size_t bytesTransferred, 
-                       uint64_t transferTimeUs, bool usedDma) noexcept;
+  void UpdateStatistics(bool success, size_t bytesTransferred, uint64_t transferTimeUs,
+                        bool usedDma) noexcept;
 
   /**
    * @brief Handle platform-specific error.
@@ -622,33 +615,33 @@ private:
   //==============================================//
 
   // Platform-specific handles
-  hf_spi_device_handle_alias_t platform_handle_;                         ///< Primary device handle
-  hf_spi_device_handle_alias_t current_device_;                          ///< Currently selected device
-  std::vector<hf_spi_device_handle_alias_t> device_handles_;             ///< All registered devices
+  hf_spi_device_handle_t platform_handle_;             ///< Primary device handle
+  hf_spi_device_handle_t current_device_;              ///< Currently selected device
+  std::vector<hf_spi_device_handle_t> device_handles_; ///< All registered devices
 
   // Configuration storage
-  hf_spi_advanced_config_t advanced_config_;                       ///< Advanced configuration
-  bool use_advanced_config_;                                ///< Flag indicating advanced config usage
+  hf_spi_advanced_config_t advanced_config_; ///< Advanced configuration
+  bool use_advanced_config_;                 ///< Flag indicating advanced config usage
 
   // State management
-  mutable RtosMutex mutex_;            ///< Thread safety mutex
-  hf_spi_err_t last_error_;                ///< Last error that occurred
-  uint32_t transaction_count_;         ///< Number of transactions performed
-  bool cs_active_;                     ///< Current CS state
-  bool dma_enabled_;                   ///< DMA enable state
-  bool bus_suspended_;                 ///< Bus suspension state
-  hf_spi_transfer_mode_alias_t current_transfer_mode_; ///< Current transfer mode
-  uint16_t max_transfer_size_;         ///< Maximum transfer size in bytes
+  mutable RtosMutex mutex_;                      ///< Thread safety mutex
+  hf_spi_err_t last_error_;                      ///< Last error that occurred
+  uint32_t transaction_count_;                   ///< Number of transactions performed
+  bool cs_active_;                               ///< Current CS state
+  bool dma_enabled_;                             ///< DMA enable state
+  bool bus_suspended_;                           ///< Bus suspension state
+  hf_spi_transfer_mode_t current_transfer_mode_; ///< Current transfer mode
+  uint16_t max_transfer_size_;                   ///< Maximum transfer size in bytes
 
   // Asynchronous operation support
-  std::vector<uint32_t> async_operations_;  ///< Active async operations
-  uint32_t next_operation_id_;              ///< Next operation ID
-  hf_spi_event_callback_t event_callback_;         ///< Event callback function
-  void *event_user_data_;                   ///< Event callback user data
+  std::vector<uint32_t> async_operations_; ///< Active async operations
+  uint32_t next_operation_id_;             ///< Next operation ID
+  hf_spi_event_callback_t event_callback_; ///< Event callback function
+  void *event_user_data_;                  ///< Event callback user data
 
   // Statistics and diagnostics
-  mutable hf_spi_statistics_t statistics_;   ///< Operation statistics
-  uint64_t last_transfer_time_;        ///< Last transfer timestamp
+  mutable hf_spi_statistics_t statistics_; ///< Operation statistics
+  uint64_t last_transfer_time_;            ///< Last transfer timestamp
 
   // Platform-specific constants
   static constexpr uint32_t DEFAULT_TIMEOUT_MS = 1000;

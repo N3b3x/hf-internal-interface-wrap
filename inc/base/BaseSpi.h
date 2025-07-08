@@ -105,16 +105,16 @@ constexpr std::string_view hf_spi_err_to_string(hf_spi_err_t err) noexcept {
  *          supporting various platforms and SPI modes without MCU-specific types.
  */
 struct hf_spi_bus_config_t {
-  HfHostId host;                ///< SPI host/controller
-  HfPinNumber mosi_pin;         ///< MOSI (Master Out Slave In) pin
-  HfPinNumber miso_pin;         ///< MISO (Master In Slave Out) pin
-  HfPinNumber sclk_pin;         ///< SCLK (Serial Clock) pin
-  HfPinNumber cs_pin;           ///< CS (Chip Select) pin
-  HfFrequencyHz clock_speed_hz; ///< Clock speed in Hz
-  uint8_t mode;                 ///< SPI mode (0-3: CPOL/CPHA combinations)
-  uint8_t bits_per_word;        ///< Bits per transfer (typically 8 or 16)
-  bool cs_active_low;           ///< True if CS is active low, false if active high
-  HfTimeoutMs timeout_ms;       ///< Default timeout for operations in milliseconds
+  hf_host_id_t host;                ///< SPI host/controller
+  hf_pin_num_t mosi_pin;            ///< MOSI (Master Out Slave In) pin
+  hf_pin_num_t miso_pin;            ///< MISO (Master In Slave Out) pin
+  hf_pin_num_t sclk_pin;            ///< SCLK (Serial Clock) pin
+  hf_pin_num_t cs_pin;              ///< CS (Chip Select) pin
+  hf_frequency_hz_t clock_speed_hz; ///< Clock speed in Hz
+  uint8_t mode;                     ///< SPI mode (0-3: CPOL/CPHA combinations)
+  uint8_t bits_per_word;            ///< Bits per transfer (typically 8 or 16)
+  bool cs_active_low;               ///< True if CS is active low, false if active high
+  hf_timeout_ms_t timeout_ms;       ///< Default timeout for operations in milliseconds
 
   /**
    * @brief Default constructor with sensible defaults.
@@ -161,7 +161,8 @@ public:
    * @brief Constructor with configuration.
    * @param config SPI bus configuration parameters
    */
-  explicit BaseSpi(const hf_spi_bus_config_t &config) noexcept : config_(config), initialized_(false) {}
+  explicit BaseSpi(const hf_spi_bus_config_t &config) noexcept
+      : config_(config), initialized_(false) {}
 
   /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
@@ -229,7 +230,7 @@ public:
    * @note Must be implemented by concrete classes.
    */
   virtual hf_spi_err_t Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                            uint32_t timeout_ms = 0) noexcept = 0;
+                                uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Assert/deassert the chip select signal.
@@ -284,7 +285,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_spi_err_t result code
    */
-  virtual hf_spi_err_t Write(const uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept {
+  virtual hf_spi_err_t Write(const uint8_t *data, uint16_t length,
+                             uint32_t timeout_ms = 0) noexcept {
     return Transfer(data, nullptr, length, timeout_ms);
   }
 
@@ -329,7 +331,7 @@ public:
    * @brief Get the configured clock speed.
    * @return Clock speed in Hz
    */
-  [[nodiscard]] virtual uint32_t GetClockHz() const noexcept {
+  [[nodiscard]] virtual hf_frequency_hz_t GetClockHz() const noexcept {
     return config_.clock_speed_hz;
   }
 
@@ -353,7 +355,7 @@ public:
    * @brief Get the SPI host/controller.
    * @return SPI host number
    */
-  [[nodiscard]] virtual HfHostId GetHost() const noexcept {
+  [[nodiscard]] virtual hf_host_id_t GetHost() const noexcept {
     return config_.host;
   }
 
@@ -387,5 +389,5 @@ public:
 
 protected:
   hf_spi_bus_config_t config_; ///< Bus configuration
-  bool initialized_;    ///< Initialization state
+  bool initialized_;           ///< Initialization state
 };

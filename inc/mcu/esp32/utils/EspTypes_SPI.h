@@ -12,10 +12,10 @@
 
 #pragma once
 
+#include "BaseSpi.h"       // For hf_spi_err_t
 #include "HardwareTypes.h" // For basic hardware types
-#include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
+#include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"
-#include "BaseSpi.h" // For hf_spi_err_t
 
 //==============================================================================
 // PLATFORM-SPECIFIC SPI TYPE MAPPINGS
@@ -43,28 +43,26 @@ using hf_spi_transaction_native_t = struct {
 using hf_spi_device_handle_native_t = void *;
 #endif
 
-
 /**
  * @brief SPI bus configuration for ESP32C6/ESP-IDF v5.5+.
  */
 struct hf_spi_bus_config_t {
-  int mosi_io_num;        ///< MOSI GPIO pin
-  int miso_io_num;        ///< MISO GPIO pin
-  int sclk_io_num;        ///< SCLK GPIO pin
-  int quadwp_io_num;      ///< WP pin for quad/octal mode
-  int quadhd_io_num;      ///< HD pin for quad/octal mode
-  int data4_io_num;       ///< DATA4 pin for octal mode
-  int data5_io_num;       ///< DATA5 pin for octal mode
-  int data6_io_num;       ///< DATA6 pin for octal mode
-  int data7_io_num;       ///< DATA7 pin for octal mode
-  int max_transfer_sz;    ///< Maximum transfer size
-  uint32_t flags;         ///< Bus configuration flags
-  uint32_t intr_flags;    ///< Interrupt allocation flags
-  
+  hf_pin_num_t mosi_io_num;   ///< MOSI GPIO pin
+  hf_pin_num_t miso_io_num;   ///< MISO GPIO pin
+  hf_pin_num_t sclk_io_num;   ///< SCLK GPIO pin
+  hf_pin_num_t quadwp_io_num; ///< WP pin for quad/octal mode
+  hf_pin_num_t quadhd_io_num; ///< HD pin for quad/octal mode
+  hf_pin_num_t data4_io_num;  ///< DATA4 pin for octal mode
+  hf_pin_num_t data5_io_num;  ///< DATA5 pin for octal mode
+  hf_pin_num_t data6_io_num;  ///< DATA6 pin for octal mode
+  hf_pin_num_t data7_io_num;  ///< DATA7 pin for octal mode
+  int max_transfer_sz;        ///< Maximum transfer size
+  uint32_t flags;             ///< Bus configuration flags
+  uint32_t intr_flags;        ///< Interrupt allocation flags
+
   hf_spi_bus_config_t() noexcept
-      : mosi_io_num(-1), miso_io_num(-1), sclk_io_num(-1),
-        quadwp_io_num(-1), quadhd_io_num(-1), data4_io_num(-1),
-        data5_io_num(-1), data6_io_num(-1), data7_io_num(-1),
+      : mosi_io_num(-1), miso_io_num(-1), sclk_io_num(-1), quadwp_io_num(-1), quadhd_io_num(-1),
+        data4_io_num(-1), data5_io_num(-1), data6_io_num(-1), data7_io_num(-1),
         max_transfer_sz(4092), flags(0), intr_flags(0) {}
 };
 
@@ -72,71 +70,70 @@ struct hf_spi_bus_config_t {
  * @brief SPI device configuration for ESP32C6/ESP-IDF v5.5+.
  */
 struct hf_spi_device_interface_config_t {
-  uint8_t command_bits;        ///< Command phase bit length (0-16)
-  uint8_t address_bits;        ///< Address phase bit length (0-64)
-  uint8_t dummy_bits;          ///< Dummy phase bit length
-  uint8_t mode;                ///< SPI mode (0-3)
-  uint8_t duty_cycle_pos;      ///< Duty cycle of positive clock
-  uint8_t cs_ena_pretrans;     ///< CS setup time
-  uint8_t cs_ena_posttrans;    ///< CS hold time
-  int clock_speed_hz;          ///< Clock speed in Hz
-  int input_delay_ns;          ///< Input delay in nanoseconds
-  int spics_io_num;            ///< CS GPIO pin (-1 = not used)
-  uint32_t flags;              ///< Device configuration flags
-  int queue_size;              ///< Transaction queue size
-  void (*pre_cb)(void *trans); ///< Pre-transaction callback
-  void (*post_cb)(void *trans);///< Post-transaction callback
-  
+  uint8_t command_bits;         ///< Command phase bit length (0-16)
+  uint8_t address_bits;         ///< Address phase bit length (0-64)
+  uint8_t dummy_bits;           ///< Dummy phase bit length
+  uint8_t mode;                 ///< SPI mode (0-3)
+  uint8_t duty_cycle_pos;       ///< Duty cycle of positive clock
+  uint8_t cs_ena_pretrans;      ///< CS setup time
+  uint8_t cs_ena_posttrans;     ///< CS hold time
+  int clock_speed_hz;           ///< Clock speed in Hz
+  int input_delay_ns;           ///< Input delay in nanoseconds
+  hf_pin_num_t spics_io_num;    ///< CS GPIO pin (-1 = not used)
+  uint32_t flags;               ///< Device configuration flags
+  int queue_size;               ///< Transaction queue size
+  void (*pre_cb)(void *trans);  ///< Pre-transaction callback
+  void (*post_cb)(void *trans); ///< Post-transaction callback
+
   hf_spi_device_interface_config_t() noexcept
-      : command_bits(0), address_bits(0), dummy_bits(0), mode(0),
-        duty_cycle_pos(128), cs_ena_pretrans(0), cs_ena_posttrans(0),
-        clock_speed_hz(1000000), input_delay_ns(0), spics_io_num(-1),
-        flags(0), queue_size(7), pre_cb(nullptr), post_cb(nullptr) {}
+      : command_bits(0), address_bits(0), dummy_bits(0), mode(0), duty_cycle_pos(128),
+        cs_ena_pretrans(0), cs_ena_posttrans(0), clock_speed_hz(1000000), input_delay_ns(0),
+        spics_io_num(-1), flags(0), queue_size(7), pre_cb(nullptr), post_cb(nullptr) {}
 };
 
 /**
  * @brief SPI transaction structure for ESP32C6/ESP-IDF v5.5+.
  */
 struct hf_spi_transaction_t {
-  uint32_t flags;              ///< Transaction flags
-  uint16_t cmd;                ///< Command data
-  uint64_t addr;               ///< Address data
-  size_t length;               ///< Data length in bits
-  size_t rxlength;             ///< RX data length in bits
-  void *user;                  ///< User data pointer
+  uint32_t flags;  ///< Transaction flags
+  uint16_t cmd;    ///< Command data
+  uint64_t addr;   ///< Address data
+  size_t length;   ///< Data length in bits
+  size_t rxlength; ///< RX data length in bits
+  void *user;      ///< User data pointer
   union {
-    const void *tx_buffer;     ///< TX data buffer
-    uint8_t tx_data[4];        ///< TX data for ≤32 bits
+    const void *tx_buffer; ///< TX data buffer
+    uint8_t tx_data[4];    ///< TX data for ≤32 bits
   };
   union {
-    void *rx_buffer;           ///< RX data buffer
-    uint8_t rx_data[4];        ///< RX data for ≤32 bits
+    void *rx_buffer;    ///< RX data buffer
+    uint8_t rx_data[4]; ///< RX data for ≤32 bits
   };
-  
+
   hf_spi_transaction_t() noexcept
-      : flags(0), cmd(0), addr(0), length(0), rxlength(0),
-        user(nullptr), tx_buffer(nullptr), rx_buffer(nullptr) {}
+      : flags(0), cmd(0), addr(0), length(0), rxlength(0), user(nullptr), tx_buffer(nullptr),
+        rx_buffer(nullptr) {}
 };
 
 /**
  * @brief SPI diagnostics information structure.
  */
 struct hf_spi_diagnostics_t {
-  bool is_initialized;        ///< Initialization state
-  bool is_bus_suspended;      ///< Bus suspension state
-  bool dma_enabled;           ///< DMA enabled state
+  bool is_initialized;          ///< Initialization state
+  bool is_bus_suspended;        ///< Bus suspension state
+  bool dma_enabled;             ///< DMA enabled state
   uint32_t current_clock_speed; ///< Current clock speed in Hz
-  uint8_t current_mode;       ///< Current SPI mode
-  uint16_t max_transfer_size; ///< Maximum transfer size
-  uint8_t device_count;       ///< Number of registered devices
-  uint32_t last_error;        ///< Last error code
-  uint64_t total_transactions; ///< Total transactions performed
+  uint8_t current_mode;         ///< Current SPI mode
+  uint16_t max_transfer_size;   ///< Maximum transfer size
+  uint8_t device_count;         ///< Number of registered devices
+  uint32_t last_error;          ///< Last error code
+  uint64_t total_transactions;  ///< Total transactions performed
   uint64_t failed_transactions; ///< Failed transactions count
-  
+
   hf_spi_diagnostics_t() noexcept
-      : is_initialized(false), is_bus_suspended(false), dma_enabled(false),
-        current_clock_speed(0), current_mode(0), max_transfer_size(0),
-        device_count(0), last_error(0), total_transactions(0), failed_transactions(0) {}
+      : is_initialized(false), is_bus_suspended(false), dma_enabled(false), current_clock_speed(0),
+        current_mode(0), max_transfer_size(0), device_count(0), last_error(0),
+        total_transactions(0), failed_transactions(0) {}
 };
 
 // Type alias for SPI diagnostics (following naming convention)
@@ -147,7 +144,6 @@ using hf_spi_diagnostics_alias_t = hf_spi_diagnostics_t;
  */
 using hf_spi_device_handle_t = hf_spi_device_handle_native_t;
 using hf_spi_host_device_id_t = hf_spi_host_native_t;
-
 
 //==============================================================================
 // MCU-SPECIFIC SPI TYPES
@@ -169,9 +165,9 @@ enum class hf_spi_mode_t : uint8_t {
  *          SPI1 is reserved for flash and not exposed to users.
  */
 enum class hf_spi_host_device_t : uint8_t {
-  HF_SPI2_HOST = 1,      ///< SPI2 host (general purpose) - ESP-IDF SPI2_HOST
-  HF_SPI3_HOST = 2,      ///< SPI3 host (general purpose) - ESP-IDF SPI3_HOST  
-  HF_SPI_HOST_MAX = 3,   ///< Maximum number of SPI hosts
+  HF_SPI2_HOST = 1,    ///< SPI2 host (general purpose) - ESP-IDF SPI2_HOST
+  HF_SPI3_HOST = 2,    ///< SPI3 host (general purpose) - ESP-IDF SPI3_HOST
+  HF_SPI_HOST_MAX = 3, ///< Maximum number of SPI hosts
 };
 
 /**
@@ -221,22 +217,22 @@ using hf_spi_handle_t = void *;
  * @details Performance monitoring and error tracking for SPI operations.
  */
 struct hf_spi_transaction_diagnostics_t {
-  uint32_t total_transactions;     ///< Total number of transactions
-  uint32_t successful_transactions; ///< Number of successful transactions
-  uint32_t failed_transactions;    ///< Number of failed transactions
-  uint32_t timeout_transactions;   ///< Number of timed-out transactions
-  uint32_t total_bytes_sent;       ///< Total bytes transmitted
-  uint32_t total_bytes_received;   ///< Total bytes received
-  uint32_t max_transaction_time_us; ///< Maximum transaction time (microseconds)
-  uint32_t min_transaction_time_us; ///< Minimum transaction time (microseconds)
-  uint64_t last_activity_timestamp; ///< Last activity timestamp
+  uint32_t total_transactions;       ///< Total number of transactions
+  uint32_t successful_transactions;  ///< Number of successful transactions
+  uint32_t failed_transactions;      ///< Number of failed transactions
+  uint32_t timeout_transactions;     ///< Number of timed-out transactions
+  uint32_t total_bytes_sent;         ///< Total bytes transmitted
+  uint32_t total_bytes_received;     ///< Total bytes received
+  uint32_t max_transaction_time_us;  ///< Maximum transaction time (microseconds)
+  uint32_t min_transaction_time_us;  ///< Minimum transaction time (microseconds)
+  uint64_t last_activity_timestamp;  ///< Last activity timestamp
   uint64_t initialization_timestamp; ///< Initialization timestamp
 
   hf_spi_transaction_diagnostics_t() noexcept
       : total_transactions(0), successful_transactions(0), failed_transactions(0),
         timeout_transactions(0), total_bytes_sent(0), total_bytes_received(0),
-        max_transaction_time_us(0), min_transaction_time_us(0xFFFFFFFF),
-        last_activity_timestamp(0), initialization_timestamp(0) {}
+        max_transaction_time_us(0), min_transaction_time_us(0xFFFFFFFF), last_activity_timestamp(0),
+        initialization_timestamp(0) {}
 };
 
 //==============================================================================
@@ -244,13 +240,14 @@ struct hf_spi_transaction_diagnostics_t {
 //==============================================================================
 
 #ifdef HF_TARGET_MCU_ESP32C6
-static constexpr uint32_t HF_SPI_MIN_CLOCK_SPEED = 1000;      ///< Minimum SPI clock speed (Hz)
-static constexpr uint32_t HF_SPI_MAX_CLOCK_SPEED = 80000000;  ///< Maximum SPI clock speed (Hz)
-static constexpr uint32_t HF_SPI_MAX_TRANSFER_SIZE = 4092;    ///< Maximum transfer size (bytes)
+static constexpr uint32_t HF_SPI_MIN_CLOCK_SPEED = 1000;     ///< Minimum SPI clock speed (Hz)
+static constexpr uint32_t HF_SPI_MAX_CLOCK_SPEED = 80000000; ///< Maximum SPI clock speed (Hz)
+static constexpr uint32_t HF_SPI_MAX_TRANSFER_SIZE = 4092;   ///< Maximum transfer size (bytes)
 static constexpr uint8_t HF_SPI_MAX_HOSTS = 3;               ///< Maximum SPI hosts
 
-#define HF_SPI_IS_VALID_HOST(host) ((host) < static_cast<uint8_t>(hf_spi_host_device_t::HF_SPI_HOST_MAX))
-#define HF_SPI_IS_VALID_CLOCK_SPEED(speed) \
+#define HF_SPI_IS_VALID_HOST(host)                                                                 \
+  ((host) < static_cast<uint8_t>(hf_spi_host_device_t::HF_SPI_HOST_MAX))
+#define HF_SPI_IS_VALID_CLOCK_SPEED(speed)                                                         \
   ((speed) >= HF_SPI_MIN_CLOCK_SPEED && (speed) <= HF_SPI_MAX_CLOCK_SPEED)
 #define HF_SPI_IS_VALID_MODE(mode) ((mode) >= 0 && (mode) <= 3)
 #define HF_SPI_IS_VALID_TRANSFER_SIZE(size) ((size) > 0 && (size) <= HF_SPI_MAX_TRANSFER_SIZE)
@@ -262,11 +259,8 @@ static constexpr uint32_t HF_SPI_MAX_TRANSFER_SIZE = 4096;
 static constexpr uint8_t HF_SPI_MAX_HOSTS = 2;
 
 #define HF_SPI_IS_VALID_HOST(host) ((host) < HF_SPI_MAX_HOSTS)
-#define HF_SPI_IS_VALID_CLOCK_SPEED(speed) \
+#define HF_SPI_IS_VALID_CLOCK_SPEED(speed)                                                         \
   ((speed) >= HF_SPI_MIN_CLOCK_SPEED && (speed) <= HF_SPI_MAX_CLOCK_SPEED)
 #define HF_SPI_IS_VALID_MODE(mode) ((mode) >= 0 && (mode) <= 3)
 #define HF_SPI_IS_VALID_TRANSFER_SIZE(size) ((size) > 0 && (size) <= HF_SPI_MAX_TRANSFER_SIZE)
 #endif
-
-// SPI diagnostics alias for convenience (following naming convention)
-using hf_spi_diagnostics_alias_t = hf_spi_diagnostics_t;
