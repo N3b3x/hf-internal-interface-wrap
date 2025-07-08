@@ -122,7 +122,7 @@ EspGpio::EspGpio(HfPinNumber pin_num, Direction direction, ActiveState active_st
                  OutputMode output_mode, PullMode pull_mode,
                  GpioDriveCapability drive_capability) noexcept
     : BaseGpio(pin_num, direction, active_state, output_mode, pull_mode),
-      interrupt_trigger_(InterruptTrigger::None), interrupt_callback_(nullptr),
+      interrupt_trigger_(hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE), interrupt_callback_(nullptr),
       interrupt_user_data_(nullptr), interrupt_enabled_(false), interrupt_count_(0),
       platform_semaphore_(nullptr), drive_capability_(drive_capability),
       glitch_filter_type_(GpioGlitchFilterType::None), pin_glitch_filter_enabled_(false),
@@ -154,13 +154,13 @@ EspGpio::EspGpio(HfPinNumber pin_num, Direction direction, ActiveState active_st
   #endif
 
   // Initialize advanced feature configurations to safe defaults
-  sleep_config_.sleep_direction = Direction::Input;
-  sleep_config_.sleep_pull_mode = PullMode::Floating;
+      sleep_config_.sleep_direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT;
+    sleep_config_.sleep_pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING;
   sleep_config_.sleep_output_enable = false;
   sleep_config_.sleep_input_enable = true;
   sleep_config_.hold_during_sleep = false;
 
-  wakeup_config_.wake_trigger = InterruptTrigger::None;
+      wakeup_config_.wake_trigger = hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE;
   wakeup_config_.enable_rtc_wake = false;
   wakeup_config_.enable_ext1_wake = false;
   wakeup_config_.wake_level = 0;
@@ -213,11 +213,11 @@ bool EspGpio::Initialize() noexcept {
   
   // Set GPIO direction
   switch (current_direction_) {
-    case Direction::Input:
+    case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
       io_conf.mode = GPIO_MODE_INPUT;
       break;
-    case Direction::Output:
-      if (output_mode_ == OutputMode::OpenDrain) {
+    case hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT:
+      if (output_mode_ == hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN) {
         io_conf.mode = GPIO_MODE_OUTPUT_OD;
       } else {
         io_conf.mode = GPIO_MODE_OUTPUT;
@@ -227,15 +227,15 @@ bool EspGpio::Initialize() noexcept {
 
   // Configure pull resistors
   switch (pull_mode_) {
-    case PullMode::Floating:
+    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING:
       io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
       io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
       break;
-    case PullMode::PullUp:
+    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP:
       io_conf.pull_up_en = GPIO_PULLUP_ENABLE;
       io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
       break;
-    case PullMode::PullDown:
+    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN:
       io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
       io_conf.pull_down_en = GPIO_PULLDOWN_ENABLE;
       break;
@@ -255,7 +255,7 @@ bool EspGpio::Initialize() noexcept {
   }
 
   // Set drive capability
-  if (current_direction_ == Direction::Output) {
+  if (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
     ret = SetDriveCapability(drive_capability_);
     if (ret != ESP_OK) {
       ESP_LOGW(TAG, "Failed to set drive capability for GPIO%d: %s", 
@@ -474,7 +474,7 @@ bool EspGpio::IsPinAvailable() const noexcept {
   case 37:
   case 38:
   case 39:
-    return (current_direction_ == Direction::Input);
+    return (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT);
 
   // Flash pins - typically reserved
   case 6:
@@ -593,7 +593,7 @@ HfGpioErr EspGpio::EnableInterrupt() noexcept {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
 
-  if (interrupt_trigger_ == InterruptTrigger::None) {
+  if (interrupt_trigger_ == hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE) {
     return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_ENABLED;
   }
 
@@ -696,11 +696,11 @@ HfGpioErr EspGpio::SetDirectionImpl(Direction direction) noexcept {
   #ifdef HF_MCU_FAMILY_ESP32
   gpio_mode_t mode;
   switch (direction) {
-    case Direction::Input:
+    case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
       mode = GPIO_MODE_INPUT;
       break;
-    case Direction::Output:
-      if (output_mode_ == OutputMode::OpenDrain) {
+    case hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT:
+      if (output_mode_ == hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN) {
         mode = GPIO_MODE_OUTPUT_OD;
       } else {
         mode = GPIO_MODE_OUTPUT;
@@ -718,14 +718,14 @@ HfGpioErr EspGpio::SetDirectionImpl(Direction direction) noexcept {
   }
 
   // Update drive capability for output pins
-  if (direction == Direction::Output) {
+  if (direction == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
     SetDriveCapability(drive_capability_);
   }
   #endif
 
   current_direction_ = direction;
   ESP_LOGD(TAG, "Set GPIO%d direction to %s", static_cast<int>(pin_), 
-           (direction == Direction::Input) ? "input" : "output");
+           (direction == hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT) ? "input" : "output");
   return HfGpioErr::GPIO_SUCCESS;
 }
 
@@ -738,13 +738,13 @@ HfGpioErr EspGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
   esp_err_t ret = ESP_OK;
   
   switch (pull_mode) {
-    case PullMode::Floating:
+    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING:
       ret = gpio_set_pull_mode(static_cast<gpio_num_t>(pin_), GPIO_FLOATING);
       break;
-    case PullMode::PullUp:
+    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP:
       ret = gpio_set_pull_mode(static_cast<gpio_num_t>(pin_), GPIO_PULLUP_ONLY);
       break;
-    case PullMode::PullDown:
+    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN:
       ret = gpio_set_pull_mode(static_cast<gpio_num_t>(pin_), GPIO_PULLDOWN_ONLY);
       break;
     default:
@@ -777,11 +777,11 @@ PullMode EspGpio::GetPullModeImpl() const noexcept {
     switch (hw_pull_mode) {
       case GPIO_PULLUP_ONLY:
         ESP_LOGV(TAG, "GPIO%d hardware pull mode: PULLUP_ONLY", static_cast<int>(pin_));
-        return PullMode::PullUp;
+        return hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP;
         
       case GPIO_PULLDOWN_ONLY:
         ESP_LOGV(TAG, "GPIO%d hardware pull mode: PULLDOWN_ONLY", static_cast<int>(pin_));
-        return PullMode::PullDown;
+        return hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN;
         
       case GPIO_PULLUP_PULLDOWN:
         // Both pull-up and pull-down enabled - this is unusual, log warning
@@ -792,7 +792,7 @@ PullMode EspGpio::GetPullModeImpl() const noexcept {
       case GPIO_FLOATING:
       default:
         ESP_LOGV(TAG, "GPIO%d hardware pull mode: FLOATING", static_cast<int>(pin_));
-        return PullMode::Floating;
+        return hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING;
     }
   }
   
@@ -810,8 +810,8 @@ HfGpioErr EspGpio::SetOutputModeImpl(OutputMode output_mode) noexcept {
   output_mode_ = output_mode;
   
   // If already initialized as output, update the mode
-  if (initialized_ && current_direction_ == Direction::Output) {
-    return SetDirectionImpl(Direction::Output);
+  if (initialized_ && current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
+    return SetDirectionImpl(hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
   }
   
   return HfGpioErr::GPIO_SUCCESS;
@@ -822,14 +822,14 @@ HfGpioErr EspGpio::WriteImpl(State state) noexcept {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
   
-  if (current_direction_ != Direction::Output) {
+  if (current_direction_ != hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
     return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
   }
 
   // Convert logical state to electrical level based on polarity
-  int level = (state == State::Active) ? 
-    ((active_state_ == ActiveState::High) ? 1 : 0) :
-    ((active_state_ == ActiveState::High) ? 0 : 1);
+  int level = (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? 
+    ((active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH) ? 1 : 0) :
+    ((active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH) ? 0 : 1);
 
   #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret = gpio_set_level(static_cast<gpio_num_t>(pin_), level);
@@ -841,7 +841,7 @@ HfGpioErr EspGpio::WriteImpl(State state) noexcept {
 
   current_state_ = state;
   ESP_LOGV(TAG, "GPIO%d set to %s (level %d)", static_cast<int>(pin_), 
-           (state == State::Active) ? "active" : "inactive", level);
+           (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? "active" : "inactive", level);
   return HfGpioErr::GPIO_SUCCESS;
 }
 
@@ -854,13 +854,13 @@ HfGpioErr EspGpio::ReadImpl(State &state) noexcept {
   int level = gpio_get_level(static_cast<gpio_num_t>(pin_));
   
   // Convert electrical level to logical state based on polarity
-  state = ((level == 1) == (active_state_ == ActiveState::High)) ? 
-    State::Active : State::Inactive;
+  state = ((level == 1) == (active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH)) ? 
+    hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
   
   current_state_ = state;
   return HfGpioErr::GPIO_SUCCESS;
   #else
-  state = State::Inactive;
+  state = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
   return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   #endif
 }
@@ -869,14 +869,14 @@ HfGpioErr EspGpio::SetActiveImpl() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
-  return WriteImpl(State::Active);
+  return WriteImpl(hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
 }
 
 HfGpioErr EspGpio::SetInactiveImpl() noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
-  return WriteImpl(State::Inactive);
+  return WriteImpl(hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
 }
 
 HfGpioErr EspGpio::ToggleImpl() noexcept {
@@ -884,11 +884,11 @@ HfGpioErr EspGpio::ToggleImpl() noexcept {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
   
-  if (current_direction_ != Direction::Output) {
+  if (current_direction_ != hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
     return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
   }
 
-  State new_state = (current_state_ == State::Active) ? State::Inactive : State::Active;
+  hf_gpio_state_t new_state = (current_state_ == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
   return WriteImpl(new_state);
 }
 
@@ -897,14 +897,14 @@ HfGpioErr EspGpio::IsActiveImpl(bool &is_active) noexcept {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
   
-  if (current_direction_ != Direction::Input) {
+  if (current_direction_ != hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT) {
     return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
   }
 
   State current_state;
   HfGpioErr result = ReadImpl(current_state);
   if (result == HfGpioErr::GPIO_SUCCESS) {
-    is_active = (current_state == State::Active);
+    is_active = (current_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
   }
   return result;
 }
@@ -1049,11 +1049,11 @@ HfGpioErr EspGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexc
     // Set RTC GPIO direction
     rtc_gpio_mode_t rtc_mode;
     switch (sleep_config.sleep_direction) {
-      case Direction::Input:
+      case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
         rtc_mode = RTC_GPIO_MODE_INPUT_ONLY;
         break;
-      case Direction::Output:
-        if (output_mode_ == OutputMode::OpenDrain) {
+      case hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT:
+        if (output_mode_ == hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN) {
           rtc_mode = RTC_GPIO_MODE_OUTPUT_OD;
         } else {
           rtc_mode = RTC_GPIO_MODE_OUTPUT_ONLY;
@@ -1073,15 +1073,15 @@ HfGpioErr EspGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexc
 
     // Configure RTC pull resistors
     switch (sleep_config.sleep_pull_mode) {
-      case PullMode::PullUp:
+      case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP:
         rtc_gpio_pullup_en(static_cast<gpio_num_t>(pin_));
         rtc_gpio_pulldown_dis(static_cast<gpio_num_t>(pin_));
         break;
-      case PullMode::PullDown:
+      case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN:
         rtc_gpio_pullup_dis(static_cast<gpio_num_t>(pin_));
         rtc_gpio_pulldown_en(static_cast<gpio_num_t>(pin_));
         break;
-      case PullMode::Floating:
+      case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING:
       default:
         rtc_gpio_pullup_dis(static_cast<gpio_num_t>(pin_));
         rtc_gpio_pulldown_dis(static_cast<gpio_num_t>(pin_));
@@ -1311,10 +1311,10 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
     // Set sleep mode direction
     rtc_gpio_mode_t rtc_mode;
     switch (config.sleep_direction) {
-      case Direction::Input:
+      case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
         rtc_mode = RTC_GPIO_MODE_INPUT_ONLY;
         break;
-      case Direction::Output:
+      case hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT:
         rtc_mode = RTC_GPIO_MODE_OUTPUT_ONLY;
         break;
       default:
@@ -1330,13 +1330,13 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
     }
 
     // Configure sleep pull mode
-    if (config.sleep_pull_mode != PullMode::Floating) {
+    if (config.sleep_pull_mode != hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING) {
       rtc_gpio_pull_mode_t rtc_pull;
       switch (config.sleep_pull_mode) {
-        case PullMode::PullUp:
+        case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP:
           rtc_pull = GPIO_PULLUP_ONLY;
           break;
-        case PullMode::PullDown:
+        case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN:
           rtc_pull = GPIO_PULLDOWN_ONLY;
           break;
         default:
@@ -1438,10 +1438,10 @@ HfGpioErr EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
   if (config.enable_wakeup) {
     gpio_int_type_t wakeup_type;
     switch (config.wakeup_trigger) {
-      case InterruptTrigger::RisingEdge:
+      case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE:
         wakeup_type = GPIO_INTR_HIGH_LEVEL;  // Wake on high level for edge
         break;
-      case InterruptTrigger::FallingEdge:
+      case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE:
         wakeup_type = GPIO_INTR_LOW_LEVEL;   // Wake on low level for edge
         break;
       default:
@@ -1931,25 +1931,25 @@ HfGpioErr EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
 //==============================================================================
 
 #ifdef HF_MCU_FAMILY_ESP32
-gpio_int_type_t EspGpio::MapInterruptTrigger(InterruptTrigger trigger) const noexcept {
+gpio_int_type_t EspGpio::MapInterruptTrigger(hf_gpio_interrupt_trigger_t trigger) const noexcept {
   switch (trigger) {
-    case InterruptTrigger::RisingEdge:
+    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE:
       return GPIO_INTR_POSEDGE;
-    case InterruptTrigger::FallingEdge:
+    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE:
       return GPIO_INTR_NEGEDGE;
-    case InterruptTrigger::BothEdges:
+    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES:
       return GPIO_INTR_ANYEDGE;
-    case InterruptTrigger::LowLevel:
+    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL:
       return GPIO_INTR_LOW_LEVEL;
-    case InterruptTrigger::HighLevel:
+    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL:
       return GPIO_INTR_HIGH_LEVEL;
-    case InterruptTrigger::None:
+    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE:
     default:
       return GPIO_INTR_DISABLE;
   }
 }
 #else
-uint32_t EspGpio::MapInterruptTrigger(InterruptTrigger trigger) const noexcept {
+uint32_t EspGpio::MapInterruptTrigger(hf_gpio_interrupt_trigger_t trigger) const noexcept {
   // Platform-specific mapping for non-ESP32 platforms
   return static_cast<uint32_t>(trigger);
 }
@@ -2019,8 +2019,8 @@ bool EspGpio::InitializeAdvancedFeatures() noexcept {
   if (rtc_gpio_enabled_) {
     sleep_config_.sleep_direction = current_direction_;
     sleep_config_.sleep_pull_mode = current_pull_mode_;
-    sleep_config_.sleep_output_enable = (current_direction_ == Direction::Output);
-    sleep_config_.sleep_input_enable = (current_direction_ == Direction::Input);
+    sleep_config_.sleep_output_enable = (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
+    sleep_config_.sleep_input_enable = (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT);
     sleep_config_.hold_during_sleep = false;
     
     ESP_LOGD(TAG, "RTC GPIO features initialized for GPIO%d", static_cast<int>(pin_));

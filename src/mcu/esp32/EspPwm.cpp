@@ -255,7 +255,7 @@ HfPwmErr McuPwm::DisableChannel(HfChannelId channel_id) noexcept {
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Stop the channel based on idle state
-  uint32_t idle_level = (channels_[channel_id].config.idle_state == PwmIdleState::High) ? 1 : 0;
+  uint32_t idle_level = (channels_[channel_id].config.idle_state == hf_pwm_idle_state_t::High) ? 1 : 0;
   if (channels_[channel_id].config.invert_output) {
     idle_level = 1 - idle_level;
   }

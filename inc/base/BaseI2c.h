@@ -72,21 +72,21 @@
   X(I2C_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
   X(I2C_ERR_OPERATION_ABORTED, 30, "Operation aborted")
 
-enum class HfI2cErr : uint8_t {
+enum class hf_i2c_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_I2C_ERR_LIST(X)
 #undef X
 };
 
 /**
- * @brief Convert HfI2cErr to human-readable string
+ * @brief Convert hf_i2c_err_t to human-readable string
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view HfI2cErrToString(HfI2cErr err) noexcept {
+constexpr std::string_view hf_i2c_err_to_string(hf_i2c_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
-  case HfI2cErr::NAME:                                                                             \
+  case hf_i2c_err_t::NAME:                                                                         \
     return DESC;
     HF_I2C_ERR_LIST(X)
 #undef X
@@ -220,10 +220,10 @@ public:
    * @param data Data buffer to transmit
    * @param length Number of bytes to write
    * @param timeout_ms Timeout in milliseconds (0 = use default)
-   * @return HfI2cErr result code
+   * @return hf_i2c_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfI2cErr Write(uint8_t device_addr, const uint8_t *data, uint16_t length,
+  virtual hf_i2c_err_t Write(uint8_t device_addr, const uint8_t *data, uint16_t length,
                          uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
@@ -232,10 +232,10 @@ public:
    * @param data Buffer to store received data
    * @param length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = use default)
-   * @return HfI2cErr result code
+   * @return hf_i2c_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfI2cErr Read(uint8_t device_addr, uint8_t *data, uint16_t length,
+  virtual hf_i2c_err_t Read(uint8_t device_addr, uint8_t *data, uint16_t length,
                         uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
@@ -246,10 +246,10 @@ public:
    * @param rx_data Buffer to store received data
    * @param rx_length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = use default)
-   * @return HfI2cErr result code
+   * @return hf_i2c_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfI2cErr WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t tx_length,
+  virtual hf_i2c_err_t WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t tx_length,
                              uint8_t *rx_data, uint16_t rx_length,
                              uint32_t timeout_ms = 0) noexcept = 0;
 
@@ -290,7 +290,7 @@ public:
     if (!EnsureInitialized()) {
       return false;
     }
-    return Write(addr, data, sizeBytes, timeoutMsec) == HfI2cErr::I2C_SUCCESS;
+    return Write(addr, data, sizeBytes, timeoutMsec) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
@@ -306,7 +306,7 @@ public:
     if (!EnsureInitialized()) {
       return false;
     }
-    return Read(addr, data, sizeBytes, timeoutMsec) == HfI2cErr::I2C_SUCCESS;
+    return Read(addr, data, sizeBytes, timeoutMsec) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
@@ -325,7 +325,7 @@ public:
       return false;
     }
     return WriteRead(addr, txData, txSizeBytes, rxData, rxSizeBytes, timeoutMsec) ==
-           HfI2cErr::I2C_SUCCESS;
+           hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
@@ -346,7 +346,7 @@ public:
       return false;
     }
     // Try to write 0 bytes to the device - this will generate only the address
-    return Write(device_addr, nullptr, 0) == HfI2cErr::I2C_SUCCESS;
+    return Write(device_addr, nullptr, 0) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
@@ -377,7 +377,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool WriteByte(uint8_t device_addr, uint8_t data) noexcept {
-    return Write(device_addr, &data, 1) == HfI2cErr::I2C_SUCCESS;
+    return Write(device_addr, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
@@ -387,7 +387,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool ReadByte(uint8_t device_addr, uint8_t &data) noexcept {
-    return Read(device_addr, &data, 1) == HfI2cErr::I2C_SUCCESS;
+    return Read(device_addr, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
@@ -399,7 +399,7 @@ public:
    */
   virtual bool WriteRegister(uint8_t device_addr, uint8_t reg_addr, uint8_t data) noexcept {
     uint8_t buffer[2] = {reg_addr, data};
-    return Write(device_addr, buffer, 2) == HfI2cErr::I2C_SUCCESS;
+    return Write(device_addr, buffer, 2) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
@@ -410,7 +410,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool ReadRegister(uint8_t device_addr, uint8_t reg_addr, uint8_t &data) noexcept {
-    return WriteRead(device_addr, &reg_addr, 1, &data, 1) == HfI2cErr::I2C_SUCCESS;
+    return WriteRead(device_addr, &reg_addr, 1, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
@@ -423,7 +423,7 @@ public:
    */
   virtual bool ReadRegisters(uint8_t device_addr, uint8_t reg_addr, uint8_t *data,
                              uint16_t length) noexcept {
-    return WriteRead(device_addr, &reg_addr, 1, data, length) == HfI2cErr::I2C_SUCCESS;
+    return WriteRead(device_addr, &reg_addr, 1, data, length) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**

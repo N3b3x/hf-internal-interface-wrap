@@ -16,7 +16,7 @@
 #include "HardwareTypes.h"
 #include "McuSelect.h"      // Central MCU platform selection (includes all ESP-IDF)
 #include "EspTypes_Base.h"
-#include "BaseCan.h"        // For HfCanErr and CanMessage
+#include "BaseCan.h"        // For hf_can_err_t and hf_can_message_t
 
 //==============================================================================
 // PLATFORM-SPECIFIC NATIVE TYPE MAPPINGS (ESP32 TWAI)
@@ -57,6 +57,20 @@ enum class hf_can_mode_t : uint8_t {
   HF_CAN_MODE_LISTEN_ONLY = 2, ///< Listen-only mode (bus monitor)
 };
 
+/**
+ * @brief CAN operation types for statistics tracking.
+ */
+enum class hf_can_operation_type_t : uint8_t {
+    HF_CAN_OP_SEND = 0,      ///< Send operation
+    HF_CAN_OP_RECEIVE = 1,   ///< Receive operation
+    HF_CAN_OP_FILTER = 2,    ///< Filter operation
+    HF_CAN_OP_ALERT = 3,     ///< Alert operation
+    HF_CAN_OP_INIT = 4,      ///< Initialization operation
+    HF_CAN_OP_DEINIT = 5,    ///< Deinitialization operation
+    HF_CAN_OP_RESET = 6,     ///< Reset operation
+    HF_CAN_OP_RECOVER = 7,   ///< Bus recovery operation
+};
+
 #else
 // Non-ESP32 platforms - simplified enums
 enum class hf_can_controller_id_t : uint8_t {
@@ -67,6 +81,13 @@ enum class hf_can_mode_t : uint8_t {
   HF_CAN_MODE_NORMAL = 0,
   HF_CAN_MODE_NO_ACK = 1,
   HF_CAN_MODE_LISTEN_ONLY = 2,
+};
+
+enum class hf_can_operation_type_t : uint8_t {
+    HF_CAN_OP_SEND = 0,
+    HF_CAN_OP_RECEIVE = 1,
+    HF_CAN_OP_FILTER = 2,
+    HF_CAN_OP_ALERT = 3,
 };
 #endif
 
@@ -84,16 +105,6 @@ struct hf_can_filter_config_t {
     
     hf_can_filter_config_t() noexcept
         : acceptance_code(0), acceptance_mask(0xFFFFFFFF), single_filter(true) {}
-};
-
-/**
- * @brief CAN operation types for statistics tracking.
- */
-enum class hf_can_operation_type_t : uint8_t {
-    HF_CAN_OP_SEND = 0,      ///< Send operation
-    HF_CAN_OP_RECEIVE = 1,   ///< Receive operation
-    HF_CAN_OP_FILTER = 2,    ///< Filter operation
-    HF_CAN_OP_ALERT = 3,     ///< Alert operation
 };
 
 /**

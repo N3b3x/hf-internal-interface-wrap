@@ -1,5 +1,5 @@
 /**
- * @file McuSpi.cpp
+ * @file EspSpi.cpp
  * @brief Implementation of MCU-integrated SPI controller.
  *
  * This file provides the implementation for SPI bus communication using the
@@ -13,7 +13,7 @@
  * @copyright HardFOC
  */
 
-#include "McuSpi.h"
+#include "EspSpi.h"
 #include <algorithm>
 #include <cstring>
 #include <vector>
@@ -26,38 +26,38 @@
 #include "esp_timer.h"
 #include "esp_rom_sys.h"
 
-static const char *TAG = "McuSpi";
+static const char *TAG = "EspSpi";
 #endif
 
 //==============================================//
 // CONSTRUCTOR & DESTRUCTOR                     //
 //==============================================//
 
-McuSpi::McuSpi(const SpiBusConfig &config) noexcept
+EspSpi::EspSpi(const hf_spi_bus_config_alias_t &config) noexcept
     : BaseSpi(config), platform_handle_(nullptr), current_device_(nullptr),
-      use_advanced_config_(false), last_error_(HfSpiErr::SPI_SUCCESS),
+      use_advanced_config_(false), last_error_(hf_spi_err_t::SPI_SUCCESS),
       transaction_count_(0), cs_active_(false), dma_enabled_(false),
-      bus_suspended_(false), current_transfer_mode_(HfSpiTransferMode::HF_SPI_TRANSFER_MODE_SINGLE),
+      bus_suspended_(false), current_transfer_mode_(hf_spi_transfer_mode_alias_t::HF_SPI_TRANSFER_MODE_SINGLE),
       max_transfer_size_(4092), next_operation_id_(1), event_callback_(nullptr),
       event_user_data_(nullptr), last_transfer_time_(0) {
   // Initialize basic config in advanced_config for unified handling
   advanced_config_.base_config = config;
-  ESP_LOGD(TAG, "Creating McuSpi with basic configuration - Clock: %lu Hz, Mode: %d",
+  ESP_LOGD(TAG, "Creating EspSpi with basic configuration - Clock: %lu Hz, Mode: %d",
            config.clock_speed_hz, config.mode);
 }
 
-McuSpi::McuSpi(const SpiAdvancedConfig &config) noexcept
+EspSpi::EspSpi(const hf_spi_advanced_config_t &config) noexcept  
     : BaseSpi(config.base_config), platform_handle_(nullptr), current_device_(nullptr),
-      use_advanced_config_(true), advanced_config_(config), last_error_(HfSpiErr::SPI_SUCCESS),
+      use_advanced_config_(true), advanced_config_(config), last_error_(hf_spi_err_t::SPI_SUCCESS),
       transaction_count_(0), cs_active_(false), dma_enabled_(config.dma_enabled),
       bus_suspended_(false), current_transfer_mode_(config.transfer_mode),
       max_transfer_size_(config.max_transfer_size), next_operation_id_(1), 
       event_callback_(nullptr), event_user_data_(nullptr), last_transfer_time_(0) {
-  ESP_LOGD(TAG, "Creating McuSpi with advanced configuration - DMA: %s, Transfer mode: %d",
+  ESP_LOGD(TAG, "Creating EspSpi with advanced configuration - DMA: %s, Transfer mode: %d",
            dma_enabled_ ? "enabled" : "disabled", static_cast<int>(current_transfer_mode_));
 }
 
-McuSpi::~McuSpi() noexcept {
+EspSpi::~EspSpi() noexcept {
   if (initialized_) {
     Deinitialize();
   }
@@ -67,32 +67,32 @@ McuSpi::~McuSpi() noexcept {
 // OVERRIDDEN PURE VIRTUAL FUNCTIONS            //
 //==============================================//
 
-bool McuSpi::Initialize() noexcept {
+bool EspSpi::Initialize() noexcept {
   if (initialized_) {
     return true;
   }
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
   // Validate configuration
-  const SpiBusConfig& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
+  const hf_spi_bus_config_alias_t& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
   
   if (cfg.mosi_pin == HF_INVALID_PIN && cfg.miso_pin == HF_INVALID_PIN) {
-    last_error_ = HfSpiErr::SPI_ERR_INVALID_CONFIGURATION;
+    last_error_ = hf_spi_err_t::SPI_ERR_INVALID_CONFIGURATION;
     return false;
   }
 
   if (cfg.sclk_pin == HF_INVALID_PIN) {
-    last_error_ = HfSpiErr::SPI_ERR_INVALID_CONFIGURATION;
+    last_error_ = hf_spi_err_t::SPI_ERR_INVALID_CONFIGURATION;
     return false;
   }
 
   if (!IsValidClockSpeed(cfg.clock_speed_hz)) {
-    last_error_ = HfSpiErr::SPI_ERR_INVALID_CLOCK_SPEED;
+    last_error_ = hf_spi_err_t::SPI_ERR_INVALID_CLOCK_SPEED;
     return false;
   }
 
   if (!IsValidMode(cfg.mode)) {
-    last_error_ = HfSpiErr::SPI_ERR_INVALID_MODE;
+    last_error_ = hf_spi_err_t::SPI_ERR_INVALID_MODE;
     return false;
   }
 
@@ -101,12 +101,12 @@ bool McuSpi::Initialize() noexcept {
     return false;
   }
 
-  last_error_ = HfSpiErr::SPI_SUCCESS;
+  last_error_ = hf_spi_err_t::SPI_SUCCESS;
   initialized_ = true;  // Set initialized flag
   return initialized_;
 }
 
-bool McuSpi::Deinitialize() noexcept {
+bool EspSpi::Deinitialize() noexcept {
   if (!initialized_) {
     return true;
   }
@@ -115,48 +115,48 @@ bool McuSpi::Deinitialize() noexcept {
 
   bool result = PlatformDeinitialize();
   if (result) {
-    last_error_ = HfSpiErr::SPI_SUCCESS;
+    last_error_ = hf_spi_err_t::SPI_SUCCESS;
   }
 
   return result;
 }
 
-HfSpiErr McuSpi::Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+hf_spi_err_t EspSpi::Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                           uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   if (length == 0) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   if (length > max_transfer_size_) {
-    return HfSpiErr::SPI_ERR_TRANSFER_TOO_LONG;
+    return hf_spi_err_t::SPI_ERR_TRANSFER_TOO_LONG;
   }
 
   return InternalTransfer(tx_data, rx_data, length, timeout_ms, true);
 }
 
-HfSpiErr McuSpi::SetChipSelect(bool active) noexcept {
+hf_spi_err_t EspSpi::SetChipSelect(bool active) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
-  const SpiBusConfig& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
+  const hf_spi_bus_config_alias_t& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
   
   if (cfg.cs_pin != HF_INVALID_PIN) {
     gpio_num_t cs_pin = static_cast<gpio_num_t>(cfg.cs_pin);
     gpio_set_level(cs_pin, cfg.cs_active_low ? !active : active);
     cs_active_ = active;
-    last_error_ = HfSpiErr::SPI_SUCCESS;
+    last_error_ = hf_spi_err_t::SPI_SUCCESS;
     return last_error_;
   }
 #endif
 
-  last_error_ = HfSpiErr::SPI_ERR_CS_CONTROL_FAILED;
+  last_error_ = hf_spi_err_t::SPI_ERR_CS_CONTROL_FAILED;
   return last_error_;
 }
 
@@ -164,7 +164,7 @@ HfSpiErr McuSpi::SetChipSelect(bool active) noexcept {
 // ENHANCED METHODS                             //
 //==============================================//
 
-bool McuSpi::IsBusy() noexcept {
+bool EspSpi::IsBusy() noexcept {
   if (!initialized_) {
     return false;
   }
@@ -173,9 +173,9 @@ bool McuSpi::IsBusy() noexcept {
   return cs_active_;
 }
 
-bool McuSpi::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
+bool EspSpi::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
   if (!IsValidClockSpeed(clock_speed_hz)) {
-    last_error_ = HfSpiErr::SPI_ERR_INVALID_CLOCK_SPEED;
+    last_error_ = hf_spi_err_t::SPI_ERR_INVALID_CLOCK_SPEED;
     return false;
   }
 
@@ -192,16 +192,16 @@ bool McuSpi::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
       return true;
     }
     initialized_ = was_initialized;
-    last_error_ = HfSpiErr::SPI_ERR_INVALID_CONFIGURATION;
+    last_error_ = hf_spi_err_t::SPI_ERR_INVALID_CONFIGURATION;
     return false;
   }
 
   return true;
 }
 
-bool McuSpi::SetMode(uint8_t mode) noexcept {
+bool EspSpi::SetMode(uint8_t mode) noexcept {
   if (!IsValidMode(mode)) {
-    last_error_ = HfSpiErr::SPI_ERR_INVALID_MODE;
+    last_error_ = hf_spi_err_t::SPI_ERR_INVALID_MODE;
     return false;
   }
 
@@ -218,12 +218,12 @@ bool McuSpi::SetMode(uint8_t mode) noexcept {
       return true;
     }
     initialized_ = was_initialized;
-    last_error_ = HfSpiErr::SPI_ERR_INVALID_CONFIGURATION;
+    last_error_ = hf_spi_err_t::SPI_ERR_INVALID_CONFIGURATION;
     return false;
   }
 
   return true;
-}bool McuSpi::SetDmaEnabled(bool enable) noexcept {
+}bool EspSpi::SetDmaEnabled(bool enable) noexcept {
   dma_enabled_ = enable;
   if (use_advanced_config_) {
     advanced_config_.dma_enabled = enable;
@@ -231,7 +231,7 @@ bool McuSpi::SetMode(uint8_t mode) noexcept {
   return true; // DMA setting will be applied on next initialization
 }
 
-uint32_t McuSpi::GetBusStatus() noexcept {
+uint32_t EspSpi::GetBusStatus() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   // Return platform-specific status information
   return static_cast<uint32_t>(last_error_) | (cs_active_ ? 0x80000000 : 0);
@@ -240,18 +240,18 @@ uint32_t McuSpi::GetBusStatus() noexcept {
 #endif
 }
 
-HfSpiErr McuSpi::TransferSequence(const SpiTransfer *transfers, uint8_t num_transfers) noexcept {
+hf_spi_err_t EspSpi::TransferSequence(const SpiTransfer *transfers, uint8_t num_transfers) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   if (!transfers || num_transfers == 0) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   // Assert CS before sequence
-  HfSpiErr result = SetChipSelect(true);
-  if (result != HfSpiErr::SPI_SUCCESS) {
+  hf_spi_err_t result = SetChipSelect(true);
+  if (result != hf_spi_err_t::SPI_SUCCESS) {
     return result;
   }
 
@@ -259,7 +259,7 @@ HfSpiErr McuSpi::TransferSequence(const SpiTransfer *transfers, uint8_t num_tran
   for (uint8_t i = 0; i < num_transfers; i++) {
     result = InternalTransfer(transfers[i].tx_data, transfers[i].rx_data, transfers[i].length,
                               transfers[i].timeout_ms, false);
-    if (result != HfSpiErr::SPI_SUCCESS) {
+    if (result != hf_spi_err_t::SPI_SUCCESS) {
       break;
     }
   }
@@ -270,10 +270,10 @@ HfSpiErr McuSpi::TransferSequence(const SpiTransfer *transfers, uint8_t num_tran
   return result;
 }
 
-HfSpiErr McuSpi::TransferWithTiming(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+hf_spi_err_t EspSpi::TransferWithTiming(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                                     uint32_t cs_hold_time_us, uint32_t timeout_ms) noexcept {
-  HfSpiErr result = Transfer(tx_data, rx_data, length, timeout_ms);
-  if (result == HfSpiErr::SPI_SUCCESS && cs_hold_time_us > 0) {
+  hf_spi_err_t result = Transfer(tx_data, rx_data, length, timeout_ms);
+  if (result == hf_spi_err_t::SPI_SUCCESS && cs_hold_time_us > 0) {
     // Platform-specific delay implementation
 #ifdef HF_MCU_FAMILY_ESP32
     esp_rom_delay_us(cs_hold_time_us);
@@ -283,39 +283,39 @@ HfSpiErr McuSpi::TransferWithTiming(const uint8_t *tx_data, uint8_t *rx_data, ui
   return result;
 }
 
-HfSpiErr McuSpi::WriteRegister(uint8_t reg_addr, const uint8_t *data, uint16_t length) noexcept {
+hf_spi_err_t EspSpi::WriteRegister(uint8_t reg_addr, const uint8_t *data, uint16_t length) noexcept {
   if (!data || length == 0) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   // Create buffer with register address + data
   uint16_t total_length = length + 1;
   if (total_length > max_transfer_size_) {
-    return HfSpiErr::SPI_ERR_TRANSFER_TOO_LONG;
+    return hf_spi_err_t::SPI_ERR_TRANSFER_TOO_LONG;
   }
 
   uint8_t *tx_buffer = new uint8_t[total_length];
   if (!tx_buffer) {
-    return HfSpiErr::SPI_ERR_OUT_OF_MEMORY;
+    return hf_spi_err_t::SPI_ERR_OUT_OF_MEMORY;
   }
 
   tx_buffer[0] = reg_addr;
   std::memcpy(&tx_buffer[1], data, length);
 
-  HfSpiErr result = Transfer(tx_buffer, nullptr, total_length);
+  hf_spi_err_t result = Transfer(tx_buffer, nullptr, total_length);
 
   delete[] tx_buffer;
   return result;
 }
 
-HfSpiErr McuSpi::ReadRegister(uint8_t reg_addr, uint8_t *data, uint16_t length) noexcept {
+hf_spi_err_t EspSpi::ReadRegister(uint8_t reg_addr, uint8_t *data, uint16_t length) noexcept {
   if (!data || length == 0) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   uint16_t total_length = length + 1;
   if (total_length > max_transfer_size_) {
-    return HfSpiErr::SPI_ERR_TRANSFER_TOO_LONG;
+    return hf_spi_err_t::SPI_ERR_TRANSFER_TOO_LONG;
   }
 
   uint8_t *tx_buffer = new uint8_t[total_length];
@@ -324,15 +324,15 @@ HfSpiErr McuSpi::ReadRegister(uint8_t reg_addr, uint8_t *data, uint16_t length) 
   if (!tx_buffer || !rx_buffer) {
     delete[] tx_buffer;
     delete[] rx_buffer;
-    return HfSpiErr::SPI_ERR_OUT_OF_MEMORY;
+    return hf_spi_err_t::SPI_ERR_OUT_OF_MEMORY;
   }
 
   tx_buffer[0] = reg_addr;
   std::memset(&tx_buffer[1], 0, length);
 
-  HfSpiErr result = Transfer(tx_buffer, rx_buffer, total_length);
+  hf_spi_err_t result = Transfer(tx_buffer, rx_buffer, total_length);
 
-  if (result == HfSpiErr::SPI_SUCCESS) {
+  if (result == hf_spi_err_t::SPI_SUCCESS) {
     std::memcpy(data, &rx_buffer[1], length);
   }
 
@@ -345,27 +345,27 @@ HfSpiErr McuSpi::ReadRegister(uint8_t reg_addr, uint8_t *data, uint16_t length) 
 // ASYNCHRONOUS OPERATIONS                      //
 //==============================================//
 
-HfSpiErr McuSpi::transferAsync(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                               SpiAsyncCallback callback, void *userData) noexcept {
+hf_spi_err_t EspSpi::transferAsync(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+                                    hf_spi_async_callback_t callback, void *userData) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   if (length == 0 || !callback) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   if (length > max_transfer_size_) {
-    return HfSpiErr::SPI_ERR_TRANSFER_TOO_LONG;
+    return hf_spi_err_t::SPI_ERR_TRANSFER_TOO_LONG;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   // For simplicity, implement as synchronous operation with callback
   // In a full implementation, this would use ESP-IDF async SPI features
-  HfSpiErr result = Transfer(tx_data, rx_data, length, DEFAULT_TIMEOUT_MS);
+  hf_spi_err_t result = Transfer(tx_data, rx_data, length, DEFAULT_TIMEOUT_MS);
   
   // Call the callback with the result
-  callback(result, (result == HfSpiErr::SPI_SUCCESS) ? length : 0, userData);
+  callback(result, (result == hf_spi_err_t::SPI_SUCCESS) ? length : 0, userData);
   
   return result;
 #else
@@ -374,13 +374,13 @@ HfSpiErr McuSpi::transferAsync(const uint8_t *tx_data, uint8_t *rx_data, uint16_
   (void)length;
   (void)callback;
   (void)userData;
-  return HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfSpiErr McuSpi::cancelAsyncOperation(uint32_t operation_id) noexcept {
+hf_spi_err_t EspSpi::cancelAsyncOperation(uint32_t operation_id) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   // Remove from active operations list
@@ -388,41 +388,41 @@ HfSpiErr McuSpi::cancelAsyncOperation(uint32_t operation_id) noexcept {
   auto it = std::find(async_operations_.begin(), async_operations_.end(), operation_id);
   if (it != async_operations_.end()) {
     async_operations_.erase(it);
-    return HfSpiErr::SPI_SUCCESS;
+    return hf_spi_err_t::SPI_SUCCESS;
   }
 
-  return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+  return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
 }
 
 //==============================================//
 // PRIVATE METHODS                              //
 //==============================================//
 
-HfSpiErr McuSpi::ConvertPlatformError(int32_t platform_error) noexcept {
+hf_spi_err_t EspSpi::ConvertPlatformError(int32_t platform_error) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   switch (platform_error) {
   case ESP_OK:
-    return HfSpiErr::SPI_SUCCESS;
+    return hf_spi_err_t::SPI_SUCCESS;
   case ESP_ERR_INVALID_ARG:
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   case ESP_ERR_TIMEOUT:
-    return HfSpiErr::SPI_ERR_TRANSFER_TIMEOUT;
+    return hf_spi_err_t::SPI_ERR_TRANSFER_TIMEOUT;
   case ESP_ERR_NO_MEM:
-    return HfSpiErr::SPI_ERR_OUT_OF_MEMORY;
+    return hf_spi_err_t::SPI_ERR_OUT_OF_MEMORY;
   case ESP_ERR_INVALID_STATE:
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   default:
-    return HfSpiErr::SPI_ERR_TRANSFER_FAILED;
+    return hf_spi_err_t::SPI_ERR_TRANSFER_FAILED;
   }
 #else
   (void)platform_error;
-  return HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-bool McuSpi::PlatformInitialize() noexcept {
+bool EspSpi::PlatformInitialize() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
-  const SpiBusConfig& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
+  const hf_spi_bus_config_alias_t& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
   
   // Configure SPI bus
   spi_bus_config_t bus_cfg = {};
@@ -486,14 +486,14 @@ bool McuSpi::PlatformInitialize() noexcept {
 
   return true;
 #else
-  last_error_ = HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   return false;
 #endif
 }
 
 #ifdef HF_MCU_FAMILY_ESP32
-bool McuSpi::PlatformDeinitialize() noexcept {
-  const SpiBusConfig& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
+bool EspSpi::PlatformDeinitialize() noexcept {
+  const hf_spi_bus_config_alias_t& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
   
   if (platform_handle_) {
     spi_bus_remove_device(platform_handle_);
@@ -512,24 +512,24 @@ bool McuSpi::PlatformDeinitialize() noexcept {
   return true;
 }
 #else
-bool McuSpi::PlatformDeinitialize() noexcept { 
+bool EspSpi::PlatformDeinitialize() noexcept { 
   return false; 
 }
 #endif
 
-HfSpiErr McuSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+hf_spi_err_t EspSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                                   uint32_t timeout_ms, bool manage_cs) noexcept {
   return InternalTransfer(tx_data, rx_data, length, timeout_ms, current_transfer_mode_, manage_cs);
 }
 
-HfSpiErr McuSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                                  uint32_t timeout_ms, HfSpiTransferMode transfer_mode, 
+hf_spi_err_t EspSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+                                  uint32_t timeout_ms, hf_spi_transfer_mode_alias_t transfer_mode, 
                                   bool manage_cs) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
 #ifdef HF_MCU_FAMILY_ESP32
   if (!platform_handle_) {
-    last_error_ = HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    last_error_ = hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
     return last_error_;
   }
 
@@ -541,18 +541,18 @@ HfSpiErr McuSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint
 
   // Set transfer mode flags if supported
   switch (transfer_mode) {
-    case HfSpiTransferMode::HF_SPI_TRANSFER_MODE_SINGLE:
+    case hf_spi_transfer_mode_alias_t::HF_SPI_TRANSFER_MODE_SINGLE:
       // No special flags needed
       break;
-    case HfSpiTransferMode::HF_SPI_TRANSFER_MODE_DUAL:
+    case hf_spi_transfer_mode_alias_t::HF_SPI_TRANSFER_MODE_DUAL:
       // Dual mode not directly supported in basic ESP32 SPI
       ESP_LOGW(TAG, "Dual SPI mode not fully supported, using single mode");
       break;
-    case HfSpiTransferMode::HF_SPI_TRANSFER_MODE_QUAD:
+    case hf_spi_transfer_mode_alias_t::HF_SPI_TRANSFER_MODE_QUAD:
       // Quad mode would require different setup
       ESP_LOGW(TAG, "Quad SPI mode not fully supported, using single mode");
       break;
-    case HfSpiTransferMode::HF_SPI_TRANSFER_MODE_OCTAL:
+    case hf_spi_transfer_mode_alias_t::HF_SPI_TRANSFER_MODE_OCTAL:
 #ifdef HF_MCU_VARIANT_C6
       ESP_LOGW(TAG, "Octal SPI mode not implemented in this driver version");
 #endif
@@ -598,7 +598,7 @@ HfSpiErr McuSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint
   (void)timeout_ms;
   (void)transfer_mode;
   (void)manage_cs;
-  last_error_ = HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   return last_error_;
 #endif
 }
@@ -607,9 +607,9 @@ HfSpiErr McuSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint
 // ADVANCED INITIALIZATION                      //
 //==============================================//
 
-HfSpiErr McuSpi::initializeAdvanced(const SpiAdvancedConfig &config) noexcept {
+hf_spi_err_t EspSpi::initializeAdvanced(const hf_spi_advanced_config_t &config) noexcept {
   if (initialized_) {
-    return HfSpiErr::SPI_ERR_ALREADY_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_ALREADY_INITIALIZED;
   }
 
   advanced_config_ = config;
@@ -618,17 +618,17 @@ HfSpiErr McuSpi::initializeAdvanced(const SpiAdvancedConfig &config) noexcept {
   max_transfer_size_ = config.max_transfer_size > 0 ? config.max_transfer_size : 4092;
   current_transfer_mode_ = config.transfer_mode;
 
-  return Initialize() ? HfSpiErr::SPI_SUCCESS : last_error_;
+  return Initialize() ? hf_spi_err_t::SPI_SUCCESS : last_error_;
 }
 
-HfSpiErr McuSpi::reconfigure(const SpiAdvancedConfig &config) noexcept {
+hf_spi_err_t EspSpi::reconfigure(const hf_spi_advanced_config_t &config) noexcept {
   if (!initialized_) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   // Store old state
   bool was_initialized = initialized_;
-  SpiAdvancedConfig old_config = advanced_config_;
+  hf_spi_advanced_config_t old_config = advanced_config_;
 
   // Apply new configuration
   if (Deinitialize()) {
@@ -639,7 +639,7 @@ HfSpiErr McuSpi::reconfigure(const SpiAdvancedConfig &config) noexcept {
     current_transfer_mode_ = config.transfer_mode;
 
     if (Initialize()) {
-      return HfSpiErr::SPI_SUCCESS;
+      return hf_spi_err_t::SPI_SUCCESS;
     }
   }
 
@@ -649,23 +649,23 @@ HfSpiErr McuSpi::reconfigure(const SpiAdvancedConfig &config) noexcept {
   return last_error_;
 }
 
-SpiAdvancedConfig McuSpi::getCurrentConfiguration() const noexcept {
+hf_spi_advanced_config_t EspSpi::getCurrentConfiguration() const noexcept {
   return advanced_config_;
 }
 
-HfSpiErr McuSpi::resetBus() noexcept {
+hf_spi_err_t EspSpi::resetBus() noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Reset the SPI bus
   if (Deinitialize() && Initialize()) {
-    return HfSpiErr::SPI_SUCCESS;
+    return hf_spi_err_t::SPI_SUCCESS;
   }
   return last_error_;
 #else
-  return HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
@@ -673,21 +673,21 @@ HfSpiErr McuSpi::resetBus() noexcept {
 // MULTI-DEVICE MANAGEMENT                      //
 //==============================================//
 
-SpiDeviceHandle McuSpi::addDevice(const SpiDeviceConfig &device_config) noexcept {
+ hf_spi_device_handle_alias_t EspSpi::addDevice(const hf_spi_device_config_alias_t &device_config) noexcept {
   if (!EnsureInitialized()) {
-    last_error_ = HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    last_error_ = hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
     return nullptr;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
-  const SpiBusConfig& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
+  const hf_spi_bus_config_alias_t& cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
   spi_host_device_t host = static_cast<spi_host_device_t>(cfg.host);
   spi_device_handle_t device_handle;
   
   esp_err_t err = spi_bus_add_device(host, &device_config, &device_handle);
   if (err == ESP_OK) {
     device_handles_.push_back(device_handle);
-    last_error_ = HfSpiErr::SPI_SUCCESS;
+    last_error_ = hf_spi_err_t::SPI_SUCCESS;
     return device_handle;
   } else {
     last_error_ = ConvertPlatformError(err);
@@ -695,18 +695,18 @@ SpiDeviceHandle McuSpi::addDevice(const SpiDeviceConfig &device_config) noexcept
   }
 #else
   (void)device_config;
-  last_error_ = HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   return nullptr;
 #endif
 }
 
-HfSpiErr McuSpi::removeDevice(SpiDeviceHandle device_handle) noexcept {
+hf_spi_err_t EspSpi::removeDevice( hf_spi_device_handle_alias_t device_handle) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   if (!device_handle) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -717,7 +717,7 @@ HfSpiErr McuSpi::removeDevice(SpiDeviceHandle device_handle) noexcept {
     if (it != device_handles_.end()) {
       device_handles_.erase(it);
     }
-    last_error_ = HfSpiErr::SPI_SUCCESS;
+    last_error_ = hf_spi_err_t::SPI_SUCCESS;
     return last_error_;
   } else {
     last_error_ = ConvertPlatformError(err);
@@ -725,27 +725,27 @@ HfSpiErr McuSpi::removeDevice(SpiDeviceHandle device_handle) noexcept {
   }
 #else
   (void)device_handle;
-  return HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfSpiErr McuSpi::selectDevice(SpiDeviceHandle device_handle) noexcept {
+hf_spi_err_t EspSpi::selectDevice( hf_spi_device_handle_alias_t device_handle) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   if (!device_handle) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   // Check if device handle is in our list
   auto it = std::find(device_handles_.begin(), device_handles_.end(), device_handle);
   if (it == device_handles_.end()) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   current_device_ = device_handle;
-  last_error_ = HfSpiErr::SPI_SUCCESS;
+  last_error_ = hf_spi_err_t::SPI_SUCCESS;
   return last_error_;
 }
 
@@ -753,17 +753,17 @@ HfSpiErr McuSpi::selectDevice(SpiDeviceHandle device_handle) noexcept {
 // ADVANCED TRANSFER METHODS                    //
 //==============================================//
 
-HfSpiErr McuSpi::transferQuad(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+hf_spi_err_t EspSpi::transferQuad(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                               uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   // Store current mode and switch to quad
-  HfSpiTransferMode old_mode = current_transfer_mode_;
-  current_transfer_mode_ = HfSpiTransferMode::HF_SPI_TRANSFER_MODE_QUAD;
+  hf_spi_transfer_mode_alias_t old_mode = current_transfer_mode_;
+  current_transfer_mode_ = hf_spi_transfer_mode_alias_t::HF_SPI_TRANSFER_MODE_QUAD;
   
-  HfSpiErr result = InternalTransfer(tx_data, rx_data, length, timeout_ms, 
+  hf_spi_err_t result = InternalTransfer(tx_data, rx_data, length, timeout_ms, 
                                     current_transfer_mode_, true);
   
   // Restore previous mode
@@ -771,18 +771,18 @@ HfSpiErr McuSpi::transferQuad(const uint8_t *tx_data, uint8_t *rx_data, uint16_t
   return result;
 }
 
-HfSpiErr McuSpi::transferOctal(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+hf_spi_err_t EspSpi::transferOctal(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                                uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_VARIANT_C6
   // ESP32C6 supports octal SPI
-  HfSpiTransferMode old_mode = current_transfer_mode_;
-  current_transfer_mode_ = HfSpiTransferMode::HF_SPI_TRANSFER_MODE_OCTAL;
+  hf_spi_transfer_mode_alias_t old_mode = current_transfer_mode_;
+  current_transfer_mode_ = hf_spi_transfer_mode_alias_t::HF_SPI_TRANSFER_MODE_OCTAL;
   
-  HfSpiErr result = InternalTransfer(tx_data, rx_data, length, timeout_ms, 
+  hf_spi_err_t result = InternalTransfer(tx_data, rx_data, length, timeout_ms, 
                                     current_transfer_mode_, true);
   
   current_transfer_mode_ = old_mode;
@@ -790,20 +790,20 @@ HfSpiErr McuSpi::transferOctal(const uint8_t *tx_data, uint8_t *rx_data, uint16_
 #else
   // Not supported on other platforms
   (void)tx_data; (void)rx_data; (void)length; (void)timeout_ms;
-  return HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfSpiErr McuSpi::transferAdvanced(const SpiTransaction &transaction, 
+hf_spi_err_t EspSpi::transferAdvanced(const hf_spi_transaction_alias_t &transaction, 
                                   uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
-  SpiDeviceHandle device = current_device_ ? current_device_ : platform_handle_;
+   hf_spi_device_handle_alias_t device = current_device_ ? current_device_ : platform_handle_;
   if (!device) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   uint32_t timeout = GetTimeoutMs(timeout_ms);
@@ -818,11 +818,11 @@ HfSpiErr McuSpi::transferAdvanced(const SpiTransaction &transaction,
 #else
   (void)transaction;
   (void)timeout_ms;
-  return HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
 #endif
 }
 
-HfSpiErr McuSpi::transferPolling(const uint8_t *tx_data, uint8_t *rx_data, 
+hf_spi_err_t EspSpi::transferPolling(const uint8_t *tx_data, uint8_t *rx_data, 
                                  uint16_t length, uint32_t timeout_ms) noexcept {
   // Polling mode is the default mode for our transfers
   return Transfer(tx_data, rx_data, length, timeout_ms);
@@ -832,7 +832,7 @@ HfSpiErr McuSpi::transferPolling(const uint8_t *tx_data, uint8_t *rx_data,
 // MISSING FUNCTION IMPLEMENTATIONS            //
 //==============================================//
 
-HfSpiErr McuSpi::setDmaEnabled(bool enable) noexcept {
+hf_spi_err_t EspSpi::setDmaEnabled(bool enable) noexcept {
   dma_enabled_ = enable;
   if (use_advanced_config_) {
     advanced_config_.dma_enabled = enable;
@@ -843,37 +843,37 @@ HfSpiErr McuSpi::setDmaEnabled(bool enable) noexcept {
     ESP_LOGW(TAG, "DMA setting changed - reinitialize to apply");
   }
   
-  last_error_ = HfSpiErr::SPI_SUCCESS;
+  last_error_ = hf_spi_err_t::SPI_SUCCESS;
   return last_error_;
 }
 
-HfSpiTransferMode McuSpi::GetTransferMode() const noexcept {
+hf_spi_transfer_mode_alias_t EspSpi::GetTransferMode() const noexcept {
   return current_transfer_mode_;
 }
 
-HfSpiErr McuSpi::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
-  return SetClockSpeed(clock_speed_hz) ? HfSpiErr::SPI_SUCCESS : last_error_;
+hf_spi_err_t EspSpi::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
+  return SetClockSpeed(clock_speed_hz) ? hf_spi_err_t::SPI_SUCCESS : last_error_;
 }
 
-HfSpiErr McuSpi::SetMode(uint8_t mode) noexcept {
-  return SetMode(mode) ? HfSpiErr::SPI_SUCCESS : last_error_;
+hf_spi_err_t EspSpi::SetMode(uint8_t mode) noexcept {
+  return SetMode(mode) ? hf_spi_err_t::SPI_SUCCESS : last_error_;
 }
 
 //==============================================//
 // STATISTICS AND DIAGNOSTICS                  //
 //==============================================//
 
-const SpiStatistics& McuSpi::getStatistics() const noexcept {
+const hf_spi_statistics_t& EspSpi::getStatistics() const noexcept {
   return statistics_;
 }
 
-void McuSpi::resetStatistics() noexcept {
+void EspSpi::resetStatistics() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  statistics_ = SpiStatistics{}; // Reset to default values
+  statistics_ = hf_spi_statistics_t{}; // Reset to default values
 }
 
-SpiDiagnostics McuSpi::getDiagnostics() const noexcept {
-  SpiDiagnostics diag = {};
+hf_spi_diagnostics_alias_t EspSpi::getDiagnostics() const noexcept {
+  hf_spi_diagnostics_alias_t diag = {};
   
   diag.is_initialized = initialized_;
   diag.is_bus_suspended = bus_suspended_;
@@ -889,7 +889,7 @@ SpiDiagnostics McuSpi::getDiagnostics() const noexcept {
   return diag;
 }
 
-bool McuSpi::isBusHealthy() noexcept {
+bool EspSpi::isBusHealthy() noexcept {
   if (!initialized_) {
     return false;
   }
@@ -919,7 +919,7 @@ bool McuSpi::isBusHealthy() noexcept {
   return healthy;
 }
 
-void McuSpi::UpdateStatistics(bool success, size_t bytesTransferred, 
+void EspSpi::UpdateStatistics(bool success, size_t bytesTransferred, 
                               uint64_t transferTimeUs, bool usedDma) noexcept {
   statistics_.total_transactions++;
   
@@ -963,10 +963,10 @@ void McuSpi::UpdateStatistics(bool success, size_t bytesTransferred,
 // MISSING ADVANCED TRANSFER IMPLEMENTATIONS   //
 //==============================================//
 
-HfSpiErr McuSpi::transferDma(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+hf_spi_err_t EspSpi::transferDma(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                              uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   // Enable DMA for this transfer if not already enabled
@@ -976,23 +976,23 @@ HfSpiErr McuSpi::transferDma(const uint8_t *tx_data, uint8_t *rx_data, uint16_t 
     dma_enabled_ = true;
   }
 
-  HfSpiErr result = InternalTransfer(tx_data, rx_data, length, timeout_ms, true);
+  hf_spi_err_t result = InternalTransfer(tx_data, rx_data, length, timeout_ms, true);
 
   // Restore previous DMA state
   dma_enabled_ = old_dma_state;
   return result;
 }
 
-HfSpiErr McuSpi::transferBatch(const SpiTransferDescriptor *transfers, uint8_t count) noexcept {
+hf_spi_err_t EspSpi::transferBatch(const hf_spi_transfer_descriptor_t *transfers, uint8_t count) noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   if (!transfers || count == 0) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
-  HfSpiErr result = HfSpiErr::SPI_SUCCESS;
+  hf_spi_err_t result = hf_spi_err_t::SPI_SUCCESS;
 
   // Assert CS once for the entire batch
   if (transfers[0].manage_cs && GetConfig().cs_pin != HF_INVALID_PIN) {
@@ -1001,13 +1001,13 @@ HfSpiErr McuSpi::transferBatch(const SpiTransferDescriptor *transfers, uint8_t c
 
   // Execute all transfers in sequence
   for (uint8_t i = 0; i < count; i++) {
-    const SpiTransferDescriptor& transfer = transfers[i];
+    const hf_spi_transfer_descriptor_t& transfer = transfers[i];
     uint32_t timeout = transfer.timeout_ms > 0 ? transfer.timeout_ms : GetTimeoutMs(0);
     
     result = InternalTransfer(transfer.tx_data, transfer.rx_data, 
                               transfer.length, timeout, false); // Don't manage CS for individual transfers
     
-    if (result != HfSpiErr::SPI_SUCCESS) {
+    if (result != hf_spi_err_t::SPI_SUCCESS) {
       ESP_LOGE(TAG, "Batch transfer failed at index %d: %d", i, static_cast<int>(result));
       break;
     }
@@ -1025,15 +1025,15 @@ HfSpiErr McuSpi::transferBatch(const SpiTransferDescriptor *transfers, uint8_t c
 // POWER MANAGEMENT IMPLEMENTATIONS             //
 //==============================================//
 
-HfSpiErr McuSpi::suspendBus() noexcept {
+hf_spi_err_t EspSpi::suspendBus() noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (bus_suspended_) {
-    return HfSpiErr::SPI_SUCCESS; // Already suspended
+    return hf_spi_err_t::SPI_SUCCESS; // Already suspended
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -1043,27 +1043,27 @@ HfSpiErr McuSpi::suspendBus() noexcept {
   ESP_LOGD(TAG, "SPI bus marked as suspended for power management");
   
   if (event_callback_) {
-    event_callback_(static_cast<int>(SpiEventType::HF_SPI_EVENT_BUS_SUSPENDED), 
+    event_callback_(static_cast<int>(hf_spi_event_type_alias_t::HF_SPI_EVENT_BUS_SUSPENDED), 
                     nullptr, event_user_data_);
   }
   
-  last_error_ = HfSpiErr::SPI_SUCCESS;
+  last_error_ = hf_spi_err_t::SPI_SUCCESS;
   return last_error_;
 #else
-  last_error_ = HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   return last_error_;
 #endif
 }
 
-HfSpiErr McuSpi::resumeBus() noexcept {
+hf_spi_err_t EspSpi::resumeBus() noexcept {
   if (!EnsureInitialized()) {
-    return HfSpiErr::SPI_ERR_NOT_INITIALIZED;
+    return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!bus_suspended_) {
-    return HfSpiErr::SPI_SUCCESS; // Already active
+    return hf_spi_err_t::SPI_SUCCESS; // Already active
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -1071,19 +1071,19 @@ HfSpiErr McuSpi::resumeBus() noexcept {
   ESP_LOGD(TAG, "SPI bus resumed from suspended state");
   
   if (event_callback_) {
-    event_callback_(static_cast<int>(SpiEventType::HF_SPI_EVENT_BUS_RESUMED), 
+    event_callback_(static_cast<int>(hf_spi_event_type_alias_t::HF_SPI_EVENT_BUS_RESUMED), 
                     nullptr, event_user_data_);
   }
   
-  last_error_ = HfSpiErr::SPI_SUCCESS;
+  last_error_ = hf_spi_err_t::SPI_SUCCESS;
   return last_error_;
 #else
-  last_error_ = HfSpiErr::SPI_ERR_UNSUPPORTED_OPERATION;
+  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   return last_error_;
 #endif
 }
 
-HfSpiErr McuSpi::setClockSource(HfSpiClockSource clock_source) noexcept {
+hf_spi_err_t EspSpi::setClockSource(hf_spi_clock_source_alias_t clock_source) noexcept {
   if (use_advanced_config_) {
     advanced_config_.clock_source = clock_source;
   }
@@ -1093,7 +1093,7 @@ HfSpiErr McuSpi::setClockSource(HfSpiClockSource clock_source) noexcept {
     ESP_LOGW(TAG, "Clock source changed - reinitialize to apply");
   }
   
-  last_error_ = HfSpiErr::SPI_SUCCESS;
+  last_error_ = hf_spi_err_t::SPI_SUCCESS;
   return last_error_;
 }
 
@@ -1101,25 +1101,25 @@ HfSpiErr McuSpi::setClockSource(HfSpiClockSource clock_source) noexcept {
 // REGISTER OPERATIONS IMPLEMENTATIONS         //
 //==============================================//
 
-HfSpiErr McuSpi::writeRegister(uint8_t reg_addr, uint8_t value) noexcept {
+hf_spi_err_t EspSpi::writeRegister(uint8_t reg_addr, uint8_t value) noexcept {
   uint8_t tx_data[2] = {reg_addr, value};
   return Transfer(tx_data, nullptr, 2);
 }
 
-HfSpiErr McuSpi::readRegister(uint8_t reg_addr, uint8_t &value) noexcept {
+hf_spi_err_t EspSpi::readRegister(uint8_t reg_addr, uint8_t &value) noexcept {
   uint8_t tx_data = reg_addr | 0x80; // Read command (MSB set)
   uint8_t rx_data[2];
   
-  HfSpiErr result = Transfer(&tx_data, rx_data, 2);
-  if (result == HfSpiErr::SPI_SUCCESS) {
+  hf_spi_err_t result = Transfer(&tx_data, rx_data, 2);
+  if (result == hf_spi_err_t::SPI_SUCCESS) {
     value = rx_data[1]; // Second byte contains the value
   }
   return result;
 }
 
-HfSpiErr McuSpi::writeMultipleRegisters(uint8_t start_reg_addr, const uint8_t *data, uint8_t count) noexcept {
+hf_spi_err_t EspSpi::writeMultipleRegisters(uint8_t start_reg_addr, const uint8_t *data, uint8_t count) noexcept {
   if (!data || count == 0) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   // Create transfer buffer with register address followed by data
@@ -1130,16 +1130,16 @@ HfSpiErr McuSpi::writeMultipleRegisters(uint8_t start_reg_addr, const uint8_t *d
   return Transfer(tx_buffer.data(), nullptr, count + 1);
 }
 
-HfSpiErr McuSpi::readMultipleRegisters(uint8_t start_reg_addr, uint8_t *data, uint8_t count) noexcept {
+hf_spi_err_t EspSpi::readMultipleRegisters(uint8_t start_reg_addr, uint8_t *data, uint8_t count) noexcept {
   if (!data || count == 0) {
-    return HfSpiErr::SPI_ERR_INVALID_PARAMETER;
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   uint8_t tx_addr = start_reg_addr | 0x80; // Read command
   std::vector<uint8_t> rx_buffer(count + 1);
   
-  HfSpiErr result = Transfer(&tx_addr, rx_buffer.data(), count + 1);
-  if (result == HfSpiErr::SPI_SUCCESS) {
+  hf_spi_err_t result = Transfer(&tx_addr, rx_buffer.data(), count + 1);
+  if (result == hf_spi_err_t::SPI_SUCCESS) {
     std::memcpy(data, &rx_buffer[1], count); // Skip address byte
   }
   return result;
@@ -1149,7 +1149,7 @@ HfSpiErr McuSpi::readMultipleRegisters(uint8_t start_reg_addr, uint8_t *data, ui
 // EVENT CALLBACK IMPLEMENTATION               //
 //==============================================//
 
-void McuSpi::setEventCallback(SpiEventCallback callback, void *userData) noexcept {
+void EspSpi::setEventCallback(hf_spi_event_callback_t callback, void *userData) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   event_callback_ = callback;
   event_user_data_ = userData;

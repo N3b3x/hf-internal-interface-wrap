@@ -15,7 +15,7 @@
 #include "HardwareTypes.h" // For basic hardware types
 #include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"
-#include "BaseSpi.h" // For HfSpiErr
+#include "BaseSpi.h" // For hf_spi_err_t
 
 //==============================================================================
 // PLATFORM-SPECIFIC SPI TYPE MAPPINGS
@@ -139,8 +139,8 @@ struct hf_spi_diagnostics_t {
         device_count(0), last_error(0), total_transactions(0), failed_transactions(0) {}
 };
 
-// Type alias for SPI diagnostics
-using SpiDiagnostics = hf_spi_diagnostics_t;
+// Type alias for SPI diagnostics (following naming convention)
+using hf_spi_diagnostics_alias_t = hf_spi_diagnostics_t;
 
 /**
  * @brief SPI device handle type.
@@ -268,5 +268,5 @@ static constexpr uint8_t HF_SPI_MAX_HOSTS = 2;
 #define HF_SPI_IS_VALID_TRANSFER_SIZE(size) ((size) > 0 && (size) <= HF_SPI_MAX_TRANSFER_SIZE)
 #endif
 
-// SPI diagnostics alias for convenience
-using SpiDiagnostics = hf_spi_diagnostics_t;
+// SPI diagnostics alias for convenience (following naming convention)
+using hf_spi_diagnostics_alias_t = hf_spi_diagnostics_t;

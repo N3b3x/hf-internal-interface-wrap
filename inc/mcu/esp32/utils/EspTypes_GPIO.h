@@ -27,7 +27,7 @@
 #include "HardwareTypes.h" // For basic hardware types
 #include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"
-#include "BaseGpio.h" // For HfGpioErr
+#include "BaseGpio.h" // For hf_gpio_err_t
 
 //==============================================================================
 // PLATFORM-SPECIFIC GPIO TYPE MAPPINGS
@@ -173,6 +173,32 @@ struct hf_dedic_gpio_bundle_flags_t {
   uint32_t out_invert : 1;    ///< Invert output signals
   uint32_t reserved : 28;     ///< Reserved for future use
 };
+
+/**
+ * @brief Dedicated GPIO bundle handle type.
+ * @details Platform-specific handle for dedicated GPIO bundle operations.
+ */
+#ifdef HF_MCU_FAMILY_ESP32
+using hf_dedic_gpio_bundle_handle_t = dedic_gpio_bundle_handle_t;
+#else
+using hf_dedic_gpio_bundle_handle_t = void*;
+#endif
+
+/**
+ * @brief Dedicated GPIO bundle configuration structure.
+ * @details Complete configuration for creating dedicated GPIO bundles.
+ */
+struct hf_dedic_gpio_bundle_config_t {
+  const int *gpio_array;              ///< Array of GPIO numbers
+  size_t array_size;                  ///< Number of GPIOs in array
+  hf_dedic_gpio_bundle_flags_t flags; ///< Bundle configuration flags
+};
+
+/**
+ * @brief Dedicated GPIO bundle read/write data type.
+ * @details Data type for reading from or writing to dedicated GPIO bundles.
+ */
+using hf_dedic_gpio_bundle_data_t = uint32_t;
 
 /**
  * @brief Low-Power IO configuration for ultra-low power operation.

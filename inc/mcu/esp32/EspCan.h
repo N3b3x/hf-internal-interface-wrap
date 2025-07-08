@@ -47,17 +47,17 @@
  * @brief ESP32 TWAI controller configuration structure.
  * @details Minimal configuration following EspAdc pattern - essential parameters only.
  */
-struct EspCanConfig {
+struct hf_esp_can_config_t {
     hf_can_controller_id_t controller_id;       ///< Controller ID (0 or 1 for ESP32C6) 
     hf_can_mode_t mode;                         ///< Operating mode (normal, listen-only, no-ack)
-    hf_pin_number_t tx_pin;                     ///< TX GPIO pin number
-    hf_pin_number_t rx_pin;                     ///< RX GPIO pin number
+    hf_pin_num_t tx_pin;                        ///< TX GPIO pin number
+    hf_pin_num_t rx_pin;                        ///< RX GPIO pin number
     uint32_t baud_rate;                         ///< Target baud rate in bps
     uint32_t tx_queue_len;                      ///< Transmit queue length
     uint32_t rx_queue_len;                      ///< Receive queue length
     bool enable_alerts;                         ///< Enable alert monitoring
     
-    EspCanConfig() noexcept
+    hf_esp_can_config_t() noexcept
         : controller_id(hf_can_controller_id_t::HF_CAN_CONTROLLER_0)
         , mode(hf_can_mode_t::HF_CAN_MODE_NORMAL)
         , tx_pin(4)
@@ -99,7 +99,7 @@ public:
      * @details **LAZY INITIALIZATION**: The TWAI controller is NOT physically configured
      *          until Initialize() is called. This follows the same pattern as EspAdc.
      */
-    explicit EspCan(const EspCanConfig& config) noexcept;
+    explicit EspCan(const hf_esp_can_config_t& config) noexcept;
 
     /**
      * @brief Destructor - ensures proper cleanup and resource deallocation.
@@ -112,40 +112,40 @@ public:
 
     /**
      * @brief Initialize the TWAI controller and allocate resources.
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      * @note This method configures the TWAI hardware and starts the driver
      */
-    HfCanErr Initialize() noexcept override;
+    hf_can_err_t Initialize() noexcept override;
 
     /**
      * @brief Deinitialize the TWAI controller and free resources.
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      * @note This method stops the TWAI driver and releases all resources
      */
-    HfCanErr Deinitialize() noexcept override;
+    hf_can_err_t Deinitialize() noexcept override;
 
     /**
      * @brief Send a CAN message.
      * @param message CAN message to send
      * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr SendMessage(const CanMessage& message, uint32_t timeout_ms = 1000) noexcept override;
+    hf_can_err_t SendMessage(const hf_can_message_t& message, uint32_t timeout_ms = 1000) noexcept override;
 
     /**
      * @brief Receive a CAN message.
      * @param message Reference to store received message
      * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr ReceiveMessage(CanMessage& message, uint32_t timeout_ms = 0) noexcept override;
+    hf_can_err_t ReceiveMessage(hf_can_message_t& message, uint32_t timeout_ms = 0) noexcept override;
 
     /**
      * @brief Set callback for received messages.
      * @param callback Callback function to handle received messages
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr SetReceiveCallback(CanReceiveCallback callback) noexcept override;
+    hf_can_err_t SetReceiveCallback(hf_can_receive_callback_t callback) noexcept override;
 
     /**
      * @brief Clear the receive callback.
@@ -155,30 +155,30 @@ public:
     /**
      * @brief Get current CAN bus status.
      * @param status Reference to store status information
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr GetStatus(CanBusStatus& status) noexcept override;
+    hf_can_err_t GetStatus(hf_can_status_t& status) noexcept override;
 
     /**
      * @brief Reset the CAN controller.
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr Reset() noexcept override;
+    hf_can_err_t Reset() noexcept override;
 
     /**
      * @brief Set acceptance filter for incoming messages.
      * @param id CAN ID to accept
      * @param mask Acceptance mask (0 = don't care bits)
      * @param extended true for extended frames, false for standard
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept override;
+    hf_can_err_t SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept override;
 
     /**
      * @brief Clear all acceptance filters (accept all messages).
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr ClearAcceptanceFilter() noexcept override;
+    hf_can_err_t ClearAcceptanceFilter() noexcept override;
 
     //==============================================//
     // STATISTICS AND DIAGNOSTICS (From BaseCan)
@@ -187,22 +187,22 @@ public:
     /**
      * @brief Get detailed statistics.
      * @param stats Reference to store statistics
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr GetStatistics(BaseCan::CanStatistics& stats) noexcept override;
+    hf_can_err_t GetStatistics(hf_can_statistics_t& stats) noexcept override;
 
     /**
      * @brief Reset statistics counters.
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr ResetStatistics() noexcept override;
+    hf_can_err_t ResetStatistics() noexcept override;
 
     /**
      * @brief Get diagnostic information.
      * @param diagnostics Reference to store diagnostic data
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr GetDiagnostics(BaseCan::CanDiagnostics& diagnostics) noexcept override;
+    hf_can_err_t GetDiagnostics(hf_can_diagnostics_t& diagnostics) noexcept override;
 
 private:
     //==============================================//
@@ -213,26 +213,26 @@ private:
      * @brief Convert HF CAN message to native TWAI message.
      * @param hf_message Source HF message
      * @param native_message Destination native message
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr ConvertToNativeMessage(const CanMessage& hf_message, 
-                                   twai_frame_t& native_message) noexcept;
+    hf_can_err_t ConvertToNativeMessage(const hf_can_message_t& hf_message, 
+                                       twai_frame_t& native_message) noexcept;
 
     /**
      * @brief Convert native TWAI message to HF CAN message.
      * @param native_message Source native message
      * @param hf_message Destination HF message
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr ConvertFromNativeMessage(const twai_frame_t& native_message,
-                                     CanMessage& hf_message) noexcept;
+    hf_can_err_t ConvertFromNativeMessage(const twai_frame_t& native_message,
+                                         hf_can_message_t& hf_message) noexcept;
 
     /**
      * @brief Convert ESP-IDF error to HF error code.
      * @param esp_err ESP-IDF error code
-     * @return HfCanErr error code
+     * @return hf_can_err_t error code
      */
-    HfCanErr ConvertEspError(esp_err_t esp_err) noexcept;
+    hf_can_err_t ConvertEspError(esp_err_t esp_err) noexcept;
 
     /**
      * @brief Update statistics after an operation.
@@ -246,25 +246,35 @@ private:
     //==============================================//
 
     // Configuration (centralized like EspAdc)
-    const EspCanConfig config_;                    ///< TWAI controller configuration
+    const hf_esp_can_config_t config_;              ///< TWAI controller configuration
 
     // State flags (atomic like EspAdc)
-    std::atomic<bool> is_initialized_;             ///< Initialization state
-    std::atomic<bool> is_started_;                 ///< Started state
+    std::atomic<bool> is_initialized_;              ///< Initialization state
+    std::atomic<bool> is_started_;                  ///< Started state
 
     // Thread safety (RtosMutex like EspAdc)
-    mutable RtosMutex config_mutex_;               ///< Configuration mutex
-    mutable RtosMutex stats_mutex_;                ///< Statistics mutex
+    mutable RtosMutex config_mutex_;                ///< Configuration mutex
+    mutable RtosMutex stats_mutex_;                 ///< Statistics mutex
 
     // ESP-IDF TWAI handle (native handle like EspAdc)
-    hf_can_handle_native_t twai_handle_;           ///< Native TWAI handle
+    hf_can_handle_native_t twai_handle_;            ///< Native TWAI handle
 
     // Callbacks (similar to EspAdc callback management)
-    CanReceiveCallback receive_callback_;          ///< Receive message callback
+    hf_can_receive_callback_t receive_callback_;    ///< Receive message callback
 
     // Statistics and diagnostics (like EspAdc stats)
-    BaseCan::CanStatistics statistics_;           ///< Performance statistics
-    BaseCan::CanDiagnostics diagnostics_;         ///< Diagnostic information
+    hf_can_statistics_t statistics_;               ///< Performance statistics
+    hf_can_diagnostics_t diagnostics_;             ///< Diagnostic information
 };
+
+//==============================================//
+// LEGACY COMPATIBILITY ALIASES (DEPRECATED)    //
+//==============================================//
+
+// These aliases are provided for backward compatibility but are deprecated.
+// Use the new hf_esp_can_config_t instead.
+
+[[deprecated("Use hf_esp_can_config_t instead")]]
+using EspCanConfig = hf_esp_can_config_t;
 
 #endif // HF_MCU_FAMILY_ESP32

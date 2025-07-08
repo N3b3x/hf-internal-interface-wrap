@@ -91,7 +91,7 @@ constexpr const char *PwmErrorToString(HfPwmErr error) noexcept {
 /**
  * @brief PWM output mode configuration
  */
-enum class PwmOutputMode : uint8_t {
+enum class hf_pwm_output_mode_t : uint8_t {
   Normal = 0,        ///< Normal PWM output
   Inverted = 1,      ///< Inverted PWM output
   Complementary = 2, ///< Complementary output (for motor control)
@@ -101,7 +101,7 @@ enum class PwmOutputMode : uint8_t {
 /**
  * @brief PWM alignment mode
  */
-enum class PwmAlignment : uint8_t {
+enum class hf_pwm_alignment_t : uint8_t {
   EdgeAligned = 0,  ///< Edge-aligned PWM (standard)
   CenterAligned = 1 ///< Center-aligned PWM (better for motor control)
 };
@@ -109,7 +109,7 @@ enum class PwmAlignment : uint8_t {
 /**
  * @brief PWM idle state
  */
-enum class PwmIdleState : uint8_t {
+enum class hf_pwm_idle_state_t : uint8_t {
   Low = 0, ///< Output low when idle
   High = 1 ///< Output high when idle
 };
@@ -129,8 +129,8 @@ struct PwmChannelConfig {
 
   // Default constructor with sensible defaults
   PwmChannelConfig() noexcept
-      : output_pin(-1), frequency_hz(1000), resolution_bits(12), output_mode(PwmOutputMode::Normal),
-        alignment(PwmAlignment::EdgeAligned), idle_state(PwmIdleState::Low),
+      : output_pin(-1), frequency_hz(1000), resolution_bits(12), output_mode(hf_pwm_output_mode_t::Normal),
+        alignment(hf_pwm_alignment_t::EdgeAligned), idle_state(hf_pwm_idle_state_t::Low),
         initial_duty_cycle(0.0f), invert_output(false) {}
 };
 

@@ -89,7 +89,7 @@
  * @brief HardFOC GPIO error codes
  * @details Comprehensive error enumeration for all GPIO operations in the system.
  */
-enum class HfGpioErr : uint8_t {
+enum class hf_gpio_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_GPIO_ERR_LIST(X)
 #undef X
@@ -97,14 +97,14 @@ enum class HfGpioErr : uint8_t {
 };
 
 /**
- * @brief Convert HfGpioErr to human-readable string
+ * @brief Convert hf_gpio_err_t to human-readable string
  * @param err The error code to convert
  * @return Pointer to error description string
  */
-constexpr const char *HfGpioErrToString(HfGpioErr err) noexcept {
+constexpr const char *HfGpioErrToString(hf_gpio_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
-  case HfGpioErr::NAME:                                                                            \
+  case hf_gpio_err_t::NAME:                                                                        \
     return DESC;
     HF_GPIO_ERR_LIST(X)
 #undef X
@@ -137,59 +137,60 @@ public:
    * @brief GPIO pin logical states.
    * @details Represents the logical state of a GPIO pin, independent of electrical polarity.
    */
-  enum class State : uint8_t {
-    Inactive = 0, ///< Logical inactive state
-    Active = 1    ///< Logical active state
+  enum class hf_gpio_state_t : uint8_t {
+    HF_GPIO_STATE_INACTIVE = 0, ///< Logical inactive state
+    HF_GPIO_STATE_ACTIVE = 1    ///< Logical active state
   };
 
   /**
    * @brief GPIO active state polarity configuration.
    * @details Defines which electrical level corresponds to the logical "active" state.
    */
-  enum class ActiveState : uint8_t {
-    Low = 0, ///< Active state is electrical low
-    High = 1 ///< Active state is electrical high
+  enum class hf_gpio_active_state_t : uint8_t {
+    HF_GPIO_ACTIVE_LOW = 0, ///< Active state is electrical low
+    HF_GPIO_ACTIVE_HIGH = 1 ///< Active state is electrical high
   };
 
   /**
    * @brief GPIO pin direction/mode configuration.
    * @details Defines whether the pin is configured as input or output.
    */
-  enum class Direction : uint8_t {
-    Input = 0, ///< Pin configured as input
-    Output = 1 ///< Pin configured as output
+  enum class hf_gpio_direction_t : uint8_t {
+    HF_GPIO_DIRECTION_INPUT = 0, ///< Pin configured as input
+    HF_GPIO_DIRECTION_OUTPUT = 1 ///< Pin configured as output
   };
 
   /**
    * @brief GPIO output drive modes.
    * @details Defines the electrical characteristics of GPIO output pins.
    */
-  enum class OutputMode : uint8_t {
-    PushPull = 0, ///< Push-pull output (strong high and low)
-    OpenDrain = 1 ///< Open-drain output (strong low, high-impedance high)
+  enum class hf_gpio_output_mode_t : uint8_t {
+    HF_GPIO_OUTPUT_MODE_PUSH_PULL = 0, ///< Push-pull output (strong high and low)
+    HF_GPIO_OUTPUT_MODE_OPEN_DRAIN = 1 ///< Open-drain output (strong low, high-impedance high)
   };
 
   /**
    * @brief GPIO pull resistor configuration.
    * @details Defines the internal pull resistor configuration for GPIO pins.
    */
-  enum class PullMode : uint8_t {
-    Floating = 0, ///< No pull resistor (floating/high-impedance)
-    PullUp = 1,   ///< Internal pull-up resistor enabled
-    PullDown = 2  ///< Internal pull-down resistor enabled
+  enum class hf_gpio_pull_mode_t : uint8_t {
+    HF_GPIO_PULL_MODE_FLOATING = 0, ///< No pull resistor (floating/high-impedance)
+    HF_GPIO_PULL_MODE_UP = 1,       ///< Internal pull-up resistor enabled
+    HF_GPIO_PULL_MODE_DOWN = 2,     ///< Internal pull-down resistor enabled
+    HF_GPIO_PULL_MODE_UP_DOWN = 3   ///< Both pull-up and pull-down resistors enabled
   };
 
   /**
    * @brief GPIO interrupt trigger types.
    * @details Defines the conditions that trigger GPIO interrupts.
    */
-  enum class InterruptTrigger : uint8_t {
-    None = 0,        ///< No interrupt (disabled)
-    RisingEdge = 1,  ///< Trigger on rising edge (low to high)
-    FallingEdge = 2, ///< Trigger on falling edge (high to low)
-    BothEdges = 3,   ///< Trigger on both rising and falling edges
-    LowLevel = 4,    ///< Trigger on low level
-    HighLevel = 5    ///< Trigger on high level
+  enum class hf_gpio_interrupt_trigger_t : uint8_t {
+    HF_GPIO_INTERRUPT_TRIGGER_NONE = 0,        ///< No interrupt (disabled)
+    HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE = 1, ///< Trigger on rising edge (low to high)
+    HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE = 2, ///< Trigger on falling edge (high to low)
+    HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES = 3,  ///< Trigger on both rising and falling edges
+    HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL = 4,   ///< Trigger on low level
+    HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL = 5   ///< Trigger on high level
   };
 
   /**
@@ -200,16 +201,16 @@ public:
    * @param user_data User-provided data passed to callback
    */
   using InterruptCallback =
-      std::function<void(BaseGpio *gpio, InterruptTrigger trigger, void *user_data)>;
+      std::function<void(BaseGpio *gpio, hf_gpio_interrupt_trigger_t trigger, void *user_data)>;
 
   /**
    * @brief GPIO interrupt status structure.
    */
   struct InterruptStatus {
-    bool is_enabled;               ///< Interrupt currently enabled
-    InterruptTrigger trigger_type; ///< Current trigger configuration
-    uint32_t interrupt_count;      ///< Number of interrupts occurred
-    bool has_callback;             ///< Callback function is registered
+    bool is_enabled;                           ///< Interrupt currently enabled
+    hf_gpio_interrupt_trigger_t trigger_type;  ///< Current trigger configuration
+    uint32_t interrupt_count;                  ///< Number of interrupts occurred
+    bool has_callback;                         ///< Callback function is registered
   };
 
   //==============================================================//
@@ -226,13 +227,13 @@ public:
    * @details Initializes the GPIO with specified configuration. The pin is not
    *          physically configured until Initialize() is called.
    */
-  explicit BaseGpio(HfPinNumber pin_num, Direction direction = Direction::Input,
-                    ActiveState active_state = ActiveState::High,
-                    OutputMode output_mode = OutputMode::PushPull,
-                    PullMode pull_mode = PullMode::Floating) noexcept
+  explicit BaseGpio(HfPinNumber pin_num, hf_gpio_direction_t direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+                    hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+                    hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                    hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING) noexcept
       : pin_(pin_num), initialized_(false), current_direction_(direction),
         active_state_(active_state), output_mode_(output_mode), pull_mode_(pull_mode),
-        current_state_(State::Inactive) {}
+        current_state_(hf_gpio_state_t::HF_GPIO_STATE_INACTIVE) {}
 
   /**
    * @brief Copy constructor is deleted to avoid copying instances.
@@ -288,23 +289,23 @@ public:
    * @brief Get the current pin direction.
    * @return Current Direction setting (Input or Output)
    */
-  [[nodiscard]] Direction GetDirection() const noexcept {
+  [[nodiscard]] hf_gpio_direction_t GetDirection() const noexcept {
     return current_direction_;
   }
 
   /**
    * @brief Set the pin direction (input or output).
    * @param direction New Direction setting (Input or Output)
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr SetDirection(Direction direction) noexcept {
-    HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
+  hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept {
+    hf_gpio_err_t validation = ValidateBasicOperation();
+    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
       return validation;
     }
 
-    HfGpioErr result = SetDirectionImpl(direction);
-    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
+    hf_gpio_err_t result = SetDirectionImpl(direction);
+    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
       current_direction_ = direction;
     }
     return result;
@@ -315,7 +316,7 @@ public:
    * @return true if input, false if output
    */
   [[nodiscard]] bool IsInput() const noexcept {
-    return current_direction_ == Direction::Input;
+    return current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT;
   }
 
   /**
@@ -323,30 +324,30 @@ public:
    * @return true if output, false if input
    */
   [[nodiscard]] bool IsOutput() const noexcept {
-    return current_direction_ == Direction::Output;
+    return current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT;
   }
 
   /**
    * @brief Get the output drive mode.
    * @return Current OutputMode setting (PushPull or OpenDrain)
    */
-  [[nodiscard]] OutputMode GetOutputMode() const noexcept {
+  [[nodiscard]] hf_gpio_output_mode_t GetOutputMode() const noexcept {
     return output_mode_;
   }
 
   /**
    * @brief Set the output drive mode.
    * @param mode New OutputMode setting (PushPull or OpenDrain)
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr SetOutputMode(OutputMode mode) noexcept {
-    HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
+  hf_gpio_err_t SetOutputMode(hf_gpio_output_mode_t mode) noexcept {
+    hf_gpio_err_t validation = ValidateBasicOperation();
+    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
       return validation;
     }
 
-    HfGpioErr result = SetOutputModeImpl(mode);
-    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
+    hf_gpio_err_t result = SetOutputModeImpl(mode);
+    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
       output_mode_ = mode;
     }
     return result;
@@ -360,23 +361,23 @@ public:
    * @brief Get the current pull resistor mode.
    * @return Current PullMode setting
    */
-  [[nodiscard]] PullMode GetPullMode() const noexcept {
+  [[nodiscard]] hf_gpio_pull_mode_t GetPullMode() const noexcept {
     return pull_mode_;
   }
 
   /**
    * @brief Set the pull resistor mode.
    * @param mode New PullMode setting (Floating, PullUp, or PullDown)
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr SetPullMode(PullMode mode) noexcept {
-    HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
+  hf_gpio_err_t SetPullMode(hf_gpio_pull_mode_t mode) noexcept {
+    hf_gpio_err_t validation = ValidateBasicOperation();
+    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
       return validation;
     }
 
-    HfGpioErr result = SetPullModeImpl(mode);
-    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
+    hf_gpio_err_t result = SetPullModeImpl(mode);
+    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
       pull_mode_ = mode;
     }
     return result;
@@ -390,7 +391,7 @@ public:
    * @brief Get the current logical state of the pin.
    * @return Current State (Active or Inactive)
    */
-  [[nodiscard]] State GetCurrentState() const noexcept {
+  [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept {
     return current_state_;
   }
 
@@ -398,7 +399,7 @@ public:
    * @brief Get the active state polarity configuration.
    * @return Current ActiveState setting (High or Low)
    */
-  [[nodiscard]] ActiveState GetActiveState() const noexcept {
+  [[nodiscard]] hf_gpio_active_state_t GetActiveState() const noexcept {
     return active_state_;
   }
 
@@ -406,7 +407,7 @@ public:
    * @brief Set the active state polarity configuration.
    * @param active_state New ActiveState setting (High or Low)
    */
-  void SetActiveState(ActiveState active_state) noexcept {
+  void SetActiveState(hf_gpio_active_state_t active_state) noexcept {
     active_state_ = active_state;
   }
 
@@ -416,51 +417,51 @@ public:
 
   /**
    * @brief Set the GPIO to active state.
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr SetActive() noexcept {
-    HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
+  hf_gpio_err_t SetActive() noexcept {
+    hf_gpio_err_t validation = ValidateBasicOperation();
+    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
       return validation;
     }
 
-    HfGpioErr result = SetActiveImpl();
-    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
-      current_state_ = State::Active;
+    hf_gpio_err_t result = SetActiveImpl();
+    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+      current_state_ = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
     }
     return result;
   }
 
   /**
    * @brief Set the GPIO to inactive state.
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr SetInactive() noexcept {
-    HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
+  hf_gpio_err_t SetInactive() noexcept {
+    hf_gpio_err_t validation = ValidateBasicOperation();
+    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
       return validation;
     }
 
-    HfGpioErr result = SetInactiveImpl();
-    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
-      current_state_ = State::Inactive;
+    hf_gpio_err_t result = SetInactiveImpl();
+    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+      current_state_ = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
     }
     return result;
   }
 
   /**
    * @brief Toggle the GPIO state.
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr Toggle() noexcept {
-    HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
+  hf_gpio_err_t Toggle() noexcept {
+    hf_gpio_err_t validation = ValidateBasicOperation();
+    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
       return validation;
     }
 
-    HfGpioErr result = ToggleImpl();
-    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
-      current_state_ = (current_state_ == State::Active) ? State::Inactive : State::Active;
+    hf_gpio_err_t result = ToggleImpl();
+    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+      current_state_ = (current_state_ == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
     }
     return result;
   }
@@ -468,17 +469,17 @@ public:
   /**
    * @brief Check if the GPIO is currently active.
    * @param is_active Reference to store the result
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  HfGpioErr IsActive(bool &is_active) noexcept {
-    HfGpioErr validation = ValidateBasicOperation();
-    if (validation != HfGpioErr::HF_GPIO_SUCCESS) {
+  hf_gpio_err_t IsActive(bool &is_active) noexcept {
+    hf_gpio_err_t validation = ValidateBasicOperation();
+    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
       return validation;
     }
 
-    HfGpioErr result = IsActiveImpl(is_active);
-    if (result == HfGpioErr::HF_GPIO_SUCCESS) {
-      current_state_ = is_active ? State::Active : State::Inactive;
+    hf_gpio_err_t result = IsActiveImpl(is_active);
+    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+      current_state_ = is_active ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
     }
     return result;
   }
@@ -521,65 +522,65 @@ public:
    * @param trigger Interrupt trigger type
    * @param callback Callback function to invoke on interrupt (optional)
    * @param user_data User data passed to callback (optional)
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  virtual HfGpioErr ConfigureInterrupt(InterruptTrigger trigger, 
-                                       InterruptCallback callback = nullptr,
-                                       void *user_data = nullptr) noexcept {
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  virtual hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, 
+                                           InterruptCallback callback = nullptr,
+                                           void *user_data = nullptr) noexcept {
+    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Enable GPIO interrupt.
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  virtual HfGpioErr EnableInterrupt() noexcept {
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  virtual hf_gpio_err_t EnableInterrupt() noexcept {
+    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Disable GPIO interrupt.
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  virtual HfGpioErr DisableInterrupt() noexcept {
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  virtual hf_gpio_err_t DisableInterrupt() noexcept {
+    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Wait for GPIO interrupt to occur.
    * @param timeout_ms Timeout in milliseconds (0 = wait forever)
-   * @return HfGpioErr::HF_GPIO_SUCCESS if interrupt occurred, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if interrupt occurred, error code otherwise
    */
-  virtual HfGpioErr WaitForInterrupt(uint32_t timeout_ms = 0) noexcept {
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  virtual hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept {
+    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Get interrupt status information.
    * @param status Reference to store status information
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  virtual HfGpioErr GetInterruptStatus(InterruptStatus &status) noexcept {
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  virtual hf_gpio_err_t GetInterruptStatus(InterruptStatus &status) noexcept {
+    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Clear interrupt statistics.
-   * @return HfGpioErr::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    */
-  virtual HfGpioErr ClearInterruptStats() noexcept {
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  virtual hf_gpio_err_t ClearInterruptStats() noexcept {
+    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
   }
 
   //==============================================================//
   // STRING CONVERSION UTILITIES
   //==============================================================//
-  static const char *ToString(State state) noexcept;
-  static const char *ToString(ActiveState active_state) noexcept;
-  static const char *ToString(Direction direction) noexcept;
-  static const char *ToString(OutputMode output_mode) noexcept;
-  static const char *ToString(PullMode pull_mode) noexcept;
-  static const char *ToString(InterruptTrigger trigger) noexcept;
+  static const char *ToString(hf_gpio_state_t state) noexcept;
+  static const char *ToString(hf_gpio_active_state_t active_state) noexcept;
+  static const char *ToString(hf_gpio_direction_t direction) noexcept;
+  static const char *ToString(hf_gpio_output_mode_t output_mode) noexcept;
+  static const char *ToString(hf_gpio_pull_mode_t pull_mode) noexcept;
+  static const char *ToString(hf_gpio_interrupt_trigger_t trigger) noexcept;
 
   //==============================================================//
   // PURE VIRTUAL FUNCTIONS - MUST BE IMPLEMENTED BY DERIVED CLASSES
@@ -607,16 +608,16 @@ protected:
 
   /**
    * @brief Validate basic parameters before GPIO operations.
-   * @return HfGpioErr error code
+   * @return hf_gpio_err_t error code
    */
-  [[nodiscard]] HfGpioErr ValidateBasicOperation() const noexcept {
+  [[nodiscard]] hf_gpio_err_t ValidateBasicOperation() const noexcept {
     if (!initialized_) {
-      return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
+      return hf_gpio_err_t::HF_GPIO_ERR_NOT_INITIALIZED;
     }
     if (!IsPinAvailable()) {
-      return HfGpioErr::HF_GPIO_ERR_PIN_ACCESS_DENIED;
+      return hf_gpio_err_t::HF_GPIO_ERR_PIN_ACCESS_DENIED;
     }
-    return HfGpioErr::HF_GPIO_SUCCESS;
+    return hf_gpio_err_t::HF_GPIO_SUCCESS;
   }
 
   /**
@@ -624,9 +625,9 @@ protected:
    * @param state Logical state (Active or Inactive)
    * @return true for electrical high, false for electrical low
    */
-  [[nodiscard]] bool StateToLevel(State state) const noexcept {
-    bool active_level = (active_state_ == ActiveState::High);
-    return (state == State::Active) ? active_level : !active_level;
+  [[nodiscard]] bool StateToLevel(hf_gpio_state_t state) const noexcept {
+    bool active_level = (active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+    return (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? active_level : !active_level;
   }
 
   /**
@@ -634,9 +635,9 @@ protected:
    * @param level Electrical level (true = high, false = low)
    * @return Logical state (Active or Inactive)
    */
-  [[nodiscard]] State LevelToState(bool level) const noexcept {
-    bool active_level = (active_state_ == ActiveState::High);
-    return (level == active_level) ? State::Active : State::Inactive;
+  [[nodiscard]] hf_gpio_state_t LevelToState(bool level) const noexcept {
+    bool active_level = (active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+    return (level == active_level) ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
   }
 
   //==============================================================//
@@ -647,103 +648,105 @@ protected:
   // PURE VIRTUAL IMPLEMENTATIONS - PLATFORM SPECIFIC
   //==============================================================//
 
-  virtual HfGpioErr SetDirectionImpl(Direction direction) noexcept = 0;
-  virtual HfGpioErr SetOutputModeImpl(OutputMode mode) noexcept = 0;
-  virtual HfGpioErr SetPullModeImpl(PullMode mode) noexcept = 0;
-  virtual HfGpioErr SetActiveImpl() noexcept = 0;
-  virtual HfGpioErr SetInactiveImpl() noexcept = 0;
-  virtual HfGpioErr ToggleImpl() noexcept = 0;
-  virtual HfGpioErr IsActiveImpl(bool &is_active) noexcept = 0;
-  virtual PullMode GetPullModeImpl() const noexcept = 0;
+  virtual hf_gpio_err_t SetDirectionImpl(hf_gpio_direction_t direction) noexcept = 0;
+  virtual hf_gpio_err_t SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept = 0;
+  virtual hf_gpio_err_t SetPullModeImpl(hf_gpio_pull_mode_t mode) noexcept = 0;
+  virtual hf_gpio_err_t SetActiveImpl() noexcept = 0;
+  virtual hf_gpio_err_t SetInactiveImpl() noexcept = 0;
+  virtual hf_gpio_err_t ToggleImpl() noexcept = 0;
+  virtual hf_gpio_err_t IsActiveImpl(bool &is_active) noexcept = 0;
+  virtual hf_gpio_pull_mode_t GetPullModeImpl() const noexcept = 0;
 
 protected:
   //==============================================================//
   // MEMBER VARIABLES
   //==============================================================//
 
-  const HfPinNumber pin_;       ///< GPIO pin number/identifier
-  bool initialized_;            ///< Initialization state flag
-  Direction current_direction_; ///< Current pin direction
-  ActiveState active_state_;    ///< Active state polarity
-  OutputMode output_mode_;      ///< Output drive mode
-  PullMode pull_mode_;          ///< Pull resistor configuration
-  State current_state_;         ///< Current logical state
+  const HfPinNumber pin_;                    ///< GPIO pin number/identifier
+  bool initialized_;                         ///< Initialization state flag
+  hf_gpio_direction_t current_direction_;    ///< Current pin direction
+  hf_gpio_active_state_t active_state_;      ///< Active state polarity
+  hf_gpio_output_mode_t output_mode_;        ///< Output drive mode
+  hf_gpio_pull_mode_t pull_mode_;            ///< Pull resistor configuration
+  hf_gpio_state_t current_state_;            ///< Current logical state
 };
 
 //==============================================================//
 // STRING CONVERSION IMPLEMENTATIONS
 //==============================================================//
 
-inline const char *BaseGpio::ToString(State state) noexcept {
+inline const char *BaseGpio::ToString(hf_gpio_state_t state) noexcept {
   switch (state) {
-  case State::Active:
+  case hf_gpio_state_t::HF_GPIO_STATE_ACTIVE:
     return "Active";
-  case State::Inactive:
+  case hf_gpio_state_t::HF_GPIO_STATE_INACTIVE:
     return "Inactive";
   default:
     return "Unknown";
   }
 }
 
-inline const char *BaseGpio::ToString(ActiveState active_state) noexcept {
+inline const char *BaseGpio::ToString(hf_gpio_active_state_t active_state) noexcept {
   switch (active_state) {
-  case ActiveState::High:
+  case hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH:
     return "ActiveHigh";
-  case ActiveState::Low:
+  case hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW:
     return "ActiveLow";
   default:
     return "Unknown";
   }
 }
 
-inline const char *BaseGpio::ToString(Direction direction) noexcept {
+inline const char *BaseGpio::ToString(hf_gpio_direction_t direction) noexcept {
   switch (direction) {
-  case Direction::Input:
+  case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
     return "Input";
-  case Direction::Output:
+  case hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT:
     return "Output";
   default:
     return "Unknown";
   }
 }
 
-inline const char *BaseGpio::ToString(OutputMode output_mode) noexcept {
+inline const char *BaseGpio::ToString(hf_gpio_output_mode_t output_mode) noexcept {
   switch (output_mode) {
-  case OutputMode::PushPull:
+  case hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL:
     return "PushPull";
-  case OutputMode::OpenDrain:
+  case hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN:
     return "OpenDrain";
   default:
     return "Unknown";
   }
 }
 
-inline const char *BaseGpio::ToString(PullMode pull_mode) noexcept {
+inline const char *BaseGpio::ToString(hf_gpio_pull_mode_t pull_mode) noexcept {
   switch (pull_mode) {
-  case PullMode::Floating:
+  case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING:
     return "Floating";
-  case PullMode::PullUp:
+  case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP:
     return "PullUp";
-  case PullMode::PullDown:
+  case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN:
     return "PullDown";
+  case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP_DOWN:
+    return "PullUpDown";
   default:
     return "Unknown";
   }
 }
 
-inline const char *BaseGpio::ToString(InterruptTrigger trigger) noexcept {
+inline const char *BaseGpio::ToString(hf_gpio_interrupt_trigger_t trigger) noexcept {
   switch (trigger) {
-  case InterruptTrigger::None:
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE:
     return "None";
-  case InterruptTrigger::RisingEdge:
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE:
     return "RisingEdge";
-  case InterruptTrigger::FallingEdge:
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE:
     return "FallingEdge";
-  case InterruptTrigger::BothEdges:
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES:
     return "BothEdges";
-  case InterruptTrigger::LowLevel:
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL:
     return "LowLevel";
-  case InterruptTrigger::HighLevel:
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL:
     return "HighLevel";
   default:
     return "Unknown";

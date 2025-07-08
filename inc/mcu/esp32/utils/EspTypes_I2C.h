@@ -42,7 +42,7 @@
 #include "HardwareTypes.h" // For basic hardware types
 #include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"  // Base types and platform selection
-#include "BaseI2c.h"  // For HfI2cErr
+#include "BaseI2c.h"  // For hf_i2c_err_t
 
 #include <functional>
 #include <vector>
@@ -91,7 +91,7 @@ using EspErr = int;
  *          APB_CLK provides the best precision, XTAL_CLK enables low-power modes,
  *          RC_FAST_CLK provides lowest power consumption but less precision.
  */
-enum class I2cClockSource : uint8_t {
+enum class hf_i2c_clock_source_t : uint8_t {
     DEFAULT = 0,    ///< Use default clock source (typically APB)
     APB_CLK = 1,    ///< APB clock (most precise, highest power)
     XTAL_CLK = 2,   ///< Crystal oscillator (good precision, lower power)
@@ -102,7 +102,7 @@ enum class I2cClockSource : uint8_t {
  * @brief I2C address bit length configuration.
  * @details Determines whether to use 7-bit or 10-bit addressing mode.
  */
-enum class I2cAddressBits : uint8_t {
+enum class hf_i2c_address_bits_t : uint8_t {
     ADDR_7_BIT = 0,  ///< 7-bit addressing (standard)
     ADDR_10_BIT = 1  ///< 10-bit addressing (extended)
 };
@@ -111,7 +111,7 @@ enum class I2cAddressBits : uint8_t {
  * @brief I2C power mode configuration for energy optimization.
  * @details Different power modes balance performance with energy consumption.
  */
-enum class I2cPowerMode : uint8_t {
+enum class hf_i2c_power_mode_t : uint8_t {
     FULL_POWER = 0,     ///< Full performance mode
     LOW_POWER = 1,      ///< Reduced power consumption
     SLEEP_MODE = 2,     ///< Minimum power for sleep-compatible operation
@@ -122,7 +122,7 @@ enum class I2cPowerMode : uint8_t {
  * @brief I2C transaction types for operation classification.
  * @details Used internally to track and optimize different transaction patterns.
  */
-enum class I2cTransactionType : uint8_t {
+enum class hf_i2c_transaction_type_t : uint8_t {
     WRITE_ONLY = 0,        ///< Pure write transaction
     READ_ONLY = 1,         ///< Pure read transaction
     WRITE_READ = 2,        ///< Combined write-then-read transaction
@@ -135,25 +135,25 @@ enum class I2cTransactionType : uint8_t {
  * @brief I2C event types for callback notifications.
  * @details Events that can be reported through the event callback system.
  */
-enum class I2cEventType : int {
-    TRANSACTION_COMPLETE = 0,    ///< Transaction completed successfully
-    TRANSACTION_ERROR = 1,       ///< Transaction failed
-    BUS_ERROR = 2,              ///< Bus-level error occurred
-    DEVICE_NACK = 3,            ///< Device sent NACK
-    ARBITRATION_LOST = 4,       ///< Lost arbitration in multi-master
-    TIMEOUT = 5,                ///< Operation timed out
-    CLOCK_STRETCH_TIMEOUT = 6,  ///< Clock stretching timeout
-    BUS_RECOVERED = 7,          ///< Bus recovery completed
-    POWER_MODE_CHANGED = 8,     ///< Power mode changed
-    DEVICE_ADDED = 9,           ///< Device added to bus
-    DEVICE_REMOVED = 10         ///< Device removed from bus
+enum class hf_i2c_event_type_t : int {
+    HF_I2C_EVENT_TRANSACTION_COMPLETE = 0,    ///< Transaction completed successfully
+    HF_I2C_EVENT_TRANSACTION_ERROR = 1,       ///< Transaction failed
+    HF_I2C_EVENT_BUS_ERROR = 2,              ///< Bus-level error occurred
+    HF_I2C_EVENT_DEVICE_NACK = 3,            ///< Device sent NACK
+    HF_I2C_EVENT_ARBITRATION_LOST = 4,       ///< Lost arbitration in multi-master
+    HF_I2C_EVENT_TIMEOUT = 5,                ///< Operation timed out
+    HF_I2C_EVENT_CLOCK_STRETCH_TIMEOUT = 6,  ///< Clock stretching timeout
+    HF_I2C_EVENT_BUS_RECOVERED = 7,          ///< Bus recovery completed
+    HF_I2C_EVENT_POWER_MODE_CHANGED = 8,     ///< Power mode changed
+    HF_I2C_EVENT_DEVICE_ADDED = 9,           ///< Device added to bus
+    HF_I2C_EVENT_DEVICE_REMOVED = 10         ///< Device removed from bus
 };
 
 /**
  * @brief I2C glitch filter configuration.
  * @details Controls the digital glitch filtering capability.
  */
-enum class I2cGlitchFilter : uint8_t {
+enum class hf_i2c_glitch_filter_t : uint8_t {
     DISABLED = 0,        ///< No glitch filtering
     FILTER_1_CYCLE = 1,  ///< Filter glitches <= 1 APB cycle
     FILTER_2_CYCLES = 2, ///< Filter glitches <= 2 APB cycles
@@ -168,7 +168,7 @@ enum class I2cGlitchFilter : uint8_t {
  * @brief I2C command types for custom sequence operations.
  * @details Defines the types of commands that can be executed in custom sequences.
  */
-enum class I2cCommandType : uint8_t {
+enum class hf_i2c_command_type_t : uint8_t {
     WRITE = 0,       ///< Write data to device
     READ = 1,        ///< Read data from device
     WRITE_READ = 2,  ///< Write then read in single transaction
@@ -195,7 +195,7 @@ struct I2cAsyncResult;
  * @note Avoid blocking operations, heap allocation, or complex computations.
  * @note Use FreeRTOS queue/semaphore mechanisms to communicate with tasks.
  */
-using I2cAsyncCallback = std::function<void(HfI2cErr result, size_t bytes_transferred, void* user_data)>;
+using hf_i2c_async_callback_t = std::function<void(hf_i2c_err_t result, size_t bytes_transferred, void* user_data)>;
 
 /**
  * @brief Callback function signature for I2C event notifications.
@@ -207,18 +207,18 @@ using I2cAsyncCallback = std::function<void(HfI2cErr result, size_t bytes_transf
  * @note Event data lifetime is only valid during the callback execution.
  * @note Use FreeRTOS primitives to safely communicate with application tasks.
  */
-using I2cEventCallback = std::function<void(I2cEventType event_type, void* event_data, void* user_data)>;
+using hf_i2c_event_callback_t = std::function<void(hf_i2c_event_type_t event_type, void* event_data, void* user_data)>;
 
 /**
  * @brief Detailed result structure for async operations.
  * @details Provides comprehensive information about async operation completion.
  */
-struct I2cAsyncResult {
-    HfI2cErr error_code;        ///< Operation result code
+struct hf_i2c_async_result_t {
+    hf_i2c_err_t error_code;        ///< Operation result code
     size_t bytes_transferred;   ///< Number of bytes successfully transferred
     uint32_t operation_id;      ///< Unique operation identifier
     uint64_t completion_time_us; ///< Completion timestamp in microseconds
-    I2cTransactionType transaction_type; ///< Type of transaction completed
+    hf_i2c_transaction_type_t transaction_type; ///< Type of transaction completed
 };
 
 //==============================================================================
@@ -230,17 +230,17 @@ struct I2cAsyncResult {
  * @details Comprehensive bus-level configuration supporting all ESP32C6 features.
  *          This structure configures the master bus which can support multiple devices.
  */
-struct I2cMasterBusConfig {
+struct hf_i2c_master_bus_config_t {
     // Basic bus configuration
-    I2cPort i2c_port;                  ///< I2C port number (0 or 1 for ESP32C6)
-    GpioNum sda_io_num;                 ///< SDA GPIO pin number
-    GpioNum scl_io_num;                 ///< SCL GPIO pin number
+    hf_i2c_port_t i2c_port;                  ///< I2C port number (0 or 1 for ESP32C6)
+    hf_pin_num_t sda_io_num;                 ///< SDA GPIO pin number
+    hf_pin_num_t scl_io_num;                 ///< SCL GPIO pin number
     bool enable_internal_pullup;        ///< Enable internal pull-up resistors
 
     // Clock and timing
-    I2cClockSource clk_source;          ///< Clock source selection
+    hf_i2c_clock_source_t clk_source;          ///< Clock source selection
     uint32_t clk_flags;                 ///< Additional clock configuration flags
-    I2cGlitchFilter glitch_ignore_cnt;  ///< Digital glitch filter length
+    hf_i2c_glitch_filter_t glitch_ignore_cnt;  ///< Digital glitch filter length
 
     // Advanced features
     uint32_t intr_priority;             ///< Interrupt priority (0-7, 0=lowest)
@@ -253,11 +253,11 @@ struct I2cMasterBusConfig {
     /**
      * @brief Default constructor with ESP32C6-optimized settings.
      */
-    I2cMasterBusConfig() noexcept
-        : i2c_port(static_cast<I2cPort>(0)), sda_io_num(static_cast<GpioNum>(HF_INVALID_PIN)), 
-          scl_io_num(static_cast<GpioNum>(HF_INVALID_PIN)),
-          enable_internal_pullup(true), clk_source(I2cClockSource::DEFAULT),
-          clk_flags(0), glitch_ignore_cnt(I2cGlitchFilter::FILTER_7_CYCLES),
+    hf_i2c_master_bus_config_t() noexcept
+        : i2c_port(static_cast<hf_i2c_port_t>(0)), sda_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)), 
+          scl_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)),
+          enable_internal_pullup(true), clk_source(hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT),
+          clk_flags(0), glitch_ignore_cnt(hf_i2c_glitch_filter_t::FILTER_7_CYCLES),
           intr_priority(0), trans_queue_depth(16), flags(0), allow_pd(false) {}
 };
 
@@ -266,9 +266,9 @@ struct I2cMasterBusConfig {
  * @details Device-specific configuration that works with the master bus to provide
  *          per-device customization of timing, addressing, and behavior.
  */
-struct I2cDeviceConfig {
+struct hf_i2c_device_config_t {
     uint16_t device_address;             ///< 7-bit or 10-bit device address
-    I2cAddressBits dev_addr_length;      ///< Address bit length (7 or 10 bit)
+    hf_i2c_address_bits_t dev_addr_length;      ///< Address bit length (7 or 10 bit)
     uint32_t scl_speed_hz;              ///< SCL clock frequency for this device
     uint32_t scl_wait_us;               ///< SCL wait time in microseconds
     uint32_t flags;                     ///< Device-specific configuration flags
@@ -276,8 +276,8 @@ struct I2cDeviceConfig {
     /**
      * @brief Default constructor with standard I2C device settings.
      */
-    I2cDeviceConfig() noexcept
-        : device_address(0), dev_addr_length(I2cAddressBits::ADDR_7_BIT),
+    hf_i2c_device_config_t() noexcept
+        : device_address(0), dev_addr_length(hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT),
           scl_speed_hz(100000), scl_wait_us(0), flags(0) {}
 };
 
@@ -285,14 +285,14 @@ struct I2cDeviceConfig {
  * @brief I2C slave device configuration for slave mode operation.
  * @details Configuration for I2C slave mode with callback support and buffering.
  */
-struct I2cSlaveConfig {
+struct hf_i2c_slave_config_t {
     // Basic slave configuration
-    I2cPort i2c_port;                   ///< I2C port number
-    I2cClockSource clk_source;          ///< Clock source selection
-    GpioNum scl_io_num;                 ///< SCL GPIO pin
-    GpioNum sda_io_num;                 ///< SDA GPIO pin
+    hf_i2c_port_t i2c_port;                   ///< I2C port number
+    hf_i2c_clock_source_t clk_source;          ///< Clock source selection
+    hf_pin_num_t scl_io_num;                 ///< SCL GPIO pin
+    hf_pin_num_t sda_io_num;                 ///< SDA GPIO pin
     uint16_t slave_addr;                ///< Slave address
-    I2cAddressBits addr_bit_len;        ///< Address bit length
+    hf_i2c_address_bits_t addr_bit_len;        ///< Address bit length
 
     // Buffer configuration
     uint32_t send_buf_depth;            ///< Send buffer depth
@@ -307,11 +307,11 @@ struct I2cSlaveConfig {
     /**
      * @brief Default constructor with standard slave settings.
      */
-    I2cSlaveConfig() noexcept
-        : i2c_port(static_cast<I2cPort>(0)), clk_source(I2cClockSource::DEFAULT),
-          scl_io_num(static_cast<GpioNum>(HF_INVALID_PIN)), 
-          sda_io_num(static_cast<GpioNum>(HF_INVALID_PIN)),
-          slave_addr(0), addr_bit_len(I2cAddressBits::ADDR_7_BIT),
+    hf_i2c_slave_config_t() noexcept
+        : i2c_port(static_cast<hf_i2c_port_t>(0)), clk_source(hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT),
+          scl_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)), 
+          sda_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)),
+          slave_addr(0), addr_bit_len(hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT),
           send_buf_depth(256), receive_buf_depth(256), enable_internal_pullup(true),
           broadcast_en(false), allow_pd(false), intr_priority(0) {}
 };
@@ -324,7 +324,7 @@ struct I2cSlaveConfig {
  * @brief Buffer descriptor for multi-buffer transactions.
  * @details Describes a single buffer in a complex transaction sequence.
  */
-struct I2cTransactionBuffer {
+struct hf_i2c_transaction_buffer_t {
     const uint8_t* data;        ///< Pointer to buffer data
     size_t length;              ///< Buffer length in bytes
     bool is_write;              ///< true = write buffer, false = read buffer
@@ -332,13 +332,13 @@ struct I2cTransactionBuffer {
     /**
      * @brief Constructor for write buffer.
      */
-    I2cTransactionBuffer(const uint8_t* buf, size_t len) noexcept
+    hf_i2c_transaction_buffer_t(const uint8_t* buf, size_t len) noexcept
         : data(buf), length(len), is_write(true) {}
 
     /**
      * @brief Constructor with explicit read/write flag.
      */
-    I2cTransactionBuffer(const uint8_t* buf, size_t len, bool write) noexcept
+    hf_i2c_transaction_buffer_t(const uint8_t* buf, size_t len, bool write) noexcept
         : data(buf), length(len), is_write(write) {}
 };
 
@@ -347,16 +347,16 @@ struct I2cTransactionBuffer {
  * @details Supports protocols requiring multiple read/write operations in sequence
  *          without releasing the bus between operations.
  */
-struct I2cMultiBufferTransaction {
+struct hf_i2c_multi_buffer_transaction_t {
     uint16_t device_address;                    ///< Target device address
-    std::vector<I2cTransactionBuffer> buffers;  ///< Buffer sequence
+    std::vector<hf_i2c_transaction_buffer_t> buffers;  ///< Buffer sequence
     uint32_t timeout_ms;                        ///< Transaction timeout
     uint32_t flags;                            ///< Transaction flags
 
     /**
      * @brief Default constructor.
      */
-    I2cMultiBufferTransaction() noexcept
+    hf_i2c_multi_buffer_transaction_t() noexcept
         : device_address(0), timeout_ms(1000), flags(0) {}
 };
 
@@ -364,21 +364,21 @@ struct I2cMultiBufferTransaction {
  * @brief Custom I2C command for non-standard protocols.
  * @details Provides flexibility for implementing custom I2C sequences.
  */
-struct I2cCustomCommand {
+struct hf_i2c_custom_command_t {
     /**
      * @brief Command type enumeration.
      */
-    enum class Type : uint8_t {
-        WRITE = 0,          ///< Write command
-        READ = 1,           ///< Read command
-        START = 2,          ///< Generate start condition
-        STOP = 3,           ///< Generate stop condition
-        RESTART = 4,        ///< Generate restart condition
-        DELAY = 5,          ///< Insert delay
-        PROBE = 6           ///< Probe for device presence
+    enum class hf_i2c_cmd_type_t : uint8_t {
+        HF_I2C_CMD_WRITE = 0,          ///< Write command
+        HF_I2C_CMD_READ = 1,           ///< Read command
+        HF_I2C_CMD_START = 2,          ///< Generate start condition
+        HF_I2C_CMD_STOP = 3,           ///< Generate stop condition
+        HF_I2C_CMD_RESTART = 4,        ///< Generate restart condition
+        HF_I2C_CMD_DELAY = 5,          ///< Insert delay
+        HF_I2C_CMD_PROBE = 6           ///< Probe for device presence
     };
 
-    Type command_type;              ///< Command type
+    hf_i2c_cmd_type_t command_type;              ///< Command type
     std::vector<uint8_t> data;      ///< Command data (if applicable)
     uint32_t delay_us;              ///< Delay in microseconds (for DELAY command)
     uint32_t flags;                 ///< Command-specific flags
@@ -386,14 +386,14 @@ struct I2cCustomCommand {
     /**
      * @brief Constructor for basic command.
      */
-    explicit I2cCustomCommand(Type type) noexcept
+    explicit hf_i2c_custom_command_t(hf_i2c_cmd_type_t type) noexcept
         : command_type(type), delay_us(0), flags(0) {}
 
     /**
      * @brief Constructor for delay command.
      */
-    explicit I2cCustomCommand(uint32_t delay_microseconds) noexcept
-        : command_type(Type::DELAY), delay_us(delay_microseconds), flags(0) {}
+    explicit hf_i2c_custom_command_t(uint32_t delay_microseconds) noexcept
+        : command_type(hf_i2c_cmd_type_t::HF_I2C_CMD_DELAY), delay_us(delay_microseconds), flags(0) {}
 };
 
 //==============================================================================
@@ -404,7 +404,7 @@ struct I2cCustomCommand {
  * @brief I2C operation statistics for performance monitoring.
  * @details Comprehensive statistics for analyzing I2C bus performance and health.
  */
-struct I2cStatistics {
+struct hf_i2c_statistics_t {
     // Transaction counters
     std::atomic<uint64_t> total_transactions{0};     ///< Total transactions attempted
     std::atomic<uint64_t> successful_transactions{0}; ///< Successful transactions
@@ -472,7 +472,7 @@ struct I2cStatistics {
  * @brief I2C bus diagnostics for health monitoring.
  * @details Real-time diagnostics information for troubleshooting and monitoring.
  */
-struct I2cDiagnostics {
+struct hf_i2c_diagnostics_t {
     // Bus health indicators
     bool bus_healthy;                           ///< Overall bus health status
     bool sda_line_state;                        ///< Current SDA line state
@@ -480,7 +480,7 @@ struct I2cDiagnostics {
     bool bus_locked;                           ///< Bus lock status
 
     // Error information
-    HfI2cErr last_error_code;                  ///< Last error code encountered
+    hf_i2c_err_t last_error_code;                  ///< Last error code encountered
     uint64_t last_error_timestamp_us;          ///< Timestamp of last error
     uint32_t consecutive_errors;               ///< Consecutive error count
     uint32_t error_recovery_attempts;          ///< Bus recovery attempts
@@ -491,7 +491,7 @@ struct I2cDiagnostics {
     uint32_t clock_stretching_events;          ///< Clock stretching event count
 
     // Power management status
-    I2cPowerMode current_power_mode;           ///< Current power mode
+    hf_i2c_power_mode_t current_power_mode;           ///< Current power mode
     bool auto_suspend_enabled;                 ///< Auto-suspend feature status
     uint64_t last_activity_timestamp_us;       ///< Last bus activity timestamp
 
@@ -503,11 +503,11 @@ struct I2cDiagnostics {
     /**
      * @brief Default constructor with healthy defaults.
      */
-    I2cDiagnostics() noexcept
+    hf_i2c_diagnostics_t() noexcept
         : bus_healthy(true), sda_line_state(true), scl_line_state(true), bus_locked(false),
-          last_error_code(HfI2cErr::I2C_SUCCESS), last_error_timestamp_us(0), consecutive_errors(0),
+          last_error_code(hf_i2c_err_t::I2C_SUCCESS), last_error_timestamp_us(0), consecutive_errors(0),
           error_recovery_attempts(0), bus_utilization_percent(0.0f), average_response_time_us(0),
-          clock_stretching_events(0), current_power_mode(I2cPowerMode::FULL_POWER),
+          clock_stretching_events(0), current_power_mode(hf_i2c_power_mode_t::HF_I2C_POWER_FULL),
           auto_suspend_enabled(false), last_activity_timestamp_us(0), active_device_count(0),
           total_device_scans(0), devices_found_last_scan(0) {}
 };

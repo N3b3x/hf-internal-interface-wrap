@@ -73,7 +73,7 @@
   X(PIO_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
   X(PIO_ERR_OPERATION_ABORTED, 30, "Operation aborted")
 
-enum class HfPioErr : uint8_t {
+enum class hf_pio_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_PIO_ERR_LIST(X)
 #undef X
@@ -103,7 +103,7 @@ constexpr std::string_view HfPioErrToString(HfPioErr err) noexcept {
 /**
  * @brief PIO channel direction
  */
-enum class PioDirection : uint8_t {
+enum class hf_pio_direction_t : uint8_t {
   Transmit = 0,     ///< Transmit mode (output)
   Receive = 1,      ///< Receive mode (input)
   Bidirectional = 2 ///< Bidirectional mode (if supported)
@@ -112,7 +112,7 @@ enum class PioDirection : uint8_t {
 /**
  * @brief PIO signal polarity
  */
-enum class PioPolarity : uint8_t {
+enum class hf_pio_polarity_t : uint8_t {
   Normal = 0,  ///< Normal polarity (idle low, active high)
   Inverted = 1 ///< Inverted polarity (idle high, active low)
 };
@@ -120,7 +120,7 @@ enum class PioPolarity : uint8_t {
 /**
  * @brief PIO idle state
  */
-enum class PioIdleState : uint8_t {
+enum class hf_pio_idle_state_t : uint8_t {
   Low = 0, ///< Idle state is low
   High = 1 ///< Idle state is high
 };
@@ -138,8 +138,8 @@ struct PioChannelConfig {
   size_t buffer_size;      ///< Buffer size for symbols/durations
 
   PioChannelConfig() noexcept
-      : gpio_pin(-1), direction(PioDirection::Transmit), resolution_ns(1000),
-        polarity(PioPolarity::Normal), idle_state(PioIdleState::Low), timeout_us(10000),
+      : gpio_pin(-1), direction(hf_pio_direction_t::Transmit), resolution_ns(1000),
+        polarity(hf_pio_polarity_t::Normal), idle_state(hf_pio_idle_state_t::Low), timeout_us(10000),
         buffer_size(64) {}
 };
 

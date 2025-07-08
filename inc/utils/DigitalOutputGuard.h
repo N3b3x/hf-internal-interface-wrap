@@ -17,11 +17,17 @@
 #include "BaseGpio.h"
 
 /**
- * @brief 
+ * @brief DigitalOutputGuard class
  * 
- */
- * as output.
+ * This class ensures that a BaseGpio instance is configured as output
+ * and set active in its constructor, and set inactive in its destructor.
+ * This ensures proper resource management and consistent behavior using RAII principles.
  *
+ * Features:
+ * - Automatic output mode configuration
+ * - Safe state management with error handling
+ * - RAII pattern for exception safety
+ * - Supports both reference and pointer interfaces
  * The DigitalOutputGuard ensures that a BaseGpio instance is configured as output
  * and set active in its constructor, and set inactive in its destructor. This ensures
  * proper resource management and consistent behavior using RAII principles.
@@ -34,7 +40,8 @@
  */
 class DigitalOutputGuard {
 public:
-  /**   * @brief Constructor with BaseGpio reference.
+  /**
+   * @brief Constructor with BaseGpio reference.
    * @param gpio Reference to the BaseGpio instance to manage
    * @param ensure_output_mode If true, automatically switch to output mode (default: true)
    * @details Configures the GPIO as output (if needed) and sets it to active state.
@@ -42,7 +49,8 @@ public:
    */
   explicit DigitalOutputGuard(BaseGpio &gpio, bool ensure_output_mode = true) noexcept;
 
-  /**   * @brief Constructor with BaseGpio pointer.
+  /**
+   * @brief Constructor with BaseGpio pointer.
    * @param gpio Pointer to the BaseGpio instance to manage (must not be null)
    * @param ensure_output_mode If true, automatically switch to output mode (default: true)
    * @details Configures the GPIO as output (if needed) and sets it to active state.
@@ -77,39 +85,39 @@ public:
 
   /**
    * @brief Get the last error that occurred during guard operations.
-   * @return HfGpioErr error code from the last operation
+   * @return hf_gpio_err_t error code from the last operation
    */
-  [[nodiscard]] HfGpioErr GetLastError() const noexcept {
+  [[nodiscard]] hf_gpio_err_t GetLastError() const noexcept {
     return last_error_;
   }
 
   /**
    * @brief Manually set the GPIO to active state.
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    * @details Allows manual control while the guard is active. The destructor
    *          will still set the pin inactive when the guard goes out of scope.
    */
-  HfGpioErr SetActive() noexcept;
+  hf_gpio_err_t SetActive() noexcept;
 
   /**
    * @brief Manually set the GPIO to inactive state.
-   * @return HfGpioErr::GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
    * @details Allows manual control while the guard is active. The destructor
    *          will still attempt to set the pin inactive when the guard goes out of scope.
    */
-  HfGpioErr SetInactive() noexcept;
+  hf_gpio_err_t SetInactive() noexcept;
 
   /**
    * @brief Get the current state of the managed GPIO.
-   * @return Current BaseGpio::State (Active or Inactive)
+   * @return Current BaseGpio::hf_gpio_state_t (Active or Inactive)
    */
-  [[nodiscard]] BaseGpio::State GetCurrentState() const noexcept;
+  [[nodiscard]] BaseGpio::hf_gpio_state_t GetCurrentState() const noexcept;
 
 private:
   BaseGpio *gpio_;       ///< Pointer to the managed BaseGpio instance
   bool was_output_mode_; ///< Whether the GPIO was already in output mode
   bool is_valid_;        ///< Whether the guard is in a valid state
-  HfGpioErr last_error_; ///< Last error code from operations
+  hf_gpio_err_t last_error_; ///< Last error code from operations
 
   /**
    * @brief Internal helper to initialize the guard state.

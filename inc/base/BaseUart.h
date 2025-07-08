@@ -73,21 +73,21 @@
   X(UART_ERR_PERMISSION_DENIED, 30, "Permission denied")                                           \
   X(UART_ERR_OPERATION_ABORTED, 31, "Operation aborted")
 
-enum class HfUartErr : uint8_t {
+enum class hf_uart_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_UART_ERR_LIST(X)
 #undef X
 };
 
 /**
- * @brief Convert HfUartErr to human-readable string
+ * @brief Convert hf_uart_err_t to human-readable string
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view HfUartErrToString(HfUartErr err) noexcept {
+constexpr std::string_view hf_uart_err_to_string(hf_uart_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
-  case HfUartErr::NAME:                                                                            \
+  case hf_uart_err_t::NAME:                                                                        \
     return DESC;
     HF_UART_ERR_LIST(X)
 #undef X
@@ -105,7 +105,7 @@ constexpr std::string_view HfUartErrToString(HfUartErr err) noexcept {
  * @details Comprehensive configuration for UART initialization,
  *          supporting various platforms and UART modes without MCU-specific types.
  */
-struct UartConfig {
+struct hf_uart_config_t {
   HfBaudRate baud_rate;           ///< Baud rate (bits per second)
   uint8_t data_bits;              ///< Data bits (5-8, typically 8)
   uint8_t parity;                 ///< Parity: 0=None, 1=Even, 2=Odd
@@ -122,7 +122,7 @@ struct UartConfig {
   /**
    * @brief Default constructor with sensible defaults.
    */
-  UartConfig() noexcept
+  hf_uart_config_t() noexcept
       : baud_rate(115200),                // Common baud rate
         data_bits(8),                     // 8 data bits
         parity(0),                        // No parity
@@ -170,7 +170,7 @@ public:
    * @param port UART port number
    * @param config UART configuration parameters
    */
-  BaseUart(HfPortNumber port, const UartConfig &config) noexcept
+  BaseUart(HfPortNumber port, const hf_uart_config_t &config) noexcept
       : port_(port), config_(config), initialized_(false) {}
 
   /**
@@ -207,7 +207,7 @@ public:
    * @brief Get the UART configuration.
    * @return Reference to the current configuration
    */
-  [[nodiscard]] const UartConfig &GetConfig() const noexcept {
+  [[nodiscard]] const hf_uart_config_t &GetConfig() const noexcept {
     return config_;
   }
 
@@ -242,10 +242,10 @@ public:
    * @param data Data buffer to transmit
    * @param length Number of bytes to write
    * @param timeout_ms Timeout in milliseconds (0 = use default)
-   * @return HfUartErr result code
+   * @return hf_uart_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfUartErr Write(const uint8_t *data, uint16_t length,
+  virtual hf_uart_err_t Write(const uint8_t *data, uint16_t length,
                           uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
@@ -253,10 +253,10 @@ public:
    * @param data Buffer to store received data
    * @param length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = use default)
-   * @return HfUartErr result code
+   * @return hf_uart_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfUartErr Read(uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_uart_err_t Read(uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Get the number of bytes available to read.
@@ -267,17 +267,17 @@ public:
 
   /**
    * @brief Flush the transmit buffer.
-   * @return HfUartErr result code
+   * @return hf_uart_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfUartErr FlushTx() noexcept = 0;
+  virtual hf_uart_err_t FlushTx() noexcept = 0;
 
   /**
    * @brief Flush the receive buffer.
-   * @return HfUartErr result code
+   * @return hf_uart_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfUartErr FlushRx() noexcept = 0;
+  virtual hf_uart_err_t FlushRx() noexcept = 0;
 
   //==============================================//
   // CONVENIENCE METHODS WITH DEFAULT IMPLEMENTATIONS //
@@ -313,7 +313,7 @@ public:
     if (!EnsureInitialized()) {
       return false;
     }
-    return Write(data, length, 0) == HfUartErr::UART_SUCCESS;
+    return Write(data, length, 0) == hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -328,7 +328,7 @@ public:
       return false;
     }
     uint32_t timeout = (timeout_ms == UINT32_MAX) ? config_.timeout_ms : timeout_ms;
-    return Read(data, length, timeout) == HfUartErr::UART_SUCCESS;
+    return Read(data, length, timeout) == hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -345,7 +345,7 @@ public:
     while (str[len] != '\0') {
       len++;
     }
-    return Write(reinterpret_cast<const uint8_t *>(str), len, 0) == HfUartErr::UART_SUCCESS;
+    return Write(reinterpret_cast<const uint8_t *>(str), len, 0) == hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -354,7 +354,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool WriteByte(uint8_t byte) noexcept {
-    return Write(&byte, 1, 0) == HfUartErr::UART_SUCCESS;
+    return Write(&byte, 1, 0) == hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -364,7 +364,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool ReadByte(uint8_t &byte, uint32_t timeout_ms = 1000) noexcept {
-    return Read(&byte, 1, timeout_ms) == HfUartErr::UART_SUCCESS;
+    return Read(&byte, 1, timeout_ms) == hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -375,7 +375,7 @@ public:
     if (!EnsureInitialized()) {
       return false;
     }
-    return FlushTx() == HfUartErr::UART_SUCCESS;
+    return FlushTx() == hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -386,7 +386,7 @@ public:
     if (!EnsureInitialized()) {
       return false;
     }
-    return FlushRx() == HfUartErr::UART_SUCCESS;
+    return FlushRx() == hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -448,6 +448,6 @@ public:
 
 protected:
   HfPortNumber port_; ///< UART port number
-  UartConfig config_; ///< UART configuration
+  hf_uart_config_t config_; ///< UART configuration
   bool initialized_;  ///< Initialization state
 };

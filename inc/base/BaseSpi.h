@@ -72,21 +72,21 @@
   X(SPI_ERR_PERMISSION_DENIED, 28, "Permission denied")                                            \
   X(SPI_ERR_OPERATION_ABORTED, 29, "Operation aborted")
 
-enum class HfSpiErr : uint8_t {
+enum class hf_spi_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_SPI_ERR_LIST(X)
 #undef X
 };
 
 /**
- * @brief Convert HfSpiErr to human-readable string
+ * @brief Convert hf_spi_err_t to human-readable string
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view HfSpiErrToString(HfSpiErr err) noexcept {
+constexpr std::string_view hf_spi_err_to_string(hf_spi_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
-  case HfSpiErr::NAME:                                                                             \
+  case hf_spi_err_t::NAME:                                                                         \
     return DESC;
     HF_SPI_ERR_LIST(X)
 #undef X
@@ -104,7 +104,7 @@ constexpr std::string_view HfSpiErrToString(HfSpiErr err) noexcept {
  * @details Comprehensive configuration for SPI bus initialization,
  *          supporting various platforms and SPI modes without MCU-specific types.
  */
-struct SpiBusConfig {
+struct hf_spi_bus_config_t {
   HfHostId host;                ///< SPI host/controller
   HfPinNumber mosi_pin;         ///< MOSI (Master Out Slave In) pin
   HfPinNumber miso_pin;         ///< MISO (Master In Slave Out) pin
@@ -119,7 +119,7 @@ struct SpiBusConfig {
   /**
    * @brief Default constructor with sensible defaults.
    */
-  SpiBusConfig() noexcept
+  hf_spi_bus_config_t() noexcept
       : host(HF_INVALID_HOST), mosi_pin(HF_INVALID_PIN), miso_pin(HF_INVALID_PIN),
         sclk_pin(HF_INVALID_PIN), cs_pin(HF_INVALID_PIN), clock_speed_hz(1000000), // 1MHz default
         mode(0),             // Mode 0 (CPOL=0, CPHA=0)
@@ -161,7 +161,7 @@ public:
    * @brief Constructor with configuration.
    * @param config SPI bus configuration parameters
    */
-  explicit BaseSpi(const SpiBusConfig &config) noexcept : config_(config), initialized_(false) {}
+  explicit BaseSpi(const hf_spi_bus_config_t &config) noexcept : config_(config), initialized_(false) {}
 
   /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
@@ -197,7 +197,7 @@ public:
    * @brief Get the bus configuration.
    * @return Reference to the current configuration
    */
-  [[nodiscard]] const SpiBusConfig &GetConfig() const noexcept {
+  [[nodiscard]] const hf_spi_bus_config_t &GetConfig() const noexcept {
     return config_;
   }
 
@@ -225,19 +225,19 @@ public:
    * @param rx_data Receive data buffer (can be nullptr for write-only)
    * @param length Number of bytes to transfer
    * @param timeout_ms Timeout in milliseconds (0 = use default)
-   * @return HfSpiErr result code
+   * @return hf_spi_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfSpiErr Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+  virtual hf_spi_err_t Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                             uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Assert/deassert the chip select signal.
    * @param active True to assert CS, false to deassert
-   * @return HfSpiErr result code
+   * @return hf_spi_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual HfSpiErr SetChipSelect(bool active) noexcept = 0;
+  virtual hf_spi_err_t SetChipSelect(bool active) noexcept = 0;
 
   //==============================================//
   // CONVENIENCE METHODS WITH DEFAULT IMPLEMENTATIONS //
@@ -274,7 +274,7 @@ public:
     if (!EnsureInitialized()) {
       return false;
     }
-    return Transfer(tx_data, rx_data, length, 0) == HfSpiErr::SPI_SUCCESS;
+    return Transfer(tx_data, rx_data, length, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
   /**
@@ -282,9 +282,9 @@ public:
    * @param data Data buffer to transmit
    * @param length Number of bytes to write
    * @param timeout_ms Timeout in milliseconds (0 = use default)
-   * @return HfSpiErr result code
+   * @return hf_spi_err_t result code
    */
-  virtual HfSpiErr Write(const uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept {
+  virtual hf_spi_err_t Write(const uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept {
     return Transfer(data, nullptr, length, timeout_ms);
   }
 
@@ -293,9 +293,9 @@ public:
    * @param data Buffer to store received data
    * @param length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = use default)
-   * @return HfSpiErr result code
+   * @return hf_spi_err_t result code
    */
-  virtual HfSpiErr Read(uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept {
+  virtual hf_spi_err_t Read(uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept {
     return Transfer(nullptr, data, length, timeout_ms);
   }
 
@@ -309,7 +309,7 @@ public:
     if (!EnsureInitialized()) {
       return false;
     }
-    return Write(data, length, 0) == HfSpiErr::SPI_SUCCESS;
+    return Write(data, length, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
   /**
@@ -322,7 +322,7 @@ public:
     if (!EnsureInitialized()) {
       return false;
     }
-    return Read(data, length, 0) == HfSpiErr::SPI_SUCCESS;
+    return Read(data, length, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
   /**
@@ -363,7 +363,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool WriteByte(uint8_t data) noexcept {
-    return Write(&data, 1, 0) == HfSpiErr::SPI_SUCCESS;
+    return Write(&data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
   /**
@@ -372,7 +372,7 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool ReadByte(uint8_t &data) noexcept {
-    return Read(&data, 1, 0) == HfSpiErr::SPI_SUCCESS;
+    return Read(&data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
   /**
@@ -382,10 +382,10 @@ public:
    * @return true if successful, false otherwise
    */
   virtual bool TransferByte(uint8_t tx_data, uint8_t &rx_data) noexcept {
-    return Transfer(&tx_data, &rx_data, 1, 0) == HfSpiErr::SPI_SUCCESS;
+    return Transfer(&tx_data, &rx_data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
 protected:
-  SpiBusConfig config_; ///< Bus configuration
+  hf_spi_bus_config_t config_; ///< Bus configuration
   bool initialized_;    ///< Initialization state
 };

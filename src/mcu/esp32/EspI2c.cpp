@@ -64,24 +64,24 @@ static const char* TAG = "EspI2c";
  * @brief Constructor with I2C master bus configuration.
  * @param config Master bus configuration with ESP-IDF v5.5+ features
  */
-EspI2c::EspI2c(const I2cMasterBusConfig& config) noexcept
+EspI2c::EspI2c(const hf_i2c_master_bus_config_t& config) noexcept
     : BaseI2c({}), // Initialize base with empty config for now
       bus_config_(config),
       initialized_(false),
-      last_error_(HfI2cErr::I2C_SUCCESS),
+      last_error_(hf_i2c_err_t::I2C_SUCCESS),
       master_bus_handle_(nullptr),
       bus_locked_(false),
       next_operation_id_(1),
       event_callback_(nullptr),
       event_callback_userdata_(nullptr),
       last_operation_time_us_(0),
-      current_power_mode_(I2cPowerMode::FULL_POWER),
+      current_power_mode_(hf_i2c_power_mode_t::HF_I2C_POWER_FULL),
       bus_suspended_(false),
       auto_suspend_timer_(nullptr)
 {
     // Reset statistics and diagnostics to clean state
     statistics_.Reset();
-    diagnostics_ = I2cDiagnostics{};
+    diagnostics_ = hf_i2c_diagnostics_t{};
 }
 
 /**
@@ -137,14 +137,14 @@ bool EspI2c::Initialize() noexcept {
 
     // Validate configuration parameters
     if (!I2C_IS_VALID_PORT(bus_config_.i2c_port)) {
-        last_error_ = HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        last_error_ = hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
         ESP_LOGE(TAG, "Invalid I2C port: %d", bus_config_.i2c_port);
         return false;
     }
 
     if (bus_config_.sda_io_num == static_cast<GpioNum>(HF_INVALID_PIN) || 
         bus_config_.scl_io_num == static_cast<GpioNum>(HF_INVALID_PIN)) {
-        last_error_ = HfI2cErr::I2C_ERR_PIN_CONFIGURATION_ERROR;
+        last_error_ = hf_i2c_err_t::I2C_ERR_PIN_CONFIGURATION_ERROR;
         ESP_LOGE(TAG, "Invalid GPIO pins: SDA=%d, SCL=%d", 
                  static_cast<int>(bus_config_.sda_io_num), 
                  static_cast<int>(bus_config_.scl_io_num));
@@ -183,7 +183,7 @@ bool EspI2c::Initialize() noexcept {
 #endif
 
     initialized_.store(true);
-    last_error_ = HfI2cErr::I2C_SUCCESS;
+    last_error_ = hf_i2c_err_t::I2C_SUCCESS;
     return true;
 }
 
@@ -240,7 +240,7 @@ bool EspI2c::Deinitialize() noexcept {
     initialized_.store(false);
     bus_suspended_.store(false);
     current_power_mode_.store(I2cPowerMode::FULL_POWER);
-    last_error_ = HfI2cErr::I2C_SUCCESS;
+    last_error_ = hf_i2c_err_t::I2C_SUCCESS;
     return true;
 }
 
@@ -252,32 +252,32 @@ bool EspI2c::Deinitialize() noexcept {
  * @param timeout_ms Timeout in milliseconds (0 = use default)
  * @return I2C operation result
  */
-HfI2cErr EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t length,
+hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t length,
                        uint32_t timeout_ms) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (!data || length == 0) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     if (!IsValidDeviceAddress(device_addr)) {
-        return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     if (!I2C_IS_VALID_TRANSFER_SIZE(length)) {
-        return HfI2cErr::I2C_ERR_DATA_TOO_LONG;
+        return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
     }
 
     uint64_t start_time = esp_timer_get_time();
-    HfI2cErr result = HfI2cErr::I2C_SUCCESS;
+    hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
 #ifdef HF_MCU_FAMILY_ESP32
     // Get or create device handle
     I2cMasterDevHandle dev_handle = GetOrCreateDeviceHandle(device_addr);
     if (!dev_handle) {
-        return HfI2cErr::I2C_ERR_DEVICE_NOT_FOUND;
+        return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
 
     // Perform the write operation
@@ -287,7 +287,7 @@ HfI2cErr EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t length
     
     result = ConvertEspError(ret);
     
-    if (result == HfI2cErr::I2C_SUCCESS) {
+    if (result == hf_i2c_err_t::I2C_SUCCESS) {
         ESP_LOGD(TAG, "I2C write successful: addr=0x%02X, len=%d", device_addr, length);
     } else {
         ESP_LOGW(TAG, "I2C write failed: addr=0x%02X, len=%d, error=%s", 
@@ -297,7 +297,7 @@ HfI2cErr EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t length
 
     // Update statistics and diagnostics
     uint64_t operation_time = esp_timer_get_time() - start_time;
-    UpdateStatistics(result == HfI2cErr::I2C_SUCCESS, length, operation_time);
+    UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
     
     // Restart auto-suspend timer if enabled
@@ -315,32 +315,32 @@ HfI2cErr EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t length
  * @param timeout_ms Timeout in milliseconds (0 = use default)
  * @return I2C operation result
  */
-HfI2cErr EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
+hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
                       uint32_t timeout_ms) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (!data || length == 0) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     if (!IsValidDeviceAddress(device_addr)) {
-        return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     if (!I2C_IS_VALID_TRANSFER_SIZE(length)) {
-        return HfI2cErr::I2C_ERR_DATA_TOO_LONG;
+        return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
     }
 
     uint64_t start_time = esp_timer_get_time();
-    HfI2cErr result = HfI2cErr::I2C_SUCCESS;
+    hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
 #ifdef HF_MCU_FAMILY_ESP32
     // Get or create device handle
     I2cMasterDevHandle dev_handle = GetOrCreateDeviceHandle(device_addr);
     if (!dev_handle) {
-        return HfI2cErr::I2C_ERR_DEVICE_NOT_FOUND;
+        return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
 
     // Perform the read operation
@@ -350,7 +350,7 @@ HfI2cErr EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
     
     result = ConvertEspError(ret);
     
-    if (result == HfI2cErr::I2C_SUCCESS) {
+    if (result == hf_i2c_err_t::I2C_SUCCESS) {
         ESP_LOGD(TAG, "I2C read successful: addr=0x%02X, len=%d", device_addr, length);
     } else {
         ESP_LOGW(TAG, "I2C read failed: addr=0x%02X, len=%d, error=%s", 
@@ -360,7 +360,7 @@ HfI2cErr EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
 
     // Update statistics and diagnostics
     uint64_t operation_time = esp_timer_get_time() - start_time;
-    UpdateStatistics(result == HfI2cErr::I2C_SUCCESS, length, operation_time);
+    UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
     
     // Restart auto-suspend timer if enabled
@@ -380,33 +380,33 @@ HfI2cErr EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
  * @param timeout_ms Timeout in milliseconds (0 = use default)
  * @return I2C operation result
  */
-HfI2cErr EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint16_t tx_length,
+hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint16_t tx_length,
                            uint8_t* rx_data, uint16_t rx_length, 
                            uint32_t timeout_ms) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (!tx_data || tx_length == 0 || !rx_data || rx_length == 0) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     if (!IsValidDeviceAddress(device_addr)) {
-        return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     if (!I2C_IS_VALID_TRANSFER_SIZE(tx_length) || !I2C_IS_VALID_TRANSFER_SIZE(rx_length)) {
-        return HfI2cErr::I2C_ERR_DATA_TOO_LONG;
+        return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
     }
 
     uint64_t start_time = esp_timer_get_time();
-    HfI2cErr result = HfI2cErr::I2C_SUCCESS;
+    hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
 #ifdef HF_MCU_FAMILY_ESP32
     // Get or create device handle
     I2cMasterDevHandle dev_handle = GetOrCreateDeviceHandle(device_addr);
     if (!dev_handle) {
-        return HfI2cErr::I2C_ERR_DEVICE_NOT_FOUND;
+        return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
 
     // Perform the write-read operation
@@ -417,7 +417,7 @@ HfI2cErr EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint16_t
     
     result = ConvertEspError(ret);
     
-    if (result == HfI2cErr::I2C_SUCCESS) {
+    if (result == hf_i2c_err_t::I2C_SUCCESS) {
         ESP_LOGD(TAG, "I2C write-read successful: addr=0x%02X, tx_len=%d, rx_len=%d", 
                  device_addr, tx_length, rx_length);
     } else {
@@ -428,7 +428,7 @@ HfI2cErr EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint16_t
 
     // Update statistics and diagnostics
     uint64_t operation_time = esp_timer_get_time() - start_time;
-    UpdateStatistics(result == HfI2cErr::I2C_SUCCESS, tx_length + rx_length, operation_time);
+    UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, tx_length + rx_length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
     
     // Restart auto-suspend timer if enabled
@@ -447,13 +447,13 @@ HfI2cErr EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint16_t
  * @param device_config Device configuration with ESP-IDF v5.5+ features
  * @return Operation result
  */
-HfI2cErr EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
+hf_i2c_err_t EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (!IsValidDeviceAddress(device_config.device_address)) {
-        return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     RtosUniqueLock<RtosMutex> lock(mutex_);
@@ -461,7 +461,7 @@ HfI2cErr EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
     // Check if device already exists
     if (device_handles_.find(device_config.device_address) != device_handles_.end()) {
         ESP_LOGW(TAG, "Device 0x%02X already exists on bus", device_config.device_address);
-        return HfI2cErr::I2C_ERR_ALREADY_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_ALREADY_INITIALIZED;
     }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -495,7 +495,7 @@ HfI2cErr EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
                        event_callback_userdata_);
     }
 
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 /**
@@ -503,16 +503,16 @@ HfI2cErr EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
  * @param device_address Device address to remove
  * @return Operation result
  */
-HfI2cErr EspI2c::RemoveDevice(uint16_t device_address) noexcept {
+hf_i2c_err_t EspI2c::RemoveDevice(uint16_t device_address) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     RtosUniqueLock<RtosMutex> lock(mutex_);
 
     auto it = device_handles_.find(device_address);
     if (it == device_handles_.end()) {
-        return HfI2cErr::I2C_ERR_DEVICE_NOT_FOUND;
+        return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -538,7 +538,7 @@ HfI2cErr EspI2c::RemoveDevice(uint16_t device_address) noexcept {
         event_callback_(I2cEventType::DEVICE_REMOVED, &device_address, event_callback_userdata_);
     }
 
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 //==============================================================================
@@ -585,28 +585,28 @@ bool EspI2c::IsBusHealthy() noexcept {
 /**
  * @brief Convert ESP-IDF error codes to HardFOC I2C error codes.
  * @param esp_error ESP-IDF esp_err_t error code
- * @return Corresponding HfI2cErr error code
+ * @return Corresponding hf_i2c_err_t error code
  */
-HfI2cErr EspI2c::ConvertEspError(EspErr esp_error) const noexcept {
+hf_i2c_err_t EspI2c::ConvertEspError(EspErr esp_error) const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
     switch (esp_error) {
         case ESP_OK:
-            return HfI2cErr::I2C_SUCCESS;
+            return hf_i2c_err_t::I2C_SUCCESS;
         case ESP_ERR_INVALID_ARG:
-            return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+            return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
         case ESP_ERR_NO_MEM:
-            return HfI2cErr::I2C_ERR_OUT_OF_MEMORY;
+            return hf_i2c_err_t::I2C_ERR_OUT_OF_MEMORY;
         case ESP_ERR_NOT_FOUND:
-            return HfI2cErr::I2C_ERR_DEVICE_NOT_FOUND;
+            return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
         case ESP_ERR_TIMEOUT:
-            return HfI2cErr::I2C_ERR_TIMEOUT;
+            return hf_i2c_err_t::I2C_ERR_TIMEOUT;
         case ESP_ERR_INVALID_STATE:
-            return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+            return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
         default:
-            return HfI2cErr::I2C_ERR_FAILURE;
+            return hf_i2c_err_t::I2C_ERR_FAILURE;
     }
 #else
-    return HfI2cErr::I2C_ERR_FAILURE;
+    return hf_i2c_err_t::I2C_ERR_FAILURE;
 #endif
 }
 
@@ -628,7 +628,7 @@ I2cMasterDevHandle EspI2c::GetOrCreateDeviceHandle(uint16_t device_addr) noexcep
     default_config.dev_addr_length = I2cAddressBits::ADDR_7_BIT;
     default_config.scl_speed_hz = I2C_STD_CLOCK_SPEED; // 100kHz by default
     
-    if (AddDevice(default_config) == HfI2cErr::I2C_SUCCESS) {
+    if (AddDevice(default_config) == hf_i2c_err_t::I2C_SUCCESS) {
         return device_handles_[device_addr];
     }
 
@@ -832,7 +832,7 @@ bool EspI2c::ResetBus() noexcept {
  */
 bool EspI2c::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
     if (!I2C_IS_VALID_CLOCK_SPEED(clock_speed_hz)) {
-        last_error_ = HfI2cErr::I2C_ERR_INVALID_CLOCK_SPEED;
+        last_error_ = hf_i2c_err_t::I2C_ERR_INVALID_CLOCK_SPEED;
         return false;
     }
 
@@ -919,7 +919,7 @@ size_t EspI2c::ScanDevices(std::vector<uint16_t>& found_devices,
  * @param value Value to write
  * @return Operation result
  */
-HfI2cErr EspI2c::WriteRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t value) noexcept {
+hf_i2c_err_t EspI2c::WriteRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t value) noexcept {
     uint8_t data[2] = {reg_addr, value};
     return Write(static_cast<uint8_t>(device_addr), data, sizeof(data));
 }
@@ -931,7 +931,7 @@ HfI2cErr EspI2c::WriteRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t v
  * @param value Reference to store read value
  * @return Operation result
  */
-HfI2cErr EspI2c::ReadRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t& value) noexcept {
+hf_i2c_err_t EspI2c::ReadRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t& value) noexcept {
     return WriteRead(static_cast<uint8_t>(device_addr), &reg_addr, 1, &value, 1);
 }
 
@@ -942,10 +942,10 @@ HfI2cErr EspI2c::ReadRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t& v
  * @param data Vector of data to write
  * @return Operation result
  */
-HfI2cErr EspI2c::WriteMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
+hf_i2c_err_t EspI2c::WriteMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
                                         const std::vector<uint8_t>& data) noexcept {
     if (data.empty() || data.size() > I2C_MAX_TRANSFER_SIZE - 1) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     std::vector<uint8_t> tx_buffer;
@@ -965,10 +965,10 @@ HfI2cErr EspI2c::WriteMultipleRegisters(uint16_t device_addr, uint8_t start_reg_
  * @param count Number of registers to read
  * @return Operation result
  */
-HfI2cErr EspI2c::ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
+hf_i2c_err_t EspI2c::ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
                                        std::vector<uint8_t>& data, size_t count) noexcept {
     if (count == 0 || count > I2C_MAX_TRANSFER_SIZE) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     data.resize(count);
@@ -981,7 +981,7 @@ HfI2cErr EspI2c::ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_a
  * @param mode Desired power mode
  * @return Operation result
  */
-HfI2cErr EspI2c::SetPowerMode(I2cPowerMode mode) noexcept {
+hf_i2c_err_t EspI2c::SetPowerMode(I2cPowerMode mode) noexcept {
     current_power_mode_.store(mode);
     
     // Trigger event callback if registered
@@ -990,7 +990,7 @@ HfI2cErr EspI2c::SetPowerMode(I2cPowerMode mode) noexcept {
     }
 
     ESP_LOGI(TAG, "Power mode changed to %d", static_cast<int>(mode));
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 /**
@@ -1005,32 +1005,32 @@ I2cPowerMode EspI2c::GetPowerMode() const noexcept {
  * @brief Suspend I2C bus operations for power saving.
  * @return Operation result
  */
-HfI2cErr EspI2c::SuspendBus() noexcept {
+hf_i2c_err_t EspI2c::SuspendBus() noexcept {
     if (bus_suspended_.load()) {
-        return HfI2cErr::I2C_SUCCESS; // Already suspended
+        return hf_i2c_err_t::I2C_SUCCESS; // Already suspended
     }
 
     RtosUniqueLock<RtosMutex> lock(mutex_);
     bus_suspended_.store(true);
     
     ESP_LOGI(TAG, "I2C bus suspended");
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 /**
  * @brief Resume I2C bus operations from suspended state.
  * @return Operation result
  */
-HfI2cErr EspI2c::ResumeBus() noexcept {
+hf_i2c_err_t EspI2c::ResumeBus() noexcept {
     if (!bus_suspended_.load()) {
-        return HfI2cErr::I2C_SUCCESS; // Not suspended
+        return hf_i2c_err_t::I2C_SUCCESS; // Not suspended
     }
 
     RtosUniqueLock<RtosMutex> lock(mutex_);
     bus_suspended_.store(false);
     
     ESP_LOGI(TAG, "I2C bus resumed");
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 /**
@@ -1056,30 +1056,30 @@ void EspI2c::SetEventCallback(I2cEventCallback callback, void* user_data) noexce
  * @param user_data User data pointer for callback
  * @return Operation result with operation ID for tracking
  */
-HfI2cErr EspI2c::WriteAsync(uint16_t device_addr, const std::vector<uint8_t>& data,
+hf_i2c_err_t EspI2c::WriteAsync(uint16_t device_addr, const std::vector<uint8_t>& data,
                             I2cAsyncCallback callback, void* user_data) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (data.empty() || !callback) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     if (!IsValidDeviceAddress(device_addr)) {
-        return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     // For now, perform synchronous operation and call callback immediately
     // In a full implementation, this would queue the operation and process asynchronously
-    HfI2cErr result = Write(static_cast<uint8_t>(device_addr), data.data(), 
+    hf_i2c_err_t result = Write(static_cast<uint8_t>(device_addr), data.data(), 
                            static_cast<uint16_t>(data.size()));
     
     // Call callback with proper signature
-    size_t bytes_transferred = (result == HfI2cErr::I2C_SUCCESS) ? data.size() : 0;
+    size_t bytes_transferred = (result == hf_i2c_err_t::I2C_SUCCESS) ? data.size() : 0;
     callback(result, bytes_transferred, user_data);
 
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 /**
@@ -1090,32 +1090,32 @@ HfI2cErr EspI2c::WriteAsync(uint16_t device_addr, const std::vector<uint8_t>& da
  * @param user_data User data pointer for callback
  * @return Operation result with operation ID for tracking
  */
-HfI2cErr EspI2c::ReadAsync(uint16_t device_addr, size_t length, I2cAsyncCallback callback,
+hf_i2c_err_t EspI2c::ReadAsync(uint16_t device_addr, size_t length, I2cAsyncCallback callback,
                            void* user_data) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (length == 0 || !callback) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     if (!IsValidDeviceAddress(device_addr)) {
-        return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     // Allocate buffer for read data
     std::vector<uint8_t> buffer(length);
     
     // For now, perform synchronous operation and call callback immediately
-    HfI2cErr result = Read(static_cast<uint8_t>(device_addr), buffer.data(), 
+    hf_i2c_err_t result = Read(static_cast<uint8_t>(device_addr), buffer.data(), 
                           static_cast<uint16_t>(length));
     
     // Call callback with proper signature
-    size_t bytes_transferred = (result == HfI2cErr::I2C_SUCCESS) ? length : 0;
+    size_t bytes_transferred = (result == hf_i2c_err_t::I2C_SUCCESS) ? length : 0;
     callback(result, bytes_transferred, user_data);
 
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 /**
@@ -1123,7 +1123,7 @@ HfI2cErr EspI2c::ReadAsync(uint16_t device_addr, size_t length, I2cAsyncCallback
  * @param operation_id ID of the operation to cancel
  * @return Operation result
  */
-HfI2cErr EspI2c::CancelAsyncOperation(uint32_t operation_id) noexcept {
+hf_i2c_err_t EspI2c::CancelAsyncOperation(uint32_t operation_id) noexcept {
     RtosUniqueLock<RtosMutex> lock(mutex_);
     
     // Look for the operation in our pending operations map
@@ -1132,11 +1132,11 @@ HfI2cErr EspI2c::CancelAsyncOperation(uint32_t operation_id) noexcept {
         // Mark as cancelled and remove from pending operations
         async_operations_.erase(it);
         ESP_LOGD(TAG, "Cancelled async operation %u", operation_id);
-        return HfI2cErr::I2C_SUCCESS;
+        return hf_i2c_err_t::I2C_SUCCESS;
     }
     
     ESP_LOGW(TAG, "Async operation %u not found or already completed", operation_id);
-    return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+    return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
 }
 
 //==============================================================================
@@ -1148,24 +1148,24 @@ HfI2cErr EspI2c::CancelAsyncOperation(uint32_t operation_id) noexcept {
  * @param transaction Multi-buffer transaction descriptor
  * @return Operation result
  */
-HfI2cErr EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransaction& transaction) noexcept {
+hf_i2c_err_t EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransaction& transaction) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (transaction.buffers.empty()) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     if (!IsValidDeviceAddress(transaction.device_addr)) {
-        return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
 #ifdef HF_MCU_FAMILY_ESP32
     // Get device handle
     I2cMasterDevHandle dev_handle = GetOrCreateDeviceHandle(transaction.device_addr);
     if (!dev_handle) {
-        return HfI2cErr::I2C_ERR_DEVICE_NOT_FOUND;
+        return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
 
     // Execute each buffer operation in sequence
@@ -1191,9 +1191,9 @@ HfI2cErr EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransaction& 
     }
 
     ESP_LOGD(TAG, "Multi-buffer transaction completed successfully");
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 #else
-    return HfI2cErr::I2C_ERR_NOT_SUPPORTED;
+    return hf_i2c_err_t::I2C_ERR_NOT_SUPPORTED;
 #endif
 }
 
@@ -1204,15 +1204,15 @@ HfI2cErr EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransaction& 
  * @param user_data User data pointer for callback
  * @return Operation result
  */
-HfI2cErr EspI2c::ExecuteMultiBufferTransactionAsync(const I2cMultiBufferTransaction& transaction,
+hf_i2c_err_t EspI2c::ExecuteMultiBufferTransactionAsync(const I2cMultiBufferTransaction& transaction,
                                                     I2cAsyncCallback callback,
                                                     void* user_data) noexcept {
     if (!callback) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     // For now, execute synchronously and call callback
-    HfI2cErr result = ExecuteMultiBufferTransaction(transaction);
+    hf_i2c_err_t result = ExecuteMultiBufferTransaction(transaction);
     
     // Calculate total bytes transferred (simplified)
     size_t total_bytes = 0;
@@ -1221,9 +1221,9 @@ HfI2cErr EspI2c::ExecuteMultiBufferTransactionAsync(const I2cMultiBufferTransact
     }
 
     // Call callback with proper signature
-    callback(result, (result == HfI2cErr::I2C_SUCCESS) ? total_bytes : 0, user_data);
+    callback(result, (result == hf_i2c_err_t::I2C_SUCCESS) ? total_bytes : 0, user_data);
 
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 /**
@@ -1231,18 +1231,18 @@ HfI2cErr EspI2c::ExecuteMultiBufferTransactionAsync(const I2cMultiBufferTransact
  * @param commands Vector of custom commands to execute
  * @return Operation result
  */
-HfI2cErr EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& commands) noexcept {
+hf_i2c_err_t EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& commands) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (commands.empty()) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     // Execute each command in the sequence
     for (const auto& command : commands) {
-        HfI2cErr result = HfI2cErr::I2C_SUCCESS;
+        hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
         
         switch (command.type) {
             case I2cCommandType::WRITE:
@@ -1277,10 +1277,10 @@ HfI2cErr EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& comm
                 
             default:
                 ESP_LOGW(TAG, "Unknown custom command type: %d", static_cast<int>(command.type));
-                return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+                return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
         }
         
-        if (result != HfI2cErr::I2C_SUCCESS) {
+        if (result != hf_i2c_err_t::I2C_SUCCESS) {
             ESP_LOGW(TAG, "Custom sequence failed at command %zu", 
                      &command - &commands[0]);
             return result;
@@ -1288,7 +1288,7 @@ HfI2cErr EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& comm
     }
 
     ESP_LOGD(TAG, "Custom sequence completed successfully");
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 /**
@@ -1298,14 +1298,14 @@ HfI2cErr EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& comm
  * @param user_data User data pointer for callback
  * @return Operation result
  */
-HfI2cErr EspI2c::ExecuteCustomSequenceAsync(const std::vector<I2cCustomCommand>& commands,
+hf_i2c_err_t EspI2c::ExecuteCustomSequenceAsync(const std::vector<I2cCustomCommand>& commands,
                                             I2cAsyncCallback callback, void* user_data) noexcept {
     if (!callback) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     // For now, execute synchronously and call callback
-    HfI2cErr result = ExecuteCustomSequence(commands);
+    hf_i2c_err_t result = ExecuteCustomSequence(commands);
     
     // Calculate total bytes transferred (simplified)
     size_t total_bytes = 0;
@@ -1314,9 +1314,9 @@ HfI2cErr EspI2c::ExecuteCustomSequenceAsync(const std::vector<I2cCustomCommand>&
     }
 
     // Call callback with proper signature
-    callback(result, (result == HfI2cErr::I2C_SUCCESS) ? total_bytes : 0, user_data);
+    callback(result, (result == hf_i2c_err_t::I2C_SUCCESS) ? total_bytes : 0, user_data);
 
-    return HfI2cErr::I2C_SUCCESS;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 //==============================================================================
@@ -1331,18 +1331,18 @@ HfI2cErr EspI2c::ExecuteCustomSequenceAsync(const std::vector<I2cCustomCommand>&
  * @param count Number of registers to read
  * @return Operation result
  */
-HfI2cErr EspI2c::ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
+hf_i2c_err_t EspI2c::ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
                                        std::vector<uint8_t>& data, size_t count) noexcept {
     if (!initialized_.load()) {
-        return HfI2cErr::I2C_ERR_NOT_INITIALIZED;
+        return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
     if (count == 0) {
-        return HfI2cErr::I2C_ERR_INVALID_PARAMETER;
+        return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
 
     if (!IsValidDeviceAddress(device_addr)) {
-        return HfI2cErr::I2C_ERR_INVALID_ADDRESS;
+        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     // Resize data vector to accommodate the read data

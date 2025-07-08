@@ -171,7 +171,7 @@ HfPioErr McuPio::Transmit(uint8_t channel_id, const PioSymbol *symbols, size_t s
     return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
   }
 
-  if (channels_[channel_id].config.direction == PioDirection::Receive) {
+  if (channels_[channel_id].config.direction == hf_pio_direction_t::Receive) {
     return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
   }
 
@@ -283,7 +283,7 @@ HfPioErr McuPio::StartReceive(uint8_t channel_id, PioSymbol *buffer, size_t buff
     return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
   }
 
-  if (channels_[channel_id].config.direction == PioDirection::Transmit) {
+  if (channels_[channel_id].config.direction == hf_pio_direction_t::Transmit) {
     return HfPioErr::PIO_ERR_INVALID_CONFIGURATION;
   }
 
@@ -558,8 +558,8 @@ HfPioErr McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks,
     const auto &config = stored_config;
     uint32_t clock_divider = CalculateClockDivider(config.resolution_ns);
 
-    if (config.direction == PioDirection::Transmit ||
-        config.direction == PioDirection::Bidirectional) {
+      if (config.direction == hf_pio_direction_t::Transmit ||
+      config.direction == hf_pio_direction_t::Bidirectional) {
       // Configure advanced TX channel
       rmt_tx_channel_config_t tx_config = {};
       tx_config.gpio_num = config.gpio_pin;
@@ -1100,8 +1100,8 @@ HfPioErr McuPio::InitializeChannel(uint8_t channel_id) noexcept {
   // Calculate clock settings
   uint32_t clock_divider = CalculateClockDivider(config.resolution_ns);
 
-  if (config.direction == PioDirection::Transmit ||
-      config.direction == PioDirection::Bidirectional) {
+  if (config.direction == hf_pio_direction_t::Transmit ||
+      config.direction == hf_pio_direction_t::Bidirectional) {
     // Configure TX channel
     rmt_tx_channel_config_t tx_config = {};
     tx_config.gpio_num = config.gpio_pin;
@@ -1134,8 +1134,8 @@ HfPioErr McuPio::InitializeChannel(uint8_t channel_id) noexcept {
     }
   }
 
-  if (config.direction == PioDirection::Receive ||
-      config.direction == PioDirection::Bidirectional) {
+  if (config.direction == hf_pio_direction_t::Receive ||
+      config.direction == hf_pio_direction_t::Bidirectional) {
     // Configure RX channel
     rmt_rx_channel_config_t rx_config = {};
     rx_config.gpio_num = config.gpio_pin;

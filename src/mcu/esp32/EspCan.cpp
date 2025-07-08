@@ -39,7 +39,7 @@ static const char *TAG = "EspCan";
 // CONSTRUCTOR AND DESTRUCTOR - Following EspAdc Pattern  
 //==============================================================================
 
-EspCan::EspCan(const EspCanConfig& config) noexcept
+EspCan::EspCan(const hf_esp_can_config_t& config) noexcept
     : config_(config)
     , is_initialized_(false)
     , is_started_(false)
@@ -69,14 +69,14 @@ EspCan::~EspCan() noexcept {
 // INITIALIZATION AND CONFIGURATION
 //==============================================//
 
-HfCanErr EspCan::Initialize() noexcept
+hf_can_err_t EspCan::Initialize() noexcept
 {
     std::lock_guard<RtosMutex> lock(config_mutex_);
     
     if (is_initialized_.load()) {
         ESP_LOGD(TAG, "TWAI controller %u already initialized", 
                  static_cast<unsigned>(config_.controller_id));
-        return HfCanErr::CAN_SUCCESS;
+        return hf_can_err_t::CAN_SUCCESS;
     }
     
     ESP_LOGD(TAG, "Initializing TWAI controller %u", 
@@ -117,25 +117,25 @@ HfCanErr EspCan::Initialize() noexcept
     // Initialize statistics
     {
         std::lock_guard<RtosMutex> stats_lock(stats_mutex_);
-        statistics_ = BaseCan::CanStatistics{};
-        diagnostics_ = BaseCan::CanDiagnostics{};
+        statistics_ = hf_can_statistics_t{};
+        diagnostics_ = hf_can_diagnostics_t{};
     }
 
     is_initialized_.store(true);
     is_started_.store(true);  // Node is automatically started when enabled
     ESP_LOGI(TAG, "TWAI controller %u initialized successfully", 
              static_cast<unsigned>(config_.controller_id));
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::Deinitialize() noexcept
+hf_can_err_t EspCan::Deinitialize() noexcept
 {
     std::lock_guard<RtosMutex> lock(config_mutex_);
     
     if (!is_initialized_.load()) {
         ESP_LOGD(TAG, "TWAI controller %u already deinitialized", 
                  static_cast<unsigned>(config_.controller_id));
-        return HfCanErr::CAN_SUCCESS;
+        return hf_can_err_t::CAN_SUCCESS;
     }
     
     ESP_LOGD(TAG, "Deinitializing TWAI controller %u", 
@@ -161,23 +161,23 @@ HfCanErr EspCan::Deinitialize() noexcept
     is_initialized_.store(false);
     ESP_LOGI(TAG, "TWAI controller %u deinitialized successfully", 
              static_cast<unsigned>(config_.controller_id));
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
 //==============================================//
 // CORE CAN OPERATIONS (From BaseCan interface)
 //==============================================//
 
-HfCanErr EspCan::SendMessage(const CanMessage& message, uint32_t timeout_ms) noexcept
+hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, uint32_t timeout_ms) noexcept
 {
     if (!is_initialized_.load()) {
-        return HfCanErr::CAN_ERR_NOT_INITIALIZED;
+        return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
 
     // Convert to native TWAI message
     twai_frame_t native_frame;
-    HfCanErr convert_result = ConvertToNativeMessage(message, native_frame);
-    if (convert_result != HfCanErr::CAN_SUCCESS) {
+    hf_can_err_t convert_result = ConvertToNativeMessage(message, native_frame);
+    if (convert_result != hf_can_err_t::CAN_SUCCESS) {
         UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
         return convert_result;
     }
@@ -192,13 +192,13 @@ HfCanErr EspCan::SendMessage(const CanMessage& message, uint32_t timeout_ms) noe
         return ConvertEspError(esp_err);
     }
 
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::ReceiveMessage(CanMessage& message, uint32_t timeout_ms) noexcept
+hf_can_err_t EspCan::ReceiveMessage(hf_can_message_t& message, uint32_t timeout_ms) noexcept
 {
     if (!is_initialized_.load()) {
-        return HfCanErr::CAN_ERR_NOT_INITIALIZED;
+        return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
 
     // Note: With modern ESP-IDF v5.4+ API, message reception is typically handled via callbacks
@@ -206,13 +206,13 @@ HfCanErr EspCan::ReceiveMessage(CanMessage& message, uint32_t timeout_ms) noexce
     ESP_LOGW(TAG, "Polling receive not recommended with modern TWAI API - use callbacks instead");
     
     UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, false);
-    return HfCanErr::CAN_ERR_UNSUPPORTED_OPERATION;
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
 }
 
-HfCanErr EspCan::SetReceiveCallback(CanReceiveCallback callback) noexcept
+hf_can_err_t EspCan::SetReceiveCallback(hf_can_receive_callback_t callback) noexcept
 {
     if (!is_initialized_.load()) {
-        return HfCanErr::CAN_ERR_NOT_INITIALIZED;
+        return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
     
     std::lock_guard<RtosMutex> lock(config_mutex_);
@@ -229,8 +229,8 @@ HfCanErr EspCan::SetReceiveCallback(CanReceiveCallback callback) noexcept
                     twai_frame_t rx_frame;
                     
                     if (ESP_OK == twai_node_receive_from_isr(handle, &rx_frame)) {
-                        CanMessage hf_message;
-                        if (esp_can->ConvertFromNativeMessage(rx_frame, hf_message) == HfCanErr::CAN_SUCCESS) {
+                        hf_can_message_t hf_message;
+                        if (esp_can->ConvertFromNativeMessage(rx_frame, hf_message) == hf_can_err_t::CAN_SUCCESS) {
                             esp_can->receive_callback_(hf_message);
                             esp_can->UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, true);
                         }
@@ -251,7 +251,7 @@ HfCanErr EspCan::SetReceiveCallback(CanReceiveCallback callback) noexcept
              callback ? "set" : "cleared", 
              static_cast<unsigned>(config_.controller_id));
     
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
 void EspCan::ClearReceiveCallback() noexcept
@@ -270,10 +270,10 @@ void EspCan::ClearReceiveCallback() noexcept
              static_cast<unsigned>(config_.controller_id));
 }
 
-HfCanErr EspCan::GetStatus(CanBusStatus& status) noexcept
+hf_can_err_t EspCan::GetStatus(hf_can_status_t& status) noexcept
 {
     if (!is_initialized_.load()) {
-        return HfCanErr::CAN_ERR_NOT_INITIALIZED;
+        return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
     
     // Get TWAI status using modern API
@@ -319,13 +319,13 @@ HfCanErr EspCan::GetStatus(CanBusStatus& status) noexcept
             break;
     }
     
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::Reset() noexcept
+hf_can_err_t EspCan::Reset() noexcept
 {
     if (!is_initialized_.load()) {
-        return HfCanErr::CAN_ERR_NOT_INITIALIZED;
+        return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
     
     std::lock_guard<RtosMutex> lock(config_mutex_);
@@ -336,8 +336,8 @@ HfCanErr EspCan::Reset() noexcept
     // Reset statistics
     {
         std::lock_guard<RtosMutex> stats_lock(stats_mutex_);
-        statistics_ = BaseCan::CanStatistics{};
-        diagnostics_ = BaseCan::CanDiagnostics{};
+        statistics_ = hf_can_statistics_t{};
+        diagnostics_ = hf_can_diagnostics_t{};
     }
     
     // Reset driver using recovery function
@@ -349,13 +349,13 @@ HfCanErr EspCan::Reset() noexcept
     
     ESP_LOGI(TAG, "TWAI controller %u reset successfully", 
              static_cast<unsigned>(config_.controller_id));
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noexcept
+hf_can_err_t EspCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noexcept
 {
     if (!is_initialized_.load()) {
-        return HfCanErr::CAN_ERR_NOT_INITIALIZED;
+        return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
     
     std::lock_guard<RtosMutex> lock(config_mutex_);
@@ -375,13 +375,13 @@ HfCanErr EspCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) 
     
     ESP_LOGI(TAG, "TWAI controller %u filter configured (ID: 0x%X, Mask: 0x%X, Extended: %s)", 
              static_cast<unsigned>(config_.controller_id), id, mask, extended ? "yes" : "no");
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::ClearAcceptanceFilter() noexcept
+hf_can_err_t EspCan::ClearAcceptanceFilter() noexcept
 {
     if (!is_initialized_.load()) {
-        return HfCanErr::CAN_ERR_NOT_INITIALIZED;
+        return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
     
     // Set filter to accept all messages (ID=0, Mask=0)
@@ -392,24 +392,24 @@ HfCanErr EspCan::ClearAcceptanceFilter() noexcept
 // STATISTICS AND DIAGNOSTICS
 //==============================================//
 
-HfCanErr EspCan::GetStatistics(BaseCan::CanStatistics& stats) noexcept
+hf_can_err_t EspCan::GetStatistics(hf_can_statistics_t& stats) noexcept
 {
     std::lock_guard<RtosMutex> lock(stats_mutex_);
     stats = statistics_;
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::ResetStatistics() noexcept
+hf_can_err_t EspCan::ResetStatistics() noexcept
 {
     std::lock_guard<RtosMutex> lock(stats_mutex_);
-    statistics_ = BaseCan::CanStatistics{};
-    return HfCanErr::CAN_SUCCESS;
+    statistics_ = hf_can_statistics_t{};
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::GetDiagnostics(BaseCan::CanDiagnostics& diagnostics) noexcept
+hf_can_err_t EspCan::GetDiagnostics(hf_can_diagnostics_t& diagnostics) noexcept
 {
     if (!is_initialized_.load()) {
-        return HfCanErr::CAN_ERR_NOT_INITIALIZED;
+        return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
     
     std::lock_guard<RtosMutex> lock(stats_mutex_);
@@ -425,18 +425,18 @@ HfCanErr EspCan::GetDiagnostics(BaseCan::CanDiagnostics& diagnostics) noexcept
     }
     
     diagnostics = diagnostics_;
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
 //==============================================//
 // INTERNAL HELPER METHODS
 //==============================================//
 
-HfCanErr EspCan::ConvertToNativeMessage(const CanMessage& message, twai_frame_t& native_message) noexcept
+hf_can_err_t EspCan::ConvertToNativeMessage(const hf_can_message_t& message, twai_frame_t& native_message) noexcept
 {
     // Validate message
     if (message.dlc > 8) {
-        return HfCanErr::CAN_ERR_MESSAGE_INVALID_DLC;
+        return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_DLC;
     }
     
     // Clear native message
@@ -463,13 +463,13 @@ HfCanErr EspCan::ConvertToNativeMessage(const CanMessage& message, twai_frame_t&
         std::memcpy(native_message.data, message.data, message.dlc);
     }
     
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::ConvertFromNativeMessage(const twai_frame_t& native_message, CanMessage& message) noexcept
+hf_can_err_t EspCan::ConvertFromNativeMessage(const twai_frame_t& native_message, hf_can_message_t& message) noexcept
 {
     // Clear message
-    message = CanMessage{};
+    message = hf_can_message_t{};
     
     // Copy identifier
     message.id = native_message.id;
@@ -488,28 +488,28 @@ HfCanErr EspCan::ConvertFromNativeMessage(const twai_frame_t& native_message, Ca
         std::memcpy(message.data, native_message.data, message.dlc);
     }
     
-    return HfCanErr::CAN_SUCCESS;
+    return hf_can_err_t::CAN_SUCCESS;
 }
 
-HfCanErr EspCan::ConvertEspError(esp_err_t esp_err) noexcept
+hf_can_err_t EspCan::ConvertEspError(esp_err_t esp_err) noexcept
 {
     switch (esp_err) {
         case ESP_OK:
-            return HfCanErr::CAN_SUCCESS;
+            return hf_can_err_t::CAN_SUCCESS;
         case ESP_ERR_INVALID_ARG:
-            return HfCanErr::CAN_ERR_INVALID_PARAMETER;
+            return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
         case ESP_ERR_INVALID_STATE:
-            return HfCanErr::CAN_ERR_INVALID_STATE;
+            return hf_can_err_t::CAN_ERR_INVALID_STATE;
         case ESP_ERR_TIMEOUT:
-            return HfCanErr::CAN_ERR_MESSAGE_TIMEOUT;
+            return hf_can_err_t::CAN_ERR_MESSAGE_TIMEOUT;
         case ESP_ERR_NO_MEM:
-            return HfCanErr::CAN_ERR_OUT_OF_MEMORY;
+            return hf_can_err_t::CAN_ERR_OUT_OF_MEMORY;
         case ESP_ERR_NOT_FOUND:
-            return HfCanErr::CAN_ERR_DEVICE_NOT_RESPONDING;
+            return hf_can_err_t::CAN_ERR_DEVICE_NOT_RESPONDING;
         case ESP_FAIL:
-            return HfCanErr::CAN_ERR_FAILURE;
+            return hf_can_err_t::CAN_ERR_FAILURE;
         default:
-            return HfCanErr::CAN_ERR_SYSTEM_ERROR;
+            return hf_can_err_t::CAN_ERR_SYSTEM_ERROR;
     }
 }
 

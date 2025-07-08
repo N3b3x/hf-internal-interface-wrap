@@ -7,10 +7,10 @@
  * Concrete implementations for various microcontrollers inherit from this class.
  * 
  * ERROR HANDLING:
- * - All CAN error codes are defined in this file using the HfCanErr enumeration
+ * - All CAN error codes are defined in this file using the hf_can_err_t enumeration
  * - Lower-level types (McuTypes_CAN.h) maintain minimal error constants for compatibility
- * - All virtual methods return HfCanErr for comprehensive error reporting
- * - No legacy compatibility code - use CanMessage structure for all operations
+ * - All virtual methods return hf_can_err_t for comprehensive error reporting
+ * - No legacy compatibility code - use hf_can_message_t structure for all operations
  * 
  * @author Nebiyu Tadesse
  * @date 2025
@@ -18,7 +18,7 @@
  *
  * @note This is a header-only abstract base class following the same pattern as BaseAdc.
  * @note Users should program against this interface, not specific implementations.
- * @note All legacy hf_can_message_t and bool-returning methods have been removed.
+ * @note All legacy camelCase types and bool-returning methods have been removed.
  */
 
 #pragma once
@@ -106,21 +106,21 @@
   X(CAN_ERR_NOT_SUPPORTED, 52, "Not supported")                                                    \
   X(CAN_ERR_TIMEOUT_ALT, 53, "Operation timeout")
 
-enum class HfCanErr : uint8_t {
+enum class hf_can_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_CAN_ERR_LIST(X)
 #undef X
 };
 
 /**
- * @brief Convert HfCanErr to human-readable string
+ * @brief Convert hf_can_err_t to human-readable string
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view HfCanErrToString(HfCanErr err) noexcept {
+constexpr std::string_view HfCanErrToString(hf_can_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
-  case HfCanErr::NAME:                                                                             \
+  case hf_can_err_t::NAME:                                                                         \
     return DESC;
     HF_CAN_ERR_LIST(X)
 #undef X
@@ -134,16 +134,16 @@ constexpr std::string_view HfCanErrToString(HfCanErr err) noexcept {
  * @details Configuration structure that works across different CAN implementations
  *          without exposing MCU-specific types.
  */
-struct CanBusConfig {
-  HfPinNumber tx_pin;     ///< CAN TX pin
-  HfPinNumber rx_pin;     ///< CAN RX pin
-  HfBaudRate baudrate;    ///< CAN baudrate (bps)
-  bool loopback_mode;     ///< Enable loopback mode for testing
-  bool silent_mode;       ///< Enable silent mode (listen-only)
-  uint16_t tx_queue_size; ///< TX queue size (implementation-dependent)
-  uint16_t rx_queue_size; ///< RX queue size (implementation-dependent)
+struct hf_can_config_t {
+  hf_pin_num_t tx_pin;     ///< CAN TX pin
+  hf_pin_num_t rx_pin;     ///< CAN RX pin
+  hf_baud_rate_t baudrate; ///< CAN baudrate (bps)
+  bool loopback_mode;      ///< Enable loopback mode for testing
+  bool silent_mode;        ///< Enable silent mode (listen-only)
+  uint16_t tx_queue_size;  ///< TX queue size (implementation-dependent)
+  uint16_t rx_queue_size;  ///< RX queue size (implementation-dependent)
 
-  CanBusConfig() noexcept
+  hf_can_config_t() noexcept
       : tx_pin(HF_INVALID_PIN), rx_pin(HF_INVALID_PIN), baudrate(500000), loopback_mode(false),
         silent_mode(false), tx_queue_size(10), rx_queue_size(10) {}
 };
@@ -154,7 +154,7 @@ struct CanBusConfig {
  *          Supports both standard (11-bit) and extended (29-bit) identifiers,
  *          with complete transmission control and diagnostic information.
  */
-struct CanMessage {
+struct hf_can_message_t {
   // === Core CAN Message Fields ===
   uint32_t id;     ///< Message ID (11 or 29-bit)
   uint8_t dlc;     ///< Data length code (0-8 for classic CAN)
@@ -180,7 +180,7 @@ struct CanMessage {
   bool is_esi;         ///< Error State Indicator flag (CAN-FD)
   uint8_t canfd_dlc;   ///< CAN-FD DLC (can be > 8)
 
-  CanMessage() noexcept
+  hf_can_message_t() noexcept
       : id(0), dlc(0), data{}, is_extended(false), is_rtr(false), is_ss(false), 
         is_self(false), dlc_non_comp(false), timestamp_us(0), sequence_number(0),
         controller_id(0), retry_count(0), error_count(0), is_canfd(false), 
@@ -212,48 +212,70 @@ struct CanMessage {
   }
 
   /**
-   * @brief Set message as standard CAN (11-bit ID)
+   * @brief Set data length code for current frame type
+   * @param dlc Data length code to set
+   * @return true if valid and set, false otherwise
+   */
+  bool SetDLC(uint8_t dlc) noexcept {
+    if (!IsValidDLC(dlc)) {
+      return false;
+    }
+    if (is_canfd) {
+      canfd_dlc = dlc;
+    } else {
+      this->dlc = dlc;
+    }
+    return true;
+  }
+
+  /**
+   * @brief Set standard frame format (11-bit ID)
    */
   void SetStandardFrame() noexcept { is_extended = false; }
 
   /**
-   * @brief Set message as extended CAN (29-bit ID)
+   * @brief Set extended frame format (29-bit ID)
    */
   void SetExtendedFrame() noexcept { is_extended = true; }
 
   /**
-   * @brief Set message as data frame
+   * @brief Set data frame (not remote)
    */
   void SetDataFrame() noexcept { is_rtr = false; }
 
   /**
-   * @brief Set message as remote transmission request
+   * @brief Set remote frame
    */
   void SetRemoteFrame() noexcept { is_rtr = true; }
 
   /**
-   * @brief Set single shot transmission (no retries)
+   * @brief Set single shot transmission
    */
   void SetSingleShot() noexcept { is_ss = true; }
 
   /**
-   * @brief Enable self-reception
+   * @brief Set self reception request
    */
   void SetSelfReception() noexcept { is_self = true; }
 
   /**
-   * @brief Check if message ID is valid for the frame type
-   * @return true if ID is within valid range
+   * @brief Validate message ID for current frame format
+   * @return true if valid, false otherwise
    */
   bool IsValidId() const noexcept {
-    return is_extended ? (id <= 0x1FFFFFFF) : (id <= 0x7FF);
+    if (is_extended) {
+      return id <= 0x1FFFFFFF; // 29-bit max
+    } else {
+      return id <= 0x7FF; // 11-bit max
+    }
   }
 };
 
 /**
- * @brief Enhanced CAN bus status information including CAN-FD metrics
+ * @brief CAN bus status information structure.
+ * @details Comprehensive status information for CAN bus monitoring and diagnostics.
  */
-struct CanBusStatus {
+struct hf_can_status_t {
   uint32_t tx_error_count;  ///< Transmit error counter
   uint32_t rx_error_count;  ///< Receive error counter
   uint32_t tx_failed_count; ///< Failed transmission count
@@ -277,7 +299,7 @@ struct CanBusStatus {
   uint32_t bit_errors;       ///< Bit errors
   uint32_t ack_errors;       ///< Acknowledgment errors
 
-  CanBusStatus() noexcept
+  hf_can_status_t() noexcept
       : tx_error_count(0), rx_error_count(0), tx_failed_count(0), rx_missed_count(0),
         bus_off(false), error_warning(false), error_passive(false), canfd_enabled(false),
         canfd_brs_enabled(false), nominal_baudrate(0), data_baudrate(0), canfd_tx_count(0),
@@ -287,24 +309,24 @@ struct CanBusStatus {
 
 /**
  * @brief CAN message receive callback function type.
- * @note Updated to use new CanMessage structure
+ * @note Updated to use new hf_can_message_t structure
  */
-using CanReceiveCallback = std::function<void(const CanMessage &message)>;
+using hf_can_receive_callback_t = std::function<void(const hf_can_message_t &message)>;
 
 /**
  * @brief CAN-FD specific receive callback with enhanced information
  * @param message Received CAN/CAN-FD message
  * @param reception_info Additional reception information (timing, errors, etc.)
  */
-struct CanReceptionInfo {
+struct hf_can_reception_info_t {
   uint32_t timestamp_us;      ///< Reception timestamp in microseconds
   uint8_t rx_fifo_level;      ///< RX FIFO level when received
   bool data_phase_error;      ///< Error occurred in data phase
   bool arbitration_lost;      ///< Arbitration was lost during transmission
   float bit_timing_tolerance; ///< Measured bit timing tolerance
 };
-using CanFdReceiveCallback =
-    std::function<void(const CanMessage &message, const CanReceptionInfo &info)>;
+using hf_can_fd_receive_callback_t =
+    std::function<void(const hf_can_message_t &message, const hf_can_reception_info_t &info)>;
 
 /**
  * @class BaseCan
@@ -350,9 +372,20 @@ public:
    */
   bool EnsureInitialized() noexcept {
     if (!initialized_) {
-      initialized_ = (Initialize() == HfCanErr::CAN_SUCCESS);
+      initialized_ = (Initialize() == hf_can_err_t::CAN_SUCCESS);
     }
     return initialized_;
+  }
+
+  /**
+   * @brief Ensures that the CAN bus is deinitialized.
+   * @return true if the CAN bus is deinitialized, false otherwise.
+   */
+  bool EnsureDeinitialized() noexcept {
+    if (initialized_) {
+      initialized_ = !(Deinitialize() == hf_can_err_t::CAN_SUCCESS);
+    }
+    return !initialized_;
   }
 
   /**
@@ -364,258 +397,249 @@ public:
   }
 
   //==============================================//
-  // PURE VIRTUAL FUNCTIONS - MUST BE OVERRIDDEN  //
+  // PURE VIRTUAL FUNCTIONS [MUST BE OVERRIDDEN]  //
   //==============================================//
 
   /**
-   * @brief Initialize the CAN bus.
-   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
-   * @note Must be implemented by concrete classes.
+   * @brief Initialize the CAN controller (must be implemented by derived classes).
+   * @return hf_can_err_t error code
    */
-  virtual HfCanErr Initialize() noexcept = 0;
+  virtual hf_can_err_t Initialize() noexcept = 0;
 
   /**
-   * @brief Deinitialize the CAN bus.
-   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
-   * @note Must be implemented by concrete classes.
+   * @brief Deinitialize the CAN controller (must be implemented by derived classes).
+   * @return hf_can_err_t error code
    */
-  virtual HfCanErr Deinitialize() noexcept = 0;
+  virtual hf_can_err_t Deinitialize() noexcept = 0;
 
   /**
-   * @brief Send a CAN/CAN-FD message.
-   * @param message Message to send (supports both classic CAN and CAN-FD)
-   * @param timeout_ms Timeout in milliseconds (0 = no wait)
-   * @return HfCanErr::CAN_SUCCESS if sent successfully, error code otherwise
-   * @note Must be implemented by concrete classes.
+   * @brief Send a CAN message.
+   * @param message CAN message to send
+   * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
+   * @return hf_can_err_t error code
    */
-  virtual HfCanErr SendMessage(const CanMessage &message, uint32_t timeout_ms = 1000) noexcept = 0;
+  virtual hf_can_err_t SendMessage(const hf_can_message_t &message, uint32_t timeout_ms = 1000) noexcept = 0;
 
   /**
-   * @brief Receive a CAN/CAN-FD message.
-   * @param message Buffer to store received message
-   * @param timeout_ms Timeout in milliseconds (0 = no wait)
-   * @return HfCanErr::CAN_SUCCESS if received successfully, error code otherwise
-   * @note Must be implemented by concrete classes.
+   * @brief Receive a CAN message.
+   * @param message Reference to store received message
+   * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
+   * @return hf_can_err_t error code
    */
-  virtual HfCanErr ReceiveMessage(CanMessage &message, uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_can_err_t ReceiveMessage(hf_can_message_t &message, uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
-   * @brief Set receive callback for interrupt-driven reception.
-   * @param callback Callback function to call when message is received
-   * @return HfCanErr::CAN_SUCCESS if callback set successfully, error code otherwise
-   * @note Must be implemented by concrete classes.
+   * @brief Set callback for received messages.
+   * @param callback Callback function to handle received messages
+   * @return hf_can_err_t error code
    */
-  virtual HfCanErr SetReceiveCallback(CanReceiveCallback callback) noexcept = 0;
-
-  /**
-   * @brief Set enhanced CAN-FD receive callback with additional information.
-   * @param callback Enhanced callback with reception information
-   * @return HfCanErr::CAN_SUCCESS if callback set successfully, error code otherwise
-   * @note Default implementation falls back to standard callback
-   */
-  virtual HfCanErr SetReceiveCallbackFD(CanFdReceiveCallback callback) noexcept {
-    // Default implementation: convert to standard callback
-    if (!callback) {
-      return SetReceiveCallback(nullptr);
-    }
-
-    auto standard_callback = [callback](const CanMessage &msg) {
-      CanReceptionInfo info{}; // Default/empty info
-      callback(msg, info);
-    };
-
-    return SetReceiveCallback(standard_callback);
-  }
-
-  /**
-   * @brief Clear the receive callback.
-   * @note Must be implemented by concrete classes.
-   */
-  virtual void ClearReceiveCallback() noexcept = 0;
-
-  /**
-   * @brief Get current bus status including CAN-FD metrics.
-   * @param status Buffer to store status information
-   * @return HfCanErr::CAN_SUCCESS if status retrieved successfully, error code otherwise
-   * @note Must be implemented by concrete classes.
-   */
-  virtual HfCanErr GetStatus(CanBusStatus &status) noexcept = 0;
-
-  /**
-   * @brief Reset the CAN controller (clear errors, restart).
-   * @return HfCanErr::CAN_SUCCESS if reset successful, error code otherwise
-   * @note Must be implemented by concrete classes.
-   */
-  virtual HfCanErr Reset() noexcept = 0;
+  virtual hf_can_err_t SetReceiveCallback(hf_can_receive_callback_t callback) noexcept = 0;
 
   /**
    * @brief Set acceptance filter for incoming messages.
    * @param id CAN ID to accept
    * @param mask Acceptance mask (0 = don't care bits)
    * @param extended true for extended frames, false for standard
-   * @return HfCanErr::CAN_SUCCESS if filter set successfully, error code otherwise
-   * @note Must be implemented by concrete classes.
+   * @return hf_can_err_t error code
    */
-  virtual HfCanErr SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept = 0;
+  virtual hf_can_err_t SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept = 0;
+
+  /**
+   * @brief Get current CAN bus status.
+   * @param status Reference to store status information
+   * @return hf_can_err_t error code
+   */
+  virtual hf_can_err_t GetStatus(hf_can_status_t &status) noexcept = 0;
+
+  /**
+   * @brief Reset the CAN controller.
+   * @return hf_can_err_t error code
+   */
+  virtual hf_can_err_t Reset() noexcept = 0;
+
+  //==============================================//
+  // (OPTIONAL IMPLEMENTATIONS)                   //
+  //==============================================//
+
+  /**
+   * @brief Clear the receive callback.
+   * @note Default implementation does nothing
+   */
+  virtual void ClearReceiveCallback() noexcept {}
 
   /**
    * @brief Clear all acceptance filters (accept all messages).
-   * @return HfCanErr::CAN_SUCCESS if cleared successfully, error code otherwise
-   * @note Must be implemented by concrete classes.
+   * @return hf_can_err_t error code
+   * @note Default implementation sets filter to accept all (ID=0, Mask=0)
    */
-  virtual HfCanErr ClearAcceptanceFilter() noexcept = 0;
-
-  //==============================================//
-  // CAN-FD SPECIFIC METHODS (OPTIONAL)          //
-  //==============================================//
+  virtual hf_can_err_t ClearAcceptanceFilter() noexcept {
+    return SetAcceptanceFilter(0, 0, false);
+  }
 
   /**
-   * @brief Check if CAN-FD is supported by this implementation.
+   * @brief Set CAN-FD receive callback with enhanced information.
+   * @param callback CAN-FD callback function
+   * @return hf_can_err_t error code
+   * @note Default implementation returns CAN_ERR_UNSUPPORTED_OPERATION
+   */
+  virtual hf_can_err_t SetReceiveCallbackFD(hf_can_fd_receive_callback_t callback) noexcept {
+    (void)callback; // Suppress unused parameter warning
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Check if CAN-FD is supported by this controller.
    * @return true if CAN-FD is supported, false otherwise
-   * @note Default implementation returns false (classic CAN only)
+   * @note Default implementation returns false
    */
   virtual bool SupportsCanFD() const noexcept {
     return false;
   }
 
   /**
-   * @brief Enable/disable CAN-FD mode.
-   * @param enable true to enable CAN-FD, false for classic CAN
-   * @param data_baudrate Data phase baudrate (for BRS)
-   * @param enable_brs Enable Bit Rate Switching
-   * @return true if mode set successfully, false otherwise
+   * @brief Enable or disable CAN-FD mode.
+   * @param enable true to enable CAN-FD, false to disable
+   * @param data_baudrate Data phase baudrate for CAN-FD (default: 2Mbps)
+   * @return true if successful, false otherwise
    * @note Default implementation returns false (not supported)
    */
   virtual bool SetCanFDMode(bool enable, uint32_t data_baudrate = 2000000,
-                            bool enable_brs = true) noexcept {
-    return false; // Not supported by default
+                           uint32_t timeout_ms = 1000) noexcept {
+    (void)enable;
+    (void)data_baudrate;
+    (void)timeout_ms;
+    return false;
   }
 
   /**
    * @brief Configure CAN-FD timing parameters.
-   * @param nominal_prescaler Prescaler for nominal bit timing
-   * @param nominal_tseg1 Time segment 1 for nominal bit timing
-   * @param nominal_tseg2 Time segment 2 for nominal bit timing
-   * @param data_prescaler Prescaler for data bit timing
-   * @param data_tseg1 Time segment 1 for data bit timing
-   * @param data_tseg2 Time segment 2 for data bit timing
+   * @param nominal_prescaler Nominal phase prescaler
+   * @param nominal_tseg1 Nominal phase TSEG1
+   * @param nominal_tseg2 Nominal phase TSEG2
+   * @param data_prescaler Data phase prescaler
+   * @param data_tseg1 Data phase TSEG1
+   * @param data_tseg2 Data phase TSEG2
    * @param sjw Synchronization jump width
-   * @return true if configuration successful, false otherwise
+   * @return true if successful, false otherwise
+   * @note Default implementation returns false (not supported)
    */
   virtual bool ConfigureCanFDTiming(uint16_t nominal_prescaler, uint8_t nominal_tseg1,
-                                    uint8_t nominal_tseg2, uint16_t data_prescaler,
-                                    uint8_t data_tseg1, uint8_t data_tseg2,
-                                    uint8_t sjw = 1) noexcept {
-    return false; // Not supported by default
+                                   uint8_t nominal_tseg2, uint16_t data_prescaler,
+                                   uint8_t data_tseg1, uint8_t data_tseg2,
+                                   uint8_t sjw = 1) noexcept {
+    (void)nominal_prescaler;
+    (void)nominal_tseg1;
+    (void)nominal_tseg2;
+    (void)data_prescaler;
+    (void)data_tseg1;
+    (void)data_tseg2;
+    (void)sjw;
+    return false;
   }
 
   /**
-   * @brief Set Transmitter Delay Compensation for CAN-FD.
-   * @param tdc_offset Transmitter Delay Compensation Offset
-   * @param tdc_filter Transmitter Delay Compensation Filter
-   * @return true if TDC set successfully, false otherwise
+   * @brief Set transmitter delay compensation (CAN-FD feature).
+   * @param tdc_offset TDC offset value
+   * @param tdc_filter TDC filter value
+   * @return true if successful, false otherwise
+   * @note Default implementation returns false (not supported)
    */
   virtual bool SetTransmitterDelayCompensation(uint8_t tdc_offset, uint8_t tdc_filter) noexcept {
-    return false; // Not supported by default
+    (void)tdc_offset;
+    (void)tdc_filter;
+    return false;
   }
 
   /**
-   * @brief Get CAN-FD specific capabilities and limits.
-   * @param max_data_bytes Maximum data bytes per frame
-   * @param max_nominal_baudrate Maximum nominal baudrate
-   * @param max_data_baudrate Maximum data baudrate
-   * @param supports_brs Supports Bit Rate Switching
-   * @param supports_esi Supports Error State Indicator
-   * @return true if capabilities retrieved successfully
-   */
-  virtual bool GetCanFDCapabilities(uint8_t &max_data_bytes, uint32_t &max_nominal_baudrate,
-                                    uint32_t &max_data_baudrate, bool &supports_brs,
-                                    bool &supports_esi) noexcept {
-    return false; // Not supported by default
-  }
-
-  /**
-   * @brief Send multiple CAN-FD messages in a batch for improved performance.
+   * @brief Send multiple messages in a batch.
    * @param messages Array of messages to send
-   * @param count Number of messages in array
-   * @param timeout_ms Timeout for the entire batch operation
+   * @param count Number of messages to send
+   * @param timeout_ms Timeout in milliseconds
    * @return Number of messages successfully sent
+   * @note Default implementation sends messages sequentially
    */
-  virtual uint32_t SendMessageBatch(const CanMessage *messages, uint32_t count,
-                                    uint32_t timeout_ms = 1000) noexcept {
+  virtual uint32_t SendMessageBatch(const hf_can_message_t *messages, uint32_t count,
+                                   uint32_t timeout_ms = 1000) noexcept {
+    if (!messages || count == 0) {
+      return 0;
+    }
+
     uint32_t sent_count = 0;
     for (uint32_t i = 0; i < count; ++i) {
-      if (SendMessage(messages[i], timeout_ms)) {
+      if (SendMessage(messages[i], timeout_ms) == hf_can_err_t::CAN_SUCCESS) {
         sent_count++;
-      } else {
-        break; // Stop on first failure
       }
     }
     return sent_count;
   }
 
   /**
-   * @brief Receive multiple CAN-FD messages in a batch.
+   * @brief Receive multiple messages in a batch.
    * @param messages Array to store received messages
    * @param max_count Maximum number of messages to receive
-   * @param timeout_ms Timeout for the batch operation
+   * @param timeout_ms Timeout in milliseconds
    * @return Number of messages actually received
+   * @note Default implementation receives messages one by one
    */
-  virtual uint32_t ReceiveMessageBatch(CanMessage *messages, uint32_t max_count,
-                                       uint32_t timeout_ms = 100) noexcept {
+  virtual uint32_t ReceiveMessageBatch(hf_can_message_t *messages, uint32_t max_count,
+                                      uint32_t timeout_ms = 100) noexcept {
+    if (!messages || max_count == 0) {
+      return 0;
+    }
+
     uint32_t received_count = 0;
     for (uint32_t i = 0; i < max_count; ++i) {
-      if (ReceiveMessage(messages[i], timeout_ms)) {
+      if (ReceiveMessage(messages[i], timeout_ms) == hf_can_err_t::CAN_SUCCESS) {
         received_count++;
       } else {
-        break; // Stop on timeout or no more messages
+        break; // No more messages available
       }
     }
     return received_count;
   }
 
-  //==============================================================================
-  // CAN STATISTICS AND DIAGNOSTICS TYPES (Platform-Agnostic)
-  //==============================================================================
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS STRUCTURES        //
+  //==============================================//
 
   /**
-   * @brief CAN bus statistics structure for monitoring performance and errors.
-   * @details This structure provides comprehensive runtime statistics for debugging,
-   *          monitoring, and performance analysis of CAN bus operations.
+   * @brief CAN bus statistics structure for performance monitoring.
+   * @details Provides comprehensive statistics for monitoring CAN bus performance
+   *          and identifying potential issues.
    */
-  struct CanStatistics {
-      // Message counters
-      uint64_t messages_sent;          ///< Total messages successfully sent
-      uint64_t messages_received;      ///< Total messages successfully received
-      uint64_t bytes_transmitted;      ///< Total bytes transmitted
-      uint64_t bytes_received;         ///< Total bytes received
-      
-      // Error counters
-      uint32_t send_failures;          ///< Failed send operations
-      uint32_t receive_failures;       ///< Failed receive operations
-      uint32_t bus_error_count;        ///< Total bus errors
-      uint32_t arbitration_lost_count; ///< Arbitration lost events
-      uint32_t tx_failed_count;        ///< Transmission failures
-      uint32_t bus_off_events;         ///< Bus-off occurrences
-      uint32_t error_warning_events;   ///< Error warning events
-      
-      // Performance metrics
-      uint64_t uptime_seconds;         ///< Total uptime in seconds
-      uint32_t last_activity_timestamp;///< Last activity timestamp
-      HfCanErr last_error;             ///< Last error encountered
-      
-      // Queue statistics
-      uint32_t tx_queue_peak;          ///< Peak TX queue usage
-      uint32_t rx_queue_peak;          ///< Peak RX queue usage
-      uint32_t tx_queue_overflows;     ///< TX queue overflow count
-      uint32_t rx_queue_overflows;     ///< RX queue overflow count
+  struct hf_can_statistics_t {
+    // Message counters
+    uint64_t messages_sent;          ///< Total messages successfully sent
+    uint64_t messages_received;      ///< Total messages successfully received
+    uint64_t bytes_transmitted;      ///< Total bytes transmitted
+    uint64_t bytes_received;         ///< Total bytes received
+    
+    // Error counters
+    uint32_t send_failures;          ///< Failed send operations
+    uint32_t receive_failures;       ///< Failed receive operations
+    uint32_t bus_error_count;        ///< Total bus errors
+    uint32_t arbitration_lost_count; ///< Arbitration lost events
+    uint32_t tx_failed_count;        ///< Transmission failures
+    uint32_t bus_off_events;         ///< Bus-off occurrences
+    uint32_t error_warning_events;   ///< Error warning events
+    
+    // Performance metrics
+    uint64_t uptime_seconds;         ///< Total uptime in seconds
+    uint32_t last_activity_timestamp;///< Last activity timestamp
+    hf_can_err_t last_error;         ///< Last error encountered
+    
+    // Queue statistics
+    uint32_t tx_queue_peak;          ///< Peak TX queue usage
+    uint32_t rx_queue_peak;          ///< Peak RX queue usage
+    uint32_t tx_queue_overflows;     ///< TX queue overflow count
+    uint32_t rx_queue_overflows;     ///< RX queue overflow count
 
-      CanStatistics() noexcept
-          : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
-            send_failures(0), receive_failures(0), bus_error_count(0), arbitration_lost_count(0),
-            tx_failed_count(0), bus_off_events(0), error_warning_events(0), uptime_seconds(0),
-            last_activity_timestamp(0), last_error(HfCanErr::CAN_SUCCESS), tx_queue_peak(0),
-            rx_queue_peak(0), tx_queue_overflows(0), rx_queue_overflows(0) {}
+    hf_can_statistics_t() noexcept
+        : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
+          send_failures(0), receive_failures(0), bus_error_count(0), arbitration_lost_count(0),
+          tx_failed_count(0), bus_off_events(0), error_warning_events(0), uptime_seconds(0),
+          last_activity_timestamp(0), last_error(hf_can_err_t::CAN_SUCCESS), tx_queue_peak(0),
+          rx_queue_peak(0), tx_queue_overflows(0), rx_queue_overflows(0) {}
   };
 
   /**
@@ -623,7 +647,7 @@ public:
    * @details Provides detailed diagnostic information for troubleshooting
    *          and monitoring CAN bus health and performance.
    */
-  struct CanDiagnostics {
+  struct hf_can_diagnostics_t {
     uint32_t tx_error_count;         ///< Transmit error counter
     uint32_t rx_error_count;         ///< Receive error counter
     uint32_t tx_queue_peak;          ///< Peak TX queue usage
@@ -633,7 +657,7 @@ public:
     uint32_t bus_load_percentage;    ///< Current bus load percentage
     float bit_error_rate;            ///< Bit error rate (errors/bits)
     
-    CanDiagnostics() noexcept
+    hf_can_diagnostics_t() noexcept
         : tx_error_count(0), rx_error_count(0), tx_queue_peak(0), rx_queue_peak(0),
           last_error_timestamp(0), controller_resets(0), bus_load_percentage(0), bit_error_rate(0.0f) {}
   };
@@ -648,31 +672,35 @@ protected:
   /**
    * @brief Get CAN bus statistics.
    * @param stats Reference to statistics structure to fill
-   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
+   * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
    * @note Override this method to provide platform-specific statistics
    */
-  virtual HfCanErr GetStatistics(CanStatistics &stats) noexcept {
-    stats = CanStatistics{}; // Return empty statistics by default
-    return HfCanErr::CAN_ERR_UNSUPPORTED_OPERATION;
+  virtual hf_can_err_t GetStatistics(hf_can_statistics_t &stats) noexcept {
+    stats = hf_can_statistics_t{}; // Return empty statistics by default
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
    * @brief Reset CAN bus statistics.
-   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
+   * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
    * @note Override this method to provide platform-specific statistics reset
    */
-  virtual HfCanErr ResetStatistics() noexcept {
-    return HfCanErr::CAN_ERR_UNSUPPORTED_OPERATION;
+  virtual hf_can_err_t ResetStatistics() noexcept {
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
-   * @brief Get CAN bus diagnostics information.
+   * @brief Get CAN bus diagnostics.
    * @param diagnostics Reference to diagnostics structure to fill
-   * @return HfCanErr::CAN_SUCCESS if successful, error code otherwise
+   * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
    * @note Override this method to provide platform-specific diagnostics
    */
-  virtual HfCanErr GetDiagnostics(CanDiagnostics &diagnostics) noexcept {
-    diagnostics = CanDiagnostics{}; // Return empty diagnostics by default
-    return HfCanErr::CAN_ERR_UNSUPPORTED_OPERATION;
+  virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) noexcept {
+    diagnostics = hf_can_diagnostics_t{}; // Return empty diagnostics by default
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
 };
+
+//==============================================//
+// END OF BASECAN - CLEAN AND MODERN API        //
+//==============================================//
