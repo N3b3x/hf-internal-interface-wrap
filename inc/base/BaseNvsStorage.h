@@ -64,17 +64,17 @@
   X(NVS_ERR_SECURITY_VIOLATION, 25, "Security policy violation")
 
 // Generate enum class from X-macro
-enum class HfNvsErr : int32_t {
+enum class hf_nvs_err_t : int32_t {
 #define X(name, value, desc) name = value,
   HF_NVS_ERR_LIST(X)
 #undef X
 };
 
 // Generate error description function
-constexpr const char *HfNvsErrToString(HfNvsErr err) noexcept {
+constexpr const char *HfNvsErrToString(hf_nvs_err_t err) noexcept {
   switch (err) {
 #define X(name, value, desc)                                                                       \
-  case HfNvsErr::name:                                                                             \
+  case hf_nvs_err_t::name:                                                                             \
     return desc;
     HF_NVS_ERR_LIST(X)
 #undef X
@@ -125,39 +125,39 @@ public:
 
   /**
    * @brief Initialize the storage system and open the namespace.
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr Initialize() noexcept = 0;
+  virtual hf_nvs_err_t Initialize() noexcept = 0;
 
   /**
    * @brief Deinitialize the storage system and close the namespace.
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr Deinitialize() noexcept = 0;
+  virtual hf_nvs_err_t Deinitialize() noexcept = 0;
 
   /**
    * @brief Store a 32-bit unsigned integer value.
    * @param key Storage key (null-terminated string)
    * @param value Value to store
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr SetU32(const char *key, uint32_t value) noexcept = 0;
+  virtual hf_nvs_err_t SetU32(const char *key, uint32_t value) noexcept = 0;
 
   /**
    * @brief Retrieve a 32-bit unsigned integer value.
    * @param key Storage key (null-terminated string)
    * @param value Reference to store the retrieved value
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr GetU32(const char *key, uint32_t &value) noexcept = 0;
+  virtual hf_nvs_err_t GetU32(const char *key, uint32_t &value) noexcept = 0;
 
   /**
    * @brief Store a string value.
    * @param key Storage key (null-terminated string)
    * @param value String value to store
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr SetString(const char *key, const char *value) noexcept = 0;
+  virtual hf_nvs_err_t SetString(const char *key, const char *value) noexcept = 0;
 
   /**
    * @brief Retrieve a string value.
@@ -165,9 +165,9 @@ public:
    * @param buffer Buffer to store the retrieved string
    * @param buffer_size Size of the buffer in bytes
    * @param actual_size Actual size of the string (optional)
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr GetString(const char *key, char *buffer, size_t buffer_size,
+  virtual hf_nvs_err_t GetString(const char *key, char *buffer, size_t buffer_size,
                              size_t *actual_size = nullptr) noexcept = 0;
 
   /**
@@ -175,9 +175,9 @@ public:
    * @param key Storage key (null-terminated string)
    * @param data Pointer to data to store
    * @param data_size Size of data in bytes
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr SetBlob(const char *key, const void *data, size_t data_size) noexcept = 0;
+  virtual hf_nvs_err_t SetBlob(const char *key, const void *data, size_t data_size) noexcept = 0;
 
   /**
    * @brief Retrieve binary data (blob).
@@ -185,23 +185,23 @@ public:
    * @param buffer Buffer to store the retrieved data
    * @param buffer_size Size of the buffer in bytes
    * @param actual_size Actual size of the data (optional)
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr GetBlob(const char *key, void *buffer, size_t buffer_size,
+  virtual hf_nvs_err_t GetBlob(const char *key, void *buffer, size_t buffer_size,
                            size_t *actual_size = nullptr) noexcept = 0;
 
   /**
    * @brief Remove a key from storage.
    * @param key Storage key to remove
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr EraseKey(const char *key) noexcept = 0;
+  virtual hf_nvs_err_t EraseKey(const char *key) noexcept = 0;
 
   /**
    * @brief Commit any pending writes to non-volatile storage.
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr Commit() noexcept = 0;
+  virtual hf_nvs_err_t Commit() noexcept = 0;
 
   /**
    * @brief Check if a key exists in storage.
@@ -214,9 +214,9 @@ public:
    * @brief Get the size of a stored value.
    * @param key Storage key
    * @param size Reference to store the size
-   * @return HfNvsErr::NVS_SUCCESS if successful, error code otherwise
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual HfNvsErr GetSize(const char *key, size_t &size) noexcept = 0;
+  virtual hf_nvs_err_t GetSize(const char *key, size_t &size) noexcept = 0;
 
   //==============================================//
   // PUBLIC INTERFACE (IMPLEMENTED)               //

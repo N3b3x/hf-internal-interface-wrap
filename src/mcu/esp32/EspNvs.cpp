@@ -1,5 +1,5 @@
 /**
- * @file McuNvsStorage.cpp
+ * @file EspNvs.cpp
  * @brief World-class ESP32-C6 NVS implementation with ESP-IDF v5.5+ advanced features.
  *
  * This file provides a comprehensive, production-ready NVS (Non-Volatile Storage) implementation
@@ -46,10 +46,10 @@
  * @note Supports both encrypted and non-encrypted NVS partitions.
  */
 
-#include "McuNvsStorage.h"
+#include "EspNvs.h"
 #include <cstring>
 
-// ESP32-specific includes via centralized McuSelect.h (included in McuNvsStorage.h)
+// ESP32-specific includes via centralized McuSelect.h (included in EspNvs.h)
 #ifdef HF_MCU_FAMILY_ESP32
 #include "esp_log.h"
 #include "esp_err.h"
@@ -65,7 +65,7 @@
 #define ESP_LOGV(tag, format, ...)
 #endif
 
-static const char *TAG = "McuNvsStorage";
+static const char *TAG = "EspNvs";
 
 // === Performance and Reliability Constants ===
 static constexpr uint32_t NVS_INIT_TIMEOUT_MS = 5000;              ///< Initialization timeout
@@ -117,7 +117,7 @@ static inline int nvs_erase_key(nvs_handle_t handle, const char* key) { return E
 static inline int nvs_commit(nvs_handle_t handle) { return ESP_OK; }
 #endif
 
-static const char *TAG = "McuNvsStorage";
+static const char *TAG = "EspNvs";
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
@@ -127,26 +127,26 @@ static const char *TAG = "McuNvsStorage";
 // CONSTRUCTOR AND DESTRUCTOR - Enhanced for ESP32-C6 Production Use
 //==============================================================================
 
-McuNvsStorage::McuNvsStorage(const char *namespace_name) noexcept
+EspNvs::EspNvs(const char *namespace_name) noexcept
     : BaseNvsStorage(namespace_name), nvs_handle_(nullptr), last_error_code_(0),
       operation_count_(0), error_count_(0), last_stats_update_(0) {
   
   // **LAZY INITIALIZATION** - Store configuration but do NOT initialize hardware
-  ESP_LOGD(TAG, "Creating McuNvsStorage for namespace '%s' - LAZY INIT", 
+  ESP_LOGD(TAG, "Creating EspNvs for namespace '%s' - LAZY INIT", 
            namespace_name ? namespace_name : "null");
   
   // Validate namespace name using ESP32 constraints
   if (!namespace_name || strlen(namespace_name) == 0) {
     ESP_LOGE(TAG, "Invalid namespace name: null or empty");
     // Set error but allow object creation - Initialize() will fail properly
-    last_error_code_ = static_cast<int>(HfNvsErr::NVS_ERR_INVALID_PARAMETER);
+    last_error_code_ = static_cast<int>(hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER);
     return;
   }
   
   if (strlen(namespace_name) > NVS_MAX_NAMESPACE_LENGTH_ESP32) {
     ESP_LOGE(TAG, "Namespace name too long: %zu > %zu characters", 
              strlen(namespace_name), NVS_MAX_NAMESPACE_LENGTH_ESP32);
-    last_error_code_ = static_cast<int>(HfNvsErr::NVS_ERR_INVALID_PARAMETER);
+    last_error_code_ = static_cast<int>(hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER);
     return;
   }
   
@@ -156,12 +156,12 @@ McuNvsStorage::McuNvsStorage(const char *namespace_name) noexcept
   error_count_ = 0;
   last_error_code_ = 0;
   
-  ESP_LOGD(TAG, "McuNvsStorage instance created for namespace '%s' - awaiting first use", 
+  ESP_LOGD(TAG, "EspNvs instance created for namespace '%s' - awaiting first use", 
            namespace_name_);
 }
 
-McuNvsStorage::~McuNvsStorage() noexcept {
-  ESP_LOGI(TAG, "Destroying McuNvsStorage instance for namespace '%s'", namespace_name_);
+EspNvs::~EspNvs() noexcept {
+  ESP_LOGI(TAG, "Destroying EspNvs instance for namespace '%s'", namespace_name_);
   
   // Log final statistics before cleanup
   if (operation_count_ > 0) {
@@ -175,22 +175,22 @@ McuNvsStorage::~McuNvsStorage() noexcept {
     Deinitialize();
   }
   
-  ESP_LOGI(TAG, "McuNvsStorage instance destroyed successfully");
+  ESP_LOGI(TAG, "EspNvs instance destroyed successfully");
 }
 
 //==============================================================================
 // OVERRIDDEN PURE VIRTUAL FUNCTIONS
 //==============================================================================
 
-HfNvsErr McuNvsStorage::Initialize() noexcept {
+hf_nvs_err_t EspNvs::Initialize() noexcept {
   if (IsInitialized()) {
     ESP_LOGW(TAG, "Namespace '%s' already initialized", GetNamespace());
-    return HfNvsErr::NVS_ERR_ALREADY_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_ALREADY_INITIALIZED;
   }
 
   if (!GetNamespace()) {
     ESP_LOGE(TAG, "Initialize failed: Invalid namespace parameter");
-    return HfNvsErr::NVS_ERR_INVALID_PARAMETER;
+    return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
   ESP_LOGI(TAG, "Initializing NVS for namespace '%s' with ESP-IDF v5.5+ features", GetNamespace());
@@ -256,13 +256,13 @@ HfNvsErr McuNvsStorage::Initialize() noexcept {
 #endif
 
   SetInitialized(true);
-  ESP_LOGI(TAG, "McuNvsStorage initialization completed successfully for namespace '%s'", GetNamespace());
-  return HfNvsErr::NVS_SUCCESS;
+  ESP_LOGI(TAG, "EspNvs initialization completed successfully for namespace '%s'", GetNamespace());
+  return hf_nvs_err_t::NVS_SUCCESS;
 }
 
-HfNvsErr McuNvsStorage::Deinitialize() noexcept {
+hf_nvs_err_t EspNvs::Deinitialize() noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -274,21 +274,21 @@ HfNvsErr McuNvsStorage::Deinitialize() noexcept {
 
   nvs_handle_ = nullptr;
   SetInitialized(false);
-  return HfNvsErr::NVS_SUCCESS;
+  return hf_nvs_err_t::NVS_SUCCESS;
 }
 
-HfNvsErr McuNvsStorage::SetU32(const char *key, uint32_t value) noexcept {
+hf_nvs_err_t EspNvs::SetU32(const char *key, uint32_t value) noexcept {
   // Validate state and parameters
   if (!IsInitialized()) {
     ESP_LOGE(TAG, "SetU32 failed: NVS not initialized");
     UpdateStatistics(true);
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
   
   if (!IsValidKey(key)) {
     ESP_LOGE(TAG, "SetU32 failed: Invalid key");
     UpdateStatistics(true);
-    return HfNvsErr::NVS_ERR_INVALID_PARAMETER;
+    return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
   ESP_LOGD(TAG, "Setting U32 key '%s' = %u", key, value);
@@ -321,16 +321,16 @@ HfNvsErr McuNvsStorage::SetU32(const char *key, uint32_t value) noexcept {
 #endif
 
   UpdateStatistics(false);  // Success
-  return HfNvsErr::NVS_SUCCESS;
+  return hf_nvs_err_t::NVS_SUCCESS;
 }
 
-HfNvsErr McuNvsStorage::GetU32(const char *key, uint32_t &value) noexcept {
+hf_nvs_err_t EspNvs::GetU32(const char *key, uint32_t &value) noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
   
   if (!key) {
-    return HfNvsErr::NVS_ERR_NULL_POINTER;
+    return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -339,17 +339,17 @@ HfNvsErr McuNvsStorage::GetU32(const char *key, uint32_t &value) noexcept {
   return ConvertMcuError(err);
 #else
   value = 0; // Dummy implementation
-  return HfNvsErr::NVS_SUCCESS;
+  return hf_nvs_err_t::NVS_SUCCESS;
 #endif
 }
 
-HfNvsErr McuNvsStorage::SetString(const char *key, const char *value) noexcept {
+hf_nvs_err_t EspNvs::SetString(const char *key, const char *value) noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
   
   if (!key || !value) {
-    return HfNvsErr::NVS_ERR_NULL_POINTER;
+    return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -363,22 +363,22 @@ HfNvsErr McuNvsStorage::SetString(const char *key, const char *value) noexcept {
   err = nvs_commit(handle);
   return ConvertMcuError(err);
 #else
-  return HfNvsErr::NVS_SUCCESS; // Dummy implementation
+  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
 #endif
 }
 
-HfNvsErr McuNvsStorage::GetString(const char *key, char *buffer, size_t buffer_size,
+hf_nvs_err_t EspNvs::GetString(const char *key, char *buffer, size_t buffer_size,
                                   size_t *actual_size) noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
   
   if (!key || !buffer) {
-    return HfNvsErr::NVS_ERR_NULL_POINTER;
+    return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
   
   if (buffer_size == 0) {
-    return HfNvsErr::NVS_ERR_INVALID_PARAMETER;
+    return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -396,17 +396,17 @@ HfNvsErr McuNvsStorage::GetString(const char *key, char *buffer, size_t buffer_s
     *actual_size = 0;
   }
   buffer[0] = '\0';
-  return HfNvsErr::NVS_SUCCESS; // Dummy implementation
+  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
 #endif
 }
 
-HfNvsErr McuNvsStorage::SetBlob(const char *key, const void *data, size_t data_size) noexcept {
+hf_nvs_err_t EspNvs::SetBlob(const char *key, const void *data, size_t data_size) noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
   
   if (!key || !data) {
-    return HfNvsErr::NVS_ERR_NULL_POINTER;
+    return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -420,22 +420,22 @@ HfNvsErr McuNvsStorage::SetBlob(const char *key, const void *data, size_t data_s
   err = nvs_commit(handle);
   return ConvertMcuError(err);
 #else
-  return HfNvsErr::NVS_SUCCESS; // Dummy implementation
+  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
 #endif
 }
 
-HfNvsErr McuNvsStorage::GetBlob(const char *key, void *buffer, size_t buffer_size,
+hf_nvs_err_t EspNvs::GetBlob(const char *key, void *buffer, size_t buffer_size,
                                 size_t *actual_size) noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
   
   if (!key || !buffer) {
-    return HfNvsErr::NVS_ERR_NULL_POINTER;
+    return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
   
   if (buffer_size == 0) {
-    return HfNvsErr::NVS_ERR_INVALID_PARAMETER;
+    return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -452,17 +452,17 @@ HfNvsErr McuNvsStorage::GetBlob(const char *key, void *buffer, size_t buffer_siz
   if (actual_size) {
     *actual_size = 0;
   }
-  return HfNvsErr::NVS_SUCCESS; // Dummy implementation
+  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
 #endif
 }
 
-HfNvsErr McuNvsStorage::EraseKey(const char *key) noexcept {
+hf_nvs_err_t EspNvs::EraseKey(const char *key) noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
   
   if (!key) {
-    return HfNvsErr::NVS_ERR_NULL_POINTER;
+    return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -476,13 +476,13 @@ HfNvsErr McuNvsStorage::EraseKey(const char *key) noexcept {
   err = nvs_commit(handle);
   return ConvertMcuError(err);
 #else
-  return HfNvsErr::NVS_SUCCESS; // Dummy implementation
+  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
 #endif
 }
 
-HfNvsErr McuNvsStorage::Commit() noexcept {
+hf_nvs_err_t EspNvs::Commit() noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -490,11 +490,11 @@ HfNvsErr McuNvsStorage::Commit() noexcept {
   esp_err_t err = nvs_commit(handle);
   return ConvertMcuError(err);
 #else
-  return HfNvsErr::NVS_SUCCESS; // Dummy implementation
+  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
 #endif
 }
 
-bool McuNvsStorage::KeyExists(const char *key) noexcept {
+bool EspNvs::KeyExists(const char *key) noexcept {
   if (!IsInitialized()) {
     ESP_LOGW(TAG, "KeyExists failed: NVS not initialized");
     return false;
@@ -536,13 +536,13 @@ bool McuNvsStorage::KeyExists(const char *key) noexcept {
 #endif
 }
 
-HfNvsErr McuNvsStorage::GetSize(const char *key, size_t &size) noexcept {
+hf_nvs_err_t EspNvs::GetSize(const char *key, size_t &size) noexcept {
   if (!IsInitialized()) {
-    return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
   
   if (!key) {
-    return HfNvsErr::NVS_ERR_NULL_POINTER;
+    return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -552,21 +552,21 @@ HfNvsErr McuNvsStorage::GetSize(const char *key, size_t &size) noexcept {
   
   if (err == ESP_OK || err == ESP_ERR_INVALID_SIZE) {
     size = required_size;
-    return HfNvsErr::NVS_SUCCESS;
+    return hf_nvs_err_t::NVS_SUCCESS;
   }
   
   return ConvertMcuError(err);
 #else
   size = 0; // Dummy implementation
-  return HfNvsErr::NVS_SUCCESS;
+  return hf_nvs_err_t::NVS_SUCCESS;
 #endif
 }
 
-const char *McuNvsStorage::GetDescription() const noexcept {
+const char *EspNvs::GetDescription() const noexcept {
   return "MCU-integrated NVS storage (ESP32 NVS API)";
 }
 
-size_t McuNvsStorage::GetMaxKeyLength() const noexcept {
+size_t EspNvs::GetMaxKeyLength() const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   return 15; // ESP32 NVS key length limit
 #else
@@ -574,7 +574,7 @@ size_t McuNvsStorage::GetMaxKeyLength() const noexcept {
 #endif
 }
 
-size_t McuNvsStorage::GetMaxValueSize() const noexcept {
+size_t EspNvs::GetMaxValueSize() const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   return 4000; // ESP32 NVS value size limit (conservative)
 #else
@@ -586,61 +586,61 @@ size_t McuNvsStorage::GetMaxValueSize() const noexcept {
 // PRIVATE HELPER FUNCTIONS
 //==============================================================================
 
-HfNvsErr McuNvsStorage::ConvertMcuError(int mcu_error) const noexcept {
+hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   // Comprehensive ESP32-C6 NVS error code mapping for ESP-IDF v5.5+
   switch (mcu_error) {
     case ESP_OK:
-      return HfNvsErr::NVS_SUCCESS;
+      return hf_nvs_err_t::NVS_SUCCESS;
       
     // Core NVS errors
     case ESP_ERR_NVS_NOT_FOUND:
-      return HfNvsErr::NVS_ERR_KEY_NOT_FOUND;
+      return hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND;
     case ESP_ERR_NVS_INVALID_HANDLE:
-      return HfNvsErr::NVS_ERR_NOT_INITIALIZED;
+      return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
     case ESP_ERR_NVS_READ_ONLY:
-      return HfNvsErr::NVS_ERR_READ_ONLY;
+      return hf_nvs_err_t::NVS_ERR_READ_ONLY;
     case ESP_ERR_NVS_NOT_ENOUGH_SPACE:
-      return HfNvsErr::NVS_ERR_STORAGE_FULL;
+      return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
     case ESP_ERR_NVS_NO_FREE_PAGES:
-      return HfNvsErr::NVS_ERR_STORAGE_FULL;
+      return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
     case ESP_ERR_NVS_NEW_VERSION_FOUND:
-      return HfNvsErr::NVS_ERR_CORRUPTED;  // Version mismatch indicates corruption
+      return hf_nvs_err_t::NVS_ERR_CORRUPTED;  // Version mismatch indicates corruption
       
     // Encryption-related errors (ESP32-C6 specific)
     case ESP_ERR_NVS_XTS_ENCR_FAILED:
-      return HfNvsErr::NVS_ERR_FAILURE;  // Encryption operation failed
+      return hf_nvs_err_t::NVS_ERR_FAILURE;  // Encryption operation failed
     case ESP_ERR_NVS_XTS_DECR_FAILED:
-      return HfNvsErr::NVS_ERR_CORRUPTED;  // Decryption failure suggests corruption
+      return hf_nvs_err_t::NVS_ERR_CORRUPTED;  // Decryption failure suggests corruption
     case ESP_ERR_NVS_XTS_CFG_FAILED:
-      return HfNvsErr::NVS_ERR_INVALID_PARAMETER;  // Configuration issue
+      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;  // Configuration issue
     case ESP_ERR_NVS_XTS_CFG_NOT_FOUND:
-      return HfNvsErr::NVS_ERR_NOT_INITIALIZED;  // Encryption not configured
+      return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;  // Encryption not configured
     case ESP_ERR_NVS_ENCR_NOT_SUPPORTED:
-      return HfNvsErr::NVS_ERR_INVALID_PARAMETER;  // Encryption not supported
+      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;  // Encryption not supported
     case ESP_ERR_NVS_KEYS_NOT_INITIALIZED:
-      return HfNvsErr::NVS_ERR_NOT_INITIALIZED;  // Encryption keys missing
+      return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;  // Encryption keys missing
     case ESP_ERR_NVS_CORRUPT_KEY_PART:
-      return HfNvsErr::NVS_ERR_CORRUPTED;  // Key partition corrupted
+      return hf_nvs_err_t::NVS_ERR_CORRUPTED;  // Key partition corrupted
     case ESP_ERR_NVS_WRONG_ENCRYPTION:
-      return HfNvsErr::NVS_ERR_INVALID_PARAMETER;  // Wrong encryption scheme
+      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;  // Wrong encryption scheme
     case ESP_ERR_NVS_CONTENT_DIFFERS:
-      return HfNvsErr::NVS_ERR_CORRUPTED;  // Content validation failed
+      return hf_nvs_err_t::NVS_ERR_CORRUPTED;  // Content validation failed
       
     // Generic parameter errors
     case ESP_ERR_INVALID_ARG:
-      return HfNvsErr::NVS_ERR_INVALID_PARAMETER;
+      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
     case ESP_ERR_INVALID_SIZE:
-      return HfNvsErr::NVS_ERR_VALUE_TOO_LARGE;
+      return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE;
       
     // Catch-all for unknown errors
     default:
       ESP_LOGW(TAG, "Unmapped ESP32 error code: 0x%X (%d)", mcu_error, mcu_error);
-      return HfNvsErr::NVS_ERR_FAILURE;
+      return hf_nvs_err_t::NVS_ERR_FAILURE;
   }
 #else
   // Generic implementation for non-ESP32 platforms
-  return (mcu_error == 0) ? HfNvsErr::NVS_SUCCESS : HfNvsErr::NVS_ERR_FAILURE;
+  return (mcu_error == 0) ? hf_nvs_err_t::NVS_SUCCESS : hf_nvs_err_t::NVS_ERR_FAILURE;
 #endif
 }
 
@@ -648,7 +648,7 @@ HfNvsErr McuNvsStorage::ConvertMcuError(int mcu_error) const noexcept {
 // PRIVATE HELPER FUNCTIONS - Production-Ready Utilities
 //==============================================================================
 
-void McuNvsStorage::UpdateStatistics(bool error_occurred) noexcept {
+void EspNvs::UpdateStatistics(bool error_occurred) noexcept {
 #ifdef HF_THREAD_SAFE
   RtosUniqueLock<RtosMutex> lock(stats_mutex_);
 #endif
@@ -671,7 +671,7 @@ void McuNvsStorage::UpdateStatistics(bool error_occurred) noexcept {
 #endif
 }
 
-bool McuNvsStorage::IsValidKey(const char *key) const noexcept {
+bool EspNvs::IsValidKey(const char *key) const noexcept {
   if (!key) {
     ESP_LOGW(TAG, "Key validation failed: null pointer");
     return false;

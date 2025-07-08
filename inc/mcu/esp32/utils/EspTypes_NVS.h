@@ -15,7 +15,7 @@
 #include "HardwareTypes.h" // For basic hardware types
 #include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
 #include "McuTypes_Base.h"
-#include "BaseNvsStorage.h" // For HfNvsErr
+#include "BaseNvsStorage.h" // For hf_nvs_err_t
 
 #ifdef HF_MCU_FAMILY_ESP32
 // ESP32-C6 NVS native type aliases for abstraction
@@ -23,6 +23,10 @@ using hf_nvs_handle_native_t = nvs_handle_t;
 using hf_nvs_open_mode_native_t = nvs_open_mode_t;
 using hf_nvs_type_native_t = nvs_type_t;
 using hf_nvs_iterator_native_t = nvs_iterator_t;
+using hf_nvs_handle_t = hf_nvs_handle_native_t;
+using hf_nvs_open_mode_t = hf_nvs_open_mode_native_t;
+using hf_nvs_type_t = hf_nvs_type_native_t;
+using hf_nvs_iterator_t = hf_nvs_iterator_native_t;
 
 // ESP32-C6 NVS constants
 static constexpr size_t HF_NVS_MAX_KEY_LENGTH = 15;         ///< Maximum NVS key length (ESP32 limit)
@@ -47,6 +51,10 @@ using hf_nvs_handle_native_t = uint32_t;
 using hf_nvs_open_mode_native_t = int;
 using hf_nvs_type_native_t = int;
 using hf_nvs_iterator_native_t = void*;
+using hf_nvs_handle_t = hf_nvs_handle_native_t;
+using hf_nvs_open_mode_t = hf_nvs_open_mode_native_t;
+using hf_nvs_type_t = hf_nvs_type_native_t;
+using hf_nvs_iterator_t = hf_nvs_iterator_native_t;
 
 static constexpr size_t HF_NVS_MAX_KEY_LENGTH = 32;
 static constexpr size_t HF_NVS_MAX_VALUE_SIZE = 1024;
