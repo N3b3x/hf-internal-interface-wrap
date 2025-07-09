@@ -31,16 +31,15 @@ static const char *TAG = "EspPwm";
 EspPwm::EspPwm(const hf_pwm_unit_config_t &config) noexcept
     : mutex_(), initialized_(false), base_clock_hz_(config.base_clock_hz),
       clock_source_(config.clock_source), channels_(), timers_(), complementary_pairs_(),
-      period_callback_(nullptr), period_callback_user_data_(nullptr),
-      fault_callback_(nullptr), fault_callback_user_data_(nullptr),
-      last_global_error_(hf_pwm_err_t::PWM_SUCCESS), fade_functionality_installed_(false),
-      unit_config_(config), current_mode_(config.mode), statistics_(), diagnostics_() {
-  ESP_LOGD(TAG, "EspPwm constructed with unit_id=%d, mode=%d, clock_hz=%lu",
-           config.unit_id, static_cast<int>(config.mode), config.base_clock_hz);
+      period_callback_(nullptr), period_callback_user_data_(nullptr), fault_callback_(nullptr),
+      fault_callback_user_data_(nullptr), last_global_error_(hf_pwm_err_t::PWM_SUCCESS),
+      fade_functionality_installed_(false), unit_config_(config), current_mode_(config.mode),
+      statistics_(), diagnostics_() {
+  ESP_LOGD(TAG, "EspPwm constructed with unit_id=%d, mode=%d, clock_hz=%lu", config.unit_id,
+           static_cast<int>(config.mode), config.base_clock_hz);
 }
 
-EspPwm::EspPwm(uint32_t base_clock_hz) noexcept
-    : EspPwm(hf_pwm_unit_config_t{}) {
+EspPwm::EspPwm(uint32_t base_clock_hz) noexcept : EspPwm(hf_pwm_unit_config_t{}) {
   // Override base clock if provided
   if (base_clock_hz != 0) {
     base_clock_hz_ = base_clock_hz;
@@ -96,6 +95,8 @@ hf_pwm_err_t EspPwm::Initialize() noexcept {
 
   initialized_.store(true);
   last_global_error_ = hf_pwm_err_t::PWM_SUCCESS;
+  statistics_.initialization_timestamp = esp_timer_get_time();
+  statistics_.last_activity_timestamp = statistics_.initialization_timestamp;
 
   ESP_LOGI(TAG, "ESP32C6 PWM system initialized successfully");
   return hf_pwm_err_t::PWM_SUCCESS;
@@ -129,25 +130,23 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-
-
 hf_pwm_err_t EspPwm::SetMode(hf_pwm_mode_t mode) noexcept {
   if (!EnsureInitialized()) {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  
+
   if (mode == hf_pwm_mode_t::Fade && !fade_functionality_installed_) {
     hf_pwm_err_t result = EnableFade();
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
       return result;
     }
   }
-  
+
   current_mode_ = mode;
   unit_config_.mode = mode;
-  
+
   ESP_LOGD(TAG, "PWM mode set to %d", static_cast<int>(mode));
   return hf_pwm_err_t::PWM_SUCCESS;
 }
@@ -160,7 +159,8 @@ hf_pwm_mode_t EspPwm::GetMode() const noexcept {
 // CHANNEL MANAGEMENT (BasePwm Interface)
 //==============================================================================
 
-hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id, const hf_pwm_channel_config_t &config) noexcept {
+hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
+                                      const hf_pwm_channel_config_t &config) noexcept {
   if (!EnsureInitialized()) {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
@@ -259,7 +259,6 @@ hf_pwm_err_t EspPwm::EnableChannel(hf_channel_id_t channel_id) noexcept {
   channels_[channel_id].enabled = true;
   ESP_LOGI(TAG, "Channel %lu enabled", channel_id);
   return hf_pwm_err_t::PWM_SUCCESS;
-
 }
 
 hf_pwm_err_t EspPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
@@ -278,7 +277,8 @@ hf_pwm_err_t EspPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
   }
 
   // Stop the channel based on idle state
-  uint32_t idle_level = (channels_[channel_id].config.idle_state == hf_pwm_idle_state_t::High) ? 1 : 0;
+  uint32_t idle_level =
+      (channels_[channel_id].config.idle_state == hf_pwm_idle_state_t::High) ? 1 : 0;
   if (channels_[channel_id].config.invert_output) {
     idle_level = 1 - idle_level;
   }
@@ -295,7 +295,6 @@ hf_pwm_err_t EspPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
   channels_[channel_id].enabled = false;
   ESP_LOGI(TAG, "Channel %lu disabled", channel_id);
   return hf_pwm_err_t::PWM_SUCCESS;
-
 }
 
 bool EspPwm::IsChannelEnabled(hf_channel_id_t channel_id) const noexcept {
@@ -369,20 +368,19 @@ hf_pwm_err_t EspPwm::SetDutyCycleRaw(hf_channel_id_t channel_id, uint32_t raw_va
   if (result == hf_pwm_err_t::PWM_SUCCESS) {
     channels_[channel_id].raw_duty_value = raw_value;
     channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
-    
-    // Update statistics
-    statistics_.total_duty_updates++;
-    statistics_.last_operation_time_us = esp_timer_get_time();
-    statistics_.last_error = hf_pwm_err_t::PWM_SUCCESS;
+
+    statistics_.duty_updates_count++;
+    statistics_.last_activity_timestamp = esp_timer_get_time();
   } else {
-    statistics_.total_errors++;
-    statistics_.last_error = result;
+    statistics_.error_count++;
+    SetChannelError(channel_id, result);
   }
 
   return result;
 }
 
-hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz) noexcept {
+hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id,
+                                  hf_frequency_hz_t frequency_hz) noexcept {
   if (!EnsureInitialized()) {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
@@ -410,18 +408,16 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t 
   if (can_update_existing) {
     // We can update the existing timer since this is the only channel using it
     hf_pwm_err_t result = ConfigurePlatformTimer(current_timer, frequency_hz,
-                                             channels_[channel_id].config.resolution_bits);
+                                                 channels_[channel_id].config.resolution_bits);
     if (result == hf_pwm_err_t::PWM_SUCCESS) {
       channels_[channel_id].config.frequency_hz = frequency_hz;
       timers_[current_timer].frequency_hz = frequency_hz;
-      
-      // Update statistics
-      statistics_.total_frequency_changes++;
-      statistics_.last_operation_time_us = esp_timer_get_time();
-      statistics_.last_error = hf_pwm_err_t::PWM_SUCCESS;
+
+      statistics_.frequency_changes_count++;
+      statistics_.last_activity_timestamp = esp_timer_get_time();
     } else {
-      statistics_.total_errors++;
-      statistics_.last_error = result;
+      statistics_.error_count++;
+      SetChannelError(channel_id, result);
     }
     return result;
   } else {
@@ -434,12 +430,19 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t 
     }
 
     // Reconfigure the channel with the new timer
-    hf_pwm_err_t result = ConfigurePlatformChannel(channel_id, channels_[channel_id].config, new_timer);
+    hf_pwm_err_t result =
+        ConfigurePlatformChannel(channel_id, channels_[channel_id].config, new_timer);
     if (result == hf_pwm_err_t::PWM_SUCCESS) {
       // Release the old timer and assign the new one
       ReleaseTimerIfUnused(current_timer);
       channels_[channel_id].assigned_timer = new_timer;
       channels_[channel_id].config.frequency_hz = frequency_hz;
+
+      statistics_.frequency_changes_count++;
+      statistics_.last_activity_timestamp = esp_timer_get_time();
+    } else {
+      statistics_.error_count++;
+      SetChannelError(channel_id, result);
     }
     return result;
   }
@@ -533,8 +536,8 @@ hf_pwm_err_t EspPwm::UpdateAll() noexcept {
 }
 
 hf_pwm_err_t EspPwm::SetComplementaryOutput(hf_channel_id_t primary_channel,
-                                        hf_channel_id_t complementary_channel,
-                                        uint32_t deadtime_ns) noexcept {
+                                            hf_channel_id_t complementary_channel,
+                                            uint32_t deadtime_ns) noexcept {
   if (!EnsureInitialized()) {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
@@ -595,7 +598,8 @@ hf_frequency_hz_t EspPwm::GetFrequency(hf_channel_id_t channel_id) const noexcep
   return channels_[channel_id].config.frequency_hz;
 }
 
-hf_pwm_err_t EspPwm::GetChannelStatus(hf_channel_id_t channel_id, hf_pwm_channel_status_t &status) const noexcept {
+hf_pwm_err_t EspPwm::GetChannelStatus(hf_channel_id_t channel_id,
+                                      hf_pwm_channel_status_t &status) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
@@ -651,30 +655,30 @@ hf_pwm_err_t EspPwm::GetStatistics(hf_pwm_statistics_t &statistics) const noexce
 
 hf_pwm_err_t EspPwm::GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  
+
   diagnostics.hardware_initialized = initialized_.load();
   diagnostics.fade_functionality_ready = fade_functionality_installed_;
   diagnostics.last_global_error = last_global_error_;
-  
+
   // Count active channels and timers
   diagnostics.active_channels = 0;
   diagnostics.active_timers = 0;
-  
+
   for (const auto &channel : channels_) {
     if (channel.enabled) {
       diagnostics.active_channels++;
     }
   }
-  
+
   for (const auto &timer : timers_) {
     if (timer.in_use) {
       diagnostics.active_timers++;
     }
   }
-  
+
   // Get system uptime (simplified - in real implementation would use esp_timer_get_time())
   diagnostics.system_uptime_ms = static_cast<uint32_t>(esp_timer_get_time() / 1000);
-  
+
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
@@ -699,7 +703,7 @@ void EspPwm::SetFaultCallback(hf_pwm_fault_callback_t callback, void *user_data)
 //==============================================================================
 
 hf_pwm_err_t EspPwm::SetHardwareFade(hf_channel_id_t channel_id, float target_duty_cycle,
-                                 uint32_t fade_time_ms) noexcept {
+                                     uint32_t fade_time_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
@@ -754,11 +758,10 @@ hf_pwm_err_t EspPwm::SetHardwareFade(hf_channel_id_t channel_id, float target_du
 
   channels_[channel_id].fade_active = true;
   channels_[channel_id].raw_duty_value = target_duty_raw;
-  
-  // Update statistics
-  statistics_.last_operation_time_us = esp_timer_get_time();
-  statistics_.last_error = hf_pwm_err_t::PWM_SUCCESS;
-  
+
+  statistics_.fade_operations_count++;
+  statistics_.last_activity_timestamp = esp_timer_get_time();
+
   ESP_LOGD(TAG, "Hardware fade started for channel %lu: target=%.2f%%, time=%lu ms", channel_id,
            target_duty_cycle * 100.0f, fade_time_ms);
 
@@ -789,6 +792,8 @@ hf_pwm_err_t EspPwm::StopHardwareFade(hf_channel_id_t channel_id) noexcept {
   }
 
   channels_[channel_id].fade_active = false;
+  statistics_.fade_operations_count++;
+  statistics_.last_activity_timestamp = esp_timer_get_time();
   ESP_LOGD(TAG, "Hardware fade stopped for channel %lu", channel_id);
 
   return hf_pwm_err_t::PWM_SUCCESS;
@@ -874,7 +879,7 @@ hf_pwm_err_t EspPwm::ForceTimerAssignment(hf_channel_id_t channel_id, uint8_t ti
 
   // Configure new timer
   hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, channels_[channel_id].config.frequency_hz,
-                                           channels_[channel_id].config.resolution_bits);
+                                               channels_[channel_id].config.resolution_bits);
   if (result == hf_pwm_err_t::PWM_SUCCESS) {
     channels_[channel_id].assigned_timer = timer_id;
     timers_[timer_id].channel_count++;
@@ -934,13 +939,28 @@ void EspPwm::ReleaseTimerIfUnused(uint8_t timer_id) noexcept {
 }
 
 hf_pwm_err_t EspPwm::ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency_hz,
-                                        uint8_t resolution_bits) noexcept {
+                                            uint8_t resolution_bits) noexcept {
   ledc_timer_config_t timer_config = {};
   timer_config.speed_mode = LEDC_LOW_SPEED_MODE;
   timer_config.timer_num = static_cast<ledc_timer_t>(timer_id);
   timer_config.duty_resolution = static_cast<ledc_timer_bit_t>(resolution_bits);
   timer_config.freq_hz = frequency_hz;
-  timer_config.clk_cfg = LEDC_AUTO_CLK;
+  ledc_clk_cfg_t clk_cfg = LEDC_AUTO_CLK;
+  switch (clock_source_) {
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
+    clk_cfg = LEDC_USE_APB_CLK;
+    break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
+    clk_cfg = LEDC_USE_XTAL_CLK;
+    break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
+    clk_cfg = LEDC_USE_RC_FAST_CLK;
+    break;
+  default:
+    clk_cfg = LEDC_AUTO_CLK;
+    break;
+  }
+  timer_config.clk_cfg = clk_cfg;
 
   esp_err_t ret = ledc_timer_config(&timer_config);
   if (ret != ESP_OK) {
@@ -948,13 +968,16 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency
     return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
+  statistics_.last_activity_timestamp = esp_timer_get_time();
+
   ESP_LOGD(TAG, "Timer %d configured: freq=%lu Hz, resolution=%d bits", timer_id, frequency_hz,
            resolution_bits);
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id, const hf_pwm_channel_config_t &config,
-                                          uint8_t timer_id) noexcept {
+hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
+                                              const hf_pwm_channel_config_t &config,
+                                              uint8_t timer_id) noexcept {
   ledc_channel_config_t channel_config = {};
   channel_config.speed_mode = LEDC_LOW_SPEED_MODE;
   channel_config.channel = static_cast<ledc_channel_t>(channel_id);
@@ -989,7 +1012,8 @@ hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id, const 
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-hf_pwm_err_t EspPwm::UpdatePlatformDuty(hf_channel_id_t channel_id, uint32_t raw_duty_value) noexcept {
+hf_pwm_err_t EspPwm::UpdatePlatformDuty(hf_channel_id_t channel_id,
+                                        uint32_t raw_duty_value) noexcept {
   esp_err_t ret =
       ledc_set_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), raw_duty_value);
   if (ret != ESP_OK) {
@@ -1003,6 +1027,8 @@ hf_pwm_err_t EspPwm::UpdatePlatformDuty(hf_channel_id_t channel_id, uint32_t raw
     return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
+  statistics_.last_activity_timestamp = esp_timer_get_time();
+
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
@@ -1011,6 +1037,7 @@ void EspPwm::SetChannelError(hf_channel_id_t channel_id, hf_pwm_err_t error) noe
     channels_[channel_id].last_error = error;
   }
   last_global_error_ = error;
+  statistics_.error_count++;
 }
 
 void IRAM_ATTR EspPwm::InterruptHandler(hf_channel_id_t channel_id, void *user_data) noexcept {
@@ -1023,10 +1050,9 @@ void IRAM_ATTR EspPwm::InterruptHandler(hf_channel_id_t channel_id, void *user_d
 void EspPwm::HandleFadeComplete(hf_channel_id_t channel_id) noexcept {
   if (IsValidChannelId(channel_id)) {
     channels_[channel_id].fade_active = false;
-    
-    // Update statistics
-    statistics_.total_fades_completed++;
-    statistics_.last_operation_time_us = esp_timer_get_time();
+
+    statistics_.fade_operations_count++;
+    statistics_.last_activity_timestamp = esp_timer_get_time();
 
     // Call period callback if set
     if (period_callback_) {
@@ -1049,18 +1075,18 @@ hf_pwm_err_t EspPwm::SetClockSource(hf_pwm_clock_source_t clock_source) noexcept
   // Convert to ESP-IDF clock source
   ledc_clk_cfg_t esp_clock_source;
   switch (clock_source) {
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-      esp_clock_source = LEDC_USE_APB_CLK;
-      break;
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
-      esp_clock_source = LEDC_USE_XTAL_CLK;
-      break;
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
-      esp_clock_source = LEDC_USE_RC_FAST_CLK;
-      break;
-    default:
-      esp_clock_source = LEDC_AUTO_CLK;
-      break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
+    esp_clock_source = LEDC_USE_APB_CLK;
+    break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
+    esp_clock_source = LEDC_USE_XTAL_CLK;
+    break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
+    esp_clock_source = LEDC_USE_RC_FAST_CLK;
+    break;
+  default:
+    esp_clock_source = LEDC_AUTO_CLK;
+    break;
   }
 
   // Update all active timers with new clock source
@@ -1069,7 +1095,8 @@ hf_pwm_err_t EspPwm::SetClockSource(hf_pwm_clock_source_t clock_source) noexcept
       ledc_timer_config_t timer_config = {};
       timer_config.speed_mode = LEDC_LOW_SPEED_MODE;
       timer_config.timer_num = static_cast<ledc_timer_t>(timer_id);
-      timer_config.duty_resolution = static_cast<ledc_timer_bit_t>(timers_[timer_id].resolution_bits);
+      timer_config.duty_resolution =
+          static_cast<ledc_timer_bit_t>(timers_[timer_id].resolution_bits);
       timer_config.freq_hz = timers_[timer_id].frequency_hz;
       timer_config.clk_cfg = esp_clock_source;
 
@@ -1082,6 +1109,7 @@ hf_pwm_err_t EspPwm::SetClockSource(hf_pwm_clock_source_t clock_source) noexcept
   }
 
   clock_source_ = clock_source;
+  statistics_.last_activity_timestamp = esp_timer_get_time();
   ESP_LOGI(TAG, "Clock source updated to %d", static_cast<int>(clock_source));
   return hf_pwm_err_t::PWM_SUCCESS;
 }
@@ -1107,58 +1135,59 @@ hf_pwm_err_t EspPwm::InitializeFadeFunctionality() noexcept {
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-uint32_t EspPwm::CalculateClockDivider(uint32_t frequency_hz, uint8_t resolution_bits) const noexcept {
+uint32_t EspPwm::CalculateClockDivider(uint32_t frequency_hz,
+                                       uint8_t resolution_bits) const noexcept {
   if (frequency_hz == 0 || resolution_bits == 0) {
     return 1;
   }
 
   // Calculate maximum duty value for resolution
   uint32_t max_duty = (1U << resolution_bits) - 1;
-  
+
   // Calculate required period
   uint32_t period = base_clock_hz_ / frequency_hz;
-  
+
   // Calculate clock divider
   uint32_t clock_divider = period / max_duty;
-  
+
   // Ensure minimum divider value
   if (clock_divider < 1) {
     clock_divider = 1;
   }
-  
+
   // Ensure maximum divider value (ESP32C6 limit)
   if (clock_divider > 0x3FFFF) {
     clock_divider = 0x3FFFF;
   }
-  
+
   return clock_divider;
 }
 
 hf_pwm_err_t EspPwm::InitializeTimers() noexcept {
   ESP_LOGD(TAG, "Initializing PWM timers");
-  
+
   // Initialize timer states
   for (auto &timer : timers_) {
     timer = TimerState{};
   }
-  
+
   ESP_LOGD(TAG, "PWM timers initialized");
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
 hf_pwm_err_t EspPwm::InitializeChannels() noexcept {
   ESP_LOGD(TAG, "Initializing PWM channels");
-  
+
   // Initialize channel states
   for (auto &channel : channels_) {
     channel = ChannelState{};
   }
-  
+
   // Initialize complementary pairs
   for (auto &pair : complementary_pairs_) {
     pair = ComplementaryPair{};
   }
-  
+
   ESP_LOGD(TAG, "PWM channels initialized");
   return hf_pwm_err_t::PWM_SUCCESS;
 }
@@ -1167,15 +1196,15 @@ hf_pwm_err_t EspPwm::EnableFade() noexcept {
   if (fade_functionality_installed_) {
     return hf_pwm_err_t::PWM_SUCCESS;
   }
-  
+
   ESP_LOGD(TAG, "Enabling LEDC fade functionality");
-  
+
   esp_err_t result = ledc_fade_func_install(0);
   if (result != ESP_OK) {
     ESP_LOGE(TAG, "Failed to install LEDC fade function: %s", esp_err_to_name(result));
     return hf_pwm_err_t::PWM_ERR_FAILURE;
   }
-  
+
   fade_functionality_installed_ = true;
   ESP_LOGD(TAG, "LEDC fade functionality enabled");
   return hf_pwm_err_t::PWM_SUCCESS;
