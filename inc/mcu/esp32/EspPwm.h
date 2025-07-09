@@ -25,21 +25,6 @@
 #include "McuTypes.h"
 #include <array>
 
-// Type aliases to centralized types in McuTypes.h (no duplicate type declarations)
-using PwmChannelNative = hf_pwm_channel_native_t;
-using PwmTimerNative = hf_pwm_timer_native_t;
-using PwmModeNative = hf_pwm_mode_native_t;
-using PwmClockSource = hf_pwm_clock_source_t;
-using PwmResolution = hf_pwm_resolution_t;
-using PwmFadeMode = hf_pwm_fade_mode_t;
-using PwmIntrType = hf_pwm_intr_type_t;
-using PwmTimingConfig = hf_pwm_timing_config_t;
-using PwmChannelConfigNative = hf_pwm_channel_config_native_t;
-using PwmTimerConfigNative = hf_pwm_timer_config_native_t;
-using PwmFadeConfig = hf_pwm_fade_config_t;
-using PwmCapabilities = hf_pwm_capabilities_t;
-using PwmStatistics = hf_pwm_statistics_t;
-
 /**
  * @class McuPwm
  * @brief PWM implementation for microcontrollers with integrated PWM peripherals.
@@ -101,56 +86,56 @@ public:
   // LIFECYCLE (BasePwm Interface)
   //==============================================================================
 
-  HfPwmErr Initialize() noexcept override;
-  HfPwmErr Deinitialize() noexcept override;
+  hf_pwm_err_t Initialize() noexcept override;
+  hf_pwm_err_t Deinitialize() noexcept override;
   bool IsInitialized() const noexcept override;
 
   //==============================================================================
   // CHANNEL MANAGEMENT (BasePwm Interface)
   //==============================================================================
 
-  HfPwmErr ConfigureChannel(HfChannelId channel_id,
-                            const PwmChannelConfig &config) noexcept override;
-  HfPwmErr EnableChannel(HfChannelId channel_id) noexcept override;
-  HfPwmErr DisableChannel(HfChannelId channel_id) noexcept override;
-  bool IsChannelEnabled(HfChannelId channel_id) const noexcept override;
+  hf_pwm_err_t ConfigureChannel(hf_channel_id_t channel_id,
+                            const hf_pwm_channel_config_t &config) noexcept override;
+  hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept override;
+  hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept override;
+  bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept override;
 
   //==============================================================================
   // PWM CONTROL (BasePwm Interface)
   //==============================================================================
 
-  HfPwmErr SetDutyCycle(HfChannelId channel_id, float duty_cycle) noexcept override;
-  HfPwmErr SetDutyCycleRaw(HfChannelId channel_id, uint32_t raw_value) noexcept override;
-  HfPwmErr SetFrequency(HfChannelId channel_id, HfFrequencyHz frequency_hz) noexcept override;
-  HfPwmErr SetPhaseShift(HfChannelId channel_id, float phase_shift_degrees) noexcept override;
+  hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) noexcept override;
+  hf_pwm_err_t SetDutyCycleRaw(hf_channel_id_t channel_id, uint32_t raw_value) noexcept override;
+  hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz) noexcept override;
+  hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id, float phase_shift_degrees) noexcept override;
 
   //==============================================================================
   // ADVANCED FEATURES (BasePwm Interface)
   //==============================================================================
 
-  HfPwmErr StartAll() noexcept override;
-  HfPwmErr StopAll() noexcept override;
-  HfPwmErr UpdateAll() noexcept override;
-  HfPwmErr SetComplementaryOutput(HfChannelId primary_channel, HfChannelId complementary_channel,
+  hf_pwm_err_t StartAll() noexcept override;
+  hf_pwm_err_t StopAll() noexcept override;
+  hf_pwm_err_t UpdateAll() noexcept override;
+  hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel, hf_channel_id_t complementary_channel,
                                   uint32_t deadtime_ns) noexcept override;
 
   //==============================================================================
   // STATUS AND INFORMATION (BasePwm Interface)
   //==============================================================================
 
-  float GetDutyCycle(HfChannelId channel_id) const noexcept override;
-  HfFrequencyHz GetFrequency(HfChannelId channel_id) const noexcept override;
-  HfPwmErr GetChannelStatus(HfChannelId channel_id,
-                            PwmChannelStatus &status) const noexcept override;
-  HfPwmErr GetCapabilities(PwmCapabilities &capabilities) const noexcept override;
-  HfPwmErr GetLastError(HfChannelId channel_id) const noexcept override;
+  float GetDutyCycle(hf_channel_id_t channel_id) const noexcept override;
+  hf_frequency_hz_t GetFrequency(hf_channel_id_t channel_id) const noexcept override;
+  hf_pwm_err_t GetChannelStatus(hf_channel_id_t channel_id,
+                            hf_pwm_channel_status_t &status) const noexcept override;
+  hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t &capabilities) const noexcept override;
+  hf_pwm_err_t GetLastError(hf_channel_id_t channel_id) const noexcept override;
 
   //==============================================================================
   // CALLBACKS (BasePwm Interface)
   //==============================================================================
 
-  void SetPeriodCallback(PwmPeriodCallback callback, void *user_data = nullptr) noexcept override;
-  void SetFaultCallback(PwmFaultCallback callback, void *user_data = nullptr) noexcept override;
+  void SetPeriodCallback(hf_pwm_period_callback_t callback, void *user_data = nullptr) noexcept override;
+  void SetFaultCallback(hf_pwm_fault_callback_t callback, void *user_data = nullptr) noexcept override;
 
   //==============================================================================
   // ESP32C6-SPECIFIC FEATURES
@@ -163,7 +148,7 @@ public:
    * @param fade_time_ms Fade duration in milliseconds
    * @return PWM_SUCCESS on success, error code on failure
    */
-  HfPwmErr SetHardwareFade(HfChannelId channel_id, float target_duty_cycle,
+  hf_pwm_err_t SetHardwareFade(hf_channel_id_t channel_id, float target_duty_cycle,
                            uint32_t fade_time_ms) noexcept;
 
   /**
@@ -171,14 +156,14 @@ public:
    * @param channel_id Channel identifier
    * @return PWM_SUCCESS on success, error code on failure
    */
-  HfPwmErr StopHardwareFade(HfChannelId channel_id) noexcept;
+  hf_pwm_err_t StopHardwareFade(hf_channel_id_t channel_id) noexcept;
 
   /**
    * @brief Check if hardware fade is active on a channel
    * @param channel_id Channel identifier
    * @return true if fade is active, false otherwise
    */
-  bool IsFadeActive(HfChannelId channel_id) const noexcept;
+  bool IsFadeActive(hf_channel_id_t channel_id) const noexcept;
 
   /**
    * @brief Set idle output level for a channel
@@ -186,14 +171,14 @@ public:
    * @param idle_level Idle level (0 or 1)
    * @return PWM_SUCCESS on success, error code on failure
    */
-  HfPwmErr SetIdleLevel(HfChannelId channel_id, uint8_t idle_level) noexcept;
+  hf_pwm_err_t SetIdleLevel(hf_channel_id_t channel_id, uint8_t idle_level) noexcept;
 
   /**
    * @brief Get current timer assignment for a channel
    * @param channel_id Channel identifier
    * @return Timer number (0-3), or -1 if channel not configured
    */
-  int8_t GetTimerAssignment(HfChannelId channel_id) const noexcept;
+  int8_t GetTimerAssignment(hf_channel_id_t channel_id) const noexcept;
 
   /**
    * @brief Force a specific timer for a channel (advanced usage)
@@ -202,7 +187,7 @@ public:
    * @return PWM_SUCCESS on success, error code on failure
    * @note Use with caution - automatic timer allocation is usually better
    */
-  HfPwmErr ForceTimerAssignment(HfChannelId channel_id, uint8_t timer_id) noexcept;
+  hf_pwm_err_t ForceTimerAssignment(hf_channel_id_t channel_id, uint8_t timer_id) noexcept;
 
 private:
   //==============================================================================
@@ -215,15 +200,15 @@ private:
   struct ChannelState {
     bool configured;         ///< Channel is configured
     bool enabled;            ///< Channel is enabled
-    PwmChannelConfig config; ///< Channel configuration
+    hf_pwm_channel_config_t config; ///< Channel configuration
     uint8_t assigned_timer;  ///< Assigned timer (0-3)
     uint32_t raw_duty_value; ///< Current raw duty value
-    HfPwmErr last_error;     ///< Last error for this channel
+    hf_pwm_err_t last_error;     ///< Last error for this channel
     bool fade_active;        ///< Hardware fade is active
 
     ChannelState() noexcept
         : configured(false), enabled(false), assigned_timer(0xFF), raw_duty_value(0),
-          last_error(HfPwmErr::PWM_SUCCESS), fade_active(false) {}
+          last_error(hf_pwm_err_t::PWM_SUCCESS), fade_active(false) {}
   };
 
   /**
@@ -260,7 +245,7 @@ private:
    * @param channel_id Channel to validate
    * @return true if valid, false otherwise
    */
-  bool IsValidChannelId(HfChannelId channel_id) const noexcept;
+  bool IsValidChannelId(hf_channel_id_t channel_id) const noexcept;
 
   /**
    * @brief Find or allocate a timer for the given frequency and resolution
@@ -283,7 +268,7 @@ private:
    * @param resolution_bits Timer resolution
    * @return PWM_SUCCESS on success, error code on failure
    */
-  HfPwmErr ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency_hz,
+  hf_pwm_err_t ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency_hz,
                                   uint8_t resolution_bits) noexcept;
 
   /**
@@ -293,7 +278,7 @@ private:
    * @param timer_id Assigned timer
    * @return PWM_SUCCESS on success, error code on failure
    */
-  HfPwmErr ConfigurePlatformChannel(HfChannelId channel_id, const PwmChannelConfig &config,
+  hf_pwm_err_t ConfigurePlatformChannel(hf_channel_id_t channel_id, const hf_pwm_channel_config_t &config,
                                     uint8_t timer_id) noexcept;
 
   /**
@@ -302,26 +287,26 @@ private:
    * @param raw_duty_value Raw duty value
    * @return PWM_SUCCESS on success, error code on failure
    */
-  HfPwmErr UpdatePlatformDuty(HfChannelId channel_id, uint32_t raw_duty_value) noexcept;
+  hf_pwm_err_t UpdatePlatformDuty(hf_channel_id_t channel_id, uint32_t raw_duty_value) noexcept;
 
   /**
    * @brief Set error for a channel
    * @param channel_id Channel identifier
    * @param error Error to set
    */
-  void SetChannelError(HfChannelId channel_id, HfPwmErr error) noexcept;
+  void SetChannelError(hf_channel_id_t channel_id, hf_pwm_err_t error) noexcept;
 
   /**
    * @brief Platform-specific interrupt handler
    * @param channel_id Channel that generated interrupt
    */
-  static void IRAM_ATTR InterruptHandler(HfChannelId channel_id, void *user_data) noexcept;
+  static void IRAM_ATTR InterruptHandler(hf_channel_id_t channel_id, void *user_data) noexcept;
 
   /**
    * @brief Handle fade complete interrupt
    * @param channel_id Channel that completed fade
    */
-  void HandleFadeComplete(HfChannelId channel_id) noexcept;
+  void HandleFadeComplete(hf_channel_id_t channel_id) noexcept;
 
   //==============================================================================
   // MEMBER VARIABLES
@@ -335,10 +320,10 @@ private:
   std::array<TimerState, MAX_TIMERS> timers_;                           ///< Timer states
   std::array<ComplementaryPair, MAX_CHANNELS / 2> complementary_pairs_; ///< Complementary pairs
 
-  PwmPeriodCallback period_callback_; ///< Period complete callback
+  hf_pwm_period_callback_t period_callback_; ///< Period complete callback
   void *period_callback_user_data_;   ///< Period callback user data
-  PwmFaultCallback fault_callback_;   ///< Fault callback
+  hf_pwm_fault_callback_t fault_callback_;   ///< Fault callback
   void *fault_callback_user_data_;    ///< Fault callback user data
 
-  HfPwmErr last_global_error_; ///< Last global error
+  hf_pwm_err_t last_global_error_; ///< Last global error
 };
