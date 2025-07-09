@@ -49,21 +49,14 @@
 #include "EspNvs.h"
 #include <cstring>
 
-// ESP32-specific includes via centralized McuSelect.h (included in EspNvs.h)
+
 #ifdef HF_MCU_FAMILY_ESP32
+// ESP32-specific includes via centralized McuSelect.h (included in EspNvs.h)
 #include "esp_log.h"
 #include "esp_err.h"
 #include "esp_timer.h"
 #include "nvs_flash.h"
 #include "nvs_sec_provider.h"
-#else
-// Provide logging stubs for non-ESP32 platforms
-#define ESP_LOGE(tag, format, ...)
-#define ESP_LOGW(tag, format, ...)
-#define ESP_LOGI(tag, format, ...)
-#define ESP_LOGD(tag, format, ...)
-#define ESP_LOGV(tag, format, ...)
-#endif
 
 static const char *TAG = "EspNvs";
 
@@ -76,47 +69,6 @@ static constexpr size_t NVS_MAX_KEY_LENGTH_ESP32 = 15;             ///< ESP32 NV
 static constexpr size_t NVS_MAX_VALUE_SIZE_ESP32 = 4000;           ///< ESP32 NVS value size limit (conservative)
 static constexpr size_t NVS_MAX_NAMESPACE_LENGTH_ESP32 = 15;       ///< ESP32 NVS namespace length limit
 
-#ifdef HF_MCU_FAMILY_ESP32
-// No need for stubs - use real ESP32 API
-#else
-// Provide stub definitions for non-ESP32 platforms for testing/compatibility
-#define ESP_OK 0
-#define ESP_ERR_NVS_NOT_FOUND 0x1101
-#define ESP_ERR_NVS_INVALID_HANDLE 0x1102
-#define ESP_ERR_NVS_READ_ONLY 0x1103
-#define ESP_ERR_NVS_NOT_ENOUGH_SPACE 0x1104
-#define ESP_ERR_NVS_XTS_ENCR_FAILED 0x1105
-#define ESP_ERR_NVS_XTS_DECR_FAILED 0x1106
-#define ESP_ERR_NVS_XTS_CFG_FAILED 0x1107
-#define ESP_ERR_NVS_XTS_CFG_NOT_FOUND 0x1108
-#define ESP_ERR_NVS_ENCR_NOT_SUPPORTED 0x1109
-#define ESP_ERR_NVS_KEYS_NOT_INITIALIZED 0x110A
-#define ESP_ERR_NVS_CORRUPT_KEY_PART 0x110B
-#define ESP_ERR_NVS_WRONG_ENCRYPTION 0x110C
-#define ESP_ERR_NVS_CONTENT_DIFFERS 0x110D
-#define ESP_ERR_NVS_NEW_VERSION_FOUND 0x110E
-#define ESP_ERR_NVS_NO_FREE_PAGES 0x110F
-#define ESP_ERR_INVALID_ARG 0x0102
-#define ESP_ERR_INVALID_SIZE 0x0104
-#define NVS_READWRITE 1
-typedef uint32_t nvs_handle_t;
-typedef int nvs_open_mode_t;
-
-// Stub functions for non-ESP32 platforms
-static inline int nvs_flash_init() { return ESP_OK; }
-static inline int nvs_flash_erase() { return ESP_OK; }
-static inline int nvs_open(const char* ns, nvs_open_mode_t mode, nvs_handle_t* handle) { *handle = 1; return ESP_OK; }
-static inline void nvs_close(nvs_handle_t handle) {}
-static inline int nvs_set_u32(nvs_handle_t handle, const char* key, uint32_t value) { return ESP_OK; }
-static inline int nvs_get_u32(nvs_handle_t handle, const char* key, uint32_t* value) { *value = 0; return ESP_OK; }
-static inline int nvs_set_str(nvs_handle_t handle, const char* key, const char* value) { return ESP_OK; }
-static inline int nvs_get_str(nvs_handle_t handle, const char* key, char* buffer, size_t* size) { buffer[0] = '\0'; return ESP_OK; }
-static inline int nvs_set_blob(nvs_handle_t handle, const char* key, const void* data, size_t size) { return ESP_OK; }
-static inline int nvs_get_blob(nvs_handle_t handle, const char* key, void* buffer, size_t* size) { return ESP_OK; }
-static inline int nvs_erase_key(nvs_handle_t handle, const char* key) { return ESP_OK; }
-static inline int nvs_commit(nvs_handle_t handle) { return ESP_OK; }
-#endif
-
 static const char *TAG = "EspNvs";
 
 //==============================================================================
@@ -128,8 +80,7 @@ static const char *TAG = "EspNvs";
 //==============================================================================
 
 EspNvs::EspNvs(const char *namespace_name) noexcept
-    : BaseNvsStorage(namespace_name), nvs_handle_(nullptr), last_error_code_(0),
-      operation_count_(0), error_count_(0), last_stats_update_(0) {
+    : BaseNvsStorage(namespace_name), nvs_handle_(nullptr), last_error_code_(0) {
   
   // **LAZY INITIALIZATION** - Store configuration but do NOT initialize hardware
   ESP_LOGD(TAG, "Creating EspNvs for namespace '%s' - LAZY INIT", 
@@ -150,10 +101,9 @@ EspNvs::EspNvs(const char *namespace_name) noexcept
     return;
   }
   
-  // Initialize statistics
-  last_stats_update_ = 0;  // Will be set during first operation
-  operation_count_ = 0;
-  error_count_ = 0;
+  // Initialize statistics and diagnostics structures
+  statistics_ = hf_nvs_statistics_t{};
+  diagnostics_ = hf_nvs_diagnostics_t{};
   last_error_code_ = 0;
   
   ESP_LOGD(TAG, "EspNvs instance created for namespace '%s' - awaiting first use", 
@@ -164,10 +114,10 @@ EspNvs::~EspNvs() noexcept {
   ESP_LOGI(TAG, "Destroying EspNvs instance for namespace '%s'", namespace_name_);
   
   // Log final statistics before cleanup
-  if (operation_count_ > 0) {
-    ESP_LOGI(TAG, "Final stats - Operations: %llu, Errors: %llu, Success rate: %.1f%%",
-             operation_count_, error_count_, 
-             operation_count_ > 0 ? (100.0 * (operation_count_ - error_count_) / operation_count_) : 0.0);
+  if (statistics_.total_operations > 0) {
+    ESP_LOGI(TAG, "Final stats - Operations: %lu, Errors: %lu, Success rate: %.1f%%",
+             statistics_.total_operations, statistics_.total_errors, 
+             statistics_.total_operations > 0 ? (100.0 * (statistics_.total_operations - statistics_.total_errors) / statistics_.total_operations) : 0.0);
   }
   
   // Ensure clean shutdown
@@ -195,7 +145,6 @@ hf_nvs_err_t EspNvs::Initialize() noexcept {
 
   ESP_LOGI(TAG, "Initializing NVS for namespace '%s' with ESP-IDF v5.5+ features", GetNamespace());
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Step 1: Initialize NVS flash partition with modern ESP-IDF v5.5+ approach
   esp_err_t err = nvs_flash_init();
   if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
@@ -240,20 +189,22 @@ hf_nvs_err_t EspNvs::Initialize() noexcept {
            GetNamespace(), static_cast<uint32_t>(handle));
   
   // Step 5: Initialize statistics tracking
-#ifdef HF_MCU_FAMILY_ESP32
-  last_stats_update_ = esp_timer_get_time();
-#else
-  last_stats_update_ = 0;
-#endif
-  operation_count_ = 0;
-  error_count_ = 0;
-  last_error_code_ = ESP_OK;
+  statistics_.last_operation_time_us = esp_timer_get_time();
+  statistics_.total_operations = 0;
+  statistics_.total_errors = 0;
+  statistics_.total_reads = 0;
+  statistics_.total_writes = 0;
+  statistics_.total_commits = 0;
+  statistics_.total_erases = 0;
+  statistics_.last_error = hf_nvs_err_t::NVS_SUCCESS;
   
-#else
-  // Generic implementation for non-ESP32 platforms
-  nvs_handle_ = reinterpret_cast<void*>(0x12345678); // Dummy handle for testing
-  ESP_LOGI(TAG, "NVS namespace '%s' initialized (generic platform)", GetNamespace());
-#endif
+  // Initialize diagnostics
+  diagnostics_.last_error = hf_nvs_err_t::NVS_SUCCESS;
+  diagnostics_.consecutive_errors = 0;
+  diagnostics_.system_uptime_ms = 0;
+  diagnostics_.storage_healthy = true;
+  
+  last_error_code_ = ESP_OK;
 
   SetInitialized(true);
   ESP_LOGI(TAG, "EspNvs initialization completed successfully for namespace '%s'", GetNamespace());
@@ -265,12 +216,10 @@ hf_nvs_err_t EspNvs::Deinitialize() noexcept {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   if (nvs_handle_) {
     nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
     nvs_close(handle);
   }
-#endif
 
   nvs_handle_ = nullptr;
   SetInitialized(false);
@@ -278,12 +227,11 @@ hf_nvs_err_t EspNvs::Deinitialize() noexcept {
 }
 
 hf_nvs_err_t EspNvs::SetU32(const char *key, uint32_t value) noexcept {
-  // Validate state and parameters
-  if (!IsInitialized()) {
-    ESP_LOGE(TAG, "SetU32 failed: NVS not initialized");
-    UpdateStatistics(true);
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!IsValidKey(key)) {
     ESP_LOGE(TAG, "SetU32 failed: Invalid key");
@@ -293,7 +241,6 @@ hf_nvs_err_t EspNvs::SetU32(const char *key, uint32_t value) noexcept {
 
   ESP_LOGD(TAG, "Setting U32 key '%s' = %u", key, value);
 
-#ifdef HF_MCU_FAMILY_ESP32
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   
   // Set the value with error handling
@@ -315,63 +262,59 @@ hf_nvs_err_t EspNvs::SetU32(const char *key, uint32_t value) noexcept {
   }
   
   ESP_LOGV(TAG, "Successfully set and committed U32 key '%s' = %u", key, value);
-#else
-  // Generic implementation for testing
-  ESP_LOGI(TAG, "SetU32 (generic): key='%s', value=%u", key, value);
-#endif
 
   UpdateStatistics(false);  // Success
   return hf_nvs_err_t::NVS_SUCCESS;
 }
 
 hf_nvs_err_t EspNvs::GetU32(const char *key, uint32_t &value) noexcept {
-  if (!IsInitialized()) {
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!key) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_get_u32(handle, key, &value);
+  UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
-#else
-  value = 0; // Dummy implementation
-  return hf_nvs_err_t::NVS_SUCCESS;
-#endif
 }
 
 hf_nvs_err_t EspNvs::SetString(const char *key, const char *value) noexcept {
-  if (!IsInitialized()) {
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!key || !value) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_set_str(handle, key, value);
   if (err != ESP_OK) {
+    UpdateStatistics(true);
     return ConvertMcuError(err);
   }
   
   // Auto-commit for consistency
   err = nvs_commit(handle);
+  UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
-#else
-  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
-#endif
 }
 
 hf_nvs_err_t EspNvs::GetString(const char *key, char *buffer, size_t buffer_size,
                                   size_t *actual_size) noexcept {
-  if (!IsInitialized()) {
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!key || !buffer) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
@@ -381,7 +324,6 @@ hf_nvs_err_t EspNvs::GetString(const char *key, char *buffer, size_t buffer_size
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   size_t required_size = buffer_size;
   esp_err_t err = nvs_get_str(handle, key, buffer, &required_size);
@@ -390,45 +332,41 @@ hf_nvs_err_t EspNvs::GetString(const char *key, char *buffer, size_t buffer_size
     *actual_size = required_size;
   }
   
+  UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
-#else
-  if (actual_size) {
-    *actual_size = 0;
-  }
-  buffer[0] = '\0';
-  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
-#endif
 }
 
 hf_nvs_err_t EspNvs::SetBlob(const char *key, const void *data, size_t data_size) noexcept {
-  if (!IsInitialized()) {
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!key || !data) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_set_blob(handle, key, data, data_size);
   if (err != ESP_OK) {
+    UpdateStatistics(true);
     return ConvertMcuError(err);
   }
   
   // Auto-commit for consistency
   err = nvs_commit(handle);
+  UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
-#else
-  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
-#endif
 }
 
 hf_nvs_err_t EspNvs::GetBlob(const char *key, void *buffer, size_t buffer_size,
                                 size_t *actual_size) noexcept {
-  if (!IsInitialized()) {
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!key || !buffer) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
@@ -438,7 +376,6 @@ hf_nvs_err_t EspNvs::GetBlob(const char *key, void *buffer, size_t buffer_size,
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   size_t required_size = buffer_size;
   esp_err_t err = nvs_get_blob(handle, key, buffer, &required_size);
@@ -447,139 +384,102 @@ hf_nvs_err_t EspNvs::GetBlob(const char *key, void *buffer, size_t buffer_size,
     *actual_size = required_size;
   }
   
+  UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
-#else
-  if (actual_size) {
-    *actual_size = 0;
-  }
-  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
-#endif
 }
 
 hf_nvs_err_t EspNvs::EraseKey(const char *key) noexcept {
-  if (!IsInitialized()) {
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!key) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_erase_key(handle, key);
   if (err != ESP_OK) {
+    UpdateStatistics(true);
     return ConvertMcuError(err);
   }
   
   // Auto-commit for consistency
   err = nvs_commit(handle);
+  UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
-#else
-  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
-#endif
 }
 
 hf_nvs_err_t EspNvs::Commit() noexcept {
-  if (!IsInitialized()) {
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_commit(handle);
+  UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
-#else
-  return hf_nvs_err_t::NVS_SUCCESS; // Dummy implementation
-#endif
 }
 
 bool EspNvs::KeyExists(const char *key) noexcept {
-  if (!IsInitialized()) {
-    ESP_LOGW(TAG, "KeyExists failed: NVS not initialized");
-    return false;
-  }
-  
-  if (!IsValidKey(key)) {
-    ESP_LOGW(TAG, "KeyExists failed: Invalid key");
+  if (!EnsureInitialized()) {
     return false;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  if (!key) {
+    return false;
+  }
+
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
-  
-  // Try to get the size of any type of value for this key
-  // This is the most reliable way to check existence across all data types
-  size_t required_size = 0;
-  esp_err_t err = nvs_get_blob(handle, key, nullptr, &required_size);
-  
-  bool exists = (err == ESP_OK || err == ESP_ERR_INVALID_SIZE);
-  
-  // If blob check fails, try other types to be thorough
-  if (!exists) {
-    uint32_t dummy_u32;
-    exists = (nvs_get_u32(handle, key, &dummy_u32) == ESP_OK);
-  }
-  
-  if (!exists) {
-    size_t dummy_size = 0;
-    exists = (nvs_get_str(handle, key, nullptr, &dummy_size) == ESP_OK || 
-              nvs_get_str(handle, key, nullptr, &dummy_size) == ESP_ERR_INVALID_SIZE);
-  }
-  
-  ESP_LOGV(TAG, "Key '%s' exists: %s", key, exists ? "yes" : "no");
-  return exists;
-#else
-  // Generic implementation - assume key exists for testing
-  ESP_LOGD(TAG, "KeyExists (generic): key='%s' -> true", key);
-  return true;
-#endif
+  size_t size = 0;
+  esp_err_t err = nvs_get_str(handle, key, nullptr, &size);
+  UpdateStatistics(err != ESP_OK);
+  return (err == ESP_OK || err == ESP_ERR_NVS_INVALID_LENGTH);
 }
 
 hf_nvs_err_t EspNvs::GetSize(const char *key, size_t &size) noexcept {
-  if (!IsInitialized()) {
+  if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   
   if (!key) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
-  size_t required_size;
-  esp_err_t err = nvs_get_blob(handle, key, nullptr, &required_size);
-  
-  if (err == ESP_OK || err == ESP_ERR_INVALID_SIZE) {
-    size = required_size;
-    return hf_nvs_err_t::NVS_SUCCESS;
-  }
-  
+  esp_err_t err = nvs_get_str(handle, key, nullptr, &size);
+  UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
-#else
-  size = 0; // Dummy implementation
-  return hf_nvs_err_t::NVS_SUCCESS;
-#endif
 }
 
 const char *EspNvs::GetDescription() const noexcept {
-  return "MCU-integrated NVS storage (ESP32 NVS API)";
+  return "ESP32 NVS Storage Implementation";
 }
 
 size_t EspNvs::GetMaxKeyLength() const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
-  return 15; // ESP32 NVS key length limit
-#else
-  return 32; // Generic implementation
-#endif
+  return HF_NVS_MAX_KEY_LENGTH;
 }
 
 size_t EspNvs::GetMaxValueSize() const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
-  return 4000; // ESP32 NVS value size limit (conservative)
-#else
-  return 1024; // Generic implementation
-#endif
+  return HF_NVS_MAX_VALUE_SIZE;
+}
+
+hf_nvs_statistics_t EspNvs::GetStatistics() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  return statistics_;
+}
+
+hf_nvs_diagnostics_t EspNvs::GetDiagnostics() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  return diagnostics_;
 }
 
 //==============================================================================
@@ -587,7 +487,6 @@ size_t EspNvs::GetMaxValueSize() const noexcept {
 //==============================================================================
 
 hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   // Comprehensive ESP32-C6 NVS error code mapping for ESP-IDF v5.5+
   switch (mcu_error) {
     case ESP_OK:
@@ -638,10 +537,6 @@ hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
       ESP_LOGW(TAG, "Unmapped ESP32 error code: 0x%X (%d)", mcu_error, mcu_error);
       return hf_nvs_err_t::NVS_ERR_FAILURE;
   }
-#else
-  // Generic implementation for non-ESP32 platforms
-  return (mcu_error == 0) ? hf_nvs_err_t::NVS_SUCCESS : hf_nvs_err_t::NVS_ERR_FAILURE;
-#endif
 }
 
 //==============================================================================
@@ -649,26 +544,32 @@ hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
 //==============================================================================
 
 void EspNvs::UpdateStatistics(bool error_occurred) noexcept {
-#ifdef HF_THREAD_SAFE
-  RtosUniqueLock<RtosMutex> lock(stats_mutex_);
-#endif
+  // Increment total operations
+  statistics_.total_operations++;
   
-  operation_count_++;
+  // Update last operation time
+  statistics_.last_operation_time_us = esp_timer_get_time();
+  
+  // Update error count and diagnostics if an error occurred
   if (error_occurred) {
-    error_count_++;
+    statistics_.total_errors++;
+    statistics_.last_error = hf_nvs_err_t::NVS_ERR_FAILURE;
+    
+    // Update diagnostics
+    diagnostics_.last_error = hf_nvs_err_t::NVS_ERR_FAILURE;
+    diagnostics_.consecutive_errors++;
+    diagnostics_.storage_healthy = false;
+  } else {
+    statistics_.last_error = hf_nvs_err_t::NVS_SUCCESS;
+    
+    // Update diagnostics
+    diagnostics_.last_error = hf_nvs_err_t::NVS_SUCCESS;
+    diagnostics_.consecutive_errors = 0;
+    diagnostics_.storage_healthy = true;
   }
   
-#ifdef HF_MCU_FAMILY_ESP32
-  uint64_t current_time = esp_timer_get_time();
-  
-  // Log statistics periodically for performance monitoring
-  if (current_time - last_stats_update_ > (NVS_STATS_UPDATE_INTERVAL_MS * 1000)) {
-    ESP_LOGI(TAG, "NVS Stats - Operations: %llu, Errors: %llu, Success rate: %.1f%%",
-             operation_count_, error_count_,
-             operation_count_ > 0 ? (100.0 * (operation_count_ - error_count_) / operation_count_) : 100.0);
-    last_stats_update_ = current_time;
-  }
-#endif
+  // Update system uptime
+  diagnostics_.system_uptime_ms = static_cast<uint32_t>(esp_timer_get_time() / 1000);
 }
 
 bool EspNvs::IsValidKey(const char *key) const noexcept {
@@ -703,3 +604,5 @@ bool EspNvs::IsValidKey(const char *key) const noexcept {
   
   return true;
 }
+
+#endif // HF_MCU_FAMILY_ESP32

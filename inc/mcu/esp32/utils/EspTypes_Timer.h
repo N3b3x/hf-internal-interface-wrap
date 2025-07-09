@@ -1,16 +1,29 @@
+/**
+ * @file EspTypes_Timer.h
+ * @brief ESP32 timer type definitions for hardware abstraction.
+ *
+ * This header defines only the essential timer-specific types used by
+ * the EspPeriodicTimer implementation. Clean and minimal approach.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ */
+
 #pragma once
 
 #include "EspTypes_Base.h"
 #include "HardwareTypes.h"
 #include "McuSelect.h"
-
-#ifdef HF_MCU_FAMILY_ESP32
 #include "esp_timer.h"
-using hf_timer_handle_t = esp_timer_handle_t;
-using hf_timer_args_native_t = esp_timer_create_args_t;
-#else
-using hf_timer_handle_t = void *;
-struct hf_timer_args_native_t {
-  int dummy;
-};
-#endif
+
+//==============================================================================
+// ESP32 TIMER TYPE MAPPINGS
+//==============================================================================
+
+// Direct ESP-IDF type usage - no unnecessary aliases
+// These types are used internally by EspPeriodicTimer implementation
+
+//==============================================================================
+// END OF ESPTIMER TYPES - MINIMAL AND ESSENTIAL ONLY
+//==============================================================================

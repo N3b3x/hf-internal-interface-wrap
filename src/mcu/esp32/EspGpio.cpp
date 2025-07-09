@@ -21,8 +21,7 @@
 #include <atomic>
 #include <cstring>
 
-// Platform-specific includes via centralized McuSelect.h
-#ifdef HF_MCU_ESP32C6
+#ifdef HF_MCU_FAMILY_ESP32
 // ESP32-C6 specific includes with ESP-IDF v5.5+ features
 #include "driver/gpio.h"
 #include "driver/gpio_filter.h"
@@ -37,32 +36,8 @@
 #include "hal/rtc_io_types.h"
 #include "soc/clk_tree_defs.h"
 #include "soc/gpio_sig_map.h"
+
 static const char *TAG = "EspGpio";
-#elif defined(HF_MCU_FAMILY_ESP32)
-// ESP32 family includes for advanced GPIO features
-#include "driver/gpio.h"
-#include "driver/rtc_io.h"
-#include "esp_log.h"
-#include "esp_sleep.h"
-#include "esp_timer.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
-#include "soc/rtc.h"
-static const char *TAG = "EspGpio";
-#else
-// Provide stub implementations for non-ESP32 platforms
-static const char *TAG = "EspGpio";
-#define ESP_LOGE(tag, format, ...)
-#define ESP_LOGW(tag, format, ...)
-#define ESP_LOGI(tag, format, ...)
-#define ESP_LOGD(tag, format, ...)
-#define ESP_LOGV(tag, format, ...)
-#define ESP_OK 0
-#define ESP_FAIL -1
-#define ESP_ERR_INVALID_ARG -2
-#define ESP_ERR_NO_MEM -3
-#define ESP_ERR_TIMEOUT -4
-#endif
 
 namespace {
   // Thread-safe interrupt statistics tracking
@@ -207,7 +182,6 @@ bool EspGpio::Initialize() noexcept {
 
   ESP_LOGI(TAG, "Initializing GPIO%d with advanced ESP32C6 features", static_cast<int>(pin_));
 
-  #ifdef HF_MCU_FAMILY_ESP32
   // Configure GPIO using ESP-IDF v5.5+ advanced configuration
   gpio_config_t io_conf = {};
   
@@ -269,11 +243,6 @@ bool EspGpio::Initialize() noexcept {
     // Continue initialization - basic GPIO functionality should still work
   }
 
-  #else
-  // Stub implementation for non-ESP32 platforms
-  ESP_LOGW(TAG, "GPIO initialization stubbed for non-ESP32 platform");
-  #endif
-
   initialized_ = true;
   ESP_LOGI(TAG, "GPIO%d initialized successfully", static_cast<int>(pin_));
   return true;
@@ -294,14 +263,12 @@ bool EspGpio::Deinitialize() noexcept {
   // Clean up advanced features
   CleanupAdvancedFeatures();
 
-  #ifdef HF_MCU_FAMILY_ESP32
   // Reset GPIO to default state
   esp_err_t ret = gpio_reset_pin(static_cast<gpio_num_t>(pin_));
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to reset GPIO%d: %s", static_cast<int>(pin_), esp_err_to_name(ret));
     return false;
   }
-  #endif
 
   initialized_ = false;
   ESP_LOGI(TAG, "GPIO%d deinitialized successfully", static_cast<int>(pin_));
@@ -384,7 +351,6 @@ bool EspGpio::Deinitialize() noexcept {
     return true;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Reset pin to safe default state
   gpio_config_t io_conf = {};
   io_conf.pin_bit_mask = (1ULL << pin_);
@@ -398,14 +364,12 @@ bool EspGpio::Deinitialize() noexcept {
     ESP_LOGE(TAG, "Failed to deinitialize pin %d: %s", pin_, esp_err_to_name(result));
     return false;
   }
-#endif
 
   ESP_LOGI(TAG, "Deinitialized pin %d", pin_);
   return BaseGpio::Deinitialize();
 }
 
 bool EspGpio::IsPinAvailable() const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   // Check if pin is valid for GPIO operations
   if (pin_ < 0 || pin_ >= GPIO_NUM_MAX) {
     return false;
@@ -514,19 +478,10 @@ bool EspGpio::IsPinAvailable() const noexcept {
     return false;
   }
 #endif
-
-#else
-  // Add other MCU platform checks here
-  return (pin_ >= 0);
-#endif
 }
 
 uint8_t EspGpio::GetMaxPins() const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   return GPIO_NUM_MAX;
-#else
-  return 32; // Default fallback
-#endif
 }
 
 const char *EspGpio::GetDescription() const noexcept {
@@ -554,7 +509,6 @@ HfGpioErr EspGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallbac
   interrupt_callback_ = callback;
   interrupt_user_data_ = user_data;
 
-  #ifdef HF_MCU_FAMILY_ESP32
   // Update GPIO interrupt configuration
   esp_err_t ret = gpio_set_intr_type(static_cast<gpio_num_t>(pin_), MapInterruptTrigger(trigger));
   if (ret != ESP_OK) {
@@ -582,7 +536,6 @@ HfGpioErr EspGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallbac
       return HfGpioErr::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
     }
   }
-  #endif
 
   ESP_LOGI(TAG, "Interrupt configured successfully for GPIO%d", static_cast<int>(pin_));
   return HfGpioErr::GPIO_SUCCESS;
@@ -597,14 +550,12 @@ HfGpioErr EspGpio::EnableInterrupt() noexcept {
     return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_ENABLED;
   }
 
-  #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret = gpio_intr_enable(static_cast<gpio_num_t>(pin_));
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable interrupt for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
     return HfGpioErr::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
   }
-  #endif
 
   interrupt_enabled_ = true;
   ESP_LOGD(TAG, "Interrupt enabled for GPIO%d", static_cast<int>(pin_));
@@ -620,7 +571,6 @@ HfGpioErr EspGpio::DisableInterrupt() noexcept {
     return HfGpioErr::GPIO_SUCCESS;
   }
 
-  #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret = gpio_intr_disable(static_cast<gpio_num_t>(pin_));
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to disable interrupt for GPIO%d: %s", 
@@ -630,7 +580,6 @@ HfGpioErr EspGpio::DisableInterrupt() noexcept {
 
   // Remove ISR handler
   gpio_isr_handler_remove(static_cast<gpio_num_t>(pin_));
-  #endif
 
   interrupt_enabled_ = false;
   ESP_LOGD(TAG, "Interrupt disabled for GPIO%d", static_cast<int>(pin_));
@@ -648,16 +597,13 @@ HfGpioErr EspGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
 
   // Create semaphore if not exists
   if (!platform_semaphore_) {
-    #ifdef HF_MCU_FAMILY_ESP32
     platform_semaphore_ = xSemaphoreCreateBinary();
     if (!platform_semaphore_) {
       ESP_LOGE(TAG, "Failed to create interrupt semaphore for GPIO%d", static_cast<int>(pin_));
       return HfGpioErr::GPIO_ERR_OUT_OF_MEMORY;
     }
-    #endif
   }
 
-  #ifdef HF_MCU_FAMILY_ESP32
   TickType_t ticks_to_wait = (timeout_ms == 0) ? portMAX_DELAY : pdMS_TO_TICKS(timeout_ms);
   BaseType_t result = xSemaphoreTake(static_cast<SemaphoreHandle_t>(platform_semaphore_), ticks_to_wait);
   
@@ -666,9 +612,6 @@ HfGpioErr EspGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
   } else {
     return HfGpioErr::GPIO_ERR_TIMEOUT;
   }
-  #else
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
-  #endif
 }
 
 HfGpioErr EspGpio::GetInterruptStatus(InterruptStatus &status) noexcept {
@@ -693,7 +636,6 @@ HfGpioErr EspGpio::SetDirectionImpl(Direction direction) noexcept {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
   
-  #ifdef HF_MCU_FAMILY_ESP32
   gpio_mode_t mode;
   switch (direction) {
     case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
@@ -721,7 +663,6 @@ HfGpioErr EspGpio::SetDirectionImpl(Direction direction) noexcept {
   if (direction == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
     SetDriveCapability(drive_capability_);
   }
-  #endif
 
   current_direction_ = direction;
   ESP_LOGD(TAG, "Set GPIO%d direction to %s", static_cast<int>(pin_), 
@@ -734,7 +675,6 @@ HfGpioErr EspGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
   
-  #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret = ESP_OK;
   
   switch (pull_mode) {
@@ -756,7 +696,6 @@ HfGpioErr EspGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
              static_cast<int>(pin_), esp_err_to_name(ret));
     return HfGpioErr::GPIO_ERR_PULL_RESISTOR_FAILURE;
   }
-  #endif
 
   pull_mode_ = pull_mode;
   ESP_LOGD(TAG, "Set GPIO%d pull mode to %d", static_cast<int>(pin_), static_cast<int>(pull_mode));
@@ -768,7 +707,6 @@ PullMode EspGpio::GetPullModeImpl() const noexcept {
     return pull_mode_; // Return cached value if not initialized
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Read actual hardware pull resistor state from ESP32 GPIO registers
   if (HF_GPIO_IS_VALID_GPIO(pin_)) {
     gpio_pull_mode_t hw_pull_mode = gpio_get_pull_mode(static_cast<gpio_num_t>(pin_));
@@ -798,7 +736,6 @@ PullMode EspGpio::GetPullModeImpl() const noexcept {
   
   ESP_LOGW(TAG, "GPIO%d is not valid for pull mode reading, returning cached value", 
            static_cast<int>(pin_));
-#endif
 
   // Fallback to cached value for non-ESP32 platforms or invalid pins
   ESP_LOGV(TAG, "GPIO%d returning cached pull mode: %s", static_cast<int>(pin_), 
@@ -831,13 +768,11 @@ HfGpioErr EspGpio::WriteImpl(State state) noexcept {
     ((active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH) ? 1 : 0) :
     ((active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH) ? 0 : 1);
 
-  #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret = gpio_set_level(static_cast<gpio_num_t>(pin_), level);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to write GPIO%d: %s", static_cast<int>(pin_), esp_err_to_name(ret));
     return HfGpioErr::GPIO_ERR_WRITE_FAILURE;
   }
-  #endif
 
   current_state_ = state;
   ESP_LOGV(TAG, "GPIO%d set to %s (level %d)", static_cast<int>(pin_), 
@@ -850,7 +785,6 @@ HfGpioErr EspGpio::ReadImpl(State &state) noexcept {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
   
-  #ifdef HF_MCU_FAMILY_ESP32
   int level = gpio_get_level(static_cast<gpio_num_t>(pin_));
   
   // Convert electrical level to logical state based on polarity
@@ -862,7 +796,6 @@ HfGpioErr EspGpio::ReadImpl(State &state) noexcept {
   #else
   state = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
   return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
-  #endif
 }
 
 HfGpioErr EspGpio::SetActiveImpl() noexcept {
@@ -920,7 +853,6 @@ HfGpioErr EspGpio::SetDriveCapability(GpioDriveCapability capability) noexcept {
   
   drive_capability_ = capability;
 
-  #ifdef HF_MCU_FAMILY_ESP32
   gpio_drive_cap_t esp_cap;
   switch (capability) {
     case GpioDriveCapability::Weak:
@@ -947,7 +879,6 @@ HfGpioErr EspGpio::SetDriveCapability(GpioDriveCapability capability) noexcept {
   }
 
   ESP_LOGD(TAG, "Set GPIO%d drive capability to %d", static_cast<int>(pin_), static_cast<int>(capability));
-  #endif
 
   return HfGpioErr::GPIO_SUCCESS;
 }
@@ -1603,25 +1534,15 @@ bool EspGpio::IsStrappingPin(HfPinNumber pin_num) noexcept {
   return HF_GPIO_IS_STRAPPING_PIN(pin_num);
 }
 
-#ifdef HF_MCU_FAMILY_ESP32
 // Static flag to track ISR service installation
 bool EspGpio::gpio_isr_handler_installed_ = false;
-#endif
 
 //==============================================================================
 // LAZY INITIALIZATION IMPLEMENTATION
 //==============================================================================
 
-bool EspGpio::EnsureInitialized() noexcept {
-  if (initialized_) {
-    return true;  // Already initialized
-  }
-  
-  ESP_LOGD(TAG, "Lazy initialization triggered for GPIO%d", static_cast<int>(pin_));
-  
-  // Call the full Initialize() method which will set initialized_ flag
-  return Initialize();
-}
+// Note: EnsureInitialized() is inherited from BaseGpio and provides lazy initialization
+// The base class implementation calls Initialize() if not already initialized
 
 //==============================================================================
 // ETM (EVENT TASK MATRIX) IMPLEMENTATION FOR ESP32C6
@@ -1930,7 +1851,6 @@ HfGpioErr EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
 // PRIVATE HELPER FUNCTION IMPLEMENTATIONS
 //==============================================================================
 
-#ifdef HF_MCU_FAMILY_ESP32
 gpio_int_type_t EspGpio::MapInterruptTrigger(hf_gpio_interrupt_trigger_t trigger) const noexcept {
   switch (trigger) {
     case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE:
@@ -1948,30 +1868,14 @@ gpio_int_type_t EspGpio::MapInterruptTrigger(hf_gpio_interrupt_trigger_t trigger
       return GPIO_INTR_DISABLE;
   }
 }
-#else
-uint32_t EspGpio::MapInterruptTrigger(hf_gpio_interrupt_trigger_t trigger) const noexcept {
-  // Platform-specific mapping for non-ESP32 platforms
-  return static_cast<uint32_t>(trigger);
-}
-#endif
 
-#ifdef HF_MCU_FAMILY_ESP32
 void IRAM_ATTR EspGpio::StaticInterruptHandler(void *arg) {
   EspGpio *gpio_instance = static_cast<EspGpio*>(arg);
   if (gpio_instance) {
     gpio_instance->HandleInterrupt();
   }
 }
-#else
-void EspGpio::StaticInterruptHandler(void *arg) {
-  EspGpio *gpio_instance = static_cast<EspGpio*>(arg);
-  if (gpio_instance) {
-    gpio_instance->HandleInterrupt();
-  }
-}
-#endif
 
-#ifdef HF_MCU_FAMILY_ESP32
 void IRAM_ATTR EspGpio::HandleInterrupt() {
   // Increment interrupt counter (thread-safe)
   interrupt_count_.fetch_add(1, std::memory_order_relaxed);
@@ -1992,18 +1896,6 @@ void IRAM_ATTR EspGpio::HandleInterrupt() {
     interrupt_callback_(interrupt_user_data_);
   }
 }
-#else
-void EspGpio::HandleInterrupt() {
-  // Increment interrupt counter (thread-safe)
-  interrupt_count_.fetch_add(1, std::memory_order_relaxed);
-  g_total_gpio_interrupts.fetch_add(1, std::memory_order_relaxed);
-  
-  // Call user callback if registered
-  if (interrupt_callback_) {
-    interrupt_callback_(interrupt_user_data_);
-  }
-}
-#endif
 
 bool EspGpio::InitializeAdvancedFeatures() noexcept {
   bool success = true;
@@ -2108,11 +2000,11 @@ void EspGpio::CleanupGlitchFilters() noexcept {
 }
 
 void EspGpio::CleanupInterruptSemaphore() noexcept {
-  #ifdef HF_MCU_FAMILY_ESP32
   if (platform_semaphore_) {
     vSemaphoreDelete(static_cast<SemaphoreHandle_t>(platform_semaphore_));
     platform_semaphore_ = nullptr;
     ESP_LOGD(TAG, "Interrupt semaphore cleaned up for GPIO%d", static_cast<int>(pin_));
   }
-  #endif
 }
+
+#endif // HF_MCU_FAMILY_ESP32

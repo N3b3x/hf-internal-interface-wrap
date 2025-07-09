@@ -128,6 +128,49 @@ struct hf_spi_bus_config_t {
         timeout_ms(1000) {}
 };
 
+/**
+ * @brief SPI operation statistics.
+ */
+struct hf_spi_statistics_t {
+  uint32_t total_transactions;       ///< Total number of transactions
+  uint32_t successful_transactions;  ///< Number of successful transactions
+  uint32_t failed_transactions;      ///< Number of failed transactions
+  uint32_t timeout_transactions;     ///< Number of timed-out transactions
+  uint32_t total_bytes_sent;         ///< Total bytes transmitted
+  uint32_t total_bytes_received;     ///< Total bytes received
+  uint32_t max_transaction_time_us;  ///< Maximum transaction time (microseconds)
+  uint32_t min_transaction_time_us;  ///< Minimum transaction time (microseconds)
+  uint64_t last_activity_timestamp;  ///< Last activity timestamp
+  uint64_t initialization_timestamp; ///< Initialization timestamp
+
+  hf_spi_statistics_t() noexcept
+      : total_transactions(0), successful_transactions(0), failed_transactions(0),
+        timeout_transactions(0), total_bytes_sent(0), total_bytes_received(0),
+        max_transaction_time_us(0), min_transaction_time_us(0xFFFFFFFF), last_activity_timestamp(0),
+        initialization_timestamp(0) {}
+};
+
+/**
+ * @brief SPI diagnostic information.
+ */
+struct hf_spi_diagnostics_t {
+  bool is_initialized;          ///< Initialization state
+  bool is_bus_suspended;        ///< Bus suspension state
+  bool dma_enabled;             ///< DMA enabled state
+  uint32_t current_clock_speed; ///< Current clock speed in Hz
+  uint8_t current_mode;         ///< Current SPI mode
+  uint16_t max_transfer_size;   ///< Maximum transfer size
+  uint8_t device_count;         ///< Number of registered devices
+  uint32_t last_error;          ///< Last error code
+  uint64_t total_transactions;  ///< Total transactions performed
+  uint64_t failed_transactions; ///< Failed transactions count
+
+  hf_spi_diagnostics_t() noexcept
+      : is_initialized(false), is_bus_suspended(false), dma_enabled(false), current_clock_speed(0),
+        current_mode(0), max_transfer_size(0), device_count(0), last_error(0),
+        total_transactions(0), failed_transactions(0) {}
+};
+
 //--------------------------------------
 //  Abstract Base Class
 //--------------------------------------
@@ -184,6 +227,17 @@ public:
       initialized_ = Initialize();
     }
     return initialized_;
+  }
+
+  /**
+   * @brief Ensures that the SPI bus is deinitialized (lazy deinitialization).
+   * @return true if the SPI bus is deinitialized, false otherwise.
+   */
+  bool EnsureDeinitialized() noexcept {
+    if (initialized_) {
+      initialized_ = !Deinitialize();
+    }
+    return !initialized_;
   }
 
   /**
@@ -385,6 +439,30 @@ public:
    */
   virtual bool TransferByte(uint8_t tx_data, uint8_t &rx_data) noexcept {
     return Transfer(&tx_data, &rx_data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
+  }
+
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS
+  //==============================================//
+
+  /**
+   * @brief Get SPI operation statistics
+   * @param statistics Reference to store statistics data
+   * @return hf_spi_err_t::SPI_SUCCESS if successful, SPI_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_spi_err_t GetStatistics(hf_spi_statistics_t &statistics) const noexcept {
+    (void)statistics;
+    return hf_spi_err_t::SPI_ERR_NOT_SUPPORTED;
+  }
+
+  /**
+   * @brief Get SPI diagnostic information
+   * @param diagnostics Reference to store diagnostics data
+   * @return hf_spi_err_t::SPI_SUCCESS if successful, SPI_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_spi_err_t GetDiagnostics(hf_spi_diagnostics_t &diagnostics) const noexcept {
+    (void)diagnostics;
+    return hf_spi_err_t::SPI_ERR_NOT_SUPPORTED;
   }
 
 protected:

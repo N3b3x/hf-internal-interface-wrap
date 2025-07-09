@@ -1,62 +1,37 @@
 /**
- * @file McuTypes_GPIO.h
- * @brief Modern ESP32C6 GPIO type definitions with ESP-IDF v5.5+ features.
+ * @file EspTypes_GPIO.h
+ * @brief ESP32 GPIO type definitions for hardware abstraction.
  *
- * This header defines all GPIO-specific types and constants for the latest
- * ESP32C6 hardware features including normal GPIO, RTC GPIO, dedicated GPIO,
- * glitch filtering, low-power operation, and advanced power management.
- *
- * Features supported:
- * - Standard GPIO with all modes (input, output, open-drain, bidirectional)
- * - RTC GPIO for ultra-low power operation and deep sleep wake-up
- * - Dedicated GPIO bundles for high-speed bit-banging operations
- * - Pin and Flexible glitch filtering for noise immunity
- * - Low-Power IO (LP_IO) for ultra-low power peripherals
- * - Deep sleep configuration and hold functions
- * - Event Task Matrix (ETM) integration
+ * This header defines only the essential GPIO-specific types and constants used by
+ * the EspGpio implementation. It follows a clean, minimal pattern providing only
+ * necessary types without redundant or duplicate definitions.
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
- *
- * @note Only latest ESP-IDF v5.5+ APIs are supported, no legacy compatibility
  */
 
 #pragma once
 
-#include "HardwareTypes.h" // For basic hardware types
-#include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
-#include "McuTypes_Base.h"
-#include "BaseGpio.h" // For hf_gpio_err_t
-
-//==============================================================================
-// PLATFORM-SPECIFIC GPIO TYPE MAPPINGS
-//==============================================================================
+#include "HardwareTypes.h"
+#include "McuSelect.h"      // Central MCU platform selection (includes all ESP-IDF)
+#include "EspTypes_Base.h"
+#include "BaseGpio.h"       // For hf_gpio_err_t
 
 #ifdef HF_MCU_FAMILY_ESP32
-// ESP32 GPIO specific mappings
-using hf_gpio_num_native_t = gpio_num_t;
-using hf_gpio_mode_native_t = gpio_mode_t;
-using hf_gpio_pull_native_t = gpio_pull_mode_t;
-#else
-// Non-ESP32 platforms - use generic types
-using hf_gpio_num_native_t = uint32_t;
-using hf_gpio_mode_native_t = uint8_t;
-using hf_gpio_pull_native_t = uint8_t;
-#endif
 
 //==============================================================================
-// MODERN ESP32C6 GPIO TYPES (ESP-IDF v5.5+)
+// ESSENTIAL GPIO TYPES (ESP32)
 //==============================================================================
 
 /**
- * @brief GPIO pin number type for ESP32C6.
+ * @brief GPIO pin number type for ESP32.
  */
-using hf_gpio_num_t = int32_t;
+using hf_gpio_num_t = hf_pin_num_t;
 
 /**
- * @brief Modern GPIO mode configuration with all ESP32C6 capabilities.
- * @details Comprehensive GPIO mode enumeration supporting all hardware capabilities.
+ * @brief GPIO mode configuration for ESP32.
+ * @details GPIO mode enumeration supporting ESP32 hardware capabilities.
  */
 enum class hf_gpio_mode_t : uint8_t {
   HF_GPIO_MODE_DISABLE = 0,        ///< GPIO disabled (no input/output)
@@ -68,8 +43,8 @@ enum class hf_gpio_mode_t : uint8_t {
 };
 
 /**
- * @brief Modern GPIO pull resistor configuration.
- * @details All pull resistor combinations supported by ESP32C6 hardware.
+ * @brief GPIO pull resistor configuration.
+ * @details Pull resistor combinations supported by ESP32 hardware.
  */
 enum class hf_gpio_pull_t : uint8_t {
   HF_GPIO_PULL_NONE = 0,      ///< No pull resistors (floating)
@@ -79,8 +54,8 @@ enum class hf_gpio_pull_t : uint8_t {
 };
 
 /**
- * @brief Modern GPIO interrupt trigger configuration.
- * @details Complete interrupt trigger types for ESP32C6.
+ * @brief GPIO interrupt trigger configuration.
+ * @details Interrupt trigger types for ESP32.
  */
 enum class hf_gpio_intr_type_t : uint8_t {
   HF_GPIO_INTR_DISABLE = 0,     ///< Interrupt disabled
@@ -92,8 +67,8 @@ enum class hf_gpio_intr_type_t : uint8_t {
 };
 
 /**
- * @brief Modern GPIO drive capability levels.
- * @details ESP32C6 drive strength options for power optimization.
+ * @brief GPIO drive capability levels.
+ * @details ESP32 drive strength options for power optimization.
  */
 enum class hf_gpio_drive_cap_t : uint8_t {
   HF_GPIO_DRIVE_CAP_WEAK = 0,     ///< ~5mA drive capability
@@ -116,13 +91,11 @@ enum class hf_rtc_gpio_mode_t : uint8_t {
 };
 
 //==============================================================================
-// MODERN ESP32C6 ADVANCED GPIO FEATURES (ESP-IDF v5.5+)
+// ADVANCED GPIO FEATURES (ESP32)
 //==============================================================================
 
-#ifdef HF_MCU_FAMILY_ESP32
-
 /**
- * @brief ESP32C6 glitch filter types for noise immunity.
+ * @brief ESP32 glitch filter types for noise immunity.
  * @details Hardware-based glitch filtering capabilities.
  */
 enum class hf_gpio_glitch_filter_type_t : uint8_t {
@@ -178,11 +151,7 @@ struct hf_dedic_gpio_bundle_flags_t {
  * @brief Dedicated GPIO bundle handle type.
  * @details Platform-specific handle for dedicated GPIO bundle operations.
  */
-#ifdef HF_MCU_FAMILY_ESP32
 using hf_dedic_gpio_bundle_handle_t = dedic_gpio_bundle_handle_t;
-#else
-using hf_dedic_gpio_bundle_handle_t = void*;
-#endif
 
 /**
  * @brief Dedicated GPIO bundle configuration structure.
@@ -308,11 +277,11 @@ struct hf_dedic_gpio_bundle_config_t {
 };
 
 /**
- * @brief Complete ESP32C6 GPIO configuration with all advanced features.
- * @details Comprehensive configuration structure for modern ESP32C6 GPIO.
+ * @brief Complete ESP32 GPIO configuration with all advanced features.
+ * @details Comprehensive configuration structure for ESP32 GPIO.
  */
 struct hf_gpio_advanced_config_t {
-  hf_gpio_num_native_t gpio_num;                   ///< GPIO pin number
+  hf_pin_num_t gpio_num;                           ///< GPIO pin number
   hf_gpio_mode_t mode;                             ///< GPIO mode (input/output/etc)
   hf_gpio_pull_t pull_mode;                        ///< Pull resistor configuration
   hf_gpio_intr_type_t intr_type;                   ///< Interrupt trigger type
@@ -331,7 +300,7 @@ struct hf_gpio_advanced_config_t {
 };
 
 /**
- * @brief Comprehensive ESP32C6 GPIO status information for diagnostics.
+ * @brief Comprehensive ESP32 GPIO status information for diagnostics.
  * @details Complete status information for debugging, monitoring, and diagnostics.
  */
 struct hf_gpio_status_info_t {
@@ -365,7 +334,7 @@ struct hf_gpio_status_info_t {
 };
 
 /**
- * @brief ESP32C6 GPIO pin capabilities and limitations.
+ * @brief ESP32 GPIO pin capabilities and limitations.
  * @details Complete capability information for each GPIO pin.
  */
 struct hf_gpio_pin_capabilities_t {
@@ -395,169 +364,16 @@ struct hf_gpio_pin_capabilities_t {
   uint32_t max_frequency_hz;          ///< Maximum supported toggle frequency
 };
 
+//==============================================================================
+// END OF ESPGPIO TYPES - MINIMAL AND ESSENTIAL ONLY
+//==============================================================================
+
+//==============================================================================
+// ESP32 GPIO VALIDATION MACROS AND CONSTANTS
+//==============================================================================
+
 /**
- * @brief Native ESP-IDF v5.5+ GPIO types mapping.
- * @details Direct mappings to latest ESP-IDF GPIO types for maximum compatibility.
- */
-using hf_gpio_config_native_t = gpio_config_t;
-using hf_gpio_glitch_filter_handle_native_t = gpio_glitch_filter_handle_t;
-using hf_gpio_pin_glitch_filter_config_native_t = gpio_pin_glitch_filter_config_t;
-using hf_gpio_flex_glitch_filter_config_native_t = gpio_flex_glitch_filter_config_t;
-using hf_rtc_gpio_mode_native_t = rtc_gpio_mode_t;
-
-// Dedicated GPIO native types
-using hf_dedic_gpio_bundle_handle_native_t = dedic_gpio_bundle_handle_t;
-using hf_dedic_gpio_bundle_config_native_t = dedic_gpio_bundle_config_t;
-
-// Low-Power IO native types (ESP-IDF v5.5+)
-#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 5, 0)
-using hf_lp_io_num_native_t = lp_io_num_t;
-#else
-using hf_lp_io_num_native_t = uint8_t;
-#endif
-
-// ETM (Event Task Matrix) native types for GPIO
-#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 4, 0)
-using hf_gpio_etm_event_handle_native_t = gpio_etm_event_handle_t;
-using hf_gpio_etm_task_handle_native_t = gpio_etm_task_handle_t;
-using hf_gpio_etm_event_config_native_t = gpio_etm_event_config_t;
-using hf_gpio_etm_task_config_native_t = gpio_etm_task_config_t;
-using hf_gpio_etm_event_edge_native_t = gpio_etm_event_edge_t;
-using hf_gpio_etm_task_action_native_t = gpio_etm_task_action_t;
-#else
-using hf_gpio_etm_event_handle_native_t = void*;
-using hf_gpio_etm_task_handle_native_t = void*;
-using hf_gpio_etm_event_config_native_t = struct { int dummy; };
-using hf_gpio_etm_task_config_native_t = struct { int dummy; };
-using hf_gpio_etm_event_edge_native_t = uint8_t;
-using hf_gpio_etm_task_action_native_t = uint8_t;
-#endif
-
-#else
-//==============================================================================
-// NON-ESP32 PLATFORM SUPPORT (SIMPLIFIED COMPATIBILITY LAYER)
-//==============================================================================
-
-// Simplified GPIO types for non-ESP32 platforms
-struct hf_gpio_advanced_config_t {
-  uint32_t gpio_num;
-  uint8_t mode;
-  uint8_t pull_mode;
-  uint8_t intr_type;
-  uint8_t drive_strength;
-  hf_gpio_etm_config_t etm_config;
-  // Simplified structure for non-ESP32 platforms
-};
-
-struct hf_gpio_status_info_t {
-  uint8_t pin_number;
-  uint8_t current_mode;
-  uint8_t current_pull_mode;
-  uint8_t current_drive_cap;
-  bool input_enabled;
-  bool output_enabled;
-  bool open_drain;
-  bool hold_enabled;
-  uint32_t interrupt_count;
-  bool is_wake_source;
-  bool etm_enabled;
-  uint8_t etm_channel_number;
-};
-
-struct hf_gpio_pin_capabilities_t {
-  bool is_valid_gpio;
-  bool supports_input;
-  bool supports_output;
-  bool supports_adc;
-  bool supports_pull_up;
-  bool supports_pull_down;
-  bool is_strapping_pin;
-  uint8_t adc_unit;
-  uint8_t adc_channel;
-};
-
-// Simplified structures for advanced features
-struct hf_gpio_sleep_config_t {
-  uint8_t sleep_mode;
-  uint8_t sleep_pull_mode;
-  bool hold_during_sleep;
-};
-
-struct hf_gpio_wakeup_config_t {
-  uint8_t wake_trigger;
-  bool enable_wake;
-  uint8_t wake_level;
-};
-
-struct hf_gpio_flex_filter_config_t {
-  uint32_t window_width_ns;
-  uint32_t window_threshold_ns;
-  bool enable_on_init;
-};
-
-struct hf_gpio_pin_filter_config_t {
-  uint8_t clk_src;
-  bool enable_on_init;
-};
-
-struct hf_lp_io_config_t {
-  uint8_t mode;
-  uint8_t pull_mode;
-  bool hold_enable;
-};
-
-struct hf_gpio_etm_event_config_t {
-  uint8_t edge;
-  bool invert_output;
-  bool enable_on_init;
-};
-
-struct hf_gpio_etm_task_config_t {
-  uint8_t action;
-  bool invert_output;
-  bool enable_on_init;
-};
-
-struct hf_gpio_etm_config_t {
-  bool enable_etm;
-  uint8_t event_config;
-  uint8_t task_config;
-  uint8_t etm_channel_priority;
-  bool auto_bind_gpio;
-};
-
-struct hf_dedic_gpio_bundle_config_t {
-  const int *gpio_array;
-  size_t array_size;
-  uint32_t flags;
-};
-
-// Generic handle types for non-ESP32 platforms
-using hf_gpio_config_native_t = struct { int dummy; };
-using hf_gpio_glitch_filter_handle_native_t = void*;
-using hf_gpio_pin_glitch_filter_config_native_t = struct { int dummy; };
-using hf_gpio_flex_glitch_filter_config_native_t = struct { int dummy; };
-using hf_rtc_gpio_mode_native_t = uint8_t;
-using hf_dedic_gpio_bundle_handle_native_t = void*;
-using hf_dedic_gpio_bundle_config_native_t = struct { int dummy; };
-using hf_lp_io_num_native_t = uint8_t;
-using hf_gpio_etm_event_handle_native_t = void*;
-using hf_gpio_etm_task_handle_native_t = void*;
-using hf_gpio_etm_event_config_native_t = struct { int dummy; };
-using hf_gpio_etm_task_config_native_t = struct { int dummy; };
-using hf_gpio_etm_event_edge_native_t = uint8_t;
-using hf_gpio_etm_task_action_native_t = uint8_t;
-
-#endif // HF_MCU_FAMILY_ESP32
-
-//==============================================================================
-// ESP32C6 GPIO VALIDATION MACROS AND CONSTANTS (ESP-IDF v5.5+)
-//==============================================================================
-// NOTE: Hardware constants are centrally defined in McuSelect.h - no duplication
-
-#ifdef HF_MCU_ESP32C6
-/**
- * @brief ESP32C6 GPIO pin capability validation macros.
+ * @brief ESP32 GPIO pin capability validation macros.
  * @details All hardware constants reference McuSelect.h directly for single source of truth.
  */
 #define HF_GPIO_IS_VALID_GPIO(gpio_num) \
@@ -589,7 +405,7 @@ using hf_gpio_etm_task_action_native_t = uint8_t;
   ((gpio_num) == 12 || (gpio_num) == 13)
 
 #define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) \
-  (false) /* ESP32C6 has no input-only pins */
+  (false) /* ESP32 has no input-only pins */
 
 #define HF_GPIO_SUPPORTS_PULL_UP(gpio_num) \
   (HF_GPIO_IS_VALID_GPIO(gpio_num))
@@ -610,7 +426,7 @@ using hf_gpio_etm_task_action_native_t = uint8_t;
   (HF_GPIO_IS_VALID_GPIO(gpio_num))
 
 /**
- * @brief ESP32C6 GPIO to ADC channel mapping.
+ * @brief ESP32 GPIO to ADC channel mapping.
  */
 #define HF_GPIO_TO_ADC_UNIT(gpio_num) \
   (HF_GPIO_SUPPORTS_ADC(gpio_num) ? 1 : 0xFF)
@@ -619,7 +435,7 @@ using hf_gpio_etm_task_action_native_t = uint8_t;
   (HF_GPIO_SUPPORTS_ADC(gpio_num) ? (gpio_num) : 0xFF)
 
 /**
- * @brief ESP32C6 GPIO to RTC/LP_IO mapping.
+ * @brief ESP32 GPIO to RTC/LP_IO mapping.
  */
 #define HF_GPIO_TO_RTC_GPIO(gpio_num) \
   (HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ? (gpio_num) : 0xFF)
@@ -628,44 +444,13 @@ using hf_gpio_etm_task_action_native_t = uint8_t;
   (HF_GPIO_IS_VALID_LP_IO(gpio_num) ? (gpio_num) : 0xFF)
 
 /**
- * @brief ESP32C6 pin safety classification.
+ * @brief ESP32 pin safety classification.
  */
 #define HF_GPIO_IS_SAFE_FOR_GENERAL_USE(gpio_num) \
   (HF_GPIO_IS_VALID_GPIO(gpio_num) && \
    !HF_GPIO_IS_STRAPPING_PIN(gpio_num) && \
    !HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) && \
    !HF_GPIO_IS_USB_JTAG_PIN(gpio_num))
-
-#else
-//==============================================================================
-// GENERIC PLATFORM GPIO VALIDATION MACROS
-//==============================================================================
-
-#define HF_GPIO_IS_VALID_GPIO(gpio_num) \
-  ((gpio_num) >= 0 && (gpio_num) < 32)
-#define HF_GPIO_IS_VALID_PIN(gpio_num) HF_GPIO_IS_VALID_GPIO(gpio_num)
-#define HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num) HF_GPIO_IS_VALID_GPIO(gpio_num)
-#define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) false
-#define HF_GPIO_IS_RTC_GPIO(gpio_num) false
-#define HF_GPIO_IS_VALID_LP_IO(gpio_num) false
-#define HF_GPIO_SUPPORTS_ADC(gpio_num) false
-#define HF_GPIO_IS_STRAPPING_PIN(gpio_num) false
-#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) false
-#define HF_GPIO_IS_USB_JTAG_PIN(gpio_num) false
-#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) false
-#define HF_GPIO_SUPPORTS_PULL_UP(gpio_num) true
-#define HF_GPIO_SUPPORTS_PULL_DOWN(gpio_num) true
-#define HF_GPIO_SUPPORTS_OPEN_DRAIN(gpio_num) true
-#define HF_GPIO_SUPPORTS_GLITCH_FILTER(gpio_num) false
-#define HF_GPIO_SUPPORTS_DEDICATED_GPIO(gpio_num) false
-#define HF_GPIO_SUPPORTS_ETM(gpio_num) false
-#define HF_GPIO_TO_ADC_UNIT(gpio_num) 0xFF
-#define HF_GPIO_TO_ADC_CHANNEL(gpio_num) 0xFF
-#define HF_GPIO_TO_RTC_GPIO(gpio_num) 0xFF
-#define HF_GPIO_TO_LP_IO(gpio_num) 0xFF
-#define HF_GPIO_IS_SAFE_FOR_GENERAL_USE(gpio_num) HF_GPIO_IS_VALID_GPIO(gpio_num)
-
-#endif // HF_MCU_ESP32C6
 
 //==============================================================================
 // CONVENIENCE TYPES AND UTILITY FUNCTIONS
@@ -711,10 +496,9 @@ struct hf_gpio_pin_info_t {
   const char* usage_notes;            ///< Special usage notes or warnings
 };
 
-#ifdef HF_MCU_ESP32C6
 /**
- * @brief ESP32C6 GPIO pin information table.
- * @details Complete pin information for all ESP32C6 GPIO pins.
+ * @brief ESP32 GPIO pin information table.
+ * @details Complete pin information for all ESP32 GPIO pins.
  * @note This table should be defined in the implementation file.
  */
 extern const hf_gpio_pin_info_t HF_GPIO_PIN_INFO_TABLE[HF_MCU_GPIO_PIN_COUNT];
@@ -732,7 +516,7 @@ inline const hf_gpio_pin_info_t* hf_gpio_get_pin_info(uint8_t gpio_num) {
 }
 
 /**
- * @brief Validate GPIO configuration for ESP32C6.
+ * @brief Validate GPIO configuration for ESP32.
  * @param config GPIO configuration to validate
  * @return Validation result with details
  */
@@ -780,8 +564,6 @@ hf_gpio_config_result_t hf_gpio_validate_etm_config(uint8_t gpio_num,
  */
 uint8_t hf_gpio_get_optimal_etm_channel(uint8_t gpio_num, uint8_t priority);
 
-#endif // HF_MCU_ESP32C6
-
 //==============================================================================
 // ERROR HANDLING AND DEBUGGING SUPPORT
 //==============================================================================
@@ -825,14 +607,13 @@ constexpr const char* hf_gpio_result_to_string(hf_gpio_result_t result) {
 // COMPILE-TIME CONFIGURATION VALIDATION
 //==============================================================================
 
-#ifdef HF_MCU_ESP32C6
 // Compile-time assertions to ensure configuration consistency
-static_assert(HF_MCU_GPIO_PIN_COUNT == 31, "ESP32C6 should have 31 GPIO pins");
-static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 30, "ESP32C6 max GPIO should be 30");
-static_assert(HF_MCU_GPIO_RTC_PIN_COUNT == 8, "ESP32C6 should have 8 RTC GPIO pins");
-static_assert(HF_MCU_GPIO_ADC_PIN_COUNT == 7, "ESP32C6 should have 7 ADC channels");
-static_assert(HF_MCU_GPIO_FLEX_FILTER_COUNT == 8, "ESP32C6 should have 8 flex filters");
-static_assert(HF_MCU_GPIO_ETM_CHANNEL_COUNT == 50, "ESP32C6 should have 50 ETM channels");
+static_assert(HF_MCU_GPIO_PIN_COUNT == 31, "ESP32 should have 31 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 30, "ESP32 max GPIO should be 30");
+static_assert(HF_MCU_GPIO_RTC_PIN_COUNT == 8, "ESP32 should have 8 RTC GPIO pins");
+static_assert(HF_MCU_GPIO_ADC_PIN_COUNT == 7, "ESP32 should have 7 ADC channels");
+static_assert(HF_MCU_GPIO_FLEX_FILTER_COUNT == 8, "ESP32 should have 8 flex filters");
+static_assert(HF_MCU_GPIO_ETM_CHANNEL_COUNT == 50, "ESP32 should have 50 ETM channels");
 
 // Verify that our enum values match ESP-IDF native values
 #ifdef GPIO_MODE_INPUT
@@ -855,7 +636,6 @@ static_assert(static_cast<int>(hf_gpio_etm_task_action_t::HF_GPIO_ETM_TASK_ACTIO
               "GPIO ETM task action values must match ESP-IDF");
 #endif
 
-#endif // HF_MCU_ESP32C6
 
 /**
  * @brief ETM (Event Task Matrix) status information for diagnostics.
@@ -874,3 +654,5 @@ struct hf_gpio_etm_status_t {
   uint32_t event_count;                       ///< Number of ETM events triggered
   uint32_t task_execution_count;              ///< Number of ETM tasks executed
 };
+
+#endif // HF_MCU_FAMILY_ESP32

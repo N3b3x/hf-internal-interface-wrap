@@ -182,6 +182,51 @@ struct hf_pio_capabilities_t {
   bool supports_carrier;       ///< Supports carrier modulation
 };
 
+/**
+ * @brief PIO operation statistics.
+ */
+struct hf_pio_statistics_t {
+  uint32_t totalTransmissions;    ///< Total transmissions performed
+  uint32_t successfulTransmissions; ///< Successful transmissions
+  uint32_t failedTransmissions;   ///< Failed transmissions
+  uint32_t totalReceptions;       ///< Total receptions performed
+  uint32_t successfulReceptions;  ///< Successful receptions
+  uint32_t failedReceptions;      ///< Failed receptions
+  uint32_t symbolsTransmitted;    ///< Total symbols transmitted
+  uint32_t symbolsReceived;       ///< Total symbols received
+  uint32_t averageTransmissionTimeUs; ///< Average transmission time (microseconds)
+  uint32_t maxTransmissionTimeUs; ///< Maximum transmission time
+  uint32_t minTransmissionTimeUs; ///< Minimum transmission time
+  uint32_t timingErrors;          ///< Number of timing errors
+  uint32_t bufferOverflows;       ///< Number of buffer overflows
+
+  hf_pio_statistics_t()
+      : totalTransmissions(0), successfulTransmissions(0), failedTransmissions(0),
+        totalReceptions(0), successfulReceptions(0), failedReceptions(0),
+        symbolsTransmitted(0), symbolsReceived(0), averageTransmissionTimeUs(0), 
+        maxTransmissionTimeUs(0), minTransmissionTimeUs(UINT32_MAX), timingErrors(0),
+        bufferOverflows(0) {}
+};
+
+/**
+ * @brief PIO diagnostic information.
+ */
+struct hf_pio_diagnostics_t {
+  bool pioHealthy;               ///< Overall PIO health status
+  hf_pio_err_t lastErrorCode;    ///< Last error code
+  uint32_t lastErrorTimestamp;   ///< Last error timestamp
+  uint32_t consecutiveErrors;    ///< Consecutive error count
+  bool pioInitialized;           ///< PIO initialization status
+  uint8_t activeChannels;        ///< Number of active channels
+  uint32_t currentResolutionNs;  ///< Current time resolution
+  bool bidirectionalSupported;   ///< Bidirectional mode support
+
+  hf_pio_diagnostics_t()
+      : pioHealthy(true), lastErrorCode(hf_pio_err_t::PIO_SUCCESS), lastErrorTimestamp(0), 
+          consecutiveErrors(0), pioInitialized(false), activeChannels(0), 
+          currentResolutionNs(0), bidirectionalSupported(false) {}
+};
+
 //--------------------------------------
 //  Callback Types
 //--------------------------------------
@@ -289,6 +334,18 @@ public:
   }
 
   /**
+   * @brief Ensures that the PIO is deinitialized (lazy deinitialization).
+   * @return true if the PIO is deinitialized, false otherwise.
+   */
+  bool EnsureDeinitialized() noexcept {
+    if (initialized_) {
+      initialized_ = !(Deinitialize() == hf_pio_err_t::PIO_SUCCESS);
+      return !initialized_;
+    }
+    return true;
+  }
+
+  /**
    * @brief Configure a PIO channel
    * @param channel_id Channel identifier
    * @param config Channel configuration
@@ -378,6 +435,30 @@ public:
    * @brief Clear all callbacks
    */
   virtual void ClearCallbacks() noexcept = 0;
+
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS
+  //==============================================//
+
+  /**
+   * @brief Get PIO operation statistics
+   * @param statistics Reference to store statistics data
+   * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_pio_err_t GetStatistics(hf_pio_statistics_t &statistics) const noexcept {
+    (void)statistics;
+    return hf_pio_err_t::PIO_ERR_NOT_SUPPORTED;
+  }
+
+  /**
+   * @brief Get PIO diagnostic information
+   * @param diagnostics Reference to store diagnostics data
+   * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t &diagnostics) const noexcept {
+    (void)diagnostics;
+    return hf_pio_err_t::PIO_ERR_NOT_SUPPORTED;
+  }
 
 protected:
   /**

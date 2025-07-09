@@ -148,6 +148,32 @@ struct hf_pwm_timer_config_t {
         resolution_bits(12), alignment(hf_pwm_alignment_t::EdgeAligned) {}
 };
 
+/**
+ * @brief PWM operating mode
+ */
+enum class hf_pwm_mode_t : uint8_t {
+  Basic = 0,    ///< Basic mode (direct duty updates)
+  Fade = 1      ///< Fade mode (using hardware fade functionality)
+};
+
+/**
+ * @brief PWM unit configuration structure
+ */
+struct hf_pwm_unit_config_t {
+  uint8_t unit_id;                    ///< PWM unit identifier
+  hf_pwm_mode_t mode;                 ///< Operating mode
+  uint32_t base_clock_hz;             ///< Base clock frequency
+  hf_pwm_clock_source_t clock_source; ///< Clock source selection
+  bool enable_fade;                   ///< Enable hardware fade support
+  bool enable_interrupts;             ///< Enable interrupt support
+  
+  // Default constructor with sensible defaults
+  hf_pwm_unit_config_t() noexcept
+      : unit_id(0), mode(hf_pwm_mode_t::Basic), base_clock_hz(80000000),
+        clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT),
+        enable_fade(true), enable_interrupts(false) {}
+};
+
 //--------------------------------------
 //  PWM Status and Information
 //--------------------------------------
@@ -182,6 +208,42 @@ struct hf_pwm_capabilities_t {
   bool supports_center_aligned; ///< Supports center-aligned PWM
   bool supports_deadtime;       ///< Supports deadtime insertion
   bool supports_phase_shift;    ///< Supports phase shifting
+};
+
+/**
+ * @brief PWM statistics information
+ */
+struct hf_pwm_statistics_t {
+  uint32_t duty_updates_count;     ///< Total duty cycle updates
+  uint32_t frequency_changes_count; ///< Total frequency changes
+  uint32_t fade_operations_count;   ///< Total fade operations
+  uint32_t error_count;            ///< Total error count
+  uint32_t channel_enables_count;  ///< Total channel enable operations
+  uint32_t channel_disables_count; ///< Total channel disable operations
+  uint64_t last_activity_timestamp; ///< Last activity timestamp
+  uint64_t initialization_timestamp; ///< Initialization timestamp
+
+  hf_pwm_statistics_t() noexcept
+      : duty_updates_count(0), frequency_changes_count(0), fade_operations_count(0),
+        error_count(0), channel_enables_count(0), channel_disables_count(0),
+        last_activity_timestamp(0), initialization_timestamp(0) {}
+};
+
+/**
+ * @brief PWM diagnostics information
+ */
+struct hf_pwm_diagnostics_t {
+  bool hardware_initialized;     ///< Hardware is initialized
+  bool fade_functionality_ready; ///< Hardware fade is ready
+  uint8_t active_channels;       ///< Number of active channels
+  uint8_t active_timers;         ///< Number of active timers
+  uint32_t system_uptime_ms;     ///< System uptime in milliseconds
+  hf_pwm_err_t last_global_error; ///< Last global error
+
+  hf_pwm_diagnostics_t() noexcept
+      : hardware_initialized(false), fade_functionality_ready(false),
+        active_channels(0), active_timers(0), system_uptime_ms(0),
+        last_global_error(hf_pwm_err_t::PWM_SUCCESS) {}
 };
 
 //--------------------------------------
@@ -250,7 +312,48 @@ public:
    * @brief Check if PWM system is initialized
    * @return true if initialized, false otherwise
    */
-  virtual bool IsInitialized() const noexcept = 0;
+  [[nodiscard]] bool IsInitialized() const noexcept {
+    return initialized_;
+  }
+
+  /**
+   * @brief Ensure PWM is initialized (lazy initialization pattern)
+   * @return true if initialized successfully, false on failure
+   * @note This method should be called at the beginning of all public methods
+   *       that require initialization. It implements lazy initialization.
+   */
+  bool EnsureInitialized() noexcept {
+    if (!initialized_) {
+      initialized_ = (Initialize() == hf_pwm_err_t::PWM_SUCCESS);
+    }
+    return initialized_;
+  }
+
+  /**
+   * @brief Ensure PWM is deinitialized (lazy deinitialization pattern)
+   * @return true if deinitialized successfully, false on failure
+   * @note This method can be called to ensure proper cleanup when needed.
+   */
+  bool EnsureDeinitialized() noexcept {
+    if (initialized_) {
+      initialized_ = !(Deinitialize() == hf_pwm_err_t::PWM_SUCCESS);
+      return !initialized_;
+    }
+    return true;
+  }
+
+  /**
+   * @brief Set PWM operating mode
+   * @param mode Operating mode (Basic or Fade)
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  virtual hf_pwm_err_t SetMode(hf_pwm_mode_t mode) noexcept = 0;
+
+  /**
+   * @brief Get current PWM operating mode
+   * @return Current operating mode
+   */
+  virtual hf_pwm_mode_t GetMode() const noexcept = 0;
 
   //==============================================================================
   // CHANNEL MANAGEMENT
@@ -396,6 +499,20 @@ public:
    */
   virtual hf_pwm_err_t GetLastError(hf_channel_id_t channel_id) const noexcept = 0;
 
+  /**
+   * @brief Get PWM statistics
+   * @param statistics Statistics structure to fill
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  virtual hf_pwm_err_t GetStatistics(hf_pwm_statistics_t &statistics) const noexcept = 0;
+
+  /**
+   * @brief Get PWM diagnostics
+   * @param diagnostics Diagnostics structure to fill
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  virtual hf_pwm_err_t GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noexcept = 0;
+
   //==============================================================================
   // CALLBACKS
   //==============================================================================
@@ -468,9 +585,11 @@ public:
   }
 
 protected:
-  BasePwm() noexcept = default;
+  BasePwm() noexcept : initialized_(false) {}
   BasePwm(const BasePwm &) = delete;
   BasePwm &operator=(const BasePwm &) = delete;
   BasePwm(BasePwm &&) = delete;
   BasePwm &operator=(BasePwm &&) = delete;
+
+  bool initialized_; ///< Initialization state
 };

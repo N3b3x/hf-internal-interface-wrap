@@ -19,33 +19,19 @@
 #include "BaseCan.h"        // For hf_can_err_t and hf_can_message_t
 
 //==============================================================================
-// PLATFORM-SPECIFIC NATIVE TYPE MAPPINGS (ESP32 TWAI)
+// ESSENTIAL CAN TYPES (ESP32)
 //==============================================================================
-
-#ifdef HF_MCU_FAMILY_ESP32
-// ESP32 native TWAI type mappings for internal use only
-using hf_can_handle_native_t = twai_handle_t;
-using hf_can_message_native_t = twai_frame_t;
-using hf_can_status_info_native_t = twai_status_info_t;
-#else
-// Non-ESP32 platforms - generic placeholders
-using hf_can_handle_native_t = void*;
-using hf_can_message_native_t = struct { int dummy; };
-using hf_can_status_info_native_t = struct { int dummy; };
-#endif
 
 //==============================================================================
 // ESSENTIAL CAN ENUMS (ESP32 SPECIFIC)
 //==============================================================================
-
-#ifdef HF_MCU_FAMILY_ESP32
 
 /**
  * @brief CAN controller ID for ESP32 family.
  */
 enum class hf_can_controller_id_t : uint8_t {
   HF_CAN_CONTROLLER_0 = 0,   ///< Primary CAN controller
-  HF_CAN_CONTROLLER_1 = 1,   ///< Secondary CAN controller (ESP32C6 only)
+  HF_CAN_CONTROLLER_1 = 1,   ///< Secondary CAN controller (ESP32 only)
 };
 
 /**
@@ -69,27 +55,7 @@ enum class hf_can_operation_type_t : uint8_t {
     HF_CAN_OP_DEINIT = 5,    ///< Deinitialization operation
     HF_CAN_OP_RESET = 6,     ///< Reset operation
     HF_CAN_OP_RECOVER = 7,   ///< Bus recovery operation
-};
-
-#else
-// Non-ESP32 platforms - simplified enums
-enum class hf_can_controller_id_t : uint8_t {
-  HF_CAN_CONTROLLER_0 = 0,
-};
-
-enum class hf_can_mode_t : uint8_t {
-  HF_CAN_MODE_NORMAL = 0,
-  HF_CAN_MODE_NO_ACK = 1,
-  HF_CAN_MODE_LISTEN_ONLY = 2,
-};
-
-enum class hf_can_operation_type_t : uint8_t {
-    HF_CAN_OP_SEND = 0,
-    HF_CAN_OP_RECEIVE = 1,
-    HF_CAN_OP_FILTER = 2,
-    HF_CAN_OP_ALERT = 3,
-};
-#endif
+};  
 
 //==============================================================================
 // ESSENTIAL CAN CONFIGURATION STRUCTURES (MINIMAL)

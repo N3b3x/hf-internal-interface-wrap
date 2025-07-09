@@ -85,6 +85,44 @@ struct hf_timer_stats_t {
 };
 
 /**
+ * @brief Timer operation statistics.
+ */
+struct hf_timer_statistics_t {
+  uint32_t totalStarts;          ///< Total timer starts
+  uint32_t totalStops;           ///< Total timer stops
+  uint32_t callbackExecutions;   ///< Number of callback executions
+  uint32_t missedCallbacks;      ///< Number of missed callbacks
+  uint32_t averageCallbackTimeUs; ///< Average callback execution time (microseconds)
+  uint32_t maxCallbackTimeUs;    ///< Maximum callback execution time
+  uint32_t minCallbackTimeUs;    ///< Minimum callback execution time
+  uint64_t totalRunningTimeUs;   ///< Total running time in microseconds
+
+  hf_timer_statistics_t()
+      : totalStarts(0), totalStops(0), callbackExecutions(0), missedCallbacks(0),
+        averageCallbackTimeUs(0), maxCallbackTimeUs(0), minCallbackTimeUs(UINT32_MAX),
+        totalRunningTimeUs(0) {}
+};
+
+/**
+ * @brief Timer diagnostic information.
+ */
+struct hf_timer_diagnostics_t {
+  bool timerHealthy;             ///< Overall timer health status
+  hf_timer_err_t lastErrorCode;  ///< Last error code
+  uint32_t lastErrorTimestamp;   ///< Last error timestamp
+  uint32_t consecutiveErrors;    ///< Consecutive error count
+  bool timerInitialized;         ///< Timer initialization status
+  bool timerRunning;             ///< Timer running status
+  uint64_t currentPeriodUs;      ///< Current timer period in microseconds
+  uint64_t timerResolutionUs;    ///< Timer resolution in microseconds
+
+  hf_timer_diagnostics_t()
+      : timerHealthy(true), lastErrorCode(hf_timer_err_t::TIMER_SUCCESS), lastErrorTimestamp(0), 
+          consecutiveErrors(0), timerInitialized(false), timerRunning(false), 
+          currentPeriodUs(0), timerResolutionUs(0) {}
+};
+
+/**
  * @brief Timer callback function type.
  * @param user_data User-provided data passed to callback
  */
@@ -252,6 +290,30 @@ public:
    */
   void *GetUserData() const noexcept {
     return user_data_;
+  }
+
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS
+  //==============================================//
+
+  /**
+   * @brief Get timer operation statistics
+   * @param statistics Reference to store statistics data
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, TIMER_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_timer_err_t GetStatistics(hf_timer_statistics_t &statistics) const noexcept {
+    (void)statistics;
+    return hf_timer_err_t::TIMER_ERR_NOT_SUPPORTED;
+  }
+
+  /**
+   * @brief Get timer diagnostic information
+   * @param diagnostics Reference to store diagnostics data
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, TIMER_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept {
+    (void)diagnostics;
+    return hf_timer_err_t::TIMER_ERR_NOT_SUPPORTED;
   }
 
 protected:

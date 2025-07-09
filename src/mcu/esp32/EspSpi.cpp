@@ -18,7 +18,7 @@
 #include <cstring>
 #include <vector>
 
-// Platform-specific includes
+
 #ifdef HF_MCU_FAMILY_ESP32
 #include "driver/gpio.h"
 #include "driver/spi_master.h"
@@ -27,7 +27,6 @@
 #include "esp_timer.h"
 
 static const char *TAG = "EspSpi";
-#endif
 
 //==============================================//
 // CONSTRUCTOR & DESTRUCTOR                     //
@@ -144,7 +143,6 @@ hf_spi_err_t EspSpi::SetChipSelect(bool active) noexcept {
   }
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-#ifdef HF_MCU_FAMILY_ESP32
   const hf_spi_bus_config_t &cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
 
   if (cfg.cs_pin != HF_INVALID_PIN) {
@@ -154,7 +152,6 @@ hf_spi_err_t EspSpi::SetChipSelect(bool active) noexcept {
     last_error_ = hf_spi_err_t::SPI_SUCCESS;
     return last_error_;
   }
-#endif
 
   last_error_ = hf_spi_err_t::SPI_ERR_CS_CONTROL_FAILED;
   return last_error_;
@@ -233,12 +230,8 @@ bool EspSpi::SetDmaEnabled(bool enable) noexcept {
 }
 
 uint32_t EspSpi::GetBusStatus() noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   // Return platform-specific status information
   return static_cast<uint32_t>(last_error_) | (cs_active_ ? 0x80000000 : 0);
-#else
-  return 0;
-#endif
 }
 
 hf_spi_err_t EspSpi::TransferSequence(const SpiTransfer *transfers,
@@ -276,10 +269,7 @@ hf_spi_err_t EspSpi::TransferWithTiming(const uint8_t *tx_data, uint8_t *rx_data
                                         uint32_t cs_hold_time_us, uint32_t timeout_ms) noexcept {
   hf_spi_err_t result = Transfer(tx_data, rx_data, length, timeout_ms);
   if (result == hf_spi_err_t::SPI_SUCCESS && cs_hold_time_us > 0) {
-    // Platform-specific delay implementation
-#ifdef HF_MCU_FAMILY_ESP32
     esp_rom_delay_us(cs_hold_time_us);
-#endif
   }
 
   return result;
@@ -362,7 +352,6 @@ hf_spi_err_t EspSpi::transferAsync(const uint8_t *tx_data, uint8_t *rx_data, uin
     return hf_spi_err_t::SPI_ERR_TRANSFER_TOO_LONG;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // For simplicity, implement as synchronous operation with callback
   // In a full implementation, this would use ESP-IDF async SPI features
   hf_spi_err_t result = Transfer(tx_data, rx_data, length, DEFAULT_TIMEOUT_MS);
@@ -371,14 +360,6 @@ hf_spi_err_t EspSpi::transferAsync(const uint8_t *tx_data, uint8_t *rx_data, uin
   callback(result, (result == hf_spi_err_t::SPI_SUCCESS) ? length : 0, userData);
 
   return result;
-#else
-  (void)tx_data;
-  (void)rx_data;
-  (void)length;
-  (void)callback;
-  (void)userData;
-  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_spi_err_t EspSpi::cancelAsyncOperation(uint32_t operation_id) noexcept {
@@ -402,7 +383,6 @@ hf_spi_err_t EspSpi::cancelAsyncOperation(uint32_t operation_id) noexcept {
 //==============================================//
 
 hf_spi_err_t EspSpi::ConvertPlatformError(int32_t platform_error) noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   switch (platform_error) {
   case ESP_OK:
     return hf_spi_err_t::SPI_SUCCESS;
@@ -417,14 +397,9 @@ hf_spi_err_t EspSpi::ConvertPlatformError(int32_t platform_error) noexcept {
   default:
     return hf_spi_err_t::SPI_ERR_TRANSFER_FAILED;
   }
-#else
-  (void)platform_error;
-  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 bool EspSpi::PlatformInitialize() noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   const hf_spi_bus_config_t &cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
 
   // Configure SPI bus
@@ -488,13 +463,8 @@ bool EspSpi::PlatformInitialize() noexcept {
       cfg.host, cfg.mosi_pin, cfg.miso_pin, cfg.sclk_pin, cfg.cs_pin, cfg.mode, cfg.clock_speed_hz);
 
   return true;
-#else
-  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-  return false;
-#endif
 }
 
-#ifdef HF_MCU_FAMILY_ESP32
 bool EspSpi::PlatformDeinitialize() noexcept {
   const hf_spi_bus_config_t &cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
 
@@ -514,11 +484,6 @@ bool EspSpi::PlatformDeinitialize() noexcept {
   ESP_LOGI(TAG, "SPI bus deinitialized on host %d", cfg.host);
   return true;
 }
-#else
-bool EspSpi::PlatformDeinitialize() noexcept {
-  return false;
-}
-#endif
 
 hf_spi_err_t EspSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
                                       uint32_t timeout_ms, bool manage_cs) noexcept {
@@ -530,7 +495,6 @@ hf_spi_err_t EspSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, 
                                       bool manage_cs) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-#ifdef HF_MCU_FAMILY_ESP32
   if (!platform_handle_) {
     last_error_ = hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
     return last_error_;
@@ -594,16 +558,6 @@ hf_spi_err_t EspSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, 
   transaction_count_++;
 
   return last_error_;
-#else
-  (void)tx_data;
-  (void)rx_data;
-  (void)length;
-  (void)timeout_ms;
-  (void)transfer_mode;
-  (void)manage_cs;
-  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-  return last_error_;
-#endif
 }
 
 //==============================================//
@@ -661,15 +615,11 @@ hf_spi_err_t EspSpi::resetBus() noexcept {
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Reset the SPI bus
   if (Deinitialize() && Initialize()) {
     return hf_spi_err_t::SPI_SUCCESS;
   }
   return last_error_;
-#else
-  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 //==============================================//
@@ -683,7 +633,6 @@ EspSpi::addDevice(const hf_spi_device_interface_config_t &device_config) noexcep
     return nullptr;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   const hf_spi_bus_config_t &cfg = use_advanced_config_ ? advanced_config_.base_config : config_;
   spi_host_device_t host = static_cast<spi_host_device_t>(cfg.host);
   spi_device_handle_t device_handle;
@@ -697,11 +646,6 @@ EspSpi::addDevice(const hf_spi_device_interface_config_t &device_config) noexcep
     last_error_ = ConvertPlatformError(err);
     return nullptr;
   }
-#else
-  (void)device_config;
-  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-  return nullptr;
-#endif
 }
 
 hf_spi_err_t EspSpi::removeDevice(hf_spi_device_handle_t device_handle) noexcept {
@@ -713,7 +657,6 @@ hf_spi_err_t EspSpi::removeDevice(hf_spi_device_handle_t device_handle) noexcept
     return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   esp_err_t err = spi_bus_remove_device(device_handle);
   if (err == ESP_OK) {
     // Remove from our list
@@ -727,10 +670,6 @@ hf_spi_err_t EspSpi::removeDevice(hf_spi_device_handle_t device_handle) noexcept
     last_error_ = ConvertPlatformError(err);
     return last_error_;
   }
-#else
-  (void)device_handle;
-  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_spi_err_t EspSpi::selectDevice(hf_spi_device_handle_t device_handle) noexcept {
@@ -807,7 +746,6 @@ hf_spi_err_t EspSpi::transferAdvanced(const hf_spi_transaction_t &transaction,
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   hf_spi_device_handle_t device = current_device_ ? current_device_ : platform_handle_;
   if (!device) {
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
@@ -822,11 +760,6 @@ hf_spi_err_t EspSpi::transferAdvanced(const hf_spi_transaction_t &transaction,
 
   last_error_ = ConvertPlatformError(err);
   return last_error_;
-#else
-  (void)transaction;
-  (void)timeout_ms;
-  return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_spi_err_t EspSpi::transferPolling(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
@@ -1045,7 +978,6 @@ hf_spi_err_t EspSpi::suspendBus() noexcept {
     return hf_spi_err_t::SPI_SUCCESS; // Already suspended
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // On ESP32, we can't truly suspend the SPI bus, but we can release it
   // and mark it as suspended for power management awareness
   bus_suspended_ = true;
@@ -1058,10 +990,6 @@ hf_spi_err_t EspSpi::suspendBus() noexcept {
 
   last_error_ = hf_spi_err_t::SPI_SUCCESS;
   return last_error_;
-#else
-  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-  return last_error_;
-#endif
 }
 
 hf_spi_err_t EspSpi::resumeBus() noexcept {
@@ -1075,7 +1003,6 @@ hf_spi_err_t EspSpi::resumeBus() noexcept {
     return hf_spi_err_t::SPI_SUCCESS; // Already active
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   bus_suspended_ = false;
   ESP_LOGD(TAG, "SPI bus resumed from suspended state");
 
@@ -1086,10 +1013,6 @@ hf_spi_err_t EspSpi::resumeBus() noexcept {
 
   last_error_ = hf_spi_err_t::SPI_SUCCESS;
   return last_error_;
-#else
-  last_error_ = hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
-  return last_error_;
-#endif
 }
 
 hf_spi_err_t EspSpi::setClockSource(hf_spi_clock_source_t clock_source) noexcept {
@@ -1165,3 +1088,5 @@ void EspSpi::setEventCallback(hf_spi_event_callback_t callback, void *userData) 
   event_callback_ = callback;
   event_user_data_ = userData;
 }
+
+#endif // HF_MCU_FAMILY_ESP32

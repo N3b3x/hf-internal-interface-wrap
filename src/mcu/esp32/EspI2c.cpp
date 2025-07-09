@@ -54,6 +54,118 @@
 #include "esp_check.h"
 
 static const char* TAG = "EspI2c";
+
+// Constants for I2C operations
+static constexpr uint32_t AUTO_SUSPEND_DELAY_MS = 5000; // 5 seconds
+
+//==============================================================================
+// ESP32 VARIANT-SPECIFIC PORT TO GPIO MAPPING
+//==============================================================================
+
+// ESP32-C6 I2C port to GPIO mapping
+#ifdef HF_MCU_ESP32C6
+static constexpr gpio_num_t PORT_TO_SCL_GPIO[] = {
+    GPIO_NUM_6,   // I2C0 SCL default
+};
+
+static constexpr gpio_num_t PORT_TO_SDA_GPIO[] = {
+    GPIO_NUM_7,   // I2C0 SDA default
+};
+
+// ESP32 Classic I2C port to GPIO mapping  
+#elif defined(HF_MCU_ESP32)
+static constexpr gpio_num_t PORT_TO_SCL_GPIO[] = {
+    GPIO_NUM_22,  // I2C0 SCL default
+    GPIO_NUM_25,  // I2C1 SCL default
+};
+
+static constexpr gpio_num_t PORT_TO_SDA_GPIO[] = {
+    GPIO_NUM_21,  // I2C0 SDA default
+    GPIO_NUM_26,  // I2C1 SDA default
+};
+
+// ESP32-S2 I2C port to GPIO mapping
+#elif defined(HF_MCU_ESP32S2)
+static constexpr gpio_num_t PORT_TO_SCL_GPIO[] = {
+    GPIO_NUM_9,   // I2C0 SCL default
+    GPIO_NUM_7,   // I2C1 SCL default
+};
+
+static constexpr gpio_num_t PORT_TO_SDA_GPIO[] = {
+    GPIO_NUM_8,   // I2C0 SDA default
+    GPIO_NUM_6,   // I2C1 SDA default
+};
+
+// ESP32-S3 I2C port to GPIO mapping
+#elif defined(HF_MCU_ESP32S3)
+static constexpr gpio_num_t PORT_TO_SCL_GPIO[] = {
+    GPIO_NUM_9,   // I2C0 SCL default
+    GPIO_NUM_18,  // I2C1 SCL default
+};
+
+static constexpr gpio_num_t PORT_TO_SDA_GPIO[] = {
+    GPIO_NUM_8,   // I2C0 SDA default
+    GPIO_NUM_17,  // I2C1 SDA default
+};
+
+// ESP32-C3 I2C port to GPIO mapping
+#elif defined(HF_MCU_ESP32C3)
+static constexpr gpio_num_t PORT_TO_SCL_GPIO[] = {
+    GPIO_NUM_8,   // I2C0 SCL default
+};
+
+static constexpr gpio_num_t PORT_TO_SDA_GPIO[] = {
+    GPIO_NUM_10,  // I2C0 SDA default
+};
+
+// ESP32-C2 I2C port to GPIO mapping
+#elif defined(HF_MCU_ESP32C2)
+static constexpr gpio_num_t PORT_TO_SCL_GPIO[] = {
+    GPIO_NUM_8,   // I2C0 SCL default
+};
+
+static constexpr gpio_num_t PORT_TO_SDA_GPIO[] = {
+    GPIO_NUM_10,  // I2C0 SDA default
+};
+
+// ESP32-H2 I2C port to GPIO mapping
+#elif defined(HF_MCU_ESP32H2)
+static constexpr gpio_num_t PORT_TO_SCL_GPIO[] = {
+    GPIO_NUM_4,   // I2C0 SCL default
+};
+
+static constexpr gpio_num_t PORT_TO_SDA_GPIO[] = {
+    GPIO_NUM_5,   // I2C0 SDA default
+};
+
+#else
+#error "Unknown ESP32 variant! I2C GPIO mapping requires platform-specific configuration."
+#endif
+
+/**
+ * @brief Get default SCL GPIO for I2C port.
+ * @param port_num I2C port number
+ * @return GPIO number or GPIO_NUM_NC if invalid
+ */
+static gpio_num_t GetDefaultSclGpio(i2c_port_t port_num) noexcept {
+    if (port_num >= 0 && port_num < (sizeof(PORT_TO_SCL_GPIO) / sizeof(PORT_TO_SCL_GPIO[0]))) {
+        return PORT_TO_SCL_GPIO[port_num];
+    }
+    return GPIO_NUM_NC;
+}
+
+/**
+ * @brief Get default SDA GPIO for I2C port.
+ * @param port_num I2C port number  
+ * @return GPIO number or GPIO_NUM_NC if invalid
+ */
+static gpio_num_t GetDefaultSdaGpio(i2c_port_t port_num) noexcept {
+    if (port_num >= 0 && port_num < (sizeof(PORT_TO_SDA_GPIO) / sizeof(PORT_TO_SDA_GPIO[0]))) {
+        return PORT_TO_SDA_GPIO[port_num];
+    }
+    return GPIO_NUM_NC;
+}
+
 #endif
 
 //==============================================================================
@@ -65,19 +177,20 @@ static const char* TAG = "EspI2c";
  * @param config Master bus configuration with ESP-IDF v5.5+ features
  */
 EspI2c::EspI2c(const hf_i2c_master_bus_config_t& config) noexcept
-    : BaseI2c({}), // Initialize base with empty config for now
-      bus_config_(config),
-      initialized_(false),
-      last_error_(hf_i2c_err_t::I2C_SUCCESS),
-      master_bus_handle_(nullptr),
-      bus_locked_(false),
-      next_operation_id_(1),
-      event_callback_(nullptr),
-      event_callback_userdata_(nullptr),
-      last_operation_time_us_(0),
-      current_power_mode_(hf_i2c_power_mode_t::HF_I2C_POWER_FULL),
-      bus_suspended_(false),
-      auto_suspend_timer_(nullptr)
+    : BaseI2c({}) // Initialize base with empty config for now
+    , bus_config_(config)
+    , master_bus_handle_(nullptr)
+    , initialized_(false)
+    , bus_suspended_(false)
+    , current_power_mode_(hf_i2c_power_mode_t::HF_I2C_POWER_FULL)
+    , last_error_(hf_i2c_err_t::I2C_SUCCESS)
+    , last_operation_time_us_(0)
+    , event_callback_(nullptr)
+    , event_user_data_(nullptr)
+    , statistics_{}
+    , diagnostics_{}
+    , mutex_()
+    , stats_mutex_()
 {
     // Reset statistics and diagnostics to clean state
     statistics_.Reset();
@@ -93,8 +206,6 @@ EspI2c::~EspI2c() noexcept {
     if (initialized_.load()) {
         Deinitialize();
     }
-
-#ifdef HF_MCU_FAMILY_ESP32
     // Clean up all device handles
     for (auto& [addr, handle] : device_handles_) {
         if (handle) {
@@ -102,20 +213,12 @@ EspI2c::~EspI2c() noexcept {
         }
     }
     device_handles_.clear();
-    device_configs_.clear();
 
     // Clean up master bus handle
     if (master_bus_handle_) {
         i2c_del_master_bus(master_bus_handle_);
         master_bus_handle_ = nullptr;
     }
-    
-    // Clean up timers and other resources
-    DestroyAutoSuspendTimer();
-    
-    // Clear any pending async operations
-    async_operations_.clear();
-#endif
 }
 
 //==============================================================================
@@ -133,17 +236,17 @@ bool EspI2c::Initialize() noexcept {
         return true; // Already initialized
     }
 
-    RtosUniqueLock<RtosMutex> lock(mutex_);
+    MutexLockGuard lock(mutex_);
 
     // Validate configuration parameters
     if (!I2C_IS_VALID_PORT(bus_config_.i2c_port)) {
         last_error_ = hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
-        ESP_LOGE(TAG, "Invalid I2C port: %d", bus_config_.i2c_port);
+        ESP_LOGE(TAG, "Invalid I2C port: %d", static_cast<int>(bus_config_.i2c_port));
         return false;
     }
 
-    if (bus_config_.sda_io_num == static_cast<GpioNum>(HF_INVALID_PIN) || 
-        bus_config_.scl_io_num == static_cast<GpioNum>(HF_INVALID_PIN)) {
+    if (bus_config_.sda_io_num == static_cast<hf_pin_num_t>(HF_INVALID_PIN) || 
+        bus_config_.scl_io_num == static_cast<hf_pin_num_t>(HF_INVALID_PIN)) {
         last_error_ = hf_i2c_err_t::I2C_ERR_PIN_CONFIGURATION_ERROR;
         ESP_LOGE(TAG, "Invalid GPIO pins: SDA=%d, SCL=%d", 
                  static_cast<int>(bus_config_.sda_io_num), 
@@ -151,14 +254,13 @@ bool EspI2c::Initialize() noexcept {
         return false;
     }
 
-#ifdef HF_MCU_FAMILY_ESP32
     // Create ESP-IDF v5.5+ master bus configuration
     i2c_master_bus_config_t esp_config = {};
-    esp_config.i2c_port = static_cast<i2c_port_t>(bus_config_.i2c_port);
+    esp_config.i2c_port = bus_config_.i2c_port;
     esp_config.sda_io_num = static_cast<gpio_num_t>(bus_config_.sda_io_num);
     esp_config.scl_io_num = static_cast<gpio_num_t>(bus_config_.scl_io_num);
     esp_config.clk_source = static_cast<i2c_clock_source_t>(bus_config_.clk_source);
-    esp_config.glitch_ignore_cnt = bus_config_.glitch_ignore_cnt;
+    esp_config.glitch_ignore_cnt = static_cast<uint8_t>(bus_config_.glitch_ignore_cnt);
     esp_config.enable_internal_pullup = bus_config_.enable_internal_pullup;
     esp_config.trans_queue_depth = bus_config_.trans_queue_depth;
     esp_config.flags = bus_config_.flags;
@@ -171,16 +273,7 @@ bool EspI2c::Initialize() noexcept {
         return false;
     }
 
-    // Create auto-suspend timer if power management is enabled
-    if (bus_config_.allow_pd) {
-        CreateAutoSuspendTimer();
-    }
-
-    // Update diagnostics
-    UpdateDiagnostics();
-
-    ESP_LOGI(TAG, "I2C master bus initialized successfully on port %d", bus_config_.i2c_port);
-#endif
+    ESP_LOGI(TAG, "I2C master bus initialized successfully on port %d", static_cast<int>(bus_config_.i2c_port));
 
     initialized_.store(true);
     last_error_ = hf_i2c_err_t::I2C_SUCCESS;
@@ -194,19 +287,11 @@ bool EspI2c::Initialize() noexcept {
  * @return true if successful, false otherwise
  */
 bool EspI2c::Deinitialize() noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return true; // Already deinitialized
     }
 
-    RtosUniqueLock<RtosMutex> lock(mutex_);
-
-#ifdef HF_MCU_FAMILY_ESP32
-    // Cancel all pending async operations
-    for (auto& [op_id, op_data] : async_operations_) {
-        // Signal cancellation to any waiting tasks
-        // Implementation would depend on the async mechanism used
-    }
-    async_operations_.clear();
+    MutexLockGuard lock(mutex_);
 
     // Remove all devices from the bus
     for (auto& [addr, handle] : device_handles_) {
@@ -218,7 +303,6 @@ bool EspI2c::Deinitialize() noexcept {
         }
     }
     device_handles_.clear();
-    device_configs_.clear();
 
     // Destroy the master bus
     if (master_bus_handle_) {
@@ -231,15 +315,11 @@ bool EspI2c::Deinitialize() noexcept {
         master_bus_handle_ = nullptr;
     }
 
-    // Clean up auto-suspend timer
-    DestroyAutoSuspendTimer();
-
     ESP_LOGI(TAG, "I2C master bus deinitialized successfully");
-#endif
 
     initialized_.store(false);
     bus_suspended_.store(false);
-    current_power_mode_.store(I2cPowerMode::FULL_POWER);
+    current_power_mode_.store(hf_i2c_power_mode_t::HF_I2C_POWER_FULL);
     last_error_ = hf_i2c_err_t::I2C_SUCCESS;
     return true;
 }
@@ -254,7 +334,7 @@ bool EspI2c::Deinitialize() noexcept {
  */
 hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t length,
                        uint32_t timeout_ms) noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -270,12 +350,13 @@ hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t le
         return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
     }
 
+    MutexLockGuard lock(mutex_);
+    
     uint64_t start_time = esp_timer_get_time();
     hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
-#ifdef HF_MCU_FAMILY_ESP32
     // Get or create device handle
-    I2cMasterDevHandle dev_handle = GetOrCreateDeviceHandle(device_addr);
+    i2c_master_dev_handle_t dev_handle = GetOrCreateDeviceHandle(device_addr);
     if (!dev_handle) {
         return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
@@ -293,15 +374,11 @@ hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t le
         ESP_LOGW(TAG, "I2C write failed: addr=0x%02X, len=%d, error=%s", 
                  device_addr, length, esp_err_to_name(ret));
     }
-#endif
 
     // Update statistics and diagnostics
     uint64_t operation_time = esp_timer_get_time() - start_time;
     UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
-    
-    // Restart auto-suspend timer if enabled
-    StartAutoSuspendTimer();
 
     last_error_ = result;
     return result;
@@ -317,7 +394,7 @@ hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t le
  */
 hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
                       uint32_t timeout_ms) noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -333,12 +410,13 @@ hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
         return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
     }
 
+    MutexLockGuard lock(mutex_);
+    
     uint64_t start_time = esp_timer_get_time();
     hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
-#ifdef HF_MCU_FAMILY_ESP32
     // Get or create device handle
-    I2cMasterDevHandle dev_handle = GetOrCreateDeviceHandle(device_addr);
+    i2c_master_dev_handle_t dev_handle = GetOrCreateDeviceHandle(device_addr);
     if (!dev_handle) {
         return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
@@ -356,15 +434,11 @@ hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
         ESP_LOGW(TAG, "I2C read failed: addr=0x%02X, len=%d, error=%s", 
                  device_addr, length, esp_err_to_name(ret));
     }
-#endif
 
     // Update statistics and diagnostics
     uint64_t operation_time = esp_timer_get_time() - start_time;
     UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
-    
-    // Restart auto-suspend timer if enabled
-    StartAutoSuspendTimer();
 
     last_error_ = result;
     return result;
@@ -383,7 +457,7 @@ hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
 hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint16_t tx_length,
                            uint8_t* rx_data, uint16_t rx_length, 
                            uint32_t timeout_ms) noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -399,12 +473,49 @@ hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint
         return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
     }
 
+    MutexLockGuard lock(mutex_);
+    
     uint64_t start_time = esp_timer_get_time();
     hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
-#ifdef HF_MCU_FAMILY_ESP32
     // Get or create device handle
-    I2cMasterDevHandle dev_handle = GetOrCreateDeviceHandle(device_addr);
+    i2c_master_dev_handle_t dev_handle = GetOrCreateDeviceHandle(device_addr);
+    if (!dev_handle) {
+        return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
+    }
+
+    // Perform the write-read operation
+    uint32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    esp_err_t ret = i2c_master_transmit_receive(dev_handle, tx_data, tx_length, 
+                                               rx_data, rx_length,
+                                               static_cast<int>(effective_timeout));
+    
+    result = ConvertEspError(ret);
+    
+    if (result == hf_i2c_err_t::I2C_SUCCESS) {
+        ESP_LOGD(TAG, "I2C write-read successful: addr=0x%02X, tx_len=%d, rx_len=%d", 
+                 device_addr, tx_length, rx_length);
+    } else {
+        ESP_LOGW(TAG, "I2C write-read failed: addr=0x%02X, tx_len=%d, rx_len=%d, error=%s", 
+                 device_addr, tx_length, rx_length, esp_err_to_name(ret));
+    }
+
+    // Update statistics and diagnostics
+    uint64_t operation_time = esp_timer_get_time() - start_time;
+    UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, tx_length + rx_length, operation_time);
+    last_operation_time_us_.store(esp_timer_get_time());
+
+    last_error_ = result;
+    return result;
+}
+
+    MutexLockGuard lock(mutex_);
+    
+    uint64_t start_time = esp_timer_get_time();
+    hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
+
+    // Get or create device handle
+    i2c_master_dev_handle_t dev_handle = GetOrCreateDeviceHandle(device_addr);
     if (!dev_handle) {
         return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
@@ -424,15 +535,11 @@ hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint
         ESP_LOGW(TAG, "I2C write-read failed: addr=0x%02X, tx_len=%d, rx_len=%d, error=%s", 
                  device_addr, tx_length, rx_length, esp_err_to_name(ret));
     }
-#endif
 
     // Update statistics and diagnostics
     uint64_t operation_time = esp_timer_get_time() - start_time;
     UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, tx_length + rx_length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
-    
-    // Restart auto-suspend timer if enabled
-    StartAutoSuspendTimer();
 
     last_error_ = result;
     return result;
@@ -447,8 +554,8 @@ hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint
  * @param device_config Device configuration with ESP-IDF v5.5+ features
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
-    if (!initialized_.load()) {
+hf_i2c_err_t EspI2c::AddDevice(const hf_i2c_device_config_t& device_config) noexcept {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -456,7 +563,7 @@ hf_i2c_err_t EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
         return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
-    RtosUniqueLock<RtosMutex> lock(mutex_);
+    MutexLockGuard lock(mutex_);
 
     // Check if device already exists
     if (device_handles_.find(device_config.device_address) != device_handles_.end()) {
@@ -464,7 +571,6 @@ hf_i2c_err_t EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
         return hf_i2c_err_t::I2C_ERR_ALREADY_INITIALIZED;
     }
 
-#ifdef HF_MCU_FAMILY_ESP32
     // Create ESP-IDF device configuration
     i2c_device_config_t esp_dev_config = {};
     esp_dev_config.dev_addr_length = static_cast<i2c_addr_bit_len_t>(device_config.dev_addr_length);
@@ -472,27 +578,26 @@ hf_i2c_err_t EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
     esp_dev_config.scl_speed_hz = device_config.scl_speed_hz;
 
     // Add device to the bus
-    I2cMasterDevHandle dev_handle;
+    i2c_master_dev_handle_t dev_handle;
     esp_err_t ret = i2c_master_bus_add_device(master_bus_handle_, &esp_dev_config, &dev_handle);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to add device 0x%02X: %s", device_config.device_address, esp_err_to_name(ret));
         return ConvertEspError(ret);
     }
 
-    // Store device handle and configuration
+    // Store device handle
     device_handles_[device_config.device_address] = dev_handle;
-    device_configs_[device_config.device_address] = device_config;
 
     ESP_LOGI(TAG, "Device 0x%02X added successfully", device_config.device_address);
-#endif
 
     // Update statistics
     statistics_.devices_added.fetch_add(1);
     
     // Trigger event callback if registered
     if (event_callback_) {
-        event_callback_(I2cEventType::DEVICE_ADDED, const_cast<I2cDeviceConfig*>(&device_config), 
-                       event_callback_userdata_);
+        event_callback_(hf_i2c_event_type_t::HF_I2C_EVENT_DEVICE_ADDED, 
+                       const_cast<hf_i2c_device_config_t*>(&device_config), 
+                       event_user_data_);
     }
 
     return hf_i2c_err_t::I2C_SUCCESS;
@@ -504,18 +609,17 @@ hf_i2c_err_t EspI2c::AddDevice(const I2cDeviceConfig& device_config) noexcept {
  * @return Operation result
  */
 hf_i2c_err_t EspI2c::RemoveDevice(uint16_t device_address) noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
-    RtosUniqueLock<RtosMutex> lock(mutex_);
+    MutexLockGuard lock(mutex_);
 
     auto it = device_handles_.find(device_address);
     if (it == device_handles_.end()) {
         return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
 
-#ifdef HF_MCU_FAMILY_ESP32
     // Remove device from the bus
     esp_err_t ret = i2c_master_bus_rm_device(it->second);
     if (ret != ESP_OK) {
@@ -524,18 +628,17 @@ hf_i2c_err_t EspI2c::RemoveDevice(uint16_t device_address) noexcept {
     }
 
     ESP_LOGI(TAG, "Device 0x%02X removed successfully", device_address);
-#endif
 
     // Remove from our tracking
     device_handles_.erase(it);
-    device_configs_.erase(device_address);
 
     // Update statistics
     statistics_.devices_removed.fetch_add(1);
     
     // Trigger event callback if registered
     if (event_callback_) {
-        event_callback_(I2cEventType::DEVICE_REMOVED, &device_address, event_callback_userdata_);
+        event_callback_(hf_i2c_event_type_t::HF_I2C_EVENT_DEVICE_REMOVED, 
+                       &device_address, event_user_data_);
     }
 
     return hf_i2c_err_t::I2C_SUCCESS;
@@ -549,7 +652,7 @@ hf_i2c_err_t EspI2c::RemoveDevice(uint16_t device_address) noexcept {
  * @brief Get I2C operation statistics.
  * @return Current statistics
  */
-I2cStatistics EspI2c::GetStatistics() const noexcept {
+hf_i2c_statistics_t EspI2c::GetStatistics() const noexcept {
     return statistics_;
 }
 
@@ -564,8 +667,7 @@ void EspI2c::ResetStatistics() noexcept {
  * @brief Get I2C diagnostics information.
  * @return Current diagnostics
  */
-I2cDiagnostics EspI2c::GetDiagnostics() noexcept {
-    UpdateDiagnostics();
+hf_i2c_diagnostics_t EspI2c::GetDiagnostics() const noexcept {
     return diagnostics_;
 }
 
@@ -573,8 +675,7 @@ I2cDiagnostics EspI2c::GetDiagnostics() noexcept {
  * @brief Check if I2C bus is healthy.
  * @return true if bus is healthy, false otherwise
  */
-bool EspI2c::IsBusHealthy() noexcept {
-    UpdateDiagnostics();
+bool EspI2c::IsBusHealthy() const noexcept {
     return diagnostics_.bus_healthy;
 }
 
@@ -583,12 +684,29 @@ bool EspI2c::IsBusHealthy() noexcept {
 //==============================================================================
 
 /**
+ * @brief Validate device address.
+ * @param device_addr Device address to validate
+ * @return true if valid, false otherwise
+ */
+bool EspI2c::IsValidDeviceAddress(uint16_t device_addr) const noexcept {
+    return I2C_IS_VALID_7BIT_ADDR(device_addr) || I2C_IS_VALID_10BIT_ADDR(device_addr);
+}
+
+/**
+ * @brief Get effective timeout value.
+ * @param timeout_ms Requested timeout (0 = use default)
+ * @return Effective timeout in milliseconds
+ */
+uint32_t EspI2c::GetEffectiveTimeout(uint32_t timeout_ms) const noexcept {
+    return (timeout_ms == 0) ? I2C_DEFAULT_TIMEOUT_MS : timeout_ms;
+}
+
+/**
  * @brief Convert ESP-IDF error codes to HardFOC I2C error codes.
  * @param esp_error ESP-IDF esp_err_t error code
  * @return Corresponding hf_i2c_err_t error code
  */
-hf_i2c_err_t EspI2c::ConvertEspError(EspErr esp_error) const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
+hf_i2c_err_t EspI2c::ConvertEspError(esp_err_t esp_error) const noexcept {
     switch (esp_error) {
         case ESP_OK:
             return hf_i2c_err_t::I2C_SUCCESS;
@@ -605,9 +723,6 @@ hf_i2c_err_t EspI2c::ConvertEspError(EspErr esp_error) const noexcept {
         default:
             return hf_i2c_err_t::I2C_ERR_FAILURE;
     }
-#else
-    return hf_i2c_err_t::I2C_ERR_FAILURE;
-#endif
 }
 
 /**
@@ -615,7 +730,7 @@ hf_i2c_err_t EspI2c::ConvertEspError(EspErr esp_error) const noexcept {
  * @param device_addr Device address
  * @return Device handle or nullptr on failure
  */
-I2cMasterDevHandle EspI2c::GetOrCreateDeviceHandle(uint16_t device_addr) noexcept {
+i2c_master_dev_handle_t EspI2c::GetOrCreateDeviceHandle(uint16_t device_addr) noexcept {
     // Check if handle already exists
     auto it = device_handles_.find(device_addr);
     if (it != device_handles_.end()) {
@@ -623,9 +738,9 @@ I2cMasterDevHandle EspI2c::GetOrCreateDeviceHandle(uint16_t device_addr) noexcep
     }
 
     // Create default device configuration and add device
-    I2cDeviceConfig default_config;
+    hf_i2c_device_config_t default_config;
     default_config.device_address = device_addr;
-    default_config.dev_addr_length = I2cAddressBits::ADDR_7_BIT;
+    default_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
     default_config.scl_speed_hz = I2C_STD_CLOCK_SPEED; // 100kHz by default
     
     if (AddDevice(default_config) == hf_i2c_err_t::I2C_SUCCESS) {
@@ -671,6 +786,8 @@ void EspI2c::UpdateStatistics(bool success, size_t bytes_transferred, uint64_t o
  * @brief Update diagnostics information.
  */
 void EspI2c::UpdateDiagnostics() noexcept {
+    MutexLockGuard lock(stats_mutex_);
+    
     // Update basic health status
     diagnostics_.bus_healthy = initialized_.load() && !bus_suspended_.load();
     diagnostics_.bus_locked = bus_locked_.load();
@@ -696,32 +813,13 @@ void EspI2c::UpdateDiagnostics() noexcept {
         }
     }
 
-#ifdef HF_MCU_FAMILY_ESP32
     // Platform-specific diagnostics would go here
-    // For example, reading actual GPIO states
-#endif
-}
-
-/**
- * @brief Validate device address.
- * @param device_addr Device address to validate
- * @return true if valid, false otherwise
- */
-bool EspI2c::IsValidDeviceAddress(uint16_t device_addr) const noexcept {
-    return I2C_IS_VALID_DEVICE_ADDR_7BIT(device_addr) || I2C_IS_VALID_DEVICE_ADDR_10BIT(device_addr);
-}
-
-/**
- * @brief Get effective timeout value.
- * @param timeout_ms Requested timeout (0 = use default)
- * @return Effective timeout value
- */
-uint32_t EspI2c::GetEffectiveTimeout(uint32_t timeout_ms) const noexcept {
-    if (timeout_ms == 0) {
-        return I2C_DEFAULT_TIMEOUT_MS;
+    // For example, reading actual GPIO states for SDA/SCL lines
+    if (master_bus_handle_) {
+        // In a full implementation, we could read GPIO states here
+        diagnostics_.sda_line_state = true; // Placeholder
+        diagnostics_.scl_line_state = true; // Placeholder
     }
-    
-    return std::min(timeout_ms, I2C_MAX_TIMEOUT_MS);
 }
 
 /**
@@ -729,7 +827,6 @@ uint32_t EspI2c::GetEffectiveTimeout(uint32_t timeout_ms) const noexcept {
  * @return true if successful, false otherwise
  */
 bool EspI2c::CreateAutoSuspendTimer() noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
     if (auto_suspend_timer_) {
         return true; // Already created
     }
@@ -737,7 +834,7 @@ bool EspI2c::CreateAutoSuspendTimer() noexcept {
     esp_timer_create_args_t timer_args = {};
     timer_args.callback = [](void* arg) {
         EspI2c* i2c = static_cast<EspI2c*>(arg);
-        if (i2c && i2c->current_power_mode_.load() != I2cPowerMode::FULL_POWER) {
+        if (i2c && i2c->current_power_mode_.load() != hf_i2c_power_mode_t::HF_I2C_POWER_FULL) {
             // Auto-suspend logic would be implemented here
             i2c->bus_suspended_.store(true);
         }
@@ -747,34 +844,27 @@ bool EspI2c::CreateAutoSuspendTimer() noexcept {
 
     esp_err_t ret = esp_timer_create(&timer_args, reinterpret_cast<esp_timer_handle_t*>(&auto_suspend_timer_));
     return ret == ESP_OK;
-#else
-    return true;
-#endif
 }
 
 /**
  * @brief Destroy auto-suspend timer.
  */
 void EspI2c::DestroyAutoSuspendTimer() noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
     if (auto_suspend_timer_) {
         esp_timer_delete(reinterpret_cast<esp_timer_handle_t>(auto_suspend_timer_));
         auto_suspend_timer_ = nullptr;
     }
-#endif
 }
 
 /**
  * @brief Start or restart auto-suspend timer.
  */
 void EspI2c::StartAutoSuspendTimer() noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
     if (auto_suspend_timer_ && bus_config_.allow_pd) {
         esp_timer_stop(reinterpret_cast<esp_timer_handle_t>(auto_suspend_timer_));
         esp_timer_start_once(reinterpret_cast<esp_timer_handle_t>(auto_suspend_timer_), 
                              AUTO_SUSPEND_DELAY_MS * 1000);
     }
-#endif
 }
 
 //==============================================================================
@@ -785,7 +875,7 @@ void EspI2c::StartAutoSuspendTimer() noexcept {
  * @brief Get the current bus configuration.
  * @return Reference to the current configuration
  */
-const I2cMasterBusConfig& EspI2c::GetConfig() const noexcept {
+const hf_i2c_master_bus_config_t& EspI2c::GetConfig() const noexcept {
     return bus_config_;
 }
 
@@ -802,13 +892,12 @@ bool EspI2c::IsBusy() noexcept {
  * @return true if successful, false otherwise
  */
 bool EspI2c::ResetBus() noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return false;
     }
 
     RtosUniqueLock<RtosMutex> lock(mutex_);
 
-#ifdef HF_MCU_FAMILY_ESP32
     if (master_bus_handle_) {
         esp_err_t ret = i2c_master_bus_reset(master_bus_handle_);
         if (ret == ESP_OK) {
@@ -820,7 +909,6 @@ bool EspI2c::ResetBus() noexcept {
             return false;
         }
     }
-#endif
 
     return true;
 }
@@ -866,7 +954,7 @@ bool EspI2c::SetPullUps(bool enable) noexcept {
  * @return true if device responds, false otherwise
  */
 bool EspI2c::ProbeDevice(uint16_t device_addr) noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return false;
     }
 
@@ -874,12 +962,8 @@ bool EspI2c::ProbeDevice(uint16_t device_addr) noexcept {
         return false;
     }
 
-#ifdef HF_MCU_FAMILY_ESP32
     esp_err_t ret = i2c_master_probe(master_bus_handle_, device_addr, I2C_DEFAULT_TIMEOUT_MS);
     return ret == ESP_OK;
-#else
-    return false;
-#endif
 }
 
 /**
@@ -891,7 +975,7 @@ bool EspI2c::ProbeDevice(uint16_t device_addr) noexcept {
  */
 size_t EspI2c::ScanDevices(std::vector<uint16_t>& found_devices,
                            uint16_t start_addr, uint16_t end_addr) noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return 0;
     }
 
@@ -981,12 +1065,12 @@ hf_i2c_err_t EspI2c::ReadMultipleRegisters(uint16_t device_addr, uint8_t start_r
  * @param mode Desired power mode
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::SetPowerMode(I2cPowerMode mode) noexcept {
+hf_i2c_err_t EspI2c::SetPowerMode(hf_i2c_power_mode_t mode) noexcept {
     current_power_mode_.store(mode);
     
     // Trigger event callback if registered
     if (event_callback_) {
-        event_callback_(I2cEventType::POWER_MODE_CHANGED, &mode, event_callback_userdata_);
+        event_callback_(hf_i2c_event_type_t::HF_I2C_EVENT_POWER_MODE_CHANGED, &mode, event_user_data_);
     }
 
     ESP_LOGI(TAG, "Power mode changed to %d", static_cast<int>(mode));
@@ -997,7 +1081,7 @@ hf_i2c_err_t EspI2c::SetPowerMode(I2cPowerMode mode) noexcept {
  * @brief Get current I2C bus power mode.
  * @return Current power mode
  */
-I2cPowerMode EspI2c::GetPowerMode() const noexcept {
+hf_i2c_power_mode_t EspI2c::GetPowerMode() const noexcept {
     return current_power_mode_.load();
 }
 
@@ -1034,14 +1118,14 @@ hf_i2c_err_t EspI2c::ResumeBus() noexcept {
 }
 
 /**
- * @brief Set event callback for I2C operations.
- * @param callback Callback function pointer
+ * @brief Set event callback for I2C events.
+ * @param callback Event callback function
  * @param user_data User data pointer for callback
  */
-void EspI2c::SetEventCallback(I2cEventCallback callback, void* user_data) noexcept {
+void EspI2c::SetEventCallback(hf_i2c_event_callback_t callback, void* user_data) noexcept {
     RtosUniqueLock<RtosMutex> lock(mutex_);
     event_callback_ = callback;
-    event_callback_userdata_ = user_data;
+    event_user_data_ = user_data;
 }
 
 //==============================================================================
@@ -1057,8 +1141,8 @@ void EspI2c::SetEventCallback(I2cEventCallback callback, void* user_data) noexce
  * @return Operation result with operation ID for tracking
  */
 hf_i2c_err_t EspI2c::WriteAsync(uint16_t device_addr, const std::vector<uint8_t>& data,
-                            I2cAsyncCallback callback, void* user_data) noexcept {
-    if (!initialized_.load()) {
+                            hf_i2c_async_callback_t callback, void* user_data) noexcept {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -1090,9 +1174,9 @@ hf_i2c_err_t EspI2c::WriteAsync(uint16_t device_addr, const std::vector<uint8_t>
  * @param user_data User data pointer for callback
  * @return Operation result with operation ID for tracking
  */
-hf_i2c_err_t EspI2c::ReadAsync(uint16_t device_addr, size_t length, I2cAsyncCallback callback,
+hf_i2c_err_t EspI2c::ReadAsync(uint16_t device_addr, size_t length, hf_i2c_async_callback_t callback,
                            void* user_data) noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -1148,8 +1232,8 @@ hf_i2c_err_t EspI2c::CancelAsyncOperation(uint32_t operation_id) noexcept {
  * @param transaction Multi-buffer transaction descriptor
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransaction& transaction) noexcept {
-    if (!initialized_.load()) {
+hf_i2c_err_t EspI2c::ExecuteMultiBufferTransaction(const hf_i2c_multi_buffer_transaction_t& transaction) noexcept {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -1161,9 +1245,8 @@ hf_i2c_err_t EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransacti
         return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
-#ifdef HF_MCU_FAMILY_ESP32
     // Get device handle
-    I2cMasterDevHandle dev_handle = GetOrCreateDeviceHandle(transaction.device_addr);
+    i2c_master_dev_handle_t dev_handle = GetOrCreateDeviceHandle(transaction.device_addr);
     if (!dev_handle) {
         return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
     }
@@ -1173,11 +1256,11 @@ hf_i2c_err_t EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransacti
         esp_err_t ret = ESP_OK;
         
         if (buffer.is_write) {
-            ret = i2c_master_transmit(dev_handle, buffer.data.data(), buffer.data.size(),
+            ret = i2c_master_transmit(dev_handle, buffer.buffer, buffer.length,
                                      static_cast<int>(GetEffectiveTimeout(transaction.timeout_ms)));
         } else {
             // For read operations, we need a mutable buffer
-            std::vector<uint8_t> read_buffer(buffer.expected_read_size);
+            std::vector<uint8_t> read_buffer(buffer.length);
             ret = i2c_master_receive(dev_handle, read_buffer.data(), read_buffer.size(),
                                     static_cast<int>(GetEffectiveTimeout(transaction.timeout_ms)));
             // In a full implementation, we would store the read data back to the transaction
@@ -1192,9 +1275,6 @@ hf_i2c_err_t EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransacti
 
     ESP_LOGD(TAG, "Multi-buffer transaction completed successfully");
     return hf_i2c_err_t::I2C_SUCCESS;
-#else
-    return hf_i2c_err_t::I2C_ERR_NOT_SUPPORTED;
-#endif
 }
 
 /**
@@ -1204,8 +1284,8 @@ hf_i2c_err_t EspI2c::ExecuteMultiBufferTransaction(const I2cMultiBufferTransacti
  * @param user_data User data pointer for callback
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::ExecuteMultiBufferTransactionAsync(const I2cMultiBufferTransaction& transaction,
-                                                    I2cAsyncCallback callback,
+hf_i2c_err_t EspI2c::ExecuteMultiBufferTransactionAsync(const hf_i2c_multi_buffer_transaction_t& transaction,
+                                                    hf_i2c_async_callback_t callback,
                                                     void* user_data) noexcept {
     if (!callback) {
         return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
@@ -1217,7 +1297,7 @@ hf_i2c_err_t EspI2c::ExecuteMultiBufferTransactionAsync(const I2cMultiBufferTran
     // Calculate total bytes transferred (simplified)
     size_t total_bytes = 0;
     for (const auto& buffer : transaction.buffers) {
-        total_bytes += buffer.data.size();
+        total_bytes += buffer.length;
     }
 
     // Call callback with proper signature
@@ -1231,8 +1311,8 @@ hf_i2c_err_t EspI2c::ExecuteMultiBufferTransactionAsync(const I2cMultiBufferTran
  * @param commands Vector of custom commands to execute
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& commands) noexcept {
-    if (!initialized_.load()) {
+hf_i2c_err_t EspI2c::ExecuteCustomSequence(const std::vector<hf_i2c_custom_command_t>& commands) noexcept {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -1244,14 +1324,14 @@ hf_i2c_err_t EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& 
     for (const auto& command : commands) {
         hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
         
-        switch (command.type) {
-            case I2cCommandType::WRITE:
+        switch (command.command_type) {
+            case hf_i2c_command_type_t::HF_I2C_CMD_WRITE:
                 result = Write(static_cast<uint8_t>(command.device_addr), 
                               command.data.data(), static_cast<uint16_t>(command.data.size()),
                               command.timeout_ms);
                 break;
                 
-            case I2cCommandType::READ:
+            case hf_i2c_command_type_t::HF_I2C_CMD_READ:
                 {
                     std::vector<uint8_t> read_buffer(command.expected_read_size);
                     result = Read(static_cast<uint8_t>(command.device_addr),
@@ -1260,7 +1340,7 @@ hf_i2c_err_t EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& 
                 }
                 break;
                 
-            case I2cCommandType::WRITE_READ:
+            case hf_i2c_command_type_t::HF_I2C_CMD_WRITE_READ:
                 {
                     std::vector<uint8_t> read_buffer(command.expected_read_size);
                     result = WriteRead(static_cast<uint8_t>(command.device_addr),
@@ -1270,9 +1350,9 @@ hf_i2c_err_t EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& 
                 }
                 break;
                 
-            case I2cCommandType::DELAY:
+            case hf_i2c_command_type_t::HF_I2C_CMD_DELAY:
                 // Implement delay
-                vTaskDelay(pdMS_TO_TICKS(command.delay_ms));
+                vTaskDelay(pdMS_TO_TICKS(command.delay_us / 1000));
                 break;
                 
             default:
@@ -1298,8 +1378,8 @@ hf_i2c_err_t EspI2c::ExecuteCustomSequence(const std::vector<I2cCustomCommand>& 
  * @param user_data User data pointer for callback
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::ExecuteCustomSequenceAsync(const std::vector<I2cCustomCommand>& commands,
-                                            I2cAsyncCallback callback, void* user_data) noexcept {
+hf_i2c_err_t EspI2c::ExecuteCustomSequenceAsync(const std::vector<hf_i2c_custom_command_t>& commands,
+                                            hf_i2c_async_callback_t callback, void* user_data) noexcept {
     if (!callback) {
         return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
@@ -1333,7 +1413,7 @@ hf_i2c_err_t EspI2c::ExecuteCustomSequenceAsync(const std::vector<I2cCustomComma
  */
 hf_i2c_err_t EspI2c::ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
                                        std::vector<uint8_t>& data, size_t count) noexcept {
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
 
@@ -1368,7 +1448,7 @@ size_t EspI2c::ScanDevices(std::vector<uint16_t>& found_devices,
                            uint16_t start_addr, uint16_t end_addr) noexcept {
     found_devices.clear();
     
-    if (!initialized_.load()) {
+    if (!EnsureInitialized()) {
         return 0;
     }
 
@@ -1384,3 +1464,5 @@ size_t EspI2c::ScanDevices(std::vector<uint16_t>& found_devices,
     ESP_LOGI(TAG, "I2C scan complete. Found %zu devices", found_devices.size());
     return found_devices.size();
 }
+
+#endif // HF_MCU_FAMILY_ESP32

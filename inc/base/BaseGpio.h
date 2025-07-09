@@ -213,6 +213,45 @@ public:
     bool has_callback;                         ///< Callback function is registered
   };
 
+  /**
+   * @brief GPIO operation statistics.
+   */
+  struct hf_gpio_statistics_t {
+    uint32_t totalOperations;        ///< Total GPIO operations performed
+    uint32_t successfulOperations;   ///< Successful operations
+    uint32_t failedOperations;       ///< Failed operations
+    uint32_t stateChanges;           ///< Number of state changes
+    uint32_t directionChanges;       ///< Number of direction changes
+    uint32_t interruptCount;         ///< Number of interrupts received
+    uint32_t averageOperationTimeUs; ///< Average operation time (microseconds)
+    uint32_t maxOperationTimeUs;     ///< Maximum operation time
+    uint32_t minOperationTimeUs;     ///< Minimum operation time
+
+    hf_gpio_statistics_t()
+        : totalOperations(0), successfulOperations(0), failedOperations(0),
+          stateChanges(0), directionChanges(0), interruptCount(0),
+          averageOperationTimeUs(0), maxOperationTimeUs(0), minOperationTimeUs(UINT32_MAX) {}
+  };
+
+  /**
+   * @brief GPIO diagnostic information.
+   */
+  struct hf_gpio_diagnostics_t {
+    bool gpioHealthy;                ///< Overall GPIO health status
+    hf_gpio_err_t lastErrorCode;     ///< Last error code
+    uint32_t lastErrorTimestamp;     ///< Last error timestamp
+    uint32_t consecutiveErrors;      ///< Consecutive error count
+    bool pinAvailable;               ///< Pin availability status
+    bool interruptSupported;         ///< Interrupt support status
+    bool interruptEnabled;           ///< Interrupt enabled status
+    uint32_t currentState;           ///< Current pin state
+
+    hf_gpio_diagnostics_t()
+        : gpioHealthy(true), lastErrorCode(hf_gpio_err_t::GPIO_SUCCESS), lastErrorTimestamp(0), 
+          consecutiveErrors(0), pinAvailable(true), interruptSupported(false), interruptEnabled(false),
+          currentState(0) {}
+  };
+
   //==============================================================//
   // CONSTRUCTORS AND DESTRUCTOR
   //==============================================================//
@@ -271,6 +310,18 @@ public:
       initialized_ = Initialize();
     }
     return initialized_;
+  }
+
+  /**
+   * @brief Ensures the pin is deinitialized (lazy deinitialization).
+   * @return true if deinitialized successfully, false otherwise
+   */
+  bool EnsureDeinitialized() noexcept {
+    if (initialized_) {
+      initialized_ = !Deinitialize();
+      return !initialized_;
+    }
+    return true;
   }
 
   /**
@@ -569,6 +620,30 @@ public:
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   virtual hf_gpio_err_t ClearInterruptStats() noexcept {
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
+  }
+
+  //==============================================================//
+  // STATISTICS AND DIAGNOSTICS
+  //==============================================================//
+
+  /**
+   * @brief Get GPIO operation statistics
+   * @param statistics Reference to store statistics data
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, GPIO_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_gpio_err_t GetStatistics(hf_gpio_statistics_t &statistics) const noexcept {
+    (void)statistics;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
+  }
+
+  /**
+   * @brief Get GPIO diagnostic information
+   * @param diagnostics Reference to store diagnostics data
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, GPIO_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_gpio_err_t GetDiagnostics(hf_gpio_diagnostics_t &diagnostics) const noexcept {
+    (void)diagnostics;
     return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 

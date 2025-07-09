@@ -135,6 +135,57 @@ struct hf_uart_config_t {
   {}
 };
 
+/**
+ * @brief UART operation statistics.
+ */
+struct hf_uart_statistics_t {
+  uint32_t tx_byte_count;       ///< Total bytes transmitted
+  uint32_t rx_byte_count;       ///< Total bytes received
+  uint32_t tx_error_count;      ///< Transmission error count
+  uint32_t rx_error_count;      ///< Reception error count
+  uint32_t frame_error_count;   ///< Frame error count
+  uint32_t parity_error_count;  ///< Parity error count
+  uint32_t overrun_error_count; ///< Overrun error count
+  uint32_t noise_error_count;   ///< Noise error count
+  uint32_t break_count;         ///< Break condition count
+  uint32_t timeout_count;       ///< Timeout occurrence count
+  uint32_t pattern_detect_count; ///< Pattern detection count
+  uint32_t wakeup_count;        ///< Wakeup event count
+  uint64_t last_activity_timestamp; ///< Last activity timestamp (microseconds)
+  uint64_t initialization_timestamp; ///< Initialization timestamp (microseconds)
+
+  hf_uart_statistics_t() noexcept
+      : tx_byte_count(0), rx_byte_count(0), tx_error_count(0), rx_error_count(0),
+        frame_error_count(0), parity_error_count(0), overrun_error_count(0),
+        noise_error_count(0), break_count(0), timeout_count(0), pattern_detect_count(0),
+        wakeup_count(0), last_activity_timestamp(0), initialization_timestamp(0) {}
+};
+
+/**
+ * @brief UART diagnostic information.
+ */
+struct hf_uart_diagnostics_t {
+  hf_uart_err_t last_error;           ///< Last error that occurred
+  uint32_t consecutive_errors;         ///< Number of consecutive errors
+  uint32_t error_reset_count;          ///< Number of times error state was reset
+  uint64_t last_error_timestamp;       ///< Timestamp of last error (microseconds)
+  bool is_initialized;                 ///< Initialization status
+  bool is_transmitting;                ///< Transmission status
+  bool is_receiving;                   ///< Reception status
+  bool flow_control_active;            ///< Flow control status
+  bool pattern_detection_active;       ///< Pattern detection status
+  bool wakeup_enabled;                 ///< Wakeup status
+  uint32_t tx_buffer_usage;            ///< TX buffer usage percentage
+  uint32_t rx_buffer_usage;            ///< RX buffer usage percentage
+  uint32_t event_queue_usage;          ///< Event queue usage percentage
+
+  hf_uart_diagnostics_t() noexcept
+      : last_error(hf_uart_err_t::UART_SUCCESS), consecutive_errors(0), error_reset_count(0),
+        last_error_timestamp(0), is_initialized(false), is_transmitting(false),
+        is_receiving(false), flow_control_active(false), pattern_detection_active(false),
+        wakeup_enabled(false), tx_buffer_usage(0), rx_buffer_usage(0), event_queue_usage(0) {}
+};
+
 //--------------------------------------
 //  Abstract Base Class
 //--------------------------------------
@@ -193,6 +244,17 @@ public:
       initialized_ = Initialize();
     }
     return initialized_;
+  }
+
+  /**
+   * @brief Ensures that the UART is deinitialized (lazy deinitialization).
+   * @return true if the UART is deinitialized, false otherwise.
+   */
+  bool EnsureDeinitialized() noexcept {
+    if (initialized_) {
+      initialized_ = !Deinitialize();
+    }
+    return !initialized_;
   }
 
   /**
@@ -402,6 +464,30 @@ public:
    */
   [[nodiscard]] virtual bool IsFlowControlEnabled() const noexcept {
     return config_.use_hardware_flow_control;
+  }
+
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS
+  //==============================================//
+
+  /**
+   * @brief Get UART operation statistics
+   * @param statistics Reference to store statistics data
+   * @return hf_uart_err_t::UART_SUCCESS if successful, UART_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_uart_err_t GetStatistics(hf_uart_statistics_t &statistics) const noexcept {
+    (void)statistics;
+    return hf_uart_err_t::UART_ERR_NOT_SUPPORTED;
+  }
+
+  /**
+   * @brief Get UART diagnostic information
+   * @param diagnostics Reference to store diagnostics data
+   * @return hf_uart_err_t::UART_SUCCESS if successful, UART_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_uart_err_t GetDiagnostics(hf_uart_diagnostics_t &diagnostics) const noexcept {
+    (void)diagnostics;
+    return hf_uart_err_t::UART_ERR_NOT_SUPPORTED;
   }
 
 protected:

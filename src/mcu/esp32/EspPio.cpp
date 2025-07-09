@@ -22,18 +22,6 @@
 #include "esp_log.h"
 #include "hal/rmt_ll.h"
 #include "soc/soc_caps.h"
-#else
-// Stub implementations for non-ESP32 platforms
-#define ESP_LOGE(tag, format, ...)
-#define ESP_LOGW(tag, format, ...)
-#define ESP_LOGI(tag, format, ...)
-#define ESP_LOGD(tag, format, ...)
-#define ESP_OK 0
-#define ESP_ERR_INVALID_ARG -1
-#define ESP_ERR_NO_MEM -2
-#define ESP_ERR_TIMEOUT -3
-typedef int esp_err_t;
-#endif
 
 static const char *TAG = "McuPio";
 
@@ -66,7 +54,6 @@ hf_pio_err_t McuPio::Initialize() noexcept {
     return hf_pio_err_t::PIO_ERR_ALREADY_INITIALIZED;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Initialize all channels to default state
   for (auto &channel : channels_) {
     channel = ChannelState{};
@@ -75,10 +62,6 @@ hf_pio_err_t McuPio::Initialize() noexcept {
   initialized_ = true;
   ESP_LOGI(TAG, "McuPio initialized successfully");
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  ESP_LOGE(TAG, "ESP32 platform not available");
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_pio_err_t McuPio::Deinitialize() noexcept {
@@ -194,7 +177,6 @@ hf_pio_err_t McuPio::Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols
     return validation_result;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
 
   if (channel.tx_channel == nullptr) {
@@ -257,10 +239,6 @@ hf_pio_err_t McuPio::Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols
 
   ESP_LOGD(TAG, "Started transmission of %d symbols on channel %d", symbol_count, channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  ESP_LOGE(TAG, "ESP32 platform not available");
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 //==============================================================================
@@ -296,7 +274,6 @@ hf_pio_err_t McuPio::StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, s
     return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
 
   if (channel.rx_channel == nullptr) {
@@ -344,10 +321,6 @@ hf_pio_err_t McuPio::StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, s
 
   ESP_LOGI(TAG, "Started reception on channel %d", channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  ESP_LOGE(TAG, "ESP32 platform not available");
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_pio_err_t McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept {
@@ -368,7 +341,6 @@ hf_pio_err_t McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) n
     return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Stop reception
   channel.busy = false;
   channel.status.is_receiving = false;
@@ -377,10 +349,6 @@ hf_pio_err_t McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) n
   ESP_LOGI(TAG, "Stopped reception on channel %d, received %d symbols", channel_id,
            symbols_received);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  symbols_received = 0;
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 //==============================================================================
@@ -475,7 +443,6 @@ hf_pio_err_t McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_
     return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Configure carrier modulation using RMT carrier configuration
   auto &channel = channels_[channel_id];
 
@@ -498,9 +465,6 @@ hf_pio_err_t McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_
   ESP_LOGI(TAG, "Configured carrier on channel %d: %d Hz, %.2f%% duty", channel_id, carrier_freq_hz,
            duty_cycle * 100.0f);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_pio_err_t McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
@@ -510,13 +474,9 @@ hf_pio_err_t McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Configure loopback mode
   ESP_LOGI(TAG, "Loopback %s for channel %d", enable ? "enabled" : "disabled", channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 //==============================================================================
@@ -540,7 +500,6 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
   ESP_LOGI(TAG, "Configuring advanced RMT: channel=%d, memory_blocks=%zu, dma=%s, queue=%d",
            channel_id, memory_blocks, enable_dma ? "yes" : "no", queue_depth);
 
-#ifdef HF_MCU_FAMILY_ESP32
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
   auto &channel = channels_[channel_id];
 
@@ -662,10 +621,6 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
            "queue depth=%d",
            channel_id, memory_blocks, enable_dma ? "enabled" : "disabled", queue_depth);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  ESP_LOGW(TAG, "Advanced RMT configuration not supported on this platform");
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 //==============================================================================
@@ -686,7 +641,6 @@ hf_pio_err_t McuPio::ConfigureEncoder(uint8_t channel_id, const hf_pio_symbol_t 
     return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
 
   if (channel.tx_channel == nullptr) {
@@ -725,10 +679,6 @@ hf_pio_err_t McuPio::ConfigureEncoder(uint8_t channel_id, const hf_pio_symbol_t 
 
   ESP_LOGI(TAG, "Configured encoder for channel %d with custom bit patterns", channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  ESP_LOGW(TAG, "Encoder configuration not supported on this platform");
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_pio_err_t McuPio::SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept {
@@ -744,15 +694,11 @@ hf_pio_err_t McuPio::SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept 
     return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   // Store idle level in configuration for future transmissions
   channels_[channel_id].config.idle_level = idle_level;
 
   ESP_LOGD(TAG, "Set idle level %s for channel %d", idle_level ? "HIGH" : "LOW", channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_pio_err_t McuPio::GetChannelStatistics(uint8_t channel_id,
@@ -818,7 +764,6 @@ hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
     return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
 
   if (channel.tx_channel == nullptr) {
@@ -875,10 +820,6 @@ hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
   ESP_LOGD(TAG, "Transmitted %zu raw RMT symbols on channel %d", symbol_count, channel_id);
 
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  ESP_LOGE(TAG, "ESP32 platform not available for raw RMT transmission");
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, hf_rmt_symbol_word_t *rmt_buffer,
@@ -904,7 +845,6 @@ hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, hf_rmt_symbol_word
     return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
 
   if (channel.rx_channel == nullptr) {
@@ -963,20 +903,11 @@ hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, hf_rmt_symbol_word
 
   ESP_LOGD(TAG, "Received %zu raw RMT symbols on channel %d", symbols_received, channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  symbols_received = 0;
-  ESP_LOGE(TAG, "ESP32 platform not available for raw RMT reception");
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 size_t McuPio::GetMaxSymbolCount() const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   // ESP32C6 RMT can handle large symbol counts with DMA enabled
   return 4096; // Reasonable limit for most applications
-#else
-  return 0;
-#endif
 }
 
 //==============================================================================
@@ -987,7 +918,6 @@ bool McuPio::IsValidChannelId(uint8_t channel_id) const noexcept {
   return channel_id < MAX_CHANNELS;
 }
 
-#ifdef HF_MCU_FAMILY_ESP32
 hf_pio_err_t McuPio::ConvertToRmtSymbols(const hf_pio_symbol_t *symbols, size_t symbol_count,
                                          hf_rmt_symbol_word_t *rmt_symbols,
                                          size_t &rmt_symbol_count) noexcept {
@@ -1107,10 +1037,8 @@ bool McuPio::OnReceiveComplete(hf_rmt_channel_handle_t *channel,
 
   return false;
 }
-#endif
 
 hf_pio_err_t McuPio::InitializeChannel(uint8_t channel_id) noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
   const auto &config = channel.config;
 
@@ -1176,14 +1104,9 @@ hf_pio_err_t McuPio::InitializeChannel(uint8_t channel_id) noexcept {
 
   ESP_LOGI(TAG, "Initialized channel %d with %d ns resolution", channel_id, config.resolution_ns);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  ESP_LOGE(TAG, "ESP32 platform not available");
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_pio_err_t McuPio::DeinitializeChannel(uint8_t channel_id) noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   auto &channel = channels_[channel_id];
 
   if (channel.tx_channel) {
@@ -1212,9 +1135,6 @@ hf_pio_err_t McuPio::DeinitializeChannel(uint8_t channel_id) noexcept {
 
   ESP_LOGI(TAG, "Deinitialized channel %d", channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
-#else
-  return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
-#endif
 }
 
 hf_pio_err_t McuPio::ValidateSymbols(const hf_pio_symbol_t *symbols,
@@ -1251,7 +1171,6 @@ bool McuPio::ValidatePioSystem() noexcept {
     return false;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   bool all_tests_passed = true;
 
   // Test 1: Verify RMT peripheral is available
@@ -1327,8 +1246,6 @@ bool McuPio::ValidatePioSystem() noexcept {
   }
 
   return all_tests_passed;
-#else
-  ESP_LOGW(TAG, "PIO system validation not supported on this platform");
-  return false;
-#endif
 }
+
+#endif // HF_MCU_FAMILY_ESP32

@@ -14,14 +14,12 @@
 
 #include "EspPeriodicTimer.h"
 
-// Platform-specific includes
 #ifdef HF_MCU_FAMILY_ESP32
+
+// Platform-specific includes
 #include "esp_err.h"
 #include "esp_log.h"
 #include "esp_timer.h"
-#else
-#error "Unsupported MCU platform. Please add support for your target MCU."
-#endif
 
 static const char *TAG = "EspPeriodicTimer";
 
@@ -101,7 +99,6 @@ hf_timer_err_t EspPeriodicTimer::Start(uint64_t period_us) noexcept {
     return hf_timer_err_t::TIMER_ERR_INVALID_PERIOD;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret =
       esp_timer_start_periodic(static_cast<esp_timer_handle_t>(timer_handle_), period_us);
   if (ret != ESP_OK) {
@@ -109,7 +106,6 @@ hf_timer_err_t EspPeriodicTimer::Start(uint64_t period_us) noexcept {
     stats_.last_error = ConvertError(ret);
     return stats_.last_error;
   }
-#endif
 
   period_us_ = period_us;
   SetRunning(true);
@@ -129,14 +125,12 @@ hf_timer_err_t EspPeriodicTimer::Stop() noexcept {
     return hf_timer_err_t::TIMER_ERR_NOT_RUNNING;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret = esp_timer_stop(static_cast<esp_timer_handle_t>(timer_handle_));
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "esp_timer_stop failed: %s", esp_err_to_name(ret));
     stats_.last_error = ConvertError(ret);
     return stats_.last_error;
   }
-#endif
 
   SetRunning(false);
   stats_.stop_count++;
@@ -204,11 +198,7 @@ hf_timer_err_t EspPeriodicTimer::ResetStats() noexcept {
 }
 
 const char *EspPeriodicTimer::GetDescription() const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   return "ESP32 MCU Periodic Timer (ESP Timer API)";
-#else
-  return "MCU Periodic Timer (Unknown platform)";
-#endif
 }
 
 uint64_t EspPeriodicTimer::GetMinPeriod() const noexcept {
@@ -230,7 +220,6 @@ uint64_t EspPeriodicTimer::GetResolution() const noexcept {
 //==============================================================================
 
 hf_timer_err_t EspPeriodicTimer::ConvertError(int platform_error) const noexcept {
-#ifdef HF_MCU_FAMILY_ESP32
   switch (platform_error) {
   case ESP_OK:
     return hf_timer_err_t::TIMER_SUCCESS;
@@ -243,9 +232,6 @@ hf_timer_err_t EspPeriodicTimer::ConvertError(int platform_error) const noexcept
   default:
     return hf_timer_err_t::TIMER_ERR_FAILURE;
   }
-#else
-  return hf_timer_err_t::TIMER_ERR_FAILURE;
-#endif
 }
 
 bool EspPeriodicTimer::ValidatePeriod(uint64_t period_us) const noexcept {
@@ -257,7 +243,6 @@ bool EspPeriodicTimer::CreateTimerHandle() noexcept {
     return true; // Already created
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   esp_timer_create_args_t timer_args = {};
   timer_args.callback = [](void *arg) {
     auto *self = static_cast<EspPeriodicTimer *>(arg);
@@ -279,9 +264,6 @@ bool EspPeriodicTimer::CreateTimerHandle() noexcept {
 
   timer_handle_ = static_cast<hf_timer_handle_t>(esp_handle);
   return true;
-#else
-  return false;
-#endif
 }
 
 void EspPeriodicTimer::DestroyTimerHandle() noexcept {
@@ -289,13 +271,13 @@ void EspPeriodicTimer::DestroyTimerHandle() noexcept {
     return;
   }
 
-#ifdef HF_MCU_FAMILY_ESP32
   esp_timer_handle_t esp_handle = static_cast<esp_timer_handle_t>(timer_handle_);
   esp_err_t ret = esp_timer_delete(esp_handle);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "esp_timer_delete failed: %s", esp_err_to_name(ret));
   }
-#endif
 
   timer_handle_ = nullptr;
 }
+
+#endif // HF_MCU_FAMILY_ESP32

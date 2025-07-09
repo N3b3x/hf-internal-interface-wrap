@@ -1,16 +1,15 @@
 /**
- * @file McuTypes_Base.h
- * @brief Base MCU-specific type definitions for hardware abstraction (hf_* types).
+ * @file EspTypes_Base.h
+ * @brief ESP32 base type definitions for hardware abstraction.
  *
  * This header defines the common base types and includes that are shared across
- * all MCU peripheral type definitions. It provides the foundation for platform-specific
- * configurations while maintaining interface compatibility.
+ * all ESP32 peripheral type definitions. Clean and minimal approach.
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
- * @note This file should be included by all McuTypes_*.h files.
+ * @note This file should be included by all EspTypes_*.h files.
  * @note All interface classes must use only these types.
  */
 
@@ -32,7 +31,7 @@ using hf_timeout_ms_t = uint32_t;
 using hf_pin_num_t = uint32_t;
 
 //==============================================================================
-// MCU-SPECIFIC CONSTANTS
+// ESP32-SPECIFIC CONSTANTS
 //==============================================================================
 
 static constexpr hf_timeout_ms_t HF_TIMEOUT_NEVER = 0xFFFFFFFF;
@@ -44,7 +43,7 @@ static constexpr uint32_t HF_ADC_DEFAULT_SAMPLING_FREQ = 1000U;
 static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT = 1024U;
 
 //==============================================================================
-// MCU TIMING CONVERSION MACROS
+// ESP32 TIMING CONVERSION MACROS
 //==============================================================================
 
 /**
@@ -52,24 +51,17 @@ static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT = 1024U;
  * @param ms Milliseconds to convert
  * @return RTOS ticks (implementation-specific)
  */
-#ifdef HF_MCU_FAMILY_ESP32
 #define HF_TICKS_FROM_MS(ms) (pdMS_TO_TICKS(ms))
 #define HF_MS_FROM_TICKS(ticks) ((ticks) * portTICK_PERIOD_MS)
 #define HF_US_TO_TICKS(us) ((us) / (portTICK_PERIOD_MS * 1000))
 #define HF_TICKS_TO_US(ticks) ((ticks) * portTICK_PERIOD_MS * 1000)
-#else
-#define HF_TICKS_FROM_MS(ms) (ms)
-#define HF_MS_FROM_TICKS(ticks) (ticks)
-#define HF_US_TO_TICKS(us) (us)
-#define HF_TICKS_TO_US(ticks) (ticks)
-#endif
 
 //==============================================================================
-// POWER MANAGEMENT AND TIMING TYPES
+// ESP32 POWER MANAGEMENT AND TIMING TYPES
 //==============================================================================
 
 /**
- * @brief ESP32C6 power domain configuration for operations.
+ * @brief ESP32 power domain configuration for operations.
  */
 enum class hf_power_domain_t : uint8_t {
   HF_POWER_DOMAIN_CPU = 0,    ///< CPU power domain
@@ -81,7 +73,7 @@ enum class hf_power_domain_t : uint8_t {
 };
 
 /**
- * @brief ESP32C6 sleep mode types.
+ * @brief ESP32 sleep mode types.
  */
 enum class hf_sleep_mode_t : uint8_t {
   HF_SLEEP_MODE_NONE = 0,    ///< No sleep mode

@@ -124,6 +124,60 @@ struct hf_i2c_bus_config_t {
         rx_buffer_size(0) {}
 };
 
+/**
+ * @brief I2C operation statistics.
+ */
+struct hf_i2c_statistics_t {
+  uint64_t total_transactions;     ///< Total transactions attempted
+  uint64_t successful_transactions; ///< Successful transactions
+  uint64_t failed_transactions;    ///< Failed transactions
+  uint64_t timeout_count;          ///< Transaction timeouts
+  uint64_t bytes_written;          ///< Total bytes written
+  uint64_t bytes_read;             ///< Total bytes read
+  uint64_t total_transaction_time_us; ///< Total transaction time
+  uint32_t max_transaction_time_us;   ///< Longest transaction time
+  uint32_t min_transaction_time_us;   ///< Shortest transaction time
+  uint32_t nack_errors;            ///< NACK error count
+  uint32_t bus_errors;             ///< Bus error count
+  uint32_t arbitration_lost_count; ///< Arbitration lost count
+  uint32_t clock_stretch_timeouts; ///< Clock stretch timeouts
+  uint32_t devices_added;          ///< Devices added to bus
+  uint32_t devices_removed;        ///< Devices removed from bus
+
+  hf_i2c_statistics_t() noexcept
+      : total_transactions(0), successful_transactions(0), failed_transactions(0),
+        timeout_count(0), bytes_written(0), bytes_read(0), total_transaction_time_us(0),
+        max_transaction_time_us(0), min_transaction_time_us(UINT32_MAX), nack_errors(0),
+        bus_errors(0), arbitration_lost_count(0), clock_stretch_timeouts(0),
+        devices_added(0), devices_removed(0) {}
+};
+
+/**
+ * @brief I2C diagnostic information.
+ */
+struct hf_i2c_diagnostics_t {
+  bool bus_healthy;                           ///< Overall bus health status
+  bool sda_line_state;                        ///< Current SDA line state
+  bool scl_line_state;                        ///< Current SCL line state
+  bool bus_locked;                           ///< Bus lock status
+  hf_i2c_err_t last_error_code;                  ///< Last error code encountered
+  uint64_t last_error_timestamp_us;          ///< Timestamp of last error
+  uint32_t consecutive_errors;               ///< Consecutive error count
+  uint32_t error_recovery_attempts;          ///< Bus recovery attempts
+  float bus_utilization_percent;             ///< Bus utilization percentage
+  uint32_t average_response_time_us;         ///< Average device response time
+  uint32_t clock_stretching_events;          ///< Clock stretching event count
+  uint32_t active_device_count;              ///< Number of active devices on bus
+  uint32_t total_device_scans;               ///< Total device scan operations
+  uint32_t devices_found_last_scan;          ///< Devices found in last scan
+
+  hf_i2c_diagnostics_t() noexcept
+      : bus_healthy(true), sda_line_state(true), scl_line_state(true), bus_locked(false),
+        last_error_code(hf_i2c_err_t::I2C_SUCCESS), last_error_timestamp_us(0), consecutive_errors(0),
+        error_recovery_attempts(0), bus_utilization_percent(0.0f), average_response_time_us(0),
+        clock_stretching_events(0), active_device_count(0), total_device_scans(0), devices_found_last_scan(0) {}
+};
+
 //--------------------------------------
 //  Abstract Base Class
 //--------------------------------------
@@ -178,6 +232,18 @@ public:
       initialized_ = Initialize();
     }
     return initialized_;
+  }
+
+  /**
+   * @brief Ensures that the I2C bus is deinitialized (lazy deinitialization).
+   * @return true if the I2C bus is deinitialized, false otherwise.
+   */
+  bool EnsureDeinitialized() noexcept {
+    if (initialized_) {
+      initialized_ = !Deinitialize();
+      return !initialized_;
+    }
+    return true;
   }
 
   /**
@@ -409,6 +475,30 @@ public:
    */
   [[nodiscard]] virtual hf_port_number_t GetPort() const noexcept {
     return config_.port;
+  }
+
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS
+  //==============================================//
+
+  /**
+   * @brief Get I2C operation statistics
+   * @param statistics Reference to store statistics data
+   * @return hf_i2c_err_t::I2C_SUCCESS if successful, I2C_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_i2c_err_t GetStatistics(hf_i2c_statistics_t &statistics) const noexcept {
+    (void)statistics;
+    return hf_i2c_err_t::I2C_ERR_NOT_SUPPORTED;
+  }
+
+  /**
+   * @brief Get I2C diagnostic information
+   * @param diagnostics Reference to store diagnostics data
+   * @return hf_i2c_err_t::I2C_SUCCESS if successful, I2C_ERR_NOT_SUPPORTED if not implemented
+   */
+  virtual hf_i2c_err_t GetDiagnostics(hf_i2c_diagnostics_t &diagnostics) const noexcept {
+    (void)diagnostics;
+    return hf_i2c_err_t::I2C_ERR_NOT_SUPPORTED;
   }
 
 protected:

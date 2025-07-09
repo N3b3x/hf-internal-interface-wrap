@@ -1,9 +1,10 @@
 /**
  * @file EspTypes_ADC.h
- * @brief MCU-specific ADC type definitions for hardware abstraction.
+ * @brief ESP32 ADC type definitions for hardware abstraction.
  *
- * This header defines all ADC-specific types and constants that are used
- * throughout the internal interface wrap layer for ESP32 ADC operations.
+ * This header defines only the essential ADC-specific types and constants used by
+ * the EspAdc implementation. It follows a clean, minimal pattern providing only
+ * necessary types without redundant or duplicate definitions.
  *
  * @author Nebiyu Tadesse
  * @date 2025
@@ -12,21 +13,17 @@
 
 #pragma once
 
-#include "HardwareTypes.h"  // For basic hardware types
+#include "HardwareTypes.h"
 #include "McuSelect.h"      // Central MCU platform selection (includes all ESP-IDF)
-#include "McuTypes_ADC.h"   // For base ADC types and constants
-
 #include "EspTypes_Base.h"
 #include "BaseAdc.h"       
 
 //==============================================================================
-// [ESP32-C6] SPECIFIC ADC TYPES AND CONSTANTS
+// ESSENTIAL ADC TYPES (ESP32)
 //==============================================================================
 
-#ifdef HF_MCU_ESP32C6
-
 /**
- * @brief ADC operating modes supported by ESP32-C6
+ * @brief ADC operating modes supported by ESP32
  */
 enum class hf_adc_mode_t : uint8_t {
   ONESHOT = 0,      ///< One-shot mode for single conversions
@@ -34,7 +31,7 @@ enum class hf_adc_mode_t : uint8_t {
 };
 
 /**
- * @brief ADC attenuation levels for ESP32-C6
+ * @brief ADC attenuation levels for ESP32
  * These control the input voltage range that can be measured
  */
 enum class hf_adc_atten_t : uint8_t {
@@ -45,14 +42,14 @@ enum class hf_adc_atten_t : uint8_t {
 };
 
 /**
- * @brief ADC resolution/bit width settings for ESP32-C6
+ * @brief ADC resolution/bit width settings for ESP32
  */
 enum class hf_adc_bitwidth_t : uint8_t {
   WIDTH_9BIT = 9,   ///< 9-bit resolution (0-511)
   WIDTH_10BIT = 10, ///< 10-bit resolution (0-1023) 
   WIDTH_11BIT = 11, ///< 11-bit resolution (0-2047)
-  WIDTH_12BIT = 12, ///< 12-bit resolution (0-4095) - Default and maximum for ESP32-C6
-  WIDTH_DEFAULT = 12 ///< Default width (12-bit for ESP32-C6)
+  WIDTH_12BIT = 12, ///< 12-bit resolution (0-4095) - Default and maximum for ESP32
+  WIDTH_DEFAULT = 12 ///< Default width (12-bit for ESP32)
 };
 
 /**
@@ -148,7 +145,7 @@ struct hf_adc_unit_config_t {
     uint8_t unit_id;                               ///< ADC unit ID
     hf_adc_mode_t mode;                            ///< Operating mode
     hf_adc_bitwidth_t bit_width;                   ///< ADC bit width
-    hf_adc_channel_config_t channel_configs[7];    ///< Channel configurations (ESP32-C6 has 7 channels)
+    hf_adc_channel_config_t channel_configs[7];    ///< Channel configurations (ESP32 has 7 channels)
     hf_adc_continuous_config_t continuous_config;  ///< Continuous mode configuration
     hf_adc_calibration_config_t calibration_config; ///< Calibration configuration
 
@@ -183,8 +180,6 @@ struct hf_adc_monitor_event_t {
         : monitor_id(0), channel_id(0), raw_value(0), 
           event_type(hf_adc_monitor_event_type_t::HIGH_THRESH), timestamp_us(0) {}
 };
-
-#endif // HF_MCU_ESP32C6
 
 //==============================================================================
 // CALLBACK TYPE DEFINITIONS
@@ -248,18 +243,16 @@ using hf_adc_monitor_callback_t = void (*)(const hf_adc_monitor_event_t* event, 
  */
 
 //==============================================================================
-// ESP32-C6 SPECIFIC CONSTANTS
+// ESP32 ADC CONSTANTS
 //==============================================================================
 
-#ifdef HF_MCU_ESP32C6
-
 /**
- * @brief ESP32-C6 ADC continuous mode constants
+ * @brief ESP32 ADC continuous mode constants
  */
-constexpr uint32_t HF_ESP32C6_ADC_DATA_BYTES_PER_CONV = SOC_ADC_DIGI_DATA_BYTES_PER_CONV;  ///< Bytes per conversion result from ESP-IDF
-constexpr uint32_t HF_ESP32C6_ADC_MIN_FRAME_SIZE = HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN;       ///< Minimum frame size (from EspAdc.h)
-constexpr uint32_t HF_ESP32C6_ADC_MAX_FRAME_SIZE = HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX;       ///< Maximum frame size (from EspAdc.h)
-constexpr uint32_t HF_ESP32C6_ADC_DEFAULT_FRAME_SIZE = HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT; ///< Default frame size (from EspAdc.h)
+constexpr uint32_t HF_ESP32_ADC_DATA_BYTES_PER_CONV = SOC_ADC_DIGI_DATA_BYTES_PER_CONV;  ///< Bytes per conversion result from ESP-IDF
+constexpr uint32_t HF_ESP32_ADC_MIN_FRAME_SIZE = 64;       ///< Minimum frame size
+constexpr uint32_t HF_ESP32_ADC_MAX_FRAME_SIZE = 1024;     ///< Maximum frame size
+constexpr uint32_t HF_ESP32_ADC_DEFAULT_FRAME_SIZE = 256;  ///< Default frame size
 
 /**
  * @brief Calculate frame size in bytes based on samples per frame and enabled channels
@@ -268,7 +261,7 @@ constexpr uint32_t HF_ESP32C6_ADC_DEFAULT_FRAME_SIZE = HF_ESP32_ADC_DMA_BUFFER_S
  * @return Frame size in bytes
  */
 inline constexpr uint32_t CalcFrameSize(uint32_t samples_per_frame, uint32_t enabled_channels) noexcept {
-    return samples_per_frame * enabled_channels * HF_ESP32C6_ADC_DATA_BYTES_PER_CONV;
+    return samples_per_frame * enabled_channels * HF_ESP32_ADC_DATA_BYTES_PER_CONV;
 }
 
 /**
@@ -297,10 +290,10 @@ inline constexpr bool IsValidContinuousConfig(uint32_t samples_per_frame, uint32
     uint32_t frame_size = CalcFrameSize(samples_per_frame, enabled_channels);
     uint32_t pool_size = CalcBufferPoolSize(samples_per_frame, enabled_channels, max_store_frames);
     
-    return (frame_size >= HF_ESP32C6_ADC_MIN_FRAME_SIZE) &&
-           (frame_size <= HF_ESP32C6_ADC_MAX_FRAME_SIZE) &&
+    return (frame_size >= HF_ESP32_ADC_MIN_FRAME_SIZE) &&
+           (frame_size <= HF_ESP32_ADC_MAX_FRAME_SIZE) &&
            (pool_size <= 32768) && // Reasonable max pool size (32KB)
-           ((frame_size % HF_ESP32C6_ADC_DATA_BYTES_PER_CONV) == 0);
+           ((frame_size % HF_ESP32_ADC_DATA_BYTES_PER_CONV) == 0);
 }
 
 /**
@@ -309,9 +302,9 @@ inline constexpr bool IsValidContinuousConfig(uint32_t samples_per_frame, uint32
  * @return true if valid, false otherwise
  */
 inline constexpr bool IsValidFrameSize(uint32_t frame_size) noexcept {
-    return (frame_size >= HF_ESP32C6_ADC_MIN_FRAME_SIZE) &&
-           (frame_size <= HF_ESP32C6_ADC_MAX_FRAME_SIZE) &&
-           ((frame_size % HF_ESP32C6_ADC_DATA_BYTES_PER_CONV) == 0);
+    return (frame_size >= HF_ESP32_ADC_MIN_FRAME_SIZE) &&
+           (frame_size <= HF_ESP32_ADC_MAX_FRAME_SIZE) &&
+           ((frame_size % HF_ESP32_ADC_DATA_BYTES_PER_CONV) == 0);
 }
 
 /**
@@ -320,20 +313,15 @@ inline constexpr bool IsValidFrameSize(uint32_t frame_size) noexcept {
  * @return Number of conversion results
  */
 inline constexpr uint32_t GetFrameResultCount(uint32_t frame_size) noexcept {
-    return frame_size / HF_ESP32C6_ADC_DATA_BYTES_PER_CONV;
+    return frame_size / HF_ESP32_ADC_DATA_BYTES_PER_CONV;
 }
-
-#endif // HF_MCU_ESP32C6
-
 
 //==============================================================================
 // COMMON ADC UTILITY FUNCTIONS
 //==============================================================================
 
-#ifdef HF_MCU_ESP32C6
-
 /**
- * @brief Convert GPIO pin to ADC channel for ESP32-C6
+ * @brief Convert GPIO pin to ADC channel for ESP32
  * @param gpio_pin GPIO pin number (0-6)
  * @return ADC channel ID or HF_INVALID_CHANNEL if invalid
  */
@@ -342,7 +330,7 @@ inline constexpr hf_channel_id_t GpioToAdcChannel(hf_pin_num_t gpio_pin) noexcep
 }
 
 /**
- * @brief Convert ADC channel to GPIO pin for ESP32-C6  
+ * @brief Convert ADC channel to GPIO pin for ESP32  
  * @param channel_id ADC channel ID (0-6)
  * @return GPIO pin number or HF_INVALID_PIN if invalid
  */
@@ -380,7 +368,6 @@ inline constexpr uint32_t GetMaxRawValue(hf_adc_bitwidth_t bitwidth) noexcept {
   }
 }
 
-#endif // HF_MCU_ESP32C6
-
 //==============================================================================
+// END OF ESPADC TYPES - MINIMAL AND ESSENTIAL ONLY
 //==============================================================================

@@ -1,12 +1,12 @@
 /**
- * @file McuPwm.h
- * @brief MCU-integrated PWM controller implementation for ESP32C6.
+ * @file EspPwm.h
+ * @brief ESP32C6 LEDC (PWM) controller implementation for the HardFOC system.
  *
- * This header provides a PWM implementation for microcontrollers with
- * built-in PWM peripherals. On ESP32C6, this wraps the LEDC (LED Controller)
- * peripheral which provides high-resolution PWM generation. The implementation
- * supports multiple channels, configurable frequency and resolution, complementary
- * outputs with deadtime, and hardware fade support for smooth transitions.
+ * This header provides a comprehensive PWM implementation for ESP32C6 using the
+ * LEDC (LED Controller) peripheral which provides high-resolution PWM generation.
+ * The implementation supports multiple channels, configurable frequency and resolution,
+ * complementary outputs with deadtime, hardware fade support, and interrupt-driven
+ * period callbacks.
  *
  * @author Nebiyu Tadesse
  * @date 2025
@@ -16,40 +16,46 @@
  *       frequency and resolution per channel, support for complementary outputs with
  *       deadtime, hardware fade support, interrupt-driven period callbacks, and
  *       multiple timer groups for independent frequency control.
+ * @note This implementation follows the lazy initialization pattern established in
+ *       other ESP32 modules (EspAdc, EspGpio, etc.).
  */
 
 #pragma once
 
 #include "RtosMutex.h"
 #include "BasePwm.h"
-#include "McuTypes.h"
+#include "utils/EspTypes_PWM.h"
 #include <array>
+#include <atomic>
 
 /**
- * @class McuPwm
- * @brief PWM implementation for microcontrollers with integrated PWM peripherals.
+ * @class EspPwm
+ * @brief ESP32C6 PWM implementation using LEDC peripheral.
  *
- * This class provides PWM generation using the microcontroller's built-in
- * PWM peripheral. On ESP32C6, it uses the LEDC (LED Controller) peripheral
- * which offers high-resolution PWM with hardware fade support.
+ * This class provides PWM generation using the ESP32C6's built-in LEDC (LED Controller)
+ * peripheral which offers high-resolution PWM with hardware fade support.
  *
  * ESP32C6 LEDC Features:
- * - 8 independent PWM channels
- * - 4 timer groups for different frequency domains
+ * - 8 independent PWM channels (0-7)
+ * - 4 timer groups for different frequency domains (0-3)
  * - Up to 14-bit resolution at high frequencies
- * - Hardware fade functionality
+ * - Hardware fade functionality for smooth transitions
  * - Interrupt support for period complete events
- * - Low power mode support
+ * - Low power mode support with sleep retention
+ * - Configurable clock sources (APB, XTAL, RC_FAST)
+ * - Channel-specific idle state configuration
  *
  * Key Design Features:
- * - Thread-safe channel management
+ * - Lazy initialization pattern (no hardware action until needed)
+ * - Thread-safe channel management with RtosMutex
  * - Automatic timer allocation and management
  * - Hardware fault detection and recovery
  * - Comprehensive error reporting
  * - Support for synchronized updates across channels
  * - Motor control oriented features (complementary outputs, deadtime)
+ * - Proper abstraction of ESP-IDF types
  */
-class McuPwm : public BasePwm {
+class EspPwm : public BasePwm {
 public:
   //==============================================================================
   // CONSTANTS
@@ -66,21 +72,24 @@ public:
   //==============================================================================
 
   /**
-   * @brief Constructor for MCU PWM controller
-   * @param base_clock_hz Base clock frequency for timers (default: 80MHz)
+   * @brief Constructor for ESP32C6 PWM controller
+   * @param config PWM unit configuration
+   * @note Uses lazy initialization - no hardware action until first operation
    */
-  explicit McuPwm(uint32_t base_clock_hz = 80000000) noexcept;
+  explicit EspPwm(const hf_pwm_unit_config_t &config = hf_pwm_unit_config_t{}) noexcept;
+
+
 
   /**
    * @brief Destructor - ensures clean shutdown
    */
-  virtual ~McuPwm() noexcept override;
+  virtual ~EspPwm() noexcept override;
 
   // Prevent copying and moving
-  McuPwm(const McuPwm &) = delete;
-  McuPwm &operator=(const McuPwm &) = delete;
-  McuPwm(McuPwm &&) = delete;
-  McuPwm &operator=(McuPwm &&) = delete;
+  EspPwm(const EspPwm &) = delete;
+  EspPwm &operator=(const EspPwm &) = delete;
+  EspPwm(EspPwm &&) = delete;
+  EspPwm &operator=(EspPwm &&) = delete;
 
   //==============================================================================
   // LIFECYCLE (BasePwm Interface)
@@ -88,7 +97,21 @@ public:
 
   hf_pwm_err_t Initialize() noexcept override;
   hf_pwm_err_t Deinitialize() noexcept override;
-  bool IsInitialized() const noexcept override;
+
+
+
+  /**
+   * @brief Set PWM operating mode
+   * @param mode Operating mode (Basic or Fade)
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t SetMode(hf_pwm_mode_t mode) noexcept override;
+
+  /**
+   * @brief Get current PWM operating mode
+   * @return Current operating mode
+   */
+  hf_pwm_mode_t GetMode() const noexcept override;
 
   //==============================================================================
   // CHANNEL MANAGEMENT (BasePwm Interface)
@@ -189,6 +212,33 @@ public:
    */
   hf_pwm_err_t ForceTimerAssignment(hf_channel_id_t channel_id, uint8_t timer_id) noexcept;
 
+  /**
+   * @brief Set clock source for PWM timers
+   * @param clock_source Clock source selection
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t SetClockSource(hf_pwm_clock_source_t clock_source) noexcept;
+
+  /**
+   * @brief Get current clock source
+   * @return Current clock source
+   */
+  hf_pwm_clock_source_t GetClockSource() const noexcept;
+
+  /**
+   * @brief Get PWM statistics
+   * @param statistics Statistics structure to fill
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t GetStatistics(hf_pwm_statistics_t &statistics) const noexcept override;
+
+  /**
+   * @brief Get PWM diagnostics
+   * @param diagnostics Diagnostics structure to fill
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noexcept override;
+
 private:
   //==============================================================================
   // INTERNAL STRUCTURES
@@ -248,7 +298,7 @@ private:
   bool IsValidChannelId(hf_channel_id_t channel_id) const noexcept;
 
   /**
-   * @brief Find or allocate a timer for the given frequency and resolution
+   * @brief Find or allocate a timer for the given frequency/resolution
    * @param frequency_hz Required frequency
    * @param resolution_bits Required resolution
    * @return Timer ID (0-3), or -1 if no timer available
@@ -308,13 +358,46 @@ private:
    */
   void HandleFadeComplete(hf_channel_id_t channel_id) noexcept;
 
+  /**
+   * @brief Initialize LEDC fade functionality
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t InitializeFadeFunctionality() noexcept;
+
+  /**
+   * @brief Initialize PWM timers
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t InitializeTimers() noexcept;
+
+  /**
+   * @brief Initialize PWM channels
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t InitializeChannels() noexcept;
+
+  /**
+   * @brief Enable fade functionality
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t EnableFade() noexcept;
+
+  /**
+   * @brief Calculate optimal clock divider for frequency
+   * @param frequency_hz Target frequency
+   * @param resolution_bits PWM resolution
+   * @return Clock divider value
+   */
+  uint32_t CalculateClockDivider(uint32_t frequency_hz, uint8_t resolution_bits) const noexcept;
+
   //==============================================================================
   // MEMBER VARIABLES
   //==============================================================================
 
   mutable RtosMutex mutex_; ///< Thread safety mutex
-  bool initialized_;        ///< Initialization state
+  std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
   uint32_t base_clock_hz_;  ///< Base clock frequency
+  hf_pwm_clock_source_t clock_source_; ///< Current clock source
 
   std::array<ChannelState, MAX_CHANNELS> channels_;                     ///< Channel states
   std::array<TimerState, MAX_TIMERS> timers_;                           ///< Timer states
@@ -326,4 +409,11 @@ private:
   void *fault_callback_user_data_;    ///< Fault callback user data
 
   hf_pwm_err_t last_global_error_; ///< Last global error
+  bool fade_functionality_installed_; ///< LEDC fade functionality installed
+
+  // New member variables for enhanced functionality
+  hf_pwm_unit_config_t unit_config_; ///< Unit configuration
+  hf_pwm_mode_t current_mode_; ///< Current operating mode
+  hf_pwm_statistics_t statistics_; ///< PWM statistics
+  hf_pwm_diagnostics_t diagnostics_; ///< PWM diagnostics
 };

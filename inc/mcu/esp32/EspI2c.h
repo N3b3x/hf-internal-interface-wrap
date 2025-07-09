@@ -464,14 +464,14 @@ private:
      * @param esp_error ESP-IDF esp_err_t error code
      * @return Corresponding hf_i2c_err_t error code
      */
-    [[nodiscard]] hf_i2c_err_t ConvertEspError(hf_esp_err_native_t esp_error) const noexcept;
+    [[nodiscard]] hf_i2c_err_t ConvertEspError(esp_err_t esp_error) const noexcept;
 
     /**
      * @brief Get or create device handle for given address.
      * @param device_addr Device address
      * @return Device handle or nullptr if failed
      */
-    hf_i2c_master_dev_handle_native_t GetOrCreateDeviceHandle(uint16_t device_addr) noexcept;
+    i2c_master_dev_handle_t GetOrCreateDeviceHandle(uint16_t device_addr) noexcept;
 
     /**
      * @brief Update statistics with operation result.
@@ -489,34 +489,38 @@ private:
     [[nodiscard]] bool IsValidDeviceAddress(uint16_t device_addr) const noexcept;
 
     /**
-     * @brief Get effective timeout value.
-     * @param timeout_ms Requested timeout (0 = use default)
-     * @return Effective timeout in milliseconds
+     * @brief Update internal diagnostics information.
+     * @note Called automatically during operations, but can be called manually for real-time monitoring
      */
-    [[nodiscard]] uint32_t GetEffectiveTimeout(uint32_t timeout_ms) const noexcept;
+    void UpdateDiagnostics() noexcept;
 
     //==========================================================================
     // PRIVATE MEMBERS
     //==========================================================================
 
-    hf_i2c_master_bus_config_t bus_config_;                    ///< Bus configuration
-    hf_i2c_master_bus_handle_native_t master_bus_handle_;      ///< Master bus handle
-    std::unordered_map<uint16_t, hf_i2c_master_dev_handle_native_t> device_handles_; ///< Device handles
-    std::atomic<bool> initialized_{false};                     ///< Initialization status
-    std::atomic<bool> bus_suspended_{false};                   ///< Bus suspension status
+    hf_i2c_master_bus_config_t bus_config_;                                 ///< Bus configuration
+    i2c_master_bus_handle_t master_bus_handle_;                             ///< Master bus handle
+    std::unordered_map<uint16_t, i2c_master_dev_handle_t> device_handles_;  ///< Device handles
+    std::unordered_map<uint32_t, void*> async_operations_;                  ///< Pending async operations
+    std::atomic<bool> initialized_{false};                                   ///< Initialization status
+    std::atomic<bool> bus_suspended_{false};                                 ///< Bus suspension status
+    std::atomic<bool> bus_locked_{false};                                    ///< Bus lock status
     std::atomic<hf_i2c_power_mode_t> current_power_mode_{hf_i2c_power_mode_t::HF_I2C_POWER_FULL}; ///< Current power mode
-    std::atomic<hf_i2c_err_t> last_error_{hf_i2c_err_t::I2C_SUCCESS}; ///< Last error code
-    std::atomic<uint64_t> last_operation_time_us_{0};          ///< Last operation timestamp
+    std::atomic<hf_i2c_err_t> last_error_{hf_i2c_err_t::I2C_SUCCESS};       ///< Last error code
+    std::atomic<uint64_t> last_operation_time_us_{0};                       ///< Last operation timestamp
 
     // Statistics and diagnostics
-    mutable hf_i2c_statistics_t statistics_;                   ///< Operation statistics
-    mutable hf_i2c_diagnostics_t diagnostics_;                 ///< Bus diagnostics
+    mutable hf_i2c_statistics_t statistics_;                                 ///< Operation statistics
+    mutable hf_i2c_diagnostics_t diagnostics_;                               ///< Bus diagnostics
 
     // Callbacks
-    hf_i2c_event_callback_t event_callback_{nullptr};          ///< Event callback
-    void* event_user_data_{nullptr};                           ///< Event callback user data
+    hf_i2c_event_callback_t event_callback_{nullptr};                       ///< Event callback
+    void* event_user_data_{nullptr};                                        ///< Event callback user data
+
+    // Timer for power management
+    void* auto_suspend_timer_{nullptr};                                     ///< Auto-suspend timer handle
 
     // Thread safety
-    mutable RtosMutex mutex_;                                  ///< Main mutex for thread safety
-    mutable RtosMutex stats_mutex_;                            ///< Statistics mutex
+    mutable RtosMutex mutex_;                                              ///< Main mutex for thread safety
+    mutable RtosMutex stats_mutex_;                                        ///< Statistics mutex
 };

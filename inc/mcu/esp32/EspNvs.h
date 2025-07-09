@@ -48,10 +48,7 @@
 #include "RtosMutex.h"      // Thread-safe mutex support if enabled
 
 // ESP32-C6 NVS abstracted types for portability
-using hf_nvs_handle_t = hf_nvs_handle_native_t;
-using hf_nvs_open_mode_t = hf_nvs_open_mode_native_t;
-using hf_nvs_type_t = hf_nvs_type_native_t;
-using hf_nvs_iterator_t = hf_nvs_iterator_native_t;
+
 
 /**
  * @class EspNvs
@@ -235,6 +232,22 @@ public:
    */
   size_t GetMaxValueSize() const noexcept override;
 
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS                   //
+  //==============================================//
+
+  /**
+   * @brief Get NVS operation statistics.
+   * @return Statistics structure with operation counts and performance data
+   */
+  hf_nvs_statistics_t GetStatistics() const noexcept;
+
+  /**
+   * @brief Get NVS diagnostic information.
+   * @return Diagnostics structure with error tracking and health status
+   */
+  hf_nvs_diagnostics_t GetDiagnostics() const noexcept;
+
 private:
   //==============================================//
   // PRIVATE HELPER FUNCTIONS                     //
@@ -274,11 +287,9 @@ private:
   mutable int last_error_code_;     ///< Last MCU-specific error code for debugging
   
   // Statistics and performance monitoring
-  mutable uint64_t operation_count_; ///< Total number of operations performed
-  mutable uint64_t error_count_;     ///< Total number of operations that resulted in errors
-  mutable uint64_t last_stats_update_; ///< Timestamp of last statistics update (us)
+  mutable hf_nvs_statistics_t statistics_; ///< Operation statistics
+  mutable hf_nvs_diagnostics_t diagnostics_; ///< Diagnostic information
 
-#ifdef HF_THREAD_SAFE
-  mutable RtosMutex stats_mutex_;   ///< Mutex for thread-safe statistics updates
-#endif
+  // Thread safety
+  mutable RtosMutex mutex_;         ///< Mutex for thread-safe operations
 };

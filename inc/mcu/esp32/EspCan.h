@@ -268,13 +268,6 @@ private:
 };
 
 //==============================================//
-// LEGACY COMPATIBILITY ALIASES (DEPRECATED)    //
-//==============================================//
 
-// These aliases are provided for backward compatibility but are deprecated.
-// Use the new hf_esp_can_config_t instead.
-
-[[deprecated("Use hf_esp_can_config_t instead")]]
-using EspCanConfig = hf_esp_can_config_t;
 
 #endif // HF_MCU_FAMILY_ESP32

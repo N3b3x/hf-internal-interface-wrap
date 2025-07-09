@@ -18,14 +18,7 @@
 #include "BaseGpio.h"
 #include "McuTypes.h"
 
-// Forward declarations - types are defined in McuTypes.h to avoid duplicates
-// Type aliases to centralized types in McuTypes.h (no duplicate type declarations)
-using GpioGlitchFilterType = hf_gpio_glitch_filter_type_t;
-using GpioDriveCapability = hf_gpio_drive_strength_t;
-using GpioSleepConfig = hf_gpio_sleep_config_t;
-using FlexGlitchFilterConfig = hf_gpio_flex_filter_config_t;
-using GpioWakeUpConfig = hf_gpio_wakeup_config_t;
-using GpioConfigDump = hf_gpio_status_info_t;
+
 
 /**
  * @class EspGpio
@@ -76,7 +69,7 @@ public:
                    hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
                    hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
                    hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
-                   GpioDriveCapability drive_capability = GpioDriveCapability::Medium) noexcept;
+                   hf_gpio_drive_strength_t drive_capability = hf_gpio_drive_strength_t::HF_GPIO_DRIVE_STRENGTH_MEDIUM) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup including interrupt resources.
@@ -178,14 +171,7 @@ public:
   // LAZY INITIALIZATION SUPPORT  
   //==============================================================//
 
-  /**
-   * @brief Ensure the GPIO pin is initialized before use.
-   * @details This method implements lazy initialization - the GPIO is only
-   *          physically configured when first accessed. This allows creating
-   *          GPIO objects without immediate hardware configuration.
-   * @return true if initialization successful or already initialized, false otherwise
-   */
-  bool EnsureInitialized() noexcept;
+  // Note: EnsureInitialized() is inherited from BaseGpio and provides lazy initialization
 
   /**
    * @brief Check if the GPIO pin has been initialized.
@@ -267,7 +253,7 @@ protected:
    * @brief Get current drive capability setting.
    * @return Current drive capability level
    */
-  [[nodiscard]] GpioDriveCapability GetDriveCapability() const noexcept {
+  [[nodiscard]] hf_gpio_drive_strength_t GetDriveCapability() const noexcept {
     return drive_capability_;
   }
 
@@ -279,7 +265,7 @@ protected:
    *          Higher drive capability allows for faster switching and driving larger loads
    *          but increases power consumption and EMI.
    */
-  hf_gpio_err_t SetDriveCapability(GpioDriveCapability capability) noexcept;
+  hf_gpio_err_t SetDriveCapability(hf_gpio_drive_strength_t capability) noexcept;
 
   /**
    * @brief Check if glitch filters are supported.
@@ -303,7 +289,7 @@ protected:
    * @details Flexible glitch filter allows precise control over filtering parameters.
    *          Pulses shorter than window_threshold_ns within window_width_ns are filtered.
    */
-  hf_gpio_err_t ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &config) noexcept;
+  hf_gpio_err_t ConfigureFlexGlitchFilter(const hf_gpio_flex_filter_config_t &config) noexcept;
 
   /**
    * @brief Enable all configured glitch filters.
@@ -330,7 +316,7 @@ protected:
    * @details Configures how the GPIO behaves during sleep modes.
    *          Essential for power-optimized applications.
    */
-  hf_gpio_err_t ConfigureSleep(const GpioSleepConfig &config) noexcept;
+  hf_gpio_err_t ConfigureSleep(const hf_gpio_sleep_config_t &config) noexcept;
 
   /**
    * @brief Enable GPIO hold function.
@@ -348,7 +334,7 @@ protected:
    * @details Enables GPIO to wake the system from deep sleep.
    *          Essential for battery-powered applications.
    */
-  hf_gpio_err_t ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept;
+  hf_gpio_err_t ConfigureWakeUp(const hf_gpio_wakeup_config_t &config) noexcept;
 
   /**
    * @brief Get comprehensive GPIO configuration information.
@@ -356,7 +342,7 @@ protected:
    * @details Provides detailed information about current GPIO configuration.
    *          Useful for debugging and system validation.
    */
-  [[nodiscard]] GpioConfigDump GetConfigurationDump() const noexcept;
+  [[nodiscard]] hf_gpio_status_info_t GetConfigurationDump() const noexcept;
 
   /**
    * @brief Check if pin is currently held.
@@ -544,30 +530,18 @@ private:
    * @param trigger BaseGpio interrupt trigger enum
    * @return Platform-specific interrupt type value
    */
-  #ifdef HF_MCU_FAMILY_ESP32
   gpio_int_type_t MapInterruptTrigger(hf_gpio_interrupt_trigger_t trigger) const noexcept;
-  #else
-  uint32_t MapInterruptTrigger(hf_gpio_interrupt_trigger_t trigger) const noexcept;
-  #endif
 
   /**
    * @brief Static interrupt service routine handler.
    * @param arg Pointer to EspGpio instance
    */
-  #ifdef HF_MCU_FAMILY_ESP32
   static void IRAM_ATTR StaticInterruptHandler(void *arg);
-  #else
-  static void StaticInterruptHandler(void *arg);
-  #endif
 
   /**
    * @brief Handle interrupt in instance context.
    */
-  #ifdef HF_MCU_FAMILY_ESP32
   void IRAM_ATTR HandleInterrupt();
-  #else
-  void HandleInterrupt();
-  #endif
 
   /**
    * @brief Initialize advanced features during GPIO initialization.
@@ -608,24 +582,22 @@ private:
   void *platform_semaphore_;             ///< Platform-specific semaphore for WaitForInterrupt
 
   // Advanced GPIO state
-  GpioDriveCapability drive_capability_;      ///< Current drive capability setting
-  GpioGlitchFilterType glitch_filter_type_;   ///< Type of glitch filter configured
+  hf_gpio_drive_strength_t drive_capability_;      ///< Current drive capability setting
+  hf_gpio_glitch_filter_type_t glitch_filter_type_;   ///< Type of glitch filter configured
   bool pin_glitch_filter_enabled_;            ///< Pin glitch filter enabled
   bool flex_glitch_filter_enabled_;           ///< Flexible glitch filter enabled
-  FlexGlitchFilterConfig flex_filter_config_; ///< Flexible filter configuration
-  GpioSleepConfig sleep_config_;              ///< Sleep configuration
+  hf_gpio_flex_filter_config_t flex_filter_config_; ///< Flexible filter configuration
+  hf_gpio_sleep_config_t sleep_config_;              ///< Sleep configuration
   bool hold_enabled_;                         ///< Hold function enabled
   bool rtc_gpio_enabled_;                     ///< RTC GPIO functionality enabled
-  GpioWakeUpConfig wakeup_config_;            ///< Wake-up configuration
+  hf_gpio_wakeup_config_t wakeup_config_;            ///< Wake-up configuration
 
   // Platform-specific handles for advanced features
   void *glitch_filter_handle_; ///< Platform-specific glitch filter handle
   void *rtc_gpio_handle_;      ///< Platform-specific RTC GPIO handle
 
   // Static members for ISR management
-  #ifdef HF_MCU_FAMILY_ESP32
   static bool gpio_isr_handler_installed_; ///< Track if ISR service is installed
-  #endif
 
   // Initialization state
   bool initialized_; ///< Lazy initialization state
