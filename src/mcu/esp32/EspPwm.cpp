@@ -36,7 +36,7 @@ static const char *TAG = "McuPwm";
 McuPwm::McuPwm(uint32_t base_clock_hz) noexcept
     : initialized_(false), base_clock_hz_(base_clock_hz), period_callback_(nullptr),
       period_callback_user_data_(nullptr), fault_callback_(nullptr),
-      fault_callback_user_data_(nullptr), last_global_error_(HfPwmErr::PWM_SUCCESS) {
+      fault_callback_user_data_(nullptr), last_global_error_(hf_pwm_err_t::PWM_SUCCESS) {
   ESP_LOGI(TAG, "McuPwm constructor - base clock: %lu Hz", base_clock_hz_);
 }
 
@@ -52,12 +52,12 @@ McuPwm::~McuPwm() noexcept {
 // LIFECYCLE (BasePwm Interface)
 //==============================================================================
 
-HfPwmErr McuPwm::Initialize() noexcept {
+hf_pwm_err_t McuPwm::Initialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (initialized_) {
     ESP_LOGW(TAG, "PWM already initialized");
-    return HfPwmErr::PWM_ERR_ALREADY_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_ALREADY_INITIALIZED;
   }
 
   ESP_LOGI(TAG, "Initializing MCU PWM system");
@@ -79,29 +79,29 @@ HfPwmErr McuPwm::Initialize() noexcept {
   }
 
   initialized_ = true;
-  last_global_error_ = HfPwmErr::PWM_SUCCESS;
+  last_global_error_ = hf_pwm_err_t::PWM_SUCCESS;
 
   ESP_LOGI(TAG, "MCU PWM system initialized successfully");
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 
 #else
   ESP_LOGE(TAG, "Platform not supported");
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-HfPwmErr McuPwm::Deinitialize() noexcept {
+hf_pwm_err_t McuPwm::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   ESP_LOGI(TAG, "Deinitializing MCU PWM system");
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Stop all channels first
-  for (HfChannelId channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
+  for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
     if (channels_[channel_id].configured) {
       ledc_stop(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), 0);
     }
@@ -116,10 +116,10 @@ HfPwmErr McuPwm::Deinitialize() noexcept {
 
   initialized_ = false;
   ESP_LOGI(TAG, "MCU PWM system deinitialized");
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
@@ -132,51 +132,51 @@ bool McuPwm::IsInitialized() const noexcept {
 // CHANNEL MANAGEMENT (BasePwm Interface)
 //==============================================================================
 
-HfPwmErr McuPwm::ConfigureChannel(HfChannelId channel_id, const PwmChannelConfig &config) noexcept {
+hf_pwm_err_t McuPwm::ConfigureChannel(hf_channel_id_t channel_id, const hf_pwm_channel_config_t &config) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   // Validate configuration
   if (config.output_pin < 0) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_PARAMETER);
-    return HfPwmErr::PWM_ERR_INVALID_PARAMETER;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER);
+    return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
   }
 
   if (!BasePwm::IsValidDutyCycle(config.initial_duty_cycle)) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_DUTY_CYCLE);
-    return HfPwmErr::PWM_ERR_INVALID_DUTY_CYCLE;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE);
+    return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
   }
 
   if (!BasePwm::IsValidFrequency(config.frequency_hz, MIN_FREQUENCY, MAX_FREQUENCY)) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_FREQUENCY);
-    return HfPwmErr::PWM_ERR_INVALID_FREQUENCY;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_FREQUENCY);
+    return hf_pwm_err_t::PWM_ERR_INVALID_FREQUENCY;
   }
 
   // Find or allocate a timer for this frequency/resolution combination
   int8_t timer_id = FindOrAllocateTimer(config.frequency_hz, config.resolution_bits);
   if (timer_id < 0) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_TIMER_CONFLICT);
-    return HfPwmErr::PWM_ERR_TIMER_CONFLICT;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
+    return hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT;
   }
 
   // Configure the platform timer if needed
-  HfPwmErr timer_result =
+  hf_pwm_err_t timer_result =
       ConfigurePlatformTimer(timer_id, config.frequency_hz, config.resolution_bits);
-  if (timer_result != HfPwmErr::PWM_SUCCESS) {
+  if (timer_result != hf_pwm_err_t::PWM_SUCCESS) {
     SetChannelError(channel_id, timer_result);
     return timer_result;
   }
 
   // Configure the platform channel
-  HfPwmErr channel_result = ConfigurePlatformChannel(channel_id, config, timer_id);
-  if (channel_result != HfPwmErr::PWM_SUCCESS) {
+  hf_pwm_err_t channel_result = ConfigurePlatformChannel(channel_id, config, timer_id);
+  if (channel_result != hf_pwm_err_t::PWM_SUCCESS) {
     SetChannelError(channel_id, channel_result);
     return channel_result;
   }
@@ -187,32 +187,32 @@ HfPwmErr McuPwm::ConfigureChannel(HfChannelId channel_id, const PwmChannelConfig
   channels_[channel_id].assigned_timer = timer_id;
   channels_[channel_id].raw_duty_value =
       BasePwm::DutyCycleToRaw(config.initial_duty_cycle, config.resolution_bits);
-  channels_[channel_id].last_error = HfPwmErr::PWM_SUCCESS;
+  channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
 
   ESP_LOGI(TAG, "Channel %lu configured: pin=%d, freq=%lu Hz, res=%d bits, timer=%d", channel_id,
            config.output_pin, config.frequency_hz, config.resolution_bits, timer_id);
 
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-HfPwmErr McuPwm::EnableChannel(HfChannelId channel_id) noexcept {
+hf_pwm_err_t McuPwm::EnableChannel(hf_channel_id_t channel_id) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_CHANNEL_NOT_AVAILABLE);
-    return HfPwmErr::PWM_ERR_CHANNEL_NOT_AVAILABLE;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_CHANNEL_NOT_AVAILABLE);
+    return hf_pwm_err_t::PWM_ERR_CHANNEL_NOT_AVAILABLE;
   }
 
   if (channels_[channel_id].enabled) {
-    return HfPwmErr::PWM_SUCCESS; // Already enabled
+    return hf_pwm_err_t::PWM_SUCCESS; // Already enabled
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -225,32 +225,32 @@ HfPwmErr McuPwm::EnableChannel(HfChannelId channel_id) noexcept {
 
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable channel %lu: %s", channel_id, esp_err_to_name(ret));
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT);
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   channels_[channel_id].enabled = true;
   ESP_LOGI(TAG, "Channel %lu enabled", channel_id);
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-HfPwmErr McuPwm::DisableChannel(HfChannelId channel_id) noexcept {
+hf_pwm_err_t McuPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].enabled) {
-    return HfPwmErr::PWM_SUCCESS; // Already disabled
+    return hf_pwm_err_t::PWM_SUCCESS; // Already disabled
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -265,20 +265,20 @@ HfPwmErr McuPwm::DisableChannel(HfChannelId channel_id) noexcept {
 
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to disable channel %lu: %s", channel_id, esp_err_to_name(ret));
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT);
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   channels_[channel_id].enabled = false;
   ESP_LOGI(TAG, "Channel %lu disabled", channel_id);
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-bool McuPwm::IsChannelEnabled(HfChannelId channel_id) const noexcept {
+bool McuPwm::IsChannelEnabled(hf_channel_id_t channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
@@ -291,25 +291,25 @@ bool McuPwm::IsChannelEnabled(HfChannelId channel_id) const noexcept {
 // PWM CONTROL (BasePwm Interface)
 //==============================================================================
 
-HfPwmErr McuPwm::SetDutyCycle(HfChannelId channel_id, float duty_cycle) noexcept {
+hf_pwm_err_t McuPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_CHANNEL);
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!BasePwm::IsValidDutyCycle(duty_cycle)) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_DUTY_CYCLE);
-    return HfPwmErr::PWM_ERR_INVALID_DUTY_CYCLE;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE);
+    return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
   }
 
   uint32_t raw_duty =
@@ -317,26 +317,26 @@ HfPwmErr McuPwm::SetDutyCycle(HfChannelId channel_id, float duty_cycle) noexcept
   return SetDutyCycleRaw(channel_id, raw_duty);
 }
 
-HfPwmErr McuPwm::SetDutyCycleRaw(HfChannelId channel_id, uint32_t raw_value) noexcept {
+hf_pwm_err_t McuPwm::SetDutyCycleRaw(hf_channel_id_t channel_id, uint32_t raw_value) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_CHANNEL);
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   uint32_t max_duty = (1U << channels_[channel_id].config.resolution_bits) - 1;
   if (raw_value > max_duty) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_DUTY_OUT_OF_RANGE);
-    return HfPwmErr::PWM_ERR_DUTY_OUT_OF_RANGE;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_DUTY_OUT_OF_RANGE);
+    return hf_pwm_err_t::PWM_ERR_DUTY_OUT_OF_RANGE;
   }
 
   // Apply inversion if configured
@@ -345,34 +345,34 @@ HfPwmErr McuPwm::SetDutyCycleRaw(HfChannelId channel_id, uint32_t raw_value) noe
     actual_duty = max_duty - raw_value;
   }
 
-  HfPwmErr result = UpdatePlatformDuty(channel_id, actual_duty);
-  if (result == HfPwmErr::PWM_SUCCESS) {
+  hf_pwm_err_t result = UpdatePlatformDuty(channel_id, actual_duty);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
     channels_[channel_id].raw_duty_value = raw_value;
-    channels_[channel_id].last_error = HfPwmErr::PWM_SUCCESS;
+    channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
   }
 
   return result;
 }
 
-HfPwmErr McuPwm::SetFrequency(HfChannelId channel_id, HfFrequencyHz frequency_hz) noexcept {
+hf_pwm_err_t McuPwm::SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_CHANNEL);
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!BasePwm::IsValidFrequency(frequency_hz, MIN_FREQUENCY, MAX_FREQUENCY)) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_FREQUENCY);
-    return HfPwmErr::PWM_ERR_INVALID_FREQUENCY;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_FREQUENCY);
+    return hf_pwm_err_t::PWM_ERR_INVALID_FREQUENCY;
   }
 
   // Check if we can update the existing timer or need a new one
@@ -381,9 +381,9 @@ HfPwmErr McuPwm::SetFrequency(HfChannelId channel_id, HfFrequencyHz frequency_hz
 
   if (can_update_existing) {
     // We can update the existing timer since this is the only channel using it
-    HfPwmErr result = ConfigurePlatformTimer(current_timer, frequency_hz,
+    hf_pwm_err_t result = ConfigurePlatformTimer(current_timer, frequency_hz,
                                              channels_[channel_id].config.resolution_bits);
-    if (result == HfPwmErr::PWM_SUCCESS) {
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
       channels_[channel_id].config.frequency_hz = frequency_hz;
       timers_[current_timer].frequency_hz = frequency_hz;
     }
@@ -393,13 +393,13 @@ HfPwmErr McuPwm::SetFrequency(HfChannelId channel_id, HfFrequencyHz frequency_hz
     int8_t new_timer =
         FindOrAllocateTimer(frequency_hz, channels_[channel_id].config.resolution_bits);
     if (new_timer < 0) {
-      SetChannelError(channel_id, HfPwmErr::PWM_ERR_TIMER_CONFLICT);
-      return HfPwmErr::PWM_ERR_TIMER_CONFLICT;
+      SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
+      return hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT;
     }
 
     // Reconfigure the channel with the new timer
-    HfPwmErr result = ConfigurePlatformChannel(channel_id, channels_[channel_id].config, new_timer);
-    if (result == HfPwmErr::PWM_SUCCESS) {
+    hf_pwm_err_t result = ConfigurePlatformChannel(channel_id, channels_[channel_id].config, new_timer);
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
       // Release the old timer and assign the new one
       ReleaseTimerIfUnused(current_timer);
       channels_[channel_id].assigned_timer = new_timer;
@@ -409,41 +409,41 @@ HfPwmErr McuPwm::SetFrequency(HfChannelId channel_id, HfFrequencyHz frequency_hz
   }
 }
 
-HfPwmErr McuPwm::SetPhaseShift(HfChannelId channel_id, float phase_shift_degrees) noexcept {
+hf_pwm_err_t McuPwm::SetPhaseShift(hf_channel_id_t channel_id, float phase_shift_degrees) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   // ESP32C6 LEDC doesn't support phase shifting directly
   // This would require advanced timer configuration
   ESP_LOGW(TAG, "Phase shift not supported on ESP32C6 LEDC peripheral");
-  SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_PARAMETER);
-  return HfPwmErr::PWM_ERR_INVALID_PARAMETER;
+  SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER);
+  return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
 }
 
 //==============================================================================
 // ADVANCED FEATURES (BasePwm Interface)
 //==============================================================================
 
-HfPwmErr McuPwm::StartAll() noexcept {
+hf_pwm_err_t McuPwm::StartAll() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  HfPwmErr result = HfPwmErr::PWM_SUCCESS;
+  hf_pwm_err_t result = hf_pwm_err_t::PWM_SUCCESS;
 
-  for (HfChannelId channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
+  for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
     if (channels_[channel_id].configured && !channels_[channel_id].enabled) {
-      HfPwmErr channel_result = EnableChannel(channel_id);
-      if (channel_result != HfPwmErr::PWM_SUCCESS) {
+      hf_pwm_err_t channel_result = EnableChannel(channel_id);
+      if (channel_result != hf_pwm_err_t::PWM_SUCCESS) {
         result = channel_result; // Keep the last error
       }
     }
@@ -452,19 +452,19 @@ HfPwmErr McuPwm::StartAll() noexcept {
   return result;
 }
 
-HfPwmErr McuPwm::StopAll() noexcept {
+hf_pwm_err_t McuPwm::StopAll() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  HfPwmErr result = HfPwmErr::PWM_SUCCESS;
+  hf_pwm_err_t result = hf_pwm_err_t::PWM_SUCCESS;
 
-  for (HfChannelId channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
+  for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
     if (channels_[channel_id].enabled) {
-      HfPwmErr channel_result = DisableChannel(channel_id);
-      if (channel_result != HfPwmErr::PWM_SUCCESS) {
+      hf_pwm_err_t channel_result = DisableChannel(channel_id);
+      if (channel_result != hf_pwm_err_t::PWM_SUCCESS) {
         result = channel_result; // Keep the last error
       }
     }
@@ -473,48 +473,48 @@ HfPwmErr McuPwm::StopAll() noexcept {
   return result;
 }
 
-HfPwmErr McuPwm::UpdateAll() noexcept {
+hf_pwm_err_t McuPwm::UpdateAll() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   // For ESP32C6, we can update all channels simultaneously
-  for (HfChannelId channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
+  for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
     if (channels_[channel_id].configured && channels_[channel_id].enabled) {
       esp_err_t ret =
           ledc_update_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id));
       if (ret != ESP_OK) {
         ESP_LOGE(TAG, "ledc_update_duty failed for channel %lu: %s", channel_id,
                  esp_err_to_name(ret));
-        SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-        return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+        SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT);
+        return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
       }
     }
   }
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-HfPwmErr McuPwm::SetComplementaryOutput(HfChannelId primary_channel,
-                                        HfChannelId complementary_channel,
+hf_pwm_err_t McuPwm::SetComplementaryOutput(hf_channel_id_t primary_channel,
+                                        hf_channel_id_t complementary_channel,
                                         uint32_t deadtime_ns) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(primary_channel) || !IsValidChannelId(complementary_channel)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (primary_channel == complementary_channel) {
-    return HfPwmErr::PWM_ERR_INVALID_PARAMETER;
+    return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
   }
 
   // ESP32C6 LEDC doesn't have direct complementary output support
@@ -531,18 +531,18 @@ HfPwmErr McuPwm::SetComplementaryOutput(HfChannelId primary_channel,
 
       ESP_LOGI(TAG, "Complementary pair configured: primary=%lu, comp=%lu, deadtime=%lu ns",
                primary_channel, complementary_channel, deadtime_ns);
-      return HfPwmErr::PWM_SUCCESS;
+      return hf_pwm_err_t::PWM_SUCCESS;
     }
   }
 
-  return HfPwmErr::PWM_ERR_INSUFFICIENT_CHANNELS;
+  return hf_pwm_err_t::PWM_ERR_INSUFFICIENT_CHANNELS;
 }
 
 //==============================================================================
 // STATUS AND INFORMATION (BasePwm Interface)
 //==============================================================================
 
-float McuPwm::GetDutyCycle(HfChannelId channel_id) const noexcept {
+float McuPwm::GetDutyCycle(hf_channel_id_t channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
@@ -553,7 +553,7 @@ float McuPwm::GetDutyCycle(HfChannelId channel_id) const noexcept {
                                  channels_[channel_id].config.resolution_bits);
 }
 
-HfFrequencyHz McuPwm::GetFrequency(HfChannelId channel_id) const noexcept {
+hf_frequency_hz_t McuPwm::GetFrequency(hf_channel_id_t channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
@@ -563,16 +563,16 @@ HfFrequencyHz McuPwm::GetFrequency(HfChannelId channel_id) const noexcept {
   return channels_[channel_id].config.frequency_hz;
 }
 
-HfPwmErr McuPwm::GetChannelStatus(HfChannelId channel_id, PwmChannelStatus &status) const noexcept {
+hf_pwm_err_t McuPwm::GetChannelStatus(hf_channel_id_t channel_id, hf_pwm_channel_status_t &status) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    status = PwmChannelStatus{}; // Reset to default
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    status = hf_pwm_channel_status_t{}; // Reset to default
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   status.is_enabled = channels_[channel_id].enabled;
@@ -583,10 +583,10 @@ HfPwmErr McuPwm::GetChannelStatus(HfChannelId channel_id, PwmChannelStatus &stat
   status.raw_duty_value = channels_[channel_id].raw_duty_value;
   status.last_error = channels_[channel_id].last_error;
 
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-HfPwmErr McuPwm::GetCapabilities(PwmCapabilities &capabilities) const noexcept {
+hf_pwm_err_t McuPwm::GetCapabilities(hf_pwm_capabilities_t &capabilities) const noexcept {
   capabilities.max_channels = MAX_CHANNELS;
   capabilities.max_timers = MAX_TIMERS;
   capabilities.min_frequency_hz = MIN_FREQUENCY;
@@ -598,14 +598,14 @@ HfPwmErr McuPwm::GetCapabilities(PwmCapabilities &capabilities) const noexcept {
   capabilities.supports_deadtime = true;        // Software implementation
   capabilities.supports_phase_shift = false;    // Not supported by LEDC
 
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-HfPwmErr McuPwm::GetLastError(HfChannelId channel_id) const noexcept {
+hf_pwm_err_t McuPwm::GetLastError(hf_channel_id_t channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   return channels_[channel_id].last_error;
@@ -615,13 +615,13 @@ HfPwmErr McuPwm::GetLastError(HfChannelId channel_id) const noexcept {
 // CALLBACKS (BasePwm Interface)
 //==============================================================================
 
-void McuPwm::SetPeriodCallback(PwmPeriodCallback callback, void *user_data) noexcept {
+void McuPwm::SetPeriodCallback(hf_pwm_period_callback_t callback, void *user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   period_callback_ = callback;
   period_callback_user_data_ = user_data;
 }
 
-void McuPwm::SetFaultCallback(PwmFaultCallback callback, void *user_data) noexcept {
+void McuPwm::SetFaultCallback(hf_pwm_fault_callback_t callback, void *user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   fault_callback_ = callback;
   fault_callback_user_data_ = user_data;
@@ -631,26 +631,26 @@ void McuPwm::SetFaultCallback(PwmFaultCallback callback, void *user_data) noexce
 // ESP32C6-SPECIFIC FEATURES
 //==============================================================================
 
-HfPwmErr McuPwm::SetHardwareFade(HfChannelId channel_id, float target_duty_cycle,
+hf_pwm_err_t McuPwm::SetHardwareFade(hf_channel_id_t channel_id, float target_duty_cycle,
                                  uint32_t fade_time_ms) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_CHANNEL);
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!BasePwm::IsValidDutyCycle(target_duty_cycle)) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_DUTY_CYCLE);
-    return HfPwmErr::PWM_ERR_INVALID_DUTY_CYCLE;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE);
+    return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -668,62 +668,62 @@ HfPwmErr McuPwm::SetHardwareFade(HfChannelId channel_id, float target_duty_cycle
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "ledc_set_fade_with_time failed for channel %lu: %s", channel_id,
              esp_err_to_name(ret));
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT);
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   ret = ledc_fade_start(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id),
                         LEDC_FADE_NO_WAIT);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "ledc_fade_start failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT);
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   channels_[channel_id].fade_active = true;
   ESP_LOGD(TAG, "Hardware fade started for channel %lu: target=%.2f%%, time=%lu ms", channel_id,
            target_duty_cycle * 100.0f, fade_time_ms);
 
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-HfPwmErr McuPwm::StopHardwareFade(HfChannelId channel_id) noexcept {
+hf_pwm_err_t McuPwm::StopHardwareFade(hf_channel_id_t channel_id) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_CHANNEL);
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret = ledc_fade_stop(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id));
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "ledc_fade_stop failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT);
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   channels_[channel_id].fade_active = false;
   ESP_LOGD(TAG, "Hardware fade stopped for channel %lu", channel_id);
 
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-bool McuPwm::IsFadeActive(HfChannelId channel_id) const noexcept {
+bool McuPwm::IsFadeActive(hf_channel_id_t channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
@@ -733,25 +733,25 @@ bool McuPwm::IsFadeActive(HfChannelId channel_id) const noexcept {
   return channels_[channel_id].fade_active;
 }
 
-HfPwmErr McuPwm::SetIdleLevel(HfChannelId channel_id, uint8_t idle_level) noexcept {
+hf_pwm_err_t McuPwm::SetIdleLevel(hf_channel_id_t channel_id, uint8_t idle_level) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_CHANNEL);
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (idle_level > 1) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_PARAMETER);
-    return HfPwmErr::PWM_ERR_INVALID_PARAMETER;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER);
+    return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -759,18 +759,18 @@ HfPwmErr McuPwm::SetIdleLevel(HfChannelId channel_id, uint8_t idle_level) noexce
       ledc_stop(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), idle_level);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "ledc_stop failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_HARDWARE_FAULT);
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT);
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   ESP_LOGD(TAG, "Idle level set to %d for channel %lu", idle_level, channel_id);
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-int8_t McuPwm::GetTimerAssignment(HfChannelId channel_id) const noexcept {
+int8_t McuPwm::GetTimerAssignment(hf_channel_id_t channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
@@ -780,25 +780,25 @@ int8_t McuPwm::GetTimerAssignment(HfChannelId channel_id) const noexcept {
   return channels_[channel_id].assigned_timer;
 }
 
-HfPwmErr McuPwm::ForceTimerAssignment(HfChannelId channel_id, uint8_t timer_id) noexcept {
+hf_pwm_err_t McuPwm::ForceTimerAssignment(hf_channel_id_t channel_id, uint8_t timer_id) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    return HfPwmErr::PWM_ERR_NOT_INITIALIZED;
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
   if (!IsValidChannelId(channel_id)) {
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   if (timer_id >= MAX_TIMERS) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_PARAMETER);
-    return HfPwmErr::PWM_ERR_INVALID_PARAMETER;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER);
+    return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
   }
 
   if (!channels_[channel_id].configured) {
-    SetChannelError(channel_id, HfPwmErr::PWM_ERR_INVALID_CHANNEL);
-    return HfPwmErr::PWM_ERR_INVALID_CHANNEL;
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
   // Release current timer and assign new one
@@ -806,9 +806,9 @@ HfPwmErr McuPwm::ForceTimerAssignment(HfChannelId channel_id, uint8_t timer_id) 
   ReleaseTimerIfUnused(old_timer);
 
   // Configure new timer
-  HfPwmErr result = ConfigurePlatformTimer(timer_id, channels_[channel_id].config.frequency_hz,
+  hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, channels_[channel_id].config.frequency_hz,
                                            channels_[channel_id].config.resolution_bits);
-  if (result == HfPwmErr::PWM_SUCCESS) {
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
     channels_[channel_id].assigned_timer = timer_id;
     timers_[timer_id].channel_count++;
 
@@ -823,7 +823,7 @@ HfPwmErr McuPwm::ForceTimerAssignment(HfChannelId channel_id, uint8_t timer_id) 
 // INTERNAL METHODS
 //==============================================================================
 
-bool McuPwm::IsValidChannelId(HfChannelId channel_id) const noexcept {
+bool McuPwm::IsValidChannelId(hf_channel_id_t channel_id) const noexcept {
   return (channel_id < MAX_CHANNELS);
 }
 
@@ -866,7 +866,7 @@ void McuPwm::ReleaseTimerIfUnused(uint8_t timer_id) noexcept {
   }
 }
 
-HfPwmErr McuPwm::ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency_hz,
+hf_pwm_err_t McuPwm::ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency_hz,
                                         uint8_t resolution_bits) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   ledc_timer_config_t timer_config = {};
@@ -879,18 +879,18 @@ HfPwmErr McuPwm::ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency_hz,
   esp_err_t ret = ledc_timer_config(&timer_config);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "ledc_timer_config failed for timer %d: %s", timer_id, esp_err_to_name(ret));
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   ESP_LOGD(TAG, "Timer %d configured: freq=%lu Hz, resolution=%d bits", timer_id, frequency_hz,
            resolution_bits);
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-HfPwmErr McuPwm::ConfigurePlatformChannel(HfChannelId channel_id, const PwmChannelConfig &config,
+hf_pwm_err_t McuPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id, const hf_pwm_channel_config_t &config,
                                           uint8_t timer_id) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   ledc_channel_config_t channel_config = {};
@@ -915,7 +915,7 @@ HfPwmErr McuPwm::ConfigurePlatformChannel(HfChannelId channel_id, const PwmChann
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "ledc_channel_config failed for channel %lu: %s", channel_id,
              esp_err_to_name(ret));
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   // Increment timer usage count
@@ -924,48 +924,48 @@ HfPwmErr McuPwm::ConfigurePlatformChannel(HfChannelId channel_id, const PwmChann
   ESP_LOGD(TAG, "Channel %lu configured: pin=%d, timer=%d, duty=%lu", channel_id, config.output_pin,
            timer_id, initial_duty);
 
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-HfPwmErr McuPwm::UpdatePlatformDuty(HfChannelId channel_id, uint32_t raw_duty_value) noexcept {
+hf_pwm_err_t McuPwm::UpdatePlatformDuty(hf_channel_id_t channel_id, uint32_t raw_duty_value) noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   esp_err_t ret =
       ledc_set_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), raw_duty_value);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "ledc_set_duty failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
   ret = ledc_update_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id));
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "ledc_update_duty failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
-    return HfPwmErr::PWM_ERR_HARDWARE_FAULT;
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
-  return HfPwmErr::PWM_SUCCESS;
+  return hf_pwm_err_t::PWM_SUCCESS;
 #else
-  return HfPwmErr::PWM_ERR_FAILURE;
+  return hf_pwm_err_t::PWM_ERR_FAILURE;
 #endif
 }
 
-void McuPwm::SetChannelError(HfChannelId channel_id, HfPwmErr error) noexcept {
+void McuPwm::SetChannelError(hf_channel_id_t channel_id, hf_pwm_err_t error) noexcept {
   if (IsValidChannelId(channel_id)) {
     channels_[channel_id].last_error = error;
   }
   last_global_error_ = error;
 }
 
-void IRAM_ATTR McuPwm::InterruptHandler(HfChannelId channel_id, void *user_data) noexcept {
+void IRAM_ATTR McuPwm::InterruptHandler(hf_channel_id_t channel_id, void *user_data) noexcept {
   auto *self = static_cast<McuPwm *>(user_data);
   if (self) {
     self->HandleFadeComplete(channel_id);
   }
 }
 
-void McuPwm::HandleFadeComplete(HfChannelId channel_id) noexcept {
+void McuPwm::HandleFadeComplete(hf_channel_id_t channel_id) noexcept {
   if (IsValidChannelId(channel_id)) {
     channels_[channel_id].fade_active = false;
 

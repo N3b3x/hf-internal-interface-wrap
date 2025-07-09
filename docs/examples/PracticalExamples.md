@@ -991,10 +991,10 @@ public:
         
         // Register message handlers
         can_system_.RegisterMessageHandler(0x200 + node_id_, 
-            [this](const hf_can_message_t& msg) { HandleControlMessage(msg); });
+            `this`(const hf_can_message_t& msg) { HandleControlMessage(msg); });
             
         can_system_.RegisterMessageHandler(0x600 + node_id_, 
-            [this](const hf_can_message_t& msg) { HandleStatusRequest(msg); });
+            `this`(const hf_can_message_t& msg) { HandleStatusRequest(msg); });
         
         can_system_.StartReceiving();
         

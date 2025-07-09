@@ -43,11 +43,11 @@ BasePwm (Abstract Base Class)
 
 ## 🏗️ Data Structures
 
-### PwmChannelConfig
+### hf_pwm_channel_config_t
 Configuration structure for PWM channel setup:
 
 ```cpp
-struct PwmChannelConfig {
+struct hf_pwm_channel_config_t {
     hf_gpio_num_t output_pin;           // GPIO pin for PWM output
     uint32_t frequency_hz;              // PWM frequency in Hz
     uint8_t resolution_bits;            // PWM resolution (8-16 bits)
@@ -81,25 +81,25 @@ enum class PwmAlignment : uint8_t {
 };
 ```
 
-### PwmChannelStatus
+### hf_pwm_channel_status_t
 Real-time channel status information:
 
 ```cpp
-struct PwmChannelStatus {
+struct hf_pwm_channel_status_t {
     bool is_enabled;                    // Channel is enabled
     bool is_running;                    // Channel is actively generating PWM
     uint32_t current_frequency_hz;      // Current frequency
     float current_duty_cycle;           // Current duty cycle (0.0-1.0)
     uint32_t raw_duty_value;            // Raw duty register value
-    HfPwmErr last_error;                // Last error encountered
+    hf_pwm_err_t last_error;                // Last error encountered
 };
 ```
 
-### PwmCapabilities
+### hf_pwm_capabilities_t
 Hardware capability information:
 
 ```cpp
-struct PwmCapabilities {
+struct hf_pwm_capabilities_t {
     uint8_t max_channels;               // Maximum number of channels
     uint8_t max_timers;                 // Maximum number of timers
     uint32_t min_frequency_hz;          // Minimum supported frequency
@@ -137,139 +137,139 @@ bool IsInitialized() const noexcept
 
 #### `ConfigureChannel()`
 ```cpp
-virtual HfPwmErr ConfigureChannel(uint8_t channel, const PwmChannelConfig& config) noexcept = 0
+virtual hf_pwm_err_t ConfigureChannel(uint8_t channel, const hf_pwm_channel_config_t& config) noexcept = 0
 ```
 **Description**: Configure a PWM channel with specified settings  
 **Parameters**:
 - `channel`: Channel number (0-based)
 - `config`: Channel configuration structure
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Implementation dependent  
 
 #### `EnableChannel()`
 ```cpp
-virtual HfPwmErr EnableChannel(uint8_t channel) noexcept = 0
+virtual hf_pwm_err_t EnableChannel(uint8_t channel) noexcept = 0
 ```
 **Description**: Enable PWM output on specified channel  
 **Parameters**:
 - `channel`: Channel number to enable
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Implementation dependent  
 
 #### `DisableChannel()`
 ```cpp
-virtual HfPwmErr DisableChannel(uint8_t channel) noexcept = 0
+virtual hf_pwm_err_t DisableChannel(uint8_t channel) noexcept = 0
 ```
 **Description**: Disable PWM output on specified channel  
 **Parameters**:
 - `channel`: Channel number to disable
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Implementation dependent  
 
 ### Duty Cycle Control
 
 #### `SetDutyCycle()`
 ```cpp
-virtual HfPwmErr SetDutyCycle(uint8_t channel, float duty_cycle) noexcept = 0
+virtual hf_pwm_err_t SetDutyCycle(uint8_t channel, float duty_cycle) noexcept = 0
 ```
 **Description**: Set duty cycle for a PWM channel  
 **Parameters**:
 - `channel`: Channel number
 - `duty_cycle`: Duty cycle (0.0 = 0%, 1.0 = 100%)
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Implementation dependent  
 
 #### `SetDutyCycleRaw()`
 ```cpp
-virtual HfPwmErr SetDutyCycleRaw(uint8_t channel, uint32_t raw_value) noexcept = 0
+virtual hf_pwm_err_t SetDutyCycleRaw(uint8_t channel, uint32_t raw_value) noexcept = 0
 ```
 **Description**: Set duty cycle using raw timer value  
 **Parameters**:
 - `channel`: Channel number
 - `raw_value`: Raw duty cycle value (0 to max resolution)
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Implementation dependent  
 
 #### `GetDutyCycle()`
 ```cpp
-virtual HfPwmErr GetDutyCycle(uint8_t channel, float& duty_cycle) noexcept = 0
+virtual hf_pwm_err_t GetDutyCycle(uint8_t channel, float& duty_cycle) noexcept = 0
 ```
 **Description**: Get current duty cycle for a channel  
 **Parameters**:
 - `channel`: Channel number
 - `duty_cycle`: Reference to store duty cycle value
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Yes  
 
 ### Frequency Control
 
 #### `SetFrequency()`
 ```cpp
-virtual HfPwmErr SetFrequency(uint8_t channel, uint32_t frequency_hz) noexcept = 0
+virtual hf_pwm_err_t SetFrequency(uint8_t channel, uint32_t frequency_hz) noexcept = 0
 ```
 **Description**: Set PWM frequency for a channel  
 **Parameters**:
 - `channel`: Channel number
 - `frequency_hz`: Frequency in Hz
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Implementation dependent  
 
 #### `GetFrequency()`
 ```cpp
-virtual HfPwmErr GetFrequency(uint8_t channel, uint32_t& frequency_hz) noexcept = 0
+virtual hf_pwm_err_t GetFrequency(uint8_t channel, uint32_t& frequency_hz) noexcept = 0
 ```
 **Description**: Get current frequency for a channel  
 **Parameters**:
 - `channel`: Channel number
 - `frequency_hz`: Reference to store frequency value
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Yes  
 
 ### Status and Information
 
 #### `GetChannelStatus()`
 ```cpp
-virtual HfPwmErr GetChannelStatus(uint8_t channel, PwmChannelStatus& status) noexcept = 0
+virtual hf_pwm_err_t GetChannelStatus(uint8_t channel, hf_pwm_channel_status_t& status) noexcept = 0
 ```
 **Description**: Get comprehensive channel status information  
 **Parameters**:
 - `channel`: Channel number
 - `status`: Reference to store status information
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Yes  
 
 #### `GetCapabilities()`
 ```cpp
-virtual HfPwmErr GetCapabilities(PwmCapabilities& capabilities) noexcept = 0
+virtual hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t& capabilities) noexcept = 0
 ```
 **Description**: Get hardware capability information  
 **Parameters**:
 - `capabilities`: Reference to store capability information
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Yes  
 
 ### Callback Management
 
 #### `SetPeriodCallback()`
 ```cpp
-virtual HfPwmErr SetPeriodCallback(uint8_t channel, PwmPeriodCallback callback) noexcept = 0
+virtual hf_pwm_err_t SetPeriodCallback(uint8_t channel, hf_pwm_period_callback_t callback) noexcept = 0
 ```
 **Description**: Set callback for PWM period complete events  
 **Parameters**:
 - `channel`: Channel number
 - `callback`: Function to call on period complete
 
-**Returns**: `HfPwmErr` result code  
+**Returns**: `hf_pwm_err_t` result code  
 **Thread-Safe**: Implementation dependent  
 
 ## 💡 Usage Examples
@@ -282,7 +282,7 @@ virtual HfPwmErr SetPeriodCallback(uint8_t channel, PwmPeriodCallback callback) 
 auto pwm = McuPwm::Create();
 
 // Configure channel for LED brightness control
-PwmChannelConfig config;
+hf_pwm_channel_config_t config;
 config.output_pin = 18;          // GPIO 18
 config.frequency_hz = 1000;      // 1kHz
 config.resolution_bits = 12;     // 12-bit resolution (0-4095)
@@ -290,8 +290,8 @@ config.initial_duty_cycle = 0.5f; // 50% brightness
 
 // Initialize and configure
 if (pwm->EnsureInitialized()) {
-    HfPwmErr result = pwm->ConfigureChannel(0, config);
-    if (result == HfPwmErr::PWM_SUCCESS) {
+    hf_pwm_err_t result = pwm->ConfigureChannel(0, config);
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
         pwm->EnableChannel(0);
         printf("PWM channel 0 configured successfully\n");
     }
@@ -301,7 +301,7 @@ if (pwm->EnsureInitialized()) {
 ### Motor Control with Complementary Outputs
 ```cpp
 // Configure for 3-phase motor control
-PwmChannelConfig motor_config;
+hf_pwm_channel_config_t motor_config;
 motor_config.frequency_hz = 20000;           // 20kHz for motor control
 motor_config.resolution_bits = 14;           // 14-bit for precise control
 motor_config.alignment = PwmAlignment::CenterAligned;
@@ -323,7 +323,7 @@ pwm->SetDutyCycle(2, 0.1f);  // Phase C: 10%
 ### Servo Control
 ```cpp
 // Configure for servo control (50Hz, 1-2ms pulse width)
-PwmChannelConfig servo_config;
+hf_pwm_channel_config_t servo_config;
 servo_config.output_pin = 21;
 servo_config.frequency_hz = 50;              // 50Hz (20ms period)
 servo_config.resolution_bits = 16;           // High resolution for precise timing
@@ -349,8 +349,8 @@ for (uint32_t freq = 1000; freq <= 10000; freq += 1000) {
         vTaskDelay(pdMS_TO_TICKS(100));
         
         // Monitor status
-        PwmChannelStatus status;
-        if (pwm->GetChannelStatus(0, status) == HfPwmErr::PWM_SUCCESS) {
+        hf_pwm_channel_status_t status;
+        if (pwm->GetChannelStatus(0, status) == hf_pwm_err_t::PWM_SUCCESS) {
             printf("Freq: %u Hz, Duty: %.1f%%, Raw: %u\n", 
                    status.current_frequency_hz, 
                    status.current_duty_cycle * 100.0f,
@@ -390,8 +390,8 @@ pwm->SetPeriodCallback(0, [](uint8_t channel, uint32_t period_count) {
 ### Hardware Capability Discovery
 ```cpp
 // Discover what the PWM implementation supports
-PwmCapabilities caps;
-if (pwm->GetCapabilities(caps) == HfPwmErr::PWM_SUCCESS) {
+hf_pwm_capabilities_t caps;
+if (pwm->GetCapabilities(caps) == hf_pwm_err_t::PWM_SUCCESS) {
     printf("PWM Capabilities:\n");
     printf("  Max Channels: %d\n", caps.max_channels);
     printf("  Max Timers: %d\n", caps.max_timers);
@@ -406,18 +406,18 @@ if (pwm->GetCapabilities(caps) == HfPwmErr::PWM_SUCCESS) {
 ### Error Handling
 ```cpp
 // Comprehensive error handling
-HfPwmErr result = pwm->SetDutyCycle(0, 1.5f);  // Invalid duty cycle
-if (result != HfPwmErr::PWM_SUCCESS) {
+hf_pwm_err_t result = pwm->SetDutyCycle(0, 1.5f);  // Invalid duty cycle
+if (result != hf_pwm_err_t::PWM_SUCCESS) {
     printf("Error setting duty cycle: %s\n", PwmErrorToString(result));
     
     switch (result) {
-        case HfPwmErr::PWM_ERR_INVALID_CHANNEL:
+        case hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL:
             printf("Channel does not exist\n");
             break;
-        case HfPwmErr::PWM_ERR_DUTY_OUT_OF_RANGE:
+        case hf_pwm_err_t::PWM_ERR_DUTY_OUT_OF_RANGE:
             printf("Duty cycle must be between 0.0 and 1.0\n");
             break;
-        case HfPwmErr::PWM_ERR_NOT_INITIALIZED:
+        case hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED:
             printf("PWM not initialized - calling EnsureInitialized()\n");
             pwm->EnsureInitialized();
             break;
