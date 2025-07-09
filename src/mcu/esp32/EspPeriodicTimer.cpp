@@ -1,5 +1,5 @@
 /**
- * @file McuPeriodicTimer.cpp
+ * @file EspPeriodicTimer.cpp
  * @brief Implementation of MCU-integrated periodic timer.
  *
  * This file provides the implementation for periodic timer functionality using
@@ -12,7 +12,7 @@
  * @copyright HardFOC
  */
 
-#include "McuPeriodicTimer.h"
+#include "EspPeriodicTimer.h"
 
 // Platform-specific includes
 #ifdef HF_MCU_FAMILY_ESP32
@@ -23,52 +23,52 @@
 #error "Unsupported MCU platform. Please add support for your target MCU."
 #endif
 
-static const char *TAG = "McuPeriodicTimer";
+static const char *TAG = "EspPeriodicTimer";
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-McuPeriodicTimer::McuPeriodicTimer(TimerCallback callback, void *user_data) noexcept
+EspPeriodicTimer::EspPeriodicTimer(hf_timer_callback_t callback, void *user_data) noexcept
     : BasePeriodicTimer(callback, user_data), timer_handle_(nullptr), period_us_(0), stats_{} {
-  ESP_LOGD(TAG, "McuPeriodicTimer constructor");
+  ESP_LOGD(TAG, "EspPeriodicTimer constructor");
 }
 
-McuPeriodicTimer::~McuPeriodicTimer() noexcept {
+EspPeriodicTimer::~EspPeriodicTimer() noexcept {
   Deinitialize();
-  ESP_LOGD(TAG, "McuPeriodicTimer destructor");
+  ESP_LOGD(TAG, "EspPeriodicTimer destructor");
 }
 
 //==============================================================================
 // BASEPERIODICTIMER INTERFACE IMPLEMENTATION
 //==============================================================================
 
-HfTimerErr McuPeriodicTimer::Initialize() noexcept {
+hf_timer_err_t EspPeriodicTimer::Initialize() noexcept {
   if (IsInitialized()) {
     ESP_LOGW(TAG, "Timer already initialized");
-    return HfTimerErr::TIMER_ERR_ALREADY_INITIALIZED;
+    return hf_timer_err_t::TIMER_ERR_ALREADY_INITIALIZED;
   }
 
   if (!HasValidCallback()) {
     ESP_LOGE(TAG, "No callback function provided");
-    return HfTimerErr::TIMER_ERR_NULL_POINTER;
+    return hf_timer_err_t::TIMER_ERR_NULL_POINTER;
   }
 
   // Create ESP32 timer handle
   if (!CreateTimerHandle()) {
     ESP_LOGE(TAG, "Failed to create timer handle");
-    return HfTimerErr::TIMER_ERR_HARDWARE_FAULT;
+    return hf_timer_err_t::TIMER_ERR_HARDWARE_FAULT;
   }
 
   SetInitialized(true);
   stats_ = {}; // Reset statistics
   ESP_LOGI(TAG, "Timer initialized successfully");
-  return HfTimerErr::TIMER_SUCCESS;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-HfTimerErr McuPeriodicTimer::Deinitialize() noexcept {
+hf_timer_err_t EspPeriodicTimer::Deinitialize() noexcept {
   if (!IsInitialized()) {
-    return HfTimerErr::TIMER_SUCCESS;
+    return hf_timer_err_t::TIMER_SUCCESS;
   }
 
   // Stop timer if running
@@ -82,23 +82,23 @@ HfTimerErr McuPeriodicTimer::Deinitialize() noexcept {
   SetInitialized(false);
   period_us_ = 0;
   ESP_LOGI(TAG, "Timer deinitialized");
-  return HfTimerErr::TIMER_SUCCESS;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-HfTimerErr McuPeriodicTimer::Start(uint64_t period_us) noexcept {
+hf_timer_err_t EspPeriodicTimer::Start(uint64_t period_us) noexcept {
   if (!IsInitialized()) {
     ESP_LOGE(TAG, "Timer not initialized");
-    return HfTimerErr::TIMER_ERR_NOT_INITIALIZED;
+    return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
 
   if (IsRunning()) {
     ESP_LOGW(TAG, "Timer already running");
-    return HfTimerErr::TIMER_ERR_ALREADY_RUNNING;
+    return hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING;
   }
 
   if (!ValidatePeriod(period_us)) {
     ESP_LOGE(TAG, "Invalid period: %llu us", period_us);
-    return HfTimerErr::TIMER_ERR_INVALID_PERIOD;
+    return hf_timer_err_t::TIMER_ERR_INVALID_PERIOD;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -115,18 +115,18 @@ HfTimerErr McuPeriodicTimer::Start(uint64_t period_us) noexcept {
   SetRunning(true);
   stats_.start_count++;
   ESP_LOGI(TAG, "Timer started with period %llu us", period_us);
-  return HfTimerErr::TIMER_SUCCESS;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-HfTimerErr McuPeriodicTimer::Stop() noexcept {
+hf_timer_err_t EspPeriodicTimer::Stop() noexcept {
   if (!IsInitialized()) {
     ESP_LOGE(TAG, "Timer not initialized");
-    return HfTimerErr::TIMER_ERR_NOT_INITIALIZED;
+    return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
 
   if (!IsRunning()) {
     ESP_LOGW(TAG, "Timer not running");
-    return HfTimerErr::TIMER_ERR_NOT_RUNNING;
+    return hf_timer_err_t::TIMER_ERR_NOT_RUNNING;
   }
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -141,26 +141,26 @@ HfTimerErr McuPeriodicTimer::Stop() noexcept {
   SetRunning(false);
   stats_.stop_count++;
   ESP_LOGI(TAG, "Timer stopped");
-  return HfTimerErr::TIMER_SUCCESS;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-HfTimerErr McuPeriodicTimer::SetPeriod(uint64_t new_period_us) noexcept {
+hf_timer_err_t EspPeriodicTimer::SetPeriod(uint64_t new_period_us) noexcept {
   if (!IsInitialized()) {
     ESP_LOGE(TAG, "Timer not initialized");
-    return HfTimerErr::TIMER_ERR_NOT_INITIALIZED;
+    return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
 
   if (!ValidatePeriod(new_period_us)) {
     ESP_LOGE(TAG, "Invalid period: %llu us", new_period_us);
-    return HfTimerErr::TIMER_ERR_INVALID_PERIOD;
+    return hf_timer_err_t::TIMER_ERR_INVALID_PERIOD;
   }
 
   bool was_running = IsRunning();
 
   // Stop timer if running
   if (was_running) {
-    HfTimerErr stop_result = Stop();
-    if (stop_result != HfTimerErr::TIMER_SUCCESS) {
+    hf_timer_err_t stop_result = Stop();
+    if (stop_result != hf_timer_err_t::TIMER_SUCCESS) {
       return stop_result;
     }
   }
@@ -173,37 +173,37 @@ HfTimerErr McuPeriodicTimer::SetPeriod(uint64_t new_period_us) noexcept {
   }
 
   ESP_LOGD(TAG, "Period set to %llu us", new_period_us);
-  return HfTimerErr::TIMER_SUCCESS;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-HfTimerErr McuPeriodicTimer::GetPeriod(uint64_t &period_us) noexcept {
+hf_timer_err_t EspPeriodicTimer::GetPeriod(uint64_t &period_us) noexcept {
   if (!IsInitialized()) {
-    return HfTimerErr::TIMER_ERR_NOT_INITIALIZED;
+    return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
   period_us = period_us_;
-  return HfTimerErr::TIMER_SUCCESS;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-HfTimerErr McuPeriodicTimer::GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
-                                      HfTimerErr &last_error) noexcept {
+hf_timer_err_t EspPeriodicTimer::GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
+                                          hf_timer_err_t &last_error) noexcept {
   if (!IsInitialized()) {
-    return HfTimerErr::TIMER_ERR_NOT_INITIALIZED;
+    return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
   callback_count = stats_.callback_count;
   missed_callbacks = stats_.missed_callbacks;
   last_error = stats_.last_error;
-  return HfTimerErr::TIMER_SUCCESS;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-HfTimerErr McuPeriodicTimer::ResetStats() noexcept {
+hf_timer_err_t EspPeriodicTimer::ResetStats() noexcept {
   if (!IsInitialized()) {
-    return HfTimerErr::TIMER_ERR_NOT_INITIALIZED;
+    return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
   stats_ = {};
-  return HfTimerErr::TIMER_SUCCESS;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-const char *McuPeriodicTimer::GetDescription() const noexcept {
+const char *EspPeriodicTimer::GetDescription() const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   return "ESP32 MCU Periodic Timer (ESP Timer API)";
 #else
@@ -211,17 +211,17 @@ const char *McuPeriodicTimer::GetDescription() const noexcept {
 #endif
 }
 
-uint64_t McuPeriodicTimer::GetMinPeriod() const noexcept {
+uint64_t EspPeriodicTimer::GetMinPeriod() const noexcept {
   // ESP32 timer supports periods from 1us
   return 1;
 }
 
-uint64_t McuPeriodicTimer::GetMaxPeriod() const noexcept {
+uint64_t EspPeriodicTimer::GetMaxPeriod() const noexcept {
   // ESP32 timer supports very large periods, but we limit for safety
   return UINT64_MAX / 2;
 }
 
-uint64_t McuPeriodicTimer::GetResolution() const noexcept {
+uint64_t EspPeriodicTimer::GetResolution() const noexcept {
   // ESP32 timer has 1us resolution
   return 1;
 }
@@ -229,30 +229,30 @@ uint64_t McuPeriodicTimer::GetResolution() const noexcept {
 // PRIVATE METHODS
 //==============================================================================
 
-HfTimerErr McuPeriodicTimer::ConvertError(int platform_error) const noexcept {
+hf_timer_err_t EspPeriodicTimer::ConvertError(int platform_error) const noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   switch (platform_error) {
   case ESP_OK:
-    return HfTimerErr::TIMER_SUCCESS;
+    return hf_timer_err_t::TIMER_SUCCESS;
   case ESP_ERR_INVALID_ARG:
-    return HfTimerErr::TIMER_ERR_INVALID_PARAMETER;
+    return hf_timer_err_t::TIMER_ERR_INVALID_PARAMETER;
   case ESP_ERR_NO_MEM:
-    return HfTimerErr::TIMER_ERR_OUT_OF_MEMORY;
+    return hf_timer_err_t::TIMER_ERR_OUT_OF_MEMORY;
   case ESP_ERR_INVALID_STATE:
-    return HfTimerErr::TIMER_ERR_ALREADY_RUNNING;
+    return hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING;
   default:
-    return HfTimerErr::TIMER_ERR_FAILURE;
+    return hf_timer_err_t::TIMER_ERR_FAILURE;
   }
 #else
-  return HfTimerErr::TIMER_ERR_FAILURE;
+  return hf_timer_err_t::TIMER_ERR_FAILURE;
 #endif
 }
 
-bool McuPeriodicTimer::ValidatePeriod(uint64_t period_us) const noexcept {
+bool EspPeriodicTimer::ValidatePeriod(uint64_t period_us) const noexcept {
   return (period_us >= GetMinPeriod() && period_us <= GetMaxPeriod());
 }
 
-bool McuPeriodicTimer::CreateTimerHandle() noexcept {
+bool EspPeriodicTimer::CreateTimerHandle() noexcept {
   if (timer_handle_) {
     return true; // Already created
   }
@@ -260,7 +260,7 @@ bool McuPeriodicTimer::CreateTimerHandle() noexcept {
 #ifdef HF_MCU_FAMILY_ESP32
   esp_timer_create_args_t timer_args = {};
   timer_args.callback = [](void *arg) {
-    auto *self = static_cast<McuPeriodicTimer *>(arg);
+    auto *self = static_cast<EspPeriodicTimer *>(arg);
     if (self && self->HasValidCallback()) {
       self->stats_.callback_count++;
       self->ExecuteCallback();
@@ -284,7 +284,7 @@ bool McuPeriodicTimer::CreateTimerHandle() noexcept {
 #endif
 }
 
-void McuPeriodicTimer::DestroyTimerHandle() noexcept {
+void EspPeriodicTimer::DestroyTimerHandle() noexcept {
   if (!timer_handle_) {
     return;
   }

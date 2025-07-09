@@ -21,25 +21,27 @@
  * @copyright HardFOC
  *
  * @note All interface classes (CAN, UART, I2C, SPI, GPIO, ADC, PWM, RMT) must use only these types.
- * @note This implementation is verified against ESP-IDF v5.4+ documentation and supports all latest features.
+ * @note This implementation is verified against ESP-IDF v5.4+ documentation and supports all latest
+ * features.
  */
 
 #pragma once
 
 // Include the base common types first
 #include "HardwareTypes.h" // For basic hardware types
-#include "McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
+#include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 
 // Include all peripheral-specific type definitions
-#include "EspTypes_Base.h"
 #include "EspTypes_ADC.h"
-#include "EspTypes_GPIO.h"
+#include "EspTypes_Base.h"
 #include "EspTypes_CAN.h"
-#include "EspTypes_UART.h"
-#include "EspTypes_SPI.h"
+#include "EspTypes_GPIO.h"
 #include "EspTypes_I2C.h"
-#include "EspTypes_PWM.h"
 #include "EspTypes_PIO.h"
+#include "EspTypes_PWM.h"
+#include "EspTypes_SPI.h"
+#include "EspTypes_Timer.h"
+#include "EspTypes_UART.h"
 
 //==============================================================================
 // BACKWARD COMPATIBILITY AND CONVENIENCE TYPES

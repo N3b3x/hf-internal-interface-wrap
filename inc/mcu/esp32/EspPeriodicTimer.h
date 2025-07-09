@@ -1,5 +1,5 @@
 /**
- * @file McuPeriodicTimer.h
+ * @file EspPeriodicTimer.h
  * @brief MCU-integrated periodic timer implementation.
  *
  * This header provides a periodic timer implementation for microcontrollers with
@@ -16,11 +16,11 @@
 #pragma once
 
 #include "BasePeriodicTimer.h"
-#include "McuTypes.h"
+#include "EspTypes.h"
 #include <cstdint>
 
 /**
- * @class McuPeriodicTimer
+ * @class EspPeriodicTimer
  * @brief MCU-integrated periodic timer implementation.
  *
  * This class provides periodic timer functionality using the microcontroller's built-in
@@ -37,25 +37,25 @@
  *
  * @note This implementation uses hardware timers for precise timing
  */
-class McuPeriodicTimer : public BasePeriodicTimer {
+class EspPeriodicTimer : public BasePeriodicTimer {
 public:
   /**
    * @brief Constructor with callback specification.
    * @param callback Callback function to be called on timer expiry
    * @param user_data User data passed to callback function
    */
-  McuPeriodicTimer(TimerCallback callback = nullptr, void *user_data = nullptr) noexcept;
+  EspPeriodicTimer(hf_timer_callback_t callback = nullptr, void *user_data = nullptr) noexcept;
 
   /**
    * @brief Destructor - ensures timer is stopped and resources are freed.
    */
-  ~McuPeriodicTimer() noexcept override;
+  ~EspPeriodicTimer() noexcept override;
 
   // Copy/move constructors and assignment operators
-  McuPeriodicTimer(const McuPeriodicTimer &) = delete;
-  McuPeriodicTimer &operator=(const McuPeriodicTimer &) = delete;
-  McuPeriodicTimer(McuPeriodicTimer &&) = delete;
-  McuPeriodicTimer &operator=(McuPeriodicTimer &&) = delete;
+  EspPeriodicTimer(const EspPeriodicTimer &) = delete;
+  EspPeriodicTimer &operator=(const EspPeriodicTimer &) = delete;
+  EspPeriodicTimer(EspPeriodicTimer &&) = delete;
+  EspPeriodicTimer &operator=(EspPeriodicTimer &&) = delete;
 
   //==============================================//
   // OVERRIDDEN PURE VIRTUAL FUNCTIONS            //
@@ -65,40 +65,40 @@ public:
    * @brief Initialize the timer.
    * @return Success or specific error code
    */
-  HfTimerErr Initialize() noexcept override;
+  hf_timer_err_t Initialize() noexcept override;
 
   /**
    * @brief Deinitialize the timer and free resources.
    * @return Success or specific error code
    */
-  HfTimerErr Deinitialize() noexcept override;
+  hf_timer_err_t Deinitialize() noexcept override;
 
   /**
    * @brief Start the timer with specified period.
    * @param period_us Timer period in microseconds
    * @return Success or specific error code
    */
-  HfTimerErr Start(uint64_t period_us) noexcept override;
+  hf_timer_err_t Start(uint64_t period_us) noexcept override;
 
   /**
    * @brief Stop the timer.
    * @return Success or specific error code
    */
-  HfTimerErr Stop() noexcept override;
+  hf_timer_err_t Stop() noexcept override;
 
   /**
    * @brief Change timer period (timer can be running or stopped).
    * @param new_period_us New period in microseconds
    * @return Success or specific error code
    */
-  HfTimerErr SetPeriod(uint64_t new_period_us) noexcept override;
+  hf_timer_err_t SetPeriod(uint64_t new_period_us) noexcept override;
 
   /**
    * @brief Get current timer period.
    * @param period_us Reference to store current period
    * @return Success or specific error code
    */
-  HfTimerErr GetPeriod(uint64_t &period_us) noexcept override;
+  hf_timer_err_t GetPeriod(uint64_t &period_us) noexcept override;
 
   /**
    * @brief Get timer statistics and status information.
@@ -107,14 +107,14 @@ public:
    * @param last_error Last error that occurred
    * @return Success or specific error code
    */
-  HfTimerErr GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
-                      HfTimerErr &last_error) noexcept override;
+  hf_timer_err_t GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
+                          hf_timer_err_t &last_error) noexcept override;
 
   /**
    * @brief Reset timer statistics.
    * @return Success or specific error code
    */
-  HfTimerErr ResetStats() noexcept override;
+  hf_timer_err_t ResetStats() noexcept override;
 
   /**
    * @brief Get description of this timer implementation.
@@ -143,14 +143,14 @@ public:
 private:
   hf_timer_handle_t timer_handle_; ///< Platform-specific timer handle
   uint64_t period_us_;             ///< Current timer period in microseconds
-  TimerStats stats_;               ///< Timer statistics
+  hf_timer_stats_t stats_;         ///< Timer statistics
 
   /**
-   * @brief Convert platform-specific error to HfTimerErr.
+   * @brief Convert platform-specific error to hf_timer_err_t.
    * @param platform_error Platform-specific error code
-   * @return Corresponding HfTimerErr
+   * @return Corresponding hf_timer_err_t
    */
-  HfTimerErr ConvertError(int platform_error) const noexcept;
+  hf_timer_err_t ConvertError(int platform_error) const noexcept;
 
   /**
    * @brief Validate timer period.
