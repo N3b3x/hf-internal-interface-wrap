@@ -137,40 +137,40 @@ public:
    * @param trigger Interrupt trigger type
    * @param callback Callback function to invoke on interrupt (optional)
    * @param user_data User data passed to callback (optional)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t ConfigureInterrupt(InterruptTrigger trigger, InterruptCallback callback = nullptr,
                                void *user_data = nullptr) noexcept override;
 
   /**
    * @brief Enable GPIO interrupt.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t EnableInterrupt() noexcept override;
 
   /**
    * @brief Disable GPIO interrupt.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t DisableInterrupt() noexcept override;
 
   /**
    * @brief Wait for GPIO interrupt with timeout.
    * @param timeout_ms Timeout in milliseconds (0 = no timeout)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if interrupt occurred, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if interrupt occurred, error code otherwise
    */
   hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Get current interrupt status and statistics.
    * @param status Reference to store interrupt status
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t GetInterruptStatus(InterruptStatus &status) noexcept override;
 
   /**
    * @brief Clear interrupt statistics/counters.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t ClearInterruptStats() noexcept override;
 
@@ -201,7 +201,7 @@ protected:
   /**
    * @brief Platform-specific implementation for setting pin direction.
    * @param direction Desired pin direction (Input or Output)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Reconfigures the MCU pin as input or output with appropriate
    *          pull resistor and drive mode settings.
    */
@@ -210,28 +210,28 @@ protected:
   /**
    * @brief Platform-specific implementation for setting output mode.
    * @param mode Desired output mode (PushPull or OpenDrain)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Changes the output drive characteristics of the MCU pin.
    */
   hf_gpio_err_t SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept override;
 
   /**
    * @brief Platform-specific implementation for setting active state.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Sets the MCU pin to the electrical level corresponding to logical active.
    */
   hf_gpio_err_t SetActiveImpl() noexcept override;
 
   /**
    * @brief Platform-specific implementation for setting inactive state.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Sets the MCU pin to the electrical level corresponding to logical inactive.
    */
   hf_gpio_err_t SetInactiveImpl() noexcept override;
 
   /**
    * @brief Platform-specific implementation for toggling pin state.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Toggles the MCU pin between active and inactive states.
    */
   hf_gpio_err_t ToggleImpl() noexcept override;
@@ -239,7 +239,7 @@ protected:
   /**
    * @brief Platform-specific implementation for reading pin active state.
    * @param is_active Output parameter: true if active, false if inactive
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Reads the current MCU pin electrical level and converts to logical state.
    */
   hf_gpio_err_t IsActiveImpl(bool &is_active) noexcept override;
@@ -247,7 +247,7 @@ protected:
   /**
    * @brief Platform-specific implementation for setting pull resistor mode.
    * @param mode Desired PullMode configuration (Floating, PullUp, or PullDown)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Configures the MCU's internal pull resistors.
    */
   hf_gpio_err_t SetPullModeImpl(hf_gpio_pull_mode_t mode) noexcept override;
@@ -274,7 +274,7 @@ protected:
   /**
    * @brief Set GPIO drive capability.
    * @param capability New drive capability level
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Controls the output drive strength from ~5mA (Weak) to ~40mA (Strongest).
    *          Higher drive capability allows for faster switching and driving larger loads
    *          but increases power consumption and EMI.
@@ -290,7 +290,7 @@ protected:
   /**
    * @brief Configure pin glitch filter (fixed 2 clock cycles).
    * @param enable Enable or disable the pin glitch filter
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles.
    *          This is a simple, low-overhead filter suitable for basic noise rejection.
    */
@@ -299,7 +299,7 @@ protected:
   /**
    * @brief Configure flexible glitch filter with custom timing.
    * @param config Flexible glitch filter configuration
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Flexible glitch filter allows precise control over filtering parameters.
    *          Pulses shorter than window_threshold_ns within window_width_ns are filtered.
    */
@@ -307,13 +307,13 @@ protected:
 
   /**
    * @brief Enable all configured glitch filters.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t EnableGlitchFilters() noexcept;
 
   /**
    * @brief Disable all glitch filters.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t DisableGlitchFilters() noexcept;
 
@@ -326,7 +326,7 @@ protected:
   /**
    * @brief Configure GPIO sleep behavior.
    * @param config Sleep configuration parameters
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Configures how the GPIO behaves during sleep modes.
    *          Essential for power-optimized applications.
    */
@@ -335,7 +335,7 @@ protected:
   /**
    * @brief Enable GPIO hold function.
    * @param enable Enable or disable hold function
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Hold function maintains GPIO state during sleep and reset.
    *          Useful for maintaining critical pin states during power transitions.
    */
@@ -344,7 +344,7 @@ protected:
   /**
    * @brief Configure GPIO as wake-up source.
    * @param config Wake-up configuration parameters
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Enables GPIO to wake the system from deep sleep.
    *          Essential for battery-powered applications.
    */
@@ -371,7 +371,7 @@ protected:
   /**
    * @brief Configure ETM (Event Task Matrix) for hardware-level GPIO operations.
    * @param etm_config ETM configuration including event and task setup
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details ETM enables zero-latency hardware-level GPIO operations triggered by events.
    *          Perfect for precise timing requirements in motor control and signal processing.
    */
@@ -379,14 +379,14 @@ protected:
 
   /**
    * @brief Enable ETM channel for this GPIO.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Enables the configured ETM channel to start responding to events.
    */
   hf_gpio_err_t EnableETM() noexcept;
 
   /**
    * @brief Disable ETM channel for this GPIO.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Disables the ETM channel while preserving configuration.
    */
   hf_gpio_err_t DisableETM() noexcept;
@@ -401,7 +401,7 @@ protected:
   /**
    * @brief Get ETM status and configuration information.
    * @param status Output structure to store ETM status
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Provides comprehensive ETM status for monitoring and debugging.
    */
   hf_gpio_err_t GetETMStatus(hf_gpio_etm_status_t &status) const noexcept;
@@ -423,7 +423,7 @@ protected:
   /**
    * @brief Dump complete ETM configuration to output stream.
    * @param output_stream Output stream for dump (default: stdout)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Provides comprehensive ETM system dump for debugging and analysis.
    */
   static hf_gpio_err_t DumpETMConfiguration(FILE* output_stream = nullptr) noexcept;
@@ -435,7 +435,7 @@ protected:
   /**
    * @brief Get pin capabilities for comprehensive feature detection.
    * @param capabilities Output structure to store pin capabilities
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Provides comprehensive information about pin capabilities including
    *          ADC, RTC, touch, strapping, and special function support.
    */
@@ -444,7 +444,7 @@ protected:
   /**
    * @brief Get detailed status information for diagnostics.
    * @param status Output structure to store status information
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Provides comprehensive status information for debugging and monitoring.
    */
   hf_gpio_err_t GetStatusInfo(hf_gpio_status_info_t &status) const noexcept;
@@ -464,7 +464,7 @@ protected:
    * @brief Create a dedicated GPIO bundle for high-speed operations.
    * @param config Dedicated GPIO bundle configuration
    * @param bundle_handle Output handle for the created bundle
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Dedicated GPIO bundles enable high-speed bit-banging operations
    *          with minimal CPU overhead, perfect for custom protocols.
    */
@@ -474,7 +474,7 @@ protected:
   /**
    * @brief Delete a dedicated GPIO bundle.
    * @param bundle_handle Handle of the bundle to delete
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   static hf_gpio_err_t DeleteDedicatedBundle(hf_dedic_gpio_bundle_handle_t bundle_handle) noexcept;
 
@@ -482,7 +482,7 @@ protected:
    * @brief Read data from a dedicated GPIO bundle.
    * @param bundle_handle Handle of the bundle to read from
    * @param data Output data from the bundle
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   static hf_gpio_err_t ReadDedicatedBundle(hf_dedic_gpio_bundle_handle_t bundle_handle,
                                            hf_dedic_gpio_bundle_data_t &data) noexcept;
@@ -491,7 +491,7 @@ protected:
    * @brief Write data to a dedicated GPIO bundle.
    * @param bundle_handle Handle of the bundle to write to
    * @param data Data to write to the bundle
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   static hf_gpio_err_t WriteDedicatedBundle(hf_dedic_gpio_bundle_handle_t bundle_handle,
                                             hf_dedic_gpio_bundle_data_t data) noexcept;

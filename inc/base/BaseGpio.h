@@ -30,60 +30,60 @@
  */
 #define HF_GPIO_ERR_LIST(X)                                                                        \
   /* Success codes */                                                                              \
-  X(HF_GPIO_SUCCESS, 0, "Success")                                                                    \
+  X(GPIO_SUCCESS, 0, "Success")                                                                    \
                                                                                                    \
   /* General errors */                                                                             \
-  X(HF_GPIO_ERR_FAILURE, 1, "General failure")                                                        \
-  X(HF_GPIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
-  X(HF_GPIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
-  X(HF_GPIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
-  X(HF_GPIO_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
-  X(HF_GPIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
+  X(GPIO_ERR_FAILURE, 1, "General failure")                                                        \
+  X(GPIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
+  X(GPIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
+  X(GPIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
+  X(GPIO_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
+  X(GPIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
                                                                                                    \
   /* Pin errors */                                                                                 \
-  X(HF_GPIO_ERR_INVALID_PIN, 7, "Invalid pin")                                                        \
-  X(HF_GPIO_ERR_PIN_NOT_FOUND, 8, "Pin not found")                                                    \
-  X(HF_GPIO_ERR_PIN_NOT_CONFIGURED, 9, "Pin not configured")                                          \
-  X(HF_GPIO_ERR_PIN_ALREADY_REGISTERED, 10, "Pin already registered")                                 \
-  X(HF_GPIO_ERR_PIN_ACCESS_DENIED, 11, "Pin access denied")                                           \
-  X(HF_GPIO_ERR_PIN_BUSY, 12, "Pin busy")                                                             \
+  X(GPIO_ERR_INVALID_PIN, 7, "Invalid pin")                                                        \
+  X(GPIO_ERR_PIN_NOT_FOUND, 8, "Pin not found")                                                    \
+  X(GPIO_ERR_PIN_NOT_CONFIGURED, 9, "Pin not configured")                                          \
+  X(GPIO_ERR_PIN_ALREADY_REGISTERED, 10, "Pin already registered")                                 \
+  X(GPIO_ERR_PIN_ACCESS_DENIED, 11, "Pin access denied")                                           \
+  X(GPIO_ERR_PIN_BUSY, 12, "Pin busy")                                                             \
                                                                                                    \
   /* Hardware errors */                                                                            \
-  X(HF_GPIO_ERR_HARDWARE_FAULT, 13, "Hardware fault")                                                 \
-  X(HF_GPIO_ERR_COMMUNICATION_FAILURE, 14, "Communication failure")                                   \
-  X(HF_GPIO_ERR_DEVICE_NOT_RESPONDING, 15, "Device not responding")                                   \
-  X(HF_GPIO_ERR_TIMEOUT, 16, "Timeout")                                                               \
-  X(HF_GPIO_ERR_VOLTAGE_OUT_OF_RANGE, 17, "Voltage out of range")                                     \
+  X(GPIO_ERR_HARDWARE_FAULT, 13, "Hardware fault")                                                 \
+  X(GPIO_ERR_COMMUNICATION_FAILURE, 14, "Communication failure")                                   \
+  X(GPIO_ERR_DEVICE_NOT_RESPONDING, 15, "Device not responding")                                   \
+  X(GPIO_ERR_TIMEOUT, 16, "Timeout")                                                               \
+  X(GPIO_ERR_VOLTAGE_OUT_OF_RANGE, 17, "Voltage out of range")                                     \
                                                                                                    \
   /* Configuration errors */                                                                       \
-  X(HF_GPIO_ERR_INVALID_CONFIGURATION, 18, "Invalid configuration")                                   \
-  X(HF_GPIO_ERR_UNSUPPORTED_OPERATION, 19, "Unsupported operation")                                   \
-  X(HF_GPIO_ERR_RESOURCE_BUSY, 20, "Resource busy")                                                   \
-  X(HF_GPIO_ERR_RESOURCE_UNAVAILABLE, 21, "Resource unavailable")                                     \
+  X(GPIO_ERR_INVALID_CONFIGURATION, 18, "Invalid configuration")                                   \
+  X(GPIO_ERR_UNSUPPORTED_OPERATION, 19, "Unsupported operation")                                   \
+  X(GPIO_ERR_RESOURCE_BUSY, 20, "Resource busy")                                                   \
+  X(GPIO_ERR_RESOURCE_UNAVAILABLE, 21, "Resource unavailable")                                     \
                                                                                                    \
   /* I/O errors */                                                                                 \
-  X(HF_GPIO_ERR_READ_FAILURE, 22, "Read failure")                                                     \
-  X(HF_GPIO_ERR_WRITE_FAILURE, 23, "Write failure")                                                   \
-  X(HF_GPIO_ERR_DIRECTION_MISMATCH, 24, "Direction mismatch")                                         \
-  X(HF_GPIO_ERR_PULL_RESISTOR_FAILURE, 25, "Pull resistor failure")                                   \
+  X(GPIO_ERR_READ_FAILURE, 22, "Read failure")                                                     \
+  X(GPIO_ERR_WRITE_FAILURE, 23, "Write failure")                                                   \
+  X(GPIO_ERR_DIRECTION_MISMATCH, 24, "Direction mismatch")                                         \
+  X(GPIO_ERR_PULL_RESISTOR_FAILURE, 25, "Pull resistor failure")                                   \
                                                                                                    \
   /* Interrupt errors */                                                                           \
-  X(HF_GPIO_ERR_INTERRUPT_NOT_SUPPORTED, 26, "Interrupt not supported")                               \
-  X(HF_GPIO_ERR_INTERRUPT_ALREADY_ENABLED, 27, "Interrupt already enabled")                           \
-  X(HF_GPIO_ERR_INTERRUPT_NOT_ENABLED, 28, "Interrupt not enabled")                                   \
-  X(HF_GPIO_ERR_INTERRUPT_HANDLER_FAILED, 29, "Interrupt handler failed")                             \
+  X(GPIO_ERR_INTERRUPT_NOT_SUPPORTED, 26, "Interrupt not supported")                               \
+  X(GPIO_ERR_INTERRUPT_ALREADY_ENABLED, 27, "Interrupt already enabled")                           \
+  X(GPIO_ERR_INTERRUPT_NOT_ENABLED, 28, "Interrupt not enabled")                                   \
+  X(GPIO_ERR_INTERRUPT_HANDLER_FAILED, 29, "Interrupt handler failed")                             \
                                                                                                    \
   /* System errors */                                                                              \
-  X(HF_GPIO_ERR_SYSTEM_ERROR, 30, "System error")                                                     \
-  X(HF_GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied")                                           \
-  X(HF_GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")                                           \
+  X(GPIO_ERR_SYSTEM_ERROR, 30, "System error")                                                     \
+  X(GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied")                                           \
+  X(GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")                                           \
                                                                                                    \
   /* Extended errors for McuGpio implementation */                                                 \
-  X(HF_GPIO_ERR_NOT_SUPPORTED, 33, "Operation not supported")                                         \
-  X(HF_GPIO_ERR_DRIVER_ERROR, 34, "Driver error")                                                     \
-  X(HF_GPIO_ERR_INVALID_STATE, 35, "Invalid state")                                                   \
-  X(HF_GPIO_ERR_INVALID_ARG, 36, "Invalid argument")                                                  \
-  X(HF_GPIO_ERR_CALIBRATION_FAILURE, 37, "Calibration failure")
+  X(GPIO_ERR_NOT_SUPPORTED, 33, "Operation not supported")                                         \
+  X(GPIO_ERR_DRIVER_ERROR, 34, "Driver error")                                                     \
+  X(GPIO_ERR_INVALID_STATE, 35, "Invalid state")                                                   \
+  X(GPIO_ERR_INVALID_ARG, 36, "Invalid argument")                                                  \
+  X(GPIO_ERR_CALIBRATION_FAILURE, 37, "Calibration failure")
 
 /**
  * @brief HardFOC GPIO error codes
@@ -93,7 +93,7 @@ enum class hf_gpio_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_GPIO_ERR_LIST(X)
 #undef X
-      HF_GPIO_ERR_COUNT // Automatically calculated count
+      GPIO_ERR_COUNT // Automatically calculated count
 };
 
 /**
@@ -296,16 +296,16 @@ public:
   /**
    * @brief Set the pin direction (input or output).
    * @param direction New Direction setting (Input or Output)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept {
     hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
       return validation;
     }
 
     hf_gpio_err_t result = SetDirectionImpl(direction);
-    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       current_direction_ = direction;
     }
     return result;
@@ -338,16 +338,16 @@ public:
   /**
    * @brief Set the output drive mode.
    * @param mode New OutputMode setting (PushPull or OpenDrain)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t SetOutputMode(hf_gpio_output_mode_t mode) noexcept {
     hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
       return validation;
     }
 
     hf_gpio_err_t result = SetOutputModeImpl(mode);
-    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       output_mode_ = mode;
     }
     return result;
@@ -368,16 +368,16 @@ public:
   /**
    * @brief Set the pull resistor mode.
    * @param mode New PullMode setting (Floating, PullUp, or PullDown)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t SetPullMode(hf_gpio_pull_mode_t mode) noexcept {
     hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
       return validation;
     }
 
     hf_gpio_err_t result = SetPullModeImpl(mode);
-    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       pull_mode_ = mode;
     }
     return result;
@@ -417,16 +417,16 @@ public:
 
   /**
    * @brief Set the GPIO to active state.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t SetActive() noexcept {
     hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
       return validation;
     }
 
     hf_gpio_err_t result = SetActiveImpl();
-    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       current_state_ = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
     }
     return result;
@@ -434,16 +434,16 @@ public:
 
   /**
    * @brief Set the GPIO to inactive state.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t SetInactive() noexcept {
     hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
       return validation;
     }
 
     hf_gpio_err_t result = SetInactiveImpl();
-    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       current_state_ = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
     }
     return result;
@@ -451,16 +451,16 @@ public:
 
   /**
    * @brief Toggle the GPIO state.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t Toggle() noexcept {
     hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
       return validation;
     }
 
     hf_gpio_err_t result = ToggleImpl();
-    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       current_state_ = (current_state_ == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
     }
     return result;
@@ -469,16 +469,16 @@ public:
   /**
    * @brief Check if the GPIO is currently active.
    * @param is_active Reference to store the result
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   hf_gpio_err_t IsActive(bool &is_active) noexcept {
     hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
       return validation;
     }
 
     hf_gpio_err_t result = IsActiveImpl(is_active);
-    if (result == hf_gpio_err_t::HF_GPIO_SUCCESS) {
+    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       current_state_ = is_active ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
     }
     return result;
@@ -522,54 +522,54 @@ public:
    * @param trigger Interrupt trigger type
    * @param callback Callback function to invoke on interrupt (optional)
    * @param user_data User data passed to callback (optional)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   virtual hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, 
                                            InterruptCallback callback = nullptr,
                                            void *user_data = nullptr) noexcept {
-    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Enable GPIO interrupt.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   virtual hf_gpio_err_t EnableInterrupt() noexcept {
-    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Disable GPIO interrupt.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   virtual hf_gpio_err_t DisableInterrupt() noexcept {
-    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Wait for GPIO interrupt to occur.
    * @param timeout_ms Timeout in milliseconds (0 = wait forever)
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if interrupt occurred, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if interrupt occurred, error code otherwise
    */
   virtual hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept {
-    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Get interrupt status information.
    * @param status Reference to store status information
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   virtual hf_gpio_err_t GetInterruptStatus(InterruptStatus &status) noexcept {
-    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   /**
    * @brief Clear interrupt statistics.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   virtual hf_gpio_err_t ClearInterruptStats() noexcept {
-    return hf_gpio_err_t::HF_GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   //==============================================================//
@@ -612,12 +612,12 @@ protected:
    */
   [[nodiscard]] hf_gpio_err_t ValidateBasicOperation() const noexcept {
     if (!initialized_) {
-      return hf_gpio_err_t::HF_GPIO_ERR_NOT_INITIALIZED;
+      return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
     }
     if (!IsPinAvailable()) {
-      return hf_gpio_err_t::HF_GPIO_ERR_PIN_ACCESS_DENIED;
+      return hf_gpio_err_t::GPIO_ERR_PIN_ACCESS_DENIED;
     }
-    return hf_gpio_err_t::HF_GPIO_SUCCESS;
+    return hf_gpio_err_t::GPIO_SUCCESS;
   }
 
   /**

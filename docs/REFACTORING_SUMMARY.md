@@ -97,7 +97,7 @@ McuGpio led_gpio(18);
 
 // First operation triggers hardware initialization
 auto result = led_gpio.SetMode(GpioMode::GPIO_MODE_OUTPUT);
-if (result != HfGpioErr::HF_GPIO_OK) {
+if (result != HfGpioErr::GPIO_OK) {
     // Handle initialization error
 }
 

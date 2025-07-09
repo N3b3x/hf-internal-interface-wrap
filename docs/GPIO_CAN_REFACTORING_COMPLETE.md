@@ -134,7 +134,7 @@ All ESP32C6-specific code properly wrapped:
   }
 #else
   ESP_LOGW(TAG, "Glitch filter not supported on this platform");
-  return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 #endif
 ```
 
@@ -172,7 +172,7 @@ Enhanced documentation throughout:
 /**
  * @brief Configure flexible glitch filter with custom timing.
  * @param config Flexible glitch filter configuration
- * @return HfGpioErr::HF_GPIO_OK if successful, error code otherwise
+ * @return HfGpioErr::GPIO_OK if successful, error code otherwise
  * @details Flexible glitch filter allows precise control over filtering parameters.
  *          Pulses shorter than window_threshold_ns within window_width_ns are filtered.
  *          ESP32C6 provides 8 flexible glitch filters with configurable duration.

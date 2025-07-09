@@ -93,7 +93,7 @@ public:
 
   /**
    * @brief Manually set the GPIO to active state.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Allows manual control while the guard is active. The destructor
    *          will still set the pin inactive when the guard goes out of scope.
    */
@@ -101,7 +101,7 @@ public:
 
   /**
    * @brief Manually set the GPIO to inactive state.
-   * @return hf_gpio_err_t::HF_GPIO_SUCCESS if successful, error code otherwise
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Allows manual control while the guard is active. The destructor
    *          will still attempt to set the pin inactive when the guard goes out of scope.
    */
