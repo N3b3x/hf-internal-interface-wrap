@@ -449,10 +449,25 @@ hf_can_err_t EspCan::ConvertToNativeMessage(const hf_can_message_t& message, twa
     if (message.is_extended) {
         native_message.flags |= TWAI_MSG_FLAG_EXTD;
     }
-    
+
     // Set remote frame flag
     if (message.is_rtr) {
         native_message.flags |= TWAI_MSG_FLAG_RTR;
+    }
+
+    // Set single shot flag
+    if (message.is_ss) {
+        native_message.flags |= TWAI_MSG_FLAG_SS;
+    }
+
+    // Set self reception flag
+    if (message.is_self) {
+        native_message.flags |= TWAI_MSG_FLAG_SELF;
+    }
+
+    // Set DLC non-compliant flag
+    if (message.dlc_non_comp) {
+        native_message.flags |= TWAI_MSG_FLAG_DLC_NON_COMP;
     }
     
     // Set data length
@@ -476,9 +491,18 @@ hf_can_err_t EspCan::ConvertFromNativeMessage(const twai_frame_t& native_message
     
     // Set frame format
     message.is_extended = (native_message.flags & TWAI_MSG_FLAG_EXTD) != 0;
-    
+
     // Set remote frame flag
     message.is_rtr = (native_message.flags & TWAI_MSG_FLAG_RTR) != 0;
+
+    // Set single shot flag
+    message.is_ss = (native_message.flags & TWAI_MSG_FLAG_SS) != 0;
+
+    // Set self reception flag
+    message.is_self = (native_message.flags & TWAI_MSG_FLAG_SELF) != 0;
+
+    // Set DLC non-compliant flag
+    message.dlc_non_comp = (native_message.flags & TWAI_MSG_FLAG_DLC_NON_COMP) != 0;
     
     // Set data length
     message.dlc = native_message.data_length_code;
