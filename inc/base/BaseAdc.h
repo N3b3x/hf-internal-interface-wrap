@@ -194,11 +194,6 @@ public:
   //==============================================//
 
   /**
-   * @brief Constructor
-   */
-  BaseAdc() noexcept : initialized_(false) {}
-
-  /**
    * @brief Virtual destructor
    */
   virtual ~BaseAdc() noexcept = default;
@@ -341,35 +336,68 @@ public:
     return hf_adc_err_t::ADC_SUCCESS;
   }
 
+  //==============================================//
+  //==============================================//
   /**
-   * @brief Get ADC operation statistics
-   * @return Statistics structure
+   * @brief Reset ADC operation statistics.
+   * @return hf_adc_err_t::ADC_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
    */
-  [[nodiscard]] virtual hf_adc_statistics_t GetStatistics() const noexcept {
-    return hf_adc_statistics_t{};
+  virtual hf_adc_err_t ResetStatistics() noexcept {
+    statistics_ = hf_adc_statistics_t{}; // Reset statistics to default values
+    return hf_adc_err_t::ADC_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
-   * @brief Get ADC diagnostic information
-   * @return Diagnostics structure
+   * @brief Reset ADC diagnostic information.
+   * @return hf_adc_err_t::ADC_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
    */
-  [[nodiscard]] virtual hf_adc_diagnostics_t GetDiagnostics() const noexcept {
-    return hf_adc_diagnostics_t{};
+  virtual hf_adc_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_adc_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_adc_err_t::ADC_ERR_UNSUPPORTED_OPERATION;
   }
 
-  //==============================================//
-  //==============================================//
+  /**
+   * @brief Get ADC operation statistics.
+   * @param statistics Reference to statistics structure to fill
+   * @return hf_adc_err_t::ADC_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics
+   */
+  virtual hf_adc_err_t GetStatistics(hf_adc_statistics_t &statistics) noexcept {
+    statistics = statistics_; // Return empty statistics by default
+    return hf_adc_err_t::ADC_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Get ADC diagnostic information.
+   * @param diagnostics Reference to diagnostics structure to fill
+   * @return hf_adc_err_t::ADC_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics
+   */
+  virtual hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t &diagnostics) noexcept {
+    diagnostics = diagnostics_; // Return empty diagnostics by default
+    return hf_adc_err_t::ADC_ERR_UNSUPPORTED_OPERATION;
+  }
 
 protected:
 
-  //==============================================//
-  //==============================================//
-
-private:
+  /**
+   * @brief Protected default constructor
+   */
+  BaseAdc() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
 
   //==============================================//
   // VARIABLES                                    //
   //==============================================//
 
   bool initialized_; ///< Initialization status
+  hf_adc_statistics_t statistics_; ///< ADC operation statistics
+  hf_adc_diagnostics_t diagnostics_; ///< ADC diagnostic information
+
+private:
+
+  //==============================================//
+  //==============================================//
+
 };

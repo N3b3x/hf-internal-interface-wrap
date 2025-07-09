@@ -436,10 +436,11 @@ public:
   //==============================================//
 
   /**
-   * @brief Get operation statistics.
-   * @return Current statistics reference
+   * @brief Get SPI operation statistics.
+   * @param statistics Reference to statistics structure to fill
+   * @return hf_spi_err_t::SPI_SUCCESS if successful, error code otherwise
    */
-  const hf_spi_statistics_t &getStatistics() const noexcept;
+  hf_spi_err_t GetStatistics(hf_spi_statistics_t &statistics) const noexcept override;
 
   /**
    * @brief Reset operation statistics.
@@ -447,10 +448,11 @@ public:
   void resetStatistics() noexcept;
 
   /**
-   * @brief Get comprehensive diagnostics information.
-   * @return Diagnostics structure with current state
+   * @brief Get SPI diagnostic information.
+   * @param diagnostics Reference to diagnostics structure to fill
+   * @return hf_spi_err_t::SPI_SUCCESS if successful, error code otherwise
    */
-  hf_spi_diagnostics_t getDiagnostics() const noexcept;
+  hf_spi_err_t GetDiagnostics(hf_spi_diagnostics_t &diagnostics) const noexcept override;
 
   /**
    * @brief Check if SPI bus is healthy.

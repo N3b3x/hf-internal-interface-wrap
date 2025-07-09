@@ -408,19 +408,17 @@ public:
 
     /**
      * @brief Get I2C bus statistics.
-     * @return Statistics structure
+     * @param statistics Reference to statistics structure to fill
+     * @return hf_i2c_err_t::I2C_SUCCESS if successful, error code otherwise
      */
-    hf_i2c_statistics_t GetStatistics() const noexcept {
-        return statistics_;
-    }
+    hf_i2c_err_t GetStatistics(hf_i2c_statistics_t &statistics) const noexcept override;
 
     /**
      * @brief Get I2C bus diagnostics.
-     * @return Diagnostics structure
+     * @param diagnostics Reference to diagnostics structure to fill
+     * @return hf_i2c_err_t::I2C_SUCCESS if successful, error code otherwise
      */
-    hf_i2c_diagnostics_t GetDiagnostics() const noexcept {
-        return diagnostics_;
-    }
+    hf_i2c_err_t GetDiagnostics(hf_i2c_diagnostics_t &diagnostics) const noexcept override;
 
     /**
      * @brief Reset I2C statistics.

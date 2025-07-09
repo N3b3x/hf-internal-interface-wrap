@@ -201,13 +201,6 @@ struct hf_spi_diagnostics_t {
 class BaseSpi {
 public:
   /**
-   * @brief Constructor with configuration.
-   * @param config SPI bus configuration parameters
-   */
-  explicit BaseSpi(const hf_spi_bus_config_t &config) noexcept
-      : config_(config), initialized_(false) {}
-
-  /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
    */
   virtual ~BaseSpi() noexcept = default;
@@ -446,13 +439,33 @@ public:
   //==============================================//
 
   /**
+   * @brief Reset SPI operation statistics.
+   * @return hf_spi_err_t::SPI_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual hf_spi_err_t ResetStatistics() noexcept {
+    statistics_ = hf_spi_statistics_t{}; // Reset statistics to default values
+    return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset SPI diagnostic information.
+   * @return hf_spi_err_t::SPI_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_spi_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_spi_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
    * @brief Get SPI operation statistics
    * @param statistics Reference to store statistics data
    * @return hf_spi_err_t::SPI_SUCCESS if successful, SPI_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_spi_err_t GetStatistics(hf_spi_statistics_t &statistics) const noexcept {
-    (void)statistics;
-    return hf_spi_err_t::SPI_ERR_NOT_SUPPORTED;
+    statistics = statistics_; // Return statistics by default
+    return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
@@ -461,11 +474,21 @@ public:
    * @return hf_spi_err_t::SPI_SUCCESS if successful, SPI_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_spi_err_t GetDiagnostics(hf_spi_diagnostics_t &diagnostics) const noexcept {
-    (void)diagnostics;
-    return hf_spi_err_t::SPI_ERR_NOT_SUPPORTED;
+    diagnostics = diagnostics_; // Return diagnostics by default
+    return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
+  
+  /**
+   * @brief Protected constructor with configuration.
+   * @param config SPI bus configuration parameters
+   */
+  explicit BaseSpi(const hf_spi_bus_config_t &config) noexcept
+      : config_(config), initialized_(false), statistics_{}, diagnostics_{} {}
+
   hf_spi_bus_config_t config_; ///< Bus configuration
   bool initialized_;           ///< Initialization state
+  hf_spi_statistics_t statistics_; ///< SPI operation statistics
+  hf_spi_diagnostics_t diagnostics_; ///< SPI diagnostic information
 };

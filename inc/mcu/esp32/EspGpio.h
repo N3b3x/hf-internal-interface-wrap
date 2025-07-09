@@ -65,7 +65,7 @@ public:
    *          the first call to EnsureInitialized(), Initialize(), or any GPIO operation.
    *          This allows creating GPIO objects without immediate hardware access.
    */
-  explicit EspGpio(HfPinNumber pin_num, hf_gpio_direction_t direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+  explicit EspGpio(hf_pin_num_t pin_num, hf_gpio_direction_t direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
                    hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
                    hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
                    hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
@@ -178,6 +178,24 @@ public:
    * @return true if initialized, false otherwise
    */
   [[nodiscard]] bool IsInitialized() const noexcept { return initialized_; }
+
+  //==============================================================//
+  // STATISTICS AND DIAGNOSTICS
+  //==============================================================//
+
+  /**
+   * @brief Get GPIO operation statistics.
+   * @param statistics Reference to store current statistics
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  hf_gpio_err_t GetStatistics(hf_gpio_statistics_t &statistics) const noexcept override;
+
+  /**
+   * @brief Get GPIO diagnostics information.
+   * @param diagnostics Reference to store current diagnostics
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  hf_gpio_err_t GetDiagnostics(hf_gpio_diagnostics_t &diagnostics) const noexcept override;
 
 protected:
   //==============================================================//
@@ -502,7 +520,7 @@ protected:
    * @return true if pin is valid for GPIO use, false otherwise
    * @details Platform-specific validation using centralized constants.
    */
-  static bool IsValidPin(HfPinNumber pin_num) noexcept;
+  static bool IsValidPin(hf_pin_num_t pin_num) noexcept;
 
   /**
    * @brief Check if pin supports RTC GPIO functionality.
@@ -510,7 +528,7 @@ protected:
    * @return true if pin supports RTC GPIO (deep sleep, analog functions)
    * @details ESP32C6: GPIO0-7 support RTC functionality.
    */
-  static bool IsRtcGpio(HfPinNumber pin_num) noexcept;
+  static bool IsRtcGpio(hf_pin_num_t pin_num) noexcept;
 
   /**
    * @brief Check if pin is a strapping pin requiring caution.
@@ -518,7 +536,7 @@ protected:
    * @return true if pin is a strapping pin
    * @details ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15.
    */
-  static bool IsStrappingPin(HfPinNumber pin_num) noexcept;
+  static bool IsStrappingPin(hf_pin_num_t pin_num) noexcept;
 
 private:
   //==============================================================//

@@ -143,6 +143,20 @@ public:
                         void *user_data = nullptr) noexcept override;
   void ClearCallbacks() noexcept override;
 
+  /**
+   * @brief Get PIO operation statistics.
+   * @param statistics Reference to statistics structure to fill
+   * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
+   */
+  hf_pio_err_t GetStatistics(hf_pio_statistics_t &statistics) const noexcept override;
+
+  /**
+   * @brief Get PIO diagnostic information.
+   * @param diagnostics Reference to diagnostics structure to fill
+   * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
+   */
+  hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t &diagnostics) const noexcept override;
+
   //==============================================//
   // Lazy Initialization Support
   // Advanced Low-Level RMT Control Methods

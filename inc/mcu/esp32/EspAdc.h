@@ -548,15 +548,17 @@ public:
 
   /**
    * @brief Get ADC operation statistics
-   * @return Statistics structure
+   * @param statistics Reference to statistics structure to fill
+   * @return hf_adc_err_t::ADC_SUCCESS if successful, error code otherwise
    */
-  [[nodiscard]] hf_adc_statistics_t GetStatistics() const noexcept override;
+  hf_adc_err_t GetStatistics(hf_adc_statistics_t &statistics) noexcept override;
 
   /**
    * @brief Get ADC diagnostic information
-   * @return Diagnostics structure
+   * @param diagnostics Reference to diagnostics structure to fill
+   * @return hf_adc_err_t::ADC_SUCCESS if successful, error code otherwise
    */
-  [[nodiscard]] hf_adc_diagnostics_t GetDiagnostics() const noexcept override;
+  hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t &diagnostics) noexcept override;
 
   /**
    * @brief Reset statistics counters

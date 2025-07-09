@@ -140,6 +140,20 @@ public:
    */
   uint64_t GetResolution() const noexcept override;
 
+  /**
+   * @brief Get timer operation statistics.
+   * @param statistics Reference to statistics structure to fill
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
+   */
+  hf_timer_err_t GetStatistics(hf_timer_statistics_t &statistics) const noexcept override;
+
+  /**
+   * @brief Get timer diagnostic information.
+   * @param diagnostics Reference to diagnostics structure to fill
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
+   */
+  hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept override;
+
 private:
   hf_timer_handle_t timer_handle_; ///< Platform-specific timer handle
   uint64_t period_us_;             ///< Current timer period in microseconds

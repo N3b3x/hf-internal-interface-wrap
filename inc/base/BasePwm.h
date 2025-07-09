@@ -72,7 +72,7 @@ enum class hf_pwm_err_t : uint32_t {
 };
 
 // Generate error message function
-constexpr const char *hf_pwm_err_tToString(hf_pwm_err_t error) noexcept {
+constexpr const char *HfPwmErrToString(hf_pwm_err_t error) noexcept {
   switch (error) {
 #define X(name, value, description)                                                                \
   case hf_pwm_err_t::name:                                                                             \
@@ -504,14 +504,40 @@ public:
    * @param statistics Statistics structure to fill
    * @return PWM_SUCCESS on success, error code on failure
    */
-  virtual hf_pwm_err_t GetStatistics(hf_pwm_statistics_t &statistics) const noexcept = 0;
+  virtual hf_pwm_err_t GetStatistics(hf_pwm_statistics_t &statistics) const noexcept {
+    statistics = statistics_; // Return statistics by default
+    return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
+  }
 
   /**
    * @brief Get PWM diagnostics
    * @param diagnostics Diagnostics structure to fill
    * @return PWM_SUCCESS on success, error code on failure
    */
-  virtual hf_pwm_err_t GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noexcept = 0;
+  virtual hf_pwm_err_t GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noexcept {
+    diagnostics = diagnostics_; // Return diagnostics by default
+    return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset PWM operation statistics.
+   * @return hf_pwm_err_t::PWM_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual hf_pwm_err_t ResetStatistics() noexcept {
+    statistics_ = hf_pwm_statistics_t{}; // Reset statistics to default values
+    return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset PWM diagnostic information.
+   * @return hf_pwm_err_t::PWM_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_pwm_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_pwm_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
+  }
 
   //==============================================================================
   // CALLBACKS
@@ -585,11 +611,13 @@ public:
   }
 
 protected:
-  BasePwm() noexcept : initialized_(false) {}
+  BasePwm() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
   BasePwm(const BasePwm &) = delete;
   BasePwm &operator=(const BasePwm &) = delete;
   BasePwm(BasePwm &&) = delete;
   BasePwm &operator=(BasePwm &&) = delete;
 
   bool initialized_; ///< Initialization state
+  hf_pwm_statistics_t statistics_; ///< PWM operation statistics
+  hf_pwm_diagnostics_t diagnostics_; ///< PWM diagnostic information
 };

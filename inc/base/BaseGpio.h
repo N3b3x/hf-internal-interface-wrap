@@ -266,14 +266,6 @@ public:
    * @details Initializes the GPIO with specified configuration. The pin is not
    *          physically configured until Initialize() is called.
    */
-  explicit BaseGpio(HfPinNumber pin_num, hf_gpio_direction_t direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
-                    hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
-                    hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
-                    hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING) noexcept
-      : pin_(pin_num), initialized_(false), current_direction_(direction),
-        active_state_(active_state), output_mode_(output_mode), pull_mode_(pull_mode),
-        current_state_(hf_gpio_state_t::HF_GPIO_STATE_INACTIVE) {}
-
   /**
    * @brief Copy constructor is deleted to avoid copying instances.
    */
@@ -328,7 +320,7 @@ public:
    * @brief Get the GPIO pin number/identifier.
    * @return Platform-agnostic pin identifier
    */
-  [[nodiscard]] HfPinNumber GetPin() const noexcept {
+  [[nodiscard]] hf_pin_num_t GetPin() const noexcept {
     return pin_;
   }
 
@@ -628,13 +620,33 @@ public:
   //==============================================================//
 
   /**
+   * @brief Reset GPIO operation statistics.
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual hf_gpio_err_t ResetStatistics() noexcept {
+    statistics_ = hf_gpio_statistics_t{}; // Reset statistics to default values
+    return hf_gpio_err_t::GPIO_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset GPIO diagnostic information.
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_gpio_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_gpio_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_gpio_err_t::GPIO_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
    * @brief Get GPIO operation statistics
    * @param statistics Reference to store statistics data
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, GPIO_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_gpio_err_t GetStatistics(hf_gpio_statistics_t &statistics) const noexcept {
-    (void)statistics;
-    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
+    statistics = statistics_; // Return statistics by default
+    return hf_gpio_err_t::GPIO_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
@@ -643,8 +655,8 @@ public:
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, GPIO_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_gpio_err_t GetDiagnostics(hf_gpio_diagnostics_t &diagnostics) const noexcept {
-    (void)diagnostics;
-    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
+    diagnostics = diagnostics_; // Return diagnostics by default
+    return hf_gpio_err_t::GPIO_ERR_UNSUPPORTED_OPERATION;
   }
 
   //==============================================================//
@@ -732,18 +744,40 @@ protected:
   virtual hf_gpio_err_t IsActiveImpl(bool &is_active) noexcept = 0;
   virtual hf_gpio_pull_mode_t GetPullModeImpl() const noexcept = 0;
 
+
 protected:
+
+  /**
+   * @brief Protected constructor with configuration.
+   * @param pin_num GPIO pin number
+   * @param direction GPIO direction (input/output)
+   * @param active_state Active state polarity (high/low)
+   * @param output_mode Output drive mode (push-pull/open-drain)
+   * @param pull_mode Pull resistor configuration (Floating, PullUp, or PullDown)
+   * @details Initializes the GPIO with specified configuration. The pin is not
+   *          physically configured until Initialize() is called.
+   */
+  explicit BaseGpio(hf_pin_num_t pin_num, hf_gpio_direction_t direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+                    hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+                    hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                    hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING) noexcept
+      : pin_(pin_num), initialized_(false), current_direction_(direction),
+        active_state_(active_state), output_mode_(output_mode), pull_mode_(pull_mode),
+        current_state_(hf_gpio_state_t::HF_GPIO_STATE_INACTIVE), statistics_{}, diagnostics_{} {}
+        
   //==============================================================//
   // MEMBER VARIABLES
   //==============================================================//
 
-  const HfPinNumber pin_;                    ///< GPIO pin number/identifier
+  const hf_pin_num_t pin_;                   ///< GPIO pin number/identifier
   bool initialized_;                         ///< Initialization state flag
   hf_gpio_direction_t current_direction_;    ///< Current pin direction
   hf_gpio_active_state_t active_state_;      ///< Active state polarity
   hf_gpio_output_mode_t output_mode_;        ///< Output drive mode
   hf_gpio_pull_mode_t pull_mode_;            ///< Pull resistor configuration
   hf_gpio_state_t current_state_;            ///< Current logical state
+  hf_gpio_statistics_t statistics_;          ///< GPIO operation statistics
+  hf_gpio_diagnostics_t diagnostics_;        ///< GPIO diagnostic information
 };
 
 //==============================================================//

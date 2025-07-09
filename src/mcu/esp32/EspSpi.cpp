@@ -803,8 +803,9 @@ hf_spi_err_t EspSpi::SetMode(uint8_t mode) noexcept {
 // STATISTICS AND DIAGNOSTICS                  //
 //==============================================//
 
-const hf_spi_statistics_t &EspSpi::getStatistics() const noexcept {
-  return statistics_;
+hf_spi_err_t EspSpi::GetStatistics(hf_spi_statistics_t &statistics) const noexcept {
+  statistics = statistics_;
+  return hf_spi_err_t::SPI_SUCCESS;
 }
 
 void EspSpi::resetStatistics() noexcept {
@@ -812,7 +813,7 @@ void EspSpi::resetStatistics() noexcept {
   statistics_ = hf_spi_statistics_t{}; // Reset to default values
 }
 
-hf_spi_diagnostics_t EspSpi::getDiagnostics() const noexcept {
+hf_spi_err_t EspSpi::GetDiagnostics(hf_spi_diagnostics_t &diagnostics) const noexcept {
   hf_spi_diagnostics_t diag = {};
 
   diag.is_initialized = initialized_;
@@ -826,7 +827,8 @@ hf_spi_diagnostics_t EspSpi::getDiagnostics() const noexcept {
   diag.total_transactions = statistics_.total_transactions;
   diag.failed_transactions = statistics_.failed_transactions;
 
-  return diag;
+  diagnostics = diag;
+  return hf_spi_err_t::SPI_SUCCESS;
 }
 
 bool EspSpi::isBusHealthy() noexcept {

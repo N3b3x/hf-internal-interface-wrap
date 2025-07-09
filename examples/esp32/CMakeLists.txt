@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 # Set project name
-set(PROJECT_NAME "advanced_pwm_example")
+set(PROJECT_NAME "esp32_iid_example")
 
 # Include ESP-IDF build system
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
@@ -11,7 +11,7 @@ project(${PROJECT_NAME})
 
 # Add source files
 set(SOURCES
-    advanced_pwm_example.cpp
+    main.cpp
 )
 
 # Create executable

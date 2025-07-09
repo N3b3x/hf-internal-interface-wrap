@@ -150,14 +150,6 @@ using hf_timer_callback_t = std::function<void(void *user_data)>;
 class BasePeriodicTimer {
 public:
   /**
-   * @brief Constructor with callback specification.
-   * @param callback Timer callback function
-   * @param user_data User data passed to callback
-   */
-  explicit BasePeriodicTimer(hf_timer_callback_t callback, void *user_data = nullptr) noexcept
-      : callback_(callback), user_data_(user_data), initialized_(false), running_(false) {}
-
-  /**
    * @brief Virtual destructor to ensure proper cleanup.
    */
   virtual ~BasePeriodicTimer() noexcept = default;
@@ -297,13 +289,33 @@ public:
   //==============================================//
 
   /**
+   * @brief Reset timer operation statistics.
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual hf_timer_err_t ResetStatistics() noexcept {
+    statistics_ = hf_timer_statistics_t{}; // Reset statistics to default values
+    return hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset timer diagnostic information.
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_timer_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_timer_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
    * @brief Get timer operation statistics
    * @param statistics Reference to store statistics data
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, TIMER_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_timer_err_t GetStatistics(hf_timer_statistics_t &statistics) const noexcept {
-    (void)statistics;
-    return hf_timer_err_t::TIMER_ERR_NOT_SUPPORTED;
+    statistics = statistics_; // Return statistics by default
+    return hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
@@ -312,11 +324,19 @@ public:
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, TIMER_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept {
-    (void)diagnostics;
-    return hf_timer_err_t::TIMER_ERR_NOT_SUPPORTED;
+    diagnostics = diagnostics_; // Return diagnostics by default
+    return hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
+  /**
+   * @brief Protected constructor with callback specification.
+   * @param callback Timer callback function
+   * @param user_data User data passed to callback
+   */
+  explicit BasePeriodicTimer(hf_timer_callback_t callback, void *user_data = nullptr) noexcept
+      : callback_(callback), user_data_(user_data), initialized_(false), running_(false), statistics_{}, diagnostics_{} {}
+
   /**
    * @brief Set the initialized state.
    * @param initialized New initialization state
@@ -350,9 +370,10 @@ protected:
     return static_cast<bool>(callback_);
   }
 
-private:
   hf_timer_callback_t callback_; ///< Timer callback function
   void *user_data_;              ///< User data passed to callback
   bool initialized_;             ///< Initialization state flag
   bool running_;                 ///< Running state flag
+  hf_timer_statistics_t statistics_; ///< Timer operation statistics
+  hf_timer_diagnostics_t diagnostics_; ///< Timer diagnostic information
 };

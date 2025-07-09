@@ -221,9 +221,6 @@ public:
    * @param port UART port number
    * @param config UART configuration parameters
    */
-  BaseUart(hf_port_number_t port, const hf_uart_config_t &config) noexcept
-      : port_(port), config_(config), initialized_(false) {}
-
   /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
    */
@@ -471,13 +468,33 @@ public:
   //==============================================//
 
   /**
+   * @brief Reset UART operation statistics.
+   * @return hf_uart_err_t::UART_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual hf_uart_err_t ResetStatistics() noexcept {
+    statistics_ = hf_uart_statistics_t{}; // Reset statistics to default values
+    return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset UART diagnostic information.
+   * @return hf_uart_err_t::UART_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_uart_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_uart_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
    * @brief Get UART operation statistics
    * @param statistics Reference to store statistics data
    * @return hf_uart_err_t::UART_SUCCESS if successful, UART_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_uart_err_t GetStatistics(hf_uart_statistics_t &statistics) const noexcept {
-    (void)statistics;
-    return hf_uart_err_t::UART_ERR_NOT_SUPPORTED;
+    statistics = statistics_; // Return statistics by default
+    return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
@@ -486,12 +503,23 @@ public:
    * @return hf_uart_err_t::UART_SUCCESS if successful, UART_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_uart_err_t GetDiagnostics(hf_uart_diagnostics_t &diagnostics) const noexcept {
-    (void)diagnostics;
-    return hf_uart_err_t::UART_ERR_NOT_SUPPORTED;
+    diagnostics = diagnostics_; // Return diagnostics by default
+    return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
+  
+  /**
+   * @brief Protected constructor with port and configuration.
+   * @param port UART port number
+   * @param config UART configuration parameters
+   */
+  BaseUart(hf_port_number_t port, const hf_uart_config_t &config) noexcept
+      : port_(port), config_(config), initialized_(false), statistics_{}, diagnostics_{} {}
+
   hf_port_number_t port_;        ///< UART port number
   hf_uart_config_t config_;      ///< UART configuration
   bool initialized_;             ///< Initialization status
+  hf_uart_statistics_t statistics_; ///< UART operation statistics
+  hf_uart_diagnostics_t diagnostics_; ///< UART diagnostic information
 };

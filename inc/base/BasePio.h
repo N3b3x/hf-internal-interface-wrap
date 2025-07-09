@@ -285,6 +285,7 @@ using hf_pio_error_callback_t =
  */
 class BasePio {
 public:
+
   /**
    * @brief Virtual destructor
    */
@@ -441,13 +442,33 @@ public:
   //==============================================//
 
   /**
+   * @brief Reset PIO operation statistics.
+   * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual hf_pio_err_t ResetStatistics() noexcept {
+    statistics_ = hf_pio_statistics_t{}; // Reset statistics to default values
+    return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset PIO diagnostic information.
+   * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_pio_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_pio_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
    * @brief Get PIO operation statistics
    * @param statistics Reference to store statistics data
    * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_pio_err_t GetStatistics(hf_pio_statistics_t &statistics) const noexcept {
-    (void)statistics;
-    return hf_pio_err_t::PIO_ERR_NOT_SUPPORTED;
+    statistics = statistics_; // Return statistics by default
+    return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
@@ -456,18 +477,20 @@ public:
    * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t &diagnostics) const noexcept {
-    (void)diagnostics;
-    return hf_pio_err_t::PIO_ERR_NOT_SUPPORTED;
+    diagnostics = diagnostics_; // Return diagnostics by default
+    return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
   /**
    * @brief Protected constructor
    */
-  BasePio() noexcept : initialized_(false) {}
+  BasePio() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
 
   /**
    * @brief Initialization state tracking
    */
   bool initialized_;
+  hf_pio_statistics_t statistics_; ///< PIO operation statistics
+  hf_pio_diagnostics_t diagnostics_; ///< PIO diagnostic information
 };

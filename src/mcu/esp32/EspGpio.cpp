@@ -2,7 +2,7 @@
  * @file EspGpio.cpp
  * @brief Production-quality ESP32C6 GPIO implementation with ESP-IDF v5.5+ advanced features.
  *
- * This file contains a world-class implementation of MCU-specific GPIO operations
+ * This file contains a world-class implementation of MCU-specific GPIO
  * for the BaseGpio class with comprehensive ESP32C6/ESP-IDF v5.5+ feature support.
  * Features include dynamic mode switching, advanced glitch filtering, RTC GPIO,
  * power management, sleep configuration, wake-up support, interrupt handling,
@@ -93,7 +93,7 @@ namespace {
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-EspGpio::EspGpio(HfPinNumber pin_num, Direction direction, ActiveState active_state,
+EspGpio::EspGpio(hf_pin_num_t pin_num, Direction direction, ActiveState active_state,
                  OutputMode output_mode, PullMode pull_mode,
                  hf_gpio_drive_cap_t drive_capability) noexcept
     : BaseGpio(pin_num, direction, active_state, output_mode, pull_mode),
@@ -793,9 +793,6 @@ HfGpioErr EspGpio::ReadImpl(State &state) noexcept {
   
   current_state_ = state;
   return HfGpioErr::GPIO_SUCCESS;
-  #else
-  state = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 }
 
 HfGpioErr EspGpio::SetActiveImpl() noexcept {
@@ -1486,7 +1483,7 @@ uint32_t EspGpio::GetActiveGpioCount() noexcept {
 #endif
 }
 
-bool EspGpio::IsValidPin(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsValidPin(hf_pin_num_t pin_num) noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_GPIO_IS_VALID_PIN(pin_num);
 #else
@@ -1494,7 +1491,7 @@ bool EspGpio::IsValidPin(HfPinNumber pin_num) noexcept {
 #endif
 }
 
-bool EspGpio::IsRtcGpio(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsRtcGpio(hf_pin_num_t pin_num) noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_GPIO_IS_RTC_CAPABLE(pin_num);
 #else
@@ -1502,7 +1499,7 @@ bool EspGpio::IsRtcGpio(HfPinNumber pin_num) noexcept {
 #endif
 }
 
-bool EspGpio::IsStrappingPin(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsStrappingPin(hf_pin_num_t pin_num) noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_GPIO_IS_STRAPPING_PIN(pin_num);
 #else
@@ -1522,15 +1519,15 @@ uint32_t EspGpio::GetActiveGpioCount() noexcept {
   return g_active_gpio_count.load(std::memory_order_relaxed);
 }
 
-bool EspGpio::IsValidPin(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsValidPin(hf_pin_num_t pin_num) noexcept {
   return HF_GPIO_IS_VALID_GPIO(pin_num);
 }
 
-bool EspGpio::IsRtcGpio(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsRtcGpio(hf_pin_num_t pin_num) noexcept {
   return HF_GPIO_IS_VALID_RTC_GPIO(pin_num);
 }
 
-bool EspGpio::IsStrappingPin(HfPinNumber pin_num) noexcept {
+bool EspGpio::IsStrappingPin(hf_pin_num_t pin_num) noexcept {
   return HF_GPIO_IS_STRAPPING_PIN(pin_num);
 }
 
@@ -2005,6 +2002,22 @@ void EspGpio::CleanupInterruptSemaphore() noexcept {
     platform_semaphore_ = nullptr;
     ESP_LOGD(TAG, "Interrupt semaphore cleaned up for GPIO%d", static_cast<int>(pin_));
   }
+}
+
+//==============================================================================
+// STATISTICS AND DIAGNOSTICS
+//==============================================================================
+
+hf_gpio_err_t EspGpio::GetStatistics(hf_gpio_statistics_t &statistics) const noexcept
+{
+    statistics = statistics_;
+    return hf_gpio_err_t::GPIO_SUCCESS;
+}
+
+hf_gpio_err_t EspGpio::GetDiagnostics(hf_gpio_diagnostics_t &diagnostics) const noexcept
+{
+    diagnostics = diagnostics_;
+    return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
 #endif // HF_MCU_FAMILY_ESP32

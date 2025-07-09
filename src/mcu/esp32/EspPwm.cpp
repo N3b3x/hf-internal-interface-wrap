@@ -29,7 +29,8 @@ static const char *TAG = "EspPwm";
 //==============================================================================
 
 EspPwm::EspPwm(const hf_pwm_unit_config_t &config) noexcept
-    : mutex_(), initialized_(false), base_clock_hz_(config.base_clock_hz),
+    : BasePwm()
+    , mutex_(), initialized_(false), base_clock_hz_(config.base_clock_hz),
       clock_source_(config.clock_source), channels_(), timers_(), complementary_pairs_(),
       period_callback_(nullptr), period_callback_user_data_(nullptr), fault_callback_(nullptr),
       fault_callback_user_data_(nullptr), last_global_error_(hf_pwm_err_t::PWM_SUCCESS),

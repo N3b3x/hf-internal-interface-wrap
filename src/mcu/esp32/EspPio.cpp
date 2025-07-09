@@ -30,7 +30,8 @@ static const char *TAG = "McuPio";
 //==============================================================================
 
 McuPio::McuPio() noexcept
-    : initialized_(false), channels_{}, transmit_callback_(nullptr), receive_callback_(nullptr),
+    : BasePio()
+    , initialized_(false), channels_{}, transmit_callback_(nullptr), receive_callback_(nullptr),
       error_callback_(nullptr), callback_user_data_(nullptr) {
   ESP_LOGD(TAG, "McuPio constructed");
 }
@@ -1246,6 +1247,22 @@ bool McuPio::ValidatePioSystem() noexcept {
   }
 
   return all_tests_passed;
+}
+
+//==============================================================================
+// STATISTICS AND DIAGNOSTICS
+//==============================================================================
+
+hf_pio_err_t McuPio::GetStatistics(hf_pio_statistics_t &statistics) const noexcept
+{
+    statistics = statistics_;
+    return hf_pio_err_t::PIO_SUCCESS;
+}
+
+hf_pio_err_t McuPio::GetDiagnostics(hf_pio_diagnostics_t &diagnostics) const noexcept
+{
+    diagnostics = diagnostics_;
+    return hf_pio_err_t::PIO_SUCCESS;
 }
 
 #endif // HF_MCU_FAMILY_ESP32

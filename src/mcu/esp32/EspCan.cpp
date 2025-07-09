@@ -40,7 +40,8 @@ static const char *TAG = "EspCan";
 //==============================================================================
 
 EspCan::EspCan(const hf_esp_can_config_t& config) noexcept
-    : config_(config)
+    : BaseCan()
+    , config_(config)
     , is_initialized_(false)
     , is_started_(false)
     , config_mutex_()

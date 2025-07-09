@@ -280,4 +280,20 @@ void EspPeriodicTimer::DestroyTimerHandle() noexcept {
   timer_handle_ = nullptr;
 }
 
+//==============================================================================
+// STATISTICS AND DIAGNOSTICS
+//==============================================================================
+
+hf_timer_err_t EspPeriodicTimer::GetStatistics(hf_timer_statistics_t &statistics) const noexcept
+{
+    statistics = statistics_;
+    return hf_timer_err_t::TIMER_SUCCESS;
+}
+
+hf_timer_err_t EspPeriodicTimer::GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept
+{
+    diagnostics = diagnostics_;
+    return hf_timer_err_t::TIMER_SUCCESS;
+}
+
 #endif // HF_MCU_FAMILY_ESP32

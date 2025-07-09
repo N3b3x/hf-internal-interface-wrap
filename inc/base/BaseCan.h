@@ -328,6 +328,68 @@ struct hf_can_reception_info_t {
 using hf_can_fd_receive_callback_t =
     std::function<void(const hf_can_message_t &message, const hf_can_reception_info_t &info)>;
 
+
+/**
+ * @brief CAN bus statistics structure for performance monitoring.
+ * @details Provides comprehensive statistics for monitoring CAN bus performance
+ *          and identifying potential issues.
+ */
+struct hf_can_statistics_t {
+  // Message counters
+  uint64_t messages_sent;          ///< Total messages successfully sent
+  uint64_t messages_received;      ///< Total messages successfully received
+  uint64_t bytes_transmitted;      ///< Total bytes transmitted
+  uint64_t bytes_received;         ///< Total bytes received
+  
+  // Error counters
+  uint32_t send_failures;          ///< Failed send operations
+  uint32_t receive_failures;       ///< Failed receive operations
+  uint32_t bus_error_count;        ///< Total bus errors
+  uint32_t arbitration_lost_count; ///< Arbitration lost events
+  uint32_t tx_failed_count;        ///< Transmission failures
+  uint32_t bus_off_events;         ///< Bus-off occurrences
+  uint32_t error_warning_events;   ///< Error warning events
+  
+  // Performance metrics
+  uint64_t uptime_seconds;         ///< Total uptime in seconds
+  uint32_t last_activity_timestamp;///< Last activity timestamp
+  hf_can_err_t last_error;         ///< Last error encountered
+  
+  // Queue statistics
+  uint32_t tx_queue_peak;          ///< Peak TX queue usage
+  uint32_t rx_queue_peak;          ///< Peak RX queue usage
+  uint32_t tx_queue_overflows;     ///< TX queue overflow count
+  uint32_t rx_queue_overflows;     ///< RX queue overflow count
+
+  hf_can_statistics_t() noexcept
+      : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
+        send_failures(0), receive_failures(0), bus_error_count(0), arbitration_lost_count(0),
+        tx_failed_count(0), bus_off_events(0), error_warning_events(0), uptime_seconds(0),
+        last_activity_timestamp(0), last_error(hf_can_err_t::CAN_SUCCESS), tx_queue_peak(0),
+        rx_queue_peak(0), tx_queue_overflows(0), rx_queue_overflows(0) {}
+};
+
+/**
+ * @brief CAN diagnostics structure for detailed error analysis.
+ * @details Provides detailed diagnostic information for troubleshooting
+ *          and monitoring CAN bus health and performance.
+ */
+struct hf_can_diagnostics_t {
+  uint32_t tx_error_count;         ///< Transmit error counter
+  uint32_t rx_error_count;         ///< Receive error counter
+  uint32_t tx_queue_peak;          ///< Peak TX queue usage
+  uint32_t rx_queue_peak;          ///< Peak RX queue usage
+  uint32_t last_error_timestamp;   ///< Timestamp of last error
+  uint32_t controller_resets;      ///< Number of controller resets
+  uint32_t bus_load_percentage;    ///< Current bus load percentage
+  float bit_error_rate;            ///< Bit error rate (errors/bits)
+  
+  hf_can_diagnostics_t() noexcept
+      : tx_error_count(0), rx_error_count(0), tx_queue_peak(0), rx_queue_peak(0),
+        last_error_timestamp(0), controller_resets(0), bus_load_percentage(0), bit_error_rate(0.0f) {}
+};
+
+  
 /**
  * @class BaseCan
  * @brief Abstract base class defining the unified CAN bus API.
@@ -350,11 +412,6 @@ using hf_can_fd_receive_callback_t =
  */
 class BaseCan {
 public:
-  /**
-   * @brief Constructor
-   */
-  BaseCan() noexcept : initialized_(false) {}
-
   /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
    */
@@ -598,107 +655,66 @@ public:
     return received_count;
   }
 
-  //==============================================//
-  // STATISTICS AND DIAGNOSTICS STRUCTURES        //
-  //==============================================//
+//==============================================//
+// STATISTICS AND DIAGNOSTICS STRUCTURES        //
+//==============================================//
 
   /**
-   * @brief CAN bus statistics structure for performance monitoring.
-   * @details Provides comprehensive statistics for monitoring CAN bus performance
-   *          and identifying potential issues.
-   */
-  struct hf_can_statistics_t {
-    // Message counters
-    uint64_t messages_sent;          ///< Total messages successfully sent
-    uint64_t messages_received;      ///< Total messages successfully received
-    uint64_t bytes_transmitted;      ///< Total bytes transmitted
-    uint64_t bytes_received;         ///< Total bytes received
-    
-    // Error counters
-    uint32_t send_failures;          ///< Failed send operations
-    uint32_t receive_failures;       ///< Failed receive operations
-    uint32_t bus_error_count;        ///< Total bus errors
-    uint32_t arbitration_lost_count; ///< Arbitration lost events
-    uint32_t tx_failed_count;        ///< Transmission failures
-    uint32_t bus_off_events;         ///< Bus-off occurrences
-    uint32_t error_warning_events;   ///< Error warning events
-    
-    // Performance metrics
-    uint64_t uptime_seconds;         ///< Total uptime in seconds
-    uint32_t last_activity_timestamp;///< Last activity timestamp
-    hf_can_err_t last_error;         ///< Last error encountered
-    
-    // Queue statistics
-    uint32_t tx_queue_peak;          ///< Peak TX queue usage
-    uint32_t rx_queue_peak;          ///< Peak RX queue usage
-    uint32_t tx_queue_overflows;     ///< TX queue overflow count
-    uint32_t rx_queue_overflows;     ///< RX queue overflow count
-
-    hf_can_statistics_t() noexcept
-        : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
-          send_failures(0), receive_failures(0), bus_error_count(0), arbitration_lost_count(0),
-          tx_failed_count(0), bus_off_events(0), error_warning_events(0), uptime_seconds(0),
-          last_activity_timestamp(0), last_error(hf_can_err_t::CAN_SUCCESS), tx_queue_peak(0),
-          rx_queue_peak(0), tx_queue_overflows(0), rx_queue_overflows(0) {}
-  };
-
-  /**
-   * @brief CAN diagnostics structure for detailed error analysis.
-   * @details Provides detailed diagnostic information for troubleshooting
-   *          and monitoring CAN bus health and performance.
-   */
-  struct hf_can_diagnostics_t {
-    uint32_t tx_error_count;         ///< Transmit error counter
-    uint32_t rx_error_count;         ///< Receive error counter
-    uint32_t tx_queue_peak;          ///< Peak TX queue usage
-    uint32_t rx_queue_peak;          ///< Peak RX queue usage
-    uint32_t last_error_timestamp;   ///< Timestamp of last error
-    uint32_t controller_resets;      ///< Number of controller resets
-    uint32_t bus_load_percentage;    ///< Current bus load percentage
-    float bit_error_rate;            ///< Bit error rate (errors/bits)
-    
-    hf_can_diagnostics_t() noexcept
-        : tx_error_count(0), rx_error_count(0), tx_queue_peak(0), rx_queue_peak(0),
-          last_error_timestamp(0), controller_resets(0), bus_load_percentage(0), bit_error_rate(0.0f) {}
-  };
-
-protected:
-  bool initialized_; ///< Initialization state
-
-  //==============================================//
-  // STATISTICS AND DIAGNOSTICS (Optional Override) //
-  //==============================================//
-
-  /**
-   * @brief Get CAN bus statistics.
-   * @param stats Reference to statistics structure to fill
-   * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
-   * @note Override this method to provide platform-specific statistics
-   */
-  virtual hf_can_err_t GetStatistics(hf_can_statistics_t &stats) noexcept {
-    stats = hf_can_statistics_t{}; // Return empty statistics by default
-    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
-  }
-
-  /**
-   * @brief Reset CAN bus statistics.
+   * @brief Reset CAN operation statistics.
    * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
    * @note Override this method to provide platform-specific statistics reset
    */
   virtual hf_can_err_t ResetStatistics() noexcept {
+    statistics_ = hf_can_statistics_t{}; // Reset statistics to default values
     return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
-   * @brief Get CAN bus diagnostics.
+   * @brief Reset CAN diagnostic information.
+   * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_can_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_can_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Get CAN operation statistics.
+   * @param statistics Reference to statistics structure to fill
+   * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics
+   */
+  virtual hf_can_err_t GetStatistics(hf_can_statistics_t &statistics) noexcept {
+    statistics = statistics_; // Return statistics by default
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Get CAN diagnostic information.
    * @param diagnostics Reference to diagnostics structure to fill
    * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
    * @note Override this method to provide platform-specific diagnostics
    */
   virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) noexcept {
-    diagnostics = hf_can_diagnostics_t{}; // Return empty diagnostics by default
+    diagnostics = diagnostics_; // Return diagnostics by default
     return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
+
+protected:
+
+  /**
+   * @brief Protected constructor
+   */
+  BaseCan() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
+
+  //==============================================//
+  // VARIABLES                                    //
+  //==============================================//
+
+  bool initialized_; ///< Initialization status
+  hf_can_statistics_t statistics_; ///< CAN operation statistics
+  hf_can_diagnostics_t diagnostics_; ///< CAN diagnostic information
 };
 
 //==============================================//

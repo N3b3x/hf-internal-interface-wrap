@@ -420,14 +420,14 @@ public:
    * @param statistics Output statistics structure
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t GetStatistics(hf_uart_statistics_t& statistics) const noexcept;
+  hf_uart_err_t GetStatistics(hf_uart_statistics_t& statistics) const noexcept override;
 
   /**
    * @brief Get UART diagnostics.
    * @param diagnostics Output diagnostics structure
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t GetDiagnostics(hf_uart_diagnostics_t& diagnostics) const noexcept;
+  hf_uart_err_t GetDiagnostics(hf_uart_diagnostics_t& diagnostics) const noexcept override;
 
   /**
    * @brief Get the last error that occurred.

@@ -33,23 +33,26 @@ enum class hf_adc_mode_t : uint8_t {
 /**
  * @brief ADC attenuation levels for ESP32
  * These control the input voltage range that can be measured
+ * Values must match ESP-IDF adc_atten_t enum
  */
 enum class hf_adc_atten_t : uint8_t {
-  ATTEN_DB_0 = 0,   ///< No attenuation (0dB) - Input range: 0V to ~0.95V 
-  ATTEN_DB_2_5 = 1, ///< 2.5dB attenuation - Input range: 0V to ~1.32V
-  ATTEN_DB_6 = 2,   ///< 6dB attenuation - Input range: 0V to ~1.98V  
-  ATTEN_DB_12 = 3   ///< 12dB attenuation - Input range: 0V to ~3.3V
+  ATTEN_DB_0 = ADC_ATTEN_DB_0,     ///< No attenuation (0dB) - Input range: 0V to ~0.95V 
+  ATTEN_DB_2_5 = ADC_ATTEN_DB_2_5, ///< 2.5dB attenuation - Input range: 0V to ~1.32V
+  ATTEN_DB_6 = ADC_ATTEN_DB_6,     ///< 6dB attenuation - Input range: 0V to ~1.98V  
+  ATTEN_DB_12 = ADC_ATTEN_DB_12    ///< 12dB attenuation - Input range: 0V to ~3.3V
 };
 
 /**
  * @brief ADC resolution/bit width settings for ESP32
+ * Values must match ESP-IDF adc_bitwidth_t enum
  */
 enum class hf_adc_bitwidth_t : uint8_t {
-  WIDTH_9BIT = 9,   ///< 9-bit resolution (0-511)
-  WIDTH_10BIT = 10, ///< 10-bit resolution (0-1023) 
-  WIDTH_11BIT = 11, ///< 11-bit resolution (0-2047)
-  WIDTH_12BIT = 12, ///< 12-bit resolution (0-4095) - Default and maximum for ESP32
-  WIDTH_DEFAULT = 12 ///< Default width (12-bit for ESP32)
+  WIDTH_9BIT = ADC_BITWIDTH_9,     ///< 9-bit resolution (0-511)
+  WIDTH_10BIT = ADC_BITWIDTH_10,   ///< 10-bit resolution (0-1023) 
+  WIDTH_11BIT = ADC_BITWIDTH_11,   ///< 11-bit resolution (0-2047)
+  WIDTH_12BIT = ADC_BITWIDTH_12,   ///< 12-bit resolution (0-4095) - Default for ESP32
+  WIDTH_13BIT = ADC_BITWIDTH_13,   ///< 13-bit resolution (0-8191)
+  WIDTH_DEFAULT = ADC_BITWIDTH_DEFAULT ///< Default width (12-bit for ESP32)
 };
 
 /**
@@ -322,19 +325,29 @@ inline constexpr uint32_t GetFrameResultCount(uint32_t frame_size) noexcept {
 
 /**
  * @brief Convert GPIO pin to ADC channel for ESP32
- * @param gpio_pin GPIO pin number (0-6)
+ * @note This is a simplified mapping function. For accurate conversions,
+ *       use the ESP-IDF adc_continuous_io_to_channel() function at runtime.
+ * @param gpio_pin GPIO pin number
  * @return ADC channel ID or HF_INVALID_CHANNEL if invalid
  */
 inline constexpr hf_channel_id_t GpioToAdcChannel(hf_pin_num_t gpio_pin) noexcept {
+  // Note: This is a simplified compile-time function.
+  // For accurate GPIO-to-channel conversion, use adc_continuous_io_to_channel() 
+  // at runtime, which handles all ESP32 variants correctly.
   return (gpio_pin >= 0 && gpio_pin <= 6) ? static_cast<hf_channel_id_t>(gpio_pin) : HF_INVALID_CHANNEL;
 }
 
 /**
  * @brief Convert ADC channel to GPIO pin for ESP32  
- * @param channel_id ADC channel ID (0-6)
+ * @note This is a simplified mapping function. For accurate conversions,
+ *       use the ESP-IDF adc_continuous_channel_to_io() function at runtime.
+ * @param channel_id ADC channel ID
  * @return GPIO pin number or HF_INVALID_PIN if invalid
  */
 inline constexpr hf_pin_num_t AdcChannelToGpio(hf_channel_id_t channel_id) noexcept {
+  // Note: This is a simplified compile-time function.
+  // For accurate channel-to-GPIO conversion, use adc_continuous_channel_to_io() 
+  // at runtime, which handles all ESP32 variants correctly.
   return (channel_id <= 6) ? static_cast<hf_pin_num_t>(channel_id) : HF_INVALID_PIN;
 }
 

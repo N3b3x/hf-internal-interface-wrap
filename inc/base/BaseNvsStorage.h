@@ -144,13 +144,6 @@ struct hf_nvs_diagnostics_t {
 class BaseNvsStorage {
 public:
   /**
-   * @brief Constructor with namespace specification.
-   * @param namespace_name Name of the storage namespace
-   */
-  explicit BaseNvsStorage(const char *namespace_name) noexcept
-      : namespace_name_(namespace_name), initialized_(false) {}
-
-  /**
    * @brief Virtual destructor to ensure proper cleanup.
    */
   virtual ~BaseNvsStorage() noexcept = default;
@@ -328,13 +321,33 @@ public:
   //==============================================//
 
   /**
+   * @brief Reset NVS operation statistics.
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual hf_nvs_err_t ResetStatistics() noexcept {
+    statistics_ = hf_nvs_statistics_t{}; // Reset statistics to default values
+    return hf_nvs_err_t::NVS_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset NVS diagnostic information.
+   * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_nvs_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_nvs_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_nvs_err_t::NVS_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
    * @brief Get NVS operation statistics
    * @param statistics Reference to store statistics data
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, NVS_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_nvs_err_t GetStatistics(hf_nvs_statistics_t &statistics) const noexcept {
-    (void)statistics;
-    return hf_nvs_err_t::NVS_ERR_NOT_SUPPORTED;
+    statistics = statistics_; // Return statistics by default
+    return hf_nvs_err_t::NVS_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
@@ -343,11 +356,19 @@ public:
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, NVS_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_nvs_err_t GetDiagnostics(hf_nvs_diagnostics_t &diagnostics) const noexcept {
-    (void)diagnostics;
-    return hf_nvs_err_t::NVS_ERR_NOT_SUPPORTED;
+    diagnostics = diagnostics_; // Return diagnostics by default
+    return hf_nvs_err_t::NVS_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
+  
+  /**
+   * @brief Protected constructor with namespace specification.
+   * @param namespace_name Name of the storage namespace
+   */
+  explicit BaseNvsStorage(const char *namespace_name) noexcept
+      : namespace_name_(namespace_name), initialized_(false), statistics_{}, diagnostics_{} {}
+
   /**
    * @brief Set the initialized state.
    * @param initialized New initialization state
@@ -357,7 +378,9 @@ protected:
   }
 
   const char *namespace_name_; ///< Namespace name
+  bool initialized_; ///< Initialization status
+  hf_nvs_statistics_t statistics_; ///< NVS operation statistics
+  hf_nvs_diagnostics_t diagnostics_; ///< NVS diagnostic information
 
 private:
-  bool initialized_; ///< Initialization status
 };

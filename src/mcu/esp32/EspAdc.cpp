@@ -44,147 +44,38 @@ static constexpr uint32_t DEFAULT_TIMEOUT_MS = 1000;
 // ESP32 VARIANT-SPECIFIC CHANNEL TO GPIO MAPPING
 //==============================================================================
 
-// ESP32-C6 Channel to GPIO mapping
-#ifdef HF_MCU_ESP32C6
-static constexpr gpio_num_t CHANNEL_TO_GPIO[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_0,  // ADC_CHANNEL_0
-    GPIO_NUM_1,  // ADC_CHANNEL_1  
-    GPIO_NUM_2,  // ADC_CHANNEL_2
-    GPIO_NUM_3,  // ADC_CHANNEL_3
-    GPIO_NUM_4,  // ADC_CHANNEL_4
-    GPIO_NUM_5,  // ADC_CHANNEL_5
-    GPIO_NUM_6   // ADC_CHANNEL_6
-};
+/**
+ * @brief Convert GPIO number to ADC channel using ESP-IDF API
+ * 
+ * This function replaces hardcoded GPIO-to-channel mapping tables with the
+ * official ESP-IDF API function adc_continuous_io_to_channel(). This provides
+ * proper portability across all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2)
+ * without requiring variant-specific hardcoded mappings.
+ * 
+ * @param gpio_num GPIO number to convert
+ * @param unit_id ADC unit ID (0 for ADC1, 1 for ADC2)
+ * @param[out] channel Resulting ADC channel
+ * @return ESP_OK on success, error code on failure
+ */
+static esp_err_t GpioToAdcChannel(int gpio_num, adc_unit_t unit_id, adc_channel_t* channel) {
+    return adc_continuous_io_to_channel(gpio_num, &unit_id, channel);
+}
 
-// ESP32 Classic Channel to GPIO mapping (ADC1)
-#elif defined(HF_MCU_ESP32)
-static constexpr gpio_num_t CHANNEL_TO_GPIO_ADC1[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_36, // ADC1_CHANNEL_0
-    GPIO_NUM_37, // ADC1_CHANNEL_1
-    GPIO_NUM_38, // ADC1_CHANNEL_2
-    GPIO_NUM_39, // ADC1_CHANNEL_3
-    GPIO_NUM_32, // ADC1_CHANNEL_4
-    GPIO_NUM_33, // ADC1_CHANNEL_5
-    GPIO_NUM_34, // ADC1_CHANNEL_6
-    GPIO_NUM_35  // ADC1_CHANNEL_7
-};
-
-static constexpr gpio_num_t CHANNEL_TO_GPIO_ADC2[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_4,  // ADC2_CHANNEL_0
-    GPIO_NUM_0,  // ADC2_CHANNEL_1
-    GPIO_NUM_2,  // ADC2_CHANNEL_2
-    GPIO_NUM_15, // ADC2_CHANNEL_3
-    GPIO_NUM_13, // ADC2_CHANNEL_4
-    GPIO_NUM_12, // ADC2_CHANNEL_5
-    GPIO_NUM_14, // ADC2_CHANNEL_6
-    GPIO_NUM_27  // ADC2_CHANNEL_7
-};
-
-// ESP32-S2 Channel to GPIO mapping
-#elif defined(HF_MCU_ESP32S2)
-static constexpr gpio_num_t CHANNEL_TO_GPIO[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_1,  // ADC1_CHANNEL_0
-    GPIO_NUM_2,  // ADC1_CHANNEL_1
-    GPIO_NUM_3,  // ADC1_CHANNEL_2
-    GPIO_NUM_4,  // ADC1_CHANNEL_3
-    GPIO_NUM_5,  // ADC1_CHANNEL_4
-    GPIO_NUM_6,  // ADC1_CHANNEL_5
-    GPIO_NUM_7,  // ADC1_CHANNEL_6
-    GPIO_NUM_8,  // ADC1_CHANNEL_7
-    GPIO_NUM_9,  // ADC1_CHANNEL_8
-    GPIO_NUM_10  // ADC1_CHANNEL_9
-};
-
-// ESP32-S3 Channel to GPIO mapping (ADC1)
-#elif defined(HF_MCU_ESP32S3)
-static constexpr gpio_num_t CHANNEL_TO_GPIO_ADC1[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_1,  // ADC1_CHANNEL_0
-    GPIO_NUM_2,  // ADC1_CHANNEL_1
-    GPIO_NUM_3,  // ADC1_CHANNEL_2
-    GPIO_NUM_4,  // ADC1_CHANNEL_3
-    GPIO_NUM_5,  // ADC1_CHANNEL_4
-    GPIO_NUM_6,  // ADC1_CHANNEL_5
-    GPIO_NUM_7,  // ADC1_CHANNEL_6
-    GPIO_NUM_8,  // ADC1_CHANNEL_7
-    GPIO_NUM_9,  // ADC1_CHANNEL_8
-    GPIO_NUM_10  // ADC1_CHANNEL_9
-};
-
-static constexpr gpio_num_t CHANNEL_TO_GPIO_ADC2[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_11, // ADC2_CHANNEL_0
-    GPIO_NUM_12, // ADC2_CHANNEL_1
-    GPIO_NUM_13, // ADC2_CHANNEL_2
-    GPIO_NUM_14, // ADC2_CHANNEL_3
-    GPIO_NUM_15, // ADC2_CHANNEL_4
-    GPIO_NUM_16, // ADC2_CHANNEL_5
-    GPIO_NUM_17, // ADC2_CHANNEL_6
-    GPIO_NUM_18, // ADC2_CHANNEL_7
-    GPIO_NUM_19, // ADC2_CHANNEL_8
-    GPIO_NUM_20  // ADC2_CHANNEL_9
-};
-
-// ESP32-C3 Channel to GPIO mapping
-#elif defined(HF_MCU_ESP32C3)
-static constexpr gpio_num_t CHANNEL_TO_GPIO[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_0,  // ADC1_CHANNEL_0
-    GPIO_NUM_1,  // ADC1_CHANNEL_1
-    GPIO_NUM_2,  // ADC1_CHANNEL_2
-    GPIO_NUM_3,  // ADC1_CHANNEL_3
-    GPIO_NUM_4,  // ADC1_CHANNEL_4
-    GPIO_NUM_5   // ADC1_CHANNEL_5
-};
-
-// ESP32-C2 Channel to GPIO mapping
-#elif defined(HF_MCU_ESP32C2)
-static constexpr gpio_num_t CHANNEL_TO_GPIO[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_0,  // ADC1_CHANNEL_0
-    GPIO_NUM_1,  // ADC1_CHANNEL_1
-    GPIO_NUM_2,  // ADC1_CHANNEL_2
-    GPIO_NUM_3   // ADC1_CHANNEL_3
-};
-
-// ESP32-H2 Channel to GPIO mapping
-#elif defined(HF_MCU_ESP32H2)
-static constexpr gpio_num_t CHANNEL_TO_GPIO[HF_ESP32_ADC_MAX_CHANNELS] = {
-    GPIO_NUM_0,  // ADC1_CHANNEL_0
-    GPIO_NUM_1,  // ADC1_CHANNEL_1
-    GPIO_NUM_2,  // ADC1_CHANNEL_2
-    GPIO_NUM_3,  // ADC1_CHANNEL_3
-    GPIO_NUM_4,  // ADC1_CHANNEL_4
-    GPIO_NUM_5   // ADC1_CHANNEL_5
-};
-
-// Default fallback (should not be reached)
-#else
-#error "Unsupported ESP32 variant! Please add GPIO mapping for this ESP32 variant in EspAdc.cpp"
-#endif
-
-// Helper function to get GPIO for channel based on unit
-static gpio_num_t GetGpioForChannel(uint8_t unit_id, hf_channel_id_t channel_id) {
-    if (channel_id >= HF_ESP32_ADC_MAX_CHANNELS) {
-        return GPIO_NUM_NC; // Invalid channel
-    }
-
-#ifdef HF_MCU_ESP32
-    // ESP32 Classic has different mappings for ADC1 and ADC2
-    if (unit_id == 0) {
-        return CHANNEL_TO_GPIO_ADC1[channel_id];
-    } else if (unit_id == 1) {
-        return CHANNEL_TO_GPIO_ADC2[channel_id];
-    }
-#elif defined(HF_MCU_ESP32S3)
-    // ESP32-S3 has different mappings for ADC1 and ADC2
-    if (unit_id == 0) {
-        return CHANNEL_TO_GPIO_ADC1[channel_id];
-    } else if (unit_id == 1) {
-        return CHANNEL_TO_GPIO_ADC2[channel_id];
-    }
-#else
-    // All other ESP32 variants have single mapping
-    return CHANNEL_TO_GPIO[channel_id];
-#endif
-
-    return GPIO_NUM_NC; // Invalid unit
+/**
+ * @brief Convert ADC channel to GPIO number using ESP-IDF API
+ * 
+ * This function replaces hardcoded channel-to-GPIO mapping tables with the
+ * official ESP-IDF API function adc_continuous_channel_to_io(). This provides
+ * proper portability across all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2)
+ * without requiring variant-specific hardcoded mappings.
+ * 
+ * @param unit_id ADC unit ID (0 for ADC1, 1 for ADC2)
+ * @param channel ADC channel to convert
+ * @param[out] gpio_num Resulting GPIO number
+ * @return ESP_OK on success, error code on failure
+ */
+static esp_err_t AdcChannelToGpio(adc_unit_t unit_id, adc_channel_t channel, int* gpio_num) {
+    return adc_continuous_channel_to_io(unit_id, channel, gpio_num);
 }
 
 //==============================================//
@@ -192,7 +83,8 @@ static gpio_num_t GetGpioForChannel(uint8_t unit_id, hf_channel_id_t channel_id)
 //==============================================//
 
 EspAdc::EspAdc(const hf_adc_unit_config_t& config) noexcept
-    : config_(config)
+    : BaseAdc()
+    , config_(config)
     , continuous_running_(false)
     , last_error_(hf_adc_err_t::ADC_SUCCESS)
     , config_mutex_()
@@ -1027,16 +919,18 @@ hf_adc_err_t EspAdc::SetMonitorEnabled(uint8_t monitor_id, bool enabled) noexcep
 // DIAGNOSTICS AND STATISTICS
 //==============================================//
 
-hf_adc_statistics_t EspAdc::GetStatistics() const noexcept
+hf_adc_err_t EspAdc::GetStatistics(hf_adc_statistics_t &statistics) noexcept
 {
     MutexLockGuard lock(stats_mutex_);
-    return statistics_;
+    statistics = statistics_;
+    return hf_adc_err_t::ADC_SUCCESS;
 }
 
-hf_adc_diagnostics_t EspAdc::GetDiagnostics() const noexcept
+hf_adc_err_t EspAdc::GetDiagnostics(hf_adc_diagnostics_t &diagnostics) noexcept
 {
     MutexLockGuard lock(stats_mutex_);
-    return diagnostics_;
+    diagnostics = diagnostics_;
+    return hf_adc_err_t::ADC_SUCCESS;
 }
 
 void EspAdc::ResetStatistics() noexcept

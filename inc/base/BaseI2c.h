@@ -207,12 +207,6 @@ struct hf_i2c_diagnostics_t {
 class BaseI2c {
 public:
   /**
-   * @brief Constructor with configuration.
-   * @param config I2C bus configuration parameters
-   */
-  explicit BaseI2c(const hf_i2c_bus_config_t &config) noexcept : config_(config), initialized_(false) {}
-
-  /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
    */
   virtual ~BaseI2c() noexcept = default;
@@ -482,13 +476,33 @@ public:
   //==============================================//
 
   /**
+   * @brief Reset I2C operation statistics.
+   * @return hf_i2c_err_t::I2C_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific statistics reset
+   */
+  virtual hf_i2c_err_t ResetStatistics() noexcept {
+    statistics_ = hf_i2c_statistics_t{}; // Reset statistics to default values
+    return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Reset I2C diagnostic information.
+   * @return hf_i2c_err_t::I2C_SUCCESS if successful, error code otherwise
+   * @note Override this method to provide platform-specific diagnostics reset
+   */
+  virtual hf_i2c_err_t ResetDiagnostics() noexcept {
+    diagnostics_ = hf_i2c_diagnostics_t{}; // Reset diagnostics to default values
+    return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
    * @brief Get I2C operation statistics
    * @param statistics Reference to store statistics data
    * @return hf_i2c_err_t::I2C_SUCCESS if successful, I2C_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_i2c_err_t GetStatistics(hf_i2c_statistics_t &statistics) const noexcept {
-    (void)statistics;
-    return hf_i2c_err_t::I2C_ERR_NOT_SUPPORTED;
+    statistics = statistics_; // Return statistics by default
+    return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
@@ -497,11 +511,19 @@ public:
    * @return hf_i2c_err_t::I2C_SUCCESS if successful, I2C_ERR_NOT_SUPPORTED if not implemented
    */
   virtual hf_i2c_err_t GetDiagnostics(hf_i2c_diagnostics_t &diagnostics) const noexcept {
-    (void)diagnostics;
-    return hf_i2c_err_t::I2C_ERR_NOT_SUPPORTED;
+    diagnostics = diagnostics_; // Return diagnostics by default
+    return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
-  hf_i2c_bus_config_t config_; ///< I2C bus configuration
+  
+  /**
+   * @brief Protected constructor with configuration.
+   * @param config I2C bus configuration parameters
+   */
+  explicit BaseI2c() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
+
   bool initialized_;            ///< Initialization status
+  hf_i2c_statistics_t statistics_; ///< I2C operation statistics
+  hf_i2c_diagnostics_t diagnostics_; ///< I2C diagnostic information
 };

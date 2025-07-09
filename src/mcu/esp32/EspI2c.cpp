@@ -177,7 +177,7 @@ static gpio_num_t GetDefaultSdaGpio(i2c_port_t port_num) noexcept {
  * @param config Master bus configuration with ESP-IDF v5.5+ features
  */
 EspI2c::EspI2c(const hf_i2c_master_bus_config_t& config) noexcept
-    : BaseI2c({}) // Initialize base with empty config for now
+    : BaseI2c() 
     , bus_config_(config)
     , master_bus_handle_(nullptr)
     , initialized_(false)
@@ -191,11 +191,7 @@ EspI2c::EspI2c(const hf_i2c_master_bus_config_t& config) noexcept
     , diagnostics_{}
     , mutex_()
     , stats_mutex_()
-{
-    // Reset statistics and diagnostics to clean state
-    statistics_.Reset();
-    diagnostics_ = hf_i2c_diagnostics_t{};
-}
+{ }
 
 /**
  * @brief Destructor - ensures proper cleanup of all resources.
@@ -1463,6 +1459,18 @@ size_t EspI2c::ScanDevices(std::vector<uint16_t>& found_devices,
     
     ESP_LOGI(TAG, "I2C scan complete. Found %zu devices", found_devices.size());
     return found_devices.size();
+}
+
+hf_i2c_err_t EspI2c::GetStatistics(hf_i2c_statistics_t &statistics) const noexcept
+{
+    statistics = statistics_;
+    return hf_i2c_err_t::I2C_SUCCESS;
+}
+
+hf_i2c_err_t EspI2c::GetDiagnostics(hf_i2c_diagnostics_t &diagnostics) const noexcept
+{
+    diagnostics = diagnostics_;
+    return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 #endif // HF_MCU_FAMILY_ESP32
