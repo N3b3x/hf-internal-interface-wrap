@@ -16,7 +16,7 @@
 #pragma once
 
 #include "BaseGpio.h"
-#include "McuTypes.h"
+#include "EspTypes_GPIO.h"
 
 
 
@@ -69,7 +69,7 @@ public:
                    hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
                    hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
                    hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
-                   hf_gpio_drive_strength_t drive_capability = hf_gpio_drive_strength_t::HF_GPIO_DRIVE_STRENGTH_MEDIUM) noexcept;
+                   hf_gpio_drive_cap_t drive_capability = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup including interrupt resources.
@@ -253,7 +253,7 @@ protected:
    * @brief Get current drive capability setting.
    * @return Current drive capability level
    */
-  [[nodiscard]] hf_gpio_drive_strength_t GetDriveCapability() const noexcept {
+  [[nodiscard]] hf_gpio_drive_cap_t GetDriveCapability() const noexcept {
     return drive_capability_;
   }
 
@@ -265,7 +265,7 @@ protected:
    *          Higher drive capability allows for faster switching and driving larger loads
    *          but increases power consumption and EMI.
    */
-  hf_gpio_err_t SetDriveCapability(hf_gpio_drive_strength_t capability) noexcept;
+  hf_gpio_err_t SetDriveCapability(hf_gpio_drive_cap_t capability) noexcept;
 
   /**
    * @brief Check if glitch filters are supported.
@@ -582,7 +582,7 @@ private:
   void *platform_semaphore_;             ///< Platform-specific semaphore for WaitForInterrupt
 
   // Advanced GPIO state
-  hf_gpio_drive_strength_t drive_capability_;      ///< Current drive capability setting
+  hf_gpio_drive_cap_t drive_capability_;      ///< Current drive capability setting
   hf_gpio_glitch_filter_type_t glitch_filter_type_;   ///< Type of glitch filter configured
   bool pin_glitch_filter_enabled_;            ///< Pin glitch filter enabled
   bool flex_glitch_filter_enabled_;           ///< Flexible glitch filter enabled

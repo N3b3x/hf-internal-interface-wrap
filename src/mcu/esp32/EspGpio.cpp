@@ -95,7 +95,7 @@ namespace {
 
 EspGpio::EspGpio(HfPinNumber pin_num, Direction direction, ActiveState active_state,
                  OutputMode output_mode, PullMode pull_mode,
-                 GpioDriveCapability drive_capability) noexcept
+                 hf_gpio_drive_cap_t drive_capability) noexcept
     : BaseGpio(pin_num, direction, active_state, output_mode, pull_mode),
       interrupt_trigger_(hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE), interrupt_callback_(nullptr),
       interrupt_user_data_(nullptr), interrupt_enabled_(false), interrupt_count_(0),
@@ -230,10 +230,10 @@ bool EspGpio::Initialize() noexcept {
 
   // Set drive capability
   if (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
-    ret = SetDriveCapability(drive_capability_);
-    if (ret != ESP_OK) {
-      ESP_LOGW(TAG, "Failed to set drive capability for GPIO%d: %s", 
-               static_cast<int>(pin_), esp_err_to_name(ret));
+    HfGpioErr drv_ret = SetDriveCapability(drive_capability_);
+    if (drv_ret != HfGpioErr::GPIO_SUCCESS) {
+      ESP_LOGW(TAG, "Failed to set drive capability for GPIO%d",
+               static_cast<int>(pin_));
     }
   }
 
@@ -846,7 +846,7 @@ HfGpioErr EspGpio::IsActiveImpl(bool &is_active) noexcept {
 // ADVANCED ESP32C6 FEATURES IMPLEMENTATION
 //==============================================================================
 
-HfGpioErr EspGpio::SetDriveCapability(GpioDriveCapability capability) noexcept {
+HfGpioErr EspGpio::SetDriveCapability(hf_gpio_drive_cap_t capability) noexcept {
   if (!EnsureInitialized()) {
     return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -855,16 +855,16 @@ HfGpioErr EspGpio::SetDriveCapability(GpioDriveCapability capability) noexcept {
 
   gpio_drive_cap_t esp_cap;
   switch (capability) {
-    case GpioDriveCapability::Weak:
+    case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK:
       esp_cap = GPIO_DRIVE_CAP_0;
       break;
-    case GpioDriveCapability::Stronger:
+    case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGER:
       esp_cap = GPIO_DRIVE_CAP_1;
       break;
-    case GpioDriveCapability::Medium:
+    case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM:
       esp_cap = GPIO_DRIVE_CAP_2;
       break;
-    case GpioDriveCapability::Strongest:
+    case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST:
       esp_cap = GPIO_DRIVE_CAP_3;
       break;
     default:
