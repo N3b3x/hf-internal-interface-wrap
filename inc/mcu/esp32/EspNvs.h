@@ -240,13 +240,13 @@ public:
    * @brief Get NVS operation statistics.
    * @return Statistics structure with operation counts and performance data
    */
-  hf_nvs_statistics_t GetStatistics() const noexcept;
+  hf_nvs_err_t GetStatistics(hf_nvs_statistics_t &statistics) const noexcept override;
 
   /**
    * @brief Get NVS diagnostic information.
    * @return Diagnostics structure with error tracking and health status
    */
-  hf_nvs_diagnostics_t GetDiagnostics() const noexcept;
+  hf_nvs_err_t GetDiagnostics(hf_nvs_diagnostics_t &diagnostics) const noexcept override;
 
 private:
   //==============================================//

@@ -468,18 +468,18 @@ size_t EspNvs::GetMaxKeyLength() const noexcept {
   return HF_NVS_MAX_KEY_LENGTH;
 }
 
-size_t EspNvs::GetMaxValueSize() const noexcept {
-  return HF_NVS_MAX_VALUE_SIZE;
+size_t EspNvs::GetMaxValueSize() const noexcept { return HF_NVS_MAX_VALUE_SIZE; }
+
+hf_nvs_err_t EspNvs::GetStatistics(hf_nvs_statistics_t &statistics) const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  statistics = statistics_;
+  return hf_nvs_err_t::NVS_SUCCESS;
 }
 
-hf_nvs_statistics_t EspNvs::GetStatistics() const noexcept {
+hf_nvs_err_t EspNvs::GetDiagnostics(hf_nvs_diagnostics_t &diagnostics) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  return statistics_;
-}
-
-hf_nvs_diagnostics_t EspNvs::GetDiagnostics() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  return diagnostics_;
+  diagnostics = diagnostics_;
+  return hf_nvs_err_t::NVS_SUCCESS;
 }
 
 //==============================================================================
