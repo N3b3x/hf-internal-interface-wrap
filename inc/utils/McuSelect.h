@@ -140,7 +140,8 @@ extern "C" {
 #endif
 
 #include "driver/adc.h"
-#include "driver/can.h" // Note: Different from ESP32-C6 TWAI
+#include "driver/twai.h"      // Modern TWAI driver for all ESP32 variants
+#include "hal/twai_types.h"
 #include "driver/gpio.h"
 #include "driver/i2c.h"
 #include "driver/ledc.h"

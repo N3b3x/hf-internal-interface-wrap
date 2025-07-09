@@ -257,7 +257,7 @@ private:
     mutable RtosMutex stats_mutex_;                 ///< Statistics mutex
 
     // ESP-IDF TWAI handle (native handle like EspAdc)
-    hf_can_handle_native_t twai_handle_;            ///< Native TWAI handle
+    twai_node_handle_t twai_handle_;                ///< Native TWAI handle
 
     // Callbacks (similar to EspAdc callback management)
     hf_can_receive_callback_t receive_callback_;    ///< Receive message callback
