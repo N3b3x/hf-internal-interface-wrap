@@ -44,6 +44,40 @@
 
 // Use direct types for advanced configuration
 
+
+//--------------------------------------
+//  SPI Configuration Structure
+//--------------------------------------
+
+/**
+ * @brief Platform-agnostic SPI bus configuration structure.
+ * @details Comprehensive configuration for SPI bus initialization,
+ *          supporting various platforms and SPI modes without MCU-specific types.
+ */
+struct hf_spi_bus_config_t {
+  hf_host_id_t host;                ///< SPI host/controller
+  hf_pin_num_t mosi_pin;            ///< MOSI (Master Out Slave In) pin
+  hf_pin_num_t miso_pin;            ///< MISO (Master In Slave Out) pin
+  hf_pin_num_t sclk_pin;            ///< SCLK (Serial Clock) pin
+  hf_pin_num_t cs_pin;              ///< CS (Chip Select) pin
+  hf_frequency_hz_t clock_speed_hz; ///< Clock speed in Hz
+  uint8_t mode;                     ///< SPI mode (0-3: CPOL/CPHA combinations)
+  uint8_t bits_per_word;            ///< Bits per transfer (typically 8 or 16)
+  bool cs_active_low;               ///< True if CS is active low, false if active high
+  hf_timeout_ms_t timeout_ms;       ///< Default timeout for operations in milliseconds
+
+  /**
+   * @brief Default constructor with sensible defaults.
+   */
+  hf_spi_bus_config_t() noexcept
+      : host(HF_INVALID_HOST), mosi_pin(HF_INVALID_PIN), miso_pin(HF_INVALID_PIN),
+        sclk_pin(HF_INVALID_PIN), cs_pin(HF_INVALID_PIN), clock_speed_hz(1000000), // 1MHz default
+        mode(0),             // Mode 0 (CPOL=0, CPHA=0)
+        bits_per_word(8),    // 8-bit transfers
+        cs_active_low(true), // Most devices use active-low CS
+        timeout_ms(1000) {}
+};
+
 /**
  * @brief Advanced SPI configuration for ESP32C6/ESP-IDF v5.5+.
  */

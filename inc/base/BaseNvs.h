@@ -1,5 +1,5 @@
 /**
- * @file BaseNvsStorage.h
+ * @file BaseNvs.h
  * @brief Abstract base class for Non-Volatile Storage implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for non-volatile storage
@@ -123,7 +123,7 @@ struct hf_nvs_diagnostics_t {
 };
 
 /**
- * @class BaseNvsStorage
+ * @class BaseNvs
  * @brief Abstract base class for non-volatile storage operations.
  *
  * This class provides a consistent interface for non-volatile storage across different
@@ -141,16 +141,16 @@ struct hf_nvs_diagnostics_t {
  * @note Implementations should handle platform-specific details internally
  * @note This class is designed to be thread-safe when properly implemented
  */
-class BaseNvsStorage {
+class BaseNvs {
 public:
   /**
    * @brief Virtual destructor to ensure proper cleanup.
    */
-  virtual ~BaseNvsStorage() noexcept = default;
+  virtual ~BaseNvs() noexcept = default;
 
   // Disable copy constructor and assignment operator for safety
-  BaseNvsStorage(const BaseNvsStorage &) = delete;
-  BaseNvsStorage &operator=(const BaseNvsStorage &) = delete;
+  BaseNvs(const BaseNvs &) = delete;
+  BaseNvs &operator=(const BaseNvs &) = delete;
 
   //==============================================//
   // LAZY-INITIALIZATION PATTERN                  //
@@ -366,7 +366,7 @@ protected:
    * @brief Protected constructor with namespace specification.
    * @param namespace_name Name of the storage namespace
    */
-  explicit BaseNvsStorage(const char *namespace_name) noexcept
+  explicit BaseNvs(const char *namespace_name) noexcept
       : namespace_name_(namespace_name), initialized_(false), statistics_{}, diagnostics_{} {}
 
   /**

@@ -33,7 +33,7 @@ static const char *TAG = "EspSpi";
 //==============================================//
 
 EspSpi::EspSpi(const hf_spi_bus_config_t &config) noexcept
-    : BaseSpi(config), platform_handle_(nullptr), current_device_(nullptr),
+    : BaseSpi(), platform_handle_(nullptr), current_device_(nullptr),
       use_advanced_config_(false), last_error_(hf_spi_err_t::SPI_SUCCESS), transaction_count_(0),
       cs_active_(false), dma_enabled_(false), bus_suspended_(false),
       current_transfer_mode_(hf_spi_transfer_mode_t::HF_SPI_TRANSFER_MODE_SINGLE),
@@ -46,7 +46,7 @@ EspSpi::EspSpi(const hf_spi_bus_config_t &config) noexcept
 }
 
 EspSpi::EspSpi(const hf_spi_advanced_config_t &config) noexcept
-    : BaseSpi(config.base_config), platform_handle_(nullptr), current_device_(nullptr),
+    : BaseSpi(), platform_handle_(nullptr), current_device_(nullptr),
       use_advanced_config_(true), advanced_config_(config), last_error_(hf_spi_err_t::SPI_SUCCESS),
       transaction_count_(0), cs_active_(false), dma_enabled_(config.dma_enabled),
       bus_suspended_(false), current_transfer_mode_(config.transfer_mode),
@@ -527,7 +527,7 @@ hf_spi_err_t EspSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, 
   }
 
   // Manage CS if requested
-  if (manage_cs && GetConfig().cs_pin != HF_INVALID_PIN) {
+  if (manage_cs && advanced_config_.base_config.cs_pin != HF_INVALID_PIN) {
     SetChipSelect(true);
   }
 
@@ -546,7 +546,7 @@ hf_spi_err_t EspSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, 
   uint64_t transfer_time = esp_timer_get_time() - start_time;
 
   // Release CS if we managed it
-  if (manage_cs && GetConfig().cs_pin != HF_INVALID_PIN) {
+  if (manage_cs && advanced_config_.base_config.cs_pin != HF_INVALID_PIN) {
     SetChipSelect(false);
   }
 
@@ -939,7 +939,7 @@ hf_spi_err_t EspSpi::transferBatch(const hf_spi_transfer_descriptor_t *transfers
   hf_spi_err_t result = hf_spi_err_t::SPI_SUCCESS;
 
   // Assert CS once for the entire batch
-  if (transfers[0].manage_cs && GetConfig().cs_pin != HF_INVALID_PIN) {
+  if (transfers[0].manage_cs && advanced_config_.base_config.cs_pin != HF_INVALID_PIN) {
     SetChipSelect(true);
   }
 
@@ -958,7 +958,7 @@ hf_spi_err_t EspSpi::transferBatch(const hf_spi_transfer_descriptor_t *transfers
   }
 
   // Release CS after the entire batch
-  if (transfers[0].manage_cs && GetConfig().cs_pin != HF_INVALID_PIN) {
+  if (transfers[0].manage_cs && advanced_config_.base_config.cs_pin != HF_INVALID_PIN) {
     SetChipSelect(false);
   }
 

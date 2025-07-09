@@ -80,7 +80,7 @@ static const char *TAG = "EspNvs";
 //==============================================================================
 
 EspNvs::EspNvs(const char *namespace_name) noexcept
-    : BaseNvsStorage(namespace_name), nvs_handle_(nullptr), last_error_code_(0) {
+    : BaseNvs(namespace_name), nvs_handle_(nullptr), last_error_code_(0) {
   
   // **LAZY INITIALIZATION** - Store configuration but do NOT initialize hardware
   ESP_LOGD(TAG, "Creating EspNvs for namespace '%s' - LAZY INIT", 

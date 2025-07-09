@@ -83,7 +83,7 @@ enum class hf_spi_err_t : uint8_t {
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view hf_spi_err_to_string(hf_spi_err_t err) noexcept {
+constexpr std::string_view HfSpiErrToString(hf_spi_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
   case hf_spi_err_t::NAME:                                                                         \
@@ -94,39 +94,6 @@ constexpr std::string_view hf_spi_err_to_string(hf_spi_err_t err) noexcept {
     return "Unknown error";
   }
 }
-
-//--------------------------------------
-//  SPI Configuration Structure
-//--------------------------------------
-
-/**
- * @brief Platform-agnostic SPI bus configuration structure.
- * @details Comprehensive configuration for SPI bus initialization,
- *          supporting various platforms and SPI modes without MCU-specific types.
- */
-struct hf_spi_bus_config_t {
-  hf_host_id_t host;                ///< SPI host/controller
-  hf_pin_num_t mosi_pin;            ///< MOSI (Master Out Slave In) pin
-  hf_pin_num_t miso_pin;            ///< MISO (Master In Slave Out) pin
-  hf_pin_num_t sclk_pin;            ///< SCLK (Serial Clock) pin
-  hf_pin_num_t cs_pin;              ///< CS (Chip Select) pin
-  hf_frequency_hz_t clock_speed_hz; ///< Clock speed in Hz
-  uint8_t mode;                     ///< SPI mode (0-3: CPOL/CPHA combinations)
-  uint8_t bits_per_word;            ///< Bits per transfer (typically 8 or 16)
-  bool cs_active_low;               ///< True if CS is active low, false if active high
-  hf_timeout_ms_t timeout_ms;       ///< Default timeout for operations in milliseconds
-
-  /**
-   * @brief Default constructor with sensible defaults.
-   */
-  hf_spi_bus_config_t() noexcept
-      : host(HF_INVALID_HOST), mosi_pin(HF_INVALID_PIN), miso_pin(HF_INVALID_PIN),
-        sclk_pin(HF_INVALID_PIN), cs_pin(HF_INVALID_PIN), clock_speed_hz(1000000), // 1MHz default
-        mode(0),             // Mode 0 (CPOL=0, CPHA=0)
-        bits_per_word(8),    // 8-bit transfers
-        cs_active_low(true), // Most devices use active-low CS
-        timeout_ms(1000) {}
-};
 
 /**
  * @brief SPI operation statistics.
@@ -239,14 +206,6 @@ public:
    */
   [[nodiscard]] bool IsInitialized() const noexcept {
     return initialized_;
-  }
-
-  /**
-   * @brief Get the bus configuration.
-   * @return Reference to the current configuration
-   */
-  [[nodiscard]] const hf_spi_bus_config_t &GetConfig() const noexcept {
-    return config_;
   }
 
   //==============================================//
@@ -375,38 +334,6 @@ public:
   }
 
   /**
-   * @brief Get the configured clock speed.
-   * @return Clock speed in Hz
-   */
-  [[nodiscard]] virtual hf_frequency_hz_t GetClockHz() const noexcept {
-    return config_.clock_speed_hz;
-  }
-
-  /**
-   * @brief Get the configured SPI mode.
-   * @return SPI mode (0-3)
-   */
-  [[nodiscard]] virtual uint8_t GetMode() const noexcept {
-    return config_.mode;
-  }
-
-  /**
-   * @brief Get the configured bits per word.
-   * @return Bits per word
-   */
-  [[nodiscard]] virtual uint8_t GetBitsPerWord() const noexcept {
-    return config_.bits_per_word;
-  }
-
-  /**
-   * @brief Get the SPI host/controller.
-   * @return SPI host number
-   */
-  [[nodiscard]] virtual hf_host_id_t GetHost() const noexcept {
-    return config_.host;
-  }
-
-  /**
    * @brief Write single byte to SPI bus.
    * @param data Byte to write
    * @return true if successful, false otherwise
@@ -481,13 +408,11 @@ public:
 protected:
   
   /**
-   * @brief Protected constructor with configuration.
-   * @param config SPI bus configuration parameters
+   * @brief Protected default constructor.
+   * @note Configurations are handled by derived classes
    */
-  explicit BaseSpi(const hf_spi_bus_config_t &config) noexcept
-      : config_(config), initialized_(false), statistics_{}, diagnostics_{} {}
+  BaseSpi() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
 
-  hf_spi_bus_config_t config_; ///< Bus configuration
   bool initialized_;           ///< Initialization state
   hf_spi_statistics_t statistics_; ///< SPI operation statistics
   hf_spi_diagnostics_t diagnostics_; ///< SPI diagnostic information

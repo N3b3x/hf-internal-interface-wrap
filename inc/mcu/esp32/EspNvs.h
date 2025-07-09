@@ -42,7 +42,7 @@
  */
 #pragma once
 
-#include "BaseNvsStorage.h"
+#include "BaseNvs.h"
 #include "McuTypes.h"        // Centralized MCU type definitions (includes NVS types)
 #include <cstdint>
 #include "RtosMutex.h"      // Thread-safe mutex support if enabled
@@ -57,7 +57,7 @@
  * This class provides comprehensive non-volatile storage using the microcontroller's
  * built-in storage mechanisms with enterprise-grade features. On ESP32-C6, it leverages
  * the modern ESP-IDF v5.5+ NVS library with advanced security, performance optimizations,
- * and comprehensive error handling. The implementation provides the unified BaseNvsStorage
+ * and comprehensive error handling. The implementation provides the unified BaseNvs
  * API while exposing platform-specific advanced features.
  *
  * Core Features:
@@ -98,11 +98,11 @@
  * @warning Encryption keys stored in eFuse are permanent and irreversible.
  * @warning Ensure proper backup and key management procedures.
  *
- * @see BaseNvsStorage for the abstract interface definition
+ * @see BaseNvs for the abstract interface definition
  * @see McuTypes.h for platform-specific type definitions
  * @see McuSelect.h for platform selection and configuration
  */
-class EspNvs : public BaseNvsStorage {
+class EspNvs : public BaseNvs {
 public:
   /**
    * @brief Constructor with namespace specification.

@@ -56,7 +56,7 @@ enum class hf_timer_err_t : int32_t {
 };
 
 // Generate error description function
-constexpr const char *hf_timer_err_to_string(hf_timer_err_t err) noexcept {
+constexpr const char *HfTimerErrToString(hf_timer_err_t err) noexcept {
   switch (err) {
 #define X(name, value, desc)                                                                       \
   case hf_timer_err_t::name:                                                                       \

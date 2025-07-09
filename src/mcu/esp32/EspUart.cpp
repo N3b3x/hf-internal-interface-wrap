@@ -31,7 +31,7 @@ static const char *TAG = "EspUart";
 //==============================================================================
 
 EspUart::EspUart(const hf_uart_port_config_t &config) noexcept
-    : BaseUart(config.port_number, hf_uart_config_t{}), // Temporary config, will be updated
+    : BaseUart(), 
       port_config_(config), initialized_(false), uart_port_(static_cast<hf_uart_port_native_t>(config.port_number)),
       event_queue_(nullptr), event_task_handle_(nullptr), event_callback_(nullptr), pattern_callback_(nullptr),
       break_callback_(nullptr), event_callback_user_data_(nullptr), pattern_callback_user_data_(nullptr),

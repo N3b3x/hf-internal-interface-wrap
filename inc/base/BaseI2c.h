@@ -83,10 +83,10 @@ enum class hf_i2c_err_t : uint8_t {
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view hf_i2c_err_to_string(hf_i2c_err_t err) noexcept {
+constexpr std::string_view HfI2CErrToString(hf_i2c_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
-  case hf_i2c_err_t::NAME:                                                                         \
+  case hf_i2c_err_t::NAME:                                                                        \
     return DESC;
     HF_I2C_ERR_LIST(X)
 #undef X
@@ -94,35 +94,6 @@ constexpr std::string_view hf_i2c_err_to_string(hf_i2c_err_t err) noexcept {
     return "Unknown error";
   }
 }
-
-//--------------------------------------
-//  I2C Configuration Structure
-//--------------------------------------
-
-/**
- * @brief Platform-agnostic I2C bus configuration structure.
- * @details Comprehensive configuration for I2C bus initialization,
- *          supporting various platforms and I2C modes without MCU-specific types.
- */
-struct hf_i2c_bus_config_t {
-  hf_port_number_t port;            ///< I2C port number
-  hf_pin_num_t sda_pin;          ///< SDA pin number
-  hf_pin_num_t scl_pin;          ///< SCL pin number
-  hf_frequency_hz_t clock_speed_hz; ///< Clock speed in Hz (typically 100kHz or 400kHz)
-  bool enable_pullups;          ///< Enable internal pull-up resistors
-  hf_timeout_ms_t timeout_ms;       ///< Default timeout for operations in milliseconds
-  uint16_t tx_buffer_size;      ///< Transmit buffer size (0 = no buffer/blocking mode)
-  uint16_t rx_buffer_size;      ///< Receive buffer size (0 = no buffer/blocking mode)
-
-  /**
-   * @brief Default constructor with sensible defaults.
-   */
-  hf_i2c_bus_config_t() noexcept
-      : port(HF_INVALID_PORT), sda_pin(HF_INVALID_PIN), scl_pin(HF_INVALID_PIN),
-        clock_speed_hz(100000),                                    // 100kHz standard mode
-        enable_pullups(true), timeout_ms(1000), tx_buffer_size(0), // Blocking mode by default
-        rx_buffer_size(0) {}
-};
 
 /**
  * @brief I2C operation statistics.
@@ -248,14 +219,6 @@ public:
     return initialized_;
   }
 
-  /**
-   * @brief Get the bus configuration.
-   * @return Reference to the current configuration
-   */
-  [[nodiscard]] const hf_i2c_bus_config_t &GetConfig() const noexcept {
-    return config_;
-  }
-
   //==============================================//
   // PURE VIRTUAL FUNCTIONS - MUST BE OVERRIDDEN  //
   //==============================================//
@@ -370,14 +333,6 @@ public:
   }
 
   /**
-   * @brief Get the configured clock frequency.
-   * @return Clock frequency in Hz
-   */
-  [[nodiscard]] virtual hf_frequency_hz_t GetClockHz() const noexcept {
-    return config_.clock_speed_hz;
-  }
-
-  /**
    * @brief Check if a device is present on the bus.
    * @param device_addr 7-bit I2C device address
    * @return true if device responds, false otherwise
@@ -461,14 +416,6 @@ public:
   virtual bool ReadRegisters(uint8_t device_addr, uint8_t reg_addr, uint8_t *data,
                             uint16_t length) noexcept {
     return WriteRead(device_addr, &reg_addr, 1, data, length) == hf_i2c_err_t::I2C_SUCCESS;
-  }
-
-  /**
-   * @brief Get the I2C port number.
-   * @return Port number
-   */
-  [[nodiscard]] virtual hf_port_number_t GetPort() const noexcept {
-    return config_.port;
   }
 
   //==============================================//

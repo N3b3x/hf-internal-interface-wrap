@@ -101,41 +101,6 @@ constexpr std::string_view hf_uart_err_to_string(hf_uart_err_t err) noexcept {
 //--------------------------------------
 
 /**
- * @brief Platform-agnostic UART configuration structure.
- * @details Comprehensive configuration for UART initialization,
- *          supporting various platforms and UART modes without MCU-specific types.
- */
-struct hf_uart_config_t {
-  hf_baud_rate_t baud_rate;           ///< Baud rate (bits per second)
-  uint8_t data_bits;              ///< Data bits (5-8, typically 8)
-  uint8_t parity;                 ///< Parity: 0=None, 1=Even, 2=Odd
-  uint8_t stop_bits;              ///< Stop bits (1-2, typically 1)
-  bool use_hardware_flow_control; ///< Enable hardware flow control (RTS/CTS)
-  hf_pin_num_t tx_pin;             ///< TX (transmit) pin
-  hf_pin_num_t rx_pin;             ///< RX (receive) pin
-  hf_pin_num_t rts_pin;            ///< RTS (Request To Send) pin (optional)
-  hf_pin_num_t cts_pin;            ///< CTS (Clear To Send) pin (optional)
-  uint16_t tx_buffer_size;        ///< TX buffer size in bytes
-  uint16_t rx_buffer_size;        ///< RX buffer size in bytes
-  hf_timeout_ms_t timeout_ms;         ///< Default timeout for operations in milliseconds
-
-  /**
-   * @brief Default constructor with sensible defaults.
-   */
-  hf_uart_config_t() noexcept
-      : baud_rate(115200),                // Common baud rate
-        data_bits(8),                     // 8 data bits
-        parity(0),                        // No parity
-        stop_bits(1),                     // 1 stop bit
-        use_hardware_flow_control(false), // No flow control by default
-        tx_pin(HF_INVALID_PIN), rx_pin(HF_INVALID_PIN), rts_pin(HF_INVALID_PIN),
-        cts_pin(HF_INVALID_PIN), tx_buffer_size(256), // 256 bytes TX buffer
-        rx_buffer_size(256),                          // 256 bytes RX buffer
-        timeout_ms(1000)                              // 1 second timeout
-  {}
-};
-
-/**
  * @brief UART operation statistics.
  */
 struct hf_uart_statistics_t {
@@ -260,14 +225,6 @@ public:
    */
   [[nodiscard]] bool IsInitialized() const noexcept {
     return initialized_;
-  }
-
-  /**
-   * @brief Get the UART configuration.
-   * @return Reference to the current configuration
-   */
-  [[nodiscard]] const hf_uart_config_t &GetConfig() const noexcept {
-    return config_;
   }
 
   /**
@@ -415,54 +372,6 @@ public:
     return FlushRx() == hf_uart_err_t::UART_SUCCESS;
   }
 
-  /**
-   * @brief Set the read timeout.
-   * @param timeout_ms Timeout in milliseconds
-   */
-  virtual void SetReadTimeout(uint32_t timeout_ms) noexcept {
-    config_.timeout_ms = timeout_ms;
-  }
-
-  /**
-   * @brief Get the configured baud rate.
-   * @return Baud rate in bits per second
-   */
-  [[nodiscard]] virtual hf_baud_rate_t GetBaudRate() const noexcept {
-    return config_.baud_rate;
-  }
-
-  /**
-   * @brief Get the configured data bits.
-   * @return Number of data bits
-   */
-  [[nodiscard]] virtual uint8_t GetDataBits() const noexcept {
-    return config_.data_bits;
-  }
-
-  /**
-   * @brief Get the configured parity.
-   * @return Parity setting
-   */
-  [[nodiscard]] virtual uint8_t GetParity() const noexcept {
-    return config_.parity;
-  }
-
-  /**
-   * @brief Get the configured stop bits.
-   * @return Number of stop bits
-   */
-  [[nodiscard]] virtual uint8_t GetStopBits() const noexcept {
-    return config_.stop_bits;
-  }
-
-  /**
-   * @brief Check if hardware flow control is enabled.
-   * @return true if enabled, false otherwise
-   */
-  [[nodiscard]] virtual bool IsFlowControlEnabled() const noexcept {
-    return config_.use_hardware_flow_control;
-  }
-
   //==============================================//
   // STATISTICS AND DIAGNOSTICS
   //==============================================//
@@ -515,10 +424,8 @@ protected:
    * @param config UART configuration parameters
    */
   BaseUart(hf_port_number_t port, const hf_uart_config_t &config) noexcept
-      : port_(port), config_(config), initialized_(false), statistics_{}, diagnostics_{} {}
+      : initialized_(false), statistics_{}, diagnostics_{} {}
 
-  hf_port_number_t port_;        ///< UART port number
-  hf_uart_config_t config_;      ///< UART configuration
   bool initialized_;             ///< Initialization status
   hf_uart_statistics_t statistics_; ///< UART operation statistics
   hf_uart_diagnostics_t diagnostics_; ///< UART diagnostic information

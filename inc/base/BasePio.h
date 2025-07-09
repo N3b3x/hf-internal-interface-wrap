@@ -84,7 +84,7 @@ enum class hf_pio_err_t : uint8_t {
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view hf_pio_err_to_string(hf_pio_err_t err) noexcept {
+constexpr std::string_view HfPioErrToString(hf_pio_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
   case hf_pio_err_t::NAME:                                                                         \
