@@ -49,17 +49,17 @@
   X(TIMER_ERR_HARDWARE_FAULT, 11, "Timer hardware fault")
 
 // Generate enum class from X-macro
-enum class HfTimerErr : int32_t {
+enum class hf_timer_err_t : int32_t {
 #define X(name, value, desc) name = value,
   HF_TIMER_ERR_LIST(X)
 #undef X
 };
 
 // Generate error description function
-constexpr const char *HfTimerErrToString(HfTimerErr err) noexcept {
+constexpr const char *hf_timer_err_to_string(hf_timer_err_t err) noexcept {
   switch (err) {
 #define X(name, value, desc)                                                                       \
-  case HfTimerErr::name:                                                                           \
+  case hf_timer_err_t::name:                                                                       \
     return desc;
     HF_TIMER_ERR_LIST(X)
 #undef X
@@ -69,10 +69,26 @@ constexpr const char *HfTimerErrToString(HfTimerErr err) noexcept {
 }
 
 /**
+ * @brief Timer statistics structure.
+ */
+struct hf_timer_stats_t {
+  uint64_t start_count;
+  uint64_t stop_count;
+  uint64_t callback_count;
+  uint64_t missed_callbacks;
+  hf_timer_err_t last_error;
+  hf_timestamp_us_t last_start_us;
+
+  hf_timer_stats_t() noexcept
+      : start_count(0), stop_count(0), callback_count(0), missed_callbacks(0),
+        last_error(hf_timer_err_t::TIMER_SUCCESS), last_start_us(0) {}
+};
+
+/**
  * @brief Timer callback function type.
  * @param user_data User-provided data passed to callback
  */
-using TimerCallback = std::function<void(void *user_data)>;
+using hf_timer_callback_t = std::function<void(void *user_data)>;
 
 /**
  * @class BasePeriodicTimer
@@ -100,7 +116,7 @@ public:
    * @param callback Timer callback function
    * @param user_data User data passed to callback
    */
-  explicit BasePeriodicTimer(TimerCallback callback, void *user_data = nullptr) noexcept
+  explicit BasePeriodicTimer(hf_timer_callback_t callback, void *user_data = nullptr) noexcept
       : callback_(callback), user_data_(user_data), initialized_(false), running_(false) {}
 
   /**
@@ -118,58 +134,58 @@ public:
 
   /**
    * @brief Initialize the timer hardware/resources.
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual HfTimerErr Initialize() noexcept = 0;
+  virtual hf_timer_err_t Initialize() noexcept = 0;
 
   /**
    * @brief Deinitialize the timer and free resources.
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual HfTimerErr Deinitialize() noexcept = 0;
+  virtual hf_timer_err_t Deinitialize() noexcept = 0;
 
   /**
    * @brief Start the periodic timer with specified period.
    * @param period_us Timer period in microseconds
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual HfTimerErr Start(uint64_t period_us) noexcept = 0;
+  virtual hf_timer_err_t Start(uint64_t period_us) noexcept = 0;
 
   /**
    * @brief Stop the periodic timer.
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual HfTimerErr Stop() noexcept = 0;
+  virtual hf_timer_err_t Stop() noexcept = 0;
 
   /**
    * @brief Change the timer period while running.
    * @param period_us New timer period in microseconds
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual HfTimerErr SetPeriod(uint64_t period_us) noexcept = 0;
+  virtual hf_timer_err_t SetPeriod(uint64_t period_us) noexcept = 0;
 
   /**
    * @brief Get the current timer period.
    * @param period_us Reference to store the current period
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual HfTimerErr GetPeriod(uint64_t &period_us) noexcept = 0;
+  virtual hf_timer_err_t GetPeriod(uint64_t &period_us) noexcept = 0;
 
   /**
    * @brief Get timer statistics and status information.
    * @param callback_count Number of callbacks executed
    * @param missed_callbacks Number of missed callbacks (if supported)
    * @param last_error Last error that occurred
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual HfTimerErr GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
-                              HfTimerErr &last_error) noexcept = 0;
+  virtual hf_timer_err_t GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
+                                  hf_timer_err_t &last_error) noexcept = 0;
 
   /**
    * @brief Reset timer statistics.
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual HfTimerErr ResetStats() noexcept = 0;
+  virtual hf_timer_err_t ResetStats() noexcept = 0;
 
   //==============================================//
   // PUBLIC INTERFACE (IMPLEMENTED)               //
@@ -219,15 +235,15 @@ public:
    * @brief Set new callback function.
    * @param callback New callback function
    * @param user_data New user data
-   * @return HfTimerErr::TIMER_SUCCESS if successful, error code otherwise
+   * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  HfTimerErr SetCallback(TimerCallback callback, void *user_data = nullptr) noexcept {
+  hf_timer_err_t SetCallback(hf_timer_callback_t callback, void *user_data = nullptr) noexcept {
     if (IsRunning()) {
-      return HfTimerErr::TIMER_ERR_ALREADY_RUNNING;
+      return hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING;
     }
     callback_ = callback;
     user_data_ = user_data;
-    return HfTimerErr::TIMER_SUCCESS;
+    return hf_timer_err_t::TIMER_SUCCESS;
   }
 
   /**
@@ -273,8 +289,8 @@ protected:
   }
 
 private:
-  TimerCallback callback_; ///< Timer callback function
-  void *user_data_;        ///< User data passed to callback
-  bool initialized_;       ///< Initialization state flag
-  bool running_;           ///< Running state flag
-  };
+  hf_timer_callback_t callback_; ///< Timer callback function
+  void *user_data_;              ///< User data passed to callback
+  bool initialized_;             ///< Initialization state flag
+  bool running_;                 ///< Running state flag
+};
