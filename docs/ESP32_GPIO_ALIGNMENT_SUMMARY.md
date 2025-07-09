@@ -10,12 +10,12 @@ This document summarizes the comprehensive analysis and alignment of the GPIO sy
 
 **Before**: Mixed naming conventions with inconsistent patterns
 - `HfGpioErr` vs `hf_gpio_err_t`
-- `GPIO_SUCCESS` vs `HF_GPIO_SUCCESS`
+- `GPIO_SUCCESS` vs `GPIO_SUCCESS`
 - Inconsistent error code naming
 
 **After**: Consistent `hf_*` prefix naming throughout
 - All types use `hf_gpio_*` prefix (e.g., `hf_gpio_err_t`, `hf_gpio_mode_t`)
-- Consistent error code naming (`HF_GPIO_SUCCESS`, `HF_GPIO_ERR_*`)
+- Consistent error code naming (`GPIO_SUCCESS`, `GPIO_ERR_*`)
 - Aligned with ADC and CAN system naming conventions
 
 ### 2. ESP-IDF v5.4+ API Alignment
@@ -176,12 +176,12 @@ EspGpio::WriteDedicatedBundle(bundle_handle, 0x0F);
 **Comprehensive Error Codes**:
 ```cpp
 enum class hf_gpio_err_t : uint8_t {
-    HF_GPIO_SUCCESS = 0,
-    HF_GPIO_ERR_FAILURE = 1,
-    HF_GPIO_ERR_NOT_INITIALIZED = 2,
-    HF_GPIO_ERR_INVALID_PARAMETER = 4,
-    HF_GPIO_ERR_PIN_NOT_FOUND = 8,
-    HF_GPIO_ERR_HARDWARE_FAULT = 13,
+    GPIO_SUCCESS = 0,
+    GPIO_ERR_FAILURE = 1,
+    GPIO_ERR_NOT_INITIALIZED = 2,
+    GPIO_ERR_INVALID_PARAMETER = 4,
+    GPIO_ERR_PIN_NOT_FOUND = 8,
+    GPIO_ERR_HARDWARE_FAULT = 13,
     // ... 37 total error codes
 };
 ```

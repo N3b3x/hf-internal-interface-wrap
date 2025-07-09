@@ -790,15 +790,15 @@ uint8_t hf_gpio_get_optimal_etm_channel(uint8_t gpio_num, uint8_t priority);
  * @brief GPIO operation result codes.
  */
 enum class hf_gpio_result_t : uint8_t {
-  HF_GPIO_OK = 0,                     ///< Operation successful
-  HF_GPIO_ERR_INVALID_ARG = 1,        ///< Invalid argument
-  HF_GPIO_ERR_INVALID_STATE = 2,      ///< Invalid state for operation
-  HF_GPIO_ERR_NOT_SUPPORTED = 3,      ///< Operation not supported
-  HF_GPIO_ERR_NO_MEM = 4,             ///< Out of memory
-  HF_GPIO_ERR_TIMEOUT = 5,            ///< Operation timeout
-  HF_GPIO_ERR_HW_FAULT = 6,           ///< Hardware fault
-  HF_GPIO_ERR_BUSY = 7,               ///< Resource busy
-  HF_GPIO_ERR_NOT_FOUND = 8           ///< Resource not found
+  GPIO_OK = 0,                     ///< Operation successful
+  GPIO_ERR_INVALID_ARG = 1,        ///< Invalid argument
+  GPIO_ERR_INVALID_STATE = 2,      ///< Invalid state for operation
+  GPIO_ERR_NOT_SUPPORTED = 3,      ///< Operation not supported
+  GPIO_ERR_NO_MEM = 4,             ///< Out of memory
+  GPIO_ERR_TIMEOUT = 5,            ///< Operation timeout
+  GPIO_ERR_HW_FAULT = 6,           ///< Hardware fault
+  GPIO_ERR_BUSY = 7,               ///< Resource busy
+  GPIO_ERR_NOT_FOUND = 8           ///< Resource not found
 };
 
 /**
@@ -808,15 +808,15 @@ enum class hf_gpio_result_t : uint8_t {
  */
 constexpr const char* hf_gpio_result_to_string(hf_gpio_result_t result) {
   switch (result) {
-    case hf_gpio_result_t::HF_GPIO_OK: return "Success";
-    case hf_gpio_result_t::HF_GPIO_ERR_INVALID_ARG: return "Invalid argument";
-    case hf_gpio_result_t::HF_GPIO_ERR_INVALID_STATE: return "Invalid state";
-    case hf_gpio_result_t::HF_GPIO_ERR_NOT_SUPPORTED: return "Not supported";
-    case hf_gpio_result_t::HF_GPIO_ERR_NO_MEM: return "Out of memory";
-    case hf_gpio_result_t::HF_GPIO_ERR_TIMEOUT: return "Timeout";
-    case hf_gpio_result_t::HF_GPIO_ERR_HW_FAULT: return "Hardware fault";
-    case hf_gpio_result_t::HF_GPIO_ERR_BUSY: return "Resource busy";
-    case hf_gpio_result_t::HF_GPIO_ERR_NOT_FOUND: return "Resource not found";
+    case hf_gpio_result_t::GPIO_OK: return "Success";
+    case hf_gpio_result_t::GPIO_ERR_INVALID_ARG: return "Invalid argument";
+    case hf_gpio_result_t::GPIO_ERR_INVALID_STATE: return "Invalid state";
+    case hf_gpio_result_t::GPIO_ERR_NOT_SUPPORTED: return "Not supported";
+    case hf_gpio_result_t::GPIO_ERR_NO_MEM: return "Out of memory";
+    case hf_gpio_result_t::GPIO_ERR_TIMEOUT: return "Timeout";
+    case hf_gpio_result_t::GPIO_ERR_HW_FAULT: return "Hardware fault";
+    case hf_gpio_result_t::GPIO_ERR_BUSY: return "Resource busy";
+    case hf_gpio_result_t::GPIO_ERR_NOT_FOUND: return "Resource not found";
     default: return "Unknown error";
   }
 }

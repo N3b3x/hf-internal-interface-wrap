@@ -1120,13 +1120,13 @@ bool EspGpio::SupportsGlitchFilter() const noexcept {
 
 HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!HF_GPIO_SUPPORTS_GLITCH_FILTER(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support glitch filtering", static_cast<int>(pin_));
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   if (enable) {
@@ -1140,7 +1140,7 @@ HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to create pin glitch filter for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
     }
     
     err = gpio_glitch_filter_enable(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
@@ -1149,7 +1149,7 @@ HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
                static_cast<int>(pin_), esp_err_to_name(err));
       gpio_del_glitch_filter(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
       glitch_filter_handle_ = nullptr;
-      return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
     }
     
     pin_glitch_filter_enabled_ = true;
@@ -1172,22 +1172,22 @@ HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
     ESP_LOGI(TAG, "Pin glitch filter disabled for GPIO%d", static_cast<int>(pin_));
   }
   
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Glitch filter not supported on this platform");
-  return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
 HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &config) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!HF_GPIO_SUPPORTS_GLITCH_FILTER(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support glitch filtering", static_cast<int>(pin_));
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   // Configure flexible glitch filter with custom timing
@@ -1202,7 +1202,7 @@ HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &confi
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to create flex glitch filter for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(err));
-    return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
   }
   
   err = gpio_glitch_filter_enable(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
@@ -1211,7 +1211,7 @@ HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &confi
              static_cast<int>(pin_), esp_err_to_name(err));
     gpio_del_glitch_filter(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
     glitch_filter_handle_ = nullptr;
-    return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
   }
   
   flex_glitch_filter_enabled_ = true;
@@ -1221,60 +1221,60 @@ HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &confi
   ESP_LOGI(TAG, "Flex glitch filter enabled for GPIO%d (window: %uns, threshold: %uns)", 
            static_cast<int>(pin_), config.window_width_ns, config.window_threshold_ns);
   
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Flexible glitch filter not supported on this platform");
-  return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
 HfGpioErr EspGpio::EnableGlitchFilters() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!glitch_filter_handle_) {
     ESP_LOGW(TAG, "No glitch filter configured for GPIO%d", static_cast<int>(pin_));
-    return HfGpioErr::HF_GPIO_ERR_INVALID_STATE;
+    return HfGpioErr::GPIO_ERR_INVALID_STATE;
   }
 
   esp_err_t err = gpio_glitch_filter_enable(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable glitch filters for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(err));
-    return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
   }
   
   ESP_LOGI(TAG, "Glitch filters enabled for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #else
-  return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
 HfGpioErr EspGpio::DisableGlitchFilters() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!glitch_filter_handle_) {
     ESP_LOGD(TAG, "No glitch filter to disable for GPIO%d", static_cast<int>(pin_));
-    return HfGpioErr::HF_GPIO_OK;
+    return HfGpioErr::GPIO_OK;
   }
 
   esp_err_t err = gpio_glitch_filter_disable(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to disable glitch filters for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(err));
-    return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
   }
   
   ESP_LOGI(TAG, "Glitch filters disabled for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #else
-  return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
@@ -1288,13 +1288,13 @@ bool EspGpio::SupportsRtcGpio() const noexcept {
 
 HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!HF_GPIO_IS_RTC_CAPABLE(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support RTC functionality", static_cast<int>(pin_));
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   esp_err_t err;
@@ -1305,7 +1305,7 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to initialize RTC GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
     }
 
     // Set sleep mode direction
@@ -1326,7 +1326,7 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to set RTC direction for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
     }
 
     // Configure sleep pull mode
@@ -1356,7 +1356,7 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
       if (err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to configure RTC pull mode for GPIO%d: %s", 
                  static_cast<int>(pin_), esp_err_to_name(err));
-        return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+        return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
       }
     }
 
@@ -1373,16 +1373,16 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
   ESP_LOGI(TAG, "Sleep configuration updated for GPIO%d (RTC: %s)", 
            static_cast<int>(pin_), config.enable_sleep_retain ? "enabled" : "disabled");
   
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Sleep configuration not supported on this platform");
-  return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
 HfGpioErr EspGpio::ConfigureHold(bool enable) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
@@ -1409,28 +1409,28 @@ HfGpioErr EspGpio::ConfigureHold(bool enable) noexcept {
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to %s hold for GPIO%d: %s", 
              enable ? "enable" : "disable", static_cast<int>(pin_), esp_err_to_name(err));
-    return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
   }
   
   hold_enabled_ = enable;
   ESP_LOGI(TAG, "Hold %s for GPIO%d", enable ? "enabled" : "disabled", static_cast<int>(pin_));
   
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Hold configuration not supported on this platform");
-  return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
 HfGpioErr EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::HF_GPIO_ERR_NOT_INITIALIZED;
+    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!HF_GPIO_IS_RTC_CAPABLE(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support wake-up functionality", static_cast<int>(pin_));
-    return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
   }
 
   esp_err_t err;
@@ -1446,14 +1446,14 @@ HfGpioErr EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
         break;
       default:
         ESP_LOGE(TAG, "Invalid wake-up trigger for GPIO%d", static_cast<int>(pin_));
-        return HfGpioErr::HF_GPIO_ERR_INVALID_ARG;
+        return HfGpioErr::GPIO_ERR_INVALID_ARG;
     }
     
     err = rtc_gpio_wakeup_enable(static_cast<gpio_num_t>(pin_), wakeup_type);
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to enable wake-up for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
     }
     
     ESP_LOGI(TAG, "Wake-up enabled for GPIO%d (trigger: %s)", 
@@ -1464,17 +1464,17 @@ HfGpioErr EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to disable wake-up for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::HF_GPIO_ERR_DRIVER_ERROR;
+      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
     }
     
     ESP_LOGI(TAG, "Wake-up disabled for GPIO%d", static_cast<int>(pin_));
   }
   
   wakeup_config_ = config;
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Wake-up configuration not supported on this platform");
-  return HfGpioErr::HF_GPIO_ERR_NOT_SUPPORTED;
+  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
@@ -1516,7 +1516,7 @@ HfGpioErr EspGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) 
   capabilities.is_spi_pin = HF_GPIO_IS_SPI_PIN(pin_);
   capabilities.is_usb_jtag_pin = HF_GPIO_IS_USB_JTAG_PIN(pin_);
   
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #else
   // Generic capabilities for non-ESP32C6 platforms
   capabilities.pin_number = pin_;
@@ -1531,7 +1531,7 @@ HfGpioErr EspGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) 
   capabilities.is_spi_pin = false;
   capabilities.is_usb_jtag_pin = false;
   
-  return HfGpioErr::HF_GPIO_OK;
+  return HfGpioErr::GPIO_OK;
 #endif
 }
 
