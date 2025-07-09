@@ -34,3 +34,5 @@ tests/build/
 
 **/build/
 **/dependencies.lock
+
+**/.vscode/
