@@ -291,46 +291,11 @@ public:
     return Deinitialize();
   }
 
-  /**
-   * @brief Write data to an I2C device (simplified interface).
-   * @param addr 7-bit I2C device address
-   * @param data Pointer to data buffer to write
-   * @param sizeBytes Number of bytes to write
-   * @param timeoutMsec Timeout in milliseconds
-   * @return true if successful, false otherwise
-   */
-  virtual bool Write(uint8_t addr, const uint8_t *data, uint16_t sizeBytes,
-                     uint32_t timeoutMsec = 1000) noexcept {
-    return Write(addr, data, sizeBytes, timeoutMsec) == hf_i2c_err_t::I2C_SUCCESS;
-  }
+  // Removed duplicate Write method to avoid overload conflicts
 
-  /**
-   * @brief Read data from an I2C device (simplified interface).
-   * @param addr 7-bit I2C device address
-   * @param data Pointer to buffer to store received data
-   * @param sizeBytes Number of bytes to read
-   * @param timeoutMsec Timeout in milliseconds
-   * @return true if successful, false otherwise
-   */
-  virtual bool Read(uint8_t addr, uint8_t *data, uint16_t sizeBytes,
-                    uint32_t timeoutMsec = 1000) noexcept {
-    return Read(addr, data, sizeBytes, timeoutMsec) == hf_i2c_err_t::I2C_SUCCESS;
-  }
+  // Removed duplicate Read method to avoid overload conflicts
 
-  /**
-   * @brief Write then read data from an I2C device (simplified interface).
-   * @param addr 7-bit I2C device address
-   * @param txData Pointer to data buffer to write
-   * @param txSizeBytes Number of bytes to write
-   * @param rxData Pointer to buffer to store received data
-   * @param rxSizeBytes Number of bytes to read
-   * @param timeoutMsec Timeout in milliseconds
-   * @return true if successful, false otherwise
-   */
-  virtual bool WriteRead(uint8_t addr, const uint8_t *txData, uint16_t txSizeBytes, uint8_t *rxData,
-                         uint16_t rxSizeBytes, uint32_t timeoutMsec = 1000) noexcept {
-    return WriteRead(addr, txData, txSizeBytes, rxData, rxSizeBytes, timeoutMsec) == hf_i2c_err_t::I2C_SUCCESS;
-  }
+  // Removed duplicate WriteRead method to avoid overload conflicts
 
   /**
    * @brief Check if a device is present on the bus.

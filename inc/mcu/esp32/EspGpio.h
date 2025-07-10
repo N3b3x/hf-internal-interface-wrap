@@ -18,8 +18,6 @@
 #include "BaseGpio.h"
 #include "EspTypes_GPIO.h"
 
-
-
 /**
  * @class EspGpio
  * @brief Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+
@@ -132,7 +130,7 @@ public:
    * @param user_data User data passed to callback (optional)
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t ConfigureInterrupt(InterruptTrigger trigger, InterruptCallback callback = nullptr,
+  hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback = nullptr,
                                void *user_data = nullptr) noexcept override;
 
   /**
@@ -261,7 +259,7 @@ protected:
    * @return Current PullMode configuration
    * @details Queries the current pull resistor configuration from MCU registers.
    */
-  PullMode GetPullModeImpl() const noexcept override;
+  hf_gpio_pull_mode_t GetPullModeImpl() const noexcept override;
 
   //==============================================================//
   // ADVANCED GPIO FEATURES (ESP32C6/ESP-IDF v5.5+)
@@ -592,7 +590,7 @@ private:
   //==============================================================//
 
   // Interrupt state
-  InterruptTrigger interrupt_trigger_;   ///< Current interrupt trigger type
+  hf_gpio_interrupt_trigger_t interrupt_trigger_;   ///< Current interrupt trigger type
   InterruptCallback interrupt_callback_; ///< User interrupt callback
   void *interrupt_user_data_;            ///< User data for callback
   bool interrupt_enabled_;               ///< Interrupt currently enabled

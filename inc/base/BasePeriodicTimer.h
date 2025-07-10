@@ -46,7 +46,8 @@
   X(TIMER_ERR_NOT_RUNNING, 8, "Timer not running")                                                 \
   X(TIMER_ERR_INVALID_PERIOD, 9, "Invalid period")                                                 \
   X(TIMER_ERR_RESOURCE_BUSY, 10, "Timer resource busy")                                            \
-  X(TIMER_ERR_HARDWARE_FAULT, 11, "Timer hardware fault")
+  X(TIMER_ERR_HARDWARE_FAULT, 11, "Timer hardware fault")                                          \
+  X(TIMER_ERR_UNSUPPORTED_OPERATION, 12, "Unsupported operation") 
 
 // Generate enum class from X-macro
 enum class hf_timer_err_t : int32_t {

@@ -26,7 +26,7 @@
 
 #include "BaseUart.h"
 #include "RtosMutex.h"
-#include "EspTypes_UART.h"
+#include "utils/EspTypes.h"
 
 #include <memory>
 #include <vector>
@@ -100,12 +100,12 @@ public:
   // CONSTANTS
   //==============================================================================
 
-  static constexpr uint8_t MAX_PORTS = HF_ESP32_UART_MAX_PORTS;          ///< Maximum UART ports
-  static constexpr uint32_t MAX_BAUD_RATE = HF_ESP32_UART_MAX_BAUD;      ///< Maximum baud rate
-  static constexpr uint32_t MIN_BAUD_RATE = HF_ESP32_UART_MIN_BAUD;      ///< Minimum baud rate
-  static constexpr uint32_t DEFAULT_BAUD_RATE = HF_ESP32_UART_DEFAULT_BAUD; ///< Default baud rate
-  static constexpr uint16_t MAX_BUFFER_SIZE = HF_ESP32_UART_MAX_BUFFER_SIZE; ///< Maximum buffer size
-  static constexpr uint16_t DEFAULT_BUFFER_SIZE = HF_ESP32_UART_DEFAULT_BUFFER_SIZE; ///< Default buffer size
+  static constexpr uint8_t MAX_PORTS = 3;          ///< Maximum UART ports
+  static constexpr uint32_t MAX_BAUD_RATE = 5000000;      ///< Maximum baud rate
+  static constexpr uint32_t MIN_BAUD_RATE = 110;      ///< Minimum baud rate
+  static constexpr uint32_t DEFAULT_BAUD_RATE = 115200; ///< Default baud rate
+  static constexpr uint16_t MAX_BUFFER_SIZE = 1024; ///< Maximum buffer size
+  static constexpr uint16_t DEFAULT_BUFFER_SIZE = 256; ///< Default buffer size
 
   //==============================================================================
   // CONSTRUCTOR AND DESTRUCTOR
@@ -116,7 +116,7 @@ public:
    * @param config UART port configuration
    * @note Uses lazy initialization - no hardware action until first operation
    */
-  explicit EspUart(const hf_uart_port_config_t& config) noexcept;
+  explicit EspUart(const hf_uart_config_t& config) noexcept;
 
 
 
@@ -187,35 +187,35 @@ public:
    * @param baud_rate New baud rate
    * @return true if successful, false otherwise
    */
-  bool SetBaudRate(uint32_t baud_rate) noexcept override;
+  bool SetBaudRate(uint32_t baud_rate) noexcept;
 
   /**
    * @brief Enable or disable hardware flow control.
    * @param enable true to enable, false to disable
-   * @return true if successful, false otherwise
+   * @return hf_uart_err_t result code
    */
-  bool SetFlowControl(bool enable) noexcept override;
+  hf_uart_err_t SetFlowControl(bool enable) noexcept;
 
   /**
    * @brief Set RTS line state.
    * @param active true for active, false for inactive
-   * @return true if successful, false otherwise
+   * @return hf_uart_err_t result code
    */
-  bool SetRTS(bool active) noexcept override;
+  hf_uart_err_t SetRTS(bool active) noexcept;
 
   /**
    * @brief Send a break condition.
    * @param duration_ms Break duration in milliseconds
-   * @return true if successful, false otherwise
+   * @return hf_uart_err_t result code
    */
-  bool SendBreak(uint32_t duration_ms) noexcept override;
+  hf_uart_err_t SendBreak(uint32_t duration_ms) noexcept;
 
   /**
    * @brief Enable or disable loopback mode.
    * @param enable true to enable, false to disable
-   * @return true if successful, false otherwise
+   * @return hf_uart_err_t result code
    */
-  bool SetLoopback(bool enable) noexcept override;
+  hf_uart_err_t SetLoopback(bool enable) noexcept;
 
   /**
    * @brief Wait for transmission to complete.
@@ -234,48 +234,6 @@ public:
    * @return hf_uart_err_t result code
    */
   hf_uart_err_t SetOperatingMode(hf_uart_operating_mode_t mode) noexcept;
-
-  /**
-   * @brief Set baud rate with error handling.
-   * @param baud_rate New baud rate
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SetBaudRate(hf_baud_rate_t baud_rate) noexcept;
-
-  /**
-   * @brief Enable or disable hardware flow control with error handling.
-   * @param enable true to enable, false to disable
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SetFlowControl(bool enable) noexcept;
-
-  /**
-   * @brief Set RTS line state with error handling.
-   * @param active true for active, false for inactive
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SetRTS(bool active) noexcept;
-
-  /**
-   * @brief Send a break condition with error handling.
-   * @param duration_ms Break duration in milliseconds
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SendBreak(uint32_t duration_ms) noexcept;
-
-  /**
-   * @brief Enable or disable loopback mode with error handling.
-   * @param enable true to enable, false to disable
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SetLoopback(bool enable) noexcept;
-
-  /**
-   * @brief Wait for transmission to complete with error handling.
-   * @param timeout_ms Timeout in milliseconds
-   * @return true if successful, false on timeout
-   */
-  bool WaitTransmitComplete(uint32_t timeout_ms) noexcept;
 
   /**
    * @brief Read data until a specific terminator is found.
@@ -439,7 +397,7 @@ public:
    * @brief Get current UART configuration.
    * @return Current port configuration
    */
-  const hf_uart_port_config_t& GetPortConfig() const noexcept;
+  const hf_uart_config_t& GetPortConfig() const noexcept;
 
   /**
    * @brief Get current operating mode.
@@ -477,6 +435,18 @@ public:
    */
   bool IsReceiving() const noexcept;
 
+  /**
+   * @brief Check if break condition was detected.
+   * @return true if break detected, false otherwise
+   */
+  bool IsBreakDetected() noexcept;
+
+  /**
+   * @brief Get number of bytes waiting in TX buffer.
+   * @return Number of bytes waiting
+   */
+  uint16_t TxBytesWaiting() noexcept;
+
   //==============================================================================
   // PRINTF SUPPORT
   //==============================================================================
@@ -508,7 +478,7 @@ private:
   struct UartState {
     bool configured;              ///< UART is configured
     bool enabled;                 ///< UART is enabled
-    hf_uart_port_config_t config; ///< Current configuration
+    hf_uart_config_t config; ///< Current configuration
     hf_uart_operating_mode_t operating_mode; ///< Current operating mode
     hf_uart_mode_t communication_mode; ///< Current communication mode
     hf_uart_err_t last_error;     ///< Last error for this UART
@@ -588,7 +558,7 @@ private:
    * @brief Handle UART events
    * @param event UART event
    */
-  void HandleUartEvent(const hf_uart_event_native_t* event) noexcept;
+  void HandleUartEvent(const uart_event_t* event) noexcept;
 
   /**
    * @brief Convert platform error to HardFOC error
@@ -650,8 +620,8 @@ private:
   std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
   
   UartState uart_state_; ///< UART state tracking
-  hf_uart_port_config_t port_config_; ///< Port configuration
-  hf_uart_port_native_t uart_port_; ///< Native UART port handle
+  hf_uart_config_t port_config_; ///< Port configuration
+  uart_port_t uart_port_; ///< Native UART port handle
   
   // Event handling for interrupt mode
   QueueHandle_t event_queue_; ///< UART event queue

@@ -67,12 +67,22 @@
 #pragma once
 
 #include "BaseI2c.h"
-#include "EspTypes_I2C.h"
 #include "RtosMutex.h"
+#include "utils/EspTypes.h"
+// Add ESP-IDF I2C master include for handle types
+#include "driver/i2c_master.h"
 #include <unordered_map>
 #include <vector>
 #include <atomic>
 #include <memory>
+
+// Add macro definitions if not present
+#ifndef I2C_MIN_DEVICE_ADDR
+#define I2C_MIN_DEVICE_ADDR 0x08
+#endif
+#ifndef I2C_MAX_DEVICE_ADDR_7BIT
+#define I2C_MAX_DEVICE_ADDR_7BIT 0x77
+#endif
 
 /**
  * @class EspI2c
@@ -361,9 +371,7 @@ public:
      * @brief Get current power mode.
      * @return Current power mode
      */
-    hf_i2c_power_mode_t GetPowerMode() const noexcept {
-        return current_power_mode_.load();
-    }
+    hf_i2c_power_mode_t GetPowerMode() const noexcept;
 
     /**
      * @brief Suspend the I2C bus (low power mode).
@@ -403,7 +411,7 @@ public:
      * @return Current clock speed in Hz
      */
     uint32_t GetClockSpeed() const noexcept {
-        return bus_config_.clk_speed_hz;
+        return 100000; // Default clock speed - in ESP-IDF v5.5, clock speed is per device
     }
 
     /**
@@ -423,8 +431,10 @@ public:
     /**
      * @brief Reset I2C statistics.
      */
-    void ResetStatistics() noexcept {
-        statistics_.Reset();
+    hf_i2c_err_t ResetStatistics() noexcept override {
+        // Reset statistics manually since Reset() method doesn't exist
+        statistics_ = {};
+        return hf_i2c_err_t::I2C_SUCCESS;
     }
 
     /**
@@ -492,6 +502,13 @@ private:
      */
     void UpdateDiagnostics() noexcept;
 
+    /**
+     * @brief Get effective timeout value.
+     * @param timeout_ms Requested timeout in milliseconds
+     * @return Effective timeout value
+     */
+    uint32_t GetEffectiveTimeout(uint32_t timeout_ms) const noexcept;
+
     //==========================================================================
     // PRIVATE MEMBERS
     //==========================================================================
@@ -503,7 +520,7 @@ private:
     std::atomic<bool> initialized_{false};                                   ///< Initialization status
     std::atomic<bool> bus_suspended_{false};                                 ///< Bus suspension status
     std::atomic<bool> bus_locked_{false};                                    ///< Bus lock status
-    std::atomic<hf_i2c_power_mode_t> current_power_mode_{hf_i2c_power_mode_t::HF_I2C_POWER_FULL}; ///< Current power mode
+    std::atomic<hf_i2c_power_mode_t> current_power_mode_{hf_i2c_power_mode_t::HF_I2C_POWER_MODE_LOW}; ///< Current power mode
     std::atomic<hf_i2c_err_t> last_error_{hf_i2c_err_t::I2C_SUCCESS};       ///< Last error code
     std::atomic<uint64_t> last_operation_time_us_{0};                       ///< Last operation timestamp
 

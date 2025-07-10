@@ -27,9 +27,6 @@
 /// @brief Timeout value in milliseconds
 using hf_timeout_ms_t = uint32_t;
 
-/// @brief Pin number type (hardware agnostic)
-using hf_pin_num_t = uint32_t;
-
 //==============================================================================
 // ESP32-SPECIFIC CONSTANTS
 //==============================================================================

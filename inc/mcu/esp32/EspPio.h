@@ -31,6 +31,10 @@
 #include "EspTypes.h"
 #include "RtosMutex.h"
 #include <array>
+// Include ESP-IDF RMT driver headers for direct type usage
+#include "driver/rmt_tx.h"
+#include "driver/rmt_rx.h"
+#include "driver/rmt_encoder.h"
 
 //==============================================================================
 // TYPE ALIASES FOR PLATFORM COMPATIBILITY (from McuTypes.h)
@@ -171,7 +175,7 @@ public:
    * @return Error code indicating success or failure
    * @note This provides direct RMT access similar to rmt_wrapper.hpp
    */
-  hf_pio_err_t TransmitRawRmtSymbols(uint8_t channel_id, const hf_rmt_symbol_word_t *rmt_symbols,
+  hf_pio_err_t TransmitRawRmtSymbols(uint8_t channel_id, const rmt_symbol_word_t *rmt_symbols,
                                      size_t symbol_count, bool wait_completion = false) noexcept;
 
   /**
@@ -184,7 +188,7 @@ public:
    * @return Error code indicating success or failure
    * @note This provides direct RMT access similar to rmt_wrapper.hpp
    */
-  hf_pio_err_t ReceiveRawRmtSymbols(uint8_t channel_id, hf_rmt_symbol_word_t *rmt_buffer,
+  hf_pio_err_t ReceiveRawRmtSymbols(uint8_t channel_id, rmt_symbol_word_t *rmt_buffer,
                                     size_t buffer_size, size_t &symbols_received,
                                     uint32_t timeout_us = 10000) noexcept;
   /**
@@ -277,11 +281,11 @@ private:
     hf_pio_channel_config_t config;
     hf_pio_channel_status_t status;
 
-    // Use centralized types from McuTypes.h
-    hf_rmt_channel_handle_t *tx_channel;
-    hf_rmt_channel_handle_t *rx_channel;
-    hf_rmt_encoder_handle_t *encoder;
-    hf_rmt_encoder_handle_t *bytes_encoder; // For byte-level protocols
+    // Use original ESP-IDF RMT types directly
+    rmt_channel_handle_t tx_channel;
+    rmt_channel_handle_t rx_channel;
+    rmt_encoder_handle_t encoder;
+    rmt_encoder_handle_t bytes_encoder; // For byte-level protocols
 
     // Buffers
     hf_pio_symbol_t *rx_buffer;
@@ -328,13 +332,13 @@ private:
    * @brief Convert hf_pio_symbol_t array to RMT symbol format
    */
   hf_pio_err_t ConvertToRmtSymbols(const hf_pio_symbol_t *symbols, size_t symbol_count,
-                                   hf_rmt_symbol_word_t *rmt_symbols,
+                                   rmt_symbol_word_t *rmt_symbols,
                                    size_t &rmt_symbol_count) noexcept;
 
   /**
    * @brief Convert RMT symbols back to hf_pio_symbol_t format
    */
-  hf_pio_err_t ConvertFromRmtSymbols(const hf_rmt_symbol_word_t *rmt_symbols,
+  hf_pio_err_t ConvertFromRmtSymbols(const rmt_symbol_word_t *rmt_symbols,
                                      size_t rmt_symbol_count, hf_pio_symbol_t *symbols,
                                      size_t &symbol_count) noexcept;
 
@@ -342,13 +346,13 @@ private:
   /**
    * @brief Static callback for RMT transmission complete
    */
-  static bool OnTransmitComplete(hf_rmt_channel_handle_t *channel,
+  static bool OnTransmitComplete(rmt_channel_handle_t *channel,
                                  const rmt_tx_done_event_data_t *edata, void *user_ctx);
 
   /**
    * @brief Static callback for RMT reception complete
    */
-  static bool OnReceiveComplete(hf_rmt_channel_handle_t *channel,
+  static bool OnReceiveComplete(rmt_channel_handle_t *channel,
                                 const rmt_rx_done_event_data_t *edata, void *user_ctx);
 #endif
 

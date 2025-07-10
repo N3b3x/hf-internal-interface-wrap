@@ -43,7 +43,7 @@
 #pragma once
 
 #include "BaseNvs.h"
-#include "McuTypes.h"        // Centralized MCU type definitions (includes NVS types)
+#include "utils/EspTypes_NVS.h"        // Centralized ESP32 NVS type definitions
 #include <cstdint>
 #include "RtosMutex.h"      // Thread-safe mutex support if enabled
 

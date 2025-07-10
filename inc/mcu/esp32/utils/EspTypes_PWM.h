@@ -37,7 +37,6 @@ static constexpr uint32_t HF_PWM_MAX_FREQUENCY = 40000000;
 static constexpr uint32_t HF_PWM_DEFAULT_FREQUENCY = 1000;
 static constexpr uint8_t HF_PWM_DEFAULT_RESOLUTION = 10;
 static constexpr uint32_t HF_PWM_APB_CLOCK_HZ = 80000000;
-static constexpr uint32_t HF_INVALID_PIN = 0xFFFFFFFF;
 
 //==============================================================================
 // ESP32 PWM ENUMS
@@ -64,11 +63,11 @@ enum class hf_pwm_resolution_t : uint8_t {
 };
 
 /**
- * @brief ESP32 PWM speed mode configuration.
+ * @brief ESP32 PWM mode configuration.
  */
 enum class hf_pwm_mode_t : uint8_t {
-  HF_PWM_MODE_LOW_SPEED = 0,  ///< Low-speed mode
-  HF_PWM_MODE_HIGH_SPEED = 1  ///< High-speed mode
+  HF_PWM_MODE_BASIC = 0,  ///< Basic PWM mode
+  HF_PWM_MODE_FADE = 1    ///< Fade mode with hardware fade support
 };
 
 /**
@@ -85,6 +84,43 @@ enum class hf_pwm_fade_mode_t : uint8_t {
 enum class hf_pwm_intr_type_t : uint8_t {
   HF_PWM_INTR_DISABLE = 0,     ///< Disable interrupts
   HF_PWM_INTR_FADE_END = 1     ///< Fade end interrupt
+};
+
+/**
+ * @brief ESP32 PWM unit configuration.
+ */
+struct hf_pwm_unit_config_t {
+  uint8_t unit_id;                    ///< PWM unit ID
+  hf_pwm_mode_t mode;                 ///< Operating mode
+  uint32_t base_clock_hz;             ///< Base clock frequency
+  hf_pwm_clock_source_t clock_source; ///< Clock source
+  bool enable_fade;                   ///< Enable fade functionality
+  bool enable_interrupts;             ///< Enable interrupts
+  
+  hf_pwm_unit_config_t() noexcept
+      : unit_id(0), mode(hf_pwm_mode_t::HF_PWM_MODE_BASIC), 
+        base_clock_hz(HF_PWM_APB_CLOCK_HZ), 
+        clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT),
+        enable_fade(true), enable_interrupts(false) {}
+};
+
+/**
+ * @brief PWM channel status information.
+ */
+struct hf_pwm_channel_status_t {
+  bool enabled;                       ///< Channel is enabled
+  bool configured;                    ///< Channel is configured
+  float current_duty_cycle;           ///< Current duty cycle (0.0-1.0)
+  hf_frequency_hz_t current_frequency; ///< Current frequency
+  uint8_t resolution_bits;            ///< Current resolution
+  uint32_t raw_duty_value;            ///< Raw duty cycle value
+  bool fade_active;                   ///< Hardware fade is active
+  hf_pwm_err_t last_error;            ///< Last error for this channel
+  
+  hf_pwm_channel_status_t() noexcept
+      : enabled(false), configured(false), current_duty_cycle(0.0f),
+        current_frequency(0), resolution_bits(0), raw_duty_value(0),
+        fade_active(false), last_error(hf_pwm_err_t::PWM_SUCCESS) {}
 };
 
 //==============================================================================
@@ -133,7 +169,7 @@ struct hf_pwm_channel_config_t {
   
   hf_pwm_channel_config_t() noexcept
       : gpio_pin(static_cast<hf_gpio_num_t>(HF_INVALID_PIN)), channel_id(0), timer_id(0),
-        speed_mode(hf_pwm_mode_t::HF_PWM_MODE_LOW_SPEED), duty_initial(0),
+        speed_mode(hf_pwm_mode_t::HF_PWM_MODE_BASIC), duty_initial(0),
         intr_type(hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE), invert_output(false),
         hpoint(0), idle_level(0), output_invert(false) {}
 };

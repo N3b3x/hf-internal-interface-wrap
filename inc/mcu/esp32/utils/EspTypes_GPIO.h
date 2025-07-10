@@ -151,7 +151,11 @@ struct hf_dedic_gpio_bundle_flags_t {
  * @brief Dedicated GPIO bundle handle type.
  * @details Platform-specific handle for dedicated GPIO bundle operations.
  */
+#ifdef dedic_gpio_bundle_handle_t
 using hf_dedic_gpio_bundle_handle_t = dedic_gpio_bundle_handle_t;
+#else
+using hf_dedic_gpio_bundle_handle_t = void*; // Fallback for older ESP-IDF versions
+#endif
 
 /**
  * @brief Dedicated GPIO bundle configuration structure.
@@ -264,16 +268,6 @@ struct hf_gpio_wakeup_config_t {
   bool internal_pullup_enable;        ///< Enable internal pull-up during sleep
   bool internal_pulldown_enable;      ///< Enable internal pull-down during sleep
   bool iso_en;                        ///< Enable isolation during sleep
-};
-
-/**
- * @brief Dedicated GPIO bundle configuration.
- * @details Configuration for high-speed dedicated GPIO bundles.
- */
-struct hf_dedic_gpio_bundle_config_t {
-  const int *gpio_array;              ///< Array of GPIO numbers
-  size_t array_size;                  ///< Number of GPIOs in array
-  hf_dedic_gpio_bundle_flags_t flags; ///< Bundle configuration flags
 };
 
 /**

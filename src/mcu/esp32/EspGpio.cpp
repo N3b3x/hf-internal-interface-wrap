@@ -48,43 +48,43 @@ namespace {
   #ifdef HF_MCU_ESP32C6
   constexpr hf_gpio_pin_capabilities_t GPIO_PIN_CAPABILITIES[HF_MCU_GPIO_PIN_COUNT] = {
     // GPIO0-GPIO7: ADC and RTC capable
-    {true, true, true, false, false, false, false, 0, 1, 0},  // GPIO0
-    {true, true, true, false, false, false, false, 1, 1, 1},  // GPIO1
-    {true, true, true, false, false, false, false, 2, 1, 2},  // GPIO2
-    {true, true, true, false, false, false, false, 3, 1, 3},  // GPIO3
-    {true, true, true, false, true, false, false, 4, 1, 4},   // GPIO4 (strapping)
-    {true, true, true, false, true, false, false, 5, 1, 5},   // GPIO5 (strapping)
-    {true, true, true, false, false, false, false, 6, 1, 6},  // GPIO6
-    {true, false, true, false, false, false, false, 7, 0, 0}, // GPIO7
+    {true, true, true, false, true, true, true, false, true, false, false, false, false, false, false, false, false, 0, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000},  // GPIO0
+    {true, true, true, false, true, true, true, false, true, false, false, false, false, false, false, false, false, 1, 0, 0, 1, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000},  // GPIO1
+    {true, true, true, false, true, true, true, false, true, false, false, false, false, false, false, false, false, 2, 0, 0, 2, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000},  // GPIO2
+    {true, true, true, false, true, true, true, false, true, false, false, false, false, false, false, false, false, 3, 0, 0, 3, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000},  // GPIO3
+    {true, true, true, false, true, true, true, false, true, false, false, false, false, false, true, false, false, 4, 0, 0, 4, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000},   // GPIO4 (strapping)
+    {true, true, true, false, true, true, true, false, true, false, false, false, false, false, true, false, false, 5, 0, 0, 5, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000},   // GPIO5 (strapping)
+    {true, true, true, false, true, true, true, false, true, false, false, false, false, false, false, false, false, 6, 0, 0, 6, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000},  // GPIO6
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 7, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO7
     // GPIO8-GPIO11: Regular GPIOs
-    {true, false, false, false, true, false, false, 255, 0, 0}, // GPIO8 (strapping)
-    {true, false, false, false, true, false, false, 255, 0, 0}, // GPIO9 (strapping)
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO10
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO11
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, true, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO8 (strapping)
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, true, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO9 (strapping)
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO10
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO11
     // GPIO12-GPIO13: USB-JTAG pins
-    {true, false, false, false, false, false, true, 255, 0, 0}, // GPIO12 (USB-JTAG)
-    {true, false, false, false, false, false, true, 255, 0, 0}, // GPIO13 (USB-JTAG)
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, true, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO12 (USB-JTAG)
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, true, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO13 (USB-JTAG)
     // GPIO14: Not available on some variants
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO14
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO14
     // GPIO15: Strapping pin
-    {true, false, false, false, true, false, false, 255, 0, 0}, // GPIO15 (strapping)
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, true, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO15 (strapping)
     // GPIO16-GPIO23: Regular GPIOs
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO16
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO17
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO18
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO19
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO20
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO21
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO22
-    {true, false, false, false, false, false, false, 255, 0, 0}, // GPIO23
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO16
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO17
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO18
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO19
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO20
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO21
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO22
+    {true, true, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO23
     // GPIO24-GPIO30: SPI flash pins (not recommended for GPIO)
-    {true, false, false, false, false, true, false, 255, 0, 0}, // GPIO24 (SPI flash)
-    {true, false, false, false, false, true, false, 255, 0, 0}, // GPIO25 (SPI flash)
-    {true, false, false, false, false, true, false, 255, 0, 0}, // GPIO26 (SPI flash)
-    {true, false, false, false, false, true, false, 255, 0, 0}, // GPIO27 (SPI flash)
-    {true, false, false, false, false, true, false, 255, 0, 0}, // GPIO28 (SPI flash)
-    {true, false, false, false, false, true, false, 255, 0, 0}, // GPIO29 (SPI flash)
-    {true, false, false, false, false, true, false, 255, 0, 0}, // GPIO30 (SPI flash)
+    {true, true, true, false, true, true, false, true, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO24 (SPI flash)
+    {true, true, true, false, true, true, false, true, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO25 (SPI flash)
+    {true, true, true, false, true, true, false, true, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO26 (SPI flash)
+    {true, true, true, false, true, true, false, true, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO27 (SPI flash)
+    {true, true, true, false, true, true, false, true, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO28 (SPI flash)
+    {true, true, true, false, true, true, false, true, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO29 (SPI flash)
+    {true, true, true, false, true, true, false, true, false, false, false, false, false, false, false, false, false, 0xFF, 0, 0, 0, 0, hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM, 40000000}, // GPIO30 (SPI flash)
   };
   #endif
 } // anonymous namespace
@@ -93,14 +93,14 @@ namespace {
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-EspGpio::EspGpio(hf_pin_num_t pin_num, Direction direction, ActiveState active_state,
-                 OutputMode output_mode, PullMode pull_mode,
+EspGpio::EspGpio(hf_pin_num_t pin_num, hf_gpio_direction_t direction, hf_gpio_active_state_t active_state,
+                 hf_gpio_output_mode_t output_mode, hf_gpio_pull_mode_t pull_mode,
                  hf_gpio_drive_cap_t drive_capability) noexcept
     : BaseGpio(pin_num, direction, active_state, output_mode, pull_mode),
       interrupt_trigger_(hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE), interrupt_callback_(nullptr),
       interrupt_user_data_(nullptr), interrupt_enabled_(false), interrupt_count_(0),
       platform_semaphore_(nullptr), drive_capability_(drive_capability),
-      glitch_filter_type_(GpioGlitchFilterType::None), pin_glitch_filter_enabled_(false),
+      glitch_filter_type_(hf_gpio_glitch_filter_type_t::HF_GPIO_GLITCH_FILTER_NONE), pin_glitch_filter_enabled_(false),
       flex_glitch_filter_enabled_(false), flex_filter_config_{}, sleep_config_{},
       hold_enabled_(false), rtc_gpio_enabled_(false), wakeup_config_{},
       glitch_filter_handle_(nullptr), rtc_gpio_handle_(nullptr), initialized_(false) {
@@ -230,8 +230,8 @@ bool EspGpio::Initialize() noexcept {
 
   // Set drive capability
   if (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
-    HfGpioErr drv_ret = SetDriveCapability(drive_capability_);
-    if (drv_ret != HfGpioErr::GPIO_SUCCESS) {
+    hf_gpio_err_t drv_ret = SetDriveCapability(drive_capability_);
+    if (drv_ret != hf_gpio_err_t::GPIO_SUCCESS) {
       ESP_LOGW(TAG, "Failed to set drive capability for GPIO%d",
                static_cast<int>(pin_));
     }
@@ -334,9 +334,9 @@ bool EspGpio::Initialize() noexcept {
   }
 
   // Apply initial configuration
-  HfGpioErr result = ApplyConfiguration();
-  if (result != HfGpioErr::GPIO_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure pin %d: %s", pin_, HfGpioErrToString(result));
+  hf_gpio_err_t result = ApplyConfiguration();
+  if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure pin %d: %s", pin_, hf_gpio_err_tToString(result));
     return false;
   }
 
@@ -496,10 +496,10 @@ bool EspGpio::SupportsInterrupts() const noexcept {
 // INTERRUPT FUNCTIONALITY IMPLEMENTATION
 //==============================================================================
 
-HfGpioErr EspGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallback callback,
+hf_gpio_err_t EspGpio::ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback,
                                       void *user_data) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
   ESP_LOGD(TAG, "Configuring interrupt for GPIO%d with trigger type %d", 
@@ -514,7 +514,7 @@ HfGpioErr EspGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallbac
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set interrupt type for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
+    return hf_gpio_err_t::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
   }
 
   // Install ISR handler if not already done
@@ -522,7 +522,7 @@ HfGpioErr EspGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallbac
     ret = gpio_install_isr_service(ESP_INTR_FLAG_LEVEL1);
     if (ret != ESP_OK && ret != ESP_ERR_INVALID_STATE) {
       ESP_LOGE(TAG, "Failed to install GPIO ISR service: %s", esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
+      return hf_gpio_err_t::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
     }
     gpio_isr_handler_installed_ = true;
   }
@@ -533,49 +533,49 @@ HfGpioErr EspGpio::ConfigureInterrupt(InterruptTrigger trigger, InterruptCallbac
     if (ret != ESP_OK && ret != ESP_ERR_INVALID_STATE) {
       ESP_LOGE(TAG, "Failed to add ISR handler for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
+      return hf_gpio_err_t::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
     }
   }
 
   ESP_LOGI(TAG, "Interrupt configured successfully for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::EnableInterrupt() noexcept {
+hf_gpio_err_t EspGpio::EnableInterrupt() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
   if (interrupt_trigger_ == hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE) {
-    return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_ENABLED;
+    return hf_gpio_err_t::GPIO_ERR_INTERRUPT_NOT_ENABLED;
   }
 
   esp_err_t ret = gpio_intr_enable(static_cast<gpio_num_t>(pin_));
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable interrupt for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
+    return hf_gpio_err_t::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
   }
 
   interrupt_enabled_ = true;
   ESP_LOGD(TAG, "Interrupt enabled for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::DisableInterrupt() noexcept {
+hf_gpio_err_t EspGpio::DisableInterrupt() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   if (!interrupt_enabled_) {
-    return HfGpioErr::GPIO_SUCCESS;
+    return hf_gpio_err_t::GPIO_SUCCESS;
   }
 
   esp_err_t ret = gpio_intr_disable(static_cast<gpio_num_t>(pin_));
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to disable interrupt for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
+    return hf_gpio_err_t::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
   }
 
   // Remove ISR handler
@@ -583,16 +583,16 @@ HfGpioErr EspGpio::DisableInterrupt() noexcept {
 
   interrupt_enabled_ = false;
   ESP_LOGD(TAG, "Interrupt disabled for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
+hf_gpio_err_t EspGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   if (!interrupt_enabled_) {
-    return HfGpioErr::GPIO_ERR_INTERRUPT_NOT_ENABLED;
+    return hf_gpio_err_t::GPIO_ERR_INTERRUPT_NOT_ENABLED;
   }
 
   // Create semaphore if not exists
@@ -600,7 +600,7 @@ HfGpioErr EspGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
     platform_semaphore_ = xSemaphoreCreateBinary();
     if (!platform_semaphore_) {
       ESP_LOGE(TAG, "Failed to create interrupt semaphore for GPIO%d", static_cast<int>(pin_));
-      return HfGpioErr::GPIO_ERR_OUT_OF_MEMORY;
+      return hf_gpio_err_t::GPIO_ERR_OUT_OF_MEMORY;
     }
   }
 
@@ -608,32 +608,32 @@ HfGpioErr EspGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
   BaseType_t result = xSemaphoreTake(static_cast<SemaphoreHandle_t>(platform_semaphore_), ticks_to_wait);
   
   if (result == pdTRUE) {
-    return HfGpioErr::GPIO_SUCCESS;
+    return hf_gpio_err_t::GPIO_SUCCESS;
   } else {
-    return HfGpioErr::GPIO_ERR_TIMEOUT;
+    return hf_gpio_err_t::GPIO_ERR_TIMEOUT;
   }
 }
 
-HfGpioErr EspGpio::GetInterruptStatus(InterruptStatus &status) noexcept {
+hf_gpio_err_t EspGpio::GetInterruptStatus(InterruptStatus &status) noexcept {
   status.is_enabled = interrupt_enabled_;
   status.trigger_type = interrupt_trigger_;
   status.interrupt_count = interrupt_count_.load(std::memory_order_relaxed);
   status.has_callback = (interrupt_callback_ != nullptr);
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::ClearInterruptStats() noexcept {
+hf_gpio_err_t EspGpio::ClearInterruptStats() noexcept {
   interrupt_count_.store(0, std::memory_order_relaxed);
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
 //==============================================================================
 // BASEGPIO PURE VIRTUAL IMPLEMENTATIONS
 //==============================================================================
 
-HfGpioErr EspGpio::SetDirectionImpl(Direction direction) noexcept {
+hf_gpio_err_t EspGpio::SetDirectionImpl(hf_gpio_direction_t direction) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   gpio_mode_t mode;
@@ -649,14 +649,14 @@ HfGpioErr EspGpio::SetDirectionImpl(Direction direction) noexcept {
       }
       break;
     default:
-      return HfGpioErr::GPIO_ERR_INVALID_PARAMETER;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_PARAMETER;
   }
 
   esp_err_t ret = gpio_set_direction(static_cast<gpio_num_t>(pin_), mode);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set direction for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
+    return hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH;
   }
 
   // Update drive capability for output pins
@@ -667,17 +667,17 @@ HfGpioErr EspGpio::SetDirectionImpl(Direction direction) noexcept {
   current_direction_ = direction;
   ESP_LOGD(TAG, "Set GPIO%d direction to %s", static_cast<int>(pin_), 
            (direction == hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT) ? "input" : "output");
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
+hf_gpio_err_t EspGpio::SetPullModeImpl(hf_gpio_pull_mode_t mode) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   esp_err_t ret = ESP_OK;
   
-  switch (pull_mode) {
+  switch (mode) {
     case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING:
       ret = gpio_set_pull_mode(static_cast<gpio_num_t>(pin_), GPIO_FLOATING);
       break;
@@ -688,21 +688,21 @@ HfGpioErr EspGpio::SetPullModeImpl(PullMode pull_mode) noexcept {
       ret = gpio_set_pull_mode(static_cast<gpio_num_t>(pin_), GPIO_PULLDOWN_ONLY);
       break;
     default:
-      return HfGpioErr::GPIO_ERR_INVALID_PARAMETER;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_PARAMETER;
   }
 
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set pull mode for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_PULL_RESISTOR_FAILURE;
+    return hf_gpio_err_t::GPIO_ERR_PULL_RESISTOR_FAILURE;
   }
 
-  pull_mode_ = pull_mode;
-  ESP_LOGD(TAG, "Set GPIO%d pull mode to %d", static_cast<int>(pin_), static_cast<int>(pull_mode));
-  return HfGpioErr::GPIO_SUCCESS;
+  pull_mode_ = mode;
+  ESP_LOGD(TAG, "Set GPIO%d pull mode to %d", static_cast<int>(pin_), static_cast<int>(mode));
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-PullMode EspGpio::GetPullModeImpl() const noexcept {
+hf_gpio_pull_mode_t EspGpio::GetPullModeImpl() const noexcept {
   if (!initialized_) {
     return pull_mode_; // Return cached value if not initialized
   }
@@ -743,24 +743,24 @@ PullMode EspGpio::GetPullModeImpl() const noexcept {
   return pull_mode_;
 }
 
-HfGpioErr EspGpio::SetOutputModeImpl(OutputMode output_mode) noexcept {
-  output_mode_ = output_mode;
+hf_gpio_err_t EspGpio::SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept {
+  output_mode_ = mode;
   
   // If already initialized as output, update the mode
   if (initialized_ && current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
     return SetDirectionImpl(hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
   }
   
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::WriteImpl(State state) noexcept {
+hf_gpio_err_t EspGpio::WriteImpl(State state) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   if (current_direction_ != hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
-    return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
+    return hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH;
   }
 
   // Convert logical state to electrical level based on polarity
@@ -771,18 +771,18 @@ HfGpioErr EspGpio::WriteImpl(State state) noexcept {
   esp_err_t ret = gpio_set_level(static_cast<gpio_num_t>(pin_), level);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to write GPIO%d: %s", static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_WRITE_FAILURE;
+    return hf_gpio_err_t::GPIO_ERR_WRITE_FAILURE;
   }
 
   current_state_ = state;
   ESP_LOGV(TAG, "GPIO%d set to %s (level %d)", static_cast<int>(pin_), 
            (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? "active" : "inactive", level);
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::ReadImpl(State &state) noexcept {
+hf_gpio_err_t EspGpio::ReadImpl(State &state) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   int level = gpio_get_level(static_cast<gpio_num_t>(pin_));
@@ -792,48 +792,48 @@ HfGpioErr EspGpio::ReadImpl(State &state) noexcept {
     hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
   
   current_state_ = state;
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::SetActiveImpl() noexcept {
+hf_gpio_err_t EspGpio::SetActiveImpl() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   return WriteImpl(hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
 }
 
-HfGpioErr EspGpio::SetInactiveImpl() noexcept {
+hf_gpio_err_t EspGpio::SetInactiveImpl() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   return WriteImpl(hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
 }
 
-HfGpioErr EspGpio::ToggleImpl() noexcept {
+hf_gpio_err_t EspGpio::ToggleImpl() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   if (current_direction_ != hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
-    return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
+    return hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH;
   }
 
   hf_gpio_state_t new_state = (current_state_ == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
   return WriteImpl(new_state);
 }
 
-HfGpioErr EspGpio::IsActiveImpl(bool &is_active) noexcept {
+hf_gpio_err_t EspGpio::IsActiveImpl(bool &is_active) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   if (current_direction_ != hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT) {
-    return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
+    return hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH;
   }
 
   State current_state;
-  HfGpioErr result = ReadImpl(current_state);
-  if (result == HfGpioErr::GPIO_SUCCESS) {
+  hf_gpio_err_t result = ReadImpl(current_state);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
     is_active = (current_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
   }
   return result;
@@ -843,9 +843,9 @@ HfGpioErr EspGpio::IsActiveImpl(bool &is_active) noexcept {
 // ADVANCED ESP32C6 FEATURES IMPLEMENTATION
 //==============================================================================
 
-HfGpioErr EspGpio::SetDriveCapability(hf_gpio_drive_cap_t capability) noexcept {
+hf_gpio_err_t EspGpio::SetDriveCapability(hf_gpio_drive_cap_t capability) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   drive_capability_ = capability;
@@ -865,25 +865,25 @@ HfGpioErr EspGpio::SetDriveCapability(hf_gpio_drive_cap_t capability) noexcept {
       esp_cap = GPIO_DRIVE_CAP_3;
       break;
     default:
-      return HfGpioErr::GPIO_ERR_INVALID_PARAMETER;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_PARAMETER;
   }
 
   esp_err_t ret = gpio_set_drive_capability(static_cast<gpio_num_t>(pin_), esp_cap);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set drive capability for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
   }
 
   ESP_LOGD(TAG, "Set GPIO%d drive capability to %d", static_cast<int>(pin_), static_cast<int>(capability));
 
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
+hf_gpio_err_t EspGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
                                          const FlexGlitchFilterConfig *flex_config) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
   
   #ifdef HF_MCU_ESP32C6
@@ -893,7 +893,7 @@ HfGpioErr EspGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
   CleanupGlitchFilters();
 
   if (filter_type == GpioGlitchFilterType::None) {
-    return HfGpioErr::GPIO_SUCCESS;
+    return hf_gpio_err_t::GPIO_SUCCESS;
   }
 
   esp_err_t ret;
@@ -909,14 +909,14 @@ HfGpioErr EspGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to create pin glitch filter for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
     }
 
     ret = gpio_glitch_filter_enable(static_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to enable pin glitch filter for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
     }
 
     pin_glitch_filter_enabled_ = true;
@@ -938,7 +938,7 @@ HfGpioErr EspGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to create flex glitch filter for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
     }
 
     if (flex_config->enable_on_init) {
@@ -946,7 +946,7 @@ HfGpioErr EspGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
       if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to enable flex glitch filter for GPIO%d: %s", 
                  static_cast<int>(pin_), esp_err_to_name(ret));
-        return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+        return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
       }
       flex_glitch_filter_enabled_ = true;
     }
@@ -955,13 +955,13 @@ HfGpioErr EspGpio::ConfigureGlitchFilter(GpioGlitchFilterType filter_type,
              static_cast<int>(pin_), flex_config->window_width_ns, flex_config->window_threshold_ns);
   }
 
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
   #else
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   #endif
 }
 
-HfGpioErr EspGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexcept {
+hf_gpio_err_t EspGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexcept {
   sleep_config_ = sleep_config;
 
   #ifdef HF_MCU_ESP32C6
@@ -971,7 +971,7 @@ HfGpioErr EspGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexc
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to initialize RTC GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
     }
 
     // Set RTC GPIO direction
@@ -996,7 +996,7 @@ HfGpioErr EspGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexc
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to set RTC GPIO%d direction: %s", 
                static_cast<int>(pin_), esp_err_to_name(ret));
-      return HfGpioErr::GPIO_ERR_DIRECTION_MISMATCH;
+      return hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH;
     }
 
     // Configure RTC pull resistors
@@ -1032,9 +1032,9 @@ HfGpioErr EspGpio::ConfigureSleepMode(const GpioSleepConfig &sleep_config) noexc
     }
   }
 
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
   #else
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   #endif
 }
 
@@ -1046,15 +1046,15 @@ bool EspGpio::SupportsGlitchFilter() const noexcept {
 #endif
 }
 
-HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
+hf_gpio_err_t EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!HF_GPIO_SUPPORTS_GLITCH_FILTER(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support glitch filtering", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   if (enable) {
@@ -1068,7 +1068,7 @@ HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to create pin glitch filter for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+      return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
     }
     
     err = gpio_glitch_filter_enable(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
@@ -1077,7 +1077,7 @@ HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
                static_cast<int>(pin_), esp_err_to_name(err));
       gpio_del_glitch_filter(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
       glitch_filter_handle_ = nullptr;
-      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+      return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
     }
     
     pin_glitch_filter_enabled_ = true;
@@ -1100,22 +1100,22 @@ HfGpioErr EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
     ESP_LOGI(TAG, "Pin glitch filter disabled for GPIO%d", static_cast<int>(pin_));
   }
   
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Glitch filter not supported on this platform");
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
-HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &config) noexcept {
+hf_gpio_err_t EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &config) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!HF_GPIO_SUPPORTS_GLITCH_FILTER(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support glitch filtering", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   // Configure flexible glitch filter with custom timing
@@ -1130,7 +1130,7 @@ HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &confi
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to create flex glitch filter for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(err));
-    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+    return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
   }
   
   err = gpio_glitch_filter_enable(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
@@ -1139,7 +1139,7 @@ HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &confi
              static_cast<int>(pin_), esp_err_to_name(err));
     gpio_del_glitch_filter(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
     glitch_filter_handle_ = nullptr;
-    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+    return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
   }
   
   flex_glitch_filter_enabled_ = true;
@@ -1149,80 +1149,80 @@ HfGpioErr EspGpio::ConfigureFlexGlitchFilter(const FlexGlitchFilterConfig &confi
   ESP_LOGI(TAG, "Flex glitch filter enabled for GPIO%d (window: %uns, threshold: %uns)", 
            static_cast<int>(pin_), config.window_width_ns, config.window_threshold_ns);
   
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Flexible glitch filter not supported on this platform");
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
-HfGpioErr EspGpio::EnableGlitchFilters() noexcept {
+hf_gpio_err_t EspGpio::EnableGlitchFilters() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!glitch_filter_handle_) {
     ESP_LOGW(TAG, "No glitch filter configured for GPIO%d", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_ERR_INVALID_STATE;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_STATE;
   }
 
   esp_err_t err = gpio_glitch_filter_enable(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable glitch filters for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(err));
-    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+    return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
   }
   
   ESP_LOGI(TAG, "Glitch filters enabled for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #else
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
-HfGpioErr EspGpio::DisableGlitchFilters() noexcept {
+hf_gpio_err_t EspGpio::DisableGlitchFilters() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
   if (!glitch_filter_handle_) {
     ESP_LOGD(TAG, "No glitch filter to disable for GPIO%d", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_OK;
+    return hf_gpio_err_t::GPIO_OK;
   }
 
   esp_err_t err = gpio_glitch_filter_disable(reinterpret_cast<gpio_glitch_filter_handle_t>(glitch_filter_handle_));
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to disable glitch filters for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(err));
-    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+    return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
   }
   
   ESP_LOGI(TAG, "Glitch filters disabled for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #else
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
 bool EspGpio::SupportsRtcGpio() const noexcept {
 #ifdef HF_MCU_ESP32C6
-  return HF_GPIO_IS_RTC_CAPABLE(pin_);
+  return HF_GPIO_IS_RTC_GPIO(pin_);
 #else
   return false;
 #endif
 }
 
-HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
+hf_gpio_err_t EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
-  if (!HF_GPIO_IS_RTC_CAPABLE(pin_)) {
+  if (!HF_GPIO_IS_RTC_GPIO(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support RTC functionality", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   esp_err_t err;
@@ -1233,7 +1233,7 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to initialize RTC GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+      return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
     }
 
     // Set sleep mode direction
@@ -1254,7 +1254,7 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to set RTC direction for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+      return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
     }
 
     // Configure sleep pull mode
@@ -1284,7 +1284,7 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
       if (err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to configure RTC pull mode for GPIO%d: %s", 
                  static_cast<int>(pin_), esp_err_to_name(err));
-        return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+        return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
       }
     }
 
@@ -1301,16 +1301,16 @@ HfGpioErr EspGpio::ConfigureSleep(const GpioSleepConfig &config) noexcept {
   ESP_LOGI(TAG, "Sleep configuration updated for GPIO%d (RTC: %s)", 
            static_cast<int>(pin_), config.enable_sleep_retain ? "enabled" : "disabled");
   
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Sleep configuration not supported on this platform");
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
-HfGpioErr EspGpio::ConfigureHold(bool enable) noexcept {
+hf_gpio_err_t EspGpio::ConfigureHold(bool enable) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
@@ -1318,7 +1318,7 @@ HfGpioErr EspGpio::ConfigureHold(bool enable) noexcept {
   
   if (enable) {
     // Enable hold feature
-    if (HF_GPIO_IS_RTC_CAPABLE(pin_)) {
+    if (HF_GPIO_IS_RTC_GPIO(pin_)) {
       // Use RTC hold for RTC-capable pins
       err = rtc_gpio_hold_en(static_cast<gpio_num_t>(pin_));
     } else {
@@ -1327,7 +1327,7 @@ HfGpioErr EspGpio::ConfigureHold(bool enable) noexcept {
     }
   } else {
     // Disable hold feature
-    if (HF_GPIO_IS_RTC_CAPABLE(pin_)) {
+    if (HF_GPIO_IS_RTC_GPIO(pin_)) {
       err = rtc_gpio_hold_dis(static_cast<gpio_num_t>(pin_));
     } else {
       err = gpio_hold_dis(static_cast<gpio_num_t>(pin_));
@@ -1337,28 +1337,28 @@ HfGpioErr EspGpio::ConfigureHold(bool enable) noexcept {
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to %s hold for GPIO%d: %s", 
              enable ? "enable" : "disable", static_cast<int>(pin_), esp_err_to_name(err));
-    return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+    return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
   }
   
   hold_enabled_ = enable;
   ESP_LOGI(TAG, "Hold %s for GPIO%d", enable ? "enabled" : "disabled", static_cast<int>(pin_));
   
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Hold configuration not supported on this platform");
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
-HfGpioErr EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
+hf_gpio_err_t EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
 #ifdef HF_MCU_ESP32C6
-  if (!HF_GPIO_IS_RTC_CAPABLE(pin_)) {
+  if (!HF_GPIO_IS_RTC_GPIO(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support wake-up functionality", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   esp_err_t err;
@@ -1374,14 +1374,14 @@ HfGpioErr EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
         break;
       default:
         ESP_LOGE(TAG, "Invalid wake-up trigger for GPIO%d", static_cast<int>(pin_));
-        return HfGpioErr::GPIO_ERR_INVALID_ARG;
+        return hf_gpio_err_t::GPIO_ERR_INVALID_ARG;
     }
     
     err = rtc_gpio_wakeup_enable(static_cast<gpio_num_t>(pin_), wakeup_type);
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to enable wake-up for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+      return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
     }
     
     ESP_LOGI(TAG, "Wake-up enabled for GPIO%d (trigger: %s)", 
@@ -1392,17 +1392,17 @@ HfGpioErr EspGpio::ConfigureWakeUp(const GpioWakeUpConfig &config) noexcept {
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to disable wake-up for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(err));
-      return HfGpioErr::GPIO_ERR_DRIVER_ERROR;
+      return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
     }
     
     ESP_LOGI(TAG, "Wake-up disabled for GPIO%d", static_cast<int>(pin_));
   }
   
   wakeup_config_ = config;
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #else
   ESP_LOGW(TAG, "Wake-up configuration not supported on this platform");
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 #endif
 }
 
@@ -1430,7 +1430,7 @@ bool EspGpio::IsHeld() const noexcept {
   return hold_enabled_;
 }
 
-HfGpioErr EspGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) const noexcept {
+hf_gpio_err_t EspGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) const noexcept {
 #ifdef HF_MCU_ESP32C6
   capabilities.pin_number = pin_;
   capabilities.supports_input = true;
@@ -1438,13 +1438,13 @@ HfGpioErr EspGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) 
   capabilities.supports_pullup = true;
   capabilities.supports_pulldown = true;
   capabilities.supports_glitch_filter = HF_GPIO_SUPPORTS_GLITCH_FILTER(pin_);
-  capabilities.supports_rtc = HF_GPIO_IS_RTC_CAPABLE(pin_);
+  capabilities.supports_rtc = HF_GPIO_IS_RTC_GPIO(pin_);
   capabilities.supports_adc = HF_GPIO_IS_ADC_CAPABLE(pin_);
   capabilities.is_strapping_pin = HF_GPIO_IS_STRAPPING_PIN(pin_);
   capabilities.is_spi_pin = HF_GPIO_IS_SPI_PIN(pin_);
   capabilities.is_usb_jtag_pin = HF_GPIO_IS_USB_JTAG_PIN(pin_);
   
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #else
   // Generic capabilities for non-ESP32C6 platforms
   capabilities.pin_number = pin_;
@@ -1459,12 +1459,12 @@ HfGpioErr EspGpio::GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) 
   capabilities.is_spi_pin = false;
   capabilities.is_usb_jtag_pin = false;
   
-  return HfGpioErr::GPIO_OK;
+  return hf_gpio_err_t::GPIO_OK;
 #endif
 }
 
-HfGpioErr EspGpio::GetStatusInfo(hf_gpio_status_info_t &status) const noexcept {
-  return static_cast<HfGpioErr>(GetConfigurationDump());
+hf_gpio_err_t EspGpio::GetStatusInfo(hf_gpio_status_info_t &status) const noexcept {
+  return static_cast<hf_gpio_err_t>(GetConfigurationDump());
 }
 
 uint32_t EspGpio::GetTotalInterruptCount() noexcept {
@@ -1493,7 +1493,7 @@ bool EspGpio::IsValidPin(hf_pin_num_t pin_num) noexcept {
 
 bool EspGpio::IsRtcGpio(hf_pin_num_t pin_num) noexcept {
 #ifdef HF_MCU_ESP32C6
-  return HF_GPIO_IS_RTC_CAPABLE(pin_num);
+  return HF_GPIO_IS_RTC_GPIO(pin_num);
 #else
   return false;
 #endif
@@ -1556,14 +1556,14 @@ static gpio_etm_event_handle_t gpio_etm_events[HF_MCU_GPIO_PIN_COUNT] = {nullptr
 static gpio_etm_task_handle_t gpio_etm_tasks[HF_MCU_GPIO_PIN_COUNT] = {nullptr};
 static uint8_t etm_channel_usage_count = 0;
 
-HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
+hf_gpio_err_t EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
   if (!HF_GPIO_SUPPORTS_ETM(pin_)) {
     ESP_LOGW(TAG, "GPIO%d does not support ETM functionality", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 
   esp_err_t ret;
@@ -1573,7 +1573,7 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
 
   if (!etm_config.enable_etm) {
     ESP_LOGD(TAG, "ETM disabled for GPIO%d", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_SUCCESS;
+    return hf_gpio_err_t::GPIO_SUCCESS;
   }
 
   // Create ETM channel
@@ -1582,7 +1582,7 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to create ETM channel for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
   }
 
   // Create GPIO ETM event
@@ -1608,7 +1608,7 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
              static_cast<int>(pin_), esp_err_to_name(ret));
     esp_etm_del_channel(etm_channels[pin_]);
     etm_channels[pin_] = nullptr;
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
   }
 
   // Bind GPIO to ETM event
@@ -1621,7 +1621,7 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
       esp_etm_del_channel(etm_channels[pin_]);
       gpio_etm_events[pin_] = nullptr;
       etm_channels[pin_] = nullptr;
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
     }
   }
 
@@ -1650,7 +1650,7 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
     esp_etm_del_channel(etm_channels[pin_]);
     gpio_etm_events[pin_] = nullptr;
     etm_channels[pin_] = nullptr;
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
   }
 
   // Add GPIO to ETM task
@@ -1665,7 +1665,7 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
       gpio_etm_tasks[pin_] = nullptr;
       gpio_etm_events[pin_] = nullptr;
       etm_channels[pin_] = nullptr;
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
     }
   }
 
@@ -1675,7 +1675,7 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
     ESP_LOGE(TAG, "Failed to connect ETM event and task for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
     CleanupETM();
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
   }
 
   // Enable ETM channel if requested
@@ -1685,7 +1685,7 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
       ESP_LOGE(TAG, "Failed to enable ETM channel for GPIO%d: %s", 
                static_cast<int>(pin_), esp_err_to_name(ret));
       CleanupETM();
-      return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+      return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
     }
   }
 
@@ -1697,49 +1697,49 @@ HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept
            static_cast<int>(etm_config.task_config.action),
            etm_channels[pin_]);
 
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::EnableETM() noexcept {
+hf_gpio_err_t EspGpio::EnableETM() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
   if (!etm_channels[pin_]) {
     ESP_LOGW(TAG, "No ETM channel configured for GPIO%d", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_ERR_INVALID_STATE;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_STATE;
   }
 
   esp_err_t ret = esp_etm_channel_enable(etm_channels[pin_]);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable ETM channel for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
   }
 
   ESP_LOGD(TAG, "ETM channel enabled for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-HfGpioErr EspGpio::DisableETM() noexcept {
+hf_gpio_err_t EspGpio::DisableETM() noexcept {
   if (!EnsureInitialized()) {
-    return HfGpioErr::GPIO_ERR_NOT_INITIALIZED;
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
   if (!etm_channels[pin_]) {
     ESP_LOGD(TAG, "No ETM channel to disable for GPIO%d", static_cast<int>(pin_));
-    return HfGpioErr::GPIO_SUCCESS;
+    return hf_gpio_err_t::GPIO_SUCCESS;
   }
 
   esp_err_t ret = esp_etm_channel_disable(etm_channels[pin_]);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to disable ETM channel for GPIO%d: %s", 
              static_cast<int>(pin_), esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
   }
 
   ESP_LOGD(TAG, "ETM channel disabled for GPIO%d", static_cast<int>(pin_));
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
 void EspGpio::CleanupETM() noexcept {
@@ -1767,7 +1767,7 @@ bool EspGpio::SupportsETM() const noexcept {
   return HF_GPIO_SUPPORTS_ETM(pin_);
 }
 
-HfGpioErr EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
+hf_gpio_err_t EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
   status.etm_enabled = (etm_channels[pin_] != nullptr);
   status.event_handle = gpio_etm_events[pin_];
   status.task_handle = gpio_etm_tasks[pin_];
@@ -1775,7 +1775,7 @@ HfGpioErr EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
   status.total_etm_channels_used = etm_channel_usage_count;
   status.max_etm_channels = HF_MCU_GPIO_ETM_CHANNEL_COUNT;
   
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
 // Static ETM utility functions
@@ -1787,7 +1787,7 @@ uint8_t EspGpio::GetMaxETMChannels() noexcept {
   return HF_MCU_GPIO_ETM_CHANNEL_COUNT;
 }
 
-HfGpioErr EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
+hf_gpio_err_t EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
   if (!output_stream) {
     output_stream = stdout;
   }
@@ -1795,26 +1795,26 @@ HfGpioErr EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
   esp_err_t ret = esp_etm_dump(output_stream);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to dump ETM configuration: %s", esp_err_to_name(ret));
-    return HfGpioErr::GPIO_ERR_INVALID_CONFIGURATION;
+    return hf_gpio_err_t::GPIO_ERR_INVALID_CONFIGURATION;
   }
 
-  return HfGpioErr::GPIO_SUCCESS;
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
 #else
 // Stub implementations for non-ESP32C6 platforms
 
-HfGpioErr EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
+hf_gpio_err_t EspGpio::ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept {
   ESP_LOGW(TAG, "ETM not supported on this platform");
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 }
 
-HfGpioErr EspGpio::EnableETM() noexcept {
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+hf_gpio_err_t EspGpio::EnableETM() noexcept {
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 }
 
-HfGpioErr EspGpio::DisableETM() noexcept {
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+hf_gpio_err_t EspGpio::DisableETM() noexcept {
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 }
 
 void EspGpio::CleanupETM() noexcept {
@@ -1825,9 +1825,9 @@ bool EspGpio::SupportsETM() const noexcept {
   return false;
 }
 
-HfGpioErr EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
+hf_gpio_err_t EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept {
   memset(& status, 0, sizeof(status));
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 }
 
 uint8_t EspGpio::GetETMChannelUsage() noexcept {
@@ -1838,8 +1838,8 @@ uint8_t EspGpio::GetMaxETMChannels() noexcept {
   return 0;
 }
 
-HfGpioErr EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
-  return HfGpioErr::GPIO_ERR_NOT_SUPPORTED;
+hf_gpio_err_t EspGpio::DumpETMConfiguration(FILE* output_stream) noexcept {
+  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 }
 
 #endif // HF_MCU_ESP32C6

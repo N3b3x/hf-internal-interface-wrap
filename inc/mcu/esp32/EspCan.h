@@ -216,7 +216,7 @@ private:
      * @return hf_can_err_t error code
      */
     hf_can_err_t ConvertToNativeMessage(const hf_can_message_t& hf_message, 
-                                       twai_frame_t& native_message) noexcept;
+                                       twai_message_t& native_message) noexcept;
 
     /**
      * @brief Convert native TWAI message to HF CAN message.
@@ -224,7 +224,7 @@ private:
      * @param hf_message Destination HF message
      * @return hf_can_err_t error code
      */
-    hf_can_err_t ConvertFromNativeMessage(const twai_frame_t& native_message,
+    hf_can_err_t ConvertFromNativeMessage(const twai_message_t& native_message,
                                          hf_can_message_t& hf_message) noexcept;
 
     /**
@@ -257,7 +257,7 @@ private:
     mutable RtosMutex stats_mutex_;                 ///< Statistics mutex
 
     // ESP-IDF TWAI handle (native handle like EspAdc)
-    twai_node_handle_t twai_handle_;                ///< Native TWAI handle
+    twai_handle_t twai_handle_;                     ///< Native TWAI handle
 
     // Callbacks (similar to EspAdc callback management)
     hf_can_receive_callback_t receive_callback_;    ///< Receive message callback

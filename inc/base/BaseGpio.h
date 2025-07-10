@@ -114,6 +114,128 @@ constexpr const char *HfGpioErrToString(hf_gpio_err_t err) noexcept {
 }
 
 /**
+ * @brief GPIO pin logical states.
+ * @details Represents the logical state of a GPIO pin, independent of electrical polarity.
+ */
+enum class hf_gpio_state_t : uint8_t {
+  HF_GPIO_STATE_INACTIVE = 0, ///< Logical inactive state
+  HF_GPIO_STATE_ACTIVE = 1    ///< Logical active state
+};
+
+/**
+ * @brief GPIO active state polarity configuration.
+ * @details Defines which electrical level corresponds to the logical "active" state.
+ */
+enum class hf_gpio_active_state_t : uint8_t {
+  HF_GPIO_ACTIVE_LOW = 0, ///< Active state is electrical low
+  HF_GPIO_ACTIVE_HIGH = 1 ///< Active state is electrical high
+};
+
+/**
+ * @brief GPIO pin direction/mode configuration.
+ * @details Defines whether the pin is configured as input or output.
+ */
+enum class hf_gpio_direction_t : uint8_t {
+  HF_GPIO_DIRECTION_INPUT = 0, ///< Pin configured as input
+  HF_GPIO_DIRECTION_OUTPUT = 1 ///< Pin configured as output
+};
+
+/**
+ * @brief GPIO output drive modes.
+ * @details Defines the electrical characteristics of GPIO output pins.
+ */
+enum class hf_gpio_output_mode_t : uint8_t {
+  HF_GPIO_OUTPUT_MODE_PUSH_PULL = 0, ///< Push-pull output (strong high and low)
+  HF_GPIO_OUTPUT_MODE_OPEN_DRAIN = 1 ///< Open-drain output (strong low, high-impedance high)
+};
+
+/**
+ * @brief GPIO pull resistor configuration.
+ * @details Defines the internal pull resistor configuration for GPIO pins.
+ */
+enum class hf_gpio_pull_mode_t : uint8_t {
+  HF_GPIO_PULL_MODE_FLOATING = 0, ///< No pull resistor (floating/high-impedance)
+  HF_GPIO_PULL_MODE_UP = 1,       ///< Internal pull-up resistor enabled
+  HF_GPIO_PULL_MODE_DOWN = 2,     ///< Internal pull-down resistor enabled
+  HF_GPIO_PULL_MODE_UP_DOWN = 3   ///< Both pull-up and pull-down resistors enabled
+};
+
+/**
+ * @brief GPIO interrupt trigger types.
+ * @details Defines the conditions that trigger GPIO interrupts.
+ */
+enum class hf_gpio_interrupt_trigger_t : uint8_t {
+  HF_GPIO_INTERRUPT_TRIGGER_NONE = 0,        ///< No interrupt (disabled)
+  HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE = 1, ///< Trigger on rising edge (low to high)
+  HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE = 2, ///< Trigger on falling edge (high to low)
+  HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES = 3,  ///< Trigger on both rising and falling edges
+  HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL = 4,   ///< Trigger on low level
+  HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL = 5   ///< Trigger on high level
+};
+
+// Forward declaration for callback
+class BaseGpio;
+
+/**
+ * @brief GPIO interrupt callback function type.
+ * @details Callback invoked when GPIO interrupt occurs.
+ * @param gpio Pointer to the GPIO instance that triggered
+ * @param trigger The trigger type that caused the interrupt
+ * @param user_data User-provided data passed to callback
+ */
+using InterruptCallback =
+    std::function<void(BaseGpio *gpio, hf_gpio_interrupt_trigger_t trigger, void *user_data)>;
+
+/**
+ * @brief GPIO interrupt status structure.
+ */
+struct InterruptStatus {
+  bool is_enabled;                           ///< Interrupt currently enabled
+  hf_gpio_interrupt_trigger_t trigger_type;  ///< Current trigger configuration
+  uint32_t interrupt_count;                  ///< Number of interrupts occurred
+  bool has_callback;                         ///< Callback function is registered
+};
+
+/**
+ * @brief GPIO operation statistics.
+ */
+struct hf_gpio_statistics_t {
+  uint32_t totalOperations;        ///< Total GPIO operations performed
+  uint32_t successfulOperations;   ///< Successful operations
+  uint32_t failedOperations;       ///< Failed operations
+  uint32_t stateChanges;           ///< Number of state changes
+  uint32_t directionChanges;       ///< Number of direction changes
+  uint32_t interruptCount;         ///< Number of interrupts received
+  uint32_t averageOperationTimeUs; ///< Average operation time (microseconds)
+  uint32_t maxOperationTimeUs;     ///< Maximum operation time
+  uint32_t minOperationTimeUs;     ///< Minimum operation time
+
+  hf_gpio_statistics_t()
+      : totalOperations(0), successfulOperations(0), failedOperations(0),
+        stateChanges(0), directionChanges(0), interruptCount(0),
+        averageOperationTimeUs(0), maxOperationTimeUs(0), minOperationTimeUs(UINT32_MAX) {}
+};
+
+/**
+ * @brief GPIO diagnostic information.
+ */
+struct hf_gpio_diagnostics_t {
+  bool gpioHealthy;                ///< Overall GPIO health status
+  hf_gpio_err_t lastErrorCode;     ///< Last error code
+  uint32_t lastErrorTimestamp;     ///< Last error timestamp
+  uint32_t consecutiveErrors;      ///< Consecutive error count
+  bool pinAvailable;               ///< Pin availability status
+  bool interruptSupported;         ///< Interrupt support status
+  bool interruptEnabled;           ///< Interrupt enabled status
+  uint32_t currentState;           ///< Current pin state
+
+  hf_gpio_diagnostics_t()
+      : gpioHealthy(true), lastErrorCode(hf_gpio_err_t::GPIO_SUCCESS), lastErrorTimestamp(0), 
+        consecutiveErrors(0), pinAvailable(true), interruptSupported(false), interruptEnabled(false),
+        currentState(0) {}
+};
+
+/**
  * @class BaseGpio
  * @brief Unified GPIO base class for all digital GPIO implementations.
  * @details This class provides a comprehensive digital GPIO implementation that serves
@@ -133,124 +255,6 @@ constexpr const char *HfGpioErrToString(hf_gpio_err_t err) noexcept {
  */
 class BaseGpio {
 public:
-  /**
-   * @brief GPIO pin logical states.
-   * @details Represents the logical state of a GPIO pin, independent of electrical polarity.
-   */
-  enum class hf_gpio_state_t : uint8_t {
-    HF_GPIO_STATE_INACTIVE = 0, ///< Logical inactive state
-    HF_GPIO_STATE_ACTIVE = 1    ///< Logical active state
-  };
-
-  /**
-   * @brief GPIO active state polarity configuration.
-   * @details Defines which electrical level corresponds to the logical "active" state.
-   */
-  enum class hf_gpio_active_state_t : uint8_t {
-    HF_GPIO_ACTIVE_LOW = 0, ///< Active state is electrical low
-    HF_GPIO_ACTIVE_HIGH = 1 ///< Active state is electrical high
-  };
-
-  /**
-   * @brief GPIO pin direction/mode configuration.
-   * @details Defines whether the pin is configured as input or output.
-   */
-  enum class hf_gpio_direction_t : uint8_t {
-    HF_GPIO_DIRECTION_INPUT = 0, ///< Pin configured as input
-    HF_GPIO_DIRECTION_OUTPUT = 1 ///< Pin configured as output
-  };
-
-  /**
-   * @brief GPIO output drive modes.
-   * @details Defines the electrical characteristics of GPIO output pins.
-   */
-  enum class hf_gpio_output_mode_t : uint8_t {
-    HF_GPIO_OUTPUT_MODE_PUSH_PULL = 0, ///< Push-pull output (strong high and low)
-    HF_GPIO_OUTPUT_MODE_OPEN_DRAIN = 1 ///< Open-drain output (strong low, high-impedance high)
-  };
-
-  /**
-   * @brief GPIO pull resistor configuration.
-   * @details Defines the internal pull resistor configuration for GPIO pins.
-   */
-  enum class hf_gpio_pull_mode_t : uint8_t {
-    HF_GPIO_PULL_MODE_FLOATING = 0, ///< No pull resistor (floating/high-impedance)
-    HF_GPIO_PULL_MODE_UP = 1,       ///< Internal pull-up resistor enabled
-    HF_GPIO_PULL_MODE_DOWN = 2,     ///< Internal pull-down resistor enabled
-    HF_GPIO_PULL_MODE_UP_DOWN = 3   ///< Both pull-up and pull-down resistors enabled
-  };
-
-  /**
-   * @brief GPIO interrupt trigger types.
-   * @details Defines the conditions that trigger GPIO interrupts.
-   */
-  enum class hf_gpio_interrupt_trigger_t : uint8_t {
-    HF_GPIO_INTERRUPT_TRIGGER_NONE = 0,        ///< No interrupt (disabled)
-    HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE = 1, ///< Trigger on rising edge (low to high)
-    HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE = 2, ///< Trigger on falling edge (high to low)
-    HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES = 3,  ///< Trigger on both rising and falling edges
-    HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL = 4,   ///< Trigger on low level
-    HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL = 5   ///< Trigger on high level
-  };
-
-  /**
-   * @brief GPIO interrupt callback function type.
-   * @details Callback invoked when GPIO interrupt occurs.
-   * @param gpio Pointer to the GPIO instance that triggered
-   * @param trigger The trigger type that caused the interrupt
-   * @param user_data User-provided data passed to callback
-   */
-  using InterruptCallback =
-      std::function<void(BaseGpio *gpio, hf_gpio_interrupt_trigger_t trigger, void *user_data)>;
-
-  /**
-   * @brief GPIO interrupt status structure.
-   */
-  struct InterruptStatus {
-    bool is_enabled;                           ///< Interrupt currently enabled
-    hf_gpio_interrupt_trigger_t trigger_type;  ///< Current trigger configuration
-    uint32_t interrupt_count;                  ///< Number of interrupts occurred
-    bool has_callback;                         ///< Callback function is registered
-  };
-
-  /**
-   * @brief GPIO operation statistics.
-   */
-  struct hf_gpio_statistics_t {
-    uint32_t totalOperations;        ///< Total GPIO operations performed
-    uint32_t successfulOperations;   ///< Successful operations
-    uint32_t failedOperations;       ///< Failed operations
-    uint32_t stateChanges;           ///< Number of state changes
-    uint32_t directionChanges;       ///< Number of direction changes
-    uint32_t interruptCount;         ///< Number of interrupts received
-    uint32_t averageOperationTimeUs; ///< Average operation time (microseconds)
-    uint32_t maxOperationTimeUs;     ///< Maximum operation time
-    uint32_t minOperationTimeUs;     ///< Minimum operation time
-
-    hf_gpio_statistics_t()
-        : totalOperations(0), successfulOperations(0), failedOperations(0),
-          stateChanges(0), directionChanges(0), interruptCount(0),
-          averageOperationTimeUs(0), maxOperationTimeUs(0), minOperationTimeUs(UINT32_MAX) {}
-  };
-
-  /**
-   * @brief GPIO diagnostic information.
-   */
-  struct hf_gpio_diagnostics_t {
-    bool gpioHealthy;                ///< Overall GPIO health status
-    hf_gpio_err_t lastErrorCode;     ///< Last error code
-    uint32_t lastErrorTimestamp;     ///< Last error timestamp
-    uint32_t consecutiveErrors;      ///< Consecutive error count
-    bool pinAvailable;               ///< Pin availability status
-    bool interruptSupported;         ///< Interrupt support status
-    bool interruptEnabled;           ///< Interrupt enabled status
-    uint32_t currentState;           ///< Current pin state
-
-    hf_gpio_diagnostics_t()
-        : gpioHealthy(true), lastErrorCode(hf_gpio_err_t::GPIO_SUCCESS), lastErrorTimestamp(0), 
-          consecutiveErrors(0), pinAvailable(true), interruptSupported(false), interruptEnabled(false),
-          currentState(0) {}
-  };
 
   //==============================================================//
   // CONSTRUCTORS AND DESTRUCTOR

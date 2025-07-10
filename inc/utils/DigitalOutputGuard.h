@@ -14,7 +14,8 @@
 
 #pragma once
 
-#include "BaseGpio.h"
+#include "base/BaseGpio.h"
+#include "base/HardwareTypes.h"
 
 /**
  * @brief DigitalOutputGuard class

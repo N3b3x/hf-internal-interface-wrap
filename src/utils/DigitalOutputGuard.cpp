@@ -12,7 +12,7 @@
  * @copyright HardFOC
  */
 
-#include "DigitalOutputGuard.h"
+#include "utils/DigitalOutputGuard.h"
 
 //==============================================================================
 // CONSTRUCTORS
@@ -66,7 +66,7 @@ hf_gpio_err_t DigitalOutputGuard::SetActive() noexcept {
 
   // Ensure the GPIO is in output mode
   if (!gpio_->IsOutput()) {
-    hf_gpio_err_t result = gpio_->SetDirection(hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
+    hf_gpio_err_t result = gpio_->SetDirection(BaseGpio::hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
     if (result != hf_gpio_err_t::GPIO_SUCCESS) {
       last_error_ = result;
       return result;
@@ -85,7 +85,7 @@ hf_gpio_err_t DigitalOutputGuard::SetInactive() noexcept {
 
   // Ensure the GPIO is in output mode
   if (!gpio_->IsOutput()) {
-    hf_gpio_err_t result = gpio_->SetDirection(hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
+    hf_gpio_err_t result = gpio_->SetDirection(BaseGpio::hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
     if (result != hf_gpio_err_t::GPIO_SUCCESS) {
       last_error_ = result;
       return result;
@@ -98,7 +98,7 @@ hf_gpio_err_t DigitalOutputGuard::SetInactive() noexcept {
 
 BaseGpio::hf_gpio_state_t DigitalOutputGuard::GetCurrentState() const noexcept {
   if (!is_valid_ || gpio_ == nullptr) {
-    return hf_gpio_state_t::HF_GPIO_STATE_INACTIVE; // Safe default
+    return BaseGpio::hf_gpio_state_t::HF_GPIO_STATE_INACTIVE; // Safe default
   }
 
   return gpio_->GetCurrentState();
@@ -120,7 +120,7 @@ bool DigitalOutputGuard::InitializeGuard(bool ensure_output_mode) noexcept {
 
   // Ensure output mode if requested
   if (ensure_output_mode && !was_output_mode_) {
-    hf_gpio_err_t result = gpio_->SetDirection(hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
+    hf_gpio_err_t result = gpio_->SetDirection(BaseGpio::hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
     if (result != hf_gpio_err_t::GPIO_SUCCESS) {
       last_error_ = result;
       return false;

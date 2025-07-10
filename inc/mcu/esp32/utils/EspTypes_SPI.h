@@ -23,6 +23,9 @@
 
 // Direct ESP-IDF type usage - no unnecessary aliases
 // These types are used internally by EspSpi implementation
+using hf_spi_device_handle_t = spi_device_handle_t;
+using hf_spi_device_interface_config_t = spi_device_interface_config_t;
+using hf_spi_transaction_t = spi_transaction_t;
 
 //==============================================================================
 // ESP32 SPI ENUMS

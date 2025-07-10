@@ -19,6 +19,7 @@
 
 #include "HardwareTypes.h"
 #include <cstdint>
+#include <cstring>
 #include <functional>
 #include <string_view>
 
@@ -182,9 +183,8 @@ struct hf_uart_diagnostics_t {
 class BaseUart {
 public:
   /**
-   * @brief Constructor with port and configuration.
+   * @brief Constructor with port.
    * @param port UART port number
-   * @param config UART configuration parameters
    */
   /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
@@ -231,7 +231,7 @@ public:
    * @brief Get the UART port number.
    * @return Port number
    */
-  [[nodiscard]] hf_port_number_t GetPort() const noexcept {
+  [[nodiscard]] hf_port_num_t GetPort() const noexcept {
     return port_;
   }
 
@@ -316,26 +316,9 @@ public:
     return Deinitialize();
   }
 
-  /**
-   * @brief Write data to the UART (simplified interface).
-   * @param data Data buffer to transmit
-   * @param length Number of bytes to write
-   * @return true if successful, false otherwise
-   */
-  virtual bool Write(const uint8_t *data, uint16_t length) noexcept {
-    return Write(data, length, 0) == hf_uart_err_t::UART_SUCCESS;
-  }
+  // Removed duplicate Write method to avoid overload conflicts
 
-  /**
-   * @brief Read data from the UART (simplified interface).
-   * @param data Buffer to store received data
-   * @param length Number of bytes to read
-   * @param timeout_ms Timeout in milliseconds
-   * @return true if successful, false otherwise
-   */
-  virtual bool Read(uint8_t *data, uint16_t length, uint32_t timeout_ms = UINT32_MAX) noexcept {
-    return Read(data, length, timeout_ms) == hf_uart_err_t::UART_SUCCESS;
-  }
+  // Removed duplicate Read method to avoid overload conflicts
 
   /**
    * @brief Write a string to the UART.
@@ -356,21 +339,7 @@ public:
     return Write(&byte, 1) == hf_uart_err_t::UART_SUCCESS;
   }
 
-  /**
-   * @brief Flush the transmit buffer (simplified interface).
-   * @return true if successful, false otherwise
-   */
-  virtual bool FlushTx() noexcept {
-    return FlushTx() == hf_uart_err_t::UART_SUCCESS;
-  }
-
-  /**
-   * @brief Flush the receive buffer (simplified interface).
-   * @return true if successful, false otherwise
-   */
-  virtual bool FlushRx() noexcept {
-    return FlushRx() == hf_uart_err_t::UART_SUCCESS;
-  }
+  // Removed duplicate FlushTx and FlushRx methods to avoid overload conflicts
 
   //==============================================//
   // STATISTICS AND DIAGNOSTICS
@@ -423,10 +392,11 @@ protected:
    * @param port UART port number
    * @param config UART configuration parameters
    */
-  BaseUart(hf_port_number_t port, const hf_uart_config_t &config) noexcept
-      : initialized_(false), statistics_{}, diagnostics_{} {}
+  BaseUart(hf_port_num_t port) noexcept
+      : port_(port), initialized_(false), statistics_{}, diagnostics_{} {}
 
-  bool initialized_;             ///< Initialization status
-  hf_uart_statistics_t statistics_; ///< UART operation statistics
+  hf_port_num_t port_;                ///< UART port number
+  bool initialized_;                  ///< Initialization status
+  hf_uart_statistics_t statistics_;   ///< UART operation statistics
   hf_uart_diagnostics_t diagnostics_; ///< UART diagnostic information
 };

@@ -16,6 +16,8 @@
 #include "HardwareTypes.h"   // For basic hardware types
 #include "McuSelect.h"       // Central MCU platform selection (includes all ESP-IDF)
 #include "EspTypes_Base.h"
+#include "McuSelect.h"
+
 
 //==============================================================================
 // ESP32 UART TYPE MAPPINGS
@@ -31,6 +33,17 @@
 static constexpr hf_pin_num_t HF_UART_IO_UNUSED = 0xFFFFFFFF;
 static constexpr uint32_t HF_UART_BREAK_MIN_DURATION = 1;  ///< Minimum break duration (ms)
 static constexpr uint32_t HF_UART_BREAK_MAX_DURATION = 1000; ///< Maximum break duration (ms)
+
+// ESP32 UART port limits
+#ifdef HF_MCU_ESP32C6
+static constexpr uint8_t HF_ESP32_UART_MAX_PORTS = 3;  // ESP32-C6 has 3 UART ports
+#elif defined(HF_MCU_ESP32) || defined(HF_MCU_ESP32S2) || defined(HF_MCU_ESP32S3)
+static constexpr uint8_t HF_ESP32_UART_MAX_PORTS = 3;  // ESP32 Classic/S2/S3 have 3 UART ports
+#elif defined(HF_MCU_ESP32C3) || defined(HF_MCU_ESP32C2) || defined(HF_MCU_ESP32H2)
+static constexpr uint8_t HF_ESP32_UART_MAX_PORTS = 2;  // ESP32-C3/C2/H2 have 2 UART ports
+#else
+static constexpr uint8_t HF_ESP32_UART_MAX_PORTS = 3;  // Default fallback
+#endif
 
 //==============================================================================
 // ESP32 UART ENUMS
@@ -99,8 +112,8 @@ enum class hf_uart_operating_mode_t : uint8_t {
 /**
  * @brief ESP32 UART port configuration.
  */
-struct hf_uart_port_config_t {
-  hf_port_number_t port_number;                    ///< UART port number (0, 1, 2)
+struct hf_uart_config_t {
+  hf_port_num_t port_number;                      ///< UART port number (0, 1, 2)
   hf_baud_rate_t baud_rate;                        ///< Baud rate in bits per second
   hf_uart_data_bits_t data_bits;                   ///< Data bits (5-8)
   hf_uart_parity_t parity;                         ///< Parity configuration
@@ -119,7 +132,7 @@ struct hf_uart_port_config_t {
   bool enable_wakeup;                              ///< Enable UART wakeup from sleep
   bool enable_loopback;                            ///< Enable loopback mode for testing
   
-  hf_uart_port_config_t() noexcept
+  hf_uart_config_t() noexcept
       : port_number(0), baud_rate(115200),
         data_bits(hf_uart_data_bits_t::HF_UART_DATA_8_BITS),
         parity(hf_uart_parity_t::HF_UART_PARITY_DISABLE),
@@ -225,7 +238,7 @@ struct hf_uart_wakeup_config_t {
   bool use_ref_tick;              ///< Use REF_TICK as clock source during sleep
   
   hf_uart_wakeup_config_t() noexcept
-      : enable_wakeup(false), wakeup_threshold(3), use_ref_tick(false) {}
+      :         enable_wakeup(false), wakeup_threshold(3), use_ref_tick(false) {}
 };
 
 //==============================================================================
@@ -259,3 +272,132 @@ using hf_uart_break_callback_t = bool (*)(uint32_t break_duration, void* user_da
 //==============================================================================
 // END OF ESPUART TYPES - MINIMAL AND ESSENTIAL ONLY
 //==============================================================================
+
+//==============================================================================
+// ESP32 UART PIN MAP DEFINITIONS
+//==============================================================================
+
+// ESP32-C6 UART Pin Mappings
+#ifdef HF_MCU_ESP32C6
+struct hf_uart_pin_map_esp32c6_t {
+  static constexpr hf_pin_num_t UART0_TX_PIN = 21;  // GPIO21
+  static constexpr hf_pin_num_t UART0_RX_PIN = 20;  // GPIO20
+  static constexpr hf_pin_num_t UART0_RTS_PIN = 19; // GPIO19
+  static constexpr hf_pin_num_t UART0_CTS_PIN = 18; // GPIO18
+  
+  static constexpr hf_pin_num_t UART1_TX_PIN = 6;   // GPIO6
+  static constexpr hf_pin_num_t UART1_RX_PIN = 7;   // GPIO7
+  static constexpr hf_pin_num_t UART1_RTS_PIN = 8;  // GPIO8
+  static constexpr hf_pin_num_t UART1_CTS_PIN = 9;  // GPIO9
+  
+  static constexpr hf_pin_num_t UART2_TX_PIN = 16;  // GPIO16
+  static constexpr hf_pin_num_t UART2_RX_PIN = 17;  // GPIO17
+  static constexpr hf_pin_num_t UART2_RTS_PIN = 14; // GPIO14
+  static constexpr hf_pin_num_t UART2_CTS_PIN = 15; // GPIO15
+};
+#endif
+
+// ESP32 Classic UART Pin Mappings
+#ifdef HF_MCU_ESP32
+struct hf_uart_pin_map_esp32_t {
+  static constexpr hf_pin_num_t UART0_TX_PIN = 1;   // GPIO1 (UART0_TXD)
+  static constexpr hf_pin_num_t UART0_RX_PIN = 3;   // GPIO3 (UART0_RXD)
+  static constexpr hf_pin_num_t UART0_RTS_PIN = 19; // GPIO19
+  static constexpr hf_pin_num_t UART0_CTS_PIN = 22; // GPIO22
+  
+  static constexpr hf_pin_num_t UART1_TX_PIN = 10;  // GPIO10
+  static constexpr hf_pin_num_t UART1_RX_PIN = 9;   // GPIO9
+  static constexpr hf_pin_num_t UART1_RTS_PIN = 11; // GPIO11
+  static constexpr hf_pin_num_t UART1_CTS_PIN = 6;  // GPIO6
+  
+  static constexpr hf_pin_num_t UART2_TX_PIN = 17;  // GPIO17
+  static constexpr hf_pin_num_t UART2_RX_PIN = 16;  // GPIO16
+  static constexpr hf_pin_num_t UART2_RTS_PIN = 18; // GPIO18
+  static constexpr hf_pin_num_t UART2_CTS_PIN = 23; // GPIO23
+};
+#endif
+
+// ESP32-S2 UART Pin Mappings
+#ifdef HF_MCU_ESP32S2
+struct hf_uart_pin_map_esp32s2_t {
+  static constexpr hf_pin_num_t UART0_TX_PIN = 43;  // GPIO43
+  static constexpr hf_pin_num_t UART0_RX_PIN = 44;  // GPIO44
+  static constexpr hf_pin_num_t UART0_RTS_PIN = 45; // GPIO45
+  static constexpr hf_pin_num_t UART0_CTS_PIN = 46; // GPIO46
+  
+  static constexpr hf_pin_num_t UART1_TX_PIN = 17;  // GPIO17
+  static constexpr hf_pin_num_t UART1_RX_PIN = 18;  // GPIO18
+  static constexpr hf_pin_num_t UART1_RTS_PIN = 19; // GPIO19
+  static constexpr hf_pin_num_t UART1_CTS_PIN = 20; // GPIO20
+  
+  static constexpr hf_pin_num_t UART2_TX_PIN = 21;  // GPIO21
+  static constexpr hf_pin_num_t UART2_RX_PIN = 22;  // GPIO22
+  static constexpr hf_pin_num_t UART2_RTS_PIN = 23; // GPIO23
+  static constexpr hf_pin_num_t UART2_CTS_PIN = 24; // GPIO24
+};
+#endif
+
+// ESP32-S3 UART Pin Mappings
+#ifdef HF_MCU_ESP32S3
+struct hf_uart_pin_map_esp32s3_t {
+  static constexpr hf_pin_num_t UART0_TX_PIN = 43;  // GPIO43
+  static constexpr hf_pin_num_t UART0_RX_PIN = 44;  // GPIO44
+  static constexpr hf_pin_num_t UART0_RTS_PIN = 45; // GPIO45
+  static constexpr hf_pin_num_t UART0_CTS_PIN = 46; // GPIO46
+  
+  static constexpr hf_pin_num_t UART1_TX_PIN = 17;  // GPIO17
+  static constexpr hf_pin_num_t UART1_RX_PIN = 18;  // GPIO18
+  static constexpr hf_pin_num_t UART1_RTS_PIN = 19; // GPIO19
+  static constexpr hf_pin_num_t UART1_CTS_PIN = 20; // GPIO20
+  
+  static constexpr hf_pin_num_t UART2_TX_PIN = 21;  // GPIO21
+  static constexpr hf_pin_num_t UART2_RX_PIN = 22;  // GPIO22
+  static constexpr hf_pin_num_t UART2_RTS_PIN = 23; // GPIO23
+  static constexpr hf_pin_num_t UART2_CTS_PIN = 24; // GPIO24
+};
+#endif
+
+// ESP32-C3 UART Pin Mappings
+#ifdef HF_MCU_ESP32C3
+struct hf_uart_pin_map_esp32c3_t {
+  static constexpr hf_pin_num_t UART0_TX_PIN = 21;  // GPIO21
+  static constexpr hf_pin_num_t UART0_RX_PIN = 20;  // GPIO20
+  static constexpr hf_pin_num_t UART0_RTS_PIN = 19; // GPIO19
+  static constexpr hf_pin_num_t UART0_CTS_PIN = 18; // GPIO18
+  
+  static constexpr hf_pin_num_t UART1_TX_PIN = 6;   // GPIO6
+  static constexpr hf_pin_num_t UART1_RX_PIN = 7;   // GPIO7
+  static constexpr hf_pin_num_t UART1_RTS_PIN = 8;  // GPIO8
+  static constexpr hf_pin_num_t UART1_CTS_PIN = 9;  // GPIO9
+};
+#endif
+
+// ESP32-C2 UART Pin Mappings
+#ifdef HF_MCU_ESP32C2
+struct hf_uart_pin_map_esp32c2_t {
+  static constexpr hf_pin_num_t UART0_TX_PIN = 21;  // GPIO21
+  static constexpr hf_pin_num_t UART0_RX_PIN = 20;  // GPIO20
+  static constexpr hf_pin_num_t UART0_RTS_PIN = 19; // GPIO19
+  static constexpr hf_pin_num_t UART0_CTS_PIN = 18; // GPIO18
+  
+  static constexpr hf_pin_num_t UART1_TX_PIN = 6;   // GPIO6
+  static constexpr hf_pin_num_t UART1_RX_PIN = 7;   // GPIO7
+  static constexpr hf_pin_num_t UART1_RTS_PIN = 8;  // GPIO8
+  static constexpr hf_pin_num_t UART1_CTS_PIN = 9;  // GPIO9
+};
+#endif
+
+// ESP32-H2 UART Pin Mappings
+#ifdef HF_MCU_ESP32H2
+struct hf_uart_pin_map_esp32h2_t {
+  static constexpr hf_pin_num_t UART0_TX_PIN = 21;  // GPIO21
+  static constexpr hf_pin_num_t UART0_RX_PIN = 20;  // GPIO20
+  static constexpr hf_pin_num_t UART0_RTS_PIN = 19; // GPIO19
+  static constexpr hf_pin_num_t UART0_CTS_PIN = 18; // GPIO18
+  
+  static constexpr hf_pin_num_t UART1_TX_PIN = 6;   // GPIO6
+  static constexpr hf_pin_num_t UART1_RX_PIN = 7;   // GPIO7
+  static constexpr hf_pin_num_t UART1_RTS_PIN = 8;  // GPIO8
+  static constexpr hf_pin_num_t UART1_CTS_PIN = 9;  // GPIO9
+};
+#endif

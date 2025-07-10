@@ -61,7 +61,8 @@
   X(NVS_ERR_NO_FREE_PAGES, 22, "No free pages available")                                         \
   X(NVS_ERR_PARTITION_NOT_FOUND, 23, "NVS partition not found")                                   \
   X(NVS_ERR_ITERATOR_INVALID, 24, "Iterator invalid or expired")                                  \
-  X(NVS_ERR_SECURITY_VIOLATION, 25, "Security policy violation")
+  X(NVS_ERR_SECURITY_VIOLATION, 25, "Security policy violation")                                  \
+  X(NVS_ERR_UNSUPPORTED_OPERATION, 26, "Unsupported operation")   
 
 // Generate enum class from X-macro
 enum class hf_nvs_err_t : int32_t {

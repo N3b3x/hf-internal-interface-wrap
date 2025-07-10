@@ -61,7 +61,8 @@
   X(PWM_ERR_COMMUNICATION_TIMEOUT, 20, "Communication timeout")                                    \
   X(PWM_ERR_COMMUNICATION_FAILURE, 21, "Communication failure")                                    \
   X(PWM_ERR_DEVICE_NOT_RESPONDING, 22, "Device not responding")                                    \
-  X(PWM_ERR_INVALID_DEVICE_ID, 23, "Invalid device ID")
+  X(PWM_ERR_INVALID_DEVICE_ID, 23, "Invalid device ID")                                            \
+  X(PWM_ERR_UNSUPPORTED_OPERATION, 24, "Unsupported operation")
 
 // Generate enum class
 enum class hf_pwm_err_t : uint32_t {
@@ -88,127 +89,6 @@ constexpr const char *HfPwmErrToString(hf_pwm_err_t error) noexcept {
 //  PWM Configuration Structures
 //--------------------------------------
 
-/**
- * @brief PWM output mode configuration
- */
-enum class hf_pwm_output_mode_t : uint8_t {
-  Normal = 0,        ///< Normal PWM output
-  Inverted = 1,      ///< Inverted PWM output
-  Complementary = 2, ///< Complementary output (for motor control)
-  Differential = 3   ///< Differential output
-};
-
-/**
- * @brief PWM alignment mode
- */
-enum class hf_pwm_alignment_t : uint8_t {
-  EdgeAligned = 0,  ///< Edge-aligned PWM (standard)
-  CenterAligned = 1 ///< Center-aligned PWM (better for motor control)
-};
-
-/**
- * @brief PWM idle state
- */
-enum class hf_pwm_idle_state_t : uint8_t {
-  Low = 0, ///< Output low when idle
-  High = 1 ///< Output high when idle
-};
-
-/**
- * @brief PWM channel configuration structure
- */
-struct hf_pwm_channel_config_t {
-  hf_pin_num_t output_pin;        ///< GPIO pin for PWM output
-  uint32_t frequency_hz;         ///< PWM frequency in Hz
-  uint8_t resolution_bits;       ///< PWM resolution (8-16 bits typical)
-  hf_pwm_output_mode_t output_mode; ///< Output mode configuration
-  hf_pwm_alignment_t alignment;     ///< PWM alignment mode
-  hf_pwm_idle_state_t idle_state;   ///< Idle state configuration
-  float initial_duty_cycle;      ///< Initial duty cycle (0.0 - 1.0)
-  bool invert_output;            ///< Invert the output signal
-
-  // Default constructor with sensible defaults
-  hf_pwm_channel_config_t() noexcept
-      : output_pin(-1), frequency_hz(1000), resolution_bits(12), output_mode(hf_pwm_output_mode_t::Normal),
-        alignment(hf_pwm_alignment_t::EdgeAligned), idle_state(hf_pwm_idle_state_t::Low),
-        initial_duty_cycle(0.0f), invert_output(false) {}
-};
-
-/**
- * @brief PWM timer configuration (for MCU implementations)
- */
-struct hf_pwm_timer_config_t {
-  uint8_t timer_number;          ///< Timer/group number
-  uint32_t base_frequency_hz;    ///< Base timer frequency
-  uint8_t resolution_bits;       ///< Timer resolution
-  hf_pwm_alignment_t alignment;  ///< Timer alignment mode
-
-  hf_pwm_timer_config_t() noexcept
-      : timer_number(0), base_frequency_hz(80000000),
-        resolution_bits(12), alignment(hf_pwm_alignment_t::EdgeAligned) {}
-};
-
-/**
- * @brief PWM operating mode
- */
-enum class hf_pwm_mode_t : uint8_t {
-  Basic = 0,    ///< Basic mode (direct duty updates)
-  Fade = 1      ///< Fade mode (using hardware fade functionality)
-};
-
-/**
- * @brief PWM unit configuration structure
- */
-struct hf_pwm_unit_config_t {
-  uint8_t unit_id;                    ///< PWM unit identifier
-  hf_pwm_mode_t mode;                 ///< Operating mode
-  uint32_t base_clock_hz;             ///< Base clock frequency
-  hf_pwm_clock_source_t clock_source; ///< Clock source selection
-  bool enable_fade;                   ///< Enable hardware fade support
-  bool enable_interrupts;             ///< Enable interrupt support
-  
-  // Default constructor with sensible defaults
-  hf_pwm_unit_config_t() noexcept
-      : unit_id(0), mode(hf_pwm_mode_t::Basic), base_clock_hz(80000000),
-        clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT),
-        enable_fade(true), enable_interrupts(false) {}
-};
-
-//--------------------------------------
-//  PWM Status and Information
-//--------------------------------------
-
-/**
- * @brief PWM channel status information
- */
-struct hf_pwm_channel_status_t {
-  bool is_enabled;               ///< Channel is enabled
-  bool is_running;               ///< Channel is actively generating PWM
-  uint32_t current_frequency_hz; ///< Current frequency
-  float current_duty_cycle;      ///< Current duty cycle (0.0 - 1.0)
-  uint32_t raw_duty_value;       ///< Raw duty register value
-  hf_pwm_err_t last_error;           ///< Last error encountered
-
-  hf_pwm_channel_status_t() noexcept
-      : is_enabled(false), is_running(false), current_frequency_hz(0), current_duty_cycle(0.0f),
-        raw_duty_value(0), last_error(hf_pwm_err_t::PWM_SUCCESS) {}
-};
-
-/**
- * @brief PWM capability information (what the implementation supports)
- */
-struct hf_pwm_capabilities_t {
-  uint8_t max_channels;         ///< Maximum number of channels
-  uint8_t max_timers;           ///< Maximum number of timers
-  uint32_t min_frequency_hz;    ///< Minimum supported frequency
-  uint32_t max_frequency_hz;    ///< Maximum supported frequency
-  uint8_t min_resolution_bits;  ///< Minimum resolution
-  uint8_t max_resolution_bits;  ///< Maximum resolution
-  bool supports_complementary;  ///< Supports complementary outputs
-  bool supports_center_aligned; ///< Supports center-aligned PWM
-  bool supports_deadtime;       ///< Supports deadtime insertion
-  bool supports_phase_shift;    ///< Supports phase shifting
-};
 
 /**
  * @brief PWM statistics information
@@ -341,32 +221,9 @@ public:
     }
     return true;
   }
-
-  /**
-   * @brief Set PWM operating mode
-   * @param mode Operating mode (Basic or Fade)
-   * @return PWM_SUCCESS on success, error code on failure
-   */
-  virtual hf_pwm_err_t SetMode(hf_pwm_mode_t mode) noexcept = 0;
-
-  /**
-   * @brief Get current PWM operating mode
-   * @return Current operating mode
-   */
-  virtual hf_pwm_mode_t GetMode() const noexcept = 0;
-
   //==============================================================================
   // CHANNEL MANAGEMENT
   //==============================================================================
-
-  /**
-   * @brief Configure a PWM channel
-   * @param channel_id Channel identifier (0-based)
-   * @param config Channel configuration
-   * @return PWM_SUCCESS on success, error code on failure
-   */
-  virtual hf_pwm_err_t ConfigureChannel(hf_channel_id_t channel_id,
-                                    const hf_pwm_channel_config_t &config) noexcept = 0;
 
   /**
    * @brief Enable a PWM channel
@@ -477,29 +334,6 @@ public:
   virtual hf_frequency_hz_t GetFrequency(hf_channel_id_t channel_id) const noexcept = 0;
 
   /**
-   * @brief Get channel status
-   * @param channel_id Channel identifier
-   * @param status Status structure to fill
-   * @return PWM_SUCCESS on success, error code on failure
-   */
-  virtual hf_pwm_err_t GetChannelStatus(hf_channel_id_t channel_id,
-                                    hf_pwm_channel_status_t &status) const noexcept = 0;
-
-  /**
-   * @brief Get PWM implementation capabilities
-   * @param capabilities Capabilities structure to fill
-   * @return PWM_SUCCESS on success, error code on failure
-   */
-  virtual hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t &capabilities) const noexcept = 0;
-
-  /**
-   * @brief Get last error for a specific channel
-   * @param channel_id Channel identifier
-   * @return Last error code for the channel
-   */
-  virtual hf_pwm_err_t GetLastError(hf_channel_id_t channel_id) const noexcept = 0;
-
-  /**
    * @brief Get PWM statistics
    * @param statistics Statistics structure to fill
    * @return PWM_SUCCESS on success, error code on failure
@@ -538,25 +372,6 @@ public:
     diagnostics_ = hf_pwm_diagnostics_t{}; // Reset diagnostics to default values
     return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
   }
-
-  //==============================================================================
-  // CALLBACKS
-  //==============================================================================
-
-  /**
-   * @brief Set period complete callback
-   * @param callback Callback function
-   * @param user_data User data passed to callback
-   */
-  virtual void SetPeriodCallback(hf_pwm_period_callback_t callback,
-                                 void *user_data = nullptr) noexcept = 0;
-
-  /**
-   * @brief Set fault/error callback
-   * @param callback Callback function
-   * @param user_data User data passed to callback
-   */
-  virtual void SetFaultCallback(hf_pwm_fault_callback_t callback, void *user_data = nullptr) noexcept = 0;
 
   //==============================================================================
   // UTILITY FUNCTIONS

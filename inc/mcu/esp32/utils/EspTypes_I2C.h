@@ -41,7 +41,6 @@ static constexpr uint32_t HF_I2C_FIFO_SIZE = 32;
 static constexpr uint32_t HF_I2C_DEFAULT_TIMEOUT_MS = 1000;
 static constexpr uint32_t HF_I2C_MAX_TIMEOUT_MS = 10000;
 static constexpr uint8_t HF_I2C_MAX_RETRY_COUNT = 3;
-static constexpr uint32_t HF_INVALID_PIN = 0xFFFFFFFF;
 
 //==============================================================================
 // ESP32 I2C ENUMS
@@ -119,7 +118,8 @@ enum class hf_i2c_command_type_t : uint8_t {
   HF_I2C_CMD_STOP = 1,      ///< Stop condition
   HF_I2C_CMD_WRITE = 2,     ///< Write data
   HF_I2C_CMD_READ = 3,      ///< Read data
-  HF_I2C_CMD_DELAY = 4      ///< Delay
+  HF_I2C_CMD_WRITE_READ = 4, ///< Write then read in one transaction
+  HF_I2C_CMD_DELAY = 5      ///< Delay
 };
 
 //==============================================================================

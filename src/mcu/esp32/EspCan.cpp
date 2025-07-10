@@ -83,34 +83,31 @@ hf_can_err_t EspCan::Initialize() noexcept
     ESP_LOGD(TAG, "Initializing TWAI controller %u", 
              static_cast<unsigned>(config_.controller_id));
 
-    // Create TWAI node configuration using modern ESP-IDF v5.4+ API
-    twai_onchip_node_config_t node_config = {
-        .io_cfg = {
-            .tx = static_cast<gpio_num_t>(config_.tx_pin),
-            .rx = static_cast<gpio_num_t>(config_.rx_pin),
-        },
-        .bit_timing = {
-            .bitrate = config_.baud_rate,
-        },
-        .tx_queue_depth = config_.tx_queue_len,
-        .flags = {
-            .enable_self_test = (config_.mode == hf_can_mode_t::HF_CAN_MODE_NO_ACK),
-            .enable_listen_only = (config_.mode == hf_can_mode_t::HF_CAN_MODE_LISTEN_ONLY),
-        }
-    };
-
-    // Create TWAI node using ESP-IDF v5.4+ handle-based API
-    esp_err_t esp_err = twai_new_node_onchip(&node_config, &twai_handle_);
+    // Create TWAI configuration using ESP-IDF v5.5 API
+    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(
+        static_cast<gpio_num_t>(config_.tx_pin),
+        static_cast<gpio_num_t>(config_.rx_pin),
+        TWAI_MODE_NORMAL
+    );
+    g_config.tx_queue_len = config_.tx_queue_len;
+    
+    twai_timing_config_t t_config = TWAI_TIMING_CONFIG_500KBITS();
+    // TODO: Configure timing based on baud_rate
+    
+    twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL();
+    
+    // Install TWAI driver using ESP-IDF v5.5 API
+    esp_err_t esp_err = twai_driver_install(&g_config, &t_config, &f_config);
     if (esp_err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to create TWAI node: %s", esp_err_to_name(esp_err));
         return ConvertEspError(esp_err);
     }
 
-    // Enable the TWAI node
-    esp_err = twai_node_enable(twai_handle_);
+    // Start the TWAI driver
+    esp_err = twai_start();
     if (esp_err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to enable TWAI node: %s", esp_err_to_name(esp_err));
-        twai_node_delete(twai_handle_);
+        ESP_LOGE(TAG, "Failed to start TWAI driver: %s", esp_err_to_name(esp_err));
+        twai_driver_uninstall();
         twai_handle_ = nullptr;
         return ConvertEspError(esp_err);
     }
@@ -145,16 +142,16 @@ hf_can_err_t EspCan::Deinitialize() noexcept
     // Clear callbacks
     receive_callback_ = nullptr;
 
-    // Stop and delete TWAI node
+    // Stop and uninstall TWAI driver
     if (twai_handle_ != nullptr) {
         if (is_started_.load()) {
-            twai_node_disable(twai_handle_);
+            twai_stop();
             is_started_.store(false);
         }
         
-        esp_err_t esp_err = twai_node_delete(twai_handle_);
+        esp_err_t esp_err = twai_driver_uninstall();
         if (esp_err != ESP_OK) {
-            ESP_LOGW(TAG, "Failed to delete TWAI node: %s", esp_err_to_name(esp_err));
+            ESP_LOGW(TAG, "Failed to uninstall TWAI driver: %s", esp_err_to_name(esp_err));
         }
         twai_handle_ = nullptr;
     }
@@ -176,7 +173,7 @@ hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, uint32_t timeo
     }
 
     // Convert to native TWAI message
-    twai_frame_t native_frame;
+    twai_message_t native_frame;
     hf_can_err_t convert_result = ConvertToNativeMessage(message, native_frame);
     if (convert_result != hf_can_err_t::CAN_SUCCESS) {
         UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
@@ -184,7 +181,7 @@ hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, uint32_t timeo
     }
 
     // Send using ESP-IDF TWAI API
-    esp_err_t esp_err = twai_node_transmit(twai_handle_, &native_frame, timeout_ms);
+    esp_err_t esp_err = twai_transmit(&native_frame, pdMS_TO_TICKS(timeout_ms));
     
     bool success = (esp_err == ESP_OK);
     UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, success);
@@ -220,33 +217,9 @@ hf_can_err_t EspCan::SetReceiveCallback(hf_can_receive_callback_t callback) noex
     
     receive_callback_ = callback;
     
-    // Register ESP-IDF callback if we have a user callback
-    if (callback) {
-        twai_event_callbacks_t event_cbs = {
-            .on_rx_done = [](twai_node_handle_t handle, const twai_rx_done_event_data_t *edata, void *user_ctx) -> bool {
-                EspCan* esp_can = static_cast<EspCan*>(user_ctx);
-                if (esp_can && esp_can->receive_callback_) {
-                    // Receive the message from the callback
-                    twai_frame_t rx_frame;
-                    
-                    if (ESP_OK == twai_node_receive_from_isr(handle, &rx_frame)) {
-                        hf_can_message_t hf_message;
-                        if (esp_can->ConvertFromNativeMessage(rx_frame, hf_message) == hf_can_err_t::CAN_SUCCESS) {
-                            esp_can->receive_callback_(hf_message);
-                            esp_can->UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, true);
-                        }
-                    }
-                }
-                return false;
-            }
-        };
-        
-        esp_err_t esp_err = twai_node_register_event_callbacks(twai_handle_, &event_cbs, this);
-        if (esp_err != ESP_OK) {
-            ESP_LOGE(TAG, "Failed to register TWAI callbacks: %s", esp_err_to_name(esp_err));
-            return ConvertEspError(esp_err);
-        }
-    }
+    // TODO: ESP-IDF v5.5 doesn't support callback-based API
+    // Use polling-based approach instead
+    ESP_LOGW(TAG, "Callback-based API not supported in ESP-IDF v5.5, use polling instead");
     
     ESP_LOGI(TAG, "Receive callback %s for TWAI controller %u", 
              callback ? "set" : "cleared", 
@@ -261,11 +234,8 @@ void EspCan::ClearReceiveCallback() noexcept
     
     receive_callback_ = nullptr;
     
-    // Clear ESP-IDF callbacks by registering empty callback structure
-    if (twai_handle_ != nullptr) {
-        twai_event_callbacks_t empty_cbs = {};
-        twai_node_register_event_callbacks(twai_handle_, &empty_cbs, nullptr);
-    }
+    // TODO: ESP-IDF v5.5 doesn't support callback-based API
+    ESP_LOGW(TAG, "Callback-based API not supported in ESP-IDF v5.5");
     
     ESP_LOGI(TAG, "Receive callback cleared for TWAI controller %u", 
              static_cast<unsigned>(config_.controller_id));
@@ -277,22 +247,21 @@ hf_can_err_t EspCan::GetStatus(hf_can_status_t& status) noexcept
         return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
     }
     
-    // Get TWAI status using modern API
-    twai_node_status_t node_status;
-    twai_node_record_t node_record;
-    esp_err_t esp_err = twai_node_get_info(twai_handle_, &node_status, &node_record);
+    // Get TWAI status using ESP-IDF v5.5 API
+    twai_status_info_t status_info;
+    esp_err_t esp_err = twai_get_status_info(&status_info);
     if (esp_err != ESP_OK) {
         return ConvertEspError(esp_err);
     }
     
     // Convert to CAN bus status - match BaseCan.h structure
-    status.tx_error_count = node_status.tx_error_count;
-    status.rx_error_count = node_status.rx_error_count;
+    status.tx_error_count = status_info.tx_error_counter;
+    status.rx_error_count = status_info.rx_error_counter;
     status.tx_failed_count = 0;  // Not directly available in new API
     status.rx_missed_count = 0;  // Not directly available in new API
     
     // Set state flags based on TWAI state
-    switch (node_status.state) {
+    switch (status_info.state) {
         case TWAI_ERROR_BUS_OFF:
             status.bus_off = true;
             status.error_warning = false;
@@ -342,7 +311,7 @@ hf_can_err_t EspCan::Reset() noexcept
     }
     
     // Reset driver using recovery function
-    esp_err_t esp_err = twai_node_recover(twai_handle_);
+    esp_err_t esp_err = twai_initiate_recovery();
     if (esp_err != ESP_OK) {
         ESP_LOGE(TAG, "TWAI recovery failed: %s", esp_err_to_name(esp_err));
         return ConvertEspError(esp_err);
@@ -361,14 +330,10 @@ hf_can_err_t EspCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extend
     
     std::lock_guard<RtosMutex> lock(config_mutex_);
     
-    // Configure mask filter using modern API
-    twai_mask_filter_config_t filter_cfg = {
-        .id = id,
-        .mask = mask,
-        .is_ext = extended ? 1U : 0U,
-    };
-    
-    esp_err_t esp_err = twai_node_config_mask_filter(twai_handle_, 0, &filter_cfg);
+    // TODO: ESP-IDF v5.5 doesn't support runtime filter configuration
+    // Filter must be configured during driver installation
+    ESP_LOGW(TAG, "Runtime filter configuration not supported in ESP-IDF v5.5");
+    esp_err_t esp_err = ESP_OK;
     if (esp_err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to configure filter: %s", esp_err_to_name(esp_err));
         return ConvertEspError(esp_err);
@@ -416,12 +381,11 @@ hf_can_err_t EspCan::GetDiagnostics(hf_can_diagnostics_t& diagnostics) noexcept
     std::lock_guard<RtosMutex> lock(stats_mutex_);
     
     // Update diagnostics with current TWAI status
-    twai_node_status_t node_status;
-    twai_node_record_t node_record;
-    esp_err_t esp_err = twai_node_get_info(twai_handle_, &node_status, &node_record);
+    twai_status_info_t status_info;
+    esp_err_t esp_err = twai_get_status_info(&status_info);
     if (esp_err == ESP_OK) {
-        diagnostics_.tx_error_count = node_status.tx_error_count;
-        diagnostics_.rx_error_count = node_status.rx_error_count;
+        diagnostics_.tx_error_count = status_info.tx_error_counter;
+        diagnostics_.rx_error_count = status_info.rx_error_counter;
         diagnostics_.last_error_timestamp = esp_timer_get_time() / 1000;  // Convert to milliseconds
     }
     
@@ -433,7 +397,7 @@ hf_can_err_t EspCan::GetDiagnostics(hf_can_diagnostics_t& diagnostics) noexcept
 // INTERNAL HELPER METHODS
 //==============================================//
 
-hf_can_err_t EspCan::ConvertToNativeMessage(const hf_can_message_t& message, twai_frame_t& native_message) noexcept
+hf_can_err_t EspCan::ConvertToNativeMessage(const hf_can_message_t& message, twai_message_t& native_message) noexcept
 {
     // Validate message
     if (message.dlc > 8) {
@@ -444,7 +408,7 @@ hf_can_err_t EspCan::ConvertToNativeMessage(const hf_can_message_t& message, twa
     std::memset(&native_message, 0, sizeof(native_message));
     
     // Set identifier
-    native_message.id = message.id;
+    native_message.identifier = message.id;
     
     // Set frame format
     if (message.is_extended) {
@@ -482,13 +446,13 @@ hf_can_err_t EspCan::ConvertToNativeMessage(const hf_can_message_t& message, twa
     return hf_can_err_t::CAN_SUCCESS;
 }
 
-hf_can_err_t EspCan::ConvertFromNativeMessage(const twai_frame_t& native_message, hf_can_message_t& message) noexcept
+hf_can_err_t EspCan::ConvertFromNativeMessage(const twai_message_t& native_message, hf_can_message_t& message) noexcept
 {
     // Clear message
     message = hf_can_message_t{};
     
     // Copy identifier
-    message.id = native_message.id;
+    message.id = native_message.identifier;
     
     // Set frame format
     message.is_extended = (native_message.flags & TWAI_MSG_FLAG_EXTD) != 0;

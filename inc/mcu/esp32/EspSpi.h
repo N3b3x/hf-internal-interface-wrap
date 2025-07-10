@@ -85,7 +85,7 @@ struct hf_spi_advanced_config_t {
   // Basic configuration
   hf_spi_bus_config_t base_config;                ///< Base SPI bus configuration
   hf_spi_host_device_t host_device;               ///< SPI host device (SPI2 for ESP32C6)
-  hf_spi_device_interface_config_t device_config; ///< Device-specific configuration
+  spi_device_interface_config_t device_config;    ///< Device-specific configuration
 
   // Advanced ESP32C6 features
   hf_spi_transfer_mode_t transfer_mode; ///< Transfer mode (single/dual/quad/octal)
@@ -125,28 +125,7 @@ struct hf_spi_advanced_config_t {
         timeout_ms(1000), statistics_enabled(false), error_recovery_enabled(true) {}
 };
 
-/**
- * @brief SPI operation statistics for performance monitoring.
- */
-struct hf_spi_statistics_t {
-  uint64_t total_transactions;       ///< Total transactions performed
-  uint64_t successful_transactions;  ///< Successful transactions
-  uint64_t failed_transactions;      ///< Failed transactions
-  uint64_t timeout_transactions;     ///< Timed-out transactions
-  uint64_t bytes_transmitted;        ///< Total bytes transmitted
-  uint64_t bytes_received;           ///< Total bytes received
-  uint64_t average_transfer_time_us; ///< Average transfer time (microseconds)
-  uint64_t max_transfer_time_us;     ///< Maximum transfer time
-  uint64_t min_transfer_time_us;     ///< Minimum transfer time
-  uint32_t dma_transfers;            ///< DMA-accelerated transfers
-  uint32_t polling_transfers;        ///< Polling-mode transfers
-
-  hf_spi_statistics_t()
-      : total_transactions(0), successful_transactions(0), failed_transactions(0),
-        timeout_transactions(0), bytes_transmitted(0), bytes_received(0),
-        average_transfer_time_us(0), max_transfer_time_us(0), min_transfer_time_us(UINT64_MAX),
-        dma_transfers(0), polling_transfers(0) {}
-};
+// Note: Using the base class hf_spi_statistics_t from BaseSpi.h
 
 /**
  * @brief SPI transfer descriptor for batch operations.
@@ -287,7 +266,7 @@ public:
    * @brief Get current transfer mode.
    * @return Current transfer mode
    */
-  hf_spi_transfer_mode_t GetTransferMode() const noexcept;
+  // GetTransferMode moved to inline implementation below
 
   /**
    * @brief Reset the SPI bus and recover from errors.
@@ -304,21 +283,21 @@ public:
    * @param device_config Device configuration
    * @return Device handle or nullptr on failure
    */
-  hf_spi_device_handle_t addDevice(const hf_spi_device_interface_config_t &device_config) noexcept;
+  spi_device_handle_t addDevice(const spi_device_interface_config_t &device_config) noexcept;
 
   /**
    * @brief Remove a device from the SPI bus.
    * @param device_handle Device handle to remove
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t removeDevice(hf_spi_device_handle_t device_handle) noexcept;
+  hf_spi_err_t removeDevice(spi_device_handle_t device_handle) noexcept;
 
   /**
    * @brief Switch to a specific device.
    * @param device_handle Device handle to switch to
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t selectDevice(hf_spi_device_handle_t device_handle) noexcept;
+  hf_spi_err_t selectDevice(spi_device_handle_t device_handle) noexcept;
 
   //==============================================//
   // ADVANCED TRANSFER OPERATIONS                //
@@ -551,7 +530,9 @@ public:
    * @brief Get current transfer mode.
    * @return Current transfer mode
    */
-  hf_spi_transfer_mode_t GetTransferMode() const noexcept;
+  hf_spi_transfer_mode_t GetTransferMode() const noexcept {
+    return current_transfer_mode_;
+  }
 
 private:
   //==============================================//
@@ -651,33 +632,34 @@ private:
   //==============================================//
 
   // Platform-specific handles
-  hf_spi_device_handle_t platform_handle_;             ///< Primary device handle
-  hf_spi_device_handle_t current_device_;              ///< Currently selected device
-  std::vector<hf_spi_device_handle_t> device_handles_; ///< All registered devices
+  spi_device_handle_t platform_handle_;             ///< Primary device handle
+  spi_device_handle_t current_device_;              ///< Currently selected device
+  std::vector<spi_device_handle_t> device_handles_; ///< All registered devices
 
   // Configuration storage
-  hf_spi_advanced_config_t advanced_config_; ///< Advanced configuration
-  bool use_advanced_config_;                 ///< Flag indicating advanced config usage
+  hf_spi_bus_config_t config_;                      ///< Basic configuration
+  hf_spi_advanced_config_t advanced_config_;        ///< Advanced configuration
+  bool use_advanced_config_;                        ///< Flag indicating advanced config usage
 
   // State management
-  mutable RtosMutex mutex_;                      ///< Thread safety mutex
-  hf_spi_err_t last_error_;                      ///< Last error that occurred
-  uint32_t transaction_count_;                   ///< Number of transactions performed
-  bool cs_active_;                               ///< Current CS state
-  bool dma_enabled_;                             ///< DMA enable state
-  bool bus_suspended_;                           ///< Bus suspension state
-  hf_spi_transfer_mode_t current_transfer_mode_; ///< Current transfer mode
-  uint16_t max_transfer_size_;                   ///< Maximum transfer size in bytes
+  mutable RtosMutex mutex_;                         ///< Thread safety mutex
+  hf_spi_err_t last_error_;                         ///< Last error that occurred
+  uint32_t transaction_count_;                      ///< Number of transactions performed
+  bool cs_active_;                                  ///< Current CS state
+  bool dma_enabled_;                                ///< DMA enable state
+  bool bus_suspended_;                              ///< Bus suspension state
+  hf_spi_transfer_mode_t current_transfer_mode_;    ///< Current transfer mode
+  uint16_t max_transfer_size_;                      ///< Maximum transfer size in bytes
 
   // Asynchronous operation support
-  std::vector<uint32_t> async_operations_; ///< Active async operations
-  uint32_t next_operation_id_;             ///< Next operation ID
-  hf_spi_event_callback_t event_callback_; ///< Event callback function
-  void *event_user_data_;                  ///< Event callback user data
+  std::vector<uint32_t> async_operations_;          ///< Active async operations
+  uint32_t next_operation_id_;                      ///< Next operation ID
+  hf_spi_event_callback_t event_callback_;          ///< Event callback function
+  void *event_user_data_;                           ///< Event callback user data
 
   // Statistics and diagnostics
-  mutable hf_spi_statistics_t statistics_; ///< Operation statistics
-  uint64_t last_transfer_time_;            ///< Last transfer timestamp
+  mutable hf_spi_statistics_t statistics_;          ///< Operation statistics
+  uint64_t last_transfer_time_;                     ///< Last transfer timestamp
 
   // Platform-specific constants
   static constexpr uint32_t DEFAULT_TIMEOUT_MS = 1000;

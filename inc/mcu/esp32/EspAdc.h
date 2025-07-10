@@ -32,7 +32,7 @@
 
 #include "BaseAdc.h"
 #include "RtosMutex.h"
-#include "EspTypes_ADC.h"
+#include "utils/EspTypes.h"
 
 #include <memory>
 #include <vector>
@@ -73,7 +73,7 @@
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_RTC_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
 
@@ -411,6 +411,63 @@ public:
   hf_adc_err_t SetChannelEnabled(hf_channel_id_t channel_id, bool enabled) noexcept;
 
   /**
+   * @brief Enable a specific channel
+   * @param channel_id Channel ID to enable
+   * @return hf_adc_err_t error code
+   */
+  hf_adc_err_t EnableChannel(hf_channel_id_t channel_id) noexcept;
+
+  /**
+   * @brief Disable a specific channel
+   * @param channel_id Channel ID to disable
+   * @return hf_adc_err_t error code
+   */
+  hf_adc_err_t DisableChannel(hf_channel_id_t channel_id) noexcept;
+
+  /**
+   * @brief Read single raw value from channel
+   * @param channel_id Channel ID to read from
+   * @param raw_value Output raw value
+   * @return hf_adc_err_t error code
+   */
+  hf_adc_err_t ReadSingleRaw(hf_channel_id_t channel_id, uint32_t& raw_value) noexcept;
+
+  /**
+   * @brief Read single voltage value from channel
+   * @param channel_id Channel ID to read from
+   * @param voltage_mv Output voltage in millivolts
+   * @return hf_adc_err_t error code
+   */
+  hf_adc_err_t ReadSingleVoltage(hf_channel_id_t channel_id, uint32_t& voltage_mv) noexcept;
+
+  /**
+   * @brief Read multiple raw values from channels
+   * @param channel_ids Array of channel IDs
+   * @param num_channels Number of channels
+   * @param raw_values Output array of raw values
+   * @return hf_adc_err_t error code
+   */
+  hf_adc_err_t ReadMultipleRaw(const hf_channel_id_t* channel_ids, uint8_t num_channels, uint32_t* raw_values) noexcept;
+
+  /**
+   * @brief Read multiple voltage values from channels
+   * @param channel_ids Array of channel IDs
+   * @param num_channels Number of channels
+   * @param voltage_values Output array of voltage values in millivolts
+   * @return hf_adc_err_t error code
+   */
+  hf_adc_err_t ReadMultipleVoltage(const hf_channel_id_t* channel_ids, uint8_t num_channels, uint32_t* voltage_values) noexcept;
+
+  /**
+   * @brief Read averaged value from channel
+   * @param channel_id Channel ID to read from
+   * @param num_samples Number of samples to average
+   * @param averaged_value Output averaged value
+   * @return hf_adc_err_t error code
+   */
+  hf_adc_err_t ReadAveraged(hf_channel_id_t channel_id, uint16_t num_samples, uint32_t& averaged_value) noexcept;
+
+  /**
    * @brief Check if channel is enabled
    * @param channel_id Channel ID to check
    * @return true if enabled, false otherwise
@@ -563,7 +620,7 @@ public:
   /**
    * @brief Reset statistics counters
    */
-  void ResetStatistics() noexcept;
+  hf_adc_err_t ResetStatistics() noexcept override;
 
   /**
    * @brief Get last error information

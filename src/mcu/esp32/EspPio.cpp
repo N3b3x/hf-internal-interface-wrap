@@ -184,7 +184,7 @@ hf_pio_err_t McuPio::Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
   // Convert hf_pio_symbol_ts to RMT format
-  hf_rmt_symbol_word_t rmt_symbols[MAX_SYMBOLS_PER_TRANSMISSION];
+  rmt_symbol_word_t rmt_symbols[MAX_SYMBOLS_PER_TRANSMISSION];
   size_t rmt_symbol_count = 0;
 
   hf_pio_err_t convert_result =
@@ -216,7 +216,7 @@ hf_pio_err_t McuPio::Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols
   }
   ret = rmt_transmit(channel.tx_channel, channel.encoder,
                      reinterpret_cast<const rmt_symbol_word_t *>(rmt_symbols),
-                     rmt_symbol_count * sizeof(hf_rmt_symbol_word_t), &tx_config);
+                     rmt_symbol_count * sizeof(rmt_symbol_word_t), &tx_config);
 
   if (ret != ESP_OK) {
     channel.busy = false;
@@ -311,7 +311,7 @@ hf_pio_err_t McuPio::StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, s
     return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
   // Start reception with allocated buffer
-  ret = rmt_receive(channel.rx_channel, nullptr, rmt_buffer_size * sizeof(hf_rmt_symbol_word_t),
+  ret = rmt_receive(channel.rx_channel, nullptr, rmt_buffer_size * sizeof(rmt_symbol_word_t),
                     &rx_config);
   if (ret != ESP_OK) {
     channel.busy = false;
@@ -381,7 +381,7 @@ hf_pio_err_t McuPio::GetChannelStatus(uint8_t channel_id,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::GetCapabilities(PioCapabilities &capabilities) const noexcept {
+hf_pio_err_t McuPio::GetCapabilities(hf_pio_capabilities_t &capabilities) const noexcept {
   capabilities.max_channels = MAX_CHANNELS;
   capabilities.min_resolution_ns = 12.5;    // Based on 80MHz RMT clock
   capabilities.max_resolution_ns = 3355443; // Max with divider
@@ -447,15 +447,13 @@ hf_pio_err_t McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_
   // Configure carrier modulation using RMT carrier configuration
   auto &channel = channels_[channel_id];
 
-  if (!channel.tx_channel) {
+  if (channel.tx_channel == nullptr) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
 
   rmt_carrier_config_t carrier_config = {};
   carrier_config.frequency_hz = carrier_freq_hz;
   carrier_config.duty_cycle = duty_cycle;
-  carrier_config.polarity_active_low = false;
-  carrier_config.always_on = (carrier_freq_hz > 0);
 
   esp_err_t ret = rmt_apply_carrier(channel.tx_channel, &carrier_config);
   if (ret != ESP_OK) {
@@ -495,7 +493,7 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
   }
 
   if (!channels_[channel_id].configured) {
-    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   ESP_LOGI(TAG, "Configuring advanced RMT: channel=%d, memory_blocks=%zu, dma=%s, queue=%d",
@@ -524,12 +522,11 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
         config.direction == hf_pio_direction_t::Bidirectional) {
       // Configure advanced TX channel
       rmt_tx_channel_config_t tx_config = {};
-      tx_config.gpio_num = config.gpio_pin;
+      tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
       tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
       tx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
       tx_config.mem_block_symbols = static_cast<uint32_t>(memory_blocks);
       tx_config.trans_queue_depth = queue_depth;
-      tx_config.with_dma = enable_dma;
 
       if (enable_dma) {
         ESP_LOGI(TAG, "Enabling DMA for TX channel %d", channel_id);
@@ -590,11 +587,10 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
         config.direction == hf_pio_direction_t::Bidirectional) {
       // Configure advanced RX channel
       rmt_rx_channel_config_t rx_config = {};
-      rx_config.gpio_num = config.gpio_pin;
+      rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
       rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
       rx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
       rx_config.mem_block_symbols = static_cast<uint32_t>(memory_blocks);
-      rx_config.with_dma = enable_dma;
 
       esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
       if (ret != ESP_OK) {
@@ -639,7 +635,7 @@ hf_pio_err_t McuPio::ConfigureEncoder(uint8_t channel_id, const hf_pio_symbol_t 
   }
 
   if (!channels_[channel_id].configured) {
-    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   auto &channel = channels_[channel_id];
@@ -692,7 +688,7 @@ hf_pio_err_t McuPio::SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept 
   }
 
   if (!channels_[channel_id].configured) {
-    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   // Store idle level in configuration for future transmissions
@@ -740,7 +736,7 @@ hf_pio_err_t McuPio::ResetChannelStatistics(uint8_t channel_id) noexcept {
 //==============================================================================
 
 hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
-                                           const hf_rmt_symbol_word_t *rmt_symbols,
+                                           const rmt_symbol_word_t *rmt_symbols,
                                            size_t symbol_count, bool wait_completion) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -754,7 +750,7 @@ hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
   }
 
   if (!channels_[channel_id].configured) {
-    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   if (channels_[channel_id].busy) {
@@ -780,13 +776,10 @@ hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
   // Create transmission configuration
   rmt_transmit_config_t tx_config = {};
   tx_config.loop_count = 0; // Single transmission
-  tx_config.eot_level = 0;  // End with low level
-  tx_config.queue_nonblocking =
-      false; // Block if queue is full
-             // For raw RMT symbols, we transmit directly using the copy encoder
+  // For raw RMT symbols, we transmit directly using the copy encoder
   esp_err_t result = rmt_transmit(channel.tx_channel, channel.encoder,
                                   reinterpret_cast<const rmt_symbol_word_t *>(rmt_symbols),
-                                  symbol_count * sizeof(hf_rmt_symbol_word_t), &tx_config);
+                                  symbol_count * sizeof(rmt_symbol_word_t), &tx_config);
 
   if (result != ESP_OK) {
     channels_[channel_id].busy = false;
@@ -823,7 +816,7 @@ hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, hf_rmt_symbol_word_t *rmt_buffer,
+hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, rmt_symbol_word_t *rmt_buffer,
                                           size_t buffer_size, size_t &symbols_received,
                                           uint32_t timeout_us) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
@@ -838,7 +831,7 @@ hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, hf_rmt_symbol_word
   }
 
   if (!channels_[channel_id].configured) {
-    return hf_pio_err_t::PIO_ERR_CHANNEL_NOT_CONFIGURED;
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
   if (rmt_buffer == nullptr || buffer_size == 0) {
@@ -855,7 +848,7 @@ hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, hf_rmt_symbol_word
   }
 
   // Prepare receive buffer
-  size_t buffer_size_bytes = buffer_size * sizeof(hf_rmt_symbol_word_t);
+  size_t buffer_size_bytes = buffer_size * sizeof(rmt_symbol_word_t);
 
   // Configure reception parameters
   rmt_receive_config_t rx_config = {};
@@ -920,7 +913,7 @@ bool McuPio::IsValidChannelId(uint8_t channel_id) const noexcept {
 }
 
 hf_pio_err_t McuPio::ConvertToRmtSymbols(const hf_pio_symbol_t *symbols, size_t symbol_count,
-                                         hf_rmt_symbol_word_t *rmt_symbols,
+                                         rmt_symbol_word_t *rmt_symbols,
                                          size_t &rmt_symbol_count) noexcept {
   if (symbol_count > MAX_SYMBOLS_PER_TRANSMISSION) {
     return hf_pio_err_t::PIO_ERR_BUFFER_TOO_LARGE;
@@ -948,7 +941,7 @@ hf_pio_err_t McuPio::ConvertToRmtSymbols(const hf_pio_symbol_t *symbols, size_t 
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::ConvertFromRmtSymbols(const hf_rmt_symbol_word_t *rmt_symbols,
+hf_pio_err_t McuPio::ConvertFromRmtSymbols(const rmt_symbol_word_t *rmt_symbols,
                                            size_t rmt_symbol_count, hf_pio_symbol_t *symbols,
                                            size_t &symbol_count) noexcept {
   symbol_count = std::min(rmt_symbol_count, symbol_count);
@@ -965,10 +958,10 @@ uint32_t McuPio::CalculateClockDivider(uint32_t resolution_ns) const noexcept {
   // Calculate clock divider to achieve desired resolution
   // RMT source clock is typically 80 MHz (12.5 ns per tick)
   uint32_t divider = (resolution_ns * RMT_CLK_SRC_FREQ) / 1000000000UL;
-  return std::max(1U, std::min(255U, divider)); // Clamp to valid range
+  return std::max<uint32_t>(1U, std::min<uint32_t>(255U, static_cast<uint32_t>(divider))); // Clamp to valid range
 }
 
-bool McuPio::OnTransmitComplete(hf_rmt_channel_handle_t *channel,
+bool McuPio::OnTransmitComplete(rmt_channel_handle_t channel,
                                 const rmt_tx_done_event_data_t *edata, void *user_ctx) {
   auto *instance = static_cast<McuPio *>(user_ctx);
   if (!instance)
@@ -998,7 +991,7 @@ bool McuPio::OnTransmitComplete(hf_rmt_channel_handle_t *channel,
   return false; // Don't yield to higher priority task
 }
 
-bool McuPio::OnReceiveComplete(hf_rmt_channel_handle_t *channel,
+bool McuPio::OnReceiveComplete(rmt_channel_handle_t channel,
                                const rmt_rx_done_event_data_t *edata, void *user_ctx) {
   auto *instance = static_cast<McuPio *>(user_ctx);
   if (!instance || !edata)
@@ -1015,7 +1008,7 @@ bool McuPio::OnReceiveComplete(hf_rmt_channel_handle_t *channel,
       size_t symbols_converted = 0;
       if (ch.rx_buffer && edata->received_symbols) {
         instance->ConvertFromRmtSymbols(
-            reinterpret_cast<const hf_rmt_symbol_word_t *>(edata->received_symbols),
+            reinterpret_cast<const rmt_symbol_word_t *>(edata->received_symbols),
             edata->num_symbols, ch.rx_buffer, symbols_converted);
       }
 
@@ -1050,7 +1043,7 @@ hf_pio_err_t McuPio::InitializeChannel(uint8_t channel_id) noexcept {
       config.direction == hf_pio_direction_t::Bidirectional) {
     // Configure TX channel
     rmt_tx_channel_config_t tx_config = {};
-    tx_config.gpio_num = config.gpio_pin;
+    tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
     tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
     tx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
     tx_config.mem_block_symbols = 64;
@@ -1084,7 +1077,7 @@ hf_pio_err_t McuPio::InitializeChannel(uint8_t channel_id) noexcept {
       config.direction == hf_pio_direction_t::Bidirectional) {
     // Configure RX channel
     rmt_rx_channel_config_t rx_config = {};
-    rx_config.gpio_num = config.gpio_pin;
+    rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
     rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
     rx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
     rx_config.mem_block_symbols = 64;
@@ -1198,7 +1191,7 @@ bool McuPio::ValidatePioSystem() noexcept {
   // Test 4: Validate symbol conversion functions
   ESP_LOGI(TAG, "Testing symbol conversion functions...");
   hf_pio_symbol_t test_symbols[] = {{100, true}, {200, false}, {150, true}};
-  hf_rmt_symbol_word_t rmt_symbols[10];
+  rmt_symbol_word_t rmt_symbols[10];
   size_t rmt_symbol_count = 0;
 
   hf_pio_err_t result = ConvertToRmtSymbols(test_symbols, 3, rmt_symbols, rmt_symbol_count);
@@ -1225,7 +1218,7 @@ bool McuPio::ValidatePioSystem() noexcept {
 
   // Test 7: Validate capabilities structure
   ESP_LOGI(TAG, "Testing capabilities...");
-  PioCapabilities caps;
+  hf_pio_capabilities_t caps;
   result = GetCapabilities(caps);
   if (result != hf_pio_err_t::PIO_SUCCESS || caps.max_channels == 0) {
     ESP_LOGE(TAG, "Capabilities test failed");

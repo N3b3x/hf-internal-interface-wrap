@@ -103,9 +103,7 @@
   X(ADC_ERR_CALIBRATION, 53, "Calibration error")                                                  \
   X(ADC_ERR_BUSY, 54, "Resource busy")                                                             \
   X(ADC_ERR_HARDWARE_FAILURE, 55, "Hardware failure")                                              \
-  X(ADC_ERR_INVALID_PARAM, 56, "Invalid parameter")                                                \
-  X(ADC_ERR_CHANNEL_DISABLED, 57, "Channel disabled")                                              \
-  X(ADC_ERR_TIMEOUT, 58, "Operation timeout")
+  X(ADC_ERR_CHANNEL_DISABLED, 56, "Channel disabled")
 
 enum class hf_adc_err_t : uint8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,

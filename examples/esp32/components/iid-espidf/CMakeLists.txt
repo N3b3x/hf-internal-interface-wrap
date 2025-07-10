@@ -1,25 +1,120 @@
 cmake_minimum_required(VERSION 3.23)
 
-# Collect all source files using glob patterns for easier maintenance
-file(GLOB_RECURSE MCU_SOURCES "../../../../src/mcu/*.cpp")
-file(GLOB_RECURSE MCU_SOURCES "../../../../src/mcu/esp32/*.cpp")
-file(GLOB_RECURSE UTILS_SOURCES "../../../../src/utils/*.cpp")
-
-# Combine all source files
-set(ALL_SOURCES
-    ${MCU_SOURCES}
-    ${UTILS_SOURCES}
-)
+# Get the absolute path to the project root
+get_filename_component(PROJECT_ROOT "${CMAKE_SOURCE_DIR}/../../" ABSOLUTE)
 
 idf_component_register(
-    SRCS ${ALL_SOURCES}
+    SRCS 
+        # Utility files
+        "${PROJECT_ROOT}/src/utils/DigitalOutputGuard.cpp"
+        
+        # ESP32 implementation files (temporarily commented out due to compilation errors)
+        "${PROJECT_ROOT}/src/mcu/esp32/EspAdc.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspCan.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspGpio.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspI2c.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspNvs.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspPeriodicTimer.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspPio.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspPwm.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspSpi.cpp"
+        "${PROJECT_ROOT}/src/mcu/esp32/EspUart.cpp"
         
     INCLUDE_DIRS 
-        "../../../../inc"
-        "../../../../inc/base"
-        "../../../../inc/mcu"
-        "../../../../inc/mcu/esp32"
-        "../../../../inc/utils"
+        "${PROJECT_ROOT}/inc"
+        "${PROJECT_ROOT}/inc/base"
+        "${PROJECT_ROOT}/inc/mcu"
+        "${PROJECT_ROOT}/inc/mcu/esp32"
+        "${PROJECT_ROOT}/inc/mcu/esp32/utils"
+        "${PROJECT_ROOT}/inc/utils"
         
-    REQUIRES driver esp_adc freertos esp_timer nvs_flash nvs_sec_provider
+    REQUIRES 
+        driver 
+        esp_timer 
+        freertos
+        nvs_flash
+        esp_adc
+        esp_driver_gpio
+        esp_driver_i2c
+        esp_driver_spi
+        esp_driver_uart
+        esp_driver_ledc
+        esp_driver_pcnt
+        esp_driver_rmt
+        esp_driver_mcpwm
+        esp_driver_gptimer
+        esp_driver_sdmmc
+        esp_driver_sdspi
+        esp_driver_sdio
+        esp_driver_dac
+        esp_driver_tsens
+        esp_driver_sdm
+        esp_driver_ana_cmpr
+        esp_driver_bitscrambler
+        esp_driver_cam
+        esp_driver_isp
+        esp_driver_jpeg
+        esp_driver_parlio
+        esp_driver_ppa
+        esp_driver_touch_sens
+        esp_driver_usb_serial_jtag
+        esp_eth
+        esp_event
+        esp_gdbstub
+        esp_hid
+        esp_http_client
+        esp_http_server
+        esp_https_ota
+        esp_https_server
+        esp_hw_support
+        esp_lcd
+        esp_local_ctrl
+        esp_mm
+        esp_netif
+        esp_netif_stack
+        esp_partition
+        esp_phy
+        esp_pm
+        esp_psram
+        esp_ringbuf
+        esp_rom
+        esp_security
+        esp_system
+        esp_vfs_console
+        esp_wifi
+        espcoredump
+        esptool_py
+        fatfs
+        hal
+        heap
+        http_parser
+        idf_test
+        ieee802154
+        json
+        log
+        lwip
+        mbedtls
+        mqtt
+        newlib
+        nvs_sec_provider
+        openthread
+        partition_table
+        perfmon
+        protobuf-c
+        protocomm
+        pthread
+        rt
+        sdmmc
+        soc
+        spi_flash
+        spiffs
+        tcp_transport
+        ulp
+        unity
+        usb
+        vfs
+        wear_levelling
+        wifi_provisioning
+        wpa_supplicant
+        xtensa
 )
