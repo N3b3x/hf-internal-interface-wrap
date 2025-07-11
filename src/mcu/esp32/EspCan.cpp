@@ -24,14 +24,23 @@
 
 #include "EspCan.h"
 
-#ifdef HF_MCU_FAMILY_ESP32
-
+// C++ standard library headers (must be outside extern "C")
 #include <algorithm>
 #include <cstring>
+
+#ifdef HF_MCU_FAMILY_ESP32
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // ESP32-specific includes via centralized McuSelect.h (included in EspCan.h)
 #include "esp_log.h"
 #include "esp_timer.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 static const char *TAG = "EspCan";
 

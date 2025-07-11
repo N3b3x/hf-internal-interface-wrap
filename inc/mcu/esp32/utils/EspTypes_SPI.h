@@ -17,6 +17,17 @@
 #include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 #include "EspTypes_Base.h"
 
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "driver/spi_master.h"
+
+#ifdef __cplusplus
+}
+#endif
+
 //==============================================================================
 // ESP32 SPI TYPE MAPPINGS
 //==============================================================================

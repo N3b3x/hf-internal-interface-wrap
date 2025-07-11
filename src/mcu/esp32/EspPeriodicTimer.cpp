@@ -14,12 +14,23 @@
 
 #include "EspPeriodicTimer.h"
 
-#ifdef HF_MCU_FAMILY_ESP32
+// C++ standard library headers (must be outside extern "C")
+#include <algorithm>
+#include <cstring>
 
-// Platform-specific includes
+#ifdef HF_MCU_FAMILY_ESP32
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_err.h"
 #include "esp_log.h"
 #include "esp_timer.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 static const char *TAG = "EspPeriodicTimer";
 

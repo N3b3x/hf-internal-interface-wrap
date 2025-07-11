@@ -160,12 +160,12 @@ bool EspAdc::Initialize() noexcept
             for (const auto& channel_config : config_.channel_configs) {
                 if (channel_config.enabled) {
                     esp_err_t esp_err;
-                    adc_cali_line_fitting_config_t cali_config = {};
+                    adc_cali_curve_fitting_config_t cali_config = {};
                     cali_config.unit_id = static_cast<adc_unit_t>(config_.unit_id);
                     cali_config.atten = static_cast<adc_atten_t>(channel_config.attenuation);
                     cali_config.bitwidth = static_cast<adc_bitwidth_t>(config_.bit_width);
 
-                    esp_err = adc_cali_create_scheme_line_fitting(&cali_config, 
+                    esp_err = adc_cali_create_scheme_curve_fitting(&cali_config, 
                         &calibration_handles_[static_cast<uint8_t>(channel_config.attenuation)]);
                     
                     if (esp_err != ESP_OK) {
@@ -219,7 +219,7 @@ bool EspAdc::Deinitialize() noexcept
     // Deinitialize calibration
     for (size_t i = 0; i < calibration_handles_.size(); ++i) {
         if (calibration_handles_[i] != nullptr) {
-            adc_cali_delete_scheme_line_fitting(calibration_handles_[i]);
+            adc_cali_delete_scheme_curve_fitting(calibration_handles_[i]);
             calibration_handles_[i] = nullptr;
         }
     }
@@ -688,7 +688,7 @@ hf_adc_err_t EspAdc::InitializeCalibration(hf_adc_atten_t attenuation,
     
     // Deinitialize existing calibration if present
     if (calibration_handles_[atten_idx] != nullptr) {
-        esp_err_t esp_err = adc_cali_delete_scheme_line_fitting(calibration_handles_[atten_idx]);
+        esp_err_t esp_err = adc_cali_delete_scheme_curve_fitting(calibration_handles_[atten_idx]);
         if (esp_err != ESP_OK) {
             ESP_LOGW(TAG, "Failed to delete calibration scheme: %s", esp_err_to_name(esp_err));
         }
@@ -696,12 +696,12 @@ hf_adc_err_t EspAdc::InitializeCalibration(hf_adc_atten_t attenuation,
     }
     
     // Initialize curve fitting calibration
-        adc_cali_line_fitting_config_t cali_config = {};
+        adc_cali_curve_fitting_config_t cali_config = {};
     cali_config.unit_id = static_cast<adc_unit_t>(config_.unit_id);
     cali_config.atten = static_cast<adc_atten_t>(attenuation);
     cali_config.bitwidth = static_cast<adc_bitwidth_t>(bitwidth);
 
-    esp_err_t esp_err = adc_cali_create_scheme_line_fitting(&cali_config, &calibration_handles_[atten_idx]);
+    esp_err_t esp_err = adc_cali_create_scheme_curve_fitting(&cali_config, &calibration_handles_[atten_idx]);
     
     if (esp_err == ESP_OK) {
         statistics_.calibrationCount++;

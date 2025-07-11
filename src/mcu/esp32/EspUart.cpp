@@ -13,16 +13,26 @@
  * @copyright HardFOC
  */
 #include "EspUart.h"
+
+// C++ standard library headers (must be outside extern "C")
 #include <algorithm>
+#include <cstring>
 
 #ifdef HF_MCU_FAMILY_ESP32
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-// Platform-specific includes and definitions
 #include "driver/uart.h"
 #include "esp_err.h"
 #include "esp_log.h"
 #include "hal/uart_hal.h"
 #include "soc/uart_reg.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 static const char *TAG = "EspUart";
 
@@ -1066,7 +1076,7 @@ hf_uart_err_t EspUart::InstallDriver() noexcept {
       break;
   }
   
-  uart_config.source_clk = UART_SCLK_APB;
+  uart_config.source_clk = UART_SCLK_DEFAULT;
 
   esp_err_t result = uart_driver_install(uart_port_, port_config_.rx_buffer_size,
                                         port_config_.tx_buffer_size, port_config_.event_queue_size,

@@ -39,7 +39,11 @@
 #include <array>
 #include <atomic>
 
-// ESP-IDF includes for ADC functionality
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_adc/adc_oneshot.h"
 #include "esp_adc/adc_continuous.h"
 #include "esp_adc/adc_cali.h"
@@ -49,6 +53,11 @@
 #include "driver/gpio.h"
 #include "esp_timer.h"
 #include "esp_log.h"
+
+#ifdef __cplusplus
+}
+#endif
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/semphr.h"
@@ -73,7 +82,7 @@
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_RTC_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
 

@@ -36,14 +36,21 @@
  */
 
 #include "EspI2c.h"
+
+// C++ standard library headers (must be outside extern "C")
 #include <algorithm>
 #include <cstring>
 #include <utility>
 
 // Platform-specific includes for ESP32C6/ESP-IDF v5.5+
 #ifdef HF_MCU_FAMILY_ESP32
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/i2c_master.h"
-#include "driver/i2c_slave.h" 
+#include "driver/i2c_slave.h"
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "esp_err.h"
@@ -52,6 +59,10 @@
 #include "freertos/task.h"
 #include "hal/i2c_types.h"
 #include "esp_check.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 static const char* TAG = "EspI2c";
 

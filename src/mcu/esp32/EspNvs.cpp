@@ -47,16 +47,26 @@
  */
 
 #include "EspNvs.h"
+
+// C++ standard library headers (must be outside extern "C")
+#include <algorithm>
 #include <cstring>
 
-
 #ifdef HF_MCU_FAMILY_ESP32
-// ESP32-specific includes via centralized McuSelect.h (included in EspNvs.h)
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_log.h"
 #include "esp_err.h"
 #include "esp_timer.h"
 #include "nvs_flash.h"
 #include "nvs_sec_provider.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 static const char *TAG = "EspNvs";
 

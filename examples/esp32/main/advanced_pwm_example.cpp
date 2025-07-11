@@ -19,12 +19,22 @@
 
 #include "inc/mcu/esp32/EspPwm.h"
 #include "inc/mcu/esp32/utils/EspTypes_PWM.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <cstdio>
 #include <cstring>
+
+#ifdef __cplusplus
+}
+#endif
 
 static const char* TAG = "AdvancedPwmExample";
 

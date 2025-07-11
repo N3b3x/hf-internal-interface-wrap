@@ -58,33 +58,11 @@
 
 // ESP32-C6 Configuration
 #ifdef HF_TARGET_MCU_ESP32C6
-
 #define HF_MCU_ESP32C6
 #define HF_MCU_FAMILY_ESP32
 #define HF_MCU_NAME "ESP32-C6"
 #define HF_MCU_ARCHITECTURE "RISC-V RV32IMAC"
 #define HF_MCU_VARIANT_C6
-
-// ESP32-C6 specific includes
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "driver/adc.h"
-#include "driver/gpio.h"
-#include "driver/i2c.h"
-#include "driver/ledc.h"
-#include "driver/spi_master.h"
-#include "driver/uart.h"
-#include "driver/twai.h"
-#include "hal/twai_types.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
-#include "freertos/task.h"
-
-#ifdef __cplusplus
-}
-#endif
 
 // ESP32 Classic Configuration
 #elif defined(HF_TARGET_MCU_ESP32)
@@ -134,27 +112,6 @@ extern "C" {
 #define HF_MCU_ARCHITECTURE "RISC-V RV32IMC"
 #define HF_MCU_VARIANT_H2
 
-// ESP32 Classic specific includes
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "driver/adc.h"
-#include "driver/twai.h"      // Modern TWAI driver for all ESP32 variants
-#include "hal/twai_types.h"
-#include "driver/gpio.h"
-#include "driver/i2c.h"
-#include "driver/ledc.h"
-#include "driver/spi_master.h"
-#include "driver/uart.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
-#include "freertos/task.h"
-
-#ifdef __cplusplus
-}
-#endif
-
 // STM32F4 Configuration
 #elif defined(HF_TARGET_MCU_STM32F4)
 #define HF_MCU_STM32F4
@@ -188,20 +145,11 @@ extern "C" {
 // PLATFORM VALIDATION - ENSURE ONLY ONE TARGET IS SELECTED
 //==============================================================================
 
-// Count the number of selected target MCUs
-#define HF_TARGET_COUNT                                                                            \
-  (defined(HF_TARGET_MCU_ESP32C6) + defined(HF_TARGET_MCU_ESP32) +                                 \
-   defined(HF_TARGET_MCU_ESP32S2) + defined(HF_TARGET_MCU_ESP32S3) +                               \
-   defined(HF_TARGET_MCU_ESP32C3) + defined(HF_TARGET_MCU_ESP32C2) +                               \
-   defined(HF_TARGET_MCU_ESP32H2) + defined(HF_TARGET_MCU_STM32F4) +                               \
-   defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040))
-
-#if HF_TARGET_COUNT > 1
-#error                                                                                             \
-    "Multiple target MCUs are selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
-#elif HF_TARGET_COUNT == 0
-#error                                                                                             \
-    "No target MCU is selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
+// Count the number of selected target MCUs (portable version)
+#if defined(HF_TARGET_MCU_ESP32C6) + defined(HF_TARGET_MCU_ESP32) + defined(HF_TARGET_MCU_ESP32S2) + defined(HF_TARGET_MCU_ESP32S3) + defined(HF_TARGET_MCU_ESP32C3) + defined(HF_TARGET_MCU_ESP32C2) + defined(HF_TARGET_MCU_ESP32H2) + defined(HF_TARGET_MCU_STM32F4) + defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040) > 1
+#error "Multiple target MCUs are selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
+#elif !defined(HF_TARGET_MCU_ESP32C6) && !defined(HF_TARGET_MCU_ESP32) && !defined(HF_TARGET_MCU_ESP32S2) && !defined(HF_TARGET_MCU_ESP32S3) && !defined(HF_TARGET_MCU_ESP32C3) && !defined(HF_TARGET_MCU_ESP32C2) && !defined(HF_TARGET_MCU_ESP32H2) && !defined(HF_TARGET_MCU_STM32F4) && !defined(HF_TARGET_MCU_STM32H7) && !defined(HF_TARGET_MCU_RP2040)
+#error "No target MCU is selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
 #endif
 
 // Validate that the selected MCU has a corresponding platform family defined

@@ -13,15 +13,29 @@
  * @copyright HardFOC
  */
 #include "EspPwm.h"
+
+// C++ standard library headers (must be outside extern "C")
 #include <algorithm>
+#include <cstring>
 
 // Platform-specific includes and definitions
+#ifdef HF_MCU_FAMILY_ESP32
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/ledc.h"
 #include "esp_err.h"
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "hal/ledc_hal.h"
 #include "soc/ledc_reg.h"
+
+#ifdef __cplusplus
+}
+#endif
+#endif
 
 static const char *TAG = "EspPwm";
 
@@ -972,7 +986,7 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency
   ledc_clk_cfg_t clk_cfg = LEDC_AUTO_CLK;
   switch (clock_source_) {
   case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-    clk_cfg = LEDC_USE_APB_CLK;
+    clk_cfg = LEDC_AUTO_CLK;
     break;
   case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
     clk_cfg = LEDC_USE_RC_FAST_CLK; // Use RC_FAST instead of deprecated RTC8M for ESP32
@@ -1100,7 +1114,7 @@ hf_pwm_err_t EspPwm::SetClockSource(hf_pwm_clock_source_t clock_source) noexcept
   ledc_clk_cfg_t esp_clock_source;
   switch (clock_source) {
   case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-    esp_clock_source = LEDC_USE_APB_CLK;
+    esp_clock_source = LEDC_AUTO_CLK;
     break;
   case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
     esp_clock_source = LEDC_USE_RC_FAST_CLK; // Use RC_FAST instead of deprecated RTC8M for ESP32

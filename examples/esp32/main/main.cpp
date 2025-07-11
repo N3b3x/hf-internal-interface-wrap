@@ -1,8 +1,18 @@
 #include <iostream>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/gpio.h"
 #include "esp_log.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 // Include all base classes
 #include "base/HardwareTypes.h"

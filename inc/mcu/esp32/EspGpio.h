@@ -15,9 +15,23 @@
 
 #pragma once
 
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "driver/gpio.h"
+#include <esp_attr.h>
+
+#ifdef __cplusplus
+}
+#endif
+
+// C++ headers
 #include "BaseGpio.h"
 #include "EspTypes_GPIO.h"
 #include "mcu/esp32/utils/EspTypes_GPIO.h"
+#include <stdio.h>
 
 /**
  * @class EspGpio

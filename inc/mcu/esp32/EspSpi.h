@@ -25,7 +25,11 @@
 #include <memory>
 #include <vector>
 
-#ifdef ESP_PLATFORM
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/spi_common.h"
 #include "driver/spi_master.h"
 #include "driver/spi_slave.h"
@@ -34,6 +38,9 @@
 #include "freertos/semphr.h"
 #include "freertos/task.h"
 #include "hal/spi_types.h"
+
+#ifdef __cplusplus
+}
 #endif
 
 // No aliases - use types directly

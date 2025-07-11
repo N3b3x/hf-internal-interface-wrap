@@ -70,7 +70,16 @@
 #include "RtosMutex.h"
 #include "utils/EspTypes.h"
 // Add ESP-IDF I2C master include for handle types
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/i2c_master.h"
+
+#ifdef __cplusplus
+}
+#endif
 #include <unordered_map>
 #include <vector>
 #include <atomic>

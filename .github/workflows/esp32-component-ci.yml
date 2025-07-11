@@ -56,6 +56,9 @@ jobs:
             cp -r examples/esp32/main ${{ env.BUILD_PATH }}/main
             cp -r examples/esp32/components ${{ env.BUILD_PATH }}/components
             cp -r examples/common ${{ env.BUILD_PATH }}/common
+            # Copy source and include directories to maintain relative paths
+            cp -r src ${{ env.BUILD_PATH }}/src
+            cp -r inc ${{ env.BUILD_PATH }}/inc
             idf.py -C ${{ env.BUILD_PATH }} -DIDF_TARGET=${{ env.IDF_TARGET }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} build
             idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt
             idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json

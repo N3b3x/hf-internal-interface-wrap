@@ -33,14 +33,23 @@
 #include <array>
 #include <atomic>
 
-// ESP-IDF includes for UART functionality
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/uart.h"
 #include "driver/gpio.h"
 #include "esp_log.h"
+#include "esp_timer.h"
+
+#ifdef __cplusplus
+}
+#endif
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
-#include "esp_timer.h"
 
 /**
  * @class EspUart

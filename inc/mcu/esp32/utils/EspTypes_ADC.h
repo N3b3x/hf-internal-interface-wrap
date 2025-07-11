@@ -18,6 +18,18 @@
 #include "EspTypes_Base.h"
 #include "BaseAdc.h"       
 
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <esp_adc/adc_oneshot.h>
+#include <esp_adc/adc_continuous.h>
+
+#ifdef __cplusplus
+}
+#endif
+
 //==============================================================================
 // ESSENTIAL ADC TYPES (ESP32)
 //==============================================================================

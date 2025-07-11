@@ -14,17 +14,28 @@
  */
 
 #include "EspSpi.h"
+
+// C++ standard library headers (must be outside extern "C")
 #include <algorithm>
 #include <cstring>
 #include <vector>
 
 
 #ifdef HF_MCU_FAMILY_ESP32
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/gpio.h"
 #include "driver/spi_master.h"
 #include "esp_log.h"
 #include "esp_rom_sys.h"
 #include "esp_timer.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 static const char *TAG = "EspSpi";
 

@@ -17,11 +17,18 @@
  */
 
 #include "EspGpio.h"
+
+// C++ standard library headers (must be outside extern "C")
 #include <algorithm>
 #include <atomic>
 #include <cstring>
 
 #ifdef HF_MCU_FAMILY_ESP32
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // ESP32-C6 specific includes with ESP-IDF v5.5+ features
 #include "driver/gpio.h"
 #include "driver/gpio_filter.h"
@@ -30,12 +37,17 @@
 #include "esp_log.h"
 #include "esp_sleep.h"
 #include "esp_timer.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
 #include "hal/gpio_types.h"
 #include "hal/rtc_io_types.h"
 #include "soc/clk_tree_defs.h"
 #include "soc/gpio_sig_map.h"
+
+#ifdef __cplusplus
+}
+#endif
+
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
 
 static const char *TAG = "EspGpio";
 
@@ -740,6 +752,7 @@ hf_gpio_err_t EspGpio::ConfigureGlitchFilter(hf_gpio_glitch_filter_type_t filter
   // Configure pin glitch filter
   if (filter_type == hf_gpio_glitch_filter_type_t::HF_GPIO_GLITCH_FILTER_PIN || filter_type == hf_gpio_glitch_filter_type_t::HF_GPIO_GLITCH_FILTER_BOTH) {
     gpio_pin_glitch_filter_config_t pin_filter_config = {
+      .clk_src = GLITCH_FILTER_CLK_SRC_DEFAULT, // Default clock source
       .gpio_num = static_cast<gpio_num_t>(pin_)
     };
 
@@ -767,6 +780,7 @@ hf_gpio_err_t EspGpio::ConfigureGlitchFilter(hf_gpio_glitch_filter_type_t filter
     flex_filter_config_ = *flex_config;
 
     gpio_flex_glitch_filter_config_t flex_filter_config = {
+      .clk_src = GLITCH_FILTER_CLK_SRC_DEFAULT, // Default clock source
       .gpio_num = static_cast<gpio_num_t>(pin_),
       .window_width_ns = flex_config->window_width_ns,
       .window_thres_ns = flex_config->window_threshold_ns
@@ -901,6 +915,7 @@ hf_gpio_err_t EspGpio::ConfigurePinGlitchFilter(bool enable) noexcept {
   if (enable) {
     // Configure pin glitch filter (fixed 2 clock cycles)
     gpio_pin_glitch_filter_config_t filter_config = {
+      .clk_src = GLITCH_FILTER_CLK_SRC_DEFAULT, // Default clock source
       .gpio_num = static_cast<gpio_num_t>(pin_)
     };
     
@@ -961,6 +976,7 @@ hf_gpio_err_t EspGpio::ConfigureFlexGlitchFilter(const hf_gpio_flex_filter_confi
 
   // Configure flexible glitch filter with custom timing
   gpio_flex_glitch_filter_config_t filter_config = {
+    .clk_src = GLITCH_FILTER_CLK_SRC_DEFAULT, // Default clock source
     .gpio_num = static_cast<gpio_num_t>(pin_),
     .window_width_ns = config.window_width_ns,
     .window_thres_ns = config.window_threshold_ns

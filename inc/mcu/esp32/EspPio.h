@@ -32,9 +32,18 @@
 #include "RtosMutex.h"
 #include <array>
 // Include ESP-IDF RMT driver headers for direct type usage
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/rmt_tx.h"
 #include "driver/rmt_rx.h"
 #include "driver/rmt_encoder.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 //==============================================================================
 // TYPE ALIASES FOR PLATFORM COMPATIBILITY (from McuTypes.h)

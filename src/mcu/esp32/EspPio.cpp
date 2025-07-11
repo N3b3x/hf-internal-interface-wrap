@@ -13,15 +13,26 @@
  * @copyright HardFOC
  */
 #include "EspPio.h"
+
+// C++ standard library headers (must be outside extern "C")
 #include <algorithm>
 #include <cstring>
 
 // Platform-specific includes and definitions
 #ifdef HF_MCU_FAMILY_ESP32
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_check.h"
 #include "esp_log.h"
 #include "hal/rmt_ll.h"
 #include "soc/soc_caps.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 // static const char *TAG = "McuPio";  // Unused for now
 

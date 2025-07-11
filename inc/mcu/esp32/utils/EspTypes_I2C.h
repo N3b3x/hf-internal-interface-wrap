@@ -19,6 +19,17 @@
 #include <functional>
 #include <vector>
 
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "driver/i2c.h"
+
+#ifdef __cplusplus
+}
+#endif
+
 //==============================================================================
 // ESP32 I2C TYPE MAPPINGS
 //==============================================================================

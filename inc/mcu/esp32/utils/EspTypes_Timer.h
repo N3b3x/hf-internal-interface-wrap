@@ -15,7 +15,17 @@
 #include "EspTypes_Base.h"
 #include "HardwareTypes.h"
 #include "McuSelect.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_timer.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 //==============================================================================
 // ESP32 TIMER TYPE MAPPINGS

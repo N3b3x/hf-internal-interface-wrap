@@ -27,6 +27,17 @@
 
 #include "McuSelect.h"
 
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "driver/twai.h"
+
+#ifdef __cplusplus
+}
+#endif
+
 // Only compile for ESP32 family
 #ifdef HF_MCU_FAMILY_ESP32
 
