@@ -112,7 +112,7 @@ public:
    * @brief Get the current state of the managed GPIO.
    * @return Current BaseGpio::hf_gpio_state_t (Active or Inactive)
    */
-  [[nodiscard]] BaseGpio::hf_gpio_state_t GetCurrentState() const noexcept;
+  [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
 
 private:
   BaseGpio *gpio_;       ///< Pointer to the managed BaseGpio instance

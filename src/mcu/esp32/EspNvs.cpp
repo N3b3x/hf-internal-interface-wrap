@@ -69,8 +69,6 @@ static constexpr size_t NVS_MAX_KEY_LENGTH_ESP32 = 15;             ///< ESP32 NV
 static constexpr size_t NVS_MAX_VALUE_SIZE_ESP32 = 4000;           ///< ESP32 NVS value size limit (conservative)
 static constexpr size_t NVS_MAX_NAMESPACE_LENGTH_ESP32 = 15;       ///< ESP32 NVS namespace length limit
 
-static const char *TAG = "EspNvs";
-
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================

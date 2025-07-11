@@ -57,9 +57,11 @@ static constexpr uint32_t DEFAULT_TIMEOUT_MS = 1000;
  * @param[out] channel Resulting ADC channel
  * @return ESP_OK on success, error code on failure
  */
+/*
 static esp_err_t GpioToAdcChannel(int gpio_num, adc_unit_t unit_id, adc_channel_t* channel) {
     return adc_continuous_io_to_channel(gpio_num, &unit_id, channel);
 }
+*/
 
 /**
  * @brief Convert ADC channel to GPIO number using ESP-IDF API
@@ -74,9 +76,11 @@ static esp_err_t GpioToAdcChannel(int gpio_num, adc_unit_t unit_id, adc_channel_
  * @param[out] gpio_num Resulting GPIO number
  * @return ESP_OK on success, error code on failure
  */
+/*
 static esp_err_t AdcChannelToGpio(adc_unit_t unit_id, adc_channel_t channel, int* gpio_num) {
     return adc_continuous_channel_to_io(unit_id, channel, gpio_num);
 }
+*/
 
 //==============================================//
 // CONSTRUCTOR AND DESTRUCTOR
@@ -845,11 +849,11 @@ hf_adc_err_t EspAdc::ConfigureMonitor(const hf_adc_monitor_config_t& monitor_con
     }
     
     // Configure threshold monitor
-    adc_monitor_config_t esp_monitor_config = {};
+    // adc_monitor_config_t esp_monitor_config = {};  // Unused for now
     // esp_monitor_config.unit_id = static_cast<adc_unit_t>(config_.unit_id); // TODO: Fix monitor config
-    esp_monitor_config.channel = static_cast<adc_channel_t>(monitor_config.channel_id);
-    esp_monitor_config.h_threshold = monitor_config.high_threshold;
-    esp_monitor_config.l_threshold = monitor_config.low_threshold;
+    // esp_monitor_config.channel = static_cast<adc_channel_t>(monitor_config.channel_id);
+    // esp_monitor_config.h_threshold = monitor_config.high_threshold;
+    // esp_monitor_config.l_threshold = monitor_config.low_threshold;
     
     adc_monitor_evt_cbs_t callbacks = {};
     // callbacks.on_over_high_thresh = MonitorCallback; // TODO: Fix callback signature
@@ -1105,7 +1109,7 @@ bool IRAM_ATTR EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle, cons
         if (esp_adc->monitor_handles_[i] == monitor_handle && 
             esp_adc->monitor_callbacks_[i] != nullptr) {
             
-            const auto* mon_data = static_cast<const adc_monitor_evt_data_t*>(event_data);
+            // const auto* mon_data = static_cast<const adc_monitor_evt_data_t*>(event_data);  // Unused for now
             
             // Convert ESP-IDF event data to HF format
             hf_adc_monitor_event_t hf_event = {};

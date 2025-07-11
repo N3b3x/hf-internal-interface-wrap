@@ -294,11 +294,14 @@ private:
 
     // Timing
     uint64_t last_operation_time;
+    
+    // Idle level configuration
+    bool idle_level;
 
     ChannelState() noexcept
         : configured(false), busy(false), config(), status(), tx_channel(nullptr),
           rx_channel(nullptr), encoder(nullptr), bytes_encoder(nullptr), rx_buffer(nullptr),
-          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0) {}
+          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0), idle_level(false) {}
   };
 
   //==============================================//
@@ -343,17 +346,11 @@ private:
                                      size_t &symbol_count) noexcept;
 
 #ifdef HF_MCU_FAMILY_ESP32
-  /**
-   * @brief Static callback for RMT transmission complete
-   */
-  static bool OnTransmitComplete(rmt_channel_handle_t *channel,
-                                 const rmt_tx_done_event_data_t *edata, void *user_ctx);
-
-  /**
-   * @brief Static callback for RMT reception complete
-   */
-  static bool OnReceiveComplete(rmt_channel_handle_t *channel,
-                                const rmt_rx_done_event_data_t *edata, void *user_ctx);
+  // Update callback signatures to match ESP-IDF v5.5 API
+  static bool OnTransmitComplete(rmt_channel_handle_t channel,
+                                const rmt_tx_done_event_data_t *edata, void *user_ctx);
+  static bool OnReceiveComplete(rmt_channel_handle_t channel,
+                               const rmt_rx_done_event_data_t *edata, void *user_ctx);
 #endif
 
   /**

@@ -222,7 +222,7 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return true if successful, false on timeout
    */
-  bool WaitTransmitComplete(uint32_t timeout_ms) noexcept override;
+  bool WaitTransmitComplete(uint32_t timeout_ms) noexcept;
 
   //==============================================================================
   // ADVANCED UART FEATURES
@@ -617,10 +617,8 @@ private:
   //==============================================================================
 
   mutable RtosMutex mutex_; ///< Thread safety mutex
-  std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
-  
-  UartState uart_state_; ///< UART state tracking
   hf_uart_config_t port_config_; ///< Port configuration
+  std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
   uart_port_t uart_port_; ///< Native UART port handle
   
   // Event handling for interrupt mode
@@ -651,6 +649,12 @@ private:
   
   // Printf buffer
   char printf_buffer_[256]; ///< Printf buffer
+
+  // Add missing overrides for BaseUart pure virtuals
+  uint16_t BytesAvailable() noexcept override;
+  hf_uart_err_t FlushTx() noexcept override;
+  hf_uart_err_t FlushRx() noexcept override;
+  bool IsTxBusy() noexcept;
 };
 
 #else

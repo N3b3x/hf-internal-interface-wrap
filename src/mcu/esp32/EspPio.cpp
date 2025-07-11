@@ -23,7 +23,7 @@
 #include "hal/rmt_ll.h"
 #include "soc/soc_caps.h"
 
-static const char *TAG = "McuPio";
+// static const char *TAG = "McuPio";  // Unused for now
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
@@ -692,7 +692,8 @@ hf_pio_err_t McuPio::SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept 
   }
 
   // Store idle level in configuration for future transmissions
-  channels_[channel_id].config.idle_level = idle_level;
+  // Store idle level in channel state instead of config
+  channels_[channel_id].idle_level = idle_level;
 
   ESP_LOGD(TAG, "Set idle level %s for channel %d", idle_level ? "HIGH" : "LOW", channel_id);
   return hf_pio_err_t::PIO_SUCCESS;

@@ -88,39 +88,28 @@ constexpr const char *HfNvsErrToString(hf_nvs_err_t err) noexcept {
  * @brief NVS operation statistics.
  */
 struct hf_nvs_statistics_t {
-  uint32_t totalOperations;      ///< Total NVS operations performed
-  uint32_t successfulOperations; ///< Successful operations
-  uint32_t failedOperations;     ///< Failed operations
-  uint32_t readOperations;       ///< Number of read operations
-  uint32_t writeOperations;      ///< Number of write operations
-  uint32_t eraseOperations;      ///< Number of erase operations
-  uint32_t commitOperations;     ///< Number of commit operations
-  uint32_t averageOperationTimeUs; ///< Average operation time (microseconds)
-  uint32_t maxOperationTimeUs;   ///< Maximum operation time
-  uint32_t minOperationTimeUs;   ///< Minimum operation time
-
-  hf_nvs_statistics_t()
-      : totalOperations(0), successfulOperations(0), failedOperations(0),
-        readOperations(0), writeOperations(0), eraseOperations(0), commitOperations(0),
-        averageOperationTimeUs(0), maxOperationTimeUs(0), minOperationTimeUs(UINT32_MAX) {}
+  uint32_t total_operations;
+  uint32_t total_errors;
+  uint32_t total_reads;
+  uint32_t total_writes;
+  uint32_t total_commits;
+  uint32_t total_erases;
+  hf_nvs_err_t last_error;
+  uint32_t last_operation_time_us;
+  uint32_t successful_ops;
+  uint32_t failed_ops;
+  uint32_t bytes_written;
+  uint32_t bytes_read;
 };
 
 /**
  * @brief NVS diagnostic information.
  */
 struct hf_nvs_diagnostics_t {
-  bool nvsHealthy;               ///< Overall NVS health status
-  hf_nvs_err_t lastErrorCode;    ///< Last error code
-  uint32_t lastErrorTimestamp;   ///< Last error timestamp
-  uint32_t consecutiveErrors;    ///< Consecutive error count
-  bool nvsInitialized;           ///< NVS initialization status
-  size_t usedSpace;              ///< Used space in bytes
-  size_t totalSpace;             ///< Total space in bytes
-  uint32_t wearLevel;            ///< Wear level indicator
-
-  hf_nvs_diagnostics_t()
-      : nvsHealthy(true), lastErrorCode(hf_nvs_err_t::NVS_SUCCESS), lastErrorTimestamp(0), 
-          consecutiveErrors(0), nvsInitialized(false), usedSpace(0), totalSpace(0), wearLevel(0) {}
+  hf_nvs_err_t last_error;
+  uint32_t consecutive_errors;
+  bool storage_healthy;
+  uint32_t system_uptime_ms;
 };
 
 /**
@@ -162,9 +151,9 @@ public:
    * @return true if the NVS storage is initialized, false otherwise.
    * @note This method follows the HardFOC HAL contract pattern used by all peripherals.
    */
-  bool EnsureInitialized() noexcept {
+  bool EnsureInitialized() {
     if (!initialized_) {
-      initialized_ = Initialize();
+      initialized_ = (Initialize() == hf_nvs_err_t::NVS_SUCCESS);
     }
     return initialized_;
   }
@@ -173,9 +162,9 @@ public:
    * @brief Ensures that the NVS storage is deinitialized.
    * @return true if the NVS storage is deinitialized, false otherwise.
    */
-  bool EnsureDeinitialized() noexcept {
+  bool EnsureDeinitialized() {
     if (initialized_) {
-      initialized_ = !Deinitialize();
+      initialized_ = !(Deinitialize() == hf_nvs_err_t::NVS_SUCCESS);
     }
     return !initialized_;
   }

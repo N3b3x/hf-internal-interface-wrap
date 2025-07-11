@@ -180,24 +180,28 @@ static constexpr gpio_num_t PORT_TO_SDA_GPIO[] = {
  * @param port_num I2C port number
  * @return GPIO number or GPIO_NUM_NC if invalid
  */
+/*
 static gpio_num_t GetDefaultSclGpio(i2c_port_t port_num) noexcept {
     if (port_num >= 0 && port_num < (sizeof(PORT_TO_SCL_GPIO) / sizeof(PORT_TO_SCL_GPIO[0]))) {
         return PORT_TO_SCL_GPIO[port_num];
     }
     return GPIO_NUM_NC;
 }
+*/
 
 /**
  * @brief Get default SDA GPIO for I2C port.
  * @param port_num I2C port number  
  * @return GPIO number or GPIO_NUM_NC if invalid
  */
+/*
 static gpio_num_t GetDefaultSdaGpio(i2c_port_t port_num) noexcept {
     if (port_num >= 0 && port_num < (sizeof(PORT_TO_SDA_GPIO) / sizeof(PORT_TO_SDA_GPIO[0]))) {
         return PORT_TO_SDA_GPIO[port_num];
     }
     return GPIO_NUM_NC;
 }
+*/
 
 #endif
 

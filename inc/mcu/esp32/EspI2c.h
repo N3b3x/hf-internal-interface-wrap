@@ -108,6 +108,8 @@
  */
 class EspI2c : public BaseI2c {
 public:
+    using BaseI2c::ReadRegister;
+    using BaseI2c::WriteRegister;
     //==========================================================================
     // CONSTRUCTORS AND DESTRUCTOR
     //==========================================================================

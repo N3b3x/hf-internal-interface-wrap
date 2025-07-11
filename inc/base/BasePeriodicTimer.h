@@ -21,6 +21,11 @@
 #include <cstdint>
 #include <functional>
 
+#ifndef HF_TIMESTAMP_US_T_DEFINED
+#define HF_TIMESTAMP_US_T_DEFINED
+using hf_timestamp_us_t = uint64_t;
+#endif
+
 //--------------------------------------
 //  HardFOC Timer Error Codes (Table)
 //--------------------------------------

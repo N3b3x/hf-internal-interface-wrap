@@ -12,10 +12,11 @@
 
 #pragma once
 
-#include "BaseNvsStorage.h" // For hf_nvs_err_t
+#include "BaseNvs.h" // For hf_nvs_err_t
 #include "HardwareTypes.h"  // For basic hardware types
 #include "McuSelect.h"      // Central MCU platform selection (includes all ESP-IDF)
 #include "EspTypes_Base.h"
+#include <cstring>
 
 //==============================================================================
 // ESP32 NVS TYPE MAPPINGS

@@ -331,32 +331,41 @@ struct hf_gpio_status_info_t {
  * @brief ESP32 GPIO pin capabilities and limitations.
  * @details Complete capability information for each GPIO pin.
  */
-struct hf_gpio_pin_capabilities_t {
-  bool is_valid_gpio;                 ///< Pin can be used as GPIO
-  bool supports_input;                ///< Pin supports input mode
-  bool supports_output;               ///< Pin supports output mode
-  bool supports_open_drain;           ///< Pin supports open-drain mode
-  bool supports_pull_up;              ///< Pin supports internal pull-up
-  bool supports_pull_down;            ///< Pin supports internal pull-down
-  bool supports_adc;                  ///< Pin supports ADC functionality
-  bool supports_dac;                  ///< Pin supports DAC functionality (if available)
-  bool supports_rtc;                  ///< Pin supports RTC GPIO
-  bool supports_lp_io;                ///< Pin supports LP_IO functionality
-  bool supports_touch;                ///< Pin supports touch sensing
-  bool supports_dedicated_gpio;       ///< Pin can be used in dedicated GPIO bundles
-  bool supports_glitch_filter;        ///< Pin supports glitch filtering
-  bool supports_etm;                  ///< Pin supports Event Task Matrix
-  bool is_strapping_pin;              ///< Pin is a strapping pin (requires caution)
-  bool is_spi_flash_pin;              ///< Pin is used for SPI flash (not recommended for GPIO)
-  bool is_usb_jtag_pin;               ///< Pin is used for USB-JTAG (disables JTAG if reconfigured)
-  uint8_t rtc_gpio_number;            ///< RTC GPIO number (if applicable, 0xFF if not RTC)
-  uint8_t lp_gpio_number;             ///< Low-power GPIO number (if applicable, 0xFF if not LP)
-  uint8_t adc_unit;                   ///< ADC unit number (if applicable, 0xFF if no ADC)
-  uint8_t adc_channel;                ///< ADC channel number (if applicable, 0xFF if no ADC)
-  uint8_t touch_channel;              ///< Touch channel number (if applicable, 0xFF if no touch)
-  hf_gpio_drive_cap_t max_drive_strength; ///< Maximum supported drive strength
-  uint32_t max_frequency_hz;          ///< Maximum supported toggle frequency
-};
+typedef struct {
+  uint8_t pin_number;
+  bool is_valid_gpio;
+  bool supports_input;
+  bool supports_output;
+  bool supports_pullup;
+  bool supports_pulldown;
+  bool supports_adc;
+  bool supports_rtc;
+  bool is_strapping_pin;
+  bool is_usb_jtag_pin;
+  bool is_spi_pin;
+  bool supports_glitch_filter;
+} hf_gpio_pin_capabilities_t;
+
+// Only define each macro once, use 'pin' as the parameter name
+// Only define each macro once, use 'pin' as the parameter name
+#ifndef HF_GPIO_IS_ADC_CAPABLE
+#define HF_GPIO_IS_ADC_CAPABLE(pin)   (false)
+#endif
+#ifndef HF_GPIO_IS_SPI_PIN
+#define HF_GPIO_IS_SPI_PIN(pin)       (false)
+#endif
+#ifndef HF_GPIO_IS_RTC_GPIO
+#define HF_GPIO_IS_RTC_GPIO(pin)      (false)
+#endif
+#ifndef HF_GPIO_IS_STRAPPING_PIN
+#define HF_GPIO_IS_STRAPPING_PIN(pin) (false)
+#endif
+#ifndef HF_GPIO_IS_USB_JTAG_PIN
+#define HF_GPIO_IS_USB_JTAG_PIN(pin)  (false)
+#endif
+#ifndef HF_GPIO_SUPPORTS_GLITCH_FILTER
+#define HF_GPIO_SUPPORTS_GLITCH_FILTER(pin) (false)
+#endif
 
 //==============================================================================
 // END OF ESPGPIO TYPES - MINIMAL AND ESSENTIAL ONLY
@@ -381,22 +390,14 @@ struct hf_gpio_pin_capabilities_t {
 #define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) \
   ((gpio_num) >= 0 && (gpio_num) <= 7)
 
-#define HF_GPIO_IS_RTC_GPIO(gpio_num) HF_GPIO_IS_VALID_RTC_GPIO(gpio_num)
-
 #define HF_GPIO_IS_VALID_LP_IO(gpio_num) \
   ((gpio_num) >= 0 && (gpio_num) <= 7)
 
 #define HF_GPIO_SUPPORTS_ADC(gpio_num) \
   ((gpio_num) >= 0 && (gpio_num) <= 6)
 
-#define HF_GPIO_IS_STRAPPING_PIN(gpio_num) \
-  ((gpio_num) == 4 || (gpio_num) == 5 || (gpio_num) == 8 || (gpio_num) == 9 || (gpio_num) == 15)
-
 #define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) \
   ((gpio_num) >= 24 && (gpio_num) <= 30)
-
-#define HF_GPIO_IS_USB_JTAG_PIN(gpio_num) \
-  ((gpio_num) == 12 || (gpio_num) == 13)
 
 #define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) \
   (false) /* ESP32 has no input-only pins */
@@ -409,9 +410,6 @@ struct hf_gpio_pin_capabilities_t {
 
 #define HF_GPIO_SUPPORTS_OPEN_DRAIN(gpio_num) \
   (HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num))
-
-#define HF_GPIO_SUPPORTS_GLITCH_FILTER(gpio_num) \
-  (HF_GPIO_IS_VALID_GPIO(gpio_num))
 
 #define HF_GPIO_SUPPORTS_DEDICATED_GPIO(gpio_num) \
   (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_SPI_FLASH_PIN(gpio_num))

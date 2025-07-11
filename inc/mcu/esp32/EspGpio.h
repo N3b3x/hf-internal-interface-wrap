@@ -17,6 +17,7 @@
 
 #include "BaseGpio.h"
 #include "EspTypes_GPIO.h"
+#include "mcu/esp32/utils/EspTypes_GPIO.h"
 
 /**
  * @class EspGpio
@@ -297,6 +298,22 @@ protected:
    *          This is a simple, low-overhead filter suitable for basic noise rejection.
    */
   hf_gpio_err_t ConfigurePinGlitchFilter(bool enable) noexcept;
+
+  /**
+   * @brief Configure advanced glitch filter (pin/flex) for ESP32C6.
+   * @param filter_type Glitch filter type (none, pin, flex, both)
+   * @param flex_config Optional pointer to flexible filter config
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  hf_gpio_err_t ConfigureGlitchFilter(hf_gpio_glitch_filter_type_t filter_type,
+                                      const hf_gpio_flex_filter_config_t *flex_config = nullptr) noexcept;
+
+  /**
+   * @brief Configure sleep mode for ESP32C6 GPIO.
+   * @param sleep_config Sleep configuration struct
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  hf_gpio_err_t ConfigureSleepMode(const hf_gpio_sleep_config_t &sleep_config) noexcept;
 
   /**
    * @brief Configure flexible glitch filter with custom timing.
@@ -585,6 +602,9 @@ private:
    */
   void CleanupInterruptSemaphore() noexcept;
 
+  hf_gpio_err_t WriteImpl(hf_gpio_state_t state) noexcept;
+  hf_gpio_err_t ReadImpl(hf_gpio_state_t &state) noexcept;
+  
   //==============================================================//
   // MEMBER VARIABLES
   //==============================================================//

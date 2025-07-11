@@ -24,6 +24,12 @@
 // Direct ESP-IDF type usage - no unnecessary aliases
 // These types are used internally by EspPeriodicTimer implementation
 
+// Timer handle type
+typedef esp_timer_handle_t hf_timer_handle_t;
+
+// Timestamp type
+typedef uint64_t hf_timestamp_us_t;
+
 //==============================================================================
 // END OF ESPTIMER TYPES - MINIMAL AND ESSENTIAL ONLY
 //==============================================================================

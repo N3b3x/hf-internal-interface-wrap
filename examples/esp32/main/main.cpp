@@ -78,7 +78,7 @@ extern "C" void app_main(void) {
 
     // 4. EspCan
     hf_esp_can_config_t can_cfg = {};
-    can_cfg.controller_id = 0;
+    can_cfg.controller_id = hf_can_controller_id_t::HF_CAN_CONTROLLER_0;
     can_cfg.tx_pin = 7;
     can_cfg.rx_pin = 6;
     can_cfg.tx_queue_len = 8;
@@ -99,7 +99,7 @@ extern "C" void app_main(void) {
 
     // 6. EspI2c
     hf_i2c_master_bus_config_t i2c_cfg = {};
-    i2c_cfg.i2c_port = 0;
+    i2c_cfg.i2c_port = I2C_NUM_0;
     i2c_cfg.sda_io_num = 21;
     i2c_cfg.scl_io_num = 22;
     i2c_cfg.enable_internal_pullup = true;
@@ -110,7 +110,7 @@ extern "C" void app_main(void) {
     // 7. EspPwm
     hf_pwm_unit_config_t pwm_cfg = {};
     pwm_cfg.unit_id = 0;
-    pwm_cfg.mode = hf_pwm_mode_t::Fade;
+    pwm_cfg.mode = hf_pwm_mode_t::HF_PWM_MODE_FADE;
     pwm_cfg.base_clock_hz = HF_PWM_APB_CLOCK_HZ;
     pwm_cfg.clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT;
     pwm_cfg.enable_fade = true;
@@ -133,32 +133,32 @@ extern "C" void app_main(void) {
     
     // Test GPIO states
     ESP_LOGI(TAG, "Testing GPIO states...");
-    BaseGpio::hf_gpio_state_t test_state = BaseGpio::hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
+    hf_gpio_state_t test_state = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
     ESP_LOGI(TAG, "GPIO State: %s", BaseGpio::ToString(test_state));
     
     // Test GPIO directions
     ESP_LOGI(TAG, "Testing GPIO directions...");
-    BaseGpio::hf_gpio_direction_t test_dir = BaseGpio::hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT;
+    hf_gpio_direction_t test_dir = hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT;
     ESP_LOGI(TAG, "GPIO Direction: %s", BaseGpio::ToString(test_dir));
     
     // Test GPIO active states
     ESP_LOGI(TAG, "Testing GPIO active states...");
-    BaseGpio::hf_gpio_active_state_t test_active = BaseGpio::hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH;
+    hf_gpio_active_state_t test_active = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH;
     ESP_LOGI(TAG, "GPIO Active State: %s", BaseGpio::ToString(test_active));
     
     // Test GPIO output modes
     ESP_LOGI(TAG, "Testing GPIO output modes...");
-    BaseGpio::hf_gpio_output_mode_t test_output = BaseGpio::hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL;
+    hf_gpio_output_mode_t test_output = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL;
     ESP_LOGI(TAG, "GPIO Output Mode: %s", BaseGpio::ToString(test_output));
     
     // Test GPIO pull modes
     ESP_LOGI(TAG, "Testing GPIO pull modes...");
-    BaseGpio::hf_gpio_pull_mode_t test_pull = BaseGpio::hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING;
+    hf_gpio_pull_mode_t test_pull = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING;
     ESP_LOGI(TAG, "GPIO Pull Mode: %s", BaseGpio::ToString(test_pull));
     
     // Test GPIO interrupt triggers
     ESP_LOGI(TAG, "Testing GPIO interrupt triggers...");
-    BaseGpio::hf_gpio_interrupt_trigger_t test_trigger = BaseGpio::hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE;
+    hf_gpio_interrupt_trigger_t test_trigger = hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE;
     ESP_LOGI(TAG, "GPIO Interrupt Trigger: %s", BaseGpio::ToString(test_trigger));
     
     // Test validation functions

@@ -77,6 +77,7 @@ public:
    * @note Uses lazy initialization - no hardware action until first operation
    */
   explicit EspPwm(const hf_pwm_unit_config_t &config = hf_pwm_unit_config_t{}) noexcept;
+  EspPwm(uint32_t base_clock_hz) noexcept;
 
 
 
@@ -105,20 +106,20 @@ public:
    * @param mode Operating mode (Basic or Fade)
    * @return PWM_SUCCESS on success, error code on failure
    */
-  hf_pwm_err_t SetMode(hf_pwm_mode_t mode) noexcept override;
+  hf_pwm_err_t SetMode(hf_pwm_mode_t mode) noexcept;
 
   /**
    * @brief Get current PWM operating mode
    * @return Current operating mode
    */
-  hf_pwm_mode_t GetMode() const noexcept override;
+  hf_pwm_mode_t GetMode() const noexcept;
 
   //==============================================================================
   // CHANNEL MANAGEMENT (BasePwm Interface)
   //==============================================================================
 
   hf_pwm_err_t ConfigureChannel(hf_channel_id_t channel_id,
-                            const hf_pwm_channel_config_t &config) noexcept override;
+                            const hf_pwm_channel_config_t &config) noexcept;
   hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept override;
   hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept override;
   bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept override;
@@ -149,16 +150,16 @@ public:
   float GetDutyCycle(hf_channel_id_t channel_id) const noexcept override;
   hf_frequency_hz_t GetFrequency(hf_channel_id_t channel_id) const noexcept override;
   hf_pwm_err_t GetChannelStatus(hf_channel_id_t channel_id,
-                            hf_pwm_channel_status_t &status) const noexcept override;
-  hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t &capabilities) const noexcept override;
-  hf_pwm_err_t GetLastError(hf_channel_id_t channel_id) const noexcept override;
+                            hf_pwm_channel_status_t &status) const noexcept;
+  hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t &capabilities) const noexcept;
+  hf_pwm_err_t GetLastError(hf_channel_id_t channel_id) const noexcept;
 
   //==============================================================================
   // CALLBACKS (BasePwm Interface)
   //==============================================================================
 
-  void SetPeriodCallback(hf_pwm_period_callback_t callback, void *user_data = nullptr) noexcept override;
-  void SetFaultCallback(hf_pwm_fault_callback_t callback, void *user_data = nullptr) noexcept override;
+  void SetPeriodCallback(hf_pwm_period_callback_t callback, void *user_data = nullptr) noexcept;
+  void SetFaultCallback(hf_pwm_fault_callback_t callback, void *user_data = nullptr) noexcept;
 
   //==============================================================================
   // ESP32C6-SPECIFIC FEATURES
