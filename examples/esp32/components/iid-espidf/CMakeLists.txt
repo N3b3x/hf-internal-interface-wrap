@@ -115,5 +115,4 @@ idf_component_register(
         wear_levelling
         wifi_provisioning
         wpa_supplicant
-        xtensa
 )
