@@ -1,462 +1,814 @@
-# 🔄 BaseSpi API Documentation
+# 🔌 BaseSpi API Reference
 
-## 📋 Overview
+<div align="center">
 
-The `BaseSpi` class is an abstract base class that provides a unified, platform-agnostic interface for SPI (Serial Peripheral Interface) bus communication in the HardFOC system. This class enables high-speed communication with various SPI devices such as ADCs, DACs, sensors, displays, and external controllers.
+![BaseSpi](https://img.shields.io/badge/BaseSpi-Abstract%20Base%20Class-blue?style=for-the-badge&logo=plug)
 
-## 🏗️ Class Hierarchy
+**🔄 Unified SPI abstraction for high-speed serial communication**
 
+</div>
+
+---
+
+## 📚 **Table of Contents**
+
+- [🎯 **Overview**](#-overview)
+- [🏗️ **Class Hierarchy**](#️-class-hierarchy)
+- [📋 **Error Codes**](#-error-codes)
+- [🔧 **Core API**](#-core-api)
+- [📊 **Data Structures**](#-data-structures)
+- [💡 **Usage Examples**](#-usage-examples)
+- [🧪 **Best Practices**](#-best-practices)
+
+---
+
+## 🎯 **Overview**
+
+The `BaseSpi` class provides a comprehensive SPI abstraction that serves as the unified interface for all Serial Peripheral Interface operations in the HardFOC system. It supports multi-device communication, configurable modes, and high-speed data transfer.
+
+### ✨ **Key Features**
+
+- 🔄 **Multi-Device Support** - Simultaneous communication with multiple SPI devices
+- ⚡ **High-Speed Transfer** - Configurable clock frequencies up to 80 MHz
+- 🎛️ **Flexible Modes** - Support for all SPI modes (0, 1, 2, 3)
+- 📊 **DMA Support** - Hardware-accelerated data transfer
+- 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
+- 🏎️ **Performance Optimized** - Minimal overhead for critical applications
+- 🔌 **Platform Agnostic** - Works with various SPI hardware implementations
+- 📈 **Real-time Control** - Low-latency communication for time-critical applications
+
+### 🔌 **Supported Applications**
+
+| Application | Speed | Description |
+|-------------|-------|-------------|
+| **Sensor Communication** | 1-10 MHz | Temperature, pressure, IMU sensors |
+| **Display Control** | 10-40 MHz | LCD, OLED, TFT displays |
+| **Memory Access** | 20-80 MHz | Flash, EEPROM, FRAM |
+| **Motor Control** | 1-20 MHz | Motor driver ICs |
+| **Audio Codecs** | 1-50 MHz | Digital audio interfaces |
+
+---
+
+## 🏗️ **Class Hierarchy**
+
+```mermaid
+classDiagram
+    class BaseSpi {
+        <<abstract>>
+        +Initialize() hf_spi_err_t
+        +Deinitialize() hf_spi_err_t
+        +ConfigureDevice(device_id, config) hf_spi_err_t
+        +TransmitReceive(device_id, tx_data, rx_data, length) hf_spi_err_t
+        +Transmit(device_id, data, length) hf_spi_err_t
+        +Receive(device_id, data, length) hf_spi_err_t
+        +GetDeviceStatus(device_id, status) hf_spi_err_t
+        +GetCapabilities(capabilities) hf_spi_err_t
+    }
+    
+    class EspSpi {
+        +EspSpi(host, cs_pin)
+        +GetHost() spi_host_device_t
+        +GetCsPin() hf_pin_num_t
+    }
+    
+    BaseSpi <|-- EspSpi
 ```
-BaseSpi (Abstract Base Class)
-    ├── McuSpi (ESP32 SPI implementation)
-    ├── StmSpi (STM32 SPI implementation)
-    ├── BitBangSpi (Software SPI implementation)
-    └── SfSpiBus (Thread-safe wrapper)
-```
 
-## 🔧 Features
+---
 
-- ✅ **High-Speed Communication**: Up to 80MHz SPI clock speeds
-- ✅ **Four SPI Modes**: Complete CPOL/CPHA mode support (0-3)
-- ✅ **Flexible Transfers**: Full-duplex, write-only, and read-only operations
-- ✅ **Variable Word Size**: 8-bit, 16-bit, and custom bit transfers
-- ✅ **Automatic CS Control**: Hardware and software chip select management
-- ✅ **DMA Support**: High-performance transfers with DMA acceleration
-- ✅ **Multi-Device Support**: Multiple devices on same bus with different settings
-- ✅ **Comprehensive Error Handling**: 30 specific error codes
+## 📋 **Error Codes**
 
-## 📊 Error Codes
+### ✅ **Success Codes**
 
-| Error Code | Value | Description |
-|------------|-------|-------------|
-| `SPI_SUCCESS` | 0 | Operation successful |
-| `SPI_ERR_NOT_INITIALIZED` | 2 | SPI not initialized |
-| `SPI_ERR_BUS_BUSY` | 7 | SPI bus is busy |
-| `SPI_ERR_TRANSFER_FAILED` | 11 | Transfer operation failed |
-| `SPI_ERR_TRANSFER_TIMEOUT` | 12 | Transfer timed out |
-| `SPI_ERR_DEVICE_NOT_RESPONDING` | 16 | Device not responding |
-| `SPI_ERR_CS_CONTROL_FAILED` | 17 | Chip select control failed |
-| `SPI_ERR_INVALID_CLOCK_SPEED` | 24 | Unsupported clock speed |
-| `SPI_ERR_INVALID_MODE` | 25 | Invalid SPI mode |
+| Code | Value | Description |
+|------|-------|-------------|
+| `SPI_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-*See header file for complete list of 30 error codes*
+### ❌ **General Error Codes**
 
-## 🏗️ Data Structures
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `SPI_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
+| `SPI_ERR_NOT_INITIALIZED` | 2 | ⚠️ SPI not initialized | Call Initialize() first |
+| `SPI_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ SPI already initialized | Check initialization state |
+| `SPI_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
+| `SPI_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
+| `SPI_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### SpiBusConfig
-Configuration structure for SPI bus setup:
+### 🔧 **Device Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `SPI_ERR_INVALID_DEVICE` | 7 | 🚫 Invalid SPI device | Use valid device numbers |
+| `SPI_ERR_DEVICE_BUSY` | 8 | 🔄 Device already in use | Wait or use different device |
+| `SPI_ERR_DEVICE_NOT_AVAILABLE` | 9 | ⚠️ Device not available | Check device availability |
+| `SPI_ERR_DEVICE_NOT_CONFIGURED` | 10 | ⚙️ Device not configured | Configure device first |
+| `SPI_ERR_DEVICE_NOT_RESPONDING` | 11 | 🔇 Device not responding | Check device power and connections |
+
+### ⚡ **Transfer Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `SPI_ERR_TRANSFER_TIMEOUT` | 12 | ⏰ Transfer timeout | Check clock frequency and device |
+| `SPI_ERR_TRANSFER_FAILURE` | 13 | ❌ Transfer failed | Check connections and device state |
+| `SPI_ERR_TRANSFER_INCOMPLETE` | 14 | 📊 Transfer incomplete | Check data length and buffer size |
+| `SPI_ERR_TRANSFER_ABORTED` | 15 | ⏹️ Transfer aborted | Check abort conditions |
+
+### 🎛️ **Configuration Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `SPI_ERR_INVALID_CONFIGURATION` | 16 | ⚙️ Invalid configuration | Check configuration parameters |
+| `SPI_ERR_UNSUPPORTED_MODE` | 17 | 🚫 Unsupported SPI mode | Use supported mode |
+| `SPI_ERR_UNSUPPORTED_FREQUENCY` | 18 | 🚫 Unsupported frequency | Use supported frequency range |
+| `SPI_ERR_UNSUPPORTED_DATA_SIZE` | 19 | 🚫 Unsupported data size | Use supported data size |
+| `SPI_ERR_PIN_CONFLICT` | 20 | 🔌 Pin already in use | Use different pins |
+
+### 🌐 **Hardware Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `SPI_ERR_HARDWARE_FAULT` | 21 | 💥 Hardware fault | Check power and connections |
+| `SPI_ERR_COMMUNICATION_FAILURE` | 22 | 📡 Communication failure | Check bus connections |
+| `SPI_ERR_DMA_ERROR` | 23 | 💾 DMA error | Check DMA configuration |
+| `SPI_ERR_RESOURCE_BUSY` | 24 | 🔄 Resource busy | Wait for resource availability |
+
+---
+
+## 🔧 **Core API**
+
+### 🏗️ **Initialization Methods**
 
 ```cpp
-struct SpiBusConfig {
-    hf_spi_host_t host;                 // SPI host/controller
-    hf_gpio_num_t mosi_pin;             // MOSI (Master Out Slave In) pin
-    hf_gpio_num_t miso_pin;             // MISO (Master In Slave Out) pin
-    hf_gpio_num_t sclk_pin;             // SCLK (Serial Clock) pin
-    hf_gpio_num_t cs_pin;               // CS (Chip Select) pin
-    uint32_t clock_speed_hz;            // Clock speed in Hz
-    uint8_t mode;                       // SPI mode (0-3)
-    uint8_t bits_per_word;              // Bits per transfer (8 or 16)
-    bool cs_active_low;                 // CS polarity
-    uint16_t timeout_ms;                // Operation timeout
+/**
+ * @brief Initialize the SPI peripheral
+ * @return hf_spi_err_t error code
+ * 
+ * 📝 Sets up SPI hardware, configures devices, and prepares for communication.
+ * Must be called before any SPI operations.
+ * 
+ * @example
+ * EspSpi spi(SPI2_HOST, 5);  // SPI2, CS on pin 5
+ * hf_spi_err_t result = spi.Initialize();
+ * if (result == hf_spi_err_t::SPI_SUCCESS) {
+ *     // SPI ready for use
+ * }
+ */
+virtual hf_spi_err_t Initialize() noexcept = 0;
+
+/**
+ * @brief Deinitialize the SPI peripheral
+ * @return hf_spi_err_t error code
+ * 
+ * 🧹 Cleanly shuts down SPI hardware and releases resources.
+ */
+virtual hf_spi_err_t Deinitialize() noexcept = 0;
+
+/**
+ * @brief Check if SPI is initialized
+ * @return true if initialized, false otherwise
+ * 
+ * ❓ Query initialization status without side effects.
+ */
+[[nodiscard]] bool IsInitialized() const noexcept;
+
+/**
+ * @brief Ensure SPI is initialized (lazy initialization)
+ * @return true if initialized successfully, false otherwise
+ * 
+ * 🔄 Automatically initializes SPI if not already initialized.
+ */
+bool EnsureInitialized() noexcept;
+```
+
+### ⚙️ **Device Configuration**
+
+```cpp
+/**
+ * @brief Configure an SPI device
+ * @param device_id Device identifier
+ * @param config Device configuration structure
+ * @return hf_spi_err_t error code
+ * 
+ * ⚙️ Configures device parameters including mode, frequency, data size,
+ * and pin assignments.
+ * 
+ * @example
+ * hf_spi_device_config_t config;
+ * config.mode = hf_spi_mode_t::MODE_0;
+ * config.frequency_hz = 1000000;  // 1 MHz
+ * config.data_size = hf_spi_data_size_t::DATA_8BIT;
+ * config.cs_pin = 5;
+ * config.cs_active_low = true;
+ * 
+ * hf_spi_err_t result = spi.ConfigureDevice(0, config);
+ */
+virtual hf_spi_err_t ConfigureDevice(uint8_t device_id,
+                                   const hf_spi_device_config_t &config) noexcept = 0;
+```
+
+### 🔄 **Data Transfer Methods**
+
+```cpp
+/**
+ * @brief Transmit and receive data simultaneously
+ * @param device_id Device identifier
+ * @param tx_data Transmit data buffer
+ * @param rx_data Receive data buffer
+ * @param length Number of bytes to transfer
+ * @return hf_spi_err_t error code
+ * 
+ * 🔄 Performs full-duplex SPI transfer. Both transmit and receive
+ * buffers must be at least 'length' bytes.
+ * 
+ * @example
+ * uint8_t tx_data[] = {0x01, 0x02, 0x03};
+ * uint8_t rx_data[3];
+ * hf_spi_err_t result = spi.TransmitReceive(0, tx_data, rx_data, 3);
+ * if (result == hf_spi_err_t::SPI_SUCCESS) {
+ *     printf("Received: %02X %02X %02X\n", rx_data[0], rx_data[1], rx_data[2]);
+ * }
+ */
+virtual hf_spi_err_t TransmitReceive(uint8_t device_id, const uint8_t *tx_data,
+                                   uint8_t *rx_data, size_t length) noexcept = 0;
+
+/**
+ * @brief Transmit data only
+ * @param device_id Device identifier
+ * @param data Transmit data buffer
+ * @param length Number of bytes to transmit
+ * @return hf_spi_err_t error code
+ * 
+ * 📤 Performs SPI transmit operation. Receive data is discarded.
+ * 
+ * @example
+ * uint8_t command[] = {0xAA, 0x55, 0x01};
+ * hf_spi_err_t result = spi.Transmit(0, command, 3);
+ */
+virtual hf_spi_err_t Transmit(uint8_t device_id, const uint8_t *data,
+                            size_t length) noexcept = 0;
+
+/**
+ * @brief Receive data only
+ * @param device_id Device identifier
+ * @param data Receive data buffer
+ * @param length Number of bytes to receive
+ * @return hf_spi_err_t error code
+ * 
+ * 📥 Performs SPI receive operation. Transmit data is zeros.
+ * 
+ * @example
+ * uint8_t response[4];
+ * hf_spi_err_t result = spi.Receive(0, response, 4);
+ */
+virtual hf_spi_err_t Receive(uint8_t device_id, uint8_t *data,
+                           size_t length) noexcept = 0;
+```
+
+### 📊 **Status and Capabilities**
+
+```cpp
+/**
+ * @brief Get device status information
+ * @param device_id Device identifier
+ * @param status [out] Status information structure
+ * @return hf_spi_err_t error code
+ * 
+ * 📊 Retrieves comprehensive status information about a device.
+ */
+virtual hf_spi_err_t GetDeviceStatus(uint8_t device_id,
+                                   hf_spi_device_status_t &status) const noexcept = 0;
+
+/**
+ * @brief Get SPI capabilities
+ * @param capabilities [out] Capability information structure
+ * @return hf_spi_err_t error code
+ * 
+ * 📋 Retrieves hardware capabilities and limitations.
+ */
+virtual hf_spi_err_t GetCapabilities(hf_spi_capabilities_t &capabilities) const noexcept = 0;
+```
+
+---
+
+## 📊 **Data Structures**
+
+### ⚙️ **Device Configuration**
+
+```cpp
+struct hf_spi_device_config_t {
+    hf_spi_mode_t mode;              ///< SPI mode (0-3)
+    uint32_t frequency_hz;           ///< Clock frequency in Hz
+    hf_spi_data_size_t data_size;    ///< Data size (8, 16, 32 bit)
+    hf_pin_num_t cs_pin;             ///< Chip select pin
+    bool cs_active_low;              ///< CS active low (true) or high (false)
+    hf_spi_bit_order_t bit_order;    ///< Bit order (MSB or LSB first)
+    uint32_t timeout_ms;             ///< Transfer timeout in milliseconds
+    bool use_dma;                    ///< Use DMA for transfers
 };
 ```
 
-### SPI Modes
-Standard SPI modes with CPOL/CPHA combinations:
-
-| Mode | CPOL | CPHA | Clock Polarity | Clock Phase |
-|------|------|------|----------------|-------------|
-| 0 | 0 | 0 | Idle Low | Sample on Rising Edge |
-| 1 | 0 | 1 | Idle Low | Sample on Falling Edge |
-| 2 | 1 | 0 | Idle High | Sample on Falling Edge |
-| 3 | 1 | 1 | Idle High | Sample on Rising Edge |
-
-### SpiDeviceConfig
-Per-device configuration for multi-device buses:
+### 📊 **Device Status**
 
 ```cpp
-struct SpiDeviceConfig {
-    hf_gpio_num_t cs_pin;               // Device-specific CS pin
-    uint32_t clock_speed_hz;            // Device-specific clock speed
-    uint8_t mode;                       // Device-specific SPI mode
-    uint8_t bits_per_word;              // Device-specific word size
-    uint16_t cs_ena_pretrans;           // CS setup time
-    uint16_t cs_ena_posttrans;          // CS hold time
-    bool use_dma;                       // Enable DMA for transfers
+struct hf_spi_device_status_t {
+    bool is_configured;        ///< Device is configured
+    bool is_busy;              ///< Device is currently busy
+    hf_spi_mode_t current_mode; ///< Current SPI mode
+    uint32_t current_frequency; ///< Current frequency in Hz
+    uint32_t bytes_transferred; ///< Total bytes transferred
+    uint32_t transfer_errors;   ///< Number of transfer errors
+    hf_spi_err_t last_error;    ///< Last error that occurred
+    uint32_t timestamp_us;      ///< Timestamp of last operation
 };
 ```
 
-## 🔨 Core Methods
+### 📋 **SPI Capabilities**
 
-### Initialization
-
-#### `EnsureInitialized()`
 ```cpp
-bool EnsureInitialized() noexcept
-```
-**Description**: Lazy initialization - initializes SPI bus on first call  
-**Returns**: `true` if initialized successfully, `false` on failure  
-**Thread-Safe**: Yes  
-
-#### `IsInitialized()`
-```cpp
-bool IsInitialized() const noexcept
-```
-**Description**: Check if SPI bus is initialized  
-**Returns**: `true` if initialized, `false` otherwise  
-**Thread-Safe**: Yes  
-
-### Device Management
-
-#### `AddDevice()`
-```cpp
-virtual HfSpiErr AddDevice(uint8_t device_id, const SpiDeviceConfig& config) noexcept = 0
-```
-**Description**: Add a device to the SPI bus with specific configuration  
-**Parameters**:
-- `device_id`: Unique device identifier
-- `config`: Device-specific configuration
-
-**Returns**: `HfSpiErr` result code  
-**Thread-Safe**: Implementation dependent  
-
-#### `RemoveDevice()`
-```cpp
-virtual HfSpiErr RemoveDevice(uint8_t device_id) noexcept = 0
-```
-**Description**: Remove a device from the SPI bus  
-**Parameters**:
-- `device_id`: Device identifier to remove
-
-**Returns**: `HfSpiErr` result code  
-**Thread-Safe**: Implementation dependent  
-
-### Data Transfer
-
-#### `Transfer()`
-```cpp
-virtual HfSpiErr Transfer(uint8_t device_id, const uint8_t* tx_data, uint8_t* rx_data, 
-                         size_t length, uint32_t timeout_ms = 0) noexcept = 0
-```
-**Description**: Full-duplex SPI transfer (simultaneous send and receive)  
-**Parameters**:
-- `device_id`: Target device identifier
-- `tx_data`: Data to transmit (can be nullptr for receive-only)
-- `rx_data`: Buffer for received data (can be nullptr for transmit-only)
-- `length`: Number of bytes to transfer
-- `timeout_ms`: Timeout in milliseconds (0 = use default)
-
-**Returns**: `HfSpiErr` result code  
-**Thread-Safe**: Implementation dependent  
-
-#### `Write()`
-```cpp
-virtual HfSpiErr Write(uint8_t device_id, const uint8_t* data, 
-                      size_t length, uint32_t timeout_ms = 0) noexcept = 0
-```
-**Description**: Write-only SPI transfer  
-**Parameters**:
-- `device_id`: Target device identifier
-- `data`: Data to transmit
-- `length`: Number of bytes to write
-- `timeout_ms`: Timeout in milliseconds
-
-**Returns**: `HfSpiErr` result code  
-**Thread-Safe**: Implementation dependent  
-
-#### `Read()`
-```cpp
-virtual HfSpiErr Read(uint8_t device_id, uint8_t* data, 
-                     size_t length, uint32_t timeout_ms = 0) noexcept = 0
-```
-**Description**: Read-only SPI transfer  
-**Parameters**:
-- `device_id`: Target device identifier
-- `data`: Buffer for received data
-- `length`: Number of bytes to read
-- `timeout_ms`: Timeout in milliseconds
-
-**Returns**: `HfSpiErr` result code  
-**Thread-Safe**: Implementation dependent  
-
-#### `WriteRead()`
-```cpp
-virtual HfSpiErr WriteRead(uint8_t device_id, const uint8_t* tx_data, size_t tx_length,
-                          uint8_t* rx_data, size_t rx_length, uint32_t timeout_ms = 0) noexcept = 0
-```
-**Description**: Write then read operation (useful for command-response protocols)  
-**Parameters**:
-- `device_id`: Target device identifier
-- `tx_data`: Command/data to transmit
-- `tx_length`: Number of bytes to write
-- `rx_data`: Buffer for received data
-- `rx_length`: Number of bytes to read
-- `timeout_ms`: Timeout in milliseconds
-
-**Returns**: `HfSpiErr` result code  
-**Thread-Safe**: Implementation dependent  
-
-### Register Access Helpers
-
-#### `WriteRegister()`
-```cpp
-virtual HfSpiErr WriteRegister(uint8_t device_id, uint8_t reg_addr, 
-                              uint8_t value, uint32_t timeout_ms = 0) noexcept = 0
-```
-**Description**: Write a single register value  
-**Parameters**:
-- `device_id`: Target device identifier
-- `reg_addr`: Register address
-- `value`: Value to write
-- `timeout_ms`: Timeout in milliseconds
-
-**Returns**: `HfSpiErr` result code  
-**Thread-Safe**: Implementation dependent  
-
-#### `ReadRegister()`
-```cpp
-virtual HfSpiErr ReadRegister(uint8_t device_id, uint8_t reg_addr, 
-                             uint8_t& value, uint32_t timeout_ms = 0) noexcept = 0
-```
-**Description**: Read a single register value  
-**Parameters**:
-- `device_id`: Target device identifier
-- `reg_addr`: Register address
-- `value`: Reference to store read value
-- `timeout_ms`: Timeout in milliseconds
-
-**Returns**: `HfSpiErr` result code  
-**Thread-Safe**: Implementation dependent  
-
-## 💡 Usage Examples
-
-### Basic SPI Setup and Communication
-```cpp
-#include "mcu/McuSpi.h"
-
-// Create SPI instance
-auto spi = McuSpi::Create();
-
-// Configure SPI bus
-SpiBusConfig config;
-config.host = SPI2_HOST;
-config.mosi_pin = 23;                // GPIO 23
-config.miso_pin = 19;                // GPIO 19
-config.sclk_pin = 18;                // GPIO 18
-config.clock_speed_hz = 1000000;     // 1MHz
-config.mode = 0;                     // SPI Mode 0
-
-// Initialize bus
-if (!spi->Configure(config) || !spi->EnsureInitialized()) {
-    printf("Failed to initialize SPI bus\n");
-    return;
-}
-
-// Add device (e.g., ADC MCP3008)
-SpiDeviceConfig adc_config;
-adc_config.cs_pin = 5;               // GPIO 5 for CS
-adc_config.clock_speed_hz = 1000000; // 1MHz for ADC
-adc_config.mode = 0;                 // Mode 0
-adc_config.bits_per_word = 8;
-
-spi->AddDevice(0, adc_config);
-
-// Read ADC channel 0
-uint8_t cmd[] = {0x01, 0x80, 0x00};  // Start bit, SGL/DIFF, channel 0
-uint8_t response[3];
-
-HfSpiErr result = spi->Transfer(0, cmd, response, 3);
-if (result == HfSpiErr::SPI_SUCCESS) {
-    uint16_t adc_value = ((response[1] & 0x03) << 8) | response[2];
-    printf("ADC Value: %d\n", adc_value);
-}
-```
-
-### Multiple Device Management
-```cpp
-// Configure different devices on same bus
-SpiDeviceConfig eeprom_config;
-eeprom_config.cs_pin = 4;            // Different CS pin
-eeprom_config.clock_speed_hz = 2000000; // 2MHz for EEPROM
-eeprom_config.mode = 0;
-
-SpiDeviceConfig display_config;
-display_config.cs_pin = 15;          // Another CS pin
-display_config.clock_speed_hz = 8000000; // 8MHz for display
-display_config.mode = 0;
-
-// Add multiple devices
-spi->AddDevice(1, eeprom_config);    // Device ID 1: EEPROM
-spi->AddDevice(2, display_config);   // Device ID 2: Display
-
-// Use different devices
-uint8_t eeprom_data[] = {0x02, 0x00, 0x00, 0x55}; // Write command
-spi->Write(1, eeprom_data, 4);       // Write to EEPROM
-
-uint8_t display_cmd[] = {0x21, 0x00, 0x7F}; // Set column address
-spi->Write(2, display_cmd, 3);       // Send to display
-```
-
-### Register-Based Device Communication
-```cpp
-// Example: MAX31855 Thermocouple Amplifier
-spi->AddDevice(3, thermocouple_config);
-
-// Read temperature data
-uint8_t temp_data[4];
-if (spi->Read(3, temp_data, 4) == HfSpiErr::SPI_SUCCESS) {
-    // Parse thermocouple data
-    int32_t raw_temp = (temp_data[0] << 24) | (temp_data[1] << 16) | 
-                       (temp_data[2] << 8) | temp_data[3];
-    
-    if (!(raw_temp & 0x01)) {  // Check fault bit
-        float temperature = (raw_temp >> 18) * 0.25f;
-        printf("Temperature: %.2f°C\n", temperature);
-    } else {
-        printf("Thermocouple fault detected\n");
-    }
-}
-
-// Example: Using register helpers for MCP23S17 GPIO expander
-spi->AddDevice(4, gpio_expander_config);
-
-// Configure all pins as outputs
-spi->WriteRegister(4, 0x00, 0x00);  // IODIRA register
-spi->WriteRegister(4, 0x01, 0x00);  // IODIRB register
-
-// Set all pins high
-spi->WriteRegister(4, 0x12, 0xFF);  // GPIOA register
-spi->WriteRegister(4, 0x13, 0xFF);  // GPIOB register
-
-// Read current pin states
-uint8_t gpio_a_state, gpio_b_state;
-spi->ReadRegister(4, 0x12, gpio_a_state);
-spi->ReadRegister(4, 0x13, gpio_b_state);
-printf("GPIO A: 0x%02X, GPIO B: 0x%02X\n", gpio_a_state, gpio_b_state);
-```
-
-### High-Speed Data Transfer with DMA
-```cpp
-// Configure high-speed device with DMA
-SpiDeviceConfig high_speed_config;
-high_speed_config.cs_pin = 21;
-high_speed_config.clock_speed_hz = 20000000; // 20MHz
-high_speed_config.mode = 0;
-high_speed_config.use_dma = true;            // Enable DMA
-
-spi->AddDevice(5, high_speed_config);
-
-// Large data transfer (e.g., image data to display)
-std::vector<uint8_t> image_data(1024 * 64); // 64KB image
-std::fill(image_data.begin(), image_data.end(), 0x55); // Test pattern
-
-// Send large data block efficiently
-auto start_time = esp_timer_get_time();
-HfSpiErr result = spi->Write(5, image_data.data(), image_data.size());
-auto end_time = esp_timer_get_time();
-
-if (result == HfSpiErr::SPI_SUCCESS) {
-    uint32_t transfer_time = end_time - start_time;
-    float transfer_rate = (image_data.size() * 8.0f * 1000000.0f) / transfer_time;
-    printf("Transferred %zu bytes in %u μs (%.2f Mbps)\n", 
-           image_data.size(), transfer_time, transfer_rate / 1000000.0f);
-}
-```
-
-### Error Handling and Recovery
-```cpp
-HfSpiErr result = spi->Transfer(0, tx_data, rx_data, length);
-if (result != HfSpiErr::SPI_SUCCESS) {
-    printf("SPI Error: %s\n", HfSpiErrToString(result).data());
-    
-    switch (result) {
-        case HfSpiErr::SPI_ERR_BUS_BUSY:
-            printf("Bus is busy, retrying...\n");
-            vTaskDelay(pdMS_TO_TICKS(1));
-            // Retry operation
-            break;
-            
-        case HfSpiErr::SPI_ERR_TRANSFER_TIMEOUT:
-            printf("Transfer timeout, checking device\n");
-            // Check device power, connections
-            break;
-            
-        case HfSpiErr::SPI_ERR_DEVICE_NOT_RESPONDING:
-            printf("Device not responding, reinitializing...\n");
-            spi->RemoveDevice(0);
-            spi->AddDevice(0, device_config);
-            break;
-            
-        case HfSpiErr::SPI_ERR_INVALID_CLOCK_SPEED:
-            printf("Clock speed too high, reducing...\n");
-            device_config.clock_speed_hz /= 2;
-            spi->RemoveDevice(0);
-            spi->AddDevice(0, device_config);
-            break;
-            
-        default:
-            printf("Unhandled SPI error\n");
-            break;
-    }
-}
-```
-
-### Performance Optimization
-```cpp
-// Benchmark different transfer methods
-auto BenchmarkTransfer = [&spi](const char* method, std::function<void()> transfer_func) {
-    const int iterations = 1000;
-    
-    auto start = esp_timer_get_time();
-    for (int i = 0; i < iterations; ++i) {
-        transfer_func();
-    }
-    auto end = esp_timer_get_time();
-    
-    uint32_t avg_time = (end - start) / iterations;
-    printf("%s: %u μs average\n", method, avg_time);
+struct hf_spi_capabilities_t {
+    uint8_t max_devices;           ///< Maximum number of devices
+    uint32_t min_frequency_hz;     ///< Minimum frequency
+    uint32_t max_frequency_hz;     ///< Maximum frequency
+    uint8_t supported_modes;       ///< Bit mask of supported modes
+    uint8_t supported_data_sizes;  ///< Bit mask of supported data sizes
+    bool supports_dma;             ///< Supports DMA transfers
+    bool supports_quad_spi;        ///< Supports quad SPI
+    uint32_t max_transfer_size;    ///< Maximum transfer size in bytes
 };
-
-uint8_t test_data[64];
-uint8_t rx_buffer[64];
-
-// Compare different transfer sizes
-BenchmarkTransfer("1-byte transfers", [&]() {
-    for (int i = 0; i < 64; ++i) {
-        spi->Transfer(0, &test_data[i], &rx_buffer[i], 1);
-    }
-});
-
-BenchmarkTransfer("64-byte transfer", [&]() {
-    spi->Transfer(0, test_data, rx_buffer, 64);
-});
-
-BenchmarkTransfer("Write-only 64 bytes", [&]() {
-    spi->Write(0, test_data, 64);
-});
 ```
 
-## 🧪 Testing
+### 📈 **SPI Statistics**
 
-Unit tests are not provided in this repository.
+```cpp
+struct hf_spi_statistics_t {
+    uint32_t total_transfers;      ///< Total transfers performed
+    uint32_t successful_transfers; ///< Successful transfers
+    uint32_t failed_transfers;     ///< Failed transfers
+    uint32_t bytes_transmitted;    ///< Total bytes transmitted
+    uint32_t bytes_received;       ///< Total bytes received
+    uint32_t average_transfer_time_us; ///< Average transfer time
+    uint32_t max_transfer_time_us; ///< Maximum transfer time
+    uint32_t min_transfer_time_us; ///< Minimum transfer time
+    uint32_t timeout_errors;       ///< Timeout errors
+    uint32_t communication_errors; ///< Communication errors
+};
+```
 
-## ⚠️ Important Notes
+---
 
-1. **Abstract Class**: Cannot be instantiated directly - use concrete implementations
-2. **Thread Safety**: Depends on concrete implementation (use SfSpiBus for thread safety)
-3. **Clock Speed Limits**: Maximum speed depends on hardware and wire length
-4. **Signal Integrity**: Use proper termination and short wires for high speeds
-5. **CS Management**: Ensure CS pins don't conflict with other peripherals
-6. **DMA Limitations**: DMA transfers may have alignment and size requirements
-7. **Mode Compatibility**: Ensure device SPI mode matches configuration
+## 💡 **Usage Examples**
 
-## 🔗 Related Classes
+### 📡 **Sensor Communication**
 
-- [`BaseI2c`](BaseI2c.md) - I2C interface following same pattern
-- [`BaseGpio`](BaseGpio.md) - GPIO interface for CS and other control pins
-- [`McuSpi`](../mcu/McuSpi.md) - ESP32 SPI implementation
-- [`SfSpiBus`](../thread_safe/SfSpiBus.md) - Thread-safe wrapper
+```cpp
+#include "mcu/esp32/EspSpi.h"
 
-## 📝 See Also
+class SensorController {
+private:
+    EspSpi spi_;
+    static constexpr uint8_t SENSOR_DEVICE = 0;
+    
+public:
+    bool initialize() {
+        spi_ = EspSpi(SPI2_HOST, 5);  // SPI2, CS on pin 5
+        
+        if (!spi_.EnsureInitialized()) {
+            printf("❌ SPI initialization failed\n");
+            return false;
+        }
+        
+        // Configure for sensor communication
+        hf_spi_device_config_t config;
+        config.mode = hf_spi_mode_t::MODE_0;
+        config.frequency_hz = 1000000;  // 1 MHz
+        config.data_size = hf_spi_data_size_t::DATA_8BIT;
+        config.cs_pin = 5;
+        config.cs_active_low = true;
+        config.bit_order = hf_spi_bit_order_t::MSB_FIRST;
+        config.timeout_ms = 100;
+        config.use_dma = false;
+        
+        hf_spi_err_t result = spi_.ConfigureDevice(SENSOR_DEVICE, config);
+        if (result != hf_spi_err_t::SPI_SUCCESS) {
+            printf("❌ Sensor configuration failed: %s\n", HfSpiErrToString(result));
+            return false;
+        }
+        
+        printf("✅ Sensor controller initialized\n");
+        return true;
+    }
+    
+    uint16_t read_temperature() {
+        // Send temperature read command
+        uint8_t tx_cmd[] = {0x03, 0x00, 0x00};  // Read temperature command
+        uint8_t rx_data[3];
+        
+        hf_spi_err_t result = spi_.TransmitReceive(SENSOR_DEVICE, tx_cmd, rx_data, 3);
+        if (result != hf_spi_err_t::SPI_SUCCESS) {
+            printf("❌ Temperature read failed: %s\n", HfSpiErrToString(result));
+            return 0xFFFF;  // Error value
+        }
+        
+        // Convert response to temperature (example conversion)
+        uint16_t raw_temp = (rx_data[1] << 8) | rx_data[2];
+        float temperature = (raw_temp * 175.0f / 65535.0f) - 45.0f;
+        
+        printf("🌡️ Temperature: %.1f°C\n", temperature);
+        return raw_temp;
+    }
+    
+    void write_config(uint8_t config_register, uint8_t value) {
+        // Send configuration write command
+        uint8_t tx_data[] = {0x02, config_register, value};  // Write command
+        uint8_t rx_data[3];
+        
+        hf_spi_err_t result = spi_.TransmitReceive(SENSOR_DEVICE, tx_data, rx_data, 3);
+        if (result == hf_spi_err_t::SPI_SUCCESS) {
+            printf("✅ Config written: 0x%02X = 0x%02X\n", config_register, value);
+        } else {
+            printf("❌ Config write failed: %s\n", HfSpiErrToString(result));
+        }
+    }
+    
+    void read_sensor_data(uint8_t* data, size_t length) {
+        // Read sensor data
+        uint8_t tx_cmd[] = {0x04, 0x00};  // Read data command
+        uint8_t* rx_data = new uint8_t[length + 2];
+        
+        hf_spi_err_t result = spi_.TransmitReceive(SENSOR_DEVICE, tx_cmd, rx_data, length + 2);
+        if (result == hf_spi_err_t::SPI_SUCCESS) {
+            // Copy data (skip command bytes)
+            memcpy(data, rx_data + 2, length);
+            printf("📊 Read %zu bytes of sensor data\n", length);
+        } else {
+            printf("❌ Sensor data read failed: %s\n", HfSpiErrToString(result));
+        }
+        
+        delete[] rx_data;
+    }
+};
+```
 
-- [SPI Guide](../guides/spi-guide.md)
+### 🖥️ **Display Control**
+
+```cpp
+#include "mcu/esp32/EspSpi.h"
+
+class DisplayController {
+private:
+    EspSpi spi_;
+    static constexpr uint8_t DISPLAY_DEVICE = 0;
+    static constexpr uint16_t DISPLAY_WIDTH = 240;
+    static constexpr uint16_t DISPLAY_HEIGHT = 320;
+    
+public:
+    bool initialize() {
+        spi_ = EspSpi(SPI2_HOST, 15);  // SPI2, CS on pin 15
+        
+        if (!spi_.EnsureInitialized()) {
+            return false;
+        }
+        
+        // Configure for display communication
+        hf_spi_device_config_t config;
+        config.mode = hf_spi_mode_t::MODE_0;
+        config.frequency_hz = 40000000;  // 40 MHz for display
+        config.data_size = hf_spi_data_size_t::DATA_8BIT;
+        config.cs_pin = 15;
+        config.cs_active_low = true;
+        config.bit_order = hf_spi_bit_order_t::MSB_FIRST;
+        config.timeout_ms = 1000;
+        config.use_dma = true;  // Use DMA for large transfers
+        
+        hf_spi_err_t result = spi_.ConfigureDevice(DISPLAY_DEVICE, config);
+        if (result != hf_spi_err_t::SPI_SUCCESS) {
+            printf("❌ Display configuration failed\n");
+            return false;
+        }
+        
+        // Initialize display
+        init_display();
+        printf("✅ Display controller initialized\n");
+        return true;
+    }
+    
+private:
+    void init_display() {
+        // Display initialization sequence
+        uint8_t init_commands[] = {
+            0x01, 0x00,  // Software reset
+            0x11, 0x00,  // Sleep out
+            0x29, 0x00   // Display on
+        };
+        
+        for (size_t i = 0; i < sizeof(init_commands); i += 2) {
+            send_command(init_commands[i]);
+            if (init_commands[i + 1] != 0) {
+                send_data(&init_commands[i + 1], 1);
+            }
+            vTaskDelay(pdMS_TO_TICKS(10));
+        }
+    }
+    
+    void send_command(uint8_t command) {
+        // Set DC pin low for command
+        gpio_set_level(16, 0);  // DC pin on GPIO 16
+        
+        uint8_t rx_data;
+        hf_spi_err_t result = spi_.TransmitReceive(DISPLAY_DEVICE, &command, &rx_data, 1);
+        if (result != hf_spi_err_t::SPI_SUCCESS) {
+            printf("❌ Command send failed: %s\n", HfSpiErrToString(result));
+        }
+    }
+    
+    void send_data(const uint8_t* data, size_t length) {
+        // Set DC pin high for data
+        gpio_set_level(16, 1);  // DC pin on GPIO 16
+        
+        uint8_t* rx_data = new uint8_t[length];
+        hf_spi_err_t result = spi_.TransmitReceive(DISPLAY_DEVICE, data, rx_data, length);
+        if (result != hf_spi_err_t::SPI_SUCCESS) {
+            printf("❌ Data send failed: %s\n", HfSpiErrToString(result));
+        }
+        
+        delete[] rx_data;
+    }
+    
+public:
+    void set_window(uint16_t x_start, uint16_t y_start, uint16_t x_end, uint16_t y_end) {
+        // Set display window for drawing
+        uint8_t caset_cmd[] = {0x2A, 0x00, (x_start >> 8) & 0xFF, x_start & 0xFF,
+                              0x00, (x_end >> 8) & 0xFF, x_end & 0xFF};
+        uint8_t raset_cmd[] = {0x2B, 0x00, (y_start >> 8) & 0xFF, y_start & 0xFF,
+                              0x00, (y_end >> 8) & 0xFF, y_end & 0xFF};
+        
+        send_command(0x2A);  // Column address set
+        send_data(caset_cmd + 1, 6);
+        
+        send_command(0x2B);  // Row address set
+        send_data(raset_cmd + 1, 6);
+        
+        send_command(0x2C);  // Memory write
+    }
+    
+    void fill_screen(uint16_t color) {
+        set_window(0, 0, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1);
+        
+        // Prepare color data
+        uint8_t color_data[2] = {(color >> 8) & 0xFF, color & 0xFF};
+        
+        // Fill screen with color
+        for (int i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT; i++) {
+            send_data(color_data, 2);
+        }
+    }
+    
+    void draw_pixel(uint16_t x, uint16_t y, uint16_t color) {
+        set_window(x, y, x, y);
+        
+        uint8_t color_data[2] = {(color >> 8) & 0xFF, color & 0xFF};
+        send_data(color_data, 2);
+    }
+};
+```
+
+### 💾 **Memory Access**
+
+```cpp
+#include "mcu/esp32/EspSpi.h"
+
+class MemoryController {
+private:
+    EspSpi spi_;
+    static constexpr uint8_t MEMORY_DEVICE = 0;
+    static constexpr uint32_t MEMORY_SIZE = 1024 * 1024;  // 1MB
+    
+public:
+    bool initialize() {
+        spi_ = EspSpi(SPI2_HOST, 5);  // SPI2, CS on pin 5
+        
+        if (!spi_.EnsureInitialized()) {
+            return false;
+        }
+        
+        // Configure for memory access
+        hf_spi_device_config_t config;
+        config.mode = hf_spi_mode_t::MODE_0;
+        config.frequency_hz = 80000000;  // 80 MHz for fast memory access
+        config.data_size = hf_spi_data_size_t::DATA_8BIT;
+        config.cs_pin = 5;
+        config.cs_active_low = true;
+        config.bit_order = hf_spi_bit_order_t::MSB_FIRST;
+        config.timeout_ms = 100;
+        config.use_dma = true;
+        
+        hf_spi_err_t result = spi_.ConfigureDevice(MEMORY_DEVICE, config);
+        if (result != hf_spi_err_t::SPI_SUCCESS) {
+            printf("❌ Memory configuration failed\n");
+            return false;
+        }
+        
+        printf("✅ Memory controller initialized\n");
+        return true;
+    }
+    
+    bool read_memory(uint32_t address, uint8_t* data, size_t length) {
+        // Send read command
+        uint8_t tx_cmd[] = {0x03, (address >> 16) & 0xFF, (address >> 8) & 0xFF, address & 0xFF};
+        uint8_t* rx_data = new uint8_t[length + 4];
+        
+        hf_spi_err_t result = spi_.TransmitReceive(MEMORY_DEVICE, tx_cmd, rx_data, length + 4);
+        if (result == hf_spi_err_t::SPI_SUCCESS) {
+            // Copy data (skip command bytes)
+            memcpy(data, rx_data + 4, length);
+            printf("📖 Read %zu bytes from address 0x%06X\n", length, address);
+            delete[] rx_data;
+            return true;
+        } else {
+            printf("❌ Memory read failed: %s\n", HfSpiErrToString(result));
+            delete[] rx_data;
+            return false;
+        }
+    }
+    
+    bool write_memory(uint32_t address, const uint8_t* data, size_t length) {
+        // Send write enable command
+        uint8_t write_enable = 0x06;
+        uint8_t rx_data;
+        hf_spi_err_t result = spi_.TransmitReceive(MEMORY_DEVICE, &write_enable, &rx_data, 1);
+        if (result != hf_spi_err_t::SPI_SUCCESS) {
+            printf("❌ Write enable failed\n");
+            return false;
+        }
+        
+        // Send write command
+        uint8_t* tx_data = new uint8_t[length + 4];
+        tx_data[0] = 0x02;  // Page program command
+        tx_data[1] = (address >> 16) & 0xFF;
+        tx_data[2] = (address >> 8) & 0xFF;
+        tx_data[3] = address & 0xFF;
+        memcpy(tx_data + 4, data, length);
+        
+        result = spi_.Transmit(MEMORY_DEVICE, tx_data, length + 4);
+        if (result == hf_spi_err_t::SPI_SUCCESS) {
+            printf("✍️ Wrote %zu bytes to address 0x%06X\n", length, address);
+            delete[] tx_data;
+            return true;
+        } else {
+            printf("❌ Memory write failed: %s\n", HfSpiErrToString(result));
+            delete[] tx_data;
+            return false;
+        }
+    }
+    
+    bool erase_sector(uint32_t address) {
+        // Send write enable command
+        uint8_t write_enable = 0x06;
+        uint8_t rx_data;
+        hf_spi_err_t result = spi_.TransmitReceive(MEMORY_DEVICE, &write_enable, &rx_data, 1);
+        if (result != hf_spi_err_t::SPI_SUCCESS) {
+            printf("❌ Write enable failed\n");
+            return false;
+        }
+        
+        // Send sector erase command
+        uint8_t erase_cmd[] = {0x20, (address >> 16) & 0xFF, (address >> 8) & 0xFF, address & 0xFF};
+        result = spi_.Transmit(MEMORY_DEVICE, erase_cmd, 4);
+        if (result == hf_spi_err_t::SPI_SUCCESS) {
+            printf("🗑️ Erased sector at address 0x%06X\n", address);
+            return true;
+        } else {
+            printf("❌ Sector erase failed: %s\n", HfSpiErrToString(result));
+            return false;
+        }
+    }
+    
+    uint32_t read_device_id() {
+        uint8_t tx_cmd[] = {0x90, 0x00, 0x00, 0x00};  // Read ID command
+        uint8_t rx_data[4];
+        
+        hf_spi_err_t result = spi_.TransmitReceive(MEMORY_DEVICE, tx_cmd, rx_data, 4);
+        if (result == hf_spi_err_t::SPI_SUCCESS) {
+            uint32_t device_id = (rx_data[1] << 16) | (rx_data[2] << 8) | rx_data[3];
+            printf("🆔 Device ID: 0x%06X\n", device_id);
+            return device_id;
+        } else {
+            printf("❌ Device ID read failed: %s\n", HfSpiErrToString(result));
+            return 0;
+        }
+    }
+};
+```
+
+---
+
+## 🧪 **Best Practices**
+
+### ✅ **Recommended Patterns**
+
+```cpp
+// ✅ Always check initialization
+if (!spi.EnsureInitialized()) {
+    printf("❌ SPI initialization failed\n");
+    return false;
+}
+
+// ✅ Validate device configuration
+hf_spi_capabilities_t caps;
+if (spi.GetCapabilities(caps) == hf_spi_err_t::SPI_SUCCESS) {
+    if (device_id >= caps.max_devices) {
+        printf("❌ Device %u exceeds maximum (%u)\n", device_id, caps.max_devices);
+        return;
+    }
+}
+
+// ✅ Use appropriate frequency for your application
+// Sensors: 1-10 MHz
+// Displays: 10-40 MHz
+// Memory: 20-80 MHz
+
+// ✅ Handle transfer errors gracefully
+hf_spi_err_t result = spi.TransmitReceive(device_id, tx_data, rx_data, length);
+if (result != hf_spi_err_t::SPI_SUCCESS) {
+    printf("⚠️ SPI Error: %s\n", HfSpiErrToString(result));
+    // Implement retry logic or error recovery
+}
+
+// ✅ Use DMA for large transfers
+config.use_dma = (length > 32);  // Use DMA for transfers > 32 bytes
+
+// ✅ Check device status before operations
+hf_spi_device_status_t status;
+if (spi.GetDeviceStatus(device_id, status) == hf_spi_err_t::SPI_SUCCESS) {
+    if (status.is_busy) {
+        printf("⏳ Device %u is busy\n", device_id);
+        return;
+    }
+}
+```
+
+### ❌ **Common Pitfalls**
+
+```cpp
+// ❌ Don't ignore initialization
+spi.TransmitReceive(0, tx_data, rx_data, length);  // May fail silently
+
+// ❌ Don't use invalid frequencies
+spi.ConfigureDevice(0, {mode: MODE_0, frequency_hz: 100000000});  // Too high
+
+// ❌ Don't use invalid device numbers
+spi.ConfigureDevice(99, config);  // Invalid device
+
+// ❌ Don't ignore transfer timeouts
+// Large transfers may timeout - check return values
+
+// ❌ Don't assume all modes are supported
+// Check capabilities before using specific modes
+
+// ❌ Don't forget to handle CS pin manually when needed
+// Some devices require manual CS control
+```
+
+### 🎯 **Performance Optimization**
+
+```cpp
+// 🚀 Use appropriate frequency for your application
+// Higher frequency = faster transfers but may cause errors
+
+// 🚀 Use DMA for large transfers
+// DMA reduces CPU overhead for transfers > 32 bytes
+
+// 🚀 Minimize CS toggling
+// Keep CS low for multiple transfers to the same device
+
+// 🚀 Use appropriate data size
+// 8-bit: Most common, good compatibility
+// 16-bit: Faster for 16-bit data
+// 32-bit: Fastest for 32-bit data
+
+// 🚀 Batch operations when possible
+// Configure all devices before starting transfers
+
+// 🚀 Use appropriate timeout values
+// Short timeouts for fast devices
+// Longer timeouts for slow devices
+```
+
+---
+
+## 🔗 **Related Documentation**
+
+- [🔒 **SfSpi**](SfSpi.md) - Thread-safe SPI wrapper
+- [⚙️ **EspSpi**](EspSpi.md) - ESP32-C6 implementation
+- [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
+
+---
+
+<div align="center">
+
+**🔌 BaseSpi - High-Speed Serial Communication for HardFOC**
+
+*Part of the HardFOC Internal Interface Wrapper Documentation*
+
+</div> 

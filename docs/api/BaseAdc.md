@@ -15,11 +15,10 @@
 - [🎯 **Overview**](#-overview)
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
-- [📊 **Channel Management**](#-channel-management)
-- [🔧 **Core Methods**](#-core-methods)
-- [⚙️ **Calibration System**](#️-calibration-system)
+- [🔧 **Core API**](#-core-api)
+- [📊 **Data Structures**](#-data-structures)
 - [💡 **Usage Examples**](#-usage-examples)
-- [🧪 **Testing**](#-testing)
+- [🧪 **Best Practices**](#-best-practices)
 
 ---
 
@@ -42,7 +41,7 @@ The `BaseAdc` class provides a comprehensive ADC abstraction that serves as the 
 
 | Implementation | Hardware Type | Channels | Resolution | Sample Rate |
 |----------------|---------------|----------|------------|-------------|
-| `McuAdc` | ESP32-C6 Internal | ADC1: 7ch, ADC2: 6ch | 12-bit | Up to 2 MSPS |
+| `EspAdc` | ESP32-C6 Internal | ADC1: 7ch, ADC2: 6ch | 12-bit | Up to 2 MSPS |
 | `Tmc9660Adc` | Motor Controller | 3 channels | 10-bit | Up to 100 kSPS |
 | `Ads1x1xAdc` | External I2C ADC | 4 channels | 16-bit | Up to 860 SPS |
 
@@ -54,29 +53,30 @@ The `BaseAdc` class provides a comprehensive ADC abstraction that serves as the 
 classDiagram
     class BaseAdc {
         <<abstract>>
-        +ReadRaw() uint16_t
-        +ReadVoltage() float
-        +Initialize() HfAdcErr
-        +Calibrate() HfAdcErr
-        +GetChannelInfo() AdcChannelInfo
-        +SetReference() HfAdcErr
-        +ConfigureChannel() HfAdcErr
+        +Initialize() bool
+        +Deinitialize() bool
+        +GetMaxChannels() uint8_t
+        +IsChannelAvailable(channel_id) bool
+        +ReadChannelV(channel_id, voltage) hf_adc_err_t
+        +ReadChannelCount(channel_id, count) hf_adc_err_t
+        +ReadChannel(channel_id, count, voltage) hf_adc_err_t
+        +ReadMultipleChannels(channels, readings, voltages) hf_adc_err_t
+        +ResetStatistics() hf_adc_err_t
+        +ResetDiagnostics() hf_adc_err_t
     }
     
-    class McuAdc {
-        +McuAdc(unit, attenuation)
+    class EspAdc {
+        +EspAdc(unit, attenuation)
         +GetUnit() adc_unit_t
         +GetAttenuation() adc_atten_t
-        +SetSampleTime() HfAdcErr
     }
     
     class Tmc9660Adc {
         +Tmc9660Adc(controller)
         +GetControllerInfo() Tmc9660Info
-        +SetGain() HfAdcErr
     }
     
-    BaseAdc <|-- McuAdc
+    BaseAdc <|-- EspAdc
     BaseAdc <|-- Tmc9660Adc
 ```
 
@@ -98,264 +98,305 @@ The ADC system uses comprehensive error codes for robust error handling:
 |------|-------|-------------|------------|
 | `ADC_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
 | `ADC_ERR_NOT_INITIALIZED` | 2 | ⚠️ ADC not initialized | Call Initialize() first |
-| `ADC_ERR_INVALID_CHANNEL` | 3 | 🚫 Invalid channel number | Use valid channel numbers |
-| `ADC_ERR_INVALID_UNIT` | 4 | 🚫 Invalid ADC unit | Check ADC unit availability |
-| `ADC_ERR_INVALID_PARAMETER` | 5 | 🚫 Invalid parameter | Validate input parameters |
-| `ADC_ERR_TIMEOUT` | 6 | ⏰ Conversion timeout | Check ADC clock and load |
+| `ADC_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ ADC already initialized | Check initialization state |
+| `ADC_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
+| `ADC_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
+| `ADC_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### 🔧 **Configuration Error Codes**
+### 🔧 **Channel Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `ADC_ERR_CALIBRATION_FAILED` | 10 | 📊 Calibration failure | Re-run calibration process |
-| `ADC_ERR_REFERENCE_INVALID` | 11 | 🎯 Invalid voltage reference | Set valid reference voltage |
-| `ADC_ERR_ATTENUATION_INVALID` | 12 | 📉 Invalid attenuation setting | Use supported attenuation values |
-| `ADC_ERR_RESOLUTION_INVALID` | 13 | 🔍 Invalid resolution setting | Use supported resolution values |
+| `ADC_ERR_CHANNEL_NOT_FOUND` | 7 | 🔍 Channel not found | Use valid channel numbers |
+| `ADC_ERR_CHANNEL_NOT_ENABLED` | 8 | ⚠️ Channel not enabled | Enable channel first |
+| `ADC_ERR_CHANNEL_NOT_CONFIGURED` | 9 | ⚙️ Channel not configured | Configure channel parameters |
+| `ADC_ERR_CHANNEL_ALREADY_REGISTERED` | 10 | 🔄 Channel already registered | Check channel registration |
+| `ADC_ERR_CHANNEL_READ_ERR` | 11 | 📖 Channel read error | Check hardware connections |
+| `ADC_ERR_CHANNEL_WRITE_ERR` | 12 | ✍️ Channel write error | Check write permissions |
+| `ADC_ERR_INVALID_CHANNEL` | 13 | 🚫 Invalid channel number | Use valid channel range |
+| `ADC_ERR_CHANNEL_BUSY` | 14 | 🔄 Channel currently in use | Wait or use different channel |
+
+### 📊 **Sampling Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `ADC_ERR_INVALID_SAMPLE_COUNT` | 15 | 📊 Invalid sample count | Use valid sample count |
+| `ADC_ERR_SAMPLE_TIMEOUT` | 16 | ⏰ Sample timeout | Check ADC clock and load |
+| `ADC_ERR_SAMPLE_OVERFLOW` | 17 | 📈 Sample overflow | Reduce sample rate |
+| `ADC_ERR_SAMPLE_UNDERFLOW` | 18 | 📉 Sample underflow | Check input signal |
 
 ### 🌐 **Hardware Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `ADC_ERR_HARDWARE_FAILURE` | 20 | 💥 Hardware communication failure | Check power and connections |
-| `ADC_ERR_CHANNEL_BUSY` | 21 | 🔄 Channel currently in use | Wait or use different channel |
-| `ADC_ERR_OVERLOAD` | 22 | ⚡ Input voltage overload | Reduce input voltage |
-| `ADC_ERR_UNDERLOAD` | 23 | 📉 Input voltage too low | Increase input voltage |
+| `ADC_ERR_HARDWARE_FAULT` | 19 | 💥 Hardware fault | Check power and connections |
+| `ADC_ERR_COMMUNICATION_FAILURE` | 20 | 📡 Communication failure | Check bus connections |
+| `ADC_ERR_DEVICE_NOT_RESPONDING` | 21 | 🔇 Device not responding | Check device power and address |
+| `ADC_ERR_VOLTAGE_OUT_OF_RANGE` | 22 | ⚡ Voltage out of range | Check input voltage levels |
+
+### 🔧 **Calibration Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `ADC_ERR_CALIBRATION_FAILURE` | 22 | 📊 Calibration failure | Re-run calibration process |
+| `ADC_ERR_CALIBRATION_NOT_FOUND` | 28 | 🔍 Calibration data not found | Run calibration first |
+| `ADC_ERR_CALIBRATION_INVALID` | 29 | ❌ Invalid calibration data | Re-calibrate |
+| `ADC_ERR_CALIBRATION_EXPIRED` | 30 | ⏰ Calibration expired | Re-calibrate |
+| `ADC_ERR_CALIBRATION_DRIFT` | 31 | 📈 Calibration drift detected | Re-calibrate |
+
+### 🎯 **Configuration Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `ADC_ERR_INVALID_CONFIGURATION` | 24 | ⚙️ Invalid configuration | Check configuration parameters |
+| `ADC_ERR_UNSUPPORTED_OPERATION` | 25 | 🚫 Unsupported operation | Check hardware capabilities |
+| `ADC_ERR_RESOURCE_BUSY` | 26 | 🔄 Resource busy | Wait for resource availability |
+| `ADC_ERR_RESOURCE_UNAVAILABLE` | 27 | 🚫 Resource unavailable | Check resource allocation |
 
 ---
 
-## 📊 **Channel Management**
+## 🔧 **Core API**
 
-### 🎯 **Channel Configuration**
-
-```cpp
-/**
- * @brief ADC channel configuration structure
- * @details Contains all parameters needed to configure an ADC channel
- */
-struct AdcChannelConfig {
-    adc_unit_t unit;              ///< ADC unit (ADC1 or ADC2)
-    adc_channel_t channel;        ///< Channel number within unit
-    adc_atten_t attenuation;      ///< Input attenuation setting
-    adc_bitwidth_t bitwidth;      ///< ADC resolution in bits
-    float reference_voltage;       ///< Reference voltage for conversion
-    bool calibration_enabled;     ///< Enable hardware calibration
-};
-```
-
-### 📈 **Channel Information**
+### 🏗️ **Initialization Methods**
 
 ```cpp
 /**
- * @brief ADC channel runtime information
- * @details Provides runtime status and capabilities of ADC channel
- */
-struct AdcChannelInfo {
-    bool is_available;            ///< Channel is available for use
-    bool is_initialized;          ///< Channel has been initialized
-    bool is_calibrated;           ///< Channel calibration is valid
-    uint16_t resolution_bits;     ///< Effective resolution in bits
-    float max_voltage;            ///< Maximum measurable voltage
-    float min_voltage;            ///< Minimum measurable voltage
-    uint32_t sample_rate_max;     ///< Maximum sample rate (Hz)
-    float noise_level;            ///< Typical noise level (mV)
-};
-```
-
-### 🎛️ **Attenuation Settings**
-
-| Attenuation | Max Input Voltage | Use Case |
-|-------------|-------------------|----------|
-| `ADC_ATTEN_DB_0` | ~1.1V | Low voltage sensors |
-| `ADC_ATTEN_DB_2_5` | ~1.5V | Battery monitoring |
-| `ADC_ATTEN_DB_6` | ~2.2V | General purpose |
-| `ADC_ATTEN_DB_11` | ~3.9V | High voltage inputs |
-
----
-
-## 🔧 **Core Methods**
-
-### 🏗️ **Initialization**
-
-```cpp
-/**
- * @brief Initialize the ADC instance
- * @return HfAdcErr Success or error code
+ * @brief Initialize the ADC peripheral
+ * @return true if successful, false otherwise
  * 
  * 📝 Sets up ADC hardware, configures channels, and prepares for conversion.
  * Must be called before any conversion operations.
  * 
  * @example
- * McuAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
- * if (adc.Initialize() == HfAdcErr::ADC_SUCCESS) {
+ * EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
+ * if (adc.Initialize()) {
  *     // ADC ready for use
  * }
  */
-virtual HfAdcErr Initialize() = 0;
+virtual bool Initialize() noexcept = 0;
 
 /**
- * @brief Deinitialize the ADC instance
- * @return HfAdcErr Success or error code
+ * @brief Deinitialize the ADC peripheral
+ * @return true if successful, false otherwise
  * 
  * 🧹 Cleanly shuts down ADC hardware and releases resources.
  */
-virtual HfAdcErr Deinitialize() = 0;
+virtual bool Deinitialize() noexcept = 0;
 
 /**
  * @brief Check if ADC is initialized
- * @return bool True if initialized
+ * @return true if initialized, false otherwise
  * 
  * ❓ Query initialization status without side effects.
  */
-virtual bool IsInitialized() const = 0;
+[[nodiscard]] bool IsInitialized() const noexcept;
+
+/**
+ * @brief Ensure ADC is initialized (lazy initialization)
+ * @return true if initialized successfully, false otherwise
+ * 
+ * 🔄 Automatically initializes ADC if not already initialized.
+ */
+bool EnsureInitialized() noexcept;
+
+/**
+ * @brief Ensure ADC is deinitialized (lazy deinitialization)
+ * @return true if deinitialized successfully, false otherwise
+ * 
+ * 🔄 Automatically deinitializes ADC if currently initialized.
+ */
+bool EnsureDeinitialized() noexcept;
 ```
 
-### 📊 **Data Conversion**
+### 📊 **Channel Management**
 
 ```cpp
 /**
- * @brief Read raw ADC value from specified channel
- * @param unit ADC unit (ADC_UNIT_1 or ADC_UNIT_2)
- * @param channel Channel number within the unit
- * @return uint16_t Raw ADC value (0-4095 for 12-bit)
+ * @brief Get maximum number of channels supported
+ * @return Maximum channel count
  * 
- * 📈 Performs single ADC conversion and returns raw digital value.
+ * 📊 Returns the total number of ADC channels available on this hardware.
+ */
+[[nodiscard]] virtual uint8_t GetMaxChannels() const noexcept = 0;
+
+/**
+ * @brief Check if a specific channel is available
+ * @param channel_id Channel ID to check
+ * @return true if channel is available, false otherwise
+ * 
+ * ✅ Validates channel availability before use.
+ */
+[[nodiscard]] virtual bool IsChannelAvailable(hf_channel_id_t channel_id) const noexcept = 0;
+```
+
+### 📈 **Data Conversion Methods**
+
+```cpp
+/**
+ * @brief Read channel voltage
+ * @param channel_id Channel ID to read from
+ * @param channel_reading_v Reference to store voltage reading
+ * @param numOfSamplesToAvg Number of samples to average (default 1)
+ * @param timeBetweenSamples Time between samples in milliseconds (default 0)
+ * @return hf_adc_err_t error code
+ * 
+ * ⚡ Performs ADC conversion and returns calibrated voltage.
+ * Supports multi-sample averaging for improved accuracy.
+ * 
+ * @example
+ * float voltage;
+ * hf_adc_err_t result = adc.ReadChannelV(0, voltage, 4, 1);
+ * if (result == hf_adc_err_t::ADC_SUCCESS) {
+ *     printf("Voltage: %.3f V\n", voltage);
+ * }
+ */
+virtual hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id, 
+                                    float &channel_reading_v,
+                                    uint8_t numOfSamplesToAvg = 1,
+                                    hf_time_t timeBetweenSamples = 0) noexcept = 0;
+
+/**
+ * @brief Read channel count (raw ADC value)
+ * @param channel_id Channel ID to read from
+ * @param channel_reading_count Reference to store count reading
+ * @param numOfSamplesToAvg Number of samples to average (default 1)
+ * @param timeBetweenSamples Time between samples in milliseconds (default 0)
+ * @return hf_adc_err_t error code
+ * 
+ * 📈 Performs ADC conversion and returns raw digital value.
  * No calibration or voltage conversion applied.
  * 
  * @example
- * uint16_t raw = adc.ReadRaw(ADC_UNIT_1, ADC_CHANNEL_0);
- * printf("Raw ADC: %d\n", raw);
+ * uint32_t raw_count;
+ * hf_adc_err_t result = adc.ReadChannelCount(0, raw_count);
+ * if (result == hf_adc_err_t::ADC_SUCCESS) {
+ *     printf("Raw ADC: %u\n", raw_count);
+ * }
  */
-virtual uint16_t ReadRaw(adc_unit_t unit, adc_channel_t channel) = 0;
+virtual hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id, 
+                                        uint32_t &channel_reading_count,
+                                        uint8_t numOfSamplesToAvg = 1,
+                                        hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
 /**
- * @brief Read calibrated voltage from specified channel
- * @param unit ADC unit (ADC_UNIT_1 or ADC_UNIT_2)
- * @param channel Channel number within the unit
- * @return float Voltage in volts
+ * @brief Read both channel count and voltage
+ * @param channel_id Channel ID to read from
+ * @param channel_reading_count Reference to store count reading
+ * @param channel_reading_v Reference to store voltage reading
+ * @param numOfSamplesToAvg Number of samples to average (default 1)
+ * @param timeBetweenSamples Time between samples in milliseconds (default 0)
+ * @return hf_adc_err_t error code
  * 
- * ⚡ Performs ADC conversion with hardware calibration and returns voltage.
- * Automatically applies gain and offset correction.
+ * 🔄 Performs single ADC conversion and returns both raw and calibrated values.
+ * More efficient than separate calls for both values.
  * 
  * @example
- * float voltage = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
- * printf("Voltage: %.3f V\n", voltage);
+ * uint32_t raw_count;
+ * float voltage;
+ * hf_adc_err_t result = adc.ReadChannel(0, raw_count, voltage);
+ * if (result == hf_adc_err_t::ADC_SUCCESS) {
+ *     printf("Raw: %u, Voltage: %.3f V\n", raw_count, voltage);
+ * }
  */
-virtual float ReadVoltage(adc_unit_t unit, adc_channel_t channel) = 0;
-
-/**
- * @brief Convert raw ADC value to voltage
- * @param raw_value Raw ADC reading
- * @param unit ADC unit used for reading
- * @param channel Channel used for reading
- * @return float Equivalent voltage
- * 
- * 🔄 Converts previously read raw value to calibrated voltage.
- * Useful for batch processing or stored readings.
- */
-virtual float RawToVoltage(uint16_t raw_value, adc_unit_t unit, adc_channel_t channel) = 0;
+virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, uint32_t &channel_reading_count,
+                               float &channel_reading_v, uint8_t numOfSamplesToAvg = 1,
+                               hf_time_t timeBetweenSamples = 0) noexcept = 0;
 ```
 
-### 🎛️ **Channel Configuration**
+### 📊 **Multi-Channel Operations**
 
 ```cpp
 /**
- * @brief Configure ADC channel parameters
- * @param config Channel configuration structure
- * @return HfAdcErr Success or error code
+ * @brief Read multiple channels simultaneously
+ * @param channel_ids Array of channel IDs
+ * @param num_channels Number of channels
+ * @param readings Array to store raw readings
+ * @param voltages Array to store voltage readings
+ * @return hf_adc_err_t error code
  * 
- * ⚙️ Sets up channel-specific parameters including attenuation,
- * resolution, and reference voltage.
+ * 📊 Reads multiple channels in a single operation for improved efficiency.
+ * Default implementation reads channels sequentially.
  * 
  * @example
- * AdcChannelConfig config = {
- *     .unit = ADC_UNIT_1,
- *     .channel = ADC_CHANNEL_0,
- *     .attenuation = ADC_ATTEN_DB_11,
- *     .bitwidth = ADC_BITWIDTH_12,
- *     .reference_voltage = 3.3f,
- *     .calibration_enabled = true
- * };
- * adc.ConfigureChannel(config);
+ * hf_channel_id_t channels[] = {0, 1, 2};
+ * uint32_t raw_readings[3];
+ * float voltages[3];
+ * hf_adc_err_t result = adc.ReadMultipleChannels(channels, 3, raw_readings, voltages);
  */
-virtual HfAdcErr ConfigureChannel(const AdcChannelConfig& config) = 0;
+virtual hf_adc_err_t ReadMultipleChannels(const hf_channel_id_t *channel_ids, uint8_t num_channels,
+                                        uint32_t *readings, float *voltages) noexcept;
+```
+
+### 📈 **Statistics and Diagnostics**
+
+```cpp
+/**
+ * @brief Reset ADC operation statistics
+ * @return hf_adc_err_t error code
+ * 
+ * 🔄 Clears all accumulated statistics counters.
+ */
+virtual hf_adc_err_t ResetStatistics() noexcept;
 
 /**
- * @brief Get channel information and status
- * @param unit ADC unit
- * @param channel Channel number
- * @return AdcChannelInfo Channel information structure
+ * @brief Reset ADC diagnostic information
+ * @return hf_adc_err_t error code
  * 
- * 📋 Retrieves comprehensive information about channel capabilities
- * and current configuration.
+ * 🔄 Clears diagnostic information and error counters.
  */
-virtual AdcChannelInfo GetChannelInfo(adc_unit_t unit, adc_channel_t channel) = 0;
+virtual hf_adc_err_t ResetDiagnostics() noexcept;
 
 /**
- * @brief Set ADC reference voltage
- * @param voltage Reference voltage in volts
- * @return HfAdcErr Success or error code
+ * @brief Get ADC operation statistics
+ * @param statistics Reference to store statistics data
+ * @return hf_adc_err_t error code
  * 
- * 🎯 Sets the voltage reference used for ADC conversions.
- * Affects the conversion accuracy and range.
+ * 📊 Retrieves comprehensive statistics about ADC operations.
  */
-virtual HfAdcErr SetReferenceVoltage(float voltage) = 0;
+virtual hf_adc_err_t GetStatistics(hf_adc_statistics_t &statistics) const noexcept;
+
+/**
+ * @brief Get ADC diagnostic information
+ * @param diagnostics Reference to store diagnostics data
+ * @return hf_adc_err_t error code
+ * 
+ * 🔍 Retrieves diagnostic information about ADC health and status.
+ */
+virtual hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t &diagnostics) const noexcept;
 ```
 
 ---
 
-## ⚙️ **Calibration System**
+## 📊 **Data Structures**
 
-### 🎯 **Calibration Methods**
+### 📈 **ADC Statistics Structure**
 
 ```cpp
-/**
- * @brief Perform ADC calibration
- * @param unit ADC unit to calibrate
- * @return HfAdcErr Success or error code
- * 
- * 📊 Performs hardware calibration to improve accuracy.
- * Should be called after temperature changes or periodically.
- * 
- * @example
- * if (adc.Calibrate(ADC_UNIT_1) == HfAdcErr::ADC_SUCCESS) {
- *     printf("✅ Calibration successful\n");
- * }
- */
-virtual HfAdcErr Calibrate(adc_unit_t unit) = 0;
-
-/**
- * @brief Check if calibration is valid
- * @param unit ADC unit to check
- * @return bool True if calibration is valid
- * 
- * ✅ Verifies that calibration data is present and valid.
- */
-virtual bool IsCalibrated(adc_unit_t unit) = 0;
-
-/**
- * @brief Get calibration characteristics
- * @param unit ADC unit
- * @return CalibrationData Calibration parameters
- * 
- * 📊 Retrieves calibration coefficients for manual processing.
- */
-virtual CalibrationData GetCalibration(adc_unit_t unit) = 0;
+struct hf_adc_statistics_t {
+    uint32_t totalConversions;        ///< Total conversions performed
+    uint32_t successfulConversions;   ///< Successful conversions
+    uint32_t failedConversions;       ///< Failed conversions
+    uint32_t averageConversionTimeUs; ///< Average conversion time (microseconds)
+    uint32_t maxConversionTimeUs;     ///< Maximum conversion time
+    uint32_t minConversionTimeUs;     ///< Minimum conversion time
+    uint32_t calibrationCount;        ///< Number of calibrations performed
+    uint32_t thresholdViolations;     ///< Threshold monitor violations
+    uint32_t calibration_errors;      ///< Calibration errors
+};
 ```
 
-### 📊 **Calibration Data Structure**
+### 🔍 **ADC Diagnostics Structure**
 
 ```cpp
-/**
- * @brief ADC calibration data structure
- * @details Contains calibration coefficients and metadata
- */
-struct CalibrationData {
-    float gain_coefficient;       ///< Gain correction factor
-    float offset_voltage;         ///< Offset correction (mV)
-    uint32_t calibration_date;    ///< Timestamp of last calibration
-    bool is_valid;                ///< Calibration data is valid
-    float temperature_coefficient; ///< Temperature drift coefficient
-    uint16_t checksum;            ///< Data integrity checksum
+struct hf_adc_diagnostics_t {
+    bool adcHealthy;                ///< Overall ADC health status
+    hf_adc_err_t lastErrorCode;     ///< Last error code
+    uint32_t lastErrorTimestamp;    ///< Last error timestamp
+    uint32_t consecutiveErrors;     ///< Consecutive error count
+    float temperatureC;             ///< ADC temperature (if available)
+    float referenceVoltage;         ///< Reference voltage
+    bool calibrationValid;          ///< Calibration validity
+    uint32_t enabled_channels;      ///< Bit mask of enabled channels
 };
 ```
 
@@ -366,22 +407,26 @@ struct CalibrationData {
 ### 📊 **Basic Voltage Reading**
 
 ```cpp
-#include "mcu/McuAdc.h"
+#include "mcu/esp32/EspAdc.h"
 
 // Create ADC instance for high voltage range
-McuAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
+EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
 
 void setup() {
-    // Initialize ADC with calibration
-    if (adc.Initialize() == HfAdcErr::ADC_SUCCESS) {
-        adc.Calibrate(ADC_UNIT_1);
-        printf("✅ ADC initialized and calibrated\n");
+    // Initialize ADC (lazy initialization)
+    if (adc.EnsureInitialized()) {
+        printf("✅ ADC initialized successfully\n");
     }
 }
 
 float read_battery_voltage() {
-    // Read voltage from battery monitoring pin
-    float voltage = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
+    float voltage;
+    hf_adc_err_t result = adc.ReadChannelV(0, voltage);
+    
+    if (result != hf_adc_err_t::ADC_SUCCESS) {
+        printf("❌ ADC Error: %s\n", HfAdcErrToString(result));
+        return -1.0f;  // Error value
+    }
     
     // Apply voltage divider correction (if needed)
     voltage *= 2.0f;  // For 2:1 voltage divider
@@ -391,10 +436,12 @@ float read_battery_voltage() {
 
 void monitor_battery() {
     float battery_voltage = read_battery_voltage();
-    printf("🔋 Battery: %.2f V\n", battery_voltage);
-    
-    if (battery_voltage < 3.0f) {
-        printf("⚠️ Low battery warning!\n");
+    if (battery_voltage > 0) {
+        printf("🔋 Battery: %.2f V\n", battery_voltage);
+        
+        if (battery_voltage < 3.0f) {
+            printf("⚠️ Low battery warning!\n");
+        }
     }
 }
 ```
@@ -402,7 +449,7 @@ void monitor_battery() {
 ### 📈 **Multi-Channel Sensor Reading**
 
 ```cpp
-#include "mcu/McuAdc.h"
+#include "mcu/esp32/EspAdc.h"
 
 struct SensorReadings {
     float temperature;      // Channel 0
@@ -411,22 +458,29 @@ struct SensorReadings {
     float voltage;          // Channel 3
 };
 
-McuAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
+EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
 
 SensorReadings read_all_sensors() {
     SensorReadings readings;
     
-    // Read all channels
-    float ch0 = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
-    float ch1 = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_1);
-    float ch2 = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_2);
-    float ch3 = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_3);
+    // Read all channels with error handling
+    float ch0, ch1, ch2, ch3;
     
-    // Convert to engineering units
-    readings.temperature = (ch0 - 0.5f) * 100.0f;  // TMP36 sensor
-    readings.pressure = ch1 * 100.0f;               // 0-100 PSI sensor
-    readings.current = (ch2 - 2.5f) * 10.0f;       // ±25A current sensor
-    readings.voltage = ch3 * 25.0f;                 // 0-25V input
+    if (adc.ReadChannelV(0, ch0) == hf_adc_err_t::ADC_SUCCESS) {
+        readings.temperature = (ch0 - 0.5f) * 100.0f;  // TMP36 sensor
+    }
+    
+    if (adc.ReadChannelV(1, ch1) == hf_adc_err_t::ADC_SUCCESS) {
+        readings.pressure = ch1 * 100.0f;               // 0-100 PSI sensor
+    }
+    
+    if (adc.ReadChannelV(2, ch2) == hf_adc_err_t::ADC_SUCCESS) {
+        readings.current = (ch2 - 2.5f) * 10.0f;       // ±25A current sensor
+    }
+    
+    if (adc.ReadChannelV(3, ch3) == hf_adc_err_t::ADC_SUCCESS) {
+        readings.voltage = ch3 * 25.0f;                 // 0-25V input
+    }
     
     return readings;
 }
@@ -449,14 +503,14 @@ void sensor_monitoring_task() {
 ### ⚡ **High-Speed Data Acquisition**
 
 ```cpp
-#include "mcu/McuAdc.h"
+#include "mcu/esp32/EspAdc.h"
 #include <vector>
 
-McuAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_6);
+EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_6);
 
 class HighSpeedAcquisition {
 private:
-    std::vector<uint16_t> buffer_;
+    std::vector<uint32_t> buffer_;
     size_t sample_count_;
     
 public:
@@ -464,25 +518,23 @@ public:
         sample_count_ = samples;
         buffer_.reserve(samples);
         
-        // Configure for high-speed sampling
-        AdcChannelConfig config = {
-            .unit = ADC_UNIT_1,
-            .channel = ADC_CHANNEL_0,
-            .attenuation = ADC_ATTEN_DB_6,
-            .bitwidth = ADC_BITWIDTH_12,
-            .reference_voltage = 3.3f,
-            .calibration_enabled = true
-        };
-        adc.ConfigureChannel(config);
+        // Ensure ADC is initialized
+        adc.EnsureInitialized();
     }
     
     void acquire_samples() {
         buffer_.clear();
         
-        // Rapid sampling loop
+        // Rapid sampling loop with error handling
         for (size_t i = 0; i < sample_count_; i++) {
-            uint16_t raw = adc.ReadRaw(ADC_UNIT_1, ADC_CHANNEL_0);
-            buffer_.push_back(raw);
+            uint32_t raw_count;
+            hf_adc_err_t result = adc.ReadChannelCount(0, raw_count);
+            
+            if (result == hf_adc_err_t::ADC_SUCCESS) {
+                buffer_.push_back(raw_count);
+            } else {
+                printf("⚠️ Sample %zu failed: %s\n", i, HfAdcErrToString(result));
+            }
             
             // Minimal delay for maximum speed
             esp_rom_delay_us(10);  // 100 kHz sampling
@@ -490,24 +542,26 @@ public:
     }
     
     void process_data() {
-        float sum = 0.0f;
-        uint16_t min_val = UINT16_MAX;
-        uint16_t max_val = 0;
+        if (buffer_.empty()) {
+            printf("❌ No data acquired\n");
+            return;
+        }
         
-        for (uint16_t sample : buffer_) {
-            float voltage = adc.RawToVoltage(sample, ADC_UNIT_1, ADC_CHANNEL_0);
-            sum += voltage;
+        uint32_t sum = 0;
+        uint32_t min_val = UINT32_MAX;
+        uint32_t max_val = 0;
+        
+        for (uint32_t sample : buffer_) {
+            sum += sample;
             min_val = std::min(min_val, sample);
             max_val = std::max(max_val, sample);
         }
         
-        float average = sum / buffer_.size();
-        float min_voltage = adc.RawToVoltage(min_val, ADC_UNIT_1, ADC_CHANNEL_0);
-        float max_voltage = adc.RawToVoltage(max_val, ADC_UNIT_1, ADC_CHANNEL_0);
+        float average = static_cast<float>(sum) / buffer_.size();
         
         printf("📈 Acquired %zu samples\n", buffer_.size());
-        printf("   Average: %.3f V\n", average);
-        printf("   Range: %.3f - %.3f V\n", min_voltage, max_voltage);
+        printf("   Average: %.1f\n", average);
+        printf("   Range: %u - %u\n", min_val, max_val);
     }
 };
 ```
@@ -515,11 +569,11 @@ public:
 ### 🎯 **Motor Current Monitoring**
 
 ```cpp
-#include "mcu/McuAdc.h"
+#include "mcu/esp32/EspAdc.h"
 
 class MotorCurrentSensor {
 private:
-    McuAdc adc_;
+    EspAdc adc_;
     const float CURRENT_SENSITIVITY = 0.1f;  // 100mV/A
     const float ZERO_CURRENT_VOLTAGE = 2.5f; // Zero current offset
     
@@ -527,16 +581,17 @@ public:
     MotorCurrentSensor() : adc_(ADC_UNIT_1, ADC_ATTEN_DB_11) {}
     
     bool initialize() {
-        if (adc_.Initialize() != HfAdcErr::ADC_SUCCESS) {
-            return false;
-        }
-        
-        // Calibrate for accurate current measurements
-        return adc_.Calibrate(ADC_UNIT_1) == HfAdcErr::ADC_SUCCESS;
+        return adc_.EnsureInitialized();
     }
     
     float read_current_amps() {
-        float voltage = adc_.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
+        float voltage;
+        hf_adc_err_t result = adc_.ReadChannelV(0, voltage, 4);  // 4-sample average
+        
+        if (result != hf_adc_err_t::ADC_SUCCESS) {
+            printf("❌ Current read error: %s\n", HfAdcErrToString(result));
+            return 0.0f;
+        }
         
         // Convert to current using sensor characteristics
         float current = (voltage - ZERO_CURRENT_VOLTAGE) / CURRENT_SENSITIVITY;
@@ -559,101 +614,58 @@ public:
             // Trigger protection
         }
     }
+    
+    void print_statistics() {
+        hf_adc_statistics_t stats;
+        if (adc_.GetStatistics(stats) == hf_adc_err_t::ADC_SUCCESS) {
+            printf("📊 ADC Statistics:\n");
+            printf("   Total conversions: %u\n", stats.totalConversions);
+            printf("   Successful: %u\n", stats.successfulConversions);
+            printf("   Failed: %u\n", stats.failedConversions);
+            printf("   Avg conversion time: %u μs\n", stats.averageConversionTimeUs);
+        }
+    }
 };
 ```
 
 ---
 
-## 🧪 **Testing**
-
-### ✅ **Unit Test Coverage**
-
-Unit tests are not provided in this repository.
-
-```cpp
-// Test initialization
-TEST(BaseAdcTest, InitializationTest) {
-    McuAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
-    ASSERT_EQ(adc.Initialize(), HfAdcErr::ADC_SUCCESS);
-    ASSERT_TRUE(adc.IsInitialized());
-}
-
-// Test calibration
-TEST(BaseAdcTest, CalibrationTest) {
-    McuAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
-    adc.Initialize();
-    
-    ASSERT_EQ(adc.Calibrate(ADC_UNIT_1), HfAdcErr::ADC_SUCCESS);
-    ASSERT_TRUE(adc.IsCalibrated(ADC_UNIT_1));
-}
-
-// Test voltage conversion accuracy
-TEST(BaseAdcTest, VoltageAccuracyTest) {
-    McuAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
-    adc.Initialize();
-    adc.Calibrate(ADC_UNIT_1);
-    
-    // Test with known reference voltage
-    float measured = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
-    float expected = 3.3f;  // Assuming 3.3V reference
-    
-    ASSERT_NEAR(measured, expected, 0.1f);  // ±100mV tolerance
-}
-```
-
-### 📊 **Performance Benchmarks**
-
-| Operation | ESP32-C6 ADC | TMC9660 ADC | Notes |
-|-----------|---------------|-------------|-------|
-| **Single Conversion** | ~10µs | ~50µs | Including I2C overhead |
-| **Calibrated Read** | ~15µs | ~60µs | With calibration applied |
-| **Raw Read** | ~8µs | ~45µs | No calibration overhead |
-| **Channel Switch** | ~2µs | ~20µs | Time to change channels |
-| **Initialization** | ~1ms | ~10ms | One-time setup cost |
-
-### 🎯 **Accuracy Specifications**
-
-| Parameter | ESP32-C6 | TMC9660 | Units |
-|-----------|-----------|---------|-------|
-| **Resolution** | 12-bit | 10-bit | bits |
-| **INL** | ±2 LSB | ±4 LSB | LSB |
-| **DNL** | ±1 LSB | ±2 LSB | LSB |
-| **Gain Error** | ±1% | ±2% | % of full scale |
-| **Offset Error** | ±10 mV | ±20 mV | mV |
-| **Temperature Drift** | ±50 ppm/°C | ±100 ppm/°C | ppm/°C |
-
----
-
-## 🔍 **Error Handling Best Practices**
+## 🧪 **Best Practices**
 
 ### ✅ **Recommended Patterns**
 
 ```cpp
 // ✅ Always check initialization
-HfAdcErr result = adc.Initialize();
-if (result != HfAdcErr::ADC_SUCCESS) {
-    printf("❌ ADC initialization failed: %s\n", HfAdcErrToString(result));
+if (!adc.EnsureInitialized()) {
+    printf("❌ ADC initialization failed\n");
     return false;
 }
 
 // ✅ Validate channels before use
-AdcChannelInfo info = adc.GetChannelInfo(ADC_UNIT_1, ADC_CHANNEL_0);
-if (!info.is_available) {
-    printf("❌ Channel not available\n");
+if (!adc.IsChannelAvailable(channel_id)) {
+    printf("❌ Channel %u not available\n", channel_id);
     return;
 }
 
 // ✅ Handle conversion errors gracefully
-float voltage = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
-if (voltage < 0.0f) {
-    printf("⚠️ Invalid voltage reading\n");
-    voltage = 0.0f;  // Use safe default
+float voltage;
+hf_adc_err_t result = adc.ReadChannelV(channel_id, voltage);
+if (result != hf_adc_err_t::ADC_SUCCESS) {
+    printf("⚠️ ADC Error: %s\n", HfAdcErrToString(result));
+    // Use safe default or retry logic
+    voltage = 0.0f;
 }
 
-// ✅ Implement calibration checks
-if (!adc.IsCalibrated(ADC_UNIT_1)) {
-    printf("⚠️ ADC not calibrated, running calibration...\n");
-    adc.Calibrate(ADC_UNIT_1);
+// ✅ Use multi-sample averaging for accuracy
+float voltage;
+adc.ReadChannelV(channel_id, voltage, 8, 1);  // 8 samples, 1ms between
+
+// ✅ Monitor statistics for system health
+hf_adc_statistics_t stats;
+if (adc.GetStatistics(stats) == hf_adc_err_t::ADC_SUCCESS) {
+    if (stats.failedConversions > 100) {
+        printf("⚠️ High ADC failure rate detected\n");
+    }
 }
 ```
 
@@ -661,27 +673,52 @@ if (!adc.IsCalibrated(ADC_UNIT_1)) {
 
 ```cpp
 // ❌ Don't ignore initialization
-adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);  // May fail silently
+adc.ReadChannelV(0, voltage);  // May fail silently
 
 // ❌ Don't use invalid channels
-float v = adc.ReadVoltage(ADC_UNIT_3, ADC_CHANNEL_15);  // Invalid
+float v = adc.ReadChannelV(99, voltage);  // Invalid channel
 
-// ❌ Don't ignore calibration
-// Readings may be inaccurate without calibration
+// ❌ Don't ignore error codes
+adc.ReadChannelV(0, voltage);  // Error handling missing
 
 // ❌ Don't assume voltage ranges
-float voltage = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
+float voltage = adc.ReadChannelV(0, voltage);
 // Check attenuation settings for expected range
+
+// ❌ Don't use without error checking in critical applications
+// Always check return values in safety-critical systems
+```
+
+### 🎯 **Performance Optimization**
+
+```cpp
+// 🚀 Use raw counts for high-speed applications
+uint32_t raw_count;
+adc.ReadChannelCount(channel_id, raw_count);  // Faster than voltage conversion
+
+// 🚀 Use multi-channel reads for efficiency
+uint32_t readings[4];
+float voltages[4];
+adc.ReadMultipleChannels(channels, 4, readings, voltages);
+
+// 🚀 Minimize sample averaging for speed-critical applications
+adc.ReadChannelV(channel_id, voltage, 1);  // Single sample for speed
+
+// 🚀 Use appropriate attenuation for signal range
+// ADC_ATTEN_DB_0: 0-1.1V
+// ADC_ATTEN_DB_2_5: 0-1.5V  
+// ADC_ATTEN_DB_6: 0-2.2V
+// ADC_ATTEN_DB_11: 0-3.9V
 ```
 
 ---
 
-## 📖 **See Also**
+## 🔗 **Related Documentation**
 
 - [🔒 **SfAdc**](SfAdc.md) - Thread-safe ADC wrapper
-- [⚙️ **McuAdc**](McuAdc.md) - ESP32-C6 implementation
+- [⚙️ **EspAdc**](EspAdc.md) - ESP32-C6 implementation
 - [🎛️ **Tmc9660Adc**](Tmc9660Adc.md) - Motor controller ADC
-- [🎯 **ADC User Guide**](../guides/adc-guide.md) - Complete ADC tutorial
+- [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---
 
@@ -691,4 +728,4 @@ float voltage = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*
 
-</div>
+</div> 

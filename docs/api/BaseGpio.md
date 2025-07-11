@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![BaseGpio](https://img.shields.io/badge/BaseGpio-Abstract%20Base%20Class-blue?style=for-the-badge&logo=microchip)
+![BaseGpio](https://img.shields.io/badge/BaseGpio-Abstract%20Base%20Class-blue?style=for-the-badge&logo=plug)
 
 **🎯 Unified GPIO abstraction for all digital I/O operations**
 
@@ -15,35 +15,36 @@
 - [🎯 **Overview**](#-overview)
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
-- [🎛️ **Pin Modes & States**](#️-pin-modes--states)
-- [🔧 **Core Methods**](#-core-methods)
-- [⚡ **Interrupt Handling**](#-interrupt-handling)
+- [🔧 **Core API**](#-core-api)
+- [📊 **Data Structures**](#-data-structures)
 - [💡 **Usage Examples**](#-usage-examples)
-- [🧪 **Testing**](#-testing)
+- [🧪 **Best Practices**](#-best-practices)
 
 ---
 
 ## 🎯 **Overview**
 
-The `BaseGpio` class provides a comprehensive GPIO abstraction that serves as the unified interface for all digital I/O operations in the HardFOC system. It supports dynamic mode switching, configurable pull resistors, interrupt handling, and works across different hardware platforms.
+The `BaseGpio` class provides a comprehensive GPIO abstraction that serves as the unified interface for all digital I/O operations in the HardFOC system. It supports dynamic mode switching, configurable polarity, pull resistors, interrupt handling, and works across different hardware platforms.
 
 ### ✨ **Key Features**
 
-- 🔄 **Dynamic Mode Switching** - Change between input/output modes at runtime
+- 🔄 **Dynamic Mode Switching** - Switch between input and output modes at runtime
+- 🎯 **Configurable Polarity** - Active-high and active-low support
+- 🔌 **Pull Resistor Control** - Internal pull-up, pull-down, and floating configurations
 - ⚡ **Interrupt Support** - Edge and level-triggered interrupts with callbacks
-- 🔧 **Pull Resistor Control** - Built-in pull-up/pull-down configuration
-- 🎯 **Drive Strength** - Configurable output drive capabilities
-- 🛡️ **Robust Error Handling** - Comprehensive error codes and validation
-- 🏎️ **High Performance** - Optimized for real-time applications
-- 🔌 **Platform Agnostic** - Works with MCU pins, I2C/SPI expanders
+- 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
+- 🔌 **Platform Agnostic** - Works with MCU GPIOs, I2C expanders, SPI expanders
+- 🧵 **Thread Safe** - Designed for multi-threaded applications
+- 📊 **Statistics & Diagnostics** - Built-in monitoring and health reporting
 
 ### 📊 **Supported Hardware**
 
-| Implementation | Hardware Type | Max Pins | Interrupt Support |
-|----------------|---------------|----------|-------------------|
-| `McuDigitalGpio` | ESP32-C6 Native | 30 | ✅ Full Support |
-| `Pcal95555DigitalGpio` | I2C Expander | 16 per chip | ✅ Pin Change |
-| `Tmc9660DigitalGpio` | Motor Controller | 8 | ❌ Polling Only |
+| Implementation | Hardware Type | Pins | Features | Use Cases |
+|----------------|---------------|------|----------|-----------|
+| `EspGpio` | ESP32-C6 Internal | 48 pins | Interrupts, pull resistors | General I/O, sensors |
+| `Pca9555Gpio` | I2C GPIO Expander | 16 pins | Interrupts, polarity | I/O expansion |
+| `Mcp23s17Gpio` | SPI GPIO Expander | 16 pins | Interrupts, banks | High-speed I/O |
+| `Tmc9660Gpio` | Motor Controller | 8 pins | Motor control specific | Motor control signals |
 
 ---
 
@@ -53,30 +54,34 @@ The `BaseGpio` class provides a comprehensive GPIO abstraction that serves as th
 classDiagram
     class BaseGpio {
         <<abstract>>
-        +SetAsInput() HfGpioErr
-        +SetAsOutput() HfGpioErr
-        +SetHigh() HfGpioErr
-        +SetLow() HfGpioErr
-        +ReadState() HfGpioState
-        +SetPullMode() HfGpioErr
-        +EnableInterrupt() HfGpioErr
-        +DisableInterrupt() HfGpioErr
+        +Initialize() bool
+        +Deinitialize() bool
+        +SetDirection(direction) hf_gpio_err_t
+        +SetActive() hf_gpio_err_t
+        +SetInactive() hf_gpio_err_t
+        +IsActive(is_active) hf_gpio_err_t
+        +Toggle() hf_gpio_err_t
+        +ConfigureInterrupt(trigger, callback) hf_gpio_err_t
+        +EnableInterrupt() hf_gpio_err_t
+        +DisableInterrupt() hf_gpio_err_t
+        +GetStatistics(statistics) hf_gpio_err_t
+        +GetDiagnostics(diagnostics) hf_gpio_err_t
     }
     
-    class McuDigitalGpio {
-        +McuDigitalGpio(pin)
-        +GetPinNumber() hf_gpio_num_t
-        +IsValidPin() bool
+    class EspGpio {
+        +EspGpio(pin, direction, active_state)
+        +GetPin() hf_pin_num_t
+        +GetDirection() hf_gpio_direction_t
     }
     
-    class Pcal95555DigitalGpio {
-        +Pcal95555DigitalGpio(chip, pin)
-        +GetChipAddress() uint8_t
-        +GetLocalPin() uint8_t
+    class Pca9555Gpio {
+        +Pca9555Gpio(i2c, address, pin)
+        +GetDeviceAddress() uint8_t
+        +GetPort() uint8_t
     }
     
-    BaseGpio <|-- McuDigitalGpio
-    BaseGpio <|-- Pcal95555DigitalGpio
+    BaseGpio <|-- EspGpio
+    BaseGpio <|-- Pca9555Gpio
 ```
 
 ---
@@ -95,571 +100,878 @@ The GPIO system uses comprehensive error codes for robust error handling:
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `GPIO_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware connections |
-| `GPIO_ERR_NOT_INITIALIZED` | 2 | ⚠️ GPIO not initialized | Call initialization methods |
-| `GPIO_ERR_INVALID_PIN` | 3 | 🚫 Invalid pin number | Verify pin number validity |
-| `GPIO_ERR_INVALID_MODE` | 4 | 🚫 Invalid GPIO mode | Use valid `HfGpioMode` values |
-| `GPIO_ERR_INVALID_STATE` | 5 | 🚫 Invalid GPIO state | Use `GPIO_STATE_LOW` or `GPIO_STATE_HIGH` |
-| `GPIO_ERR_MODE_CONFLICT` | 6 | ⚡ Mode switching conflict | Ensure proper mode transitions |
+| `GPIO_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
+| `GPIO_ERR_NOT_INITIALIZED` | 2 | ⚠️ GPIO not initialized | Call Initialize() first |
+| `GPIO_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ GPIO already initialized | Check initialization state |
+| `GPIO_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
+| `GPIO_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
+| `GPIO_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### 🔧 **Configuration Error Codes**
+### 🔌 **Pin Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `GPIO_ERR_PULL_NOT_SUPPORTED` | 10 | 🚫 Pull resistor not supported | Check hardware capabilities |
-| `GPIO_ERR_INTERRUPT_NOT_SUPPORTED` | 11 | 🚫 Interrupts not supported | Use polling or different pin |
-| `GPIO_ERR_DRIVE_STRENGTH_NOT_SUPPORTED` | 12 | 🚫 Drive strength not supported | Use default drive strength |
+| `GPIO_ERR_INVALID_PIN` | 7 | 🚫 Invalid pin number | Use valid pin range |
+| `GPIO_ERR_PIN_NOT_FOUND` | 8 | 🔍 Pin not found | Check pin availability |
+| `GPIO_ERR_PIN_NOT_CONFIGURED` | 9 | ⚙️ Pin not configured | Configure pin first |
+| `GPIO_ERR_PIN_ALREADY_REGISTERED` | 10 | 🔄 Pin already registered | Check pin registration |
+| `GPIO_ERR_PIN_ACCESS_DENIED` | 11 | 🚫 Pin access denied | Check permissions |
+| `GPIO_ERR_PIN_BUSY` | 12 | 🔄 Pin busy | Wait or use different pin |
 
 ### 🌐 **Hardware Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `GPIO_ERR_HARDWARE_FAILURE` | 20 | 💥 Hardware communication failure | Check power and connections |
-| `GPIO_ERR_I2C_FAILURE` | 21 | 🔄 I2C communication error | Verify I2C bus integrity |
-| `GPIO_ERR_SPI_FAILURE` | 22 | ⚡ SPI communication error | Check SPI configuration |
+| `GPIO_ERR_HARDWARE_FAULT` | 13 | 💥 Hardware fault | Check power and connections |
+| `GPIO_ERR_COMMUNICATION_FAILURE` | 14 | 📡 Communication failure | Check bus connections |
+| `GPIO_ERR_DEVICE_NOT_RESPONDING` | 15 | 🔇 Device not responding | Check device power and address |
+| `GPIO_ERR_TIMEOUT` | 16 | ⏰ Operation timeout | Check bus speed and load |
+| `GPIO_ERR_VOLTAGE_OUT_OF_RANGE` | 17 | ⚡ Voltage out of range | Check power supply |
+
+### ⚙️ **Configuration Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `GPIO_ERR_INVALID_CONFIGURATION` | 18 | ⚙️ Invalid configuration | Check configuration parameters |
+| `GPIO_ERR_UNSUPPORTED_OPERATION` | 19 | 🚫 Unsupported operation | Check hardware capabilities |
+| `GPIO_ERR_RESOURCE_BUSY` | 20 | 🔄 Resource busy | Wait for resource availability |
+| `GPIO_ERR_RESOURCE_UNAVAILABLE` | 21 | 🚫 Resource unavailable | Check resource allocation |
+
+### 📖 **I/O Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `GPIO_ERR_READ_FAILURE` | 22 | 📖 Read failure | Check pin configuration and connections |
+| `GPIO_ERR_WRITE_FAILURE` | 23 | ✍️ Write failure | Check pin configuration and load |
+| `GPIO_ERR_DIRECTION_MISMATCH` | 24 | 🔄 Direction mismatch | Set correct pin direction |
+| `GPIO_ERR_PULL_RESISTOR_FAILURE` | 25 | 🔌 Pull resistor failure | Check pull resistor configuration |
+
+### 🔔 **Interrupt Error Codes**
+
+| Code | Value | Description | Resolution |
+|------|-------|-------------|------------|
+| `GPIO_ERR_INTERRUPT_NOT_SUPPORTED` | 26 | 🚫 Interrupt not supported | Check hardware capabilities |
+| `GPIO_ERR_INTERRUPT_ALREADY_ENABLED` | 27 | 🔄 Interrupt already enabled | Check interrupt state |
+| `GPIO_ERR_INTERRUPT_NOT_ENABLED` | 28 | ⚠️ Interrupt not enabled | Enable interrupt first |
+| `GPIO_ERR_INTERRUPT_HANDLER_FAILED` | 29 | ❌ Interrupt handler failed | Check callback function |
 
 ---
 
-## 🎛️ **Pin Modes & States**
+## 🔧 **Core API**
 
-### 📌 **GPIO Modes**
-
-```cpp
-enum class HfGpioMode {
-    INPUT = 0,           // 📥 Input mode (high impedance)
-    OUTPUT,              // 📤 Output mode (push-pull)
-    INPUT_PULLUP,        // 📥⬆️ Input with pull-up resistor
-    INPUT_PULLDOWN,      // 📥⬇️ Input with pull-down resistor
-    OUTPUT_OPEN_DRAIN    // 📤🔓 Open-drain output
-};
-```
-
-### 🔌 **GPIO States**
-
-```cpp
-enum class HfGpioState {
-    LOW = 0,             // ⬇️ Logic low (0V)
-    HIGH = 1,            // ⬆️ Logic high (3.3V)
-    UNKNOWN = 2          // ❓ Unknown/floating state
-};
-```
-
-### 🔧 **Pull Resistor Modes**
-
-```cpp
-enum class HfGpioPull {
-    NONE = 0,            // 🚫 No pull resistor
-    UP,                  // ⬆️ Pull-up resistor (~45kΩ)
-    DOWN                 // ⬇️ Pull-down resistor (~45kΩ)
-};
-```
-
-### ⚡ **Interrupt Types**
-
-```cpp
-enum class HfGpioInterruptType {
-    RISING_EDGE = 0,     // ⬆️ Trigger on low-to-high transition
-    FALLING_EDGE,        // ⬇️ Trigger on high-to-low transition
-    BOTH_EDGES,          // 🔄 Trigger on any edge
-    LOW_LEVEL,           // 📉 Trigger while pin is low
-    HIGH_LEVEL           // 📈 Trigger while pin is high
-};
-```
-
----
-
-## 🔧 **Core Methods**
-
-### 🏗️ **Initialization**
+### 🏗️ **Initialization Methods**
 
 ```cpp
 /**
  * @brief Initialize the GPIO pin
- * @return HfGpioErr Success or error code
+ * @return true if successful, false otherwise
  * 
- * 📝 Sets up the GPIO hardware and prepares it for use.
- * Must be called before any other operations.
+ * 📝 Sets up GPIO hardware, configures pin, and prepares for operation.
+ * Must be called before any GPIO operations.
+ * 
+ * @example
+ * EspGpio led_pin(2, HF_GPIO_DIRECTION_OUTPUT);
+ * if (led_pin.Initialize()) {
+ *     // GPIO ready for use
+ * }
  */
-virtual HfGpioErr Initialize() = 0;
+virtual bool Initialize() noexcept = 0;
 
 /**
  * @brief Deinitialize the GPIO pin
- * @return HfGpioErr Success or error code
+ * @return true if successful, false otherwise
  * 
- * 🧹 Cleanly shuts down the GPIO and releases hardware resources.
+ * 🧹 Cleanly shuts down GPIO hardware and releases resources.
  */
-virtual HfGpioErr Deinitialize() = 0;
+virtual bool Deinitialize() noexcept = 0;
+
+/**
+ * @brief Check if GPIO is initialized
+ * @return true if initialized, false otherwise
+ * 
+ * ❓ Query initialization status without side effects.
+ */
+[[nodiscard]] bool IsInitialized() const noexcept;
+
+/**
+ * @brief Ensure GPIO is initialized (lazy initialization)
+ * @return true if initialized successfully, false otherwise
+ * 
+ * 🔄 Automatically initializes GPIO if not already initialized.
+ */
+bool EnsureInitialized() noexcept;
+
+/**
+ * @brief Ensure GPIO is deinitialized (lazy deinitialization)
+ * @return true if deinitialized successfully, false otherwise
+ * 
+ * 🔄 Automatically deinitializes GPIO if currently initialized.
+ */
+bool EnsureDeinitialized() noexcept;
 ```
 
-### 🎛️ **Mode Configuration**
+### 🎛️ **Direction and Mode Management**
 
 ```cpp
 /**
- * @brief Configure GPIO as input
- * @param pull_mode Pull resistor configuration
- * @return HfGpioErr Success or error code
+ * @brief Get current pin direction
+ * @return Current direction setting
  * 
- * 📥 Configures the pin as an input with optional pull resistors.
+ * 📊 Returns the current pin direction (input or output).
+ */
+[[nodiscard]] hf_gpio_direction_t GetDirection() const noexcept;
+
+/**
+ * @brief Set pin direction
+ * @param direction New direction setting
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔄 Changes pin direction between input and output modes.
  * 
  * @example
- * gpio.SetAsInput(HfGpioPull::UP);  // Input with pull-up
- */
-virtual HfGpioErr SetAsInput(HfGpioPull pull_mode = HfGpioPull::NONE) = 0;
-
-/**
- * @brief Configure GPIO as output
- * @param initial_state Initial output state
- * @return HfGpioErr Success or error code
- * 
- * 📤 Configures the pin as an output with specified initial state.
- * 
- * @example
- * gpio.SetAsOutput(HfGpioState::LOW);  // Output starting low
- */
-virtual HfGpioErr SetAsOutput(HfGpioState initial_state = HfGpioState::LOW) = 0;
-
-/**
- * @brief Set GPIO mode
- * @param mode GPIO mode to set
- * @return HfGpioErr Success or error code
- * 
- * 🎯 Generic mode setting method for advanced configurations.
- */
-virtual HfGpioErr SetMode(HfGpioMode mode) = 0;
-```
-
-### 📤 **Output Operations**
-
-```cpp
-/**
- * @brief Set GPIO output high
- * @return HfGpioErr Success or error code
- * 
- * ⬆️ Sets the output pin to logic high (3.3V).
- * Pin must be configured as output first.
- */
-virtual HfGpioErr SetHigh() = 0;
-
-/**
- * @brief Set GPIO output low  
- * @return HfGpioErr Success or error code
- * 
- * ⬇️ Sets the output pin to logic low (0V).
- * Pin must be configured as output first.
- */
-virtual HfGpioErr SetLow() = 0;
-
-/**
- * @brief Set GPIO output state
- * @param state Desired output state
- * @return HfGpioErr Success or error code
- * 
- * 🎯 Generic state setting method.
- * 
- * @example
- * gpio.SetState(HfGpioState::HIGH);  // Set high
- */
-virtual HfGpioErr SetState(HfGpioState state) = 0;
-
-/**
- * @brief Toggle GPIO output state
- * @return HfGpioErr Success or error code
- * 
- * 🔄 Inverts the current output state (high→low, low→high).
- */
-virtual HfGpioErr Toggle() = 0;
-```
-
-### 📥 **Input Operations**
-
-```cpp
-/**
- * @brief Read GPIO input state
- * @return HfGpioState Current pin state
- * 
- * 📖 Reads the current logic level of the pin.
- * Works for both input and output pins.
- * 
- * @example
- * if (gpio.ReadState() == HfGpioState::HIGH) {
- *     // Pin is high
+ * hf_gpio_err_t result = gpio.SetDirection(HF_GPIO_DIRECTION_OUTPUT);
+ * if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+ *     printf("Direction set failed: %s\n", HfGpioErrToString(result));
  * }
  */
-virtual HfGpioState ReadState() = 0;
+hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept;
 
 /**
- * @brief Check if GPIO is high
- * @return bool True if pin is high
+ * @brief Check if pin is configured as input
+ * @return true if input, false if output
  * 
- * ⬆️ Convenience method to check for high state.
+ * ✅ Quick check for input mode.
  */
-bool IsHigh() { return ReadState() == HfGpioState::HIGH; }
+[[nodiscard]] bool IsInput() const noexcept;
 
 /**
- * @brief Check if GPIO is low
- * @return bool True if pin is low
+ * @brief Check if pin is configured as output
+ * @return true if output, false if input
  * 
- * ⬇️ Convenience method to check for low state.
+ * ✅ Quick check for output mode.
  */
-bool IsLow() { return ReadState() == HfGpioState::LOW; }
+[[nodiscard]] bool IsOutput() const noexcept;
+
+/**
+ * @brief Get output drive mode
+ * @return Current output mode setting
+ * 
+ * 📊 Returns the current output drive mode (push-pull or open-drain).
+ */
+[[nodiscard]] hf_gpio_output_mode_t GetOutputMode() const noexcept;
+
+/**
+ * @brief Set output drive mode
+ * @param mode New output mode setting
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔄 Changes output drive characteristics.
+ * 
+ * @example
+ * gpio.SetOutputMode(HF_GPIO_OUTPUT_MODE_OPEN_DRAIN);
+ */
+hf_gpio_err_t SetOutputMode(hf_gpio_output_mode_t mode) noexcept;
+
+/**
+ * @brief Get pull resistor configuration
+ * @return Current pull mode setting
+ * 
+ * 📊 Returns the current pull resistor configuration.
+ */
+[[nodiscard]] hf_gpio_pull_mode_t GetPullMode() const noexcept;
+
+/**
+ * @brief Set pull resistor configuration
+ * @param mode New pull mode setting
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔄 Changes internal pull resistor configuration.
+ * 
+ * @example
+ * gpio.SetPullMode(HF_GPIO_PULL_MODE_UP);  // Enable pull-up
+ */
+hf_gpio_err_t SetPullMode(hf_gpio_pull_mode_t mode) noexcept;
+```
+
+### 🔌 **State Control Methods**
+
+```cpp
+/**
+ * @brief Get current logical state
+ * @return Current logical state
+ * 
+ * 📊 Returns the current logical state (active or inactive).
+ */
+[[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
+
+/**
+ * @brief Get active state polarity
+ * @return Current active state configuration
+ * 
+ * 📊 Returns whether the pin is active-high or active-low.
+ */
+[[nodiscard]] hf_gpio_active_state_t GetActiveState() const noexcept;
+
+/**
+ * @brief Set active state polarity
+ * @param active_state New active state configuration
+ * 
+ * 🔄 Changes the polarity of the active state.
+ * 
+ * @example
+ * gpio.SetActiveState(HF_GPIO_ACTIVE_LOW);  // LED on when pin is low
+ */
+void SetActiveState(hf_gpio_active_state_t active_state) noexcept;
+
+/**
+ * @brief Set pin to active state
+ * @return hf_gpio_err_t error code
+ * 
+ * ⚡ Sets the pin to its logical active state.
+ * 
+ * @example
+ * gpio.SetActive();  // Turn on LED
+ */
+hf_gpio_err_t SetActive() noexcept;
+
+/**
+ * @brief Set pin to inactive state
+ * @return hf_gpio_err_t error code
+ * 
+ * ⚡ Sets the pin to its logical inactive state.
+ * 
+ * @example
+ * gpio.SetInactive();  // Turn off LED
+ */
+hf_gpio_err_t SetInactive() noexcept;
+
+/**
+ * @brief Toggle pin state
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔄 Toggles the pin between active and inactive states.
+ * 
+ * @example
+ * gpio.Toggle();  // Toggle LED state
+ */
+hf_gpio_err_t Toggle() noexcept;
+
+/**
+ * @brief Check if pin is active
+ * @param is_active Reference to store result
+ * @return hf_gpio_err_t error code
+ * 
+ * ✅ Reads the current logical state of the pin.
+ * 
+ * @example
+ * bool is_on;
+ * if (gpio.IsActive(is_on) == hf_gpio_err_t::GPIO_SUCCESS) {
+ *     printf("LED is %s\n", is_on ? "ON" : "OFF");
+ * }
+ */
+hf_gpio_err_t IsActive(bool &is_active) noexcept;
+```
+
+### 🔔 **Interrupt Management**
+
+```cpp
+/**
+ * @brief Check if interrupts are supported
+ * @return true if supported, false otherwise
+ * 
+ * ✅ Checks if the hardware supports interrupts.
+ */
+[[nodiscard]] virtual bool SupportsInterrupts() const noexcept;
+
+/**
+ * @brief Configure interrupt
+ * @param trigger Interrupt trigger type
+ * @param callback Callback function (optional)
+ * @param user_data User data for callback (optional)
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔔 Configures interrupt trigger and callback function.
+ * 
+ * @example
+ * void on_button_press(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* data) {
+ *     printf("Button pressed!\n");
+ * }
+ * 
+ * gpio.ConfigureInterrupt(HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE, on_button_press);
+ */
+virtual hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, 
+                                       InterruptCallback callback = nullptr,
+                                       void *user_data = nullptr) noexcept;
+
+/**
+ * @brief Enable interrupt
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔔 Enables the configured interrupt.
+ */
+virtual hf_gpio_err_t EnableInterrupt() noexcept;
+
+/**
+ * @brief Disable interrupt
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔔 Disables the interrupt.
+ */
+virtual hf_gpio_err_t DisableInterrupt() noexcept;
+
+/**
+ * @brief Wait for interrupt
+ * @param timeout_ms Timeout in milliseconds (0 = infinite)
+ * @return hf_gpio_err_t error code
+ * 
+ * ⏰ Blocks until interrupt occurs or timeout expires.
+ * 
+ * @example
+ * hf_gpio_err_t result = gpio.WaitForInterrupt(5000);  // 5 second timeout
+ * if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+ *     printf("Interrupt received!\n");
+ * } else if (result == hf_gpio_err_t::GPIO_ERR_TIMEOUT) {
+ *     printf("Timeout waiting for interrupt\n");
+ * }
+ */
+virtual hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept;
+```
+
+### 📊 **Information and Status**
+
+```cpp
+/**
+ * @brief Check if pin is available
+ * @return true if available, false otherwise
+ * 
+ * ✅ Checks if the pin is available for use.
+ */
+[[nodiscard]] virtual bool IsPinAvailable() const noexcept = 0;
+
+/**
+ * @brief Get maximum number of pins
+ * @return Maximum pin count
+ * 
+ * 📊 Returns the total number of pins available on this hardware.
+ */
+[[nodiscard]] virtual uint8_t GetMaxPins() const noexcept = 0;
+
+/**
+ * @brief Get GPIO description
+ * @return Description string
+ * 
+ * 📝 Returns a human-readable description of this GPIO implementation.
+ */
+[[nodiscard]] virtual const char *GetDescription() const noexcept = 0;
+
+/**
+ * @brief Get GPIO pin number
+ * @return Pin number/identifier
+ * 
+ * 📊 Returns the platform-agnostic pin identifier.
+ */
+[[nodiscard]] hf_pin_num_t GetPin() const noexcept;
+```
+
+### 📈 **Statistics and Diagnostics**
+
+```cpp
+/**
+ * @brief Reset GPIO operation statistics
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔄 Clears all accumulated statistics counters.
+ */
+virtual hf_gpio_err_t ResetStatistics() noexcept;
+
+/**
+ * @brief Reset GPIO diagnostic information
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔄 Clears diagnostic information and error counters.
+ */
+virtual hf_gpio_err_t ResetDiagnostics() noexcept;
+
+/**
+ * @brief Get GPIO operation statistics
+ * @param statistics Reference to store statistics data
+ * @return hf_gpio_err_t error code
+ * 
+ * 📊 Retrieves comprehensive statistics about GPIO operations.
+ */
+virtual hf_gpio_err_t GetStatistics(hf_gpio_statistics_t &statistics) const noexcept;
+
+/**
+ * @brief Get GPIO diagnostic information
+ * @param diagnostics Reference to store diagnostics data
+ * @return hf_gpio_err_t error code
+ * 
+ * 🔍 Retrieves diagnostic information about GPIO health and status.
+ */
+virtual hf_gpio_err_t GetDiagnostics(hf_gpio_diagnostics_t &diagnostics) const noexcept;
 ```
 
 ---
 
-## ⚡ **Interrupt Handling**
+## 📊 **Data Structures**
 
-### 🔧 **Interrupt Configuration**
+### 🔌 **GPIO State Enums**
 
 ```cpp
-/**
- * @brief GPIO interrupt callback function type
- * @param pin Pin number that triggered the interrupt
- * @param state Current pin state
- * @param user_data User-provided data pointer
- * 
- * 📡 Callback function signature for GPIO interrupts.
- * Called from interrupt context - keep processing minimal!
- */
-using HfGpioInterruptCallback = std::function<void(uint32_t pin, HfGpioState state, void* user_data)>;
+enum class hf_gpio_state_t : uint8_t {
+    HF_GPIO_STATE_INACTIVE = 0, ///< Logical inactive state
+    HF_GPIO_STATE_ACTIVE = 1    ///< Logical active state
+};
 
-/**
- * @brief Enable GPIO interrupt
- * @param type Interrupt trigger type
- * @param callback Function to call on interrupt
- * @param user_data User data passed to callback
- * @return HfGpioErr Success or error code
- * 
- * ⚡ Enables interrupts on the GPIO pin with specified trigger.
- * 
- * @example
- * gpio.EnableInterrupt(
- *     HfGpioInterruptType::RISING_EDGE,
- *     [](uint32_t pin, HfGpioState state, void* data) {
- *         // Handle interrupt (keep minimal!)
- *         button_pressed = true;
- *     },
- *     nullptr
- * );
- */
-virtual HfGpioErr EnableInterrupt(
-    HfGpioInterruptType type,
-    HfGpioInterruptCallback callback,
-    void* user_data = nullptr
-) = 0;
+enum class hf_gpio_active_state_t : uint8_t {
+    HF_GPIO_ACTIVE_LOW = 0, ///< Active state is electrical low
+    HF_GPIO_ACTIVE_HIGH = 1 ///< Active state is electrical high
+};
 
-/**
- * @brief Disable GPIO interrupt
- * @return HfGpioErr Success or error code
- * 
- * 🛑 Disables interrupts on the GPIO pin.
- */
-virtual HfGpioErr DisableInterrupt() = 0;
+enum class hf_gpio_direction_t : uint8_t {
+    HF_GPIO_DIRECTION_INPUT = 0, ///< Pin configured as input
+    HF_GPIO_DIRECTION_OUTPUT = 1 ///< Pin configured as output
+};
+
+enum class hf_gpio_output_mode_t : uint8_t {
+    HF_GPIO_OUTPUT_MODE_PUSH_PULL = 0, ///< Push-pull output (strong high and low)
+    HF_GPIO_OUTPUT_MODE_OPEN_DRAIN = 1 ///< Open-drain output (strong low, high-impedance high)
+};
+
+enum class hf_gpio_pull_mode_t : uint8_t {
+    HF_GPIO_PULL_MODE_FLOATING = 0, ///< No pull resistor (floating/high-impedance)
+    HF_GPIO_PULL_MODE_UP = 1,       ///< Internal pull-up resistor enabled
+    HF_GPIO_PULL_MODE_DOWN = 2,     ///< Internal pull-down resistor enabled
+    HF_GPIO_PULL_MODE_UP_DOWN = 3   ///< Both pull-up and pull-down resistors enabled
+};
+
+enum class hf_gpio_interrupt_trigger_t : uint8_t {
+    HF_GPIO_INTERRUPT_TRIGGER_NONE = 0,        ///< No interrupt (disabled)
+    HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE = 1, ///< Trigger on rising edge (low to high)
+    HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE = 2, ///< Trigger on falling edge (high to low)
+    HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES = 3,  ///< Trigger on both rising and falling edges
+    HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL = 4,   ///< Trigger on low level
+    HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL = 5   ///< Trigger on high level
+};
 ```
 
-### 📊 **Interrupt Status**
+### 📈 **GPIO Statistics Structure**
 
 ```cpp
-/**
- * @brief Check if interrupt is enabled
- * @return bool True if interrupt is enabled
- * 
- * ❓ Query interrupt enable status.
- */
-virtual bool IsInterruptEnabled() = 0;
+struct hf_gpio_statistics_t {
+    uint32_t totalOperations;        ///< Total GPIO operations performed
+    uint32_t successfulOperations;   ///< Successful operations
+    uint32_t failedOperations;       ///< Failed operations
+    uint32_t stateChanges;           ///< Number of state changes
+    uint32_t directionChanges;       ///< Number of direction changes
+    uint32_t interruptCount;         ///< Number of interrupts received
+    uint32_t averageOperationTimeUs; ///< Average operation time (microseconds)
+    uint32_t maxOperationTimeUs;     ///< Maximum operation time
+    uint32_t minOperationTimeUs;     ///< Minimum operation time
+};
+```
 
-/**
- * @brief Get interrupt type
- * @return HfGpioInterruptType Current interrupt type
- * 
- * 📋 Get the currently configured interrupt trigger type.
- */
-virtual HfGpioInterruptType GetInterruptType() = 0;
+### 🔍 **GPIO Diagnostics Structure**
+
+```cpp
+struct hf_gpio_diagnostics_t {
+    bool gpioHealthy;                ///< Overall GPIO health status
+    hf_gpio_err_t lastErrorCode;     ///< Last error code
+    uint32_t lastErrorTimestamp;     ///< Last error timestamp
+    uint32_t consecutiveErrors;      ///< Consecutive error count
+    bool pinAvailable;               ///< Pin availability status
+    bool interruptSupported;         ///< Interrupt support status
+    bool interruptEnabled;           ///< Interrupt enabled status
+    uint32_t currentState;           ///< Current pin state
+};
+```
+
+### 🔔 **Interrupt Callback Type**
+
+```cpp
+using InterruptCallback = std::function<void(BaseGpio *gpio, 
+                                           hf_gpio_interrupt_trigger_t trigger, 
+                                           void *user_data)>;
 ```
 
 ---
 
 ## 💡 **Usage Examples**
 
-### 🔴 **Basic LED Control**
+### 🔌 **Basic LED Control**
 
 ```cpp
-#include "mcu/McuDigitalGpio.h"
+#include "mcu/esp32/EspGpio.h"
 
-// Create GPIO instance for built-in LED
-McuDigitalGpio led_pin(GPIO_NUM_2);
+// Create GPIO instance for LED (active-low)
+EspGpio led_pin(2, HF_GPIO_DIRECTION_OUTPUT, HF_GPIO_ACTIVE_LOW);
 
-void setup() {
-    // Initialize and configure as output
-    led_pin.Initialize();
-    led_pin.SetAsOutput(HfGpioState::LOW);
+void setup_led() {
+    // Initialize GPIO (lazy initialization)
+    if (led_pin.EnsureInitialized()) {
+        printf("✅ LED GPIO initialized\n");
+    }
 }
 
-void blink_led() {
-    led_pin.SetHigh();
-    vTaskDelay(pdMS_TO_TICKS(500));
-    led_pin.SetLow(); 
-    vTaskDelay(pdMS_TO_TICKS(500));
+void control_led() {
+    // Turn LED on
+    hf_gpio_err_t result = led_pin.SetActive();
+    if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+        printf("❌ LED on failed: %s\n", HfGpioErrToString(result));
+    }
+    
+    // Wait a moment
+    vTaskDelay(pdMS_TO_TICKS(1000));
+    
+    // Turn LED off
+    result = led_pin.SetInactive();
+    if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+        printf("❌ LED off failed: %s\n", HfGpioErrToString(result));
+    }
 }
 
-// Alternative using toggle
-void blink_led_toggle() {
+void toggle_led() {
+    // Toggle LED state
     led_pin.Toggle();
-    vTaskDelay(pdMS_TO_TICKS(500));
+    
+    // Check current state
+    bool is_on;
+    if (led_pin.IsActive(is_on) == hf_gpio_err_t::GPIO_SUCCESS) {
+        printf("LED is %s\n", is_on ? "ON" : "OFF");
+    }
 }
 ```
 
-### 🔘 **Button Input with Pull-up**
+### 🔘 **Button Input with Interrupt**
 
 ```cpp
-#include "mcu/McuDigitalGpio.h"
+#include "mcu/esp32/EspGpio.h"
 
-McuDigitalGpio button_pin(GPIO_NUM_0);
+EspGpio button_pin(0, HF_GPIO_DIRECTION_INPUT, HF_GPIO_ACTIVE_LOW);
 
-void setup() {
-    // Configure as input with pull-up resistor
-    button_pin.Initialize();
-    button_pin.SetAsInput(HfGpioPull::UP);
+// Interrupt callback function
+void on_button_press(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* data) {
+    printf("🔘 Button pressed! Pin: %d\n", gpio->GetPin());
+    
+    // Debounce delay
+    vTaskDelay(pdMS_TO_TICKS(50));
+    
+    // Check if button is still pressed
+    bool is_pressed;
+    if (gpio->IsActive(is_pressed) == hf_gpio_err_t::GPIO_SUCCESS && is_pressed) {
+        printf("✅ Button confirmed pressed\n");
+        // Handle button press
+    }
 }
 
-bool is_button_pressed() {
-    // Button is pressed when pin reads low (active-low)
-    return button_pin.IsLow();
-}
-
-void button_task() {
-    while (true) {
-        if (is_button_pressed()) {
-            printf("🔘 Button pressed!\n");
-            vTaskDelay(pdMS_TO_TICKS(50)); // Debounce
+void setup_button() {
+    // Initialize GPIO
+    button_pin.EnsureInitialized();
+    
+    // Configure pull-up resistor
+    button_pin.SetPullMode(HF_GPIO_PULL_MODE_UP);
+    
+    // Configure interrupt for falling edge (button press)
+    if (button_pin.SupportsInterrupts()) {
+        hf_gpio_err_t result = button_pin.ConfigureInterrupt(
+            HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE, 
+            on_button_press
+        );
+        
+        if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+            button_pin.EnableInterrupt();
+            printf("✅ Button interrupt configured\n");
+        } else {
+            printf("❌ Button interrupt failed: %s\n", HfGpioErrToString(result));
         }
-        vTaskDelay(pdMS_TO_TICKS(10));
-    }
-}
-```
-
-### ⚡ **Interrupt-Driven Button**
-
-```cpp
-#include "mcu/McuDigitalGpio.h"
-#include <atomic>
-
-McuDigitalGpio button_pin(GPIO_NUM_0);
-std::atomic<bool> button_pressed{false};
-
-void button_interrupt_handler(uint32_t pin, HfGpioState state, void* user_data) {
-    // Interrupt handler - keep minimal!
-    if (state == HfGpioState::LOW) {
-        button_pressed = true;
+    } else {
+        printf("⚠️ Interrupts not supported on this GPIO\n");
     }
 }
 
-void setup() {
-    button_pin.Initialize();
-    button_pin.SetAsInput(HfGpioPull::UP);
-    
-    // Enable falling edge interrupt (button press)
-    button_pin.EnableInterrupt(
-        HfGpioInterruptType::FALLING_EDGE,
-        button_interrupt_handler
-    );
-}
-
-void main_task() {
-    while (true) {
-        if (button_pressed.exchange(false)) {
-            printf("⚡ Button interrupt triggered!\n");
-            // Handle button press
+void poll_button() {
+    // Alternative: polling method
+    bool is_pressed;
+    if (button_pin.IsActive(is_pressed) == hf_gpio_err_t::GPIO_SUCCESS) {
+        if (is_pressed) {
+            printf("🔘 Button is pressed\n");
         }
-        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 ```
 
-### 🔄 **I2C GPIO Expander**
+### 🔄 **Dynamic Mode Switching**
 
 ```cpp
-#include "Pcal95555DigitalGpio.h"
-#include "thread_safe/SfI2cBus.h"
+#include "mcu/esp32/EspGpio.h"
 
-// Setup I2C bus
-SfI2cBus i2c_bus;
+EspGpio multi_pin(4, HF_GPIO_DIRECTION_INPUT);
 
-// Create GPIO pins on PCAL95555 expander
-Pcal95555DigitalGpio expander_pin0(0x20, 0);  // Chip address 0x20, pin 0
-Pcal95555DigitalGpio expander_pin1(0x20, 1);  // Chip address 0x20, pin 1
-
-void setup() {
-    // Initialize I2C bus
-    i2c_bus.Initialize(I2C_NUM_0, 400000);
+class BidirectionalPin {
+private:
+    BaseGpio* gpio_;
     
-    // Configure expander pins
-    expander_pin0.Initialize();
-    expander_pin0.SetAsOutput(HfGpioState::LOW);
+public:
+    BidirectionalPin(BaseGpio* gpio) : gpio_(gpio) {}
     
-    expander_pin1.Initialize();
-    expander_pin1.SetAsInput(HfGpioPull::UP);
+    void set_as_output() {
+        hf_gpio_err_t result = gpio_->SetDirection(HF_GPIO_DIRECTION_OUTPUT);
+        if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+            printf("✅ Pin configured as output\n");
+        }
+    }
+    
+    void set_as_input() {
+        hf_gpio_err_t result = gpio_->SetDirection(HF_GPIO_DIRECTION_INPUT);
+        if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+            printf("✅ Pin configured as input\n");
+        }
+    }
+    
+    void write(bool value) {
+        if (gpio_->IsOutput()) {
+            if (value) {
+                gpio_->SetActive();
+            } else {
+                gpio_->SetInactive();
+            }
+        } else {
+            printf("❌ Pin not configured as output\n");
+        }
+    }
+    
+    bool read() {
+        if (gpio_->IsInput()) {
+            bool value;
+            if (gpio_->IsActive(value) == hf_gpio_err_t::GPIO_SUCCESS) {
+                return value;
+            }
+        } else {
+            printf("❌ Pin not configured as input\n");
+        }
+        return false;
+    }
+};
+```
+
+### 🔌 **I2C GPIO Expander**
+
+```cpp
+#include "mcu/esp32/Pca9555Gpio.h"
+
+// Create I2C GPIO expander instance
+Pca9555Gpio expander_pin0(i2c_bus, 0x20, 0);  // Device address 0x20, pin 0
+Pca9555Gpio expander_pin1(i2c_bus, 0x20, 1);  // Device address 0x20, pin 1
+
+void setup_expander() {
+    // Initialize pins
+    expander_pin0.EnsureInitialized();
+    expander_pin1.EnsureInitialized();
+    
+    // Configure pin 0 as output (LED)
+    expander_pin0.SetDirection(HF_GPIO_DIRECTION_OUTPUT);
+    expander_pin0.SetActiveState(HF_GPIO_ACTIVE_LOW);
+    
+    // Configure pin 1 as input (button) with pull-up
+    expander_pin1.SetDirection(HF_GPIO_DIRECTION_INPUT);
+    expander_pin1.SetPullMode(HF_GPIO_PULL_MODE_UP);
+    
+    printf("✅ I2C GPIO expander configured\n");
 }
 
-void expander_example() {
-    // Control output pin
-    expander_pin0.SetHigh();
+void control_expander_led() {
+    // Turn on LED
+    expander_pin0.SetActive();
     
-    // Read input pin
-    if (expander_pin1.IsLow()) {
-        printf("🔌 Expander input is active!\n");
+    // Check button state
+    bool button_pressed;
+    if (expander_pin1.IsActive(button_pressed) == hf_gpio_err_t::GPIO_SUCCESS) {
+        if (button_pressed) {
+            expander_pin0.SetInactive();  // Turn off LED when button pressed
+        }
     }
 }
 ```
 
-### 🎛️ **Dynamic Mode Switching**
+### 📊 **GPIO Monitoring System**
 
 ```cpp
-#include "mcu/McuDigitalGpio.h"
+#include "mcu/esp32/EspGpio.h"
 
-McuDigitalGpio versatile_pin(GPIO_NUM_5);
-
-void bidirectional_communication() {
-    versatile_pin.Initialize();
+class GpioMonitor {
+private:
+    std::vector<BaseGpio*> gpio_pins_;
     
-    // Start as output to send data
-    versatile_pin.SetAsOutput(HfGpioState::LOW);
-    
-    // Send some signal pattern
-    for (int i = 0; i < 5; i++) {
-        versatile_pin.SetHigh();
-        vTaskDelay(pdMS_TO_TICKS(10));
-        versatile_pin.SetLow();
-        vTaskDelay(pdMS_TO_TICKS(10));
+public:
+    void add_pin(BaseGpio* pin) {
+        gpio_pins_.push_back(pin);
     }
     
-    // Switch to input to receive response
-    versatile_pin.SetAsInput(HfGpioPull::UP);
-    
-    // Wait for response
-    while (versatile_pin.IsHigh()) {
-        vTaskDelay(pdMS_TO_TICKS(1));
+    void monitor_all_pins() {
+        printf("📊 GPIO Status Report:\n");
+        printf("=====================\n");
+        
+        for (auto* pin : gpio_pins_) {
+            printf("Pin %d: ", pin->GetPin());
+            
+            // Check if initialized
+            if (!pin->IsInitialized()) {
+                printf("❌ Not initialized\n");
+                continue;
+            }
+            
+            // Get direction
+            hf_gpio_direction_t direction = pin->GetDirection();
+            printf("%s | ", direction == HF_GPIO_DIRECTION_INPUT ? "INPUT" : "OUTPUT");
+            
+            // Get state
+            bool is_active;
+            if (pin->IsActive(is_active) == hf_gpio_err_t::GPIO_SUCCESS) {
+                printf("State: %s | ", is_active ? "ACTIVE" : "INACTIVE");
+            }
+            
+            // Get pull mode
+            hf_gpio_pull_mode_t pull_mode = pin->GetPullMode();
+            printf("Pull: %s", BaseGpio::ToString(pull_mode));
+            
+            printf("\n");
+        }
     }
     
-    printf("📡 Response received!\n");
-}
+    void print_statistics() {
+        printf("📈 GPIO Statistics:\n");
+        printf("==================\n");
+        
+        for (auto* pin : gpio_pins_) {
+            hf_gpio_statistics_t stats;
+            if (pin->GetStatistics(stats) == hf_gpio_err_t::GPIO_SUCCESS) {
+                printf("Pin %d: %u operations, %u successful, %u failed\n",
+                       pin->GetPin(), stats.totalOperations, 
+                       stats.successfulOperations, stats.failedOperations);
+            }
+        }
+    }
+    
+    void print_diagnostics() {
+        printf("🔍 GPIO Diagnostics:\n");
+        printf("===================\n");
+        
+        for (auto* pin : gpio_pins_) {
+            hf_gpio_diagnostics_t diag;
+            if (pin->GetDiagnostics(diag) == hf_gpio_err_t::GPIO_SUCCESS) {
+                printf("Pin %d: %s | Last error: %s | Consecutive errors: %u\n",
+                       pin->GetPin(),
+                       diag.gpioHealthy ? "✅ Healthy" : "❌ Unhealthy",
+                       HfGpioErrToString(diag.lastErrorCode),
+                       diag.consecutiveErrors);
+            }
+        }
+    }
+};
 ```
 
 ---
 
-## 🧪 **Testing**
-
-### ✅ **Unit Test Coverage**
-
-Unit tests are not provided in this repository.
-
-```cpp
-// Test initialization
-TEST(BaseGpioTest, InitializationTest) {
-    McuDigitalGpio gpio(GPIO_NUM_2);
-    ASSERT_EQ(gpio.Initialize(), HfGpioErr::GPIO_SUCCESS);
-}
-
-// Test mode switching
-TEST(BaseGpioTest, ModeSwitchingTest) {
-    McuDigitalGpio gpio(GPIO_NUM_2);
-    gpio.Initialize();
-    
-    ASSERT_EQ(gpio.SetAsOutput(), HfGpioErr::GPIO_SUCCESS);
-    ASSERT_EQ(gpio.SetAsInput(), HfGpioErr::GPIO_SUCCESS);
-}
-
-// Test interrupt functionality
-TEST(BaseGpioTest, InterruptTest) {
-    McuDigitalGpio gpio(GPIO_NUM_0);
-    gpio.Initialize();
-    gpio.SetAsInput(HfGpioPull::UP);
-    
-    bool interrupt_called = false;
-    auto callback = [&](uint32_t pin, HfGpioState state, void* data) {
-        interrupt_called = true;
-    };
-    
-    ASSERT_EQ(gpio.EnableInterrupt(HfGpioInterruptType::FALLING_EDGE, callback), 
-              HfGpioErr::GPIO_SUCCESS);
-    
-    // Simulate interrupt trigger
-    trigger_interrupt(GPIO_NUM_0);
-    
-    ASSERT_TRUE(interrupt_called);
-}
-```
-
-### 📊 **Performance Benchmarks**
-
-| Operation | MCU GPIO | I2C Expander | Notes |
-|-----------|----------|--------------|-------|
-| **SetHigh/Low** | ~100ns | ~2ms | I2C adds communication overhead |
-| **ReadState** | ~50ns | ~1.5ms | Reading requires I2C transaction |
-| **Mode Switch** | ~200ns | ~3ms | Configuration update needed |
-| **Interrupt Latency** | ~2µs | ~50µs | I2C expanders use polling |
-
----
-
-## 🔍 **Error Handling Best Practices**
+## 🧪 **Best Practices**
 
 ### ✅ **Recommended Patterns**
 
 ```cpp
-// ✅ Always check return codes
-HfGpioErr result = gpio.SetAsOutput();
-if (result != HfGpioErr::GPIO_SUCCESS) {
-    printf("❌ GPIO configuration failed: %d\n", static_cast<int>(result));
+// ✅ Always check initialization
+if (!gpio.EnsureInitialized()) {
+    printf("❌ GPIO initialization failed\n");
+    return false;
+}
+
+// ✅ Validate pin availability
+if (!gpio.IsPinAvailable()) {
+    printf("❌ Pin not available\n");
     return;
 }
 
-// ✅ Use RAII for automatic cleanup
-class GpioGuard {
-    BaseGpio& gpio_;
-public:
-    GpioGuard(BaseGpio& gpio) : gpio_(gpio) {
-        gpio_.Initialize();
-    }
-    ~GpioGuard() {
-        gpio_.Deinitialize();
-    }
-};
+// ✅ Set appropriate pull resistors for inputs
+gpio.SetPullMode(HF_GPIO_PULL_MODE_UP);  // For buttons
+gpio.SetPullMode(HF_GPIO_PULL_MODE_DOWN);  // For active-high sensors
 
-// ✅ Validate pin numbers before use
-if (!McuDigitalGpio::IsValidPin(pin_number)) {
-    printf("❌ Invalid pin number: %d\n", pin_number);
-    return;
+// ✅ Use appropriate active state for LEDs
+gpio.SetActiveState(HF_GPIO_ACTIVE_LOW);  // Common for LED cathodes
+
+// ✅ Handle all error codes
+hf_gpio_err_t result = gpio.SetActive();
+if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+    printf("⚠️ GPIO Error: %s\n", HfGpioErrToString(result));
+    // Handle specific error types
+}
+
+// ✅ Use interrupts for responsive input handling
+if (gpio.SupportsInterrupts()) {
+    gpio.ConfigureInterrupt(HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE, callback);
+    gpio.EnableInterrupt();
+}
+
+// ✅ Monitor statistics for system health
+hf_gpio_statistics_t stats;
+if (gpio.GetStatistics(stats) == hf_gpio_err_t::GPIO_SUCCESS) {
+    if (stats.failedOperations > 10) {
+        printf("⚠️ High GPIO failure rate detected\n");
+    }
 }
 ```
 
 ### ❌ **Common Pitfalls**
 
 ```cpp
-// ❌ Don't ignore return codes
-gpio.SetAsOutput();  // Missing error check
+// ❌ Don't ignore initialization
+gpio.SetActive();  // May fail silently
 
-// ❌ Don't use interrupts for time-critical operations
-gpio.EnableInterrupt(type, [](auto...) {
-    // Don't do heavy processing here!
-    expensive_operation();  // BAD!
-});
+// ❌ Don't use without checking pin availability
+gpio.SetDirection(HF_GPIO_DIRECTION_OUTPUT);  // May fail on invalid pin
 
-// ❌ Don't forget to initialize
-gpio.SetHigh();  // Will fail if not initialized
+// ❌ Don't ignore error codes
+gpio.SetActive();  // Error handling missing
 
-// ❌ Don't mix thread-unsafe operations
-// Use SfGpio for multi-threaded access
-BaseGpio* gpio = get_shared_gpio();
-gpio->SetHigh();  // Potential race condition
+// ❌ Don't assume pin direction
+gpio.IsActive(value);  // May fail if pin is output
+
+// ❌ Don't use interrupts without checking support
+gpio.ConfigureInterrupt(trigger, callback);  // May fail if not supported
+
+// ❌ Don't forget pull resistors for floating inputs
+// Floating inputs can cause erratic behavior
+```
+
+### 🎯 **Performance Optimization**
+
+```cpp
+// 🚀 Use appropriate output modes
+gpio.SetOutputMode(HF_GPIO_OUTPUT_MODE_PUSH_PULL);  // For strong drive
+gpio.SetOutputMode(HF_GPIO_OUTPUT_MODE_OPEN_DRAIN);  // For open-drain applications
+
+// 🚀 Use interrupts instead of polling for inputs
+// Interrupts are more efficient than continuous polling
+
+// 🚀 Minimize direction changes
+// Direction changes can be slow on some hardware
+
+// 🚀 Use appropriate pull resistors
+// Reduces external component count and improves noise immunity
+
+// 🚀 Monitor statistics for performance tuning
+hf_gpio_statistics_t stats;
+gpio.GetStatistics(stats);
+if (stats.averageOperationTimeUs > 100) {
+    printf("⚠️ Slow GPIO operations detected\n");
+}
 ```
 
 ---
 
-## 📖 **See Also**
+## 🔗 **Related Documentation**
 
 - [🔒 **SfGpio**](SfGpio.md) - Thread-safe GPIO wrapper
-- [⚙️ **McuDigitalGpio**](McuDigitalGpio.md) - ESP32-C6 implementation
-- [🔌 **DigitalOutputGuard**](DigitalOutputGuard.md) - RAII GPIO management
-- [🎯 **GPIO User Guide**](../guides/gpio-guide.md) - Complete GPIO tutorial
+- [⚙️ **EspGpio**](EspGpio.md) - ESP32-C6 implementation
+- [🔌 **Pca9555Gpio**](Pca9555Gpio.md) - I2C GPIO expander
+- [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---
 
@@ -669,4 +981,4 @@ gpio->SetHigh();  // Potential race condition
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*
 
-</div>
+</div> 
