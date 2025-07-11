@@ -99,7 +99,6 @@ idf_component_register(
         nvs_sec_provider
         openthread
         partition_table
-        perfmon
         protobuf-c
         protocomm
         pthread
