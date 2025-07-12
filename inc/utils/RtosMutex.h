@@ -32,7 +32,7 @@
 #include "semphr.h"
 #include "task.h"
 #else
-#error                                                                                             \
+#error \
     "RTOS mutex implementation not available for this MCU platform. Please add support in RtosMutex.h"
 #endif
 
@@ -64,14 +64,14 @@ public:
     }
   }
 
-  RtosMutex(const RtosMutex &) = delete;
-  RtosMutex &operator=(const RtosMutex &) = delete;
+  RtosMutex(const RtosMutex&) = delete;
+  RtosMutex& operator=(const RtosMutex&) = delete;
 
-  RtosMutex(RtosMutex &&other) noexcept : handle_(other.handle_) {
+  RtosMutex(RtosMutex&& other) noexcept : handle_(other.handle_) {
     other.handle_ = nullptr;
   }
 
-  RtosMutex &operator=(RtosMutex &&other) noexcept {
+  RtosMutex& operator=(RtosMutex&& other) noexcept {
     if (this != &other) {
       if (handle_) {
         vSemaphoreDelete(handle_);
@@ -160,10 +160,10 @@ public:
     }
   }
 
-  RtosSharedMutex(const RtosSharedMutex &) = delete;
-  RtosSharedMutex &operator=(const RtosSharedMutex &) = delete;
+  RtosSharedMutex(const RtosSharedMutex&) = delete;
+  RtosSharedMutex& operator=(const RtosSharedMutex&) = delete;
 
-  RtosSharedMutex(RtosSharedMutex &&other) noexcept
+  RtosSharedMutex(RtosSharedMutex&& other) noexcept
       : writer_mutex_(other.writer_mutex_), reader_mutex_(other.reader_mutex_),
         readers_(other.readers_.load()), writer_active_(other.writer_active_.load()) {
     other.writer_mutex_ = nullptr;
@@ -172,7 +172,7 @@ public:
     other.writer_active_.store(false);
   }
 
-  RtosSharedMutex &operator=(RtosSharedMutex &&other) noexcept {
+  RtosSharedMutex& operator=(RtosSharedMutex&& other) noexcept {
     if (this != &other) {
       if (writer_mutex_ != nullptr) {
         vSemaphoreDelete(writer_mutex_);
@@ -312,9 +312,10 @@ private:
   std::atomic<bool> writer_active_;
 };
 
-template <typename Mutex> class RtosUniqueLock {
+template <typename Mutex>
+class RtosUniqueLock {
 public:
-  explicit RtosUniqueLock(Mutex &mutex, uint32_t timeout_ms = 0) noexcept
+  explicit RtosUniqueLock(Mutex& mutex, uint32_t timeout_ms = 0) noexcept
       : mutex_(&mutex), locked_(false) {
     if (timeout_ms > 0) {
       locked_ = mutex_->try_lock_for(timeout_ms);
@@ -329,15 +330,15 @@ public:
     }
   }
 
-  RtosUniqueLock(const RtosUniqueLock &) = delete;
-  RtosUniqueLock &operator=(const RtosUniqueLock &) = delete;
+  RtosUniqueLock(const RtosUniqueLock&) = delete;
+  RtosUniqueLock& operator=(const RtosUniqueLock&) = delete;
 
-  RtosUniqueLock(RtosUniqueLock &&other) noexcept : mutex_(other.mutex_), locked_(other.locked_) {
+  RtosUniqueLock(RtosUniqueLock&& other) noexcept : mutex_(other.mutex_), locked_(other.locked_) {
     other.mutex_ = nullptr;
     other.locked_ = false;
   }
 
-  RtosUniqueLock &operator=(RtosUniqueLock &&other) noexcept {
+  RtosUniqueLock& operator=(RtosUniqueLock&& other) noexcept {
     if (this != &other) {
       if (locked_ && mutex_) {
         mutex_->unlock();
@@ -362,13 +363,14 @@ public:
   }
 
 private:
-  Mutex *mutex_;
+  Mutex* mutex_;
   bool locked_;
 };
 
-template <typename SharedMutex> class RtosSharedLock {
+template <typename SharedMutex>
+class RtosSharedLock {
 public:
-  explicit RtosSharedLock(SharedMutex &mutex, uint32_t timeout_ms = 0) noexcept
+  explicit RtosSharedLock(SharedMutex& mutex, uint32_t timeout_ms = 0) noexcept
       : mutex_(&mutex), locked_(false) {
     if (timeout_ms > 0) {
       locked_ = mutex_->try_lock_shared_for(timeout_ms);
@@ -383,15 +385,15 @@ public:
     }
   }
 
-  RtosSharedLock(const RtosSharedLock &) = delete;
-  RtosSharedLock &operator=(const RtosSharedLock &) = delete;
+  RtosSharedLock(const RtosSharedLock&) = delete;
+  RtosSharedLock& operator=(const RtosSharedLock&) = delete;
 
-  RtosSharedLock(RtosSharedLock &&other) noexcept : mutex_(other.mutex_), locked_(other.locked_) {
+  RtosSharedLock(RtosSharedLock&& other) noexcept : mutex_(other.mutex_), locked_(other.locked_) {
     other.mutex_ = nullptr;
     other.locked_ = false;
   }
 
-  RtosSharedLock &operator=(RtosSharedLock &&other) noexcept {
+  RtosSharedLock& operator=(RtosSharedLock&& other) noexcept {
     if (this != &other) {
       if (locked_ && mutex_) {
         mutex_->unlock_shared();
@@ -416,7 +418,7 @@ public:
   }
 
 private:
-  SharedMutex *mutex_;
+  SharedMutex* mutex_;
   bool locked_;
 };
 
@@ -425,7 +427,7 @@ private:
 //==============================================================================
 
 /// @brief Convenience alias for unique lock guard
-template<typename Mutex>
+template <typename Mutex>
 using RtosLockGuard = RtosUniqueLock<Mutex>;
 
 /// @brief Convenience alias for RtosMutex lock guard

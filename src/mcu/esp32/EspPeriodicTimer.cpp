@@ -32,13 +32,13 @@ extern "C" {
 }
 #endif
 
-static const char *TAG = "EspPeriodicTimer";
+static const char* TAG = "EspPeriodicTimer";
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-EspPeriodicTimer::EspPeriodicTimer(hf_timer_callback_t callback, void *user_data) noexcept
+EspPeriodicTimer::EspPeriodicTimer(hf_timer_callback_t callback, void* user_data) noexcept
     : BasePeriodicTimer(callback, user_data), timer_handle_(nullptr), period_us_(0), stats_{} {
   ESP_LOGD(TAG, "EspPeriodicTimer constructor");
 }
@@ -181,7 +181,7 @@ hf_timer_err_t EspPeriodicTimer::SetPeriod(hf_u64_t new_period_us) noexcept {
   return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-hf_timer_err_t EspPeriodicTimer::GetPeriod(hf_u64_t &period_us) noexcept {
+hf_timer_err_t EspPeriodicTimer::GetPeriod(hf_u64_t& period_us) noexcept {
   if (!IsInitialized()) {
     return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
@@ -189,8 +189,8 @@ hf_timer_err_t EspPeriodicTimer::GetPeriod(hf_u64_t &period_us) noexcept {
   return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-hf_timer_err_t EspPeriodicTimer::GetStats(hf_u64_t &callback_count, hf_u64_t &missed_callbacks,
-                                          hf_timer_err_t &last_error) noexcept {
+hf_timer_err_t EspPeriodicTimer::GetStats(hf_u64_t& callback_count, hf_u64_t& missed_callbacks,
+                                          hf_timer_err_t& last_error) noexcept {
   if (!IsInitialized()) {
     return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
@@ -208,7 +208,7 @@ hf_timer_err_t EspPeriodicTimer::ResetStats() noexcept {
   return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-const char *EspPeriodicTimer::GetDescription() const noexcept {
+const char* EspPeriodicTimer::GetDescription() const noexcept {
   return "ESP32 MCU Periodic Timer (ESP Timer API)";
 }
 
@@ -232,16 +232,16 @@ hf_u64_t EspPeriodicTimer::GetResolution() const noexcept {
 
 hf_timer_err_t EspPeriodicTimer::ConvertError(int platform_error) const noexcept {
   switch (platform_error) {
-  case ESP_OK:
-    return hf_timer_err_t::TIMER_SUCCESS;
-  case ESP_ERR_INVALID_ARG:
-    return hf_timer_err_t::TIMER_ERR_INVALID_PARAMETER;
-  case ESP_ERR_NO_MEM:
-    return hf_timer_err_t::TIMER_ERR_OUT_OF_MEMORY;
-  case ESP_ERR_INVALID_STATE:
-    return hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING;
-  default:
-    return hf_timer_err_t::TIMER_ERR_FAILURE;
+    case ESP_OK:
+      return hf_timer_err_t::TIMER_SUCCESS;
+    case ESP_ERR_INVALID_ARG:
+      return hf_timer_err_t::TIMER_ERR_INVALID_PARAMETER;
+    case ESP_ERR_NO_MEM:
+      return hf_timer_err_t::TIMER_ERR_OUT_OF_MEMORY;
+    case ESP_ERR_INVALID_STATE:
+      return hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING;
+    default:
+      return hf_timer_err_t::TIMER_ERR_FAILURE;
   }
 }
 
@@ -255,8 +255,8 @@ bool EspPeriodicTimer::CreateTimerHandle() noexcept {
   }
 
   esp_timer_create_args_t timer_args = {};
-  timer_args.callback = [](void *arg) {
-    auto *self = static_cast<EspPeriodicTimer *>(arg);
+  timer_args.callback = [](void* arg) {
+    auto* self = static_cast<EspPeriodicTimer*>(arg);
     if (self && self->HasValidCallback()) {
       self->stats_.callback_count++;
       self->ExecuteCallback();
@@ -295,16 +295,15 @@ void EspPeriodicTimer::DestroyTimerHandle() noexcept {
 // STATISTICS AND DIAGNOSTICS
 //==============================================================================
 
-hf_timer_err_t EspPeriodicTimer::GetStatistics(hf_timer_statistics_t &statistics) const noexcept
-{
-    statistics = statistics_;
-    return hf_timer_err_t::TIMER_SUCCESS;
+hf_timer_err_t EspPeriodicTimer::GetStatistics(hf_timer_statistics_t& statistics) const noexcept {
+  statistics = statistics_;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-hf_timer_err_t EspPeriodicTimer::GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept
-{
-    diagnostics = diagnostics_;
-    return hf_timer_err_t::TIMER_SUCCESS;
+hf_timer_err_t EspPeriodicTimer::GetDiagnostics(
+    hf_timer_diagnostics_t& diagnostics) const noexcept {
+  diagnostics = diagnostics_;
+  return hf_timer_err_t::TIMER_SUCCESS;
 }
 
 #endif // HF_MCU_FAMILY_ESP32

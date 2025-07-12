@@ -12,10 +12,10 @@
 
 #pragma once
 
-#include "BasePio.h"          // For hf_pio_err_t
-#include "HardwareTypes.h"    // For basic hardware types
-#include "McuSelect.h"        // Central MCU platform selection (includes all ESP-IDF)
+#include "BasePio.h" // For hf_pio_err_t
 #include "EspTypes_Base.h"
+#include "HardwareTypes.h" // For basic hardware types
+#include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 
 //==============================================================================
 // ESP32 PIO/RMT TYPE MAPPINGS
@@ -48,18 +48,18 @@ static constexpr uint8_t HF_RMT_MAX_INTERRUPT_PRIORITY = 7;
  * @brief ESP32 RMT clock source selection.
  */
 enum class hf_rmt_clock_source_t : uint8_t {
-  HF_RMT_CLK_SRC_DEFAULT = 0,    ///< Default clock source (APB)
-  HF_RMT_CLK_SRC_APB = 1,        ///< APB clock (80MHz)
-  HF_RMT_CLK_SRC_XTAL = 2,       ///< Crystal clock (40MHz) 
-  HF_RMT_CLK_SRC_RC_FAST = 3,    ///< RC fast clock (~8MHz)
+  HF_RMT_CLK_SRC_DEFAULT = 0, ///< Default clock source (APB)
+  HF_RMT_CLK_SRC_APB = 1,     ///< APB clock (80MHz)
+  HF_RMT_CLK_SRC_XTAL = 2,    ///< Crystal clock (40MHz)
+  HF_RMT_CLK_SRC_RC_FAST = 3, ///< RC fast clock (~8MHz)
 };
 
 /**
  * @brief ESP32 RMT channel direction.
  */
 enum class hf_rmt_channel_direction_t : uint8_t {
-  HF_RMT_CHANNEL_DIRECTION_TX = 0,  ///< Transmit direction
-  HF_RMT_CHANNEL_DIRECTION_RX = 1,  ///< Receive direction
+  HF_RMT_CHANNEL_DIRECTION_TX = 0, ///< Transmit direction
+  HF_RMT_CHANNEL_DIRECTION_RX = 1, ///< Receive direction
 };
 
 //==============================================================================
@@ -70,16 +70,16 @@ enum class hf_rmt_channel_direction_t : uint8_t {
  * @brief ESP32 RMT transmission configuration.
  */
 struct hf_rmt_transmit_config_t {
-  uint32_t loop_count;          ///< Loop count (0 = no loop)
-  bool invert_signal;           ///< Invert output signal
-  bool with_dma;                ///< Enable DMA mode for large transfers
-  uint32_t queue_depth;         ///< TX queue depth (1-32)
-  uint8_t intr_priority;        ///< Interrupt priority (0-7)
-  bool allow_pd;                ///< Allow power down in sleep modes
-  
+  uint32_t loop_count;   ///< Loop count (0 = no loop)
+  bool invert_signal;    ///< Invert output signal
+  bool with_dma;         ///< Enable DMA mode for large transfers
+  uint32_t queue_depth;  ///< TX queue depth (1-32)
+  uint8_t intr_priority; ///< Interrupt priority (0-7)
+  bool allow_pd;         ///< Allow power down in sleep modes
+
   hf_rmt_transmit_config_t() noexcept
-      : loop_count(0), invert_signal(false), with_dma(false),
-        queue_depth(4), intr_priority(0), allow_pd(false) {}
+      : loop_count(0), invert_signal(false), with_dma(false), queue_depth(4), intr_priority(0),
+        allow_pd(false) {}
 };
 
 /**
@@ -91,24 +91,23 @@ struct hf_rmt_receive_config_t {
   bool with_dma;                ///< Enable DMA mode for large transfers
   uint8_t intr_priority;        ///< Interrupt priority (0-7)
   bool allow_pd;                ///< Allow power down in sleep modes
-  
+
   hf_rmt_receive_config_t() noexcept
-      : signal_range_min_ns(1000), signal_range_max_ns(1000000),
-        with_dma(false), intr_priority(0), allow_pd(false) {}
+      : signal_range_min_ns(1000), signal_range_max_ns(1000000), with_dma(false), intr_priority(0),
+        allow_pd(false) {}
 };
 
 /**
  * @brief ESP32 RMT carrier configuration for IR protocols.
  */
 struct hf_rmt_carrier_config_t {
-  uint32_t frequency_hz;    ///< Carrier frequency in Hz
-  float duty_cycle;         ///< Duty cycle (0.0 to 1.0)
+  uint32_t frequency_hz;       ///< Carrier frequency in Hz
+  float duty_cycle;            ///< Duty cycle (0.0 to 1.0)
   uint8_t polarity_active_low; ///< Carrier polarity (0=high, 1=low)
-  bool always_on;           ///< Always on carrier mode
-  
+  bool always_on;              ///< Always on carrier mode
+
   hf_rmt_carrier_config_t() noexcept
-      : frequency_hz(38000), duty_cycle(0.5f),
-        polarity_active_low(0), always_on(false) {}
+      : frequency_hz(38000), duty_cycle(0.5f), polarity_active_low(0), always_on(false) {}
 };
 
 //==============================================================================

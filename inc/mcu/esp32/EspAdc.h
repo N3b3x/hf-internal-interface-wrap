@@ -5,7 +5,7 @@
  * This file contains the ESP32 ADC implementation that extends the BaseAdc
  * abstract class. It provides full support for ESP32 ADC features including:
  * - One-shot mode for single conversions
- * - Continuous mode with DMA for high-speed sampling  
+ * - Continuous mode with DMA for high-speed sampling
  * - Hardware calibration for accurate voltage measurements
  * - Digital IIR filters for noise reduction
  * - Threshold monitors with interrupt callbacks
@@ -13,7 +13,7 @@
  * - Thread-safe operations with proper resource management
  * - Comprehensive error handling and diagnostics
  *
- * @author Nebiyu Tadesse  
+ * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
@@ -34,34 +34,34 @@
 #include "RtosMutex.h"
 #include "utils/EspTypes.h"
 
-#include <memory>
-#include <vector>
 #include <array>
 #include <atomic>
+#include <memory>
+#include <vector>
 
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "esp_adc/adc_oneshot.h"
-#include "esp_adc/adc_continuous.h"
+#include "driver/gpio.h"
 #include "esp_adc/adc_cali.h"
 #include "esp_adc/adc_cali_scheme.h"
+#include "esp_adc/adc_continuous.h"
 #include "esp_adc/adc_filter.h"
 #include "esp_adc/adc_monitor.h"
-#include "driver/gpio.h"
-#include "esp_timer.h"
+#include "esp_adc/adc_oneshot.h"
 #include "esp_log.h"
+#include "esp_timer.h"
 
 #ifdef __cplusplus
 }
 #endif
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/semphr.h"
 #include "RtosMutex.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
+#include "freertos/task.h"
 
 //==============================================================================
 // ESP32 VARIANT-SPECIFIC ADC CONFIGURATION
@@ -69,136 +69,136 @@ extern "C" {
 
 // ESP32-C6 Configuration
 #if defined(HF_MCU_ESP32C6)
-#define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-C6 has 1 ADC unit (ADC1)
-#define HF_ESP32_ADC_MAX_CHANNELS 7                 ///< ESP32-C6 has 7 ADC channels (0-6)
-#define HF_ESP32_ADC_MAX_FILTERS 2                  ///< ESP32-C6 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2                 ///< ESP32-C6 supports 2 threshold monitors
-#define HF_ESP32_ADC_MAX_RAW_VALUE 4095             ///< 12-bit ADC
-#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100      ///< 1.1V reference
-#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000       ///< 100kSPS max
-#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10           ///< 10SPS min
-#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000     ///< 1kSPS default
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+#define HF_ESP32_ADC_MAX_UNITS 1                  ///< ESP32-C6 has 1 ADC unit (ADC1)
+#define HF_ESP32_ADC_MAX_CHANNELS 7               ///< ESP32-C6 has 7 ADC channels (0-6)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32-C6 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32-C6 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
+#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
+#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000     ///< 100kSPS max
+#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10         ///< 10SPS min
+#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000   ///< 1kSPS default
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256      ///< Minimum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
 // ESP32 Classic Configuration
 #elif defined(HF_MCU_ESP32)
-#define HF_ESP32_ADC_MAX_UNITS 2                    ///< ESP32 has 2 ADC units (ADC1, ADC2)
-#define HF_ESP32_ADC_MAX_CHANNELS 8                 ///< ESP32 has 8 ADC channels per unit (0-7)
-#define HF_ESP32_ADC_MAX_FILTERS 2                  ///< ESP32 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2                 ///< ESP32 supports 2 threshold monitors
-#define HF_ESP32_ADC_MAX_RAW_VALUE 4095             ///< 12-bit ADC
-#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100      ///< 1.1V reference
-#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 200000       ///< 200kSPS max
-#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10           ///< 10SPS min
-#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000     ///< 1kSPS default
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+#define HF_ESP32_ADC_MAX_UNITS 2                  ///< ESP32 has 2 ADC units (ADC1, ADC2)
+#define HF_ESP32_ADC_MAX_CHANNELS 8               ///< ESP32 has 8 ADC channels per unit (0-7)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
+#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
+#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 200000     ///< 200kSPS max
+#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10         ///< 10SPS min
+#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000   ///< 1kSPS default
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256      ///< Minimum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
 // ESP32-S2 Configuration
 #elif defined(HF_MCU_ESP32S2)
-#define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-S2 has 1 ADC unit (ADC1)
-#define HF_ESP32_ADC_MAX_CHANNELS 10                ///< ESP32-S2 has 10 ADC channels (0-9)
-#define HF_ESP32_ADC_MAX_FILTERS 2                  ///< ESP32-S2 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2                 ///< ESP32-S2 supports 2 threshold monitors
-#define HF_ESP32_ADC_MAX_RAW_VALUE 4095             ///< 12-bit ADC
-#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100      ///< 1.1V reference
-#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 200000       ///< 200kSPS max
-#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10           ///< 10SPS min
-#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000     ///< 1kSPS default
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+#define HF_ESP32_ADC_MAX_UNITS 1                  ///< ESP32-S2 has 1 ADC unit (ADC1)
+#define HF_ESP32_ADC_MAX_CHANNELS 10              ///< ESP32-S2 has 10 ADC channels (0-9)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32-S2 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32-S2 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
+#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
+#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 200000     ///< 200kSPS max
+#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10         ///< 10SPS min
+#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000   ///< 1kSPS default
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256      ///< Minimum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
 // ESP32-S3 Configuration
 #elif defined(HF_MCU_ESP32S3)
-#define HF_ESP32_ADC_MAX_UNITS 2                    ///< ESP32-S3 has 2 ADC units (ADC1, ADC2)
-#define HF_ESP32_ADC_MAX_CHANNELS 10                ///< ESP32-S3 has 10 ADC channels per unit (0-9)
-#define HF_ESP32_ADC_MAX_FILTERS 2                  ///< ESP32-S3 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2                 ///< ESP32-S3 supports 2 threshold monitors
-#define HF_ESP32_ADC_MAX_RAW_VALUE 4095             ///< 12-bit ADC
-#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100      ///< 1.1V reference
-#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 200000       ///< 200kSPS max
-#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10           ///< 10SPS min
-#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000     ///< 1kSPS default
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+#define HF_ESP32_ADC_MAX_UNITS 2                  ///< ESP32-S3 has 2 ADC units (ADC1, ADC2)
+#define HF_ESP32_ADC_MAX_CHANNELS 10              ///< ESP32-S3 has 10 ADC channels per unit (0-9)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32-S3 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32-S3 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
+#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
+#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 200000     ///< 200kSPS max
+#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10         ///< 10SPS min
+#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000   ///< 1kSPS default
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256      ///< Minimum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
 // ESP32-C3 Configuration
 #elif defined(HF_MCU_ESP32C3)
-#define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-C3 has 1 ADC unit (ADC1)
-#define HF_ESP32_ADC_MAX_CHANNELS 6                 ///< ESP32-C3 has 6 ADC channels (0-5)
-#define HF_ESP32_ADC_MAX_FILTERS 2                  ///< ESP32-C3 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2                 ///< ESP32-C3 supports 2 threshold monitors
-#define HF_ESP32_ADC_MAX_RAW_VALUE 4095             ///< 12-bit ADC
-#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100      ///< 1.1V reference
-#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000       ///< 100kSPS max
-#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10           ///< 10SPS min
-#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000     ///< 1kSPS default
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+#define HF_ESP32_ADC_MAX_UNITS 1                  ///< ESP32-C3 has 1 ADC unit (ADC1)
+#define HF_ESP32_ADC_MAX_CHANNELS 6               ///< ESP32-C3 has 6 ADC channels (0-5)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32-C3 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32-C3 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
+#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
+#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000     ///< 100kSPS max
+#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10         ///< 10SPS min
+#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000   ///< 1kSPS default
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256      ///< Minimum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
 // ESP32-C2 Configuration
 #elif defined(HF_MCU_ESP32C2)
-#define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-C2 has 1 ADC unit (ADC1)
-#define HF_ESP32_ADC_MAX_CHANNELS 4                 ///< ESP32-C2 has 4 ADC channels (0-3)
-#define HF_ESP32_ADC_MAX_FILTERS 2                  ///< ESP32-C2 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2                 ///< ESP32-C2 supports 2 threshold monitors
-#define HF_ESP32_ADC_MAX_RAW_VALUE 4095             ///< 12-bit ADC
-#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100      ///< 1.1V reference
-#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000       ///< 100kSPS max
-#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10           ///< 10SPS min
-#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000     ///< 1kSPS default
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+#define HF_ESP32_ADC_MAX_UNITS 1                  ///< ESP32-C2 has 1 ADC unit (ADC1)
+#define HF_ESP32_ADC_MAX_CHANNELS 4               ///< ESP32-C2 has 4 ADC channels (0-3)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32-C2 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32-C2 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
+#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
+#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000     ///< 100kSPS max
+#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10         ///< 10SPS min
+#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000   ///< 1kSPS default
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256      ///< Minimum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
 // ESP32-H2 Configuration
 #elif defined(HF_MCU_ESP32H2)
-#define HF_ESP32_ADC_MAX_UNITS 1                    ///< ESP32-H2 has 1 ADC unit (ADC1)
-#define HF_ESP32_ADC_MAX_CHANNELS 6                 ///< ESP32-H2 has 6 ADC channels (0-5)
-#define HF_ESP32_ADC_MAX_FILTERS 2                  ///< ESP32-H2 supports 2 IIR filters
-#define HF_ESP32_ADC_MAX_MONITORS 2                 ///< ESP32-H2 supports 2 threshold monitors
-#define HF_ESP32_ADC_MAX_RAW_VALUE 4095             ///< 12-bit ADC
-#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100      ///< 1.1V reference
-#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000       ///< 100kSPS max
-#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10           ///< 10SPS min
-#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000     ///< 1kSPS default
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256        ///< Minimum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096       ///< Maximum DMA buffer
-#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024   ///< Default DMA buffer
+#define HF_ESP32_ADC_MAX_UNITS 1                  ///< ESP32-H2 has 1 ADC unit (ADC1)
+#define HF_ESP32_ADC_MAX_CHANNELS 6               ///< ESP32-H2 has 6 ADC channels (0-5)
+#define HF_ESP32_ADC_MAX_FILTERS 2                ///< ESP32-H2 supports 2 IIR filters
+#define HF_ESP32_ADC_MAX_MONITORS 2               ///< ESP32-H2 supports 2 threshold monitors
+#define HF_ESP32_ADC_MAX_RAW_VALUE 4095           ///< 12-bit ADC
+#define HF_ESP32_ADC_REFERENCE_VOLTAGE_MV 1100    ///< 1.1V reference
+#define HF_ESP32_ADC_MAX_SAMPLING_FREQ 100000     ///< 100kSPS max
+#define HF_ESP32_ADC_MIN_SAMPLING_FREQ 10         ///< 10SPS min
+#define HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ 1000   ///< 1kSPS default
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN 256      ///< Minimum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
+#define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC      ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC   ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
-#define HF_ESP32_ADC_ULP_MODE             ADC_ULP_MODE_DISABLE      ///< ULP mode disabled by default
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
 // Default fallback (should not be reached)
 #else
@@ -208,31 +208,31 @@ extern "C" {
 /**
  * @class EspAdc
  * @brief ESP32 ADC implementation class.
- * 
+ *
  * This class provides a complete implementation of the BaseAdc interface for ESP32 variants.
  * It supports both one-shot and continuous ADC modes with comprehensive feature support.
  * Each instance represents a single ADC unit on the ESP32.
- * 
+ *
  * Key Features:
  * - One-shot mode: Single channel conversions with blocking or non-blocking operation
  * - Continuous mode: Multi-channel high-speed sampling with DMA and callbacks
  * - Hardware calibration: Automatic calibration using ESP32 eFuse data
- * - Digital filters: Up to 2 IIR filters for noise reduction  
+ * - Digital filters: Up to 2 IIR filters for noise reduction
  * - Threshold monitors: Up to 2 monitors with configurable thresholds and callbacks
  * - Thread safety: Proper mutex protection for multi-threaded access
  * - Error handling: Comprehensive error reporting and recovery
  * - Resource management: Automatic cleanup and proper resource lifecycle
  * - Multi-variant support: Works across all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2)
- * 
+ *
  * Usage Example (Single ADC Unit):
  * @code
  * // For ESP32-C6 (single unit)
  * EspAdc adc1({.unit_id = 0}); // ADC1
- * 
+ *
  * // For ESP32 Classic (two units)
  * EspAdc adc1({.unit_id = 0}); // ADC1
  * EspAdc adc2({.unit_id = 1}); // ADC2
- * 
+ *
  * if (adc1.EnsureInitialized()) {
  *   float voltage;
  *   if (adc1.ReadChannelV(2, voltage) == hf_adc_err_t::ADC_SUCCESS) {
@@ -240,7 +240,7 @@ extern "C" {
  *   }
  * }
  * @endcode
- * 
+ *
  * Usage Example (Continuous mode):
  * @code
  * EspAdc adc({.unit_id = 0});
@@ -253,7 +253,7 @@ extern "C" {
  * });
  * adc.StartContinuous();
  * @endcode
- * 
+ *
  * @note EspAdc instances cannot be copied or moved due to hardware resource management.
  * @note If you need to transfer ownership, use std::unique_ptr<EspAdc> or similar smart pointers.
  * @note Each EspAdc instance should be created and destroyed in the same thread context.
@@ -263,23 +263,23 @@ public:
   //==============================================//
   // CONSTRUCTION AND INITIALIZATION
   //==============================================//
-  
+
   /**
    * @brief Constructor
    * @param config ADC unit configuration
    */
   explicit EspAdc(const hf_adc_unit_config_t& config) noexcept;
-  
+
   /**
    * @brief Destructor - ensures proper cleanup
    */
   ~EspAdc() noexcept override;
-  
+
   // Disable copy and move operations
   // Copy operations are disabled because EspAdc manages hardware resources
   EspAdc(const EspAdc&) = delete;
   EspAdc& operator=(const EspAdc&) = delete;
-  
+
   // Move operations are disabled because EspAdc manages ESP-IDF handles,
   // mutexes, and callback state that are tightly coupled to hardware
   EspAdc(EspAdc&& other) = delete;
@@ -290,22 +290,37 @@ public:
   //==============================================//
 
   // ESP32 ADC Hardware Limits (configured per variant)
-  static constexpr uint8_t HF_ADC_MAX_UNITS = HF_ESP32_ADC_MAX_UNITS;                    ///< Maximum ADC units for this ESP32 variant
-  static constexpr uint8_t HF_ADC_MAX_CHANNELS = HF_ESP32_ADC_MAX_CHANNELS;              ///< Maximum ADC channels per unit
-  static constexpr uint8_t HF_ADC_MAX_FILTERS = HF_ESP32_ADC_MAX_FILTERS;                ///< Maximum IIR filters supported
-  static constexpr uint8_t HF_ADC_MAX_MONITORS = HF_ESP32_ADC_MAX_MONITORS;              ///< Maximum threshold monitors supported
-  static constexpr uint16_t HF_ADC_MAX_RAW_VALUE_12BIT = HF_ESP32_ADC_MAX_RAW_VALUE;     ///< 12-bit max raw value
-  static constexpr uint32_t HF_ADC_REFERENCE_VOLTAGE_MV = HF_ESP32_ADC_REFERENCE_VOLTAGE_MV; ///< Reference voltage in mV
-  static constexpr uint32_t HF_ADC_MAX_SAMPLING_FREQ = HF_ESP32_ADC_MAX_SAMPLING_FREQ;    ///< Maximum sampling frequency
-  static constexpr uint32_t HF_ADC_MIN_SAMPLING_FREQ = HF_ESP32_ADC_MIN_SAMPLING_FREQ;    ///< Minimum sampling frequency
-  static constexpr uint32_t HF_ADC_DEFAULT_SAMPLING_FREQ = HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ; ///< Default sampling frequency
-  static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_MIN = HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN;  ///< Minimum DMA buffer size
-  static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_MAX = HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX;  ///< Maximum DMA buffer size
-  static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT = HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT; ///< Default DMA buffer size
-  
-  static constexpr adc_oneshot_clk_src_t HF_ADC_ONESHOT_CLK_SRC = HF_ESP32_ADC_ONESHOT_CLK_SRC; ///< Clock source for one-shot mode
-  static constexpr adc_continuous_clk_src_t HF_ADC_CONTINUOUS_CLK_SRC = HF_ESP32_ADC_CONTINUOUS_CLK_SRC; ///< Clock source for continuous mode
-  static constexpr adc_ulp_mode_t HF_ADC_ULP_MODE = HF_ESP32_ADC_ULP_MODE; ///< ULP mode disabled by default
+  static constexpr uint8_t HF_ADC_MAX_UNITS =
+      HF_ESP32_ADC_MAX_UNITS; ///< Maximum ADC units for this ESP32 variant
+  static constexpr uint8_t HF_ADC_MAX_CHANNELS =
+      HF_ESP32_ADC_MAX_CHANNELS; ///< Maximum ADC channels per unit
+  static constexpr uint8_t HF_ADC_MAX_FILTERS =
+      HF_ESP32_ADC_MAX_FILTERS; ///< Maximum IIR filters supported
+  static constexpr uint8_t HF_ADC_MAX_MONITORS =
+      HF_ESP32_ADC_MAX_MONITORS; ///< Maximum threshold monitors supported
+  static constexpr uint16_t HF_ADC_MAX_RAW_VALUE_12BIT =
+      HF_ESP32_ADC_MAX_RAW_VALUE; ///< 12-bit max raw value
+  static constexpr uint32_t HF_ADC_REFERENCE_VOLTAGE_MV =
+      HF_ESP32_ADC_REFERENCE_VOLTAGE_MV; ///< Reference voltage in mV
+  static constexpr uint32_t HF_ADC_MAX_SAMPLING_FREQ =
+      HF_ESP32_ADC_MAX_SAMPLING_FREQ; ///< Maximum sampling frequency
+  static constexpr uint32_t HF_ADC_MIN_SAMPLING_FREQ =
+      HF_ESP32_ADC_MIN_SAMPLING_FREQ; ///< Minimum sampling frequency
+  static constexpr uint32_t HF_ADC_DEFAULT_SAMPLING_FREQ =
+      HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ; ///< Default sampling frequency
+  static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_MIN =
+      HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN; ///< Minimum DMA buffer size
+  static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_MAX =
+      HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX; ///< Maximum DMA buffer size
+  static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT =
+      HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT; ///< Default DMA buffer size
+
+  static constexpr adc_oneshot_clk_src_t HF_ADC_ONESHOT_CLK_SRC =
+      HF_ESP32_ADC_ONESHOT_CLK_SRC; ///< Clock source for one-shot mode
+  static constexpr adc_continuous_clk_src_t HF_ADC_CONTINUOUS_CLK_SRC =
+      HF_ESP32_ADC_CONTINUOUS_CLK_SRC; ///< Clock source for continuous mode
+  static constexpr adc_ulp_mode_t HF_ADC_ULP_MODE =
+      HF_ESP32_ADC_ULP_MODE; ///< ULP mode disabled by default
 
   //==============================================//
   // BASE CLASS IMPLEMENTATION (REQUIRED)
@@ -318,7 +333,7 @@ public:
   bool Initialize() noexcept override;
 
   /**
-   * @brief Deinitialize the ESP32 ADC peripheral  
+   * @brief Deinitialize the ESP32 ADC peripheral
    * @return true if deinitialization successful, false otherwise
    */
   bool Deinitialize() noexcept override;
@@ -345,7 +360,7 @@ public:
    * @return hf_adc_err_t error code
    */
   hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id, float& channel_reading_v,
-                            hf_u8_t numOfSamplesToAvg = 1, 
+                            hf_u8_t numOfSamplesToAvg = 1,
                             hf_time_t timeBetweenSamples = 0) noexcept override;
 
   /**
@@ -363,7 +378,7 @@ public:
   /**
    * @brief Read both channel count and voltage with optional averaging
    * @param channel_id Channel ID
-   * @param channel_reading_count Reference to store raw count  
+   * @param channel_reading_count Reference to store raw count
    * @param channel_reading_v Reference to store voltage in volts
    * @param numOfSamplesToAvg Number of samples to average (default 1)
    * @param timeBetweenSamples Time between samples in ms (default 0)
@@ -408,8 +423,9 @@ public:
    * @param bitwidth Bit width (optional, uses default if not specified)
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ConfigureChannel(hf_channel_id_t channel_id, hf_adc_atten_t attenuation,
-                                hf_adc_bitwidth_t bitwidth = hf_adc_bitwidth_t::WIDTH_DEFAULT) noexcept;
+  hf_adc_err_t ConfigureChannel(
+      hf_channel_id_t channel_id, hf_adc_atten_t attenuation,
+      hf_adc_bitwidth_t bitwidth = hf_adc_bitwidth_t::WIDTH_DEFAULT) noexcept;
 
   /**
    * @brief Enable or disable ADC channel
@@ -456,7 +472,8 @@ public:
    * @param raw_values Output array of raw values
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadMultipleRaw(const hf_channel_id_t* channel_ids, uint8_t num_channels, uint32_t* raw_values) noexcept;
+  hf_adc_err_t ReadMultipleRaw(const hf_channel_id_t* channel_ids, uint8_t num_channels,
+                               uint32_t* raw_values) noexcept;
 
   /**
    * @brief Read multiple voltage values from channels
@@ -465,7 +482,8 @@ public:
    * @param voltage_values Output array of voltage values in millivolts
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadMultipleVoltage(const hf_channel_id_t* channel_ids, uint8_t num_channels, uint32_t* voltage_values) noexcept;
+  hf_adc_err_t ReadMultipleVoltage(const hf_channel_id_t* channel_ids, uint8_t num_channels,
+                                   uint32_t* voltage_values) noexcept;
 
   /**
    * @brief Read averaged value from channel
@@ -474,7 +492,8 @@ public:
    * @param averaged_value Output averaged value
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadAveraged(hf_channel_id_t channel_id, uint16_t num_samples, uint32_t& averaged_value) noexcept;
+  hf_adc_err_t ReadAveraged(hf_channel_id_t channel_id, uint16_t num_samples,
+                            uint32_t& averaged_value) noexcept;
 
   /**
    * @brief Check if channel is enabled
@@ -500,7 +519,8 @@ public:
    * @param user_data User data passed to callback
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t SetContinuousCallback(hf_adc_continuous_callback_t callback, void* user_data = nullptr) noexcept;
+  hf_adc_err_t SetContinuousCallback(hf_adc_continuous_callback_t callback,
+                                     void* user_data = nullptr) noexcept;
 
   /**
    * @brief Start continuous mode sampling
@@ -528,8 +548,8 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadContinuousData(uint8_t* buffer, uint32_t buffer_size, 
-                                  uint32_t& bytes_read, hf_time_t timeout_ms) noexcept;
+  hf_adc_err_t ReadContinuousData(uint8_t* buffer, uint32_t buffer_size, uint32_t& bytes_read,
+                                  hf_time_t timeout_ms) noexcept;
 
   //==============================================//
   // CALIBRATION OPERATIONS
@@ -541,8 +561,9 @@ public:
    * @param bitwidth Bit width for calibration
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t InitializeCalibration(hf_adc_atten_t attenuation, 
-                                     hf_adc_bitwidth_t bitwidth = hf_adc_bitwidth_t::WIDTH_DEFAULT) noexcept;
+  hf_adc_err_t InitializeCalibration(
+      hf_adc_atten_t attenuation,
+      hf_adc_bitwidth_t bitwidth = hf_adc_bitwidth_t::WIDTH_DEFAULT) noexcept;
 
   /**
    * @brief Check if calibration is available for attenuation
@@ -558,7 +579,8 @@ public:
    * @param voltage_mv Output voltage in millivolts
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t RawToVoltage(uint32_t raw_count, hf_adc_atten_t attenuation, uint32_t& voltage_mv) noexcept;
+  hf_adc_err_t RawToVoltage(uint32_t raw_count, hf_adc_atten_t attenuation,
+                            uint32_t& voltage_mv) noexcept;
 
   //==============================================//
   // FILTER OPERATIONS
@@ -597,7 +619,7 @@ public:
    * @param user_data User data passed to callback
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t SetMonitorCallback(uint8_t monitor_id, hf_adc_monitor_callback_t callback, 
+  hf_adc_err_t SetMonitorCallback(uint8_t monitor_id, hf_adc_monitor_callback_t callback,
                                   void* user_data = nullptr) noexcept;
 
   /**
@@ -617,14 +639,14 @@ public:
    * @param statistics Reference to statistics structure to fill
    * @return hf_adc_err_t::ADC_SUCCESS if successful, error code otherwise
    */
-  hf_adc_err_t GetStatistics(hf_adc_statistics_t &statistics) noexcept override;
+  hf_adc_err_t GetStatistics(hf_adc_statistics_t& statistics) noexcept override;
 
   /**
    * @brief Get ADC diagnostic information
    * @param diagnostics Reference to diagnostics structure to fill
    * @return hf_adc_err_t::ADC_SUCCESS if successful, error code otherwise
    */
-  hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t &diagnostics) noexcept override;
+  hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t& diagnostics) noexcept override;
 
   /**
    * @brief Reset statistics counters
@@ -661,38 +683,42 @@ private:
   void UpdateDiagnostics(hf_adc_err_t error) noexcept;
 
   // Static callback functions for ESP-IDF
-  static bool IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const void* edata, void* user_data) noexcept;
-  static bool IRAM_ATTR MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data, void* user_data) noexcept;
+  static bool IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
+                                           void* user_data) noexcept;
+  static bool IRAM_ATTR MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data,
+                                        void* user_data) noexcept;
 
   //==============================================//
   // MEMBER VARIABLES
   //==============================================//
 
   // Configuration and state
-  hf_adc_unit_config_t config_;               ///< ADC unit configuration
-  std::atomic<bool> continuous_running_;      ///< Continuous mode running flag
-  std::atomic<hf_adc_err_t> last_error_;      ///< Last error code
-  
+  hf_adc_unit_config_t config_;          ///< ADC unit configuration
+  std::atomic<bool> continuous_running_; ///< Continuous mode running flag
+  std::atomic<hf_adc_err_t> last_error_; ///< Last error code
+
   // Thread safety
-  mutable RtosMutex config_mutex_;            ///< Configuration mutex
-  mutable RtosMutex stats_mutex_;             ///< Statistics mutex
+  mutable RtosMutex config_mutex_; ///< Configuration mutex
+  mutable RtosMutex stats_mutex_;  ///< Statistics mutex
 
   // ESP-IDF handles
   adc_oneshot_unit_handle_t oneshot_handle_;  ///< Oneshot mode handle
   adc_continuous_handle_t continuous_handle_; ///< Continuous mode handle
-  std::array<adc_cali_handle_t, 4> calibration_handles_; ///< Calibration handles (one per attenuation)
+  std::array<adc_cali_handle_t, 4>
+      calibration_handles_; ///< Calibration handles (one per attenuation)
   std::array<adc_iir_filter_handle_t, HF_ADC_MAX_FILTERS> filter_handles_; ///< Filter handles
-  std::array<adc_monitor_handle_t, HF_ADC_MAX_MONITORS> monitor_handles_;   ///< Monitor handles
+  std::array<adc_monitor_handle_t, HF_ADC_MAX_MONITORS> monitor_handles_;  ///< Monitor handles
 
   // Callback data
   hf_adc_continuous_callback_t continuous_callback_; ///< Continuous callback function
   void* continuous_user_data_;                       ///< Continuous callback user data
-  std::array<hf_adc_monitor_callback_t, HF_ADC_MAX_MONITORS> monitor_callbacks_; ///< Monitor callbacks
+  std::array<hf_adc_monitor_callback_t, HF_ADC_MAX_MONITORS>
+      monitor_callbacks_;                                    ///< Monitor callbacks
   std::array<void*, HF_ADC_MAX_MONITORS> monitor_user_data_; ///< Monitor callback user data
 
   // Statistics and diagnostics
-  mutable hf_adc_statistics_t statistics_;    ///< Operation statistics
-  mutable hf_adc_diagnostics_t diagnostics_;  ///< Diagnostic information
+  mutable hf_adc_statistics_t statistics_;   ///< Operation statistics
+  mutable hf_adc_diagnostics_t diagnostics_; ///< Diagnostic information
 };
 
 #endif // HF_MCU_FAMILY_ESP32

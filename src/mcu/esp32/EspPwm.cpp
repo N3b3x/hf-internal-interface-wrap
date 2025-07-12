@@ -37,15 +37,14 @@ extern "C" {
 #endif
 #endif
 
-static const char *TAG = "EspPwm";
+static const char* TAG = "EspPwm";
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-EspPwm::EspPwm(const hf_pwm_unit_config_t &config) noexcept
-    : BasePwm()
-    , mutex_(), initialized_(false), base_clock_hz_(config.base_clock_hz),
+EspPwm::EspPwm(const hf_pwm_unit_config_t& config) noexcept
+    : BasePwm(), mutex_(), initialized_(false), base_clock_hz_(config.base_clock_hz),
       clock_source_(config.clock_source), channels_(), timers_(), complementary_pairs_(),
       period_callback_(nullptr), period_callback_user_data_(nullptr), fault_callback_(nullptr),
       fault_callback_user_data_(nullptr), last_global_error_(hf_pwm_err_t::PWM_SUCCESS),
@@ -176,7 +175,7 @@ hf_pwm_mode_t EspPwm::GetMode() const noexcept {
 //==============================================================================
 
 hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
-                                      const hf_pwm_channel_config_t &config) noexcept {
+                                      const hf_pwm_channel_config_t& config) noexcept {
   if (!EnsureInitialized()) {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
@@ -205,7 +204,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   // For now, use default values since they're not in the config struct
   hf_u32_t frequency_hz = HF_PWM_DEFAULT_FREQUENCY;
   hf_u8_t resolution_bits = HF_PWM_DEFAULT_RESOLUTION;
-  
+
   hf_i8_t timer_id = FindOrAllocateTimer(frequency_hz, resolution_bits);
   if (timer_id < 0) {
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
@@ -213,8 +212,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   }
 
   // Configure the platform timer if needed
-  hf_pwm_err_t timer_result =
-      ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+  hf_pwm_err_t timer_result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
   if (timer_result != hf_pwm_err_t::PWM_SUCCESS) {
     SetChannelError(channel_id, timer_result);
     return timer_result;
@@ -233,13 +231,14 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   channels_[channel_id].assigned_timer = timer_id;
   // Get resolution from the assigned timer
   hf_u8_t assigned_timer = static_cast<hf_u8_t>(channels_[channel_id].assigned_timer);
-  hf_u8_t timer_resolution = (assigned_timer < MAX_TIMERS) ? timers_[assigned_timer].resolution_bits : HF_PWM_DEFAULT_RESOLUTION;
-      channels_[channel_id].raw_duty_value =
-        BasePwm::DutyCycleToRaw(config.duty_initial, timer_resolution);
+  hf_u8_t timer_resolution = (assigned_timer < MAX_TIMERS) ? timers_[assigned_timer].resolution_bits
+                                                           : HF_PWM_DEFAULT_RESOLUTION;
+  channels_[channel_id].raw_duty_value =
+      BasePwm::DutyCycleToRaw(config.duty_initial, timer_resolution);
   channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
 
-    ESP_LOGI(TAG, "Channel %lu configured: pin=%d, freq=%lu Hz, res=%d bits, timer=%d", channel_id,
-            config.gpio_pin, frequency_hz, resolution_bits, timer_id);
+  ESP_LOGI(TAG, "Channel %lu configured: pin=%d, freq=%lu Hz, res=%d bits, timer=%d", channel_id,
+           config.gpio_pin, frequency_hz, resolution_bits, timer_id);
 
   return hf_pwm_err_t::PWM_SUCCESS;
 }
@@ -298,8 +297,7 @@ hf_pwm_err_t EspPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
   }
 
   // Stop the channel based on idle state
-  hf_u32_t idle_level =
-      0; // Default idle state
+  hf_u32_t idle_level = 0; // Default idle state
   if (channels_[channel_id].config.invert_output) {
     idle_level = 1 - idle_level;
   }
@@ -357,8 +355,7 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
-  uint32_t raw_duty =
-      BasePwm::DutyCycleToRaw(duty_cycle, timers_[timer_id].resolution_bits);
+  uint32_t raw_duty = BasePwm::DutyCycleToRaw(duty_cycle, timers_[timer_id].resolution_bits);
   return SetDutyCycleRaw(channel_id, raw_duty);
 }
 
@@ -427,21 +424,19 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id,
 
   // If frequency is significantly different, we need a new timer
   const float frequency_tolerance = 0.01f; // 1% tolerance
-  bool frequency_changed = (std::abs(static_cast<float>(frequency_hz - current_frequency) / 
-                                    static_cast<float>(current_frequency)) > frequency_tolerance);
+  bool frequency_changed = (std::abs(static_cast<float>(frequency_hz - current_frequency) /
+                                     static_cast<float>(current_frequency)) > frequency_tolerance);
 
   if (frequency_changed) {
     // Find or allocate a new timer for this frequency
-    hf_i8_t new_timer =
-        FindOrAllocateTimer(frequency_hz, current_resolution);
+    hf_i8_t new_timer = FindOrAllocateTimer(frequency_hz, current_resolution);
     if (new_timer < 0) {
       SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
       return hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT;
     }
 
     // Configure the new timer
-    hf_pwm_err_t timer_result =
-        ConfigurePlatformTimer(new_timer, frequency_hz, current_resolution);
+    hf_pwm_err_t timer_result = ConfigurePlatformTimer(new_timer, frequency_hz, current_resolution);
     if (timer_result != hf_pwm_err_t::PWM_SUCCESS) {
       SetChannelError(channel_id, timer_result);
       return timer_result;
@@ -577,7 +572,8 @@ hf_pwm_err_t EspPwm::SetComplementaryOutput(hf_channel_id_t primary_channel,
     return hf_pwm_err_t::PWM_ERR_CHANNEL_NOT_AVAILABLE;
   }
 
-  if (channels_[primary_channel].assigned_timer != channels_[complementary_channel].assigned_timer) {
+  if (channels_[primary_channel].assigned_timer !=
+      channels_[complementary_channel].assigned_timer) {
     return hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT;
   }
 
@@ -624,7 +620,7 @@ hf_frequency_hz_t EspPwm::GetFrequency(hf_channel_id_t channel_id) const noexcep
 }
 
 hf_pwm_err_t EspPwm::GetChannelStatus(hf_channel_id_t channel_id,
-                                      hf_pwm_channel_status_t &status) const noexcept {
+                                      hf_pwm_channel_status_t& status) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
@@ -644,23 +640,23 @@ hf_pwm_err_t EspPwm::GetChannelStatus(hf_channel_id_t channel_id,
   } else {
     status.current_frequency = 0;
   }
-    status.current_duty_cycle = BasePwm::RawToDutyCycle(channels_[channel_id].raw_duty_value,
-                                                       HF_PWM_DEFAULT_RESOLUTION);
+  status.current_duty_cycle =
+      BasePwm::RawToDutyCycle(channels_[channel_id].raw_duty_value, HF_PWM_DEFAULT_RESOLUTION);
   status.raw_duty_value = channels_[channel_id].raw_duty_value;
   status.last_error = channels_[channel_id].last_error;
 
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-hf_pwm_err_t EspPwm::GetCapabilities(hf_pwm_capabilities_t &capabilities) const noexcept {
+hf_pwm_err_t EspPwm::GetCapabilities(hf_pwm_capabilities_t& capabilities) const noexcept {
   capabilities.num_channels = MAX_CHANNELS;
   capabilities.num_timers = MAX_TIMERS;
   capabilities.min_frequency_hz = MIN_FREQUENCY;
   capabilities.max_frequency_hz = MAX_FREQUENCY;
   capabilities.max_resolution_bits = MAX_RESOLUTION;
-  capabilities.supports_complementary = true;   // Software implementation
-  capabilities.supports_deadtime = true;        // Software implementation
-  capabilities.supports_phase_shift = false;    // Not supported by LEDC
+  capabilities.supports_complementary = true; // Software implementation
+  capabilities.supports_deadtime = true;      // Software implementation
+  capabilities.supports_phase_shift = false;  // Not supported by LEDC
 
   return hf_pwm_err_t::PWM_SUCCESS;
 }
@@ -675,13 +671,13 @@ hf_pwm_err_t EspPwm::GetLastError(hf_channel_id_t channel_id) const noexcept {
   return channels_[channel_id].last_error;
 }
 
-hf_pwm_err_t EspPwm::GetStatistics(hf_pwm_statistics_t &statistics) const noexcept {
+hf_pwm_err_t EspPwm::GetStatistics(hf_pwm_statistics_t& statistics) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   statistics = statistics_;
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
-hf_pwm_err_t EspPwm::GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noexcept {
+hf_pwm_err_t EspPwm::GetDiagnostics(hf_pwm_diagnostics_t& diagnostics) const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   diagnostics.hardware_initialized = initialized_.load();
@@ -692,13 +688,13 @@ hf_pwm_err_t EspPwm::GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noe
   diagnostics.active_channels = 0;
   diagnostics.active_timers = 0;
 
-  for (const auto &channel : channels_) {
+  for (const auto& channel : channels_) {
     if (channel.enabled) {
       diagnostics.active_channels++;
     }
   }
 
-  for (const auto &timer : timers_) {
+  for (const auto& timer : timers_) {
     if (timer.in_use) {
       diagnostics.active_timers++;
     }
@@ -714,13 +710,13 @@ hf_pwm_err_t EspPwm::GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noe
 // CALLBACKS (BasePwm Interface)
 //==============================================================================
 
-void EspPwm::SetPeriodCallback(hf_pwm_period_callback_t callback, void *user_data) noexcept {
+void EspPwm::SetPeriodCallback(hf_pwm_period_callback_t callback, void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   period_callback_ = callback;
   period_callback_user_data_ = user_data;
 }
 
-void EspPwm::SetFaultCallback(hf_pwm_fault_callback_t callback, void *user_data) noexcept {
+void EspPwm::SetFaultCallback(hf_pwm_fault_callback_t callback, void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   fault_callback_ = callback;
   fault_callback_user_data_ = user_data;
@@ -758,13 +754,12 @@ hf_pwm_err_t EspPwm::SetHardwareFade(hf_channel_id_t channel_id, float target_du
     return fade_result;
   }
 
-  hf_u32_t target_duty_raw =
-      BasePwm::DutyCycleToRaw(target_duty_cycle, HF_PWM_DEFAULT_RESOLUTION);
+  hf_u32_t target_duty_raw = BasePwm::DutyCycleToRaw(target_duty_cycle, HF_PWM_DEFAULT_RESOLUTION);
 
   // Apply inversion if configured
   if (channels_[channel_id].config.output_invert) {
     hf_u8_t timer_id = channels_[channel_id].assigned_timer;
-  hf_u32_t max_duty = (1U << timers_[timer_id].resolution_bits) - 1;
+    hf_u32_t max_duty = (1U << timers_[timer_id].resolution_bits) - 1;
     target_duty_raw = max_duty - target_duty_raw;
   }
 
@@ -982,18 +977,18 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
   timer_config.freq_hz = frequency_hz;
   ledc_clk_cfg_t clk_cfg = LEDC_AUTO_CLK;
   switch (clock_source_) {
-  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-    clk_cfg = LEDC_AUTO_CLK;
-    break;
-  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
-    clk_cfg = LEDC_USE_RC_FAST_CLK; // Use RC_FAST instead of deprecated RTC8M for ESP32
-    break;
-  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
-    clk_cfg = LEDC_USE_RC_FAST_CLK;
-    break;
-  default:
-    clk_cfg = LEDC_AUTO_CLK;
-    break;
+    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
+      clk_cfg = LEDC_AUTO_CLK;
+      break;
+    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
+      clk_cfg = LEDC_USE_RC_FAST_CLK; // Use RC_FAST instead of deprecated RTC8M for ESP32
+      break;
+    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
+      clk_cfg = LEDC_USE_RC_FAST_CLK;
+      break;
+    default:
+      clk_cfg = LEDC_AUTO_CLK;
+      break;
   }
   timer_config.clk_cfg = clk_cfg;
 
@@ -1011,7 +1006,7 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
 }
 
 hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
-                                              const hf_pwm_channel_config_t &config,
+                                              const hf_pwm_channel_config_t& config,
                                               hf_u8_t timer_id) noexcept {
   ledc_channel_config_t channel_config = {};
   channel_config.speed_mode = LEDC_LOW_SPEED_MODE;
@@ -1021,8 +1016,7 @@ hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
   channel_config.gpio_num = config.gpio_pin;
 
   // Calculate initial duty
-  uint32_t initial_duty =
-      BasePwm::DutyCycleToRaw(0.0f, HF_PWM_DEFAULT_RESOLUTION);
+  uint32_t initial_duty = BasePwm::DutyCycleToRaw(0.0f, HF_PWM_DEFAULT_RESOLUTION);
   if (config.output_invert) {
     uint32_t max_duty = (1U << HF_PWM_DEFAULT_RESOLUTION) - 1;
     initial_duty = max_duty - initial_duty;
@@ -1075,8 +1069,8 @@ void EspPwm::SetChannelError(hf_channel_id_t channel_id, hf_pwm_err_t error) noe
   statistics_.error_count++;
 }
 
-void IRAM_ATTR EspPwm::InterruptHandler(hf_channel_id_t channel_id, void *user_data) noexcept {
-  auto *self = static_cast<EspPwm *>(user_data);
+void IRAM_ATTR EspPwm::InterruptHandler(hf_channel_id_t channel_id, void* user_data) noexcept {
+  auto* self = static_cast<EspPwm*>(user_data);
   if (self) {
     self->HandleFadeComplete(channel_id);
   }
@@ -1110,18 +1104,18 @@ hf_pwm_err_t EspPwm::SetClockSource(hf_pwm_clock_source_t clock_source) noexcept
   // Convert to ESP-IDF clock source
   ledc_clk_cfg_t esp_clock_source;
   switch (clock_source) {
-  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-    esp_clock_source = LEDC_AUTO_CLK;
-    break;
-  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
-    esp_clock_source = LEDC_USE_RC_FAST_CLK; // Use RC_FAST instead of deprecated RTC8M for ESP32
-    break;
-  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
-    esp_clock_source = LEDC_USE_RC_FAST_CLK;
-    break;
-  default:
-    esp_clock_source = LEDC_AUTO_CLK;
-    break;
+    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
+      esp_clock_source = LEDC_AUTO_CLK;
+      break;
+    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
+      esp_clock_source = LEDC_USE_RC_FAST_CLK; // Use RC_FAST instead of deprecated RTC8M for ESP32
+      break;
+    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
+      esp_clock_source = LEDC_USE_RC_FAST_CLK;
+      break;
+    default:
+      esp_clock_source = LEDC_AUTO_CLK;
+      break;
   }
 
   // Update all active timers with new clock source
@@ -1184,7 +1178,7 @@ hf_pwm_err_t EspPwm::InitializeTimers() noexcept {
   ESP_LOGD(TAG, "Initializing PWM timers");
 
   // Initialize timer states
-  for (auto &timer : timers_) {
+  for (auto& timer : timers_) {
     timer = TimerState{};
   }
 
@@ -1196,12 +1190,12 @@ hf_pwm_err_t EspPwm::InitializeChannels() noexcept {
   ESP_LOGD(TAG, "Initializing PWM channels");
 
   // Initialize channel states
-  for (auto &channel : channels_) {
+  for (auto& channel : channels_) {
     channel = ChannelState{};
   }
 
   // Initialize complementary pairs
-  for (auto &pair : complementary_pairs_) {
+  for (auto& pair : complementary_pairs_) {
     pair = ComplementaryPair{};
   }
 

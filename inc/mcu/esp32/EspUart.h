@@ -28,18 +28,18 @@
 #include "RtosMutex.h"
 #include "utils/EspTypes.h"
 
-#include <memory>
-#include <vector>
 #include <array>
 #include <atomic>
+#include <memory>
+#include <vector>
 
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "driver/uart.h"
 #include "driver/gpio.h"
+#include "driver/uart.h"
 #include "esp_log.h"
 #include "esp_timer.h"
 
@@ -48,17 +48,17 @@ extern "C" {
 #endif
 
 #include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "freertos/queue.h"
+#include "freertos/task.h"
 
 /**
  * @class EspUart
  * @brief ESP32 UART implementation class.
- * 
+ *
  * This class provides a complete implementation of the BaseUart interface for ESP32 variants.
  * It supports both polling and interrupt-driven UART modes with comprehensive feature support.
  * Each instance represents a single UART port on the ESP32.
- * 
+ *
  * Key Features:
  * - Polling mode: Blocking read/write operations for simple applications
  * - Interrupt mode: Non-blocking operations with event queue and callbacks
@@ -71,35 +71,36 @@ extern "C" {
  * - Error handling: Comprehensive error reporting and recovery
  * - Resource management: Automatic cleanup and proper resource lifecycle
  * - Multi-variant support: Works across all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2)
- * 
+ *
  * Usage Example (Single UART Port):
  * @code
  * // For ESP32-C6 (3 ports)
  * EspUart uart0({.port_number = 0, .baud_rate = 115200, .tx_pin = 21, .rx_pin = 20});
- * 
+ *
  * // For ESP32-C3 (2 ports)
  * EspUart uart0({.port_number = 0, .baud_rate = 115200, .tx_pin = 21, .rx_pin = 20});
- * 
+ *
  * if (uart0.EnsureInitialized()) {
  *   const char* message = "Hello World!";
- *   if (uart0.Write(reinterpret_cast<const uint8_t*>(message), strlen(message)) == hf_uart_err_t::UART_SUCCESS) {
+ *   if (uart0.Write(reinterpret_cast<const uint8_t*>(message), strlen(message)) ==
+ * hf_uart_err_t::UART_SUCCESS) {
  *     // Message sent successfully
  *   }
  * }
  * @endcode
- * 
+ *
  * Usage Example (Interrupt mode with callbacks):
  * @code
- * EspUart uart({.port_number = 0, .operating_mode = hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT});
- * uart.SetEventCallback([](const hf_uart_event_native_t* event, void* user_data) {
- *   if (event->type == UART_DATA) {
+ * EspUart uart({.port_number = 0, .operating_mode =
+ * hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT}); uart.SetEventCallback([](const
+ * hf_uart_event_native_t* event, void* user_data) { if (event->type == UART_DATA) {
  *     // Handle received data
  *   }
  *   return false; // Return true to yield to higher priority task
  * });
  * uart.EnsureInitialized();
  * @endcode
- * 
+ *
  * @note EspUart instances cannot be copied or moved due to hardware resource management.
  * @note If you need to transfer ownership, use std::unique_ptr<EspUart> or similar smart pointers.
  */
@@ -109,12 +110,12 @@ public:
   // CONSTANTS
   //==============================================================================
 
-  static constexpr hf_u8_t MAX_PORTS = 3;          ///< Maximum UART ports
-  static constexpr hf_u32_t MAX_BAUD_RATE = 5000000;      ///< Maximum baud rate
-  static constexpr hf_u32_t MIN_BAUD_RATE = 110;      ///< Minimum baud rate
+  static constexpr hf_u8_t MAX_PORTS = 3;               ///< Maximum UART ports
+  static constexpr hf_u32_t MAX_BAUD_RATE = 5000000;    ///< Maximum baud rate
+  static constexpr hf_u32_t MIN_BAUD_RATE = 110;        ///< Minimum baud rate
   static constexpr hf_u32_t DEFAULT_BAUD_RATE = 115200; ///< Default baud rate
-  static constexpr hf_u16_t MAX_BUFFER_SIZE = 1024; ///< Maximum buffer size
-  static constexpr hf_u16_t DEFAULT_BUFFER_SIZE = 256; ///< Default buffer size
+  static constexpr hf_u16_t MAX_BUFFER_SIZE = 1024;     ///< Maximum buffer size
+  static constexpr hf_u16_t DEFAULT_BUFFER_SIZE = 256;  ///< Default buffer size
 
   //==============================================================================
   // CONSTRUCTOR AND DESTRUCTOR
@@ -126,8 +127,6 @@ public:
    * @note Uses lazy initialization - no hardware action until first operation
    */
   explicit EspUart(const hf_uart_config_t& config) noexcept;
-
-
 
   /**
    * @brief Destructor - ensures clean shutdown
@@ -157,8 +156,6 @@ public:
    */
   bool Deinitialize() noexcept override;
 
-
-
   // Note: EnsureInitialized() is inherited from BaseUart and provides lazy initialization
   // Thread safety is handled in Initialize() and Deinitialize() methods
 
@@ -173,7 +170,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t Write(const uint8_t* data, uint16_t length, uint32_t timeout_ms = 0) noexcept override;
+  hf_uart_err_t Write(const uint8_t* data, uint16_t length,
+                      uint32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Read data from the UART.
@@ -252,7 +250,8 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return Number of bytes read (including terminator)
    */
-  uint16_t ReadUntil(uint8_t* data, uint16_t max_length, uint8_t terminator, uint32_t timeout_ms) noexcept;
+  uint16_t ReadUntil(uint8_t* data, uint16_t max_length, uint8_t terminator,
+                     uint32_t timeout_ms) noexcept;
 
   /**
    * @brief Read a line of text (until newline).
@@ -298,7 +297,8 @@ public:
    * @param xoff_threshold XOFF threshold (default: 80)
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t ConfigureSoftwareFlowControl(bool enable, uint8_t xon_threshold = 20, uint8_t xoff_threshold = 80) noexcept;
+  hf_uart_err_t ConfigureSoftwareFlowControl(bool enable, uint8_t xon_threshold = 20,
+                                             uint8_t xoff_threshold = 80) noexcept;
 
   /**
    * @brief Configure UART wakeup from light sleep.
@@ -360,7 +360,8 @@ public:
    * @param user_data User data pointer
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t SetEventCallback(hf_uart_event_callback_t callback, void* user_data = nullptr) noexcept;
+  hf_uart_err_t SetEventCallback(hf_uart_event_callback_t callback,
+                                 void* user_data = nullptr) noexcept;
 
   /**
    * @brief Set pattern detection callback.
@@ -368,7 +369,8 @@ public:
    * @param user_data User data pointer
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t SetPatternCallback(hf_uart_pattern_callback_t callback, void* user_data = nullptr) noexcept;
+  hf_uart_err_t SetPatternCallback(hf_uart_pattern_callback_t callback,
+                                   void* user_data = nullptr) noexcept;
 
   /**
    * @brief Set break detection callback.
@@ -376,7 +378,8 @@ public:
    * @param user_data User data pointer
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t SetBreakCallback(hf_uart_break_callback_t callback, void* user_data = nullptr) noexcept;
+  hf_uart_err_t SetBreakCallback(hf_uart_break_callback_t callback,
+                                 void* user_data = nullptr) noexcept;
 
   //==============================================================================
   // STATUS AND INFORMATION
@@ -485,15 +488,15 @@ private:
    * @brief UART state tracking structure.
    */
   struct UartState {
-    bool configured;              ///< UART is configured
-    bool enabled;                 ///< UART is enabled
-    hf_uart_config_t config; ///< Current configuration
+    bool configured;                         ///< UART is configured
+    bool enabled;                            ///< UART is enabled
+    hf_uart_config_t config;                 ///< Current configuration
     hf_uart_operating_mode_t operating_mode; ///< Current operating mode
-    hf_uart_mode_t communication_mode; ///< Current communication mode
-    hf_uart_err_t last_error;     ///< Last error for this UART
+    hf_uart_mode_t communication_mode;       ///< Current communication mode
+    hf_uart_err_t last_error;                ///< Last error for this UART
 
     UartState() noexcept
-        : configured(false), enabled(false), config(), 
+        : configured(false), enabled(false), config(),
           operating_mode(hf_uart_operating_mode_t::HF_UART_MODE_POLLING),
           communication_mode(hf_uart_mode_t::HF_UART_MODE_UART),
           last_error(hf_uart_err_t::UART_SUCCESS) {}
@@ -625,37 +628,37 @@ private:
   // MEMBER VARIABLES
   //==============================================================================
 
-  mutable RtosMutex mutex_; ///< Thread safety mutex
-  hf_uart_config_t port_config_; ///< Port configuration
+  mutable RtosMutex mutex_;       ///< Thread safety mutex
+  hf_uart_config_t port_config_;  ///< Port configuration
   std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
-  uart_port_t uart_port_; ///< Native UART port handle
-  
+  uart_port_t uart_port_;         ///< Native UART port handle
+
   // Event handling for interrupt mode
-  QueueHandle_t event_queue_; ///< UART event queue
-  TaskHandle_t event_task_handle_; ///< Event task handle
-  hf_uart_event_callback_t event_callback_; ///< Event callback
+  QueueHandle_t event_queue_;                   ///< UART event queue
+  TaskHandle_t event_task_handle_;              ///< Event task handle
+  hf_uart_event_callback_t event_callback_;     ///< Event callback
   hf_uart_pattern_callback_t pattern_callback_; ///< Pattern callback
-  hf_uart_break_callback_t break_callback_; ///< Break callback
-  void* event_callback_user_data_; ///< Event callback user data
-  void* pattern_callback_user_data_; ///< Pattern callback user data
-  void* break_callback_user_data_; ///< Break callback user data
-  
+  hf_uart_break_callback_t break_callback_;     ///< Break callback
+  void* event_callback_user_data_;              ///< Event callback user data
+  void* pattern_callback_user_data_;            ///< Pattern callback user data
+  void* break_callback_user_data_;              ///< Break callback user data
+
   // Operating mode and communication state
   hf_uart_operating_mode_t operating_mode_; ///< Current operating mode
-  hf_uart_mode_t communication_mode_; ///< Current communication mode
-  bool pattern_detection_enabled_; ///< Pattern detection enabled
-  bool software_flow_enabled_; ///< Software flow control enabled
-  bool wakeup_enabled_; ///< Wakeup enabled
-  bool break_detected_; ///< Break condition detected
-  bool tx_in_progress_; ///< Transmission in progress
-  
+  hf_uart_mode_t communication_mode_;       ///< Current communication mode
+  bool pattern_detection_enabled_;          ///< Pattern detection enabled
+  bool software_flow_enabled_;              ///< Software flow control enabled
+  bool wakeup_enabled_;                     ///< Wakeup enabled
+  bool break_detected_;                     ///< Break condition detected
+  bool tx_in_progress_;                     ///< Transmission in progress
+
   // Error tracking
   hf_uart_err_t last_error_; ///< Last error that occurred
-  
+
   // Statistics and diagnostics
-  hf_uart_statistics_t statistics_; ///< UART statistics
+  hf_uart_statistics_t statistics_;   ///< UART statistics
   hf_uart_diagnostics_t diagnostics_; ///< UART diagnostics
-  
+
   // Printf buffer
   char printf_buffer_[256]; ///< Printf buffer
 

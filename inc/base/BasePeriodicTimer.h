@@ -36,23 +36,23 @@ using hf_timestamp_us_t = hf_u64_t;
  *          consistent error reporting and handling.
  */
 
-#define HF_TIMER_ERR_LIST(X)                                                                       \
-  /* Success codes */                                                                              \
-  X(TIMER_SUCCESS, 0, "Success")                                                                   \
-  /* General errors */                                                                             \
-  X(TIMER_ERR_FAILURE, 1, "General failure")                                                       \
-  X(TIMER_ERR_NOT_INITIALIZED, 2, "Not initialized")                                               \
-  X(TIMER_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                       \
-  X(TIMER_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                           \
-  X(TIMER_ERR_NULL_POINTER, 5, "Null pointer")                                                     \
-  X(TIMER_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                   \
-  /* Timer specific errors */                                                                      \
-  X(TIMER_ERR_ALREADY_RUNNING, 7, "Timer already running")                                         \
-  X(TIMER_ERR_NOT_RUNNING, 8, "Timer not running")                                                 \
-  X(TIMER_ERR_INVALID_PERIOD, 9, "Invalid period")                                                 \
-  X(TIMER_ERR_RESOURCE_BUSY, 10, "Timer resource busy")                                            \
-  X(TIMER_ERR_HARDWARE_FAULT, 11, "Timer hardware fault")                                          \
-  X(TIMER_ERR_UNSUPPORTED_OPERATION, 12, "Unsupported operation") 
+#define HF_TIMER_ERR_LIST(X)                                 \
+  /* Success codes */                                        \
+  X(TIMER_SUCCESS, 0, "Success")                             \
+  /* General errors */                                       \
+  X(TIMER_ERR_FAILURE, 1, "General failure")                 \
+  X(TIMER_ERR_NOT_INITIALIZED, 2, "Not initialized")         \
+  X(TIMER_ERR_ALREADY_INITIALIZED, 3, "Already initialized") \
+  X(TIMER_ERR_INVALID_PARAMETER, 4, "Invalid parameter")     \
+  X(TIMER_ERR_NULL_POINTER, 5, "Null pointer")               \
+  X(TIMER_ERR_OUT_OF_MEMORY, 6, "Out of memory")             \
+  /* Timer specific errors */                                \
+  X(TIMER_ERR_ALREADY_RUNNING, 7, "Timer already running")   \
+  X(TIMER_ERR_NOT_RUNNING, 8, "Timer not running")           \
+  X(TIMER_ERR_INVALID_PERIOD, 9, "Invalid period")           \
+  X(TIMER_ERR_RESOURCE_BUSY, 10, "Timer resource busy")      \
+  X(TIMER_ERR_HARDWARE_FAULT, 11, "Timer hardware fault")    \
+  X(TIMER_ERR_UNSUPPORTED_OPERATION, 12, "Unsupported operation")
 
 // Generate enum class from X-macro
 enum class hf_timer_err_t : hf_i32_t {
@@ -62,15 +62,15 @@ enum class hf_timer_err_t : hf_i32_t {
 };
 
 // Generate error description function
-constexpr const char *HfTimerErrToString(hf_timer_err_t err) noexcept {
+constexpr const char* HfTimerErrToString(hf_timer_err_t err) noexcept {
   switch (err) {
-#define X(name, value, desc)                                                                       \
-  case hf_timer_err_t::name:                                                                       \
+#define X(name, value, desc) \
+  case hf_timer_err_t::name: \
     return desc;
     HF_TIMER_ERR_LIST(X)
 #undef X
-  default:
-    return "Unknown error";
+    default:
+      return "Unknown error";
   }
 }
 
@@ -94,14 +94,14 @@ struct hf_timer_stats_t {
  * @brief Timer operation statistics.
  */
 struct hf_timer_statistics_t {
-  hf_u32_t totalStarts;          ///< Total timer starts
-  hf_u32_t totalStops;           ///< Total timer stops
-  hf_u32_t callbackExecutions;   ///< Number of callback executions
-  hf_u32_t missedCallbacks;      ///< Number of missed callbacks
+  hf_u32_t totalStarts;           ///< Total timer starts
+  hf_u32_t totalStops;            ///< Total timer stops
+  hf_u32_t callbackExecutions;    ///< Number of callback executions
+  hf_u32_t missedCallbacks;       ///< Number of missed callbacks
   hf_u32_t averageCallbackTimeUs; ///< Average callback execution time (microseconds)
-  hf_u32_t maxCallbackTimeUs;    ///< Maximum callback execution time
-  hf_u32_t minCallbackTimeUs;    ///< Minimum callback execution time
-  hf_u64_t totalRunningTimeUs;   ///< Total running time in microseconds
+  hf_u32_t maxCallbackTimeUs;     ///< Maximum callback execution time
+  hf_u32_t minCallbackTimeUs;     ///< Minimum callback execution time
+  hf_u64_t totalRunningTimeUs;    ///< Total running time in microseconds
 
   hf_timer_statistics_t()
       : totalStarts(0), totalStops(0), callbackExecutions(0), missedCallbacks(0),
@@ -113,26 +113,26 @@ struct hf_timer_statistics_t {
  * @brief Timer diagnostic information.
  */
 struct hf_timer_diagnostics_t {
-  bool timerHealthy;             ///< Overall timer health status
-  hf_timer_err_t lastErrorCode;  ///< Last error code
-  hf_u32_t lastErrorTimestamp;   ///< Last error timestamp
-  hf_u32_t consecutiveErrors;    ///< Consecutive error count
-  bool timerInitialized;         ///< Timer initialization status
-  bool timerRunning;             ///< Timer running status
-  hf_u64_t currentPeriodUs;      ///< Current timer period in microseconds
-  hf_u64_t timerResolutionUs;    ///< Timer resolution in microseconds
+  bool timerHealthy;            ///< Overall timer health status
+  hf_timer_err_t lastErrorCode; ///< Last error code
+  hf_u32_t lastErrorTimestamp;  ///< Last error timestamp
+  hf_u32_t consecutiveErrors;   ///< Consecutive error count
+  bool timerInitialized;        ///< Timer initialization status
+  bool timerRunning;            ///< Timer running status
+  hf_u64_t currentPeriodUs;     ///< Current timer period in microseconds
+  hf_u64_t timerResolutionUs;   ///< Timer resolution in microseconds
 
   hf_timer_diagnostics_t()
-      : timerHealthy(true), lastErrorCode(hf_timer_err_t::TIMER_SUCCESS), lastErrorTimestamp(0), 
-          consecutiveErrors(0), timerInitialized(false), timerRunning(false), 
-          currentPeriodUs(0), timerResolutionUs(0) {}
+      : timerHealthy(true), lastErrorCode(hf_timer_err_t::TIMER_SUCCESS), lastErrorTimestamp(0),
+        consecutiveErrors(0), timerInitialized(false), timerRunning(false), currentPeriodUs(0),
+        timerResolutionUs(0) {}
 };
 
 /**
  * @brief Timer callback function type.
  * @param user_data User-provided data passed to callback
  */
-using hf_timer_callback_t = std::function<void(void *user_data)>;
+using hf_timer_callback_t = std::function<void(void* user_data)>;
 
 /**
  * @class BasePeriodicTimer
@@ -161,8 +161,8 @@ public:
   virtual ~BasePeriodicTimer() noexcept = default;
 
   // Disable copy constructor and assignment operator for safety
-  BasePeriodicTimer(const BasePeriodicTimer &) = delete;
-  BasePeriodicTimer &operator=(const BasePeriodicTimer &) = delete;
+  BasePeriodicTimer(const BasePeriodicTimer&) = delete;
+  BasePeriodicTimer& operator=(const BasePeriodicTimer&) = delete;
 
   //==============================================//
   // PURE VIRTUAL FUNCTIONS (MUST BE IMPLEMENTED) //
@@ -205,7 +205,7 @@ public:
    * @param period_us Reference to store the current period
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual hf_timer_err_t GetPeriod(hf_u64_t &period_us) noexcept = 0;
+  virtual hf_timer_err_t GetPeriod(hf_u64_t& period_us) noexcept = 0;
 
   /**
    * @brief Get timer statistics and status information.
@@ -214,8 +214,8 @@ public:
    * @param last_error Last error that occurred
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual hf_timer_err_t GetStats(hf_u64_t &callback_count, hf_u64_t &missed_callbacks,
-                                  hf_timer_err_t &last_error) noexcept = 0;
+  virtual hf_timer_err_t GetStats(hf_u64_t& callback_count, hf_u64_t& missed_callbacks,
+                                  hf_timer_err_t& last_error) noexcept = 0;
 
   /**
    * @brief Reset timer statistics.
@@ -247,7 +247,7 @@ public:
    * @brief Get description of this timer implementation.
    * @return Description string
    */
-  virtual const char *GetDescription() const noexcept = 0;
+  virtual const char* GetDescription() const noexcept = 0;
 
   /**
    * @brief Get minimum supported timer period.
@@ -273,7 +273,7 @@ public:
    * @param user_data New user data
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  hf_timer_err_t SetCallback(hf_timer_callback_t callback, void *user_data = nullptr) noexcept {
+  hf_timer_err_t SetCallback(hf_timer_callback_t callback, void* user_data = nullptr) noexcept {
     if (IsRunning()) {
       return hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING;
     }
@@ -286,7 +286,7 @@ public:
    * @brief Get current user data pointer.
    * @return User data pointer
    */
-  void *GetUserData() const noexcept {
+  void* GetUserData() const noexcept {
     return user_data_;
   }
 
@@ -319,7 +319,7 @@ public:
    * @param statistics Reference to store statistics data
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, TIMER_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_timer_err_t GetStatistics(hf_timer_statistics_t &statistics) const noexcept {
+  virtual hf_timer_err_t GetStatistics(hf_timer_statistics_t& statistics) const noexcept {
     statistics = statistics_; // Return statistics by default
     return hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION;
   }
@@ -329,7 +329,7 @@ public:
    * @param diagnostics Reference to store diagnostics data
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, TIMER_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept {
+  virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t& diagnostics) const noexcept {
     diagnostics = diagnostics_; // Return diagnostics by default
     return hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION;
   }
@@ -340,8 +340,9 @@ protected:
    * @param callback Timer callback function
    * @param user_data User data passed to callback
    */
-  explicit BasePeriodicTimer(hf_timer_callback_t callback, void *user_data = nullptr) noexcept
-      : callback_(callback), user_data_(user_data), initialized_(false), running_(false), statistics_{}, diagnostics_{} {}
+  explicit BasePeriodicTimer(hf_timer_callback_t callback, void* user_data = nullptr) noexcept
+      : callback_(callback), user_data_(user_data), initialized_(false), running_(false),
+        statistics_{}, diagnostics_{} {}
 
   /**
    * @brief Set the initialized state.
@@ -376,10 +377,10 @@ protected:
     return static_cast<bool>(callback_);
   }
 
-  hf_timer_callback_t callback_; ///< Timer callback function
-  void *user_data_;              ///< User data passed to callback
-  bool initialized_;             ///< Initialization state flag
-  bool running_;                 ///< Running state flag
-  hf_timer_statistics_t statistics_; ///< Timer operation statistics
+  hf_timer_callback_t callback_;       ///< Timer callback function
+  void* user_data_;                    ///< User data passed to callback
+  bool initialized_;                   ///< Initialization state flag
+  bool running_;                       ///< Running state flag
+  hf_timer_statistics_t statistics_;   ///< Timer operation statistics
   hf_timer_diagnostics_t diagnostics_; ///< Timer diagnostic information
 };

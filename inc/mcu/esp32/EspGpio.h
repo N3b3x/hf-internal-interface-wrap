@@ -1,6 +1,7 @@
 /**
  * @file EspGpio.h
- * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF v5.5+ features.
+ * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF
+ * v5.5+ features.
  *
  * This file provides concrete implementations of the unified BaseGpio class
  * for microcontroller-based GPIO pins with support for both basic and advanced features.
@@ -64,7 +65,7 @@ class EspGpio : public BaseGpio {
 public:
   //==============================================================//
   // CONSTRUCTORS
-  //==============================================================//  
+  //==============================================================//
   /**
    * @brief Constructor for EspGpio with full configuration including advanced features.
    * @param pin_num Platform-agnostic GPIO pin number
@@ -78,11 +79,14 @@ public:
    *          the first call to EnsureInitialized(), Initialize(), or any GPIO operation.
    *          This allows creating GPIO objects without immediate hardware access.
    */
-  explicit EspGpio(hf_pin_num_t pin_num, hf_gpio_direction_t direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
-                   hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
-                   hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
-                   hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
-                   hf_gpio_drive_cap_t drive_capability = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM) noexcept;
+  explicit EspGpio(
+      hf_pin_num_t pin_num,
+      hf_gpio_direction_t direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+      hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+      hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+      hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
+      hf_gpio_drive_cap_t drive_capability =
+          hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup including interrupt resources.
@@ -126,7 +130,7 @@ public:
    * @brief Get human-readable description of this GPIO instance.
    * @return String view describing the MCU GPIO
    */
-  const char *GetDescription() const noexcept override;
+  const char* GetDescription() const noexcept override;
 
   //==============================================================//
   // INTERRUPT FUNCTIONALITY
@@ -145,8 +149,9 @@ public:
    * @param user_data User data passed to callback (optional)
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback = nullptr,
-                               void *user_data = nullptr) noexcept override;
+  hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger,
+                                   InterruptCallback callback = nullptr,
+                                   void* user_data = nullptr) noexcept override;
 
   /**
    * @brief Enable GPIO interrupt.
@@ -172,7 +177,7 @@ public:
    * @param status Reference to store interrupt status
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t GetInterruptStatus(InterruptStatus &status) noexcept override;
+  hf_gpio_err_t GetInterruptStatus(InterruptStatus& status) noexcept override;
 
   /**
    * @brief Clear interrupt statistics/counters.
@@ -181,7 +186,7 @@ public:
   hf_gpio_err_t ClearInterruptStats() noexcept override;
 
   //==============================================================//
-  // LAZY INITIALIZATION SUPPORT  
+  // LAZY INITIALIZATION SUPPORT
   //==============================================================//
 
   // Note: EnsureInitialized() is inherited from BaseGpio and provides lazy initialization
@@ -190,7 +195,9 @@ public:
    * @brief Check if the GPIO pin has been initialized.
    * @return true if initialized, false otherwise
    */
-  [[nodiscard]] bool IsInitialized() const noexcept { return initialized_; }
+  [[nodiscard]] bool IsInitialized() const noexcept {
+    return initialized_;
+  }
 
   //==============================================================//
   // STATISTICS AND DIAGNOSTICS
@@ -201,14 +208,14 @@ public:
    * @param statistics Reference to store current statistics
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t GetStatistics(hf_gpio_statistics_t &statistics) const noexcept override;
+  hf_gpio_err_t GetStatistics(hf_gpio_statistics_t& statistics) const noexcept override;
 
   /**
    * @brief Get GPIO diagnostics information.
    * @param diagnostics Reference to store current diagnostics
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t GetDiagnostics(hf_gpio_diagnostics_t &diagnostics) const noexcept override;
+  hf_gpio_err_t GetDiagnostics(hf_gpio_diagnostics_t& diagnostics) const noexcept override;
 
 protected:
   //==============================================================//
@@ -259,7 +266,7 @@ protected:
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Reads the current MCU pin electrical level and converts to logical state.
    */
-  hf_gpio_err_t IsActiveImpl(bool &is_active) noexcept override;
+  hf_gpio_err_t IsActiveImpl(bool& is_active) noexcept override;
 
   /**
    * @brief Platform-specific implementation for setting pull resistor mode.
@@ -319,15 +326,16 @@ protected:
    * @param flex_config Optional pointer to flexible filter config
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t ConfigureGlitchFilter(hf_gpio_glitch_filter_type_t filter_type,
-                                      const hf_gpio_flex_filter_config_t *flex_config = nullptr) noexcept;
+  hf_gpio_err_t ConfigureGlitchFilter(
+      hf_gpio_glitch_filter_type_t filter_type,
+      const hf_gpio_flex_filter_config_t* flex_config = nullptr) noexcept;
 
   /**
    * @brief Configure sleep mode for ESP32C6 GPIO.
    * @param sleep_config Sleep configuration struct
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t ConfigureSleepMode(const hf_gpio_sleep_config_t &sleep_config) noexcept;
+  hf_gpio_err_t ConfigureSleepMode(const hf_gpio_sleep_config_t& sleep_config) noexcept;
 
   /**
    * @brief Configure flexible glitch filter with custom timing.
@@ -336,7 +344,7 @@ protected:
    * @details Flexible glitch filter allows precise control over filtering parameters.
    *          Pulses shorter than window_threshold_ns within window_width_ns are filtered.
    */
-  hf_gpio_err_t ConfigureFlexGlitchFilter(const hf_gpio_flex_filter_config_t &config) noexcept;
+  hf_gpio_err_t ConfigureFlexGlitchFilter(const hf_gpio_flex_filter_config_t& config) noexcept;
 
   /**
    * @brief Enable all configured glitch filters.
@@ -363,7 +371,7 @@ protected:
    * @details Configures how the GPIO behaves during sleep modes.
    *          Essential for power-optimized applications.
    */
-  hf_gpio_err_t ConfigureSleep(const hf_gpio_sleep_config_t &config) noexcept;
+  hf_gpio_err_t ConfigureSleep(const hf_gpio_sleep_config_t& config) noexcept;
 
   /**
    * @brief Enable GPIO hold function.
@@ -381,7 +389,7 @@ protected:
    * @details Enables GPIO to wake the system from deep sleep.
    *          Essential for battery-powered applications.
    */
-  hf_gpio_err_t ConfigureWakeUp(const hf_gpio_wakeup_config_t &config) noexcept;
+  hf_gpio_err_t ConfigureWakeUp(const hf_gpio_wakeup_config_t& config) noexcept;
 
   /**
    * @brief Get comprehensive GPIO configuration information.
@@ -408,7 +416,7 @@ protected:
    * @details ETM enables zero-latency hardware-level GPIO operations triggered by events.
    *          Perfect for precise timing requirements in motor control and signal processing.
    */
-  hf_gpio_err_t ConfigureETM(const hf_gpio_etm_config_t &etm_config) noexcept;
+  hf_gpio_err_t ConfigureETM(const hf_gpio_etm_config_t& etm_config) noexcept;
 
   /**
    * @brief Enable ETM channel for this GPIO.
@@ -437,7 +445,7 @@ protected:
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Provides comprehensive ETM status for monitoring and debugging.
    */
-  hf_gpio_err_t GetETMStatus(hf_gpio_etm_status_t &status) const noexcept;
+  hf_gpio_err_t GetETMStatus(hf_gpio_etm_status_t& status) const noexcept;
 
   /**
    * @brief Get current ETM channel usage across all GPIO instances.
@@ -472,7 +480,7 @@ protected:
    * @details Provides comprehensive information about pin capabilities including
    *          ADC, RTC, touch, strapping, and special function support.
    */
-  hf_gpio_err_t GetPinCapabilities(hf_gpio_pin_capabilities_t &capabilities) const noexcept;
+  hf_gpio_err_t GetPinCapabilities(hf_gpio_pin_capabilities_t& capabilities) const noexcept;
 
   /**
    * @brief Get detailed status information for diagnostics.
@@ -480,7 +488,7 @@ protected:
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    * @details Provides comprehensive status information for debugging and monitoring.
    */
-  hf_gpio_err_t GetStatusInfo(hf_gpio_status_info_t &status) const noexcept;
+  hf_gpio_err_t GetStatusInfo(hf_gpio_status_info_t& status) const noexcept;
 
   //==============================================================//
   // DEDICATED GPIO SUPPORT (ESP32C6 ESP-IDF v5.5+)
@@ -501,8 +509,8 @@ protected:
    * @details Dedicated GPIO bundles enable high-speed bit-banging operations
    *          with minimal CPU overhead, perfect for custom protocols.
    */
-  static hf_gpio_err_t CreateDedicatedBundle(const hf_dedic_gpio_bundle_config_t &config,
-                                             hf_dedic_gpio_bundle_handle_t &bundle_handle) noexcept;
+  static hf_gpio_err_t CreateDedicatedBundle(const hf_dedic_gpio_bundle_config_t& config,
+                                             hf_dedic_gpio_bundle_handle_t& bundle_handle) noexcept;
 
   /**
    * @brief Delete a dedicated GPIO bundle.
@@ -518,7 +526,7 @@ protected:
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
   static hf_gpio_err_t ReadDedicatedBundle(hf_dedic_gpio_bundle_handle_t bundle_handle,
-                                           hf_dedic_gpio_bundle_data_t &data) noexcept;
+                                           hf_dedic_gpio_bundle_data_t& data) noexcept;
 
   /**
    * @brief Write data to a dedicated GPIO bundle.
@@ -583,7 +591,7 @@ private:
    * @brief Static interrupt service routine handler.
    * @param arg Pointer to EspGpio instance
    */
-  static void IRAM_ATTR StaticInterruptHandler(void *arg);
+  static void IRAM_ATTR StaticInterruptHandler(void* arg);
 
   /**
    * @brief Handle interrupt in instance context.
@@ -617,34 +625,34 @@ private:
   void CleanupInterruptSemaphore() noexcept;
 
   hf_gpio_err_t WriteImpl(hf_gpio_state_t state) noexcept;
-  hf_gpio_err_t ReadImpl(hf_gpio_state_t &state) noexcept;
-  
+  hf_gpio_err_t ReadImpl(hf_gpio_state_t& state) noexcept;
+
   //==============================================================//
   // MEMBER VARIABLES
   //==============================================================//
 
   // Interrupt state
-  hf_gpio_interrupt_trigger_t interrupt_trigger_;   ///< Current interrupt trigger type
-  InterruptCallback interrupt_callback_; ///< User interrupt callback
-  void *interrupt_user_data_;            ///< User data for callback
-  bool interrupt_enabled_;               ///< Interrupt currently enabled
-  std::atomic<hf_u32_t> interrupt_count_; ///< Number of interrupts occurred (thread-safe)
-  void *platform_semaphore_;             ///< Platform-specific semaphore for WaitForInterrupt
+  hf_gpio_interrupt_trigger_t interrupt_trigger_; ///< Current interrupt trigger type
+  InterruptCallback interrupt_callback_;          ///< User interrupt callback
+  void* interrupt_user_data_;                     ///< User data for callback
+  bool interrupt_enabled_;                        ///< Interrupt currently enabled
+  std::atomic<hf_u32_t> interrupt_count_;         ///< Number of interrupts occurred (thread-safe)
+  void* platform_semaphore_; ///< Platform-specific semaphore for WaitForInterrupt
 
   // Advanced GPIO state
-  hf_gpio_drive_cap_t drive_capability_;      ///< Current drive capability setting
-  hf_gpio_glitch_filter_type_t glitch_filter_type_;   ///< Type of glitch filter configured
-  bool pin_glitch_filter_enabled_;            ///< Pin glitch filter enabled
-  bool flex_glitch_filter_enabled_;           ///< Flexible glitch filter enabled
+  hf_gpio_drive_cap_t drive_capability_;            ///< Current drive capability setting
+  hf_gpio_glitch_filter_type_t glitch_filter_type_; ///< Type of glitch filter configured
+  bool pin_glitch_filter_enabled_;                  ///< Pin glitch filter enabled
+  bool flex_glitch_filter_enabled_;                 ///< Flexible glitch filter enabled
   hf_gpio_flex_filter_config_t flex_filter_config_; ///< Flexible filter configuration
-  hf_gpio_sleep_config_t sleep_config_;              ///< Sleep configuration
-  bool hold_enabled_;                         ///< Hold function enabled
-  bool rtc_gpio_enabled_;                     ///< RTC GPIO functionality enabled
-  hf_gpio_wakeup_config_t wakeup_config_;            ///< Wake-up configuration
+  hf_gpio_sleep_config_t sleep_config_;             ///< Sleep configuration
+  bool hold_enabled_;                               ///< Hold function enabled
+  bool rtc_gpio_enabled_;                           ///< RTC GPIO functionality enabled
+  hf_gpio_wakeup_config_t wakeup_config_;           ///< Wake-up configuration
 
   // Platform-specific handles for advanced features
-  void *glitch_filter_handle_; ///< Platform-specific glitch filter handle
-  void *rtc_gpio_handle_;      ///< Platform-specific RTC GPIO handle
+  void* glitch_filter_handle_; ///< Platform-specific glitch filter handle
+  void* rtc_gpio_handle_;      ///< Platform-specific RTC GPIO handle
 
   // Static members for ISR management
   static bool gpio_isr_handler_installed_; ///< Track if ISR service is installed

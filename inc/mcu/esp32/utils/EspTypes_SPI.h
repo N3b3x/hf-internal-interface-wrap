@@ -12,10 +12,10 @@
 
 #pragma once
 
-#include "BaseSpi.h"       // For hf_spi_err_t
+#include "BaseSpi.h" // For hf_spi_err_t
+#include "EspTypes_Base.h"
 #include "HardwareTypes.h" // For basic hardware types
 #include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
-#include "EspTypes_Base.h"
 
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
@@ -105,9 +105,9 @@ static constexpr uint32_t HF_SPI_MAX_CLOCK_SPEED = 80000000; ///< Maximum SPI cl
 static constexpr uint32_t HF_SPI_MAX_TRANSFER_SIZE = 4092;   ///< Maximum transfer size (bytes)
 static constexpr uint8_t HF_SPI_MAX_HOSTS = 3;               ///< Maximum SPI hosts
 
-#define HF_SPI_IS_VALID_HOST(host)                                                                 \
+#define HF_SPI_IS_VALID_HOST(host) \
   ((host) < static_cast<uint8_t>(hf_spi_host_device_t::HF_SPI_HOST_MAX))
-#define HF_SPI_IS_VALID_CLOCK_SPEED(speed)                                                         \
+#define HF_SPI_IS_VALID_CLOCK_SPEED(speed) \
   ((speed) >= HF_SPI_MIN_CLOCK_SPEED && (speed) <= HF_SPI_MAX_CLOCK_SPEED)
 #define HF_SPI_IS_VALID_MODE(mode) ((mode) >= 0 && (mode) <= 3)
 #define HF_SPI_IS_VALID_TRANSFER_SIZE(size) ((size) > 0 && (size) <= HF_SPI_MAX_TRANSFER_SIZE)

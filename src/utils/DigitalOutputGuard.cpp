@@ -18,16 +18,15 @@
 // CONSTRUCTORS
 //==============================================================================
 
-DigitalOutputGuard::DigitalOutputGuard(BaseGpio &gpio, bool ensure_output_mode) noexcept
+DigitalOutputGuard::DigitalOutputGuard(BaseGpio& gpio, bool ensure_output_mode) noexcept
     : gpio_(&gpio), was_output_mode_(false), is_valid_(false),
       last_error_(hf_gpio_err_t::GPIO_SUCCESS) {
-
   is_valid_ = InitializeGuard(ensure_output_mode);
 }
 
-DigitalOutputGuard::DigitalOutputGuard(BaseGpio *gpio, bool ensure_output_mode) noexcept
-    : gpio_(gpio), was_output_mode_(false), is_valid_(false), last_error_(hf_gpio_err_t::GPIO_SUCCESS) {
-
+DigitalOutputGuard::DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode) noexcept
+    : gpio_(gpio), was_output_mode_(false), is_valid_(false),
+      last_error_(hf_gpio_err_t::GPIO_SUCCESS) {
   if (gpio_ == nullptr) {
     last_error_ = hf_gpio_err_t::GPIO_ERR_NULL_POINTER;
     is_valid_ = false;
@@ -61,7 +60,7 @@ DigitalOutputGuard::~DigitalOutputGuard() noexcept {
 hf_gpio_err_t DigitalOutputGuard::SetActive() noexcept {
   if (!is_valid_ || gpio_ == nullptr) {
     return last_error_ != hf_gpio_err_t::GPIO_SUCCESS ? last_error_
-                                                  : hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
+                                                      : hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
   // Ensure the GPIO is in output mode
@@ -80,7 +79,7 @@ hf_gpio_err_t DigitalOutputGuard::SetActive() noexcept {
 hf_gpio_err_t DigitalOutputGuard::SetInactive() noexcept {
   if (!is_valid_ || gpio_ == nullptr) {
     return last_error_ != hf_gpio_err_t::GPIO_SUCCESS ? last_error_
-                                                  : hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
+                                                      : hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
   // Ensure the GPIO is in output mode

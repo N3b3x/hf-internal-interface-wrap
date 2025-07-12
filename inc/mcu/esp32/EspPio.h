@@ -37,9 +37,9 @@
 extern "C" {
 #endif
 
-#include "driver/rmt_tx.h"
-#include "driver/rmt_rx.h"
 #include "driver/rmt_encoder.h"
+#include "driver/rmt_rx.h"
+#include "driver/rmt_tx.h"
 
 #ifdef __cplusplus
 }
@@ -120,12 +120,12 @@ public:
   ~McuPio() noexcept override;
 
   // Disable copy constructor and assignment operator
-  McuPio(const McuPio &) = delete;
-  McuPio &operator=(const McuPio &) = delete;
+  McuPio(const McuPio&) = delete;
+  McuPio& operator=(const McuPio&) = delete;
 
   // Allow move operations
-  McuPio(McuPio &&) noexcept = default;
-  McuPio &operator=(McuPio &&) noexcept = default;
+  McuPio(McuPio&&) noexcept = default;
+  McuPio& operator=(McuPio&&) noexcept = default;
 
   //==============================================//
   // BasePio Interface Implementation
@@ -134,26 +134,26 @@ public:
   hf_pio_err_t Deinitialize() noexcept override;
 
   hf_pio_err_t ConfigureChannel(hf_u8_t channel_id,
-                                const hf_pio_channel_config_t &config) noexcept override;
+                                const hf_pio_channel_config_t& config) noexcept override;
 
-  hf_pio_err_t Transmit(hf_u8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count,
+  hf_pio_err_t Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols, size_t symbol_count,
                         bool wait_completion = false) noexcept override;
 
-  hf_pio_err_t StartReceive(hf_u8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
+  hf_pio_err_t StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, size_t buffer_size,
                             uint32_t timeout_us = 0) noexcept override;
-  hf_pio_err_t StopReceive(hf_u8_t channel_id, size_t &symbols_received) noexcept override;
+  hf_pio_err_t StopReceive(hf_u8_t channel_id, size_t& symbols_received) noexcept override;
 
   bool IsChannelBusy(hf_u8_t channel_id) const noexcept override;
   hf_pio_err_t GetChannelStatus(hf_u8_t channel_id,
-                                hf_pio_channel_status_t &status) const noexcept override;
-  hf_pio_err_t GetCapabilities(hf_pio_capabilities_t &capabilities) const noexcept override;
+                                hf_pio_channel_status_t& status) const noexcept override;
+  hf_pio_err_t GetCapabilities(hf_pio_capabilities_t& capabilities) const noexcept override;
 
   void SetTransmitCallback(hf_pio_transmit_callback_t callback,
-                           void *user_data = nullptr) noexcept override;
+                           void* user_data = nullptr) noexcept override;
   void SetReceiveCallback(hf_pio_receive_callback_t callback,
-                          void *user_data = nullptr) noexcept override;
+                          void* user_data = nullptr) noexcept override;
   void SetErrorCallback(hf_pio_error_callback_t callback,
-                        void *user_data = nullptr) noexcept override;
+                        void* user_data = nullptr) noexcept override;
   void ClearCallbacks() noexcept override;
 
   /**
@@ -161,14 +161,14 @@ public:
    * @param statistics Reference to statistics structure to fill
    * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
    */
-  hf_pio_err_t GetStatistics(hf_pio_statistics_t &statistics) const noexcept override;
+  hf_pio_err_t GetStatistics(hf_pio_statistics_t& statistics) const noexcept override;
 
   /**
    * @brief Get PIO diagnostic information.
    * @param diagnostics Reference to diagnostics structure to fill
    * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
    */
-  hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t &diagnostics) const noexcept override;
+  hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept override;
 
   //==============================================//
   // Lazy Initialization Support
@@ -184,7 +184,7 @@ public:
    * @return Error code indicating success or failure
    * @note This provides direct RMT access similar to rmt_wrapper.hpp
    */
-  hf_pio_err_t TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_word_t *rmt_symbols,
+  hf_pio_err_t TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_word_t* rmt_symbols,
                                      size_t symbol_count, bool wait_completion = false) noexcept;
 
   /**
@@ -197,8 +197,8 @@ public:
    * @return Error code indicating success or failure
    * @note This provides direct RMT access similar to rmt_wrapper.hpp
    */
-  hf_pio_err_t ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t *rmt_buffer,
-                                    size_t buffer_size, size_t &symbols_received,
+  hf_pio_err_t ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t* rmt_buffer,
+                                    size_t buffer_size, size_t& symbols_received,
                                     uint32_t timeout_us = 10000) noexcept;
   /**
    * @brief Configure advanced RMT channel settings
@@ -252,8 +252,8 @@ public:
    * @param bit1_config Configuration for bit 1 encoding
    * @return Error code indicating success or failure
    */
-  hf_pio_err_t ConfigureEncoder(hf_u8_t channel_id, const hf_pio_symbol_t &bit0_config,
-                                const hf_pio_symbol_t &bit1_config) noexcept;
+  hf_pio_err_t ConfigureEncoder(hf_u8_t channel_id, const hf_pio_symbol_t& bit0_config,
+                                const hf_pio_symbol_t& bit1_config) noexcept;
 
   /**
    * @brief Set RMT channel idle output level
@@ -270,7 +270,7 @@ public:
    * @return Error code indicating success or failure
    */
   hf_pio_err_t GetChannelStatistics(hf_u8_t channel_id,
-                                    hf_pio_channel_statistics_t &stats) const noexcept;
+                                    hf_pio_channel_statistics_t& stats) const noexcept;
 
   /**
    * @brief Reset channel statistics counters
@@ -297,13 +297,13 @@ private:
     rmt_encoder_handle_t bytes_encoder; // For byte-level protocols
 
     // Buffers
-    hf_pio_symbol_t *rx_buffer;
+    hf_pio_symbol_t* rx_buffer;
     size_t rx_buffer_size;
     size_t rx_symbols_received;
 
     // Timing
     uint64_t last_operation_time;
-    
+
     // Idle level configuration
     bool idle_level;
 
@@ -330,7 +330,7 @@ private:
   hf_pio_transmit_callback_t transmit_callback_;
   hf_pio_receive_callback_t receive_callback_;
   hf_pio_error_callback_t error_callback_;
-  void *callback_user_data_;
+  void* callback_user_data_;
 
   //==============================================//
   // Internal Helper Methods
@@ -343,23 +343,22 @@ private:
   /**
    * @brief Convert hf_pio_symbol_t array to RMT symbol format
    */
-  hf_pio_err_t ConvertToRmtSymbols(const hf_pio_symbol_t *symbols, size_t symbol_count,
-                                   rmt_symbol_word_t *rmt_symbols,
-                                   size_t &rmt_symbol_count) noexcept;
+  hf_pio_err_t ConvertToRmtSymbols(const hf_pio_symbol_t* symbols, size_t symbol_count,
+                                   rmt_symbol_word_t* rmt_symbols,
+                                   size_t& rmt_symbol_count) noexcept;
 
   /**
    * @brief Convert RMT symbols back to hf_pio_symbol_t format
    */
-  hf_pio_err_t ConvertFromRmtSymbols(const rmt_symbol_word_t *rmt_symbols,
-                                     size_t rmt_symbol_count, hf_pio_symbol_t *symbols,
-                                     size_t &symbol_count) noexcept;
+  hf_pio_err_t ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols, size_t rmt_symbol_count,
+                                     hf_pio_symbol_t* symbols, size_t& symbol_count) noexcept;
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Update callback signatures to match ESP-IDF v5.5 API
   static bool OnTransmitComplete(rmt_channel_handle_t channel,
-                                const rmt_tx_done_event_data_t *edata, void *user_ctx);
-  static bool OnReceiveComplete(rmt_channel_handle_t channel,
-                               const rmt_rx_done_event_data_t *edata, void *user_ctx);
+                                 const rmt_tx_done_event_data_t* edata, void* user_ctx);
+  static bool OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_event_data_t* edata,
+                                void* user_ctx);
 #endif
 
   /**
@@ -375,7 +374,7 @@ private:
   /**
    * @brief Validate symbol array
    */
-  hf_pio_err_t ValidateSymbols(const hf_pio_symbol_t *symbols, size_t symbol_count) const noexcept;
+  hf_pio_err_t ValidateSymbols(const hf_pio_symbol_t* symbols, size_t symbol_count) const noexcept;
 
   /**
    * @brief Update channel status
@@ -393,5 +392,5 @@ private:
   uint32_t CalculateClockDivider(uint32_t resolution_ns) const noexcept;
 
 private:
-  static constexpr const char *TAG = "McuPio"; ///< Logging tag
+  static constexpr const char* TAG = "McuPio"; ///< Logging tag
 };

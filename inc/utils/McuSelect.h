@@ -146,10 +146,21 @@
 //==============================================================================
 
 // Count the number of selected target MCUs (portable version)
-#if defined(HF_TARGET_MCU_ESP32C6) + defined(HF_TARGET_MCU_ESP32) + defined(HF_TARGET_MCU_ESP32S2) + defined(HF_TARGET_MCU_ESP32S3) + defined(HF_TARGET_MCU_ESP32C3) + defined(HF_TARGET_MCU_ESP32C2) + defined(HF_TARGET_MCU_ESP32H2) + defined(HF_TARGET_MCU_STM32F4) + defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040) > 1
-#error "Multiple target MCUs are selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
-#elif !defined(HF_TARGET_MCU_ESP32C6) && !defined(HF_TARGET_MCU_ESP32) && !defined(HF_TARGET_MCU_ESP32S2) && !defined(HF_TARGET_MCU_ESP32S3) && !defined(HF_TARGET_MCU_ESP32C3) && !defined(HF_TARGET_MCU_ESP32C2) && !defined(HF_TARGET_MCU_ESP32H2) && !defined(HF_TARGET_MCU_STM32F4) && !defined(HF_TARGET_MCU_STM32H7) && !defined(HF_TARGET_MCU_RP2040)
-#error "No target MCU is selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
+#if defined(HF_TARGET_MCU_ESP32C6) + defined(HF_TARGET_MCU_ESP32) +       \
+        defined(HF_TARGET_MCU_ESP32S2) + defined(HF_TARGET_MCU_ESP32S3) + \
+        defined(HF_TARGET_MCU_ESP32C3) + defined(HF_TARGET_MCU_ESP32C2) + \
+        defined(HF_TARGET_MCU_ESP32H2) + defined(HF_TARGET_MCU_STM32F4) + \
+        defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040) >  \
+    1
+#error \
+    "Multiple target MCUs are selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
+#elif !defined(HF_TARGET_MCU_ESP32C6) && !defined(HF_TARGET_MCU_ESP32) && \
+    !defined(HF_TARGET_MCU_ESP32S2) && !defined(HF_TARGET_MCU_ESP32S3) && \
+    !defined(HF_TARGET_MCU_ESP32C3) && !defined(HF_TARGET_MCU_ESP32C2) && \
+    !defined(HF_TARGET_MCU_ESP32H2) && !defined(HF_TARGET_MCU_STM32F4) && \
+    !defined(HF_TARGET_MCU_STM32H7) && !defined(HF_TARGET_MCU_RP2040)
+#error \
+    "No target MCU is selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
 #endif
 
 // Validate that the selected MCU has a corresponding platform family defined
@@ -171,39 +182,39 @@
 #define HF_MCU_GPIO_HAS_INTERRUPTS 1
 
 // ESP32-C6 Advanced GPIO Hardware Constants (ESP-IDF v5.5+)
-#define HF_MCU_GPIO_PIN_COUNT 31                ///< Total GPIO pins (GPIO0-GPIO30)
-#define HF_MCU_GPIO_MAX_PIN_NUMBER 30           ///< Maximum valid GPIO pin number
-#define HF_MCU_GPIO_RTC_PIN_COUNT 8             ///< RTC GPIO pins (GPIO0-GPIO7)
-#define HF_MCU_GPIO_LP_IO_PIN_COUNT 8           ///< LP_IO pins (LP_GPIO0-LP_GPIO7)
-#define HF_MCU_GPIO_ADC_PIN_COUNT 7             ///< ADC capable pins (GPIO0-GPIO6)
-#define HF_MCU_GPIO_FLEX_FILTER_COUNT 8         ///< Number of flexible glitch filters
-#define HF_MCU_GPIO_DEDIC_BUNDLE_MAX_SIZE 8     ///< Maximum GPIOs per dedicated bundle
-#define HF_MCU_GPIO_TOUCH_PIN_COUNT 0           ///< ESP32C6 has no touch pins
-#define HF_MCU_GPIO_DAC_PIN_COUNT 0             ///< ESP32C6 has no DAC pins
-#define HF_MCU_GPIO_ETM_CHANNEL_COUNT 50        ///< Number of ETM channels available
-#define HF_MCU_GPIO_ETM_EVENT_COUNT_MAX 100     ///< Maximum ETM events
-#define HF_MCU_GPIO_ETM_TASK_COUNT_MAX 100      ///< Maximum ETM tasks
+#define HF_MCU_GPIO_PIN_COUNT 31            ///< Total GPIO pins (GPIO0-GPIO30)
+#define HF_MCU_GPIO_MAX_PIN_NUMBER 30       ///< Maximum valid GPIO pin number
+#define HF_MCU_GPIO_RTC_PIN_COUNT 8         ///< RTC GPIO pins (GPIO0-GPIO7)
+#define HF_MCU_GPIO_LP_IO_PIN_COUNT 8       ///< LP_IO pins (LP_GPIO0-LP_GPIO7)
+#define HF_MCU_GPIO_ADC_PIN_COUNT 7         ///< ADC capable pins (GPIO0-GPIO6)
+#define HF_MCU_GPIO_FLEX_FILTER_COUNT 8     ///< Number of flexible glitch filters
+#define HF_MCU_GPIO_DEDIC_BUNDLE_MAX_SIZE 8 ///< Maximum GPIOs per dedicated bundle
+#define HF_MCU_GPIO_TOUCH_PIN_COUNT 0       ///< ESP32C6 has no touch pins
+#define HF_MCU_GPIO_DAC_PIN_COUNT 0         ///< ESP32C6 has no DAC pins
+#define HF_MCU_GPIO_ETM_CHANNEL_COUNT 50    ///< Number of ETM channels available
+#define HF_MCU_GPIO_ETM_EVENT_COUNT_MAX 100 ///< Maximum ETM events
+#define HF_MCU_GPIO_ETM_TASK_COUNT_MAX 100  ///< Maximum ETM tasks
 
 // ESP32-C6 Clock frequencies for glitch filter timing calculations
-#define HF_MCU_GPIO_APB_CLK_FREQ_HZ 80000000UL       ///< APB clock frequency (80MHz)
-#define HF_MCU_GPIO_RC_FAST_CLK_FREQ_HZ 17500000UL   ///< RC_FAST clock frequency (~17.5MHz)
-#define HF_MCU_GPIO_XTAL_CLK_FREQ_HZ 40000000UL      ///< XTAL clock frequency (40MHz)
+#define HF_MCU_GPIO_APB_CLK_FREQ_HZ 80000000UL     ///< APB clock frequency (80MHz)
+#define HF_MCU_GPIO_RC_FAST_CLK_FREQ_HZ 17500000UL ///< RC_FAST clock frequency (~17.5MHz)
+#define HF_MCU_GPIO_XTAL_CLK_FREQ_HZ 40000000UL    ///< XTAL clock frequency (40MHz)
 
 // ESP32-C6 GPIO timing limits and characteristics
-#define HF_MCU_GPIO_MAX_TOGGLE_FREQ_HZ 40000000UL    ///< Maximum GPIO toggle frequency (40MHz)
-#define HF_MCU_GPIO_MIN_GLITCH_FILTER_NS 25UL        ///< Minimum glitch filter duration (25ns)
-#define HF_MCU_GPIO_MAX_GLITCH_FILTER_NS 1000000UL   ///< Maximum glitch filter duration (1ms)
+#define HF_MCU_GPIO_MAX_TOGGLE_FREQ_HZ 40000000UL  ///< Maximum GPIO toggle frequency (40MHz)
+#define HF_MCU_GPIO_MIN_GLITCH_FILTER_NS 25UL      ///< Minimum glitch filter duration (25ns)
+#define HF_MCU_GPIO_MAX_GLITCH_FILTER_NS 1000000UL ///< Maximum glitch filter duration (1ms)
 
 // ESP32-C6 GPIO Feature Support Flags
-#define HF_MCU_GPIO_HAS_GLITCH_FILTER 1         ///< Hardware glitch filtering support
-#define HF_MCU_GPIO_HAS_DEDICATED_GPIO 1        ///< Dedicated GPIO bundle support
-#define HF_MCU_GPIO_HAS_RTC_GPIO 1              ///< RTC GPIO domain support
-#define HF_MCU_GPIO_HAS_LP_IO 1                 ///< Low-power IO domain support
-#define HF_MCU_GPIO_HAS_ETM 1                   ///< Event Task Matrix support
-#define HF_MCU_GPIO_HAS_HOLD_FUNCTION 1         ///< GPIO hold function support
-#define HF_MCU_GPIO_HAS_SLEEP_CONFIG 1          ///< Sleep mode configuration support
-#define HF_MCU_GPIO_HAS_WAKEUP_CONFIG 1         ///< Wake-up source configuration support
-#define HF_MCU_GPIO_HAS_DRIVE_STRENGTH 1        ///< Drive strength control support
+#define HF_MCU_GPIO_HAS_GLITCH_FILTER 1  ///< Hardware glitch filtering support
+#define HF_MCU_GPIO_HAS_DEDICATED_GPIO 1 ///< Dedicated GPIO bundle support
+#define HF_MCU_GPIO_HAS_RTC_GPIO 1       ///< RTC GPIO domain support
+#define HF_MCU_GPIO_HAS_LP_IO 1          ///< Low-power IO domain support
+#define HF_MCU_GPIO_HAS_ETM 1            ///< Event Task Matrix support
+#define HF_MCU_GPIO_HAS_HOLD_FUNCTION 1  ///< GPIO hold function support
+#define HF_MCU_GPIO_HAS_SLEEP_CONFIG 1   ///< Sleep mode configuration support
+#define HF_MCU_GPIO_HAS_WAKEUP_CONFIG 1  ///< Wake-up source configuration support
+#define HF_MCU_GPIO_HAS_DRIVE_STRENGTH 1 ///< Drive strength control support
 
 // ADC capabilities (ESP32-C6 specific)
 #define HF_MCU_HAS_ADC 1
@@ -360,4 +371,3 @@
 //==============================================================================
 // END OF MCU SELECT HEADER
 //==============================================================================
-

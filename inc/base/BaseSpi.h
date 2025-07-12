@@ -32,44 +32,44 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_SPI_ERR_LIST(X)                                                                         \
-  /* Success codes */                                                                              \
-  X(SPI_SUCCESS, 0, "Success")                                                                     \
-  /* General errors */                                                                             \
-  X(SPI_ERR_FAILURE, 1, "General failure")                                                         \
-  X(SPI_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
-  X(SPI_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
-  X(SPI_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
-  X(SPI_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
-  X(SPI_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
-  /* Bus errors */                                                                                 \
-  X(SPI_ERR_BUS_BUSY, 7, "Bus busy")                                                               \
-  X(SPI_ERR_BUS_ERROR, 8, "Bus error")                                                             \
-  X(SPI_ERR_BUS_NOT_AVAILABLE, 9, "Bus not available")                                             \
-  X(SPI_ERR_BUS_TIMEOUT, 10, "Bus timeout")                                                        \
-  /* Transfer errors */                                                                            \
-  X(SPI_ERR_TRANSFER_FAILED, 11, "Transfer failed")                                                \
-  X(SPI_ERR_TRANSFER_TIMEOUT, 12, "Transfer timeout")                                              \
-  X(SPI_ERR_TRANSFER_TOO_LONG, 13, "Transfer too long")                                            \
-  X(SPI_ERR_TRANSFER_SIZE_MISMATCH, 14, "Transfer size mismatch")                                  \
-  /* Device errors */                                                                              \
-  X(SPI_ERR_DEVICE_NOT_FOUND, 15, "Device not found")                                              \
-  X(SPI_ERR_DEVICE_NOT_RESPONDING, 16, "Device not responding")                                    \
-  X(SPI_ERR_CS_CONTROL_FAILED, 17, "Chip select control failed")                                   \
-  /* Hardware errors */                                                                            \
-  X(SPI_ERR_HARDWARE_FAULT, 18, "Hardware fault")                                                  \
-  X(SPI_ERR_COMMUNICATION_FAILURE, 19, "Communication failure")                                    \
-  X(SPI_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")                                      \
-  X(SPI_ERR_CLOCK_ERROR, 21, "Clock error")                                                        \
-  /* Configuration errors */                                                                       \
-  X(SPI_ERR_INVALID_CONFIGURATION, 22, "Invalid configuration")                                    \
-  X(SPI_ERR_UNSUPPORTED_OPERATION, 23, "Unsupported operation")                                    \
-  X(SPI_ERR_INVALID_CLOCK_SPEED, 24, "Invalid clock speed")                                        \
-  X(SPI_ERR_INVALID_MODE, 25, "Invalid SPI mode")                                                  \
-  X(SPI_ERR_PIN_CONFIGURATION_ERROR, 26, "Pin configuration error")                                \
-  /* System errors */                                                                              \
-  X(SPI_ERR_SYSTEM_ERROR, 27, "System error")                                                      \
-  X(SPI_ERR_PERMISSION_DENIED, 28, "Permission denied")                                            \
+#define HF_SPI_ERR_LIST(X)                                          \
+  /* Success codes */                                               \
+  X(SPI_SUCCESS, 0, "Success")                                      \
+  /* General errors */                                              \
+  X(SPI_ERR_FAILURE, 1, "General failure")                          \
+  X(SPI_ERR_NOT_INITIALIZED, 2, "Not initialized")                  \
+  X(SPI_ERR_ALREADY_INITIALIZED, 3, "Already initialized")          \
+  X(SPI_ERR_INVALID_PARAMETER, 4, "Invalid parameter")              \
+  X(SPI_ERR_NULL_POINTER, 5, "Null pointer")                        \
+  X(SPI_ERR_OUT_OF_MEMORY, 6, "Out of memory")                      \
+  /* Bus errors */                                                  \
+  X(SPI_ERR_BUS_BUSY, 7, "Bus busy")                                \
+  X(SPI_ERR_BUS_ERROR, 8, "Bus error")                              \
+  X(SPI_ERR_BUS_NOT_AVAILABLE, 9, "Bus not available")              \
+  X(SPI_ERR_BUS_TIMEOUT, 10, "Bus timeout")                         \
+  /* Transfer errors */                                             \
+  X(SPI_ERR_TRANSFER_FAILED, 11, "Transfer failed")                 \
+  X(SPI_ERR_TRANSFER_TIMEOUT, 12, "Transfer timeout")               \
+  X(SPI_ERR_TRANSFER_TOO_LONG, 13, "Transfer too long")             \
+  X(SPI_ERR_TRANSFER_SIZE_MISMATCH, 14, "Transfer size mismatch")   \
+  /* Device errors */                                               \
+  X(SPI_ERR_DEVICE_NOT_FOUND, 15, "Device not found")               \
+  X(SPI_ERR_DEVICE_NOT_RESPONDING, 16, "Device not responding")     \
+  X(SPI_ERR_CS_CONTROL_FAILED, 17, "Chip select control failed")    \
+  /* Hardware errors */                                             \
+  X(SPI_ERR_HARDWARE_FAULT, 18, "Hardware fault")                   \
+  X(SPI_ERR_COMMUNICATION_FAILURE, 19, "Communication failure")     \
+  X(SPI_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")       \
+  X(SPI_ERR_CLOCK_ERROR, 21, "Clock error")                         \
+  /* Configuration errors */                                        \
+  X(SPI_ERR_INVALID_CONFIGURATION, 22, "Invalid configuration")     \
+  X(SPI_ERR_UNSUPPORTED_OPERATION, 23, "Unsupported operation")     \
+  X(SPI_ERR_INVALID_CLOCK_SPEED, 24, "Invalid clock speed")         \
+  X(SPI_ERR_INVALID_MODE, 25, "Invalid SPI mode")                   \
+  X(SPI_ERR_PIN_CONFIGURATION_ERROR, 26, "Pin configuration error") \
+  /* System errors */                                               \
+  X(SPI_ERR_SYSTEM_ERROR, 27, "System error")                       \
+  X(SPI_ERR_PERMISSION_DENIED, 28, "Permission denied")             \
   X(SPI_ERR_OPERATION_ABORTED, 29, "Operation aborted")
 
 enum class hf_spi_err_t : hf_u8_t {
@@ -85,13 +85,13 @@ enum class hf_spi_err_t : hf_u8_t {
  */
 constexpr std::string_view HfSpiErrToString(hf_spi_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC)                                                                       \
-  case hf_spi_err_t::NAME:                                                                         \
+#define X(NAME, VALUE, DESC) \
+  case hf_spi_err_t::NAME:   \
     return DESC;
     HF_SPI_ERR_LIST(X)
 #undef X
-  default:
-    return "Unknown error";
+    default:
+      return "Unknown error";
   }
 }
 
@@ -173,10 +173,10 @@ public:
   virtual ~BaseSpi() noexcept = default;
 
   // Non-copyable, non-movable (can be changed in derived classes if needed)
-  BaseSpi(const BaseSpi &) = delete;
-  BaseSpi &operator=(const BaseSpi &) = delete;
-  BaseSpi(BaseSpi &&) = delete;
-  BaseSpi &operator=(BaseSpi &&) = delete;
+  BaseSpi(const BaseSpi&) = delete;
+  BaseSpi& operator=(const BaseSpi&) = delete;
+  BaseSpi(BaseSpi&&) = delete;
+  BaseSpi& operator=(BaseSpi&&) = delete;
 
   /**
    * @brief Ensures that the SPI bus is initialized (lazy initialization).
@@ -235,7 +235,7 @@ public:
    * @return hf_spi_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual hf_spi_err_t Transfer(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+  virtual hf_spi_err_t Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf_u16_t length,
                                 hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
@@ -277,7 +277,7 @@ public:
    * @param length Number of bytes to transfer
    * @return true if transfer succeeded
    */
-  virtual bool Transfer(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length) noexcept {
+  virtual bool Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf_u16_t length) noexcept {
     if (!EnsureInitialized()) {
       return false;
     }
@@ -291,7 +291,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_spi_err_t result code
    */
-  virtual hf_spi_err_t Write(const hf_u8_t *data, hf_u16_t length,
+  virtual hf_spi_err_t Write(const hf_u8_t* data, hf_u16_t length,
                              hf_u32_t timeout_ms = 0) noexcept {
     return Transfer(data, nullptr, length, timeout_ms);
   }
@@ -303,7 +303,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_spi_err_t result code
    */
-  virtual hf_spi_err_t Read(hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept {
+  virtual hf_spi_err_t Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept {
     return Transfer(nullptr, data, length, timeout_ms);
   }
 
@@ -313,7 +313,7 @@ public:
    * @param length Number of bytes to write
    * @return true if write succeeded
    */
-  virtual bool Write(const hf_u8_t *data, hf_u16_t length) noexcept {
+  virtual bool Write(const hf_u8_t* data, hf_u16_t length) noexcept {
     if (!EnsureInitialized()) {
       return false;
     }
@@ -326,7 +326,7 @@ public:
    * @param length Number of bytes to read
    * @return true if read succeeded
    */
-  virtual bool Read(hf_u8_t *data, hf_u16_t length) noexcept {
+  virtual bool Read(hf_u8_t* data, hf_u16_t length) noexcept {
     if (!EnsureInitialized()) {
       return false;
     }
@@ -347,7 +347,7 @@ public:
    * @param data Output: byte read
    * @return true if successful, false otherwise
    */
-  virtual bool ReadByte(hf_u8_t &data) noexcept {
+  virtual bool ReadByte(hf_u8_t& data) noexcept {
     return Read(&data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
@@ -357,7 +357,7 @@ public:
    * @param rx_data Output: byte read
    * @return true if successful, false otherwise
    */
-  virtual bool TransferByte(hf_u8_t tx_data, hf_u8_t &rx_data) noexcept {
+  virtual bool TransferByte(hf_u8_t tx_data, hf_u8_t& rx_data) noexcept {
     return Transfer(&tx_data, &rx_data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
@@ -390,7 +390,7 @@ public:
    * @param statistics Reference to store statistics data
    * @return hf_spi_err_t::SPI_SUCCESS if successful, SPI_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_spi_err_t GetStatistics(hf_spi_statistics_t &statistics) const noexcept {
+  virtual hf_spi_err_t GetStatistics(hf_spi_statistics_t& statistics) const noexcept {
     statistics = statistics_; // Return statistics by default
     return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   }
@@ -400,20 +400,19 @@ public:
    * @param diagnostics Reference to store diagnostics data
    * @return hf_spi_err_t::SPI_SUCCESS if successful, SPI_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_spi_err_t GetDiagnostics(hf_spi_diagnostics_t &diagnostics) const noexcept {
+  virtual hf_spi_err_t GetDiagnostics(hf_spi_diagnostics_t& diagnostics) const noexcept {
     diagnostics = diagnostics_; // Return diagnostics by default
     return hf_spi_err_t::SPI_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
-  
   /**
    * @brief Protected default constructor.
    * @note Configurations are handled by derived classes
    */
   BaseSpi() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
 
-  bool initialized_;           ///< Initialization state
-  hf_spi_statistics_t statistics_; ///< SPI operation statistics
+  bool initialized_;                 ///< Initialization state
+  hf_spi_statistics_t statistics_;   ///< SPI operation statistics
   hf_spi_diagnostics_t diagnostics_; ///< SPI diagnostic information
 };

@@ -1,11 +1,11 @@
 /**
  * @file BasePwm.h
  * @brief Abstract base class for PWM implementations in the HardFOC system.
- * 
+ *
  * This header-only file defines the abstract base class for PWM generation
  * that provides a consistent API across different PWM implementations.
  * Concrete implementations for various platforms inherit from this class.
- * 
+ *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
@@ -30,38 +30,38 @@
  *          This enumeration is used across all PWM-related classes to provide
  *          consistent error reporting and handling.
  */
-#define HF_PWM_ERR_LIST(X)                                                                         \
-  /* Success codes */                                                                              \
-  X(PWM_SUCCESS, 0, "Success")                                                                     \
-  /* General errors */                                                                             \
-  X(PWM_ERR_FAILURE, 1, "General failure")                                                         \
-  X(PWM_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
-  X(PWM_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
-  X(PWM_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
-  X(PWM_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
-  X(PWM_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
-  /* Channel errors */                                                                             \
-  X(PWM_ERR_INVALID_CHANNEL, 7, "Invalid PWM channel")                                             \
-  X(PWM_ERR_CHANNEL_BUSY, 8, "Channel already in use")                                             \
-  X(PWM_ERR_CHANNEL_NOT_AVAILABLE, 9, "Channel not available")                                     \
-  X(PWM_ERR_INSUFFICIENT_CHANNELS, 10, "Insufficient channels available")                          \
-  /* Frequency/timing errors */                                                                    \
-  X(PWM_ERR_INVALID_FREQUENCY, 11, "Invalid frequency")                                            \
-  X(PWM_ERR_FREQUENCY_TOO_HIGH, 12, "Frequency too high")                                          \
-  X(PWM_ERR_FREQUENCY_TOO_LOW, 13, "Frequency too low")                                            \
-  X(PWM_ERR_RESOLUTION_NOT_SUPPORTED, 14, "Resolution not supported")                              \
-  /* Duty cycle errors */                                                                          \
-  X(PWM_ERR_INVALID_DUTY_CYCLE, 15, "Invalid duty cycle")                                          \
-  X(PWM_ERR_DUTY_OUT_OF_RANGE, 16, "Duty cycle out of range")                                      \
-  /* Hardware errors */                                                                            \
-  X(PWM_ERR_HARDWARE_FAULT, 17, "Hardware fault")                                                  \
-  X(PWM_ERR_TIMER_CONFLICT, 18, "Timer resource conflict")                                         \
-  X(PWM_ERR_PIN_CONFLICT, 19, "Pin already in use")                                                \
-  /* Communication errors (for external PWM ICs) */                                                \
-  X(PWM_ERR_COMMUNICATION_TIMEOUT, 20, "Communication timeout")                                    \
-  X(PWM_ERR_COMMUNICATION_FAILURE, 21, "Communication failure")                                    \
-  X(PWM_ERR_DEVICE_NOT_RESPONDING, 22, "Device not responding")                                    \
-  X(PWM_ERR_INVALID_DEVICE_ID, 23, "Invalid device ID")                                            \
+#define HF_PWM_ERR_LIST(X)                                                \
+  /* Success codes */                                                     \
+  X(PWM_SUCCESS, 0, "Success")                                            \
+  /* General errors */                                                    \
+  X(PWM_ERR_FAILURE, 1, "General failure")                                \
+  X(PWM_ERR_NOT_INITIALIZED, 2, "Not initialized")                        \
+  X(PWM_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                \
+  X(PWM_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                    \
+  X(PWM_ERR_NULL_POINTER, 5, "Null pointer")                              \
+  X(PWM_ERR_OUT_OF_MEMORY, 6, "Out of memory")                            \
+  /* Channel errors */                                                    \
+  X(PWM_ERR_INVALID_CHANNEL, 7, "Invalid PWM channel")                    \
+  X(PWM_ERR_CHANNEL_BUSY, 8, "Channel already in use")                    \
+  X(PWM_ERR_CHANNEL_NOT_AVAILABLE, 9, "Channel not available")            \
+  X(PWM_ERR_INSUFFICIENT_CHANNELS, 10, "Insufficient channels available") \
+  /* Frequency/timing errors */                                           \
+  X(PWM_ERR_INVALID_FREQUENCY, 11, "Invalid frequency")                   \
+  X(PWM_ERR_FREQUENCY_TOO_HIGH, 12, "Frequency too high")                 \
+  X(PWM_ERR_FREQUENCY_TOO_LOW, 13, "Frequency too low")                   \
+  X(PWM_ERR_RESOLUTION_NOT_SUPPORTED, 14, "Resolution not supported")     \
+  /* Duty cycle errors */                                                 \
+  X(PWM_ERR_INVALID_DUTY_CYCLE, 15, "Invalid duty cycle")                 \
+  X(PWM_ERR_DUTY_OUT_OF_RANGE, 16, "Duty cycle out of range")             \
+  /* Hardware errors */                                                   \
+  X(PWM_ERR_HARDWARE_FAULT, 17, "Hardware fault")                         \
+  X(PWM_ERR_TIMER_CONFLICT, 18, "Timer resource conflict")                \
+  X(PWM_ERR_PIN_CONFLICT, 19, "Pin already in use")                       \
+  /* Communication errors (for external PWM ICs) */                       \
+  X(PWM_ERR_COMMUNICATION_TIMEOUT, 20, "Communication timeout")           \
+  X(PWM_ERR_COMMUNICATION_FAILURE, 21, "Communication failure")           \
+  X(PWM_ERR_DEVICE_NOT_RESPONDING, 22, "Device not responding")           \
+  X(PWM_ERR_INVALID_DEVICE_ID, 23, "Invalid device ID")                   \
   X(PWM_ERR_UNSUPPORTED_OPERATION, 24, "Unsupported operation")
 
 // Generate enum class
@@ -73,15 +73,15 @@ enum class hf_pwm_err_t : hf_u32_t {
 };
 
 // Generate error message function
-constexpr const char *HfPwmErrToString(hf_pwm_err_t error) noexcept {
+constexpr const char* HfPwmErrToString(hf_pwm_err_t error) noexcept {
   switch (error) {
-#define X(name, value, description)                                                                \
-  case hf_pwm_err_t::name:                                                                             \
+#define X(name, value, description) \
+  case hf_pwm_err_t::name:          \
     return description;
     HF_PWM_ERR_LIST(X)
 #undef X
-  default:
-    return "Unknown PWM error";
+    default:
+      return "Unknown PWM error";
   }
 }
 
@@ -89,41 +89,39 @@ constexpr const char *HfPwmErrToString(hf_pwm_err_t error) noexcept {
 //  PWM Configuration Structures
 //--------------------------------------
 
-
 /**
  * @brief PWM statistics information
  */
 struct hf_pwm_statistics_t {
-  hf_u32_t duty_updates_count;     ///< Total duty cycle updates
-  hf_u32_t frequency_changes_count; ///< Total frequency changes
-  hf_u32_t fade_operations_count;   ///< Total fade operations
-  hf_u32_t error_count;            ///< Total error count
-  hf_u32_t channel_enables_count;  ///< Total channel enable operations
-  hf_u32_t channel_disables_count; ///< Total channel disable operations
-  hf_u64_t last_activity_timestamp; ///< Last activity timestamp
+  hf_u32_t duty_updates_count;       ///< Total duty cycle updates
+  hf_u32_t frequency_changes_count;  ///< Total frequency changes
+  hf_u32_t fade_operations_count;    ///< Total fade operations
+  hf_u32_t error_count;              ///< Total error count
+  hf_u32_t channel_enables_count;    ///< Total channel enable operations
+  hf_u32_t channel_disables_count;   ///< Total channel disable operations
+  hf_u64_t last_activity_timestamp;  ///< Last activity timestamp
   hf_u64_t initialization_timestamp; ///< Initialization timestamp
 
   hf_pwm_statistics_t() noexcept
-      : duty_updates_count(0), frequency_changes_count(0), fade_operations_count(0),
-        error_count(0), channel_enables_count(0), channel_disables_count(0),
-        last_activity_timestamp(0), initialization_timestamp(0) {}
+      : duty_updates_count(0), frequency_changes_count(0), fade_operations_count(0), error_count(0),
+        channel_enables_count(0), channel_disables_count(0), last_activity_timestamp(0),
+        initialization_timestamp(0) {}
 };
 
 /**
  * @brief PWM diagnostics information
  */
 struct hf_pwm_diagnostics_t {
-  bool hardware_initialized;     ///< Hardware is initialized
-  bool fade_functionality_ready; ///< Hardware fade is ready
-  hf_u8_t active_channels;       ///< Number of active channels
-  hf_u8_t active_timers;         ///< Number of active timers
-  hf_u32_t system_uptime_ms;     ///< System uptime in milliseconds
+  bool hardware_initialized;      ///< Hardware is initialized
+  bool fade_functionality_ready;  ///< Hardware fade is ready
+  hf_u8_t active_channels;        ///< Number of active channels
+  hf_u8_t active_timers;          ///< Number of active timers
+  hf_u32_t system_uptime_ms;      ///< System uptime in milliseconds
   hf_pwm_err_t last_global_error; ///< Last global error
 
   hf_pwm_diagnostics_t() noexcept
-      : hardware_initialized(false), fade_functionality_ready(false),
-        active_channels(0), active_timers(0), system_uptime_ms(0),
-        last_global_error(hf_pwm_err_t::PWM_SUCCESS) {}
+      : hardware_initialized(false), fade_functionality_ready(false), active_channels(0),
+        active_timers(0), system_uptime_ms(0), last_global_error(hf_pwm_err_t::PWM_SUCCESS) {}
 };
 
 //--------------------------------------
@@ -135,7 +133,7 @@ struct hf_pwm_diagnostics_t {
  * @param channel_id Channel that completed a period
  * @param user_data User-provided data
  */
-using hf_pwm_period_callback_t = std::function<void(hf_channel_id_t channel_id, void *user_data)>;
+using hf_pwm_period_callback_t = std::function<void(hf_channel_id_t channel_id, void* user_data)>;
 
 /**
  * @brief Callback for PWM fault/error events
@@ -144,7 +142,7 @@ using hf_pwm_period_callback_t = std::function<void(hf_channel_id_t channel_id, 
  * @param user_data User-provided data
  */
 using hf_pwm_fault_callback_t =
-    std::function<void(hf_channel_id_t channel_id, hf_pwm_err_t error, void *user_data)>;
+    std::function<void(hf_channel_id_t channel_id, hf_pwm_err_t error, void* user_data)>;
 
 //--------------------------------------
 //  Abstract Base Class
@@ -272,7 +270,8 @@ public:
    * @param frequency_hz Frequency in Hz
    * @return PWM_SUCCESS on success, error code on failure
    */
-  virtual hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz) noexcept = 0;
+  virtual hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id,
+                                    hf_frequency_hz_t frequency_hz) noexcept = 0;
 
   /**
    * @brief Set phase shift for a channel (if supported)
@@ -280,7 +279,8 @@ public:
    * @param phase_shift_degrees Phase shift in degrees (0-360)
    * @return PWM_SUCCESS on success, error code on failure
    */
-  virtual hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id, float phase_shift_degrees) noexcept = 0;
+  virtual hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id,
+                                     float phase_shift_degrees) noexcept = 0;
 
   //==============================================================================
   // ADVANCED FEATURES
@@ -311,9 +311,9 @@ public:
    * @param deadtime_ns Deadtime in nanoseconds
    * @return PWM_SUCCESS on success, error code on failure
    */
-    virtual hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel,
-                                           hf_channel_id_t complementary_channel,
-                                           hf_u32_t deadtime_ns) noexcept = 0;
+  virtual hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel,
+                                              hf_channel_id_t complementary_channel,
+                                              hf_u32_t deadtime_ns) noexcept = 0;
 
   //==============================================================================
   // STATUS AND INFORMATION
@@ -338,7 +338,7 @@ public:
    * @param statistics Statistics structure to fill
    * @return PWM_SUCCESS on success, error code on failure
    */
-  virtual hf_pwm_err_t GetStatistics(hf_pwm_statistics_t &statistics) const noexcept {
+  virtual hf_pwm_err_t GetStatistics(hf_pwm_statistics_t& statistics) const noexcept {
     statistics = statistics_; // Return statistics by default
     return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
   }
@@ -348,7 +348,7 @@ public:
    * @param diagnostics Diagnostics structure to fill
    * @return PWM_SUCCESS on success, error code on failure
    */
-  virtual hf_pwm_err_t GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noexcept {
+  virtual hf_pwm_err_t GetDiagnostics(hf_pwm_diagnostics_t& diagnostics) const noexcept {
     diagnostics = diagnostics_; // Return diagnostics by default
     return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
   }
@@ -398,7 +398,7 @@ public:
    * @return Duty cycle (0.0 - 1.0)
    */
   static constexpr float RawToDutyCycle(hf_u32_t raw_value, hf_u8_t resolution_bits) noexcept {
-          hf_u32_t max_value = (1U << resolution_bits) - 1;
+    hf_u32_t max_value = (1U << resolution_bits) - 1;
     if (raw_value > max_value)
       raw_value = max_value;
     return static_cast<float>(raw_value) / static_cast<float>(max_value);
@@ -427,12 +427,12 @@ public:
 
 protected:
   BasePwm() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
-  BasePwm(const BasePwm &) = delete;
-  BasePwm &operator=(const BasePwm &) = delete;
-  BasePwm(BasePwm &&) = delete;
-  BasePwm &operator=(BasePwm &&) = delete;
+  BasePwm(const BasePwm&) = delete;
+  BasePwm& operator=(const BasePwm&) = delete;
+  BasePwm(BasePwm&&) = delete;
+  BasePwm& operator=(BasePwm&&) = delete;
 
-  bool initialized_; ///< Initialization state
-  hf_pwm_statistics_t statistics_; ///< PWM operation statistics
+  bool initialized_;                 ///< Initialization state
+  hf_pwm_statistics_t statistics_;   ///< PWM operation statistics
   hf_pwm_diagnostics_t diagnostics_; ///< PWM diagnostic information
 };

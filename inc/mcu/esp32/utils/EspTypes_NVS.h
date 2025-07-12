@@ -13,9 +13,9 @@
 #pragma once
 
 #include "BaseNvs.h" // For hf_nvs_err_t
-#include "HardwareTypes.h"  // For basic hardware types
-#include "McuSelect.h"      // Central MCU platform selection (includes all ESP-IDF)
 #include "EspTypes_Base.h"
+#include "HardwareTypes.h" // For basic hardware types
+#include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 #include <cstring>
 
 //==============================================================================
@@ -38,9 +38,9 @@ static constexpr size_t HF_NVS_PAGE_SIZE = 4096;
 static constexpr size_t HF_NVS_ENTRY_SIZE = 32;
 
 // NVS operation timeouts
-static constexpr uint32_t HF_NVS_OPERATION_TIMEOUT_MS = 1000;    ///< Default operation timeout
-static constexpr uint32_t HF_NVS_INIT_TIMEOUT_MS = 5000;         ///< Initialization timeout
-static constexpr uint32_t HF_NVS_COMMIT_TIMEOUT_MS = 2000;       ///< Commit operation timeout
+static constexpr uint32_t HF_NVS_OPERATION_TIMEOUT_MS = 1000; ///< Default operation timeout
+static constexpr uint32_t HF_NVS_INIT_TIMEOUT_MS = 5000;      ///< Initialization timeout
+static constexpr uint32_t HF_NVS_COMMIT_TIMEOUT_MS = 2000;    ///< Commit operation timeout
 
 //==============================================================================
 // ESP32 NVS ENUMS
@@ -50,33 +50,33 @@ static constexpr uint32_t HF_NVS_COMMIT_TIMEOUT_MS = 2000;       ///< Commit ope
  * @brief ESP32 NVS data types.
  */
 enum class hf_nvs_type_t : uint8_t {
-  HF_NVS_TYPE_U8 = 0,   ///< 8-bit unsigned integer
-  HF_NVS_TYPE_I8 = 1,   ///< 8-bit signed integer
-  HF_NVS_TYPE_U16 = 2,  ///< 16-bit unsigned integer
-  HF_NVS_TYPE_I16 = 3,  ///< 16-bit signed integer
-  HF_NVS_TYPE_U32 = 4,  ///< 32-bit unsigned integer
-  HF_NVS_TYPE_I32 = 5,  ///< 32-bit signed integer
-  HF_NVS_TYPE_U64 = 6,  ///< 64-bit unsigned integer
-  HF_NVS_TYPE_I64 = 7,  ///< 64-bit signed integer
-  HF_NVS_TYPE_STR = 8,  ///< String
-  HF_NVS_TYPE_BLOB = 9  ///< Binary blob
+  HF_NVS_TYPE_U8 = 0,  ///< 8-bit unsigned integer
+  HF_NVS_TYPE_I8 = 1,  ///< 8-bit signed integer
+  HF_NVS_TYPE_U16 = 2, ///< 16-bit unsigned integer
+  HF_NVS_TYPE_I16 = 3, ///< 16-bit signed integer
+  HF_NVS_TYPE_U32 = 4, ///< 32-bit unsigned integer
+  HF_NVS_TYPE_I32 = 5, ///< 32-bit signed integer
+  HF_NVS_TYPE_U64 = 6, ///< 64-bit unsigned integer
+  HF_NVS_TYPE_I64 = 7, ///< 64-bit signed integer
+  HF_NVS_TYPE_STR = 8, ///< String
+  HF_NVS_TYPE_BLOB = 9 ///< Binary blob
 };
 
 /**
  * @brief ESP32 NVS open modes.
  */
 enum class hf_nvs_open_mode_t : uint8_t {
-  HF_NVS_READONLY = 0,  ///< Read-only mode
-  HF_NVS_READWRITE = 1  ///< Read-write mode
+  HF_NVS_READONLY = 0, ///< Read-only mode
+  HF_NVS_READWRITE = 1 ///< Read-write mode
 };
 
 /**
  * @brief ESP32 NVS encryption modes.
  */
 enum class hf_nvs_encryption_mode_t : uint8_t {
-  HF_NVS_ENCRYPTION_NONE = 0,     ///< No encryption
-  HF_NVS_ENCRYPTION_HMAC = 1,     ///< HMAC encryption
-  HF_NVS_ENCRYPTION_XTS = 2       ///< XTS encryption
+  HF_NVS_ENCRYPTION_NONE = 0, ///< No encryption
+  HF_NVS_ENCRYPTION_HMAC = 1, ///< HMAC encryption
+  HF_NVS_ENCRYPTION_XTS = 2   ///< XTS encryption
 };
 
 //==============================================================================
@@ -87,18 +87,18 @@ enum class hf_nvs_encryption_mode_t : uint8_t {
  * @brief ESP32 NVS partition configuration.
  */
 struct hf_nvs_partition_config_t {
-  const char* partition_label;     ///< Partition label
-  const char* namespace_name;      ///< Namespace name
-  hf_nvs_open_mode_t open_mode;    ///< Open mode
+  const char* partition_label;         ///< Partition label
+  const char* namespace_name;          ///< Namespace name
+  hf_nvs_open_mode_t open_mode;        ///< Open mode
   hf_nvs_encryption_mode_t encryption; ///< Encryption mode
-  size_t max_entries;              ///< Maximum entries
-  bool auto_commit;                ///< Auto-commit flag
-  
+  size_t max_entries;                  ///< Maximum entries
+  bool auto_commit;                    ///< Auto-commit flag
+
   hf_nvs_partition_config_t() noexcept
       : partition_label("nvs"), namespace_name("default"),
         open_mode(hf_nvs_open_mode_t::HF_NVS_READWRITE),
-        encryption(hf_nvs_encryption_mode_t::HF_NVS_ENCRYPTION_NONE),
-        max_entries(256), auto_commit(true) {}
+        encryption(hf_nvs_encryption_mode_t::HF_NVS_ENCRYPTION_NONE), max_entries(256),
+        auto_commit(true) {}
 };
 
 /**
@@ -115,30 +115,27 @@ struct hf_nvs_capabilities_t {
   bool supports_xts_encryption;    ///< XTS encryption support
   bool supports_atomic_operations; ///< Atomic operations support
   bool supports_wear_leveling;     ///< Wear leveling support
-  
+
   hf_nvs_capabilities_t() noexcept
-      : max_namespaces(HF_NVS_MAX_NAMESPACES),
-        max_keys_per_namespace(256),
-        max_key_length(HF_NVS_MAX_KEY_LENGTH),
-        max_value_size(HF_NVS_MAX_VALUE_SIZE),
-        flash_sector_size(HF_NVS_FLASH_SECTOR_SIZE),
-        supports_encryption(true), supports_hmac_encryption(true),
-        supports_xts_encryption(true), supports_atomic_operations(true),
-        supports_wear_leveling(true) {}
+      : max_namespaces(HF_NVS_MAX_NAMESPACES), max_keys_per_namespace(256),
+        max_key_length(HF_NVS_MAX_KEY_LENGTH), max_value_size(HF_NVS_MAX_VALUE_SIZE),
+        flash_sector_size(HF_NVS_FLASH_SECTOR_SIZE), supports_encryption(true),
+        supports_hmac_encryption(true), supports_xts_encryption(true),
+        supports_atomic_operations(true), supports_wear_leveling(true) {}
 };
 
 /**
  * @brief ESP32 NVS iterator configuration.
  */
 struct hf_nvs_iterator_config_t {
-  const char* namespace_name;      ///< Namespace name
-  hf_nvs_type_t type;              ///< Data type filter
-  const char* key_prefix;          ///< Key prefix filter
-  size_t max_entries;              ///< Maximum entries to iterate
-  
+  const char* namespace_name; ///< Namespace name
+  hf_nvs_type_t type;         ///< Data type filter
+  const char* key_prefix;     ///< Key prefix filter
+  size_t max_entries;         ///< Maximum entries to iterate
+
   hf_nvs_iterator_config_t() noexcept
-      : namespace_name(nullptr), type(hf_nvs_type_t::HF_NVS_TYPE_U8),
-        key_prefix(nullptr), max_entries(100) {}
+      : namespace_name(nullptr), type(hf_nvs_type_t::HF_NVS_TYPE_U8), key_prefix(nullptr),
+        max_entries(100) {}
 };
 
 /**
@@ -146,12 +143,11 @@ struct hf_nvs_iterator_config_t {
  */
 struct hf_nvs_entry_info_t {
   char key[HF_NVS_MAX_KEY_LENGTH + 1]; ///< Entry key
-  hf_nvs_type_t type;                   ///< Entry type
-  size_t size;                          ///< Entry size
-  uint32_t crc;                         ///< Entry CRC
-  
-  hf_nvs_entry_info_t() noexcept
-      : type(hf_nvs_type_t::HF_NVS_TYPE_U8), size(0), crc(0) {
+  hf_nvs_type_t type;                  ///< Entry type
+  size_t size;                         ///< Entry size
+  uint32_t crc;                        ///< Entry CRC
+
+  hf_nvs_entry_info_t() noexcept : type(hf_nvs_type_t::HF_NVS_TYPE_U8), size(0), crc(0) {
     key[0] = '\0';
   }
 };
@@ -174,7 +170,8 @@ struct hf_nvs_entry_info_t {
  * @return true if valid, false otherwise
  */
 inline constexpr bool IsValidNvsKey(const char* key) noexcept {
-  if (!key) return false;
+  if (!key)
+    return false;
   size_t len = strlen(key);
   return HF_NVS_IS_VALID_KEY_LENGTH(len);
 }
@@ -185,7 +182,8 @@ inline constexpr bool IsValidNvsKey(const char* key) noexcept {
  * @return true if valid, false otherwise
  */
 inline constexpr bool IsValidNvsNamespace(const char* namespace_name) noexcept {
-  if (!namespace_name) return false;
+  if (!namespace_name)
+    return false;
   size_t len = strlen(namespace_name);
   return HF_NVS_IS_VALID_NAMESPACE_LENGTH(len);
 }

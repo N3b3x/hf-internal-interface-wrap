@@ -22,8 +22,8 @@
 
 #pragma once
 
-#include "RtosMutex.h"
 #include "BasePwm.h"
+#include "RtosMutex.h"
 #include "utils/EspTypes_PWM.h"
 #include <array>
 #include <atomic>
@@ -61,11 +61,11 @@ public:
   // CONSTANTS
   //==============================================================================
 
-  static constexpr hf_u8_t MAX_CHANNELS = HF_PWM_MAX_CHANNELS;          ///< Maximum PWM channels
-  static constexpr hf_u8_t MAX_TIMERS = HF_PWM_MAX_TIMERS;              ///< Maximum timer groups
-  static constexpr hf_u8_t MAX_RESOLUTION = HF_PWM_MAX_RESOLUTION;      ///< Maximum resolution bits
-  static constexpr hf_u32_t MIN_FREQUENCY = HF_PWM_MIN_FREQUENCY;       ///< Minimum frequency (Hz)
-  static constexpr hf_u32_t MAX_FREQUENCY = HF_PWM_MAX_FREQUENCY;       ///< Maximum frequency (Hz)
+  static constexpr hf_u8_t MAX_CHANNELS = HF_PWM_MAX_CHANNELS;     ///< Maximum PWM channels
+  static constexpr hf_u8_t MAX_TIMERS = HF_PWM_MAX_TIMERS;         ///< Maximum timer groups
+  static constexpr hf_u8_t MAX_RESOLUTION = HF_PWM_MAX_RESOLUTION; ///< Maximum resolution bits
+  static constexpr hf_u32_t MIN_FREQUENCY = HF_PWM_MIN_FREQUENCY;  ///< Minimum frequency (Hz)
+  static constexpr hf_u32_t MAX_FREQUENCY = HF_PWM_MAX_FREQUENCY;  ///< Maximum frequency (Hz)
 
   //==============================================================================
   // CONSTRUCTOR AND DESTRUCTOR
@@ -76,10 +76,8 @@ public:
    * @param config PWM unit configuration
    * @note Uses lazy initialization - no hardware action until first operation
    */
-  explicit EspPwm(const hf_pwm_unit_config_t &config = hf_pwm_unit_config_t{}) noexcept;
+  explicit EspPwm(const hf_pwm_unit_config_t& config = hf_pwm_unit_config_t{}) noexcept;
   EspPwm(hf_u32_t base_clock_hz) noexcept;
-
-
 
   /**
    * @brief Destructor - ensures clean shutdown
@@ -87,10 +85,10 @@ public:
   virtual ~EspPwm() noexcept override;
 
   // Prevent copying and moving
-  EspPwm(const EspPwm &) = delete;
-  EspPwm &operator=(const EspPwm &) = delete;
-  EspPwm(EspPwm &&) = delete;
-  EspPwm &operator=(EspPwm &&) = delete;
+  EspPwm(const EspPwm&) = delete;
+  EspPwm& operator=(const EspPwm&) = delete;
+  EspPwm(EspPwm&&) = delete;
+  EspPwm& operator=(EspPwm&&) = delete;
 
   //==============================================================================
   // LIFECYCLE (BasePwm Interface)
@@ -98,8 +96,6 @@ public:
 
   hf_pwm_err_t Initialize() noexcept override;
   hf_pwm_err_t Deinitialize() noexcept override;
-
-
 
   /**
    * @brief Set PWM operating mode
@@ -119,7 +115,7 @@ public:
   //==============================================================================
 
   hf_pwm_err_t ConfigureChannel(hf_channel_id_t channel_id,
-                            const hf_pwm_channel_config_t &config) noexcept;
+                                const hf_pwm_channel_config_t& config) noexcept;
   hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept override;
   hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept override;
   bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept override;
@@ -130,8 +126,10 @@ public:
 
   hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) noexcept override;
   hf_pwm_err_t SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_value) noexcept override;
-  hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz) noexcept override;
-  hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id, float phase_shift_degrees) noexcept override;
+  hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id,
+                            hf_frequency_hz_t frequency_hz) noexcept override;
+  hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id,
+                             float phase_shift_degrees) noexcept override;
 
   //==============================================================================
   // ADVANCED FEATURES (BasePwm Interface)
@@ -140,8 +138,9 @@ public:
   hf_pwm_err_t StartAll() noexcept override;
   hf_pwm_err_t StopAll() noexcept override;
   hf_pwm_err_t UpdateAll() noexcept override;
-  hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel, hf_channel_id_t complementary_channel,
-                                  hf_u32_t deadtime_ns) noexcept override;
+  hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel,
+                                      hf_channel_id_t complementary_channel,
+                                      hf_u32_t deadtime_ns) noexcept override;
 
   //==============================================================================
   // STATUS AND INFORMATION (BasePwm Interface)
@@ -150,16 +149,16 @@ public:
   float GetDutyCycle(hf_channel_id_t channel_id) const noexcept override;
   hf_frequency_hz_t GetFrequency(hf_channel_id_t channel_id) const noexcept override;
   hf_pwm_err_t GetChannelStatus(hf_channel_id_t channel_id,
-                            hf_pwm_channel_status_t &status) const noexcept;
-  hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t &capabilities) const noexcept;
+                                hf_pwm_channel_status_t& status) const noexcept;
+  hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t& capabilities) const noexcept;
   hf_pwm_err_t GetLastError(hf_channel_id_t channel_id) const noexcept;
 
   //==============================================================================
   // CALLBACKS (BasePwm Interface)
   //==============================================================================
 
-  void SetPeriodCallback(hf_pwm_period_callback_t callback, void *user_data = nullptr) noexcept;
-  void SetFaultCallback(hf_pwm_fault_callback_t callback, void *user_data = nullptr) noexcept;
+  void SetPeriodCallback(hf_pwm_period_callback_t callback, void* user_data = nullptr) noexcept;
+  void SetFaultCallback(hf_pwm_fault_callback_t callback, void* user_data = nullptr) noexcept;
 
   //==============================================================================
   // ESP32C6-SPECIFIC FEATURES
@@ -173,7 +172,7 @@ public:
    * @return PWM_SUCCESS on success, error code on failure
    */
   hf_pwm_err_t SetHardwareFade(hf_channel_id_t channel_id, float target_duty_cycle,
-                           hf_u32_t fade_time_ms) noexcept;
+                               hf_u32_t fade_time_ms) noexcept;
 
   /**
    * @brief Stop hardware fade for a channel
@@ -231,14 +230,14 @@ public:
    * @param statistics Statistics structure to fill
    * @return PWM_SUCCESS on success, error code on failure
    */
-  hf_pwm_err_t GetStatistics(hf_pwm_statistics_t &statistics) const noexcept override;
+  hf_pwm_err_t GetStatistics(hf_pwm_statistics_t& statistics) const noexcept override;
 
   /**
    * @brief Get PWM diagnostics
    * @param diagnostics Diagnostics structure to fill
    * @return PWM_SUCCESS on success, error code on failure
    */
-  hf_pwm_err_t GetDiagnostics(hf_pwm_diagnostics_t &diagnostics) const noexcept override;
+  hf_pwm_err_t GetDiagnostics(hf_pwm_diagnostics_t& diagnostics) const noexcept override;
 
 private:
   //==============================================================================
@@ -249,13 +248,13 @@ private:
    * @brief Internal channel state
    */
   struct ChannelState {
-    bool configured;         ///< Channel is configured
-    bool enabled;            ///< Channel is enabled
+    bool configured;                ///< Channel is configured
+    bool enabled;                   ///< Channel is enabled
     hf_pwm_channel_config_t config; ///< Channel configuration
-    hf_u8_t assigned_timer;  ///< Assigned timer (0-3)
-    hf_u32_t raw_duty_value; ///< Current raw duty value
-    hf_pwm_err_t last_error;     ///< Last error for this channel
-    bool fade_active;        ///< Hardware fade is active
+    hf_u8_t assigned_timer;         ///< Assigned timer (0-3)
+    hf_u32_t raw_duty_value;        ///< Current raw duty value
+    hf_pwm_err_t last_error;        ///< Last error for this channel
+    bool fade_active;               ///< Hardware fade is active
 
     ChannelState() noexcept
         : configured(false), enabled(false), assigned_timer(0xFF), raw_duty_value(0),
@@ -320,7 +319,7 @@ private:
    * @return PWM_SUCCESS on success, error code on failure
    */
   hf_pwm_err_t ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency_hz,
-                                  hf_u8_t resolution_bits) noexcept;
+                                      hf_u8_t resolution_bits) noexcept;
 
   /**
    * @brief Configure platform channel
@@ -329,8 +328,9 @@ private:
    * @param timer_id Assigned timer
    * @return PWM_SUCCESS on success, error code on failure
    */
-  hf_pwm_err_t ConfigurePlatformChannel(hf_channel_id_t channel_id, const hf_pwm_channel_config_t &config,
-                                    hf_u8_t timer_id) noexcept;
+  hf_pwm_err_t ConfigurePlatformChannel(hf_channel_id_t channel_id,
+                                        const hf_pwm_channel_config_t& config,
+                                        hf_u8_t timer_id) noexcept;
 
   /**
    * @brief Update platform duty cycle
@@ -351,7 +351,7 @@ private:
    * @brief Platform-specific interrupt handler
    * @param channel_id Channel that generated interrupt
    */
-  static void IRAM_ATTR InterruptHandler(hf_channel_id_t channel_id, void *user_data) noexcept;
+  static void IRAM_ATTR InterruptHandler(hf_channel_id_t channel_id, void* user_data) noexcept;
 
   /**
    * @brief Handle fade complete interrupt
@@ -395,9 +395,9 @@ private:
   // MEMBER VARIABLES
   //==============================================================================
 
-  mutable RtosMutex mutex_; ///< Thread safety mutex
-  std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
-  hf_u32_t base_clock_hz_;  ///< Base clock frequency
+  mutable RtosMutex mutex_;            ///< Thread safety mutex
+  std::atomic<bool> initialized_;      ///< Initialization state (atomic for lazy init)
+  hf_u32_t base_clock_hz_;             ///< Base clock frequency
   hf_pwm_clock_source_t clock_source_; ///< Current clock source
 
   std::array<ChannelState, MAX_CHANNELS> channels_;                     ///< Channel states
@@ -405,16 +405,16 @@ private:
   std::array<ComplementaryPair, MAX_CHANNELS / 2> complementary_pairs_; ///< Complementary pairs
 
   hf_pwm_period_callback_t period_callback_; ///< Period complete callback
-  void *period_callback_user_data_;   ///< Period callback user data
+  void* period_callback_user_data_;          ///< Period callback user data
   hf_pwm_fault_callback_t fault_callback_;   ///< Fault callback
-  void *fault_callback_user_data_;    ///< Fault callback user data
+  void* fault_callback_user_data_;           ///< Fault callback user data
 
-  hf_pwm_err_t last_global_error_; ///< Last global error
+  hf_pwm_err_t last_global_error_;    ///< Last global error
   bool fade_functionality_installed_; ///< LEDC fade functionality installed
 
   // New member variables for enhanced functionality
   hf_pwm_unit_config_t unit_config_; ///< Unit configuration
-  hf_pwm_mode_t current_mode_; ///< Current operating mode
-  hf_pwm_statistics_t statistics_; ///< PWM statistics
+  hf_pwm_mode_t current_mode_;       ///< Current operating mode
+  hf_pwm_statistics_t statistics_;   ///< PWM statistics
   hf_pwm_diagnostics_t diagnostics_; ///< PWM diagnostics
 };

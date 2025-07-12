@@ -13,10 +13,10 @@
 
 #pragma once
 
-#include "HardwareTypes.h"
-#include "McuSelect.h"      // Central MCU platform selection (includes all ESP-IDF)
+#include "BaseCan.h" // For hf_can_err_t and hf_can_message_t
 #include "EspTypes_Base.h"
-#include "BaseCan.h"        // For hf_can_err_t and hf_can_message_t
+#include "HardwareTypes.h"
+#include "McuSelect.h" // Central MCU platform selection (includes all ESP-IDF)
 
 //==============================================================================
 // ESSENTIAL CAN TYPES (ESP32)
@@ -30,8 +30,8 @@
  * @brief CAN controller ID for ESP32 family.
  */
 enum class hf_can_controller_id_t : uint8_t {
-  HF_CAN_CONTROLLER_0 = 0,   ///< Primary CAN controller
-  HF_CAN_CONTROLLER_1 = 1,   ///< Secondary CAN controller (ESP32 only)
+  HF_CAN_CONTROLLER_0 = 0, ///< Primary CAN controller
+  HF_CAN_CONTROLLER_1 = 1, ///< Secondary CAN controller (ESP32 only)
 };
 
 /**
@@ -47,15 +47,15 @@ enum class hf_can_mode_t : uint8_t {
  * @brief CAN operation types for statistics tracking.
  */
 enum class hf_can_operation_type_t : uint8_t {
-    HF_CAN_OP_SEND = 0,      ///< Send operation
-    HF_CAN_OP_RECEIVE = 1,   ///< Receive operation
-    HF_CAN_OP_FILTER = 2,    ///< Filter operation
-    HF_CAN_OP_ALERT = 3,     ///< Alert operation
-    HF_CAN_OP_INIT = 4,      ///< Initialization operation
-    HF_CAN_OP_DEINIT = 5,    ///< Deinitialization operation
-    HF_CAN_OP_RESET = 6,     ///< Reset operation
-    HF_CAN_OP_RECOVER = 7,   ///< Bus recovery operation
-};  
+  HF_CAN_OP_SEND = 0,    ///< Send operation
+  HF_CAN_OP_RECEIVE = 1, ///< Receive operation
+  HF_CAN_OP_FILTER = 2,  ///< Filter operation
+  HF_CAN_OP_ALERT = 3,   ///< Alert operation
+  HF_CAN_OP_INIT = 4,    ///< Initialization operation
+  HF_CAN_OP_DEINIT = 5,  ///< Deinitialization operation
+  HF_CAN_OP_RESET = 6,   ///< Reset operation
+  HF_CAN_OP_RECOVER = 7, ///< Bus recovery operation
+};
 
 //==============================================================================
 // ESSENTIAL CAN CONFIGURATION STRUCTURES (MINIMAL)
@@ -65,12 +65,12 @@ enum class hf_can_operation_type_t : uint8_t {
  * @brief CAN filter configuration structure.
  */
 struct hf_can_filter_config_t {
-    uint32_t acceptance_code;        ///< Acceptance code
-    uint32_t acceptance_mask;        ///< Acceptance mask  
-    bool single_filter;              ///< Use single filter mode
-    
-    hf_can_filter_config_t() noexcept
-        : acceptance_code(0), acceptance_mask(0xFFFFFFFF), single_filter(true) {}
+  uint32_t acceptance_code; ///< Acceptance code
+  uint32_t acceptance_mask; ///< Acceptance mask
+  bool single_filter;       ///< Use single filter mode
+
+  hf_can_filter_config_t() noexcept
+      : acceptance_code(0), acceptance_mask(0xFFFFFFFF), single_filter(true) {}
 };
 
 /**

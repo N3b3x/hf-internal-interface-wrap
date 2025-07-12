@@ -32,45 +32,45 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_PIO_ERR_LIST(X)                                                                         \
-  /* Success codes */                                                                              \
-  X(PIO_SUCCESS, 0, "Success")                                                                     \
-  /* General errors */                                                                             \
-  X(PIO_ERR_FAILURE, 1, "General failure")                                                         \
-  X(PIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
-  X(PIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
-  X(PIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
-  X(PIO_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
-  X(PIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
-  /* Channel errors */                                                                             \
-  X(PIO_ERR_INVALID_CHANNEL, 7, "Invalid PIO channel")                                             \
-  X(PIO_ERR_CHANNEL_BUSY, 8, "Channel already in use")                                             \
-  X(PIO_ERR_CHANNEL_NOT_AVAILABLE, 9, "Channel not available")                                     \
-  X(PIO_ERR_INSUFFICIENT_CHANNELS, 10, "Insufficient channels available")                          \
-  /* Timing errors */                                                                              \
-  X(PIO_ERR_INVALID_RESOLUTION, 11, "Invalid time resolution")                                     \
-  X(PIO_ERR_RESOLUTION_TOO_HIGH, 12, "Time resolution too high")                                   \
-  X(PIO_ERR_RESOLUTION_TOO_LOW, 13, "Time resolution too low")                                     \
-  X(PIO_ERR_DURATION_TOO_LONG, 14, "Duration too long")                                            \
-  X(PIO_ERR_DURATION_TOO_SHORT, 15, "Duration too short")                                          \
-  /* Buffer errors */                                                                              \
-  X(PIO_ERR_BUFFER_OVERFLOW, 16, "Buffer overflow")                                                \
-  X(PIO_ERR_BUFFER_UNDERFLOW, 17, "Buffer underflow")                                              \
-  X(PIO_ERR_BUFFER_TOO_SMALL, 18, "Buffer too small")                                              \
-  X(PIO_ERR_BUFFER_TOO_LARGE, 19, "Buffer too large")                                              \
-  /* Hardware errors */                                                                            \
-  X(PIO_ERR_HARDWARE_FAULT, 20, "Hardware fault")                                                  \
-  X(PIO_ERR_COMMUNICATION_TIMEOUT, 21, "Communication timeout")                                    \
-  X(PIO_ERR_COMMUNICATION_FAILURE, 22, "Communication failure")                                    \
-  X(PIO_ERR_DEVICE_NOT_RESPONDING, 23, "Device not responding")                                    \
-  /* Configuration errors */                                                                       \
-  X(PIO_ERR_INVALID_CONFIGURATION, 24, "Invalid configuration")                                    \
-  X(PIO_ERR_UNSUPPORTED_OPERATION, 25, "Unsupported operation")                                    \
-  X(PIO_ERR_PIN_CONFLICT, 26, "Pin already in use")                                                \
-  X(PIO_ERR_RESOURCE_BUSY, 27, "Resource busy")                                                    \
-  /* System errors */                                                                              \
-  X(PIO_ERR_SYSTEM_ERROR, 28, "System error")                                                      \
-  X(PIO_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
+#define HF_PIO_ERR_LIST(X)                                                \
+  /* Success codes */                                                     \
+  X(PIO_SUCCESS, 0, "Success")                                            \
+  /* General errors */                                                    \
+  X(PIO_ERR_FAILURE, 1, "General failure")                                \
+  X(PIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                        \
+  X(PIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                \
+  X(PIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                    \
+  X(PIO_ERR_NULL_POINTER, 5, "Null pointer")                              \
+  X(PIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                            \
+  /* Channel errors */                                                    \
+  X(PIO_ERR_INVALID_CHANNEL, 7, "Invalid PIO channel")                    \
+  X(PIO_ERR_CHANNEL_BUSY, 8, "Channel already in use")                    \
+  X(PIO_ERR_CHANNEL_NOT_AVAILABLE, 9, "Channel not available")            \
+  X(PIO_ERR_INSUFFICIENT_CHANNELS, 10, "Insufficient channels available") \
+  /* Timing errors */                                                     \
+  X(PIO_ERR_INVALID_RESOLUTION, 11, "Invalid time resolution")            \
+  X(PIO_ERR_RESOLUTION_TOO_HIGH, 12, "Time resolution too high")          \
+  X(PIO_ERR_RESOLUTION_TOO_LOW, 13, "Time resolution too low")            \
+  X(PIO_ERR_DURATION_TOO_LONG, 14, "Duration too long")                   \
+  X(PIO_ERR_DURATION_TOO_SHORT, 15, "Duration too short")                 \
+  /* Buffer errors */                                                     \
+  X(PIO_ERR_BUFFER_OVERFLOW, 16, "Buffer overflow")                       \
+  X(PIO_ERR_BUFFER_UNDERFLOW, 17, "Buffer underflow")                     \
+  X(PIO_ERR_BUFFER_TOO_SMALL, 18, "Buffer too small")                     \
+  X(PIO_ERR_BUFFER_TOO_LARGE, 19, "Buffer too large")                     \
+  /* Hardware errors */                                                   \
+  X(PIO_ERR_HARDWARE_FAULT, 20, "Hardware fault")                         \
+  X(PIO_ERR_COMMUNICATION_TIMEOUT, 21, "Communication timeout")           \
+  X(PIO_ERR_COMMUNICATION_FAILURE, 22, "Communication failure")           \
+  X(PIO_ERR_DEVICE_NOT_RESPONDING, 23, "Device not responding")           \
+  /* Configuration errors */                                              \
+  X(PIO_ERR_INVALID_CONFIGURATION, 24, "Invalid configuration")           \
+  X(PIO_ERR_UNSUPPORTED_OPERATION, 25, "Unsupported operation")           \
+  X(PIO_ERR_PIN_CONFLICT, 26, "Pin already in use")                       \
+  X(PIO_ERR_RESOURCE_BUSY, 27, "Resource busy")                           \
+  /* System errors */                                                     \
+  X(PIO_ERR_SYSTEM_ERROR, 28, "System error")                             \
+  X(PIO_ERR_PERMISSION_DENIED, 29, "Permission denied")                   \
   X(PIO_ERR_OPERATION_ABORTED, 30, "Operation aborted")
 
 enum class hf_pio_err_t : hf_u8_t {
@@ -86,13 +86,13 @@ enum class hf_pio_err_t : hf_u8_t {
  */
 constexpr std::string_view HfPioErrToString(hf_pio_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC)                                                                       \
-  case hf_pio_err_t::NAME:                                                                         \
+#define X(NAME, VALUE, DESC) \
+  case hf_pio_err_t::NAME:   \
     return DESC;
     HF_PIO_ERR_LIST(X)
 #undef X
-  default:
-    return "Unknown error";
+    default:
+      return "Unknown error";
   }
 }
 
@@ -186,45 +186,44 @@ struct hf_pio_capabilities_t {
  * @brief PIO operation statistics.
  */
 struct hf_pio_statistics_t {
-  hf_u32_t totalTransmissions;    ///< Total transmissions performed
-  hf_u32_t successfulTransmissions; ///< Successful transmissions
-  hf_u32_t failedTransmissions;   ///< Failed transmissions
-  hf_u32_t totalReceptions;       ///< Total receptions performed
-  hf_u32_t successfulReceptions;  ///< Successful receptions
-  hf_u32_t failedReceptions;      ///< Failed receptions
-  hf_u32_t symbolsTransmitted;    ///< Total symbols transmitted
-  hf_u32_t symbolsReceived;       ///< Total symbols received
+  hf_u32_t totalTransmissions;        ///< Total transmissions performed
+  hf_u32_t successfulTransmissions;   ///< Successful transmissions
+  hf_u32_t failedTransmissions;       ///< Failed transmissions
+  hf_u32_t totalReceptions;           ///< Total receptions performed
+  hf_u32_t successfulReceptions;      ///< Successful receptions
+  hf_u32_t failedReceptions;          ///< Failed receptions
+  hf_u32_t symbolsTransmitted;        ///< Total symbols transmitted
+  hf_u32_t symbolsReceived;           ///< Total symbols received
   hf_u32_t averageTransmissionTimeUs; ///< Average transmission time (microseconds)
-  hf_u32_t maxTransmissionTimeUs; ///< Maximum transmission time
-  hf_u32_t minTransmissionTimeUs; ///< Minimum transmission time
-  hf_u32_t timingErrors;          ///< Number of timing errors
-  hf_u32_t bufferOverflows;       ///< Number of buffer overflows
+  hf_u32_t maxTransmissionTimeUs;     ///< Maximum transmission time
+  hf_u32_t minTransmissionTimeUs;     ///< Minimum transmission time
+  hf_u32_t timingErrors;              ///< Number of timing errors
+  hf_u32_t bufferOverflows;           ///< Number of buffer overflows
 
   hf_pio_statistics_t()
       : totalTransmissions(0), successfulTransmissions(0), failedTransmissions(0),
-        totalReceptions(0), successfulReceptions(0), failedReceptions(0),
-        symbolsTransmitted(0), symbolsReceived(0), averageTransmissionTimeUs(0), 
-        maxTransmissionTimeUs(0), minTransmissionTimeUs(UINT32_MAX), timingErrors(0),
-        bufferOverflows(0) {}
+        totalReceptions(0), successfulReceptions(0), failedReceptions(0), symbolsTransmitted(0),
+        symbolsReceived(0), averageTransmissionTimeUs(0), maxTransmissionTimeUs(0),
+        minTransmissionTimeUs(UINT32_MAX), timingErrors(0), bufferOverflows(0) {}
 };
 
 /**
  * @brief PIO diagnostic information.
  */
 struct hf_pio_diagnostics_t {
-  bool pioHealthy;               ///< Overall PIO health status
-  hf_pio_err_t lastErrorCode;    ///< Last error code
-  hf_u32_t lastErrorTimestamp;   ///< Last error timestamp
-  hf_u32_t consecutiveErrors;    ///< Consecutive error count
-  bool pioInitialized;           ///< PIO initialization status
-  hf_u8_t activeChannels;        ///< Number of active channels
-  hf_u32_t currentResolutionNs;  ///< Current time resolution
-  bool bidirectionalSupported;   ///< Bidirectional mode support
+  bool pioHealthy;              ///< Overall PIO health status
+  hf_pio_err_t lastErrorCode;   ///< Last error code
+  hf_u32_t lastErrorTimestamp;  ///< Last error timestamp
+  hf_u32_t consecutiveErrors;   ///< Consecutive error count
+  bool pioInitialized;          ///< PIO initialization status
+  hf_u8_t activeChannels;       ///< Number of active channels
+  hf_u32_t currentResolutionNs; ///< Current time resolution
+  bool bidirectionalSupported;  ///< Bidirectional mode support
 
   hf_pio_diagnostics_t()
-      : pioHealthy(true), lastErrorCode(hf_pio_err_t::PIO_SUCCESS), lastErrorTimestamp(0), 
-          consecutiveErrors(0), pioInitialized(false), activeChannels(0), 
-          currentResolutionNs(0), bidirectionalSupported(false) {}
+      : pioHealthy(true), lastErrorCode(hf_pio_err_t::PIO_SUCCESS), lastErrorTimestamp(0),
+        consecutiveErrors(0), pioInitialized(false), activeChannels(0), currentResolutionNs(0),
+        bidirectionalSupported(false) {}
 };
 
 //--------------------------------------
@@ -238,7 +237,7 @@ struct hf_pio_diagnostics_t {
  * @param user_data User-provided data
  */
 using hf_pio_transmit_callback_t =
-    std::function<void(hf_u8_t channel_id, size_t symbols_sent, void *user_data)>;
+    std::function<void(hf_u8_t channel_id, size_t symbols_sent, void* user_data)>;
 
 /**
  * @brief Callback for PIO reception complete events
@@ -248,7 +247,7 @@ using hf_pio_transmit_callback_t =
  * @param user_data User-provided data
  */
 using hf_pio_receive_callback_t = std::function<void(
-    hf_u8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count, void *user_data)>;
+    hf_u8_t channel_id, const hf_pio_symbol_t* symbols, size_t symbol_count, void* user_data)>;
 
 /**
  * @brief Callback for PIO error events
@@ -257,7 +256,7 @@ using hf_pio_receive_callback_t = std::function<void(
  * @param user_data User-provided data
  */
 using hf_pio_error_callback_t =
-    std::function<void(hf_u8_t channel_id, hf_pio_err_t error, void *user_data)>;
+    std::function<void(hf_u8_t channel_id, hf_pio_err_t error, void* user_data)>;
 
 //--------------------------------------
 //  Abstract Base Class
@@ -285,19 +284,18 @@ using hf_pio_error_callback_t =
  */
 class BasePio {
 public:
-
   /**
    * @brief Virtual destructor
    */
   virtual ~BasePio() noexcept = default;
 
   // Disable copy constructor and assignment operator for safety
-  BasePio(const BasePio &) = delete;
-  BasePio &operator=(const BasePio &) = delete;
+  BasePio(const BasePio&) = delete;
+  BasePio& operator=(const BasePio&) = delete;
 
   // Allow move operations
-  BasePio(BasePio &&) noexcept = default;
-  BasePio &operator=(BasePio &&) noexcept = default;
+  BasePio(BasePio&&) noexcept = default;
+  BasePio& operator=(BasePio&&) noexcept = default;
 
   //==============================================//
   // PURE VIRTUAL FUNCTIONS - MUST BE OVERRIDDEN  //
@@ -353,7 +351,7 @@ public:
    * @return Error code indicating success or failure
    */
   virtual hf_pio_err_t ConfigureChannel(hf_u8_t channel_id,
-                                        const hf_pio_channel_config_t &config) noexcept = 0;
+                                        const hf_pio_channel_config_t& config) noexcept = 0;
 
   /**
    * @brief Transmit a sequence of symbols
@@ -363,7 +361,7 @@ public:
    * @param wait_completion If true, block until transmission is complete
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t Transmit(hf_u8_t channel_id, const hf_pio_symbol_t *symbols,
+  virtual hf_pio_err_t Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols,
                                 size_t symbol_count, bool wait_completion = false) noexcept = 0;
 
   /**
@@ -374,7 +372,7 @@ public:
    * @param timeout_us Timeout in microseconds (0 = no timeout)
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t StartReceive(hf_u8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
+  virtual hf_pio_err_t StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, size_t buffer_size,
                                     hf_u32_t timeout_us = 0) noexcept = 0;
 
   /**
@@ -383,7 +381,7 @@ public:
    * @param symbols_received [out] Number of symbols actually received
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t StopReceive(hf_u8_t channel_id, size_t &symbols_received) noexcept = 0;
+  virtual hf_pio_err_t StopReceive(hf_u8_t channel_id, size_t& symbols_received) noexcept = 0;
 
   /**
    * @brief Check if a channel is currently busy
@@ -399,14 +397,14 @@ public:
    * @return Error code indicating success or failure
    */
   virtual hf_pio_err_t GetChannelStatus(hf_u8_t channel_id,
-                                        hf_pio_channel_status_t &status) const noexcept = 0;
+                                        hf_pio_channel_status_t& status) const noexcept = 0;
 
   /**
    * @brief Get PIO capabilities
    * @param capabilities [out] Capability information
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t GetCapabilities(hf_pio_capabilities_t &capabilities) const noexcept = 0;
+  virtual hf_pio_err_t GetCapabilities(hf_pio_capabilities_t& capabilities) const noexcept = 0;
 
   /**
    * @brief Set callback for transmission complete events
@@ -414,7 +412,7 @@ public:
    * @param user_data User data to pass to callback
    */
   virtual void SetTransmitCallback(hf_pio_transmit_callback_t callback,
-                                   void *user_data = nullptr) noexcept = 0;
+                                   void* user_data = nullptr) noexcept = 0;
 
   /**
    * @brief Set callback for reception complete events
@@ -422,7 +420,7 @@ public:
    * @param user_data User data to pass to callback
    */
   virtual void SetReceiveCallback(hf_pio_receive_callback_t callback,
-                                  void *user_data = nullptr) noexcept = 0;
+                                  void* user_data = nullptr) noexcept = 0;
 
   /**
    * @brief Set callback for error events
@@ -430,7 +428,7 @@ public:
    * @param user_data User data to pass to callback
    */
   virtual void SetErrorCallback(hf_pio_error_callback_t callback,
-                                void *user_data = nullptr) noexcept = 0;
+                                void* user_data = nullptr) noexcept = 0;
 
   /**
    * @brief Clear all callbacks
@@ -466,7 +464,7 @@ public:
    * @param statistics Reference to store statistics data
    * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_pio_err_t GetStatistics(hf_pio_statistics_t &statistics) const noexcept {
+  virtual hf_pio_err_t GetStatistics(hf_pio_statistics_t& statistics) const noexcept {
     statistics = statistics_; // Return statistics by default
     return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
   }
@@ -476,7 +474,7 @@ public:
    * @param diagnostics Reference to store diagnostics data
    * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t &diagnostics) const noexcept {
+  virtual hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept {
     diagnostics = diagnostics_; // Return diagnostics by default
     return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
   }
@@ -491,6 +489,6 @@ protected:
    * @brief Initialization state tracking
    */
   bool initialized_;
-  hf_pio_statistics_t statistics_; ///< PIO operation statistics
+  hf_pio_statistics_t statistics_;   ///< PIO operation statistics
   hf_pio_diagnostics_t diagnostics_; ///< PIO diagnostic information
 };

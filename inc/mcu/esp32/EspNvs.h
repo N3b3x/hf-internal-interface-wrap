@@ -43,12 +43,11 @@
 #pragma once
 
 #include "BaseNvs.h"
-#include "utils/EspTypes_NVS.h"        // Centralized ESP32 NVS type definitions
+#include "RtosMutex.h"          // Thread-safe mutex support if enabled
+#include "utils/EspTypes_NVS.h" // Centralized ESP32 NVS type definitions
 #include <cstdint>
-#include "RtosMutex.h"      // Thread-safe mutex support if enabled
 
 // ESP32-C6 NVS abstracted types for portability
-
 
 /**
  * @class EspNvs
@@ -108,7 +107,7 @@ public:
    * @brief Constructor with namespace specification.
    * @param namespace_name Name of the storage namespace
    */
-  explicit EspNvs(const char *namespace_name) noexcept;
+  explicit EspNvs(const char* namespace_name) noexcept;
 
   /**
    * @brief Destructor - ensures proper cleanup.
@@ -137,7 +136,7 @@ public:
    * @param value Value to store
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t SetU32(const char *key, hf_u32_t value) noexcept override;
+  hf_nvs_err_t SetU32(const char* key, hf_u32_t value) noexcept override;
 
   /**
    * @brief Retrieve a 32-bit unsigned integer value.
@@ -145,7 +144,7 @@ public:
    * @param value Reference to store the retrieved value
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t GetU32(const char *key, hf_u32_t &value) noexcept override;
+  hf_nvs_err_t GetU32(const char* key, hf_u32_t& value) noexcept override;
 
   /**
    * @brief Store a string value.
@@ -153,7 +152,7 @@ public:
    * @param value String value to store
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t SetString(const char *key, const char *value) noexcept override;
+  hf_nvs_err_t SetString(const char* key, const char* value) noexcept override;
 
   /**
    * @brief Retrieve a string value.
@@ -163,8 +162,8 @@ public:
    * @param actual_size Actual size of the string (optional)
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t GetString(const char *key, char *buffer, size_t buffer_size,
-                     size_t *actual_size = nullptr) noexcept override;
+  hf_nvs_err_t GetString(const char* key, char* buffer, size_t buffer_size,
+                         size_t* actual_size = nullptr) noexcept override;
 
   /**
    * @brief Store binary data (blob).
@@ -173,7 +172,7 @@ public:
    * @param data_size Size of data in bytes
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t SetBlob(const char *key, const void *data, size_t data_size) noexcept override;
+  hf_nvs_err_t SetBlob(const char* key, const void* data, size_t data_size) noexcept override;
 
   /**
    * @brief Retrieve binary data (blob).
@@ -183,15 +182,15 @@ public:
    * @param actual_size Actual size of the data (optional)
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t GetBlob(const char *key, void *buffer, size_t buffer_size,
-                   size_t *actual_size = nullptr) noexcept override;
+  hf_nvs_err_t GetBlob(const char* key, void* buffer, size_t buffer_size,
+                       size_t* actual_size = nullptr) noexcept override;
 
   /**
    * @brief Remove a key from storage.
    * @param key Storage key to remove
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t EraseKey(const char *key) noexcept override;
+  hf_nvs_err_t EraseKey(const char* key) noexcept override;
 
   /**
    * @brief Commit any pending writes to non-volatile storage.
@@ -204,7 +203,7 @@ public:
    * @param key Storage key to check
    * @return true if key exists, false otherwise
    */
-  bool KeyExists(const char *key) noexcept override;
+  bool KeyExists(const char* key) noexcept override;
 
   /**
    * @brief Get the size of a stored value.
@@ -212,13 +211,13 @@ public:
    * @param size Reference to store the size
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t GetSize(const char *key, size_t &size) noexcept override;
+  hf_nvs_err_t GetSize(const char* key, size_t& size) noexcept override;
 
   /**
    * @brief Get description of this NVS implementation.
    * @return Description string
    */
-  const char *GetDescription() const noexcept override;
+  const char* GetDescription() const noexcept override;
 
   /**
    * @brief Get maximum key length supported.
@@ -241,14 +240,14 @@ public:
    * @param statistics Reference to statistics structure to fill
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t GetStatistics(hf_nvs_statistics_t &statistics) const noexcept override;
+  hf_nvs_err_t GetStatistics(hf_nvs_statistics_t& statistics) const noexcept override;
 
   /**
    * @brief Get NVS diagnostic information.
    * @param diagnostics Reference to diagnostics structure to fill
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t GetDiagnostics(hf_nvs_diagnostics_t &diagnostics) const noexcept override;
+  hf_nvs_err_t GetDiagnostics(hf_nvs_diagnostics_t& diagnostics) const noexcept override;
 
 private:
   //==============================================//
@@ -279,19 +278,19 @@ private:
    * @param key Key name to validate
    * @return true if key is valid, false otherwise
    */
-  bool IsValidKey(const char *key) const noexcept;
+  bool IsValidKey(const char* key) const noexcept;
 
   //==============================================//
   // PRIVATE MEMBER VARIABLES                     //
   //==============================================//
 
-  void *nvs_handle_;                ///< Platform-specific NVS handle (nvs_handle_t on ESP32)
-  mutable int last_error_code_;     ///< Last MCU-specific error code for debugging
-  
+  void* nvs_handle_;            ///< Platform-specific NVS handle (nvs_handle_t on ESP32)
+  mutable int last_error_code_; ///< Last MCU-specific error code for debugging
+
   // Statistics and performance monitoring
-  mutable hf_nvs_statistics_t statistics_; ///< Operation statistics
+  mutable hf_nvs_statistics_t statistics_;   ///< Operation statistics
   mutable hf_nvs_diagnostics_t diagnostics_; ///< Diagnostic information
 
   // Thread safety
-  mutable RtosMutex mutex_;         ///< Mutex for thread-safe operations
+  mutable RtosMutex mutex_; ///< Mutex for thread-safe operations
 };

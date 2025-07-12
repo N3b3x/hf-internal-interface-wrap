@@ -5,13 +5,13 @@
  * This header-only file defines the abstract base class for CAN bus communication
  * that provides a consistent API across different CAN controller implementations.
  * Concrete implementations for various microcontrollers inherit from this class.
- * 
+ *
  * ERROR HANDLING:
  * - All CAN error codes are defined in this file using the hf_can_err_t enumeration
  * - Lower-level types (McuTypes_CAN.h) maintain minimal error constants for compatibility
  * - All virtual methods return hf_can_err_t for comprehensive error reporting
  * - No legacy compatibility code - use hf_can_message_t structure for all operations
- * 
+ *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
@@ -38,72 +38,72 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_CAN_ERR_LIST(X)                                                                         \
-  /* Success codes */                                                                              \
-  X(CAN_SUCCESS, 0, "Success")                                                                     \
-  /* General errors */                                                                             \
-  X(CAN_ERR_FAILURE, 1, "General failure")                                                         \
-  X(CAN_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
-  X(CAN_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
-  X(CAN_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
-  X(CAN_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
-  X(CAN_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
-  /* Bus errors */                                                                                 \
-  X(CAN_ERR_BUS_OFF, 7, "Bus off state")                                                           \
-  X(CAN_ERR_BUS_ERROR, 8, "Bus error")                                                             \
-  X(CAN_ERR_BUS_BUSY, 9, "Bus busy")                                                               \
-  X(CAN_ERR_BUS_NOT_AVAILABLE, 10, "Bus not available")                                            \
-  X(CAN_ERR_BUS_RECOVERY_FAILED, 11, "Bus recovery failed")                                        \
-  X(CAN_ERR_BUS_ARBITRATION_LOST, 12, "Bus arbitration lost")                                      \
-  /* Message errors */                                                                             \
-  X(CAN_ERR_MESSAGE_TIMEOUT, 13, "Message timeout")                                                \
-  X(CAN_ERR_MESSAGE_LOST, 14, "Message lost")                                                      \
-  X(CAN_ERR_MESSAGE_INVALID, 15, "Invalid message")                                                \
-  X(CAN_ERR_MESSAGE_TOO_LONG, 16, "Message too long")                                              \
-  X(CAN_ERR_MESSAGE_INVALID_ID, 17, "Invalid message ID")                                          \
-  X(CAN_ERR_MESSAGE_INVALID_DLC, 18, "Invalid data length code")                                   \
-  X(CAN_ERR_QUEUE_FULL, 19, "Queue full")                                                          \
-  X(CAN_ERR_QUEUE_EMPTY, 20, "Queue empty")                                                        \
-  /* Transmission errors */                                                                        \
-  X(CAN_ERR_TX_FAILED, 21, "Transmission failed")                                                  \
-  X(CAN_ERR_TX_ABORTED, 22, "Transmission aborted")                                                \
-  X(CAN_ERR_TX_ERROR_PASSIVE, 23, "Transmit error passive")                                        \
-  X(CAN_ERR_TX_ERROR_WARNING, 24, "Transmit error warning")                                        \
-  /* Reception errors */                                                                           \
-  X(CAN_ERR_RX_OVERRUN, 25, "Receive overrun")                                                     \
-  X(CAN_ERR_RX_ERROR_PASSIVE, 26, "Receive error passive")                                         \
-  X(CAN_ERR_RX_ERROR_WARNING, 27, "Receive error warning")                                         \
-  X(CAN_ERR_RX_FIFO_FULL, 28, "Receive FIFO full")                                                 \
-  /* Hardware errors */                                                                            \
-  X(CAN_ERR_HARDWARE_FAULT, 29, "Hardware fault")                                                  \
-  X(CAN_ERR_COMMUNICATION_FAILURE, 30, "Communication failure")                                    \
-  X(CAN_ERR_DEVICE_NOT_RESPONDING, 31, "Device not responding")                                    \
-  X(CAN_ERR_VOLTAGE_OUT_OF_RANGE, 32, "Voltage out of range")                                      \
-  X(CAN_ERR_CLOCK_ERROR, 33, "Clock error")                                                        \
-  X(CAN_ERR_TRANSCEIVER_ERROR, 34, "Transceiver error")                                            \
-  /* Configuration errors */                                                                       \
-  X(CAN_ERR_INVALID_CONFIGURATION, 35, "Invalid configuration")                                    \
-  X(CAN_ERR_UNSUPPORTED_OPERATION, 36, "Unsupported operation")                                    \
-  X(CAN_ERR_INVALID_BAUD_RATE, 37, "Invalid baud rate")                                            \
-  X(CAN_ERR_INVALID_CONTROLLER_ID, 38, "Invalid controller ID")                                    \
-  X(CAN_ERR_FILTER_ERROR, 39, "Filter error")                                                      \
-  X(CAN_ERR_FILTER_FULL, 40, "Filter table full")                                                  \
-  /* Protocol errors */                                                                            \
-  X(CAN_ERR_STUFF_ERROR, 41, "Bit stuffing error")                                                 \
-  X(CAN_ERR_FORM_ERROR, 42, "Frame format error")                                                  \
-  X(CAN_ERR_CRC_ERROR, 43, "CRC error")                                                            \
-  X(CAN_ERR_ACK_ERROR, 44, "Acknowledgment error")                                                 \
-  X(CAN_ERR_BIT_ERROR, 45, "Bit error")                                                            \
-  /* System errors */                                                                              \
-  X(CAN_ERR_SYSTEM_ERROR, 46, "System error")                                                      \
-  X(CAN_ERR_PERMISSION_DENIED, 47, "Permission denied")                                            \
-  X(CAN_ERR_OPERATION_ABORTED, 48, "Operation aborted")                                            \
-                                                                                                   \
-  /* Extended CAN errors (for ESP32 compatibility) */                                             \
-  X(CAN_ERR_FAIL, 49, "Generic failure")                                                           \
-  X(CAN_ERR_RESOURCE_BUSY, 50, "Resource busy")                                                    \
-  X(CAN_ERR_INVALID_STATE, 51, "Invalid state")                                                    \
-  X(CAN_ERR_NOT_SUPPORTED, 52, "Not supported")                                                    \
+#define HF_CAN_ERR_LIST(X)                                       \
+  /* Success codes */                                            \
+  X(CAN_SUCCESS, 0, "Success")                                   \
+  /* General errors */                                           \
+  X(CAN_ERR_FAILURE, 1, "General failure")                       \
+  X(CAN_ERR_NOT_INITIALIZED, 2, "Not initialized")               \
+  X(CAN_ERR_ALREADY_INITIALIZED, 3, "Already initialized")       \
+  X(CAN_ERR_INVALID_PARAMETER, 4, "Invalid parameter")           \
+  X(CAN_ERR_NULL_POINTER, 5, "Null pointer")                     \
+  X(CAN_ERR_OUT_OF_MEMORY, 6, "Out of memory")                   \
+  /* Bus errors */                                               \
+  X(CAN_ERR_BUS_OFF, 7, "Bus off state")                         \
+  X(CAN_ERR_BUS_ERROR, 8, "Bus error")                           \
+  X(CAN_ERR_BUS_BUSY, 9, "Bus busy")                             \
+  X(CAN_ERR_BUS_NOT_AVAILABLE, 10, "Bus not available")          \
+  X(CAN_ERR_BUS_RECOVERY_FAILED, 11, "Bus recovery failed")      \
+  X(CAN_ERR_BUS_ARBITRATION_LOST, 12, "Bus arbitration lost")    \
+  /* Message errors */                                           \
+  X(CAN_ERR_MESSAGE_TIMEOUT, 13, "Message timeout")              \
+  X(CAN_ERR_MESSAGE_LOST, 14, "Message lost")                    \
+  X(CAN_ERR_MESSAGE_INVALID, 15, "Invalid message")              \
+  X(CAN_ERR_MESSAGE_TOO_LONG, 16, "Message too long")            \
+  X(CAN_ERR_MESSAGE_INVALID_ID, 17, "Invalid message ID")        \
+  X(CAN_ERR_MESSAGE_INVALID_DLC, 18, "Invalid data length code") \
+  X(CAN_ERR_QUEUE_FULL, 19, "Queue full")                        \
+  X(CAN_ERR_QUEUE_EMPTY, 20, "Queue empty")                      \
+  /* Transmission errors */                                      \
+  X(CAN_ERR_TX_FAILED, 21, "Transmission failed")                \
+  X(CAN_ERR_TX_ABORTED, 22, "Transmission aborted")              \
+  X(CAN_ERR_TX_ERROR_PASSIVE, 23, "Transmit error passive")      \
+  X(CAN_ERR_TX_ERROR_WARNING, 24, "Transmit error warning")      \
+  /* Reception errors */                                         \
+  X(CAN_ERR_RX_OVERRUN, 25, "Receive overrun")                   \
+  X(CAN_ERR_RX_ERROR_PASSIVE, 26, "Receive error passive")       \
+  X(CAN_ERR_RX_ERROR_WARNING, 27, "Receive error warning")       \
+  X(CAN_ERR_RX_FIFO_FULL, 28, "Receive FIFO full")               \
+  /* Hardware errors */                                          \
+  X(CAN_ERR_HARDWARE_FAULT, 29, "Hardware fault")                \
+  X(CAN_ERR_COMMUNICATION_FAILURE, 30, "Communication failure")  \
+  X(CAN_ERR_DEVICE_NOT_RESPONDING, 31, "Device not responding")  \
+  X(CAN_ERR_VOLTAGE_OUT_OF_RANGE, 32, "Voltage out of range")    \
+  X(CAN_ERR_CLOCK_ERROR, 33, "Clock error")                      \
+  X(CAN_ERR_TRANSCEIVER_ERROR, 34, "Transceiver error")          \
+  /* Configuration errors */                                     \
+  X(CAN_ERR_INVALID_CONFIGURATION, 35, "Invalid configuration")  \
+  X(CAN_ERR_UNSUPPORTED_OPERATION, 36, "Unsupported operation")  \
+  X(CAN_ERR_INVALID_BAUD_RATE, 37, "Invalid baud rate")          \
+  X(CAN_ERR_INVALID_CONTROLLER_ID, 38, "Invalid controller ID")  \
+  X(CAN_ERR_FILTER_ERROR, 39, "Filter error")                    \
+  X(CAN_ERR_FILTER_FULL, 40, "Filter table full")                \
+  /* Protocol errors */                                          \
+  X(CAN_ERR_STUFF_ERROR, 41, "Bit stuffing error")               \
+  X(CAN_ERR_FORM_ERROR, 42, "Frame format error")                \
+  X(CAN_ERR_CRC_ERROR, 43, "CRC error")                          \
+  X(CAN_ERR_ACK_ERROR, 44, "Acknowledgment error")               \
+  X(CAN_ERR_BIT_ERROR, 45, "Bit error")                          \
+  /* System errors */                                            \
+  X(CAN_ERR_SYSTEM_ERROR, 46, "System error")                    \
+  X(CAN_ERR_PERMISSION_DENIED, 47, "Permission denied")          \
+  X(CAN_ERR_OPERATION_ABORTED, 48, "Operation aborted")          \
+                                                                 \
+  /* Extended CAN errors (for ESP32 compatibility) */            \
+  X(CAN_ERR_FAIL, 49, "Generic failure")                         \
+  X(CAN_ERR_RESOURCE_BUSY, 50, "Resource busy")                  \
+  X(CAN_ERR_INVALID_STATE, 51, "Invalid state")                  \
+  X(CAN_ERR_NOT_SUPPORTED, 52, "Not supported")                  \
   X(CAN_ERR_TIMEOUT_ALT, 53, "Operation timeout")
 
 enum class hf_can_err_t : hf_u8_t {
@@ -119,13 +119,13 @@ enum class hf_can_err_t : hf_u8_t {
  */
 constexpr std::string_view HfCanErrToString(hf_can_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC)                                                                       \
-  case hf_can_err_t::NAME:                                                                         \
+#define X(NAME, VALUE, DESC) \
+  case hf_can_err_t::NAME:   \
     return DESC;
     HF_CAN_ERR_LIST(X)
 #undef X
-  default:
-    return "Unknown error";
+    default:
+      return "Unknown error";
   }
 }
 
@@ -175,23 +175,22 @@ struct hf_can_message_t {
   hf_u8_t error_count;      ///< Associated error count
 
   // === CAN-FD Extended Fields (for future compatibility) ===
-  bool is_canfd;       ///< CAN-FD frame flag
-  bool is_brs;         ///< Bit Rate Switching flag (CAN-FD)
-  bool is_esi;         ///< Error State Indicator flag (CAN-FD)
-  hf_u8_t canfd_dlc;   ///< CAN-FD DLC (can be > 8)
+  bool is_canfd;     ///< CAN-FD frame flag
+  bool is_brs;       ///< Bit Rate Switching flag (CAN-FD)
+  bool is_esi;       ///< Error State Indicator flag (CAN-FD)
+  hf_u8_t canfd_dlc; ///< CAN-FD DLC (can be > 8)
 
   hf_can_message_t() noexcept
-      : id(0), dlc(0), data{}, is_extended(false), is_rtr(false), is_ss(false), 
-        is_self(false), dlc_non_comp(false), timestamp_us(0), sequence_number(0),
-        controller_id(0), retry_count(0), error_count(0), is_canfd(false), 
-        is_brs(false), is_esi(false), canfd_dlc(0) {}
+      : id(0), dlc(0), data{}, is_extended(false), is_rtr(false), is_ss(false), is_self(false),
+        dlc_non_comp(false), timestamp_us(0), sequence_number(0), controller_id(0), retry_count(0),
+        error_count(0), is_canfd(false), is_brs(false), is_esi(false), canfd_dlc(0) {}
 
   /**
    * @brief Get maximum data length for current frame type
    * @return Maximum allowed data length (8 for classic CAN, up to 64 for CAN-FD)
    */
-  constexpr hf_u8_t GetMaxDataLength() const noexcept { 
-    return is_canfd ? 64 : 8; 
+  constexpr hf_u8_t GetMaxDataLength() const noexcept {
+    return is_canfd ? 64 : 8;
   }
 
   /**
@@ -199,8 +198,8 @@ struct hf_can_message_t {
    * @param dlc Data length code to validate
    * @return true if valid for the frame type, false otherwise
    */
-  bool IsValidDLC(hf_u8_t dlc) const noexcept { 
-    return is_canfd ? (dlc <= 64) : (dlc <= 8); 
+  bool IsValidDLC(hf_u8_t dlc) const noexcept {
+    return is_canfd ? (dlc <= 64) : (dlc <= 8);
   }
 
   /**
@@ -231,32 +230,44 @@ struct hf_can_message_t {
   /**
    * @brief Set standard frame format (11-bit ID)
    */
-  void SetStandardFrame() noexcept { is_extended = false; }
+  void SetStandardFrame() noexcept {
+    is_extended = false;
+  }
 
   /**
    * @brief Set extended frame format (29-bit ID)
    */
-  void SetExtendedFrame() noexcept { is_extended = true; }
+  void SetExtendedFrame() noexcept {
+    is_extended = true;
+  }
 
   /**
    * @brief Set data frame (not remote)
    */
-  void SetDataFrame() noexcept { is_rtr = false; }
+  void SetDataFrame() noexcept {
+    is_rtr = false;
+  }
 
   /**
    * @brief Set remote frame
    */
-  void SetRemoteFrame() noexcept { is_rtr = true; }
+  void SetRemoteFrame() noexcept {
+    is_rtr = true;
+  }
 
   /**
    * @brief Set single shot transmission
    */
-  void SetSingleShot() noexcept { is_ss = true; }
+  void SetSingleShot() noexcept {
+    is_ss = true;
+  }
 
   /**
    * @brief Set self reception request
    */
-  void SetSelfReception() noexcept { is_self = true; }
+  void SetSelfReception() noexcept {
+    is_self = true;
+  }
 
   /**
    * @brief Validate message ID for current frame format
@@ -311,7 +322,7 @@ struct hf_can_status_t {
  * @brief CAN message receive callback function type.
  * @note Updated to use new hf_can_message_t structure
  */
-using hf_can_receive_callback_t = std::function<void(const hf_can_message_t &message)>;
+using hf_can_receive_callback_t = std::function<void(const hf_can_message_t& message)>;
 
 /**
  * @brief CAN-FD specific receive callback with enhanced information
@@ -326,8 +337,7 @@ struct hf_can_reception_info_t {
   float bit_timing_tolerance; ///< Measured bit timing tolerance
 };
 using hf_can_fd_receive_callback_t =
-    std::function<void(const hf_can_message_t &message, const hf_can_reception_info_t &info)>;
-
+    std::function<void(const hf_can_message_t& message, const hf_can_reception_info_t& info)>;
 
 /**
  * @brief CAN bus statistics structure for performance monitoring.
@@ -336,11 +346,11 @@ using hf_can_fd_receive_callback_t =
  */
 struct hf_can_statistics_t {
   // Message counters
-  hf_u64_t messages_sent;          ///< Total messages successfully sent
-  hf_u64_t messages_received;      ///< Total messages successfully received
-  hf_u64_t bytes_transmitted;      ///< Total bytes transmitted
-  hf_u64_t bytes_received;         ///< Total bytes received
-  
+  hf_u64_t messages_sent;     ///< Total messages successfully sent
+  hf_u64_t messages_received; ///< Total messages successfully received
+  hf_u64_t bytes_transmitted; ///< Total bytes transmitted
+  hf_u64_t bytes_received;    ///< Total bytes received
+
   // Error counters
   hf_u32_t send_failures;          ///< Failed send operations
   hf_u32_t receive_failures;       ///< Failed receive operations
@@ -349,17 +359,17 @@ struct hf_can_statistics_t {
   hf_u32_t tx_failed_count;        ///< Transmission failures
   hf_u32_t bus_off_events;         ///< Bus-off occurrences
   hf_u32_t error_warning_events;   ///< Error warning events
-  
+
   // Performance metrics
-  hf_u64_t uptime_seconds;         ///< Total uptime in seconds
-  hf_u32_t last_activity_timestamp;///< Last activity timestamp
-  hf_can_err_t last_error;         ///< Last error encountered
-  
+  hf_u64_t uptime_seconds;          ///< Total uptime in seconds
+  hf_u32_t last_activity_timestamp; ///< Last activity timestamp
+  hf_can_err_t last_error;          ///< Last error encountered
+
   // Queue statistics
-  hf_u32_t tx_queue_peak;          ///< Peak TX queue usage
-  hf_u32_t rx_queue_peak;          ///< Peak RX queue usage
-  hf_u32_t tx_queue_overflows;     ///< TX queue overflow count
-  hf_u32_t rx_queue_overflows;     ///< RX queue overflow count
+  hf_u32_t tx_queue_peak;      ///< Peak TX queue usage
+  hf_u32_t rx_queue_peak;      ///< Peak RX queue usage
+  hf_u32_t tx_queue_overflows; ///< TX queue overflow count
+  hf_u32_t rx_queue_overflows; ///< RX queue overflow count
 
   hf_can_statistics_t() noexcept
       : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
@@ -375,21 +385,21 @@ struct hf_can_statistics_t {
  *          and monitoring CAN bus health and performance.
  */
 struct hf_can_diagnostics_t {
-  hf_u32_t tx_error_count;         ///< Transmit error counter
-  hf_u32_t rx_error_count;         ///< Receive error counter
-  hf_u32_t tx_queue_peak;          ///< Peak TX queue usage
-  hf_u32_t rx_queue_peak;          ///< Peak RX queue usage
-  hf_u32_t last_error_timestamp;   ///< Timestamp of last error
-  hf_u32_t controller_resets;      ///< Number of controller resets
-  hf_u32_t bus_load_percentage;    ///< Current bus load percentage
-  float bit_error_rate;            ///< Bit error rate (errors/bits)
-  
+  hf_u32_t tx_error_count;       ///< Transmit error counter
+  hf_u32_t rx_error_count;       ///< Receive error counter
+  hf_u32_t tx_queue_peak;        ///< Peak TX queue usage
+  hf_u32_t rx_queue_peak;        ///< Peak RX queue usage
+  hf_u32_t last_error_timestamp; ///< Timestamp of last error
+  hf_u32_t controller_resets;    ///< Number of controller resets
+  hf_u32_t bus_load_percentage;  ///< Current bus load percentage
+  float bit_error_rate;          ///< Bit error rate (errors/bits)
+
   hf_can_diagnostics_t() noexcept
       : tx_error_count(0), rx_error_count(0), tx_queue_peak(0), rx_queue_peak(0),
-        last_error_timestamp(0), controller_resets(0), bus_load_percentage(0), bit_error_rate(0.0f) {}
+        last_error_timestamp(0), controller_resets(0), bus_load_percentage(0),
+        bit_error_rate(0.0f) {}
 };
 
-  
 /**
  * @class BaseCan
  * @brief Abstract base class defining the unified CAN bus API.
@@ -418,10 +428,10 @@ public:
   virtual ~BaseCan() noexcept = default;
 
   // Non-copyable, non-movable (can be changed in derived classes if needed)
-  BaseCan(const BaseCan &) = delete;
-  BaseCan &operator=(const BaseCan &) = delete;
-  BaseCan(BaseCan &&) = delete;
-  BaseCan &operator=(BaseCan &&) = delete;
+  BaseCan(const BaseCan&) = delete;
+  BaseCan& operator=(const BaseCan&) = delete;
+  BaseCan(BaseCan&&) = delete;
+  BaseCan& operator=(BaseCan&&) = delete;
 
   /**
    * @brief Ensures that the CAN bus is initialized (lazy initialization).
@@ -475,7 +485,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
    * @return hf_can_err_t error code
    */
-  virtual hf_can_err_t SendMessage(const hf_can_message_t &message, hf_u32_t timeout_ms = 1000) noexcept = 0;
+  virtual hf_can_err_t SendMessage(const hf_can_message_t& message,
+                                   hf_u32_t timeout_ms = 1000) noexcept = 0;
 
   /**
    * @brief Receive a CAN message.
@@ -483,7 +494,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
    * @return hf_can_err_t error code
    */
-  virtual hf_can_err_t ReceiveMessage(hf_can_message_t &message, hf_u32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_can_err_t ReceiveMessage(hf_can_message_t& message,
+                                      hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Set callback for received messages.
@@ -499,14 +511,15 @@ public:
    * @param extended true for extended frames, false for standard
    * @return hf_can_err_t error code
    */
-  virtual hf_can_err_t SetAcceptanceFilter(hf_u32_t id, hf_u32_t mask, bool extended = false) noexcept = 0;
+  virtual hf_can_err_t SetAcceptanceFilter(hf_u32_t id, hf_u32_t mask,
+                                           bool extended = false) noexcept = 0;
 
   /**
    * @brief Get current CAN bus status.
    * @param status Reference to store status information
    * @return hf_can_err_t error code
    */
-  virtual hf_can_err_t GetStatus(hf_can_status_t &status) noexcept = 0;
+  virtual hf_can_err_t GetStatus(hf_can_status_t& status) noexcept = 0;
 
   /**
    * @brief Reset the CAN controller.
@@ -561,7 +574,7 @@ public:
    * @note Default implementation returns false (not supported)
    */
   virtual bool SetCanFDMode(bool enable, hf_u32_t data_baudrate = 2000000,
-                           hf_u32_t timeout_ms = 1000) noexcept {
+                            hf_u32_t timeout_ms = 1000) noexcept {
     (void)enable;
     (void)data_baudrate;
     (void)timeout_ms;
@@ -581,9 +594,9 @@ public:
    * @note Default implementation returns false (not supported)
    */
   virtual bool ConfigureCanFDTiming(hf_u16_t nominal_prescaler, hf_u8_t nominal_tseg1,
-                                   hf_u8_t nominal_tseg2, hf_u16_t data_prescaler,
-                                   hf_u8_t data_tseg1, hf_u8_t data_tseg2,
-                                   hf_u8_t sjw = 1) noexcept {
+                                    hf_u8_t nominal_tseg2, hf_u16_t data_prescaler,
+                                    hf_u8_t data_tseg1, hf_u8_t data_tseg2,
+                                    hf_u8_t sjw = 1) noexcept {
     (void)nominal_prescaler;
     (void)nominal_tseg1;
     (void)nominal_tseg2;
@@ -615,8 +628,8 @@ public:
    * @return Number of messages successfully sent
    * @note Default implementation sends messages sequentially
    */
-  virtual hf_u32_t SendMessageBatch(const hf_can_message_t *messages, hf_u32_t count,
-                                   hf_u32_t timeout_ms = 1000) noexcept {
+  virtual hf_u32_t SendMessageBatch(const hf_can_message_t* messages, hf_u32_t count,
+                                    hf_u32_t timeout_ms = 1000) noexcept {
     if (!messages || count == 0) {
       return 0;
     }
@@ -638,8 +651,8 @@ public:
    * @return Number of messages actually received
    * @note Default implementation receives messages one by one
    */
-  virtual hf_u32_t ReceiveMessageBatch(hf_can_message_t *messages, hf_u32_t max_count,
-                                      hf_u32_t timeout_ms = 100) noexcept {
+  virtual hf_u32_t ReceiveMessageBatch(hf_can_message_t* messages, hf_u32_t max_count,
+                                       hf_u32_t timeout_ms = 100) noexcept {
     if (!messages || max_count == 0) {
       return 0;
     }
@@ -655,9 +668,9 @@ public:
     return received_count;
   }
 
-//==============================================//
-// STATISTICS AND DIAGNOSTICS STRUCTURES        //
-//==============================================//
+  //==============================================//
+  // STATISTICS AND DIAGNOSTICS STRUCTURES        //
+  //==============================================//
 
   /**
    * @brief Reset CAN operation statistics.
@@ -685,7 +698,7 @@ public:
    * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
    * @note Override this method to provide platform-specific statistics
    */
-  virtual hf_can_err_t GetStatistics(hf_can_statistics_t &statistics) noexcept {
+  virtual hf_can_err_t GetStatistics(hf_can_statistics_t& statistics) noexcept {
     statistics = statistics_; // Return statistics by default
     return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
@@ -696,13 +709,12 @@ public:
    * @return hf_can_err_t::CAN_SUCCESS if successful, error code otherwise
    * @note Override this method to provide platform-specific diagnostics
    */
-  virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) noexcept {
+  virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t& diagnostics) noexcept {
     diagnostics = diagnostics_; // Return diagnostics by default
     return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
-
   /**
    * @brief Protected constructor
    */
@@ -712,8 +724,8 @@ protected:
   // VARIABLES                                    //
   //==============================================//
 
-  bool initialized_; ///< Initialization status
-  hf_can_statistics_t statistics_; ///< CAN operation statistics
+  bool initialized_;                 ///< Initialization status
+  hf_can_statistics_t statistics_;   ///< CAN operation statistics
   hf_can_diagnostics_t diagnostics_; ///< CAN diagnostic information
 };
 

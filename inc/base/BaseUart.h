@@ -33,45 +33,45 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_UART_ERR_LIST(X)                                                                        \
-  /* Success codes */                                                                              \
-  X(UART_SUCCESS, 0, "Success")                                                                    \
-  /* General errors */                                                                             \
-  X(UART_ERR_FAILURE, 1, "General failure")                                                        \
-  X(UART_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
-  X(UART_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
-  X(UART_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
-  X(UART_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
-  X(UART_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
-  /* Communication errors */                                                                       \
-  X(UART_ERR_TIMEOUT, 7, "Operation timeout")                                                      \
-  X(UART_ERR_BUFFER_FULL, 8, "Buffer full")                                                        \
-  X(UART_ERR_BUFFER_EMPTY, 9, "Buffer empty")                                                      \
-  X(UART_ERR_TRANSMISSION_FAILED, 10, "Transmission failed")                                       \
-  X(UART_ERR_RECEPTION_FAILED, 11, "Reception failed")                                             \
-  /* Frame errors */                                                                               \
-  X(UART_ERR_FRAME_ERROR, 12, "Frame error")                                                       \
-  X(UART_ERR_PARITY_ERROR, 13, "Parity error")                                                     \
-  X(UART_ERR_OVERRUN_ERROR, 14, "Overrun error")                                                   \
-  X(UART_ERR_NOISE_ERROR, 15, "Noise error")                                                       \
-  X(UART_ERR_BREAK_DETECTED, 16, "Break condition detected")                                       \
-  /* Hardware errors */                                                                            \
-  X(UART_ERR_HARDWARE_FAULT, 17, "Hardware fault")                                                 \
-  X(UART_ERR_COMMUNICATION_FAILURE, 18, "Communication failure")                                   \
-  X(UART_ERR_DEVICE_NOT_RESPONDING, 19, "Device not responding")                                   \
-  X(UART_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")                                     \
-  /* Configuration errors */                                                                       \
-  X(UART_ERR_INVALID_CONFIGURATION, 21, "Invalid configuration")                                   \
-  X(UART_ERR_UNSUPPORTED_OPERATION, 22, "Unsupported operation")                                   \
-  X(UART_ERR_INVALID_BAUD_RATE, 23, "Invalid baud rate")                                           \
-  X(UART_ERR_INVALID_DATA_BITS, 24, "Invalid data bits")                                           \
-  X(UART_ERR_INVALID_PARITY, 25, "Invalid parity")                                                 \
-  X(UART_ERR_INVALID_STOP_BITS, 26, "Invalid stop bits")                                           \
-  X(UART_ERR_PIN_CONFIGURATION_ERROR, 27, "Pin configuration error")                               \
-  X(UART_ERR_FLOW_CONTROL_ERROR, 28, "Flow control error")                                         \
-  /* System errors */                                                                              \
-  X(UART_ERR_SYSTEM_ERROR, 29, "System error")                                                     \
-  X(UART_ERR_PERMISSION_DENIED, 30, "Permission denied")                                           \
+#define HF_UART_ERR_LIST(X)                                          \
+  /* Success codes */                                                \
+  X(UART_SUCCESS, 0, "Success")                                      \
+  /* General errors */                                               \
+  X(UART_ERR_FAILURE, 1, "General failure")                          \
+  X(UART_ERR_NOT_INITIALIZED, 2, "Not initialized")                  \
+  X(UART_ERR_ALREADY_INITIALIZED, 3, "Already initialized")          \
+  X(UART_ERR_INVALID_PARAMETER, 4, "Invalid parameter")              \
+  X(UART_ERR_NULL_POINTER, 5, "Null pointer")                        \
+  X(UART_ERR_OUT_OF_MEMORY, 6, "Out of memory")                      \
+  /* Communication errors */                                         \
+  X(UART_ERR_TIMEOUT, 7, "Operation timeout")                        \
+  X(UART_ERR_BUFFER_FULL, 8, "Buffer full")                          \
+  X(UART_ERR_BUFFER_EMPTY, 9, "Buffer empty")                        \
+  X(UART_ERR_TRANSMISSION_FAILED, 10, "Transmission failed")         \
+  X(UART_ERR_RECEPTION_FAILED, 11, "Reception failed")               \
+  /* Frame errors */                                                 \
+  X(UART_ERR_FRAME_ERROR, 12, "Frame error")                         \
+  X(UART_ERR_PARITY_ERROR, 13, "Parity error")                       \
+  X(UART_ERR_OVERRUN_ERROR, 14, "Overrun error")                     \
+  X(UART_ERR_NOISE_ERROR, 15, "Noise error")                         \
+  X(UART_ERR_BREAK_DETECTED, 16, "Break condition detected")         \
+  /* Hardware errors */                                              \
+  X(UART_ERR_HARDWARE_FAULT, 17, "Hardware fault")                   \
+  X(UART_ERR_COMMUNICATION_FAILURE, 18, "Communication failure")     \
+  X(UART_ERR_DEVICE_NOT_RESPONDING, 19, "Device not responding")     \
+  X(UART_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")       \
+  /* Configuration errors */                                         \
+  X(UART_ERR_INVALID_CONFIGURATION, 21, "Invalid configuration")     \
+  X(UART_ERR_UNSUPPORTED_OPERATION, 22, "Unsupported operation")     \
+  X(UART_ERR_INVALID_BAUD_RATE, 23, "Invalid baud rate")             \
+  X(UART_ERR_INVALID_DATA_BITS, 24, "Invalid data bits")             \
+  X(UART_ERR_INVALID_PARITY, 25, "Invalid parity")                   \
+  X(UART_ERR_INVALID_STOP_BITS, 26, "Invalid stop bits")             \
+  X(UART_ERR_PIN_CONFIGURATION_ERROR, 27, "Pin configuration error") \
+  X(UART_ERR_FLOW_CONTROL_ERROR, 28, "Flow control error")           \
+  /* System errors */                                                \
+  X(UART_ERR_SYSTEM_ERROR, 29, "System error")                       \
+  X(UART_ERR_PERMISSION_DENIED, 30, "Permission denied")             \
   X(UART_ERR_OPERATION_ABORTED, 31, "Operation aborted")
 
 enum class hf_uart_err_t : hf_u8_t {
@@ -87,13 +87,13 @@ enum class hf_uart_err_t : hf_u8_t {
  */
 constexpr std::string_view hf_uart_err_to_string(hf_uart_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC)                                                                       \
-  case hf_uart_err_t::NAME:                                                                        \
+#define X(NAME, VALUE, DESC) \
+  case hf_uart_err_t::NAME:  \
     return DESC;
     HF_UART_ERR_LIST(X)
 #undef X
-  default:
-    return "Unknown error";
+    default:
+      return "Unknown error";
   }
 }
 
@@ -105,51 +105,51 @@ constexpr std::string_view hf_uart_err_to_string(hf_uart_err_t err) noexcept {
  * @brief UART operation statistics.
  */
 struct hf_uart_statistics_t {
-    hf_u32_t tx_byte_count;       ///< Total bytes transmitted
-    hf_u32_t rx_byte_count;       ///< Total bytes received
-    hf_u32_t tx_error_count;      ///< Transmission error count
-    hf_u32_t rx_error_count;      ///< Reception error count
-    hf_u32_t frame_error_count;   ///< Frame error count
-    hf_u32_t parity_error_count;  ///< Parity error count
-    hf_u32_t overrun_error_count; ///< Overrun error count
-    hf_u32_t noise_error_count;   ///< Noise error count
-    hf_u32_t break_count;         ///< Break condition count
-    hf_u32_t timeout_count;       ///< Timeout occurrence count
-    hf_u32_t pattern_detect_count; ///< Pattern detection count
-    hf_u32_t wakeup_count;        ///< Wakeup event count
-    hf_u64_t last_activity_timestamp; ///< Last activity timestamp (microseconds)
-    hf_u64_t initialization_timestamp; ///< Initialization timestamp (microseconds)
+  hf_u32_t tx_byte_count;            ///< Total bytes transmitted
+  hf_u32_t rx_byte_count;            ///< Total bytes received
+  hf_u32_t tx_error_count;           ///< Transmission error count
+  hf_u32_t rx_error_count;           ///< Reception error count
+  hf_u32_t frame_error_count;        ///< Frame error count
+  hf_u32_t parity_error_count;       ///< Parity error count
+  hf_u32_t overrun_error_count;      ///< Overrun error count
+  hf_u32_t noise_error_count;        ///< Noise error count
+  hf_u32_t break_count;              ///< Break condition count
+  hf_u32_t timeout_count;            ///< Timeout occurrence count
+  hf_u32_t pattern_detect_count;     ///< Pattern detection count
+  hf_u32_t wakeup_count;             ///< Wakeup event count
+  hf_u64_t last_activity_timestamp;  ///< Last activity timestamp (microseconds)
+  hf_u64_t initialization_timestamp; ///< Initialization timestamp (microseconds)
 
   hf_uart_statistics_t() noexcept
       : tx_byte_count(0), rx_byte_count(0), tx_error_count(0), rx_error_count(0),
-        frame_error_count(0), parity_error_count(0), overrun_error_count(0),
-        noise_error_count(0), break_count(0), timeout_count(0), pattern_detect_count(0),
-        wakeup_count(0), last_activity_timestamp(0), initialization_timestamp(0) {}
+        frame_error_count(0), parity_error_count(0), overrun_error_count(0), noise_error_count(0),
+        break_count(0), timeout_count(0), pattern_detect_count(0), wakeup_count(0),
+        last_activity_timestamp(0), initialization_timestamp(0) {}
 };
 
 /**
  * @brief UART diagnostic information.
  */
 struct hf_uart_diagnostics_t {
-  hf_uart_err_t last_error;           ///< Last error that occurred
-  hf_u32_t consecutive_errors;         ///< Number of consecutive errors
-  hf_u32_t error_reset_count;          ///< Number of times error state was reset
-  hf_u64_t last_error_timestamp;       ///< Timestamp of last error (microseconds)
-  bool is_initialized;                 ///< Initialization status
-  bool is_transmitting;                ///< Transmission status
-  bool is_receiving;                   ///< Reception status
-  bool flow_control_active;            ///< Flow control status
-  bool pattern_detection_active;       ///< Pattern detection status
-  bool wakeup_enabled;                 ///< Wakeup status
-  hf_u32_t tx_buffer_usage;            ///< TX buffer usage percentage
-  hf_u32_t rx_buffer_usage;            ///< RX buffer usage percentage
-  hf_u32_t event_queue_usage;          ///< Event queue usage percentage
+  hf_uart_err_t last_error;      ///< Last error that occurred
+  hf_u32_t consecutive_errors;   ///< Number of consecutive errors
+  hf_u32_t error_reset_count;    ///< Number of times error state was reset
+  hf_u64_t last_error_timestamp; ///< Timestamp of last error (microseconds)
+  bool is_initialized;           ///< Initialization status
+  bool is_transmitting;          ///< Transmission status
+  bool is_receiving;             ///< Reception status
+  bool flow_control_active;      ///< Flow control status
+  bool pattern_detection_active; ///< Pattern detection status
+  bool wakeup_enabled;           ///< Wakeup status
+  hf_u32_t tx_buffer_usage;      ///< TX buffer usage percentage
+  hf_u32_t rx_buffer_usage;      ///< RX buffer usage percentage
+  hf_u32_t event_queue_usage;    ///< Event queue usage percentage
 
   hf_uart_diagnostics_t() noexcept
       : last_error(hf_uart_err_t::UART_SUCCESS), consecutive_errors(0), error_reset_count(0),
-        last_error_timestamp(0), is_initialized(false), is_transmitting(false),
-        is_receiving(false), flow_control_active(false), pattern_detection_active(false),
-        wakeup_enabled(false), tx_buffer_usage(0), rx_buffer_usage(0), event_queue_usage(0) {}
+        last_error_timestamp(0), is_initialized(false), is_transmitting(false), is_receiving(false),
+        flow_control_active(false), pattern_detection_active(false), wakeup_enabled(false),
+        tx_buffer_usage(0), rx_buffer_usage(0), event_queue_usage(0) {}
 };
 
 //--------------------------------------
@@ -192,10 +192,10 @@ public:
   virtual ~BaseUart() noexcept = default;
 
   // Non-copyable, non-movable (can be changed in derived classes if needed)
-  BaseUart(const BaseUart &) = delete;
-  BaseUart &operator=(const BaseUart &) = delete;
-  BaseUart(BaseUart &&) = delete;
-  BaseUart &operator=(BaseUart &&) = delete;
+  BaseUart(const BaseUart&) = delete;
+  BaseUart& operator=(const BaseUart&) = delete;
+  BaseUart(BaseUart&&) = delete;
+  BaseUart& operator=(BaseUart&&) = delete;
 
   /**
    * @brief Ensures that the UART is initialized (lazy initialization).
@@ -258,8 +258,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_uart_err_t result code
    */
-  virtual hf_uart_err_t Write(const hf_u8_t *data, hf_u16_t length,
-                          hf_u32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_uart_err_t Write(const hf_u8_t* data, hf_u16_t length,
+                              hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Read data from the UART.
@@ -268,7 +268,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_uart_err_t result code
    */
-  virtual hf_uart_err_t Read(hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_uart_err_t Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Get the number of bytes available to read.
@@ -294,7 +294,7 @@ public:
    * @param ... Format arguments
    * @return Number of characters written, or -1 on error
    */
-  virtual int Printf(const char *format, ...) noexcept = 0;
+  virtual int Printf(const char* format, ...) noexcept = 0;
 
   //==============================================//
   // CONVENIENCE METHODS WITH DEFAULT IMPLEMENTATIONS
@@ -325,9 +325,11 @@ public:
    * @param str String to write
    * @return true if successful, false otherwise
    */
-  virtual bool WriteString(const char *str) noexcept {
-    if (!str) return false;
-    return Write(reinterpret_cast<const hf_u8_t *>(str), static_cast<hf_u16_t>(strlen(str))) == hf_uart_err_t::UART_SUCCESS;
+  virtual bool WriteString(const char* str) noexcept {
+    if (!str)
+      return false;
+    return Write(reinterpret_cast<const hf_u8_t*>(str), static_cast<hf_u16_t>(strlen(str))) ==
+           hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -370,7 +372,7 @@ public:
    * @param statistics Reference to store statistics data
    * @return hf_uart_err_t::UART_SUCCESS if successful, UART_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_uart_err_t GetStatistics(hf_uart_statistics_t &statistics) const noexcept {
+  virtual hf_uart_err_t GetStatistics(hf_uart_statistics_t& statistics) const noexcept {
     statistics = statistics_; // Return statistics by default
     return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
   }
@@ -380,13 +382,12 @@ public:
    * @param diagnostics Reference to store diagnostics data
    * @return hf_uart_err_t::UART_SUCCESS if successful, UART_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_uart_err_t GetDiagnostics(hf_uart_diagnostics_t &diagnostics) const noexcept {
+  virtual hf_uart_err_t GetDiagnostics(hf_uart_diagnostics_t& diagnostics) const noexcept {
     diagnostics = diagnostics_; // Return diagnostics by default
     return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
   }
 
 protected:
-  
   /**
    * @brief Protected constructor with port and configuration.
    * @param port UART port number

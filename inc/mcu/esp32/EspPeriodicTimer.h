@@ -44,7 +44,7 @@ public:
    * @param callback Callback function to be called on timer expiry
    * @param user_data User data passed to callback function
    */
-  EspPeriodicTimer(hf_timer_callback_t callback = nullptr, void *user_data = nullptr) noexcept;
+  EspPeriodicTimer(hf_timer_callback_t callback = nullptr, void* user_data = nullptr) noexcept;
 
   /**
    * @brief Destructor - ensures timer is stopped and resources are freed.
@@ -52,10 +52,10 @@ public:
   ~EspPeriodicTimer() noexcept override;
 
   // Copy/move constructors and assignment operators
-  EspPeriodicTimer(const EspPeriodicTimer &) = delete;
-  EspPeriodicTimer &operator=(const EspPeriodicTimer &) = delete;
-  EspPeriodicTimer(EspPeriodicTimer &&) = delete;
-  EspPeriodicTimer &operator=(EspPeriodicTimer &&) = delete;
+  EspPeriodicTimer(const EspPeriodicTimer&) = delete;
+  EspPeriodicTimer& operator=(const EspPeriodicTimer&) = delete;
+  EspPeriodicTimer(EspPeriodicTimer&&) = delete;
+  EspPeriodicTimer& operator=(EspPeriodicTimer&&) = delete;
 
   //==============================================//
   // OVERRIDDEN PURE VIRTUAL FUNCTIONS            //
@@ -98,7 +98,7 @@ public:
    * @param period_us Reference to store current period
    * @return Success or specific error code
    */
-  hf_timer_err_t GetPeriod(hf_u64_t &period_us) noexcept override;
+  hf_timer_err_t GetPeriod(hf_u64_t& period_us) noexcept override;
 
   /**
    * @brief Get timer statistics and status information.
@@ -107,8 +107,8 @@ public:
    * @param last_error Last error that occurred
    * @return Success or specific error code
    */
-  hf_timer_err_t GetStats(hf_u64_t &callback_count, hf_u64_t &missed_callbacks,
-                          hf_timer_err_t &last_error) noexcept override;
+  hf_timer_err_t GetStats(hf_u64_t& callback_count, hf_u64_t& missed_callbacks,
+                          hf_timer_err_t& last_error) noexcept override;
 
   /**
    * @brief Reset timer statistics.
@@ -120,7 +120,7 @@ public:
    * @brief Get description of this timer implementation.
    * @return Description string
    */
-  const char *GetDescription() const noexcept override;
+  const char* GetDescription() const noexcept override;
 
   /**
    * @brief Get minimum supported timer period.
@@ -145,14 +145,14 @@ public:
    * @param statistics Reference to statistics structure to fill
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  hf_timer_err_t GetStatistics(hf_timer_statistics_t &statistics) const noexcept override;
+  hf_timer_err_t GetStatistics(hf_timer_statistics_t& statistics) const noexcept override;
 
   /**
    * @brief Get timer diagnostic information.
    * @param diagnostics Reference to diagnostics structure to fill
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept override;
+  hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t& diagnostics) const noexcept override;
 
 private:
   hf_timer_handle_t timer_handle_; ///< Platform-specific timer handle

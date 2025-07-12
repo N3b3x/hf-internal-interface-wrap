@@ -19,7 +19,7 @@
 
 /**
  * @brief DigitalOutputGuard class
- * 
+ *
  * This class ensures that a BaseGpio instance is configured as output
  * and set active in its constructor, and set inactive in its destructor.
  * This ensures proper resource management and consistent behavior using RAII principles.
@@ -48,7 +48,7 @@ public:
    * @details Configures the GPIO as output (if needed) and sets it to active state.
    *          If the GPIO is already in output mode, it just sets the active state.
    */
-  explicit DigitalOutputGuard(BaseGpio &gpio, bool ensure_output_mode = true) noexcept;
+  explicit DigitalOutputGuard(BaseGpio& gpio, bool ensure_output_mode = true) noexcept;
 
   /**
    * @brief Constructor with BaseGpio pointer.
@@ -57,7 +57,7 @@ public:
    * @details Configures the GPIO as output (if needed) and sets it to active state.
    *          If the GPIO is already in output mode, it just sets the active state.
    */
-  explicit DigitalOutputGuard(BaseGpio *gpio, bool ensure_output_mode = true) noexcept;
+  explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode = true) noexcept;
 
   /**
    * @brief Destructor.
@@ -67,12 +67,12 @@ public:
   ~DigitalOutputGuard() noexcept;
 
   // Disable copy operations for safety
-  DigitalOutputGuard(const DigitalOutputGuard &) = delete;
-  DigitalOutputGuard &operator=(const DigitalOutputGuard &) = delete;
+  DigitalOutputGuard(const DigitalOutputGuard&) = delete;
+  DigitalOutputGuard& operator=(const DigitalOutputGuard&) = delete;
 
   // Allow move operations
-  DigitalOutputGuard(DigitalOutputGuard &&) noexcept = default;
-  DigitalOutputGuard &operator=(DigitalOutputGuard &&) noexcept = default;
+  DigitalOutputGuard(DigitalOutputGuard&&) noexcept = default;
+  DigitalOutputGuard& operator=(DigitalOutputGuard&&) noexcept = default;
 
   /**
    * @brief Check if the guard was successfully initialized.
@@ -115,9 +115,9 @@ public:
   [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
 
 private:
-  BaseGpio *gpio_;       ///< Pointer to the managed BaseGpio instance
-  bool was_output_mode_; ///< Whether the GPIO was already in output mode
-  bool is_valid_;        ///< Whether the guard is in a valid state
+  BaseGpio* gpio_;           ///< Pointer to the managed BaseGpio instance
+  bool was_output_mode_;     ///< Whether the GPIO was already in output mode
+  bool is_valid_;            ///< Whether the guard is in a valid state
   hf_gpio_err_t last_error_; ///< Last error code from operations
 
   /**

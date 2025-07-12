@@ -34,30 +34,30 @@ extern "C" {
 }
 #endif
 
-static const char *TAG = "EspUart";
+static const char* TAG = "EspUart";
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-EspUart::EspUart(const hf_uart_config_t &config) noexcept
-    : BaseUart(config.port_number), 
-      port_config_(config), initialized_(false), uart_port_(static_cast<uart_port_t>(config.port_number)),
-      event_queue_(nullptr), event_task_handle_(nullptr), event_callback_(nullptr), pattern_callback_(nullptr),
-      break_callback_(nullptr), event_callback_user_data_(nullptr), pattern_callback_user_data_(nullptr),
-      break_callback_user_data_(nullptr), operating_mode_(config.operating_mode),
+EspUart::EspUart(const hf_uart_config_t& config) noexcept
+    : BaseUart(config.port_number), port_config_(config), initialized_(false),
+      uart_port_(static_cast<uart_port_t>(config.port_number)), event_queue_(nullptr),
+      event_task_handle_(nullptr), event_callback_(nullptr), pattern_callback_(nullptr),
+      break_callback_(nullptr), event_callback_user_data_(nullptr),
+      pattern_callback_user_data_(nullptr), break_callback_user_data_(nullptr),
+      operating_mode_(config.operating_mode),
       communication_mode_(hf_uart_mode_t::HF_UART_MODE_UART), pattern_detection_enabled_(false),
-      software_flow_enabled_(false), wakeup_enabled_(false), break_detected_(false), tx_in_progress_(false),
-      last_error_(hf_uart_err_t::UART_SUCCESS) {
-  
+      software_flow_enabled_(false), wakeup_enabled_(false), break_detected_(false),
+      tx_in_progress_(false), last_error_(hf_uart_err_t::UART_SUCCESS) {
   // Initialize printf buffer
   memset(printf_buffer_, 0, sizeof(printf_buffer_));
-  
+
   // Initialize statistics timestamp
   statistics_.initialization_timestamp = esp_timer_get_time();
-  
-  ESP_LOGI(TAG, "EspUart constructed with port=%lu, baud=%lu Hz, mode=%d", 
-           config.port_number, config.baud_rate, static_cast<int>(config.operating_mode));
+
+  ESP_LOGI(TAG, "EspUart constructed with port=%lu, baud=%lu Hz, mode=%d", config.port_number,
+           config.baud_rate, static_cast<int>(config.operating_mode));
 }
 
 EspUart::~EspUart() noexcept {
@@ -80,7 +80,7 @@ bool EspUart::Initialize() noexcept {
     return true;
   }
 
-  ESP_LOGI(TAG, "Initializing ESP32 UART system with port=%lu, baud=%lu Hz", 
+  ESP_LOGI(TAG, "Initializing ESP32 UART system with port=%lu, baud=%lu Hz",
            port_config_.port_number, port_config_.baud_rate);
 
   // Validate configuration
@@ -133,8 +133,6 @@ bool EspUart::Deinitialize() noexcept {
 
   return (result == hf_uart_err_t::UART_SUCCESS);
 }
-
-
 
 //==============================================================================
 // BASIC UART OPERATIONS (BaseUart Interface)
@@ -328,7 +326,7 @@ hf_u16_t EspUart::TxBytesWaiting() noexcept {
   return tx_in_progress_ ? 1 : 0;
 }
 
-hf_u16_t EspUart::ReadUntil(hf_u8_t *data, hf_u16_t max_length, hf_u8_t terminator,
+hf_u16_t EspUart::ReadUntil(hf_u8_t* data, hf_u16_t max_length, hf_u8_t terminator,
                             hf_u32_t timeout_ms) noexcept {
   if (!data || max_length == 0) {
     return 0;
@@ -353,11 +351,11 @@ hf_u16_t EspUart::ReadUntil(hf_u8_t *data, hf_u16_t max_length, hf_u8_t terminat
 
     // Try to read one byte
     hf_u8_t byte;
-        hf_uart_err_t result = Read(&byte, 1, 100); // Short timeout for each byte
+    hf_uart_err_t result = Read(&byte, 1, 100); // Short timeout for each byte
 
     if (result == hf_uart_err_t::UART_SUCCESS) {
       data[bytes_read++] = byte;
-      
+
       // Check if we found the terminator
       if (byte == terminator) {
         break;
@@ -437,7 +435,8 @@ hf_uart_err_t EspUart::SetFlowControl(bool enable) noexcept {
   uart_hw_flowcontrol_t flow_ctrl = enable ? UART_HW_FLOWCTRL_CTS_RTS : UART_HW_FLOWCTRL_DISABLE;
   esp_err_t result = uart_set_hw_flow_ctrl(uart_port_, flow_ctrl, 122);
   if (result == ESP_OK) {
-    port_config_.flow_control = enable ? hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_CTS_RTS : hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_DISABLE;
+    port_config_.flow_control = enable ? hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_CTS_RTS
+                                       : hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_DISABLE;
     // Hardware flow control is not directly configurable in the config struct
     // This would need to be handled during initialization
     diagnostics_.flow_control_active = enable;
@@ -530,8 +529,9 @@ hf_u16_t EspUart::ReadLine(char* buffer, hf_u16_t max_length, hf_u32_t timeout_m
 
   while (chars_read < max_length - 1) { // Leave room for null terminator
     char ch;
-    int result = uart_read_bytes(uart_port_, reinterpret_cast<hf_u8_t*>(&ch), 1, pdMS_TO_TICKS(100));
-    
+    int result =
+        uart_read_bytes(uart_port_, reinterpret_cast<hf_u8_t*>(&ch), 1, pdMS_TO_TICKS(100));
+
     if (result == 1) {
       if (ch == '\n' || ch == '\r') {
         break;
@@ -573,15 +573,15 @@ hf_uart_err_t EspUart::SetCommunicationMode(hf_uart_mode_t mode) noexcept {
     case hf_uart_mode_t::HF_UART_MODE_UART:
       // Default UART mode - no special configuration needed
       break;
-      
+
     case hf_uart_mode_t::HF_UART_MODE_RS485:
       result = uart_set_mode(uart_port_, UART_MODE_RS485_HALF_DUPLEX);
       break;
-      
+
     case hf_uart_mode_t::HF_UART_MODE_IRDA:
       result = uart_set_mode(uart_port_, UART_MODE_IRDA);
       break;
-      
+
     default:
       return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
   }
@@ -614,7 +614,7 @@ hf_uart_err_t EspUart::ConfigureRS485(const hf_uart_rs485_config_t& rs485_config
   // Additional parameters like echo suppression and collision detection
   // are not directly supported in the current ESP-IDF version
   ESP_LOGW(TAG, "RS485 advanced features not supported in ESP-IDF v5.5");
-  
+
   return hf_uart_err_t::UART_SUCCESS;
 }
 
@@ -648,7 +648,8 @@ hf_u16_t EspUart::GetPatternPosition(bool pop_position) noexcept {
   return -1;
 }
 
-hf_uart_err_t EspUart::ConfigureSoftwareFlowControl(bool enable, hf_u8_t xon_threshold, hf_u8_t xoff_threshold) noexcept {
+hf_uart_err_t EspUart::ConfigureSoftwareFlowControl(bool enable, hf_u8_t xon_threshold,
+                                                    hf_u8_t xoff_threshold) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -659,7 +660,8 @@ hf_uart_err_t EspUart::ConfigureSoftwareFlowControl(bool enable, hf_u8_t xon_thr
     esp_err_t result = uart_set_sw_flow_ctrl(uart_port_, true, xon_threshold, xoff_threshold);
     if (result == ESP_OK) {
       software_flow_enabled_ = true;
-      ESP_LOGI(TAG, "Software flow control enabled (XON: %d, XOFF: %d)", xon_threshold, xoff_threshold);
+      ESP_LOGI(TAG, "Software flow control enabled (XON: %d, XOFF: %d)", xon_threshold,
+               xoff_threshold);
       return hf_uart_err_t::UART_SUCCESS;
     } else {
       hf_uart_err_t error = ConvertPlatformError(result);
@@ -828,13 +830,12 @@ hf_uart_err_t EspUart::SetSignalInversion(hf_u32_t inverse_mask) noexcept {
   }
 }
 
-
-
 //==============================================================================
 // CALLBACKS AND EVENT HANDLING
 //==============================================================================
 
-hf_uart_err_t EspUart::SetEventCallback(hf_uart_event_callback_t callback, void* user_data) noexcept {
+hf_uart_err_t EspUart::SetEventCallback(hf_uart_event_callback_t callback,
+                                        void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   event_callback_ = callback;
   event_callback_user_data_ = user_data;
@@ -842,7 +843,8 @@ hf_uart_err_t EspUart::SetEventCallback(hf_uart_event_callback_t callback, void*
   return hf_uart_err_t::UART_SUCCESS;
 }
 
-hf_uart_err_t EspUart::SetPatternCallback(hf_uart_pattern_callback_t callback, void* user_data) noexcept {
+hf_uart_err_t EspUart::SetPatternCallback(hf_uart_pattern_callback_t callback,
+                                          void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   pattern_callback_ = callback;
   pattern_callback_user_data_ = user_data;
@@ -850,7 +852,8 @@ hf_uart_err_t EspUart::SetPatternCallback(hf_uart_pattern_callback_t callback, v
   return hf_uart_err_t::UART_SUCCESS;
 }
 
-hf_uart_err_t EspUart::SetBreakCallback(hf_uart_break_callback_t callback, void* user_data) noexcept {
+hf_uart_err_t EspUart::SetBreakCallback(hf_uart_break_callback_t callback,
+                                        void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   break_callback_ = callback;
   break_callback_user_data_ = user_data;
@@ -955,7 +958,8 @@ hf_uart_err_t EspUart::ValidateConfiguration() const noexcept {
   }
 
   // Validate buffer sizes
-  if (port_config_.tx_buffer_size > MAX_BUFFER_SIZE || port_config_.rx_buffer_size > MAX_BUFFER_SIZE) {
+  if (port_config_.tx_buffer_size > MAX_BUFFER_SIZE ||
+      port_config_.rx_buffer_size > MAX_BUFFER_SIZE) {
     return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
   }
 
@@ -1013,7 +1017,7 @@ hf_uart_err_t EspUart::PlatformDeinitialize() noexcept {
 hf_uart_err_t EspUart::InstallDriver() noexcept {
   uart_config_t uart_config = {};
   uart_config.baud_rate = port_config_.baud_rate;
-  
+
   // Convert HardFOC data bits to ESP-IDF format
   switch (port_config_.data_bits) {
     case hf_uart_data_bits_t::HF_UART_DATA_5_BITS:
@@ -1030,7 +1034,7 @@ hf_uart_err_t EspUart::InstallDriver() noexcept {
       uart_config.data_bits = UART_DATA_8_BITS;
       break;
   }
-  
+
   // Convert HardFOC parity to ESP-IDF format
   switch (port_config_.parity) {
     case hf_uart_parity_t::HF_UART_PARITY_EVEN:
@@ -1044,7 +1048,7 @@ hf_uart_err_t EspUart::InstallDriver() noexcept {
       uart_config.parity = UART_PARITY_DISABLE;
       break;
   }
-  
+
   // Convert HardFOC stop bits to ESP-IDF format
   switch (port_config_.stop_bits) {
     case hf_uart_stop_bits_t::HF_UART_STOP_BITS_1_5:
@@ -1058,7 +1062,7 @@ hf_uart_err_t EspUart::InstallDriver() noexcept {
       uart_config.stop_bits = UART_STOP_BITS_1;
       break;
   }
-  
+
   // Convert HardFOC flow control to ESP-IDF format
   switch (port_config_.flow_control) {
     case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_RTS:
@@ -1075,12 +1079,12 @@ hf_uart_err_t EspUart::InstallDriver() noexcept {
       uart_config.flow_ctrl = UART_HW_FLOWCTRL_DISABLE;
       break;
   }
-  
+
   uart_config.source_clk = UART_SCLK_DEFAULT;
 
-  esp_err_t result = uart_driver_install(uart_port_, port_config_.rx_buffer_size,
-                                        port_config_.tx_buffer_size, port_config_.event_queue_size,
-                                        &event_queue_, 0);
+  esp_err_t result =
+      uart_driver_install(uart_port_, port_config_.rx_buffer_size, port_config_.tx_buffer_size,
+                          port_config_.event_queue_size, &event_queue_, 0);
   if (result != ESP_OK) {
     ESP_LOGE(TAG, "Failed to install UART driver: %s", esp_err_to_name(result));
     return ConvertPlatformError(result);
@@ -1117,14 +1121,14 @@ hf_uart_err_t EspUart::ConfigureUart() noexcept {
 
 hf_uart_err_t EspUart::ConfigurePins() noexcept {
   esp_err_t result = uart_set_pin(uart_port_, port_config_.tx_pin, port_config_.rx_pin,
-                                 port_config_.rts_pin, port_config_.cts_pin);
+                                  port_config_.rts_pin, port_config_.cts_pin);
   if (result != ESP_OK) {
     ESP_LOGE(TAG, "Failed to configure UART pins: %s", esp_err_to_name(result));
     return ConvertPlatformError(result);
   }
 
-  ESP_LOGI(TAG, "UART pins configured: TX=%d, RX=%d, RTS=%d, CTS=%d",
-           port_config_.tx_pin, port_config_.rx_pin, port_config_.rts_pin, port_config_.cts_pin);
+  ESP_LOGI(TAG, "UART pins configured: TX=%d, RX=%d, RTS=%d, CTS=%d", port_config_.tx_pin,
+           port_config_.rx_pin, port_config_.rts_pin, port_config_.cts_pin);
   return hf_uart_err_t::UART_SUCCESS;
 }
 
@@ -1214,12 +1218,12 @@ void EspUart::HandleUartEvent(const uart_event_t* event) noexcept {
       }
       break;
 
-    // case UART_WAKEUP:
-    //   statistics_.wakeup_count++;
-    //   if (wakeup_enabled_) {
-    //     ESP_LOGI(TAG, "UART wakeup detected");
-    //   }
-    //   break;
+      // case UART_WAKEUP:
+      //   statistics_.wakeup_count++;
+      //   if (wakeup_enabled_) {
+      //     ESP_LOGI(TAG, "UART wakeup detected");
+      //   }
+      //   break;
 
     default:
       ESP_LOGW(TAG, "Unknown UART event: %d", event->type);
@@ -1321,9 +1325,9 @@ bool IsValidUartPort(hf_port_num_t port_number) noexcept {
 }
 
 bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_num_t& rx_pin,
-                       hf_pin_num_t& rts_pin, hf_pin_num_t& cts_pin) noexcept {
-  // ESP32-C6 Pin Mappings
-  #if defined(HF_MCU_ESP32C6)
+                        hf_pin_num_t& rts_pin, hf_pin_num_t& cts_pin) noexcept {
+// ESP32-C6 Pin Mappings
+#if defined(HF_MCU_ESP32C6)
   switch (port_number) {
     case 0:
       tx_pin = hf_uart_pin_map_esp32c6_t::UART0_TX_PIN;
@@ -1347,8 +1351,8 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
       return false;
   }
 
-  // ESP32 Classic Pin Mappings
-  #elif defined(HF_MCU_ESP32)
+// ESP32 Classic Pin Mappings
+#elif defined(HF_MCU_ESP32)
   switch (port_number) {
     case 0:
       tx_pin = hf_uart_pin_map_esp32_t::UART0_TX_PIN;
@@ -1372,8 +1376,8 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
       return false;
   }
 
-  // ESP32-S2 Pin Mappings
-  #elif defined(HF_MCU_ESP32S2)
+// ESP32-S2 Pin Mappings
+#elif defined(HF_MCU_ESP32S2)
   switch (port_number) {
     case 0:
       tx_pin = hf_uart_pin_map_esp32s2_t::UART0_TX_PIN;
@@ -1397,8 +1401,8 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
       return false;
   }
 
-  // ESP32-S3 Pin Mappings
-  #elif defined(HF_MCU_ESP32S3)
+// ESP32-S3 Pin Mappings
+#elif defined(HF_MCU_ESP32S3)
   switch (port_number) {
     case 0:
       tx_pin = hf_uart_pin_map_esp32s3_t::UART0_TX_PIN;
@@ -1422,8 +1426,8 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
       return false;
   }
 
-  // ESP32-C3 Pin Mappings
-  #elif defined(HF_MCU_ESP32C3)
+// ESP32-C3 Pin Mappings
+#elif defined(HF_MCU_ESP32C3)
   switch (port_number) {
     case 0:
       tx_pin = hf_uart_pin_map_esp32c3_t::UART0_TX_PIN;
@@ -1441,8 +1445,8 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
       return false;
   }
 
-  // ESP32-C2 Pin Mappings
-  #elif defined(HF_MCU_ESP32C2)
+// ESP32-C2 Pin Mappings
+#elif defined(HF_MCU_ESP32C2)
   switch (port_number) {
     case 0:
       tx_pin = hf_uart_pin_map_esp32c2_t::UART0_TX_PIN;
@@ -1460,8 +1464,8 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
       return false;
   }
 
-  // ESP32-H2 Pin Mappings
-  #elif defined(HF_MCU_ESP32H2)
+// ESP32-H2 Pin Mappings
+#elif defined(HF_MCU_ESP32H2)
   switch (port_number) {
     case 0:
       tx_pin = hf_uart_pin_map_esp32h2_t::UART0_TX_PIN;
@@ -1479,9 +1483,9 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
       return false;
   }
 
-  #else
+#else
   return false;
-  #endif
+#endif
 }
 
 #endif // HF_MCU_FAMILY_ESP32
