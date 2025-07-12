@@ -94,7 +94,7 @@ hf_timer_err_t EspPeriodicTimer::Deinitialize() noexcept {
   return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-hf_timer_err_t EspPeriodicTimer::Start(uint64_t period_us) noexcept {
+hf_timer_err_t EspPeriodicTimer::Start(hf_u64_t period_us) noexcept {
   if (!IsInitialized()) {
     ESP_LOGE(TAG, "Timer not initialized");
     return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
@@ -149,7 +149,7 @@ hf_timer_err_t EspPeriodicTimer::Stop() noexcept {
   return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-hf_timer_err_t EspPeriodicTimer::SetPeriod(uint64_t new_period_us) noexcept {
+hf_timer_err_t EspPeriodicTimer::SetPeriod(hf_u64_t new_period_us) noexcept {
   if (!IsInitialized()) {
     ESP_LOGE(TAG, "Timer not initialized");
     return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
@@ -181,7 +181,7 @@ hf_timer_err_t EspPeriodicTimer::SetPeriod(uint64_t new_period_us) noexcept {
   return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-hf_timer_err_t EspPeriodicTimer::GetPeriod(uint64_t &period_us) noexcept {
+hf_timer_err_t EspPeriodicTimer::GetPeriod(hf_u64_t &period_us) noexcept {
   if (!IsInitialized()) {
     return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
   }
@@ -189,7 +189,7 @@ hf_timer_err_t EspPeriodicTimer::GetPeriod(uint64_t &period_us) noexcept {
   return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-hf_timer_err_t EspPeriodicTimer::GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
+hf_timer_err_t EspPeriodicTimer::GetStats(hf_u64_t &callback_count, hf_u64_t &missed_callbacks,
                                           hf_timer_err_t &last_error) noexcept {
   if (!IsInitialized()) {
     return hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED;
@@ -212,17 +212,17 @@ const char *EspPeriodicTimer::GetDescription() const noexcept {
   return "ESP32 MCU Periodic Timer (ESP Timer API)";
 }
 
-uint64_t EspPeriodicTimer::GetMinPeriod() const noexcept {
+hf_u64_t EspPeriodicTimer::GetMinPeriod() const noexcept {
   // ESP32 timer supports periods from 1us
   return 1;
 }
 
-uint64_t EspPeriodicTimer::GetMaxPeriod() const noexcept {
+hf_u64_t EspPeriodicTimer::GetMaxPeriod() const noexcept {
   // ESP32 timer supports very large periods, but we limit for safety
   return UINT64_MAX / 2;
 }
 
-uint64_t EspPeriodicTimer::GetResolution() const noexcept {
+hf_u64_t EspPeriodicTimer::GetResolution() const noexcept {
   // ESP32 timer has 1us resolution
   return 1;
 }
@@ -245,7 +245,7 @@ hf_timer_err_t EspPeriodicTimer::ConvertError(int platform_error) const noexcept
   }
 }
 
-bool EspPeriodicTimer::ValidatePeriod(uint64_t period_us) const noexcept {
+bool EspPeriodicTimer::ValidatePeriod(hf_u64_t period_us) const noexcept {
   return (period_us >= GetMinPeriod() && period_us <= GetMaxPeriod());
 }
 

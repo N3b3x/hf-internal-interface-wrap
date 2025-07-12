@@ -72,7 +72,7 @@
   X(I2C_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
   X(I2C_ERR_OPERATION_ABORTED, 30, "Operation aborted")
 
-enum class hf_i2c_err_t : uint8_t {
+enum class hf_i2c_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_I2C_ERR_LIST(X)
 #undef X
@@ -99,21 +99,21 @@ constexpr std::string_view HfI2CErrToString(hf_i2c_err_t err) noexcept {
  * @brief I2C operation statistics.
  */
 struct hf_i2c_statistics_t {
-  uint64_t total_transactions;     ///< Total transactions attempted
-  uint64_t successful_transactions; ///< Successful transactions
-  uint64_t failed_transactions;    ///< Failed transactions
-  uint64_t timeout_count;          ///< Transaction timeouts
-  uint64_t bytes_written;          ///< Total bytes written
-  uint64_t bytes_read;             ///< Total bytes read
-  uint64_t total_transaction_time_us; ///< Total transaction time
-  uint32_t max_transaction_time_us;   ///< Longest transaction time
-  uint32_t min_transaction_time_us;   ///< Shortest transaction time
-  uint32_t nack_errors;            ///< NACK error count
-  uint32_t bus_errors;             ///< Bus error count
-  uint32_t arbitration_lost_count; ///< Arbitration lost count
-  uint32_t clock_stretch_timeouts; ///< Clock stretch timeouts
-  uint32_t devices_added;          ///< Devices added to bus
-  uint32_t devices_removed;        ///< Devices removed from bus
+    hf_u64_t total_transactions;     ///< Total transactions attempted
+    hf_u64_t successful_transactions; ///< Successful transactions
+    hf_u64_t failed_transactions;    ///< Failed transactions
+    hf_u64_t timeout_count;          ///< Transaction timeouts
+    hf_u64_t bytes_written;          ///< Total bytes written
+    hf_u64_t bytes_read;             ///< Total bytes read
+    hf_u64_t total_transaction_time_us; ///< Total transaction time
+    hf_u32_t max_transaction_time_us;   ///< Longest transaction time
+    hf_u32_t min_transaction_time_us;   ///< Shortest transaction time
+    hf_u32_t nack_errors;            ///< NACK error count
+    hf_u32_t bus_errors;             ///< Bus error count
+    hf_u32_t arbitration_lost_count; ///< Arbitration lost count
+    hf_u32_t clock_stretch_timeouts; ///< Clock stretch timeouts
+    hf_u32_t devices_added;          ///< Devices added to bus
+    hf_u32_t devices_removed;        ///< Devices removed from bus
 
   hf_i2c_statistics_t() noexcept
       : total_transactions(0), successful_transactions(0), failed_transactions(0),
@@ -132,15 +132,15 @@ struct hf_i2c_diagnostics_t {
   bool scl_line_state;                        ///< Current SCL line state
   bool bus_locked;                           ///< Bus lock status
   hf_i2c_err_t last_error_code;                  ///< Last error code encountered
-  uint64_t last_error_timestamp_us;          ///< Timestamp of last error
-  uint32_t consecutive_errors;               ///< Consecutive error count
-  uint32_t error_recovery_attempts;          ///< Bus recovery attempts
+  hf_u64_t last_error_timestamp_us;          ///< Timestamp of last error
+  hf_u32_t consecutive_errors;               ///< Consecutive error count
+  hf_u32_t error_recovery_attempts;          ///< Bus recovery attempts
   float bus_utilization_percent;             ///< Bus utilization percentage
-  uint32_t average_response_time_us;         ///< Average device response time
-  uint32_t clock_stretching_events;          ///< Clock stretching event count
-  uint32_t active_device_count;              ///< Number of active devices on bus
-  uint32_t total_device_scans;               ///< Total device scan operations
-  uint32_t devices_found_last_scan;          ///< Devices found in last scan
+  hf_u32_t average_response_time_us;         ///< Average device response time
+  hf_u32_t clock_stretching_events;          ///< Clock stretching event count
+  hf_u32_t active_device_count;              ///< Number of active devices on bus
+  hf_u32_t total_device_scans;               ///< Total device scan operations
+  hf_u32_t devices_found_last_scan;          ///< Devices found in last scan
 
   hf_i2c_diagnostics_t() noexcept
       : bus_healthy(true), sda_line_state(true), scl_line_state(true), bus_locked(false),
@@ -243,8 +243,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
    */
-  virtual hf_i2c_err_t Write(uint8_t device_addr, const uint8_t *data, uint16_t length,
-                          uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_i2c_err_t Write(hf_u8_t device_addr, const hf_u8_t *data, hf_u16_t length,
+                          hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Read data from an I2C device.
@@ -254,8 +254,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
    */
-  virtual hf_i2c_err_t Read(uint8_t device_addr, uint8_t *data, uint16_t length,
-                         uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_i2c_err_t Read(hf_u8_t device_addr, hf_u8_t *data, hf_u16_t length,
+                         hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Write then read data from an I2C device.
@@ -267,9 +267,9 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
    */
-  virtual hf_i2c_err_t WriteRead(uint8_t device_addr, const uint8_t *tx_data, uint16_t tx_length,
-                              uint8_t *rx_data, uint16_t rx_length,
-                              uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_i2c_err_t WriteRead(hf_u8_t device_addr, const hf_u8_t *tx_data, hf_u16_t tx_length,
+                              hf_u8_t *rx_data, hf_u16_t rx_length,
+                              hf_u32_t timeout_ms = 0) noexcept = 0;
 
   //==============================================//
   // CONVENIENCE METHODS WITH DEFAULT IMPLEMENTATIONS
@@ -302,9 +302,9 @@ public:
    * @param device_addr 7-bit I2C device address
    * @return true if device responds, false otherwise
    */
-  virtual bool IsDevicePresent(uint8_t device_addr) noexcept {
+  virtual bool IsDevicePresent(hf_u8_t device_addr) noexcept {
     // Try to read 1 byte from the device
-    uint8_t dummy;
+    hf_u8_t dummy;
     return Read(device_addr, &dummy, 1, 100) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
@@ -314,11 +314,11 @@ public:
    * @param max_addresses Maximum number of addresses to store
    * @return Number of devices found
    */
-  virtual uint8_t ScanBus(uint8_t *addresses, uint8_t max_addresses) noexcept {
-    uint8_t found_count = 0;
+  virtual hf_u8_t ScanBus(hf_u8_t *addresses, hf_u8_t max_addresses) noexcept {
+    hf_u8_t found_count = 0;
     
     // Scan addresses 0x08 to 0x77 (valid 7-bit addresses)
-    for (uint8_t addr = 0x08; addr <= 0x77 && found_count < max_addresses; addr++) {
+    for (hf_u8_t addr = 0x08; addr <= 0x77 && found_count < max_addresses; addr++) {
       if (IsDevicePresent(addr)) {
         addresses[found_count++] = addr;
       }
@@ -333,7 +333,7 @@ public:
    * @param data Byte to write
    * @return true if successful, false otherwise
    */
-  virtual bool WriteByte(uint8_t device_addr, uint8_t data) noexcept {
+  virtual bool WriteByte(hf_u8_t device_addr, hf_u8_t data) noexcept {
     return Write(device_addr, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
@@ -343,7 +343,7 @@ public:
    * @param data Reference to store the read byte
    * @return true if successful, false otherwise
    */
-  virtual bool ReadByte(uint8_t device_addr, uint8_t &data) noexcept {
+  virtual bool ReadByte(hf_u8_t device_addr, hf_u8_t &data) noexcept {
     return Read(device_addr, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
@@ -354,8 +354,8 @@ public:
    * @param data Data to write to register
    * @return true if successful, false otherwise
    */
-  virtual bool WriteRegister(uint8_t device_addr, uint8_t reg_addr, uint8_t data) noexcept {
-    uint8_t buffer[2] = {reg_addr, data};
+  virtual bool WriteRegister(hf_u8_t device_addr, hf_u8_t reg_addr, hf_u8_t data) noexcept {
+    hf_u8_t buffer[2] = {reg_addr, data};
     return Write(device_addr, buffer, 2) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
@@ -366,7 +366,7 @@ public:
    * @param data Reference to store the read data
    * @return true if successful, false otherwise
    */
-  virtual bool ReadRegister(uint8_t device_addr, uint8_t reg_addr, uint8_t &data) noexcept {
+  virtual bool ReadRegister(hf_u8_t device_addr, hf_u8_t reg_addr, hf_u8_t &data) noexcept {
     return WriteRead(device_addr, &reg_addr, 1, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
@@ -378,8 +378,8 @@ public:
    * @param length Number of registers to read
    * @return true if successful, false otherwise
    */
-  virtual bool ReadRegisters(uint8_t device_addr, uint8_t reg_addr, uint8_t *data,
-                            uint16_t length) noexcept {
+  virtual bool ReadRegisters(hf_u8_t device_addr, hf_u8_t reg_addr, hf_u8_t *data,
+                            hf_u16_t length) noexcept {
     return WriteRead(device_addr, &reg_addr, 1, data, length) == hf_i2c_err_t::I2C_SUCCESS;
   }
 

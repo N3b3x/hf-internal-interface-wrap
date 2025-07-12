@@ -105,7 +105,7 @@
   X(ADC_ERR_HARDWARE_FAILURE, 55, "Hardware failure")                                              \
   X(ADC_ERR_CHANNEL_DISABLED, 56, "Channel disabled")
 
-enum class hf_adc_err_t : uint8_t {
+enum class hf_adc_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_ADC_ERR_LIST(X)
 #undef X
@@ -136,15 +136,15 @@ constexpr std::string_view HfAdcErrToString(hf_adc_err_t err) noexcept {
  * @brief ADC operation statistics.
  */
 struct hf_adc_statistics_t {
-    uint32_t totalConversions;        ///< Total conversions performed
-    uint32_t successfulConversions;   ///< Successful conversions
-    uint32_t failedConversions;       ///< Failed conversions
-    uint32_t averageConversionTimeUs; ///< Average conversion time (microseconds)
-    uint32_t maxConversionTimeUs;     ///< Maximum conversion time
-    uint32_t minConversionTimeUs;     ///< Minimum conversion time
-    uint32_t calibrationCount;        ///< Number of calibrations performed
-    uint32_t thresholdViolations;     ///< Threshold monitor violations
-    uint32_t calibration_errors;      ///< Calibration errors
+    hf_u32_t totalConversions;        ///< Total conversions performed
+    hf_u32_t successfulConversions;   ///< Successful conversions
+    hf_u32_t failedConversions;       ///< Failed conversions
+    hf_u32_t averageConversionTimeUs; ///< Average conversion time (microseconds)
+    hf_u32_t maxConversionTimeUs;     ///< Maximum conversion time
+    hf_u32_t minConversionTimeUs;     ///< Minimum conversion time
+    hf_u32_t calibrationCount;        ///< Number of calibrations performed
+    hf_u32_t thresholdViolations;     ///< Threshold monitor violations
+    hf_u32_t calibration_errors;      ///< Calibration errors
 
     hf_adc_statistics_t()
         : totalConversions(0), successfulConversions(0), failedConversions(0),
@@ -158,12 +158,12 @@ struct hf_adc_statistics_t {
 struct hf_adc_diagnostics_t {
     bool adcHealthy;                ///< Overall ADC health status
     hf_adc_err_t lastErrorCode;     ///< Last error code
-    uint32_t lastErrorTimestamp;    ///< Last error timestamp
-    uint32_t consecutiveErrors;     ///< Consecutive error count
+    hf_u32_t lastErrorTimestamp;    ///< Last error timestamp
+    hf_u32_t consecutiveErrors;     ///< Consecutive error count
     float temperatureC;             ///< ADC temperature (if available)
     float referenceVoltage;         ///< Reference voltage
     bool calibrationValid;          ///< Calibration validity
-    uint32_t enabled_channels;      ///< Bit mask of enabled channels
+    hf_u32_t enabled_channels;      ///< Bit mask of enabled channels
 
     hf_adc_diagnostics_t()
         : adcHealthy(true), lastErrorCode(hf_adc_err_t::ADC_SUCCESS), lastErrorTimestamp(0), 
@@ -258,7 +258,7 @@ public:
    * @brief Get the maximum number of channels supported by this ADC.
    * @return Maximum channel count
    */
-  [[nodiscard]] virtual uint8_t GetMaxChannels() const noexcept = 0;
+  [[nodiscard]] virtual hf_u8_t GetMaxChannels() const noexcept = 0;
 
   /**
    * @brief Check if a specific channel is available.
@@ -277,7 +277,7 @@ public:
    */
   virtual hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id, 
                                       float &channel_reading_v,
-                                      uint8_t numOfSamplesToAvg = 1,
+                                      hf_u8_t numOfSamplesToAvg = 1,
                                       hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
   /**
@@ -289,8 +289,8 @@ public:
    * @return hf_adc_err_t error code
    */
   virtual hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id, 
-                                          uint32_t &channel_reading_count,
-                                          uint8_t numOfSamplesToAvg = 1,
+                                          hf_u32_t &channel_reading_count,
+                                          hf_u8_t numOfSamplesToAvg = 1,
                                           hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
   /**
@@ -302,8 +302,8 @@ public:
    * @param timeBetweenSamples Time between samples in milliseconds (default 0)
    * @return hf_adc_err_t error code
    */
-  virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, uint32_t &channel_reading_count,
-                               float &channel_reading_v, uint8_t numOfSamplesToAvg = 1,
+  virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, hf_u32_t &channel_reading_count,
+                               float &channel_reading_v, hf_u8_t numOfSamplesToAvg = 1,
                                hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
   //==============================================//
@@ -319,13 +319,13 @@ public:
    * @return hf_adc_err_t error code
    * @note Default implementation reads channels sequentially
    */
-  virtual hf_adc_err_t ReadMultipleChannels(const hf_channel_id_t *channel_ids, uint8_t num_channels,
-                                        uint32_t *readings, float *voltages) noexcept {
+  virtual hf_adc_err_t ReadMultipleChannels(const hf_channel_id_t *channel_ids, hf_u8_t num_channels,
+                                        hf_u32_t *readings, float *voltages) noexcept {
     if (!channel_ids || !readings || !voltages) {
       return hf_adc_err_t::ADC_ERR_NULL_POINTER;
     }
 
-    for (uint8_t i = 0; i < num_channels; ++i) {
+    for (hf_u8_t i = 0; i < num_channels; ++i) {
       hf_adc_err_t err = ReadChannel(channel_ids[i], readings[i], voltages[i]);
       if (err != hf_adc_err_t::ADC_SUCCESS) {
         return err;

@@ -51,14 +51,14 @@ extern "C" {
 
 // Forward declarations for PIO types
 struct hf_pio_channel_statistics_t {
-  uint64_t total_transmissions;
-  uint64_t total_receptions;
-  uint64_t failed_transmissions;
-  uint64_t failed_receptions;
-  uint64_t last_operation_time;
+  hf_u64_t total_transmissions;
+  hf_u64_t total_receptions;
+  hf_u64_t failed_transmissions;
+  hf_u64_t failed_receptions;
+  hf_u64_t last_operation_time;
   bool is_configured;
   bool is_busy;
-  uint32_t current_resolution_ns;
+  hf_u32_t current_resolution_ns;
   size_t memory_blocks_allocated;
   bool dma_enabled;
 };
@@ -133,18 +133,18 @@ public:
   hf_pio_err_t Initialize() noexcept override;
   hf_pio_err_t Deinitialize() noexcept override;
 
-  hf_pio_err_t ConfigureChannel(uint8_t channel_id,
+  hf_pio_err_t ConfigureChannel(hf_u8_t channel_id,
                                 const hf_pio_channel_config_t &config) noexcept override;
 
-  hf_pio_err_t Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count,
+  hf_pio_err_t Transmit(hf_u8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count,
                         bool wait_completion = false) noexcept override;
 
-  hf_pio_err_t StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
+  hf_pio_err_t StartReceive(hf_u8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
                             uint32_t timeout_us = 0) noexcept override;
-  hf_pio_err_t StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept override;
+  hf_pio_err_t StopReceive(hf_u8_t channel_id, size_t &symbols_received) noexcept override;
 
-  bool IsChannelBusy(uint8_t channel_id) const noexcept override;
-  hf_pio_err_t GetChannelStatus(uint8_t channel_id,
+  bool IsChannelBusy(hf_u8_t channel_id) const noexcept override;
+  hf_pio_err_t GetChannelStatus(hf_u8_t channel_id,
                                 hf_pio_channel_status_t &status) const noexcept override;
   hf_pio_err_t GetCapabilities(hf_pio_capabilities_t &capabilities) const noexcept override;
 
@@ -184,7 +184,7 @@ public:
    * @return Error code indicating success or failure
    * @note This provides direct RMT access similar to rmt_wrapper.hpp
    */
-  hf_pio_err_t TransmitRawRmtSymbols(uint8_t channel_id, const rmt_symbol_word_t *rmt_symbols,
+  hf_pio_err_t TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_word_t *rmt_symbols,
                                      size_t symbol_count, bool wait_completion = false) noexcept;
 
   /**
@@ -197,7 +197,7 @@ public:
    * @return Error code indicating success or failure
    * @note This provides direct RMT access similar to rmt_wrapper.hpp
    */
-  hf_pio_err_t ReceiveRawRmtSymbols(uint8_t channel_id, rmt_symbol_word_t *rmt_buffer,
+  hf_pio_err_t ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t *rmt_buffer,
                                     size_t buffer_size, size_t &symbols_received,
                                     uint32_t timeout_us = 10000) noexcept;
   /**
@@ -208,7 +208,7 @@ public:
    * @param queue_depth Transmit queue depth
    * @return Error code indicating success or failure
    */
-  hf_pio_err_t ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks = 64,
+  hf_pio_err_t ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_blocks = 64,
                                     bool enable_dma = false, uint32_t queue_depth = 4) noexcept;
 
   //==============================================//
@@ -222,7 +222,7 @@ public:
    * @param duty_cycle Carrier duty cycle (0.0 to 1.0)
    * @return Error code indicating success or failure
    */
-  hf_pio_err_t ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz,
+  hf_pio_err_t ConfigureCarrier(hf_u8_t channel_id, uint32_t carrier_freq_hz,
                                 float duty_cycle) noexcept;
 
   /**
@@ -231,7 +231,7 @@ public:
    * @param enable true to enable loopback, false to disable
    * @return Error code indicating success or failure
    */
-  hf_pio_err_t EnableLoopback(uint8_t channel_id, bool enable) noexcept;
+  hf_pio_err_t EnableLoopback(hf_u8_t channel_id, bool enable) noexcept;
 
   /**
    * @brief Get the maximum number of symbols that can be transmitted in one operation
@@ -252,7 +252,7 @@ public:
    * @param bit1_config Configuration for bit 1 encoding
    * @return Error code indicating success or failure
    */
-  hf_pio_err_t ConfigureEncoder(uint8_t channel_id, const hf_pio_symbol_t &bit0_config,
+  hf_pio_err_t ConfigureEncoder(hf_u8_t channel_id, const hf_pio_symbol_t &bit0_config,
                                 const hf_pio_symbol_t &bit1_config) noexcept;
 
   /**
@@ -261,7 +261,7 @@ public:
    * @param idle_level true for high, false for low
    * @return Error code indicating success or failure
    */
-  hf_pio_err_t SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept;
+  hf_pio_err_t SetIdleLevel(hf_u8_t channel_id, bool idle_level) noexcept;
 
   /**
    * @brief Get current RMT channel statistics
@@ -269,7 +269,7 @@ public:
    * @param stats [out] Channel statistics structure
    * @return Error code indicating success or failure
    */
-  hf_pio_err_t GetChannelStatistics(uint8_t channel_id,
+  hf_pio_err_t GetChannelStatistics(hf_u8_t channel_id,
                                     hf_pio_channel_statistics_t &stats) const noexcept;
 
   /**
@@ -277,7 +277,7 @@ public:
    * @param channel_id Channel identifier
    * @return Error code indicating success or failure
    */
-  hf_pio_err_t ResetChannelStatistics(uint8_t channel_id) noexcept;
+  hf_pio_err_t ResetChannelStatistics(hf_u8_t channel_id) noexcept;
 
 private:
   //==============================================//
@@ -317,7 +317,7 @@ private:
   // Member Variables
   //==============================================//
 
-  static constexpr uint8_t MAX_CHANNELS = HF_RMT_MAX_CHANNELS; // Use centralized constant
+  static constexpr hf_u8_t MAX_CHANNELS = HF_RMT_MAX_CHANNELS; // Use centralized constant
   static constexpr size_t MAX_SYMBOLS_PER_TRANSMISSION = 64;
   static constexpr uint32_t DEFAULT_RESOLUTION_NS = 1000; // 1 microsecond
   static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000;  // 80 MHz APB clock
@@ -339,7 +339,7 @@ private:
   /**
    * @brief Validate channel ID
    */
-  bool IsValidChannelId(uint8_t channel_id) const noexcept;
+  bool IsValidChannelId(hf_u8_t channel_id) const noexcept;
   /**
    * @brief Convert hf_pio_symbol_t array to RMT symbol format
    */
@@ -365,12 +365,12 @@ private:
   /**
    * @brief Initialize a specific channel
    */
-  hf_pio_err_t InitializeChannel(uint8_t channel_id) noexcept;
+  hf_pio_err_t InitializeChannel(hf_u8_t channel_id) noexcept;
 
   /**
    * @brief Deinitialize a specific channel
    */
-  hf_pio_err_t DeinitializeChannel(uint8_t channel_id) noexcept;
+  hf_pio_err_t DeinitializeChannel(hf_u8_t channel_id) noexcept;
 
   /**
    * @brief Validate symbol array
@@ -380,12 +380,12 @@ private:
   /**
    * @brief Update channel status
    */
-  void UpdateChannelStatus(uint8_t channel_id) noexcept;
+  void UpdateChannelStatus(hf_u8_t channel_id) noexcept;
 
   /**
    * @brief Invoke error callback if set
    */
-  void InvokeErrorCallback(uint8_t channel_id, hf_pio_err_t error) noexcept;
+  void InvokeErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept;
 
   /**
    * @brief Calculate RMT clock divider for desired resolution

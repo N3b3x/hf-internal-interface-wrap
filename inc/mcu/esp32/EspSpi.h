@@ -227,8 +227,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                        uint32_t timeout_ms = 0) noexcept override;
+  hf_spi_err_t Transfer(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                        hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Assert/deassert the chip select signal.
@@ -318,8 +318,8 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t transferQuad(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                            uint32_t timeout_ms = 0) noexcept;
+  hf_spi_err_t transferQuad(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                            hf_u32_t timeout_ms = 0) noexcept;
 
   /**
    * @brief Perform transfer using octal SPI mode (ESP32C6 specific).
@@ -329,8 +329,8 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t transferOctal(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                             uint32_t timeout_ms = 0) noexcept;
+  hf_spi_err_t transferOctal(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                             hf_u32_t timeout_ms = 0) noexcept;
 
   /**
    * @brief Perform DMA-accelerated transfer.
@@ -340,8 +340,8 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return hf_spi_err_t result code
    */
-  hf_spi_err_t transferDma(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                           uint32_t timeout_ms = 0) noexcept;
+  hf_spi_err_t transferDma(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                           hf_u32_t timeout_ms = 0) noexcept;
 
   /**
    * @brief Perform batch transfers with single CS assertion.

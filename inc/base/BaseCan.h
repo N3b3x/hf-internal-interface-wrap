@@ -106,7 +106,7 @@
   X(CAN_ERR_NOT_SUPPORTED, 52, "Not supported")                                                    \
   X(CAN_ERR_TIMEOUT_ALT, 53, "Operation timeout")
 
-enum class hf_can_err_t : uint8_t {
+enum class hf_can_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_CAN_ERR_LIST(X)
 #undef X
@@ -140,8 +140,8 @@ struct hf_can_config_t {
   hf_baud_rate_t baudrate; ///< CAN baudrate (bps)
   bool loopback_mode;      ///< Enable loopback mode for testing
   bool silent_mode;        ///< Enable silent mode (listen-only)
-  uint16_t tx_queue_size;  ///< TX queue size (implementation-dependent)
-  uint16_t rx_queue_size;  ///< RX queue size (implementation-dependent)
+  hf_u16_t tx_queue_size;  ///< TX queue size (implementation-dependent)
+  hf_u16_t rx_queue_size;  ///< RX queue size (implementation-dependent)
 
   hf_can_config_t() noexcept
       : tx_pin(HF_INVALID_PIN), rx_pin(HF_INVALID_PIN), baudrate(500000), loopback_mode(false),
@@ -156,9 +156,9 @@ struct hf_can_config_t {
  */
 struct hf_can_message_t {
   // === Core CAN Message Fields ===
-  uint32_t id;     ///< Message ID (11 or 29-bit)
-  uint8_t dlc;     ///< Data length code (0-8 for classic CAN)
-  uint8_t data[8]; ///< Message data (max 8 bytes for classic CAN)
+  hf_u32_t id;     ///< Message ID (11 or 29-bit)
+  hf_u8_t dlc;     ///< Data length code (0-8 for classic CAN)
+  hf_u8_t data[8]; ///< Message data (max 8 bytes for classic CAN)
 
   // === Standard CAN Flags ===
   bool is_extended;  ///< Extended ID flag (29-bit vs 11-bit)
@@ -168,17 +168,17 @@ struct hf_can_message_t {
   bool dlc_non_comp; ///< DLC is non-compliant (> 8 for classic CAN)
 
   // === Metadata and Diagnostics ===
-  uint64_t timestamp_us;    ///< Precise timestamp in microseconds
-  uint32_t sequence_number; ///< Message sequence number
-  uint8_t controller_id;    ///< Originating controller ID
-  uint8_t retry_count;      ///< Number of transmission retries
-  uint8_t error_count;      ///< Associated error count
+  hf_u64_t timestamp_us;    ///< Precise timestamp in microseconds
+  hf_u32_t sequence_number; ///< Message sequence number
+  hf_u8_t controller_id;    ///< Originating controller ID
+  hf_u8_t retry_count;      ///< Number of transmission retries
+  hf_u8_t error_count;      ///< Associated error count
 
   // === CAN-FD Extended Fields (for future compatibility) ===
   bool is_canfd;       ///< CAN-FD frame flag
   bool is_brs;         ///< Bit Rate Switching flag (CAN-FD)
   bool is_esi;         ///< Error State Indicator flag (CAN-FD)
-  uint8_t canfd_dlc;   ///< CAN-FD DLC (can be > 8)
+  hf_u8_t canfd_dlc;   ///< CAN-FD DLC (can be > 8)
 
   hf_can_message_t() noexcept
       : id(0), dlc(0), data{}, is_extended(false), is_rtr(false), is_ss(false), 
@@ -190,7 +190,7 @@ struct hf_can_message_t {
    * @brief Get maximum data length for current frame type
    * @return Maximum allowed data length (8 for classic CAN, up to 64 for CAN-FD)
    */
-  constexpr uint8_t GetMaxDataLength() const noexcept { 
+  constexpr hf_u8_t GetMaxDataLength() const noexcept { 
     return is_canfd ? 64 : 8; 
   }
 
@@ -199,7 +199,7 @@ struct hf_can_message_t {
    * @param dlc Data length code to validate
    * @return true if valid for the frame type, false otherwise
    */
-  bool IsValidDLC(uint8_t dlc) const noexcept { 
+  bool IsValidDLC(hf_u8_t dlc) const noexcept { 
     return is_canfd ? (dlc <= 64) : (dlc <= 8); 
   }
 
@@ -207,7 +207,7 @@ struct hf_can_message_t {
    * @brief Get effective DLC for the current frame type
    * @return DLC value to use (canfd_dlc for CAN-FD, dlc for classic)
    */
-  uint8_t GetEffectiveDLC() const noexcept {
+  hf_u8_t GetEffectiveDLC() const noexcept {
     return is_canfd ? canfd_dlc : dlc;
   }
 
@@ -216,7 +216,7 @@ struct hf_can_message_t {
    * @param dlc Data length code to set
    * @return true if valid and set, false otherwise
    */
-  bool SetDLC(uint8_t dlc) noexcept {
+  bool SetDLC(hf_u8_t dlc) noexcept {
     if (!IsValidDLC(dlc)) {
       return false;
     }
@@ -276,10 +276,10 @@ struct hf_can_message_t {
  * @details Comprehensive status information for CAN bus monitoring and diagnostics.
  */
 struct hf_can_status_t {
-  uint32_t tx_error_count;  ///< Transmit error counter
-  uint32_t rx_error_count;  ///< Receive error counter
-  uint32_t tx_failed_count; ///< Failed transmission count
-  uint32_t rx_missed_count; ///< Missed reception count
+  hf_u32_t tx_error_count;  ///< Transmit error counter
+  hf_u32_t rx_error_count;  ///< Receive error counter
+  hf_u32_t tx_failed_count; ///< Failed transmission count
+  hf_u32_t rx_missed_count; ///< Missed reception count
   bool bus_off;             ///< Bus-off state
   bool error_warning;       ///< Error warning state
   bool error_passive;       ///< Error passive state
@@ -287,17 +287,17 @@ struct hf_can_status_t {
   // CAN-FD specific status
   bool canfd_enabled;        ///< CAN-FD mode is active
   bool canfd_brs_enabled;    ///< Bit Rate Switching is enabled
-  uint32_t nominal_baudrate; ///< Nominal bit rate (arbitration phase)
-  uint32_t data_baudrate;    ///< Data bit rate (data phase for CAN-FD)
-  uint32_t canfd_tx_count;   ///< Number of CAN-FD frames transmitted
-  uint32_t canfd_rx_count;   ///< Number of CAN-FD frames received
-  uint32_t brs_tx_count;     ///< Number of BRS frames transmitted
-  uint32_t brs_rx_count;     ///< Number of BRS frames received
-  uint32_t form_errors;      ///< CAN-FD form errors
-  uint32_t stuff_errors;     ///< Stuff errors
-  uint32_t crc_errors;       ///< CRC errors
-  uint32_t bit_errors;       ///< Bit errors
-  uint32_t ack_errors;       ///< Acknowledgment errors
+  hf_u32_t nominal_baudrate; ///< Nominal bit rate (arbitration phase)
+  hf_u32_t data_baudrate;    ///< Data bit rate (data phase for CAN-FD)
+  hf_u32_t canfd_tx_count;   ///< Number of CAN-FD frames transmitted
+  hf_u32_t canfd_rx_count;   ///< Number of CAN-FD frames received
+  hf_u32_t brs_tx_count;     ///< Number of BRS frames transmitted
+  hf_u32_t brs_rx_count;     ///< Number of BRS frames received
+  hf_u32_t form_errors;      ///< CAN-FD form errors
+  hf_u32_t stuff_errors;     ///< Stuff errors
+  hf_u32_t crc_errors;       ///< CRC errors
+  hf_u32_t bit_errors;       ///< Bit errors
+  hf_u32_t ack_errors;       ///< Acknowledgment errors
 
   hf_can_status_t() noexcept
       : tx_error_count(0), rx_error_count(0), tx_failed_count(0), rx_missed_count(0),
@@ -319,8 +319,8 @@ using hf_can_receive_callback_t = std::function<void(const hf_can_message_t &mes
  * @param reception_info Additional reception information (timing, errors, etc.)
  */
 struct hf_can_reception_info_t {
-  uint32_t timestamp_us;      ///< Reception timestamp in microseconds
-  uint8_t rx_fifo_level;      ///< RX FIFO level when received
+  hf_u32_t timestamp_us;      ///< Reception timestamp in microseconds
+  hf_u8_t rx_fifo_level;      ///< RX FIFO level when received
   bool data_phase_error;      ///< Error occurred in data phase
   bool arbitration_lost;      ///< Arbitration was lost during transmission
   float bit_timing_tolerance; ///< Measured bit timing tolerance
@@ -336,30 +336,30 @@ using hf_can_fd_receive_callback_t =
  */
 struct hf_can_statistics_t {
   // Message counters
-  uint64_t messages_sent;          ///< Total messages successfully sent
-  uint64_t messages_received;      ///< Total messages successfully received
-  uint64_t bytes_transmitted;      ///< Total bytes transmitted
-  uint64_t bytes_received;         ///< Total bytes received
+  hf_u64_t messages_sent;          ///< Total messages successfully sent
+  hf_u64_t messages_received;      ///< Total messages successfully received
+  hf_u64_t bytes_transmitted;      ///< Total bytes transmitted
+  hf_u64_t bytes_received;         ///< Total bytes received
   
   // Error counters
-  uint32_t send_failures;          ///< Failed send operations
-  uint32_t receive_failures;       ///< Failed receive operations
-  uint32_t bus_error_count;        ///< Total bus errors
-  uint32_t arbitration_lost_count; ///< Arbitration lost events
-  uint32_t tx_failed_count;        ///< Transmission failures
-  uint32_t bus_off_events;         ///< Bus-off occurrences
-  uint32_t error_warning_events;   ///< Error warning events
+  hf_u32_t send_failures;          ///< Failed send operations
+  hf_u32_t receive_failures;       ///< Failed receive operations
+  hf_u32_t bus_error_count;        ///< Total bus errors
+  hf_u32_t arbitration_lost_count; ///< Arbitration lost events
+  hf_u32_t tx_failed_count;        ///< Transmission failures
+  hf_u32_t bus_off_events;         ///< Bus-off occurrences
+  hf_u32_t error_warning_events;   ///< Error warning events
   
   // Performance metrics
-  uint64_t uptime_seconds;         ///< Total uptime in seconds
-  uint32_t last_activity_timestamp;///< Last activity timestamp
+  hf_u64_t uptime_seconds;         ///< Total uptime in seconds
+  hf_u32_t last_activity_timestamp;///< Last activity timestamp
   hf_can_err_t last_error;         ///< Last error encountered
   
   // Queue statistics
-  uint32_t tx_queue_peak;          ///< Peak TX queue usage
-  uint32_t rx_queue_peak;          ///< Peak RX queue usage
-  uint32_t tx_queue_overflows;     ///< TX queue overflow count
-  uint32_t rx_queue_overflows;     ///< RX queue overflow count
+  hf_u32_t tx_queue_peak;          ///< Peak TX queue usage
+  hf_u32_t rx_queue_peak;          ///< Peak RX queue usage
+  hf_u32_t tx_queue_overflows;     ///< TX queue overflow count
+  hf_u32_t rx_queue_overflows;     ///< RX queue overflow count
 
   hf_can_statistics_t() noexcept
       : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
@@ -375,13 +375,13 @@ struct hf_can_statistics_t {
  *          and monitoring CAN bus health and performance.
  */
 struct hf_can_diagnostics_t {
-  uint32_t tx_error_count;         ///< Transmit error counter
-  uint32_t rx_error_count;         ///< Receive error counter
-  uint32_t tx_queue_peak;          ///< Peak TX queue usage
-  uint32_t rx_queue_peak;          ///< Peak RX queue usage
-  uint32_t last_error_timestamp;   ///< Timestamp of last error
-  uint32_t controller_resets;      ///< Number of controller resets
-  uint32_t bus_load_percentage;    ///< Current bus load percentage
+  hf_u32_t tx_error_count;         ///< Transmit error counter
+  hf_u32_t rx_error_count;         ///< Receive error counter
+  hf_u32_t tx_queue_peak;          ///< Peak TX queue usage
+  hf_u32_t rx_queue_peak;          ///< Peak RX queue usage
+  hf_u32_t last_error_timestamp;   ///< Timestamp of last error
+  hf_u32_t controller_resets;      ///< Number of controller resets
+  hf_u32_t bus_load_percentage;    ///< Current bus load percentage
   float bit_error_rate;            ///< Bit error rate (errors/bits)
   
   hf_can_diagnostics_t() noexcept
@@ -475,7 +475,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
    * @return hf_can_err_t error code
    */
-  virtual hf_can_err_t SendMessage(const hf_can_message_t &message, uint32_t timeout_ms = 1000) noexcept = 0;
+  virtual hf_can_err_t SendMessage(const hf_can_message_t &message, hf_u32_t timeout_ms = 1000) noexcept = 0;
 
   /**
    * @brief Receive a CAN message.
@@ -483,7 +483,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
    * @return hf_can_err_t error code
    */
-  virtual hf_can_err_t ReceiveMessage(hf_can_message_t &message, uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_can_err_t ReceiveMessage(hf_can_message_t &message, hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Set callback for received messages.
@@ -499,7 +499,7 @@ public:
    * @param extended true for extended frames, false for standard
    * @return hf_can_err_t error code
    */
-  virtual hf_can_err_t SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept = 0;
+  virtual hf_can_err_t SetAcceptanceFilter(hf_u32_t id, hf_u32_t mask, bool extended = false) noexcept = 0;
 
   /**
    * @brief Get current CAN bus status.
@@ -560,8 +560,8 @@ public:
    * @return true if successful, false otherwise
    * @note Default implementation returns false (not supported)
    */
-  virtual bool SetCanFDMode(bool enable, uint32_t data_baudrate = 2000000,
-                           uint32_t timeout_ms = 1000) noexcept {
+  virtual bool SetCanFDMode(bool enable, hf_u32_t data_baudrate = 2000000,
+                           hf_u32_t timeout_ms = 1000) noexcept {
     (void)enable;
     (void)data_baudrate;
     (void)timeout_ms;
@@ -580,10 +580,10 @@ public:
    * @return true if successful, false otherwise
    * @note Default implementation returns false (not supported)
    */
-  virtual bool ConfigureCanFDTiming(uint16_t nominal_prescaler, uint8_t nominal_tseg1,
-                                   uint8_t nominal_tseg2, uint16_t data_prescaler,
-                                   uint8_t data_tseg1, uint8_t data_tseg2,
-                                   uint8_t sjw = 1) noexcept {
+  virtual bool ConfigureCanFDTiming(hf_u16_t nominal_prescaler, hf_u8_t nominal_tseg1,
+                                   hf_u8_t nominal_tseg2, hf_u16_t data_prescaler,
+                                   hf_u8_t data_tseg1, hf_u8_t data_tseg2,
+                                   hf_u8_t sjw = 1) noexcept {
     (void)nominal_prescaler;
     (void)nominal_tseg1;
     (void)nominal_tseg2;
@@ -601,7 +601,7 @@ public:
    * @return true if successful, false otherwise
    * @note Default implementation returns false (not supported)
    */
-  virtual bool SetTransmitterDelayCompensation(uint8_t tdc_offset, uint8_t tdc_filter) noexcept {
+  virtual bool SetTransmitterDelayCompensation(hf_u8_t tdc_offset, hf_u8_t tdc_filter) noexcept {
     (void)tdc_offset;
     (void)tdc_filter;
     return false;
@@ -615,14 +615,14 @@ public:
    * @return Number of messages successfully sent
    * @note Default implementation sends messages sequentially
    */
-  virtual uint32_t SendMessageBatch(const hf_can_message_t *messages, uint32_t count,
-                                   uint32_t timeout_ms = 1000) noexcept {
+  virtual hf_u32_t SendMessageBatch(const hf_can_message_t *messages, hf_u32_t count,
+                                   hf_u32_t timeout_ms = 1000) noexcept {
     if (!messages || count == 0) {
       return 0;
     }
 
-    uint32_t sent_count = 0;
-    for (uint32_t i = 0; i < count; ++i) {
+    hf_u32_t sent_count = 0;
+    for (hf_u32_t i = 0; i < count; ++i) {
       if (SendMessage(messages[i], timeout_ms) == hf_can_err_t::CAN_SUCCESS) {
         sent_count++;
       }
@@ -638,14 +638,14 @@ public:
    * @return Number of messages actually received
    * @note Default implementation receives messages one by one
    */
-  virtual uint32_t ReceiveMessageBatch(hf_can_message_t *messages, uint32_t max_count,
-                                      uint32_t timeout_ms = 100) noexcept {
+  virtual hf_u32_t ReceiveMessageBatch(hf_can_message_t *messages, hf_u32_t max_count,
+                                      hf_u32_t timeout_ms = 100) noexcept {
     if (!messages || max_count == 0) {
       return 0;
     }
 
-    uint32_t received_count = 0;
-    for (uint32_t i = 0; i < max_count; ++i) {
+    hf_u32_t received_count = 0;
+    for (hf_u32_t i = 0; i < max_count; ++i) {
       if (ReceiveMessage(messages[i], timeout_ms) == hf_can_err_t::CAN_SUCCESS) {
         received_count++;
       } else {

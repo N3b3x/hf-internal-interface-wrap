@@ -61,11 +61,11 @@ public:
   // CONSTANTS
   //==============================================================================
 
-  static constexpr uint8_t MAX_CHANNELS = HF_PWM_MAX_CHANNELS;          ///< Maximum PWM channels
-  static constexpr uint8_t MAX_TIMERS = HF_PWM_MAX_TIMERS;              ///< Maximum timer groups
-  static constexpr uint8_t MAX_RESOLUTION = HF_PWM_MAX_RESOLUTION;      ///< Maximum resolution bits
-  static constexpr uint32_t MIN_FREQUENCY = HF_PWM_MIN_FREQUENCY;       ///< Minimum frequency (Hz)
-  static constexpr uint32_t MAX_FREQUENCY = HF_PWM_MAX_FREQUENCY;       ///< Maximum frequency (Hz)
+  static constexpr hf_u8_t MAX_CHANNELS = HF_PWM_MAX_CHANNELS;          ///< Maximum PWM channels
+  static constexpr hf_u8_t MAX_TIMERS = HF_PWM_MAX_TIMERS;              ///< Maximum timer groups
+  static constexpr hf_u8_t MAX_RESOLUTION = HF_PWM_MAX_RESOLUTION;      ///< Maximum resolution bits
+  static constexpr hf_u32_t MIN_FREQUENCY = HF_PWM_MIN_FREQUENCY;       ///< Minimum frequency (Hz)
+  static constexpr hf_u32_t MAX_FREQUENCY = HF_PWM_MAX_FREQUENCY;       ///< Maximum frequency (Hz)
 
   //==============================================================================
   // CONSTRUCTOR AND DESTRUCTOR
@@ -77,7 +77,7 @@ public:
    * @note Uses lazy initialization - no hardware action until first operation
    */
   explicit EspPwm(const hf_pwm_unit_config_t &config = hf_pwm_unit_config_t{}) noexcept;
-  EspPwm(uint32_t base_clock_hz) noexcept;
+  EspPwm(hf_u32_t base_clock_hz) noexcept;
 
 
 
@@ -129,7 +129,7 @@ public:
   //==============================================================================
 
   hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) noexcept override;
-  hf_pwm_err_t SetDutyCycleRaw(hf_channel_id_t channel_id, uint32_t raw_value) noexcept override;
+  hf_pwm_err_t SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_value) noexcept override;
   hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz) noexcept override;
   hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id, float phase_shift_degrees) noexcept override;
 
@@ -141,7 +141,7 @@ public:
   hf_pwm_err_t StopAll() noexcept override;
   hf_pwm_err_t UpdateAll() noexcept override;
   hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel, hf_channel_id_t complementary_channel,
-                                  uint32_t deadtime_ns) noexcept override;
+                                  hf_u32_t deadtime_ns) noexcept override;
 
   //==============================================================================
   // STATUS AND INFORMATION (BasePwm Interface)
@@ -173,7 +173,7 @@ public:
    * @return PWM_SUCCESS on success, error code on failure
    */
   hf_pwm_err_t SetHardwareFade(hf_channel_id_t channel_id, float target_duty_cycle,
-                           uint32_t fade_time_ms) noexcept;
+                           hf_u32_t fade_time_ms) noexcept;
 
   /**
    * @brief Stop hardware fade for a channel
@@ -195,7 +195,7 @@ public:
    * @param idle_level Idle level (0 or 1)
    * @return PWM_SUCCESS on success, error code on failure
    */
-  hf_pwm_err_t SetIdleLevel(hf_channel_id_t channel_id, uint8_t idle_level) noexcept;
+  hf_pwm_err_t SetIdleLevel(hf_channel_id_t channel_id, hf_u8_t idle_level) noexcept;
 
   /**
    * @brief Get current timer assignment for a channel
@@ -211,7 +211,7 @@ public:
    * @return PWM_SUCCESS on success, error code on failure
    * @note Use with caution - automatic timer allocation is usually better
    */
-  hf_pwm_err_t ForceTimerAssignment(hf_channel_id_t channel_id, uint8_t timer_id) noexcept;
+  hf_pwm_err_t ForceTimerAssignment(hf_channel_id_t channel_id, hf_u8_t timer_id) noexcept;
 
   /**
    * @brief Set clock source for PWM timers
@@ -252,8 +252,8 @@ private:
     bool configured;         ///< Channel is configured
     bool enabled;            ///< Channel is enabled
     hf_pwm_channel_config_t config; ///< Channel configuration
-    uint8_t assigned_timer;  ///< Assigned timer (0-3)
-    uint32_t raw_duty_value; ///< Current raw duty value
+    hf_u8_t assigned_timer;  ///< Assigned timer (0-3)
+    hf_u32_t raw_duty_value; ///< Current raw duty value
     hf_pwm_err_t last_error;     ///< Last error for this channel
     bool fade_active;        ///< Hardware fade is active
 
@@ -267,9 +267,9 @@ private:
    */
   struct TimerState {
     bool in_use;             ///< Timer is in use
-    uint32_t frequency_hz;   ///< Timer frequency
-    uint8_t resolution_bits; ///< Timer resolution
-    uint8_t channel_count;   ///< Number of channels using this timer
+    hf_u32_t frequency_hz;   ///< Timer frequency
+    hf_u8_t resolution_bits; ///< Timer resolution
+    hf_u8_t channel_count;   ///< Number of channels using this timer
 
     TimerState() noexcept : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0) {}
   };
@@ -278,9 +278,9 @@ private:
    * @brief Complementary output pair configuration
    */
   struct ComplementaryPair {
-    uint8_t primary_channel;       ///< Primary channel
-    uint8_t complementary_channel; ///< Complementary channel
-    uint32_t deadtime_ns;          ///< Deadtime in nanoseconds
+    hf_u8_t primary_channel;       ///< Primary channel
+    hf_u8_t complementary_channel; ///< Complementary channel
+    hf_u32_t deadtime_ns;          ///< Deadtime in nanoseconds
     bool active;                   ///< Pair is active
 
     ComplementaryPair() noexcept
@@ -304,13 +304,13 @@ private:
    * @param resolution_bits Required resolution
    * @return Timer ID (0-3), or -1 if no timer available
    */
-  int8_t FindOrAllocateTimer(uint32_t frequency_hz, uint8_t resolution_bits) noexcept;
+  int8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
 
   /**
    * @brief Release a timer if no longer needed
    * @param timer_id Timer to potentially release
    */
-  void ReleaseTimerIfUnused(uint8_t timer_id) noexcept;
+  void ReleaseTimerIfUnused(hf_u8_t timer_id) noexcept;
 
   /**
    * @brief Configure platform timer
@@ -319,8 +319,8 @@ private:
    * @param resolution_bits Timer resolution
    * @return PWM_SUCCESS on success, error code on failure
    */
-  hf_pwm_err_t ConfigurePlatformTimer(uint8_t timer_id, uint32_t frequency_hz,
-                                  uint8_t resolution_bits) noexcept;
+  hf_pwm_err_t ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency_hz,
+                                  hf_u8_t resolution_bits) noexcept;
 
   /**
    * @brief Configure platform channel
@@ -330,7 +330,7 @@ private:
    * @return PWM_SUCCESS on success, error code on failure
    */
   hf_pwm_err_t ConfigurePlatformChannel(hf_channel_id_t channel_id, const hf_pwm_channel_config_t &config,
-                                    uint8_t timer_id) noexcept;
+                                    hf_u8_t timer_id) noexcept;
 
   /**
    * @brief Update platform duty cycle
@@ -338,7 +338,7 @@ private:
    * @param raw_duty_value Raw duty value
    * @return PWM_SUCCESS on success, error code on failure
    */
-  hf_pwm_err_t UpdatePlatformDuty(hf_channel_id_t channel_id, uint32_t raw_duty_value) noexcept;
+  hf_pwm_err_t UpdatePlatformDuty(hf_channel_id_t channel_id, hf_u32_t raw_duty_value) noexcept;
 
   /**
    * @brief Set error for a channel
@@ -389,7 +389,7 @@ private:
    * @param resolution_bits PWM resolution
    * @return Clock divider value
    */
-  uint32_t CalculateClockDivider(uint32_t frequency_hz, uint8_t resolution_bits) const noexcept;
+  hf_u32_t CalculateClockDivider(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
 
   //==============================================================================
   // MEMBER VARIABLES
@@ -397,7 +397,7 @@ private:
 
   mutable RtosMutex mutex_; ///< Thread safety mutex
   std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
-  uint32_t base_clock_hz_;  ///< Base clock frequency
+  hf_u32_t base_clock_hz_;  ///< Base clock frequency
   hf_pwm_clock_source_t clock_source_; ///< Current clock source
 
   std::array<ChannelState, MAX_CHANNELS> channels_;                     ///< Channel states

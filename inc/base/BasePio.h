@@ -73,7 +73,7 @@
   X(PIO_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
   X(PIO_ERR_OPERATION_ABORTED, 30, "Operation aborted")
 
-enum class hf_pio_err_t : uint8_t {
+enum class hf_pio_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_PIO_ERR_LIST(X)
 #undef X
@@ -103,7 +103,7 @@ constexpr std::string_view HfPioErrToString(hf_pio_err_t err) noexcept {
 /**
  * @brief PIO channel direction
  */
-enum class hf_pio_direction_t : uint8_t {
+enum class hf_pio_direction_t : hf_u8_t {
   Transmit = 0,     ///< Transmit mode (output)
   Receive = 1,      ///< Receive mode (input)
   Bidirectional = 2 ///< Bidirectional mode (if supported)
@@ -112,7 +112,7 @@ enum class hf_pio_direction_t : uint8_t {
 /**
  * @brief PIO signal polarity
  */
-enum class hf_pio_polarity_t : uint8_t {
+enum class hf_pio_polarity_t : hf_u8_t {
   Normal = 0,  ///< Normal polarity (idle low, active high)
   Inverted = 1 ///< Inverted polarity (idle high, active low)
 };
@@ -120,7 +120,7 @@ enum class hf_pio_polarity_t : uint8_t {
 /**
  * @brief PIO idle state
  */
-enum class hf_pio_idle_state_t : uint8_t {
+enum class hf_pio_idle_state_t : hf_u8_t {
   Low = 0, ///< Idle state is low
   High = 1 ///< Idle state is high
 };
@@ -131,10 +131,10 @@ enum class hf_pio_idle_state_t : uint8_t {
 struct hf_pio_channel_config_t {
   hf_pin_num_t gpio_pin;          ///< GPIO pin for PIO signal
   hf_pio_direction_t direction;   ///< Channel direction
-  uint32_t resolution_ns;         ///< Time resolution in nanoseconds
+  hf_u32_t resolution_ns;         ///< Time resolution in nanoseconds
   hf_pio_polarity_t polarity;     ///< Signal polarity
   hf_pio_idle_state_t idle_state; ///< Idle state
-  uint32_t timeout_us;            ///< Operation timeout in microseconds
+  hf_u32_t timeout_us;            ///< Operation timeout in microseconds
   size_t buffer_size;             ///< Buffer size for symbols/durations
 
   hf_pio_channel_config_t() noexcept
@@ -147,11 +147,11 @@ struct hf_pio_channel_config_t {
  * @brief PIO symbol structure for precise timing
  */
 struct hf_pio_symbol_t {
-  uint32_t duration; ///< Duration in resolution units
+  hf_u32_t duration; ///< Duration in resolution units
   bool level;        ///< Signal level (true = high, false = low)
 
   hf_pio_symbol_t() noexcept : duration(0), level(false) {}
-  hf_pio_symbol_t(uint32_t dur, bool lvl) noexcept : duration(dur), level(lvl) {}
+  hf_pio_symbol_t(hf_u32_t dur, bool lvl) noexcept : duration(dur), level(lvl) {}
 };
 
 /**
@@ -165,17 +165,17 @@ struct hf_pio_channel_status_t {
   size_t symbols_queued;    ///< Number of symbols in queue
   size_t symbols_processed; ///< Number of symbols processed
   hf_pio_err_t last_error;  ///< Last error that occurred
-  uint32_t timestamp_us;    ///< Timestamp of last operation
+  hf_u32_t timestamp_us;    ///< Timestamp of last operation
 };
 
 /**
  * @brief PIO capability information
  */
 struct hf_pio_capabilities_t {
-  uint8_t max_channels;        ///< Maximum number of channels
-  uint32_t min_resolution_ns;  ///< Minimum time resolution
-  uint32_t max_resolution_ns;  ///< Maximum time resolution
-  uint32_t max_duration;       ///< Maximum single duration
+  hf_u8_t max_channels;        ///< Maximum number of channels
+  hf_u32_t min_resolution_ns;  ///< Minimum time resolution
+  hf_u32_t max_resolution_ns;  ///< Maximum time resolution
+  hf_u32_t max_duration;       ///< Maximum single duration
   size_t max_buffer_size;      ///< Maximum buffer size
   bool supports_bidirectional; ///< Supports bidirectional mode
   bool supports_loopback;      ///< Supports loopback mode
@@ -186,19 +186,19 @@ struct hf_pio_capabilities_t {
  * @brief PIO operation statistics.
  */
 struct hf_pio_statistics_t {
-  uint32_t totalTransmissions;    ///< Total transmissions performed
-  uint32_t successfulTransmissions; ///< Successful transmissions
-  uint32_t failedTransmissions;   ///< Failed transmissions
-  uint32_t totalReceptions;       ///< Total receptions performed
-  uint32_t successfulReceptions;  ///< Successful receptions
-  uint32_t failedReceptions;      ///< Failed receptions
-  uint32_t symbolsTransmitted;    ///< Total symbols transmitted
-  uint32_t symbolsReceived;       ///< Total symbols received
-  uint32_t averageTransmissionTimeUs; ///< Average transmission time (microseconds)
-  uint32_t maxTransmissionTimeUs; ///< Maximum transmission time
-  uint32_t minTransmissionTimeUs; ///< Minimum transmission time
-  uint32_t timingErrors;          ///< Number of timing errors
-  uint32_t bufferOverflows;       ///< Number of buffer overflows
+  hf_u32_t totalTransmissions;    ///< Total transmissions performed
+  hf_u32_t successfulTransmissions; ///< Successful transmissions
+  hf_u32_t failedTransmissions;   ///< Failed transmissions
+  hf_u32_t totalReceptions;       ///< Total receptions performed
+  hf_u32_t successfulReceptions;  ///< Successful receptions
+  hf_u32_t failedReceptions;      ///< Failed receptions
+  hf_u32_t symbolsTransmitted;    ///< Total symbols transmitted
+  hf_u32_t symbolsReceived;       ///< Total symbols received
+  hf_u32_t averageTransmissionTimeUs; ///< Average transmission time (microseconds)
+  hf_u32_t maxTransmissionTimeUs; ///< Maximum transmission time
+  hf_u32_t minTransmissionTimeUs; ///< Minimum transmission time
+  hf_u32_t timingErrors;          ///< Number of timing errors
+  hf_u32_t bufferOverflows;       ///< Number of buffer overflows
 
   hf_pio_statistics_t()
       : totalTransmissions(0), successfulTransmissions(0), failedTransmissions(0),
@@ -214,11 +214,11 @@ struct hf_pio_statistics_t {
 struct hf_pio_diagnostics_t {
   bool pioHealthy;               ///< Overall PIO health status
   hf_pio_err_t lastErrorCode;    ///< Last error code
-  uint32_t lastErrorTimestamp;   ///< Last error timestamp
-  uint32_t consecutiveErrors;    ///< Consecutive error count
+  hf_u32_t lastErrorTimestamp;   ///< Last error timestamp
+  hf_u32_t consecutiveErrors;    ///< Consecutive error count
   bool pioInitialized;           ///< PIO initialization status
-  uint8_t activeChannels;        ///< Number of active channels
-  uint32_t currentResolutionNs;  ///< Current time resolution
+  hf_u8_t activeChannels;        ///< Number of active channels
+  hf_u32_t currentResolutionNs;  ///< Current time resolution
   bool bidirectionalSupported;   ///< Bidirectional mode support
 
   hf_pio_diagnostics_t()
@@ -238,7 +238,7 @@ struct hf_pio_diagnostics_t {
  * @param user_data User-provided data
  */
 using hf_pio_transmit_callback_t =
-    std::function<void(uint8_t channel_id, size_t symbols_sent, void *user_data)>;
+    std::function<void(hf_u8_t channel_id, size_t symbols_sent, void *user_data)>;
 
 /**
  * @brief Callback for PIO reception complete events
@@ -248,7 +248,7 @@ using hf_pio_transmit_callback_t =
  * @param user_data User-provided data
  */
 using hf_pio_receive_callback_t = std::function<void(
-    uint8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count, void *user_data)>;
+    hf_u8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count, void *user_data)>;
 
 /**
  * @brief Callback for PIO error events
@@ -257,7 +257,7 @@ using hf_pio_receive_callback_t = std::function<void(
  * @param user_data User-provided data
  */
 using hf_pio_error_callback_t =
-    std::function<void(uint8_t channel_id, hf_pio_err_t error, void *user_data)>;
+    std::function<void(hf_u8_t channel_id, hf_pio_err_t error, void *user_data)>;
 
 //--------------------------------------
 //  Abstract Base Class
@@ -352,7 +352,7 @@ public:
    * @param config Channel configuration
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t ConfigureChannel(uint8_t channel_id,
+  virtual hf_pio_err_t ConfigureChannel(hf_u8_t channel_id,
                                         const hf_pio_channel_config_t &config) noexcept = 0;
 
   /**
@@ -363,7 +363,7 @@ public:
    * @param wait_completion If true, block until transmission is complete
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols,
+  virtual hf_pio_err_t Transmit(hf_u8_t channel_id, const hf_pio_symbol_t *symbols,
                                 size_t symbol_count, bool wait_completion = false) noexcept = 0;
 
   /**
@@ -374,8 +374,8 @@ public:
    * @param timeout_us Timeout in microseconds (0 = no timeout)
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
-                                    uint32_t timeout_us = 0) noexcept = 0;
+  virtual hf_pio_err_t StartReceive(hf_u8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
+                                    hf_u32_t timeout_us = 0) noexcept = 0;
 
   /**
    * @brief Stop receiving and get the number of symbols received
@@ -383,14 +383,14 @@ public:
    * @param symbols_received [out] Number of symbols actually received
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept = 0;
+  virtual hf_pio_err_t StopReceive(hf_u8_t channel_id, size_t &symbols_received) noexcept = 0;
 
   /**
    * @brief Check if a channel is currently busy
    * @param channel_id Channel identifier
    * @return true if channel is busy, false otherwise
    */
-  virtual bool IsChannelBusy(uint8_t channel_id) const noexcept = 0;
+  virtual bool IsChannelBusy(hf_u8_t channel_id) const noexcept = 0;
 
   /**
    * @brief Get channel status information
@@ -398,7 +398,7 @@ public:
    * @param status [out] Status information
    * @return Error code indicating success or failure
    */
-  virtual hf_pio_err_t GetChannelStatus(uint8_t channel_id,
+  virtual hf_pio_err_t GetChannelStatus(hf_u8_t channel_id,
                                         hf_pio_channel_status_t &status) const noexcept = 0;
 
   /**

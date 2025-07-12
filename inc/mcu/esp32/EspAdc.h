@@ -345,7 +345,7 @@ public:
    * @return hf_adc_err_t error code
    */
   hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id, float& channel_reading_v,
-                            uint8_t numOfSamplesToAvg = 1, 
+                            hf_u8_t numOfSamplesToAvg = 1, 
                             hf_time_t timeBetweenSamples = 0) noexcept override;
 
   /**
@@ -356,8 +356,8 @@ public:
    * @param timeBetweenSamples Time between samples in ms (default 0)
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id, uint32_t& channel_reading_count,
-                                uint8_t numOfSamplesToAvg = 1,
+  hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id, hf_u32_t& channel_reading_count,
+                                hf_u8_t numOfSamplesToAvg = 1,
                                 hf_time_t timeBetweenSamples = 0) noexcept override;
 
   /**
@@ -369,8 +369,8 @@ public:
    * @param timeBetweenSamples Time between samples in ms (default 0)
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, uint32_t& channel_reading_count,
-                           float& channel_reading_v, uint8_t numOfSamplesToAvg = 1,
+  hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, hf_u32_t& channel_reading_count,
+                           float& channel_reading_v, hf_u8_t numOfSamplesToAvg = 1,
                            hf_time_t timeBetweenSamples = 0) noexcept override;
 
   /**
@@ -381,8 +381,8 @@ public:
    * @param voltages Array to store voltage readings
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadMultipleChannels(const hf_channel_id_t* channel_ids, uint8_t num_channels,
-                                    uint32_t* readings, float* voltages) noexcept override;
+  hf_adc_err_t ReadMultipleChannels(const hf_channel_id_t* channel_ids, hf_u8_t num_channels,
+                                    hf_u32_t* readings, float* voltages) noexcept override;
 
   //==============================================//
   // MODE AND CONFIGURATION OPERATIONS

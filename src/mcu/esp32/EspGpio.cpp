@@ -64,8 +64,8 @@ static hf_gpio_pull_t MapPullModeToHardware(hf_gpio_pull_mode_t mode) {
 
 namespace {
   // Thread-safe interrupt statistics tracking
-  std::atomic<uint32_t> g_total_gpio_interrupts{0};
-  std::atomic<uint32_t> g_active_gpio_count{0};
+  std::atomic<hf_u32_t> g_total_gpio_interrupts{0};
+  std::atomic<hf_u32_t> g_active_gpio_count{0};
   
   // GPIO pin capabilities lookup table for ESP32C6
   #ifdef HF_MCU_ESP32C6
@@ -311,7 +311,7 @@ bool EspGpio::IsPinAvailable() const noexcept {
   #endif
 }
 
-uint8_t EspGpio::GetMaxPins() const noexcept {
+hf_u8_t EspGpio::GetMaxPins() const noexcept {
   #ifdef HF_MCU_ESP32C6
   return HF_MCU_GPIO_PIN_COUNT;
   #else
@@ -445,7 +445,7 @@ hf_gpio_err_t EspGpio::DisableInterrupt() noexcept {
   return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-hf_gpio_err_t EspGpio::WaitForInterrupt(uint32_t timeout_ms) noexcept {
+hf_gpio_err_t EspGpio::WaitForInterrupt(hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -1327,7 +1327,7 @@ hf_gpio_err_t EspGpio::GetStatusInfo(hf_gpio_status_info_t &status) const noexce
   return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-uint32_t EspGpio::GetTotalInterruptCount() noexcept {
+hf_u32_t EspGpio::GetTotalInterruptCount() noexcept {
 #ifdef HF_MCU_ESP32C6
   return g_total_gpio_interrupts.load();
 #else
@@ -1335,7 +1335,7 @@ uint32_t EspGpio::GetTotalInterruptCount() noexcept {
 #endif
 }
 
-uint32_t EspGpio::GetActiveGpioCount() noexcept {
+hf_u32_t EspGpio::GetActiveGpioCount() noexcept {
 #ifdef HF_MCU_ESP32C6
   return g_active_gpio_count.load();
 #else
@@ -1630,11 +1630,11 @@ hf_gpio_err_t EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept
 }
 
 // Static ETM utility functions
-uint8_t EspGpio::GetETMChannelUsage() noexcept {
+hf_u8_t EspGpio::GetETMChannelUsage() noexcept {
   return etm_channel_usage_count;
 }
 
-uint8_t EspGpio::GetMaxETMChannels() noexcept {
+hf_u8_t EspGpio::GetMaxETMChannels() noexcept {
   return HF_MCU_GPIO_ETM_CHANNEL_COUNT;
 }
 
@@ -1682,11 +1682,11 @@ hf_gpio_err_t EspGpio::GetETMStatus(hf_gpio_etm_status_t &status) const noexcept
   return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
 }
 
-uint8_t EspGpio::GetETMChannelUsage() noexcept {
+hf_u8_t EspGpio::GetETMChannelUsage() noexcept {
   return 0;
 }
 
-uint8_t EspGpio::GetMaxETMChannels() noexcept {
+hf_u8_t EspGpio::GetMaxETMChannels() noexcept {
   return 0;
 }
 

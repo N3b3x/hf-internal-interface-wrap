@@ -43,15 +43,15 @@ static const char* TAG = "AdvancedPwmExample";
 //==============================================================================
 
 // PWM Configuration for different use cases
-static constexpr uint32_t LED_FREQUENCY_HZ = 1000;      ///< LED PWM frequency
-static constexpr uint32_t MOTOR_FREQUENCY_HZ = 20000;   ///< Motor PWM frequency
-static constexpr uint32_t SERVO_FREQUENCY_HZ = 50;      ///< Servo PWM frequency
-static constexpr uint32_t AUDIO_FREQUENCY_HZ = 440;     ///< Audio PWM frequency
+static constexpr hf_u32_t LED_FREQUENCY_HZ = 1000;      ///< LED PWM frequency
+static constexpr hf_u32_t MOTOR_FREQUENCY_HZ = 20000;   ///< Motor PWM frequency
+static constexpr hf_u32_t SERVO_FREQUENCY_HZ = 50;      ///< Servo PWM frequency
+static constexpr hf_u32_t AUDIO_FREQUENCY_HZ = 440;     ///< Audio PWM frequency
 
-static constexpr uint8_t LED_RESOLUTION_BITS = 8;       ///< LED resolution
-static constexpr uint8_t MOTOR_RESOLUTION_BITS = 12;    ///< Motor resolution
-static constexpr uint8_t SERVO_RESOLUTION_BITS = 16;    ///< Servo resolution
-static constexpr uint8_t AUDIO_RESOLUTION_BITS = 10;    ///< Audio resolution
+static constexpr hf_u8_t LED_RESOLUTION_BITS = 8;       ///< LED resolution
+static constexpr hf_u8_t MOTOR_RESOLUTION_BITS = 12;    ///< Motor resolution
+static constexpr hf_u8_t SERVO_RESOLUTION_BITS = 16;    ///< Servo resolution
+static constexpr hf_u8_t AUDIO_RESOLUTION_BITS = 10;    ///< Audio resolution
 
 // GPIO Pin assignments (ESP32-C6 specific)
 static constexpr hf_pin_num_t LED_PIN = 2;              ///< LED output pin
@@ -66,7 +66,7 @@ static constexpr hf_pin_num_t AUDIO_PIN = 6;            ///< Audio output pin
 
 static EspPwm* g_pwm_controller = nullptr;
 static volatile bool g_fade_complete = false;
-static volatile uint32_t g_period_count = 0;
+static volatile hf_u32_t g_period_count = 0;
 
 //==============================================================================
 // CALLBACK FUNCTIONS
@@ -438,7 +438,7 @@ void DemonstrateAudioGeneration(EspPwm& pwm) {
     }
     
     // Generate different tones
-    const uint32_t frequencies[] = {440, 494, 523, 587, 659, 698, 784}; // A4 to G5
+    const hf_u32_t frequencies[] = {440, 494, 523, 587, 659, 698, 784}; // A4 to G5
     const char* note_names[] = {"A4", "B4", "C5", "D5", "E5", "F5", "G5"};
     
     ESP_LOGI(TAG, "Generating musical scale...");
@@ -475,7 +475,7 @@ void DemonstrateAdvancedFeatures(EspPwm& pwm) {
     // Show timer assignments
     for (hf_channel_id_t ch = 0; ch < 5; ch++) {
         if (pwm.IsChannelEnabled(ch)) {
-            int8_t timer = pwm.GetTimerAssignment(ch);
+            hf_i8_t timer = pwm.GetTimerAssignment(ch);
             ESP_LOGI(TAG, "Channel %lu assigned to timer %d", ch, timer);
         }
     }

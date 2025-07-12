@@ -100,7 +100,7 @@ static const char* TAG = "EspI2c";
 #endif
 
 // Constants for I2C operations
-static constexpr uint32_t AUTO_SUSPEND_DELAY_MS = 5000; // 5 seconds
+static constexpr hf_u32_t AUTO_SUSPEND_DELAY_MS = 5000; // 5 seconds
 
 //==============================================================================
 // ESP32 VARIANT-SPECIFIC PORT TO GPIO MAPPING
@@ -376,8 +376,8 @@ bool EspI2c::Deinitialize() noexcept {
  * @param timeout_ms Timeout in milliseconds (0 = use default)
  * @return I2C operation result
  */
-hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t length,
-                       uint32_t timeout_ms) noexcept {
+hf_i2c_err_t EspI2c::Write(hf_u8_t device_addr, const hf_u8_t* data, hf_u16_t length,
+                       hf_u32_t timeout_ms) noexcept {
     if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
@@ -396,7 +396,7 @@ hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t le
 
     MutexLockGuard lock(mutex_);
     
-    uint64_t start_time = esp_timer_get_time();
+    hf_u64_t start_time = esp_timer_get_time();
     hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
     // Get or create device handle
@@ -406,7 +406,7 @@ hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t le
     }
 
     // Perform the write operation
-    uint32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
     esp_err_t ret = i2c_master_transmit(dev_handle, data, length, 
                                         static_cast<int>(effective_timeout));
     
@@ -420,7 +420,7 @@ hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t le
     }
 
     // Update statistics and diagnostics
-    uint64_t operation_time = esp_timer_get_time() - start_time;
+    hf_u64_t operation_time = esp_timer_get_time() - start_time;
     UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
 
@@ -436,8 +436,8 @@ hf_i2c_err_t EspI2c::Write(uint8_t device_addr, const uint8_t* data, uint16_t le
  * @param timeout_ms Timeout in milliseconds (0 = use default)
  * @return I2C operation result
  */
-hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
-                      uint32_t timeout_ms) noexcept {
+hf_i2c_err_t EspI2c::Read(hf_u8_t device_addr, hf_u8_t* data, hf_u16_t length,
+                      hf_u32_t timeout_ms) noexcept {
     if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
@@ -456,7 +456,7 @@ hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
 
     MutexLockGuard lock(mutex_);
     
-    uint64_t start_time = esp_timer_get_time();
+    hf_u64_t start_time = esp_timer_get_time();
     hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
     // Get or create device handle
@@ -466,7 +466,7 @@ hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
     }
 
     // Perform the read operation
-    uint32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
     esp_err_t ret = i2c_master_receive(dev_handle, data, length, 
                                        static_cast<int>(effective_timeout));
     
@@ -480,7 +480,7 @@ hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
     }
 
     // Update statistics and diagnostics
-    uint64_t operation_time = esp_timer_get_time() - start_time;
+    hf_u64_t operation_time = esp_timer_get_time() - start_time;
     UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
 
@@ -498,9 +498,9 @@ hf_i2c_err_t EspI2c::Read(uint8_t device_addr, uint8_t* data, uint16_t length,
  * @param timeout_ms Timeout in milliseconds (0 = use default)
  * @return I2C operation result
  */
-hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint16_t tx_length,
-                           uint8_t* rx_data, uint16_t rx_length, 
-                           uint32_t timeout_ms) noexcept {
+hf_i2c_err_t EspI2c::WriteRead(hf_u8_t device_addr, const hf_u8_t* tx_data, hf_u16_t tx_length,
+                           hf_u8_t* rx_data, hf_u16_t rx_length, 
+                           hf_u32_t timeout_ms) noexcept {
     if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
@@ -519,7 +519,7 @@ hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint
 
     MutexLockGuard lock(mutex_);
     
-    uint64_t start_time = esp_timer_get_time();
+    hf_u64_t start_time = esp_timer_get_time();
     hf_i2c_err_t result = hf_i2c_err_t::I2C_SUCCESS;
 
     // Get or create device handle
@@ -529,7 +529,7 @@ hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint
     }
 
     // Perform the write-read operation
-    uint32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
+    hf_u32_t effective_timeout = GetEffectiveTimeout(timeout_ms);
     esp_err_t ret = i2c_master_transmit_receive(dev_handle, tx_data, tx_length, 
                                                rx_data, rx_length,
                                                static_cast<int>(effective_timeout));
@@ -545,7 +545,7 @@ hf_i2c_err_t EspI2c::WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint
     }
 
     // Update statistics and diagnostics
-    uint64_t operation_time = esp_timer_get_time() - start_time;
+    hf_u64_t operation_time = esp_timer_get_time() - start_time;
     UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, tx_length + rx_length, operation_time);
     last_operation_time_us_.store(esp_timer_get_time());
 
@@ -616,7 +616,7 @@ hf_i2c_err_t EspI2c::AddDevice(const hf_i2c_device_config_t& device_config) noex
  * @param device_address Device address to remove
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::RemoveDevice(uint16_t device_address) noexcept {
+hf_i2c_err_t EspI2c::RemoveDevice(hf_u16_t device_address) noexcept {
     if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
     }
@@ -694,7 +694,7 @@ hf_i2c_err_t EspI2c::GetDiagnostics(hf_i2c_diagnostics_t &diagnostics) const noe
  * @param device_addr Device address to validate
  * @return true if valid, false otherwise
  */
-bool EspI2c::IsValidDeviceAddress(uint16_t device_addr) const noexcept {
+bool EspI2c::IsValidDeviceAddress(hf_u16_t device_addr) const noexcept {
     return I2C_IS_VALID_7BIT_ADDR(device_addr) || I2C_IS_VALID_10BIT_ADDR(device_addr);
 }
 
@@ -703,7 +703,7 @@ bool EspI2c::IsValidDeviceAddress(uint16_t device_addr) const noexcept {
  * @param timeout_ms Requested timeout (0 = use default)
  * @return Effective timeout in milliseconds
  */
-uint32_t EspI2c::GetEffectiveTimeout(uint32_t timeout_ms) const noexcept {
+hf_u32_t EspI2c::GetEffectiveTimeout(hf_u32_t timeout_ms) const noexcept {
     return (timeout_ms == 0) ? I2C_DEFAULT_TIMEOUT_MS : timeout_ms;
 }
 
@@ -736,7 +736,7 @@ hf_i2c_err_t EspI2c::ConvertEspError(esp_err_t esp_error) const noexcept {
  * @param device_addr Device address
  * @return Device handle or nullptr on failure
  */
-i2c_master_dev_handle_t EspI2c::GetOrCreateDeviceHandle(uint16_t device_addr) noexcept {
+i2c_master_dev_handle_t EspI2c::GetOrCreateDeviceHandle(hf_u16_t device_addr) noexcept {
     // Check if handle already exists
     auto it = device_handles_.find(device_addr);
     if (it != device_handles_.end()) {
@@ -846,7 +846,7 @@ void EspI2c::UpdateDiagnostics() noexcept {
  * @param clock_speed_hz Clock speed in Hz
  * @return true if successful, false otherwise
  */
-bool EspI2c::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
+bool EspI2c::SetClockSpeed(hf_u32_t clock_speed_hz) noexcept {
     if (!I2C_IS_VALID_CLOCK_SPEED(clock_speed_hz)) {
         last_error_ = hf_i2c_err_t::I2C_ERR_INVALID_CLOCK_SPEED;
         return false;
@@ -881,7 +881,7 @@ bool EspI2c::SetPullUps(bool enable) noexcept {
  * @param device_addr Device address to probe
  * @return true if device responds, false otherwise
  */
-bool EspI2c::ProbeDevice(uint16_t device_addr) noexcept {
+bool EspI2c::ProbeDevice(hf_u16_t device_addr) noexcept {
     if (!EnsureInitialized()) {
         return false;
     }
@@ -901,15 +901,15 @@ bool EspI2c::ProbeDevice(uint16_t device_addr) noexcept {
  * @param end_addr Ending address for scan
  * @return Number of devices found
  */
-size_t EspI2c::ScanDevices(std::vector<uint16_t>& found_devices,
-                           uint16_t start_addr, uint16_t end_addr) noexcept {
+size_t EspI2c::ScanDevices(std::vector<hf_u16_t>& found_devices,
+                           hf_u16_t start_addr, hf_u16_t end_addr) noexcept {
     if (!EnsureInitialized()) {
         return 0;
     }
 
     found_devices.clear();
     
-    for (uint16_t addr = start_addr; addr <= end_addr; ++addr) {
+    for (hf_u16_t addr = start_addr; addr <= end_addr; ++addr) {
         if (ProbeDevice(addr)) {
             found_devices.push_back(addr);
             ESP_LOGD(TAG, "Device found at address 0x%02X", addr);
@@ -931,7 +931,7 @@ size_t EspI2c::ScanDevices(std::vector<uint16_t>& found_devices,
  * @param value Value to write
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::WriteRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t value) noexcept {
+hf_i2c_err_t EspI2c::WriteRegister(hf_u16_t device_addr, hf_u8_t reg_addr, hf_u8_t value) noexcept {
     uint8_t data[2] = {reg_addr, value};
     return Write(static_cast<uint8_t>(device_addr), data, sizeof(data));
 }
@@ -943,7 +943,7 @@ hf_i2c_err_t EspI2c::WriteRegister(uint16_t device_addr, uint8_t reg_addr, uint8
  * @param value Reference to store read value
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::ReadRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t& value) noexcept {
+hf_i2c_err_t EspI2c::ReadRegister(hf_u16_t device_addr, hf_u8_t reg_addr, hf_u8_t& value) noexcept {
     return WriteRead(static_cast<uint8_t>(device_addr), &reg_addr, 1, &value, 1);
 }
 
@@ -954,8 +954,8 @@ hf_i2c_err_t EspI2c::ReadRegister(uint16_t device_addr, uint8_t reg_addr, uint8_
  * @param data Vector of data to write
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::WriteMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
-                                        const std::vector<uint8_t>& data) noexcept {
+hf_i2c_err_t EspI2c::WriteMultipleRegisters(hf_u16_t device_addr, hf_u8_t start_reg_addr,
+                                        const std::vector<hf_u8_t>& data) noexcept {
     if (data.empty() || data.size() > I2C_MAX_TRANSFER_SIZE - 1) {
         return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
@@ -977,8 +977,8 @@ hf_i2c_err_t EspI2c::WriteMultipleRegisters(uint16_t device_addr, uint8_t start_
  * @param count Number of registers to read
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
-                                       std::vector<uint8_t>& data, size_t count) noexcept {
+hf_i2c_err_t EspI2c::ReadMultipleRegisters(hf_u16_t device_addr, hf_u8_t start_reg_addr,
+                                       std::vector<hf_u8_t>& data, size_t count) noexcept {
     if (count == 0 || count > I2C_MAX_TRANSFER_SIZE) {
         return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
     }
@@ -1068,7 +1068,7 @@ void EspI2c::SetEventCallback(hf_i2c_event_callback_t callback, void* user_data)
  * @param user_data User data pointer for callback
  * @return Operation result with operation ID for tracking
  */
-hf_i2c_err_t EspI2c::WriteAsync(uint16_t device_addr, const std::vector<uint8_t>& data,
+hf_i2c_err_t EspI2c::WriteAsync(hf_u16_t device_addr, const std::vector<hf_u8_t>& data,
                             hf_i2c_async_callback_t callback, void* user_data) noexcept {
     if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
@@ -1102,7 +1102,7 @@ hf_i2c_err_t EspI2c::WriteAsync(uint16_t device_addr, const std::vector<uint8_t>
  * @param user_data User data pointer for callback
  * @return Operation result with operation ID for tracking
  */
-hf_i2c_err_t EspI2c::ReadAsync(uint16_t device_addr, size_t length, hf_i2c_async_callback_t callback,
+hf_i2c_err_t EspI2c::ReadAsync(hf_u16_t device_addr, size_t length, hf_i2c_async_callback_t callback,
                            void* user_data) noexcept {
     if (!EnsureInitialized()) {
         return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
@@ -1135,7 +1135,7 @@ hf_i2c_err_t EspI2c::ReadAsync(uint16_t device_addr, size_t length, hf_i2c_async
  * @param operation_id ID of the operation to cancel
  * @return Operation result
  */
-hf_i2c_err_t EspI2c::CancelAsyncOperation(uint32_t operation_id) noexcept {
+hf_i2c_err_t EspI2c::CancelAsyncOperation(hf_u32_t operation_id) noexcept {
     RtosUniqueLock<RtosMutex> lock(mutex_);
     
     // Look for the operation in our pending operations map

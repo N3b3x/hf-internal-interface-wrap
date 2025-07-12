@@ -78,7 +78,7 @@ public:
    * @param period_us Timer period in microseconds
    * @return Success or specific error code
    */
-  hf_timer_err_t Start(uint64_t period_us) noexcept override;
+  hf_timer_err_t Start(hf_u64_t period_us) noexcept override;
 
   /**
    * @brief Stop the timer.
@@ -91,14 +91,14 @@ public:
    * @param new_period_us New period in microseconds
    * @return Success or specific error code
    */
-  hf_timer_err_t SetPeriod(uint64_t new_period_us) noexcept override;
+  hf_timer_err_t SetPeriod(hf_u64_t new_period_us) noexcept override;
 
   /**
    * @brief Get current timer period.
    * @param period_us Reference to store current period
    * @return Success or specific error code
    */
-  hf_timer_err_t GetPeriod(uint64_t &period_us) noexcept override;
+  hf_timer_err_t GetPeriod(hf_u64_t &period_us) noexcept override;
 
   /**
    * @brief Get timer statistics and status information.
@@ -107,7 +107,7 @@ public:
    * @param last_error Last error that occurred
    * @return Success or specific error code
    */
-  hf_timer_err_t GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
+  hf_timer_err_t GetStats(hf_u64_t &callback_count, hf_u64_t &missed_callbacks,
                           hf_timer_err_t &last_error) noexcept override;
 
   /**
@@ -126,19 +126,19 @@ public:
    * @brief Get minimum supported timer period.
    * @return Minimum period in microseconds
    */
-  uint64_t GetMinPeriod() const noexcept override;
+  hf_u64_t GetMinPeriod() const noexcept override;
 
   /**
    * @brief Get maximum supported timer period.
    * @return Maximum period in microseconds
    */
-  uint64_t GetMaxPeriod() const noexcept override;
+  hf_u64_t GetMaxPeriod() const noexcept override;
 
   /**
    * @brief Get timer resolution.
    * @return Timer resolution in microseconds
    */
-  uint64_t GetResolution() const noexcept override;
+  hf_u64_t GetResolution() const noexcept override;
 
   /**
    * @brief Get timer operation statistics.
@@ -156,7 +156,7 @@ public:
 
 private:
   hf_timer_handle_t timer_handle_; ///< Platform-specific timer handle
-  uint64_t period_us_;             ///< Current timer period in microseconds
+  hf_u64_t period_us_;             ///< Current timer period in microseconds
   hf_timer_stats_t stats_;         ///< Timer statistics
 
   /**
@@ -171,7 +171,7 @@ private:
    * @param period_us Period to validate in microseconds
    * @return True if valid, false otherwise
    */
-  bool ValidatePeriod(uint64_t period_us) const noexcept;
+  bool ValidatePeriod(hf_u64_t period_us) const noexcept;
 
   /**
    * @brief Create platform-specific timer handle.

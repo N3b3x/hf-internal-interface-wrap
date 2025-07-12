@@ -37,8 +37,8 @@
 static const char* TAG = "EspAdc";
 
 // ESP32 ADC constants (variant-specific)
-static constexpr uint32_t ADC_MAX_RAW_VALUE = HF_ESP32_ADC_MAX_RAW_VALUE; // 12-bit ADC
-static constexpr uint32_t DEFAULT_TIMEOUT_MS = 1000;
+static constexpr hf_u32_t ADC_MAX_RAW_VALUE = HF_ESP32_ADC_MAX_RAW_VALUE; // 12-bit ADC
+static constexpr hf_u32_t DEFAULT_TIMEOUT_MS = 1000;
 
 //==============================================================================
 // ESP32 VARIANT-SPECIFIC CHANNEL TO GPIO MAPPING
@@ -129,7 +129,7 @@ bool EspAdc::Initialize() noexcept
 {
     MutexLockGuard lock(config_mutex_);
     
-    const uint64_t start_time = GetCurrentTimeUs();
+    const hf_u64_t start_time = GetCurrentTimeUs();
     hf_adc_err_t result = hf_adc_err_t::ADC_SUCCESS;
 
     do {
@@ -166,7 +166,7 @@ bool EspAdc::Initialize() noexcept
                     cali_config.bitwidth = static_cast<adc_bitwidth_t>(config_.bit_width);
 
                     esp_err = adc_cali_create_scheme_curve_fitting(&cali_config, 
-                        &calibration_handles_[static_cast<uint8_t>(channel_config.attenuation)]);
+                        &calibration_handles_[static_cast<hf_u8_t>(channel_config.attenuation)]);
                     
                     if (esp_err != ESP_OK) {
                         ESP_LOGW(TAG, "Calibration init failed for attenuation %d: %s", 
@@ -246,7 +246,7 @@ hf_adc_err_t EspAdc::ConfigureChannel(hf_channel_id_t channel_id, hf_adc_atten_t
 {
     MutexLockGuard lock(config_mutex_);
     
-    const uint64_t start_time = GetCurrentTimeUs();
+    const hf_u64_t start_time = GetCurrentTimeUs();
     hf_adc_err_t result = ValidateChannelId(channel_id);
     
     if (result == hf_adc_err_t::ADC_SUCCESS) {
@@ -327,9 +327,9 @@ hf_adc_err_t EspAdc::DisableChannel(hf_channel_id_t channel_id) noexcept
 // ADC READING OPERATIONS  
 //==============================================//
 
-hf_adc_err_t EspAdc::ReadSingleRaw(hf_channel_id_t channel_id, uint32_t& raw_value) noexcept
+hf_adc_err_t EspAdc::ReadSingleRaw(hf_channel_id_t channel_id, hf_u32_t& raw_value) noexcept
 {
-    const uint64_t start_time = GetCurrentTimeUs();
+    const hf_u64_t start_time = GetCurrentTimeUs();
     hf_adc_err_t result = ValidateChannelId(channel_id);
 
     if (result == hf_adc_err_t::ADC_SUCCESS) {
@@ -349,30 +349,30 @@ hf_adc_err_t EspAdc::ReadSingleRaw(hf_channel_id_t channel_id, uint32_t& raw_val
     return result;
 }
 
-hf_adc_err_t EspAdc::ReadSingleVoltage(hf_channel_id_t channel_id, uint32_t& voltage_mv) noexcept
+hf_adc_err_t EspAdc::ReadSingleVoltage(hf_channel_id_t channel_id, hf_u32_t& voltage_mv) noexcept
 {
-    uint32_t raw_value;
+    hf_u32_t raw_value;
     hf_adc_err_t result = ReadSingleRaw(channel_id, raw_value);
     
     if (result == hf_adc_err_t::ADC_SUCCESS) {
         // Convert raw to voltage using calibration if available
-        const uint8_t atten = static_cast<uint8_t>(config_.channel_configs[channel_id].attenuation);
+        const hf_u8_t atten = static_cast<hf_u8_t>(config_.channel_configs[channel_id].attenuation);
         if (calibration_handles_[atten] != nullptr) {
             int voltage_cal;
             esp_err_t esp_err = adc_cali_raw_to_voltage(calibration_handles_[atten], 
                 static_cast<int>(raw_value), &voltage_cal);
             
             if (esp_err == ESP_OK) {
-                voltage_mv = static_cast<uint32_t>(voltage_cal);
+                voltage_mv = static_cast<hf_u32_t>(voltage_cal);
             } else {
                 result = hf_adc_err_t::ADC_ERR_CALIBRATION;
                 statistics_.calibration_errors++;
             }
         } else {
             // Fallback: simple linear conversion without calibration
-            const uint32_t max_voltage_mv = (atten == static_cast<uint8_t>(hf_adc_atten_t::ATTEN_DB_0)) ? 950 :
-                                           (atten == static_cast<uint8_t>(hf_adc_atten_t::ATTEN_DB_2_5)) ? 1250 :
-                                           (atten == static_cast<uint8_t>(hf_adc_atten_t::ATTEN_DB_6)) ? 1750 : 2450;
+            const hf_u32_t max_voltage_mv = (atten == static_cast<hf_u8_t>(hf_adc_atten_t::ATTEN_DB_0)) ? 950 :
+                                           (atten == static_cast<hf_u8_t>(hf_adc_atten_t::ATTEN_DB_2_5)) ? 1250 :
+                                           (atten == static_cast<hf_u8_t>(hf_adc_atten_t::ATTEN_DB_6)) ? 1750 : 2450;
             voltage_mv = (raw_value * max_voltage_mv) / ADC_MAX_RAW_VALUE;
         }
     }
@@ -380,18 +380,18 @@ hf_adc_err_t EspAdc::ReadSingleVoltage(hf_channel_id_t channel_id, uint32_t& vol
     return result;
 }
 
-hf_adc_err_t EspAdc::ReadMultipleRaw(const hf_channel_id_t* channel_ids, 
-                                    uint8_t num_channels,
-                                    uint32_t* raw_values) noexcept
+hf_adc_err_t EspAdc::ReadMultipleRaw(const hf_channel_id_t* channel_ids,
+                                     hf_u8_t num_channels,
+                                     hf_u32_t* raw_values) noexcept
 {
     if (channel_ids == nullptr || raw_values == nullptr || num_channels == 0) {
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
     }
 
-    const uint64_t start_time = GetCurrentTimeUs();
+    const hf_u64_t start_time = GetCurrentTimeUs();
     hf_adc_err_t result = hf_adc_err_t::ADC_SUCCESS;
 
-    for (uint8_t i = 0; i < num_channels; ++i) {
+    for (hf_u8_t i = 0; i < num_channels; ++i) {
         result = ReadSingleRaw(channel_ids[i], raw_values[i]);
         if (result != hf_adc_err_t::ADC_SUCCESS) {
             break;
@@ -403,17 +403,17 @@ hf_adc_err_t EspAdc::ReadMultipleRaw(const hf_channel_id_t* channel_ids,
 }
 
 hf_adc_err_t EspAdc::ReadMultipleVoltage(const hf_channel_id_t* channel_ids,
-                                        uint8_t num_channels, 
-                                        uint32_t* voltages_mv) noexcept
+                                        hf_u8_t num_channels, 
+                                        hf_u32_t* voltages_mv) noexcept
 {
     if (channel_ids == nullptr || voltages_mv == nullptr || num_channels == 0) {
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
     }
 
-    const uint64_t start_time = GetCurrentTimeUs();
+    const hf_u64_t start_time = GetCurrentTimeUs();
     hf_adc_err_t result = hf_adc_err_t::ADC_SUCCESS;
 
-    for (uint8_t i = 0; i < num_channels; ++i) {
+    for (hf_u8_t i = 0; i < num_channels; ++i) {
         result = ReadSingleVoltage(channel_ids[i], voltages_mv[i]);
         if (result != hf_adc_err_t::ADC_SUCCESS) {
             break;
@@ -424,22 +424,22 @@ hf_adc_err_t EspAdc::ReadMultipleVoltage(const hf_channel_id_t* channel_ids,
     return result;
 }
 
-hf_adc_err_t EspAdc::ReadAveraged(hf_channel_id_t channel_id, uint16_t num_samples,
-                                 uint32_t& averaged_raw) noexcept
+hf_adc_err_t EspAdc::ReadAveraged(hf_channel_id_t channel_id, hf_u16_t num_samples,
+                                 hf_u32_t& averaged_raw) noexcept
 {
     if (num_samples == 0) {
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
     }
 
-    const uint64_t start_time = GetCurrentTimeUs();
+    const hf_u64_t start_time = GetCurrentTimeUs();
     hf_adc_err_t result = ValidateChannelId(channel_id);
 
     if (result == hf_adc_err_t::ADC_SUCCESS) {
-        uint64_t sum = 0;
-        uint16_t successful_reads = 0;
+        hf_u64_t sum = 0;
+        hf_u16_t successful_reads = 0;
 
-        for (uint16_t i = 0; i < num_samples; ++i) {
-            uint32_t raw_value;
+        for (hf_u16_t i = 0; i < num_samples; ++i) {
+            hf_u32_t raw_value;
             if (ReadSingleRaw(channel_id, raw_value) == hf_adc_err_t::ADC_SUCCESS) {
                 sum += raw_value;
                 successful_reads++;
@@ -447,7 +447,7 @@ hf_adc_err_t EspAdc::ReadAveraged(hf_channel_id_t channel_id, uint16_t num_sampl
         }
 
         if (successful_reads > 0) {
-            averaged_raw = static_cast<uint32_t>(sum / successful_reads);
+            averaged_raw = static_cast<hf_u32_t>(sum / successful_reads);
         } else {
             result = hf_adc_err_t::ADC_ERR_TIMEOUT;
         }
@@ -551,8 +551,8 @@ hf_adc_err_t EspAdc::ConfigureContinuous(const hf_adc_continuous_config_t& confi
     }
     
     // Count enabled channels for validation
-    uint32_t enabled_count = 0;
-    for (uint8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
+    hf_u32_t enabled_count = 0;
+    for (hf_u8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
         if (config_.channel_configs[i].enabled) {
             enabled_count++;
         }
@@ -640,8 +640,8 @@ bool EspAdc::IsContinuousRunning() const noexcept
     return continuous_running_.load();
 }
 
-hf_adc_err_t EspAdc::ReadContinuousData(uint8_t* buffer, uint32_t buffer_size, 
-                                        uint32_t& bytes_read, hf_time_t timeout_ms) noexcept
+hf_adc_err_t EspAdc::ReadContinuousData(hf_u8_t* buffer, hf_u32_t buffer_size, 
+                                        hf_u32_t& bytes_read, hf_time_t timeout_ms) noexcept
 {
     if (buffer == nullptr || buffer_size == 0) {
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
@@ -655,7 +655,7 @@ hf_adc_err_t EspAdc::ReadContinuousData(uint8_t* buffer, uint32_t buffer_size,
         return hf_adc_err_t::ADC_ERR_NOT_INITIALIZED;
     }
     
-    uint32_t ret_num = 0;
+    hf_u32_t ret_num = 0;
     esp_err_t esp_err = adc_continuous_read(continuous_handle_, buffer, buffer_size, 
                                            &ret_num, timeout_ms);
     
@@ -681,7 +681,7 @@ hf_adc_err_t EspAdc::InitializeCalibration(hf_adc_atten_t attenuation,
 {
     MutexLockGuard lock(config_mutex_);
     
-    uint8_t atten_idx = static_cast<uint8_t>(attenuation);
+    hf_u8_t atten_idx = static_cast<hf_u8_t>(attenuation);
     if (atten_idx >= 4) {
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
     }
@@ -716,7 +716,7 @@ hf_adc_err_t EspAdc::InitializeCalibration(hf_adc_atten_t attenuation,
 
 bool EspAdc::IsCalibrationAvailable(hf_adc_atten_t attenuation) const noexcept
 {
-    uint8_t atten_idx = static_cast<uint8_t>(attenuation);
+    hf_u8_t atten_idx = static_cast<hf_u8_t>(attenuation);
     if (atten_idx >= 4) {
         return false;
     }
@@ -725,9 +725,9 @@ bool EspAdc::IsCalibrationAvailable(hf_adc_atten_t attenuation) const noexcept
     return calibration_handles_[atten_idx] != nullptr;
 }
 
-hf_adc_err_t EspAdc::RawToVoltage(uint32_t raw_count, hf_adc_atten_t attenuation, uint32_t& voltage_mv) noexcept
+hf_adc_err_t EspAdc::RawToVoltage(hf_u32_t raw_count, hf_adc_atten_t attenuation, hf_u32_t& voltage_mv) noexcept
 {
-    uint8_t atten_idx = static_cast<uint8_t>(attenuation);
+    hf_u8_t atten_idx = static_cast<hf_u8_t>(attenuation);
     if (atten_idx >= 4) {
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
     }
@@ -743,7 +743,7 @@ hf_adc_err_t EspAdc::RawToVoltage(uint32_t raw_count, hf_adc_atten_t attenuation
                                                static_cast<int>(raw_count), &voltage_cal);
     
     if (esp_err == ESP_OK) {
-        voltage_mv = static_cast<uint32_t>(voltage_cal);
+        voltage_mv = static_cast<hf_u32_t>(voltage_cal);
         return hf_adc_err_t::ADC_SUCCESS;
     } else {
         hf_adc_err_t result = hf_adc_err_t::ADC_ERR_CALIBRATION;
@@ -795,7 +795,7 @@ hf_adc_err_t EspAdc::ConfigureFilter(const hf_adc_filter_config_t& filter_config
     }
 }
 
-hf_adc_err_t EspAdc::SetFilterEnabled(uint8_t filter_id, bool enabled) noexcept
+hf_adc_err_t EspAdc::SetFilterEnabled(hf_u8_t filter_id, bool enabled) noexcept
 {
     MutexLockGuard lock(config_mutex_);
     
@@ -877,7 +877,7 @@ hf_adc_err_t EspAdc::ConfigureMonitor(const hf_adc_monitor_config_t& monitor_con
     }
 }
 
-hf_adc_err_t EspAdc::SetMonitorCallback(uint8_t monitor_id, hf_adc_monitor_callback_t callback, 
+hf_adc_err_t EspAdc::SetMonitorCallback(hf_u8_t monitor_id, hf_adc_monitor_callback_t callback, 
                                         void* user_data) noexcept
 {
     if (monitor_id >= HF_ADC_MAX_MONITORS) {
@@ -892,7 +892,7 @@ hf_adc_err_t EspAdc::SetMonitorCallback(uint8_t monitor_id, hf_adc_monitor_callb
     return hf_adc_err_t::ADC_SUCCESS;
 }
 
-hf_adc_err_t EspAdc::SetMonitorEnabled(uint8_t monitor_id, bool enabled) noexcept
+hf_adc_err_t EspAdc::SetMonitorEnabled(hf_u8_t monitor_id, bool enabled) noexcept
 {
     MutexLockGuard lock(config_mutex_);
     
@@ -959,7 +959,7 @@ const hf_adc_unit_config_t& EspAdc::GetUnitConfig() const noexcept
 // BASE ADC INTERFACE IMPLEMENTATION
 //==============================================//
 
-uint8_t EspAdc::GetMaxChannels() const noexcept
+hf_u8_t EspAdc::GetMaxChannels() const noexcept
 {
     return HF_ESP32_ADC_MAX_CHANNELS;
 }
@@ -970,23 +970,23 @@ bool EspAdc::IsChannelAvailable(hf_channel_id_t channel_id) const noexcept
 }
 
 hf_adc_err_t EspAdc::ReadChannelV(hf_channel_id_t channel_id, float& channel_reading_v,
-                                  uint8_t numOfSamplesToAvg, hf_time_t timeBetweenSamples) noexcept
+                                  hf_u8_t numOfSamplesToAvg, hf_time_t timeBetweenSamples) noexcept
 {
-    uint32_t voltage_mv;
+    hf_u32_t voltage_mv;
     hf_adc_err_t result;
     
     if (numOfSamplesToAvg <= 1) {
         result = ReadSingleVoltage(channel_id, voltage_mv);
     } else {
-        uint64_t sum_mv = 0;
-        uint8_t successful_reads = 0;
+        hf_u64_t sum_mv = 0;
+        hf_u8_t successful_reads = 0;
         
-        for (uint8_t i = 0; i < numOfSamplesToAvg; ++i) {
+        for (hf_u8_t i = 0; i < numOfSamplesToAvg; ++i) {
             if (i > 0 && timeBetweenSamples > 0) {
                 vTaskDelay(pdMS_TO_TICKS(timeBetweenSamples));
             }
             
-            uint32_t single_voltage_mv;
+            hf_u32_t single_voltage_mv;
             if (ReadSingleVoltage(channel_id, single_voltage_mv) == hf_adc_err_t::ADC_SUCCESS) {
                 sum_mv += single_voltage_mv;
                 successful_reads++;
@@ -994,7 +994,7 @@ hf_adc_err_t EspAdc::ReadChannelV(hf_channel_id_t channel_id, float& channel_rea
         }
         
         if (successful_reads > 0) {
-            voltage_mv = static_cast<uint32_t>(sum_mv / successful_reads);
+            voltage_mv = static_cast<hf_u32_t>(sum_mv / successful_reads);
             result = hf_adc_err_t::ADC_SUCCESS;
         } else {
             result = hf_adc_err_t::ADC_ERR_TIMEOUT;
@@ -1008,8 +1008,8 @@ hf_adc_err_t EspAdc::ReadChannelV(hf_channel_id_t channel_id, float& channel_rea
     return result;
 }
 
-hf_adc_err_t EspAdc::ReadChannelCount(hf_channel_id_t channel_id, uint32_t& channel_reading_count,
-                                      uint8_t numOfSamplesToAvg, hf_time_t timeBetweenSamples) noexcept
+hf_adc_err_t EspAdc::ReadChannelCount(hf_channel_id_t channel_id, hf_u32_t& channel_reading_count,
+                                      hf_u8_t numOfSamplesToAvg, hf_time_t timeBetweenSamples) noexcept
 {
     if (numOfSamplesToAvg <= 1) {
         return ReadSingleRaw(channel_id, channel_reading_count);
@@ -1018,8 +1018,8 @@ hf_adc_err_t EspAdc::ReadChannelCount(hf_channel_id_t channel_id, uint32_t& chan
     }
 }
 
-hf_adc_err_t EspAdc::ReadChannel(hf_channel_id_t channel_id, uint32_t& channel_reading_count,
-                                 float& channel_reading_v, uint8_t numOfSamplesToAvg,
+hf_adc_err_t EspAdc::ReadChannel(hf_channel_id_t channel_id, hf_u32_t& channel_reading_count,
+                                 float& channel_reading_v, hf_u8_t numOfSamplesToAvg,
                                  hf_time_t timeBetweenSamples) noexcept
 {
     // Read raw count first
@@ -1028,7 +1028,7 @@ hf_adc_err_t EspAdc::ReadChannel(hf_channel_id_t channel_id, uint32_t& channel_r
     
     if (result == hf_adc_err_t::ADC_SUCCESS) {
         // Convert to voltage using calibration if available
-        const uint8_t atten = static_cast<uint8_t>(config_.channel_configs[channel_id].attenuation);
+        const hf_u8_t atten = static_cast<hf_u8_t>(config_.channel_configs[channel_id].attenuation);
         if (calibration_handles_[atten] != nullptr) {
             int voltage_cal;
             esp_err_t esp_err = adc_cali_raw_to_voltage(calibration_handles_[atten], 
@@ -1042,10 +1042,10 @@ hf_adc_err_t EspAdc::ReadChannel(hf_channel_id_t channel_id, uint32_t& channel_r
             }
         } else {
             // Fallback: simple linear conversion without calibration
-            const uint32_t max_voltage_mv = (atten == static_cast<uint8_t>(hf_adc_atten_t::ATTEN_DB_0)) ? 950 :
-                                           (atten == static_cast<uint8_t>(hf_adc_atten_t::ATTEN_DB_2_5)) ? 1250 :
-                                           (atten == static_cast<uint8_t>(hf_adc_atten_t::ATTEN_DB_6)) ? 1750 : 2450;
-            const uint32_t voltage_mv = (channel_reading_count * max_voltage_mv) / ADC_MAX_RAW_VALUE;
+            const hf_u32_t max_voltage_mv = (atten == static_cast<hf_u8_t>(hf_adc_atten_t::ATTEN_DB_0)) ? 950 :
+                                           (atten == static_cast<hf_u8_t>(hf_adc_atten_t::ATTEN_DB_2_5)) ? 1250 :
+                                           (atten == static_cast<hf_u8_t>(hf_adc_atten_t::ATTEN_DB_6)) ? 1750 : 2450;
+            const hf_u32_t voltage_mv = (channel_reading_count * max_voltage_mv) / ADC_MAX_RAW_VALUE;
             channel_reading_v = static_cast<float>(voltage_mv) / 1000.0f; // Convert mV to V
         }
     }
@@ -1053,17 +1053,17 @@ hf_adc_err_t EspAdc::ReadChannel(hf_channel_id_t channel_id, uint32_t& channel_r
     return result;
 }
 
-hf_adc_err_t EspAdc::ReadMultipleChannels(const hf_channel_id_t* channel_ids, uint8_t num_channels,
-                                          uint32_t* readings, float* voltages) noexcept
+hf_adc_err_t EspAdc::ReadMultipleChannels(const hf_channel_id_t* channel_ids, hf_u8_t num_channels,
+                                          hf_u32_t* readings, float* voltages) noexcept
 {
     if (channel_ids == nullptr || readings == nullptr || voltages == nullptr || num_channels == 0) {
         return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
     }
 
-    const uint64_t start_time = GetCurrentTimeUs();
+    const hf_u64_t start_time = GetCurrentTimeUs();
     hf_adc_err_t result = hf_adc_err_t::ADC_SUCCESS;
 
-    for (uint8_t i = 0; i < num_channels; ++i) {
+    for (hf_u8_t i = 0; i < num_channels; ++i) {
         result = ReadChannel(channel_ids[i], readings[i], voltages[i]);
         if (result != hf_adc_err_t::ADC_SUCCESS) {
             break;
@@ -1087,7 +1087,7 @@ bool IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const 
     
     // Convert ESP-IDF event data to HF format
     hf_adc_continuous_data_t hf_data = {};
-    hf_data.buffer = const_cast<uint8_t*>(static_cast<const uint8_t*>(event_data->conv_frame_buffer));
+    hf_data.buffer = const_cast<hf_u8_t*>(static_cast<const hf_u8_t*>(event_data->conv_frame_buffer));
     hf_data.size = event_data->size;
     hf_data.conversion_count = event_data->size / sizeof(adc_digi_output_data_t);
     hf_data.timestamp_us = esp_adc->GetCurrentTimeUs();
@@ -1105,7 +1105,7 @@ bool IRAM_ATTR EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle, cons
     }
 
     // Find which monitor triggered the callback
-    for (uint8_t i = 0; i < HF_ADC_MAX_MONITORS; ++i) {
+    for (hf_u8_t i = 0; i < HF_ADC_MAX_MONITORS; ++i) {
         if (esp_adc->monitor_handles_[i] == monitor_handle && 
             esp_adc->monitor_callbacks_[i] != nullptr) {
             
@@ -1151,11 +1151,11 @@ hf_adc_err_t EspAdc::InitializeOneshot() noexcept
     }
 
     // Configure enabled channels
-    for (uint8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
+    for (hf_u8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
         if (config_.channel_configs[i].enabled) {
             adc_oneshot_chan_cfg_t chan_cfg = {
-                .atten = static_cast<adc_atten_t>(static_cast<uint8_t>(config_.channel_configs[i].attenuation)),
-                .bitwidth = static_cast<adc_bitwidth_t>(static_cast<uint8_t>(config_.channel_configs[i].bitwidth))
+                .atten = static_cast<adc_atten_t>(static_cast<hf_u8_t>(config_.channel_configs[i].attenuation)),
+                .bitwidth = static_cast<adc_bitwidth_t>(static_cast<hf_u8_t>(config_.channel_configs[i].bitwidth))
             };
             
             esp_result = adc_oneshot_config_channel(oneshot_handle_, 
@@ -1182,15 +1182,15 @@ hf_adc_err_t EspAdc::InitializeContinuous() noexcept
     
     // Count enabled channels and build channel pattern
     std::vector<adc_digi_pattern_config_t> adc_pattern;
-    uint8_t enabled_count = 0;
+    hf_u8_t enabled_count = 0;
     
-    for (uint8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
+    for (hf_u8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
         if (config_.channel_configs[i].enabled) {
             adc_digi_pattern_config_t pattern = {
-                .atten = static_cast<adc_atten_t>(static_cast<uint8_t>(config_.channel_configs[i].attenuation)),
+                .atten = static_cast<adc_atten_t>(static_cast<hf_u8_t>(config_.channel_configs[i].attenuation)),
                 .channel = static_cast<adc_channel_t>(i),
                 .unit = static_cast<adc_unit_t>(config_.unit_id),
-                .bit_width = static_cast<adc_bitwidth_t>(static_cast<uint8_t>(config_.channel_configs[i].bitwidth))
+                .bit_width = static_cast<adc_bitwidth_t>(static_cast<hf_u8_t>(config_.channel_configs[i].bitwidth))
             };
             adc_pattern.push_back(pattern);
             enabled_count++;
@@ -1204,8 +1204,8 @@ hf_adc_err_t EspAdc::InitializeContinuous() noexcept
     
     // Create continuous ADC configuration
     // Calculate frame size and buffer pool size using user-friendly parameters
-    uint32_t frame_size = CalcFrameSize(config_.continuous_config.samples_per_frame, enabled_count);
-    uint32_t buffer_pool_size = CalcBufferPoolSize(config_.continuous_config.samples_per_frame, enabled_count, config_.continuous_config.max_store_frames);
+    hf_u32_t frame_size = CalcFrameSize(config_.continuous_config.samples_per_frame, enabled_count);
+    hf_u32_t buffer_pool_size = CalcBufferPoolSize(config_.continuous_config.samples_per_frame, enabled_count, config_.continuous_config.max_store_frames);
     
     adc_continuous_handle_cfg_t adc_config = {
         .max_store_buf_size = buffer_pool_size,
@@ -1304,7 +1304,7 @@ hf_adc_err_t EspAdc::DeinitializeContinuous() noexcept
     return hf_adc_err_t::ADC_SUCCESS;
 }
 
-hf_adc_err_t EspAdc::ReadOneshotRaw(hf_channel_id_t channel_id, uint32_t& raw_value) noexcept
+hf_adc_err_t EspAdc::ReadOneshotRaw(hf_channel_id_t channel_id, hf_u32_t& raw_value) noexcept
 {
     if (oneshot_handle_ == nullptr) {
         return hf_adc_err_t::ADC_ERR_NOT_INITIALIZED;
@@ -1329,7 +1329,7 @@ hf_adc_err_t EspAdc::ReadOneshotRaw(hf_channel_id_t channel_id, uint32_t& raw_va
         return hf_adc_err_t::ADC_ERR_CHANNEL_READ_ERR;
     }
     
-    raw_value = static_cast<uint32_t>(raw_reading);
+    raw_value = static_cast<hf_u32_t>(raw_reading);
     return hf_adc_err_t::ADC_SUCCESS;
 }
 
@@ -1352,7 +1352,7 @@ hf_adc_err_t EspAdc::ValidateConfiguration() const noexcept
     
     // Check if at least one channel is enabled
     bool has_enabled_channel = false;
-    for (uint8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
+    for (hf_u8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
         if (config_.channel_configs[i].enabled) {
             has_enabled_channel = true;
             
@@ -1378,8 +1378,8 @@ hf_adc_err_t EspAdc::ValidateConfiguration() const noexcept
         }
         
         // Count enabled channels for validation
-        uint32_t enabled_count = 0;
-        for (uint8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
+        hf_u32_t enabled_count = 0;
+        for (hf_u8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
             if (config_.channel_configs[i].enabled) {
                 enabled_count++;
             }
@@ -1401,12 +1401,12 @@ hf_adc_err_t EspAdc::ValidateConfiguration() const noexcept
     return hf_adc_err_t::ADC_SUCCESS;
 }
 
-hf_adc_err_t EspAdc::UpdateStatistics(hf_adc_err_t result, uint64_t start_time_us) noexcept
+hf_adc_err_t EspAdc::UpdateStatistics(hf_adc_err_t result, hf_u64_t start_time_us) noexcept
 {
     MutexLockGuard lock(stats_mutex_);
     
-    uint64_t end_time_us = GetCurrentTimeUs();
-    uint32_t conversion_time_us = static_cast<uint32_t>(end_time_us - start_time_us);
+    hf_u64_t end_time_us = GetCurrentTimeUs();
+    hf_u32_t conversion_time_us = static_cast<hf_u32_t>(end_time_us - start_time_us);
     
     statistics_.totalConversions++;
     
@@ -1436,7 +1436,7 @@ hf_adc_err_t EspAdc::UpdateStatistics(hf_adc_err_t result, uint64_t start_time_u
     return hf_adc_err_t::ADC_SUCCESS;
 }
 
-uint64_t EspAdc::GetCurrentTimeUs() const noexcept
+hf_u64_t EspAdc::GetCurrentTimeUs() const noexcept
 {
     return esp_timer_get_time();
 }
@@ -1446,7 +1446,7 @@ void EspAdc::UpdateDiagnostics(hf_adc_err_t error) noexcept
     MutexLockGuard lock(stats_mutex_);
     
     diagnostics_.lastErrorCode = error;
-    diagnostics_.lastErrorTimestamp = static_cast<uint32_t>(GetCurrentTimeUs() / 1000); // Convert to ms
+    diagnostics_.lastErrorTimestamp = static_cast<hf_u32_t>(GetCurrentTimeUs() / 1000); // Convert to ms
     
     if (error != hf_adc_err_t::ADC_SUCCESS) {
         diagnostics_.consecutiveErrors++;
@@ -1458,7 +1458,7 @@ void EspAdc::UpdateDiagnostics(hf_adc_err_t error) noexcept
     
     // Update channel mask
     diagnostics_.enabled_channels = 0;
-    for (uint8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
+    for (hf_u8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
         if (config_.channel_configs[i].enabled) {
             diagnostics_.enabled_channels |= (1U << i);
         }

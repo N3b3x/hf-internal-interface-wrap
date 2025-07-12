@@ -120,7 +120,7 @@ public:
    * @brief Get the maximum number of pins supported by this MCU.
    * @return Maximum pin count for this MCU platform
    */
-  uint8_t GetMaxPins() const noexcept override;
+  hf_u8_t GetMaxPins() const noexcept override;
 
   /**
    * @brief Get human-readable description of this GPIO instance.
@@ -165,7 +165,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = no timeout)
    * @return hf_gpio_err_t::GPIO_SUCCESS if interrupt occurred, error code otherwise
    */
-  hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept override;
+  hf_gpio_err_t WaitForInterrupt(hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Get current interrupt status and statistics.
@@ -444,14 +444,14 @@ protected:
    * @return Number of ETM channels currently in use
    * @details Static method for system-wide ETM resource monitoring.
    */
-  static uint8_t GetETMChannelUsage() noexcept;
+  static hf_u8_t GetETMChannelUsage() noexcept;
 
   /**
    * @brief Get maximum number of ETM channels available.
    * @return Maximum ETM channels supported by hardware
    * @details ESP32C6 supports up to 50 ETM channels.
    */
-  static uint8_t GetMaxETMChannels() noexcept;
+  static hf_u8_t GetMaxETMChannels() noexcept;
 
   /**
    * @brief Dump complete ETM configuration to output stream.
@@ -534,14 +534,14 @@ protected:
    * @return Total number of GPIO interrupts that have occurred
    * @details Thread-safe global interrupt counter for system monitoring.
    */
-  static uint32_t GetTotalInterruptCount() noexcept;
+  static hf_u32_t GetTotalInterruptCount() noexcept;
 
   /**
    * @brief Get count of currently active GPIO instances.
    * @return Number of GPIO instances currently initialized and active
    * @details Thread-safe counter for resource monitoring.
    */
-  static uint32_t GetActiveGpioCount() noexcept;
+  static hf_u32_t GetActiveGpioCount() noexcept;
 
   /**
    * @brief Validate if a pin number is valid for the target platform.
@@ -628,7 +628,7 @@ private:
   InterruptCallback interrupt_callback_; ///< User interrupt callback
   void *interrupt_user_data_;            ///< User data for callback
   bool interrupt_enabled_;               ///< Interrupt currently enabled
-  std::atomic<uint32_t> interrupt_count_; ///< Number of interrupts occurred (thread-safe)
+  std::atomic<hf_u32_t> interrupt_count_; ///< Number of interrupts occurred (thread-safe)
   void *platform_semaphore_;             ///< Platform-specific semaphore for WaitForInterrupt
 
   // Advanced GPIO state

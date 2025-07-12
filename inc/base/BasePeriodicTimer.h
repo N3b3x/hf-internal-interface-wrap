@@ -23,7 +23,7 @@
 
 #ifndef HF_TIMESTAMP_US_T_DEFINED
 #define HF_TIMESTAMP_US_T_DEFINED
-using hf_timestamp_us_t = uint64_t;
+using hf_timestamp_us_t = hf_u64_t;
 #endif
 
 //--------------------------------------
@@ -55,7 +55,7 @@ using hf_timestamp_us_t = uint64_t;
   X(TIMER_ERR_UNSUPPORTED_OPERATION, 12, "Unsupported operation") 
 
 // Generate enum class from X-macro
-enum class hf_timer_err_t : int32_t {
+enum class hf_timer_err_t : hf_i32_t {
 #define X(name, value, desc) name = value,
   HF_TIMER_ERR_LIST(X)
 #undef X
@@ -78,10 +78,10 @@ constexpr const char *HfTimerErrToString(hf_timer_err_t err) noexcept {
  * @brief Timer statistics structure.
  */
 struct hf_timer_stats_t {
-  uint64_t start_count;
-  uint64_t stop_count;
-  uint64_t callback_count;
-  uint64_t missed_callbacks;
+  hf_u64_t start_count;
+  hf_u64_t stop_count;
+  hf_u64_t callback_count;
+  hf_u64_t missed_callbacks;
   hf_timer_err_t last_error;
   hf_timestamp_us_t last_start_us;
 
@@ -94,14 +94,14 @@ struct hf_timer_stats_t {
  * @brief Timer operation statistics.
  */
 struct hf_timer_statistics_t {
-  uint32_t totalStarts;          ///< Total timer starts
-  uint32_t totalStops;           ///< Total timer stops
-  uint32_t callbackExecutions;   ///< Number of callback executions
-  uint32_t missedCallbacks;      ///< Number of missed callbacks
-  uint32_t averageCallbackTimeUs; ///< Average callback execution time (microseconds)
-  uint32_t maxCallbackTimeUs;    ///< Maximum callback execution time
-  uint32_t minCallbackTimeUs;    ///< Minimum callback execution time
-  uint64_t totalRunningTimeUs;   ///< Total running time in microseconds
+  hf_u32_t totalStarts;          ///< Total timer starts
+  hf_u32_t totalStops;           ///< Total timer stops
+  hf_u32_t callbackExecutions;   ///< Number of callback executions
+  hf_u32_t missedCallbacks;      ///< Number of missed callbacks
+  hf_u32_t averageCallbackTimeUs; ///< Average callback execution time (microseconds)
+  hf_u32_t maxCallbackTimeUs;    ///< Maximum callback execution time
+  hf_u32_t minCallbackTimeUs;    ///< Minimum callback execution time
+  hf_u64_t totalRunningTimeUs;   ///< Total running time in microseconds
 
   hf_timer_statistics_t()
       : totalStarts(0), totalStops(0), callbackExecutions(0), missedCallbacks(0),
@@ -115,12 +115,12 @@ struct hf_timer_statistics_t {
 struct hf_timer_diagnostics_t {
   bool timerHealthy;             ///< Overall timer health status
   hf_timer_err_t lastErrorCode;  ///< Last error code
-  uint32_t lastErrorTimestamp;   ///< Last error timestamp
-  uint32_t consecutiveErrors;    ///< Consecutive error count
+  hf_u32_t lastErrorTimestamp;   ///< Last error timestamp
+  hf_u32_t consecutiveErrors;    ///< Consecutive error count
   bool timerInitialized;         ///< Timer initialization status
   bool timerRunning;             ///< Timer running status
-  uint64_t currentPeriodUs;      ///< Current timer period in microseconds
-  uint64_t timerResolutionUs;    ///< Timer resolution in microseconds
+  hf_u64_t currentPeriodUs;      ///< Current timer period in microseconds
+  hf_u64_t timerResolutionUs;    ///< Timer resolution in microseconds
 
   hf_timer_diagnostics_t()
       : timerHealthy(true), lastErrorCode(hf_timer_err_t::TIMER_SUCCESS), lastErrorTimestamp(0), 
@@ -185,7 +185,7 @@ public:
    * @param period_us Timer period in microseconds
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual hf_timer_err_t Start(uint64_t period_us) noexcept = 0;
+  virtual hf_timer_err_t Start(hf_u64_t period_us) noexcept = 0;
 
   /**
    * @brief Stop the periodic timer.
@@ -198,14 +198,14 @@ public:
    * @param period_us New timer period in microseconds
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual hf_timer_err_t SetPeriod(uint64_t period_us) noexcept = 0;
+  virtual hf_timer_err_t SetPeriod(hf_u64_t period_us) noexcept = 0;
 
   /**
    * @brief Get the current timer period.
    * @param period_us Reference to store the current period
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual hf_timer_err_t GetPeriod(uint64_t &period_us) noexcept = 0;
+  virtual hf_timer_err_t GetPeriod(hf_u64_t &period_us) noexcept = 0;
 
   /**
    * @brief Get timer statistics and status information.
@@ -214,7 +214,7 @@ public:
    * @param last_error Last error that occurred
    * @return hf_timer_err_t::TIMER_SUCCESS if successful, error code otherwise
    */
-  virtual hf_timer_err_t GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
+  virtual hf_timer_err_t GetStats(hf_u64_t &callback_count, hf_u64_t &missed_callbacks,
                                   hf_timer_err_t &last_error) noexcept = 0;
 
   /**
@@ -253,19 +253,19 @@ public:
    * @brief Get minimum supported timer period.
    * @return Minimum period in microseconds
    */
-  virtual uint64_t GetMinPeriod() const noexcept = 0;
+  virtual hf_u64_t GetMaxPeriod() const noexcept = 0;
 
   /**
    * @brief Get maximum supported timer period.
    * @return Maximum period in microseconds
    */
-  virtual uint64_t GetMaxPeriod() const noexcept = 0;
+  virtual hf_u64_t GetMinPeriod() const noexcept = 0;
 
   /**
    * @brief Get timer resolution.
    * @return Timer resolution in microseconds
    */
-  virtual uint64_t GetResolution() const noexcept = 0;
+  virtual hf_u64_t GetResolution() const noexcept = 0;
 
   /**
    * @brief Set new callback function.

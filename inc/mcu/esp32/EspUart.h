@@ -109,12 +109,12 @@ public:
   // CONSTANTS
   //==============================================================================
 
-  static constexpr uint8_t MAX_PORTS = 3;          ///< Maximum UART ports
-  static constexpr uint32_t MAX_BAUD_RATE = 5000000;      ///< Maximum baud rate
-  static constexpr uint32_t MIN_BAUD_RATE = 110;      ///< Minimum baud rate
-  static constexpr uint32_t DEFAULT_BAUD_RATE = 115200; ///< Default baud rate
-  static constexpr uint16_t MAX_BUFFER_SIZE = 1024; ///< Maximum buffer size
-  static constexpr uint16_t DEFAULT_BUFFER_SIZE = 256; ///< Default buffer size
+  static constexpr hf_u8_t MAX_PORTS = 3;          ///< Maximum UART ports
+  static constexpr hf_u32_t MAX_BAUD_RATE = 5000000;      ///< Maximum baud rate
+  static constexpr hf_u32_t MIN_BAUD_RATE = 110;      ///< Minimum baud rate
+  static constexpr hf_u32_t DEFAULT_BAUD_RATE = 115200; ///< Default baud rate
+  static constexpr hf_u16_t MAX_BUFFER_SIZE = 1024; ///< Maximum buffer size
+  static constexpr hf_u16_t DEFAULT_BUFFER_SIZE = 256; ///< Default buffer size
 
   //==============================================================================
   // CONSTRUCTOR AND DESTRUCTOR

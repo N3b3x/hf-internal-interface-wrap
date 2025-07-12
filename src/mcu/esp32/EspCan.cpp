@@ -175,7 +175,7 @@ hf_can_err_t EspCan::Deinitialize() noexcept
 // CORE CAN OPERATIONS (From BaseCan interface)
 //==============================================//
 
-hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, uint32_t timeout_ms) noexcept
+hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, hf_u32_t timeout_ms) noexcept
 {
     if (!is_initialized_.load()) {
         return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
@@ -202,7 +202,7 @@ hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, uint32_t timeo
     return hf_can_err_t::CAN_SUCCESS;
 }
 
-hf_can_err_t EspCan::ReceiveMessage(hf_can_message_t& message, uint32_t timeout_ms) noexcept
+hf_can_err_t EspCan::ReceiveMessage(hf_can_message_t& message, hf_u32_t timeout_ms) noexcept
 {
     if (!is_initialized_.load()) {
         return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
@@ -331,7 +331,7 @@ hf_can_err_t EspCan::Reset() noexcept
     return hf_can_err_t::CAN_SUCCESS;
 }
 
-hf_can_err_t EspCan::SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended) noexcept
+hf_can_err_t EspCan::SetAcceptanceFilter(hf_u32_t id, hf_u32_t mask, bool extended) noexcept
 {
     if (!is_initialized_.load()) {
         return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;

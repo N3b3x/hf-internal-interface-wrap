@@ -72,7 +72,7 @@
   X(SPI_ERR_PERMISSION_DENIED, 28, "Permission denied")                                            \
   X(SPI_ERR_OPERATION_ABORTED, 29, "Operation aborted")
 
-enum class hf_spi_err_t : uint8_t {
+enum class hf_spi_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_SPI_ERR_LIST(X)
 #undef X
@@ -99,16 +99,16 @@ constexpr std::string_view HfSpiErrToString(hf_spi_err_t err) noexcept {
  * @brief SPI operation statistics.
  */
 struct hf_spi_statistics_t {
-  uint32_t total_transactions;       ///< Total number of transactions
-  uint32_t successful_transactions;  ///< Number of successful transactions
-  uint32_t failed_transactions;      ///< Number of failed transactions
-  uint32_t timeout_transactions;     ///< Number of timed-out transactions
-  uint32_t total_bytes_sent;         ///< Total bytes transmitted
-  uint32_t total_bytes_received;     ///< Total bytes received
-  uint32_t max_transaction_time_us;  ///< Maximum transaction time (microseconds)
-  uint32_t min_transaction_time_us;  ///< Minimum transaction time (microseconds)
-  uint64_t last_activity_timestamp;  ///< Last activity timestamp
-  uint64_t initialization_timestamp; ///< Initialization timestamp
+  hf_u32_t total_transactions;       ///< Total number of transactions
+  hf_u32_t successful_transactions;  ///< Number of successful transactions
+  hf_u32_t failed_transactions;      ///< Number of failed transactions
+  hf_u32_t timeout_transactions;     ///< Number of timed-out transactions
+  hf_u32_t total_bytes_sent;         ///< Total bytes transmitted
+  hf_u32_t total_bytes_received;     ///< Total bytes received
+  hf_u32_t max_transaction_time_us;  ///< Maximum transaction time (microseconds)
+  hf_u32_t min_transaction_time_us;  ///< Minimum transaction time (microseconds)
+  hf_u64_t last_activity_timestamp;  ///< Last activity timestamp
+  hf_u64_t initialization_timestamp; ///< Initialization timestamp
 
   hf_spi_statistics_t() noexcept
       : total_transactions(0), successful_transactions(0), failed_transactions(0),
@@ -124,13 +124,13 @@ struct hf_spi_diagnostics_t {
   bool is_initialized;          ///< Initialization state
   bool is_bus_suspended;        ///< Bus suspension state
   bool dma_enabled;             ///< DMA enabled state
-  uint32_t current_clock_speed; ///< Current clock speed in Hz
-  uint8_t current_mode;         ///< Current SPI mode
-  uint16_t max_transfer_size;   ///< Maximum transfer size
-  uint8_t device_count;         ///< Number of registered devices
-  uint32_t last_error;          ///< Last error code
-  uint64_t total_transactions;  ///< Total transactions performed
-  uint64_t failed_transactions; ///< Failed transactions count
+  hf_u32_t current_clock_speed; ///< Current clock speed in Hz
+  hf_u8_t current_mode;         ///< Current SPI mode
+  hf_u16_t max_transfer_size;   ///< Maximum transfer size
+  hf_u8_t device_count;         ///< Number of registered devices
+  hf_u32_t last_error;          ///< Last error code
+  hf_u64_t total_transactions;  ///< Total transactions performed
+  hf_u64_t failed_transactions; ///< Failed transactions count
 
   hf_spi_diagnostics_t() noexcept
       : is_initialized(false), is_bus_suspended(false), dma_enabled(false), current_clock_speed(0),
@@ -235,8 +235,8 @@ public:
    * @return hf_spi_err_t result code
    * @note Must be implemented by concrete classes.
    */
-  virtual hf_spi_err_t Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                                uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_spi_err_t Transfer(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                                hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Assert/deassert the chip select signal.
@@ -277,7 +277,7 @@ public:
    * @param length Number of bytes to transfer
    * @return true if transfer succeeded
    */
-  virtual bool Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length) noexcept {
+  virtual bool Transfer(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length) noexcept {
     if (!EnsureInitialized()) {
       return false;
     }
@@ -291,8 +291,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_spi_err_t result code
    */
-  virtual hf_spi_err_t Write(const uint8_t *data, uint16_t length,
-                             uint32_t timeout_ms = 0) noexcept {
+  virtual hf_spi_err_t Write(const hf_u8_t *data, hf_u16_t length,
+                             hf_u32_t timeout_ms = 0) noexcept {
     return Transfer(data, nullptr, length, timeout_ms);
   }
 
@@ -303,7 +303,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_spi_err_t result code
    */
-  virtual hf_spi_err_t Read(uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept {
+  virtual hf_spi_err_t Read(hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept {
     return Transfer(nullptr, data, length, timeout_ms);
   }
 
@@ -313,7 +313,7 @@ public:
    * @param length Number of bytes to write
    * @return true if write succeeded
    */
-  virtual bool Write(const uint8_t *data, uint16_t length) noexcept {
+  virtual bool Write(const hf_u8_t *data, hf_u16_t length) noexcept {
     if (!EnsureInitialized()) {
       return false;
     }
@@ -326,7 +326,7 @@ public:
    * @param length Number of bytes to read
    * @return true if read succeeded
    */
-  virtual bool Read(uint8_t *data, uint16_t length) noexcept {
+  virtual bool Read(hf_u8_t *data, hf_u16_t length) noexcept {
     if (!EnsureInitialized()) {
       return false;
     }
@@ -338,7 +338,7 @@ public:
    * @param data Byte to write
    * @return true if successful, false otherwise
    */
-  virtual bool WriteByte(uint8_t data) noexcept {
+  virtual bool WriteByte(hf_u8_t data) noexcept {
     return Write(&data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
@@ -347,7 +347,7 @@ public:
    * @param data Output: byte read
    * @return true if successful, false otherwise
    */
-  virtual bool ReadByte(uint8_t &data) noexcept {
+  virtual bool ReadByte(hf_u8_t &data) noexcept {
     return Read(&data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 
@@ -357,7 +357,7 @@ public:
    * @param rx_data Output: byte read
    * @return true if successful, false otherwise
    */
-  virtual bool TransferByte(uint8_t tx_data, uint8_t &rx_data) noexcept {
+  virtual bool TransferByte(hf_u8_t tx_data, hf_u8_t &rx_data) noexcept {
     return Transfer(&tx_data, &rx_data, 1, 0) == hf_spi_err_t::SPI_SUCCESS;
   }
 

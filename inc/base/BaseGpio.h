@@ -89,7 +89,7 @@
  * @brief HardFOC GPIO error codes
  * @details Comprehensive error enumeration for all GPIO operations in the system.
  */
-enum class hf_gpio_err_t : uint8_t {
+enum class hf_gpio_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_GPIO_ERR_LIST(X)
 #undef X
@@ -117,7 +117,7 @@ constexpr const char *HfGpioErrToString(hf_gpio_err_t err) noexcept {
  * @brief GPIO pin logical states.
  * @details Represents the logical state of a GPIO pin, independent of electrical polarity.
  */
-enum class hf_gpio_state_t : uint8_t {
+enum class hf_gpio_state_t : hf_u8_t {
   HF_GPIO_STATE_INACTIVE = 0, ///< Logical inactive state
   HF_GPIO_STATE_ACTIVE = 1    ///< Logical active state
 };
@@ -126,7 +126,7 @@ enum class hf_gpio_state_t : uint8_t {
  * @brief GPIO active state polarity configuration.
  * @details Defines which electrical level corresponds to the logical "active" state.
  */
-enum class hf_gpio_active_state_t : uint8_t {
+enum class hf_gpio_active_state_t : hf_u8_t {
   HF_GPIO_ACTIVE_LOW = 0, ///< Active state is electrical low
   HF_GPIO_ACTIVE_HIGH = 1 ///< Active state is electrical high
 };
@@ -135,7 +135,7 @@ enum class hf_gpio_active_state_t : uint8_t {
  * @brief GPIO pin direction/mode configuration.
  * @details Defines whether the pin is configured as input or output.
  */
-enum class hf_gpio_direction_t : uint8_t {
+enum class hf_gpio_direction_t : hf_u8_t {
   HF_GPIO_DIRECTION_INPUT = 0, ///< Pin configured as input
   HF_GPIO_DIRECTION_OUTPUT = 1 ///< Pin configured as output
 };
@@ -144,7 +144,7 @@ enum class hf_gpio_direction_t : uint8_t {
  * @brief GPIO output drive modes.
  * @details Defines the electrical characteristics of GPIO output pins.
  */
-enum class hf_gpio_output_mode_t : uint8_t {
+enum class hf_gpio_output_mode_t : hf_u8_t {
   HF_GPIO_OUTPUT_MODE_PUSH_PULL = 0, ///< Push-pull output (strong high and low)
   HF_GPIO_OUTPUT_MODE_OPEN_DRAIN = 1 ///< Open-drain output (strong low, high-impedance high)
 };
@@ -153,7 +153,7 @@ enum class hf_gpio_output_mode_t : uint8_t {
  * @brief GPIO pull resistor configuration.
  * @details Defines the internal pull resistor configuration for GPIO pins.
  */
-enum class hf_gpio_pull_mode_t : uint8_t {
+enum class hf_gpio_pull_mode_t : hf_u8_t {
   HF_GPIO_PULL_MODE_FLOATING = 0, ///< No pull resistor (floating/high-impedance)
   HF_GPIO_PULL_MODE_UP = 1,       ///< Internal pull-up resistor enabled
   HF_GPIO_PULL_MODE_DOWN = 2,     ///< Internal pull-down resistor enabled
@@ -164,7 +164,7 @@ enum class hf_gpio_pull_mode_t : uint8_t {
  * @brief GPIO interrupt trigger types.
  * @details Defines the conditions that trigger GPIO interrupts.
  */
-enum class hf_gpio_interrupt_trigger_t : uint8_t {
+enum class hf_gpio_interrupt_trigger_t : hf_u8_t {
   HF_GPIO_INTERRUPT_TRIGGER_NONE = 0,        ///< No interrupt (disabled)
   HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE = 1, ///< Trigger on rising edge (low to high)
   HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE = 2, ///< Trigger on falling edge (high to low)
@@ -192,7 +192,7 @@ using InterruptCallback =
 struct InterruptStatus {
   bool is_enabled;                           ///< Interrupt currently enabled
   hf_gpio_interrupt_trigger_t trigger_type;  ///< Current trigger configuration
-  uint32_t interrupt_count;                  ///< Number of interrupts occurred
+  hf_u32_t interrupt_count;                  ///< Number of interrupts occurred
   bool has_callback;                         ///< Callback function is registered
 };
 
@@ -200,15 +200,15 @@ struct InterruptStatus {
  * @brief GPIO operation statistics.
  */
 struct hf_gpio_statistics_t {
-  uint32_t totalOperations;        ///< Total GPIO operations performed
-  uint32_t successfulOperations;   ///< Successful operations
-  uint32_t failedOperations;       ///< Failed operations
-  uint32_t stateChanges;           ///< Number of state changes
-  uint32_t directionChanges;       ///< Number of direction changes
-  uint32_t interruptCount;         ///< Number of interrupts received
-  uint32_t averageOperationTimeUs; ///< Average operation time (microseconds)
-  uint32_t maxOperationTimeUs;     ///< Maximum operation time
-  uint32_t minOperationTimeUs;     ///< Minimum operation time
+    hf_u32_t totalOperations;        ///< Total GPIO operations performed
+    hf_u32_t successfulOperations;   ///< Successful operations
+    hf_u32_t failedOperations;       ///< Failed operations
+    hf_u32_t stateChanges;           ///< Number of state changes
+    hf_u32_t directionChanges;       ///< Number of direction changes
+    hf_u32_t interruptCount;         ///< Number of interrupts received
+    hf_u32_t averageOperationTimeUs; ///< Average operation time (microseconds)
+    hf_u32_t maxOperationTimeUs;     ///< Maximum operation time
+    hf_u32_t minOperationTimeUs;     ///< Minimum operation time
 
   hf_gpio_statistics_t()
       : totalOperations(0), successfulOperations(0), failedOperations(0),
@@ -222,12 +222,12 @@ struct hf_gpio_statistics_t {
 struct hf_gpio_diagnostics_t {
   bool gpioHealthy;                ///< Overall GPIO health status
   hf_gpio_err_t lastErrorCode;     ///< Last error code
-  uint32_t lastErrorTimestamp;     ///< Last error timestamp
-  uint32_t consecutiveErrors;      ///< Consecutive error count
+  hf_u32_t lastErrorTimestamp;     ///< Last error timestamp
+  hf_u32_t consecutiveErrors;      ///< Consecutive error count
   bool pinAvailable;               ///< Pin availability status
   bool interruptSupported;         ///< Interrupt support status
   bool interruptEnabled;           ///< Interrupt enabled status
-  uint32_t currentState;           ///< Current pin state
+  hf_u32_t currentState;           ///< Current pin state
 
   hf_gpio_diagnostics_t()
       : gpioHealthy(true), lastErrorCode(hf_gpio_err_t::GPIO_SUCCESS), lastErrorTimestamp(0), 
@@ -545,7 +545,7 @@ public:
    * @brief Get the maximum number of pins supported by this GPIO instance.
    * @return Maximum pin count
    */
-  [[nodiscard]] virtual uint8_t GetMaxPins() const noexcept = 0;
+  [[nodiscard]] virtual hf_u8_t GetMaxPins() const noexcept = 0;
   /**
    * @brief Get human-readable description of this GPIO instance.
    * @return Pointer to description string
@@ -598,7 +598,7 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = wait forever)
    * @return hf_gpio_err_t::GPIO_SUCCESS if interrupt occurred, error code otherwise
    */
-  virtual hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept {
+  virtual hf_gpio_err_t WaitForInterrupt(hf_u32_t timeout_ms = 0) noexcept {
     return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
   }
 

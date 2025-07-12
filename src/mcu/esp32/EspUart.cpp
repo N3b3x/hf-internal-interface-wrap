@@ -140,7 +140,7 @@ bool EspUart::Deinitialize() noexcept {
 // BASIC UART OPERATIONS (BaseUart Interface)
 //==============================================================================
 
-hf_uart_err_t EspUart::Write(const uint8_t* data, uint16_t length, uint32_t timeout_ms) noexcept {
+hf_uart_err_t EspUart::Write(const hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -155,11 +155,11 @@ hf_uart_err_t EspUart::Write(const uint8_t* data, uint16_t length, uint32_t time
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  uint64_t start_time_us = esp_timer_get_time();
+  hf_u64_t start_time_us = esp_timer_get_time();
   tx_in_progress_ = true;
   diagnostics_.is_transmitting = true;
 
-  uint32_t timeout = GetTimeoutMs(timeout_ms);
+  hf_u32_t timeout = GetTimeoutMs(timeout_ms);
 
   int bytes_written = uart_write_bytes(uart_port_, reinterpret_cast<const char*>(data), length);
 
@@ -193,7 +193,7 @@ hf_uart_err_t EspUart::Write(const uint8_t* data, uint16_t length, uint32_t time
   }
 }
 
-hf_uart_err_t EspUart::Read(uint8_t* data, uint16_t length, uint32_t timeout_ms) noexcept {
+hf_uart_err_t EspUart::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -208,10 +208,10 @@ hf_uart_err_t EspUart::Read(uint8_t* data, uint16_t length, uint32_t timeout_ms)
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  uint64_t start_time_us = esp_timer_get_time();
+  hf_u64_t start_time_us = esp_timer_get_time();
   diagnostics_.is_receiving = true;
 
-  uint32_t timeout = GetTimeoutMs(timeout_ms);
+  hf_u32_t timeout = GetTimeoutMs(timeout_ms);
 
   int bytes_read = uart_read_bytes(uart_port_, data, length, pdMS_TO_TICKS(timeout));
 
@@ -230,7 +230,7 @@ hf_uart_err_t EspUart::Read(uint8_t* data, uint16_t length, uint32_t timeout_ms)
   }
 }
 
-bool EspUart::WriteByte(uint8_t byte) noexcept {
+bool EspUart::WriteByte(hf_u8_t byte) noexcept {
   if (!EnsureInitialized()) {
     return false;
   }
@@ -284,14 +284,14 @@ hf_uart_err_t EspUart::FlushRx() noexcept {
 
 // bool SetLoopback removed - keeping hf_uart_err_t version
 
-bool EspUart::WaitTransmitComplete(uint32_t timeout_ms) noexcept {
+bool EspUart::WaitTransmitComplete(hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return false;
   }
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  uint32_t timeout = GetTimeoutMs(timeout_ms);
+  hf_u32_t timeout = GetTimeoutMs(timeout_ms);
   esp_err_t result = uart_wait_tx_done(uart_port_, pdMS_TO_TICKS(timeout));
   if (result == ESP_OK) {
     tx_in_progress_ = false;
@@ -309,7 +309,7 @@ bool EspUart::WaitTransmitComplete(uint32_t timeout_ms) noexcept {
 //==============================================//
 
 // Implement missing overrides
-uint16_t EspUart::BytesAvailable() noexcept {
+hf_u16_t EspUart::BytesAvailable() noexcept {
   // TODO: Implement actual logic
   return 0;
 }
@@ -318,7 +318,7 @@ bool EspUart::IsTxBusy() noexcept {
   return false;
 }
 
-uint16_t EspUart::TxBytesWaiting() noexcept {
+hf_u16_t EspUart::TxBytesWaiting() noexcept {
   if (!EnsureInitialized()) {
     return 0;
   }
@@ -328,8 +328,8 @@ uint16_t EspUart::TxBytesWaiting() noexcept {
   return tx_in_progress_ ? 1 : 0;
 }
 
-uint16_t EspUart::ReadUntil(uint8_t *data, uint16_t max_length, uint8_t terminator,
-                            uint32_t timeout_ms) noexcept {
+hf_u16_t EspUart::ReadUntil(hf_u8_t *data, hf_u16_t max_length, hf_u8_t terminator,
+                            hf_u32_t timeout_ms) noexcept {
   if (!data || max_length == 0) {
     return 0;
   }
@@ -340,19 +340,19 @@ uint16_t EspUart::ReadUntil(uint8_t *data, uint16_t max_length, uint8_t terminat
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  uint16_t bytes_read = 0;
-  uint64_t start_time = esp_timer_get_time();
-  uint32_t timeout = GetTimeoutMs(timeout_ms);
+  hf_u16_t bytes_read = 0;
+  hf_u64_t start_time = esp_timer_get_time();
+  hf_u32_t timeout = GetTimeoutMs(timeout_ms);
 
   while (bytes_read < max_length) {
     // Check timeout
-    uint64_t elapsed = esp_timer_get_time() - start_time;
+    hf_u64_t elapsed = esp_timer_get_time() - start_time;
     if (timeout > 0 && elapsed >= (timeout * 1000)) {
       break;
     }
 
     // Try to read one byte
-    uint8_t byte;
+    hf_u8_t byte;
         hf_uart_err_t result = Read(&byte, 1, 100); // Short timeout for each byte
 
     if (result == hf_uart_err_t::UART_SUCCESS) {
@@ -411,7 +411,7 @@ hf_uart_err_t EspUart::SetOperatingMode(hf_uart_operating_mode_t mode) noexcept 
   return hf_uart_err_t::UART_SUCCESS;
 }
 
-bool EspUart::SetBaudRate(uint32_t baud_rate) noexcept {
+bool EspUart::SetBaudRate(hf_u32_t baud_rate) noexcept {
   if (!EnsureInitialized()) {
     return false;
   }
@@ -468,7 +468,7 @@ hf_uart_err_t EspUart::SetRTS(bool active) noexcept {
   }
 }
 
-hf_uart_err_t EspUart::SendBreak(uint32_t duration_ms) noexcept {
+hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -513,7 +513,7 @@ hf_uart_err_t EspUart::SetLoopback(bool enable) noexcept {
 
 // Second WaitTransmitComplete and ReadUntil implementations removed - keeping first implementations
 
-uint16_t EspUart::ReadLine(char* buffer, uint16_t max_length, uint32_t timeout_ms) noexcept {
+hf_u16_t EspUart::ReadLine(char* buffer, hf_u16_t max_length, hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return 0;
   }
@@ -524,13 +524,13 @@ uint16_t EspUart::ReadLine(char* buffer, uint16_t max_length, uint32_t timeout_m
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  uint32_t timeout = GetTimeoutMs(timeout_ms);
-  uint16_t chars_read = 0;
-  uint64_t start_time = esp_timer_get_time();
+  hf_u32_t timeout = GetTimeoutMs(timeout_ms);
+  hf_u16_t chars_read = 0;
+  hf_u64_t start_time = esp_timer_get_time();
 
   while (chars_read < max_length - 1) { // Leave room for null terminator
     char ch;
-    int result = uart_read_bytes(uart_port_, reinterpret_cast<uint8_t*>(&ch), 1, pdMS_TO_TICKS(100));
+    int result = uart_read_bytes(uart_port_, reinterpret_cast<hf_u8_t*>(&ch), 1, pdMS_TO_TICKS(100));
     
     if (result == 1) {
       if (ch == '\n' || ch == '\r') {
@@ -539,7 +539,7 @@ uint16_t EspUart::ReadLine(char* buffer, uint16_t max_length, uint32_t timeout_m
       buffer[chars_read++] = ch;
     } else if (result == 0) {
       // Timeout on this read, check overall timeout
-      uint64_t elapsed = esp_timer_get_time() - start_time;
+      hf_u64_t elapsed = esp_timer_get_time() - start_time;
       if (elapsed > (timeout * 1000)) {
         break;
       }
@@ -636,7 +636,7 @@ hf_uart_err_t EspUart::ConfigureIrDA(const hf_uart_irda_config_t& irda_config) n
   return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
 }
 
-int EspUart::GetPatternPosition(bool pop_position) noexcept {
+hf_u16_t EspUart::GetPatternPosition(bool pop_position) noexcept {
   if (!EnsureInitialized() || !pattern_detection_enabled_) {
     return -1;
   }
@@ -648,7 +648,7 @@ int EspUart::GetPatternPosition(bool pop_position) noexcept {
   return -1;
 }
 
-hf_uart_err_t EspUart::ConfigureSoftwareFlowControl(bool enable, uint8_t xon_threshold, uint8_t xoff_threshold) noexcept {
+hf_uart_err_t EspUart::ConfigureSoftwareFlowControl(bool enable, hf_u8_t xon_threshold, hf_u8_t xoff_threshold) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -714,7 +714,7 @@ hf_uart_err_t EspUart::ConfigureWakeup(const hf_uart_wakeup_config_t& wakeup_con
   }
 }
 
-hf_uart_err_t EspUart::SetRxFullThreshold(uint8_t threshold) noexcept {
+hf_uart_err_t EspUart::SetRxFullThreshold(hf_u8_t threshold) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -732,7 +732,7 @@ hf_uart_err_t EspUart::SetRxFullThreshold(uint8_t threshold) noexcept {
   }
 }
 
-hf_uart_err_t EspUart::SetTxEmptyThreshold(uint8_t threshold) noexcept {
+hf_uart_err_t EspUart::SetTxEmptyThreshold(hf_u8_t threshold) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -750,7 +750,7 @@ hf_uart_err_t EspUart::SetTxEmptyThreshold(uint8_t threshold) noexcept {
   }
 }
 
-hf_uart_err_t EspUart::SetRxTimeoutThreshold(uint8_t timeout_threshold) noexcept {
+hf_uart_err_t EspUart::SetRxTimeoutThreshold(hf_u8_t timeout_threshold) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -786,7 +786,7 @@ hf_uart_err_t EspUart::EnableRxInterrupts(bool enable) noexcept {
   }
 }
 
-hf_uart_err_t EspUart::EnableTxInterrupts(bool enable, uint8_t threshold) noexcept {
+hf_uart_err_t EspUart::EnableTxInterrupts(bool enable, hf_u8_t threshold) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -810,7 +810,7 @@ hf_uart_err_t EspUart::EnableTxInterrupts(bool enable, uint8_t threshold) noexce
   }
 }
 
-hf_uart_err_t EspUart::SetSignalInversion(uint32_t inverse_mask) noexcept {
+hf_uart_err_t EspUart::SetSignalInversion(hf_u32_t inverse_mask) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -1253,8 +1253,8 @@ hf_uart_err_t EspUart::ConvertPlatformError(int32_t platform_error) noexcept {
   }
 }
 
-hf_uart_err_t EspUart::UpdateStatistics(hf_uart_err_t result, uint64_t start_time_us) noexcept {
-  uint64_t end_time_us = esp_timer_get_time();
+hf_uart_err_t EspUart::UpdateStatistics(hf_uart_err_t result, hf_u64_t start_time_us) noexcept {
+  hf_u64_t end_time_us = esp_timer_get_time();
   statistics_.last_activity_timestamp = end_time_us;
 
   if (result != hf_uart_err_t::UART_SUCCESS) {
@@ -1277,7 +1277,7 @@ void EspUart::UpdateDiagnostics(hf_uart_err_t error) noexcept {
   }
 }
 
-uint32_t EspUart::GetTimeoutMs(uint32_t timeout_ms) const noexcept {
+hf_u32_t EspUart::GetTimeoutMs(hf_u32_t timeout_ms) const noexcept {
   if (timeout_ms == 0) {
     return port_config_.timeout_ms;
   }
@@ -1296,7 +1296,7 @@ int EspUart::InternalPrintf(const char* format, va_list args) noexcept {
   return -1;
 }
 
-bool IRAM_ATTR EspUart::PatternCallbackWrapper(int pattern_pos, void* user_data) noexcept {
+bool IRAM_ATTR EspUart::PatternCallbackWrapper(hf_u16_t pattern_pos, void* user_data) noexcept {
   auto* uart = static_cast<EspUart*>(user_data);
   if (uart && uart->pattern_callback_) {
     return uart->pattern_callback_(pattern_pos, uart->pattern_callback_user_data_);
@@ -1304,7 +1304,7 @@ bool IRAM_ATTR EspUart::PatternCallbackWrapper(int pattern_pos, void* user_data)
   return false;
 }
 
-bool IRAM_ATTR EspUart::BreakCallbackWrapper(uint32_t break_duration, void* user_data) noexcept {
+bool IRAM_ATTR EspUart::BreakCallbackWrapper(hf_u32_t break_duration, void* user_data) noexcept {
   auto* uart = static_cast<EspUart*>(user_data);
   if (uart && uart->break_callback_) {
     return uart->break_callback_(break_duration, uart->break_callback_user_data_);

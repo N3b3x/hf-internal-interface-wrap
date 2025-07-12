@@ -21,15 +21,67 @@
 #include <limits>
 
 //==============================================================================
+// PLATFORM-AGNOSTIC TYPE WRAPPING
+//==============================================================================
+
+/**
+ * @brief Platform-agnostic 8-bit unsigned integer type.
+ * @details Wraps uint8_t for consistent naming across the HardFOC system.
+ */
+using hf_u8_t = uint8_t;
+
+/**
+ * @brief Platform-agnostic 16-bit unsigned integer type.
+ * @details Wraps uint16_t for consistent naming across the HardFOC system.
+ */
+using hf_u16_t = uint16_t;
+
+/**
+ * @brief Platform-agnostic 32-bit unsigned integer type.
+ * @details Wraps uint32_t for consistent naming across the HardFOC system.
+ */
+using hf_u32_t = uint32_t;
+
+/**
+ * @brief Platform-agnostic 64-bit unsigned integer type.
+ * @details Wraps uint64_t for consistent naming across the HardFOC system.
+ */
+using hf_u64_t = uint64_t;
+
+/**
+ * @brief Platform-agnostic 8-bit signed integer type.
+ * @details Wraps int8_t for consistent naming across the HardFOC system.
+ */
+using hf_i8_t = int8_t;
+
+/**
+ * @brief Platform-agnostic 16-bit signed integer type.
+ * @details Wraps int16_t for consistent naming across the HardFOC system.
+ */
+using hf_i16_t = int16_t;
+
+/**
+ * @brief Platform-agnostic 32-bit signed integer type.
+ * @details Wraps int32_t for consistent naming across the HardFOC system.
+ */
+using hf_i32_t = int32_t;
+
+/**
+ * @brief Platform-agnostic 64-bit signed integer type.
+ * @details Wraps int64_t for consistent naming across the HardFOC system.
+ */
+using hf_i64_t = int64_t;
+
+//==============================================================================
 // PLATFORM-AGNOSTIC GPIO TYPES
 //==============================================================================
 
 /**
  * @brief Platform-agnostic GPIO pin number type.
  * @details Generic pin identifier that works across different hardware platforms.
- *          Uses int32_t to handle both positive pin numbers and invalid (-1) values.
+ *          Uses hf_i32_t to handle both positive pin numbers and invalid (-1) values.
  */
-using hf_pin_num_t = int32_t;
+using hf_pin_num_t = hf_i32_t;
 
 /**
  * @brief Invalid pin constant for unassigned or invalid pins.
@@ -48,9 +100,9 @@ constexpr hf_pin_num_t HF_MAX_PIN_NUMBER = 255;
 /**
  * @brief Platform-agnostic port/controller identifier type.
  * @details Generic identifier for communication ports (I2C, SPI, UART, etc.).
- *          Uses uint32_t to accommodate various controller numbering schemes.
+ *          Uses hf_u32_t to accommodate various controller numbering schemes.
  */
-using hf_port_num_t = uint32_t;
+using hf_port_num_t = hf_u32_t;
 
 /**
  * @brief Invalid port constant for unassigned or invalid ports.
@@ -61,7 +113,7 @@ constexpr hf_port_num_t HF_INVALID_PORT = std::numeric_limits<hf_port_num_t>::ma
  * @brief Platform-agnostic host/controller identifier type.
  * @details Used for SPI hosts, I2C controllers, etc.
  */
-using hf_host_id_t = uint32_t;
+using hf_host_id_t = hf_u32_t;
 
 /**
  * @brief Invalid host constant for unassigned or invalid hosts.
@@ -75,7 +127,7 @@ constexpr hf_host_id_t HF_INVALID_HOST = std::numeric_limits<hf_host_id_t>::max(
 /**
  * @brief Platform-agnostic frequency type (in Hz).
  */
-using hf_frequency_hz_t = uint32_t;
+using hf_frequency_hz_t = hf_u32_t;
 
 ///@brief Backward compatibility alias
 using hf_frequency_t = hf_frequency_hz_t;
@@ -83,7 +135,7 @@ using hf_frequency_t = hf_frequency_hz_t;
 /**
  * @brief Platform-agnostic baud rate type.
  */
-using hf_baud_rate_t = uint32_t;
+using hf_baud_rate_t = hf_u32_t;
 
 //==============================================================================
 // CHANNEL AND TIMING TYPES
@@ -93,7 +145,7 @@ using hf_baud_rate_t = uint32_t;
  * @brief Platform-agnostic channel identifier type.
  * @details Used for ADC channels, PWM channels, etc.
  */
-using hf_channel_id_t = uint32_t;
+using hf_channel_id_t = hf_u32_t;
 
 /**
  * @brief Invalid channel constant for unassigned or invalid channels.
@@ -103,7 +155,7 @@ constexpr hf_channel_id_t HF_INVALID_CHANNEL = std::numeric_limits<hf_channel_id
 /**
  * @brief Platform-agnostic time type in milliseconds.
  */
-using hf_time_t = uint32_t;
+using hf_time_t = hf_u32_t;
 
 /**
  * @brief Timeout value in milliseconds.

@@ -74,7 +74,7 @@
   X(UART_ERR_PERMISSION_DENIED, 30, "Permission denied")                                           \
   X(UART_ERR_OPERATION_ABORTED, 31, "Operation aborted")
 
-enum class hf_uart_err_t : uint8_t {
+enum class hf_uart_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
   HF_UART_ERR_LIST(X)
 #undef X
@@ -105,20 +105,20 @@ constexpr std::string_view hf_uart_err_to_string(hf_uart_err_t err) noexcept {
  * @brief UART operation statistics.
  */
 struct hf_uart_statistics_t {
-  uint32_t tx_byte_count;       ///< Total bytes transmitted
-  uint32_t rx_byte_count;       ///< Total bytes received
-  uint32_t tx_error_count;      ///< Transmission error count
-  uint32_t rx_error_count;      ///< Reception error count
-  uint32_t frame_error_count;   ///< Frame error count
-  uint32_t parity_error_count;  ///< Parity error count
-  uint32_t overrun_error_count; ///< Overrun error count
-  uint32_t noise_error_count;   ///< Noise error count
-  uint32_t break_count;         ///< Break condition count
-  uint32_t timeout_count;       ///< Timeout occurrence count
-  uint32_t pattern_detect_count; ///< Pattern detection count
-  uint32_t wakeup_count;        ///< Wakeup event count
-  uint64_t last_activity_timestamp; ///< Last activity timestamp (microseconds)
-  uint64_t initialization_timestamp; ///< Initialization timestamp (microseconds)
+    hf_u32_t tx_byte_count;       ///< Total bytes transmitted
+    hf_u32_t rx_byte_count;       ///< Total bytes received
+    hf_u32_t tx_error_count;      ///< Transmission error count
+    hf_u32_t rx_error_count;      ///< Reception error count
+    hf_u32_t frame_error_count;   ///< Frame error count
+    hf_u32_t parity_error_count;  ///< Parity error count
+    hf_u32_t overrun_error_count; ///< Overrun error count
+    hf_u32_t noise_error_count;   ///< Noise error count
+    hf_u32_t break_count;         ///< Break condition count
+    hf_u32_t timeout_count;       ///< Timeout occurrence count
+    hf_u32_t pattern_detect_count; ///< Pattern detection count
+    hf_u32_t wakeup_count;        ///< Wakeup event count
+    hf_u64_t last_activity_timestamp; ///< Last activity timestamp (microseconds)
+    hf_u64_t initialization_timestamp; ///< Initialization timestamp (microseconds)
 
   hf_uart_statistics_t() noexcept
       : tx_byte_count(0), rx_byte_count(0), tx_error_count(0), rx_error_count(0),
@@ -132,18 +132,18 @@ struct hf_uart_statistics_t {
  */
 struct hf_uart_diagnostics_t {
   hf_uart_err_t last_error;           ///< Last error that occurred
-  uint32_t consecutive_errors;         ///< Number of consecutive errors
-  uint32_t error_reset_count;          ///< Number of times error state was reset
-  uint64_t last_error_timestamp;       ///< Timestamp of last error (microseconds)
+  hf_u32_t consecutive_errors;         ///< Number of consecutive errors
+  hf_u32_t error_reset_count;          ///< Number of times error state was reset
+  hf_u64_t last_error_timestamp;       ///< Timestamp of last error (microseconds)
   bool is_initialized;                 ///< Initialization status
   bool is_transmitting;                ///< Transmission status
   bool is_receiving;                   ///< Reception status
   bool flow_control_active;            ///< Flow control status
   bool pattern_detection_active;       ///< Pattern detection status
   bool wakeup_enabled;                 ///< Wakeup status
-  uint32_t tx_buffer_usage;            ///< TX buffer usage percentage
-  uint32_t rx_buffer_usage;            ///< RX buffer usage percentage
-  uint32_t event_queue_usage;          ///< Event queue usage percentage
+  hf_u32_t tx_buffer_usage;            ///< TX buffer usage percentage
+  hf_u32_t rx_buffer_usage;            ///< RX buffer usage percentage
+  hf_u32_t event_queue_usage;          ///< Event queue usage percentage
 
   hf_uart_diagnostics_t() noexcept
       : last_error(hf_uart_err_t::UART_SUCCESS), consecutive_errors(0), error_reset_count(0),
@@ -258,8 +258,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_uart_err_t result code
    */
-  virtual hf_uart_err_t Write(const uint8_t *data, uint16_t length,
-                          uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_uart_err_t Write(const hf_u8_t *data, hf_u16_t length,
+                          hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Read data from the UART.
@@ -268,13 +268,13 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_uart_err_t result code
    */
-  virtual hf_uart_err_t Read(uint8_t *data, uint16_t length, uint32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_uart_err_t Read(hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Get the number of bytes available to read.
    * @return Number of bytes available in the receive buffer
    */
-  virtual uint16_t BytesAvailable() noexcept = 0;
+  virtual hf_u16_t BytesAvailable() noexcept = 0;
 
   /**
    * @brief Flush the transmit buffer.
@@ -327,7 +327,7 @@ public:
    */
   virtual bool WriteString(const char *str) noexcept {
     if (!str) return false;
-    return Write(reinterpret_cast<const uint8_t *>(str), static_cast<uint16_t>(strlen(str))) == hf_uart_err_t::UART_SUCCESS;
+    return Write(reinterpret_cast<const hf_u8_t *>(str), static_cast<hf_u16_t>(strlen(str))) == hf_uart_err_t::UART_SUCCESS;
   }
 
   /**
@@ -335,7 +335,7 @@ public:
    * @param byte Byte to write
    * @return true if successful, false otherwise
    */
-  virtual bool WriteByte(uint8_t byte) noexcept {
+  virtual bool WriteByte(hf_u8_t byte) noexcept {
     return Write(&byte, 1) == hf_uart_err_t::UART_SUCCESS;
   }
 

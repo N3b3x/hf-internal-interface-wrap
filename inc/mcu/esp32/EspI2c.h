@@ -173,8 +173,8 @@ public:
      * @return I2C operation result
      * @note Uses ESP-IDF v5.5+ i2c_master_transmit() internally
      */
-    hf_i2c_err_t Write(uint8_t device_addr, const uint8_t* data, uint16_t length,
-                   uint32_t timeout_ms = 0) noexcept override;
+    hf_i2c_err_t Write(hf_u16_t device_addr, const hf_u8_t* data, hf_u16_t length,
+                   hf_u32_t timeout_ms = 0) noexcept override;
 
     /**
      * @brief Read data from an I2C device.
@@ -185,8 +185,8 @@ public:
      * @return I2C operation result
      * @note Uses ESP-IDF v5.5+ i2c_master_receive() internally
      */
-    hf_i2c_err_t Read(uint8_t device_addr, uint8_t* data, uint16_t length,
-                  uint32_t timeout_ms = 0) noexcept override;
+    hf_i2c_err_t Read(hf_u16_t device_addr, hf_u8_t* data, hf_u16_t length,
+                  hf_u32_t timeout_ms = 0) noexcept override;
 
     /**
      * @brief Write then read data from an I2C device.
@@ -199,9 +199,9 @@ public:
      * @return I2C operation result
      * @note Uses ESP-IDF v5.5+ i2c_master_transmit_receive() internally
      */
-    hf_i2c_err_t WriteRead(uint8_t device_addr, const uint8_t* tx_data, uint16_t tx_length,
-                       uint8_t* rx_data, uint16_t rx_length, 
-                       uint32_t timeout_ms = 0) noexcept override;
+    hf_i2c_err_t WriteRead(hf_u16_t device_addr, const hf_u8_t* tx_data, hf_u16_t tx_length,
+                       hf_u8_t* rx_data, hf_u16_t rx_length, 
+                       hf_u32_t timeout_ms = 0) noexcept override;
 
     //==========================================================================
     // DEVICE MANAGEMENT
@@ -221,14 +221,14 @@ public:
      * @return Operation result
      * @note Uses ESP-IDF v5.5+ i2c_master_bus_rm_device() internally
      */
-    hf_i2c_err_t RemoveDevice(uint16_t device_address) noexcept;
+    hf_i2c_err_t RemoveDevice(hf_u16_t device_address) noexcept;
 
     /**
      * @brief Probe for device presence on the bus.
      * @param device_addr Device address to probe
      * @return true if device responds, false otherwise
      */
-    bool ProbeDevice(uint16_t device_addr) noexcept;
+    bool ProbeDevice(hf_u16_t device_addr) noexcept;
 
     /**
      * @brief Scan the I2C bus for devices.
@@ -237,9 +237,9 @@ public:
      * @param end_addr Ending address for scan (default: 0x77)
      * @return Number of devices found
      */
-    size_t ScanDevices(std::vector<uint16_t>& found_devices,
-                       uint16_t start_addr = I2C_MIN_DEVICE_ADDR,
-                       uint16_t end_addr = I2C_MAX_DEVICE_ADDR_7BIT) noexcept;
+    size_t ScanDevices(std::vector<hf_u16_t>& found_devices,
+                       hf_u16_t start_addr = I2C_MIN_DEVICE_ADDR,
+                       hf_u16_t end_addr = I2C_MAX_DEVICE_ADDR_7BIT) noexcept;
 
     //==========================================================================
     // ASYNCHRONOUS OPERATIONS
@@ -253,7 +253,7 @@ public:
      * @param user_data User data to pass to callback
      * @return Operation result
      */
-    hf_i2c_err_t WriteAsync(uint16_t device_addr, const std::vector<uint8_t>& data,
+    hf_i2c_err_t WriteAsync(hf_u16_t device_addr, const std::vector<hf_u8_t>& data,
                          hf_i2c_async_callback_t callback, void* user_data = nullptr) noexcept;
 
     /**
@@ -264,7 +264,7 @@ public:
      * @param user_data User data to pass to callback
      * @return Operation result
      */
-    hf_i2c_err_t ReadAsync(uint16_t device_addr, size_t length, hf_i2c_async_callback_t callback,
+    hf_i2c_err_t ReadAsync(hf_u16_t device_addr, size_t length, hf_i2c_async_callback_t callback,
                         void* user_data = nullptr) noexcept;
 
     /**
@@ -272,7 +272,7 @@ public:
      * @param operation_id Operation ID to cancel
      * @return Operation result
      */
-    hf_i2c_err_t CancelAsyncOperation(uint32_t operation_id) noexcept;
+    hf_i2c_err_t CancelAsyncOperation(hf_u32_t operation_id) noexcept;
 
     /**
      * @brief Set event callback for I2C events.
@@ -334,7 +334,7 @@ public:
      * @param value Value to write
      * @return Operation result
      */
-    hf_i2c_err_t WriteRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t value) noexcept;
+    hf_i2c_err_t WriteRegister(hf_u16_t device_addr, hf_u8_t reg_addr, hf_u8_t value) noexcept;
 
     /**
      * @brief Read from a register on an I2C device.
@@ -343,7 +343,7 @@ public:
      * @param value Reference to store read value
      * @return Operation result
      */
-    hf_i2c_err_t ReadRegister(uint16_t device_addr, uint8_t reg_addr, uint8_t& value) noexcept;
+    hf_i2c_err_t ReadRegister(hf_u16_t device_addr, hf_u8_t reg_addr, hf_u8_t& value) noexcept;
 
     /**
      * @brief Write multiple registers on an I2C device.
@@ -352,8 +352,8 @@ public:
      * @param data Vector of data to write
      * @return Operation result
      */
-    hf_i2c_err_t WriteMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
-                                     const std::vector<uint8_t>& data) noexcept;
+    hf_i2c_err_t WriteMultipleRegisters(hf_u16_t device_addr, hf_u8_t start_reg_addr,
+                                     const std::vector<hf_u8_t>& data) noexcept;
 
     /**
      * @brief Read multiple registers from an I2C device.
@@ -363,8 +363,8 @@ public:
      * @param count Number of registers to read
      * @return Operation result
      */
-    hf_i2c_err_t ReadMultipleRegisters(uint16_t device_addr, uint8_t start_reg_addr,
-                                    std::vector<uint8_t>& data, size_t count) noexcept;
+    hf_i2c_err_t ReadMultipleRegisters(hf_u16_t device_addr, hf_u8_t start_reg_addr,
+                                    std::vector<hf_u8_t>& data, size_t count) noexcept;
 
     //==========================================================================
     // POWER MANAGEMENT
@@ -408,7 +408,7 @@ public:
      * @return true if successful, false otherwise
      * @note May require reinitialization of the bus
      */
-    bool SetClockSpeed(uint32_t clock_speed_hz) noexcept;
+    bool SetClockSpeed(hf_u32_t clock_speed_hz) noexcept;
 
     /**
      * @brief Enable or disable internal pull-up resistors.
@@ -421,7 +421,7 @@ public:
      * @brief Get current clock speed.
      * @return Current clock speed in Hz
      */
-    uint32_t GetClockSpeed() const noexcept {
+    hf_u32_t GetClockSpeed() const noexcept {
         return 100000; // Default clock speed - in ESP-IDF v5.5, clock speed is per device
     }
 
@@ -490,7 +490,7 @@ private:
      * @param device_addr Device address
      * @return Device handle or nullptr if failed
      */
-    i2c_master_dev_handle_t GetOrCreateDeviceHandle(uint16_t device_addr) noexcept;
+    i2c_master_dev_handle_t GetOrCreateDeviceHandle(hf_u16_t device_addr) noexcept;
 
     /**
      * @brief Update statistics with operation result.
@@ -498,14 +498,14 @@ private:
      * @param bytes_transferred Number of bytes transferred
      * @param operation_time_us Operation time in microseconds
      */
-    void UpdateStatistics(bool success, size_t bytes_transferred, uint64_t operation_time_us) noexcept;
+    void UpdateStatistics(bool success, size_t bytes_transferred, hf_u64_t operation_time_us) noexcept;
 
     /**
      * @brief Validate device address.
      * @param device_addr Device address to validate
      * @return true if valid, false otherwise
      */
-    [[nodiscard]] bool IsValidDeviceAddress(uint16_t device_addr) const noexcept;
+    [[nodiscard]] bool IsValidDeviceAddress(hf_u16_t device_addr) const noexcept;
 
     /**
      * @brief Update internal diagnostics information.
@@ -518,7 +518,7 @@ private:
      * @param timeout_ms Requested timeout in milliseconds
      * @return Effective timeout value
      */
-    uint32_t GetEffectiveTimeout(uint32_t timeout_ms) const noexcept;
+    hf_u32_t GetEffectiveTimeout(hf_u32_t timeout_ms) const noexcept;
 
     //==========================================================================
     // PRIVATE MEMBERS
@@ -526,14 +526,14 @@ private:
 
     hf_i2c_master_bus_config_t bus_config_;                                 ///< Bus configuration
     i2c_master_bus_handle_t master_bus_handle_;                             ///< Master bus handle
-    std::unordered_map<uint16_t, i2c_master_dev_handle_t> device_handles_;  ///< Device handles
-    std::unordered_map<uint32_t, void*> async_operations_;                  ///< Pending async operations
+    std::unordered_map<hf_u16_t, i2c_master_dev_handle_t> device_handles_;  ///< Device handles
+    std::unordered_map<hf_u32_t, void*> async_operations_;                  ///< Pending async operations
     std::atomic<bool> initialized_{false};                                   ///< Initialization status
     std::atomic<bool> bus_suspended_{false};                                 ///< Bus suspension status
     std::atomic<bool> bus_locked_{false};                                    ///< Bus lock status
     std::atomic<hf_i2c_power_mode_t> current_power_mode_{hf_i2c_power_mode_t::HF_I2C_POWER_MODE_LOW}; ///< Current power mode
     std::atomic<hf_i2c_err_t> last_error_{hf_i2c_err_t::I2C_SUCCESS};       ///< Last error code
-    std::atomic<uint64_t> last_operation_time_us_{0};                       ///< Last operation timestamp
+    std::atomic<hf_u64_t> last_operation_time_us_{0};                       ///< Last operation timestamp
 
     // Statistics and diagnostics
     mutable hf_i2c_statistics_t statistics_;                                 ///< Operation statistics

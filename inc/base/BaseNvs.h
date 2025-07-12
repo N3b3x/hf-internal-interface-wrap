@@ -65,7 +65,7 @@
   X(NVS_ERR_UNSUPPORTED_OPERATION, 26, "Unsupported operation")   
 
 // Generate enum class from X-macro
-enum class hf_nvs_err_t : int32_t {
+enum class hf_nvs_err_t : hf_i32_t {
 #define X(name, value, desc) name = value,
   HF_NVS_ERR_LIST(X)
 #undef X
@@ -88,18 +88,18 @@ constexpr const char *HfNvsErrToString(hf_nvs_err_t err) noexcept {
  * @brief NVS operation statistics.
  */
 struct hf_nvs_statistics_t {
-  uint32_t total_operations;
-  uint32_t total_errors;
-  uint32_t total_reads;
-  uint32_t total_writes;
-  uint32_t total_commits;
-  uint32_t total_erases;
+  hf_u32_t total_operations;
+  hf_u32_t total_errors;
+  hf_u32_t total_reads;
+  hf_u32_t total_writes;
+  hf_u32_t total_commits;
+  hf_u32_t total_erases;
   hf_nvs_err_t last_error;
-  uint32_t last_operation_time_us;
-  uint32_t successful_ops;
-  uint32_t failed_ops;
-  uint32_t bytes_written;
-  uint32_t bytes_read;
+  hf_u32_t last_operation_time_us;
+  hf_u32_t successful_ops;
+  hf_u32_t failed_ops;
+  hf_u32_t bytes_written;
+  hf_u32_t bytes_read;
 };
 
 /**
@@ -107,9 +107,9 @@ struct hf_nvs_statistics_t {
  */
 struct hf_nvs_diagnostics_t {
   hf_nvs_err_t last_error;
-  uint32_t consecutive_errors;
+  hf_u32_t consecutive_errors;
   bool storage_healthy;
-  uint32_t system_uptime_ms;
+  hf_u32_t system_uptime_ms;
 };
 
 /**
@@ -199,7 +199,7 @@ public:
    * @param value Value to store
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual hf_nvs_err_t SetU32(const char *key, uint32_t value) noexcept = 0;
+  virtual hf_nvs_err_t SetU32(const char *key, hf_u32_t value) noexcept = 0;
 
   /**
    * @brief Retrieve a 32-bit unsigned integer value.
@@ -207,7 +207,7 @@ public:
    * @param value Reference to store the retrieved value
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  virtual hf_nvs_err_t GetU32(const char *key, uint32_t &value) noexcept = 0;
+  virtual hf_nvs_err_t GetU32(const char *key, hf_u32_t &value) noexcept = 0;
 
   /**
    * @brief Store a string value.

@@ -131,8 +131,8 @@ bool EspSpi::Deinitialize() noexcept {
   return result;
 }
 
-hf_spi_err_t EspSpi::Transfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                              uint32_t timeout_ms) noexcept {
+hf_spi_err_t EspSpi::Transfer(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                              hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
@@ -182,7 +182,7 @@ bool EspSpi::IsBusy() noexcept {
   return cs_active_;
 }
 
-hf_spi_err_t EspSpi::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
+hf_spi_err_t EspSpi::SetClockSpeed(hf_u32_t clock_speed_hz) noexcept {
   if (!IsValidClockSpeed(clock_speed_hz)) {
     last_error_ = hf_spi_err_t::SPI_ERR_INVALID_CLOCK_SPEED;
     return last_error_;
@@ -208,7 +208,7 @@ hf_spi_err_t EspSpi::SetClockSpeed(uint32_t clock_speed_hz) noexcept {
   return hf_spi_err_t::SPI_SUCCESS;
 }
 
-hf_spi_err_t EspSpi::SetMode(uint8_t mode) noexcept {
+hf_spi_err_t EspSpi::SetMode(hf_u8_t mode) noexcept {
   if (!IsValidMode(mode)) {
     last_error_ = hf_spi_err_t::SPI_ERR_INVALID_MODE;
     return last_error_;
@@ -241,7 +241,7 @@ hf_spi_err_t EspSpi::setDmaEnabled(bool enable) noexcept {
   return hf_spi_err_t::SPI_SUCCESS; // DMA setting will be applied on next initialization
 }
 
-uint32_t EspSpi::GetBusStatus() noexcept {
+hf_u32_t EspSpi::GetBusStatus() noexcept {
   // Return platform-specific status information
   return static_cast<uint32_t>(last_error_) | (cs_active_ ? 0x80000000 : 0);
 }
@@ -258,7 +258,7 @@ uint32_t EspSpi::GetBusStatus() noexcept {
 // ASYNCHRONOUS OPERATIONS                      //
 //==============================================//
 
-hf_spi_err_t EspSpi::transferAsync(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
+hf_spi_err_t EspSpi::transferAsync(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
                                    hf_spi_async_callback_t callback, void *userData) noexcept {
   if (!EnsureInitialized()) {
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
@@ -282,7 +282,7 @@ hf_spi_err_t EspSpi::transferAsync(const uint8_t *tx_data, uint8_t *rx_data, uin
   return result;
 }
 
-hf_spi_err_t EspSpi::cancelAsyncOperation(uint32_t operation_id) noexcept {
+hf_spi_err_t EspSpi::cancelAsyncOperation(hf_u32_t operation_id) noexcept {
   if (!EnsureInitialized()) {
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
@@ -407,8 +407,8 @@ bool EspSpi::PlatformDeinitialize() noexcept {
 
 // Old InternalTransfer signature removed
 
-hf_spi_err_t EspSpi::InternalTransfer(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                                      uint32_t timeout_ms, hf_spi_transfer_mode_t transfer_mode,
+hf_spi_err_t EspSpi::InternalTransfer(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                                      hf_u32_t timeout_ms, hf_spi_transfer_mode_t transfer_mode,
                                       bool manage_cs) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
@@ -613,8 +613,8 @@ hf_spi_err_t EspSpi::selectDevice(spi_device_handle_t device_handle) noexcept {
 // ADVANCED TRANSFER METHODS                    //
 //==============================================//
 
-hf_spi_err_t EspSpi::transferQuad(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                                  uint32_t timeout_ms) noexcept {
+hf_spi_err_t EspSpi::transferQuad(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                                  hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
@@ -631,8 +631,8 @@ hf_spi_err_t EspSpi::transferQuad(const uint8_t *tx_data, uint8_t *rx_data, uint
   return result;
 }
 
-hf_spi_err_t EspSpi::transferOctal(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                                   uint32_t timeout_ms) noexcept {
+hf_spi_err_t EspSpi::transferOctal(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                                   hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
@@ -762,8 +762,8 @@ void EspSpi::UpdateStatistics(bool success, size_t bytesTransferred, uint64_t tr
 // MISSING ADVANCED TRANSFER IMPLEMENTATIONS   //
 //==============================================//
 
-hf_spi_err_t EspSpi::transferDma(const uint8_t *tx_data, uint8_t *rx_data, uint16_t length,
-                                 uint32_t timeout_ms) noexcept {
+hf_spi_err_t EspSpi::transferDma(const hf_u8_t *tx_data, hf_u8_t *rx_data, hf_u16_t length,
+                                 hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
   }
@@ -892,14 +892,14 @@ hf_spi_err_t EspSpi::setClockSource(hf_spi_clock_source_t clock_source) noexcept
 // REGISTER OPERATIONS IMPLEMENTATIONS         //
 //==============================================//
 
-hf_spi_err_t EspSpi::writeRegister(uint8_t reg_addr, uint8_t value) noexcept {
-  uint8_t tx_data[2] = {reg_addr, value};
+hf_spi_err_t EspSpi::writeRegister(hf_u8_t reg_addr, hf_u8_t value) noexcept {
+  hf_u8_t tx_data[2] = {reg_addr, value};
   return Transfer(tx_data, nullptr, 2);
 }
 
-hf_spi_err_t EspSpi::readRegister(uint8_t reg_addr, uint8_t &value) noexcept {
-  uint8_t tx_data = reg_addr | 0x80; // Read command (MSB set)
-  uint8_t rx_data[2];
+hf_spi_err_t EspSpi::readRegister(hf_u8_t reg_addr, hf_u8_t &value) noexcept {
+  hf_u8_t tx_data = reg_addr | 0x80; // Read command (MSB set)
+  hf_u8_t rx_data[2];
 
   hf_spi_err_t result = Transfer(&tx_data, rx_data, 2);
   if (result == hf_spi_err_t::SPI_SUCCESS) {
@@ -908,28 +908,28 @@ hf_spi_err_t EspSpi::readRegister(uint8_t reg_addr, uint8_t &value) noexcept {
   return result;
 }
 
-hf_spi_err_t EspSpi::writeMultipleRegisters(uint8_t start_reg_addr, const uint8_t *data,
-                                            uint8_t count) noexcept {
+hf_spi_err_t EspSpi::writeMultipleRegisters(hf_u8_t start_reg_addr, const hf_u8_t *data,
+                                            hf_u8_t count) noexcept {
   if (!data || count == 0) {
     return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
   // Create transfer buffer with register address followed by data
-  std::vector<uint8_t> tx_buffer(count + 1);
+  std::vector<hf_u8_t> tx_buffer(count + 1);
   tx_buffer[0] = start_reg_addr;
   std::memcpy(&tx_buffer[1], data, count);
 
   return Transfer(tx_buffer.data(), nullptr, count + 1);
 }
 
-hf_spi_err_t EspSpi::readMultipleRegisters(uint8_t start_reg_addr, uint8_t *data,
-                                           uint8_t count) noexcept {
+hf_spi_err_t EspSpi::readMultipleRegisters(hf_u8_t start_reg_addr, hf_u8_t *data,
+                                           hf_u8_t count) noexcept {
   if (!data || count == 0) {
     return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
   }
 
-  uint8_t tx_addr = start_reg_addr | 0x80; // Read command
-  std::vector<uint8_t> rx_buffer(count + 1);
+  hf_u8_t tx_addr = start_reg_addr | 0x80; // Read command
+  std::vector<hf_u8_t> rx_buffer(count + 1);
 
   hf_spi_err_t result = Transfer(&tx_addr, rx_buffer.data(), count + 1);
   if (result == hf_spi_err_t::SPI_SUCCESS) {

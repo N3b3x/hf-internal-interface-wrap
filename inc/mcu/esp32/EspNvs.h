@@ -137,7 +137,7 @@ public:
    * @param value Value to store
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t SetU32(const char *key, uint32_t value) noexcept override;
+  hf_nvs_err_t SetU32(const char *key, hf_u32_t value) noexcept override;
 
   /**
    * @brief Retrieve a 32-bit unsigned integer value.
@@ -145,7 +145,7 @@ public:
    * @param value Reference to store the retrieved value
    * @return hf_nvs_err_t::NVS_SUCCESS if successful, error code otherwise
    */
-  hf_nvs_err_t GetU32(const char *key, uint32_t &value) noexcept override;
+  hf_nvs_err_t GetU32(const char *key, hf_u32_t &value) noexcept override;
 
   /**
    * @brief Store a string value.

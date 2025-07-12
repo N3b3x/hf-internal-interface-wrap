@@ -71,10 +71,10 @@ extern "C" {
 static const char *TAG = "EspNvs";
 
 // === Performance and Reliability Constants ===
-static constexpr uint32_t NVS_INIT_TIMEOUT_MS = 5000;              ///< Initialization timeout
-static constexpr uint32_t NVS_OPERATION_TIMEOUT_MS = 1000;         ///< Single operation timeout
-static constexpr uint32_t NVS_MAX_RETRY_ATTEMPTS = 3;              ///< Maximum retry attempts
-static constexpr uint32_t NVS_STATS_UPDATE_INTERVAL_MS = 30000;    ///< Statistics update interval
+static constexpr hf_u32_t NVS_INIT_TIMEOUT_MS = 5000;              ///< Initialization timeout
+static constexpr hf_u32_t NVS_OPERATION_TIMEOUT_MS = 1000;         ///< Single operation timeout
+static constexpr hf_u32_t NVS_MAX_RETRY_ATTEMPTS = 3;              ///< Maximum retry attempts
+static constexpr hf_u32_t NVS_STATS_UPDATE_INTERVAL_MS = 30000;    ///< Statistics update interval
 static constexpr size_t NVS_MAX_KEY_LENGTH_ESP32 = 15;             ///< ESP32 NVS key length limit
 static constexpr size_t NVS_MAX_VALUE_SIZE_ESP32 = 4000;           ///< ESP32 NVS value size limit (conservative)
 static constexpr size_t NVS_MAX_NAMESPACE_LENGTH_ESP32 = 15;       ///< ESP32 NVS namespace length limit
@@ -194,7 +194,7 @@ hf_nvs_err_t EspNvs::Initialize() noexcept {
   
   // Step 4: Log successful initialization with handle information
   ESP_LOGI(TAG, "NVS namespace '%s' successfully opened (handle: 0x%X)", 
-           GetNamespace(), static_cast<uint32_t>(handle));
+           GetNamespace(), static_cast<hf_u32_t>(handle));
   
   // Step 5: Initialize statistics tracking
   statistics_.last_operation_time_us = esp_timer_get_time();
@@ -209,7 +209,7 @@ hf_nvs_err_t EspNvs::Initialize() noexcept {
   // Initialize diagnostics
   diagnostics_.last_error = hf_nvs_err_t::NVS_SUCCESS;
   diagnostics_.consecutive_errors = 0;
-  diagnostics_.system_uptime_ms = 0;
+  diagnostics_.system_uptime_ms = static_cast<hf_u32_t>(esp_timer_get_time() / 1000);
   diagnostics_.storage_healthy = true;
   
   last_error_code_ = ESP_OK;
@@ -234,7 +234,7 @@ hf_nvs_err_t EspNvs::Deinitialize() noexcept {
   return hf_nvs_err_t::NVS_SUCCESS;
 }
 
-hf_nvs_err_t EspNvs::SetU32(const char *key, uint32_t value) noexcept {
+hf_nvs_err_t EspNvs::SetU32(const char *key, hf_u32_t value) noexcept {
   if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
@@ -275,7 +275,7 @@ hf_nvs_err_t EspNvs::SetU32(const char *key, uint32_t value) noexcept {
   return hf_nvs_err_t::NVS_SUCCESS;
 }
 
-hf_nvs_err_t EspNvs::GetU32(const char *key, uint32_t &value) noexcept {
+hf_nvs_err_t EspNvs::GetU32(const char *key, hf_u32_t &value) noexcept {
   if (!EnsureInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
@@ -579,7 +579,7 @@ void EspNvs::UpdateStatistics(bool error_occurred) noexcept {
   }
   
   // Update system uptime
-  diagnostics_.system_uptime_ms = static_cast<uint32_t>(esp_timer_get_time() / 1000);
+  diagnostics_.system_uptime_ms = static_cast<hf_u32_t>(esp_timer_get_time() / 1000);
 }
 
 bool EspNvs::IsValidKey(const char *key) const noexcept {

@@ -65,7 +65,7 @@
   X(PWM_ERR_UNSUPPORTED_OPERATION, 24, "Unsupported operation")
 
 // Generate enum class
-enum class hf_pwm_err_t : uint32_t {
+enum class hf_pwm_err_t : hf_u32_t {
 #define X(name, value, description) name = value,
   HF_PWM_ERR_LIST(X)
 #undef X
@@ -94,14 +94,14 @@ constexpr const char *HfPwmErrToString(hf_pwm_err_t error) noexcept {
  * @brief PWM statistics information
  */
 struct hf_pwm_statistics_t {
-  uint32_t duty_updates_count;     ///< Total duty cycle updates
-  uint32_t frequency_changes_count; ///< Total frequency changes
-  uint32_t fade_operations_count;   ///< Total fade operations
-  uint32_t error_count;            ///< Total error count
-  uint32_t channel_enables_count;  ///< Total channel enable operations
-  uint32_t channel_disables_count; ///< Total channel disable operations
-  uint64_t last_activity_timestamp; ///< Last activity timestamp
-  uint64_t initialization_timestamp; ///< Initialization timestamp
+  hf_u32_t duty_updates_count;     ///< Total duty cycle updates
+  hf_u32_t frequency_changes_count; ///< Total frequency changes
+  hf_u32_t fade_operations_count;   ///< Total fade operations
+  hf_u32_t error_count;            ///< Total error count
+  hf_u32_t channel_enables_count;  ///< Total channel enable operations
+  hf_u32_t channel_disables_count; ///< Total channel disable operations
+  hf_u64_t last_activity_timestamp; ///< Last activity timestamp
+  hf_u64_t initialization_timestamp; ///< Initialization timestamp
 
   hf_pwm_statistics_t() noexcept
       : duty_updates_count(0), frequency_changes_count(0), fade_operations_count(0),
@@ -115,9 +115,9 @@ struct hf_pwm_statistics_t {
 struct hf_pwm_diagnostics_t {
   bool hardware_initialized;     ///< Hardware is initialized
   bool fade_functionality_ready; ///< Hardware fade is ready
-  uint8_t active_channels;       ///< Number of active channels
-  uint8_t active_timers;         ///< Number of active timers
-  uint32_t system_uptime_ms;     ///< System uptime in milliseconds
+  hf_u8_t active_channels;       ///< Number of active channels
+  hf_u8_t active_timers;         ///< Number of active timers
+  hf_u32_t system_uptime_ms;     ///< System uptime in milliseconds
   hf_pwm_err_t last_global_error; ///< Last global error
 
   hf_pwm_diagnostics_t() noexcept
@@ -264,7 +264,7 @@ public:
    * @param raw_value Raw duty register value
    * @return PWM_SUCCESS on success, error code on failure
    */
-  virtual hf_pwm_err_t SetDutyCycleRaw(hf_channel_id_t channel_id, uint32_t raw_value) noexcept = 0;
+  virtual hf_pwm_err_t SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_value) noexcept = 0;
 
   /**
    * @brief Set frequency for a channel
@@ -311,9 +311,9 @@ public:
    * @param deadtime_ns Deadtime in nanoseconds
    * @return PWM_SUCCESS on success, error code on failure
    */
-  virtual hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel,
-                                          hf_channel_id_t complementary_channel,
-                                          uint32_t deadtime_ns) noexcept = 0;
+    virtual hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel,
+                                           hf_channel_id_t complementary_channel,
+                                           hf_u32_t deadtime_ns) noexcept = 0;
 
   //==============================================================================
   // STATUS AND INFORMATION
@@ -383,12 +383,12 @@ public:
    * @param resolution_bits PWM resolution in bits
    * @return Raw duty value
    */
-  static constexpr uint32_t DutyCycleToRaw(float duty_cycle, uint8_t resolution_bits) noexcept {
+  static constexpr hf_u32_t DutyCycleToRaw(float duty_cycle, hf_u8_t resolution_bits) noexcept {
     if (duty_cycle < 0.0f)
       duty_cycle = 0.0f;
     if (duty_cycle > 1.0f)
       duty_cycle = 1.0f;
-    return static_cast<uint32_t>(duty_cycle * ((1U << resolution_bits) - 1));
+    return static_cast<hf_u32_t>(duty_cycle * ((1U << resolution_bits) - 1));
   }
 
   /**
@@ -397,8 +397,8 @@ public:
    * @param resolution_bits PWM resolution in bits
    * @return Duty cycle (0.0 - 1.0)
    */
-  static constexpr float RawToDutyCycle(uint32_t raw_value, uint8_t resolution_bits) noexcept {
-    uint32_t max_value = (1U << resolution_bits) - 1;
+  static constexpr float RawToDutyCycle(hf_u32_t raw_value, hf_u8_t resolution_bits) noexcept {
+          hf_u32_t max_value = (1U << resolution_bits) - 1;
     if (raw_value > max_value)
       raw_value = max_value;
     return static_cast<float>(raw_value) / static_cast<float>(max_value);
@@ -420,8 +420,8 @@ public:
    * @param max_freq_hz Maximum allowed frequency
    * @return true if valid, false otherwise
    */
-  static constexpr bool IsValidFrequency(uint32_t frequency_hz, uint32_t min_freq_hz,
-                                         uint32_t max_freq_hz) noexcept {
+  static constexpr bool IsValidFrequency(hf_u32_t frequency_hz, hf_u32_t min_freq_hz,
+                                         hf_u32_t max_freq_hz) noexcept {
     return (frequency_hz >= min_freq_hz && frequency_hz <= max_freq_hz);
   }
 

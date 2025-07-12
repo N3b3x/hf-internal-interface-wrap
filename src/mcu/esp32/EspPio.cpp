@@ -84,7 +84,7 @@ hf_pio_err_t McuPio::Deinitialize() noexcept {
   }
 
   // Deinitialize all configured channels
-  for (uint8_t i = 0; i < MAX_CHANNELS; ++i) {
+  for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (channels_[i].configured) {
       DeinitializeChannel(i);
     }
@@ -105,7 +105,7 @@ hf_pio_err_t McuPio::Deinitialize() noexcept {
 // CHANNEL CONFIGURATION
 //==============================================================================
 
-hf_pio_err_t McuPio::ConfigureChannel(uint8_t channel_id,
+hf_pio_err_t McuPio::ConfigureChannel(hf_u8_t channel_id,
                                       const hf_pio_channel_config_t &config) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -150,7 +150,7 @@ hf_pio_err_t McuPio::ConfigureChannel(uint8_t channel_id,
 // TRANSMISSION OPERATIONS
 //==============================================================================
 
-hf_pio_err_t McuPio::Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols,
+hf_pio_err_t McuPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t *symbols,
                               size_t symbol_count, bool wait_completion) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -237,7 +237,7 @@ hf_pio_err_t McuPio::Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols
   }
   if (wait_completion) {
     // Wait for transmission to complete using ESP-IDF API
-    uint32_t timeout_us = channel.config.timeout_us;
+    hf_u32_t timeout_us = channel.config.timeout_us;
     ret = rmt_tx_wait_all_done(channel.tx_channel,
                                timeout_us == 0 ? portMAX_DELAY : pdMS_TO_TICKS(timeout_us / 1000));
     if (ret != ESP_OK) {
@@ -257,8 +257,8 @@ hf_pio_err_t McuPio::Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols
 // RECEPTION OPERATIONS
 //==============================================================================
 
-hf_pio_err_t McuPio::StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
-                                  uint32_t timeout_us) noexcept {
+hf_pio_err_t McuPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size,
+                                  hf_u32_t timeout_us) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
@@ -335,7 +335,7 @@ hf_pio_err_t McuPio::StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer, s
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept {
+hf_pio_err_t McuPio::StopReceive(hf_u8_t channel_id, size_t &symbols_received) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
@@ -367,7 +367,7 @@ hf_pio_err_t McuPio::StopReceive(uint8_t channel_id, size_t &symbols_received) n
 // STATUS AND CAPABILITIES
 //==============================================================================
 
-bool McuPio::IsChannelBusy(uint8_t channel_id) const noexcept {
+bool McuPio::IsChannelBusy(hf_u8_t channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
@@ -377,8 +377,8 @@ bool McuPio::IsChannelBusy(uint8_t channel_id) const noexcept {
   return channels_[channel_id].busy;
 }
 
-hf_pio_err_t McuPio::GetChannelStatus(uint8_t channel_id,
-                                      hf_pio_channel_status_t &status) const noexcept {
+hf_pio_err_t McuPio::GetChannelStatus(hf_u8_t channel_id,
+                                      hf_pio_channel_status_t &status) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
@@ -439,7 +439,7 @@ void McuPio::ClearCallbacks() noexcept {
 // ESP32-SPECIFIC METHODS
 //==============================================================================
 
-hf_pio_err_t McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_hz,
+hf_pio_err_t McuPio::ConfigureCarrier(hf_u8_t channel_id, hf_u32_t carrier_freq_hz,
                                       float duty_cycle) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -477,7 +477,7 @@ hf_pio_err_t McuPio::ConfigureCarrier(uint8_t channel_id, uint32_t carrier_freq_
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
+hf_pio_err_t McuPio::EnableLoopback(hf_u8_t channel_id, bool enable) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
@@ -493,8 +493,8 @@ hf_pio_err_t McuPio::EnableLoopback(uint8_t channel_id, bool enable) noexcept {
 // ADVANCED LOW-LEVEL RMT CONTROL METHODS
 //==============================================================================
 
-hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_blocks, bool enable_dma,
-                                          uint32_t queue_depth) noexcept {
+hf_pio_err_t McuPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_blocks, bool enable_dma,
+                                          hf_u32_t queue_depth) noexcept {
   if (!EnsureInitialized()) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
@@ -527,7 +527,7 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
 
     // Reconfigure with advanced settings
     const auto &config = stored_config;
-    uint32_t clock_divider = CalculateClockDivider(config.resolution_ns);
+    hf_u32_t clock_divider = CalculateClockDivider(config.resolution_ns);
 
     if (config.direction == hf_pio_direction_t::Transmit ||
         config.direction == hf_pio_direction_t::Bidirectional) {
@@ -536,7 +536,7 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
       tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
       tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
       tx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
-      tx_config.mem_block_symbols = static_cast<uint32_t>(memory_blocks);
+      tx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
       tx_config.trans_queue_depth = queue_depth;
 
       if (enable_dma) {
@@ -601,7 +601,7 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
       rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
       rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
       rx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
-      rx_config.mem_block_symbols = static_cast<uint32_t>(memory_blocks);
+      rx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
 
       esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
       if (ret != ESP_OK) {
@@ -635,7 +635,7 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(uint8_t channel_id, size_t memory_bloc
 // ADVANCED PIO FUNCTION IMPLEMENTATIONS
 //==============================================================================
 
-hf_pio_err_t McuPio::ConfigureEncoder(uint8_t channel_id, const hf_pio_symbol_t &bit0_config,
+hf_pio_err_t McuPio::ConfigureEncoder(hf_u8_t channel_id, const hf_pio_symbol_t &bit0_config,
                                       const hf_pio_symbol_t &bit1_config) noexcept {
   if (!EnsureInitialized()) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
@@ -689,7 +689,7 @@ hf_pio_err_t McuPio::ConfigureEncoder(uint8_t channel_id, const hf_pio_symbol_t 
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept {
+hf_pio_err_t McuPio::SetIdleLevel(hf_u8_t channel_id, bool idle_level) noexcept {
   if (!EnsureInitialized()) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
@@ -710,7 +710,7 @@ hf_pio_err_t McuPio::SetIdleLevel(uint8_t channel_id, bool idle_level) noexcept 
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::GetChannelStatistics(uint8_t channel_id,
+hf_pio_err_t McuPio::GetChannelStatistics(hf_u8_t channel_id,
                                           hf_pio_channel_statistics_t &stats) const noexcept {
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
@@ -733,7 +733,7 @@ hf_pio_err_t McuPio::GetChannelStatistics(uint8_t channel_id,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::ResetChannelStatistics(uint8_t channel_id) noexcept {
+hf_pio_err_t McuPio::ResetChannelStatistics(hf_u8_t channel_id) noexcept {
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
@@ -747,7 +747,7 @@ hf_pio_err_t McuPio::ResetChannelStatistics(uint8_t channel_id) noexcept {
 // MISSING ADVANCED PIO FUNCTION IMPLEMENTATIONS
 //==============================================================================
 
-hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
+hf_pio_err_t McuPio::TransmitRawRmtSymbols(hf_u8_t channel_id,
                                            const rmt_symbol_word_t *rmt_symbols,
                                            size_t symbol_count, bool wait_completion) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
@@ -804,7 +804,7 @@ hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
 
   // Wait for completion if requested
   if (wait_completion) {
-    uint32_t timeout_ms = channel.config.timeout_us / 1000;
+    hf_u32_t timeout_ms = channel.config.timeout_us / 1000;
     if (timeout_ms == 0)
       timeout_ms = portMAX_DELAY;
 
@@ -828,9 +828,9 @@ hf_pio_err_t McuPio::TransmitRawRmtSymbols(uint8_t channel_id,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::ReceiveRawRmtSymbols(uint8_t channel_id, rmt_symbol_word_t *rmt_buffer,
+hf_pio_err_t McuPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t *rmt_buffer,
                                           size_t buffer_size, size_t &symbols_received,
-                                          uint32_t timeout_us) noexcept {
+                                          hf_u32_t timeout_us) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
@@ -920,7 +920,7 @@ size_t McuPio::GetMaxSymbolCount() const noexcept {
 // PRIVATE HELPER METHODS
 //==============================================================================
 
-bool McuPio::IsValidChannelId(uint8_t channel_id) const noexcept {
+bool McuPio::IsValidChannelId(hf_u8_t channel_id) const noexcept {
   return channel_id < MAX_CHANNELS;
 }
 
@@ -966,11 +966,11 @@ hf_pio_err_t McuPio::ConvertFromRmtSymbols(const rmt_symbol_word_t *rmt_symbols,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-uint32_t McuPio::CalculateClockDivider(uint32_t resolution_ns) const noexcept {
+hf_u32_t McuPio::CalculateClockDivider(hf_u32_t resolution_ns) const noexcept {
   // Calculate clock divider to achieve desired resolution
   // RMT source clock is typically 80 MHz (12.5 ns per tick)
-  uint32_t divider = (resolution_ns * RMT_CLK_SRC_FREQ) / 1000000000UL;
-  return std::max<uint32_t>(1U, std::min<uint32_t>(255U, static_cast<uint32_t>(divider))); // Clamp to valid range
+  hf_u32_t divider = (resolution_ns * RMT_CLK_SRC_FREQ) / 1000000000UL;
+  return std::max<hf_u32_t>(1U, std::min<hf_u32_t>(255U, static_cast<hf_u32_t>(divider))); // Clamp to valid range
 }
 
 bool McuPio::OnTransmitComplete(rmt_channel_handle_t channel,
@@ -980,7 +980,7 @@ bool McuPio::OnTransmitComplete(rmt_channel_handle_t channel,
     return false;
 
   // Find the channel ID by comparing channel handles
-  for (uint8_t i = 0; i < MAX_CHANNELS; ++i) {
+  for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (instance->channels_[i].tx_channel == channel) {
       RtosUniqueLock<RtosMutex> lock(instance->state_mutex_);
 
@@ -1010,7 +1010,7 @@ bool McuPio::OnReceiveComplete(rmt_channel_handle_t channel,
     return false;
 
   // Find the channel ID by comparing channel handles
-  for (uint8_t i = 0; i < MAX_CHANNELS; ++i) {
+  for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (instance->channels_[i].rx_channel == channel) {
       RtosUniqueLock<RtosMutex> lock(instance->state_mutex_);
 
@@ -1044,12 +1044,12 @@ bool McuPio::OnReceiveComplete(rmt_channel_handle_t channel,
   return false;
 }
 
-hf_pio_err_t McuPio::InitializeChannel(uint8_t channel_id) noexcept {
+hf_pio_err_t McuPio::InitializeChannel(hf_u8_t channel_id) noexcept {
   auto &channel = channels_[channel_id];
   const auto &config = channel.config;
 
   // Calculate clock settings
-  uint32_t clock_divider = CalculateClockDivider(config.resolution_ns);
+  hf_u32_t clock_divider = CalculateClockDivider(config.resolution_ns);
 
   if (config.direction == hf_pio_direction_t::Transmit ||
       config.direction == hf_pio_direction_t::Bidirectional) {
@@ -1112,7 +1112,7 @@ hf_pio_err_t McuPio::InitializeChannel(uint8_t channel_id) noexcept {
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::DeinitializeChannel(uint8_t channel_id) noexcept {
+hf_pio_err_t McuPio::DeinitializeChannel(hf_u8_t channel_id) noexcept {
   auto &channel = channels_[channel_id];
 
   if (channel.tx_channel) {
@@ -1156,13 +1156,13 @@ hf_pio_err_t McuPio::ValidateSymbols(const hf_pio_symbol_t *symbols,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-void McuPio::UpdateChannelStatus(uint8_t channel_id) noexcept {
+void McuPio::UpdateChannelStatus(hf_u8_t channel_id) noexcept {
   auto &channel = channels_[channel_id];
   channel.status.timestamp_us = esp_timer_get_time();
   channel.status.last_error = hf_pio_err_t::PIO_SUCCESS;
 }
 
-void McuPio::InvokeErrorCallback(uint8_t channel_id, hf_pio_err_t error) noexcept {
+void McuPio::InvokeErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept {
   if (error_callback_) {
     error_callback_(channel_id, error, callback_user_data_);
   }
@@ -1184,7 +1184,7 @@ bool McuPio::ValidatePioSystem() noexcept {
 
   // Test 2: Validate channel configuration
   ESP_LOGI(TAG, "Testing channel configuration...");
-  for (uint8_t i = 0; i < MAX_CHANNELS; ++i) {
+  for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (!IsValidChannelId(i)) {
       ESP_LOGE(TAG, "Invalid channel ID: %d", i);
       all_tests_passed = false;
@@ -1222,7 +1222,7 @@ bool McuPio::ValidatePioSystem() noexcept {
 
   // Test 6: Validate clock divider calculation
   ESP_LOGI(TAG, "Testing clock divider calculation...");
-  uint32_t divider = CalculateClockDivider(1000); // 1 microsecond
+  hf_u32_t divider = CalculateClockDivider(1000); // 1 microsecond
   if (divider == 0 || divider > 255) {
     ESP_LOGE(TAG, "Clock divider calculation failed: %d", divider);
     all_tests_passed = false;
