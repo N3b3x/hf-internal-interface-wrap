@@ -55,7 +55,7 @@ classDiagram
         <<abstract>>
         +Initialize() bool
         +Deinitialize() bool
-        +GetMaxChannels() uint8_t
+        +GetMaxChannels() hf_u8_t
         +IsChannelAvailable(channel_id) bool
         +ReadChannelV(channel_id, voltage) hf_adc_err_t
         +ReadChannelCount(channel_id, count) hf_adc_err_t
@@ -217,7 +217,7 @@ bool EnsureDeinitialized() noexcept;
  * 
  * 📊 Returns the total number of ADC channels available on this hardware.
  */
-[[nodiscard]] virtual uint8_t GetMaxChannels() const noexcept = 0;
+[[nodiscard]] virtual hf_u8_t GetMaxChannels() const noexcept = 0;
 
 /**
  * @brief Check if a specific channel is available
@@ -252,7 +252,7 @@ bool EnsureDeinitialized() noexcept;
  */
 virtual hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id, 
                                     float &channel_reading_v,
-                                    uint8_t numOfSamplesToAvg = 1,
+                                    hf_u8_t numOfSamplesToAvg = 1,
                                     hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
 /**
@@ -267,15 +267,15 @@ virtual hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id,
  * No calibration or voltage conversion applied.
  * 
  * @example
- * uint32_t raw_count;
+ * hf_u32_t raw_count;
  * hf_adc_err_t result = adc.ReadChannelCount(0, raw_count);
  * if (result == hf_adc_err_t::ADC_SUCCESS) {
  *     printf("Raw ADC: %u\n", raw_count);
  * }
  */
 virtual hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id, 
-                                        uint32_t &channel_reading_count,
-                                        uint8_t numOfSamplesToAvg = 1,
+                                        hf_u32_t &channel_reading_count,
+                                        hf_u8_t numOfSamplesToAvg = 1,
                                         hf_time_t timeBetweenSamples = 0) noexcept = 0;
 
 /**
@@ -291,15 +291,15 @@ virtual hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id,
  * More efficient than separate calls for both values.
  * 
  * @example
- * uint32_t raw_count;
+ * hf_u32_t raw_count;
  * float voltage;
  * hf_adc_err_t result = adc.ReadChannel(0, raw_count, voltage);
  * if (result == hf_adc_err_t::ADC_SUCCESS) {
  *     printf("Raw: %u, Voltage: %.3f V\n", raw_count, voltage);
  * }
  */
-virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, uint32_t &channel_reading_count,
-                               float &channel_reading_v, uint8_t numOfSamplesToAvg = 1,
+virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, hf_u32_t &channel_reading_count,
+                               float &channel_reading_v, hf_u8_t numOfSamplesToAvg = 1,
                                hf_time_t timeBetweenSamples = 0) noexcept = 0;
 ```
 
@@ -319,12 +319,12 @@ virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, uint32_t &channel_r
  * 
  * @example
  * hf_channel_id_t channels[] = {0, 1, 2};
- * uint32_t raw_readings[3];
+ * hf_u32_t raw_readings[3];
  * float voltages[3];
  * hf_adc_err_t result = adc.ReadMultipleChannels(channels, 3, raw_readings, voltages);
  */
-virtual hf_adc_err_t ReadMultipleChannels(const hf_channel_id_t *channel_ids, uint8_t num_channels,
-                                        uint32_t *readings, float *voltages) noexcept;
+virtual hf_adc_err_t ReadMultipleChannels(const hf_channel_id_t *channel_ids, hf_u8_t num_channels,
+                                        hf_u32_t *readings, float *voltages) noexcept;
 ```
 
 ### 📈 **Statistics and Diagnostics**
@@ -373,15 +373,15 @@ virtual hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t &diagnostics) const noe
 
 ```cpp
 struct hf_adc_statistics_t {
-    uint32_t totalConversions;        ///< Total conversions performed
-    uint32_t successfulConversions;   ///< Successful conversions
-    uint32_t failedConversions;       ///< Failed conversions
-    uint32_t averageConversionTimeUs; ///< Average conversion time (microseconds)
-    uint32_t maxConversionTimeUs;     ///< Maximum conversion time
-    uint32_t minConversionTimeUs;     ///< Minimum conversion time
-    uint32_t calibrationCount;        ///< Number of calibrations performed
-    uint32_t thresholdViolations;     ///< Threshold monitor violations
-    uint32_t calibration_errors;      ///< Calibration errors
+    hf_u32_t totalConversions;        ///< Total conversions performed
+    hf_u32_t successfulConversions;   ///< Successful conversions
+    hf_u32_t failedConversions;       ///< Failed conversions
+    hf_u32_t averageConversionTimeUs; ///< Average conversion time (microseconds)
+    hf_u32_t maxConversionTimeUs;     ///< Maximum conversion time
+    hf_u32_t minConversionTimeUs;     ///< Minimum conversion time
+    hf_u32_t calibrationCount;        ///< Number of calibrations performed
+    hf_u32_t thresholdViolations;     ///< Threshold monitor violations
+    hf_u32_t calibration_errors;      ///< Calibration errors
 };
 ```
 
@@ -391,12 +391,12 @@ struct hf_adc_statistics_t {
 struct hf_adc_diagnostics_t {
     bool adcHealthy;                ///< Overall ADC health status
     hf_adc_err_t lastErrorCode;     ///< Last error code
-    uint32_t lastErrorTimestamp;    ///< Last error timestamp
-    uint32_t consecutiveErrors;     ///< Consecutive error count
+    hf_u32_t lastErrorTimestamp;    ///< Last error timestamp
+    hf_u32_t consecutiveErrors;     ///< Consecutive error count
     float temperatureC;             ///< ADC temperature (if available)
     float referenceVoltage;         ///< Reference voltage
     bool calibrationValid;          ///< Calibration validity
-    uint32_t enabled_channels;      ///< Bit mask of enabled channels
+    hf_u32_t enabled_channels;      ///< Bit mask of enabled channels
 };
 ```
 
@@ -510,7 +510,7 @@ EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_6);
 
 class HighSpeedAcquisition {
 private:
-    std::vector<uint32_t> buffer_;
+    std::vector<hf_u32_t> buffer_;
     size_t sample_count_;
     
 public:
@@ -527,7 +527,7 @@ public:
         
         // Rapid sampling loop with error handling
         for (size_t i = 0; i < sample_count_; i++) {
-            uint32_t raw_count;
+            hf_u32_t raw_count;
             hf_adc_err_t result = adc.ReadChannelCount(0, raw_count);
             
             if (result == hf_adc_err_t::ADC_SUCCESS) {
@@ -547,11 +547,11 @@ public:
             return;
         }
         
-        uint32_t sum = 0;
-        uint32_t min_val = UINT32_MAX;
-        uint32_t max_val = 0;
+        hf_u32_t sum = 0;
+        hf_u32_t min_val = UINT32_MAX;
+        hf_u32_t max_val = 0;
         
-        for (uint32_t sample : buffer_) {
+        for (hf_u32_t sample : buffer_) {
             sum += sample;
             min_val = std::min(min_val, sample);
             max_val = std::max(max_val, sample);
@@ -693,11 +693,11 @@ float voltage = adc.ReadChannelV(0, voltage);
 
 ```cpp
 // 🚀 Use raw counts for high-speed applications
-uint32_t raw_count;
+hf_u32_t raw_count;
 adc.ReadChannelCount(channel_id, raw_count);  // Faster than voltage conversion
 
 // 🚀 Use multi-channel reads for efficiency
-uint32_t readings[4];
+hf_u32_t readings[4];
 float voltages[4];
 adc.ReadMultipleChannels(channels, 4, readings, voltages);
 

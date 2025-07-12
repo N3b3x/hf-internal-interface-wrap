@@ -19,6 +19,7 @@
 
 - [🎯 **Overview**](#-overview)
 - [🏗️ **Architecture**](#️-architecture) 
+- [🔧 **Type System**](#-type-system)
 - [📖 **API Reference**](#-api-reference)
 - [🚀 **Quick Start**](#-quick-start)
 - [🗺️ **Component Map**](ComponentMap.md)
@@ -126,6 +127,47 @@ graph TB
 3. **⚡ Performance First** - Minimal overhead with direct hardware access when needed
 4. **🔌 Platform Independence** - Easy porting to new MCU platforms
 5. **🛡️ Robust Error Handling** - Comprehensive error reporting and validation
+6. **🔧 Type Wrapping System** - Consistent platform-agnostic types across all interfaces
+
+---
+
+## 🔧 **Type System**
+
+The HardFOC Internal Interface Wrapper implements a comprehensive type wrapping system that ensures consistency and portability across all hardware interfaces.
+
+### 🎯 **Key Benefits**
+
+- **🔒 Type Consistency**: All interfaces use the same wrapped type system
+- **🔄 Portability**: Easy to adapt to different platforms and architectures  
+- **🎯 Clarity**: Clear distinction between platform types and wrapped types
+- **🛡️ Safety**: Prevents type mismatches and improves compile-time checking
+
+### 📊 **Type Definitions**
+
+```cpp
+// Integer type wrappers
+using hf_u8_t = uint8_t;    // 8-bit unsigned
+using hf_u16_t = uint16_t;  // 16-bit unsigned
+using hf_u32_t = uint32_t;  // 32-bit unsigned
+using hf_u64_t = uint64_t;  // 64-bit unsigned
+using hf_i8_t = int8_t;     // 8-bit signed
+using hf_i16_t = int16_t;   // 16-bit signed
+using hf_i32_t = int32_t;   // 32-bit signed
+using hf_i64_t = int64_t;   // 64-bit signed
+
+// Hardware-specific types
+using hf_pin_num_t = hf_i32_t;      // GPIO pin numbers
+using hf_channel_id_t = hf_u32_t;   // ADC/PWM channels
+using hf_port_num_t = hf_u32_t;     // Communication ports
+using hf_time_t = hf_u32_t;         // Time in milliseconds
+using hf_frequency_hz_t = hf_u32_t; // Frequency in Hz
+```
+
+### 📚 **Documentation**
+
+For detailed information about the type wrapping system, see:
+- [🔧 **Type Wrapping System Guide**](TypeWrappingSystem.md) - Comprehensive guide with examples
+- [📊 **HardwareTypes.h**](../inc/base/HardwareTypes.h) - Core type definitions
 
 ---
 
