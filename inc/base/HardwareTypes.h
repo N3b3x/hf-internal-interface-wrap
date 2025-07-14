@@ -72,6 +72,12 @@ using hf_i32_t = int32_t;
  */
 using hf_i64_t = int64_t;
 
+/**
+ * @brief Platform-agnostic boolean type.
+ * @details Wraps bool for consistent naming and future extensibility.
+ */
+using hf_bool_t = bool;
+
 //==============================================================================
 // PLATFORM-AGNOSTIC GPIO TYPES
 //==============================================================================
