@@ -17,6 +17,10 @@
 #include "HardwareTypes.h" // For basic hardware types
 #include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 
+// Forward declarations for new SPI bus/device classes
+class EspSpiBus;
+class EspSpiDevice;
+
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
 extern "C" {
@@ -37,6 +41,119 @@ extern "C" {
 using hf_spi_device_handle_t = spi_device_handle_t;
 using hf_spi_device_interface_config_t = spi_device_interface_config_t;
 using hf_spi_transaction_t = spi_transaction_t;
+
+//==============================================================================
+// ESP32 SPI BUS CONFIG STRUCT
+//==============================================================================
+/**
+ * @struct hf_spi_bus_config_t
+ * @brief Platform-agnostic SPI bus configuration structure for ESP32.
+ *
+ * This structure provides all configuration options for initializing an SPI bus
+ * on ESP32 platforms, including DMA, IOMUX, and advanced timing options. All
+ * fields use project types for portability.
+ *
+ * @var hf_spi_bus_config_t::host
+ *   SPI host/controller (e.g., HF_SPI2_HOST)
+ * @var hf_spi_bus_config_t::mosi_pin
+ *   MOSI pin number
+ * @var hf_spi_bus_config_t::miso_pin
+ *   MISO pin number
+ * @var hf_spi_bus_config_t::sclk_pin
+ *   SCLK pin number
+ * @var hf_spi_bus_config_t::clock_speed_hz
+ *   Default clock speed in Hz
+ * @var hf_spi_bus_config_t::dma_channel
+ *   DMA channel (0=auto, 1/2=specific, 0xFF=disabled)
+ * @var hf_spi_bus_config_t::bits_per_word
+ *   Bits per transfer (typically 8 or 16)
+ * @var hf_spi_bus_config_t::timeout_ms
+ *   Default timeout for operations (ms)
+ * @var hf_spi_bus_config_t::use_iomux
+ *   Use IOMUX for better performance
+ */
+struct hf_spi_bus_config_t {
+  hf_host_id_t host;                ///< SPI host/controller (e.g., HF_SPI2_HOST)
+  hf_pin_num_t mosi_pin;            ///< MOSI pin
+  hf_pin_num_t miso_pin;            ///< MISO pin
+  hf_pin_num_t sclk_pin;            ///< SCLK pin
+  hf_u32_t clock_speed_hz;          ///< Default clock speed (Hz)
+  hf_u8_t dma_channel;              ///< DMA channel (0=auto, 1/2=specific, 0xFF=disabled)
+  hf_u8_t bits_per_word;            ///< Bits per transfer (typically 8 or 16)
+  hf_timeout_ms_t timeout_ms;       ///< Default timeout for operations (ms)
+  bool use_iomux;                   ///< Use IOMUX for better performance
+
+  hf_spi_bus_config_t() noexcept
+      : host(HF_INVALID_HOST), mosi_pin(HF_INVALID_PIN), miso_pin(HF_INVALID_PIN),
+        sclk_pin(HF_INVALID_PIN), clock_speed_hz(1000000), dma_channel(0),
+        bits_per_word(8), timeout_ms(1000), use_iomux(true) {}
+};
+
+//==============================================================================
+// ESP32 SPI DEVICE CONFIG STRUCT
+//==============================================================================
+/**
+ * @struct hf_spi_device_config_t
+ * @brief Platform-agnostic SPI device configuration structure for ESP32.
+ *
+ * This structure provides all configuration options for registering a device on
+ * an SPI bus, including clock, mode, CS, queue, DMA, callbacks, and advanced
+ * ESP-IDF v5.5+ features. All fields use project types for portability.
+ *
+ * @var hf_spi_device_config_t::clock_speed_hz
+ *   Device clock speed in Hz
+ * @var hf_spi_device_config_t::mode
+ *   SPI mode (0-3)
+ * @var hf_spi_device_config_t::cs_pin
+ *   CS pin number (or -1 for software CS)
+ * @var hf_spi_device_config_t::queue_size
+ *   Transaction queue size
+ * @var hf_spi_device_config_t::command_bits
+ *   Command phase bits (0-16)
+ * @var hf_spi_device_config_t::address_bits
+ *   Address phase bits (0-64)
+ * @var hf_spi_device_config_t::dummy_bits
+ *   Dummy bits between address and data
+ * @var hf_spi_device_config_t::duty_cycle_pos
+ *   Duty cycle of positive clock (1/256th, 128=50%)
+ * @var hf_spi_device_config_t::cs_ena_pretrans
+ *   CS active before transmission (bit-cycles)
+ * @var hf_spi_device_config_t::cs_ena_posttrans
+ *   CS active after transmission (bit-cycles)
+ * @var hf_spi_device_config_t::flags
+ *   Bitwise OR of SPI_DEVICE_* flags
+ * @var hf_spi_device_config_t::input_delay_ns
+ *   Input delay in nanoseconds
+ * @var hf_spi_device_config_t::pre_cb
+ *   Pre-transfer callback (optional)
+ * @var hf_spi_device_config_t::post_cb
+ *   Post-transfer callback (optional)
+ * @var hf_spi_device_config_t::user_ctx
+ *   User context for callbacks
+ */
+struct hf_spi_device_config_t {
+  hf_u32_t clock_speed_hz;      ///< Device clock speed (Hz)
+  hf_u8_t mode;                 ///< SPI mode (0-3)
+  hf_pin_num_t cs_pin;          ///< CS pin (or -1 for software CS)
+  hf_u8_t queue_size;           ///< Transaction queue size
+  hf_u8_t command_bits;         ///< Command phase bits (0-16)
+  hf_u8_t address_bits;         ///< Address phase bits (0-64)
+  hf_u8_t dummy_bits;           ///< Dummy bits between address and data
+  hf_u16_t duty_cycle_pos;      ///< Duty cycle of positive clock (1/256th, 128=50%)
+  hf_u16_t cs_ena_pretrans;     ///< CS active before transmission (bit-cycles)
+  hf_u8_t cs_ena_posttrans;     ///< CS active after transmission (bit-cycles)
+  hf_u32_t flags;               ///< Bitwise OR of SPI_DEVICE_* flags
+  hf_u32_t input_delay_ns;      ///< Input delay (ns)
+  void (*pre_cb)(void*);        ///< Pre-transfer callback (optional)
+  void (*post_cb)(void*);       ///< Post-transfer callback (optional)
+  void* user_ctx;               ///< User context for callbacks
+
+  hf_spi_device_config_t() noexcept
+      : clock_speed_hz(1000000), mode(0), cs_pin(HF_INVALID_PIN), queue_size(7),
+        command_bits(0), address_bits(0), dummy_bits(0), duty_cycle_pos(128),
+        cs_ena_pretrans(0), cs_ena_posttrans(0), flags(0), input_delay_ns(0),
+        pre_cb(nullptr), post_cb(nullptr), user_ctx(nullptr) {}
+};
 
 //==============================================================================
 // ESP32 SPI ENUMS
