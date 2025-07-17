@@ -8,20 +8,32 @@
  * error handling. The implementation supports both master and slave modes with extensive
  * configuration options for high-performance and low-power applications.
  *
+ * Key ESP32C6/ESP-IDF v5.5+ Features Supported:
+ * - High-speed SPI Master with DMA support (up to 80MHz)
+ * - Multiple clock sources (APB, XTAL) for power optimization
+ * - IOMUX optimization for high-frequency operations
+ * - Transaction queuing with interrupt and polling modes
+ * - Comprehensive error handling and status reporting
+ * - Thread-safe multi-device management on single bus
+ * - Advanced timing control with input delay compensation
+ * - Transaction callbacks for custom handling
+ *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
- * @note This is the unified SPI implementation for MCUs with integrated SPI controllers,
- *       featuring both basic and advanced ESP32C6-specific capabilities.
+ * @note This implementation fully complies with ESP-IDF v5.5 SPI Master driver API
+ * @note Supports ESP32C6 hardware features including dual/quad/octal SPI modes
+ * @note Thread-safe operations using RTOS mutex protection
  */
 
 #pragma once
 
 #include "BaseSpi.h"
-#include "EspTypes.h"
+#include "utils/EspTypes.h"
 #include "utils/RtosMutex.h"
 #include <memory>
+#include <vector>
 
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
@@ -71,6 +83,7 @@ public:
    * @return true if successful, false otherwise
    */
   bool Deinitialize() noexcept override;
+
   /**
    * @brief Perform a full-duplex SPI transfer.
    * @param tx_data Pointer to transmit buffer (can be nullptr)
@@ -80,12 +93,28 @@ public:
    * @return SPI operation result (hf_spi_err_t)
    */
   hf_spi_err_t Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept override;
+
   /**
    * @brief Set the chip select (CS) line state (hardware CS is managed by ESP-IDF).
    * @param active True to activate CS, false to deactivate
    * @return SPI operation result (hf_spi_err_t)
    */
   hf_spi_err_t SetChipSelect(bool active) noexcept override;
+
+  /**
+   * @brief Acquire the SPI bus for exclusive use by this device.
+   * @param timeout_ms Timeout in milliseconds for acquiring the bus lock (0 = wait indefinitely)
+   * @return hf_spi_err_t result code
+   * @note Use with ReleaseBus() for back-to-back transactions
+   */
+  hf_spi_err_t AcquireBus(hf_u32_t timeout_ms) noexcept;
+
+  /**
+   * @brief Release the bus lock after operations.
+   * @return hf_spi_err_t
+   */
+  hf_spi_err_t ReleaseBus() noexcept;
+
   /**
    * @brief Get the ESP-IDF device handle.
    * @return spi_device_handle_t
@@ -96,6 +125,13 @@ public:
    * @return const hf_spi_device_config_t&
    */
   const hf_spi_device_config_t& GetConfig() const noexcept;
+
+  /**
+   * @brief Get the actual clock frequency used by this device.
+   * @param actual_freq_hz Reference to store the actual frequency (Hz)
+   * @return hf_spi_err_t
+   */
+  hf_spi_err_t GetActualClockFrequency(hf_u32_t& actual_freq_hz) const noexcept;
 
 private:
   EspSpiBus* parent_bus_; ///< Parent SPI bus
@@ -110,7 +146,7 @@ private:
  * @brief Manages a single SPI bus (host). Handles bus init/deinit and device creation.
  *
  * Provides full configuration and control for the SPI bus, including DMA, IOMUX,
- * and advanced ESP-IDF v5.5+ features. Thread-safe.
+ * and advanced ESP-IDF v5.5+ features. Thread-safe device management.
  */
 class EspSpiBus {
 public:
@@ -133,12 +169,56 @@ public:
    * @return true if successful, false otherwise
    */
   bool Deinitialize() noexcept;
+  
   /**
-   * @brief Create a new SPI device on this bus.
+   * @brief Create a new SPI device on this bus and store it internally.
    * @param device_config Device configuration (hf_spi_device_config_t)
-   * @return std::unique_ptr<BaseSpi> to the new device, or nullptr on failure
+   * @return Index of the created device (use with GetDevice), or -1 on failure
    */
-  std::unique_ptr<BaseSpi> createDevice(const hf_spi_device_config_t& device_config) noexcept;
+  int CreateDevice(const hf_spi_device_config_t& device_config) noexcept;
+  
+  /**
+   * @brief Get a device by index.
+   * @param device_index Index returned by CreateDevice()
+   * @return Pointer to BaseSpi device, or nullptr if invalid index
+   */
+  BaseSpi* GetDevice(int device_index) noexcept;
+  
+  /**
+   * @brief Get a device by index (const version).
+   * @param device_index Index returned by CreateDevice()
+   * @return Const pointer to BaseSpi device, or nullptr if invalid index
+   */
+  const BaseSpi* GetDevice(int device_index) const noexcept;
+  
+  /**
+   * @brief Get an ESP-specific device by index.
+   * @param device_index Index returned by CreateDevice()
+   * @return Pointer to EspSpiDevice, or nullptr if invalid index
+   */
+  EspSpiDevice* GetEspDevice(int device_index) noexcept;
+  
+  /**
+   * @brief Get an ESP-specific device by index (const version).
+   * @param device_index Index returned by CreateDevice()
+   * @return Const pointer to EspSpiDevice, or nullptr if invalid index
+   */
+  const EspSpiDevice* GetEspDevice(int device_index) const noexcept;
+
+  
+  /**
+   * @brief Get number of devices on this bus.
+   * @return Number of devices
+   */
+  std::size_t GetDeviceCount() const noexcept;
+  
+  /**
+   * @brief Remove a device from the bus.
+   * @param device_index Index of device to remove
+   * @return true if successful, false otherwise
+   */
+  bool RemoveDevice(int device_index) noexcept;
+  
   /**
    * @brief Get the bus configuration.
    * @return const hf_spi_bus_config_t&
@@ -153,5 +233,6 @@ public:
 private:
   hf_spi_bus_config_t config_; ///< Bus configuration
   bool initialized_; ///< Initialization state
-  RtosMutex mutex_; ///< Thread safety
+  mutable RtosMutex mutex_; ///< Thread safety (mutable for const operations)
+  std::vector<std::unique_ptr<EspSpiDevice>> devices_; ///< Managed devices on this bus
 };
