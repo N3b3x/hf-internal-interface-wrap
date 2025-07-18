@@ -108,7 +108,9 @@ extern "C" void app_main(void) {
   bool spi_init = test_spi.EnsureInitialized();
   ESP_LOGI(TAG, "EspSpi initialized: %s", spi_init ? "true" : "false");
 
-  // 6. EspI2c
+  // 6. EspI2c (Test disabled - using new bus-device architecture)
+  // TODO: Update to use new EspI2cBus/EspI2cDevice architecture
+  /*
   hf_i2c_master_bus_config_t i2c_cfg = {};
   i2c_cfg.i2c_port = I2C_NUM_0;
   i2c_cfg.sda_io_num = 21;
@@ -117,6 +119,7 @@ extern "C" void app_main(void) {
   EspI2c test_i2c(i2c_cfg);
   bool i2c_init = test_i2c.Initialize();
   ESP_LOGI(TAG, "EspI2c initialized: %s", i2c_init ? "true" : "false");
+  */
 
   // 7. EspPwm
   hf_pwm_unit_config_t pwm_cfg = {};

@@ -216,6 +216,7 @@ struct hf_i2c_device_config_t {
   hf_i2c_address_bits_t dev_addr_length; ///< Address bit length (7 or 10 bit)
   uint32_t scl_speed_hz;                 ///< SCL clock frequency for this device
   uint32_t scl_wait_us;                  ///< SCL wait time in microseconds
+  bool disable_ack_check;                ///< Disable ACK check for this device
   uint32_t flags;                        ///< Device-specific configuration flags
 
   /**
@@ -223,7 +224,7 @@ struct hf_i2c_device_config_t {
    */
   hf_i2c_device_config_t() noexcept
       : device_address(0), dev_addr_length(hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT),
-        scl_speed_hz(100000), scl_wait_us(0), flags(0) {}
+        scl_speed_hz(100000), scl_wait_us(0), disable_ack_check(false), flags(0) {}
 };
 
 /**

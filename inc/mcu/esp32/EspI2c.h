@@ -1,234 +1,366 @@
 /**
  * @file EspI2c.h
- * @brief Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with ESP32C6 support.
+ * @brief Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device architecture.
  *
- * This header provides a comprehensive I2C implementation that utilizes all the advanced
- * features available in ESP-IDF v5.5+ for ESP32C6. The implementation follows the new
- * bus-device model, supports asynchronous operations, advanced power management, and
- * comprehensive error handling while maintaining clean abstraction.
+ * This header provides a comprehensive I2C implementation that properly utilizes the ESP-IDF v5.5+
+ * bus-device model, following the same pattern as the SPI implementation. The architecture separates
+ * bus management from device operations, providing clean abstraction and optimal resource management.
  *
  * @section features ESP32C6/ESP-IDF v5.5+ Features Supported:
- * - **New Bus-Device Model**: i2c_new_master_bus + i2c_master_bus_add_device
- * - **Asynchronous Operations**: Non-blocking I2C with event callbacks
- * - **Multi-Buffer Transactions**: Complex protocols with multiple sequences
- * - **Advanced Signal Conditioning**: Digital glitch filtering and clock stretching
- * - **Power Management**: Multiple clock sources and low-power modes
- * - **Comprehensive Monitoring**: Real-time statistics and bus health diagnostics
+ * - **Bus-Device Architecture**: Separate EspI2cBus and EspI2cDevice classes
+ * - **Modern API**: Uses i2c_new_master_bus() and i2c_master_bus_add_device()
+ * - **Per-Device Configuration**: Each device has its own clock speed and settings
  * - **Thread Safety**: Full RTOS integration with proper synchronization
- * - **Hardware Acceleration**: DMA transfers and interrupt-driven operation
- * - **Error Recovery**: Automatic bus recovery and comprehensive error handling
+ * - **Device Management**: Dynamic device addition/removal with proper cleanup
+ * - **BaseI2c Integration**: EspI2cDevice inherits from BaseI2c for portability
+ * - **Comprehensive Error Handling**: Proper error conversion and reporting
+ * - **Resource Management**: Automatic cleanup and proper resource lifecycle
  *
  * @section performance Performance Characteristics:
  * - Standard Mode: 100 kHz
- * - Fast Mode: 400 kHz
+ * - Fast Mode: 400 kHz  
  * - Fast Mode Plus: 1 MHz (ESP32C6)
  * - 7-bit and 10-bit addressing support
  * - Clock stretching with configurable timeout
+ * - Hardware FIFO utilization
  * - Multi-master operation capability
- * - Hardware FIFO (32 bytes)
- * - DMA support for large transfers
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
- * @version 2.0.0 - Complete ESP-IDF v5.5+ rewrite
+ * @version 3.0.0 - Complete bus-device architecture rewrite
  *
  * @note This implementation requires ESP-IDF v5.5+ and is optimized for ESP32C6.
  * @note Thread-safe operation is guaranteed for all public methods.
- * @note All asynchronous callbacks are executed in interrupt context.
+ * @note Follows the same architectural pattern as EspSpi for consistency.
  *
  * @example Basic Usage:
  * @code
  * // Create bus configuration
- * hf_i2c_master_bus_config_t bus_config;
+ * hf_i2c_master_bus_config_t bus_config = {};
  * bus_config.i2c_port = 0;
- * bus_config.sda_io_num = static_cast<hf_pin_num_t>(21);
- * bus_config.scl_io_num = static_cast<hf_pin_num_t>(22);
+ * bus_config.sda_io_num = 21;
+ * bus_config.scl_io_num = 22;
  * bus_config.enable_internal_pullup = true;
  *
- * // Create I2C instance
- * EspI2c i2c(bus_config);
- * if (!i2c.Initialize()) {
+ * // Create I2C bus
+ * EspI2cBus i2c_bus(bus_config);
+ * if (!i2c_bus.Initialize()) {
  *     // Handle initialization error
  * }
  *
- * // Add device
- * hf_i2c_device_config_t device;
- * device.device_address = 0x48;
- * device.scl_speed_hz = 400000;
- * i2c.AddDevice(device);
+ * // Create device configuration
+ * hf_i2c_device_config_t device_config = {};
+ * device_config.device_address = 0x48;
+ * device_config.scl_speed_hz = 400000;
+ * device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
  *
- * // Simple write operation
+ * // Add device to bus
+ * int device_index = i2c_bus.CreateDevice(device_config);
+ * BaseI2c* device = i2c_bus.GetDevice(device_index);
+ *
+ * // Use device for I2C operations
  * uint8_t data[] = {0x10, 0x20, 0x30};
- * hf_i2c_err_t result = i2c.Write(0x48, data, sizeof(data));
+ * hf_i2c_err_t result = device->Write(0x48, data, sizeof(data));
  * @endcode
  */
 
 #pragma once
 
 #include "BaseI2c.h"
-#include "RtosMutex.h"
 #include "utils/EspTypes.h"
-// Add ESP-IDF I2C master include for handle types
+#include "utils/RtosMutex.h"
+#include <memory>
+#include <vector>
+
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "driver/i2c_master.h"
-
+#include "esp_log.h"
 #ifdef __cplusplus
 }
 #endif
-#include <atomic>
-#include <memory>
-#include <unordered_map>
-#include <vector>
 
-// Add macro definitions if not present
-#ifndef I2C_MIN_DEVICE_ADDR
-#define I2C_MIN_DEVICE_ADDR 0x08
-#endif
-#ifndef I2C_MAX_DEVICE_ADDR_7BIT
-#define I2C_MAX_DEVICE_ADDR_7BIT 0x77
-#endif
+// Forward declarations
+class EspI2cBus;
+class EspI2cDevice;
 
 /**
- * @class EspI2c
- * @brief Advanced ESP32-integrated I2C controller implementation for ESP-IDF v5.5+.
+ * @class EspI2cDevice
+ * @brief Represents a single I2C device on a bus.
  *
- * This class provides comprehensive I2C communication using the microcontroller's built-in
- * I2C peripheral with full support for ESP-IDF v5.5+ advanced features. The implementation
- * utilizes the new bus-device model, asynchronous operations, and comprehensive error handling
- * to provide a robust, high-performance I2C solution for the HardFOC system.
+ * Inherits from BaseI2c and delegates operations to the parent bus. Provides full
+ * configuration and control for a single I2C device, including per-device clock speed,
+ * addressing mode, and ESP-IDF v5.5+ features.
  *
- * @details Architecture Overview:
- * - **Bus-Device Model**: Separate master bus and device handles for optimal resource management
- * - **Asynchronous Support**: Non-blocking operations with event callbacks and queueing
- * - **Advanced Transactions**: Multi-buffer and custom command sequences
- * - **Power Management**: Intelligent power modes with automatic suspend/resume
- * - **Comprehensive Monitoring**: Real-time statistics and diagnostics
- * - **Thread Safety**: Fine-grained mutex protection for multi-threaded access
- * - **Error Recovery**: Automatic bus recovery with configurable retry logic
- *
- * @note All public methods are thread-safe and can be called from multiple tasks.
- * @note Asynchronous callbacks execute in interrupt context - keep them minimal.
- * @note The implementation automatically manages ESP-IDF v5.5+ resources.
+ * @note Thread-safe. All operations are protected by RtosMutex.
+ * @note Each device maintains its own handle and configuration.
  */
-class EspI2c : public BaseI2c {
+class EspI2cDevice : public BaseI2c {
 public:
-  using BaseI2c::ReadRegister;
-  using BaseI2c::WriteRegister;
-  //==========================================================================
-  // CONSTRUCTORS AND DESTRUCTOR
-  //==========================================================================
-
   /**
-   * @brief Constructor with I2C master bus configuration.
-   * @param config Master bus configuration with ESP-IDF v5.5+ features
+   * @brief Construct a new EspI2cDevice.
+   * @param parent Pointer to the parent EspI2cBus
+   * @param handle ESP-IDF device handle
+   * @param config Device configuration
    */
-  explicit EspI2c(const hf_i2c_master_bus_config_t& config) noexcept;
+  EspI2cDevice(EspI2cBus* parent, i2c_master_dev_handle_t handle, const hf_i2c_device_config_t& config);
 
   /**
-   * @brief Destructor - ensures proper cleanup of all resources.
-   * @details Automatically deinitializes the bus, removes all devices,
-   *          cancels pending operations, and releases allocated resources.
+   * @brief Destructor. Automatically removes device from bus if needed.
    */
-  ~EspI2c() noexcept override;
-
-  // Non-copyable, non-movable for safety
-  EspI2c(const EspI2c&) = delete;
-  EspI2c& operator=(const EspI2c&) = delete;
-  EspI2c(EspI2c&&) = delete;
-  EspI2c& operator=(EspI2c&&) = delete;
-
-  //==========================================================================
-  // CORE I2C OPERATIONS (BaseI2c Interface)
-  //==========================================================================
+  ~EspI2cDevice() noexcept override;
 
   /**
-   * @brief Initialize the I2C bus with ESP-IDF v5.5+ new API.
-   * @details Creates the master bus using i2c_new_master_bus() and configures
-   *          all advanced features like glitch filtering, power management, etc.
+   * @brief Initialize the I2C device (no-op if already initialized).
    * @return true if successful, false otherwise
-   * @note This method is thread-safe and idempotent
    */
   bool Initialize() noexcept override;
 
   /**
-   * @brief Deinitialize the I2C bus and clean up all resources.
-   * @details Removes all registered devices, deletes the master bus, cancels
-   *          pending operations, and releases all allocated memory.
+   * @brief Deinitialize the I2C device and free resources.
    * @return true if successful, false otherwise
-   * @note This method is thread-safe
    */
   bool Deinitialize() noexcept override;
 
   /**
-   * @brief Write data to an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Write data to the I2C device.
+   * @param device_addr Device address (should match this device's address)
    * @param data Pointer to data buffer to write
    * @param length Number of bytes to write
-   * @param timeout_ms Timeout in milliseconds (0 = use default)
+   * @param timeout_ms Timeout in milliseconds (0 = default)
    * @return I2C operation result
-   * @note Uses ESP-IDF v5.5+ i2c_master_transmit() internally
    */
   hf_i2c_err_t Write(hf_u16_t device_addr, const hf_u8_t* data, hf_u16_t length,
                      hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
-   * @brief Read data from an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Read data from the I2C device.
+   * @param device_addr Device address (should match this device's address)
    * @param data Pointer to buffer to store received data
    * @param length Number of bytes to read
-   * @param timeout_ms Timeout in milliseconds (0 = use default)
+   * @param timeout_ms Timeout in milliseconds (0 = default)
    * @return I2C operation result
-   * @note Uses ESP-IDF v5.5+ i2c_master_receive() internally
    */
   hf_i2c_err_t Read(hf_u16_t device_addr, hf_u8_t* data, hf_u16_t length,
                     hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
-   * @brief Write then read data from an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Write then read data from the I2C device.
+   * @param device_addr Device address (should match this device's address)
    * @param tx_data Pointer to data buffer to write
    * @param tx_length Number of bytes to write
    * @param rx_data Pointer to buffer to store received data
    * @param rx_length Number of bytes to read
-   * @param timeout_ms Timeout in milliseconds (0 = use default)
+   * @param timeout_ms Timeout in milliseconds (0 = default)
    * @return I2C operation result
-   * @note Uses ESP-IDF v5.5+ i2c_master_transmit_receive() internally
    */
   hf_i2c_err_t WriteRead(hf_u16_t device_addr, const hf_u8_t* tx_data, hf_u16_t tx_length,
                          hf_u8_t* rx_data, hf_u16_t rx_length,
                          hf_u32_t timeout_ms = 0) noexcept override;
 
-  //==========================================================================
-  // DEVICE MANAGEMENT
-  //==========================================================================
-
   /**
-   * @brief Add a device to the I2C bus.
-   * @param device_config Device configuration with ESP-IDF v5.5+ features
+   * @brief Get I2C bus statistics.
+   * @param statistics Reference to statistics structure to fill
    * @return Operation result
-   * @note Uses ESP-IDF v5.5+ i2c_master_bus_add_device() internally
    */
-  hf_i2c_err_t AddDevice(const hf_i2c_device_config_t& device_config) noexcept;
+  hf_i2c_err_t GetStatistics(hf_i2c_statistics_t& statistics) const noexcept override;
 
   /**
-   * @brief Remove a device from the I2C bus.
-   * @param device_address Device address to remove
+   * @brief Get I2C bus diagnostics.
+   * @param diagnostics Reference to diagnostics structure to fill
    * @return Operation result
-   * @note Uses ESP-IDF v5.5+ i2c_master_bus_rm_device() internally
    */
-  hf_i2c_err_t RemoveDevice(hf_u16_t device_address) noexcept;
+  hf_i2c_err_t GetDiagnostics(hf_i2c_diagnostics_t& diagnostics) const noexcept override;
 
   /**
-   * @brief Probe for device presence on the bus.
-   * @param device_addr Device address to probe
+   * @brief Reset I2C statistics.
+   * @return Operation result
+   */
+  hf_i2c_err_t ResetStatistics() noexcept override;
+
+  /**
+   * @brief Get the ESP-IDF device handle.
+   * @return i2c_master_dev_handle_t
+   */
+  i2c_master_dev_handle_t GetHandle() const noexcept;
+
+  /**
+   * @brief Get the device configuration.
+   * @return const hf_i2c_device_config_t&
+   */
+  const hf_i2c_device_config_t& GetConfig() const noexcept;
+
+  /**
+   * @brief Get the device address.
+   * @return Device address
+   */
+  hf_u16_t GetDeviceAddress() const noexcept;
+
+  /**
+   * @brief Get the actual clock frequency for this device.
+   * @param actual_freq_hz Reference to store actual frequency
+   * @return Operation result
+   */
+  hf_i2c_err_t GetActualClockFrequency(hf_u32_t& actual_freq_hz) const noexcept;
+
+  /**
+   * @brief Probe if the device is present on the bus.
    * @return true if device responds, false otherwise
    */
-  bool ProbeDevice(hf_u16_t device_addr) noexcept;
+  bool ProbeDevice() noexcept;
+
+private:
+  EspI2cBus* parent_bus_;                       ///< Parent bus pointer
+  i2c_master_dev_handle_t handle_;              ///< ESP-IDF device handle
+  hf_i2c_device_config_t config_;               ///< Device configuration
+  bool initialized_;                            ///< Initialization status
+  mutable hf_i2c_statistics_t statistics_;      ///< Per-device statistics
+  mutable hf_i2c_diagnostics_t diagnostics_;    ///< Per-device diagnostics
+  mutable RtosMutex mutex_;                     ///< Device mutex for thread safety
+
+  /**
+   * @brief Update statistics with operation result.
+   * @param success Operation success status
+   * @param bytes_transferred Number of bytes transferred
+   * @param operation_time_us Operation time in microseconds
+   */
+  void UpdateStatistics(bool success, size_t bytes_transferred, hf_u64_t operation_time_us) noexcept;
+
+  /**
+   * @brief Convert ESP-IDF error to HardFOC error.
+   * @param esp_error ESP-IDF error code
+   * @return HardFOC I2C error code
+   */
+  hf_i2c_err_t ConvertEspError(esp_err_t esp_error) const noexcept;
+};
+
+/**
+ * @class EspI2cBus
+ * @brief Manages a single I2C bus. Handles bus initialization and device creation.
+ *
+ * Provides full configuration and control for the I2C bus, including device management,
+ * bus initialization, and ESP-IDF v5.5+ features. Thread-safe device management with
+ * proper resource cleanup.
+ */
+class EspI2cBus {
+public:
+  /**
+   * @brief Construct a new EspI2cBus.
+   * @param config Bus configuration
+   */
+  explicit EspI2cBus(const hf_i2c_master_bus_config_t& config) noexcept;
+
+  /**
+   * @brief Destructor. Automatically deinitializes the bus if needed.
+   */
+  ~EspI2cBus() noexcept;
+
+  // Non-copyable, non-movable
+  EspI2cBus(const EspI2cBus&) = delete;
+  EspI2cBus& operator=(const EspI2cBus&) = delete;
+  EspI2cBus(EspI2cBus&&) = delete;
+  EspI2cBus& operator=(EspI2cBus&&) = delete;
+
+  /**
+   * @brief Initialize the I2C bus.
+   * @return true if successful, false otherwise
+   */
+  bool Initialize() noexcept;
+
+  /**
+   * @brief Deinitialize the I2C bus and remove all devices.
+   * @return true if successful, false otherwise
+   */
+  bool Deinitialize() noexcept;
+
+  /**
+   * @brief Create and add a device to the I2C bus.
+   * @param device_config Device configuration
+   * @return Device index (>= 0) if successful, -1 if failed
+   */
+  int CreateDevice(const hf_i2c_device_config_t& device_config) noexcept;
+
+  /**
+   * @brief Get device by index (BaseI2c interface).
+   * @param device_index Index of the device
+   * @return Pointer to BaseI2c device, or nullptr if invalid
+   */
+  BaseI2c* GetDevice(int device_index) noexcept;
+
+  /**
+   * @brief Get device by index (const version).
+   * @param device_index Index of the device
+   * @return Pointer to const BaseI2c device, or nullptr if invalid
+   */
+  const BaseI2c* GetDevice(int device_index) const noexcept;
+
+  /**
+   * @brief Get ESP-specific device by index.
+   * @param device_index Index of the device
+   * @return Pointer to EspI2cDevice, or nullptr if invalid
+   */
+  EspI2cDevice* GetEspDevice(int device_index) noexcept;
+
+  /**
+   * @brief Get ESP-specific device by index (const version).
+   * @param device_index Index of the device
+   * @return Pointer to const EspI2cDevice, or nullptr if invalid
+   */
+  const EspI2cDevice* GetEspDevice(int device_index) const noexcept;
+
+  /**
+   * @brief Get device by address.
+   * @param device_address Device address to find
+   * @return Pointer to BaseI2c device, or nullptr if not found
+   */
+  BaseI2c* GetDeviceByAddress(hf_u16_t device_address) noexcept;
+
+  /**
+   * @brief Get number of devices on the bus.
+   * @return Number of devices
+   */
+  std::size_t GetDeviceCount() const noexcept;
+
+  /**
+   * @brief Remove a device from the bus.
+   * @param device_index Index of the device to remove
+   * @return true if successful, false otherwise
+   */
+  bool RemoveDevice(int device_index) noexcept;
+
+  /**
+   * @brief Remove a device from the bus by address.
+   * @param device_address Address of the device to remove
+   * @return true if successful, false otherwise
+   */
+  bool RemoveDeviceByAddress(hf_u16_t device_address) noexcept;
+
+  /**
+   * @brief Get the bus configuration.
+   * @return const hf_i2c_master_bus_config_t&
+   */
+  const hf_i2c_master_bus_config_t& GetConfig() const noexcept;
+
+  /**
+   * @brief Get the ESP-IDF bus handle.
+   * @return i2c_master_bus_handle_t
+   */
+  i2c_master_bus_handle_t GetHandle() const noexcept;
+
+  /**
+   * @brief Get the I2C port number.
+   * @return I2C port number
+   */
+  int GetPort() const noexcept;
+
+  /**
+   * @brief Check if the bus is initialized.
+   * @return true if initialized, false otherwise
+   */
+  bool IsInitialized() const noexcept;
 
   /**
    * @brief Scan the I2C bus for devices.
@@ -238,319 +370,42 @@ public:
    * @return Number of devices found
    */
   size_t ScanDevices(std::vector<hf_u16_t>& found_devices,
-                     hf_u16_t start_addr = I2C_MIN_DEVICE_ADDR,
-                     hf_u16_t end_addr = I2C_MAX_DEVICE_ADDR_7BIT) noexcept;
-
-  //==========================================================================
-  // ASYNCHRONOUS OPERATIONS
-  //==========================================================================
+                     hf_u16_t start_addr = 0x08,
+                     hf_u16_t end_addr = 0x77) noexcept;
 
   /**
-   * @brief Write data asynchronously to an I2C device.
-   * @param device_addr Device address
-   * @param data Data to write
-   * @param callback Callback function to call when operation completes
-   * @param user_data User data to pass to callback
-   * @return Operation result
+   * @brief Probe for device presence on the bus.
+   * @param device_addr Device address to probe
+   * @return true if device responds, false otherwise
    */
-  hf_i2c_err_t WriteAsync(hf_u16_t device_addr, const std::vector<hf_u8_t>& data,
-                          hf_i2c_async_callback_t callback, void* user_data = nullptr) noexcept;
+  bool ProbeDevice(hf_u16_t device_addr) noexcept;
 
   /**
-   * @brief Read data asynchronously from an I2C device.
-   * @param device_addr Device address
-   * @param length Number of bytes to read
-   * @param callback Callback function to call when operation completes
-   * @param user_data User data to pass to callback
-   * @return Operation result
-   */
-  hf_i2c_err_t ReadAsync(hf_u16_t device_addr, size_t length, hf_i2c_async_callback_t callback,
-                         void* user_data = nullptr) noexcept;
-
-  /**
-   * @brief Cancel an asynchronous operation.
-   * @param operation_id Operation ID to cancel
-   * @return Operation result
-   */
-  hf_i2c_err_t CancelAsyncOperation(hf_u32_t operation_id) noexcept;
-
-  /**
-   * @brief Set event callback for I2C events.
-   * @param callback Event callback function
-   * @param user_data User data to pass to callback
-   */
-  void SetEventCallback(hf_i2c_event_callback_t callback, void* user_data = nullptr) noexcept;
-
-  //==========================================================================
-  // ADVANCED TRANSACTIONS
-  //==========================================================================
-
-  /**
-   * @brief Execute a multi-buffer transaction.
-   * @param transaction Multi-buffer transaction configuration
-   * @return Operation result
-   * @note Supports complex I2C protocols with multiple read/write sequences
-   */
-  hf_i2c_err_t ExecuteMultiBufferTransaction(
-      const hf_i2c_multi_buffer_transaction_t& transaction) noexcept;
-
-  /**
-   * @brief Execute a custom command sequence.
-   * @param commands Vector of custom commands to execute
-   * @return Operation result
-   * @note Provides flexibility for non-standard I2C protocols
-   */
-  hf_i2c_err_t ExecuteCustomSequence(const std::vector<hf_i2c_custom_command_t>& commands) noexcept;
-
-  /**
-   * @brief Execute multi-buffer transaction asynchronously.
-   * @param transaction Multi-buffer transaction configuration
-   * @param callback Callback function to call when operation completes
-   * @param user_data User data to pass to callback
-   * @return Operation result
-   */
-  hf_i2c_err_t ExecuteMultiBufferTransactionAsync(
-      const hf_i2c_multi_buffer_transaction_t& transaction, hf_i2c_async_callback_t callback,
-      void* user_data = nullptr) noexcept;
-
-  /**
-   * @brief Execute custom command sequence asynchronously.
-   * @param commands Vector of custom commands to execute
-   * @param callback Callback function to call when operation completes
-   * @param user_data User data to pass to callback
-   * @return Operation result
-   */
-  hf_i2c_err_t ExecuteCustomSequenceAsync(const std::vector<hf_i2c_custom_command_t>& commands,
-                                          hf_i2c_async_callback_t callback,
-                                          void* user_data = nullptr) noexcept;
-
-  //==========================================================================
-  // REGISTER OPERATIONS
-  //==========================================================================
-
-  /**
-   * @brief Write to a register on an I2C device.
-   * @param device_addr Device address
-   * @param reg_addr Register address
-   * @param value Value to write
-   * @return Operation result
-   */
-  hf_i2c_err_t WriteRegister(hf_u16_t device_addr, hf_u8_t reg_addr, hf_u8_t value) noexcept;
-
-  /**
-   * @brief Read from a register on an I2C device.
-   * @param device_addr Device address
-   * @param reg_addr Register address
-   * @param value Reference to store read value
-   * @return Operation result
-   */
-  hf_i2c_err_t ReadRegister(hf_u16_t device_addr, hf_u8_t reg_addr, hf_u8_t& value) noexcept;
-
-  /**
-   * @brief Write multiple registers on an I2C device.
-   * @param device_addr Device address
-   * @param start_reg_addr Starting register address
-   * @param data Vector of data to write
-   * @return Operation result
-   */
-  hf_i2c_err_t WriteMultipleRegisters(hf_u16_t device_addr, hf_u8_t start_reg_addr,
-                                      const std::vector<hf_u8_t>& data) noexcept;
-
-  /**
-   * @brief Read multiple registers from an I2C device.
-   * @param device_addr Device address
-   * @param start_reg_addr Starting register address
-   * @param data Vector to store read data
-   * @param count Number of registers to read
-   * @return Operation result
-   */
-  hf_i2c_err_t ReadMultipleRegisters(hf_u16_t device_addr, hf_u8_t start_reg_addr,
-                                     std::vector<hf_u8_t>& data, size_t count) noexcept;
-
-  //==========================================================================
-  // POWER MANAGEMENT
-  //==========================================================================
-
-  /**
-   * @brief Set I2C power mode.
-   * @param mode Power mode to set
-   * @return Operation result
-   * @note Affects performance and power consumption
-   */
-  hf_i2c_err_t SetPowerMode(hf_i2c_power_mode_t mode) noexcept;
-
-  /**
-   * @brief Get current power mode.
-   * @return Current power mode
-   */
-  hf_i2c_power_mode_t GetPowerMode() const noexcept;
-
-  /**
-   * @brief Suspend the I2C bus (low power mode).
-   * @return Operation result
-   * @note Reduces power consumption but may require reinitialization
-   */
-  hf_i2c_err_t SuspendBus() noexcept;
-
-  /**
-   * @brief Resume the I2C bus from suspended state.
-   * @return Operation result
-   * @note Restores normal operation after suspension
-   */
-  hf_i2c_err_t ResumeBus() noexcept;
-
-  //==========================================================================
-  // CONFIGURATION AND CONTROL
-  //==========================================================================
-
-  /**
-   * @brief Set I2C clock speed.
-   * @param clock_speed_hz Clock speed in Hz
-   * @return true if successful, false otherwise
-   * @note May require reinitialization of the bus
-   */
-  bool SetClockSpeed(hf_u32_t clock_speed_hz) noexcept;
-
-  /**
-   * @brief Enable or disable internal pull-up resistors.
-   * @param enable true to enable, false to disable
+   * @brief Reset the I2C bus.
    * @return true if successful, false otherwise
    */
-  bool SetPullUps(bool enable) noexcept;
-
-  /**
-   * @brief Get current clock speed.
-   * @return Current clock speed in Hz
-   */
-  hf_u32_t GetClockSpeed() const noexcept {
-    return 100000; // Default clock speed - in ESP-IDF v5.5, clock speed is per device
-  }
-
-  /**
-   * @brief Get I2C bus statistics.
-   * @param statistics Reference to statistics structure to fill
-   * @return hf_i2c_err_t::I2C_SUCCESS if successful, error code otherwise
-   */
-  hf_i2c_err_t GetStatistics(hf_i2c_statistics_t& statistics) const noexcept override;
-
-  /**
-   * @brief Get I2C bus diagnostics.
-   * @param diagnostics Reference to diagnostics structure to fill
-   * @return hf_i2c_err_t::I2C_SUCCESS if successful, error code otherwise
-   */
-  hf_i2c_err_t GetDiagnostics(hf_i2c_diagnostics_t& diagnostics) const noexcept override;
-
-  /**
-   * @brief Reset I2C statistics.
-   */
-  hf_i2c_err_t ResetStatistics() noexcept override {
-    // Reset statistics manually since Reset() method doesn't exist
-    statistics_ = {};
-    return hf_i2c_err_t::I2C_SUCCESS;
-  }
-
-  /**
-   * @brief Get the last error that occurred.
-   * @return Last error code
-   */
-  hf_i2c_err_t GetLastError() const noexcept {
-    return last_error_.load();
-  }
-
-  /**
-   * @brief Get the number of active devices on the bus.
-   * @return Number of active devices
-   */
-  size_t GetActiveDeviceCount() const noexcept {
-    std::lock_guard<RtosMutex> lock(mutex_);
-    return device_handles_.size();
-  }
-
-  /**
-   * @brief Check if the bus is healthy.
-   * @return true if healthy, false otherwise
-   */
-  bool IsBusHealthy() const noexcept {
-    return diagnostics_.bus_healthy;
-  }
+  bool ResetBus() noexcept;
 
 private:
-  //==========================================================================
-  // PRIVATE METHODS
-  //==========================================================================
+  hf_i2c_master_bus_config_t config_;                          ///< Bus configuration
+  i2c_master_bus_handle_t bus_handle_;                         ///< ESP-IDF bus handle
+  bool initialized_;                                           ///< Initialization status
+  mutable RtosMutex mutex_;                                    ///< Bus mutex for thread safety
+  std::vector<std::unique_ptr<EspI2cDevice>> devices_;        ///< Device instances
 
   /**
-   * @brief Convert ESP-IDF error codes to HardFOC I2C error codes.
-   * @param esp_error ESP-IDF esp_err_t error code
-   * @return Corresponding hf_i2c_err_t error code
+   * @brief Find device index by address.
+   * @param device_address Device address to find
+   * @return Device index if found, -1 otherwise
    */
-  [[nodiscard]] hf_i2c_err_t ConvertEspError(esp_err_t esp_error) const noexcept;
+  int FindDeviceIndexByAddress(hf_u16_t device_address) const noexcept;
 
   /**
-   * @brief Get or create device handle for given address.
-   * @param device_addr Device address
-   * @return Device handle or nullptr if failed
+   * @brief Convert ESP-IDF error to HardFOC error.
+   * @param esp_error ESP-IDF error code
+   * @return HardFOC I2C error code
    */
-  i2c_master_dev_handle_t GetOrCreateDeviceHandle(hf_u16_t device_addr) noexcept;
-
-  /**
-   * @brief Update statistics with operation result.
-   * @param success Operation success status
-   * @param bytes_transferred Number of bytes transferred
-   * @param operation_time_us Operation time in microseconds
-   */
-  void UpdateStatistics(bool success, size_t bytes_transferred,
-                        hf_u64_t operation_time_us) noexcept;
-
-  /**
-   * @brief Validate device address.
-   * @param device_addr Device address to validate
-   * @return true if valid, false otherwise
-   */
-  [[nodiscard]] bool IsValidDeviceAddress(hf_u16_t device_addr) const noexcept;
-
-  /**
-   * @brief Update internal diagnostics information.
-   * @note Called automatically during operations, but can be called manually for real-time
-   * monitoring
-   */
-  void UpdateDiagnostics() noexcept;
-
-  /**
-   * @brief Get effective timeout value.
-   * @param timeout_ms Requested timeout in milliseconds
-   * @return Effective timeout value
-   */
-  hf_u32_t GetEffectiveTimeout(hf_u32_t timeout_ms) const noexcept;
-
-  //==========================================================================
-  // PRIVATE MEMBERS
-  //==========================================================================
-
-  hf_i2c_master_bus_config_t bus_config_;                                ///< Bus configuration
-  i2c_master_bus_handle_t master_bus_handle_;                            ///< Master bus handle
-  std::unordered_map<hf_u16_t, i2c_master_dev_handle_t> device_handles_; ///< Device handles
-  std::unordered_map<hf_u32_t, void*> async_operations_; ///< Pending async operations
-  std::atomic<bool> initialized_{false};                 ///< Initialization status
-  std::atomic<bool> bus_suspended_{false};               ///< Bus suspension status
-  std::atomic<bool> bus_locked_{false};                  ///< Bus lock status
-  std::atomic<hf_i2c_power_mode_t> current_power_mode_{
-      hf_i2c_power_mode_t::HF_I2C_POWER_MODE_LOW};                  ///< Current power mode
-  std::atomic<hf_i2c_err_t> last_error_{hf_i2c_err_t::I2C_SUCCESS}; ///< Last error code
-  std::atomic<hf_u64_t> last_operation_time_us_{0};                 ///< Last operation timestamp
-
-  // Statistics and diagnostics
-  mutable hf_i2c_statistics_t statistics_;   ///< Operation statistics
-  mutable hf_i2c_diagnostics_t diagnostics_; ///< Bus diagnostics
-
-  // Callbacks
-  hf_i2c_event_callback_t event_callback_{nullptr}; ///< Event callback
-  void* event_user_data_{nullptr};                  ///< Event callback user data
-
-  // Timer for power management
-  void* auto_suspend_timer_{nullptr}; ///< Auto-suspend timer handle
-
-  // Thread safety
-  mutable RtosMutex mutex_;       ///< Main mutex for thread safety
-  mutable RtosMutex stats_mutex_; ///< Statistics mutex
+  hf_i2c_err_t ConvertEspError(esp_err_t esp_error) const noexcept;
 };
+
+#endif // ESP_I2C_NEW_H_
