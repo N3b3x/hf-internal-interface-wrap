@@ -61,7 +61,7 @@
  *
  * // Use device for I2C operations
  * uint8_t data[] = {0x10, 0x20, 0x30};
- * hf_i2c_err_t result = device->Write(0x48, data, sizeof(data));
+ * hf_i2c_err_t result = device->Write(data, sizeof(data));
  * @endcode
  */
 
@@ -127,37 +127,37 @@ public:
 
   /**
    * @brief Write data to the I2C device.
-   * @param device_addr Device address (should match this device's address)
    * @param data Pointer to data buffer to write
    * @param length Number of bytes to write
    * @param timeout_ms Timeout in milliseconds (0 = default)
    * @return I2C operation result
+   * @note Device address is configured during device creation
    */
-  hf_i2c_err_t Write(hf_u16_t device_addr, const hf_u8_t* data, hf_u16_t length,
+  hf_i2c_err_t Write(const hf_u8_t* data, hf_u16_t length,
                      hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Read data from the I2C device.
-   * @param device_addr Device address (should match this device's address)
    * @param data Pointer to buffer to store received data
    * @param length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = default)
    * @return I2C operation result
+   * @note Device address is configured during device creation
    */
-  hf_i2c_err_t Read(hf_u16_t device_addr, hf_u8_t* data, hf_u16_t length,
+  hf_i2c_err_t Read(hf_u8_t* data, hf_u16_t length,
                     hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Write then read data from the I2C device.
-   * @param device_addr Device address (should match this device's address)
    * @param tx_data Pointer to data buffer to write
    * @param tx_length Number of bytes to write
    * @param rx_data Pointer to buffer to store received data
    * @param rx_length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = default)
    * @return I2C operation result
+   * @note Device address is configured during device creation
    */
-  hf_i2c_err_t WriteRead(hf_u16_t device_addr, const hf_u8_t* tx_data, hf_u16_t tx_length,
+  hf_i2c_err_t WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
                          hf_u8_t* rx_data, hf_u16_t rx_length,
                          hf_u32_t timeout_ms = 0) noexcept override;
 

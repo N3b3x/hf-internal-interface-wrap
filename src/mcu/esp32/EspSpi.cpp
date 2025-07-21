@@ -273,12 +273,9 @@ hf_spi_err_t EspSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf
       return hf_spi_err_t::SPI_ERR_TRANSFER_FAILED;
   }
 }
-hf_spi_err_t EspSpiDevice::SetChipSelect(bool active) noexcept {
-  // Hardware CS is automatically managed by ESP-IDF during transactions.
-  // This function is provided for API compatibility but ESP-IDF handles CS internally.
-  // For software CS control, users should configure cs_pin = -1 and manage CS manually.
-  (void)active; // Suppress unused parameter warning
-  return hf_spi_err_t::SPI_SUCCESS;
+
+const void* EspSpiDevice::GetDeviceConfig() const noexcept {
+  return &config_;
 }
 
 spi_device_handle_t EspSpiDevice::GetHandle() const noexcept {

@@ -1,10 +1,11 @@
 /**
  * @file BaseI2c.h
- * @brief Abstract base class for I2C bus implementations in the HardFOC system.
+ * @brief Abstract base class for I2C device implementations in the HardFOC system.
  *
- * This header-only file defines the abstract base class for I2C bus communication
+ * This header-only file defines the abstract base class for I2C device communication
  * that provides a consistent API across different I2C controller implementations.
  * Concrete implementations for various microcontrollers inherit from this class.
+ * Each BaseI2c instance represents a single I2C device with a pre-configured address.
  *
  * @author Nebiyu Tadesse
  * @date 2025
@@ -12,6 +13,7 @@
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
+ * @note Each BaseI2c instance represents a specific I2C device, not the I2C bus itself.
  */
 
 #pragma once
@@ -156,25 +158,31 @@ struct hf_i2c_diagnostics_t {
 
 /**
  * @class BaseI2c
- * @brief Abstract base class for I2C bus implementations.
- * @details This class provides a comprehensive I2C bus abstraction that serves as the base
- *          for all I2C implementations in the HardFOC system. It supports:
+ * @brief Abstract base class for I2C device implementations.
+ * @details This class provides a comprehensive I2C device abstraction that serves as the base
+ *          for all I2C device implementations in the HardFOC system. Each instance represents
+ *          a single I2C device with a pre-configured address. It supports:
  *          - Master mode I2C communication
  *          - Standard (100kHz) and Fast (400kHz) modes
  *          - Read, write, and write-then-read operations
  *          - Configurable timeouts and error handling
- *          - Device scanning and presence detection
+ *          - Device presence detection
  *          - Register-based communication utilities
  *          - Lazy initialization pattern
  *
+ *          Device address is configured during device creation and is not passed
+ *          as a parameter to read/write operations, ensuring type safety and
+ *          preventing accidental communication with wrong devices.
+ *
  *          Derived classes implement platform-specific details such as:
- *          - On-chip I2C controllers
- *          - Bit-banged I2C implementations
+ *          - On-chip I2C controllers with device handles
  *          - I2C bridge or adapter hardware
+ *          - Device-specific configurations
  *
  * @note This is a header-only abstract base class - instantiate concrete implementations instead.
  * @note This class is not inherently thread-safe. Use appropriate synchronization if
  *       accessed from multiple contexts.
+ * @note Each BaseI2c instance represents a specific I2C device, not the I2C bus itself.
  */
 class BaseI2c {
 public:
@@ -237,40 +245,46 @@ public:
   virtual bool Deinitialize() noexcept = 0;
 
   /**
-   * @brief Write data to an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Write data to the I2C device.
    * @param data Pointer to data buffer to write
    * @param length Number of bytes to write
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
+   * @note Device address is configured during device creation
    */
-  virtual hf_i2c_err_t Write(hf_u8_t device_addr, const hf_u8_t* data, hf_u16_t length,
+  virtual hf_i2c_err_t Write(const hf_u8_t* data, hf_u16_t length,
                              hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
-   * @brief Read data from an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Read data from the I2C device.
    * @param data Pointer to buffer to store received data
    * @param length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
+   * @note Device address is configured during device creation
    */
-  virtual hf_i2c_err_t Read(hf_u8_t device_addr, hf_u8_t* data, hf_u16_t length,
+  virtual hf_i2c_err_t Read(hf_u8_t* data, hf_u16_t length,
                             hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
-   * @brief Write then read data from an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Write then read data from the I2C device.
    * @param tx_data Pointer to data buffer to write
    * @param tx_length Number of bytes to write
    * @param rx_data Pointer to buffer to store received data
    * @param rx_length Number of bytes to read
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_i2c_err_t result code
+   * @note Device address is configured during device creation
    */
-  virtual hf_i2c_err_t WriteRead(hf_u8_t device_addr, const hf_u8_t* tx_data, hf_u16_t tx_length,
+  virtual hf_i2c_err_t WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
                                  hf_u8_t* rx_data, hf_u16_t rx_length,
                                  hf_u32_t timeout_ms = 0) noexcept = 0;
+
+  /**
+   * @brief Get the device address for this I2C device.
+   * @return The 7-bit I2C device address
+   */
+  virtual hf_u16_t GetDeviceAddress() const noexcept = 0;
 
   //==============================================//
   // CONVENIENCE METHODS WITH DEFAULT IMPLEMENTATIONS
@@ -299,89 +313,64 @@ public:
   // Removed duplicate WriteRead method to avoid overload conflicts
 
   /**
-   * @brief Check if a device is present on the bus.
-   * @param device_addr 7-bit I2C device address
+   * @brief Check if this device is present on the bus.
    * @return true if device responds, false otherwise
    */
-  virtual bool IsDevicePresent(hf_u8_t device_addr) noexcept {
+  virtual bool IsDevicePresent() noexcept {
     // Try to read 1 byte from the device
     hf_u8_t dummy;
-    return Read(device_addr, &dummy, 1, 100) == hf_i2c_err_t::I2C_SUCCESS;
+    return Read(&dummy, 1, 100) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Scan the I2C bus for devices.
-   * @param addresses Array to store found device addresses
-   * @param max_addresses Maximum number of addresses to store
-   * @return Number of devices found
-   */
-  virtual hf_u8_t ScanBus(hf_u8_t* addresses, hf_u8_t max_addresses) noexcept {
-    hf_u8_t found_count = 0;
-
-    // Scan addresses 0x08 to 0x77 (valid 7-bit addresses)
-    for (hf_u8_t addr = 0x08; addr <= 0x77 && found_count < max_addresses; addr++) {
-      if (IsDevicePresent(addr)) {
-        addresses[found_count++] = addr;
-      }
-    }
-
-    return found_count;
-  }
-
-  /**
-   * @brief Write a single byte to an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Write a single byte to the I2C device.
    * @param data Byte to write
    * @return true if successful, false otherwise
    */
-  virtual bool WriteByte(hf_u8_t device_addr, hf_u8_t data) noexcept {
-    return Write(device_addr, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
+  virtual bool WriteByte(hf_u8_t data) noexcept {
+    return Write(&data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Read a single byte from an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Read a single byte from the I2C device.
    * @param data Reference to store the read byte
    * @return true if successful, false otherwise
    */
-  virtual bool ReadByte(hf_u8_t device_addr, hf_u8_t& data) noexcept {
-    return Read(device_addr, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
+  virtual bool ReadByte(hf_u8_t& data) noexcept {
+    return Read(&data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Write to a register on an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Write to a register on the I2C device.
    * @param reg_addr Register address
    * @param data Data to write to register
    * @return true if successful, false otherwise
    */
-  virtual bool WriteRegister(hf_u8_t device_addr, hf_u8_t reg_addr, hf_u8_t data) noexcept {
+  virtual bool WriteRegister(hf_u8_t reg_addr, hf_u8_t data) noexcept {
     hf_u8_t buffer[2] = {reg_addr, data};
-    return Write(device_addr, buffer, 2) == hf_i2c_err_t::I2C_SUCCESS;
+    return Write(buffer, 2) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Read from a register on an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Read from a register on the I2C device.
    * @param reg_addr Register address
    * @param data Reference to store the read data
    * @return true if successful, false otherwise
    */
-  virtual bool ReadRegister(hf_u8_t device_addr, hf_u8_t reg_addr, hf_u8_t& data) noexcept {
-    return WriteRead(device_addr, &reg_addr, 1, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
+  virtual bool ReadRegister(hf_u8_t reg_addr, hf_u8_t& data) noexcept {
+    return WriteRead(&reg_addr, 1, &data, 1) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   /**
-   * @brief Read multiple registers from an I2C device.
-   * @param device_addr 7-bit I2C device address
+   * @brief Read multiple registers from the I2C device.
    * @param reg_addr Starting register address
    * @param data Pointer to buffer to store read data
    * @param length Number of registers to read
    * @return true if successful, false otherwise
    */
-  virtual bool ReadRegisters(hf_u8_t device_addr, hf_u8_t reg_addr, hf_u8_t* data,
+  virtual bool ReadRegisters(hf_u8_t reg_addr, hf_u8_t* data,
                              hf_u16_t length) noexcept {
-    return WriteRead(device_addr, &reg_addr, 1, data, length) == hf_i2c_err_t::I2C_SUCCESS;
+    return WriteRead(&reg_addr, 1, data, length) == hf_i2c_err_t::I2C_SUCCESS;
   }
 
   //==============================================//

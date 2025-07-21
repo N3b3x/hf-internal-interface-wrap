@@ -95,11 +95,10 @@ public:
   hf_spi_err_t Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
-   * @brief Set the chip select (CS) line state (hardware CS is managed by ESP-IDF).
-   * @param active True to activate CS, false to deactivate
-   * @return SPI operation result (hf_spi_err_t)
+   * @brief Get the device configuration for this SPI device.
+   * @return Pointer to device configuration
    */
-  hf_spi_err_t SetChipSelect(bool active) noexcept override;
+  const void* GetDeviceConfig() const noexcept override;
 
   /**
    * @brief Acquire the SPI bus for exclusive use by this device.

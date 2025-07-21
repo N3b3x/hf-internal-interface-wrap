@@ -403,7 +403,7 @@ bool EspI2cDevice::Deinitialize() noexcept {
     return true;
 }
 
-hf_i2c_err_t EspI2cDevice::Write(hf_u16_t device_addr, const hf_u8_t* data, hf_u16_t length,
+hf_i2c_err_t EspI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
                                 hf_u32_t timeout_ms) noexcept {
     RtosUniqueLock<RtosMutex> lock(mutex_);
     
@@ -413,13 +413,6 @@ hf_i2c_err_t EspI2cDevice::Write(hf_u16_t device_addr, const hf_u8_t* data, hf_u
 
     if (!data || length == 0) {
         return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
-    }
-
-    // Verify device address matches
-    if (device_addr != config_.device_address) {
-        ESP_LOGW(TAG, "Device address mismatch: expected 0x%02X, got 0x%02X", 
-                 config_.device_address, device_addr);
-        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     hf_u64_t start_time = esp_timer_get_time();
@@ -448,7 +441,7 @@ hf_i2c_err_t EspI2cDevice::Write(hf_u16_t device_addr, const hf_u8_t* data, hf_u
     return result;
 }
 
-hf_i2c_err_t EspI2cDevice::Read(hf_u16_t device_addr, hf_u8_t* data, hf_u16_t length,
+hf_i2c_err_t EspI2cDevice::Read(hf_u8_t* data, hf_u16_t length,
                                hf_u32_t timeout_ms) noexcept {
     RtosUniqueLock<RtosMutex> lock(mutex_);
     
@@ -458,13 +451,6 @@ hf_i2c_err_t EspI2cDevice::Read(hf_u16_t device_addr, hf_u8_t* data, hf_u16_t le
 
     if (!data || length == 0) {
         return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
-    }
-
-    // Verify device address matches
-    if (device_addr != config_.device_address) {
-        ESP_LOGW(TAG, "Device address mismatch: expected 0x%02X, got 0x%02X", 
-                 config_.device_address, device_addr);
-        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     hf_u64_t start_time = esp_timer_get_time();
@@ -493,7 +479,7 @@ hf_i2c_err_t EspI2cDevice::Read(hf_u16_t device_addr, hf_u8_t* data, hf_u16_t le
     return result;
 }
 
-hf_i2c_err_t EspI2cDevice::WriteRead(hf_u16_t device_addr, const hf_u8_t* tx_data, hf_u16_t tx_length,
+hf_i2c_err_t EspI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
                                     hf_u8_t* rx_data, hf_u16_t rx_length, hf_u32_t timeout_ms) noexcept {
     RtosUniqueLock<RtosMutex> lock(mutex_);
     
@@ -503,13 +489,6 @@ hf_i2c_err_t EspI2cDevice::WriteRead(hf_u16_t device_addr, const hf_u8_t* tx_dat
 
     if (!tx_data || tx_length == 0 || !rx_data || rx_length == 0) {
         return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
-    }
-
-    // Verify device address matches
-    if (device_addr != config_.device_address) {
-        ESP_LOGW(TAG, "Device address mismatch: expected 0x%02X, got 0x%02X", 
-                 config_.device_address, device_addr);
-        return hf_i2c_err_t::I2C_ERR_INVALID_ADDRESS;
     }
 
     hf_u64_t start_time = esp_timer_get_time();
@@ -548,6 +527,10 @@ hf_i2c_err_t EspI2cDevice::GetDiagnostics(hf_i2c_diagnostics_t& diagnostics) con
     RtosUniqueLock<RtosMutex> lock(mutex_);
     diagnostics = diagnostics_;
     return hf_i2c_err_t::I2C_SUCCESS;
+}
+
+hf_u16_t EspI2cDevice::GetDeviceAddress() const noexcept {
+    return config_.device_address;
 }
 
 hf_i2c_err_t EspI2cDevice::ResetStatistics() noexcept {

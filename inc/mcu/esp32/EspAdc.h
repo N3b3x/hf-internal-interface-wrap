@@ -290,23 +290,23 @@ public:
   //==============================================//
 
   // ESP32 ADC Hardware Limits (configured per variant)
-  static constexpr uint8_t HF_ADC_MAX_UNITS =
+  static constexpr hf_u8_t HF_ADC_MAX_UNITS =
       HF_ESP32_ADC_MAX_UNITS; ///< Maximum ADC units for this ESP32 variant
-  static constexpr uint8_t HF_ADC_MAX_CHANNELS =
+  static constexpr hf_u8_t HF_ADC_MAX_CHANNELS =
       HF_ESP32_ADC_MAX_CHANNELS; ///< Maximum ADC channels per unit
-  static constexpr uint8_t HF_ADC_MAX_FILTERS =
+  static constexpr hf_u8_t HF_ADC_MAX_FILTERS =
       HF_ESP32_ADC_MAX_FILTERS; ///< Maximum IIR filters supported
-  static constexpr uint8_t HF_ADC_MAX_MONITORS =
+  static constexpr hf_u8_t HF_ADC_MAX_MONITORS =
       HF_ESP32_ADC_MAX_MONITORS; ///< Maximum threshold monitors supported
-  static constexpr uint16_t HF_ADC_MAX_RAW_VALUE_12BIT =
+  static constexpr hf_u16_t HF_ADC_MAX_RAW_VALUE_12BIT =
       HF_ESP32_ADC_MAX_RAW_VALUE; ///< 12-bit max raw value
-  static constexpr uint32_t HF_ADC_REFERENCE_VOLTAGE_MV =
+  static constexpr hf_u32_t HF_ADC_REFERENCE_VOLTAGE_MV =
       HF_ESP32_ADC_REFERENCE_VOLTAGE_MV; ///< Reference voltage in mV
-  static constexpr uint32_t HF_ADC_MAX_SAMPLING_FREQ =
+  static constexpr hf_u32_t HF_ADC_MAX_SAMPLING_FREQ =
       HF_ESP32_ADC_MAX_SAMPLING_FREQ; ///< Maximum sampling frequency
-  static constexpr uint32_t HF_ADC_MIN_SAMPLING_FREQ =
+  static constexpr hf_u32_t HF_ADC_MIN_SAMPLING_FREQ =
       HF_ESP32_ADC_MIN_SAMPLING_FREQ; ///< Minimum sampling frequency
-  static constexpr uint32_t HF_ADC_DEFAULT_SAMPLING_FREQ =
+  static constexpr hf_u32_t HF_ADC_DEFAULT_SAMPLING_FREQ =
       HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ; ///< Default sampling frequency
   static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_MIN =
       HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN; ///< Minimum DMA buffer size
@@ -330,26 +330,26 @@ public:
    * @brief Initialize the ESP32 ADC peripheral
    * @return true if initialization successful, false otherwise
    */
-  bool Initialize() noexcept override;
+  hf_bool_t Initialize() noexcept override;
 
   /**
    * @brief Deinitialize the ESP32 ADC peripheral
    * @return true if deinitialization successful, false otherwise
    */
-  bool Deinitialize() noexcept override;
+  hf_bool_t Deinitialize() noexcept override;
 
   /**
    * @brief Get maximum number of ADC channels for this ESP32 variant
    * @return Maximum channel count
    */
-  [[nodiscard]] uint8_t GetMaxChannels() const noexcept override;
+  [[nodiscard]] hf_u8_t GetMaxChannels() const noexcept override;
 
   /**
    * @brief Check if specific channel is available on this ESP32 variant
    * @param channel_id Channel ID to check
    * @return true if channel available, false otherwise
    */
-  [[nodiscard]] bool IsChannelAvailable(hf_channel_id_t channel_id) const noexcept override;
+  [[nodiscard]] hf_bool_t IsChannelAvailable(hf_channel_id_t channel_id) const noexcept override;
 
   /**
    * @brief Read channel voltage with optional averaging
@@ -433,7 +433,7 @@ public:
    * @param enabled Enable/disable flag
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t SetChannelEnabled(hf_channel_id_t channel_id, bool enabled) noexcept;
+  hf_adc_err_t SetChannelEnabled(hf_channel_id_t channel_id, hf_bool_t enabled) noexcept;
 
   /**
    * @brief Enable a specific channel
@@ -455,7 +455,7 @@ public:
    * @param raw_value Output raw value
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadSingleRaw(hf_channel_id_t channel_id, uint32_t& raw_value) noexcept;
+  hf_adc_err_t ReadSingleRaw(hf_channel_id_t channel_id, hf_u32_t& raw_value) noexcept;
 
   /**
    * @brief Read single voltage value from channel
@@ -463,7 +463,7 @@ public:
    * @param voltage_mv Output voltage in millivolts
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadSingleVoltage(hf_channel_id_t channel_id, uint32_t& voltage_mv) noexcept;
+  hf_adc_err_t ReadSingleVoltage(hf_channel_id_t channel_id, hf_u32_t& voltage_mv) noexcept;
 
   /**
    * @brief Read multiple raw values from channels
@@ -472,8 +472,8 @@ public:
    * @param raw_values Output array of raw values
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadMultipleRaw(const hf_channel_id_t* channel_ids, uint8_t num_channels,
-                               uint32_t* raw_values) noexcept;
+  hf_adc_err_t ReadMultipleRaw(const hf_channel_id_t* channel_ids, hf_u8_t num_channels,
+                               hf_u32_t* raw_values) noexcept;
 
   /**
    * @brief Read multiple voltage values from channels
@@ -482,8 +482,8 @@ public:
    * @param voltage_values Output array of voltage values in millivolts
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadMultipleVoltage(const hf_channel_id_t* channel_ids, uint8_t num_channels,
-                                   uint32_t* voltage_values) noexcept;
+  hf_adc_err_t ReadMultipleVoltage(const hf_channel_id_t* channel_ids, hf_u8_t num_channels,
+                                   hf_u32_t* voltage_values) noexcept;
 
   /**
    * @brief Read averaged value from channel
@@ -492,15 +492,15 @@ public:
    * @param averaged_value Output averaged value
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadAveraged(hf_channel_id_t channel_id, uint16_t num_samples,
-                            uint32_t& averaged_value) noexcept;
+  hf_adc_err_t ReadAveraged(hf_channel_id_t channel_id, hf_u16_t num_samples,
+                            hf_u32_t& averaged_value) noexcept;
 
   /**
    * @brief Check if channel is enabled
    * @param channel_id Channel ID to check
    * @return true if enabled, false otherwise
    */
-  [[nodiscard]] bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept;
+  [[nodiscard]] hf_bool_t IsChannelEnabled(hf_channel_id_t channel_id) const noexcept;
 
   //==============================================//
   // CONTINUOUS MODE OPERATIONS
@@ -538,7 +538,7 @@ public:
    * @brief Check if continuous mode is running
    * @return true if running, false otherwise
    */
-  [[nodiscard]] bool IsContinuousRunning() const noexcept;
+  [[nodiscard]] hf_bool_t IsContinuousRunning() const noexcept;
 
   /**
    * @brief Read continuous mode data (blocking)
@@ -548,7 +548,7 @@ public:
    * @param timeout_ms Timeout in milliseconds
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t ReadContinuousData(uint8_t* buffer, uint32_t buffer_size, uint32_t& bytes_read,
+  hf_adc_err_t ReadContinuousData(hf_u8_t* buffer, hf_u32_t buffer_size, hf_u32_t& bytes_read,
                                   hf_time_t timeout_ms) noexcept;
 
   //==============================================//
@@ -570,7 +570,7 @@ public:
    * @param attenuation Attenuation level to check
    * @return true if calibration available, false otherwise
    */
-  [[nodiscard]] bool IsCalibrationAvailable(hf_adc_atten_t attenuation) const noexcept;
+  [[nodiscard]] hf_bool_t IsCalibrationAvailable(hf_adc_atten_t attenuation) const noexcept;
 
   /**
    * @brief Convert raw count to voltage using calibration
@@ -579,8 +579,8 @@ public:
    * @param voltage_mv Output voltage in millivolts
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t RawToVoltage(uint32_t raw_count, hf_adc_atten_t attenuation,
-                            uint32_t& voltage_mv) noexcept;
+  hf_adc_err_t RawToVoltage(hf_u32_t raw_count, hf_adc_atten_t attenuation,
+                            hf_u32_t& voltage_mv) noexcept;
 
   //==============================================//
   // FILTER OPERATIONS
@@ -599,7 +599,7 @@ public:
    * @param enabled Enable/disable flag
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t SetFilterEnabled(uint8_t filter_id, bool enabled) noexcept;
+  hf_adc_err_t SetFilterEnabled(hf_u8_t filter_id, hf_bool_t enabled) noexcept;
 
   //==============================================//
   // MONITOR OPERATIONS
@@ -619,7 +619,7 @@ public:
    * @param user_data User data passed to callback
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t SetMonitorCallback(uint8_t monitor_id, hf_adc_monitor_callback_t callback,
+  hf_adc_err_t SetMonitorCallback(hf_u8_t monitor_id, hf_adc_monitor_callback_t callback,
                                   void* user_data = nullptr) noexcept;
 
   /**
@@ -628,7 +628,7 @@ public:
    * @param enabled Enable/disable flag
    * @return hf_adc_err_t error code
    */
-  hf_adc_err_t SetMonitorEnabled(uint8_t monitor_id, bool enabled) noexcept;
+  hf_adc_err_t SetMonitorEnabled(hf_u8_t monitor_id, hf_bool_t enabled) noexcept;
 
   //==============================================//
   // DIAGNOSTICS AND STATISTICS
@@ -675,7 +675,7 @@ private:
   hf_adc_err_t InitializeContinuous() noexcept;
   hf_adc_err_t DeinitializeOneshot() noexcept;
   hf_adc_err_t DeinitializeContinuous() noexcept;
-  hf_adc_err_t ReadOneshotRaw(hf_channel_id_t channel_id, uint32_t& raw_value) noexcept;
+  hf_adc_err_t ReadOneshotRaw(hf_channel_id_t channel_id, hf_u32_t& raw_value) noexcept;
   hf_adc_err_t ValidateChannelId(hf_channel_id_t channel_id) const noexcept;
   hf_adc_err_t ValidateConfiguration() const noexcept;
   hf_adc_err_t UpdateStatistics(hf_adc_err_t result, uint64_t start_time_us) noexcept;
@@ -683,9 +683,9 @@ private:
   void UpdateDiagnostics(hf_adc_err_t error) noexcept;
 
   // Static callback functions for ESP-IDF
-  static bool IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
+  static hf_bool_t IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
                                            void* user_data) noexcept;
-  static bool IRAM_ATTR MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data,
+  static hf_bool_t IRAM_ATTR MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data,
                                         void* user_data) noexcept;
 
   //==============================================//
@@ -694,7 +694,7 @@ private:
 
   // Configuration and state
   hf_adc_unit_config_t config_;          ///< ADC unit configuration
-  std::atomic<bool> continuous_running_; ///< Continuous mode running flag
+  std::atomic<hf_bool_t> continuous_running_; ///< Continuous mode running flag
   std::atomic<hf_adc_err_t> last_error_; ///< Last error code
 
   // Thread safety

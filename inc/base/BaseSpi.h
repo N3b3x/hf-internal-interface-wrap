@@ -1,11 +1,12 @@
 /**
  * @file BaseSpi.h
- * @brief Abstract base class for SPI bus implementations in the HardFOC system.
+ * @brief Abstract base class for SPI device implementations in the HardFOC system.
  *
- * This header-only file defines the abstract base class for SPI bus communication
+ * This header-only file defines the abstract base class for SPI device communication
  * that provides a consistent API across different SPI controller implementations.
  * Concrete implementations for various microcontrollers inherit from this class
- * to provide high-speed serial communication, device selection, and transfer management.
+ * to provide high-speed serial communication and transfer management.
+ * Each BaseSpi instance represents a single SPI device with pre-configured settings.
  *
  * @author Nebiyu Tadesse
  * @date 2025
@@ -13,6 +14,7 @@
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
+ * @note Each BaseSpi instance represents a specific SPI device, not the SPI bus itself.
  */
 
 #pragma once
@@ -144,26 +146,32 @@ struct hf_spi_diagnostics_t {
 
 /**
  * @class BaseSpi
- * @brief Abstract base class for SPI bus implementations.
- * @details This class provides a comprehensive SPI bus abstraction that serves as the base
- *          for all SPI implementations in the HardFOC system. It supports:
+ * @brief Abstract base class for SPI device implementations.
+ * @details This class provides a comprehensive SPI device abstraction that serves as the base
+ *          for all SPI device implementations in the HardFOC system. Each instance represents
+ *          a single SPI device with pre-configured settings. It supports:
  *          - Master mode SPI communication
  *          - Configurable SPI modes (0-3)
  *          - Full-duplex, write-only, and read-only transfers
  *          - Configurable clock speeds and timing
- *          - Chip select control
+ *          - Automatic chip select management
  *          - Configurable word sizes
  *          - Comprehensive error handling
  *          - Lazy initialization pattern
  *
+ *          Device configuration (mode, speed, CS pin) is set during device creation
+ *          and managed automatically, ensuring each device operates with its
+ *          correct settings without manual configuration per transaction.
+ *
  *          Derived classes implement platform-specific details such as:
- *          - On-chip SPI controllers
- *          - Bit-banged SPI implementations
+ *          - On-chip SPI controllers with device handles
  *          - SPI bridge or adapter hardware
+ *          - Device-specific configurations
  *
  * @note This is a header-only abstract base class - instantiate concrete implementations instead.
  * @note This class is not inherently thread-safe. Use appropriate synchronization if
  *       accessed from multiple contexts.
+ * @note Each BaseSpi instance represents a specific SPI device, not the SPI bus itself.
  */
 class BaseSpi {
 public:
@@ -234,17 +242,16 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = use default)
    * @return hf_spi_err_t result code
    * @note Must be implemented by concrete classes.
+   * @note Chip select is managed automatically by the device implementation.
    */
   virtual hf_spi_err_t Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf_u16_t length,
                                 hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
-   * @brief Assert/deassert the chip select signal.
-   * @param active True to assert CS, false to deassert
-   * @return hf_spi_err_t result code
-   * @note Must be implemented by concrete classes.
+   * @brief Get the device configuration for this SPI device.
+   * @return Device-specific configuration information
    */
-  virtual hf_spi_err_t SetChipSelect(bool active) noexcept = 0;
+  virtual const void* GetDeviceConfig() const noexcept = 0;
 
   //==============================================//
   // CONVENIENCE METHODS WITH DEFAULT IMPLEMENTATIONS //

@@ -112,7 +112,7 @@ EspAdc::~EspAdc() noexcept {
 // INITIALIZATION AND CONFIGURATION
 //==============================================//
 
-bool EspAdc::Initialize() noexcept {
+hf_bool_t EspAdc::Initialize() noexcept {
   MutexLockGuard lock(config_mutex_);
 
   const hf_u64_t start_time = GetCurrentTimeUs();
@@ -177,7 +177,7 @@ bool EspAdc::Initialize() noexcept {
   return result == hf_adc_err_t::ADC_SUCCESS;
 }
 
-bool EspAdc::Deinitialize() noexcept {
+hf_bool_t EspAdc::Deinitialize() noexcept {
   MutexLockGuard lock(config_mutex_);
 
   hf_adc_err_t result = hf_adc_err_t::ADC_SUCCESS;
@@ -489,7 +489,7 @@ hf_adc_mode_t EspAdc::GetMode() const noexcept {
 // CHANNEL ENABLE/DISABLE OPERATIONS
 //==============================================//
 
-hf_adc_err_t EspAdc::SetChannelEnabled(hf_channel_id_t channel_id, bool enabled) noexcept {
+hf_adc_err_t EspAdc::SetChannelEnabled(hf_channel_id_t channel_id, hf_bool_t enabled) noexcept {
   if (enabled) {
     return EnableChannel(channel_id);
   } else {
@@ -497,7 +497,7 @@ hf_adc_err_t EspAdc::SetChannelEnabled(hf_channel_id_t channel_id, bool enabled)
   }
 }
 
-bool EspAdc::IsChannelEnabled(hf_channel_id_t channel_id) const noexcept {
+hf_bool_t EspAdc::IsChannelEnabled(hf_channel_id_t channel_id) const noexcept {
   if (channel_id >= HF_ESP32_ADC_MAX_CHANNELS) {
     return false;
   }
@@ -608,7 +608,7 @@ hf_adc_err_t EspAdc::StopContinuous() noexcept {
   return hf_adc_err_t::ADC_SUCCESS;
 }
 
-bool EspAdc::IsContinuousRunning() const noexcept {
+hf_bool_t EspAdc::IsContinuousRunning() const noexcept {
   return continuous_running_.load();
 }
 
@@ -685,7 +685,7 @@ hf_adc_err_t EspAdc::InitializeCalibration(hf_adc_atten_t attenuation,
   }
 }
 
-bool EspAdc::IsCalibrationAvailable(hf_adc_atten_t attenuation) const noexcept {
+hf_bool_t EspAdc::IsCalibrationAvailable(hf_adc_atten_t attenuation) const noexcept {
   hf_u8_t atten_idx = static_cast<hf_u8_t>(attenuation);
   if (atten_idx >= 4) {
     return false;
@@ -764,7 +764,7 @@ hf_adc_err_t EspAdc::ConfigureFilter(const hf_adc_filter_config_t& filter_config
   }
 }
 
-hf_adc_err_t EspAdc::SetFilterEnabled(hf_u8_t filter_id, bool enabled) noexcept {
+hf_adc_err_t EspAdc::SetFilterEnabled(hf_u8_t filter_id, hf_bool_t enabled) noexcept {
   MutexLockGuard lock(config_mutex_);
 
   if (filter_id >= HF_ADC_MAX_FILTERS) {
@@ -859,7 +859,7 @@ hf_adc_err_t EspAdc::SetMonitorCallback(hf_u8_t monitor_id, hf_adc_monitor_callb
   return hf_adc_err_t::ADC_SUCCESS;
 }
 
-hf_adc_err_t EspAdc::SetMonitorEnabled(hf_u8_t monitor_id, bool enabled) noexcept {
+hf_adc_err_t EspAdc::SetMonitorEnabled(hf_u8_t monitor_id, hf_bool_t enabled) noexcept {
   MutexLockGuard lock(config_mutex_);
 
   if (monitor_id >= HF_ADC_MAX_MONITORS) {
@@ -924,7 +924,7 @@ hf_u8_t EspAdc::GetMaxChannels() const noexcept {
   return HF_ESP32_ADC_MAX_CHANNELS;
 }
 
-bool EspAdc::IsChannelAvailable(hf_channel_id_t channel_id) const noexcept {
+hf_bool_t EspAdc::IsChannelAvailable(hf_channel_id_t channel_id) const noexcept {
   return ValidateChannelId(channel_id) == hf_adc_err_t::ADC_SUCCESS;
 }
 
@@ -1034,7 +1034,7 @@ hf_adc_err_t EspAdc::ReadMultipleChannels(const hf_channel_id_t* channel_ids, hf
 }
 
 // Static callback functions for ESP-IDF
-bool IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
+hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
                                           void* user_data) noexcept {
   auto* esp_adc = static_cast<EspAdc*>(user_data);
 
@@ -1055,7 +1055,7 @@ bool IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const 
   return esp_adc->continuous_callback_(&hf_data, esp_adc->continuous_user_data_);
 }
 
-bool IRAM_ATTR EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data,
+hf_bool_t IRAM_ATTR EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data,
                                        void* user_data) noexcept {
   auto* esp_adc = static_cast<EspAdc*>(user_data);
 
@@ -1306,7 +1306,7 @@ hf_adc_err_t EspAdc::ValidateConfiguration() const noexcept {
   }
 
   // Check if at least one channel is enabled
-  bool has_enabled_channel = false;
+  hf_bool_t has_enabled_channel = false;
   for (hf_u8_t i = 0; i < HF_ESP32_ADC_MAX_CHANNELS; i++) {
     if (config_.channel_configs[i].enabled) {
       has_enabled_channel = true;
