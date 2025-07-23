@@ -240,33 +240,20 @@ protected:
   hf_gpio_err_t SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept override;
 
   /**
-   * @brief Platform-specific implementation for setting active state.
+   * @brief Platform-specific implementation for setting pin electrical level.
+   * @param level Desired electrical level (HIGH or LOW)
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Sets the MCU pin to the electrical level corresponding to logical active.
+   * @details Sets the MCU pin to the specified electrical level.
    */
-  hf_gpio_err_t SetActiveImpl() noexcept override;
+  hf_gpio_err_t SetPinLevelImpl(hf_gpio_level_t level) noexcept override;
 
   /**
-   * @brief Platform-specific implementation for setting inactive state.
+   * @brief Platform-specific implementation for reading pin electrical level.
+   * @param level Output parameter: current electrical level (HIGH or LOW)
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Sets the MCU pin to the electrical level corresponding to logical inactive.
+   * @details Reads the current MCU pin electrical level.
    */
-  hf_gpio_err_t SetInactiveImpl() noexcept override;
-
-  /**
-   * @brief Platform-specific implementation for toggling pin state.
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Toggles the MCU pin between active and inactive states.
-   */
-  hf_gpio_err_t ToggleImpl() noexcept override;
-
-  /**
-   * @brief Platform-specific implementation for reading pin active state.
-   * @param is_active Output parameter: true if active, false if inactive
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Reads the current MCU pin electrical level and converts to logical state.
-   */
-  hf_gpio_err_t IsActiveImpl(bool& is_active) noexcept override;
+  hf_gpio_err_t GetPinLevelImpl(hf_gpio_level_t& level) noexcept override;
 
   /**
    * @brief Platform-specific implementation for setting pull resistor mode.
@@ -282,6 +269,22 @@ protected:
    * @details Queries the current pull resistor configuration from MCU registers.
    */
   hf_gpio_pull_mode_t GetPullModeImpl() const noexcept override;
+
+  /**
+   * @brief Platform-specific implementation for reading pin direction from hardware.
+   * @param direction Output parameter: current hardware pin direction
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   * @details Reads the actual direction configuration from ESP32 GPIO registers.
+   */
+  hf_gpio_err_t GetDirectionImpl(hf_gpio_direction_t& direction) const noexcept override;
+
+  /**
+   * @brief Platform-specific implementation for reading output mode from hardware.
+   * @param mode Output parameter: current hardware output mode
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   * @details Reads the actual output mode configuration from ESP32 GPIO registers.
+   */
+  hf_gpio_err_t GetOutputModeImpl(hf_gpio_output_mode_t& mode) const noexcept override;
 
   //==============================================================//
   // ADVANCED GPIO FEATURES (ESP32C6/ESP-IDF v5.5+)

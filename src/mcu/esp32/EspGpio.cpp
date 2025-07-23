@@ -500,15 +500,19 @@ hf_gpio_err_t EspGpio::SetDirectionImpl(hf_gpio_direction_t direction) noexcept 
   switch (direction) {
     case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
       mode = GPIO_MODE_INPUT;
+      ESP_LOGV(TAG, "GPIO%d configuring as input", static_cast<int>(pin_));
       break;
     case hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT:
       if (output_mode_ == hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN) {
         mode = GPIO_MODE_OUTPUT_OD;
+        ESP_LOGV(TAG, "GPIO%d configuring as open-drain output", static_cast<int>(pin_));
       } else {
         mode = GPIO_MODE_OUTPUT;
+        ESP_LOGV(TAG, "GPIO%d configuring as push-pull output", static_cast<int>(pin_));
       }
       break;
     default:
+      ESP_LOGE(TAG, "Invalid direction %d for GPIO%d", static_cast<int>(direction), static_cast<int>(pin_));
       return hf_gpio_err_t::GPIO_ERR_INVALID_PARAMETER;
   }
 
@@ -596,13 +600,24 @@ hf_gpio_pull_mode_t EspGpio::GetPullModeImpl() const noexcept {
 }
 
 hf_gpio_err_t EspGpio::SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept {
+  // Cache the new output mode
   output_mode_ = mode;
+  
+  ESP_LOGV(TAG, "GPIO%d output mode set to %s", static_cast<int>(pin_),
+           (mode == hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN) ? "open-drain" : "push-pull");
 
-  // If already initialized as output, update the mode
+  // If already initialized and configured as output, update the hardware mode immediately
   if (initialized_ && current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
+    // SetDirectionImpl will apply the correct ESP-IDF GPIO mode:
+    // - GPIO_MODE_OUTPUT for push-pull
+    // - GPIO_MODE_OUTPUT_OD for open-drain
+    ESP_LOGV(TAG, "GPIO%d applying output mode change immediately", static_cast<int>(pin_));
     return SetDirectionImpl(hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
   }
 
+  // If not currently output or not initialized, mode is cached for later application
+  ESP_LOGV(TAG, "GPIO%d output mode cached (will be applied when configured as output)", static_cast<int>(pin_));
+  
   return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
@@ -648,21 +663,7 @@ hf_gpio_err_t EspGpio::ReadImpl(hf_gpio_state_t& state) noexcept {
   return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-hf_gpio_err_t EspGpio::SetActiveImpl() noexcept {
-  if (!EnsureInitialized()) {
-    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
-  }
-  return WriteImpl(hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
-}
-
-hf_gpio_err_t EspGpio::SetInactiveImpl() noexcept {
-  if (!EnsureInitialized()) {
-    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
-  }
-  return WriteImpl(hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
-}
-
-hf_gpio_err_t EspGpio::ToggleImpl() noexcept {
+hf_gpio_err_t EspGpio::SetPinLevelImpl(hf_gpio_level_t level) noexcept {
   if (!EnsureInitialized()) {
     return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
@@ -671,27 +672,76 @@ hf_gpio_err_t EspGpio::ToggleImpl() noexcept {
     return hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH;
   }
 
-  hf_gpio_state_t new_state = (current_state_ == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE)
-                                  ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE
-                                  : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
-  return WriteImpl(new_state);
+  // Convert level enum to hardware level
+  int hardware_level = (level == hf_gpio_level_t::HF_GPIO_LEVEL_HIGH) ? 1 : 0;
+
+  esp_err_t ret = gpio_set_level(static_cast<gpio_num_t>(pin_), hardware_level);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to write GPIO%d: %s", static_cast<int>(pin_), esp_err_to_name(ret));
+    return hf_gpio_err_t::GPIO_ERR_WRITE_FAILURE;
+  }
+
+  ESP_LOGV(TAG, "GPIO%d set to level %d", static_cast<int>(pin_), hardware_level);
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
-hf_gpio_err_t EspGpio::IsActiveImpl(bool& is_active) noexcept {
+hf_gpio_err_t EspGpio::GetPinLevelImpl(hf_gpio_level_t& level) noexcept {
   if (!EnsureInitialized()) {
     return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
-  if (current_direction_ != hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT) {
-    return hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH;
+  int hardware_level = gpio_get_level(static_cast<gpio_num_t>(pin_));
+  
+  // Convert hardware level to level enum
+  level = (hardware_level == 1) ? hf_gpio_level_t::HF_GPIO_LEVEL_HIGH : hf_gpio_level_t::HF_GPIO_LEVEL_LOW;
+
+  return hf_gpio_err_t::GPIO_SUCCESS;
+}
+
+hf_gpio_err_t EspGpio::GetDirectionImpl(hf_gpio_direction_t& direction) const noexcept {
+  if (!EnsureInitialized()) {
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
-  hf_gpio_state_t current_state;
-  hf_gpio_err_t result = ReadImpl(current_state);
-  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-    is_active = (current_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
+  // Use ESP-IDF v5.5+ API to get GPIO configuration
+  gpio_io_config_t io_config;
+  esp_err_t ret = gpio_get_io_config(static_cast<gpio_num_t>(pin_), &io_config);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to get GPIO%d configuration: %s", static_cast<int>(pin_), esp_err_to_name(ret));
+    return hf_gpio_err_t::GPIO_ERR_READ_FAILURE;
   }
-  return result;
+
+  // Determine direction based on input enable (ie) and output enable (oe)
+  if (io_config.oe) {
+    direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT;
+  } else if (io_config.ie) {
+    direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT;
+  } else {
+    // Neither input nor output enabled - unusual state
+    direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT; // Default to input
+  }
+
+  return hf_gpio_err_t::GPIO_SUCCESS;
+}
+
+hf_gpio_err_t EspGpio::GetOutputModeImpl(hf_gpio_output_mode_t& mode) const noexcept {
+  if (!EnsureInitialized()) {
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
+  }
+
+  // Use ESP-IDF v5.5+ API to get GPIO configuration
+  gpio_io_config_t io_config;
+  esp_err_t ret = gpio_get_io_config(static_cast<gpio_num_t>(pin_), &io_config);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to get GPIO%d configuration: %s", static_cast<int>(pin_), esp_err_to_name(ret));
+    return hf_gpio_err_t::GPIO_ERR_READ_FAILURE;
+  }
+
+  // Check open-drain mode from hardware configuration
+  mode = io_config.od ? hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN
+                      : hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL;
+
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
 //==============================================================================
@@ -1409,7 +1459,7 @@ bool EspGpio::gpio_isr_handler_installed_ = false;
 #ifdef HF_MCU_ESP32C6
 // ESP32C6 ETM support includes
 // #include "esp_etm.h"  // ETM not available in current ESP-IDF version
-#include "driver/gpio_etm.h"
+//#include "driver/gpio_etm.h"
 
 // ETM handles storage - disabled due to ESP-IDF compatibility
 // static esp_etm_channel_handle_t etm_channels[HF_MCU_GPIO_ETM_CHANNEL_COUNT] = {nullptr};

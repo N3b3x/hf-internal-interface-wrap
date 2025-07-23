@@ -141,6 +141,16 @@ enum class hf_gpio_state_t : hf_u8_t {
 
 /**
  * @ingroup gpio
+ * @brief GPIO pin electrical levels.
+ * @details Represents the actual electrical level of a GPIO pin.
+ */
+enum class hf_gpio_level_t : hf_u8_t {
+  HF_GPIO_LEVEL_LOW = 0,  ///< Electrical low level (0V)
+  HF_GPIO_LEVEL_HIGH = 1  ///< Electrical high level (VCC)
+};
+
+/**
+ * @ingroup gpio
  * @brief GPIO active state polarity configuration.
  * @details Defines which electrical level corresponds to the logical "active" state.
  */
@@ -281,21 +291,12 @@ struct hf_gpio_diagnostics_t {
  *          - Other GPIO hardware
  */
 class BaseGpio {
+
 public:
   //==============================================================//
   // CONSTRUCTORS AND DESTRUCTOR
   //==============================================================//
 
-  /**
-   * @brief Constructor for BaseGpio with full configuration.
-   * @param pin_num Platform-agnostic GPIO pin identifier
-   * @param direction Initial pin direction (Input or Output)
-   * @param active_state Polarity configuration (High or Low active)
-   * @param output_mode Output drive mode (PushPull or OpenDrain)
-   * @param pull_mode Pull resistor configuration (Floating, PullUp, or PullDown)
-   * @details Initializes the GPIO with specified configuration. The pin is not
-   *          physically configured until Initialize() is called.
-   */
   /**
    * @brief Copy constructor is deleted to avoid copying instances.
    */
@@ -319,40 +320,93 @@ public:
    * @brief Check if the pin is initialized.
    * @return true if initialized, false otherwise
    */
-  [[nodiscard]] bool IsInitialized() const noexcept {
-    return initialized_;
-  }
+  [[nodiscard]] bool IsInitialized() const noexcept;
 
   /**
    * @brief Ensures the pin is initialized (lazy initialization).
    * @return true if initialized successfully, false otherwise
    */
-  bool EnsureInitialized() noexcept {
-    if (!initialized_) {
-      initialized_ = Initialize();
-    }
-    return initialized_;
-  }
+  bool EnsureInitialized() noexcept;
 
   /**
    * @brief Ensures the pin is deinitialized (lazy deinitialization).
    * @return true if deinitialized successfully, false otherwise
    */
-  bool EnsureDeinitialized() noexcept {
-    if (initialized_) {
-      initialized_ = !Deinitialize();
-      return !initialized_;
-    }
-    return true;
-  }
+  bool EnsureDeinitialized() noexcept;
 
   /**
    * @brief Get the GPIO pin number/identifier.
    * @return Platform-agnostic pin identifier
    */
-  [[nodiscard]] hf_pin_num_t GetPin() const noexcept {
-    return pin_;
-  }
+  [[nodiscard]] hf_pin_num_t GetPin() const noexcept;
+
+protected:
+
+  //==============================================================//
+  // PURE VIRTUAL IMPLEMENTATIONS - PLATFORM SPECIFIC
+  //==============================================================//
+
+  /**
+   * @brief Platform-specific implementation for setting pin direction.
+   * @param direction New pin direction (Input or Output)
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  virtual hf_gpio_err_t SetDirectionImpl(hf_gpio_direction_t direction) noexcept = 0;
+  /**
+   * @brief Hardware read-back of current pin direction from registers.
+   * @param direction Output parameter: actual hardware pin direction
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   * @details Reads the actual direction configuration from hardware registers.
+   *          Useful for fault detection and hardware verification.
+   * @note Some hardware may not support this operation.
+   */
+  virtual hf_gpio_err_t GetDirectionImpl(hf_gpio_direction_t& direction) const noexcept = 0;
+  
+  /**
+   * @brief Platform-specific implementation for setting output mode.
+   * @param mode New output mode (PushPull or OpenDrain)
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  virtual hf_gpio_err_t SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept = 0;
+  /**
+   * @brief Hardware read-back of current output mode from registers.
+   * @param mode Output parameter: actual hardware output mode
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise  
+   * @details Reads the actual output mode configuration from hardware registers.
+   *          Useful for fault detection and hardware verification.
+   * @note Some hardware may not support this operation.
+   */
+  virtual hf_gpio_err_t GetOutputModeImpl(hf_gpio_output_mode_t& mode) const noexcept = 0;
+
+  /**
+   * @brief Platform-specific implementation for setting pull resistor mode.
+   * @param mode New pull resistor mode (Floating, PullUp, PullDown)
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  virtual hf_gpio_err_t SetPullModeImpl(hf_gpio_pull_mode_t mode) noexcept = 0;
+  /**
+   * @brief Hardware read-back of current pull resistor mode from registers.
+   * @return Current pull resistor mode
+   * @details Reads the actual pull resistor configuration from hardware registers.
+   *          Useful for fault detection and hardware verification.
+   * @note Some hardware may not support this operation.
+   */
+  virtual hf_gpio_pull_mode_t GetPullModeImpl() const noexcept = 0;
+
+  /**
+   * @brief Platform-specific implementation for setting pin electrical level.
+   * @param level New electrical level (Low or High)
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  virtual hf_gpio_err_t SetPinLevelImpl(hf_gpio_level_t level) noexcept = 0;
+  /**
+   * @brief Platform-specific implementation for getting pin electrical level.
+   * @param level Output parameter: current electrical level (Low or High)
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  virtual hf_gpio_err_t GetPinLevelImpl(hf_gpio_level_t& level) noexcept = 0;
+
+public:
 
   //==============================================================//
   // DIRECTION AND MODE MANAGEMENT
@@ -362,69 +416,39 @@ public:
    * @brief Get the current pin direction.
    * @return Current Direction setting (Input or Output)
    */
-  [[nodiscard]] hf_gpio_direction_t GetDirection() const noexcept {
-    return current_direction_;
-  }
+  [[nodiscard]] hf_gpio_direction_t GetDirection() const noexcept;
 
   /**
    * @brief Set the pin direction (input or output).
    * @param direction New Direction setting (Input or Output)
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept {
-    hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
-      return validation;
-    }
-
-    hf_gpio_err_t result = SetDirectionImpl(direction);
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      current_direction_ = direction;
-    }
-    return result;
-  }
+  hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept;
 
   /**
    * @brief Check if the pin is currently configured as input.
    * @return true if input, false if output
    */
-  [[nodiscard]] bool IsInput() const noexcept {
-    return current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT;
-  }
+  [[nodiscard]] bool IsInput() const noexcept;
 
   /**
    * @brief Check if the pin is currently configured as output.
    * @return true if output, false if input
    */
-  [[nodiscard]] bool IsOutput() const noexcept {
-    return current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT;
-  }
+  [[nodiscard]] bool IsOutput() const noexcept;
 
   /**
    * @brief Get the output drive mode.
    * @return Current OutputMode setting (PushPull or OpenDrain)
    */
-  [[nodiscard]] hf_gpio_output_mode_t GetOutputMode() const noexcept {
-    return output_mode_;
-  }
+  [[nodiscard]] hf_gpio_output_mode_t GetOutputMode() const noexcept;
 
   /**
    * @brief Set the output drive mode.
    * @param mode New OutputMode setting (PushPull or OpenDrain)
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t SetOutputMode(hf_gpio_output_mode_t mode) noexcept {
-    hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
-      return validation;
-    }
-
-    hf_gpio_err_t result = SetOutputModeImpl(mode);
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      output_mode_ = mode;
-    }
-    return result;
-  }
+  hf_gpio_err_t SetOutputMode(hf_gpio_output_mode_t mode) noexcept;
 
   //==============================================================//
   // PULL RESISTOR MANAGEMENT
@@ -434,27 +458,14 @@ public:
    * @brief Get the current pull resistor mode.
    * @return Current PullMode setting
    */
-  [[nodiscard]] hf_gpio_pull_mode_t GetPullMode() const noexcept {
-    return pull_mode_;
-  }
+  [[nodiscard]] hf_gpio_pull_mode_t GetPullMode() const noexcept;
 
   /**
    * @brief Set the pull resistor mode.
    * @param mode New PullMode setting (Floating, PullUp, or PullDown)
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t SetPullMode(hf_gpio_pull_mode_t mode) noexcept {
-    hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
-      return validation;
-    }
-
-    hf_gpio_err_t result = SetPullModeImpl(mode);
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      pull_mode_ = mode;
-    }
-    return result;
-  }
+  hf_gpio_err_t SetPullMode(hf_gpio_pull_mode_t mode) noexcept;
 
   //==============================================================//
   // STATE MANAGEMENT AND I/O OPERATIONS
@@ -464,25 +475,26 @@ public:
    * @brief Get the current logical state of the pin.
    * @return Current State (Active or Inactive)
    */
-  [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept {
-    return current_state_;
-  }
+  [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
+
+  /**
+   * @brief Set the pin to a specific logical state.
+   * @param state New logical state to set (Active or Inactive)
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  hf_gpio_err_t SetState(hf_gpio_state_t state) noexcept;
 
   /**
    * @brief Get the active state polarity configuration.
    * @return Current ActiveState setting (High or Low)
    */
-  [[nodiscard]] hf_gpio_active_state_t GetActiveState() const noexcept {
-    return active_state_;
-  }
+  [[nodiscard]] hf_gpio_active_state_t GetActiveState() const noexcept;
 
   /**
    * @brief Set the active state polarity configuration.
    * @param active_state New ActiveState setting (High or Low)
    */
-  void SetActiveState(hf_gpio_active_state_t active_state) noexcept {
-    active_state_ = active_state;
-  }
+  void SetActiveState(hf_gpio_active_state_t active_state) noexcept;
 
   //==============================================================//
   // STATE CONTROL METHODS
@@ -492,73 +504,59 @@ public:
    * @brief Set the GPIO to active state.
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t SetActive() noexcept {
-    hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
-      return validation;
-    }
-
-    hf_gpio_err_t result = SetActiveImpl();
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      current_state_ = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
-    }
-    return result;
-  }
+  hf_gpio_err_t SetActive() noexcept;
 
   /**
    * @brief Set the GPIO to inactive state.
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t SetInactive() noexcept {
-    hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
-      return validation;
-    }
-
-    hf_gpio_err_t result = SetInactiveImpl();
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      current_state_ = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
-    }
-    return result;
-  }
+  hf_gpio_err_t SetInactive() noexcept;
 
   /**
    * @brief Toggle the GPIO state.
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t Toggle() noexcept {
-    hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
-      return validation;
-    }
-
-    hf_gpio_err_t result = ToggleImpl();
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      current_state_ = (current_state_ == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE)
-                           ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE
-                           : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
-    }
-    return result;
-  }
+  hf_gpio_err_t Toggle() noexcept;
 
   /**
    * @brief Check if the GPIO is currently active.
    * @param is_active Reference to store the result
    * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
    */
-  hf_gpio_err_t IsActive(bool& is_active) noexcept {
-    hf_gpio_err_t validation = ValidateBasicOperation();
-    if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
-      return validation;
-    }
+  hf_gpio_err_t IsActive(bool& is_active) noexcept;
 
-    hf_gpio_err_t result = IsActiveImpl(is_active);
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      current_state_ = is_active ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE
-                                 : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
-    }
-    return result;
-  }
+  //==============================================================//
+  // HARDWARE VERIFICATION AND FAULT DETECTION
+  //==============================================================//
+
+  /**
+   * @brief Verify current direction setting by reading from hardware registers.
+   * @param direction Output parameter: actual hardware direction setting
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   * @details Reads the actual direction configuration from hardware registers
+   *          for fault detection and verification. Compares against cached value.
+   * @note Some hardware may not support this operation.
+   */
+  hf_gpio_err_t VerifyDirection(hf_gpio_direction_t& direction) const noexcept;
+
+  /**
+   * @brief Verify current output mode setting by reading from hardware registers.
+   * @param mode Output parameter: actual hardware output mode setting  
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   * @details Reads the actual output mode configuration from hardware registers
+   *          for fault detection and verification. Compares against cached value.
+   * @note Some hardware may not support this operation.
+   */
+  hf_gpio_err_t VerifyOutputMode(hf_gpio_output_mode_t& mode) const noexcept;
+
+  /**
+   * @brief Perform comprehensive hardware verification of all pin settings.
+   * @return hf_gpio_err_t::GPIO_SUCCESS if all settings match, error code otherwise
+   * @details Verifies that all hardware registers match the expected cached values.
+   *          Useful for detecting hardware faults, register corruption, or 
+   *          power management issues. Updates diagnostics on mismatch.
+   */
+  hf_gpio_err_t VerifyHardwareConfiguration() const noexcept;
 
   //==============================================================//
   // HARDWARE ABSTRACTION INTERFACE
@@ -589,10 +587,10 @@ public:
    * @brief Check if this GPIO implementation supports interrupts.
    * @return true if interrupts are supported, false otherwise
    */
-  [[nodiscard]] virtual bool SupportsInterrupts() const noexcept {
-    return false; // Default implementation - no interrupt support
+  [[nodiscard]] virtual hf_gpio_err_t SupportsInterrupts() const noexcept {
+    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED; // Default implementation - no interrupt support
   }
-
+  
   /**
    * @brief Configure GPIO interrupt settings.
    * @param trigger Interrupt trigger type
@@ -696,6 +694,7 @@ public:
   // STRING CONVERSION UTILITIES
   //==============================================================//
   static const char* ToString(hf_gpio_state_t state) noexcept;
+  static const char* ToString(hf_gpio_level_t level) noexcept;
   static const char* ToString(hf_gpio_active_state_t active_state) noexcept;
   static const char* ToString(hf_gpio_direction_t direction) noexcept;
   static const char* ToString(hf_gpio_output_mode_t output_mode) noexcept;
@@ -730,55 +729,22 @@ protected:
    * @brief Validate basic parameters before GPIO operations.
    * @return hf_gpio_err_t error code
    */
-  [[nodiscard]] hf_gpio_err_t ValidateBasicOperation() const noexcept {
-    if (!initialized_) {
-      return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
-    }
-    if (!IsPinAvailable()) {
-      return hf_gpio_err_t::GPIO_ERR_PIN_ACCESS_DENIED;
-    }
-    return hf_gpio_err_t::GPIO_SUCCESS;
-  }
+  [[nodiscard]] hf_gpio_err_t ValidateBasicOperation() const noexcept;
 
   /**
    * @brief Convert logical state to electrical level based on polarity.
    * @param state Logical state (Active or Inactive)
-   * @return true for electrical high, false for electrical low
+   * @return Electrical level (High or Low)
    */
-  [[nodiscard]] bool StateToLevel(hf_gpio_state_t state) const noexcept {
-    bool active_level = (active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
-    return (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? active_level : !active_level;
-  }
+  [[nodiscard]] hf_gpio_level_t StateToLevel(hf_gpio_state_t state) const noexcept;
 
   /**
    * @brief Convert electrical level to logical state based on polarity.
-   * @param level Electrical level (true = high, false = low)
+   * @param level Electrical level (High or Low)
    * @return Logical state (Active or Inactive)
    */
-  [[nodiscard]] hf_gpio_state_t LevelToState(bool level) const noexcept {
-    bool active_level = (active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
-    return (level == active_level) ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE
-                                   : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
-  }
+  [[nodiscard]] hf_gpio_state_t LevelToState(hf_gpio_level_t level) const noexcept;
 
-  //==============================================================//
-  // VALIDATION HELPERS
-  //==============================================================//
-
-  //==============================================================//
-  // PURE VIRTUAL IMPLEMENTATIONS - PLATFORM SPECIFIC
-  //==============================================================//
-
-  virtual hf_gpio_err_t SetDirectionImpl(hf_gpio_direction_t direction) noexcept = 0;
-  virtual hf_gpio_err_t SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept = 0;
-  virtual hf_gpio_err_t SetPullModeImpl(hf_gpio_pull_mode_t mode) noexcept = 0;
-  virtual hf_gpio_err_t SetActiveImpl() noexcept = 0;
-  virtual hf_gpio_err_t SetInactiveImpl() noexcept = 0;
-  virtual hf_gpio_err_t ToggleImpl() noexcept = 0;
-  virtual hf_gpio_err_t IsActiveImpl(bool& is_active) noexcept = 0;
-  virtual hf_gpio_pull_mode_t GetPullModeImpl() const noexcept = 0;
-
-protected:
   /**
    * @brief Protected constructor with configuration.
    * @param pin_num GPIO pin number
@@ -815,6 +781,224 @@ protected:
 };
 
 //==============================================================//
+// MEMBER FUNCTION DEFINITIONS
+//==============================================================//
+
+// Initialization and Status Methods
+inline bool BaseGpio::IsInitialized() const noexcept {
+  return initialized_;
+}
+
+inline bool BaseGpio::EnsureInitialized() noexcept {
+  if (!initialized_) {
+    initialized_ = Initialize();
+  }
+  return initialized_;
+}
+
+inline bool BaseGpio::EnsureDeinitialized() noexcept {
+  if (initialized_) {
+    initialized_ = !Deinitialize();
+    return !initialized_;
+  }
+  return true;
+}
+
+inline hf_pin_num_t BaseGpio::GetPin() const noexcept {
+  return pin_;
+}
+
+// Direction and Mode Management Methods
+inline hf_gpio_direction_t BaseGpio::GetDirection() const noexcept {
+  return current_direction_;
+}
+
+inline hf_gpio_err_t BaseGpio::SetDirection(hf_gpio_direction_t direction) noexcept {
+  hf_gpio_err_t validation = ValidateBasicOperation();
+  if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
+    return validation;
+  }
+
+  hf_gpio_err_t result = SetDirectionImpl(direction);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+    current_direction_ = direction;
+  }
+  return result;
+}
+
+//=================================================================//
+//=================================================================//
+//                      FUNCTION DEFINITIONS                       //
+//=================================================================//
+//=================================================================//
+
+inline bool BaseGpio::IsInput() const noexcept {
+  return current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT;
+}
+
+inline bool BaseGpio::IsOutput() const noexcept {
+  return current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT;
+}
+
+inline hf_gpio_output_mode_t BaseGpio::GetOutputMode() const noexcept {
+  return output_mode_;
+}
+
+inline hf_gpio_err_t BaseGpio::SetOutputMode(hf_gpio_output_mode_t mode) noexcept {
+  hf_gpio_err_t validation = ValidateBasicOperation();
+  if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
+    return validation;
+  }
+
+  hf_gpio_err_t result = SetOutputModeImpl(mode);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+    output_mode_ = mode;
+  }
+  return result;
+}
+
+// Pull Resistor Management Methods
+inline hf_gpio_pull_mode_t BaseGpio::GetPullMode() const noexcept {
+  return pull_mode_;
+}
+
+inline hf_gpio_err_t BaseGpio::SetPullMode(hf_gpio_pull_mode_t mode) noexcept {
+  hf_gpio_err_t validation = ValidateBasicOperation();
+  if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
+    return validation;
+  }
+
+  hf_gpio_err_t result = SetPullModeImpl(mode);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+    pull_mode_ = mode;
+  }
+  return result;
+}
+
+// State Management and I/O Operations Methods
+inline hf_gpio_state_t BaseGpio::GetCurrentState() const noexcept {
+  return current_state_;
+}
+
+inline hf_gpio_err_t BaseGpio::SetState(hf_gpio_state_t state) noexcept {
+  hf_gpio_err_t validation = ValidateBasicOperation();
+  if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
+    return validation;
+  }
+
+  // Convert logical state to electrical level based on polarity
+  hf_gpio_level_t level = StateToLevel(state);
+  hf_gpio_err_t result = SetPinLevelImpl(level);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+    current_state_ = state;
+  }
+  return result;
+}
+
+inline hf_gpio_active_state_t BaseGpio::GetActiveState() const noexcept {
+  return active_state_;
+}
+
+inline void BaseGpio::SetActiveState(hf_gpio_active_state_t active_state) noexcept {
+  active_state_ = active_state;
+}
+
+// State Control Methods
+inline hf_gpio_err_t BaseGpio::SetActive() noexcept {
+  hf_gpio_err_t validation = ValidateBasicOperation();
+  if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
+    return validation;
+  }
+
+  // Convert logical state to electrical level based on polarity
+  hf_gpio_level_t level = StateToLevel(hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
+  hf_gpio_err_t result = SetPinLevelImpl(level);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+    current_state_ = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
+  }
+  return result;
+}
+
+inline hf_gpio_err_t BaseGpio::SetInactive() noexcept {
+  hf_gpio_err_t validation = ValidateBasicOperation();
+  if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
+    return validation;
+  }
+
+  // Convert logical state to electrical level based on polarity
+  hf_gpio_level_t level = StateToLevel(hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
+  hf_gpio_err_t result = SetPinLevelImpl(level);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+    current_state_ = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
+  }
+  return result;
+}
+
+inline hf_gpio_err_t BaseGpio::Toggle() noexcept {
+  hf_gpio_err_t validation = ValidateBasicOperation();
+  if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
+    return validation;
+  }
+
+  // Read current level, invert it, and set the new level
+  hf_gpio_level_t current_level;
+  hf_gpio_err_t result = GetPinLevelImpl(current_level);
+  if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+    return result;
+  }
+
+  hf_gpio_level_t new_level = (current_level == hf_gpio_level_t::HF_GPIO_LEVEL_HIGH) 
+                              ? hf_gpio_level_t::HF_GPIO_LEVEL_LOW 
+                              : hf_gpio_level_t::HF_GPIO_LEVEL_HIGH;
+  
+  result = SetPinLevelImpl(new_level);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+    current_state_ = LevelToState(new_level);
+  }
+  return result;
+}
+
+inline hf_gpio_err_t BaseGpio::IsActive(bool& is_active) noexcept {
+  hf_gpio_err_t validation = ValidateBasicOperation();
+  if (validation != hf_gpio_err_t::GPIO_SUCCESS) {
+    return validation;
+  }
+
+  hf_gpio_level_t level;
+  hf_gpio_err_t result = GetPinLevelImpl(level);
+  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+    hf_gpio_state_t state = LevelToState(level);
+    is_active = (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
+    current_state_ = state;
+  }
+  return result;
+}
+
+// Protected Helper Methods
+inline hf_gpio_err_t BaseGpio::ValidateBasicOperation() const noexcept {
+  if (!initialized_) {
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
+  }
+  if (!IsPinAvailable()) {
+    return hf_gpio_err_t::GPIO_ERR_PIN_ACCESS_DENIED;
+  }
+  return hf_gpio_err_t::GPIO_SUCCESS;
+}
+
+inline hf_gpio_level_t BaseGpio::StateToLevel(hf_gpio_state_t state) const noexcept {
+  bool active_high = (active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+  bool should_be_high = (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? active_high : !active_high;
+  return should_be_high ? hf_gpio_level_t::HF_GPIO_LEVEL_HIGH : hf_gpio_level_t::HF_GPIO_LEVEL_LOW;
+}
+
+inline hf_gpio_state_t BaseGpio::LevelToState(hf_gpio_level_t level) const noexcept {
+  bool active_high = (active_state_ == hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+  bool is_high = (level == hf_gpio_level_t::HF_GPIO_LEVEL_HIGH);
+  return (is_high == active_high) ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE
+                                  : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
+}
+
+//==============================================================//
 // STRING CONVERSION IMPLEMENTATIONS
 //==============================================================//
 
@@ -824,6 +1008,17 @@ inline const char* BaseGpio::ToString(hf_gpio_state_t state) noexcept {
       return "Active";
     case hf_gpio_state_t::HF_GPIO_STATE_INACTIVE:
       return "Inactive";
+    default:
+      return "Unknown";
+  }
+}
+
+inline const char* BaseGpio::ToString(hf_gpio_level_t level) noexcept {
+  switch (level) {
+    case hf_gpio_level_t::HF_GPIO_LEVEL_HIGH:
+      return "High";
+    case hf_gpio_level_t::HF_GPIO_LEVEL_LOW:
+      return "Low";
     default:
       return "Unknown";
   }
@@ -894,4 +1089,78 @@ inline const char* BaseGpio::ToString(hf_gpio_interrupt_trigger_t trigger) noexc
     default:
       return "Unknown";
   }
+}
+
+//==============================================================//
+// HARDWARE VERIFICATION IMPLEMENTATIONS
+//==============================================================//
+
+inline hf_gpio_err_t BaseGpio::VerifyDirection(hf_gpio_direction_t& direction) const noexcept {
+  if (!initialized_) {
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
+  }
+  
+  // Read actual hardware direction
+  hf_gpio_err_t result = GetDirectionImpl(direction);
+  if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+    return result;
+  }
+  
+  // Compare with cached value for fault detection
+  if (direction != current_direction_) {
+    // Hardware mismatch detected - potential fault!
+    return hf_gpio_err_t::GPIO_ERR_HARDWARE_FAULT;
+  }
+  
+  return hf_gpio_err_t::GPIO_SUCCESS;
+}
+
+inline hf_gpio_err_t BaseGpio::VerifyOutputMode(hf_gpio_output_mode_t& mode) const noexcept {
+  if (!initialized_) {
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
+  }
+  
+  // Read actual hardware output mode
+  hf_gpio_err_t result = GetOutputModeImpl(mode);
+  if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+    return result;
+  }
+  
+  // Compare with cached value for fault detection
+  if (mode != output_mode_) {
+    // Hardware mismatch detected - potential fault!
+    return hf_gpio_err_t::GPIO_ERR_HARDWARE_FAULT;
+  }
+  
+  return hf_gpio_err_t::GPIO_SUCCESS;
+}
+
+inline hf_gpio_err_t BaseGpio::VerifyHardwareConfiguration() const noexcept {
+  if (!initialized_) {
+    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
+  }
+  
+  // Verify direction
+  hf_gpio_direction_t hw_direction;
+  hf_gpio_err_t result = VerifyDirection(hw_direction);
+  if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+    return result;
+  }
+  
+  // Verify output mode (only relevant for output pins)
+  if (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
+    hf_gpio_output_mode_t hw_output_mode;
+    result = VerifyOutputMode(hw_output_mode);
+    if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+      return result;
+    }
+  }
+  
+  // Verify pull mode
+  hf_gpio_pull_mode_t hw_pull_mode = GetPullModeImpl();
+  if (hw_pull_mode != pull_mode_) {
+    return hf_gpio_err_t::GPIO_ERR_HARDWARE_FAULT;
+  }
+  
+  return hf_gpio_err_t::GPIO_SUCCESS;
 }
