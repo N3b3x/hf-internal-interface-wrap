@@ -408,69 +408,6 @@ protected:
    */
   [[nodiscard]] bool IsHeld() const noexcept;
 
-  //==============================================================//
-  // ETM (EVENT TASK MATRIX) ADVANCED FEATURES (ESP32C6 ESP-IDF v5.5+)
-  //==============================================================//
-
-  /**
-   * @brief Configure ETM (Event Task Matrix) for hardware-level GPIO operations.
-   * @param etm_config ETM configuration including event and task setup
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details ETM enables zero-latency hardware-level GPIO operations triggered by events.
-   *          Perfect for precise timing requirements in motor control and signal processing.
-   */
-  hf_gpio_err_t ConfigureETM(const hf_gpio_etm_config_t& etm_config) noexcept;
-
-  /**
-   * @brief Enable ETM channel for this GPIO.
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Enables the configured ETM channel to start responding to events.
-   */
-  hf_gpio_err_t EnableETM() noexcept;
-
-  /**
-   * @brief Disable ETM channel for this GPIO.
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Disables the ETM channel while preserving configuration.
-   */
-  hf_gpio_err_t DisableETM() noexcept;
-
-  /**
-   * @brief Check if pin supports ETM functionality.
-   * @return true if pin supports ETM (Event Task Matrix)
-   * @details All ESP32C6 GPIO pins support ETM functionality.
-   */
-  [[nodiscard]] bool SupportsETM() const noexcept;
-
-  /**
-   * @brief Get ETM status and configuration information.
-   * @param status Output structure to store ETM status
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Provides comprehensive ETM status for monitoring and debugging.
-   */
-  hf_gpio_err_t GetETMStatus(hf_gpio_etm_status_t& status) const noexcept;
-
-  /**
-   * @brief Get current ETM channel usage across all GPIO instances.
-   * @return Number of ETM channels currently in use
-   * @details Static method for system-wide ETM resource monitoring.
-   */
-  static hf_u8_t GetETMChannelUsage() noexcept;
-
-  /**
-   * @brief Get maximum number of ETM channels available.
-   * @return Maximum ETM channels supported by hardware
-   * @details ESP32C6 supports up to 50 ETM channels.
-   */
-  static hf_u8_t GetMaxETMChannels() noexcept;
-
-  /**
-   * @brief Dump complete ETM configuration to output stream.
-   * @param output_stream Output stream for dump (default: stdout)
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Provides comprehensive ETM system dump for debugging and analysis.
-   */
-  static hf_gpio_err_t DumpETMConfiguration(FILE* output_stream = nullptr) noexcept;
 
   //==============================================================//
   // STATIC UTILITY METHODS FOR ESP32C6 PIN VALIDATION
@@ -617,10 +554,6 @@ private:
    */
   void CleanupGlitchFilters() noexcept;
 
-  /**
-   * @brief Cleanup ETM (Event Task Matrix) resources.
-   */
-  void CleanupETM() noexcept;
 
   /**
    * @brief Cleanup interrupt semaphore (called from destructor).
