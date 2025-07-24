@@ -115,25 +115,6 @@ enum class hf_gpio_glitch_filter_clk_src_t : uint8_t {
   HF_GLITCH_FILTER_CLK_SRC_XTAL = 2     ///< XTAL clock (40MHz typically)
 };
 
-/**
- * @brief GPIO ETM (Event Task Matrix) event edge types.
- * @details Edge types that can trigger ETM events from GPIO pins.
- */
-enum class hf_gpio_etm_event_edge_t : uint8_t {
-  HF_GPIO_ETM_EVENT_EDGE_POS = 0, ///< Rising edge generates ETM event
-  HF_GPIO_ETM_EVENT_EDGE_NEG = 1, ///< Falling edge generates ETM event
-  HF_GPIO_ETM_EVENT_EDGE_ANY = 2  ///< Any edge generates ETM event
-};
-
-/**
- * @brief GPIO ETM task actions for hardware-level GPIO operations.
- * @details Actions that can be performed by ETM tasks on GPIO pins.
- */
-enum class hf_gpio_etm_task_action_t : uint8_t {
-  HF_GPIO_ETM_TASK_ACTION_SET = 0, ///< Set GPIO level to high
-  HF_GPIO_ETM_TASK_ACTION_CLR = 1, ///< Clear GPIO level to low
-  HF_GPIO_ETM_TASK_ACTION_TOG = 2  ///< Toggle GPIO level
-};
 
 /**
  * @brief Dedicated GPIO bundle configuration flags.
@@ -207,37 +188,6 @@ struct hf_gpio_pin_filter_config_t {
   bool enable_on_init;                     ///< Enable filter immediately after creation
 };
 
-/**
- * @brief GPIO ETM event configuration.
- * @details Configuration for GPIO ETM event generation.
- */
-struct hf_gpio_etm_event_config_t {
-  hf_gpio_etm_event_edge_t edge; ///< Edge type that triggers the event
-  bool invert_output;            ///< Invert the output signal
-  bool enable_on_init;           ///< Enable event immediately after creation
-};
-
-/**
- * @brief GPIO ETM task configuration.
- * @details Configuration for GPIO ETM task actions.
- */
-struct hf_gpio_etm_task_config_t {
-  hf_gpio_etm_task_action_t action; ///< Action to perform when task is triggered
-  bool invert_output;               ///< Invert the output signal
-  bool enable_on_init;              ///< Enable task immediately after creation
-};
-
-/**
- * @brief Complete ETM configuration for GPIO.
- * @details Full ETM configuration including events, tasks, and channels.
- */
-struct hf_gpio_etm_config_t {
-  bool enable_etm;                         ///< Enable ETM functionality
-  hf_gpio_etm_event_config_t event_config; ///< ETM event configuration
-  hf_gpio_etm_task_config_t task_config;   ///< ETM task configuration
-  uint8_t etm_channel_priority;            ///< ETM channel priority (0=highest)
-  bool auto_bind_gpio;                     ///< Automatically bind to GPIO pin
-};
 
 /**
  * @brief GPIO sleep mode configuration.
@@ -286,11 +236,9 @@ struct hf_gpio_advanced_config_t {
   hf_gpio_sleep_config_t sleep_config;             ///< Sleep mode configuration
   hf_gpio_wakeup_config_t wakeup_config;           ///< Wake-up configuration
   hf_lp_io_config_t lp_io_config;                  ///< Low-power IO configuration
-  hf_gpio_etm_config_t etm_config;                 ///< ETM (Event Task Matrix) configuration
   bool enable_hold_function;                       ///< Enable GPIO hold function
   bool enable_rtc_gpio;                            ///< Enable RTC GPIO functionality
   bool enable_lp_io;                               ///< Enable LP_IO functionality
-  bool enable_etm;                                 ///< Enable Event Task Matrix
 };
 
 /**
@@ -310,7 +258,6 @@ struct hf_gpio_status_info_t {
   bool hold_enabled;                         ///< Hold function enabled
   bool rtc_enabled;                          ///< RTC GPIO enabled
   bool lp_io_enabled;                        ///< LP_IO enabled
-  bool etm_enabled;                          ///< ETM (Event Task Matrix) enabled
   uint32_t function_select;                  ///< IOMUX function selection
   hf_gpio_glitch_filter_type_t filter_type;  ///< Active glitch filter type
   bool glitch_filter_enabled;                ///< Glitch filter enabled
@@ -320,11 +267,6 @@ struct hf_gpio_status_info_t {
   uint8_t dedicated_channel;                 ///< Dedicated GPIO channel number (if applicable)
   bool sleep_hold_active;                    ///< Sleep hold currently active
   uint32_t last_interrupt_time_us;           ///< Last interrupt timestamp (microseconds)
-  bool etm_event_active;                     ///< ETM event generation active
-  bool etm_task_active;                      ///< ETM task response active
-  uint8_t etm_channel_number;                ///< ETM channel number (if applicable)
-  hf_gpio_etm_event_edge_t etm_event_edge;   ///< ETM event edge type
-  hf_gpio_etm_task_action_t etm_task_action; ///< ETM task action type
 };
 
 /**
@@ -406,7 +348,6 @@ typedef struct {
 #define HF_GPIO_SUPPORTS_DEDICATED_GPIO(gpio_num) \
   (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_SPI_FLASH_PIN(gpio_num))
 
-#define HF_GPIO_SUPPORTS_ETM(gpio_num) (HF_GPIO_IS_VALID_GPIO(gpio_num))
 
 /**
  * @brief ESP32 GPIO to ADC channel mapping.
@@ -516,31 +457,6 @@ hf_gpio_drive_cap_t hf_gpio_get_optimal_drive_strength(uint32_t frequency_hz, ui
 uint32_t hf_gpio_calc_glitch_filter_window(uint32_t noise_duration_ns,
                                            uint8_t safety_margin_percent);
 
-/**
- * @brief Check if GPIO supports ETM functionality.
- * @param gpio_num GPIO number to check
- * @return true if GPIO supports ETM, false otherwise
- */
-inline bool hf_gpio_supports_etm(uint8_t gpio_num) {
-  return HF_GPIO_SUPPORTS_ETM(gpio_num);
-}
-
-/**
- * @brief Validate ETM configuration for given GPIO.
- * @param gpio_num GPIO number
- * @param etm_config ETM configuration to validate
- * @return Validation result
- */
-hf_gpio_config_result_t hf_gpio_validate_etm_config(uint8_t gpio_num,
-                                                    const hf_gpio_etm_config_t* etm_config);
-
-/**
- * @brief Get recommended ETM channel for GPIO operations.
- * @param gpio_num GPIO number
- * @param priority Priority level (0=highest, 255=lowest)
- * @return Recommended ETM channel number, 0xFF if none available
- */
-uint8_t hf_gpio_get_optimal_etm_channel(uint8_t gpio_num, uint8_t priority);
 
 //==============================================================================
 // ERROR HANDLING AND DEBUGGING SUPPORT
@@ -601,9 +517,7 @@ static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 30, "ESP32 max GPIO should be 30");
 static_assert(HF_MCU_GPIO_RTC_PIN_COUNT == 8, "ESP32 should have 8 RTC GPIO pins");
 static_assert(HF_MCU_GPIO_ADC_PIN_COUNT == 7, "ESP32 should have 7 ADC channels");
 static_assert(HF_MCU_GPIO_FLEX_FILTER_COUNT == 8, "ESP32 should have 8 flex filters");
-static_assert(HF_MCU_GPIO_ETM_CHANNEL_COUNT == 50, "ESP32 should have 50 ETM channels");
 
-// Verify that our enum values match ESP-IDF native values
 #ifdef GPIO_MODE_INPUT
 static_assert(static_cast<int>(hf_gpio_mode_t::HF_GPIO_MODE_INPUT) == GPIO_MODE_INPUT,
               "GPIO mode values must match ESP-IDF");
@@ -613,35 +527,5 @@ static_assert(static_cast<int>(hf_gpio_mode_t::HF_GPIO_MODE_INPUT) == GPIO_MODE_
 static_assert(static_cast<int>(hf_gpio_pull_t::HF_GPIO_PULL_UP) == GPIO_PULLUP_ONLY,
               "GPIO pull mode values must match ESP-IDF");
 #endif
-
-#ifdef GPIO_ETM_EVENT_EDGE_POS
-static_assert(static_cast<int>(hf_gpio_etm_event_edge_t::HF_GPIO_ETM_EVENT_EDGE_POS) ==
-                  GPIO_ETM_EVENT_EDGE_POS,
-              "GPIO ETM event edge values must match ESP-IDF");
-#endif
-
-#ifdef GPIO_ETM_TASK_ACTION_SET
-static_assert(static_cast<int>(hf_gpio_etm_task_action_t::HF_GPIO_ETM_TASK_ACTION_SET) ==
-                  GPIO_ETM_TASK_ACTION_SET,
-              "GPIO ETM task action values must match ESP-IDF");
-#endif
-
-/**
- * @brief ETM (Event Task Matrix) status information for diagnostics.
- * @details Status information for GPIO ETM configuration and usage.
- */
-struct hf_gpio_etm_status_t {
-  bool etm_enabled;                            ///< ETM functionality enabled
-  void* event_handle;                          ///< ETM event handle (platform-specific)
-  void* task_handle;                           ///< ETM task handle (platform-specific)
-  void* channel_handle;                        ///< ETM channel handle (platform-specific)
-  uint8_t total_etm_channels_used;             ///< Total ETM channels currently in use
-  uint8_t max_etm_channels;                    ///< Maximum ETM channels available
-  hf_gpio_etm_event_edge_t configured_edge;    ///< Configured event edge type
-  hf_gpio_etm_task_action_t configured_action; ///< Configured task action type
-  bool channel_enabled;                        ///< ETM channel currently enabled
-  uint32_t event_count;                        ///< Number of ETM events triggered
-  uint32_t task_execution_count;               ///< Number of ETM tasks executed
-};
 
 #endif // HF_MCU_FAMILY_ESP32
