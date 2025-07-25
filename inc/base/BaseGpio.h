@@ -343,7 +343,7 @@ public:
 protected:
 
   //==============================================================//
-  // PURE VIRTUAL IMPLEMENTATIONS - PLATFORM SPECIFIC
+  // [PROTECTED] PURE VIRTUAL IMPLEMENTATIONS - PLATFORM SPECIFIC
   //==============================================================//
 
   /**
