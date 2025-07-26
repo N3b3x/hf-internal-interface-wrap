@@ -1,0 +1,1062 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classBaseCan" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseCan</compoundname>
+    <includes refid="BaseCan_8h" local="no">BaseCan.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BaseCan::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BaseCan::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="727" column="8" bodyfile="inc/base/BaseCan.h" bodystart="727" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref></type>
+        <definition>hf_can_statistics_t BaseCan::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BaseCan::statistics_</qualifiedname>
+        <briefdescription>
+<para>CAN operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="728" column="23" bodyfile="inc/base/BaseCan.h" bodystart="728" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref></type>
+        <definition>hf_can_diagnostics_t BaseCan::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BaseCan::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>CAN diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="729" column="24" bodyfile="inc/base/BaseCan.h" bodystart="729" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseCan_1a95fbffe100ce79e6551fbfd113e9a874" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BaseCan::~BaseCan</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BaseCan</name>
+        <qualifiedname>BaseCan::~BaseCan</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor ensures proper cleanup in derived classes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="428" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseCan::BaseCan</definition>
+        <argsstring>(const BaseCan &amp;)=delete</argsstring>
+        <name>BaseCan</name>
+        <qualifiedname>BaseCan::BaseCan</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseCan" kindref="compound">BaseCan</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="431" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1ad9dc7b9f27d9909273f077baaf00df33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseCan" kindref="compound">BaseCan</ref> &amp;</type>
+        <definition>BaseCan &amp; BaseCan::operator=</definition>
+        <argsstring>(const BaseCan &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseCan::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseCan" kindref="compound">BaseCan</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="432" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a530bc9bf147c4e0df1fa0ee38bb22e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseCan::BaseCan</definition>
+        <argsstring>(BaseCan &amp;&amp;)=delete</argsstring>
+        <name>BaseCan</name>
+        <qualifiedname>BaseCan::BaseCan</qualifiedname>
+        <param>
+          <type><ref refid="classBaseCan" kindref="compound">BaseCan</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="433" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a01c7dbf06a7c24a0608ab1998d91827c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseCan" kindref="compound">BaseCan</ref> &amp;</type>
+        <definition>BaseCan &amp; BaseCan::operator=</definition>
+        <argsstring>(BaseCan &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseCan::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBaseCan" kindref="compound">BaseCan</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="434" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a3c372c570cb93abf33e2de4f05970d36" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseCan::EnsureInitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BaseCan::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the CAN bus is initialized (lazy initialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the CAN bus is initialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="440" column="8" bodyfile="inc/base/BaseCan.h" bodystart="440" bodyend="445"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a03daa6284ad75c2bbd335077141ea9d7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseCan::EnsureDeinitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BaseCan::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the CAN bus is deinitialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the CAN bus is deinitialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="451" column="8" bodyfile="inc/base/BaseCan.h" bodystart="451" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a1c8f9099b9cd860c3e8196768f51651b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseCan::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseCan::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Checks if the class is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="462" column="9" bodyfile="inc/base/BaseCan.h" bodystart="462" bodyend="464"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a7a32156d471b1d44b1cff68cd3024bb2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseCan::Initialize</qualifiedname>
+        <briefdescription>
+<para>Initialize the CAN controller (must be implemented by derived classes). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="474" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a9d207d69485c479ab68c5396ce3d814c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseCan::Deinitialize</qualifiedname>
+        <briefdescription>
+<para>Deinitialize the CAN controller (must be implemented by derived classes). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="480" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::SendMessage</definition>
+        <argsstring>(const hf_can_message_t &amp;message, hf_u32_t timeout_ms=1000) noexcept=0</argsstring>
+        <name>SendMessage</name>
+        <qualifiedname>BaseCan::SendMessage</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>1000</defval>
+        </param>
+        <briefdescription>
+<para>Send a CAN message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CAN message to send </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = non-blocking) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="488" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a300b5b097246fd7b9575050eb7eb239c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::ReceiveMessage</definition>
+        <argsstring>(hf_can_message_t &amp;message, hf_u32_t timeout_ms=0) noexcept=0</argsstring>
+        <name>ReceiveMessage</name>
+        <qualifiedname>BaseCan::ReceiveMessage</qualifiedname>
+        <param>
+          <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Receive a CAN message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store received message </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = non-blocking) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="497" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a9cef56fa208f09304bbd7129914a51a8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::SetReceiveCallback</definition>
+        <argsstring>(hf_can_receive_callback_t callback) noexcept=0</argsstring>
+        <name>SetReceiveCallback</name>
+        <qualifiedname>BaseCan::SetReceiveCallback</qualifiedname>
+        <param>
+          <type><ref refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" kindref="member">hf_can_receive_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+<para>Set callback for received messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function to handle received messages </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="505" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::SetAcceptanceFilter</definition>
+        <argsstring>(hf_u32_t id, hf_u32_t mask, bool extended=false) noexcept=0</argsstring>
+        <name>SetAcceptanceFilter</name>
+        <qualifiedname>BaseCan::SetAcceptanceFilter</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>mask</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>extended</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Set acceptance filter for incoming messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CAN ID to accept </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Acceptance mask (0 = don&apos;t care bits) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>extended</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true for extended frames, false for standard </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="514" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1ac39ec574726318ccb010c87bcea0ed0d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::GetStatus</definition>
+        <argsstring>(hf_can_status_t &amp;status) noexcept=0</argsstring>
+        <name>GetStatus</name>
+        <qualifiedname>BaseCan::GetStatus</qualifiedname>
+        <param>
+          <type><ref refid="structhf__can__status__t" kindref="compound">hf_can_status_t</ref> &amp;</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Get current CAN bus status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store status information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="522" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1ab51e96a8d84616a1f2fdabd8452c0665" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::Reset</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Reset</name>
+        <qualifiedname>BaseCan::Reset</qualifiedname>
+        <briefdescription>
+<para>Reset the CAN controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="528" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a372729e0eeb758ba624aecfd07ef918c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void BaseCan::ClearReceiveCallback</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearReceiveCallback</name>
+        <qualifiedname>BaseCan::ClearReceiveCallback</qualifiedname>
+        <briefdescription>
+<para>Clear the receive callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Default implementation does nothing </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="538" column="16" bodyfile="inc/base/BaseCan.h" bodystart="538" bodyend="538"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a523000694cee960aa8eee19bbd74c408" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::ClearAcceptanceFilter</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearAcceptanceFilter</name>
+        <qualifiedname>BaseCan::ClearAcceptanceFilter</qualifiedname>
+        <briefdescription>
+<para>Clear all acceptance filters (accept all messages). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation sets filter to accept all (ID=0, Mask=0) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="545" column="24" bodyfile="inc/base/BaseCan.h" bodystart="545" bodyend="547"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a44753662096232f45e49ad752e8f68e4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::SetReceiveCallbackFD</definition>
+        <argsstring>(hf_can_fd_receive_callback_t callback) noexcept</argsstring>
+        <name>SetReceiveCallbackFD</name>
+        <qualifiedname>BaseCan::SetReceiveCallbackFD</qualifiedname>
+        <param>
+          <type><ref refid="BaseCan_8h_1aaed4ecd6496192cd76bb98f7993298cd" kindref="member">hf_can_fd_receive_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+<para>Set CAN-FD receive callback with enhanced information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CAN-FD callback function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation returns CAN_ERR_UNSUPPORTED_OPERATION </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="555" column="24" bodyfile="inc/base/BaseCan.h" bodystart="555" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a5af808724133b48742ebdcd448e93515" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseCan::SupportsCanFD</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>SupportsCanFD</name>
+        <qualifiedname>BaseCan::SupportsCanFD</qualifiedname>
+        <briefdescription>
+<para>Check if CAN-FD is supported by this controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if CAN-FD is supported, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation returns false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="565" column="16" bodyfile="inc/base/BaseCan.h" bodystart="565" bodyend="567"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a2148e9e19a394699809d6e4592df5b5c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseCan::SetCanFDMode</definition>
+        <argsstring>(bool enable, hf_u32_t data_baudrate=2000000, hf_u32_t timeout_ms=1000) noexcept</argsstring>
+        <name>SetCanFDMode</name>
+        <qualifiedname>BaseCan::SetCanFDMode</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>data_baudrate</declname>
+          <defval>2000000</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>1000</defval>
+        </param>
+        <briefdescription>
+<para>Enable or disable CAN-FD mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable CAN-FD, false to disable </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_baudrate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data phase baudrate for CAN-FD (default: 2Mbps) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation returns false (not supported) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="576" column="16" bodyfile="inc/base/BaseCan.h" bodystart="576" bodyend="582"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a67d60cd1fe9783de6f335948af385158" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseCan::ConfigureCanFDTiming</definition>
+        <argsstring>(hf_u16_t nominal_prescaler, hf_u8_t nominal_tseg1, hf_u8_t nominal_tseg2, hf_u16_t data_prescaler, hf_u8_t data_tseg1, hf_u8_t data_tseg2, hf_u8_t sjw=1) noexcept</argsstring>
+        <name>ConfigureCanFDTiming</name>
+        <qualifiedname>BaseCan::ConfigureCanFDTiming</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>nominal_prescaler</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>nominal_tseg1</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>nominal_tseg2</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>data_prescaler</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>data_tseg1</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>data_tseg2</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>sjw</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Configure CAN-FD timing parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nominal_prescaler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nominal phase prescaler </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nominal_tseg1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nominal phase TSEG1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nominal_tseg2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nominal phase TSEG2 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_prescaler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data phase prescaler </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_tseg1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data phase TSEG1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_tseg2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data phase TSEG2 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sjw</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Synchronization jump width </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation returns false (not supported) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="596" column="16" bodyfile="inc/base/BaseCan.h" bodystart="596" bodyend="608"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1acdab43f967e641b0566a7f851ea37114" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseCan::SetTransmitterDelayCompensation</definition>
+        <argsstring>(hf_u8_t tdc_offset, hf_u8_t tdc_filter) noexcept</argsstring>
+        <name>SetTransmitterDelayCompensation</name>
+        <qualifiedname>BaseCan::SetTransmitterDelayCompensation</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>tdc_offset</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>tdc_filter</declname>
+        </param>
+        <briefdescription>
+<para>Set transmitter delay compensation (CAN-FD feature). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tdc_offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TDC offset value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tdc_filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TDC filter value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation returns false (not supported) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="617" column="16" bodyfile="inc/base/BaseCan.h" bodystart="617" bodyend="621"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a6aa06ee8540daad6ffef529802cb2334" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>virtual hf_u32_t BaseCan::SendMessageBatch</definition>
+        <argsstring>(const hf_can_message_t *messages, hf_u32_t count, hf_u32_t timeout_ms=1000) noexcept</argsstring>
+        <name>SendMessageBatch</name>
+        <qualifiedname>BaseCan::SendMessageBatch</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> *</type>
+          <declname>messages</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>1000</defval>
+        </param>
+        <briefdescription>
+<para>Send multiple messages in a batch. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>messages</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of messages to send </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of messages to send </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of messages successfully sent </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation sends messages sequentially </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="631" column="20" bodyfile="inc/base/BaseCan.h" bodystart="631" bodyend="644"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a06981fc040b040418551f79eafea295d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>virtual hf_u32_t BaseCan::ReceiveMessageBatch</definition>
+        <argsstring>(hf_can_message_t *messages, hf_u32_t max_count, hf_u32_t timeout_ms=100) noexcept</argsstring>
+        <name>ReceiveMessageBatch</name>
+        <qualifiedname>BaseCan::ReceiveMessageBatch</qualifiedname>
+        <param>
+          <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> *</type>
+          <declname>messages</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>max_count</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>100</defval>
+        </param>
+        <briefdescription>
+<para>Receive multiple messages in a batch. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>messages</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array to store received messages </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of messages to receive </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of messages actually received </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation receives messages one by one </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="654" column="20" bodyfile="inc/base/BaseCan.h" bodystart="654" bodyend="669"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1ac6924ccef37360dd48ed18f128c8a17e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BaseCan::ResetStatistics</qualifiedname>
+        <briefdescription>
+<para>Reset CAN operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="680" column="24" bodyfile="inc/base/BaseCan.h" bodystart="680" bodyend="683"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a6e26f72d55472f7dd825063abaa87ebc" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BaseCan::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset CAN diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="690" column="24" bodyfile="inc/base/BaseCan.h" bodystart="690" bodyend="693"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a938484f6f54bef73a04b5698214df442" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::GetStatistics</definition>
+        <argsstring>(hf_can_statistics_t &amp;statistics) noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BaseCan::GetStatistics</qualifiedname>
+        <param>
+          <type><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get CAN operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to statistics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="701" column="24" bodyfile="inc/base/BaseCan.h" bodystart="701" bodyend="704"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseCan_1a0c05b53922dafb9c544f1e1fa6977397" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>virtual hf_can_err_t BaseCan::GetDiagnostics</definition>
+        <argsstring>(hf_can_diagnostics_t &amp;diagnostics) noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BaseCan::GetDiagnostics</qualifiedname>
+        <param>
+          <type><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get CAN diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to diagnostics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="712" column="24" bodyfile="inc/base/BaseCan.h" bodystart="712" bodyend="715"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseCan_1a138f75fbc7c937fa12c50fc4466c3407" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseCan::BaseCan</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>BaseCan</name>
+        <qualifiedname>BaseCan::BaseCan</qualifiedname>
+        <briefdescription>
+<para>Protected constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="721" column="3" bodyfile="inc/base/BaseCan.h" bodystart="721" bodyend="721"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class defining the unified CAN bus API. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This abstract class defines the interface that all CAN controller implementations must provide. It ensures a consistent API across different platforms and CAN controller types, making the system extensible and maintainable.</para>
+<para>Concrete implementation examples:<itemizedlist>
+<listitem><para>Microcontrollers with integrated CAN peripherals</para>
+</listitem><listitem><para>External CAN controllers via SPI (e.g. MCP2515)</para>
+</listitem></itemizedlist>
+</para>
+<para>Features:<itemizedlist>
+<listitem><para>Lazy initialization support (initialize on first use)</para>
+</listitem><listitem><para>Comprehensive error handling with detailed error codes</para>
+</listitem><listitem><para>Thread-safe operations (implementation dependent)</para>
+</listitem><listitem><para>Consistent API across different CAN hardware</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>This is a header-only abstract base class - instantiate concrete implementations instead. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>BaseCan</label>
+        <link refid="classBaseCan"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_can_diagnostics_t</label>
+        <link refid="structhf__can__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_can_statistics_t</label>
+        <link refid="structhf__can__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BaseCan.h" line="423" column="1" bodyfile="inc/base/BaseCan.h" bodystart="423" bodyend="730"/>
+    <listofallmembers>
+      <member refid="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>BaseCan</name></member>
+      <member refid="classBaseCan_1a530bc9bf147c4e0df1fa0ee38bb22e39" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>BaseCan</name></member>
+      <member refid="classBaseCan_1a138f75fbc7c937fa12c50fc4466c3407" prot="protected" virt="non-virtual"><scope>BaseCan</scope><name>BaseCan</name></member>
+      <member refid="classBaseCan_1a523000694cee960aa8eee19bbd74c408" prot="public" virt="virtual"><scope>BaseCan</scope><name>ClearAcceptanceFilter</name></member>
+      <member refid="classBaseCan_1a372729e0eeb758ba624aecfd07ef918c" prot="public" virt="virtual"><scope>BaseCan</scope><name>ClearReceiveCallback</name></member>
+      <member refid="classBaseCan_1a67d60cd1fe9783de6f335948af385158" prot="public" virt="virtual"><scope>BaseCan</scope><name>ConfigureCanFDTiming</name></member>
+      <member refid="classBaseCan_1a9d207d69485c479ab68c5396ce3d814c" prot="public" virt="pure-virtual"><scope>BaseCan</scope><name>Deinitialize</name></member>
+      <member refid="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" prot="protected" virt="non-virtual"><scope>BaseCan</scope><name>diagnostics_</name></member>
+      <member refid="classBaseCan_1a03daa6284ad75c2bbd335077141ea9d7" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseCan_1a3c372c570cb93abf33e2de4f05970d36" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseCan_1a0c05b53922dafb9c544f1e1fa6977397" prot="public" virt="virtual"><scope>BaseCan</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseCan_1a938484f6f54bef73a04b5698214df442" prot="public" virt="virtual"><scope>BaseCan</scope><name>GetStatistics</name></member>
+      <member refid="classBaseCan_1ac39ec574726318ccb010c87bcea0ed0d" prot="public" virt="pure-virtual"><scope>BaseCan</scope><name>GetStatus</name></member>
+      <member refid="classBaseCan_1a7a32156d471b1d44b1cff68cd3024bb2" prot="public" virt="pure-virtual"><scope>BaseCan</scope><name>Initialize</name></member>
+      <member refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" prot="protected" virt="non-virtual"><scope>BaseCan</scope><name>initialized_</name></member>
+      <member refid="classBaseCan_1a1c8f9099b9cd860c3e8196768f51651b" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>IsInitialized</name></member>
+      <member refid="classBaseCan_1ad9dc7b9f27d9909273f077baaf00df33" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>operator=</name></member>
+      <member refid="classBaseCan_1a01c7dbf06a7c24a0608ab1998d91827c" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>operator=</name></member>
+      <member refid="classBaseCan_1a300b5b097246fd7b9575050eb7eb239c" prot="public" virt="pure-virtual"><scope>BaseCan</scope><name>ReceiveMessage</name></member>
+      <member refid="classBaseCan_1a06981fc040b040418551f79eafea295d" prot="public" virt="virtual"><scope>BaseCan</scope><name>ReceiveMessageBatch</name></member>
+      <member refid="classBaseCan_1ab51e96a8d84616a1f2fdabd8452c0665" prot="public" virt="pure-virtual"><scope>BaseCan</scope><name>Reset</name></member>
+      <member refid="classBaseCan_1a6e26f72d55472f7dd825063abaa87ebc" prot="public" virt="virtual"><scope>BaseCan</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseCan_1ac6924ccef37360dd48ed18f128c8a17e" prot="public" virt="virtual"><scope>BaseCan</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8" prot="public" virt="pure-virtual"><scope>BaseCan</scope><name>SendMessage</name></member>
+      <member refid="classBaseCan_1a6aa06ee8540daad6ffef529802cb2334" prot="public" virt="virtual"><scope>BaseCan</scope><name>SendMessageBatch</name></member>
+      <member refid="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c" prot="public" virt="pure-virtual"><scope>BaseCan</scope><name>SetAcceptanceFilter</name></member>
+      <member refid="classBaseCan_1a2148e9e19a394699809d6e4592df5b5c" prot="public" virt="virtual"><scope>BaseCan</scope><name>SetCanFDMode</name></member>
+      <member refid="classBaseCan_1a9cef56fa208f09304bbd7129914a51a8" prot="public" virt="pure-virtual"><scope>BaseCan</scope><name>SetReceiveCallback</name></member>
+      <member refid="classBaseCan_1a44753662096232f45e49ad752e8f68e4" prot="public" virt="virtual"><scope>BaseCan</scope><name>SetReceiveCallbackFD</name></member>
+      <member refid="classBaseCan_1acdab43f967e641b0566a7f851ea37114" prot="public" virt="virtual"><scope>BaseCan</scope><name>SetTransmitterDelayCompensation</name></member>
+      <member refid="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" prot="protected" virt="non-virtual"><scope>BaseCan</scope><name>statistics_</name></member>
+      <member refid="classBaseCan_1a5af808724133b48742ebdcd448e93515" prot="public" virt="virtual"><scope>BaseCan</scope><name>SupportsCanFD</name></member>
+      <member refid="classBaseCan_1a95fbffe100ce79e6551fbfd113e9a874" prot="public" virt="virtual"><scope>BaseCan</scope><name>~BaseCan</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

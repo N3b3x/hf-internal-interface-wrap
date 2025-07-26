@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__pio__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pio_statistics_t</compoundname>
+    <includes refid="BasePio_8h" local="no">BasePio.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1ab13f57cb963e9df058430c27ce6f7ae2" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::totalTransmissions</definition>
+        <argsstring></argsstring>
+        <name>totalTransmissions</name>
+        <qualifiedname>hf_pio_statistics_t::totalTransmissions</qualifiedname>
+        <briefdescription>
+<para>Total transmissions performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="189" column="12" bodyfile="inc/base/BasePio.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a48aec35ad390701490568212b34ad63f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::successfulTransmissions</definition>
+        <argsstring></argsstring>
+        <name>successfulTransmissions</name>
+        <qualifiedname>hf_pio_statistics_t::successfulTransmissions</qualifiedname>
+        <briefdescription>
+<para>Successful transmissions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="190" column="12" bodyfile="inc/base/BasePio.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a7564f4959d4605c3f302bb8e19e6025e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::failedTransmissions</definition>
+        <argsstring></argsstring>
+        <name>failedTransmissions</name>
+        <qualifiedname>hf_pio_statistics_t::failedTransmissions</qualifiedname>
+        <briefdescription>
+<para>Failed transmissions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="191" column="12" bodyfile="inc/base/BasePio.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a0b096c1e31a20866c4b3960e840a6085" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::totalReceptions</definition>
+        <argsstring></argsstring>
+        <name>totalReceptions</name>
+        <qualifiedname>hf_pio_statistics_t::totalReceptions</qualifiedname>
+        <briefdescription>
+<para>Total receptions performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="192" column="12" bodyfile="inc/base/BasePio.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a7b7c2f6f80c5bc7edfce6a3b006b077c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::successfulReceptions</definition>
+        <argsstring></argsstring>
+        <name>successfulReceptions</name>
+        <qualifiedname>hf_pio_statistics_t::successfulReceptions</qualifiedname>
+        <briefdescription>
+<para>Successful receptions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="193" column="12" bodyfile="inc/base/BasePio.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a5ec9f9d6ca0dcb706035baa1a1090341" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::failedReceptions</definition>
+        <argsstring></argsstring>
+        <name>failedReceptions</name>
+        <qualifiedname>hf_pio_statistics_t::failedReceptions</qualifiedname>
+        <briefdescription>
+<para>Failed receptions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="194" column="12" bodyfile="inc/base/BasePio.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a145f3f4d7f1681b5ca1f679fe6231800" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::symbolsTransmitted</definition>
+        <argsstring></argsstring>
+        <name>symbolsTransmitted</name>
+        <qualifiedname>hf_pio_statistics_t::symbolsTransmitted</qualifiedname>
+        <briefdescription>
+<para>Total symbols transmitted. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="195" column="12" bodyfile="inc/base/BasePio.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1aab11c54e09c1fb9bc247a2f2e7266cc0" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::symbolsReceived</definition>
+        <argsstring></argsstring>
+        <name>symbolsReceived</name>
+        <qualifiedname>hf_pio_statistics_t::symbolsReceived</qualifiedname>
+        <briefdescription>
+<para>Total symbols received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="196" column="12" bodyfile="inc/base/BasePio.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a4441454d72660a07a4272d8a50e82bbe" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::averageTransmissionTimeUs</definition>
+        <argsstring></argsstring>
+        <name>averageTransmissionTimeUs</name>
+        <qualifiedname>hf_pio_statistics_t::averageTransmissionTimeUs</qualifiedname>
+        <briefdescription>
+<para>Average transmission time (microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="197" column="12" bodyfile="inc/base/BasePio.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1ac264153732a35c37cd4f5b6f09d60e38" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::maxTransmissionTimeUs</definition>
+        <argsstring></argsstring>
+        <name>maxTransmissionTimeUs</name>
+        <qualifiedname>hf_pio_statistics_t::maxTransmissionTimeUs</qualifiedname>
+        <briefdescription>
+<para>Maximum transmission time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="198" column="12" bodyfile="inc/base/BasePio.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a579489884da9969cd5a191a06620225d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::minTransmissionTimeUs</definition>
+        <argsstring></argsstring>
+        <name>minTransmissionTimeUs</name>
+        <qualifiedname>hf_pio_statistics_t::minTransmissionTimeUs</qualifiedname>
+        <briefdescription>
+<para>Minimum transmission time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="199" column="12" bodyfile="inc/base/BasePio.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a8a9b9b95e26ca74d6f8053f1efe7317c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::timingErrors</definition>
+        <argsstring></argsstring>
+        <name>timingErrors</name>
+        <qualifiedname>hf_pio_statistics_t::timingErrors</qualifiedname>
+        <briefdescription>
+<para>Number of timing errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="200" column="12" bodyfile="inc/base/BasePio.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__statistics__t_1a2a8556e0cd4b70e878543514cab10479" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_statistics_t::bufferOverflows</definition>
+        <argsstring></argsstring>
+        <name>bufferOverflows</name>
+        <qualifiedname>hf_pio_statistics_t::bufferOverflows</qualifiedname>
+        <briefdescription>
+<para>Number of buffer overflows. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="201" column="12" bodyfile="inc/base/BasePio.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pio__statistics__t_1ac75dd6fe92394a519fe158464e4a56f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pio_statistics_t::hf_pio_statistics_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_pio_statistics_t</name>
+        <qualifiedname>hf_pio_statistics_t::hf_pio_statistics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="203" column="3" bodyfile="inc/base/BasePio.h" bodystart="203" bodyend="207"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PIO operation statistics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BasePio.h" line="188" column="1" bodyfile="inc/base/BasePio.h" bodystart="188" bodyend="208"/>
+    <listofallmembers>
+      <member refid="structhf__pio__statistics__t_1a4441454d72660a07a4272d8a50e82bbe" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>averageTransmissionTimeUs</name></member>
+      <member refid="structhf__pio__statistics__t_1a2a8556e0cd4b70e878543514cab10479" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>bufferOverflows</name></member>
+      <member refid="structhf__pio__statistics__t_1a5ec9f9d6ca0dcb706035baa1a1090341" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>failedReceptions</name></member>
+      <member refid="structhf__pio__statistics__t_1a7564f4959d4605c3f302bb8e19e6025e" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>failedTransmissions</name></member>
+      <member refid="structhf__pio__statistics__t_1ac75dd6fe92394a519fe158464e4a56f8" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>hf_pio_statistics_t</name></member>
+      <member refid="structhf__pio__statistics__t_1ac264153732a35c37cd4f5b6f09d60e38" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>maxTransmissionTimeUs</name></member>
+      <member refid="structhf__pio__statistics__t_1a579489884da9969cd5a191a06620225d" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>minTransmissionTimeUs</name></member>
+      <member refid="structhf__pio__statistics__t_1a7b7c2f6f80c5bc7edfce6a3b006b077c" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>successfulReceptions</name></member>
+      <member refid="structhf__pio__statistics__t_1a48aec35ad390701490568212b34ad63f" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>successfulTransmissions</name></member>
+      <member refid="structhf__pio__statistics__t_1aab11c54e09c1fb9bc247a2f2e7266cc0" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>symbolsReceived</name></member>
+      <member refid="structhf__pio__statistics__t_1a145f3f4d7f1681b5ca1f679fe6231800" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>symbolsTransmitted</name></member>
+      <member refid="structhf__pio__statistics__t_1a8a9b9b95e26ca74d6f8053f1efe7317c" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>timingErrors</name></member>
+      <member refid="structhf__pio__statistics__t_1a0b096c1e31a20866c4b3960e840a6085" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>totalReceptions</name></member>
+      <member refid="structhf__pio__statistics__t_1ab13f57cb963e9df058430c27ce6f7ae2" prot="public" virt="non-virtual"><scope>hf_pio_statistics_t</scope><name>totalTransmissions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

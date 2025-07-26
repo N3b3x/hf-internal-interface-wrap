@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_7751913d9073a449937b5bcfd50bf3a6" kind="dir">
+    <compoundname>examples/esp32/main</compoundname>
+    <innerfile refid="advanced__pwm__example_8cpp">advanced_pwm_example.cpp</innerfile>
+    <innerfile refid="main_8cpp">main.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="examples/esp32/main/"/>
+  </compounddef>
+</doxygen>

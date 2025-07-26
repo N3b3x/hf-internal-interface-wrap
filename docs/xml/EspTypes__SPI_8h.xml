@@ -1,0 +1,694 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="EspTypes__SPI_8h" kind="file" language="C++">
+    <compoundname>EspTypes_SPI.h</compoundname>
+    <includes refid="BaseSpi_8h" local="yes">BaseSpi.h</includes>
+    <includes refid="EspTypes__Base_8h" local="yes">EspTypes_Base.h</includes>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includes local="yes">driver/spi_master.h</includes>
+    <includedby refid="main_8cpp" local="yes">examples/esp32/main/main.cpp</includedby>
+    <includedby refid="EspTypes_8h" local="yes">inc/mcu/esp32/utils/EspTypes.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseSpi.h</label>
+        <link refid="BaseSpi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="10">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="11">
+        <label>driver/spi_master.h</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>examples/common/DummyDevice.hpp</label>
+        <link refid="DummyDevice_8hpp"/>
+      </node>
+      <node id="2">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="4">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__spi__bus__config__t" prot="public">hf_spi_bus_config_t</innerclass>
+    <innerclass refid="structhf__spi__device__config__t" prot="public">hf_spi_device_config_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="EspTypes__SPI_8h_1a9a1f0d44a67c3fdfaed5bd80a22574b3" prot="public" static="no">
+        <name>HF_SPI_IS_VALID_HOST</name>
+        <param><defname>host</defname></param>
+        <initializer>  ((host) &lt; static_cast&lt;uint8_t&gt;(<ref refid="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8a9de53e6d1915d679872078c9889202ae" kindref="member">hf_spi_host_device_t::HF_SPI_HOST_MAX</ref>))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="104" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="104" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__SPI_8h_1af1977c9e92e45f9aea67548405d5553e" prot="public" static="no">
+        <name>HF_SPI_IS_VALID_CLOCK_SPEED</name>
+        <param><defname>speed</defname></param>
+        <initializer>  ((speed) &gt;= <ref refid="EspTypes__SPI_8h_1a5de19a5c336dd13c2a9cca3273a4704e" kindref="member">HF_SPI_MIN_CLOCK_SPEED</ref> &amp;&amp; (speed) &lt;= <ref refid="EspTypes__SPI_8h_1a531914ded2bdb290a0b74841c66ad514" kindref="member">HF_SPI_MAX_CLOCK_SPEED</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="106" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="106" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__SPI_8h_1ada87e48e5062088b88e285babede88ae" prot="public" static="no">
+        <name>HF_SPI_IS_VALID_MODE</name>
+        <param><defname>mode</defname></param>
+        <initializer>((mode) &gt;= 0 &amp;&amp; (mode) &lt;= 3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="108" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__SPI_8h_1ab3170e1da85327fb2600643548ae1d95" prot="public" static="no">
+        <name>HF_SPI_IS_VALID_TRANSFER_SIZE</name>
+        <param><defname>size</defname></param>
+        <initializer>((size) &gt; 0 &amp;&amp; (size) &lt;= <ref refid="EspTypes__SPI_8h_1a4dcadd5ff2f7805dcea910928df464a2" kindref="member">HF_SPI_MAX_TRANSFER_SIZE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="109" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_spi_mode_t</name>
+        <enumvalue id="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776a98c4a77095bf42997b31510181100360" prot="public">
+          <name>HF_SPI_MODE_0</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>CPOL=0, CPHA=0. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776aeb3e177949ecb0ac90d4f90d79be42d4" prot="public">
+          <name>HF_SPI_MODE_1</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>CPOL=0, CPHA=1. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776acaf75767d2ee3869029819d284f2148d" prot="public">
+          <name>HF_SPI_MODE_2</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>CPOL=1, CPHA=0. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776a0505e57bd131d9456f67ad69d1913838" prot="public">
+          <name>HF_SPI_MODE_3</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>CPOL=1, CPHA=1. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 SPI mode configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="54" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="54" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_spi_host_device_t</name>
+        <enumvalue id="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8aaaf498bf7650bedfbf6f184d23e1d776" prot="public">
+          <name>HF_SPI2_HOST</name>
+          <initializer>= static_cast&lt;uint8_t&gt;(SPI2_HOST)</initializer>
+          <briefdescription>
+<para>SPI2 host (general purpose) - ESP-IDF SPI2_HOST. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8afcc73e947325433a2601223635e7bc23" prot="public">
+          <name>HF_SPI3_HOST</name>
+          <initializer>= static_cast&lt;uint8_t&gt;(SPI3_HOST)</initializer>
+          <briefdescription>
+<para>SPI3 host (general purpose) - ESP-IDF SPI3_HOST. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8a9de53e6d1915d679872078c9889202ae" prot="public">
+          <name>HF_SPI_HOST_MAX</name>
+          <initializer>= static_cast&lt;uint8_t&gt;(SPI_HOST_MAX)</initializer>
+          <briefdescription>
+<para>Maximum number of SPI hosts. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 SPI host device enumeration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>ESP32 SPI controller mapping aligned with ESP-IDF. SPI1 is reserved for flash and not exposed to users. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="66" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043f" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_spi_transfer_mode_t</name>
+        <enumvalue id="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043fab740e45d848dd7e936f43b1448510e0b" prot="public">
+          <name>HF_SPI_TRANSFER_MODE_SINGLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Standard SPI (1-bit MOSI/MISO) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043fa8fd8af14714dcf9da287203f260408e9" prot="public">
+          <name>HF_SPI_TRANSFER_MODE_DUAL</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Dual SPI (2-bit data lines) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043fa8839e5f94ce713eaec16e5d9a5c699aa" prot="public">
+          <name>HF_SPI_TRANSFER_MODE_QUAD</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Quad SPI (4-bit data lines) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043fa356ef6489b84a602683fd4bedda8b56a" prot="public">
+          <name>HF_SPI_TRANSFER_MODE_OCTAL</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Octal SPI (8-bit data lines) - ESP32 specific. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SPI transfer modes for ESP32. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Advanced transfer modes including octal SPI support. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="76" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="76" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531" prot="public" static="no" strong="yes">
+        <type>int</type>
+        <name>hf_spi_event_type_t</name>
+        <enumvalue id="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531a9b58297ceeb9d053c68d31142a9720e2" prot="public">
+          <name>HF_SPI_EVENT_TRANSACTION_COMPLETE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Transaction completed. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531afbccd5daf10a227a1a5dc4b4723113e8" prot="public">
+          <name>HF_SPI_EVENT_TRANSACTION_ERROR</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Transaction error occurred. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531a5a77418e2f31eb96c23aa5a49a5e899a" prot="public">
+          <name>HF_SPI_EVENT_BUS_SUSPENDED</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Bus suspended for power saving. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531ae7aaf3f7f0cc3b77d533010b6f9798ee" prot="public">
+          <name>HF_SPI_EVENT_BUS_RESUMED</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Bus resumed from suspension. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531af21d4d3c887af16d5f09a62917cef57f" prot="public">
+          <name>HF_SPI_EVENT_DMA_ERROR</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>DMA error occurred. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>SPI event types for callback notifications. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Event types reported via SPI event callbacks. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="87" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="87" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="EspTypes__SPI_8h_1addc113f131c1298f3c3b51d93153e654" prot="public" static="no">
+        <type>spi_device_handle_t</type>
+        <definition>using hf_spi_device_handle_t =  spi_device_handle_t</definition>
+        <argsstring></argsstring>
+        <name>hf_spi_device_handle_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="41" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__SPI_8h_1afccbd2e5989cbcb81ba9f442d94c2f05" prot="public" static="no">
+        <type>spi_device_interface_config_t</type>
+        <definition>using hf_spi_device_interface_config_t =  spi_device_interface_config_t</definition>
+        <argsstring></argsstring>
+        <name>hf_spi_device_interface_config_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="42" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__SPI_8h_1ad219277de01256872351299f5e34f06e" prot="public" static="no">
+        <type>spi_transaction_t</type>
+        <definition>using hf_spi_transaction_t =  spi_transaction_t</definition>
+        <argsstring></argsstring>
+        <name>hf_spi_transaction_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="43" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__SPI_8h_1afdce37f383d86c376b9386fde36e497a" prot="public" static="no">
+        <type>spi_clock_source_t</type>
+        <definition>using hf_spi_clock_source_t =  spi_clock_source_t</definition>
+        <argsstring></argsstring>
+        <name>hf_spi_clock_source_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="44" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__SPI_8h_1a19e19f7c27d521de0245cb11fd095c64" prot="public" static="no">
+        <type>spi_sampling_point_t</type>
+        <definition>using hf_spi_sampling_point_t =  spi_sampling_point_t</definition>
+        <argsstring></argsstring>
+        <name>hf_spi_sampling_point_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="45" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="EspTypes__SPI_8h_1a5de19a5c336dd13c2a9cca3273a4704e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_SPI_MIN_CLOCK_SPEED</definition>
+        <argsstring></argsstring>
+        <name>HF_SPI_MIN_CLOCK_SPEED</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+<para>Minimum SPI clock speed (Hz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="99" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__SPI_8h_1a531914ded2bdb290a0b74841c66ad514" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_SPI_MAX_CLOCK_SPEED</definition>
+        <argsstring></argsstring>
+        <name>HF_SPI_MAX_CLOCK_SPEED</name>
+        <initializer>= 80000000</initializer>
+        <briefdescription>
+<para>Maximum SPI clock speed (Hz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="100" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__SPI_8h_1a4dcadd5ff2f7805dcea910928df464a2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_SPI_MAX_TRANSFER_SIZE</definition>
+        <argsstring></argsstring>
+        <name>HF_SPI_MAX_TRANSFER_SIZE</name>
+        <initializer>= 4092</initializer>
+        <briefdescription>
+<para>Maximum transfer size (bytes) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="101" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__SPI_8h_1a0a15dbc43bc069adb7bf98084440c6c0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_SPI_MAX_HOSTS</definition>
+        <argsstring></argsstring>
+        <name>HF_SPI_MAX_HOSTS</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Maximum SPI hosts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="102" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 SPI type definitions for hardware abstraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines only the essential SPI-specific types used by the EspSpi implementation. Clean and minimal approach.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseSpi_8h" kindref="compound">BaseSpi.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>hf_spi_err_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__Base_8h" kindref="compound">EspTypes_Base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>basic<sp/>hardware<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Central<sp/>MCU<sp/>platform<sp/>selection<sp/>(includes<sp/>all<sp/>ESP-IDF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/spi_master.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>declarations<sp/>for<sp/>new<sp/>SPI<sp/>bus/device<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspSpiBus" kindref="compound">EspSpiBus</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspSpiDevice" kindref="compound">EspSpiDevice</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>SPI<sp/>TYPE<sp/>MAPPINGS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Direct<sp/>ESP-IDF<sp/>type<sp/>usage<sp/>-<sp/>no<sp/>unnecessary<sp/>aliases</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>types<sp/>are<sp/>used<sp/>internally<sp/>by<sp/>EspSpi<sp/>implementation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="EspTypes__SPI_8h_1addc113f131c1298f3c3b51d93153e654" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__SPI_8h_1addc113f131c1298f3c3b51d93153e654" kindref="member">hf_spi_device_handle_t</ref><sp/>=<sp/>spi_device_handle_t;</highlight></codeline>
+<codeline lineno="42" refid="EspTypes__SPI_8h_1afccbd2e5989cbcb81ba9f442d94c2f05" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__SPI_8h_1afccbd2e5989cbcb81ba9f442d94c2f05" kindref="member">hf_spi_device_interface_config_t</ref><sp/>=<sp/>spi_device_interface_config_t;</highlight></codeline>
+<codeline lineno="43" refid="EspTypes__SPI_8h_1ad219277de01256872351299f5e34f06e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__SPI_8h_1ad219277de01256872351299f5e34f06e" kindref="member">hf_spi_transaction_t</ref><sp/>=<sp/>spi_transaction_t;</highlight></codeline>
+<codeline lineno="44" refid="EspTypes__SPI_8h_1afdce37f383d86c376b9386fde36e497a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__SPI_8h_1afdce37f383d86c376b9386fde36e497a" kindref="member">hf_spi_clock_source_t</ref><sp/>=<sp/>spi_clock_source_t;</highlight></codeline>
+<codeline lineno="45" refid="EspTypes__SPI_8h_1a19e19f7c27d521de0245cb11fd095c64" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__SPI_8h_1a19e19f7c27d521de0245cb11fd095c64" kindref="member">hf_spi_sampling_point_t</ref><sp/>=<sp/>spi_sampling_point_t;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>SPI<sp/>ENUMS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776" kindref="member">hf_spi_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776a98c4a77095bf42997b31510181100360" kindref="member">HF_SPI_MODE_0</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776aeb3e177949ecb0ac90d4f90d79be42d4" kindref="member">HF_SPI_MODE_1</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776acaf75767d2ee3869029819d284f2148d" kindref="member">HF_SPI_MODE_2</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776a0505e57bd131d9456f67ad69d1913838" kindref="member">HF_SPI_MODE_3</ref><sp/>=<sp/>3,<sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8" kindref="member">hf_spi_host_device_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8aaaf498bf7650bedfbf6f184d23e1d776" kindref="member">HF_SPI2_HOST</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(SPI2_HOST),<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8afcc73e947325433a2601223635e7bc23" kindref="member">HF_SPI3_HOST</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(SPI3_HOST),<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a39f83f4bdf0a8d4b4f6ee1f13c0403c8a9de53e6d1915d679872078c9889202ae" kindref="member">HF_SPI_HOST_MAX</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(SPI_HOST_MAX),<sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043f" kindref="member">hf_spi_transfer_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043fab740e45d848dd7e936f43b1448510e0b" kindref="member">HF_SPI_TRANSFER_MODE_SINGLE</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043fa8fd8af14714dcf9da287203f260408e9" kindref="member">HF_SPI_TRANSFER_MODE_DUAL</ref><sp/>=<sp/>1,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043fa8839e5f94ce713eaec16e5d9a5c699aa" kindref="member">HF_SPI_TRANSFER_MODE_QUAD</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a5720d08f40a5947254f6e278ff64043fa356ef6489b84a602683fd4bedda8b56a" kindref="member">HF_SPI_TRANSFER_MODE_OCTAL</ref><sp/>=<sp/>3<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531" kindref="member">hf_spi_event_type_t</ref><sp/>:<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531a9b58297ceeb9d053c68d31142a9720e2" kindref="member">HF_SPI_EVENT_TRANSACTION_COMPLETE</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531afbccd5daf10a227a1a5dc4b4723113e8" kindref="member">HF_SPI_EVENT_TRANSACTION_ERROR</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531a5a77418e2f31eb96c23aa5a49a5e899a" kindref="member">HF_SPI_EVENT_BUS_SUSPENDED</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531ae7aaf3f7f0cc3b77d533010b6f9798ee" kindref="member">HF_SPI_EVENT_BUS_RESUMED</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a7e307813b08eeb54868cade83c906531af21d4d3c887af16d5f09a62917cef57f" kindref="member">HF_SPI_EVENT_DMA_ERROR</ref><sp/>=<sp/>4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>SPI<sp/>CONSTANTS<sp/>AND<sp/>VALIDATION<sp/>MACROS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="EspTypes__SPI_8h_1a5de19a5c336dd13c2a9cca3273a4704e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__SPI_8h_1a5de19a5c336dd13c2a9cca3273a4704e" kindref="member">HF_SPI_MIN_CLOCK_SPEED</ref><sp/>=<sp/>1000;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100" refid="EspTypes__SPI_8h_1a531914ded2bdb290a0b74841c66ad514" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__SPI_8h_1a531914ded2bdb290a0b74841c66ad514" kindref="member">HF_SPI_MAX_CLOCK_SPEED</ref><sp/>=<sp/>80000000;<sp/></highlight></codeline>
+<codeline lineno="101" refid="EspTypes__SPI_8h_1a4dcadd5ff2f7805dcea910928df464a2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__SPI_8h_1a4dcadd5ff2f7805dcea910928df464a2" kindref="member">HF_SPI_MAX_TRANSFER_SIZE</ref><sp/>=<sp/>4092;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102" refid="EspTypes__SPI_8h_1a0a15dbc43bc069adb7bf98084440c6c0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__SPI_8h_1a0a15dbc43bc069adb7bf98084440c6c0" kindref="member">HF_SPI_MAX_HOSTS</ref><sp/>=<sp/>3;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="EspTypes__SPI_8h_1a9a1f0d44a67c3fdfaed5bd80a22574b3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_SPI_IS_VALID_HOST(host)<sp/>\</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"><sp/><sp/>((host)<sp/>&lt;<sp/>static_cast&lt;uint8_t&gt;(hf_spi_host_device_t::HF_SPI_HOST_MAX))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="EspTypes__SPI_8h_1af1977c9e92e45f9aea67548405d5553e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_SPI_IS_VALID_CLOCK_SPEED(speed)<sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/>((speed)<sp/>&gt;=<sp/>HF_SPI_MIN_CLOCK_SPEED<sp/>&amp;&amp;<sp/>(speed)<sp/>&lt;=<sp/>HF_SPI_MAX_CLOCK_SPEED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="EspTypes__SPI_8h_1ada87e48e5062088b88e285babede88ae" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_SPI_IS_VALID_MODE(mode)<sp/>((mode)<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>(mode)<sp/>&lt;=<sp/>3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="EspTypes__SPI_8h_1ab3170e1da85327fb2600643548ae1d95" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_SPI_IS_VALID_TRANSFER_SIZE(size)<sp/>((size)<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>(size)<sp/>&lt;=<sp/>HF_SPI_MAX_TRANSFER_SIZE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>SPI<sp/>BUS<sp/>CONFIG<sp/>STRUCT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight></codeline>
+<codeline lineno="137" refid="structhf__spi__bus__config__t" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="138" refid="structhf__spi__bus__config__t_1ad5ae43f8e8ed48d17667740103caf5cf" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/><ref refid="structhf__spi__bus__config__t_1ad5ae43f8e8ed48d17667740103caf5cf" kindref="member">host</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139" refid="structhf__spi__bus__config__t_1a56f13363406cc28437c24c8745d835ed" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__spi__bus__config__t_1a56f13363406cc28437c24c8745d835ed" kindref="member">mosi_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140" refid="structhf__spi__bus__config__t_1aab37725899b984d697d2c4e1b20012a7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__spi__bus__config__t_1aab37725899b984d697d2c4e1b20012a7" kindref="member">miso_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="141" refid="structhf__spi__bus__config__t_1a2447a1a31cf698aead3d668f59ffe162" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__spi__bus__config__t_1a2447a1a31cf698aead3d668f59ffe162" kindref="member">sclk_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="142" refid="structhf__spi__bus__config__t_1a427b68fc1d80cb6358ddcf2f48505805" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__spi__bus__config__t_1a427b68fc1d80cb6358ddcf2f48505805" kindref="member">dma_channel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143" refid="structhf__spi__bus__config__t_1a1a89b70d19c0f6aa437a27ce9b4dd98b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/><ref refid="structhf__spi__bus__config__t_1a1a89b70d19c0f6aa437a27ce9b4dd98b" kindref="member">timeout_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144" refid="structhf__spi__bus__config__t_1a30a9804cc4b3799a4207e669243135ab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__bus__config__t_1a30a9804cc4b3799a4207e669243135ab" kindref="member">use_iomux</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" kindref="member">hf_spi_bus_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__spi__bus__config__t_1ad5ae43f8e8ed48d17667740103caf5cf" kindref="member">host</ref>(<ref refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" kindref="member">HF_INVALID_HOST</ref>),<sp/><ref refid="structhf__spi__bus__config__t_1a56f13363406cc28437c24c8745d835ed" kindref="member">mosi_pin</ref>(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>),<sp/><ref refid="structhf__spi__bus__config__t_1aab37725899b984d697d2c4e1b20012a7" kindref="member">miso_pin</ref>(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>),</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__spi__bus__config__t_1a2447a1a31cf698aead3d668f59ffe162" kindref="member">sclk_pin</ref>(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>),<sp/>clock_speed_hz(1000000),<sp/><ref refid="structhf__spi__bus__config__t_1a427b68fc1d80cb6358ddcf2f48505805" kindref="member">dma_channel</ref>(0),</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__spi__bus__config__t_1a1a89b70d19c0f6aa437a27ce9b4dd98b" kindref="member">timeout_ms</ref>(1000),<sp/><ref refid="structhf__spi__bus__config__t_1a30a9804cc4b3799a4207e669243135ab" kindref="member">use_iomux</ref>(true)<sp/>{}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>SPI<sp/>DEVICE<sp/>CONFIG<sp/>STRUCT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight></codeline>
+<codeline lineno="196" refid="structhf__spi__device__config__t" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="197" refid="structhf__spi__device__config__t_1a0a17d3f8f8475cc819d1ced9262a94f9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a0a17d3f8f8475cc819d1ced9262a94f9" kindref="member">clock_speed_hz</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="198" refid="structhf__spi__device__config__t_1a7f5737b1045c78fc5ed7d8f2b6c9c0cf" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776" kindref="member">hf_spi_mode_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a7f5737b1045c78fc5ed7d8f2b6c9c0cf" kindref="member">mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="199" refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kindref="member">cs_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200" refid="structhf__spi__device__config__t_1a4e2b6297c1a88eb94af71239c806d1b1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a4e2b6297c1a88eb94af71239c806d1b1" kindref="member">queue_size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="201" refid="structhf__spi__device__config__t_1a6d75b53df639f8885a6221d68037ac1e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a6d75b53df639f8885a6221d68037ac1e" kindref="member">command_bits</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="202" refid="structhf__spi__device__config__t_1af95eb7849459ba72587a96fc39fadcbf" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__spi__device__config__t_1af95eb7849459ba72587a96fc39fadcbf" kindref="member">address_bits</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="203" refid="structhf__spi__device__config__t_1ac245192b5300dbc44412bc94dfc8a952" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__spi__device__config__t_1ac245192b5300dbc44412bc94dfc8a952" kindref="member">dummy_bits</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204" refid="structhf__spi__device__config__t_1a02d8f3e893f9064d1454d3ec2f12ac7e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a02d8f3e893f9064d1454d3ec2f12ac7e" kindref="member">duty_cycle_pos</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="205" refid="structhf__spi__device__config__t_1a2a20e5df64efa366a8d70073638f19f8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a2a20e5df64efa366a8d70073638f19f8" kindref="member">cs_ena_pretrans</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="206" refid="structhf__spi__device__config__t_1a3b942a5ea356a4a69924c0b11c390d54" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a3b942a5ea356a4a69924c0b11c390d54" kindref="member">cs_ena_posttrans</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="207" refid="structhf__spi__device__config__t_1a040077484b67765d25fa936a47c4848c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a040077484b67765d25fa936a47c4848c" kindref="member">flags</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="208" refid="structhf__spi__device__config__t_1a44d47408b4e672d262e9f1f263a93f1f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__spi__device__config__t_1a44d47408b4e672d262e9f1f263a93f1f" kindref="member">input_delay_ns</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="209" refid="structhf__spi__device__config__t_1a14b1dd2e7f8dfd85c5c95207bdd0f5bd" refkind="member"><highlight class="normal"><sp/><sp/>void<sp/>(*<ref refid="structhf__spi__device__config__t_1a14b1dd2e7f8dfd85c5c95207bdd0f5bd" kindref="member">pre_cb</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="210" refid="structhf__spi__device__config__t_1aef5e3c25eff3b4ab346f894ec3c1556b" refkind="member"><highlight class="normal"><sp/><sp/>void<sp/>(*<ref refid="structhf__spi__device__config__t_1aef5e3c25eff3b4ab346f894ec3c1556b" kindref="member">post_cb</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211" refid="structhf__spi__device__config__t_1afb8e5f293876b8ebe47ee365ed3ddc31" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structhf__spi__device__config__t_1afb8e5f293876b8ebe47ee365ed3ddc31" kindref="member">user_ctx</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="212" refid="structhf__spi__device__config__t_1aea1017f02ac9424ddaeeb926cb87ed87" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1afdce37f383d86c376b9386fde36e497a" kindref="member">hf_spi_clock_source_t</ref><sp/><ref refid="structhf__spi__device__config__t_1aea1017f02ac9424ddaeeb926cb87ed87" kindref="member">clock_source</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="213" refid="structhf__spi__device__config__t_1aad6fdd431b2279d736a773950b4d62d3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__SPI_8h_1a19e19f7c27d521de0245cb11fd095c64" kindref="member">hf_spi_sampling_point_t</ref><sp/><ref refid="structhf__spi__device__config__t_1aad6fdd431b2279d736a773950b4d62d3" kindref="member">sampling_point</ref>;<sp/></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" kindref="member">hf_spi_device_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__spi__device__config__t_1a0a17d3f8f8475cc819d1ced9262a94f9" kindref="member">clock_speed_hz</ref>(1000000),<sp/><ref refid="structhf__spi__device__config__t_1a7f5737b1045c78fc5ed7d8f2b6c9c0cf" kindref="member">mode</ref>(<ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776" kindref="member">hf_spi_mode_t</ref>::<ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776a98c4a77095bf42997b31510181100360" kindref="member">HF_SPI_MODE_0</ref>),<sp/><ref refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kindref="member">cs_pin</ref>(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>),</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__spi__device__config__t_1a4e2b6297c1a88eb94af71239c806d1b1" kindref="member">queue_size</ref>(7),<sp/><ref refid="structhf__spi__device__config__t_1a6d75b53df639f8885a6221d68037ac1e" kindref="member">command_bits</ref>(0),<sp/><ref refid="structhf__spi__device__config__t_1af95eb7849459ba72587a96fc39fadcbf" kindref="member">address_bits</ref>(0),<sp/><ref refid="structhf__spi__device__config__t_1ac245192b5300dbc44412bc94dfc8a952" kindref="member">dummy_bits</ref>(0),<sp/><ref refid="structhf__spi__device__config__t_1a02d8f3e893f9064d1454d3ec2f12ac7e" kindref="member">duty_cycle_pos</ref>(128),</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__spi__device__config__t_1a2a20e5df64efa366a8d70073638f19f8" kindref="member">cs_ena_pretrans</ref>(0),<sp/><ref refid="structhf__spi__device__config__t_1a3b942a5ea356a4a69924c0b11c390d54" kindref="member">cs_ena_posttrans</ref>(0),<sp/><ref refid="structhf__spi__device__config__t_1a040077484b67765d25fa936a47c4848c" kindref="member">flags</ref>(0),<sp/><ref refid="structhf__spi__device__config__t_1a44d47408b4e672d262e9f1f263a93f1f" kindref="member">input_delay_ns</ref>(0),<sp/><ref refid="structhf__spi__device__config__t_1a14b1dd2e7f8dfd85c5c95207bdd0f5bd" kindref="member">pre_cb</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__spi__device__config__t_1aef5e3c25eff3b4ab346f894ec3c1556b" kindref="member">post_cb</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),<sp/><ref refid="structhf__spi__device__config__t_1afb8e5f293876b8ebe47ee365ed3ddc31" kindref="member">user_ctx</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__spi__device__config__t_1aea1017f02ac9424ddaeeb926cb87ed87" kindref="member">clock_source</ref>(static_cast&lt;<ref refid="EspTypes__SPI_8h_1afdce37f383d86c376b9386fde36e497a" kindref="member">hf_spi_clock_source_t</ref>&gt;(SPI_CLK_SRC_DEFAULT)),</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__spi__device__config__t_1aad6fdd431b2279d736a773950b4d62d3" kindref="member">sampling_point</ref>(static_cast&lt;<ref refid="EspTypes__SPI_8h_1a19e19f7c27d521de0245cb11fd095c64" kindref="member">hf_spi_sampling_point_t</ref>&gt;(SPI_SAMPLING_POINT_DEFAULT))<sp/>{}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>ESPSPI<sp/>TYPES<sp/>-<sp/>MINIMAL<sp/>AND<sp/>ESSENTIAL<sp/>ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/utils/EspTypes_SPI.h"/>
+  </compounddef>
+</doxygen>

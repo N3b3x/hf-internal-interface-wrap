@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__nvs__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_nvs_statistics_t</compoundname>
+    <includes refid="BaseNvs_8h" local="no">BaseNvs.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a9f1c94d84d94c8e51f4a03c249aa129e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::total_operations</definition>
+        <argsstring></argsstring>
+        <name>total_operations</name>
+        <qualifiedname>hf_nvs_statistics_t::total_operations</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="91" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1aa75564a08130c2b1fb624fa45ed419b7" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::total_errors</definition>
+        <argsstring></argsstring>
+        <name>total_errors</name>
+        <qualifiedname>hf_nvs_statistics_t::total_errors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="92" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a807ec86eac7ce01934982c03c9dd6672" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::total_reads</definition>
+        <argsstring></argsstring>
+        <name>total_reads</name>
+        <qualifiedname>hf_nvs_statistics_t::total_reads</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="93" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1ad7c4c3871f7ab0af300f50fe84f2fb22" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::total_writes</definition>
+        <argsstring></argsstring>
+        <name>total_writes</name>
+        <qualifiedname>hf_nvs_statistics_t::total_writes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="94" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a2e348eb0dab3ceff97e2ea7b963f4d33" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::total_commits</definition>
+        <argsstring></argsstring>
+        <name>total_commits</name>
+        <qualifiedname>hf_nvs_statistics_t::total_commits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="95" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a24db0c1fae68e7bbe576d533a1d8064b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::total_erases</definition>
+        <argsstring></argsstring>
+        <name>total_erases</name>
+        <qualifiedname>hf_nvs_statistics_t::total_erases</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="96" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a4a420426685a5bedc037895d575f03f0" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t hf_nvs_statistics_t::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>hf_nvs_statistics_t::last_error</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="97" column="16" bodyfile="inc/base/BaseNvs.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a530e518acdadc9c6f01a92211753ad09" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::last_operation_time_us</definition>
+        <argsstring></argsstring>
+        <name>last_operation_time_us</name>
+        <qualifiedname>hf_nvs_statistics_t::last_operation_time_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="98" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1ae05a6bcd4f99015dd05789ed703e5cbb" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::successful_ops</definition>
+        <argsstring></argsstring>
+        <name>successful_ops</name>
+        <qualifiedname>hf_nvs_statistics_t::successful_ops</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="99" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a223c9d30ef74e02fffc8620699491ec7" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::failed_ops</definition>
+        <argsstring></argsstring>
+        <name>failed_ops</name>
+        <qualifiedname>hf_nvs_statistics_t::failed_ops</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="100" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a3fc99f022d8c59fe30a445aa5d38b11f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::bytes_written</definition>
+        <argsstring></argsstring>
+        <name>bytes_written</name>
+        <qualifiedname>hf_nvs_statistics_t::bytes_written</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="101" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__statistics__t_1a5820ad18fb0660b19ce71fa19fbfb95b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_statistics_t::bytes_read</definition>
+        <argsstring></argsstring>
+        <name>bytes_read</name>
+        <qualifiedname>hf_nvs_statistics_t::bytes_read</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="102" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>NVS operation statistics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseNvs.h" line="90" column="1" bodyfile="inc/base/BaseNvs.h" bodystart="90" bodyend="103"/>
+    <listofallmembers>
+      <member refid="structhf__nvs__statistics__t_1a5820ad18fb0660b19ce71fa19fbfb95b" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>bytes_read</name></member>
+      <member refid="structhf__nvs__statistics__t_1a3fc99f022d8c59fe30a445aa5d38b11f" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>bytes_written</name></member>
+      <member refid="structhf__nvs__statistics__t_1a223c9d30ef74e02fffc8620699491ec7" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>failed_ops</name></member>
+      <member refid="structhf__nvs__statistics__t_1a4a420426685a5bedc037895d575f03f0" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>last_error</name></member>
+      <member refid="structhf__nvs__statistics__t_1a530e518acdadc9c6f01a92211753ad09" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>last_operation_time_us</name></member>
+      <member refid="structhf__nvs__statistics__t_1ae05a6bcd4f99015dd05789ed703e5cbb" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>successful_ops</name></member>
+      <member refid="structhf__nvs__statistics__t_1a2e348eb0dab3ceff97e2ea7b963f4d33" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>total_commits</name></member>
+      <member refid="structhf__nvs__statistics__t_1a24db0c1fae68e7bbe576d533a1d8064b" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>total_erases</name></member>
+      <member refid="structhf__nvs__statistics__t_1aa75564a08130c2b1fb624fa45ed419b7" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>total_errors</name></member>
+      <member refid="structhf__nvs__statistics__t_1a9f1c94d84d94c8e51f4a03c249aa129e" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>total_operations</name></member>
+      <member refid="structhf__nvs__statistics__t_1a807ec86eac7ce01934982c03c9dd6672" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>total_reads</name></member>
+      <member refid="structhf__nvs__statistics__t_1ad7c4c3871f7ab0af300f50fe84f2fb22" prot="public" virt="non-virtual"><scope>hf_nvs_statistics_t</scope><name>total_writes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

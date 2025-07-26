@@ -1,0 +1,789 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="BasePwm_8h" kind="file" language="C++">
+    <compoundname>BasePwm.h</compoundname>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">functional</includes>
+    <includedby refid="main_8cpp" local="yes">examples/esp32/main/main.cpp</includedby>
+    <includedby refid="EspPwm_8h" local="yes">inc/mcu/esp32/EspPwm.h</includedby>
+    <includedby refid="EspTypes__PWM_8h" local="yes">inc/mcu/esp32/utils/EspTypes_PWM.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/BasePwm.h</label>
+        <link refid="BasePwm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9">
+        <label>examples/common/DummyDevice.hpp</label>
+        <link refid="DummyDevice_8hpp"/>
+      </node>
+      <node id="4">
+        <label>examples/esp32/main/advanced_pwm_example.cpp</label>
+        <link refid="advanced__pwm__example_8cpp"/>
+      </node>
+      <node id="2">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/base/BasePwm.h</label>
+        <link refid="BasePwm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/EspPwm.h</label>
+        <link refid="EspPwm_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>inc/mcu/esp32/utils/EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/mcu/esp32/EspPwm.cpp</label>
+        <link refid="EspPwm_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__pwm__statistics__t" prot="public">hf_pwm_statistics_t</innerclass>
+    <innerclass refid="structhf__pwm__diagnostics__t" prot="public">hf_pwm_diagnostics_t</innerclass>
+    <innerclass refid="classBasePwm" prot="public">BasePwm</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="BasePwm_8h_1ab9386ad48605d4f6211bd46be2fc2b41" prot="public" static="no">
+        <name>HF_PWM_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC PWM error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all PWM operations in the system. This enumeration is used across all PWM-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="33" column="9" bodyfile="inc/base/BasePwm.h" bodystart="33" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="define" id="BasePwm_8h_1a2f282216b942e9a8c8a1439eb062bef5" prot="public" static="no">
+        <name>X</name>
+        <param><defname>name</defname></param>
+        <param><defname>value</defname></param>
+        <param><defname>description</defname></param>
+        <initializer>name = value,</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="69" column="9" bodyfile="inc/base/BasePwm.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="BasePwm_8h_1a2f282216b942e9a8c8a1439eb062bef5" prot="public" static="no">
+        <name>X</name>
+        <param><defname>name</defname></param>
+        <param><defname>value</defname></param>
+        <param><defname>description</defname></param>
+        <initializer>  case hf_pwm_err_t::name:          \
+    return description;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="78" column="9" bodyfile="inc/base/BasePwm.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <name>hf_pwm_err_t</name>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9adfea2358b6e04a4322f67571392b54de" prot="public">
+          <name>X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" prot="public">
+          <name>PWM_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ac987cd71177bdd4dd90a8453469d6876" prot="public">
+          <name>PWM_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" prot="public">
+          <name>PWM_ERR_NOT_INITIALIZED</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9acb0980fa63fee3ca282d1a98cff45f9e" prot="public">
+          <name>PWM_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a8c40029a485dd3c141eba9732f61564d" prot="public">
+          <name>PWM_ERR_INVALID_PARAMETER</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1326dd914e566f189a3e9482fddfcf4f" prot="public">
+          <name>PWM_ERR_NULL_POINTER</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a9177565ac8e84deebea903d04792e23a" prot="public">
+          <name>PWM_ERR_OUT_OF_MEMORY</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" prot="public">
+          <name>PWM_ERR_INVALID_CHANNEL</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a2f6a6e7526c011df5233a2a4337004f5" prot="public">
+          <name>PWM_ERR_CHANNEL_BUSY</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ad773b846c7992ee128c13f715d78fbbb" prot="public">
+          <name>PWM_ERR_CHANNEL_NOT_AVAILABLE</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a20c395b66e09d50b7141011f251ef47d" prot="public">
+          <name>PWM_ERR_INSUFFICIENT_CHANNELS</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ac17983ff5ae540786beb973c05e3b392" prot="public">
+          <name>PWM_ERR_INVALID_FREQUENCY</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a65560e8910ad09e2b2e58ed304a115d4" prot="public">
+          <name>PWM_ERR_FREQUENCY_TOO_HIGH</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a736a57e8bdd5f506dce7cab1c18333f7" prot="public">
+          <name>PWM_ERR_FREQUENCY_TOO_LOW</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a774f90469f37fd00a24f1ee9b9fac6e2" prot="public">
+          <name>PWM_ERR_RESOLUTION_NOT_SUPPORTED</name>
+          <initializer>=  14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a4dc7de0f3e90b5fcea064c7837e6211d" prot="public">
+          <name>PWM_ERR_INVALID_DUTY_CYCLE</name>
+          <initializer>=  15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a51185b93ac1f374a295246c7c49ce1c5" prot="public">
+          <name>PWM_ERR_DUTY_OUT_OF_RANGE</name>
+          <initializer>=  16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a270e092be00c3f71b5cc3059b437b197" prot="public">
+          <name>PWM_ERR_HARDWARE_FAULT</name>
+          <initializer>=  17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a4533c63ed435003d191c5491f1b78a4c" prot="public">
+          <name>PWM_ERR_TIMER_CONFLICT</name>
+          <initializer>=  18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9afe4c13a609042b0845cdfd4fc3cbb97c" prot="public">
+          <name>PWM_ERR_PIN_CONFLICT</name>
+          <initializer>=  19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a2e0337387febe8629adab43f64b2ffec" prot="public">
+          <name>PWM_ERR_COMMUNICATION_TIMEOUT</name>
+          <initializer>=  20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a7f5f971d8829567c59c0571fa4731b51" prot="public">
+          <name>PWM_ERR_COMMUNICATION_FAILURE</name>
+          <initializer>=  21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a4550da881768e946f645104bdfbe9c4b" prot="public">
+          <name>PWM_ERR_DEVICE_NOT_RESPONDING</name>
+          <initializer>=  22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a19c9d1e1c87f8e23fdc253508c55c4c9" prot="public">
+          <name>PWM_ERR_INVALID_DEVICE_ID</name>
+          <initializer>=  23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ad048800a3c1f8206c1e122ae9e5818ba" prot="public">
+          <name>PWM_ERR_UNSUPPORTED_OPERATION</name>
+          <initializer>=  24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ac55cef30e082b4dffa79a5772b689283" prot="public">
+          <name>PWM_ERR_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="68" column="1" bodyfile="inc/base/BasePwm.h" bodystart="68" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="BasePwm_8h_1a945db454a91740660bc4e6a68e4c4136" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> channel_id, void *user_data)&gt;</type>
+        <definition>using hf_pwm_period_callback_t =  std::function&lt;void(hf_channel_id_t channel_id, void* user_data)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_pwm_period_callback_t</name>
+        <briefdescription>
+<para>Callback for PWM period complete events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel that completed a period </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User-provided data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="136" column="1" bodyfile="inc/base/BasePwm.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="BasePwm_8h_1a4862b3568e86bcc7bfa6db1b5e09a502" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> channel_id, <ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref> error, void *user_data)&gt;</type>
+        <definition>using hf_pwm_fault_callback_t =  std::function&lt;void(hf_channel_id_t channel_id, hf_pwm_err_t error, void* user_data)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_pwm_fault_callback_t</name>
+        <briefdescription>
+<para>Callback for PWM fault/error events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel that encountered fault </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error that occurred </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User-provided data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="144" column="1" bodyfile="inc/base/BasePwm.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="BasePwm_8h_1a135820336863210dbf3fc7d9d7040c0c" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr const char *</type>
+        <definition>constexpr const char * HfPwmErrToString</definition>
+        <argsstring>(hf_pwm_err_t error) noexcept</argsstring>
+        <name>HfPwmErrToString</name>
+        <param>
+          <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="76" column="22" bodyfile="inc/base/BasePwm.h" bodystart="76" bodyend="86"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for PWM implementations in the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header-only file defines the abstract base class for PWM generation that provides a consistent API across different PWM implementations. Concrete implementations for various platforms inherit from this class.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This is a header-only abstract base class following the same pattern as BaseCan/BaseAdc. </para>
+</simplesect>
+<simplesect kind="note"><para>Users should program against this interface, not specific implementations. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>HardFOC<sp/>PWM<sp/>Error<sp/>Codes<sp/>(Table)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="BasePwm_8h_1ab9386ad48605d4f6211bd46be2fc2b41" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_PWM_ERR_LIST(X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Success<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/>X(PWM_SUCCESS,<sp/>0,<sp/>&quot;Success&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>General<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_FAILURE,<sp/>1,<sp/>&quot;General<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_NOT_INITIALIZED,<sp/>2,<sp/>&quot;Not<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_ALREADY_INITIALIZED,<sp/>3,<sp/>&quot;Already<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_INVALID_PARAMETER,<sp/>4,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_NULL_POINTER,<sp/>5,<sp/>&quot;Null<sp/>pointer&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_OUT_OF_MEMORY,<sp/>6,<sp/>&quot;Out<sp/>of<sp/>memory&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Channel<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_INVALID_CHANNEL,<sp/>7,<sp/>&quot;Invalid<sp/>PWM<sp/>channel&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_CHANNEL_BUSY,<sp/>8,<sp/>&quot;Channel<sp/>already<sp/>in<sp/>use&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_CHANNEL_NOT_AVAILABLE,<sp/>9,<sp/>&quot;Channel<sp/>not<sp/>available&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_INSUFFICIENT_CHANNELS,<sp/>10,<sp/>&quot;Insufficient<sp/>channels<sp/>available&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Frequency/timing<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_INVALID_FREQUENCY,<sp/>11,<sp/>&quot;Invalid<sp/>frequency&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_FREQUENCY_TOO_HIGH,<sp/>12,<sp/>&quot;Frequency<sp/>too<sp/>high&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_FREQUENCY_TOO_LOW,<sp/>13,<sp/>&quot;Frequency<sp/>too<sp/>low&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_RESOLUTION_NOT_SUPPORTED,<sp/>14,<sp/>&quot;Resolution<sp/>not<sp/>supported&quot;)<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Duty<sp/>cycle<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_INVALID_DUTY_CYCLE,<sp/>15,<sp/>&quot;Invalid<sp/>duty<sp/>cycle&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_DUTY_OUT_OF_RANGE,<sp/>16,<sp/>&quot;Duty<sp/>cycle<sp/>out<sp/>of<sp/>range&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Hardware<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_HARDWARE_FAULT,<sp/>17,<sp/>&quot;Hardware<sp/>fault&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_TIMER_CONFLICT,<sp/>18,<sp/>&quot;Timer<sp/>resource<sp/>conflict&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_PIN_CONFLICT,<sp/>19,<sp/>&quot;Pin<sp/>already<sp/>in<sp/>use&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Communication<sp/>errors<sp/>(for<sp/>external<sp/>PWM<sp/>ICs)<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_COMMUNICATION_TIMEOUT,<sp/>20,<sp/>&quot;Communication<sp/>timeout&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_COMMUNICATION_FAILURE,<sp/>21,<sp/>&quot;Communication<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_DEVICE_NOT_RESPONDING,<sp/>22,<sp/>&quot;Device<sp/>not<sp/>responding&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_INVALID_DEVICE_ID,<sp/>23,<sp/>&quot;Invalid<sp/>device<sp/>ID&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/>X(PWM_ERR_UNSUPPORTED_OPERATION,<sp/>24,<sp/>&quot;Unsupported<sp/>operation&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Generate<sp/>enum<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="69" refid="BasePwm_8h_1a2f282216b942e9a8c8a1439eb062bef5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>description)<sp/>name<sp/>=<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="BasePwm_8h_1ab9386ad48605d4f6211bd46be2fc2b41" kindref="member">HF_PWM_ERR_LIST</ref>(<ref refid="BasePwm_8h_1a2f282216b942e9a8c8a1439eb062bef5" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ac55cef30e082b4dffa79a5772b689283" kindref="member">PWM_ERR_COUNT</ref><sp/></highlight><highlight class="comment">//<sp/>Total<sp/>number<sp/>of<sp/>error<sp/>codes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Generate<sp/>error<sp/>message<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="BasePwm_8h_1a135820336863210dbf3fc7d9d7040c0c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="BasePwm_8h_1a135820336863210dbf3fc7d9d7040c0c" kindref="member">HfPwmErrToString</ref>(<ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>error)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(error)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>description)<sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_pwm_err_t::name:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>description;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePwm_8h_1ab9386ad48605d4f6211bd46be2fc2b41" kindref="member">HF_PWM_ERR_LIST</ref>(<ref refid="BasePwm_8h_1a2f282216b942e9a8c8a1439eb062bef5" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>PWM<sp/>error&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PWM<sp/>Configuration<sp/>Structures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="structhf__pwm__statistics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="96" refid="structhf__pwm__statistics__t_1ae747cee52098f97c109af47e3ec1528b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__pwm__statistics__t_1ae747cee52098f97c109af47e3ec1528b" kindref="member">duty_updates_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97" refid="structhf__pwm__statistics__t_1a2fa9cfabb66cf6ccbdadcfbd78c59095" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__pwm__statistics__t_1a2fa9cfabb66cf6ccbdadcfbd78c59095" kindref="member">frequency_changes_count</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="98" refid="structhf__pwm__statistics__t_1a122bc9c5e23e1790146c30a420328ae5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__pwm__statistics__t_1a122bc9c5e23e1790146c30a420328ae5" kindref="member">fade_operations_count</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="99" refid="structhf__pwm__statistics__t_1a5efca3ae84ea2ae93a06d099cc9e0c7b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__pwm__statistics__t_1a5efca3ae84ea2ae93a06d099cc9e0c7b" kindref="member">error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100" refid="structhf__pwm__statistics__t_1aebf52d83fb8b3a8581a0b8a3cd0113bc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__pwm__statistics__t_1aebf52d83fb8b3a8581a0b8a3cd0113bc" kindref="member">channel_enables_count</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="101" refid="structhf__pwm__statistics__t_1aaeb614849916a187a0c2c13bb97b657a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__pwm__statistics__t_1aaeb614849916a187a0c2c13bb97b657a" kindref="member">channel_disables_count</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102" refid="structhf__pwm__statistics__t_1a86bbb93e18e2e3dfede40f48cc6b7a18" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__pwm__statistics__t_1a86bbb93e18e2e3dfede40f48cc6b7a18" kindref="member">last_activity_timestamp</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="103" refid="structhf__pwm__statistics__t_1a5ad7ac0b01d65479a5e3214b5e06705e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__pwm__statistics__t_1a5ad7ac0b01d65479a5e3214b5e06705e" kindref="member">initialization_timestamp</ref>;<sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="structhf__pwm__statistics__t_1a72c79ca7500dde223f6a1d116504df79" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__statistics__t_1a72c79ca7500dde223f6a1d116504df79" kindref="member">hf_pwm_statistics_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__pwm__statistics__t_1ae747cee52098f97c109af47e3ec1528b" kindref="member">duty_updates_count</ref>(0),<sp/><ref refid="structhf__pwm__statistics__t_1a2fa9cfabb66cf6ccbdadcfbd78c59095" kindref="member">frequency_changes_count</ref>(0),<sp/><ref refid="structhf__pwm__statistics__t_1a122bc9c5e23e1790146c30a420328ae5" kindref="member">fade_operations_count</ref>(0),<sp/><ref refid="structhf__pwm__statistics__t_1a5efca3ae84ea2ae93a06d099cc9e0c7b" kindref="member">error_count</ref>(0),</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pwm__statistics__t_1aebf52d83fb8b3a8581a0b8a3cd0113bc" kindref="member">channel_enables_count</ref>(0),<sp/><ref refid="structhf__pwm__statistics__t_1aaeb614849916a187a0c2c13bb97b657a" kindref="member">channel_disables_count</ref>(0),<sp/><ref refid="structhf__pwm__statistics__t_1a86bbb93e18e2e3dfede40f48cc6b7a18" kindref="member">last_activity_timestamp</ref>(0),</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pwm__statistics__t_1a5ad7ac0b01d65479a5e3214b5e06705e" kindref="member">initialization_timestamp</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="structhf__pwm__diagnostics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="115" refid="structhf__pwm__diagnostics__t_1aa908bfc2c0658b5310c31e83d6be0bed" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__pwm__diagnostics__t_1aa908bfc2c0658b5310c31e83d6be0bed" kindref="member">hardware_initialized</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116" refid="structhf__pwm__diagnostics__t_1a2cb06f85138f6abb317379fbba33e0f1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__pwm__diagnostics__t_1a2cb06f85138f6abb317379fbba33e0f1" kindref="member">fade_functionality_ready</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="117" refid="structhf__pwm__diagnostics__t_1ac3c08b7a63d3b14a1c4012f9123f459a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__pwm__diagnostics__t_1ac3c08b7a63d3b14a1c4012f9123f459a" kindref="member">active_channels</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="118" refid="structhf__pwm__diagnostics__t_1a696547f39aed2a095016a1fc6b6880bf" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__pwm__diagnostics__t_1a696547f39aed2a095016a1fc6b6880bf" kindref="member">active_timers</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="119" refid="structhf__pwm__diagnostics__t_1af8e9937307e0eeebee4c07731bad993b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__pwm__diagnostics__t_1af8e9937307e0eeebee4c07731bad993b" kindref="member">system_uptime_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="120" refid="structhf__pwm__diagnostics__t_1ac762b50a921ff765c2a5c8054dd43628" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="structhf__pwm__diagnostics__t_1ac762b50a921ff765c2a5c8054dd43628" kindref="member">last_global_error</ref>;<sp/></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="structhf__pwm__diagnostics__t_1a15f79cbd58eaf4887a2d84bdd9e27942" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__diagnostics__t_1a15f79cbd58eaf4887a2d84bdd9e27942" kindref="member">hf_pwm_diagnostics_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__pwm__diagnostics__t_1aa908bfc2c0658b5310c31e83d6be0bed" kindref="member">hardware_initialized</ref>(false),<sp/><ref refid="structhf__pwm__diagnostics__t_1a2cb06f85138f6abb317379fbba33e0f1" kindref="member">fade_functionality_ready</ref>(false),<sp/><ref refid="structhf__pwm__diagnostics__t_1ac3c08b7a63d3b14a1c4012f9123f459a" kindref="member">active_channels</ref>(0),</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pwm__diagnostics__t_1a696547f39aed2a095016a1fc6b6880bf" kindref="member">active_timers</ref>(0),<sp/><ref refid="structhf__pwm__diagnostics__t_1af8e9937307e0eeebee4c07731bad993b" kindref="member">system_uptime_ms</ref>(0),<sp/><ref refid="structhf__pwm__diagnostics__t_1ac762b50a921ff765c2a5c8054dd43628" kindref="member">last_global_error</ref>(<ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref>::<ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">PWM_SUCCESS</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Callback<sp/>Types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="BasePwm_8h_1a945db454a91740660bc4e6a68e4c4136" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BasePwm_8h_1a945db454a91740660bc4e6a68e4c4136" kindref="member">hf_pwm_period_callback_t</ref><sp/>=<sp/>std::function&lt;void(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)&gt;;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="BasePwm_8h_1a4862b3568e86bcc7bfa6db1b5e09a502" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BasePwm_8h_1a4862b3568e86bcc7bfa6db1b5e09a502" kindref="member">hf_pwm_fault_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>error,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)&gt;;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Abstract<sp/>Base<sp/>Class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="classBasePwm" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBasePwm" kindref="compound">BasePwm</ref><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LIFECYCLE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="classBasePwm_1a7481b15d121d631a59d1605780085d0e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1a7481b15d121d631a59d1605780085d0e" kindref="member">~BasePwm</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="classBasePwm_1a4dba77ec0b1d096f85af2288f121f7f7" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a4dba77ec0b1d096f85af2288f121f7f7" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classBasePwm_1a7d3dbe67ab0c23c738e2507f915137fb" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a7d3dbe67ab0c23c738e2507f915137fb" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193" refid="classBasePwm_1ab75191deb5eec96c9d1f99c7c981467d" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1ab75191deb5eec96c9d1f99c7c981467d" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="classBasePwm_1aa084e73274f2f1d1d67cff793eda1956" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1aa084e73274f2f1d1d67cff793eda1956" kindref="member">EnsureInitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref><sp/>=<sp/>(<ref refid="classBasePwm_1a4dba77ec0b1d096f85af2288f121f7f7" kindref="member">Initialize</ref>()<sp/>==<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215" refid="classBasePwm_1a8d407e46dff5f6c1f9ae2b7d68ea674c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1a8d407e46dff5f6c1f9ae2b7d68ea674c" kindref="member">EnsureDeinitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref><sp/>=<sp/>!(<ref refid="classBasePwm_1a7d3dbe67ab0c23c738e2507f915137fb" kindref="member">Deinitialize</ref>()<sp/>==<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CHANNEL<sp/>MANAGEMENT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="classBasePwm_1af1c19d6ae43e3711a2a16dc39d8dbfa6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1af1c19d6ae43e3711a2a16dc39d8dbfa6" kindref="member">EnableChannel</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classBasePwm_1a88b6b8a4d9ea7c9172846aa4e9cc572d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a88b6b8a4d9ea7c9172846aa4e9cc572d" kindref="member">DisableChannel</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="classBasePwm_1af2f490b963644ca04d4750b7d947b543" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1af2f490b963644ca04d4750b7d947b543" kindref="member">IsChannelEnabled</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PWM<sp/>CONTROL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="classBasePwm_1a4883325ace0e9fd9d096fc87a24317c3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a4883325ace0e9fd9d096fc87a24317c3" kindref="member">SetDutyCycle</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty_cycle)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="classBasePwm_1aa9f97e6e7c9af42aae99b8aeae5e7c67" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1aa9f97e6e7c9af42aae99b8aeae5e7c67" kindref="member">SetDutyCycleRaw</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>raw_value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273" refid="classBasePwm_1ad192230babf2e4dc7a37477b4a0153b8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1ad192230babf2e4dc7a37477b4a0153b8" kindref="member">SetFrequency</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref><sp/>frequency_hz)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282" refid="classBasePwm_1ad2d69c4057b84358f120f1c27fb3e2c1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1ad2d69c4057b84358f120f1c27fb3e2c1" kindref="member">SetPhaseShift</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>phase_shift_degrees)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>FEATURES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293" refid="classBasePwm_1a02e791636c4d544d702b06014695ed31" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a02e791636c4d544d702b06014695ed31" kindref="member">StartAll</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="classBasePwm_1a0dc5b8704b7f3107745224441d7b3a5b" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a0dc5b8704b7f3107745224441d7b3a5b" kindref="member">StopAll</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="classBasePwm_1a9cb4de783416fab169872c9250d30089" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a9cb4de783416fab169872c9250d30089" kindref="member">UpdateAll</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314" refid="classBasePwm_1a4b7f8834e3f06fbf5995b3bfd3e7aa71" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a4b7f8834e3f06fbf5995b3bfd3e7aa71" kindref="member">SetComplementaryOutput</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>primary_channel,</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>complementary_channel,</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>deadtime_ns)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATUS<sp/>AND<sp/>INFORMATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327" refid="classBasePwm_1a7d04dac1cdbfc50884b24b912a52b877" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1a7d04dac1cdbfc50884b24b912a52b877" kindref="member">GetDutyCycle</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334" refid="classBasePwm_1a9be813122b797d0a45c3248f0c203063" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref><sp/><ref refid="classBasePwm_1a9be813122b797d0a45c3248f0c203063" kindref="member">GetFrequency</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341" refid="classBasePwm_1a7802bfabb7ac9430764bce70cbf03758" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a7802bfabb7ac9430764bce70cbf03758" kindref="member">GetStatistics</ref>(<ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref>&amp;<sp/>statistics)<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>statistics<sp/>=<sp/><ref refid="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" kindref="member">statistics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>statistics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ad048800a3c1f8206c1e122ae9e5818ba" kindref="member">hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351" refid="classBasePwm_1a752841609c8cd458ee658579dd7f60c6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1a752841609c8cd458ee658579dd7f60c6" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics<sp/>=<sp/><ref refid="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" kindref="member">diagnostics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>diagnostics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ad048800a3c1f8206c1e122ae9e5818ba" kindref="member">hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361" refid="classBasePwm_1afb7176a7fbb46fa45a5a2521060ef9c7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1afb7176a7fbb46fa45a5a2521060ef9c7" kindref="member">ResetStatistics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" kindref="member">statistics_</ref><sp/>=<sp/><ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ad048800a3c1f8206c1e122ae9e5818ba" kindref="member">hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="371" refid="classBasePwm_1abef55c8bbd0a0fe57f2b21f286fc91dd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classBasePwm_1abef55c8bbd0a0fe57f2b21f286fc91dd" kindref="member">ResetDiagnostics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" kindref="member">diagnostics_</ref><sp/>=<sp/><ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>diagnostics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ad048800a3c1f8206c1e122ae9e5818ba" kindref="member">hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>UTILITY<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386" refid="classBasePwm_1a4cba17ff79ce18faaf8b402d2b212060" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classBasePwm_1a4cba17ff79ce18faaf8b402d2b212060" kindref="member">DutyCycleToRaw</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty_cycle,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution_bits)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(duty_cycle<sp/>&lt;<sp/>0.0f)</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>duty_cycle<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(duty_cycle<sp/>&gt;<sp/>1.0f)</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>duty_cycle<sp/>=<sp/>1.0f;</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(duty_cycle<sp/>*<sp/>((1U<sp/>&lt;&lt;<sp/>resolution_bits)<sp/>-<sp/>1));</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="400" refid="classBasePwm_1a4a6d82b9da888f91bd66e91b24121add" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1a4a6d82b9da888f91bd66e91b24121add" kindref="member">RawToDutyCycle</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>raw_value,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution_bits)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>max_value<sp/>=<sp/>(1U<sp/>&lt;&lt;<sp/>resolution_bits)<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(raw_value<sp/>&gt;<sp/>max_value)</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>raw_value<sp/>=<sp/>max_value;</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(raw_value)<sp/>/<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(max_value);</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412" refid="classBasePwm_1a352f6ddcf05ff0e0ed5c606098b24987" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1a352f6ddcf05ff0e0ed5c606098b24987" kindref="member">IsValidDutyCycle</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty_cycle)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(duty_cycle<sp/>&gt;=<sp/>0.0f<sp/>&amp;&amp;<sp/>duty_cycle<sp/>&lt;=<sp/>1.0f);</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423" refid="classBasePwm_1afab866dbce084437c35b3189f4e2952e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1afab866dbce084437c35b3189f4e2952e" kindref="member">IsValidFrequency</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency_hz,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>min_freq_hz,</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>max_freq_hz)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(frequency_hz<sp/>&gt;=<sp/>min_freq_hz<sp/>&amp;&amp;<sp/>frequency_hz<sp/>&lt;=<sp/>max_freq_hz);</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="429" refid="classBasePwm_1acd8c699abcc77062da2e26319dafcb0b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBasePwm_1acd8c699abcc77062da2e26319dafcb0b" kindref="member">BasePwm</ref>()<sp/>noexcept<sp/>:<sp/><ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref>(false),<sp/><ref refid="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" kindref="member">statistics_</ref>{},<sp/><ref refid="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" kindref="member">diagnostics_</ref>{}<sp/>{}</highlight></codeline>
+<codeline lineno="430" refid="classBasePwm_1aaf342e2451aa841522e07bc84c86a0a7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBasePwm_1aaf342e2451aa841522e07bc84c86a0a7" kindref="member">BasePwm</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBasePwm" kindref="compound">BasePwm</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="431" refid="classBasePwm_1afa73dc6b8bc3028f3848e0f470dec48d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBasePwm" kindref="compound">BasePwm</ref>&amp;<sp/><ref refid="classBasePwm_1afa73dc6b8bc3028f3848e0f470dec48d" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBasePwm" kindref="compound">BasePwm</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="432" refid="classBasePwm_1a98809c8d18cca38549c10e1a8616021c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBasePwm_1a98809c8d18cca38549c10e1a8616021c" kindref="member">BasePwm</ref>(<ref refid="classBasePwm" kindref="compound">BasePwm</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="433" refid="classBasePwm_1a61a64fe3584550862c40531d576211b3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBasePwm" kindref="compound">BasePwm</ref>&amp;<sp/><ref refid="classBasePwm_1a61a64fe3584550862c40531d576211b3" kindref="member">operator=</ref>(<ref refid="classBasePwm" kindref="compound">BasePwm</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435" refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="436" refid="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref><sp/><ref refid="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" kindref="member">statistics_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="437" refid="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref><sp/><ref refid="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" kindref="member">diagnostics_</ref>;<sp/></highlight></codeline>
+<codeline lineno="438"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BasePwm.h"/>
+  </compounddef>
+</doxygen>

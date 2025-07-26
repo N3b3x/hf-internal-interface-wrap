@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structEspPwm_1_1ChannelState" kind="struct" language="C++" prot="private">
+    <compoundname>EspPwm::ChannelState</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a08e09a488378148fbb177d6f9a50a2f8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPwm::ChannelState::configured</definition>
+        <argsstring></argsstring>
+        <name>configured</name>
+        <qualifiedname>EspPwm::ChannelState::configured</qualifiedname>
+        <briefdescription>
+<para>Channel is configured. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="251" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a6d8fcca202029b029e059b4fb1d621e3" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPwm::ChannelState::enabled</definition>
+        <argsstring></argsstring>
+        <name>enabled</name>
+        <qualifiedname>EspPwm::ChannelState::enabled</qualifiedname>
+        <briefdescription>
+<para>Channel is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="252" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a112d659cecbd8b30b61f91a13bc764aa" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref></type>
+        <definition>hf_pwm_channel_config_t EspPwm::ChannelState::config</definition>
+        <argsstring></argsstring>
+        <name>config</name>
+        <qualifiedname>EspPwm::ChannelState::config</qualifiedname>
+        <briefdescription>
+<para>Channel configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="253" column="29" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a99945d94a37ce581c6209a09015b9f03" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t EspPwm::ChannelState::assigned_timer</definition>
+        <argsstring></argsstring>
+        <name>assigned_timer</name>
+        <qualifiedname>EspPwm::ChannelState::assigned_timer</qualifiedname>
+        <briefdescription>
+<para>Assigned timer (0-3) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="254" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="254" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1af2c99f44a16647eae21270eeedd125ab" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPwm::ChannelState::raw_duty_value</definition>
+        <argsstring></argsstring>
+        <name>raw_duty_value</name>
+        <qualifiedname>EspPwm::ChannelState::raw_duty_value</qualifiedname>
+        <briefdescription>
+<para>Current raw duty value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="255" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a096e08c26d43bf17132f2e7f06fa9be6" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t EspPwm::ChannelState::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>EspPwm::ChannelState::last_error</qualifiedname>
+        <briefdescription>
+<para>Last error for this channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="256" column="18" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a6fe68bb974541877f3c6947ca3b9f8ab" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPwm::ChannelState::fade_active</definition>
+        <argsstring></argsstring>
+        <name>fade_active</name>
+        <qualifiedname>EspPwm::ChannelState::fade_active</qualifiedname>
+        <briefdescription>
+<para>Hardware fade is active. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="257" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEspPwm_1_1ChannelState_1a8607beb52006f48c76dd9c5fc7d532f0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPwm::ChannelState::ChannelState</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ChannelState</name>
+        <qualifiedname>EspPwm::ChannelState::ChannelState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="259" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="259" bodyend="261"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Internal channel state. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>EspPwm::ChannelState</label>
+        <link refid="structEspPwm_1_1ChannelState"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hf_pwm_channel_config_t</label>
+        <link refid="structhf__pwm__channel__config__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspPwm.h" line="250" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="250" bodyend="262"/>
+    <listofallmembers>
+      <member refid="structEspPwm_1_1ChannelState_1a99945d94a37ce581c6209a09015b9f03" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>assigned_timer</name></member>
+      <member refid="structEspPwm_1_1ChannelState_1a8607beb52006f48c76dd9c5fc7d532f0" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>ChannelState</name></member>
+      <member refid="structEspPwm_1_1ChannelState_1a112d659cecbd8b30b61f91a13bc764aa" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>config</name></member>
+      <member refid="structEspPwm_1_1ChannelState_1a08e09a488378148fbb177d6f9a50a2f8" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>configured</name></member>
+      <member refid="structEspPwm_1_1ChannelState_1a6d8fcca202029b029e059b4fb1d621e3" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>enabled</name></member>
+      <member refid="structEspPwm_1_1ChannelState_1a6fe68bb974541877f3c6947ca3b9f8ab" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>fade_active</name></member>
+      <member refid="structEspPwm_1_1ChannelState_1a096e08c26d43bf17132f2e7f06fa9be6" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>last_error</name></member>
+      <member refid="structEspPwm_1_1ChannelState_1af2c99f44a16647eae21270eeedd125ab" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>raw_duty_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

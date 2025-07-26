@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__can__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_can_diagnostics_t</compoundname>
+    <includes refid="BaseCan_8h" local="no">BaseCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__can__diagnostics__t_1a363c60485feb53ca83685fdd7e58f89b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_diagnostics_t::tx_error_count</definition>
+        <argsstring></argsstring>
+        <name>tx_error_count</name>
+        <qualifiedname>hf_can_diagnostics_t::tx_error_count</qualifiedname>
+        <briefdescription>
+<para>Transmit error counter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="388" column="12" bodyfile="inc/base/BaseCan.h" bodystart="388" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__diagnostics__t_1a6a05dc4da5c01eeb0c8859a67ed340dd" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_diagnostics_t::rx_error_count</definition>
+        <argsstring></argsstring>
+        <name>rx_error_count</name>
+        <qualifiedname>hf_can_diagnostics_t::rx_error_count</qualifiedname>
+        <briefdescription>
+<para>Receive error counter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="389" column="12" bodyfile="inc/base/BaseCan.h" bodystart="389" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__diagnostics__t_1a7202c43eb0711f461312f587699ca65b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_diagnostics_t::tx_queue_peak</definition>
+        <argsstring></argsstring>
+        <name>tx_queue_peak</name>
+        <qualifiedname>hf_can_diagnostics_t::tx_queue_peak</qualifiedname>
+        <briefdescription>
+<para>Peak TX queue usage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="390" column="12" bodyfile="inc/base/BaseCan.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__diagnostics__t_1a47c883cd6d20eb17e362bf159f2923c0" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_diagnostics_t::rx_queue_peak</definition>
+        <argsstring></argsstring>
+        <name>rx_queue_peak</name>
+        <qualifiedname>hf_can_diagnostics_t::rx_queue_peak</qualifiedname>
+        <briefdescription>
+<para>Peak RX queue usage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="391" column="12" bodyfile="inc/base/BaseCan.h" bodystart="391" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__diagnostics__t_1a7016ab5baee260911740fe6884ecbf2c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_diagnostics_t::last_error_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_error_timestamp</name>
+        <qualifiedname>hf_can_diagnostics_t::last_error_timestamp</qualifiedname>
+        <briefdescription>
+<para>Timestamp of last error. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="392" column="12" bodyfile="inc/base/BaseCan.h" bodystart="392" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__diagnostics__t_1aa0b01f50e590b49d44883b27cbb64f84" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_diagnostics_t::controller_resets</definition>
+        <argsstring></argsstring>
+        <name>controller_resets</name>
+        <qualifiedname>hf_can_diagnostics_t::controller_resets</qualifiedname>
+        <briefdescription>
+<para>Number of controller resets. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="393" column="12" bodyfile="inc/base/BaseCan.h" bodystart="393" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__diagnostics__t_1ad49c809ce27fdd1bc1d657afd06c3aba" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_diagnostics_t::bus_load_percentage</definition>
+        <argsstring></argsstring>
+        <name>bus_load_percentage</name>
+        <qualifiedname>hf_can_diagnostics_t::bus_load_percentage</qualifiedname>
+        <briefdescription>
+<para>Current bus load percentage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="394" column="12" bodyfile="inc/base/BaseCan.h" bodystart="394" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__diagnostics__t_1a62b089cb719ffe2728c1c86d8eaccbbf" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_can_diagnostics_t::bit_error_rate</definition>
+        <argsstring></argsstring>
+        <name>bit_error_rate</name>
+        <qualifiedname>hf_can_diagnostics_t::bit_error_rate</qualifiedname>
+        <briefdescription>
+<para>Bit error rate (errors/bits) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="395" column="9" bodyfile="inc/base/BaseCan.h" bodystart="395" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__can__diagnostics__t_1aefc0cac14ebba0fc64e72d99a6f72f19" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_can_diagnostics_t::hf_can_diagnostics_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_can_diagnostics_t</name>
+        <qualifiedname>hf_can_diagnostics_t::hf_can_diagnostics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="397" column="3" bodyfile="inc/base/BaseCan.h" bodystart="397" bodyend="400"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CAN diagnostics structure for detailed error analysis. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides detailed diagnostic information for troubleshooting and monitoring CAN bus health and performance. </para>
+    </detaileddescription>
+    <location file="inc/base/BaseCan.h" line="387" column="1" bodyfile="inc/base/BaseCan.h" bodystart="387" bodyend="401"/>
+    <listofallmembers>
+      <member refid="structhf__can__diagnostics__t_1a62b089cb719ffe2728c1c86d8eaccbbf" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>bit_error_rate</name></member>
+      <member refid="structhf__can__diagnostics__t_1ad49c809ce27fdd1bc1d657afd06c3aba" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>bus_load_percentage</name></member>
+      <member refid="structhf__can__diagnostics__t_1aa0b01f50e590b49d44883b27cbb64f84" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>controller_resets</name></member>
+      <member refid="structhf__can__diagnostics__t_1aefc0cac14ebba0fc64e72d99a6f72f19" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>hf_can_diagnostics_t</name></member>
+      <member refid="structhf__can__diagnostics__t_1a7016ab5baee260911740fe6884ecbf2c" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>last_error_timestamp</name></member>
+      <member refid="structhf__can__diagnostics__t_1a6a05dc4da5c01eeb0c8859a67ed340dd" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>rx_error_count</name></member>
+      <member refid="structhf__can__diagnostics__t_1a47c883cd6d20eb17e362bf159f2923c0" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>rx_queue_peak</name></member>
+      <member refid="structhf__can__diagnostics__t_1a363c60485feb53ca83685fdd7e58f89b" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>tx_error_count</name></member>
+      <member refid="structhf__can__diagnostics__t_1a7202c43eb0711f461312f587699ca65b" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>tx_queue_peak</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

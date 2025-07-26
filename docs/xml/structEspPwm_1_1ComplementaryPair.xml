@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structEspPwm_1_1ComplementaryPair" kind="struct" language="C++" prot="private">
+    <compoundname>EspPwm::ComplementaryPair</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEspPwm_1_1ComplementaryPair_1adbc695a478b768ab1d6678d3d25def2d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t EspPwm::ComplementaryPair::primary_channel</definition>
+        <argsstring></argsstring>
+        <name>primary_channel</name>
+        <qualifiedname>EspPwm::ComplementaryPair::primary_channel</qualifiedname>
+        <briefdescription>
+<para>Primary channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="280" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ComplementaryPair_1aae03a85660f3487b99c392fbf375181f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t EspPwm::ComplementaryPair::complementary_channel</definition>
+        <argsstring></argsstring>
+        <name>complementary_channel</name>
+        <qualifiedname>EspPwm::ComplementaryPair::complementary_channel</qualifiedname>
+        <briefdescription>
+<para>Complementary channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="281" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ComplementaryPair_1a5dbc194af325a8533a2cd1acbc78c9c7" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPwm::ComplementaryPair::deadtime_ns</definition>
+        <argsstring></argsstring>
+        <name>deadtime_ns</name>
+        <qualifiedname>EspPwm::ComplementaryPair::deadtime_ns</qualifiedname>
+        <briefdescription>
+<para>Deadtime in nanoseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="282" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ComplementaryPair_1a390304b940ca626fdaba6b55c61f5bf9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPwm::ComplementaryPair::active</definition>
+        <argsstring></argsstring>
+        <name>active</name>
+        <qualifiedname>EspPwm::ComplementaryPair::active</qualifiedname>
+        <briefdescription>
+<para>Pair is active. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="283" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEspPwm_1_1ComplementaryPair_1ab5c2b9cc82d9057a6f6bff1e9bce5403" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPwm::ComplementaryPair::ComplementaryPair</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ComplementaryPair</name>
+        <qualifiedname>EspPwm::ComplementaryPair::ComplementaryPair</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="285" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="285" bodyend="286"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Complementary output pair configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspPwm.h" line="279" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="279" bodyend="287"/>
+    <listofallmembers>
+      <member refid="structEspPwm_1_1ComplementaryPair_1a390304b940ca626fdaba6b55c61f5bf9" prot="public" virt="non-virtual"><scope>EspPwm::ComplementaryPair</scope><name>active</name></member>
+      <member refid="structEspPwm_1_1ComplementaryPair_1aae03a85660f3487b99c392fbf375181f" prot="public" virt="non-virtual"><scope>EspPwm::ComplementaryPair</scope><name>complementary_channel</name></member>
+      <member refid="structEspPwm_1_1ComplementaryPair_1ab5c2b9cc82d9057a6f6bff1e9bce5403" prot="public" virt="non-virtual"><scope>EspPwm::ComplementaryPair</scope><name>ComplementaryPair</name></member>
+      <member refid="structEspPwm_1_1ComplementaryPair_1a5dbc194af325a8533a2cd1acbc78c9c7" prot="public" virt="non-virtual"><scope>EspPwm::ComplementaryPair</scope><name>deadtime_ns</name></member>
+      <member refid="structEspPwm_1_1ComplementaryPair_1adbc695a478b768ab1d6678d3d25def2d" prot="public" virt="non-virtual"><scope>EspPwm::ComplementaryPair</scope><name>primary_channel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

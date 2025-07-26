@@ -1,0 +1,1195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="BaseCan_8h" kind="file" language="C++">
+    <compoundname>BaseCan.h</compoundname>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string_view</includes>
+    <includedby refid="main_8cpp" local="yes">examples/esp32/main/main.cpp</includedby>
+    <includedby refid="EspTypes__CAN_8h" local="yes">inc/mcu/esp32/utils/EspTypes_CAN.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6">
+        <label>examples/common/DummyDevice.hpp</label>
+        <link refid="DummyDevice_8hpp"/>
+      </node>
+      <node id="2">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/base/BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/utils/EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__can__config__t" prot="public">hf_can_config_t</innerclass>
+    <innerclass refid="structhf__can__message__t" prot="public">hf_can_message_t</innerclass>
+    <innerclass refid="structhf__can__status__t" prot="public">hf_can_status_t</innerclass>
+    <innerclass refid="structhf__can__reception__info__t" prot="public">hf_can_reception_info_t</innerclass>
+    <innerclass refid="structhf__can__statistics__t" prot="public">hf_can_statistics_t</innerclass>
+    <innerclass refid="structhf__can__diagnostics__t" prot="public">hf_can_diagnostics_t</innerclass>
+    <innerclass refid="classBaseCan" prot="public">BaseCan</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="BaseCan_8h_1ab1d5cdd9fb2d30563cc88f9ca31988ef" prot="public" static="no">
+        <name>HF_CAN_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC CAN error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all CAN operations in the system. This enumeration is used across all CAN-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="41" column="9" bodyfile="inc/base/BaseCan.h" bodystart="41" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseCan_8h_1a94b225babb1626cee0621f8312eb32d1" prot="public" static="no">
+        <name>X</name>
+        <param><defname>NAME</defname></param>
+        <param><defname>VALUE</defname></param>
+        <param><defname>DESC</defname></param>
+        <initializer>NAME = VALUE,</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="110" column="9" bodyfile="inc/base/BaseCan.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseCan_8h_1a94b225babb1626cee0621f8312eb32d1" prot="public" static="no">
+        <name>X</name>
+        <param><defname>NAME</defname></param>
+        <param><defname>VALUE</defname></param>
+        <param><defname>DESC</defname></param>
+        <initializer>  case hf_can_err_t::NAME:   \
+    return DESC;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="122" column="9" bodyfile="inc/base/BaseCan.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_can_err_t</name>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba4edf38c36b44ec6289313be3dbff3bd1" prot="public">
+          <name>X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" prot="public">
+          <name>CAN_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaf295d95a127a17137b8f0ed316ff485b" prot="public">
+          <name>CAN_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3f12a9728c316c44f7de6363cc7957a7" prot="public">
+          <name>CAN_ERR_NOT_INITIALIZED</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba64d28c71a63faa34596d6d102284b553" prot="public">
+          <name>CAN_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" prot="public">
+          <name>CAN_ERR_INVALID_PARAMETER</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba4fabb41029d93aadaf3570c1292d5f10" prot="public">
+          <name>CAN_ERR_NULL_POINTER</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3c2304de516bd8825e822b58eb9084a7" prot="public">
+          <name>CAN_ERR_OUT_OF_MEMORY</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3f061d9ae3233ad06a48a95c3a4295c8" prot="public">
+          <name>CAN_ERR_BUS_OFF</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba5b57bc017deecde096b21b2bdd6ed728" prot="public">
+          <name>CAN_ERR_BUS_ERROR</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba87541f7b1cafa08095d9ee3d9f147ca6" prot="public">
+          <name>CAN_ERR_BUS_BUSY</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbac65ce1be30a70cc4075429036076fd64" prot="public">
+          <name>CAN_ERR_BUS_NOT_AVAILABLE</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae9fbb5549a877f9678ac93e5983759dc" prot="public">
+          <name>CAN_ERR_BUS_RECOVERY_FAILED</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba4b0cda2cbd285f689ca21907b4e6eaca" prot="public">
+          <name>CAN_ERR_BUS_ARBITRATION_LOST</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbab30b27c8b246285d16ab4ad4b846e3bd" prot="public">
+          <name>CAN_ERR_MESSAGE_TIMEOUT</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbad3f72330fc0d6789718f286f6470cfc5" prot="public">
+          <name>CAN_ERR_MESSAGE_LOST</name>
+          <initializer>=  14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaa7912804d8cc7f865a2e48d027df53fc" prot="public">
+          <name>CAN_ERR_MESSAGE_INVALID</name>
+          <initializer>=  15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba08b7f863575cd40512a88468c0d252f9" prot="public">
+          <name>CAN_ERR_MESSAGE_TOO_LONG</name>
+          <initializer>=  16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba00814e8fa5930e7525ef2b20f214e49d" prot="public">
+          <name>CAN_ERR_MESSAGE_INVALID_ID</name>
+          <initializer>=  17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba6196406a3d4f40519e1c3e32edf09214" prot="public">
+          <name>CAN_ERR_MESSAGE_INVALID_DLC</name>
+          <initializer>=  18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba52d6bd8e3b3e96697ad61fead001ecc5" prot="public">
+          <name>CAN_ERR_QUEUE_FULL</name>
+          <initializer>=  19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbafb864f272b7f7efdff2aaac01a56bc7d" prot="public">
+          <name>CAN_ERR_QUEUE_EMPTY</name>
+          <initializer>=  20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba8d220efbe36480eaec9c1a01771757c9" prot="public">
+          <name>CAN_ERR_TX_FAILED</name>
+          <initializer>=  21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbadd5d489075eac8204ce6ae84e136e6e9" prot="public">
+          <name>CAN_ERR_TX_ABORTED</name>
+          <initializer>=  22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba30b3fa9fe3cf8c8abdd7952cd54c305a" prot="public">
+          <name>CAN_ERR_TX_ERROR_PASSIVE</name>
+          <initializer>=  23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba694ceb9612a548a700db6658571c32f8" prot="public">
+          <name>CAN_ERR_TX_ERROR_WARNING</name>
+          <initializer>=  24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba0c09e7aba982eb26c20b20e83ec7c1e6" prot="public">
+          <name>CAN_ERR_RX_OVERRUN</name>
+          <initializer>=  25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba4f1b284b15bb0615128ef37461970147" prot="public">
+          <name>CAN_ERR_RX_ERROR_PASSIVE</name>
+          <initializer>=  26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba6c711059fb0779c9f44a97cb04a0cd87" prot="public">
+          <name>CAN_ERR_RX_ERROR_WARNING</name>
+          <initializer>=  27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba916f26b2abc5919d8b8fcdaf88c62a90" prot="public">
+          <name>CAN_ERR_RX_FIFO_FULL</name>
+          <initializer>=  28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3761f1ed1a2587c2731caf6a86d2d3e9" prot="public">
+          <name>CAN_ERR_HARDWARE_FAULT</name>
+          <initializer>=  29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba8f0015ceecd3afc3bd118ae20bdc09f9" prot="public">
+          <name>CAN_ERR_COMMUNICATION_FAILURE</name>
+          <initializer>=  30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba4424e545e4ce03c51dea8cd4d446bce7" prot="public">
+          <name>CAN_ERR_DEVICE_NOT_RESPONDING</name>
+          <initializer>=  31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba16ccea3c052eb4c0ed1b5c02900d72f7" prot="public">
+          <name>CAN_ERR_VOLTAGE_OUT_OF_RANGE</name>
+          <initializer>=  32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba7cbe5115dc71e59a9ec845794f8b3def" prot="public">
+          <name>CAN_ERR_CLOCK_ERROR</name>
+          <initializer>=  33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba44e359ee1240cdd1079550e9a932f970" prot="public">
+          <name>CAN_ERR_TRANSCEIVER_ERROR</name>
+          <initializer>=  34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba618f9be909be8289c0581056c829e76d" prot="public">
+          <name>CAN_ERR_INVALID_CONFIGURATION</name>
+          <initializer>=  35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaebc29e4eccb8de0556d22418b14bc930" prot="public">
+          <name>CAN_ERR_UNSUPPORTED_OPERATION</name>
+          <initializer>=  36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba79ea2578d20655c5c08413d42f9a8a11" prot="public">
+          <name>CAN_ERR_INVALID_BAUD_RATE</name>
+          <initializer>=  37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba02f8808c92707d24b4d7c6ca448bf71a" prot="public">
+          <name>CAN_ERR_INVALID_CONTROLLER_ID</name>
+          <initializer>=  38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae3746a5daa3db033036d8c57997b27f4" prot="public">
+          <name>CAN_ERR_FILTER_ERROR</name>
+          <initializer>=  39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba6533c98729d667aee45575fb8ccebe1b" prot="public">
+          <name>CAN_ERR_FILTER_FULL</name>
+          <initializer>=  40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba532c414173736ae368d5d29f8af929b8" prot="public">
+          <name>CAN_ERR_STUFF_ERROR</name>
+          <initializer>=  41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba8c7b21b617ac1b82e079e6c00fe7f557" prot="public">
+          <name>CAN_ERR_FORM_ERROR</name>
+          <initializer>=  42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba1be853e17c35417d7d881dd647ee0354" prot="public">
+          <name>CAN_ERR_CRC_ERROR</name>
+          <initializer>=  43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba38a578d6e4fe2a8c08f72163309edd6a" prot="public">
+          <name>CAN_ERR_ACK_ERROR</name>
+          <initializer>=  44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaa1e2136c8023fb021a72e6b69d4c190c" prot="public">
+          <name>CAN_ERR_BIT_ERROR</name>
+          <initializer>=  45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba996eb680a753eed021002fd5293d1eda" prot="public">
+          <name>CAN_ERR_SYSTEM_ERROR</name>
+          <initializer>=  46</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba00586fd41002cf0d963f1e0046af8259" prot="public">
+          <name>CAN_ERR_PERMISSION_DENIED</name>
+          <initializer>=  47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba1262ba90b54c7923ca3362265139b012" prot="public">
+          <name>CAN_ERR_OPERATION_ABORTED</name>
+          <initializer>=  48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba5efaf863bfc00959bfe5d1b9208d4418" prot="public">
+          <name>CAN_ERR_FAIL</name>
+          <initializer>=  49</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba67b8d439fe7114bd85abfe55f210e824" prot="public">
+          <name>CAN_ERR_RESOURCE_BUSY</name>
+          <initializer>=  50</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba1bac95997e2f1243cf647869f525689d" prot="public">
+          <name>CAN_ERR_INVALID_STATE</name>
+          <initializer>=  51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbac6826689e9756b15d3cad7f54cb66d07" prot="public">
+          <name>CAN_ERR_NOT_SUPPORTED</name>
+          <initializer>=  52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba5cdbb5419c40397c56ccb9d73280e195" prot="public">
+          <name>CAN_ERR_TIMEOUT_ALT</name>
+          <initializer>=  53</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="109" column="1" bodyfile="inc/base/BaseCan.h" bodystart="109" bodyend="113"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;message)&gt;</type>
+        <definition>using hf_can_receive_callback_t =  std::function&lt;void(const hf_can_message_t&amp; message)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_can_receive_callback_t</name>
+        <briefdescription>
+<para>CAN message receive callback function type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Updated to use new <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> structure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="325" column="1" bodyfile="inc/base/BaseCan.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="BaseCan_8h_1aaed4ecd6496192cd76bb98f7993298cd" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;message, const <ref refid="structhf__can__reception__info__t" kindref="compound">hf_can_reception_info_t</ref> &amp;info)&gt;</type>
+        <definition>using hf_can_fd_receive_callback_t =  std::function&lt;void(const hf_can_message_t&amp; message, const hf_can_reception_info_t&amp; info)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_can_fd_receive_callback_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="339" column="1" bodyfile="inc/base/BaseCan.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="BaseCan_8h_1a1d3c90f8b197e4b5e443d83173e29814" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr std::string_view</type>
+        <definition>constexpr std::string_view HfCanErrToString</definition>
+        <argsstring>(hf_can_err_t err) noexcept</argsstring>
+        <name>HfCanErrToString</name>
+        <param>
+          <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+<para>Convert hf_can_err_t to human-readable string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>err</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error code to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String view of the error description </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="120" column="28" bodyfile="inc/base/BaseCan.h" bodystart="120" bodyend="130"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for CAN bus implementations in the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header-only file defines the abstract base class for CAN bus communication that provides a consistent API across different CAN controller implementations. Concrete implementations for various microcontrollers inherit from this class.</para>
+<para>ERROR HANDLING:<itemizedlist>
+<listitem><para>All CAN error codes are defined in this file using the hf_can_err_t enumeration</para>
+</listitem><listitem><para>Lower-level types (McuTypes_CAN.h) maintain minimal error constants for compatibility</para>
+</listitem><listitem><para>All virtual methods return hf_can_err_t for comprehensive error reporting</para>
+</listitem><listitem><para>No legacy compatibility code - use <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> structure for all operations</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This is a header-only abstract base class following the same pattern as <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>. </para>
+</simplesect>
+<simplesect kind="note"><para>Users should program against this interface, not specific implementations. </para>
+</simplesect>
+<simplesect kind="note"><para>All legacy camelCase types and bool-returning methods have been removed. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>HardFOC<sp/>CAN<sp/>Error<sp/>Codes<sp/>(Table)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight></codeline>
+<codeline lineno="41" refid="BaseCan_8h_1ab1d5cdd9fb2d30563cc88f9ca31988ef" refkind="member"><highlight class="preprocessor">#define<sp/>HF_CAN_ERR_LIST(X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Success<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/>X(CAN_SUCCESS,<sp/>0,<sp/>&quot;Success&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>General<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_FAILURE,<sp/>1,<sp/>&quot;General<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_NOT_INITIALIZED,<sp/>2,<sp/>&quot;Not<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_ALREADY_INITIALIZED,<sp/>3,<sp/>&quot;Already<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_INVALID_PARAMETER,<sp/>4,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_NULL_POINTER,<sp/>5,<sp/>&quot;Null<sp/>pointer&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_OUT_OF_MEMORY,<sp/>6,<sp/>&quot;Out<sp/>of<sp/>memory&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Bus<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_BUS_OFF,<sp/>7,<sp/>&quot;Bus<sp/>off<sp/>state&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_BUS_ERROR,<sp/>8,<sp/>&quot;Bus<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_BUS_BUSY,<sp/>9,<sp/>&quot;Bus<sp/>busy&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_BUS_NOT_AVAILABLE,<sp/>10,<sp/>&quot;Bus<sp/>not<sp/>available&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_BUS_RECOVERY_FAILED,<sp/>11,<sp/>&quot;Bus<sp/>recovery<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_BUS_ARBITRATION_LOST,<sp/>12,<sp/>&quot;Bus<sp/>arbitration<sp/>lost&quot;)<sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Message<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_MESSAGE_TIMEOUT,<sp/>13,<sp/>&quot;Message<sp/>timeout&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_MESSAGE_LOST,<sp/>14,<sp/>&quot;Message<sp/>lost&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_MESSAGE_INVALID,<sp/>15,<sp/>&quot;Invalid<sp/>message&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_MESSAGE_TOO_LONG,<sp/>16,<sp/>&quot;Message<sp/>too<sp/>long&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_MESSAGE_INVALID_ID,<sp/>17,<sp/>&quot;Invalid<sp/>message<sp/>ID&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_MESSAGE_INVALID_DLC,<sp/>18,<sp/>&quot;Invalid<sp/>data<sp/>length<sp/>code&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_QUEUE_FULL,<sp/>19,<sp/>&quot;Queue<sp/>full&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_QUEUE_EMPTY,<sp/>20,<sp/>&quot;Queue<sp/>empty&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Transmission<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_TX_FAILED,<sp/>21,<sp/>&quot;Transmission<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_TX_ABORTED,<sp/>22,<sp/>&quot;Transmission<sp/>aborted&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_TX_ERROR_PASSIVE,<sp/>23,<sp/>&quot;Transmit<sp/>error<sp/>passive&quot;)<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_TX_ERROR_WARNING,<sp/>24,<sp/>&quot;Transmit<sp/>error<sp/>warning&quot;)<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Reception<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_RX_OVERRUN,<sp/>25,<sp/>&quot;Receive<sp/>overrun&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_RX_ERROR_PASSIVE,<sp/>26,<sp/>&quot;Receive<sp/>error<sp/>passive&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_RX_ERROR_WARNING,<sp/>27,<sp/>&quot;Receive<sp/>error<sp/>warning&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_RX_FIFO_FULL,<sp/>28,<sp/>&quot;Receive<sp/>FIFO<sp/>full&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Hardware<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_HARDWARE_FAULT,<sp/>29,<sp/>&quot;Hardware<sp/>fault&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_COMMUNICATION_FAILURE,<sp/>30,<sp/>&quot;Communication<sp/>failure&quot;)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_DEVICE_NOT_RESPONDING,<sp/>31,<sp/>&quot;Device<sp/>not<sp/>responding&quot;)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_VOLTAGE_OUT_OF_RANGE,<sp/>32,<sp/>&quot;Voltage<sp/>out<sp/>of<sp/>range&quot;)<sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_CLOCK_ERROR,<sp/>33,<sp/>&quot;Clock<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_TRANSCEIVER_ERROR,<sp/>34,<sp/>&quot;Transceiver<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="84"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configuration<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_INVALID_CONFIGURATION,<sp/>35,<sp/>&quot;Invalid<sp/>configuration&quot;)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_UNSUPPORTED_OPERATION,<sp/>36,<sp/>&quot;Unsupported<sp/>operation&quot;)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_INVALID_BAUD_RATE,<sp/>37,<sp/>&quot;Invalid<sp/>baud<sp/>rate&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_INVALID_CONTROLLER_ID,<sp/>38,<sp/>&quot;Invalid<sp/>controller<sp/>ID&quot;)<sp/><sp/>\</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_FILTER_ERROR,<sp/>39,<sp/>&quot;Filter<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_FILTER_FULL,<sp/>40,<sp/>&quot;Filter<sp/>table<sp/>full&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Protocol<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_STUFF_ERROR,<sp/>41,<sp/>&quot;Bit<sp/>stuffing<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_FORM_ERROR,<sp/>42,<sp/>&quot;Frame<sp/>format<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_CRC_ERROR,<sp/>43,<sp/>&quot;CRC<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_ACK_ERROR,<sp/>44,<sp/>&quot;Acknowledgment<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_BIT_ERROR,<sp/>45,<sp/>&quot;Bit<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>System<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_SYSTEM_ERROR,<sp/>46,<sp/>&quot;System<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_PERMISSION_DENIED,<sp/>47,<sp/>&quot;Permission<sp/>denied&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_OPERATION_ABORTED,<sp/>48,<sp/>&quot;Operation<sp/>aborted&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Extended<sp/>CAN<sp/>errors<sp/>(for<sp/>ESP32<sp/>compatibility)<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_FAIL,<sp/>49,<sp/>&quot;Generic<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_RESOURCE_BUSY,<sp/>50,<sp/>&quot;Resource<sp/>busy&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_INVALID_STATE,<sp/>51,<sp/>&quot;Invalid<sp/>state&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_NOT_SUPPORTED,<sp/>52,<sp/>&quot;Not<sp/>supported&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/>X(CAN_ERR_TIMEOUT_ALT,<sp/>53,<sp/>&quot;Operation<sp/>timeout&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="110" refid="BaseCan_8h_1a94b225babb1626cee0621f8312eb32d1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(NAME,<sp/>VALUE,<sp/>DESC)<sp/>NAME<sp/>=<sp/>VALUE,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1ab1d5cdd9fb2d30563cc88f9ca31988ef" kindref="member">HF_CAN_ERR_LIST</ref>(<ref refid="BaseCan_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="BaseCan_8h_1a1d3c90f8b197e4b5e443d83173e29814" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="BaseCan_8h_1a1d3c90f8b197e4b5e443d83173e29814" kindref="member">HfCanErrToString</ref>(<ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/>err)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(err)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(NAME,<sp/>VALUE,<sp/>DESC)<sp/>\</highlight></codeline>
+<codeline lineno="123"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_can_err_t::NAME:<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>DESC;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseCan_8h_1ab1d5cdd9fb2d30563cc88f9ca31988ef" kindref="member">HF_CAN_ERR_LIST</ref>(<ref refid="BaseCan_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>error&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="structhf__can__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__can__config__t" kindref="compound">hf_can_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="138" refid="structhf__can__config__t_1ae8305416add671c70e5987b0348f3ac2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__can__config__t_1ae8305416add671c70e5987b0348f3ac2" kindref="member">tx_pin</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139" refid="structhf__can__config__t_1a8aefaeb22194b8ca5b8e78f868f1c311" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__can__config__t_1a8aefaeb22194b8ca5b8e78f868f1c311" kindref="member">rx_pin</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140" refid="structhf__can__config__t_1ae60a9a3946365261658f25b2cf88be30" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" kindref="member">hf_baud_rate_t</ref><sp/><ref refid="structhf__can__config__t_1ae60a9a3946365261658f25b2cf88be30" kindref="member">baudrate</ref>;<sp/></highlight></codeline>
+<codeline lineno="141" refid="structhf__can__config__t_1adce4f534151270920a93193f1e7dca51" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__config__t_1adce4f534151270920a93193f1e7dca51" kindref="member">loopback_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="142" refid="structhf__can__config__t_1a9b6bece2c40bb4cc7eb2e8025ee45b7a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__config__t_1a9b6bece2c40bb4cc7eb2e8025ee45b7a" kindref="member">silent_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143" refid="structhf__can__config__t_1a0e580ed65a48c3f575e9bdcfb62de184" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/><ref refid="structhf__can__config__t_1a0e580ed65a48c3f575e9bdcfb62de184" kindref="member">tx_queue_size</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="144" refid="structhf__can__config__t_1a797a2233ee8936fa74e23a7d4603d0e5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/><ref refid="structhf__can__config__t_1a797a2233ee8936fa74e23a7d4603d0e5" kindref="member">rx_queue_size</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="structhf__can__config__t_1ad78879ebabceb4fb8ca96fab342eb6e8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__config__t_1ad78879ebabceb4fb8ca96fab342eb6e8" kindref="member">hf_can_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__can__config__t_1ae8305416add671c70e5987b0348f3ac2" kindref="member">tx_pin</ref>(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>),<sp/><ref refid="structhf__can__config__t_1a8aefaeb22194b8ca5b8e78f868f1c311" kindref="member">rx_pin</ref>(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>),<sp/><ref refid="structhf__can__config__t_1ae60a9a3946365261658f25b2cf88be30" kindref="member">baudrate</ref>(500000),<sp/><ref refid="structhf__can__config__t_1adce4f534151270920a93193f1e7dca51" kindref="member">loopback_mode</ref>(false),</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__config__t_1a9b6bece2c40bb4cc7eb2e8025ee45b7a" kindref="member">silent_mode</ref>(false),<sp/><ref refid="structhf__can__config__t_1a0e580ed65a48c3f575e9bdcfb62de184" kindref="member">tx_queue_size</ref>(10),<sp/><ref refid="structhf__can__config__t_1a797a2233ee8936fa74e23a7d4603d0e5" kindref="member">rx_queue_size</ref>(10)<sp/>{}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="structhf__can__message__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/>Core<sp/>CAN<sp/>Message<sp/>Fields<sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="structhf__can__message__t_1a0b85c579dd4bb8ad383e91510ef5e1f4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__message__t_1a0b85c579dd4bb8ad383e91510ef5e1f4" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160" refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="161" refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[8];<sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/>Standard<sp/>CAN<sp/>Flags<sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" kindref="member">is_extended</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="165" refid="structhf__can__message__t_1a55b067aab266686216317dd487e222ad" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a55b067aab266686216317dd487e222ad" kindref="member">is_rtr</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="166" refid="structhf__can__message__t_1a97893383bbe4d5889b552cfa0531d1c5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a97893383bbe4d5889b552cfa0531d1c5" kindref="member">is_ss</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="167" refid="structhf__can__message__t_1a3ef5c15870325846c18d224a5b41d232" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a3ef5c15870325846c18d224a5b41d232" kindref="member">is_self</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168" refid="structhf__can__message__t_1ac278ef96c4900e490b97f7fc993ca0ce" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1ac278ef96c4900e490b97f7fc993ca0ce" kindref="member">dlc_non_comp</ref>;<sp/></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/>Metadata<sp/>and<sp/>Diagnostics<sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="structhf__can__message__t_1a0fa1eb52d5a9e71fe3fc24e4d2283cc3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__can__message__t_1a0fa1eb52d5a9e71fe3fc24e4d2283cc3" kindref="member">timestamp_us</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172" refid="structhf__can__message__t_1aebce75130b1812c8ae6e5ed59c6c5ded" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__message__t_1aebce75130b1812c8ae6e5ed59c6c5ded" kindref="member">sequence_number</ref>;<sp/></highlight></codeline>
+<codeline lineno="173" refid="structhf__can__message__t_1a20663abce3826d2a21bc1dd291970597" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a20663abce3826d2a21bc1dd291970597" kindref="member">controller_id</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174" refid="structhf__can__message__t_1a56136e72519bf764f89fbe68b5697c59" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a56136e72519bf764f89fbe68b5697c59" kindref="member">retry_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="175" refid="structhf__can__message__t_1a10fbb9922882f6f2ee598ab716b5efc1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a10fbb9922882f6f2ee598ab716b5efc1" kindref="member">error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/>CAN-FD<sp/>Extended<sp/>Fields<sp/>(for<sp/>future<sp/>compatibility)<sp/>===</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" kindref="member">is_canfd</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="179" refid="structhf__can__message__t_1ade2b527e24ebd6171b148a167442ca0d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1ade2b527e24ebd6171b148a167442ca0d" kindref="member">is_brs</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="180" refid="structhf__can__message__t_1adeaf9d0f4b0ed108a6260815b37189cb" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1adeaf9d0f4b0ed108a6260815b37189cb" kindref="member">is_esi</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="181" refid="structhf__can__message__t_1ae419b81b2cec03d10f1fc0b61c22833e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1ae419b81b2cec03d10f1fc0b61c22833e" kindref="member">canfd_dlc</ref>;<sp/></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="structhf__can__message__t_1a647e0893962b3ffa7b0c15492af5db37" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__message__t_1a647e0893962b3ffa7b0c15492af5db37" kindref="member">hf_can_message_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">(0),<sp/><ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>(0),<sp/><ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>{},<sp/><ref refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" kindref="member">is_extended</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),<sp/><ref refid="structhf__can__message__t_1a55b067aab266686216317dd487e222ad" kindref="member">is_rtr</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),<sp/><ref refid="structhf__can__message__t_1a97893383bbe4d5889b552cfa0531d1c5" kindref="member">is_ss</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),<sp/><ref refid="structhf__can__message__t_1a3ef5c15870325846c18d224a5b41d232" kindref="member">is_self</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1ac278ef96c4900e490b97f7fc993ca0ce" kindref="member">dlc_non_comp</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),<sp/><ref refid="structhf__can__message__t_1a0fa1eb52d5a9e71fe3fc24e4d2283cc3" kindref="member">timestamp_us</ref>(0),<sp/><ref refid="structhf__can__message__t_1aebce75130b1812c8ae6e5ed59c6c5ded" kindref="member">sequence_number</ref>(0),<sp/><ref refid="structhf__can__message__t_1a20663abce3826d2a21bc1dd291970597" kindref="member">controller_id</ref>(0),<sp/><ref refid="structhf__can__message__t_1a56136e72519bf764f89fbe68b5697c59" kindref="member">retry_count</ref>(0),</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1a10fbb9922882f6f2ee598ab716b5efc1" kindref="member">error_count</ref>(0),<sp/><ref refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" kindref="member">is_canfd</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),<sp/><ref refid="structhf__can__message__t_1ade2b527e24ebd6171b148a167442ca0d" kindref="member">is_brs</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),<sp/><ref refid="structhf__can__message__t_1adeaf9d0f4b0ed108a6260815b37189cb" kindref="member">is_esi</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),<sp/><ref refid="structhf__can__message__t_1ae419b81b2cec03d10f1fc0b61c22833e" kindref="member">canfd_dlc</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="structhf__can__message__t_1a768ed986f40f0671843a4fba892936cc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a768ed986f40f0671843a4fba892936cc" kindref="member">GetMaxDataLength</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" kindref="member">is_canfd</ref><sp/>?<sp/>64<sp/>:<sp/>8;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="structhf__can__message__t_1a4f6b22dbc4246cf76b6f958eed04e385" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a4f6b22dbc4246cf76b6f958eed04e385" kindref="member">IsValidDLC</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" kindref="member">is_canfd</ref><sp/>?<sp/>(<ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref><sp/>&lt;=<sp/>64)<sp/>:<sp/>(<ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref><sp/>&lt;=<sp/>8);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="structhf__can__message__t_1a07dc96f83a2754fb3132195058880ca4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a07dc96f83a2754fb3132195058880ca4" kindref="member">GetEffectiveDLC</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" kindref="member">is_canfd</ref><sp/>?<sp/><ref refid="structhf__can__message__t_1ae419b81b2cec03d10f1fc0b61c22833e" kindref="member">canfd_dlc</ref><sp/>:<sp/><ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="structhf__can__message__t_1af328325d29d8cd4fa0a54b2184f13a22" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1af328325d29d8cd4fa0a54b2184f13a22" kindref="member">SetDLC</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="structhf__can__message__t_1a4f6b22dbc4246cf76b6f958eed04e385" kindref="member">IsValidDLC</ref>(<ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" kindref="member">is_canfd</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1ae419b81b2cec03d10f1fc0b61c22833e" kindref="member">canfd_dlc</ref><sp/>=<sp/><ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;dlc<sp/>=<sp/><ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="structhf__can__message__t_1a8db2a9d7f4c842360c8aeb82703b467f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a8db2a9d7f4c842360c8aeb82703b467f" kindref="member">SetStandardFrame</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" kindref="member">is_extended</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="structhf__can__message__t_1acc7892375611b12a9846bc20add934bd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1acc7892375611b12a9846bc20add934bd" kindref="member">SetExtendedFrame</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" kindref="member">is_extended</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="structhf__can__message__t_1a940cb35d37db09a774cc87bad9a02f34" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a940cb35d37db09a774cc87bad9a02f34" kindref="member">SetDataFrame</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1a55b067aab266686216317dd487e222ad" kindref="member">is_rtr</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254" refid="structhf__can__message__t_1af05e6e7e32eb639af3dfda8228cc74e0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1af05e6e7e32eb639af3dfda8228cc74e0" kindref="member">SetRemoteFrame</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1a55b067aab266686216317dd487e222ad" kindref="member">is_rtr</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="structhf__can__message__t_1a20eab0b26b0d462efc72379e8a202484" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a20eab0b26b0d462efc72379e8a202484" kindref="member">SetSingleShot</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1a97893383bbe4d5889b552cfa0531d1c5" kindref="member">is_ss</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268" refid="structhf__can__message__t_1adeca458e7b925db873ecfb779923db32" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1adeca458e7b925db873ecfb779923db32" kindref="member">SetSelfReception</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t_1a3ef5c15870325846c18d224a5b41d232" kindref="member">is_self</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276" refid="structhf__can__message__t_1a3bf76f6e63352c86d35af72bcf73c91c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t_1a3bf76f6e63352c86d35af72bcf73c91c" kindref="member">IsValidId</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" kindref="member">is_extended</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&lt;=<sp/>0x1FFFFFFF;<sp/></highlight><highlight class="comment">//<sp/>29-bit<sp/>max</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&lt;=<sp/>0x7FF;<sp/></highlight><highlight class="comment">//<sp/>11-bit<sp/>max</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289" refid="structhf__can__status__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__can__status__t" kindref="compound">hf_can_status_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="290" refid="structhf__can__status__t_1a5d149f3d76ef7e2050ddab435fbe1350" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a5d149f3d76ef7e2050ddab435fbe1350" kindref="member">tx_error_count</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="291" refid="structhf__can__status__t_1aefae2fe147ec849eb9ce8ee8c19efd35" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1aefae2fe147ec849eb9ce8ee8c19efd35" kindref="member">rx_error_count</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="292" refid="structhf__can__status__t_1ac5f3926115525f76b57a916fb9a78774" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1ac5f3926115525f76b57a916fb9a78774" kindref="member">tx_failed_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="293" refid="structhf__can__status__t_1a330c8d02b5405f30e9db6ac9e84ae3f0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a330c8d02b5405f30e9db6ac9e84ae3f0" kindref="member">rx_missed_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="294" refid="structhf__can__status__t_1aa4658cc3642f8be7392d596b285bf2d6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__status__t_1aa4658cc3642f8be7392d596b285bf2d6" kindref="member">bus_off</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="295" refid="structhf__can__status__t_1a2b7d5ed0e596f6752c53421dbd681f3e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__status__t_1a2b7d5ed0e596f6752c53421dbd681f3e" kindref="member">error_warning</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="296" refid="structhf__can__status__t_1a602db26f6503f45e1178ccf84ea04c0b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__status__t_1a602db26f6503f45e1178ccf84ea04c0b" kindref="member">error_passive</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CAN-FD<sp/>specific<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="structhf__can__status__t_1aed91b1c0a81cd06d31b79d2a6f53baf5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__status__t_1aed91b1c0a81cd06d31b79d2a6f53baf5" kindref="member">canfd_enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="300" refid="structhf__can__status__t_1ae0eb52f010f38bfc19737e45b809c9e1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__status__t_1ae0eb52f010f38bfc19737e45b809c9e1" kindref="member">canfd_brs_enabled</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="301" refid="structhf__can__status__t_1a7ee96db43c522c1589825bd66078f3a1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a7ee96db43c522c1589825bd66078f3a1" kindref="member">nominal_baudrate</ref>;<sp/></highlight></codeline>
+<codeline lineno="302" refid="structhf__can__status__t_1a56b602dd1697c61dc2e271720dea5838" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a56b602dd1697c61dc2e271720dea5838" kindref="member">data_baudrate</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="303" refid="structhf__can__status__t_1a64979d86ac6c68aeafe1cb0f33729bf5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a64979d86ac6c68aeafe1cb0f33729bf5" kindref="member">canfd_tx_count</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="304" refid="structhf__can__status__t_1aad7bc043fae131ce90de9ef494bb0e1b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1aad7bc043fae131ce90de9ef494bb0e1b" kindref="member">canfd_rx_count</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="305" refid="structhf__can__status__t_1ab64fe524b6ddb4a1f06f201a473a9e81" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1ab64fe524b6ddb4a1f06f201a473a9e81" kindref="member">brs_tx_count</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="306" refid="structhf__can__status__t_1a9adf7cad5d275c6d7247fc699e0dd60a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a9adf7cad5d275c6d7247fc699e0dd60a" kindref="member">brs_rx_count</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="307" refid="structhf__can__status__t_1a75a18599400d297a1789d82214b90d37" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a75a18599400d297a1789d82214b90d37" kindref="member">form_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="308" refid="structhf__can__status__t_1ae3dff4d5f9bebe7e35489cfc58d50c6a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1ae3dff4d5f9bebe7e35489cfc58d50c6a" kindref="member">stuff_errors</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="309" refid="structhf__can__status__t_1a1f686ca36a96f1a1f6fa6e91935d790f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a1f686ca36a96f1a1f6fa6e91935d790f" kindref="member">crc_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="310" refid="structhf__can__status__t_1ac0630fe8400c78532b36a53a278c6ec3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1ac0630fe8400c78532b36a53a278c6ec3" kindref="member">bit_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="311" refid="structhf__can__status__t_1a3f8d02fd744d1b707e71402934aab1e5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__status__t_1a3f8d02fd744d1b707e71402934aab1e5" kindref="member">ack_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313" refid="structhf__can__status__t_1afdfd60084afe727c77376167f09091eb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__status__t_1afdfd60084afe727c77376167f09091eb" kindref="member">hf_can_status_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__can__status__t_1a5d149f3d76ef7e2050ddab435fbe1350" kindref="member">tx_error_count</ref>(0),<sp/><ref refid="structhf__can__status__t_1aefae2fe147ec849eb9ce8ee8c19efd35" kindref="member">rx_error_count</ref>(0),<sp/><ref refid="structhf__can__status__t_1ac5f3926115525f76b57a916fb9a78774" kindref="member">tx_failed_count</ref>(0),<sp/><ref refid="structhf__can__status__t_1a330c8d02b5405f30e9db6ac9e84ae3f0" kindref="member">rx_missed_count</ref>(0),</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__status__t_1aa4658cc3642f8be7392d596b285bf2d6" kindref="member">bus_off</ref>(false),<sp/><ref refid="structhf__can__status__t_1a2b7d5ed0e596f6752c53421dbd681f3e" kindref="member">error_warning</ref>(false),<sp/><ref refid="structhf__can__status__t_1a602db26f6503f45e1178ccf84ea04c0b" kindref="member">error_passive</ref>(false),<sp/><ref refid="structhf__can__status__t_1aed91b1c0a81cd06d31b79d2a6f53baf5" kindref="member">canfd_enabled</ref>(false),</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__status__t_1ae0eb52f010f38bfc19737e45b809c9e1" kindref="member">canfd_brs_enabled</ref>(false),<sp/><ref refid="structhf__can__status__t_1a7ee96db43c522c1589825bd66078f3a1" kindref="member">nominal_baudrate</ref>(0),<sp/><ref refid="structhf__can__status__t_1a56b602dd1697c61dc2e271720dea5838" kindref="member">data_baudrate</ref>(0),<sp/><ref refid="structhf__can__status__t_1a64979d86ac6c68aeafe1cb0f33729bf5" kindref="member">canfd_tx_count</ref>(0),</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__status__t_1aad7bc043fae131ce90de9ef494bb0e1b" kindref="member">canfd_rx_count</ref>(0),<sp/><ref refid="structhf__can__status__t_1ab64fe524b6ddb4a1f06f201a473a9e81" kindref="member">brs_tx_count</ref>(0),<sp/><ref refid="structhf__can__status__t_1a9adf7cad5d275c6d7247fc699e0dd60a" kindref="member">brs_rx_count</ref>(0),<sp/><ref refid="structhf__can__status__t_1a75a18599400d297a1789d82214b90d37" kindref="member">form_errors</ref>(0),<sp/><ref refid="structhf__can__status__t_1ae3dff4d5f9bebe7e35489cfc58d50c6a" kindref="member">stuff_errors</ref>(0),</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__status__t_1a1f686ca36a96f1a1f6fa6e91935d790f" kindref="member">crc_errors</ref>(0),<sp/><ref refid="structhf__can__status__t_1ac0630fe8400c78532b36a53a278c6ec3" kindref="member">bit_errors</ref>(0),<sp/><ref refid="structhf__can__status__t_1a3f8d02fd744d1b707e71402934aab1e5" kindref="member">ack_errors</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" kindref="member">hf_can_receive_callback_t</ref><sp/>=<sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>message)&gt;;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332" refid="structhf__can__reception__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__can__reception__info__t" kindref="compound">hf_can_reception_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="333" refid="structhf__can__reception__info__t_1ae1fbb6e6b8850678fc0d601bf80806c0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__reception__info__t_1ae1fbb6e6b8850678fc0d601bf80806c0" kindref="member">timestamp_us</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="334" refid="structhf__can__reception__info__t_1ae46c2b74fdb0496b9fc0591d90735f14" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__can__reception__info__t_1ae46c2b74fdb0496b9fc0591d90735f14" kindref="member">rx_fifo_level</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="335" refid="structhf__can__reception__info__t_1a299a88dec5d5f724a407ab6607bd3e6a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__reception__info__t_1a299a88dec5d5f724a407ab6607bd3e6a" kindref="member">data_phase_error</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="336" refid="structhf__can__reception__info__t_1ac1bd33853ea338c9163bd9e838d0859b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__reception__info__t_1ac1bd33853ea338c9163bd9e838d0859b" kindref="member">arbitration_lost</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="337" refid="structhf__can__reception__info__t_1a3a5057318523511320dbbc1417557247" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structhf__can__reception__info__t_1a3a5057318523511320dbbc1417557247" kindref="member">bit_timing_tolerance</ref>;<sp/></highlight></codeline>
+<codeline lineno="338"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="339" refid="BaseCan_8h_1aaed4ecd6496192cd76bb98f7993298cd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BaseCan_8h_1aaed4ecd6496192cd76bb98f7993298cd" kindref="member">hf_can_fd_receive_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>message,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__can__reception__info__t" kindref="compound">hf_can_reception_info_t</ref>&amp;<sp/>info)&gt;;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347" refid="structhf__can__statistics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>counters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349" refid="structhf__can__statistics__t_1a3f747fafb28303189469975da74ca478" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__can__statistics__t_1a3f747fafb28303189469975da74ca478" kindref="member">messages_sent</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="350" refid="structhf__can__statistics__t_1a20c31a5c83de8ef51223d8322d97281c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__can__statistics__t_1a20c31a5c83de8ef51223d8322d97281c" kindref="member">messages_received</ref>;<sp/></highlight></codeline>
+<codeline lineno="351" refid="structhf__can__statistics__t_1a90e172dd69fadd62b5c3cbd97d05f697" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__can__statistics__t_1a90e172dd69fadd62b5c3cbd97d05f697" kindref="member">bytes_transmitted</ref>;<sp/></highlight></codeline>
+<codeline lineno="352" refid="structhf__can__statistics__t_1adc68f794e8a072d973a1abe52e3affce" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__can__statistics__t_1adc68f794e8a072d973a1abe52e3affce" kindref="member">bytes_received</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Error<sp/>counters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355" refid="structhf__can__statistics__t_1a2c3f6531dc2e9450b2c87ebe20ff3122" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a2c3f6531dc2e9450b2c87ebe20ff3122" kindref="member">send_failures</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="356" refid="structhf__can__statistics__t_1a18c5f24370560a118cdfc7346558cc5d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a18c5f24370560a118cdfc7346558cc5d" kindref="member">receive_failures</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="357" refid="structhf__can__statistics__t_1a7b17b31777281f39ae41a2bec749eeed" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a7b17b31777281f39ae41a2bec749eeed" kindref="member">bus_error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="358" refid="structhf__can__statistics__t_1a449e30eddf760e102ee869b8bbbb0aab" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a449e30eddf760e102ee869b8bbbb0aab" kindref="member">arbitration_lost_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="359" refid="structhf__can__statistics__t_1a9853f38a3b133cb7afcb32ba049bcc09" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a9853f38a3b133cb7afcb32ba049bcc09" kindref="member">tx_failed_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="360" refid="structhf__can__statistics__t_1ac8626095d72200a1470df06230dbcdba" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1ac8626095d72200a1470df06230dbcdba" kindref="member">bus_off_events</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="361" refid="structhf__can__statistics__t_1a21f00a6e082999e20bf7a2ccb46111a8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a21f00a6e082999e20bf7a2ccb46111a8" kindref="member">error_warning_events</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Performance<sp/>metrics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364" refid="structhf__can__statistics__t_1a132ad816b06175fcd1cda22d00a55996" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__can__statistics__t_1a132ad816b06175fcd1cda22d00a55996" kindref="member">uptime_seconds</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="365" refid="structhf__can__statistics__t_1a8b3d5d036f28a3cbc696e499e47f74ee" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a8b3d5d036f28a3cbc696e499e47f74ee" kindref="member">last_activity_timestamp</ref>;<sp/></highlight></codeline>
+<codeline lineno="366" refid="structhf__can__statistics__t_1afa6a9f2602db310d8746f11f6eb5b4c4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="structhf__can__statistics__t_1afa6a9f2602db310d8746f11f6eb5b4c4" kindref="member">last_error</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Queue<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369" refid="structhf__can__statistics__t_1a6569da33f672121bd485f1918a3a5038" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a6569da33f672121bd485f1918a3a5038" kindref="member">tx_queue_peak</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="370" refid="structhf__can__statistics__t_1af805fcabe58d2c97d463b1b7ac9f390f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1af805fcabe58d2c97d463b1b7ac9f390f" kindref="member">rx_queue_peak</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="371" refid="structhf__can__statistics__t_1a4ae581d01df7e58bf63fb973347f5259" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a4ae581d01df7e58bf63fb973347f5259" kindref="member">tx_queue_overflows</ref>;<sp/></highlight></codeline>
+<codeline lineno="372" refid="structhf__can__statistics__t_1a0256a5fae6201a72771ef362bae655c9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__statistics__t_1a0256a5fae6201a72771ef362bae655c9" kindref="member">rx_queue_overflows</ref>;<sp/></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374" refid="structhf__can__statistics__t_1afa11f21b1efe81092dbdf9ddafc48570" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__statistics__t_1afa11f21b1efe81092dbdf9ddafc48570" kindref="member">hf_can_statistics_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__can__statistics__t_1a3f747fafb28303189469975da74ca478" kindref="member">messages_sent</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a20c31a5c83de8ef51223d8322d97281c" kindref="member">messages_received</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a90e172dd69fadd62b5c3cbd97d05f697" kindref="member">bytes_transmitted</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1adc68f794e8a072d973a1abe52e3affce" kindref="member">bytes_received</ref>(0),</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__statistics__t_1a2c3f6531dc2e9450b2c87ebe20ff3122" kindref="member">send_failures</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a18c5f24370560a118cdfc7346558cc5d" kindref="member">receive_failures</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a7b17b31777281f39ae41a2bec749eeed" kindref="member">bus_error_count</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a449e30eddf760e102ee869b8bbbb0aab" kindref="member">arbitration_lost_count</ref>(0),</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__statistics__t_1a9853f38a3b133cb7afcb32ba049bcc09" kindref="member">tx_failed_count</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1ac8626095d72200a1470df06230dbcdba" kindref="member">bus_off_events</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a21f00a6e082999e20bf7a2ccb46111a8" kindref="member">error_warning_events</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a132ad816b06175fcd1cda22d00a55996" kindref="member">uptime_seconds</ref>(0),</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__statistics__t_1a8b3d5d036f28a3cbc696e499e47f74ee" kindref="member">last_activity_timestamp</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1afa6a9f2602db310d8746f11f6eb5b4c4" kindref="member">last_error</ref>(<ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref>::<ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">CAN_SUCCESS</ref>),<sp/><ref refid="structhf__can__statistics__t_1a6569da33f672121bd485f1918a3a5038" kindref="member">tx_queue_peak</ref>(0),</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__statistics__t_1af805fcabe58d2c97d463b1b7ac9f390f" kindref="member">rx_queue_peak</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a4ae581d01df7e58bf63fb973347f5259" kindref="member">tx_queue_overflows</ref>(0),<sp/><ref refid="structhf__can__statistics__t_1a0256a5fae6201a72771ef362bae655c9" kindref="member">rx_queue_overflows</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387" refid="structhf__can__diagnostics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="388" refid="structhf__can__diagnostics__t_1a363c60485feb53ca83685fdd7e58f89b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__diagnostics__t_1a363c60485feb53ca83685fdd7e58f89b" kindref="member">tx_error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="389" refid="structhf__can__diagnostics__t_1a6a05dc4da5c01eeb0c8859a67ed340dd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__diagnostics__t_1a6a05dc4da5c01eeb0c8859a67ed340dd" kindref="member">rx_error_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="390" refid="structhf__can__diagnostics__t_1a7202c43eb0711f461312f587699ca65b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__diagnostics__t_1a7202c43eb0711f461312f587699ca65b" kindref="member">tx_queue_peak</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="391" refid="structhf__can__diagnostics__t_1a47c883cd6d20eb17e362bf159f2923c0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__diagnostics__t_1a47c883cd6d20eb17e362bf159f2923c0" kindref="member">rx_queue_peak</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="392" refid="structhf__can__diagnostics__t_1a7016ab5baee260911740fe6884ecbf2c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__diagnostics__t_1a7016ab5baee260911740fe6884ecbf2c" kindref="member">last_error_timestamp</ref>;<sp/></highlight></codeline>
+<codeline lineno="393" refid="structhf__can__diagnostics__t_1aa0b01f50e590b49d44883b27cbb64f84" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__diagnostics__t_1aa0b01f50e590b49d44883b27cbb64f84" kindref="member">controller_resets</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="394" refid="structhf__can__diagnostics__t_1ad49c809ce27fdd1bc1d657afd06c3aba" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__can__diagnostics__t_1ad49c809ce27fdd1bc1d657afd06c3aba" kindref="member">bus_load_percentage</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="395" refid="structhf__can__diagnostics__t_1a62b089cb719ffe2728c1c86d8eaccbbf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structhf__can__diagnostics__t_1a62b089cb719ffe2728c1c86d8eaccbbf" kindref="member">bit_error_rate</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="397" refid="structhf__can__diagnostics__t_1aefc0cac14ebba0fc64e72d99a6f72f19" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__diagnostics__t_1aefc0cac14ebba0fc64e72d99a6f72f19" kindref="member">hf_can_diagnostics_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__can__diagnostics__t_1a363c60485feb53ca83685fdd7e58f89b" kindref="member">tx_error_count</ref>(0),<sp/><ref refid="structhf__can__diagnostics__t_1a6a05dc4da5c01eeb0c8859a67ed340dd" kindref="member">rx_error_count</ref>(0),<sp/><ref refid="structhf__can__diagnostics__t_1a7202c43eb0711f461312f587699ca65b" kindref="member">tx_queue_peak</ref>(0),<sp/><ref refid="structhf__can__diagnostics__t_1a47c883cd6d20eb17e362bf159f2923c0" kindref="member">rx_queue_peak</ref>(0),</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__diagnostics__t_1a7016ab5baee260911740fe6884ecbf2c" kindref="member">last_error_timestamp</ref>(0),<sp/><ref refid="structhf__can__diagnostics__t_1aa0b01f50e590b49d44883b27cbb64f84" kindref="member">controller_resets</ref>(0),<sp/><ref refid="structhf__can__diagnostics__t_1ad49c809ce27fdd1bc1d657afd06c3aba" kindref="member">bus_load_percentage</ref>(0),</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__diagnostics__t_1a62b089cb719ffe2728c1c86d8eaccbbf" kindref="member">bit_error_rate</ref>(0.0f)<sp/>{}</highlight></codeline>
+<codeline lineno="401"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423" refid="classBaseCan" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBaseCan" kindref="compound">BaseCan</ref><sp/>{</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="428" refid="classBaseCan_1a95fbffe100ce79e6551fbfd113e9a874" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a95fbffe100ce79e6551fbfd113e9a874" kindref="member">~BaseCan</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-copyable,<sp/>non-movable<sp/>(can<sp/>be<sp/>changed<sp/>in<sp/>derived<sp/>classes<sp/>if<sp/>needed)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="431" refid="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseCan" kindref="compound">BaseCan</ref>(const<sp/><ref refid="classBaseCan" kindref="compound">BaseCan</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="432" refid="classBaseCan_1ad9dc7b9f27d9909273f077baaf00df33" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseCan" kindref="compound">BaseCan</ref>&amp;<sp/>operator=(const<sp/><ref refid="classBaseCan" kindref="compound">BaseCan</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="433" refid="classBaseCan_1a530bc9bf147c4e0df1fa0ee38bb22e39" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseCan" kindref="compound">BaseCan</ref>(<ref refid="classBaseCan" kindref="compound">BaseCan</ref>&amp;&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="434" refid="classBaseCan_1a01c7dbf06a7c24a0608ab1998d91827c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseCan" kindref="compound">BaseCan</ref>&amp;<sp/>operator=(<ref refid="classBaseCan" kindref="compound">BaseCan</ref>&amp;&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440" refid="classBaseCan_1a3c372c570cb93abf33e2de4f05970d36" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a3c372c570cb93abf33e2de4f05970d36" kindref="member">EnsureInitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref><sp/>=<sp/>(<ref refid="classBaseCan_1a7a32156d471b1d44b1cff68cd3024bb2" kindref="member">Initialize</ref>()<sp/>==<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>);</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="451" refid="classBaseCan_1a03daa6284ad75c2bbd335077141ea9d7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a03daa6284ad75c2bbd335077141ea9d7" kindref="member">EnsureDeinitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref><sp/>=<sp/>!(<ref refid="classBaseCan_1a9d207d69485c479ab68c5396ce3d814c" kindref="member">Deinitialize</ref>()<sp/>==<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>);</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="462" refid="classBaseCan_1a1c8f9099b9cd860c3e8196768f51651b" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a1c8f9099b9cd860c3e8196768f51651b" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"></highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PURE<sp/>VIRTUAL<sp/>FUNCTIONS<sp/>[MUST<sp/>BE<sp/>OVERRIDDEN]<sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="474" refid="classBaseCan_1a7a32156d471b1d44b1cff68cd3024bb2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a7a32156d471b1d44b1cff68cd3024bb2" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"></highlight></codeline>
+<codeline lineno="480" refid="classBaseCan_1a9d207d69485c479ab68c5396ce3d814c" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a9d207d69485c479ab68c5396ce3d814c" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"></highlight></codeline>
+<codeline lineno="488" refid="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8" kindref="member">SendMessage</ref>(const<sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>message,</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>1000)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"></highlight></codeline>
+<codeline lineno="497" refid="classBaseCan_1a300b5b097246fd7b9575050eb7eb239c" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a300b5b097246fd7b9575050eb7eb239c" kindref="member">ReceiveMessage</ref>(<ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>message,</highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"></highlight></codeline>
+<codeline lineno="505" refid="classBaseCan_1a9cef56fa208f09304bbd7129914a51a8" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a9cef56fa208f09304bbd7129914a51a8" kindref="member">SetReceiveCallback</ref>(<ref refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" kindref="member">hf_can_receive_callback_t</ref><sp/>callback)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="506"><highlight class="normal"></highlight></codeline>
+<codeline lineno="514" refid="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c" kindref="member">SetAcceptanceFilter</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>mask,</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>extended<sp/>=<sp/>false)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"></highlight></codeline>
+<codeline lineno="522" refid="classBaseCan_1ac39ec574726318ccb010c87bcea0ed0d" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1ac39ec574726318ccb010c87bcea0ed0d" kindref="member">GetStatus</ref>(<ref refid="structhf__can__status__t" kindref="compound">hf_can_status_t</ref>&amp;<sp/>status)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"></highlight></codeline>
+<codeline lineno="528" refid="classBaseCan_1ab51e96a8d84616a1f2fdabd8452c0665" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1ab51e96a8d84616a1f2fdabd8452c0665" kindref="member">Reset</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="529"><highlight class="normal"></highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>(OPTIONAL<sp/>IMPLEMENTATIONS)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="532"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal"></highlight></codeline>
+<codeline lineno="538" refid="classBaseCan_1a372729e0eeb758ba624aecfd07ef918c" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a372729e0eeb758ba624aecfd07ef918c" kindref="member">ClearReceiveCallback</ref>()<sp/>noexcept<sp/>{}</highlight></codeline>
+<codeline lineno="539"><highlight class="normal"></highlight></codeline>
+<codeline lineno="545" refid="classBaseCan_1a523000694cee960aa8eee19bbd74c408" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a523000694cee960aa8eee19bbd74c408" kindref="member">ClearAcceptanceFilter</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c" kindref="member">SetAcceptanceFilter</ref>(0,<sp/>0,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"></highlight></codeline>
+<codeline lineno="555" refid="classBaseCan_1a44753662096232f45e49ad752e8f68e4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a44753662096232f45e49ad752e8f68e4" kindref="member">SetReceiveCallbackFD</ref>(<ref refid="BaseCan_8h_1aaed4ecd6496192cd76bb98f7993298cd" kindref="member">hf_can_fd_receive_callback_t</ref><sp/>callback)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)callback;<sp/></highlight><highlight class="comment">//<sp/>Suppress<sp/>unused<sp/>parameter<sp/>warning</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaebc29e4eccb8de0556d22418b14bc930" kindref="member">hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"></highlight></codeline>
+<codeline lineno="565" refid="classBaseCan_1a5af808724133b48742ebdcd448e93515" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a5af808724133b48742ebdcd448e93515" kindref="member">SupportsCanFD</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"></highlight></codeline>
+<codeline lineno="576" refid="classBaseCan_1a2148e9e19a394699809d6e4592df5b5c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a2148e9e19a394699809d6e4592df5b5c" kindref="member">SetCanFDMode</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>data_baudrate<sp/>=<sp/>2000000,</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>1000)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)enable;</highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)data_baudrate;</highlight></codeline>
+<codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)timeout_ms;</highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"></highlight></codeline>
+<codeline lineno="596" refid="classBaseCan_1a67d60cd1fe9783de6f335948af385158" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a67d60cd1fe9783de6f335948af385158" kindref="member">ConfigureCanFDTiming</ref>(<ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>nominal_prescaler,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>nominal_tseg1,</highlight></codeline>
+<codeline lineno="597"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>nominal_tseg2,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>data_prescaler,</highlight></codeline>
+<codeline lineno="598"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>data_tseg1,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>data_tseg2,</highlight></codeline>
+<codeline lineno="599"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>sjw<sp/>=<sp/>1)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="600"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)nominal_prescaler;</highlight></codeline>
+<codeline lineno="601"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)nominal_tseg1;</highlight></codeline>
+<codeline lineno="602"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)nominal_tseg2;</highlight></codeline>
+<codeline lineno="603"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)data_prescaler;</highlight></codeline>
+<codeline lineno="604"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)data_tseg1;</highlight></codeline>
+<codeline lineno="605"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)data_tseg2;</highlight></codeline>
+<codeline lineno="606"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)sjw;</highlight></codeline>
+<codeline lineno="607"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="609"><highlight class="normal"></highlight></codeline>
+<codeline lineno="617" refid="classBaseCan_1acdab43f967e641b0566a7f851ea37114" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1acdab43f967e641b0566a7f851ea37114" kindref="member">SetTransmitterDelayCompensation</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>tdc_offset,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>tdc_filter)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="618"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)tdc_offset;</highlight></codeline>
+<codeline lineno="619"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)tdc_filter;</highlight></codeline>
+<codeline lineno="620"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="621"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="622"><highlight class="normal"></highlight></codeline>
+<codeline lineno="631" refid="classBaseCan_1a6aa06ee8540daad6ffef529802cb2334" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classBaseCan_1a6aa06ee8540daad6ffef529802cb2334" kindref="member">SendMessageBatch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>*<sp/>messages,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>count,</highlight></codeline>
+<codeline lineno="632"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>1000)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="633"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!messages<sp/>||<sp/>count<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="634"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="635"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="636"><highlight class="normal"></highlight></codeline>
+<codeline lineno="637"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>sent_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="638"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>count;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="639"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8" kindref="member">SendMessage</ref>(messages[i],<sp/>timeout_ms)<sp/>==<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="640"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sent_count++;</highlight></codeline>
+<codeline lineno="641"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="642"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="643"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sent_count;</highlight></codeline>
+<codeline lineno="644"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="645"><highlight class="normal"></highlight></codeline>
+<codeline lineno="654" refid="classBaseCan_1a06981fc040b040418551f79eafea295d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classBaseCan_1a06981fc040b040418551f79eafea295d" kindref="member">ReceiveMessageBatch</ref>(<ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>*<sp/>messages,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>max_count,</highlight></codeline>
+<codeline lineno="655"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>100)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="656"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!messages<sp/>||<sp/>max_count<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="657"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="658"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="659"><highlight class="normal"></highlight></codeline>
+<codeline lineno="660"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>received_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="661"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>max_count;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="662"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseCan_1a300b5b097246fd7b9575050eb7eb239c" kindref="member">ReceiveMessage</ref>(messages[i],<sp/>timeout_ms)<sp/>==<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="663"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>received_count++;</highlight></codeline>
+<codeline lineno="664"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="665"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>No<sp/>more<sp/>messages<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="666"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="667"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="668"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>received_count;</highlight></codeline>
+<codeline lineno="669"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="670"><highlight class="normal"></highlight></codeline>
+<codeline lineno="671"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="672"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATISTICS<sp/>AND<sp/>DIAGNOSTICS<sp/>STRUCTURES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="673"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="674"><highlight class="normal"></highlight></codeline>
+<codeline lineno="680" refid="classBaseCan_1ac6924ccef37360dd48ed18f128c8a17e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1ac6924ccef37360dd48ed18f128c8a17e" kindref="member">ResetStatistics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="681"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" kindref="member">statistics_</ref><sp/>=<sp/><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="682"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaebc29e4eccb8de0556d22418b14bc930" kindref="member">hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="683"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="684"><highlight class="normal"></highlight></codeline>
+<codeline lineno="690" refid="classBaseCan_1a6e26f72d55472f7dd825063abaa87ebc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a6e26f72d55472f7dd825063abaa87ebc" kindref="member">ResetDiagnostics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="691"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" kindref="member">diagnostics_</ref><sp/>=<sp/><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>diagnostics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="692"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaebc29e4eccb8de0556d22418b14bc930" kindref="member">hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="693"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="694"><highlight class="normal"></highlight></codeline>
+<codeline lineno="701" refid="classBaseCan_1a938484f6f54bef73a04b5698214df442" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a938484f6f54bef73a04b5698214df442" kindref="member">GetStatistics</ref>(<ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="702"><highlight class="normal"><sp/><sp/><sp/><sp/>statistics<sp/>=<sp/><ref refid="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" kindref="member">statistics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>statistics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="703"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaebc29e4eccb8de0556d22418b14bc930" kindref="member">hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="704"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="705"><highlight class="normal"></highlight></codeline>
+<codeline lineno="712" refid="classBaseCan_1a0c05b53922dafb9c544f1e1fa6977397" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classBaseCan_1a0c05b53922dafb9c544f1e1fa6977397" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics<sp/>=<sp/><ref refid="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" kindref="member">diagnostics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>diagnostics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="714"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaebc29e4eccb8de0556d22418b14bc930" kindref="member">hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="715"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="716"><highlight class="normal"></highlight></codeline>
+<codeline lineno="717"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="721" refid="classBaseCan_1a138f75fbc7c937fa12c50fc4466c3407" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseCan_1a138f75fbc7c937fa12c50fc4466c3407" kindref="member">BaseCan</ref>()<sp/>noexcept<sp/>:<sp/><ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>(false),<sp/><ref refid="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" kindref="member">statistics_</ref>{},<sp/><ref refid="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" kindref="member">diagnostics_</ref>{}<sp/>{}</highlight></codeline>
+<codeline lineno="722"><highlight class="normal"></highlight></codeline>
+<codeline lineno="723"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="724"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>VARIABLES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="725"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="726"><highlight class="normal"></highlight></codeline>
+<codeline lineno="727" refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="728" refid="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref><sp/><ref refid="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" kindref="member">statistics_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="729" refid="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref><sp/><ref refid="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" kindref="member">diagnostics_</ref>;<sp/></highlight></codeline>
+<codeline lineno="730"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="731"><highlight class="normal"></highlight></codeline>
+<codeline lineno="732"><highlight class="normal"></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="733"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>BASECAN<sp/>-<sp/>CLEAN<sp/>AND<sp/>MODERN<sp/>API<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="734"><highlight class="normal"></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BaseCan.h"/>
+  </compounddef>
+</doxygen>

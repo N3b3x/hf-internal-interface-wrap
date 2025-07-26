@@ -36,7 +36,7 @@ tests/build/
 **/dependencies.lock
 
 **/.vscode/
-**/docs/doxygen/
-docs/doxygen/
+**/docs/html/
+docs/html/
 .DS_Store
 **/doxygen*

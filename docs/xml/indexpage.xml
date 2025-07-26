@@ -1,0 +1,820 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>🚀 HardFOC Internal Interface Wrapper</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="index_1md_README"/> </para>
+<para><image type="html" name="https://img.shields.io/badge/HardFOC-Internal%20Interface%20Wrapper-blue?style=for-the-badge&amp;logo=hardware" alt="HardFOC" inline="yes"></image>
+ <image type="html" name="https://img.shields.io/badge/C++-17-blue?style=for-the-badge&amp;logo=cplusplus" alt="C++" inline="yes"></image>
+ <image type="html" name="https://img.shields.io/badge/Platform-ESP32--C6-green?style=for-the-badge&amp;logo=espressif" alt="Platform" inline="yes"></image>
+ <image type="html" name="https://img.shields.io/badge/License-MIT-green?style=for-the-badge&amp;logo=opensourceinitiative" alt="License" inline="yes"></image>
+</para>
+<para><bold>🎯 Unified hardware abstraction layer for HardFOC motor control systems</bold></para>
+<para><emphasis>A comprehensive, platform-agnostic interface wrapper that provides consistent APIs across different hardware implementations</emphasis></para>
+<para></para>
+<para><hruler/>
+</para>
+<sect1 id="index_1autotoc_md2">
+<title>📚 &lt;strong&gt;Table of Contents&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para>🎯 **Overview**</para>
+</listitem><listitem><para>🏗️ **Architecture**</para>
+</listitem><listitem><para>✨ **Key Features**</para>
+</listitem><listitem><para>🔌 **Supported Interfaces**</para>
+</listitem><listitem><para>🚀 **Quick Start**</para>
+</listitem><listitem><para>💡 **Usage Examples**</para>
+</listitem><listitem><para>📖 **Documentation**</para>
+</listitem><listitem><para>🔧 **Building**</para>
+</listitem><listitem><para>🤝 **Contributing**</para>
+</listitem><listitem><para>📄 **License**</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md4">
+<title>🎯 &lt;strong&gt;Overview&lt;/strong&gt;</title>
+<para>The <bold>HardFOC Internal Interface Wrapper</bold> is a comprehensive hardware abstraction layer designed specifically for HardFOC motor control systems. It provides a unified, platform-agnostic API that abstracts away the complexities of different hardware implementations while maintaining high performance and flexibility.</para>
+<sect2 id="index_1autotoc_md5">
+<title>🎯 &lt;strong&gt;Core Philosophy&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>🔌 Platform Agnostic</bold>: Write once, run anywhere - from ESP32-C6 to custom motor controllers</para>
+</listitem><listitem><para><bold>⚡ Performance First</bold>: Minimal overhead for real-time motor control applications</para>
+</listitem><listitem><para><bold>🛡️ Robust Error Handling</bold>: Comprehensive error codes and validation</para>
+</listitem><listitem><para><bold>🔄 Lazy Initialization</bold>: Resources allocated only when needed</para>
+</listitem><listitem><para><bold>📊 Built-in Diagnostics</bold>: Statistics and health monitoring for all interfaces</para>
+</listitem><listitem><para><bold>🎯 Type Safety</bold>: Consistent wrapped types (<computeroutput>hf_u8_t</computeroutput>, <computeroutput>hf_u32_t</computeroutput>, etc.) across the entire system</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md6">
+<title>🏆 &lt;strong&gt;Why Choose This Wrapper?&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>🎯 Motor Control Optimized</bold>: Designed specifically for HardFOC&apos;s real-time requirements</para>
+</listitem><listitem><para><bold>🔌 Hardware Flexibility</bold>: Support for internal MCU peripherals and external chips</para>
+</listitem><listitem><para><bold>📈 Scalable Architecture</bold>: Easy to add new hardware implementations</para>
+</listitem><listitem><para><bold>🛡️ Production Ready</bold>: Comprehensive error handling and validation</para>
+</listitem><listitem><para><bold>📚 Well Documented</bold>: Extensive API documentation with examples</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md8">
+<title>🏗️ &lt;strong&gt;Architecture&lt;/strong&gt;</title>
+<para>The wrapper follows a layered architecture that provides maximum flexibility while maintaining consistency:</para>
+<para><programlisting filename=".mermaid"><codeline><highlight class="normal">graph<sp/>TB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>subgraph<sp/>&quot;Application<sp/>Layer&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A[HardFOC<sp/>Application]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>M[Manager<sp/>Classes]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>end</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>subgraph<sp/>&quot;Hardware<sp/>Layer&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>B[BaseAdc]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>C[BaseGpio]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>D[BaseCan]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>E[BaseI2c]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>F[BaseSpi]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G[BaseUart]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>H[BasePwm]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>I[BasePio]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>J[BaseNvs]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>K[BasePeriodicTimer]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>end</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>subgraph<sp/>&quot;Platform<sp/>Implementations&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P1[EspAdc]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P2[EspGpio]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P3[EspCan]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P4[EspI2c]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P5[EspSpi]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P6[EspUart]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P7[EspPwm]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P8[EspPio]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P9[EspNvs]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>P10[EspPeriodicTimer]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>end</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>subgraph<sp/>&quot;External<sp/>Chip<sp/>Wrappers&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>W1[Tmc9660Gpio]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>W2[Tmc9660Adc]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>W3[Tmc9660Can]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>W4[Ads1x1xAdc]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>W5[Mcp2515Can]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>end</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>subgraph<sp/>&quot;Manager<sp/>Layer&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>AM[AdcManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GM[GpioManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CM[CanManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IM[I2cManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SM[SpiManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UM[UartManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PM[PwmManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>end</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>A<sp/>--&gt;<sp/>M</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>B</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>C</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>D</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>E</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>F</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>G</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>H</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>I</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>J</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>M<sp/>--&gt;<sp/>K</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>B<sp/>--&gt;<sp/>P1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>C<sp/>--&gt;<sp/>P2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>D<sp/>--&gt;<sp/>P3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E<sp/>--&gt;<sp/>P4</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>F<sp/>--&gt;<sp/>P5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>G<sp/>--&gt;<sp/>P6</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>H<sp/>--&gt;<sp/>P7</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>I<sp/>--&gt;<sp/>P8</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>J<sp/>--&gt;<sp/>P9</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>K<sp/>--&gt;<sp/>P10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>B<sp/>--&gt;<sp/>W2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>B<sp/>--&gt;<sp/>W4</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>C<sp/>--&gt;<sp/>W1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>D<sp/>--&gt;<sp/>W3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>D<sp/>--&gt;<sp/>W5</highlight></codeline>
+</programlisting></para>
+<sect2 id="index_1autotoc_md9">
+<title>🔧 &lt;strong&gt;Type System&lt;/strong&gt;</title>
+<para>The wrapper implements a comprehensive type wrapping system for consistency and portability:</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>Platform-agnostic<sp/>type<sp/>definitions</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>=<sp/>uint8_t;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>8-bit<sp/>unsigned</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>=<sp/>uint16_t;<sp/><sp/></highlight><highlight class="comment">//<sp/>16-bit<sp/>unsigned<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>=<sp/>uint32_t;<sp/><sp/></highlight><highlight class="comment">//<sp/>32-bit<sp/>unsigned</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>=<sp/>uint64_t;<sp/><sp/></highlight><highlight class="comment">//<sp/>64-bit<sp/>unsigned</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref><sp/>=<sp/>int8_t;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>8-bit<sp/>signed</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" kindref="member">hf_i16_t</ref><sp/>=<sp/>int16_t;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>16-bit<sp/>signed</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref><sp/>=<sp/>int32_t;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>32-bit<sp/>signed</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" kindref="member">hf_i64_t</ref><sp/>=<sp/>int64_t;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>64-bit<sp/>signed</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Hardware-specific<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO<sp/>pin<sp/>numbers</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ADC/PWM<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Communication<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Time<sp/>in<sp/>milliseconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;<sp/></highlight><highlight class="comment">//<sp/>Frequency<sp/>in<sp/>Hz</highlight></codeline>
+</programlisting></para>
+<para><bold>Benefits:</bold><itemizedlist>
+<listitem><para><bold>🔒 Type Consistency</bold>: All interfaces use the same type system</para>
+</listitem><listitem><para><bold>🔄 Portability</bold>: Easy to adapt to different platforms</para>
+</listitem><listitem><para><bold>🎯 Clarity</bold>: Clear distinction between platform types and wrapped types</para>
+</listitem><listitem><para><bold>🛡️ Safety</bold>: Prevents type mismatches across interfaces</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md11">
+<title>✨ &lt;strong&gt;Key Features&lt;/strong&gt;</title>
+<sect2 id="index_1autotoc_md12">
+<title>🔌 &lt;strong&gt;Multi-Platform Support&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>ESP32-C6</bold>: Full native peripheral support</para>
+</listitem><listitem><para><bold>External Chips</bold>: TMC9660, ADS1x1x, MCP2515, and more</para>
+</listitem><listitem><para><bold>Future Platforms</bold>: Easy to extend for new hardware</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md13">
+<title>⚡ &lt;strong&gt;Performance Optimized&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>Zero-Copy Operations</bold>: Direct hardware access where possible</para>
+</listitem><listitem><para><bold>Lazy Initialization</bold>: Resources allocated only when needed</para>
+</listitem><listitem><para><bold>Minimal Overhead</bold>: Designed for real-time motor control</para>
+</listitem><listitem><para><bold>Efficient Memory Usage</bold>: Optimized data structures</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md14">
+<title>🛡️ &lt;strong&gt;Robust Error Handling&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>Comprehensive Error Codes</bold>: Detailed error reporting for each interface</para>
+</listitem><listitem><para><bold>Validation</bold>: Parameter validation and bounds checking</para>
+</listitem><listitem><para><bold>Recovery</bold>: Automatic error recovery where possible</para>
+</listitem><listitem><para><bold>Diagnostics</bold>: Built-in health monitoring and statistics</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md15">
+<title>📊 &lt;strong&gt;Built-in Diagnostics&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>Statistics Tracking</bold>: Operation counts, timing, error rates</para>
+</listitem><listitem><para><bold>Health Monitoring</bold>: Real-time system health assessment</para>
+</listitem><listitem><para><bold>Performance Metrics</bold>: Throughput, latency, and efficiency data</para>
+</listitem><listitem><para><bold>Debug Support</bold>: Extensive debugging and logging capabilities</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md16">
+<title>🔄 &lt;strong&gt;Lazy Initialization&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>On-Demand Setup</bold>: Hardware initialized only when first used</para>
+</listitem><listitem><para><bold>Resource Management</bold>: Automatic cleanup and resource tracking</para>
+</listitem><listitem><para><bold>State Management</bold>: Consistent initialization state across all interfaces</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md18">
+<title>🔌 &lt;strong&gt;Supported Interfaces&lt;/strong&gt;</title>
+<para><table rows="11" cols="4"><row>
+<entry thead="yes"><para>Interface   </para>
+</entry><entry thead="yes"><para>Description   </para>
+</entry><entry thead="yes"><para>Implementations   </para>
+</entry><entry thead="yes"><para>Status    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>ADC</bold>   </para>
+</entry><entry thead="no"><para>Analog-to-Digital Conversion   </para>
+</entry><entry thead="no"><para>ESP32-C6, TMC9660, ADS1x1x   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>GPIO</bold>   </para>
+</entry><entry thead="no"><para>Digital Input/Output   </para>
+</entry><entry thead="no"><para>ESP32-C6, TMC9660, I2C/SPI expanders   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>CAN</bold>   </para>
+</entry><entry thead="no"><para>Controller Area Network   </para>
+</entry><entry thead="no"><para>ESP32-C6, MCP2515, TMC9660   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>I2C</bold>   </para>
+</entry><entry thead="no"><para>Inter-Integrated Circuit   </para>
+</entry><entry thead="no"><para>ESP32-C6, Bit-banged   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>SPI</bold>   </para>
+</entry><entry thead="no"><para>Serial Peripheral Interface   </para>
+</entry><entry thead="no"><para>ESP32-C6, Software SPI   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>UART</bold>   </para>
+</entry><entry thead="no"><para>Universal Asynchronous Receiver/Transmitter   </para>
+</entry><entry thead="no"><para>ESP32-C6, USB-to-serial   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>PWM</bold>   </para>
+</entry><entry thead="no"><para>Pulse Width Modulation   </para>
+</entry><entry thead="no"><para>ESP32-C6, External controllers   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>PIO</bold>   </para>
+</entry><entry thead="no"><para>Programmable I/O   </para>
+</entry><entry thead="no"><para>ESP32-C6, Custom implementations   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>NVS</bold>   </para>
+</entry><entry thead="no"><para>Non-Volatile Storage   </para>
+</entry><entry thead="no"><para>ESP32-C6, External flash   </para>
+</entry><entry thead="no"><para>✅ Complete    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>Timer</bold>   </para>
+</entry><entry thead="no"><para>Periodic Timers   </para>
+</entry><entry thead="no"><para>ESP32-C6, Hardware timers   </para>
+</entry><entry thead="no"><para>✅ Complete   </para>
+</entry></row>
+</table>
+</para>
+<sect2 id="index_1autotoc_md19">
+<title>🎯 &lt;strong&gt;Hardware Support Matrix&lt;/strong&gt;</title>
+<para><table rows="5" cols="11"><row>
+<entry thead="yes"><para>Hardware   </para>
+</entry><entry thead="yes"><para>ADC   </para>
+</entry><entry thead="yes"><para>GPIO   </para>
+</entry><entry thead="yes"><para>CAN   </para>
+</entry><entry thead="yes"><para>I2C   </para>
+</entry><entry thead="yes"><para>SPI   </para>
+</entry><entry thead="yes"><para>UART   </para>
+</entry><entry thead="yes"><para>PWM   </para>
+</entry><entry thead="yes"><para>PIO   </para>
+</entry><entry thead="yes"><para>NVS   </para>
+</entry><entry thead="yes"><para>Timer    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>ESP32-C6</bold>   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>TMC9660</bold>   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>ADS1x1x</bold>   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><bold>MCP2515</bold>   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>✅   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry><entry thead="no"><para>❌   </para>
+</entry></row>
+</table>
+</para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md21">
+<title>🚀 &lt;strong&gt;Quick Start&lt;/strong&gt;</title>
+<sect2 id="index_1autotoc_md22">
+<title>📋 &lt;strong&gt;Prerequisites&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>ESP-IDF v5.0+</bold> for ESP32-C6 development</para>
+</listitem><listitem><para><bold>C++17</bold> compatible compiler</para>
+</listitem><listitem><para><bold>CMake 3.16+</bold> for build system</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md23">
+<title>🔧 &lt;strong&gt;Installation&lt;/strong&gt;</title>
+<para><orderedlist>
+<listitem><para><bold>Clone the repository:</bold> <programlisting filename=".bash"><codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/hardfoc/hf-internal-interface-wrap.git</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>hf-internal-interface-wrap</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para><bold>Add to your ESP-IDF project:</bold> <programlisting filename=".cmake"><codeline><highlight class="normal">#<sp/>In<sp/>your<sp/>project&apos;s<sp/>CMakeLists.txt</highlight></codeline>
+<codeline><highlight class="normal">idf_component_register(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SRCS<sp/>&quot;main.cpp&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>INCLUDE_DIRS<sp/>&quot;.&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>REQUIRES<sp/>iid-espidf</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para><bold>Include the headers:</bold> <programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseAdc_8h" kindref="compound">inc/base/BaseAdc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseGpio_8h" kindref="compound">inc/base/BaseGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseCan_8h" kindref="compound">inc/base/BaseCan.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspAdc_8h" kindref="compound">mcu/esp32/EspAdc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspGpio_8h" kindref="compound">mcu/esp32/EspGpio.h</ref>&quot;</highlight></codeline>
+</programlisting></para>
+</listitem></orderedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md24">
+<title>💡 &lt;strong&gt;Basic Usage&lt;/strong&gt;</title>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspAdc_8h" kindref="compound">mcu/esp32/EspAdc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspGpio_8h" kindref="compound">mcu/esp32/EspGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Create<sp/>hardware<sp/>instances</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">EspAdc<sp/>adc(ADC_UNIT_1,<sp/>ADC_ATTEN_DB_11);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspGpio" kindref="compound">EspGpio</ref><sp/>led_pin(2,<sp/><ref refid="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3ae8b58d24a05839b6d1c0305c945748b0" kindref="member">hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>hardware<sp/>(lazy<sp/>initialization)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>adc.EnsureInitialized();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>led_pin.EnsureInitialized();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>GPIO</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>led_pin.SetActiveState(<ref refid="group__gpio_1ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356" kindref="member">hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH</ref>);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>ADC<sp/>voltage</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>voltage;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(adc.ReadChannelV(0,<sp/>voltage)<sp/>==<sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Voltage:<sp/>%.3f<sp/>V\n&quot;</highlight><highlight class="normal">,<sp/>voltage);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Control<sp/>LED<sp/>based<sp/>on<sp/>voltage</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(voltage<sp/>&gt;<sp/>2.0f)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led_pin.SetActive();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led_pin.SetInactive();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(100));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md26">
+<title>💡 &lt;strong&gt;Usage Examples&lt;/strong&gt;</title>
+<sect2 id="index_1autotoc_md27">
+<title>🔌 &lt;strong&gt;Multi-Hardware ADC Reading&lt;/strong&gt;</title>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspAdc_8h" kindref="compound">mcu/esp32/EspAdc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;external/Tmc9660Adc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;external/Ads1x1xAdc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MultiSourceAdc<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>EspAdc<sp/>internal_adc_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Tmc9660Adc<sp/>motor_adc_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Ads1x1xAdc<sp/>external_adc_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MultiSourceAdc()<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>internal_adc_(ADC_UNIT_1,<sp/>ADC_ATTEN_DB_11)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>motor_adc_(</highlight><highlight class="comment">/*<sp/>TMC9660<sp/>controller<sp/>*/</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>external_adc_(</highlight><highlight class="comment">/*<sp/>I2C<sp/>bus,<sp/>address<sp/>*/</highlight><highlight class="normal">)<sp/>{}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>internal_adc_.EnsureInitialized()<sp/>&amp;&amp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_adc_.EnsureInitialized()<sp/>&amp;&amp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>external_adc_.EnsureInitialized();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">SensorData<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>battery_voltage;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Internal<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>motor_current;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TMC9660<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>temperature;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>External<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SensorData<sp/>read_all_sensors()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SensorData<sp/>data<sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>from<sp/>internal<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_adc_.ReadChannelV(0,<sp/>data.battery_voltage);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>from<sp/>motor<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_adc_.ReadChannelV(0,<sp/>data.motor_current);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>from<sp/>external<sp/>ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>external_adc_.ReadChannelV(0,<sp/>data.temperature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="index_1autotoc_md28">
+<title>🎛️ &lt;strong&gt;GPIO Manager with Multiple Sources&lt;/strong&gt;</title>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspGpio_8h" kindref="compound">mcu/esp32/EspGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;external/Tmc9660Gpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;utils/GpioManager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">HardwareManager<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspGpio" kindref="compound">EspGpio</ref><sp/>esp_led_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspGpio" kindref="compound">EspGpio</ref><sp/>esp_button_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Tmc9660Gpio<sp/>motor_enable_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Tmc9660Gpio<sp/>motor_fault_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GpioManager<sp/>gpio_manager_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HardwareManager()<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>esp_led_(2,<sp/><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref>::<ref refid="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3ae8b58d24a05839b6d1c0305c945748b0" kindref="member">HF_GPIO_DIRECTION_OUTPUT</ref>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>esp_button_(0,<sp/><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref>::<ref refid="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3a5090403a0f4f177d6fb813cd9d06bf1e" kindref="member">HF_GPIO_DIRECTION_INPUT</ref>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>motor_enable_(</highlight><highlight class="comment">/*<sp/>TMC9660<sp/>pin<sp/>*/</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>motor_fault_(</highlight><highlight class="comment">/*<sp/>TMC9660<sp/>pin<sp/>*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>all<sp/>GPIO<sp/>pins<sp/>with<sp/>manager</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.RegisterPin(</highlight><highlight class="stringliteral">&quot;status_led&quot;</highlight><highlight class="normal">,<sp/>&amp;esp_led_);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.RegisterPin(</highlight><highlight class="stringliteral">&quot;user_button&quot;</highlight><highlight class="normal">,<sp/>&amp;esp_button_);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.RegisterPin(</highlight><highlight class="stringliteral">&quot;motor_enable&quot;</highlight><highlight class="normal">,<sp/>&amp;motor_enable_);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.RegisterPin(</highlight><highlight class="stringliteral">&quot;motor_fault&quot;</highlight><highlight class="normal">,<sp/>&amp;motor_fault_);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>gpio_manager_.<ref refid="classEspGpio_1a49e15d19126b54ba23a5c7e928dc0bb3" kindref="member">Initialize</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handle_user_input()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>button_pressed;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio_manager_.ReadPin(</highlight><highlight class="stringliteral">&quot;user_button&quot;</highlight><highlight class="normal">,<sp/>button_pressed)<sp/>==<sp/><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(button_pressed)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Toggle<sp/>motor<sp/>enable</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>current_state;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.ReadPin(</highlight><highlight class="stringliteral">&quot;motor_enable&quot;</highlight><highlight class="normal">,<sp/>current_state);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.WritePin(</highlight><highlight class="stringliteral">&quot;motor_enable&quot;</highlight><highlight class="normal">,<sp/>!current_state);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>status<sp/>LED</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.WritePin(</highlight><highlight class="stringliteral">&quot;status_led&quot;</highlight><highlight class="normal">,<sp/>!current_state);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>check_motor_fault()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fault_detected;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gpio_manager_.ReadPin(</highlight><highlight class="stringliteral">&quot;motor_fault&quot;</highlight><highlight class="normal">,<sp/>fault_detected)<sp/>==<sp/><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fault_detected)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;🚨<sp/>Motor<sp/>fault<sp/>detected!\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.WritePin(</highlight><highlight class="stringliteral">&quot;motor_enable&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_manager_.WritePin(</highlight><highlight class="stringliteral">&quot;status_led&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fault<sp/>indicator</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="index_1autotoc_md29">
+<title>📡 &lt;strong&gt;CAN Communication with Multiple Controllers&lt;/strong&gt;</title>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspCan_8h" kindref="compound">mcu/esp32/EspCan.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;external/Mcp2515Can.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;utils/CanManager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">CanNetworkManager<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>EspCan<sp/>internal_can_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Mcp2515Can<sp/>external_can_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CanManager<sp/>can_manager_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CanNetworkManager()<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>internal_can_(</highlight><highlight class="comment">/*<sp/>CAN<sp/>config<sp/>*/</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>external_can_(</highlight><highlight class="comment">/*<sp/>SPI<sp/>bus,<sp/>CS<sp/>pin<sp/>*/</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>CAN<sp/>controllers</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>can_manager_.RegisterController(</highlight><highlight class="stringliteral">&quot;internal&quot;</highlight><highlight class="normal">,<sp/>&amp;internal_can_);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>can_manager_.RegisterController(</highlight><highlight class="stringliteral">&quot;external&quot;</highlight><highlight class="normal">,<sp/>&amp;external_can_);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>can_manager_.Initialize();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>send_motor_command(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>motor_id,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>target_velocity)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref><sp/>msg;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhf__can__message__t_1a0b85c579dd4bb8ad383e91510ef5e1f4" kindref="member">id</ref><sp/>=<sp/>motor_id;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" kindref="member">is_extended</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pack<sp/>velocity<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>velocity_raw<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(target_velocity<sp/>*<sp/>1000.0f);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[0]<sp/>=<sp/>(velocity_raw<sp/>&gt;&gt;<sp/>24)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[1]<sp/>=<sp/>(velocity_raw<sp/>&gt;&gt;<sp/>16)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[2]<sp/>=<sp/>(velocity_raw<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.<ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[3]<sp/>=<sp/>velocity_raw<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>on<sp/>internal<sp/>CAN<sp/>bus</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>can_manager_.SendMessage(</highlight><highlight class="stringliteral">&quot;internal&quot;</highlight><highlight class="normal">,<sp/>msg);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handle_can_messages()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref><sp/>msg;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>source;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(can_manager_.ReceiveMessage(source,<sp/>msg)<sp/>==<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;📡<sp/>CAN<sp/>message<sp/>from<sp/>%s:<sp/>ID=0x%X,<sp/>DLC=%u\n&quot;</highlight><highlight class="normal">,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source.c_str(),<sp/>msg.<ref refid="structhf__can__message__t_1a0b85c579dd4bb8ad383e91510ef5e1f4" kindref="member">id</ref>,<sp/>msg.<ref refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kindref="member">dlc</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>message<sp/>based<sp/>on<sp/>source<sp/>and<sp/>ID</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(source<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;internal&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>msg.<ref refid="structhf__can__message__t_1a0b85c579dd4bb8ad383e91510ef5e1f4" kindref="member">id</ref><sp/>==<sp/>0x100)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Motor<sp/>feedback</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>position<sp/>=<sp/>(msg.<ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[0]<sp/>&lt;&lt;<sp/>24)<sp/>|<sp/>(msg.<ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[1]<sp/>&lt;&lt;<sp/>16)<sp/>|<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(msg.<ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[2]<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>msg.<ref refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kindref="member">data</ref>[3];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>position:<sp/>%u\n&quot;</highlight><highlight class="normal">,<sp/>position);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="index_1autotoc_md30">
+<title>🔄 &lt;strong&gt;Periodic Timer with Callbacks&lt;/strong&gt;</title>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspPeriodicTimer_8h" kindref="compound">mcu/esp32/EspPeriodicTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MotorControlSystem<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref><sp/>control_timer_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref><sp/>safety_timer_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MotorControlSystem()<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>control_timer_(1000)<sp/><sp/></highlight><highlight class="comment">//<sp/>1kHz<sp/>control<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>safety_timer_(100)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10Hz<sp/>safety<sp/>check</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>up<sp/>control<sp/>loop<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>control_timer_.<ref refid="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" kindref="member">SetCallback</ref>([</highlight><highlight class="keyword">this</highlight><highlight class="normal">]()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;control_loop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>up<sp/>safety<sp/>check<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safety_timer_.<ref refid="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" kindref="member">SetCallback</ref>([</highlight><highlight class="keyword">this</highlight><highlight class="normal">]()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;safety_check();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>control_timer_.EnsureInitialized()<sp/>&amp;&amp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safety_timer_.EnsureInitialized();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>start()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>control_timer_.<ref refid="classEspPeriodicTimer_1ac352033e596e27719ede7c11ec860d40" kindref="member">Start</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safety_timer_.<ref refid="classEspPeriodicTimer_1ac352033e596e27719ede7c11ec860d40" kindref="member">Start</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>stop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>control_timer_.<ref refid="classEspPeriodicTimer_1ab7916bb8965569cba0e5f2da171b2b5d" kindref="member">Stop</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safety_timer_.<ref refid="classEspPeriodicTimer_1ab7916bb8965569cba0e5f2da171b2b5d" kindref="member">Stop</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>control_loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>High-frequency<sp/>motor<sp/>control<sp/>logic</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>runs<sp/>at<sp/>1kHz</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>safety_check()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Low-frequency<sp/>safety<sp/>monitoring</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>runs<sp/>at<sp/>10Hz</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md32">
+<title>📖 &lt;strong&gt;Documentation&lt;/strong&gt;</title>
+<sect2 id="index_1autotoc_md33">
+<title>📚 &lt;strong&gt;API Reference&lt;/strong&gt;</title>
+<para>Comprehensive API documentation is available for all interfaces:</para>
+<para><itemizedlist>
+<listitem><para>📊 **BaseAdc** - Analog-to-Digital Conversion</para>
+</listitem><listitem><para>🔌 **BaseGpio** - Digital Input/Output</para>
+</listitem><listitem><para>📡 **BaseCan** - Controller Area Network</para>
+</listitem><listitem><para>🔗 **BaseI2c** - Inter-Integrated Circuit</para>
+</listitem><listitem><para>⚡ **BaseSpi** - Serial Peripheral Interface</para>
+</listitem><listitem><para>📤 **BaseUart** - Universal Asynchronous Receiver/Transmitter</para>
+</listitem><listitem><para>🎛️ **BasePwm** - Pulse Width Modulation</para>
+</listitem><listitem><para>🔧 **BasePio** - Programmable I/O</para>
+</listitem><listitem><para>💾 **BaseNvs** - Non-Volatile Storage</para>
+</listitem><listitem><para>⏰ **BasePeriodicTimer** - Periodic Timers</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md34">
+<title>🎯 &lt;strong&gt;Type System Documentation&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para>🔧 **Hardware Types** - Platform-agnostic type definitions</para>
+</listitem><listitem><para>🛡️ **Error Codes** - Comprehensive error handling system</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md35">
+<title>📖 &lt;strong&gt;Guides and Examples&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para>🚀 **Getting Started** - Quick start guide</para>
+</listitem><listitem><para>🔌 **Hardware Integration** - Adding new hardware</para>
+</listitem><listitem><para>🛡️ **Error Handling** - Best practices for error handling</para>
+</listitem><listitem><para>📊 **Performance Optimization** - Performance tuning guide</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md37">
+<title>🔧 &lt;strong&gt;Building&lt;/strong&gt;</title>
+<sect2 id="index_1autotoc_md38">
+<title>📋 &lt;strong&gt;Requirements&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>ESP-IDF v5.0+</bold></para>
+</listitem><listitem><para><bold>C++17</bold> compiler</para>
+</listitem><listitem><para><bold>CMake 3.16+</bold></para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md39">
+<title>🏗️ &lt;strong&gt;Build Process&lt;/strong&gt;</title>
+<para><orderedlist>
+<listitem><para><bold>Set up ESP-IDF environment:</bold> <programlisting filename=".bash"><codeline><highlight class="normal">source<sp/>$IDF_PATH/export.sh</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para><bold>Configure the project:</bold> <programlisting filename=".bash"><codeline><highlight class="normal">idf.py<sp/>menuconfig</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para><bold>Build the project:</bold> <programlisting filename=".bash"><codeline><highlight class="normal">idf.py<sp/>build</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para><bold>Flash to device:</bold> <programlisting filename=".bash"><codeline><highlight class="normal">idf.py<sp/>flash<sp/>monitor</highlight></codeline>
+</programlisting></para>
+</listitem></orderedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md40">
+<title>🔧 &lt;strong&gt;Configuration Options&lt;/strong&gt;</title>
+<para>The wrapper supports various configuration options through ESP-IDF&apos;s menuconfig:</para>
+<para><itemizedlist>
+<listitem><para><bold>Interface Selection</bold>: Enable/disable specific interfaces</para>
+</listitem><listitem><para><bold>Buffer Sizes</bold>: Configure buffer sizes for communication interfaces</para>
+</listitem><listitem><para><bold>Timeout Values</bold>: Set default timeout values</para>
+</listitem><listitem><para><bold>Debug Options</bold>: Enable debug logging and diagnostics</para>
+</listitem><listitem><para><bold>Performance Options</bold>: Configure for performance vs. memory usage</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md42">
+<title>🤝 &lt;strong&gt;Contributing&lt;/strong&gt;</title>
+<para>We welcome contributions! Please see our Contributing Guide for details.</para>
+<sect2 id="index_1autotoc_md43">
+<title>🎯 &lt;strong&gt;Development Setup&lt;/strong&gt;</title>
+<para><orderedlist>
+<listitem><para><bold>Fork the repository</bold></para>
+</listitem><listitem><para><bold>Create a feature branch</bold></para>
+</listitem><listitem><para><bold>Make your changes</bold></para>
+</listitem><listitem><para><bold>Add tests and documentation</bold></para>
+</listitem><listitem><para><bold>Submit a pull request</bold></para>
+</listitem></orderedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md44">
+<title>📋 &lt;strong&gt;Code Style&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>C++17</bold> standard</para>
+</listitem><listitem><para><bold>snake_case</bold> for functions and variables</para>
+</listitem><listitem><para><bold>CamelCase</bold> for classes and types</para>
+</listitem><listitem><para><bold>Comprehensive documentation</bold> for all public APIs</para>
+</listitem><listitem><para><bold>Error handling</bold> for all operations</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md45">
+<title>🧪 &lt;strong&gt;Testing&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>Unit tests</bold> for all interfaces</para>
+</listitem><listitem><para><bold>Integration tests</bold> for hardware combinations</para>
+</listitem><listitem><para><bold>Performance benchmarks</bold> for critical paths</para>
+</listitem><listitem><para><bold>Memory leak detection</bold> and validation</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md47">
+<title>📄 &lt;strong&gt;License&lt;/strong&gt;</title>
+<para>This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.</para>
+<sect2 id="index_1autotoc_md48">
+<title>📜 &lt;strong&gt;License Summary&lt;/strong&gt;</title>
+<para><itemizedlist>
+<listitem><para><bold>✅ Commercial Use</bold>: Allowed</para>
+</listitem><listitem><para><bold>✅ Modification</bold>: Allowed <linebreak/>
+</para>
+</listitem><listitem><para><bold>✅ Distribution</bold>: Allowed</para>
+</listitem><listitem><para><bold>✅ Private Use</bold>: Allowed</para>
+</listitem><listitem><para><bold>❌ Liability</bold>: Limited</para>
+</listitem><listitem><para><bold>❌ Warranty</bold>: None</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para></para>
+<para><bold>🚀 Built with ❤️ for the HardFOC community</bold></para>
+<para><emphasis>Empowering motor control innovation through robust, flexible, and performant hardware abstraction</emphasis></para>
+<para> </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__gpio__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_gpio_diagnostics_t</compoundname>
+    <includes refid="BaseGpio_8h" local="no">BaseGpio.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1a5c298feebbd6638ca9f64268e82d6e67" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_diagnostics_t::gpioHealthy</definition>
+        <argsstring></argsstring>
+        <name>gpioHealthy</name>
+        <qualifiedname>hf_gpio_diagnostics_t::gpioHealthy</qualifiedname>
+        <briefdescription>
+<para>Overall GPIO health status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="259" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1a31b12ce34753056aac64fedba28b1879" prot="public" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t hf_gpio_diagnostics_t::lastErrorCode</definition>
+        <argsstring></argsstring>
+        <name>lastErrorCode</name>
+        <qualifiedname>hf_gpio_diagnostics_t::lastErrorCode</qualifiedname>
+        <briefdescription>
+<para>Last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="260" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1ac78b41c4796c7a75c06a0ee81ce84548" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_diagnostics_t::lastErrorTimestamp</definition>
+        <argsstring></argsstring>
+        <name>lastErrorTimestamp</name>
+        <qualifiedname>hf_gpio_diagnostics_t::lastErrorTimestamp</qualifiedname>
+        <briefdescription>
+<para>Last error timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="261" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1a5a1c2588b692c0855bd568ce8f3b15f7" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_diagnostics_t::consecutiveErrors</definition>
+        <argsstring></argsstring>
+        <name>consecutiveErrors</name>
+        <qualifiedname>hf_gpio_diagnostics_t::consecutiveErrors</qualifiedname>
+        <briefdescription>
+<para>Consecutive error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="262" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1a710b653c565502856fd9d315971f83bb" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_diagnostics_t::pinAvailable</definition>
+        <argsstring></argsstring>
+        <name>pinAvailable</name>
+        <qualifiedname>hf_gpio_diagnostics_t::pinAvailable</qualifiedname>
+        <briefdescription>
+<para>Pin availability status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="263" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1adcf06a0c92672015d2edee04e2dfa77e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_diagnostics_t::interruptSupported</definition>
+        <argsstring></argsstring>
+        <name>interruptSupported</name>
+        <qualifiedname>hf_gpio_diagnostics_t::interruptSupported</qualifiedname>
+        <briefdescription>
+<para>Interrupt support status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="264" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1a7c1405d16c54202418b8c391eab941e1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_diagnostics_t::interruptEnabled</definition>
+        <argsstring></argsstring>
+        <name>interruptEnabled</name>
+        <qualifiedname>hf_gpio_diagnostics_t::interruptEnabled</qualifiedname>
+        <briefdescription>
+<para>Interrupt enabled status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="265" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__diagnostics__t_1abc79370eecf278758f4b13dc79db293d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_diagnostics_t::currentState</definition>
+        <argsstring></argsstring>
+        <name>currentState</name>
+        <qualifiedname>hf_gpio_diagnostics_t::currentState</qualifiedname>
+        <briefdescription>
+<para>Current pin state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="266" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__gpio__diagnostics__t_1a5683248a285a9a030ebf19722098fb8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_gpio_diagnostics_t::hf_gpio_diagnostics_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_gpio_diagnostics_t</name>
+        <qualifiedname>hf_gpio_diagnostics_t::hf_gpio_diagnostics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="268" column="3" bodyfile="inc/base/BaseGpio.h" bodystart="268" bodyend="271"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO diagnostic information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseGpio.h" line="258" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="258" bodyend="272"/>
+    <listofallmembers>
+      <member refid="structhf__gpio__diagnostics__t_1a5a1c2588b692c0855bd568ce8f3b15f7" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>consecutiveErrors</name></member>
+      <member refid="structhf__gpio__diagnostics__t_1abc79370eecf278758f4b13dc79db293d" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>currentState</name></member>
+      <member refid="structhf__gpio__diagnostics__t_1a5c298feebbd6638ca9f64268e82d6e67" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>gpioHealthy</name></member>
+      <member refid="structhf__gpio__diagnostics__t_1a5683248a285a9a030ebf19722098fb8d" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>hf_gpio_diagnostics_t</name></member>
+      <member refid="structhf__gpio__diagnostics__t_1a7c1405d16c54202418b8c391eab941e1" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>interruptEnabled</name></member>
+      <member refid="structhf__gpio__diagnostics__t_1adcf06a0c92672015d2edee04e2dfa77e" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>interruptSupported</name></member>
+      <member refid="structhf__gpio__diagnostics__t_1a31b12ce34753056aac64fedba28b1879" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>lastErrorCode</name></member>
+      <member refid="structhf__gpio__diagnostics__t_1ac78b41c4796c7a75c06a0ee81ce84548" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>lastErrorTimestamp</name></member>
+      <member refid="structhf__gpio__diagnostics__t_1a710b653c565502856fd9d315971f83bb" prot="public" virt="non-virtual"><scope>hf_gpio_diagnostics_t</scope><name>pinAvailable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

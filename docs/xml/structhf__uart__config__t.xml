@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__uart__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_uart_config_t</compoundname>
+    <includes refid="EspTypes__UART_8h" local="no">EspTypes_UART.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__uart__config__t_1afdc6f2316977e5a7a400ce2031e49c1c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref></type>
+        <definition>hf_port_num_t hf_uart_config_t::port_number</definition>
+        <argsstring></argsstring>
+        <name>port_number</name>
+        <qualifiedname>hf_uart_config_t::port_number</qualifiedname>
+        <briefdescription>
+<para>UART port number (0, 1, 2) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="115" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a1f63adb11ea6e211eeeb2898a8e89a58" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" kindref="member">hf_baud_rate_t</ref></type>
+        <definition>hf_baud_rate_t hf_uart_config_t::baud_rate</definition>
+        <argsstring></argsstring>
+        <name>baud_rate</name>
+        <qualifiedname>hf_uart_config_t::baud_rate</qualifiedname>
+        <briefdescription>
+<para>Baud rate in bits per second. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="116" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a383ecf7d40d1f36e06cf3321e491c4cf" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8" kindref="member">hf_uart_data_bits_t</ref></type>
+        <definition>hf_uart_data_bits_t hf_uart_config_t::data_bits</definition>
+        <argsstring></argsstring>
+        <name>data_bits</name>
+        <qualifiedname>hf_uart_config_t::data_bits</qualifiedname>
+        <briefdescription>
+<para>Data bits (5-8) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="117" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a61cd78d7fcd061d2c9c8f37440bae1a8" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979" kindref="member">hf_uart_parity_t</ref></type>
+        <definition>hf_uart_parity_t hf_uart_config_t::parity</definition>
+        <argsstring></argsstring>
+        <name>parity</name>
+        <qualifiedname>hf_uart_config_t::parity</qualifiedname>
+        <briefdescription>
+<para>Parity configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="118" column="20" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a7cec6d7832a7847af8b1eb20fb107bef" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4" kindref="member">hf_uart_stop_bits_t</ref></type>
+        <definition>hf_uart_stop_bits_t hf_uart_config_t::stop_bits</definition>
+        <argsstring></argsstring>
+        <name>stop_bits</name>
+        <qualifiedname>hf_uart_config_t::stop_bits</qualifiedname>
+        <briefdescription>
+<para>Stop bits (1, 1.5, 2) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="119" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1ab00b8ede5884c89c661f87fbfab049c4" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821b" kindref="member">hf_uart_flow_ctrl_t</ref></type>
+        <definition>hf_uart_flow_ctrl_t hf_uart_config_t::flow_control</definition>
+        <argsstring></argsstring>
+        <name>flow_control</name>
+        <qualifiedname>hf_uart_config_t::flow_control</qualifiedname>
+        <briefdescription>
+<para>Hardware flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="120" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a76ac681f25341a9eb9f96d5fbcee0ede" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_pin_num_t hf_uart_config_t::tx_pin</definition>
+        <argsstring></argsstring>
+        <name>tx_pin</name>
+        <qualifiedname>hf_uart_config_t::tx_pin</qualifiedname>
+        <briefdescription>
+<para>TX pin number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="121" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1acca6c345efac84a616bc42c88efa0cf5" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_pin_num_t hf_uart_config_t::rx_pin</definition>
+        <argsstring></argsstring>
+        <name>rx_pin</name>
+        <qualifiedname>hf_uart_config_t::rx_pin</qualifiedname>
+        <briefdescription>
+<para>RX pin number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="122" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a55c9803976664245d373656ba64cf51d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_pin_num_t hf_uart_config_t::rts_pin</definition>
+        <argsstring></argsstring>
+        <name>rts_pin</name>
+        <qualifiedname>hf_uart_config_t::rts_pin</qualifiedname>
+        <briefdescription>
+<para>RTS pin number (optional) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="123" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a2958a92eeb0c1fbae55042773e807edc" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_pin_num_t hf_uart_config_t::cts_pin</definition>
+        <argsstring></argsstring>
+        <name>cts_pin</name>
+        <qualifiedname>hf_uart_config_t::cts_pin</qualifiedname>
+        <briefdescription>
+<para>CTS pin number (optional) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="124" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a64891fef55888ddc1a6bd8657d8baaa8" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_uart_config_t::tx_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>tx_buffer_size</name>
+        <qualifiedname>hf_uart_config_t::tx_buffer_size</qualifiedname>
+        <briefdescription>
+<para>TX buffer size in bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="125" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1ab4cfd06f761353a95f61a017ce34e58b" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_uart_config_t::rx_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>rx_buffer_size</name>
+        <qualifiedname>hf_uart_config_t::rx_buffer_size</qualifiedname>
+        <briefdescription>
+<para>RX buffer size in bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="126" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1ac900846b55ea570c1dc09adf759492e1" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_uart_config_t::event_queue_size</definition>
+        <argsstring></argsstring>
+        <name>event_queue_size</name>
+        <qualifiedname>hf_uart_config_t::event_queue_size</qualifiedname>
+        <briefdescription>
+<para>Event queue size for interrupt mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="127" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1acb58788a89ca522dba9b9507d2410a01" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref></type>
+        <definition>hf_uart_operating_mode_t hf_uart_config_t::operating_mode</definition>
+        <argsstring></argsstring>
+        <name>operating_mode</name>
+        <qualifiedname>hf_uart_config_t::operating_mode</qualifiedname>
+        <briefdescription>
+<para>Operating mode (polling/interrupt/DMA) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="128" column="28" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a81763a86639f22bd295d61dd4b070f21" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref></type>
+        <definition>hf_timeout_ms_t hf_uart_config_t::timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>timeout_ms</name>
+        <qualifiedname>hf_uart_config_t::timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Default timeout for operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="129" column="19" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a039cf02dfa0fe29334ca05c11ba5c272" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_config_t::enable_pattern_detection</definition>
+        <argsstring></argsstring>
+        <name>enable_pattern_detection</name>
+        <qualifiedname>hf_uart_config_t::enable_pattern_detection</qualifiedname>
+        <briefdescription>
+<para>Enable pattern detection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="130" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1a86ddff3eb48856f1cf3aff181b3eb1ef" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_config_t::enable_wakeup</definition>
+        <argsstring></argsstring>
+        <name>enable_wakeup</name>
+        <qualifiedname>hf_uart_config_t::enable_wakeup</qualifiedname>
+        <briefdescription>
+<para>Enable UART wakeup from sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="131" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__config__t_1ae4808d8dfd4c046b7dd245e3a7eba4d2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_config_t::enable_loopback</definition>
+        <argsstring></argsstring>
+        <name>enable_loopback</name>
+        <qualifiedname>hf_uart_config_t::enable_loopback</qualifiedname>
+        <briefdescription>
+<para>Enable loopback mode for testing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="132" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__uart__config__t_1af510baede31d9161aaa0865359c4d0a0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_uart_config_t::hf_uart_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_uart_config_t</name>
+        <qualifiedname>hf_uart_config_t::hf_uart_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="134" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="134" bodyend="142"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 UART port configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="114" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="114" bodyend="143"/>
+    <listofallmembers>
+      <member refid="structhf__uart__config__t_1a1f63adb11ea6e211eeeb2898a8e89a58" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>baud_rate</name></member>
+      <member refid="structhf__uart__config__t_1a2958a92eeb0c1fbae55042773e807edc" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>cts_pin</name></member>
+      <member refid="structhf__uart__config__t_1a383ecf7d40d1f36e06cf3321e491c4cf" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>data_bits</name></member>
+      <member refid="structhf__uart__config__t_1ae4808d8dfd4c046b7dd245e3a7eba4d2" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>enable_loopback</name></member>
+      <member refid="structhf__uart__config__t_1a039cf02dfa0fe29334ca05c11ba5c272" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>enable_pattern_detection</name></member>
+      <member refid="structhf__uart__config__t_1a86ddff3eb48856f1cf3aff181b3eb1ef" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>enable_wakeup</name></member>
+      <member refid="structhf__uart__config__t_1ac900846b55ea570c1dc09adf759492e1" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>event_queue_size</name></member>
+      <member refid="structhf__uart__config__t_1ab00b8ede5884c89c661f87fbfab049c4" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>flow_control</name></member>
+      <member refid="structhf__uart__config__t_1af510baede31d9161aaa0865359c4d0a0" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>hf_uart_config_t</name></member>
+      <member refid="structhf__uart__config__t_1acb58788a89ca522dba9b9507d2410a01" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>operating_mode</name></member>
+      <member refid="structhf__uart__config__t_1a61cd78d7fcd061d2c9c8f37440bae1a8" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>parity</name></member>
+      <member refid="structhf__uart__config__t_1afdc6f2316977e5a7a400ce2031e49c1c" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>port_number</name></member>
+      <member refid="structhf__uart__config__t_1a55c9803976664245d373656ba64cf51d" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>rts_pin</name></member>
+      <member refid="structhf__uart__config__t_1ab4cfd06f761353a95f61a017ce34e58b" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>rx_buffer_size</name></member>
+      <member refid="structhf__uart__config__t_1acca6c345efac84a616bc42c88efa0cf5" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>rx_pin</name></member>
+      <member refid="structhf__uart__config__t_1a7cec6d7832a7847af8b1eb20fb107bef" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>stop_bits</name></member>
+      <member refid="structhf__uart__config__t_1a81763a86639f22bd295d61dd4b070f21" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>timeout_ms</name></member>
+      <member refid="structhf__uart__config__t_1a64891fef55888ddc1a6bd8657d8baaa8" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>tx_buffer_size</name></member>
+      <member refid="structhf__uart__config__t_1a76ac681f25341a9eb9f96d5fbcee0ede" prot="public" virt="non-virtual"><scope>hf_uart_config_t</scope><name>tx_pin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

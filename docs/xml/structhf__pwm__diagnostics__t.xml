@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__pwm__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pwm_diagnostics_t</compoundname>
+    <includes refid="BasePwm_8h" local="no">BasePwm.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pwm__diagnostics__t_1aa908bfc2c0658b5310c31e83d6be0bed" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_diagnostics_t::hardware_initialized</definition>
+        <argsstring></argsstring>
+        <name>hardware_initialized</name>
+        <qualifiedname>hf_pwm_diagnostics_t::hardware_initialized</qualifiedname>
+        <briefdescription>
+<para>Hardware is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="115" column="8" bodyfile="inc/base/BasePwm.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__diagnostics__t_1a2cb06f85138f6abb317379fbba33e0f1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_diagnostics_t::fade_functionality_ready</definition>
+        <argsstring></argsstring>
+        <name>fade_functionality_ready</name>
+        <qualifiedname>hf_pwm_diagnostics_t::fade_functionality_ready</qualifiedname>
+        <briefdescription>
+<para>Hardware fade is ready. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="116" column="8" bodyfile="inc/base/BasePwm.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__diagnostics__t_1ac3c08b7a63d3b14a1c4012f9123f459a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_pwm_diagnostics_t::active_channels</definition>
+        <argsstring></argsstring>
+        <name>active_channels</name>
+        <qualifiedname>hf_pwm_diagnostics_t::active_channels</qualifiedname>
+        <briefdescription>
+<para>Number of active channels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="117" column="11" bodyfile="inc/base/BasePwm.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__diagnostics__t_1a696547f39aed2a095016a1fc6b6880bf" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_pwm_diagnostics_t::active_timers</definition>
+        <argsstring></argsstring>
+        <name>active_timers</name>
+        <qualifiedname>hf_pwm_diagnostics_t::active_timers</qualifiedname>
+        <briefdescription>
+<para>Number of active timers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="118" column="11" bodyfile="inc/base/BasePwm.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__diagnostics__t_1af8e9937307e0eeebee4c07731bad993b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pwm_diagnostics_t::system_uptime_ms</definition>
+        <argsstring></argsstring>
+        <name>system_uptime_ms</name>
+        <qualifiedname>hf_pwm_diagnostics_t::system_uptime_ms</qualifiedname>
+        <briefdescription>
+<para>System uptime in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="119" column="12" bodyfile="inc/base/BasePwm.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__diagnostics__t_1ac762b50a921ff765c2a5c8054dd43628" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t hf_pwm_diagnostics_t::last_global_error</definition>
+        <argsstring></argsstring>
+        <name>last_global_error</name>
+        <qualifiedname>hf_pwm_diagnostics_t::last_global_error</qualifiedname>
+        <briefdescription>
+<para>Last global error. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="120" column="16" bodyfile="inc/base/BasePwm.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pwm__diagnostics__t_1a15f79cbd58eaf4887a2d84bdd9e27942" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pwm_diagnostics_t::hf_pwm_diagnostics_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_pwm_diagnostics_t</name>
+        <qualifiedname>hf_pwm_diagnostics_t::hf_pwm_diagnostics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="122" column="3" bodyfile="inc/base/BasePwm.h" bodystart="122" bodyend="124"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM diagnostics information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BasePwm.h" line="114" column="1" bodyfile="inc/base/BasePwm.h" bodystart="114" bodyend="125"/>
+    <listofallmembers>
+      <member refid="structhf__pwm__diagnostics__t_1ac3c08b7a63d3b14a1c4012f9123f459a" prot="public" virt="non-virtual"><scope>hf_pwm_diagnostics_t</scope><name>active_channels</name></member>
+      <member refid="structhf__pwm__diagnostics__t_1a696547f39aed2a095016a1fc6b6880bf" prot="public" virt="non-virtual"><scope>hf_pwm_diagnostics_t</scope><name>active_timers</name></member>
+      <member refid="structhf__pwm__diagnostics__t_1a2cb06f85138f6abb317379fbba33e0f1" prot="public" virt="non-virtual"><scope>hf_pwm_diagnostics_t</scope><name>fade_functionality_ready</name></member>
+      <member refid="structhf__pwm__diagnostics__t_1aa908bfc2c0658b5310c31e83d6be0bed" prot="public" virt="non-virtual"><scope>hf_pwm_diagnostics_t</scope><name>hardware_initialized</name></member>
+      <member refid="structhf__pwm__diagnostics__t_1a15f79cbd58eaf4887a2d84bdd9e27942" prot="public" virt="non-virtual"><scope>hf_pwm_diagnostics_t</scope><name>hf_pwm_diagnostics_t</name></member>
+      <member refid="structhf__pwm__diagnostics__t_1ac762b50a921ff765c2a5c8054dd43628" prot="public" virt="non-virtual"><scope>hf_pwm_diagnostics_t</scope><name>last_global_error</name></member>
+      <member refid="structhf__pwm__diagnostics__t_1af8e9937307e0eeebee4c07731bad993b" prot="public" virt="non-virtual"><scope>hf_pwm_diagnostics_t</scope><name>system_uptime_ms</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

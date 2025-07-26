@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__adc__monitor__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_monitor_config_t</compoundname>
+    <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__monitor__config__t_1a9959ddf5fe65d51b5aed9f8a98dcd995" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_adc_monitor_config_t::monitor_id</definition>
+        <argsstring></argsstring>
+        <name>monitor_id</name>
+        <qualifiedname>hf_adc_monitor_config_t::monitor_id</qualifiedname>
+        <briefdescription>
+<para>Monitor ID (0-1) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="136" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__monitor__config__t_1a34dcfb4c02b4c15fddf51b8b3542dee0" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+        <definition>hf_channel_id_t hf_adc_monitor_config_t::channel_id</definition>
+        <argsstring></argsstring>
+        <name>channel_id</name>
+        <qualifiedname>hf_adc_monitor_config_t::channel_id</qualifiedname>
+        <briefdescription>
+<para>Channel ID to monitor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="137" column="19" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__monitor__config__t_1a6365faf3e8775beed6b894c2dc87f617" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_adc_monitor_config_t::high_threshold</definition>
+        <argsstring></argsstring>
+        <name>high_threshold</name>
+        <qualifiedname>hf_adc_monitor_config_t::high_threshold</qualifiedname>
+        <briefdescription>
+<para>High threshold value (raw) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="138" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__monitor__config__t_1ad40f76e5c750037aa6824b29000c8e18" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_adc_monitor_config_t::low_threshold</definition>
+        <argsstring></argsstring>
+        <name>low_threshold</name>
+        <qualifiedname>hf_adc_monitor_config_t::low_threshold</qualifiedname>
+        <briefdescription>
+<para>Low threshold value (raw) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="139" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__monitor__config__t_1af07b355b259cf56162401b74d641fd29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_monitor_config_t::hf_adc_monitor_config_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_monitor_config_t</name>
+        <qualifiedname>hf_adc_monitor_config_t::hf_adc_monitor_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="141" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="141" bodyend="142"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC monitor configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="135" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="135" bodyend="143"/>
+    <listofallmembers>
+      <member refid="structhf__adc__monitor__config__t_1a34dcfb4c02b4c15fddf51b8b3542dee0" prot="public" virt="non-virtual"><scope>hf_adc_monitor_config_t</scope><name>channel_id</name></member>
+      <member refid="structhf__adc__monitor__config__t_1af07b355b259cf56162401b74d641fd29" prot="public" virt="non-virtual"><scope>hf_adc_monitor_config_t</scope><name>hf_adc_monitor_config_t</name></member>
+      <member refid="structhf__adc__monitor__config__t_1a6365faf3e8775beed6b894c2dc87f617" prot="public" virt="non-virtual"><scope>hf_adc_monitor_config_t</scope><name>high_threshold</name></member>
+      <member refid="structhf__adc__monitor__config__t_1ad40f76e5c750037aa6824b29000c8e18" prot="public" virt="non-virtual"><scope>hf_adc_monitor_config_t</scope><name>low_threshold</name></member>
+      <member refid="structhf__adc__monitor__config__t_1a9959ddf5fe65d51b5aed9f8a98dcd995" prot="public" virt="non-virtual"><scope>hf_adc_monitor_config_t</scope><name>monitor_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

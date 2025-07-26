@@ -1,0 +1,1067 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classBasePwm" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BasePwm</compoundname>
+    <derivedcompoundref refid="classEspPwm" prot="public" virt="non-virtual">EspPwm</derivedcompoundref>
+    <includes refid="BasePwm_8h" local="no">BasePwm.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BasePwm::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BasePwm::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="435" column="8" bodyfile="inc/base/BasePwm.h" bodystart="435" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref></type>
+        <definition>hf_pwm_statistics_t BasePwm::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BasePwm::statistics_</qualifiedname>
+        <briefdescription>
+<para>PWM operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="436" column="23" bodyfile="inc/base/BasePwm.h" bodystart="436" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref></type>
+        <definition>hf_pwm_diagnostics_t BasePwm::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BasePwm::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>PWM diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="437" column="24" bodyfile="inc/base/BasePwm.h" bodystart="437" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBasePwm_1a7481b15d121d631a59d1605780085d0e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BasePwm::~BasePwm</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BasePwm</name>
+        <qualifiedname>BasePwm::~BasePwm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="175" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a4dba77ec0b1d096f85af2288f121f7f7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BasePwm::Initialize</qualifiedname>
+        <reimplementedby refid="classEspPwm_1aedb8649c68e856258d6278bf399aab05">Initialize</reimplementedby>
+        <briefdescription>
+<para>Initialize the PWM system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="181" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a7d3dbe67ab0c23c738e2507f915137fb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BasePwm::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a28c857a39efec61ad79770770fca878c">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the PWM system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="187" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1ab75191deb5eec96c9d1f99c7c981467d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePwm::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BasePwm::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Check if PWM system is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="193" column="9" bodyfile="inc/base/BasePwm.h" bodystart="193" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1aa084e73274f2f1d1d67cff793eda1956" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePwm::EnsureInitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BasePwm::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Ensure PWM is initialized (lazy initialization pattern) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized successfully, false on failure </para>
+</simplesect>
+<simplesect kind="note"><para>This method should be called at the beginning of all public methods that require initialization. It implements lazy initialization. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="203" column="8" bodyfile="inc/base/BasePwm.h" bodystart="203" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a8d407e46dff5f6c1f9ae2b7d68ea674c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePwm::EnsureDeinitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BasePwm::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Ensure PWM is deinitialized (lazy deinitialization pattern) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if deinitialized successfully, false on failure </para>
+</simplesect>
+<simplesect kind="note"><para>This method can be called to ensure proper cleanup when needed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="215" column="8" bodyfile="inc/base/BasePwm.h" bodystart="215" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1af1c19d6ae43e3711a2a16dc39d8dbfa6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::EnableChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id) noexcept=0</argsstring>
+        <name>EnableChannel</name>
+        <qualifiedname>BasePwm::EnableChannel</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a3bd515c8685db84d5ff92a475063d663">EnableChannel</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Enable a PWM channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel to enable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="231" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a88b6b8a4d9ea7c9172846aa4e9cc572d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::DisableChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id) noexcept=0</argsstring>
+        <name>DisableChannel</name>
+        <qualifiedname>BasePwm::DisableChannel</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a8ff1addad40e1a81afa83a975b136e89">DisableChannel</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Disable a PWM channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="238" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1af2f490b963644ca04d4750b7d947b543" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BasePwm::IsChannelEnabled</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept=0</argsstring>
+        <name>IsChannelEnabled</name>
+        <qualifiedname>BasePwm::IsChannelEnabled</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a07c737787080435a486d47ad3c6803e9">IsChannelEnabled</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Check if a channel is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if enabled, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="245" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a4883325ace0e9fd9d096fc87a24317c3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::SetDutyCycle</definition>
+        <argsstring>(hf_channel_id_t channel_id, float duty_cycle) noexcept=0</argsstring>
+        <name>SetDutyCycle</name>
+        <qualifiedname>BasePwm::SetDutyCycle</qualifiedname>
+        <reimplementedby refid="classEspPwm_1ae4170c3b4661c0d4b9646eb3d775c88c">SetDutyCycle</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>duty_cycle</declname>
+        </param>
+        <briefdescription>
+<para>Set duty cycle for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duty_cycle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Duty cycle (0.0 - 1.0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="257" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1aa9f97e6e7c9af42aae99b8aeae5e7c67" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::SetDutyCycleRaw</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t raw_value) noexcept=0</argsstring>
+        <name>SetDutyCycleRaw</name>
+        <qualifiedname>BasePwm::SetDutyCycleRaw</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a6bc8906d106762d5c9b1bcfd68ff0636">SetDutyCycleRaw</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+<para>Set raw duty value for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>raw_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw duty register value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="265" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1ad192230babf2e4dc7a37477b4a0153b8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::SetFrequency</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz) noexcept=0</argsstring>
+        <name>SetFrequency</name>
+        <qualifiedname>BasePwm::SetFrequency</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a185108e6adbaaa23bcef4fbd8bda1b91">SetFrequency</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
+          <declname>frequency_hz</declname>
+        </param>
+        <briefdescription>
+<para>Set frequency for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>frequency_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency in Hz </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="273" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1ad2d69c4057b84358f120f1c27fb3e2c1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::SetPhaseShift</definition>
+        <argsstring>(hf_channel_id_t channel_id, float phase_shift_degrees) noexcept=0</argsstring>
+        <name>SetPhaseShift</name>
+        <qualifiedname>BasePwm::SetPhaseShift</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a6096fdc1d06345204c8062d2f86bd0c5">SetPhaseShift</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>phase_shift_degrees</declname>
+        </param>
+        <briefdescription>
+<para>Set phase shift for a channel (if supported) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>phase_shift_degrees</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Phase shift in degrees (0-360) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="282" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a02e791636c4d544d702b06014695ed31" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::StartAll</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>StartAll</name>
+        <qualifiedname>BasePwm::StartAll</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a130153d9f4bdaee4219736cb248d78f6">StartAll</reimplementedby>
+        <briefdescription>
+<para>Start all enabled channels simultaneously. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="293" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a0dc5b8704b7f3107745224441d7b3a5b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::StopAll</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>StopAll</name>
+        <qualifiedname>BasePwm::StopAll</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a8be25ecab27ff61499a66535f303df2e">StopAll</reimplementedby>
+        <briefdescription>
+<para>Stop all channels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="299" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a9cb4de783416fab169872c9250d30089" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::UpdateAll</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>UpdateAll</name>
+        <qualifiedname>BasePwm::UpdateAll</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a5681d5ceb230b6dc0a459f3ef9630b8b">UpdateAll</reimplementedby>
+        <briefdescription>
+<para>Update all channel outputs simultaneously (for synchronized updates) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="305" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a4b7f8834e3f06fbf5995b3bfd3e7aa71" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::SetComplementaryOutput</definition>
+        <argsstring>(hf_channel_id_t primary_channel, hf_channel_id_t complementary_channel, hf_u32_t deadtime_ns) noexcept=0</argsstring>
+        <name>SetComplementaryOutput</name>
+        <qualifiedname>BasePwm::SetComplementaryOutput</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a6c4cc0b3c19e7258a063b1900f9d291a">SetComplementaryOutput</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>primary_channel</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>complementary_channel</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>deadtime_ns</declname>
+        </param>
+        <briefdescription>
+<para>Set complementary output configuration (for motor control) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>primary_channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Primary channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>complementary_channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Complementary channel </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>deadtime_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Deadtime in nanoseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="314" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a7d04dac1cdbfc50884b24b912a52b877" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float BasePwm::GetDutyCycle</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept=0</argsstring>
+        <name>GetDutyCycle</name>
+        <qualifiedname>BasePwm::GetDutyCycle</qualifiedname>
+        <reimplementedby refid="classEspPwm_1aeb3eda73cca25d298a3c7e3cbf133f03">GetDutyCycle</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Get current duty cycle for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Current duty cycle (0.0 - 1.0), or -1.0 on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="327" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a9be813122b797d0a45c3248f0c203063" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
+        <definition>virtual hf_frequency_hz_t BasePwm::GetFrequency</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept=0</argsstring>
+        <name>GetFrequency</name>
+        <qualifiedname>BasePwm::GetFrequency</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a4687559ad8744ece1ef578796b21eb02">GetFrequency</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Get current frequency for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Current frequency in Hz, or 0 on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="334" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a7802bfabb7ac9430764bce70cbf03758" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::GetStatistics</definition>
+        <argsstring>(hf_pwm_statistics_t &amp;statistics) const noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BasePwm::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a9ff4ddc5a06060a4b7194154a7d28617">GetStatistics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get PWM statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Statistics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="341" column="24" bodyfile="inc/base/BasePwm.h" bodystart="341" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a752841609c8cd458ee658579dd7f60c6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::GetDiagnostics</definition>
+        <argsstring>(hf_pwm_diagnostics_t &amp;diagnostics) const noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BasePwm::GetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspPwm_1a81bc4616d9447ad43ec6d6c732049b59">GetDiagnostics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get PWM diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Diagnostics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PWM_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="351" column="24" bodyfile="inc/base/BasePwm.h" bodystart="351" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1afb7176a7fbb46fa45a5a2521060ef9c7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BasePwm::ResetStatistics</qualifiedname>
+        <briefdescription>
+<para>Reset PWM operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="361" column="24" bodyfile="inc/base/BasePwm.h" bodystart="361" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1abef55c8bbd0a0fe57f2b21f286fc91dd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>virtual hf_pwm_err_t BasePwm::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BasePwm::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset PWM diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="371" column="24" bodyfile="inc/base/BasePwm.h" bodystart="371" bodyend="374"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classBasePwm_1a4cba17ff79ce18faaf8b402d2b212060" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>static constexpr hf_u32_t BasePwm::DutyCycleToRaw</definition>
+        <argsstring>(float duty_cycle, hf_u8_t resolution_bits) noexcept</argsstring>
+        <name>DutyCycleToRaw</name>
+        <qualifiedname>BasePwm::DutyCycleToRaw</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>duty_cycle</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>resolution_bits</declname>
+        </param>
+        <briefdescription>
+<para>Calculate raw duty value from percentage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duty_cycle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Duty cycle (0.0 - 1.0) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>resolution_bits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM resolution in bits </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Raw duty value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="386" column="29" bodyfile="inc/base/BasePwm.h" bodystart="386" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a4a6d82b9da888f91bd66e91b24121add" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr float</type>
+        <definition>static constexpr float BasePwm::RawToDutyCycle</definition>
+        <argsstring>(hf_u32_t raw_value, hf_u8_t resolution_bits) noexcept</argsstring>
+        <name>RawToDutyCycle</name>
+        <qualifiedname>BasePwm::RawToDutyCycle</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>raw_value</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>resolution_bits</declname>
+        </param>
+        <briefdescription>
+<para>Calculate duty cycle percentage from raw value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>raw_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw duty value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>resolution_bits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM resolution in bits </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Duty cycle (0.0 - 1.0) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="400" column="26" bodyfile="inc/base/BasePwm.h" bodystart="400" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a352f6ddcf05ff0e0ed5c606098b24987" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>static constexpr bool BasePwm::IsValidDutyCycle</definition>
+        <argsstring>(float duty_cycle) noexcept</argsstring>
+        <name>IsValidDutyCycle</name>
+        <qualifiedname>BasePwm::IsValidDutyCycle</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>duty_cycle</declname>
+        </param>
+        <briefdescription>
+<para>Validate duty cycle range. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duty_cycle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Duty cycle to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid (0.0 - 1.0), false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="412" column="25" bodyfile="inc/base/BasePwm.h" bodystart="412" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1afab866dbce084437c35b3189f4e2952e" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>static constexpr bool BasePwm::IsValidFrequency</definition>
+        <argsstring>(hf_u32_t frequency_hz, hf_u32_t min_freq_hz, hf_u32_t max_freq_hz) noexcept</argsstring>
+        <name>IsValidFrequency</name>
+        <qualifiedname>BasePwm::IsValidFrequency</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>frequency_hz</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>min_freq_hz</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>max_freq_hz</declname>
+        </param>
+        <briefdescription>
+<para>Validate frequency range. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frequency_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Frequency to validate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>min_freq_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum allowed frequency </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_freq_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum allowed frequency </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="423" column="25" bodyfile="inc/base/BasePwm.h" bodystart="423" bodyend="426"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBasePwm_1acd8c699abcc77062da2e26319dafcb0b" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BasePwm::BasePwm</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>BasePwm</name>
+        <qualifiedname>BasePwm::BasePwm</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="429" column="3" bodyfile="inc/base/BasePwm.h" bodystart="429" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1aaf342e2451aa841522e07bc84c86a0a7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BasePwm::BasePwm</definition>
+        <argsstring>(const BasePwm &amp;)=delete</argsstring>
+        <name>BasePwm</name>
+        <qualifiedname>BasePwm::BasePwm</qualifiedname>
+        <param>
+          <type>const <ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="430" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1afa73dc6b8bc3028f3848e0f470dec48d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
+        <definition>BasePwm &amp; BasePwm::operator=</definition>
+        <argsstring>(const BasePwm &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BasePwm::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="431" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a98809c8d18cca38549c10e1a8616021c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BasePwm::BasePwm</definition>
+        <argsstring>(BasePwm &amp;&amp;)=delete</argsstring>
+        <name>BasePwm</name>
+        <qualifiedname>BasePwm::BasePwm</qualifiedname>
+        <param>
+          <type><ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="432" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePwm_1a61a64fe3584550862c40531d576211b3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
+        <definition>BasePwm &amp; BasePwm::operator=</definition>
+        <argsstring>(BasePwm &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BasePwm::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="433" column="11"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for PWM implementations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class defines the common interface that all PWM implementations must provide. It supports both on-chip PWM peripherals and external PWM controllers.</para>
+<para>Key features:<itemizedlist>
+<listitem><para>Multi-channel PWM support</para>
+</listitem><listitem><para>Configurable frequency and resolution</para>
+</listitem><listitem><para>Hardware abstraction for different PWM sources</para>
+</listitem><listitem><para>Event callbacks for period and fault events</para>
+</listitem><listitem><para>Comprehensive error handling</para>
+</listitem><listitem><para>Thread-safe design when used with SfPwm wrapper</para>
+</listitem></itemizedlist>
+</para>
+<para>Possible implementations include on-chip controllers or dedicated PWM chips.<itemizedlist>
+<listitem><para>CustomPwm: For custom/proprietary PWM implementations </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BasePwm</label>
+        <link refid="classBasePwm"/>
+      </node>
+      <node id="2">
+        <label>EspPwm</label>
+        <link refid="classEspPwm"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BasePwm</label>
+        <link refid="classBasePwm"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_pwm_diagnostics_t</label>
+        <link refid="structhf__pwm__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_pwm_statistics_t</label>
+        <link refid="structhf__pwm__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BasePwm.h" line="169" column="1" bodyfile="inc/base/BasePwm.h" bodystart="169" bodyend="438"/>
+    <listofallmembers>
+      <member refid="classBasePwm_1acd8c699abcc77062da2e26319dafcb0b" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>BasePwm</name></member>
+      <member refid="classBasePwm_1aaf342e2451aa841522e07bc84c86a0a7" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>BasePwm</name></member>
+      <member refid="classBasePwm_1a98809c8d18cca38549c10e1a8616021c" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>BasePwm</name></member>
+      <member refid="classBasePwm_1a7d3dbe67ab0c23c738e2507f915137fb" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>Deinitialize</name></member>
+      <member refid="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>diagnostics_</name></member>
+      <member refid="classBasePwm_1a88b6b8a4d9ea7c9172846aa4e9cc572d" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>DisableChannel</name></member>
+      <member refid="classBasePwm_1a4cba17ff79ce18faaf8b402d2b212060" prot="public" virt="non-virtual"><scope>BasePwm</scope><name>DutyCycleToRaw</name></member>
+      <member refid="classBasePwm_1af1c19d6ae43e3711a2a16dc39d8dbfa6" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>EnableChannel</name></member>
+      <member refid="classBasePwm_1a8d407e46dff5f6c1f9ae2b7d68ea674c" prot="public" virt="non-virtual"><scope>BasePwm</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBasePwm_1aa084e73274f2f1d1d67cff793eda1956" prot="public" virt="non-virtual"><scope>BasePwm</scope><name>EnsureInitialized</name></member>
+      <member refid="classBasePwm_1a752841609c8cd458ee658579dd7f60c6" prot="public" virt="virtual"><scope>BasePwm</scope><name>GetDiagnostics</name></member>
+      <member refid="classBasePwm_1a7d04dac1cdbfc50884b24b912a52b877" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>GetDutyCycle</name></member>
+      <member refid="classBasePwm_1a9be813122b797d0a45c3248f0c203063" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>GetFrequency</name></member>
+      <member refid="classBasePwm_1a7802bfabb7ac9430764bce70cbf03758" prot="public" virt="virtual"><scope>BasePwm</scope><name>GetStatistics</name></member>
+      <member refid="classBasePwm_1a4dba77ec0b1d096f85af2288f121f7f7" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>Initialize</name></member>
+      <member refid="classBasePwm_1a6506053d333fbed35bfea3ee3bd74693" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>initialized_</name></member>
+      <member refid="classBasePwm_1af2f490b963644ca04d4750b7d947b543" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>IsChannelEnabled</name></member>
+      <member refid="classBasePwm_1ab75191deb5eec96c9d1f99c7c981467d" prot="public" virt="non-virtual"><scope>BasePwm</scope><name>IsInitialized</name></member>
+      <member refid="classBasePwm_1a352f6ddcf05ff0e0ed5c606098b24987" prot="public" virt="non-virtual"><scope>BasePwm</scope><name>IsValidDutyCycle</name></member>
+      <member refid="classBasePwm_1afab866dbce084437c35b3189f4e2952e" prot="public" virt="non-virtual"><scope>BasePwm</scope><name>IsValidFrequency</name></member>
+      <member refid="classBasePwm_1afa73dc6b8bc3028f3848e0f470dec48d" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>operator=</name></member>
+      <member refid="classBasePwm_1a61a64fe3584550862c40531d576211b3" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>operator=</name></member>
+      <member refid="classBasePwm_1a4a6d82b9da888f91bd66e91b24121add" prot="public" virt="non-virtual"><scope>BasePwm</scope><name>RawToDutyCycle</name></member>
+      <member refid="classBasePwm_1abef55c8bbd0a0fe57f2b21f286fc91dd" prot="public" virt="virtual"><scope>BasePwm</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBasePwm_1afb7176a7fbb46fa45a5a2521060ef9c7" prot="public" virt="virtual"><scope>BasePwm</scope><name>ResetStatistics</name></member>
+      <member refid="classBasePwm_1a4b7f8834e3f06fbf5995b3bfd3e7aa71" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>SetComplementaryOutput</name></member>
+      <member refid="classBasePwm_1a4883325ace0e9fd9d096fc87a24317c3" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>SetDutyCycle</name></member>
+      <member refid="classBasePwm_1aa9f97e6e7c9af42aae99b8aeae5e7c67" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>SetDutyCycleRaw</name></member>
+      <member refid="classBasePwm_1ad192230babf2e4dc7a37477b4a0153b8" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>SetFrequency</name></member>
+      <member refid="classBasePwm_1ad2d69c4057b84358f120f1c27fb3e2c1" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>SetPhaseShift</name></member>
+      <member refid="classBasePwm_1a02e791636c4d544d702b06014695ed31" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>StartAll</name></member>
+      <member refid="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>statistics_</name></member>
+      <member refid="classBasePwm_1a0dc5b8704b7f3107745224441d7b3a5b" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>StopAll</name></member>
+      <member refid="classBasePwm_1a9cb4de783416fab169872c9250d30089" prot="public" virt="pure-virtual"><scope>BasePwm</scope><name>UpdateAll</name></member>
+      <member refid="classBasePwm_1a7481b15d121d631a59d1605780085d0e" prot="public" virt="virtual"><scope>BasePwm</scope><name>~BasePwm</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

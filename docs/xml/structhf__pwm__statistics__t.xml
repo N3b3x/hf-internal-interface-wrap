@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__pwm__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pwm_statistics_t</compoundname>
+    <includes refid="BasePwm_8h" local="no">BasePwm.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pwm__statistics__t_1ae747cee52098f97c109af47e3ec1528b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pwm_statistics_t::duty_updates_count</definition>
+        <argsstring></argsstring>
+        <name>duty_updates_count</name>
+        <qualifiedname>hf_pwm_statistics_t::duty_updates_count</qualifiedname>
+        <briefdescription>
+<para>Total duty cycle updates. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="96" column="12" bodyfile="inc/base/BasePwm.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__statistics__t_1a2fa9cfabb66cf6ccbdadcfbd78c59095" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pwm_statistics_t::frequency_changes_count</definition>
+        <argsstring></argsstring>
+        <name>frequency_changes_count</name>
+        <qualifiedname>hf_pwm_statistics_t::frequency_changes_count</qualifiedname>
+        <briefdescription>
+<para>Total frequency changes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="97" column="12" bodyfile="inc/base/BasePwm.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__statistics__t_1a122bc9c5e23e1790146c30a420328ae5" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pwm_statistics_t::fade_operations_count</definition>
+        <argsstring></argsstring>
+        <name>fade_operations_count</name>
+        <qualifiedname>hf_pwm_statistics_t::fade_operations_count</qualifiedname>
+        <briefdescription>
+<para>Total fade operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="98" column="12" bodyfile="inc/base/BasePwm.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__statistics__t_1a5efca3ae84ea2ae93a06d099cc9e0c7b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pwm_statistics_t::error_count</definition>
+        <argsstring></argsstring>
+        <name>error_count</name>
+        <qualifiedname>hf_pwm_statistics_t::error_count</qualifiedname>
+        <briefdescription>
+<para>Total error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="99" column="12" bodyfile="inc/base/BasePwm.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__statistics__t_1aebf52d83fb8b3a8581a0b8a3cd0113bc" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pwm_statistics_t::channel_enables_count</definition>
+        <argsstring></argsstring>
+        <name>channel_enables_count</name>
+        <qualifiedname>hf_pwm_statistics_t::channel_enables_count</qualifiedname>
+        <briefdescription>
+<para>Total channel enable operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="100" column="12" bodyfile="inc/base/BasePwm.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__statistics__t_1aaeb614849916a187a0c2c13bb97b657a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pwm_statistics_t::channel_disables_count</definition>
+        <argsstring></argsstring>
+        <name>channel_disables_count</name>
+        <qualifiedname>hf_pwm_statistics_t::channel_disables_count</qualifiedname>
+        <briefdescription>
+<para>Total channel disable operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="101" column="12" bodyfile="inc/base/BasePwm.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__statistics__t_1a86bbb93e18e2e3dfede40f48cc6b7a18" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_pwm_statistics_t::last_activity_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_activity_timestamp</name>
+        <qualifiedname>hf_pwm_statistics_t::last_activity_timestamp</qualifiedname>
+        <briefdescription>
+<para>Last activity timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="102" column="12" bodyfile="inc/base/BasePwm.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__statistics__t_1a5ad7ac0b01d65479a5e3214b5e06705e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_pwm_statistics_t::initialization_timestamp</definition>
+        <argsstring></argsstring>
+        <name>initialization_timestamp</name>
+        <qualifiedname>hf_pwm_statistics_t::initialization_timestamp</qualifiedname>
+        <briefdescription>
+<para>Initialization timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="103" column="12" bodyfile="inc/base/BasePwm.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pwm__statistics__t_1a72c79ca7500dde223f6a1d116504df79" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pwm_statistics_t::hf_pwm_statistics_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_pwm_statistics_t</name>
+        <qualifiedname>hf_pwm_statistics_t::hf_pwm_statistics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="105" column="3" bodyfile="inc/base/BasePwm.h" bodystart="105" bodyend="108"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM statistics information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BasePwm.h" line="95" column="1" bodyfile="inc/base/BasePwm.h" bodystart="95" bodyend="109"/>
+    <listofallmembers>
+      <member refid="structhf__pwm__statistics__t_1aaeb614849916a187a0c2c13bb97b657a" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>channel_disables_count</name></member>
+      <member refid="structhf__pwm__statistics__t_1aebf52d83fb8b3a8581a0b8a3cd0113bc" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>channel_enables_count</name></member>
+      <member refid="structhf__pwm__statistics__t_1ae747cee52098f97c109af47e3ec1528b" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>duty_updates_count</name></member>
+      <member refid="structhf__pwm__statistics__t_1a5efca3ae84ea2ae93a06d099cc9e0c7b" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>error_count</name></member>
+      <member refid="structhf__pwm__statistics__t_1a122bc9c5e23e1790146c30a420328ae5" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>fade_operations_count</name></member>
+      <member refid="structhf__pwm__statistics__t_1a2fa9cfabb66cf6ccbdadcfbd78c59095" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>frequency_changes_count</name></member>
+      <member refid="structhf__pwm__statistics__t_1a72c79ca7500dde223f6a1d116504df79" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>hf_pwm_statistics_t</name></member>
+      <member refid="structhf__pwm__statistics__t_1a5ad7ac0b01d65479a5e3214b5e06705e" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>initialization_timestamp</name></member>
+      <member refid="structhf__pwm__statistics__t_1a86bbb93e18e2e3dfede40f48cc6b7a18" prot="public" virt="non-virtual"><scope>hf_pwm_statistics_t</scope><name>last_activity_timestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

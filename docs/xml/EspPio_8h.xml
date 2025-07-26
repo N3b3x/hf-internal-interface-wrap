@@ -1,0 +1,615 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="EspPio_8h" kind="file" language="C++">
+    <compoundname>EspPio.h</compoundname>
+    <includes refid="BasePio_8h" local="yes">BasePio.h</includes>
+    <includes refid="EspTypes_8h" local="yes">EspTypes.h</includes>
+    <includes refid="RtosMutex_8h" local="yes">RtosMutex.h</includes>
+    <includes local="no">array</includes>
+    <includes local="yes">driver/rmt_encoder.h</includes>
+    <includes local="yes">driver/rmt_rx.h</includes>
+    <includes local="yes">driver/rmt_tx.h</includes>
+    <includedby refid="main_8cpp" local="yes">examples/esp32/main/main.cpp</includedby>
+    <includedby refid="EspPio_8cpp" local="yes">src/mcu/esp32/EspPio.cpp</includedby>
+    <incdepgraph>
+      <node id="11">
+        <label>BaseAdc.h</label>
+        <link refid="BaseAdc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>BaseI2c.h</label>
+        <link refid="BaseI2c_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>BasePio.h</label>
+        <link refid="BasePio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>BasePwm.h</label>
+        <link refid="BasePwm_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>BaseSpi.h</label>
+        <link refid="BaseSpi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>BaseUart.h</label>
+        <link refid="BaseUart_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="35">
+        <label>RtosMutex.h</label>
+        <link refid="RtosMutex_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>array</label>
+      </node>
+      <node id="13">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="34">
+        <label>cstring</label>
+      </node>
+      <node id="23">
+        <label>driver/i2c.h</label>
+      </node>
+      <node id="40">
+        <label>driver/rmt_encoder.h</label>
+      </node>
+      <node id="41">
+        <label>driver/rmt_rx.h</label>
+      </node>
+      <node id="42">
+        <label>driver/rmt_tx.h</label>
+      </node>
+      <node id="29">
+        <label>driver/spi_master.h</label>
+      </node>
+      <node id="14">
+        <label>esp_adc/adc_continuous.h</label>
+      </node>
+      <node id="15">
+        <label>esp_adc/adc_oneshot.h</label>
+      </node>
+      <node id="31">
+        <label>esp_timer.h</label>
+      </node>
+      <node id="36">
+        <label>freertos/FreeRTOS.h</label>
+      </node>
+      <node id="37">
+        <label>freertos/semphr.h</label>
+      </node>
+      <node id="38">
+        <label>freertos/task.h</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+      <node id="22">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__pio__channel__statistics__t" prot="public">hf_pio_channel_statistics_t</innerclass>
+    <innerclass refid="classMcuPio" prot="public">McuPio</innerclass>
+    <innerclass refid="structMcuPio_1_1ChannelState" prot="private">McuPio::ChannelState</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BasePio_8h" kindref="compound">BasePio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes_8h" kindref="compound">EspTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Include<sp/>ESP-IDF<sp/>RMT<sp/>driver<sp/>headers<sp/>for<sp/>direct<sp/>type<sp/>usage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/rmt_encoder.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/rmt_rx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/rmt_tx.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TYPE<sp/>ALIASES<sp/>FOR<sp/>PLATFORM<sp/>COMPATIBILITY<sp/>(from<sp/>McuTypes.h)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>declarations<sp/>for<sp/>PIO<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="structhf__pio__channel__statistics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__pio__channel__statistics__t" kindref="compound">hf_pio_channel_statistics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="54" refid="structhf__pio__channel__statistics__t_1ac67556d6bf40181cb369fab0f90a7216" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__pio__channel__statistics__t_1ac67556d6bf40181cb369fab0f90a7216" kindref="member">total_transmissions</ref>;</highlight></codeline>
+<codeline lineno="55" refid="structhf__pio__channel__statistics__t_1acba8a18c23d571d059aec5161096c5cc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__pio__channel__statistics__t_1acba8a18c23d571d059aec5161096c5cc" kindref="member">total_receptions</ref>;</highlight></codeline>
+<codeline lineno="56" refid="structhf__pio__channel__statistics__t_1ab5c6cc803f3f60ad04a5ebd7123bc714" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__pio__channel__statistics__t_1ab5c6cc803f3f60ad04a5ebd7123bc714" kindref="member">failed_transmissions</ref>;</highlight></codeline>
+<codeline lineno="57" refid="structhf__pio__channel__statistics__t_1a23a9b42f075c72a21a846d9c9618b2e5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__pio__channel__statistics__t_1a23a9b42f075c72a21a846d9c9618b2e5" kindref="member">failed_receptions</ref>;</highlight></codeline>
+<codeline lineno="58" refid="structhf__pio__channel__statistics__t_1a33e0d7910b1beacd5063a7629e52d959" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__pio__channel__statistics__t_1a33e0d7910b1beacd5063a7629e52d959" kindref="member">last_operation_time</ref>;</highlight></codeline>
+<codeline lineno="59" refid="structhf__pio__channel__statistics__t_1ace0f770d2408fd564472ac249bcc99b2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__pio__channel__statistics__t_1ace0f770d2408fd564472ac249bcc99b2" kindref="member">is_configured</ref>;</highlight></codeline>
+<codeline lineno="60" refid="structhf__pio__channel__statistics__t_1a4d174d7d891273df448f059874f3727e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__pio__channel__statistics__t_1a4d174d7d891273df448f059874f3727e" kindref="member">is_busy</ref>;</highlight></codeline>
+<codeline lineno="61" refid="structhf__pio__channel__statistics__t_1a69c30583ee56551e8448a37c5633f6dd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__pio__channel__statistics__t_1a69c30583ee56551e8448a37c5633f6dd" kindref="member">current_resolution_ns</ref>;</highlight></codeline>
+<codeline lineno="62" refid="structhf__pio__channel__statistics__t_1a6f810ce1ffeaa8e51fb018e6abcdb438" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__pio__channel__statistics__t_1a6f810ce1ffeaa8e51fb018e6abcdb438" kindref="member">memory_blocks_allocated</ref>;</highlight></codeline>
+<codeline lineno="63" refid="structhf__pio__channel__statistics__t_1a53461034af45f9acc80eba7cceaec0e8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__pio__channel__statistics__t_1a53461034af45f9acc80eba7cceaec0e8" kindref="member">dma_enabled</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classMcuPio" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMcuPio" kindref="compound">McuPio</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBasePio" kindref="compound">BasePio</ref><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="115" refid="classMcuPio_1a7d7468229888083cc7dafafaa68b33b5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classMcuPio_1a7d7468229888083cc7dafafaa68b33b5" kindref="member">McuPio</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="classMcuPio_1ac5d60ff6d313adf026dddbad186c89d4" refkind="member"><highlight class="normal"><sp/><sp/>~<ref refid="classMcuPio" kindref="compound">McuPio</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>copy<sp/>constructor<sp/>and<sp/>assignment<sp/>operator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classMcuPio_1a3502a32cecb4737ab9d05bc457070001" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classMcuPio" kindref="compound">McuPio</ref>(const<sp/><ref refid="classMcuPio" kindref="compound">McuPio</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="124" refid="classMcuPio_1aaf8e749f0d7e21e8f148a4fb122ec739" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classMcuPio" kindref="compound">McuPio</ref>&amp;<sp/>operator=(const<sp/><ref refid="classMcuPio" kindref="compound">McuPio</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Allow<sp/>move<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classMcuPio_1a71462e26c290ac3d812e7cdef4098356" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classMcuPio" kindref="compound">McuPio</ref>(<ref refid="classMcuPio" kindref="compound">McuPio</ref>&amp;&amp;)<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="128" refid="classMcuPio_1a4629da876bb8a51f9d3f4bb82bdffd5d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classMcuPio" kindref="compound">McuPio</ref>&amp;<sp/>operator=(<ref refid="classMcuPio" kindref="compound">McuPio</ref>&amp;&amp;)<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>BasePio<sp/>Interface<sp/>Implementation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classMcuPio_1ad5f3744152480e91d708174ec9123927" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1ad5f3744152480e91d708174ec9123927" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="134" refid="classMcuPio_1a63c9d1084cfa903e9104c4d993322cb3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a63c9d1084cfa903e9104c4d993322cb3" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="classMcuPio_1a3a7d3e831fbe60fb9da7ce8677f14008" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a3a7d3e831fbe60fb9da7ce8677f14008" kindref="member">ConfigureChannel</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/><ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref>&amp;<sp/>config)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="classMcuPio_1af85792ba88e2d5f1d4d8f154180c21a0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655a6c2958de5e2295b8cb67bac908244879" kindref="member">Transmit</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/>const<sp/><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref>*<sp/>symbols,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>symbol_count,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>wait_completion<sp/>=<sp/>false)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classMcuPio_1a61d61c38a73f77602b86c7d9a51cea6d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a61d61c38a73f77602b86c7d9a51cea6d" kindref="member">StartReceive</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref>*<sp/>buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>timeout_us<sp/>=<sp/>0)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="144" refid="classMcuPio_1a4db163f6756247a73c8b373d1abcf912" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a4db163f6756247a73c8b373d1abcf912" kindref="member">StopReceive</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>symbols_received)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="classMcuPio_1acddca5a620498356a83b97f1387050c0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1acddca5a620498356a83b97f1387050c0" kindref="member">IsChannelBusy</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="147" refid="classMcuPio_1a8e9948c9beffc5154320cdafc863cdfd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a8e9948c9beffc5154320cdafc863cdfd" kindref="member">GetChannelStatus</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pio__channel__status__t" kindref="compound">hf_pio_channel_status_t</ref>&amp;<sp/>status)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="149" refid="classMcuPio_1a84000b1bdb584584fb07b86e6234c596" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a84000b1bdb584584fb07b86e6234c596" kindref="member">GetCapabilities</ref>(<ref refid="structhf__pio__capabilities__t" kindref="compound">hf_pio_capabilities_t</ref>&amp;<sp/>capabilities)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classMcuPio_1a1ff6d8271cb0c6142fd169c24f39de0e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1a1ff6d8271cb0c6142fd169c24f39de0e" kindref="member">SetTransmitCallback</ref>(<ref refid="BasePio_8h_1a14300d19cf2a911be9c80cf1a6ef3543" kindref="member">hf_pio_transmit_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="153" refid="classMcuPio_1a3a7ab9ec9e6b42e32e3f8aa9ca0857d9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1a3a7ab9ec9e6b42e32e3f8aa9ca0857d9" kindref="member">SetReceiveCallback</ref>(<ref refid="BasePio_8h_1aebe114829590afb8fa4c62aec4cfb304" kindref="member">hf_pio_receive_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="155" refid="classMcuPio_1a0bd954ebe830cb787aa2826129e18a8a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1a0bd954ebe830cb787aa2826129e18a8a" kindref="member">SetErrorCallback</ref>(<ref refid="BasePio_8h_1a32952d030efb5d85b32cc95995b27d0f" kindref="member">hf_pio_error_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="157" refid="classMcuPio_1a0323b10d162b327b4b560ca38459abcb" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1a0323b10d162b327b4b560ca38459abcb" kindref="member">ClearCallbacks</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="classMcuPio_1a1cab0aa8cb382a87b5d0d10b687c5a48" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a1cab0aa8cb382a87b5d0d10b687c5a48" kindref="member">GetStatistics</ref>(<ref refid="structhf__pio__statistics__t" kindref="compound">hf_pio_statistics_t</ref>&amp;<sp/>statistics)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classMcuPio_1aef058145b1926f58424a7cc4735b1df6" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1aef058145b1926f58424a7cc4735b1df6" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__pio__diagnostics__t" kindref="compound">hf_pio_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Lazy<sp/>Initialization<sp/>Support</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Advanced<sp/>Low-Level<sp/>RMT<sp/>Control<sp/>Methods</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classMcuPio_1a1014ed59e50b1f82e0c27a10e8cd3813" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a1014ed59e50b1f82e0c27a10e8cd3813" kindref="member">TransmitRawRmtSymbols</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/>const<sp/>rmt_symbol_word_t*<sp/>rmt_symbols,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>symbol_count,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>wait_completion<sp/>=<sp/>false)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="classMcuPio_1ac8359b099a923cb942e2cee8a7567a6f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1ac8359b099a923cb942e2cee8a7567a6f" kindref="member">ReceiveRawRmtSymbols</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/>rmt_symbol_word_t*<sp/>rmt_buffer,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>symbols_received,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>timeout_us<sp/>=<sp/>10000)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="211" refid="classMcuPio_1a7987765dcf497cd8f4f537ebb69e2a09" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a7987765dcf497cd8f4f537ebb69e2a09" kindref="member">ConfigureAdvancedRmt</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>memory_blocks<sp/>=<sp/>64,</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable_dma<sp/>=<sp/>false,<sp/>uint32_t<sp/>queue_depth<sp/>=<sp/>4)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32-Specific<sp/>Methods<sp/>(continued)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225" refid="classMcuPio_1a235047a491e67ab2fc2ae56634cbc023" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a235047a491e67ab2fc2ae56634cbc023" kindref="member">ConfigureCarrier</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/>uint32_t<sp/>carrier_freq_hz,</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty_cycle)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="classMcuPio_1ac31e87cee9ef3c57c752a3e5541b32a9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1ac31e87cee9ef3c57c752a3e5541b32a9" kindref="member">EnableLoopback</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="classMcuPio_1a7aba05eee26491524bdf77097dc776df" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1a7aba05eee26491524bdf77097dc776df" kindref="member">GetMaxSymbolCount</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="classMcuPio_1afb1b8ede1c30e3e23b740b12f5108a8f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1afb1b8ede1c30e3e23b740b12f5108a8f" kindref="member">ValidatePioSystem</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="classMcuPio_1ab2cd8eac5da2ac94d8f10fa06afa6cc6" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1ab2cd8eac5da2ac94d8f10fa06afa6cc6" kindref="member">ConfigureEncoder</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/>const<sp/><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref>&amp;<sp/>bit0_config,</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref>&amp;<sp/>bit1_config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264" refid="classMcuPio_1ae38ee47cce9166ab479b58198c4a2194" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1ae38ee47cce9166ab479b58198c4a2194" kindref="member">SetIdleLevel</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>idle_level)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classMcuPio_1a1564e4f1e62b381ad3553dcc6a35e2db" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a1564e4f1e62b381ad3553dcc6a35e2db" kindref="member">GetChannelStatistics</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pio__channel__statistics__t" kindref="compound">hf_pio_channel_statistics_t</ref>&amp;<sp/>stats)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280" refid="classMcuPio_1aa1f971dde2b16aec4c1c40d16bc11ffb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1aa1f971dde2b16aec4c1c40d16bc11ffb" kindref="member">ResetChannelStatistics</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Internal<sp/>Structures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287" refid="structMcuPio_1_1ChannelState" refkind="compound"><highlight class="normal"><sp/><sp/>struct<sp/><ref refid="structMcuPio_1_1ChannelState" kindref="compound">ChannelState</ref><sp/>{</highlight></codeline>
+<codeline lineno="288" refid="structMcuPio_1_1ChannelState_1aecdeba8d7dae4676d6f44aace428c2ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structMcuPio_1_1ChannelState_1aecdeba8d7dae4676d6f44aace428c2ff" kindref="member">configured</ref>;</highlight></codeline>
+<codeline lineno="289" refid="structMcuPio_1_1ChannelState_1a1599b6aecd786bb3c6da91be5e6f4362" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structMcuPio_1_1ChannelState_1a1599b6aecd786bb3c6da91be5e6f4362" kindref="member">busy</ref>;</highlight></codeline>
+<codeline lineno="290" refid="structMcuPio_1_1ChannelState_1a2d9436f9d2addde877e75ff590e92e2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref><sp/><ref refid="structMcuPio_1_1ChannelState_1a2d9436f9d2addde877e75ff590e92e2b" kindref="member">config</ref>;</highlight></codeline>
+<codeline lineno="291" refid="structMcuPio_1_1ChannelState_1adef577fa05588818d9132d03604f7c8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__pio__channel__status__t" kindref="compound">hf_pio_channel_status_t</ref><sp/><ref refid="structMcuPio_1_1ChannelState_1adef577fa05588818d9132d03604f7c8d" kindref="member">status</ref>;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>original<sp/>ESP-IDF<sp/>RMT<sp/>types<sp/>directly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="structMcuPio_1_1ChannelState_1aa4982836c5032f01c8a2c2ae54a557e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>rmt_channel_handle_t<sp/><ref refid="structMcuPio_1_1ChannelState_1aa4982836c5032f01c8a2c2ae54a557e0" kindref="member">tx_channel</ref>;</highlight></codeline>
+<codeline lineno="295" refid="structMcuPio_1_1ChannelState_1a8ef4d03b935948618f69845d4f343f00" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>rmt_channel_handle_t<sp/><ref refid="structMcuPio_1_1ChannelState_1a8ef4d03b935948618f69845d4f343f00" kindref="member">rx_channel</ref>;</highlight></codeline>
+<codeline lineno="296" refid="structMcuPio_1_1ChannelState_1aa1b6879917ed9254bd6e31f8e55a76fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>rmt_encoder_handle_t<sp/><ref refid="structMcuPio_1_1ChannelState_1aa1b6879917ed9254bd6e31f8e55a76fd" kindref="member">encoder</ref>;</highlight></codeline>
+<codeline lineno="297" refid="structMcuPio_1_1ChannelState_1a8e56adf4656a49baba34e0bb8ecc2539" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>rmt_encoder_handle_t<sp/><ref refid="structMcuPio_1_1ChannelState_1a8e56adf4656a49baba34e0bb8ecc2539" kindref="member">bytes_encoder</ref>;<sp/></highlight><highlight class="comment">//<sp/>For<sp/>byte-level<sp/>protocols</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Buffers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="structMcuPio_1_1ChannelState_1adceaf2d55451cafffd95b4a8c75cebbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref>*<sp/><ref refid="structMcuPio_1_1ChannelState_1adceaf2d55451cafffd95b4a8c75cebbd" kindref="member">rx_buffer</ref>;</highlight></codeline>
+<codeline lineno="301" refid="structMcuPio_1_1ChannelState_1a6880146eecaf4558096ab4a13ee2ec55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structMcuPio_1_1ChannelState_1a6880146eecaf4558096ab4a13ee2ec55" kindref="member">rx_buffer_size</ref>;</highlight></codeline>
+<codeline lineno="302" refid="structMcuPio_1_1ChannelState_1a70dd8e2e21ef8d15cbc6a7e41ba3ff55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structMcuPio_1_1ChannelState_1a70dd8e2e21ef8d15cbc6a7e41ba3ff55" kindref="member">rx_symbols_received</ref>;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Timing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="structMcuPio_1_1ChannelState_1a785a8c80ca8767032dad945b4ed8754a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structMcuPio_1_1ChannelState_1a785a8c80ca8767032dad945b4ed8754a" kindref="member">last_operation_time</ref>;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Idle<sp/>level<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308" refid="structMcuPio_1_1ChannelState_1aa3f4f4c3e55012db3ebb5d5ab13203f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structMcuPio_1_1ChannelState_1aa3f4f4c3e55012db3ebb5d5ab13203f5" kindref="member">idle_level</ref>;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310" refid="structMcuPio_1_1ChannelState_1a21f545581c6d7b024fc24f07b1bba56f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structMcuPio_1_1ChannelState_1a21f545581c6d7b024fc24f07b1bba56f" kindref="member">ChannelState</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>configured(false),<sp/>busy(false),<sp/>config(),<sp/>status(),<sp/>tx_channel(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rx_channel(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),<sp/>encoder(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),<sp/>bytes_encoder(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),<sp/>rx_buffer(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rx_buffer_size(0),<sp/>rx_symbols_received(0),<sp/>last_operation_time(0),<sp/>idle_level(false)<sp/>{}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Member<sp/>Variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320" refid="classMcuPio_1a821fcc491e2ebe4ab5a768283c21a903" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="classMcuPio_1a821fcc491e2ebe4ab5a768283c21a903" kindref="member">MAX_CHANNELS</ref><sp/>=<sp/><ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref>;<sp/></highlight><highlight class="comment">//<sp/>Use<sp/>centralized<sp/>constant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321" refid="classMcuPio_1a4557d1d6ef7971b3146d74c2a5800276" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1a4557d1d6ef7971b3146d74c2a5800276" kindref="member">MAX_SYMBOLS_PER_TRANSMISSION</ref><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="322" refid="classMcuPio_1a4ec0adc96e4104e3cf0d1f7919847c37" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="classMcuPio_1a4ec0adc96e4104e3cf0d1f7919847c37" kindref="member">DEFAULT_RESOLUTION_NS</ref><sp/>=<sp/>1000;<sp/></highlight><highlight class="comment">//<sp/>1<sp/>microsecond</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323" refid="classMcuPio_1a60338a19ad42d8fc4ecee8ea5eabfc11" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="classMcuPio_1a60338a19ad42d8fc4ecee8ea5eabfc11" kindref="member">RMT_CLK_SRC_FREQ</ref><sp/>=<sp/>80000000;<sp/><sp/></highlight><highlight class="comment">//<sp/>80<sp/>MHz<sp/>APB<sp/>clock</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="classMcuPio_1afef4749fcc95ba2360137f7046ffe26b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1afef4749fcc95ba2360137f7046ffe26b" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="326" refid="classMcuPio_1a3835b317767c09bc4d4995c231623fc1" refkind="member"><highlight class="normal"><sp/><sp/>std::array&lt;ChannelState,<sp/>MAX_CHANNELS&gt;<sp/><ref refid="classMcuPio_1a3835b317767c09bc4d4995c231623fc1" kindref="member">channels_</ref>;</highlight></codeline>
+<codeline lineno="327" refid="classMcuPio_1af26e443e7fcd40856b85434b56930786" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classMcuPio_1af26e443e7fcd40856b85434b56930786" kindref="member">state_mutex_</ref>;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Callbacks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330" refid="classMcuPio_1aaf8d9302e85493e905c039ad206045d3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1a14300d19cf2a911be9c80cf1a6ef3543" kindref="member">hf_pio_transmit_callback_t</ref><sp/><ref refid="classMcuPio_1aaf8d9302e85493e905c039ad206045d3" kindref="member">transmit_callback_</ref>;</highlight></codeline>
+<codeline lineno="331" refid="classMcuPio_1a8ffb165aa26d4744deea85670d096054" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1aebe114829590afb8fa4c62aec4cfb304" kindref="member">hf_pio_receive_callback_t</ref><sp/><ref refid="classMcuPio_1a8ffb165aa26d4744deea85670d096054" kindref="member">receive_callback_</ref>;</highlight></codeline>
+<codeline lineno="332" refid="classMcuPio_1a17382dd11fc8a5104bb30b2d4034971f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1a32952d030efb5d85b32cc95995b27d0f" kindref="member">hf_pio_error_callback_t</ref><sp/><ref refid="classMcuPio_1a17382dd11fc8a5104bb30b2d4034971f" kindref="member">error_callback_</ref>;</highlight></codeline>
+<codeline lineno="333" refid="classMcuPio_1a7ba8f1bb7c10ab7e9fcb9e9bcc6088d2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classMcuPio_1a7ba8f1bb7c10ab7e9fcb9e9bcc6088d2" kindref="member">callback_user_data_</ref>;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Internal<sp/>Helper<sp/>Methods</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342" refid="classMcuPio_1aa24ec23c2c6af6099fec4093c4953c7d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1aa24ec23c2c6af6099fec4093c4953c7d" kindref="member">IsValidChannelId</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="346" refid="classMcuPio_1a0e612f0de34c1fa14443f58d02b10431" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a0e612f0de34c1fa14443f58d02b10431" kindref="member">ConvertToRmtSymbols</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref>*<sp/>symbols,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>symbol_count,</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rmt_symbol_word_t*<sp/>rmt_symbols,</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>rmt_symbol_count)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353" refid="classMcuPio_1a8806ff16836457cc95cc5425e27602db" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a8806ff16836457cc95cc5425e27602db" kindref="member">ConvertFromRmtSymbols</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rmt_symbol_word_t*<sp/>rmt_symbols,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>rmt_symbol_count,</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref>*<sp/>symbols,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>symbol_count)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>callback<sp/>signatures<sp/>to<sp/>match<sp/>ESP-IDF<sp/>v5.5<sp/>API</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>OnTransmitComplete(rmt_channel_handle_t<sp/>channel,</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rmt_tx_done_event_data_t*<sp/>edata,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_ctx);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>OnReceiveComplete(rmt_channel_handle_t<sp/>channel,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rmt_rx_done_event_data_t*<sp/>edata,</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_ctx);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367" refid="classMcuPio_1a29896f99006a22e2e683189bac751905" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a29896f99006a22e2e683189bac751905" kindref="member">InitializeChannel</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372" refid="classMcuPio_1a259d53eb9ab18f330c1814359ef9823f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a259d53eb9ab18f330c1814359ef9823f" kindref="member">DeinitializeChannel</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="377" refid="classMcuPio_1a67fba8ef3102ac5a2f263a58a7f40927" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classMcuPio_1a67fba8ef3102ac5a2f263a58a7f40927" kindref="member">ValidateSymbols</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref>*<sp/>symbols,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>symbol_count)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382" refid="classMcuPio_1ab68071fc1cd3d04056593cbec19d98a2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1ab68071fc1cd3d04056593cbec19d98a2" kindref="member">UpdateChannelStatus</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387" refid="classMcuPio_1a8b8fd42cb8208732addd96438adbc3a7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMcuPio_1a8b8fd42cb8208732addd96438adbc3a7" kindref="member">InvokeErrorCallback</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/>error)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392" refid="classMcuPio_1ac0853f52f495fe15dcf89617dda15aed" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="classMcuPio_1ac0853f52f495fe15dcf89617dda15aed" kindref="member">CalculateClockDivider</ref>(uint32_t<sp/>resolution_ns)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="395" refid="classMcuPio_1a83745413753c5222bcdbbc3b32644876" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classMcuPio_1a83745413753c5222bcdbbc3b32644876" kindref="member">TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;McuPio&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="396"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/EspPio.h"/>
+  </compounddef>
+</doxygen>

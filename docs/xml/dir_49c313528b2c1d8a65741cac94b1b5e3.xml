@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_49c313528b2c1d8a65741cac94b1b5e3" kind="dir">
+    <compoundname>src/mcu/esp32</compoundname>
+    <innerfile refid="EspAdc_8cpp">EspAdc.cpp</innerfile>
+    <innerfile refid="EspCan_8cpp">EspCan.cpp</innerfile>
+    <innerfile refid="EspGpio_8cpp">EspGpio.cpp</innerfile>
+    <innerfile refid="EspI2c_8cpp">EspI2c.cpp</innerfile>
+    <innerfile refid="EspNvs_8cpp">EspNvs.cpp</innerfile>
+    <innerfile refid="EspPeriodicTimer_8cpp">EspPeriodicTimer.cpp</innerfile>
+    <innerfile refid="EspPio_8cpp">EspPio.cpp</innerfile>
+    <innerfile refid="EspPwm_8cpp">EspPwm.cpp</innerfile>
+    <innerfile refid="EspSpi_8cpp">EspSpi.cpp</innerfile>
+    <innerfile refid="EspUart_8cpp">EspUart.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/esp32/"/>
+  </compounddef>
+</doxygen>

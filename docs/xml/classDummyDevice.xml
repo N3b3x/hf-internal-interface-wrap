@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classDummyDevice" kind="class" language="C++" prot="public">
+    <compoundname>DummyDevice</compoundname>
+    <includes refid="DummyDevice_8hpp" local="no">DummyDevice.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classDummyDevice_1aeb26b3c609ea1b1b37398e405dd2278f" prot="private" static="no" mutable="no">
+        <type>EspI2c &amp;</type>
+        <definition>EspI2c&amp; DummyDevice::bus</definition>
+        <argsstring></argsstring>
+        <name>bus</name>
+        <qualifiedname>DummyDevice::bus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/common/DummyDevice.hpp" line="13" column="10" bodyfile="examples/common/DummyDevice.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDummyDevice_1ae0d34bf4ed4027220058a3e1388237c1" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t DummyDevice::address</definition>
+        <argsstring></argsstring>
+        <name>address</name>
+        <qualifiedname>DummyDevice::address</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/common/DummyDevice.hpp" line="14" column="11" bodyfile="examples/common/DummyDevice.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDummyDevice_1a09bdc2fbd9401feaa9d3eff250281cf2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DummyDevice::DummyDevice</definition>
+        <argsstring>(EspI2c &amp;bus, uint8_t address)</argsstring>
+        <name>DummyDevice</name>
+        <qualifiedname>DummyDevice::DummyDevice</qualifiedname>
+        <param>
+          <type>EspI2c &amp;</type>
+          <declname>bus</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/common/DummyDevice.hpp" line="6" column="3" bodyfile="examples/common/DummyDevice.hpp" bodystart="6" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDummyDevice_1ad4e65bd37824ccd116311eaf74eff532" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DummyDevice::Init</definition>
+        <argsstring>()</argsstring>
+        <name>Init</name>
+        <qualifiedname>DummyDevice::Init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/common/DummyDevice.hpp" line="7" column="8" bodyfile="examples/common/DummyDevice.hpp" bodystart="7" bodyend="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="examples/common/DummyDevice.hpp" line="4" column="1" bodyfile="examples/common/DummyDevice.hpp" bodystart="4" bodyend="15"/>
+    <listofallmembers>
+      <member refid="classDummyDevice_1ae0d34bf4ed4027220058a3e1388237c1" prot="private" virt="non-virtual"><scope>DummyDevice</scope><name>address</name></member>
+      <member refid="classDummyDevice_1aeb26b3c609ea1b1b37398e405dd2278f" prot="private" virt="non-virtual"><scope>DummyDevice</scope><name>bus</name></member>
+      <member refid="classDummyDevice_1a09bdc2fbd9401feaa9d3eff250281cf2" prot="public" virt="non-virtual"><scope>DummyDevice</scope><name>DummyDevice</name></member>
+      <member refid="classDummyDevice_1ad4e65bd37824ccd116311eaf74eff532" prot="public" virt="non-virtual"><scope>DummyDevice</scope><name>Init</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,994 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classBaseNvs" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseNvs</compoundname>
+    <derivedcompoundref refid="classEspNvs" prot="public" virt="non-virtual">EspNvs</derivedcompoundref>
+    <includes refid="BaseNvs_8h" local="no">BaseNvs.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" prot="protected" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* BaseNvs::namespace_name_</definition>
+        <argsstring></argsstring>
+        <name>namespace_name_</name>
+        <qualifiedname>BaseNvs::namespace_name_</qualifiedname>
+        <briefdescription>
+<para>Namespace name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="369" column="14" bodyfile="inc/base/BaseNvs.h" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BaseNvs::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BaseNvs::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="370" column="8" bodyfile="inc/base/BaseNvs.h" bodystart="370" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref></type>
+        <definition>hf_nvs_statistics_t BaseNvs::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BaseNvs::statistics_</qualifiedname>
+        <briefdescription>
+<para>NVS operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="371" column="23" bodyfile="inc/base/BaseNvs.h" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref></type>
+        <definition>hf_nvs_diagnostics_t BaseNvs::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BaseNvs::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>NVS diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="372" column="24" bodyfile="inc/base/BaseNvs.h" bodystart="372" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseNvs_1a34a0f5777eaeabb861b0bef15c31a11b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BaseNvs::~BaseNvs</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BaseNvs</name>
+        <qualifiedname>BaseNvs::~BaseNvs</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor to ensure proper cleanup. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="139" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1abc92e07335f490e560ea1a1513ea63fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseNvs::BaseNvs</definition>
+        <argsstring>(const BaseNvs &amp;)=delete</argsstring>
+        <name>BaseNvs</name>
+        <qualifiedname>BaseNvs::BaseNvs</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="142" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1aeda78da1a1db06a952e14e549eb7f07a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> &amp;</type>
+        <definition>BaseNvs &amp; BaseNvs::operator=</definition>
+        <argsstring>(const BaseNvs &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseNvs::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="143" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a517d0d03678ff0dfdd57eff54dee9da2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseNvs::EnsureInitialized</definition>
+        <argsstring>()</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BaseNvs::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the NVS storage is initialized (lazy initialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the NVS storage is initialized, false otherwise. </para>
+</simplesect>
+<simplesect kind="note"><para>This method follows the HardFOC HAL contract pattern used by all peripherals. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="154" column="8" bodyfile="inc/base/BaseNvs.h" bodystart="154" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a4d5a23def2dfdee04a1ada50f8c6e067" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseNvs::EnsureDeinitialized</definition>
+        <argsstring>()</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BaseNvs::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the NVS storage is deinitialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the NVS storage is deinitialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="165" column="8" bodyfile="inc/base/BaseNvs.h" bodystart="165" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1adaba0a72b0c06873b2b01713f1af3d9b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseNvs::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseNvs::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Check if storage is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="176" column="8" bodyfile="inc/base/BaseNvs.h" bodystart="176" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a407959e9e6c10a0e54f26dd9e92024c0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseNvs::Initialize</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a1f1f5efa535235c16318008d08328f76">Initialize</reimplementedby>
+        <briefdescription>
+<para>Initialize the storage system and open the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="188" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a64733cd3edc601a03fb3c31e914eaa9e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseNvs::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a685e74c68591ad27fa0280a1f5244702">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the storage system and close the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="194" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::SetU32</definition>
+        <argsstring>(const char *key, hf_u32_t value) noexcept=0</argsstring>
+        <name>SetU32</name>
+        <qualifiedname>BaseNvs::SetU32</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a1d18927cd799f168d9fa38bc86438427">SetU32</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Store a 32-bit unsigned integer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to store </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="202" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::GetU32</definition>
+        <argsstring>(const char *key, hf_u32_t &amp;value) noexcept=0</argsstring>
+        <name>GetU32</name>
+        <qualifiedname>BaseNvs::GetU32</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a78016e40f65ad0ea03cda37b2cf05dfa">GetU32</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve a 32-bit unsigned integer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the retrieved value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="210" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::SetString</definition>
+        <argsstring>(const char *key, const char *value) noexcept=0</argsstring>
+        <name>SetString</name>
+        <qualifiedname>BaseNvs::SetString</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a97988762e90b76b94962a3d1758109c5">SetString</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Store a string value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String value to store </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="218" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a8954da94247836ede0a895ddd245e634" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::GetString</definition>
+        <argsstring>(const char *key, char *buffer, size_t buffer_size, size_t *actual_size=nullptr) noexcept=0</argsstring>
+        <name>GetString</name>
+        <qualifiedname>BaseNvs::GetString</qualifiedname>
+        <reimplementedby refid="classEspNvs_1ac3813f7d3fd39f5493f1a8042fddcf1b">GetString</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>actual_size</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Retrieve a string value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the retrieved string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual size of the string (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="228" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::SetBlob</definition>
+        <argsstring>(const char *key, const void *data, size_t data_size) noexcept=0</argsstring>
+        <name>SetBlob</name>
+        <qualifiedname>BaseNvs::SetBlob</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a1aa18744b55b8b15dcc9c35b7867635f">SetBlob</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_size</declname>
+        </param>
+        <briefdescription>
+<para>Store binary data (blob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data to store </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of data in bytes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="238" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::GetBlob</definition>
+        <argsstring>(const char *key, void *buffer, size_t buffer_size, size_t *actual_size=nullptr) noexcept=0</argsstring>
+        <name>GetBlob</name>
+        <qualifiedname>BaseNvs::GetBlob</qualifiedname>
+        <reimplementedby refid="classEspNvs_1aba531704bb6f31154c298342853b715c">GetBlob</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>actual_size</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Retrieve binary data (blob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the retrieved data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual size of the data (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="248" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::EraseKey</definition>
+        <argsstring>(const char *key) noexcept=0</argsstring>
+        <name>EraseKey</name>
+        <qualifiedname>BaseNvs::EraseKey</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a980345dc9dc0d96627b6ed26581f7cf8">EraseKey</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Remove a key from storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="256" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a0921ba6eb0dda4285a5ea33ec1b80f11" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::Commit</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Commit</name>
+        <qualifiedname>BaseNvs::Commit</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a2ac83396eb5f21034a028331c600ad9f">Commit</reimplementedby>
+        <briefdescription>
+<para>Commit any pending writes to non-volatile storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="262" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a911caf95d3c25047f044ca748164df39" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseNvs::KeyExists</definition>
+        <argsstring>(const char *key) noexcept=0</argsstring>
+        <name>KeyExists</name>
+        <qualifiedname>BaseNvs::KeyExists</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a709425e0f37afdeb516447e43d000974">KeyExists</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Check if a key exists in storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if key exists, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="269" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::GetSize</definition>
+        <argsstring>(const char *key, size_t &amp;size) noexcept=0</argsstring>
+        <name>GetSize</name>
+        <qualifiedname>BaseNvs::GetSize</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a35a38c5e3ef8287b1122c78b2580cf2b">GetSize</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Get the size of a stored value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the size </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="277" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a6dc238eadbd792da526fcbeea4bf58d5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * BaseNvs::GetNamespace</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetNamespace</name>
+        <qualifiedname>BaseNvs::GetNamespace</qualifiedname>
+        <briefdescription>
+<para>Get the namespace name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Namespace name string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="287" column="14" bodyfile="inc/base/BaseNvs.h" bodystart="287" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a66680f0959c3ba928b402f6a9fbb700a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>const char *</type>
+        <definition>virtual const char * BaseNvs::GetDescription</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetDescription</name>
+        <qualifiedname>BaseNvs::GetDescription</qualifiedname>
+        <reimplementedby refid="classEspNvs_1acf2acb4e099ddff5b25dd1bde8fecff5">GetDescription</reimplementedby>
+        <briefdescription>
+<para>Get description of this storage implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Description string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="295" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a63908cbbdadf9134e5350491a87d7652" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>size_t</type>
+        <definition>virtual size_t BaseNvs::GetMaxKeyLength</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetMaxKeyLength</name>
+        <qualifiedname>BaseNvs::GetMaxKeyLength</qualifiedname>
+        <reimplementedby refid="classEspNvs_1ae6cb25d9c1e5e90b6701f49e9a6bd884">GetMaxKeyLength</reimplementedby>
+        <briefdescription>
+<para>Get maximum key length supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum key length in characters </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="301" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a00697824bdbb7c20b11a82b2837bc7bc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>size_t</type>
+        <definition>virtual size_t BaseNvs::GetMaxValueSize</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetMaxValueSize</name>
+        <qualifiedname>BaseNvs::GetMaxValueSize</qualifiedname>
+        <reimplementedby refid="classEspNvs_1ab0816ed77b7f1e54f645c45a001b17be">GetMaxValueSize</reimplementedby>
+        <briefdescription>
+<para>Get maximum value size supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum value size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="307" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a76eb147e5be050296e01d8cc80f08d2d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BaseNvs::ResetStatistics</qualifiedname>
+        <briefdescription>
+<para>Reset NVS operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="318" column="24" bodyfile="inc/base/BaseNvs.h" bodystart="318" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a00047694a8eda737718d4ad83c9feb9a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BaseNvs::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset NVS diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="328" column="24" bodyfile="inc/base/BaseNvs.h" bodystart="328" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a2784f0924a79ef398f6c42227197d87d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::GetStatistics</definition>
+        <argsstring>(hf_nvs_statistics_t &amp;statistics) const noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BaseNvs::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspNvs_1aac27c74c4373d1bc15d313ff6d8c7555">GetStatistics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get NVS operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store statistics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, NVS_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="338" column="24" bodyfile="inc/base/BaseNvs.h" bodystart="338" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a5fe8b85bd8c8c103d5e8ce9c5060b49c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>virtual hf_nvs_err_t BaseNvs::GetDiagnostics</definition>
+        <argsstring>(hf_nvs_diagnostics_t &amp;diagnostics) const noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BaseNvs::GetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspNvs_1a73f32618e8863f25bf70ffed650da20b">GetDiagnostics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get NVS diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store diagnostics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, NVS_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="348" column="24" bodyfile="inc/base/BaseNvs.h" bodystart="348" bodyend="351"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseNvs_1abfe625b5e099d438f744514728de9674" prot="protected" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseNvs::BaseNvs</definition>
+        <argsstring>(const char *namespace_name) noexcept</argsstring>
+        <name>BaseNvs</name>
+        <qualifiedname>BaseNvs::BaseNvs</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>namespace_name</declname>
+        </param>
+        <briefdescription>
+<para>Protected constructor with namespace specification. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>namespace_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the storage namespace </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="358" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="358" bodyend="359"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseNvs_1a14236adcdcc3d0c2ff9e434bd0d75c5a" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BaseNvs::SetInitialized</definition>
+        <argsstring>(bool initialized) noexcept</argsstring>
+        <name>SetInitialized</name>
+        <qualifiedname>BaseNvs::SetInitialized</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>initialized</declname>
+        </param>
+        <briefdescription>
+<para>Set the initialized state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>initialized</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New initialization state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="365" column="8" bodyfile="inc/base/BaseNvs.h" bodystart="365" bodyend="367"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for non-volatile storage operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a consistent interface for non-volatile storage across different hardware platforms and storage mechanisms. It supports key-value storage with various data types and namespace organization.</para>
+<para>Key Features:<itemizedlist>
+<listitem><para>Namespace-based organization</para>
+</listitem><listitem><para>Multiple data type support (uint32_t, string, blob)</para>
+</listitem><listitem><para>Atomic operations</para>
+</listitem><listitem><para>Error handling and status reporting</para>
+</listitem><listitem><para>Platform-agnostic interface</para>
+</listitem><listitem><para>Lazy initialization pattern</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>Implementations should handle platform-specific details internally </para>
+</simplesect>
+<simplesect kind="note"><para>This class is designed to be thread-safe when properly implemented </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseNvs</label>
+        <link refid="classBaseNvs"/>
+      </node>
+      <node id="2">
+        <label>EspNvs</label>
+        <link refid="classEspNvs"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BaseNvs</label>
+        <link refid="classBaseNvs"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_nvs_diagnostics_t</label>
+        <link refid="structhf__nvs__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_nvs_statistics_t</label>
+        <link refid="structhf__nvs__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BaseNvs.h" line="134" column="1" bodyfile="inc/base/BaseNvs.h" bodystart="134" bodyend="375"/>
+    <listofallmembers>
+      <member refid="classBaseNvs_1abc92e07335f490e560ea1a1513ea63fc" prot="public" virt="non-virtual"><scope>BaseNvs</scope><name>BaseNvs</name></member>
+      <member refid="classBaseNvs_1abfe625b5e099d438f744514728de9674" prot="protected" virt="non-virtual"><scope>BaseNvs</scope><name>BaseNvs</name></member>
+      <member refid="classBaseNvs_1a0921ba6eb0dda4285a5ea33ec1b80f11" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>Commit</name></member>
+      <member refid="classBaseNvs_1a64733cd3edc601a03fb3c31e914eaa9e" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>Deinitialize</name></member>
+      <member refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" prot="protected" virt="non-virtual"><scope>BaseNvs</scope><name>diagnostics_</name></member>
+      <member refid="classBaseNvs_1a4d5a23def2dfdee04a1ada50f8c6e067" prot="public" virt="non-virtual"><scope>BaseNvs</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseNvs_1a517d0d03678ff0dfdd57eff54dee9da2" prot="public" virt="non-virtual"><scope>BaseNvs</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>EraseKey</name></member>
+      <member refid="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>GetBlob</name></member>
+      <member refid="classBaseNvs_1a66680f0959c3ba928b402f6a9fbb700a" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>GetDescription</name></member>
+      <member refid="classBaseNvs_1a5fe8b85bd8c8c103d5e8ce9c5060b49c" prot="public" virt="virtual"><scope>BaseNvs</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseNvs_1a63908cbbdadf9134e5350491a87d7652" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>GetMaxKeyLength</name></member>
+      <member refid="classBaseNvs_1a00697824bdbb7c20b11a82b2837bc7bc" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>GetMaxValueSize</name></member>
+      <member refid="classBaseNvs_1a6dc238eadbd792da526fcbeea4bf58d5" prot="public" virt="non-virtual"><scope>BaseNvs</scope><name>GetNamespace</name></member>
+      <member refid="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>GetSize</name></member>
+      <member refid="classBaseNvs_1a2784f0924a79ef398f6c42227197d87d" prot="public" virt="virtual"><scope>BaseNvs</scope><name>GetStatistics</name></member>
+      <member refid="classBaseNvs_1a8954da94247836ede0a895ddd245e634" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>GetString</name></member>
+      <member refid="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>GetU32</name></member>
+      <member refid="classBaseNvs_1a407959e9e6c10a0e54f26dd9e92024c0" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>Initialize</name></member>
+      <member refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" prot="protected" virt="non-virtual"><scope>BaseNvs</scope><name>initialized_</name></member>
+      <member refid="classBaseNvs_1adaba0a72b0c06873b2b01713f1af3d9b" prot="public" virt="non-virtual"><scope>BaseNvs</scope><name>IsInitialized</name></member>
+      <member refid="classBaseNvs_1a911caf95d3c25047f044ca748164df39" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>KeyExists</name></member>
+      <member refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" prot="protected" virt="non-virtual"><scope>BaseNvs</scope><name>namespace_name_</name></member>
+      <member refid="classBaseNvs_1aeda78da1a1db06a952e14e549eb7f07a" prot="public" virt="non-virtual"><scope>BaseNvs</scope><name>operator=</name></member>
+      <member refid="classBaseNvs_1a00047694a8eda737718d4ad83c9feb9a" prot="public" virt="virtual"><scope>BaseNvs</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseNvs_1a76eb147e5be050296e01d8cc80f08d2d" prot="public" virt="virtual"><scope>BaseNvs</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>SetBlob</name></member>
+      <member refid="classBaseNvs_1a14236adcdcc3d0c2ff9e434bd0d75c5a" prot="protected" virt="non-virtual"><scope>BaseNvs</scope><name>SetInitialized</name></member>
+      <member refid="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>SetString</name></member>
+      <member refid="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b" prot="public" virt="pure-virtual"><scope>BaseNvs</scope><name>SetU32</name></member>
+      <member refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" prot="protected" virt="non-virtual"><scope>BaseNvs</scope><name>statistics_</name></member>
+      <member refid="classBaseNvs_1a34a0f5777eaeabb861b0bef15c31a11b" prot="public" virt="virtual"><scope>BaseNvs</scope><name>~BaseNvs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

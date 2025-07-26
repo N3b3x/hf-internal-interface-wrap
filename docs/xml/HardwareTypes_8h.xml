@@ -1,0 +1,1068 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="HardwareTypes_8h" kind="file" language="C++">
+    <compoundname>HardwareTypes.h</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">limits</includes>
+    <includedby refid="main_8cpp" local="yes">examples/esp32/main/main.cpp</includedby>
+    <includedby refid="BaseAdc_8h" local="yes">inc/base/BaseAdc.h</includedby>
+    <includedby refid="BaseCan_8h" local="yes">inc/base/BaseCan.h</includedby>
+    <includedby refid="BaseGpio_8h" local="yes">inc/base/BaseGpio.h</includedby>
+    <includedby refid="BaseI2c_8h" local="yes">inc/base/BaseI2c.h</includedby>
+    <includedby refid="BaseNvs_8h" local="yes">inc/base/BaseNvs.h</includedby>
+    <includedby refid="BasePeriodicTimer_8h" local="yes">inc/base/BasePeriodicTimer.h</includedby>
+    <includedby refid="BasePio_8h" local="yes">inc/base/BasePio.h</includedby>
+    <includedby refid="BasePwm_8h" local="yes">inc/base/BasePwm.h</includedby>
+    <includedby refid="BaseSpi_8h" local="yes">inc/base/BaseSpi.h</includedby>
+    <includedby refid="BaseUart_8h" local="yes">inc/base/BaseUart.h</includedby>
+    <includedby refid="EspTypes_8h" local="yes">inc/mcu/esp32/utils/EspTypes.h</includedby>
+    <includedby refid="EspTypes__ADC_8h" local="yes">inc/mcu/esp32/utils/EspTypes_ADC.h</includedby>
+    <includedby refid="EspTypes__Base_8h" local="yes">inc/mcu/esp32/utils/EspTypes_Base.h</includedby>
+    <includedby refid="EspTypes__CAN_8h" local="yes">inc/mcu/esp32/utils/EspTypes_CAN.h</includedby>
+    <includedby refid="EspTypes__GPIO_8h" local="yes">inc/mcu/esp32/utils/EspTypes_GPIO.h</includedby>
+    <includedby refid="EspTypes__I2C_8h" local="yes">inc/mcu/esp32/utils/EspTypes_I2C.h</includedby>
+    <includedby refid="EspTypes__NVS_8h" local="yes">inc/mcu/esp32/utils/EspTypes_NVS.h</includedby>
+    <includedby refid="EspTypes__PIO_8h" local="yes">inc/mcu/esp32/utils/EspTypes_PIO.h</includedby>
+    <includedby refid="EspTypes__PWM_8h" local="yes">inc/mcu/esp32/utils/EspTypes_PWM.h</includedby>
+    <includedby refid="EspTypes__SPI_8h" local="yes">inc/mcu/esp32/utils/EspTypes_SPI.h</includedby>
+    <includedby refid="EspTypes__Timer_8h" local="yes">inc/mcu/esp32/utils/EspTypes_Timer.h</includedby>
+    <includedby refid="EspTypes__UART_8h" local="yes">inc/mcu/esp32/utils/EspTypes_UART.h</includedby>
+    <includedby refid="DigitalOutputGuard_8h" local="yes">inc/utils/DigitalOutputGuard.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>limits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>examples/common/DummyDevice.hpp</label>
+        <link refid="DummyDevice_8hpp"/>
+      </node>
+      <node id="22">
+        <label>examples/esp32/main/advanced_pwm_example.cpp</label>
+        <link refid="advanced__pwm__example_8cpp"/>
+      </node>
+      <node id="2">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="3">
+        <label>inc/base/BaseAdc.h</label>
+        <link refid="BaseAdc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>inc/base/BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>inc/base/BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>inc/base/BaseI2c.h</label>
+        <link refid="BaseI2c_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>inc/base/BaseNvs.h</label>
+        <link refid="BaseNvs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>inc/base/BasePeriodicTimer.h</label>
+        <link refid="BasePeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>inc/base/BasePio.h</label>
+        <link refid="BasePio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>inc/base/BasePwm.h</label>
+        <link refid="BasePwm_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>inc/base/BaseSpi.h</label>
+        <link refid="BaseSpi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>inc/base/BaseUart.h</label>
+        <link refid="BaseUart_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/base/HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>inc/mcu/esp32/EspGpio.h</label>
+        <link refid="EspGpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>inc/mcu/esp32/EspNvs.h</label>
+        <link refid="EspNvs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>inc/mcu/esp32/EspPwm.h</label>
+        <link refid="EspPwm_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>inc/mcu/esp32/utils/EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>inc/mcu/esp32/utils/EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>inc/mcu/esp32/utils/EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>inc/mcu/esp32/utils/EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>inc/mcu/esp32/utils/EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>inc/mcu/esp32/utils/EspTypes_NVS.h</label>
+        <link refid="EspTypes__NVS_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>inc/mcu/esp32/utils/EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>inc/mcu/esp32/utils/EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>inc/mcu/esp32/utils/EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>inc/mcu/esp32/utils/EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>inc/mcu/esp32/utils/EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>inc/utils/DigitalOutputGuard.h</label>
+        <link refid="DigitalOutputGuard_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/mcu/esp32/EspGpio.cpp</label>
+        <link refid="EspGpio_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/mcu/esp32/EspNvs.cpp</label>
+        <link refid="EspNvs_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/mcu/esp32/EspPwm.cpp</label>
+        <link refid="EspPwm_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/utils/DigitalOutputGuard.cpp</label>
+        <link refid="DigitalOutputGuard_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" prot="public" static="no">
+        <type>uint8_t</type>
+        <definition>using hf_u8_t =  uint8_t</definition>
+        <argsstring></argsstring>
+        <name>hf_u8_t</name>
+        <briefdescription>
+<para>Platform-agnostic 8-bit unsigned integer type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps uint8_t for consistent naming across the HardFOC system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="31" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" prot="public" static="no">
+        <type>uint16_t</type>
+        <definition>using hf_u16_t =  uint16_t</definition>
+        <argsstring></argsstring>
+        <name>hf_u16_t</name>
+        <briefdescription>
+<para>Platform-agnostic 16-bit unsigned integer type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps uint16_t for consistent naming across the HardFOC system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="37" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>using hf_u32_t =  uint32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_u32_t</name>
+        <briefdescription>
+<para>Platform-agnostic 32-bit unsigned integer type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps uint32_t for consistent naming across the HardFOC system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="43" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using hf_u64_t =  uint64_t</definition>
+        <argsstring></argsstring>
+        <name>hf_u64_t</name>
+        <briefdescription>
+<para>Platform-agnostic 64-bit unsigned integer type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps uint64_t for consistent naming across the HardFOC system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="49" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" prot="public" static="no">
+        <type>int8_t</type>
+        <definition>using hf_i8_t =  int8_t</definition>
+        <argsstring></argsstring>
+        <name>hf_i8_t</name>
+        <briefdescription>
+<para>Platform-agnostic 8-bit signed integer type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps int8_t for consistent naming across the HardFOC system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="55" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" prot="public" static="no">
+        <type>int16_t</type>
+        <definition>using hf_i16_t =  int16_t</definition>
+        <argsstring></argsstring>
+        <name>hf_i16_t</name>
+        <briefdescription>
+<para>Platform-agnostic 16-bit signed integer type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps int16_t for consistent naming across the HardFOC system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="61" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" prot="public" static="no">
+        <type>int32_t</type>
+        <definition>using hf_i32_t =  int32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_i32_t</name>
+        <briefdescription>
+<para>Platform-agnostic 32-bit signed integer type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps int32_t for consistent naming across the HardFOC system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="67" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" prot="public" static="no">
+        <type>int64_t</type>
+        <definition>using hf_i64_t =  int64_t</definition>
+        <argsstring></argsstring>
+        <name>hf_i64_t</name>
+        <briefdescription>
+<para>Platform-agnostic 64-bit signed integer type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps int64_t for consistent naming across the HardFOC system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="73" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" prot="public" static="no">
+        <type>bool</type>
+        <definition>using hf_bool_t =  bool</definition>
+        <argsstring></argsstring>
+        <name>hf_bool_t</name>
+        <briefdescription>
+<para>Platform-agnostic boolean type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Wraps bool for consistent naming and future extensibility. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="79" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref></type>
+        <definition>using hf_pin_num_t =  hf_i32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_pin_num_t</name>
+        <briefdescription>
+<para>Platform-agnostic GPIO pin number type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generic pin identifier that works across different hardware platforms. Uses hf_i32_t to handle both positive pin numbers and invalid (-1) values. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="90" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>using hf_port_num_t =  hf_u32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_port_num_t</name>
+        <briefdescription>
+<para>Platform-agnostic port/controller identifier type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generic identifier for communication ports (I2C, SPI, UART, etc.). Uses hf_u32_t to accommodate various controller numbering schemes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="111" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>using hf_host_id_t =  hf_u32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_host_id_t</name>
+        <briefdescription>
+<para>Platform-agnostic host/controller identifier type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Used for SPI hosts, I2C controllers, etc. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="122" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>using hf_frequency_hz_t =  hf_u32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_frequency_hz_t</name>
+        <briefdescription>
+<para>Platform-agnostic frequency type (in Hz). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="136" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a0aaf0cae92e0cfdf445fbfdc6fea9e1e" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
+        <definition>using hf_frequency_t =  hf_frequency_hz_t</definition>
+        <argsstring></argsstring>
+        <name>hf_frequency_t</name>
+        <briefdescription>
+<para>Backward compatibility alias. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="139" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>using hf_baud_rate_t =  hf_u32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_baud_rate_t</name>
+        <briefdescription>
+<para>Platform-agnostic baud rate type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="144" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>using hf_channel_id_t =  hf_u32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_channel_id_t</name>
+        <briefdescription>
+<para>Platform-agnostic channel identifier type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Used for ADC channels, PWM channels, etc. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="154" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>using hf_time_t =  hf_u32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_time_t</name>
+        <briefdescription>
+<para>Platform-agnostic time type in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="164" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+        <definition>using hf_timeout_ms_t =  hf_time_t</definition>
+        <argsstring></argsstring>
+        <name>hf_timeout_ms_t</name>
+        <briefdescription>
+<para>Timeout value in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="169" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t HF_INVALID_PIN</definition>
+        <argsstring></argsstring>
+        <name>HF_INVALID_PIN</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>Invalid pin constant for unassigned or invalid pins. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="95" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t HF_MAX_PIN_NUMBER</definition>
+        <argsstring></argsstring>
+        <name>HF_MAX_PIN_NUMBER</name>
+        <initializer>= 255</initializer>
+        <briefdescription>
+<para>Maximum pin number supported by the abstraction layer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="100" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref></type>
+        <definition>constexpr hf_port_num_t HF_INVALID_PORT</definition>
+        <argsstring></argsstring>
+        <name>HF_INVALID_PORT</name>
+        <initializer>= std::numeric_limits&lt;<ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref>&gt;::max()</initializer>
+        <briefdescription>
+<para>Invalid port constant for unassigned or invalid ports. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="116" column="25" bodyfile="inc/base/HardwareTypes.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref></type>
+        <definition>constexpr hf_host_id_t HF_INVALID_HOST</definition>
+        <argsstring></argsstring>
+        <name>HF_INVALID_HOST</name>
+        <initializer>= std::numeric_limits&lt;<ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref>&gt;::max()</initializer>
+        <briefdescription>
+<para>Invalid host constant for unassigned or invalid hosts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="127" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+        <definition>constexpr hf_channel_id_t HF_INVALID_CHANNEL</definition>
+        <argsstring></argsstring>
+        <name>HF_INVALID_CHANNEL</name>
+        <initializer>= std::numeric_limits&lt;<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>&gt;::max()</initializer>
+        <briefdescription>
+<para>Invalid channel constant for unassigned or invalid channels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="159" column="27" bodyfile="inc/base/HardwareTypes.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="HardwareTypes_8h_1a154ea09cf44df6d1e2345636c076c2c0" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+        <definition>constexpr hf_time_t HF_TIMEOUT_DEFAULT_MS</definition>
+        <argsstring></argsstring>
+        <name>HF_TIMEOUT_DEFAULT_MS</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+<para>Default timeout value in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="178" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="HardwareTypes_8h_1a2e55b662f257ca97264dcde7eab37a3e" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+        <definition>constexpr hf_time_t HF_TIMEOUT_NONE</definition>
+        <argsstring></argsstring>
+        <name>HF_TIMEOUT_NONE</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>No timeout (wait indefinitely). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="183" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="HardwareTypes_8h_1a309d52c7fb38e56ee2dfafa363248a76" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+        <definition>constexpr hf_time_t HF_TIMEOUT_MAX</definition>
+        <argsstring></argsstring>
+        <name>HF_TIMEOUT_MAX</name>
+        <initializer>= std::numeric_limits&lt;<ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref>&gt;::max()</initializer>
+        <briefdescription>
+<para>Maximum timeout value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="188" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="HardwareTypes_8h_1abaf046a86ed01ee84670bfab0bacbda0" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool IsValidPin</definition>
+        <argsstring>(hf_pin_num_t pin) noexcept</argsstring>
+        <name>IsValidPin</name>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Check if a pin number is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pin number to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="199" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="199" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool IsValidPort</definition>
+        <argsstring>(hf_port_num_t port) noexcept</argsstring>
+        <name>IsValidPort</name>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Check if a port number is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Port number to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="208" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="208" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool IsValidHost</definition>
+        <argsstring>(hf_host_id_t host) noexcept</argsstring>
+        <name>IsValidHost</name>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref></type>
+          <declname>host</declname>
+        </param>
+        <briefdescription>
+<para>Check if a host ID is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>host</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Host ID to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="217" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="217" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool IsValidChannel</definition>
+        <argsstring>(hf_channel_id_t channel) noexcept</argsstring>
+        <name>IsValidChannel</name>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Check if a channel ID is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/HardwareTypes.h" line="226" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="226" bodyend="228"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Platform-agnostic hardware type definitions for the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file defines platform-agnostic types used by base interface classes. These types provide a consistent API across different hardware platforms without exposing MCU-specific implementation details. All hardware abstraction layers use these common types for portability and consistency.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>These types are designed to be platform-independent and should not include any MCU-specific headers or definitions. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>TYPE<sp/>WRAPPING</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>=<sp/>uint8_t;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>=<sp/>uint16_t;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>=<sp/>uint32_t;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>=<sp/>uint64_t;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref><sp/>=<sp/>int8_t;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" kindref="member">hf_i16_t</ref><sp/>=<sp/>int16_t;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref><sp/>=<sp/>int32_t;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" kindref="member">hf_i64_t</ref><sp/>=<sp/>int64_t;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>=<sp/>bool;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>GPIO<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" kindref="member">HF_MAX_PIN_NUMBER</ref><sp/>=<sp/>255;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>PORT/CONTROLLER<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/><ref refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" kindref="member">HF_INVALID_PORT</ref><sp/>=<sp/>std::numeric_limits&lt;hf_port_num_t&gt;::max();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/><ref refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" kindref="member">HF_INVALID_HOST</ref><sp/>=<sp/>std::numeric_limits&lt;hf_host_id_t&gt;::max();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/>COMMUNICATION<sp/>FREQUENCY<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="HardwareTypes_8h_1a0aaf0cae92e0cfdf445fbfdc6fea9e1e" refkind="member"><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0aaf0cae92e0cfdf445fbfdc6fea9e1e" kindref="member">hf_frequency_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref>;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" kindref="member">hf_baud_rate_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CHANNEL<sp/>AND<sp/>TIMING<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/><ref refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" kindref="member">HF_INVALID_CHANNEL</ref><sp/>=<sp/>std::numeric_limits&lt;hf_channel_id_t&gt;::max();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref>;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TIMEOUT<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="HardwareTypes_8h_1a154ea09cf44df6d1e2345636c076c2c0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a154ea09cf44df6d1e2345636c076c2c0" kindref="member">HF_TIMEOUT_DEFAULT_MS</ref><sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="HardwareTypes_8h_1a2e55b662f257ca97264dcde7eab37a3e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a2e55b662f257ca97264dcde7eab37a3e" kindref="member">HF_TIMEOUT_NONE</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="HardwareTypes_8h_1a309d52c7fb38e56ee2dfafa363248a76" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a309d52c7fb38e56ee2dfafa363248a76" kindref="member">HF_TIMEOUT_MAX</ref><sp/>=<sp/>std::numeric_limits&lt;hf_time_t&gt;::max();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="comment">//<sp/>VALIDATION<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199" refid="HardwareTypes_8h_1abaf046a86ed01ee84670bfab0bacbda0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1abaf046a86ed01ee84670bfab0bacbda0" kindref="member">IsValidPin</ref>(<ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>pin)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pin<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>pin<sp/>&lt;=<sp/><ref refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" kindref="member">HF_MAX_PIN_NUMBER</ref>;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" kindref="member">IsValidPort</ref>(<ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>port)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port<sp/>!=<sp/><ref refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" kindref="member">HF_INVALID_PORT</ref>;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" kindref="member">IsValidHost</ref>(<ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/>host)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>host<sp/>!=<sp/><ref refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" kindref="member">HF_INVALID_HOST</ref>;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226" refid="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" kindref="member">IsValidChannel</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>channel<sp/>!=<sp/><ref refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" kindref="member">HF_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/HardwareTypes.h"/>
+  </compounddef>
+</doxygen>
