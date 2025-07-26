@@ -1,5 +1,0 @@
-<map id="BasePwm" name="BasePwm">
-<area shape="rect" id="Node000001" title="Abstract base class for PWM implementations." alt="" coords="5,5,92,31"/>
-<area shape="rect" id="Node000002" href="$classEspPwm.html" title="ESP32C6 PWM implementation using LEDC peripheral." alt="" coords="10,79,87,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,44,51,79,46,79,46,44"/>
-</map>

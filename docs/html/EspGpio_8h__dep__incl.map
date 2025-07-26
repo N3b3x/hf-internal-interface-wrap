@@ -1,7 +1,0 @@
-<map id="inc/mcu/esp32/EspGpio.h" name="inc/mcu/esp32/EspGpio.h">
-<area shape="rect" id="Node000001" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="100,5,285,31"/>
-<area shape="rect" id="Node000002" href="$main_8cpp.html" title=" " alt="" coords="5,79,172,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,41,115,81,112,76,165,37"/>
-<area shape="rect" id="Node000003" href="$EspGpio_8cpp.html" title="Production&#45;quality ESP32C6 GPIO implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="197,86,397,111"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,37,283,84,280,88,217,41"/>
-</map>

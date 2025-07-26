@@ -1,7 +1,0 @@
-<map id="BasePio" name="BasePio">
-<area shape="rect" id="Node000001" title="Abstract base class for Programmable IO Channel implementations." alt="" coords="123,93,198,119"/>
-<area shape="rect" id="Node000002" href="$structhf__pio__statistics__t.html" title="PIO operation statistics." alt="" coords="5,5,145,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,39,151,91,147,95,95,43"/>
-<area shape="rect" id="Node000003" href="$structhf__pio__diagnostics__t.html" title="PIO diagnostic information." alt="" coords="170,5,325,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,43,201,71,176,95,172,91,197,67,225,39"/>
-</map>

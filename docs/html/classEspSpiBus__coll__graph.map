@@ -1,7 +1,0 @@
-<map id="EspSpiBus" name="EspSpiBus">
-<area shape="rect" id="Node000001" title="Manages a single SPI bus (host). Handles bus init/deinit and device creation." alt="" coords="107,93,197,119"/>
-<area shape="rect" id="Node000002" href="$structhf__spi__bus__config__t.html" title="Platform&#45;agnostic SPI bus configuration structure for ESP32." alt="" coords="5,5,155,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,39,144,91,140,95,96,43"/>
-<area shape="rect" id="Node000003" href="$classRtosMutex.html" title=" " alt="" coords="179,5,271,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,43,164,95,160,91,205,39"/>
-</map>

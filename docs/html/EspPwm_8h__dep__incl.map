@@ -1,9 +1,0 @@
-<map id="inc/mcu/esp32/EspPwm.h" name="inc/mcu/esp32/EspPwm.h">
-<area shape="rect" id="Node000001" title="ESP32C6 LEDC (PWM) controller implementation for the HardFOC system." alt="" coords="239,5,425,31"/>
-<area shape="rect" id="Node000002" href="$advanced__pwm__example_8cpp.html" title="Comprehensive example demonstrating all advanced features of the refactored EspPwm implementation." alt="" coords="5,79,224,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="289,38,168,81,166,76,287,33"/>
-<area shape="rect" id="Node000003" href="$main_8cpp.html" title=" " alt="" coords="249,79,415,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="335,44,335,79,329,79,329,44"/>
-<area shape="rect" id="Node000004" href="$EspPwm_8cpp.html" title="Implementation of ESP32C6 LEDC (PWM) controller for the HardFOC system." alt="" coords="440,86,643,111"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="376,33,512,83,510,88,374,38"/>
-</map>

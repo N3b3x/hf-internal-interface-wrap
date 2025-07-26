@@ -1,9 +1,0 @@
-<map id="McuPio::ChannelState" name="McuPio::ChannelState">
-<area shape="rect" id="Node000001" title=" " alt="" coords="215,93,379,119"/>
-<area shape="rect" id="Node000002" href="$structhf__pio__channel__config__t.html" title="PIO channel configuration structure." alt="" coords="5,5,184,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,34,271,91,269,96,134,39"/>
-<area shape="rect" id="Node000003" href="$structhf__pio__channel__status__t.html" title="PIO channel status information." alt="" coords="208,5,387,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="300,45,300,93,295,93,295,45"/>
-<area shape="rect" id="Node000004" href="$structhf__pio__symbol__t.html" title="PIO symbol structure for precise timing." alt="" coords="411,5,541,31"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="441,39,323,95,320,91,439,34"/>
-</map>

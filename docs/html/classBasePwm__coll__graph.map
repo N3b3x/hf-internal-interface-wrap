@@ -1,7 +1,0 @@
-<map id="BasePwm" name="BasePwm">
-<area shape="rect" id="Node000001" title="Abstract base class for PWM implementations." alt="" coords="130,93,217,119"/>
-<area shape="rect" id="Node000002" href="$structhf__pwm__statistics__t.html" title="PWM statistics information." alt="" coords="5,5,157,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,38,162,91,159,95,102,42"/>
-<area shape="rect" id="Node000003" href="$structhf__pwm__diagnostics__t.html" title="PWM diagnostics information." alt="" coords="182,5,349,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="245,42,188,95,184,91,241,38"/>
-</map>
