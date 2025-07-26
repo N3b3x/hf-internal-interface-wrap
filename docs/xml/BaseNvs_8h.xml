@@ -1,0 +1,597 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="BaseNvs_8h" kind="file" language="C++">
+    <compoundname>BaseNvs.h</compoundname>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">string_view</includes>
+    <includedby refid="main_8cpp" local="yes">examples/esp32/main/main.cpp</includedby>
+    <includedby refid="EspNvs_8h" local="yes">inc/mcu/esp32/EspNvs.h</includedby>
+    <includedby refid="EspTypes__NVS_8h" local="yes">inc/mcu/esp32/utils/EspTypes_NVS.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/BaseNvs.h</label>
+        <link refid="BaseNvs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="5">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/base/BaseNvs.h</label>
+        <link refid="BaseNvs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/EspNvs.h</label>
+        <link refid="EspNvs_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/mcu/esp32/utils/EspTypes_NVS.h</label>
+        <link refid="EspTypes__NVS_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspNvs.cpp</label>
+        <link refid="EspNvs_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__nvs__statistics__t" prot="public">hf_nvs_statistics_t</innerclass>
+    <innerclass refid="structhf__nvs__diagnostics__t" prot="public">hf_nvs_diagnostics_t</innerclass>
+    <innerclass refid="classBaseNvs" prot="public">BaseNvs</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="BaseNvs_8h_1a39e87a409abc82e8e5c93b26adb86245" prot="public" static="no">
+        <name>HF_NVS_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC NVS error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all NVS operations in the system. This enumeration is used across all NVS-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="34" column="9" bodyfile="inc/base/BaseNvs.h" bodystart="34" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseNvs_8h_1afbf3f04fa35349e183adb88ae6d03874" prot="public" static="no">
+        <name>X</name>
+        <param><defname>name</defname></param>
+        <param><defname>value</defname></param>
+        <param><defname>desc</defname></param>
+        <initializer>name = value,</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="69" column="9" bodyfile="inc/base/BaseNvs.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseNvs_8h_1afbf3f04fa35349e183adb88ae6d03874" prot="public" static="no">
+        <name>X</name>
+        <param><defname>name</defname></param>
+        <param><defname>value</defname></param>
+        <param><defname>desc</defname></param>
+        <initializer>  case hf_nvs_err_t::name:   \
+    return desc;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="77" column="9" bodyfile="inc/base/BaseNvs.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref></type>
+        <name>hf_nvs_err_t</name>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a37324e52a31667f6ab80c89f2cd5ce01" prot="public">
+          <name>X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" prot="public">
+          <name>NVS_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a176d348f72a44736481bfef20c6114c5" prot="public">
+          <name>NVS_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ae5ce3c3896146433182f6b0535145877" prot="public">
+          <name>NVS_ERR_NOT_INITIALIZED</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a0b4726f0b4fbae76a3801f8afc2fd2d6" prot="public">
+          <name>NVS_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ac4acea1b622467a0e604b7a47f720ef1" prot="public">
+          <name>NVS_ERR_INVALID_PARAMETER</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ab5eeea814bdab12ef6b85c13febf76e8" prot="public">
+          <name>NVS_ERR_NULL_POINTER</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ac3598e620dfd937da04ca8a1b4fc197d" prot="public">
+          <name>NVS_ERR_OUT_OF_MEMORY</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a14c81b3c50e314d6f209bab4e37a4e77" prot="public">
+          <name>NVS_ERR_KEY_NOT_FOUND</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4afecfb26ba79c585868d2459a8ebfdc37" prot="public">
+          <name>NVS_ERR_KEY_TOO_LONG</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a425a15ffde2218cc0115fc07c19770dc" prot="public">
+          <name>NVS_ERR_VALUE_TOO_LARGE</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a92bedde76ad1b0d205109e91d64eb49a" prot="public">
+          <name>NVS_ERR_NAMESPACE_NOT_FOUND</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a986d04672763fbbbbb8b96a940579ee9" prot="public">
+          <name>NVS_ERR_STORAGE_FULL</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ac4200391de3357ac2d8bf1ab46112322" prot="public">
+          <name>NVS_ERR_INVALID_DATA</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a2763eab1632bba46ca9222c1666047f1" prot="public">
+          <name>NVS_ERR_READ_ONLY</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4af0abae5bf89c9b38f7fe1810e3a53ab4" prot="public">
+          <name>NVS_ERR_CORRUPTED</name>
+          <initializer>=  14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ad8a199ce86c9ad133a5d732342b970e9" prot="public">
+          <name>NVS_ERR_ENCRYPTION_FAILED</name>
+          <initializer>=  15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4ab65b6c1d0fa2f46d34184d4da239a92c" prot="public">
+          <name>NVS_ERR_DECRYPTION_FAILED</name>
+          <initializer>=  16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a7d9765111f333427193c6b69dcb6ed67" prot="public">
+          <name>NVS_ERR_ENCRYPTION_NOT_CONFIGURED</name>
+          <initializer>=  17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4add1b8190a58d82cd9a4d8852b4b93d19" prot="public">
+          <name>NVS_ERR_ENCRYPTION_NOT_SUPPORTED</name>
+          <initializer>=  18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a8857fcfb8b6b6f9545092919d732363c" prot="public">
+          <name>NVS_ERR_KEY_PARTITION_CORRUPTED</name>
+          <initializer>=  19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a7c3f052fde4e516843e18e47e4a6950b" prot="public">
+          <name>NVS_ERR_WRONG_ENCRYPTION_SCHEME</name>
+          <initializer>=  20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a1d42f1c4be97709b4834368707cad63b" prot="public">
+          <name>NVS_ERR_VERSION_MISMATCH</name>
+          <initializer>=  21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a20c157f1526f905cf8bb9cbfaeb6f19b" prot="public">
+          <name>NVS_ERR_NO_FREE_PAGES</name>
+          <initializer>=  22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a08e1d0a3b2dc0faa0744092adb3faeb5" prot="public">
+          <name>NVS_ERR_PARTITION_NOT_FOUND</name>
+          <initializer>=  23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4adf22db73577e708cce9a3e026227cd53" prot="public">
+          <name>NVS_ERR_ITERATOR_INVALID</name>
+          <initializer>=  24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a3f9664a2d3809bba1b3a614840ce8116" prot="public">
+          <name>NVS_ERR_SECURITY_VIOLATION</name>
+          <initializer>=  25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a36623c6db71f92f37bce89d9086f3c0e" prot="public">
+          <name>NVS_ERR_UNSUPPORTED_OPERATION</name>
+          <initializer>=  26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="68" column="1" bodyfile="inc/base/BaseNvs.h" bodystart="68" bodyend="72"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="BaseNvs_8h_1a90e7bc50d7255f58951c5806c8565e04" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr const char *</type>
+        <definition>constexpr const char * HfNvsErrToString</definition>
+        <argsstring>(hf_nvs_err_t err) noexcept</argsstring>
+        <name>HfNvsErrToString</name>
+        <param>
+          <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="75" column="22" bodyfile="inc/base/BaseNvs.h" bodystart="75" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for Non-Volatile Storage implementations in the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header-only file defines the abstract base class for non-volatile storage that provides a consistent API across different storage implementations. Concrete implementations for various storage devices inherit from this class to provide key-value storage, settings persistence, and configuration management.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This is a header-only abstract base class following the same pattern as <ref refid="classBaseCan" kindref="compound">BaseCan</ref>. </para>
+</simplesect>
+<simplesect kind="note"><para>Users should program against this interface, not specific implementations. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>HardFOC<sp/>NVS<sp/>Error<sp/>Codes<sp/>(Table)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight></codeline>
+<codeline lineno="34" refid="BaseNvs_8h_1a39e87a409abc82e8e5c93b26adb86245" refkind="member"><highlight class="preprocessor">#define<sp/>HF_NVS_ERR_LIST(X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Success<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/>X(NVS_SUCCESS,<sp/>0,<sp/>&quot;Success&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>General<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_FAILURE,<sp/>1,<sp/>&quot;General<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_NOT_INITIALIZED,<sp/>2,<sp/>&quot;Not<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_ALREADY_INITIALIZED,<sp/>3,<sp/>&quot;Already<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_INVALID_PARAMETER,<sp/>4,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_NULL_POINTER,<sp/>5,<sp/>&quot;Null<sp/>pointer&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_OUT_OF_MEMORY,<sp/>6,<sp/>&quot;Out<sp/>of<sp/>memory&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Storage<sp/>specific<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_KEY_NOT_FOUND,<sp/>7,<sp/>&quot;Key<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_KEY_TOO_LONG,<sp/>8,<sp/>&quot;Key<sp/>too<sp/>long&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_VALUE_TOO_LARGE,<sp/>9,<sp/>&quot;Value<sp/>too<sp/>large&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_NAMESPACE_NOT_FOUND,<sp/>10,<sp/>&quot;Namespace<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_STORAGE_FULL,<sp/>11,<sp/>&quot;Storage<sp/>full&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_INVALID_DATA,<sp/>12,<sp/>&quot;Invalid<sp/>data&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_READ_ONLY,<sp/>13,<sp/>&quot;Read<sp/>only<sp/>mode&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_CORRUPTED,<sp/>14,<sp/>&quot;Data<sp/>corrupted&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>ESP32-C6<sp/>encryption<sp/>and<sp/>advanced<sp/>feature<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_ENCRYPTION_FAILED,<sp/>15,<sp/>&quot;Encryption<sp/>operation<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_DECRYPTION_FAILED,<sp/>16,<sp/>&quot;Decryption<sp/>operation<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_ENCRYPTION_NOT_CONFIGURED,<sp/>17,<sp/>&quot;Encryption<sp/>not<sp/>configured&quot;)<sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_ENCRYPTION_NOT_SUPPORTED,<sp/>18,<sp/>&quot;Encryption<sp/>not<sp/>supported&quot;)<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_KEY_PARTITION_CORRUPTED,<sp/>19,<sp/>&quot;Key<sp/>partition<sp/>corrupted&quot;)<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_WRONG_ENCRYPTION_SCHEME,<sp/>20,<sp/>&quot;Wrong<sp/>encryption<sp/>scheme&quot;)<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_VERSION_MISMATCH,<sp/>21,<sp/>&quot;NVS<sp/>version<sp/>mismatch&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_NO_FREE_PAGES,<sp/>22,<sp/>&quot;No<sp/>free<sp/>pages<sp/>available&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_PARTITION_NOT_FOUND,<sp/>23,<sp/>&quot;NVS<sp/>partition<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_ITERATOR_INVALID,<sp/>24,<sp/>&quot;Iterator<sp/>invalid<sp/>or<sp/>expired&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_SECURITY_VIOLATION,<sp/>25,<sp/>&quot;Security<sp/>policy<sp/>violation&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/>X(NVS_ERR_UNSUPPORTED_OPERATION,<sp/>26,<sp/>&quot;Unsupported<sp/>operation&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Generate<sp/>enum<sp/>class<sp/>from<sp/>X-macro</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="69" refid="BaseNvs_8h_1afbf3f04fa35349e183adb88ae6d03874" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>desc)<sp/>name<sp/>=<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a39e87a409abc82e8e5c93b26adb86245" kindref="member">HF_NVS_ERR_LIST</ref>(<ref refid="BaseNvs_8h_1afbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Generate<sp/>error<sp/>description<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="BaseNvs_8h_1a90e7bc50d7255f58951c5806c8565e04" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="BaseNvs_8h_1a90e7bc50d7255f58951c5806c8565e04" kindref="member">HfNvsErrToString</ref>(<ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/>err)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(err)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>desc)<sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_nvs_err_t::name:<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>desc;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseNvs_8h_1a39e87a409abc82e8e5c93b26adb86245" kindref="member">HF_NVS_ERR_LIST</ref>(<ref refid="BaseNvs_8h_1afbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>error&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="structhf__nvs__statistics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="91" refid="structhf__nvs__statistics__t_1a9f1c94d84d94c8e51f4a03c249aa129e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a9f1c94d84d94c8e51f4a03c249aa129e" kindref="member">total_operations</ref>;</highlight></codeline>
+<codeline lineno="92" refid="structhf__nvs__statistics__t_1aa75564a08130c2b1fb624fa45ed419b7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1aa75564a08130c2b1fb624fa45ed419b7" kindref="member">total_errors</ref>;</highlight></codeline>
+<codeline lineno="93" refid="structhf__nvs__statistics__t_1a807ec86eac7ce01934982c03c9dd6672" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a807ec86eac7ce01934982c03c9dd6672" kindref="member">total_reads</ref>;</highlight></codeline>
+<codeline lineno="94" refid="structhf__nvs__statistics__t_1ad7c4c3871f7ab0af300f50fe84f2fb22" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1ad7c4c3871f7ab0af300f50fe84f2fb22" kindref="member">total_writes</ref>;</highlight></codeline>
+<codeline lineno="95" refid="structhf__nvs__statistics__t_1a2e348eb0dab3ceff97e2ea7b963f4d33" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a2e348eb0dab3ceff97e2ea7b963f4d33" kindref="member">total_commits</ref>;</highlight></codeline>
+<codeline lineno="96" refid="structhf__nvs__statistics__t_1a24db0c1fae68e7bbe576d533a1d8064b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a24db0c1fae68e7bbe576d533a1d8064b" kindref="member">total_erases</ref>;</highlight></codeline>
+<codeline lineno="97" refid="structhf__nvs__statistics__t_1a4a420426685a5bedc037895d575f03f0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a4a420426685a5bedc037895d575f03f0" kindref="member">last_error</ref>;</highlight></codeline>
+<codeline lineno="98" refid="structhf__nvs__statistics__t_1a530e518acdadc9c6f01a92211753ad09" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a530e518acdadc9c6f01a92211753ad09" kindref="member">last_operation_time_us</ref>;</highlight></codeline>
+<codeline lineno="99" refid="structhf__nvs__statistics__t_1ae05a6bcd4f99015dd05789ed703e5cbb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1ae05a6bcd4f99015dd05789ed703e5cbb" kindref="member">successful_ops</ref>;</highlight></codeline>
+<codeline lineno="100" refid="structhf__nvs__statistics__t_1a223c9d30ef74e02fffc8620699491ec7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a223c9d30ef74e02fffc8620699491ec7" kindref="member">failed_ops</ref>;</highlight></codeline>
+<codeline lineno="101" refid="structhf__nvs__statistics__t_1a3fc99f022d8c59fe30a445aa5d38b11f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a3fc99f022d8c59fe30a445aa5d38b11f" kindref="member">bytes_written</ref>;</highlight></codeline>
+<codeline lineno="102" refid="structhf__nvs__statistics__t_1a5820ad18fb0660b19ce71fa19fbfb95b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__statistics__t_1a5820ad18fb0660b19ce71fa19fbfb95b" kindref="member">bytes_read</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="structhf__nvs__diagnostics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="109" refid="structhf__nvs__diagnostics__t_1a3afc67f366de693b72a1d8d6e72ab552" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="structhf__nvs__diagnostics__t_1a3afc67f366de693b72a1d8d6e72ab552" kindref="member">last_error</ref>;</highlight></codeline>
+<codeline lineno="110" refid="structhf__nvs__diagnostics__t_1a0b4e0215414e9e0d1413a3db05240cd0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__diagnostics__t_1a0b4e0215414e9e0d1413a3db05240cd0" kindref="member">consecutive_errors</ref>;</highlight></codeline>
+<codeline lineno="111" refid="structhf__nvs__diagnostics__t_1acdf473aebeb20f3f24cf4f3bed77ac7e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__diagnostics__t_1acdf473aebeb20f3f24cf4f3bed77ac7e" kindref="member">storage_healthy</ref>;</highlight></codeline>
+<codeline lineno="112" refid="structhf__nvs__diagnostics__t_1a204fb8657db0238559f9ba5cea751593" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__nvs__diagnostics__t_1a204fb8657db0238559f9ba5cea751593" kindref="member">system_uptime_ms</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classBaseNvs" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="139" refid="classBaseNvs_1a34a0f5777eaeabb861b0bef15c31a11b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a34a0f5777eaeabb861b0bef15c31a11b" kindref="member">~BaseNvs</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>copy<sp/>constructor<sp/>and<sp/>assignment<sp/>operator<sp/>for<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classBaseNvs_1abc92e07335f490e560ea1a1513ea63fc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref>(const<sp/><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="143" refid="classBaseNvs_1aeda78da1a1db06a952e14e549eb7f07a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref>&amp;<sp/>operator=(const<sp/><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LAZY-INITIALIZATION<sp/>PATTERN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="classBaseNvs_1a517d0d03678ff0dfdd57eff54dee9da2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a517d0d03678ff0dfdd57eff54dee9da2" kindref="member">EnsureInitialized</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref><sp/>=<sp/>(<ref refid="classBaseNvs_1a407959e9e6c10a0e54f26dd9e92024c0" kindref="member">Initialize</ref>()<sp/>==<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="classBaseNvs_1a4d5a23def2dfdee04a1ada50f8c6e067" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a4d5a23def2dfdee04a1ada50f8c6e067" kindref="member">EnsureDeinitialized</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref><sp/>=<sp/>!(<ref refid="classBaseNvs_1a64733cd3edc601a03fb3c31e914eaa9e" kindref="member">Deinitialize</ref>()<sp/>==<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="classBaseNvs_1adaba0a72b0c06873b2b01713f1af3d9b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1adaba0a72b0c06873b2b01713f1af3d9b" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PURE<sp/>VIRTUAL<sp/>FUNCTIONS<sp/>(MUST<sp/>BE<sp/>IMPLEMENTED)<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="classBaseNvs_1a407959e9e6c10a0e54f26dd9e92024c0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a407959e9e6c10a0e54f26dd9e92024c0" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="classBaseNvs_1a64733cd3edc601a03fb3c31e914eaa9e" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a64733cd3edc601a03fb3c31e914eaa9e" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b" kindref="member">SetU32</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>value)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11" kindref="member">GetU32</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>value)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687" kindref="member">SetString</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>value)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="classBaseNvs_1a8954da94247836ede0a895ddd245e634" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a8954da94247836ede0a895ddd245e634" kindref="member">GetString</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>actual_size<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19" kindref="member">SetBlob</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/>const<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>data_size)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b" kindref="member">GetBlob</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>buffer_size,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>actual_size<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256" refid="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d" kindref="member">EraseKey</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="classBaseNvs_1a0921ba6eb0dda4285a5ea33ec1b80f11" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a0921ba6eb0dda4285a5ea33ec1b80f11" kindref="member">Commit</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="classBaseNvs_1a911caf95d3c25047f044ca748164df39" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a911caf95d3c25047f044ca748164df39" kindref="member">KeyExists</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30" kindref="member">GetSize</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">&amp;<sp/>size)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>INTERFACE<sp/>(IMPLEMENTED)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287" refid="classBaseNvs_1a6dc238eadbd792da526fcbeea4bf58d5" refkind="member"><highlight class="normal"><sp/><sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classBaseNvs_1a6dc238eadbd792da526fcbeea4bf58d5" kindref="member">GetNamespace</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" kindref="member">namespace_name_</ref>;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295" refid="classBaseNvs_1a66680f0959c3ba928b402f6a9fbb700a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classBaseNvs_1a66680f0959c3ba928b402f6a9fbb700a" kindref="member">GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301" refid="classBaseNvs_1a63908cbbdadf9134e5350491a87d7652" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a63908cbbdadf9134e5350491a87d7652" kindref="member">GetMaxKeyLength</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307" refid="classBaseNvs_1a00697824bdbb7c20b11a82b2837bc7bc" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a00697824bdbb7c20b11a82b2837bc7bc" kindref="member">GetMaxValueSize</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATISTICS<sp/>AND<sp/>DIAGNOSTICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318" refid="classBaseNvs_1a76eb147e5be050296e01d8cc80f08d2d" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a76eb147e5be050296e01d8cc80f08d2d" kindref="member">ResetStatistics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" kindref="member">statistics_</ref><sp/>=<sp/><ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a36623c6db71f92f37bce89d9086f3c0e" kindref="member">hf_nvs_err_t::NVS_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328" refid="classBaseNvs_1a00047694a8eda737718d4ad83c9feb9a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a00047694a8eda737718d4ad83c9feb9a" kindref="member">ResetDiagnostics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" kindref="member">diagnostics_</ref><sp/>=<sp/><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>diagnostics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a36623c6db71f92f37bce89d9086f3c0e" kindref="member">hf_nvs_err_t::NVS_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338" refid="classBaseNvs_1a2784f0924a79ef398f6c42227197d87d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a2784f0924a79ef398f6c42227197d87d" kindref="member">GetStatistics</ref>(<ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>statistics<sp/>=<sp/><ref refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" kindref="member">statistics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>statistics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a36623c6db71f92f37bce89d9086f3c0e" kindref="member">hf_nvs_err_t::NVS_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348" refid="classBaseNvs_1a5fe8b85bd8c8c103d5e8ce9c5060b49c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref><sp/><ref refid="classBaseNvs_1a5fe8b85bd8c8c103d5e8ce9c5060b49c" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics<sp/>=<sp/><ref refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" kindref="member">diagnostics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>diagnostics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4a36623c6db71f92f37bce89d9086f3c0e" kindref="member">hf_nvs_err_t::NVS_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="358" refid="classBaseNvs_1abfe625b5e099d438f744514728de9674" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1abfe625b5e099d438f744514728de9674" kindref="member">BaseNvs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>namespace_name)<sp/>noexcept</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" kindref="member">namespace_name_</ref>(namespace_name),<sp/><ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">),<sp/><ref refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" kindref="member">statistics_</ref>{},<sp/><ref refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" kindref="member">diagnostics_</ref>{}<sp/>{}</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365" refid="classBaseNvs_1a14236adcdcc3d0c2ff9e434bd0d75c5a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a14236adcdcc3d0c2ff9e434bd0d75c5a" kindref="member">SetInitialized</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref><sp/>=<sp/>initialized;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369" refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" kindref="member">namespace_name_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="370" refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="371" refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref><sp/><ref refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" kindref="member">statistics_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="372" refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref><sp/><ref refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" kindref="member">diagnostics_</ref>;<sp/></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="375"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BaseNvs.h"/>
+  </compounddef>
+</doxygen>

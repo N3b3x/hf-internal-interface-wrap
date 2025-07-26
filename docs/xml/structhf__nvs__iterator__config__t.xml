@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__nvs__iterator__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_nvs_iterator_config_t</compoundname>
+    <includes refid="EspTypes__NVS_8h" local="no">EspTypes_NVS.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__nvs__iterator__config__t_1a65f62a32e0cce249d88cf7ae5af478f0" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_nvs_iterator_config_t::namespace_name</definition>
+        <argsstring></argsstring>
+        <name>namespace_name</name>
+        <qualifiedname>hf_nvs_iterator_config_t::namespace_name</qualifiedname>
+        <briefdescription>
+<para>Namespace name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="131" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__iterator__config__t_1a679b91e6c7e1b8bf721564040be56b3a" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref></type>
+        <definition>hf_nvs_type_t hf_nvs_iterator_config_t::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>hf_nvs_iterator_config_t::type</qualifiedname>
+        <briefdescription>
+<para>Data type filter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="132" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_nvs_iterator_config_t::key_prefix</definition>
+        <argsstring></argsstring>
+        <name>key_prefix</name>
+        <qualifiedname>hf_nvs_iterator_config_t::key_prefix</qualifiedname>
+        <briefdescription>
+<para>Key prefix filter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="133" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_nvs_iterator_config_t::max_entries</definition>
+        <argsstring></argsstring>
+        <name>max_entries</name>
+        <qualifiedname>hf_nvs_iterator_config_t::max_entries</qualifiedname>
+        <briefdescription>
+<para>Maximum entries to iterate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="134" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__nvs__iterator__config__t_1a92649a1339942a2530228237ecc5e72f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_nvs_iterator_config_t::hf_nvs_iterator_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_nvs_iterator_config_t</name>
+        <qualifiedname>hf_nvs_iterator_config_t::hf_nvs_iterator_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="136" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="136" bodyend="138"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 NVS iterator configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="130" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="130" bodyend="139"/>
+    <listofallmembers>
+      <member refid="structhf__nvs__iterator__config__t_1a92649a1339942a2530228237ecc5e72f" prot="public" virt="non-virtual"><scope>hf_nvs_iterator_config_t</scope><name>hf_nvs_iterator_config_t</name></member>
+      <member refid="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" prot="public" virt="non-virtual"><scope>hf_nvs_iterator_config_t</scope><name>key_prefix</name></member>
+      <member refid="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" prot="public" virt="non-virtual"><scope>hf_nvs_iterator_config_t</scope><name>max_entries</name></member>
+      <member refid="structhf__nvs__iterator__config__t_1a65f62a32e0cce249d88cf7ae5af478f0" prot="public" virt="non-virtual"><scope>hf_nvs_iterator_config_t</scope><name>namespace_name</name></member>
+      <member refid="structhf__nvs__iterator__config__t_1a679b91e6c7e1b8bf721564040be56b3a" prot="public" virt="non-virtual"><scope>hf_nvs_iterator_config_t</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

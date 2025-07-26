@@ -1,0 +1,800 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classBaseUart" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseUart</compoundname>
+    <includes refid="BaseUart_8h" local="no">BaseUart.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBaseUart_1ab49dfeb03b7a9f8cbf81460ebb711c38" prot="protected" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref></type>
+        <definition>hf_port_num_t BaseUart::port_</definition>
+        <argsstring></argsstring>
+        <name>port_</name>
+        <qualifiedname>BaseUart::port_</qualifiedname>
+        <briefdescription>
+<para>UART port number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="399" column="17" bodyfile="inc/base/BaseUart.h" bodystart="399" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseUart_1a79a571b629da5ad6a3675619eb25903f" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BaseUart::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BaseUart::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="400" column="8" bodyfile="inc/base/BaseUart.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseUart_1a27d6cf918e8a0ff9bdc345d3871d0876" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref></type>
+        <definition>hf_uart_statistics_t BaseUart::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BaseUart::statistics_</qualifiedname>
+        <briefdescription>
+<para>UART operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="401" column="24" bodyfile="inc/base/BaseUart.h" bodystart="401" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseUart_1af0bff6e1b9e465bfecec2139ff113e11" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref></type>
+        <definition>hf_uart_diagnostics_t BaseUart::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BaseUart::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>UART diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="402" column="25" bodyfile="inc/base/BaseUart.h" bodystart="402" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseUart_1aeaf29070491a7ba9a8fdab4d57f88552" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BaseUart::~BaseUart</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BaseUart</name>
+        <qualifiedname>BaseUart::~BaseUart</qualifiedname>
+        <briefdescription>
+<para>Constructor with port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART port number</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Virtual destructor ensures proper cleanup in derived classes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="192" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a5bd0243a3f6c1e242a5a867f6aebf928" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseUart::BaseUart</definition>
+        <argsstring>(const BaseUart &amp;)=delete</argsstring>
+        <name>BaseUart</name>
+        <qualifiedname>BaseUart::BaseUart</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="195" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a21412c6c2f4479149d6c25337a0af7aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
+        <definition>BaseUart &amp; BaseUart::operator=</definition>
+        <argsstring>(const BaseUart &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseUart::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="196" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1aefd61298d23c892de11fce7404c909e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseUart::BaseUart</definition>
+        <argsstring>(BaseUart &amp;&amp;)=delete</argsstring>
+        <name>BaseUart</name>
+        <qualifiedname>BaseUart::BaseUart</qualifiedname>
+        <param>
+          <type><ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="197" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1ab823b270624288541db2a44305249b75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
+        <definition>BaseUart &amp; BaseUart::operator=</definition>
+        <argsstring>(BaseUart &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseUart::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="198" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a3551794eb6e958cbdf8c15aec49c4433" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseUart::EnsureInitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BaseUart::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the UART is initialized (lazy initialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the UART is initialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="204" column="8" bodyfile="inc/base/BaseUart.h" bodystart="204" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a0775104a12d8e7b418246ed53b660e55" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseUart::EnsureDeinitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BaseUart::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the UART is deinitialized (lazy deinitialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the UART is deinitialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="215" column="8" bodyfile="inc/base/BaseUart.h" bodystart="215" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1aa01db7402b20038f979b9073281bb430" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseUart::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseUart::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Checks if the driver is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="226" column="9" bodyfile="inc/base/BaseUart.h" bodystart="226" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1ac3cbd2017d912e1ef8a1c64627bdcbf4" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref></type>
+        <definition>hf_port_num_t BaseUart::GetPort</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetPort</name>
+        <qualifiedname>BaseUart::GetPort</qualifiedname>
+        <briefdescription>
+<para>Get the UART port number. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Port number </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="234" column="18" bodyfile="inc/base/BaseUart.h" bodystart="234" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1ac5f93b4f75c229d2e0ec04196f5cb844" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUart::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseUart::Initialize</qualifiedname>
+        <briefdescription>
+<para>Initialize the UART driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="246" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a6778f2da517273aa1a51c0658ec0a2c0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUart::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseUart::Deinitialize</qualifiedname>
+        <briefdescription>
+<para>Deinitialize the UART driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="252" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a5de6a79ad512480a12f757ce73fa46a6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUart::Write</definition>
+        <argsstring>(const hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms=0) noexcept=0</argsstring>
+        <name>Write</name>
+        <qualifiedname>BaseUart::Write</qualifiedname>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write data to the UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data buffer to transmit </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="261" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a9ddc416f533c776cf879790c8cb10b57" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUart::Read</definition>
+        <argsstring>(hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms=0) noexcept=0</argsstring>
+        <name>Read</name>
+        <qualifiedname>BaseUart::Read</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read data from the UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store received data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="271" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a9666c49827901f9a511c4fd824648eb0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>virtual hf_u16_t BaseUart::BytesAvailable</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>BytesAvailable</name>
+        <qualifiedname>BaseUart::BytesAvailable</qualifiedname>
+        <briefdescription>
+<para>Get the number of bytes available to read. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of bytes available in the receive buffer </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="277" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a97a3d02d570669c9c463b99916fdef2c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUart::FlushTx</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>FlushTx</name>
+        <qualifiedname>BaseUart::FlushTx</qualifiedname>
+        <briefdescription>
+<para>Flush the transmit buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="283" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a2361728845801eb4356bdaa560ba0315" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUart::FlushRx</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>FlushRx</name>
+        <qualifiedname>BaseUart::FlushRx</qualifiedname>
+        <briefdescription>
+<para>Flush the receive buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="289" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a9d071b6aa4fb1fe97b33cadf47b8ad7b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int BaseUart::Printf</definition>
+        <argsstring>(const char *format,...) noexcept=0</argsstring>
+        <name>Printf</name>
+        <qualifiedname>BaseUart::Printf</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Printf-style formatted output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of characters written, or -1 on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="297" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a75cbb2ce81d78f722874184878433249" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUart::Open</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Open</name>
+        <qualifiedname>BaseUart::Open</qualifiedname>
+        <briefdescription>
+<para>Open the UART (alias for Initialize). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="307" column="16" bodyfile="inc/base/BaseUart.h" bodystart="307" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1aec851bc0079da79a3cbc617fafad7432" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUart::Close</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Close</name>
+        <qualifiedname>BaseUart::Close</qualifiedname>
+        <briefdescription>
+<para>Close the UART (alias for Deinitialize). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="315" column="16" bodyfile="inc/base/BaseUart.h" bodystart="315" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1aacddae116924093dc2d45a894772a9a6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUart::WriteString</definition>
+        <argsstring>(const char *str) noexcept</argsstring>
+        <name>WriteString</name>
+        <qualifiedname>BaseUart::WriteString</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>Write a string to the UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String to write </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="328" column="16" bodyfile="inc/base/BaseUart.h" bodystart="328" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a9c42866eb7d966a138755e5b71c725cf" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseUart::WriteByte</definition>
+        <argsstring>(hf_u8_t byte) noexcept</argsstring>
+        <name>WriteByte</name>
+        <qualifiedname>BaseUart::WriteByte</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+<para>Write a single byte to the UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>byte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte to write </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="340" column="16" bodyfile="inc/base/BaseUart.h" bodystart="340" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1aa85590c6a17563a3ddcf2d6084210725" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUart::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BaseUart::ResetStatistics</qualifiedname>
+        <briefdescription>
+<para>Reset UART operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="355" column="25" bodyfile="inc/base/BaseUart.h" bodystart="355" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1abed0a5b5b2f852ea41b3133fb260aaf7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUart::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BaseUart::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset UART diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="365" column="25" bodyfile="inc/base/BaseUart.h" bodystart="365" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a6698396f98eb9f438f91999142b5cbdf" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUart::GetStatistics</definition>
+        <argsstring>(hf_uart_statistics_t &amp;statistics) const noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BaseUart::GetStatistics</qualifiedname>
+        <param>
+          <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get UART operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store statistics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref> if successful, UART_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="375" column="25" bodyfile="inc/base/BaseUart.h" bodystart="375" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseUart_1a68ce0319cba173ccdf90812fd7ad8ee5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>virtual hf_uart_err_t BaseUart::GetDiagnostics</definition>
+        <argsstring>(hf_uart_diagnostics_t &amp;diagnostics) const noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BaseUart::GetDiagnostics</qualifiedname>
+        <param>
+          <type><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get UART diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store diagnostics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref> if successful, UART_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="385" column="25" bodyfile="inc/base/BaseUart.h" bodystart="385" bodyend="388"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseUart_1af78039653dc8c846d3f90dc48f50b33d" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseUart::BaseUart</definition>
+        <argsstring>(hf_port_num_t port) noexcept</argsstring>
+        <name>BaseUart</name>
+        <qualifiedname>BaseUart::BaseUart</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref></type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Protected constructor with port and configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART port number </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART configuration parameters </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="396" column="3" bodyfile="inc/base/BaseUart.h" bodystart="396" bodyend="397"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for UART driver implementations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a comprehensive UART driver abstraction that serves as the base for all UART implementations in the HardFOC system. It supports:<itemizedlist>
+<listitem><para>Asynchronous serial communication</para>
+</listitem><listitem><para>Configurable baud rates, data bits, parity, and stop bits</para>
+</listitem><listitem><para>Hardware flow control (RTS/CTS)</para>
+</listitem><listitem><para>Buffered TX/RX with configurable buffer sizes</para>
+</listitem><listitem><para>Blocking and non-blocking I/O operations</para>
+</listitem><listitem><para>Comprehensive error handling and status reporting</para>
+</listitem><listitem><para>Printf-style formatted output</para>
+</listitem><listitem><para>Lazy initialization pattern</para>
+</listitem></itemizedlist>
+</para>
+<para>Derived classes implement platform-specific details such as:<itemizedlist>
+<listitem><para>On-chip UART controllers</para>
+</listitem><listitem><para>USB-to-serial adapters</para>
+</listitem><listitem><para>Wireless serial bridges</para>
+</listitem><listitem><para>Software UART implementations</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>This is a header-only abstract base class - instantiate concrete implementations instead. </para>
+</simplesect>
+<simplesect kind="note"><para>This class is not inherently thread-safe. Use appropriate synchronization if accessed from multiple contexts. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>BaseUart</label>
+        <link refid="classBaseUart"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_uart_diagnostics_t</label>
+        <link refid="structhf__uart__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_uart_statistics_t</label>
+        <link refid="structhf__uart__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BaseUart.h" line="183" column="1" bodyfile="inc/base/BaseUart.h" bodystart="183" bodyend="403"/>
+    <listofallmembers>
+      <member refid="classBaseUart_1a5bd0243a3f6c1e242a5a867f6aebf928" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>BaseUart</name></member>
+      <member refid="classBaseUart_1aefd61298d23c892de11fce7404c909e9" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>BaseUart</name></member>
+      <member refid="classBaseUart_1af78039653dc8c846d3f90dc48f50b33d" prot="protected" virt="non-virtual"><scope>BaseUart</scope><name>BaseUart</name></member>
+      <member refid="classBaseUart_1a9666c49827901f9a511c4fd824648eb0" prot="public" virt="pure-virtual"><scope>BaseUart</scope><name>BytesAvailable</name></member>
+      <member refid="classBaseUart_1aec851bc0079da79a3cbc617fafad7432" prot="public" virt="virtual"><scope>BaseUart</scope><name>Close</name></member>
+      <member refid="classBaseUart_1a6778f2da517273aa1a51c0658ec0a2c0" prot="public" virt="pure-virtual"><scope>BaseUart</scope><name>Deinitialize</name></member>
+      <member refid="classBaseUart_1af0bff6e1b9e465bfecec2139ff113e11" prot="protected" virt="non-virtual"><scope>BaseUart</scope><name>diagnostics_</name></member>
+      <member refid="classBaseUart_1a0775104a12d8e7b418246ed53b660e55" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseUart_1a3551794eb6e958cbdf8c15aec49c4433" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseUart_1a2361728845801eb4356bdaa560ba0315" prot="public" virt="pure-virtual"><scope>BaseUart</scope><name>FlushRx</name></member>
+      <member refid="classBaseUart_1a97a3d02d570669c9c463b99916fdef2c" prot="public" virt="pure-virtual"><scope>BaseUart</scope><name>FlushTx</name></member>
+      <member refid="classBaseUart_1a68ce0319cba173ccdf90812fd7ad8ee5" prot="public" virt="virtual"><scope>BaseUart</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseUart_1ac3cbd2017d912e1ef8a1c64627bdcbf4" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>GetPort</name></member>
+      <member refid="classBaseUart_1a6698396f98eb9f438f91999142b5cbdf" prot="public" virt="virtual"><scope>BaseUart</scope><name>GetStatistics</name></member>
+      <member refid="classBaseUart_1ac5f93b4f75c229d2e0ec04196f5cb844" prot="public" virt="pure-virtual"><scope>BaseUart</scope><name>Initialize</name></member>
+      <member refid="classBaseUart_1a79a571b629da5ad6a3675619eb25903f" prot="protected" virt="non-virtual"><scope>BaseUart</scope><name>initialized_</name></member>
+      <member refid="classBaseUart_1aa01db7402b20038f979b9073281bb430" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>IsInitialized</name></member>
+      <member refid="classBaseUart_1a75cbb2ce81d78f722874184878433249" prot="public" virt="virtual"><scope>BaseUart</scope><name>Open</name></member>
+      <member refid="classBaseUart_1a21412c6c2f4479149d6c25337a0af7aa" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>operator=</name></member>
+      <member refid="classBaseUart_1ab823b270624288541db2a44305249b75" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>operator=</name></member>
+      <member refid="classBaseUart_1ab49dfeb03b7a9f8cbf81460ebb711c38" prot="protected" virt="non-virtual"><scope>BaseUart</scope><name>port_</name></member>
+      <member refid="classBaseUart_1a9d071b6aa4fb1fe97b33cadf47b8ad7b" prot="public" virt="pure-virtual"><scope>BaseUart</scope><name>Printf</name></member>
+      <member refid="classBaseUart_1a9ddc416f533c776cf879790c8cb10b57" prot="public" virt="pure-virtual"><scope>BaseUart</scope><name>Read</name></member>
+      <member refid="classBaseUart_1abed0a5b5b2f852ea41b3133fb260aaf7" prot="public" virt="virtual"><scope>BaseUart</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseUart_1aa85590c6a17563a3ddcf2d6084210725" prot="public" virt="virtual"><scope>BaseUart</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseUart_1a27d6cf918e8a0ff9bdc345d3871d0876" prot="protected" virt="non-virtual"><scope>BaseUart</scope><name>statistics_</name></member>
+      <member refid="classBaseUart_1a5de6a79ad512480a12f757ce73fa46a6" prot="public" virt="pure-virtual"><scope>BaseUart</scope><name>Write</name></member>
+      <member refid="classBaseUart_1a9c42866eb7d966a138755e5b71c725cf" prot="public" virt="virtual"><scope>BaseUart</scope><name>WriteByte</name></member>
+      <member refid="classBaseUart_1aacddae116924093dc2d45a894772a9a6" prot="public" virt="virtual"><scope>BaseUart</scope><name>WriteString</name></member>
+      <member refid="classBaseUart_1aeaf29070491a7ba9a8fdab4d57f88552" prot="public" virt="virtual"><scope>BaseUart</scope><name>~BaseUart</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

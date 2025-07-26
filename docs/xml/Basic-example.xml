@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="Basic-example" kind="example">
+    <compoundname>Basic</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Usage: <programlisting><codeline><highlight class="comment">//<sp/>Create<sp/>bus<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref><sp/>bus_config<sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal">bus_config.<ref refid="structhf__i2c__master__bus__config__t_1a716f6163484b87561aba84f289af450a" kindref="member">i2c_port</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">bus_config.<ref refid="structhf__i2c__master__bus__config__t_1a49a9dd202058114f460dc717b8628240" kindref="member">sda_io_num</ref><sp/>=<sp/>21;</highlight></codeline>
+<codeline><highlight class="normal">bus_config.<ref refid="structhf__i2c__master__bus__config__t_1a7bb7bf1b37dd8e03233fae19f0ca8dd3" kindref="member">scl_io_num</ref><sp/>=<sp/>22;</highlight></codeline>
+<codeline><highlight class="normal">bus_config.<ref refid="structhf__i2c__master__bus__config__t_1ae59d13c305b94ab55270bc9b7e48b4a8" kindref="member">enable_internal_pullup</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Create<sp/>I2C<sp/>bus</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref><sp/>i2c_bus(bus_config);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!i2c_bus.Initialize())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>initialization<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Create<sp/>device<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref><sp/>device_config<sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal">device_config.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref><sp/>=<sp/>0x48;</highlight></codeline>
+<codeline><highlight class="normal">device_config.<ref refid="structhf__i2c__device__config__t_1a770633f438e5e923370732a6275189d5" kindref="member">scl_speed_hz</ref><sp/>=<sp/>400000;</highlight></codeline>
+<codeline><highlight class="normal">device_config.<ref refid="structhf__i2c__device__config__t_1a30e9a6a1ffbe59f64c84486fa4e4605f" kindref="member">dev_addr_length</ref><sp/>=<sp/><ref refid="EspTypes__I2C_8h_1ada5c1c4b9978d9458ddf062c6c07c7c5aa828ccf42a365ffba5559eefcdd37f01" kindref="member">hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT</ref>;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Add<sp/>device<sp/>to<sp/>bus</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index<sp/>=<sp/>i2c_bus.CreateDevice(device_config);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/>device<sp/>=<sp/>i2c_bus.GetDevice(device_index);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>device<sp/>for<sp/>I2C<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>data[]<sp/>=<sp/>{0x10,<sp/>0x20,<sp/>0x30};</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/>result<sp/>=<sp/>device-&gt;<ref refid="classBaseI2c_1abdfc7c1890423f993f1c9ca261e8a15d" kindref="member">Write</ref>(data,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(data));</highlight></codeline>
+</programlisting> <programlisting filename="Basic"></programlisting> </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspI2c.h"/>
+  </compounddef>
+</doxygen>

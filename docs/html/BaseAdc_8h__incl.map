@@ -1,0 +1,14 @@
+<map id="inc/base/BaseAdc.h" name="inc/base/BaseAdc.h">
+<area shape="rect" id="Node000001" title="Abstract base class for ADC implementations in the HardFOC system." alt="" coords="127,5,275,31"/>
+<area shape="rect" id="Node000002" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="67,79,202,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,33,157,70,153,67,188,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,72,177"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="138,33,94,51,74,64,57,80,44,108,40,138,35,137,39,107,52,77,70,60,91,46,136,28"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="226,79,313,104"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="214,29,251,67,247,70,211,33"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="337,79,434,104"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="232,28,343,71,341,76,230,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="121,106,67,146,64,141,118,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="105,152,164,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="137,104,137,138,132,138,132,104"/>
+</map>

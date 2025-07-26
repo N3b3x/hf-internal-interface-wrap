@@ -1,0 +1,5 @@
+<map id="EspGpio" name="EspGpio">
+<area shape="rect" id="Node000001" title="Advanced MCU&#45;specific implementation of unified BaseGpio with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="10,79,85,104"/>
+<area shape="rect" id="Node000002" href="$classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="5,5,89,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,44,50,79,45,79,45,44"/>
+</map>

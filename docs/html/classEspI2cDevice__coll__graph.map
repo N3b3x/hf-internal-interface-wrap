@@ -1,0 +1,20 @@
+<map id="EspI2cDevice" name="EspI2cDevice">
+<area shape="rect" id="Node000001" title="Represents a single I2C device on a bus." alt="" coords="643,122,752,147"/>
+<area shape="rect" id="Node000002" href="$classBaseI2c.html" title="Abstract base class for I2C device implementations." alt="" coords="389,53,463,78"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="477,68,545,78,620,96,674,120,672,124,618,101,544,83,476,73"/>
+<area shape="rect" id="Node000003" href="$structhf__i2c__statistics__t.html" title="I2C operation statistics." alt="" coords="37,7,176,33"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="190,16,232,16,372,17,434,24,511,37,567,48,591,55,620,68,657,94,685,120,682,123,654,98,617,73,589,60,566,53,510,43,433,29,372,23,232,21,190,22"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,29,390,58,389,63,189,34"/>
+<area shape="rect" id="Node000004" href="$structhf__i2c__diagnostics__t.html" title="I2C diagnostic information." alt="" coords="29,69,184,94"/>
+<area shape="poly" id="edge9_Node000001_Node000004" title=" " alt="" coords="198,88,342,101,643,128,642,133,341,107,198,93"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="197,75,317,69,389,65,389,70,317,75,198,80"/>
+<area shape="rect" id="Node000005" href="$classEspI2cBus.html" title="Manages a single I2C bus. Handles bus initialization and device creation." alt="" coords="382,166,470,191"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="483,169,618,148,642,144,643,149,619,153,484,174"/>
+<area shape="rect" id="Node000006" href="$structhf__i2c__master__bus__config__t.html" title="I2C master bus configuration structure." alt="" coords="5,139,208,165"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="222,159,382,172,382,178,222,164"/>
+<area shape="rect" id="Node000007" href="$classRtosMutex.html" title=" " alt="" coords="61,209,153,234"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="166,225,237,230,323,232,417,228,510,215,558,201,603,182,674,145,677,150,605,187,559,206,511,220,417,233,323,238,236,236,166,231"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="166,211,381,182,382,187,167,216"/>
+<area shape="rect" id="Node000008" href="$structhf__i2c__device__config__t.html" title="I2C device configuration structure." alt="" coords="341,290,511,315"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="524,303,573,293,596,285,617,273,646,244,668,209,682,174,690,147,696,148,687,176,672,211,650,247,620,277,598,289,574,298,525,308"/>
+</map>

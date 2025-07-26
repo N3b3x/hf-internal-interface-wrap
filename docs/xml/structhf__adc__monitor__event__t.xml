@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__adc__monitor__event__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_monitor_event_t</compoundname>
+    <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__monitor__event__t_1a0a13dd058bd050511cb6ecf8f2722c9d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_adc_monitor_event_t::monitor_id</definition>
+        <argsstring></argsstring>
+        <name>monitor_id</name>
+        <qualifiedname>hf_adc_monitor_event_t::monitor_id</qualifiedname>
+        <briefdescription>
+<para>Monitor ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="188" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__monitor__event__t_1aebe2167987d46739b01e3c6d35996eae" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+        <definition>hf_channel_id_t hf_adc_monitor_event_t::channel_id</definition>
+        <argsstring></argsstring>
+        <name>channel_id</name>
+        <qualifiedname>hf_adc_monitor_event_t::channel_id</qualifiedname>
+        <briefdescription>
+<para>Channel ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="189" column="19" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__monitor__event__t_1a83e42ca961a338f52c83548e51991995" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_adc_monitor_event_t::raw_value</definition>
+        <argsstring></argsstring>
+        <name>raw_value</name>
+        <qualifiedname>hf_adc_monitor_event_t::raw_value</qualifiedname>
+        <briefdescription>
+<para>Raw ADC value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="190" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__monitor__event__t_1ae33b0564f3216e6ba36b03995a52b802" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__ADC_8h_1acb5a927e5861c1dc726aa5e27097764e" kindref="member">hf_adc_monitor_event_type_t</ref></type>
+        <definition>hf_adc_monitor_event_type_t hf_adc_monitor_event_t::event_type</definition>
+        <argsstring></argsstring>
+        <name>event_type</name>
+        <qualifiedname>hf_adc_monitor_event_t::event_type</qualifiedname>
+        <briefdescription>
+<para>Event type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="191" column="31" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__monitor__event__t_1a64ae1858087a81ce05ba25ebdecca99f" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hf_adc_monitor_event_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_adc_monitor_event_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Timestamp in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="192" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__monitor__event__t_1a97d31f767883bc5e9b8f7af01497ab76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_monitor_event_t::hf_adc_monitor_event_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_monitor_event_t</name>
+        <qualifiedname>hf_adc_monitor_event_t::hf_adc_monitor_event_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="194" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="194" bodyend="196"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC monitor event structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="187" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="187" bodyend="197"/>
+    <listofallmembers>
+      <member refid="structhf__adc__monitor__event__t_1aebe2167987d46739b01e3c6d35996eae" prot="public" virt="non-virtual"><scope>hf_adc_monitor_event_t</scope><name>channel_id</name></member>
+      <member refid="structhf__adc__monitor__event__t_1ae33b0564f3216e6ba36b03995a52b802" prot="public" virt="non-virtual"><scope>hf_adc_monitor_event_t</scope><name>event_type</name></member>
+      <member refid="structhf__adc__monitor__event__t_1a97d31f767883bc5e9b8f7af01497ab76" prot="public" virt="non-virtual"><scope>hf_adc_monitor_event_t</scope><name>hf_adc_monitor_event_t</name></member>
+      <member refid="structhf__adc__monitor__event__t_1a0a13dd058bd050511cb6ecf8f2722c9d" prot="public" virt="non-virtual"><scope>hf_adc_monitor_event_t</scope><name>monitor_id</name></member>
+      <member refid="structhf__adc__monitor__event__t_1a83e42ca961a338f52c83548e51991995" prot="public" virt="non-virtual"><scope>hf_adc_monitor_event_t</scope><name>raw_value</name></member>
+      <member refid="structhf__adc__monitor__event__t_1a64ae1858087a81ce05ba25ebdecca99f" prot="public" virt="non-virtual"><scope>hf_adc_monitor_event_t</scope><name>timestamp_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

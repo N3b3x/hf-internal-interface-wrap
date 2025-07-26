@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__spi__bus__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_spi_bus_config_t</compoundname>
+    <includes refid="EspTypes__SPI_8h" local="no">EspTypes_SPI.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1ad5ae43f8e8ed48d17667740103caf5cf" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref></type>
+        <definition>hf_spi_bus_config_t::host</definition>
+        <argsstring></argsstring>
+        <name>host</name>
+        <qualifiedname>hf_spi_bus_config_t::host</qualifiedname>
+        <briefdescription>
+<para>SPI host/controller (e.g., HF_SPI2_HOST) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>SPI host/controller (e.g., HF_SPI2_HOST) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="138" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1a56f13363406cc28437c24c8745d835ed" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_spi_bus_config_t::mosi_pin</definition>
+        <argsstring></argsstring>
+        <name>mosi_pin</name>
+        <qualifiedname>hf_spi_bus_config_t::mosi_pin</qualifiedname>
+        <briefdescription>
+<para>MOSI pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>MOSI pin number </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="139" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1aab37725899b984d697d2c4e1b20012a7" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_spi_bus_config_t::miso_pin</definition>
+        <argsstring></argsstring>
+        <name>miso_pin</name>
+        <qualifiedname>hf_spi_bus_config_t::miso_pin</qualifiedname>
+        <briefdescription>
+<para>MISO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>MISO pin number </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="140" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1a2447a1a31cf698aead3d668f59ffe162" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_spi_bus_config_t::sclk_pin</definition>
+        <argsstring></argsstring>
+        <name>sclk_pin</name>
+        <qualifiedname>hf_spi_bus_config_t::sclk_pin</qualifiedname>
+        <briefdescription>
+<para>SCLK pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>SCLK pin number </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="141" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1a427b68fc1d80cb6358ddcf2f48505805" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_spi_bus_config_t::dma_channel</definition>
+        <argsstring></argsstring>
+        <name>dma_channel</name>
+        <qualifiedname>hf_spi_bus_config_t::dma_channel</qualifiedname>
+        <briefdescription>
+<para>DMA channel (0=auto, 1/2=specific, 0xFF=disabled) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>DMA channel (0=auto, 1/2=specific, 0xFF=disabled) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="142" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1a1a89b70d19c0f6aa437a27ce9b4dd98b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref></type>
+        <definition>hf_spi_bus_config_t::timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>timeout_ms</name>
+        <qualifiedname>hf_spi_bus_config_t::timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Default timeout for operations (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Default timeout for operations (ms) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="143" column="19" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1a30a9804cc4b3799a4207e669243135ab" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>hf_spi_bus_config_t::use_iomux</definition>
+        <argsstring></argsstring>
+        <name>use_iomux</name>
+        <qualifiedname>hf_spi_bus_config_t::use_iomux</qualifiedname>
+        <briefdescription>
+<para>Use IOMUX for better performance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Use IOMUX for better performance </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="144" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_spi_bus_config_t::hf_spi_bus_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_spi_bus_config_t</name>
+        <qualifiedname>hf_spi_bus_config_t::hf_spi_bus_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="146" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="146" bodyend="149"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Platform-agnostic SPI bus configuration structure for ESP32. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure provides all configuration options for initializing an SPI bus on ESP32 platforms, including DMA, IOMUX, and advanced timing options. All fields use project types for portability. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="137" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="137" bodyend="150"/>
+    <listofallmembers>
+      <member refid="structhf__spi__bus__config__t_1a427b68fc1d80cb6358ddcf2f48505805" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>dma_channel</name></member>
+      <member refid="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>hf_spi_bus_config_t</name></member>
+      <member refid="structhf__spi__bus__config__t_1ad5ae43f8e8ed48d17667740103caf5cf" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>host</name></member>
+      <member refid="structhf__spi__bus__config__t_1aab37725899b984d697d2c4e1b20012a7" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>miso_pin</name></member>
+      <member refid="structhf__spi__bus__config__t_1a56f13363406cc28437c24c8745d835ed" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>mosi_pin</name></member>
+      <member refid="structhf__spi__bus__config__t_1a2447a1a31cf698aead3d668f59ffe162" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>sclk_pin</name></member>
+      <member refid="structhf__spi__bus__config__t_1a1a89b70d19c0f6aa437a27ce9b4dd98b" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>timeout_ms</name></member>
+      <member refid="structhf__spi__bus__config__t_1a30a9804cc4b3799a4207e669243135ab" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>use_iomux</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

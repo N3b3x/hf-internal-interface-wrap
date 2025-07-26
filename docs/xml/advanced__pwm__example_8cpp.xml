@@ -1,0 +1,1445 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="advanced__pwm__example_8cpp" kind="file" language="C++">
+    <compoundname>advanced_pwm_example.cpp</compoundname>
+    <includes refid="EspPwm_8h" local="yes">inc/mcu/esp32/EspPwm.h</includes>
+    <includes refid="EspTypes__PWM_8h" local="yes">inc/mcu/esp32/utils/EspTypes_PWM.h</includes>
+    <includes local="yes">esp_log.h</includes>
+    <includes local="yes">esp_timer.h</includes>
+    <includes local="yes">freertos/FreeRTOS.h</includes>
+    <includes local="yes">freertos/task.h</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">cstring</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>examples/esp32/main/advanced_pwm_example.cpp</label>
+        <link refid="advanced__pwm__example_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>BasePwm.h</label>
+        <link refid="BasePwm_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/mcu/esp32/EspPwm.h</label>
+        <link refid="EspPwm_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>utils/EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="8">
+        <label>RtosMutex.h</label>
+        <link refid="RtosMutex_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>array</label>
+      </node>
+      <node id="13">
+        <label>atomic</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="21">
+        <label>cstdio</label>
+      </node>
+      <node id="22">
+        <label>cstring</label>
+      </node>
+      <node id="19">
+        <label>esp_log.h</label>
+      </node>
+      <node id="20">
+        <label>esp_timer.h</label>
+      </node>
+      <node id="10">
+        <label>freertos/FreeRTOS.h</label>
+      </node>
+      <node id="11">
+        <label>freertos/semphr.h</label>
+      </node>
+      <node id="12">
+        <label>freertos/task.h</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" prot="public" static="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* TAG</definition>
+        <argsstring></argsstring>
+        <name>TAG</name>
+        <initializer>= &quot;AdvancedPwmExample&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="40" column="19" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a549c8cd297fe059d6d02ac314b220a69" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t LED_FREQUENCY_HZ</definition>
+        <argsstring></argsstring>
+        <name>LED_FREQUENCY_HZ</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+<para>LED PWM frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="47" column="27" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a424a69d90add59ee6a657d836f5236f0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t MOTOR_FREQUENCY_HZ</definition>
+        <argsstring></argsstring>
+        <name>MOTOR_FREQUENCY_HZ</name>
+        <initializer>= 20000</initializer>
+        <briefdescription>
+<para>Motor PWM frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="48" column="27" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1aa27c8175daca6ec36cee206706dc6a1d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t SERVO_FREQUENCY_HZ</definition>
+        <argsstring></argsstring>
+        <name>SERVO_FREQUENCY_HZ</name>
+        <initializer>= 50</initializer>
+        <briefdescription>
+<para>Servo PWM frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="49" column="27" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1aee136b47adac400ce9fbf5f81b9bc3c9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t AUDIO_FREQUENCY_HZ</definition>
+        <argsstring></argsstring>
+        <name>AUDIO_FREQUENCY_HZ</name>
+        <initializer>= 440</initializer>
+        <briefdescription>
+<para>Audio PWM frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="50" column="27" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a37de3d9cc00bd3bf9e21d3d8edf1a5c2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t LED_RESOLUTION_BITS</definition>
+        <argsstring></argsstring>
+        <name>LED_RESOLUTION_BITS</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+<para>LED resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="52" column="26" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a2fe46f6a2333845738eba6850cc9f7c9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t MOTOR_RESOLUTION_BITS</definition>
+        <argsstring></argsstring>
+        <name>MOTOR_RESOLUTION_BITS</name>
+        <initializer>= 12</initializer>
+        <briefdescription>
+<para>Motor resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="53" column="26" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1afa87d5dc4a39b4ffeabe529a876ccb9c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t SERVO_RESOLUTION_BITS</definition>
+        <argsstring></argsstring>
+        <name>SERVO_RESOLUTION_BITS</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+<para>Servo resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="54" column="26" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1afa8f9e52825d6017f42dab9ea100b02e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t AUDIO_RESOLUTION_BITS</definition>
+        <argsstring></argsstring>
+        <name>AUDIO_RESOLUTION_BITS</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>Audio resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="55" column="26" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1ad5dceca5bb349dc922b814ba2dfcaf24" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t LED_PIN</definition>
+        <argsstring></argsstring>
+        <name>LED_PIN</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>LED output pin. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="58" column="31" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a87cdfd3f7f92b942e5f03d95fa8b6089" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t MOTOR_A_PIN</definition>
+        <argsstring></argsstring>
+        <name>MOTOR_A_PIN</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Motor phase A. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="59" column="31" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a54e6b6d2954eec935b06e6f49a33f2f4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t MOTOR_B_PIN</definition>
+        <argsstring></argsstring>
+        <name>MOTOR_B_PIN</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+<para>Motor phase B. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="60" column="31" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a893cf3b1f18371259a77eb763470a873" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t SERVO_PIN</definition>
+        <argsstring></argsstring>
+        <name>SERVO_PIN</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>Servo control pin. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="61" column="31" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1ad3c1f7418efe53b388dfe2ee0a6ce6da" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t AUDIO_PIN</definition>
+        <argsstring></argsstring>
+        <name>AUDIO_PIN</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+<para>Audio output pin. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="62" column="31" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" prot="public" static="yes" mutable="no">
+        <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> *</type>
+        <definition>EspPwm* g_pwm_controller</definition>
+        <argsstring></argsstring>
+        <name>g_pwm_controller</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="68" column="15" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1ab27ebc916d7d202551ebb3310fd2ae61" prot="public" static="yes" mutable="no">
+        <type>volatile bool</type>
+        <definition>volatile bool g_fade_complete</definition>
+        <argsstring></argsstring>
+        <name>g_fade_complete</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="69" column="22" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="advanced__pwm__example_8cpp_1a8e35ceb92acd4fad177254231e3a0e0f" prot="public" static="yes" mutable="no">
+        <type>volatile <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>volatile hf_u32_t g_period_count</definition>
+        <argsstring></argsstring>
+        <name>g_period_count</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="70" column="26" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1aaa8f0632bd6e2a7665fdffa25f30f7a9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void IRAM_ATTR</type>
+        <definition>void IRAM_ATTR PeriodCompleteCallback</definition>
+        <argsstring>(hf_channel_id_t channel_id, void *user_data) noexcept</argsstring>
+        <name>PeriodCompleteCallback</name>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <briefdescription>
+<para>Period complete callback for PWM channels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel that completed a period </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data (unused) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="81" column="16" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="81" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1a5662ab6d90ae4af764bd621f3009d028" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void IRAM_ATTR</type>
+        <definition>void IRAM_ATTR FaultCallback</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_pwm_err_t error, void *user_data) noexcept</argsstring>
+        <name>FaultCallback</name>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <briefdescription>
+<para>Fault callback for PWM error handling. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel that encountered fault </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error code </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data (unused) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="96" column="16" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="96" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1aa88b1558d9f6bca216d0e7b6c4fa76e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PrintStatistics</definition>
+        <argsstring>(const EspPwm &amp;pwm)</argsstring>
+        <name>PrintStatistics</name>
+        <param>
+          <type>const <ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Print PWM statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="112" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="112" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1adb5696b998c452268a669b5280f5c6a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PrintDiagnostics</definition>
+        <argsstring>(const EspPwm &amp;pwm)</argsstring>
+        <name>PrintDiagnostics</name>
+        <param>
+          <type>const <ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Print PWM diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="129" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="129" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1ad241ca821300b588c99e2d8eea109fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PrintChannelStatus</definition>
+        <argsstring>(const EspPwm &amp;pwm, hf_channel_id_t channel_id)</argsstring>
+        <name>PrintChannelStatus</name>
+        <param>
+          <type>const <ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Print channel status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="147" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="147" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1a47d302a422994038b4fe6b68463501da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ConfigureLedChannel</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>ConfigureLedChannel</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Configure LED channel with fade support. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="165" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="165" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1a1c2edbf7353d84dc83335e56a1cdf1f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ConfigureMotorChannels</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>ConfigureMotorChannels</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Configure motor channels with complementary outputs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="199" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="199" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1ae614a600e7b61a5e097b5d11e6905cce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ConfigureServoChannel</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>ConfigureServoChannel</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Configure servo channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="249" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="249" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1abff11512c0ec57d4598b01744abab0f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ConfigureAudioChannel</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>ConfigureAudioChannel</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Configure audio channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="277" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="277" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1aabca7e372533289a79e0ee1424196111" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DemonstrateLedFade</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>DemonstrateLedFade</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Demonstrate LED fade effects. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="308" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="308" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1a1291c314161d700c7e9cb81759837d51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DemonstrateMotorControl</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>DemonstrateMotorControl</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Demonstrate motor control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="349" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="349" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1ae0fe0ab6d88abc5d0f97dd4d3ce1646e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DemonstrateServoControl</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>DemonstrateServoControl</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Demonstrate servo control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="390" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="390" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1a800cf35799084d2076861b9ad3babeab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DemonstrateAudioGeneration</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>DemonstrateAudioGeneration</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Demonstrate audio generation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="432" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="432" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1a0ea38caa74b919966f41df607591abc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DemonstrateAdvancedFeatures</definition>
+        <argsstring>(EspPwm &amp;pwm)</argsstring>
+        <name>DemonstrateAdvancedFeatures</name>
+        <param>
+          <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
+          <declname>pwm</declname>
+        </param>
+        <briefdescription>
+<para>Demonstrate advanced features. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pwm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PWM controller instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="468" column="6" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="468" bodyend="494"/>
+      </memberdef>
+      <memberdef kind="function" id="advanced__pwm__example_8cpp_1a630544a7f0a2cc40d8a7fefab7e2fe70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void app_main</definition>
+        <argsstring>(void)</argsstring>
+        <name>app_main</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/advanced_pwm_example.cpp" line="500" column="17" bodyfile="examples/esp32/main/advanced_pwm_example.cpp" bodystart="500" bodyend="611"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Comprehensive example demonstrating all advanced features of the refactored <ref refid="classEspPwm" kindref="compound">EspPwm</ref> implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This example showcases:<itemizedlist>
+<listitem><para>Multi-variant ESP32 support</para>
+</listitem><listitem><para>Unit configuration with different modes</para>
+</listitem><listitem><para>Hardware fade functionality</para>
+</listitem><listitem><para>Complementary outputs for motor control</para>
+</listitem><listitem><para>Statistics and diagnostics monitoring</para>
+</listitem><listitem><para>Advanced timer management</para>
+</listitem><listitem><para>Interrupt-driven callbacks</para>
+</listitem><listitem><para>Error handling and recovery</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>HardFOC Team </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspPwm_8h" kindref="compound">inc/mcu/esp32/EspPwm.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__PWM_8h" kindref="compound">inc/mcu/esp32/utils/EspTypes_PWM.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/FreeRTOS.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/task.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;AdvancedPwmExample&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONFIGURATION<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PWM<sp/>Configuration<sp/>for<sp/>different<sp/>use<sp/>cases</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1a549c8cd297fe059d6d02ac314b220a69" kindref="member">LED_FREQUENCY_HZ</ref><sp/>=<sp/>1000;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1a424a69d90add59ee6a657d836f5236f0" kindref="member">MOTOR_FREQUENCY_HZ</ref><sp/>=<sp/>20000;<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1aa27c8175daca6ec36cee206706dc6a1d" kindref="member">SERVO_FREQUENCY_HZ</ref><sp/>=<sp/>50;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1aee136b47adac400ce9fbf5f81b9bc3c9" kindref="member">AUDIO_FREQUENCY_HZ</ref><sp/>=<sp/>440;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1a37de3d9cc00bd3bf9e21d3d8edf1a5c2" kindref="member">LED_RESOLUTION_BITS</ref><sp/>=<sp/>8;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1a2fe46f6a2333845738eba6850cc9f7c9" kindref="member">MOTOR_RESOLUTION_BITS</ref><sp/>=<sp/>12;<sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1afa87d5dc4a39b4ffeabe529a876ccb9c" kindref="member">SERVO_RESOLUTION_BITS</ref><sp/>=<sp/>16;<sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1afa8f9e52825d6017f42dab9ea100b02e" kindref="member">AUDIO_RESOLUTION_BITS</ref><sp/>=<sp/>10;<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GPIO<sp/>Pin<sp/>assignments<sp/>(ESP32-C6<sp/>specific)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1ad5dceca5bb349dc922b814ba2dfcaf24" kindref="member">LED_PIN</ref><sp/>=<sp/>2;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1a87cdfd3f7f92b942e5f03d95fa8b6089" kindref="member">MOTOR_A_PIN</ref><sp/>=<sp/>3;<sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1a54e6b6d2954eec935b06e6f49a33f2f4" kindref="member">MOTOR_B_PIN</ref><sp/>=<sp/>4;<sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1a893cf3b1f18371259a77eb763470a873" kindref="member">SERVO_PIN</ref><sp/>=<sp/>5;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1ad3c1f7418efe53b388dfe2ee0a6ce6da" kindref="member">AUDIO_PIN</ref><sp/>=<sp/>6;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GLOBAL<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classEspPwm" kindref="compound">EspPwm</ref>*<sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1ab27ebc916d7d202551ebb3310fd2ae61" kindref="member">g_fade_complete</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="advanced__pwm__example_8cpp_1a8e35ceb92acd4fad177254231e3a0e0f" kindref="member">g_period_count</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CALLBACK<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>IRAM_ATTR<sp/><ref refid="advanced__pwm__example_8cpp_1aaa8f0632bd6e2a7665fdffa25f30f7a9" kindref="member">PeriodCompleteCallback</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1a8e35ceb92acd4fad177254231e3a0e0f" kindref="member">g_period_count</ref>++;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>every<sp/>1000<sp/>periods<sp/>to<sp/>avoid<sp/>spam</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="advanced__pwm__example_8cpp_1a8e35ceb92acd4fad177254231e3a0e0f" kindref="member">g_period_count</ref><sp/>%<sp/>1000<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Period<sp/>complete<sp/>on<sp/>channel<sp/>%lu<sp/>(total:<sp/>%lu)&quot;</highlight><highlight class="normal">,<sp/>channel_id,<sp/><ref refid="advanced__pwm__example_8cpp_1a8e35ceb92acd4fad177254231e3a0e0f" kindref="member">g_period_count</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>IRAM_ATTR<sp/><ref refid="advanced__pwm__example_8cpp_1a5662ab6d90ae4af764bd621f3009d028" kindref="member">FaultCallback</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>error,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>fault<sp/>on<sp/>channel<sp/>%lu:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>channel_id,<sp/>hf_pwm_err_tToString(error));</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>a<sp/>real<sp/>application,<sp/>implement<sp/>error<sp/>recovery<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>this<sp/>example,<sp/>we<sp/>just<sp/>log<sp/>the<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//<sp/>HELPER<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1aa88b1558d9f6bca216d0e7b6c4fa76e2" kindref="member">PrintStatistics</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref><sp/>stats;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a9ff4ddc5a06060a4b7194154a7d28617" kindref="member">GetStatistics</ref>(stats)<sp/>==<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>PWM<sp/>Statistics<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Total<sp/>duty<sp/>updates:<sp/>%llu&quot;</highlight><highlight class="normal">,<sp/>stats.total_duty_updates);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Total<sp/>frequency<sp/>changes:<sp/>%llu&quot;</highlight><highlight class="normal">,<sp/>stats.total_frequency_changes);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Total<sp/>fades<sp/>completed:<sp/>%llu&quot;</highlight><highlight class="normal">,<sp/>stats.total_fades_completed);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Total<sp/>errors:<sp/>%llu&quot;</highlight><highlight class="normal">,<sp/>stats.total_errors);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Last<sp/>operation<sp/>time:<sp/>%llu<sp/>us&quot;</highlight><highlight class="normal">,<sp/>stats.last_operation_time_us);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Last<sp/>error:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>hf_pwm_err_tToString(stats.last_error));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1adb5696b998c452268a669b5280f5c6a0" kindref="member">PrintDiagnostics</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref><sp/>diag;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a81bc4616d9447ad43ec6d6c732049b59" kindref="member">GetDiagnostics</ref>(diag)<sp/>==<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>PWM<sp/>Diagnostics<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Hardware<sp/>initialized:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>diag.<ref refid="structhf__pwm__diagnostics__t_1aa908bfc2c0658b5310c31e83d6be0bed" kindref="member">hardware_initialized</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Yes&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;No&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Fade<sp/>functionality<sp/>ready:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>diag.<ref refid="structhf__pwm__diagnostics__t_1a2cb06f85138f6abb317379fbba33e0f1" kindref="member">fade_functionality_ready</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Yes&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;No&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Active<sp/>channels:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>diag.<ref refid="structhf__pwm__diagnostics__t_1ac3c08b7a63d3b14a1c4012f9123f459a" kindref="member">active_channels</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Active<sp/>timers:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>diag.<ref refid="structhf__pwm__diagnostics__t_1a696547f39aed2a095016a1fc6b6880bf" kindref="member">active_timers</ref>);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;System<sp/>uptime:<sp/>%lu<sp/>ms&quot;</highlight><highlight class="normal">,<sp/>diag.<ref refid="structhf__pwm__diagnostics__t_1af8e9937307e0eeebee4c07731bad993b" kindref="member">system_uptime_ms</ref>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Last<sp/>global<sp/>error:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>hf_pwm_err_tToString(diag.<ref refid="structhf__pwm__diagnostics__t_1ac762b50a921ff765c2a5c8054dd43628" kindref="member">last_global_error</ref>));</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1ad241ca821300b588c99e2d8eea109fba" kindref="member">PrintChannelStatus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm,<sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__status__t" kindref="compound">hf_pwm_channel_status_t</ref><sp/>status;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a7cf9c46011b383820a588a9f153dfc52" kindref="member">GetChannelStatus</ref>(channel_id,<sp/>status)<sp/>==<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Channel<sp/>%lu<sp/>Status<sp/>===&quot;</highlight><highlight class="normal">,<sp/>channel_id);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Enabled:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>status.is_enabled<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Yes&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;No&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Running:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>status.is_running<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Yes&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;No&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Frequency:<sp/>%lu<sp/>Hz&quot;</highlight><highlight class="normal">,<sp/>status.current_frequency_hz);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Duty<sp/>cycle:<sp/>%.2f%%&quot;</highlight><highlight class="normal">,<sp/>status.<ref refid="structhf__pwm__channel__status__t_1a0b93adfffd66ff1743a83203f4380b33" kindref="member">current_duty_cycle</ref><sp/>*<sp/>100.0f);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Raw<sp/>duty<sp/>value:<sp/>%lu&quot;</highlight><highlight class="normal">,<sp/>status.<ref refid="structhf__pwm__channel__status__t_1afddc02aa6e069dd1f3744002a9fb47ab" kindref="member">raw_duty_value</ref>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Last<sp/>error:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>hf_pwm_err_tToString(status.<ref refid="structhf__pwm__channel__status__t_1a2d2fc64f2fbd98292dc7becc8b342d2a" kindref="member">last_error</ref>));</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a47d302a422994038b4fe6b68463501da" kindref="member">ConfigureLedChannel</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Configuring<sp/>LED<sp/>channel...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>to<sp/>fade<sp/>mode<sp/>for<sp/>smooth<sp/>transitions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a848d38996b427bf51215bf0c0147a328" kindref="member">SetMode</ref>(hf_pwm_mode_t::Fade)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>fade<sp/>mode&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>LED<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>led_config;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/>led_config.output_pin<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1ad5dceca5bb349dc922b814ba2dfcaf24" kindref="member">LED_PIN</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>led_config.frequency_hz<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a549c8cd297fe059d6d02ac314b220a69" kindref="member">LED_FREQUENCY_HZ</ref>;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>led_config.resolution_bits<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a37de3d9cc00bd3bf9e21d3d8edf1a5c2" kindref="member">LED_RESOLUTION_BITS</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>led_config.output_mode<sp/>=<sp/>hf_pwm_output_mode_t::Normal;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>led_config.alignment<sp/>=<sp/>hf_pwm_alignment_t::EdgeAligned;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>led_config.idle_state<sp/>=<sp/>hf_pwm_idle_state_t::Low;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>led_config.initial_duty_cycle<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>led_config.<ref refid="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" kindref="member">invert_output</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a4dc265e040617403e718d4d28ff66e56" kindref="member">ConfigureChannel</ref>(0,<sp/>led_config)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>configure<sp/>LED<sp/>channel&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LED<sp/>channel<sp/>configured<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a1c2edbf7353d84dc83335e56a1cdf1f1" kindref="member">ConfigureMotorChannels</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Configuring<sp/>motor<sp/>channels...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>motor<sp/>phase<sp/>A</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>motor_a_config;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>motor_a_config.output_pin<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a87cdfd3f7f92b942e5f03d95fa8b6089" kindref="member">MOTOR_A_PIN</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>motor_a_config.frequency_hz<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a424a69d90add59ee6a657d836f5236f0" kindref="member">MOTOR_FREQUENCY_HZ</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>motor_a_config.resolution_bits<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a2fe46f6a2333845738eba6850cc9f7c9" kindref="member">MOTOR_RESOLUTION_BITS</ref>;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>motor_a_config.output_mode<sp/>=<sp/>hf_pwm_output_mode_t::Normal;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>motor_a_config.alignment<sp/>=<sp/>hf_pwm_alignment_t::EdgeAligned;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>motor_a_config.idle_state<sp/>=<sp/>hf_pwm_idle_state_t::Low;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>motor_a_config.initial_duty_cycle<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>motor_a_config.<ref refid="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" kindref="member">invert_output</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a4dc265e040617403e718d4d28ff66e56" kindref="member">ConfigureChannel</ref>(1,<sp/>motor_a_config)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>configure<sp/>motor<sp/>phase<sp/>A&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>motor<sp/>phase<sp/>B</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>motor_b_config;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>motor_b_config.output_pin<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a54e6b6d2954eec935b06e6f49a33f2f4" kindref="member">MOTOR_B_PIN</ref>;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>motor_b_config.frequency_hz<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a424a69d90add59ee6a657d836f5236f0" kindref="member">MOTOR_FREQUENCY_HZ</ref>;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>motor_b_config.resolution_bits<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a2fe46f6a2333845738eba6850cc9f7c9" kindref="member">MOTOR_RESOLUTION_BITS</ref>;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>motor_b_config.output_mode<sp/>=<sp/>hf_pwm_output_mode_t::Normal;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/>motor_b_config.alignment<sp/>=<sp/>hf_pwm_alignment_t::EdgeAligned;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>motor_b_config.idle_state<sp/>=<sp/>hf_pwm_idle_state_t::Low;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>motor_b_config.initial_duty_cycle<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/>motor_b_config.<ref refid="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" kindref="member">invert_output</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Invert<sp/>for<sp/>complementary<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a4dc265e040617403e718d4d28ff66e56" kindref="member">ConfigureChannel</ref>(2,<sp/>motor_b_config)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>configure<sp/>motor<sp/>phase<sp/>B&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>up<sp/>complementary<sp/>output<sp/>with<sp/>deadtime</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a6c4cc0b3c19e7258a063b1900f9d291a" kindref="member">SetComplementaryOutput</ref>(1,<sp/>2,<sp/>1000)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>complementary<sp/>output&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>channels<sp/>configured<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1ae614a600e7b61a5e097b5d11e6905cce" kindref="member">ConfigureServoChannel</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Configuring<sp/>servo<sp/>channel...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>servo<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>servo_config;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/>servo_config.output_pin<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1a893cf3b1f18371259a77eb763470a873" kindref="member">SERVO_PIN</ref>;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>servo_config.frequency_hz<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1aa27c8175daca6ec36cee206706dc6a1d" kindref="member">SERVO_FREQUENCY_HZ</ref>;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>servo_config.resolution_bits<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1afa87d5dc4a39b4ffeabe529a876ccb9c" kindref="member">SERVO_RESOLUTION_BITS</ref>;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>servo_config.output_mode<sp/>=<sp/>hf_pwm_output_mode_t::Normal;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/>servo_config.alignment<sp/>=<sp/>hf_pwm_alignment_t::EdgeAligned;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>servo_config.idle_state<sp/>=<sp/>hf_pwm_idle_state_t::Low;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>servo_config.initial_duty_cycle<sp/>=<sp/>0.075f;<sp/></highlight><highlight class="comment">//<sp/>7.5%<sp/>=<sp/>center<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>servo_config.<ref refid="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" kindref="member">invert_output</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a4dc265e040617403e718d4d28ff66e56" kindref="member">ConfigureChannel</ref>(3,<sp/>servo_config)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>configure<sp/>servo<sp/>channel&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Servo<sp/>channel<sp/>configured<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1abff11512c0ec57d4598b01744abab0f6" kindref="member">ConfigureAudioChannel</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Configuring<sp/>audio<sp/>channel...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>audio<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>audio_config;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/>audio_config.output_pin<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1ad3c1f7418efe53b388dfe2ee0a6ce6da" kindref="member">AUDIO_PIN</ref>;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/>audio_config.frequency_hz<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1aee136b47adac400ce9fbf5f81b9bc3c9" kindref="member">AUDIO_FREQUENCY_HZ</ref>;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/>audio_config.resolution_bits<sp/>=<sp/><ref refid="advanced__pwm__example_8cpp_1afa8f9e52825d6017f42dab9ea100b02e" kindref="member">AUDIO_RESOLUTION_BITS</ref>;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/>audio_config.output_mode<sp/>=<sp/>hf_pwm_output_mode_t::Normal;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>audio_config.alignment<sp/>=<sp/>hf_pwm_alignment_t::EdgeAligned;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/>audio_config.idle_state<sp/>=<sp/>hf_pwm_idle_state_t::Low;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/>audio_config.initial_duty_cycle<sp/>=<sp/>0.5f;<sp/></highlight><highlight class="comment">//<sp/>50%<sp/>duty<sp/>cycle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>audio_config.<ref refid="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" kindref="member">invert_output</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a4dc265e040617403e718d4d28ff66e56" kindref="member">ConfigureChannel</ref>(4,<sp/>audio_config)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>configure<sp/>audio<sp/>channel&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Audio<sp/>channel<sp/>configured<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DEMONSTRATION<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1aabca7e372533289a79e0ee1424196111" kindref="member">DemonstrateLedFade</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>LED<sp/>Fade<sp/>Demonstration<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>LED<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a3bd515c8685db84d5ff92a475063d663" kindref="member">EnableChannel</ref>(0)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>LED<sp/>channel&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Fade<sp/>from<sp/>0%<sp/>to<sp/>100%<sp/>over<sp/>2<sp/>seconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Fading<sp/>LED<sp/>from<sp/>0%%<sp/>to<sp/>100%%<sp/>over<sp/>2<sp/>seconds...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a9fb67c853d1d7d042a047fbc22ae67c5" kindref="member">SetHardwareFade</ref>(0,<sp/>1.0f,<sp/>2000)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>LED<sp/>fade&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(2500));<sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>fade<sp/>to<sp/>complete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Fade<sp/>from<sp/>100%<sp/>to<sp/>0%<sp/>over<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Fading<sp/>LED<sp/>from<sp/>100%%<sp/>to<sp/>0%%<sp/>over<sp/>1<sp/>second...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a9fb67c853d1d7d042a047fbc22ae67c5" kindref="member">SetHardwareFade</ref>(0,<sp/>0.0f,<sp/>1000)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>LED<sp/>fade&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(1500));<sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>fade<sp/>to<sp/>complete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pulse<sp/>effect:<sp/>fade<sp/>to<sp/>50%<sp/>over<sp/>500ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Pulsing<sp/>LED<sp/>to<sp/>50%%<sp/>over<sp/>500ms...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a9fb67c853d1d7d042a047fbc22ae67c5" kindref="member">SetHardwareFade</ref>(0,<sp/>0.5f,<sp/>500)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>LED<sp/>pulse&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(1000));<sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>pulse<sp/>to<sp/>complete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a1291c314161d700c7e9cb81759837d51" kindref="member">DemonstrateMotorControl</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Motor<sp/>Control<sp/>Demonstration<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>motor<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a3bd515c8685db84d5ff92a475063d663" kindref="member">EnableChannel</ref>(1)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref><sp/>||</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pwm.<ref refid="classEspPwm_1a3bd515c8685db84d5ff92a475063d663" kindref="member">EnableChannel</ref>(2)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>motor<sp/>channels&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Ramp<sp/>up<sp/>motor<sp/>speed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Ramping<sp/>up<sp/>motor<sp/>speed...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty<sp/>=<sp/>0.0f;<sp/>duty<sp/>&lt;=<sp/>0.8f;<sp/>duty<sp/>+=<sp/>0.1f)<sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1ae4170c3b4661c0d4b9646eb3d775c88c" kindref="member">SetDutyCycle</ref>(1,<sp/>duty)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>motor<sp/>duty<sp/>cycle&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>duty<sp/>cycle:<sp/>%.1f%%&quot;</highlight><highlight class="normal">,<sp/>duty<sp/>*<sp/>100.0f);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>at<sp/>full<sp/>speed<sp/>for<sp/>2<sp/>seconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Running<sp/>motor<sp/>at<sp/>full<sp/>speed<sp/>for<sp/>2<sp/>seconds...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(2000));</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Ramp<sp/>down<sp/>motor<sp/>speed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Ramping<sp/>down<sp/>motor<sp/>speed...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty<sp/>=<sp/>0.8f;<sp/>duty<sp/>&gt;=<sp/>0.0f;<sp/>duty<sp/>-=<sp/>0.1f)<sp/>{</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1ae4170c3b4661c0d4b9646eb3d775c88c" kindref="member">SetDutyCycle</ref>(1,<sp/>duty)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>motor<sp/>duty<sp/>cycle&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>duty<sp/>cycle:<sp/>%.1f%%&quot;</highlight><highlight class="normal">,<sp/>duty<sp/>*<sp/>100.0f);</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="384"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1ae0fe0ab6d88abc5d0f97dd4d3ce1646e" kindref="member">DemonstrateServoControl</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Servo<sp/>Control<sp/>Demonstration<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>servo<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a3bd515c8685db84d5ff92a475063d663" kindref="member">EnableChannel</ref>(3)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>servo<sp/>channel&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Servo<sp/>positions<sp/>(duty<sp/>cycles<sp/>for<sp/>typical<sp/>servo)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>servo_positions[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>0.05f,<sp/><sp/></highlight><highlight class="comment">//<sp/>5%<sp/>=<sp/>0<sp/>degrees</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>0.075f,<sp/></highlight><highlight class="comment">//<sp/>7.5%<sp/>=<sp/>90<sp/>degrees<sp/>(center)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>0.10f<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10%<sp/>=<sp/>180<sp/>degrees</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>position_names[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;0°&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;90°&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;180°&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>3;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Moving<sp/>servo<sp/>to<sp/>%s<sp/>position<sp/>(%.1f%%)...&quot;</highlight><highlight class="normal">,<sp/>position_names[i],</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>servo_positions[i]<sp/>*<sp/>100.0f);</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1ae4170c3b4661c0d4b9646eb3d775c88c" kindref="member">SetDutyCycle</ref>(3,<sp/>servo_positions[i])<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>servo<sp/>position&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(1000));<sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>servo<sp/>to<sp/>move</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>to<sp/>center</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Returning<sp/>servo<sp/>to<sp/>center<sp/>position...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1ae4170c3b4661c0d4b9646eb3d775c88c" kindref="member">SetDutyCycle</ref>(3,<sp/>0.075f)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>servo<sp/>position&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="426"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a800cf35799084d2076861b9ad3babeab" kindref="member">DemonstrateAudioGeneration</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Audio<sp/>Generation<sp/>Demonstration<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>audio<sp/>channel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a3bd515c8685db84d5ff92a475063d663" kindref="member">EnableChannel</ref>(4)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>audio<sp/>channel&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Generate<sp/>different<sp/>tones</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequencies[]<sp/>=<sp/>{440,<sp/>494,<sp/>523,<sp/>587,<sp/>659,<sp/>698,<sp/>784};<sp/></highlight><highlight class="comment">//<sp/>A4<sp/>to<sp/>G5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>note_names[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;A4&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;B4&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;C5&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;D5&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;E5&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;F5&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;G5&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Generating<sp/>musical<sp/>scale...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>7;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Playing<sp/>note<sp/>%s<sp/>(%lu<sp/>Hz)...&quot;</highlight><highlight class="normal">,<sp/>note_names[i],<sp/>frequencies[i]);</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a185108e6adbaaa23bcef4fbd8bda1b91" kindref="member">SetFrequency</ref>(4,<sp/>frequencies[i])<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>set<sp/>audio<sp/>frequency&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));<sp/></highlight><highlight class="comment">//<sp/>Play<sp/>each<sp/>note<sp/>for<sp/>500ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>to<sp/>original<sp/>frequency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a185108e6adbaaa23bcef4fbd8bda1b91" kindref="member">SetFrequency</ref>(4,<sp/><ref refid="advanced__pwm__example_8cpp_1aee136b47adac400ce9fbf5f81b9bc3c9" kindref="member">AUDIO_FREQUENCY_HZ</ref>)<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>restore<sp/>audio<sp/>frequency&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="462"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a0ea38caa74b919966f41df607591abc1" kindref="member">DemonstrateAdvancedFeatures</ref>(<ref refid="classEspPwm" kindref="compound">EspPwm</ref>&amp;<sp/>pwm)<sp/>{</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Advanced<sp/>Features<sp/>Demonstration<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>current<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3fa" kindref="member">hf_pwm_mode_t</ref><sp/>current_mode<sp/>=<sp/>pwm.<ref refid="classEspPwm_1a620e13937a4213f8c44219272302a1a7" kindref="member">GetMode</ref>();</highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Current<sp/>PWM<sp/>mode:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>(current_mode<sp/>==<sp/>hf_pwm_mode_t::Basic)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Basic&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;Fade&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>timer<sp/>assignments</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>ch<sp/>=<sp/>0;<sp/>ch<sp/>&lt;<sp/>5;<sp/>ch++)<sp/>{</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a07c737787080435a486d47ad3c6803e9" kindref="member">IsChannelEnabled</ref>(ch))<sp/>{</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref><sp/>timer<sp/>=<sp/>pwm.<ref refid="classEspPwm_1a4437f86f7dfc052c9abd0cd633c10e71" kindref="member">GetTimerAssignment</ref>(ch);</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Channel<sp/>%lu<sp/>assigned<sp/>to<sp/>timer<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>ch,<sp/>timer);</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>clock<sp/>source</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref><sp/>clock_source<sp/>=<sp/>pwm.<ref refid="classEspPwm_1a75aae3253ba27acee3853a5156d31817" kindref="member">GetClockSource</ref>();</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Current<sp/>clock<sp/>source:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(clock_source));</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"></highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>fade<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>ch<sp/>=<sp/>0;<sp/>ch<sp/>&lt;<sp/>5;<sp/>ch++)<sp/>{</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm.<ref refid="classEspPwm_1a07c737787080435a486d47ad3c6803e9" kindref="member">IsChannelEnabled</ref>(ch))<sp/>{</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fade_active<sp/>=<sp/>pwm.<ref refid="classEspPwm_1a7006101d1efdbfa70c2b65604ded7b85" kindref="member">IsFadeActive</ref>(ch);</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Channel<sp/>%lu<sp/>fade<sp/>active:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>ch,<sp/>fade_active<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;Yes&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;No&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="494"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="495"><highlight class="normal"></highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="497"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MAIN<sp/>APPLICATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a630544a7f0a2cc40d8a7fefab7e2fe70" kindref="member">app_main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Advanced<sp/>PWM<sp/>Example<sp/>Starting<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>ESP32<sp/>variant<sp/>information</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="504"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>Variant:<sp/>%s&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="505"><highlight class="normal">#ifdef<sp/><ref refid="McuSelect_8h_1ab71328905c36e55e3085ddeda2a0391b" kindref="member">HF_MCU_ESP32C6</ref></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ESP32-C6&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal">#elif<sp/>defined(HF_MCU_ESP32)</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>Classic&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="509"><highlight class="normal">#elif<sp/>defined(HF_MCU_ESP32S2)</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ESP32-S2&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="511"><highlight class="normal">#elif<sp/>defined(HF_MCU_ESP32S3)</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ESP32-S3&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="513"><highlight class="normal">#elif<sp/>defined(HF_MCU_ESP32C3)</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ESP32-C3&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="515"><highlight class="normal">#elif<sp/>defined(HF_MCU_ESP32C2)</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ESP32-C2&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="517"><highlight class="normal">#elif<sp/>defined(HF_MCU_ESP32H2)</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ESP32-H2&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="519"><highlight class="normal">#</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Unknown&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="521"><highlight class="normal">#endif</highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"></highlight></codeline>
+<codeline lineno="524"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>Configuration:&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="525"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Max<sp/>Channels:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/><ref refid="EspTypes__PWM_8h_1a86d24d14ec124f4012f812f9853993f0" kindref="member">HF_PWM_MAX_CHANNELS</ref>);</highlight></codeline>
+<codeline lineno="526"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Max<sp/>Timers:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/><ref refid="EspTypes__PWM_8h_1a188b45a8dc354e4753a2d2a3ade6b06e" kindref="member">HF_PWM_MAX_TIMERS</ref>);</highlight></codeline>
+<codeline lineno="527"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Max<sp/>Resolution:<sp/>%d<sp/>bits&quot;</highlight><highlight class="normal">,<sp/><ref refid="EspTypes__PWM_8h_1ae635150b452b279b29b65f799961d51f" kindref="member">HF_PWM_MAX_RESOLUTION</ref>);</highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>Frequency<sp/>Range:<sp/>%lu<sp/>-<sp/>%lu<sp/>Hz&quot;</highlight><highlight class="normal">,<sp/><ref refid="EspTypes__PWM_8h_1ab59b928c49e8f4ef0dbc7c1bac390c93" kindref="member">HF_PWM_MIN_FREQUENCY</ref>,<sp/><ref refid="EspTypes__PWM_8h_1aefdd9851ea138af7ce3b87a861c9f8b7" kindref="member">HF_PWM_MAX_FREQUENCY</ref>);</highlight></codeline>
+<codeline lineno="529"><highlight class="normal"></highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>PWM<sp/>unit<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__unit__config__t" kindref="compound">hf_pwm_unit_config_t</ref><sp/>pwm_config;</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"><sp/><sp/>pwm_config.<ref refid="structhf__pwm__unit__config__t_1aee1e74ef4f6da7c224819db84bc9d873" kindref="member">unit_id</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/>pwm_config.<ref refid="structhf__pwm__unit__config__t_1ab6c9882bb8695dbdfd685af69dfdf35a" kindref="member">mode</ref><sp/>=<sp/>hf_pwm_mode_t::Fade;<sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>fade<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="534"><highlight class="normal"><sp/><sp/>pwm_config.<ref refid="structhf__pwm__unit__config__t_1af2993dd547218552aad3ef5cfa324415" kindref="member">base_clock_hz</ref><sp/>=<sp/><ref refid="EspTypes__PWM_8h_1afc05cebb7e350df0e040f5ee863e733b" kindref="member">HF_PWM_APB_CLOCK_HZ</ref>;</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/>pwm_config.<ref refid="structhf__pwm__unit__config__t_1a00ac0384b3ff94e53be3f31e95a8e1c4" kindref="member">clock_source</ref><sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82a7d16cfde99618b306f8de171107ba44c" kindref="member">hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT</ref>;</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/>pwm_config.<ref refid="structhf__pwm__unit__config__t_1a37b2e0c51eb2962a80131fefe9d64d58" kindref="member">enable_fade</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/>pwm_config.<ref refid="structhf__pwm__unit__config__t_1acaf1bbe7d4fbe729846cd9e2f1ac7a85" kindref="member">enable_interrupts</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"></highlight></codeline>
+<codeline lineno="539"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>PWM<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="540"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classEspPwm" kindref="compound">EspPwm</ref>(pwm_config);</highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>PWM<sp/>controller&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"></highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>PWM<sp/>system</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>-&gt;<ref refid="classBasePwm_1aa084e73274f2f1d1d67cff793eda1956" kindref="member">EnsureInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>PWM<sp/>system&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>;</highlight></codeline>
+<codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="552"><highlight class="normal"></highlight></codeline>
+<codeline lineno="553"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>system<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="554"><highlight class="normal"></highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>up<sp/>callbacks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>-&gt;<ref refid="classEspPwm_1afc5c8ef1d74f8c5476083b635ead3dd5" kindref="member">SetPeriodCallback</ref>(<ref refid="advanced__pwm__example_8cpp_1aaa8f0632bd6e2a7665fdffa25f30f7a9" kindref="member">PeriodCompleteCallback</ref>);</highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>-&gt;<ref refid="classEspPwm_1a837573c392f4f9ada4130b30ca949218" kindref="member">SetFaultCallback</ref>(<ref refid="advanced__pwm__example_8cpp_1a5662ab6d90ae4af764bd621f3009d028" kindref="member">FaultCallback</ref>);</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"></highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>all<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="advanced__pwm__example_8cpp_1a47d302a422994038b4fe6b68463501da" kindref="member">ConfigureLedChannel</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>)<sp/>||<sp/>!<ref refid="advanced__pwm__example_8cpp_1a1c2edbf7353d84dc83335e56a1cdf1f1" kindref="member">ConfigureMotorChannels</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>)<sp/>||</highlight></codeline>
+<codeline lineno="561"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>!<ref refid="advanced__pwm__example_8cpp_1ae614a600e7b61a5e097b5d11e6905cce" kindref="member">ConfigureServoChannel</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>)<sp/>||<sp/>!<ref refid="advanced__pwm__example_8cpp_1abff11512c0ec57d4598b01744abab0f6" kindref="member">ConfigureAudioChannel</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="562"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>configure<sp/>channels&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>;</highlight></codeline>
+<codeline lineno="564"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="565"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="566"><highlight class="normal"></highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>initial<sp/>diagnostics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1adb5696b998c452268a669b5280f5c6a0" kindref="member">PrintDiagnostics</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>);</highlight></codeline>
+<codeline lineno="569"><highlight class="normal"></highlight></codeline>
+<codeline lineno="570"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>all<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="571"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>-&gt;<ref refid="classEspPwm_1a130153d9f4bdaee4219736cb248d78f6" kindref="member">StartAll</ref>()<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="572"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>all<sp/>channels&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>;</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="576"><highlight class="normal"></highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;All<sp/>channels<sp/>started<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"></highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>demonstrations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="580"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1aabca7e372533289a79e0ee1424196111" kindref="member">DemonstrateLedFade</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>);</highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1a1291c314161d700c7e9cb81759837d51" kindref="member">DemonstrateMotorControl</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>);</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1ae0fe0ab6d88abc5d0f97dd4d3ce1646e" kindref="member">DemonstrateServoControl</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>);</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1a800cf35799084d2076861b9ad3babeab" kindref="member">DemonstrateAudioGeneration</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>);</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1a0ea38caa74b919966f41df607591abc1" kindref="member">DemonstrateAdvancedFeatures</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>);</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"></highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>final<sp/>statistics<sp/>and<sp/>diagnostics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Final<sp/>Status<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="588"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1aa88b1558d9f6bca216d0e7b6c4fa76e2" kindref="member">PrintStatistics</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>);</highlight></codeline>
+<codeline lineno="589"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1adb5696b998c452268a669b5280f5c6a0" kindref="member">PrintDiagnostics</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>);</highlight></codeline>
+<codeline lineno="590"><highlight class="normal"></highlight></codeline>
+<codeline lineno="591"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>individual<sp/>channel<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="592"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>ch<sp/>=<sp/>0;<sp/>ch<sp/>&lt;<sp/>5;<sp/>ch++)<sp/>{</highlight></codeline>
+<codeline lineno="593"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>-&gt;<ref refid="classEspPwm_1a07c737787080435a486d47ad3c6803e9" kindref="member">IsChannelEnabled</ref>(ch))<sp/>{</highlight></codeline>
+<codeline lineno="594"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1ad241ca821300b588c99e2d8eea109fba" kindref="member">PrintChannelStatus</ref>(*<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>,<sp/>ch);</highlight></codeline>
+<codeline lineno="595"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="596"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="597"><highlight class="normal"></highlight></codeline>
+<codeline lineno="598"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>all<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="599"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>-&gt;<ref refid="classEspPwm_1a8be25ecab27ff61499a66535f303df2e" kindref="member">StopAll</ref>()<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="600"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>stop<sp/>all<sp/>channels&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="601"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="602"><highlight class="normal"></highlight></codeline>
+<codeline lineno="603"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Advanced<sp/>PWM<sp/>Example<sp/>Complete<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="604"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Total<sp/>periods<sp/>completed:<sp/>%lu&quot;</highlight><highlight class="normal">,<sp/><ref refid="advanced__pwm__example_8cpp_1a8e35ceb92acd4fad177254231e3a0e0f" kindref="member">g_period_count</ref>);</highlight></codeline>
+<codeline lineno="605"><highlight class="normal"></highlight></codeline>
+<codeline lineno="606"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clean<sp/>up</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="607"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref>;</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"><sp/><sp/><ref refid="advanced__pwm__example_8cpp_1a7cd4ee1884aea284785b5e3a2aec3368" kindref="member">g_pwm_controller</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="609"><highlight class="normal"></highlight></codeline>
+<codeline lineno="610"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="advanced__pwm__example_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Example<sp/>completed<sp/>successfully!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="611"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="examples/esp32/main/advanced_pwm_example.cpp"/>
+  </compounddef>
+</doxygen>

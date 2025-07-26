@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__pwm__fade__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pwm_fade_config_t</compoundname>
+    <includes refid="EspTypes__PWM_8h" local="no">EspTypes_PWM.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pwm__fade__config__t_1a75f729d28fc4dbf771e930591ea181ea" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_fade_config_t::target_duty</definition>
+        <argsstring></argsstring>
+        <name>target_duty</name>
+        <qualifiedname>hf_pwm_fade_config_t::target_duty</qualifiedname>
+        <briefdescription>
+<para>Target duty cycle value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="180" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__fade__config__t_1adea0ca273e81ff3df630d74b75fb254a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_fade_config_t::fade_time_ms</definition>
+        <argsstring></argsstring>
+        <name>fade_time_ms</name>
+        <qualifiedname>hf_pwm_fade_config_t::fade_time_ms</qualifiedname>
+        <briefdescription>
+<para>Fade duration in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="181" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__fade__config__t_1a2a39950a7094a5d9f0727dc3ae3db7c1" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1aa1c95e596c136b279f69f137cd8e8370" kindref="member">hf_pwm_fade_mode_t</ref></type>
+        <definition>hf_pwm_fade_mode_t hf_pwm_fade_config_t::fade_mode</definition>
+        <argsstring></argsstring>
+        <name>fade_mode</name>
+        <qualifiedname>hf_pwm_fade_config_t::fade_mode</qualifiedname>
+        <briefdescription>
+<para>Fade mode (blocking/non-blocking) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="182" column="22" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__fade__config__t_1aa3b002258e48c3eca3ae78bd3e88d6af" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_fade_config_t::scale</definition>
+        <argsstring></argsstring>
+        <name>scale</name>
+        <qualifiedname>hf_pwm_fade_config_t::scale</qualifiedname>
+        <briefdescription>
+<para>Fade scale factor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="183" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__fade__config__t_1af70ca42c1f307277ba9b1ae56677de34" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_fade_config_t::cycle_num</definition>
+        <argsstring></argsstring>
+        <name>cycle_num</name>
+        <qualifiedname>hf_pwm_fade_config_t::cycle_num</qualifiedname>
+        <briefdescription>
+<para>Number of fade cycles. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="184" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pwm__fade__config__t_1a958f910e59bec5a0af1a5282aee03ee5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pwm_fade_config_t::hf_pwm_fade_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_pwm_fade_config_t</name>
+        <qualifiedname>hf_pwm_fade_config_t::hf_pwm_fade_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="186" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="186" bodyend="188"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 PWM fade configuration for smooth transitions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="179" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="179" bodyend="189"/>
+    <listofallmembers>
+      <member refid="structhf__pwm__fade__config__t_1af70ca42c1f307277ba9b1ae56677de34" prot="public" virt="non-virtual"><scope>hf_pwm_fade_config_t</scope><name>cycle_num</name></member>
+      <member refid="structhf__pwm__fade__config__t_1a2a39950a7094a5d9f0727dc3ae3db7c1" prot="public" virt="non-virtual"><scope>hf_pwm_fade_config_t</scope><name>fade_mode</name></member>
+      <member refid="structhf__pwm__fade__config__t_1adea0ca273e81ff3df630d74b75fb254a" prot="public" virt="non-virtual"><scope>hf_pwm_fade_config_t</scope><name>fade_time_ms</name></member>
+      <member refid="structhf__pwm__fade__config__t_1a958f910e59bec5a0af1a5282aee03ee5" prot="public" virt="non-virtual"><scope>hf_pwm_fade_config_t</scope><name>hf_pwm_fade_config_t</name></member>
+      <member refid="structhf__pwm__fade__config__t_1aa3b002258e48c3eca3ae78bd3e88d6af" prot="public" virt="non-virtual"><scope>hf_pwm_fade_config_t</scope><name>scale</name></member>
+      <member refid="structhf__pwm__fade__config__t_1a75f729d28fc4dbf771e930591ea181ea" prot="public" virt="non-virtual"><scope>hf_pwm_fade_config_t</scope><name>target_duty</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

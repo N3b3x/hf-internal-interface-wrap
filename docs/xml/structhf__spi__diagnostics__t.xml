@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__spi__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_spi_diagnostics_t</compoundname>
+    <includes refid="BaseSpi_8h" local="no">BaseSpi.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1a67efec8de04aee3cea5c02dc3bae1701" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_spi_diagnostics_t::is_initialized</definition>
+        <argsstring></argsstring>
+        <name>is_initialized</name>
+        <qualifiedname>hf_spi_diagnostics_t::is_initialized</qualifiedname>
+        <briefdescription>
+<para>Initialization state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="126" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1a62fc174451c883a8ccffdf2e28ba68dd" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_spi_diagnostics_t::is_bus_suspended</definition>
+        <argsstring></argsstring>
+        <name>is_bus_suspended</name>
+        <qualifiedname>hf_spi_diagnostics_t::is_bus_suspended</qualifiedname>
+        <briefdescription>
+<para>Bus suspension state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="127" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1aafc662a2fdb16b2e2027ade0847cfcc1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_spi_diagnostics_t::dma_enabled</definition>
+        <argsstring></argsstring>
+        <name>dma_enabled</name>
+        <qualifiedname>hf_spi_diagnostics_t::dma_enabled</qualifiedname>
+        <briefdescription>
+<para>DMA enabled state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="128" column="8" bodyfile="inc/base/BaseSpi.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1a094185244934ceae08183c4488b8d464" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_diagnostics_t::current_clock_speed</definition>
+        <argsstring></argsstring>
+        <name>current_clock_speed</name>
+        <qualifiedname>hf_spi_diagnostics_t::current_clock_speed</qualifiedname>
+        <briefdescription>
+<para>Current clock speed in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="129" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1abf5087318635ce5c88a97869136a038c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_spi_diagnostics_t::current_mode</definition>
+        <argsstring></argsstring>
+        <name>current_mode</name>
+        <qualifiedname>hf_spi_diagnostics_t::current_mode</qualifiedname>
+        <briefdescription>
+<para>Current SPI mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="130" column="11" bodyfile="inc/base/BaseSpi.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1a0a7c65f3c7a16a560eeb2b4f143dddc3" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t hf_spi_diagnostics_t::max_transfer_size</definition>
+        <argsstring></argsstring>
+        <name>max_transfer_size</name>
+        <qualifiedname>hf_spi_diagnostics_t::max_transfer_size</qualifiedname>
+        <briefdescription>
+<para>Maximum transfer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="131" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1a58882d63244fed104947e54d9eb9cd02" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_spi_diagnostics_t::device_count</definition>
+        <argsstring></argsstring>
+        <name>device_count</name>
+        <qualifiedname>hf_spi_diagnostics_t::device_count</qualifiedname>
+        <briefdescription>
+<para>Number of registered devices. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="132" column="11" bodyfile="inc/base/BaseSpi.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1aab6c41b52f703dcdcb70e0c31dfc97cc" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_diagnostics_t::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>hf_spi_diagnostics_t::last_error</qualifiedname>
+        <briefdescription>
+<para>Last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="133" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1a40b49d9b879a06196059080edce163d9" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_spi_diagnostics_t::total_transactions</definition>
+        <argsstring></argsstring>
+        <name>total_transactions</name>
+        <qualifiedname>hf_spi_diagnostics_t::total_transactions</qualifiedname>
+        <briefdescription>
+<para>Total transactions performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="134" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__diagnostics__t_1af58d4712a0f9ac84ec0d1ff2f2551eca" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_spi_diagnostics_t::failed_transactions</definition>
+        <argsstring></argsstring>
+        <name>failed_transactions</name>
+        <qualifiedname>hf_spi_diagnostics_t::failed_transactions</qualifiedname>
+        <briefdescription>
+<para>Failed transactions count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="135" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__spi__diagnostics__t_1af3f36582f0a6d96871331d0c00bfd67f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_spi_diagnostics_t::hf_spi_diagnostics_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_spi_diagnostics_t</name>
+        <qualifiedname>hf_spi_diagnostics_t::hf_spi_diagnostics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="137" column="3" bodyfile="inc/base/BaseSpi.h" bodystart="137" bodyend="140"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SPI diagnostic information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseSpi.h" line="125" column="1" bodyfile="inc/base/BaseSpi.h" bodystart="125" bodyend="141"/>
+    <listofallmembers>
+      <member refid="structhf__spi__diagnostics__t_1a094185244934ceae08183c4488b8d464" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>current_clock_speed</name></member>
+      <member refid="structhf__spi__diagnostics__t_1abf5087318635ce5c88a97869136a038c" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>current_mode</name></member>
+      <member refid="structhf__spi__diagnostics__t_1a58882d63244fed104947e54d9eb9cd02" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>device_count</name></member>
+      <member refid="structhf__spi__diagnostics__t_1aafc662a2fdb16b2e2027ade0847cfcc1" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>dma_enabled</name></member>
+      <member refid="structhf__spi__diagnostics__t_1af58d4712a0f9ac84ec0d1ff2f2551eca" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>failed_transactions</name></member>
+      <member refid="structhf__spi__diagnostics__t_1af3f36582f0a6d96871331d0c00bfd67f" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>hf_spi_diagnostics_t</name></member>
+      <member refid="structhf__spi__diagnostics__t_1a62fc174451c883a8ccffdf2e28ba68dd" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>is_bus_suspended</name></member>
+      <member refid="structhf__spi__diagnostics__t_1a67efec8de04aee3cea5c02dc3bae1701" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>is_initialized</name></member>
+      <member refid="structhf__spi__diagnostics__t_1aab6c41b52f703dcdcb70e0c31dfc97cc" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>last_error</name></member>
+      <member refid="structhf__spi__diagnostics__t_1a0a7c65f3c7a16a560eeb2b4f143dddc3" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>max_transfer_size</name></member>
+      <member refid="structhf__spi__diagnostics__t_1a40b49d9b879a06196059080edce163d9" prot="public" virt="non-virtual"><scope>hf_spi_diagnostics_t</scope><name>total_transactions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

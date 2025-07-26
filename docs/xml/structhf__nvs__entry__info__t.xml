@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__nvs__entry__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_nvs_entry_info_t</compoundname>
+    <includes refid="EspTypes__NVS_8h" local="no">EspTypes_NVS.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__nvs__entry__info__t_1adeb6e3dd4f6818964de5d244ebdb7bf2" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char hf_nvs_entry_info_t::key[HF_NVS_MAX_KEY_LENGTH+1]</definition>
+        <argsstring>[HF_NVS_MAX_KEY_LENGTH+1]</argsstring>
+        <name>key</name>
+        <qualifiedname>hf_nvs_entry_info_t::key</qualifiedname>
+        <briefdescription>
+<para>Entry key. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="145" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref></type>
+        <definition>hf_nvs_type_t hf_nvs_entry_info_t::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>hf_nvs_entry_info_t::type</qualifiedname>
+        <briefdescription>
+<para>Entry type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="146" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_nvs_entry_info_t::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>hf_nvs_entry_info_t::size</qualifiedname>
+        <briefdescription>
+<para>Entry size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="147" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_nvs_entry_info_t::crc</definition>
+        <argsstring></argsstring>
+        <name>crc</name>
+        <qualifiedname>hf_nvs_entry_info_t::crc</qualifiedname>
+        <briefdescription>
+<para>Entry CRC. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="148" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__nvs__entry__info__t_1aa699a5beadc9585996b7ad8f5b7ec291" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_nvs_entry_info_t::hf_nvs_entry_info_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_nvs_entry_info_t</name>
+        <qualifiedname>hf_nvs_entry_info_t::hf_nvs_entry_info_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="150" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="150" bodyend="152"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 NVS entry information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="144" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="144" bodyend="153"/>
+    <listofallmembers>
+      <member refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" prot="public" virt="non-virtual"><scope>hf_nvs_entry_info_t</scope><name>crc</name></member>
+      <member refid="structhf__nvs__entry__info__t_1aa699a5beadc9585996b7ad8f5b7ec291" prot="public" virt="non-virtual"><scope>hf_nvs_entry_info_t</scope><name>hf_nvs_entry_info_t</name></member>
+      <member refid="structhf__nvs__entry__info__t_1adeb6e3dd4f6818964de5d244ebdb7bf2" prot="public" virt="non-virtual"><scope>hf_nvs_entry_info_t</scope><name>key</name></member>
+      <member refid="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" prot="public" virt="non-virtual"><scope>hf_nvs_entry_info_t</scope><name>size</name></member>
+      <member refid="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" prot="public" virt="non-virtual"><scope>hf_nvs_entry_info_t</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

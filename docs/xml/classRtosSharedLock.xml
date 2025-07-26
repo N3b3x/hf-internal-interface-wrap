@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classRtosSharedLock" kind="class" language="C++" prot="public">
+    <compoundname>RtosSharedLock</compoundname>
+    <includes refid="RtosMutex_8h" local="no">RtosMutex.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename SharedMutex</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classRtosSharedLock_1a5ca2c975cfaf0fd94e681c847a86a410" prot="private" static="no" mutable="no">
+        <type>SharedMutex *</type>
+        <definition>SharedMutex* RtosSharedLock&lt; SharedMutex &gt;::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>RtosSharedLock::mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="421" column="15" bodyfile="inc/utils/RtosMutex.h" bodystart="421" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRtosSharedLock_1acc180e528b0a6b5158fbc7fba0a0acc5" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool RtosSharedLock&lt; SharedMutex &gt;::locked_</definition>
+        <argsstring></argsstring>
+        <name>locked_</name>
+        <qualifiedname>RtosSharedLock::locked_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="422" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="422" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classRtosSharedLock_1a390e5e5ecbebe6c8c68051ddd5c9b015" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosSharedLock&lt; SharedMutex &gt;::RtosSharedLock</definition>
+        <argsstring>(SharedMutex &amp;mutex, uint32_t timeout_ms=0) noexcept</argsstring>
+        <name>RtosSharedLock</name>
+        <qualifiedname>RtosSharedLock::RtosSharedLock</qualifiedname>
+        <param>
+          <type>SharedMutex &amp;</type>
+          <declname>mutex</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="373" column="12" bodyfile="inc/utils/RtosMutex.h" bodystart="373" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosSharedLock_1ad31862716385d2d71a8f23281e629c93" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosSharedLock&lt; SharedMutex &gt;::~RtosSharedLock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~RtosSharedLock</name>
+        <qualifiedname>RtosSharedLock::~RtosSharedLock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="382" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="382" bodyend="386"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosSharedLock_1a5a63852868aa8518d2efb8001839c327" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RtosSharedLock&lt; SharedMutex &gt;::RtosSharedLock</definition>
+        <argsstring>(const RtosSharedLock &amp;)=delete</argsstring>
+        <name>RtosSharedLock</name>
+        <qualifiedname>RtosSharedLock::RtosSharedLock</qualifiedname>
+        <param>
+          <type>const <ref refid="classRtosSharedLock" kindref="compound">RtosSharedLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="388" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosSharedLock_1a811dd689ed2e3d32890f52c50ef06a8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classRtosSharedLock" kindref="compound">RtosSharedLock</ref> &amp;</type>
+        <definition>RtosSharedLock &amp; RtosSharedLock&lt; SharedMutex &gt;::operator=</definition>
+        <argsstring>(const RtosSharedLock &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RtosSharedLock::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classRtosSharedLock" kindref="compound">RtosSharedLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="389" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosSharedLock_1a49bee38b554b8225dd7c9765f1ce25d4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosSharedLock&lt; SharedMutex &gt;::RtosSharedLock</definition>
+        <argsstring>(RtosSharedLock &amp;&amp;other) noexcept</argsstring>
+        <name>RtosSharedLock</name>
+        <qualifiedname>RtosSharedLock::RtosSharedLock</qualifiedname>
+        <param>
+          <type><ref refid="classRtosSharedLock" kindref="compound">RtosSharedLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="391" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="391" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosSharedLock_1a9ec74266ec258bba6b08b19c900ed607" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classRtosSharedLock" kindref="compound">RtosSharedLock</ref> &amp;</type>
+        <definition>RtosSharedLock &amp; RtosSharedLock&lt; SharedMutex &gt;::operator=</definition>
+        <argsstring>(RtosSharedLock &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RtosSharedLock::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classRtosSharedLock" kindref="compound">RtosSharedLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="396" column="18" bodyfile="inc/utils/RtosMutex.h" bodystart="396" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosSharedLock_1a31f008907ddb7a710b118d834b4cd4bb" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosSharedLock&lt; SharedMutex &gt;::IsLocked</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsLocked</name>
+        <qualifiedname>RtosSharedLock::IsLocked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="409" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="409" bodyend="411"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosSharedLock_1a5b7a636663f8073680e3477629f097c6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RtosSharedLock&lt; SharedMutex &gt;::Unlock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Unlock</name>
+        <qualifiedname>RtosSharedLock::Unlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="413" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="413" bodyend="418"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/utils/RtosMutex.h" line="371" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="371" bodyend="423"/>
+    <listofallmembers>
+      <member refid="classRtosSharedLock_1a31f008907ddb7a710b118d834b4cd4bb" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>IsLocked</name></member>
+      <member refid="classRtosSharedLock_1acc180e528b0a6b5158fbc7fba0a0acc5" prot="private" virt="non-virtual"><scope>RtosSharedLock</scope><name>locked_</name></member>
+      <member refid="classRtosSharedLock_1a5ca2c975cfaf0fd94e681c847a86a410" prot="private" virt="non-virtual"><scope>RtosSharedLock</scope><name>mutex_</name></member>
+      <member refid="classRtosSharedLock_1a811dd689ed2e3d32890f52c50ef06a8b" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>operator=</name></member>
+      <member refid="classRtosSharedLock_1a9ec74266ec258bba6b08b19c900ed607" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>operator=</name></member>
+      <member refid="classRtosSharedLock_1a390e5e5ecbebe6c8c68051ddd5c9b015" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>RtosSharedLock</name></member>
+      <member refid="classRtosSharedLock_1a5a63852868aa8518d2efb8001839c327" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>RtosSharedLock</name></member>
+      <member refid="classRtosSharedLock_1a49bee38b554b8225dd7c9765f1ce25d4" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>RtosSharedLock</name></member>
+      <member refid="classRtosSharedLock_1a5b7a636663f8073680e3477629f097c6" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>Unlock</name></member>
+      <member refid="classRtosSharedLock_1ad31862716385d2d71a8f23281e629c93" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>~RtosSharedLock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

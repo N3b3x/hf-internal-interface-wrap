@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__adc__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_statistics_t</compoundname>
+    <includes refid="BaseAdc_8h" local="no">BaseAdc.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1a7c95ecaf76f1b7548f33913ff7483231" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::totalConversions</definition>
+        <argsstring></argsstring>
+        <name>totalConversions</name>
+        <qualifiedname>hf_adc_statistics_t::totalConversions</qualifiedname>
+        <briefdescription>
+<para>Total conversions performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="139" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1a6bd23bd1290acf6b5292dfefb70aa9d4" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::successfulConversions</definition>
+        <argsstring></argsstring>
+        <name>successfulConversions</name>
+        <qualifiedname>hf_adc_statistics_t::successfulConversions</qualifiedname>
+        <briefdescription>
+<para>Successful conversions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="140" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1abd7cfb4eef5dce706fad92f83ea6286a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::failedConversions</definition>
+        <argsstring></argsstring>
+        <name>failedConversions</name>
+        <qualifiedname>hf_adc_statistics_t::failedConversions</qualifiedname>
+        <briefdescription>
+<para>Failed conversions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="141" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1adb8b3a9729725c780346794c4ed39f3a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::averageConversionTimeUs</definition>
+        <argsstring></argsstring>
+        <name>averageConversionTimeUs</name>
+        <qualifiedname>hf_adc_statistics_t::averageConversionTimeUs</qualifiedname>
+        <briefdescription>
+<para>Average conversion time (microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="142" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1a60b17c5c1d90c76874e71e6494314bdd" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::maxConversionTimeUs</definition>
+        <argsstring></argsstring>
+        <name>maxConversionTimeUs</name>
+        <qualifiedname>hf_adc_statistics_t::maxConversionTimeUs</qualifiedname>
+        <briefdescription>
+<para>Maximum conversion time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="143" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1ad9344da335b97a18fd6ac0bcfe67852c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::minConversionTimeUs</definition>
+        <argsstring></argsstring>
+        <name>minConversionTimeUs</name>
+        <qualifiedname>hf_adc_statistics_t::minConversionTimeUs</qualifiedname>
+        <briefdescription>
+<para>Minimum conversion time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="144" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1abeb1d6ab980436620cee1a4f9347ae2c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::calibrationCount</definition>
+        <argsstring></argsstring>
+        <name>calibrationCount</name>
+        <qualifiedname>hf_adc_statistics_t::calibrationCount</qualifiedname>
+        <briefdescription>
+<para>Number of calibrations performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="145" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1a14707f325b1525644a047cd323c9874f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::thresholdViolations</definition>
+        <argsstring></argsstring>
+        <name>thresholdViolations</name>
+        <qualifiedname>hf_adc_statistics_t::thresholdViolations</qualifiedname>
+        <briefdescription>
+<para>Threshold monitor violations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="146" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__statistics__t_1afe0836b56c003884263fca8506c44e7e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_statistics_t::calibration_errors</definition>
+        <argsstring></argsstring>
+        <name>calibration_errors</name>
+        <qualifiedname>hf_adc_statistics_t::calibration_errors</qualifiedname>
+        <briefdescription>
+<para>Calibration errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="147" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__statistics__t_1afc4419f5559ce8671b4bcaf1f2c5d7b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_statistics_t::hf_adc_statistics_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_statistics_t</name>
+        <qualifiedname>hf_adc_statistics_t::hf_adc_statistics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="149" column="3" bodyfile="inc/base/BaseAdc.h" bodystart="149" bodyend="152"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC operation statistics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseAdc.h" line="138" column="1" bodyfile="inc/base/BaseAdc.h" bodystart="138" bodyend="153"/>
+    <listofallmembers>
+      <member refid="structhf__adc__statistics__t_1adb8b3a9729725c780346794c4ed39f3a" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>averageConversionTimeUs</name></member>
+      <member refid="structhf__adc__statistics__t_1afe0836b56c003884263fca8506c44e7e" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>calibration_errors</name></member>
+      <member refid="structhf__adc__statistics__t_1abeb1d6ab980436620cee1a4f9347ae2c" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>calibrationCount</name></member>
+      <member refid="structhf__adc__statistics__t_1abd7cfb4eef5dce706fad92f83ea6286a" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>failedConversions</name></member>
+      <member refid="structhf__adc__statistics__t_1afc4419f5559ce8671b4bcaf1f2c5d7b1" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>hf_adc_statistics_t</name></member>
+      <member refid="structhf__adc__statistics__t_1a60b17c5c1d90c76874e71e6494314bdd" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>maxConversionTimeUs</name></member>
+      <member refid="structhf__adc__statistics__t_1ad9344da335b97a18fd6ac0bcfe67852c" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>minConversionTimeUs</name></member>
+      <member refid="structhf__adc__statistics__t_1a6bd23bd1290acf6b5292dfefb70aa9d4" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>successfulConversions</name></member>
+      <member refid="structhf__adc__statistics__t_1a14707f325b1525644a047cd323c9874f" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>thresholdViolations</name></member>
+      <member refid="structhf__adc__statistics__t_1a7c95ecaf76f1b7548f33913ff7483231" prot="public" virt="non-virtual"><scope>hf_adc_statistics_t</scope><name>totalConversions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

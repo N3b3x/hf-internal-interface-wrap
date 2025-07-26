@@ -1,0 +1,918 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes local="yes">freertos/FreeRTOS.h</includes>
+    <includes local="yes">freertos/task.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="yes">driver/gpio.h</includes>
+    <includes local="yes">esp_log.h</includes>
+    <includes refid="BaseAdc_8h" local="yes">base/BaseAdc.h</includes>
+    <includes refid="BaseCan_8h" local="yes">base/BaseCan.h</includes>
+    <includes refid="BaseGpio_8h" local="yes">base/BaseGpio.h</includes>
+    <includes refid="BaseI2c_8h" local="yes">base/BaseI2c.h</includes>
+    <includes refid="BaseNvs_8h" local="yes">base/BaseNvs.h</includes>
+    <includes refid="BasePeriodicTimer_8h" local="yes">base/BasePeriodicTimer.h</includes>
+    <includes refid="BasePio_8h" local="yes">base/BasePio.h</includes>
+    <includes refid="BasePwm_8h" local="yes">base/BasePwm.h</includes>
+    <includes refid="BaseSpi_8h" local="yes">base/BaseSpi.h</includes>
+    <includes refid="BaseUart_8h" local="yes">base/BaseUart.h</includes>
+    <includes refid="HardwareTypes_8h" local="yes">base/HardwareTypes.h</includes>
+    <includes refid="DigitalOutputGuard_8h" local="yes">utils/DigitalOutputGuard.h</includes>
+    <includes refid="McuSelect_8h" local="yes">utils/McuSelect.h</includes>
+    <includes refid="RtosMutex_8h" local="yes">utils/RtosMutex.h</includes>
+    <includes refid="EspAdc_8h" local="yes">mcu/esp32/EspAdc.h</includes>
+    <includes refid="EspCan_8h" local="yes">mcu/esp32/EspCan.h</includes>
+    <includes refid="EspGpio_8h" local="yes">mcu/esp32/EspGpio.h</includes>
+    <includes refid="EspI2c_8h" local="yes">mcu/esp32/EspI2c.h</includes>
+    <includes refid="EspNvs_8h" local="yes">mcu/esp32/EspNvs.h</includes>
+    <includes refid="EspPeriodicTimer_8h" local="yes">mcu/esp32/EspPeriodicTimer.h</includes>
+    <includes refid="EspPio_8h" local="yes">mcu/esp32/EspPio.h</includes>
+    <includes refid="EspPwm_8h" local="yes">mcu/esp32/EspPwm.h</includes>
+    <includes refid="EspSpi_8h" local="yes">mcu/esp32/EspSpi.h</includes>
+    <includes refid="EspUart_8h" local="yes">mcu/esp32/EspUart.h</includes>
+    <includes refid="EspTypes_8h" local="yes">mcu/esp32/utils/EspTypes.h</includes>
+    <includes refid="EspTypes__ADC_8h" local="yes">mcu/esp32/utils/EspTypes_ADC.h</includes>
+    <includes refid="EspTypes__Base_8h" local="yes">mcu/esp32/utils/EspTypes_Base.h</includes>
+    <includes refid="EspTypes__CAN_8h" local="yes">mcu/esp32/utils/EspTypes_CAN.h</includes>
+    <includes refid="EspTypes__GPIO_8h" local="yes">mcu/esp32/utils/EspTypes_GPIO.h</includes>
+    <includes refid="EspTypes__I2C_8h" local="yes">mcu/esp32/utils/EspTypes_I2C.h</includes>
+    <includes refid="EspTypes__NVS_8h" local="yes">mcu/esp32/utils/EspTypes_NVS.h</includes>
+    <includes refid="EspTypes__PIO_8h" local="yes">mcu/esp32/utils/EspTypes_PIO.h</includes>
+    <includes refid="EspTypes__PWM_8h" local="yes">mcu/esp32/utils/EspTypes_PWM.h</includes>
+    <includes refid="EspTypes__SPI_8h" local="yes">mcu/esp32/utils/EspTypes_SPI.h</includes>
+    <includes refid="EspTypes__Timer_8h" local="yes">mcu/esp32/utils/EspTypes_Timer.h</includes>
+    <includes refid="EspTypes__UART_8h" local="yes">mcu/esp32/utils/EspTypes_UART.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>base/BaseAdc.h</label>
+        <link refid="BaseAdc_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>base/BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>base/BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>base/BaseI2c.h</label>
+        <link refid="BaseI2c_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>base/BaseNvs.h</label>
+        <link refid="BaseNvs_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>base/BasePeriodicTimer.h</label>
+        <link refid="BasePeriodicTimer_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>base/BasePio.h</label>
+        <link refid="BasePio_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>base/BasePwm.h</label>
+        <link refid="BasePwm_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>base/BaseSpi.h</label>
+        <link refid="BaseSpi_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>base/BaseUart.h</label>
+        <link refid="BaseUart_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>mcu/esp32/EspCan.h</label>
+        <link refid="EspCan_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>mcu/esp32/EspGpio.h</label>
+        <link refid="EspGpio_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>mcu/esp32/EspNvs.h</label>
+        <link refid="EspNvs_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>mcu/esp32/EspPwm.h</label>
+        <link refid="EspPwm_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>utils/EspTypes_NVS.h</label>
+        <link refid="EspTypes__NVS_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>utils/DigitalOutputGuard.h</label>
+        <link refid="DigitalOutputGuard_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>utils/McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="25">
+        <label>utils/RtosMutex.h</label>
+        <link refid="RtosMutex_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>array</label>
+      </node>
+      <node id="27">
+        <label>atomic</label>
+      </node>
+      <node id="9">
+        <label>cstdint</label>
+      </node>
+      <node id="22">
+        <label>cstring</label>
+      </node>
+      <node id="5">
+        <label>driver/gpio.h</label>
+      </node>
+      <node id="44">
+        <label>driver/i2c.h</label>
+      </node>
+      <node id="53">
+        <label>driver/i2c_master.h</label>
+      </node>
+      <node id="59">
+        <label>driver/rmt_encoder.h</label>
+      </node>
+      <node id="60">
+        <label>driver/rmt_rx.h</label>
+      </node>
+      <node id="61">
+        <label>driver/rmt_tx.h</label>
+      </node>
+      <node id="64">
+        <label>driver/spi_common.h</label>
+      </node>
+      <node id="48">
+        <label>driver/spi_master.h</label>
+      </node>
+      <node id="30">
+        <label>driver/twai.h</label>
+      </node>
+      <node id="39">
+        <label>esp_adc/adc_continuous.h</label>
+      </node>
+      <node id="40">
+        <label>esp_adc/adc_oneshot.h</label>
+      </node>
+      <node id="32">
+        <label>esp_attr.h</label>
+      </node>
+      <node id="6">
+        <label>esp_log.h</label>
+      </node>
+      <node id="50">
+        <label>esp_timer.h</label>
+      </node>
+      <node id="2">
+        <label>freertos/FreeRTOS.h</label>
+      </node>
+      <node id="26">
+        <label>freertos/semphr.h</label>
+      </node>
+      <node id="3">
+        <label>freertos/task.h</label>
+      </node>
+      <node id="11">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+      <node id="10">
+        <label>limits</label>
+      </node>
+      <node id="52">
+        <label>memory</label>
+      </node>
+      <node id="35">
+        <label>stdio.h</label>
+      </node>
+      <node id="12">
+        <label>string_view</label>
+      </node>
+      <node id="43">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" prot="public" static="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* TAG</definition>
+        <argsstring></argsstring>
+        <name>TAG</name>
+        <initializer>= &quot;IID_Test&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/main.cpp" line="61" column="19" bodyfile="examples/esp32/main/main.cpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="main_8cpp_1a630544a7f0a2cc40d8a7fefab7e2fe70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void app_main</definition>
+        <argsstring>(void)</argsstring>
+        <name>app_main</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/main.cpp" line="63" column="17" bodyfile="examples/esp32/main/main.cpp" bodystart="63" bodyend="206"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;freertos/FreeRTOS.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/task.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/gpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Include<sp/>all<sp/>base<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseAdc_8h" kindref="compound">base/BaseAdc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseCan_8h" kindref="compound">base/BaseCan.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseGpio_8h" kindref="compound">base/BaseGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseI2c_8h" kindref="compound">base/BaseI2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseNvs_8h" kindref="compound">base/BaseNvs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BasePeriodicTimer_8h" kindref="compound">base/BasePeriodicTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BasePio_8h" kindref="compound">base/BasePio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BasePwm_8h" kindref="compound">base/BasePwm.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseSpi_8h" kindref="compound">base/BaseSpi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseUart_8h" kindref="compound">base/BaseUart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">base/HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Include<sp/>utility<sp/>classes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="DigitalOutputGuard_8h" kindref="compound">utils/DigitalOutputGuard.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">utils/McuSelect.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">utils/RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>implementation<sp/>classes<sp/>(temporarily<sp/>commented<sp/>out<sp/>due<sp/>to<sp/>compilation<sp/>errors)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspAdc_8h" kindref="compound">mcu/esp32/EspAdc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspCan_8h" kindref="compound">mcu/esp32/EspCan.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspGpio_8h" kindref="compound">mcu/esp32/EspGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspI2c_8h" kindref="compound">mcu/esp32/EspI2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspNvs_8h" kindref="compound">mcu/esp32/EspNvs.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspPeriodicTimer_8h" kindref="compound">mcu/esp32/EspPeriodicTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspPio_8h" kindref="compound">mcu/esp32/EspPio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspPwm_8h" kindref="compound">mcu/esp32/EspPwm.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspSpi_8h" kindref="compound">mcu/esp32/EspSpi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspUart_8h" kindref="compound">mcu/esp32/EspUart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>utility<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes_8h" kindref="compound">mcu/esp32/utils/EspTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__ADC_8h" kindref="compound">mcu/esp32/utils/EspTypes_ADC.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__Base_8h" kindref="compound">mcu/esp32/utils/EspTypes_Base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__CAN_8h" kindref="compound">mcu/esp32/utils/EspTypes_CAN.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__GPIO_8h" kindref="compound">mcu/esp32/utils/EspTypes_GPIO.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__I2C_8h" kindref="compound">mcu/esp32/utils/EspTypes_I2C.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__NVS_8h" kindref="compound">mcu/esp32/utils/EspTypes_NVS.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__PIO_8h" kindref="compound">mcu/esp32/utils/EspTypes_PIO.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__PWM_8h" kindref="compound">mcu/esp32/utils/EspTypes_PWM.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__SPI_8h" kindref="compound">mcu/esp32/utils/EspTypes_SPI.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__Timer_8h" kindref="compound">mcu/esp32/utils/EspTypes_Timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__UART_8h" kindref="compound">mcu/esp32/utils/EspTypes_UART.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;IID_Test&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a630544a7f0a2cc40d8a7fefab7e2fe70" kindref="member">app_main</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>ESP32<sp/>IID<sp/>Test<sp/>Start<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Minimal<sp/>integration<sp/>of<sp/>all<sp/>ESP32<sp/>libraries:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>1.<sp/>EspGpio</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="classEspGpio" kindref="compound">EspGpio</ref><sp/>test_gpio(8,<sp/><ref refid="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3ae8b58d24a05839b6d1c0305c945748b0" kindref="member">hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356" kindref="member">hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_init<sp/>=<sp/>test_gpio.Initialize();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspGpio<sp/>initialized:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>gpio_init<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>2.<sp/>EspAdc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>adc_cfg.<ref refid="structhf__adc__unit__config__t_1a913ab26a613a66311a1ff5e98e45541d" kindref="member">unit_id</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>adc_init<sp/>=<sp/>test_adc.EnsureInitialized();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspAdc<sp/>initialized:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>adc_init<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>3.<sp/>EspUart</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref><sp/>uart_cfg<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>uart_cfg.<ref refid="structhf__uart__config__t_1afdc6f2316977e5a7a400ce2031e49c1c" kindref="member">port_number</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>uart_cfg.<ref refid="structhf__uart__config__t_1a1f63adb11ea6e211eeeb2898a8e89a58" kindref="member">baud_rate</ref><sp/>=<sp/>115200;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>uart_cfg.<ref refid="structhf__uart__config__t_1a76ac681f25341a9eb9f96d5fbcee0ede" kindref="member">tx_pin</ref><sp/>=<sp/>21;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>uart_cfg.<ref refid="structhf__uart__config__t_1acca6c345efac84a616bc42c88efa0cf5" kindref="member">rx_pin</ref><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>EspUart<sp/>test_uart(uart_cfg);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>uart_init<sp/>=<sp/>test_uart.EnsureInitialized();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspUart<sp/>initialized:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>uart_init<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>4.<sp/>EspCan</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>hf_esp_can_config_t<sp/>can_cfg<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>can_cfg.controller_id<sp/>=<sp/><ref refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6a218ec6a4ce230d831e99e3c9b5963581" kindref="member">hf_can_controller_id_t::HF_CAN_CONTROLLER_0</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>can_cfg.tx_pin<sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>can_cfg.rx_pin<sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>can_cfg.tx_queue_len<sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>EspCan<sp/>test_can(can_cfg);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>can_init<sp/>=<sp/>test_can.Initialize();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspCan<sp/>initialized:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>can_init<sp/>==<sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>5.<sp/>EspSpi</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref><sp/>spi_cfg<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>spi_cfg.<ref refid="structhf__spi__bus__config__t_1a56f13363406cc28437c24c8745d835ed" kindref="member">mosi_pin</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>spi_cfg.<ref refid="structhf__spi__bus__config__t_1aab37725899b984d697d2c4e1b20012a7" kindref="member">miso_pin</ref><sp/>=<sp/>9;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>spi_cfg.<ref refid="structhf__spi__bus__config__t_1a2447a1a31cf698aead3d668f59ffe162" kindref="member">sclk_pin</ref><sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>spi_cfg.clock_speed_hz<sp/>=<sp/>1000000;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>spi_cfg.mode<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>EspSpi<sp/>test_spi(spi_cfg);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>spi_init<sp/>=<sp/>test_spi.EnsureInitialized();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspSpi<sp/>initialized:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>spi_init<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>6.<sp/>EspI2c<sp/>(Test<sp/>disabled<sp/>-<sp/>using<sp/>new<sp/>bus-device<sp/>architecture)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>Update<sp/>to<sp/>use<sp/>new<sp/>EspI2cBus/EspI2cDevice<sp/>architecture</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/>hf_i2c_master_bus_config_t<sp/>i2c_cfg<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/>i2c_cfg.i2c_port<sp/>=<sp/>I2C_NUM_0;</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/>i2c_cfg.sda_io_num<sp/>=<sp/>21;</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/>i2c_cfg.scl_io_num<sp/>=<sp/>22;</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/>i2c_cfg.enable_internal_pullup<sp/>=<sp/>true;</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/>EspI2c<sp/>test_i2c(i2c_cfg);</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/>bool<sp/>i2c_init<sp/>=<sp/>test_i2c.Initialize();</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/>ESP_LOGI(TAG,<sp/>&quot;EspI2c<sp/>initialized:<sp/>%s&quot;,<sp/>i2c_init<sp/>?<sp/>&quot;true&quot;<sp/>:<sp/>&quot;false&quot;);</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>7.<sp/>EspPwm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__unit__config__t" kindref="compound">hf_pwm_unit_config_t</ref><sp/>pwm_cfg<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>pwm_cfg.<ref refid="structhf__pwm__unit__config__t_1aee1e74ef4f6da7c224819db84bc9d873" kindref="member">unit_id</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>pwm_cfg.<ref refid="structhf__pwm__unit__config__t_1ab6c9882bb8695dbdfd685af69dfdf35a" kindref="member">mode</ref><sp/>=<sp/><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3faafcaebf50ed45950d02944973268665f3" kindref="member">hf_pwm_mode_t::HF_PWM_MODE_FADE</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>pwm_cfg.<ref refid="structhf__pwm__unit__config__t_1af2993dd547218552aad3ef5cfa324415" kindref="member">base_clock_hz</ref><sp/>=<sp/><ref refid="EspTypes__PWM_8h_1afc05cebb7e350df0e040f5ee863e733b" kindref="member">HF_PWM_APB_CLOCK_HZ</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>pwm_cfg.<ref refid="structhf__pwm__unit__config__t_1a00ac0384b3ff94e53be3f31e95a8e1c4" kindref="member">clock_source</ref><sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82a7d16cfde99618b306f8de171107ba44c" kindref="member">hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT</ref>;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>pwm_cfg.<ref refid="structhf__pwm__unit__config__t_1a37b2e0c51eb2962a80131fefe9d64d58" kindref="member">enable_fade</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>pwm_cfg.<ref refid="structhf__pwm__unit__config__t_1acaf1bbe7d4fbe729846cd9e2f1ac7a85" kindref="member">enable_interrupts</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm" kindref="compound">EspPwm</ref><sp/>test_pwm(pwm_cfg);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pwm_init<sp/>=<sp/>test_pwm.EnsureInitialized();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspPwm<sp/>initialized:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>pwm_init<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>hardware<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>HardwareTypes...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>test_pin<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>test_port<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref><sp/>test_freq<sp/>=<sp/>1000000;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Pin:<sp/>%ld,<sp/>Port:<sp/>%lu,<sp/>Freq:<sp/>%lu<sp/>Hz&quot;</highlight><highlight class="normal">,<sp/>test_pin,<sp/>test_port,<sp/>test_freq);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>error<sp/>codes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>GPIO<sp/>error<sp/>codes...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/>test_error<sp/>=<sp/><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>Error:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__gpio_1ga7b10980109887d4e4db17d5c1ba98f95" kindref="member">HfGpioErrToString</ref>(test_error));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>states</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>GPIO<sp/>states...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref><sp/>test_state<sp/>=<sp/><ref refid="group__gpio_1gga49490004a4935c1f8f727fcbfba7f887a14da1ccdb89e74c932383b4d4cd86573" kindref="member">hf_gpio_state_t::HF_GPIO_STATE_ACTIVE</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>State:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" kindref="member">BaseGpio::ToString</ref>(test_state));</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>directions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>GPIO<sp/>directions...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref><sp/>test_dir<sp/>=<sp/><ref refid="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3ae8b58d24a05839b6d1c0305c945748b0" kindref="member">hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT</ref>;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>Direction:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" kindref="member">BaseGpio::ToString</ref>(test_dir));</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>active<sp/>states</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>GPIO<sp/>active<sp/>states...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref><sp/>test_active<sp/>=<sp/><ref refid="group__gpio_1ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356" kindref="member">hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>Active<sp/>State:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" kindref="member">BaseGpio::ToString</ref>(test_active));</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>output<sp/>modes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>GPIO<sp/>output<sp/>modes...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref><sp/>test_output<sp/>=<sp/><ref refid="group__gpio_1gga825412a54660defc9ecbf8ad1ea1cf7ba26b362f67afa6dbc264fb539c0dc304d" kindref="member">hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>Output<sp/>Mode:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" kindref="member">BaseGpio::ToString</ref>(test_output));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>pull<sp/>modes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>GPIO<sp/>pull<sp/>modes...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref><sp/>test_pull<sp/>=<sp/><ref refid="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335ae17c8cfbde2e4323ba15750747758875" kindref="member">hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING</ref>;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>Pull<sp/>Mode:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" kindref="member">BaseGpio::ToString</ref>(test_pull));</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>interrupt<sp/>triggers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>GPIO<sp/>interrupt<sp/>triggers...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref><sp/>test_trigger<sp/>=</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1a3329c6966749e885e0fae014078c306b" kindref="member">hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>Interrupt<sp/>Trigger:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" kindref="member">BaseGpio::ToString</ref>(test_trigger));</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>validation<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>validation<sp/>functions...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Valid<sp/>pin:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="HardwareTypes_8h_1abaf046a86ed01ee84670bfab0bacbda0" kindref="member">IsValidPin</ref>(test_pin)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Valid<sp/>port:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" kindref="member">IsValidPort</ref>(test_port)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>GPIO<sp/>for<sp/>LED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Configuring<sp/>GPIO<sp/>for<sp/>LED...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>gpio_config_t<sp/>io_conf<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>io_conf.intr_type<sp/>=<sp/>GPIO_INTR_DISABLE;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>io_conf.mode<sp/>=<sp/>GPIO_MODE_OUTPUT;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>io_conf.pin_bit_mask<sp/>=<sp/>(1ULL<sp/>&lt;&lt;<sp/>GPIO_NUM_8);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>io_conf.pull_down_en<sp/>=<sp/>GPIO_PULLDOWN_DISABLE;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>io_conf.pull_up_en<sp/>=<sp/>GPIO_PULLUP_DISABLE;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/>gpio_config(&amp;io_conf);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>configured<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;All<sp/>base<sp/>classes<sp/>and<sp/>utility<sp/>classes<sp/>compiled<sp/>successfully!&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="main_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Blink<sp/>count:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>count++);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Toggle<sp/>LED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_set_level(GPIO_NUM_8,<sp/>count<sp/>%<sp/>2);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(1000));</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="examples/esp32/main/main.cpp"/>
+  </compounddef>
+</doxygen>

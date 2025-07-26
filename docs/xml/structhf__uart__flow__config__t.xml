@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__uart__flow__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_uart_flow_config_t</compoundname>
+    <includes refid="EspTypes__UART_8h" local="no">EspTypes_UART.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__uart__flow__config__t_1a8b6d281f74d9f838090904f75efb4c88" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_flow_config_t::enable_hw_flow_control</definition>
+        <argsstring></argsstring>
+        <name>enable_hw_flow_control</name>
+        <qualifiedname>hf_uart_flow_config_t::enable_hw_flow_control</qualifiedname>
+        <briefdescription>
+<para>Enable hardware flow control (RTS/CTS) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="149" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__flow__config__t_1ac7e23050c2ef42391ccee0e4c6a09bce" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_flow_config_t::enable_sw_flow_control</definition>
+        <argsstring></argsstring>
+        <name>enable_sw_flow_control</name>
+        <qualifiedname>hf_uart_flow_config_t::enable_sw_flow_control</qualifiedname>
+        <briefdescription>
+<para>Enable software flow control (XON/XOFF) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="150" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__flow__config__t_1a473eb6fb647091ebad60eb417d1e794d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_uart_flow_config_t::xon_char</definition>
+        <argsstring></argsstring>
+        <name>xon_char</name>
+        <qualifiedname>hf_uart_flow_config_t::xon_char</qualifiedname>
+        <briefdescription>
+<para>XON character (default: 0x11) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="151" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__flow__config__t_1a1ab77db177f6eeaf169e3736759a7ff0" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_uart_flow_config_t::xoff_char</definition>
+        <argsstring></argsstring>
+        <name>xoff_char</name>
+        <qualifiedname>hf_uart_flow_config_t::xoff_char</qualifiedname>
+        <briefdescription>
+<para>XOFF character (default: 0x13) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="152" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__flow__config__t_1a20130cf5f4bfabb51f8f8a831f5863ea" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_uart_flow_config_t::rx_flow_ctrl_thresh</definition>
+        <argsstring></argsstring>
+        <name>rx_flow_ctrl_thresh</name>
+        <qualifiedname>hf_uart_flow_config_t::rx_flow_ctrl_thresh</qualifiedname>
+        <briefdescription>
+<para>RX flow control threshold (bytes) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="153" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__flow__config__t_1ac804663a1b85286b2d36ce6a12c954bc" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_uart_flow_config_t::tx_flow_ctrl_thresh</definition>
+        <argsstring></argsstring>
+        <name>tx_flow_ctrl_thresh</name>
+        <qualifiedname>hf_uart_flow_config_t::tx_flow_ctrl_thresh</qualifiedname>
+        <briefdescription>
+<para>TX flow control threshold (bytes) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="154" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__flow__config__t_1ab862a5acbf908953ad21e52c58de0ba5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_flow_config_t::auto_rts</definition>
+        <argsstring></argsstring>
+        <name>auto_rts</name>
+        <qualifiedname>hf_uart_flow_config_t::auto_rts</qualifiedname>
+        <briefdescription>
+<para>Automatic RTS control. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="155" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__flow__config__t_1ae28a9b34c306c4d888135506e5947fef" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_flow_config_t::auto_cts</definition>
+        <argsstring></argsstring>
+        <name>auto_cts</name>
+        <qualifiedname>hf_uart_flow_config_t::auto_cts</qualifiedname>
+        <briefdescription>
+<para>Automatic CTS control. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="156" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__uart__flow__config__t_1ae417f407dde36d36f13474bd4b23439c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_uart_flow_config_t::hf_uart_flow_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_uart_flow_config_t</name>
+        <qualifiedname>hf_uart_flow_config_t::hf_uart_flow_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="158" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="158" bodyend="161"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 UART flow control configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="148" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="148" bodyend="162"/>
+    <listofallmembers>
+      <member refid="structhf__uart__flow__config__t_1ae28a9b34c306c4d888135506e5947fef" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>auto_cts</name></member>
+      <member refid="structhf__uart__flow__config__t_1ab862a5acbf908953ad21e52c58de0ba5" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>auto_rts</name></member>
+      <member refid="structhf__uart__flow__config__t_1a8b6d281f74d9f838090904f75efb4c88" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>enable_hw_flow_control</name></member>
+      <member refid="structhf__uart__flow__config__t_1ac7e23050c2ef42391ccee0e4c6a09bce" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>enable_sw_flow_control</name></member>
+      <member refid="structhf__uart__flow__config__t_1ae417f407dde36d36f13474bd4b23439c" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>hf_uart_flow_config_t</name></member>
+      <member refid="structhf__uart__flow__config__t_1a20130cf5f4bfabb51f8f8a831f5863ea" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>rx_flow_ctrl_thresh</name></member>
+      <member refid="structhf__uart__flow__config__t_1ac804663a1b85286b2d36ce6a12c954bc" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>tx_flow_ctrl_thresh</name></member>
+      <member refid="structhf__uart__flow__config__t_1a1ab77db177f6eeaf169e3736759a7ff0" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>xoff_char</name></member>
+      <member refid="structhf__uart__flow__config__t_1a473eb6fb647091ebad60eb417d1e794d" prot="public" virt="non-virtual"><scope>hf_uart_flow_config_t</scope><name>xon_char</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,7 @@
+<map id="BaseNvs" name="BaseNvs">
+<area shape="rect" id="Node000001" title="Abstract base class for non&#45;volatile storage operations." alt="" coords="124,93,203,119"/>
+<area shape="rect" id="Node000002" href="$structhf__nvs__statistics__t.html" title="NVS operation statistics." alt="" coords="5,5,148,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,38,153,91,149,95,96,42"/>
+<area shape="rect" id="Node000003" href="$structhf__nvs__diagnostics__t.html" title="NVS diagnostic information." alt="" coords="172,5,331,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="233,43,204,71,178,95,175,91,200,67,229,39"/>
+</map>

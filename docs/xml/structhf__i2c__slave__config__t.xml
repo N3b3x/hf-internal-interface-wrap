@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__i2c__slave__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_i2c_slave_config_t</compoundname>
+    <includes refid="EspTypes__I2C_8h" local="no">EspTypes_I2C.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1ac060e012f3bbca8b4ba7fafd2f20c6c9" prot="public" static="no" mutable="no">
+        <type>i2c_port_t</type>
+        <definition>i2c_port_t hf_i2c_slave_config_t::i2c_port</definition>
+        <argsstring></argsstring>
+        <name>i2c_port</name>
+        <qualifiedname>hf_i2c_slave_config_t::i2c_port</qualifiedname>
+        <briefdescription>
+<para>I2C port number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="235" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a238bc89dc9f32b45941ebb3e3b389c85" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__I2C_8h_1ad7608886f1256b486962da79dab16eec" kindref="member">hf_i2c_clock_source_t</ref></type>
+        <definition>hf_i2c_clock_source_t hf_i2c_slave_config_t::clk_source</definition>
+        <argsstring></argsstring>
+        <name>clk_source</name>
+        <qualifiedname>hf_i2c_slave_config_t::clk_source</qualifiedname>
+        <briefdescription>
+<para>Clock source selection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="236" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a250b49c74fcb09b26b813d770670fdc7" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_pin_num_t hf_i2c_slave_config_t::scl_io_num</definition>
+        <argsstring></argsstring>
+        <name>scl_io_num</name>
+        <qualifiedname>hf_i2c_slave_config_t::scl_io_num</qualifiedname>
+        <briefdescription>
+<para>SCL GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="237" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a01a9513282fb7764f1864a6e771e53fb" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_pin_num_t hf_i2c_slave_config_t::sda_io_num</definition>
+        <argsstring></argsstring>
+        <name>sda_io_num</name>
+        <qualifiedname>hf_i2c_slave_config_t::sda_io_num</qualifiedname>
+        <briefdescription>
+<para>SDA GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="238" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a6d56483b7a2e91d18ac2f30bf67942ef" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_i2c_slave_config_t::slave_addr</definition>
+        <argsstring></argsstring>
+        <name>slave_addr</name>
+        <qualifiedname>hf_i2c_slave_config_t::slave_addr</qualifiedname>
+        <briefdescription>
+<para>Slave address. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="239" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a5521f0a195a7aed73c34680e79a19cf6" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__I2C_8h_1ada5c1c4b9978d9458ddf062c6c07c7c5" kindref="member">hf_i2c_address_bits_t</ref></type>
+        <definition>hf_i2c_address_bits_t hf_i2c_slave_config_t::addr_bit_len</definition>
+        <argsstring></argsstring>
+        <name>addr_bit_len</name>
+        <qualifiedname>hf_i2c_slave_config_t::addr_bit_len</qualifiedname>
+        <briefdescription>
+<para>Address bit length. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="240" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1aeb91128b4f9f010ab550a10a853f6829" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_slave_config_t::clk_speed_hz</definition>
+        <argsstring></argsstring>
+        <name>clk_speed_hz</name>
+        <qualifiedname>hf_i2c_slave_config_t::clk_speed_hz</qualifiedname>
+        <briefdescription>
+<para>SCL clock frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="241" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a03ed86e49f8146fa143e0652861fbdf7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_slave_config_t::send_buf_depth</definition>
+        <argsstring></argsstring>
+        <name>send_buf_depth</name>
+        <qualifiedname>hf_i2c_slave_config_t::send_buf_depth</qualifiedname>
+        <briefdescription>
+<para>Send buffer depth. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="242" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1afddeeebc89c9f1b503dff7636ab6b0e5" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_slave_config_t::receive_buf_depth</definition>
+        <argsstring></argsstring>
+        <name>receive_buf_depth</name>
+        <qualifiedname>hf_i2c_slave_config_t::receive_buf_depth</qualifiedname>
+        <briefdescription>
+<para>Receive buffer depth. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="243" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a072ff79851984902b2bdd42156b2e41f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_slave_config_t::intr_priority</definition>
+        <argsstring></argsstring>
+        <name>intr_priority</name>
+        <qualifiedname>hf_i2c_slave_config_t::intr_priority</qualifiedname>
+        <briefdescription>
+<para>Interrupt priority. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="244" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1a29d5101f6ed6ad6e39a9543382170e51" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_i2c_slave_config_t::enable_internal_pullup</definition>
+        <argsstring></argsstring>
+        <name>enable_internal_pullup</name>
+        <qualifiedname>hf_i2c_slave_config_t::enable_internal_pullup</qualifiedname>
+        <briefdescription>
+<para>Enable internal pull-ups. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="245" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1abed3082efb6b2e9a48e86d40691d802f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_i2c_slave_config_t::broadcast_en</definition>
+        <argsstring></argsstring>
+        <name>broadcast_en</name>
+        <qualifiedname>hf_i2c_slave_config_t::broadcast_en</qualifiedname>
+        <briefdescription>
+<para>Enable general call address (0x00) response. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="246" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__slave__config__t_1ab99efe4c844b1b448993597e3812136a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_i2c_slave_config_t::allow_pd</definition>
+        <argsstring></argsstring>
+        <name>allow_pd</name>
+        <qualifiedname>hf_i2c_slave_config_t::allow_pd</qualifiedname>
+        <briefdescription>
+<para>Allow power down in sleep modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="247" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__i2c__slave__config__t_1ae1bc694e0286688aff0e39a13cd2c379" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_i2c_slave_config_t::hf_i2c_slave_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_i2c_slave_config_t</name>
+        <qualifiedname>hf_i2c_slave_config_t::hf_i2c_slave_config_t</qualifiedname>
+        <briefdescription>
+<para>Default constructor with sensible defaults. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="252" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="252" bodyend="258"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>I2C slave configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Configuration for creating an I2C slave device. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="234" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="234" bodyend="259"/>
+    <listofallmembers>
+      <member refid="structhf__i2c__slave__config__t_1a5521f0a195a7aed73c34680e79a19cf6" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>addr_bit_len</name></member>
+      <member refid="structhf__i2c__slave__config__t_1ab99efe4c844b1b448993597e3812136a" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>allow_pd</name></member>
+      <member refid="structhf__i2c__slave__config__t_1abed3082efb6b2e9a48e86d40691d802f" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>broadcast_en</name></member>
+      <member refid="structhf__i2c__slave__config__t_1a238bc89dc9f32b45941ebb3e3b389c85" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>clk_source</name></member>
+      <member refid="structhf__i2c__slave__config__t_1aeb91128b4f9f010ab550a10a853f6829" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>clk_speed_hz</name></member>
+      <member refid="structhf__i2c__slave__config__t_1a29d5101f6ed6ad6e39a9543382170e51" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>enable_internal_pullup</name></member>
+      <member refid="structhf__i2c__slave__config__t_1ae1bc694e0286688aff0e39a13cd2c379" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>hf_i2c_slave_config_t</name></member>
+      <member refid="structhf__i2c__slave__config__t_1ac060e012f3bbca8b4ba7fafd2f20c6c9" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>i2c_port</name></member>
+      <member refid="structhf__i2c__slave__config__t_1a072ff79851984902b2bdd42156b2e41f" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>intr_priority</name></member>
+      <member refid="structhf__i2c__slave__config__t_1afddeeebc89c9f1b503dff7636ab6b0e5" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>receive_buf_depth</name></member>
+      <member refid="structhf__i2c__slave__config__t_1a250b49c74fcb09b26b813d770670fdc7" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>scl_io_num</name></member>
+      <member refid="structhf__i2c__slave__config__t_1a01a9513282fb7764f1864a6e771e53fb" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>sda_io_num</name></member>
+      <member refid="structhf__i2c__slave__config__t_1a03ed86e49f8146fa143e0652861fbdf7" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>send_buf_depth</name></member>
+      <member refid="structhf__i2c__slave__config__t_1a6d56483b7a2e91d18ac2f30bf67942ef" prot="public" virt="non-virtual"><scope>hf_i2c_slave_config_t</scope><name>slave_addr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

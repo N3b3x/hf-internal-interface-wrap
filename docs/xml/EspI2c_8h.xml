@@ -1,0 +1,588 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="EspI2c_8h" kind="file" language="C++">
+    <compoundname>EspI2c.h</compoundname>
+    <includes refid="BaseI2c_8h" local="yes">BaseI2c.h</includes>
+    <includes refid="EspTypes_8h" local="yes">utils/EspTypes.h</includes>
+    <includes refid="RtosMutex_8h" local="yes">utils/RtosMutex.h</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">vector</includes>
+    <includes local="yes">driver/i2c_master.h</includes>
+    <includes local="yes">esp_log.h</includes>
+    <includedby refid="DummyDevice_8hpp" local="yes">examples/common/DummyDevice.hpp</includedby>
+    <includedby refid="main_8cpp" local="yes">examples/esp32/main/main.cpp</includedby>
+    <includedby refid="EspI2c_8cpp" local="yes">src/mcu/esp32/EspI2c.cpp</includedby>
+    <incdepgraph>
+      <node id="11">
+        <label>BaseAdc.h</label>
+        <link refid="BaseAdc_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>BaseI2c.h</label>
+        <link refid="BaseI2c_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>BasePio.h</label>
+        <link refid="BasePio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>BasePwm.h</label>
+        <link refid="BasePwm_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>BaseSpi.h</label>
+        <link refid="BaseSpi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>BaseUart.h</label>
+        <link refid="BaseUart_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="35">
+        <label>utils/RtosMutex.h</label>
+        <link refid="RtosMutex_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="34">
+        <label>cstring</label>
+      </node>
+      <node id="22">
+        <label>driver/i2c.h</label>
+      </node>
+      <node id="40">
+        <label>driver/i2c_master.h</label>
+      </node>
+      <node id="29">
+        <label>driver/spi_master.h</label>
+      </node>
+      <node id="14">
+        <label>esp_adc/adc_continuous.h</label>
+      </node>
+      <node id="15">
+        <label>esp_adc/adc_oneshot.h</label>
+      </node>
+      <node id="41">
+        <label>esp_log.h</label>
+      </node>
+      <node id="31">
+        <label>esp_timer.h</label>
+      </node>
+      <node id="36">
+        <label>freertos/FreeRTOS.h</label>
+      </node>
+      <node id="37">
+        <label>freertos/semphr.h</label>
+      </node>
+      <node id="38">
+        <label>freertos/task.h</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="39">
+        <label>memory</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+      <node id="21">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/common/DummyDevice.hpp</label>
+        <link refid="DummyDevice_8hpp"/>
+      </node>
+      <node id="3">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classEspI2cDevice" prot="public">EspI2cDevice</innerclass>
+    <innerclass refid="classEspI2cBus" prot="public">EspI2cBus</innerclass>
+    <briefdescription>
+<para>Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device architecture. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header provides a comprehensive I2C implementation that properly utilizes the ESP-IDF v5.5+ bus-device model, following the same pattern as the SPI implementation. The architecture separates bus management from device operations, providing clean abstraction and optimal resource management.</para>
+<sect1 id="EspI2c_8h_1features">
+<title>ESP32C6/ESP-IDF v5.5+ Features Supported:</title>
+<para><itemizedlist>
+<listitem><para><bold>Bus-Device Architecture</bold>: Separate <ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> and <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> classes</para>
+</listitem><listitem><para><bold>Modern API</bold>: Uses i2c_new_master_bus() and i2c_master_bus_add_device()</para>
+</listitem><listitem><para><bold>Per-Device Configuration</bold>: Each device has its own clock speed and settings</para>
+</listitem><listitem><para><bold>Thread Safety</bold>: Full RTOS integration with proper synchronization</para>
+</listitem><listitem><para><bold>Device Management</bold>: Dynamic device addition/removal with proper cleanup</para>
+</listitem><listitem><para><bold><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> Integration</bold>: <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> inherits from <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> for portability</para>
+</listitem><listitem><para><bold>Comprehensive Error Handling</bold>: Proper error conversion and reporting</para>
+</listitem><listitem><para><bold>Resource Management</bold>: Automatic cleanup and proper resource lifecycle</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="EspI2c_8h_1performance">
+<title>Performance Characteristics:</title>
+<para><itemizedlist>
+<listitem><para>Standard Mode: 100 kHz</para>
+</listitem><listitem><para>Fast Mode: 400 kHz <linebreak/>
+</para>
+</listitem><listitem><para>Fast Mode Plus: 1 MHz (ESP32C6)</para>
+</listitem><listitem><para>7-bit and 10-bit addressing support</para>
+</listitem><listitem><para>Clock stretching with configurable timeout</para>
+</listitem><listitem><para>Hardware FIFO utilization</para>
+</listitem><listitem><para>Multi-master operation capability</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+<simplesect kind="version"><para>3.0.0 - Complete bus-device architecture rewrite</para>
+</simplesect>
+<simplesect kind="note"><para>This implementation requires ESP-IDF v5.5+ and is optimized for ESP32C6. </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe operation is guaranteed for all public methods. </para>
+</simplesect>
+<simplesect kind="note"><para>Follows the same architectural pattern as EspSpi for consistency. </para>
+</simplesect>
+</para>
+</sect1>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseI2c_8h" kindref="compound">BaseI2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes_8h" kindref="compound">utils/EspTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">utils/RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/i2c_master.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Forward<sp/>declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classEspI2cDevice" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>(<ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>*<sp/>parent,<sp/>i2c_master_dev_handle_t<sp/>handle,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref>&amp;<sp/>config);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1af8a169703da9511e1ee20957ff4062ab" kindref="member">~EspI2cDevice</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a6b441d54a4f47e124dd6e5f48a23c7f9" kindref="member">Initialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1ac905c8cc4c142563e73380ffb6b679b3" kindref="member">Deinitialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1acc62adb05de7e21b96f5a61df9c4bb65" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>data,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>length,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1a2943185e69fabba6ed4b25f1671d6877" kindref="member">Read</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>data,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>length,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1ab0e1da7ee817f2ddfd2c0393b7fb6c99" kindref="member">WriteRead</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>tx_data,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>tx_length,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>rx_data,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>rx_length,</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1a818577649bcedae0369942992049866f" kindref="member">GetStatistics</ref>(<ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1a7cc342b16f58e07dbd894f30b9df1e49" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1ab73f244d0b2696164597e24247aca689" kindref="member">ResetStatistics</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>i2c_master_dev_handle_t<sp/><ref refid="classEspI2cDevice_1ab97f4a636f97a71c3031f56f0614ed5b" kindref="member">GetHandle</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref>&amp;<sp/><ref refid="classEspI2cDevice_1a513abd8cbc808cd83cf7eeb395a164a3" kindref="member">GetConfig</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/><ref refid="classEspI2cDevice_1aab6bbd8d809f7723174dcbe3d94c660a" kindref="member">GetDeviceAddress</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1ae6b946adfab6d0a38cac6e5543bf8d26" kindref="member">GetActualClockFrequency</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>actual_freq_hz)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a149a2fc81cf16627fba0c01853dfc0be" kindref="member">ProbeDevice</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="216" refid="classEspI2cDevice_1a5b3271e2c9a17ff4a2b39f7e716a93fc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>*<sp/><ref refid="classEspI2cDevice_1a5b3271e2c9a17ff4a2b39f7e716a93fc" kindref="member">parent_bus_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="217" refid="classEspI2cDevice_1a4b297354625e4370cbdef30ffc695ae4" refkind="member"><highlight class="normal"><sp/><sp/>i2c_master_dev_handle_t<sp/><ref refid="classEspI2cDevice_1a4b297354625e4370cbdef30ffc695ae4" kindref="member">handle_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218" refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="219" refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="220" refid="classEspI2cDevice_1afd4fa9c207eaa593ead720c7579e5bcd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref><sp/><ref refid="classEspI2cDevice_1afd4fa9c207eaa593ead720c7579e5bcd" kindref="member">statistics_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="221" refid="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref><sp/><ref refid="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" kindref="member">diagnostics_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="222" refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a7a20da56a36e479ec4103d6a07f57e53" kindref="member">UpdateStatistics</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>success,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bytes_transferred,<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>operation_time_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1a4f7ed845e16a820356d2f9ff95b881b0" kindref="member">ConvertEspError</ref>(esp_err_t<sp/>esp_error)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="classEspI2cBus" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref><sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus_1af387e087bc25f527bfede2222e830fed" kindref="member">~EspI2cBus</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-copyable,<sp/>non-movable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="classEspI2cBus_1a7f02893ec64ac76767d1303af6d98343" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus_1a7f02893ec64ac76767d1303af6d98343" kindref="member">EspI2cBus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="263" refid="classEspI2cBus_1a6a93e7a215e14bef1fd1cb0042420b98" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>&amp;<sp/><ref refid="classEspI2cBus_1a6a93e7a215e14bef1fd1cb0042420b98" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="264" refid="classEspI2cBus_1a98a8b554bb5d0b04b214661f3b3c0dec" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus_1a98a8b554bb5d0b04b214661f3b3c0dec" kindref="member">EspI2cBus</ref>(<ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="265" refid="classEspI2cBus_1a3ab0c633ce258424585cf19f89d8cb52" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>&amp;<sp/><ref refid="classEspI2cBus_1a3ab0c633ce258424585cf19f89d8cb52" kindref="member">operator=</ref>(<ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a4ac590e55ca816e06b5e6749781ad1de" kindref="member">Initialize</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a3f9a9142733743906449d119a25c3cf1" kindref="member">Deinitialize</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a578c36e975b01c96fe15a492de148e51" kindref="member">CreateDevice</ref>(const<sp/><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref>&amp;<sp/>device_config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1a185a28a9e32b8ebb22d72e19318bcd02" kindref="member">GetDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/>const<sp/><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1a185a28a9e32b8ebb22d72e19318bcd02" kindref="member">GetDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>*<sp/><ref refid="classEspI2cBus_1aeaec58a5ab33498346eec68f5caa56a3" kindref="member">GetEspDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/>const<sp/><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>*<sp/><ref refid="classEspI2cBus_1aeaec58a5ab33498346eec68f5caa56a3" kindref="member">GetEspDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1a007e11c4560179ac0a5d8989a43d4733" kindref="member">GetDeviceByAddress</ref>(<ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>device_address)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ad96d7e4b8693fdad686c134bada1034b" kindref="member">GetDeviceCount</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1af6c29fb3e4e40662a32cd9aa3fc0eace" kindref="member">RemoveDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ae029e38875a64d1ca4c5ec590a1cb3ff" kindref="member">RemoveDeviceByAddress</ref>(<ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>device_address)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/>const<sp/><ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref>&amp;<sp/><ref refid="classEspI2cBus_1aaf11e8ab91b3e06ee1ccae192397aceb" kindref="member">GetConfig</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/>i2c_master_bus_handle_t<sp/><ref refid="classEspI2cBus_1a39671c0d8d5ae9aa4cf34814cda7fe52" kindref="member">GetHandle</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1addc8bd3b1e92d4cf94e0b6895b18930e" kindref="member">GetPort</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ab5ab97f8ed52a4c33f6ddf248b1b67a2" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a0194e2061ba595d2b4015aaafedb0512" kindref="member">ScanDevices</ref>(std::vector&lt;<ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref>&gt;&amp;<sp/>found_devices,</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>start_addr<sp/>=<sp/>0x08,</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>end_addr<sp/>=<sp/>0x77)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1aacfda38edbc57b2320e1b9e505aab75d" kindref="member">ProbeDevice</ref>(<ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>device_addr)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ada599f9418ee55133905049270d08163" kindref="member">ResetBus</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="390" refid="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref><sp/><ref refid="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" kindref="member">config_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="391" refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" refkind="member"><highlight class="normal"><sp/><sp/>i2c_master_bus_handle_t<sp/><ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="392" refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="393" refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="394" refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;std::unique_ptr&lt;<ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>&gt;&gt;<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1aa5ae51a75e373009e9cae8d97ee4b811" kindref="member">FindDeviceIndexByAddress</ref>(<ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>device_address)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cBus_1a38441634852078aeb598cf204e239637" kindref="member">ConvertEspError</ref>(esp_err_t<sp/>esp_error)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="409"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>ESP_I2C_NEW_H_</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/EspI2c.h"/>
+  </compounddef>
+</doxygen>

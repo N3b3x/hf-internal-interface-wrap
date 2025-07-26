@@ -1,0 +1,494 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="EspAdc_8h" kind="file" language="C++">
+    <compoundname>EspAdc.h</compoundname>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includedby refid="main_8cpp" local="yes">examples/esp32/main/main.cpp</includedby>
+    <includedby refid="EspAdc_8cpp" local="yes">src/mcu/esp32/EspAdc.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/mcu/esp32/EspAdc.cpp</label>
+        <link refid="EspAdc_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+<para>ESP32 ADC implementation for the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains the ESP32 ADC implementation that extends the <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> abstract class. It provides full support for ESP32 ADC features including:<itemizedlist>
+<listitem><para>One-shot mode for single conversions</para>
+</listitem><listitem><para>Continuous mode with DMA for high-speed sampling</para>
+</listitem><listitem><para>Hardware calibration for accurate voltage measurements</para>
+</listitem><listitem><para>Digital IIR filters for noise reduction</para>
+</listitem><listitem><para>Threshold monitors with interrupt callbacks</para>
+</listitem><listitem><para>Multi-channel support with proper GPIO mapping</para>
+</listitem><listitem><para>Thread-safe operations with proper resource management</para>
+</listitem><listitem><para>Comprehensive error handling and diagnostics</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This implementation is designed for all ESP32 variants using ESP-IDF v5.4+ </para>
+</simplesect>
+<simplesect kind="note"><para>Supports ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2 </para>
+</simplesect>
+<simplesect kind="note"><para>Each EspAdc instance represents a single ADC unit </para>
+</simplesect>
+<simplesect kind="note"><para>Higher-level applications should instantiate multiple EspAdc objects for multi-unit boards </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Only<sp/>compile<sp/>for<sp/>ESP32<sp/>family</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseAdc_8h" kindref="compound">BaseAdc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes_8h" kindref="compound">utils/EspTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/gpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_adc/adc_cali.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_adc/adc_cali_scheme.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_adc/adc_continuous.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_adc/adc_filter.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_adc/adc_monitor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_adc/adc_oneshot.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/FreeRTOS.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/semphr.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;freertos/task.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>VARIANT-SPECIFIC<sp/>ADC<sp/>CONFIGURATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(HF_MCU_ESP32C6)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_FILTERS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_MONITORS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_RAW_VALUE<sp/>4095<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV<sp/>1100<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_SAMPLING_FREQ<sp/>100000<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MIN_SAMPLING_FREQ<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ<sp/>1000<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN<sp/>256<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_FILTERS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_MONITORS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_RAW_VALUE<sp/>4095<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV<sp/>1100<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_SAMPLING_FREQ<sp/>200000<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MIN_SAMPLING_FREQ<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ<sp/>1000<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN<sp/>256<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_FILTERS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_MONITORS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_RAW_VALUE<sp/>4095<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV<sp/>1100<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_SAMPLING_FREQ<sp/>200000<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MIN_SAMPLING_FREQ<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ<sp/>1000<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN<sp/>256<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S3<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_FILTERS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_MONITORS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_RAW_VALUE<sp/>4095<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV<sp/>1100<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_SAMPLING_FREQ<sp/>200000<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MIN_SAMPLING_FREQ<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ<sp/>1000<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN<sp/>256<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C3<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32C3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>6<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_FILTERS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_MONITORS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_RAW_VALUE<sp/>4095<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV<sp/>1100<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_SAMPLING_FREQ<sp/>100000<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MIN_SAMPLING_FREQ<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ<sp/>1000<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN<sp/>256<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32C2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_FILTERS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_MONITORS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_RAW_VALUE<sp/>4095<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV<sp/>1100<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_SAMPLING_FREQ<sp/>100000<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MIN_SAMPLING_FREQ<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ<sp/>1000<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN<sp/>256<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-H2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32H2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_UNITS<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_CHANNELS<sp/>6<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_FILTERS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_MONITORS<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_RAW_VALUE<sp/>4095<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV<sp/>1100<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MAX_SAMPLING_FREQ<sp/>100000<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_MIN_SAMPLING_FREQ<sp/>10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ<sp/>1000<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN<sp/>256<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Default<sp/>fallback<sp/>(should<sp/>not<sp/>be<sp/>reached)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;Unsupported<sp/>ESP32<sp/>variant!<sp/>Please<sp/>add<sp/>support<sp/>for<sp/>this<sp/>ESP32<sp/>variant<sp/>in<sp/>EspAdc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">EspAdc<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref><sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CONSTRUCTION<sp/>AND<sp/>INITIALIZATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>EspAdc(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/>~EspAdc()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>copy<sp/>and<sp/>move<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>operations<sp/>are<sp/>disabled<sp/>because<sp/>EspAdc<sp/>manages<sp/>hardware<sp/>resources</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>EspAdc(const<sp/>EspAdc&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/>EspAdc&amp;<sp/>operator=(const<sp/>EspAdc&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>operations<sp/>are<sp/>disabled<sp/>because<sp/>EspAdc<sp/>manages<sp/>ESP-IDF<sp/>handles,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>mutexes,<sp/>and<sp/>callback<sp/>state<sp/>that<sp/>are<sp/>tightly<sp/>coupled<sp/>to<sp/>hardware</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/>EspAdc(EspAdc&amp;&amp;<sp/>other)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>EspAdc&amp;<sp/>operator=(EspAdc&amp;&amp;<sp/>other)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>HARDWARE<sp/>LIMITS<sp/>(VARIANT-SPECIFIC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>ADC<sp/>Hardware<sp/>Limits<sp/>(configured<sp/>per<sp/>variant)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>HF_ADC_MAX_UNITS<sp/>=</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_MAX_UNITS;<sp/></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>HF_ADC_MAX_CHANNELS<sp/>=</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_MAX_CHANNELS;<sp/></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>HF_ADC_MAX_FILTERS<sp/>=</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_MAX_FILTERS;<sp/></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>HF_ADC_MAX_MONITORS<sp/>=</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_MAX_MONITORS;<sp/></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>HF_ADC_MAX_RAW_VALUE_12BIT<sp/>=</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_MAX_RAW_VALUE;<sp/></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>HF_ADC_REFERENCE_VOLTAGE_MV<sp/>=</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV;<sp/></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>HF_ADC_MAX_SAMPLING_FREQ<sp/>=</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_MAX_SAMPLING_FREQ;<sp/></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>HF_ADC_MIN_SAMPLING_FREQ<sp/>=</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_MIN_SAMPLING_FREQ;<sp/></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="EspTypes__Base_8h_1a8463bc653af3b13e7b9dccf92e014cf8" kindref="member">HF_ADC_DEFAULT_SAMPLING_FREQ</ref><sp/>=</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ;<sp/></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>HF_ADC_DMA_BUFFER_SIZE_MIN<sp/>=</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN;<sp/></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>HF_ADC_DMA_BUFFER_SIZE_MAX<sp/>=</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX;<sp/></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__Base_8h_1aedac5872a299accad94c3f5c179b30cb" kindref="member">HF_ADC_DMA_BUFFER_SIZE_DEFAULT</ref><sp/>=</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT;<sp/></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/>adc_oneshot_clk_src_t<sp/>HF_ADC_ONESHOT_CLK_SRC<sp/>=</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC;<sp/></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/>adc_continuous_clk_src_t<sp/>HF_ADC_CONTINUOUS_CLK_SRC<sp/>=</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC;<sp/></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/>static<sp/>constexpr<sp/>adc_ulp_mode_t<sp/>HF_ADC_ULP_MODE<sp/>=</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HF_ESP32_ADC_ULP_MODE;<sp/></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>BASE<sp/>CLASS<sp/>IMPLEMENTATION<sp/>(REQUIRED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>Initialize()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>Deinitialize()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>GetMaxChannels()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>IsChannelAvailable(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadChannelV(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&amp;<sp/>channel_reading_v,</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>numOfSamplesToAvg<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>timeBetweenSamples<sp/>=<sp/>0)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadChannelCount(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>channel_reading_count,</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>numOfSamplesToAvg<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>timeBetweenSamples<sp/>=<sp/>0)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadChannel(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>channel_reading_count,</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&amp;<sp/>channel_reading_v,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>numOfSamplesToAvg<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>timeBetweenSamples<sp/>=<sp/>0)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadMultipleChannels(const<sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>*<sp/>channel_ids,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>num_channels,</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>*<sp/>readings,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>voltages)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>MODE<sp/>AND<sp/>CONFIGURATION<sp/>OPERATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>SetMode(<ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044" kindref="member">hf_adc_mode_t</ref><sp/>mode)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044" kindref="member">hf_adc_mode_t</ref><sp/>GetMode()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ConfigureChannel(</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref><sp/>attenuation,</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9" kindref="member">hf_adc_bitwidth_t</ref><sp/>bitwidth<sp/>=<sp/><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9" kindref="member">hf_adc_bitwidth_t</ref>::<ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9a57256fc1353543b129565285e1bc1667" kindref="member">WIDTH_DEFAULT</ref>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>SetChannelEnabled(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>enabled)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>EnableChannel(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>DisableChannel(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadSingleRaw(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>raw_value)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadSingleVoltage(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>voltage_mv)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadMultipleRaw(const<sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>*<sp/>channel_ids,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>num_channels,</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>*<sp/>raw_values)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"></highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadMultipleVoltage(const<sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>*<sp/>channel_ids,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>num_channels,</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>*<sp/>voltage_values)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="487"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadAveraged(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>num_samples,</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>averaged_value)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>IsChannelEnabled(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="505"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CONTINUOUS<sp/>MODE<sp/>OPERATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="508"><highlight class="normal"></highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ConfigureContinuous(const<sp/><ref refid="structhf__adc__continuous__config__t" kindref="compound">hf_adc_continuous_config_t</ref>&amp;<sp/>config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"></highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>SetContinuousCallback(<ref refid="EspTypes__ADC_8h_1a6cd514e3e6aa3158f06a7227321f39ae" kindref="member">hf_adc_continuous_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="524"><highlight class="normal"></highlight></codeline>
+<codeline lineno="529"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>StartContinuous()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"></highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>StopContinuous()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>IsContinuousRunning()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadContinuousData(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>buffer_size,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>bytes_read,</highlight></codeline>
+<codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>timeout_ms)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"></highlight></codeline>
+<codeline lineno="554"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CALIBRATION<sp/>OPERATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="557"><highlight class="normal"></highlight></codeline>
+<codeline lineno="564"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>InitializeCalibration(</highlight></codeline>
+<codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref><sp/>attenuation,</highlight></codeline>
+<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9" kindref="member">hf_adc_bitwidth_t</ref><sp/>bitwidth<sp/>=<sp/><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9" kindref="member">hf_adc_bitwidth_t</ref>::<ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9a57256fc1353543b129565285e1bc1667" kindref="member">WIDTH_DEFAULT</ref>)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"></highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>IsCalibrationAvailable(<ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref><sp/>attenuation)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"></highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>RawToVoltage(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>raw_count,<sp/><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref><sp/>attenuation,</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>voltage_mv)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"></highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>FILTER<sp/>OPERATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="588"><highlight class="normal"></highlight></codeline>
+<codeline lineno="594"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ConfigureFilter(const<sp/><ref refid="structhf__adc__filter__config__t" kindref="compound">hf_adc_filter_config_t</ref>&amp;<sp/>filter_config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="595"><highlight class="normal"></highlight></codeline>
+<codeline lineno="602"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>SetFilterEnabled(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>filter_id,<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>enabled)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="603"><highlight class="normal"></highlight></codeline>
+<codeline lineno="604"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="605"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>MONITOR<sp/>OPERATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="606"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="607"><highlight class="normal"></highlight></codeline>
+<codeline lineno="613"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ConfigureMonitor(const<sp/><ref refid="structhf__adc__monitor__config__t" kindref="compound">hf_adc_monitor_config_t</ref>&amp;<sp/>monitor_config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="614"><highlight class="normal"></highlight></codeline>
+<codeline lineno="622"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>SetMonitorCallback(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>monitor_id,<sp/><ref refid="EspTypes__ADC_8h_1afb37bea53ade46ebbac1eba5eb604cda" kindref="member">hf_adc_monitor_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="623"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="624"><highlight class="normal"></highlight></codeline>
+<codeline lineno="631"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>SetMonitorEnabled(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>monitor_id,<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>enabled)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="632"><highlight class="normal"></highlight></codeline>
+<codeline lineno="633"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="634"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>DIAGNOSTICS<sp/>AND<sp/>STATISTICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="635"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="636"><highlight class="normal"></highlight></codeline>
+<codeline lineno="642"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>GetStatistics(<ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref>&amp;<sp/>statistics)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="643"><highlight class="normal"></highlight></codeline>
+<codeline lineno="649"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>GetDiagnostics(<ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="650"><highlight class="normal"></highlight></codeline>
+<codeline lineno="654"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ResetStatistics()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="655"><highlight class="normal"></highlight></codeline>
+<codeline lineno="660"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>GetLastError()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="661"><highlight class="normal"></highlight></codeline>
+<codeline lineno="666"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>const<sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref>&amp;<sp/>GetUnitConfig()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="667"><highlight class="normal"></highlight></codeline>
+<codeline lineno="668"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="669"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="670"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="671"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="672"><highlight class="normal"></highlight></codeline>
+<codeline lineno="673"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Internal<sp/>helper<sp/>methods</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="674"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>InitializeOneshot()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="675"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>InitializeContinuous()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="676"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>DeinitializeOneshot()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="677"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>DeinitializeContinuous()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="678"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ReadOneshotRaw(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>raw_value)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="679"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ValidateChannelId(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="680"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>ValidateConfiguration()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="681"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>UpdateStatistics(<ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>result,<sp/>uint64_t<sp/>start_time_us)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="682"><highlight class="normal"><sp/><sp/>uint64_t<sp/>GetCurrentTimeUs()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="683"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>UpdateDiagnostics(<ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>error)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="684"><highlight class="normal"></highlight></codeline>
+<codeline lineno="685"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>callback<sp/>functions<sp/>for<sp/>ESP-IDF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="686"><highlight class="normal"><sp/><sp/>static<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>IRAM_ATTR<sp/>ContinuousCallback(adc_continuous_handle_t<sp/>handle,<sp/>const<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>edata,</highlight></codeline>
+<codeline lineno="687"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="688"><highlight class="normal"><sp/><sp/>static<sp/><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>IRAM_ATTR<sp/>MonitorCallback(adc_monitor_handle_t<sp/>monitor_handle,<sp/>const<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>event_data,</highlight></codeline>
+<codeline lineno="689"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="690"><highlight class="normal"></highlight></codeline>
+<codeline lineno="691"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="692"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>MEMBER<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="693"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="694"><highlight class="normal"></highlight></codeline>
+<codeline lineno="695"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configuration<sp/>and<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="696"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>config_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="697"><highlight class="normal"><sp/><sp/>std::atomic&lt;<ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref>&gt;<sp/>continuous_running_;<sp/></highlight></codeline>
+<codeline lineno="698"><highlight class="normal"><sp/><sp/>std::atomic&lt;<ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref>&gt;<sp/>last_error_;<sp/></highlight></codeline>
+<codeline lineno="699"><highlight class="normal"></highlight></codeline>
+<codeline lineno="700"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Thread<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="701"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/>config_mutex_;<sp/></highlight></codeline>
+<codeline lineno="702"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/>stats_mutex_;<sp/><sp/></highlight></codeline>
+<codeline lineno="703"><highlight class="normal"></highlight></codeline>
+<codeline lineno="704"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>handles</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="705"><highlight class="normal"><sp/><sp/>adc_oneshot_unit_handle_t<sp/>oneshot_handle_;<sp/><sp/></highlight></codeline>
+<codeline lineno="706"><highlight class="normal"><sp/><sp/>adc_continuous_handle_t<sp/>continuous_handle_;<sp/></highlight></codeline>
+<codeline lineno="707"><highlight class="normal"><sp/><sp/>std::array&lt;adc_cali_handle_t,<sp/>4&gt;</highlight></codeline>
+<codeline lineno="708"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>calibration_handles_;<sp/></highlight></codeline>
+<codeline lineno="709"><highlight class="normal"><sp/><sp/>std::array&lt;adc_iir_filter_handle_t,<sp/>HF_ADC_MAX_FILTERS&gt;<sp/>filter_handles_;<sp/></highlight></codeline>
+<codeline lineno="710"><highlight class="normal"><sp/><sp/>std::array&lt;adc_monitor_handle_t,<sp/>HF_ADC_MAX_MONITORS&gt;<sp/>monitor_handles_;<sp/><sp/></highlight></codeline>
+<codeline lineno="711"><highlight class="normal"></highlight></codeline>
+<codeline lineno="712"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Callback<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__ADC_8h_1a6cd514e3e6aa3158f06a7227321f39ae" kindref="member">hf_adc_continuous_callback_t</ref><sp/>continuous_callback_;<sp/></highlight></codeline>
+<codeline lineno="714"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>continuous_user_data_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="715"><highlight class="normal"><sp/><sp/>std::array&lt;<ref refid="EspTypes__ADC_8h_1afb37bea53ade46ebbac1eba5eb604cda" kindref="member">hf_adc_monitor_callback_t</ref>,<sp/>HF_ADC_MAX_MONITORS&gt;</highlight></codeline>
+<codeline lineno="716"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>monitor_callbacks_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="717"><highlight class="normal"><sp/><sp/>std::array&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/>HF_ADC_MAX_MONITORS&gt;<sp/>monitor_user_data_;<sp/></highlight></codeline>
+<codeline lineno="718"><highlight class="normal"></highlight></codeline>
+<codeline lineno="719"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Statistics<sp/>and<sp/>diagnostics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="720"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref><sp/>statistics_;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="721"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref><sp/>diagnostics_;<sp/></highlight></codeline>
+<codeline lineno="722"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="723"><highlight class="normal"></highlight></codeline>
+<codeline lineno="724"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/EspAdc.h"/>
+  </compounddef>
+</doxygen>

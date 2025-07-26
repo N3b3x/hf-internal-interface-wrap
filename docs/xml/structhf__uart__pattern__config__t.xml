@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__uart__pattern__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_uart_pattern_config_t</compoundname>
+    <includes refid="EspTypes__UART_8h" local="no">EspTypes_UART.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__uart__pattern__config__t_1a174f828af43ce0d50e9d550514d3b6ae" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_pattern_config_t::enable_pattern_detection</definition>
+        <argsstring></argsstring>
+        <name>enable_pattern_detection</name>
+        <qualifiedname>hf_uart_pattern_config_t::enable_pattern_detection</qualifiedname>
+        <briefdescription>
+<para>Enable pattern detection feature. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="184" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__pattern__config__t_1af58c48f247662ec2b774be4749a0d01e" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char hf_uart_pattern_config_t::pattern_char</definition>
+        <argsstring></argsstring>
+        <name>pattern_char</name>
+        <qualifiedname>hf_uart_pattern_config_t::pattern_char</qualifiedname>
+        <briefdescription>
+<para>Character to detect (e.g., &apos;+&apos; for AT commands) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="185" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__pattern__config__t_1ab57dea918e79a141220ac6dc5a3d323c" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_uart_pattern_config_t::pattern_char_num</definition>
+        <argsstring></argsstring>
+        <name>pattern_char_num</name>
+        <qualifiedname>hf_uart_pattern_config_t::pattern_char_num</qualifiedname>
+        <briefdescription>
+<para>Number of consecutive pattern characters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="186" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__pattern__config__t_1a11842745ed8298d4d34c23d58f35e1f7" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_uart_pattern_config_t::char_timeout</definition>
+        <argsstring></argsstring>
+        <name>char_timeout</name>
+        <qualifiedname>hf_uart_pattern_config_t::char_timeout</qualifiedname>
+        <briefdescription>
+<para>Timeout between pattern characters (baud cycles) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="187" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__pattern__config__t_1a0277bcf7ef024d676ad6eb6561bbe695" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_uart_pattern_config_t::post_idle</definition>
+        <argsstring></argsstring>
+        <name>post_idle</name>
+        <qualifiedname>hf_uart_pattern_config_t::post_idle</qualifiedname>
+        <briefdescription>
+<para>Idle time after last pattern char (baud cycles) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="188" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__pattern__config__t_1a089460cd2464ef296b2e81cef0aed6e1" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_uart_pattern_config_t::pre_idle</definition>
+        <argsstring></argsstring>
+        <name>pre_idle</name>
+        <qualifiedname>hf_uart_pattern_config_t::pre_idle</qualifiedname>
+        <briefdescription>
+<para>Idle time before first pattern char (baud cycles) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="189" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__uart__pattern__config__t_1a6dbe59d2d01916e4af80a9d0799afa36" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_uart_pattern_config_t::hf_uart_pattern_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_uart_pattern_config_t</name>
+        <qualifiedname>hf_uart_pattern_config_t::hf_uart_pattern_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="191" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="191" bodyend="193"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 UART pattern detection configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="183" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="183" bodyend="194"/>
+    <listofallmembers>
+      <member refid="structhf__uart__pattern__config__t_1a11842745ed8298d4d34c23d58f35e1f7" prot="public" virt="non-virtual"><scope>hf_uart_pattern_config_t</scope><name>char_timeout</name></member>
+      <member refid="structhf__uart__pattern__config__t_1a174f828af43ce0d50e9d550514d3b6ae" prot="public" virt="non-virtual"><scope>hf_uart_pattern_config_t</scope><name>enable_pattern_detection</name></member>
+      <member refid="structhf__uart__pattern__config__t_1a6dbe59d2d01916e4af80a9d0799afa36" prot="public" virt="non-virtual"><scope>hf_uart_pattern_config_t</scope><name>hf_uart_pattern_config_t</name></member>
+      <member refid="structhf__uart__pattern__config__t_1af58c48f247662ec2b774be4749a0d01e" prot="public" virt="non-virtual"><scope>hf_uart_pattern_config_t</scope><name>pattern_char</name></member>
+      <member refid="structhf__uart__pattern__config__t_1ab57dea918e79a141220ac6dc5a3d323c" prot="public" virt="non-virtual"><scope>hf_uart_pattern_config_t</scope><name>pattern_char_num</name></member>
+      <member refid="structhf__uart__pattern__config__t_1a0277bcf7ef024d676ad6eb6561bbe695" prot="public" virt="non-virtual"><scope>hf_uart_pattern_config_t</scope><name>post_idle</name></member>
+      <member refid="structhf__uart__pattern__config__t_1a089460cd2464ef296b2e81cef0aed6e1" prot="public" virt="non-virtual"><scope>hf_uart_pattern_config_t</scope><name>pre_idle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

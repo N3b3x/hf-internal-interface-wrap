@@ -1,0 +1,660 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="EspPeriodicTimer_8cpp" kind="file" language="C++">
+    <compoundname>EspPeriodicTimer.cpp</compoundname>
+    <includes refid="EspPeriodicTimer_8h" local="yes">EspPeriodicTimer.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">cstring</includes>
+    <incdepgraph>
+      <node id="11">
+        <label>BaseAdc.h</label>
+        <link refid="BaseAdc_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>BaseI2c.h</label>
+        <link refid="BaseI2c_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>BasePeriodicTimer.h</label>
+        <link refid="BasePeriodicTimer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>BasePio.h</label>
+        <link refid="BasePio_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>BasePwm.h</label>
+        <link refid="BasePwm_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>BaseSpi.h</label>
+        <link refid="BaseSpi_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>BaseUart.h</label>
+        <link refid="BaseUart_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="1">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>algorithm</label>
+      </node>
+      <node id="14">
+        <label>atomic</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="36">
+        <label>cstring</label>
+      </node>
+      <node id="24">
+        <label>driver/i2c.h</label>
+      </node>
+      <node id="31">
+        <label>driver/spi_master.h</label>
+      </node>
+      <node id="15">
+        <label>esp_adc/adc_continuous.h</label>
+      </node>
+      <node id="16">
+        <label>esp_adc/adc_oneshot.h</label>
+      </node>
+      <node id="33">
+        <label>esp_timer.h</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+      <node id="12">
+        <label>string_view</label>
+      </node>
+      <node id="23">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>Implementation of MCU-integrated periodic timer. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file provides the implementation for periodic timer functionality using the microcontroller&apos;s built-in timer peripherals. On ESP32, this wraps the ESP timer API for high-precision timing, periodic callbacks, and timer management with microsecond resolution and comprehensive error handling.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspPeriodicTimer_8h" kindref="compound">EspPeriodicTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>C++<sp/>standard<sp/>library<sp/>headers<sp/>(must<sp/>be<sp/>outside<sp/>extern<sp/>&quot;C&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_err.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;EspPeriodicTimer&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONSTRUCTOR<sp/>AND<sp/>DESTRUCTOR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><ref refid="classEspPeriodicTimer_1a16e60591c1ffc70ddfe2eca13d5fcfe8" kindref="member">EspPeriodicTimer::EspPeriodicTimer</ref>(<ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref>(callback,<sp/>user_data),<sp/>timer_handle_(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">),<sp/>period_us_(0),<sp/>stats_{}<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspPeriodicTimer<sp/>constructor&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><ref refid="classEspPeriodicTimer_1a067abebb9f6d6277e44e879b9abde52c" kindref="member">EspPeriodicTimer::~EspPeriodicTimer</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="classEspPeriodicTimer_1a7d27449fd8105d996b0d661708a1658a" kindref="member">Deinitialize</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspPeriodicTimer<sp/>destructor&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>BASEPERIODICTIMER<sp/>INTERFACE<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1a2d71348fe53d45612f586f7a81920adc" kindref="member">EspPeriodicTimer::Initialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa26f148c2a8a3cb4f3418d43e991150b5" kindref="member">hf_timer_err_t::TIMER_ERR_ALREADY_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" kindref="member">HasValidCallback</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>callback<sp/>function<sp/>provided&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aad39d8e77293f6acdadb1e240a35195a3" kindref="member">hf_timer_err_t::TIMER_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>ESP32<sp/>timer<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspPeriodicTimer_1a2d830235ededf0da8e79050c044bc239" kindref="member">CreateTimerHandle</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>timer<sp/>handle&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa210eea569375da979c8918063d0220ce" kindref="member">hf_timer_err_t::TIMER_ERR_HARDWARE_FAULT</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" kindref="member">SetInitialized</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="classEspPeriodicTimer_1a75d9db377b27d539a693ca70d75ead34" kindref="member">stats_</ref><sp/>=<sp/>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1a7d27449fd8105d996b0d661708a1658a" kindref="member">EspPeriodicTimer::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>timer<sp/>if<sp/>running</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" kindref="member">IsRunning</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspPeriodicTimer_1ab7916bb8965569cba0e5f2da171b2b5d" kindref="member">Stop</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clean<sp/>up<sp/>timer<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="classEspPeriodicTimer_1ae5b399e734d0f7ff3006cab30e8a2550" kindref="member">DestroyTimerHandle</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" kindref="member">SetInitialized</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="classEspPeriodicTimer_1a1f81f78cf8dd2620749cd99131dc2259" kindref="member">period_us_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>deinitialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1ac352033e596e27719ede7c11ec860d40" kindref="member">EspPeriodicTimer::Start</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsInitialized())<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(IsRunning())<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>already<sp/>running&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa7b454e9201fcc08b660b78060d55f569" kindref="member">hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ValidatePeriod(period_us))<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>period:<sp/>%llu<sp/>us&quot;</highlight><highlight class="normal">,<sp/>period_us);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa53cdab9639a77f9d9efc9f0b426e5394" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>ret<sp/>=</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>esp_timer_start_periodic(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">esp_timer_handle_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(timer_handle_),<sp/>period_us);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;esp_timer_start_periodic<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(ret));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>stats_.last_error<sp/>=<sp/>ConvertError(ret);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stats_.last_error;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>period_us_<sp/>=<sp/>period_us;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>SetRunning(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>stats_.start_count++;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>started<sp/>with<sp/>period<sp/>%llu<sp/>us&quot;</highlight><highlight class="normal">,<sp/>period_us);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1ab7916bb8965569cba0e5f2da171b2b5d" kindref="member">EspPeriodicTimer::Stop</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" kindref="member">IsRunning</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>not<sp/>running&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa8dc602c72b8c537031429abcd168f19d" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>ret<sp/>=<sp/>esp_timer_stop(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">esp_timer_handle_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspPeriodicTimer_1afdfea16d2af3266ab12806d25263e7fc" kindref="member">timer_handle_</ref>));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;esp_timer_stop<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(ret));</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspPeriodicTimer_1a75d9db377b27d539a693ca70d75ead34" kindref="member">stats_</ref>.<ref refid="structhf__timer__stats__t_1a4b2fe9fa66b6b3741e624d522a617fee" kindref="member">last_error</ref><sp/>=<sp/><ref refid="classEspPeriodicTimer_1aa957512d77db32431d6d56a2d488f351" kindref="member">ConvertError</ref>(ret);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspPeriodicTimer_1a75d9db377b27d539a693ca70d75ead34" kindref="member">stats_</ref>.<ref refid="structhf__timer__stats__t_1a4b2fe9fa66b6b3741e624d522a617fee" kindref="member">last_error</ref>;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" kindref="member">SetRunning</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><ref refid="classEspPeriodicTimer_1a75d9db377b27d539a693ca70d75ead34" kindref="member">stats_</ref>.<ref refid="structhf__timer__stats__t_1aca0212566a23961dfcc8699937286bd4" kindref="member">stop_count</ref>++;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>stopped&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1a2feb5be89d39cdaf1813cf82edb281a1" kindref="member">EspPeriodicTimer::SetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>new_period_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsInitialized())<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ValidatePeriod(new_period_us))<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>period:<sp/>%llu<sp/>us&quot;</highlight><highlight class="normal">,<sp/>new_period_us);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa53cdab9639a77f9d9efc9f0b426e5394" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PERIOD</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>was_running<sp/>=<sp/>IsRunning();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>timer<sp/>if<sp/>running</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(was_running)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/>stop_result<sp/>=<sp/>Stop();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(stop_result<sp/>!=<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stop_result;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>period_us_<sp/>=<sp/>new_period_us;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Restart<sp/>with<sp/>new<sp/>period<sp/>if<sp/>it<sp/>was<sp/>running</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(was_running)<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Start(new_period_us);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Period<sp/>set<sp/>to<sp/>%llu<sp/>us&quot;</highlight><highlight class="normal">,<sp/>new_period_us);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1ac8255b99f1786bd785effa818c3db876" kindref="member">EspPeriodicTimer::GetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>period_us)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsInitialized())<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>period_us<sp/>=<sp/>period_us_;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1af0c1a5e199fa8e75d484d575c02e815c" kindref="member">EspPeriodicTimer::GetStats</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>callback_count,<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>missed_callbacks,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref>&amp;<sp/>last_error)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsInitialized())<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>callback_count<sp/>=<sp/>stats_.callback_count;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>missed_callbacks<sp/>=<sp/>stats_.missed_callbacks;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>last_error<sp/>=<sp/>stats_.last_error;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1a074cc62783802fb12d95ca93edaf139e" kindref="member">EspPeriodicTimer::ResetStats</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">hf_timer_err_t::TIMER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><ref refid="classEspPeriodicTimer_1a75d9db377b27d539a693ca70d75ead34" kindref="member">stats_</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classEspPeriodicTimer_1a1cd74060851211a103f5bfdc380a58a5" kindref="member">EspPeriodicTimer::GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>MCU<sp/>Periodic<sp/>Timer<sp/>(ESP<sp/>Timer<sp/>API)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classEspPeriodicTimer_1a53bf8e1a7fe5da2ef9dfc5bd00aeca63" kindref="member">EspPeriodicTimer::GetMinPeriod</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>timer<sp/>supports<sp/>periods<sp/>from<sp/>1us</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classEspPeriodicTimer_1a24851bbc3359b261076ac7ce63175bc4" kindref="member">EspPeriodicTimer::GetMaxPeriod</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>timer<sp/>supports<sp/>very<sp/>large<sp/>periods,<sp/>but<sp/>we<sp/>limit<sp/>for<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>UINT64_MAX<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classEspPeriodicTimer_1afd6d7373e40fae8922117bd9dc7b6428" kindref="member">EspPeriodicTimer::GetResolution</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>timer<sp/>has<sp/>1us<sp/>resolution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1aa957512d77db32431d6d56a2d488f351" kindref="member">EspPeriodicTimer::ConvertError</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>platform_error)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(platform_error)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_OK:</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_ERR_INVALID_ARG:</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa80a5887ffc963e2c85de9bb213dd4b97" kindref="member">hf_timer_err_t::TIMER_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_ERR_NO_MEM:</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aab26aee0588966dcfd7977f9c49d674ce" kindref="member">hf_timer_err_t::TIMER_ERR_OUT_OF_MEMORY</ref>;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_ERR_INVALID_STATE:</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa7b454e9201fcc08b660b78060d55f569" kindref="member">hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa13bfcb4f27f170dc05cf106ec7fcfd4b" kindref="member">hf_timer_err_t::TIMER_ERR_FAILURE</ref>;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspPeriodicTimer_1a0349a3781b6b48587e739dc705987b69" kindref="member">EspPeriodicTimer::ValidatePeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(period_us<sp/>&gt;=<sp/>GetMinPeriod()<sp/>&amp;&amp;<sp/>period_us<sp/>&lt;=<sp/>GetMaxPeriod());</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspPeriodicTimer_1a2d830235ededf0da8e79050c044bc239" kindref="member">EspPeriodicTimer::CreateTimerHandle</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPeriodicTimer_1afdfea16d2af3266ab12806d25263e7fc" kindref="member">timer_handle_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Already<sp/>created</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>esp_timer_create_args_t<sp/>timer_args<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/>timer_args.callback<sp/>=<sp/>[](</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg)<sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">*<sp/>self<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(arg);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self<sp/>&amp;&amp;<sp/>self-&gt;HasValidCallback())<sp/>{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;<ref refid="classEspPeriodicTimer_1a75d9db377b27d539a693ca70d75ead34" kindref="member">stats_</ref>.<ref refid="structhf__timer__stats__t_1a977dcba9736902b37278714f0331a82e" kindref="member">callback_count</ref>++;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;ExecuteCallback();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>timer_args.arg<sp/>=<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/>timer_args.dispatch_method<sp/>=<sp/>ESP_TIMER_TASK;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/>timer_args.name<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;HardFOC_Timer&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>esp_timer_handle_t<sp/>esp_handle;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>ret<sp/>=<sp/>esp_timer_create(&amp;timer_args,<sp/>&amp;esp_handle);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;esp_timer_create<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(ret));</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><ref refid="classEspPeriodicTimer_1afdfea16d2af3266ab12806d25263e7fc" kindref="member">timer_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="EspTypes__Timer_8h_1a5cf2d8552051c31be03ff8540f070132" kindref="member">hf_timer_handle_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(esp_handle);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPeriodicTimer_1ae5b399e734d0f7ff3006cab30e8a2550" kindref="member">EspPeriodicTimer::DestroyTimerHandle</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspPeriodicTimer_1afdfea16d2af3266ab12806d25263e7fc" kindref="member">timer_handle_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/>esp_timer_handle_t<sp/>esp_handle<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">esp_timer_handle_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspPeriodicTimer_1afdfea16d2af3266ab12806d25263e7fc" kindref="member">timer_handle_</ref>);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>ret<sp/>=<sp/>esp_timer_delete(esp_handle);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;esp_timer_delete<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(ret));</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><ref refid="classEspPeriodicTimer_1afdfea16d2af3266ab12806d25263e7fc" kindref="member">timer_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STATISTICS<sp/>AND<sp/>DIAGNOSTICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1a4fa8ad6a89cd1cc21ce5707926565eb2" kindref="member">EspPeriodicTimer::GetStatistics</ref>(<ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/>statistics<sp/>=<sp/>statistics_;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classEspPeriodicTimer_1a29dc38189cc126d681a893baf2e2ff03" kindref="member">EspPeriodicTimer::GetDiagnostics</ref>(</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>diagnostics<sp/>=<sp/>diagnostics_;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HF_MCU_FAMILY_ESP32</highlight></codeline>
+    </programlisting>
+    <location file="src/mcu/esp32/EspPeriodicTimer.cpp"/>
+  </compounddef>
+</doxygen>

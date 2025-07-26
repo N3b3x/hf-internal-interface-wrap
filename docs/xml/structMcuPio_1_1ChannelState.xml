@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structMcuPio_1_1ChannelState" kind="struct" language="C++" prot="private">
+    <compoundname>McuPio::ChannelState</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1aecdeba8d7dae4676d6f44aace428c2ff" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool McuPio::ChannelState::configured</definition>
+        <argsstring></argsstring>
+        <name>configured</name>
+        <qualifiedname>McuPio::ChannelState::configured</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="288" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1a1599b6aecd786bb3c6da91be5e6f4362" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool McuPio::ChannelState::busy</definition>
+        <argsstring></argsstring>
+        <name>busy</name>
+        <qualifiedname>McuPio::ChannelState::busy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="289" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1a2d9436f9d2addde877e75ff590e92e2b" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref></type>
+        <definition>hf_pio_channel_config_t McuPio::ChannelState::config</definition>
+        <argsstring></argsstring>
+        <name>config</name>
+        <qualifiedname>McuPio::ChannelState::config</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="290" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1adef577fa05588818d9132d03604f7c8d" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__pio__channel__status__t" kindref="compound">hf_pio_channel_status_t</ref></type>
+        <definition>hf_pio_channel_status_t McuPio::ChannelState::status</definition>
+        <argsstring></argsstring>
+        <name>status</name>
+        <qualifiedname>McuPio::ChannelState::status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="291" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1aa4982836c5032f01c8a2c2ae54a557e0" prot="public" static="no" mutable="no">
+        <type>rmt_channel_handle_t</type>
+        <definition>rmt_channel_handle_t McuPio::ChannelState::tx_channel</definition>
+        <argsstring></argsstring>
+        <name>tx_channel</name>
+        <qualifiedname>McuPio::ChannelState::tx_channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="294" column="26" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1a8ef4d03b935948618f69845d4f343f00" prot="public" static="no" mutable="no">
+        <type>rmt_channel_handle_t</type>
+        <definition>rmt_channel_handle_t McuPio::ChannelState::rx_channel</definition>
+        <argsstring></argsstring>
+        <name>rx_channel</name>
+        <qualifiedname>McuPio::ChannelState::rx_channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="295" column="26" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1aa1b6879917ed9254bd6e31f8e55a76fd" prot="public" static="no" mutable="no">
+        <type>rmt_encoder_handle_t</type>
+        <definition>rmt_encoder_handle_t McuPio::ChannelState::encoder</definition>
+        <argsstring></argsstring>
+        <name>encoder</name>
+        <qualifiedname>McuPio::ChannelState::encoder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="296" column="26" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1a8e56adf4656a49baba34e0bb8ecc2539" prot="public" static="no" mutable="no">
+        <type>rmt_encoder_handle_t</type>
+        <definition>rmt_encoder_handle_t McuPio::ChannelState::bytes_encoder</definition>
+        <argsstring></argsstring>
+        <name>bytes_encoder</name>
+        <qualifiedname>McuPio::ChannelState::bytes_encoder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="297" column="26" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1adceaf2d55451cafffd95b4a8c75cebbd" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+        <definition>hf_pio_symbol_t* McuPio::ChannelState::rx_buffer</definition>
+        <argsstring></argsstring>
+        <name>rx_buffer</name>
+        <qualifiedname>McuPio::ChannelState::rx_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="300" column="21" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1a6880146eecaf4558096ab4a13ee2ec55" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t McuPio::ChannelState::rx_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>rx_buffer_size</name>
+        <qualifiedname>McuPio::ChannelState::rx_buffer_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="301" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1a70dd8e2e21ef8d15cbc6a7e41ba3ff55" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t McuPio::ChannelState::rx_symbols_received</definition>
+        <argsstring></argsstring>
+        <name>rx_symbols_received</name>
+        <qualifiedname>McuPio::ChannelState::rx_symbols_received</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="302" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1a785a8c80ca8767032dad945b4ed8754a" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t McuPio::ChannelState::last_operation_time</definition>
+        <argsstring></argsstring>
+        <name>last_operation_time</name>
+        <qualifiedname>McuPio::ChannelState::last_operation_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="305" column="14" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMcuPio_1_1ChannelState_1aa3f4f4c3e55012db3ebb5d5ab13203f5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool McuPio::ChannelState::idle_level</definition>
+        <argsstring></argsstring>
+        <name>idle_level</name>
+        <qualifiedname>McuPio::ChannelState::idle_level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="308" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structMcuPio_1_1ChannelState_1a21f545581c6d7b024fc24f07b1bba56f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>McuPio::ChannelState::ChannelState</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ChannelState</name>
+        <qualifiedname>McuPio::ChannelState::ChannelState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="310" column="5" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="310" bodyend="313"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>McuPio::ChannelState</label>
+        <link refid="structMcuPio_1_1ChannelState"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>status</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>rx_buffer</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hf_pio_channel_config_t</label>
+        <link refid="structhf__pio__channel__config__t"/>
+      </node>
+      <node id="3">
+        <label>hf_pio_channel_status_t</label>
+        <link refid="structhf__pio__channel__status__t"/>
+      </node>
+      <node id="4">
+        <label>hf_pio_symbol_t</label>
+        <link refid="structhf__pio__symbol__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspPio.h" line="287" column="3" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="287" bodyend="314"/>
+    <listofallmembers>
+      <member refid="structMcuPio_1_1ChannelState_1a1599b6aecd786bb3c6da91be5e6f4362" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>busy</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1a8e56adf4656a49baba34e0bb8ecc2539" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>bytes_encoder</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1a21f545581c6d7b024fc24f07b1bba56f" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>ChannelState</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1a2d9436f9d2addde877e75ff590e92e2b" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>config</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1aecdeba8d7dae4676d6f44aace428c2ff" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>configured</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1aa1b6879917ed9254bd6e31f8e55a76fd" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>encoder</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1aa3f4f4c3e55012db3ebb5d5ab13203f5" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>idle_level</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1a785a8c80ca8767032dad945b4ed8754a" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>last_operation_time</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1adceaf2d55451cafffd95b4a8c75cebbd" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>rx_buffer</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1a6880146eecaf4558096ab4a13ee2ec55" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>rx_buffer_size</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1a8ef4d03b935948618f69845d4f343f00" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>rx_channel</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1a70dd8e2e21ef8d15cbc6a7e41ba3ff55" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>rx_symbols_received</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1adef577fa05588818d9132d03604f7c8d" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>status</name></member>
+      <member refid="structMcuPio_1_1ChannelState_1aa4982836c5032f01c8a2c2ae54a557e0" prot="public" virt="non-virtual"><scope>McuPio::ChannelState</scope><name>tx_channel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

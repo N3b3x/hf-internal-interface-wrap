@@ -1,0 +1,991 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classEspNvs" kind="class" language="C++" prot="public">
+    <compoundname>EspNvs</compoundname>
+    <basecompoundref refid="classBaseNvs" prot="public" virt="non-virtual">BaseNvs</basecompoundref>
+    <includes refid="EspNvs_8h" local="no">EspNvs.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEspNvs_1a6835ce423097a5c27ddaefb1be4e2207" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspNvs::nvs_handle_</definition>
+        <argsstring></argsstring>
+        <name>nvs_handle_</name>
+        <qualifiedname>EspNvs::nvs_handle_</qualifiedname>
+        <briefdescription>
+<para>Platform-specific NVS handle (nvs_handle_t on ESP32) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="287" column="8" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspNvs_1ab85e421f5801e575ad96ad971bb6fa37" prot="private" static="no" mutable="yes">
+        <type>int</type>
+        <definition>int EspNvs::last_error_code_</definition>
+        <argsstring></argsstring>
+        <name>last_error_code_</name>
+        <qualifiedname>EspNvs::last_error_code_</qualifiedname>
+        <briefdescription>
+<para>Last MCU-specific error code for debugging. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="288" column="15" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspNvs_1a4d851eb75d04a90ec7b25e77e1db6de5" prot="private" static="no" mutable="yes">
+        <type><ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref></type>
+        <definition>hf_nvs_statistics_t EspNvs::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>EspNvs::statistics_</qualifiedname>
+        <briefdescription>
+<para>Operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="291" column="31" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspNvs_1a28022b4a28a1934cebe2e10d5099fe54" prot="private" static="no" mutable="yes">
+        <type><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref></type>
+        <definition>hf_nvs_diagnostics_t EspNvs::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>EspNvs::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>Diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="292" column="32" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspNvs_1a233a141b6079192b95864431b0df9c60" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspNvs::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>EspNvs::mutex_</qualifiedname>
+        <briefdescription>
+<para>Mutex for thread-safe operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="295" column="21" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="295" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEspNvs_1a3abe92b89d2f9be3be2074ed54fa9f99" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspNvs::EspNvs</definition>
+        <argsstring>(const char *namespace_name) noexcept</argsstring>
+        <name>EspNvs</name>
+        <qualifiedname>EspNvs::EspNvs</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>namespace_name</declname>
+        </param>
+        <briefdescription>
+<para>Constructor with namespace specification. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>namespace_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the storage namespace </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="110" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a8a408fee8b8edec22adbcebade3bf3e2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspNvs::~EspNvs</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~EspNvs</name>
+        <qualifiedname>EspNvs::~EspNvs</qualifiedname>
+        <briefdescription>
+<para>Destructor - ensures proper cleanup. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="115" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a1f1f5efa535235c16318008d08328f76" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>EspNvs::Initialize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a407959e9e6c10a0e54f26dd9e92024c0">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the NVS system and open the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="125" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a685e74c68591ad27fa0280a1f5244702" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>EspNvs::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a64733cd3edc601a03fb3c31e914eaa9e">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the NVS system and close the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="131" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a1d18927cd799f168d9fa38bc86438427" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::SetU32</definition>
+        <argsstring>(const char *key, hf_u32_t value) noexcept override</argsstring>
+        <name>SetU32</name>
+        <qualifiedname>EspNvs::SetU32</qualifiedname>
+        <reimplements refid="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b">SetU32</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Store a 32-bit unsigned integer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to store </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="139" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a78016e40f65ad0ea03cda37b2cf05dfa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::GetU32</definition>
+        <argsstring>(const char *key, hf_u32_t &amp;value) noexcept override</argsstring>
+        <name>GetU32</name>
+        <qualifiedname>EspNvs::GetU32</qualifiedname>
+        <reimplements refid="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11">GetU32</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve a 32-bit unsigned integer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the retrieved value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="147" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a97988762e90b76b94962a3d1758109c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::SetString</definition>
+        <argsstring>(const char *key, const char *value) noexcept override</argsstring>
+        <name>SetString</name>
+        <qualifiedname>EspNvs::SetString</qualifiedname>
+        <reimplements refid="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687">SetString</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Store a string value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String value to store </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="155" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1ac3813f7d3fd39f5493f1a8042fddcf1b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::GetString</definition>
+        <argsstring>(const char *key, char *buffer, size_t buffer_size, size_t *actual_size=nullptr) noexcept override</argsstring>
+        <name>GetString</name>
+        <qualifiedname>EspNvs::GetString</qualifiedname>
+        <reimplements refid="classBaseNvs_1a8954da94247836ede0a895ddd245e634">GetString</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>actual_size</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Retrieve a string value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the retrieved string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual size of the string (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="165" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a1aa18744b55b8b15dcc9c35b7867635f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::SetBlob</definition>
+        <argsstring>(const char *key, const void *data, size_t data_size) noexcept override</argsstring>
+        <name>SetBlob</name>
+        <qualifiedname>EspNvs::SetBlob</qualifiedname>
+        <reimplements refid="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19">SetBlob</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_size</declname>
+        </param>
+        <briefdescription>
+<para>Store binary data (blob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data to store </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of data in bytes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="175" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1aba531704bb6f31154c298342853b715c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::GetBlob</definition>
+        <argsstring>(const char *key, void *buffer, size_t buffer_size, size_t *actual_size=nullptr) noexcept override</argsstring>
+        <name>GetBlob</name>
+        <qualifiedname>EspNvs::GetBlob</qualifiedname>
+        <reimplements refid="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b">GetBlob</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>actual_size</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Retrieve binary data (blob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the retrieved data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual size of the data (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="185" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a980345dc9dc0d96627b6ed26581f7cf8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::EraseKey</definition>
+        <argsstring>(const char *key) noexcept override</argsstring>
+        <name>EraseKey</name>
+        <qualifiedname>EspNvs::EraseKey</qualifiedname>
+        <reimplements refid="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d">EraseKey</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Remove a key from storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="193" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a2ac83396eb5f21034a028331c600ad9f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::Commit</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Commit</name>
+        <qualifiedname>EspNvs::Commit</qualifiedname>
+        <reimplements refid="classBaseNvs_1a0921ba6eb0dda4285a5ea33ec1b80f11">Commit</reimplements>
+        <briefdescription>
+<para>Commit any pending writes to non-volatile storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="199" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a709425e0f37afdeb516447e43d000974" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EspNvs::KeyExists</definition>
+        <argsstring>(const char *key) noexcept override</argsstring>
+        <name>KeyExists</name>
+        <qualifiedname>EspNvs::KeyExists</qualifiedname>
+        <reimplements refid="classBaseNvs_1a911caf95d3c25047f044ca748164df39">KeyExists</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Check if a key exists in storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if key exists, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="206" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a35a38c5e3ef8287b1122c78b2580cf2b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::GetSize</definition>
+        <argsstring>(const char *key, size_t &amp;size) noexcept override</argsstring>
+        <name>GetSize</name>
+        <qualifiedname>EspNvs::GetSize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30">GetSize</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Get the size of a stored value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the size </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="214" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1acf2acb4e099ddff5b25dd1bde8fecff5" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * EspNvs::GetDescription</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetDescription</name>
+        <qualifiedname>EspNvs::GetDescription</qualifiedname>
+        <reimplements refid="classBaseNvs_1a66680f0959c3ba928b402f6a9fbb700a">GetDescription</reimplements>
+        <briefdescription>
+<para>Get description of this NVS implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Description string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="220" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1ae6cb25d9c1e5e90b6701f49e9a6bd884" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t EspNvs::GetMaxKeyLength</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMaxKeyLength</name>
+        <qualifiedname>EspNvs::GetMaxKeyLength</qualifiedname>
+        <reimplements refid="classBaseNvs_1a63908cbbdadf9134e5350491a87d7652">GetMaxKeyLength</reimplements>
+        <briefdescription>
+<para>Get maximum key length supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum key length in characters </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="226" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1ab0816ed77b7f1e54f645c45a001b17be" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t EspNvs::GetMaxValueSize</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMaxValueSize</name>
+        <qualifiedname>EspNvs::GetMaxValueSize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a00697824bdbb7c20b11a82b2837bc7bc">GetMaxValueSize</reimplements>
+        <briefdescription>
+<para>Get maximum value size supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum value size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="232" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1aac27c74c4373d1bc15d313ff6d8c7555" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::GetStatistics</definition>
+        <argsstring>(hf_nvs_statistics_t &amp;statistics) const noexcept override</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>EspNvs::GetStatistics</qualifiedname>
+        <reimplements refid="classBaseNvs_1a2784f0924a79ef398f6c42227197d87d">GetStatistics</reimplements>
+        <param>
+          <type><ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get NVS operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to statistics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="243" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a73f32618e8863f25bf70ffed650da20b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::GetDiagnostics</definition>
+        <argsstring>(hf_nvs_diagnostics_t &amp;diagnostics) const noexcept override</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>EspNvs::GetDiagnostics</qualifiedname>
+        <reimplements refid="classBaseNvs_1a5fe8b85bd8c8c103d5e8ce9c5060b49c">GetDiagnostics</reimplements>
+        <param>
+          <type><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get NVS diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to diagnostics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="250" column="16"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classEspNvs_1ae92a0823375c316e604edba55e7978ee" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t EspNvs::ConvertMcuError</definition>
+        <argsstring>(int mcu_error) const noexcept</argsstring>
+        <name>ConvertMcuError</name>
+        <qualifiedname>EspNvs::ConvertMcuError</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>mcu_error</declname>
+        </param>
+        <briefdescription>
+<para>Convert MCU-specific error code to HardFOC NVS error. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Provides comprehensive mapping from ESP32-C6 NVS error codes to unified HardFOC error enumeration, including all encryption and advanced feature error conditions. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mcu_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MCU-specific error code (esp_err_t on ESP32) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Corresponding hf_nvs_err_t enumeration value </para>
+</simplesect>
+<simplesect kind="note"><para>Supports all ESP-IDF v5.5+ NVS error codes including encryption </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="266" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a9247a33fe05b9a43bf4922bf99e4bdd2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspNvs::UpdateStatistics</definition>
+        <argsstring>(bool error_occurred) noexcept</argsstring>
+        <name>UpdateStatistics</name>
+        <qualifiedname>EspNvs::UpdateStatistics</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>error_occurred</declname>
+        </param>
+        <briefdescription>
+<para>Update operation statistics and performance counters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Tracks operation counts, error rates, and timing for performance monitoring and debugging purposes. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error_occurred</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the operation resulted in an error </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="274" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspNvs_1a48fa06f0cf583f10c9d9a430754d664e" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspNvs::IsValidKey</definition>
+        <argsstring>(const char *key) const noexcept</argsstring>
+        <name>IsValidKey</name>
+        <qualifiedname>EspNvs::IsValidKey</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Validate key name according to ESP32 NVS constraints. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key name to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if key is valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspNvs.h" line="281" column="8"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Production-ready MCU-integrated non-volatile storage implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides comprehensive non-volatile storage using the microcontroller&apos;s built-in storage mechanisms with enterprise-grade features. On ESP32-C6, it leverages the modern ESP-IDF v5.5+ NVS library with advanced security, performance optimizations, and comprehensive error handling. The implementation provides the unified <ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> API while exposing platform-specific advanced features.</para>
+<para>Core Features:<itemizedlist>
+<listitem><para>Key-value storage using MCU&apos;s integrated NVS with namespace isolation</para>
+</listitem><listitem><para>Multiple data type support (uint32_t, string, blob) with type safety</para>
+</listitem><listitem><para>Atomic operations with consistency guarantees and durability</para>
+</listitem><listitem><para>Comprehensive error handling with detailed error reporting</para>
+</listitem><listitem><para>Performance monitoring and statistics tracking</para>
+</listitem><listitem><para>Thread-safe operations with optional mutex protection</para>
+</listitem></itemizedlist>
+</para>
+<para>ESP32-C6 Advanced Features:<itemizedlist>
+<listitem><para>HMAC-based encryption for secure storage without flash encryption</para>
+</listitem><listitem><para>XTS encryption with eFuse-based key management</para>
+</listitem><listitem><para>Handle-based modern ESP-IDF v5.5+ API with improved performance</para>
+</listitem><listitem><para>Comprehensive error mapping for all ESP32-C6 NVS error conditions</para>
+</listitem><listitem><para>Support for encrypted and non-encrypted partitions</para>
+</listitem><listitem><para>Advanced partition management and configuration options</para>
+</listitem></itemizedlist>
+</para>
+<para>Performance Characteristics:<itemizedlist>
+<listitem><para>Optimized for high-frequency read/write operations</para>
+</listitem><listitem><para>Intelligent commit strategies balancing durability vs. performance</para>
+</listitem><listitem><para>Efficient handle management with validation caching</para>
+</listitem><listitem><para>Statistics tracking with minimal performance overhead</para>
+</listitem><listitem><para>Key validation with comprehensive constraint checking</para>
+</listitem></itemizedlist>
+</para>
+<para>Security Features:<itemizedlist>
+<listitem><para>Hardware-backed encryption using ESP32-C6 HMAC peripheral</para>
+</listitem><listitem><para>Tamper-resistant key storage in eFuse blocks</para>
+</listitem><listitem><para>Data integrity validation and corruption detection</para>
+</listitem><listitem><para>Secure key generation and management</para>
+</listitem><listitem><para>Protection against unauthorized access and data tampering</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>This implementation requires sufficient flash storage on the MCU. </para>
+</simplesect>
+<simplesect kind="note"><para>ESP32-C6 encryption features require proper eFuse configuration. </para>
+</simplesect>
+<simplesect kind="note"><para>Thread safety is optional and controlled by HF_THREAD_SAFE define. </para>
+</simplesect>
+<simplesect kind="note"><para>All operations are atomic and provide consistency guarantees.</para>
+</simplesect>
+<simplesect kind="warning"><para>Encryption keys stored in eFuse are permanent and irreversible. </para>
+</simplesect>
+<simplesect kind="warning"><para>Ensure proper backup and key management procedures.</para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> for the abstract interface definition </para>
+</simplesect>
+<simplesect kind="see"><para>McuTypes.h for platform-specific type definitions </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref> for platform selection and configuration </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseNvs</label>
+        <link refid="classBaseNvs"/>
+      </node>
+      <node id="1">
+        <label>EspNvs</label>
+        <link refid="classEspNvs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseNvs</label>
+        <link refid="classBaseNvs"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EspNvs</label>
+        <link refid="classEspNvs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>mutex_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>RtosMutex</label>
+        <link refid="classRtosMutex"/>
+      </node>
+      <node id="4">
+        <label>hf_nvs_diagnostics_t</label>
+        <link refid="structhf__nvs__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_nvs_statistics_t</label>
+        <link refid="structhf__nvs__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspNvs.h" line="104" column="1" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="104" bodyend="296"/>
+    <listofallmembers>
+      <member refid="classBaseNvs_1abc92e07335f490e560ea1a1513ea63fc" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>BaseNvs</name></member>
+      <member refid="classBaseNvs_1abfe625b5e099d438f744514728de9674" prot="protected" virt="non-virtual"><scope>EspNvs</scope><name>BaseNvs</name></member>
+      <member refid="classEspNvs_1a2ac83396eb5f21034a028331c600ad9f" prot="public" virt="virtual"><scope>EspNvs</scope><name>Commit</name></member>
+      <member refid="classEspNvs_1ae92a0823375c316e604edba55e7978ee" prot="private" virt="non-virtual"><scope>EspNvs</scope><name>ConvertMcuError</name></member>
+      <member refid="classEspNvs_1a685e74c68591ad27fa0280a1f5244702" prot="public" virt="virtual"><scope>EspNvs</scope><name>Deinitialize</name></member>
+      <member refid="classEspNvs_1a28022b4a28a1934cebe2e10d5099fe54" prot="private" virt="non-virtual"><scope>EspNvs</scope><name>diagnostics_</name></member>
+      <member refid="classBaseNvs_1a4d5a23def2dfdee04a1ada50f8c6e067" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseNvs_1a517d0d03678ff0dfdd57eff54dee9da2" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>EnsureInitialized</name></member>
+      <member refid="classEspNvs_1a980345dc9dc0d96627b6ed26581f7cf8" prot="public" virt="virtual"><scope>EspNvs</scope><name>EraseKey</name></member>
+      <member refid="classEspNvs_1a3abe92b89d2f9be3be2074ed54fa9f99" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>EspNvs</name></member>
+      <member refid="classEspNvs_1aba531704bb6f31154c298342853b715c" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetBlob</name></member>
+      <member refid="classEspNvs_1acf2acb4e099ddff5b25dd1bde8fecff5" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetDescription</name></member>
+      <member refid="classEspNvs_1a73f32618e8863f25bf70ffed650da20b" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetDiagnostics</name></member>
+      <member refid="classEspNvs_1ae6cb25d9c1e5e90b6701f49e9a6bd884" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetMaxKeyLength</name></member>
+      <member refid="classEspNvs_1ab0816ed77b7f1e54f645c45a001b17be" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetMaxValueSize</name></member>
+      <member refid="classBaseNvs_1a6dc238eadbd792da526fcbeea4bf58d5" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>GetNamespace</name></member>
+      <member refid="classEspNvs_1a35a38c5e3ef8287b1122c78b2580cf2b" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetSize</name></member>
+      <member refid="classEspNvs_1aac27c74c4373d1bc15d313ff6d8c7555" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetStatistics</name></member>
+      <member refid="classEspNvs_1ac3813f7d3fd39f5493f1a8042fddcf1b" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetString</name></member>
+      <member refid="classEspNvs_1a78016e40f65ad0ea03cda37b2cf05dfa" prot="public" virt="virtual"><scope>EspNvs</scope><name>GetU32</name></member>
+      <member refid="classEspNvs_1a1f1f5efa535235c16318008d08328f76" prot="public" virt="virtual"><scope>EspNvs</scope><name>Initialize</name></member>
+      <member refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" prot="protected" virt="non-virtual"><scope>EspNvs</scope><name>initialized_</name></member>
+      <member refid="classBaseNvs_1adaba0a72b0c06873b2b01713f1af3d9b" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>IsInitialized</name></member>
+      <member refid="classEspNvs_1a48fa06f0cf583f10c9d9a430754d664e" prot="private" virt="non-virtual"><scope>EspNvs</scope><name>IsValidKey</name></member>
+      <member refid="classEspNvs_1a709425e0f37afdeb516447e43d000974" prot="public" virt="virtual"><scope>EspNvs</scope><name>KeyExists</name></member>
+      <member refid="classEspNvs_1ab85e421f5801e575ad96ad971bb6fa37" prot="private" virt="non-virtual"><scope>EspNvs</scope><name>last_error_code_</name></member>
+      <member refid="classEspNvs_1a233a141b6079192b95864431b0df9c60" prot="private" virt="non-virtual"><scope>EspNvs</scope><name>mutex_</name></member>
+      <member refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" prot="protected" virt="non-virtual"><scope>EspNvs</scope><name>namespace_name_</name></member>
+      <member refid="classEspNvs_1a6835ce423097a5c27ddaefb1be4e2207" prot="private" virt="non-virtual"><scope>EspNvs</scope><name>nvs_handle_</name></member>
+      <member refid="classBaseNvs_1aeda78da1a1db06a952e14e549eb7f07a" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>operator=</name></member>
+      <member refid="classBaseNvs_1a00047694a8eda737718d4ad83c9feb9a" prot="public" virt="virtual"><scope>EspNvs</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseNvs_1a76eb147e5be050296e01d8cc80f08d2d" prot="public" virt="virtual"><scope>EspNvs</scope><name>ResetStatistics</name></member>
+      <member refid="classEspNvs_1a1aa18744b55b8b15dcc9c35b7867635f" prot="public" virt="virtual"><scope>EspNvs</scope><name>SetBlob</name></member>
+      <member refid="classBaseNvs_1a14236adcdcc3d0c2ff9e434bd0d75c5a" prot="protected" virt="non-virtual"><scope>EspNvs</scope><name>SetInitialized</name></member>
+      <member refid="classEspNvs_1a97988762e90b76b94962a3d1758109c5" prot="public" virt="virtual"><scope>EspNvs</scope><name>SetString</name></member>
+      <member refid="classEspNvs_1a1d18927cd799f168d9fa38bc86438427" prot="public" virt="virtual"><scope>EspNvs</scope><name>SetU32</name></member>
+      <member refid="classEspNvs_1a4d851eb75d04a90ec7b25e77e1db6de5" prot="private" virt="non-virtual"><scope>EspNvs</scope><name>statistics_</name></member>
+      <member refid="classEspNvs_1a9247a33fe05b9a43bf4922bf99e4bdd2" prot="private" virt="non-virtual"><scope>EspNvs</scope><name>UpdateStatistics</name></member>
+      <member refid="classBaseNvs_1a34a0f5777eaeabb861b0bef15c31a11b" prot="public" virt="virtual"><scope>EspNvs</scope><name>~BaseNvs</name></member>
+      <member refid="classEspNvs_1a8a408fee8b8edec22adbcebade3bf3e2" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>~EspNvs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

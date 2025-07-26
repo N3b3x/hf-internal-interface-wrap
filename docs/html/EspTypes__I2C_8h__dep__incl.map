@@ -1,0 +1,30 @@
+<map id="inc/mcu/esp32/utils/EspTypes_I2C.h" name="inc/mcu/esp32/utils/EspTypes_I2C.h">
+<area shape="rect" id="Node000001" title="ESP32 I2C type definitions for hardware abstraction." alt="" coords="177,5,325,45"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html" title=" " alt="" coords="225,269,391,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,56,181,90,149,132,138,154,133,177,134,199,143,220,158,232,181,245,241,267,239,272,179,249,154,237,139,223,129,200,128,176,133,153,145,129,177,87,214,52"/>
+<area shape="rect" id="Node000003" href="$EspTypes_8h.html" title="Consolidated MCU&#45;specific type definitions for hardware abstraction (hf_* types)." alt="" coords="374,93,522,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="307,48,406,91,404,96,305,53"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="426,146,325,271,321,267,422,143"/>
+<area shape="rect" id="Node000004" href="$EspI2c_8h.html" title="Advanced ESP32&#45;integrated I2C controller for ESP&#45;IDF v5.5+ with proper bus&#45;device architecture." alt="" coords="858,189,1033,214"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="536,127,880,186,879,191,535,132"/>
+<area shape="rect" id="Node000007" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="153,181,348,221"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="393,141,295,184,293,179,391,136"/>
+<area shape="rect" id="Node000009" href="$EspPio_8h.html" title=" " alt="" coords="423,189,598,214"/>
+<area shape="poly" id="edge11_Node000003_Node000009" title=" " alt="" coords="472,143,504,187,500,190,468,146"/>
+<area shape="rect" id="Node000011" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="622,189,797,214"/>
+<area shape="poly" id="edge14_Node000003_Node000011" title=" " alt="" coords="519,135,675,186,674,191,518,140"/>
+<area shape="poly" id="edge6_Node000004_Node000002" title=" " alt="" coords="851,218,810,224,607,246,404,272,392,274,391,269,404,267,606,241,809,219,851,213"/>
+<area shape="rect" id="Node000005" href="$DummyDevice_8hpp.html" title=" " alt="" coords="845,277,1121,302"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="958,225,980,275,975,277,953,227"/>
+<area shape="rect" id="Node000006" href="$EspI2c_8cpp.html" title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture." alt="" coords="1145,277,1335,302"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="999,215,1201,274,1200,279,997,220"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="273,232,298,268,293,271,269,234"/>
+<area shape="rect" id="Node000008" href="$EspPeriodicTimer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="5,269,200,309"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="207,231,136,272,134,267,205,226"/>
+<area shape="poly" id="edge12_Node000009_Node000002" title=" " alt="" coords="472,222,354,272,352,267,470,217"/>
+<area shape="rect" id="Node000010" href="$EspPio_8cpp.html" title=" " alt="" coords="415,277,606,302"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="513,228,513,276,508,276,508,228"/>
+<area shape="poly" id="edge15_Node000011_Node000002" title=" " alt="" coords="643,220,392,273,391,268,642,214"/>
+<area shape="rect" id="Node000012" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features." alt="" coords="630,277,821,302"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="717,227,726,276,720,277,711,228"/>
+</map>

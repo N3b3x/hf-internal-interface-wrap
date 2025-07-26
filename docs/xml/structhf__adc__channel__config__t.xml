@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__adc__channel__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_channel_config_t</compoundname>
+    <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__channel__config__t_1a2b26db934b60861f3022743d56359145" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+        <definition>hf_channel_id_t hf_adc_channel_config_t::channel_id</definition>
+        <argsstring></argsstring>
+        <name>channel_id</name>
+        <qualifiedname>hf_adc_channel_config_t::channel_id</qualifiedname>
+        <briefdescription>
+<para>Channel ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="93" column="19" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__channel__config__t_1a5d26708ae737fb80e37f0fabeedb9da9" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref></type>
+        <definition>hf_adc_atten_t hf_adc_channel_config_t::attenuation</definition>
+        <argsstring></argsstring>
+        <name>attenuation</name>
+        <qualifiedname>hf_adc_channel_config_t::attenuation</qualifiedname>
+        <briefdescription>
+<para>Attenuation level. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="94" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__channel__config__t_1af05c3060c9fbeed3a182bb766ea8ec1d" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9" kindref="member">hf_adc_bitwidth_t</ref></type>
+        <definition>hf_adc_bitwidth_t hf_adc_channel_config_t::bitwidth</definition>
+        <argsstring></argsstring>
+        <name>bitwidth</name>
+        <qualifiedname>hf_adc_channel_config_t::bitwidth</qualifiedname>
+        <briefdescription>
+<para>Bit width. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="95" column="21" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__channel__config__t_1af58b9abc81efce5d07b589bd4c46d8e4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_adc_channel_config_t::enabled</definition>
+        <argsstring></argsstring>
+        <name>enabled</name>
+        <qualifiedname>hf_adc_channel_config_t::enabled</qualifiedname>
+        <briefdescription>
+<para>Channel enabled flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="96" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__channel__config__t_1a290c24f8a5edddb40dae5516f7f9fd53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_channel_config_t::hf_adc_channel_config_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_channel_config_t</name>
+        <qualifiedname>hf_adc_channel_config_t::hf_adc_channel_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="98" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="98" bodyend="100"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC channel configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="92" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="92" bodyend="101"/>
+    <listofallmembers>
+      <member refid="structhf__adc__channel__config__t_1a5d26708ae737fb80e37f0fabeedb9da9" prot="public" virt="non-virtual"><scope>hf_adc_channel_config_t</scope><name>attenuation</name></member>
+      <member refid="structhf__adc__channel__config__t_1af05c3060c9fbeed3a182bb766ea8ec1d" prot="public" virt="non-virtual"><scope>hf_adc_channel_config_t</scope><name>bitwidth</name></member>
+      <member refid="structhf__adc__channel__config__t_1a2b26db934b60861f3022743d56359145" prot="public" virt="non-virtual"><scope>hf_adc_channel_config_t</scope><name>channel_id</name></member>
+      <member refid="structhf__adc__channel__config__t_1af58b9abc81efce5d07b589bd4c46d8e4" prot="public" virt="non-virtual"><scope>hf_adc_channel_config_t</scope><name>enabled</name></member>
+      <member refid="structhf__adc__channel__config__t_1a290c24f8a5edddb40dae5516f7f9fd53" prot="public" virt="non-virtual"><scope>hf_adc_channel_config_t</scope><name>hf_adc_channel_config_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

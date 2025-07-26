@@ -1,0 +1,524 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structhf__can__message__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_can_message_t</compoundname>
+    <includes refid="BaseCan_8h" local="no">BaseCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__can__message__t_1a0b85c579dd4bb8ad383e91510ef5e1f4" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_message_t::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>hf_can_message_t::id</qualifiedname>
+        <briefdescription>
+<para>Message ID (11 or 29-bit) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="159" column="12" bodyfile="inc/base/BaseCan.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_can_message_t::dlc</definition>
+        <argsstring></argsstring>
+        <name>dlc</name>
+        <qualifiedname>hf_can_message_t::dlc</qualifiedname>
+        <briefdescription>
+<para>Data length code (0-8 for classic CAN) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="160" column="11" bodyfile="inc/base/BaseCan.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_can_message_t::data[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>data</name>
+        <qualifiedname>hf_can_message_t::data</qualifiedname>
+        <briefdescription>
+<para>Message data (max 8 bytes for classic CAN) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="161" column="11" bodyfile="inc/base/BaseCan.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::is_extended</definition>
+        <argsstring></argsstring>
+        <name>is_extended</name>
+        <qualifiedname>hf_can_message_t::is_extended</qualifiedname>
+        <briefdescription>
+<para>Extended ID flag (29-bit vs 11-bit) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="164" column="8" bodyfile="inc/base/BaseCan.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a55b067aab266686216317dd487e222ad" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::is_rtr</definition>
+        <argsstring></argsstring>
+        <name>is_rtr</name>
+        <qualifiedname>hf_can_message_t::is_rtr</qualifiedname>
+        <briefdescription>
+<para>Remote transmission request flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="165" column="8" bodyfile="inc/base/BaseCan.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a97893383bbe4d5889b552cfa0531d1c5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::is_ss</definition>
+        <argsstring></argsstring>
+        <name>is_ss</name>
+        <qualifiedname>hf_can_message_t::is_ss</qualifiedname>
+        <briefdescription>
+<para>Single shot flag (no retransmission) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="166" column="8" bodyfile="inc/base/BaseCan.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a3ef5c15870325846c18d224a5b41d232" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::is_self</definition>
+        <argsstring></argsstring>
+        <name>is_self</name>
+        <qualifiedname>hf_can_message_t::is_self</qualifiedname>
+        <briefdescription>
+<para>Self reception request flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="167" column="8" bodyfile="inc/base/BaseCan.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1ac278ef96c4900e490b97f7fc993ca0ce" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::dlc_non_comp</definition>
+        <argsstring></argsstring>
+        <name>dlc_non_comp</name>
+        <qualifiedname>hf_can_message_t::dlc_non_comp</qualifiedname>
+        <briefdescription>
+<para>DLC is non-compliant (&gt; 8 for classic CAN) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="168" column="8" bodyfile="inc/base/BaseCan.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a0fa1eb52d5a9e71fe3fc24e4d2283cc3" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_can_message_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_can_message_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Precise timestamp in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="171" column="12" bodyfile="inc/base/BaseCan.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1aebce75130b1812c8ae6e5ed59c6c5ded" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_message_t::sequence_number</definition>
+        <argsstring></argsstring>
+        <name>sequence_number</name>
+        <qualifiedname>hf_can_message_t::sequence_number</qualifiedname>
+        <briefdescription>
+<para>Message sequence number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="172" column="12" bodyfile="inc/base/BaseCan.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a20663abce3826d2a21bc1dd291970597" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_can_message_t::controller_id</definition>
+        <argsstring></argsstring>
+        <name>controller_id</name>
+        <qualifiedname>hf_can_message_t::controller_id</qualifiedname>
+        <briefdescription>
+<para>Originating controller ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="173" column="11" bodyfile="inc/base/BaseCan.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a56136e72519bf764f89fbe68b5697c59" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_can_message_t::retry_count</definition>
+        <argsstring></argsstring>
+        <name>retry_count</name>
+        <qualifiedname>hf_can_message_t::retry_count</qualifiedname>
+        <briefdescription>
+<para>Number of transmission retries. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="174" column="11" bodyfile="inc/base/BaseCan.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a10fbb9922882f6f2ee598ab716b5efc1" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_can_message_t::error_count</definition>
+        <argsstring></argsstring>
+        <name>error_count</name>
+        <qualifiedname>hf_can_message_t::error_count</qualifiedname>
+        <briefdescription>
+<para>Associated error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="175" column="11" bodyfile="inc/base/BaseCan.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::is_canfd</definition>
+        <argsstring></argsstring>
+        <name>is_canfd</name>
+        <qualifiedname>hf_can_message_t::is_canfd</qualifiedname>
+        <briefdescription>
+<para>CAN-FD frame flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="178" column="8" bodyfile="inc/base/BaseCan.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1ade2b527e24ebd6171b148a167442ca0d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::is_brs</definition>
+        <argsstring></argsstring>
+        <name>is_brs</name>
+        <qualifiedname>hf_can_message_t::is_brs</qualifiedname>
+        <briefdescription>
+<para>Bit Rate Switching flag (CAN-FD) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="179" column="8" bodyfile="inc/base/BaseCan.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1adeaf9d0f4b0ed108a6260815b37189cb" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::is_esi</definition>
+        <argsstring></argsstring>
+        <name>is_esi</name>
+        <qualifiedname>hf_can_message_t::is_esi</qualifiedname>
+        <briefdescription>
+<para>Error State Indicator flag (CAN-FD) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="180" column="8" bodyfile="inc/base/BaseCan.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__message__t_1ae419b81b2cec03d10f1fc0b61c22833e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_can_message_t::canfd_dlc</definition>
+        <argsstring></argsstring>
+        <name>canfd_dlc</name>
+        <qualifiedname>hf_can_message_t::canfd_dlc</qualifiedname>
+        <briefdescription>
+<para>CAN-FD DLC (can be &gt; 8) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="181" column="11" bodyfile="inc/base/BaseCan.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__can__message__t_1a647e0893962b3ffa7b0c15492af5db37" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_can_message_t::hf_can_message_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_can_message_t</name>
+        <qualifiedname>hf_can_message_t::hf_can_message_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="183" column="3" bodyfile="inc/base/BaseCan.h" bodystart="183" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1a768ed986f40f0671843a4fba892936cc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf_can_message_t::GetMaxDataLength</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetMaxDataLength</name>
+        <qualifiedname>hf_can_message_t::GetMaxDataLength</qualifiedname>
+        <briefdescription>
+<para>Get maximum data length for current frame type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum allowed data length (8 for classic CAN, up to 64 for CAN-FD) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="192" column="21" bodyfile="inc/base/BaseCan.h" bodystart="192" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1a4f6b22dbc4246cf76b6f958eed04e385" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::IsValidDLC</definition>
+        <argsstring>(hf_u8_t dlc) const noexcept</argsstring>
+        <name>IsValidDLC</name>
+        <qualifiedname>hf_can_message_t::IsValidDLC</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>dlc</declname>
+        </param>
+        <briefdescription>
+<para>Validate DLC for current frame type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dlc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data length code to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid for the frame type, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="201" column="8" bodyfile="inc/base/BaseCan.h" bodystart="201" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1a07dc96f83a2754fb3132195058880ca4" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_can_message_t::GetEffectiveDLC</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetEffectiveDLC</name>
+        <qualifiedname>hf_can_message_t::GetEffectiveDLC</qualifiedname>
+        <briefdescription>
+<para>Get effective DLC for the current frame type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>DLC value to use (canfd_dlc for CAN-FD, dlc for classic) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="209" column="11" bodyfile="inc/base/BaseCan.h" bodystart="209" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1af328325d29d8cd4fa0a54b2184f13a22" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::SetDLC</definition>
+        <argsstring>(hf_u8_t dlc) noexcept</argsstring>
+        <name>SetDLC</name>
+        <qualifiedname>hf_can_message_t::SetDLC</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>dlc</declname>
+        </param>
+        <briefdescription>
+<para>Set data length code for current frame type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dlc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data length code to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid and set, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="218" column="8" bodyfile="inc/base/BaseCan.h" bodystart="218" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1a8db2a9d7f4c842360c8aeb82703b467f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hf_can_message_t::SetStandardFrame</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>SetStandardFrame</name>
+        <qualifiedname>hf_can_message_t::SetStandardFrame</qualifiedname>
+        <briefdescription>
+<para>Set standard frame format (11-bit ID) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="233" column="8" bodyfile="inc/base/BaseCan.h" bodystart="233" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1acc7892375611b12a9846bc20add934bd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hf_can_message_t::SetExtendedFrame</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>SetExtendedFrame</name>
+        <qualifiedname>hf_can_message_t::SetExtendedFrame</qualifiedname>
+        <briefdescription>
+<para>Set extended frame format (29-bit ID) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="240" column="8" bodyfile="inc/base/BaseCan.h" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1a940cb35d37db09a774cc87bad9a02f34" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hf_can_message_t::SetDataFrame</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>SetDataFrame</name>
+        <qualifiedname>hf_can_message_t::SetDataFrame</qualifiedname>
+        <briefdescription>
+<para>Set data frame (not remote) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="247" column="8" bodyfile="inc/base/BaseCan.h" bodystart="247" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1af05e6e7e32eb639af3dfda8228cc74e0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hf_can_message_t::SetRemoteFrame</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>SetRemoteFrame</name>
+        <qualifiedname>hf_can_message_t::SetRemoteFrame</qualifiedname>
+        <briefdescription>
+<para>Set remote frame. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="254" column="8" bodyfile="inc/base/BaseCan.h" bodystart="254" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1a20eab0b26b0d462efc72379e8a202484" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hf_can_message_t::SetSingleShot</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>SetSingleShot</name>
+        <qualifiedname>hf_can_message_t::SetSingleShot</qualifiedname>
+        <briefdescription>
+<para>Set single shot transmission. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="261" column="8" bodyfile="inc/base/BaseCan.h" bodystart="261" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1adeca458e7b925db873ecfb779923db32" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void hf_can_message_t::SetSelfReception</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>SetSelfReception</name>
+        <qualifiedname>hf_can_message_t::SetSelfReception</qualifiedname>
+        <briefdescription>
+<para>Set self reception request. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="268" column="8" bodyfile="inc/base/BaseCan.h" bodystart="268" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__can__message__t_1a3bf76f6e63352c86d35af72bcf73c91c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hf_can_message_t::IsValidId</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsValidId</name>
+        <qualifiedname>hf_can_message_t::IsValidId</qualifiedname>
+        <briefdescription>
+<para>Validate message ID for current frame format. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="276" column="8" bodyfile="inc/base/BaseCan.h" bodystart="276" bodyend="282"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Platform-agnostic CAN message structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Comprehensive CAN message format with standard flags and metadata. Supports both standard (11-bit) and extended (29-bit) identifiers, with complete transmission control and diagnostic information. </para>
+    </detaileddescription>
+    <location file="inc/base/BaseCan.h" line="157" column="1" bodyfile="inc/base/BaseCan.h" bodystart="157" bodyend="283"/>
+    <listofallmembers>
+      <member refid="structhf__can__message__t_1ae419b81b2cec03d10f1fc0b61c22833e" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>canfd_dlc</name></member>
+      <member refid="structhf__can__message__t_1a20663abce3826d2a21bc1dd291970597" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>controller_id</name></member>
+      <member refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>data</name></member>
+      <member refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>dlc</name></member>
+      <member refid="structhf__can__message__t_1ac278ef96c4900e490b97f7fc993ca0ce" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>dlc_non_comp</name></member>
+      <member refid="structhf__can__message__t_1a10fbb9922882f6f2ee598ab716b5efc1" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>error_count</name></member>
+      <member refid="structhf__can__message__t_1a07dc96f83a2754fb3132195058880ca4" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>GetEffectiveDLC</name></member>
+      <member refid="structhf__can__message__t_1a768ed986f40f0671843a4fba892936cc" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>GetMaxDataLength</name></member>
+      <member refid="structhf__can__message__t_1a647e0893962b3ffa7b0c15492af5db37" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>hf_can_message_t</name></member>
+      <member refid="structhf__can__message__t_1a0b85c579dd4bb8ad383e91510ef5e1f4" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>id</name></member>
+      <member refid="structhf__can__message__t_1ade2b527e24ebd6171b148a167442ca0d" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>is_brs</name></member>
+      <member refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>is_canfd</name></member>
+      <member refid="structhf__can__message__t_1adeaf9d0f4b0ed108a6260815b37189cb" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>is_esi</name></member>
+      <member refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>is_extended</name></member>
+      <member refid="structhf__can__message__t_1a55b067aab266686216317dd487e222ad" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>is_rtr</name></member>
+      <member refid="structhf__can__message__t_1a3ef5c15870325846c18d224a5b41d232" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>is_self</name></member>
+      <member refid="structhf__can__message__t_1a97893383bbe4d5889b552cfa0531d1c5" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>is_ss</name></member>
+      <member refid="structhf__can__message__t_1a4f6b22dbc4246cf76b6f958eed04e385" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>IsValidDLC</name></member>
+      <member refid="structhf__can__message__t_1a3bf76f6e63352c86d35af72bcf73c91c" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>IsValidId</name></member>
+      <member refid="structhf__can__message__t_1a56136e72519bf764f89fbe68b5697c59" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>retry_count</name></member>
+      <member refid="structhf__can__message__t_1aebce75130b1812c8ae6e5ed59c6c5ded" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>sequence_number</name></member>
+      <member refid="structhf__can__message__t_1a940cb35d37db09a774cc87bad9a02f34" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>SetDataFrame</name></member>
+      <member refid="structhf__can__message__t_1af328325d29d8cd4fa0a54b2184f13a22" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>SetDLC</name></member>
+      <member refid="structhf__can__message__t_1acc7892375611b12a9846bc20add934bd" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>SetExtendedFrame</name></member>
+      <member refid="structhf__can__message__t_1af05e6e7e32eb639af3dfda8228cc74e0" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>SetRemoteFrame</name></member>
+      <member refid="structhf__can__message__t_1adeca458e7b925db873ecfb779923db32" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>SetSelfReception</name></member>
+      <member refid="structhf__can__message__t_1a20eab0b26b0d462efc72379e8a202484" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>SetSingleShot</name></member>
+      <member refid="structhf__can__message__t_1a8db2a9d7f4c842360c8aeb82703b467f" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>SetStandardFrame</name></member>
+      <member refid="structhf__can__message__t_1a0fa1eb52d5a9e71fe3fc24e4d2283cc3" prot="public" virt="non-virtual"><scope>hf_can_message_t</scope><name>timestamp_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
