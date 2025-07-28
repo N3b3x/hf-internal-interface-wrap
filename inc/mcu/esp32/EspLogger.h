@@ -4,15 +4,17 @@
  * @brief ESP32-specific logger implementation for the HardFOC system.
  *
  * This file provides the ESP32 implementation of the BaseLogger interface,
- * utilizing ESP-IDF's esp_log system for efficient and feature-rich logging.
- * It supports all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2) and provides
- * comprehensive logging capabilities with performance monitoring.
+ * utilizing ESP-IDF's esp_log system (both Log V1 and Log V2) for efficient 
+ * and feature-rich logging. It supports all ESP32 variants (C6, Classic, S2, 
+ * S3, C3, C2, H2) and provides comprehensive logging capabilities with 
+ * performance monitoring.
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
  * @note This implementation is thread-safe and optimized for ESP32 platforms.
+ * @note Supports both ESP-IDF Log V1 (default) and Log V2 (enhanced) systems.
  */
 
 #pragma once
@@ -37,13 +39,18 @@ extern "C" {
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+// ESP-IDF Log V2 support
+#ifdef CONFIG_LOG_VERSION_2
+#include "esp_log_v2.h"
+#endif
+
 #ifdef __cplusplus
 }
 #endif
 
 /**
  * @class EspLogger
- * @brief ESP32 logger implementation using ESP-IDF logging system.
+ * @brief ESP32 logger implementation using ESP-IDF logging system (Log V1/V2).
  *
  * This class provides a complete implementation of the BaseLogger interface for ESP32 variants.
  * It leverages ESP-IDF's esp_log system for efficient logging with features like:
@@ -54,9 +61,11 @@ extern "C" {
  * - Custom output callbacks
  * - Message formatting and buffering
  * - Health monitoring and diagnostics
+ * - ESP-IDF Log V2 support with enhanced features
  *
  * Key Features:
  * - **ESP-IDF Integration**: Direct integration with esp_log for optimal performance
+ * - **Log V2 Support**: Enhanced logging with improved flexibility and reduced flash usage
  * - **Tag-based Filtering**: Runtime log level control per tag
  * - **Thread Safety**: Proper mutex protection for concurrent access
  * - **Performance Monitoring**: Detailed statistics and performance metrics
@@ -64,6 +73,8 @@ extern "C" {
  * - **Custom Output**: Support for custom output callbacks
  * - **Message Buffering**: Efficient message buffering and formatting
  * - **Error Recovery**: Robust error handling and recovery mechanisms
+ * - **Buffer Logging**: Support for binary data logging
+ * - **Dynamic Formatting**: Log V2 dynamic format string support
  *
  * Usage Example:
  * @code
@@ -84,27 +95,29 @@ extern "C" {
  *     logger.Info("MAIN", "System initialized successfully");
  *     logger.Debug("SENSOR", "Temperature: %.2f°C", temperature);
  *     logger.Error("COMM", "Communication timeout");
+ *     
+ *     // Log V2 features (if available)
+ *     uint8_t buffer[16] = {0x01, 0x02, 0x03, 0x04};
+ *     logger.LogBuffer("DATA", buffer, sizeof(buffer), hf_log_level_t::LOG_LEVEL_DEBUG);
  * }
  * @endcode
  *
- * Advanced Usage with Custom Output:
+ * Advanced Usage with Log V2:
  * @code
- * // Custom output callback
- * auto custom_output = [](const char* message, hf_u32_t length) {
- *     // Send to custom destination (e.g., network, file)
- *     send_to_network(message, length);
- * };
+ * // Dynamic format strings (Log V2 feature)
+ * const char* dynamic_format = "Dynamic message: %s with value %d";
+ * logger.Log(hf_log_level_t::LOG_LEVEL_INFO, "TAG", dynamic_format, "test", 42);
  * 
- * hf_logger_config_t config = {};
- * config.output_destination = hf_log_output_t::LOG_OUTPUT_CUSTOM;
- * config.custom_output_callback = custom_output;
- * 
- * EspLogger logger;
- * logger.Initialize(config);
+ * // Binary logging
+ * uint8_t binary_data[64];
+ * // ... fill binary_data ...
+ * logger.LogBufferHex("BINARY", binary_data, sizeof(binary_data), hf_log_level_t::LOG_LEVEL_DEBUG);
+ * logger.LogBufferChar("TEXT", (const char*)binary_data, sizeof(binary_data), hf_log_level_t::LOG_LEVEL_INFO);
  * @endcode
  *
  * @note EspLogger instances cannot be copied or moved due to hardware resource management.
  * @note If you need to transfer ownership, use std::unique_ptr<EspLogger> or similar smart pointers.
+ * @note Log V2 features are automatically detected and used when CONFIG_LOG_VERSION_2 is enabled.
  */
 class EspLogger : public BaseLogger {
 public:
@@ -248,6 +261,54 @@ public:
                                    const char* format, ...) noexcept override;
 
     //==============================================================================
+    // ESP-IDF LOG V2 ENHANCED METHODS
+    //==============================================================================
+
+    /**
+     * @brief Log a buffer as hex dump (Log V2 feature)
+     * @param tag Log tag
+     * @param buffer Buffer to log
+     * @param length Buffer length
+     * @param level Log level
+     * @return hf_logger_err_t Success or error code
+     */
+    hf_logger_err_t LogBufferHex(const char* tag, const void* buffer, hf_u32_t length, 
+                                hf_log_level_t level = hf_log_level_t::LOG_LEVEL_INFO) noexcept;
+
+    /**
+     * @brief Log a buffer as character dump (Log V2 feature)
+     * @param tag Log tag
+     * @param buffer Buffer to log (should contain printable characters)
+     * @param length Buffer length
+     * @param level Log level
+     * @return hf_logger_err_t Success or error code
+     */
+    hf_logger_err_t LogBufferChar(const char* tag, const void* buffer, hf_u32_t length,
+                                 hf_log_level_t level = hf_log_level_t::LOG_LEVEL_INFO) noexcept;
+
+    /**
+     * @brief Log a buffer as hex dump with address (Log V2 feature)
+     * @param tag Log tag
+     * @param buffer Buffer to log
+     * @param length Buffer length
+     * @param level Log level
+     * @return hf_logger_err_t Success or error code
+     */
+    hf_logger_err_t LogBufferHexDump(const char* tag, const void* buffer, hf_u32_t length,
+                                    hf_log_level_t level = hf_log_level_t::LOG_LEVEL_INFO) noexcept;
+
+    /**
+     * @brief Log a buffer (generic method)
+     * @param tag Log tag
+     * @param buffer Buffer to log
+     * @param length Buffer length
+     * @param level Log level
+     * @return hf_logger_err_t Success or error code
+     */
+    hf_logger_err_t LogBuffer(const char* tag, const void* buffer, hf_u32_t length,
+                             hf_log_level_t level = hf_log_level_t::LOG_LEVEL_INFO) noexcept;
+
+    //==============================================================================
     // UTILITY METHODS
     //==============================================================================
 
@@ -305,6 +366,18 @@ public:
      */
     hf_logger_err_t GetLastErrorMessage(char* message, hf_u32_t max_length) const noexcept override;
 
+    /**
+     * @brief Check if Log V2 is available
+     * @return true if Log V2 is available, false otherwise
+     */
+    bool IsLogV2Available() const noexcept;
+
+    /**
+     * @brief Get current ESP-IDF log version
+     * @return 1 for Log V1, 2 for Log V2
+     */
+    hf_u8_t GetLogVersion() const noexcept;
+
 private:
     //==============================================================================
     // PRIVATE MEMBERS
@@ -326,6 +399,10 @@ private:
     
     hf_u64_t initialization_time_;               ///< Initialization timestamp
     hf_u64_t last_health_check_;                 ///< Last health check timestamp
+
+    // Log V2 specific members
+    bool log_v2_available_;                      ///< Log V2 availability flag
+    hf_u8_t log_version_;                        ///< Current log version (1 or 2)
 
     //==============================================================================
     // PRIVATE METHODS
@@ -373,6 +450,17 @@ private:
      */
     hf_logger_err_t WriteMessage(hf_log_level_t level, const char* tag,
                                 const char* message, hf_u32_t length) noexcept;
+
+    /**
+     * @brief Write message using appropriate ESP-IDF version
+     * @param level Log level
+     * @param tag Log tag
+     * @param format Format string
+     * @param args va_list of arguments
+     * @return hf_logger_err_t Success or error code
+     */
+    hf_logger_err_t WriteMessageV(hf_log_level_t level, const char* tag,
+                                 const char* format, va_list args) noexcept;
 
     /**
      * @brief Update statistics for a log operation
@@ -426,6 +514,18 @@ private:
      * @return true if sufficient, false otherwise
      */
     bool EnsureMessageBuffer(hf_u32_t required_length) noexcept;
+
+    /**
+     * @brief Detect and initialize Log V2 support
+     * @return true if Log V2 is available and initialized, false otherwise
+     */
+    bool InitializeLogV2() noexcept;
+
+    /**
+     * @brief Check Log V2 availability at runtime
+     * @return true if Log V2 is available, false otherwise
+     */
+    bool CheckLogV2Availability() const noexcept;
 };
 
 #endif // HF_MCU_FAMILY_ESP32 

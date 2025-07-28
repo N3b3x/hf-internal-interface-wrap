@@ -3,10 +3,10 @@
  * @brief Implementation of ESP32 logger for the HardFOC system.
  *
  * This file provides the implementation for ESP32 logging using the ESP-IDF
- * esp_log system. All platform-specific types and implementations are
- * isolated through the BaseLogger interface. The implementation supports
- * multiple log levels, tag-based filtering, performance monitoring,
- * thread-safe operations, and comprehensive error handling.
+ * esp_log system (both Log V1 and Log V2). All platform-specific types and 
+ * implementations are isolated through the BaseLogger interface. The implementation 
+ * supports multiple log levels, tag-based filtering, performance monitoring,
+ * thread-safe operations, comprehensive error handling, and enhanced Log V2 features.
  *
  * @author Nebiyu Tadesse
  * @date 2025
@@ -32,6 +32,11 @@ extern "C" {
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+// ESP-IDF Log V2 support
+#ifdef CONFIG_LOG_VERSION_2
+#include "esp_log_v2.h"
+#endif
+
 #ifdef __cplusplus
 }
 #endif
@@ -48,6 +53,7 @@ static constexpr hf_u32_t DEFAULT_FLUSH_INTERVAL_MS = 100;
 static constexpr hf_u32_t MAX_TAG_LENGTH = 32;
 static constexpr hf_u32_t MAX_ERROR_MESSAGE_LENGTH = 256;
 static constexpr hf_u64_t HEALTH_CHECK_INTERVAL_US = 30000000; // 30 seconds
+static constexpr hf_u32_t MAX_BUFFER_LOG_SIZE = 4096; // Maximum buffer size for logging
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
@@ -56,7 +62,7 @@ static constexpr hf_u64_t HEALTH_CHECK_INTERVAL_US = 30000000; // 30 seconds
 EspLogger::EspLogger() noexcept
     : mutex_(), initialized_(false), healthy_(true), config_(), statistics_(), diagnostics_(),
       tag_levels_(), message_buffer_(), last_error_(hf_logger_err_t::LOGGER_SUCCESS),
-      initialization_time_(0), last_health_check_(0) {
+      initialization_time_(0), last_health_check_(0), log_v2_available_(false), log_version_(1) {
     
     // Initialize statistics and diagnostics
     std::memset(&statistics_, 0, sizeof(statistics_));
@@ -73,7 +79,11 @@ EspLogger::EspLogger() noexcept
     config_.enable_thread_safety = true;
     config_.enable_performance_monitoring = true;
     
-    ESP_LOGD(TAG, "EspLogger constructor completed");
+    // Detect Log V2 availability
+    log_v2_available_ = CheckLogV2Availability();
+    log_version_ = log_v2_available_ ? 2 : 1;
+    
+    ESP_LOGD(TAG, "EspLogger constructor completed (Log V%d)", log_version_);
 }
 
 EspLogger::~EspLogger() noexcept {
@@ -94,7 +104,7 @@ hf_logger_err_t EspLogger::Initialize(const hf_logger_config_t& config) noexcept
         return hf_logger_err_t::LOGGER_ERR_ALREADY_INITIALIZED;
     }
     
-    ESP_LOGI(TAG, "Initializing ESP32 logger");
+    ESP_LOGI(TAG, "Initializing ESP32 logger (Log V%d)", log_version_);
     
     // Validate configuration
     hf_logger_err_t validation_result = ValidateConfiguration(config);
@@ -112,6 +122,15 @@ hf_logger_err_t EspLogger::Initialize(const hf_logger_config_t& config) noexcept
         UpdateDiagnostics(hf_logger_err_t::LOGGER_ERR_OUT_OF_MEMORY);
         ESP_LOGE(TAG, "Failed to allocate message buffer");
         return hf_logger_err_t::LOGGER_ERR_OUT_OF_MEMORY;
+    }
+    
+    // Initialize Log V2 if available
+    if (log_v2_available_) {
+        if (!InitializeLogV2()) {
+            ESP_LOGW(TAG, "Log V2 initialization failed, falling back to Log V1");
+            log_v2_available_ = false;
+            log_version_ = 1;
+        }
     }
     
     // Set default log level for ESP-IDF
@@ -137,7 +156,7 @@ hf_logger_err_t EspLogger::Initialize(const hf_logger_config_t& config) noexcept
     healthy_.store(true);
     last_error_ = hf_logger_err_t::LOGGER_SUCCESS;
     
-    ESP_LOGI(TAG, "ESP32 logger initialized successfully");
+    ESP_LOGI(TAG, "ESP32 logger initialized successfully (Log V%d)", log_version_);
     return hf_logger_err_t::LOGGER_SUCCESS;
 }
 
@@ -304,15 +323,14 @@ hf_logger_err_t EspLogger::LogV(hf_log_level_t level, const char* tag, const cha
         return hf_logger_err_t::LOGGER_SUCCESS; // Not an error, just filtered out
     }
     
-    // Use ESP-IDF logging directly for optimal performance
-    esp_log_level_t esp_level = ConvertLogLevel(level);
-    esp_log_writev(esp_level, tag, format, args);
+    // Use appropriate ESP-IDF logging method
+    hf_logger_err_t result = WriteMessageV(level, tag, format, args);
     
     // Update statistics
     hf_u32_t message_length = std::strlen(format); // Approximate length
-    UpdateStatistics(level, message_length, true);
+    UpdateStatistics(level, message_length, result == hf_logger_err_t::LOGGER_SUCCESS);
     
-    return hf_logger_err_t::LOGGER_SUCCESS;
+    return result;
 }
 
 hf_logger_err_t EspLogger::LogWithLocation(hf_log_level_t level, const char* tag, 
@@ -341,24 +359,127 @@ hf_logger_err_t EspLogger::LogWithLocation(hf_log_level_t level, const char* tag
         snprintf(enhanced_format, sizeof(enhanced_format), "[%s:%u] %s", 
                 file ? file : "unknown", line, format);
         
-        esp_log_level_t esp_level = ConvertLogLevel(level);
-        esp_log_writev(esp_level, tag, enhanced_format, args);
-        
+        hf_logger_err_t result = WriteMessageV(level, tag, enhanced_format, args);
         va_end(args);
+        
+        // Update statistics
+        hf_u32_t message_length = std::strlen(format); // Approximate length
+        UpdateStatistics(level, message_length, result == hf_logger_err_t::LOGGER_SUCCESS);
+        
+        return result;
     } else {
         // Use standard logging
         va_list args;
         va_start(args, format);
-        esp_log_level_t esp_level = ConvertLogLevel(level);
-        esp_log_writev(esp_level, tag, format, args);
+        hf_logger_err_t result = WriteMessageV(level, tag, format, args);
         va_end(args);
+        
+        // Update statistics
+        hf_u32_t message_length = std::strlen(format); // Approximate length
+        UpdateStatistics(level, message_length, result == hf_logger_err_t::LOGGER_SUCCESS);
+        
+        return result;
+    }
+}
+
+//==============================================================================
+// ESP-IDF LOG V2 ENHANCED METHODS
+//==============================================================================
+
+hf_logger_err_t EspLogger::LogBufferHex(const char* tag, const void* buffer, hf_u32_t length, 
+                                       hf_log_level_t level) noexcept {
+    if (!EnsureInitialized()) {
+        return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
     }
     
+    if (!tag || !buffer || length == 0) {
+        return hf_logger_err_t::LOGGER_ERR_NULL_POINTER;
+    }
+    
+    if (length > MAX_BUFFER_LOG_SIZE) {
+        return hf_logger_err_t::LOGGER_ERR_BUFFER_OVERFLOW;
+    }
+    
+    // Check if level is enabled for this tag
+    if (!IsLevelEnabled(level, tag)) {
+        return hf_logger_err_t::LOGGER_SUCCESS; // Not an error, just filtered out
+    }
+    
+    esp_log_level_t esp_level = ConvertLogLevel(level);
+    
+    // Use ESP-IDF buffer logging
+    ESP_LOG_BUFFER_HEX_LEVEL(tag, buffer, length, esp_level);
+    
     // Update statistics
-    hf_u32_t message_length = std::strlen(format); // Approximate length
-    UpdateStatistics(level, message_length, true);
+    UpdateStatistics(level, length, true);
     
     return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
+hf_logger_err_t EspLogger::LogBufferChar(const char* tag, const void* buffer, hf_u32_t length,
+                                        hf_log_level_t level) noexcept {
+    if (!EnsureInitialized()) {
+        return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
+    }
+    
+    if (!tag || !buffer || length == 0) {
+        return hf_logger_err_t::LOGGER_ERR_NULL_POINTER;
+    }
+    
+    if (length > MAX_BUFFER_LOG_SIZE) {
+        return hf_logger_err_t::LOGGER_ERR_BUFFER_OVERFLOW;
+    }
+    
+    // Check if level is enabled for this tag
+    if (!IsLevelEnabled(level, tag)) {
+        return hf_logger_err_t::LOGGER_SUCCESS; // Not an error, just filtered out
+    }
+    
+    esp_log_level_t esp_level = ConvertLogLevel(level);
+    
+    // Use ESP-IDF buffer logging
+    ESP_LOG_BUFFER_CHAR_LEVEL(tag, buffer, length, esp_level);
+    
+    // Update statistics
+    UpdateStatistics(level, length, true);
+    
+    return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
+hf_logger_err_t EspLogger::LogBufferHexDump(const char* tag, const void* buffer, hf_u32_t length,
+                                           hf_log_level_t level) noexcept {
+    if (!EnsureInitialized()) {
+        return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
+    }
+    
+    if (!tag || !buffer || length == 0) {
+        return hf_logger_err_t::LOGGER_ERR_NULL_POINTER;
+    }
+    
+    if (length > MAX_BUFFER_LOG_SIZE) {
+        return hf_logger_err_t::LOGGER_ERR_BUFFER_OVERFLOW;
+    }
+    
+    // Check if level is enabled for this tag
+    if (!IsLevelEnabled(level, tag)) {
+        return hf_logger_err_t::LOGGER_SUCCESS; // Not an error, just filtered out
+    }
+    
+    esp_log_level_t esp_level = ConvertLogLevel(level);
+    
+    // Use ESP-IDF buffer logging
+    ESP_LOG_BUFFER_HEXDUMP(tag, buffer, length, esp_level);
+    
+    // Update statistics
+    UpdateStatistics(level, length, true);
+    
+    return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
+hf_logger_err_t EspLogger::LogBuffer(const char* tag, const void* buffer, hf_u32_t length,
+                                    hf_log_level_t level) noexcept {
+    // Default to hex dump for generic buffer logging
+    return LogBufferHexDump(tag, buffer, length, level);
 }
 
 //==============================================================================
@@ -441,6 +562,14 @@ hf_logger_err_t EspLogger::GetLastErrorMessage(char* message, hf_u32_t max_lengt
     message[copy_length] = '\0';
     
     return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
+bool EspLogger::IsLogV2Available() const noexcept {
+    return log_v2_available_;
+}
+
+hf_u8_t EspLogger::GetLogVersion() const noexcept {
+    return log_version_;
 }
 
 //==============================================================================
@@ -526,6 +655,32 @@ hf_logger_err_t EspLogger::WriteMessage(hf_log_level_t level, const char* tag,
     esp_log_write(esp_level, tag, "%s", message);
     
     return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
+hf_logger_err_t EspLogger::WriteMessageV(hf_log_level_t level, const char* tag,
+                                        const char* format, va_list args) noexcept {
+    if (!tag || !format) {
+        return hf_logger_err_t::LOGGER_ERR_NULL_POINTER;
+    }
+    
+    esp_log_level_t esp_level = ConvertLogLevel(level);
+    
+    // Use appropriate ESP-IDF logging method based on version
+    if (log_v2_available_) {
+#ifdef CONFIG_LOG_VERSION_2
+        // Log V2: Use esp_log() for better performance and flexibility
+        esp_log(esp_level, tag, format, args);
+        return hf_logger_err_t::LOGGER_SUCCESS;
+#else
+        // Fallback to Log V1
+        esp_log_writev(esp_level, tag, format, args);
+        return hf_logger_err_t::LOGGER_SUCCESS;
+#endif
+    } else {
+        // Log V1: Use esp_log_writev
+        esp_log_writev(esp_level, tag, format, args);
+        return hf_logger_err_t::LOGGER_SUCCESS;
+    }
 }
 
 void EspLogger::UpdateStatistics(hf_log_level_t level, hf_u32_t message_length, bool success) noexcept {
@@ -644,6 +799,27 @@ bool EspLogger::EnsureMessageBuffer(hf_u32_t required_length) noexcept {
         }
     }
     return true;
+}
+
+bool EspLogger::InitializeLogV2() noexcept {
+#ifdef CONFIG_LOG_VERSION_2
+    // Log V2 is automatically initialized by ESP-IDF
+    // We just need to verify it's working
+    ESP_LOGI(TAG, "Log V2 initialized successfully");
+    return true;
+#else
+    return false;
+#endif
+}
+
+bool EspLogger::CheckLogV2Availability() const noexcept {
+#ifdef CONFIG_LOG_VERSION_2
+    // Check if Log V2 is configured
+    return true;
+#else
+    // Log V2 not configured
+    return false;
+#endif
 }
 
 #endif // HF_MCU_FAMILY_ESP32 
