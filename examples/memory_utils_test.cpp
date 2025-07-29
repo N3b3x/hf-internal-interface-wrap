@@ -107,7 +107,7 @@ void testLargeAllocation() {
     ESP_LOGI(TAG, "=== Testing large allocation (should fail gracefully) ===");
     
     // Try to allocate an impossibly large amount of memory
-    constexpr size_t HUGE_SIZE = SIZE_MAX / 2;
+    constexpr size_t HUGE_SIZE = SIZE_MAX - 1;
     auto huge_buffer = hf::utils::make_unique_array_nothrow<char>(HUGE_SIZE);
     
     if (!huge_buffer) {
