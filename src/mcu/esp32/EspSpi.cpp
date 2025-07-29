@@ -136,11 +136,17 @@ int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcep
   }
   
   // Create and store the device
-  auto device = std::make_unique<EspSpiDevice>(this, handle, device_config);
-  devices_.push_back(std::move(device));
-  
-  // Return the index of the newly created device
-  return static_cast<int>(devices_.size() - 1);
+  try {
+    auto device = std::make_unique<EspSpiDevice>(this, handle, device_config);
+    devices_.push_back(std::move(device));
+    
+    // Return the index of the newly created device
+    return static_cast<int>(devices_.size() - 1);
+  } catch (const std::exception& e) {
+    ESP_LOGE("EspSpiBus", "Failed to create EspSpiDevice: %s", e.what());
+    spi_bus_remove_device(handle);  // Clean up the SPI device handle
+    return -1;
+  }
 }
 
 BaseSpi* EspSpiBus::GetDevice(int device_index) noexcept {
