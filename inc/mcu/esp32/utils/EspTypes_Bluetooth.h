@@ -449,6 +449,10 @@ inline bool parseHexString(const std::string& hex_str, size_t max_chars, uint32_
       return false; // Invalid hex character
     }
     
+    if (result > UINT32_MAX_DIV_16) {
+      return false; // Overflow detected
+    }
+    
     result = (result << 4) | digit;
   }
   
