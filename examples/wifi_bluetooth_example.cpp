@@ -107,16 +107,8 @@ public:
     
          // Create instances with advanced configurations
      m_wifi = std::make_unique<EspWifi>(&wifi_config);
-     if (!m_wifi) {
-       ESP_LOGE(TAG_MAIN, "Failed to create WiFi instance");
-       return;
-     }
      
      m_bluetooth = std::make_unique<EspBluetooth>(&bt_config);
-     if (!m_bluetooth) {
-       ESP_LOGE(TAG_MAIN, "Failed to create Bluetooth instance");
-       return;
-     }
      
      ESP_LOGI(TAG_MAIN, "WiFi and Bluetooth instances created successfully!");
   }
