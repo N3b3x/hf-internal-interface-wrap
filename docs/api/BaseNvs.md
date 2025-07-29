@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [INFO: **Data Structures**](#-data-structures)
+- [INFO: **Usage Examples**](#-usage-examples)
+- [TEST: **Best Practices**](#-best-practices)
 
 ---
 
@@ -34,10 +34,10 @@ The `BaseNvs` class provides a comprehensive non-volatile storage abstraction th
 - 🔒 **Atomic Operations** - Safe concurrent access
 - 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
 - 🔌 **Platform Agnostic** - Works with flash, EEPROM, and other storage
-- 📊 **Statistics & Diagnostics** - Built-in monitoring and health reporting
+- INFO: **Statistics & Diagnostics** - Built-in monitoring and health reporting
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 
-### 📊 **Supported Hardware**
+### INFO: **Supported Hardware**
 
 | Implementation | Hardware Type | Capacity | Features | Use Cases |
 |----------------|---------------|----------|----------|-----------|
@@ -93,19 +93,19 @@ classDiagram
 
 The NVS system uses comprehensive error codes for robust error handling:
 
-### ✅ **Success Codes**
+### SUCCESS: **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `NVS_SUCCESS` | 0 | ✅ Operation completed successfully |
+| `NVS_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
 
-### ❌ **General Error Codes**
+### ERROR: **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `NVS_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `NVS_ERR_NOT_INITIALIZED` | 2 | ⚠️ NVS not initialized | Call Initialize() first |
-| `NVS_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ NVS already initialized | Check initialization state |
+| `NVS_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
+| `NVS_ERR_NOT_INITIALIZED` | 2 | WARNING: NVS not initialized | Call Initialize() first |
+| `NVS_ERR_ALREADY_INITIALIZED` | 3 | WARNING: NVS already initialized | Check initialization state |
 | `NVS_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `NVS_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `NVS_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -116,11 +116,11 @@ The NVS system uses comprehensive error codes for robust error handling:
 |------|-------|-------------|------------|
 | `NVS_ERR_KEY_NOT_FOUND` | 7 | 🔍 Key not found | Check key name or create key first |
 | `NVS_ERR_KEY_TOO_LONG` | 8 | 📏 Key too long | Use shorter key name |
-| `NVS_ERR_VALUE_TOO_LARGE` | 9 | 📊 Value too large | Check storage capacity |
+| `NVS_ERR_VALUE_TOO_LARGE` | 9 | INFO: Value too large | Check storage capacity |
 | `NVS_ERR_NAMESPACE_NOT_FOUND` | 10 | 🗂️ Namespace not found | Create namespace first |
 | `NVS_ERR_STORAGE_FULL` | 11 | 📦 Storage full | Free space or use larger storage |
-| `NVS_ERR_INVALID_DATA` | 12 | ❌ Invalid data | Check data format |
-| `NVS_ERR_READ_ONLY` | 13 | 📖 Read only mode | Check write permissions |
+| `NVS_ERR_INVALID_DATA` | 12 | ERROR: Invalid data | Check data format |
+| `NVS_ERR_READ_ONLY` | 13 | READ: Read only mode | Check write permissions |
 | `NVS_ERR_CORRUPTED` | 14 | 💥 Data corrupted | Re-initialize storage |
 
 ### 🔐 **Encryption Error Codes**
@@ -138,7 +138,7 @@ The NVS system uses comprehensive error codes for robust error handling:
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `NVS_ERR_VERSION_MISMATCH` | 21 | 📊 Version mismatch | Update storage format |
+| `NVS_ERR_VERSION_MISMATCH` | 21 | INFO: Version mismatch | Update storage format |
 | `NVS_ERR_NO_FREE_PAGES` | 22 | 📄 No free pages | Free space or reinitialize |
 | `NVS_ERR_PARTITION_NOT_FOUND` | 23 | 🗂️ Partition not found | Check partition configuration |
 | `NVS_ERR_ITERATOR_INVALID` | 24 | 🔄 Iterator invalid | Restart iteration |
@@ -225,7 +225,7 @@ virtual hf_nvs_err_t SetU32(const char *key, uint32_t value) noexcept = 0;
  * @param value Reference to store retrieved value
  * @return hf_nvs_err_t error code
  * 
- * 📖 Retrieves a 32-bit unsigned integer value.
+ * READ: Retrieves a 32-bit unsigned integer value.
  * 
  * @example
  * uint32_t boot_count;
@@ -267,7 +267,7 @@ virtual hf_nvs_err_t SetString(const char *key, const char *value) noexcept = 0;
  * @param actual_size Actual size of the string (optional)
  * @return hf_nvs_err_t error code
  * 
- * 📖 Retrieves a string value.
+ * READ: Retrieves a string value.
  * 
  * @example
  * char device_name[32];
@@ -310,7 +310,7 @@ virtual hf_nvs_err_t SetBlob(const char *key, const void *data, size_t data_size
  * @param actual_size Actual size of the data (optional)
  * @return hf_nvs_err_t error code
  * 
- * 📖 Retrieves binary data.
+ * READ: Retrieves binary data.
  * 
  * @example
  * uint8_t config_data[64];
@@ -366,7 +366,7 @@ virtual hf_nvs_err_t EraseAll() noexcept = 0;
  * @param size Reference to store size
  * @return hf_nvs_err_t error code
  * 
- * 📊 Gets the size of a stored value without reading it.
+ * INFO: Gets the size of a stored value without reading it.
  * 
  * @example
  * size_t value_size;
@@ -378,14 +378,14 @@ virtual hf_nvs_err_t EraseAll() noexcept = 0;
 virtual hf_nvs_err_t GetSize(const char *key, size_t &size) noexcept = 0;
 ```
 
-### 📊 **Information Methods**
+### INFO: **Information Methods**
 
 ```cpp
 /**
  * @brief Get maximum key length
  * @return Maximum key length in characters
  * 
- * 📊 Returns the maximum allowed key length for this storage.
+ * INFO: Returns the maximum allowed key length for this storage.
  */
 virtual size_t GetMaxKeyLength() const noexcept = 0;
 
@@ -393,7 +393,7 @@ virtual size_t GetMaxKeyLength() const noexcept = 0;
  * @brief Get maximum value size
  * @return Maximum value size in bytes
  * 
- * 📊 Returns the maximum allowed value size for this storage.
+ * INFO: Returns the maximum allowed value size for this storage.
  */
 virtual size_t GetMaxValueSize() const noexcept = 0;
 ```
@@ -422,7 +422,7 @@ virtual hf_nvs_err_t ResetDiagnostics() noexcept;
  * @param statistics Reference to store statistics data
  * @return hf_nvs_err_t error code
  * 
- * 📊 Retrieves comprehensive statistics about NVS operations.
+ * INFO: Retrieves comprehensive statistics about NVS operations.
  */
 virtual hf_nvs_err_t GetStatistics(hf_nvs_statistics_t &statistics) const noexcept;
 
@@ -438,7 +438,7 @@ virtual hf_nvs_err_t GetDiagnostics(hf_nvs_diagnostics_t &diagnostics) const noe
 
 ---
 
-## 📊 **Data Structures**
+## INFO: **Data Structures**
 
 ### 📈 **NVS Statistics Structure**
 
@@ -472,7 +472,7 @@ struct hf_nvs_diagnostics_t {
 
 ---
 
-## 💡 **Usage Examples**
+## INFO: **Usage Examples**
 
 ### 🔧 **Configuration Storage**
 
@@ -494,23 +494,23 @@ public:
         // Store individual values
         hf_nvs_err_t result = config_nvs_.SetU32("device_id", config.device_id);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to save device_id: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to save device_id: %s\n", HfNvsErrToString(result));
             return false;
         }
         
         result = config_nvs_.SetString("device_name", config.device_name.c_str());
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to save device_name: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to save device_name: %s\n", HfNvsErrToString(result));
             return false;
         }
         
         result = config_nvs_.SetU32("baud_rate", config.baud_rate);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to save baud_rate: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to save baud_rate: %s\n", HfNvsErrToString(result));
             return false;
         }
         
-        printf("✅ Device configuration saved successfully\n");
+        printf("SUCCESS: Device configuration saved successfully\n");
         return true;
     }
     
@@ -522,9 +522,9 @@ public:
             config.device_id = device_id;
         } else if (result == hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND) {
             config.device_id = 1;  // Default value
-            printf("⚠️ Using default device_id: %u\n", config.device_id);
+            printf("WARNING: Using default device_id: %u\n", config.device_id);
         } else {
-            printf("❌ Failed to load device_id: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to load device_id: %s\n", HfNvsErrToString(result));
             return false;
         }
         
@@ -535,9 +535,9 @@ public:
             config.device_name = std::string(device_name, name_size);
         } else if (result == hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND) {
             config.device_name = "DefaultDevice";  // Default value
-            printf("⚠️ Using default device_name: %s\n", config.device_name.c_str());
+            printf("WARNING: Using default device_name: %s\n", config.device_name.c_str());
         } else {
-            printf("❌ Failed to load device_name: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to load device_name: %s\n", HfNvsErrToString(result));
             return false;
         }
         
@@ -547,18 +547,18 @@ public:
             config.baud_rate = baud_rate;
         } else if (result == hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND) {
             config.baud_rate = 115200;  // Default value
-            printf("⚠️ Using default baud_rate: %u\n", config.baud_rate);
+            printf("WARNING: Using default baud_rate: %u\n", config.baud_rate);
         } else {
-            printf("❌ Failed to load baud_rate: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to load baud_rate: %s\n", HfNvsErrToString(result));
             return false;
         }
         
-        printf("✅ Device configuration loaded successfully\n");
+        printf("SUCCESS: Device configuration loaded successfully\n");
         return true;
     }
     
     void print_config_info() {
-        printf("📊 Configuration Storage Info:\n");
+        printf("INFO: Configuration Storage Info:\n");
         printf("  Max key length: %zu characters\n", config_nvs_.GetMaxKeyLength());
         printf("  Max value size: %zu bytes\n", config_nvs_.GetMaxValueSize());
         
@@ -581,7 +581,7 @@ struct DeviceConfig {
 };
 ```
 
-### 📊 **Calibration Data Storage**
+### INFO: **Calibration Data Storage**
 
 ```cpp
 #include "mcu/esp32/EspNvs.h"
@@ -601,7 +601,7 @@ public:
         // Store calibration data as blob
         hf_nvs_err_t result = calib_nvs_.SetBlob("adc_calib", &calib, sizeof(calib));
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to save ADC calibration: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to save ADC calibration: %s\n", HfNvsErrToString(result));
             return false;
         }
         
@@ -609,11 +609,11 @@ public:
         uint32_t timestamp = static_cast<uint32_t>(time(nullptr));
         result = calib_nvs_.SetU32("adc_calib_time", timestamp);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to save calibration timestamp: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to save calibration timestamp: %s\n", HfNvsErrToString(result));
             return false;
         }
         
-        printf("✅ ADC calibration saved successfully\n");
+        printf("SUCCESS: ADC calibration saved successfully\n");
         return true;
     }
     
@@ -622,12 +622,12 @@ public:
         size_t calib_size;
         hf_nvs_err_t result = calib_nvs_.GetSize("adc_calib", calib_size);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Calibration not found\n");
+            printf("ERROR: Calibration not found\n");
             return false;
         }
         
         if (calib_size != sizeof(AdcCalibration)) {
-            printf("❌ Calibration size mismatch: expected %zu, got %zu\n", 
+            printf("ERROR: Calibration size mismatch: expected %zu, got %zu\n", 
                    sizeof(AdcCalibration), calib_size);
             return false;
         }
@@ -635,7 +635,7 @@ public:
         // Load calibration data
         result = calib_nvs_.GetBlob("adc_calib", &calib, sizeof(calib));
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to load ADC calibration: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to load ADC calibration: %s\n", HfNvsErrToString(result));
             return false;
         }
         
@@ -645,10 +645,10 @@ public:
         if (result == hf_nvs_err_t::NVS_SUCCESS) {
             uint32_t current_time = static_cast<uint32_t>(time(nullptr));
             uint32_t age_days = (current_time - timestamp) / (24 * 3600);
-            printf("✅ ADC calibration loaded (age: %u days)\n", age_days);
+            printf("SUCCESS: ADC calibration loaded (age: %u days)\n", age_days);
             
             if (age_days > 30) {
-                printf("⚠️ Calibration is old (%u days), consider re-calibration\n", age_days);
+                printf("WARNING: Calibration is old (%u days), consider re-calibration\n", age_days);
             }
         }
         
@@ -700,7 +700,7 @@ public:
         if (result == hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND) {
             log_index_ = 0;  // Start from beginning
         } else if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to load log index: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to load log index: %s\n", HfNvsErrToString(result));
             return false;
         }
         
@@ -714,7 +714,7 @@ public:
         // Store log message
         hf_nvs_err_t result = log_nvs_.SetString(key, message);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to store log entry: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to store log entry: %s\n", HfNvsErrToString(result));
             return false;
         }
         
@@ -722,11 +722,11 @@ public:
         log_index_++;
         result = log_nvs_.SetU32("log_index", log_index_);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to update log index: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to update log index: %s\n", HfNvsErrToString(result));
             return false;
         }
         
-        printf("✅ Log entry %u stored: %s\n", log_index_ - 1, message);
+        printf("SUCCESS: Log entry %u stored: %s\n", log_index_ - 1, message);
         return true;
     }
     
@@ -791,11 +791,11 @@ public:
         // Enable encryption if supported
         hf_nvs_err_t result = secure_nvs_.SetEncryption(true);
         if (result == hf_nvs_err_t::NVS_SUCCESS) {
-            printf("✅ Encryption enabled\n");
+            printf("SUCCESS: Encryption enabled\n");
         } else if (result == hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_SUPPORTED) {
-            printf("⚠️ Encryption not supported on this storage\n");
+            printf("WARNING: Encryption not supported on this storage\n");
         } else {
-            printf("❌ Failed to enable encryption: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to enable encryption: %s\n", HfNvsErrToString(result));
             return false;
         }
         
@@ -806,18 +806,18 @@ public:
         // Store username
         hf_nvs_err_t result = secure_nvs_.SetString("username", username);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to store username: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to store username: %s\n", HfNvsErrToString(result));
             return false;
         }
         
         // Store password
         result = secure_nvs_.SetString("password", password);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to store password: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to store password: %s\n", HfNvsErrToString(result));
             return false;
         }
         
-        printf("✅ Credentials stored securely\n");
+        printf("SUCCESS: Credentials stored securely\n");
         return true;
     }
     
@@ -826,18 +826,18 @@ public:
         // Load username
         hf_nvs_err_t result = secure_nvs_.GetString("username", username, username_size);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to load username: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to load username: %s\n", HfNvsErrToString(result));
             return false;
         }
         
         // Load password
         result = secure_nvs_.GetString("password", password, password_size);
         if (result != hf_nvs_err_t::NVS_SUCCESS) {
-            printf("❌ Failed to load password: %s\n", HfNvsErrToString(result));
+            printf("ERROR: Failed to load password: %s\n", HfNvsErrToString(result));
             return false;
         }
         
-        printf("✅ Credentials loaded successfully\n");
+        printf("SUCCESS: Credentials loaded successfully\n");
         return true;
     }
     
@@ -851,18 +851,18 @@ public:
 
 ---
 
-## 🧪 **Best Practices**
+## TEST: **Best Practices**
 
-### ✅ **Recommended Patterns**
+### SUCCESS: **Recommended Patterns**
 
 ```cpp
-// ✅ Always check initialization
+// SUCCESS: Always check initialization
 if (!nvs.EnsureInitialized()) {
-    printf("❌ NVS initialization failed\n");
+    printf("ERROR: NVS initialization failed\n");
     return false;
 }
 
-// ✅ Use appropriate error handling
+// SUCCESS: Use appropriate error handling
 uint32_t value;
 hf_nvs_err_t result = nvs.GetU32("key", value);
 if (result == hf_nvs_err_t::NVS_SUCCESS) {
@@ -871,63 +871,63 @@ if (result == hf_nvs_err_t::NVS_SUCCESS) {
     // Key doesn't exist, use default
     value = default_value;
 } else {
-    printf("❌ NVS Error: %s\n", HfNvsErrToString(result));
+    printf("ERROR: NVS Error: %s\n", HfNvsErrToString(result));
     return false;
 }
 
-// ✅ Check data sizes before operations
+// SUCCESS: Check data sizes before operations
 size_t required_size;
 if (nvs.GetSize("key", required_size) == hf_nvs_err_t::NVS_SUCCESS) {
     if (required_size > buffer_size) {
-        printf("❌ Buffer too small, need %zu bytes\n", required_size);
+        printf("ERROR: Buffer too small, need %zu bytes\n", required_size);
         return false;
     }
 }
 
-// ✅ Use namespaces for organization
+// SUCCESS: Use namespaces for organization
 EspNvs config_nvs("config");
 EspNvs calib_nvs("calibration");
 EspNvs logs_nvs("logs");
 
-// ✅ Validate data integrity
+// SUCCESS: Validate data integrity
 uint16_t stored_checksum;
 if (nvs.GetU32("checksum", stored_checksum) == hf_nvs_err_t::NVS_SUCCESS) {
     uint16_t calculated_checksum = calculate_checksum(data, size);
     if (stored_checksum != calculated_checksum) {
-        printf("❌ Data integrity check failed\n");
+        printf("ERROR: Data integrity check failed\n");
         return false;
     }
 }
 
-// ✅ Monitor storage health
+// SUCCESS: Monitor storage health
 hf_nvs_statistics_t stats;
 if (nvs.GetStatistics(stats) == hf_nvs_err_t::NVS_SUCCESS) {
     if (stats.failed_ops > 10) {
-        printf("⚠️ High NVS failure rate detected\n");
+        printf("WARNING: High NVS failure rate detected\n");
     }
 }
 ```
 
-### ❌ **Common Pitfalls**
+### ERROR: **Common Pitfalls**
 
 ```cpp
-// ❌ Don't ignore initialization
+// ERROR: Don't ignore initialization
 nvs.SetU32("key", value);  // May fail silently
 
-// ❌ Don't ignore error codes
+// ERROR: Don't ignore error codes
 nvs.GetString("key", buffer, size);  // Error handling missing
 
-// ❌ Don't assume key exists
+// ERROR: Don't assume key exists
 uint32_t value = nvs.GetU32("key");  // May return garbage
 
-// ❌ Don't use without checking buffer sizes
+// ERROR: Don't use without checking buffer sizes
 char buffer[16];
 nvs.GetString("key", buffer, sizeof(buffer));  // May truncate
 
-// ❌ Don't store sensitive data unencrypted
+// ERROR: Don't store sensitive data unencrypted
 nvs.SetString("password", "secret");  // Use encrypted storage
 
-// ❌ Don't ignore storage capacity
+// ERROR: Don't ignore storage capacity
 // Check available space before large writes
 ```
 
@@ -951,7 +951,7 @@ nvs.SetString("password", "secret");  // Use encrypted storage
 hf_nvs_statistics_t stats;
 nvs.GetStatistics(stats);
 if (stats.bytes_written > max_storage_bytes) {
-    printf("⚠️ Storage usage high: %u bytes\n", stats.bytes_written);
+    printf("WARNING: Storage usage high: %u bytes\n", stats.bytes_written);
 }
 
 // 🚀 Use encryption for sensitive data

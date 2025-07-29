@@ -11,8 +11,19 @@
  */
 
 #include "utils/memory_utils.h"
-#include <iostream>
 #include <vector>
+#include <array>
+
+// ESP-IDF headers
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "esp_log.h"
+#ifdef __cplusplus
+}
+#endif
+
+static const char* TAG = "MemoryUtilsTest";
 
 // Test class with constructor parameters
 class TestDevice {
@@ -22,11 +33,11 @@ private:
     
 public:
     TestDevice(int id, const std::string& name) : id_(id), name_(name) {
-        std::cout << "TestDevice created: ID=" << id_ << ", Name=" << name_ << std::endl;
+        ESP_LOGI("TestDevice", "Created: ID=%d, Name=%s", id_, name_.c_str());
     }
     
     ~TestDevice() {
-        std::cout << "TestDevice destroyed: ID=" << id_ << ", Name=" << name_ << std::endl;
+        ESP_LOGI("TestDevice", "Destroyed: ID=%d, Name=%s", id_, name_.c_str());
     }
     
     int getId() const { return id_; }
@@ -35,18 +46,18 @@ public:
 
 // Function demonstrating make_unique_nothrow usage
 bool createAndTestDevice(int id, const std::string& name) {
-    std::cout << "\n=== Testing make_unique_nothrow for single object ===" << std::endl;
+    ESP_LOGI(TAG, "=== Testing make_unique_nothrow for single object ===");
     
     // Create device using nothrow allocation
     auto device = hf::utils::make_unique_nothrow<TestDevice>(id, name);
     if (!device) {
-        std::cout << "❌ Failed to allocate memory for TestDevice" << std::endl;
+        ESP_LOGE(TAG, "Failed to allocate memory for TestDevice");
         return false;
     }
     
-    std::cout << "✅ Device created successfully" << std::endl;
-    std::cout << "   Device ID: " << device->getId() << std::endl;
-    std::cout << "   Device Name: " << device->getName() << std::endl;
+    ESP_LOGI(TAG, "Device created successfully");
+    ESP_LOGI(TAG, "Device ID: %d", device->getId());
+    ESP_LOGI(TAG, "Device Name: %s", device->getName().c_str());
     
     return true;
     // device automatically destroyed when going out of scope
@@ -54,28 +65,38 @@ bool createAndTestDevice(int id, const std::string& name) {
 
 // Function demonstrating array allocation
 bool createAndTestArray(size_t size) {
-    std::cout << "\n=== Testing make_unique_array_nothrow ===" << std::endl;
+    ESP_LOGI(TAG, "=== Testing make_unique_array_nothrow ===");
     
     // Create array using nothrow allocation
     auto buffer = hf::utils::make_unique_array_nothrow<int>(size);
     if (!buffer) {
-        std::cout << "❌ Failed to allocate memory for array of size " << size << std::endl;
+        ESP_LOGE(TAG, "Failed to allocate memory for array of size %zu", size);
         return false;
     }
     
-    std::cout << "✅ Array allocated successfully (size: " << size << ")" << std::endl;
+    ESP_LOGI(TAG, "Array allocated successfully (size: %zu)", size);
     
     // Initialize array with some values
     for (size_t i = 0; i < size; ++i) {
         buffer[i] = static_cast<int>(i * 2);
     }
     
-    // Print first few values
-    std::cout << "   First few values: ";
-    for (size_t i = 0; i < std::min(size, size_t(5)); ++i) {
-        std::cout << buffer[i] << " ";
+    // Print first few values using fixed-size array for display
+    constexpr size_t DISPLAY_COUNT = 5;
+    std::array<int, DISPLAY_COUNT> display_values{};
+    size_t values_to_show = std::min(size, DISPLAY_COUNT);
+    
+    for (size_t i = 0; i < values_to_show; ++i) {
+        display_values[i] = buffer[i];
     }
-    std::cout << std::endl;
+    
+    ESP_LOGI(TAG, "First %zu values: %d %d %d %d %d", 
+             values_to_show,
+             values_to_show > 0 ? display_values[0] : 0,
+             values_to_show > 1 ? display_values[1] : 0,
+             values_to_show > 2 ? display_values[2] : 0,
+             values_to_show > 3 ? display_values[3] : 0,
+             values_to_show > 4 ? display_values[4] : 0);
     
     return true;
     // buffer automatically destroyed when going out of scope
@@ -83,53 +104,76 @@ bool createAndTestArray(size_t size) {
 
 // Function demonstrating error handling for large allocations
 void testLargeAllocation() {
-    std::cout << "\n=== Testing large allocation (should fail gracefully) ===" << std::endl;
+    ESP_LOGI(TAG, "=== Testing large allocation (should fail gracefully) ===");
     
     // Try to allocate an impossibly large amount of memory
     constexpr size_t HUGE_SIZE = SIZE_MAX / 2;
     auto huge_buffer = hf::utils::make_unique_array_nothrow<char>(HUGE_SIZE);
     
     if (!huge_buffer) {
-        std::cout << "✅ Large allocation failed gracefully (as expected)" << std::endl;
-        std::cout << "   No exception thrown, returned nullptr instead" << std::endl;
+        ESP_LOGI(TAG, "Large allocation failed gracefully (as expected)");
+        ESP_LOGI(TAG, "No exception thrown, returned nullptr instead");
     } else {
-        std::cout << "⚠️  Unexpected: Large allocation succeeded" << std::endl;
+        ESP_LOGW(TAG, "Unexpected: Large allocation succeeded");
     }
 }
 
 // Function demonstrating vector of unique_ptrs
 void testVectorOfUniquePtr() {
-    std::cout << "\n=== Testing vector of unique_ptr ===" << std::endl;
+    ESP_LOGI(TAG, "=== Testing vector of unique_ptr ===");
     
     std::vector<std::unique_ptr<TestDevice>> devices;
     
-    // Create multiple devices
-    for (int i = 1; i <= 3; ++i) {
-        auto device = hf::utils::make_unique_nothrow<TestDevice>(i, "Device_" + std::to_string(i));
+    // Create multiple devices using array for device names
+    constexpr size_t DEVICE_COUNT = 3;
+    std::array<const char*, DEVICE_COUNT> device_names = {
+        "SensorDevice",
+        "ActuatorDevice", 
+        "ControllerDevice"
+    };
+    
+    for (size_t i = 0; i < DEVICE_COUNT; ++i) {
+        int device_id = static_cast<int>(i + 1);
+        auto device = hf::utils::make_unique_nothrow<TestDevice>(device_id, device_names[i]);
         if (device) {
             devices.push_back(std::move(device));
-            std::cout << "✅ Added device " << i << " to vector" << std::endl;
+            ESP_LOGI(TAG, "Added device %d (%s) to vector", device_id, device_names[i]);
         } else {
-            std::cout << "❌ Failed to create device " << i << std::endl;
+            ESP_LOGE(TAG, "Failed to create device %d", device_id);
         }
     }
     
-    std::cout << "📊 Vector contains " << devices.size() << " devices" << std::endl;
+    ESP_LOGI(TAG, "Vector contains %zu devices", devices.size());
     
     // Devices will be automatically destroyed when vector goes out of scope
 }
 
 int main() {
-    std::cout << "🧪 HardFOC Memory Utils Test Program" << std::endl;
-    std::cout << "=====================================" << std::endl;
+    ESP_LOGI(TAG, "HardFOC Memory Utils Test Program");
+    ESP_LOGI(TAG, "=====================================");
+    
+    // Test configuration using array
+    struct TestConfig {
+        int device_id;
+        const char* device_name;
+        size_t array_size;
+    };
+    
+    constexpr TestConfig test_config = {
+        .device_id = 42,
+        .device_name = "TestSensor",
+        .array_size = 10
+    };
     
     // Test 1: Single object allocation
-    if (!createAndTestDevice(42, "TestSensor")) {
+    if (!createAndTestDevice(test_config.device_id, test_config.device_name)) {
+        ESP_LOGE(TAG, "Single object allocation test failed");
         return 1;
     }
     
     // Test 2: Array allocation
-    if (!createAndTestArray(10)) {
+    if (!createAndTestArray(test_config.array_size)) {
+        ESP_LOGE(TAG, "Array allocation test failed");
         return 1;
     }
     
@@ -139,8 +183,8 @@ int main() {
     // Test 4: Vector of unique_ptrs
     testVectorOfUniquePtr();
     
-    std::cout << "\n🎉 All tests completed successfully!" << std::endl;
-    std::cout << "💡 No exceptions were thrown, all memory was managed safely" << std::endl;
+    ESP_LOGI(TAG, "All tests completed successfully!");
+    ESP_LOGI(TAG, "No exceptions were thrown, all memory was managed safely");
     
     return 0;
 }

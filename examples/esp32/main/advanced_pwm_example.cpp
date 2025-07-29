@@ -45,23 +45,45 @@ static const char* TAG = "AdvancedPwmExample";
 // CONFIGURATION CONSTANTS
 //==============================================================================
 
-// PWM Configuration for different use cases
-static constexpr hf_u32_t LED_FREQUENCY_HZ = 1000;    ///< LED PWM frequency
-static constexpr hf_u32_t MOTOR_FREQUENCY_HZ = 20000; ///< Motor PWM frequency
-static constexpr hf_u32_t SERVO_FREQUENCY_HZ = 50;    ///< Servo PWM frequency
-static constexpr hf_u32_t AUDIO_FREQUENCY_HZ = 440;   ///< Audio PWM frequency
+// PWM Configuration for different use cases organized as arrays
+struct PwmChannelParams {
+    hf_u32_t frequency_hz;
+    hf_u8_t resolution_bits;
+};
 
-static constexpr hf_u8_t LED_RESOLUTION_BITS = 8;    ///< LED resolution
-static constexpr hf_u8_t MOTOR_RESOLUTION_BITS = 12; ///< Motor resolution
-static constexpr hf_u8_t SERVO_RESOLUTION_BITS = 16; ///< Servo resolution
-static constexpr hf_u8_t AUDIO_RESOLUTION_BITS = 10; ///< Audio resolution
+static constexpr std::array<PwmChannelParams, static_cast<size_t>(PwmPinType::PIN_COUNT)> PWM_CHANNEL_PARAMS = {{
+    {1000, 8},   // LED: 1kHz, 8-bit resolution
+    {20000, 12}, // MOTOR_A: 20kHz, 12-bit resolution  
+    {20000, 12}, // MOTOR_B: 20kHz, 12-bit resolution
+    {50, 16},    // SERVO: 50Hz, 16-bit resolution
+    {440, 10}    // AUDIO: 440Hz, 10-bit resolution
+}};
 
-// GPIO Pin assignments (ESP32-C6 specific)
-static constexpr hf_pin_num_t LED_PIN = 2;     ///< LED output pin
-static constexpr hf_pin_num_t MOTOR_A_PIN = 3; ///< Motor phase A
-static constexpr hf_pin_num_t MOTOR_B_PIN = 4; ///< Motor phase B
-static constexpr hf_pin_num_t SERVO_PIN = 5;   ///< Servo control pin
-static constexpr hf_pin_num_t AUDIO_PIN = 6;   ///< Audio output pin
+// GPIO Pin assignments (ESP32-C6 specific) organized as arrays
+enum class PwmPinType : size_t {
+    LED = 0,
+    MOTOR_A = 1,
+    MOTOR_B = 2,
+    SERVO = 3,
+    AUDIO = 4,
+    PIN_COUNT = 5
+};
+
+static constexpr std::array<hf_pin_num_t, static_cast<size_t>(PwmPinType::PIN_COUNT)> PWM_PINS = {
+    2, // LED output pin
+    3, // Motor phase A
+    4, // Motor phase B  
+    5, // Servo control pin
+    6  // Audio output pin
+};
+
+static constexpr std::array<const char*, static_cast<size_t>(PwmPinType::PIN_COUNT)> PWM_PIN_NAMES = {
+    "LED",
+    "MOTOR_A",
+    "MOTOR_B", 
+    "SERVO",
+    "AUDIO"
+};
 
 //==============================================================================
 // GLOBAL VARIABLES
@@ -175,9 +197,9 @@ bool ConfigureLedChannel(EspPwm& pwm) {
 
   // Configure LED channel
   hf_pwm_channel_config_t led_config;
-  led_config.output_pin = LED_PIN;
-  led_config.frequency_hz = LED_FREQUENCY_HZ;
-  led_config.resolution_bits = LED_RESOLUTION_BITS;
+  led_config.output_pin = PWM_PINS[static_cast<size_t>(PwmPinType::LED)];
+  led_config.frequency_hz = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::LED)].frequency_hz;
+  led_config.resolution_bits = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::LED)].resolution_bits;
   led_config.output_mode = hf_pwm_output_mode_t::Normal;
   led_config.alignment = hf_pwm_alignment_t::EdgeAligned;
   led_config.idle_state = hf_pwm_idle_state_t::Low;
@@ -203,9 +225,9 @@ bool ConfigureMotorChannels(EspPwm& pwm) {
 
   // Configure motor phase A
   hf_pwm_channel_config_t motor_a_config;
-  motor_a_config.output_pin = MOTOR_A_PIN;
-  motor_a_config.frequency_hz = MOTOR_FREQUENCY_HZ;
-  motor_a_config.resolution_bits = MOTOR_RESOLUTION_BITS;
+  motor_a_config.output_pin = PWM_PINS[static_cast<size_t>(PwmPinType::MOTOR_A)];
+  motor_a_config.frequency_hz = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::MOTOR_A)].frequency_hz;
+  motor_a_config.resolution_bits = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::MOTOR_A)].resolution_bits;
   motor_a_config.output_mode = hf_pwm_output_mode_t::Normal;
   motor_a_config.alignment = hf_pwm_alignment_t::EdgeAligned;
   motor_a_config.idle_state = hf_pwm_idle_state_t::Low;
@@ -219,9 +241,9 @@ bool ConfigureMotorChannels(EspPwm& pwm) {
 
   // Configure motor phase B
   hf_pwm_channel_config_t motor_b_config;
-  motor_b_config.output_pin = MOTOR_B_PIN;
-  motor_b_config.frequency_hz = MOTOR_FREQUENCY_HZ;
-  motor_b_config.resolution_bits = MOTOR_RESOLUTION_BITS;
+  motor_b_config.output_pin = PWM_PINS[static_cast<size_t>(PwmPinType::MOTOR_B)];
+  motor_b_config.frequency_hz = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::MOTOR_B)].frequency_hz;
+  motor_b_config.resolution_bits = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::MOTOR_B)].resolution_bits;
   motor_b_config.output_mode = hf_pwm_output_mode_t::Normal;
   motor_b_config.alignment = hf_pwm_alignment_t::EdgeAligned;
   motor_b_config.idle_state = hf_pwm_idle_state_t::Low;
@@ -253,9 +275,9 @@ bool ConfigureServoChannel(EspPwm& pwm) {
 
   // Configure servo channel
   hf_pwm_channel_config_t servo_config;
-  servo_config.output_pin = SERVO_PIN;
-  servo_config.frequency_hz = SERVO_FREQUENCY_HZ;
-  servo_config.resolution_bits = SERVO_RESOLUTION_BITS;
+  servo_config.output_pin = PWM_PINS[static_cast<size_t>(PwmPinType::SERVO)];
+  servo_config.frequency_hz = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::SERVO)].frequency_hz;
+  servo_config.resolution_bits = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::SERVO)].resolution_bits;
   servo_config.output_mode = hf_pwm_output_mode_t::Normal;
   servo_config.alignment = hf_pwm_alignment_t::EdgeAligned;
   servo_config.idle_state = hf_pwm_idle_state_t::Low;
@@ -281,9 +303,9 @@ bool ConfigureAudioChannel(EspPwm& pwm) {
 
   // Configure audio channel
   hf_pwm_channel_config_t audio_config;
-  audio_config.output_pin = AUDIO_PIN;
-  audio_config.frequency_hz = AUDIO_FREQUENCY_HZ;
-  audio_config.resolution_bits = AUDIO_RESOLUTION_BITS;
+  audio_config.output_pin = PWM_PINS[static_cast<size_t>(PwmPinType::AUDIO)];
+  audio_config.frequency_hz = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::AUDIO)].frequency_hz;
+  audio_config.resolution_bits = PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::AUDIO)].resolution_bits;
   audio_config.output_mode = hf_pwm_output_mode_t::Normal;
   audio_config.alignment = hf_pwm_alignment_t::EdgeAligned;
   audio_config.idle_state = hf_pwm_idle_state_t::Low;
@@ -457,7 +479,7 @@ void DemonstrateAudioGeneration(EspPwm& pwm) {
   }
 
   // Return to original frequency
-  if (pwm.SetFrequency(4, AUDIO_FREQUENCY_HZ) != hf_pwm_err_t::PWM_SUCCESS) {
+  if (pwm.SetFrequency(4, PWM_CHANNEL_PARAMS[static_cast<size_t>(PwmPinType::AUDIO)].frequency_hz) != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to restore audio frequency");
     return;
   }

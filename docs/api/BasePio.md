@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [INFO: **Data Structures**](#-data-structures)
+- [INFO: **Usage Examples**](#-usage-examples)
+- [TEST: **Best Practices**](#-best-practices)
 
 ---
 
@@ -29,7 +29,7 @@ The `BasePio` class provides a comprehensive abstraction for Programmable IO ope
 ### ✨ **Key Features**
 
 - ⚡ **Precise Timing** - Nanosecond resolution timing control
-- 📊 **Buffered Operations** - Efficient symbol transmission and reception
+- INFO: **Buffered Operations** - Efficient symbol transmission and reception
 - 🔄 **Asynchronous Operation** - Non-blocking with callback support
 - 🎯 **Multi-Channel Support** - Simultaneous operation on multiple channels
 - 🔧 **Flexible Configuration** - Configurable polarity, idle states, and timing
@@ -82,19 +82,19 @@ classDiagram
 
 ## 📋 **Error Codes**
 
-### ✅ **Success Codes**
+### SUCCESS: **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `PIO_SUCCESS` | 0 | ✅ Operation completed successfully |
+| `PIO_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
 
-### ❌ **General Error Codes**
+### ERROR: **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `PIO_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `PIO_ERR_NOT_INITIALIZED` | 2 | ⚠️ PIO not initialized | Call Initialize() first |
-| `PIO_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ PIO already initialized | Check initialization state |
+| `PIO_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
+| `PIO_ERR_NOT_INITIALIZED` | 2 | WARNING: PIO not initialized | Call Initialize() first |
+| `PIO_ERR_ALREADY_INITIALIZED` | 3 | WARNING: PIO already initialized | Check initialization state |
 | `PIO_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `PIO_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `PIO_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -105,8 +105,8 @@ classDiagram
 |------|-------|-------------|------------|
 | `PIO_ERR_INVALID_CHANNEL` | 7 | 🚫 Invalid PIO channel | Use valid channel numbers |
 | `PIO_ERR_CHANNEL_BUSY` | 8 | 🔄 Channel already in use | Wait or use different channel |
-| `PIO_ERR_CHANNEL_NOT_AVAILABLE` | 9 | ⚠️ Channel not available | Check channel availability |
-| `PIO_ERR_INSUFFICIENT_CHANNELS` | 10 | 📊 Insufficient channels | Reduce channel count |
+| `PIO_ERR_CHANNEL_NOT_AVAILABLE` | 9 | WARNING: Channel not available | Check channel availability |
+| `PIO_ERR_INSUFFICIENT_CHANNELS` | 10 | INFO: Insufficient channels | Reduce channel count |
 
 ### ⏱️ **Timing Error Codes**
 
@@ -118,7 +118,7 @@ classDiagram
 | `PIO_ERR_DURATION_TOO_LONG` | 14 | ⏰ Duration too long | Reduce duration |
 | `PIO_ERR_DURATION_TOO_SHORT` | 15 | ⚡ Duration too short | Increase duration |
 
-### 📊 **Buffer Error Codes**
+### INFO: **Buffer Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
@@ -287,7 +287,7 @@ virtual hf_pio_err_t StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer,
 virtual hf_pio_err_t StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept = 0;
 ```
 
-### 📊 **Status and Capabilities**
+### INFO: **Status and Capabilities**
 
 ```cpp
 /**
@@ -305,7 +305,7 @@ virtual bool IsChannelBusy(uint8_t channel_id) const noexcept = 0;
  * @param status [out] Status information structure
  * @return hf_pio_err_t error code
  * 
- * 📊 Retrieves comprehensive status information about a channel.
+ * INFO: Retrieves comprehensive status information about a channel.
  */
 virtual hf_pio_err_t GetChannelStatus(uint8_t channel_id,
                                     hf_pio_channel_status_t &status) const noexcept = 0;
@@ -363,7 +363,7 @@ virtual void ClearCallbacks() noexcept = 0;
 
 ---
 
-## 📊 **Data Structures**
+## INFO: **Data Structures**
 
 ### ⚙️ **Channel Configuration**
 
@@ -388,7 +388,7 @@ struct hf_pio_symbol_t {
 };
 ```
 
-### 📊 **Channel Status**
+### INFO: **Channel Status**
 
 ```cpp
 struct hf_pio_channel_status_t {
@@ -440,7 +440,7 @@ struct hf_pio_statistics_t {
 
 ---
 
-## 💡 **Usage Examples**
+## INFO: **Usage Examples**
 
 ### 🎨 **WS2812 LED Control**
 
@@ -745,45 +745,45 @@ private:
 
 ---
 
-## 🧪 **Best Practices**
+## TEST: **Best Practices**
 
-### ✅ **Recommended Patterns**
+### SUCCESS: **Recommended Patterns**
 
 ```cpp
-// ✅ Always check initialization
+// SUCCESS: Always check initialization
 if (!pio.EnsureInitialized()) {
-    printf("❌ PIO initialization failed\n");
+    printf("ERROR: PIO initialization failed\n");
     return false;
 }
 
-// ✅ Validate channel configuration
+// SUCCESS: Validate channel configuration
 hf_pio_capabilities_t caps;
 if (pio.GetCapabilities(caps) == hf_pio_err_t::PIO_SUCCESS) {
     if (channel_id >= caps.max_channels) {
-        printf("❌ Channel %u exceeds maximum (%u)\n", channel_id, caps.max_channels);
+        printf("ERROR: Channel %u exceeds maximum (%u)\n", channel_id, caps.max_channels);
         return;
     }
 }
 
-// ✅ Use appropriate timing resolution
+// SUCCESS: Use appropriate timing resolution
 uint32_t resolution_ns = 1000;  // 1μs for most applications
 if (high_precision_needed) {
     resolution_ns = 100;  // 100ns for precise timing
 }
 
-// ✅ Handle transmission errors gracefully
+// SUCCESS: Handle transmission errors gracefully
 hf_pio_err_t result = pio.Transmit(channel_id, symbols, count);
 if (result != hf_pio_err_t::PIO_SUCCESS) {
-    printf("⚠️ Transmission error: %s\n", HfPioErrToString(result));
+    printf("WARNING: Transmission error: %s\n", HfPioErrToString(result));
     // Implement retry logic or error recovery
 }
 
-// ✅ Use callbacks for asynchronous operation
+// SUCCESS: Use callbacks for asynchronous operation
 pio.SetTransmitCallback([](uint8_t ch, size_t sent, void* data) {
-    printf("✅ Transmitted %zu symbols on channel %u\n", sent, ch);
+    printf("SUCCESS: Transmitted %zu symbols on channel %u\n", sent, ch);
 });
 
-// ✅ Monitor channel status
+// SUCCESS: Monitor channel status
 hf_pio_channel_status_t status;
 if (pio.GetChannelStatus(channel_id, status) == hf_pio_err_t::PIO_SUCCESS) {
     if (status.is_busy) {
@@ -792,26 +792,26 @@ if (pio.GetChannelStatus(channel_id, status) == hf_pio_err_t::PIO_SUCCESS) {
 }
 ```
 
-### ❌ **Common Pitfalls**
+### ERROR: **Common Pitfalls**
 
 ```cpp
-// ❌ Don't ignore timing requirements
+// ERROR: Don't ignore timing requirements
 // WS2812 requires precise 350ns/700ns timing
 hf_pio_symbol_t wrong_timing[] = {
     {4, true},   // 400ns - too long!
     {8, false}   // 800ns - too long!
 };
 
-// ❌ Don't use invalid channel numbers
+// ERROR: Don't use invalid channel numbers
 pio.ConfigureChannel(99, config);  // Invalid channel
 
-// ❌ Don't ignore buffer size limits
+// ERROR: Don't ignore buffer size limits
 hf_pio_symbol_t huge_buffer[10000];  // May exceed hardware limits
 
-// ❌ Don't assume all protocols work the same
+// ERROR: Don't assume all protocols work the same
 // Different IR protocols have different timing requirements
 
-// ❌ Don't forget to stop reception
+// ERROR: Don't forget to stop reception
 pio.StartReceive(0, buffer, 64);
 // Missing: pio.StopReceive(0, count);
 ```

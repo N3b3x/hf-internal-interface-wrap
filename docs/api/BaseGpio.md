@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [INFO: **Data Structures**](#-data-structures)
+- [INFO: **Usage Examples**](#-usage-examples)
+- [TEST: **Best Practices**](#-best-practices)
 
 ---
 
@@ -35,9 +35,9 @@ The `BaseGpio` class provides a comprehensive GPIO abstraction that serves as th
 - 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
 - 🔌 **Platform Agnostic** - Works with MCU GPIOs, I2C expanders, SPI expanders
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
-- 📊 **Statistics & Diagnostics** - Built-in monitoring and health reporting
+- INFO: **Statistics & Diagnostics** - Built-in monitoring and health reporting
 
-### 📊 **Supported Hardware**
+### INFO: **Supported Hardware**
 
 | Implementation | Hardware Type | Pins | Features | Use Cases |
 |----------------|---------------|------|----------|-----------|
@@ -90,19 +90,19 @@ classDiagram
 
 The GPIO system uses comprehensive error codes for robust error handling:
 
-### ✅ **Success Codes**
+### SUCCESS: **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `GPIO_SUCCESS` | 0 | ✅ Operation completed successfully |
+| `GPIO_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
 
-### ❌ **General Error Codes**
+### ERROR: **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `GPIO_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `GPIO_ERR_NOT_INITIALIZED` | 2 | ⚠️ GPIO not initialized | Call Initialize() first |
-| `GPIO_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ GPIO already initialized | Check initialization state |
+| `GPIO_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
+| `GPIO_ERR_NOT_INITIALIZED` | 2 | WARNING: GPIO not initialized | Call Initialize() first |
+| `GPIO_ERR_ALREADY_INITIALIZED` | 3 | WARNING: GPIO already initialized | Check initialization state |
 | `GPIO_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `GPIO_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `GPIO_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -137,12 +137,12 @@ The GPIO system uses comprehensive error codes for robust error handling:
 | `GPIO_ERR_RESOURCE_BUSY` | 20 | 🔄 Resource busy | Wait for resource availability |
 | `GPIO_ERR_RESOURCE_UNAVAILABLE` | 21 | 🚫 Resource unavailable | Check resource allocation |
 
-### 📖 **I/O Error Codes**
+### READ: **I/O Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `GPIO_ERR_READ_FAILURE` | 22 | 📖 Read failure | Check pin configuration and connections |
-| `GPIO_ERR_WRITE_FAILURE` | 23 | ✍️ Write failure | Check pin configuration and load |
+| `GPIO_ERR_READ_FAILURE` | 22 | READ: Read failure | Check pin configuration and connections |
+| `GPIO_ERR_WRITE_FAILURE` | 23 | WRITE: Write failure | Check pin configuration and load |
 | `GPIO_ERR_DIRECTION_MISMATCH` | 24 | 🔄 Direction mismatch | Set correct pin direction |
 | `GPIO_ERR_PULL_RESISTOR_FAILURE` | 25 | 🔌 Pull resistor failure | Check pull resistor configuration |
 
@@ -152,8 +152,8 @@ The GPIO system uses comprehensive error codes for robust error handling:
 |------|-------|-------------|------------|
 | `GPIO_ERR_INTERRUPT_NOT_SUPPORTED` | 26 | 🚫 Interrupt not supported | Check hardware capabilities |
 | `GPIO_ERR_INTERRUPT_ALREADY_ENABLED` | 27 | 🔄 Interrupt already enabled | Check interrupt state |
-| `GPIO_ERR_INTERRUPT_NOT_ENABLED` | 28 | ⚠️ Interrupt not enabled | Enable interrupt first |
-| `GPIO_ERR_INTERRUPT_HANDLER_FAILED` | 29 | ❌ Interrupt handler failed | Check callback function |
+| `GPIO_ERR_INTERRUPT_NOT_ENABLED` | 28 | WARNING: Interrupt not enabled | Enable interrupt first |
+| `GPIO_ERR_INTERRUPT_HANDLER_FAILED` | 29 | ERROR: Interrupt handler failed | Check callback function |
 
 ---
 
@@ -217,7 +217,7 @@ bool EnsureDeinitialized() noexcept;
  * @brief Get current pin direction
  * @return Current direction setting
  * 
- * 📊 Returns the current pin direction (input or output).
+ * INFO: Returns the current pin direction (input or output).
  */
 [[nodiscard]] hf_gpio_direction_t GetDirection() const noexcept;
 
@@ -240,7 +240,7 @@ hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept;
  * @brief Check if pin is configured as input
  * @return true if input, false if output
  * 
- * ✅ Quick check for input mode.
+ * SUCCESS: Quick check for input mode.
  */
 [[nodiscard]] bool IsInput() const noexcept;
 
@@ -248,7 +248,7 @@ hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept;
  * @brief Check if pin is configured as output
  * @return true if output, false if input
  * 
- * ✅ Quick check for output mode.
+ * SUCCESS: Quick check for output mode.
  */
 [[nodiscard]] bool IsOutput() const noexcept;
 
@@ -256,7 +256,7 @@ hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept;
  * @brief Get output drive mode
  * @return Current output mode setting
  * 
- * 📊 Returns the current output drive mode (push-pull or open-drain).
+ * INFO: Returns the current output drive mode (push-pull or open-drain).
  */
 [[nodiscard]] hf_gpio_output_mode_t GetOutputMode() const noexcept;
 
@@ -276,7 +276,7 @@ hf_gpio_err_t SetOutputMode(hf_gpio_output_mode_t mode) noexcept;
  * @brief Get pull resistor configuration
  * @return Current pull mode setting
  * 
- * 📊 Returns the current pull resistor configuration.
+ * INFO: Returns the current pull resistor configuration.
  */
 [[nodiscard]] hf_gpio_pull_mode_t GetPullMode() const noexcept;
 
@@ -300,7 +300,7 @@ hf_gpio_err_t SetPullMode(hf_gpio_pull_mode_t mode) noexcept;
  * @brief Get current logical state
  * @return Current logical state
  * 
- * 📊 Returns the current logical state (active or inactive).
+ * INFO: Returns the current logical state (active or inactive).
  */
 [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
 
@@ -308,7 +308,7 @@ hf_gpio_err_t SetPullMode(hf_gpio_pull_mode_t mode) noexcept;
  * @brief Get active state polarity
  * @return Current active state configuration
  * 
- * 📊 Returns whether the pin is active-high or active-low.
+ * INFO: Returns whether the pin is active-high or active-low.
  */
 [[nodiscard]] hf_gpio_active_state_t GetActiveState() const noexcept;
 
@@ -361,7 +361,7 @@ hf_gpio_err_t Toggle() noexcept;
  * @param is_active Reference to store result
  * @return hf_gpio_err_t error code
  * 
- * ✅ Reads the current logical state of the pin.
+ * SUCCESS: Reads the current logical state of the pin.
  * 
  * @example
  * bool is_on;
@@ -379,7 +379,7 @@ hf_gpio_err_t IsActive(bool &is_active) noexcept;
  * @brief Check if interrupts are supported
  * @return true if supported, false otherwise
  * 
- * ✅ Checks if the hardware supports interrupts.
+ * SUCCESS: Checks if the hardware supports interrupts.
  */
 [[nodiscard]] virtual bool SupportsInterrupts() const noexcept;
 
@@ -437,14 +437,14 @@ virtual hf_gpio_err_t DisableInterrupt() noexcept;
 virtual hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept;
 ```
 
-### 📊 **Information and Status**
+### INFO: **Information and Status**
 
 ```cpp
 /**
  * @brief Check if pin is available
  * @return true if available, false otherwise
  * 
- * ✅ Checks if the pin is available for use.
+ * SUCCESS: Checks if the pin is available for use.
  */
 [[nodiscard]] virtual bool IsPinAvailable() const noexcept = 0;
 
@@ -452,7 +452,7 @@ virtual hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept;
  * @brief Get maximum number of pins
  * @return Maximum pin count
  * 
- * 📊 Returns the total number of pins available on this hardware.
+ * INFO: Returns the total number of pins available on this hardware.
  */
 [[nodiscard]] virtual uint8_t GetMaxPins() const noexcept = 0;
 
@@ -468,7 +468,7 @@ virtual hf_gpio_err_t WaitForInterrupt(uint32_t timeout_ms = 0) noexcept;
  * @brief Get GPIO pin number
  * @return Pin number/identifier
  * 
- * 📊 Returns the platform-agnostic pin identifier.
+ * INFO: Returns the platform-agnostic pin identifier.
  */
 [[nodiscard]] hf_pin_num_t GetPin() const noexcept;
 ```
@@ -497,7 +497,7 @@ virtual hf_gpio_err_t ResetDiagnostics() noexcept;
  * @param statistics Reference to store statistics data
  * @return hf_gpio_err_t error code
  * 
- * 📊 Retrieves comprehensive statistics about GPIO operations.
+ * INFO: Retrieves comprehensive statistics about GPIO operations.
  */
 virtual hf_gpio_err_t GetStatistics(hf_gpio_statistics_t &statistics) const noexcept;
 
@@ -513,7 +513,7 @@ virtual hf_gpio_err_t GetDiagnostics(hf_gpio_diagnostics_t &diagnostics) const n
 
 ---
 
-## 📊 **Data Structures**
+## INFO: **Data Structures**
 
 ### 🔌 **GPIO State Enums**
 
@@ -596,7 +596,7 @@ using InterruptCallback = std::function<void(BaseGpio *gpio,
 
 ---
 
-## 💡 **Usage Examples**
+## INFO: **Usage Examples**
 
 ### 🔌 **Basic LED Control**
 
@@ -609,7 +609,7 @@ EspGpio led_pin(2, HF_GPIO_DIRECTION_OUTPUT, HF_GPIO_ACTIVE_LOW);
 void setup_led() {
     // Initialize GPIO (lazy initialization)
     if (led_pin.EnsureInitialized()) {
-        printf("✅ LED GPIO initialized\n");
+        printf("SUCCESS: LED GPIO initialized\n");
     }
 }
 
@@ -617,7 +617,7 @@ void control_led() {
     // Turn LED on
     hf_gpio_err_t result = led_pin.SetActive();
     if (result != hf_gpio_err_t::GPIO_SUCCESS) {
-        printf("❌ LED on failed: %s\n", HfGpioErrToString(result));
+        printf("ERROR: LED on failed: %s\n", HfGpioErrToString(result));
     }
     
     // Wait a moment
@@ -626,7 +626,7 @@ void control_led() {
     // Turn LED off
     result = led_pin.SetInactive();
     if (result != hf_gpio_err_t::GPIO_SUCCESS) {
-        printf("❌ LED off failed: %s\n", HfGpioErrToString(result));
+        printf("ERROR: LED off failed: %s\n", HfGpioErrToString(result));
     }
 }
 
@@ -659,7 +659,7 @@ void on_button_press(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* 
     // Check if button is still pressed
     bool is_pressed;
     if (gpio->IsActive(is_pressed) == hf_gpio_err_t::GPIO_SUCCESS && is_pressed) {
-        printf("✅ Button confirmed pressed\n");
+        printf("SUCCESS: Button confirmed pressed\n");
         // Handle button press
     }
 }
@@ -680,12 +680,12 @@ void setup_button() {
         
         if (result == hf_gpio_err_t::GPIO_SUCCESS) {
             button_pin.EnableInterrupt();
-            printf("✅ Button interrupt configured\n");
+            printf("SUCCESS: Button interrupt configured\n");
         } else {
-            printf("❌ Button interrupt failed: %s\n", HfGpioErrToString(result));
+            printf("ERROR: Button interrupt failed: %s\n", HfGpioErrToString(result));
         }
     } else {
-        printf("⚠️ Interrupts not supported on this GPIO\n");
+        printf("WARNING: Interrupts not supported on this GPIO\n");
     }
 }
 
@@ -717,14 +717,14 @@ public:
     void set_as_output() {
         hf_gpio_err_t result = gpio_->SetDirection(HF_GPIO_DIRECTION_OUTPUT);
         if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-            printf("✅ Pin configured as output\n");
+            printf("SUCCESS: Pin configured as output\n");
         }
     }
     
     void set_as_input() {
         hf_gpio_err_t result = gpio_->SetDirection(HF_GPIO_DIRECTION_INPUT);
         if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-            printf("✅ Pin configured as input\n");
+            printf("SUCCESS: Pin configured as input\n");
         }
     }
     
@@ -736,7 +736,7 @@ public:
                 gpio_->SetInactive();
             }
         } else {
-            printf("❌ Pin not configured as output\n");
+            printf("ERROR: Pin not configured as output\n");
         }
     }
     
@@ -747,7 +747,7 @@ public:
                 return value;
             }
         } else {
-            printf("❌ Pin not configured as input\n");
+            printf("ERROR: Pin not configured as input\n");
         }
         return false;
     }
@@ -776,7 +776,7 @@ void setup_expander() {
     expander_pin1.SetDirection(HF_GPIO_DIRECTION_INPUT);
     expander_pin1.SetPullMode(HF_GPIO_PULL_MODE_UP);
     
-    printf("✅ I2C GPIO expander configured\n");
+    printf("SUCCESS: I2C GPIO expander configured\n");
 }
 
 void control_expander_led() {
@@ -793,7 +793,7 @@ void control_expander_led() {
 }
 ```
 
-### 📊 **GPIO Monitoring System**
+### INFO: **GPIO Monitoring System**
 
 ```cpp
 #include "mcu/esp32/EspGpio.h"
@@ -808,7 +808,7 @@ public:
     }
     
     void monitor_all_pins() {
-        printf("📊 GPIO Status Report:\n");
+        printf("INFO: GPIO Status Report:\n");
         printf("=====================\n");
         
         for (auto* pin : gpio_pins_) {
@@ -816,7 +816,7 @@ public:
             
             // Check if initialized
             if (!pin->IsInitialized()) {
-                printf("❌ Not initialized\n");
+                printf("ERROR: Not initialized\n");
                 continue;
             }
             
@@ -861,7 +861,7 @@ public:
             if (pin->GetDiagnostics(diag) == hf_gpio_err_t::GPIO_SUCCESS) {
                 printf("Pin %d: %s | Last error: %s | Consecutive errors: %u\n",
                        pin->GetPin(),
-                       diag.gpioHealthy ? "✅ Healthy" : "❌ Unhealthy",
+                       diag.gpioHealthy ? "SUCCESS: Healthy" : "ERROR: Unhealthy",
                        HfGpioErrToString(diag.lastErrorCode),
                        diag.consecutiveErrors);
             }
@@ -872,71 +872,71 @@ public:
 
 ---
 
-## 🧪 **Best Practices**
+## TEST: **Best Practices**
 
-### ✅ **Recommended Patterns**
+### SUCCESS: **Recommended Patterns**
 
 ```cpp
-// ✅ Always check initialization
+// SUCCESS: Always check initialization
 if (!gpio.EnsureInitialized()) {
-    printf("❌ GPIO initialization failed\n");
+    printf("ERROR: GPIO initialization failed\n");
     return false;
 }
 
-// ✅ Validate pin availability
+// SUCCESS: Validate pin availability
 if (!gpio.IsPinAvailable()) {
-    printf("❌ Pin not available\n");
+    printf("ERROR: Pin not available\n");
     return;
 }
 
-// ✅ Set appropriate pull resistors for inputs
+// SUCCESS: Set appropriate pull resistors for inputs
 gpio.SetPullMode(HF_GPIO_PULL_MODE_UP);  // For buttons
 gpio.SetPullMode(HF_GPIO_PULL_MODE_DOWN);  // For active-high sensors
 
-// ✅ Use appropriate active state for LEDs
+// SUCCESS: Use appropriate active state for LEDs
 gpio.SetActiveState(HF_GPIO_ACTIVE_LOW);  // Common for LED cathodes
 
-// ✅ Handle all error codes
+// SUCCESS: Handle all error codes
 hf_gpio_err_t result = gpio.SetActive();
 if (result != hf_gpio_err_t::GPIO_SUCCESS) {
-    printf("⚠️ GPIO Error: %s\n", HfGpioErrToString(result));
+    printf("WARNING: GPIO Error: %s\n", HfGpioErrToString(result));
     // Handle specific error types
 }
 
-// ✅ Use interrupts for responsive input handling
+// SUCCESS: Use interrupts for responsive input handling
 if (gpio.SupportsInterrupts()) {
     gpio.ConfigureInterrupt(HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE, callback);
     gpio.EnableInterrupt();
 }
 
-// ✅ Monitor statistics for system health
+// SUCCESS: Monitor statistics for system health
 hf_gpio_statistics_t stats;
 if (gpio.GetStatistics(stats) == hf_gpio_err_t::GPIO_SUCCESS) {
     if (stats.failedOperations > 10) {
-        printf("⚠️ High GPIO failure rate detected\n");
+        printf("WARNING: High GPIO failure rate detected\n");
     }
 }
 ```
 
-### ❌ **Common Pitfalls**
+### ERROR: **Common Pitfalls**
 
 ```cpp
-// ❌ Don't ignore initialization
+// ERROR: Don't ignore initialization
 gpio.SetActive();  // May fail silently
 
-// ❌ Don't use without checking pin availability
+// ERROR: Don't use without checking pin availability
 gpio.SetDirection(HF_GPIO_DIRECTION_OUTPUT);  // May fail on invalid pin
 
-// ❌ Don't ignore error codes
+// ERROR: Don't ignore error codes
 gpio.SetActive();  // Error handling missing
 
-// ❌ Don't assume pin direction
+// ERROR: Don't assume pin direction
 gpio.IsActive(value);  // May fail if pin is output
 
-// ❌ Don't use interrupts without checking support
+// ERROR: Don't use interrupts without checking support
 gpio.ConfigureInterrupt(trigger, callback);  // May fail if not supported
 
-// ❌ Don't forget pull resistors for floating inputs
+// ERROR: Don't forget pull resistors for floating inputs
 // Floating inputs can cause erratic behavior
 ```
 
@@ -960,7 +960,7 @@ gpio.SetOutputMode(HF_GPIO_OUTPUT_MODE_OPEN_DRAIN);  // For open-drain applicati
 hf_gpio_statistics_t stats;
 gpio.GetStatistics(stats);
 if (stats.averageOperationTimeUs > 100) {
-    printf("⚠️ Slow GPIO operations detected\n");
+    printf("WARNING: Slow GPIO operations detected\n");
 }
 ```
 

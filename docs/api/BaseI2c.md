@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [INFO: **Data Structures**](#-data-structures)
+- [INFO: **Usage Examples**](#-usage-examples)
+- [TEST: **Best Practices**](#-best-practices)
 
 ---
 
@@ -34,10 +34,10 @@ The `BaseI2c` class provides a comprehensive I2C bus abstraction that serves as 
 - ⚡ **Clock Stretching** - Automatic handling of clock stretching
 - 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
 - 🔌 **Platform Agnostic** - Works with internal and external I2C controllers
-- 📊 **Statistics & Diagnostics** - Built-in monitoring and health reporting
+- INFO: **Statistics & Diagnostics** - Built-in monitoring and health reporting
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 
-### 📊 **Supported Hardware**
+### INFO: **Supported Hardware**
 
 | Implementation | Hardware Type | Speed | Features | Use Cases |
 |----------------|---------------|-------|----------|-----------|
@@ -90,19 +90,19 @@ classDiagram
 
 The I2C system uses comprehensive error codes for robust error handling:
 
-### ✅ **Success Codes**
+### SUCCESS: **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `I2C_SUCCESS` | 0 | ✅ Operation completed successfully |
+| `I2C_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
 
-### ❌ **General Error Codes**
+### ERROR: **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `I2C_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `I2C_ERR_NOT_INITIALIZED` | 2 | ⚠️ I2C not initialized | Call Initialize() first |
-| `I2C_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ I2C already initialized | Check initialization state |
+| `I2C_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
+| `I2C_ERR_NOT_INITIALIZED` | 2 | WARNING: I2C not initialized | Call Initialize() first |
+| `I2C_ERR_ALREADY_INITIALIZED` | 3 | WARNING: I2C already initialized | Check initialization state |
 | `I2C_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `I2C_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `I2C_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -112,7 +112,7 @@ The I2C system uses comprehensive error codes for robust error handling:
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
 | `I2C_ERR_BUS_BUSY` | 7 | 🔄 Bus busy | Wait for bus availability |
-| `I2C_ERR_BUS_ERROR` | 8 | ❌ Bus error | Check bus wiring and termination |
+| `I2C_ERR_BUS_ERROR` | 8 | ERROR: Bus error | Check bus wiring and termination |
 | `I2C_ERR_BUS_ARBITRATION_LOST` | 9 | 🔄 Arbitration lost | Normal in multi-master systems |
 | `I2C_ERR_BUS_NOT_AVAILABLE` | 10 | 🚫 Bus not available | Check bus configuration |
 | `I2C_ERR_BUS_TIMEOUT` | 11 | ⏰ Bus timeout | Check bus speed and load |
@@ -122,17 +122,17 @@ The I2C system uses comprehensive error codes for robust error handling:
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
 | `I2C_ERR_DEVICE_NOT_FOUND` | 12 | 🔍 Device not found | Check device address and connections |
-| `I2C_ERR_DEVICE_NACK` | 13 | ❌ Device NACK | Check device address and data |
+| `I2C_ERR_DEVICE_NACK` | 13 | ERROR: Device NACK | Check device address and data |
 | `I2C_ERR_DEVICE_NOT_RESPONDING` | 14 | 🔇 Device not responding | Check device power and address |
 | `I2C_ERR_INVALID_ADDRESS` | 15 | 🆔 Invalid device address | Use valid 7-bit address |
 
-### 📊 **Data Error Codes**
+### INFO: **Data Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
 | `I2C_ERR_DATA_TOO_LONG` | 16 | 📏 Data too long | Check data length limits |
-| `I2C_ERR_READ_FAILURE` | 17 | 📖 Read failure | Check device and bus state |
-| `I2C_ERR_WRITE_FAILURE` | 18 | ✍️ Write failure | Check device and bus state |
+| `I2C_ERR_READ_FAILURE` | 17 | READ: Read failure | Check device and bus state |
+| `I2C_ERR_WRITE_FAILURE` | 18 | WRITE: Write failure | Check device and bus state |
 | `I2C_ERR_TIMEOUT` | 19 | ⏰ Operation timeout | Check bus speed and device response |
 
 ### 🌐 **Hardware Error Codes**
@@ -150,7 +150,7 @@ The I2C system uses comprehensive error codes for robust error handling:
 |------|-------|-------------|------------|
 | `I2C_ERR_INVALID_CONFIGURATION` | 24 | ⚙️ Invalid configuration | Check configuration parameters |
 | `I2C_ERR_UNSUPPORTED_OPERATION` | 25 | 🚫 Unsupported operation | Check hardware capabilities |
-| `I2C_ERR_INVALID_CLOCK_SPEED` | 26 | 📊 Invalid clock speed | Use supported baud rate |
+| `I2C_ERR_INVALID_CLOCK_SPEED` | 26 | INFO: Invalid clock speed | Use supported baud rate |
 | `I2C_ERR_PIN_CONFIGURATION_ERROR` | 27 | 🔌 Pin configuration error | Check pin assignments |
 
 ---
@@ -434,7 +434,7 @@ virtual hf_i2c_err_t ResetDiagnostics() noexcept;
  * @param statistics Reference to store statistics data
  * @return hf_i2c_err_t error code
  * 
- * 📊 Retrieves comprehensive statistics about I2C operations.
+ * INFO: Retrieves comprehensive statistics about I2C operations.
  */
 virtual hf_i2c_err_t GetStatistics(hf_i2c_statistics_t &statistics) const noexcept;
 
@@ -450,7 +450,7 @@ virtual hf_i2c_err_t GetDiagnostics(hf_i2c_diagnostics_t &diagnostics) const noe
 
 ---
 
-## 📊 **Data Structures**
+## INFO: **Data Structures**
 
 ### 📈 **I2C Statistics Structure**
 
@@ -497,7 +497,7 @@ struct hf_i2c_diagnostics_t {
 
 ---
 
-## 💡 **Usage Examples**
+## INFO: **Usage Examples**
 
 ### 🔍 **Device Discovery**
 
@@ -517,7 +517,7 @@ EspI2c i2c(config);
 void discover_devices() {
     // Initialize I2C
     if (!i2c.EnsureInitialized()) {
-        printf("❌ I2C initialization failed\n");
+        printf("ERROR: I2C initialization failed\n");
         return;
     }
     
@@ -528,19 +528,19 @@ void discover_devices() {
     uint8_t count = i2c.ScanBus(devices, 16);
     
     if (count == 0) {
-        printf("❌ No I2C devices found\n");
+        printf("ERROR: No I2C devices found\n");
         return;
     }
     
-    printf("✅ Found %u I2C devices:\n", count);
+    printf("SUCCESS: Found %u I2C devices:\n", count);
     for (uint8_t i = 0; i < count; i++) {
         printf("  Address: 0x%02X\n", devices[i]);
         
         // Check if device is responding
         if (i2c.IsDevicePresent(devices[i])) {
-            printf("    Status: ✅ Responding\n");
+            printf("    Status: SUCCESS: Responding\n");
         } else {
-            printf("    Status: ❌ Not responding\n");
+            printf("    Status: ERROR: Not responding\n");
         }
     }
 }
@@ -611,16 +611,16 @@ void temperature_monitoring() {
     Tmp102Sensor sensor(&i2c, 0x48);
     
     if (!sensor.initialize()) {
-        printf("❌ Sensor initialization failed\n");
+        printf("ERROR: Sensor initialization failed\n");
         return;
     }
     
     if (!sensor.is_present()) {
-        printf("❌ Temperature sensor not found\n");
+        printf("ERROR: Temperature sensor not found\n");
         return;
     }
     
-    printf("✅ Temperature sensor found\n");
+    printf("SUCCESS: Temperature sensor found\n");
     
     // Configure sensor (12-bit resolution, normal mode)
     sensor.set_configuration(0x60A0);
@@ -630,7 +630,7 @@ void temperature_monitoring() {
         if (temperature > -900.0f) {
             printf("🌡️ Temperature: %.2f°C\n", temperature);
         } else {
-            printf("❌ Temperature read failed\n");
+            printf("ERROR: Temperature read failed\n");
         }
         
         vTaskDelay(pdMS_TO_TICKS(1000));
@@ -638,7 +638,7 @@ void temperature_monitoring() {
 }
 ```
 
-### 📊 **EEPROM Access (24LC256)**
+### INFO: **EEPROM Access (24LC256)**
 
 ```cpp
 #include "mcu/esp32/EspI2c.h"
@@ -666,7 +666,7 @@ public:
         
         hf_i2c_err_t result = i2c_->Write(this->address_, tx_data, 3);
         if (result != hf_i2c_err_t::I2C_SUCCESS) {
-            printf("❌ Write failed: %s\n", HfI2CErrToString(result));
+            printf("ERROR: Write failed: %s\n", HfI2CErrToString(result));
             return false;
         }
         
@@ -684,7 +684,7 @@ public:
         // Write address, then read data
         hf_i2c_err_t result = i2c_->WriteRead(this->address_, addr_data, 2, &data, 1);
         if (result != hf_i2c_err_t::I2C_SUCCESS) {
-            printf("❌ Read failed: %s\n", HfI2CErrToString(result));
+            printf("ERROR: Read failed: %s\n", HfI2CErrToString(result));
             return false;
         }
         
@@ -693,7 +693,7 @@ public:
     
     bool write_page(uint16_t address, const uint8_t* data, uint8_t length) {
         if (length > 64) {  // Page size limit
-            printf("❌ Page size too large\n");
+            printf("ERROR: Page size too large\n");
             return false;
         }
         
@@ -702,13 +702,13 @@ public:
         uint16_t page_end = page_start + 64;
         
         if (address + length > page_end) {
-            printf("❌ Data crosses page boundary\n");
+            printf("ERROR: Data crosses page boundary\n");
             return false;
         }
         
         auto tx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length + 2);
         if (!tx_data) {
-            printf("❌ Failed to allocate memory for transmit buffer\n");
+            printf("ERROR: Failed to allocate memory for transmit buffer\n");
             return false;
         }
         
@@ -720,7 +720,7 @@ public:
         // tx_data automatically cleaned up when going out of scope
         
         if (result != hf_i2c_err_t::I2C_SUCCESS) {
-            printf("❌ Page write failed: %s\n", HfI2CErrToString(result));
+            printf("ERROR: Page write failed: %s\n", HfI2CErrToString(result));
             return false;
         }
         
@@ -738,7 +738,7 @@ public:
         // Write address, then read data
         hf_i2c_err_t result = i2c_->WriteRead(this->address_, addr_data, 2, data, length);
         if (result != hf_i2c_err_t::I2C_SUCCESS) {
-            printf("❌ Read failed: %s\n", HfI2CErrToString(result));
+            printf("ERROR: Read failed: %s\n", HfI2CErrToString(result));
             return false;
         }
         
@@ -751,7 +751,7 @@ void eeprom_test() {
     Eeprom24LC256 eeprom(&i2c, 0x50);
     
     if (!eeprom.initialize()) {
-        printf("❌ EEPROM initialization failed\n");
+        printf("ERROR: EEPROM initialization failed\n");
         return;
     }
     
@@ -760,14 +760,14 @@ void eeprom_test() {
     uint16_t write_addr = 0x0000;
     
     if (eeprom.write_page(write_addr, test_data, sizeof(test_data) - 1)) {
-        printf("✅ Data written to EEPROM\n");
+        printf("SUCCESS: Data written to EEPROM\n");
     }
     
     // Read back data
     uint8_t read_data[16];
     if (eeprom.read_bytes(write_addr, read_data, sizeof(test_data) - 1)) {
         read_data[sizeof(test_data) - 1] = '\0';  // Null terminate
-        printf("📖 Read from EEPROM: %s\n", read_data);
+        printf("READ: Read from EEPROM: %s\n", read_data);
     }
 }
 ```
@@ -793,7 +793,7 @@ public:
     
     bool select_channel(uint8_t channel) {
         if (channel > 7) {
-            printf("❌ Invalid channel: %u\n", channel);
+            printf("ERROR: Invalid channel: %u\n", channel);
             return false;
         }
         
@@ -802,10 +802,10 @@ public:
         
         if (result == hf_i2c_err_t::I2C_SUCCESS) {
             current_channel_ = channel;
-            printf("✅ Selected channel %u\n", channel);
+            printf("SUCCESS: Selected channel %u\n", channel);
             return true;
         } else {
-            printf("❌ Channel selection failed: %s\n", HfI2CErrToString(result));
+            printf("ERROR: Channel selection failed: %s\n", HfI2CErrToString(result));
             return false;
         }
     }
@@ -850,7 +850,7 @@ void multiplexer_test() {
     Pca9548Multiplexer mux(&i2c, 0x70);
     
     if (!mux.initialize()) {
-        printf("❌ Multiplexer initialization failed\n");
+        printf("ERROR: Multiplexer initialization failed\n");
         return;
     }
     
@@ -861,7 +861,7 @@ void multiplexer_test() {
     if (mux.select_channel(0)) {
         // Now communicate with device on channel 0
         if (i2c.IsDevicePresent(0x48)) {
-            printf("✅ Device 0x48 found on channel 0\n");
+            printf("SUCCESS: Device 0x48 found on channel 0\n");
         }
     }
 }
@@ -869,25 +869,25 @@ void multiplexer_test() {
 
 ---
 
-## 🧪 **Best Practices**
+## TEST: **Best Practices**
 
-### ✅ **Recommended Patterns**
+### SUCCESS: **Recommended Patterns**
 
 ```cpp
-// ✅ Always check initialization
+// SUCCESS: Always check initialization
 if (!i2c.EnsureInitialized()) {
-    printf("❌ I2C initialization failed\n");
+    printf("ERROR: I2C initialization failed\n");
     return false;
 }
 
-// ✅ Use appropriate timeouts
+// SUCCESS: Use appropriate timeouts
 i2c.Write(addr, data, length, 1000);  // 1 second timeout for critical operations
 i2c.Read(addr, data, length, 500);    // 500ms timeout for normal reads
 
-// ✅ Handle all error codes
+// SUCCESS: Handle all error codes
 hf_i2c_err_t result = i2c.Write(addr, data, length);
 if (result != hf_i2c_err_t::I2C_SUCCESS) {
-    printf("⚠️ I2C Error: %s\n", HfI2CErrToString(result));
+    printf("WARNING: I2C Error: %s\n", HfI2CErrToString(result));
     // Handle specific error types
     if (result == hf_i2c_err_t::I2C_ERR_DEVICE_NACK) {
         // Device not responding - check address
@@ -896,45 +896,45 @@ if (result != hf_i2c_err_t::I2C_SUCCESS) {
     }
 }
 
-// ✅ Use device presence checks
+// SUCCESS: Use device presence checks
 if (i2c.IsDevicePresent(device_addr)) {
     // Device is available
 } else {
-    printf("❌ Device 0x%02X not found\n", device_addr);
+    printf("ERROR: Device 0x%02X not found\n", device_addr);
 }
 
-// ✅ Use register access methods for convenience
+// SUCCESS: Use register access methods for convenience
 i2c.WriteRegister(addr, reg, value);  // Easier than manual write
 i2c.ReadRegister(addr, reg, value);   // Easier than manual read
 
-// ✅ Monitor bus health
+// SUCCESS: Monitor bus health
 hf_i2c_statistics_t stats;
 if (i2c.GetStatistics(stats) == hf_i2c_err_t::I2C_SUCCESS) {
     if (stats.failed_transactions > 10) {
-        printf("⚠️ High I2C failure rate detected\n");
+        printf("WARNING: High I2C failure rate detected\n");
     }
 }
 ```
 
-### ❌ **Common Pitfalls**
+### ERROR: **Common Pitfalls**
 
 ```cpp
-// ❌ Don't ignore initialization
+// ERROR: Don't ignore initialization
 i2c.Write(addr, data, length);  // May fail silently
 
-// ❌ Don't use infinite timeouts in real-time systems
+// ERROR: Don't use infinite timeouts in real-time systems
 i2c.Read(addr, data, length, UINT32_MAX);  // May block forever
 
-// ❌ Don't ignore error codes
+// ERROR: Don't ignore error codes
 i2c.Write(addr, data, length);  // Error handling missing
 
-// ❌ Don't assume device presence
+// ERROR: Don't assume device presence
 // Always check if device responds before communication
 
-// ❌ Don't use without proper pull-up resistors
+// ERROR: Don't use without proper pull-up resistors
 // I2C bus requires external pull-up resistors
 
-// ❌ Don't ignore clock stretching
+// ERROR: Don't ignore clock stretching
 // Some devices stretch the clock during communication
 ```
 
@@ -963,7 +963,7 @@ i2c.WriteRegister(addr, reg, value);  // Optimized for register access
 hf_i2c_statistics_t stats;
 i2c.GetStatistics(stats);
 if (stats.average_response_time_us > 1000) {
-    printf("⚠️ Slow I2C response detected\n");
+    printf("WARNING: Slow I2C response detected\n");
 }
 ```
 

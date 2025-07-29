@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [INFO: **Data Structures**](#-data-structures)
+- [INFO: **Usage Examples**](#-usage-examples)
+- [TEST: **Best Practices**](#-best-practices)
 
 ---
 
@@ -31,7 +31,7 @@ The `BaseSpi` class provides a comprehensive SPI abstraction that serves as the 
 - 🔄 **Multi-Device Support** - Simultaneous communication with multiple SPI devices
 - ⚡ **High-Speed Transfer** - Configurable clock frequencies up to 80 MHz
 - 🎛️ **Flexible Modes** - Support for all SPI modes (0, 1, 2, 3)
-- 📊 **DMA Support** - Hardware-accelerated data transfer
+- INFO: **DMA Support** - Hardware-accelerated data transfer
 - 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
 - 🏎️ **Performance Optimized** - Minimal overhead for critical applications
 - 🔌 **Platform Agnostic** - Works with various SPI hardware implementations
@@ -78,19 +78,19 @@ classDiagram
 
 ## 📋 **Error Codes**
 
-### ✅ **Success Codes**
+### SUCCESS: **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `SPI_SUCCESS` | 0 | ✅ Operation completed successfully |
+| `SPI_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
 
-### ❌ **General Error Codes**
+### ERROR: **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `SPI_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `SPI_ERR_NOT_INITIALIZED` | 2 | ⚠️ SPI not initialized | Call Initialize() first |
-| `SPI_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ SPI already initialized | Check initialization state |
+| `SPI_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
+| `SPI_ERR_NOT_INITIALIZED` | 2 | WARNING: SPI not initialized | Call Initialize() first |
+| `SPI_ERR_ALREADY_INITIALIZED` | 3 | WARNING: SPI already initialized | Check initialization state |
 | `SPI_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `SPI_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `SPI_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -101,7 +101,7 @@ classDiagram
 |------|-------|-------------|------------|
 | `SPI_ERR_INVALID_DEVICE` | 7 | 🚫 Invalid SPI device | Use valid device numbers |
 | `SPI_ERR_DEVICE_BUSY` | 8 | 🔄 Device already in use | Wait or use different device |
-| `SPI_ERR_DEVICE_NOT_AVAILABLE` | 9 | ⚠️ Device not available | Check device availability |
+| `SPI_ERR_DEVICE_NOT_AVAILABLE` | 9 | WARNING: Device not available | Check device availability |
 | `SPI_ERR_DEVICE_NOT_CONFIGURED` | 10 | ⚙️ Device not configured | Configure device first |
 | `SPI_ERR_DEVICE_NOT_RESPONDING` | 11 | 🔇 Device not responding | Check device power and connections |
 
@@ -110,8 +110,8 @@ classDiagram
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
 | `SPI_ERR_TRANSFER_TIMEOUT` | 12 | ⏰ Transfer timeout | Check clock frequency and device |
-| `SPI_ERR_TRANSFER_FAILURE` | 13 | ❌ Transfer failed | Check connections and device state |
-| `SPI_ERR_TRANSFER_INCOMPLETE` | 14 | 📊 Transfer incomplete | Check data length and buffer size |
+| `SPI_ERR_TRANSFER_FAILURE` | 13 | ERROR: Transfer failed | Check connections and device state |
+| `SPI_ERR_TRANSFER_INCOMPLETE` | 14 | INFO: Transfer incomplete | Check data length and buffer size |
 | `SPI_ERR_TRANSFER_ABORTED` | 15 | ⏹️ Transfer aborted | Check abort conditions |
 
 ### 🎛️ **Configuration Error Codes**
@@ -265,7 +265,7 @@ virtual hf_spi_err_t Receive(uint8_t device_id, uint8_t *data,
                            size_t length) noexcept = 0;
 ```
 
-### 📊 **Status and Capabilities**
+### INFO: **Status and Capabilities**
 
 ```cpp
 /**
@@ -274,7 +274,7 @@ virtual hf_spi_err_t Receive(uint8_t device_id, uint8_t *data,
  * @param status [out] Status information structure
  * @return hf_spi_err_t error code
  * 
- * 📊 Retrieves comprehensive status information about a device.
+ * INFO: Retrieves comprehensive status information about a device.
  */
 virtual hf_spi_err_t GetDeviceStatus(uint8_t device_id,
                                    hf_spi_device_status_t &status) const noexcept = 0;
@@ -291,7 +291,7 @@ virtual hf_spi_err_t GetCapabilities(hf_spi_capabilities_t &capabilities) const 
 
 ---
 
-## 📊 **Data Structures**
+## INFO: **Data Structures**
 
 ### ⚙️ **Device Configuration**
 
@@ -308,7 +308,7 @@ struct hf_spi_device_config_t {
 };
 ```
 
-### 📊 **Device Status**
+### INFO: **Device Status**
 
 ```cpp
 struct hf_spi_device_status_t {
@@ -357,7 +357,7 @@ struct hf_spi_statistics_t {
 
 ---
 
-## 💡 **Usage Examples**
+## INFO: **Usage Examples**
 
 ### 📡 **Sensor Communication**
 
@@ -375,7 +375,7 @@ public:
         spi_ = EspSpi(SPI2_HOST, 5);  // SPI2, CS on pin 5
         
         if (!spi_.EnsureInitialized()) {
-            printf("❌ SPI initialization failed\n");
+            printf("ERROR: SPI initialization failed\n");
             return false;
         }
         
@@ -392,11 +392,11 @@ public:
         
         hf_spi_err_t result = spi_.ConfigureDevice(SENSOR_DEVICE, config);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
-            printf("❌ Sensor configuration failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Sensor configuration failed: %s\n", HfSpiErrToString(result));
             return false;
         }
         
-        printf("✅ Sensor controller initialized\n");
+        printf("SUCCESS: Sensor controller initialized\n");
         return true;
     }
     
@@ -407,7 +407,7 @@ public:
         
         hf_spi_err_t result = spi_.TransmitReceive(SENSOR_DEVICE, tx_cmd, rx_data, 3);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
-            printf("❌ Temperature read failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Temperature read failed: %s\n", HfSpiErrToString(result));
             return 0xFFFF;  // Error value
         }
         
@@ -426,9 +426,9 @@ public:
         
         hf_spi_err_t result = spi_.TransmitReceive(SENSOR_DEVICE, tx_data, rx_data, 3);
         if (result == hf_spi_err_t::SPI_SUCCESS) {
-            printf("✅ Config written: 0x%02X = 0x%02X\n", config_register, value);
+            printf("SUCCESS: Config written: 0x%02X = 0x%02X\n", config_register, value);
         } else {
-            printf("❌ Config write failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Config write failed: %s\n", HfSpiErrToString(result));
         }
     }
     
@@ -437,7 +437,7 @@ public:
         uint8_t tx_cmd[] = {0x04, 0x00};  // Read data command
         auto rx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length + 2);
         if (!rx_data) {
-            printf("❌ Failed to allocate memory for receive buffer\n");
+            printf("ERROR: Failed to allocate memory for receive buffer\n");
             return;
         }
         
@@ -445,9 +445,9 @@ public:
         if (result == hf_spi_err_t::SPI_SUCCESS) {
             // Copy data (skip command bytes)
             memcpy(data, rx_data.get() + 2, length);
-            printf("📊 Read %zu bytes of sensor data\n", length);
+            printf("INFO: Read %zu bytes of sensor data\n", length);
         } else {
-            printf("❌ Sensor data read failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Sensor data read failed: %s\n", HfSpiErrToString(result));
         }
         
         // rx_data automatically cleaned up when going out of scope
@@ -489,13 +489,13 @@ public:
         
         hf_spi_err_t result = spi_.ConfigureDevice(DISPLAY_DEVICE, config);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
-            printf("❌ Display configuration failed\n");
+            printf("ERROR: Display configuration failed\n");
             return false;
         }
         
         // Initialize display
         init_display();
-        printf("✅ Display controller initialized\n");
+        printf("SUCCESS: Display controller initialized\n");
         return true;
     }
     
@@ -524,7 +524,7 @@ private:
         uint8_t rx_data;
         hf_spi_err_t result = spi_.TransmitReceive(DISPLAY_DEVICE, &command, &rx_data, 1);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
-            printf("❌ Command send failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Command send failed: %s\n", HfSpiErrToString(result));
         }
     }
     
@@ -534,13 +534,13 @@ private:
         
         auto rx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length);
         if (!rx_data) {
-            printf("❌ Failed to allocate memory for receive buffer\n");
+            printf("ERROR: Failed to allocate memory for receive buffer\n");
             return;
         }
         
         hf_spi_err_t result = spi_.TransmitReceive(DISPLAY_DEVICE, data, rx_data.get(), length);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
-            printf("❌ Data send failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Data send failed: %s\n", HfSpiErrToString(result));
         }
         
         // rx_data automatically cleaned up when going out of scope
@@ -617,11 +617,11 @@ public:
         
         hf_spi_err_t result = spi_.ConfigureDevice(MEMORY_DEVICE, config);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
-            printf("❌ Memory configuration failed\n");
+            printf("ERROR: Memory configuration failed\n");
             return false;
         }
         
-        printf("✅ Memory controller initialized\n");
+        printf("SUCCESS: Memory controller initialized\n");
         return true;
     }
     
@@ -630,7 +630,7 @@ public:
         uint8_t tx_cmd[] = {0x03, (address >> 16) & 0xFF, (address >> 8) & 0xFF, address & 0xFF};
         auto rx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length + 4);
         if (!rx_data) {
-            printf("❌ Failed to allocate memory for receive buffer\n");
+            printf("ERROR: Failed to allocate memory for receive buffer\n");
             return false;
         }
         
@@ -638,10 +638,10 @@ public:
         if (result == hf_spi_err_t::SPI_SUCCESS) {
             // Copy data (skip command bytes)
             memcpy(data, rx_data.get() + 4, length);
-            printf("📖 Read %zu bytes from address 0x%06X\n", length, address);
+            printf("READ: Read %zu bytes from address 0x%06X\n", length, address);
             return true;
         } else {
-            printf("❌ Memory read failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Memory read failed: %s\n", HfSpiErrToString(result));
             return false;
         }
         // rx_data automatically cleaned up when going out of scope
@@ -653,14 +653,14 @@ public:
         uint8_t rx_data;
         hf_spi_err_t result = spi_.TransmitReceive(MEMORY_DEVICE, &write_enable, &rx_data, 1);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
-            printf("❌ Write enable failed\n");
+            printf("ERROR: Write enable failed\n");
             return false;
         }
         
         // Send write command using nothrow allocation
         auto tx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length + 4);
         if (!tx_data) {
-            printf("❌ Failed to allocate memory for transmit buffer\n");
+            printf("ERROR: Failed to allocate memory for transmit buffer\n");
             return false;
         }
         
@@ -672,10 +672,10 @@ public:
         
         result = spi_.Transmit(MEMORY_DEVICE, tx_data.get(), length + 4);
         if (result == hf_spi_err_t::SPI_SUCCESS) {
-            printf("✍️ Wrote %zu bytes to address 0x%06X\n", length, address);
+            printf("WRITE: Wrote %zu bytes to address 0x%06X\n", length, address);
             return true;
         } else {
-            printf("❌ Memory write failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Memory write failed: %s\n", HfSpiErrToString(result));
             return false;
         }
         // tx_data automatically cleaned up when going out of scope
@@ -687,7 +687,7 @@ public:
         uint8_t rx_data;
         hf_spi_err_t result = spi_.TransmitReceive(MEMORY_DEVICE, &write_enable, &rx_data, 1);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
-            printf("❌ Write enable failed\n");
+            printf("ERROR: Write enable failed\n");
             return false;
         }
         
@@ -698,7 +698,7 @@ public:
             printf("🗑️ Erased sector at address 0x%06X\n", address);
             return true;
         } else {
-            printf("❌ Sector erase failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Sector erase failed: %s\n", HfSpiErrToString(result));
             return false;
         }
     }
@@ -713,7 +713,7 @@ public:
             printf("🆔 Device ID: 0x%06X\n", device_id);
             return device_id;
         } else {
-            printf("❌ Device ID read failed: %s\n", HfSpiErrToString(result));
+            printf("ERROR: Device ID read failed: %s\n", HfSpiErrToString(result));
             return 0;
         }
     }
@@ -722,42 +722,42 @@ public:
 
 ---
 
-## 🧪 **Best Practices**
+## TEST: **Best Practices**
 
-### ✅ **Recommended Patterns**
+### SUCCESS: **Recommended Patterns**
 
 ```cpp
-// ✅ Always check initialization
+// SUCCESS: Always check initialization
 if (!spi.EnsureInitialized()) {
-    printf("❌ SPI initialization failed\n");
+    printf("ERROR: SPI initialization failed\n");
     return false;
 }
 
-// ✅ Validate device configuration
+// SUCCESS: Validate device configuration
 hf_spi_capabilities_t caps;
 if (spi.GetCapabilities(caps) == hf_spi_err_t::SPI_SUCCESS) {
     if (device_id >= caps.max_devices) {
-        printf("❌ Device %u exceeds maximum (%u)\n", device_id, caps.max_devices);
+        printf("ERROR: Device %u exceeds maximum (%u)\n", device_id, caps.max_devices);
         return;
     }
 }
 
-// ✅ Use appropriate frequency for your application
+// SUCCESS: Use appropriate frequency for your application
 // Sensors: 1-10 MHz
 // Displays: 10-40 MHz
 // Memory: 20-80 MHz
 
-// ✅ Handle transfer errors gracefully
+// SUCCESS: Handle transfer errors gracefully
 hf_spi_err_t result = spi.TransmitReceive(device_id, tx_data, rx_data, length);
 if (result != hf_spi_err_t::SPI_SUCCESS) {
-    printf("⚠️ SPI Error: %s\n", HfSpiErrToString(result));
+    printf("WARNING: SPI Error: %s\n", HfSpiErrToString(result));
     // Implement retry logic or error recovery
 }
 
-// ✅ Use DMA for large transfers
+// SUCCESS: Use DMA for large transfers
 config.use_dma = (length > 32);  // Use DMA for transfers > 32 bytes
 
-// ✅ Check device status before operations
+// SUCCESS: Check device status before operations
 hf_spi_device_status_t status;
 if (spi.GetDeviceStatus(device_id, status) == hf_spi_err_t::SPI_SUCCESS) {
     if (status.is_busy) {
@@ -767,25 +767,25 @@ if (spi.GetDeviceStatus(device_id, status) == hf_spi_err_t::SPI_SUCCESS) {
 }
 ```
 
-### ❌ **Common Pitfalls**
+### ERROR: **Common Pitfalls**
 
 ```cpp
-// ❌ Don't ignore initialization
+// ERROR: Don't ignore initialization
 spi.TransmitReceive(0, tx_data, rx_data, length);  // May fail silently
 
-// ❌ Don't use invalid frequencies
+// ERROR: Don't use invalid frequencies
 spi.ConfigureDevice(0, {mode: MODE_0, frequency_hz: 100000000});  // Too high
 
-// ❌ Don't use invalid device numbers
+// ERROR: Don't use invalid device numbers
 spi.ConfigureDevice(99, config);  // Invalid device
 
-// ❌ Don't ignore transfer timeouts
+// ERROR: Don't ignore transfer timeouts
 // Large transfers may timeout - check return values
 
-// ❌ Don't assume all modes are supported
+// ERROR: Don't assume all modes are supported
 // Check capabilities before using specific modes
 
-// ❌ Don't forget to handle CS pin manually when needed
+// ERROR: Don't forget to handle CS pin manually when needed
 // Some devices require manual CS control
 ```
 

@@ -84,27 +84,29 @@ public:
      WiFiBluetoothDemo() : m_demo_running(false) {
      ESP_LOGI(TAG_MAIN, "=== HardFOC WiFi & Bluetooth Demo ===");
     
-    // Create ESP32-specific advanced configurations
-    EspWifiAdvancedConfig wifi_config = {};
-    wifi_config.enable_power_save = true;
-    wifi_config.power_save_type = WIFI_PS_MIN_MODEM;
-    wifi_config.tx_power = 15; // 15 dBm
-    wifi_config.bandwidth = WIFI_BW_HT20;
-    wifi_config.enable_wpa3_transition = true;
-    wifi_config.enable_11k = true;
-    wifi_config.enable_11r = true;
-    wifi_config.enable_11v = true;
+    // Create ESP32-specific advanced configurations using designated initializers
+    constexpr EspWifiAdvancedConfig wifi_config = {
+        .enable_power_save = true,
+        .power_save_type = WIFI_PS_MIN_MODEM,
+        .tx_power = 15, // 15 dBm
+        .bandwidth = WIFI_BW_HT20,
+        .enable_wpa3_transition = true,
+        .enable_11k = true,
+        .enable_11r = true,
+        .enable_11v = true
+    };
     
-    EspBluetoothAdvancedConfig bt_config = {};
-    bt_config.enable_power_save = true;
-    bt_config.tx_power_level = ESP_PWR_LVL_P3; // +3 dBm
-    bt_config.max_connections = 4;
-    bt_config.enable_gatt_server = true;
-    bt_config.enable_gatt_client = true;
-    bt_config.enable_spp = true;
-    bt_config.enable_secure_connections = true;
-    bt_config.enable_privacy = true;
-    bt_config.io_capability = ESP_IO_CAP_NO;
+    constexpr EspBluetoothAdvancedConfig bt_config = {
+        .enable_power_save = true,
+        .tx_power_level = ESP_PWR_LVL_P3, // +3 dBm
+        .max_connections = 4,
+        .enable_gatt_server = true,
+        .enable_gatt_client = true,
+        .enable_spp = true,
+        .enable_secure_connections = true,
+        .enable_privacy = true,
+        .io_capability = ESP_IO_CAP_NO
+    };
     
          // Create instances with advanced configurations using nothrow allocation
      m_wifi = hf::utils::make_unique_nothrow<EspWifi>(&wifi_config);

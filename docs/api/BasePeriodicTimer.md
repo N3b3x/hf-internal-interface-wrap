@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [INFO: **Data Structures**](#-data-structures)
+- [INFO: **Usage Examples**](#-usage-examples)
+- [TEST: **Best Practices**](#-best-practices)
 
 ---
 
@@ -33,11 +33,11 @@ The `BasePeriodicTimer` class provides a comprehensive periodic timer abstractio
 - 🔄 **Dynamic Period Control** - Change period during operation
 - 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
 - 🔌 **Platform Agnostic** - Works with hardware and software timers
-- 📊 **Statistics & Diagnostics** - Built-in monitoring and health reporting
+- INFO: **Statistics & Diagnostics** - Built-in monitoring and health reporting
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 - ⚡ **Low Overhead** - Optimized for real-time applications
 
-### 📊 **Supported Hardware**
+### INFO: **Supported Hardware**
 
 | Implementation | Hardware Type | Resolution | Max Period | Features | Use Cases |
 |----------------|---------------|------------|------------|----------|-----------|
@@ -90,19 +90,19 @@ classDiagram
 
 The timer system uses comprehensive error codes for robust error handling:
 
-### ✅ **Success Codes**
+### SUCCESS: **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `TIMER_SUCCESS` | 0 | ✅ Operation completed successfully |
+| `TIMER_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
 
-### ❌ **General Error Codes**
+### ERROR: **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `TIMER_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `TIMER_ERR_NOT_INITIALIZED` | 2 | ⚠️ Timer not initialized | Call Initialize() first |
-| `TIMER_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ Timer already initialized | Check initialization state |
+| `TIMER_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
+| `TIMER_ERR_NOT_INITIALIZED` | 2 | WARNING: Timer not initialized | Call Initialize() first |
+| `TIMER_ERR_ALREADY_INITIALIZED` | 3 | WARNING: Timer already initialized | Check initialization state |
 | `TIMER_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `TIMER_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `TIMER_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -113,7 +113,7 @@ The timer system uses comprehensive error codes for robust error handling:
 |------|-------|-------------|------------|
 | `TIMER_ERR_ALREADY_RUNNING` | 7 | 🔄 Timer already running | Stop timer first |
 | `TIMER_ERR_NOT_RUNNING` | 8 | ⏸️ Timer not running | Start timer first |
-| `TIMER_ERR_INVALID_PERIOD` | 9 | 📊 Invalid period | Use valid period range |
+| `TIMER_ERR_INVALID_PERIOD` | 9 | INFO: Invalid period | Use valid period range |
 | `TIMER_ERR_RESOURCE_BUSY` | 10 | 🔄 Timer resource busy | Wait or use different timer |
 | `TIMER_ERR_HARDWARE_FAULT` | 11 | 💥 Hardware fault | Check hardware connections |
 | `TIMER_ERR_UNSUPPORTED_OPERATION` | 12 | 🚫 Unsupported operation | Check hardware capabilities |
@@ -216,7 +216,7 @@ virtual hf_timer_err_t SetPeriod(uint64_t period_us) noexcept = 0;
  * @param period_us Reference to store the current period
  * @return hf_timer_err_t error code
  * 
- * 📊 Retrieves the current timer period.
+ * INFO: Retrieves the current timer period.
  * 
  * @example
  * uint64_t current_period;
@@ -252,7 +252,7 @@ hf_timer_err_t SetCallback(hf_timer_callback_t callback, void *user_data = nullp
  * @brief Get current user data pointer
  * @return User data pointer
  * 
- * 📊 Returns the user data associated with the timer callback.
+ * INFO: Returns the user data associated with the timer callback.
  */
 void *GetUserData() const noexcept;
 
@@ -260,12 +260,12 @@ void *GetUserData() const noexcept;
  * @brief Check if timer has a valid callback
  * @return true if callback is set, false otherwise
  * 
- * ✅ Checks if a callback function has been set.
+ * SUCCESS: Checks if a callback function has been set.
  */
 bool HasValidCallback() const noexcept;
 ```
 
-### 📊 **Information Methods**
+### INFO: **Information Methods**
 
 ```cpp
 /**
@@ -280,7 +280,7 @@ virtual const char *GetDescription() const noexcept = 0;
  * @brief Get minimum supported timer period
  * @return Minimum period in microseconds
  * 
- * 📊 Returns the minimum supported timer period for this hardware.
+ * INFO: Returns the minimum supported timer period for this hardware.
  */
 virtual uint64_t GetMinPeriod() const noexcept = 0;
 
@@ -288,7 +288,7 @@ virtual uint64_t GetMinPeriod() const noexcept = 0;
  * @brief Get maximum supported timer period
  * @return Maximum period in microseconds
  * 
- * 📊 Returns the maximum supported timer period for this hardware.
+ * INFO: Returns the maximum supported timer period for this hardware.
  */
 virtual uint64_t GetMaxPeriod() const noexcept = 0;
 
@@ -296,7 +296,7 @@ virtual uint64_t GetMaxPeriod() const noexcept = 0;
  * @brief Get timer resolution
  * @return Timer resolution in microseconds
  * 
- * 📊 Returns the timer resolution (minimum time increment).
+ * INFO: Returns the timer resolution (minimum time increment).
  */
 virtual uint64_t GetResolution() const noexcept = 0;
 ```
@@ -311,7 +311,7 @@ virtual uint64_t GetResolution() const noexcept = 0;
  * @param last_error Last error that occurred
  * @return hf_timer_err_t error code
  * 
- * 📊 Retrieves comprehensive statistics about timer operation.
+ * INFO: Retrieves comprehensive statistics about timer operation.
  * 
  * @example
  * uint64_t callback_count, missed_callbacks;
@@ -353,7 +353,7 @@ virtual hf_timer_err_t ResetDiagnostics() noexcept;
  * @param statistics Reference to store statistics data
  * @return hf_timer_err_t error code
  * 
- * 📊 Retrieves comprehensive statistics about timer operations.
+ * INFO: Retrieves comprehensive statistics about timer operations.
  */
 virtual hf_timer_err_t GetStatistics(hf_timer_statistics_t &statistics) const noexcept;
 
@@ -369,7 +369,7 @@ virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const
 
 ---
 
-## 📊 **Data Structures**
+## INFO: **Data Structures**
 
 ### 📞 **Timer Callback Type**
 
@@ -407,7 +407,7 @@ struct hf_timer_diagnostics_t {
 };
 ```
 
-### 📊 **Timer Stats Structure**
+### INFO: **Timer Stats Structure**
 
 ```cpp
 struct hf_timer_stats_t {
@@ -422,7 +422,7 @@ struct hf_timer_stats_t {
 
 ---
 
-## 💡 **Usage Examples**
+## INFO: **Usage Examples**
 
 ### ⏰ **Basic Periodic Timer**
 
@@ -446,7 +446,7 @@ void on_timer_tick(void* user_data) {
 void setup_timer() {
     // Initialize timer
     if (timer.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
-        printf("❌ Timer initialization failed\n");
+        printf("ERROR: Timer initialization failed\n");
         return;
     }
     
@@ -456,21 +456,21 @@ void setup_timer() {
     // Start timer with 1 second period
     hf_timer_err_t result = timer.Start(1000000);  // 1,000,000 μs = 1 second
     if (result == hf_timer_err_t::TIMER_SUCCESS) {
-        printf("✅ Timer started successfully\n");
+        printf("SUCCESS: Timer started successfully\n");
     } else {
-        printf("❌ Timer start failed: %s\n", HfTimerErrToString(result));
+        printf("ERROR: Timer start failed: %s\n", HfTimerErrToString(result));
     }
 }
 
 void stop_timer() {
     hf_timer_err_t result = timer.Stop();
     if (result == hf_timer_err_t::TIMER_SUCCESS) {
-        printf("✅ Timer stopped successfully\n");
+        printf("SUCCESS: Timer stopped successfully\n");
     }
 }
 
 void print_timer_info() {
-    printf("📊 Timer Information:\n");
+    printf("INFO: Timer Information:\n");
     printf("  Description: %s\n", timer.GetDescription());
     printf("  Min period: %llu μs\n", timer.GetMinPeriod());
     printf("  Max period: %llu μs\n", timer.GetMaxPeriod());
@@ -501,7 +501,7 @@ public:
     bool initialize() {
         // Initialize timer
         if (timer_.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
-            printf("❌ Control loop timer initialization failed\n");
+            printf("ERROR: Control loop timer initialization failed\n");
             return false;
         }
         
@@ -518,9 +518,9 @@ public:
         
         hf_timer_err_t result = timer_.Start(period_us);
         if (result == hf_timer_err_t::TIMER_SUCCESS) {
-            printf("✅ Control loop started at %.1f Hz\n", frequency_hz);
+            printf("SUCCESS: Control loop started at %.1f Hz\n", frequency_hz);
         } else {
-            printf("❌ Control loop start failed: %s\n", HfTimerErrToString(result));
+            printf("ERROR: Control loop start failed: %s\n", HfTimerErrToString(result));
         }
     }
     
@@ -581,7 +581,7 @@ void control_loop_example() {
     ControlLoop controller;
     
     if (!controller.initialize()) {
-        printf("❌ Controller initialization failed\n");
+        printf("ERROR: Controller initialization failed\n");
         return;
     }
     
@@ -601,7 +601,7 @@ void control_loop_example() {
 }
 ```
 
-### 📊 **High-Frequency Sampling Timer**
+### INFO: **High-Frequency Sampling Timer**
 
 ```cpp
 #include "mcu/esp32/EspPeriodicTimer.h"
@@ -622,7 +622,7 @@ public:
     
     bool initialize() {
         if (timer_.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
-            printf("❌ Sampler timer initialization failed\n");
+            printf("ERROR: Sampler timer initialization failed\n");
             return false;
         }
         
@@ -641,9 +641,9 @@ public:
         
         hf_timer_err_t result = timer_.Start(period_us);
         if (result == hf_timer_err_t::TIMER_SUCCESS) {
-            printf("✅ Sampling started at %.1f Hz\n", frequency_hz);
+            printf("SUCCESS: Sampling started at %.1f Hz\n", frequency_hz);
         } else {
-            printf("❌ Sampling start failed: %s\n", HfTimerErrToString(result));
+            printf("ERROR: Sampling start failed: %s\n", HfTimerErrToString(result));
         }
     }
     
@@ -659,7 +659,7 @@ public:
     
     void print_statistics() {
         if (samples_.empty()) {
-            printf("❌ No samples collected\n");
+            printf("ERROR: No samples collected\n");
             return;
         }
         
@@ -675,7 +675,7 @@ public:
         
         float average = sum / samples_.size();
         
-        printf("📊 Sampling Statistics:\n");
+        printf("INFO: Sampling Statistics:\n");
         printf("  Samples collected: %zu\n", samples_.size());
         printf("  Average: %.3f\n", average);
         printf("  Min: %.3f\n", min_val);
@@ -716,7 +716,7 @@ void sampling_example() {
     HighFrequencySampler sampler(1000);
     
     if (!sampler.initialize()) {
-        printf("❌ Sampler initialization failed\n");
+        printf("ERROR: Sampler initialization failed\n");
         return;
     }
     
@@ -767,7 +767,7 @@ public:
     void start() {
         hf_timer_err_t result = timer_.Start(current_period_);
         if (result == hf_timer_err_t::TIMER_SUCCESS) {
-            printf("✅ Adaptive timer started with period %llu μs\n", current_period_);
+            printf("SUCCESS: Adaptive timer started with period %llu μs\n", current_period_);
         }
     }
     
@@ -841,7 +841,7 @@ void adaptive_timer_example() {
     AdaptiveTimer timer(1000, 100000);  // 1ms to 100ms range
     
     if (!timer.initialize()) {
-        printf("❌ Adaptive timer initialization failed\n");
+        printf("ERROR: Adaptive timer initialization failed\n");
         return;
     }
     
@@ -866,26 +866,26 @@ void adaptive_timer_example() {
 
 ---
 
-## 🧪 **Best Practices**
+## TEST: **Best Practices**
 
-### ✅ **Recommended Patterns**
+### SUCCESS: **Recommended Patterns**
 
 ```cpp
-// ✅ Always check initialization
+// SUCCESS: Always check initialization
 if (timer.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
-    printf("❌ Timer initialization failed\n");
+    printf("ERROR: Timer initialization failed\n");
     return false;
 }
 
-// ✅ Use appropriate period ranges
+// SUCCESS: Use appropriate period ranges
 uint64_t min_period = timer.GetMinPeriod();
 uint64_t max_period = timer.GetMaxPeriod();
 uint64_t period = std::clamp(desired_period, min_period, max_period);
 
-// ✅ Handle all error codes
+// SUCCESS: Handle all error codes
 hf_timer_err_t result = timer.Start(period);
 if (result != hf_timer_err_t::TIMER_SUCCESS) {
-    printf("⚠️ Timer Error: %s\n", HfTimerErrToString(result));
+    printf("WARNING: Timer Error: %s\n", HfTimerErrToString(result));
     // Handle specific error types
     if (result == hf_timer_err_t::TIMER_ERR_INVALID_PERIOD) {
         // Period out of range
@@ -894,49 +894,49 @@ if (result != hf_timer_err_t::TIMER_SUCCESS) {
     }
 }
 
-// ✅ Set callback before starting timer
+// SUCCESS: Set callback before starting timer
 timer.SetCallback(on_timer_tick, user_data);
 timer.Start(period);
 
-// ✅ Keep callbacks short and efficient
+// SUCCESS: Keep callbacks short and efficient
 void on_timer_tick(void* user_data) {
     // Quick operations only
     // Avoid blocking operations
     // Use queues for longer tasks
 }
 
-// ✅ Monitor timer statistics
+// SUCCESS: Monitor timer statistics
 uint64_t callback_count, missed_callbacks;
 hf_timer_err_t last_error;
 if (timer.GetStats(callback_count, missed_callbacks, last_error) == hf_timer_err_t::TIMER_SUCCESS) {
     if (missed_callbacks > 0) {
-        printf("⚠️ Missed callbacks detected: %llu\n", missed_callbacks);
+        printf("WARNING: Missed callbacks detected: %llu\n", missed_callbacks);
     }
 }
 ```
 
-### ❌ **Common Pitfalls**
+### ERROR: **Common Pitfalls**
 
 ```cpp
-// ❌ Don't ignore initialization
+// ERROR: Don't ignore initialization
 timer.Start(period);  // May fail silently
 
-// ❌ Don't use periods outside valid range
+// ERROR: Don't use periods outside valid range
 timer.Start(0);  // Invalid period
 
-// ❌ Don't ignore error codes
+// ERROR: Don't ignore error codes
 timer.Start(period);  // Error handling missing
 
-// ❌ Don't perform blocking operations in callbacks
+// ERROR: Don't perform blocking operations in callbacks
 void on_timer_tick(void* user_data) {
-    vTaskDelay(100);  // ❌ Blocking in callback
+    vTaskDelay(100);  // ERROR: Blocking in callback
     // Use queues instead
 }
 
-// ❌ Don't start timer without callback
+// ERROR: Don't start timer without callback
 timer.Start(period);  // No callback set
 
-// ❌ Don't forget to stop timer
+// ERROR: Don't forget to stop timer
 // Always stop timer when done
 ```
 

@@ -103,6 +103,12 @@ std::unique_ptr<T[]> make_unique_array_nothrow(size_t size);
 - Same performance as `std::make_unique`
 - No runtime type information required
 
+### 5. Code Organization
+- Replaced std::cout with ESP-IDF logging for embedded compatibility
+- Used std::array for better type safety and organization
+- Eliminated emojis in favor of descriptive text
+- Structured configuration using arrays and enums
+
 ## 📝 Usage Patterns
 
 ### Before (Exception-throwing)
@@ -126,7 +132,7 @@ delete[] buffer;
 // NEW - returns nullptr on failure
 auto device = hf::utils::make_unique_nothrow<MyDevice>(param1, param2);
 if (!device) {
-    // Handle allocation failure
+    ESP_LOGE(TAG, "Failed to allocate memory for MyDevice");
     return false;
 }
 // ... use device (automatic cleanup)
@@ -134,10 +140,15 @@ if (!device) {
 // NEW - array allocation with automatic cleanup
 auto buffer = hf::utils::make_unique_array_nothrow<uint8_t>(size);
 if (!buffer) {
-    // Handle allocation failure
+    ESP_LOGE(TAG, "Failed to allocate memory for buffer");
     return false;
 }
 // ... use buffer.get() (automatic cleanup)
+
+// NEW - organized configuration using arrays
+enum class PinType : size_t { LED = 0, MOTOR = 1, PIN_COUNT = 2 };
+static constexpr std::array<int, static_cast<size_t>(PinType::PIN_COUNT)> PINS = {2, 3};
+config.pin = PINS[static_cast<size_t>(PinType::LED)];
 ```
 
 ## 🔍 Error Handling Pattern
@@ -163,10 +174,13 @@ if (!resource) {
 
 ## 📊 Migration Statistics
 
-- **Files Modified**: 6 core files + 2 documentation files
+- **Files Modified**: 6 core files + 2 documentation files + 1 test file
 - **Functions Replaced**: 8 `std::make_unique` calls + 5 raw `new` calls
 - **Safety Improvements**: 13 null pointer checks added
 - **Manual Cleanup Removed**: 9 `delete`/`delete[]` calls eliminated
+- **Logging Improvements**: Replaced std::cout with ESP-IDF logging
+- **Array Usage**: Added std::array usage for better organization
+- **Emojis Removed**: Replaced with descriptive text in all output
 
 ## ✅ Testing
 
