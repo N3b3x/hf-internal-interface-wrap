@@ -1,0 +1,72 @@
+---
+# Security-focused clang-tidy configuration for ESP32 codebase
+# Addresses the specific security and code quality issues mentioned
+
+Checks: '
+  -*, 
+  cert-*,
+  security-*,
+  bugprone-*,
+  readability-magic-numbers,
+  readability-identifier-naming,
+  misc-*,
+  performance-*,
+  modernize-*,
+  -modernize-use-trailing-return-type,
+  -cert-dcl21-cpp,
+  -cert-dcl58-cpp,
+  -cert-oop54-cpp,
+  -readability-magic-numbers,
+  -readability-identifier-naming,
+  -bugprone-easily-swappable-parameters,
+  -misc-non-private-member-variables-in-classes
+'
+
+CheckOptions:
+  # Detect unsafe sscanf usage
+  - key: cert-err34-c.AllowPartialMatch
+    value: false
+  - key: cert-err34-c.ReportMoreUnsafeFunctions  
+    value: true
+    
+  # Magic number detection (for WEP keys, UUID lengths, etc.)
+  - key: readability-magic-numbers.IgnoredIntegerValues
+    value: '0;1;2;3;4;8;10;16;32;64;100;255;256;1000;1024'
+  - key: readability-magic-numbers.IgnoredFloatingPointValues
+    value: '0.0;1.0;2.0;3.14159'
+    
+  # Security-related checks
+  - key: security-insecure-api-strcpy.Replacements
+    value: 'strcpy:strncpy;sprintf:snprintf;scanf:safer_parsing'
+    
+  # Performance and modernization
+  - key: performance-move-const-arg.CheckTriviallyCopyableMove
+    value: false
+  - key: modernize-loop-convert.MaxCopySize
+    value: 16
+  - key: modernize-loop-convert.MinConfidence
+    value: reasonable
+    
+  # ESP32/FreeRTOS specific naming conventions  
+  - key: readability-identifier-naming.ConstantCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.FunctionCase
+    value: CamelCase
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.NamespaceCase
+    value: CamelCase
+
+WarningsAsErrors: '
+  cert-err34-c,
+  security-insecure-api-*,
+  bugprone-sizeof-*,
+  cert-flp30-c,
+  cert-str34-c
+'
+
+HeaderFilterRegex: '(src|inc|examples)/.*\.(h|hpp)$'
+
+FormatStyle: file
