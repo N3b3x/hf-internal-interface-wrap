@@ -31,11 +31,24 @@
 #include "mcu/esp32/EspWifi.h"
 #include "mcu/esp32/EspBluetooth.h"
 
-#include <iostream>
-#include <thread>
-#include <chrono>
+// ESP-IDF headers
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#ifdef __cplusplus
+}
+#endif
+
 #include <vector>
 #include <memory>
+
+// ESP-IDF logging tags
+static const char* TAG_MAIN = "HARDFOC_DEMO";
+static const char* TAG_WIFI = "HARDFOC_WIFI";
+static const char* TAG_BT = "HARDFOC_BT";
 
 // Example configuration
 namespace Example {
@@ -67,8 +80,8 @@ public:
   /**
    * @brief Constructor - initializes WiFi and Bluetooth with ESP32 implementations
    */
-  WiFiBluetoothDemo() : m_demo_running(false) {
-    std::cout << "=== HardFOC WiFi & Bluetooth Demo ===" << std::endl;
+     WiFiBluetoothDemo() : m_demo_running(false) {
+     ESP_LOGI(TAG_MAIN, "=== HardFOC WiFi & Bluetooth Demo ===");
     
     // Create ESP32-specific advanced configurations
     EspWifiAdvancedConfig wifi_config = {};
@@ -92,20 +105,20 @@ public:
     bt_config.enable_privacy = true;
     bt_config.io_capability = ESP_IO_CAP_NO;
     
-    // Create instances with advanced configurations
-    m_wifi = std::make_unique<EspWifi>(&wifi_config);
-    m_bluetooth = std::make_unique<EspBluetooth>(&bt_config);
-    
-    std::cout << "WiFi and Bluetooth instances created successfully!" << std::endl;
+         // Create instances with advanced configurations
+     m_wifi = std::make_unique<EspWifi>(&wifi_config);
+     m_bluetooth = std::make_unique<EspBluetooth>(&bt_config);
+     
+     ESP_LOGI(TAG_MAIN, "WiFi and Bluetooth instances created successfully!");
   }
   
   /**
    * @brief Destructor - cleanup
    */
-  ~WiFiBluetoothDemo() {
-    stopDemo();
-    std::cout << "Demo cleanup completed." << std::endl;
-  }
+     ~WiFiBluetoothDemo() {
+     stopDemo();
+     ESP_LOGI(TAG_MAIN, "Demo cleanup completed.");
+   }
   
   /**
    * @brief Start the comprehensive demo
@@ -113,13 +126,13 @@ public:
   void startDemo() {
     m_demo_running = true;
     
-    std::cout << "\n--- Starting WiFi & Bluetooth Demo ---" << std::endl;
-    
-    // Initialize both subsystems
-    if (!initializeWifi() || !initializeBluetooth()) {
-      std::cerr << "Failed to initialize WiFi or Bluetooth!" << std::endl;
-      return;
-    }
+         ESP_LOGI(TAG_MAIN, "--- Starting WiFi & Bluetooth Demo ---");
+     
+     // Initialize both subsystems
+     if (!initializeWifi() || !initializeBluetooth()) {
+       ESP_LOGE(TAG_MAIN, "Failed to initialize WiFi or Bluetooth!");
+       return;
+     }
     
     // Register event callbacks
     registerEventHandlers();
@@ -130,16 +143,16 @@ public:
     // Run Bluetooth demonstrations
     demonstrateBluetoothFeatures();
     
-    // Keep demo running
-    std::cout << "\nDemo running... Press Ctrl+C to stop." << std::endl;
-    while (m_demo_running) {
-      std::this_thread::sleep_for(std::chrono::seconds(1));
-      
-      // Print status updates
-      printStatus();
-      
-      std::this_thread::sleep_for(std::chrono::seconds(4));
-    }
+         // Keep demo running
+     ESP_LOGI(TAG_MAIN, "Demo running... Press reset to stop.");
+     while (m_demo_running) {
+       vTaskDelay(pdMS_TO_TICKS(1000));
+       
+       // Print status updates
+       printStatus();
+       
+       vTaskDelay(pdMS_TO_TICKS(4000));
+     }
   }
   
   /**
@@ -166,49 +179,49 @@ private:
   /**
    * @brief Initialize WiFi subsystem
    */
-  bool initializeWifi() {
-    std::cout << "\n=== WiFi Initialization ===" << std::endl;
-    
-    // Initialize WiFi in station + AP mode
-    auto result = m_wifi->init(HfWifiMode::STATION_AP);
-    if (result != HfWifiErr::WIFI_SUCCESS) {
-      std::cerr << "WiFi initialization failed: " << BaseWifi::getErrorString(result) << std::endl;
-      return false;
-    }
-    
-    std::cout << "WiFi initialized successfully!" << std::endl;
-    return true;
-  }
+     bool initializeWifi() {
+     ESP_LOGI(TAG_WIFI, "=== WiFi Initialization ===");
+     
+     // Initialize WiFi in station + AP mode
+     auto result = m_wifi->init(HfWifiMode::STATION_AP);
+     if (result != HfWifiErr::WIFI_SUCCESS) {
+       ESP_LOGE(TAG_WIFI, "WiFi initialization failed: %s", BaseWifi::getErrorString(result));
+       return false;
+     }
+     
+     ESP_LOGI(TAG_WIFI, "WiFi initialized successfully!");
+     return true;
+   }
   
   /**
    * @brief Initialize Bluetooth subsystem
    */
-  bool initializeBluetooth() {
-    std::cout << "\n=== Bluetooth Initialization ===" << std::endl;
-    
-    // Initialize Bluetooth in dual mode (Classic + BLE)
-    auto result = m_bluetooth->init(HfBluetoothMode::DUAL);
-    if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cerr << "Bluetooth initialization failed: " << BaseBluetooth::getErrorString(result) << std::endl;
-      return false;
-    }
-    
-    // Enable Bluetooth
-    result = m_bluetooth->enable();
-    if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cerr << "Bluetooth enable failed: " << BaseBluetooth::getErrorString(result) << std::endl;
-      return false;
-    }
-    
-    // Set device name
-    result = m_bluetooth->setDeviceName(Example::BT_DEVICE_NAME);
-    if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cerr << "Failed to set Bluetooth device name" << std::endl;
-    }
-    
-    std::cout << "Bluetooth initialized and enabled successfully!" << std::endl;
-    return true;
-  }
+     bool initializeBluetooth() {
+     ESP_LOGI(TAG_BT, "=== Bluetooth Initialization ===");
+     
+     // Initialize Bluetooth in dual mode (Classic + BLE)
+     auto result = m_bluetooth->init(HfBluetoothMode::DUAL);
+     if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
+       ESP_LOGE(TAG_BT, "Bluetooth initialization failed: %s", BaseBluetooth::getErrorString(result));
+       return false;
+     }
+     
+     // Enable Bluetooth
+     result = m_bluetooth->enable();
+     if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
+       ESP_LOGE(TAG_BT, "Bluetooth enable failed: %s", BaseBluetooth::getErrorString(result));
+       return false;
+     }
+     
+     // Set device name
+     result = m_bluetooth->setDeviceName(Example::BT_DEVICE_NAME);
+     if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
+       ESP_LOGW(TAG_BT, "Failed to set Bluetooth device name");
+     }
+     
+     ESP_LOGI(TAG_BT, "Bluetooth initialized and enabled successfully!");
+     return true;
+   }
   
   /**
    * @brief Register event handlers for WiFi and Bluetooth
@@ -233,8 +246,8 @@ private:
   /**
    * @brief Demonstrate WiFi features
    */
-  void demonstrateWifiFeatures() {
-    std::cout << "\n=== WiFi Features Demonstration ===" << std::endl;
+     void demonstrateWifiFeatures() {
+     ESP_LOGI(TAG_WIFI, "=== WiFi Features Demonstration ===");
     
     // 1. Network scanning
     demonstrateWifiScanning();
@@ -252,37 +265,38 @@ private:
   /**
    * @brief Demonstrate WiFi network scanning
    */
-  void demonstrateWifiScanning() {
-    std::cout << "\n--- WiFi Network Scanning ---" << std::endl;
-    
-    // Start scan
-    auto result = m_wifi->startScan(true, false, 5000); // Show hidden, active scan, 5s timeout
-    if (result != HfWifiErr::WIFI_SUCCESS) {
-      std::cerr << "Failed to start WiFi scan" << std::endl;
-      return;
-    }
-    
-    std::cout << "WiFi scan started..." << std::endl;
-    
-    // Wait for scan to complete
-    std::this_thread::sleep_for(std::chrono::seconds(6));
-    
-    // Get scan results
-    std::vector<HfWifiNetworkInfo> networks;
-    result = m_wifi->getScanResults(networks, 10); // Get up to 10 networks
-    
-    if (result == HfWifiErr::WIFI_SUCCESS && !networks.empty()) {
-      std::cout << "Found " << networks.size() << " networks:" << std::endl;
-      for (const auto& network : networks) {
-        std::cout << "  SSID: " << network.ssid 
-                  << ", RSSI: " << static_cast<int>(network.rssi) << " dBm"
-                  << ", Channel: " << static_cast<int>(network.channel)
-                  << ", Security: " << static_cast<int>(network.security) << std::endl;
-      }
-    } else {
-      std::cout << "No networks found or scan failed." << std::endl;
-    }
-  }
+     void demonstrateWifiScanning() {
+     ESP_LOGI(TAG_WIFI, "--- WiFi Network Scanning ---");
+     
+     // Start scan
+     auto result = m_wifi->startScan(true, false, 5000); // Show hidden, active scan, 5s timeout
+     if (result != HfWifiErr::WIFI_SUCCESS) {
+       ESP_LOGE(TAG_WIFI, "Failed to start WiFi scan");
+       return;
+     }
+     
+     ESP_LOGI(TAG_WIFI, "WiFi scan started...");
+     
+     // Wait for scan to complete
+     vTaskDelay(pdMS_TO_TICKS(6000));
+     
+     // Get scan results
+     std::vector<HfWifiNetworkInfo> networks;
+     result = m_wifi->getScanResults(networks, 10); // Get up to 10 networks
+     
+     if (result == HfWifiErr::WIFI_SUCCESS && !networks.empty()) {
+       ESP_LOGI(TAG_WIFI, "Found %d networks:", networks.size());
+       for (const auto& network : networks) {
+         ESP_LOGI(TAG_WIFI, "  SSID: %s, RSSI: %d dBm, Channel: %d, Security: %d", 
+                  network.ssid.c_str(), 
+                  static_cast<int>(network.rssi),
+                  static_cast<int>(network.channel),
+                  static_cast<int>(network.security));
+       }
+     } else {
+       ESP_LOGW(TAG_WIFI, "No networks found or scan failed.");
+     }
+   }
   
   /**
    * @brief Demonstrate WiFi station mode
@@ -551,121 +565,122 @@ private:
   /**
    * @brief Handle WiFi events
    */
-  void handleWifiEvent(HfWifiEvent event, void* event_data) {
-    switch (event) {
-      case HfWifiEvent::STA_CONNECTED:
-        std::cout << "[WiFi Event] Station connected to AP" << std::endl;
-        break;
-      case HfWifiEvent::STA_DISCONNECTED:
-        std::cout << "[WiFi Event] Station disconnected from AP" << std::endl;
-        break;
-      case HfWifiEvent::STA_GOT_IP:
-        std::cout << "[WiFi Event] Station got IP address" << std::endl;
-        break;
-      case HfWifiEvent::AP_START:
-        std::cout << "[WiFi Event] Access Point started" << std::endl;
-        break;
-      case HfWifiEvent::AP_STACONNECTED:
-        std::cout << "[WiFi Event] Station connected to our AP" << std::endl;
-        break;
-      case HfWifiEvent::SCAN_DONE:
-        std::cout << "[WiFi Event] Network scan completed" << std::endl;
-        break;
-      default:
-        std::cout << "[WiFi Event] Event ID: " << static_cast<int>(event) << std::endl;
-        break;
-    }
-  }
+     void handleWifiEvent(HfWifiEvent event, void* event_data) {
+     switch (event) {
+       case HfWifiEvent::STA_CONNECTED:
+         ESP_LOGI(TAG_WIFI, "Station connected to AP");
+         break;
+       case HfWifiEvent::STA_DISCONNECTED:
+         ESP_LOGI(TAG_WIFI, "Station disconnected from AP");
+         break;
+       case HfWifiEvent::STA_GOT_IP:
+         ESP_LOGI(TAG_WIFI, "Station got IP address");
+         break;
+       case HfWifiEvent::AP_START:
+         ESP_LOGI(TAG_WIFI, "Access Point started");
+         break;
+       case HfWifiEvent::AP_STACONNECTED:
+         ESP_LOGI(TAG_WIFI, "Station connected to our AP");
+         break;
+       case HfWifiEvent::SCAN_DONE:
+         ESP_LOGI(TAG_WIFI, "Network scan completed");
+         break;
+       default:
+         ESP_LOGD(TAG_WIFI, "WiFi Event ID: %d", static_cast<int>(event));
+         break;
+     }
+   }
   
   /**
    * @brief Handle Bluetooth events
    */
-  void handleBluetoothEvent(HfBluetoothEvent event, void* event_data) {
-    switch (event) {
-      case HfBluetoothEvent::ENABLED:
-        std::cout << "[Bluetooth Event] Bluetooth enabled" << std::endl;
-        break;
-      case HfBluetoothEvent::DEVICE_FOUND:
-        std::cout << "[Bluetooth Event] Device discovered" << std::endl;
-        break;
-      case HfBluetoothEvent::CONNECT_SUCCESS:
-        std::cout << "[Bluetooth Event] Device connected" << std::endl;
-        break;
-      case HfBluetoothEvent::DISCONNECT:
-        std::cout << "[Bluetooth Event] Device disconnected" << std::endl;
-        break;
-      case HfBluetoothEvent::PAIR_SUCCESS:
-        std::cout << "[Bluetooth Event] Pairing successful" << std::endl;
-        break;
-      case HfBluetoothEvent::DATA_RECEIVED:
-        std::cout << "[Bluetooth Event] Data received" << std::endl;
-        break;
-      default:
-        std::cout << "[Bluetooth Event] Event ID: " << static_cast<int>(event) << std::endl;
-        break;
-    }
-  }
+     void handleBluetoothEvent(HfBluetoothEvent event, void* event_data) {
+     switch (event) {
+       case HfBluetoothEvent::ENABLED:
+         ESP_LOGI(TAG_BT, "Bluetooth enabled");
+         break;
+       case HfBluetoothEvent::DEVICE_FOUND:
+         ESP_LOGI(TAG_BT, "Device discovered");
+         break;
+       case HfBluetoothEvent::CONNECT_SUCCESS:
+         ESP_LOGI(TAG_BT, "Device connected");
+         break;
+       case HfBluetoothEvent::DISCONNECT:
+         ESP_LOGI(TAG_BT, "Device disconnected");
+         break;
+       case HfBluetoothEvent::PAIR_SUCCESS:
+         ESP_LOGI(TAG_BT, "Pairing successful");
+         break;
+       case HfBluetoothEvent::DATA_RECEIVED:
+         ESP_LOGI(TAG_BT, "Data received");
+         break;
+       default:
+         ESP_LOGD(TAG_BT, "Bluetooth Event ID: %d", static_cast<int>(event));
+         break;
+     }
+   }
   
   /**
    * @brief Handle Bluetooth data
    */
-  void handleBluetoothData(const HfBluetoothAddress& address, const std::vector<uint8_t>& data) {
-    std::cout << "[Bluetooth Data] Received " << data.size() << " bytes from " 
-              << address.toString() << std::endl;
-    
-    // Echo the data back
-    m_bluetooth->sendData(address, data);
-  }
+     void handleBluetoothData(const HfBluetoothAddress& address, const std::vector<uint8_t>& data) {
+     ESP_LOGI(TAG_BT, "Received %d bytes from %s", data.size(), address.toString().c_str());
+     
+     // Echo the data back
+     m_bluetooth->sendData(address, data);
+   }
   
   /**
    * @brief Print current status
    */
-  void printStatus() {
-    std::cout << "\n--- Status Update ---" << std::endl;
-    
-    // WiFi status
-    std::cout << "WiFi State: " << static_cast<int>(m_wifi->getState()) << std::endl;
-    std::cout << "WiFi Connected: " << (m_wifi->isConnected() ? "Yes" : "No") << std::endl;
-    std::cout << "AP Active: " << (m_wifi->isAccessPointActive() ? "Yes" : "No") << std::endl;
-    
-    if (m_wifi->isConnected()) {
-      std::cout << "RSSI: " << static_cast<int>(m_wifi->getRssi()) << " dBm" << std::endl;
-      std::cout << "Connected SSID: " << m_wifi->getConnectedSsid() << std::endl;
-    }
-    
-    if (m_wifi->isAccessPointActive()) {
-      std::cout << "AP Stations: " << m_wifi->getConnectedStationCount() << std::endl;
-    }
-    
-    // Bluetooth status
-    std::cout << "Bluetooth State: " << static_cast<int>(m_bluetooth->getState()) << std::endl;
-    std::cout << "Bluetooth Enabled: " << (m_bluetooth->isEnabled() ? "Yes" : "No") << std::endl;
-    std::cout << "BLE Advertising: " << (m_bluetooth->isAdvertising() ? "Yes" : "No") << std::endl;
-    std::cout << "BLE Scanning: " << (m_bluetooth->isScanning() ? "Yes" : "No") << std::endl;
-    std::cout << "Discoverable: " << (m_bluetooth->isDiscoverable() ? "Yes" : "No") << std::endl;
-    
-    // Get connected devices
-    std::vector<HfBluetoothDeviceInfo> connected_devices;
-    if (m_bluetooth->getConnectedDevices(connected_devices) == HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cout << "Connected BT Devices: " << connected_devices.size() << std::endl;
-    }
-  }
+     void printStatus() {
+     ESP_LOGI(TAG_MAIN, "--- Status Update ---");
+     
+     // WiFi status
+     ESP_LOGI(TAG_WIFI, "WiFi State: %d, Connected: %s, AP Active: %s", 
+              static_cast<int>(m_wifi->getState()),
+              m_wifi->isConnected() ? "Yes" : "No",
+              m_wifi->isAccessPointActive() ? "Yes" : "No");
+     
+     if (m_wifi->isConnected()) {
+       ESP_LOGI(TAG_WIFI, "RSSI: %d dBm, SSID: %s", 
+                static_cast<int>(m_wifi->getRssi()),
+                m_wifi->getConnectedSsid().c_str());
+     }
+     
+     if (m_wifi->isAccessPointActive()) {
+       ESP_LOGI(TAG_WIFI, "AP Stations: %d", m_wifi->getConnectedStationCount());
+     }
+     
+     // Bluetooth status
+     ESP_LOGI(TAG_BT, "BT State: %d, Enabled: %s, Advertising: %s, Scanning: %s, Discoverable: %s", 
+              static_cast<int>(m_bluetooth->getState()),
+              m_bluetooth->isEnabled() ? "Yes" : "No",
+              m_bluetooth->isAdvertising() ? "Yes" : "No",
+              m_bluetooth->isScanning() ? "Yes" : "No",
+              m_bluetooth->isDiscoverable() ? "Yes" : "No");
+     
+     // Get connected devices
+     std::vector<HfBluetoothDeviceInfo> connected_devices;
+     if (m_bluetooth->getConnectedDevices(connected_devices) == HfBluetoothErr::BLUETOOTH_SUCCESS) {
+       ESP_LOGI(TAG_BT, "Connected BT Devices: %d", connected_devices.size());
+     }
+   }
 };
 
 /**
  * @brief Main function - entry point for the demo
  */
-int main() {
+extern "C" void app_main() {
   try {
     // Create and start the demo
     WiFiBluetoothDemo demo;
     demo.startDemo();
     
   } catch (const std::exception& e) {
-    std::cerr << "Demo failed with exception: " << e.what() << std::endl;
-    return -1;
+    ESP_LOGE(TAG_MAIN, "Demo failed with exception: %s", e.what());
+    return;
   }
   
-  std::cout << "Demo completed successfully!" << std::endl;
-  return 0;
+  ESP_LOGI(TAG_MAIN, "Demo completed successfully!");
 }
