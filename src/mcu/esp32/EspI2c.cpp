@@ -160,7 +160,10 @@ int EspI2cBus::CreateDevice(const hf_i2c_device_config_t& device_config) noexcep
     auto device = hf::utils::make_unique_nothrow<EspI2cDevice>(this, dev_handle, device_config);
     if (!device) {
         ESP_LOGE(TAG, "Failed to allocate memory for EspI2cDevice");
-        i2c_master_bus_rm_device(dev_handle);
+        esp_err_t cleanup_err = i2c_master_bus_rm_device(dev_handle);
+        if (cleanup_err != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to remove I2C device during cleanup: %s", esp_err_to_name(cleanup_err));
+        }
         return -1;
     }
     
