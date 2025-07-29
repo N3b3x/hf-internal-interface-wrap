@@ -30,6 +30,7 @@
  */
 
 #include "EspSpi.h"
+#include "utils/memory_utils.h"
 #include <cstring>
 
 // ESP-IDF additional includes for ESP32C6 features
@@ -135,8 +136,14 @@ int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcep
     return -1;
   }
   
-  // Create and store the device
-  auto device = std::make_unique<EspSpiDevice>(this, handle, device_config);
+  // Create and store the device using nothrow allocation
+  auto device = hf::utils::make_unique_nothrow<EspSpiDevice>(this, handle, device_config);
+  if (!device) {
+    ESP_LOGE(TAG, "Failed to allocate memory for EspSpiDevice");
+    spi_bus_remove_device(handle);
+    return -1;
+  }
+  
   // Check if devices vector can accommodate new device
   if (devices_.size() >= devices_.max_size()) {
     ESP_LOGE(TAG, "Failed to add EspSpiDevice: maximum devices reached");

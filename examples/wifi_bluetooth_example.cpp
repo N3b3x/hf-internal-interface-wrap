@@ -30,6 +30,7 @@
 #include "BaseBluetooth.h"
 #include "mcu/esp32/EspWifi.h"
 #include "mcu/esp32/EspBluetooth.h"
+#include "utils/memory_utils.h"
 
 // ESP-IDF headers
 #ifdef __cplusplus
@@ -105,10 +106,18 @@ public:
     bt_config.enable_privacy = true;
     bt_config.io_capability = ESP_IO_CAP_NO;
     
-         // Create instances with advanced configurations
-     m_wifi = std::make_unique<EspWifi>(&wifi_config);
+         // Create instances with advanced configurations using nothrow allocation
+     m_wifi = hf::utils::make_unique_nothrow<EspWifi>(&wifi_config);
+     if (!m_wifi) {
+         ESP_LOGE(TAG_MAIN, "Failed to allocate memory for WiFi instance");
+         return;
+     }
      
-     m_bluetooth = std::make_unique<EspBluetooth>(&bt_config);
+     m_bluetooth = hf::utils::make_unique_nothrow<EspBluetooth>(&bt_config);
+     if (!m_bluetooth) {
+         ESP_LOGE(TAG_MAIN, "Failed to allocate memory for Bluetooth instance");
+         return;
+     }
      
      ESP_LOGI(TAG_MAIN, "WiFi and Bluetooth instances created successfully!");
   }

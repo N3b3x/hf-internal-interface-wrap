@@ -29,6 +29,7 @@
  */
 
 #include "EspI2c.h"
+#include "utils/memory_utils.h"
 #include <cstring>
 #include <algorithm>
 
@@ -155,8 +156,14 @@ int EspI2cBus::CreateDevice(const hf_i2c_device_config_t& device_config) noexcep
         return -1;
     }
 
-    // Create EspI2cDevice instance using no-exceptions approach
-    auto device = std::make_unique<EspI2cDevice>(this, dev_handle, device_config);
+    // Create EspI2cDevice instance using nothrow allocation
+    auto device = hf::utils::make_unique_nothrow<EspI2cDevice>(this, dev_handle, device_config);
+    if (!device) {
+        ESP_LOGE(TAG, "Failed to allocate memory for EspI2cDevice");
+        i2c_master_bus_rm_device(dev_handle);
+        return -1;
+    }
+    
     // Check if devices vector can accommodate new device
     if (devices_.size() >= devices_.max_size()) {
         ESP_LOGE(TAG, "Failed to add EspI2cDevice: maximum devices reached");

@@ -363,6 +363,7 @@ struct hf_spi_statistics_t {
 
 ```cpp
 #include "mcu/esp32/EspSpi.h"
+#include "utils/memory_utils.h"
 
 class SensorController {
 private:
@@ -432,20 +433,24 @@ public:
     }
     
     void read_sensor_data(uint8_t* data, size_t length) {
-        // Read sensor data
+        // Read sensor data using nothrow allocation
         uint8_t tx_cmd[] = {0x04, 0x00};  // Read data command
-        uint8_t* rx_data = new uint8_t[length + 2];
+        auto rx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length + 2);
+        if (!rx_data) {
+            printf("❌ Failed to allocate memory for receive buffer\n");
+            return;
+        }
         
-        hf_spi_err_t result = spi_.TransmitReceive(SENSOR_DEVICE, tx_cmd, rx_data, length + 2);
+        hf_spi_err_t result = spi_.TransmitReceive(SENSOR_DEVICE, tx_cmd, rx_data.get(), length + 2);
         if (result == hf_spi_err_t::SPI_SUCCESS) {
             // Copy data (skip command bytes)
-            memcpy(data, rx_data + 2, length);
+            memcpy(data, rx_data.get() + 2, length);
             printf("📊 Read %zu bytes of sensor data\n", length);
         } else {
             printf("❌ Sensor data read failed: %s\n", HfSpiErrToString(result));
         }
         
-        delete[] rx_data;
+        // rx_data automatically cleaned up when going out of scope
     }
 };
 ```
@@ -454,6 +459,7 @@ public:
 
 ```cpp
 #include "mcu/esp32/EspSpi.h"
+#include "utils/memory_utils.h"
 
 class DisplayController {
 private:
@@ -526,13 +532,18 @@ private:
         // Set DC pin high for data
         gpio_set_level(16, 1);  // DC pin on GPIO 16
         
-        uint8_t* rx_data = new uint8_t[length];
-        hf_spi_err_t result = spi_.TransmitReceive(DISPLAY_DEVICE, data, rx_data, length);
+        auto rx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length);
+        if (!rx_data) {
+            printf("❌ Failed to allocate memory for receive buffer\n");
+            return;
+        }
+        
+        hf_spi_err_t result = spi_.TransmitReceive(DISPLAY_DEVICE, data, rx_data.get(), length);
         if (result != hf_spi_err_t::SPI_SUCCESS) {
             printf("❌ Data send failed: %s\n", HfSpiErrToString(result));
         }
         
-        delete[] rx_data;
+        // rx_data automatically cleaned up when going out of scope
     }
     
 public:
@@ -577,6 +588,7 @@ public:
 
 ```cpp
 #include "mcu/esp32/EspSpi.h"
+#include "utils/memory_utils.h"
 
 class MemoryController {
 private:
@@ -614,22 +626,25 @@ public:
     }
     
     bool read_memory(uint32_t address, uint8_t* data, size_t length) {
-        // Send read command
+        // Send read command using nothrow allocation
         uint8_t tx_cmd[] = {0x03, (address >> 16) & 0xFF, (address >> 8) & 0xFF, address & 0xFF};
-        uint8_t* rx_data = new uint8_t[length + 4];
+        auto rx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length + 4);
+        if (!rx_data) {
+            printf("❌ Failed to allocate memory for receive buffer\n");
+            return false;
+        }
         
-        hf_spi_err_t result = spi_.TransmitReceive(MEMORY_DEVICE, tx_cmd, rx_data, length + 4);
+        hf_spi_err_t result = spi_.TransmitReceive(MEMORY_DEVICE, tx_cmd, rx_data.get(), length + 4);
         if (result == hf_spi_err_t::SPI_SUCCESS) {
             // Copy data (skip command bytes)
-            memcpy(data, rx_data + 4, length);
+            memcpy(data, rx_data.get() + 4, length);
             printf("📖 Read %zu bytes from address 0x%06X\n", length, address);
-            delete[] rx_data;
             return true;
         } else {
             printf("❌ Memory read failed: %s\n", HfSpiErrToString(result));
-            delete[] rx_data;
             return false;
         }
+        // rx_data automatically cleaned up when going out of scope
     }
     
     bool write_memory(uint32_t address, const uint8_t* data, size_t length) {
@@ -642,24 +657,28 @@ public:
             return false;
         }
         
-        // Send write command
-        uint8_t* tx_data = new uint8_t[length + 4];
+        // Send write command using nothrow allocation
+        auto tx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length + 4);
+        if (!tx_data) {
+            printf("❌ Failed to allocate memory for transmit buffer\n");
+            return false;
+        }
+        
         tx_data[0] = 0x02;  // Page program command
         tx_data[1] = (address >> 16) & 0xFF;
         tx_data[2] = (address >> 8) & 0xFF;
         tx_data[3] = address & 0xFF;
-        memcpy(tx_data + 4, data, length);
+        memcpy(tx_data.get() + 4, data, length);
         
-        result = spi_.Transmit(MEMORY_DEVICE, tx_data, length + 4);
+        result = spi_.Transmit(MEMORY_DEVICE, tx_data.get(), length + 4);
         if (result == hf_spi_err_t::SPI_SUCCESS) {
             printf("✍️ Wrote %zu bytes to address 0x%06X\n", length, address);
-            delete[] tx_data;
             return true;
         } else {
             printf("❌ Memory write failed: %s\n", HfSpiErrToString(result));
-            delete[] tx_data;
             return false;
         }
+        // tx_data automatically cleaned up when going out of scope
     }
     
     bool erase_sector(uint32_t address) {

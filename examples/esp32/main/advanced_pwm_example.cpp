@@ -20,6 +20,7 @@
 
 #include "inc/mcu/esp32/EspPwm.h"
 #include "inc/mcu/esp32/utils/EspTypes_PWM.h"
+#include "inc/utils/memory_utils.h"
 
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
@@ -32,6 +33,7 @@ extern "C" {
 #include "freertos/task.h"
 #include <cstdio>
 #include <cstring>
+#include <memory>
 
 #ifdef __cplusplus
 }
@@ -65,7 +67,7 @@ static constexpr hf_pin_num_t AUDIO_PIN = 6;   ///< Audio output pin
 // GLOBAL VARIABLES
 //==============================================================================
 
-static EspPwm* g_pwm_controller = nullptr;
+static std::unique_ptr<EspPwm> g_pwm_controller = nullptr;
 static volatile bool g_fade_complete = false;
 static volatile hf_u32_t g_period_count = 0;
 
@@ -536,17 +538,17 @@ extern "C" void app_main(void) {
   pwm_config.enable_fade = true;
   pwm_config.enable_interrupts = true;
 
-  // Create PWM controller
-  g_pwm_controller = new EspPwm(pwm_config);
+  // Create PWM controller using nothrow allocation
+  g_pwm_controller = hf::utils::make_unique_nothrow<EspPwm>(pwm_config);
   if (!g_pwm_controller) {
-    ESP_LOGE(TAG, "Failed to create PWM controller");
+    ESP_LOGE(TAG, "Failed to allocate memory for PWM controller");
     return;
   }
 
   // Initialize PWM system
   if (!g_pwm_controller->EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize PWM system");
-    delete g_pwm_controller;
+    g_pwm_controller.reset();
     return;
   }
 
@@ -560,7 +562,7 @@ extern "C" void app_main(void) {
   if (!ConfigureLedChannel(*g_pwm_controller) || !ConfigureMotorChannels(*g_pwm_controller) ||
       !ConfigureServoChannel(*g_pwm_controller) || !ConfigureAudioChannel(*g_pwm_controller)) {
     ESP_LOGE(TAG, "Failed to configure channels");
-    delete g_pwm_controller;
+    g_pwm_controller.reset();
     return;
   }
 
@@ -570,7 +572,7 @@ extern "C" void app_main(void) {
   // Start all channels
   if (g_pwm_controller->StartAll() != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to start all channels");
-    delete g_pwm_controller;
+    g_pwm_controller.reset();
     return;
   }
 
@@ -603,9 +605,8 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "=== Advanced PWM Example Complete ===");
   ESP_LOGI(TAG, "Total periods completed: %lu", g_period_count);
 
-  // Clean up
-  delete g_pwm_controller;
-  g_pwm_controller = nullptr;
+  // Clean up - unique_ptr automatically handles cleanup
+  g_pwm_controller.reset();
 
   ESP_LOGI(TAG, "Example completed successfully!");
 }
