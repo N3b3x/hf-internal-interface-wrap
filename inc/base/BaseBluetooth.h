@@ -21,6 +21,7 @@
 #pragma once
 
 #include "HardwareTypes.h"
+#include <cctype>
 #include <cstdint>
 #include <functional>
 #include <string>
@@ -698,15 +699,37 @@ inline std::string HfBluetoothAddress::toString() const {
 inline bool HfBluetoothAddress::fromString(const std::string& addr_str) {
   if (addr_str.length() != 17) return false;
   
-  int values[6];
-  int result = sscanf(addr_str.c_str(), "%02X:%02X:%02X:%02X:%02X:%02X",
-                      &values[0], &values[1], &values[2], 
-                      &values[3], &values[4], &values[5]);
+  // Validate format: XX:XX:XX:XX:XX:XX
+  for (size_t i = 0; i < addr_str.length(); ++i) {
+    if (i % 3 == 2) {
+      if (addr_str[i] != ':') return false;
+    } else {
+      if (!std::isxdigit(addr_str[i])) return false;
+    }
+  }
   
-  if (result != 6) return false;
-  
+  // Parse using no-exceptions approach with manual hex conversion
   for (int i = 0; i < 6; i++) {
-    addr[i] = static_cast<uint8_t>(values[i]);
+    size_t pos = i * 3;
+    const char* hex_start = addr_str.c_str() + pos;
+    
+    // Manual hex conversion without exceptions
+    unsigned int value = 0;
+    for (int j = 0; j < 2; j++) {
+      char c = hex_start[j];
+      if (c >= '0' && c <= '9') {
+        value = (value << 4) + (c - '0');
+      } else if (c >= 'A' && c <= 'F') {
+        value = (value << 4) + (c - 'A' + 10);
+      } else if (c >= 'a' && c <= 'f') {
+        value = (value << 4) + (c - 'a' + 10);
+      } else {
+        return false; // Invalid hex character
+      }
+    }
+    
+    if (value > 255) return false;
+    addr[i] = static_cast<uint8_t>(value);
   }
   
   return true;
