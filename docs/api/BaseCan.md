@@ -17,7 +17,7 @@
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
 - [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
+- [📊 **Usage Examples**](#-usage-examples)
 - [🧪 **Best Practices**](#-best-practices)
 
 ---
@@ -612,7 +612,7 @@ struct hf_can_diagnostics_t {
 
 ---
 
-## 💡 **Usage Examples**
+## 📊 **Usage Examples**
 
 ### 📨 **Basic Message Transmission**
 

@@ -17,7 +17,7 @@
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
 - [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
+- [📊 **Usage Examples**](#-usage-examples)
 - [🧪 **Best Practices**](#-best-practices)
 
 ---
@@ -438,7 +438,7 @@ struct hf_pwm_statistics_t {
 
 ---
 
-## 💡 **Usage Examples**
+## 📊 **Usage Examples**
 
 ### 🎛️ **Basic PWM Control**
 
@@ -618,7 +618,7 @@ public:
 };
 ```
 
-### 💡 **LED Dimming Control**
+### 📊 **LED Dimming Control**
 
 ```cpp
 #include "mcu/esp32/EspPwm.h"
@@ -668,7 +668,7 @@ public:
         
         hf_pwm_err_t result = pwm_.SetDutyCycle(0, brightness_percent);
         if (result == hf_pwm_err_t::PWM_SUCCESS) {
-            printf("💡 LED brightness: %.1f%%\n", brightness_percent);
+            printf("📊 LED brightness: %.1f%%\n", brightness_percent);
         } else {
             printf("❌ Brightness set failed: %s\n", HfPwmErrToString(result));
         }

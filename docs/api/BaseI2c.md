@@ -17,7 +17,7 @@
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
 - [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
+- [📊 **Usage Examples**](#-usage-examples)
 - [🧪 **Best Practices**](#-best-practices)
 
 ---
@@ -497,7 +497,7 @@ struct hf_i2c_diagnostics_t {
 
 ---
 
-## 💡 **Usage Examples**
+## 📊 **Usage Examples**
 
 ### 🔍 **Device Discovery**
 
@@ -642,6 +642,7 @@ void temperature_monitoring() {
 
 ```cpp
 #include "mcu/esp32/EspI2c.h"
+#include "utils/memory_utils.h"
 
 class Eeprom24LC256 {
 private:
@@ -705,13 +706,18 @@ public:
             return false;
         }
         
-        uint8_t* tx_data = new uint8_t[length + 2];
+        auto tx_data = hf::utils::make_unique_array_nothrow<uint8_t>(length + 2);
+        if (!tx_data) {
+            printf("❌ Failed to allocate memory for transmit buffer\n");
+            return false;
+        }
+        
         tx_data[0] = static_cast<uint8_t>(address >> 8);    // High address byte
         tx_data[1] = static_cast<uint8_t>(address & 0xFF);  // Low address byte
         memcpy(&tx_data[2], data, length);
         
-        hf_i2c_err_t result = i2c_->Write(this->address_, tx_data, length + 2);
-        delete[] tx_data;
+        hf_i2c_err_t result = i2c_->Write(this->address_, tx_data.get(), length + 2);
+        // tx_data automatically cleaned up when going out of scope
         
         if (result != hf_i2c_err_t::I2C_SUCCESS) {
             printf("❌ Page write failed: %s\n", HfI2CErrToString(result));

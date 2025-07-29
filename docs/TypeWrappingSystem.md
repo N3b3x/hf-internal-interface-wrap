@@ -16,7 +16,7 @@
 - [🏗️ **Type Definitions**](#️-type-definitions)
 - [🔧 **Implementation Details**](#-implementation-details)
 - [📊 **Benefits**](#-benefits)
-- [💡 **Usage Examples**](#-usage-examples)
+- [📊 **Usage Examples**](#-usage-examples)
 - [🔄 **Migration Guide**](#-migration-guide)
 
 ---
@@ -212,7 +212,7 @@ struct hf_gpio_diagnostics_t {
 
 ---
 
-## 💡 **Usage Examples**
+## 📊 **Usage Examples**
 
 ### 🔌 **GPIO Operations**
 

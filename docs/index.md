@@ -24,7 +24,7 @@
 - [🚀 **Quick Start**](#-quick-start)
 - [🗺️ **Component Map**](ComponentMap.md)
 - [📋 **User Guides**](#-user-guides)
-- [💡 **Examples**](#-examples)
+- [📊 **Examples**](#-examples)
 - [🔧 **Development**](#-development)
 - [🕸️ **GitHub Pages**](guides/github-pages.md)
 
@@ -299,7 +299,7 @@ i2c_bus.ReadFrom(0x48, data, sizeof(data));
 
 ---
 
-## 💡 **Examples**
+## 📊 **Examples**
 
 ### 🎯 **Basic Examples**
 

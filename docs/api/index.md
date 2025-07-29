@@ -18,7 +18,7 @@
 - [🏗️ **Architecture**](#️-architecture)
 - [📋 **Base Classes**](#-base-classes)
 - [🔧 **Core Principles**](#-core-principles)
-- [💡 **Getting Started**](#-getting-started)
+- [📊 **Getting Started**](#-getting-started)
 - [🧪 **Examples**](#-examples)
 
 ---
@@ -167,7 +167,7 @@ printf("Total conversions: %u\n", stats.totalConversions);
 
 ---
 
-## 💡 **Getting Started**
+## 📊 **Getting Started**
 
 ### **1. Include the Headers**
 

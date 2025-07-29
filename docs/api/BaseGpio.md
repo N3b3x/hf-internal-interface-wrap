@@ -17,7 +17,7 @@
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
 - [📊 **Data Structures**](#-data-structures)
-- [💡 **Usage Examples**](#-usage-examples)
+- [📊 **Usage Examples**](#-usage-examples)
 - [🧪 **Best Practices**](#-best-practices)
 
 ---
@@ -596,7 +596,7 @@ using InterruptCallback = std::function<void(BaseGpio *gpio,
 
 ---
 
-## 💡 **Usage Examples**
+## 📊 **Usage Examples**
 
 ### 🔌 **Basic LED Control**
 
