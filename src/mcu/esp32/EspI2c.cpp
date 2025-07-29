@@ -155,19 +155,26 @@ int EspI2cBus::CreateDevice(const hf_i2c_device_config_t& device_config) noexcep
         return -1;
     }
 
-    // Create EspI2cDevice instance
-    try {
-        auto device = std::make_unique<EspI2cDevice>(this, dev_handle, device_config);
-        devices_.push_back(std::move(device));
-        int device_index = devices_.size() - 1;
-        
-        ESP_LOGI(TAG, "I2C device created successfully at index %d", device_index);
-        return device_index;
-    } catch (const std::exception& e) {
-        ESP_LOGE(TAG, "Failed to create EspI2cDevice: %s", e.what());
+    // Create EspI2cDevice instance using no-exceptions approach
+    auto device = std::make_unique<EspI2cDevice>(this, dev_handle, device_config);
+    if (!device) {
+        ESP_LOGE(TAG, "Failed to create EspI2cDevice: memory allocation failed");
         i2c_master_bus_rm_device(dev_handle);
         return -1;
     }
+    
+    // Check if devices vector can accommodate new device
+    if (devices_.size() >= devices_.max_size()) {
+        ESP_LOGE(TAG, "Failed to add EspI2cDevice: maximum devices reached");
+        i2c_master_bus_rm_device(dev_handle);
+        return -1;
+    }
+    
+    devices_.push_back(std::move(device));
+    int device_index = devices_.size() - 1;
+    
+    ESP_LOGI(TAG, "I2C device created successfully at index %d", device_index);
+    return device_index;
 }
 
 BaseI2c* EspI2cBus::GetDevice(int device_index) noexcept {

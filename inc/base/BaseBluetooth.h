@@ -708,17 +708,28 @@ inline bool HfBluetoothAddress::fromString(const std::string& addr_str) {
     }
   }
   
-  // Parse using safer approach with validation
+  // Parse using no-exceptions approach with manual hex conversion
   for (int i = 0; i < 6; i++) {
     size_t pos = i * 3;
-    std::string hex_byte = addr_str.substr(pos, 2);
-    try {
-      unsigned long value = std::stoul(hex_byte, nullptr, 16);
-      if (value > 255) return false;
-      addr[i] = static_cast<uint8_t>(value);
-    } catch (const std::exception&) {
-      return false;
+    const char* hex_start = addr_str.c_str() + pos;
+    
+    // Manual hex conversion without exceptions
+    unsigned int value = 0;
+    for (int j = 0; j < 2; j++) {
+      char c = hex_start[j];
+      if (c >= '0' && c <= '9') {
+        value = (value << 4) + (c - '0');
+      } else if (c >= 'A' && c <= 'F') {
+        value = (value << 4) + (c - 'A' + 10);
+      } else if (c >= 'a' && c <= 'f') {
+        value = (value << 4) + (c - 'a' + 10);
+      } else {
+        return false; // Invalid hex character
+      }
     }
+    
+    if (value > 255) return false;
+    addr[i] = static_cast<uint8_t>(value);
   }
   
   return true;

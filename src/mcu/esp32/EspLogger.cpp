@@ -792,11 +792,21 @@ hf_u32_t EspLogger::GetCurrentThreadId() const noexcept {
 
 bool EspLogger::EnsureMessageBuffer(hf_u32_t required_length) noexcept {
     if (message_buffer_.size() < required_length) {
-        try {
-            message_buffer_.resize(required_length);
-        } catch (const std::exception&) {
+        // Check if allocation would be reasonable (prevent excessive memory usage)
+        if (required_length > MAX_LOG_MESSAGE_LENGTH * 2) {
             return false;
         }
+        
+        // Use reserve() and manual size check for no-exceptions approach
+        size_t old_capacity = message_buffer_.capacity();
+        if (old_capacity < required_length) {
+            message_buffer_.reserve(required_length);
+            // Check if reserve succeeded by checking capacity
+            if (message_buffer_.capacity() < required_length) {
+                return false;
+            }
+        }
+        message_buffer_.resize(required_length);
     }
     return true;
 }

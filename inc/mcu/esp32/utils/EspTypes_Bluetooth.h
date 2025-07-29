@@ -17,6 +17,7 @@
 #pragma once
 
 #include "EspTypes_Base.h"
+#include <algorithm>
 
 #ifdef __cplusplus
 extern "C" {
@@ -424,6 +425,37 @@ inline bool isValidGattMtu(uint16_t mtu) {
 }
 
 /**
+ * @brief Parse hex string to unsigned integer without exceptions
+ * @param hex_str Hex string to parse
+ * @param max_chars Maximum number of characters to parse
+ * @param result Output result
+ * @return true if parsing successful, false otherwise
+ */
+inline bool parseHexString(const std::string& hex_str, size_t max_chars, uint32_t& result) {
+  result = 0;
+  size_t len = std::min(hex_str.length(), max_chars);
+  
+  for (size_t i = 0; i < len; i++) {
+    char c = hex_str[i];
+    uint32_t digit = 0;
+    
+    if (c >= '0' && c <= '9') {
+      digit = c - '0';
+    } else if (c >= 'A' && c <= 'F') {
+      digit = c - 'A' + 10;
+    } else if (c >= 'a' && c <= 'f') {
+      digit = c - 'a' + 10;
+    } else {
+      return false; // Invalid hex character
+    }
+    
+    result = (result << 4) | digit;
+  }
+  
+  return true;
+}
+
+/**
  * @brief Convert UUID string to ESP-IDF UUID structure
  * @param uuid_str UUID string (16, 32, or 128-bit)
  * @param esp_uuid ESP-IDF UUID structure output
@@ -433,12 +465,20 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
   if (uuid_str.length() == 4) {
     // 16-bit UUID
     esp_uuid.len = ESP_UUID_LEN_16;
-    esp_uuid.uuid.uuid16 = static_cast<uint16_t>(std::stoul(uuid_str, nullptr, 16));
+    uint32_t value;
+    if (!parseHexString(uuid_str, 4, value) || value > 0xFFFF) {
+      return false;
+    }
+    esp_uuid.uuid.uuid16 = static_cast<uint16_t>(value);
     return true;
   } else if (uuid_str.length() == 8) {
     // 32-bit UUID
     esp_uuid.len = ESP_UUID_LEN_32;
-    esp_uuid.uuid.uuid32 = static_cast<uint32_t>(std::stoul(uuid_str, nullptr, 16));
+    uint32_t value;
+    if (!parseHexString(uuid_str, 8, value)) {
+      return false;
+    }
+    esp_uuid.uuid.uuid32 = value;
     return true;
   } else if (uuid_str.length() == 36) {
     // 128-bit UUID (with dashes)
@@ -451,7 +491,11 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
     if (clean_uuid.length() == 32) {
       for (int i = 0; i < UUID_128_BYTE_LENGTH; i++) {
         std::string byte_str = clean_uuid.substr(30 - (i * 2), 2);
-        esp_uuid.uuid.uuid128[i] = static_cast<uint8_t>(std::stoul(byte_str, nullptr, 16));
+        uint32_t value;
+        if (!parseHexString(byte_str, 2, value) || value > 0xFF) {
+          return false;
+        }
+        esp_uuid.uuid.uuid128[i] = static_cast<uint8_t>(value);
       }
       return true;
     }
@@ -461,7 +505,11 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
     esp_uuid.len = ESP_UUID_LEN_128;
     for (int i = 0; i < UUID_128_BYTE_LENGTH; i++) {
       std::string byte_str = uuid_str.substr(30 - (i * 2), 2);
-      esp_uuid.uuid.uuid128[i] = static_cast<uint8_t>(std::stoul(byte_str, nullptr, 16));
+      uint32_t value;
+      if (!parseHexString(byte_str, 2, value) || value > 0xFF) {
+        return false;
+      }
+      esp_uuid.uuid.uuid128[i] = static_cast<uint8_t>(value);
     }
     return true;
   }
