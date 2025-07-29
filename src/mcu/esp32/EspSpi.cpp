@@ -140,7 +140,10 @@ int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcep
   auto device = hf::utils::make_unique_nothrow<EspSpiDevice>(this, handle, device_config);
   if (!device) {
     ESP_LOGE(TAG, "Failed to allocate memory for EspSpiDevice");
-    spi_bus_remove_device(handle);
+    esp_err_t remove_err = spi_bus_remove_device(handle);
+    if (remove_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to remove SPI device: %s", esp_err_to_name(remove_err));
+    }
     return -1;
   }
   
