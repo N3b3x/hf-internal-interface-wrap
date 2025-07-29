@@ -137,12 +137,6 @@ int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcep
   
   // Create and store the device
   auto device = std::make_unique<EspSpiDevice>(this, handle, device_config);
-  if (!device) {
-    ESP_LOGE(TAG, "Failed to create EspSpiDevice: memory allocation failed");
-    spi_bus_remove_device(handle);
-    return -1;
-  }
-  
   // Check if devices vector can accommodate new device
   if (devices_.size() >= devices_.max_size()) {
     ESP_LOGE(TAG, "Failed to add EspSpiDevice: maximum devices reached");
