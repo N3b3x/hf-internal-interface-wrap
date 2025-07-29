@@ -15,8 +15,8 @@
 - [🎯 **Overview**](#-overview)
 - [🏗️ **Type Definitions**](#️-type-definitions)
 - [🔧 **Implementation Details**](#-implementation-details)
-- [INFO: **Benefits**](#-benefits)
-- [INFO: **Usage Examples**](#-usage-examples)
+- [📊 **Benefits**](#-benefits)
+- [📊 **Usage Examples**](#-usage-examples)
 - [🔄 **Migration Guide**](#-migration-guide)
 
 ---
@@ -36,7 +36,7 @@ The HardFOC Internal Interface Wrapper implements a comprehensive type wrapping 
 
 ## 🏗️ **Type Definitions**
 
-### INFO: **Integer Type Wrappers**
+### 📊 **Integer Type Wrappers**
 
 All standard integer types are wrapped with consistent naming:
 
@@ -153,7 +153,7 @@ enum class hf_timer_err_t : hf_i32_t {
 };
 ```
 
-### INFO: **Data Structures**
+### 📊 **Data Structures**
 
 All data structures use wrapped types:
 
@@ -184,7 +184,7 @@ struct hf_gpio_diagnostics_t {
 
 ---
 
-## INFO: **Benefits**
+## 📊 **Benefits**
 
 ### 🔒 **Type Safety**
 
@@ -212,7 +212,7 @@ struct hf_gpio_diagnostics_t {
 
 ---
 
-## INFO: **Usage Examples**
+## 📊 **Usage Examples**
 
 ### 🔌 **GPIO Operations**
 
@@ -226,7 +226,7 @@ EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 void setup() {
     // Initialize with wrapped types
     if (led_pin.EnsureInitialized()) {
-        printf("SUCCESS: GPIO initialized\n");
+        printf("✅ GPIO initialized\n");
     }
 }
 
@@ -239,7 +239,7 @@ void control_led() {
 }
 ```
 
-### INFO: **ADC Reading**
+### 📊 **ADC Reading**
 
 ```cpp
 #include "inc/base/BaseAdc.h"
@@ -301,7 +301,7 @@ void configure_timer() {
     if (period_us >= min_period && period_us <= max_period) {
         hf_timer_err_t result = timer.Start(period_us);
         if (result == hf_timer_err_t::TIMER_SUCCESS) {
-            printf("SUCCESS: Timer started with %llu μs period\n", period_us);
+            printf("✅ Timer started with %llu μs period\n", period_us);
         }
     }
 }
@@ -326,7 +326,7 @@ adc.ReadChannelCount(channel, raw_count);
 timer.Start(period);
 ```
 
-### SUCCESS: **After (Wrapped Types)**
+### ✅ **After (Wrapped Types)**
 
 ```cpp
 // New code using wrapped types
@@ -391,7 +391,7 @@ timer.Start(period);
 
 ## 🔗 **Related Documentation**
 
-- [INFO: **BaseAdc API**](api/BaseAdc.md) - ADC interface with wrapped types
+- [📊 **BaseAdc API**](api/BaseAdc.md) - ADC interface with wrapped types
 - [🔌 **BaseGpio API**](api/BaseGpio.md) - GPIO interface with wrapped types
 - [🚗 **BaseCan API**](api/BaseCan.md) - CAN interface with wrapped types
 - [📡 **BaseI2c API**](api/BaseI2c.md) - I2C interface with wrapped types

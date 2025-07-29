@@ -18,8 +18,8 @@
 - [🏗️ **Architecture**](#️-architecture)
 - [📋 **Base Classes**](#-base-classes)
 - [🔧 **Core Principles**](#-core-principles)
-- [INFO: **Getting Started**](#-getting-started)
-- [TEST: **Examples**](#-examples)
+- [📊 **Getting Started**](#-getting-started)
+- [🧪 **Examples**](#-examples)
 
 ---
 
@@ -33,7 +33,7 @@ The **HardFOC Interface Wrapper** provides a unified, platform-agnostic abstract
 - 🛡️ **Type Safety** - Strongly typed interfaces with comprehensive error handling
 - ⚡ **Performance Optimized** - Minimal overhead with direct hardware access
 - 🔧 **Extensible** - Easy to add new hardware platforms and peripherals
-- INFO: **Observable** - Built-in statistics, diagnostics, and monitoring
+- 📊 **Observable** - Built-in statistics, diagnostics, and monitoring
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 
 ### 🎯 **Target Applications**
@@ -167,7 +167,7 @@ printf("Total conversions: %u\n", stats.totalConversions);
 
 ---
 
-## INFO: **Getting Started**
+## 📊 **Getting Started**
 
 ### **1. Include the Headers**
 
@@ -215,7 +215,7 @@ if (result != hf_adc_err_t::ADC_SUCCESS) {
 
 ---
 
-## TEST: **Examples**
+## 🧪 **Examples**
 
 ### **Motor Control System**
 

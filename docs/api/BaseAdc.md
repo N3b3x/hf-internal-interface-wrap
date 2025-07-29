@@ -1,4 +1,4 @@
-# INFO: BaseAdc API Reference
+# 📊 BaseAdc API Reference
 
 <div align="center">
 
@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [INFO: **Data Structures**](#-data-structures)
-- [INFO: **Usage Examples**](#-usage-examples)
-- [TEST: **Best Practices**](#-best-practices)
+- [📊 **Data Structures**](#-data-structures)
+- [📊 **Usage Examples**](#-usage-examples)
+- [🧪 **Best Practices**](#-best-practices)
 
 ---
 
@@ -28,7 +28,7 @@ The `BaseAdc` class provides a comprehensive ADC abstraction that serves as the 
 
 ### ✨ **Key Features**
 
-- INFO: **Multi-Channel Support** - Simultaneous operation on multiple ADC channels
+- 📊 **Multi-Channel Support** - Simultaneous operation on multiple ADC channels
 - 🎯 **Hardware Calibration** - Automatic gain and offset calibration
 - ⚡ **High-Speed Conversion** - Optimized for real-time motor control
 - 🔄 **Voltage Conversion** - Direct voltage reading with calibration
@@ -37,7 +37,7 @@ The `BaseAdc` class provides a comprehensive ADC abstraction that serves as the 
 - 🏎️ **Performance Optimized** - Minimal overhead for critical applications
 - 🔌 **Platform Agnostic** - Works with internal and external ADCs
 
-### INFO: **Supported Hardware**
+### 📊 **Supported Hardware**
 
 | Implementation | Hardware Type | Channels | Resolution | Sample Rate |
 |----------------|---------------|----------|------------|-------------|
@@ -86,19 +86,19 @@ classDiagram
 
 The ADC system uses comprehensive error codes for robust error handling:
 
-### SUCCESS: **Success Codes**
+### ✅ **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `ADC_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
+| `ADC_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ERROR: **General Error Codes**
+### ❌ **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `ADC_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
-| `ADC_ERR_NOT_INITIALIZED` | 2 | WARNING: ADC not initialized | Call Initialize() first |
-| `ADC_ERR_ALREADY_INITIALIZED` | 3 | WARNING: ADC already initialized | Check initialization state |
+| `ADC_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
+| `ADC_ERR_NOT_INITIALIZED` | 2 | ⚠️ ADC not initialized | Call Initialize() first |
+| `ADC_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ ADC already initialized | Check initialization state |
 | `ADC_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `ADC_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `ADC_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -108,19 +108,19 @@ The ADC system uses comprehensive error codes for robust error handling:
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
 | `ADC_ERR_CHANNEL_NOT_FOUND` | 7 | 🔍 Channel not found | Use valid channel numbers |
-| `ADC_ERR_CHANNEL_NOT_ENABLED` | 8 | WARNING: Channel not enabled | Enable channel first |
+| `ADC_ERR_CHANNEL_NOT_ENABLED` | 8 | ⚠️ Channel not enabled | Enable channel first |
 | `ADC_ERR_CHANNEL_NOT_CONFIGURED` | 9 | ⚙️ Channel not configured | Configure channel parameters |
 | `ADC_ERR_CHANNEL_ALREADY_REGISTERED` | 10 | 🔄 Channel already registered | Check channel registration |
-| `ADC_ERR_CHANNEL_READ_ERR` | 11 | READ: Channel read error | Check hardware connections |
-| `ADC_ERR_CHANNEL_WRITE_ERR` | 12 | WRITE: Channel write error | Check write permissions |
+| `ADC_ERR_CHANNEL_READ_ERR` | 11 | 📖 Channel read error | Check hardware connections |
+| `ADC_ERR_CHANNEL_WRITE_ERR` | 12 | ✍️ Channel write error | Check write permissions |
 | `ADC_ERR_INVALID_CHANNEL` | 13 | 🚫 Invalid channel number | Use valid channel range |
 | `ADC_ERR_CHANNEL_BUSY` | 14 | 🔄 Channel currently in use | Wait or use different channel |
 
-### INFO: **Sampling Error Codes**
+### 📊 **Sampling Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `ADC_ERR_INVALID_SAMPLE_COUNT` | 15 | INFO: Invalid sample count | Use valid sample count |
+| `ADC_ERR_INVALID_SAMPLE_COUNT` | 15 | 📊 Invalid sample count | Use valid sample count |
 | `ADC_ERR_SAMPLE_TIMEOUT` | 16 | ⏰ Sample timeout | Check ADC clock and load |
 | `ADC_ERR_SAMPLE_OVERFLOW` | 17 | 📈 Sample overflow | Reduce sample rate |
 | `ADC_ERR_SAMPLE_UNDERFLOW` | 18 | 📉 Sample underflow | Check input signal |
@@ -138,9 +138,9 @@ The ADC system uses comprehensive error codes for robust error handling:
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `ADC_ERR_CALIBRATION_FAILURE` | 22 | INFO: Calibration failure | Re-run calibration process |
+| `ADC_ERR_CALIBRATION_FAILURE` | 22 | 📊 Calibration failure | Re-run calibration process |
 | `ADC_ERR_CALIBRATION_NOT_FOUND` | 28 | 🔍 Calibration data not found | Run calibration first |
-| `ADC_ERR_CALIBRATION_INVALID` | 29 | ERROR: Invalid calibration data | Re-calibrate |
+| `ADC_ERR_CALIBRATION_INVALID` | 29 | ❌ Invalid calibration data | Re-calibrate |
 | `ADC_ERR_CALIBRATION_EXPIRED` | 30 | ⏰ Calibration expired | Re-calibrate |
 | `ADC_ERR_CALIBRATION_DRIFT` | 31 | 📈 Calibration drift detected | Re-calibrate |
 
@@ -208,14 +208,14 @@ bool EnsureInitialized() noexcept;
 bool EnsureDeinitialized() noexcept;
 ```
 
-### INFO: **Channel Management**
+### 📊 **Channel Management**
 
 ```cpp
 /**
  * @brief Get maximum number of channels supported
  * @return Maximum channel count
  * 
- * INFO: Returns the total number of ADC channels available on this hardware.
+ * 📊 Returns the total number of ADC channels available on this hardware.
  */
 [[nodiscard]] virtual hf_u8_t GetMaxChannels() const noexcept = 0;
 
@@ -224,7 +224,7 @@ bool EnsureDeinitialized() noexcept;
  * @param channel_id Channel ID to check
  * @return true if channel is available, false otherwise
  * 
- * SUCCESS: Validates channel availability before use.
+ * ✅ Validates channel availability before use.
  */
 [[nodiscard]] virtual bool IsChannelAvailable(hf_channel_id_t channel_id) const noexcept = 0;
 ```
@@ -303,7 +303,7 @@ virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, hf_u32_t &channel_r
                                hf_time_t timeBetweenSamples = 0) noexcept = 0;
 ```
 
-### INFO: **Multi-Channel Operations**
+### 📊 **Multi-Channel Operations**
 
 ```cpp
 /**
@@ -314,7 +314,7 @@ virtual hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, hf_u32_t &channel_r
  * @param voltages Array to store voltage readings
  * @return hf_adc_err_t error code
  * 
- * INFO: Reads multiple channels in a single operation for improved efficiency.
+ * 📊 Reads multiple channels in a single operation for improved efficiency.
  * Default implementation reads channels sequentially.
  * 
  * @example
@@ -351,7 +351,7 @@ virtual hf_adc_err_t ResetDiagnostics() noexcept;
  * @param statistics Reference to store statistics data
  * @return hf_adc_err_t error code
  * 
- * INFO: Retrieves comprehensive statistics about ADC operations.
+ * 📊 Retrieves comprehensive statistics about ADC operations.
  */
 virtual hf_adc_err_t GetStatistics(hf_adc_statistics_t &statistics) const noexcept;
 
@@ -367,7 +367,7 @@ virtual hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t &diagnostics) const noe
 
 ---
 
-## INFO: **Data Structures**
+## 📊 **Data Structures**
 
 ### 📈 **ADC Statistics Structure**
 
@@ -402,9 +402,9 @@ struct hf_adc_diagnostics_t {
 
 ---
 
-## INFO: **Usage Examples**
+## 📊 **Usage Examples**
 
-### INFO: **Basic Voltage Reading**
+### 📊 **Basic Voltage Reading**
 
 ```cpp
 #include "mcu/esp32/EspAdc.h"
@@ -415,7 +415,7 @@ EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
 void setup() {
     // Initialize ADC (lazy initialization)
     if (adc.EnsureInitialized()) {
-        printf("SUCCESS: ADC initialized successfully\n");
+        printf("✅ ADC initialized successfully\n");
     }
 }
 
@@ -424,7 +424,7 @@ float read_battery_voltage() {
     hf_adc_err_t result = adc.ReadChannelV(0, voltage);
     
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        printf("ERROR: ADC Error: %s\n", HfAdcErrToString(result));
+        printf("❌ ADC Error: %s\n", HfAdcErrToString(result));
         return -1.0f;  // Error value
     }
     
@@ -440,7 +440,7 @@ void monitor_battery() {
         printf("🔋 Battery: %.2f V\n", battery_voltage);
         
         if (battery_voltage < 3.0f) {
-            printf("WARNING: Low battery warning!\n");
+            printf("⚠️ Low battery warning!\n");
         }
     }
 }
@@ -489,7 +489,7 @@ void sensor_monitoring_task() {
     while (true) {
         SensorReadings sensors = read_all_sensors();
         
-        printf("INFO: Sensors - T:%.1f°C P:%.1f PSI I:%.1fA V:%.1fV\n",
+        printf("📊 Sensors - T:%.1f°C P:%.1f PSI I:%.1fA V:%.1fV\n",
                sensors.temperature, 
                sensors.pressure,
                sensors.current,
@@ -533,7 +533,7 @@ public:
             if (result == hf_adc_err_t::ADC_SUCCESS) {
                 buffer_.push_back(raw_count);
             } else {
-                printf("WARNING: Sample %zu failed: %s\n", i, HfAdcErrToString(result));
+                printf("⚠️ Sample %zu failed: %s\n", i, HfAdcErrToString(result));
             }
             
             // Minimal delay for maximum speed
@@ -543,7 +543,7 @@ public:
     
     void process_data() {
         if (buffer_.empty()) {
-            printf("ERROR: No data acquired\n");
+            printf("❌ No data acquired\n");
             return;
         }
         
@@ -589,7 +589,7 @@ public:
         hf_adc_err_t result = adc_.ReadChannelV(0, voltage, 4);  // 4-sample average
         
         if (result != hf_adc_err_t::ADC_SUCCESS) {
-            printf("ERROR: Current read error: %s\n", HfAdcErrToString(result));
+            printf("❌ Current read error: %s\n", HfAdcErrToString(result));
             return 0.0f;
         }
         
@@ -618,7 +618,7 @@ public:
     void print_statistics() {
         hf_adc_statistics_t stats;
         if (adc_.GetStatistics(stats) == hf_adc_err_t::ADC_SUCCESS) {
-            printf("INFO: ADC Statistics:\n");
+            printf("📊 ADC Statistics:\n");
             printf("   Total conversions: %u\n", stats.totalConversions);
             printf("   Successful: %u\n", stats.successfulConversions);
             printf("   Failed: %u\n", stats.failedConversions);
@@ -630,62 +630,62 @@ public:
 
 ---
 
-## TEST: **Best Practices**
+## 🧪 **Best Practices**
 
-### SUCCESS: **Recommended Patterns**
+### ✅ **Recommended Patterns**
 
 ```cpp
-// SUCCESS: Always check initialization
+// ✅ Always check initialization
 if (!adc.EnsureInitialized()) {
-    printf("ERROR: ADC initialization failed\n");
+    printf("❌ ADC initialization failed\n");
     return false;
 }
 
-// SUCCESS: Validate channels before use
+// ✅ Validate channels before use
 if (!adc.IsChannelAvailable(channel_id)) {
-    printf("ERROR: Channel %u not available\n", channel_id);
+    printf("❌ Channel %u not available\n", channel_id);
     return;
 }
 
-// SUCCESS: Handle conversion errors gracefully
+// ✅ Handle conversion errors gracefully
 float voltage;
 hf_adc_err_t result = adc.ReadChannelV(channel_id, voltage);
 if (result != hf_adc_err_t::ADC_SUCCESS) {
-    printf("WARNING: ADC Error: %s\n", HfAdcErrToString(result));
+    printf("⚠️ ADC Error: %s\n", HfAdcErrToString(result));
     // Use safe default or retry logic
     voltage = 0.0f;
 }
 
-// SUCCESS: Use multi-sample averaging for accuracy
+// ✅ Use multi-sample averaging for accuracy
 float voltage;
 adc.ReadChannelV(channel_id, voltage, 8, 1);  // 8 samples, 1ms between
 
-// SUCCESS: Monitor statistics for system health
+// ✅ Monitor statistics for system health
 hf_adc_statistics_t stats;
 if (adc.GetStatistics(stats) == hf_adc_err_t::ADC_SUCCESS) {
     if (stats.failedConversions > 100) {
-        printf("WARNING: High ADC failure rate detected\n");
+        printf("⚠️ High ADC failure rate detected\n");
     }
 }
 ```
 
-### ERROR: **Common Pitfalls**
+### ❌ **Common Pitfalls**
 
 ```cpp
-// ERROR: Don't ignore initialization
+// ❌ Don't ignore initialization
 adc.ReadChannelV(0, voltage);  // May fail silently
 
-// ERROR: Don't use invalid channels
+// ❌ Don't use invalid channels
 float v = adc.ReadChannelV(99, voltage);  // Invalid channel
 
-// ERROR: Don't ignore error codes
+// ❌ Don't ignore error codes
 adc.ReadChannelV(0, voltage);  // Error handling missing
 
-// ERROR: Don't assume voltage ranges
+// ❌ Don't assume voltage ranges
 float voltage = adc.ReadChannelV(0, voltage);
 // Check attenuation settings for expected range
 
-// ERROR: Don't use without error checking in critical applications
+// ❌ Don't use without error checking in critical applications
 // Always check return values in safety-critical systems
 ```
 
@@ -724,7 +724,7 @@ adc.ReadChannelV(channel_id, voltage, 1);  // Single sample for speed
 
 <div align="center">
 
-**INFO: BaseAdc - The Foundation of Analog Measurement in HardFOC**
+**📊 BaseAdc - The Foundation of Analog Measurement in HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*
 

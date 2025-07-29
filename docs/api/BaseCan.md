@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [INFO: **Data Structures**](#-data-structures)
-- [INFO: **Usage Examples**](#-usage-examples)
-- [TEST: **Best Practices**](#-best-practices)
+- [📊 **Data Structures**](#-data-structures)
+- [📊 **Usage Examples**](#-usage-examples)
+- [🧪 **Best Practices**](#-best-practices)
 
 ---
 
@@ -31,13 +31,13 @@ The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as 
 - 🚌 **CAN & CAN-FD Support** - Both classic CAN and CAN-FD protocols
 - 📨 **Message Filtering** - Hardware-based acceptance filtering
 - 🔄 **Error Recovery** - Automatic bus recovery and error handling
-- INFO: **Statistics & Diagnostics** - Comprehensive monitoring and reporting
+- 📊 **Statistics & Diagnostics** - Comprehensive monitoring and reporting
 - ⚡ **High Performance** - Optimized for real-time applications
 - 🛡️ **Robust Error Handling** - Detailed error codes and recovery mechanisms
 - 🔌 **Platform Agnostic** - Works with internal and external CAN controllers
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 
-### INFO: **Supported Hardware**
+### 📊 **Supported Hardware**
 
 | Implementation | Hardware Type | Protocol | Speed | Features |
 |----------------|---------------|----------|-------|----------|
@@ -86,19 +86,19 @@ classDiagram
 
 The CAN system uses comprehensive error codes for robust error handling:
 
-### SUCCESS: **Success Codes**
+### ✅ **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `CAN_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
+| `CAN_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ERROR: **General Error Codes**
+### ❌ **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `CAN_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
-| `CAN_ERR_NOT_INITIALIZED` | 2 | WARNING: CAN not initialized | Call Initialize() first |
-| `CAN_ERR_ALREADY_INITIALIZED` | 3 | WARNING: CAN already initialized | Check initialization state |
+| `CAN_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
+| `CAN_ERR_NOT_INITIALIZED` | 2 | ⚠️ CAN not initialized | Call Initialize() first |
+| `CAN_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ CAN already initialized | Check initialization state |
 | `CAN_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `CAN_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `CAN_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -108,10 +108,10 @@ The CAN system uses comprehensive error codes for robust error handling:
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
 | `CAN_ERR_BUS_OFF` | 7 | 🚫 Bus off state | Restart CAN controller |
-| `CAN_ERR_BUS_ERROR` | 8 | ERROR: Bus error | Check bus wiring and termination |
+| `CAN_ERR_BUS_ERROR` | 8 | ❌ Bus error | Check bus wiring and termination |
 | `CAN_ERR_BUS_BUSY` | 9 | 🔄 Bus busy | Wait for bus availability |
 | `CAN_ERR_BUS_NOT_AVAILABLE` | 10 | 🚫 Bus not available | Check bus configuration |
-| `CAN_ERR_BUS_RECOVERY_FAILED` | 11 | ERROR: Bus recovery failed | Restart CAN controller |
+| `CAN_ERR_BUS_RECOVERY_FAILED` | 11 | ❌ Bus recovery failed | Restart CAN controller |
 | `CAN_ERR_BUS_ARBITRATION_LOST` | 12 | 🔄 Bus arbitration lost | Normal in multi-node systems |
 
 ### 📨 **Message Error Codes**
@@ -120,10 +120,10 @@ The CAN system uses comprehensive error codes for robust error handling:
 |------|-------|-------------|------------|
 | `CAN_ERR_MESSAGE_TIMEOUT` | 13 | ⏰ Message timeout | Check bus load and timing |
 | `CAN_ERR_MESSAGE_LOST` | 14 | 📤 Message lost | Check buffer sizes |
-| `CAN_ERR_MESSAGE_INVALID` | 15 | ERROR: Invalid message | Check message format |
+| `CAN_ERR_MESSAGE_INVALID` | 15 | ❌ Invalid message | Check message format |
 | `CAN_ERR_MESSAGE_TOO_LONG` | 16 | 📏 Message too long | Check DLC value |
 | `CAN_ERR_MESSAGE_INVALID_ID` | 17 | 🆔 Invalid message ID | Check ID range |
-| `CAN_ERR_MESSAGE_INVALID_DLC` | 18 | INFO: Invalid DLC | Check data length |
+| `CAN_ERR_MESSAGE_INVALID_DLC` | 18 | 📊 Invalid DLC | Check data length |
 | `CAN_ERR_QUEUE_FULL` | 19 | 📦 Queue full | Increase queue size or process faster |
 | `CAN_ERR_QUEUE_EMPTY` | 20 | 📭 Queue empty | Check message reception |
 
@@ -131,18 +131,18 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `CAN_ERR_TX_FAILED` | 21 | ERROR: Transmission failed | Check bus state and wiring |
+| `CAN_ERR_TX_FAILED` | 21 | ❌ Transmission failed | Check bus state and wiring |
 | `CAN_ERR_TX_ABORTED` | 22 | 🚫 Transmission aborted | Check bus errors |
-| `CAN_ERR_TX_ERROR_PASSIVE` | 23 | WARNING: Transmit error passive | Check error counters |
-| `CAN_ERR_TX_ERROR_WARNING` | 24 | WARNING: Transmit error warning | Monitor error counters |
+| `CAN_ERR_TX_ERROR_PASSIVE` | 23 | ⚠️ Transmit error passive | Check error counters |
+| `CAN_ERR_TX_ERROR_WARNING` | 24 | ⚠️ Transmit error warning | Monitor error counters |
 
 ### 📥 **Reception Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
 | `CAN_ERR_RX_OVERRUN` | 25 | 📈 Receive overrun | Process messages faster |
-| `CAN_ERR_RX_ERROR_PASSIVE` | 26 | WARNING: Receive error passive | Check error counters |
-| `CAN_ERR_RX_ERROR_WARNING` | 27 | WARNING: Receive error warning | Monitor error counters |
+| `CAN_ERR_RX_ERROR_PASSIVE` | 26 | ⚠️ Receive error passive | Check error counters |
+| `CAN_ERR_RX_ERROR_WARNING` | 27 | ⚠️ Receive error warning | Monitor error counters |
 | `CAN_ERR_RX_FIFO_FULL` | 28 | 📦 Receive FIFO full | Process messages faster |
 
 ### 🌐 **Hardware Error Codes**
@@ -162,7 +162,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 |------|-------|-------------|------------|
 | `CAN_ERR_INVALID_CONFIGURATION` | 35 | ⚙️ Invalid configuration | Check configuration parameters |
 | `CAN_ERR_UNSUPPORTED_OPERATION` | 36 | 🚫 Unsupported operation | Check hardware capabilities |
-| `CAN_ERR_INVALID_BAUD_RATE` | 37 | INFO: Invalid baud rate | Use supported baud rate |
+| `CAN_ERR_INVALID_BAUD_RATE` | 37 | 📊 Invalid baud rate | Use supported baud rate |
 | `CAN_ERR_INVALID_CONTROLLER_ID` | 38 | 🆔 Invalid controller ID | Use valid controller ID |
 | `CAN_ERR_FILTER_ERROR` | 39 | 🔍 Filter error | Check filter configuration |
 | `CAN_ERR_FILTER_FULL` | 40 | 📦 Filter table full | Reduce number of filters |
@@ -174,7 +174,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 | `CAN_ERR_STUFF_ERROR` | 41 | 🔧 Bit stuffing error | Check bus quality |
 | `CAN_ERR_FORM_ERROR` | 42 | 📋 Frame format error | Check message format |
 | `CAN_ERR_CRC_ERROR` | 43 | 🔢 CRC error | Check bus integrity |
-| `CAN_ERR_ACK_ERROR` | 44 | SUCCESS: Acknowledgment error | Check bus termination |
+| `CAN_ERR_ACK_ERROR` | 44 | ✅ Acknowledgment error | Check bus termination |
 | `CAN_ERR_BIT_ERROR` | 45 | 🔌 Bit error | Check bus quality |
 
 ---
@@ -400,7 +400,7 @@ virtual hf_can_err_t SetReceiveCallbackFD(hf_can_fd_receive_callback_t callback)
  * @brief Check if CAN-FD is supported
  * @return true if supported, false otherwise
  * 
- * SUCCESS: Checks if the hardware supports CAN-FD protocol.
+ * ✅ Checks if the hardware supports CAN-FD protocol.
  */
 virtual bool SupportsCanFD() const noexcept;
 
@@ -421,7 +421,7 @@ virtual bool SetCanFDMode(bool enable, uint32_t data_baudrate = 2000000,
  * @param status Reference to store status information
  * @return hf_can_err_t error code
  * 
- * INFO: Retrieves comprehensive CAN bus status information.
+ * 📊 Retrieves comprehensive CAN bus status information.
  * 
  * @example
  * hf_can_status_t status;
@@ -458,7 +458,7 @@ virtual hf_can_err_t ResetDiagnostics() noexcept;
  * @param statistics Reference to store statistics data
  * @return hf_can_err_t error code
  * 
- * INFO: Retrieves comprehensive statistics about CAN operations.
+ * 📊 Retrieves comprehensive statistics about CAN operations.
  */
 virtual hf_can_err_t GetStatistics(hf_can_statistics_t &statistics) const noexcept;
 
@@ -474,7 +474,7 @@ virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) const noe
 
 ---
 
-## INFO: **Data Structures**
+## 📊 **Data Structures**
 
 ### 📨 **CAN Message Structure**
 
@@ -534,7 +534,7 @@ struct hf_can_config_t {
 };
 ```
 
-### INFO: **CAN Status Structure**
+### 📊 **CAN Status Structure**
 
 ```cpp
 struct hf_can_status_t {
@@ -612,7 +612,7 @@ struct hf_can_diagnostics_t {
 
 ---
 
-## INFO: **Usage Examples**
+## 📊 **Usage Examples**
 
 ### 📨 **Basic Message Transmission**
 
@@ -635,7 +635,7 @@ EspCan can(config);
 void setup() {
     // Initialize CAN
     if (can.Initialize() == hf_can_err_t::CAN_SUCCESS) {
-        printf("SUCCESS: CAN initialized successfully\n");
+        printf("✅ CAN initialized successfully\n");
     }
 }
 
@@ -658,9 +658,9 @@ void send_status_message() {
     
     hf_can_err_t result = can.SendMessage(msg, 1000);
     if (result != hf_can_err_t::CAN_SUCCESS) {
-        printf("ERROR: Send failed: %s\n", HfCanErrToString(result));
+        printf("❌ Send failed: %s\n", HfCanErrToString(result));
     } else {
-        printf("SUCCESS: Message sent successfully\n");
+        printf("✅ Message sent successfully\n");
     }
 }
 ```
@@ -694,14 +694,14 @@ void receive_messages() {
                     process_command_message(msg);
                     break;
                 default:
-                    printf("WARNING: Unknown message ID: 0x%03X\n", msg.id);
+                    printf("⚠️ Unknown message ID: 0x%03X\n", msg.id);
                     break;
             }
         } else if (result == hf_can_err_t::CAN_ERR_QUEUE_EMPTY) {
             // No message available, continue
             continue;
         } else {
-            printf("ERROR: Receive error: %s\n", HfCanErrToString(result));
+            printf("❌ Receive error: %s\n", HfCanErrToString(result));
         }
     }
 }
@@ -713,7 +713,7 @@ void process_status_message(const hf_can_message_t &msg) {
         uint8_t voltage = msg.data[2];
         uint8_t current = msg.data[3];
         
-        printf("INFO: Status - Temp: %u°C, V: %uV, I: %uA\n", 
+        printf("📊 Status - Temp: %u°C, V: %uV, I: %uA\n", 
                temperature, voltage, current);
     }
 }
@@ -739,7 +739,7 @@ void setup_filtering() {
     // Accept only diagnostic messages (0x7DF-0x7FF)
     can.SetAcceptanceFilter(0x7DF, 0x7E0, false);
     
-    printf("SUCCESS: Message filtering configured\n");
+    printf("✅ Message filtering configured\n");
 }
 
 void receive_filtered_messages() {
@@ -783,7 +783,7 @@ void setup_async_reception() {
     // Set receive callback
     can.SetReceiveCallback(on_can_message);
     
-    printf("SUCCESS: Asynchronous reception enabled\n");
+    printf("✅ Asynchronous reception enabled\n");
 }
 
 void main_loop() {
@@ -830,7 +830,7 @@ public:
         
         hf_can_err_t result = can_.SendMessage(msg, 1000);
         if (result != hf_can_err_t::CAN_SUCCESS) {
-            printf("ERROR: Speed command failed: %s\n", HfCanErrToString(result));
+            printf("❌ Speed command failed: %s\n", HfCanErrToString(result));
         }
     }
     
@@ -847,7 +847,7 @@ public:
     void monitor_status() {
         hf_can_status_t status;
         if (can_.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
-            printf("INFO: CAN Status - TX errors: %u, RX errors: %u, Bus off: %s\n",
+            printf("📊 CAN Status - TX errors: %u, RX errors: %u, Bus off: %s\n",
                    status.tx_error_count, status.rx_error_count,
                    status.bus_off ? "Yes" : "No");
         }
@@ -866,25 +866,25 @@ private:
 
 ---
 
-## TEST: **Best Practices**
+## 🧪 **Best Practices**
 
-### SUCCESS: **Recommended Patterns**
+### ✅ **Recommended Patterns**
 
 ```cpp
-// SUCCESS: Always check initialization
+// ✅ Always check initialization
 if (can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
-    printf("ERROR: CAN initialization failed\n");
+    printf("❌ CAN initialization failed\n");
     return false;
 }
 
-// SUCCESS: Use appropriate timeouts
+// ✅ Use appropriate timeouts
 can.SendMessage(msg, 1000);  // 1 second timeout for critical messages
 can.ReceiveMessage(msg, 100);  // 100ms timeout for non-blocking receive
 
-// SUCCESS: Handle all error codes
+// ✅ Handle all error codes
 hf_can_err_t result = can.SendMessage(msg, timeout);
 if (result != hf_can_err_t::CAN_SUCCESS) {
-    printf("WARNING: Send error: %s\n", HfCanErrToString(result));
+    printf("⚠️ Send error: %s\n", HfCanErrToString(result));
     // Handle specific error types
     if (result == hf_can_err_t::CAN_ERR_BUS_OFF) {
         // Bus off - restart controller
@@ -893,40 +893,40 @@ if (result != hf_can_err_t::CAN_SUCCESS) {
     }
 }
 
-// SUCCESS: Use message filtering for efficiency
+// ✅ Use message filtering for efficiency
 can.SetAcceptanceFilter(0x100, 0x700, false);  // Only accept status messages
 
-// SUCCESS: Monitor bus health
+// ✅ Monitor bus health
 hf_can_status_t status;
 if (can.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
     if (status.bus_off) {
         printf("🚨 Bus off detected!\n");
     }
     if (status.tx_error_count > 100) {
-        printf("WARNING: High TX error count: %u\n", status.tx_error_count);
+        printf("⚠️ High TX error count: %u\n", status.tx_error_count);
     }
 }
 ```
 
-### ERROR: **Common Pitfalls**
+### ❌ **Common Pitfalls**
 
 ```cpp
-// ERROR: Don't ignore initialization
+// ❌ Don't ignore initialization
 can.SendMessage(msg);  // May fail silently
 
-// ERROR: Don't use infinite timeouts in real-time systems
+// ❌ Don't use infinite timeouts in real-time systems
 can.ReceiveMessage(msg, UINT32_MAX);  // May block forever
 
-// ERROR: Don't ignore error codes
+// ❌ Don't ignore error codes
 can.SendMessage(msg);  // Error handling missing
 
-// ERROR: Don't assume message reception
+// ❌ Don't assume message reception
 // Always check return values for receive operations
 
-// ERROR: Don't use without proper bus termination
+// ❌ Don't use without proper bus termination
 // CAN bus requires proper termination resistors
 
-// ERROR: Don't ignore bus-off state
+// ❌ Don't ignore bus-off state
 // Bus-off requires controller restart
 ```
 
@@ -954,7 +954,7 @@ can.SetAcceptanceFilter(target_id, mask, extended);
 hf_can_statistics_t stats;
 can.GetStatistics(stats);
 if (stats.tx_queue_overflows > 0) {
-    printf("WARNING: TX queue overflow - increase queue size\n");
+    printf("⚠️ TX queue overflow - increase queue size\n");
 }
 ```
 

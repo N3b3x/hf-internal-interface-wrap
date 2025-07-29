@@ -20,11 +20,11 @@
 - [🎯 **Overview**](#-overview)
 - [🏗️ **Architecture**](#️-architecture) 
 - [🔧 **Type System**](#-type-system)
-- [READ: **API Reference**](#-api-reference)
+- [📖 **API Reference**](#-api-reference)
 - [🚀 **Quick Start**](#-quick-start)
 - [🗺️ **Component Map**](ComponentMap.md)
 - [📋 **User Guides**](#-user-guides)
-- [INFO: **Examples**](#-examples)
+- [📊 **Examples**](#-examples)
 - [🔧 **Development**](#-development)
 - [🕸️ **GitHub Pages**](guides/github-pages.md)
 
@@ -40,7 +40,7 @@ The **HardFOC Internal Interface Wrapper** provides a comprehensive, platform-ag
 - ⚡ **High Performance** - Optimized for real-time motor control applications  
 - 🔒 **Thread Safe** - Built-in synchronization for multi-threaded environments
 - 🔌 **Platform Agnostic** - Easy porting between different MCU families
-- INFO: **ESP32-C6 Optimized** - Full support for ESP32-C6 capabilities
+- 📊 **ESP32-C6 Optimized** - Full support for ESP32-C6 capabilities
 - 🛡️ **Robust Error Handling** - Comprehensive error codes and validation
 - 💾 **Memory Efficient** - Minimal overhead with lazy initialization
 
@@ -49,7 +49,7 @@ The **HardFOC Internal Interface Wrapper** provides a comprehensive, platform-ag
 | Component | Base Class | MCU Implementation | Thread-Safe Wrapper |
 |-----------|------------|-------------------|---------------------|
 | 🔌 **GPIO** | `BaseGpio` | `McuDigitalGpio` | `SfGpio` |
-| INFO: **ADC** | `BaseAdc` | `McuAdc` | `SfAdc` |
+| 📊 **ADC** | `BaseAdc` | `McuAdc` | `SfAdc` |
 | 🔄 **I2C** | `BaseI2c` | `McuI2c` | `SfI2cBus` |
 | ⚡ **SPI** | `BaseSpi` | `McuSpi` | `SfSpiBus` |
 | 📡 **UART** | `BaseUart` | `McuUart` | `SfUartDriver` |
@@ -142,7 +142,7 @@ The HardFOC Internal Interface Wrapper implements a comprehensive type wrapping 
 - **🎯 Clarity**: Clear distinction between platform types and wrapped types
 - **🛡️ Safety**: Prevents type mismatches and improves compile-time checking
 
-### INFO: **Type Definitions**
+### 📊 **Type Definitions**
 
 ```cpp
 // Integer type wrappers
@@ -167,18 +167,18 @@ using hf_frequency_hz_t = hf_u32_t; // Frequency in Hz
 
 For detailed information about the type wrapping system, see:
 - [🔧 **Type Wrapping System Guide**](TypeWrappingSystem.md) - Comprehensive guide with examples
-- [INFO: **HardwareTypes.h**](../inc/base/HardwareTypes.h) - Core type definitions
+- [📊 **HardwareTypes.h**](../inc/base/HardwareTypes.h) - Core type definitions
 
 ---
 
-## READ: **API Reference**
+## 📖 **API Reference**
 
 ### 🏛️ **Base Classes**
 
 | Class | Description | Key Features |
 |-------|-------------|--------------|
 | [`BaseGpio`](api/BaseGpio.md) | 🔌 GPIO abstraction | Dynamic mode switching, pull resistors, interrupts |
-| [`BaseAdc`](api/BaseAdc.md) | INFO: ADC abstraction | Multi-channel, calibration, voltage conversion |
+| [`BaseAdc`](api/BaseAdc.md) | 📊 ADC abstraction | Multi-channel, calibration, voltage conversion |
 | [`BaseI2c`](api/BaseI2c.md) | 🔄 I2C communication | Master mode, device scanning, error recovery |
 | [`BaseSpi`](api/BaseSpi.md) | ⚡ SPI communication | Full-duplex, configurable modes, DMA support |
 | [`BaseUart`](api/BaseUart.md) | 📡 UART communication | Async I/O, flow control, configurable parameters |
@@ -191,7 +191,7 @@ For detailed information about the type wrapping system, see:
 | Class | Description | Platform Support |
 |-------|-------------|------------------|
 | [`McuDigitalGpio`](api/McuDigitalGpio.md) | 🔌 ESP32-C6 GPIO | Native GPIO pins with validation |
-| [`McuAdc`](api/McuAdc.md) | INFO: ESP32-C6 ADC | ADC1/ADC2 with calibration |
+| [`McuAdc`](api/McuAdc.md) | 📊 ESP32-C6 ADC | ADC1/ADC2 with calibration |
 | [`McuI2c`](api/McuI2c.md) | 🔄 ESP32-C6 I2C | Hardware I2C controller |
 | [`McuSpi`](api/McuSpi.md) | ⚡ ESP32-C6 SPI | SPI2/SPI3 with DMA support |
 | [`McuUart`](api/McuUart.md) | 📡 ESP32-C6 UART | Hardware UART with DMA |
@@ -204,7 +204,7 @@ For detailed information about the type wrapping system, see:
 | Class | Description | Synchronization |
 |-------|-------------|-----------------|
 | [`SfGpio`](api/SfGpio.md) | 🔌 Thread-safe GPIO | Mutex protection |
-| [`SfAdc`](api/SfAdc.md) | INFO: Thread-safe ADC | Lock-free reads, batch operations |
+| [`SfAdc`](api/SfAdc.md) | 📊 Thread-safe ADC | Lock-free reads, batch operations |
 | [`SfI2cBus`](api/SfI2cBus.md) | 🔄 Thread-safe I2C | Transaction-level locking |
 | [`SfSpiBus`](api/SfSpiBus.md) | ⚡ Thread-safe SPI | Transfer-level locking |
 | [`SfUartDriver`](api/SfUartDriver.md) | 📡 Thread-safe UART | Buffer-level protection |
@@ -258,7 +258,7 @@ McuDigitalGpio led_pin(GPIO_NUM_2);
 led_pin.SetAsOutput();
 led_pin.SetHigh();
 
-// INFO: ADC Example  
+// 📊 ADC Example  
 McuAdc adc;
 uint16_t raw_value = adc.ReadRaw(ADC_UNIT_1, ADC_CHANNEL_0);
 float voltage = adc.ReadVoltage(ADC_UNIT_1, ADC_CHANNEL_0);
@@ -279,7 +279,7 @@ i2c_bus.ReadFrom(0x48, data, sizeof(data));
 | Guide | Description | Level |
 |-------|-------------|-------|
 | [🔌 **GPIO Operations**](guides/gpio-guide.md) | Complete GPIO usage guide | Beginner |
-| [INFO: **ADC & Voltage Measurement**](guides/adc-guide.md) | ADC configuration and calibration | Intermediate |
+| [📊 **ADC & Voltage Measurement**](guides/adc-guide.md) | ADC configuration and calibration | Intermediate |
 | [🔄 **I2C Communication**](guides/i2c-guide.md) | I2C device integration | Intermediate |
 | [⚡ **SPI Communication**](guides/spi-guide.md) | High-speed SPI operations | Intermediate |
 | [🚗 **CAN Bus Integration**](guides/can-guide.md) | Automotive CAN communication | Advanced |
@@ -292,19 +292,19 @@ i2c_bus.ReadFrom(0x48, data, sizeof(data));
 | Guide | Description | Audience |
 |-------|-------------|----------|
 | [🏗️ **Porting Guide**](guides/porting-guide.md) | Adding new MCU platforms | Developers |
-| [TEST: **Testing Framework**](guides/testing-guide.md) | Unit testing and validation | QA Engineers |
+| [🧪 **Testing Framework**](guides/testing-guide.md) | Unit testing and validation | QA Engineers |
 | [⚡ **Performance Optimization**](guides/performance-guide.md) | Real-time optimization | Advanced Users |
 | [🛡️ **Error Handling**](guides/error-handling.md) | Robust error management | All Users |
 | [🕸️ **GitHub Pages Workflow**](guides/github-pages.md) | Publish docs automatically | All Users |
 
 ---
 
-## INFO: **Examples**
+## 📊 **Examples**
 
 ### 🎯 **Basic Examples**
 
 - [🔌 **Simple GPIO Control**](examples/basic-gpio.md) - LED control and button reading
-- [INFO: **ADC Voltage Monitoring**](examples/basic-adc.md) - Sensor data acquisition
+- [📊 **ADC Voltage Monitoring**](examples/basic-adc.md) - Sensor data acquisition
 - [🔄 **I2C Device Communication**](examples/basic-i2c.md) - Temperature sensor integration
 
 ### 🚀 **Advanced Examples**
@@ -314,7 +314,7 @@ i2c_bus.ReadFrom(0x48, data, sizeof(data));
 - [📻 **WS2812 LED Control**](examples/ws2812-pio.md) - Programmable I/O for LED strips
 - [🔒 **Multi-threaded Sensor Hub**](examples/sensor-hub.md) - Thread-safe sensor management
 
-### TEST: **Integration Examples**
+### 🧪 **Integration Examples**
 
 - [🏭 **Industrial I/O Module**](examples/industrial-io.md) - Complete I/O system
 - [🚀 **Real-time Data Logger**](examples/data-logger.md) - High-speed data acquisition
@@ -337,11 +337,11 @@ idf.py build
 idf.py -p /dev/ttyUSB0 flash monitor
 ```
 
-### TEST: **Testing**
+### 🧪 **Testing**
 
 Unit tests are not included in this repository.
 
-### INFO: **Documentation Generation**
+### 📊 **Documentation Generation**
 
 ```bash
 # Generate Doxygen documentation
@@ -364,8 +364,8 @@ This project is licensed under the **GNU General Public License v3.0** - see the
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
 
 - 📋 Code style and standards
-- TEST: Testing requirements  
-- READ: Documentation updates
+- 🧪 Testing requirements  
+- 📖 Documentation updates
 - 🐛 Bug reporting
 - ✨ Feature requests
 
@@ -373,7 +373,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## 📞 **Support**
 
-- READ: **Documentation**: This comprehensive guide
+- 📖 **Documentation**: This comprehensive guide
 - 🐛 **Issues**: [GitHub Issues](../../issues)
 - 💬 **Discussions**: [GitHub Discussions](../../discussions)
 - 📧 **Email**: [support@hardfoc.com](mailto:support@hardfoc.com)

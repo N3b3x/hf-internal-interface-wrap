@@ -16,9 +16,9 @@
 - [🏗️ **Class Hierarchy**](#️-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
-- [INFO: **Data Structures**](#-data-structures)
-- [INFO: **Usage Examples**](#-usage-examples)
-- [TEST: **Best Practices**](#-best-practices)
+- [📊 **Data Structures**](#-data-structures)
+- [📊 **Usage Examples**](#-usage-examples)
+- [🧪 **Best Practices**](#-best-practices)
 
 ---
 
@@ -31,7 +31,7 @@ The `BaseUart` class provides a comprehensive UART abstraction that serves as th
 - 📡 **Configurable Baud Rates** - Support for standard and custom baud rates
 - 🔧 **Flexible Data Formats** - Configurable data bits, stop bits, and parity
 - 🔄 **Flow Control** - Hardware and software flow control support
-- INFO: **DMA Support** - Hardware-accelerated data transfer
+- 📊 **DMA Support** - Hardware-accelerated data transfer
 - 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
 - 🏎️ **Performance Optimized** - Minimal overhead for critical applications
 - 🔌 **Platform Agnostic** - Works with various UART hardware implementations
@@ -78,19 +78,19 @@ classDiagram
 
 ## 📋 **Error Codes**
 
-### SUCCESS: **Success Codes**
+### ✅ **Success Codes**
 
 | Code | Value | Description |
 |------|-------|-------------|
-| `UART_SUCCESS` | 0 | SUCCESS: Operation completed successfully |
+| `UART_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ERROR: **General Error Codes**
+### ❌ **General Error Codes**
 
 | Code | Value | Description | Resolution |
 |------|-------|-------------|------------|
-| `UART_ERR_FAILURE` | 1 | ERROR: General operation failure | Check hardware and configuration |
-| `UART_ERR_NOT_INITIALIZED` | 2 | WARNING: UART not initialized | Call Initialize() first |
-| `UART_ERR_ALREADY_INITIALIZED` | 3 | WARNING: UART already initialized | Check initialization state |
+| `UART_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
+| `UART_ERR_NOT_INITIALIZED` | 2 | ⚠️ UART not initialized | Call Initialize() first |
+| `UART_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ UART already initialized | Check initialization state |
 | `UART_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 | `UART_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 | `UART_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
@@ -101,9 +101,9 @@ classDiagram
 |------|-------|-------------|------------|
 | `UART_ERR_TRANSMIT_TIMEOUT` | 7 | ⏰ Transmit timeout | Check baud rate and flow control |
 | `UART_ERR_RECEIVE_TIMEOUT` | 8 | ⏰ Receive timeout | Check data source and timing |
-| `UART_ERR_TRANSMIT_FAILURE` | 9 | ERROR: Transmit failed | Check connections and device state |
-| `UART_ERR_RECEIVE_FAILURE` | 10 | ERROR: Receive failed | Check connections and device state |
-| `UART_ERR_FRAME_ERROR` | 11 | INFO: Frame error | Check baud rate and data format |
+| `UART_ERR_TRANSMIT_FAILURE` | 9 | ❌ Transmit failed | Check connections and device state |
+| `UART_ERR_RECEIVE_FAILURE` | 10 | ❌ Receive failed | Check connections and device state |
+| `UART_ERR_FRAME_ERROR` | 11 | 📊 Frame error | Check baud rate and data format |
 | `UART_ERR_PARITY_ERROR` | 12 | 🔍 Parity error | Check parity settings |
 
 ### ⚙️ **Configuration Error Codes**
@@ -203,7 +203,7 @@ virtual hf_uart_err_t Configure(const hf_uart_config_t &config) noexcept = 0;
  * @param config [out] Current configuration structure
  * @return hf_uart_err_t error code
  * 
- * INFO: Retrieves the current UART configuration.
+ * 📊 Retrieves the current UART configuration.
  */
 virtual hf_uart_err_t GetConfiguration(hf_uart_config_t &config) const noexcept = 0;
 ```
@@ -225,7 +225,7 @@ virtual hf_uart_err_t GetConfiguration(hf_uart_config_t &config) const noexcept 
  * hf_uart_err_t result = uart.Transmit(
  *     reinterpret_cast<const uint8_t*>(message), strlen(message));
  * if (result == hf_uart_err_t::UART_SUCCESS) {
- *     printf("SUCCESS: Message transmitted\n");
+ *     printf("✅ Message transmitted\n");
  * }
  */
 virtual hf_uart_err_t Transmit(const uint8_t *data, size_t length) noexcept = 0;
@@ -246,7 +246,7 @@ virtual hf_uart_err_t Transmit(const uint8_t *data, size_t length,
  * @brief Get number of bytes available for transmission
  * @return Number of bytes that can be transmitted
  * 
- * INFO: Returns the number of bytes that can be transmitted without blocking.
+ * 📊 Returns the number of bytes that can be transmitted without blocking.
  */
 virtual size_t GetTransmitSpace() const noexcept = 0;
 ```
@@ -288,7 +288,7 @@ virtual hf_uart_err_t Receive(uint8_t *data, size_t length,
  * @brief Get number of bytes available for reception
  * @return Number of bytes available to receive
  * 
- * INFO: Returns the number of bytes available to receive without blocking.
+ * 📊 Returns the number of bytes available to receive without blocking.
  */
 virtual size_t GetReceiveSpace() const noexcept = 0;
 
@@ -301,7 +301,7 @@ virtual size_t GetReceiveSpace() const noexcept = 0;
 virtual hf_uart_err_t FlushReceive() noexcept = 0;
 ```
 
-### INFO: **Status and Capabilities**
+### 📊 **Status and Capabilities**
 
 ```cpp
 /**
@@ -309,7 +309,7 @@ virtual hf_uart_err_t FlushReceive() noexcept = 0;
  * @param status [out] Status information structure
  * @return hf_uart_err_t error code
  * 
- * INFO: Retrieves comprehensive status information about UART.
+ * 📊 Retrieves comprehensive status information about UART.
  */
 virtual hf_uart_err_t GetStatus(hf_uart_status_t &status) const noexcept = 0;
 
@@ -325,7 +325,7 @@ virtual hf_uart_err_t GetCapabilities(hf_uart_capabilities_t &capabilities) cons
 
 ---
 
-## INFO: **Data Structures**
+## 📊 **Data Structures**
 
 ### ⚙️ **UART Configuration**
 
@@ -347,7 +347,7 @@ struct hf_uart_config_t {
 };
 ```
 
-### INFO: **UART Status**
+### 📊 **UART Status**
 
 ```cpp
 struct hf_uart_status_t {
@@ -403,7 +403,7 @@ struct hf_uart_statistics_t {
 
 ---
 
-## INFO: **Usage Examples**
+## 📊 **Usage Examples**
 
 ### 📡 **Basic Serial Communication**
 
@@ -419,7 +419,7 @@ public:
         uart_ = EspUart(UART_NUM_0);
         
         if (!uart_.EnsureInitialized()) {
-            printf("ERROR: UART initialization failed\n");
+            printf("❌ UART initialization failed\n");
             return false;
         }
         
@@ -441,11 +441,11 @@ public:
         
         hf_uart_err_t result = uart_.Configure(config);
         if (result != hf_uart_err_t::UART_SUCCESS) {
-            printf("ERROR: UART configuration failed: %s\n", HfUartErrToString(result));
+            printf("❌ UART configuration failed: %s\n", HfUartErrToString(result));
             return false;
         }
         
-        printf("SUCCESS: Serial communicator initialized\n");
+        printf("✅ Serial communicator initialized\n");
         return true;
     }
     
@@ -457,7 +457,7 @@ public:
         if (result == hf_uart_err_t::UART_SUCCESS) {
             printf("📤 Sent: %s", message);
         } else {
-            printf("ERROR: Send failed: %s\n", HfUartErrToString(result));
+            printf("❌ Send failed: %s\n", HfUartErrToString(result));
         }
     }
     
@@ -469,7 +469,7 @@ public:
             buffer[max_length] = '\0';  // Null terminate
             printf("📥 Received: %s", buffer);
         } else {
-            printf("ERROR: Receive failed: %s\n", HfUartErrToString(result));
+            printf("❌ Receive failed: %s\n", HfUartErrToString(result));
         }
     }
     
@@ -536,11 +536,11 @@ public:
         
         hf_uart_err_t result = uart_.Configure(config);
         if (result != hf_uart_err_t::UART_SUCCESS) {
-            printf("ERROR: GPS configuration failed\n");
+            printf("❌ GPS configuration failed\n");
             return false;
         }
         
-        printf("SUCCESS: GPS controller initialized\n");
+        printf("✅ GPS controller initialized\n");
         return true;
     }
     
@@ -559,7 +559,7 @@ public:
             printf("⏰ GPS timeout - no data received\n");
             return false;
         } else {
-            printf("ERROR: GPS read failed: %s\n", HfUartErrToString(result));
+            printf("❌ GPS read failed: %s\n", HfUartErrToString(result));
             return false;
         }
     }
@@ -600,7 +600,7 @@ public:
         if (result == hf_uart_err_t::UART_SUCCESS) {
             printf("📤 GPS Command: %s", command);
         } else {
-            printf("ERROR: GPS command failed: %s\n", HfUartErrToString(result));
+            printf("❌ GPS command failed: %s\n", HfUartErrToString(result));
         }
     }
     
@@ -657,11 +657,11 @@ public:
         
         hf_uart_err_t result = uart_.Configure(config);
         if (result != hf_uart_err_t::UART_SUCCESS) {
-            printf("ERROR: Bluetooth configuration failed\n");
+            printf("❌ Bluetooth configuration failed\n");
             return false;
         }
         
-        printf("SUCCESS: Bluetooth controller initialized\n");
+        printf("✅ Bluetooth controller initialized\n");
         return true;
     }
     
@@ -673,7 +673,7 @@ public:
         if (result == hf_uart_err_t::UART_SUCCESS) {
             printf("📤 BT Sent: %s", data);
         } else {
-            printf("ERROR: BT send failed: %s\n", HfUartErrToString(result));
+            printf("❌ BT send failed: %s\n", HfUartErrToString(result));
         }
     }
     
@@ -688,7 +688,7 @@ public:
         } else if (result == hf_uart_err_t::UART_ERR_RECEIVE_TIMEOUT) {
             return false;  // No data available
         } else {
-            printf("ERROR: BT receive failed: %s\n", HfUartErrToString(result));
+            printf("❌ BT receive failed: %s\n", HfUartErrToString(result));
             return false;
         }
     }
@@ -759,11 +759,11 @@ public:
         
         hf_uart_err_t result = uart_.Configure(config);
         if (result != hf_uart_err_t::UART_SUCCESS) {
-            printf("ERROR: Modbus configuration failed\n");
+            printf("❌ Modbus configuration failed\n");
             return false;
         }
         
-        printf("SUCCESS: Modbus controller initialized\n");
+        printf("✅ Modbus controller initialized\n");
         return true;
     }
     
@@ -786,7 +786,7 @@ public:
         // Send request
         hf_uart_err_t result = uart_.Transmit(request, 8);
         if (result != hf_uart_err_t::UART_SUCCESS) {
-            printf("ERROR: Modbus request failed: %s\n", HfUartErrToString(result));
+            printf("❌ Modbus request failed: %s\n", HfUartErrToString(result));
             return false;
         }
         
@@ -802,14 +802,14 @@ public:
                     data[i] = (modbus_buffer_[3 + i * 2] << 8) | 
                               modbus_buffer_[4 + i * 2];
                 }
-                printf("SUCCESS: Read %d holding registers\n", count);
+                printf("✅ Read %d holding registers\n", count);
                 return true;
             } else {
-                printf("ERROR: Invalid Modbus response\n");
+                printf("❌ Invalid Modbus response\n");
                 return false;
             }
         } else {
-            printf("ERROR: Modbus response failed: %s\n", HfUartErrToString(result));
+            printf("❌ Modbus response failed: %s\n", HfUartErrToString(result));
             return false;
         }
     }
@@ -832,7 +832,7 @@ public:
         // Send request
         hf_uart_err_t result = uart_.Transmit(request, 8);
         if (result != hf_uart_err_t::UART_SUCCESS) {
-            printf("ERROR: Modbus write request failed: %s\n", HfUartErrToString(result));
+            printf("❌ Modbus write request failed: %s\n", HfUartErrToString(result));
             return false;
         }
         
@@ -841,14 +841,14 @@ public:
         
         if (result == hf_uart_err_t::UART_SUCCESS) {
             if (memcmp(request, modbus_buffer_, 8) == 0) {
-                printf("SUCCESS: Wrote register 0x%04X = 0x%04X\n", addr, value);
+                printf("✅ Wrote register 0x%04X = 0x%04X\n", addr, value);
                 return true;
             } else {
-                printf("ERROR: Invalid Modbus write response\n");
+                printf("❌ Invalid Modbus write response\n");
                 return false;
             }
         } else {
-            printf("ERROR: Modbus write response failed: %s\n", HfUartErrToString(result));
+            printf("❌ Modbus write response failed: %s\n", HfUartErrToString(result));
             return false;
         }
     }
@@ -875,31 +875,31 @@ private:
 
 ---
 
-## TEST: **Best Practices**
+## 🧪 **Best Practices**
 
-### SUCCESS: **Recommended Patterns**
+### ✅ **Recommended Patterns**
 
 ```cpp
-// SUCCESS: Always check initialization
+// ✅ Always check initialization
 if (!uart.EnsureInitialized()) {
-    printf("ERROR: UART initialization failed\n");
+    printf("❌ UART initialization failed\n");
     return false;
 }
 
-// SUCCESS: Use appropriate baud rates
+// ✅ Use appropriate baud rates
 // Debug: 115200
 // GPS: 9600
 // Bluetooth: 115200
 // Modbus: 9600-115200
 
-// SUCCESS: Handle timeouts gracefully
+// ✅ Handle timeouts gracefully
 hf_uart_err_t result = uart.Receive(buffer, length, 1000);
 if (result == hf_uart_err_t::UART_ERR_RECEIVE_TIMEOUT) {
     printf("⏰ No data received within timeout\n");
     return false;
 }
 
-// SUCCESS: Check buffer space before operations
+// ✅ Check buffer space before operations
 if (uart.GetReceiveSpace() > 0) {
     // Data available to receive
 }
@@ -908,38 +908,38 @@ if (uart.GetTransmitSpace() >= length) {
     // Space available to transmit
 }
 
-// SUCCESS: Use appropriate data formats
+// ✅ Use appropriate data formats
 // Most applications: 8N1 (8 data bits, no parity, 1 stop bit)
 // Modbus: 8E1 (8 data bits, even parity, 1 stop bit)
 
-// SUCCESS: Monitor statistics for system health
+// ✅ Monitor statistics for system health
 hf_uart_statistics_t stats;
 if (uart.GetStatistics(stats) == hf_uart_err_t::UART_SUCCESS) {
     if (stats.frame_errors > 10) {
-        printf("WARNING: High frame error rate detected\n");
+        printf("⚠️ High frame error rate detected\n");
     }
 }
 ```
 
-### ERROR: **Common Pitfalls**
+### ❌ **Common Pitfalls**
 
 ```cpp
-// ERROR: Don't ignore initialization
+// ❌ Don't ignore initialization
 uart.Transmit(data, length);  // May fail silently
 
-// ERROR: Don't use mismatched baud rates
+// ❌ Don't use mismatched baud rates
 // Both devices must use the same baud rate
 
-// ERROR: Don't ignore buffer overflows
+// ❌ Don't ignore buffer overflows
 // Check buffer space before large transfers
 
-// ERROR: Don't use without error checking in critical applications
+// ❌ Don't use without error checking in critical applications
 // Always check return values in safety-critical systems
 
-// ERROR: Don't forget to handle flow control
+// ❌ Don't forget to handle flow control
 // Some devices require hardware flow control
 
-// ERROR: Don't assume all data formats are supported
+// ❌ Don't assume all data formats are supported
 // Check capabilities before using specific formats
 ```
 
