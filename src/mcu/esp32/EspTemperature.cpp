@@ -1,576 +1,542 @@
 /**
  * @file EspTemperature.cpp
- * @brief ESP32-C6 temperature sensor implementation for the HardFOC system.
+ * @brief ESP32-C6 internal temperature sensor implementation for the HardFOC system.
  *
- * This file implements the ESP32-C6 specific temperature sensor functionality
- * using the ESP-IDF temperature sensor driver. It provides a complete implementation
- * of the BaseTemperature interface with ESP32-specific optimizations.
+ * This file contains the complete implementation of the ESP32-C6 temperature sensor driver
+ * that extends the BaseTemperature abstract class. It provides comprehensive support for all
+ * ESP32-C6 temperature sensor features including multiple measurement ranges, threshold monitoring,
+ * continuous monitoring, calibration, and power management.
  *
- * @author HardFOC Development Team
+ * Key features implemented:
+ * - ESP32-C6 internal temperature sensor using ESP-IDF v5.x APIs
+ * - Multiple predefined measurement ranges with different accuracy levels
+ * - Hardware threshold monitoring with interrupt callbacks
+ * - Continuous monitoring using ESP32 timers
+ * - Thread-safe operations with mutex protection
+ * - Comprehensive error handling and diagnostics
+ * - Power management support for low-power applications
+ * - Operation statistics and performance tracking
+ * - Self-test and health monitoring capabilities
+ *
+ * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
+ *
+ * @note ESP32-C6 specific implementation using ESP-IDF v5.x
+ * @note Thread-safe design suitable for multi-threaded applications
+ * @note Follows HardFOC coding standards and patterns
  */
 
 #include "EspTemperature.h"
+
+#ifdef HF_MCU_FAMILY_ESP32
+
+// Standard library includes
 #include <algorithm>
 #include <cstring>
 #include <cmath>
 
-extern "C" {
-#include "esp_system.h"
-#include "esp_err.h"
-#include "esp_log.h"
-#include "esp_timer.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-}
-
-namespace HardFOC {
+static const char* TAG = "EspTemperature";
 
 //--------------------------------------
-//  Static Members
+//  ESP32-C6 Temperature Range Configuration
 //--------------------------------------
 
-const char* EspTemperature::TAG = "EspTemperature";
+/**
+ * @brief ESP32-C6 temperature sensor range information table
+ * @details Based on ESP32-C6 hardware specifications and ESP-IDF documentation
+ */
+const esp_temp_range_info_t EspTemperature::RANGE_INFO[] = {
+    {ESP_TEMP_RANGE_NEG10_80,  -10.0f,  80.0f, 1.0f, "-10°C to 80°C (±1°C accuracy, recommended)"},
+    {ESP_TEMP_RANGE_20_100,     20.0f, 100.0f, 2.0f, "20°C to 100°C (±2°C accuracy, high temp)"},
+    {ESP_TEMP_RANGE_NEG30_50,  -30.0f,  50.0f, 2.0f, "-30°C to 50°C (±2°C accuracy, low temp)"},
+    {ESP_TEMP_RANGE_50_125,     50.0f, 125.0f, 3.0f, "50°C to 125°C (±3°C accuracy, extreme high)"},
+    {ESP_TEMP_RANGE_NEG40_20,  -40.0f,  20.0f, 3.0f, "-40°C to 20°C (±3°C accuracy, extreme low)"}
+};
 
-//--------------------------------------
-//  Constructor & Destructor
-//--------------------------------------
+//==============================================================================
+// CONSTRUCTORS AND DESTRUCTOR
+//==============================================================================
 
-EspTemperature::EspTemperature() 
-    : BaseTemperature()
-    , current_state_(TEMP_STATE_UNINITIALIZED)
-    , initialized_(false)
-    , enabled_(false)
-{
+EspTemperature::EspTemperature() noexcept
+    : BaseTemperature(),
+      mutex_(),
+      esp_state_{},
+      esp_config_(ESP_TEMP_CONFIG_DEFAULT()),
+      base_config_(HF_TEMP_CONFIG_DEFAULT()),
+      statistics_{},
+      diagnostics_{},
+      last_error_(hf_temp_err_t::TEMP_SUCCESS),
+      threshold_callback_(nullptr),
+      monitoring_callback_(nullptr),
+      esp_threshold_callback_(nullptr),
+      esp_monitoring_callback_(nullptr),
+      threshold_user_data_(nullptr),
+      monitoring_user_data_(nullptr) {
+    
     // Initialize ESP32-specific state
-    memset(&esp_state_, 0, sizeof(esp_state_));
     esp_state_.handle = nullptr;
-    esp_state_.current_range = ESP_TEMP_RANGE_UNKNOWN;
+    esp_state_.current_range = ESP_TEMP_RANGE_NEG10_80;
     esp_state_.calibration_offset = 0.0f;
-    esp_state_.is_monitoring = false;
-    esp_state_.monitoring_timer = nullptr;
-    esp_state_.reading_callback = nullptr;
-    esp_state_.callback_user_data = nullptr;
-    esp_state_.threshold_callback = nullptr;
-    esp_state_.threshold_user_data = nullptr;
-    esp_state_.low_threshold = -20.0f;
-    esp_state_.high_threshold = 100.0f;
     esp_state_.threshold_monitoring_enabled = false;
-    esp_state_.last_error = TEMP_SUCCESS;
-    esp_state_.error_callback = nullptr;
-    esp_state_.error_user_data = nullptr;
+    esp_state_.continuous_monitoring_active = false;
+    esp_state_.monitoring_timer = nullptr;
+    esp_state_.sample_rate_hz = ESP_TEMP_DEFAULT_SAMPLE_RATE_HZ;
+    esp_state_.last_reading_timestamp_us = 0;
+    esp_state_.last_temperature_celsius = 0.0f;
+    esp_state_.allow_power_down = true;
     
-    // Initialize configuration with defaults
-    esp_config_ = ESP_TEMP_CONFIG_DEFAULT();
-    base_config_ = HF_TEMP_CONFIG_DEFAULT();
+    // Initialize diagnostics
+    diagnostics_.sensor_healthy = true;
+    diagnostics_.last_error_code = hf_temp_err_t::TEMP_SUCCESS;
+    diagnostics_.last_error_timestamp = 0;
+    diagnostics_.consecutive_errors = 0;
+    diagnostics_.sensor_available = true;
+    diagnostics_.threshold_monitoring_supported = true;
+    diagnostics_.threshold_monitoring_enabled = false;
+    diagnostics_.continuous_monitoring_active = false;
+    diagnostics_.current_temperature_raw = 0;
+    diagnostics_.calibration_valid = true;
     
-    ESP_LOGI(TAG, "EspTemperature instance created");
+    // Initialize statistics
+    statistics_.total_operations = 0;
+    statistics_.successful_operations = 0;
+    statistics_.failed_operations = 0;
+    statistics_.temperature_readings = 0;
+    statistics_.calibration_count = 0;
+    statistics_.threshold_violations = 0;
+    statistics_.average_operation_time_us = 0;
+    statistics_.max_operation_time_us = 0;
+    statistics_.min_operation_time_us = UINT32_MAX;
+    statistics_.min_temperature_celsius = 1000.0f;
+    statistics_.max_temperature_celsius = -1000.0f;
+    statistics_.avg_temperature_celsius = 0.0f;
+    
+    ESP_LOGD(TAG, "EspTemperature instance created");
 }
 
-EspTemperature::~EspTemperature() {
-    ESP_LOGI(TAG, "EspTemperature destructor called");
-    
-    // Ensure proper cleanup
-    if (initialized_) {
-        deinitialize();
-    }
+EspTemperature::EspTemperature(const esp_temp_config_t& esp_config) noexcept
+    : EspTemperature() {
+    esp_config_ = esp_config;
+    ESP_LOGD(TAG, "EspTemperature instance created with custom configuration");
 }
 
-//--------------------------------------
-//  Core Temperature Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::initialize(const HfTempConfig_t* config) {
+EspTemperature::~EspTemperature() noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
+    
+    if (initialized_) {
+        Deinitialize();
+    }
+    
+    ESP_LOGD(TAG, "EspTemperature instance destroyed");
+}
+
+//==============================================================================
+// PURE VIRTUAL IMPLEMENTATIONS - PLATFORM SPECIFIC
+//==============================================================================
+
+bool EspTemperature::Initialize() noexcept {
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    const hf_u64_t start_time = GetCurrentTimeUs();
     
     if (initialized_) {
         ESP_LOGW(TAG, "Temperature sensor already initialized");
-        return TEMP_ERR_ALREADY_INITIALIZED;
+        UpdateStatistics(true, GetCurrentTimeUs() - start_time);
+        return true;
     }
     
-    if (config == nullptr) {
-        ESP_LOGE(TAG, "Configuration pointer is null");
-        return TEMP_ERR_NULL_POINTER;
-    }
+    ESP_LOGI(TAG, "Initializing ESP32-C6 temperature sensor...");
     
-    // Validate configuration
-    HfTempError_t error = validate_config(config);
-    if (error != TEMP_SUCCESS) {
-        ESP_LOGE(TAG, "Invalid configuration: %s", hf_temp_get_error_string(error));
-        return error;
-    }
+    // Configure temperature sensor
+    temperature_sensor_config_t temp_config = TEMPERATURE_SENSOR_CONFIG_DEFAULT(-10, 80);
     
-    // Store base configuration
-    base_config_ = *config;
-    
-    // Convert to ESP32-specific configuration if needed
-    if (esp_config_.auto_range_selection) {
-        esp_config_.preferred_range = find_optimal_range(config->range_min_celsius, config->range_max_celsius);
-    }
-    
-    // Configure ESP-IDF sensor
-    error = configure_esp_sensor();
-    if (error != TEMP_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to configure ESP sensor: %s", hf_temp_get_error_string(error));
-        return error;
-    }
-    
-    initialized_ = true;
-    current_state_ = TEMP_STATE_INITIALIZED;
-    
-    ESP_LOGI(TAG, "Temperature sensor initialized successfully");
-    ESP_LOGI(TAG, "Range: %.1f°C to %.1f°C", config->range_min_celsius, config->range_max_celsius);
-    ESP_LOGI(TAG, "Resolution: %.2f°C", config->resolution);
-    
-    return TEMP_SUCCESS;
-}
-
-HfTempError_t EspTemperature::initialize_esp32(const EspTempConfig_t* esp_config) {
-    if (esp_config == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
-    }
-    
-    // Validate ESP32-specific configuration
-    HfTempError_t error = validate_esp_config(esp_config);
-    if (error != TEMP_SUCCESS) {
-        return error;
-    }
-    
-    esp_config_ = *esp_config;
-    
-    // Create base configuration from ESP32 config
-    HfTempConfig_t base_config = HF_TEMP_CONFIG_DEFAULT();
-    
-    // Set range based on ESP32 range selection
+    // Adjust configuration based on current range
     float min_temp, max_temp, accuracy;
-    get_range_config(esp_config->preferred_range, &min_temp, &max_temp, &accuracy);
-    base_config.range_min_celsius = min_temp;
-    base_config.range_max_celsius = max_temp;
-    base_config.resolution = ESP_TEMP_RESOLUTION_CELSIUS;
-    base_config.enable_power_management = esp_config->enable_power_management;
-    base_config.timeout_ms = esp_config->timeout_ms;
-    base_config.sensor_type = TEMP_SENSOR_TYPE_INTERNAL;
-    base_config.capabilities = ESP_TEMP_CAPABILITIES;
+    GetRangeConfig(esp_config_.range, &min_temp, &max_temp, &accuracy);
+    temp_config.range_min = static_cast<int>(min_temp);
+    temp_config.range_max = static_cast<int>(max_temp);
     
-    return initialize(&base_config);
+    // Install temperature sensor
+    esp_err_t esp_err = temperature_sensor_install(&temp_config, &esp_state_.handle);
+    if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to install temperature sensor: %s", esp_err_to_name(esp_err));
+        SetLastError(ConvertEspError(esp_err));
+        UpdateStatistics(false, GetCurrentTimeUs() - start_time);
+        return false;
+    }
+    
+    // Enable temperature sensor
+    esp_err = temperature_sensor_enable(esp_state_.handle);
+    if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to enable temperature sensor: %s", esp_err_to_name(esp_err));
+        temperature_sensor_uninstall(esp_state_.handle);
+        esp_state_.handle = nullptr;
+        SetLastError(ConvertEspError(esp_err));
+        UpdateStatistics(false, GetCurrentTimeUs() - start_time);
+        return false;
+    }
+    
+    // Update state
+    esp_state_.current_range = esp_config_.range;
+    esp_state_.calibration_offset = esp_config_.calibration_offset;
+    current_state_ = HF_TEMP_STATE_INITIALIZED;
+    
+    // Setup threshold monitoring if requested
+    if (esp_config_.enable_threshold_monitoring) {
+        hf_temp_err_t threshold_err = SetThresholds(esp_config_.low_threshold_celsius, 
+                                                   esp_config_.high_threshold_celsius);
+        if (threshold_err != hf_temp_err_t::TEMP_SUCCESS) {
+            ESP_LOGW(TAG, "Failed to setup threshold monitoring: %s", 
+                     GetTempErrorString(threshold_err));
+        }
+    }
+    
+    ESP_LOGI(TAG, "ESP32-C6 temperature sensor initialized successfully");
+    ESP_LOGI(TAG, "Range: %.0f°C to %.0f°C, Accuracy: ±%.1f°C", min_temp, max_temp, accuracy);
+    
+    UpdateStatistics(true, GetCurrentTimeUs() - start_time);
+    SetLastError(hf_temp_err_t::TEMP_SUCCESS);
+    return true;
 }
 
-HfTempError_t EspTemperature::deinitialize() {
+bool EspTemperature::Deinitialize() noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
+    
+    const hf_u64_t start_time = GetCurrentTimeUs();
     
     if (!initialized_) {
         ESP_LOGW(TAG, "Temperature sensor not initialized");
-        return TEMP_ERR_NOT_INITIALIZED;
+        UpdateStatistics(true, GetCurrentTimeUs() - start_time);
+        return true;
     }
     
-    // Stop any ongoing monitoring
-    if (esp_state_.is_monitoring) {
-        stop_continuous_monitoring();
+    ESP_LOGI(TAG, "Deinitializing ESP32-C6 temperature sensor...");
+    
+    // Stop continuous monitoring if active
+    if (esp_state_.continuous_monitoring_active) {
+        StopContinuousMonitoring();
     }
     
-    // Disable sensor if enabled
-    if (enabled_) {
-        disable();
+    // Disable threshold monitoring if active
+    if (esp_state_.threshold_monitoring_enabled) {
+        DisableThresholdMonitoring();
     }
     
-    // Cleanup ESP-IDF resources
+    bool success = true;
+    
+    // Disable temperature sensor
     if (esp_state_.handle != nullptr) {
-        esp_err_t esp_err = temperature_sensor_uninstall(esp_state_.handle);
+        esp_err_t esp_err = temperature_sensor_disable(esp_state_.handle);
         if (esp_err != ESP_OK) {
-            ESP_LOGW(TAG, "Failed to uninstall temperature sensor: %s", esp_err_to_name(esp_err));
+            ESP_LOGE(TAG, "Failed to disable temperature sensor: %s", esp_err_to_name(esp_err));
+            success = false;
         }
+        
+        // Uninstall temperature sensor
+        esp_err = temperature_sensor_uninstall(esp_state_.handle);
+        if (esp_err != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to uninstall temperature sensor: %s", esp_err_to_name(esp_err));
+            success = false;
+        }
+        
         esp_state_.handle = nullptr;
     }
     
     // Reset state
-    initialized_ = false;
-    enabled_ = false;
-    current_state_ = TEMP_STATE_UNINITIALIZED;
-    esp_state_.current_range = ESP_TEMP_RANGE_UNKNOWN;
+    current_state_ = HF_TEMP_STATE_UNINITIALIZED;
+    esp_state_.threshold_monitoring_enabled = false;
+    esp_state_.continuous_monitoring_active = false;
     
-    ESP_LOGI(TAG, "Temperature sensor deinitialized");
+    // Clear callbacks
+    threshold_callback_ = nullptr;
+    monitoring_callback_ = nullptr;
+    esp_threshold_callback_ = nullptr;
+    esp_monitoring_callback_ = nullptr;
+    threshold_user_data_ = nullptr;
+    monitoring_user_data_ = nullptr;
     
-    return TEMP_SUCCESS;
+    if (success) {
+        ESP_LOGI(TAG, "ESP32-C6 temperature sensor deinitialized successfully");
+        SetLastError(hf_temp_err_t::TEMP_SUCCESS);
+    } else {
+        ESP_LOGE(TAG, "ESP32-C6 temperature sensor deinitialization completed with errors");
+        SetLastError(hf_temp_err_t::TEMP_ERR_FAILURE);
+    }
+    
+    UpdateStatistics(success, GetCurrentTimeUs() - start_time);
+    return success;
 }
 
-HfTempError_t EspTemperature::enable() {
-    std::lock_guard<std::mutex> lock(mutex_);
-    
-    if (!initialized_) {
-        ESP_LOGE(TAG, "Temperature sensor not initialized");
-        return set_last_error(TEMP_ERR_NOT_INITIALIZED), TEMP_ERR_NOT_INITIALIZED;
-    }
-    
-    if (enabled_) {
-        ESP_LOGW(TAG, "Temperature sensor already enabled");
-        return TEMP_SUCCESS;
-    }
-    
-    if (esp_state_.handle == nullptr) {
-        ESP_LOGE(TAG, "ESP sensor handle is null");
-        return set_last_error(TEMP_ERR_SENSOR_NOT_AVAILABLE), TEMP_ERR_SENSOR_NOT_AVAILABLE;
-    }
-    
-    esp_err_t esp_err = temperature_sensor_enable(esp_state_.handle);
-    if (esp_err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to enable temperature sensor: %s", esp_err_to_name(esp_err));
-        HfTempError_t error = convert_esp_error(esp_err);
-        return set_last_error(error), error;
-    }
-    
-    enabled_ = true;
-    current_state_ = TEMP_STATE_ENABLED;
-    
-    ESP_LOGI(TAG, "Temperature sensor enabled");
-    
-    return TEMP_SUCCESS;
-}
-
-HfTempError_t EspTemperature::disable() {
-    std::lock_guard<std::mutex> lock(mutex_);
-    
-    if (!initialized_) {
-        ESP_LOGE(TAG, "Temperature sensor not initialized");
-        return set_last_error(TEMP_ERR_NOT_INITIALIZED), TEMP_ERR_NOT_INITIALIZED;
-    }
-    
-    if (!enabled_) {
-        ESP_LOGW(TAG, "Temperature sensor already disabled");
-        return TEMP_SUCCESS;
-    }
-    
-    // Stop monitoring if active
-    if (esp_state_.is_monitoring) {
-        stop_continuous_monitoring();
-    }
-    
-    if (esp_state_.handle != nullptr) {
-        esp_err_t esp_err = temperature_sensor_disable(esp_state_.handle);
-        if (esp_err != ESP_OK) {
-            ESP_LOGW(TAG, "Failed to disable temperature sensor: %s", esp_err_to_name(esp_err));
-        }
-    }
-    
-    enabled_ = false;
-    current_state_ = TEMP_STATE_DISABLED;
-    
-    ESP_LOGI(TAG, "Temperature sensor disabled");
-    
-    return TEMP_SUCCESS;
-}
-
-bool EspTemperature::is_initialized() const {
-    std::lock_guard<std::mutex> lock(mutex_);
-    return initialized_;
-}
-
-bool EspTemperature::is_enabled() const {
-    std::lock_guard<std::mutex> lock(mutex_);
-    return enabled_;
-}
-
-HfTempState_t EspTemperature::get_state() const {
-    std::lock_guard<std::mutex> lock(mutex_);
-    return current_state_;
-}
-
-//--------------------------------------
-//  Temperature Reading Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::read_celsius(float* temperature_celsius) {
+hf_temp_err_t EspTemperature::ReadTemperatureCelsiusImpl(float* temperature_celsius) noexcept {
     if (temperature_celsius == nullptr) {
-        return set_last_error(TEMP_ERR_NULL_POINTER), TEMP_ERR_NULL_POINTER;
+        return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
     }
     
     std::lock_guard<std::mutex> lock(mutex_);
     
+    const hf_u64_t start_time = GetCurrentTimeUs();
+    
     if (!initialized_) {
         ESP_LOGE(TAG, "Temperature sensor not initialized");
-        return set_last_error(TEMP_ERR_NOT_INITIALIZED), TEMP_ERR_NOT_INITIALIZED;
-    }
-    
-    if (!enabled_) {
-        ESP_LOGE(TAG, "Temperature sensor not enabled");
-        return set_last_error(TEMP_ERR_SENSOR_DISABLED), TEMP_ERR_SENSOR_DISABLED;
+        UpdateStatistics(false, GetCurrentTimeUs() - start_time);
+        return SetLastError(hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED), hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
     }
     
     if (esp_state_.handle == nullptr) {
         ESP_LOGE(TAG, "ESP sensor handle is null");
-        return set_last_error(TEMP_ERR_SENSOR_NOT_AVAILABLE), TEMP_ERR_SENSOR_NOT_AVAILABLE;
+        UpdateStatistics(false, GetCurrentTimeUs() - start_time);
+        return SetLastError(hf_temp_err_t::TEMP_ERR_SENSOR_NOT_AVAILABLE), hf_temp_err_t::TEMP_ERR_SENSOR_NOT_AVAILABLE;
     }
     
-    current_state_ = TEMP_STATE_READING;
+    current_state_ = HF_TEMP_STATE_READING;
     
+    // Read raw temperature from ESP32-C6
     float raw_temp;
     esp_err_t esp_err = temperature_sensor_get_celsius(esp_state_.handle, &raw_temp);
     
-    current_state_ = TEMP_STATE_ENABLED;
+    current_state_ = HF_TEMP_STATE_INITIALIZED;
     
     if (esp_err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to read temperature: %s", esp_err_to_name(esp_err));
-        HfTempError_t error = convert_esp_error(esp_err);
-        return set_last_error(error), error;
+        hf_temp_err_t error = ConvertEspError(esp_err);
+        UpdateStatistics(false, GetCurrentTimeUs() - start_time);
+        return SetLastError(error), error;
     }
     
     // Apply calibration offset
     *temperature_celsius = raw_temp + esp_state_.calibration_offset;
     
-    // Check if within valid range
-    float min_temp, max_temp, accuracy;
-    get_range_config(esp_state_.current_range, &min_temp, &max_temp, &accuracy);
+    // Update statistics
+    statistics_.temperature_readings++;
+    esp_state_.last_temperature_celsius = *temperature_celsius;
+    esp_state_.last_reading_timestamp_us = GetCurrentTimeUs();
     
-    if (!hf_temp_is_in_range(*temperature_celsius, min_temp, max_temp)) {
-        ESP_LOGW(TAG, "Temperature %.2f°C is outside range [%.1f, %.1f]°C", 
-                 *temperature_celsius, min_temp, max_temp);
-        return set_last_error(TEMP_ERR_OUT_OF_RANGE), TEMP_ERR_OUT_OF_RANGE;
+    // Update min/max tracking
+    if (*temperature_celsius < statistics_.min_temperature_celsius) {
+        statistics_.min_temperature_celsius = *temperature_celsius;
+    }
+    if (*temperature_celsius > statistics_.max_temperature_celsius) {
+        statistics_.max_temperature_celsius = *temperature_celsius;
     }
     
-    // Check thresholds if enabled
+    // Update average temperature (simple moving average)
+    if (statistics_.temperature_readings == 1) {
+        statistics_.avg_temperature_celsius = *temperature_celsius;
+    } else {
+        statistics_.avg_temperature_celsius = 
+            (statistics_.avg_temperature_celsius * (statistics_.temperature_readings - 1) + *temperature_celsius) / 
+            statistics_.temperature_readings;
+    }
+    
+    // Check thresholds if monitoring is enabled
     if (esp_state_.threshold_monitoring_enabled) {
-        check_thresholds(*temperature_celsius);
+        CheckThresholds(*temperature_celsius);
+    }
+    
+    // Validate temperature is within expected range
+    float min_temp, max_temp, accuracy;
+    GetRangeConfig(esp_state_.current_range, &min_temp, &max_temp, &accuracy);
+    
+    if (*temperature_celsius < min_temp - 10.0f || *temperature_celsius > max_temp + 10.0f) {
+        ESP_LOGW(TAG, "Temperature %.2f°C is outside expected range [%.0f°C, %.0f°C]", 
+                 *temperature_celsius, min_temp, max_temp);
     }
     
     ESP_LOGD(TAG, "Temperature reading: %.2f°C (raw: %.2f°C, offset: %.2f°C)", 
              *temperature_celsius, raw_temp, esp_state_.calibration_offset);
     
-    return TEMP_SUCCESS;
+    UpdateStatistics(true, GetCurrentTimeUs() - start_time);
+    SetLastError(hf_temp_err_t::TEMP_SUCCESS);
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::read_temperature(HfTempReading_t* reading) {
-    if (reading == nullptr) {
-        return set_last_error(TEMP_ERR_NULL_POINTER), TEMP_ERR_NULL_POINTER;
+//==============================================================================
+// INFORMATION INTERFACE (MANDATORY OVERRIDES)
+//==============================================================================
+
+hf_temp_err_t EspTemperature::GetSensorInfo(hf_temp_sensor_info_t* info) const noexcept {
+    if (info == nullptr) {
+        return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
     }
     
-    // Initialize reading structure
-    memset(reading, 0, sizeof(HfTempReading_t));
-    reading->timestamp_us = esp_timer_get_time();
+    std::lock_guard<std::mutex> lock(mutex_);
     
-    float temperature;
-    HfTempError_t error = read_celsius(&temperature);
+    // Get current range configuration
+    float min_temp, max_temp, accuracy;
+    GetRangeConfig(esp_state_.current_range, &min_temp, &max_temp, &accuracy);
     
-    reading->temperature_celsius = temperature;
-    reading->error = error;
-    reading->is_valid = (error == TEMP_SUCCESS);
+    info->sensor_type = HF_TEMP_SENSOR_TYPE_INTERNAL;
+    info->min_temp_celsius = min_temp;
+    info->max_temp_celsius = max_temp;
+    info->resolution_celsius = ESP_TEMP_DEFAULT_RESOLUTION_CELSIUS;
+    info->accuracy_celsius = accuracy;
+    info->response_time_ms = ESP_TEMP_DEFAULT_RESPONSE_TIME_MS;
+    info->capabilities = GetCapabilities();
+    info->manufacturer = "Espressif";
+    info->model = "ESP32-C6 Internal Temperature Sensor";
+    info->version = "ESP-IDF v5.x";
     
-    if (error == TEMP_SUCCESS) {
-        // Get accuracy for current range
-        float min_temp, max_temp, accuracy;
-        get_range_config(esp_state_.current_range, &min_temp, &max_temp, &accuracy);
-        reading->accuracy_celsius = accuracy;
-        
-        // Store raw temperature (before calibration)
-        reading->temperature_raw = temperature - esp_state_.calibration_offset;
-    }
-    
-    return error;
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::start_async_read() {
-    // ESP32-C6 temperature sensor doesn't support true asynchronous reading
-    // We implement this as a synchronous read for now
-    // Future versions could use FreeRTOS tasks for async behavior
-    ESP_LOGW(TAG, "Async read not yet implemented, performing synchronous read");
-    return TEMP_ERR_OPERATION_PENDING;
+hf_u32_t EspTemperature::GetCapabilities() const noexcept {
+    return HF_TEMP_CAP_THRESHOLD_MONITORING |
+           HF_TEMP_CAP_CONTINUOUS_READING |
+           HF_TEMP_CAP_CALIBRATION |
+           HF_TEMP_CAP_POWER_MANAGEMENT |
+           HF_TEMP_CAP_SELF_TEST |
+           HF_TEMP_CAP_HIGH_PRECISION |
+           HF_TEMP_CAP_FAST_RESPONSE;
 }
 
-bool EspTemperature::is_read_complete() const {
-    // Since we don't support true async reads yet, always return true
-    return true;
-}
+//==============================================================================
+// ADVANCED FEATURES (SUPPORTED BY ESP32-C6)
+//==============================================================================
 
-HfTempError_t EspTemperature::get_async_result(HfTempReading_t* reading) {
-    // Since async reads are not implemented, just perform a synchronous read
-    return read_temperature(reading);
-}
-
-//--------------------------------------
-//  Configuration Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::set_range(float min_celsius, float max_celsius) {
+hf_temp_err_t EspTemperature::SetRange(float min_celsius, float max_celsius) noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
     if (min_celsius >= max_celsius) {
-        ESP_LOGE(TAG, "Invalid range: min=%.1f >= max=%.1f", min_celsius, max_celsius);
-        return set_last_error(TEMP_ERR_INVALID_RANGE), TEMP_ERR_INVALID_RANGE;
+        ESP_LOGE(TAG, "Invalid range: min (%.1f) >= max (%.1f)", min_celsius, max_celsius);
+        return SetLastError(hf_temp_err_t::TEMP_ERR_INVALID_RANGE), hf_temp_err_t::TEMP_ERR_INVALID_RANGE;
     }
     
-    // Find optimal range for the specified temperature range
-    EspTempRange_t optimal_range = find_optimal_range(min_celsius, max_celsius);
-    if (optimal_range == ESP_TEMP_RANGE_UNKNOWN) {
-        ESP_LOGE(TAG, "No suitable range found for [%.1f, %.1f]°C", min_celsius, max_celsius);
-        return set_last_error(TEMP_ERR_UNSUPPORTED_RANGE), TEMP_ERR_UNSUPPORTED_RANGE;
+    // Find optimal range for the given requirements
+    esp_temp_range_t optimal_range = FindOptimalRange(min_celsius, max_celsius);
+    
+    if (optimal_range >= ESP_TEMP_RANGE_COUNT) {
+        ESP_LOGE(TAG, "No suitable range found for %.1f°C to %.1f°C", min_celsius, max_celsius);
+        return SetLastError(hf_temp_err_t::TEMP_ERR_UNSUPPORTED_RANGE), hf_temp_err_t::TEMP_ERR_UNSUPPORTED_RANGE;
     }
     
-    // Update configuration
-    base_config_.range_min_celsius = min_celsius;
-    base_config_.range_max_celsius = max_celsius;
-    esp_config_.preferred_range = optimal_range;
-    
-    // If initialized, reconfigure the sensor
-    if (initialized_) {
-        HfTempError_t error = setup_range(optimal_range);
-        if (error != TEMP_SUCCESS) {
-            ESP_LOGE(TAG, "Failed to setup new range: %s", hf_temp_get_error_string(error));
-            return set_last_error(error), error;
-        }
-    }
-    
-    ESP_LOGI(TAG, "Range set to [%.1f, %.1f]°C (ESP range: %d)", 
-             min_celsius, max_celsius, optimal_range);
-    
-    return TEMP_SUCCESS;
+    return SetMeasurementRange(optimal_range);
 }
 
-HfTempError_t EspTemperature::get_range(float* min_celsius, float* max_celsius) const {
+hf_temp_err_t EspTemperature::GetRange(float* min_celsius, float* max_celsius) const noexcept {
     if (min_celsius == nullptr || max_celsius == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
+        return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
     }
     
     std::lock_guard<std::mutex> lock(mutex_);
     
-    *min_celsius = base_config_.range_min_celsius;
-    *max_celsius = base_config_.range_max_celsius;
+    float accuracy;
+    GetRangeConfig(esp_state_.current_range, min_celsius, max_celsius, &accuracy);
     
-    return TEMP_SUCCESS;
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::set_resolution(float resolution_celsius) {
-    // ESP32-C6 has fixed resolution, but we can store the requested value
-    std::lock_guard<std::mutex> lock(mutex_);
-    
-    if (resolution_celsius <= 0.0f) {
-        ESP_LOGE(TAG, "Invalid resolution: %.3f", resolution_celsius);
-        return set_last_error(TEMP_ERR_INVALID_PARAMETER), TEMP_ERR_INVALID_PARAMETER;
-    }
-    
-    base_config_.resolution = resolution_celsius;
-    
-    if (resolution_celsius < ESP_TEMP_RESOLUTION_CELSIUS) {
-        ESP_LOGW(TAG, "Requested resolution %.3f°C is better than hardware capability %.3f°C", 
-                 resolution_celsius, ESP_TEMP_RESOLUTION_CELSIUS);
-    }
-    
-    return TEMP_SUCCESS;
-}
-
-HfTempError_t EspTemperature::get_resolution(float* resolution_celsius) const {
+hf_temp_err_t EspTemperature::GetResolution(float* resolution_celsius) const noexcept {
     if (resolution_celsius == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
+        return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
     }
     
-    std::lock_guard<std::mutex> lock(mutex_);
-    
-    // Return the actual hardware resolution
-    *resolution_celsius = ESP_TEMP_RESOLUTION_CELSIUS;
-    
-    return TEMP_SUCCESS;
+    *resolution_celsius = ESP_TEMP_DEFAULT_RESOLUTION_CELSIUS;
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-//--------------------------------------
-//  Threshold Monitoring Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::set_thresholds(float low_threshold_celsius, float high_threshold_celsius) {
-    if (low_threshold_celsius >= high_threshold_celsius) {
-        ESP_LOGE(TAG, "Invalid thresholds: low=%.1f >= high=%.1f", 
-                 low_threshold_celsius, high_threshold_celsius);
-        return set_last_error(TEMP_ERR_INVALID_THRESHOLD), TEMP_ERR_INVALID_THRESHOLD;
-    }
-    
+hf_temp_err_t EspTemperature::SetThresholds(float low_threshold_celsius, float high_threshold_celsius) noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
-    esp_state_.low_threshold = low_threshold_celsius;
-    esp_state_.high_threshold = high_threshold_celsius;
+    if (low_threshold_celsius >= high_threshold_celsius) {
+        ESP_LOGE(TAG, "Invalid thresholds: low (%.1f) >= high (%.1f)", 
+                 low_threshold_celsius, high_threshold_celsius);
+        return SetLastError(hf_temp_err_t::TEMP_ERR_INVALID_THRESHOLD), hf_temp_err_t::TEMP_ERR_INVALID_THRESHOLD;
+    }
     
-    ESP_LOGI(TAG, "Thresholds set: low=%.1f°C, high=%.1f°C", 
+    // Validate thresholds are within sensor range
+    float min_temp, max_temp, accuracy;
+    GetRangeConfig(esp_state_.current_range, &min_temp, &max_temp, &accuracy);
+    
+    if (low_threshold_celsius < min_temp || high_threshold_celsius > max_temp) {
+        ESP_LOGW(TAG, "Thresholds [%.1f, %.1f] outside sensor range [%.0f, %.0f]",
+                 low_threshold_celsius, high_threshold_celsius, min_temp, max_temp);
+    }
+    
+    esp_config_.low_threshold_celsius = low_threshold_celsius;
+    esp_config_.high_threshold_celsius = high_threshold_celsius;
+    
+    ESP_LOGI(TAG, "Temperature thresholds set: Low=%.1f°C, High=%.1f°C", 
              low_threshold_celsius, high_threshold_celsius);
     
-    return TEMP_SUCCESS;
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::get_thresholds(float* low_threshold_celsius, float* high_threshold_celsius) const {
+hf_temp_err_t EspTemperature::GetThresholds(float* low_threshold_celsius, float* high_threshold_celsius) const noexcept {
     if (low_threshold_celsius == nullptr || high_threshold_celsius == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
+        return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
     }
     
     std::lock_guard<std::mutex> lock(mutex_);
     
-    *low_threshold_celsius = esp_state_.low_threshold;
-    *high_threshold_celsius = esp_state_.high_threshold;
+    *low_threshold_celsius = esp_config_.low_threshold_celsius;
+    *high_threshold_celsius = esp_config_.high_threshold_celsius;
     
-    return TEMP_SUCCESS;
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::enable_threshold_monitoring(HfTempThresholdCallback_t callback, void* user_data) {
-    if (callback == nullptr) {
-        ESP_LOGE(TAG, "Threshold callback is null");
-        return set_last_error(TEMP_ERR_NULL_POINTER), TEMP_ERR_NULL_POINTER;
-    }
-    
+hf_temp_err_t EspTemperature::EnableThresholdMonitoring(hf_temp_threshold_callback_t callback, void* user_data) noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
-    esp_state_.threshold_callback = callback;
-    esp_state_.threshold_user_data = user_data;
+    if (!initialized_) {
+        ESP_LOGE(TAG, "Temperature sensor not initialized");
+        return SetLastError(hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED), hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
+    }
+    
+    threshold_callback_ = callback;
+    threshold_user_data_ = user_data;
     esp_state_.threshold_monitoring_enabled = true;
+    diagnostics_.threshold_monitoring_enabled = true;
     
-    ESP_LOGI(TAG, "Threshold monitoring enabled");
+    ESP_LOGI(TAG, "Threshold monitoring enabled (Low=%.1f°C, High=%.1f°C)", 
+             esp_config_.low_threshold_celsius, esp_config_.high_threshold_celsius);
     
-    return TEMP_SUCCESS;
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::disable_threshold_monitoring() {
+hf_temp_err_t EspTemperature::DisableThresholdMonitoring() noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
     esp_state_.threshold_monitoring_enabled = false;
-    esp_state_.threshold_callback = nullptr;
-    esp_state_.threshold_user_data = nullptr;
+    diagnostics_.threshold_monitoring_enabled = false;
+    threshold_callback_ = nullptr;
+    esp_threshold_callback_ = nullptr;
+    threshold_user_data_ = nullptr;
     
     ESP_LOGI(TAG, "Threshold monitoring disabled");
     
-    return TEMP_SUCCESS;
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
 }
 
-//--------------------------------------
-//  Continuous Monitoring Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::start_continuous_monitoring(uint32_t sample_rate_hz, 
-                                                         HfTempReadingCallback_t callback, 
-                                                         void* user_data) {
-    if (callback == nullptr) {
-        ESP_LOGE(TAG, "Reading callback is null");
-        return set_last_error(TEMP_ERR_NULL_POINTER), TEMP_ERR_NULL_POINTER;
-    }
-    
-    if (sample_rate_hz == 0 || sample_rate_hz > 1000) {
-        ESP_LOGE(TAG, "Invalid sample rate: %lu Hz (valid range: 1-1000)", sample_rate_hz);
-        return set_last_error(TEMP_ERR_INVALID_PARAMETER), TEMP_ERR_INVALID_PARAMETER;
-    }
-    
+hf_temp_err_t EspTemperature::StartContinuousMonitoring(hf_u32_t sample_rate_hz, 
+                                                       hf_temp_reading_callback_t callback, 
+                                                       void* user_data) noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
-    if (!initialized_ || !enabled_) {
-        ESP_LOGE(TAG, "Temperature sensor must be initialized and enabled");
-        return set_last_error(TEMP_ERR_INVALID_STATE), TEMP_ERR_INVALID_STATE;
+    if (!initialized_) {
+        ESP_LOGE(TAG, "Temperature sensor not initialized");
+        return SetLastError(hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED), hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
     }
     
-    if (esp_state_.is_monitoring) {
+    if (esp_state_.continuous_monitoring_active) {
         ESP_LOGW(TAG, "Continuous monitoring already active");
-        return TEMP_SUCCESS;
+        return SetLastError(hf_temp_err_t::TEMP_ERR_INVALID_STATE), hf_temp_err_t::TEMP_ERR_INVALID_STATE;
     }
     
-    // Setup callback and user data
-    esp_state_.reading_callback = callback;
-    esp_state_.callback_user_data = user_data;
+    if (sample_rate_hz < ESP_TEMP_MIN_SAMPLE_RATE_HZ || sample_rate_hz > ESP_TEMP_MAX_SAMPLE_RATE_HZ) {
+        ESP_LOGE(TAG, "Invalid sample rate: %u Hz (valid range: %d-%d Hz)", 
+                 sample_rate_hz, ESP_TEMP_MIN_SAMPLE_RATE_HZ, ESP_TEMP_MAX_SAMPLE_RATE_HZ);
+        return SetLastError(hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER), hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER;
+    }
     
-    // Create timer for monitoring
-    uint64_t period_us = 1000000ULL / sample_rate_hz;
+    // Store callback and user data
+    monitoring_callback_ = callback;
+    monitoring_user_data_ = user_data;
+    esp_state_.sample_rate_hz = sample_rate_hz;
     
-    esp_timer_create_args_t timer_args = {
-        .callback = monitoring_timer_callback,
+    // Create timer for continuous monitoring
+    const esp_timer_create_args_t timer_args = {
+        .callback = MonitoringTimerCallback,
         .arg = this,
         .dispatch_method = ESP_TIMER_TASK,
         .name = "temp_monitor",
@@ -580,390 +546,397 @@ HfTempError_t EspTemperature::start_continuous_monitoring(uint32_t sample_rate_h
     esp_err_t esp_err = esp_timer_create(&timer_args, &esp_state_.monitoring_timer);
     if (esp_err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to create monitoring timer: %s", esp_err_to_name(esp_err));
-        HfTempError_t error = convert_esp_error(esp_err);
-        return set_last_error(error), error;
+        return SetLastError(ConvertEspError(esp_err)), ConvertEspError(esp_err);
     }
     
+    // Start timer
+    hf_u64_t period_us = 1000000ULL / sample_rate_hz;
     esp_err = esp_timer_start_periodic(esp_state_.monitoring_timer, period_us);
     if (esp_err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to start monitoring timer: %s", esp_err_to_name(esp_err));
         esp_timer_delete(esp_state_.monitoring_timer);
         esp_state_.monitoring_timer = nullptr;
-        HfTempError_t error = convert_esp_error(esp_err);
-        return set_last_error(error), error;
+        return SetLastError(ConvertEspError(esp_err)), ConvertEspError(esp_err);
     }
     
-    esp_state_.is_monitoring = true;
+    esp_state_.continuous_monitoring_active = true;
+    diagnostics_.continuous_monitoring_active = true;
     
-    ESP_LOGI(TAG, "Continuous monitoring started at %lu Hz", sample_rate_hz);
+    ESP_LOGI(TAG, "Continuous monitoring started at %u Hz", sample_rate_hz);
     
-    return TEMP_SUCCESS;
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::stop_continuous_monitoring() {
+hf_temp_err_t EspTemperature::StopContinuousMonitoring() noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
-    if (!esp_state_.is_monitoring) {
+    if (!esp_state_.continuous_monitoring_active) {
         ESP_LOGW(TAG, "Continuous monitoring not active");
-        return TEMP_SUCCESS;
+        return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
     }
     
+    bool success = true;
+    
+    // Stop and delete timer
     if (esp_state_.monitoring_timer != nullptr) {
-        esp_timer_stop(esp_state_.monitoring_timer);
-        esp_timer_delete(esp_state_.monitoring_timer);
+        esp_err_t esp_err = esp_timer_stop(esp_state_.monitoring_timer);
+        if (esp_err != ESP_OK && esp_err != ESP_ERR_INVALID_STATE) {
+            ESP_LOGE(TAG, "Failed to stop monitoring timer: %s", esp_err_to_name(esp_err));
+            success = false;
+        }
+        
+        esp_err = esp_timer_delete(esp_state_.monitoring_timer);
+        if (esp_err != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to delete monitoring timer: %s", esp_err_to_name(esp_err));
+            success = false;
+        }
+        
         esp_state_.monitoring_timer = nullptr;
     }
     
-    esp_state_.is_monitoring = false;
-    esp_state_.reading_callback = nullptr;
-    esp_state_.callback_user_data = nullptr;
+    // Clear monitoring state
+    esp_state_.continuous_monitoring_active = false;
+    diagnostics_.continuous_monitoring_active = false;
+    monitoring_callback_ = nullptr;
+    esp_monitoring_callback_ = nullptr;
+    monitoring_user_data_ = nullptr;
     
     ESP_LOGI(TAG, "Continuous monitoring stopped");
     
-    return TEMP_SUCCESS;
+    hf_temp_err_t result = success ? hf_temp_err_t::TEMP_SUCCESS : hf_temp_err_t::TEMP_ERR_FAILURE;
+    return SetLastError(result), result;
 }
 
-bool EspTemperature::is_monitoring_active() const {
+bool EspTemperature::IsMonitoringActive() const noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
-    return esp_state_.is_monitoring;
+    return esp_state_.continuous_monitoring_active;
 }
 
-//--------------------------------------
-//  Calibration Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::calibrate(float reference_temperature_celsius) {
+hf_temp_err_t EspTemperature::SetCalibrationOffset(float offset_celsius) noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
-    if (!initialized_ || !enabled_) {
-        ESP_LOGE(TAG, "Sensor must be initialized and enabled for calibration");
-        return set_last_error(TEMP_ERR_INVALID_STATE), TEMP_ERR_INVALID_STATE;
+    // Validate offset is reasonable
+    if (std::abs(offset_celsius) > 20.0f) {
+        ESP_LOGW(TAG, "Large calibration offset: %.2f°C", offset_celsius);
     }
-    
-    // Read current raw temperature
-    float raw_temp;
-    esp_err_t esp_err = temperature_sensor_get_celsius(esp_state_.handle, &raw_temp);
-    if (esp_err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to read temperature for calibration: %s", esp_err_to_name(esp_err));
-        HfTempError_t error = convert_esp_error(esp_err);
-        return set_last_error(error), error;
-    }
-    
-    // Calculate new offset
-    float new_offset = reference_temperature_celsius - raw_temp;
-    esp_state_.calibration_offset = new_offset;
-    
-    ESP_LOGI(TAG, "Calibration completed: offset=%.3f°C (ref=%.2f°C, raw=%.2f°C)", 
-             new_offset, reference_temperature_celsius, raw_temp);
-    
-    return TEMP_SUCCESS;
-}
-
-HfTempError_t EspTemperature::set_calibration_offset(float offset_celsius) {
-    std::lock_guard<std::mutex> lock(mutex_);
     
     esp_state_.calibration_offset = offset_celsius;
+    esp_config_.calibration_offset = offset_celsius;
+    statistics_.calibration_count++;
     
-    ESP_LOGI(TAG, "Calibration offset set to %.3f°C", offset_celsius);
+    ESP_LOGI(TAG, "Calibration offset set to %.2f°C", offset_celsius);
     
-    return TEMP_SUCCESS;
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::get_calibration_offset(float* offset_celsius) const {
+hf_temp_err_t EspTemperature::GetCalibrationOffset(float* offset_celsius) const noexcept {
     if (offset_celsius == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
+        return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
     }
     
     std::lock_guard<std::mutex> lock(mutex_);
-    
     *offset_celsius = esp_state_.calibration_offset;
     
-    return TEMP_SUCCESS;
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::reset_calibration() {
-    std::lock_guard<std::mutex> lock(mutex_);
-    
-    esp_state_.calibration_offset = 0.0f;
-    
-    ESP_LOGI(TAG, "Calibration reset to default");
-    
-    return TEMP_SUCCESS;
+hf_temp_err_t EspTemperature::ResetCalibration() noexcept {
+    return SetCalibrationOffset(0.0f);
 }
 
-//--------------------------------------
-//  Power Management Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::enter_sleep_mode() {
+hf_temp_err_t EspTemperature::EnterSleepMode() noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
     if (!initialized_) {
-        ESP_LOGE(TAG, "Sensor not initialized");
-        return set_last_error(TEMP_ERR_NOT_INITIALIZED), TEMP_ERR_NOT_INITIALIZED;
+        ESP_LOGE(TAG, "Temperature sensor not initialized");
+        return SetLastError(hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED), hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
     }
     
-    // Stop monitoring if active
-    if (esp_state_.is_monitoring) {
-        stop_continuous_monitoring();
+    if (!esp_state_.allow_power_down) {
+        ESP_LOGW(TAG, "Power down not allowed in current configuration");
+        return SetLastError(hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION), hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
     }
     
-    // Disable sensor to save power
-    if (enabled_) {
-        disable();
+    // Disable temperature sensor for sleep
+    esp_err_t esp_err = temperature_sensor_disable(esp_state_.handle);
+    if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to disable temperature sensor for sleep: %s", esp_err_to_name(esp_err));
+        return SetLastError(ConvertEspError(esp_err)), ConvertEspError(esp_err);
     }
     
-    current_state_ = TEMP_STATE_SLEEPING;
+    current_state_ = HF_TEMP_STATE_SLEEPING;
+    ESP_LOGI(TAG, "Temperature sensor entered sleep mode");
     
-    ESP_LOGI(TAG, "Entered sleep mode");
-    
-    return TEMP_SUCCESS;
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::exit_sleep_mode() {
+hf_temp_err_t EspTemperature::ExitSleepMode() noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
-    if (current_state_ != TEMP_STATE_SLEEPING) {
-        ESP_LOGW(TAG, "Sensor not in sleep mode");
-        return TEMP_SUCCESS;
+    if (current_state_ != HF_TEMP_STATE_SLEEPING) {
+        ESP_LOGW(TAG, "Temperature sensor not in sleep mode");
+        return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
     }
     
-    current_state_ = TEMP_STATE_INITIALIZED;
-    
-    ESP_LOGI(TAG, "Exited sleep mode");
-    
-    return TEMP_SUCCESS;
-}
-
-bool EspTemperature::is_sleeping() const {
-    std::lock_guard<std::mutex> lock(mutex_);
-    return (current_state_ == TEMP_STATE_SLEEPING);
-}
-
-//--------------------------------------
-//  Information Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::get_sensor_info(HfTempSensorInfo_t* info) const {
-    if (info == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
+    // Re-enable temperature sensor
+    esp_err_t esp_err = temperature_sensor_enable(esp_state_.handle);
+    if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to enable temperature sensor after sleep: %s", esp_err_to_name(esp_err));
+        return SetLastError(ConvertEspError(esp_err)), ConvertEspError(esp_err);
     }
     
+    current_state_ = HF_TEMP_STATE_INITIALIZED;
+    ESP_LOGI(TAG, "Temperature sensor exited sleep mode");
+    
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
+}
+
+bool EspTemperature::IsSleeping() const noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
-    
-    info->sensor_type = TEMP_SENSOR_TYPE_INTERNAL;
-    info->min_temp_celsius = ESP_TEMP_MIN_CELSIUS;
-    info->max_temp_celsius = ESP_TEMP_MAX_CELSIUS;
-    info->resolution_celsius = ESP_TEMP_RESOLUTION_CELSIUS;
-    
-    // Get accuracy for current range
-    float min_temp, max_temp, accuracy;
-    get_range_config(esp_state_.current_range, &min_temp, &max_temp, &accuracy);
-    info->accuracy_celsius = accuracy;
-    
-    info->response_time_ms = ESP_TEMP_RESPONSE_TIME_MS;
-    info->capabilities = ESP_TEMP_CAPABILITIES;
-    info->manufacturer = "Espressif";
-    info->model = "ESP32-C6 Internal";
-    info->version = "1.0.0";
-    
-    return TEMP_SUCCESS;
+    return (current_state_ == HF_TEMP_STATE_SLEEPING);
 }
 
-uint32_t EspTemperature::get_capabilities() const {
-    return ESP_TEMP_CAPABILITIES;
-}
-
-//--------------------------------------
-//  Error Handling Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::set_error_callback(HfTempErrorCallback_t callback, void* user_data) {
-    std::lock_guard<std::mutex> lock(mutex_);
-    
-    esp_state_.error_callback = callback;
-    esp_state_.error_user_data = user_data;
-    
-    return TEMP_SUCCESS;
-}
-
-HfTempError_t EspTemperature::clear_error_callback() {
-    std::lock_guard<std::mutex> lock(mutex_);
-    
-    esp_state_.error_callback = nullptr;
-    esp_state_.error_user_data = nullptr;
-    
-    return TEMP_SUCCESS;
-}
-
-HfTempError_t EspTemperature::get_last_error() const {
-    std::lock_guard<std::mutex> lock(mutex_);
-    return esp_state_.last_error;
-}
-
-HfTempError_t EspTemperature::clear_last_error() {
-    std::lock_guard<std::mutex> lock(mutex_);
-    esp_state_.last_error = TEMP_SUCCESS;
-    return TEMP_SUCCESS;
-}
-
-//--------------------------------------
-//  Self-Test Interface Implementation
-//--------------------------------------
-
-HfTempError_t EspTemperature::self_test() {
+hf_temp_err_t EspTemperature::SelfTest() noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
     if (!initialized_) {
-        ESP_LOGE(TAG, "Sensor not initialized");
-        return set_last_error(TEMP_ERR_NOT_INITIALIZED), TEMP_ERR_NOT_INITIALIZED;
+        ESP_LOGE(TAG, "Temperature sensor not initialized");
+        return SetLastError(hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED), hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
     }
     
-    ESP_LOGI(TAG, "Starting self-test...");
+    ESP_LOGI(TAG, "Starting temperature sensor self-test...");
     
-    // Test 1: Check if sensor can be enabled/disabled
-    bool was_enabled = enabled_;
+    // Test 1: Basic reading
+    float temperature;
+    hf_temp_err_t error = ReadTemperatureCelsiusImpl(&temperature);
+    if (error != hf_temp_err_t::TEMP_SUCCESS) {
+        ESP_LOGE(TAG, "Self-test failed: Cannot read temperature");
+        return SetLastError(hf_temp_err_t::TEMP_ERR_HARDWARE_FAULT), hf_temp_err_t::TEMP_ERR_HARDWARE_FAULT;
+    }
     
-    if (!enabled_) {
-        HfTempError_t error = enable();
-        if (error != TEMP_SUCCESS) {
-            ESP_LOGE(TAG, "Self-test failed: unable to enable sensor");
-            return set_last_error(TEMP_ERR_HARDWARE_FAULT), TEMP_ERR_HARDWARE_FAULT;
+    // Test 2: Validate reading is reasonable
+    if (temperature < -50.0f || temperature > 150.0f) {
+        ESP_LOGE(TAG, "Self-test failed: Temperature %.2f°C is unreasonable", temperature);
+        return SetLastError(hf_temp_err_t::TEMP_ERR_INVALID_READING), hf_temp_err_t::TEMP_ERR_INVALID_READING;
+    }
+    
+    // Test 3: Multiple readings for stability
+    float temp_readings[3];
+    for (int i = 0; i < 3; i++) {
+        vTaskDelay(pdMS_TO_TICKS(100)); // Wait 100ms between readings
+        error = ReadTemperatureCelsiusImpl(&temp_readings[i]);
+        if (error != hf_temp_err_t::TEMP_SUCCESS) {
+            ESP_LOGE(TAG, "Self-test failed: Reading %d failed", i + 1);
+            return SetLastError(hf_temp_err_t::TEMP_ERR_READ_FAILED), hf_temp_err_t::TEMP_ERR_READ_FAILED;
         }
     }
     
-    // Test 2: Try to read temperature
-    float temp;
-    HfTempError_t error = read_celsius(&temp);
-    if (error != TEMP_SUCCESS) {
-        ESP_LOGE(TAG, "Self-test failed: unable to read temperature");
-        if (!was_enabled) disable();
-        return set_last_error(TEMP_ERR_HARDWARE_FAULT), TEMP_ERR_HARDWARE_FAULT;
+    // Check for excessive variation (should be stable within 5°C)
+    float min_temp = *std::min_element(temp_readings, temp_readings + 3);
+    float max_temp = *std::max_element(temp_readings, temp_readings + 3);
+    if ((max_temp - min_temp) > 5.0f) {
+        ESP_LOGW(TAG, "Self-test warning: High temperature variation %.2f°C", max_temp - min_temp);
     }
     
-    // Test 3: Check if temperature is reasonable
-    if (temp < -50.0f || temp > 150.0f) {
-        ESP_LOGE(TAG, "Self-test failed: unreasonable temperature reading %.2f°C", temp);
-        if (!was_enabled) disable();
-        return set_last_error(TEMP_ERR_INVALID_READING), TEMP_ERR_INVALID_READING;
-    }
+    ESP_LOGI(TAG, "Self-test passed: Temperature=%.2f°C, Variation=%.2f°C", 
+             temperature, max_temp - min_temp);
     
-    // Test 4: Multiple readings for consistency
-    float temp1, temp2, temp3;
-    read_celsius(&temp1);
-    vTaskDelay(pdMS_TO_TICKS(100));
-    read_celsius(&temp2);
-    vTaskDelay(pdMS_TO_TICKS(100));
-    read_celsius(&temp3);
-    
-    float max_diff = std::max({std::abs(temp1 - temp2), std::abs(temp2 - temp3), std::abs(temp1 - temp3)});
-    if (max_diff > 5.0f) {
-        ESP_LOGW(TAG, "Self-test warning: temperature readings vary significantly (max diff: %.2f°C)", max_diff);
-    }
-    
-    // Restore original state
-    if (!was_enabled) {
-        disable();
-    }
-    
-    ESP_LOGI(TAG, "Self-test passed. Temperature: %.2f°C", temp);
-    
-    return TEMP_SUCCESS;
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::check_health() {
+hf_temp_err_t EspTemperature::CheckHealth() noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
+    bool healthy = true;
+    
+    // Check initialization status
     if (!initialized_) {
-        return TEMP_ERR_NOT_INITIALIZED;
+        ESP_LOGW(TAG, "Health check: Sensor not initialized");
+        healthy = false;
     }
     
+    // Check handle validity
     if (esp_state_.handle == nullptr) {
-        return TEMP_ERR_HARDWARE_FAULT;
+        ESP_LOGW(TAG, "Health check: Invalid handle");
+        healthy = false;
     }
     
-    // Check if we can read temperature
-    if (enabled_) {
-        float temp;
-        HfTempError_t error = read_celsius(&temp);
-        if (error != TEMP_SUCCESS) {
-            return TEMP_ERR_HARDWARE_FAULT;
-        }
+    // Check error history
+    if (diagnostics_.consecutive_errors > 5) {
+        ESP_LOGW(TAG, "Health check: High consecutive error count (%u)", 
+                 diagnostics_.consecutive_errors);
+        healthy = false;
     }
     
-    return TEMP_SUCCESS;
+    // Check last error
+    if (last_error_ != hf_temp_err_t::TEMP_SUCCESS) {
+        ESP_LOGW(TAG, "Health check: Last operation failed with error %d", 
+                 static_cast<int>(last_error_));
+        healthy = false;
+    }
+    
+    // Update diagnostics
+    diagnostics_.sensor_healthy = healthy;
+    
+    if (healthy) {
+        ESP_LOGD(TAG, "Health check: Sensor is healthy");
+        return hf_temp_err_t::TEMP_SUCCESS;
+    } else {
+        ESP_LOGW(TAG, "Health check: Sensor health issues detected");
+        return hf_temp_err_t::TEMP_ERR_HARDWARE_FAULT;
+    }
 }
 
-//--------------------------------------
-//  ESP32-Specific Methods Implementation
-//--------------------------------------
+hf_temp_err_t EspTemperature::GetStatistics(hf_temp_statistics_t& statistics) noexcept {
+    std::lock_guard<std::mutex> lock(mutex_);
+    statistics = statistics_;
+    return hf_temp_err_t::TEMP_SUCCESS;
+}
 
-HfTempError_t EspTemperature::set_measurement_range(EspTempRange_t range) {
+hf_temp_err_t EspTemperature::GetDiagnostics(hf_temp_diagnostics_t& diagnostics) noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     
-    if (range <= ESP_TEMP_RANGE_UNKNOWN || range >= ESP_TEMP_RANGE_MAX) {
-        ESP_LOGE(TAG, "Invalid measurement range: %d", range);
-        return set_last_error(TEMP_ERR_INVALID_PARAMETER), TEMP_ERR_INVALID_PARAMETER;
-    }
+    // Update current diagnostics
+    diagnostics_.sensor_available = (esp_state_.handle != nullptr);
+    diagnostics_.current_temperature_raw = static_cast<hf_u32_t>(esp_state_.last_temperature_celsius * 1000);
+    diagnostics_.calibration_valid = (std::abs(esp_state_.calibration_offset) < 50.0f);
     
-    esp_config_.preferred_range = range;
-    
-    if (initialized_) {
-        HfTempError_t error = setup_range(range);
-        if (error != TEMP_SUCCESS) {
-            ESP_LOGE(TAG, "Failed to setup measurement range: %s", hf_temp_get_error_string(error));
-            return set_last_error(error), error;
-        }
-    }
-    
-    ESP_LOGI(TAG, "Measurement range set to %d", range);
-    
-    return TEMP_SUCCESS;
+    diagnostics = diagnostics_;
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-EspTempRange_t EspTemperature::get_measurement_range() const {
+hf_temp_err_t EspTemperature::ResetStatistics() noexcept {
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    statistics_ = hf_temp_statistics_t{};
+    statistics_.min_operation_time_us = UINT32_MAX;
+    statistics_.min_temperature_celsius = 1000.0f;
+    statistics_.max_temperature_celsius = -1000.0f;
+    
+    ESP_LOGI(TAG, "Statistics reset");
+    return hf_temp_err_t::TEMP_SUCCESS;
+}
+
+hf_temp_err_t EspTemperature::ResetDiagnostics() noexcept {
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    diagnostics_.last_error_code = hf_temp_err_t::TEMP_SUCCESS;
+    diagnostics_.last_error_timestamp = 0;
+    diagnostics_.consecutive_errors = 0;
+    diagnostics_.sensor_healthy = true;
+    
+    ESP_LOGI(TAG, "Diagnostics reset");
+    return hf_temp_err_t::TEMP_SUCCESS;
+}
+
+//==============================================================================
+// ESP32-C6 SPECIFIC METHODS
+//==============================================================================
+
+hf_temp_err_t EspTemperature::InitializeEsp32(const esp_temp_config_t& esp_config) noexcept {
+    esp_config_ = esp_config;
+    return EnsureInitialized() ? hf_temp_err_t::TEMP_SUCCESS : hf_temp_err_t::TEMP_ERR_FAILURE;
+}
+
+hf_temp_err_t EspTemperature::SetMeasurementRange(esp_temp_range_t range) noexcept {
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    if (range >= ESP_TEMP_RANGE_COUNT) {
+        ESP_LOGE(TAG, "Invalid range: %d", static_cast<int>(range));
+        return SetLastError(hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER), hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER;
+    }
+    
+    if (range == esp_state_.current_range) {
+        ESP_LOGD(TAG, "Range already set to %d", static_cast<int>(range));
+        return hf_temp_err_t::TEMP_SUCCESS;
+    }
+    
+    // If initialized, need to reconfigure sensor
+    if (initialized_ && esp_state_.handle != nullptr) {
+        // Disable sensor
+        esp_err_t esp_err = temperature_sensor_disable(esp_state_.handle);
+        if (esp_err != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to disable sensor for range change: %s", esp_err_to_name(esp_err));
+            return SetLastError(ConvertEspError(esp_err)), ConvertEspError(esp_err);
+        }
+        
+        // Uninstall sensor
+        esp_err = temperature_sensor_uninstall(esp_state_.handle);
+        if (esp_err != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to uninstall sensor for range change: %s", esp_err_to_name(esp_err));
+            return SetLastError(ConvertEspError(esp_err)), ConvertEspError(esp_err);
+        }
+        
+        esp_state_.handle = nullptr;
+        
+        // Reconfigure with new range
+        float min_temp, max_temp, accuracy;
+        GetRangeConfig(range, &min_temp, &max_temp, &accuracy);
+        
+        temperature_sensor_config_t temp_config = TEMPERATURE_SENSOR_CONFIG_DEFAULT(
+            static_cast<int>(min_temp), static_cast<int>(max_temp));
+        
+        // Reinstall with new configuration
+        esp_err = temperature_sensor_install(&temp_config, &esp_state_.handle);
+        if (esp_err != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to reinstall sensor with new range: %s", esp_err_to_name(esp_err));
+            return SetLastError(ConvertEspError(esp_err)), ConvertEspError(esp_err);
+        }
+        
+        // Re-enable sensor
+        esp_err = temperature_sensor_enable(esp_state_.handle);
+        if (esp_err != ESP_OK) {
+            ESP_LOGE(TAG, "Failed to re-enable sensor after range change: %s", esp_err_to_name(esp_err));
+            temperature_sensor_uninstall(esp_state_.handle);
+            esp_state_.handle = nullptr;
+            return SetLastError(ConvertEspError(esp_err)), ConvertEspError(esp_err);
+        }
+        
+        ESP_LOGI(TAG, "Range changed to %d: %.0f°C to %.0f°C (±%.1f°C)", 
+                 static_cast<int>(range), min_temp, max_temp, accuracy);
+    }
+    
+    esp_state_.current_range = range;
+    esp_config_.range = range;
+    
+    return SetLastError(hf_temp_err_t::TEMP_SUCCESS), hf_temp_err_t::TEMP_SUCCESS;
+}
+
+esp_temp_range_t EspTemperature::GetMeasurementRange() const noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     return esp_state_.current_range;
 }
 
-HfTempError_t EspTemperature::get_range_info(EspTempRange_t range, 
-                                            float* min_celsius, 
-                                            float* max_celsius, 
-                                            float* accuracy_celsius) const {
+hf_temp_err_t EspTemperature::GetRangeInfo(esp_temp_range_t range, float* min_celsius, 
+                                           float* max_celsius, float* accuracy_celsius) const noexcept {
     if (min_celsius == nullptr || max_celsius == nullptr || accuracy_celsius == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
+        return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
     }
     
-    get_range_config(range, min_celsius, max_celsius, accuracy_celsius);
+    if (range >= ESP_TEMP_RANGE_COUNT) {
+        return hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER;
+    }
     
-    return TEMP_SUCCESS;
+    GetRangeConfig(range, min_celsius, max_celsius, accuracy_celsius);
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-EspTempRange_t EspTemperature::find_optimal_range(float min_celsius, float max_celsius) const {
-    struct RangeInfo {
-        EspTempRange_t range;
-        float min_temp;
-        float max_temp;
-        float accuracy;
-    };
+esp_temp_range_t EspTemperature::FindOptimalRange(float min_celsius, float max_celsius) const noexcept {
+    // Find range that covers the required span with best accuracy
+    esp_temp_range_t best_range = ESP_TEMP_RANGE_COUNT; // Invalid initially
+    float best_accuracy = 1000.0f; // Very high value initially
     
-    RangeInfo ranges[] = {
-        {ESP_TEMP_RANGE_NEG10_80, -10.0f, 80.0f, 1.0f},  // Best accuracy
-        {ESP_TEMP_RANGE_20_100, 20.0f, 100.0f, 2.0f},
-        {ESP_TEMP_RANGE_NEG30_50, -30.0f, 50.0f, 2.0f},
-        {ESP_TEMP_RANGE_50_125, 50.0f, 125.0f, 3.0f},
-        {ESP_TEMP_RANGE_NEG40_20, -40.0f, 20.0f, 3.0f}
-    };
-    
-    // Find ranges that can cover the required range
-    EspTempRange_t best_range = ESP_TEMP_RANGE_UNKNOWN;
-    float best_accuracy = 999.0f;
-    
-    for (const auto& range : ranges) {
-        if (range.min_temp <= min_celsius && range.max_temp >= max_celsius) {
-            if (range.accuracy < best_accuracy) {
-                best_accuracy = range.accuracy;
-                best_range = range.range;
+    for (int i = 0; i < ESP_TEMP_RANGE_COUNT; i++) {
+        esp_temp_range_t range = static_cast<esp_temp_range_t>(i);
+        float range_min, range_max, accuracy;
+        GetRangeConfig(range, &range_min, &range_max, &accuracy);
+        
+        // Check if this range covers the required span
+        if (range_min <= min_celsius && range_max >= max_celsius) {
+            // This range works, check if it has better accuracy
+            if (accuracy < best_accuracy) {
+                best_accuracy = accuracy;
+                best_range = range;
             }
         }
     }
@@ -971,220 +944,190 @@ EspTempRange_t EspTemperature::find_optimal_range(float min_celsius, float max_c
     return best_range;
 }
 
-HfTempError_t EspTemperature::read_raw(float* raw_value) {
+hf_temp_err_t EspTemperature::ReadRawTemperature(float* raw_value) noexcept {
     if (raw_value == nullptr) {
-        return set_last_error(TEMP_ERR_NULL_POINTER), TEMP_ERR_NULL_POINTER;
+        return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
     }
     
     std::lock_guard<std::mutex> lock(mutex_);
     
-    if (!initialized_ || !enabled_) {
-        ESP_LOGE(TAG, "Sensor must be initialized and enabled");
-        return set_last_error(TEMP_ERR_INVALID_STATE), TEMP_ERR_INVALID_STATE;
+    if (!initialized_ || esp_state_.handle == nullptr) {
+        return hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
     }
     
     esp_err_t esp_err = temperature_sensor_get_celsius(esp_state_.handle, raw_value);
     if (esp_err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to read raw temperature: %s", esp_err_to_name(esp_err));
-        HfTempError_t error = convert_esp_error(esp_err);
-        return set_last_error(error), error;
+        return ConvertEspError(esp_err);
     }
     
-    return TEMP_SUCCESS;
+    return hf_temp_err_t::TEMP_SUCCESS;
 }
 
-temperature_sensor_handle_t EspTemperature::get_esp_handle() const {
+temperature_sensor_handle_t EspTemperature::GetEspHandle() const noexcept {
     std::lock_guard<std::mutex> lock(mutex_);
     return esp_state_.handle;
 }
 
-//--------------------------------------
-//  Private Methods Implementation
-//--------------------------------------
+hf_temp_err_t EspTemperature::SetEspThresholdCallback(esp_temp_threshold_callback_t callback) noexcept {
+    std::lock_guard<std::mutex> lock(mutex_);
+    esp_threshold_callback_ = callback;
+    return hf_temp_err_t::TEMP_SUCCESS;
+}
 
-HfTempError_t EspTemperature::convert_esp_error(esp_err_t esp_err) const {
+hf_temp_err_t EspTemperature::SetEspMonitoringCallback(esp_temp_monitoring_callback_t callback) noexcept {
+    std::lock_guard<std::mutex> lock(mutex_);
+    esp_monitoring_callback_ = callback;
+    return hf_temp_err_t::TEMP_SUCCESS;
+}
+
+//==============================================================================
+// PRIVATE HELPER METHODS
+//==============================================================================
+
+hf_temp_err_t EspTemperature::ConvertEspError(esp_err_t esp_err) const noexcept {
     switch (esp_err) {
         case ESP_OK:
-            return TEMP_SUCCESS;
+            return hf_temp_err_t::TEMP_SUCCESS;
         case ESP_ERR_INVALID_ARG:
-            return TEMP_ERR_INVALID_PARAMETER;
+            return hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER;
         case ESP_ERR_INVALID_STATE:
-            return TEMP_ERR_INVALID_STATE;
-        case ESP_ERR_NO_MEM:
-            return TEMP_ERR_OUT_OF_MEMORY;
+            return hf_temp_err_t::TEMP_ERR_INVALID_STATE;
         case ESP_ERR_NOT_FOUND:
-            return TEMP_ERR_SENSOR_NOT_AVAILABLE;
+            return hf_temp_err_t::TEMP_ERR_SENSOR_NOT_AVAILABLE;
+        case ESP_ERR_NO_MEM:
+            return hf_temp_err_t::TEMP_ERR_OUT_OF_MEMORY;
         case ESP_ERR_TIMEOUT:
-            return TEMP_ERR_TIMEOUT;
-        case ESP_FAIL:
-            return TEMP_ERR_READ_FAILED;
+            return hf_temp_err_t::TEMP_ERR_TIMEOUT;
+        case ESP_ERR_NOT_SUPPORTED:
+            return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
         default:
-            return TEMP_ERR_FAILURE;
+            return hf_temp_err_t::TEMP_ERR_DRIVER_ERROR;
     }
 }
 
-HfTempError_t EspTemperature::configure_esp_sensor() {
-    // Setup range configuration
-    HfTempError_t error = setup_range(esp_config_.preferred_range);
-    if (error != TEMP_SUCCESS) {
-        return error;
-    }
-    
-    return TEMP_SUCCESS;
-}
-
-HfTempError_t EspTemperature::setup_range(EspTempRange_t range) {
-    float min_temp, max_temp, accuracy;
-    get_range_config(range, &min_temp, &max_temp, &accuracy);
-    
-    // Configure ESP-IDF temperature sensor
-    temperature_sensor_config_t temp_config = {
-        .range_min = (int)min_temp,
-        .range_max = (int)max_temp,
-        .clk_src = esp_config_.clk_src,
-        .flags = {
-            .allow_pd = esp_config_.enable_power_management ? 1U : 0U
-        }
-    };
-    
-    // Install temperature sensor if not already done
-    if (esp_state_.handle == nullptr) {
-        esp_err_t esp_err = temperature_sensor_install(&temp_config, &esp_state_.handle);
-        if (esp_err != ESP_OK) {
-            ESP_LOGE(TAG, "Failed to install temperature sensor: %s", esp_err_to_name(esp_err));
-            return convert_esp_error(esp_err);
-        }
-    }
-    
-    esp_state_.current_range = range;
-    
-    ESP_LOGI(TAG, "Temperature range configured: %.0f to %.0f°C (accuracy: ±%.1f°C)", 
-             min_temp, max_temp, accuracy);
-    
-    return TEMP_SUCCESS;
-}
-
-void EspTemperature::get_range_config(EspTempRange_t range, 
-                                     float* min_celsius, 
-                                     float* max_celsius, 
-                                     float* accuracy_celsius) const {
-    switch (range) {
-        case ESP_TEMP_RANGE_50_125:
-            *min_celsius = 50.0f;
-            *max_celsius = 125.0f;
-            *accuracy_celsius = 3.0f;
-            break;
-        case ESP_TEMP_RANGE_20_100:
-            *min_celsius = 20.0f;
-            *max_celsius = 100.0f;
-            *accuracy_celsius = 2.0f;
-            break;
-        case ESP_TEMP_RANGE_NEG10_80:
-            *min_celsius = -10.0f;
-            *max_celsius = 80.0f;
-            *accuracy_celsius = 1.0f;
-            break;
-        case ESP_TEMP_RANGE_NEG30_50:
-            *min_celsius = -30.0f;
-            *max_celsius = 50.0f;
-            *accuracy_celsius = 2.0f;
-            break;
-        case ESP_TEMP_RANGE_NEG40_20:
-            *min_celsius = -40.0f;
-            *max_celsius = 20.0f;
-            *accuracy_celsius = 3.0f;
-            break;
-        default:
-            *min_celsius = -10.0f;
-            *max_celsius = 80.0f;
-            *accuracy_celsius = 1.0f;
-            break;
+void EspTemperature::GetRangeConfig(esp_temp_range_t range, float* min_celsius, 
+                                    float* max_celsius, float* accuracy_celsius) const noexcept {
+    if (range < ESP_TEMP_RANGE_COUNT) {
+        const esp_temp_range_info_t& info = RANGE_INFO[range];
+        if (min_celsius) *min_celsius = info.min_celsius;
+        if (max_celsius) *max_celsius = info.max_celsius;
+        if (accuracy_celsius) *accuracy_celsius = info.accuracy_celsius;
+    } else {
+        // Default to first range for invalid input
+        if (min_celsius) *min_celsius = RANGE_INFO[0].min_celsius;
+        if (max_celsius) *max_celsius = RANGE_INFO[0].max_celsius;
+        if (accuracy_celsius) *accuracy_celsius = RANGE_INFO[0].accuracy_celsius;
     }
 }
 
-void EspTemperature::set_last_error(HfTempError_t error) {
-    esp_state_.last_error = error;
+void EspTemperature::SetLastError(hf_temp_err_t error) noexcept {
+    last_error_ = error;
+    UpdateDiagnostics(error);
+}
+
+void EspTemperature::UpdateStatistics(bool operation_successful, hf_u32_t operation_time_us) noexcept {
+    statistics_.total_operations++;
     
-    if (error != TEMP_SUCCESS && esp_state_.error_callback != nullptr) {
-        esp_state_.error_callback(error, hf_temp_get_error_string(error), esp_state_.error_user_data);
+    if (operation_successful) {
+        statistics_.successful_operations++;
+        diagnostics_.consecutive_errors = 0;
+    } else {
+        statistics_.failed_operations++;
+        diagnostics_.consecutive_errors++;
+    }
+    
+    // Update timing statistics
+    if (operation_time_us < statistics_.min_operation_time_us) {
+        statistics_.min_operation_time_us = operation_time_us;
+    }
+    if (operation_time_us > statistics_.max_operation_time_us) {
+        statistics_.max_operation_time_us = operation_time_us;
+    }
+    
+    // Update average operation time (simple moving average)
+    if (statistics_.total_operations == 1) {
+        statistics_.average_operation_time_us = operation_time_us;
+    } else {
+        statistics_.average_operation_time_us = 
+            (statistics_.average_operation_time_us * (statistics_.total_operations - 1) + operation_time_us) / 
+            statistics_.total_operations;
     }
 }
 
-void EspTemperature::monitoring_timer_callback(void* arg) {
-    EspTemperature* instance = static_cast<EspTemperature*>(arg);
-    if (instance == nullptr) {
+void EspTemperature::UpdateDiagnostics(hf_temp_err_t error) noexcept {
+    if (error != hf_temp_err_t::TEMP_SUCCESS) {
+        diagnostics_.last_error_code = error;
+        diagnostics_.last_error_timestamp = static_cast<hf_u32_t>(GetCurrentTimeUs() / 1000); // Convert to ms
+        diagnostics_.consecutive_errors++;
+        diagnostics_.sensor_healthy = (diagnostics_.consecutive_errors <= 3);
+    }
+}
+
+void EspTemperature::MonitoringTimerCallback(void* arg) noexcept {
+    EspTemperature* sensor = static_cast<EspTemperature*>(arg);
+    if (sensor == nullptr) {
         return;
     }
     
-    HfTempReading_t reading;
-    HfTempError_t error = instance->read_temperature(&reading);
+    // Read temperature
+    float temperature;
+    hf_temp_err_t error = sensor->ReadTemperatureCelsiusImpl(&temperature);
     
-    if (instance->esp_state_.reading_callback != nullptr) {
-        instance->esp_state_.reading_callback(&reading, instance->esp_state_.callback_user_data);
-    }
-    
-    if (error != TEMP_SUCCESS) {
-        ESP_LOGW(TAG, "Error during continuous monitoring: %s", hf_temp_get_error_string(error));
-    }
-}
-
-void EspTemperature::check_thresholds(float temperature) {
-    bool threshold_exceeded = false;
-    uint32_t threshold_type = 0;
-    
-    if (temperature < esp_state_.low_threshold) {
-        threshold_exceeded = true;
-        threshold_type = 0; // Low threshold
-    } else if (temperature > esp_state_.high_threshold) {
-        threshold_exceeded = true;
-        threshold_type = 1; // High threshold
-    }
-    
-    if (threshold_exceeded && esp_state_.threshold_callback != nullptr) {
-        esp_state_.threshold_callback(temperature, threshold_type, esp_state_.threshold_user_data);
+    if (error == hf_temp_err_t::TEMP_SUCCESS) {
+        // Call base callback if set
+        if (sensor->monitoring_callback_) {
+            hf_temp_reading_t reading = {};
+            reading.temperature_celsius = temperature;
+            reading.temperature_raw = temperature - sensor->esp_state_.calibration_offset;
+            reading.timestamp_us = GetCurrentTimeUs();
+            reading.error = error;
+            reading.is_valid = true;
+            reading.accuracy_celsius = RANGE_INFO[sensor->esp_state_.current_range].accuracy_celsius;
+            
+            sensor->monitoring_callback_(sensor, &reading, sensor->monitoring_user_data_);
+        }
+        
+        // Call ESP32-specific callback if set
+        if (sensor->esp_monitoring_callback_) {
+            sensor->esp_monitoring_callback_(sensor, temperature, GetCurrentTimeUs());
+        }
     }
 }
 
-HfTempError_t EspTemperature::validate_config(const HfTempConfig_t* config) const {
-    if (config == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
+void EspTemperature::CheckThresholds(float temperature) noexcept {
+    bool threshold_violated = false;
+    bool is_high_threshold = false;
+    
+    if (temperature <= esp_config_.low_threshold_celsius) {
+        threshold_violated = true;
+        is_high_threshold = false;
+        ESP_LOGW(TAG, "Low threshold violated: %.2f°C <= %.2f°C", 
+                 temperature, esp_config_.low_threshold_celsius);
+    } else if (temperature >= esp_config_.high_threshold_celsius) {
+        threshold_violated = true;
+        is_high_threshold = true;
+        ESP_LOGW(TAG, "High threshold violated: %.2f°C >= %.2f°C", 
+                 temperature, esp_config_.high_threshold_celsius);
     }
     
-    if (config->range_min_celsius >= config->range_max_celsius) {
-        return TEMP_ERR_INVALID_RANGE;
+    if (threshold_violated) {
+        statistics_.threshold_violations++;
+        
+        // Call base callback if set
+        if (threshold_callback_) {
+            hf_u32_t threshold_type = is_high_threshold ? 1 : 0;
+            threshold_callback_(this, temperature, threshold_type, threshold_user_data_);
+        }
+        
+        // Call ESP32-specific callback if set
+        if (esp_threshold_callback_) {
+            esp_threshold_callback_(this, temperature, is_high_threshold);
+        }
     }
-    
-    if (config->range_min_celsius < ESP_TEMP_MIN_CELSIUS || 
-        config->range_max_celsius > ESP_TEMP_MAX_CELSIUS) {
-        return TEMP_ERR_UNSUPPORTED_RANGE;
-    }
-    
-    if (config->resolution <= 0.0f) {
-        return TEMP_ERR_INVALID_PARAMETER;
-    }
-    
-    if (config->timeout_ms == 0) {
-        return TEMP_ERR_INVALID_PARAMETER;
-    }
-    
-    return TEMP_SUCCESS;
 }
 
-HfTempError_t EspTemperature::validate_esp_config(const EspTempConfig_t* esp_config) const {
-    if (esp_config == nullptr) {
-        return TEMP_ERR_NULL_POINTER;
-    }
-    
-    if (esp_config->preferred_range <= ESP_TEMP_RANGE_UNKNOWN || 
-        esp_config->preferred_range >= ESP_TEMP_RANGE_MAX) {
-        return TEMP_ERR_INVALID_PARAMETER;
-    }
-    
-    if (esp_config->timeout_ms == 0) {
-        return TEMP_ERR_INVALID_PARAMETER;
-    }
-    
-    return TEMP_SUCCESS;
+hf_u64_t EspTemperature::GetCurrentTimeUs() noexcept {
+    return esp_timer_get_time();
 }
 
-} // namespace HardFOC
+#endif // HF_MCU_FAMILY_ESP32
