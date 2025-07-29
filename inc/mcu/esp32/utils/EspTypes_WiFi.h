@@ -362,9 +362,15 @@ inline bool isValidWifiPassword(const std::string& password, HfWifiSecurity secu
   }
   
   if (security == HfWifiSecurity::WEP) {
-    // WEP keys can be 5, 13, 16, or 29 characters
+    // WEP key length constants
+    static constexpr size_t WEP_KEY_64_BIT_ASCII = 5;   // 64-bit WEP ASCII key
+    static constexpr size_t WEP_KEY_128_BIT_ASCII = 13; // 128-bit WEP ASCII key
+    static constexpr size_t WEP_KEY_128_BIT_HEX = 16;   // 128-bit WEP hexadecimal key
+    static constexpr size_t WEP_KEY_152_BIT_ASCII = 29; // 152-bit WEP ASCII key
+    
     size_t len = password.length();
-    return (len == 5 || len == 13 || len == 16 || len == 29);
+    return (len == WEP_KEY_64_BIT_ASCII || len == WEP_KEY_128_BIT_ASCII || 
+            len == WEP_KEY_128_BIT_HEX || len == WEP_KEY_152_BIT_ASCII);
   }
   
   // WPA/WPA2/WPA3 passwords must be 8-63 characters

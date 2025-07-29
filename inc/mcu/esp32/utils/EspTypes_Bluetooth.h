@@ -446,8 +446,10 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
     std::string clean_uuid = uuid_str;
     clean_uuid.erase(std::remove(clean_uuid.begin(), clean_uuid.end(), '-'), clean_uuid.end());
     
+    static constexpr int UUID_128_BYTE_LENGTH = 16; // 128-bit UUID byte length
+    
     if (clean_uuid.length() == 32) {
-      for (int i = 0; i < 16; i++) {
+      for (int i = 0; i < UUID_128_BYTE_LENGTH; i++) {
         std::string byte_str = clean_uuid.substr(30 - (i * 2), 2);
         esp_uuid.uuid.uuid128[i] = static_cast<uint8_t>(std::stoul(byte_str, nullptr, 16));
       }
@@ -455,8 +457,9 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
     }
   } else if (uuid_str.length() == 32) {
     // 128-bit UUID (without dashes)
+    static constexpr int UUID_128_BYTE_LENGTH = 16; // 128-bit UUID byte length
     esp_uuid.len = ESP_UUID_LEN_128;
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < UUID_128_BYTE_LENGTH; i++) {
       std::string byte_str = uuid_str.substr(30 - (i * 2), 2);
       esp_uuid.uuid.uuid128[i] = static_cast<uint8_t>(std::stoul(byte_str, nullptr, 16));
     }

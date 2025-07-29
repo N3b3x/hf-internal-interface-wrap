@@ -21,6 +21,7 @@
 #pragma once
 
 #include "HardwareTypes.h"
+#include <cctype>
 #include <cstdint>
 #include <functional>
 #include <string>
@@ -698,15 +699,26 @@ inline std::string HfBluetoothAddress::toString() const {
 inline bool HfBluetoothAddress::fromString(const std::string& addr_str) {
   if (addr_str.length() != 17) return false;
   
-  int values[6];
-  int result = sscanf(addr_str.c_str(), "%02X:%02X:%02X:%02X:%02X:%02X",
-                      &values[0], &values[1], &values[2], 
-                      &values[3], &values[4], &values[5]);
+  // Validate format: XX:XX:XX:XX:XX:XX
+  for (size_t i = 0; i < addr_str.length(); ++i) {
+    if (i % 3 == 2) {
+      if (addr_str[i] != ':') return false;
+    } else {
+      if (!std::isxdigit(addr_str[i])) return false;
+    }
+  }
   
-  if (result != 6) return false;
-  
+  // Parse using safer approach with validation
   for (int i = 0; i < 6; i++) {
-    addr[i] = static_cast<uint8_t>(values[i]);
+    size_t pos = i * 3;
+    std::string hex_byte = addr_str.substr(pos, 2);
+    try {
+      unsigned long value = std::stoul(hex_byte, nullptr, 16);
+      if (value > 255) return false;
+      addr[i] = static_cast<uint8_t>(value);
+    } catch (const std::exception&) {
+      return false;
+    }
   }
   
   return true;

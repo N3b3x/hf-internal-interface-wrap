@@ -302,7 +302,7 @@ private:
    * @brief Demonstrate WiFi station mode
    */
   void demonstrateWifiStation() {
-    std::cout << "\n--- WiFi Station Mode ---" << std::endl;
+    ESP_LOGI(TAG_WIFI, "--- WiFi Station Mode ---");
     
     // Configure station
     HfWifiStationConfig station_config = {};
@@ -317,26 +317,26 @@ private:
     
     auto result = m_wifi->configureStation(station_config);
     if (result != HfWifiErr::WIFI_SUCCESS) {
-      std::cerr << "Failed to configure station mode" << std::endl;
+      ESP_LOGE(TAG_WIFI, "Failed to configure station mode");
       return;
     }
     
     // Attempt connection
-    std::cout << "Connecting to " << Example::WIFI_SSID << "..." << std::endl;
+    ESP_LOGI(TAG_WIFI, "Connecting to %s...", Example::WIFI_SSID);
     result = m_wifi->connect(15000); // 15 second timeout
     
     if (result == HfWifiErr::WIFI_SUCCESS) {
-      std::cout << "WiFi connection successful!" << std::endl;
+      ESP_LOGI(TAG_WIFI, "WiFi connection successful!");
       
       // Get IP information
       HfWifiIpInfo ip_info;
       if (m_wifi->getIpInfo(ip_info) == HfWifiErr::WIFI_SUCCESS) {
-        std::cout << "IP: " << std::hex << ip_info.ip << std::dec << std::endl;
-        std::cout << "Netmask: " << std::hex << ip_info.netmask << std::dec << std::endl;
-        std::cout << "Gateway: " << std::hex << ip_info.gateway << std::dec << std::endl;
+        ESP_LOGI(TAG_WIFI, "IP: 0x%08x", ip_info.ip);
+        ESP_LOGI(TAG_WIFI, "Netmask: 0x%08x", ip_info.netmask);
+        ESP_LOGI(TAG_WIFI, "Gateway: 0x%08x", ip_info.gateway);
       }
     } else {
-      std::cout << "WiFi connection failed: " << BaseWifi::getErrorString(result) << std::endl;
+      ESP_LOGE(TAG_WIFI, "WiFi connection failed: %s", BaseWifi::getErrorString(result));
     }
   }
   
@@ -344,7 +344,7 @@ private:
    * @brief Demonstrate WiFi Access Point mode
    */
   void demonstrateWifiAccessPoint() {
-    std::cout << "\n--- WiFi Access Point Mode ---" << std::endl;
+    ESP_LOGI(TAG_WIFI, "--- WiFi Access Point Mode ---");
     
     // Configure Access Point
     HfWifiApConfig ap_config = {};
@@ -359,16 +359,16 @@ private:
     
     auto result = m_wifi->configureAccessPoint(ap_config);
     if (result != HfWifiErr::WIFI_SUCCESS) {
-      std::cerr << "Failed to configure Access Point" << std::endl;
+      ESP_LOGE(TAG_WIFI, "Failed to configure Access Point");
       return;
     }
     
     // Start Access Point
     result = m_wifi->startAccessPoint();
     if (result == HfWifiErr::WIFI_SUCCESS) {
-      std::cout << "Access Point '" << Example::AP_SSID << "' started successfully!" << std::endl;
+      ESP_LOGI(TAG_WIFI, "Access Point '%s' started successfully!", Example::AP_SSID);
     } else {
-      std::cerr << "Failed to start Access Point: " << BaseWifi::getErrorString(result) << std::endl;
+      ESP_LOGE(TAG_WIFI, "Failed to start Access Point: %s", BaseWifi::getErrorString(result));
     }
   }
   
@@ -376,26 +376,26 @@ private:
    * @brief Demonstrate WiFi power management
    */
   void demonstrateWifiPowerManagement() {
-    std::cout << "\n--- WiFi Power Management ---" << std::endl;
+    ESP_LOGI(TAG_WIFI, "--- WiFi Power Management ---");
     
     // Set power save mode
     auto result = m_wifi->setPowerSave(HfWifiPowerSave::MIN_MODEM);
     if (result == HfWifiErr::WIFI_SUCCESS) {
-      std::cout << "WiFi power save enabled (MIN_MODEM)" << std::endl;
+      ESP_LOGI(TAG_WIFI, "WiFi power save enabled (MIN_MODEM)");
     } else {
-      std::cerr << "Failed to set WiFi power save mode" << std::endl;
+      ESP_LOGE(TAG_WIFI, "Failed to set WiFi power save mode");
     }
     
     // Get current power save mode
     auto power_mode = m_wifi->getPowerSave();
-    std::cout << "Current power save mode: " << static_cast<int>(power_mode) << std::endl;
+    ESP_LOGI(TAG_WIFI, "Current power save mode: %d", static_cast<int>(power_mode));
   }
   
   /**
    * @brief Demonstrate Bluetooth features
    */
   void demonstrateBluetoothFeatures() {
-    std::cout << "\n=== Bluetooth Features Demonstration ===" << std::endl;
+    ESP_LOGI(TAG_BT, "=== Bluetooth Features Demonstration ===");
     
     // 1. BLE advertising
     demonstrateBluetoothAdvertising();
@@ -414,7 +414,7 @@ private:
    * @brief Demonstrate Bluetooth advertising
    */
   void demonstrateBluetoothAdvertising() {
-    std::cout << "\n--- Bluetooth BLE Advertising ---" << std::endl;
+    ESP_LOGI(TAG_BT, "--- Bluetooth BLE Advertising ---");
     
     // Configure BLE
     HfBluetoothBleConfig ble_config = {};
@@ -430,16 +430,16 @@ private:
     
     auto result = m_bluetooth->configureBle(ble_config);
     if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cerr << "Failed to configure BLE" << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to configure BLE");
       return;
     }
     
     // Start advertising
     result = m_bluetooth->startAdvertising();
     if (result == HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cout << "BLE advertising started successfully!" << std::endl;
+      ESP_LOGI(TAG_BT, "BLE advertising started successfully!");
     } else {
-      std::cerr << "Failed to start BLE advertising: " << BaseBluetooth::getErrorString(result) << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to start BLE advertising: %s", BaseBluetooth::getErrorString(result));
     }
   }
   
@@ -447,34 +447,33 @@ private:
    * @brief Demonstrate Bluetooth scanning
    */
   void demonstrateBluetoothScanning() {
-    std::cout << "\n--- Bluetooth BLE Scanning ---" << std::endl;
+    ESP_LOGI(TAG_BT, "--- Bluetooth BLE Scanning ---");
     
     // Start scan
     auto result = m_bluetooth->startScan(10000, HfBluetoothScanType::ACTIVE); // 10 second scan
     if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cerr << "Failed to start Bluetooth scan" << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to start Bluetooth scan");
       return;
     }
     
-    std::cout << "Bluetooth scan started for 10 seconds..." << std::endl;
+    ESP_LOGI(TAG_BT, "Bluetooth scan started for 10 seconds...");
     
-    // Wait for scan to complete
-    std::this_thread::sleep_for(std::chrono::seconds(11));
+    // Wait for scan to complete using FreeRTOS delay
+    vTaskDelay(11000 / portTICK_PERIOD_MS); // 11 seconds
     
     // Get discovered devices
     std::vector<HfBluetoothDeviceInfo> devices;
     result = m_bluetooth->getDiscoveredDevices(devices);
     
     if (result == HfBluetoothErr::BLUETOOTH_SUCCESS && !devices.empty()) {
-      std::cout << "Found " << devices.size() << " Bluetooth devices:" << std::endl;
+      ESP_LOGI(TAG_BT, "Found %d Bluetooth devices:", devices.size());
       for (const auto& device : devices) {
-        std::cout << "  Name: " << device.name 
-                  << ", Address: " << device.address.toString()
-                  << ", RSSI: " << static_cast<int>(device.rssi) << " dBm"
-                  << ", Type: " << static_cast<int>(device.type) << std::endl;
+        ESP_LOGI(TAG_BT, "  Name: %s, Address: %s, RSSI: %d dBm, Type: %d",
+                 device.name.c_str(), device.address.toString().c_str(),
+                 static_cast<int>(device.rssi), static_cast<int>(device.type));
       }
     } else {
-      std::cout << "No Bluetooth devices found or scan failed." << std::endl;
+      ESP_LOGW(TAG_BT, "No Bluetooth devices found or scan failed.");
     }
   }
   
@@ -482,23 +481,23 @@ private:
    * @brief Demonstrate GATT server setup
    */
   void demonstrateBluetoothGattServer() {
-    std::cout << "\n--- Bluetooth GATT Server ---" << std::endl;
+    ESP_LOGI(TAG_BT, "--- Bluetooth GATT Server ---");
     
     // Cast to EspBluetooth to access ESP-specific features
     auto esp_bluetooth = dynamic_cast<EspBluetooth*>(m_bluetooth.get());
     if (!esp_bluetooth) {
-      std::cerr << "Failed to cast to EspBluetooth" << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to cast to EspBluetooth");
       return;
     }
     
     // Create custom GATT service
     uint16_t service_handle = esp_bluetooth->createGattService(Example::CUSTOM_SERVICE_UUID, true, 10);
     if (service_handle == 0) {
-      std::cerr << "Failed to create GATT service" << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to create GATT service");
       return;
     }
     
-    std::cout << "Created GATT service with handle: " << service_handle << std::endl;
+    ESP_LOGI(TAG_BT, "Created GATT service with handle: %d", service_handle);
     
     // Add characteristic
     uint16_t char_handle = esp_bluetooth->addGattCharacteristic(
@@ -509,18 +508,18 @@ private:
     );
     
     if (char_handle == 0) {
-      std::cerr << "Failed to add GATT characteristic" << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to add GATT characteristic");
       return;
     }
     
-    std::cout << "Added GATT characteristic with handle: " << char_handle << std::endl;
+    ESP_LOGI(TAG_BT, "Added GATT characteristic with handle: %d", char_handle);
     
     // Start service
     auto result = esp_bluetooth->startGattService(service_handle);
     if (result == HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cout << "GATT service started successfully!" << std::endl;
+      ESP_LOGI(TAG_BT, "GATT service started successfully!");
     } else {
-      std::cerr << "Failed to start GATT service" << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to start GATT service");
     }
   }
   
@@ -528,7 +527,7 @@ private:
    * @brief Demonstrate Classic Bluetooth setup
    */
   void demonstrateBluetoothClassic() {
-    std::cout << "\n--- Bluetooth Classic Setup ---" << std::endl;
+    ESP_LOGI(TAG_BT, "--- Bluetooth Classic Setup ---");
     
     // Configure Classic Bluetooth
     HfBluetoothClassicConfig classic_config = {};
@@ -540,16 +539,16 @@ private:
     
     auto result = m_bluetooth->configureClassic(classic_config);
     if (result != HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cerr << "Failed to configure Classic Bluetooth" << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to configure Classic Bluetooth");
       return;
     }
     
     // Make device discoverable
     result = m_bluetooth->setDiscoverable(true, 60000); // 60 seconds
     if (result == HfBluetoothErr::BLUETOOTH_SUCCESS) {
-      std::cout << "Device is now discoverable for 60 seconds!" << std::endl;
+      ESP_LOGI(TAG_BT, "Device is now discoverable for 60 seconds!");
     } else {
-      std::cerr << "Failed to make device discoverable" << std::endl;
+      ESP_LOGE(TAG_BT, "Failed to make device discoverable");
     }
     
     // Enable SPP (Serial Port Profile) for ESP32
@@ -557,7 +556,7 @@ private:
     if (esp_bluetooth) {
       result = esp_bluetooth->enableSpp(true);
       if (result == HfBluetoothErr::BLUETOOTH_SUCCESS) {
-        std::cout << "SPP (Serial Port Profile) enabled!" << std::endl;
+        ESP_LOGI(TAG_BT, "SPP (Serial Port Profile) enabled!");
       }
     }
   }
