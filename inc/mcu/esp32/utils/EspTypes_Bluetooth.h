@@ -486,8 +486,6 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
     std::string clean_uuid = uuid_str;
     clean_uuid.erase(std::remove(clean_uuid.begin(), clean_uuid.end(), '-'), clean_uuid.end());
     
-    static constexpr int UUID_128_BYTE_LENGTH = 16; // 128-bit UUID byte length
-    
     if (clean_uuid.length() == 32) {
       for (int i = 0; i < UUID_128_BYTE_LENGTH; i++) {
         std::string byte_str = clean_uuid.substr(30 - (i * 2), 2);
