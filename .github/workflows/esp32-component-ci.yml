@@ -51,7 +51,9 @@ jobs:
             ~/.espressif
             ~/.ccache
             ~/.cache/pip
-          key: esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-${{ hashFiles('examples/esp32/components/iid-espidf/idf_component.yml') }}
+          key: >-
+            esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-${{
+            hashFiles('examples/esp32/components/iid-espidf/idf_component.yml') }}
           restore-keys: |
             esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-
             esp-idf-${{ matrix.idf_version }}-
