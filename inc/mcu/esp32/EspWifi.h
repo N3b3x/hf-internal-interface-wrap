@@ -352,11 +352,15 @@ private:
   // ESP-IDF handles
   esp_netif_t* m_sta_netif;                      /**< Station network interface */
   esp_netif_t* m_ap_netif;                       /**< AP network interface */
+  EventGroupHandle_t m_event_group;              /**< FreeRTOS event group for WiFi events */
   esp_event_handler_instance_t m_wifi_event_handler; /**< WiFi event handler */
   esp_event_handler_instance_t m_ip_event_handler;   /**< IP event handler */
   
   // Event handling
   hf_wifi_event_callback_t m_event_callback;     /**< User event callback */
+  hf_wifi_scan_callback_t m_scan_callback;       /**< User scan callback */
+  void* m_event_user_data;                       /**< User data for event callback */
+  void* m_scan_user_data;                        /**< User data for scan callback */
   std::queue<std::pair<hf_wifi_event_t, void*>> m_event_queue; /**< Event queue */
   mutable RtosMutex m_event_mutex;               /**< Event queue mutex */
   

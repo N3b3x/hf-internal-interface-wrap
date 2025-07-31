@@ -467,6 +467,7 @@ private:
   std::atomic<bool> m_scanning;                    /**< Scanning state */
   std::atomic<bool> m_discoverable;                /**< Discoverable state */
   std::atomic<bool> m_advertising;                 /**< Advertising state */
+  hf_bluetooth_scan_type_t m_current_scan_type;    /**< Current scan type */
   mutable RtosMutex m_discovery_mutex;             /**< Discovery mutex */
   
   // GATT services
@@ -476,6 +477,8 @@ private:
   // Event handling
   hf_bluetooth_event_callback_t m_event_callback;       /**< User event callback */
   hf_bluetooth_data_callback_t m_data_callback;         /**< User data callback */
+  hf_bluetooth_scan_callback_t m_scan_callback;         /**< User scan callback */
+  hf_bluetooth_gatt_event_callback_t m_gatt_event_callback; /**< User GATT event callback */
   std::queue<std::pair<hf_bluetooth_event_t, void*>> m_event_queue; /**< Event queue */
   mutable RtosMutex m_event_mutex;                 /**< Event queue mutex */
   

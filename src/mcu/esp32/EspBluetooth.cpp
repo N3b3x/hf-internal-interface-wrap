@@ -127,16 +127,16 @@ EspBluetooth::EspBluetooth(const EspBluetoothAdvancedConfig* advanced_config)
     , m_mode(hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED)
     , is_advertising_(false)
     , is_scanning_(false)
-    , current_scan_mode_(hf_bluetooth_scan_mode_t::HF_BLUETOOTH_SCAN_MODE_GENERAL_INQUIRY)
+    , m_current_scan_type(hf_bluetooth_scan_mode_t::HF_BLUETOOTH_SCAN_MODE_GENERAL_INQUIRY)
     , scan_timeout_ms_(10000)
     , connection_timeout_ms_(30000)
     , next_connection_id_(1)
     , next_service_id_(1)
-    , event_callback_(nullptr)
+    , m_event_callback(nullptr)
     , event_user_data_(nullptr)
-    , scan_callback_(nullptr)
+    , m_scan_callback(nullptr)
     , scan_user_data_(nullptr)
-    , gatt_event_callback_(nullptr)
+    , gatt_m_event_callback(nullptr)
     , gatt_user_data_(nullptr) {
   
   // Copy advanced configuration or use defaults
@@ -527,7 +527,7 @@ hf_bluetooth_err_t EspBluetooth::startScan(const hf_bluetooth_scan_config_t& con
   // Clear scan done bit and cached results
   xEventGroupClearBits(event_group_, BT_SCAN_DONE_BIT);
   scan_results_.clear();
-  current_scan_mode_ = config.mode;
+  m_current_scan_type = config.mode;
   
   esp_err_t ret = ESP_OK;
   
@@ -587,7 +587,7 @@ hf_bluetooth_err_t EspBluetooth::stopScan() {
   esp_err_t ret = ESP_OK;
   
   if (m_mode == hf_bluetooth_mode_t::BLE_ONLY || 
-      (m_mode == hf_bluetooth_mode_t::DUAL_MODE && current_scan_mode_ == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
+      (m_mode == hf_bluetooth_mode_t::DUAL_MODE && m_current_scan_type == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
     ret = esp_ble_gap_stop_scanning();
   } else {
     ret = esp_bt_gap_cancel_discovery();
@@ -857,21 +857,21 @@ std::vector<hf_bluetooth_address_t> EspBluetooth::getBondedDevices() const {
   return bonded_devices;
 }
 
-void EspBluetooth::setEventCallback(hf_bluetooth_event_callback_t callback, void* user_data) {
+void EspBluetooth::setEventCallback(hf_bluetooth_m_event_callbackt callback, void* user_data) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  event_callback_ = callback;
+  m_event_callback = callback;
   event_user_data_ = user_data;
 }
 
-void EspBluetooth::setScanCallback(hf_bluetooth_scan_callback_t callback, void* user_data) {
+void EspBluetooth::setScanCallback(hf_bluetooth_m_scan_callbackt callback, void* user_data) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  scan_callback_ = callback;
+  m_scan_callback = callback;
   scan_user_data_ = user_data;
 }
 
-void EspBluetooth::setGattEventCallback(hf_bluetooth_gatt_event_callback_t callback, void* user_data) {
+void EspBluetooth::setGattEventCallback(hf_bluetooth_gatt_m_event_callbackt callback, void* user_data) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  gatt_event_callback_ = callback;
+  gatt_m_event_callback = callback;
   gatt_user_data_ = user_data;
 }
 
