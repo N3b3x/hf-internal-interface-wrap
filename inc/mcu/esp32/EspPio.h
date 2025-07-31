@@ -1,5 +1,5 @@
 /**
- * @file McuPio.h
+ * @file EspPio.h
  * @brief ESP32C6 RMT-based Programmable IO Channel implementation with ESP-IDF v5.5+ features.
  *
  * This header provides a comprehensive PIO implementation for ESP32C6 microcontrollers using
@@ -64,7 +64,7 @@ struct hf_pio_channel_statistics_t {
 };
 
 /**
- * @class McuPio
+ * @class EspPio
  * @brief ESP32C6 RMT-based Programmable IO Channel implementation with advanced ESP-IDF v5.5+
  * features.
  *
@@ -107,25 +107,25 @@ struct hf_pio_channel_statistics_t {
  * @note This implementation prioritizes performance, accuracy, and resource efficiency.
  * @note All advanced features are gracefully degraded on older ESP-IDF versions.
  */
-class McuPio : public BasePio {
+class EspPio : public BasePio {
 public:
   /**
    * @brief Constructor
    */
-  McuPio() noexcept;
+  EspPio() noexcept;
 
   /**
    * @brief Destructor
    */
-  ~McuPio() noexcept override;
+  ~EspPio() noexcept override;
 
   // Disable copy constructor and assignment operator
-  McuPio(const McuPio&) = delete;
-  McuPio& operator=(const McuPio&) = delete;
+  EspPio(const EspPio&) = delete;
+  EspPio& operator=(const EspPio&) = delete;
 
   // Allow move operations
-  McuPio(McuPio&&) noexcept = default;
-  McuPio& operator=(McuPio&&) noexcept = default;
+  EspPio(EspPio&&) noexcept = default;
+  EspPio& operator=(EspPio&&) noexcept = default;
 
   //==============================================//
   // BasePio Interface Implementation
@@ -392,5 +392,5 @@ private:
   uint32_t CalculateClockDivider(uint32_t resolution_ns) const noexcept;
 
 private:
-  static constexpr const char* TAG = "McuPio"; ///< Logging tag
+  static constexpr const char* TAG = "EspPio"; ///< Logging tag
 };

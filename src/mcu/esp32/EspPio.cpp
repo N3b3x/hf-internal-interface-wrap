@@ -1,5 +1,5 @@
 /**
- * @file McuPio.cpp
+ * @file EspPio.cpp
  * @brief ESP32C6 RMT-based Programmable IO Channel implementation.
  *
  * This file provides the implementation for PIO operations using the
@@ -34,30 +34,30 @@ extern "C" {
 }
 #endif
 
-// static const char *TAG = "McuPio";  // Unused for now
+// static const char *TAG = "EspPio";  // Unused for now
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR
 //==============================================================================
 
-McuPio::McuPio() noexcept
+EspPio::EspPio() noexcept
     : BasePio(), initialized_(false), channels_{}, transmit_callback_(nullptr),
       receive_callback_(nullptr), error_callback_(nullptr), callback_user_data_(nullptr) {
-  ESP_LOGD(TAG, "McuPio constructed");
+  ESP_LOGD(TAG, "EspPio constructed");
 }
 
-McuPio::~McuPio() noexcept {
+EspPio::~EspPio() noexcept {
   if (initialized_) {
     Deinitialize();
   }
-  ESP_LOGD(TAG, "McuPio destroyed");
+  ESP_LOGD(TAG, "EspPio destroyed");
 }
 
 //==============================================================================
 // INITIALIZATION AND DEINITIALIZATION
 //==============================================================================
 
-hf_pio_err_t McuPio::Initialize() noexcept {
+hf_pio_err_t EspPio::Initialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (initialized_) {
@@ -71,11 +71,11 @@ hf_pio_err_t McuPio::Initialize() noexcept {
   }
 
   initialized_ = true;
-  ESP_LOGI(TAG, "McuPio initialized successfully");
+  ESP_LOGI(TAG, "EspPio initialized successfully");
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::Deinitialize() noexcept {
+hf_pio_err_t EspPio::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
@@ -96,7 +96,7 @@ hf_pio_err_t McuPio::Deinitialize() noexcept {
   callback_user_data_ = nullptr;
 
   initialized_ = false;
-  ESP_LOGI(TAG, "McuPio deinitialized");
+  ESP_LOGI(TAG, "EspPio deinitialized");
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -104,7 +104,7 @@ hf_pio_err_t McuPio::Deinitialize() noexcept {
 // CHANNEL CONFIGURATION
 //==============================================================================
 
-hf_pio_err_t McuPio::ConfigureChannel(hf_u8_t channel_id,
+hf_pio_err_t EspPio::ConfigureChannel(hf_u8_t channel_id,
                                       const hf_pio_channel_config_t& config) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -149,7 +149,7 @@ hf_pio_err_t McuPio::ConfigureChannel(hf_u8_t channel_id,
 // TRANSMISSION OPERATIONS
 //==============================================================================
 
-hf_pio_err_t McuPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols,
+hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols,
                               size_t symbol_count, bool wait_completion) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -256,7 +256,7 @@ hf_pio_err_t McuPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
 // RECEPTION OPERATIONS
 //==============================================================================
 
-hf_pio_err_t McuPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, size_t buffer_size,
+hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, size_t buffer_size,
                                   hf_u32_t timeout_us) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -334,7 +334,7 @@ hf_pio_err_t McuPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::StopReceive(hf_u8_t channel_id, size_t& symbols_received) noexcept {
+hf_pio_err_t EspPio::StopReceive(hf_u8_t channel_id, size_t& symbols_received) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!initialized_) {
@@ -366,7 +366,7 @@ hf_pio_err_t McuPio::StopReceive(hf_u8_t channel_id, size_t& symbols_received) n
 // STATUS AND CAPABILITIES
 //==============================================================================
 
-bool McuPio::IsChannelBusy(hf_u8_t channel_id) const noexcept {
+bool EspPio::IsChannelBusy(hf_u8_t channel_id) const noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
@@ -376,7 +376,7 @@ bool McuPio::IsChannelBusy(hf_u8_t channel_id) const noexcept {
   return channels_[channel_id].busy;
 }
 
-hf_pio_err_t McuPio::GetChannelStatus(hf_u8_t channel_id,
+hf_pio_err_t EspPio::GetChannelStatus(hf_u8_t channel_id,
                                       hf_pio_channel_status_t& status) const noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -391,7 +391,7 @@ hf_pio_err_t McuPio::GetChannelStatus(hf_u8_t channel_id,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::GetCapabilities(hf_pio_capabilities_t& capabilities) const noexcept {
+hf_pio_err_t EspPio::GetCapabilities(hf_pio_capabilities_t& capabilities) const noexcept {
   capabilities.max_channels = MAX_CHANNELS;
   capabilities.min_resolution_ns = 12.5;    // Based on 80MHz RMT clock
   capabilities.max_resolution_ns = 3355443; // Max with divider
@@ -408,25 +408,25 @@ hf_pio_err_t McuPio::GetCapabilities(hf_pio_capabilities_t& capabilities) const 
 // CALLBACK MANAGEMENT
 //==============================================================================
 
-void McuPio::SetTransmitCallback(hf_pio_transmit_callback_t callback, void* user_data) noexcept {
+void EspPio::SetTransmitCallback(hf_pio_transmit_callback_t callback, void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
   transmit_callback_ = callback;
   callback_user_data_ = user_data;
 }
 
-void McuPio::SetReceiveCallback(hf_pio_receive_callback_t callback, void* user_data) noexcept {
+void EspPio::SetReceiveCallback(hf_pio_receive_callback_t callback, void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
   receive_callback_ = callback;
   callback_user_data_ = user_data;
 }
 
-void McuPio::SetErrorCallback(hf_pio_error_callback_t callback, void* user_data) noexcept {
+void EspPio::SetErrorCallback(hf_pio_error_callback_t callback, void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
   error_callback_ = callback;
   callback_user_data_ = user_data;
 }
 
-void McuPio::ClearCallbacks() noexcept {
+void EspPio::ClearCallbacks() noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
   transmit_callback_ = nullptr;
   receive_callback_ = nullptr;
@@ -438,7 +438,7 @@ void McuPio::ClearCallbacks() noexcept {
 // ESP32-SPECIFIC METHODS
 //==============================================================================
 
-hf_pio_err_t McuPio::ConfigureCarrier(hf_u8_t channel_id, hf_u32_t carrier_freq_hz,
+hf_pio_err_t EspPio::ConfigureCarrier(hf_u8_t channel_id, hf_u32_t carrier_freq_hz,
                                       float duty_cycle) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -476,7 +476,7 @@ hf_pio_err_t McuPio::ConfigureCarrier(hf_u8_t channel_id, hf_u32_t carrier_freq_
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::EnableLoopback(hf_u8_t channel_id, bool enable) noexcept {
+hf_pio_err_t EspPio::EnableLoopback(hf_u8_t channel_id, bool enable) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
@@ -492,7 +492,7 @@ hf_pio_err_t McuPio::EnableLoopback(hf_u8_t channel_id, bool enable) noexcept {
 // ADVANCED LOW-LEVEL RMT CONTROL METHODS
 //==============================================================================
 
-hf_pio_err_t McuPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_blocks, bool enable_dma,
+hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_blocks, bool enable_dma,
                                           hf_u32_t queue_depth) noexcept {
   if (!EnsureInitialized()) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
@@ -634,7 +634,7 @@ hf_pio_err_t McuPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
 // ADVANCED PIO FUNCTION IMPLEMENTATIONS
 //==============================================================================
 
-hf_pio_err_t McuPio::ConfigureEncoder(hf_u8_t channel_id, const hf_pio_symbol_t& bit0_config,
+hf_pio_err_t EspPio::ConfigureEncoder(hf_u8_t channel_id, const hf_pio_symbol_t& bit0_config,
                                       const hf_pio_symbol_t& bit1_config) noexcept {
   if (!EnsureInitialized()) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
@@ -688,7 +688,7 @@ hf_pio_err_t McuPio::ConfigureEncoder(hf_u8_t channel_id, const hf_pio_symbol_t&
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::SetIdleLevel(hf_u8_t channel_id, bool idle_level) noexcept {
+hf_pio_err_t EspPio::SetIdleLevel(hf_u8_t channel_id, bool idle_level) noexcept {
   if (!EnsureInitialized()) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
@@ -709,7 +709,7 @@ hf_pio_err_t McuPio::SetIdleLevel(hf_u8_t channel_id, bool idle_level) noexcept 
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::GetChannelStatistics(hf_u8_t channel_id,
+hf_pio_err_t EspPio::GetChannelStatistics(hf_u8_t channel_id,
                                           hf_pio_channel_statistics_t& stats) const noexcept {
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
@@ -732,7 +732,7 @@ hf_pio_err_t McuPio::GetChannelStatistics(hf_u8_t channel_id,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::ResetChannelStatistics(hf_u8_t channel_id) noexcept {
+hf_pio_err_t EspPio::ResetChannelStatistics(hf_u8_t channel_id) noexcept {
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
@@ -746,7 +746,7 @@ hf_pio_err_t McuPio::ResetChannelStatistics(hf_u8_t channel_id) noexcept {
 // MISSING ADVANCED PIO FUNCTION IMPLEMENTATIONS
 //==============================================================================
 
-hf_pio_err_t McuPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_word_t* rmt_symbols,
+hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_word_t* rmt_symbols,
                                            size_t symbol_count, bool wait_completion) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
@@ -826,7 +826,7 @@ hf_pio_err_t McuPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t* rmt_buffer,
+hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t* rmt_buffer,
                                           size_t buffer_size, size_t& symbols_received,
                                           hf_u32_t timeout_us) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
@@ -909,7 +909,7 @@ hf_pio_err_t McuPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-size_t McuPio::GetMaxSymbolCount() const noexcept {
+size_t EspPio::GetMaxSymbolCount() const noexcept {
   // ESP32C6 RMT can handle large symbol counts with DMA enabled
   return 4096; // Reasonable limit for most applications
 }
@@ -918,11 +918,11 @@ size_t McuPio::GetMaxSymbolCount() const noexcept {
 // PRIVATE HELPER METHODS
 //==============================================================================
 
-bool McuPio::IsValidChannelId(hf_u8_t channel_id) const noexcept {
+bool EspPio::IsValidChannelId(hf_u8_t channel_id) const noexcept {
   return channel_id < MAX_CHANNELS;
 }
 
-hf_pio_err_t McuPio::ConvertToRmtSymbols(const hf_pio_symbol_t* symbols, size_t symbol_count,
+hf_pio_err_t EspPio::ConvertToRmtSymbols(const hf_pio_symbol_t* symbols, size_t symbol_count,
                                          rmt_symbol_word_t* rmt_symbols,
                                          size_t& rmt_symbol_count) noexcept {
   if (symbol_count > MAX_SYMBOLS_PER_TRANSMISSION) {
@@ -951,7 +951,7 @@ hf_pio_err_t McuPio::ConvertToRmtSymbols(const hf_pio_symbol_t* symbols, size_t 
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols,
+hf_pio_err_t EspPio::ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols,
                                            size_t rmt_symbol_count, hf_pio_symbol_t* symbols,
                                            size_t& symbol_count) noexcept {
   symbol_count = std::min(rmt_symbol_count, symbol_count);
@@ -964,7 +964,7 @@ hf_pio_err_t McuPio::ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_u32_t McuPio::CalculateClockDivider(hf_u32_t resolution_ns) const noexcept {
+hf_u32_t EspPio::CalculateClockDivider(hf_u32_t resolution_ns) const noexcept {
   // Calculate clock divider to achieve desired resolution
   // RMT source clock is typically 80 MHz (12.5 ns per tick)
   hf_u32_t divider = (resolution_ns * RMT_CLK_SRC_FREQ) / 1000000000UL;
@@ -972,9 +972,9 @@ hf_u32_t McuPio::CalculateClockDivider(hf_u32_t resolution_ns) const noexcept {
       1U, std::min<hf_u32_t>(255U, static_cast<hf_u32_t>(divider))); // Clamp to valid range
 }
 
-bool McuPio::OnTransmitComplete(rmt_channel_handle_t channel, const rmt_tx_done_event_data_t* edata,
+bool EspPio::OnTransmitComplete(rmt_channel_handle_t channel, const rmt_tx_done_event_data_t* edata,
                                 void* user_ctx) {
-  auto* instance = static_cast<McuPio*>(user_ctx);
+  auto* instance = static_cast<EspPio*>(user_ctx);
   if (!instance)
     return false;
 
@@ -1002,9 +1002,9 @@ bool McuPio::OnTransmitComplete(rmt_channel_handle_t channel, const rmt_tx_done_
   return false; // Don't yield to higher priority task
 }
 
-bool McuPio::OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_event_data_t* edata,
+bool EspPio::OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_event_data_t* edata,
                                void* user_ctx) {
-  auto* instance = static_cast<McuPio*>(user_ctx);
+  auto* instance = static_cast<EspPio*>(user_ctx);
   if (!instance || !edata)
     return false;
 
@@ -1043,7 +1043,7 @@ bool McuPio::OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_e
   return false;
 }
 
-hf_pio_err_t McuPio::InitializeChannel(hf_u8_t channel_id) noexcept {
+hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
   auto& channel = channels_[channel_id];
   const auto& config = channel.config;
 
@@ -1111,7 +1111,7 @@ hf_pio_err_t McuPio::InitializeChannel(hf_u8_t channel_id) noexcept {
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::DeinitializeChannel(hf_u8_t channel_id) noexcept {
+hf_pio_err_t EspPio::DeinitializeChannel(hf_u8_t channel_id) noexcept {
   auto& channel = channels_[channel_id];
 
   if (channel.tx_channel) {
@@ -1142,7 +1142,7 @@ hf_pio_err_t McuPio::DeinitializeChannel(hf_u8_t channel_id) noexcept {
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::ValidateSymbols(const hf_pio_symbol_t* symbols,
+hf_pio_err_t EspPio::ValidateSymbols(const hf_pio_symbol_t* symbols,
                                      size_t symbol_count) const noexcept {
   for (size_t i = 0; i < symbol_count; ++i) {
     if (symbols[i].duration == 0) {
@@ -1155,20 +1155,20 @@ hf_pio_err_t McuPio::ValidateSymbols(const hf_pio_symbol_t* symbols,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-void McuPio::UpdateChannelStatus(hf_u8_t channel_id) noexcept {
+void EspPio::UpdateChannelStatus(hf_u8_t channel_id) noexcept {
   auto& channel = channels_[channel_id];
   channel.status.timestamp_us = esp_timer_get_time();
   channel.status.last_error = hf_pio_err_t::PIO_SUCCESS;
 }
 
-void McuPio::InvokeErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept {
+void EspPio::InvokeErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept {
   if (error_callback_) {
     error_callback_(channel_id, error, callback_user_data_);
   }
   channels_[channel_id].status.last_error = error;
 }
 
-bool McuPio::ValidatePioSystem() noexcept {
+bool EspPio::ValidatePioSystem() noexcept {
   ESP_LOGI(TAG, "Starting comprehensive PIO system validation");
 
   if (!EnsureInitialized()) {
@@ -1257,12 +1257,12 @@ bool McuPio::ValidatePioSystem() noexcept {
 // STATISTICS AND DIAGNOSTICS
 //==============================================================================
 
-hf_pio_err_t McuPio::GetStatistics(hf_pio_statistics_t& statistics) const noexcept {
+hf_pio_err_t EspPio::GetStatistics(hf_pio_statistics_t& statistics) const noexcept {
   statistics = statistics_;
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t McuPio::GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept {
+hf_pio_err_t EspPio::GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept {
   diagnostics = diagnostics_;
   return hf_pio_err_t::PIO_SUCCESS;
 }
