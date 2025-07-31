@@ -1,4 +1,4 @@
-// Disable pedantic warnings for ESP-IDF headers
+// Disable pedantic warnings for ESP-IDF headers and our ESP32 includes
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpedantic"
 
@@ -17,8 +17,6 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-
-#pragma GCC diagnostic pop
 
 // Include all base classes
 #include "base/BaseAdc.h"
@@ -49,6 +47,8 @@ extern "C" {
 #include "mcu/esp32/EspPwm.h"
 #include "mcu/esp32/EspSpi.h"
 #include "mcu/esp32/EspUart.h"
+
+#pragma GCC diagnostic pop
 
 // ESP32 utility types
 #include "mcu/esp32/utils/EspTypes.h"
@@ -109,7 +109,7 @@ extern "C" void app_main(void) {
   spi_bus_cfg.miso_pin = 9;
   spi_bus_cfg.sclk_pin = 11;
   spi_bus_cfg.clock_speed_hz = 1000000;
-  spi_bus_cfg.host = HF_SPI2_HOST;
+  spi_bus_cfg.host = hf_spi_host_device_t::HF_SPI2_HOST;
   EspSpiBus test_spi_bus(spi_bus_cfg);
   bool spi_bus_init = test_spi_bus.Initialize();
   ESP_LOGI(TAG, "EspSpiBus initialized: %s", spi_bus_init ? "true" : "false");
@@ -146,8 +146,8 @@ extern "C" void app_main(void) {
   pwm_cfg.enable_fade = true;
   pwm_cfg.enable_interrupts = true;
   EspPwm test_pwm(pwm_cfg);
-  auto pwm_init = test_pwm.EnsureInitialized();
-  ESP_LOGI(TAG, "EspPwm initialized: %s", pwm_init ? "true" : "false");
+  auto pwm_init = test_pwm.Initialize();
+  ESP_LOGI(TAG, "EspPwm initialized: %s", HfPwmErrToString(pwm_init));
 
   // Test hardware types
   ESP_LOGI(TAG, "Testing HardwareTypes...");
