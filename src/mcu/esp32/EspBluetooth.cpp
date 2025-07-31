@@ -150,7 +150,7 @@ EspBluetooth::EspBluetooth(const EspBluetoothAdvancedConfig* advanced_config)
 }
 
 EspBluetooth::~EspBluetooth() {
-  deinit();
+  Deinitialize();
 }
 
 hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {

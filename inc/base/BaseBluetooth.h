@@ -694,7 +694,7 @@ protected:
  * @ingroup bluetooth
  * @brief Helper function to convert error enum to string
  */
-inline const char* BaseBluetooth::getErrorString(hf_bluetooth_err_t error) {
+inline const char* BaseBluetooth::GetErrorString(hf_bluetooth_err_t error) {
 #define X(name, value, desc) case hf_bluetooth_err_t::name: return desc;
   switch (error) {
     HF_BLUETOOTH_ERR_LIST(X)
@@ -705,16 +705,16 @@ inline const char* BaseBluetooth::getErrorString(hf_bluetooth_err_t error) {
 
 /**
  * @ingroup bluetooth
- * @brief Helper function implementations for HfBluetoothAddress
+ * @brief Helper function implementations for hf_bluetooth_address_t
  */
-inline std::string HfBluetoothAddress::toString() const {
+inline std::string hf_bluetooth_address_t::ToString() const {
   char buffer[18];
   snprintf(buffer, sizeof(buffer), "%02X:%02X:%02X:%02X:%02X:%02X",
            addr[0], addr[1], addr[2], addr[3], addr[4], addr[5]);
   return std::string(buffer);
 }
 
-inline bool HfBluetoothAddress::fromString(const std::string& addr_str) {
+inline bool hf_bluetooth_address_t::FromString(const std::string& addr_str) {
   if (addr_str.length() != 17) return false;
   
   // Validate format: XX:XX:XX:XX:XX:XX
@@ -753,7 +753,7 @@ inline bool HfBluetoothAddress::fromString(const std::string& addr_str) {
   return true;
 }
 
-inline bool HfBluetoothAddress::isValid() const {
+inline bool hf_bluetooth_address_t::IsValid() const {
   for (int i = 0; i < 6; i++) {
     if (addr[i] != 0) return true;
   }
