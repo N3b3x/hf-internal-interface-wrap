@@ -53,15 +53,15 @@ extern "C" {
 #include "esp_adc/adc_oneshot.h"
 #include "esp_log.h"
 #include "esp_timer.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
+#include "freertos/task.h"
 
 #ifdef __cplusplus
 }
 #endif
 
 #include "RtosMutex.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
-#include "freertos/task.h"
 
 //==============================================================================
 // ESP32 VARIANT-SPECIFIC ADC CONFIGURATION

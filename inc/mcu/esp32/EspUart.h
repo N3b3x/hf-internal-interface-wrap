@@ -43,13 +43,13 @@ extern "C" {
 #include "esp_log.h"
 #include "esp_timer.h"
 
-#ifdef __cplusplus
-}
-#endif
-
 #include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
 #include "freertos/task.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 /**
  * @class EspUart
