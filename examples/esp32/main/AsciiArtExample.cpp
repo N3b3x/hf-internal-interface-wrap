@@ -11,7 +11,6 @@
  */
 
 #include "utils/AsciiArtGenerator.h"
-#include "utils/LoggerManager.h"
 
 #include <cstdio>
 #include <cstring>

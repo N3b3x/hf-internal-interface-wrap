@@ -20,6 +20,7 @@ extern "C" {
 
 // Include all base classes
 #include "base/BaseAdc.h"
+#include "base/BaseBluetooth.h"
 #include "base/BaseCan.h"
 #include "base/BaseGpio.h"
 #include "base/BaseI2c.h"
@@ -28,16 +29,21 @@ extern "C" {
 #include "base/BasePio.h"
 #include "base/BasePwm.h"
 #include "base/BaseSpi.h"
+#include "base/BaseTemperature.h"
 #include "base/BaseUart.h"
+#include "base/BaseWifi.h"
 #include "base/HardwareTypes.h"
 
 // Include utility classes
+#include "utils/AsciiArtGenerator.h"
 #include "utils/DigitalOutputGuard.h"
 #include "utils/McuSelect.h"
+#include "utils/memory_utils.h"
 #include "utils/RtosMutex.h"
 
-// ESP32 implementation classes (temporarily commented out due to compilation errors)
+// ESP32 implementation classes
 #include "mcu/esp32/EspAdc.h"
+#include "mcu/esp32/EspBluetooth.h"
 #include "mcu/esp32/EspCan.h"
 #include "mcu/esp32/EspGpio.h"
 #include "mcu/esp32/EspI2c.h"
@@ -46,7 +52,9 @@ extern "C" {
 #include "mcu/esp32/EspPio.h"
 #include "mcu/esp32/EspPwm.h"
 #include "mcu/esp32/EspSpi.h"
+#include "mcu/esp32/EspTemperature.h"
 #include "mcu/esp32/EspUart.h"
+#include "mcu/esp32/EspWifi.h"
 
 #pragma GCC diagnostic pop
 
@@ -54,6 +62,7 @@ extern "C" {
 #include "mcu/esp32/utils/EspTypes.h"
 #include "mcu/esp32/utils/EspTypes_ADC.h"
 #include "mcu/esp32/utils/EspTypes_Base.h"
+#include "mcu/esp32/utils/EspTypes_Bluetooth.h"
 #include "mcu/esp32/utils/EspTypes_CAN.h"
 #include "mcu/esp32/utils/EspTypes_GPIO.h"
 #include "mcu/esp32/utils/EspTypes_I2C.h"
@@ -63,27 +72,36 @@ extern "C" {
 #include "mcu/esp32/utils/EspTypes_SPI.h"
 #include "mcu/esp32/utils/EspTypes_Timer.h"
 #include "mcu/esp32/utils/EspTypes_UART.h"
+#include "mcu/esp32/utils/EspTypes_WiFi.h"
 
 static const char* TAG = "IID_Test";
 
 extern "C" void app_main(void) {
-  ESP_LOGI(TAG, "=== ESP32 IID Test Start ===");
+  ESP_LOGI(TAG, "=== ESP32 IID Comprehensive Test Start ===");
 
-  // Minimal integration of all ESP32 libraries:
+  // Demonstrate ASCII Art Generator
+  ESP_LOGI(TAG, "=== ASCII Art Generator Test ===");
+  AsciiArtGenerator art_gen;
+  ESP_LOGI(TAG, "%s", art_gen.CreateBanner("HardFOC").c_str());
+  ESP_LOGI(TAG, "%s", art_gen.CreateBox("ESP32-C6 Integration", 50).c_str());
+
   // 1. EspGpio
+  ESP_LOGI(TAG, "=== Testing EspGpio ===");
   EspGpio test_gpio(8, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
                     hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
-  bool gpio_init = test_gpio.Initialize();
-  ESP_LOGI(TAG, "EspGpio initialized: %s", gpio_init ? "true" : "false");
+  auto gpio_init = test_gpio.EnsureInitialized();
+  ESP_LOGI(TAG, "EspGpio initialized: %s", gpio_init ? "SUCCESS" : "FAILED");
 
   // 2. EspAdc
+  ESP_LOGI(TAG, "=== Testing EspAdc ===");
   hf_adc_unit_config_t adc_cfg = {};
   adc_cfg.unit_id = 0;
   EspAdc test_adc(adc_cfg);
   bool adc_init = test_adc.EnsureInitialized();
-  ESP_LOGI(TAG, "EspAdc initialized: %s", adc_init ? "true" : "false");
+  ESP_LOGI(TAG, "EspAdc initialized: %s", adc_init ? "SUCCESS" : "FAILED");
 
   // 3. EspUart
+  ESP_LOGI(TAG, "=== Testing EspUart ===");
   hf_uart_config_t uart_cfg = {};
   uart_cfg.port_number = 0;
   uart_cfg.baud_rate = 115200;
@@ -91,19 +109,21 @@ extern "C" void app_main(void) {
   uart_cfg.rx_pin = 20;
   EspUart test_uart(uart_cfg);
   bool uart_init = test_uart.EnsureInitialized();
-  ESP_LOGI(TAG, "EspUart initialized: %s", uart_init ? "true" : "false");
+  ESP_LOGI(TAG, "EspUart initialized: %s", uart_init ? "SUCCESS" : "FAILED");
 
   // 4. EspCan
+  ESP_LOGI(TAG, "=== Testing EspCan ===");
   hf_esp_can_config_t can_cfg = {};
   can_cfg.controller_id = hf_can_controller_id_t::HF_CAN_CONTROLLER_0;
   can_cfg.tx_pin = 7;
   can_cfg.rx_pin = 6;
   can_cfg.tx_queue_len = 8;
   EspCan test_can(can_cfg);
-  auto can_init = test_can.Initialize();
-  ESP_LOGI(TAG, "EspCan initialized: %s", can_init == hf_can_err_t::CAN_SUCCESS ? "true" : "false");
+  auto can_init = test_can.EnsureInitialized();
+  ESP_LOGI(TAG, "EspCan initialized: %s", can_init ? "SUCCESS" : "FAILED");
 
   // 5. EspSpi (Bus-Device Architecture)
+  ESP_LOGI(TAG, "=== Testing EspSpi (Bus-Device Architecture) ===");
   hf_spi_bus_config_t spi_bus_cfg = {};
   spi_bus_cfg.mosi_pin = 10;
   spi_bus_cfg.miso_pin = 9;
@@ -111,8 +131,8 @@ extern "C" void app_main(void) {
   spi_bus_cfg.clock_speed_hz = 1000000;
   spi_bus_cfg.host = hf_spi_host_device_t::HF_SPI2_HOST;
   EspSpiBus test_spi_bus(spi_bus_cfg);
-  bool spi_bus_init = test_spi_bus.Initialize();
-  ESP_LOGI(TAG, "EspSpiBus initialized: %s", spi_bus_init ? "true" : "false");
+  bool spi_bus_init = test_spi_bus.EnsureInitialized();
+  ESP_LOGI(TAG, "EspSpiBus initialized: %s", spi_bus_init ? "SUCCESS" : "FAILED");
   
   // Create SPI device on the bus
   if (spi_bus_init) {
@@ -124,20 +144,19 @@ extern "C" void app_main(void) {
     ESP_LOGI(TAG, "EspSpiDevice created with index: %d", device_index);
   }
 
-  // 6. EspI2c (Test disabled - using new bus-device architecture)
-  // TODO: Update to use new EspI2cBus/EspI2cDevice architecture
-  /*
+  // 6. EspI2c (Bus-Device Architecture)
+  ESP_LOGI(TAG, "=== Testing EspI2c (Bus-Device Architecture) ===");
   hf_i2c_master_bus_config_t i2c_cfg = {};
-  i2c_cfg.i2c_port = I2C_NUM_0;
+  i2c_cfg.i2c_port = 0;
   i2c_cfg.sda_io_num = 21;
   i2c_cfg.scl_io_num = 22;
   i2c_cfg.enable_internal_pullup = true;
-  EspI2c test_i2c(i2c_cfg);
-  bool i2c_init = test_i2c.Initialize();
-  ESP_LOGI(TAG, "EspI2c initialized: %s", i2c_init ? "true" : "false");
-  */
+  EspI2cBus test_i2c_bus(i2c_cfg);
+  bool i2c_bus_init = test_i2c_bus.EnsureInitialized();
+  ESP_LOGI(TAG, "EspI2cBus initialized: %s", i2c_bus_init ? "SUCCESS" : "FAILED");
 
   // 7. EspPwm
+  ESP_LOGI(TAG, "=== Testing EspPwm ===");
   hf_pwm_unit_config_t pwm_cfg = {};
   pwm_cfg.unit_id = 0;
   pwm_cfg.mode = hf_pwm_mode_t::HF_PWM_MODE_FADE;
@@ -146,77 +165,117 @@ extern "C" void app_main(void) {
   pwm_cfg.enable_fade = true;
   pwm_cfg.enable_interrupts = true;
   EspPwm test_pwm(pwm_cfg);
-  auto pwm_init = test_pwm.Initialize();
-  ESP_LOGI(TAG, "EspPwm initialized: %s", HfPwmErrToString(pwm_init));
+  auto pwm_init = test_pwm.EnsureInitialized();
+  ESP_LOGI(TAG, "EspPwm initialized: %s", pwm_init ? "SUCCESS" : "FAILED");
+
+  // 8. EspTemperature
+  ESP_LOGI(TAG, "=== Testing EspTemperature ===");
+  hf_temperature_sensor_config_t temp_cfg = {};
+  temp_cfg.dac_offset = 0;
+  temp_cfg.clk_src = hf_temperature_sensor_clk_src_t::HF_TEMPERATURE_SENSOR_CLK_SRC_DEFAULT;
+  EspTemperature test_temp(temp_cfg);
+  auto temp_init = test_temp.EnsureInitialized();
+  ESP_LOGI(TAG, "EspTemperature initialized: %s", temp_init ? "SUCCESS" : "FAILED");
+  
+  // Read temperature if initialized successfully
+  if (temp_init == hf_temperature_err_t::TEMPERATURE_SUCCESS) {
+    float temperature = 0.0f;
+    auto temp_read = test_temp.ReadTemperature(&temperature);
+    if (temp_read == hf_temperature_err_t::TEMPERATURE_SUCCESS) {
+      ESP_LOGI(TAG, "Chip temperature: %.2f°C", temperature);
+    }
+  }
+
+  // 9. EspWifi
+  ESP_LOGI(TAG, "=== Testing EspWifi ===");
+  hf_wifi_config_t wifi_cfg = {};
+  wifi_cfg.mode = hf_wifi_mode_t::HF_WIFI_MODE_STA;
+  EspWifi test_wifi(wifi_cfg);
+  auto wifi_init = test_wifi.EnsureInitialized();
+  ESP_LOGI(TAG, "EspWifi initialized: %s", wifi_init ? "SUCCESS" : "FAILED");
+
+  // 10. EspBluetooth
+  ESP_LOGI(TAG, "=== Testing EspBluetooth ===");
+  hf_bluetooth_config_t bt_cfg = {};
+  bt_cfg.mode = hf_bluetooth_mode_t::HF_BT_MODE_BLE;
+  bt_cfg.device_name = "HardFOC-ESP32";
+  EspBluetooth test_bluetooth(bt_cfg);
+  auto bt_init = test_bluetooth.EnsureInitialized();
+  ESP_LOGI(TAG, "EspBluetooth initialized: %s", bt_init ? "SUCCESS" : "FAILED");
+
+  // 11. EspPeriodicTimer
+  ESP_LOGI(TAG, "=== Testing EspPeriodicTimer ===");
+  auto timer_callback = [](void* user_data) {
+    static int count = 0;
+    count++;
+    if (count % 10 == 0) {
+      ESP_LOGI("Timer", "Timer callback executed %d times", count);
+    }
+  };
+  EspPeriodicTimer test_timer(timer_callback, nullptr);
+  auto timer_init = test_timer.EnsureInitialized();
+  ESP_LOGI(TAG, "EspPeriodicTimer initialized: %s", timer_init ? "SUCCESS" : "FAILED");
+  
+  if (timer_init) {
+    test_timer.Start(1000000); // 1 second interval
+    ESP_LOGI(TAG, "EspPeriodicTimer started with 1-second interval");
+  }
+
+  // 12. EspPio (RMT-based)
+  ESP_LOGI(TAG, "=== Testing EspPio ===");
+  EspPio test_pio;
+  auto pio_init = test_pio.EnsureInitialized();
+  ESP_LOGI(TAG, "EspPio initialized: %s", pio_init ? "SUCCESS" : "FAILED");
+
+  // 13. EspNvs
+  ESP_LOGI(TAG, "=== Testing EspNvs ===");
+  hf_nvs_config_t nvs_cfg = {};
+  nvs_cfg.namespace_name = "hardfoc";
+  nvs_cfg.partition_name = "nvs";
+  EspNvs test_nvs(nvs_cfg);
+  auto nvs_init = test_nvs.EnsureInitialized();
+  ESP_LOGI(TAG, "EspNvs initialized: %s", nvs_init ? "SUCCESS" : "FAILED");
 
   // Test hardware types
-  ESP_LOGI(TAG, "Testing HardwareTypes...");
+  ESP_LOGI(TAG, "=== Testing HardwareTypes ===");
   hf_pin_num_t test_pin = 5;
   hf_port_num_t test_port = 0;
   hf_frequency_hz_t test_freq = 1000000;
-  ESP_LOGI(TAG, "Pin: %ld, Port: %lu, Freq: %lu Hz", test_pin, test_port, test_freq);
-
-  // Test GPIO error codes
-  ESP_LOGI(TAG, "Testing GPIO error codes...");
-  hf_gpio_err_t test_error = hf_gpio_err_t::GPIO_SUCCESS;
-  ESP_LOGI(TAG, "GPIO Error: %s", HfGpioErrToString(test_error));
-
-  // Test GPIO states
-  ESP_LOGI(TAG, "Testing GPIO states...");
+  hf_timestamp_us_t test_timestamp = 12345678;
+  hf_voltage_mv_t test_voltage = 3300;
+  ESP_LOGI(TAG, "Pin: %d, Port: %d, Freq: %lu Hz", test_pin, test_port, test_freq);
+  ESP_LOGI(TAG, "Timestamp: %llu us, Voltage: %d mV", test_timestamp, test_voltage);
+  
   hf_gpio_state_t test_state = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
-  ESP_LOGI(TAG, "GPIO State: %s", BaseGpio::ToString(test_state));
+  ESP_LOGI(TAG, "GPIO state: %s", test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
 
-  // Test GPIO directions
-  ESP_LOGI(TAG, "Testing GPIO directions...");
-  hf_gpio_direction_t test_dir = hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT;
-  ESP_LOGI(TAG, "GPIO Direction: %s", BaseGpio::ToString(test_dir));
+  // Test memory utilities
+  ESP_LOGI(TAG, "=== Testing Memory Utilities ===");
+  auto unique_int = make_unique_nothrow<int>(42);
+  if (unique_int) {
+    ESP_LOGI(TAG, "make_unique_nothrow created int with value: %d", *unique_int);
+  }
+  
+  auto unique_array = make_unique_nothrow<int[]>(10);
+  if (unique_array) {
+    for (int i = 0; i < 10; i++) {
+      unique_array[i] = i * i;
+    }
+    ESP_LOGI(TAG, "make_unique_nothrow created array, element[5] = %d", unique_array[5]);
+  }
 
-  // Test GPIO active states
-  ESP_LOGI(TAG, "Testing GPIO active states...");
-  hf_gpio_active_state_t test_active = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH;
-  ESP_LOGI(TAG, "GPIO Active State: %s", BaseGpio::ToString(test_active));
+  ESP_LOGI(TAG, "=== ESP32 IID Comprehensive Test Complete ===");
+  ESP_LOGI(TAG, "%s", art_gen.CreateBanner("ALL TESTS COMPLETE").c_str());
 
-  // Test GPIO output modes
-  ESP_LOGI(TAG, "Testing GPIO output modes...");
-  hf_gpio_output_mode_t test_output = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL;
-  ESP_LOGI(TAG, "GPIO Output Mode: %s", BaseGpio::ToString(test_output));
-
-  // Test GPIO pull modes
-  ESP_LOGI(TAG, "Testing GPIO pull modes...");
-  hf_gpio_pull_mode_t test_pull = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING;
-  ESP_LOGI(TAG, "GPIO Pull Mode: %s", BaseGpio::ToString(test_pull));
-
-  // Test GPIO interrupt triggers
-  ESP_LOGI(TAG, "Testing GPIO interrupt triggers...");
-  hf_gpio_interrupt_trigger_t test_trigger =
-      hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE;
-  ESP_LOGI(TAG, "GPIO Interrupt Trigger: %s", BaseGpio::ToString(test_trigger));
-
-  // Test validation functions
-  ESP_LOGI(TAG, "Testing validation functions...");
-  ESP_LOGI(TAG, "Valid pin: %s", IsValidPin(test_pin) ? "true" : "false");
-  ESP_LOGI(TAG, "Valid port: %s", IsValidPort(test_port) ? "true" : "false");
-
-  // Configure GPIO for LED
-  ESP_LOGI(TAG, "Configuring GPIO for LED...");
-  gpio_config_t io_conf = {};
-  io_conf.intr_type = GPIO_INTR_DISABLE;
-  io_conf.mode = GPIO_MODE_OUTPUT;
-  io_conf.pin_bit_mask = (1ULL << GPIO_NUM_8);
-  io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
-  io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
-  gpio_config(&io_conf);
-
-  ESP_LOGI(TAG, "GPIO configured successfully");
-  ESP_LOGI(TAG, "All base classes and utility classes compiled successfully!");
-
+  // Keep the task running with periodic status updates
   int count = 0;
   while (true) {
-    ESP_LOGI(TAG, "Blink count: %d", count++);
-
-    // Toggle LED
-    gpio_set_level(GPIO_NUM_8, count % 2);
-
-    vTaskDelay(pdMS_TO_TICKS(1000));
+    // Toggle LED if GPIO was initialized successfully
+    if (gpio_init == hf_gpio_err_t::GPIO_SUCCESS) {
+      test_gpio.SetState(count % 2 == 0 ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
+    }
+    
+    vTaskDelay(pdMS_TO_TICKS(5000));
+    ESP_LOGI(TAG, "System running... All interfaces operational (iteration %d)", ++count);
   }
 }

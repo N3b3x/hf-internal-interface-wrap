@@ -16,10 +16,12 @@ endif()
 idf_component_register(
     SRCS 
         # Utility files
+        "${SRC_ROOT}/src/utils/AsciiArtGenerator.cpp"
         "${SRC_ROOT}/src/utils/DigitalOutputGuard.cpp"
         
         # ESP32 implementation files
         "${SRC_ROOT}/src/mcu/esp32/EspAdc.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspBluetooth.cpp"
         "${SRC_ROOT}/src/mcu/esp32/EspCan.cpp"
         "${SRC_ROOT}/src/mcu/esp32/EspGpio.cpp"
         "${SRC_ROOT}/src/mcu/esp32/EspI2c.cpp"
@@ -28,7 +30,9 @@ idf_component_register(
         "${SRC_ROOT}/src/mcu/esp32/EspPio.cpp"
         "${SRC_ROOT}/src/mcu/esp32/EspPwm.cpp"
         "${SRC_ROOT}/src/mcu/esp32/EspSpi.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspTemperature.cpp"
         "${SRC_ROOT}/src/mcu/esp32/EspUart.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspWifi.cpp"
         
     INCLUDE_DIRS 
         "${SRC_ROOT}/inc"
@@ -92,6 +96,7 @@ idf_component_register(
         esp_system
         esp_vfs_console
         esp_wifi
+        bt
         espcoredump
         esptool_py
         fatfs

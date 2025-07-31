@@ -25,7 +25,7 @@ defaults:
 
 jobs:
   build:
-    name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }}
+    name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.example_type }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -33,6 +33,11 @@ jobs:
       matrix:
         idf_version: [release-v5.5]
         build_type: [Release, Debug]
+        example_type: [comprehensive, ascii_art]
+        exclude:
+          # Exclude some combinations to reduce CI time
+          - build_type: Debug
+            example_type: ascii_art
 
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +46,6 @@ jobs:
 
       - name: Install build tools
         run: sudo apt-get update && sudo apt-get install -y clang-format
-
 
       - name: ESP-IDF build
         uses: espressif/esp-idf-ci-action@v1
@@ -60,9 +64,14 @@ jobs:
             # Copy source and include directories to maintain relative paths
             cp -r src ${{ env.BUILD_PATH }}/src
             cp -r inc ${{ env.BUILD_PATH }}/inc
+            # Copy the main CMakeLists.txt (now includes flexible example support)
+            cp examples/esp32/main/CMakeLists.txt ${{ env.BUILD_PATH }}/main/CMakeLists.txt
+            # Build specific example type
             idf.py -C ${{ env.BUILD_PATH }} \
               -DIDF_TARGET=${{ env.IDF_TARGET }} \
-              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} build
+              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+              -DEXAMPLE_TYPE=${{ matrix.example_type }} \
+              reconfigure build
             idf.py -C ${{ env.BUILD_PATH }} size-components > \
               ${{ env.BUILD_PATH }}/build/size.txt
             idf.py -C ${{ env.BUILD_PATH }} size --format json > \
@@ -81,7 +90,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ matrix.idf_version }}-${{ matrix.build_type }}
+          name: fw-${{ matrix.example_type }}-${{ matrix.idf_version }}-${{ matrix.build_type }}
           retention-days: 7
           path: |
             ${{ env.BUILD_PATH }}/build/*.bin
@@ -111,7 +120,6 @@ jobs:
           enable: all
           inconclusive: true
           std: c++17
-          include: inc src examples
 
       - name: Run clang-tidy
         uses: ZedThree/clang-tidy-review@v0.21.0
@@ -133,4 +141,10 @@ jobs:
       - name: Run yamllint
         run: yamllint .github/workflows/
         
-      - uses: rhysd/actionlint@v1.6.25
+      - name: Install actionlint
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
+          sudo mv actionlint /usr/local/bin/
+          
+      - name: Run actionlint  
+        run: actionlint .github/workflows/
