@@ -8,12 +8,21 @@
  * Bluetooth Classic, BLE, multiple connections, advanced security, and
  * mesh networking capabilities.
  *
+ * The implementation uses conditional compilation to support different ESP32 variants:
+ * - ESP32: Full Classic BT + BLE support (A2DP, AVRCP, SPP supported)
+ * - ESP32S3: Full Classic BT + BLE support (A2DP, AVRCP, SPP supported)
+ * - ESP32C6: BLE only (no Classic BT, no A2DP)
+ * - ESP32C3: BLE only (no Classic BT, no A2DP)
+ * - ESP32H2: BLE only (no Classic BT, no A2DP)
+ * - ESP32S2: No Bluetooth support
+ *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  *
  * @note Requires ESP-IDF v5.5 or higher for full feature support
  * @note Thread-safe implementation with proper synchronization
+ * @note Conditional compilation ensures proper build for all ESP32 variants
  */
 
 #include "mcu/esp32/EspBluetooth.h"
@@ -48,11 +57,13 @@ static const EspBluetoothAdvancedConfig DEFAULT_ADVANCED_CONFIG = {
     .supervision_timeout_ms = 20000,
     .min_connection_interval = 24,
     .max_connection_interval = 40,
+#if HAS_CLASSIC_BLUETOOTH
     .enable_spp = true,
     .enable_a2dp = false,
     .enable_avrcp = false,
     .enable_hfp = false,
     .enable_hid = false,
+#endif
     .enable_gatt_server = true,
     .enable_gatt_client = true,
     .max_gatt_services = 16,
@@ -285,10 +296,12 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() {
 
   if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC ||
       m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
+#if HAS_CLASSIC_BLUETOOTH
     esp_bt_gap_register_callback(nullptr);
     if (advanced_config_.enable_spp) {
       esp_spp_register_callback(nullptr);
     }
+#endif
   }
 
   cleanup();
@@ -633,12 +646,17 @@ hf_bluetooth_err_t EspBluetooth::connect(const hf_bluetooth_address_t& address,
   } else if (type == hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC ||
              (type == hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_AUTO &&
               m_mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE)) {
+#if HAS_CLASSIC_BLUETOOTH
     // Classic Bluetooth connection (SPP)
     if (advanced_config_.enable_spp) {
       ret = esp_spp_connect(ESP_SPP_SEC_AUTHENTICATE, ESP_SPP_ROLE_MASTER, ESP_SPP_SERVER_NAME,
                             const_cast<uint8_t*>(address.address));
     } else {
       ESP_LOGE(TAG, "SPP not enabled for Classic connection");
+#else
+    ESP_LOGE(TAG, "Classic Bluetooth not supported on this ESP32 variant");
+    return hf_bluetooth_err_t::HF_BLUETOOTH_ERROR_NOT_SUPPORTED;
+#endif
       return hf_bluetooth_err_t::NOT_SUPPORTED;
     }
   }
@@ -675,7 +693,12 @@ hf_bluetooth_err_t EspBluetooth::disconnect(uint16_t connection_id) {
   esp_err_t ret = ESP_OK;
 
   if (it->second.is_classic) {
+#if HAS_CLASSIC_BLUETOOTH
     ret = esp_spp_disconnect(it->second.connection_handle);
+#else
+    ESP_LOGE(TAG, "Classic Bluetooth not supported on this ESP32 variant");
+    return hf_bluetooth_err_t::HF_BLUETOOTH_ERROR_NOT_SUPPORTED;
+#endif
   } else {
     ret = esp_ble_gatts_close(it->second.gatt_if, it->second.connection_handle);
   }
@@ -749,9 +772,14 @@ hf_bluetooth_err_t EspBluetooth::sendData(uint16_t connection_id,
   esp_err_t ret = ESP_OK;
 
   if (it->second.is_classic) {
+#if HAS_CLASSIC_BLUETOOTH
     // Send via SPP
     ret =
         esp_spp_write(it->second.connection_handle, data.size(), const_cast<uint8_t*>(data.data()));
+#else
+    ESP_LOGE(TAG, "Classic Bluetooth not supported on this ESP32 variant");
+    return hf_bluetooth_err_t::HF_BLUETOOTH_ERROR_NOT_SUPPORTED;
+#endif
   } else {
     // Send via GATT characteristic
     // This would require knowing which characteristic to write to
@@ -1089,6 +1117,7 @@ hf_bluetooth_err_t EspBluetooth::initializeBLE() {
   return hf_bluetooth_err_t::SUCCESS;
 }
 
+#if HAS_CLASSIC_BLUETOOTH
 hf_bluetooth_err_t EspBluetooth::initializeClassic() {
   // Register Classic Bluetooth GAP callback
   esp_err_t ret = esp_bt_gap_register_callback(btGapEventHandler);
@@ -1118,6 +1147,7 @@ hf_bluetooth_err_t EspBluetooth::initializeClassic() {
   ESP_LOGI(TAG, "Classic Bluetooth initialized successfully");
   return hf_bluetooth_err_t::SUCCESS;
 }
+#endif // HAS_CLASSIC_BLUETOOTH
 
 void EspBluetooth::cleanup() {
   if (event_group_) {
@@ -1155,6 +1185,7 @@ void EspBluetooth::bleGattcEventHandler(esp_gattc_cb_event_t event, esp_gatt_if_
   ESP_LOGD(TAG, "BLE GATTC event: %d", event);
 }
 
+#if HAS_CLASSIC_BLUETOOTH
 void EspBluetooth::btGapEventHandler(esp_bt_gap_cb_event_t event, esp_bt_gap_cb_param_t* param) {
   // Implementation would handle Classic Bluetooth GAP events
   ESP_LOGD(TAG, "Classic BT GAP event: %d", event);
@@ -1164,6 +1195,7 @@ void EspBluetooth::sppEventHandler(esp_spp_cb_event_t event, esp_spp_cb_param_t*
   // Implementation would handle SPP events
   ESP_LOGD(TAG, "SPP event: %d", event);
 }
+#endif // HAS_CLASSIC_BLUETOOTH
 
 hf_bluetooth_err_t EspBluetooth::ConvertEspError(esp_err_t esp_err) const {
   switch (esp_err) {

@@ -25,19 +25,51 @@
 extern "C" {
 #endif
 
-// Bluetooth Classic headers
+// Bluetooth headers - conditionally include based on target support
 #include "esp_bt.h"
 #include "esp_bt_main.h"
+
+// Classic Bluetooth headers (only for ESP32 and ESP32S3)
+#if HAS_CLASSIC_BLUETOOTH
 #include "esp_gap_bt_api.h"
 #include "esp_hf_client_api.h"
 #include "esp_spp_api.h"
+#endif
 
-// A2DP is only supported on ESP32 classic, not on ESP32C6/C3/S2/S3
-#if defined(ESP32) && !defined(CONFIG_IDF_TARGET_ESP32C6) && !defined(CONFIG_IDF_TARGET_ESP32C3) && !defined(CONFIG_IDF_TARGET_ESP32S2) && !defined(CONFIG_IDF_TARGET_ESP32S3)
+// Classic Bluetooth and A2DP support matrix based on ESP-IDF documentation:
+// - ESP32: Full Classic BT + BLE support (A2DP supported)
+// - ESP32S3: Full Classic BT + BLE support (A2DP supported) 
+// - ESP32C6: BLE only (no Classic BT, no A2DP)
+// - ESP32C3: BLE only (no Classic BT, no A2DP)
+// - ESP32H2: BLE only (no Classic BT, no A2DP)
+// - ESP32S2: No Bluetooth support
+#if defined(CONFIG_IDF_TARGET_ESP32) || defined(CONFIG_IDF_TARGET_ESP32S3)
 #include "esp_a2dp_api.h"
+#include "esp_avrc_api.h"
+#define HAS_CLASSIC_BLUETOOTH 1
 #define HAS_A2DP_SUPPORT 1
-#else
+#define HAS_AVRCP_SUPPORT 1
+#elif defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32H2)
+// BLE only variants
+#define HAS_CLASSIC_BLUETOOTH 0
 #define HAS_A2DP_SUPPORT 0
+#define HAS_AVRCP_SUPPORT 0
+#elif defined(CONFIG_IDF_TARGET_ESP32S2)
+// No Bluetooth support
+#define HAS_CLASSIC_BLUETOOTH 0
+#define HAS_A2DP_SUPPORT 0
+#define HAS_AVRCP_SUPPORT 0
+#define HAS_BLUETOOTH_SUPPORT 0
+#else
+// Default to no Classic Bluetooth for unknown targets
+#define HAS_CLASSIC_BLUETOOTH 0
+#define HAS_A2DP_SUPPORT 0
+#define HAS_AVRCP_SUPPORT 0
+#endif
+
+// Define Bluetooth support for all variants except ESP32S2
+#ifndef HAS_BLUETOOTH_SUPPORT
+#define HAS_BLUETOOTH_SUPPORT 1
 #endif
 
 // Bluetooth Low Energy headers
@@ -89,12 +121,14 @@ struct EspBluetoothAdvancedConfig {
   uint8_t min_connection_interval; /**< Minimum connection interval */
   uint8_t max_connection_interval; /**< Maximum connection interval */
 
-  // Classic Bluetooth features
+  // Classic Bluetooth features (only available on ESP32 and ESP32S3)
+#if HAS_CLASSIC_BLUETOOTH
   bool enable_spp;   /**< Enable Serial Port Profile */
   bool enable_a2dp;  /**< Enable Advanced Audio Distribution Profile */
   bool enable_avrcp; /**< Enable Audio/Video Remote Control Profile */
   bool enable_hfp;   /**< Enable Hands-Free Profile */
   bool enable_hid;   /**< Enable Human Interface Device Profile */
+#endif
 
   // BLE features
   bool enable_gatt_server;           /**< Enable GATT server */
@@ -402,10 +436,12 @@ public:
                                           uint16_t char_handle, const std::vector<uint8_t>& data,
                                           bool need_confirm = false);
 
+#if HAS_CLASSIC_BLUETOOTH
   /**
    * @brief Enable/disable Serial Port Profile (SPP)
    * @param enable True to enable SPP
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   * @note Only available on ESP32 and ESP32S3
    */
   hf_bluetooth_err_t EnableSpp(bool enable);
 
@@ -414,6 +450,7 @@ public:
    * @param enable True to enable A2DP
    * @param sink True for sink role, false for source
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   * @note Only available on ESP32 and ESP32S3
    */
   hf_bluetooth_err_t EnableA2dp(bool enable, bool sink = true);
 
@@ -422,8 +459,10 @@ public:
    * @param enable True to enable AVRCP
    * @param controller True for controller role, false for target
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   * @note Only available on ESP32 and ESP32S3
    */
   hf_bluetooth_err_t EnableAvrcp(bool enable, bool controller = true);
+#endif // HAS_CLASSIC_BLUETOOTH
 
   /**
    * @brief Set Bluetooth TX power
@@ -580,6 +619,7 @@ private:
   static void GattcEventHandler(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if,
                                 esp_ble_gattc_cb_param_t* param);
 
+#if HAS_CLASSIC_BLUETOOTH
   /**
    * @brief Static Classic Bluetooth GAP event handler
    * @param event GAP event type
@@ -593,6 +633,7 @@ private:
    * @param param Event parameters
    */
   static void SppEventHandler(esp_spp_cb_event_t event, esp_spp_cb_param_t* param);
+#endif // HAS_CLASSIC_BLUETOOTH
 
   /**
    * @brief Handle BLE GAP events internally
@@ -619,6 +660,7 @@ private:
   void HandleGattcEvent(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if,
                         esp_ble_gattc_cb_param_t* param);
 
+#if HAS_CLASSIC_BLUETOOTH
   /**
    * @brief Handle Classic Bluetooth events internally
    * @param event GAP event type
@@ -632,6 +674,7 @@ private:
    * @param param Event parameters
    */
   void HandleSppEvent(esp_spp_cb_event_t event, esp_spp_cb_param_t* param);
+#endif // HAS_CLASSIC_BLUETOOTH
 
   /**
    * @brief Notify user event callback
