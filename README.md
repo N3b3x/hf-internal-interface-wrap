@@ -343,23 +343,22 @@ private:
 
 ### 📚 **Complete API Reference for HardFOC Boards**
 - [📖 **Main Documentation**](docs/index.md) - Comprehensive HardFOC system overview
-- [🏛️ **Core Interfaces**](docs/index.md#️-core-interfaces) - GPIO, ADC, PWM, PIO for HardFOC boards
-- [📡 **Communication Interfaces**](docs/index.md#-communication-interfaces) - I2C, SPI, UART, CAN for HardFOC systems
-- [🌐 **Wireless Interfaces**](docs/index.md#-wireless-interfaces) - WiFi, Bluetooth for HardFOC IoT
-- [🛠️ **System Interfaces**](docs/index.md#️-system-interfaces) - NVS, Timer, Temperature, Logger for HardFOC applications
+- [🏛️ **Core Interfaces**](docs/index.md#-api-reference) - GPIO, ADC, PWM, PIO for HardFOC boards
+- [📡 **Communication Interfaces**](docs/index.md#-api-reference) - I2C, SPI, UART, CAN for HardFOC systems
+- [🌐 **Wireless Interfaces**](docs/index.md#-api-reference) - WiFi, Bluetooth for HardFOC IoT
+- [🛠️ **System Interfaces**](docs/index.md#-api-reference) - NVS, Timer, Temperature, Logger for HardFOC applications
 
-### 🎯 **HardFOC-Specific Guides**
-- [🔧 **Type System Guide**](docs/guides/type-system.md) - HardFOC type wrapping system
-- [🏗️ **Architecture Guide**](docs/guides/architecture.md) - HardFOC system design and patterns
-- [⚡ **Performance Guide**](docs/guides/performance.md) - HardFOC optimization techniques
-- [🔒 **Thread Safety Guide**](docs/guides/thread-safety.md) - Concurrent programming for HardFOC
-- [🛡️ **Error Handling Guide**](docs/guides/error-handling.md) - Robust error management for HardFOC
+### 🎯 **API Documentation**
+- [🔧 **BaseGpio API**](docs/api/BaseGpio.md) - Digital I/O interface
+- [📊 **BaseAdc API**](docs/api/BaseAdc.md) - Analog-to-digital conversion interface
+- [🔌 **EspGpio API**](docs/api/EspGpio.md) - ESP32-C6 GPIO implementation
+- [🔧 **HardwareTypes API**](docs/api/HardwareTypes.md) - Platform-agnostic type definitions
 
 ### 📊 **HardFOC Practical Examples**
-- [🎛️ **HardFOC Motor Control Examples**](docs/examples/motor-control/) - Complete HardFOC motor control systems
-- [🌐 **HardFOC IoT Integration Examples**](docs/examples/iot-integration/) - WiFi and Bluetooth applications for HardFOC
-- [📊 **HardFOC Multi-Sensor Examples**](docs/examples/multi-sensor/) - Complex sensor integration for HardFOC boards
-- [🏭 **HardFOC Industrial Examples**](docs/examples/industrial/) - Production-ready HardFOC applications
+- **GPIO Control** - LED and button control for HardFOC boards
+- **ADC Monitoring** - Sensor data acquisition for HardFOC systems
+- **PWM Generation** - Motor speed control for HardFOC applications
+- **Temperature Sensing** - Thermal monitoring for HardFOC boards
 
 ---
 
@@ -413,28 +412,28 @@ set(COMPONENT_REQUIRES
 ## 📊 **Examples**
 
 ### 🎯 **Basic HardFOC Interface Examples**
-- [🔌 **GPIO Control**](examples/basic/gpio_control.cpp) - LED control and button reading for HardFOC boards
-- [📊 **ADC Monitoring**](examples/basic/adc_monitoring.cpp) - Sensor data acquisition for HardFOC systems
-- [🎛️ **PWM Generation**](examples/basic/pwm_generation.cpp) - Motor speed control for HardFOC applications
-- [🌡️ **Temperature Sensing**](examples/basic/temperature_sensing.cpp) - Thermal monitoring for HardFOC boards
+- **GPIO Control** - LED control and button reading for HardFOC boards
+- **ADC Monitoring** - Sensor data acquisition for HardFOC systems
+- **PWM Generation** - Motor speed control for HardFOC applications
+- **Temperature Sensing** - Thermal monitoring for HardFOC boards
 
 ### 🌐 **HardFOC Wireless Examples**
-- [📶 **WiFi Station**](examples/wireless/wifi_station.cpp) - Internet connectivity for HardFOC IoT
-- [🏠 **WiFi Access Point**](examples/wireless/wifi_ap.cpp) - Local network creation for HardFOC systems
-- [📲 **Bluetooth BLE**](examples/wireless/bluetooth_ble.cpp) - Mobile app integration with HardFOC boards
-- [📻 **Bluetooth Classic**](examples/wireless/bluetooth_classic.cpp) - Serial over Bluetooth for HardFOC
+- **WiFi Station** - Internet connectivity for HardFOC IoT
+- **WiFi Access Point** - Local network creation for HardFOC systems
+- **Bluetooth BLE** - Mobile app integration with HardFOC boards
+- **Bluetooth Classic** - Serial over Bluetooth for HardFOC
 
 ### 🚀 **Advanced HardFOC Integration Examples**
-- [🏭 **Complete HardFOC TMC9660 Controller**](examples/advanced/hardfoc_tmc9660_controller.cpp) - Full-featured TMC9660 motor control
-- [🌉 **HardFOC IoT Gateway**](examples/advanced/iot_gateway.cpp) - WiFi bridge with HardFOC monitoring
-- [📊 **HardFOC Data Logger**](examples/advanced/data_logger.cpp) - Multi-sensor data collection for HardFOC
-- [🔐 **Secure HardFOC Communication**](examples/advanced/secure_comm.cpp) - Encrypted data transfer for HardFOC
+- **Complete HardFOC TMC9660 Controller** - Full-featured TMC9660 motor control
+- **HardFOC IoT Gateway** - WiFi bridge with HardFOC monitoring
+- **HardFOC Data Logger** - Multi-sensor data collection for HardFOC
+- **Secure HardFOC Communication** - Encrypted data transfer for HardFOC
 
 ### 🧪 **Production HardFOC Examples**
-- [🏭 **Industrial HardFOC Control**](examples/production/industrial_control.cpp) - Complete industrial HardFOC system
-- [🚗 **Automotive HardFOC Interface**](examples/production/automotive_interface.cpp) - CAN bus integration for HardFOC
-- [📡 **Remote HardFOC Monitoring**](examples/production/remote_monitoring.cpp) - Cloud-connected HardFOC system
-- [🔧 **HardFOC Diagnostic System**](examples/production/diagnostic_system.cpp) - Advanced HardFOC diagnostics
+- **Industrial HardFOC Control** - Complete industrial HardFOC system
+- **Automotive HardFOC Interface** - CAN bus integration for HardFOC
+- **Remote HardFOC Monitoring** - Cloud-connected HardFOC system
+- **HardFOC Diagnostic System** - Advanced HardFOC diagnostics
 
 ---
 

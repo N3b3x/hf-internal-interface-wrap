@@ -1,974 +1,850 @@
 # 📶 BaseWifi API Reference
 
-<div align="center">
+## 🌟 Overview
 
-![BaseWifi](https://img.shields.io/badge/BaseWifi-Abstract%20Base%20Class-green?style=for-the-badge&logo=wifi)
+`BaseWifi` is the abstract base class for all WiFi implementations in the HardFOC system. It provides a unified interface for wireless networking operations including station mode (client), access point mode (hotspot), network scanning, security configuration, and comprehensive connection management.
 
-**🎯 Unified WiFi abstraction for wireless networking and internet connectivity**
+## ✨ Features
 
-</div>
+- **📡 Station Mode** - Connect to existing WiFi networks as a client
+- **🔥 Access Point Mode** - Create WiFi hotspots for device configuration
+- **🔍 Network Scanning** - Discover available wireless networks
+- **🔒 Security Support** - WPA/WPA2/WPA3 and enterprise authentication
+- **📊 Connection Management** - Automatic reconnection and signal monitoring
+- **⚡ Event System** - Comprehensive callback system for network events
+- **🔧 Power Management** - Energy-efficient WiFi operation modes
+- **📈 Signal Monitoring** - Real-time RSSI and connection quality tracking
 
----
-
-## 📚 **Table of Contents**
-
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#️-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📶 **WiFi Modes**](#-wifi-modes)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
-
----
-
-## 🎯 **Overview**
-
-The `BaseWifi` class provides a comprehensive WiFi abstraction that serves as the unified interface for all wireless networking operations in the HardFOC system. It supports both station (client) and access point modes, network scanning, connection management, security configurations, and internet connectivity across different hardware implementations.
-
-### ✨ **Key Features**
-
-- 📶 **Dual Mode Support** - Both Station and Access Point modes
-- 🔍 **Network Scanning** - Discover and analyze available networks
-- 🔐 **Advanced Security** - WPA/WPA2/WPA3 support with enterprise features
-- 📡 **Connection Management** - Robust connection handling with auto-reconnection
-- 🌐 **Internet Connectivity** - Full TCP/IP stack integration
-- 📊 **Signal Monitoring** - RSSI, channel analysis, and network diagnostics
-- 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
-- 🏎️ **Performance Optimized** - Minimal overhead for real-time applications
-- 🔌 **Platform Agnostic** - Works across different MCU platforms
-
-### 📊 **Supported Hardware**
-
-| Implementation | Station | Access Point | Max Clients | Frequency | Security |
-|----------------|---------|--------------|-------------|-----------|----------|
-| `EspWifi` | ✅ | ✅ | 10 clients | 2.4GHz + 5GHz | WPA3 |
-| `Esp8266Wifi` | ✅ | ✅ | 4 clients | 2.4GHz | WPA2 |
-| `Rp2040Wifi` | ✅ | ❌ | N/A | 2.4GHz | WPA2 |
-
----
-
-## 🏗️ **Class Hierarchy**
-
-```mermaid
-classDiagram
-    class BaseWifi {
-        <<abstract>>
-        +EnsureInitialized() hf_wifi_err_t
-        +SetMode(hf_wifi_mode_t) hf_wifi_err_t
-        +ScanNetworks() hf_wifi_err_t
-        +ConnectToNetwork(ssid, password) hf_wifi_err_t
-        +DisconnectFromNetwork() hf_wifi_err_t
-        +StartAccessPoint(config) hf_wifi_err_t
-        +StopAccessPoint() hf_wifi_err_t
-        +GetConnectionStatus(status&) hf_wifi_err_t
-        +GetIpAddress(ip&) hf_wifi_err_t
-        +RegisterEventCallback(callback) hf_wifi_err_t
-        +IsInitialized() bool
-        +GetStatistics(hf_wifi_statistics_t&) hf_wifi_err_t
-        #DoInitialize() hf_wifi_err_t*
-        #DoConnect(ssid, password) hf_wifi_err_t*
-        #DoStartAP(config) hf_wifi_err_t*
-    }
-
-    class EspWifi {
-        +EspWifi()
-        +SetCountryCode(country_code) hf_wifi_err_t
-        +SetTxPower(power_dbm) hf_wifi_err_t
-        +SetBandwidth(bandwidth) hf_wifi_err_t
-        +EnableSmartConfig() hf_wifi_err_t
-        +StartWps() hf_wifi_err_t
-    }
-
-    class Esp8266Wifi {
-        +Esp8266Wifi()
-        +SetSleepMode(mode) hf_wifi_err_t
-        +EnableAutoConnect(enable) hf_wifi_err_t
-        +SetPhyMode(mode) hf_wifi_err_t
-    }
-
-    BaseWifi <|-- EspWifi
-    BaseWifi <|-- Esp8266Wifi
-```
-
----
-
-## 📋 **Error Codes**
-
-### 🚨 **WiFi Error Enumeration**
+## 📁 Header File
 
 ```cpp
-enum class hf_wifi_err_t : hf_u32_t {
-    // Success codes
-    WIFI_SUCCESS = 0,
-    
-    // General errors
-    WIFI_ERR_FAILURE = 1,
-    WIFI_ERR_NOT_INITIALIZED = 2,
-    WIFI_ERR_ALREADY_INITIALIZED = 3,
-    WIFI_ERR_INVALID_PARAMETER = 4,
-    WIFI_ERR_NULL_POINTER = 5,
-    WIFI_ERR_OUT_OF_MEMORY = 6,
-    
-    // Network errors
-    WIFI_ERR_NETWORK_NOT_FOUND = 7,
-    WIFI_ERR_CONNECTION_FAILED = 8,
-    WIFI_ERR_CONNECTION_TIMEOUT = 9,
-    WIFI_ERR_CONNECTION_LOST = 10,
-    WIFI_ERR_AUTHENTICATION_FAILED = 11,
-    WIFI_ERR_DHCP_FAILED = 12,
-    
-    // Access Point errors
-    WIFI_ERR_AP_START_FAILED = 13,
-    WIFI_ERR_AP_ALREADY_STARTED = 14,
-    WIFI_ERR_AP_NOT_STARTED = 15,
-    WIFI_ERR_CLIENT_LIMIT_REACHED = 16,
-    
-    // Scanning errors
-    WIFI_ERR_SCAN_FAILED = 17,
-    WIFI_ERR_SCAN_TIMEOUT = 18,
-    WIFI_ERR_SCAN_IN_PROGRESS = 19,
-    
-    // Security errors
-    WIFI_ERR_INVALID_PASSWORD = 20,
-    WIFI_ERR_ENCRYPTION_FAILED = 21,
-    WIFI_ERR_SECURITY_MISMATCH = 22,
-    WIFI_ERR_WPS_FAILED = 23,
-    
-    // Configuration errors
-    WIFI_ERR_INVALID_MODE = 24,
-    WIFI_ERR_INVALID_CHANNEL = 25,
-    WIFI_ERR_INVALID_COUNTRY_CODE = 26,
-    WIFI_ERR_INVALID_BANDWIDTH = 27,
-    
-    // System errors
-    WIFI_ERR_SYSTEM_ERROR = 28,
-    WIFI_ERR_PERMISSION_DENIED = 29,
-    WIFI_ERR_OPERATION_ABORTED = 30
+#include "inc/base/BaseWifi.h"
+```
+
+## 🎯 Type Definitions
+
+### 🚨 Error Codes
+
+```cpp
+enum class hf_wifi_err_t : hf_u8_t {
+    WIFI_SUCCESS = 0,                   // ✅ Success
+    WIFI_ERR_FAILURE = 1,               // ❌ General failure
+    WIFI_ERR_INVALID_PARAM = 2,         // 🚫 Invalid parameter
+    WIFI_ERR_NOT_INITIALIZED = 3,       // ⚠️ WiFi not initialized
+    WIFI_ERR_ALREADY_INITIALIZED = 4,   // ⚠️ WiFi already initialized
+    WIFI_ERR_NOT_CONNECTED = 5,         // 📶 WiFi not connected
+    WIFI_ERR_ALREADY_CONNECTED = 6,     // 📶 WiFi already connected
+    WIFI_ERR_CONNECTION_FAILED = 7,     // ❌ Connection failed
+    WIFI_ERR_DISCONNECTION_FAILED = 8,  // ❌ Disconnection failed
+    WIFI_ERR_SCAN_FAILED = 9,           // 🔍 Network scan failed
+    WIFI_ERR_AP_START_FAILED = 10,      // 🔥 Access Point start failed
+    WIFI_ERR_AP_STOP_FAILED = 11,       // 🔥 Access Point stop failed
+    WIFI_ERR_TIMEOUT = 12,              // ⏰ Operation timeout
+    WIFI_ERR_NO_MEMORY = 13,            // 💾 Insufficient memory
+    WIFI_ERR_INVALID_SSID = 14,         // 📡 Invalid SSID
+    WIFI_ERR_INVALID_PASSWORD = 15,     // 🔐 Invalid password
+    WIFI_ERR_WEAK_SIGNAL = 16,          // 📉 Weak signal strength
+    WIFI_ERR_AUTHENTICATION_FAILED = 17, // 🔐 Authentication failed
+    WIFI_ERR_ASSOCIATION_FAILED = 18,   // 🔗 Association failed
+    WIFI_ERR_HANDSHAKE_FAILED = 19,     // 🤝 4-way handshake failed
+    WIFI_ERR_INIT_FAILED = 20,          // 🚀 WiFi initialization failed
+    WIFI_ERR_CONFIG_INVALID = 21,       // ⚙️ Invalid configuration
+    WIFI_ERR_ENTERPRISE_FAILED = 22,    // 🏢 Enterprise authentication failed
+    WIFI_ERR_WPA3_NOT_SUPPORTED = 23,   // 🔒 WPA3 not supported
+    WIFI_ERR_MESH_FAILED = 24           // 🕸️ Mesh operation failed
 };
 ```
 
-### 📊 **Error Code Categories**
-
-| Category | Range | Description |
-|----------|-------|-------------|
-| **Success** | 0 | Successful operation |
-| **General** | 1-6 | Basic initialization and parameter errors |
-| **Network** | 7-12 | Network connection and communication errors |
-| **Access Point** | 13-16 | Access Point operation errors |
-| **Scanning** | 17-19 | Network scanning errors |
-| **Security** | 20-23 | Authentication and security errors |
-| **Configuration** | 24-27 | Configuration and setting errors |
-| **System** | 28-30 | System-level errors |
-
----
-
-## 🔧 **Core API**
-
-### 🎯 **Essential Methods**
-
-#### **Initialization & Configuration**
-```cpp
-/**
- * @brief Ensure the WiFi controller is initialized
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t EnsureInitialized() = 0;
-
-/**
- * @brief Set WiFi operating mode
- * @param mode WiFi mode (Station, AP, or AP+STA)
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t SetMode(hf_wifi_mode_t mode) = 0;
-
-/**
- * @brief Check if WiFi is initialized
- * @return bool True if initialized
- */
-virtual bool IsInitialized() const = 0;
-```
-
-#### **Network Scanning**
-```cpp
-/**
- * @brief Start network scanning
- * @param scan_time_ms Scan duration in milliseconds
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t ScanNetworks(hf_u32_t scan_time_ms = 5000) = 0;
-
-/**
- * @brief Get scan results
- * @param networks Output array of scanned networks
- * @param max_networks Maximum networks to return
- * @param actual_count Actual number of networks found
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t GetScanResults(hf_wifi_network_t* networks,
-                                   hf_u32_t max_networks,
-                                   hf_u32_t& actual_count) = 0;
-```
-
-#### **Station Mode (Client)**
-```cpp
-/**
- * @brief Connect to a WiFi network
- * @param ssid Network SSID
- * @param password Network password (can be empty for open networks)
- * @param security_type Security type (optional, auto-detected if not specified)
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t ConnectToNetwork(const char* ssid,
-                                     const char* password = nullptr,
-                                     hf_wifi_security_t security_type = WIFI_SECURITY_AUTO) = 0;
-
-/**
- * @brief Disconnect from current network
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t DisconnectFromNetwork() = 0;
-
-/**
- * @brief Get connection status
- * @param status Output connection status
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t GetConnectionStatus(hf_wifi_connection_status_t& status) = 0;
-```
-
-#### **Access Point Mode**
-```cpp
-/**
- * @brief Start WiFi Access Point
- * @param config AP configuration
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t StartAccessPoint(const hf_wifi_ap_config_t& config) = 0;
-
-/**
- * @brief Stop WiFi Access Point
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t StopAccessPoint() = 0;
-
-/**
- * @brief Get connected clients list
- * @param clients Output array of connected clients
- * @param max_clients Maximum clients to return
- * @param actual_count Actual number of connected clients
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t GetConnectedClients(hf_wifi_client_t* clients,
-                                        hf_u32_t max_clients,
-                                        hf_u32_t& actual_count) = 0;
-```
-
-#### **Network Information**
-```cpp
-/**
- * @brief Get current IP address
- * @param ip_address Output IP address
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t GetIpAddress(hf_u32_t& ip_address) = 0;
-
-/**
- * @brief Get signal strength (RSSI)
- * @param rssi Output signal strength in dBm
- * @return hf_wifi_err_t Error code
- */
-virtual hf_wifi_err_t GetRssi(hf_i8_t& rssi) = 0;
-```
-
----
-
-## 📊 **Data Structures**
-
-### 📶 **WiFi Mode Types**
+### 🌐 WiFi Modes
 
 ```cpp
 enum class hf_wifi_mode_t : hf_u8_t {
-    WIFI_MODE_DISABLED = 0,         ///< WiFi disabled
-    WIFI_MODE_STATION = 1,          ///< Station mode (client)
-    WIFI_MODE_ACCESS_POINT = 2,     ///< Access Point mode
-    WIFI_MODE_AP_STA = 3            ///< Both AP and Station modes
+    WIFI_MODE_NULL = 0,     // 🚫 WiFi disabled
+    WIFI_MODE_STA = 1,      // 📱 Station mode (client)
+    WIFI_MODE_AP = 2,       // 🔥 Access Point mode
+    WIFI_MODE_APSTA = 3     // 🔄 Combined AP+STA mode
 };
 ```
 
-### 🔐 **Security Types**
+### 🔒 Security Types
 
 ```cpp
 enum class hf_wifi_security_t : hf_u8_t {
-    WIFI_SECURITY_OPEN = 0,         ///< Open network (no security)
-    WIFI_SECURITY_WEP = 1,          ///< WEP security (deprecated)
-    WIFI_SECURITY_WPA_PSK = 2,      ///< WPA Personal
-    WIFI_SECURITY_WPA2_PSK = 3,     ///< WPA2 Personal
-    WIFI_SECURITY_WPA3_PSK = 4,     ///< WPA3 Personal
-    WIFI_SECURITY_WPA2_ENTERPRISE = 5, ///< WPA2 Enterprise
-    WIFI_SECURITY_WPA3_ENTERPRISE = 6, ///< WPA3 Enterprise
-    WIFI_SECURITY_AUTO = 255        ///< Auto-detect security type
+    WIFI_AUTH_OPEN = 0,         // 🔓 Open network (no security)
+    WIFI_AUTH_WEP = 1,          // 🔐 WEP (deprecated)
+    WIFI_AUTH_WPA_PSK = 2,      // 🔒 WPA-PSK
+    WIFI_AUTH_WPA2_PSK = 3,     // 🔒 WPA2-PSK (most common)
+    WIFI_AUTH_WPA_WPA2_PSK = 4, // 🔒 WPA/WPA2-PSK mixed
+    WIFI_AUTH_WPA2_ENTERPRISE = 5, // 🏢 WPA2-Enterprise
+    WIFI_AUTH_WPA3_PSK = 6,     // 🛡️ WPA3-PSK (latest)
+    WIFI_AUTH_WPA2_WPA3_PSK = 7 // 🛡️ WPA2/WPA3-PSK mixed
 };
 ```
 
-### 📡 **Network Information**
+### 📊 Event Types
 
 ```cpp
-struct hf_wifi_network_t {
-    char ssid[33];                          ///< Network SSID (null-terminated)
-    hf_u8_t bssid[6];                       ///< BSSID (MAC address)
-    hf_i8_t rssi;                           ///< Signal strength (dBm)
-    hf_u8_t channel;                        ///< WiFi channel (1-14)
-    hf_wifi_security_t security_type;       ///< Security type
-    bool is_hidden;                         ///< Hidden network flag
-    hf_u32_t frequency;                     ///< Frequency in MHz
+enum class hf_wifi_event_t : hf_u8_t {
+    WIFI_EVENT_STA_START = 0,       // 🚀 Station started
+    WIFI_EVENT_STA_STOP = 1,        // 🛑 Station stopped
+    WIFI_EVENT_STA_CONNECTED = 2,   // ✅ Connected to AP
+    WIFI_EVENT_STA_DISCONNECTED = 3, // ❌ Disconnected from AP
+    WIFI_EVENT_STA_GOT_IP = 4,      // 🌐 Got IP address
+    WIFI_EVENT_STA_LOST_IP = 5,     // 🌐 Lost IP address
+    WIFI_EVENT_AP_START = 6,        // 🔥 AP started
+    WIFI_EVENT_AP_STOP = 7,         // 🔥 AP stopped
+    WIFI_EVENT_AP_STA_CONNECTED = 8, // 👤 Client connected to AP
+    WIFI_EVENT_AP_STA_DISCONNECTED = 9, // 👤 Client disconnected from AP
+    WIFI_EVENT_SCAN_DONE = 10       // 🔍 Network scan completed
 };
 ```
 
-### 🏠 **Access Point Configuration**
+### ⚙️ Configuration Structures
 
 ```cpp
+struct hf_wifi_station_config_t {
+    std::string ssid;                      // 📡 Network SSID
+    std::string password;                  // 🔐 Network password
+    uint8_t bssid[6];                     // 🆔 Target BSSID (optional)
+    bool bssid_set;                       // 🎯 Use specific BSSID
+    uint8_t channel;                      // 📻 WiFi channel (0 = auto)
+    uint16_t listen_interval;             // ⏰ Listen interval
+    hf_wifi_security_t threshold_authmode; // 🔒 Minimum security level
+    int16_t threshold_rssi;               // 📶 Minimum signal strength
+};
+
 struct hf_wifi_ap_config_t {
-    char ssid[33];                          ///< AP SSID
-    char password[64];                      ///< AP password (empty for open)
-    hf_u8_t channel;                        ///< WiFi channel (1-14)
-    hf_wifi_security_t security_type;       ///< Security type
-    hf_u8_t max_clients;                    ///< Maximum connected clients
-    bool ssid_hidden;                       ///< Hide SSID broadcast
-    hf_u32_t beacon_interval_ms;            ///< Beacon interval (default 100ms)
-    hf_i8_t tx_power_dbm;                   ///< Transmit power (dBm)
+    std::string ssid;            // 📡 AP SSID
+    std::string password;        // 🔐 AP password
+    uint8_t ssid_len;           // 📏 SSID length (0 for auto)
+    uint8_t channel;            // 📻 WiFi channel
+    hf_wifi_security_t authmode; // 🔒 Authentication mode
+    uint8_t ssid_hidden;        // 👻 Hide SSID (0 = visible, 1 = hidden)
+    uint8_t max_connection;     // 👥 Maximum concurrent connections
+    uint16_t beacon_interval;   // 📡 Beacon interval (ms)
+};
+
+struct hf_wifi_scan_result_t {
+    std::string ssid;              // 📡 Network SSID
+    uint8_t bssid[6];             // 🆔 Network BSSID
+    uint8_t primary_channel;       // 📻 Primary channel
+    uint8_t secondary_channel;     // 📻 Secondary channel
+    int8_t rssi;                  // 📶 Signal strength (dBm)
+    hf_wifi_security_t authmode;   // 🔒 Authentication mode
+    uint32_t phy_11b:1;           // 📊 802.11b support
+    uint32_t phy_11g:1;           // 📊 802.11g support
+    uint32_t phy_11n:1;           // 📊 802.11n support
+    uint32_t wps:1;               // 🔧 WPS support
 };
 ```
 
-### 👤 **Connected Client Information**
+## 🏗️ Class Interface
 
 ```cpp
-struct hf_wifi_client_t {
-    hf_u8_t mac_address[6];                 ///< Client MAC address
-    hf_u32_t ip_address;                    ///< Assigned IP address
-    hf_i8_t rssi;                           ///< Signal strength from client
-    hf_u32_t connection_time_ms;            ///< Connection duration
-    hf_u32_t bytes_sent;                    ///< Bytes sent to client
-    hf_u32_t bytes_received;                ///< Bytes received from client
+class BaseWifi {
+public:
+    // 🔧 Lifecycle management
+    virtual ~BaseWifi() = default;
+    virtual hf_wifi_err_t Initialize(hf_wifi_mode_t mode) = 0;
+    virtual hf_wifi_err_t Deinitialize() = 0;
+    virtual bool IsInitialized() const = 0;
+    virtual hf_wifi_err_t SetMode(hf_wifi_mode_t mode) = 0;
+    virtual hf_wifi_mode_t GetMode() const = 0;
+
+    // 📱 Station mode operations
+    virtual hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config) = 0;
+    virtual hf_wifi_err_t ConnectStation(hf_timeout_ms_t timeout_ms = 0) = 0;
+    virtual hf_wifi_err_t DisconnectStation() = 0;
+    virtual bool IsStationConnected() const = 0;
+    virtual hf_wifi_err_t GetStationInfo(hf_wifi_station_info_t& info) const = 0;
+
+    // 🔥 Access Point operations
+    virtual hf_wifi_err_t ConfigureAP(const hf_wifi_ap_config_t& config) = 0;
+    virtual hf_wifi_err_t StartAP() = 0;
+    virtual hf_wifi_err_t StopAP() = 0;
+    virtual bool IsAPStarted() const = 0;
+    virtual hf_wifi_err_t GetAPInfo(hf_wifi_ap_info_t& info) const = 0;
+
+    // 🔍 Network scanning
+    virtual hf_wifi_err_t StartScan(const hf_wifi_scan_config_t& config = {}) = 0;
+    virtual hf_wifi_err_t GetScanResults(hf_wifi_scan_result_t* results, uint16_t& count) = 0;
+    virtual bool IsScanInProgress() const = 0;
+
+    // 📊 Network information
+    virtual hf_wifi_err_t GetIPInfo(hf_wifi_ip_info_t& ip_info) const = 0;
+    virtual int8_t GetRSSI() const = 0;
+    virtual hf_wifi_err_t GetMACAddress(uint8_t mac[6]) const = 0;
+
+    // 🎯 Event management
+    virtual hf_wifi_err_t SetEventCallback(hf_wifi_event_callback_t callback) = 0;
+    virtual hf_wifi_err_t ClearEventCallback() = 0;
+
+    // 🔧 Power management
+    virtual hf_wifi_err_t SetPowerSaveMode(hf_wifi_power_save_t mode) = 0;
+    virtual hf_wifi_power_save_t GetPowerSaveMode() const = 0;
 };
 ```
 
-### 📈 **WiFi Statistics**
+## 🎯 Core Methods
+
+### 🔧 Initialization
 
 ```cpp
-struct hf_wifi_statistics_t {
-    hf_u32_t total_connections;             ///< Total connection attempts
-    hf_u32_t successful_connections;        ///< Successful connections
-    hf_u32_t failed_connections;            ///< Failed connections
-    hf_u32_t total_disconnections;          ///< Total disconnections
-    hf_u32_t total_bytes_sent;              ///< Total bytes transmitted
-    hf_u32_t total_bytes_received;          ///< Total bytes received
-    hf_u32_t scan_count;                    ///< Total network scans
-    hf_u32_t networks_found;                ///< Total networks found
-    hf_u32_t ap_clients_served;             ///< Total AP clients served
-    hf_u32_t uptime_ms;                     ///< WiFi uptime in milliseconds
-};
+hf_wifi_err_t Initialize(hf_wifi_mode_t mode);
 ```
+**Purpose:** 🚀 Initialize WiFi subsystem with specified mode  
+**Parameters:** WiFi operating mode (STA, AP, or APSTA)  
+**Returns:** Error code indicating success or failure
 
----
-
-## 📶 **WiFi Modes**
-
-### 📱 **Station Mode (Client)**
-
-Station mode connects to existing WiFi networks:
+### 📱 Station Mode Operations
 
 ```cpp
-// Configure for Station mode
-wifi.SetMode(hf_wifi_mode_t::WIFI_MODE_STATION);
-
-// Connect to home network
-wifi.ConnectToNetwork("MyHomeWifi", "mypassword123", 
-                     hf_wifi_security_t::WIFI_SECURITY_WPA2_PSK);
+hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config);
+hf_wifi_err_t ConnectStation(hf_timeout_ms_t timeout_ms = 0);
+hf_wifi_err_t DisconnectStation();
+bool IsStationConnected() const;
 ```
+**Purpose:** 📡 Connect to existing WiFi networks as a client  
+**Parameters:** Network credentials, timeout values  
+**Returns:** Connection status and error codes
 
-**Use Cases:**
-- **IoT devices** connecting to home/office networks
-- **Internet access** for data logging and remote control
-- **Cloud connectivity** for firmware updates and monitoring
-
-### 🏠 **Access Point Mode**
-
-Access Point mode creates a WiFi hotspot:
+### 🔥 Access Point Operations
 
 ```cpp
-// Configure AP settings
-hf_wifi_ap_config_t ap_config = {
-    .ssid = "HardFOC_Controller",
-    .password = "hardfoc123",
-    .channel = 6,
-    .security_type = hf_wifi_security_t::WIFI_SECURITY_WPA2_PSK,
-    .max_clients = 4,
-    .ssid_hidden = false,
-    .beacon_interval_ms = 100,
-    .tx_power_dbm = 20
-};
-
-wifi.SetMode(hf_wifi_mode_t::WIFI_MODE_ACCESS_POINT);
-wifi.StartAccessPoint(ap_config);
+hf_wifi_err_t ConfigureAP(const hf_wifi_ap_config_t& config);
+hf_wifi_err_t StartAP();
+hf_wifi_err_t StopAP();
+bool IsAPStarted() const;
 ```
+**Purpose:** 🔥 Create and manage WiFi hotspots  
+**Parameters:** AP configuration (SSID, password, security)  
+**Returns:** AP status and error codes
 
-**Use Cases:**
-- **Configuration interfaces** for device setup
-- **Local web servers** for control and monitoring
-- **Direct device-to-device** communication
-
-### 🔄 **Dual Mode (AP + Station)**
-
-Simultaneous AP and Station operation:
+### 🔍 Network Scanning
 
 ```cpp
-// Enable dual mode
-wifi.SetMode(hf_wifi_mode_t::WIFI_MODE_AP_STA);
-
-// Connect to internet AND provide local hotspot
-wifi.ConnectToNetwork("InternetWifi", "password");
-wifi.StartAccessPoint(ap_config);
+hf_wifi_err_t StartScan(const hf_wifi_scan_config_t& config = {});
+hf_wifi_err_t GetScanResults(hf_wifi_scan_result_t* results, uint16_t& count);
+bool IsScanInProgress() const;
 ```
+**Purpose:** 🔍 Discover and analyze available WiFi networks  
+**Parameters:** Scan configuration and result buffers  
+**Returns:** Available networks with signal strength and security info
 
-**Use Cases:**
-- **WiFi bridge/repeater** functionality
-- **Local configuration** while maintaining internet access
-- **Mesh networking** applications
+## 💡 Usage Examples
 
----
-
-## 📊 **Usage Examples**
-
-### 🌐 **Internet-Connected IoT Device**
+### 📱 WiFi Station (Client) Mode
 
 ```cpp
 #include "inc/mcu/esp32/EspWifi.h"
 
-class IoTDevice {
+class WiFiClient {
 private:
     EspWifi wifi_;
-    bool is_connected_;
+    bool connected_;
     
 public:
-    IoTDevice() : is_connected_(false) {}
+    WiFiClient() : connected_(false) {}
     
     bool initialize() {
-        // Initialize WiFi in station mode
-        if (wifi_.EnsureInitialized() != hf_wifi_err_t::WIFI_SUCCESS) {
+        // 🚀 Initialize WiFi in station mode
+        hf_wifi_err_t result = wifi_.Initialize(hf_wifi_mode_t::WIFI_MODE_STA);
+        if (result != hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("❌ Failed to initialize WiFi: %s\n", HfWifiErrToString(result).data());
             return false;
         }
         
-        if (wifi_.SetMode(hf_wifi_mode_t::WIFI_MODE_STATION) != hf_wifi_err_t::WIFI_SUCCESS) {
-            return false;
-        }
-        
-        // Register event callback for connection events
-        wifi_.RegisterEventCallback([this](hf_wifi_event_t& event) {
-            this->handle_wifi_event(event);
+        // 📡 Set up event callback for connection monitoring
+        wifi_.SetEventCallback([this](hf_wifi_event_t event, void* data) {
+            handle_wifi_event(event, data);
         });
         
+        printf("✅ WiFi initialized in station mode\n");
         return true;
     }
     
-    bool connect_to_wifi(const char* ssid, const char* password) {
-        printf("🔗 Connecting to WiFi network: %s\n", ssid);
+    bool connect_to_network(const std::string& ssid, const std::string& password) {
+        // ⚙️ Configure station parameters
+        hf_wifi_station_config_t config;
+        config.ssid = ssid;
+        config.password = password;
+        config.bssid_set = false;  // Don't target specific BSSID
+        config.channel = 0;        // Auto-select channel
+        config.threshold_authmode = hf_wifi_security_t::WIFI_AUTH_WPA2_PSK;
+        config.threshold_rssi = -80; // Minimum -80dBm signal strength
         
-        hf_wifi_err_t result = wifi_.ConnectToNetwork(ssid, password);
+        hf_wifi_err_t result = wifi_.ConfigureStation(config);
+        if (result != hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("❌ Failed to configure station: %s\n", HfWifiErrToString(result).data());
+            return false;
+        }
+        
+        // 🔗 Attempt connection with 30 second timeout
+        printf("🔗 Connecting to network '%s'...\n", ssid.c_str());
+        result = wifi_.ConnectStation(30000);
         
         if (result == hf_wifi_err_t::WIFI_SUCCESS) {
-            printf("✅ WiFi connection initiated\n");
-            
-            // Wait for connection to establish
-            for (int i = 0; i < 20; i++) {
-                vTaskDelay(pdMS_TO_TICKS(500));
-                
-                hf_wifi_connection_status_t status;
-                if (wifi_.GetConnectionStatus(status) == hf_wifi_err_t::WIFI_SUCCESS) {
-                    if (status == WIFI_CONNECTED) {
-                        hf_u32_t ip;
-                        wifi_.GetIpAddress(ip);
-                        printf("✅ Connected! IP: %d.%d.%d.%d\n",
-                               (ip >> 0) & 0xFF, (ip >> 8) & 0xFF,
-                               (ip >> 16) & 0xFF, (ip >> 24) & 0xFF);
-                        is_connected_ = true;
-                        return true;
-                    }
-                }
-            }
-            
-            printf("⏰ Connection timeout\n");
-            return false;
+            printf("✅ Connected to WiFi network\n");
+            return true;
         } else {
-            printf("❌ WiFi connection failed: %d\n", static_cast<int>(result));
+            printf("❌ Connection failed: %s\n", HfWifiErrToString(result).data());
             return false;
         }
     }
     
-    void scan_networks() {
-        printf("🔍 Scanning for WiFi networks...\n");
-        
-        if (wifi_.ScanNetworks(10000) != hf_wifi_err_t::WIFI_SUCCESS) {
-            printf("❌ Network scan failed\n");
-            return;
-        }
-        
-        hf_wifi_network_t networks[20];
-        hf_u32_t network_count;
-        
-        if (wifi_.GetScanResults(networks, 20, network_count) == hf_wifi_err_t::WIFI_SUCCESS) {
-            printf("📶 Found %lu networks:\n", network_count);
-            
-            for (hf_u32_t i = 0; i < network_count; i++) {
-                const char* security_str = get_security_string(networks[i].security_type);
-                printf("   %s [Ch:%d] %ddBm %s%s\n",
-                       networks[i].ssid,
-                       networks[i].channel,
-                       networks[i].rssi,
-                       security_str,
-                       networks[i].is_hidden ? " (Hidden)" : "");
+    void disconnect() {
+        if (connected_) {
+            hf_wifi_err_t result = wifi_.DisconnectStation();
+            if (result == hf_wifi_err_t::WIFI_SUCCESS) {
+                printf("✅ Disconnected from WiFi\n");
+            } else {
+                printf("❌ Disconnect failed: %s\n", HfWifiErrToString(result).data());
             }
         }
     }
     
-    void send_telemetry_data(float temperature, float humidity) {
-        if (!is_connected_) {
+    void print_connection_info() {
+        if (!connected_) {
             printf("❌ Not connected to WiFi\n");
             return;
         }
         
-        // Create JSON payload
-        char json_data[256];
-        snprintf(json_data, sizeof(json_data),
-                "{"
-                "\"device_id\":\"hardfoc_001\","
-                "\"timestamp\":%lu,"
-                "\"temperature\":%.2f,"
-                "\"humidity\":%.2f"
-                "}",
-                esp_timer_get_time() / 1000,
-                temperature,
-                humidity);
-        
-        printf("📤 Sending telemetry: %s\n", json_data);
-        
-        // Implementation would include HTTP client to send data
-        // This is a placeholder for the actual HTTP/MQTT implementation
-    }
-    
-private:
-    void handle_wifi_event(hf_wifi_event_t& event) {
-        switch (event.type) {
-            case WIFI_EVENT_CONNECTED:
-                printf("✅ WiFi connected to %s\n", event.ssid);
-                break;
-                
-            case WIFI_EVENT_DISCONNECTED:
-                printf("❌ WiFi disconnected\n");
-                is_connected_ = false;
-                // Implement reconnection logic
-                break;
-                
-            case WIFI_EVENT_IP_ASSIGNED:
-                printf("📡 IP address assigned: %d.%d.%d.%d\n",
-                       (event.ip_address >> 0) & 0xFF, (event.ip_address >> 8) & 0xFF,
-                       (event.ip_address >> 16) & 0xFF, (event.ip_address >> 24) & 0xFF);
-                is_connected_ = true;
-                break;
-        }
-    }
-    
-    const char* get_security_string(hf_wifi_security_t security) {
-        switch (security) {
-            case hf_wifi_security_t::WIFI_SECURITY_OPEN: return "Open";
-            case hf_wifi_security_t::WIFI_SECURITY_WEP: return "WEP";
-            case hf_wifi_security_t::WIFI_SECURITY_WPA_PSK: return "WPA";
-            case hf_wifi_security_t::WIFI_SECURITY_WPA2_PSK: return "WPA2";
-            case hf_wifi_security_t::WIFI_SECURITY_WPA3_PSK: return "WPA3";
-            default: return "Unknown";
-        }
-    }
-};
-```
-
-### 🏠 **WiFi Configuration Access Point**
-
-```cpp
-#include "inc/mcu/esp32/EspWifi.h"
-
-class ConfigurationAP {
-private:
-    EspWifi wifi_;
-    bool ap_started_;
-    std::vector<hf_wifi_client_t> connected_clients_;
-    
-public:
-    ConfigurationAP() : ap_started_(false) {}
-    
-    bool start_configuration_portal() {
-        // Initialize WiFi in AP mode
-        if (wifi_.EnsureInitialized() != hf_wifi_err_t::WIFI_SUCCESS) {
-            return false;
+        // 📊 Get IP information
+        hf_wifi_ip_info_t ip_info;
+        if (wifi_.GetIPInfo(ip_info) == hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("🌐 IP Address: %d.%d.%d.%d\n",
+                   (ip_info.ip >> 0) & 0xFF,
+                   (ip_info.ip >> 8) & 0xFF,
+                   (ip_info.ip >> 16) & 0xFF,
+                   (ip_info.ip >> 24) & 0xFF);
+            printf("🌐 Gateway: %d.%d.%d.%d\n",
+                   (ip_info.gateway >> 0) & 0xFF,
+                   (ip_info.gateway >> 8) & 0xFF,
+                   (ip_info.gateway >> 16) & 0xFF,
+                   (ip_info.gateway >> 24) & 0xFF);
         }
         
-        if (wifi_.SetMode(hf_wifi_mode_t::WIFI_MODE_ACCESS_POINT) != hf_wifi_err_t::WIFI_SUCCESS) {
-            return false;
-        }
-        
-        // Configure AP settings
-        hf_wifi_ap_config_t ap_config = {
-            .ssid = "HardFOC-Setup",
-            .password = "hardfoc123",
-            .channel = 6,
-            .security_type = hf_wifi_security_t::WIFI_SECURITY_WPA2_PSK,
-            .max_clients = 4,
-            .ssid_hidden = false,
-            .beacon_interval_ms = 100,
-            .tx_power_dbm = 20
-        };
-        
-        hf_wifi_err_t result = wifi_.StartAccessPoint(ap_config);
-        
-        if (result == hf_wifi_err_t::WIFI_SUCCESS) {
-            ap_started_ = true;
-            printf("✅ Configuration AP started: %s\n", ap_config.ssid);
-            printf("🔐 Password: %s\n", ap_config.password);
-            printf("📡 Connect to configure your device\n");
-            
-            // Register event callback
-            wifi_.RegisterEventCallback([this](hf_wifi_event_t& event) {
-                this->handle_ap_event(event);
-            });
-            
-            return true;
+        // 📶 Get signal strength
+        int8_t rssi = wifi_.GetRSSI();
+        printf("📶 Signal Strength: %d dBm", rssi);
+        if (rssi > -50) {
+            printf(" (Excellent)\n");
+        } else if (rssi > -60) {
+            printf(" (Good)\n");
+        } else if (rssi > -70) {
+            printf(" (Fair)\n");
         } else {
-            printf("❌ Failed to start AP: %d\n", static_cast<int>(result));
-            return false;
+            printf(" (Poor)\n");
         }
-    }
-    
-    void monitor_clients() {
-        if (!ap_started_) return;
         
-        hf_wifi_client_t clients[10];
-        hf_u32_t client_count;
-        
-        if (wifi_.GetConnectedClients(clients, 10, client_count) == hf_wifi_err_t::WIFI_SUCCESS) {
-            if (client_count != connected_clients_.size()) {
-                printf("👥 Connected clients: %lu\n", client_count);
-                
-                for (hf_u32_t i = 0; i < client_count; i++) {
-                    printf("   📱 %02X:%02X:%02X:%02X:%02X:%02X - %d.%d.%d.%d\n",
-                           clients[i].mac_address[0], clients[i].mac_address[1],
-                           clients[i].mac_address[2], clients[i].mac_address[3],
-                           clients[i].mac_address[4], clients[i].mac_address[5],
-                           (clients[i].ip_address >> 0) & 0xFF,
-                           (clients[i].ip_address >> 8) & 0xFF,
-                           (clients[i].ip_address >> 16) & 0xFF,
-                           (clients[i].ip_address >> 24) & 0xFF);
-                }
-                
-                // Update connected clients list
-                connected_clients_.clear();
-                for (hf_u32_t i = 0; i < client_count; i++) {
-                    connected_clients_.push_back(clients[i]);
-                }
-            }
+        // 🆔 Get MAC address
+        uint8_t mac[6];
+        if (wifi_.GetMACAddress(mac) == hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("🆔 MAC Address: %02X:%02X:%02X:%02X:%02X:%02X\n",
+                   mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
         }
     }
     
-    void stop_configuration_portal() {
-        if (ap_started_) {
-            wifi_.StopAccessPoint();
-            ap_started_ = false;
-            connected_clients_.clear();
-            printf("🔴 Configuration AP stopped\n");
-        }
-    }
-    
-    void show_statistics() {
-        hf_wifi_statistics_t stats;
-        if (wifi_.GetStatistics(stats) == hf_wifi_err_t::WIFI_SUCCESS) {
-            printf("📊 WiFi AP Statistics:\n");
-            printf("   Clients Served: %lu\n", stats.ap_clients_served);
-            printf("   Data Sent: %lu bytes\n", stats.total_bytes_sent);
-            printf("   Data Received: %lu bytes\n", stats.total_bytes_received);
-            printf("   Uptime: %lu ms\n", stats.uptime_ms);
-        }
-    }
-    
-private:
-    void handle_ap_event(hf_wifi_event_t& event) {
-        switch (event.type) {
-            case WIFI_EVENT_AP_CLIENT_CONNECTED:
-                printf("✅ Client connected: %02X:%02X:%02X:%02X:%02X:%02X\n",
-                       event.client_mac[0], event.client_mac[1], event.client_mac[2],
-                       event.client_mac[3], event.client_mac[4], event.client_mac[5]);
+    void handle_wifi_event(hf_wifi_event_t event, void* data) {
+        switch (event) {
+            case hf_wifi_event_t::WIFI_EVENT_STA_START:
+                printf("📡 WiFi station started\n");
                 break;
                 
-            case WIFI_EVENT_AP_CLIENT_DISCONNECTED:
-                printf("❌ Client disconnected: %02X:%02X:%02X:%02X:%02X:%02X\n",
-                       event.client_mac[0], event.client_mac[1], event.client_mac[2],
-                       event.client_mac[3], event.client_mac[4], event.client_mac[5]);
+            case hf_wifi_event_t::WIFI_EVENT_STA_CONNECTED:
+                printf("✅ Connected to access point\n");
+                break;
+                
+            case hf_wifi_event_t::WIFI_EVENT_STA_GOT_IP:
+                printf("🌐 Got IP address\n");
+                connected_ = true;
+                print_connection_info();
+                break;
+                
+            case hf_wifi_event_t::WIFI_EVENT_STA_DISCONNECTED:
+                printf("❌ Disconnected from access point\n");
+                connected_ = false;
+                break;
+                
+            case hf_wifi_event_t::WIFI_EVENT_STA_LOST_IP:
+                printf("🌐 Lost IP address\n");
+                connected_ = false;
+                break;
+                
+            default:
+                printf("📡 WiFi event: %d\n", static_cast<int>(event));
                 break;
         }
+    }
+    
+    bool is_connected() const {
+        return connected_ && wifi_.IsStationConnected();
     }
 };
+
+void wifi_client_demo() {
+    WiFiClient client;
+    
+    if (!client.initialize()) {
+        printf("❌ WiFi client initialization failed\n");
+        return;
+    }
+    
+    // 🔗 Connect to your WiFi network
+    if (client.connect_to_network("YourWiFiSSID", "YourPassword")) {
+        printf("🎉 Successfully connected to WiFi!\n");
+        
+        // 📊 Monitor connection
+        for (int i = 0; i < 60; i++) {  // Monitor for 1 minute
+            if (client.is_connected()) {
+                printf("📶 WiFi connected (check %d/60)\n", i + 1);
+            } else {
+                printf("❌ WiFi disconnected\n");
+                break;
+            }
+            vTaskDelay(pdMS_TO_TICKS(1000));
+        }
+        
+        client.disconnect();
+    }
+}
 ```
 
-### 🔄 **WiFi Bridge/Repeater**
+### 🔥 WiFi Access Point (Hotspot) Mode
 
 ```cpp
-#include "inc/mcu/esp32/EspWifi.h"
-
-class WifiBridge {
+class WiFiHotspot {
 private:
     EspWifi wifi_;
-    bool internet_connected_;
     bool ap_started_;
+    uint8_t connected_clients_;
     
 public:
-    WifiBridge() : internet_connected_(false), ap_started_(false) {}
+    WiFiHotspot() : ap_started_(false), connected_clients_(0) {}
     
     bool initialize() {
-        if (wifi_.EnsureInitialized() != hf_wifi_err_t::WIFI_SUCCESS) {
+        // 🚀 Initialize WiFi in AP mode
+        hf_wifi_err_t result = wifi_.Initialize(hf_wifi_mode_t::WIFI_MODE_AP);
+        if (result != hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("❌ Failed to initialize WiFi AP: %s\n", HfWifiErrToString(result).data());
             return false;
         }
         
-        // Enable dual mode (AP + Station)
-        return wifi_.SetMode(hf_wifi_mode_t::WIFI_MODE_AP_STA) == hf_wifi_err_t::WIFI_SUCCESS;
+        // 📡 Set up event callback for client monitoring
+        wifi_.SetEventCallback([this](hf_wifi_event_t event, void* data) {
+            handle_ap_event(event, data);
+        });
+        
+        printf("✅ WiFi initialized in AP mode\n");
+        return true;
     }
     
-    bool setup_bridge(const char* upstream_ssid, const char* upstream_password,
-                     const char* local_ssid, const char* local_password) {
+    bool start_hotspot(const std::string& ssid, const std::string& password, 
+                      uint8_t max_clients = 4) {
+        // ⚙️ Configure access point
+        hf_wifi_ap_config_t config;
+        config.ssid = ssid;
+        config.password = password;
+        config.ssid_len = 0;  // Auto-calculate length
+        config.channel = 1;   // Channel 1 (2.4GHz)
+        config.authmode = password.empty() ? 
+            hf_wifi_security_t::WIFI_AUTH_OPEN : 
+            hf_wifi_security_t::WIFI_AUTH_WPA2_PSK;
+        config.ssid_hidden = 0;  // Broadcast SSID
+        config.max_connection = max_clients;
+        config.beacon_interval = 100;  // 100ms beacon interval
         
-        // First, connect to upstream network for internet access
-        printf("🔗 Connecting to upstream network: %s\n", upstream_ssid);
-        
-        hf_wifi_err_t result = wifi_.ConnectToNetwork(upstream_ssid, upstream_password);
+        hf_wifi_err_t result = wifi_.ConfigureAP(config);
         if (result != hf_wifi_err_t::WIFI_SUCCESS) {
-            printf("❌ Failed to connect to upstream network\n");
+            printf("❌ Failed to configure AP: %s\n", HfWifiErrToString(result).data());
             return false;
         }
         
-        // Wait for connection
-        vTaskDelay(pdMS_TO_TICKS(5000));
-        
-        hf_wifi_connection_status_t status;
-        if (wifi_.GetConnectionStatus(status) != hf_wifi_err_t::WIFI_SUCCESS || 
-            status != WIFI_CONNECTED) {
-            printf("❌ Upstream connection failed\n");
-            return false;
-        }
-        
-        internet_connected_ = true;
-        printf("✅ Connected to upstream network\n");
-        
-        // Now start local access point
-        hf_wifi_ap_config_t ap_config = {
-            .ssid = "",
-            .password = "",
-            .channel = 6,
-            .security_type = hf_wifi_security_t::WIFI_SECURITY_WPA2_PSK,
-            .max_clients = 8,
-            .ssid_hidden = false,
-            .beacon_interval_ms = 100,
-            .tx_power_dbm = 17  // Slightly lower power to avoid interference
-        };
-        
-        strncpy(ap_config.ssid, local_ssid, sizeof(ap_config.ssid) - 1);
-        strncpy(ap_config.password, local_password, sizeof(ap_config.password) - 1);
-        
-        result = wifi_.StartAccessPoint(ap_config);
+        // 🔥 Start the access point
+        result = wifi_.StartAP();
         if (result == hf_wifi_err_t::WIFI_SUCCESS) {
-            ap_started_ = true;
-            printf("✅ Local AP started: %s\n", local_ssid);
-            printf("🌉 WiFi bridge is operational\n");
+            printf("🔥 WiFi hotspot '%s' started successfully\n", ssid.c_str());
+            printf("👥 Maximum clients: %u\n", max_clients);
+            if (!password.empty()) {
+                printf("🔒 Security: WPA2-PSK\n");
+            } else {
+                printf("🔓 Security: Open (no password)\n");
+            }
             return true;
         } else {
-            printf("❌ Failed to start local AP\n");
+            printf("❌ Failed to start AP: %s\n", HfWifiErrToString(result).data());
             return false;
         }
     }
     
-    void monitor_bridge_status() {
-        // Check upstream connection
-        hf_wifi_connection_status_t status;
-        if (wifi_.GetConnectionStatus(status) == hf_wifi_err_t::WIFI_SUCCESS) {
-            if (status != WIFI_CONNECTED && internet_connected_) {
-                printf("⚠️ Upstream connection lost, attempting reconnection\n");
-                internet_connected_ = false;
-                // Implement reconnection logic here
-            } else if (status == WIFI_CONNECTED && !internet_connected_) {
-                printf("✅ Upstream connection restored\n");
-                internet_connected_ = true;
-            }
-        }
-        
-        // Monitor local clients
+    void stop_hotspot() {
         if (ap_started_) {
-            hf_wifi_client_t clients[10];
-            hf_u32_t client_count;
-            
-            if (wifi_.GetConnectedClients(clients, 10, client_count) == hf_wifi_err_t::WIFI_SUCCESS) {
-                static hf_u32_t last_client_count = 0;
-                if (client_count != last_client_count) {
-                    printf("👥 Local clients: %lu\n", client_count);
-                    last_client_count = client_count;
-                }
-            }
-        }
-        
-        // Get signal strength
-        hf_i8_t rssi;
-        if (wifi_.GetRssi(rssi) == hf_wifi_err_t::WIFI_SUCCESS) {
-            static hf_i8_t last_rssi = 0;
-            if (abs(rssi - last_rssi) > 5) {  // Report significant changes
-                printf("📶 Upstream signal: %ddBm\n", rssi);
-                last_rssi = rssi;
+            hf_wifi_err_t result = wifi_.StopAP();
+            if (result == hf_wifi_err_t::WIFI_SUCCESS) {
+                printf("🔥 WiFi hotspot stopped\n");
+            } else {
+                printf("❌ Failed to stop hotspot: %s\n", HfWifiErrToString(result).data());
             }
         }
     }
     
-    void show_bridge_statistics() {
-        printf("🌉 WiFi Bridge Status:\n");
-        printf("   Internet: %s\n", internet_connected_ ? "✅ Connected" : "❌ Disconnected");
-        printf("   Local AP: %s\n", ap_started_ ? "✅ Active" : "❌ Inactive");
+    void print_ap_info() {
+        if (!ap_started_) {
+            printf("❌ Access point not started\n");
+            return;
+        }
         
-        hf_wifi_statistics_t stats;
-        if (wifi_.GetStatistics(stats) == hf_wifi_err_t::WIFI_SUCCESS) {
-            printf("   Data Bridged: %lu bytes in, %lu bytes out\n",
-                   stats.total_bytes_received, stats.total_bytes_sent);
-            printf("   Connection Success Rate: %.1f%%\n",
-                   (float)stats.successful_connections / stats.total_connections * 100.0f);
+        // 📊 Get AP information
+        hf_wifi_ap_info_t ap_info;
+        if (wifi_.GetAPInfo(ap_info) == hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("📡 AP SSID: %s\n", ap_info.ssid.c_str());
+            printf("📻 Channel: %u\n", ap_info.channel);
+            printf("👥 Connected Clients: %u/%u\n", 
+                   connected_clients_, ap_info.max_connection);
+        }
+        
+        // 🌐 Get IP information
+        hf_wifi_ip_info_t ip_info;
+        if (wifi_.GetIPInfo(ip_info) == hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("🌐 AP IP Address: %d.%d.%d.%d\n",
+                   (ip_info.ip >> 0) & 0xFF,
+                   (ip_info.ip >> 8) & 0xFF,
+                   (ip_info.ip >> 16) & 0xFF,
+                   (ip_info.ip >> 24) & 0xFF);
+        }
+        
+        // 🆔 Get MAC address
+        uint8_t mac[6];
+        if (wifi_.GetMACAddress(mac) == hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("🆔 AP MAC Address: %02X:%02X:%02X:%02X:%02X:%02X\n",
+                   mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
         }
     }
+    
+    void handle_ap_event(hf_wifi_event_t event, void* data) {
+        switch (event) {
+            case hf_wifi_event_t::WIFI_EVENT_AP_START:
+                printf("🔥 Access point started\n");
+                ap_started_ = true;
+                print_ap_info();
+                break;
+                
+            case hf_wifi_event_t::WIFI_EVENT_AP_STOP:
+                printf("🔥 Access point stopped\n");
+                ap_started_ = false;
+                connected_clients_ = 0;
+                break;
+                
+            case hf_wifi_event_t::WIFI_EVENT_AP_STA_CONNECTED:
+                connected_clients_++;
+                printf("👤 Client connected (total: %u)\n", connected_clients_);
+                break;
+                
+            case hf_wifi_event_t::WIFI_EVENT_AP_STA_DISCONNECTED:
+                if (connected_clients_ > 0) connected_clients_--;
+                printf("👤 Client disconnected (total: %u)\n", connected_clients_);
+                break;
+                
+            default:
+                printf("📡 AP event: %d\n", static_cast<int>(event));
+                break;
+        }
+    }
+    
+    bool is_running() const {
+        return ap_started_ && wifi_.IsAPStarted();
+    }
+    
+    uint8_t get_client_count() const {
+        return connected_clients_;
+    }
 };
+
+void wifi_hotspot_demo() {
+    WiFiHotspot hotspot;
+    
+    if (!hotspot.initialize()) {
+        printf("❌ WiFi hotspot initialization failed\n");
+        return;
+    }
+    
+    // 🔥 Start hotspot with custom settings
+    if (hotspot.start_hotspot("HardFOC-Config", "hardfoc123", 8)) {
+        printf("🎉 WiFi hotspot started successfully!\n");
+        
+        // 📊 Monitor hotspot for 5 minutes
+        for (int i = 0; i < 300; i++) {  // 5 minutes = 300 seconds
+            if (hotspot.is_running()) {
+                printf("🔥 Hotspot running - %u clients connected (time: %ds)\n", 
+                       hotspot.get_client_count(), i + 1);
+            } else {
+                printf("❌ Hotspot stopped unexpectedly\n");
+                break;
+            }
+            vTaskDelay(pdMS_TO_TICKS(1000));
+        }
+        
+        hotspot.stop_hotspot();
+    }
+}
 ```
 
----
+### 🔍 WiFi Network Scanner
 
-## 🧪 **Best Practices**
+```cpp
+class WiFiScanner {
+private:
+    EspWifi wifi_;
+    std::vector<hf_wifi_scan_result_t> scan_results_;
+    
+public:
+    bool initialize() {
+        // 🚀 Initialize WiFi for scanning (station mode)
+        hf_wifi_err_t result = wifi_.Initialize(hf_wifi_mode_t::WIFI_MODE_STA);
+        if (result != hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("❌ Failed to initialize WiFi scanner: %s\n", HfWifiErrToString(result).data());
+            return false;
+        }
+        
+        printf("✅ WiFi scanner initialized\n");
+        return true;
+    }
+    
+    bool scan_networks(bool show_hidden = false) {
+        printf("🔍 Scanning for WiFi networks...\n");
+        
+        // ⚙️ Configure scan parameters
+        hf_wifi_scan_config_t config;
+        config.ssid = "";           // Scan all SSIDs
+        config.bssid = nullptr;     // Scan all BSSIDs
+        config.channel = 0;         // Scan all channels
+        config.show_hidden = show_hidden;
+        config.scan_type = hf_wifi_scan_type_t::WIFI_SCAN_TYPE_ACTIVE;
+        config.scan_time.active.min = 120;  // Min scan time per channel (ms)
+        config.scan_time.active.max = 150;  // Max scan time per channel (ms)
+        
+        // 🔍 Start the scan
+        hf_wifi_err_t result = wifi_.StartScan(config);
+        if (result != hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("❌ Failed to start scan: %s\n", HfWifiErrToString(result).data());
+            return false;
+        }
+        
+        // ⏰ Wait for scan to complete (with timeout)
+        int timeout_count = 0;
+        while (wifi_.IsScanInProgress() && timeout_count < 60) {  // 6 second timeout
+            vTaskDelay(pdMS_TO_TICKS(100));
+            timeout_count++;
+        }
+        
+        if (wifi_.IsScanInProgress()) {
+            printf("⏰ Scan timeout - may be incomplete\n");
+            return false;
+        }
+        
+        // 📊 Get scan results
+        scan_results_.clear();
+        scan_results_.resize(50);  // Prepare for up to 50 networks
+        uint16_t count = scan_results_.size();
+        
+        result = wifi_.GetScanResults(scan_results_.data(), count);
+        if (result != hf_wifi_err_t::WIFI_SUCCESS) {
+            printf("❌ Failed to get scan results: %s\n", HfWifiErrToString(result).data());
+            return false;
+        }
+        
+        // 📏 Resize to actual count
+        scan_results_.resize(count);
+        
+        printf("✅ Scan completed - found %u networks\n", count);
+        return true;
+    }
+    
+    void print_scan_results() {
+        if (scan_results_.empty()) {
+            printf("❌ No scan results available\n");
+            return;
+        }
+        
+        printf("\n📊 WiFi Network Scan Results:\n");
+        printf("═══════════════════════════════════════════════════════════════════════\n");
+        printf("│ %-32s │ 📶 RSSI │ 📻 Ch │ 🔒 Security         │\n", "SSID");
+        printf("├──────────────────────────────────────┼─────────┼───────┼─────────────────────┤\n");
+        
+        // 📊 Sort by signal strength (strongest first)
+        std::sort(scan_results_.begin(), scan_results_.end(),
+                  [](const hf_wifi_scan_result_t& a, const hf_wifi_scan_result_t& b) {
+                      return a.rssi > b.rssi;
+                  });
+        
+        for (const auto& result : scan_results_) {
+            std::string ssid = result.ssid.empty() ? "<Hidden Network>" : result.ssid;
+            if (ssid.length() > 32) {
+                ssid = ssid.substr(0, 29) + "...";
+            }
+            
+            std::string signal_bar = get_signal_bars(result.rssi);
+            std::string security = get_security_string(result.authmode);
+            
+            printf("│ %-32s │ %3d dBm │  %2u   │ %-19s │\n",
+                   ssid.c_str(), result.rssi, result.primary_channel, security.c_str());
+        }
+        
+        printf("└──────────────────────────────────────┴─────────┴───────┴─────────────────────┘\n");
+        
+        print_scan_statistics();
+    }
+    
+    void print_scan_statistics() {
+        if (scan_results_.empty()) return;
+        
+        printf("\n📈 Scan Statistics:\n");
+        
+        // 📊 Count by security type
+        std::map<hf_wifi_security_t, int> security_counts;
+        std::map<uint8_t, int> channel_counts;
+        int strong_signals = 0, weak_signals = 0;
+        
+        for (const auto& result : scan_results_) {
+            security_counts[result.authmode]++;
+            channel_counts[result.primary_channel]++;
+            
+            if (result.rssi > -60) {
+                strong_signals++;
+            } else if (result.rssi < -80) {
+                weak_signals++;
+            }
+        }
+        
+        printf("   🔒 Security Distribution:\n");
+        for (const auto& [auth, count] : security_counts) {
+            printf("      %s: %d networks\n", get_security_string(auth).c_str(), count);
+        }
+        
+        printf("   📻 Popular Channels:\n");
+        auto top_channels = get_top_channels(channel_counts, 3);
+        for (const auto& [channel, count] : top_channels) {
+            printf("      Channel %u: %d networks\n", channel, count);
+        }
+        
+        printf("   📶 Signal Quality:\n");
+        printf("      Strong (>-60dBm): %d networks\n", strong_signals);
+        printf("      Weak (<-80dBm): %d networks\n", weak_signals);
+    }
+    
+private:
+    std::string get_signal_bars(int8_t rssi) {
+        if (rssi > -50) return "████";      // Excellent
+        else if (rssi > -60) return "███ ";  // Good
+        else if (rssi > -70) return "██  ";  // Fair
+        else if (rssi > -80) return "█   ";  // Poor
+        else return "    ";                  // Very poor
+    }
+    
+    std::string get_security_string(hf_wifi_security_t auth) {
+        switch (auth) {
+            case hf_wifi_security_t::WIFI_AUTH_OPEN: return "🔓 Open";
+            case hf_wifi_security_t::WIFI_AUTH_WEP: return "🔐 WEP";
+            case hf_wifi_security_t::WIFI_AUTH_WPA_PSK: return "🔒 WPA";
+            case hf_wifi_security_t::WIFI_AUTH_WPA2_PSK: return "🔒 WPA2";
+            case hf_wifi_security_t::WIFI_AUTH_WPA_WPA2_PSK: return "🔒 WPA/WPA2";
+            case hf_wifi_security_t::WIFI_AUTH_WPA2_ENTERPRISE: return "🏢 WPA2-Enterprise";
+            case hf_wifi_security_t::WIFI_AUTH_WPA3_PSK: return "🛡️ WPA3";
+            case hf_wifi_security_t::WIFI_AUTH_WPA2_WPA3_PSK: return "🛡️ WPA2/WPA3";
+            default: return "❓ Unknown";
+        }
+    }
+    
+    std::vector<std::pair<uint8_t, int>> get_top_channels(
+        const std::map<uint8_t, int>& channel_counts, int limit) {
+        std::vector<std::pair<uint8_t, int>> sorted_channels(
+            channel_counts.begin(), channel_counts.end());
+        
+        std::sort(sorted_channels.begin(), sorted_channels.end(),
+                  [](const auto& a, const auto& b) { return a.second > b.second; });
+        
+        if (sorted_channels.size() > limit) {
+            sorted_channels.resize(limit);
+        }
+        
+        return sorted_channels;
+    }
+};
 
-### ✅ **Recommended Practices**
+void wifi_scanner_demo() {
+    WiFiScanner scanner;
+    
+    if (!scanner.initialize()) {
+        printf("❌ WiFi scanner initialization failed\n");
+        return;
+    }
+    
+    // 🔍 Perform network scan
+    if (scanner.scan_networks(true)) {  // Include hidden networks
+        scanner.print_scan_results();
+    } else {
+        printf("❌ Network scan failed\n");
+    }
+}
+```
 
-1. **🎯 Choose Appropriate Mode**
-   ```cpp
-   // For IoT devices needing internet
-   wifi.SetMode(hf_wifi_mode_t::WIFI_MODE_STATION);
-   
-   // For configuration interfaces
-   wifi.SetMode(hf_wifi_mode_t::WIFI_MODE_ACCESS_POINT);
-   
-   // For bridge/repeater functionality
-   wifi.SetMode(hf_wifi_mode_t::WIFI_MODE_AP_STA);
-   ```
+## 🏎️ Performance Considerations
 
-2. **🔐 Use Strong Security**
-   ```cpp
-   // Always use WPA2 or WPA3
-   hf_wifi_ap_config_t config = {
-       .security_type = hf_wifi_security_t::WIFI_SECURITY_WPA3_PSK,
-       .password = "strong_password_123!"
-   };
-   ```
+### ⚡ Optimization Tips
 
-3. **📡 Handle Connection Events**
-   ```cpp
-   wifi.RegisterEventCallback([](hf_wifi_event_t& event) {
-       switch (event.type) {
-           case WIFI_EVENT_CONNECTED:
-               printf("✅ WiFi connected\n");
-               break;
-           case WIFI_EVENT_DISCONNECTED:
-               printf("❌ WiFi disconnected, reconnecting...\n");
-               // Implement auto-reconnection
-               break;
-       }
-   });
-   ```
+- **📶 Signal Strength** - Maintain RSSI above -70dBm for reliable operation
+- **📻 Channel Selection** - Use channels 1, 6, or 11 for 2.4GHz to avoid interference
+- **🔋 Power Management** - Use power save modes for battery-powered applications
+- **🔄 Reconnection Logic** - Implement automatic reconnection for critical applications
+- **📊 Connection Monitoring** - Monitor signal quality and implement roaming logic
 
-4. **📊 Monitor Signal Quality**
-   ```cpp
-   hf_i8_t rssi;
-   wifi.GetRssi(rssi);
-   if (rssi < -70) {
-       printf("⚠️ Weak WiFi signal: %ddBm\n", rssi);
-       // Consider switching to different network or channel
-   }
-   ```
+### 📊 Typical Performance Ranges
 
-### ❌ **Common Pitfalls**
+| **WiFi Standard** | **Max Speed** | **Range** | **Power Consumption** |
+|-------------------|---------------|-----------|----------------------|
+| **802.11b** | 11 Mbps | ~150m outdoor | Low |
+| **802.11g** | 54 Mbps | ~150m outdoor | Medium |
+| **802.11n** | 300 Mbps | ~250m outdoor | Medium-High |
 
-1. **🚫 Not Checking Connection Status**
-   ```cpp
-   // BAD: Assuming connection is always active
-   send_data_to_server(data);
-   
-   // GOOD: Always verify connection
-   hf_wifi_connection_status_t status;
-   if (wifi.GetConnectionStatus(status) == WIFI_SUCCESS && status == WIFI_CONNECTED) {
-       send_data_to_server(data);
-   }
-   ```
+## 🛡️ Security Best Practices
 
-2. **🚫 Using Weak Security**
-   ```cpp
-   // BAD: Open or WEP networks
-   wifi.ConnectToNetwork("OpenNetwork", nullptr, WIFI_SECURITY_OPEN);
-   
-   // GOOD: Use WPA2/WPA3
-   wifi.ConnectToNetwork("SecureNetwork", "password", WIFI_SECURITY_WPA2_PSK);
-   ```
+### 🔒 Secure WiFi Implementation
 
-3. **🚫 Ignoring Power Management**
-   ```cpp
-   // BAD: Always on, drains battery
-   wifi.SetMode(WIFI_MODE_STATION);
-   
-   // GOOD: Use power saving features for battery devices
-   wifi.SetPowerSaveMode(WIFI_POWER_SAVE_MIN_MODEM);
-   ```
+```cpp
+// ✅ Use strong security protocols
+config.authmode = hf_wifi_security_t::WIFI_AUTH_WPA3_PSK;  // Prefer WPA3
 
-### 🎯 **Performance Tips**
+// ✅ Set minimum security thresholds
+config.threshold_authmode = hf_wifi_security_t::WIFI_AUTH_WPA2_PSK;
 
-1. **⚡ Optimize Channel Selection**
-   ```cpp
-   // Scan for best channel before starting AP
-   wifi.ScanNetworks();
-   hf_u8_t best_channel = find_least_congested_channel();
-   ap_config.channel = best_channel;
-   ```
+// ✅ Use strong passwords
+config.password = "SecurePassword123!@#";  // Strong password
 
-2. **📶 Set Appropriate Transmit Power**
-   ```cpp
-   // Higher power for better range, lower for battery saving
-   wifi.SetTxPower(17);  // Good balance for most applications
-   ```
+// ✅ Monitor security events
+wifi.SetEventCallback([](hf_wifi_event_t event, void* data) {
+    if (event == hf_wifi_event_t::WIFI_EVENT_STA_DISCONNECTED) {
+        // Log security events
+        printf("🔒 Security: Connection lost - investigating...\n");
+    }
+});
+```
 
-3. **🔄 Implement Smart Reconnection**
-   ```cpp
-   // Exponential backoff for reconnection attempts
-   void reconnect_with_backoff() {
-       static int retry_count = 0;
-       int delay_ms = std::min(1000 * (1 << retry_count), 30000);
-       vTaskDelay(pdMS_TO_TICKS(delay_ms));
-       
-       if (wifi.ConnectToNetwork(ssid, password) == WIFI_SUCCESS) {
-           retry_count = 0;  // Reset on success
-       } else {
-           retry_count++;
-       }
-   }
-   ```
+## 🧵 Thread Safety
+
+The `BaseWifi` class is **not inherently thread-safe**. For concurrent access from multiple tasks, use appropriate synchronization mechanisms.
+
+## 🔗 Related Documentation
+
+- **[EspWifi API Reference](EspWifi.md)** - ESP32-C6 WiFi implementation
+- **[BaseLogger API Reference](BaseLogger.md)** - Logging WiFi events and diagnostics
+- **[HardwareTypes Reference](HardwareTypes.md)** - Platform-agnostic type definitions
 
 ---
 
 <div align="center">
 
-**📶 Professional WiFi Networking for Modern IoT Applications**
+**📶 BaseWifi - Connecting HardFOC to the World** 🌐
 
-*Enabling seamless wireless connectivity with robust security and optimal performance*
+*From IoT connectivity to device configuration - BaseWifi enables seamless wireless communication* 🚀
 
 </div>
