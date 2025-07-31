@@ -723,9 +723,9 @@ hf_bluetooth_connection_info_t EspBluetooth::getConnectionInfo(uint16_t connecti
   info.connection_id = connection_id;
   info.address = it->second.address;
   info.type = it->second.is_classic ? hf_bluetooth_connection_type_t::CLASSIC : hf_bluetooth_connection_type_t::BLE;
-  info.state = HfBluetoothConnectionState::CONNECTED; // Simplified for now
+  info.state = hf_bluetooth_connection_state_t::CONNECTED; // Simplified for now
   info.mtu = it->second.mtu;
-  info.security_level = HfBluetoothSecurity::NONE; // Would need to query actual security
+  info.security_level = hf_bluetooth_security_t::NONE; // Would need to query actual security
   info.is_bonded = false; // Would need to check bonding status
   info.rssi = -50; // Would need to query actual RSSI
   
@@ -770,7 +770,7 @@ hf_bluetooth_err_t EspBluetooth::sendData(uint16_t connection_id, const std::vec
   return hf_bluetooth_err_t::SUCCESS;
 }
 
-hf_bluetooth_err_t EspBluetooth::pair(const hf_bluetooth_address_t& address, HfBluetoothSecurity security) {
+hf_bluetooth_err_t EspBluetooth::pair(const hf_bluetooth_address_t& address, hf_bluetooth_security_t security) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_ || !is_enabled_) {
@@ -783,7 +783,7 @@ hf_bluetooth_err_t EspBluetooth::pair(const hf_bluetooth_address_t& address, HfB
   if (current_mode_ == hf_bluetooth_mode_t::BLE_ONLY || current_mode_ == hf_bluetooth_mode_t::DUAL_MODE) {
     // Configure BLE security
     esp_ble_auth_req_t auth_req = ESP_LE_AUTH_BOND;
-    if (security == HfBluetoothSecurity::AUTHENTICATED) {
+    if (security == hf_bluetooth_security_t::AUTHENTICATED) {
       auth_req = ESP_LE_AUTH_REQ_SC_MITM_BOND;
     }
     
@@ -863,13 +863,13 @@ void EspBluetooth::setEventCallback(hf_bluetooth_event_callback_t callback, void
   event_user_data_ = user_data;
 }
 
-void EspBluetooth::setScanCallback(HfBluetoothScanCallback callback, void* user_data) {
+void EspBluetooth::setScanCallback(hf_bluetooth_scan_callback_t callback, void* user_data) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   scan_callback_ = callback;
   scan_user_data_ = user_data;
 }
 
-void EspBluetooth::setGattEventCallback(HfBluetoothGattEventCallback callback, void* user_data) {
+void EspBluetooth::setGattEventCallback(hf_bluetooth_gatt_event_callback_t callback, void* user_data) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   gatt_event_callback_ = callback;
   gatt_user_data_ = user_data;
@@ -1166,4 +1166,61 @@ void EspBluetooth::btGapEventHandler(esp_bt_gap_cb_event_t event, esp_bt_gap_cb_
 void EspBluetooth::sppEventHandler(esp_spp_cb_event_t event, esp_spp_cb_param_t* param) {
   // Implementation would handle SPP events
   ESP_LOGD(TAG, "SPP event: %d", event);
+}
+
+hf_bluetooth_err_t EspBluetooth::ConvertEspError(esp_err_t esp_err) const {
+  switch (esp_err) {
+    case ESP_OK:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_SUCCESS;
+    case ESP_ERR_INVALID_ARG:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_PARAM;
+    case ESP_ERR_INVALID_STATE:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_STATE;
+    case ESP_ERR_NO_MEM:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_NO_MEMORY;
+    case ESP_ERR_TIMEOUT:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_TIMEOUT;
+    case ESP_ERR_NOT_FOUND:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_DEVICE_NOT_FOUND;
+    case ESP_ERR_NOT_SUPPORTED:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED;
+    case ESP_ERR_BT_NIMBLE_BASE:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_FAILURE;
+    case ESP_ERR_BT_NIMBLE_ATT_INVALID_HANDLE:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_PARAM;
+    case ESP_ERR_BT_NIMBLE_ATT_READ_NOT_PERMITTED:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_PERMISSION_DENIED;
+    case ESP_ERR_BT_NIMBLE_ATT_WRITE_NOT_PERMITTED:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_PERMISSION_DENIED;
+    case ESP_ERR_BT_NIMBLE_ATT_INVALID_PDU:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_PARAM;
+    case ESP_ERR_BT_NIMBLE_ATT_INSUFFICIENT_AUTHEN:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_AUTHENTICATION_FAILED;
+    case ESP_ERR_BT_NIMBLE_ATT_REQ_NOT_SUPPORTED:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED;
+    case ESP_ERR_BT_NIMBLE_ATT_INVALID_OFFSET:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_PARAM;
+    case ESP_ERR_BT_NIMBLE_ATT_INSUFFICIENT_AUTHOR:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_AUTHORIZATION_FAILED;
+    case ESP_ERR_BT_NIMBLE_ATT_PREPARE_QUEUE_FULL:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_BUSY;
+    case ESP_ERR_BT_NIMBLE_ATT_ATTR_NOT_FOUND:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_DEVICE_NOT_FOUND;
+    case ESP_ERR_BT_NIMBLE_ATT_ATTR_NOT_LONG:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_PARAM;
+    case ESP_ERR_BT_NIMBLE_ATT_INSUFFICIENT_KEY_SZ:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_SECURITY_ERROR;
+    case ESP_ERR_BT_NIMBLE_ATT_INVALID_ATTR_VALUE_LEN:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_PARAM;
+    case ESP_ERR_BT_NIMBLE_ATT_UNLIKELY:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_FAILURE;
+    case ESP_ERR_BT_NIMBLE_ATT_INSUFFICIENT_RES:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_NO_MEMORY;
+    case ESP_ERR_BT_NIMBLE_ATT_DB_OUT_OF_SYNC:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_STATE;
+    case ESP_ERR_BT_NIMBLE_ATT_VALUE_NOT_ALLOWED:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_INVALID_PARAM;
+    default:
+      return hf_bluetooth_err_t::HF_BLUETOOTH_ERR_FAILURE;
+  }
 }

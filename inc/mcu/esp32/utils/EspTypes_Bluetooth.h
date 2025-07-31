@@ -96,7 +96,7 @@ static constexpr uint16_t HF_ESP_BLE_SUPERVISION_TIMEOUT_MAX = 3200; // 32000ms
 /**
  * @brief ESP32-specific Bluetooth mode mapping
  */
-enum class HfEspBluetoothMode : uint8_t {
+enum class hf_esp_bluetooth_mode_t : uint8_t {
   IDLE = ESP_BT_MODE_IDLE,                  /**< Bluetooth disabled */
   BLE = ESP_BT_MODE_BLE,                    /**< BLE only */
   CLASSIC_BT = ESP_BT_MODE_CLASSIC_BT,      /**< Classic Bluetooth only */
@@ -106,7 +106,7 @@ enum class HfEspBluetoothMode : uint8_t {
 /**
  * @brief ESP32-specific BLE address type mapping
  */
-enum class HfEspBleAddrType : uint8_t {
+enum class hf_esp_ble_addr_type_t : uint8_t {
   PUBLIC = BLE_ADDR_TYPE_PUBLIC,            /**< Public address */
   RANDOM = BLE_ADDR_TYPE_RANDOM,            /**< Random address */
   RPA_PUBLIC = BLE_ADDR_TYPE_RPA_PUBLIC,    /**< Resolvable private address with public identity */
@@ -116,7 +116,7 @@ enum class HfEspBleAddrType : uint8_t {
 /**
  * @brief ESP32-specific BLE scan type mapping
  */
-enum class HfEspBleScanType : uint8_t {
+enum class hf_esp_ble_scan_type_t : uint8_t {
   PASSIVE = BLE_SCAN_TYPE_PASSIVE,          /**< Passive scanning */
   ACTIVE = BLE_SCAN_TYPE_ACTIVE             /**< Active scanning */
 };
@@ -124,7 +124,7 @@ enum class HfEspBleScanType : uint8_t {
 /**
  * @brief ESP32-specific BLE advertising type mapping
  */
-enum class HfEspBleAdvType : uint8_t {
+enum class hf_esp_ble_adv_type_t : uint8_t {
   ADV_IND = ADV_TYPE_IND,                   /**< Connectable undirected advertising */
   ADV_DIRECT_IND_HIGH = ADV_TYPE_DIRECT_IND_HIGH, /**< Connectable directed advertising (high duty cycle) */
   ADV_SCAN_IND = ADV_TYPE_SCAN_IND,         /**< Scannable undirected advertising */
@@ -135,7 +135,7 @@ enum class HfEspBleAdvType : uint8_t {
 /**
  * @brief ESP32-specific GATT characteristic properties
  */
-enum class HfEspGattCharProp : uint8_t {
+enum class hf_esp_gatt_char_prop_t : uint8_t {
   BROADCAST = ESP_GATT_CHAR_PROP_BIT_BROADCAST,           /**< Broadcast */
   READ = ESP_GATT_CHAR_PROP_BIT_READ,                     /**< Read */
   WRITE_NR = ESP_GATT_CHAR_PROP_BIT_WRITE_NR,             /**< Write without response */
@@ -149,7 +149,7 @@ enum class HfEspGattCharProp : uint8_t {
 /**
  * @brief ESP32-specific GATT characteristic permissions
  */
-enum class HfEspGattCharPerm : uint16_t {
+enum class hf_esp_gatt_char_perm_t : uint16_t {
   READ = ESP_GATT_PERM_READ,                              /**< Read permission */
   READ_ENCRYPTED = ESP_GATT_PERM_READ_ENCRYPTED,          /**< Read encrypted permission */
   READ_ENC_MITM = ESP_GATT_PERM_READ_ENC_MITM,            /**< Read encrypted with MITM protection */
@@ -187,7 +187,7 @@ struct HfEspBluetoothStats {
 struct HfEspBleAdvParams {
   uint16_t adv_int_min;                     /**< Minimum advertising interval */
   uint16_t adv_int_max;                     /**< Maximum advertising interval */
-  HfEspBleAdvType adv_type;                 /**< Advertising type */
+  hf_esp_ble_adv_type_t adv_type;                 /**< Advertising type */
   esp_ble_addr_type_t own_addr_type;        /**< Own address type */
   esp_ble_addr_type_t peer_addr_type;       /**< Peer address type */
   esp_bd_addr_t peer_addr;                  /**< Peer address */
@@ -199,7 +199,7 @@ struct HfEspBleAdvParams {
  * @brief ESP32-specific BLE scan parameters
  */
 struct HfEspBleScanParams {
-  HfEspBleScanType scan_type;               /**< Scan type */
+  hf_esp_ble_scan_type_t scan_type;               /**< Scan type */
   esp_ble_addr_type_t own_addr_type;        /**< Own address type */
   esp_ble_scan_filter_t scan_filter_policy; /**< Scan filter policy */
   uint16_t scan_interval;                   /**< Scan interval */
@@ -561,7 +561,7 @@ inline HfEspBleAdvParams createDefaultBleAdvParams() {
   HfEspBleAdvParams params;
   params.adv_int_min = 0x20;  // 32 * 0.625ms = 20ms
   params.adv_int_max = 0x40;  // 64 * 0.625ms = 40ms
-  params.adv_type = HfEspBleAdvType::ADV_IND;
+  params.adv_type = hf_esp_ble_adv_type_t::ADV_IND;
   params.own_addr_type = BLE_ADDR_TYPE_PUBLIC;
   params.peer_addr_type = BLE_ADDR_TYPE_PUBLIC;
   std::memset(params.peer_addr, 0, sizeof(params.peer_addr));
@@ -576,7 +576,7 @@ inline HfEspBleAdvParams createDefaultBleAdvParams() {
  */
 inline HfEspBleScanParams createDefaultBleScanParams() {
   HfEspBleScanParams params;
-  params.scan_type = HfEspBleScanType::ACTIVE;
+  params.scan_type = hf_esp_ble_scan_type_t::ACTIVE;
   params.own_addr_type = BLE_ADDR_TYPE_PUBLIC;
   params.scan_filter_policy = BLE_SCAN_FILTER_ALLOW_ALL;
   params.scan_interval = 0x50;  // 80 * 0.625ms = 50ms

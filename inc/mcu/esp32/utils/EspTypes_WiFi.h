@@ -75,7 +75,7 @@ static constexpr uint8_t HF_ESP_WIFI_TX_POWER_MAX = 20;
 /**
  * @brief ESP32-specific WiFi authentication mode mapping
  */
-enum class HfEspWifiAuthMode : uint8_t {
+enum class hf_esp_wifi_auth_mode_t : uint8_t {
   OPEN = WIFI_AUTH_OPEN,                    /**< Open authentication */
   WEP = WIFI_AUTH_WEP,                      /**< WEP authentication */
   WPA_PSK = WIFI_AUTH_WPA_PSK,              /**< WPA-PSK authentication */
@@ -90,7 +90,7 @@ enum class HfEspWifiAuthMode : uint8_t {
 /**
  * @brief ESP32-specific WiFi mode mapping
  */
-enum class HfEspWifiMode : uint8_t {
+enum class hf_esp_wifi_mode_t : uint8_t {
   NULL_MODE = WIFI_MODE_NULL,               /**< WiFi disabled */
   STA = WIFI_MODE_STA,                      /**< Station mode */
   AP = WIFI_MODE_AP,                        /**< Access Point mode */
@@ -100,7 +100,7 @@ enum class HfEspWifiMode : uint8_t {
 /**
  * @brief ESP32-specific WiFi power save mode mapping
  */
-enum class HfEspWifiPowerSave : uint8_t {
+enum class hf_esp_wifi_power_save_t : uint8_t {
   NONE = WIFI_PS_NONE,                      /**< No power save */
   MIN_MODEM = WIFI_PS_MIN_MODEM,            /**< Minimum modem power save */
   MAX_MODEM = WIFI_PS_MAX_MODEM             /**< Maximum modem power save */
@@ -109,7 +109,7 @@ enum class HfEspWifiPowerSave : uint8_t {
 /**
  * @brief ESP32-specific WiFi bandwidth mapping
  */
-enum class HfEspWifiBandwidth : uint8_t {
+enum class hf_esp_wifi_bandwidth_t : uint8_t {
   HT20 = WIFI_BW_HT20,                      /**< 20MHz bandwidth */
   HT40 = WIFI_BW_HT40                       /**< 40MHz bandwidth */
 };
@@ -117,7 +117,7 @@ enum class HfEspWifiBandwidth : uint8_t {
 /**
  * @brief ESP32-specific WiFi sort method
  */
-enum class HfEspWifiSortMethod : uint8_t {
+enum class hf_esp_wifi_sort_method_t : uint8_t {
   SIGNAL = WIFI_CONNECT_AP_BY_SIGNAL,       /**< Sort by signal strength */
   SECURITY = WIFI_CONNECT_AP_BY_SECURITY    /**< Sort by security level */
 };
@@ -125,7 +125,7 @@ enum class HfEspWifiSortMethod : uint8_t {
 /**
  * @brief ESP32-specific WiFi scan method
  */
-enum class HfEspWifiScanMethod : uint8_t {
+enum class hf_esp_wifi_scan_method_t : uint8_t {
   FAST = WIFI_FAST_SCAN,                    /**< Fast scan method */
   ALL_CHANNEL = WIFI_ALL_CHANNEL_SCAN       /**< All channel scan method */
 };
@@ -186,17 +186,17 @@ struct HfEspWifiPerformanceConfig {
  * @param security HardFOC WiFi security type
  * @return ESP-IDF WiFi auth mode
  */
-inline wifi_auth_mode_t hfWifiSecurityToEspAuthMode(HfWifiSecurity security) {
+inline wifi_auth_mode_t hfWifiSecurityToEspAuthMode(hf_wifi_security_t security) {
   switch (security) {
-    case HfWifiSecurity::OPEN: return WIFI_AUTH_OPEN;
-    case HfWifiSecurity::WEP: return WIFI_AUTH_WEP;
-    case HfWifiSecurity::WPA_PSK: return WIFI_AUTH_WPA_PSK;
-    case HfWifiSecurity::WPA2_PSK: return WIFI_AUTH_WPA2_PSK;
-    case HfWifiSecurity::WPA_WPA2_PSK: return WIFI_AUTH_WPA_WPA2_PSK;
-    case HfWifiSecurity::WPA2_ENTERPRISE: return WIFI_AUTH_WPA2_ENTERPRISE;
-    case HfWifiSecurity::WPA3_PSK: return WIFI_AUTH_WPA3_PSK;
-    case HfWifiSecurity::WPA2_WPA3_PSK: return WIFI_AUTH_WPA2_WPA3_PSK;
-    case HfWifiSecurity::WAPI_PSK: return WIFI_AUTH_WAPI_PSK;
+    case hf_wifi_security_t::OPEN: return WIFI_AUTH_OPEN;
+    case hf_wifi_security_t::WEP: return WIFI_AUTH_WEP;
+    case hf_wifi_security_t::WPA_PSK: return WIFI_AUTH_WPA_PSK;
+    case hf_wifi_security_t::WPA2_PSK: return WIFI_AUTH_WPA2_PSK;
+    case hf_wifi_security_t::WPA_WPA2_PSK: return WIFI_AUTH_WPA_WPA2_PSK;
+    case hf_wifi_security_t::WPA2_ENTERPRISE: return WIFI_AUTH_WPA2_ENTERPRISE;
+    case hf_wifi_security_t::WPA3_PSK: return WIFI_AUTH_WPA3_PSK;
+    case hf_wifi_security_t::WPA2_WPA3_PSK: return WIFI_AUTH_WPA2_WPA3_PSK;
+    case hf_wifi_security_t::WAPI_PSK: return WIFI_AUTH_WAPI_PSK;
     default: return WIFI_AUTH_OPEN;
   }
 }
@@ -206,18 +206,18 @@ inline wifi_auth_mode_t hfWifiSecurityToEspAuthMode(HfWifiSecurity security) {
  * @param auth_mode ESP-IDF WiFi auth mode
  * @return HardFOC WiFi security type
  */
-inline HfWifiSecurity espAuthModeToHfWifiSecurity(wifi_auth_mode_t auth_mode) {
+inline hf_wifi_security_t espAuthModeTohf_wifi_security_t(wifi_auth_mode_t auth_mode) {
   switch (auth_mode) {
-    case WIFI_AUTH_OPEN: return HfWifiSecurity::OPEN;
-    case WIFI_AUTH_WEP: return HfWifiSecurity::WEP;
-    case WIFI_AUTH_WPA_PSK: return HfWifiSecurity::WPA_PSK;
-    case WIFI_AUTH_WPA2_PSK: return HfWifiSecurity::WPA2_PSK;
-    case WIFI_AUTH_WPA_WPA2_PSK: return HfWifiSecurity::WPA_WPA2_PSK;
-    case WIFI_AUTH_WPA2_ENTERPRISE: return HfWifiSecurity::WPA2_ENTERPRISE;
-    case WIFI_AUTH_WPA3_PSK: return HfWifiSecurity::WPA3_PSK;
-    case WIFI_AUTH_WPA2_WPA3_PSK: return HfWifiSecurity::WPA2_WPA3_PSK;
-    case WIFI_AUTH_WAPI_PSK: return HfWifiSecurity::WAPI_PSK;
-    default: return HfWifiSecurity::OPEN;
+    case WIFI_AUTH_OPEN: return hf_wifi_security_t::OPEN;
+    case WIFI_AUTH_WEP: return hf_wifi_security_t::WEP;
+    case WIFI_AUTH_WPA_PSK: return hf_wifi_security_t::WPA_PSK;
+    case WIFI_AUTH_WPA2_PSK: return hf_wifi_security_t::WPA2_PSK;
+    case WIFI_AUTH_WPA_WPA2_PSK: return hf_wifi_security_t::WPA_WPA2_PSK;
+    case WIFI_AUTH_WPA2_ENTERPRISE: return hf_wifi_security_t::WPA2_ENTERPRISE;
+    case WIFI_AUTH_WPA3_PSK: return hf_wifi_security_t::WPA3_PSK;
+    case WIFI_AUTH_WPA2_WPA3_PSK: return hf_wifi_security_t::WPA2_WPA3_PSK;
+    case WIFI_AUTH_WAPI_PSK: return hf_wifi_security_t::WAPI_PSK;
+    default: return hf_wifi_security_t::OPEN;
   }
 }
 
@@ -226,12 +226,12 @@ inline HfWifiSecurity espAuthModeToHfWifiSecurity(wifi_auth_mode_t auth_mode) {
  * @param mode HardFOC WiFi mode
  * @return ESP-IDF WiFi mode
  */
-inline wifi_mode_t hfWifiModeToEspMode(HfWifiMode mode) {
+inline wifi_mode_t hfWifiModeToEspMode(hf_wifi_mode_t mode) {
   switch (mode) {
-    case HfWifiMode::STATION: return WIFI_MODE_STA;
-    case HfWifiMode::ACCESS_POINT: return WIFI_MODE_AP;
-    case HfWifiMode::STATION_AP: return WIFI_MODE_APSTA;
-    case HfWifiMode::DISABLED: return WIFI_MODE_NULL;
+    case hf_wifi_mode_t::STATION: return WIFI_MODE_STA;
+    case hf_wifi_mode_t::ACCESS_POINT: return WIFI_MODE_AP;
+    case hf_wifi_mode_t::STATION_AP: return WIFI_MODE_APSTA;
+    case hf_wifi_mode_t::DISABLED: return WIFI_MODE_NULL;
     default: return WIFI_MODE_NULL;
   }
 }
@@ -241,13 +241,13 @@ inline wifi_mode_t hfWifiModeToEspMode(HfWifiMode mode) {
  * @param mode ESP-IDF WiFi mode
  * @return HardFOC WiFi mode
  */
-inline HfWifiMode espModeToHfWifiMode(wifi_mode_t mode) {
+inline hf_wifi_mode_t espModeTohf_wifi_mode_t(wifi_mode_t mode) {
   switch (mode) {
-    case WIFI_MODE_STA: return HfWifiMode::STATION;
-    case WIFI_MODE_AP: return HfWifiMode::ACCESS_POINT;
-    case WIFI_MODE_APSTA: return HfWifiMode::STATION_AP;
-    case WIFI_MODE_NULL: return HfWifiMode::DISABLED;
-    default: return HfWifiMode::DISABLED;
+    case WIFI_MODE_STA: return hf_wifi_mode_t::STATION;
+    case WIFI_MODE_AP: return hf_wifi_mode_t::ACCESS_POINT;
+    case WIFI_MODE_APSTA: return hf_wifi_mode_t::STATION_AP;
+    case WIFI_MODE_NULL: return hf_wifi_mode_t::DISABLED;
+    default: return hf_wifi_mode_t::DISABLED;
   }
 }
 
@@ -256,11 +256,11 @@ inline HfWifiMode espModeToHfWifiMode(wifi_mode_t mode) {
  * @param power_save HardFOC power save mode
  * @return ESP-IDF power save type
  */
-inline wifi_ps_type_t hfWifiPowerSaveToEspPowerSave(HfWifiPowerSave power_save) {
+inline wifi_ps_type_t hfWifiPowerSaveToEspPowerSave(hf_wifi_power_save_t power_save) {
   switch (power_save) {
-    case HfWifiPowerSave::NONE: return WIFI_PS_NONE;
-    case HfWifiPowerSave::MIN_MODEM: return WIFI_PS_MIN_MODEM;
-    case HfWifiPowerSave::MAX_MODEM: return WIFI_PS_MAX_MODEM;
+    case hf_wifi_power_save_t::NONE: return WIFI_PS_NONE;
+    case hf_wifi_power_save_t::MIN_MODEM: return WIFI_PS_MIN_MODEM;
+    case hf_wifi_power_save_t::MAX_MODEM: return WIFI_PS_MAX_MODEM;
     default: return WIFI_PS_NONE;
   }
 }
@@ -270,12 +270,12 @@ inline wifi_ps_type_t hfWifiPowerSaveToEspPowerSave(HfWifiPowerSave power_save) 
  * @param power_save ESP-IDF power save type
  * @return HardFOC power save mode
  */
-inline HfWifiPowerSave espPowerSaveToHfWifiPowerSave(wifi_ps_type_t power_save) {
+inline hf_wifi_power_save_t espPowerSaveTohf_wifi_power_save_t(wifi_ps_type_t power_save) {
   switch (power_save) {
-    case WIFI_PS_NONE: return HfWifiPowerSave::NONE;
-    case WIFI_PS_MIN_MODEM: return HfWifiPowerSave::MIN_MODEM;
-    case WIFI_PS_MAX_MODEM: return HfWifiPowerSave::MAX_MODEM;
-    default: return HfWifiPowerSave::NONE;
+    case WIFI_PS_NONE: return hf_wifi_power_save_t::NONE;
+    case WIFI_PS_MIN_MODEM: return hf_wifi_power_save_t::MIN_MODEM;
+    case WIFI_PS_MAX_MODEM: return hf_wifi_power_save_t::MAX_MODEM;
+    default: return hf_wifi_power_save_t::NONE;
   }
 }
 
@@ -356,12 +356,12 @@ inline bool isValidSsid(const std::string& ssid) {
  * @param security Security type
  * @return true if valid, false otherwise
  */
-inline bool isValidWifiPassword(const std::string& password, HfWifiSecurity security) {
-  if (security == HfWifiSecurity::OPEN) {
+inline bool isValidWifiPassword(const std::string& password, hf_wifi_security_t security) {
+  if (security == hf_wifi_security_t::OPEN) {
     return password.empty();
   }
   
-  if (security == HfWifiSecurity::WEP) {
+  if (security == hf_wifi_security_t::WEP) {
     // WEP key length constants
     static constexpr size_t WEP_KEY_64_BIT_ASCII = 5;   // 64-bit WEP ASCII key
     static constexpr size_t WEP_KEY_128_BIT_ASCII = 13; // 128-bit WEP ASCII key
@@ -385,7 +385,7 @@ inline bool isValidWifiPassword(const std::string& password, HfWifiSecurity secu
 inline void espScanRecordToHfNetworkInfo(const wifi_ap_record_t& scan_record, HfWifiNetworkInfo& network_info) {
   network_info.ssid = std::string(reinterpret_cast<const char*>(scan_record.ssid));
   std::memcpy(network_info.bssid, scan_record.bssid, 6);
-  network_info.security = espAuthModeToHfWifiSecurity(scan_record.authmode);
+  network_info.security = espAuthModeTohf_wifi_security_t(scan_record.authmode);
   network_info.rssi = scan_record.rssi;
   network_info.channel = scan_record.primary;
   network_info.hidden = (network_info.ssid.empty());
