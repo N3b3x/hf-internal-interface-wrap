@@ -386,10 +386,10 @@ hf_wifi_err_t EspWifi::StartStation(const hf_wifi_station_config_t& config) {
   }
   
   // Set mode to station or station+AP
-  HfWifiMode new_mode = (m_mode == hf_wifi_mode_t::ACCESS_POINT) ? 
-                        hf_wifi_mode_t::STATION_ACCESS_POINT : hf_wifi_mode_t::STATION;
+  hf_wifi_mode_t new_mode = (m_mode == hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT) ? 
+                        hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP : hf_wifi_mode_t::HF_WIFI_MODE_STATION;
   
-  hf_wifi_err_t err = setMode(new_mode);
+  hf_wifi_err_t err = SetMode(new_mode);
   if (err != hf_wifi_err_t::SUCCESS) {
     return err;
   }
@@ -475,10 +475,10 @@ hf_wifi_err_t EspWifi::StartAccessPoint(const hf_wifi_ap_config_t& config) {
   }
   
   // Set mode to AP or station+AP
-  HfWifiMode new_mode = (m_mode == hf_wifi_mode_t::STATION) ? 
-                        hf_wifi_mode_t::STATION_ACCESS_POINT : hf_wifi_mode_t::ACCESS_POINT;
+  hf_wifi_mode_t new_mode = (m_mode == hf_wifi_mode_t::HF_WIFI_MODE_STATION) ? 
+                        hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP : hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT;
   
-  hf_wifi_err_t err = setMode(new_mode);
+  hf_wifi_err_t err = SetMode(new_mode);
   if (err != hf_wifi_err_t::SUCCESS) {
     return err;
   }
@@ -532,7 +532,7 @@ hf_wifi_err_t EspWifi::Connect() {
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
   
-  if (m_mode != hf_wifi_mode_t::STATION && m_mode != hf_wifi_mode_t::STATION_ACCESS_POINT) {
+  if (m_mode != hf_wifi_mode_t::HF_WIFI_MODE_STATION && m_mode != hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP) {
     ESP_LOGE(TAG, "Not in station mode");
     return hf_wifi_err_t::INVALID_MODE;
   }
@@ -732,7 +732,7 @@ hf_wifi_err_t EspWifi::StartSmartConfig() {
   }
   
   // Set WiFi mode to station
-  hf_wifi_err_t err = setMode(hf_wifi_mode_t::STATION);
+  hf_wifi_err_t err = SetMode(hf_wifi_mode_t::HF_WIFI_MODE_STATION);
   if (err != hf_wifi_err_t::SUCCESS) {
     return err;
   }
@@ -797,7 +797,7 @@ hf_wifi_err_t EspWifi::StartWPS() {
   }
   
   // Set WiFi mode to station
-  hf_wifi_err_t err = setMode(hf_wifi_mode_t::STATION);
+  hf_wifi_err_t err = SetMode(hf_wifi_mode_t::HF_WIFI_MODE_STATION);
   if (err != hf_wifi_err_t::SUCCESS) {
     return err;
   }

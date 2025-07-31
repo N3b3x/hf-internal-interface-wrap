@@ -303,7 +303,7 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() {
   
   m_initialized = false;
   m_enabled = false;
-  m_mode = hf_bluetooth_mode_t::DISABLED;
+  m_mode = hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
   
   ESP_LOGI(TAG, "ESP32 Bluetooth deinitialized successfully");
   return hf_bluetooth_err_t::SUCCESS;
