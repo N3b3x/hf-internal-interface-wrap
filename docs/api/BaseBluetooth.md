@@ -43,7 +43,7 @@ The `BaseBluetooth` class provides a comprehensive Bluetooth abstraction that se
 
 | Implementation | Classic BT | BLE | Max Connections | Range | Power |
 |----------------|------------|-----|-----------------|-------|-------|
-| `EspBluetooth` | ✅ | ✅ | 7 connections | 10-100m | Configurable |
+| `Esp32C6 Bluetooth` | ✅ | ✅ | 7 connections | 10-100m | Configurable |
 | `NrfBluetooth` | ✅ | ✅ | 20 connections | 10-240m | Ultra-low power |
 | `Ti2640Bluetooth` | ❌ | ✅ | 3 connections | 10-50m | Low power |
 
@@ -72,8 +72,8 @@ classDiagram
         #DoConnect(bt_addr_t) hf_bt_err_t*
     }
 
-    class EspBluetooth {
-        +EspBluetooth()
+    class Esp32C6Bluetooth {
++Esp32C6Bluetooth()
         +SetClassicConfig(hf_bt_classic_config_t) hf_bt_err_t
         +SetBleConfig(hf_ble_config_t) hf_bt_err_t
         +StartAdvertising() hf_bt_err_t
@@ -88,7 +88,7 @@ classDiagram
         +SetBondingMode(bool) hf_bt_err_t
     }
 
-    BaseBluetooth <|-- EspBluetooth
+    BaseBluetooth <|-- Esp32C6Bluetooth
     BaseBluetooth <|-- NrfBluetooth
 ```
 
@@ -399,11 +399,13 @@ bluetooth.SetMode(hf_bt_mode_t::BT_MODE_DUAL);
 ### 📱 **Basic BLE Sensor**
 
 ```cpp
-#include "inc/mcu/esp32/EspBluetooth.h"
+#include "inc/base/BaseBluetooth.h"
 
 class BleSensorBeacon {
 private:
-    EspBluetooth bluetooth_;
+    // ESP32C6 implementation would inherit from BaseBluetooth
+    // class Esp32C6Bluetooth : public BaseBluetooth { ... };
+    BaseBluetooth* bluetooth_;
     hf_u32_t service_handle_;
     hf_u32_t characteristic_handle_;
     
@@ -458,11 +460,13 @@ public:
 ### 🔗 **Classic Bluetooth Serial Bridge**
 
 ```cpp
-#include "inc/mcu/esp32/EspBluetooth.h"
+#include "inc/base/BaseBluetooth.h"
 
 class BluetoothSerialBridge {
 private:
-    EspBluetooth bluetooth_;
+    // ESP32C6 implementation would inherit from BaseBluetooth
+    // class Esp32C6Bluetooth : public BaseBluetooth { ... };
+    BaseBluetooth* bluetooth_;
     hf_u32_t spp_connection_id_;
     bool is_connected_;
     

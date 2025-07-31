@@ -20,7 +20,7 @@ extern "C" {
 
 // Include all base classes
 #include "base/BaseAdc.h"
-#include "base/BaseBluetooth.h"
+
 #include "base/BaseCan.h"
 #include "base/BaseGpio.h"
 #include "base/BaseI2c.h"
@@ -43,7 +43,6 @@ extern "C" {
 
 // ESP32 implementation classes
 #include "mcu/esp32/EspAdc.h"
-#include "mcu/esp32/EspBluetooth.h"
 #include "mcu/esp32/EspCan.h"
 #include "mcu/esp32/EspGpio.h"
 #include "mcu/esp32/EspI2c.h"
@@ -62,7 +61,6 @@ extern "C" {
 #include "mcu/esp32/utils/EspTypes.h"
 #include "mcu/esp32/utils/EspTypes_ADC.h"
 #include "mcu/esp32/utils/EspTypes_Base.h"
-#include "mcu/esp32/utils/EspTypes_Bluetooth.h"
 #include "mcu/esp32/utils/EspTypes_CAN.h"
 #include "mcu/esp32/utils/EspTypes_GPIO.h"
 #include "mcu/esp32/utils/EspTypes_I2C.h"
@@ -194,16 +192,7 @@ extern "C" void app_main(void) {
   auto wifi_init = test_wifi.EnsureInitialized();
   ESP_LOGI(TAG, "EspWifi initialized: %s", wifi_init ? "SUCCESS" : "FAILED");
 
-  // 10. EspBluetooth
-  ESP_LOGI(TAG, "=== Testing EspBluetooth ===");
-  hf_bluetooth_config_t bt_cfg = {};
-  bt_cfg.mode = hf_bluetooth_mode_t::HF_BT_MODE_BLE;
-  bt_cfg.device_name = "HardFOC-ESP32";
-  EspBluetooth test_bluetooth(bt_cfg);
-  auto bt_init = test_bluetooth.EnsureInitialized();
-  ESP_LOGI(TAG, "EspBluetooth initialized: %s", bt_init ? "SUCCESS" : "FAILED");
-
-  // 11. EspPeriodicTimer
+  // 10. EspPeriodicTimer
   ESP_LOGI(TAG, "=== Testing EspPeriodicTimer ===");
   auto timer_callback = [](void* user_data) {
     static int count = 0;
@@ -221,13 +210,13 @@ extern "C" void app_main(void) {
     ESP_LOGI(TAG, "EspPeriodicTimer started with 1-second interval");
   }
 
-  // 12. EspPio (RMT-based)
+  // 11. EspPio (RMT-based)
   ESP_LOGI(TAG, "=== Testing EspPio ===");
   EspPio test_pio;
   auto pio_init = test_pio.EnsureInitialized();
   ESP_LOGI(TAG, "EspPio initialized: %s", pio_init ? "SUCCESS" : "FAILED");
 
-  // 13. EspNvs
+  // 12. EspNvs
   ESP_LOGI(TAG, "=== Testing EspNvs ===");
   hf_nvs_config_t nvs_cfg = {};
   nvs_cfg.namespace_name = "hardfoc";

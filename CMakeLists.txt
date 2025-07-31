@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 # HardFOC Internal Interface Wrapper Component
-# This component provides base classes and ESP32 implementations for WiFi and Bluetooth
+# This component provides base classes and ESP32 implementations for WiFi
 
 set(COMPONENT_SRCDIR "src/mcu/esp32")
 set(COMPONENT_INCLUDE_DIRS "inc" "inc/base" "inc/mcu/esp32" "inc/utils" "inc/mcu/esp32/utils")
@@ -13,7 +13,7 @@ set(COMPONENT_SRCS
     
     # ESP32 implementations (if they exist)
     # "src/mcu/esp32/EspWifi.cpp"
-    # "src/mcu/esp32/EspBluetooth.cpp"
+    
     # "src/mcu/esp32/EspGpio.cpp"
     # ... other ESP implementations
 )

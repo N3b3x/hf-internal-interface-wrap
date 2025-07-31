@@ -13,7 +13,7 @@ else()
     get_filename_component(SRC_ROOT "${CMAKE_SOURCE_DIR}/../../" ABSOLUTE)
 endif()
 
-message(STATUS "HF Internal Interface Wrap - ESP32-C6 Component Configuration")
+message(STATUS "HF Internal Interface Wrap - ESP32 Component Configuration")
 message(STATUS "Project Root: ${PROJECT_ROOT}")
 message(STATUS "Source Root: ${SRC_ROOT}")
 
@@ -28,7 +28,7 @@ set(HF_ESP32_SRCS
     "${SRC_ROOT}/src/mcu/esp32/EspUart.cpp"
     # Temporarily excluded due to missing dependencies:
     "${SRC_ROOT}/src/mcu/esp32/EspAdc.cpp"          # Missing esp_adc headers for ESP32-C6
-    "${SRC_ROOT}/src/mcu/esp32/EspBluetooth.cpp"    # Missing bt headers for ESP32-C6  
+      
     "${SRC_ROOT}/src/mcu/esp32/EspCan.cpp"          # May have TWAI compatibility issues
     "${SRC_ROOT}/src/mcu/esp32/EspPio.cpp"          # May have RMT compatibility issues
     "${SRC_ROOT}/src/mcu/esp32/EspTemperature.cpp"  # May have sensor compatibility issues
@@ -117,14 +117,41 @@ idf_component_register(
 # Set C++ standard
 target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_17)
 
-# Add ESP32-C6 specific definitions
-target_compile_definitions(${COMPONENT_LIB} PUBLIC
-    HF_TARGET_MCU_ESP32C6=1
-    HF_MCU_ESP32C6=1
-    HF_MCU_FAMILY_ESP32=1
-    HF_THREAD_SAFE=1
-    ESP32C6=1
-)
+# Add ESP32 family definitions based on target
+if(CONFIG_IDF_TARGET_ESP32)
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HF_TARGET_MCU_ESP32=1
+        HF_MCU_ESP32=1
+        HF_MCU_FAMILY_ESP32=1
+        HF_THREAD_SAFE=1
+        ESP32=1
+    )
+elseif(CONFIG_IDF_TARGET_ESP32C6)
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HF_TARGET_MCU_ESP32C6=1
+        HF_MCU_ESP32C6=1
+        HF_MCU_FAMILY_ESP32=1
+        HF_THREAD_SAFE=1
+        ESP32C6=1
+    )
+elseif(CONFIG_IDF_TARGET_ESP32S3)
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HF_TARGET_MCU_ESP32S3=1
+        HF_MCU_ESP32S3=1
+        HF_MCU_FAMILY_ESP32=1
+        HF_THREAD_SAFE=1
+        ESP32S3=1
+    )
+else()
+    # Default to ESP32
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HF_TARGET_MCU_ESP32=1
+        HF_MCU_ESP32=1
+        HF_MCU_FAMILY_ESP32=1
+        HF_THREAD_SAFE=1
+        ESP32=1
+    )
+endif()
 
 # Compiler flags for ESP32-C6 optimization
 target_compile_options(${COMPONENT_LIB} PRIVATE
@@ -158,7 +185,15 @@ list(LENGTH EXISTING_SRCS NUM_SOURCES)
 message(STATUS "=== HF Internal Interface Wrap Component Summary ===")
 message(STATUS "✓ Component configured successfully")
 message(STATUS "✓ Included ${NUM_SOURCES} source files")
-message(STATUS "✓ Target MCU: ESP32-C6")
+if(CONFIG_IDF_TARGET_ESP32)
+    message(STATUS "✓ Target MCU: ESP32")
+elseif(CONFIG_IDF_TARGET_ESP32C6)
+    message(STATUS "✓ Target MCU: ESP32-C6")
+elseif(CONFIG_IDF_TARGET_ESP32S3)
+    message(STATUS "✓ Target MCU: ESP32-S3")
+else()
+    message(STATUS "✓ Target MCU: ESP32 (default)")
+endif()
 message(STATUS "✓ C++ Standard: C++17")
 message(STATUS "✓ Thread Safety: ENABLED")
 message(STATUS "✓ Optimization: LTO enabled (if configured)")

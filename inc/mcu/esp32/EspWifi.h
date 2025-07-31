@@ -465,6 +465,16 @@ private:
                              void* event_data);
 
   /**
+   * @brief Static SmartConfig event handler for ESP-IDF
+   * @param arg User argument (EspWifi instance)
+   * @param event_base Event base
+   * @param event_id Event ID
+   * @param event_data Event data
+   */
+  static void smartconfigEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id,
+                                      void* event_data);
+
+  /**
    * @brief Handle WiFi events internally
    * @param event_id ESP-IDF event ID
    * @param event_data Event data
@@ -477,6 +487,13 @@ private:
    * @param event_data Event data
    */
   void handleIpEvent(int32_t event_id, void* event_data);
+
+  /**
+   * @brief Handle SmartConfig events internally
+   * @param event_id ESP-IDF event ID
+   * @param event_data Event data
+   */
+  void handleSmartconfigEvent(int32_t event_id, void* event_data);
 
   /**
    * @brief Notify user event callback
