@@ -3,11 +3,13 @@
 
 /**
  * @file EspI2c.h
- * @brief Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device architecture.
+ * @brief Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device
+ * architecture.
  *
  * This header provides a comprehensive I2C implementation that properly utilizes the ESP-IDF v5.5+
- * bus-device model, following the same pattern as the SPI implementation. The architecture separates
- * bus management from device operations, providing clean abstraction and optimal resource management.
+ * bus-device model, following the same pattern as the SPI implementation. The architecture
+ * separates bus management from device operations, providing clean abstraction and optimal resource
+ * management.
  *
  * @section features ESP32C6/ESP-IDF v5.5+ Features Supported:
  * - **Bus-Device Architecture**: Separate EspI2cBus and EspI2cDevice classes
@@ -21,7 +23,7 @@
  *
  * @section performance Performance Characteristics:
  * - Standard Mode: 100 kHz
- * - Fast Mode: 400 kHz  
+ * - Fast Mode: 400 kHz
  * - Fast Mode Plus: 1 MHz (ESP32C6)
  * - 7-bit and 10-bit addressing support
  * - Clock stretching with configurable timeout
@@ -109,7 +111,8 @@ public:
    * @param handle ESP-IDF device handle
    * @param config Device configuration
    */
-  EspI2cDevice(EspI2cBus* parent, i2c_master_dev_handle_t handle, const hf_i2c_device_config_t& config);
+  EspI2cDevice(EspI2cBus* parent, i2c_master_dev_handle_t handle,
+               const hf_i2c_device_config_t& config);
 
   /**
    * @brief Destructor. Automatically removes device from bus if needed.
@@ -147,8 +150,7 @@ public:
    * @return I2C operation result
    * @note Device address is configured during device creation
    */
-  hf_i2c_err_t Read(hf_u8_t* data, hf_u16_t length,
-                    hf_u32_t timeout_ms = 0) noexcept override;
+  hf_i2c_err_t Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Write then read data from the I2C device.
@@ -160,9 +162,8 @@ public:
    * @return I2C operation result
    * @note Device address is configured during device creation
    */
-  hf_i2c_err_t WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
-                         hf_u8_t* rx_data, hf_u16_t rx_length,
-                         hf_u32_t timeout_ms = 0) noexcept override;
+  hf_i2c_err_t WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length, hf_u8_t* rx_data,
+                         hf_u16_t rx_length, hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Get I2C bus statistics.
@@ -216,13 +217,13 @@ public:
   bool ProbeDevice() noexcept;
 
 private:
-  EspI2cBus* parent_bus_;                       ///< Parent bus pointer
-  i2c_master_dev_handle_t handle_;              ///< ESP-IDF device handle
-  hf_i2c_device_config_t config_;               ///< Device configuration
-  bool initialized_;                            ///< Initialization status
-  mutable hf_i2c_statistics_t statistics_;      ///< Per-device statistics
-  mutable hf_i2c_diagnostics_t diagnostics_;    ///< Per-device diagnostics
-  mutable RtosMutex mutex_;                     ///< Device mutex for thread safety
+  EspI2cBus* parent_bus_;                    ///< Parent bus pointer
+  i2c_master_dev_handle_t handle_;           ///< ESP-IDF device handle
+  hf_i2c_device_config_t config_;            ///< Device configuration
+  bool initialized_;                         ///< Initialization status
+  mutable hf_i2c_statistics_t statistics_;   ///< Per-device statistics
+  mutable hf_i2c_diagnostics_t diagnostics_; ///< Per-device diagnostics
+  mutable RtosMutex mutex_;                  ///< Device mutex for thread safety
 
   /**
    * @brief Update statistics with operation result.
@@ -230,7 +231,8 @@ private:
    * @param bytes_transferred Number of bytes transferred
    * @param operation_time_us Operation time in microseconds
    */
-  void UpdateStatistics(bool success, size_t bytes_transferred, hf_u64_t operation_time_us) noexcept;
+  void UpdateStatistics(bool success, size_t bytes_transferred,
+                        hf_u64_t operation_time_us) noexcept;
 
   /**
    * @brief Convert ESP-IDF error to HardFOC error.
@@ -372,8 +374,7 @@ public:
    * @param end_addr Ending address for scan (default: 0x77)
    * @return Number of devices found
    */
-  size_t ScanDevices(std::vector<hf_u16_t>& found_devices,
-                     hf_u16_t start_addr = 0x08,
+  size_t ScanDevices(std::vector<hf_u16_t>& found_devices, hf_u16_t start_addr = 0x08,
                      hf_u16_t end_addr = 0x77) noexcept;
 
   /**
@@ -390,11 +391,11 @@ public:
   bool ResetBus() noexcept;
 
 private:
-  hf_i2c_master_bus_config_t config_;                          ///< Bus configuration
-  i2c_master_bus_handle_t bus_handle_;                         ///< ESP-IDF bus handle
-  bool initialized_;                                           ///< Initialization status
-  mutable RtosMutex mutex_;                                    ///< Bus mutex for thread safety
-  std::vector<std::unique_ptr<EspI2cDevice>> devices_;        ///< Device instances
+  hf_i2c_master_bus_config_t config_;                  ///< Bus configuration
+  i2c_master_bus_handle_t bus_handle_;                 ///< ESP-IDF bus handle
+  bool initialized_;                                   ///< Initialization status
+  mutable RtosMutex mutex_;                            ///< Bus mutex for thread safety
+  std::vector<std::unique_ptr<EspI2cDevice>> devices_; ///< Device instances
 
   /**
    * @brief Find device index by address.

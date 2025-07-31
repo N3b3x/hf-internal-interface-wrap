@@ -684,18 +684,18 @@ private:
 
   // Static callback functions for ESP-IDF
   static hf_bool_t IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
-                                           void* user_data) noexcept;
-  static hf_bool_t IRAM_ATTR MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data,
-                                        void* user_data) noexcept;
+                                                void* user_data) noexcept;
+  static hf_bool_t IRAM_ATTR MonitorCallback(adc_monitor_handle_t monitor_handle,
+                                             const void* event_data, void* user_data) noexcept;
 
   //==============================================//
   // MEMBER VARIABLES
   //==============================================//
 
   // Configuration and state
-  hf_adc_unit_config_t config_;          ///< ADC unit configuration
+  hf_adc_unit_config_t config_;               ///< ADC unit configuration
   std::atomic<hf_bool_t> continuous_running_; ///< Continuous mode running flag
-  std::atomic<hf_adc_err_t> last_error_; ///< Last error code
+  std::atomic<hf_adc_err_t> last_error_;      ///< Last error code
 
   // Thread safety
   mutable RtosMutex config_mutex_; ///< Configuration mutex

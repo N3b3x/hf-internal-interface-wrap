@@ -51,7 +51,8 @@ jobs:
           path: .
           command: |
             idf.py create-project ${{ env.BUILD_PATH }}
-            cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt
+            cp examples/esp32/CMakeLists.txt \
+              ${{ env.BUILD_PATH }}/CMakeLists.txt
             rm -rf ${{ env.BUILD_PATH }}/main
             cp -r examples/esp32/main ${{ env.BUILD_PATH }}/main
             cp -r examples/esp32/components ${{ env.BUILD_PATH }}/components
@@ -59,11 +60,22 @@ jobs:
             # Copy source and include directories to maintain relative paths
             cp -r src ${{ env.BUILD_PATH }}/src
             cp -r inc ${{ env.BUILD_PATH }}/inc
-            idf.py -C ${{ env.BUILD_PATH }} -DIDF_TARGET=${{ env.IDF_TARGET }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} build
-            idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt
-            idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json
+            idf.py -C ${{ env.BUILD_PATH }} \
+              -DIDF_TARGET=${{ env.IDF_TARGET }} \
+              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} build
+            idf.py -C ${{ env.BUILD_PATH }} size-components > \
+              ${{ env.BUILD_PATH }}/build/size.txt
+            idf.py -C ${{ env.BUILD_PATH }} size --format json > \
+              ${{ env.BUILD_PATH }}/build/size.json
       - name: Format check
-        run: clang-format --dry-run --Werror src/*.cpp inc/*.h examples/esp32/main/*.cpp
+        run: |
+          # Find and format all C++ source files
+          find src/ -name "*.cpp" -o -name "*.hpp" -o -name "*.c" -o -name "*.h" | \
+            xargs -r clang-format --dry-run --Werror
+          find inc/ -name "*.h" -o -name "*.hpp" | \
+            xargs -r clang-format --dry-run --Werror
+          find examples/ -name "*.cpp" -o -name "*.hpp" -o -name "*.c" -o -name "*.h" | \
+            xargs -r clang-format --dry-run --Werror
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -87,24 +99,38 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Install analysis tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-tidy cppcheck
+
       - name: Run cppcheck
         uses: deep5050/cppcheck-action@v3.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           enable: all
           inconclusive: true
-          std: c99
-          include: main
+          std: c++17
+          include: inc src examples
 
       - name: Run clang-tidy
         uses: ZedThree/clang-tidy-review@v0.21.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config_file: .clang-tidy
+          include: 'src/*,inc/*,examples/*'
+          exclude: 'build/*'
 
   workflow-lint:
-    name: actionlint
+    name: Workflow Lint (actionlint + yamllint)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Install yamllint
+        run: sudo apt-get update && sudo apt-get install -y yamllint
+        
+      - name: Run yamllint
+        run: yamllint .github/workflows/
+        
       - uses: rhysd/actionlint@v1.6.25

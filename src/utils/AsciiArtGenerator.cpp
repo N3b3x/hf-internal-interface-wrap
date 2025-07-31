@@ -16,15 +16,15 @@
 
 #include <algorithm>
 #include <cstring>
-#include <sstream>
 #include <iomanip>
+#include <sstream>
 
 //==============================================================================
 // CONSTANTS
 //==============================================================================
 
-static constexpr size_t ART_HEIGHT = 6;  ///< Height of ASCII art characters
-static constexpr size_t ART_WIDTH = 8;   ///< Width of ASCII art characters
+static constexpr size_t ART_HEIGHT = 6; ///< Height of ASCII art characters
+static constexpr size_t ART_WIDTH = 8;  ///< Width of ASCII art characters
 
 //==============================================================================
 // CHARACTER ART DATA
@@ -74,12 +74,14 @@ static const std::map<char, std::vector<std::string>> CHARACTER_ART = {
     {'!', {" _  ", "| | ", "| | ", "| | ", "|_| ", "(_) "}},
     {'?', {" ___   ", "|__ \\  ", "   ) | ", "  / /  ", " |_|   ", " (_)   "}},
     {'@', {"   ____   ", "  / __ \\  ", " / / _` | ", "| | (_| | ", " \\ \\__,_| ", "  \\____/  "}},
-    {'#', {"   _  _    ", " _| || |_  ", "|_  __  _| ", " _| || |_  ", "|_  __  _| ", "  |_||_|   "}},
+    {'#',
+     {"   _  _    ", " _| || |_  ", "|_  __  _| ", " _| || |_  ", "|_  __  _| ", "  |_||_|   "}},
     {'$', {"  _   ", " | |  ", "/ __) ", "\\__ \\ ", "(   / ", " |_|  "}},
     {'%', {" _   __ ", "(_) / / ", "   / /  ", "  / /   ", " / / _  ", "/_/ (_) "}},
     {'^', {" /\\  ", "|/\\| ", "     ", "     ", "     ", "     "}},
     {'&', {"         ", "  ___    ", " ( _ )   ", " / _ \\/\\ ", "| (_>  < ", " \\___/\\/ "}},
-    {'*', {"    _     ", " /\\| |/\\  ", " \\ ` ' /  ", "|_     _| ", " / , . \\  ", " \\/|_|\\/  "}},
+    {'*',
+     {"    _     ", " /\\| |/\\  ", " \\ ` ' /  ", "|_     _| ", " / , . \\  ", " \\/|_|\\/  "}},
     {'(', {"  __ ", " / / ", "| |  ", "| |  ", "| |  ", " \\_\\ "}},
     {')', {"__   ", "\\ \\  ", " | | ", " | | ", " | | ", "/_/  "}},
     {'-', {"         ", "         ", " ______  ", "|______| ", "         ", "         "}},
@@ -100,15 +102,14 @@ static const std::map<char, std::vector<std::string>> CHARACTER_ART = {
     {'<', {"   __ ", "  / / ", " / /  ", "< <   ", " \\ \\  ", "  \\_\\ "}},
     {'>', {"__    ", "\\ \\   ", " \\ \\  ", "  > > ", " / /  ", "/_/   "}},
     {'`', {" _  ", "( ) ", " \\| ", "    ", "    ", "    "}},
-    {'~', {"      ", " /\\/| ", "|/\\/  ", "      ", "      ", "      "}}
-};
+    {'~', {"      ", " /\\/| ", "|/\\/  ", "      ", "      ", "      "}}};
 
 //==============================================================================
 // CONSTRUCTOR
 //==============================================================================
 
 AsciiArtGenerator::AsciiArtGenerator() noexcept {
-    // Simple constructor - no configuration needed
+  // Simple constructor - no configuration needed
 }
 
 //==============================================================================
@@ -116,67 +117,62 @@ AsciiArtGenerator::AsciiArtGenerator() noexcept {
 //==============================================================================
 
 std::string AsciiArtGenerator::Generate(const std::string& input) const noexcept {
-    if (input.empty()) {
-        return "";
+  if (input.empty()) {
+    return "";
+  }
+
+  // Convert input to uppercase for consistent processing
+  std::string upper_input = input;
+  std::transform(upper_input.begin(), upper_input.end(), upper_input.begin(), ::toupper);
+
+  // Generate art lines for each character
+  std::vector<std::string> art_lines(ART_HEIGHT);
+
+  for (char c : upper_input) {
+    auto char_art = GetCharacterArt(c);
+    if (char_art.size() == ART_HEIGHT) {
+      for (size_t i = 0; i < ART_HEIGHT; ++i) {
+        art_lines[i] += char_art[i];
+      }
     }
+  }
 
-    // Convert input to uppercase for consistent processing
-    std::string upper_input = input;
-    std::transform(upper_input.begin(), upper_input.end(), upper_input.begin(), ::toupper);
+  // Convert to string
+  std::string result;
+  for (const auto& line : art_lines) {
+    result += line + "\n";
+  }
 
-    // Generate art lines for each character
-    std::vector<std::string> art_lines(ART_HEIGHT);
-    
-    for (char c : upper_input) {
-        auto char_art = GetCharacterArt(c);
-        if (char_art.size() == ART_HEIGHT) {
-            for (size_t i = 0; i < ART_HEIGHT; ++i) {
-                art_lines[i] += char_art[i];
-            }
-        }
-    }
-
-    // Convert to string
-    std::string result;
-    for (const auto& line : art_lines) {
-        result += line + "\n";
-    }
-
-    return result;
+  return result;
 }
 
-
-
-void AsciiArtGenerator::AddCustomCharacter(char character, const std::vector<std::string>& art_lines) noexcept {
-    if (art_lines.size() == ART_HEIGHT) {
-        custom_characters_[character] = art_lines;
-    }
+void AsciiArtGenerator::AddCustomCharacter(char character,
+                                           const std::vector<std::string>& art_lines) noexcept {
+  if (art_lines.size() == ART_HEIGHT) {
+    custom_characters_[character] = art_lines;
+  }
 }
 
 void AsciiArtGenerator::RemoveCustomCharacter(char character) noexcept {
-    custom_characters_.erase(character);
+  custom_characters_.erase(character);
 }
 
 void AsciiArtGenerator::ClearCustomCharacters() noexcept {
-    custom_characters_.clear();
+  custom_characters_.clear();
 }
 
 bool AsciiArtGenerator::IsCharacterSupported(char character) const noexcept {
-    return CHARACTER_ART.find(character) != CHARACTER_ART.end() ||
-           custom_characters_.find(character) != custom_characters_.end();
+  return CHARACTER_ART.find(character) != CHARACTER_ART.end() ||
+         custom_characters_.find(character) != custom_characters_.end();
 }
 
 std::string AsciiArtGenerator::GetSupportedCharacters() const noexcept {
-    std::string result;
-    for (const auto& pair : CHARACTER_ART) {
-        result += pair.first;
-    }
-    for (const auto& pair : custom_characters_) {
-        result += pair.first;
-    }
-    return result;
+  std::string result;
+  for (const auto& pair : CHARACTER_ART) {
+    result += pair.first;
+  }
+  for (const auto& pair : custom_characters_) {
+    result += pair.first;
+  }
+  return result;
 }
-
-
-
- 

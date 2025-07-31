@@ -92,7 +92,8 @@ public:
    * @param timeout_ms Timeout in milliseconds (0 = default)
    * @return SPI operation result (hf_spi_err_t)
    */
-  hf_spi_err_t Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept override;
+  hf_spi_err_t Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf_u16_t length,
+                        hf_u32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Get the device configuration for this SPI device.
@@ -133,11 +134,11 @@ public:
   hf_spi_err_t GetActualClockFrequency(hf_u32_t& actual_freq_hz) const noexcept;
 
 private:
-  EspSpiBus* parent_bus_; ///< Parent SPI bus
-  spi_device_handle_t handle_; ///< ESP-IDF device handle
+  EspSpiBus* parent_bus_;         ///< Parent SPI bus
+  spi_device_handle_t handle_;    ///< ESP-IDF device handle
   hf_spi_device_config_t config_; ///< Device configuration
-  bool initialized_; ///< Initialization state
-  RtosMutex mutex_; ///< Thread safety
+  bool initialized_;              ///< Initialization state
+  RtosMutex mutex_;               ///< Thread safety
 };
 
 /**
@@ -168,35 +169,35 @@ public:
    * @return true if successful, false otherwise
    */
   bool Deinitialize() noexcept;
-  
+
   /**
    * @brief Create a new SPI device on this bus and store it internally.
    * @param device_config Device configuration (hf_spi_device_config_t)
    * @return Index of the created device (use with GetDevice), or -1 on failure
    */
   int CreateDevice(const hf_spi_device_config_t& device_config) noexcept;
-  
+
   /**
    * @brief Get a device by index.
    * @param device_index Index returned by CreateDevice()
    * @return Pointer to BaseSpi device, or nullptr if invalid index
    */
   BaseSpi* GetDevice(int device_index) noexcept;
-  
+
   /**
    * @brief Get a device by index (const version).
    * @param device_index Index returned by CreateDevice()
    * @return Const pointer to BaseSpi device, or nullptr if invalid index
    */
   const BaseSpi* GetDevice(int device_index) const noexcept;
-  
+
   /**
    * @brief Get an ESP-specific device by index.
    * @param device_index Index returned by CreateDevice()
    * @return Pointer to EspSpiDevice, or nullptr if invalid index
    */
   EspSpiDevice* GetEspDevice(int device_index) noexcept;
-  
+
   /**
    * @brief Get an ESP-specific device by index (const version).
    * @param device_index Index returned by CreateDevice()
@@ -204,20 +205,19 @@ public:
    */
   const EspSpiDevice* GetEspDevice(int device_index) const noexcept;
 
-  
   /**
    * @brief Get number of devices on this bus.
    * @return Number of devices
    */
   std::size_t GetDeviceCount() const noexcept;
-  
+
   /**
    * @brief Remove a device from the bus.
    * @param device_index Index of device to remove
    * @return true if successful, false otherwise
    */
   bool RemoveDevice(int device_index) noexcept;
-  
+
   /**
    * @brief Get the bus configuration.
    * @return const hf_spi_bus_config_t&
@@ -231,7 +231,7 @@ public:
 
 private:
   hf_spi_bus_config_t config_; ///< Bus configuration
-  bool initialized_; ///< Initialization state
-  mutable RtosMutex mutex_; ///< Thread safety (mutable for const operations)
+  bool initialized_;           ///< Initialization state
+  mutable RtosMutex mutex_;    ///< Thread safety (mutable for const operations)
   std::vector<std::unique_ptr<EspSpiDevice>> devices_; ///< Managed devices on this bus
 };

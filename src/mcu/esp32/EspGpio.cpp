@@ -512,7 +512,8 @@ hf_gpio_err_t EspGpio::SetDirectionImpl(hf_gpio_direction_t direction) noexcept 
       }
       break;
     default:
-      ESP_LOGE(TAG, "Invalid direction %d for GPIO%d", static_cast<int>(direction), static_cast<int>(pin_));
+      ESP_LOGE(TAG, "Invalid direction %d for GPIO%d", static_cast<int>(direction),
+               static_cast<int>(pin_));
       return hf_gpio_err_t::GPIO_ERR_INVALID_PARAMETER;
   }
 
@@ -602,9 +603,10 @@ hf_gpio_pull_mode_t EspGpio::GetPullModeImpl() const noexcept {
 hf_gpio_err_t EspGpio::SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept {
   // Cache the new output mode
   output_mode_ = mode;
-  
-  ESP_LOGV(TAG, "GPIO%d output mode set to %s", static_cast<int>(pin_),
-           (mode == hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN) ? "open-drain" : "push-pull");
+
+  ESP_LOGV(
+      TAG, "GPIO%d output mode set to %s", static_cast<int>(pin_),
+      (mode == hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN) ? "open-drain" : "push-pull");
 
   // If already initialized and configured as output, update the hardware mode immediately
   if (initialized_ && current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
@@ -616,8 +618,9 @@ hf_gpio_err_t EspGpio::SetOutputModeImpl(hf_gpio_output_mode_t mode) noexcept {
   }
 
   // If not currently output or not initialized, mode is cached for later application
-  ESP_LOGV(TAG, "GPIO%d output mode cached (will be applied when configured as output)", static_cast<int>(pin_));
-  
+  ESP_LOGV(TAG, "GPIO%d output mode cached (will be applied when configured as output)",
+           static_cast<int>(pin_));
+
   return hf_gpio_err_t::GPIO_SUCCESS;
 }
 
@@ -691,9 +694,10 @@ hf_gpio_err_t EspGpio::GetPinLevelImpl(hf_gpio_level_t& level) noexcept {
   }
 
   int hardware_level = gpio_get_level(static_cast<gpio_num_t>(pin_));
-  
+
   // Convert hardware level to level enum
-  level = (hardware_level == 1) ? hf_gpio_level_t::HF_GPIO_LEVEL_HIGH : hf_gpio_level_t::HF_GPIO_LEVEL_LOW;
+  level = (hardware_level == 1) ? hf_gpio_level_t::HF_GPIO_LEVEL_HIGH
+                                : hf_gpio_level_t::HF_GPIO_LEVEL_LOW;
 
   return hf_gpio_err_t::GPIO_SUCCESS;
 }
@@ -707,7 +711,8 @@ hf_gpio_err_t EspGpio::GetDirectionImpl(hf_gpio_direction_t& direction) const no
   gpio_io_config_t io_config;
   esp_err_t ret = gpio_get_io_config(static_cast<gpio_num_t>(pin_), &io_config);
   if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to get GPIO%d configuration: %s", static_cast<int>(pin_), esp_err_to_name(ret));
+    ESP_LOGE(TAG, "Failed to get GPIO%d configuration: %s", static_cast<int>(pin_),
+             esp_err_to_name(ret));
     return hf_gpio_err_t::GPIO_ERR_READ_FAILURE;
   }
 
@@ -733,7 +738,8 @@ hf_gpio_err_t EspGpio::GetOutputModeImpl(hf_gpio_output_mode_t& mode) const noex
   gpio_io_config_t io_config;
   esp_err_t ret = gpio_get_io_config(static_cast<gpio_num_t>(pin_), &io_config);
   if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to get GPIO%d configuration: %s", static_cast<int>(pin_), esp_err_to_name(ret));
+    ESP_LOGE(TAG, "Failed to get GPIO%d configuration: %s", static_cast<int>(pin_),
+             esp_err_to_name(ret));
     return hf_gpio_err_t::GPIO_ERR_READ_FAILURE;
   }
 
@@ -1340,11 +1346,11 @@ hf_gpio_status_info_t EspGpio::GetConfigurationDump() const noexcept {
   dump.filter_type = glitch_filter_type_;
   dump.glitch_filter_enabled = pin_glitch_filter_enabled_ || flex_glitch_filter_enabled_;
   dump.interrupt_count = interrupt_count_.load();
-  dump.is_wake_source = false;                                                // Set as appropriate
-  dump.is_dedicated_gpio = false;                                             // Set as appropriate
-  dump.dedicated_channel = 0;                                                 // Set as appropriate
-  dump.sleep_hold_active = false;                                             // Set as appropriate
-  dump.last_interrupt_time_us = 0;                                            // Set as appropriate
+  dump.is_wake_source = false;     // Set as appropriate
+  dump.is_dedicated_gpio = false;  // Set as appropriate
+  dump.dedicated_channel = 0;      // Set as appropriate
+  dump.sleep_hold_active = false;  // Set as appropriate
+  dump.last_interrupt_time_us = 0; // Set as appropriate
 #endif
   return dump;
 }
@@ -1445,7 +1451,6 @@ bool EspGpio::gpio_isr_handler_installed_ = false;
 // Note: EnsureInitialized() is inherited from BaseGpio and provides lazy initialization
 // The base class implementation calls Initialize() if not already initialized
 
-
 //==============================================================================
 // PRIVATE HELPER FUNCTION IMPLEMENTATIONS
 //==============================================================================
@@ -1536,7 +1541,6 @@ bool EspGpio::InitializeAdvancedFeatures() noexcept {
 void EspGpio::CleanupAdvancedFeatures() noexcept {
   // Clean up glitch filters
   CleanupGlitchFilters();
-
 
 #ifdef HF_MCU_ESP32C6
   // Clean up RTC GPIO resources
