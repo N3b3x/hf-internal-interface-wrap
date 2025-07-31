@@ -41,13 +41,12 @@ extern "C" {
 #include "hal/rtc_io_types.h"
 #include "soc/clk_tree_defs.h"
 #include "soc/gpio_sig_map.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
 
 #ifdef __cplusplus
 }
 #endif
-
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
 
 static const char* TAG = "EspGpio";
 

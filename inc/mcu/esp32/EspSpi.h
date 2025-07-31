@@ -31,7 +31,7 @@
 
 #include "BaseSpi.h"
 #include "utils/EspTypes.h"
-#include "utils/RtosMutex.h"
+#include "RtosMutex.h"
 #include <memory>
 #include <vector>
 

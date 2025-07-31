@@ -1,3 +1,7 @@
+// Disable pedantic warnings for ESP-IDF headers
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <iostream>
@@ -13,6 +17,8 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
+#pragma GCC diagnostic pop
 
 // Include all base classes
 #include "base/BaseAdc.h"
@@ -97,16 +103,26 @@ extern "C" void app_main(void) {
   auto can_init = test_can.Initialize();
   ESP_LOGI(TAG, "EspCan initialized: %s", can_init == hf_can_err_t::CAN_SUCCESS ? "true" : "false");
 
-  // 5. EspSpi
-  hf_spi_bus_config_t spi_cfg = {};
-  spi_cfg.mosi_pin = 10;
-  spi_cfg.miso_pin = 9;
-  spi_cfg.sclk_pin = 11;
-  spi_cfg.clock_speed_hz = 1000000;
-  spi_cfg.mode = 0;
-  EspSpi test_spi(spi_cfg);
-  bool spi_init = test_spi.EnsureInitialized();
-  ESP_LOGI(TAG, "EspSpi initialized: %s", spi_init ? "true" : "false");
+  // 5. EspSpi (Bus-Device Architecture)
+  hf_spi_bus_config_t spi_bus_cfg = {};
+  spi_bus_cfg.mosi_pin = 10;
+  spi_bus_cfg.miso_pin = 9;
+  spi_bus_cfg.sclk_pin = 11;
+  spi_bus_cfg.clock_speed_hz = 1000000;
+  spi_bus_cfg.host = HF_SPI2_HOST;
+  EspSpiBus test_spi_bus(spi_bus_cfg);
+  bool spi_bus_init = test_spi_bus.Initialize();
+  ESP_LOGI(TAG, "EspSpiBus initialized: %s", spi_bus_init ? "true" : "false");
+  
+  // Create SPI device on the bus
+  if (spi_bus_init) {
+    hf_spi_device_config_t spi_dev_cfg = {};
+    spi_dev_cfg.clock_speed_hz = 1000000;
+    spi_dev_cfg.mode = hf_spi_mode_t::HF_SPI_MODE_0;
+    spi_dev_cfg.cs_pin = 12;
+    int device_index = test_spi_bus.CreateDevice(spi_dev_cfg);
+    ESP_LOGI(TAG, "EspSpiDevice created with index: %d", device_index);
+  }
 
   // 6. EspI2c (Test disabled - using new bus-device architecture)
   // TODO: Update to use new EspI2cBus/EspI2cDevice architecture

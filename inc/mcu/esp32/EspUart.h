@@ -143,19 +143,6 @@ public:
   // LIFECYCLE (BaseUart Interface)
   //==============================================================================
 
-  /**
-   * @brief Initialize the UART driver.
-   * @return true if successful, false otherwise
-   * @note This is called automatically by EnsureInitialized() on first use
-   */
-  bool Initialize() noexcept override;
-
-  /**
-   * @brief Deinitialize the UART driver.
-   * @return true if successful, false otherwise
-   */
-  bool Deinitialize() noexcept override;
-
   // Note: EnsureInitialized() is inherited from BaseUart and provides lazy initialization
   // Thread safety is handled in Initialize() and Deinitialize() methods
 
@@ -480,6 +467,24 @@ public:
   int VPrintf(const char* format, va_list args) noexcept;
 
 private:
+  
+  //==============================================================================
+  // INITIALIZATION AND DEINITIALIZATION
+  //==============================================================================
+
+  /**
+   * @brief Initialize the UART driver.
+   * @return true if successful, false otherwise
+   * @note This is called automatically by EnsureInitialized() on first use
+   */
+  bool Initialize() noexcept override;
+
+  /**
+   * @brief Deinitialize the UART driver.
+   * @return true if successful, false otherwise
+   */
+  bool Deinitialize() noexcept override;
+
   //==============================================================================
   // INTERNAL STATE STRUCTURES
   //==============================================================================
