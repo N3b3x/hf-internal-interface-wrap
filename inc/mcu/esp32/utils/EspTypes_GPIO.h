@@ -115,7 +115,6 @@ enum class hf_gpio_glitch_filter_clk_src_t : uint8_t {
   HF_GLITCH_FILTER_CLK_SRC_XTAL = 2     ///< XTAL clock (40MHz typically)
 };
 
-
 /**
  * @brief Dedicated GPIO bundle configuration flags.
  * @details Control flags for dedicated GPIO bundle behavior.
@@ -188,7 +187,6 @@ struct hf_gpio_pin_filter_config_t {
   bool enable_on_init;                     ///< Enable filter immediately after creation
 };
 
-
 /**
  * @brief GPIO sleep mode configuration.
  * @details GPIO behavior during light and deep sleep modes.
@@ -246,27 +244,27 @@ struct hf_gpio_advanced_config_t {
  * @details Complete status information for debugging, monitoring, and diagnostics.
  */
 struct hf_gpio_status_info_t {
-  uint8_t pin_number;                        ///< GPIO pin number
-  hf_gpio_mode_t current_mode;               ///< Current GPIO mode
-  hf_gpio_pull_t current_pull_mode;          ///< Current pull mode
-  hf_gpio_drive_cap_t current_drive_cap;     ///< Current drive capability
-  hf_gpio_intr_type_t interrupt_type;        ///< Current interrupt type
-  bool input_enabled;                        ///< Input buffer enabled
-  bool output_enabled;                       ///< Output buffer enabled
-  bool open_drain;                           ///< Open drain mode active
-  bool sleep_sel_enabled;                    ///< Sleep selection enabled
-  bool hold_enabled;                         ///< Hold function enabled
-  bool rtc_enabled;                          ///< RTC GPIO enabled
-  bool lp_io_enabled;                        ///< LP_IO enabled
-  uint32_t function_select;                  ///< IOMUX function selection
-  hf_gpio_glitch_filter_type_t filter_type;  ///< Active glitch filter type
-  bool glitch_filter_enabled;                ///< Glitch filter enabled
-  uint32_t interrupt_count;                  ///< Number of interrupts occurred
-  bool is_wake_source;                       ///< Pin configured as wake source
-  bool is_dedicated_gpio;                    ///< Pin used in dedicated GPIO bundle
-  uint8_t dedicated_channel;                 ///< Dedicated GPIO channel number (if applicable)
-  bool sleep_hold_active;                    ///< Sleep hold currently active
-  uint32_t last_interrupt_time_us;           ///< Last interrupt timestamp (microseconds)
+  uint8_t pin_number;                       ///< GPIO pin number
+  hf_gpio_mode_t current_mode;              ///< Current GPIO mode
+  hf_gpio_pull_t current_pull_mode;         ///< Current pull mode
+  hf_gpio_drive_cap_t current_drive_cap;    ///< Current drive capability
+  hf_gpio_intr_type_t interrupt_type;       ///< Current interrupt type
+  bool input_enabled;                       ///< Input buffer enabled
+  bool output_enabled;                      ///< Output buffer enabled
+  bool open_drain;                          ///< Open drain mode active
+  bool sleep_sel_enabled;                   ///< Sleep selection enabled
+  bool hold_enabled;                        ///< Hold function enabled
+  bool rtc_enabled;                         ///< RTC GPIO enabled
+  bool lp_io_enabled;                       ///< LP_IO enabled
+  uint32_t function_select;                 ///< IOMUX function selection
+  hf_gpio_glitch_filter_type_t filter_type; ///< Active glitch filter type
+  bool glitch_filter_enabled;               ///< Glitch filter enabled
+  uint32_t interrupt_count;                 ///< Number of interrupts occurred
+  bool is_wake_source;                      ///< Pin configured as wake source
+  bool is_dedicated_gpio;                   ///< Pin used in dedicated GPIO bundle
+  uint8_t dedicated_channel;                ///< Dedicated GPIO channel number (if applicable)
+  bool sleep_hold_active;                   ///< Sleep hold currently active
+  uint32_t last_interrupt_time_us;          ///< Last interrupt timestamp (microseconds)
 };
 
 /**
@@ -347,7 +345,6 @@ typedef struct {
 
 #define HF_GPIO_SUPPORTS_DEDICATED_GPIO(gpio_num) \
   (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_SPI_FLASH_PIN(gpio_num))
-
 
 /**
  * @brief ESP32 GPIO to ADC channel mapping.
@@ -456,7 +453,6 @@ hf_gpio_drive_cap_t hf_gpio_get_optimal_drive_strength(uint32_t frequency_hz, ui
  */
 uint32_t hf_gpio_calc_glitch_filter_window(uint32_t noise_duration_ns,
                                            uint8_t safety_margin_percent);
-
 
 //==============================================================================
 // ERROR HANDLING AND DEBUGGING SUPPORT

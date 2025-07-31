@@ -263,8 +263,7 @@ public:
    * @return hf_i2c_err_t result code
    * @note Device address is configured during device creation
    */
-  virtual hf_i2c_err_t Read(hf_u8_t* data, hf_u16_t length,
-                            hf_u32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_i2c_err_t Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Write then read data from the I2C device.
@@ -276,9 +275,8 @@ public:
    * @return hf_i2c_err_t result code
    * @note Device address is configured during device creation
    */
-  virtual hf_i2c_err_t WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
-                                 hf_u8_t* rx_data, hf_u16_t rx_length,
-                                 hf_u32_t timeout_ms = 0) noexcept = 0;
+  virtual hf_i2c_err_t WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length, hf_u8_t* rx_data,
+                                 hf_u16_t rx_length, hf_u32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Get the device address for this I2C device.
@@ -368,8 +366,7 @@ public:
    * @param length Number of registers to read
    * @return true if successful, false otherwise
    */
-  virtual bool ReadRegisters(hf_u8_t reg_addr, hf_u8_t* data,
-                             hf_u16_t length) noexcept {
+  virtual bool ReadRegisters(hf_u8_t reg_addr, hf_u8_t* data, hf_u16_t length) noexcept {
     return WriteRead(&reg_addr, 1, data, length) == hf_i2c_err_t::I2C_SUCCESS;
   }
 

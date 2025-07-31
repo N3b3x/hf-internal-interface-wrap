@@ -408,7 +408,6 @@ protected:
    */
   [[nodiscard]] bool IsHeld() const noexcept;
 
-
   //==============================================================//
   // STATIC UTILITY METHODS FOR ESP32C6 PIN VALIDATION
   //==============================================================//
@@ -553,7 +552,6 @@ private:
    * @brief Cleanup glitch filter resources.
    */
   void CleanupGlitchFilters() noexcept;
-
 
   /**
    * @brief Cleanup interrupt semaphore (called from destructor).

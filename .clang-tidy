@@ -1,2 +1,4 @@
-Checks: '-*,clang-analyzer-*'
+Checks: '-*,clang-analyzer-*,bugprone-*,cppcoreguidelines-*,performance-*,portability-*,readability-*,modernize-*,-modernize-use-trailing-return-type,-cppcoreguidelines-avoid-magic-numbers,-readability-magic-numbers,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-readability-function-cognitive-complexity'
 WarningsAsErrors: ''
+HeaderFilterRegex: '(inc|src)/.*\.(h|hpp)$'
+FormatStyle: file

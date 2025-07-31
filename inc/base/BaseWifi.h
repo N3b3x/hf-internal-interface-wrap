@@ -44,11 +44,11 @@
  * @details X-macro pattern for comprehensive error enumeration. Each entry contains:
  *          X(NAME, VALUE, DESCRIPTION)
  */
-#define HF_WIFI_ERR_LIST(X)                                              \
-  /* Success codes */                                                    \
-  X(WIFI_SUCCESS, 0, "Success")                                          \
-                                                                         \
-  /* General errors */                                                   \
+#define HF_WIFI_ERR_LIST(X)                                             \
+  /* Success codes */                                                   \
+  X(WIFI_SUCCESS, 0, "Success")                                         \
+                                                                        \
+  /* General errors */                                                  \
   X(WIFI_ERR_FAILURE, 1, "General failure")                             \
   X(WIFI_ERR_INVALID_PARAM, 2, "Invalid parameter")                     \
   X(WIFI_ERR_NOT_INITIALIZED, 3, "WiFi not initialized")                \
@@ -105,10 +105,10 @@ constexpr std::string_view HfWifiErrToString(hf_wifi_err_t err) noexcept {
  * @brief WiFi operating modes
  */
 enum class hf_wifi_mode_t : hf_u8_t {
-  HF_WIFI_MODE_STATION = 0,          /**< Station mode (client) */
-  HF_WIFI_MODE_ACCESS_POINT = 1,     /**< Access Point mode */
-  HF_WIFI_MODE_STATION_AP = 2,       /**< Station + Access Point mode */
-  HF_WIFI_MODE_DISABLED = 3          /**< WiFi disabled */
+  HF_WIFI_MODE_STATION = 0,      /**< Station mode (client) */
+  HF_WIFI_MODE_ACCESS_POINT = 1, /**< Access Point mode */
+  HF_WIFI_MODE_STATION_AP = 2,   /**< Station + Access Point mode */
+  HF_WIFI_MODE_DISABLED = 3      /**< WiFi disabled */
 };
 
 /**
@@ -116,16 +116,16 @@ enum class hf_wifi_mode_t : hf_u8_t {
  * @brief WiFi security types
  */
 enum class hf_wifi_security_t : hf_u8_t {
-  HF_WIFI_SECURITY_OPEN = 0,                /**< Open network (no security) */
-  HF_WIFI_SECURITY_WEP = 1,                 /**< WEP security (deprecated) */
-  HF_WIFI_SECURITY_WPA_PSK = 2,             /**< WPA Personal */
-  HF_WIFI_SECURITY_WPA2_PSK = 3,            /**< WPA2 Personal */
-  HF_WIFI_SECURITY_WPA_WPA2_PSK = 4,        /**< WPA/WPA2 Mixed Personal */
-  HF_WIFI_SECURITY_WPA2_ENTERPRISE = 5,     /**< WPA2 Enterprise */
-  HF_WIFI_SECURITY_WPA3_PSK = 6,            /**< WPA3 Personal */
-  HF_WIFI_SECURITY_WPA2_WPA3_PSK = 7,       /**< WPA2/WPA3 Mixed Personal */
-  HF_WIFI_SECURITY_WPA3_ENTERPRISE = 8,     /**< WPA3 Enterprise */
-  HF_WIFI_SECURITY_WAPI_PSK = 9             /**< WAPI Personal */
+  HF_WIFI_SECURITY_OPEN = 0,            /**< Open network (no security) */
+  HF_WIFI_SECURITY_WEP = 1,             /**< WEP security (deprecated) */
+  HF_WIFI_SECURITY_WPA_PSK = 2,         /**< WPA Personal */
+  HF_WIFI_SECURITY_WPA2_PSK = 3,        /**< WPA2 Personal */
+  HF_WIFI_SECURITY_WPA_WPA2_PSK = 4,    /**< WPA/WPA2 Mixed Personal */
+  HF_WIFI_SECURITY_WPA2_ENTERPRISE = 5, /**< WPA2 Enterprise */
+  HF_WIFI_SECURITY_WPA3_PSK = 6,        /**< WPA3 Personal */
+  HF_WIFI_SECURITY_WPA2_WPA3_PSK = 7,   /**< WPA2/WPA3 Mixed Personal */
+  HF_WIFI_SECURITY_WPA3_ENTERPRISE = 8, /**< WPA3 Enterprise */
+  HF_WIFI_SECURITY_WAPI_PSK = 9         /**< WAPI Personal */
 };
 
 /**
@@ -133,14 +133,14 @@ enum class hf_wifi_security_t : hf_u8_t {
  * @brief WiFi connection states
  */
 enum class hf_wifi_state_t : hf_u8_t {
-  HF_WIFI_STATE_DISCONNECTED = 0,     /**< Disconnected from network */
-  HF_WIFI_STATE_CONNECTING = 1,       /**< Attempting to connect */
-  HF_WIFI_STATE_CONNECTED = 2,        /**< Connected to network */
-  HF_WIFI_STATE_DISCONNECTING = 3,    /**< Disconnecting from network */
-  HF_WIFI_STATE_RECONNECTING = 4,     /**< Attempting to reconnect */
-  HF_WIFI_STATE_AP_STARTED = 5,       /**< Access Point started */
-  HF_WIFI_STATE_AP_STOPPED = 6,       /**< Access Point stopped */
-  HF_WIFI_STATE_SCANNING = 7          /**< Scanning for networks */
+  HF_WIFI_STATE_DISCONNECTED = 0,  /**< Disconnected from network */
+  HF_WIFI_STATE_CONNECTING = 1,    /**< Attempting to connect */
+  HF_WIFI_STATE_CONNECTED = 2,     /**< Connected to network */
+  HF_WIFI_STATE_DISCONNECTING = 3, /**< Disconnecting from network */
+  HF_WIFI_STATE_RECONNECTING = 4,  /**< Attempting to reconnect */
+  HF_WIFI_STATE_AP_STARTED = 5,    /**< Access Point started */
+  HF_WIFI_STATE_AP_STOPPED = 6,    /**< Access Point stopped */
+  HF_WIFI_STATE_SCANNING = 7       /**< Scanning for networks */
 };
 
 /**
@@ -148,9 +148,9 @@ enum class hf_wifi_state_t : hf_u8_t {
  * @brief WiFi power save modes
  */
 enum class hf_wifi_power_save_t : hf_u8_t {
-  HF_WIFI_POWER_SAVE_NONE = 0,           /**< No power save */
-  HF_WIFI_POWER_SAVE_MIN_MODEM = 1,      /**< Minimum modem power save */
-  HF_WIFI_POWER_SAVE_MAX_MODEM = 2       /**< Maximum modem power save */
+  HF_WIFI_POWER_SAVE_NONE = 0,      /**< No power save */
+  HF_WIFI_POWER_SAVE_MIN_MODEM = 1, /**< Minimum modem power save */
+  HF_WIFI_POWER_SAVE_MAX_MODEM = 2  /**< Maximum modem power save */
 };
 
 /**
@@ -158,18 +158,18 @@ enum class hf_wifi_power_save_t : hf_u8_t {
  * @brief WiFi event types for callback functions
  */
 enum class hf_wifi_event_t : hf_u8_t {
-  HF_WIFI_EVENT_STA_START = 0,              /**< Station start */
-  HF_WIFI_EVENT_STA_STOP = 1,               /**< Station stop */
-  HF_WIFI_EVENT_STA_CONNECTED = 2,          /**< Station connected to AP */
-  HF_WIFI_EVENT_STA_DISCONNECTED = 3,       /**< Station disconnected from AP */
-  HF_WIFI_EVENT_STA_AUTHMODE_CHANGE = 4,    /**< Station auth mode changed */
-  HF_WIFI_EVENT_STA_GOT_IP = 5,             /**< Station got IP from DHCP */
-  HF_WIFI_EVENT_STA_LOST_IP = 6,            /**< Station lost IP */
-  HF_WIFI_EVENT_AP_START = 7,               /**< Access Point started */
-  HF_WIFI_EVENT_AP_STOP = 8,                /**< Access Point stopped */
-  HF_WIFI_EVENT_AP_STACONNECTED = 9,        /**< Station connected to our AP */
-  HF_WIFI_EVENT_AP_STADISCONNECTED = 10,    /**< Station disconnected from our AP */
-  HF_WIFI_EVENT_SCAN_DONE = 11              /**< Network scan completed */
+  HF_WIFI_EVENT_STA_START = 0,           /**< Station start */
+  HF_WIFI_EVENT_STA_STOP = 1,            /**< Station stop */
+  HF_WIFI_EVENT_STA_CONNECTED = 2,       /**< Station connected to AP */
+  HF_WIFI_EVENT_STA_DISCONNECTED = 3,    /**< Station disconnected from AP */
+  HF_WIFI_EVENT_STA_AUTHMODE_CHANGE = 4, /**< Station auth mode changed */
+  HF_WIFI_EVENT_STA_GOT_IP = 5,          /**< Station got IP from DHCP */
+  HF_WIFI_EVENT_STA_LOST_IP = 6,         /**< Station lost IP */
+  HF_WIFI_EVENT_AP_START = 7,            /**< Access Point started */
+  HF_WIFI_EVENT_AP_STOP = 8,             /**< Access Point stopped */
+  HF_WIFI_EVENT_AP_STACONNECTED = 9,     /**< Station connected to our AP */
+  HF_WIFI_EVENT_AP_STADISCONNECTED = 10, /**< Station disconnected from our AP */
+  HF_WIFI_EVENT_SCAN_DONE = 11           /**< Network scan completed */
 };
 
 /**
@@ -177,12 +177,12 @@ enum class hf_wifi_event_t : hf_u8_t {
  * @brief WiFi network information structure
  */
 struct hf_wifi_network_info_t {
-  std::string ssid;                    /**< Network SSID */
-  uint8_t bssid[6];                   /**< Network BSSID (MAC address) */
-  hf_wifi_security_t security;        /**< Security type */
-  int8_t rssi;                        /**< Signal strength (dBm) */
-  uint8_t channel;                    /**< WiFi channel */
-  bool hidden;                        /**< True if network is hidden */
+  std::string ssid;            /**< Network SSID */
+  uint8_t bssid[6];            /**< Network BSSID (MAC address) */
+  hf_wifi_security_t security; /**< Security type */
+  int8_t rssi;                 /**< Signal strength (dBm) */
+  uint8_t channel;             /**< WiFi channel */
+  bool hidden;                 /**< True if network is hidden */
 };
 
 /**
@@ -190,14 +190,14 @@ struct hf_wifi_network_info_t {
  * @brief WiFi station configuration structure
  */
 struct hf_wifi_station_config_t {
-  std::string ssid;                   /**< Target network SSID */
-  std::string password;               /**< Network password */
-  uint8_t bssid[6];                  /**< Target BSSID (optional, all zeros if not used) */
-  uint8_t channel;                   /**< Target channel (0 for any) */
-  bool bssid_set;                    /**< True if BSSID should be used */
-  uint32_t scan_method;              /**< Scan method */
-  bool sort_method;                  /**< Sort method for AP list */
-  uint16_t threshold_rssi;           /**< Minimum RSSI threshold */
+  std::string ssid;                      /**< Target network SSID */
+  std::string password;                  /**< Network password */
+  uint8_t bssid[6];                      /**< Target BSSID (optional, all zeros if not used) */
+  uint8_t channel;                       /**< Target channel (0 for any) */
+  bool bssid_set;                        /**< True if BSSID should be used */
+  uint32_t scan_method;                  /**< Scan method */
+  bool sort_method;                      /**< Sort method for AP list */
+  uint16_t threshold_rssi;               /**< Minimum RSSI threshold */
   hf_wifi_security_t threshold_authmode; /**< Minimum auth mode threshold */
 };
 
@@ -206,14 +206,14 @@ struct hf_wifi_station_config_t {
  * @brief WiFi Access Point configuration structure
  */
 struct hf_wifi_ap_config_t {
-  std::string ssid;                  /**< AP SSID */
-  std::string password;              /**< AP password */
-  uint8_t ssid_len;                  /**< SSID length (0 for auto) */
-  uint8_t channel;                   /**< WiFi channel */
-  hf_wifi_security_t authmode;       /**< Authentication mode */
-  uint8_t ssid_hidden;               /**< Broadcast SSID (0) or hide (1) */
-  uint8_t max_connection;            /**< Maximum concurrent connections */
-  uint16_t beacon_interval;          /**< Beacon interval (ms) */
+  std::string ssid;            /**< AP SSID */
+  std::string password;        /**< AP password */
+  uint8_t ssid_len;            /**< SSID length (0 for auto) */
+  uint8_t channel;             /**< WiFi channel */
+  hf_wifi_security_t authmode; /**< Authentication mode */
+  uint8_t ssid_hidden;         /**< Broadcast SSID (0) or hide (1) */
+  uint8_t max_connection;      /**< Maximum concurrent connections */
+  uint16_t beacon_interval;    /**< Beacon interval (ms) */
 };
 
 /**
@@ -221,9 +221,9 @@ struct hf_wifi_ap_config_t {
  * @brief WiFi IP configuration structure
  */
 struct hf_wifi_ip_info_t {
-  uint32_t ip;                       /**< IP address */
-  uint32_t netmask;                  /**< Netmask */
-  uint32_t gateway;                  /**< Gateway address */
+  uint32_t ip;      /**< IP address */
+  uint32_t netmask; /**< Netmask */
+  uint32_t gateway; /**< Gateway address */
 };
 
 /**
@@ -368,7 +368,8 @@ public:
    * @param max_scan_time_ms Maximum scan time per channel
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t StartScan(bool show_hidden = false, bool passive = false, uint32_t max_scan_time_ms = 0) = 0;
+  virtual hf_wifi_err_t StartScan(bool show_hidden = false, bool passive = false,
+                                  uint32_t max_scan_time_ms = 0) = 0;
 
   /**
    * @brief Get scan results
@@ -376,7 +377,8 @@ public:
    * @param max_networks Maximum number of networks to return (0 for all)
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t GetScanResults(std::vector<hf_wifi_network_info_t>& networks, uint16_t max_networks = 0) = 0;
+  virtual hf_wifi_err_t GetScanResults(std::vector<hf_wifi_network_info_t>& networks,
+                                       uint16_t max_networks = 0) = 0;
 
   /**
    * @brief Check if scan is in progress
@@ -495,10 +497,13 @@ protected:
  * @brief Helper function to convert error enum to string
  */
 inline std::string_view BaseWifi::GetErrorString(hf_wifi_err_t error) {
-#define X(name, value, desc) case hf_wifi_err_t::name: return desc;
+#define X(name, value, desc) \
+  case hf_wifi_err_t::name:  \
+    return desc;
   switch (error) {
     HF_WIFI_ERR_LIST(X)
-    default: return "Unknown error";
+    default:
+      return "Unknown error";
   }
 #undef X
 }

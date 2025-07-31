@@ -53,7 +53,7 @@
 // Optional thread safety support using RTOS-based mutexes
 // Uncomment to enable mutex protection in MCU drivers
 #ifndef HF_THREAD_SAFE
-#define HF_THREAD_SAFE  // Enable thread safety for SPI, I2C, UART operations
+#define HF_THREAD_SAFE // Enable thread safety for SPI, I2C, UART operations
 #endif
 
 //==============================================================================

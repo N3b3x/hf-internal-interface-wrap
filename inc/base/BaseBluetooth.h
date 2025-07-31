@@ -48,35 +48,35 @@
  * @details X-macro pattern for comprehensive error enumeration. Each entry contains:
  *          X(NAME, VALUE, DESCRIPTION)
  */
-#define HF_BLUETOOTH_ERR_LIST(X)                                         \
-  /* Success codes */                                                    \
-  X(BLUETOOTH_SUCCESS, 0, "Success")                                     \
-                                                                         \
-  /* General errors */                                                   \
-  X(BLUETOOTH_ERR_FAILURE, 1, "General failure")                        \
-  X(BLUETOOTH_ERR_INVALID_PARAM, 2, "Invalid parameter")                \
-  X(BLUETOOTH_ERR_NOT_INITIALIZED, 3, "Bluetooth not initialized")      \
-  X(BLUETOOTH_ERR_ALREADY_INITIALIZED, 4, "Bluetooth already initialized") \
-  X(BLUETOOTH_ERR_NOT_ENABLED, 5, "Bluetooth not enabled")              \
-  X(BLUETOOTH_ERR_ALREADY_ENABLED, 6, "Bluetooth already enabled")      \
-  X(BLUETOOTH_ERR_NOT_CONNECTED, 7, "Bluetooth not connected")          \
-  X(BLUETOOTH_ERR_ALREADY_CONNECTED, 8, "Bluetooth already connected")  \
-  X(BLUETOOTH_ERR_CONNECTION_FAILED, 9, "Connection failed")            \
-  X(BLUETOOTH_ERR_DISCONNECTION_FAILED, 10, "Disconnection failed")     \
-  X(BLUETOOTH_ERR_SCAN_FAILED, 11, "Device scan failed")                \
-  X(BLUETOOTH_ERR_PAIR_FAILED, 12, "Pairing failed")                    \
-  X(BLUETOOTH_ERR_UNPAIR_FAILED, 13, "Unpairing failed")                \
-  X(BLUETOOTH_ERR_TIMEOUT, 14, "Operation timeout")                     \
-  X(BLUETOOTH_ERR_NO_MEMORY, 15, "Insufficient memory")                 \
-  X(BLUETOOTH_ERR_INVALID_ADDRESS, 16, "Invalid Bluetooth address")     \
-  X(BLUETOOTH_ERR_DEVICE_NOT_FOUND, 17, "Device not found")             \
-  X(BLUETOOTH_ERR_SERVICE_NOT_FOUND, 18, "Service not found")           \
+#define HF_BLUETOOTH_ERR_LIST(X)                                            \
+  /* Success codes */                                                       \
+  X(BLUETOOTH_SUCCESS, 0, "Success")                                        \
+                                                                            \
+  /* General errors */                                                      \
+  X(BLUETOOTH_ERR_FAILURE, 1, "General failure")                            \
+  X(BLUETOOTH_ERR_INVALID_PARAM, 2, "Invalid parameter")                    \
+  X(BLUETOOTH_ERR_NOT_INITIALIZED, 3, "Bluetooth not initialized")          \
+  X(BLUETOOTH_ERR_ALREADY_INITIALIZED, 4, "Bluetooth already initialized")  \
+  X(BLUETOOTH_ERR_NOT_ENABLED, 5, "Bluetooth not enabled")                  \
+  X(BLUETOOTH_ERR_ALREADY_ENABLED, 6, "Bluetooth already enabled")          \
+  X(BLUETOOTH_ERR_NOT_CONNECTED, 7, "Bluetooth not connected")              \
+  X(BLUETOOTH_ERR_ALREADY_CONNECTED, 8, "Bluetooth already connected")      \
+  X(BLUETOOTH_ERR_CONNECTION_FAILED, 9, "Connection failed")                \
+  X(BLUETOOTH_ERR_DISCONNECTION_FAILED, 10, "Disconnection failed")         \
+  X(BLUETOOTH_ERR_SCAN_FAILED, 11, "Device scan failed")                    \
+  X(BLUETOOTH_ERR_PAIR_FAILED, 12, "Pairing failed")                        \
+  X(BLUETOOTH_ERR_UNPAIR_FAILED, 13, "Unpairing failed")                    \
+  X(BLUETOOTH_ERR_TIMEOUT, 14, "Operation timeout")                         \
+  X(BLUETOOTH_ERR_NO_MEMORY, 15, "Insufficient memory")                     \
+  X(BLUETOOTH_ERR_INVALID_ADDRESS, 16, "Invalid Bluetooth address")         \
+  X(BLUETOOTH_ERR_DEVICE_NOT_FOUND, 17, "Device not found")                 \
+  X(BLUETOOTH_ERR_SERVICE_NOT_FOUND, 18, "Service not found")               \
   X(BLUETOOTH_ERR_CHARACTERISTIC_NOT_FOUND, 19, "Characteristic not found") \
-  X(BLUETOOTH_ERR_AUTHENTICATION_FAILED, 20, "Authentication failed")   \
-  X(BLUETOOTH_ERR_AUTHORIZATION_FAILED, 21, "Authorization failed")     \
-  X(BLUETOOTH_ERR_ENCRYPTION_FAILED, 22, "Encryption failed")           \
-  X(BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED, 23, "Operation not supported") \
-  X(BLUETOOTH_ERR_GATT_ERROR, 24, "GATT operation error")               \
+  X(BLUETOOTH_ERR_AUTHENTICATION_FAILED, 20, "Authentication failed")       \
+  X(BLUETOOTH_ERR_AUTHORIZATION_FAILED, 21, "Authorization failed")         \
+  X(BLUETOOTH_ERR_ENCRYPTION_FAILED, 22, "Encryption failed")               \
+  X(BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED, 23, "Operation not supported")   \
+  X(BLUETOOTH_ERR_GATT_ERROR, 24, "GATT operation error")                   \
   X(BLUETOOTH_ERR_INVALID_STATE, 25, "Invalid state for operation")
 
 /**
@@ -95,8 +95,8 @@ enum class hf_bluetooth_err_t : hf_u8_t { HF_BLUETOOTH_ERR_LIST(X) };
  */
 constexpr std::string_view HfBluetoothErrToString(hf_bluetooth_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_bluetooth_err_t::NAME:  \
+#define X(NAME, VALUE, DESC)     \
+  case hf_bluetooth_err_t::NAME: \
     return DESC;
     HF_BLUETOOTH_ERR_LIST(X)
 #undef X
@@ -110,10 +110,10 @@ constexpr std::string_view HfBluetoothErrToString(hf_bluetooth_err_t err) noexce
  * @brief Bluetooth operating modes
  */
 enum class hf_bluetooth_mode_t : hf_u8_t {
-  HF_BLUETOOTH_MODE_DISABLED = 0,        /**< Bluetooth disabled */
-  HF_BLUETOOTH_MODE_CLASSIC = 1,         /**< Bluetooth Classic only */
-  HF_BLUETOOTH_MODE_BLE = 2,             /**< Bluetooth Low Energy only */
-  HF_BLUETOOTH_MODE_DUAL = 3             /**< Both Classic and BLE */
+  HF_BLUETOOTH_MODE_DISABLED = 0, /**< Bluetooth disabled */
+  HF_BLUETOOTH_MODE_CLASSIC = 1,  /**< Bluetooth Classic only */
+  HF_BLUETOOTH_MODE_BLE = 2,      /**< Bluetooth Low Energy only */
+  HF_BLUETOOTH_MODE_DUAL = 3      /**< Both Classic and BLE */
 };
 
 /**
@@ -121,10 +121,10 @@ enum class hf_bluetooth_mode_t : hf_u8_t {
  * @brief Bluetooth device types
  */
 enum class hf_bluetooth_device_type_t : hf_u8_t {
-  HF_BLUETOOTH_DEVICE_TYPE_UNKNOWN = 0,         /**< Unknown device type */
-  HF_BLUETOOTH_DEVICE_TYPE_CLASSIC = 1,         /**< Bluetooth Classic device */
-  HF_BLUETOOTH_DEVICE_TYPE_BLE = 2,             /**< Bluetooth Low Energy device */
-  HF_BLUETOOTH_DEVICE_TYPE_DUAL = 3             /**< Dual-mode device */
+  HF_BLUETOOTH_DEVICE_TYPE_UNKNOWN = 0, /**< Unknown device type */
+  HF_BLUETOOTH_DEVICE_TYPE_CLASSIC = 1, /**< Bluetooth Classic device */
+  HF_BLUETOOTH_DEVICE_TYPE_BLE = 2,     /**< Bluetooth Low Energy device */
+  HF_BLUETOOTH_DEVICE_TYPE_DUAL = 3     /**< Dual-mode device */
 };
 
 /**
@@ -132,14 +132,14 @@ enum class hf_bluetooth_device_type_t : hf_u8_t {
  * @brief Bluetooth connection states
  */
 enum class hf_bluetooth_state_t : hf_u8_t {
-  HF_BLUETOOTH_STATE_DISABLED = 0,        /**< Bluetooth disabled */
-  HF_BLUETOOTH_STATE_ENABLED = 1,         /**< Bluetooth enabled but not connected */
-  HF_BLUETOOTH_STATE_SCANNING = 2,        /**< Scanning for devices */
-  HF_BLUETOOTH_STATE_CONNECTING = 3,      /**< Attempting to connect */
-  HF_BLUETOOTH_STATE_CONNECTED = 4,       /**< Connected to device */
-  HF_BLUETOOTH_STATE_DISCONNECTING = 5,   /**< Disconnecting from device */
-  HF_BLUETOOTH_STATE_PAIRING = 6,         /**< Pairing with device */
-  HF_BLUETOOTH_STATE_PAIRED = 7           /**< Paired with device */
+  HF_BLUETOOTH_STATE_DISABLED = 0,      /**< Bluetooth disabled */
+  HF_BLUETOOTH_STATE_ENABLED = 1,       /**< Bluetooth enabled but not connected */
+  HF_BLUETOOTH_STATE_SCANNING = 2,      /**< Scanning for devices */
+  HF_BLUETOOTH_STATE_CONNECTING = 3,    /**< Attempting to connect */
+  HF_BLUETOOTH_STATE_CONNECTED = 4,     /**< Connected to device */
+  HF_BLUETOOTH_STATE_DISCONNECTING = 5, /**< Disconnecting from device */
+  HF_BLUETOOTH_STATE_PAIRING = 6,       /**< Pairing with device */
+  HF_BLUETOOTH_STATE_PAIRED = 7         /**< Paired with device */
 };
 
 /**
@@ -160,8 +160,8 @@ enum class hf_bluetooth_security_t : hf_u8_t {
  * @brief Bluetooth scan types
  */
 enum class hf_bluetooth_scan_type_t : hf_u8_t {
-  HF_BLUETOOTH_SCAN_TYPE_PASSIVE = 0,         /**< Passive scanning */
-  HF_BLUETOOTH_SCAN_TYPE_ACTIVE = 1           /**< Active scanning */
+  HF_BLUETOOTH_SCAN_TYPE_PASSIVE = 0, /**< Passive scanning */
+  HF_BLUETOOTH_SCAN_TYPE_ACTIVE = 1   /**< Active scanning */
 };
 
 /**
@@ -169,9 +169,9 @@ enum class hf_bluetooth_scan_type_t : hf_u8_t {
  * @brief Bluetooth scan modes
  */
 enum class hf_bluetooth_scan_mode_t : hf_u8_t {
-  HF_BLUETOOTH_SCAN_MODE_GENERAL_INQUIRY = 0,    /**< General inquiry scan */
-  HF_BLUETOOTH_SCAN_MODE_LE_GENERAL = 1,         /**< BLE general discovery */
-  HF_BLUETOOTH_SCAN_MODE_LE_LIMITED = 2          /**< BLE limited discovery */
+  HF_BLUETOOTH_SCAN_MODE_GENERAL_INQUIRY = 0, /**< General inquiry scan */
+  HF_BLUETOOTH_SCAN_MODE_LE_GENERAL = 1,      /**< BLE general discovery */
+  HF_BLUETOOTH_SCAN_MODE_LE_LIMITED = 2       /**< BLE limited discovery */
 };
 
 /**
@@ -179,21 +179,21 @@ enum class hf_bluetooth_scan_mode_t : hf_u8_t {
  * @brief Bluetooth connection types
  */
 enum class hf_bluetooth_connection_type_t : hf_u8_t {
-  HF_BLUETOOTH_CONNECTION_TYPE_AUTO = 0,         /**< Auto-detect connection type */
-  HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC = 1,      /**< Classic Bluetooth only */
-  HF_BLUETOOTH_CONNECTION_TYPE_BLE = 2           /**< BLE only */
+  HF_BLUETOOTH_CONNECTION_TYPE_AUTO = 0,    /**< Auto-detect connection type */
+  HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC = 1, /**< Classic Bluetooth only */
+  HF_BLUETOOTH_CONNECTION_TYPE_BLE = 2      /**< BLE only */
 };
 
 /**
- * @ingroup bluetooth 
+ * @ingroup bluetooth
  * @brief Bluetooth connection states
  */
 enum class hf_bluetooth_connection_state_t : hf_u8_t {
-  HF_BLUETOOTH_CONNECTION_STATE_DISCONNECTED = 0,  /**< Disconnected */
-  HF_BLUETOOTH_CONNECTION_STATE_CONNECTING = 1,    /**< Connecting */
-  HF_BLUETOOTH_CONNECTION_STATE_CONNECTED = 2,     /**< Connected */
-  HF_BLUETOOTH_CONNECTION_STATE_ADVERTISING = 3,   /**< Advertising */
-  HF_BLUETOOTH_CONNECTION_STATE_SCANNING = 4       /**< Scanning */
+  HF_BLUETOOTH_CONNECTION_STATE_DISCONNECTED = 0, /**< Disconnected */
+  HF_BLUETOOTH_CONNECTION_STATE_CONNECTING = 1,   /**< Connecting */
+  HF_BLUETOOTH_CONNECTION_STATE_CONNECTED = 2,    /**< Connected */
+  HF_BLUETOOTH_CONNECTION_STATE_ADVERTISING = 3,  /**< Advertising */
+  HF_BLUETOOTH_CONNECTION_STATE_SCANNING = 4      /**< Scanning */
 };
 
 /**
@@ -226,21 +226,21 @@ enum class hf_bluetooth_event_t : hf_u8_t {
  * @brief Bluetooth address structure (6 bytes)
  */
 struct hf_bluetooth_address_t {
-  hf_u8_t addr[6];               /**< Bluetooth address bytes */
-  
+  hf_u8_t addr[6]; /**< Bluetooth address bytes */
+
   /**
    * @brief Convert address to string format
    * @return Address string in format "XX:XX:XX:XX:XX:XX"
    */
   std::string ToString() const;
-  
+
   /**
    * @brief Parse address from string
    * @param addr_str Address string in format "XX:XX:XX:XX:XX:XX"
    * @return true if parsed successfully, false otherwise
    */
   bool FromString(const std::string& addr_str);
-  
+
   /**
    * @brief Check if address is valid (not all zeros)
    * @return true if valid, false otherwise
@@ -253,14 +253,14 @@ struct hf_bluetooth_address_t {
  * @brief Bluetooth device information structure
  */
 struct hf_bluetooth_device_info_t {
-  hf_bluetooth_address_t address;          /**< Device Bluetooth address */
-  std::string name;                        /**< Device name */
-  hf_bluetooth_device_type_t type;         /**< Device type */
-  int8_t rssi;                             /**< Signal strength (dBm) */
-  uint32_t class_of_device;                /**< Class of Device (Classic only) */
-  std::vector<std::string> uuids;          /**< Service UUIDs */
-  bool is_bonded;                          /**< True if device is bonded */
-  bool is_connected;                       /**< True if device is connected */
+  hf_bluetooth_address_t address;  /**< Device Bluetooth address */
+  std::string name;                /**< Device name */
+  hf_bluetooth_device_type_t type; /**< Device type */
+  int8_t rssi;                     /**< Signal strength (dBm) */
+  uint32_t class_of_device;        /**< Class of Device (Classic only) */
+  std::vector<std::string> uuids;  /**< Service UUIDs */
+  bool is_bonded;                  /**< True if device is bonded */
+  bool is_connected;               /**< True if device is connected */
 };
 
 /**
@@ -268,11 +268,11 @@ struct hf_bluetooth_device_info_t {
  * @brief Bluetooth Classic configuration structure
  */
 struct hf_bluetooth_classic_config_t {
-  std::string device_name;                 /**< Local device name */
-  bool discoverable;                       /**< Make device discoverable */
-  bool connectable;                        /**< Make device connectable */
-  uint32_t discovery_timeout_ms;           /**< Discovery timeout in milliseconds */
-  hf_bluetooth_security_t security;        /**< Security level */
+  std::string device_name;          /**< Local device name */
+  bool discoverable;                /**< Make device discoverable */
+  bool connectable;                 /**< Make device connectable */
+  uint32_t discovery_timeout_ms;    /**< Discovery timeout in milliseconds */
+  hf_bluetooth_security_t security; /**< Security level */
 };
 
 /**
@@ -280,15 +280,15 @@ struct hf_bluetooth_classic_config_t {
  * @brief Bluetooth Low Energy configuration structure
  */
 struct hf_bluetooth_ble_config_t {
-  std::string device_name;                 /**< Local device name */
-  bool advertising;                        /**< Enable advertising */
-  bool scannable;                          /**< Make device scannable */
-  bool connectable;                        /**< Make device connectable */
-  uint16_t advertising_interval_ms;        /**< Advertising interval in milliseconds */
-  uint16_t scan_interval_ms;               /**< Scan interval in milliseconds */
-  uint16_t scan_window_ms;                 /**< Scan window in milliseconds */
-  hf_bluetooth_scan_type_t scan_type;      /**< Scan type */
-  hf_bluetooth_security_t security;        /**< Security level */
+  std::string device_name;            /**< Local device name */
+  bool advertising;                   /**< Enable advertising */
+  bool scannable;                     /**< Make device scannable */
+  bool connectable;                   /**< Make device connectable */
+  uint16_t advertising_interval_ms;   /**< Advertising interval in milliseconds */
+  uint16_t scan_interval_ms;          /**< Scan interval in milliseconds */
+  uint16_t scan_window_ms;            /**< Scan window in milliseconds */
+  hf_bluetooth_scan_type_t scan_type; /**< Scan type */
+  hf_bluetooth_security_t security;   /**< Security level */
 };
 
 /**
@@ -296,9 +296,9 @@ struct hf_bluetooth_ble_config_t {
  * @brief GATT service structure
  */
 struct hf_bluetooth_gatt_service_t {
-  std::string uuid;               /**< Service UUID */
-  bool is_primary;                /**< True if primary service */
-  uint16_t handle;                /**< Service handle */
+  std::string uuid; /**< Service UUID */
+  bool is_primary;  /**< True if primary service */
+  uint16_t handle;  /**< Service handle */
 };
 
 /**
@@ -306,24 +306,25 @@ struct hf_bluetooth_gatt_service_t {
  * @brief GATT characteristic structure
  */
 struct hf_bluetooth_gatt_characteristic_t {
-  std::string uuid;               /**< Characteristic UUID */
-  uint16_t handle;                /**< Characteristic handle */
-  uint8_t properties;             /**< Characteristic properties */
-  std::vector<uint8_t> value;     /**< Characteristic value */
+  std::string uuid;           /**< Characteristic UUID */
+  uint16_t handle;            /**< Characteristic handle */
+  uint8_t properties;         /**< Characteristic properties */
+  std::vector<uint8_t> value; /**< Characteristic value */
 };
 
 /**
  * @ingroup bluetooth
  * @brief Bluetooth event callback function type
  */
-using hf_bluetooth_event_callback_t = std::function<void(hf_bluetooth_event_t event, void* event_data)>;
+using hf_bluetooth_event_callback_t =
+    std::function<void(hf_bluetooth_event_t event, void* event_data)>;
 
 /**
  * @ingroup bluetooth
  * @brief Data received callback function type
  */
-using hf_bluetooth_data_callback_t = std::function<void(const hf_bluetooth_address_t& address, 
-                                                       const std::vector<uint8_t>& data)>;
+using hf_bluetooth_data_callback_t =
+    std::function<void(const hf_bluetooth_address_t& address, const std::vector<uint8_t>& data)>;
 
 /**
  * @class BaseBluetooth
@@ -477,7 +478,9 @@ public:
    * @param type Scan type (BLE only)
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t StartScan(uint32_t duration_ms = 0, hf_bluetooth_scan_type_t type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) = 0;
+  virtual hf_bluetooth_err_t StartScan(
+      uint32_t duration_ms = 0,
+      hf_bluetooth_scan_type_t type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) = 0;
 
   /**
    * @brief Stop device discovery/scanning
@@ -496,7 +499,8 @@ public:
    * @param devices Vector to store discovered devices
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t GetDiscoveredDevices(std::vector<hf_bluetooth_device_info_t>& devices) = 0;
+  virtual hf_bluetooth_err_t GetDiscoveredDevices(
+      std::vector<hf_bluetooth_device_info_t>& devices) = 0;
 
   /**
    * @brief Clear discovered devices list
@@ -512,7 +516,8 @@ public:
    * @param timeout_ms Connection timeout in milliseconds (0 for default)
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t Connect(const hf_bluetooth_address_t& address, uint32_t timeout_ms = 0) = 0;
+  virtual hf_bluetooth_err_t Connect(const hf_bluetooth_address_t& address,
+                                     uint32_t timeout_ms = 0) = 0;
 
   /**
    * @brief Disconnect from a remote device
@@ -533,7 +538,8 @@ public:
    * @param devices Vector to store connected devices
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t GetConnectedDevices(std::vector<hf_bluetooth_device_info_t>& devices) = 0;
+  virtual hf_bluetooth_err_t GetConnectedDevices(
+      std::vector<hf_bluetooth_device_info_t>& devices) = 0;
 
   // ========== Pairing and Bonding ==========
 
@@ -543,7 +549,8 @@ public:
    * @param pin PIN code (for Classic, empty for BLE)
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t Pair(const hf_bluetooth_address_t& address, const std::string& pin = "") = 0;
+  virtual hf_bluetooth_err_t Pair(const hf_bluetooth_address_t& address,
+                                  const std::string& pin = "") = 0;
 
   /**
    * @brief Unpair from a remote device
@@ -574,7 +581,8 @@ public:
    * @param data Data to send
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t SendData(const hf_bluetooth_address_t& address, const std::vector<uint8_t>& data) = 0;
+  virtual hf_bluetooth_err_t SendData(const hf_bluetooth_address_t& address,
+                                      const std::vector<uint8_t>& data) = 0;
 
   /**
    * @brief Check if data is available to read
@@ -590,7 +598,8 @@ public:
    * @param max_bytes Maximum bytes to read (0 for all available)
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t ReadData(const hf_bluetooth_address_t& address, std::vector<uint8_t>& data, size_t max_bytes = 0) = 0;
+  virtual hf_bluetooth_err_t ReadData(const hf_bluetooth_address_t& address,
+                                      std::vector<uint8_t>& data, size_t max_bytes = 0) = 0;
 
   // ========== GATT Operations (BLE) ==========
 
@@ -600,7 +609,9 @@ public:
    * @param services Vector to store discovered services
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t DiscoverServices(const hf_bluetooth_address_t& address, std::vector<hf_bluetooth_gatt_service_t>& services) = 0;
+  virtual hf_bluetooth_err_t DiscoverServices(
+      const hf_bluetooth_address_t& address,
+      std::vector<hf_bluetooth_gatt_service_t>& services) = 0;
 
   /**
    * @brief Discover GATT characteristics for a service
@@ -609,9 +620,9 @@ public:
    * @param characteristics Vector to store discovered characteristics
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t DiscoverCharacteristics(const hf_bluetooth_address_t& address, 
-                                                     const std::string& service_uuid,
-                                                     std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) = 0;
+  virtual hf_bluetooth_err_t DiscoverCharacteristics(
+      const hf_bluetooth_address_t& address, const std::string& service_uuid,
+      std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) = 0;
 
   /**
    * @brief Read GATT characteristic value
@@ -651,8 +662,8 @@ public:
    */
   virtual hf_bluetooth_err_t SubscribeCharacteristic(const hf_bluetooth_address_t& address,
                                                      const std::string& service_uuid,
-                                                  const std::string& characteristic_uuid,
-                                                  bool enable) = 0;
+                                                     const std::string& characteristic_uuid,
+                                                     bool enable) = 0;
 
   // ========== State and Status ==========
 
@@ -728,10 +739,13 @@ protected:
  * @brief Helper function to convert error enum to string
  */
 inline std::string_view BaseBluetooth::GetErrorString(hf_bluetooth_err_t error) {
-#define X(name, value, desc) case hf_bluetooth_err_t::name: return desc;
+#define X(name, value, desc)     \
+  case hf_bluetooth_err_t::name: \
+    return desc;
   switch (error) {
     HF_BLUETOOTH_ERR_LIST(X)
-    default: return "Unknown error";
+    default:
+      return "Unknown error";
   }
 #undef X
 }
@@ -742,28 +756,31 @@ inline std::string_view BaseBluetooth::GetErrorString(hf_bluetooth_err_t error) 
  */
 inline std::string hf_bluetooth_address_t::ToString() const {
   char buffer[18];
-  snprintf(buffer, sizeof(buffer), "%02X:%02X:%02X:%02X:%02X:%02X",
-           addr[0], addr[1], addr[2], addr[3], addr[4], addr[5]);
+  snprintf(buffer, sizeof(buffer), "%02X:%02X:%02X:%02X:%02X:%02X", addr[0], addr[1], addr[2],
+           addr[3], addr[4], addr[5]);
   return std::string(buffer);
 }
 
 inline bool hf_bluetooth_address_t::FromString(const std::string& addr_str) {
-  if (addr_str.length() != 17) return false;
-  
+  if (addr_str.length() != 17)
+    return false;
+
   // Validate format: XX:XX:XX:XX:XX:XX
   for (size_t i = 0; i < addr_str.length(); ++i) {
     if (i % 3 == 2) {
-      if (addr_str[i] != ':') return false;
+      if (addr_str[i] != ':')
+        return false;
     } else {
-      if (!std::isxdigit(addr_str[i])) return false;
+      if (!std::isxdigit(addr_str[i]))
+        return false;
     }
   }
-  
+
   // Parse using no-exceptions approach with manual hex conversion
   for (int i = 0; i < 6; i++) {
     size_t pos = i * 3;
     const char* hex_start = addr_str.c_str() + pos;
-    
+
     // Manual hex conversion without exceptions
     unsigned int value = 0;
     for (int j = 0; j < 2; j++) {
@@ -778,17 +795,19 @@ inline bool hf_bluetooth_address_t::FromString(const std::string& addr_str) {
         return false; // Invalid hex character
       }
     }
-    
-    if (value > 255) return false;
+
+    if (value > 255)
+      return false;
     addr[i] = static_cast<uint8_t>(value);
   }
-  
+
   return true;
 }
 
 inline bool hf_bluetooth_address_t::IsValid() const {
   for (int i = 0; i < 6; i++) {
-    if (addr[i] != 0) return true;
+    if (addr[i] != 0)
+      return true;
   }
   return false;
 }

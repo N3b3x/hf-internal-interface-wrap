@@ -24,15 +24,15 @@
 extern "C" {
 #endif
 
-#include "esp_wifi.h"
 #include "esp_event.h"
+#include "esp_mesh.h"
 #include "esp_netif.h"
 #include "esp_smartconfig.h"
+#include "esp_wifi.h"
 #include "esp_wps.h"
-#include "esp_mesh.h"
-#include "nvs_flash.h"
 #include "lwip/err.h"
 #include "lwip/sys.h"
+#include "nvs_flash.h"
 
 #ifdef __cplusplus
 }
@@ -42,8 +42,8 @@ extern "C" {
 #include "BaseWifi.h"
 #include "mcu/esp32/utils/EspTypes_Base.h"
 #include "utils/RtosMutex.h"
-#include <memory>
 #include <atomic>
+#include <memory>
 #include <queue>
 
 /**
@@ -51,42 +51,42 @@ extern "C" {
  */
 struct EspWifiAdvancedConfig {
   // Power management
-  bool enable_power_save;               /**< Enable WiFi power save mode */
-  wifi_ps_type_t power_save_type;       /**< Power save type */
-  uint16_t listen_interval;             /**< Listen interval for power save */
-  
+  bool enable_power_save;         /**< Enable WiFi power save mode */
+  wifi_ps_type_t power_save_type; /**< Power save type */
+  uint16_t listen_interval;       /**< Listen interval for power save */
+
   // Performance tuning
-  uint8_t tx_power;                     /**< TX power (0-20 dBm) */
-  wifi_bandwidth_t bandwidth;           /**< Channel bandwidth */
-  bool enable_ampdu_rx;                 /**< Enable A-MPDU RX */
-  bool enable_ampdu_tx;                 /**< Enable A-MPDU TX */
-  
+  uint8_t tx_power;           /**< TX power (0-20 dBm) */
+  wifi_bandwidth_t bandwidth; /**< Channel bandwidth */
+  bool enable_ampdu_rx;       /**< Enable A-MPDU RX */
+  bool enable_ampdu_tx;       /**< Enable A-MPDU TX */
+
   // Advanced features
-  bool enable_fast_connect;             /**< Enable fast connect */
-  bool enable_pmf_required;             /**< Require PMF (Protected Management Frames) */
-  bool enable_wpa3_transition;          /**< Enable WPA2/WPA3 transition mode */
-  bool enable_11r;                      /**< Enable 802.11r Fast BSS Transition */
-  bool enable_11k;                      /**< Enable 802.11k Radio Resource Management */
-  bool enable_11v;                      /**< Enable 802.11v BSS Transition Management */
-  
+  bool enable_fast_connect;    /**< Enable fast connect */
+  bool enable_pmf_required;    /**< Require PMF (Protected Management Frames) */
+  bool enable_wpa3_transition; /**< Enable WPA2/WPA3 transition mode */
+  bool enable_11r;             /**< Enable 802.11r Fast BSS Transition */
+  bool enable_11k;             /**< Enable 802.11k Radio Resource Management */
+  bool enable_11v;             /**< Enable 802.11v BSS Transition Management */
+
   // Enterprise features
-  bool enable_enterprise;               /**< Enable WPA2/WPA3 Enterprise */
-  std::string enterprise_username;      /**< Enterprise username */
-  std::string enterprise_password;      /**< Enterprise password */
-  std::string enterprise_ca_cert;       /**< CA certificate for enterprise */
-  std::string enterprise_client_cert;   /**< Client certificate for enterprise */
-  std::string enterprise_client_key;    /**< Client private key for enterprise */
-  
+  bool enable_enterprise;             /**< Enable WPA2/WPA3 Enterprise */
+  std::string enterprise_username;    /**< Enterprise username */
+  std::string enterprise_password;    /**< Enterprise password */
+  std::string enterprise_ca_cert;     /**< CA certificate for enterprise */
+  std::string enterprise_client_cert; /**< Client certificate for enterprise */
+  std::string enterprise_client_key;  /**< Client private key for enterprise */
+
   // Mesh networking
-  bool enable_mesh;                     /**< Enable ESP-MESH */
-  uint8_t mesh_max_layer;               /**< Maximum mesh layers */
-  uint16_t mesh_max_connection;         /**< Maximum mesh connections */
-  
+  bool enable_mesh;             /**< Enable ESP-MESH */
+  uint8_t mesh_max_layer;       /**< Maximum mesh layers */
+  uint16_t mesh_max_connection; /**< Maximum mesh connections */
+
   // Smart config and provisioning
-  bool enable_smartconfig;              /**< Enable SmartConfig */
-  smartconfig_type_t smartconfig_type;  /**< SmartConfig type */
-  bool enable_wps;                      /**< Enable WPS */
-  wps_type_t wps_type;                  /**< WPS type */
+  bool enable_smartconfig;             /**< Enable SmartConfig */
+  smartconfig_type_t smartconfig_type; /**< SmartConfig type */
+  bool enable_wps;                     /**< Enable WPS */
+  wps_type_t wps_type;                 /**< WPS type */
 };
 
 /**
@@ -164,8 +164,10 @@ public:
   int GetConnectedStationCount() const override;
 
   // Network Scanning
-  hf_wifi_err_t StartScan(bool show_hidden = false, bool passive = false, uint32_t max_scan_time_ms = 0) override;
-  hf_wifi_err_t GetScanResults(std::vector<hf_wifi_network_info_t>& networks, uint16_t max_networks = 0) override;
+  hf_wifi_err_t StartScan(bool show_hidden = false, bool passive = false,
+                          uint32_t max_scan_time_ms = 0) override;
+  hf_wifi_err_t GetScanResults(std::vector<hf_wifi_network_info_t>& networks,
+                               uint16_t max_networks = 0) override;
   bool IsScanning() const override;
 
   // State and Status
@@ -228,11 +230,10 @@ public:
    * @param client_key Client private key (optional)
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  hf_wifi_err_t ConfigureEnterprise(const std::string& username,
-                                const std::string& password,
-                                const std::string& ca_cert = "",
-                                const std::string& client_cert = "",
-                                const std::string& client_key = "");
+  hf_wifi_err_t ConfigureEnterprise(const std::string& username, const std::string& password,
+                                    const std::string& ca_cert = "",
+                                    const std::string& client_cert = "",
+                                    const std::string& client_key = "");
 
   /**
    * @brief Start SmartConfig provisioning
@@ -240,7 +241,8 @@ public:
    * @param timeout_ms Provisioning timeout in milliseconds
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  hf_wifi_err_t StartSmartConfig(smartconfig_type_t type = SC_TYPE_ESPTOUCH, uint32_t timeout_ms = 60000);
+  hf_wifi_err_t StartSmartConfig(smartconfig_type_t type = SC_TYPE_ESPTOUCH,
+                                 uint32_t timeout_ms = 60000);
 
   /**
    * @brief Stop SmartConfig provisioning
@@ -269,7 +271,8 @@ public:
    * @param max_connection Maximum connections per node
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  hf_wifi_err_t InitMesh(const uint8_t mesh_id[6], uint8_t max_layer = 6, uint16_t max_connection = 10);
+  hf_wifi_err_t InitMesh(const uint8_t mesh_id[6], uint8_t max_layer = 6,
+                         uint16_t max_connection = 10);
 
   /**
    * @brief Start ESP-MESH as root node
@@ -337,110 +340,110 @@ public:
 
 private:
   // ========== Internal State Management ==========
-  
-  mutable RtosMutex m_mutex;                     /**< Main synchronization mutex */
-  std::atomic<bool> m_initialized;               /**< Initialization state */
-  std::atomic<bool> m_enabled;                   /**< WiFi enabled state */
-  std::atomic<hf_wifi_mode_t> m_mode;            /**< Current WiFi mode */
-  std::atomic<hf_wifi_state_t> m_state;          /**< Current WiFi state */
-  
+
+  mutable RtosMutex m_mutex;            /**< Main synchronization mutex */
+  std::atomic<bool> m_initialized;      /**< Initialization state */
+  std::atomic<bool> m_enabled;          /**< WiFi enabled state */
+  std::atomic<hf_wifi_mode_t> m_mode;   /**< Current WiFi mode */
+  std::atomic<hf_wifi_state_t> m_state; /**< Current WiFi state */
+
   // Configuration storage
-  hf_wifi_station_config_t m_sta_config;         /**< Station configuration */
-  hf_wifi_ap_config_t m_ap_config;               /**< AP configuration */
-  EspWifiAdvancedConfig m_advanced_config;       /**< Advanced configuration */
-  
+  hf_wifi_station_config_t m_sta_config;   /**< Station configuration */
+  hf_wifi_ap_config_t m_ap_config;         /**< AP configuration */
+  EspWifiAdvancedConfig m_advanced_config; /**< Advanced configuration */
+
   // ESP-IDF handles
-  esp_netif_t* m_sta_netif;                      /**< Station network interface */
-  esp_netif_t* m_ap_netif;                       /**< AP network interface */
-  EventGroupHandle_t m_event_group;              /**< FreeRTOS event group for WiFi events */
+  esp_netif_t* m_sta_netif;                          /**< Station network interface */
+  esp_netif_t* m_ap_netif;                           /**< AP network interface */
+  EventGroupHandle_t m_event_group;                  /**< FreeRTOS event group for WiFi events */
   esp_event_handler_instance_t m_wifi_event_handler; /**< WiFi event handler */
   esp_event_handler_instance_t m_ip_event_handler;   /**< IP event handler */
-  
+
   // Event handling
-  hf_wifi_event_callback_t m_event_callback;     /**< User event callback */
-  hf_wifi_scan_callback_t m_scan_callback;       /**< User scan callback */
-  void* m_event_user_data;                       /**< User data for event callback */
-  void* m_scan_user_data;                        /**< User data for scan callback */
+  hf_wifi_event_callback_t m_event_callback;                   /**< User event callback */
+  hf_wifi_scan_callback_t m_scan_callback;                     /**< User scan callback */
+  void* m_event_user_data;                                     /**< User data for event callback */
+  void* m_scan_user_data;                                      /**< User data for scan callback */
   std::queue<std::pair<hf_wifi_event_t, void*>> m_event_queue; /**< Event queue */
-  mutable RtosMutex m_event_mutex;               /**< Event queue mutex */
-  
+  mutable RtosMutex m_event_mutex;                             /**< Event queue mutex */
+
   // Scan results
   std::vector<hf_wifi_network_info_t> m_scan_results; /**< Last scan results */
-  std::atomic<bool> m_scanning;                  /**< Scanning state */
-  mutable RtosMutex m_scan_mutex;                /**< Scan results mutex */
-  
+  std::atomic<bool> m_scanning;                       /**< Scanning state */
+  mutable RtosMutex m_scan_mutex;                     /**< Scan results mutex */
+
   // Connection state
-  std::atomic<bool> m_connected;                 /**< Connection state */
-  std::atomic<bool> m_ap_active;                 /**< AP active state */
-  std::atomic<int8_t> m_rssi;                    /**< Current RSSI */
-  std::atomic<uint8_t> m_channel;                /**< Current channel */
-  
+  std::atomic<bool> m_connected;  /**< Connection state */
+  std::atomic<bool> m_ap_active;  /**< AP active state */
+  std::atomic<int8_t> m_rssi;     /**< Current RSSI */
+  std::atomic<uint8_t> m_channel; /**< Current channel */
+
   // Advanced features state
-  std::atomic<bool> m_smartconfig_active;        /**< SmartConfig active */
-  std::atomic<bool> m_wps_active;                /**< WPS active */
-  std::atomic<bool> m_mesh_active;               /**< Mesh active */
-  
+  std::atomic<bool> m_smartconfig_active; /**< SmartConfig active */
+  std::atomic<bool> m_wps_active;         /**< WPS active */
+  std::atomic<bool> m_mesh_active;        /**< Mesh active */
+
   // ========== Internal Helper Methods ==========
-  
+
   /**
    * @brief Initialize ESP-IDF network interface
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
   hf_wifi_err_t InitNetif();
-  
+
   /**
    * @brief Deinitialize ESP-IDF network interface
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
   hf_wifi_err_t DeinitNetif();
-  
+
   /**
    * @brief Register ESP-IDF event handlers
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
   hf_wifi_err_t RegisterEventHandlers();
-  
+
   /**
    * @brief Unregister ESP-IDF event handlers
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
   hf_wifi_err_t UnregisterEventHandlers();
-  
+
   /**
    * @brief Convert HardFOC WiFi mode to ESP-IDF mode
    * @param mode HardFOC WiFi mode
    * @return ESP-IDF WiFi mode
    */
   wifi_mode_t ConvertToEspMode(hf_wifi_mode_t mode) const;
-  
+
   /**
    * @brief Convert ESP-IDF WiFi mode to HardFOC mode
    * @param mode ESP-IDF WiFi mode
    * @return HardFOC WiFi mode
    */
   hf_wifi_mode_t ConvertFromEspMode(wifi_mode_t mode) const;
-  
+
   /**
    * @brief Convert HardFOC security to ESP-IDF auth mode
    * @param security HardFOC security type
    * @return ESP-IDF auth mode
    */
   wifi_auth_mode_t ConvertToEspAuthMode(hf_wifi_security_t security) const;
-  
+
   /**
    * @brief Convert ESP-IDF auth mode to HardFOC security
    * @param auth_mode ESP-IDF auth mode
    * @return HardFOC security type
    */
   hf_wifi_security_t ConvertFromEspAuthMode(wifi_auth_mode_t auth_mode) const;
-  
+
   /**
    * @brief Convert ESP-IDF error to HardFOC error
    * @param esp_err ESP-IDF error code
    * @return HardFOC WiFi error code
    */
   hf_wifi_err_t ConvertEspError(esp_err_t esp_err) const;
-  
+
   /**
    * @brief Static WiFi event handler for ESP-IDF
    * @param arg User argument (EspWifi instance)
@@ -448,9 +451,9 @@ private:
    * @param event_id Event ID
    * @param event_data Event data
    */
-  static void wifiEventHandler(void* arg, esp_event_base_t event_base,
-                               int32_t event_id, void* event_data);
-  
+  static void wifiEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id,
+                               void* event_data);
+
   /**
    * @brief Static IP event handler for ESP-IDF
    * @param arg User argument (EspWifi instance)
@@ -458,56 +461,56 @@ private:
    * @param event_id Event ID
    * @param event_data Event data
    */
-  static void ipEventHandler(void* arg, esp_event_base_t event_base,
-                             int32_t event_id, void* event_data);
-  
+  static void ipEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id,
+                             void* event_data);
+
   /**
    * @brief Handle WiFi events internally
    * @param event_id ESP-IDF event ID
    * @param event_data Event data
    */
   void handleWifiEvent(int32_t event_id, void* event_data);
-  
+
   /**
    * @brief Handle IP events internally
    * @param event_id ESP-IDF event ID
    * @param event_data Event data
    */
   void handleIpEvent(int32_t event_id, void* event_data);
-  
+
   /**
    * @brief Notify user event callback
    * @param event HardFOC WiFi event
    * @param event_data Event data
    */
   void NotifyEventCallback(hf_wifi_event_t event, void* event_data);
-  
+
   /**
    * @brief Update internal state
    * @param new_state New WiFi state
    */
   void UpdateState(hf_wifi_state_t new_state);
-  
+
   /**
    * @brief Apply advanced configuration settings
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
   hf_wifi_err_t ApplyAdvancedConfig();
-  
+
   /**
    * @brief Validate configuration parameters
    * @param config Configuration to validate
    * @return true if valid, false otherwise
    */
   bool ValidateConfig(const hf_wifi_station_config_t& config) const;
-  
+
   /**
    * @brief Validate AP configuration parameters
    * @param config AP configuration to validate
    * @return true if valid, false otherwise
    */
   bool ValidateApConfig(const hf_wifi_ap_config_t& config) const;
-  
+
   // Prevent copying
   EspWifi(const EspWifi&) = delete;
   EspWifi& operator=(const EspWifi&) = delete;

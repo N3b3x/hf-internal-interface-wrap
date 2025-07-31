@@ -1,6 +1,7 @@
 /**
  * @file EspBluetooth.h
- * @brief Advanced ESP32 implementation of the unified BaseBluetooth class with ESP-IDF v5.5+ features.
+ * @brief Advanced ESP32 implementation of the unified BaseBluetooth class with ESP-IDF v5.5+
+ * features.
  *
  * This file provides concrete implementations of the unified BaseBluetooth class
  * for ESP32 microcontrollers with support for both Bluetooth Classic and BLE features.
@@ -25,20 +26,20 @@ extern "C" {
 #endif
 
 // Bluetooth Classic headers
+#include "esp_a2dp_api.h"
+#include "esp_avrc_api.h"
 #include "esp_bt.h"
 #include "esp_bt_main.h"
 #include "esp_gap_bt_api.h"
-#include "esp_spp_api.h"
-#include "esp_a2dp_api.h"
-#include "esp_avrc_api.h"
 #include "esp_hf_client_api.h"
+#include "esp_spp_api.h"
 
 // Bluetooth Low Energy headers
+#include "esp_bt_defs.h"
 #include "esp_gap_ble_api.h"
 #include "esp_gatt_common_api.h"
-#include "esp_gatts_api.h"
 #include "esp_gattc_api.h"
-#include "esp_bt_defs.h"
+#include "esp_gatts_api.h"
 
 // ESP-MESH Bluetooth headers
 #include "esp_mesh.h"
@@ -46,11 +47,11 @@ extern "C" {
 
 // System headers
 #include "esp_log.h"
-#include "nvs_flash.h"
 #include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "freertos/queue.h"
 #include "freertos/semphr.h"
+#include "freertos/task.h"
+#include "nvs_flash.h"
 
 #ifdef __cplusplus
 }
@@ -60,10 +61,10 @@ extern "C" {
 #include "BaseBluetooth.h"
 #include "mcu/esp32/utils/EspTypes_Base.h"
 #include "utils/RtosMutex.h"
-#include <memory>
 #include <atomic>
-#include <queue>
 #include <map>
+#include <memory>
+#include <queue>
 #include <unordered_map>
 
 /**
@@ -71,63 +72,63 @@ extern "C" {
  */
 struct EspBluetoothAdvancedConfig {
   // Power management
-  bool enable_power_save;               /**< Enable Bluetooth power save mode */
-  esp_power_level_t tx_power_level;     /**< TX power level */
-  bool enable_modem_sleep;              /**< Enable modem sleep */
-  
+  bool enable_power_save;           /**< Enable Bluetooth power save mode */
+  esp_power_level_t tx_power_level; /**< TX power level */
+  bool enable_modem_sleep;          /**< Enable modem sleep */
+
   // Performance tuning
-  uint16_t max_connections;             /**< Maximum simultaneous connections */
-  uint16_t connection_timeout_ms;       /**< Connection timeout */
-  uint16_t supervision_timeout_ms;      /**< Link supervision timeout */
-  uint8_t min_connection_interval;      /**< Minimum connection interval */
-  uint8_t max_connection_interval;      /**< Maximum connection interval */
-  
+  uint16_t max_connections;        /**< Maximum simultaneous connections */
+  uint16_t connection_timeout_ms;  /**< Connection timeout */
+  uint16_t supervision_timeout_ms; /**< Link supervision timeout */
+  uint8_t min_connection_interval; /**< Minimum connection interval */
+  uint8_t max_connection_interval; /**< Maximum connection interval */
+
   // Classic Bluetooth features
-  bool enable_spp;                      /**< Enable Serial Port Profile */
-  bool enable_a2dp;                     /**< Enable Advanced Audio Distribution Profile */
-  bool enable_avrcp;                    /**< Enable Audio/Video Remote Control Profile */
-  bool enable_hfp;                      /**< Enable Hands-Free Profile */
-  bool enable_hid;                      /**< Enable Human Interface Device Profile */
-  
+  bool enable_spp;   /**< Enable Serial Port Profile */
+  bool enable_a2dp;  /**< Enable Advanced Audio Distribution Profile */
+  bool enable_avrcp; /**< Enable Audio/Video Remote Control Profile */
+  bool enable_hfp;   /**< Enable Hands-Free Profile */
+  bool enable_hid;   /**< Enable Human Interface Device Profile */
+
   // BLE features
-  bool enable_gatt_server;              /**< Enable GATT server */
-  bool enable_gatt_client;              /**< Enable GATT client */
-  uint16_t max_gatt_services;           /**< Maximum GATT services */
-  uint16_t max_gatt_characteristics;    /**< Maximum GATT characteristics */
-  uint16_t mtu_size;                    /**< Maximum Transmission Unit size */
-  
+  bool enable_gatt_server;           /**< Enable GATT server */
+  bool enable_gatt_client;           /**< Enable GATT client */
+  uint16_t max_gatt_services;        /**< Maximum GATT services */
+  uint16_t max_gatt_characteristics; /**< Maximum GATT characteristics */
+  uint16_t mtu_size;                 /**< Maximum Transmission Unit size */
+
   // Security features
-  bool enable_secure_connections;       /**< Enable Bluetooth 4.2+ Secure Connections */
-  bool enable_privacy;                  /**< Enable BLE Privacy */
-  bool require_mitm_protection;         /**< Require Man-in-the-Middle protection */
-  bool enable_bonding;                  /**< Enable bonding */
-  esp_ble_sm_io_cap_t io_capability;    /**< I/O capability for pairing */
-  
+  bool enable_secure_connections;    /**< Enable Bluetooth 4.2+ Secure Connections */
+  bool enable_privacy;               /**< Enable BLE Privacy */
+  bool require_mitm_protection;      /**< Require Man-in-the-Middle protection */
+  bool enable_bonding;               /**< Enable bonding */
+  esp_ble_sm_io_cap_t io_capability; /**< I/O capability for pairing */
+
   // Advanced features
-  bool enable_extended_advertising;     /**< Enable BLE Extended Advertising */
-  bool enable_periodic_advertising;     /**< Enable BLE Periodic Advertising */
-  bool enable_coded_phy;                /**< Enable BLE Coded PHY */
-  bool enable_2m_phy;                   /**< Enable BLE 2M PHY */
-  bool enable_mesh_proxy;               /**< Enable Mesh Proxy feature */
-  bool enable_mesh_relay;               /**< Enable Mesh Relay feature */
-  bool enable_mesh_friend;              /**< Enable Mesh Friend feature */
-  bool enable_mesh_low_power;           /**< Enable Mesh Low Power Node feature */
+  bool enable_extended_advertising; /**< Enable BLE Extended Advertising */
+  bool enable_periodic_advertising; /**< Enable BLE Periodic Advertising */
+  bool enable_coded_phy;            /**< Enable BLE Coded PHY */
+  bool enable_2m_phy;               /**< Enable BLE 2M PHY */
+  bool enable_mesh_proxy;           /**< Enable Mesh Proxy feature */
+  bool enable_mesh_relay;           /**< Enable Mesh Relay feature */
+  bool enable_mesh_friend;          /**< Enable Mesh Friend feature */
+  bool enable_mesh_low_power;       /**< Enable Mesh Low Power Node feature */
 };
 
 /**
  * @brief ESP32-specific connection information
  */
 struct EspBluetoothConnectionInfo {
-  hf_bluetooth_address_t address;       /**< Device address */
-  esp_bd_addr_t esp_address;            /**< ESP-IDF format address */
-  uint16_t connection_handle;           /**< Connection handle */
-  bool is_classic;                      /**< True if Classic, false if BLE */
-  uint16_t mtu;                         /**< Current MTU size */
-  uint8_t connection_interval;          /**< Connection interval (BLE) */
-  uint8_t slave_latency;                /**< Slave latency (BLE) */
-  uint16_t supervision_timeout;         /**< Supervision timeout */
-  int8_t tx_power;                      /**< Current TX power */
-  esp_ble_sm_key_mask_t key_mask;       /**< Security key mask (BLE) */
+  hf_bluetooth_address_t address; /**< Device address */
+  esp_bd_addr_t esp_address;      /**< ESP-IDF format address */
+  uint16_t connection_handle;     /**< Connection handle */
+  bool is_classic;                /**< True if Classic, false if BLE */
+  uint16_t mtu;                   /**< Current MTU size */
+  uint8_t connection_interval;    /**< Connection interval (BLE) */
+  uint8_t slave_latency;          /**< Slave latency (BLE) */
+  uint16_t supervision_timeout;   /**< Supervision timeout */
+  int8_t tx_power;                /**< Current TX power */
+  esp_ble_sm_key_mask_t key_mask; /**< Security key mask (BLE) */
 };
 
 /**
@@ -135,10 +136,10 @@ struct EspBluetoothConnectionInfo {
  */
 struct EspGattServiceInfo {
   hf_bluetooth_gatt_service_t base_info; /**< Base service information */
-  esp_gatt_srvc_id_t service_id;        /**< ESP-IDF service ID */
-  uint16_t service_handle;              /**< Service handle */
-  std::vector<uint16_t> char_handles;   /**< Characteristic handles */
-  bool is_started;                      /**< Service started state */
+  esp_gatt_srvc_id_t service_id;         /**< ESP-IDF service ID */
+  uint16_t service_handle;               /**< Service handle */
+  std::vector<uint16_t> char_handles;    /**< Characteristic handles */
+  bool is_started;                       /**< Service started state */
 };
 
 /**
@@ -219,47 +220,56 @@ public:
   bool IsAdvertising() const override;
 
   // Device Discovery
-  hf_bluetooth_err_t StartScan(uint32_t duration_ms = 0, hf_bluetooth_scan_type_t type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) override;
+  hf_bluetooth_err_t StartScan(
+      uint32_t duration_ms = 0,
+      hf_bluetooth_scan_type_t type =
+          hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) override;
   hf_bluetooth_err_t StopScan() override;
   bool IsScanning() const override;
-  hf_bluetooth_err_t GetDiscoveredDevices(std::vector<hf_bluetooth_device_info_t>& devices) override;
+  hf_bluetooth_err_t GetDiscoveredDevices(
+      std::vector<hf_bluetooth_device_info_t>& devices) override;
   hf_bluetooth_err_t ClearDiscoveredDevices() override;
 
   // Connection Management
-  hf_bluetooth_err_t Connect(const hf_bluetooth_address_t& address, uint32_t timeout_ms = 0) override;
+  hf_bluetooth_err_t Connect(const hf_bluetooth_address_t& address,
+                             uint32_t timeout_ms = 0) override;
   hf_bluetooth_err_t Disconnect(const hf_bluetooth_address_t& address) override;
   bool IsConnected(const hf_bluetooth_address_t& address) const override;
   hf_bluetooth_err_t GetConnectedDevices(std::vector<hf_bluetooth_device_info_t>& devices) override;
 
   // Pairing and Bonding
-  hf_bluetooth_err_t Pair(const hf_bluetooth_address_t& address, const std::string& pin = "") override;
+  hf_bluetooth_err_t Pair(const hf_bluetooth_address_t& address,
+                          const std::string& pin = "") override;
   hf_bluetooth_err_t Unpair(const hf_bluetooth_address_t& address) override;
   bool IsPaired(const hf_bluetooth_address_t& address) const override;
   hf_bluetooth_err_t GetPairedDevices(std::vector<hf_bluetooth_device_info_t>& devices) override;
 
   // Data Transmission
-  hf_bluetooth_err_t SendData(const hf_bluetooth_address_t& address, const std::vector<uint8_t>& data) override;
+  hf_bluetooth_err_t SendData(const hf_bluetooth_address_t& address,
+                              const std::vector<uint8_t>& data) override;
   int GetAvailableData(const hf_bluetooth_address_t& address) const override;
-  hf_bluetooth_err_t ReadData(const hf_bluetooth_address_t& address, std::vector<uint8_t>& data, size_t max_bytes = 0) override;
+  hf_bluetooth_err_t ReadData(const hf_bluetooth_address_t& address, std::vector<uint8_t>& data,
+                              size_t max_bytes = 0) override;
 
   // GATT Operations (BLE)
-  hf_bluetooth_err_t DiscoverServices(const hf_bluetooth_address_t& address, std::vector<hf_bluetooth_gatt_service_t>& services) override;
-  hf_bluetooth_err_t DiscoverCharacteristics(const hf_bluetooth_address_t& address, 
-                                          const std::string& service_uuid,
-                                          std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) override;
+  hf_bluetooth_err_t DiscoverServices(const hf_bluetooth_address_t& address,
+                                      std::vector<hf_bluetooth_gatt_service_t>& services) override;
+  hf_bluetooth_err_t DiscoverCharacteristics(
+      const hf_bluetooth_address_t& address, const std::string& service_uuid,
+      std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) override;
   hf_bluetooth_err_t ReadCharacteristic(const hf_bluetooth_address_t& address,
-                                     const std::string& service_uuid,
-                                     const std::string& characteristic_uuid,
-                                     std::vector<uint8_t>& value) override;
+                                        const std::string& service_uuid,
+                                        const std::string& characteristic_uuid,
+                                        std::vector<uint8_t>& value) override;
   hf_bluetooth_err_t WriteCharacteristic(const hf_bluetooth_address_t& address,
-                                      const std::string& service_uuid,
-                                      const std::string& characteristic_uuid,
-                                      const std::vector<uint8_t>& value,
-                                      bool with_response = true) override;
+                                         const std::string& service_uuid,
+                                         const std::string& characteristic_uuid,
+                                         const std::vector<uint8_t>& value,
+                                         bool with_response = true) override;
   hf_bluetooth_err_t SubscribeCharacteristic(const hf_bluetooth_address_t& address,
-                                          const std::string& service_uuid,
-                                          const std::string& characteristic_uuid,
-                                          bool enable) override;
+                                             const std::string& service_uuid,
+                                             const std::string& characteristic_uuid,
+                                             bool enable) override;
 
   // State and Status
   hf_bluetooth_state_t GetState() const override;
@@ -293,7 +303,8 @@ public:
    * @param info Reference to store connection information
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t GetConnectionInfo(const hf_bluetooth_address_t& address, EspBluetoothConnectionInfo& info) const;
+  hf_bluetooth_err_t GetConnectionInfo(const hf_bluetooth_address_t& address,
+                                       EspBluetoothConnectionInfo& info) const;
 
   /**
    * @brief Set connection parameters for BLE connection
@@ -305,10 +316,8 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t SetConnectionParams(const hf_bluetooth_address_t& address,
-                                     uint16_t min_interval,
-                                     uint16_t max_interval,
-                                     uint16_t slave_latency,
-                                     uint16_t supervision_timeout);
+                                         uint16_t min_interval, uint16_t max_interval,
+                                         uint16_t slave_latency, uint16_t supervision_timeout);
 
   /**
    * @brief Set PHY preference for BLE connection (2M, Coded, 1M)
@@ -317,9 +326,8 @@ public:
    * @param rx_phy_mask RX PHY mask
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t SetPhyPreference(const hf_bluetooth_address_t& address,
-                                  uint8_t tx_phy_mask,
-                                  uint8_t rx_phy_mask);
+  hf_bluetooth_err_t SetPhyPreference(const hf_bluetooth_address_t& address, uint8_t tx_phy_mask,
+                                      uint8_t rx_phy_mask);
 
   /**
    * @brief Configure Extended Advertising (BLE 5.0+)
@@ -328,7 +336,8 @@ public:
    * @param duration Duration in 10ms units (0 for continuous)
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t ConfigureExtendedAdvertising(bool enable, uint8_t max_events = 0, uint16_t duration = 0);
+  hf_bluetooth_err_t ConfigureExtendedAdvertising(bool enable, uint8_t max_events = 0,
+                                                  uint16_t duration = 0);
 
   /**
    * @brief Configure Periodic Advertising (BLE 5.0+)
@@ -337,7 +346,8 @@ public:
    * @param interval_max Maximum advertising interval
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t ConfigurePeriodicAdvertising(bool enable, uint16_t interval_min = 0x20, uint16_t interval_max = 0x40);
+  hf_bluetooth_err_t ConfigurePeriodicAdvertising(bool enable, uint16_t interval_min = 0x20,
+                                                  uint16_t interval_max = 0x40);
 
   /**
    * @brief Create and start GATT service
@@ -346,7 +356,8 @@ public:
    * @param num_handles Number of handles to reserve
    * @return Service handle on success, 0 on error
    */
-  uint16_t CreateGattService(const std::string& service_uuid, bool is_primary = true, uint16_t num_handles = 10);
+  uint16_t CreateGattService(const std::string& service_uuid, bool is_primary = true,
+                             uint16_t num_handles = 10);
 
   /**
    * @brief Add characteristic to GATT service
@@ -356,10 +367,8 @@ public:
    * @param permissions Characteristic permissions
    * @return Characteristic handle on success, 0 on error
    */
-  uint16_t AddGattCharacteristic(uint16_t service_handle,
-                                 const std::string& char_uuid,
-                                 esp_gatt_char_prop_t properties,
-                                 esp_gatt_perm_t permissions);
+  uint16_t AddGattCharacteristic(uint16_t service_handle, const std::string& char_uuid,
+                                 esp_gatt_char_prop_t properties, esp_gatt_perm_t permissions);
 
   /**
    * @brief Start GATT service
@@ -384,9 +393,8 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t SendGattNotification(const hf_bluetooth_address_t& address,
-                                      uint16_t char_handle,
-                                      const std::vector<uint8_t>& data,
-                                      bool need_confirm = false);
+                                          uint16_t char_handle, const std::vector<uint8_t>& data,
+                                          bool need_confirm = false);
 
   /**
    * @brief Enable/disable Serial Port Profile (SPP)
@@ -441,227 +449,233 @@ public:
 
 private:
   // ========== Internal State Management ==========
-  
-  mutable RtosMutex m_mutex;                       /**< Main synchronization mutex */
-  std::atomic<bool> m_initialized;                 /**< Initialization state */
-  std::atomic<bool> m_enabled;                     /**< Bluetooth enabled state */
-  std::atomic<hf_bluetooth_mode_t> m_mode;             /**< Current Bluetooth mode */
-  std::atomic<hf_bluetooth_state_t> m_state;           /**< Current Bluetooth state */
-  
+
+  mutable RtosMutex m_mutex;                 /**< Main synchronization mutex */
+  std::atomic<bool> m_initialized;           /**< Initialization state */
+  std::atomic<bool> m_enabled;               /**< Bluetooth enabled state */
+  std::atomic<hf_bluetooth_mode_t> m_mode;   /**< Current Bluetooth mode */
+  std::atomic<hf_bluetooth_state_t> m_state; /**< Current Bluetooth state */
+
   // Configuration storage
-  hf_bluetooth_classic_config_t m_classic_config;       /**< Classic configuration */
-  hf_bluetooth_ble_config_t m_ble_config;               /**< BLE configuration */
-  EspBluetoothAdvancedConfig m_advanced_config;    /**< Advanced configuration */
-  
+  hf_bluetooth_classic_config_t m_classic_config; /**< Classic configuration */
+  hf_bluetooth_ble_config_t m_ble_config;         /**< BLE configuration */
+  EspBluetoothAdvancedConfig m_advanced_config;   /**< Advanced configuration */
+
   // Device management
-  std::string m_device_name;                       /**< Local device name */
-  hf_bluetooth_address_t m_local_address;              /**< Local Bluetooth address */
-  
+  std::string m_device_name;              /**< Local device name */
+  hf_bluetooth_address_t m_local_address; /**< Local Bluetooth address */
+
   // Connection management
-  std::unordered_map<std::string, EspBluetoothConnectionInfo> m_connections; /**< Active connections */
-  mutable RtosMutex m_connections_mutex;           /**< Connections mutex */
-  
+  std::unordered_map<std::string, EspBluetoothConnectionInfo>
+      m_connections;                     /**< Active connections */
+  mutable RtosMutex m_connections_mutex; /**< Connections mutex */
+
   // Discovery and pairing
   std::vector<hf_bluetooth_device_info_t> m_discovered_devices; /**< Discovered devices */
   std::vector<hf_bluetooth_device_info_t> m_paired_devices;     /**< Paired devices */
-  std::atomic<bool> m_scanning;                    /**< Scanning state */
-  std::atomic<bool> m_discoverable;                /**< Discoverable state */
-  std::atomic<bool> m_advertising;                 /**< Advertising state */
-  hf_bluetooth_scan_type_t m_current_scan_type;    /**< Current scan type */
-  mutable RtosMutex m_discovery_mutex;             /**< Discovery mutex */
-  
+  std::atomic<bool> m_scanning;                                 /**< Scanning state */
+  std::atomic<bool> m_discoverable;                             /**< Discoverable state */
+  std::atomic<bool> m_advertising;                              /**< Advertising state */
+  hf_bluetooth_scan_type_t m_current_scan_type;                 /**< Current scan type */
+  mutable RtosMutex m_discovery_mutex;                          /**< Discovery mutex */
+
   // GATT services
   std::map<uint16_t, EspGattServiceInfo> m_gatt_services; /**< GATT services */
-  mutable RtosMutex m_gatt_mutex;                  /**< GATT operations mutex */
-  
+  mutable RtosMutex m_gatt_mutex;                         /**< GATT operations mutex */
+
   // Event handling
-  hf_bluetooth_event_callback_t m_event_callback;       /**< User event callback */
-  hf_bluetooth_data_callback_t m_data_callback;         /**< User data callback */
-  hf_bluetooth_scan_callback_t m_scan_callback;         /**< User scan callback */
-  hf_bluetooth_gatt_event_callback_t m_gatt_event_callback; /**< User GATT event callback */
+  hf_bluetooth_event_callback_t m_event_callback;                   /**< User event callback */
+  hf_bluetooth_data_callback_t m_data_callback;                     /**< User data callback */
+  hf_bluetooth_scan_callback_t m_scan_callback;                     /**< User scan callback */
+  hf_bluetooth_gatt_event_callback_t m_gatt_event_callback;         /**< User GATT event callback */
   std::queue<std::pair<hf_bluetooth_event_t, void*>> m_event_queue; /**< Event queue */
-  mutable RtosMutex m_event_mutex;                 /**< Event queue mutex */
-  
+  mutable RtosMutex m_event_mutex;                                  /**< Event queue mutex */
+
   // Data buffers
-  std::unordered_map<std::string, std::queue<std::vector<uint8_t>>> m_data_buffers; /**< Data buffers per device */
-  mutable RtosMutex m_data_mutex;                  /**< Data buffer mutex */
-  
+  std::unordered_map<std::string, std::queue<std::vector<uint8_t>>>
+      m_data_buffers;             /**< Data buffers per device */
+  mutable RtosMutex m_data_mutex; /**< Data buffer mutex */
+
   // ========== Internal Helper Methods ==========
-  
+
   /**
    * @brief Initialize Bluetooth controller
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t InitController();
-  
+
   /**
    * @brief Deinitialize Bluetooth controller
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t deInitController();
-  
+
   /**
    * @brief Register all event handlers
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t RegisterEventHandlers();
-  
+
   /**
    * @brief Unregister all event handlers
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t unRegisterEventHandlers();
-  
+
   /**
    * @brief Convert HardFOC address to ESP-IDF address
    * @param hf_addr HardFOC address
    * @param esp_addr ESP-IDF address output
    */
   void ConvertToEspAddress(const hf_bluetooth_address_t& hf_addr, esp_bd_addr_t esp_addr) const;
-  
+
   /**
    * @brief Convert ESP-IDF address to HardFOC address
    * @param esp_addr ESP-IDF address
    * @param hf_addr HardFOC address output
    */
   void ConvertFromEspAddress(const esp_bd_addr_t esp_addr, hf_bluetooth_address_t& hf_addr) const;
-  
+
   /**
    * @brief Convert ESP-IDF error to HardFOC error
    * @param esp_err ESP-IDF error code
    * @return HardFOC Bluetooth error code
    */
   hf_bluetooth_err_t ConvertEspError(esp_err_t esp_err) const;
-  
+
   /**
    * @brief Apply advanced configuration settings
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t ApplyAdvancedConfig();
-  
+
   /**
    * @brief Static GAP event handler for ESP-IDF
    * @param event GAP event type
    * @param param Event parameters
    */
   static void GapEventHandler(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t* param);
-  
+
   /**
    * @brief Static GATT server event handler for ESP-IDF
    * @param event GATT server event type
    * @param gatts_if GATT server interface
    * @param param Event parameters
    */
-  static void GattsEventHandler(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if, esp_ble_gatts_cb_param_t* param);
-  
+  static void GattsEventHandler(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if,
+                                esp_ble_gatts_cb_param_t* param);
+
   /**
    * @brief Static GATT client event handler for ESP-IDF
    * @param event GATT client event type
    * @param gattc_if GATT client interface
    * @param param Event parameters
    */
-  static void GattcEventHandler(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp_ble_gattc_cb_param_t* param);
-  
+  static void GattcEventHandler(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if,
+                                esp_ble_gattc_cb_param_t* param);
+
   /**
    * @brief Static Classic Bluetooth GAP event handler
    * @param event GAP event type
    * @param param Event parameters
    */
   static void ClassicGapEventHandler(esp_bt_gap_cb_event_t event, esp_bt_gap_cb_param_t* param);
-  
+
   /**
    * @brief Static SPP event handler
    * @param event SPP event type
    * @param param Event parameters
    */
   static void SppEventHandler(esp_spp_cb_event_t event, esp_spp_cb_param_t* param);
-  
+
   /**
    * @brief Handle BLE GAP events internally
    * @param event GAP event type
    * @param param Event parameters
    */
   void HandleGapEvent(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t* param);
-  
+
   /**
    * @brief Handle GATT server events internally
    * @param event GATT server event type
    * @param gatts_if GATT server interface
    * @param param Event parameters
    */
-  void HandleGattsEvent(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if, esp_ble_gatts_cb_param_t* param);
-  
+  void HandleGattsEvent(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if,
+                        esp_ble_gatts_cb_param_t* param);
+
   /**
    * @brief Handle GATT client events internally
    * @param event GATT client event type
    * @param gattc_if GATT client interface
    * @param param Event parameters
    */
-  void HandleGattcEvent(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp_ble_gattc_cb_param_t* param);
-  
+  void HandleGattcEvent(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if,
+                        esp_ble_gattc_cb_param_t* param);
+
   /**
    * @brief Handle Classic Bluetooth events internally
    * @param event GAP event type
    * @param param Event parameters
    */
   void HandleClassicGapEvent(esp_bt_gap_cb_event_t event, esp_bt_gap_cb_param_t* param);
-  
+
   /**
    * @brief Handle SPP events internally
    * @param event SPP event type
    * @param param Event parameters
    */
   void HandleSppEvent(esp_spp_cb_event_t event, esp_spp_cb_param_t* param);
-  
+
   /**
    * @brief Notify user event callback
    * @param event HardFOC Bluetooth event
    * @param event_data Event data
    */
   void NotifyEventCallback(hf_bluetooth_event_t event, void* event_data);
-  
+
   /**
    * @brief Update internal state
    * @param new_state New Bluetooth state
    */
   void UpdateState(hf_bluetooth_state_t new_state);
-  
+
   /**
    * @brief Add discovered device to list
    * @param device_info Device information
    */
   void AddDiscoveredDevice(const hf_bluetooth_device_info_t& device_info);
-  
+
   /**
    * @brief Get connection by address
    * @param address Device address
    * @return Pointer to connection info, nullptr if not found
    */
   EspBluetoothConnectionInfo* GetConnection(const hf_bluetooth_address_t& address);
-  
+
   /**
    * @brief Add new connection
    * @param address Device address
    * @param info Connection information
    */
   void AddConnection(const hf_bluetooth_address_t& address, const EspBluetoothConnectionInfo& info);
-  
+
   /**
    * @brief Remove connection
    * @param address Device address
    */
   void RemoveConnection(const hf_bluetooth_address_t& address);
-  
+
   /**
    * @brief Store received data for device
    * @param address Device address
    * @param data Received data
    */
   void StoreReceivedData(const hf_bluetooth_address_t& address, const std::vector<uint8_t>& data);
-  
+
   // Static instance pointer for ESP-IDF callbacks
   static EspBluetooth* s_instance;
-  
+
   // Prevent copying
   EspBluetooth(const EspBluetooth&) = delete;
   EspBluetooth& operator=(const EspBluetooth&) = delete;

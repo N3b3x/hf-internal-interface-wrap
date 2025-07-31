@@ -1,32 +1,42 @@
 cmake_minimum_required(VERSION 3.23)
 
 # Get the absolute path to the project root
-get_filename_component(PROJECT_ROOT "${CMAKE_SOURCE_DIR}/../../" ABSOLUTE)
+# In CI, the files are copied to the build directory, so we can use relative paths from CMAKE_SOURCE_DIR
+get_filename_component(PROJECT_ROOT "${CMAKE_SOURCE_DIR}" ABSOLUTE)
+
+# Check if we're in the CI environment (files copied to build directory)
+if(EXISTS "${PROJECT_ROOT}/src" AND EXISTS "${PROJECT_ROOT}/inc")
+    # We're in CI or local build with copied files
+    set(SRC_ROOT "${PROJECT_ROOT}")
+else()
+    # We're in development with original structure
+    get_filename_component(SRC_ROOT "${CMAKE_SOURCE_DIR}/../../" ABSOLUTE)
+endif()
 
 idf_component_register(
     SRCS 
         # Utility files
-        "${PROJECT_ROOT}/src/utils/DigitalOutputGuard.cpp"
+        "${SRC_ROOT}/src/utils/DigitalOutputGuard.cpp"
         
-        # ESP32 implementation files (temporarily commented out due to compilation errors)
-        "${PROJECT_ROOT}/src/mcu/esp32/EspAdc.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspCan.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspGpio.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspI2c.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspNvs.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspPeriodicTimer.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspPio.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspPwm.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspSpi.cpp"
-        "${PROJECT_ROOT}/src/mcu/esp32/EspUart.cpp"
+        # ESP32 implementation files
+        "${SRC_ROOT}/src/mcu/esp32/EspAdc.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspCan.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspGpio.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspI2c.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspNvs.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspPeriodicTimer.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspPio.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspPwm.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspSpi.cpp"
+        "${SRC_ROOT}/src/mcu/esp32/EspUart.cpp"
         
     INCLUDE_DIRS 
-        "${PROJECT_ROOT}/inc"
-        "${PROJECT_ROOT}/inc/base"
-        "${PROJECT_ROOT}/inc/mcu"
-        "${PROJECT_ROOT}/inc/mcu/esp32"
-        "${PROJECT_ROOT}/inc/mcu/esp32/utils"
-        "${PROJECT_ROOT}/inc/utils"
+        "${SRC_ROOT}/inc"
+        "${SRC_ROOT}/inc/base"
+        "${SRC_ROOT}/inc/mcu"
+        "${SRC_ROOT}/inc/mcu/esp32"
+        "${SRC_ROOT}/inc/mcu/esp32/utils"
+        "${SRC_ROOT}/inc/utils"
         
     REQUIRES 
         driver 

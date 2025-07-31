@@ -24,20 +24,20 @@ extern "C" {
 #endif
 
 // Bluetooth Classic headers
+#include "esp_a2dp_api.h"
+#include "esp_avrc_api.h"
 #include "esp_bt.h"
 #include "esp_bt_main.h"
 #include "esp_gap_bt_api.h"
-#include "esp_spp_api.h"
-#include "esp_a2dp_api.h"
-#include "esp_avrc_api.h"
 #include "esp_hf_client_api.h"
+#include "esp_spp_api.h"
 
 // Bluetooth Low Energy headers
+#include "esp_bt_defs.h"
 #include "esp_gap_ble_api.h"
 #include "esp_gatt_common_api.h"
-#include "esp_gatts_api.h"
 #include "esp_gattc_api.h"
-#include "esp_bt_defs.h"
+#include "esp_gatts_api.h"
 
 #ifdef __cplusplus
 }
@@ -97,67 +97,69 @@ static constexpr uint16_t HF_ESP_BLE_SUPERVISION_TIMEOUT_MAX = 3200; // 32000ms
  * @brief ESP32-specific Bluetooth mode mapping
  */
 enum class hf_esp_bluetooth_mode_t : uint8_t {
-  IDLE = ESP_BT_MODE_IDLE,                  /**< Bluetooth disabled */
-  BLE = ESP_BT_MODE_BLE,                    /**< BLE only */
-  CLASSIC_BT = ESP_BT_MODE_CLASSIC_BT,      /**< Classic Bluetooth only */
-  BTDM = ESP_BT_MODE_BTDM                   /**< Dual mode (Classic + BLE) */
+  IDLE = ESP_BT_MODE_IDLE,             /**< Bluetooth disabled */
+  BLE = ESP_BT_MODE_BLE,               /**< BLE only */
+  CLASSIC_BT = ESP_BT_MODE_CLASSIC_BT, /**< Classic Bluetooth only */
+  BTDM = ESP_BT_MODE_BTDM              /**< Dual mode (Classic + BLE) */
 };
 
 /**
  * @brief ESP32-specific BLE address type mapping
  */
 enum class hf_esp_ble_addr_type_t : uint8_t {
-  PUBLIC = BLE_ADDR_TYPE_PUBLIC,            /**< Public address */
-  RANDOM = BLE_ADDR_TYPE_RANDOM,            /**< Random address */
-  RPA_PUBLIC = BLE_ADDR_TYPE_RPA_PUBLIC,    /**< Resolvable private address with public identity */
-  RPA_RANDOM = BLE_ADDR_TYPE_RPA_RANDOM     /**< Resolvable private address with random identity */
+  PUBLIC = BLE_ADDR_TYPE_PUBLIC,         /**< Public address */
+  RANDOM = BLE_ADDR_TYPE_RANDOM,         /**< Random address */
+  RPA_PUBLIC = BLE_ADDR_TYPE_RPA_PUBLIC, /**< Resolvable private address with public identity */
+  RPA_RANDOM = BLE_ADDR_TYPE_RPA_RANDOM  /**< Resolvable private address with random identity */
 };
 
 /**
  * @brief ESP32-specific BLE scan type mapping
  */
 enum class hf_esp_ble_scan_type_t : uint8_t {
-  PASSIVE = BLE_SCAN_TYPE_PASSIVE,          /**< Passive scanning */
-  ACTIVE = BLE_SCAN_TYPE_ACTIVE             /**< Active scanning */
+  PASSIVE = BLE_SCAN_TYPE_PASSIVE, /**< Passive scanning */
+  ACTIVE = BLE_SCAN_TYPE_ACTIVE    /**< Active scanning */
 };
 
 /**
  * @brief ESP32-specific BLE advertising type mapping
  */
 enum class hf_esp_ble_adv_type_t : uint8_t {
-  ADV_IND = ADV_TYPE_IND,                   /**< Connectable undirected advertising */
-  ADV_DIRECT_IND_HIGH = ADV_TYPE_DIRECT_IND_HIGH, /**< Connectable directed advertising (high duty cycle) */
-  ADV_SCAN_IND = ADV_TYPE_SCAN_IND,         /**< Scannable undirected advertising */
-  ADV_NONCONN_IND = ADV_TYPE_NONCONN_IND,   /**< Non-connectable undirected advertising */
-  ADV_DIRECT_IND_LOW = ADV_TYPE_DIRECT_IND_LOW /**< Connectable directed advertising (low duty cycle) */
+  ADV_IND = ADV_TYPE_IND, /**< Connectable undirected advertising */
+  ADV_DIRECT_IND_HIGH =
+      ADV_TYPE_DIRECT_IND_HIGH,           /**< Connectable directed advertising (high duty cycle) */
+  ADV_SCAN_IND = ADV_TYPE_SCAN_IND,       /**< Scannable undirected advertising */
+  ADV_NONCONN_IND = ADV_TYPE_NONCONN_IND, /**< Non-connectable undirected advertising */
+  ADV_DIRECT_IND_LOW =
+      ADV_TYPE_DIRECT_IND_LOW /**< Connectable directed advertising (low duty cycle) */
 };
 
 /**
  * @brief ESP32-specific GATT characteristic properties
  */
 enum class hf_esp_gatt_char_prop_t : uint8_t {
-  BROADCAST = ESP_GATT_CHAR_PROP_BIT_BROADCAST,           /**< Broadcast */
-  READ = ESP_GATT_CHAR_PROP_BIT_READ,                     /**< Read */
-  WRITE_NR = ESP_GATT_CHAR_PROP_BIT_WRITE_NR,             /**< Write without response */
-  WRITE = ESP_GATT_CHAR_PROP_BIT_WRITE,                   /**< Write */
-  NOTIFY = ESP_GATT_CHAR_PROP_BIT_NOTIFY,                 /**< Notify */
-  INDICATE = ESP_GATT_CHAR_PROP_BIT_INDICATE,             /**< Indicate */
-  AUTH = ESP_GATT_CHAR_PROP_BIT_AUTH,                     /**< Authenticated signed writes */
-  EXT_PROP = ESP_GATT_CHAR_PROP_BIT_EXT_PROP              /**< Extended properties */
+  BROADCAST = ESP_GATT_CHAR_PROP_BIT_BROADCAST, /**< Broadcast */
+  READ = ESP_GATT_CHAR_PROP_BIT_READ,           /**< Read */
+  WRITE_NR = ESP_GATT_CHAR_PROP_BIT_WRITE_NR,   /**< Write without response */
+  WRITE = ESP_GATT_CHAR_PROP_BIT_WRITE,         /**< Write */
+  NOTIFY = ESP_GATT_CHAR_PROP_BIT_NOTIFY,       /**< Notify */
+  INDICATE = ESP_GATT_CHAR_PROP_BIT_INDICATE,   /**< Indicate */
+  AUTH = ESP_GATT_CHAR_PROP_BIT_AUTH,           /**< Authenticated signed writes */
+  EXT_PROP = ESP_GATT_CHAR_PROP_BIT_EXT_PROP    /**< Extended properties */
 };
 
 /**
  * @brief ESP32-specific GATT characteristic permissions
  */
 enum class hf_esp_gatt_char_perm_t : uint16_t {
-  READ = ESP_GATT_PERM_READ,                              /**< Read permission */
-  READ_ENCRYPTED = ESP_GATT_PERM_READ_ENCRYPTED,          /**< Read encrypted permission */
-  READ_ENC_MITM = ESP_GATT_PERM_READ_ENC_MITM,            /**< Read encrypted with MITM protection */
-  WRITE = ESP_GATT_PERM_WRITE,                            /**< Write permission */
-  WRITE_ENCRYPTED = ESP_GATT_PERM_WRITE_ENCRYPTED,        /**< Write encrypted permission */
-  WRITE_ENC_MITM = ESP_GATT_PERM_WRITE_ENC_MITM,          /**< Write encrypted with MITM protection */
-  WRITE_SIGNED = ESP_GATT_PERM_WRITE_SIGNED,              /**< Write signed permission */
-  WRITE_SIGNED_MITM = ESP_GATT_PERM_WRITE_SIGNED_MITM     /**< Write signed with MITM protection */
+  READ = ESP_GATT_PERM_READ,                          /**< Read permission */
+  READ_ENCRYPTED = ESP_GATT_PERM_READ_ENCRYPTED,      /**< Read encrypted permission */
+  READ_ENC_MITM = ESP_GATT_PERM_READ_ENC_MITM,        /**< Read encrypted with MITM protection */
+  WRITE = ESP_GATT_PERM_WRITE,                        /**< Write permission */
+  WRITE_ENCRYPTED = ESP_GATT_PERM_WRITE_ENCRYPTED,    /**< Write encrypted permission */
+  WRITE_ENC_MITM = ESP_GATT_PERM_WRITE_ENC_MITM,      /**< Write encrypted with MITM protection */
+  WRITE_SIGNED = ESP_GATT_PERM_WRITE_SIGNED,          /**< Write signed permission */
+  WRITE_SIGNED_MITM = ESP_GATT_PERM_WRITE_SIGNED_MITM /**< Write signed with MITM protection */
 };
 
 //==============================================================================
@@ -168,38 +170,38 @@ enum class hf_esp_gatt_char_perm_t : uint16_t {
  * @brief ESP32-specific Bluetooth statistics structure
  */
 struct HfEspBluetoothStats {
-  uint32_t tx_bytes;                        /**< Transmitted bytes */
-  uint32_t rx_bytes;                        /**< Received bytes */
-  uint32_t tx_packets;                      /**< Transmitted packets */
-  uint32_t rx_packets;                      /**< Received packets */
-  uint32_t tx_errors;                       /**< Transmission errors */
-  uint32_t rx_errors;                       /**< Reception errors */
-  uint32_t connections_attempted;           /**< Connection attempts */
-  uint32_t connections_successful;          /**< Successful connections */
-  uint32_t disconnections;                  /**< Disconnections */
-  uint32_t pairing_attempts;                /**< Pairing attempts */
-  uint32_t pairing_successful;              /**< Successful pairings */
+  uint32_t tx_bytes;               /**< Transmitted bytes */
+  uint32_t rx_bytes;               /**< Received bytes */
+  uint32_t tx_packets;             /**< Transmitted packets */
+  uint32_t rx_packets;             /**< Received packets */
+  uint32_t tx_errors;              /**< Transmission errors */
+  uint32_t rx_errors;              /**< Reception errors */
+  uint32_t connections_attempted;  /**< Connection attempts */
+  uint32_t connections_successful; /**< Successful connections */
+  uint32_t disconnections;         /**< Disconnections */
+  uint32_t pairing_attempts;       /**< Pairing attempts */
+  uint32_t pairing_successful;     /**< Successful pairings */
 };
 
 /**
  * @brief ESP32-specific BLE advertising parameters
  */
 struct HfEspBleAdvParams {
-  uint16_t adv_int_min;                     /**< Minimum advertising interval */
-  uint16_t adv_int_max;                     /**< Maximum advertising interval */
-  hf_esp_ble_adv_type_t adv_type;                 /**< Advertising type */
-  esp_ble_addr_type_t own_addr_type;        /**< Own address type */
-  esp_ble_addr_type_t peer_addr_type;       /**< Peer address type */
-  esp_bd_addr_t peer_addr;                  /**< Peer address */
-  esp_ble_adv_channel_t channel_map;        /**< Advertising channel map */
-  esp_ble_adv_filter_t filter_policy;       /**< Advertising filter policy */
+  uint16_t adv_int_min;               /**< Minimum advertising interval */
+  uint16_t adv_int_max;               /**< Maximum advertising interval */
+  hf_esp_ble_adv_type_t adv_type;     /**< Advertising type */
+  esp_ble_addr_type_t own_addr_type;  /**< Own address type */
+  esp_ble_addr_type_t peer_addr_type; /**< Peer address type */
+  esp_bd_addr_t peer_addr;            /**< Peer address */
+  esp_ble_adv_channel_t channel_map;  /**< Advertising channel map */
+  esp_ble_adv_filter_t filter_policy; /**< Advertising filter policy */
 };
 
 /**
  * @brief ESP32-specific BLE scan parameters
  */
 struct HfEspBleScanParams {
-  hf_esp_ble_scan_type_t scan_type;               /**< Scan type */
+  hf_esp_ble_scan_type_t scan_type;         /**< Scan type */
   esp_ble_addr_type_t own_addr_type;        /**< Own address type */
   esp_ble_scan_filter_t scan_filter_policy; /**< Scan filter policy */
   uint16_t scan_interval;                   /**< Scan interval */
@@ -211,12 +213,12 @@ struct HfEspBleScanParams {
  * @brief ESP32-specific BLE connection parameters
  */
 struct HfEspBleConnParams {
-  uint16_t interval_min;                    /**< Minimum connection interval */
-  uint16_t interval_max;                    /**< Maximum connection interval */
-  uint16_t latency;                         /**< Slave latency */
-  uint16_t timeout;                         /**< Supervision timeout */
-  uint16_t min_ce_len;                      /**< Minimum connection event length */
-  uint16_t max_ce_len;                      /**< Maximum connection event length */
+  uint16_t interval_min; /**< Minimum connection interval */
+  uint16_t interval_max; /**< Maximum connection interval */
+  uint16_t latency;      /**< Slave latency */
+  uint16_t timeout;      /**< Supervision timeout */
+  uint16_t min_ce_len;   /**< Minimum connection event length */
+  uint16_t max_ce_len;   /**< Maximum connection event length */
 };
 
 //==============================================================================
@@ -232,11 +234,16 @@ struct HfEspBleConnParams {
  */
 inline esp_bt_mode_t hfBluetoothModeToEspMode(hf_bluetooth_mode_t mode) {
   switch (mode) {
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED: return ESP_BT_MODE_IDLE;
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC: return ESP_BT_MODE_CLASSIC_BT;
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE: return ESP_BT_MODE_BLE;
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL: return ESP_BT_MODE_BTDM;
-    default: return ESP_BT_MODE_IDLE;
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED:
+      return ESP_BT_MODE_IDLE;
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC:
+      return ESP_BT_MODE_CLASSIC_BT;
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE:
+      return ESP_BT_MODE_BLE;
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL:
+      return ESP_BT_MODE_BTDM;
+    default:
+      return ESP_BT_MODE_IDLE;
   }
 }
 
@@ -247,11 +254,16 @@ inline esp_bt_mode_t hfBluetoothModeToEspMode(hf_bluetooth_mode_t mode) {
  */
 inline hf_bluetooth_mode_t espModeTohf_bluetooth_mode_t(esp_bt_mode_t mode) {
   switch (mode) {
-    case ESP_BT_MODE_IDLE: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
-    case ESP_BT_MODE_CLASSIC_BT: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC;
-    case ESP_BT_MODE_BLE: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE;
-    case ESP_BT_MODE_BTDM: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL;
-    default: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
+    case ESP_BT_MODE_IDLE:
+      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
+    case ESP_BT_MODE_CLASSIC_BT:
+      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC;
+    case ESP_BT_MODE_BLE:
+      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE;
+    case ESP_BT_MODE_BTDM:
+      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL;
+    default:
+      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
   }
 }
 
@@ -262,9 +274,12 @@ inline hf_bluetooth_mode_t espModeTohf_bluetooth_mode_t(esp_bt_mode_t mode) {
  */
 inline esp_ble_scan_type_t hfScanTypeToEspScanType(hf_bluetooth_scan_type_t scan_type) {
   switch (scan_type) {
-    case hf_bluetooth_scan_type_t::PASSIVE: return BLE_SCAN_TYPE_PASSIVE;
-    case hf_bluetooth_scan_type_t::ACTIVE: return BLE_SCAN_TYPE_ACTIVE;
-    default: return BLE_SCAN_TYPE_ACTIVE;
+    case hf_bluetooth_scan_type_t::PASSIVE:
+      return BLE_SCAN_TYPE_PASSIVE;
+    case hf_bluetooth_scan_type_t::ACTIVE:
+      return BLE_SCAN_TYPE_ACTIVE;
+    default:
+      return BLE_SCAN_TYPE_ACTIVE;
   }
 }
 
@@ -275,9 +290,12 @@ inline esp_ble_scan_type_t hfScanTypeToEspScanType(hf_bluetooth_scan_type_t scan
  */
 inline hf_bluetooth_scan_type_t espScanTypeToHfScanType(esp_ble_scan_type_t scan_type) {
   switch (scan_type) {
-    case BLE_SCAN_TYPE_PASSIVE: return hf_bluetooth_scan_type_t::PASSIVE;
-    case BLE_SCAN_TYPE_ACTIVE: return hf_bluetooth_scan_type_t::ACTIVE;
-    default: return hf_bluetooth_scan_type_t::ACTIVE;
+    case BLE_SCAN_TYPE_PASSIVE:
+      return hf_bluetooth_scan_type_t::PASSIVE;
+    case BLE_SCAN_TYPE_ACTIVE:
+      return hf_bluetooth_scan_type_t::ACTIVE;
+    default:
+      return hf_bluetooth_scan_type_t::ACTIVE;
   }
 }
 
@@ -288,15 +306,24 @@ inline hf_bluetooth_scan_type_t espScanTypeToHfScanType(esp_ble_scan_type_t scan
  */
 inline hf_bluetooth_err_t espErrorTohf_bluetooth_err_tor(esp_err_t esp_err) {
   switch (esp_err) {
-    case ESP_OK: return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
-    case ESP_ERR_INVALID_ARG: return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_PARAM;
-    case ESP_ERR_INVALID_STATE: return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_STATE;
-    case ESP_ERR_NO_MEM: return hf_bluetooth_err_t::BLUETOOTH_ERR_NO_MEMORY;
-    case ESP_ERR_TIMEOUT: return hf_bluetooth_err_t::BLUETOOTH_ERR_TIMEOUT;
-    case ESP_ERR_NOT_FOUND: return hf_bluetooth_err_t::BLUETOOTH_ERR_DEVICE_NOT_FOUND;
-    case ESP_ERR_NOT_SUPPORTED: return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED;
-    case ESP_ERR_BT_NIMBLE_BASE: return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
-    default: return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
+    case ESP_OK:
+      return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
+    case ESP_ERR_INVALID_ARG:
+      return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_PARAM;
+    case ESP_ERR_INVALID_STATE:
+      return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_STATE;
+    case ESP_ERR_NO_MEM:
+      return hf_bluetooth_err_t::BLUETOOTH_ERR_NO_MEMORY;
+    case ESP_ERR_TIMEOUT:
+      return hf_bluetooth_err_t::BLUETOOTH_ERR_TIMEOUT;
+    case ESP_ERR_NOT_FOUND:
+      return hf_bluetooth_err_t::BLUETOOTH_ERR_DEVICE_NOT_FOUND;
+    case ESP_ERR_NOT_SUPPORTED:
+      return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED;
+    case ESP_ERR_BT_NIMBLE_BASE:
+      return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
+    default:
+      return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
   }
 }
 
@@ -305,7 +332,8 @@ inline hf_bluetooth_err_t espErrorTohf_bluetooth_err_tor(esp_err_t esp_err) {
  * @param hf_addr HardFOC Bluetooth address
  * @param esp_addr ESP-IDF address output
  */
-inline void hfBluetoothAddressToEspAddress(const hf_bluetooth_address_t& hf_addr, esp_bd_addr_t esp_addr) {
+inline void hfBluetoothAddressToEspAddress(const hf_bluetooth_address_t& hf_addr,
+                                           esp_bd_addr_t esp_addr) {
   std::memcpy(esp_addr, hf_addr.addr, HF_ESP_BT_ADDRESS_LEN);
 }
 
@@ -314,7 +342,8 @@ inline void hfBluetoothAddressToEspAddress(const hf_bluetooth_address_t& hf_addr
  * @param esp_addr ESP-IDF address
  * @param hf_addr HardFOC Bluetooth address output
  */
-inline void espAddressTohf_bluetooth_address_t(const esp_bd_addr_t esp_addr, hf_bluetooth_address_t& hf_addr) {
+inline void espAddressTohf_bluetooth_address_t(const esp_bd_addr_t esp_addr,
+                                               hf_bluetooth_address_t& hf_addr) {
   std::memcpy(hf_addr.addr, esp_addr, HF_ESP_BT_ADDRESS_LEN);
 }
 
@@ -325,11 +354,15 @@ inline void espAddressTohf_bluetooth_address_t(const esp_bd_addr_t esp_addr, hf_
  */
 inline esp_bt_dev_type_t hfDeviceTypeToEspDeviceType(hf_bluetooth_device_type_t device_type) {
   switch (device_type) {
-    case hf_bluetooth_device_type_t::CLASSIC: return ESP_BT_DEV_TYPE_BREDR;
-    case hf_bluetooth_device_type_t::BLE: return ESP_BT_DEV_TYPE_BLE;
-    case hf_bluetooth_device_type_t::DUAL: return ESP_BT_DEV_TYPE_DUMO;
+    case hf_bluetooth_device_type_t::CLASSIC:
+      return ESP_BT_DEV_TYPE_BREDR;
+    case hf_bluetooth_device_type_t::BLE:
+      return ESP_BT_DEV_TYPE_BLE;
+    case hf_bluetooth_device_type_t::DUAL:
+      return ESP_BT_DEV_TYPE_DUMO;
     case hf_bluetooth_device_type_t::UNKNOWN:
-    default: return ESP_BT_DEV_TYPE_BREDR;
+    default:
+      return ESP_BT_DEV_TYPE_BREDR;
   }
 }
 
@@ -340,10 +373,14 @@ inline esp_bt_dev_type_t hfDeviceTypeToEspDeviceType(hf_bluetooth_device_type_t 
  */
 inline hf_bluetooth_device_type_t espDeviceTypeToHfDeviceType(esp_bt_dev_type_t device_type) {
   switch (device_type) {
-    case ESP_BT_DEV_TYPE_BREDR: return hf_bluetooth_device_type_t::CLASSIC;
-    case ESP_BT_DEV_TYPE_BLE: return hf_bluetooth_device_type_t::BLE;
-    case ESP_BT_DEV_TYPE_DUMO: return hf_bluetooth_device_type_t::DUAL;
-    default: return hf_bluetooth_device_type_t::UNKNOWN;
+    case ESP_BT_DEV_TYPE_BREDR:
+      return hf_bluetooth_device_type_t::CLASSIC;
+    case ESP_BT_DEV_TYPE_BLE:
+      return hf_bluetooth_device_type_t::BLE;
+    case ESP_BT_DEV_TYPE_DUMO:
+      return hf_bluetooth_device_type_t::DUAL;
+    default:
+      return hf_bluetooth_device_type_t::UNKNOWN;
   }
 }
 
@@ -354,13 +391,20 @@ inline hf_bluetooth_device_type_t espDeviceTypeToHfDeviceType(esp_bt_dev_type_t 
  */
 inline esp_ble_sec_act_t hfSecurityToEspSecurity(hf_bluetooth_security_t security) {
   switch (security) {
-    case hf_bluetooth_security_t::NONE: return ESP_BLE_SEC_NONE;
-    case hf_bluetooth_security_t::UNAUTHENTICATED: return ESP_BLE_SEC_ENCRYPT;
-    case hf_bluetooth_security_t::AUTHENTICATED: return ESP_BLE_SEC_ENCRYPT_MITM;
-    case hf_bluetooth_security_t::AUTHORIZED: return ESP_BLE_SEC_ENCRYPT_MITM;
-    case hf_bluetooth_security_t::ENCRYPTED: return ESP_BLE_SEC_ENCRYPT;
-    case hf_bluetooth_security_t::AUTHENTICATED_SC: return ESP_BLE_SEC_ENCRYPT_MITM;
-    default: return ESP_BLE_SEC_NONE;
+    case hf_bluetooth_security_t::NONE:
+      return ESP_BLE_SEC_NONE;
+    case hf_bluetooth_security_t::UNAUTHENTICATED:
+      return ESP_BLE_SEC_ENCRYPT;
+    case hf_bluetooth_security_t::AUTHENTICATED:
+      return ESP_BLE_SEC_ENCRYPT_MITM;
+    case hf_bluetooth_security_t::AUTHORIZED:
+      return ESP_BLE_SEC_ENCRYPT_MITM;
+    case hf_bluetooth_security_t::ENCRYPTED:
+      return ESP_BLE_SEC_ENCRYPT;
+    case hf_bluetooth_security_t::AUTHENTICATED_SC:
+      return ESP_BLE_SEC_ENCRYPT_MITM;
+    default:
+      return ESP_BLE_SEC_NONE;
   }
 }
 
@@ -371,11 +415,16 @@ inline esp_ble_sec_act_t hfSecurityToEspSecurity(hf_bluetooth_security_t securit
  */
 inline hf_bluetooth_security_t espSecurityToHfSecurity(esp_ble_sec_act_t security) {
   switch (security) {
-    case ESP_BLE_SEC_NONE: return hf_bluetooth_security_t::NONE;
-    case ESP_BLE_SEC_ENCRYPT: return hf_bluetooth_security_t::ENCRYPTED;
-    case ESP_BLE_SEC_ENCRYPT_NO_MITM: return hf_bluetooth_security_t::UNAUTHENTICATED;
-    case ESP_BLE_SEC_ENCRYPT_MITM: return hf_bluetooth_security_t::AUTHENTICATED;
-    default: return hf_bluetooth_security_t::NONE;
+    case ESP_BLE_SEC_NONE:
+      return hf_bluetooth_security_t::NONE;
+    case ESP_BLE_SEC_ENCRYPT:
+      return hf_bluetooth_security_t::ENCRYPTED;
+    case ESP_BLE_SEC_ENCRYPT_NO_MITM:
+      return hf_bluetooth_security_t::UNAUTHENTICATED;
+    case ESP_BLE_SEC_ENCRYPT_MITM:
+      return hf_bluetooth_security_t::AUTHENTICATED;
+    default:
+      return hf_bluetooth_security_t::NONE;
   }
 }
 
@@ -403,7 +452,8 @@ inline bool isValidBleSlaveLatency(uint16_t latency) {
  * @return true if valid, false otherwise
  */
 inline bool isValidBleSupervisionTimeout(uint16_t timeout) {
-  return (timeout >= HF_ESP_BLE_SUPERVISION_TIMEOUT_MIN && timeout <= HF_ESP_BLE_SUPERVISION_TIMEOUT_MAX);
+  return (timeout >= HF_ESP_BLE_SUPERVISION_TIMEOUT_MIN &&
+          timeout <= HF_ESP_BLE_SUPERVISION_TIMEOUT_MAX);
 }
 
 /**
@@ -434,11 +484,11 @@ inline bool isValidGattMtu(uint16_t mtu) {
 inline bool parseHexString(const std::string& hex_str, size_t max_chars, uint32_t& result) {
   result = 0;
   size_t len = std::min(hex_str.length(), max_chars);
-  
+
   for (size_t i = 0; i < len; i++) {
     char c = hex_str[i];
     uint32_t digit = 0;
-    
+
     if (c >= '0' && c <= '9') {
       digit = c - '0';
     } else if (c >= 'A' && c <= 'F') {
@@ -448,14 +498,14 @@ inline bool parseHexString(const std::string& hex_str, size_t max_chars, uint32_
     } else {
       return false; // Invalid hex character
     }
-    
+
     if (result > UINT32_MAX_DIV_16) {
       return false; // Overflow detected
     }
-    
+
     result = (result << 4) | digit;
   }
-  
+
   return true;
 }
 
@@ -489,7 +539,7 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
     esp_uuid.len = ESP_UUID_LEN_128;
     std::string clean_uuid = uuid_str;
     clean_uuid.erase(std::remove(clean_uuid.begin(), clean_uuid.end(), '-'), clean_uuid.end());
-    
+
     if (clean_uuid.length() == 32) {
       for (int i = 0; i < UUID_128_BYTE_LENGTH; i++) {
         std::string byte_str = clean_uuid.substr(30 - (i * 2), 2);
@@ -515,7 +565,7 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
     }
     return true;
   }
-  
+
   return false;
 }
 
@@ -526,7 +576,7 @@ inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid
  */
 inline std::string espUuidToString(const esp_bt_uuid_t& esp_uuid) {
   char buffer[64];
-  
+
   switch (esp_uuid.len) {
     case ESP_UUID_LEN_16:
       std::snprintf(buffer, sizeof(buffer), "%04X", esp_uuid.uuid.uuid16);
@@ -536,20 +586,18 @@ inline std::string espUuidToString(const esp_bt_uuid_t& esp_uuid) {
       break;
     case ESP_UUID_LEN_128:
       std::snprintf(buffer, sizeof(buffer),
-                   "%02X%02X%02X%02X-%02X%02X-%02X%02X-%02X%02X-%02X%02X%02X%02X%02X%02X",
-                   esp_uuid.uuid.uuid128[15], esp_uuid.uuid.uuid128[14],
-                   esp_uuid.uuid.uuid128[13], esp_uuid.uuid.uuid128[12],
-                   esp_uuid.uuid.uuid128[11], esp_uuid.uuid.uuid128[10],
-                   esp_uuid.uuid.uuid128[9], esp_uuid.uuid.uuid128[8],
-                   esp_uuid.uuid.uuid128[7], esp_uuid.uuid.uuid128[6],
-                   esp_uuid.uuid.uuid128[5], esp_uuid.uuid.uuid128[4],
-                   esp_uuid.uuid.uuid128[3], esp_uuid.uuid.uuid128[2],
-                   esp_uuid.uuid.uuid128[1], esp_uuid.uuid.uuid128[0]);
+                    "%02X%02X%02X%02X-%02X%02X-%02X%02X-%02X%02X-%02X%02X%02X%02X%02X%02X",
+                    esp_uuid.uuid.uuid128[15], esp_uuid.uuid.uuid128[14], esp_uuid.uuid.uuid128[13],
+                    esp_uuid.uuid.uuid128[12], esp_uuid.uuid.uuid128[11], esp_uuid.uuid.uuid128[10],
+                    esp_uuid.uuid.uuid128[9], esp_uuid.uuid.uuid128[8], esp_uuid.uuid.uuid128[7],
+                    esp_uuid.uuid.uuid128[6], esp_uuid.uuid.uuid128[5], esp_uuid.uuid.uuid128[4],
+                    esp_uuid.uuid.uuid128[3], esp_uuid.uuid.uuid128[2], esp_uuid.uuid.uuid128[1],
+                    esp_uuid.uuid.uuid128[0]);
       break;
     default:
       return "";
   }
-  
+
   return std::string(buffer);
 }
 
@@ -559,8 +607,8 @@ inline std::string espUuidToString(const esp_bt_uuid_t& esp_uuid) {
  */
 inline HfEspBleAdvParams createDefaultBleAdvParams() {
   HfEspBleAdvParams params;
-  params.adv_int_min = 0x20;  // 32 * 0.625ms = 20ms
-  params.adv_int_max = 0x40;  // 64 * 0.625ms = 40ms
+  params.adv_int_min = 0x20; // 32 * 0.625ms = 20ms
+  params.adv_int_max = 0x40; // 64 * 0.625ms = 40ms
   params.adv_type = hf_esp_ble_adv_type_t::ADV_IND;
   params.own_addr_type = BLE_ADDR_TYPE_PUBLIC;
   params.peer_addr_type = BLE_ADDR_TYPE_PUBLIC;
@@ -579,8 +627,8 @@ inline HfEspBleScanParams createDefaultBleScanParams() {
   params.scan_type = hf_esp_ble_scan_type_t::ACTIVE;
   params.own_addr_type = BLE_ADDR_TYPE_PUBLIC;
   params.scan_filter_policy = BLE_SCAN_FILTER_ALLOW_ALL;
-  params.scan_interval = 0x50;  // 80 * 0.625ms = 50ms
-  params.scan_window = 0x30;    // 48 * 0.625ms = 30ms
+  params.scan_interval = 0x50; // 80 * 0.625ms = 50ms
+  params.scan_window = 0x30;   // 48 * 0.625ms = 30ms
   params.scan_duplicate = BLE_SCAN_DUPLICATE_DISABLE;
   return params;
 }
@@ -591,12 +639,12 @@ inline HfEspBleScanParams createDefaultBleScanParams() {
  */
 inline HfEspBleConnParams createDefaultBleConnParams() {
   HfEspBleConnParams params;
-  params.interval_min = 0x18;   // 24 * 1.25ms = 30ms
-  params.interval_max = 0x28;   // 40 * 1.25ms = 50ms
-  params.latency = 0;           // No slave latency
-  params.timeout = 0x64;        // 100 * 10ms = 1000ms
-  params.min_ce_len = 0x10;     // 16 * 0.625ms = 10ms
-  params.max_ce_len = 0x20;     // 32 * 0.625ms = 20ms
+  params.interval_min = 0x18; // 24 * 1.25ms = 30ms
+  params.interval_max = 0x28; // 40 * 1.25ms = 50ms
+  params.latency = 0;         // No slave latency
+  params.timeout = 0x64;      // 100 * 10ms = 1000ms
+  params.min_ce_len = 0x10;   // 16 * 0.625ms = 10ms
+  params.max_ce_len = 0x20;   // 32 * 0.625ms = 20ms
   return params;
 }
 

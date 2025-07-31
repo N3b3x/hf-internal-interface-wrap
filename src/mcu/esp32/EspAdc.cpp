@@ -1035,7 +1035,7 @@ hf_adc_err_t EspAdc::ReadMultipleChannels(const hf_channel_id_t* channel_ids, hf
 
 // Static callback functions for ESP-IDF
 hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
-                                          void* user_data) noexcept {
+                                               void* user_data) noexcept {
   auto* esp_adc = static_cast<EspAdc*>(user_data);
 
   if (esp_adc == nullptr || esp_adc->continuous_callback_ == nullptr) {
@@ -1055,8 +1055,8 @@ hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, c
   return esp_adc->continuous_callback_(&hf_data, esp_adc->continuous_user_data_);
 }
 
-hf_bool_t IRAM_ATTR EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle, const void* event_data,
-                                       void* user_data) noexcept {
+hf_bool_t IRAM_ATTR EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle,
+                                            const void* event_data, void* user_data) noexcept {
   auto* esp_adc = static_cast<EspAdc*>(user_data);
 
   if (esp_adc == nullptr) {
