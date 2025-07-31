@@ -17,6 +17,10 @@
 #pragma once
 
 #include "McuSelect.h"
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifdef HF_MCU_FAMILY_ESP32
 #include "freertos/FreeRTOS.h"
@@ -34,6 +38,10 @@
 #else
 #error \
     "RTOS mutex implementation not available for this MCU platform. Please add support in RtosMutex.h"
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #include <atomic>
