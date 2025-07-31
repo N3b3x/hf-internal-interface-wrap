@@ -250,11 +250,11 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::deinit() {
+hf_bluetooth_err_t EspBluetooth::Deinitialize() {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_) {
-    return HfBluetoothErr::SUCCESS;
+    return hf_bluetooth_err_t::SUCCESS;
   }
   
   ESP_LOGI(TAG, "Deinitializing ESP32 Bluetooth");
@@ -286,13 +286,13 @@ HfBluetoothErr EspBluetooth::deinit() {
   gatt_services_.clear();
   
   // Unregister callbacks and deinitialize
-  if (current_mode_ == HfBluetoothMode::BLE_ONLY || current_mode_ == HfBluetoothMode::DUAL_MODE) {
+  if (current_mode_ == hf_bluetooth_mode_t::BLE_ONLY || current_mode_ == hf_bluetooth_mode_t::DUAL_MODE) {
     esp_ble_gap_register_callback(nullptr);
     esp_ble_gatts_register_callback(nullptr);
     esp_ble_gattc_register_callback(nullptr);
   }
   
-  if (current_mode_ == HfBluetoothMode::CLASSIC_ONLY || current_mode_ == HfBluetoothMode::DUAL_MODE) {
+  if (current_mode_ == hf_bluetooth_mode_t::CLASSIC_ONLY || current_mode_ == hf_bluetooth_mode_t::DUAL_MODE) {
     esp_bt_gap_register_callback(nullptr);
     if (advanced_config_.enable_spp) {
       esp_spp_register_callback(nullptr);
@@ -303,27 +303,27 @@ HfBluetoothErr EspBluetooth::deinit() {
   
   is_initialized_ = false;
   is_enabled_ = false;
-  current_mode_ = HfBluetoothMode::DISABLED;
+  current_mode_ = hf_bluetooth_mode_t::DISABLED;
   
   ESP_LOGI(TAG, "ESP32 Bluetooth deinitialized successfully");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-bool EspBluetooth::isInitialized() const {
+bool EspBluetooth::IsInitialized() const {
   return is_initialized_;
 }
 
-HfBluetoothErr EspBluetooth::enable() {
+hf_bluetooth_err_t EspBluetooth::Enable() {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_) {
     ESP_LOGE(TAG, "Bluetooth not initialized");
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
   if (is_enabled_) {
     ESP_LOGW(TAG, "Bluetooth already enabled");
-    return HfBluetoothErr::SUCCESS;
+    return hf_bluetooth_err_t::SUCCESS;
   }
   
   // Set power level
@@ -336,14 +336,14 @@ HfBluetoothErr EspBluetooth::enable() {
   xEventGroupSetBits(event_group_, BT_ENABLED_BIT);
   
   ESP_LOGI(TAG, "Bluetooth enabled");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::disable() {
+hf_bluetooth_err_t EspBluetooth::Disable() {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_enabled_) {
-    return HfBluetoothErr::SUCCESS;
+    return hf_bluetooth_err_t::SUCCESS;
   }
   
   // Stop advertising and scanning
@@ -361,81 +361,81 @@ HfBluetoothErr EspBluetooth::disable() {
   xEventGroupClearBits(event_group_, BT_ENABLED_BIT);
   
   ESP_LOGI(TAG, "Bluetooth disabled");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-bool EspBluetooth::isEnabled() const {
+bool EspBluetooth::IsEnabled() const {
   return is_enabled_;
 }
 
-HfBluetoothMode EspBluetooth::getMode() const {
+hf_bluetooth_mode_t EspBluetooth::GetMode() const {
   return current_mode_;
 }
 
-HfBluetoothAddress EspBluetooth::getLocalAddress() const {
+hf_bluetooth_address_t EspBluetooth::GetLocalAddress() const {
   uint8_t mac[6];
   esp_read_mac(mac, ESP_MAC_BT);
   
-  HfBluetoothAddress address;
+  hf_bluetooth_address_t address;
   memcpy(address.address, mac, 6);
   return address;
 }
 
-HfBluetoothErr EspBluetooth::setLocalName(const std::string& name) {
+hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_) {
     ESP_LOGE(TAG, "Bluetooth not initialized");
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
   if (name.length() > 32) {
     ESP_LOGE(TAG, "Name too long (max 32 characters)");
-    return HfBluetoothErr::INVALID_PARAMETER;
+    return hf_bluetooth_err_t::INVALID_PARAMETER;
   }
   
   // Set BLE device name
   esp_err_t ret = esp_ble_gap_set_device_name(name.c_str());
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set BLE device name: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::SET_FAILED;
+    return hf_bluetooth_err_t::SET_FAILED;
   }
   
   // Set Classic Bluetooth device name if applicable
-  if (current_mode_ == HfBluetoothMode::CLASSIC_ONLY || current_mode_ == HfBluetoothMode::DUAL_MODE) {
+  if (current_mode_ == hf_bluetooth_mode_t::CLASSIC_ONLY || current_mode_ == hf_bluetooth_mode_t::DUAL_MODE) {
     ret = esp_bt_dev_set_device_name(name.c_str());
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to set Classic BT device name: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::SET_FAILED;
+      return hf_bluetooth_err_t::SET_FAILED;
     }
   }
   
   local_name_ = name;
   
   ESP_LOGI(TAG, "Local name set to: %s", name.c_str());
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-std::string EspBluetooth::getLocalName() const {
+std::string EspBluetooth::GetDeviceName() const {
   return local_name_;
 }
 
-HfBluetoothErr EspBluetooth::startAdvertising(const HfBluetoothAdvConfig& config) {
+hf_bluetooth_err_t EspBluetooth::startAdvertising(const hf_bluetooth_advertising_config_t& config) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_ || !is_enabled_) {
     ESP_LOGE(TAG, "Bluetooth not initialized or enabled");
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
-  if (current_mode_ == HfBluetoothMode::CLASSIC_ONLY) {
+  if (current_mode_ == hf_bluetooth_mode_t::CLASSIC_ONLY) {
     ESP_LOGE(TAG, "Advertising not supported in Classic-only mode");
-    return HfBluetoothErr::NOT_SUPPORTED;
+    return hf_bluetooth_err_t::NOT_SUPPORTED;
   }
   
   if (is_advertising_) {
     ESP_LOGW(TAG, "Already advertising");
-    return HfBluetoothErr::ALREADY_STARTED;
+    return hf_bluetooth_err_t::ALREADY_STARTED;
   }
   
   // Configure advertising parameters
@@ -462,7 +462,7 @@ HfBluetoothErr EspBluetooth::startAdvertising(const HfBluetoothAdvConfig& config
       config.adv_data.size());
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set advertising data: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::CONFIG_FAILED;
+    return hf_bluetooth_err_t::CONFIG_FAILED;
   }
   
   if (!config.scan_response_data.empty()) {
@@ -471,57 +471,57 @@ HfBluetoothErr EspBluetooth::startAdvertising(const HfBluetoothAdvConfig& config
         config.scan_response_data.size());
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to set scan response data: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::CONFIG_FAILED;
+      return hf_bluetooth_err_t::CONFIG_FAILED;
     }
   }
   
   ret = esp_ble_gap_start_advertising(&adv_params);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to start advertising: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::START_FAILED;
+    return hf_bluetooth_err_t::START_FAILED;
   }
   
   is_advertising_ = true;
   adv_config_ = config;
   
   ESP_LOGI(TAG, "Started BLE advertising");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::stopAdvertising() {
+hf_bluetooth_err_t EspBluetooth::stopAdvertising() {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_advertising_) {
-    return HfBluetoothErr::SUCCESS;
+    return hf_bluetooth_err_t::SUCCESS;
   }
   
   esp_err_t ret = esp_ble_gap_stop_advertising();
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to stop advertising: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::STOP_FAILED;
+    return hf_bluetooth_err_t::STOP_FAILED;
   }
   
   is_advertising_ = false;
   
   ESP_LOGI(TAG, "Stopped BLE advertising");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
 bool EspBluetooth::isAdvertising() const {
   return is_advertising_;
 }
 
-HfBluetoothErr EspBluetooth::startScan(const HfBluetoothScanConfig& config) {
+hf_bluetooth_err_t EspBluetooth::startScan(const hf_bluetooth_scan_config_t& config) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_ || !is_enabled_) {
     ESP_LOGE(TAG, "Bluetooth not initialized or enabled");
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
   if (is_scanning_) {
     ESP_LOGW(TAG, "Already scanning");
-    return HfBluetoothErr::ALREADY_STARTED;
+    return hf_bluetooth_err_t::ALREADY_STARTED;
   }
   
   // Clear scan done bit and cached results
@@ -531,8 +531,8 @@ HfBluetoothErr EspBluetooth::startScan(const HfBluetoothScanConfig& config) {
   
   esp_err_t ret = ESP_OK;
   
-  if (current_mode_ == HfBluetoothMode::BLE_ONLY || 
-      (current_mode_ == HfBluetoothMode::DUAL_MODE && config.mode == HfBluetoothScanMode::LE_GENERAL)) {
+  if (current_mode_ == hf_bluetooth_mode_t::BLE_ONLY || 
+      (current_mode_ == hf_bluetooth_mode_t::DUAL_MODE && config.mode == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
     
     // BLE scan parameters
     esp_ble_scan_params_t scan_params = {
@@ -547,26 +547,26 @@ HfBluetoothErr EspBluetooth::startScan(const HfBluetoothScanConfig& config) {
     ret = esp_ble_gap_set_scan_params(&scan_params);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to set BLE scan params: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::CONFIG_FAILED;
+      return hf_bluetooth_err_t::CONFIG_FAILED;
     }
     
     ret = esp_ble_gap_start_scanning(config.duration_sec);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to start BLE scanning: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::START_FAILED;
+      return hf_bluetooth_err_t::START_FAILED;
     }
     
-  } else if (current_mode_ == HfBluetoothMode::CLASSIC_ONLY || 
-             (current_mode_ == HfBluetoothMode::DUAL_MODE && config.mode == HfBluetoothScanMode::GENERAL_INQUIRY)) {
+  } else if (current_mode_ == hf_bluetooth_mode_t::CLASSIC_ONLY || 
+             (current_mode_ == hf_bluetooth_mode_t::DUAL_MODE && config.mode == hf_bluetooth_scan_mode_t::GENERAL_INQUIRY)) {
     
     // Classic Bluetooth inquiry
-    esp_bt_inq_mode_t inq_mode = config.mode == HfBluetoothScanMode::LIMITED_INQUIRY ? 
+    esp_bt_inq_mode_t inq_mode = config.mode == hf_bluetooth_scan_mode_t::LIMITED_INQUIRY ? 
                                  ESP_BT_INQ_MODE_LIMITED_INQIURY : ESP_BT_INQ_MODE_GENERAL_INQUIRY;
     
     ret = esp_bt_gap_start_discovery(inq_mode, config.duration_sec, 0);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to start Classic BT discovery: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::START_FAILED;
+      return hf_bluetooth_err_t::START_FAILED;
     }
   }
   
@@ -574,20 +574,20 @@ HfBluetoothErr EspBluetooth::startScan(const HfBluetoothScanConfig& config) {
   scan_config_ = config;
   
   ESP_LOGI(TAG, "Started Bluetooth scanning");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::stopScan() {
+hf_bluetooth_err_t EspBluetooth::stopScan() {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_scanning_) {
-    return HfBluetoothErr::SUCCESS;
+    return hf_bluetooth_err_t::SUCCESS;
   }
   
   esp_err_t ret = ESP_OK;
   
-  if (current_mode_ == HfBluetoothMode::BLE_ONLY || 
-      (current_mode_ == HfBluetoothMode::DUAL_MODE && current_scan_mode_ == HfBluetoothScanMode::LE_GENERAL)) {
+  if (current_mode_ == hf_bluetooth_mode_t::BLE_ONLY || 
+      (current_mode_ == hf_bluetooth_mode_t::DUAL_MODE && current_scan_mode_ == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
     ret = esp_ble_gap_stop_scanning();
   } else {
     ret = esp_bt_gap_cancel_discovery();
@@ -595,50 +595,50 @@ HfBluetoothErr EspBluetooth::stopScan() {
   
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to stop scanning: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::STOP_FAILED;
+    return hf_bluetooth_err_t::STOP_FAILED;
   }
   
   is_scanning_ = false;
   
   ESP_LOGI(TAG, "Stopped Bluetooth scanning");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
 bool EspBluetooth::isScanning() const {
   return is_scanning_;
 }
 
-std::vector<HfBluetoothScanResult> EspBluetooth::getScanResults() const {
+std::vector<hf_bluetooth_scan_result_t> EspBluetooth::getScanResults() const {
   std::lock_guard<std::mutex> lock(state_mutex_);
   return scan_results_;
 }
 
-HfBluetoothErr EspBluetooth::connect(const HfBluetoothAddress& address, 
-                                    HfBluetoothConnectionType type) {
+hf_bluetooth_err_t EspBluetooth::connect(const hf_bluetooth_address_t& address, 
+                                    hf_bluetooth_connection_type_t type) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_ || !is_enabled_) {
     ESP_LOGE(TAG, "Bluetooth not initialized or enabled");
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
   if (connections_.size() >= advanced_config_.max_connections) {
     ESP_LOGE(TAG, "Maximum connections reached");
-    return HfBluetoothErr::MAX_CONNECTIONS_REACHED;
+    return hf_bluetooth_err_t::MAX_CONNECTIONS_REACHED;
   }
   
   esp_err_t ret = ESP_OK;
   uint16_t conn_id = next_connection_id_++;
   
-  if (type == HfBluetoothConnectionType::BLE || 
-      (type == HfBluetoothConnectionType::AUTO && current_mode_ != HfBluetoothMode::CLASSIC_ONLY)) {
+  if (type == hf_bluetooth_connection_type_t::BLE || 
+      (type == hf_bluetooth_connection_type_t::AUTO && current_mode_ != hf_bluetooth_mode_t::CLASSIC_ONLY)) {
     
     // BLE connection
     esp_ble_addr_type_t addr_type = BLE_ADDR_TYPE_PUBLIC;
     ret = esp_ble_gattc_open(gattc_if_, const_cast<uint8_t*>(address.address), addr_type, true);
     
-  } else if (type == HfBluetoothConnectionType::CLASSIC || 
-             (type == HfBluetoothConnectionType::AUTO && current_mode_ != HfBluetoothMode::BLE_ONLY)) {
+  } else if (type == hf_bluetooth_connection_type_t::CLASSIC || 
+             (type == hf_bluetooth_connection_type_t::AUTO && current_mode_ != hf_bluetooth_mode_t::BLE_ONLY)) {
     
     // Classic Bluetooth connection (SPP)
     if (advanced_config_.enable_spp) {
@@ -646,13 +646,13 @@ HfBluetoothErr EspBluetooth::connect(const HfBluetoothAddress& address,
                            ESP_SPP_SERVER_NAME, const_cast<uint8_t*>(address.address));
     } else {
       ESP_LOGE(TAG, "SPP not enabled for Classic connection");
-      return HfBluetoothErr::NOT_SUPPORTED;
+      return hf_bluetooth_err_t::NOT_SUPPORTED;
     }
   }
   
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to initiate connection: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::CONNECTION_FAILED;
+    return hf_bluetooth_err_t::CONNECTION_FAILED;
   }
   
   // Create connection info
@@ -660,22 +660,22 @@ HfBluetoothErr EspBluetooth::connect(const HfBluetoothAddress& address,
   conn_info.address = address;
   memcpy(conn_info.esp_address, address.address, 6);
   conn_info.connection_handle = conn_id;
-  conn_info.is_classic = (type == HfBluetoothConnectionType::CLASSIC);
+  conn_info.is_classic = (type == hf_bluetooth_connection_type_t::CLASSIC);
   conn_info.mtu = advanced_config_.mtu_size;
   
   connections_[conn_id] = conn_info;
   
   ESP_LOGI(TAG, "Initiated connection to " MACSTR, MAC2STR(address.address));
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::disconnect(uint16_t connection_id) {
+hf_bluetooth_err_t EspBluetooth::disconnect(uint16_t connection_id) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   auto it = connections_.find(connection_id);
   if (it == connections_.end()) {
     ESP_LOGE(TAG, "Connection not found: %d", connection_id);
-    return HfBluetoothErr::CONNECTION_NOT_FOUND;
+    return hf_bluetooth_err_t::CONNECTION_NOT_FOUND;
   }
   
   esp_err_t ret = ESP_OK;
@@ -688,13 +688,13 @@ HfBluetoothErr EspBluetooth::disconnect(uint16_t connection_id) {
   
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to disconnect: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::DISCONNECTION_FAILED;
+    return hf_bluetooth_err_t::DISCONNECTION_FAILED;
   }
   
   connections_.erase(it);
   
   ESP_LOGI(TAG, "Disconnected connection: %d", connection_id);
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
 std::vector<uint16_t> EspBluetooth::getConnections() const {
@@ -710,7 +710,7 @@ std::vector<uint16_t> EspBluetooth::getConnections() const {
   return conn_ids;
 }
 
-HfBluetoothConnectionInfo EspBluetooth::getConnectionInfo(uint16_t connection_id) const {
+hf_bluetooth_connection_info_t EspBluetooth::getConnectionInfo(uint16_t connection_id) const {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   auto it = connections_.find(connection_id);
@@ -719,10 +719,10 @@ HfBluetoothConnectionInfo EspBluetooth::getConnectionInfo(uint16_t connection_id
   }
   
   // Convert ESP connection info to HardFOC format
-  HfBluetoothConnectionInfo info = {};
+  hf_bluetooth_connection_info_t info = {};
   info.connection_id = connection_id;
   info.address = it->second.address;
-  info.type = it->second.is_classic ? HfBluetoothConnectionType::CLASSIC : HfBluetoothConnectionType::BLE;
+  info.type = it->second.is_classic ? hf_bluetooth_connection_type_t::CLASSIC : hf_bluetooth_connection_type_t::BLE;
   info.state = HfBluetoothConnectionState::CONNECTED; // Simplified for now
   info.mtu = it->second.mtu;
   info.security_level = HfBluetoothSecurity::NONE; // Would need to query actual security
@@ -732,18 +732,18 @@ HfBluetoothConnectionInfo EspBluetooth::getConnectionInfo(uint16_t connection_id
   return info;
 }
 
-HfBluetoothErr EspBluetooth::sendData(uint16_t connection_id, const std::vector<uint8_t>& data) {
+hf_bluetooth_err_t EspBluetooth::sendData(uint16_t connection_id, const std::vector<uint8_t>& data) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   auto it = connections_.find(connection_id);
   if (it == connections_.end()) {
     ESP_LOGE(TAG, "Connection not found: %d", connection_id);
-    return HfBluetoothErr::CONNECTION_NOT_FOUND;
+    return hf_bluetooth_err_t::CONNECTION_NOT_FOUND;
   }
   
   if (data.empty() || data.size() > it->second.mtu) {
     ESP_LOGE(TAG, "Invalid data size: %d (MTU: %d)", data.size(), it->second.mtu);
-    return HfBluetoothErr::INVALID_PARAMETER;
+    return hf_bluetooth_err_t::INVALID_PARAMETER;
   }
   
   esp_err_t ret = ESP_OK;
@@ -763,24 +763,24 @@ HfBluetoothErr EspBluetooth::sendData(uint16_t connection_id, const std::vector<
   
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to send data: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::SEND_FAILED;
+    return hf_bluetooth_err_t::SEND_FAILED;
   }
   
   ESP_LOGD(TAG, "Sent %d bytes on connection %d", data.size(), connection_id);
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::pair(const HfBluetoothAddress& address, HfBluetoothSecurity security) {
+hf_bluetooth_err_t EspBluetooth::pair(const hf_bluetooth_address_t& address, HfBluetoothSecurity security) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_ || !is_enabled_) {
     ESP_LOGE(TAG, "Bluetooth not initialized or enabled");
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
   esp_err_t ret = ESP_OK;
   
-  if (current_mode_ == HfBluetoothMode::BLE_ONLY || current_mode_ == HfBluetoothMode::DUAL_MODE) {
+  if (current_mode_ == hf_bluetooth_mode_t::BLE_ONLY || current_mode_ == hf_bluetooth_mode_t::DUAL_MODE) {
     // Configure BLE security
     esp_ble_auth_req_t auth_req = ESP_LE_AUTH_BOND;
     if (security == HfBluetoothSecurity::AUTHENTICATED) {
@@ -808,33 +808,33 @@ HfBluetoothErr EspBluetooth::pair(const HfBluetoothAddress& address, HfBluetooth
   
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to initiate pairing: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::PAIRING_FAILED;
+    return hf_bluetooth_err_t::PAIRING_FAILED;
   }
   
   ESP_LOGI(TAG, "Initiated pairing with " MACSTR, MAC2STR(address.address));
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::unpair(const HfBluetoothAddress& address) {
+hf_bluetooth_err_t EspBluetooth::unpair(const hf_bluetooth_address_t& address) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_ || !is_enabled_) {
     ESP_LOGE(TAG, "Bluetooth not initialized or enabled");
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
   esp_err_t ret = esp_ble_remove_bond_device(const_cast<uint8_t*>(address.address));
   if (ret != ESP_OK && ret != ESP_ERR_NOT_FOUND) {
     ESP_LOGE(TAG, "Failed to remove bond: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::UNPAIRING_FAILED;
+    return hf_bluetooth_err_t::UNPAIRING_FAILED;
   }
   
   ESP_LOGI(TAG, "Removed bond with " MACSTR, MAC2STR(address.address));
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-std::vector<HfBluetoothAddress> EspBluetooth::getBondedDevices() const {
-  std::vector<HfBluetoothAddress> bonded_devices;
+std::vector<hf_bluetooth_address_t> EspBluetooth::getBondedDevices() const {
+  std::vector<hf_bluetooth_address_t> bonded_devices;
   
   int dev_num = esp_ble_get_bond_device_num();
   if (dev_num == 0) {
@@ -847,7 +847,7 @@ std::vector<HfBluetoothAddress> EspBluetooth::getBondedDevices() const {
   bonded_devices.reserve(dev_num);
   
   for (int i = 0; i < dev_num; i++) {
-    HfBluetoothAddress address;
+    hf_bluetooth_address_t address;
     memcpy(address.address, dev_list[i].bd_addr, 6);
     bonded_devices.push_back(address);
   }
@@ -857,7 +857,7 @@ std::vector<HfBluetoothAddress> EspBluetooth::getBondedDevices() const {
   return bonded_devices;
 }
 
-void EspBluetooth::setEventCallback(HfBluetoothEventCallback callback, void* user_data) {
+void EspBluetooth::setEventCallback(hf_bluetooth_event_callback_t callback, void* user_data) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   event_callback_ = callback;
   event_user_data_ = user_data;
@@ -875,9 +875,9 @@ void EspBluetooth::setGattEventCallback(HfBluetoothGattEventCallback callback, v
   gatt_user_data_ = user_data;
 }
 
-HfBluetoothErr EspBluetooth::waitForConnection(uint32_t timeout_ms) {
+hf_bluetooth_err_t EspBluetooth::waitForConnection(uint32_t timeout_ms) {
   if (!event_group_) {
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
   EventBits_t bits = xEventGroupWaitBits(event_group_,
@@ -887,15 +887,15 @@ HfBluetoothErr EspBluetooth::waitForConnection(uint32_t timeout_ms) {
                                          pdMS_TO_TICKS(timeout_ms));
   
   if (bits & (BT_CLASSIC_CONNECTED_BIT | BT_BLE_CONNECTED_BIT)) {
-    return HfBluetoothErr::SUCCESS;
+    return hf_bluetooth_err_t::SUCCESS;
   } else {
-    return HfBluetoothErr::TIMEOUT;
+    return hf_bluetooth_err_t::TIMEOUT;
   }
 }
 
-HfBluetoothErr EspBluetooth::waitForScan(uint32_t timeout_ms) {
+hf_bluetooth_err_t EspBluetooth::waitForScan(uint32_t timeout_ms) {
   if (!event_group_) {
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
   EventBits_t bits = xEventGroupWaitBits(event_group_,
@@ -905,34 +905,34 @@ HfBluetoothErr EspBluetooth::waitForScan(uint32_t timeout_ms) {
                                          pdMS_TO_TICKS(timeout_ms));
   
   if (bits & BT_SCAN_DONE_BIT) {
-    return HfBluetoothErr::SUCCESS;
+    return hf_bluetooth_err_t::SUCCESS;
   } else {
-    return HfBluetoothErr::TIMEOUT;
+    return hf_bluetooth_err_t::TIMEOUT;
   }
 }
 
 // GATT Server Operations
-HfBluetoothErr EspBluetooth::gattAddService(const HfBluetoothGattService& service) {
+hf_bluetooth_err_t EspBluetooth::gattAddService(const hf_bluetooth_gatt_service_t& service) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   if (!is_initialized_) {
     ESP_LOGE(TAG, "Bluetooth not initialized");
-    return HfBluetoothErr::NOT_INITIALIZED;
+    return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
-  if (current_mode_ == HfBluetoothMode::CLASSIC_ONLY) {
+  if (current_mode_ == hf_bluetooth_mode_t::CLASSIC_ONLY) {
     ESP_LOGE(TAG, "GATT not supported in Classic-only mode");
-    return HfBluetoothErr::NOT_SUPPORTED;
+    return hf_bluetooth_err_t::NOT_SUPPORTED;
   }
   
   if (!advanced_config_.enable_gatt_server) {
     ESP_LOGE(TAG, "GATT server not enabled");
-    return HfBluetoothErr::NOT_SUPPORTED;
+    return hf_bluetooth_err_t::NOT_SUPPORTED;
   }
   
   if (gatt_services_.size() >= advanced_config_.max_gatt_services) {
     ESP_LOGE(TAG, "Maximum GATT services reached");
-    return HfBluetoothErr::MAX_SERVICES_REACHED;
+    return hf_bluetooth_err_t::MAX_SERVICES_REACHED;
   }
   
   // Create ESP GATT service
@@ -945,7 +945,7 @@ HfBluetoothErr EspBluetooth::gattAddService(const HfBluetoothGattService& servic
   esp_err_t ret = esp_ble_gatts_create_service(gatts_if_, &service_id, service.num_handles);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to create GATT service: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::GATT_SERVICE_ADD_FAILED;
+    return hf_bluetooth_err_t::GATT_SERVICE_ADD_FAILED;
   }
   
   // Store service info
@@ -958,22 +958,22 @@ HfBluetoothErr EspBluetooth::gattAddService(const HfBluetoothGattService& servic
   gatt_services_[service_info.service_handle] = service_info;
   
   ESP_LOGI(TAG, "Added GATT service with handle: %d", service_info.service_handle);
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::gattAddCharacteristic(uint16_t service_handle, 
-                                                  const HfBluetoothGattCharacteristic& characteristic) {
+hf_bluetooth_err_t EspBluetooth::gattAddCharacteristic(uint16_t service_handle, 
+                                                  const hf_bluetooth_gatt_characteristic_t& characteristic) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   auto it = gatt_services_.find(service_handle);
   if (it == gatt_services_.end()) {
     ESP_LOGE(TAG, "GATT service not found: %d", service_handle);
-    return HfBluetoothErr::GATT_SERVICE_NOT_FOUND;
+    return hf_bluetooth_err_t::GATT_SERVICE_NOT_FOUND;
   }
   
   if (it->second.char_handles.size() >= advanced_config_.max_gatt_characteristics) {
     ESP_LOGE(TAG, "Maximum GATT characteristics reached for service");
-    return HfBluetoothErr::GATT_CHAR_ADD_FAILED;
+    return hf_bluetooth_err_t::GATT_CHAR_ADD_FAILED;
   }
   
   // Create ESP GATT characteristic
@@ -988,7 +988,7 @@ HfBluetoothErr EspBluetooth::gattAddCharacteristic(uint16_t service_handle,
                                         nullptr, nullptr);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to add GATT characteristic: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::GATT_CHAR_ADD_FAILED;
+    return hf_bluetooth_err_t::GATT_CHAR_ADD_FAILED;
   }
   
   // Store characteristic handle (would be provided in callback)
@@ -996,38 +996,38 @@ HfBluetoothErr EspBluetooth::gattAddCharacteristic(uint16_t service_handle,
   it->second.char_handles.push_back(char_handle);
   
   ESP_LOGI(TAG, "Added GATT characteristic to service %d", service_handle);
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::gattStartService(uint16_t service_handle) {
+hf_bluetooth_err_t EspBluetooth::gattStartService(uint16_t service_handle) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   auto it = gatt_services_.find(service_handle);
   if (it == gatt_services_.end()) {
     ESP_LOGE(TAG, "GATT service not found: %d", service_handle);
-    return HfBluetoothErr::GATT_SERVICE_NOT_FOUND;
+    return hf_bluetooth_err_t::GATT_SERVICE_NOT_FOUND;
   }
   
   esp_err_t ret = esp_ble_gatts_start_service(it->second.service_handle);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to start GATT service: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::GATT_SERVICE_START_FAILED;
+    return hf_bluetooth_err_t::GATT_SERVICE_START_FAILED;
   }
   
   it->second.is_started = true;
   
   ESP_LOGI(TAG, "Started GATT service: %d", service_handle);
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::gattNotify(uint16_t connection_id, uint16_t char_handle, 
+hf_bluetooth_err_t EspBluetooth::gattNotify(uint16_t connection_id, uint16_t char_handle, 
                                        const std::vector<uint8_t>& data) {
   std::lock_guard<std::mutex> lock(state_mutex_);
   
   auto conn_it = connections_.find(connection_id);
   if (conn_it == connections_.end()) {
     ESP_LOGE(TAG, "Connection not found: %d", connection_id);
-    return HfBluetoothErr::CONNECTION_NOT_FOUND;
+    return hf_bluetooth_err_t::CONNECTION_NOT_FOUND;
   }
   
   esp_err_t ret = esp_ble_gatts_send_indicate(conn_it->second.gatt_if, 
@@ -1036,20 +1036,20 @@ HfBluetoothErr EspBluetooth::gattNotify(uint16_t connection_id, uint16_t char_ha
                                              const_cast<uint8_t*>(data.data()), false);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to send GATT notification: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::GATT_NOTIFY_FAILED;
+    return hf_bluetooth_err_t::GATT_NOTIFY_FAILED;
   }
   
   ESP_LOGD(TAG, "Sent GATT notification on connection %d, char %d", connection_id, char_handle);
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
 // Private helper methods
-HfBluetoothErr EspBluetooth::initializeBLE() {
+hf_bluetooth_err_t EspBluetooth::initializeBLE() {
   // Register BLE GAP callback
   esp_err_t ret = esp_ble_gap_register_callback(bleGapEventHandler);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to register BLE GAP callback: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::INIT_FAILED;
+    return hf_bluetooth_err_t::INIT_FAILED;
   }
   
   // Register GATT server callback if enabled
@@ -1057,13 +1057,13 @@ HfBluetoothErr EspBluetooth::initializeBLE() {
     ret = esp_ble_gatts_register_callback(bleGattsEventHandler);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to register GATT server callback: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::INIT_FAILED;
+      return hf_bluetooth_err_t::INIT_FAILED;
     }
     
     ret = esp_ble_gatts_app_register(0);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to register GATT server app: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::INIT_FAILED;
+      return hf_bluetooth_err_t::INIT_FAILED;
     }
   }
   
@@ -1072,13 +1072,13 @@ HfBluetoothErr EspBluetooth::initializeBLE() {
     ret = esp_ble_gattc_register_callback(bleGattcEventHandler);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to register GATT client callback: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::INIT_FAILED;
+      return hf_bluetooth_err_t::INIT_FAILED;
     }
     
     ret = esp_ble_gattc_app_register(0);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to register GATT client app: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::INIT_FAILED;
+      return hf_bluetooth_err_t::INIT_FAILED;
     }
   }
   
@@ -1089,15 +1089,15 @@ HfBluetoothErr EspBluetooth::initializeBLE() {
   esp_ble_gatt_set_local_mtu(mtu);
   
   ESP_LOGI(TAG, "BLE initialized successfully");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
-HfBluetoothErr EspBluetooth::initializeClassic() {
+hf_bluetooth_err_t EspBluetooth::initializeClassic() {
   // Register Classic Bluetooth GAP callback
   esp_err_t ret = esp_bt_gap_register_callback(btGapEventHandler);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to register Classic BT GAP callback: %s", esp_err_to_name(ret));
-    return HfBluetoothErr::INIT_FAILED;
+    return hf_bluetooth_err_t::INIT_FAILED;
   }
   
   // Initialize SPP if enabled
@@ -1105,13 +1105,13 @@ HfBluetoothErr EspBluetooth::initializeClassic() {
     ret = esp_spp_register_callback(sppEventHandler);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to register SPP callback: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::INIT_FAILED;
+      return hf_bluetooth_err_t::INIT_FAILED;
     }
     
     ret = esp_spp_init(ESP_SPP_MODE_CB);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to initialize SPP: %s", esp_err_to_name(ret));
-      return HfBluetoothErr::INIT_FAILED;
+      return hf_bluetooth_err_t::INIT_FAILED;
     }
   }
   
@@ -1119,7 +1119,7 @@ HfBluetoothErr EspBluetooth::initializeClassic() {
   esp_bt_gap_set_scan_mode(ESP_BT_CONNECTABLE, ESP_BT_GENERAL_DISCOVERABLE);
   
   ESP_LOGI(TAG, "Classic Bluetooth initialized successfully");
-  return HfBluetoothErr::SUCCESS;
+  return hf_bluetooth_err_t::SUCCESS;
 }
 
 void EspBluetooth::cleanup() {
