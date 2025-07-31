@@ -26,13 +26,19 @@ extern "C" {
 #endif
 
 // Bluetooth Classic headers
-#include "esp_a2dp_api.h"
-#include "esp_avrc_api.h"
 #include "esp_bt.h"
 #include "esp_bt_main.h"
 #include "esp_gap_bt_api.h"
 #include "esp_hf_client_api.h"
 #include "esp_spp_api.h"
+
+// A2DP is only supported on ESP32 classic, not on ESP32C6/C3/S2/S3
+#if defined(ESP32) && !defined(CONFIG_IDF_TARGET_ESP32C6) && !defined(CONFIG_IDF_TARGET_ESP32C3) && !defined(CONFIG_IDF_TARGET_ESP32S2) && !defined(CONFIG_IDF_TARGET_ESP32S3)
+#include "esp_a2dp_api.h"
+#define HAS_A2DP_SUPPORT 1
+#else
+#define HAS_A2DP_SUPPORT 0
+#endif
 
 // Bluetooth Low Energy headers
 #include "esp_bt_defs.h"
