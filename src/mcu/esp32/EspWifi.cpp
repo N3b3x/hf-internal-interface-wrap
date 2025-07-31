@@ -152,12 +152,12 @@ EspWifi::EspWifi(const EspWifiAdvancedConfig* advanced_config)
     : netif_sta_(nullptr)
     , netif_ap_(nullptr)
     , event_group_(nullptr)
-    , is_initialized_(false)
-    , current_mode_(hf_wifi_mode_t::HF_WIFI_MODE_DISABLED)
+    , m_initialized(false)
+    , m_mode(hf_wifi_mode_t::HF_WIFI_MODE_DISABLED)
     , is_connected_(false)
-    , scan_in_progress_(false)
-    , smartconfig_in_progress_(false)
-    , wps_in_progress_(false)
+    , m_scanning(false)
+    , m_smartconfig_active(false)
+    , m_wps_active(false)
     , retry_count_(0)
     , max_retry_count_(5)
     , connection_timeout_ms_(10000)
@@ -182,9 +182,9 @@ EspWifi::~EspWifi() {
 }
 
 hf_wifi_err_t EspWifi::Initialize(hf_wifi_mode_t mode) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (is_initialized_) {
+  if (m_initialized) {
     ESP_LOGW(TAG, "WiFi already initialized");
     return hf_wifi_err_t::WIFI_SUCCESS;
   }
@@ -280,30 +280,30 @@ hf_wifi_err_t EspWifi::Initialize(hf_wifi_mode_t mode) {
   int8_t power = advanced_config_.tx_power * 4; // Convert to 0.25dBm units
   ESP_ERROR_CHECK(esp_wifi_set_max_tx_power(power));
   
-  is_initialized_ = true;
+  m_initialized = true;
   
   ESP_LOGI(TAG, "ESP32 WiFi initialized successfully");
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::Deinitialize() {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     return hf_wifi_err_t::WIFI_SUCCESS;
   }
   
   ESP_LOGI(TAG, "Deinitializing ESP32 WiFi");
   
   // Stop ongoing operations
-  if (smartconfig_in_progress_) {
+  if (m_smartconfig_active) {
     esp_smartconfig_stop();
-    smartconfig_in_progress_ = false;
+    m_smartconfig_active = false;
   }
   
-  if (wps_in_progress_) {
+  if (m_wps_active) {
     esp_wifi_wps_disable();
-    wps_in_progress_ = false;
+    m_wps_active = false;
   }
   
   // Disconnect if connected
@@ -325,21 +325,21 @@ hf_wifi_err_t EspWifi::Deinitialize() {
   
   cleanup();
   
-  is_initialized_ = false;
-  current_mode_ = hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
+  m_initialized = false;
+  m_mode = hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
   
   ESP_LOGI(TAG, "ESP32 WiFi deinitialized successfully");
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
 
 bool EspWifi::IsInitialized() const {
-  return is_initialized_;
+  return m_initialized;
 }
 
 hf_wifi_err_t EspWifi::SetMode(hf_wifi_mode_t mode) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::WIFI_NOT_INITIALIZED;
   }
@@ -356,20 +356,20 @@ hf_wifi_err_t EspWifi::SetMode(hf_wifi_mode_t mode) {
     return hf_wifi_err_t::WIFI_MODE_SET_FAILED;
   }
   
-  current_mode_ = mode;
+  m_mode = mode;
   
   ESP_LOGI(TAG, "WiFi mode set to %d", static_cast<int>(mode));
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
 
 hf_wifi_mode_t EspWifi::GetMode() const {
-  return current_mode_;
+  return m_mode;
 }
 
 hf_wifi_err_t EspWifi::StartStation(const hf_wifi_station_config_t& config) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
@@ -386,7 +386,7 @@ hf_wifi_err_t EspWifi::StartStation(const hf_wifi_station_config_t& config) {
   }
   
   // Set mode to station or station+AP
-  HfWifiMode new_mode = (current_mode_ == hf_wifi_mode_t::ACCESS_POINT) ? 
+  HfWifiMode new_mode = (m_mode == hf_wifi_mode_t::ACCESS_POINT) ? 
                         hf_wifi_mode_t::STATION_ACCESS_POINT : hf_wifi_mode_t::STATION;
   
   hf_wifi_err_t err = setMode(new_mode);
@@ -450,9 +450,9 @@ hf_wifi_err_t EspWifi::StartStation(const hf_wifi_station_config_t& config) {
 }
 
 hf_wifi_err_t EspWifi::StartAccessPoint(const hf_wifi_ap_config_t& config) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
@@ -475,7 +475,7 @@ hf_wifi_err_t EspWifi::StartAccessPoint(const hf_wifi_ap_config_t& config) {
   }
   
   // Set mode to AP or station+AP
-  HfWifiMode new_mode = (current_mode_ == hf_wifi_mode_t::STATION) ? 
+  HfWifiMode new_mode = (m_mode == hf_wifi_mode_t::STATION) ? 
                         hf_wifi_mode_t::STATION_ACCESS_POINT : hf_wifi_mode_t::ACCESS_POINT;
   
   hf_wifi_err_t err = setMode(new_mode);
@@ -525,14 +525,14 @@ hf_wifi_err_t EspWifi::StartAccessPoint(const hf_wifi_ap_config_t& config) {
 }
 
 hf_wifi_err_t EspWifi::Connect() {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
   
-  if (current_mode_ != hf_wifi_mode_t::STATION && current_mode_ != hf_wifi_mode_t::STATION_ACCESS_POINT) {
+  if (m_mode != hf_wifi_mode_t::STATION && m_mode != hf_wifi_mode_t::STATION_ACCESS_POINT) {
     ESP_LOGE(TAG, "Not in station mode");
     return hf_wifi_err_t::INVALID_MODE;
   }
@@ -558,9 +558,9 @@ hf_wifi_err_t EspWifi::Connect() {
 }
 
 hf_wifi_err_t EspWifi::Disconnect() {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
@@ -582,7 +582,7 @@ bool EspWifi::IsConnected() const {
 }
 
 hf_wifi_connection_info_t EspWifi::GetConnectionInfo() const {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
   hf_wifi_connection_info_t info = {};
   
@@ -627,14 +627,14 @@ hf_wifi_connection_info_t EspWifi::GetConnectionInfo() const {
 }
 
 hf_wifi_err_t EspWifi::StartScan(const hf_wifi_scan_config_t& config) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
   
-  if (scan_in_progress_) {
+  if (m_scanning) {
     ESP_LOGW(TAG, "Scan already in progress");
     return hf_wifi_err_t::SCAN_IN_PROGRESS;
   }
@@ -666,18 +666,18 @@ hf_wifi_err_t EspWifi::StartScan(const hf_wifi_scan_config_t& config) {
     return hf_wifi_err_t::SCAN_FAILED;
   }
   
-  scan_in_progress_ = true;
+  m_scanning = true;
   
   ESP_LOGI(TAG, "WiFi scan started");
   return hf_wifi_err_t::SUCCESS;
 }
 
 std::vector<hf_wifi_scan_result_t> EspWifi::GetScanResults() const {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
   std::vector<hf_wifi_scan_result_t> results;
   
-  if (scan_in_progress_) {
+  if (m_scanning) {
     ESP_LOGW(TAG, "Scan still in progress");
     return results;
   }
@@ -714,19 +714,19 @@ std::vector<hf_wifi_scan_result_t> EspWifi::GetScanResults() const {
 }
 
 hf_wifi_err_t EspWifi::StartSmartConfig() {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
   if (!advanced_config_.enable_smartconfig) {
     ESP_LOGE(TAG, "SmartConfig not enabled in configuration");
     return hf_wifi_err_t::NOT_SUPPORTED;
   }
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
   
-  if (smartconfig_in_progress_) {
+  if (m_smartconfig_active) {
     ESP_LOGW(TAG, "SmartConfig already in progress");
     return hf_wifi_err_t::ALREADY_STARTED;
   }
@@ -753,16 +753,16 @@ hf_wifi_err_t EspWifi::StartSmartConfig() {
     return hf_wifi_err_t::START_FAILED;
   }
   
-  smartconfig_in_progress_ = true;
+  m_smartconfig_active = true;
   
   ESP_LOGI(TAG, "SmartConfig started");
   return hf_wifi_err_t::SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::StopSmartConfig() {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!smartconfig_in_progress_) {
+  if (!m_smartconfig_active) {
     return hf_wifi_err_t::SUCCESS;
   }
   
@@ -772,26 +772,26 @@ hf_wifi_err_t EspWifi::StopSmartConfig() {
     return hf_wifi_err_t::STOP_FAILED;
   }
   
-  smartconfig_in_progress_ = false;
+  m_smartconfig_active = false;
   
   ESP_LOGI(TAG, "SmartConfig stopped");
   return hf_wifi_err_t::SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::StartWPS() {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
   if (!advanced_config_.enable_wps) {
     ESP_LOGE(TAG, "WPS not enabled in configuration");
     return hf_wifi_err_t::NOT_SUPPORTED;
   }
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
   
-  if (wps_in_progress_) {
+  if (m_wps_active) {
     ESP_LOGW(TAG, "WPS already in progress");
     return hf_wifi_err_t::ALREADY_STARTED;
   }
@@ -816,16 +816,16 @@ hf_wifi_err_t EspWifi::StartWPS() {
     return hf_wifi_err_t::START_FAILED;
   }
   
-  wps_in_progress_ = true;
+  m_wps_active = true;
   
   ESP_LOGI(TAG, "WPS started");
   return hf_wifi_err_t::SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::StopWPS() {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!wps_in_progress_) {
+  if (!m_wps_active) {
     return hf_wifi_err_t::SUCCESS;
   }
   
@@ -835,16 +835,16 @@ hf_wifi_err_t EspWifi::StopWPS() {
     return hf_wifi_err_t::STOP_FAILED;
   }
   
-  wps_in_progress_ = false;
+  m_wps_active = false;
   
   ESP_LOGI(TAG, "WPS stopped");
   return hf_wifi_err_t::SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::SetPowerSave(bool enable, hf_wifi_power_save_mode_t mode) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
@@ -876,9 +876,9 @@ hf_wifi_err_t EspWifi::SetPowerSave(bool enable, hf_wifi_power_save_mode_t mode)
 }
 
 hf_wifi_err_t EspWifi::SetTxPower(int8_t power_dbm) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   
-  if (!is_initialized_) {
+  if (!m_initialized) {
     ESP_LOGE(TAG, "WiFi not initialized");
     return hf_wifi_err_t::NOT_INITIALIZED;
   }
@@ -917,13 +917,13 @@ int8_t EspWifi::GetTxPower() const {
 }
 
 void EspWifi::SetEventCallback(hf_wifi_event_callback_t callback, void* user_data) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   event_callback_ = callback;
   event_user_data_ = user_data;
 }
 
 void EspWifi::SetScanCallback(hf_wifi_scan_callback_t callback, void* user_data) {
-  std::lock_guard<std::mutex> lock(state_mutex_);
+  RtosLockGuard<RtosMutex> lock(m_mutex);
   scan_callback_ = callback;
   scan_user_data_ = user_data;
 }
@@ -1104,7 +1104,7 @@ void EspWifi::HandleWifiEvent(esp_event_base_t event_base, int32_t event_id, voi
       wifi_event_sta_scan_done_t* event = static_cast<wifi_event_sta_scan_done_t*>(event_data);
       ESP_LOGI(TAG, "Scan completed, found %d APs", event->number);
       
-      scan_in_progress_ = false;
+      m_scanning = false;
       xEventGroupSetBits(event_group_, WIFI_SCAN_DONE_BIT);
       
       if (scan_callback_) {
@@ -1210,7 +1210,7 @@ void EspWifi::HandleSmartconfigEvent(esp_event_base_t event_base, int32_t event_
       ESP_LOGI(TAG, "SmartConfig send ACK done");
       xEventGroupSetBits(event_group_, WIFI_SMARTCONFIG_BIT);
       esp_smartconfig_stop();
-      smartconfig_in_progress_ = false;
+      m_smartconfig_active = false;
       
       if (event_callback_) {
         hf_wifi_event_t hf_event = {};

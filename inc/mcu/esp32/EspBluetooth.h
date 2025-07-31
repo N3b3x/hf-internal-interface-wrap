@@ -59,7 +59,7 @@ extern "C" {
 // C++ headers
 #include "BaseBluetooth.h"
 #include "mcu/esp32/utils/EspTypes_Base.h"
-#include <mutex>
+#include "utils/RtosMutex.h"
 #include <memory>
 #include <atomic>
 #include <queue>
@@ -442,7 +442,7 @@ public:
 private:
   // ========== Internal State Management ==========
   
-  mutable std::mutex m_mutex;                      /**< Main synchronization mutex */
+  mutable RtosMutex m_mutex;                       /**< Main synchronization mutex */
   std::atomic<bool> m_initialized;                 /**< Initialization state */
   std::atomic<bool> m_enabled;                     /**< Bluetooth enabled state */
   std::atomic<hf_bluetooth_mode_t> m_mode;             /**< Current Bluetooth mode */
@@ -459,7 +459,7 @@ private:
   
   // Connection management
   std::unordered_map<std::string, EspBluetoothConnectionInfo> m_connections; /**< Active connections */
-  mutable std::mutex m_connections_mutex;          /**< Connections mutex */
+  mutable RtosMutex m_connections_mutex;           /**< Connections mutex */
   
   // Discovery and pairing
   std::vector<hf_bluetooth_device_info_t> m_discovered_devices; /**< Discovered devices */
@@ -467,21 +467,21 @@ private:
   std::atomic<bool> m_scanning;                    /**< Scanning state */
   std::atomic<bool> m_discoverable;                /**< Discoverable state */
   std::atomic<bool> m_advertising;                 /**< Advertising state */
-  mutable std::mutex m_discovery_mutex;            /**< Discovery mutex */
+  mutable RtosMutex m_discovery_mutex;             /**< Discovery mutex */
   
   // GATT services
   std::map<uint16_t, EspGattServiceInfo> m_gatt_services; /**< GATT services */
-  mutable std::mutex m_gatt_mutex;                 /**< GATT operations mutex */
+  mutable RtosMutex m_gatt_mutex;                  /**< GATT operations mutex */
   
   // Event handling
   hf_bluetooth_event_callback_t m_event_callback;       /**< User event callback */
   hf_bluetooth_data_callback_t m_data_callback;         /**< User data callback */
   std::queue<std::pair<hf_bluetooth_event_t, void*>> m_event_queue; /**< Event queue */
-  mutable std::mutex m_event_mutex;                /**< Event queue mutex */
+  mutable RtosMutex m_event_mutex;                 /**< Event queue mutex */
   
   // Data buffers
   std::unordered_map<std::string, std::queue<std::vector<uint8_t>>> m_data_buffers; /**< Data buffers per device */
-  mutable std::mutex m_data_mutex;                 /**< Data buffer mutex */
+  mutable RtosMutex m_data_mutex;                  /**< Data buffer mutex */
   
   // ========== Internal Helper Methods ==========
   
