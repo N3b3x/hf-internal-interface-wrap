@@ -1,651 +1,587 @@
 /**
  * @file EspTypes_Bluetooth.h
- * @brief ESP32 Bluetooth type definitions for hardware abstraction.
- *
- * This header defines the ESP32-specific types, constants, and utility functions
- * for Bluetooth operations. It provides a clean interface between the generic Bluetooth
- * base class and ESP-IDF specific implementations, supporting both Classic and BLE.
- *
- * @author Nebiyu Tadesse
- * @date 2025
- * @copyright HardFOC
- *
- * @note This file should be included by ESP32 Bluetooth implementation files.
- * @note All definitions are specific to ESP32 with ESP-IDF v5.5+.
+ * @brief Type definitions for ESP32-C6 Bluetooth 5.0 LE implementation using ESP-IDF v5.5
+ * @version 2.0.0
+ * @date 2024
+ * 
+ * This file provides comprehensive type definitions for ESP32-C6 Bluetooth Low Energy
+ * implementation using NimBLE host stack with ESP-IDF v5.5. It includes modern C++17
+ * features and supports Bluetooth 5.0 LE certified features.
  */
 
-#pragma once
+#ifndef ESP_TYPES_BLUETOOTH_H
+#define ESP_TYPES_BLUETOOTH_H
 
-#include "EspTypes_Base.h"
-#include <algorithm>
+#include <cstdint>
+#include <string>
+#include <vector>
+#include <array>
+#include <functional>
+#include <chrono>
+#include <memory>
+#include <optional>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// Bluetooth Classic headers
-#include "esp_a2dp_api.h"
-#include "esp_avrc_api.h"
+// ESP-IDF v5.5 includes for NimBLE
 #include "esp_bt.h"
-#include "esp_bt_main.h"
-#include "esp_gap_bt_api.h"
-#include "esp_hf_client_api.h"
-#include "esp_spp_api.h"
-
-// Bluetooth Low Energy headers
-#include "esp_bt_defs.h"
 #include "esp_gap_ble_api.h"
-#include "esp_gatt_common_api.h"
 #include "esp_gattc_api.h"
 #include "esp_gatts_api.h"
+#include "esp_bt_main.h"
+#include "esp_bt_device.h"
 
-#ifdef __cplusplus
-}
-#endif
+// NimBLE specific includes for ESP-IDF v5.5
+#include "nimble/nimble_port.h"
+#include "nimble/nimble_port_freertos.h"
+#include "host/ble_hs.h"
+#include "host/ble_uuid.h"
+#include "host/ble_att.h"
+#include "host/ble_gap.h"
+#include "host/ble_gatt.h"
+#include "host/ble_store.h"
+#include "host/ble_sm.h"
 
-//==============================================================================
-// ESP32 BLUETOOTH CONSTANTS
-//==============================================================================
-
-/// @brief Bluetooth address length
-static constexpr size_t HF_ESP_BT_ADDRESS_LEN = 6;
-
-/// @brief Maximum Bluetooth device name length
-static constexpr size_t HF_ESP_BT_DEVICE_NAME_MAX_LEN = 32;
-
-/// @brief Maximum number of simultaneous connections
-static constexpr uint16_t HF_ESP_BT_MAX_CONNECTIONS_DEFAULT = 4;
-
-/// @brief Default connection timeout
-static constexpr hf_timeout_ms_t HF_ESP_BT_CONNECT_TIMEOUT_DEFAULT = 10000;
-
-/// @brief Default scan timeout
-static constexpr hf_timeout_ms_t HF_ESP_BT_SCAN_TIMEOUT_DEFAULT = 10000;
-
-/// @brief Default pairing timeout
-static constexpr hf_timeout_ms_t HF_ESP_BT_PAIR_TIMEOUT_DEFAULT = 30000;
-
-/// @brief Maximum GATT services per device
-static constexpr uint16_t HF_ESP_BT_MAX_GATT_SERVICES = 16;
-
-/// @brief Maximum GATT characteristics per service
-static constexpr uint16_t HF_ESP_BT_MAX_GATT_CHARACTERISTICS = 32;
-
-/// @brief Default GATT MTU size
-static constexpr uint16_t HF_ESP_BT_GATT_MTU_DEFAULT = 23;
-
-/// @brief Maximum GATT MTU size
-static constexpr uint16_t HF_ESP_BT_GATT_MTU_MAX = 517;
-
-/// @brief BLE connection interval range (in 1.25ms units)
-static constexpr uint16_t HF_ESP_BLE_CONN_INTERVAL_MIN = 6;    // 7.5ms
-static constexpr uint16_t HF_ESP_BLE_CONN_INTERVAL_MAX = 3200; // 4000ms
-
-/// @brief BLE slave latency range
-static constexpr uint16_t HF_ESP_BLE_SLAVE_LATENCY_MIN = 0;
-static constexpr uint16_t HF_ESP_BLE_SLAVE_LATENCY_MAX = 499;
-
-/// @brief BLE supervision timeout range (in 10ms units)
-static constexpr uint16_t HF_ESP_BLE_SUPERVISION_TIMEOUT_MIN = 10;   // 100ms
-static constexpr uint16_t HF_ESP_BLE_SUPERVISION_TIMEOUT_MAX = 3200; // 32000ms
-
-//==============================================================================
-// ESP32 BLUETOOTH TYPE MAPPINGS
-//==============================================================================
+namespace esp32 {
+namespace bluetooth {
 
 /**
- * @brief ESP32-specific Bluetooth mode mapping
+ * @brief Bluetooth address type (6 bytes)
  */
-enum class hf_esp_bluetooth_mode_t : uint8_t {
-  IDLE = ESP_BT_MODE_IDLE,             /**< Bluetooth disabled */
-  BLE = ESP_BT_MODE_BLE,               /**< BLE only */
-  CLASSIC_BT = ESP_BT_MODE_CLASSIC_BT, /**< Classic Bluetooth only */
-  BTDM = ESP_BT_MODE_BTDM              /**< Dual mode (Classic + BLE) */
+using BluetoothAddress = std::array<uint8_t, 6>;
+
+/**
+ * @brief UUID types for Bluetooth services and characteristics
+ */
+class BluetoothUUID {
+public:
+    enum class Type {
+        UUID16,
+        UUID32,
+        UUID128
+    };
+    
+    BluetoothUUID() = default;
+    explicit BluetoothUUID(uint16_t uuid16);
+    explicit BluetoothUUID(uint32_t uuid32);
+    explicit BluetoothUUID(const std::array<uint8_t, 16>& uuid128);
+    explicit BluetoothUUID(const std::string& uuid_string);
+    
+    Type getType() const { return type_; }
+    uint16_t getUUID16() const { return uuid16_; }
+    uint32_t getUUID32() const { return uuid32_; }
+    const std::array<uint8_t, 16>& getUUID128() const { return uuid128_; }
+    
+    std::string toString() const;
+    bool operator==(const BluetoothUUID& other) const;
+    bool operator!=(const BluetoothUUID& other) const;
+    
+    // Convert to NimBLE UUID format
+    ble_uuid_any_t toNimbleUUID() const;
+    
+private:
+    Type type_ = Type::UUID16;
+    uint16_t uuid16_ = 0;
+    uint32_t uuid32_ = 0;
+    std::array<uint8_t, 16> uuid128_ = {};
 };
 
 /**
- * @brief ESP32-specific BLE address type mapping
+ * @brief Bluetooth Low Energy address types
  */
-enum class hf_esp_ble_addr_type_t : uint8_t {
-  PUBLIC = BLE_ADDR_TYPE_PUBLIC,         /**< Public address */
-  RANDOM = BLE_ADDR_TYPE_RANDOM,         /**< Random address */
-  RPA_PUBLIC = BLE_ADDR_TYPE_RPA_PUBLIC, /**< Resolvable private address with public identity */
-  RPA_RANDOM = BLE_ADDR_TYPE_RPA_RANDOM  /**< Resolvable private address with random identity */
+enum class BLEAddressType : uint8_t {
+    PUBLIC = BLE_ADDR_PUBLIC,
+    RANDOM_STATIC = BLE_ADDR_RANDOM,
+    RANDOM_PRIVATE_RESOLVABLE = BLE_ADDR_RANDOM,
+    RANDOM_PRIVATE_NON_RESOLVABLE = BLE_ADDR_RANDOM
 };
 
 /**
- * @brief ESP32-specific BLE scan type mapping
+ * @brief Bluetooth Low Energy device power levels (ESP32-C6 specific)
  */
-enum class hf_esp_ble_scan_type_t : uint8_t {
-  PASSIVE = BLE_SCAN_TYPE_PASSIVE, /**< Passive scanning */
-  ACTIVE = BLE_SCAN_TYPE_ACTIVE    /**< Active scanning */
+enum class BLEPowerLevel : int8_t {
+    POWER_N12_DBM = -12,    // -12 dBm
+    POWER_N9_DBM = -9,      // -9 dBm
+    POWER_N6_DBM = -6,      // -6 dBm
+    POWER_N3_DBM = -3,      // -3 dBm
+    POWER_0_DBM = 0,        // 0 dBm
+    POWER_3_DBM = 3,        // 3 dBm
+    POWER_6_DBM = 6,        // 6 dBm
+    POWER_9_DBM = 9,        // 9 dBm (maximum for ESP32-C6)
 };
 
 /**
- * @brief ESP32-specific BLE advertising type mapping
+ * @brief Bluetooth Low Energy PHY types (Bluetooth 5.0 LE features)
  */
-enum class hf_esp_ble_adv_type_t : uint8_t {
-  ADV_IND = ADV_TYPE_IND, /**< Connectable undirected advertising */
-  ADV_DIRECT_IND_HIGH =
-      ADV_TYPE_DIRECT_IND_HIGH,           /**< Connectable directed advertising (high duty cycle) */
-  ADV_SCAN_IND = ADV_TYPE_SCAN_IND,       /**< Scannable undirected advertising */
-  ADV_NONCONN_IND = ADV_TYPE_NONCONN_IND, /**< Non-connectable undirected advertising */
-  ADV_DIRECT_IND_LOW =
-      ADV_TYPE_DIRECT_IND_LOW /**< Connectable directed advertising (low duty cycle) */
+enum class BLEPHYType : uint8_t {
+    PHY_1M = BLE_GAP_LE_PHY_1M,          // 1M PHY
+    PHY_2M = BLE_GAP_LE_PHY_2M,          // 2M PHY (Bluetooth 5.0)
+    PHY_CODED = BLE_GAP_LE_PHY_CODED     // Coded PHY (Bluetooth 5.0, long range)
 };
 
 /**
- * @brief ESP32-specific GATT characteristic properties
+ * @brief Bluetooth Low Energy security levels
  */
-enum class hf_esp_gatt_char_prop_t : uint8_t {
-  BROADCAST = ESP_GATT_CHAR_PROP_BIT_BROADCAST, /**< Broadcast */
-  READ = ESP_GATT_CHAR_PROP_BIT_READ,           /**< Read */
-  WRITE_NR = ESP_GATT_CHAR_PROP_BIT_WRITE_NR,   /**< Write without response */
-  WRITE = ESP_GATT_CHAR_PROP_BIT_WRITE,         /**< Write */
-  NOTIFY = ESP_GATT_CHAR_PROP_BIT_NOTIFY,       /**< Notify */
-  INDICATE = ESP_GATT_CHAR_PROP_BIT_INDICATE,   /**< Indicate */
-  AUTH = ESP_GATT_CHAR_PROP_BIT_AUTH,           /**< Authenticated signed writes */
-  EXT_PROP = ESP_GATT_CHAR_PROP_BIT_EXT_PROP    /**< Extended properties */
+enum class BLESecurityLevel : uint8_t {
+    NONE = 0,              // No security
+    UNAUTHENTICATED = 1,   // Encryption without authentication
+    AUTHENTICATED = 2,     // Encryption with authentication
+    SECURE_CONNECTIONS = 3  // LE Secure Connections (Bluetooth 4.2+)
 };
 
 /**
- * @brief ESP32-specific GATT characteristic permissions
+ * @brief Bluetooth Low Energy I/O capabilities
  */
-enum class hf_esp_gatt_char_perm_t : uint16_t {
-  READ = ESP_GATT_PERM_READ,                          /**< Read permission */
-  READ_ENCRYPTED = ESP_GATT_PERM_READ_ENCRYPTED,      /**< Read encrypted permission */
-  READ_ENC_MITM = ESP_GATT_PERM_READ_ENC_MITM,        /**< Read encrypted with MITM protection */
-  WRITE = ESP_GATT_PERM_WRITE,                        /**< Write permission */
-  WRITE_ENCRYPTED = ESP_GATT_PERM_WRITE_ENCRYPTED,    /**< Write encrypted permission */
-  WRITE_ENC_MITM = ESP_GATT_PERM_WRITE_ENC_MITM,      /**< Write encrypted with MITM protection */
-  WRITE_SIGNED = ESP_GATT_PERM_WRITE_SIGNED,          /**< Write signed permission */
-  WRITE_SIGNED_MITM = ESP_GATT_PERM_WRITE_SIGNED_MITM /**< Write signed with MITM protection */
-};
-
-//==============================================================================
-// ESP32 BLUETOOTH STRUCTURES
-//==============================================================================
-
-/**
- * @brief ESP32-specific Bluetooth statistics structure
- */
-struct HfEspBluetoothStats {
-  uint32_t tx_bytes;               /**< Transmitted bytes */
-  uint32_t rx_bytes;               /**< Received bytes */
-  uint32_t tx_packets;             /**< Transmitted packets */
-  uint32_t rx_packets;             /**< Received packets */
-  uint32_t tx_errors;              /**< Transmission errors */
-  uint32_t rx_errors;              /**< Reception errors */
-  uint32_t connections_attempted;  /**< Connection attempts */
-  uint32_t connections_successful; /**< Successful connections */
-  uint32_t disconnections;         /**< Disconnections */
-  uint32_t pairing_attempts;       /**< Pairing attempts */
-  uint32_t pairing_successful;     /**< Successful pairings */
+enum class BLEIOCapability : uint8_t {
+    DISPLAY_ONLY = BLE_SM_IO_CAP_DISP_ONLY,
+    DISPLAY_YES_NO = BLE_SM_IO_CAP_DISP_YES_NO,
+    KEYBOARD_ONLY = BLE_SM_IO_CAP_KEYBOARD_ONLY,
+    NO_INPUT_OUTPUT = BLE_SM_IO_CAP_NO_IO,
+    KEYBOARD_DISPLAY = BLE_SM_IO_CAP_KEYBOARD_DISP
 };
 
 /**
- * @brief ESP32-specific BLE advertising parameters
+ * @brief Bluetooth Low Energy bonding flags
  */
-struct HfEspBleAdvParams {
-  uint16_t adv_int_min;               /**< Minimum advertising interval */
-  uint16_t adv_int_max;               /**< Maximum advertising interval */
-  hf_esp_ble_adv_type_t adv_type;     /**< Advertising type */
-  esp_ble_addr_type_t own_addr_type;  /**< Own address type */
-  esp_ble_addr_type_t peer_addr_type; /**< Peer address type */
-  esp_bd_addr_t peer_addr;            /**< Peer address */
-  esp_ble_adv_channel_t channel_map;  /**< Advertising channel map */
-  esp_ble_adv_filter_t filter_policy; /**< Advertising filter policy */
+enum class BLEBondingFlag : uint8_t {
+    NO_BONDING = BLE_SM_PAIR_AUTHREQ_BOND_NO,
+    BONDING = BLE_SM_PAIR_AUTHREQ_BOND
 };
 
 /**
- * @brief ESP32-specific BLE scan parameters
+ * @brief GATT characteristic properties
  */
-struct HfEspBleScanParams {
-  hf_esp_ble_scan_type_t scan_type;         /**< Scan type */
-  esp_ble_addr_type_t own_addr_type;        /**< Own address type */
-  esp_ble_scan_filter_t scan_filter_policy; /**< Scan filter policy */
-  uint16_t scan_interval;                   /**< Scan interval */
-  uint16_t scan_window;                     /**< Scan window */
-  esp_ble_scan_duplicate_t scan_duplicate;  /**< Scan duplicate filter */
+enum class GATTCharacteristicProperty : uint16_t {
+    BROADCAST = BLE_GATT_CHR_F_BROADCAST,
+    READ = BLE_GATT_CHR_F_READ,
+    WRITE_WITHOUT_RESPONSE = BLE_GATT_CHR_F_WRITE_NO_RSP,
+    WRITE = BLE_GATT_CHR_F_WRITE,
+    NOTIFY = BLE_GATT_CHR_F_NOTIFY,
+    INDICATE = BLE_GATT_CHR_F_INDICATE,
+    AUTHENTICATED_SIGNED_WRITES = BLE_GATT_CHR_F_AUTH_SIGN_WRITE,
+    EXTENDED_PROPERTIES = BLE_GATT_CHR_F_RELIABLE_WRITE
 };
 
 /**
- * @brief ESP32-specific BLE connection parameters
+ * @brief GATT descriptor types
  */
-struct HfEspBleConnParams {
-  uint16_t interval_min; /**< Minimum connection interval */
-  uint16_t interval_max; /**< Maximum connection interval */
-  uint16_t latency;      /**< Slave latency */
-  uint16_t timeout;      /**< Supervision timeout */
-  uint16_t min_ce_len;   /**< Minimum connection event length */
-  uint16_t max_ce_len;   /**< Maximum connection event length */
+enum class GATTDescriptorType : uint16_t {
+    CHARACTERISTIC_EXTENDED_PROPERTIES = 0x2900,
+    CHARACTERISTIC_USER_DESCRIPTION = 0x2901,
+    CLIENT_CHARACTERISTIC_CONFIGURATION = 0x2902,
+    SERVER_CHARACTERISTIC_CONFIGURATION = 0x2903,
+    CHARACTERISTIC_PRESENTATION_FORMAT = 0x2904,
+    CHARACTERISTIC_AGGREGATE_FORMAT = 0x2905
 };
 
-//==============================================================================
-// ESP32 BLUETOOTH UTILITY FUNCTIONS
-//==============================================================================
-
-#ifdef __cplusplus
+/**
+ * @brief Advertising types for BLE
+ */
+enum class BLEAdvertisingType : uint8_t {
+    CONNECTABLE_UNDIRECTED = BLE_GAP_CONN_MODE_UND,
+    CONNECTABLE_DIRECTED_HIGH_DUTY = BLE_GAP_CONN_MODE_DIR,
+    SCANNABLE_UNDIRECTED = BLE_GAP_CONN_MODE_NON,
+    NON_CONNECTABLE_UNDIRECTED = BLE_GAP_CONN_MODE_NON,
+    CONNECTABLE_DIRECTED_LOW_DUTY = BLE_GAP_CONN_MODE_DIR
+};
 
 /**
- * @brief Convert HardFOC Bluetooth mode to ESP-IDF mode
- * @param mode HardFOC Bluetooth mode
- * @return ESP-IDF Bluetooth mode
+ * @brief Extended advertising types (Bluetooth 5.0 LE)
  */
-inline esp_bt_mode_t hfBluetoothModeToEspMode(hf_bluetooth_mode_t mode) {
-  switch (mode) {
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED:
-      return ESP_BT_MODE_IDLE;
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC:
-      return ESP_BT_MODE_CLASSIC_BT;
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE:
-      return ESP_BT_MODE_BLE;
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL:
-      return ESP_BT_MODE_BTDM;
-    default:
-      return ESP_BT_MODE_IDLE;
-  }
+enum class BLEExtendedAdvertisingType : uint8_t {
+    LEGACY_CONNECTABLE_SCANNABLE = 0,
+    LEGACY_CONNECTABLE_DIRECTED = 1,
+    LEGACY_SCANNABLE = 2,
+    LEGACY_NON_CONNECTABLE = 3,
+    EXTENDED_CONNECTABLE = 4,
+    EXTENDED_SCANNABLE = 5,
+    EXTENDED_NON_CONNECTABLE = 6
+};
+
+/**
+ * @brief Scan types for BLE
+ */
+enum class BLEScanType : uint8_t {
+    PASSIVE = BLE_GAP_DISC_MODE_PASSIVE,
+    ACTIVE = BLE_GAP_DISC_MODE_GEN,
+    LIMITED = BLE_GAP_DISC_MODE_LTD
+};
+
+/**
+ * @brief Connection parameters for BLE
+ */
+struct BLEConnectionParams {
+    uint16_t interval_min;          // Connection interval minimum (units of 1.25ms)
+    uint16_t interval_max;          // Connection interval maximum (units of 1.25ms)
+    uint16_t latency;               // Slave latency
+    uint16_t supervision_timeout;   // Supervision timeout (units of 10ms)
+    uint16_t min_connection_event_length;  // Minimum connection event length
+    uint16_t max_connection_event_length;  // Maximum connection event length
+};
+
+/**
+ * @brief Advertising parameters for BLE
+ */
+struct BLEAdvertisingParams {
+    BLEAdvertisingType type = BLEAdvertisingType::CONNECTABLE_UNDIRECTED;
+    uint16_t interval_min = 0x0020;    // 20ms minimum
+    uint16_t interval_max = 0x0040;    // 40ms maximum
+    BLEAddressType own_addr_type = BLEAddressType::PUBLIC;
+    BLEAddressType peer_addr_type = BLEAddressType::PUBLIC;
+    BluetoothAddress peer_addr = {};
+    uint8_t channel_map = 0x07;        // All channels
+    uint8_t filter_policy = BLE_GAP_ADV_FILTER_TRANS_CONN;
+    int8_t tx_power = 0;               // TX power in dBm
+    
+    // Bluetooth 5.0 LE extended advertising parameters
+    bool use_extended_advertising = false;
+    BLEExtendedAdvertisingType extended_type = BLEExtendedAdvertisingType::LEGACY_CONNECTABLE_SCANNABLE;
+    uint8_t primary_phy = static_cast<uint8_t>(BLEPHYType::PHY_1M);
+    uint8_t secondary_phy = static_cast<uint8_t>(BLEPHYType::PHY_1M);
+    uint16_t max_events = 0;           // 0 = no limit
+    uint16_t duration = 0;             // 0 = no limit (units of 10ms)
+};
+
+/**
+ * @brief Scan parameters for BLE
+ */
+struct BLEScanParams {
+    BLEScanType type = BLEScanType::ACTIVE;
+    uint16_t interval = 0x0010;        // 10ms
+    uint16_t window = 0x0010;          // 10ms
+    BLEAddressType own_addr_type = BLEAddressType::PUBLIC;
+    uint8_t filter_policy = BLE_GAP_DISC_FILTER_NONE;
+    uint8_t filter_duplicates = 1;
+    uint16_t duration = 0;             // 0 = scan indefinitely
+    uint16_t period = 0;               // 0 = scan continuously
+    
+    // Bluetooth 5.0 LE extended scanning parameters
+    bool use_extended_scanning = false;
+    uint8_t primary_phy = static_cast<uint8_t>(BLEPHYType::PHY_1M);
+    uint8_t secondary_phy = static_cast<uint8_t>(BLEPHYType::PHY_1M);
+};
+
+/**
+ * @brief Security parameters for BLE
+ */
+struct BLESecurityParams {
+    BLESecurityLevel security_level = BLESecurityLevel::UNAUTHENTICATED;
+    BLEIOCapability io_capability = BLEIOCapability::NO_INPUT_OUTPUT;
+    BLEBondingFlag bonding = BLEBondingFlag::BONDING;
+    bool mitm_protection = false;
+    bool secure_connections = true;    // LE Secure Connections (recommended)
+    bool keypress_notifications = false;
+    uint8_t key_size = 16;             // Maximum key size
+    uint8_t init_key_dist = BLE_SM_PAIR_KEY_DIST_ENC | BLE_SM_PAIR_KEY_DIST_ID;
+    uint8_t resp_key_dist = BLE_SM_PAIR_KEY_DIST_ENC | BLE_SM_PAIR_KEY_DIST_ID;
+    uint32_t passkey = 0;              // For passkey entry
+};
+
+/**
+ * @brief Scanned device information
+ */
+struct BLEScannedDevice {
+    BluetoothAddress address;
+    BLEAddressType address_type;
+    int8_t rssi;
+    std::vector<uint8_t> advertising_data;
+    std::vector<uint8_t> scan_response_data;
+    std::chrono::steady_clock::time_point timestamp;
+    
+    // Bluetooth 5.0 LE extended advertising data
+    bool is_extended_advertising = false;
+    BLEPHYType primary_phy = BLEPHYType::PHY_1M;
+    BLEPHYType secondary_phy = BLEPHYType::PHY_1M;
+    uint16_t periodic_advertising_interval = 0;
+    
+    // Convenience methods
+    std::string getAddressString() const;
+    std::string getName() const;
+    std::vector<BluetoothUUID> getServiceUUIDs() const;
+    std::optional<std::vector<uint8_t>> getManufacturerData() const;
+    int8_t getTxPower() const;
+    bool hasService(const BluetoothUUID& uuid) const;
+};
+
+/**
+ * @brief Connected device information
+ */
+struct BLEConnectedDevice {
+    uint16_t connection_handle;
+    BluetoothAddress address;
+    BLEAddressType address_type;
+    BLEConnectionParams connection_params;
+    int8_t rssi;
+    BLEPHYType tx_phy = BLEPHYType::PHY_1M;
+    BLEPHYType rx_phy = BLEPHYType::PHY_1M;
+    uint16_t mtu = 23;                 // Default ATT MTU
+    std::chrono::steady_clock::time_point connection_time;
+    
+    std::string getAddressString() const;
+};
+
+/**
+ * @brief GATT service definition
+ */
+struct GATTService {
+    BluetoothUUID uuid;
+    uint16_t handle;
+    bool is_primary;
+    std::vector<uint16_t> characteristic_handles;
+    
+    // For service definition
+    struct ble_gatt_svc_def* nimble_service_def = nullptr;
+};
+
+/**
+ * @brief GATT characteristic definition
+ */
+struct GATTCharacteristic {
+    BluetoothUUID uuid;
+    uint16_t handle;
+    uint16_t value_handle;
+    uint16_t properties;
+    std::vector<uint8_t> value;
+    std::vector<uint16_t> descriptor_handles;
+    
+    // Access callbacks
+    std::function<int(uint16_t, uint16_t, struct ble_gatt_access_ctxt*, void*)> access_callback;
+    
+    // For characteristic definition
+    struct ble_gatt_chr_def* nimble_char_def = nullptr;
+};
+
+/**
+ * @brief GATT descriptor definition
+ */
+struct GATTDescriptor {
+    BluetoothUUID uuid;
+    uint16_t handle;
+    std::vector<uint8_t> value;
+    uint16_t permissions;
+    
+    // Access callbacks
+    std::function<int(uint16_t, uint16_t, struct ble_gatt_access_ctxt*, void*)> access_callback;
+    
+    // For descriptor definition
+    struct ble_gatt_dsc_def* nimble_desc_def = nullptr;
+};
+
+/**
+ * @brief Advertisement data builder
+ */
+class BLEAdvertisementData {
+public:
+    BLEAdvertisementData() = default;
+    
+    // Standard advertisement data methods
+    void setName(const std::string& name);
+    void setCompleteServiceUUIDs(const std::vector<BluetoothUUID>& uuids);
+    void setIncompleteServiceUUIDs(const std::vector<BluetoothUUID>& uuids);
+    void setManufacturerData(uint16_t company_id, const std::vector<uint8_t>& data);
+    void setServiceData(const BluetoothUUID& service_uuid, const std::vector<uint8_t>& data);
+    void setTxPowerLevel(int8_t power);
+    void setAppearance(uint16_t appearance);
+    void setFlags(uint8_t flags);
+    
+    // Custom data
+    void addCustomData(uint8_t type, const std::vector<uint8_t>& data);
+    
+    // Build final advertisement data
+    std::vector<uint8_t> build() const;
+    size_t getSize() const;
+    
+    // Clear all data
+    void clear();
+    
+private:
+    std::vector<std::pair<uint8_t, std::vector<uint8_t>>> data_elements_;
+};
+
+/**
+ * @brief Bluetooth event types
+ */
+enum class BluetoothEventType {
+    ADAPTER_STATE_CHANGED,
+    DEVICE_DISCOVERED,
+    DEVICE_CONNECTED,
+    DEVICE_DISCONNECTED,
+    PAIRING_STARTED,
+    PAIRING_COMPLETED,
+    PAIRING_FAILED,
+    BONDING_COMPLETED,
+    SERVICE_DISCOVERED,
+    CHARACTERISTIC_READ,
+    CHARACTERISTIC_WRITTEN,
+    CHARACTERISTIC_NOTIFICATION,
+    DESCRIPTOR_READ,
+    DESCRIPTOR_WRITTEN,
+    MTU_CHANGED,
+    PHY_CHANGED,
+    CONNECTION_PARAMS_UPDATED,
+    ADVERTISING_STARTED,
+    ADVERTISING_STOPPED,
+    SCAN_STARTED,
+    SCAN_STOPPED,
+    SCAN_RESULT
+};
+
+/**
+ * @brief Bluetooth event data
+ */
+struct BluetoothEvent {
+    BluetoothEventType type;
+    uint16_t connection_handle = 0;
+    
+    union {
+        struct {
+            bool enabled;
+        } adapter_state_changed;
+        
+        struct {
+            BLEScannedDevice device;
+        } device_discovered;
+        
+        struct {
+            BLEConnectedDevice device;
+        } device_connected;
+        
+        struct {
+            uint16_t connection_handle;
+            uint8_t reason;
+        } device_disconnected;
+        
+        struct {
+            uint16_t connection_handle;
+            BluetoothUUID service_uuid;
+            BluetoothUUID characteristic_uuid;
+            std::vector<uint8_t> data;
+        } characteristic_event;
+        
+        struct {
+            uint16_t connection_handle;
+            uint16_t mtu;
+        } mtu_changed;
+        
+        struct {
+            uint16_t connection_handle;
+            BLEPHYType tx_phy;
+            BLEPHYType rx_phy;
+        } phy_changed;
+        
+        struct {
+            uint16_t connection_handle;
+            BLEConnectionParams params;
+        } connection_params_updated;
+    };
+};
+
+/**
+ * @brief Callback function types
+ */
+using BluetoothEventCallback = std::function<void(const BluetoothEvent& event)>;
+using CharacteristicAccessCallback = std::function<int(uint16_t conn_handle, uint16_t attr_handle, 
+                                                      struct ble_gatt_access_ctxt* ctxt, void* arg)>;
+using GAPEventCallback = std::function<int(struct ble_gap_event* event, void* arg)>;
+
+/**
+ * @brief Bluetooth initialization configuration
+ */
+struct BluetoothConfig {
+    std::string device_name = "ESP32-C6-BLE";
+    BLESecurityParams security;
+    BLEPowerLevel tx_power = BLEPowerLevel::POWER_0_DBM;
+    bool enable_privacy = false;
+    uint16_t att_mtu = 247;            // Maximum ATT MTU for ESP32-C6
+    uint8_t max_connections = 4;       // Maximum concurrent connections
+    uint32_t bond_storage_size = 8;    // Number of bonded devices to store
+    
+    // Bluetooth 5.0 LE features
+    bool enable_extended_advertising = false;
+    bool enable_periodic_advertising = false;
+    bool enable_phy_2m = true;         // Enable 2M PHY
+    bool enable_phy_coded = false;     // Enable Coded PHY (long range)
+    
+    // NimBLE specific configuration
+    uint16_t nimble_max_attrs = 256;   // Maximum GATT attributes
+    uint16_t nimble_max_services = 16; // Maximum GATT services
+    uint16_t nimble_max_client_configs = 32; // Maximum client configurations
+};
+
+/**
+ * @brief Standard Bluetooth service UUIDs
+ */
+namespace StandardUUIDs {
+    // Standard services
+    inline const BluetoothUUID GENERIC_ACCESS_SERVICE(0x1800);
+    inline const BluetoothUUID GENERIC_ATTRIBUTE_SERVICE(0x1801);
+    inline const BluetoothUUID DEVICE_INFORMATION_SERVICE(0x180A);
+    inline const BluetoothUUID BATTERY_SERVICE(0x180F);
+    inline const BluetoothUUID HEART_RATE_SERVICE(0x180D);
+    inline const BluetoothUUID NORDIC_UART_SERVICE(BluetoothUUID("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"));
+    
+    // Standard characteristics
+    inline const BluetoothUUID DEVICE_NAME_CHARACTERISTIC(0x2A00);
+    inline const BluetoothUUID APPEARANCE_CHARACTERISTIC(0x2A01);
+    inline const BluetoothUUID PERIPHERAL_PREFERRED_CONNECTION_PARAMS(0x2A04);
+    inline const BluetoothUUID SERVICE_CHANGED_CHARACTERISTIC(0x2A05);
+    inline const BluetoothUUID BATTERY_LEVEL_CHARACTERISTIC(0x2A19);
+    inline const BluetoothUUID MANUFACTURER_NAME_CHARACTERISTIC(0x2A29);
+    inline const BluetoothUUID MODEL_NUMBER_CHARACTERISTIC(0x2A24);
+    inline const BluetoothUUID SERIAL_NUMBER_CHARACTERISTIC(0x2A25);
+    inline const BluetoothUUID FIRMWARE_REVISION_CHARACTERISTIC(0x2A26);
+    inline const BluetoothUUID HARDWARE_REVISION_CHARACTERISTIC(0x2A27);
+    inline const BluetoothUUID SOFTWARE_REVISION_CHARACTERISTIC(0x2A28);
 }
 
 /**
- * @brief Convert ESP-IDF Bluetooth mode to HardFOC mode
- * @param mode ESP-IDF Bluetooth mode
- * @return HardFOC Bluetooth mode
+ * @brief Error codes for Bluetooth operations
  */
-inline hf_bluetooth_mode_t espModeTohf_bluetooth_mode_t(esp_bt_mode_t mode) {
-  switch (mode) {
-    case ESP_BT_MODE_IDLE:
-      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
-    case ESP_BT_MODE_CLASSIC_BT:
-      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC;
-    case ESP_BT_MODE_BLE:
-      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE;
-    case ESP_BT_MODE_BTDM:
-      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL;
-    default:
-      return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
-  }
-}
+enum class BluetoothError : int {
+    SUCCESS = 0,
+    INVALID_PARAMETER = -1,
+    NOT_INITIALIZED = -2,
+    ALREADY_INITIALIZED = -3,
+    OPERATION_FAILED = -4,
+    CONNECTION_FAILED = -5,
+    DISCONNECTION_FAILED = -6,
+    SERVICE_NOT_FOUND = -7,
+    CHARACTERISTIC_NOT_FOUND = -8,
+    DESCRIPTOR_NOT_FOUND = -9,
+    READ_FAILED = -10,
+    WRITE_FAILED = -11,
+    NOTIFICATION_FAILED = -12,
+    INDICATION_FAILED = -13,
+    ADVERTISING_FAILED = -14,
+    SCAN_FAILED = -15,
+    PAIRING_FAILED = -16,
+    BONDING_FAILED = -17,
+    SECURITY_FAILED = -18,
+    TIMEOUT = -19,
+    BUFFER_TOO_SMALL = -20,
+    NOT_CONNECTED = -21,
+    ALREADY_CONNECTED = -22,
+    NOT_SUPPORTED = -23,
+    RESOURCE_EXHAUSTED = -24,
+    INVALID_STATE = -25
+};
 
 /**
- * @brief Convert HardFOC scan type to ESP-IDF scan type
- * @param scan_type HardFOC scan type
- * @return ESP-IDF scan type
+ * @brief Convert BluetoothError to string
  */
-inline esp_ble_scan_type_t hfScanTypeToEspScanType(hf_bluetooth_scan_type_t scan_type) {
-  switch (scan_type) {
-    case hf_bluetooth_scan_type_t::PASSIVE:
-      return BLE_SCAN_TYPE_PASSIVE;
-    case hf_bluetooth_scan_type_t::ACTIVE:
-      return BLE_SCAN_TYPE_ACTIVE;
-    default:
-      return BLE_SCAN_TYPE_ACTIVE;
-  }
-}
+std::string bluetoothErrorToString(BluetoothError error);
 
 /**
- * @brief Convert ESP-IDF scan type to HardFOC scan type
- * @param scan_type ESP-IDF scan type
- * @return HardFOC scan type
+ * @brief Helper functions for address conversion
  */
-inline hf_bluetooth_scan_type_t espScanTypeToHfScanType(esp_ble_scan_type_t scan_type) {
-  switch (scan_type) {
-    case BLE_SCAN_TYPE_PASSIVE:
-      return hf_bluetooth_scan_type_t::PASSIVE;
-    case BLE_SCAN_TYPE_ACTIVE:
-      return hf_bluetooth_scan_type_t::ACTIVE;
-    default:
-      return hf_bluetooth_scan_type_t::ACTIVE;
-  }
-}
+std::string bluetoothAddressToString(const BluetoothAddress& address);
+BluetoothAddress stringToBluetoothAddress(const std::string& address_str);
 
 /**
- * @brief Convert ESP-IDF error to HardFOC Bluetooth error
- * @param esp_err ESP-IDF error code
- * @return HardFOC Bluetooth error code
+ * @brief Helper functions for UUID operations
  */
-inline hf_bluetooth_err_t espErrorTohf_bluetooth_err_tor(esp_err_t esp_err) {
-  switch (esp_err) {
-    case ESP_OK:
-      return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_PARAM;
-    case ESP_ERR_INVALID_STATE:
-      return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_STATE;
-    case ESP_ERR_NO_MEM:
-      return hf_bluetooth_err_t::BLUETOOTH_ERR_NO_MEMORY;
-    case ESP_ERR_TIMEOUT:
-      return hf_bluetooth_err_t::BLUETOOTH_ERR_TIMEOUT;
-    case ESP_ERR_NOT_FOUND:
-      return hf_bluetooth_err_t::BLUETOOTH_ERR_DEVICE_NOT_FOUND;
-    case ESP_ERR_NOT_SUPPORTED:
-      return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED;
-    case ESP_ERR_BT_NIMBLE_BASE:
-      return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
-    default:
-      return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
-  }
-}
+bool isValidUUIDString(const std::string& uuid_str);
+std::string formatUUIDString(const std::string& uuid_str);
 
-/**
- * @brief Convert HardFOC Bluetooth address to ESP-IDF address
- * @param hf_addr HardFOC Bluetooth address
- * @param esp_addr ESP-IDF address output
- */
-inline void hfBluetoothAddressToEspAddress(const hf_bluetooth_address_t& hf_addr,
-                                           esp_bd_addr_t esp_addr) {
-  std::memcpy(esp_addr, hf_addr.addr, HF_ESP_BT_ADDRESS_LEN);
-}
+} // namespace bluetooth
+} // namespace esp32
 
-/**
- * @brief Convert ESP-IDF address to HardFOC Bluetooth address
- * @param esp_addr ESP-IDF address
- * @param hf_addr HardFOC Bluetooth address output
- */
-inline void espAddressTohf_bluetooth_address_t(const esp_bd_addr_t esp_addr,
-                                               hf_bluetooth_address_t& hf_addr) {
-  std::memcpy(hf_addr.addr, esp_addr, HF_ESP_BT_ADDRESS_LEN);
-}
-
-/**
- * @brief Convert HardFOC device type to ESP-IDF device type
- * @param device_type HardFOC device type
- * @return ESP-IDF device type
- */
-inline esp_bt_dev_type_t hfDeviceTypeToEspDeviceType(hf_bluetooth_device_type_t device_type) {
-  switch (device_type) {
-    case hf_bluetooth_device_type_t::CLASSIC:
-      return ESP_BT_DEV_TYPE_BREDR;
-    case hf_bluetooth_device_type_t::BLE:
-      return ESP_BT_DEV_TYPE_BLE;
-    case hf_bluetooth_device_type_t::DUAL:
-      return ESP_BT_DEV_TYPE_DUMO;
-    case hf_bluetooth_device_type_t::UNKNOWN:
-    default:
-      return ESP_BT_DEV_TYPE_BREDR;
-  }
-}
-
-/**
- * @brief Convert ESP-IDF device type to HardFOC device type
- * @param device_type ESP-IDF device type
- * @return HardFOC device type
- */
-inline hf_bluetooth_device_type_t espDeviceTypeToHfDeviceType(esp_bt_dev_type_t device_type) {
-  switch (device_type) {
-    case ESP_BT_DEV_TYPE_BREDR:
-      return hf_bluetooth_device_type_t::CLASSIC;
-    case ESP_BT_DEV_TYPE_BLE:
-      return hf_bluetooth_device_type_t::BLE;
-    case ESP_BT_DEV_TYPE_DUMO:
-      return hf_bluetooth_device_type_t::DUAL;
-    default:
-      return hf_bluetooth_device_type_t::UNKNOWN;
-  }
-}
-
-/**
- * @brief Convert HardFOC security level to ESP-IDF security level
- * @param security HardFOC security level
- * @return ESP-IDF security level
- */
-inline esp_ble_sec_act_t hfSecurityToEspSecurity(hf_bluetooth_security_t security) {
-  switch (security) {
-    case hf_bluetooth_security_t::NONE:
-      return ESP_BLE_SEC_NONE;
-    case hf_bluetooth_security_t::UNAUTHENTICATED:
-      return ESP_BLE_SEC_ENCRYPT;
-    case hf_bluetooth_security_t::AUTHENTICATED:
-      return ESP_BLE_SEC_ENCRYPT_MITM;
-    case hf_bluetooth_security_t::AUTHORIZED:
-      return ESP_BLE_SEC_ENCRYPT_MITM;
-    case hf_bluetooth_security_t::ENCRYPTED:
-      return ESP_BLE_SEC_ENCRYPT;
-    case hf_bluetooth_security_t::AUTHENTICATED_SC:
-      return ESP_BLE_SEC_ENCRYPT_MITM;
-    default:
-      return ESP_BLE_SEC_NONE;
-  }
-}
-
-/**
- * @brief Convert ESP-IDF security level to HardFOC security level
- * @param security ESP-IDF security level
- * @return HardFOC security level
- */
-inline hf_bluetooth_security_t espSecurityToHfSecurity(esp_ble_sec_act_t security) {
-  switch (security) {
-    case ESP_BLE_SEC_NONE:
-      return hf_bluetooth_security_t::NONE;
-    case ESP_BLE_SEC_ENCRYPT:
-      return hf_bluetooth_security_t::ENCRYPTED;
-    case ESP_BLE_SEC_ENCRYPT_NO_MITM:
-      return hf_bluetooth_security_t::UNAUTHENTICATED;
-    case ESP_BLE_SEC_ENCRYPT_MITM:
-      return hf_bluetooth_security_t::AUTHENTICATED;
-    default:
-      return hf_bluetooth_security_t::NONE;
-  }
-}
-
-/**
- * @brief Check if BLE connection interval is valid
- * @param interval Connection interval in 1.25ms units
- * @return true if valid, false otherwise
- */
-inline bool isValidBleConnectionInterval(uint16_t interval) {
-  return (interval >= HF_ESP_BLE_CONN_INTERVAL_MIN && interval <= HF_ESP_BLE_CONN_INTERVAL_MAX);
-}
-
-/**
- * @brief Check if BLE slave latency is valid
- * @param latency Slave latency
- * @return true if valid, false otherwise
- */
-inline bool isValidBleSlaveLatency(uint16_t latency) {
-  return (latency >= HF_ESP_BLE_SLAVE_LATENCY_MIN && latency <= HF_ESP_BLE_SLAVE_LATENCY_MAX);
-}
-
-/**
- * @brief Check if BLE supervision timeout is valid
- * @param timeout Supervision timeout in 10ms units
- * @return true if valid, false otherwise
- */
-inline bool isValidBleSupervisionTimeout(uint16_t timeout) {
-  return (timeout >= HF_ESP_BLE_SUPERVISION_TIMEOUT_MIN &&
-          timeout <= HF_ESP_BLE_SUPERVISION_TIMEOUT_MAX);
-}
-
-/**
- * @brief Check if device name is valid
- * @param name Device name string
- * @return true if valid, false otherwise
- */
-inline bool isValidDeviceName(const std::string& name) {
-  return (!name.empty() && name.length() <= HF_ESP_BT_DEVICE_NAME_MAX_LEN);
-}
-
-/**
- * @brief Check if GATT MTU size is valid
- * @param mtu MTU size
- * @return true if valid, false otherwise
- */
-inline bool isValidGattMtu(uint16_t mtu) {
-  return (mtu >= HF_ESP_BT_GATT_MTU_DEFAULT && mtu <= HF_ESP_BT_GATT_MTU_MAX);
-}
-
-/**
- * @brief Parse hex string to unsigned integer without exceptions
- * @param hex_str Hex string to parse
- * @param max_chars Maximum number of characters to parse
- * @param result Output result
- * @return true if parsing successful, false otherwise
- */
-inline bool parseHexString(const std::string& hex_str, size_t max_chars, uint32_t& result) {
-  result = 0;
-  size_t len = std::min(hex_str.length(), max_chars);
-
-  for (size_t i = 0; i < len; i++) {
-    char c = hex_str[i];
-    uint32_t digit = 0;
-
-    if (c >= '0' && c <= '9') {
-      digit = c - '0';
-    } else if (c >= 'A' && c <= 'F') {
-      digit = c - 'A' + 10;
-    } else if (c >= 'a' && c <= 'f') {
-      digit = c - 'a' + 10;
-    } else {
-      return false; // Invalid hex character
-    }
-
-    if (result > UINT32_MAX_DIV_16) {
-      return false; // Overflow detected
-    }
-
-    result = (result << 4) | digit;
-  }
-
-  return true;
-}
-
-/**
- * @brief Convert UUID string to ESP-IDF UUID structure
- * @param uuid_str UUID string (16, 32, or 128-bit)
- * @param esp_uuid ESP-IDF UUID structure output
- * @return true if conversion successful, false otherwise
- */
-inline bool stringToEspUuid(const std::string& uuid_str, esp_bt_uuid_t& esp_uuid) {
-  if (uuid_str.length() == 4) {
-    // 16-bit UUID
-    esp_uuid.len = ESP_UUID_LEN_16;
-    uint32_t value;
-    if (!parseHexString(uuid_str, 4, value) || value > 0xFFFF) {
-      return false;
-    }
-    esp_uuid.uuid.uuid16 = static_cast<uint16_t>(value);
-    return true;
-  } else if (uuid_str.length() == 8) {
-    // 32-bit UUID
-    esp_uuid.len = ESP_UUID_LEN_32;
-    uint32_t value;
-    if (!parseHexString(uuid_str, 8, value)) {
-      return false;
-    }
-    esp_uuid.uuid.uuid32 = value;
-    return true;
-  } else if (uuid_str.length() == 36) {
-    // 128-bit UUID (with dashes)
-    esp_uuid.len = ESP_UUID_LEN_128;
-    std::string clean_uuid = uuid_str;
-    clean_uuid.erase(std::remove(clean_uuid.begin(), clean_uuid.end(), '-'), clean_uuid.end());
-
-    if (clean_uuid.length() == 32) {
-      for (int i = 0; i < UUID_128_BYTE_LENGTH; i++) {
-        std::string byte_str = clean_uuid.substr(30 - (i * 2), 2);
-        uint32_t value;
-        if (!parseHexString(byte_str, 2, value) || value > 0xFF) {
-          return false;
-        }
-        esp_uuid.uuid.uuid128[i] = static_cast<uint8_t>(value);
-      }
-      return true;
-    }
-  } else if (uuid_str.length() == 32) {
-    // 128-bit UUID (without dashes)
-    static constexpr int UUID_128_BYTE_LENGTH = 16; // 128-bit UUID byte length
-    esp_uuid.len = ESP_UUID_LEN_128;
-    for (int i = 0; i < UUID_128_BYTE_LENGTH; i++) {
-      std::string byte_str = uuid_str.substr(30 - (i * 2), 2);
-      uint32_t value;
-      if (!parseHexString(byte_str, 2, value) || value > 0xFF) {
-        return false;
-      }
-      esp_uuid.uuid.uuid128[i] = static_cast<uint8_t>(value);
-    }
-    return true;
-  }
-
-  return false;
-}
-
-/**
- * @brief Convert ESP-IDF UUID structure to UUID string
- * @param esp_uuid ESP-IDF UUID structure
- * @return UUID string
- */
-inline std::string espUuidToString(const esp_bt_uuid_t& esp_uuid) {
-  char buffer[64];
-
-  switch (esp_uuid.len) {
-    case ESP_UUID_LEN_16:
-      std::snprintf(buffer, sizeof(buffer), "%04X", esp_uuid.uuid.uuid16);
-      break;
-    case ESP_UUID_LEN_32:
-      std::snprintf(buffer, sizeof(buffer), "%08X", esp_uuid.uuid.uuid32);
-      break;
-    case ESP_UUID_LEN_128:
-      std::snprintf(buffer, sizeof(buffer),
-                    "%02X%02X%02X%02X-%02X%02X-%02X%02X-%02X%02X-%02X%02X%02X%02X%02X%02X",
-                    esp_uuid.uuid.uuid128[15], esp_uuid.uuid.uuid128[14], esp_uuid.uuid.uuid128[13],
-                    esp_uuid.uuid.uuid128[12], esp_uuid.uuid.uuid128[11], esp_uuid.uuid.uuid128[10],
-                    esp_uuid.uuid.uuid128[9], esp_uuid.uuid.uuid128[8], esp_uuid.uuid.uuid128[7],
-                    esp_uuid.uuid.uuid128[6], esp_uuid.uuid.uuid128[5], esp_uuid.uuid.uuid128[4],
-                    esp_uuid.uuid.uuid128[3], esp_uuid.uuid.uuid128[2], esp_uuid.uuid.uuid128[1],
-                    esp_uuid.uuid.uuid128[0]);
-      break;
-    default:
-      return "";
-  }
-
-  return std::string(buffer);
-}
-
-/**
- * @brief Create default BLE advertising parameters
- * @return Default advertising parameters
- */
-inline HfEspBleAdvParams createDefaultBleAdvParams() {
-  HfEspBleAdvParams params;
-  params.adv_int_min = 0x20; // 32 * 0.625ms = 20ms
-  params.adv_int_max = 0x40; // 64 * 0.625ms = 40ms
-  params.adv_type = hf_esp_ble_adv_type_t::ADV_IND;
-  params.own_addr_type = BLE_ADDR_TYPE_PUBLIC;
-  params.peer_addr_type = BLE_ADDR_TYPE_PUBLIC;
-  std::memset(params.peer_addr, 0, sizeof(params.peer_addr));
-  params.channel_map = ADV_CHNL_ALL;
-  params.filter_policy = ADV_FILTER_ALLOW_SCAN_ANY_CON_ANY;
-  return params;
-}
-
-/**
- * @brief Create default BLE scan parameters
- * @return Default scan parameters
- */
-inline HfEspBleScanParams createDefaultBleScanParams() {
-  HfEspBleScanParams params;
-  params.scan_type = hf_esp_ble_scan_type_t::ACTIVE;
-  params.own_addr_type = BLE_ADDR_TYPE_PUBLIC;
-  params.scan_filter_policy = BLE_SCAN_FILTER_ALLOW_ALL;
-  params.scan_interval = 0x50; // 80 * 0.625ms = 50ms
-  params.scan_window = 0x30;   // 48 * 0.625ms = 30ms
-  params.scan_duplicate = BLE_SCAN_DUPLICATE_DISABLE;
-  return params;
-}
-
-/**
- * @brief Create default BLE connection parameters
- * @return Default connection parameters
- */
-inline HfEspBleConnParams createDefaultBleConnParams() {
-  HfEspBleConnParams params;
-  params.interval_min = 0x18; // 24 * 1.25ms = 30ms
-  params.interval_max = 0x28; // 40 * 1.25ms = 50ms
-  params.latency = 0;         // No slave latency
-  params.timeout = 0x64;      // 100 * 10ms = 1000ms
-  params.min_ce_len = 0x10;   // 16 * 0.625ms = 10ms
-  params.max_ce_len = 0x20;   // 32 * 0.625ms = 20ms
-  return params;
-}
-
-#endif // __cplusplus
+#endif // ESP_TYPES_BLUETOOTH_H
