@@ -179,6 +179,7 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
     return hf_bluetooth_err_t::BLUETOOTH_ERR_INIT_FAILED;
   }
 
+#if HAS_BLUETOOTH_SUPPORT
   // Release memory for classic BT if not needed
   esp_bt_mode_t esp_mode = ConvertToEspMode(mode);
   if (esp_mode == ESP_BT_MODE_BLE) {
@@ -209,6 +210,10 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
     Cleanup();
     return hf_bluetooth_err_t::BLUETOOTH_ERR_INIT_FAILED;
   }
+#else
+  ESP_LOGE(TAG, "Bluetooth not supported on this ESP32 variant");
+  return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+#endif
 
   // Initialize Bluedroid stack
   ret = esp_bluedroid_init();

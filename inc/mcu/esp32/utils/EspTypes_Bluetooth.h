@@ -23,7 +23,8 @@
 extern "C" {
 #endif
 
-// Bluetooth Classic headers
+// Bluetooth Classic headers - conditional compilation for different ESP32 variants
+#if defined(CONFIG_IDF_TARGET_ESP32) || defined(CONFIG_IDF_TARGET_ESP32S3)
 #include "esp_a2dp_api.h"
 #include "esp_avrc_api.h"
 #include "esp_bt.h"
@@ -31,6 +32,17 @@ extern "C" {
 #include "esp_gap_bt_api.h"
 #include "esp_hf_client_api.h"
 #include "esp_spp_api.h"
+#elif defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32H2)
+// BLE-only variants - no basic bt headers available
+// Only include BLE-specific headers when needed
+#elif !defined(CONFIG_IDF_TARGET_ESP32S2)
+// For other variants, include basic bluetooth headers but not A2DP
+#include "esp_bt.h"
+#include "esp_bt_main.h"
+#include "esp_gap_bt_api.h"
+#include "esp_hf_client_api.h"
+#include "esp_spp_api.h"
+#endif
 
 // Bluetooth Low Energy headers
 #include "esp_bt_defs.h"

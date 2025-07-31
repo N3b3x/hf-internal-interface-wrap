@@ -26,8 +26,10 @@ extern "C" {
 #endif
 
 // Bluetooth headers - conditionally include based on target support
+#if HAS_BLUETOOTH_SUPPORT && !defined(CONFIG_IDF_TARGET_ESP32C6)
 #include "esp_bt.h"
 #include "esp_bt_main.h"
+#endif
 
 // Classic Bluetooth headers (only for ESP32 and ESP32S3)
 #if HAS_CLASSIC_BLUETOOTH
@@ -50,6 +52,7 @@ extern "C" {
 #define HAS_A2DP_SUPPORT 1
 #define HAS_AVRCP_SUPPORT 1
 #elif defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32H2)
+#define HAS_BLUETOOTH_SUPPORT 0
 // BLE only variants
 #define HAS_CLASSIC_BLUETOOTH 0
 #define HAS_A2DP_SUPPORT 0
@@ -59,7 +62,7 @@ extern "C" {
 #define HAS_CLASSIC_BLUETOOTH 0
 #define HAS_A2DP_SUPPORT 0
 #define HAS_AVRCP_SUPPORT 0
-#define HAS_BLUETOOTH_SUPPORT 0
+#define HAS_BLUETOOTH_SUPPORT 1
 #else
 // Default to no Classic Bluetooth for unknown targets
 #define HAS_CLASSIC_BLUETOOTH 0
