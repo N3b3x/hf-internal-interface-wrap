@@ -66,7 +66,12 @@
   X(WIFI_ERR_WEAK_SIGNAL, 16, "Weak signal strength")                   \
   X(WIFI_ERR_AUTHENTICATION_FAILED, 17, "Authentication failed")        \
   X(WIFI_ERR_ASSOCIATION_FAILED, 18, "Association failed")              \
-  X(WIFI_ERR_HANDSHAKE_FAILED, 19, "4-way handshake failed")
+  X(WIFI_ERR_HANDSHAKE_FAILED, 19, "4-way handshake failed")            \
+  X(WIFI_ERR_INIT_FAILED, 20, "WiFi initialization failed")             \
+  X(WIFI_ERR_CONFIG_INVALID, 21, "Invalid configuration")               \
+  X(WIFI_ERR_ENTERPRISE_FAILED, 22, "Enterprise authentication failed") \
+  X(WIFI_ERR_WPA3_NOT_SUPPORTED, 23, "WPA3 not supported")              \
+  X(WIFI_ERR_MESH_FAILED, 24, "Mesh operation failed")
 
 /**
  * @ingroup wifi
@@ -118,7 +123,8 @@ enum class hf_wifi_security_t : hf_u8_t {
   HF_WIFI_SECURITY_WPA2_ENTERPRISE = 5,     /**< WPA2 Enterprise */
   HF_WIFI_SECURITY_WPA3_PSK = 6,            /**< WPA3 Personal */
   HF_WIFI_SECURITY_WPA2_WPA3_PSK = 7,       /**< WPA2/WPA3 Mixed Personal */
-  HF_WIFI_SECURITY_WAPI_PSK = 8             /**< WAPI Personal */
+  HF_WIFI_SECURITY_WPA3_ENTERPRISE = 8,     /**< WPA3 Enterprise */
+  HF_WIFI_SECURITY_WAPI_PSK = 9             /**< WAPI Personal */
 };
 
 /**
