@@ -147,4 +147,4 @@ jobs:
           sudo mv actionlint /usr/local/bin/
           
       - name: Run actionlint  
-        run: actionlint .github/workflows/
+        run: actionlint .github/workflows/*.yml
