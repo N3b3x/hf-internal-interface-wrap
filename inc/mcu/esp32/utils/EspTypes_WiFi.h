@@ -1,655 +1,424 @@
 /**
  * @file EspTypes_WiFi.h
- * @brief Type definitions for ESP32-C6 WiFi 6 implementation using ESP-IDF v5.5
- * @version 2.0.0
- * @date 2024
- * 
- * This file provides comprehensive type definitions for ESP32-C6 WiFi 6 implementation
- * using ESP-IDF v5.5. It includes modern C++17 features and supports IEEE 802.11ax
- * (WiFi 6) certified features for ESP32-C6.
+ * @brief ESP32 WiFi type definitions for hardware abstraction.
+ *
+ * This header defines only the essential WiFi-specific types and constants used by
+ * the EspWifi implementation. It follows a clean, minimal pattern providing only
+ * necessary types without redundant or duplicate definitions.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
  */
 
-#ifndef ESP_TYPES_WIFI_H
-#define ESP_TYPES_WIFI_H
+#pragma once
 
-#include <cstdint>
-#include <string>
-#include <vector>
-#include <array>
-#include <functional>
-#include <chrono>
-#include <memory>
-#include <optional>
+#include "BaseWifi.h" // For hf_wifi_err_t
+#include "EspTypes_Base.h"
+#include "HardwareTypes.h"
+#include "McuSelect.h" // Central MCU platform selection (includes all ESP-IDF)
 
-// ESP-IDF v5.5 includes for WiFi
-#include "esp_wifi.h"
-#include "esp_wifi_types.h"
-#include "esp_netif.h"
-#include "esp_event.h"
-#include "esp_log.h"
-#include "esp_err.h"
-#include "esp_mac.h"
-#include "esp_system.h"
+#ifdef HF_MCU_FAMILY_ESP32
 
-// Network and IP related includes
-#include "lwip/ip_addr.h"
-#include "lwip/netif.h"
-#include "lwip/dhcp.h"
-#include "lwip/dns.h"
-
-namespace esp32 {
-namespace wifi {
+//==============================================================================
+// ESSENTIAL WIFI TYPES (ESP32)
+//==============================================================================
 
 /**
- * @brief MAC address type (6 bytes)
+ * @brief WiFi mode type for ESP32.
  */
-using MacAddress = std::array<uint8_t, 6>;
+using hf_esp_wifi_mode_t = hf_wifi_mode_t;
 
 /**
- * @brief WiFi operating modes
+ * @brief WiFi channel bandwidth types.
+ * @details Channel bandwidth options for WiFi 6 support.
  */
-enum class WifiMode : uint8_t {
-    NONE = 0,           // WiFi disabled
-    STATION = 1,        // Station mode only
-    ACCESS_POINT = 2,   // Access Point mode only
-    STATION_AP = 3      // Station + Access Point mode
+enum class hf_esp_wifi_bandwidth_t : hf_u8_t {
+  HF_WIFI_BW_20 = 0,    ///< 20 MHz bandwidth
+  HF_WIFI_BW_40 = 1,    ///< 40 MHz bandwidth
+  HF_WIFI_BW_80 = 2,    ///< 80 MHz bandwidth (WiFi 6)
+  HF_WIFI_BW_160 = 3    ///< 160 MHz bandwidth (WiFi 6)
 };
 
 /**
- * @brief WiFi security types (ESP32-C6 supports up to WPA3)
+ * @brief WiFi protocol bitmap.
+ * @details Supported WiFi protocol standards.
  */
-enum class SecurityType : uint8_t {
-    OPEN = 0,                   // No security
-    WEP = 1,                    // WEP (deprecated, not recommended)
-    WPA_PSK = 2,                // WPA-PSK
-    WPA2_PSK = 3,               // WPA2-PSK
-    WPA_WPA2_PSK = 4,           // WPA/WPA2-PSK mixed mode
-    WPA3_PSK = 5,               // WPA3-PSK (SAE)
-    WPA2_WPA3_PSK = 6,          // WPA2/WPA3-PSK mixed mode
-    WPA2_ENTERPRISE = 7,        // WPA2-Enterprise (802.1X)
-    WPA3_ENTERPRISE = 8,        // WPA3-Enterprise
-    WPA3_ENTERPRISE_192 = 9,    // WPA3-Enterprise 192-bit
-    UNKNOWN = 255               // Unknown security type
+enum class hf_esp_wifi_protocol_t : hf_u8_t {
+  HF_WIFI_PROTOCOL_11B = 0x01,   ///< 802.11b
+  HF_WIFI_PROTOCOL_11G = 0x02,   ///< 802.11g
+  HF_WIFI_PROTOCOL_11N = 0x04,   ///< 802.11n
+  HF_WIFI_PROTOCOL_LR = 0x08,    ///< Long Range mode
+  HF_WIFI_PROTOCOL_11AX = 0x10   ///< 802.11ax (WiFi 6)
 };
 
 /**
- * @brief WiFi power save modes
+ * @brief WiFi security authentication modes.
+ * @details Security types supported by ESP32-C6.
  */
-enum class PowerSaveMode : uint8_t {
-    NONE = 0,           // No power save
-    MIN_MODEM = 1,      // Minimum modem power save
-    MAX_MODEM = 2       // Maximum modem power save
+enum class hf_esp_wifi_auth_mode_t : hf_u8_t {
+  HF_WIFI_AUTH_OPEN = 0,             ///< Open (no security)
+  HF_WIFI_AUTH_WEP = 1,             ///< WEP (deprecated)
+  HF_WIFI_AUTH_WPA_PSK = 2,         ///< WPA-PSK
+  HF_WIFI_AUTH_WPA2_PSK = 3,        ///< WPA2-PSK
+  HF_WIFI_AUTH_WPA_WPA2_PSK = 4,    ///< WPA/WPA2-PSK
+  HF_WIFI_AUTH_WPA2_ENTERPRISE = 5, ///< WPA2-Enterprise
+  HF_WIFI_AUTH_WPA3_PSK = 6,        ///< WPA3-PSK
+  HF_WIFI_AUTH_WPA2_WPA3_PSK = 7,   ///< WPA2/WPA3-PSK
+  HF_WIFI_AUTH_WAPI_PSK = 8,        ///< WAPI-PSK
+  HF_WIFI_AUTH_WPA3_ENT_192 = 9     ///< WPA3-Enterprise 192-bit
 };
 
 /**
- * @brief WiFi bandwidth modes (ESP32-C6 supports up to 40MHz)
+ * @brief WiFi cipher types.
+ * @details Encryption cipher types.
  */
-enum class BandwidthMode : uint8_t {
-    HT20 = 0,          // 20MHz bandwidth
-    HT40 = 1           // 40MHz bandwidth
+enum class hf_esp_wifi_cipher_type_t : hf_u8_t {
+  HF_WIFI_CIPHER_TYPE_NONE = 0,       ///< No cipher
+  HF_WIFI_CIPHER_TYPE_WEP40 = 1,      ///< WEP40
+  HF_WIFI_CIPHER_TYPE_WEP104 = 2,     ///< WEP104
+  HF_WIFI_CIPHER_TYPE_TKIP = 3,       ///< TKIP
+  HF_WIFI_CIPHER_TYPE_CCMP = 4,       ///< CCMP (AES)
+  HF_WIFI_CIPHER_TYPE_TKIP_CCMP = 5,  ///< TKIP + CCMP
+  HF_WIFI_CIPHER_TYPE_AES_CMAC128 = 6, ///< AES-CMAC-128
+  HF_WIFI_CIPHER_TYPE_SMS4 = 7,       ///< SMS4 (WAPI)
+  HF_WIFI_CIPHER_TYPE_GCMP = 8,       ///< GCMP (WPA3)
+  HF_WIFI_CIPHER_TYPE_GCMP256 = 9     ///< GCMP-256 (WPA3)
+};
+
+//==============================================================================
+// CONFIGURATION STRUCTURES
+//==============================================================================
+
+/**
+ * @brief WiFi station configuration structure.
+ * @details Configuration parameters for station mode.
+ */
+struct hf_esp_wifi_sta_config_t {
+  char ssid[33];                           ///< SSID (32 bytes + null terminator)
+  char password[65];                       ///< Password (64 bytes + null terminator)
+  hf_u8_t bssid[6];                       ///< Target BSSID (optional)
+  hf_bool_t bssid_set;                    ///< Use specific BSSID
+  hf_u8_t channel;                        ///< Channel (0 = scan all)
+  hf_esp_wifi_auth_mode_t threshold_authmode; ///< Minimum security mode
+  hf_i8_t rssi_threshold;                 ///< RSSI threshold
+  hf_bool_t pmf_capable;                  ///< Protected Management Frame capable
+  hf_bool_t pmf_required;                 ///< Protected Management Frame required
+  hf_bool_t rm_enabled;                   ///< 802.11k enabled
+  hf_bool_t btm_enabled;                  ///< 802.11v enabled
+  hf_bool_t mbo_enabled;                  ///< Multi-band Operation enabled
+  hf_bool_t ft_enabled;                   ///< 802.11r Fast Transition enabled
+  hf_bool_t owe_enabled;                  ///< Opportunistic Wireless Encryption
+  hf_bool_t transition_disable;           ///< Disable transition mode
+  hf_u8_t sae_pwe_h2e;                   ///< SAE PWE derivation mode
+  hf_u8_t failure_retry_cnt;             ///< Connection failure retry count
 };
 
 /**
- * @brief WiFi protocol modes (ESP32-C6 supports WiFi 6)
+ * @brief WiFi access point configuration structure.
+ * @details Configuration parameters for access point mode.
  */
-enum class ProtocolMode : uint8_t {
-    B = 0,             // 802.11b only
-    BG = 1,            // 802.11b/g
-    BGN = 2,           // 802.11b/g/n
-    BGNAX = 3          // 802.11b/g/n/ax (WiFi 6) - ESP32-C6
+struct hf_esp_wifi_ap_config_t {
+  char ssid[33];                          ///< SSID (32 bytes + null terminator)
+  char password[65];                      ///< Password (64 bytes + null terminator)
+  hf_u8_t ssid_len;                      ///< SSID length (0 = use strlen)
+  hf_u8_t channel;                       ///< WiFi channel (1-14)
+  hf_esp_wifi_auth_mode_t authmode;       ///< Authentication mode
+  hf_u8_t ssid_hidden;                   ///< Hide SSID (0=broadcast, 1=hidden)
+  hf_u8_t max_connection;                ///< Maximum number of stations
+  hf_u16_t beacon_interval;              ///< Beacon interval (100-60000ms)
+  hf_esp_wifi_cipher_type_t pairwise_cipher; ///< Pairwise cipher
+  hf_bool_t ftm_responder;               ///< FTM responder support
+  hf_bool_t pmf_capable;                 ///< PMF capable
+  hf_bool_t pmf_required;                ///< PMF required
+  hf_u8_t sae_pwe_h2e;                  ///< SAE PWE derivation mode
 };
 
 /**
- * @brief WiFi interface types
+ * @brief Advanced WiFi configuration for ESP32-C6.
+ * @details Extended configuration for advanced features.
  */
-enum class WifiInterface : uint8_t {
-    STATION = 0,       // Station interface
-    ACCESS_POINT = 1   // Access Point interface
+struct hf_esp_wifi_advanced_config_t {
+  hf_esp_wifi_protocol_t protocol_bitmap; ///< Enabled protocols
+  hf_esp_wifi_bandwidth_t bandwidth;      ///< Channel bandwidth
+  hf_bool_t country_policy;               ///< Country code policy auto
+  hf_u8_t country_code[3];               ///< Country code (2 chars + null)
+  hf_u8_t max_tx_power;                  ///< Maximum TX power
+  hf_bool_t ampdu_rx_enable;             ///< A-MPDU RX enable
+  hf_bool_t ampdu_tx_enable;             ///< A-MPDU TX enable
+  hf_bool_t amsdu_tx_enable;             ///< A-MSDU TX enable
+  hf_bool_t nvs_enable;                  ///< NVS WiFi storage
+  hf_bool_t nano_enable;                 ///< Nano format enable
+  hf_u16_t rx_ba_win;                    ///< RX block ack window size
+  hf_u16_t wifi_task_core_id;           ///< WiFi task core ID
+  hf_u16_t beacon_timeout;               ///< Beacon timeout
+  hf_u16_t txop_limit_enable;            ///< TXOP limit enable
+  hf_u16_t tx_ba_win;                    ///< TX block ack window size
+  hf_u8_t rx_mgmt_action_on_off;        ///< RX management action enable
+  hf_bool_t espnow_enable;               ///< ESP-NOW enable
+  hf_bool_t magic_packet_filter_enable;  ///< Magic packet filter enable
 };
 
 /**
- * @brief WiFi scan result structure
+ * @brief WiFi enterprise configuration.
+ * @details Configuration for WPA2/WPA3 Enterprise authentication.
  */
-struct WifiScanResult {
-    std::string ssid;              // Network SSID
-    std::string bssid;             // BSSID (MAC address)
-    int8_t rssi;                   // Signal strength in dBm
-    uint8_t channel;               // Primary channel
-    uint8_t secondary_channel;     // Secondary channel (for 40MHz)
-    SecurityType security;         // Security type
-    bool hidden;                   // Hidden network flag
-    
-    // WiFi 6 specific features (ESP32-C6)
-    bool wifi6_support;            // 802.11ax support
-    bool bandwidth_40mhz;          // 40MHz bandwidth support
-    bool beamforming_support;      // Beamforming capability
-    uint16_t max_data_rate;        // Maximum data rate in Mbps
-    
-    // Extended information
-    uint16_t beacon_interval;      // Beacon interval in TU
-    uint16_t capability_info;      // Capability information
-    std::vector<uint8_t> information_elements; // Raw IE data
-    std::chrono::steady_clock::time_point timestamp;
-    
-    // Convenience methods
-    std::string getSecurityString() const;
-    bool isWiFi6() const { return wifi6_support; }
-    uint16_t getFrequency() const;
+struct hf_esp_wifi_enterprise_config_t {
+  hf_u8_t eap_method;                    ///< EAP method
+  char identity[64];                      ///< Identity/username
+  char username[64];                      ///< Username (for tunneled methods)
+  char password[128];                     ///< Password
+  char ca_cert[2048];                     ///< CA certificate
+  char client_cert[2048];                 ///< Client certificate
+  char client_key[2048];                  ///< Client private key
+  hf_bool_t disable_time_check;          ///< Disable certificate time check
+  hf_bool_t use_wpa2_task;               ///< Use WPA2 enterprise task
+  hf_u8_t ttls_phase2_type;             ///< TTLS phase 2 type
+};
+
+//==============================================================================
+// STATUS AND INFORMATION STRUCTURES
+//==============================================================================
+
+/**
+ * @brief WiFi connection information structure.
+ * @details Information about current WiFi connection.
+ */
+struct hf_esp_wifi_ap_record_t {
+  hf_u8_t bssid[6];                      ///< BSSID of AP
+  char ssid[33];                          ///< SSID of AP
+  hf_u8_t primary;                       ///< Primary channel
+  hf_u8_t second;                        ///< Secondary channel
+  hf_i8_t rssi;                          ///< Signal strength
+  hf_esp_wifi_auth_mode_t authmode;       ///< Authentication mode
+  hf_esp_wifi_cipher_type_t pairwise_cipher; ///< Pairwise cipher
+  hf_esp_wifi_cipher_type_t group_cipher; ///< Group cipher
+  hf_u32_t phy_11b:1;                    ///< 802.11b support
+  hf_u32_t phy_11g:1;                    ///< 802.11g support
+  hf_u32_t phy_11n:1;                    ///< 802.11n support
+  hf_u32_t phy_lr:1;                     ///< Long range support
+  hf_u32_t phy_11ax:1;                   ///< 802.11ax support
+  hf_u32_t wps:1;                        ///< WPS support
+  hf_u32_t ftm_responder:1;              ///< FTM responder
+  hf_u32_t ftm_initiator:1;              ///< FTM initiator
+  hf_u32_t reserved:24;                  ///< Reserved
+  hf_esp_wifi_bandwidth_t bandwidth;      ///< Bandwidth
 };
 
 /**
- * @brief Connected station information (for AP mode)
+ * @brief WiFi statistics structure.
+ * @details Comprehensive WiFi statistics for monitoring and debugging.
  */
-struct ConnectedStation {
-    std::string mac_address;       // Station MAC address
-    uint16_t aid;                  // Association ID
-    int8_t rssi;                   // Signal strength
-    std::chrono::steady_clock::time_point connection_time;
-    uint32_t tx_bytes;             // Transmitted bytes
-    uint32_t rx_bytes;             // Received bytes
-    uint16_t tx_rate;              // Current TX rate in Mbps
-    uint16_t rx_rate;              // Current RX rate in Mbps
+struct hf_esp_wifi_stats_t {
+  hf_u32_t tx_packets;                   ///< Transmitted packets
+  hf_u32_t rx_packets;                   ///< Received packets
+  hf_u32_t tx_bytes;                     ///< Transmitted bytes
+  hf_u32_t rx_bytes;                     ///< Received bytes
+  hf_u32_t tx_dropped;                   ///< Dropped TX packets
+  hf_u32_t rx_dropped;                   ///< Dropped RX packets
+  hf_u32_t tx_errors;                    ///< TX errors
+  hf_u32_t rx_errors;                    ///< RX errors
+  hf_u32_t beacon_timeout;               ///< Beacon timeouts
+  hf_u32_t no_ack;                       ///< No ACK count
+  hf_u32_t fcs_bad;                      ///< Bad FCS count
+  hf_u32_t mib_timeout;                  ///< MIB timeout count
+  hf_u32_t ack_timeout;                  ///< ACK timeout count
+  hf_u32_t noise_floor;                  ///< Noise floor
+  hf_i8_t rssi;                          ///< Current RSSI
+  hf_u8_t channel;                       ///< Current channel
+  hf_u32_t uptime_ms;                    ///< WiFi uptime in milliseconds
 };
 
 /**
- * @brief Access Point configuration
+ * @brief Station information for AP mode.
+ * @details Information about connected stations.
  */
-struct AccessPointConfig {
-    std::string ssid;              // AP SSID (max 32 chars)
-    std::string password;          // AP password (8-63 chars for secure)
-    uint8_t channel;               // WiFi channel (1-14 for 2.4GHz)
-    SecurityType security;         // Security type
-    uint8_t max_connections;       // Maximum connected stations (1-10)
-    bool hidden;                   // Hidden SSID flag
-    uint16_t beacon_interval;      // Beacon interval in ms (100-60000)
-    
-    // Advanced configuration
-    bool pmf_required;             // Protected Management Frames
-    bool pmf_capable;              // PMF capability
-    uint8_t dtim_period;           // DTIM period (1-255)
-    
-    // WiFi 6 features (ESP32-C6)
-    bool enable_wifi6;             // Enable 802.11ax features
-    BandwidthMode bandwidth;       // Channel bandwidth
-    ProtocolMode protocol;         // WiFi protocol version
-    int8_t tx_power;               // TX power in dBm
-    
-    // IP configuration
-    std::string ip_address;        // AP IP address
-    std::string gateway;           // Gateway address
-    std::string netmask;           // Network mask
-    bool dhcp_server_enabled;      // Enable DHCP server
-    std::string dhcp_start_ip;     // DHCP pool start IP
-    std::string dhcp_end_ip;       // DHCP pool end IP
-    uint32_t dhcp_lease_time;      // DHCP lease time in seconds
+struct hf_esp_wifi_sta_info_t {
+  hf_u8_t mac[6];                        ///< Station MAC address
+  hf_i8_t rssi;                          ///< Station RSSI
+  hf_u32_t phy_11b:1;                    ///< 802.11b support
+  hf_u32_t phy_11g:1;                    ///< 802.11g support
+  hf_u32_t phy_11n:1;                    ///< 802.11n support
+  hf_u32_t phy_lr:1;                     ///< Long range support
+  hf_u32_t phy_11ax:1;                   ///< 802.11ax support
+  hf_u32_t is_mesh_child:1;              ///< Is mesh child
+  hf_u32_t reserved:26;                  ///< Reserved
+};
+
+//==============================================================================
+// EVENT AND SCAN STRUCTURES  
+//==============================================================================
+
+/**
+ * @brief WiFi scan result structure.
+ * @details Information about scanned access points.
+ */
+struct hf_esp_wifi_scan_result_t {
+  hf_u8_t bssid[6];                      ///< BSSID
+  char ssid[33];                          ///< SSID
+  hf_u8_t channel;                       ///< Channel
+  hf_i8_t rssi;                          ///< Signal strength
+  hf_esp_wifi_auth_mode_t authmode;       ///< Authentication mode
+  hf_bool_t wps;                         ///< WPS support
+  hf_bool_t hidden;                      ///< Hidden SSID
+  hf_esp_wifi_bandwidth_t bandwidth;      ///< Bandwidth
+  hf_u32_t timestamp;                    ///< Scan timestamp
 };
 
 /**
- * @brief WiFi status information
+ * @brief WiFi event data structure.
+ * @details Data passed with WiFi events.
  */
-struct WifiStatus {
-    bool initialized;              // WiFi initialized flag
-    bool station_started;          // Station started flag
-    bool ap_started;               // AP started flag
-    bool connected;                // Station connected flag
-    bool got_ip;                   // Got IP address flag
-    WifiMode current_mode;         // Current WiFi mode
-    bool scan_in_progress;         // Scan in progress flag
-    
-    // Connection information
-    std::string connected_ssid;    // Connected network SSID
-    std::string bssid;             // Connected AP BSSID
-    int8_t rssi;                   // Signal strength
-    uint8_t channel;               // Connected channel
-    SecurityType security;         // Connection security
-    
-    // Network information
-    std::string ip_address;        // Station IP address
-    std::string netmask;           // Network mask
-    std::string gateway;           // Gateway address
-    std::string primary_dns;       // Primary DNS server
-    std::string secondary_dns;     // Secondary DNS server
-    
-    // Connection statistics
-    uint8_t retry_count;           // Current retry count
-    uint8_t max_retry_count;       // Maximum retry count
-    uint32_t connected_stations_count; // Number of connected stations (AP mode)
-    std::chrono::steady_clock::time_point connection_time;
-    
-    // Performance metrics
-    uint32_t tx_bytes;             // Transmitted bytes
-    uint32_t rx_bytes;             // Received bytes
-    uint16_t current_tx_rate;      // Current TX rate in Mbps
-    uint16_t current_rx_rate;      // Current RX rate in Mbps
+struct hf_esp_wifi_event_data_t {
+  hf_wifi_state_t old_state;             ///< Previous WiFi state
+  hf_wifi_state_t new_state;             ///< Current WiFi state
+  hf_u8_t reason;                        ///< Disconnect/failure reason
+  hf_i8_t rssi;                          ///< Signal strength
+  hf_u8_t channel;                       ///< Channel
+  hf_u8_t bssid[6];                      ///< BSSID
+  char ssid[33];                          ///< SSID
+  hf_u32_t ip;                           ///< Assigned IP address
+  hf_u32_t netmask;                      ///< Network mask
+  hf_u32_t gateway;                      ///< Gateway address
 };
 
-/**
- * @brief Network information structure
- */
-struct NetworkInfo {
-    std::string ip_address;        // IP address
-    std::string netmask;           // Network mask
-    std::string gateway;           // Gateway address
-    std::string primary_dns;       // Primary DNS server
-    std::string secondary_dns;     // Secondary DNS server
-    std::string mac_address;       // MAC address
-    uint32_t lease_time;           // DHCP lease time remaining
-    std::string hostname;          // Device hostname
-    
-    // IPv6 support (optional)
-    std::vector<std::string> ipv6_addresses; // IPv6 addresses
-    std::string ipv6_gateway;      // IPv6 gateway
-};
+//==============================================================================
+// ERROR HANDLING AND UTILITIES
+//==============================================================================
 
 /**
- * @brief WiFi event types
+ * @brief Convert ESP-IDF WiFi error to HardFOC error.
+ * @param esp_err ESP-IDF error code
+ * @return HardFOC WiFi error code
  */
-enum class WifiEventType {
-    ADAPTER_STATE_CHANGED,
-    STATION_STARTED,
-    STATION_STOPPED,
-    STATION_CONNECTED,
-    STATION_DISCONNECTED,
-    STATION_AUTHMODE_CHANGED,
-    STATION_GOT_IP,
-    STATION_LOST_IP,
-    AP_STARTED,
-    AP_STOPPED,
-    AP_STATION_CONNECTED,
-    AP_STATION_DISCONNECTED,
-    AP_STATION_IP_ASSIGNED,
-    SCAN_STARTED,
-    SCAN_COMPLETED,
-    WPS_STARTED,
-    WPS_COMPLETED,
-    WPS_FAILED,
-    SMART_CONFIG_STARTED,
-    SMART_CONFIG_COMPLETED,
-    SMART_CONFIG_FAILED
-};
-
-/**
- * @brief WiFi event data structure
- */
-struct WifiEvent {
-    WifiEventType type;
-    std::chrono::steady_clock::time_point timestamp;
-    
-    union {
-        struct {
-            bool enabled;
-        } adapter_state_changed;
-        
-        struct {
-            std::string ssid;
-            std::string bssid;
-            uint8_t channel;
-            SecurityType security;
-        } station_connected;
-        
-        struct {
-            uint8_t reason;
-            int8_t rssi;
-        } station_disconnected;
-        
-        struct {
-            std::string ip_address;
-            std::string netmask;
-            std::string gateway;
-        } station_got_ip;
-        
-        struct {
-            ConnectedStation station;
-        } ap_station_connected;
-        
-        struct {
-            std::string mac_address;
-            uint16_t aid;
-        } ap_station_disconnected;
-        
-        struct {
-            uint16_t found_networks;
-            uint32_t scan_duration_ms;
-        } scan_completed;
-    };
-};
-
-/**
- * @brief WiFi callback function types
- */
-struct WifiEventCallbacks {
-    std::function<void()> station_connected;
-    std::function<void()> station_disconnected;
-    std::function<void()> station_connection_failed;
-    std::function<void(const std::string& ip)> got_ip;
-    std::function<void()> lost_ip;
-    std::function<void(const ConnectedStation& station)> ap_station_connected;
-    std::function<void(const ConnectedStation& station)> ap_station_disconnected;
-    std::function<void(const std::vector<WifiScanResult>& results)> scan_completed;
-    std::function<void(WifiEventType event_type)> generic_event;
-};
-
-/**
- * @brief WiFi Enterprise configuration (for WPA2/WPA3 Enterprise)
- */
-struct WifiEnterpriseConfig {
-    std::string username;          // Enterprise username
-    std::string password;          // Enterprise password
-    std::string ca_cert;           // CA certificate (PEM format)
-    std::string client_cert;       // Client certificate (PEM format)
-    std::string private_key;       // Private key (PEM format)
-    std::string identity;          // EAP identity
-    std::string anonymous_identity; // Anonymous identity
-    
-    // EAP method configuration
-    bool use_eap_tls;              // Use EAP-TLS
-    bool use_eap_ttls;             // Use EAP-TTLS
-    bool use_eap_peap;             // Use EAP-PEAP
-    bool validate_server_cert;     // Validate server certificate
-    
-    // Phase 2 authentication (for TTLS/PEAP)
-    std::string phase2_method;     // Phase 2 method (MSCHAPV2, GTC, etc.)
-};
-
-/**
- * @brief WiFi mesh configuration (ESP-MESH support)
- */
-struct WifiMeshConfig {
-    std::string mesh_id;           // Mesh network ID
-    std::string mesh_password;     // Mesh password
-    uint8_t max_layer;             // Maximum mesh layers
-    uint8_t max_connection;        // Maximum connections per node
-    bool allow_channel_switch;     // Allow channel switching
-    bool enable_encryption;        // Enable mesh encryption
-    uint16_t announce_interval;    // Announce interval in ms
-    uint16_t attempt_count;        // Connection attempt count
-    uint16_t monitor_duration;     // Monitor duration in ms
-};
-
-/**
- * @brief WiFi QoS (Quality of Service) configuration
- */
-struct WifiQoSConfig {
-    bool enable_wmm;               // Enable WMM (WiFi Multimedia)
-    bool enable_uapsd;             // Enable U-APSD (Unscheduled APSD)
-    uint8_t voice_ac_params[4];    // Voice AC parameters
-    uint8_t video_ac_params[4];    // Video AC parameters
-    uint8_t best_effort_ac_params[4]; // Best effort AC parameters
-    uint8_t background_ac_params[4];  // Background AC parameters
-};
-
-/**
- * @brief WiFi advanced configuration options
- */
-struct WifiAdvancedConfig {
-    // Power management
-    PowerSaveMode power_save_mode; // Power save mode
-    uint8_t listen_interval;       // Listen interval
-    int8_t tx_power;               // TX power in dBm
-    
-    // Performance tuning
-    BandwidthMode bandwidth;       // Channel bandwidth
-    ProtocolMode protocol;         // WiFi protocol version
-    bool enable_ampdu_tx;          // Enable A-MPDU TX
-    bool enable_ampdu_rx;          // Enable A-MPDU RX
-    bool enable_amsdu_tx;          // Enable A-MSDU TX
-    bool enable_amsdu_rx;          // Enable A-MSDU RX
-    
-    // Security and privacy
-    bool enable_pmf;               // Protected Management Frames
-    bool enable_wpa3_transition;   // WPA3 transition mode
-    bool enable_opportunistic_key_caching; // OKC support
-    bool enable_11r_fast_transition; // 802.11r fast BSS transition
-    bool enable_11k_neighbor_report; // 802.11k neighbor reports
-    bool enable_11v_bss_transition;  // 802.11v BSS transition
-    
-    // WiFi 6 features (ESP32-C6)
-    bool enable_he_su_beamformer;  // HE SU beamformer
-    bool enable_he_su_beamformee;  // HE SU beamformee
-    bool enable_he_mu_beamformer;  // HE MU beamformer (if supported)
-    bool enable_he_mu_beamformee;  // HE MU beamformee (if supported)
-    bool enable_target_wake_time;  // Target Wake Time (TWT)
-    bool enable_spatial_reuse;     // Spatial Reuse (SR)
-    uint8_t he_mcs_map;            // HE MCS map
-    
-    // Connection parameters
-    uint16_t beacon_timeout;       // Beacon timeout in ms
-    uint16_t connection_timeout;   // Connection timeout in ms
-    uint8_t max_retry_count;       // Maximum connection retries
-    bool auto_reconnect;           // Auto-reconnect on disconnection
-    
-    // Scanning parameters
-    uint16_t scan_timeout;         // Scan timeout in ms
-    bool passive_scan;             // Use passive scanning
-    bool scan_all_channels;        // Scan all available channels
-    uint8_t scan_probe_count;      // Number of probe requests per channel
-    
-    // Roaming parameters
-    bool enable_roaming;           // Enable automatic roaming
-    int8_t roaming_rssi_threshold; // RSSI threshold for roaming
-    uint8_t roaming_scan_interval; // Roaming scan interval in seconds
-};
-
-/**
- * @brief WiFi statistics structure
- */
-struct WifiStatistics {
-    // Transmission statistics
-    uint32_t tx_packets;           // Transmitted packets
-    uint32_t tx_bytes;             // Transmitted bytes
-    uint32_t tx_errors;            // Transmission errors
-    uint32_t tx_dropped;           // Dropped TX packets
-    uint32_t tx_retries;           // TX retries
-    
-    // Reception statistics
-    uint32_t rx_packets;           // Received packets
-    uint32_t rx_bytes;             // Received bytes
-    uint32_t rx_errors;            // Reception errors
-    uint32_t rx_dropped;           // Dropped RX packets
-    uint32_t rx_crc_errors;        // CRC errors
-    
-    // Connection statistics
-    uint32_t connection_attempts;  // Connection attempts
-    uint32_t successful_connections; // Successful connections
-    uint32_t failed_connections;   // Failed connections
-    uint32_t disconnections;       // Disconnections
-    uint32_t roaming_events;       // Roaming events
-    
-    // Signal quality
-    int8_t current_rssi;           // Current RSSI
-    int8_t min_rssi;               // Minimum RSSI
-    int8_t max_rssi;               // Maximum RSSI
-    uint8_t signal_quality;        // Signal quality percentage
-    
-    // Performance metrics
-    uint16_t current_tx_rate;      // Current TX rate in Mbps
-    uint16_t max_tx_rate;          // Maximum TX rate in Mbps
-    uint16_t current_rx_rate;      // Current RX rate in Mbps
-    uint16_t max_rx_rate;          // Maximum RX rate in Mbps
-    
-    // Timing information
-    std::chrono::steady_clock::time_point stats_start_time;
-    std::chrono::steady_clock::time_point last_update_time;
-    uint32_t uptime_seconds;       // Uptime in seconds
-};
-
-/**
- * @brief WiFi country configuration
- */
-struct WifiCountryConfig {
-    std::string country_code;      // Two-letter country code (e.g., "US", "EU")
-    uint8_t schan;                 // Start channel
-    uint8_t nchan;                 // Number of channels
-    int8_t max_tx_power;           // Maximum TX power in dBm
-    wifi_country_policy_t policy;  // Country policy
-};
-
-/**
- * @brief WiFi error codes
- */
-enum class WifiError : int {
-    SUCCESS = 0,
-    INVALID_PARAMETER = -1,
-    NOT_INITIALIZED = -2,
-    ALREADY_INITIALIZED = -3,
-    OPERATION_FAILED = -4,
-    CONNECTION_FAILED = -5,
-    DISCONNECTION_FAILED = -6,
-    AUTHENTICATION_FAILED = -7,
-    NETWORK_NOT_FOUND = -8,
-    SCAN_FAILED = -9,
-    TIMEOUT = -10,
-    INVALID_PASSWORD = -11,
-    INVALID_STATE = -12,
-    NOT_CONNECTED = -13,
-    ALREADY_CONNECTED = -14,
-    AP_START_FAILED = -15,
-    AP_STOP_FAILED = -16,
-    CONFIGURATION_FAILED = -17,
-    MEMORY_ALLOCATION_FAILED = -18,
-    INTERFACE_ERROR = -19,
-    SECURITY_ERROR = -20,
-    NOT_SUPPORTED = -21,
-    RESOURCE_BUSY = -22,
-    INVALID_SSID = -23,
-    INVALID_CHANNEL = -24,
-    POWER_SAVE_ERROR = -25,
-    ENTERPRISE_CONFIG_ERROR = -26,
-    MESH_ERROR = -27,
-    QOS_ERROR = -28
-};
-
-/**
- * @brief WPS (WiFi Protected Setup) configuration
- */
-struct WPSConfig {
-    bool enable_wps;               // Enable WPS
-    wifi_wps_type_t wps_type;      // WPS type (PBC, PIN, DISPLAY)
-    std::string pin;               // WPS PIN (for PIN method)
-    uint32_t timeout_ms;           // WPS timeout in milliseconds
-};
-
-/**
- * @brief SmartConfig configuration
- */
-struct SmartConfigConfig {
-    bool enable_smartconfig;       // Enable SmartConfig
-    smartconfig_type_t type;       // SmartConfig type
-    uint32_t timeout_ms;           // SmartConfig timeout
-    bool enable_ack;               // Enable ACK to phone
-};
-
-/**
- * @brief Standard WiFi channels for different regions
- */
-namespace WifiChannels {
-    // 2.4 GHz channels
-    constexpr uint8_t CHANNEL_1 = 1;     // 2412 MHz
-    constexpr uint8_t CHANNEL_6 = 6;     // 2437 MHz
-    constexpr uint8_t CHANNEL_11 = 11;   // 2462 MHz
-    constexpr uint8_t CHANNEL_14 = 14;   // 2484 MHz (Japan only)
-    
-    // Channel ranges
-    constexpr uint8_t CHANNEL_MIN_2G = 1;
-    constexpr uint8_t CHANNEL_MAX_2G = 14;
+constexpr hf_wifi_err_t HfConvertEspWifiError(hf_i32_t esp_err) noexcept {
+  switch (esp_err) {
+    case 0: // ESP_OK
+      return hf_wifi_err_t::WIFI_SUCCESS;
+    case 0x101: // ESP_ERR_NO_MEM
+      return hf_wifi_err_t::WIFI_ERR_NO_MEMORY;
+    case 0x102: // ESP_ERR_INVALID_ARG
+      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+    case 0x103: // ESP_ERR_INVALID_STATE
+      return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
+    case 0x106: // ESP_ERR_TIMEOUT
+      return hf_wifi_err_t::WIFI_ERR_TIMEOUT;
+    case 0x107: // ESP_ERR_NOT_FOUND
+      return hf_wifi_err_t::WIFI_ERR_CONNECTION_FAILED;
+    case 0x108: // ESP_ERR_NOT_SUPPORTED
+      return hf_wifi_err_t::WIFI_ERR_INIT_FAILED;
+    default:
+      return hf_wifi_err_t::WIFI_ERR_FAILURE;
+  }
 }
 
 /**
- * @brief WiFi frequency bands
+ * @brief Validate SSID string.
+ * @param ssid SSID to validate
+ * @return true if valid, false otherwise
  */
-enum class WifiFrequencyBand : uint8_t {
-    BAND_2_4_GHZ = 0,              // 2.4 GHz band
-    BAND_5_GHZ = 1,                // 5 GHz band (not supported by ESP32-C6)
-    BAND_6_GHZ = 2                 // 6 GHz band (not supported by ESP32-C6)
-};
-
-/**
- * @brief Helper functions for WiFi operations
- */
-namespace WifiUtils {
-    /**
-     * @brief Convert channel number to frequency
-     * @param channel Channel number
-     * @return Frequency in MHz
-     */
-    uint16_t channelToFrequency(uint8_t channel);
-    
-    /**
-     * @brief Convert frequency to channel number
-     * @param frequency Frequency in MHz
-     * @return Channel number (0 if invalid)
-     */
-    uint8_t frequencyToChannel(uint16_t frequency);
-    
-    /**
-     * @brief Convert RSSI to signal quality percentage
-     * @param rssi RSSI value in dBm
-     * @return Signal quality (0-100%)
-     */
-    uint8_t rssiToQuality(int8_t rssi);
-    
-    /**
-     * @brief Validate SSID string
-     * @param ssid SSID to validate
-     * @return true if valid, false otherwise
-     */
-    bool isValidSSID(const std::string& ssid);
-    
-    /**
-     * @brief Validate password for given security type
-     * @param password Password to validate
-     * @param security Security type
-     * @return true if valid, false otherwise
-     */
-    bool isValidPassword(const std::string& password, SecurityType security);
-    
-    /**
-     * @brief Convert MAC address to string
-     * @param mac MAC address array
-     * @return MAC address string (xx:xx:xx:xx:xx:xx)
-     */
-    std::string macToString(const MacAddress& mac);
-    
-    /**
-     * @brief Convert string to MAC address
-     * @param mac_str MAC address string
-     * @return MAC address array
-     */
-    MacAddress stringToMac(const std::string& mac_str);
-    
-    /**
-     * @brief Get security type string representation
-     * @param security Security type
-     * @return Security type string
-     */
-    std::string securityTypeToString(SecurityType security);
-    
-    /**
-     * @brief Convert WiFi error to string
-     * @param error WiFi error code
-     * @return Error description string
-     */
-    std::string wifiErrorToString(WifiError error);
+constexpr hf_bool_t HfIsValidSsid(const char* ssid) noexcept {
+  if (!ssid) return false;
+  
+  hf_u8_t len = 0;
+  while (ssid[len] != '\0' && len < 32) {
+    len++;
+  }
+  
+  return (len > 0 && len <= 32);
 }
 
 /**
- * @brief Standard WiFi service identifiers
+ * @brief Validate password string.
+ * @param password Password to validate
+ * @return true if valid, false otherwise
  */
-namespace WifiServices {
-    constexpr uint16_t HTTP_PORT = 80;
-    constexpr uint16_t HTTPS_PORT = 443;
-    constexpr uint16_t FTP_PORT = 21;
-    constexpr uint16_t SSH_PORT = 22;
-    constexpr uint16_t TELNET_PORT = 23;
-    constexpr uint16_t SMTP_PORT = 25;
-    constexpr uint16_t DNS_PORT = 53;
-    constexpr uint16_t DHCP_SERVER_PORT = 67;
-    constexpr uint16_t DHCP_CLIENT_PORT = 68;
-    constexpr uint16_t SNMP_PORT = 161;
-    constexpr uint16_t NTP_PORT = 123;
+constexpr hf_bool_t HfIsValidPassword(const char* password) noexcept {
+  if (!password) return false;
+  
+  hf_u8_t len = 0;
+  while (password[len] != '\0' && len < 64) {
+    len++;
+  }
+  
+  // Password can be empty (for open networks) or 8-63 characters for secured
+  return (len == 0 || (len >= 8 && len <= 63));
 }
 
-} // namespace wifi
-} // namespace esp32
+/**
+ * @brief Validate WiFi channel.
+ * @param channel Channel number to validate
+ * @return true if valid, false otherwise
+ */
+constexpr hf_bool_t HfIsValidWifiChannel(hf_u8_t channel) noexcept {
+  // Channels 1-14 are valid for 2.4GHz
+  return (channel >= 1 && channel <= 14);
+}
 
-#endif // ESP_TYPES_WIFI_H
+/**
+ * @brief Convert RSSI to signal quality percentage.
+ * @param rssi RSSI value in dBm
+ * @return Signal quality percentage (0-100)
+ */
+constexpr hf_u8_t HfRssiToQuality(hf_i8_t rssi) noexcept {
+  if (rssi <= -100) return 0;
+  if (rssi >= -50) return 100;
+  return static_cast<hf_u8_t>(2 * (rssi + 100));
+}
+
+/**
+ * @brief Convert MAC address array to string representation.
+ * @param mac MAC address array (6 bytes)
+ * @param str Output string buffer (minimum 18 bytes)
+ * @return true on success, false on error
+ */
+hf_bool_t HfMacAddressToString(const hf_u8_t mac[6], char* str) noexcept;
+
+/**
+ * @brief Convert string to MAC address array.
+ * @param str String representation (e.g., "AA:BB:CC:DD:EE:FF")
+ * @param mac Output MAC address array (6 bytes)
+ * @return true on success, false on error
+ */
+hf_bool_t HfStringToMacAddress(const char* str, hf_u8_t mac[6]) noexcept;
+
+//==============================================================================
+// PLATFORM-SPECIFIC CONSTANTS
+//==============================================================================
+
+/**
+ * @brief Maximum number of WiFi access points in scan results.
+ */
+constexpr hf_u16_t HF_ESP32_MAX_SCAN_RESULTS = 64;
+
+/**
+ * @brief Maximum number of concurrent connections in AP mode.
+ */
+constexpr hf_u8_t HF_ESP32_MAX_AP_CONNECTIONS = 10;
+
+/**
+ * @brief Default beacon interval in milliseconds.
+ */
+constexpr hf_u16_t HF_ESP32_DEFAULT_BEACON_INTERVAL = 100;
+
+/**
+ * @brief Maximum TX power for ESP32-C6 in dBm.
+ */
+constexpr hf_i8_t HF_ESP32_MAX_WIFI_TX_POWER = 20;
+
+/**
+ * @brief Minimum TX power for ESP32-C6 in dBm.
+ */
+constexpr hf_i8_t HF_ESP32_MIN_WIFI_TX_POWER = 2;
+
+/**
+ * @brief Default scan timeout in milliseconds.
+ */
+constexpr hf_u16_t HF_ESP32_DEFAULT_SCAN_TIMEOUT = 10000;
+
+/**
+ * @brief Default connection timeout in milliseconds.
+ */
+constexpr hf_u16_t HF_ESP32_DEFAULT_CONNECT_TIMEOUT = 10000;
+
+#endif // HF_MCU_FAMILY_ESP32

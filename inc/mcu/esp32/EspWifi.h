@@ -1,717 +1,580 @@
 /**
  * @file EspWifi.h
- * @brief ESP32-C6 WiFi 6 implementation for ESP-IDF v5.5
- * @version 2.0.0
- * @date 2024
- * 
- * This implementation supports:
- * - WiFi 6 (IEEE 802.11ax) on ESP32-C6
- * - Station and Access Point modes
- * - WiFi 6 features: OFDMA, MU-MIMO, BSS Coloring, TWT
- * - ESP-IDF v5.5 APIs
- * - Modern C++17 features
- * - Thread-safe operations
- * - Power management
- * - Enterprise security (WPA2/WPA3-Enterprise)
- * - WiFi mesh networking
+ * @brief Advanced ESP32-C6 implementation of the unified BaseWifi class with ESP-IDF v5.5+ features.
+ *
+ * This file provides concrete implementations of the unified BaseWifi class
+ * for ESP32-C6 microcontrollers with support for WiFi 6 (802.11ax) and advanced features.
+ * It supports station and access point modes, WPA3 security, enterprise authentication,
+ * mesh networking, and advanced ESP32-C6-specific features like power management,
+ * roaming, and performance optimization. The implementation includes comprehensive
+ * event handling and hardware-accelerated operations.
+ *
+ * @author Nebiyu Tadesse
+ * @date 2025
+ * @copyright HardFOC
+ *
+ * @note This implementation requires ESP32-C6 with ESP-IDF v5.5+ for full feature support.
+ * @note Thread-safe implementation with proper synchronization mechanisms.
  */
 
-#ifndef ESP_WIFI_H
-#define ESP_WIFI_H
+#pragma once
 
-#include <memory>
-#include <string>
-#include <vector>
-#include <functional>
-#include <mutex>
-#include <atomic>
-#include <array>
-#include <map>
-#include <chrono>
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-// ESP-IDF v5.5 includes
-#include "esp_log.h"
-#include "esp_err.h"
 #include "esp_event.h"
-#include "esp_system.h"
 #include "esp_netif.h"
-#include "nvs_flash.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/semphr.h"
-#include "freertos/event_groups.h"
-
-// WiFi 6 includes for ESP-IDF v5.5
+#include "esp_smartconfig.h"
 #include "esp_wifi.h"
 #include "esp_wifi_types.h"
-#include "esp_smartconfig.h"
 #include "esp_wps.h"
-#include "esp_now.h"
-#include "esp_mesh.h"
 
-// Local includes
-#include "utils/EspTypes_WiFi.h"
+#ifdef __cplusplus
+}
+#endif
 
-namespace esp32 {
-namespace wifi {
-
-/**
- * @brief Forward declarations
- */
-class AccessPoint;
-class Station;
-class MeshNode;
+// C++ headers
+#include "BaseWifi.h"
+#include "mcu/esp32/utils/EspTypes_WiFi.h"
+#include <atomic>
+#include <memory>
+#include <vector>
 
 /**
- * @brief WiFi 6 implementation for ESP32-C6 with ESP-IDF v5.5
- * 
- * This class provides comprehensive WiFi 6 functionality for ESP32-C6:
- * - Modern C++17 design patterns
- * - Thread-safe operations
- * - Power-efficient implementation
- * - Station and AP modes
- * - WiFi 6 advanced features
- * - Enterprise security
- * - Mesh networking
+ * @class EspWifi
+ * @brief Advanced ESP32-C6 implementation of unified BaseWifi with ESP-IDF v5.5+ features.
+ * @details This class provides a comprehensive implementation of BaseWifi for ESP32-C6
+ *          microcontrollers with support for both basic and advanced features including:
+ *
+ *          **Basic Features:**
+ *          - Station and Access Point modes
+ *          - Network scanning and connection management
+ *          - WPA/WPA2/WPA3 security support
+ *          - Power management and optimization
+ *          - Thread-safe state management
+ *
+ *          **Advanced Features (ESP32-C6/ESP-IDF v5.5+):**
+ *          - WiFi 6 (802.11ax) support
+ *          - WPA3 Personal and Enterprise security
+ *          - 802.11k/r/v roaming standards
+ *          - Protected Management Frames (PMF)
+ *          - ESP-MESH networking
+ *          - SmartConfig and WPS provisioning
+ *          - Enterprise authentication (EAP-TLS, PEAP, etc.)
+ *          - Advanced power save modes
+ *          - Fast BSS transition and roaming
+ *
+ * @note This class is designed for ESP32-C6 with WiFi 6 capabilities.
+ * @note Advanced features require ESP32-C6 with ESP-IDF v5.5+ for full functionality.
  */
-class EspWifi {
+class EspWifi : public BaseWifi {
 public:
-    /**
-     * @brief WiFi operating modes
-     */
-    enum class Mode {
-        DISABLED = WIFI_MODE_NULL,     ///< WiFi disabled
-        STATION = WIFI_MODE_STA,       ///< Station mode only
-        ACCESS_POINT = WIFI_MODE_AP,   ///< Access Point mode only
-        APSTA = WIFI_MODE_APSTA        ///< Station + AP mode
-    };
+  //==============================================================//
+  // CONSTRUCTORS
+  //==============================================================//
 
-    /**
-     * @brief WiFi power save modes
-     */
-    enum class PowerSaveMode {
-        NONE = WIFI_PS_NONE,           ///< No power save
-        MIN_MODEM = WIFI_PS_MIN_MODEM, ///< Minimum modem power save
-        MAX_MODEM = WIFI_PS_MAX_MODEM  ///< Maximum modem power save
-    };
+  /**
+   * @brief Constructor for EspWifi with advanced configuration.
+   * @param enable_sta Enable station mode
+   * @param enable_ap Enable access point mode
+   * @param device_name Device hostname
+   * @details Creates an ESP32-C6 WiFi instance with the specified configuration.
+   *          **LAZY INITIALIZATION**: WiFi is NOT started until the first call
+   *          to Initialize() or any WiFi operation.
+   */
+  explicit EspWifi(hf_bool_t enable_sta = true,
+                   hf_bool_t enable_ap = false,
+                   const std::string& device_name = "ESP32-C6") noexcept;
 
-    /**
-     * @brief WiFi protocol standards
-     */
-    enum class Protocol {
-        WIFI_B = WIFI_PROTOCOL_11B,    ///< 802.11b
-        WIFI_G = WIFI_PROTOCOL_11G,    ///< 802.11g
-        WIFI_N = WIFI_PROTOCOL_11N,    ///< 802.11n
-        WIFI_LR = WIFI_PROTOCOL_LR,    ///< Long Range
-        WIFI_AX = WIFI_PROTOCOL_11AX   ///< 802.11ax (WiFi 6)
-    };
+  /**
+   * @brief Destructor - ensures proper cleanup of WiFi resources.
+   */
+  ~EspWifi() override;
 
-    /**
-     * @brief WiFi security types
-     */
-    enum class Security {
-        OPEN = WIFI_AUTH_OPEN,                    ///< Open (no security)
-        WEP = WIFI_AUTH_WEP,                     ///< WEP (deprecated)
-        WPA_PSK = WIFI_AUTH_WPA_PSK,             ///< WPA-PSK
-        WPA2_PSK = WIFI_AUTH_WPA2_PSK,           ///< WPA2-PSK
-        WPA_WPA2_PSK = WIFI_AUTH_WPA_WPA2_PSK,   ///< WPA/WPA2-PSK
-        WPA2_ENTERPRISE = WIFI_AUTH_WPA2_ENTERPRISE, ///< WPA2-Enterprise
-        WPA3_PSK = WIFI_AUTH_WPA3_PSK,           ///< WPA3-PSK
-        WPA2_WPA3_PSK = WIFI_AUTH_WPA2_WPA3_PSK, ///< WPA2/WPA3-PSK
-        WPA3_ENT_192 = WIFI_AUTH_WPA3_ENT_192    ///< WPA3-Enterprise 192-bit
-    };
+  //==============================================================//
+  // BASEWIFI IMPLEMENTATION
+  //==============================================================//
 
-    /**
-     * @brief WiFi 6 specific features
-     */
-    struct Wifi6Features {
-        bool ofdma_enabled{false};         ///< OFDMA support
-        bool mu_mimo_enabled{false};       ///< MU-MIMO support
-        bool bss_coloring_enabled{false};  ///< BSS Coloring
-        bool twt_enabled{false};           ///< Target Wake Time
-        uint8_t bss_color{0};              ///< BSS Color value (1-63)
-        uint16_t he_mcs_set{0};            ///< HE MCS set
-    };
+  /**
+   * @brief Initialize WiFi adapter with specified mode.
+   * @param mode WiFi operating mode
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t Initialize(hf_wifi_mode_t mode) override;
 
-    /**
-     * @brief Station configuration
-     */
-    struct StationConfig {
-        std::string ssid;                  ///< Network SSID
-        std::string password;              ///< Network password
-        std::array<uint8_t, 6> bssid{};    ///< Target BSSID (optional)
-        bool bssid_set{false};             ///< Use specific BSSID
-        Security security{Security::WPA2_PSK}; ///< Security type
-        uint8_t channel{0};                ///< Channel (0 = scan all)
-        int8_t rssi_threshold{-127};       ///< RSSI threshold
-        wifi_sort_method_t sort_method{WIFI_CONNECT_AP_BY_SIGNAL}; ///< AP selection method
-        wifi_scan_method_t scan_method{WIFI_FAST_SCAN}; ///< Scan method
-        uint32_t scan_timeout_ms{15000};   ///< Scan timeout
-        Wifi6Features wifi6;               ///< WiFi 6 features
-    };
+  /**
+   * @brief Deinitialize WiFi adapter and cleanup resources.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t Deinitialize() override;
 
-    /**
-     * @brief Access Point configuration
-     */
-    struct AccessPointConfig {
-        std::string ssid;                  ///< AP SSID
-        std::string password;              ///< AP password
-        Security security{Security::WPA2_PSK}; ///< Security type
-        uint8_t channel{1};                ///< WiFi channel
-        uint8_t max_connections{4};        ///< Maximum stations
-        bool ssid_hidden{false};           ///< Hide SSID
-        uint16_t beacon_interval{100};     ///< Beacon interval (ms)
-        uint8_t dtim_period{2};            ///< DTIM period
-        Wifi6Features wifi6;               ///< WiFi 6 features
-    };
+  /**
+   * @brief Check if WiFi is initialized.
+   * @return true if initialized, false otherwise
+   */
+  hf_bool_t IsInitialized() const noexcept override;
 
-    /**
-     * @brief Scan parameters
-     */
-    struct ScanConfig {
-        std::string ssid;                  ///< Specific SSID to scan (empty = all)
-        std::array<uint8_t, 6> bssid{};    ///< Specific BSSID to scan
-        uint8_t channel{0};                ///< Channel to scan (0 = all)
-        bool show_hidden{false};           ///< Show hidden networks
-        wifi_scan_type_t scan_type{WIFI_SCAN_TYPE_ACTIVE}; ///< Scan type
-        uint32_t scan_time_min{120};       ///< Minimum scan time per channel
-        uint32_t scan_time_max{120};       ///< Maximum scan time per channel
-        uint32_t scan_time_passive{360};   ///< Passive scan time per channel
-    };
+  /**
+   * @brief Set WiFi operating mode.
+   * @param mode WiFi mode to set
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t SetMode(hf_wifi_mode_t mode) override;
 
-    /**
-     * @brief Network information
-     */
-    struct NetworkInfo {
-        std::string ssid;                  ///< Network SSID
-        std::array<uint8_t, 6> bssid;      ///< BSSID
-        int8_t rssi;                       ///< Signal strength
-        Security security;                 ///< Security type
-        uint8_t channel;                   ///< Channel
-        bool wifi6_supported;              ///< WiFi 6 support
-        uint8_t bss_color;                 ///< BSS Color (WiFi 6)
-    };
+  /**
+   * @brief Get current WiFi mode.
+   * @return Current WiFi mode
+   */
+  hf_wifi_mode_t GetMode() const noexcept override;
 
-    /**
-     * @brief Connection information
-     */
-    struct ConnectionInfo {
-        std::string ssid;                  ///< Connected SSID
-        std::array<uint8_t, 6> bssid;      ///< Connected BSSID
-        uint8_t channel;                   ///< Channel
-        int8_t rssi;                       ///< Signal strength
-        uint32_t phy_lr;                   ///< PHY rate (low rate)
-        uint32_t phy_11b;                  ///< PHY rate 11b
-        uint32_t phy_11g;                  ///< PHY rate 11g
-        uint32_t phy_11n;                  ///< PHY rate 11n
-        uint32_t phy_11ax;                 ///< PHY rate 11ax (WiFi 6)
-        bool is_11ax_enabled;              ///< WiFi 6 enabled
-        Wifi6Features wifi6_features;      ///< Active WiFi 6 features
-    };
+  //==============================================================//
+  // STATION MODE OPERATIONS
+  //==============================================================//
 
-    /**
-     * @brief Enterprise configuration for WPA2/WPA3-Enterprise
-     */
-    struct EnterpriseConfig {
-        std::string identity;              ///< User identity
-        std::string username;              ///< Username
-        std::string password;              ///< Password
-        std::string ca_cert;               ///< CA certificate
-        std::string client_cert;           ///< Client certificate
-        std::string client_key;            ///< Client private key
-        esp_eap_method_t method{ESP_EAP_PEAP}; ///< EAP method
-        bool disable_time_check{false};    ///< Disable time validation
-    };
+  /**
+   * @brief Configure station mode parameters.
+   * @param config Station configuration
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config) override;
 
-    /**
-     * @brief Event callback types
-     */
-    using ConnectionCallback = std::function<void(const ConnectionInfo& info)>;
-    using DisconnectionCallback = std::function<void(int reason)>;
-    using ScanCompleteCallback = std::function<void(const std::vector<NetworkInfo>& networks)>;
-    using ApStationCallback = std::function<void(const std::array<uint8_t, 6>& mac, bool connected)>;
-    using IpAssignedCallback = std::function<void(uint32_t ip, uint32_t netmask, uint32_t gateway)>;
+  /**
+   * @brief Connect to WiFi network.
+   * @param timeout_ms Connection timeout in milliseconds
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t Connect(hf_timeout_ms_t timeout_ms = 10000) override;
 
-    /**
-     * @brief Singleton instance getter
-     * @return Reference to the singleton instance
-     */
-    static EspWifi& getInstance();
+  /**
+   * @brief Disconnect from WiFi network.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t Disconnect() override;
 
-    /**
-     * @brief Initialize WiFi subsystem
-     * @param mode WiFi operating mode
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t initialize(Mode mode = Mode::STATION);
+  /**
+   * @brief Check if connected to WiFi network.
+   * @return true if connected, false otherwise
+   */
+  hf_bool_t IsConnected() const noexcept override;
 
-    /**
-     * @brief Deinitialize WiFi subsystem
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t deinitialize();
+  /**
+   * @brief Get signal strength (RSSI).
+   * @return Signal strength in dBm, or INT8_MIN if not connected
+   */
+  hf_i8_t GetRssi() const override;
 
-    /**
-     * @brief Check if WiFi is initialized
-     * @return true if initialized, false otherwise
-     */
-    bool isInitialized() const { return initialized_.load(); }
+  /**
+   * @brief Get IP information for station interface.
+   * @param ip_info Output structure for IP information
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t GetIpInfo(hf_wifi_ip_info_t& ip_info) const override;
 
-    /**
-     * @brief Set WiFi mode
-     * @param mode WiFi mode to set
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t setMode(Mode mode);
+  //==============================================================//
+  // ACCESS POINT MODE OPERATIONS
+  //==============================================================//
 
-    /**
-     * @brief Get current WiFi mode
-     * @return Current WiFi mode
-     */
-    Mode getMode() const { return current_mode_; }
+  /**
+   * @brief Configure access point mode parameters.
+   * @param config Access point configuration
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t ConfigureAccessPoint(const hf_wifi_ap_config_t& config) override;
 
-    /**
-     * @brief Configure station mode
-     * @param config Station configuration
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t configureStation(const StationConfig& config);
+  /**
+   * @brief Start access point.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t StartAccessPoint() override;
 
-    /**
-     * @brief Configure access point mode
-     * @param config AP configuration
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t configureAccessPoint(const AccessPointConfig& config);
+  /**
+   * @brief Stop access point.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t StopAccessPoint() override;
 
-    /**
-     * @brief Start WiFi
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t start();
+  /**
+   * @brief Check if access point is active.
+   * @return true if active, false otherwise
+   */
+  hf_bool_t IsAccessPointActive() const noexcept override;
 
-    /**
-     * @brief Stop WiFi
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t stop();
+  /**
+   * @brief Get number of connected stations.
+   * @return Number of connected stations
+   */
+  hf_i32_t GetConnectedStationCount() const override;
 
-    /**
-     * @brief Check if WiFi is started
-     * @return true if started, false otherwise
-     */
-    bool isStarted() const { return started_.load(); }
+  //==============================================================//
+  // NETWORK SCANNING
+  //==============================================================//
 
-    /**
-     * @brief Connect to configured network (station mode)
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t connect();
+  /**
+   * @brief Start network scan.
+   * @param show_hidden Show hidden networks
+   * @param passive Use passive scanning
+   * @param max_scan_time_ms Maximum scan time per channel
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t StartScan(hf_bool_t show_hidden = false,
+                          hf_bool_t passive = false,
+                          hf_timeout_ms_t max_scan_time_ms = 120) override;
 
-    /**
-     * @brief Disconnect from network (station mode)
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t disconnect();
+  /**
+   * @brief Get scan results.
+   * @param networks Output vector for network information
+   * @param max_networks Maximum number of networks to return (0 = all)
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t GetScanResults(std::vector<hf_wifi_network_info_t>& networks,
+                               hf_u16_t max_networks = 0) override;
 
-    /**
-     * @brief Check if connected to network
-     * @return true if connected, false otherwise
-     */
-    bool isConnected() const { return connected_.load(); }
+  /**
+   * @brief Check if scan is in progress.
+   * @return true if scanning, false otherwise
+   */
+  hf_bool_t IsScanning() const noexcept override;
 
-    /**
-     * @brief Get connection information
-     * @return Connection information
-     */
-    ConnectionInfo getConnectionInfo() const;
+  //==============================================================//
+  // STATE AND STATUS
+  //==============================================================//
 
-    /**
-     * @brief Start network scan
-     * @param config Scan configuration
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t startScan(const ScanConfig& config = ScanConfig{});
+  /**
+   * @brief Get current WiFi state.
+   * @return Current WiFi state
+   */
+  hf_wifi_state_t GetState() const override;
 
-    /**
-     * @brief Stop network scan
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t stopScan();
+  /**
+   * @brief Get connected network SSID.
+   * @return Connected SSID, empty if not connected
+   */
+  std::string GetConnectedSsid() const override;
 
-    /**
-     * @brief Check if currently scanning
-     * @return true if scanning, false otherwise
-     */
-    bool isScanning() const { return scanning_.load(); }
+  /**
+   * @brief Get connected network BSSID.
+   * @param bssid Output buffer for BSSID (6 bytes)
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t GetConnectedBssid(hf_u8_t bssid[6]) const override;
 
-    /**
-     * @brief Get scan results
-     * @return Vector of detected networks
-     */
-    std::vector<NetworkInfo> getScanResults() const;
+  //==============================================================//
+  // POWER MANAGEMENT
+  //==============================================================//
 
-    /**
-     * @brief Set power save mode
-     * @param mode Power save mode
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t setPowerSaveMode(PowerSaveMode mode);
+  /**
+   * @brief Set power save mode.
+   * @param mode Power save mode
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t SetPowerSave(hf_wifi_power_save_t mode) override;
 
-    /**
-     * @brief Get current power save mode
-     * @return Current power save mode
-     */
-    PowerSaveMode getPowerSaveMode() const { return power_save_mode_; }
+  /**
+   * @brief Get current power save mode.
+   * @return Current power save mode
+   */
+  hf_wifi_power_save_t GetPowerSave() const override;
 
-    /**
-     * @brief Set WiFi protocol
-     * @param interface WiFi interface (STA/AP)
-     * @param protocols Protocol bitmap
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t setProtocol(wifi_interface_t interface, uint8_t protocols);
+  //==============================================================//
+  // EVENT HANDLING
+  //==============================================================//
 
-    /**
-     * @brief Enable/disable WiFi 6 features
-     * @param interface WiFi interface
-     * @param features WiFi 6 features configuration
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t configureWifi6Features(wifi_interface_t interface, const Wifi6Features& features);
+  /**
+   * @brief Register WiFi event callback.
+   * @param callback Callback function to register
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t RegisterEventCallback(hf_wifi_event_callback_t callback) override;
 
-    /**
-     * @brief Configure enterprise authentication
-     * @param config Enterprise configuration
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t configureEnterprise(const EnterpriseConfig& config);
+  /**
+   * @brief Unregister WiFi event callback.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t UnregisterEventCallback() override;
 
-    /**
-     * @brief Set country configuration
-     * @param country_code Two-letter country code
-     * @param start_channel Start channel
-     * @param total_channels Total number of channels
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t setCountry(const std::string& country_code, uint8_t start_channel = 1, uint8_t total_channels = 13);
+  //==============================================================//
+  // UTILITY FUNCTIONS
+  //==============================================================//
 
-    /**
-     * @brief Set TX power
-     * @param power TX power in dBm
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t setTxPower(int8_t power);
+  /**
+   * @brief Get MAC address for specified interface.
+   * @param mac Output buffer for MAC address (6 bytes)
+   * @param interface Interface type (0=STA, 1=AP)
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t GetMacAddress(hf_u8_t mac[6], hf_u8_t interface = 0) const override;
 
-    /**
-     * @brief Get TX power
-     * @return TX power in dBm
-     */
-    int8_t getTxPower() const;
+  /**
+   * @brief Set MAC address for specified interface.
+   * @param mac MAC address to set (6 bytes)
+   * @param interface Interface type (0=STA, 1=AP)
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t SetMacAddress(const hf_u8_t mac[6], hf_u8_t interface = 0) override;
 
-    /**
-     * @brief Get MAC address
-     * @param interface WiFi interface
-     * @return MAC address
-     */
-    std::array<uint8_t, 6> getMacAddress(wifi_interface_t interface) const;
+  /**
+   * @brief Get current channel.
+   * @return Current channel number, 0 if not available
+   */
+  hf_u8_t GetChannel() const override;
 
-    /**
-     * @brief Set MAC address
-     * @param interface WiFi interface
-     * @param mac MAC address to set
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t setMacAddress(wifi_interface_t interface, const std::array<uint8_t, 6>& mac);
+  /**
+   * @brief Set WiFi channel.
+   * @param channel Channel number to set
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t SetChannel(hf_u8_t channel) override;
 
-    /**
-     * @brief Get connected stations (AP mode)
-     * @return List of connected station MAC addresses
-     */
-    std::vector<std::array<uint8_t, 6>> getConnectedStations() const;
+  //==============================================================//
+  // ESP32-C6 SPECIFIC EXTENSIONS
+  //==============================================================//
 
-    /**
-     * @brief Disconnect a station (AP mode)
-     * @param mac Station MAC address
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t disconnectStation(const std::array<uint8_t, 6>& mac);
+  /**
+   * @brief Set advanced ESP32-C6 specific configuration.
+   * @param config Advanced configuration structure
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t SetAdvancedConfig(const hf_esp_wifi_advanced_config_t& config);
 
-    /**
-     * @brief Enable/disable promiscuous mode
-     * @param enable Enable promiscuous mode
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t setPromiscuousMode(bool enable);
+  /**
+   * @brief Get current advanced configuration.
+   * @param config Reference to store current configuration
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t GetAdvancedConfig(hf_esp_wifi_advanced_config_t& config) const;
 
-    /**
-     * @brief Start SmartConfig provisioning
-     * @param type SmartConfig type
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t startSmartConfig(smartconfig_type_t type = SC_TYPE_ESPTOUCH);
+  /**
+   * @brief Enable WPA3 transition mode (WPA2/WPA3 mixed).
+   * @param enable True to enable transition mode
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t EnableWpa3Transition(hf_bool_t enable);
 
-    /**
-     * @brief Stop SmartConfig provisioning
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t stopSmartConfig();
+  /**
+   * @brief Configure 802.11k/r/v roaming features.
+   * @param enable_11k Enable 802.11k Radio Resource Management
+   * @param enable_11r Enable 802.11r Fast BSS Transition
+   * @param enable_11v Enable 802.11v BSS Transition Management
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t ConfigureRoaming(hf_bool_t enable_11k, hf_bool_t enable_11r, hf_bool_t enable_11v);
 
-    /**
-     * @brief Start WPS
-     * @param config WPS configuration
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t startWps(esp_wps_config_t config);
+  /**
+   * @brief Configure WPA2/WPA3 Enterprise authentication.
+   * @param config Enterprise configuration
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t ConfigureEnterprise(const hf_esp_wifi_enterprise_config_t& config);
 
-    /**
-     * @brief Stop WPS
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t stopWps();
+  /**
+   * @brief Start SmartConfig provisioning.
+   * @param type SmartConfig type
+   * @param timeout_ms Provisioning timeout in milliseconds
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t StartSmartConfig(smartconfig_type_t type = SC_TYPE_ESPTOUCH,
+                                 hf_timeout_ms_t timeout_ms = 60000);
 
-    /**
-     * @brief Initialize ESP-NOW
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t initializeEspNow();
+  /**
+   * @brief Stop SmartConfig provisioning.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t StopSmartConfig();
 
-    /**
-     * @brief Deinitialize ESP-NOW
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t deinitializeEspNow();
+  /**
+   * @brief Start WPS provisioning.
+   * @param type WPS type
+   * @param timeout_ms Provisioning timeout in milliseconds
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t StartWps(wps_type_t type = WPS_TYPE_PBC, hf_timeout_ms_t timeout_ms = 120000);
 
-    /**
-     * @brief Register connection event callback
-     * @param callback Callback function
-     */
-    void onConnection(ConnectionCallback callback) {
-        std::lock_guard<std::mutex> lock(callback_mutex_);
-        connection_callback_ = std::move(callback);
-    }
+  /**
+   * @brief Stop WPS provisioning.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t StopWps();
 
-    /**
-     * @brief Register disconnection event callback
-     * @param callback Callback function
-     */
-    void onDisconnection(DisconnectionCallback callback) {
-        std::lock_guard<std::mutex> lock(callback_mutex_);
-        disconnection_callback_ = std::move(callback);
-    }
+  /**
+   * @brief Set WiFi TX power.
+   * @param power TX power in dBm (2-20 for ESP32-C6)
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t SetTxPower(hf_i8_t power);
 
-    /**
-     * @brief Register scan complete event callback
-     * @param callback Callback function
-     */
-    void onScanComplete(ScanCompleteCallback callback) {
-        std::lock_guard<std::mutex> lock(callback_mutex_);
-        scan_complete_callback_ = std::move(callback);
-    }
+  /**
+   * @brief Get WiFi TX power.
+   * @return Current TX power in dBm, or -1 on error
+   */
+  hf_i8_t GetTxPower() const;
 
-    /**
-     * @brief Register AP station event callback
-     * @param callback Callback function
-     */
-    void onApStation(ApStationCallback callback) {
-        std::lock_guard<std::mutex> lock(callback_mutex_);
-        ap_station_callback_ = std::move(callback);
-    }
+  /**
+   * @brief Set WiFi channel bandwidth.
+   * @param bandwidth Channel bandwidth
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t SetBandwidth(wifi_bandwidth_t bandwidth);
 
-    /**
-     * @brief Register IP assigned event callback
-     * @param callback Callback function
-     */
-    void onIpAssigned(IpAssignedCallback callback) {
-        std::lock_guard<std::mutex> lock(callback_mutex_);
-        ip_assigned_callback_ = std::move(callback);
-    }
+  /**
+   * @brief Get WiFi channel bandwidth.
+   * @return Current channel bandwidth
+   */
+  wifi_bandwidth_t GetBandwidth() const;
 
-    /**
-     * @brief Get WiFi statistics
-     * @return String containing statistics
-     */
-    std::string getStatistics() const;
+  /**
+   * @brief Get WiFi statistics.
+   * @param stats Reference to store WiFi statistics
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t GetStatistics(hf_esp_wifi_stats_t& stats) const;
 
-    /**
-     * @brief Reset WiFi stack (emergency recovery)
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t reset();
-
-    /**
-     * @brief Enable low power mode with advanced power management
-     * @param enable Enable low power mode
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t setLowPowerMode(bool enable);
-
-    /**
-     * @brief Check if low power mode is enabled
-     * @return true if enabled, false otherwise
-     */
-    bool isLowPowerMode() const { return low_power_mode_.load(); }
+  /**
+   * @brief Get detailed connection information.
+   * @param info Reference to store connection information
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t GetConnectionInfo(wifi_ap_record_t& info) const;
 
 private:
-    /**
-     * @brief Private constructor for singleton
-     */
-    EspWifi() = default;
+  //==============================================================//
+  // INTERNAL STATE MANAGEMENT
+  //==============================================================//
 
-    /**
-     * @brief Destructor
-     */
-    ~EspWifi();
+  mutable std::mutex m_mutex_;                          ///< Thread synchronization mutex
+  std::atomic<hf_bool_t> m_initialized_;                ///< Initialization state
+  std::atomic<hf_bool_t> m_enabled_;                    ///< WiFi enabled state
+  std::atomic<hf_wifi_mode_t> m_mode_;                  ///< Current WiFi mode
+  std::atomic<hf_wifi_state_t> m_state_;                ///< Current WiFi state
 
-    /**
-     * @brief Delete copy constructor and assignment operator
-     */
-    EspWifi(const EspWifi&) = delete;
-    EspWifi& operator=(const EspWifi&) = delete;
+  // Configuration storage
+  hf_wifi_station_config_t m_sta_config_;               ///< Station configuration
+  hf_wifi_ap_config_t m_ap_config_;                     ///< AP configuration
+  hf_esp_wifi_advanced_config_t m_advanced_config_;     ///< Advanced configuration
 
-    /**
-     * @brief Initialize NVS flash
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t initializeNVS();
+  // ESP-IDF handles
+  esp_netif_t* m_sta_netif_;                           ///< Station network interface
+  esp_netif_t* m_ap_netif_;                            ///< AP network interface
+  EventGroupHandle_t m_event_group_;                   ///< FreeRTOS event group
+  esp_event_handler_instance_t m_wifi_event_handler_;  ///< WiFi event handler
+  esp_event_handler_instance_t m_ip_event_handler_;    ///< IP event handler
 
-    /**
-     * @brief Initialize TCP/IP adapter
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t initializeNetif();
+  // Event handling
+  hf_wifi_event_callback_t m_event_callback_;          ///< User event callback
+  void* m_event_user_data_;                            ///< User data for callbacks
 
-    /**
-     * @brief Initialize event loop
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t initializeEventLoop();
+  // Connection state
+  std::atomic<hf_bool_t> m_connected_;                  ///< Connection state
+  std::atomic<hf_bool_t> m_ap_active_;                  ///< AP active state
+  std::atomic<hf_i8_t> m_rssi_;                        ///< Current RSSI
+  std::atomic<hf_u8_t> m_channel_;                     ///< Current channel
 
-    /**
-     * @brief Register event handlers
-     * @return ESP_OK on success, error code otherwise
-     */
-    esp_err_t registerEventHandlers();
+  // Scan results
+  std::vector<hf_wifi_network_info_t> m_scan_results_; ///< Last scan results
+  std::atomic<hf_bool_t> m_scanning_;                   ///< Scanning state
+  mutable std::mutex m_scan_mutex_;                     ///< Scan results mutex
 
-    /**
-     * @brief WiFi event handler
-     */
-    static void wifiEventHandler(void* arg, esp_event_base_t event_base,
-                                int32_t event_id, void* event_data);
+  // Advanced features state
+  std::atomic<hf_bool_t> m_smartconfig_active_;        ///< SmartConfig active
+  std::atomic<hf_bool_t> m_wps_active_;                ///< WPS active
 
-    /**
-     * @brief IP event handler
-     */
-    static void ipEventHandler(void* arg, esp_event_base_t event_base,
-                              int32_t event_id, void* event_data);
+  //==============================================================//
+  // INTERNAL HELPER METHODS
+  //==============================================================//
 
-    /**
-     * @brief SmartConfig event handler
-     */
-    static void smartConfigEventHandler(void* arg, esp_event_base_t event_base,
-                                       int32_t event_id, void* event_data);
+  /**
+   * @brief Initialize ESP-IDF network interface.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t InitNetif();
 
-    /**
-     * @brief Handle WiFi connect event
-     */
-    void handleConnectEvent(void* event_data);
+  /**
+   * @brief Deinitialize ESP-IDF network interface.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t DeinitNetif();
 
-    /**
-     * @brief Handle WiFi disconnect event
-     */
-    void handleDisconnectEvent(void* event_data);
+  /**
+   * @brief Register ESP-IDF event handlers.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t RegisterEventHandlers();
 
-    /**
-     * @brief Handle scan done event
-     */
-    void handleScanDoneEvent(void* event_data);
+  /**
+   * @brief Unregister ESP-IDF event handlers.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t UnregisterEventHandlers();
 
-    /**
-     * @brief Handle AP station connected event
-     */
-    void handleApStationConnectedEvent(void* event_data);
+  /**
+   * @brief Static WiFi event handler for ESP-IDF.
+   * @param arg User argument (EspWifi instance)
+   * @param event_base Event base
+   * @param event_id Event ID
+   * @param event_data Event data
+   */
+  static void WifiEventHandler(void* arg, esp_event_base_t event_base, 
+                              hf_i32_t event_id, void* event_data);
 
-    /**
-     * @brief Handle AP station disconnected event
-     */
-    void handleApStationDisconnectedEvent(void* event_data);
+  /**
+   * @brief Static IP event handler for ESP-IDF.
+   * @param arg User argument (EspWifi instance)
+   * @param event_base Event base
+   * @param event_id Event ID
+   * @param event_data Event data
+   */
+  static void IpEventHandler(void* arg, esp_event_base_t event_base, 
+                            hf_i32_t event_id, void* event_data);
 
-    /**
-     * @brief Handle IP assigned event
-     */
-    void handleIpAssignedEvent(void* event_data);
+  /**
+   * @brief Handle WiFi events internally.
+   * @param event_id ESP-IDF event ID
+   * @param event_data Event data
+   */
+  void HandleWifiEvent(hf_i32_t event_id, void* event_data);
 
-    /**
-     * @brief Convert ESP security type to our enum
-     */
-    static Security convertSecurityType(wifi_auth_mode_t auth_mode);
+  /**
+   * @brief Handle IP events internally.
+   * @param event_id ESP-IDF event ID
+   * @param event_data Event data
+   */
+  void HandleIpEvent(hf_i32_t event_id, void* event_data);
 
-    /**
-     * @brief Convert our security type to ESP type
-     */
-    static wifi_auth_mode_t convertToEspSecurityType(Security security);
+  /**
+   * @brief Update internal state.
+   * @param new_state New WiFi state
+   */
+  void UpdateState(hf_wifi_state_t new_state);
 
-    // State variables
-    std::atomic<bool> initialized_{false};
-    std::atomic<bool> started_{false};
-    std::atomic<bool> connected_{false};
-    std::atomic<bool> scanning_{false};
-    std::atomic<bool> low_power_mode_{false};
-    Mode current_mode_{Mode::DISABLED};
-    PowerSaveMode power_save_mode_{PowerSaveMode::NONE};
+  /**
+   * @brief Apply advanced configuration settings.
+   * @return HF_WIFI_SUCCESS on success, error code otherwise
+   */
+  hf_wifi_err_t ApplyAdvancedConfig();
 
-    // Configuration
-    StationConfig station_config_;
-    AccessPointConfig ap_config_;
-    EnterpriseConfig enterprise_config_;
+  /**
+   * @brief Convert ESP-IDF error to HardFOC error.
+   * @param esp_err ESP-IDF error code
+   * @return HardFOC WiFi error code
+   */
+  static hf_wifi_err_t ConvertEspError(esp_err_t esp_err);
 
-    // Network interfaces
-    esp_netif_t* sta_netif_{nullptr};
-    esp_netif_t* ap_netif_{nullptr};
+  /**
+   * @brief Validate configuration parameters.
+   * @param config Configuration to validate
+   * @return true if valid, false otherwise
+   */
+  static hf_bool_t ValidateConfig(const hf_wifi_station_config_t& config);
 
-    // Event handling
-    esp_event_loop_handle_t event_loop_handle_{nullptr};
+  /**
+   * @brief Validate AP configuration parameters.
+   * @param config AP configuration to validate
+   * @return true if valid, false otherwise
+   */
+  static hf_bool_t ValidateApConfig(const hf_wifi_ap_config_t& config);
 
-    // Synchronization
-    mutable std::mutex state_mutex_;
-    mutable std::mutex callback_mutex_;
-    EventGroupHandle_t event_group_{nullptr};
-
-    // Callbacks
-    ConnectionCallback connection_callback_;
-    DisconnectionCallback disconnection_callback_;
-    ScanCompleteCallback scan_complete_callback_;
-    ApStationCallback ap_station_callback_;
-    IpAssignedCallback ip_assigned_callback_;
-
-    // Scan results
-    mutable std::mutex scan_mutex_;
-    std::vector<NetworkInfo> scan_results_;
-
-    // Statistics
-    mutable std::mutex stats_mutex_;
-    struct {
-        uint32_t connections_established{0};
-        uint32_t connections_dropped{0};
-        uint32_t scans_performed{0};
-        uint32_t packets_sent{0};
-        uint32_t packets_received{0};
-        uint32_t errors{0};
-        std::chrono::steady_clock::time_point last_connection_time;
-        std::chrono::steady_clock::time_point last_scan_time;
-    } statistics_;
-
-    // Event group bits
-    static const int WIFI_CONNECTED_BIT = BIT0;
-    static const int WIFI_FAIL_BIT = BIT1;
-    static const int WIFI_SCAN_DONE_BIT = BIT2;
-    static const int WIFI_SMARTCONFIG_DONE_BIT = BIT3;
-
-    // Logging tag
-    static constexpr const char* TAG = "EspWifi";
+  // Prevent copying
+  EspWifi(const EspWifi&) = delete;
+  EspWifi& operator=(const EspWifi&) = delete;
 };
-
-} // namespace wifi
-} // namespace esp32
-
-#endif // ESP_WIFI_H
