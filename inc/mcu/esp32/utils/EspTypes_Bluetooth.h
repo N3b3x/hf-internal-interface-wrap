@@ -44,12 +44,113 @@ extern "C" {
 #include "esp_spp_api.h"
 #endif
 
-// Bluetooth Low Energy headers
+// Bluetooth Low Energy headers - conditional compilation
+#if defined(CONFIG_IDF_TARGET_ESP32) || defined(CONFIG_IDF_TARGET_ESP32S3) || defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32H2)
+// esp_bt_defs.h not available on ESP32C6/C3/H2 (BLE-only variants)
+#if !defined(CONFIG_IDF_TARGET_ESP32C6) && !defined(CONFIG_IDF_TARGET_ESP32C3) && !defined(CONFIG_IDF_TARGET_ESP32H2)
 #include "esp_bt_defs.h"
+#else
+// Forward declarations for BLE-only variants
+typedef enum {
+    ESP_BT_MODE_IDLE = 0x00,
+    ESP_BT_MODE_BLE = 0x01,
+    ESP_BT_MODE_CLASSIC_BT = 0x02,
+    ESP_BT_MODE_BTDM = 0x03
+} esp_bt_mode_t;
+
+typedef enum {
+    ESP_BT_DEV_TYPE_BREDR = 0x01,
+    ESP_BT_DEV_TYPE_BLE = 0x02,
+    ESP_BT_DEV_TYPE_DUMO = 0x03
+} esp_bt_dev_type_t;
+
+typedef struct {
+    uint16_t len;
+    uint8_t uuid[16];
+} esp_bt_uuid_t;
+typedef uint8_t esp_bt_inq_mode_t;
+typedef uint8_t esp_spp_cb_event_t;
+typedef struct esp_spp_cb_param_t esp_spp_cb_param_t;
+typedef uint8_t esp_ble_auth_req_t;
+typedef uint8_t esp_ble_io_cap_t;
+typedef uint8_t esp_ble_sm_param_t;
+typedef int8_t esp_power_level_t;
+
+// Bluetooth controller configuration type
+typedef struct {
+    esp_bt_mode_t mode;
+    uint8_t sleep_mode;
+    uint8_t sleep_clock;
+    uint8_t normal_adv_buf_num;
+    uint8_t ext_adv_buf_num;
+    uint8_t high_adv_buf_num;
+    uint8_t low_adv_buf_num;
+    uint8_t normal_scan_buf_num;
+    uint8_t high_scan_buf_num;
+    uint8_t low_scan_buf_num;
+    uint8_t period_adv_buf_num;
+    uint8_t period_scan_buf_num;
+    uint32_t magic;
+} esp_bt_controller_config_t;
+
+// Classic Bluetooth constants
+#define ESP_BT_INQ_MODE_LIMITED_INQIURY 0x01
+#define ESP_BT_INQ_MODE_GENERAL_INQUIRY 0x02
+#define ESP_BT_CONNECTABLE 0x01
+#define ESP_BT_GENERAL_DISCOVERABLE 0x02
+#define ESP_BT_SLEEP_MODE_1 0x01
+
+// Additional constants for controller configuration
+#define ESP_BT_SLEEP_CLOCK_EXTERNAL_32K 0x00
+#define ESP_BT_CONTROLLER_CONFIG_MAGIC_VAL 0x5A5AA5A5
+
+// SPP constants
+#define ESP_SPP_SEC_AUTHENTICATE 0x01
+#define ESP_SPP_ROLE_MASTER 0x01
+#define ESP_SPP_SERVER_NAME "SPP_SERVER"
+#define ESP_SPP_MODE_CB 0x01
+
+// BLE authentication constants
+#define ESP_LE_AUTH_BOND 0x01
+#define ESP_LE_AUTH_REQ_SC_MITM_BOND 0x02
+
+// BLE key mask constants
+#define ESP_BLE_ENC_KEY_MASK 0x01
+#define ESP_BLE_ID_KEY_MASK 0x02
+
+// BLE SM constants
+#define ESP_BLE_SM_PASSKEY 0x01
+#define ESP_BLE_SM_AUTHEN_REQ_MODE 0x02
+#define ESP_BLE_SM_IOCAP_MODE 0x03
+#define ESP_BLE_SM_MAX_KEY_SIZE 0x04
+#define ESP_BLE_SM_SET_INIT_KEY 0x05
+#define ESP_BLE_SM_SET_RSP_KEY 0x06
+
+// BLE power type constants
+#define ESP_BLE_PWR_TYPE_DEFAULT 0x00
+
+// Bluetooth controller configuration
+#define BT_CONTROLLER_INIT_CONFIG_DEFAULT() { \
+    .mode = ESP_BT_MODE_BLE, \
+    .sleep_mode = ESP_BT_SLEEP_MODE_1, \
+    .sleep_clock = ESP_BT_SLEEP_CLOCK_EXTERNAL_32K, \
+    .normal_adv_buf_num = 4, \
+    .ext_adv_buf_num = 1, \
+    .high_adv_buf_num = 1, \
+    .low_adv_buf_num = 1, \
+    .normal_scan_buf_num = 4, \
+    .high_scan_buf_num = 1, \
+    .low_scan_buf_num = 1, \
+    .period_adv_buf_num = 1, \
+    .period_scan_buf_num = 1, \
+    .magic = ESP_BT_CONTROLLER_CONFIG_MAGIC_VAL \
+}
+#endif
 #include "esp_gap_ble_api.h"
 #include "esp_gatt_common_api.h"
 #include "esp_gattc_api.h"
 #include "esp_gatts_api.h"
+#endif
 
 #ifdef __cplusplus
 }

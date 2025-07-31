@@ -182,13 +182,22 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
 #if HAS_BLUETOOTH_SUPPORT
   // Release memory for classic BT if not needed
   esp_bt_mode_t esp_mode = ConvertToEspMode(mode);
+#if HAS_CLASSIC_BLUETOOTH
   if (esp_mode == ESP_BT_MODE_BLE) {
     ESP_ERROR_CHECK(esp_bt_controller_mem_release(ESP_BT_MODE_CLASSIC_BT));
   } else if (esp_mode == ESP_BT_MODE_CLASSIC_BT) {
     ESP_ERROR_CHECK(esp_bt_controller_mem_release(ESP_BT_MODE_BLE));
   }
+#else
+  // Classic Bluetooth not supported, only BLE mode is valid
+  if (esp_mode == ESP_BT_MODE_CLASSIC_BT || esp_mode == ESP_BT_MODE_BTDM) {
+    ESP_LOGE(TAG, "Classic Bluetooth mode not supported on this ESP32 variant");
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+  }
+#endif
 
   // Initialize Bluetooth controller
+#if HAS_BLUETOOTH_SUPPORT
   esp_bt_controller_config_t bt_cfg = BT_CONTROLLER_INIT_CONFIG_DEFAULT();
 
   // Apply advanced configuration
@@ -210,6 +219,10 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
     Cleanup();
     return hf_bluetooth_err_t::BLUETOOTH_ERR_INIT_FAILED;
   }
+#else
+  ESP_LOGE(TAG, "Bluetooth not supported on this ESP32 variant");
+  return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+#endif
 #else
   ESP_LOGE(TAG, "Bluetooth not supported on this ESP32 variant");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
@@ -239,7 +252,8 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
     }
   }
 
-  // Initialize Classic Bluetooth if enabled
+  // Initialize Classic Bluetooth if enabled and supported
+#if HAS_CLASSIC_BLUETOOTH
   if (esp_mode == ESP_BT_MODE_CLASSIC_BT || esp_mode == ESP_BT_MODE_BTDM) {
     ret = InitializeClassic();
     if (ret != hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
@@ -247,6 +261,14 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
       return ret;
     }
   }
+#else
+  // Classic Bluetooth not supported on this variant
+  if (esp_mode == ESP_BT_MODE_CLASSIC_BT || esp_mode == ESP_BT_MODE_BTDM) {
+    ESP_LOGE(TAG, "Classic Bluetooth not supported on this ESP32 variant");
+    Cleanup();
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+  }
+#endif
 
   m_mode = mode;
   m_initialized = true;
@@ -280,7 +302,11 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() {
   for (auto& conn : connections_) {
     if (conn.second.is_classic) {
       // Disconnect Classic Bluetooth connection
+#if HAS_CLASSIC_BLUETOOTH
       esp_bt_gap_cancel_discovery();
+#else
+      ESP_LOGW(TAG, "Classic Bluetooth not supported, skipping disconnect");
+#endif
     } else {
       // Disconnect BLE connection
       esp_ble_gatts_close(conn.second.gatt_if, conn.second.connection_handle);
@@ -414,11 +440,15 @@ hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
   // Set Classic Bluetooth device name if applicable
   if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC ||
       m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
+#if HAS_CLASSIC_BLUETOOTH
     ret = esp_bt_dev_set_device_name(name.c_str());
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to set Classic BT device name: %s", esp_err_to_name(ret));
       return hf_bluetooth_err_t::SET_FAILED;
     }
+#else
+    ESP_LOGW(TAG, "Classic Bluetooth not supported, skipping device name set");
+#endif
   }
 
   local_name_ = name;
@@ -568,6 +598,7 @@ hf_bluetooth_err_t EspBluetooth::startScan(const hf_bluetooth_scan_config_t& con
   } else if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC ||
              (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL &&
               config.mode == hf_bluetooth_scan_mode_t::GENERAL_INQUIRY)) {
+#if HAS_CLASSIC_BLUETOOTH
     // Classic Bluetooth inquiry
     esp_bt_inq_mode_t inq_mode = config.mode == hf_bluetooth_scan_mode_t::LIMITED_INQUIRY
                                      ? ESP_BT_INQ_MODE_LIMITED_INQIURY
@@ -578,6 +609,10 @@ hf_bluetooth_err_t EspBluetooth::startScan(const hf_bluetooth_scan_config_t& con
       ESP_LOGE(TAG, "Failed to start Classic BT discovery: %s", esp_err_to_name(ret));
       return hf_bluetooth_err_t::START_FAILED;
     }
+#else
+    ESP_LOGE(TAG, "Classic Bluetooth not supported on this ESP32 variant");
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+#endif
   }
 
   is_scanning_ = true;
@@ -601,7 +636,12 @@ hf_bluetooth_err_t EspBluetooth::stopScan() {
        m_current_scan_type == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
     ret = esp_ble_gap_stop_scanning();
   } else {
+#if HAS_CLASSIC_BLUETOOTH
     ret = esp_bt_gap_cancel_discovery();
+#else
+    ESP_LOGE(TAG, "Classic Bluetooth not supported on this ESP32 variant");
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+#endif
   }
 
   if (ret != ESP_OK) {
@@ -837,8 +877,13 @@ hf_bluetooth_err_t EspBluetooth::pair(const hf_bluetooth_address_t& address,
     ret = esp_ble_gap_security_rsp(const_cast<uint8_t*>(address.address), true);
   } else {
     // Classic Bluetooth pairing
+#if HAS_CLASSIC_BLUETOOTH
     ret = esp_bt_gap_pin_reply(const_cast<uint8_t*>(address.address), true, 4,
                                const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>("0000")));
+#else
+    ESP_LOGE(TAG, "Classic Bluetooth not supported on this ESP32 variant");
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+#endif
   }
 
   if (ret != ESP_OK) {
@@ -1166,10 +1211,12 @@ void EspBluetooth::cleanup() {
   scan_results_.clear();
 
   // Deinitialize Bluedroid and controller
+#if HAS_BLUETOOTH_SUPPORT
   esp_bluedroid_disable();
   esp_bluedroid_deinit();
   esp_bt_controller_disable();
   esp_bt_controller_deinit();
+#endif
 }
 
 // Static event handlers

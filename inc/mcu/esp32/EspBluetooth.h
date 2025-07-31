@@ -26,7 +26,8 @@ extern "C" {
 #endif
 
 // Bluetooth headers - conditionally include based on target support
-#if HAS_BLUETOOTH_SUPPORT && !defined(CONFIG_IDF_TARGET_ESP32C6)
+// Basic BT headers not available on ESP32C6/C3/H2 (BLE-only variants)
+#if HAS_BLUETOOTH_SUPPORT && !defined(CONFIG_IDF_TARGET_ESP32C6) && !defined(CONFIG_IDF_TARGET_ESP32C3) && !defined(CONFIG_IDF_TARGET_ESP32H2)
 #include "esp_bt.h"
 #include "esp_bt_main.h"
 #endif
@@ -52,17 +53,17 @@ extern "C" {
 #define HAS_A2DP_SUPPORT 1
 #define HAS_AVRCP_SUPPORT 1
 #elif defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32H2)
-#define HAS_BLUETOOTH_SUPPORT 0
-// BLE only variants
+// BLE only variants - support BLE but not basic BT headers
 #define HAS_CLASSIC_BLUETOOTH 0
 #define HAS_A2DP_SUPPORT 0
 #define HAS_AVRCP_SUPPORT 0
+#define HAS_BLUETOOTH_SUPPORT 1
 #elif defined(CONFIG_IDF_TARGET_ESP32S2)
 // No Bluetooth support
 #define HAS_CLASSIC_BLUETOOTH 0
 #define HAS_A2DP_SUPPORT 0
 #define HAS_AVRCP_SUPPORT 0
-#define HAS_BLUETOOTH_SUPPORT 1
+#define HAS_BLUETOOTH_SUPPORT 0
 #else
 // Default to no Classic Bluetooth for unknown targets
 #define HAS_CLASSIC_BLUETOOTH 0
@@ -75,16 +76,23 @@ extern "C" {
 #define HAS_BLUETOOTH_SUPPORT 1
 #endif
 
-// Bluetooth Low Energy headers
+// Bluetooth Low Energy headers - conditional compilation for different ESP32 variants
+#if HAS_BLUETOOTH_SUPPORT
+// esp_bt_defs.h not available on ESP32C6/C3/H2 (BLE-only variants)
+#if !defined(CONFIG_IDF_TARGET_ESP32C6) && !defined(CONFIG_IDF_TARGET_ESP32C3) && !defined(CONFIG_IDF_TARGET_ESP32H2)
 #include "esp_bt_defs.h"
+#endif
 #include "esp_gap_ble_api.h"
 #include "esp_gatt_common_api.h"
 #include "esp_gattc_api.h"
 #include "esp_gatts_api.h"
+#endif
 
-// ESP-MESH Bluetooth headers
+// ESP-MESH Bluetooth headers - conditional compilation
+#if HAS_BLUETOOTH_SUPPORT
 #include "esp_mesh.h"
 #include "esp_mesh_internal.h"
+#endif
 
 // System headers
 #include "esp_log.h"
@@ -101,6 +109,7 @@ extern "C" {
 // C++ headers
 #include "BaseBluetooth.h"
 #include "mcu/esp32/utils/EspTypes_Base.h"
+#include "mcu/esp32/utils/EspTypes_Bluetooth.h"
 #include "utils/RtosMutex.h"
 #include <atomic>
 #include <map>
