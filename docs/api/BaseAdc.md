@@ -1,17 +1,17 @@
-# BaseAdc API Reference
+# 📊 BaseAdc API Reference
 
-## Overview
+## 🌟 Overview
 
 `BaseAdc` is the abstract base class for all ADC (Analog-to-Digital Converter) implementations in the HardFOC system. It provides a unified interface for analog sensor reading with support for multi-channel operation, averaging, and comprehensive error handling.
 
-## Features
+## ✨ Features
 
-- **Multi-Channel Support** - Read from multiple analog channels
-- **Voltage and Raw Count Readings** - Get calibrated voltage or raw ADC counts
-- **Averaging Support** - Built-in sample averaging for noise reduction
-- **Flexible Timing** - Configurable time between samples
-- **Lazy Initialization** - Resources allocated only when needed
-- **Comprehensive Error Handling** - 32 detailed error codes with descriptions
+- **🔢 Multi-Channel Support** - Read from multiple analog channels
+- **⚡ Voltage and Raw Count Readings** - Get calibrated voltage or raw ADC counts
+- **📊 Averaging Support** - Built-in sample averaging for noise reduction
+- **⏰ Flexible Timing** - Configurable time between samples
+- **🔧 Lazy Initialization** - Resources allocated only when needed
+- **🛡️ Comprehensive Error Handling** - 32 detailed error codes with descriptions
 
 ## Header File
 

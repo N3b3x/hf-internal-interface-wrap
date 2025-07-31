@@ -1,18 +1,18 @@
-# BaseGpio API Reference
+# 🔌 BaseGpio API Reference
 
-## Overview
+## 🌟 Overview
 
 `BaseGpio` is the unified GPIO base class for all digital GPIO implementations in the HardFOC system. It provides a comprehensive digital GPIO abstraction that serves as the foundation for all GPIO hardware implementations.
 
-## Features
+## ✨ Features
 
-- **Dynamic Mode Switching** - Runtime switching between input and output modes
-- **Active State Polarity** - Configurable active-high/active-low polarity
-- **Pull Resistor Control** - Internal pull-up, pull-down, and floating modes
-- **Output Drive Modes** - Push-pull and open-drain output configurations
-- **Interrupt Support** - Edge and level triggered interrupts with callbacks
-- **Lazy Initialization** - Resources allocated only when needed
-- **Comprehensive Error Handling** - 38 detailed error codes with descriptions
+- **🔄 Dynamic Mode Switching** - Runtime switching between input and output modes
+- **⚡ Active State Polarity** - Configurable active-high/active-low polarity
+- **🔧 Pull Resistor Control** - Internal pull-up, pull-down, and floating modes
+- **🚀 Output Drive Modes** - Push-pull and open-drain output configurations
+- **⚡ Interrupt Support** - Edge and level triggered interrupts with callbacks
+- **🔧 Lazy Initialization** - Resources allocated only when needed
+- **🛡️ Comprehensive Error Handling** - 38 detailed error codes with descriptions
 
 ## Header File
 
