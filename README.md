@@ -207,8 +207,8 @@ using hf_frequency_hz_t = hf_u32_t; // Frequency in Hz
 |-----------|-------------|-----------------|---------|
 | **ADC** | Analog-to-Digital Conversion | ESP32-C6, TMC9660, ADS1x1x | ✅ Complete |
 | **GPIO** | Digital Input/Output | ESP32-C6, TMC9660, I2C/SPI expanders | ✅ Complete |
-| **CAN** | Controller Area Network | ESP32-C6, MCP2515, TMC9660 | ✅ Complete |
-| **I2C** | Inter-Integrated Circuit | ESP32-C6, Bit-banged | ✅ Complete |
+| **CAN** | Controller Area Network | ESP32-C6 | ✅ Complete |
+| **I2C** | Inter-Integrated Circuit | ESP32-C6, Software I2C | ✅ Complete |
 | **SPI** | Serial Peripheral Interface | ESP32-C6, Software SPI | ✅ Complete |
 | **UART** | Universal Asynchronous Receiver/Transmitter | ESP32-C6, USB-to-serial | ✅ Complete |
 | **PWM** | Pulse Width Modulation | ESP32-C6, External controllers | ✅ Complete |
