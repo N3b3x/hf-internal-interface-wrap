@@ -68,35 +68,8 @@ dependencies:
   # ESP-IDF Framework (required for all ESP32 development)
   idf: ">=5.0.0"
   
-  # ESP-IDF Core Components (public dependencies)
-  driver: "*"           # ESP32 hardware drivers
-  freertos: "*"         # Real-time operating system
-  nvs_flash: "*"        # Non-volatile storage
-  esp_timer: "*"        # High-resolution timers
-  esp_system: "*"       # System utilities
-  esp_common: "*"       # Common ESP32 utilities
-  esp_rom: "*"          # ROM functions
-  esp_hw_support: "*"   # Hardware support
-  hal: "*"              # Hardware abstraction layer
-  soc: "*"              # System-on-chip support
-  log: "*"              # Logging system
-  
-  # ESP-IDF Communication Drivers (public dependencies)
-  esp_adc: "*"          # ADC functionality
-  esp_gpio: "*"         # GPIO control
-  esp_i2c: "*"          # I2C communication
-  esp_spi: "*"          # SPI communication
-  esp_can: "*"          # CAN/TWAI communication
-  esp_uart: "*"         # UART communication
-  esp_pm: "*"           # Power management
-  
-  # ESP-IDF Advanced Features (public dependencies)
-  esp_wifi: "*"         # WiFi functionality
-  esp_netif: "*"        # Network interface
-  esp_event: "*"        # Event system
-  esp_partition: "*"    # Partition management
-  esp_https_ota: "*"    # HTTPS OTA updates
-  bt: "*"               # Bluetooth functionality
+  # ESP-IDF Core Components (built-in, no external dependencies needed)
+  # These are automatically available when using ESP-IDF
 
 # ─── Packaging Configuration ─────────────────────────────────────────────────
 files:
