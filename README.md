@@ -244,11 +244,12 @@ idf_component_register(
 #include "inc/mcu/esp32/EspPwm.h"
 #include "inc/mcu/esp32/EspTemperature.h"
 #include "inc/mcu/esp32/EspLogger.h"
+#include "inc/mcu/esp32/EspSpi.h"
 
 class HardFOCMotorController {
 private:
     EspGpio enable_pin_;
-    EspPwm motor_pwm_;
+    EspSpi tmc9660_spi_;
     EspAdc current_sensor_;
     EspTemperature temp_sensor_;
     EspLogger logger_;
@@ -256,7 +257,7 @@ private:
 public:
     HardFOCMotorController() 
         : enable_pin_(GPIO_NUM_2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT)
-        , motor_pwm_(LEDC_CHANNEL_0, GPIO_NUM_5)
+        , tmc9660_spi_(SPI2_HOST, GPIO_NUM_18, GPIO_NUM_19, GPIO_NUM_5)  // SCLK, MISO, MOSI
         , current_sensor_(ADC_UNIT_1, ADC_ATTEN_DB_11)
     {}
     
@@ -265,15 +266,16 @@ public:
         bool success = true;
         success &= (logger_.EnsureInitialized() == hf_logger_err_t::LOGGER_SUCCESS);
         success &= (enable_pin_.EnsureInitialized() == hf_gpio_err_t::GPIO_SUCCESS);
-        success &= (motor_pwm_.EnsureInitialized() == hf_pwm_err_t::PWM_SUCCESS);
+        success &= (tmc9660_spi_.EnsureInitialized() == hf_spi_err_t::SPI_SUCCESS);
         success &= (current_sensor_.EnsureInitialized() == hf_adc_err_t::ADC_SUCCESS);
         success &= (temp_sensor_.EnsureInitialized() == hf_temp_err_t::TEMP_SUCCESS);
         
         if (success) {
-            motor_pwm_.SetFrequency(20000); // 20kHz PWM for HardFOC
-            logger_.LogInfo("HARDFOC", "HardFOC motor controller initialized successfully");
+            // Configure TMC9660 motor controller via SPI
+            configure_tmc9660();
+            logger_.LogInfo("HARDFOC", "HardFOC TMC9660 motor controller initialized successfully");
         } else {
-            logger_.LogError("HARDFOC", "HardFOC motor controller initialization failed");
+            logger_.LogError("HARDFOC", "HardFOC TMC9660 motor controller initialization failed");
         }
         
         return success;
@@ -295,18 +297,42 @@ public:
             logger_.LogWarn("HARDFOC", "HardFOC high current: %.2fA", current);
         }
         
-        // Set motor speed on HardFOC board
-        enable_pin_.SetActive();
-        motor_pwm_.SetDutyCyclePercent(speed_percent);
+        // Send velocity command to TMC9660 via SPI
+        send_tmc9660_velocity_command(speed_percent);
         
-        logger_.LogDebug("HARDFOC", "Speed: %.1f%%, Current: %.2fA, Temp: %.1f°C", 
+        logger_.LogDebug("HARDFOC", "TMC9660 Speed: %.1f%%, Current: %.2fA, Temp: %.1f°C", 
                         speed_percent, current, temperature);
     }
     
     void emergency_stop() {
         enable_pin_.SetInactive();
-        motor_pwm_.SetDutyCyclePercent(0.0f);
-        logger_.LogError("HARDFOC", "HardFOC emergency stop activated");
+        send_tmc9660_stop_command();
+        logger_.LogError("HARDFOC", "HardFOC TMC9660 emergency stop activated");
+    }
+    
+private:
+    void configure_tmc9660() {
+        // Configure TMC9660 motor controller settings
+        // Set motor parameters, current limits, etc.
+        hf_u8_t config_data[] = {0x80, 0x00, 0x00, 0x01};  // Example configuration
+        tmc9660_spi_.WriteRead(config_data, nullptr, sizeof(config_data));
+    }
+    
+    void send_tmc9660_velocity_command(float speed_percent) {
+        // Convert speed percentage to TMC9660 velocity command
+        hf_u32_t velocity = static_cast<hf_u32_t>(speed_percent * 1000);  // Example scaling
+        hf_u8_t cmd[] = {0x00, 0x03,  // Velocity register
+                         static_cast<hf_u8_t>(velocity >> 24),
+                         static_cast<hf_u8_t>(velocity >> 16),
+                         static_cast<hf_u8_t>(velocity >> 8),
+                         static_cast<hf_u8_t>(velocity)};
+        tmc9660_spi_.WriteRead(cmd, nullptr, sizeof(cmd));
+    }
+    
+    void send_tmc9660_stop_command() {
+        // Send immediate stop command to TMC9660
+        hf_u8_t stop_cmd[] = {0x00, 0x03, 0x00, 0x00, 0x00, 0x00};  // Zero velocity
+        tmc9660_spi_.WriteRead(stop_cmd, nullptr, sizeof(stop_cmd));
     }
 };
 ```
@@ -399,7 +425,7 @@ set(COMPONENT_REQUIRES
 - [📻 **Bluetooth Classic**](examples/wireless/bluetooth_classic.cpp) - Serial over Bluetooth for HardFOC
 
 ### 🚀 **Advanced HardFOC Integration Examples**
-- [🏭 **Complete HardFOC Motor Controller**](examples/advanced/motor_controller.cpp) - Full-featured HardFOC motor control
+- [🏭 **Complete HardFOC TMC9660 Controller**](examples/advanced/hardfoc_tmc9660_controller.cpp) - Full-featured TMC9660 motor control
 - [🌉 **HardFOC IoT Gateway**](examples/advanced/iot_gateway.cpp) - WiFi bridge with HardFOC monitoring
 - [📊 **HardFOC Data Logger**](examples/advanced/data_logger.cpp) - Multi-sensor data collection for HardFOC
 - [🔐 **Secure HardFOC Communication**](examples/advanced/secure_comm.cpp) - Encrypted data transfer for HardFOC

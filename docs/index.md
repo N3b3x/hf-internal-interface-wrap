@@ -224,12 +224,49 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 
 | **Component Type** | **Interface** | **Example Devices** | **HardFOC Board Usage** |
 |-------------------|---------------|-------------------|------------------------|
-| **Motor Drivers** | PWM, GPIO | TMC2209, DRV8825, A4988 | Primary motor control on HardFOC boards |
+| **Motor Drivers** | SPI, GPIO | **TMC9660 (Primary)**, TMC2209, DRV8825 | Advanced motor control on HardFOC boards |
 | **Current Sensors** | ADC, I2C | ACS712, INA219, Hall effect | Motor current monitoring for HardFOC |
 | **Position Encoders** | PIO, I2C, SPI | AS5600, AMT103, Quadrature | Precise position feedback for HardFOC |
 | **Temperature Sensors** | I2C, 1-Wire, ADC | DS18B20, LM35, NTC | Thermal protection for HardFOC boards |
 | **Communication** | CAN, UART, WiFi | MCP2515, ESP32 WiFi/BT | HardFOC network connectivity |
 | **Storage** | SPI, I2C | SD Cards, EEPROM, Flash | HardFOC configuration and data logging |
+
+### 🏭 **TMC9660 - Primary Motor Controller for HardFOC**
+
+The **TMC9660** is the primary motor controller chosen for HardFOC boards, offering advanced features specifically designed for high-performance motor control applications:
+
+#### 🎯 **TMC9660 Key Features**
+- **🔧 Advanced Motor Control** - Sophisticated field-oriented control (FOC) algorithms
+- **📡 SPI Communication** - High-speed digital interface for precise control commands
+- **⚡ High Current Capability** - Supports high-power motor applications with efficient switching
+- **🎛️ Configurable Parameters** - Extensive motor parameter customization via SPI registers
+- **🛡️ Built-in Protection** - Overcurrent, overtemperature, and undervoltage protection
+- **📊 Real-time Feedback** - Motor status, current, and diagnostic information
+- **🔄 Position & Velocity Control** - Closed-loop control with encoder feedback support
+- **🎵 Silent Operation** - Advanced algorithms for reduced motor noise and vibration
+
+#### 📋 **TMC9660 Integration with HardFOC Wrapper**
+The HardFOC wrapper provides seamless integration with TMC9660 through the **BaseSpi** interface:
+
+```cpp
+// TMC9660 SPI communication example
+EspSpi tmc9660_spi{SPI2_HOST, GPIO_NUM_18, GPIO_NUM_19, GPIO_NUM_5};
+
+// Configure TMC9660 motor parameters
+void configure_tmc9660_motor() {
+    // Set motor current limits
+    hf_u8_t current_cmd[] = {0x10, 0x00, 0x00, 0x00, 0x05, 0x00};  // 5A max current
+    tmc9660_spi.WriteRead(current_cmd, nullptr, sizeof(current_cmd));
+    
+    // Set velocity control parameters
+    hf_u8_t velocity_cmd[] = {0x13, 0x00, 0x00, 0x01, 0x00, 0x00};  // Max velocity
+    tmc9660_spi.WriteRead(velocity_cmd, nullptr, sizeof(velocity_cmd));
+    
+    // Enable FOC mode
+    hf_u8_t foc_cmd[] = {0x16, 0x00, 0x00, 0x00, 0x00, 0x01};  // FOC enable
+    tmc9660_spi.WriteRead(foc_cmd, nullptr, sizeof(foc_cmd));
+}
+```
 
 ---
 
@@ -317,17 +354,17 @@ echo 'idf_component_register(
 )' >> CMakeLists.txt
 ```
 
-### 🎯 **Basic HardFOC Motor Control Example**
+### 🎯 **Basic HardFOC TMC9660 Motor Control Example**
 
 ```cpp
 #include "inc/mcu/esp32/EspGpio.h"
-#include "inc/mcu/esp32/EspPwm.h"
+#include "inc/mcu/esp32/EspSpi.h"
 #include "inc/mcu/esp32/EspAdc.h"
 #include "inc/mcu/esp32/EspTemperature.h"
 
 class HardFOCController {
     EspGpio motor_enable_{GPIO_NUM_2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT};
-    EspPwm motor_pwm_{LEDC_CHANNEL_0, GPIO_NUM_5};
+    EspSpi tmc9660_spi_{SPI2_HOST, GPIO_NUM_18, GPIO_NUM_19, GPIO_NUM_5};  // SCLK, MISO, MOSI
     EspAdc current_sensor_{ADC_UNIT_1, ADC_ATTEN_DB_11};
     EspTemperature temp_monitor_{};
     
@@ -336,12 +373,12 @@ public:
         // Initialize all HardFOC board components
         bool success = true;
         success &= (motor_enable_.EnsureInitialized() == hf_gpio_err_t::GPIO_SUCCESS);
-        success &= (motor_pwm_.EnsureInitialized() == hf_pwm_err_t::PWM_SUCCESS);
+        success &= (tmc9660_spi_.EnsureInitialized() == hf_spi_err_t::SPI_SUCCESS);
         success &= (current_sensor_.EnsureInitialized() == hf_adc_err_t::ADC_SUCCESS);
         success &= (temp_monitor_.EnsureInitialized() == hf_temp_err_t::TEMP_SUCCESS);
         
         if (success) {
-            motor_pwm_.SetFrequency(20000);  // 20kHz for HardFOC motor control
+            configure_tmc9660();  // Configure TMC9660 motor controller
         }
         return success;
     }
@@ -357,14 +394,36 @@ public:
             return;
         }
         
-        // Control HardFOC motor
-        motor_enable_.SetActive();
-        motor_pwm_.SetDutyCyclePercent(speed_percent);
+        // Send velocity command to TMC9660 via SPI
+        send_tmc9660_velocity_command(speed_percent);
     }
     
     void emergency_stop() {
         motor_enable_.SetInactive();
-        motor_pwm_.SetDutyCyclePercent(0.0f);
+        send_tmc9660_stop_command();  // Stop TMC9660 immediately
+    }
+    
+private:
+    void configure_tmc9660() {
+        // Configure TMC9660 motor controller settings
+        hf_u8_t config_data[] = {0x80, 0x00, 0x00, 0x01};
+        tmc9660_spi_.WriteRead(config_data, nullptr, sizeof(config_data));
+    }
+    
+    void send_tmc9660_velocity_command(float speed_percent) {
+        // Convert speed to TMC9660 velocity command
+        hf_u32_t velocity = static_cast<hf_u32_t>(speed_percent * 1000);
+        hf_u8_t cmd[] = {0x00, 0x03,  // Velocity register
+                         static_cast<hf_u8_t>(velocity >> 24),
+                         static_cast<hf_u8_t>(velocity >> 16),
+                         static_cast<hf_u8_t>(velocity >> 8),
+                         static_cast<hf_u8_t>(velocity)};
+        tmc9660_spi_.WriteRead(cmd, nullptr, sizeof(cmd));
+    }
+    
+    void send_tmc9660_stop_command() {
+        hf_u8_t stop_cmd[] = {0x00, 0x03, 0x00, 0x00, 0x00, 0x00};
+        tmc9660_spi_.WriteRead(stop_cmd, nullptr, sizeof(stop_cmd));
     }
 };
 ```
@@ -465,7 +524,7 @@ void protect_hardfoc_from_overheating() {
 - [📻 **HardFOC Bluetooth Classic**](examples/wireless/hardfoc_bluetooth_classic.cpp) - Serial communication
 
 ### 🚀 **Advanced Integration Examples for HardFOC**
-- [🏭 **Complete HardFOC Motor Controller**](examples/advanced/complete_hardfoc_controller.cpp) - Full-featured system
+- [🏭 **Complete HardFOC TMC9660 Controller**](examples/advanced/complete_hardfoc_tmc9660_controller.cpp) - Full-featured TMC9660 system
 - [🌉 **HardFOC IoT Gateway**](examples/advanced/hardfoc_iot_gateway.cpp) - WiFi bridge with monitoring
 - [📊 **HardFOC Multi-Sensor Logger**](examples/advanced/hardfoc_multi_sensor_logger.cpp) - Data collection system
 - [🔐 **Secure HardFOC Communication**](examples/advanced/secure_hardfoc_communication.cpp) - Encrypted data transfer
