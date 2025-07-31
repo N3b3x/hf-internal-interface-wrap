@@ -77,6 +77,29 @@ idf_component_register(
         soc                 # SoC definitions
         log                 # Logging
         
+        # ADC components
+        esp_adc
+        
+        # Driver components
+        esp_driver_gpio
+        esp_driver_i2c
+        esp_driver_spi
+        esp_driver_uart
+        esp_driver_ledc
+        esp_driver_rmt
+        esp_driver_gptimer
+        esp_driver_tsens
+        
+        # Network components
+        esp_wifi
+        esp_netif
+        esp_event
+        lwip
+        
+        # Storage components
+        nvs_flash
+        nvs_sec_provider
+        
         # Additional components for full functionality
         esp_common          # Common ESP32 utilities
         bootloader_support  # Bootloader support utilities
@@ -87,6 +110,8 @@ idf_component_register(
     PRIV_REQUIRES
         # Private requirements (internal use only)
         esp_pm              # Power management (private)
+        esp_phy
+        wpa_supplicant
 )
 
 # Set C++ standard
