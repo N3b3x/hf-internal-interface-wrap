@@ -44,8 +44,20 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Cache ESP-IDF tools and ccache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.espressif
+            ~/.ccache
+            ~/.cache/pip
+          key: esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-${{ hashFiles('examples/esp32/components/iid-espidf/idf_component.yml') }}
+          restore-keys: |
+            esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-
+            esp-idf-${{ matrix.idf_version }}-
+
       - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format ccache
 
       - name: ESP-IDF build
         uses: espressif/esp-idf-ci-action@v1
@@ -106,6 +118,17 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Cache static analysis tools
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/apt
+            /var/cache/apt
+            ~/.cache/clang-tidy
+          key: static-analysis-${{ runner.os }}-${{ hashFiles('**/*.cpp', '**/*.h', '.clang-tidy') }}
+          restore-keys: |
+            static-analysis-${{ runner.os }}-
+
       - name: Install analysis tools
         run: |
           sudo apt-get update
@@ -132,6 +155,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Cache workflow tools
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/apt
+            /var/cache/apt
+            ~/actionlint
+          key: workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
+          restore-keys: |
+            workflow-tools-${{ runner.os }}-
       
       - name: Install yamllint
         run: sudo apt-get update && sudo apt-get install -y yamllint

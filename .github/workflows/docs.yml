@@ -21,11 +21,23 @@ jobs:
         with:
           fetch-depth: 0
       
+      - name: Cache Doxygen tools and APT packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/apt
+            /var/cache/apt
+          key: doxygen-tools-${{ runner.os }}-${{ hashFiles('Doxyfile') }}
+          restore-keys: |
+            doxygen-tools-${{ runner.os }}-
+      
       - name: Check documentation links
         run: python3 docs/check_docs.py docs/index.md
       
       - name: Install Doxygen
-        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz
       
       - name: Build documentation
         run: doxygen Doxyfile
