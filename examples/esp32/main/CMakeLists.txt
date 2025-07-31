@@ -6,6 +6,14 @@ if(NOT DEFINED EXAMPLE_TYPE)
     set(EXAMPLE_TYPE "comprehensive")
 endif()
 
+# Debug information
+message(STATUS "=== CMake Debug Information ===")
+message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+message(STATUS "CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
+message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+message(STATUS "EXAMPLE_TYPE: ${EXAMPLE_TYPE}")
+message(STATUS "===============================")
+
 # Map example types to source files
 if(EXAMPLE_TYPE STREQUAL "comprehensive")
     set(MAIN_SOURCE "main.cpp")
@@ -16,11 +24,31 @@ else()
 endif()
 
 # Check if source file exists
-if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${MAIN_SOURCE}")
-    message(FATAL_ERROR "Source file not found: ${CMAKE_CURRENT_SOURCE_DIR}/${MAIN_SOURCE}")
+set(SOURCE_FILE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/${MAIN_SOURCE}")
+message(STATUS "Looking for source file: ${SOURCE_FILE_PATH}")
+
+# List files in current directory for debugging
+file(GLOB DEBUG_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*")
+message(STATUS "Files in source directory:")
+foreach(DEBUG_FILE ${DEBUG_FILES})
+    message(STATUS "  ${DEBUG_FILE}")
+endforeach()
+
+if(NOT EXISTS "${SOURCE_FILE_PATH}")
+    # Try alternative paths for CI environment
+    set(SOURCE_FILE_PATH "${CMAKE_CURRENT_LIST_DIR}/${MAIN_SOURCE}")
+    message(STATUS "Trying alternative path: ${SOURCE_FILE_PATH}")
+    if(NOT EXISTS "${SOURCE_FILE_PATH}")
+        message(FATAL_ERROR "Source file not found: ${MAIN_SOURCE}\n"
+                            "Tried paths:\n"
+                            "  ${CMAKE_CURRENT_SOURCE_DIR}/${MAIN_SOURCE}\n"
+                            "  ${CMAKE_CURRENT_LIST_DIR}/${MAIN_SOURCE}\n"
+                            "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}\n"
+                            "CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
+    endif()
 endif()
 
-message(STATUS "Using source file: ${MAIN_SOURCE}")
+message(STATUS "Using source file: ${SOURCE_FILE_PATH}")
 
 idf_component_register(
     SRCS "${MAIN_SOURCE}"

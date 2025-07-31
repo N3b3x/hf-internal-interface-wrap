@@ -64,9 +64,7 @@ jobs:
             # Copy source and include directories to maintain relative paths
             cp -r src ${{ env.BUILD_PATH }}/src
             cp -r inc ${{ env.BUILD_PATH }}/inc
-            # Copy the main CMakeLists.txt (now includes flexible example support)
-            cp examples/esp32/main/CMakeLists.txt ${{ env.BUILD_PATH }}/main/CMakeLists.txt
-            # Build specific example type
+            # Build specific example type (main directory already has the correct CMakeLists.txt)
             idf.py -C ${{ env.BUILD_PATH }} \
               -DIDF_TARGET=${{ env.IDF_TARGET }} \
               -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
