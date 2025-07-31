@@ -87,8 +87,8 @@ public:
     virtual bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept = 0;
 
     // 🎛️ PWM control
-    virtual hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_percent) noexcept = 0;
-    virtual hf_pwm_err_t GetDutyCycle(hf_channel_id_t channel_id, float& duty_percent) const noexcept = 0;
+    virtual hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) noexcept = 0;
+virtual float GetDutyCycle(hf_channel_id_t channel_id) const noexcept = 0;
     virtual hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency) noexcept = 0;
     virtual hf_pwm_err_t GetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t& frequency) const noexcept = 0;
 

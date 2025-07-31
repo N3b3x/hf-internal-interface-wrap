@@ -25,38 +25,52 @@
 
 ```cpp
 enum class hf_adc_err_t : hf_u8_t {
-    ADC_SUCCESS = 0,                      // Success
-    ADC_ERR_FAILURE = 1,                  // General failure
-    ADC_ERR_NOT_INITIALIZED = 2,          // Not initialized
-    ADC_ERR_ALREADY_INITIALIZED = 3,      // Already initialized
-    ADC_ERR_INVALID_PARAMETER = 4,        // Invalid parameter
-    ADC_ERR_NULL_POINTER = 5,             // Null pointer
-    ADC_ERR_OUT_OF_MEMORY = 6,            // Out of memory
-    ADC_ERR_CHANNEL_NOT_FOUND = 7,        // Channel not found
-    ADC_ERR_CHANNEL_NOT_ENABLED = 8,      // Channel not enabled
-    ADC_ERR_CHANNEL_NOT_CONFIGURED = 9,   // Channel not configured
-    ADC_ERR_CHANNEL_BUSY = 10,            // Channel busy
-    ADC_ERR_CHANNEL_TIMEOUT = 11,         // Channel timeout
-    ADC_ERR_INVALID_CHANNEL = 12,         // Invalid channel
-    ADC_ERR_INVALID_RESOLUTION = 13,      // Invalid resolution
-    ADC_ERR_INVALID_REFERENCE = 14,       // Invalid reference
-    ADC_ERR_INVALID_SAMPLE_TIME = 15,     // Invalid sample time
-    ADC_ERR_INVALID_TRIGGER = 16,         // Invalid trigger
-    ADC_ERR_INVALID_MODE = 17,            // Invalid mode
-    ADC_ERR_CALIBRATION_FAILED = 18,      // Calibration failed
-    ADC_ERR_CONVERSION_FAILED = 19,       // Conversion failed
-    ADC_ERR_HARDWARE_ERROR = 20,          // Hardware error
-    ADC_ERR_COMMUNICATION_ERROR = 21,     // Communication error
-    ADC_ERR_TIMEOUT = 22,                 // Timeout
-    ADC_ERR_BUSY = 23,                    // Busy
-    ADC_ERR_NOT_SUPPORTED = 24,           // Not supported
-    ADC_ERR_CONFIGURATION_LOCKED = 25,    // Configuration locked
-    ADC_ERR_POWER_MANAGEMENT = 26,        // Power management
-    ADC_ERR_VOLTAGE_OUT_OF_RANGE = 27,    // Voltage out of range
-    ADC_ERR_OVERRUN = 28,                 // Overrun
-    ADC_ERR_UNDERRUN = 29,                // Underrun
-    ADC_ERR_DMA_ERROR = 30,               // DMA error
-    ADC_ERR_FIFO_ERROR = 31               // FIFO error
+    ADC_SUCCESS = 0,                         // ✅ Success
+    ADC_ERR_FAILURE = 1,                     // ❌ General failure
+    ADC_ERR_NOT_INITIALIZED = 2,             // ⚠️ Not initialized
+    ADC_ERR_ALREADY_INITIALIZED = 3,         // ⚠️ Already initialized
+    ADC_ERR_INVALID_PARAMETER = 4,           // 🚫 Invalid parameter
+    ADC_ERR_NULL_POINTER = 5,                // 🚫 Null pointer
+    ADC_ERR_OUT_OF_MEMORY = 6,               // 💾 Out of memory
+    ADC_ERR_CHANNEL_NOT_FOUND = 7,           // 🔍 Channel not found
+    ADC_ERR_CHANNEL_NOT_ENABLED = 8,         // ⚠️ Channel not enabled
+    ADC_ERR_CHANNEL_NOT_CONFIGURED = 9,      // ⚙️ Channel not configured
+    ADC_ERR_CHANNEL_ALREADY_REGISTERED = 10, // 📝 Channel already registered
+    ADC_ERR_CHANNEL_READ_ERR = 11,           // 📖 Channel read error
+    ADC_ERR_CHANNEL_WRITE_ERR = 12,          // ✍️ Channel write error
+    ADC_ERR_INVALID_CHANNEL = 13,            // 🔍 Invalid channel
+    ADC_ERR_CHANNEL_BUSY = 14,               // 🔄 Channel busy
+    ADC_ERR_INVALID_SAMPLE_COUNT = 15,       // 📊 Invalid sample count
+    ADC_ERR_SAMPLE_TIMEOUT = 16,             // ⏰ Sample timeout
+    ADC_ERR_SAMPLE_OVERFLOW = 17,            // 📈 Sample overflow
+    ADC_ERR_SAMPLE_UNDERFLOW = 18,           // 📉 Sample underflow
+    ADC_ERR_HARDWARE_FAULT = 19,             // 💥 Hardware fault
+    ADC_ERR_COMMUNICATION_FAILURE = 20,      // 📡 Communication failure
+    ADC_ERR_DEVICE_NOT_RESPONDING = 21,      // 🔇 Device not responding
+    ADC_ERR_CALIBRATION_FAILURE = 22,        // 🔧 Calibration failure
+    ADC_ERR_VOLTAGE_OUT_OF_RANGE = 23,       // ⚡ Voltage out of range
+    ADC_ERR_INVALID_CONFIGURATION = 24,      // ⚙️ Invalid configuration
+    ADC_ERR_UNSUPPORTED_OPERATION = 25,      // 🚫 Unsupported operation
+    ADC_ERR_RESOURCE_BUSY = 26,              // 🔄 Resource busy
+    ADC_ERR_RESOURCE_UNAVAILABLE = 27,       // 🚫 Resource unavailable
+    // Additional calibration errors (28-39)
+    ADC_ERR_SYSTEM_ERROR = 40,               // 💻 System error
+    ADC_ERR_PERMISSION_DENIED = 41,          // 🔒 Permission denied
+    ADC_ERR_OPERATION_ABORTED = 42,          // 🛑 Operation aborted
+    ADC_ERR_INITIALIZATION_FAILED = 43,      // 🚀 Initialization failed
+    ADC_ERR_INVALID_PARAM = 44,              // 🚫 Invalid parameter
+    ADC_ERR_TIMEOUT = 45,                    // ⏰ Operation timeout
+    ADC_ERR_NOT_SUPPORTED = 46,              // 🚫 Not supported
+    ADC_ERR_INVALID_STATE = 47,              // ⚠️ Invalid state
+    ADC_ERR_DRIVER_ERROR = 48,               // 🔧 Driver error
+    ADC_ERR_DMA_ERROR = 49,                  // 💾 DMA error
+    ADC_ERR_FILTER_ERROR = 50,               // 🔧 Filter configuration error
+    ADC_ERR_NO_CALLBACK = 51,                // 📞 No callback provided
+    ADC_ERR_NOT_STARTED = 52,                // ⏸️ Operation not started
+    ADC_ERR_CALIBRATION = 53,                // 🔧 Calibration error
+    ADC_ERR_BUSY = 54,                       // 🔄 Resource busy
+    ADC_ERR_HARDWARE_FAILURE = 55,           // 💥 Hardware failure
+    ADC_ERR_CHANNEL_DISABLED = 56            // ⚠️ Channel disabled
 };
 ```
 
