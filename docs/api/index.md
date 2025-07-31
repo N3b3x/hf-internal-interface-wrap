@@ -17,7 +17,8 @@
 - [🎯 **Overview**](#-overview)
 - [🏗️ **Architecture**](#️-architecture)
 - [📋 **Base Classes**](#-base-classes)
-- [🔧 **Core Principles**](#-core-principles)
+- [🔧 **ESP32 Implementations**](#-esp32-implementations)
+- [🎯 **Type System**](#-type-system)
 - [📊 **Getting Started**](#-getting-started)
 - [🧪 **Examples**](#-examples)
 
@@ -88,81 +89,64 @@ The HardFOC Interface provides abstract base classes for all major hardware peri
 | Class | Purpose | Key Features | Typical Use Cases |
 |-------|---------|--------------|-------------------|
 | **[BaseAdc](BaseAdc.md)** | Analog-to-Digital Conversion | Multi-channel, calibration, voltage conversion | Sensor reading, current sensing, voltage monitoring |
-| **[BaseCan](BaseCan.md)** | CAN Bus Communication | Message filtering, error handling, CAN-FD support | Motor control, vehicle systems, industrial networks |
 | **[BaseGpio](BaseGpio.md)** | Digital I/O Control | Dynamic direction, interrupts, polarity control | Status LEDs, switches, relay control, digital sensors |
-| **[BaseI2c](BaseI2c.md)** | I2C Bus Communication | Device scanning, register access, clock stretching | EEPROM, sensors, display controllers, RTC modules |
-| **[BaseNvs](BaseNvs.md)** | Non-Volatile Storage | Key-value storage, namespaces, encryption | Configuration storage, calibration data, logs |
-| **[BasePeriodicTimer](BasePeriodicTimer.md)** | High-Precision Timing | Microsecond resolution, callbacks, period control | Control loops, sampling, event timing |
-| **[BasePio](BasePio.md)** | Programmable I/O | Precise timing, symbol transmission, custom protocols | WS2812 LEDs, IR communication, stepper control |
-| **[BasePwm](BasePwm.md)** | Pulse Width Modulation | Multi-channel, frequency control, dead-time | Motor control, LED dimming, power conversion |
-| **[BaseSpi](BaseSpi.md)** | SPI Bus Communication | Full-duplex transfers, chip select, DMA support | Flash memory, ADCs, display controllers |
-| **[BaseUart](BaseUart.md)** | Serial Communication | Flow control, buffering, printf support | Debug output, GPS modules, wireless modules |
-
-### **Quick Start Guide**
-
-```cpp
-#include "mcu/esp32/EspAdc.h"
-#include "mcu/esp32/EspGpio.h"
-
-// Create hardware instances
-EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
-EspGpio led_pin(2, HF_GPIO_DIRECTION_OUTPUT);
-
-// Initialize (lazy initialization)
-adc.EnsureInitialized();
-led_pin.EnsureInitialized();
-
-// Use the hardware
-float voltage = adc.ReadChannelV(0);
-led_pin.SetActive();
-```
+| **BaseI2c** | I2C Bus Communication | Device scanning, register access, clock stretching | EEPROM, sensors, display controllers, RTC modules |
+| **BaseNvs** | Non-Volatile Storage | Key-value storage, namespaces, encryption | Configuration storage, calibration data, logs |
+| **BasePeriodicTimer** | High-Precision Timing | Microsecond resolution, callbacks, period control | Control loops, sampling, event timing |
+| **BasePio** | Programmable I/O | Precise timing, symbol transmission, custom protocols | WS2812 LEDs, IR communication, stepper control |
+| **BasePwm** | Pulse Width Modulation | Multi-channel, frequency control, dead-time | Motor control, LED dimming, power conversion |
+| **BaseSpi** | SPI Bus Communication | Full-duplex transfers, chip select, DMA support | Flash memory, ADCs, display controllers |
+| **BaseUart** | Serial Communication | Flow control, buffering, printf support | Debug output, GPS modules, wireless modules |
+| **BaseCan** | CAN Bus Communication | Message filtering, error handling, CAN-FD support | Motor control, vehicle systems, industrial networks |
+| **BaseWifi** | WiFi Communication | Station/AP modes, security, mesh networking | IoT connectivity, remote monitoring |
+| **BaseBluetooth** | Bluetooth Communication | Classic & BLE, pairing, service discovery | Mobile apps, wireless sensors |
+| **BaseTemperature** | Temperature Sensing | Multi-sensor support, calibration, thermal protection | System monitoring, safety protection |
+| **BaseLogger** | System Logging | Multi-level logging, multiple outputs | Debugging, diagnostics, system monitoring |
 
 ---
 
-## 🔧 **Core Principles**
+## 🔧 **ESP32 Implementations**
 
-### **1. Lazy Initialization**
+ESP32-C6 specific implementations with optimized features:
 
-All peripherals support lazy initialization - hardware is only configured when first used:
+| Implementation | Base Class | ESP32-C6 Features | Documentation |
+|----------------|------------|-------------------|---------------|
+| **[EspGpio](EspGpio.md)** | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete |
+| **EspAdc** | BaseAdc | 12-bit resolution, multiple units | ✅ Available |
+| **EspPwm** | BasePwm | LEDC controller, fade effects | 📝 In Progress |
+| **EspI2c** | BaseI2c | Clock stretching, multi-master | 📝 In Progress |
+| **EspSpi** | BaseSpi | Full-duplex, DMA support | 📝 In Progress |
+| **EspUart** | BaseUart | Hardware flow control | 📝 In Progress |
+| **EspCan** | BaseCan | TWAI controller | 📝 In Progress |
+| **EspWifi** | BaseWifi | 802.11n, WPA3, mesh | 📝 In Progress |
+| **EspBluetooth** | BaseBluetooth | Classic & BLE support | 📝 In Progress |
+| **EspTemperature** | BaseTemperature | Internal sensor, calibration | 📝 In Progress |
+| **EspLogger** | BaseLogger | UART, network, file output | 📝 In Progress |
 
-```cpp
-// Hardware is not initialized until first use
-BaseAdc* adc = new EspAdc(ADC_UNIT_1, ADC_ATTEN_DB_11);
+---
 
-// First call automatically initializes the hardware
-float voltage = adc->ReadChannelV(0);  // Initialize() called internally
-```
+## 🎯 **Type System**
 
-### **2. Comprehensive Error Handling**
+Platform-agnostic type definitions for consistent APIs:
 
-Every operation returns detailed error codes with string conversion:
+| Documentation | Description | Status |
+|---------------|-------------|--------|
+| **[HardwareTypes](HardwareTypes.md)** | Core type definitions, validation functions | ✅ Complete |
 
-```cpp
-hf_adc_err_t result = adc->ReadChannelV(0, voltage);
-if (result != hf_adc_err_t::ADC_SUCCESS) {
-    printf("Error: %s\n", HfAdcErrToString(result));
-}
-```
-
-### **3. Platform-Agnostic Types**
-
-All types are defined to work across different platforms:
-
-```cpp
-// Platform-agnostic types
-hf_pin_num_t pin = 2;
-hf_frequency_hz_t freq = 1000000;
-hf_time_t timeout = 1000;
-```
-
-### **4. Statistics and Diagnostics**
-
-Built-in monitoring for all peripherals:
+### **Core Types**
 
 ```cpp
-hf_adc_statistics_t stats;
-adc->GetStatistics(stats);
-printf("Total conversions: %u\n", stats.totalConversions);
+// Integer types
+using hf_u8_t = uint8_t;
+using hf_u16_t = uint16_t;
+using hf_u32_t = uint32_t;
+using hf_u64_t = uint64_t;
+
+// Hardware types
+using hf_pin_num_t = hf_i32_t;
+using hf_channel_id_t = hf_u32_t;
+using hf_frequency_hz_t = hf_u32_t;
+using hf_time_t = hf_u32_t;
 ```
 
 ---
@@ -173,12 +157,12 @@ printf("Total conversions: %u\n", stats.totalConversions);
 
 ```cpp
 // Base classes (abstract interfaces)
-#include "base/BaseAdc.h"
-#include "base/BaseGpio.h"
+#include "inc/base/BaseAdc.h"
+#include "inc/base/BaseGpio.h"
 
 // Platform implementations
-#include "mcu/esp32/EspAdc.h"
-#include "mcu/esp32/EspGpio.h"
+#include "inc/mcu/esp32/EspAdc.h"
+#include "inc/mcu/esp32/EspGpio.h"
 ```
 
 ### **2. Create Hardware Instances**
@@ -186,7 +170,7 @@ printf("Total conversions: %u\n", stats.totalConversions);
 ```cpp
 // Use platform-specific implementations
 EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
-EspGpio led_pin(2, HF_GPIO_DIRECTION_OUTPUT);
+EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 ```
 
 ### **3. Initialize and Use**
@@ -197,7 +181,11 @@ adc.EnsureInitialized();
 led_pin.EnsureInitialized();
 
 // Use the hardware
-float voltage = adc.ReadChannelV(0);
+float voltage;
+if (adc.ReadChannelV(0, voltage) == hf_adc_err_t::ADC_SUCCESS) {
+    printf("Voltage: %.3f V\n", voltage);
+}
+
 if (voltage > 3.0f) {
     led_pin.SetActive();
 }
@@ -220,9 +208,9 @@ if (result != hf_adc_err_t::ADC_SUCCESS) {
 ### **Motor Control System**
 
 ```cpp
-#include "mcu/esp32/EspAdc.h"
-#include "mcu/esp32/EspPwm.h"
-#include "mcu/esp32/EspGpio.h"
+#include "inc/mcu/esp32/EspAdc.h"
+#include "inc/mcu/esp32/EspPwm.h"
+#include "inc/mcu/esp32/EspGpio.h"
 
 class MotorController {
 private:
@@ -234,7 +222,7 @@ public:
     MotorController() 
         : current_sensor_(ADC_UNIT_1, ADC_ATTEN_DB_11)
         , motor_driver_()
-        , enable_pin_(5, HF_GPIO_DIRECTION_OUTPUT) {}
+        , enable_pin_(5, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {}
     
     bool Initialize() {
         current_sensor_.EnsureInitialized();
@@ -252,7 +240,8 @@ public:
     }
     
     float GetCurrent() {
-        float voltage = current_sensor_.ReadChannelV(0);
+        float voltage;
+        current_sensor_.ReadChannelV(0, voltage);
         return (voltage - 2.5f) / 0.1f;  // Convert to current (A)
     }
 };
@@ -261,8 +250,8 @@ public:
 ### **Sensor Network**
 
 ```cpp
-#include "mcu/esp32/EspI2c.h"
-#include "mcu/esp32/EspAdc.h"
+#include "inc/mcu/esp32/EspI2c.h"
+#include "inc/mcu/esp32/EspAdc.h"
 
 class SensorNetwork {
 private:
@@ -271,11 +260,11 @@ private:
     
 public:
     bool ScanSensors() {
-        uint8_t addresses[16];
-        uint8_t count = i2c_bus_.ScanBus(addresses, 16);
+        hf_u8_t addresses[16];
+        hf_u8_t count = i2c_bus_.ScanBus(addresses, 16);
         
         printf("Found %u I2C devices:\n", count);
-        for (uint8_t i = 0; i < count; i++) {
+        for (hf_u8_t i = 0; i < count; i++) {
             printf("  Address: 0x%02X\n", addresses[i]);
         }
         return count > 0;
@@ -283,16 +272,18 @@ public:
     
     float ReadTemperature() {
         // Read from I2C temperature sensor
-        uint8_t data[2];
+        hf_u8_t data[2];
         if (i2c_bus_.ReadRegisters(0x48, 0x00, data, 2)) {
-            uint16_t raw = (data[0] << 8) | data[1];
+            hf_u16_t raw = (data[0] << 8) | data[1];
             return (raw >> 4) * 0.0625f;  // Convert to Celsius
         }
         return -999.0f;  // Error value
     }
     
     float ReadPressure() {
-        return analog_sensors_.ReadChannelV(1) * 100.0f;  // Convert to PSI
+        float voltage;
+        analog_sensors_.ReadChannelV(1, voltage);
+        return voltage * 100.0f;  // Convert to PSI
     }
 };
 ```
@@ -301,10 +292,8 @@ public:
 
 ## 🔗 **Related Documentation**
 
-- **[Hardware Types](HardwareTypes.md)** - Platform-agnostic type definitions
-- **[ESP32 Implementation](../mcu/esp32/)** - ESP32-specific implementations
-- **[Examples](../examples/)** - Complete working examples
-- **[Contributing Guide](../../CONTRIBUTING.md)** - How to add new platforms
+- **[Main Documentation](../index.md)** - Complete system overview
+- **[Contributing Guidelines](../../CONTRIBUTING.md)** - How to contribute
 
 ---
 
