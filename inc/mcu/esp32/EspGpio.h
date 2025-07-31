@@ -138,9 +138,9 @@ public:
 
   /**
    * @brief MCU GPIO supports interrupts.
-   * @return true (all MCU GPIOs support interrupts)
+   * @return GPIO_SUCCESS (all MCU GPIOs support interrupts)
    */
-  [[nodiscard]] bool SupportsInterrupts() const noexcept override;
+  [[nodiscard]] hf_gpio_err_t SupportsInterrupts() const noexcept override;
 
   /**
    * @brief Configure GPIO interrupt settings.

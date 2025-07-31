@@ -130,6 +130,23 @@ enum class hf_log_format_t : hf_u32_t {
     LOG_FORMAT_DEFAULT = LOG_FORMAT_TIMESTAMP | LOG_FORMAT_LEVEL | LOG_FORMAT_TAG
 };
 
+// Bitwise operators for hf_log_format_t enum class
+inline hf_log_format_t operator|(hf_log_format_t a, hf_log_format_t b) {
+    return static_cast<hf_log_format_t>(static_cast<hf_u32_t>(a) | static_cast<hf_u32_t>(b));
+}
+
+inline hf_log_format_t operator&(hf_log_format_t a, hf_log_format_t b) {
+    return static_cast<hf_log_format_t>(static_cast<hf_u32_t>(a) & static_cast<hf_u32_t>(b));
+}
+
+inline hf_log_format_t operator^(hf_log_format_t a, hf_log_format_t b) {
+    return static_cast<hf_log_format_t>(static_cast<hf_u32_t>(a) ^ static_cast<hf_u32_t>(b));
+}
+
+inline hf_log_format_t operator~(hf_log_format_t a) {
+    return static_cast<hf_log_format_t>(~static_cast<hf_u32_t>(a));
+}
+
 /**
  * @ingroup logger
  * @brief Logger configuration structure
@@ -508,4 +525,4 @@ hf_u32_t HfLoggerGetThreadId() noexcept;
         if (condition) { \
             LogWithLocation(level, tag, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__); \
         } \
-    } while(0) 
+    } while(0)

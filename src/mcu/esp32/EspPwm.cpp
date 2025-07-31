@@ -578,13 +578,16 @@ hf_pwm_err_t EspPwm::SetComplementaryOutput(hf_channel_id_t primary_channel,
   }
 
   // Store complementary pair information
-  hf_pwm_complementary_pair_t pair;
-  pair.primary_channel = static_cast<hf_u8_t>(primary_channel);
-  pair.complementary_channel = static_cast<hf_u8_t>(complementary_channel);
-  pair.deadtime_ns = deadtime_ns;
-  pair.active = true;
-
-  complementary_pairs_.push_back(pair);
+  // Find the first unused slot in the array
+  for (auto& pair : complementary_pairs_) {
+    if (!pair.active) {
+      pair.primary_channel = static_cast<hf_u8_t>(primary_channel);
+      pair.complementary_channel = static_cast<hf_u8_t>(complementary_channel);
+      pair.deadtime_ns = deadtime_ns;
+      pair.active = true;
+      break;
+    }
+  }
 
   ESP_LOGI(TAG, "Complementary output configured: primary=%lu, complementary=%lu, deadtime=%lu ns",
            primary_channel, complementary_channel, deadtime_ns);

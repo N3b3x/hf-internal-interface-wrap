@@ -62,7 +62,10 @@ extern "C" {
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "nvs_flash.h"
+
+#ifdef CONFIG_NVS_SEC_PROVIDER_SUPPORTED
 #include "nvs_sec_provider.h"
+#endif
 
 #ifdef __cplusplus
 }

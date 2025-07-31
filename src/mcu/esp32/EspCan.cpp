@@ -72,7 +72,7 @@ EspCan::~EspCan() noexcept {
 //==============================================//
 
 hf_can_err_t EspCan::Initialize() noexcept {
-  std::lock_guard<RtosMutex> lock(config_mutex_);
+  MutexLockGuard lock(config_mutex_);
 
   if (is_initialized_.load()) {
     ESP_LOGD(TAG, "TWAI controller %u already initialized",
@@ -111,7 +111,7 @@ hf_can_err_t EspCan::Initialize() noexcept {
 
   // Initialize statistics
   {
-    std::lock_guard<RtosMutex> stats_lock(stats_mutex_);
+    MutexLockGuard stats_lock(stats_mutex_);
     statistics_ = hf_can_statistics_t{};
     diagnostics_ = hf_can_diagnostics_t{};
   }
@@ -124,7 +124,7 @@ hf_can_err_t EspCan::Initialize() noexcept {
 }
 
 hf_can_err_t EspCan::Deinitialize() noexcept {
-  std::lock_guard<RtosMutex> lock(config_mutex_);
+  MutexLockGuard lock(config_mutex_);
 
   if (!is_initialized_.load()) {
     ESP_LOGD(TAG, "TWAI controller %u already deinitialized",
@@ -205,7 +205,7 @@ hf_can_err_t EspCan::SetReceiveCallback(hf_can_receive_callback_t callback) noex
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  std::lock_guard<RtosMutex> lock(config_mutex_);
+  MutexLockGuard lock(config_mutex_);
 
   receive_callback_ = callback;
 
@@ -220,7 +220,7 @@ hf_can_err_t EspCan::SetReceiveCallback(hf_can_receive_callback_t callback) noex
 }
 
 void EspCan::ClearReceiveCallback() noexcept {
-  std::lock_guard<RtosMutex> lock(config_mutex_);
+  MutexLockGuard lock(config_mutex_);
 
   receive_callback_ = nullptr;
 
@@ -286,13 +286,13 @@ hf_can_err_t EspCan::Reset() noexcept {
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  std::lock_guard<RtosMutex> lock(config_mutex_);
+  MutexLockGuard lock(config_mutex_);
 
   ESP_LOGI(TAG, "Resetting TWAI controller %u", static_cast<unsigned>(config_.controller_id));
 
   // Reset statistics
   {
-    std::lock_guard<RtosMutex> stats_lock(stats_mutex_);
+    MutexLockGuard stats_lock(stats_mutex_);
     statistics_ = hf_can_statistics_t{};
     diagnostics_ = hf_can_diagnostics_t{};
   }
@@ -314,7 +314,7 @@ hf_can_err_t EspCan::SetAcceptanceFilter(hf_u32_t id, hf_u32_t mask, bool extend
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  std::lock_guard<RtosMutex> lock(config_mutex_);
+  MutexLockGuard lock(config_mutex_);
 
   // TODO: ESP-IDF v5.5 doesn't support runtime filter configuration
   // Filter must be configured during driver installation
@@ -344,13 +344,13 @@ hf_can_err_t EspCan::ClearAcceptanceFilter() noexcept {
 //==============================================//
 
 hf_can_err_t EspCan::GetStatistics(hf_can_statistics_t& stats) noexcept {
-  std::lock_guard<RtosMutex> lock(stats_mutex_);
+  MutexLockGuard lock(stats_mutex_);
   stats = statistics_;
   return hf_can_err_t::CAN_SUCCESS;
 }
 
 hf_can_err_t EspCan::ResetStatistics() noexcept {
-  std::lock_guard<RtosMutex> lock(stats_mutex_);
+  MutexLockGuard lock(stats_mutex_);
   statistics_ = hf_can_statistics_t{};
   return hf_can_err_t::CAN_SUCCESS;
 }
@@ -360,7 +360,7 @@ hf_can_err_t EspCan::GetDiagnostics(hf_can_diagnostics_t& diagnostics) noexcept 
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  std::lock_guard<RtosMutex> lock(stats_mutex_);
+  MutexLockGuard lock(stats_mutex_);
 
   // Update diagnostics with current TWAI status
   twai_status_info_t status_info;
@@ -484,7 +484,7 @@ hf_can_err_t EspCan::ConvertEspError(esp_err_t esp_err) noexcept {
 }
 
 void EspCan::UpdateStatistics(hf_can_operation_type_t operation_type, bool success) noexcept {
-  std::lock_guard<RtosMutex> lock(stats_mutex_);
+  MutexLockGuard lock(stats_mutex_);
 
   switch (operation_type) {
     case hf_can_operation_type_t::HF_CAN_OP_SEND:

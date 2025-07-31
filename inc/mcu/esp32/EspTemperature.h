@@ -29,9 +29,9 @@
 
 #pragma once
 
-#include "inc/base/BaseTemperature.h"
+#include "base/BaseTemperature.h"
 
-#ifdef HF_MCU_FAMILY_ESP32
+//#ifdef HF_MCU_FAMILY_ESP32
 
 // ESP-IDF includes for temperature sensor functionality
 #ifdef __cplusplus
@@ -616,4 +616,4 @@ private:
     .clk_src = 0                                           \
 }
 
-#endif // HF_MCU_FAMILY_ESP32
+//#endif // HF_MCU_FAMILY_ESP32

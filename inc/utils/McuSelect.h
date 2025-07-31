@@ -36,7 +36,9 @@
 //==============================================================================
 // Uncomment exactly ONE of the following lines to select your target MCU:
 
+#ifndef HF_TARGET_MCU_ESP32C6
 #define HF_TARGET_MCU_ESP32C6 // ESP32-C6 RISC-V MCU (Primary target)
+#endif
 // #define HF_TARGET_MCU_ESP32       // ESP32 Classic Xtensa MCU
 // #define HF_TARGET_MCU_ESP32S2     // ESP32-S2 Xtensa LX7 MCU
 // #define HF_TARGET_MCU_ESP32S3     // ESP32-S3 Xtensa LX7 MCU
@@ -50,7 +52,9 @@
 
 // Optional thread safety support using RTOS-based mutexes
 // Uncomment to enable mutex protection in MCU drivers
+#ifndef HF_THREAD_SAFE
 #define HF_THREAD_SAFE  // Enable thread safety for SPI, I2C, UART operations
+#endif
 
 //==============================================================================
 // AUTOMATIC PLATFORM CONFIGURATION BASED ON SELECTION
@@ -58,8 +62,12 @@
 
 // ESP32-C6 Configuration
 #ifdef HF_TARGET_MCU_ESP32C6
+#ifndef HF_MCU_ESP32C6
 #define HF_MCU_ESP32C6
+#endif
+#ifndef HF_MCU_FAMILY_ESP32
 #define HF_MCU_FAMILY_ESP32
+#endif
 #define HF_MCU_NAME "ESP32-C6"
 #define HF_MCU_ARCHITECTURE "RISC-V RV32IMAC"
 #define HF_MCU_VARIANT_C6

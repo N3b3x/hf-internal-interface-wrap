@@ -636,7 +636,7 @@ hf_uart_err_t EspUart::ConfigureIrDA(const hf_uart_irda_config_t& irda_config) n
   return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
 }
 
-hf_u16_t EspUart::GetPatternPosition(bool pop_position) noexcept {
+int EspUart::GetPatternPosition(bool pop_position) noexcept {
   if (!EnsureInitialized() || !pattern_detection_enabled_) {
     return -1;
   }
@@ -1300,7 +1300,7 @@ int EspUart::InternalPrintf(const char* format, va_list args) noexcept {
   return -1;
 }
 
-bool IRAM_ATTR EspUart::PatternCallbackWrapper(hf_u16_t pattern_pos, void* user_data) noexcept {
+bool IRAM_ATTR EspUart::PatternCallbackWrapper(int pattern_pos, void* user_data) noexcept {
   auto* uart = static_cast<EspUart*>(user_data);
   if (uart && uart->pattern_callback_) {
     return uart->pattern_callback_(pattern_pos, uart->pattern_callback_user_data_);

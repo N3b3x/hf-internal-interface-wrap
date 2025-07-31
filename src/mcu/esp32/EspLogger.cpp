@@ -350,14 +350,14 @@ hf_logger_err_t EspLogger::LogWithLocation(hf_log_level_t level, const char* tag
     }
     
     // Format message with location information if enabled
-    if (config_.format_options & hf_log_format_t::LOG_FORMAT_FILE_LINE) {
+    if (static_cast<bool>(config_.format_options & hf_log_format_t::LOG_FORMAT_FILE_LINE)) {
         va_list args;
         va_start(args, format);
         
         // Create enhanced format string with location
         char enhanced_format[512];
-        snprintf(enhanced_format, sizeof(enhanced_format), "[%s:%u] %s", 
-                file ? file : "unknown", line, format);
+        snprintf(enhanced_format, sizeof(enhanced_format), "[%s:%lu] %s", 
+                file ? file : "unknown", static_cast<unsigned long>(line), format);
         
         hf_logger_err_t result = WriteMessageV(level, tag, enhanced_format, args);
         va_end(args);
@@ -522,10 +522,11 @@ hf_logger_err_t EspLogger::GetDiagnostics(hf_logger_diagnostics_t& diagnostics) 
         return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
     }
     
-    // Update uptime
-    diagnostics_.uptime_seconds = (GetCurrentTimestamp() - initialization_time_) / 1000000;
+    // Create a copy of diagnostics and update uptime
+    hf_logger_diagnostics_t temp_diagnostics = diagnostics_;
+    temp_diagnostics.uptime_seconds = (GetCurrentTimestamp() - initialization_time_) / 1000000;
     
-    diagnostics = diagnostics_;
+    diagnostics = temp_diagnostics;
     return hf_logger_err_t::LOGGER_SUCCESS;
 }
 
@@ -623,9 +624,9 @@ hf_logger_err_t EspLogger::FormatMessage(hf_log_level_t level, const char* tag,
     }
     
     // Format the message with location information if enabled
-    if (config_.format_options & hf_log_format_t::LOG_FORMAT_FILE_LINE) {
-        int written = snprintf(formatted_message, max_length, "[%s:%u] ", 
-                              file ? file : "unknown", line);
+    if (static_cast<bool>(config_.format_options & hf_log_format_t::LOG_FORMAT_FILE_LINE)) {
+        int written = snprintf(formatted_message, max_length, "[%s:%lu] ", 
+                              file ? file : "unknown", static_cast<unsigned long>(line));
         if (written < 0 || static_cast<hf_u32_t>(written) >= max_length) {
             return hf_logger_err_t::LOGGER_ERR_FORMAT_ERROR;
         }
@@ -787,13 +788,13 @@ hf_u64_t EspLogger::GetCurrentTimestamp() const noexcept {
 }
 
 hf_u32_t EspLogger::GetCurrentThreadId() const noexcept {
-    return static_cast<hf_u32_t>(xTaskGetCurrentTaskHandle());
+    return reinterpret_cast<hf_u32_t>(xTaskGetCurrentTaskHandle());
 }
 
 bool EspLogger::EnsureMessageBuffer(hf_u32_t required_length) noexcept {
     if (message_buffer_.size() < required_length) {
         // Check if allocation would be reasonable (prevent excessive memory usage)
-        if (required_length > MAX_LOG_MESSAGE_LENGTH * 2) {
+        if (required_length > DEFAULT_MAX_MESSAGE_LENGTH * 2) {
             return false;
         }
         

@@ -45,6 +45,8 @@ extern "C" {
 }
 #endif
 
+static const char* TAG = "EspSpi";
+
 //======================================================//
 // ESP SPI BUS IMPLEMENTATION
 //======================================================//
@@ -76,8 +78,8 @@ bool EspSpiBus::Initialize() noexcept {
   bus_cfg.flags |= SPICOMMON_BUSFLAG_MASTER; // Explicit master mode
   
   spi_host_device_t host = static_cast<spi_host_device_t>(config_.host);
-  int dma_chan = (config_.dma_channel == 0xFF) ? SPI_DMA_DISABLED : 
-                 (config_.dma_channel ? config_.dma_channel : SPI_DMA_CH_AUTO);
+  int dma_chan = (config_.dma_channel == 0xFF) ? static_cast<int>(SPI_DMA_DISABLED) : 
+                 (config_.dma_channel ? static_cast<int>(config_.dma_channel) : static_cast<int>(SPI_DMA_CH_AUTO));
   
   esp_err_t err = spi_bus_initialize(host, &bus_cfg, dma_chan);
   if (err != ESP_OK) {

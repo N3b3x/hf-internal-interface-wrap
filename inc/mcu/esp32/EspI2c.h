@@ -1,3 +1,6 @@
+#ifndef ESP_I2C_H_
+#define ESP_I2C_H_
+
 /**
  * @file EspI2c.h
  * @brief Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device architecture.
@@ -408,4 +411,4 @@ private:
   hf_i2c_err_t ConvertEspError(esp_err_t esp_error) const noexcept;
 };
 
-#endif // ESP_I2C_NEW_H_
+#endif // ESP_I2C_H_

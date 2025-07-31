@@ -29,14 +29,14 @@
 
 #include "EspTemperature.h"
 
-#ifdef HF_MCU_FAMILY_ESP32
+//#ifdef HF_MCU_FAMILY_ESP32
 
 // Standard library includes
 #include <algorithm>
 #include <cstring>
 #include <cmath>
 
-static const char* TAG = "EspTemperature";
+static const char* TAG __attribute__((unused)) = "EspTemperature";
 
 //--------------------------------------
 //  ESP32-C6 Temperature Range Configuration
@@ -149,7 +149,11 @@ bool EspTemperature::Initialize() noexcept {
     ESP_LOGI(TAG, "Initializing ESP32-C6 temperature sensor...");
     
     // Configure temperature sensor
-    temperature_sensor_config_t temp_config = TEMPERATURE_SENSOR_CONFIG_DEFAULT(-10, 80);
+    temperature_sensor_config_t temp_config = {};
+    temp_config.range_min = -10;
+    temp_config.range_max = 80;
+    temp_config.clk_src = TEMPERATURE_SENSOR_CLK_SRC_DEFAULT;
+    temp_config.flags.allow_pd = 0;
     
     // Adjust configuration based on current range
     float min_temp, max_temp, accuracy;
@@ -873,8 +877,11 @@ hf_temp_err_t EspTemperature::SetMeasurementRange(esp_temp_range_t range) noexce
         float min_temp, max_temp, accuracy;
         GetRangeConfig(range, &min_temp, &max_temp, &accuracy);
         
-        temperature_sensor_config_t temp_config = TEMPERATURE_SENSOR_CONFIG_DEFAULT(
-            static_cast<int>(min_temp), static_cast<int>(max_temp));
+        temperature_sensor_config_t temp_config = {};
+        temp_config.range_min = static_cast<int>(min_temp);
+        temp_config.range_max = static_cast<int>(max_temp);
+        temp_config.clk_src = TEMPERATURE_SENSOR_CLK_SRC_DEFAULT;
+        temp_config.flags.allow_pd = 0;
         
         // Reinstall with new configuration
         esp_err = temperature_sensor_install(&temp_config, &esp_state_.handle);
@@ -1130,4 +1137,4 @@ hf_u64_t EspTemperature::GetCurrentTimeUs() noexcept {
     return esp_timer_get_time();
 }
 
-#endif // HF_MCU_FAMILY_ESP32
+//#endif // HF_MCU_FAMILY_ESP32

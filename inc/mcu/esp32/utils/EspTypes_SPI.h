@@ -65,8 +65,13 @@ enum class hf_spi_mode_t : uint8_t {
  */
 enum class hf_spi_host_device_t : uint8_t {
   HF_SPI2_HOST = static_cast<uint8_t>(SPI2_HOST),    ///< SPI2 host (general purpose) - ESP-IDF SPI2_HOST
-  HF_SPI3_HOST = static_cast<uint8_t>(SPI3_HOST),    ///< SPI3 host (general purpose) - ESP-IDF SPI3_HOST
+#ifdef HF_MCU_ESP32C6
+  // ESP32-C6 only has SPI2_HOST available for general purpose use
+  HF_SPI_HOST_MAX = static_cast<uint8_t>(SPI2_HOST + 1), ///< Maximum number of SPI hosts for ESP32-C6
+#else
+  HF_SPI3_HOST = static_cast<uint8_t>(SPI3_HOST),    ///< SPI3 host (general purpose) - ESP-IDF SPI3_HOST  
   HF_SPI_HOST_MAX = static_cast<uint8_t>(SPI_HOST_MAX), ///< Maximum number of SPI hosts
+#endif
 };
 
 /**
@@ -139,6 +144,7 @@ struct hf_spi_bus_config_t {
   hf_pin_num_t mosi_pin;            ///< MOSI pin
   hf_pin_num_t miso_pin;            ///< MISO pin
   hf_pin_num_t sclk_pin;            ///< SCLK pin
+  hf_u32_t clock_speed_hz;          ///< Default clock speed in Hz
   hf_u8_t dma_channel;              ///< DMA channel (0=auto, 1/2=specific, 0xFF=disabled)
   hf_timeout_ms_t timeout_ms;       ///< Default timeout for operations (ms)
   bool use_iomux;                   ///< Use IOMUX for better performance
@@ -218,7 +224,11 @@ struct hf_spi_device_config_t {
         cs_ena_pretrans(0), cs_ena_posttrans(0), flags(0), input_delay_ns(0), pre_cb(nullptr),
         post_cb(nullptr), user_ctx(nullptr),
         clock_source(static_cast<hf_spi_clock_source_t>(SPI_CLK_SRC_DEFAULT)),
+#ifdef HF_MCU_ESP32C6
+        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_1)) {}
+#else
         sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_DEFAULT)) {}
+#endif
 };
 
 //==============================================================================

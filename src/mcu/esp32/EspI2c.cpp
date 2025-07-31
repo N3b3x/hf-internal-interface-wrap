@@ -77,7 +77,7 @@ bool EspI2cBus::Initialize() noexcept {
     bus_cfg.sda_io_num = static_cast<gpio_num_t>(config_.sda_io_num);
     bus_cfg.scl_io_num = static_cast<gpio_num_t>(config_.scl_io_num);
     bus_cfg.clk_source = static_cast<i2c_clock_source_t>(config_.clk_source);
-    bus_cfg.glitch_ignore_cnt = config_.glitch_ignore_cnt;
+    bus_cfg.glitch_ignore_cnt = static_cast<uint8_t>(config_.glitch_ignore_cnt);
     bus_cfg.intr_priority = config_.intr_priority;
     bus_cfg.trans_queue_depth = config_.trans_queue_depth;
     
@@ -366,8 +366,8 @@ EspI2cDevice::EspI2cDevice(EspI2cBus* parent, i2c_master_dev_handle_t handle,
                            const hf_i2c_device_config_t& config)
     : BaseI2c(), parent_bus_(parent), handle_(handle), config_(config), initialized_(true) {
     // Initialize statistics and diagnostics
-    std::memset(&statistics_, 0, sizeof(statistics_));
-    std::memset(&diagnostics_, 0, sizeof(diagnostics_));
+    statistics_ = hf_i2c_statistics_t{};
+    diagnostics_ = hf_i2c_diagnostics_t{};
     
     diagnostics_.bus_healthy = true;
     diagnostics_.last_error_code = hf_i2c_err_t::I2C_SUCCESS;
@@ -546,7 +546,7 @@ hf_u16_t EspI2cDevice::GetDeviceAddress() const noexcept {
 
 hf_i2c_err_t EspI2cDevice::ResetStatistics() noexcept {
     RtosUniqueLock<RtosMutex> lock(mutex_);
-    std::memset(&statistics_, 0, sizeof(statistics_));
+    statistics_ = hf_i2c_statistics_t{};
     return hf_i2c_err_t::I2C_SUCCESS;
 }
 
@@ -556,10 +556,6 @@ i2c_master_dev_handle_t EspI2cDevice::GetHandle() const noexcept {
 
 const hf_i2c_device_config_t& EspI2cDevice::GetConfig() const noexcept {
     return config_;
-}
-
-hf_u16_t EspI2cDevice::GetDeviceAddress() const noexcept {
-    return config_.device_address;
 }
 
 hf_i2c_err_t EspI2cDevice::GetActualClockFrequency(hf_u32_t& actual_freq_hz) const noexcept {

@@ -347,8 +347,8 @@ const char* EspGpio::GetDescription() const noexcept {
 // BaseGpio Implementation
 //==============================================================================
 
-bool EspGpio::SupportsInterrupts() const noexcept {
-  return true; // All ESP32C6 GPIOs support interrupts
+hf_gpio_err_t EspGpio::SupportsInterrupts() const noexcept {
+  return hf_gpio_err_t::GPIO_SUCCESS; // All ESP32C6 GPIOs support interrupts
 }
 
 //==============================================================================
@@ -699,7 +699,7 @@ hf_gpio_err_t EspGpio::GetPinLevelImpl(hf_gpio_level_t& level) noexcept {
 }
 
 hf_gpio_err_t EspGpio::GetDirectionImpl(hf_gpio_direction_t& direction) const noexcept {
-  if (!EnsureInitialized()) {
+  if (!initialized_) {
     return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 
@@ -725,7 +725,7 @@ hf_gpio_err_t EspGpio::GetDirectionImpl(hf_gpio_direction_t& direction) const no
 }
 
 hf_gpio_err_t EspGpio::GetOutputModeImpl(hf_gpio_output_mode_t& mode) const noexcept {
-  if (!EnsureInitialized()) {
+  if (!initialized_) {
     return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
   }
 

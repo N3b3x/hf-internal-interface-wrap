@@ -377,7 +377,7 @@ bool McuPio::IsChannelBusy(hf_u8_t channel_id) const noexcept {
 }
 
 hf_pio_err_t McuPio::GetChannelStatus(hf_u8_t channel_id,
-                                      hf_pio_channel_status_t& status) noexcept {
+                                      hf_pio_channel_status_t& status) const noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
