@@ -23,6 +23,7 @@
 #include <cstdint>
 #include <functional>
 #include <string>
+#include <string_view>
 
 /**
  * @defgroup wifi WiFi Module
@@ -87,7 +88,7 @@ enum class hf_wifi_err_t : hf_u8_t { HF_WIFI_ERR_LIST(X) };
  * @param err The error code to convert
  * @return Pointer to error description string
  */
-constexpr const char* hf_wifi_err_tToString(hf_wifi_err_t err) noexcept {
+constexpr std::string_view HfWifiErrToString(hf_wifi_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC) \
   case hf_wifi_err_t::NAME:  \
@@ -470,7 +471,7 @@ public:
    * @param error Error code
    * @return Error description string
    */
-  static const char* GetErrorString(hf_wifi_err_t error);
+  static std::string_view GetErrorString(hf_wifi_err_t error);
 
 protected:
   /**
@@ -493,7 +494,7 @@ protected:
  * @ingroup wifi
  * @brief Helper function to convert error enum to string
  */
-inline const char* BaseWifi::GetErrorString(hf_wifi_err_t error) {
+inline std::string_view BaseWifi::GetErrorString(hf_wifi_err_t error) {
 #define X(name, value, desc) case hf_wifi_err_t::name: return desc;
   switch (error) {
     HF_WIFI_ERR_LIST(X)

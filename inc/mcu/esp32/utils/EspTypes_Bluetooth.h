@@ -232,10 +232,10 @@ struct HfEspBleConnParams {
  */
 inline esp_bt_mode_t hfBluetoothModeToEspMode(hf_bluetooth_mode_t mode) {
   switch (mode) {
-    case hf_bluetooth_mode_t::DISABLED: return ESP_BT_MODE_IDLE;
-    case hf_bluetooth_mode_t::CLASSIC: return ESP_BT_MODE_CLASSIC_BT;
-    case hf_bluetooth_mode_t::BLE: return ESP_BT_MODE_BLE;
-    case hf_bluetooth_mode_t::DUAL: return ESP_BT_MODE_BTDM;
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED: return ESP_BT_MODE_IDLE;
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC: return ESP_BT_MODE_CLASSIC_BT;
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE: return ESP_BT_MODE_BLE;
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL: return ESP_BT_MODE_BTDM;
     default: return ESP_BT_MODE_IDLE;
   }
 }
@@ -247,11 +247,11 @@ inline esp_bt_mode_t hfBluetoothModeToEspMode(hf_bluetooth_mode_t mode) {
  */
 inline hf_bluetooth_mode_t espModeTohf_bluetooth_mode_t(esp_bt_mode_t mode) {
   switch (mode) {
-    case ESP_BT_MODE_IDLE: return hf_bluetooth_mode_t::DISABLED;
-    case ESP_BT_MODE_CLASSIC_BT: return hf_bluetooth_mode_t::CLASSIC;
-    case ESP_BT_MODE_BLE: return hf_bluetooth_mode_t::BLE;
-    case ESP_BT_MODE_BTDM: return hf_bluetooth_mode_t::DUAL;
-    default: return hf_bluetooth_mode_t::DISABLED;
+    case ESP_BT_MODE_IDLE: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
+    case ESP_BT_MODE_CLASSIC_BT: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC;
+    case ESP_BT_MODE_BLE: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE;
+    case ESP_BT_MODE_BTDM: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL;
+    default: return hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
   }
 }
 

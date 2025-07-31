@@ -25,6 +25,7 @@
 #include <cstdint>
 #include <functional>
 #include <string>
+#include <string_view>
 #include <vector>
 
 /**
@@ -92,7 +93,7 @@ enum class hf_bluetooth_err_t : hf_u8_t { HF_BLUETOOTH_ERR_LIST(X) };
  * @param err The error code to convert
  * @return Pointer to error description string
  */
-constexpr const char* hf_bluetooth_err_tToString(hf_bluetooth_err_t err) noexcept {
+constexpr std::string_view HfBluetoothErrToString(hf_bluetooth_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC) \
   case hf_bluetooth_err_t::NAME:  \
@@ -161,6 +162,38 @@ enum class hf_bluetooth_security_t : hf_u8_t {
 enum class hf_bluetooth_scan_type_t : hf_u8_t {
   HF_BLUETOOTH_SCAN_TYPE_PASSIVE = 0,         /**< Passive scanning */
   HF_BLUETOOTH_SCAN_TYPE_ACTIVE = 1           /**< Active scanning */
+};
+
+/**
+ * @ingroup bluetooth
+ * @brief Bluetooth scan modes
+ */
+enum class hf_bluetooth_scan_mode_t : hf_u8_t {
+  HF_BLUETOOTH_SCAN_MODE_GENERAL_INQUIRY = 0,    /**< General inquiry scan */
+  HF_BLUETOOTH_SCAN_MODE_LE_GENERAL = 1,         /**< BLE general discovery */
+  HF_BLUETOOTH_SCAN_MODE_LE_LIMITED = 2          /**< BLE limited discovery */
+};
+
+/**
+ * @ingroup bluetooth
+ * @brief Bluetooth connection types
+ */
+enum class hf_bluetooth_connection_type_t : hf_u8_t {
+  HF_BLUETOOTH_CONNECTION_TYPE_AUTO = 0,         /**< Auto-detect connection type */
+  HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC = 1,      /**< Classic Bluetooth only */
+  HF_BLUETOOTH_CONNECTION_TYPE_BLE = 2           /**< BLE only */
+};
+
+/**
+ * @ingroup bluetooth 
+ * @brief Bluetooth connection states
+ */
+enum class hf_bluetooth_connection_state_t : hf_u8_t {
+  HF_BLUETOOTH_CONNECTION_STATE_DISCONNECTED = 0,  /**< Disconnected */
+  HF_BLUETOOTH_CONNECTION_STATE_CONNECTING = 1,    /**< Connecting */
+  HF_BLUETOOTH_CONNECTION_STATE_CONNECTED = 2,     /**< Connected */
+  HF_BLUETOOTH_CONNECTION_STATE_ADVERTISING = 3,   /**< Advertising */
+  HF_BLUETOOTH_CONNECTION_STATE_SCANNING = 4       /**< Scanning */
 };
 
 /**
@@ -671,7 +704,7 @@ public:
    * @param error Error code
    * @return Error description string
    */
-  static const char* GetErrorString(hf_bluetooth_err_t error);
+  static std::string_view GetErrorString(hf_bluetooth_err_t error);
 
 protected:
   /**
@@ -694,7 +727,7 @@ protected:
  * @ingroup bluetooth
  * @brief Helper function to convert error enum to string
  */
-inline const char* BaseBluetooth::GetErrorString(hf_bluetooth_err_t error) {
+inline std::string_view BaseBluetooth::GetErrorString(hf_bluetooth_err_t error) {
 #define X(name, value, desc) case hf_bluetooth_err_t::name: return desc;
   switch (error) {
     HF_BLUETOOTH_ERR_LIST(X)

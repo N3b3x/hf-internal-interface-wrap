@@ -228,10 +228,10 @@ inline hf_wifi_security_t espAuthModeTohf_wifi_security_t(wifi_auth_mode_t auth_
  */
 inline wifi_mode_t hfWifiModeToEspMode(hf_wifi_mode_t mode) {
   switch (mode) {
-    case hf_wifi_mode_t::STATION: return WIFI_MODE_STA;
-    case hf_wifi_mode_t::ACCESS_POINT: return WIFI_MODE_AP;
-    case hf_wifi_mode_t::STATION_AP: return WIFI_MODE_APSTA;
-    case hf_wifi_mode_t::DISABLED: return WIFI_MODE_NULL;
+    case hf_wifi_mode_t::HF_WIFI_MODE_STATION: return WIFI_MODE_STA;
+    case hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT: return WIFI_MODE_AP;
+    case hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP: return WIFI_MODE_APSTA;
+    case hf_wifi_mode_t::HF_WIFI_MODE_DISABLED: return WIFI_MODE_NULL;
     default: return WIFI_MODE_NULL;
   }
 }
@@ -243,11 +243,11 @@ inline wifi_mode_t hfWifiModeToEspMode(hf_wifi_mode_t mode) {
  */
 inline hf_wifi_mode_t espModeTohf_wifi_mode_t(wifi_mode_t mode) {
   switch (mode) {
-    case WIFI_MODE_STA: return hf_wifi_mode_t::STATION;
-    case WIFI_MODE_AP: return hf_wifi_mode_t::ACCESS_POINT;
-    case WIFI_MODE_APSTA: return hf_wifi_mode_t::STATION_AP;
-    case WIFI_MODE_NULL: return hf_wifi_mode_t::DISABLED;
-    default: return hf_wifi_mode_t::DISABLED;
+    case WIFI_MODE_STA: return hf_wifi_mode_t::HF_WIFI_MODE_STATION;
+    case WIFI_MODE_AP: return hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT;
+    case WIFI_MODE_APSTA: return hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP;
+    case WIFI_MODE_NULL: return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
+    default: return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
   }
 }
 

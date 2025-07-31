@@ -77,11 +77,11 @@ static const EspBluetoothAdvancedConfig DEFAULT_ADVANCED_CONFIG = {
  */
 static esp_bt_mode_t ConvertToEspMode(hf_bluetooth_mode_t mode) {
   switch (mode) {
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC_ONLY:
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC:
       return ESP_BT_MODE_CLASSIC_BT;
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE_ONLY:
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE:
       return ESP_BT_MODE_BLE;
-    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL_MODE:
+    case hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL:
       return ESP_BT_MODE_BTDM;
     default:
       return ESP_BT_MODE_IDLE;
@@ -286,13 +286,13 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() {
   gatt_services_.clear();
   
   // Unregister callbacks and deinitialize
-  if (m_mode == hf_bluetooth_mode_t::BLE_ONLY || m_mode == hf_bluetooth_mode_t::DUAL_MODE) {
+  if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE || m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
     esp_ble_gap_register_callback(nullptr);
     esp_ble_gatts_register_callback(nullptr);
     esp_ble_gattc_register_callback(nullptr);
   }
   
-  if (m_mode == hf_bluetooth_mode_t::CLASSIC_ONLY || m_mode == hf_bluetooth_mode_t::DUAL_MODE) {
+  if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC || m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
     esp_bt_gap_register_callback(nullptr);
     if (advanced_config_.enable_spp) {
       esp_spp_register_callback(nullptr);
@@ -303,7 +303,7 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() {
   
   m_initialized = false;
   m_enabled = false;
-  m_mode = hf_bluetooth_mode_t::DISABLED;
+  m_mode = hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DISABLED;
   
   ESP_LOGI(TAG, "ESP32 Bluetooth deinitialized successfully");
   return hf_bluetooth_err_t::SUCCESS;
@@ -402,7 +402,7 @@ hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
   }
   
   // Set Classic Bluetooth device name if applicable
-  if (m_mode == hf_bluetooth_mode_t::CLASSIC_ONLY || m_mode == hf_bluetooth_mode_t::DUAL_MODE) {
+  if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC || m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
     ret = esp_bt_dev_set_device_name(name.c_str());
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to set Classic BT device name: %s", esp_err_to_name(ret));
@@ -428,7 +428,7 @@ hf_bluetooth_err_t EspBluetooth::startAdvertising(const hf_bluetooth_advertising
     return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
-  if (m_mode == hf_bluetooth_mode_t::CLASSIC_ONLY) {
+  if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC) {
     ESP_LOGE(TAG, "Advertising not supported in Classic-only mode");
     return hf_bluetooth_err_t::NOT_SUPPORTED;
   }
@@ -531,8 +531,8 @@ hf_bluetooth_err_t EspBluetooth::startScan(const hf_bluetooth_scan_config_t& con
   
   esp_err_t ret = ESP_OK;
   
-  if (m_mode == hf_bluetooth_mode_t::BLE_ONLY || 
-      (m_mode == hf_bluetooth_mode_t::DUAL_MODE && config.mode == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
+  if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE || 
+      (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL && config.mode == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
     
     // BLE scan parameters
     esp_ble_scan_params_t scan_params = {
@@ -556,8 +556,8 @@ hf_bluetooth_err_t EspBluetooth::startScan(const hf_bluetooth_scan_config_t& con
       return hf_bluetooth_err_t::START_FAILED;
     }
     
-  } else if (m_mode == hf_bluetooth_mode_t::CLASSIC_ONLY || 
-             (m_mode == hf_bluetooth_mode_t::DUAL_MODE && config.mode == hf_bluetooth_scan_mode_t::GENERAL_INQUIRY)) {
+  } else if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC || 
+             (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL && config.mode == hf_bluetooth_scan_mode_t::GENERAL_INQUIRY)) {
     
     // Classic Bluetooth inquiry
     esp_bt_inq_mode_t inq_mode = config.mode == hf_bluetooth_scan_mode_t::LIMITED_INQUIRY ? 
@@ -586,8 +586,8 @@ hf_bluetooth_err_t EspBluetooth::stopScan() {
   
   esp_err_t ret = ESP_OK;
   
-  if (m_mode == hf_bluetooth_mode_t::BLE_ONLY || 
-      (m_mode == hf_bluetooth_mode_t::DUAL_MODE && m_current_scan_type == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
+  if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE || 
+      (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL && m_current_scan_type == hf_bluetooth_scan_mode_t::LE_GENERAL)) {
     ret = esp_ble_gap_stop_scanning();
   } else {
     ret = esp_bt_gap_cancel_discovery();
@@ -630,15 +630,15 @@ hf_bluetooth_err_t EspBluetooth::connect(const hf_bluetooth_address_t& address,
   esp_err_t ret = ESP_OK;
   uint16_t conn_id = next_connection_id_++;
   
-  if (type == hf_bluetooth_connection_type_t::BLE || 
-      (type == hf_bluetooth_connection_type_t::AUTO && m_mode != hf_bluetooth_mode_t::CLASSIC_ONLY)) {
+  if (type == hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_BLE || 
+      (type == hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_AUTO && m_mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC)) {
     
     // BLE connection
     esp_ble_addr_type_t addr_type = BLE_ADDR_TYPE_PUBLIC;
     ret = esp_ble_gattc_open(gattc_if_, const_cast<uint8_t*>(address.address), addr_type, true);
     
-  } else if (type == hf_bluetooth_connection_type_t::CLASSIC || 
-             (type == hf_bluetooth_connection_type_t::AUTO && m_mode != hf_bluetooth_mode_t::BLE_ONLY)) {
+  } else if (type == hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC || 
+             (type == hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_AUTO && m_mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE)) {
     
     // Classic Bluetooth connection (SPP)
     if (advanced_config_.enable_spp) {
@@ -660,7 +660,7 @@ hf_bluetooth_err_t EspBluetooth::connect(const hf_bluetooth_address_t& address,
   conn_info.address = address;
   memcpy(conn_info.esp_address, address.address, 6);
   conn_info.connection_handle = conn_id;
-  conn_info.is_classic = (type == hf_bluetooth_connection_type_t::CLASSIC);
+  conn_info.is_classic = (type == hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC);
   conn_info.mtu = advanced_config_.mtu_size;
   
   connections_[conn_id] = conn_info;
@@ -722,10 +722,10 @@ hf_bluetooth_connection_info_t EspBluetooth::getConnectionInfo(uint16_t connecti
   hf_bluetooth_connection_info_t info = {};
   info.connection_id = connection_id;
   info.address = it->second.address;
-  info.type = it->second.is_classic ? hf_bluetooth_connection_type_t::CLASSIC : hf_bluetooth_connection_type_t::BLE;
-  info.state = hf_bluetooth_connection_state_t::CONNECTED; // Simplified for now
+  info.type = it->second.is_classic ? hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC : hf_bluetooth_connection_type_t::HF_BLUETOOTH_CONNECTION_TYPE_BLE;
+  info.state = hf_bluetooth_connection_state_t::HF_BLUETOOTH_CONNECTION_STATE_CONNECTED; // Simplified for now
   info.mtu = it->second.mtu;
-  info.security_level = hf_bluetooth_security_t::NONE; // Would need to query actual security
+  info.security_level = hf_bluetooth_security_t::HF_BLUETOOTH_SECURITY_NONE; // Would need to query actual security
   info.is_bonded = false; // Would need to check bonding status
   info.rssi = -50; // Would need to query actual RSSI
   
@@ -780,10 +780,10 @@ hf_bluetooth_err_t EspBluetooth::pair(const hf_bluetooth_address_t& address, hf_
   
   esp_err_t ret = ESP_OK;
   
-  if (m_mode == hf_bluetooth_mode_t::BLE_ONLY || m_mode == hf_bluetooth_mode_t::DUAL_MODE) {
+  if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE || m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
     // Configure BLE security
     esp_ble_auth_req_t auth_req = ESP_LE_AUTH_BOND;
-    if (security == hf_bluetooth_security_t::AUTHENTICATED) {
+    if (security == hf_bluetooth_security_t::HF_BLUETOOTH_SECURITY_AUTHENTICATED) {
       auth_req = ESP_LE_AUTH_REQ_SC_MITM_BOND;
     }
     
@@ -920,7 +920,7 @@ hf_bluetooth_err_t EspBluetooth::gattAddService(const hf_bluetooth_gatt_service_
     return hf_bluetooth_err_t::NOT_INITIALIZED;
   }
   
-  if (m_mode == hf_bluetooth_mode_t::CLASSIC_ONLY) {
+  if (m_mode == hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC) {
     ESP_LOGE(TAG, "GATT not supported in Classic-only mode");
     return hf_bluetooth_err_t::NOT_SUPPORTED;
   }
@@ -940,7 +940,7 @@ hf_bluetooth_err_t EspBluetooth::gattAddService(const hf_bluetooth_gatt_service_
   service_id.is_primary = service.is_primary;
   service_id.id.inst_id = 0;
   service_id.id.uuid.len = service.uuid.size();
-  memcpy(service_id.id.uuid.uuid.uuid128, service.uuid.data(), service.uuid.size());
+  memcpy(service_id.id.uuid.uuid128, service.uuid.data(), service.uuid.size());
   
   esp_err_t ret = esp_ble_gatts_create_service(gatts_if_, &service_id, service.num_handles);
   if (ret != ESP_OK) {
