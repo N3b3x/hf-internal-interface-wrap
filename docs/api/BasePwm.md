@@ -1,925 +1,605 @@
-# ⚡ BasePwm API Reference
+# 🎛️ BasePwm API Reference
 
-<div align="center">
+## 🌟 Overview
 
-![BasePwm](https://img.shields.io/badge/BasePwm-Abstract%20Base%20Class-blue?style=for-the-badge&logo=wave-square)
+`BasePwm` is the abstract base class for all PWM (Pulse Width Modulation) implementations in the HardFOC system. It provides a unified interface for motor control, LED dimming, servo control, and other PWM applications with comprehensive multi-channel support.
 
-**🎛️ Unified PWM abstraction for precise pulse-width modulation control**
+## ✨ Features
 
-</div>
+- **🔢 Multi-Channel Support** - Control multiple PWM channels simultaneously
+- **⚡ Variable Frequency** - Configurable frequency per channel with wide range support
+- **🎯 Precise Duty Control** - High-resolution duty cycle control with hardware precision
+- **🔄 Fade Operations** - Smooth transitions between duty cycle values
+- **🛡️ Hardware Protection** - Built-in fault detection and recovery mechanisms
+- **📊 Performance Monitoring** - Comprehensive statistics and diagnostics
+- **🔧 Lazy Initialization** - Resources allocated only when needed
+- **🏎️ Real-Time Optimized** - Designed for time-critical motor control applications
 
----
-
-## 📚 **Table of Contents**
-
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#️-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
-
----
-
-## 🎯 **Overview**
-
-The `BasePwm` class provides a comprehensive PWM abstraction that serves as the unified interface for all pulse-width modulation operations in the HardFOC system. It supports multi-channel operation, precise frequency and duty cycle control, and works across different PWM implementations.
-
-### ✨ **Key Features**
-
-- 🎛️ **Multi-Channel Support** - Simultaneous operation on multiple PWM channels
-- ⚡ **Precise Frequency Control** - Configurable frequency from Hz to MHz
-- 📊 **Duty Cycle Control** - 0-100% duty cycle with high resolution
-- 🔄 **Phase Control** - Configurable phase relationships between channels
-- 🛡️ **Robust Error Handling** - Comprehensive validation and error reporting
-- 🏎️ **Performance Optimized** - Hardware-accelerated PWM generation
-- 🔌 **Platform Agnostic** - Works with various PWM hardware implementations
-- 📈 **Real-time Control** - Dynamic frequency and duty cycle updates
-
-### ⚡ **Supported Applications**
-
-| Application | Frequency Range | Duty Cycle | Description |
-|-------------|----------------|------------|-------------|
-| **Motor Control** | 1-50 kHz | 0-100% | Precise motor speed and torque control |
-| **LED Dimming** | 100 Hz-1 kHz | 0-100% | Smooth LED brightness control |
-| **Audio Generation** | 20 Hz-20 kHz | 0-100% | Digital audio signal generation |
-| **Power Conversion** | 10-500 kHz | 0-100% | DC-DC converter control |
-| **Servo Control** | 50 Hz | 5-10% | Standard servo pulse generation |
-
----
-
-## 🏗️ **Class Hierarchy**
-
-```mermaid
-classDiagram
-    class BasePwm {
-        <<abstract>>
-        +Initialize() hf_pwm_err_t
-        +Deinitialize() hf_pwm_err_t
-        +ConfigureChannel(channel_id, config) hf_pwm_err_t
-        +SetFrequency(channel_id, frequency_hz) hf_pwm_err_t
-        +SetDutyCycle(channel_id, duty_cycle_percent) hf_pwm_err_t
-        +SetPhase(channel_id, phase_degrees) hf_pwm_err_t
-        +StartChannel(channel_id) hf_pwm_err_t
-        +StopChannel(channel_id) hf_pwm_err_t
-        +GetChannelStatus(channel_id, status) hf_pwm_err_t
-        +GetCapabilities(capabilities) hf_pwm_err_t
-    }
-    
-    class EspPwm {
-        +EspPwm(unit, channel)
-        +GetUnit() ledc_timer_t
-        +GetChannel() ledc_channel_t
-    }
-    
-    BasePwm <|-- EspPwm
-```
-
----
-
-## 📋 **Error Codes**
-
-### ✅ **Success Codes**
-
-| Code | Value | Description |
-|------|-------|-------------|
-| `PWM_SUCCESS` | 0 | ✅ Operation completed successfully |
-
-### ❌ **General Error Codes**
-
-| Code | Value | Description | Resolution |
-|------|-------|-------------|------------|
-| `PWM_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `PWM_ERR_NOT_INITIALIZED` | 2 | ⚠️ PWM not initialized | Call Initialize() first |
-| `PWM_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ PWM already initialized | Check initialization state |
-| `PWM_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
-| `PWM_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
-| `PWM_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
-
-### 🔧 **Channel Error Codes**
-
-| Code | Value | Description | Resolution |
-|------|-------|-------------|------------|
-| `PWM_ERR_INVALID_CHANNEL` | 7 | 🚫 Invalid PWM channel | Use valid channel numbers |
-| `PWM_ERR_CHANNEL_BUSY` | 8 | 🔄 Channel already in use | Wait or use different channel |
-| `PWM_ERR_CHANNEL_NOT_AVAILABLE` | 9 | ⚠️ Channel not available | Check channel availability |
-| `PWM_ERR_CHANNEL_NOT_CONFIGURED` | 10 | ⚙️ Channel not configured | Configure channel first |
-| `PWM_ERR_CHANNEL_ALREADY_RUNNING` | 11 | 🔄 Channel already running | Stop channel first |
-
-### ⚡ **Frequency Error Codes**
-
-| Code | Value | Description | Resolution |
-|------|-------|-------------|------------|
-| `PWM_ERR_FREQUENCY_TOO_HIGH` | 12 | 📈 Frequency too high | Reduce frequency |
-| `PWM_ERR_FREQUENCY_TOO_LOW` | 13 | 📉 Frequency too low | Increase frequency |
-| `PWM_ERR_INVALID_FREQUENCY` | 14 | 🚫 Invalid frequency | Use valid frequency range |
-| `PWM_ERR_FREQUENCY_NOT_SUPPORTED` | 15 | 🚫 Frequency not supported | Check hardware capabilities |
-
-### 📊 **Duty Cycle Error Codes**
-
-| Code | Value | Description | Resolution |
-|------|-------|-------------|------------|
-| `PWM_ERR_DUTY_CYCLE_TOO_HIGH` | 16 | 📈 Duty cycle too high | Reduce duty cycle |
-| `PWM_ERR_DUTY_CYCLE_TOO_LOW` | 17 | 📉 Duty cycle too low | Increase duty cycle |
-| `PWM_ERR_INVALID_DUTY_CYCLE` | 18 | 🚫 Invalid duty cycle | Use 0-100% range |
-| `PWM_ERR_DUTY_CYCLE_NOT_SUPPORTED` | 19 | 🚫 Duty cycle not supported | Check hardware capabilities |
-
-### 🔄 **Phase Error Codes**
-
-| Code | Value | Description | Resolution |
-|------|-------|-------------|------------|
-| `PWM_ERR_PHASE_TOO_HIGH` | 20 | 📈 Phase too high | Reduce phase angle |
-| `PWM_ERR_PHASE_TOO_LOW` | 21 | 📉 Phase too low | Increase phase angle |
-| `PWM_ERR_INVALID_PHASE` | 22 | 🚫 Invalid phase | Use 0-360° range |
-| `PWM_ERR_PHASE_NOT_SUPPORTED` | 23 | 🚫 Phase not supported | Check hardware capabilities |
-
-### 🌐 **Hardware Error Codes**
-
-| Code | Value | Description | Resolution |
-|------|-------|-------------|------------|
-| `PWM_ERR_HARDWARE_FAULT` | 24 | 💥 Hardware fault | Check power and connections |
-| `PWM_ERR_COMMUNICATION_FAILURE` | 25 | 📡 Communication failure | Check bus connections |
-| `PWM_ERR_DEVICE_NOT_RESPONDING` | 26 | 🔇 Device not responding | Check device power |
-| `PWM_ERR_RESOURCE_BUSY` | 27 | 🔄 Resource busy | Wait for resource availability |
-
----
-
-## 🔧 **Core API**
-
-### 🏗️ **Initialization Methods**
+## 📁 Header File
 
 ```cpp
-/**
- * @brief Initialize the PWM peripheral
- * @return hf_pwm_err_t error code
- * 
- * 📝 Sets up PWM hardware, configures channels, and prepares for operation.
- * Must be called before any PWM operations.
- * 
- * @example
- * EspPwm pwm(LEDC_TIMER_0, LEDC_CHANNEL_0);
- * hf_pwm_err_t result = pwm.Initialize();
- * if (result == hf_pwm_err_t::PWM_SUCCESS) {
- *     // PWM ready for use
- * }
- */
-virtual hf_pwm_err_t Initialize() noexcept = 0;
-
-/**
- * @brief Deinitialize the PWM peripheral
- * @return hf_pwm_err_t error code
- * 
- * 🧹 Cleanly shuts down PWM hardware and releases resources.
- */
-virtual hf_pwm_err_t Deinitialize() noexcept = 0;
-
-/**
- * @brief Check if PWM is initialized
- * @return true if initialized, false otherwise
- * 
- * ❓ Query initialization status without side effects.
- */
-[[nodiscard]] bool IsInitialized() const noexcept;
-
-/**
- * @brief Ensure PWM is initialized (lazy initialization)
- * @return true if initialized successfully, false otherwise
- * 
- * 🔄 Automatically initializes PWM if not already initialized.
- */
-bool EnsureInitialized() noexcept;
+#include "inc/base/BasePwm.h"
 ```
 
-### ⚙️ **Channel Configuration**
+## 🎯 Type Definitions
+
+### 🚨 Error Codes
 
 ```cpp
-/**
- * @brief Configure a PWM channel
- * @param channel_id Channel identifier
- * @param config Channel configuration structure
- * @return hf_pwm_err_t error code
- * 
- * ⚙️ Configures channel parameters including GPIO pin, frequency,
- * duty cycle, and phase settings.
- * 
- * @example
- * hf_pwm_channel_config_t config;
- * config.gpio_pin = 18;
- * config.frequency_hz = 1000;      // 1 kHz
- * config.duty_cycle_percent = 50;  // 50% duty cycle
- * config.phase_degrees = 0;        // 0° phase
- * 
- * hf_pwm_err_t result = pwm.ConfigureChannel(0, config);
- */
-virtual hf_pwm_err_t ConfigureChannel(uint8_t channel_id,
-                                    const hf_pwm_channel_config_t &config) noexcept = 0;
-```
-
-### ⚡ **Frequency Control**
-
-```cpp
-/**
- * @brief Set PWM frequency for a channel
- * @param channel_id Channel identifier
- * @param frequency_hz Frequency in Hz
- * @return hf_pwm_err_t error code
- * 
- * ⚡ Sets the PWM frequency for the specified channel.
- * Frequency range depends on hardware capabilities.
- * 
- * @example
- * // Set 20 kHz for motor control
- * hf_pwm_err_t result = pwm.SetFrequency(0, 20000);
- * if (result == hf_pwm_err_t::PWM_SUCCESS) {
- *     printf("✅ Frequency set to 20 kHz\n");
- * }
- */
-virtual hf_pwm_err_t SetFrequency(uint8_t channel_id, float frequency_hz) noexcept = 0;
-
-/**
- * @brief Get current PWM frequency for a channel
- * @param channel_id Channel identifier
- * @param frequency_hz [out] Current frequency in Hz
- * @return hf_pwm_err_t error code
- * 
- * 📊 Retrieves the current frequency setting for a channel.
- */
-virtual hf_pwm_err_t GetFrequency(uint8_t channel_id, float &frequency_hz) const noexcept = 0;
-```
-
-### 📊 **Duty Cycle Control**
-
-```cpp
-/**
- * @brief Set PWM duty cycle for a channel
- * @param channel_id Channel identifier
- * @param duty_cycle_percent Duty cycle as percentage (0-100)
- * @return hf_pwm_err_t error code
- * 
- * 📊 Sets the PWM duty cycle for the specified channel.
- * Duty cycle range is 0-100%.
- * 
- * @example
- * // Set 75% duty cycle
- * hf_pwm_err_t result = pwm.SetDutyCycle(0, 75.0f);
- * if (result == hf_pwm_err_t::PWM_SUCCESS) {
- *     printf("✅ Duty cycle set to 75%%\n");
- * }
- */
-virtual hf_pwm_err_t SetDutyCycle(uint8_t channel_id, float duty_cycle_percent) noexcept = 0;
-
-/**
- * @brief Get current PWM duty cycle for a channel
- * @param channel_id Channel identifier
- * @param duty_cycle_percent [out] Current duty cycle as percentage
- * @return hf_pwm_err_t error code
- * 
- * 📊 Retrieves the current duty cycle setting for a channel.
- */
-virtual hf_pwm_err_t GetDutyCycle(uint8_t channel_id, float &duty_cycle_percent) const noexcept = 0;
-```
-
-### 🔄 **Phase Control**
-
-```cpp
-/**
- * @brief Set PWM phase for a channel
- * @param channel_id Channel identifier
- * @param phase_degrees Phase in degrees (0-360)
- * @return hf_pwm_err_t error code
- * 
- * 🔄 Sets the PWM phase for the specified channel.
- * Phase range is 0-360 degrees.
- * 
- * @example
- * // Set 180° phase shift
- * hf_pwm_err_t result = pwm.SetPhase(0, 180.0f);
- * if (result == hf_pwm_err_t::PWM_SUCCESS) {
- *     printf("✅ Phase set to 180°\n");
- * }
- */
-virtual hf_pwm_err_t SetPhase(uint8_t channel_id, float phase_degrees) noexcept = 0;
-
-/**
- * @brief Get current PWM phase for a channel
- * @param channel_id Channel identifier
- * @param phase_degrees [out] Current phase in degrees
- * @return hf_pwm_err_t error code
- * 
- * 🔄 Retrieves the current phase setting for a channel.
- */
-virtual hf_pwm_err_t GetPhase(uint8_t channel_id, float &phase_degrees) const noexcept = 0;
-```
-
-### 🎛️ **Channel Control**
-
-```cpp
-/**
- * @brief Start PWM output on a channel
- * @param channel_id Channel identifier
- * @return hf_pwm_err_t error code
- * 
- * 🎛️ Starts PWM output on the specified channel.
- * Channel must be configured before starting.
- * 
- * @example
- * hf_pwm_err_t result = pwm.StartChannel(0);
- * if (result == hf_pwm_err_t::PWM_SUCCESS) {
- *     printf("✅ PWM channel 0 started\n");
- * }
- */
-virtual hf_pwm_err_t StartChannel(uint8_t channel_id) noexcept = 0;
-
-/**
- * @brief Stop PWM output on a channel
- * @param channel_id Channel identifier
- * @return hf_pwm_err_t error code
- * 
- * 🎛️ Stops PWM output on the specified channel.
- */
-virtual hf_pwm_err_t StopChannel(uint8_t channel_id) noexcept = 0;
-
-/**
- * @brief Check if a channel is running
- * @param channel_id Channel identifier
- * @return true if channel is running, false otherwise
- * 
- * ❓ Query channel running status.
- */
-virtual bool IsChannelRunning(uint8_t channel_id) const noexcept = 0;
-```
-
-### 📊 **Status and Capabilities**
-
-```cpp
-/**
- * @brief Get channel status information
- * @param channel_id Channel identifier
- * @param status [out] Status information structure
- * @return hf_pwm_err_t error code
- * 
- * 📊 Retrieves comprehensive status information about a channel.
- */
-virtual hf_pwm_err_t GetChannelStatus(uint8_t channel_id,
-                                    hf_pwm_channel_status_t &status) const noexcept = 0;
-
-/**
- * @brief Get PWM capabilities
- * @param capabilities [out] Capability information structure
- * @return hf_pwm_err_t error code
- * 
- * 📋 Retrieves hardware capabilities and limitations.
- */
-virtual hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t &capabilities) const noexcept = 0;
-```
-
----
-
-## 📊 **Data Structures**
-
-### ⚙️ **Channel Configuration**
-
-```cpp
-struct hf_pwm_channel_config_t {
-    hf_pin_num_t gpio_pin;           ///< GPIO pin for PWM output
-    float frequency_hz;              ///< PWM frequency in Hz
-    float duty_cycle_percent;        ///< Duty cycle as percentage (0-100)
-    float phase_degrees;             ///< Phase in degrees (0-360)
-    hf_pwm_polarity_t polarity;      ///< Output polarity
-    hf_pwm_resolution_t resolution;  ///< PWM resolution
+enum class hf_pwm_err_t : hf_u32_t {
+    PWM_SUCCESS = 0,                    // ✅ Success
+    PWM_ERR_FAILURE = 1,                // ❌ General failure
+    PWM_ERR_NOT_INITIALIZED = 2,        // ⚠️ Not initialized
+    PWM_ERR_ALREADY_INITIALIZED = 3,    // ⚠️ Already initialized
+    PWM_ERR_INVALID_PARAMETER = 4,      // 🚫 Invalid parameter
+    PWM_ERR_NULL_POINTER = 5,           // 🚫 Null pointer
+    PWM_ERR_OUT_OF_MEMORY = 6,          // 💾 Out of memory
+    PWM_ERR_INVALID_CHANNEL = 7,        // 🔍 Invalid PWM channel
+    PWM_ERR_CHANNEL_BUSY = 8,           // 🔄 Channel already in use
+    PWM_ERR_CHANNEL_NOT_AVAILABLE = 9,  // 🚫 Channel not available
+    PWM_ERR_INSUFFICIENT_CHANNELS = 10, // 📉 Insufficient channels
+    PWM_ERR_INVALID_FREQUENCY = 11,     // 📻 Invalid frequency
+    PWM_ERR_FREQUENCY_TOO_HIGH = 12,    // 📈 Frequency too high
+    PWM_ERR_FREQUENCY_TOO_LOW = 13,     // 📉 Frequency too low
+    PWM_ERR_RESOLUTION_NOT_SUPPORTED = 14, // 🎯 Resolution not supported
+    PWM_ERR_INVALID_DUTY_CYCLE = 15,    // 🎛️ Invalid duty cycle
+    PWM_ERR_DUTY_OUT_OF_RANGE = 16,     // 📏 Duty cycle out of range
+    PWM_ERR_HARDWARE_FAULT = 17,        // 💥 Hardware fault
+    PWM_ERR_TIMER_CONFLICT = 18,        // ⏱️ Timer resource conflict
+    PWM_ERR_PIN_CONFLICT = 19,          // 🔌 Pin already in use
+    PWM_ERR_COMMUNICATION_TIMEOUT = 20, // ⏰ Communication timeout
+    PWM_ERR_COMMUNICATION_FAILURE = 21, // 📡 Communication failure
+    PWM_ERR_DEVICE_NOT_RESPONDING = 22, // 🔇 Device not responding
+    PWM_ERR_INVALID_DEVICE_ID = 23,     // 🆔 Invalid device ID
+    PWM_ERR_UNSUPPORTED_OPERATION = 24  // 🚫 Unsupported operation
 };
 ```
 
-### 📊 **Channel Status**
-
-```cpp
-struct hf_pwm_channel_status_t {
-    bool is_configured;        ///< Channel is configured
-    bool is_running;           ///< Channel is currently running
-    float current_frequency;   ///< Current frequency in Hz
-    float current_duty_cycle;  ///< Current duty cycle percentage
-    float current_phase;       ///< Current phase in degrees
-    hf_pwm_err_t last_error;   ///< Last error that occurred
-    uint32_t timestamp_us;     ///< Timestamp of last operation
-};
-```
-
-### 📋 **PWM Capabilities**
-
-```cpp
-struct hf_pwm_capabilities_t {
-    uint8_t max_channels;           ///< Maximum number of channels
-    float min_frequency_hz;         ///< Minimum frequency
-    float max_frequency_hz;         ///< Maximum frequency
-    float min_duty_cycle_percent;   ///< Minimum duty cycle
-    float max_duty_cycle_percent;   ///< Maximum duty cycle
-    uint16_t resolution_bits;       ///< PWM resolution in bits
-    bool supports_phase_control;    ///< Supports phase control
-    bool supports_synchronization;  ///< Supports channel synchronization
-};
-```
-
-### 📈 **PWM Statistics**
+### 📊 Statistics Structure
 
 ```cpp
 struct hf_pwm_statistics_t {
-    uint32_t total_channels;        ///< Total channels configured
-    uint32_t active_channels;       ///< Currently active channels
-    uint32_t frequency_changes;     ///< Total frequency changes
-    uint32_t duty_cycle_changes;    ///< Total duty cycle changes
-    uint32_t phase_changes;         ///< Total phase changes
-    uint32_t start_operations;      ///< Total start operations
-    uint32_t stop_operations;       ///< Total stop operations
-    uint32_t configuration_errors;  ///< Configuration errors
-    uint32_t runtime_errors;        ///< Runtime errors
+    hf_u32_t duty_updates_count;        // 🔄 Total duty cycle updates
+    hf_u32_t frequency_changes_count;   // 📻 Total frequency changes
+    hf_u32_t fade_operations_count;     // 🌟 Total fade operations
+    hf_u32_t error_count;               // ❌ Total error count
+    hf_u32_t channel_enables_count;     // ✅ Total channel enable operations
+    hf_u32_t channel_disables_count;    // ❌ Total channel disable operations
 };
 ```
 
----
-
-## 📊 **Usage Examples**
-
-### 🎛️ **Basic PWM Control**
+## 🏗️ Class Interface
 
 ```cpp
-#include "mcu/esp32/EspPwm.h"
-
-class BasicPwmController {
-private:
-    EspPwm pwm_;
-    
+class BasePwm {
 public:
-    bool initialize() {
-        // Initialize PWM with timer 0, channel 0
-        pwm_ = EspPwm(LEDC_TIMER_0, LEDC_CHANNEL_0);
-        
-        if (!pwm_.EnsureInitialized()) {
-            printf("❌ PWM initialization failed\n");
-            return false;
-        }
-        
-        // Configure channel
-        hf_pwm_channel_config_t config;
-        config.gpio_pin = 18;           // PWM output pin
-        config.frequency_hz = 1000;     // 1 kHz
-        config.duty_cycle_percent = 50; // 50% duty cycle
-        config.phase_degrees = 0;       // 0° phase
-        config.polarity = hf_pwm_polarity_t::Normal;
-        config.resolution = hf_pwm_resolution_t::PWM_12BIT;
-        
-        hf_pwm_err_t result = pwm_.ConfigureChannel(0, config);
-        if (result != hf_pwm_err_t::PWM_SUCCESS) {
-            printf("❌ Channel configuration failed: %s\n", HfPwmErrToString(result));
-            return false;
-        }
-        
-        printf("✅ PWM initialized successfully\n");
-        return true;
-    }
-    
-    void set_duty_cycle(float duty_cycle) {
-        hf_pwm_err_t result = pwm_.SetDutyCycle(0, duty_cycle);
-        if (result == hf_pwm_err_t::PWM_SUCCESS) {
-            printf("✅ Duty cycle set to %.1f%%\n", duty_cycle);
-        } else {
-            printf("❌ Duty cycle set failed: %s\n", HfPwmErrToString(result));
-        }
-    }
-    
-    void set_frequency(float frequency_hz) {
-        hf_pwm_err_t result = pwm_.SetFrequency(0, frequency_hz);
-        if (result == hf_pwm_err_t::PWM_SUCCESS) {
-            printf("✅ Frequency set to %.1f Hz\n", frequency_hz);
-        } else {
-            printf("❌ Frequency set failed: %s\n", HfPwmErrToString(result));
-        }
-    }
-    
-    void start() {
-        hf_pwm_err_t result = pwm_.StartChannel(0);
-        if (result == hf_pwm_err_t::PWM_SUCCESS) {
-            printf("✅ PWM started\n");
-        } else {
-            printf("❌ PWM start failed: %s\n", HfPwmErrToString(result));
-        }
-    }
-    
-    void stop() {
-        hf_pwm_err_t result = pwm_.StopChannel(0);
-        if (result == hf_pwm_err_t::PWM_SUCCESS) {
-            printf("✅ PWM stopped\n");
-        } else {
-            printf("❌ PWM stop failed: %s\n", HfPwmErrToString(result));
-        }
-    }
+    // 🔧 Lifecycle management
+    virtual ~BasePwm() noexcept = default;
+    virtual hf_pwm_err_t Initialize() noexcept = 0;
+    virtual hf_pwm_err_t Deinitialize() noexcept = 0;
+    bool IsInitialized() const noexcept;
+    bool EnsureInitialized() noexcept;
+    bool EnsureDeinitialized() noexcept;
+
+    // 📡 Channel management
+    virtual hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept = 0;
+    virtual hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept = 0;
+    virtual bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept = 0;
+
+    // 🎛️ PWM control
+    virtual hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) noexcept = 0;
+virtual float GetDutyCycle(hf_channel_id_t channel_id) const noexcept = 0;
+    virtual hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency) noexcept = 0;
+    virtual hf_pwm_err_t GetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t& frequency) const noexcept = 0;
+
+    // 🌟 Advanced features
+    virtual hf_pwm_err_t StartFade(hf_channel_id_t channel_id, float target_duty_percent, 
+                                  hf_time_t fade_time_ms) noexcept = 0;
+    virtual hf_pwm_err_t StopFade(hf_channel_id_t channel_id) noexcept = 0;
+    virtual bool IsFading(hf_channel_id_t channel_id) const noexcept = 0;
+
+    // 📊 Information and diagnostics
+    virtual hf_u8_t GetMaxChannels() const noexcept = 0;
+    virtual bool IsChannelAvailable(hf_channel_id_t channel_id) const noexcept = 0;
+    virtual hf_pwm_err_t GetStatistics(hf_pwm_statistics_t& stats) const noexcept = 0;
+    virtual hf_pwm_err_t ResetStatistics() noexcept = 0;
 };
 ```
 
-### 🚗 **Motor Speed Control**
+## 🎯 Core Methods
+
+### 🔧 Initialization
 
 ```cpp
-#include "mcu/esp32/EspPwm.h"
+bool EnsureInitialized() noexcept;
+```
+**Purpose:** 🚀 Lazy initialization - automatically initializes PWM if not already done  
+**Returns:** `true` if successful, `false` on failure  
+**Usage:** Call before any PWM operations
 
-class MotorController {
-private:
-    EspPwm pwm_;
-    static constexpr float MIN_FREQUENCY = 1000;   // 1 kHz minimum
-    static constexpr float MAX_FREQUENCY = 50000;  // 50 kHz maximum
-    static constexpr float MIN_DUTY = 0.0f;        // 0% minimum
-    static constexpr float MAX_DUTY = 100.0f;      // 100% maximum
-    
-public:
-    bool initialize() {
-        pwm_ = EspPwm(LEDC_TIMER_0, LEDC_CHANNEL_0);
-        
-        if (!pwm_.EnsureInitialized()) {
-            return false;
-        }
-        
-        // Configure for motor control
-        hf_pwm_channel_config_t config;
-        config.gpio_pin = 26;           // Motor control pin
-        config.frequency_hz = 20000;    // 20 kHz for motor control
-        config.duty_cycle_percent = 0;  // Start at 0%
-        config.phase_degrees = 0;
-        config.polarity = hf_pwm_polarity_t::Normal;
-        config.resolution = hf_pwm_resolution_t::PWM_12BIT;
-        
-        hf_pwm_err_t result = pwm_.ConfigureChannel(0, config);
-        if (result != hf_pwm_err_t::PWM_SUCCESS) {
-            printf("❌ Motor PWM configuration failed\n");
-            return false;
-        }
-        
-        // Start PWM output
-        result = pwm_.StartChannel(0);
-        if (result != hf_pwm_err_t::PWM_SUCCESS) {
-            printf("❌ Motor PWM start failed\n");
-            return false;
-        }
-        
-        printf("✅ Motor controller initialized\n");
-        return true;
+### 📡 Channel Control
+
+```cpp
+hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept;
+hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept;
+bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept;
+```
+**Purpose:** 🎛️ Enable/disable individual PWM channels  
+**Parameters:** Channel ID (0-based indexing)  
+**Returns:** Error code or boolean status
+
+### 🎛️ Duty Cycle Control
+
+```cpp
+hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_percent) noexcept;
+hf_pwm_err_t GetDutyCycle(hf_channel_id_t channel_id, float& duty_percent) const noexcept;
+```
+**Purpose:** 🎯 Set/get PWM duty cycle as percentage (0.0 - 100.0)  
+**Parameters:** 
+- `channel_id` - Target PWM channel
+- `duty_percent` - Duty cycle percentage (0.0 = 0%, 100.0 = 100%)
+
+### 📻 Frequency Control
+
+```cpp
+hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency) noexcept;
+hf_pwm_err_t GetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t& frequency) const noexcept;
+```
+**Purpose:** ⚡ Set/get PWM frequency in Hz  
+**Parameters:**
+- `channel_id` - Target PWM channel  
+- `frequency` - Frequency in Hz
+
+### 🌟 Fade Operations
+
+```cpp
+hf_pwm_err_t StartFade(hf_channel_id_t channel_id, float target_duty_percent, 
+                      hf_time_t fade_time_ms) noexcept;
+hf_pwm_err_t StopFade(hf_channel_id_t channel_id) noexcept;
+bool IsFading(hf_channel_id_t channel_id) const noexcept;
+```
+**Purpose:** 🌅 Smooth transitions between duty cycle values  
+**Parameters:**
+- `target_duty_percent` - Target duty cycle (0.0 - 100.0)
+- `fade_time_ms` - Fade duration in milliseconds
+
+## 💡 Usage Examples
+
+### 🎯 Basic Motor Speed Control
+
+```cpp
+#include "inc/mcu/esp32/EspPwm.h"
+
+// 🏗️ Create PWM instance for motor control
+EspPwm motor_pwm;
+
+void setup_motor_control() {
+    // 🚀 Initialize PWM system
+    if (!motor_pwm.EnsureInitialized()) {
+        printf("❌ Failed to initialize PWM\n");
+        return;
     }
     
-    void set_speed(float speed_percent) {
-        // Clamp speed to valid range
-        speed_percent = std::max(MIN_DUTY, std::min(MAX_DUTY, speed_percent));
-        
-        hf_pwm_err_t result = pwm_.SetDutyCycle(0, speed_percent);
-        if (result == hf_pwm_err_t::PWM_SUCCESS) {
-            printf("🚗 Motor speed: %.1f%%\n", speed_percent);
-        } else {
-            printf("❌ Speed set failed: %s\n", HfPwmErrToString(result));
-        }
+    // 📡 Enable channel 0 for motor speed control
+    hf_pwm_err_t result = motor_pwm.EnableChannel(0);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+        printf("❌ Failed to enable PWM channel: %s\n", HfPwmErrToString(result));
+        return;
     }
     
-    void set_frequency(float frequency_hz) {
-        // Clamp frequency to valid range
-        frequency_hz = std::max(MIN_FREQUENCY, std::min(MAX_FREQUENCY, frequency_hz));
-        
-        hf_pwm_err_t result = pwm_.SetFrequency(0, frequency_hz);
-        if (result == hf_pwm_err_t::PWM_SUCCESS) {
-            printf("⚡ Motor frequency: %.1f Hz\n", frequency_hz);
-        } else {
-            printf("❌ Frequency set failed: %s\n", HfPwmErrToString(result));
-        }
+    // 📻 Set PWM frequency to 20kHz (typical for motor control)
+    result = motor_pwm.SetFrequency(0, 20000);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+        printf("❌ Failed to set frequency: %s\n", HfPwmErrToString(result));
+        return;
     }
     
-    void emergency_stop() {
-        // Set duty cycle to 0 for immediate stop
-        pwm_.SetDutyCycle(0, 0.0f);
-        printf("🛑 Emergency stop activated\n");
+    printf("✅ Motor PWM initialized successfully\n");
+}
+
+void set_motor_speed(float speed_percent) {
+    // 🎛️ Set motor speed (0-100%)
+    hf_pwm_err_t result = motor_pwm.SetDutyCycle(0, speed_percent);
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
+        printf("🏎️ Motor speed set to %.1f%%\n", speed_percent);
+    } else {
+        printf("❌ Failed to set motor speed: %s\n", HfPwmErrToString(result));
+    }
+}
+
+void motor_control_demo() {
+    setup_motor_control();
+    
+    // 🚀 Gradually increase motor speed
+    for (float speed = 0.0f; speed <= 100.0f; speed += 10.0f) {
+        set_motor_speed(speed);
+        vTaskDelay(pdMS_TO_TICKS(500));  // Wait 500ms
     }
     
-    void ramp_speed(float target_speed, float ramp_time_seconds) {
-        float current_speed;
-        pwm_.GetDutyCycle(0, current_speed);
-        
-        float speed_step = (target_speed - current_speed) / (ramp_time_seconds * 10);
-        float delay_ms = ramp_time_seconds * 1000 / 10;
-        
-        printf("🔄 Ramping speed from %.1f%% to %.1f%% over %.1fs\n", 
-               current_speed, target_speed, ramp_time_seconds);
-        
-        for (float speed = current_speed; 
-             (speed_step > 0 && speed < target_speed) || 
-             (speed_step < 0 && speed > target_speed); 
-             speed += speed_step) {
-            
-            set_speed(speed);
-            vTaskDelay(pdMS_TO_TICKS(delay_ms));
-        }
-        
-        // Ensure final target is reached
-        set_speed(target_speed);
-    }
-};
+    // 🛑 Stop motor
+    set_motor_speed(0.0f);
+}
 ```
 
-### 📊 **LED Dimming Control**
+### 💡 LED Dimming with Fade Effects
 
 ```cpp
-#include "mcu/esp32/EspPwm.h"
+#include "inc/mcu/esp32/EspPwm.h"
 
-class LedController {
+class SmartLED {
 private:
-    EspPwm pwm_;
-    static constexpr float DIMMING_FREQUENCY = 1000;  // 1 kHz for LED dimming
+    EspPwm led_pwm_;
+    hf_channel_id_t channel_;
     
 public:
+    SmartLED(hf_channel_id_t channel) : channel_(channel) {}
+    
     bool initialize() {
-        pwm_ = EspPwm(LEDC_TIMER_1, LEDC_CHANNEL_0);
-        
-        if (!pwm_.EnsureInitialized()) {
+        // 🚀 Initialize PWM for LED control
+        if (!led_pwm_.EnsureInitialized()) {
+            printf("❌ Failed to initialize LED PWM\n");
             return false;
         }
         
-        // Configure for LED dimming
-        hf_pwm_channel_config_t config;
-        config.gpio_pin = 25;           // LED control pin
-        config.frequency_hz = DIMMING_FREQUENCY;
-        config.duty_cycle_percent = 0;  // Start off
-        config.phase_degrees = 0;
-        config.polarity = hf_pwm_polarity_t::Normal;
-        config.resolution = hf_pwm_resolution_t::PWM_12BIT;
-        
-        hf_pwm_err_t result = pwm_.ConfigureChannel(0, config);
+        // 📡 Enable LED channel
+        hf_pwm_err_t result = led_pwm_.EnableChannel(channel_);
         if (result != hf_pwm_err_t::PWM_SUCCESS) {
-            printf("❌ LED PWM configuration failed\n");
+            printf("❌ Failed to enable LED channel: %s\n", HfPwmErrToString(result));
             return false;
         }
         
-        // Start PWM output
-        result = pwm_.StartChannel(0);
+        // 📻 Set frequency to 1kHz (good for LED dimming)
+        result = led_pwm_.SetFrequency(channel_, 1000);
         if (result != hf_pwm_err_t::PWM_SUCCESS) {
-            printf("❌ LED PWM start failed\n");
+            printf("❌ Failed to set LED frequency: %s\n", HfPwmErrToString(result));
             return false;
         }
         
-        printf("✅ LED controller initialized\n");
+        printf("✅ Smart LED initialized on channel %u\n", channel_);
         return true;
     }
     
     void set_brightness(float brightness_percent) {
-        // Clamp brightness to valid range
-        brightness_percent = std::max(0.0f, std::min(100.0f, brightness_percent));
-        
-        hf_pwm_err_t result = pwm_.SetDutyCycle(0, brightness_percent);
+        // 💡 Set LED brightness instantly
+        hf_pwm_err_t result = led_pwm_.SetDutyCycle(channel_, brightness_percent);
         if (result == hf_pwm_err_t::PWM_SUCCESS) {
-            printf("📊 LED brightness: %.1f%%\n", brightness_percent);
+            printf("💡 LED brightness set to %.1f%%\n", brightness_percent);
         } else {
-            printf("❌ Brightness set failed: %s\n", HfPwmErrToString(result));
+            printf("❌ Failed to set brightness: %s\n", HfPwmErrToString(result));
         }
     }
     
-    void fade_in(float duration_seconds) {
-        printf("🌅 Fading in over %.1fs\n", duration_seconds);
-        
-        float step_delay = duration_seconds * 1000 / 100;  // 100 steps
-        
-        for (int i = 0; i <= 100; i++) {
-            set_brightness(i);
-            vTaskDelay(pdMS_TO_TICKS(step_delay));
+    void fade_to(float target_brightness, hf_time_t fade_time_ms) {
+        // 🌟 Start smooth fade to target brightness
+        hf_pwm_err_t result = led_pwm_.StartFade(channel_, target_brightness, fade_time_ms);
+        if (result == hf_pwm_err_t::PWM_SUCCESS) {
+            printf("🌅 Starting fade to %.1f%% over %u ms\n", target_brightness, fade_time_ms);
+        } else {
+            printf("❌ Failed to start fade: %s\n", HfPwmErrToString(result));
         }
     }
     
-    void fade_out(float duration_seconds) {
-        printf("🌇 Fading out over %.1fs\n", duration_seconds);
+    void breathing_effect() {
+        printf("🫁 Starting breathing effect...\n");
         
-        float step_delay = duration_seconds * 1000 / 100;  // 100 steps
+        // 🌟 Fade in over 2 seconds
+        fade_to(100.0f, 2000);
+        vTaskDelay(pdMS_TO_TICKS(2500));  // Wait for fade + extra
         
-        for (int i = 100; i >= 0; i--) {
-            set_brightness(i);
-            vTaskDelay(pdMS_TO_TICKS(step_delay));
-        }
+        // 🌙 Fade out over 2 seconds
+        fade_to(0.0f, 2000);
+        vTaskDelay(pdMS_TO_TICKS(2500));  // Wait for fade + extra
     }
     
-    void blink(float on_time_seconds, float off_time_seconds, int cycles) {
-        printf("✨ Blinking %d times\n", cycles);
-        
-        for (int i = 0; i < cycles; i++) {
-            set_brightness(100);  // Full on
-            vTaskDelay(pdMS_TO_TICKS(on_time_seconds * 1000));
-            
-            set_brightness(0);    // Full off
-            vTaskDelay(pdMS_TO_TICKS(off_time_seconds * 1000));
-        }
+    bool is_fading() {
+        return led_pwm_.IsFading(channel_);
     }
 };
 ```
 
-### 🎵 **Audio Tone Generation**
+### 🎵 Multi-Channel RGB LED Control
 
 ```cpp
-#include "mcu/esp32/EspPwm.h"
-
-class AudioGenerator {
+class RGBController {
 private:
-    EspPwm pwm_;
-    static constexpr float AUDIO_FREQUENCY = 440;  // A4 note
+    EspPwm rgb_pwm_;
+    static constexpr hf_channel_id_t RED_CHANNEL = 0;
+    static constexpr hf_channel_id_t GREEN_CHANNEL = 1;
+    static constexpr hf_channel_id_t BLUE_CHANNEL = 2;
     
 public:
     bool initialize() {
-        pwm_ = EspPwm(LEDC_TIMER_2, LEDC_CHANNEL_0);
-        
-        if (!pwm_.EnsureInitialized()) {
+        // 🚀 Initialize RGB PWM controller
+        if (!rgb_pwm_.EnsureInitialized()) {
+            printf("❌ Failed to initialize RGB PWM\n");
             return false;
         }
         
-        // Configure for audio generation
-        hf_pwm_channel_config_t config;
-        config.gpio_pin = 27;           // Audio output pin
-        config.frequency_hz = AUDIO_FREQUENCY;
-        config.duty_cycle_percent = 50; // 50% duty cycle for audio
-        config.phase_degrees = 0;
-        config.polarity = hf_pwm_polarity_t::Normal;
-        config.resolution = hf_pwm_resolution_t::PWM_12BIT;
+        // 📡 Enable all RGB channels
+        const hf_channel_id_t channels[] = {RED_CHANNEL, GREEN_CHANNEL, BLUE_CHANNEL};
+        const char* colors[] = {"🔴 Red", "🟢 Green", "🔵 Blue"};
         
-        hf_pwm_err_t result = pwm_.ConfigureChannel(0, config);
-        if (result != hf_pwm_err_t::PWM_SUCCESS) {
-            printf("❌ Audio PWM configuration failed\n");
-            return false;
+        for (int i = 0; i < 3; i++) {
+            hf_pwm_err_t result = rgb_pwm_.EnableChannel(channels[i]);
+            if (result != hf_pwm_err_t::PWM_SUCCESS) {
+                printf("❌ Failed to enable %s channel: %s\n", colors[i], HfPwmErrToString(result));
+                return false;
+            }
+            
+            // 📻 Set frequency to 1kHz for all channels
+            result = rgb_pwm_.SetFrequency(channels[i], 1000);
+            if (result != hf_pwm_err_t::PWM_SUCCESS) {
+                printf("❌ Failed to set %s frequency: %s\n", colors[i], HfPwmErrToString(result));
+                return false;
+            }
         }
         
-        printf("✅ Audio generator initialized\n");
+        printf("🌈 RGB Controller initialized successfully\n");
         return true;
     }
     
-    void play_note(float frequency_hz, float duration_seconds) {
-        // Set frequency for the note
-        hf_pwm_err_t result = pwm_.SetFrequency(0, frequency_hz);
-        if (result != hf_pwm_err_t::PWM_SUCCESS) {
-            printf("❌ Frequency set failed: %s\n", HfPwmErrToString(result));
-            return;
-        }
-        
-        // Start playing
-        result = pwm_.StartChannel(0);
-        if (result != hf_pwm_err_t::PWM_SUCCESS) {
-            printf("❌ Audio start failed: %s\n", HfPwmErrToString(result));
-            return;
-        }
-        
-        printf("🎵 Playing %.1f Hz for %.1fs\n", frequency_hz, duration_seconds);
-        
-        // Play for specified duration
-        vTaskDelay(pdMS_TO_TICKS(duration_seconds * 1000));
-        
-        // Stop playing
-        pwm_.StopChannel(0);
-    }
-    
-    void play_melody(const std::vector<std::pair<float, float>>& notes) {
-        printf("🎼 Playing melody with %zu notes\n", notes.size());
-        
-        for (size_t i = 0; i < notes.size(); i++) {
-            float frequency = notes[i].first;
-            float duration = notes[i].second;
-            
-            printf("🎵 Note %zu: %.1f Hz for %.1fs\n", i + 1, frequency, duration);
-            play_note(frequency, duration);
-            
-            // Small pause between notes
-            vTaskDelay(pdMS_TO_TICKS(50));
-        }
-    }
-    
-    void play_scale() {
-        // C major scale frequencies
-        std::vector<float> frequencies = {
-            261.63f,  // C4
-            293.66f,  // D4
-            329.63f,  // E4
-            349.23f,  // F4
-            392.00f,  // G4
-            440.00f,  // A4
-            493.88f,  // B4
-            523.25f   // C5
+    void set_rgb_color(float red_percent, float green_percent, float blue_percent) {
+        // 🎨 Set RGB color components
+        struct {
+            hf_channel_id_t channel;
+            float value;
+            const char* name;
+            const char* emoji;
+        } components[] = {
+            {RED_CHANNEL, red_percent, "Red", "🔴"},
+            {GREEN_CHANNEL, green_percent, "Green", "🟢"},
+            {BLUE_CHANNEL, blue_percent, "Blue", "🔵"}
         };
         
-        std::vector<std::pair<float, float>> scale;
-        for (float freq : frequencies) {
-            scale.push_back({freq, 0.5f});  // 0.5 second per note
-        }
+        printf("🎨 Setting RGB color: R=%.1f%%, G=%.1f%%, B=%.1f%%\n", 
+               red_percent, green_percent, blue_percent);
         
-        play_melody(scale);
+        for (const auto& comp : components) {
+            hf_pwm_err_t result = rgb_pwm_.SetDutyCycle(comp.channel, comp.value);
+            if (result != hf_pwm_err_t::PWM_SUCCESS) {
+                printf("❌ Failed to set %s %s: %s\n", comp.emoji, comp.name, HfPwmErrToString(result));
+            }
+        }
+    }
+    
+    void color_demo() {
+        printf("🌈 Starting RGB color demo...\n");
+        
+        // 🔴 Pure red
+        set_rgb_color(100.0f, 0.0f, 0.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        
+        // 🟢 Pure green  
+        set_rgb_color(0.0f, 100.0f, 0.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        
+        // 🔵 Pure blue
+        set_rgb_color(0.0f, 0.0f, 100.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        
+        // 🟡 Yellow (red + green)
+        set_rgb_color(100.0f, 100.0f, 0.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        
+        // 🟣 Magenta (red + blue)
+        set_rgb_color(100.0f, 0.0f, 100.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        
+        // 🟦 Cyan (green + blue)
+        set_rgb_color(0.0f, 100.0f, 100.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        
+        // ⚪ White (all colors)
+        set_rgb_color(100.0f, 100.0f, 100.0f);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        
+        // ⚫ Off
+        set_rgb_color(0.0f, 0.0f, 0.0f);
+    }
+    
+    void rainbow_fade() {
+        printf("🌈 Starting rainbow fade effect...\n");
+        
+        // Start fade operations for smooth color transitions
+        rgb_pwm_.StartFade(RED_CHANNEL, 100.0f, 2000);
+        vTaskDelay(pdMS_TO_TICKS(500));
+        rgb_pwm_.StartFade(GREEN_CHANNEL, 100.0f, 2000);
+        vTaskDelay(pdMS_TO_TICKS(500));
+        rgb_pwm_.StartFade(BLUE_CHANNEL, 100.0f, 2000);
     }
 };
 ```
 
----
-
-## 🧪 **Best Practices**
-
-### ✅ **Recommended Patterns**
+### 🤖 Servo Motor Control
 
 ```cpp
-// ✅ Always check initialization
-if (!pwm.EnsureInitialized()) {
-    printf("❌ PWM initialization failed\n");
-    return false;
-}
+class ServoController {
+private:
+    EspPwm servo_pwm_;
+    hf_channel_id_t channel_;
+    static constexpr float SERVO_MIN_DUTY = 2.5f;   // 2.5% duty cycle (0 degrees)
+    static constexpr float SERVO_MAX_DUTY = 12.5f;  // 12.5% duty cycle (180 degrees)
+    static constexpr hf_frequency_hz_t SERVO_FREQ = 50; // 50Hz for standard servos
+    
+public:
+    ServoController(hf_channel_id_t channel) : channel_(channel) {}
+    
+    bool initialize() {
+        // 🚀 Initialize servo PWM
+        if (!servo_pwm_.EnsureInitialized()) {
+            printf("❌ Failed to initialize servo PWM\n");
+            return false;
+        }
+        
+        // 📡 Enable servo channel
+        hf_pwm_err_t result = servo_pwm_.EnableChannel(channel_);
+        if (result != hf_pwm_err_t::PWM_SUCCESS) {
+            printf("❌ Failed to enable servo channel: %s\n", HfPwmErrToString(result));
+            return false;
+        }
+        
+        // 📻 Set servo frequency to 50Hz
+        result = servo_pwm_.SetFrequency(channel_, SERVO_FREQ);
+        if (result != hf_pwm_err_t::PWM_SUCCESS) {
+            printf("❌ Failed to set servo frequency: %s\n", HfPwmErrToString(result));
+            return false;
+        }
+        
+        // 🎯 Set to center position (90 degrees)
+        set_angle(90.0f);
+        
+        printf("🤖 Servo controller initialized on channel %u\n", channel_);
+        return true;
+    }
+    
+    void set_angle(float angle_degrees) {
+        // 🎯 Convert angle to PWM duty cycle
+        // Servo range: 0-180 degrees maps to 2.5%-12.5% duty cycle
+        if (angle_degrees < 0.0f) angle_degrees = 0.0f;
+        if (angle_degrees > 180.0f) angle_degrees = 180.0f;
+        
+        float duty_percent = SERVO_MIN_DUTY + (angle_degrees / 180.0f) * (SERVO_MAX_DUTY - SERVO_MIN_DUTY);
+        
+        hf_pwm_err_t result = servo_pwm_.SetDutyCycle(channel_, duty_percent);
+        if (result == hf_pwm_err_t::PWM_SUCCESS) {
+            printf("🤖 Servo angle set to %.1f° (%.2f%% duty)\n", angle_degrees, duty_percent);
+        } else {
+            printf("❌ Failed to set servo angle: %s\n", HfPwmErrToString(result));
+        }
+    }
+    
+    void smooth_move_to(float target_angle, hf_time_t move_time_ms) {
+        // 🌟 Smooth movement to target angle
+        float current_duty, target_duty;
+        servo_pwm_.GetDutyCycle(channel_, current_duty);
+        
+        // Calculate target duty cycle
+        if (target_angle < 0.0f) target_angle = 0.0f;
+        if (target_angle > 180.0f) target_angle = 180.0f;
+        target_duty = SERVO_MIN_DUTY + (target_angle / 180.0f) * (SERVO_MAX_DUTY - SERVO_MIN_DUTY);
+        
+        hf_pwm_err_t result = servo_pwm_.StartFade(channel_, target_duty, move_time_ms);
+        if (result == hf_pwm_err_t::PWM_SUCCESS) {
+            printf("🌟 Servo smoothly moving to %.1f° over %u ms\n", target_angle, move_time_ms);
+        } else {
+            printf("❌ Failed to start smooth movement: %s\n", HfPwmErrToString(result));
+        }
+    }
+    
+    void sweep_demo() {
+        printf("🔄 Starting servo sweep demo...\n");
+        
+        // 🔄 Sweep from 0 to 180 degrees
+        for (float angle = 0.0f; angle <= 180.0f; angle += 30.0f) {
+            set_angle(angle);
+            vTaskDelay(pdMS_TO_TICKS(1000));
+        }
+        
+        // 🔄 Sweep back from 180 to 0 degrees
+        for (float angle = 180.0f; angle >= 0.0f; angle -= 30.0f) {
+            set_angle(angle);
+            vTaskDelay(pdMS_TO_TICKS(1000));
+        }
+        
+        // 🎯 Return to center
+        set_angle(90.0f);
+    }
+};
+```
 
-// ✅ Validate parameters before setting
-float frequency = 20000;  // 20 kHz
-if (frequency < 1000 || frequency > 50000) {
-    printf("❌ Frequency out of range\n");
-    return;
-}
+## 📊 Performance and Diagnostics
 
-// ✅ Handle configuration errors gracefully
-hf_pwm_err_t result = pwm.ConfigureChannel(channel_id, config);
-if (result != hf_pwm_err_t::PWM_SUCCESS) {
-    printf("⚠️ Configuration error: %s\n", HfPwmErrToString(result));
-    // Implement error recovery or fallback
-}
+### 📈 Statistics Monitoring
 
-// ✅ Check channel status before operations
-hf_pwm_channel_status_t status;
-if (pwm.GetChannelStatus(channel_id, status) == hf_pwm_err_t::PWM_SUCCESS) {
-    if (!status.is_configured) {
-        printf("⚠️ Channel not configured\n");
-        return;
+```cpp
+void monitor_pwm_performance(BasePwm& pwm) {
+    hf_pwm_statistics_t stats;
+    hf_pwm_err_t result = pwm.GetStatistics(stats);
+    
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
+        printf("📊 PWM Performance Statistics:\n");
+        printf("   🔄 Duty Updates: %u\n", stats.duty_updates_count);
+        printf("   📻 Frequency Changes: %u\n", stats.frequency_changes_count);
+        printf("   🌟 Fade Operations: %u\n", stats.fade_operations_count);
+        printf("   ✅ Channel Enables: %u\n", stats.channel_enables_count);
+        printf("   ❌ Channel Disables: %u\n", stats.channel_disables_count);
+        printf("   ⚠️ Total Errors: %u\n", stats.error_count);
     }
 }
+```
 
-// ✅ Use appropriate frequency ranges
-// Motor control: 1-50 kHz
-// LED dimming: 100 Hz-1 kHz
-// Audio: 20 Hz-20 kHz
+## 🛡️ Error Handling Best Practices
 
-// ✅ Monitor statistics for system health
-hf_pwm_statistics_t stats;
-if (pwm.GetStatistics(stats) == hf_pwm_err_t::PWM_SUCCESS) {
-    if (stats.runtime_errors > 10) {
-        printf("⚠️ High PWM error rate detected\n");
+### 🎯 Comprehensive Error Checking
+
+```cpp
+hf_pwm_err_t safe_set_duty_cycle(BasePwm& pwm, hf_channel_id_t channel, float duty) {
+    // ✅ Validate duty cycle range
+    if (duty < 0.0f || duty > 100.0f) {
+        printf("❌ Invalid duty cycle: %.2f%% (must be 0-100%%)\n", duty);
+        return hf_pwm_err_t::PWM_ERR_DUTY_OUT_OF_RANGE;
     }
+    
+    // ✅ Check if channel is available
+    if (!pwm.IsChannelAvailable(channel)) {
+        printf("❌ Channel %u not available\n", channel);
+        return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+    }
+    
+    // ✅ Ensure PWM is initialized
+    if (!pwm.EnsureInitialized()) {
+        printf("❌ Failed to initialize PWM\n");
+        return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+    }
+    
+    // ✅ Enable channel if not already enabled
+    if (!pwm.IsChannelEnabled(channel)) {
+        hf_pwm_err_t result = pwm.EnableChannel(channel);
+        if (result != hf_pwm_err_t::PWM_SUCCESS) {
+            printf("❌ Failed to enable channel %u: %s\n", channel, HfPwmErrToString(result));
+            return result;
+        }
+    }
+    
+    // 🎛️ Set duty cycle
+    return pwm.SetDutyCycle(channel, duty);
 }
 ```
 
-### ❌ **Common Pitfalls**
+## 🏎️ Performance Considerations
 
-```cpp
-// ❌ Don't ignore initialization
-pwm.SetDutyCycle(0, 50);  // May fail silently
+### ⚡ Optimization Tips
 
-// ❌ Don't use invalid frequency ranges
-pwm.SetFrequency(0, 0.1f);    // Too low
-pwm.SetFrequency(0, 1000000); // Too high
+- **🔢 Channel Limits** - Check `GetMaxChannels()` before allocating channels
+- **📻 Frequency Ranges** - Respect hardware frequency limitations
+- **🎯 Resolution Trade-offs** - Higher frequencies may reduce duty cycle resolution
+- **🌟 Fade Performance** - Hardware-based fading is faster than software loops
+- **💾 Memory Usage** - Use lazy initialization to save memory
 
-// ❌ Don't use invalid duty cycles
-pwm.SetDutyCycle(0, -10);  // Negative duty cycle
-pwm.SetDutyCycle(0, 150);  // Over 100%
+### 📊 Typical Performance Ranges
 
-// ❌ Don't assume all channels are available
-pwm.ConfigureChannel(99, config);  // Invalid channel
+| **Hardware** | **Channels** | **Frequency Range** | **Resolution** |
+|--------------|--------------|---------------------|----------------|
+| **ESP32-C6 LEDC** | 8 | 1Hz - 40MHz | 1-20 bits |
+| **External PWM ICs** | 4-16 | 1Hz - 1.5MHz | 8-16 bits |
+| **Motor Controllers** | 2-6 | 1kHz - 100kHz | 10-16 bits |
 
-// ❌ Don't forget to stop channels when done
-pwm.StartChannel(0);
-// Missing: pwm.StopChannel(0);
+## 🧵 Thread Safety
 
-// ❌ Don't use without error checking in critical applications
-// Always check return values in safety-critical systems
-```
+The `BasePwm` class is **not thread-safe**. For concurrent access, use appropriate synchronization or consider thread-safe wrapper implementations.
 
-### 🎯 **Performance Optimization**
+## 🔗 Related Documentation
 
-```cpp
-// 🚀 Use appropriate resolution for application
-// 8-bit: 256 levels, good for LED dimming
-// 12-bit: 4096 levels, good for motor control
-// 16-bit: 65536 levels, high precision applications
-
-// 🚀 Minimize frequency changes for efficiency
-// Set frequency once, then only change duty cycle
-
-// 🚀 Use hardware-accelerated PWM when available
-// ESP32 LEDC provides hardware PWM generation
-
-// 🚀 Batch operations for multiple channels
-// Configure all channels before starting
-
-// 🚀 Use appropriate polarity for your application
-// Normal: Idle low, active high
-// Inverted: Idle high, active low
-```
-
----
-
-## 🔗 **Related Documentation**
-
-- [🔒 **SfPwm**](SfPwm.md) - Thread-safe PWM wrapper
-- [⚙️ **EspPwm**](EspPwm.md) - ESP32-C6 implementation
-- [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
+- **[EspPwm API Reference](EspPwm.md)** - ESP32-C6 PWM implementation
+- **[BaseGpio API Reference](BaseGpio.md)** - GPIO interface for PWM output pins
+- **[HardwareTypes Reference](HardwareTypes.md)** - Platform-agnostic type definitions
 
 ---
 
 <div align="center">
 
-**⚡ BasePwm - Precision Pulse-Width Modulation for HardFOC**
+**🎛️ BasePwm - Powering Precise Control in HardFOC Systems** 🚀
 
-*Part of the HardFOC Internal Interface Wrapper Documentation*
+*From motor control to LED artistry - BasePwm delivers the precision you need* ⚡
 
 </div> 
