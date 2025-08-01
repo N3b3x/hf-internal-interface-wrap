@@ -26,7 +26,8 @@ set(HF_ESP32_SRCS
     "${SRC_ROOT}/src/mcu/esp32/EspPwm.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspSpi.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspUart.cpp"
-    "${SRC_ROOT}/src/mcu/esp32/EspBluetooth.cpp"    # ESP32C6 NimBLE Bluetooth implementation
+    # Temporarily disabled due to NimBLE header compilation issues in CI
+    # "${SRC_ROOT}/src/mcu/esp32/EspBluetooth.cpp"    # ESP32C6 NimBLE Bluetooth implementation
     # Temporarily excluded due to missing dependencies:
     "${SRC_ROOT}/src/mcu/esp32/EspAdc.cpp"          # Missing esp_adc headers for ESP32-C6
       
@@ -96,9 +97,6 @@ idf_component_register(
         esp_netif
         esp_event
         lwip
-        
-        # Bluetooth components (available on most ESP32 targets)
-        bt
         
         # Storage components
         nvs_flash

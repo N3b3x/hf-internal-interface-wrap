@@ -122,6 +122,8 @@
 #else
 #define NIMBLE_HEADERS_AVAILABLE 0
 #endif
+#else
+#define NIMBLE_HEADERS_AVAILABLE 0
 #endif
 
 #if HAS_BLUEDROID_SUPPORT
@@ -206,8 +208,10 @@ private:
     hf_bluetooth_err_t StopScanning();
     
     // Address conversion utilities
+#if NIMBLE_HEADERS_AVAILABLE
     static void ConvertBleAddr(const ble_addr_t* ble_addr, hf_bluetooth_address_t& hf_addr);
     static void ConvertHfAddr(const hf_bluetooth_address_t& hf_addr, ble_addr_t* ble_addr);
+#endif
 #endif
 
 #if HAS_BLUEDROID_SUPPORT

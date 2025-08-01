@@ -29,7 +29,12 @@
 
 static const char* TAG = "EspBluetooth";
 
-#if HAS_NIMBLE_SUPPORT
+// Define fallback when NimBLE headers are not available
+#if HAS_NIMBLE_SUPPORT && !defined(NIMBLE_HEADERS_AVAILABLE)
+#define NIMBLE_HEADERS_AVAILABLE 0
+#endif
+
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
 // Static instance for NimBLE callbacks
 EspBluetooth* EspBluetooth::s_instance = nullptr;
 
