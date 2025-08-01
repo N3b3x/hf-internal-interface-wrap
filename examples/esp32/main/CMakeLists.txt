@@ -50,9 +50,23 @@ endif()
 
 message(STATUS "Using source file: ${SOURCE_FILE_PATH}")
 
+# Determine include paths based on environment
+# In CI, inc is copied to ../inc, in development it's at ../../../inc
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../inc")
+    # CI environment - inc is at project level
+    set(INC_BASE_PATH "../inc")
+elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../../../inc")
+    # Development environment - inc is at workspace root
+    set(INC_BASE_PATH "../../../inc")
+else()
+    message(FATAL_ERROR "Cannot find inc directory. Checked ../inc and ../../../inc")
+endif()
+
+message(STATUS "Using include base path: ${INC_BASE_PATH}")
+
 idf_component_register(
     SRCS "${MAIN_SOURCE}"
-    INCLUDE_DIRS "." "../../../inc" "../../../inc/base" "../../../inc/mcu/esp32"
+    INCLUDE_DIRS "." "${INC_BASE_PATH}" "${INC_BASE_PATH}/base" "${INC_BASE_PATH}/mcu/esp32"
     REQUIRES driver esp_timer freertos iid-espidf
 )
 
