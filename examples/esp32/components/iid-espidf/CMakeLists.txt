@@ -26,6 +26,7 @@ set(HF_ESP32_SRCS
     "${SRC_ROOT}/src/mcu/esp32/EspPwm.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspSpi.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspUart.cpp"
+    "${SRC_ROOT}/src/mcu/esp32/EspBluetooth.cpp"    # ESP32C6 NimBLE Bluetooth implementation
     # Temporarily excluded due to missing dependencies:
     "${SRC_ROOT}/src/mcu/esp32/EspAdc.cpp"          # Missing esp_adc headers for ESP32-C6
       
@@ -96,6 +97,9 @@ idf_component_register(
         esp_event
         lwip
         
+        # Bluetooth components (available on most ESP32 targets)
+        bt
+        
         # Storage components
         nvs_flash
         nvs_sec_provider
@@ -150,6 +154,41 @@ else()
         HF_MCU_FAMILY_ESP32=1
         HF_THREAD_SAFE=1
         ESP32=1
+    )
+endif()
+
+# Add target-specific Bluetooth support definitions
+if(CONFIG_IDF_TARGET_ESP32C6)
+    message(STATUS "Configuring ESP32C6 with NimBLE BLE-only support")
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HAS_BLE_SUPPORT=1
+        HAS_NIMBLE_SUPPORT=1
+        HAS_CLASSIC_BLUETOOTH=0
+        CONFIG_BT_NIMBLE_ENABLED=1
+    )
+elseif(CONFIG_IDF_TARGET_ESP32 OR CONFIG_IDF_TARGET_ESP32S3)
+    message(STATUS "Configuring ${CONFIG_IDF_TARGET} with full Bluetooth support")
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HAS_BLE_SUPPORT=1
+        HAS_CLASSIC_BLUETOOTH=1
+        HAS_NIMBLE_SUPPORT=1
+        HAS_BLUEDROID_SUPPORT=1
+    )
+elseif(CONFIG_IDF_TARGET_ESP32C3 OR CONFIG_IDF_TARGET_ESP32H2)
+    message(STATUS "Configuring ${CONFIG_IDF_TARGET} with BLE-only support")
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HAS_BLE_SUPPORT=1
+        HAS_CLASSIC_BLUETOOTH=0
+        HAS_NIMBLE_SUPPORT=0
+        HAS_BLUEDROID_SUPPORT=1
+    )
+elseif(CONFIG_IDF_TARGET_ESP32S2)
+    message(STATUS "ESP32S2 has no Bluetooth support")
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HAS_BLE_SUPPORT=0
+        HAS_CLASSIC_BLUETOOTH=0
+        HAS_NIMBLE_SUPPORT=0
+        HAS_BLUEDROID_SUPPORT=0
     )
 endif()
 

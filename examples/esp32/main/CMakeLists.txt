@@ -52,7 +52,7 @@ message(STATUS "Using source file: ${SOURCE_FILE_PATH}")
 
 idf_component_register(
     SRCS "${MAIN_SOURCE}"
-    INCLUDE_DIRS "." "../../common"
+    INCLUDE_DIRS "." "../../../inc" "../../../inc/base" "../../../inc/mcu/esp32"
     REQUIRES driver esp_timer freertos iid-espidf
 )
 
