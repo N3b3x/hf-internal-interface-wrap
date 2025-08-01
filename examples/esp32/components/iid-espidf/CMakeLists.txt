@@ -121,32 +121,11 @@ idf_component_register(
 # Set C++ standard
 target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_17)
 
-# Add NimBLE include directories when Bluetooth is enabled and available
+# Debug Bluetooth configuration
 if(CONFIG_BT_NIMBLE_ENABLED)
-    # Try multiple possible NimBLE include paths for different ESP-IDF versions
-    set(NIMBLE_PATHS "")
-    
-    # Common NimBLE paths in ESP-IDF
-    foreach(path IN ITEMS
-        "${IDF_PATH}/components/bt/host/nimble/nimble/porting/nimble/include"
-        "${IDF_PATH}/components/bt/host/nimble/nimble/include"
-        "${IDF_PATH}/components/bt/host/nimble/port/include"
-        "${IDF_PATH}/components/bt/host/nimble/esp-hci/include"
-        "${IDF_PATH}/components/bt/host/nimble/nimble/porting/npl/freertos/include"
-    )
-        if(EXISTS "${path}")
-            list(APPEND NIMBLE_PATHS "${path}")
-            message(STATUS "✓ Found NimBLE include path: ${path}")
-        endif()
-    endforeach()
-    
-    if(NIMBLE_PATHS)
-        target_include_directories(${COMPONENT_LIB} PRIVATE ${NIMBLE_PATHS})
-        list(LENGTH NIMBLE_PATHS NIMBLE_COUNT)
-        message(STATUS "✓ Added ${NIMBLE_COUNT} NimBLE include directories")
-    else()
-        message(WARNING "✗ No NimBLE include paths found - Bluetooth headers may not be available")
-    endif()
+    message(STATUS "NimBLE is enabled in configuration")
+else()
+    message(STATUS "NimBLE is NOT enabled in configuration")
 endif()
 
 # Add ESP32 family definitions based on target

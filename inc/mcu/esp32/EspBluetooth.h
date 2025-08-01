@@ -101,6 +101,9 @@
 
 #if HAS_NIMBLE_SUPPORT
 // NimBLE headers for ESP32C6 (ESP-IDF v5.5+)
+// Check if NimBLE headers are actually available
+#ifdef CONFIG_BT_NIMBLE_ENABLED
+#if __has_include("nimble/nimble_port.h")
 #include "nimble/nimble_port.h"
 #include "nimble/nimble_port_freertos.h"
 #include "host/ble_hs.h"
@@ -111,6 +114,14 @@
 #include "host/util/util.h"
 #include "services/gap/ble_svc_gap.h"
 #include "services/gatt/ble_svc_gatt.h"
+#define NIMBLE_HEADERS_AVAILABLE 1
+#else
+#warning "NimBLE enabled but headers not found - disabling NimBLE functionality"
+#define NIMBLE_HEADERS_AVAILABLE 0
+#endif
+#else
+#define NIMBLE_HEADERS_AVAILABLE 0
+#endif
 #endif
 
 #if HAS_BLUEDROID_SUPPORT
