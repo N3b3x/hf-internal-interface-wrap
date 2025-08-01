@@ -121,6 +121,15 @@ idf_component_register(
 # Set C++ standard
 target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_17)
 
+# Add NimBLE include directories when Bluetooth is enabled
+if(CONFIG_BT_NIMBLE_ENABLED)
+    target_include_directories(${COMPONENT_LIB} PRIVATE
+        "${IDF_PATH}/components/bt/host/nimble/nimble/include"
+        "${IDF_PATH}/components/bt/host/nimble/nimble/porting/nimble/include"
+        "${IDF_PATH}/components/bt/host/nimble/port/include"
+    )
+endif()
+
 # Add ESP32 family definitions based on target
 if(CONFIG_IDF_TARGET_ESP32)
     target_compile_definitions(${COMPONENT_LIB} PUBLIC
