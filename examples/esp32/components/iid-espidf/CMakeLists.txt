@@ -26,7 +26,8 @@ set(HF_ESP32_SRCS
     "${SRC_ROOT}/src/mcu/esp32/EspPwm.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspSpi.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspUart.cpp"
-    "${SRC_ROOT}/src/mcu/esp32/EspBluetooth.cpp"    # ESP32C6 NimBLE Bluetooth implementation
+    # Temporarily disabled due to NimBLE header issues in CI
+    # "${SRC_ROOT}/src/mcu/esp32/EspBluetooth.cpp"    # ESP32C6 NimBLE Bluetooth implementation
     # Temporarily excluded due to missing dependencies:
     "${SRC_ROOT}/src/mcu/esp32/EspAdc.cpp"          # Missing esp_adc headers for ESP32-C6
       
@@ -97,8 +98,8 @@ idf_component_register(
         esp_event
         lwip
         
-        # Bluetooth components (available on most ESP32 targets)
-        bt
+        # Bluetooth components (available on most ESP32 targets) - temporarily disabled
+        # bt
         
         # Storage components
         nvs_flash
@@ -120,15 +121,6 @@ idf_component_register(
 
 # Set C++ standard
 target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_17)
-
-# Add NimBLE include directories when Bluetooth is enabled
-if(CONFIG_BT_NIMBLE_ENABLED)
-    target_include_directories(${COMPONENT_LIB} PRIVATE
-        "${IDF_PATH}/components/bt/host/nimble/nimble/include"
-        "${IDF_PATH}/components/bt/host/nimble/nimble/porting/nimble/include"
-        "${IDF_PATH}/components/bt/host/nimble/port/include"
-    )
-endif()
 
 # Add ESP32 family definitions based on target
 if(CONFIG_IDF_TARGET_ESP32)
