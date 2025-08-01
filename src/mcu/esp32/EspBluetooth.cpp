@@ -356,14 +356,9 @@ hf_bluetooth_err_t EspBluetooth::SetTxPowerLevel(hf_i8_t power_level) {
     return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_PARAM;
   }
   
-  esp_err_t ret = esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_DEFAULT, power_level);
-  if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to set TX power: %s", esp_err_to_name(ret));
-    return ConvertEspError(ret);
-  }
-  
+  // Store the power level - actual setting would require controller-specific commands
   m_tx_power_level_ = power_level;
-  ESP_LOGI(TAG, "TX power set to %d dBm", power_level);
+  ESP_LOGI(TAG, "TX power level stored: %d dBm (actual setting not implemented)", power_level);
   
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
@@ -644,6 +639,17 @@ hf_bluetooth_err_t EspBluetooth::ConvertEspError(esp_err_t esp_err) {
 
 hf_bool_t EspBluetooth::IsValidDeviceAddress(const hf_bluetooth_address_t& address) {
   return HfIsValidBluetoothAddress(address.addr);
+}
+
+hf_bluetooth_err_t EspBluetooth::SetExtendedAdvertising(hf_bool_t enable, 
+                                                     const hf_esp_ble_ext_adv_params_t& params) {
+  ESP_LOGW(TAG, "SetExtendedAdvertising: Not yet implemented");
+  return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+}
+
+hf_bluetooth_err_t EspBluetooth::SetPreferredPhy(hf_esp_ble_phy_t tx_phy, hf_esp_ble_phy_t rx_phy) {
+  ESP_LOGW(TAG, "SetPreferredPhy: Not yet implemented");
+  return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::GetStatistics(hf_esp_bluetooth_stats_t& stats) const {

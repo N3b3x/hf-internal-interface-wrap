@@ -23,16 +23,14 @@
 extern "C" {
 #endif
 
-#include "esp_bt.h"
-#include "esp_gap_ble_api.h"
-#include "esp_gattc_api.h"
-#include "esp_gatts_api.h"
-#include "esp_bt_main.h"
+// Only include NimBLE headers that are available on ESP32-C6
 #include "nimble/nimble_port.h"
 #include "nimble/nimble_port_freertos.h"
 #include "host/ble_hs.h"
 #include "host/ble_gap.h"
 #include "host/ble_gatt.h"
+#include "host/util/util.h"
+#include "host/ble_store.h"
 
 #ifdef __cplusplus
 }
