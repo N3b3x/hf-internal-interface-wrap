@@ -34,6 +34,8 @@ set(COMPONENT_REQUIRES
     esp_wifi
     bt
     nvs_flash
+    # NimBLE dependencies for Bluetooth
+    nimble
 )
 
 # Optional dependencies
@@ -42,6 +44,9 @@ set(COMPONENT_PRIV_REQUIRES
     esp_event
     esp_timer
     lwip
+    # Additional WiFi dependencies
+    esp_smartconfig
+    esp_wps
 )
 
 # Register the component
