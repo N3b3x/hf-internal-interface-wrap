@@ -69,16 +69,16 @@ EspBluetooth::EspBluetooth()
     s_instance = this;
 #endif
     
-    // Initialize scan configuration defaults
-    m_scan_config.duration_ms = DEFAULT_SCAN_DURATION_MS;
-    m_scan_config.type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE;
-    m_scan_config.mode = hf_bluetooth_scan_mode_t::HF_BLUETOOTH_SCAN_MODE_LE_GENERAL;
-    
-    // Initialize advertising configuration defaults  
-    m_adv_config.interval_min_ms = 100;
-    m_adv_config.interval_max_ms = 200;
-    m_adv_config.connectable = true;
-    m_adv_config.discoverable = true;
+    // Initialize BLE configuration defaults
+    m_ble_config.device_name = "ESP32C6-HardFOC";
+    m_ble_config.advertising = false;
+    m_ble_config.scannable = true;
+    m_ble_config.connectable = true;
+    m_ble_config.advertising_interval_ms = 100;
+    m_ble_config.scan_interval_ms = 100;
+    m_ble_config.scan_window_ms = 50;
+    m_ble_config.scan_type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE;
+    m_ble_config.security = hf_bluetooth_security_t::HF_BLUETOOTH_SECURITY_NONE;
 }
 
 // Destructor
@@ -109,7 +109,7 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
     if (mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE &&
         mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
         ESP_LOGE(TAG, "ESP32C6 only supports BLE mode");
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_PARAMETER;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_INVALID_PARAM;
     }
     
     // Initialize NVS (required for BLE)
@@ -313,15 +313,12 @@ hf_bluetooth_mode_t EspBluetooth::GetMode() const {
 hf_bluetooth_err_t EspBluetooth::InitializeNimBLE() {
     ESP_LOGI(TAG, "Initializing NimBLE for ESP32C6");
     
-    // Initialize ESP HCI controller
-    esp_err_t ret = esp_nimble_hci_init();
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to initialize NimBLE HCI: %s", esp_err_to_name(ret));
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_HARDWARE_FAILURE;
+    // Initialize NimBLE port
+    int ret = nimble_port_init();
+    if (ret != 0) {
+        ESP_LOGE(TAG, "Failed to initialize NimBLE port: %d", ret);
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
-    
-    // Initialize NimBLE host
-    nimble_port_init();
     
     // Initialize BLE services
     ble_svc_gap_init();
@@ -331,7 +328,7 @@ hf_bluetooth_err_t EspBluetooth::InitializeNimBLE() {
     ret = ble_svc_gap_device_name_set(reinterpret_cast<const char*>(DEVICE_NAME));
     if (ret != 0) {
         ESP_LOGE(TAG, "Failed to set device name: %d", ret);
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     // Configure security
@@ -351,11 +348,8 @@ hf_bluetooth_err_t EspBluetooth::InitializeNimBLE() {
 hf_bluetooth_err_t EspBluetooth::DeinitializeNimBLE() {
     ESP_LOGI(TAG, "Deinitializing NimBLE");
     
-    esp_err_t ret = esp_nimble_hci_deinit();
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to deinitialize NimBLE HCI: %s", esp_err_to_name(ret));
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_HARDWARE_FAILURE;
-    }
+    // NimBLE port deinitialization is handled automatically
+    // when the NimBLE host is deinitialized
     
     ESP_LOGI(TAG, "NimBLE deinitialized successfully");
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
@@ -382,10 +376,10 @@ int EspBluetooth::GapEventHandler(struct ble_gap_event *event, void *arg) {
                 hf_bluetooth_address_t addr;
                 ConvertBleAddr(&desc.peer_id_addr, addr);
                 
-                hf_bluetooth_device_info_t device_info;
-                device_info.address = addr;
-                device_info.rssi = 0; // Will be updated later
-                device_info.connection_state = hf_bluetooth_connection_state_t::HF_BLUETOOTH_CONNECTION_STATE_CONNECTED;
+                            hf_bluetooth_device_info_t device_info;
+            device_info.address = addr;
+            device_info.rssi = 0; // Will be updated later
+            device_info.is_connected = true;
                 
                 std::lock_guard<std::mutex> lock(s_instance->m_device_mutex);
                 std::string addr_str = s_instance->AddressToString(addr);
@@ -431,7 +425,7 @@ int EspBluetooth::GapEventHandler(struct ble_gap_event *event, void *arg) {
             hf_bluetooth_device_info_t device_info;
             device_info.address = addr;
             device_info.rssi = event->disc.rssi;
-            device_info.connection_state = hf_bluetooth_connection_state_t::HF_BLUETOOTH_CONNECTION_STATE_DISCONNECTED;
+            device_info.is_connected = false;
             
             // Extract device name from advertising data
             const uint8_t *name_data = nullptr;
@@ -511,7 +505,7 @@ void EspBluetooth::ConvertHfAddr(const hf_bluetooth_address_t& hf_addr, ble_addr
 
 // ========== Device Management ==========
 
-hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address) {
+hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address) const {
     if (!m_initialized) {
         return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_INITIALIZED;
     }
@@ -521,7 +515,7 @@ hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address
     int ret = ble_hs_id_copy_addr(BLE_ADDR_PUBLIC, addr, nullptr);
     if (ret != 0) {
         ESP_LOGE(TAG, "Failed to get local address: %d", ret);
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     memcpy(address.addr, addr, 6);
@@ -532,7 +526,7 @@ hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address
     esp_err_t ret = esp_bt_dev_get_address(bd_addr);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to get local address: %s", esp_err_to_name(ret));
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     memcpy(address.addr, bd_addr, 6);
@@ -552,7 +546,7 @@ hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
     int ret = ble_svc_gap_device_name_set(name.c_str());
     if (ret != 0) {
         ESP_LOGE(TAG, "Failed to set device name: %d", ret);
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
@@ -561,7 +555,7 @@ hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
     esp_err_t ret = esp_bt_dev_set_device_name(name.c_str());
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to set device name: %s", esp_err_to_name(ret));
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
@@ -571,46 +565,45 @@ hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
 #endif
 }
 
-hf_bluetooth_err_t EspBluetooth::GetDeviceName(std::string& name) {
+std::string EspBluetooth::GetDeviceName() const {
     if (!m_initialized) {
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_INITIALIZED;
+        return "";
     }
     
 #if HAS_NIMBLE_SUPPORT
     const char* device_name = ble_svc_gap_device_name();
     if (device_name) {
-        name = std::string(device_name);
-        return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
+        return std::string(device_name);
     }
     
     ESP_LOGE(TAG, "Failed to get device name");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+    return "";
     
 #elif HAS_BLUEDROID_SUPPORT
     // Bluedroid doesn't have a direct get function, use stored name
-    name = std::string(reinterpret_cast<const char*>(DEVICE_NAME));
-    return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
+    return std::string(reinterpret_cast<const char*>(DEVICE_NAME));
     
 #else
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
+    return "";
 #endif
 }
 
 // ========== Discovery and Scanning ==========
 
-hf_bluetooth_err_t EspBluetooth::StartScan(const hf_bluetooth_scan_config_t& config) {
+hf_bluetooth_err_t EspBluetooth::StartScan(uint32_t duration_ms, hf_bluetooth_scan_type_t type) {
     if (!m_enabled) {
         return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_ENABLED;
     }
     
-    m_scan_config = config;
+    // Use provided duration or default
+    // uint32_t scan_duration = (duration_ms > 0) ? duration_ms : DEFAULT_SCAN_DURATION_MS;
     
 #if HAS_NIMBLE_SUPPORT
     return StartScanning();
 #elif HAS_BLUEDROID_SUPPORT
     // Implement Bluedroid scanning
     esp_ble_scan_params_t scan_params = {
-        .scan_type = (config.type == hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) ? 
+        .scan_type = (type == hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) ? 
                      BLE_SCAN_TYPE_ACTIVE : BLE_SCAN_TYPE_PASSIVE,
         .own_addr_type = BLE_ADDR_TYPE_PUBLIC,
         .scan_filter_policy = BLE_SCAN_FILTER_ALLOW_ALL,
@@ -622,13 +615,13 @@ hf_bluetooth_err_t EspBluetooth::StartScan(const hf_bluetooth_scan_config_t& con
     esp_err_t ret = esp_ble_gap_set_scan_params(&scan_params);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to set scan params: %s", esp_err_to_name(ret));
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
-    ret = esp_ble_gap_start_scanning(config.duration_ms / 1000);
+    ret = esp_ble_gap_start_scanning(scan_duration / 1000);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to start scanning: %s", esp_err_to_name(ret));
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     m_state = hf_bluetooth_state_t::HF_BLUETOOTH_STATE_SCANNING;
@@ -646,17 +639,17 @@ hf_bluetooth_err_t EspBluetooth::StartScanning() {
     struct ble_gap_disc_params disc_params = {
         .itvl = BLE_GAP_SCAN_ITVL_MS(100),
         .window = BLE_GAP_SCAN_WIN_MS(100),
-        .filter_policy = BLE_GAP_SCAN_FLT_NO_WL,
-        .limited = (m_scan_config.mode == hf_bluetooth_scan_mode_t::HF_BLUETOOTH_SCAN_MODE_LE_LIMITED) ? 1 : 0,
-        .passive = (m_scan_config.type == hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_PASSIVE) ? 1 : 0,
+        .filter_policy = BLE_HCI_SCAN_FILT_NO_WL,
+        .limited = static_cast<uint8_t>((m_ble_config.scan_type == hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) ? 0 : 1),
+        .passive = static_cast<uint8_t>((m_ble_config.scan_type == hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_PASSIVE) ? 1 : 0),
         .filter_duplicates = 0
     };
     
-    int ret = ble_gap_disc(m_addr_type, m_scan_config.duration_ms, 
+    int ret = ble_gap_disc(m_addr_type, DEFAULT_SCAN_DURATION_MS, 
                           &disc_params, GapEventHandler, nullptr);
     if (ret != 0) {
         ESP_LOGE(TAG, "Failed to start BLE discovery: %d", ret);
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     m_state = hf_bluetooth_state_t::HF_BLUETOOTH_STATE_SCANNING;
@@ -670,7 +663,7 @@ hf_bluetooth_err_t EspBluetooth::StopScanning() {
     int ret = ble_gap_disc_cancel();
     if (ret != 0 && ret != BLE_HS_EALREADY) {
         ESP_LOGE(TAG, "Failed to stop BLE discovery: %d", ret);
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     if (m_state == hf_bluetooth_state_t::HF_BLUETOOTH_STATE_SCANNING) {
@@ -694,7 +687,7 @@ hf_bluetooth_err_t EspBluetooth::StopScan() {
     esp_err_t ret = esp_ble_gap_stop_scanning();
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to stop scanning: %s", esp_err_to_name(ret));
-        return hf_bluetooth_err_t::BLUETOOTH_ERR_OPERATION_FAILED;
+        return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
     }
     
     m_state = hf_bluetooth_state_t::HF_BLUETOOTH_STATE_ENABLED;
@@ -726,14 +719,14 @@ hf_bluetooth_err_t EspBluetooth::ClearDiscoveredDevices() {
 // ========== Stub implementations for required methods ==========
 // Note: These would be fully implemented based on specific requirements
 
-hf_bluetooth_err_t EspBluetooth::StartAdvertising(const hf_bluetooth_adv_config_t& config) {
+hf_bluetooth_err_t EspBluetooth::StartAdvertising() {
     ESP_LOGW(TAG, "StartAdvertising not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::StopAdvertising() {
     ESP_LOGW(TAG, "StopAdvertising not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 bool EspBluetooth::IsAdvertising() const {
@@ -742,12 +735,12 @@ bool EspBluetooth::IsAdvertising() const {
 
 hf_bluetooth_err_t EspBluetooth::Connect(const hf_bluetooth_address_t& address, uint32_t timeout_ms) {
     ESP_LOGW(TAG, "Connect not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::Disconnect(const hf_bluetooth_address_t& address) {
     ESP_LOGW(TAG, "Disconnect not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 bool EspBluetooth::IsConnected(const hf_bluetooth_address_t& address) const {
@@ -765,12 +758,12 @@ hf_bluetooth_err_t EspBluetooth::GetConnectedDevices(std::vector<hf_bluetooth_de
 
 hf_bluetooth_err_t EspBluetooth::Pair(const hf_bluetooth_address_t& address, const std::string& pin) {
     ESP_LOGW(TAG, "Pair not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::Unpair(const hf_bluetooth_address_t& address) {
     ESP_LOGW(TAG, "Unpair not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 bool EspBluetooth::IsPaired(const hf_bluetooth_address_t& address) const {
@@ -779,7 +772,7 @@ bool EspBluetooth::IsPaired(const hf_bluetooth_address_t& address) const {
 
 hf_bluetooth_err_t EspBluetooth::SendData(const hf_bluetooth_address_t& address, const std::vector<uint8_t>& data) {
     ESP_LOGW(TAG, "SendData not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 int EspBluetooth::GetAvailableData(const hf_bluetooth_address_t& address) const {
@@ -788,32 +781,32 @@ int EspBluetooth::GetAvailableData(const hf_bluetooth_address_t& address) const 
 
 hf_bluetooth_err_t EspBluetooth::ReadData(const hf_bluetooth_address_t& address, std::vector<uint8_t>& data, size_t max_bytes) {
     ESP_LOGW(TAG, "ReadData not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::DiscoverServices(const hf_bluetooth_address_t& address, std::vector<hf_bluetooth_gatt_service_t>& services) {
     ESP_LOGW(TAG, "DiscoverServices not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::DiscoverCharacteristics(const hf_bluetooth_address_t& address, const std::string& service_uuid, std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) {
     ESP_LOGW(TAG, "DiscoverCharacteristics not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::ReadCharacteristic(const hf_bluetooth_address_t& address, const std::string& service_uuid, const std::string& characteristic_uuid, std::vector<uint8_t>& value) {
     ESP_LOGW(TAG, "ReadCharacteristic not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::WriteCharacteristic(const hf_bluetooth_address_t& address, const std::string& service_uuid, const std::string& characteristic_uuid, const std::vector<uint8_t>& value, bool with_response) {
     ESP_LOGW(TAG, "WriteCharacteristic not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::SubscribeCharacteristic(const hf_bluetooth_address_t& address, const std::string& service_uuid, const std::string& characteristic_uuid, bool enable) {
     ESP_LOGW(TAG, "SubscribeCharacteristic not fully implemented yet");
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_IMPLEMENTED;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_state_t EspBluetooth::GetState() const {
@@ -825,17 +818,15 @@ int8_t EspBluetooth::GetRssi(const hf_bluetooth_address_t& address) const {
     return INT8_MIN; // Stub implementation
 }
 
-hf_bluetooth_err_t EspBluetooth::SetEventCallback(hf_bluetooth_event_callback_t callback, void* context) {
+hf_bluetooth_err_t EspBluetooth::RegisterEventCallback(hf_bluetooth_event_callback_t callback) {
     std::lock_guard<std::mutex> lock(m_state_mutex);
     m_event_callback = callback;
-    m_callback_context = context;
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-hf_bluetooth_err_t EspBluetooth::ClearEventCallback() {
+hf_bluetooth_err_t EspBluetooth::RegisterDataCallback(hf_bluetooth_data_callback_t callback) {
     std::lock_guard<std::mutex> lock(m_state_mutex);
-    m_event_callback = nullptr;
-    m_callback_context = nullptr;
+    m_data_callback = callback;
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
@@ -886,7 +877,7 @@ uint32_t EspBluetooth::GetSupportedFeatures() const {
 
 void EspBluetooth::TriggerEvent(hf_bluetooth_event_t event, const void* data) {
     if (m_event_callback) {
-        m_event_callback(event, data, m_callback_context);
+        m_event_callback(event, m_callback_context);
     }
 }
 

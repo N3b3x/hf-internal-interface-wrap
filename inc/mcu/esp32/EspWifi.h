@@ -29,7 +29,8 @@ extern "C" {
 #include "esp_netif.h"
 #include "esp_smartconfig.h"
 #include "esp_wifi.h"
-#include "esp_wps.h"
+// WPS not available on ESP32-C6
+// #include "esp_wps.h"
 #include "lwip/err.h"
 #include "lwip/sys.h"
 #include "nvs_flash.h"
@@ -85,8 +86,9 @@ struct EspWifiAdvancedConfig {
   // Smart config and provisioning
   bool enable_smartconfig;             /**< Enable SmartConfig */
   smartconfig_type_t smartconfig_type; /**< SmartConfig type */
-  bool enable_wps;                     /**< Enable WPS */
-  wps_type_t wps_type;                 /**< WPS type */
+  // WPS not available on ESP32-C6
+  // bool enable_wps;                     /**< Enable WPS */
+  // wps_type_t wps_type;                 /**< WPS type */
 };
 
 /**
@@ -250,19 +252,20 @@ public:
    */
   hf_wifi_err_t StopSmartConfig();
 
-  /**
-   * @brief Start WPS provisioning
-   * @param type WPS type
-   * @param timeout_ms Provisioning timeout in milliseconds
-   * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
-   */
-  hf_wifi_err_t StartWps(wps_type_t type = WPS_TYPE_PBC, uint32_t timeout_ms = 120000);
+  // WPS not available on ESP32-C6
+  // /**
+  //  * @brief Start WPS provisioning
+  //  * @param type WPS type
+  //  * @param timeout_ms Provisioning timeout in milliseconds
+  //  * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
+  //  */
+  // hf_wifi_err_t StartWps(wps_type_t type = WPS_TYPE_PBC, uint32_t timeout_ms = 120000);
 
-  /**
-   * @brief Stop WPS provisioning
-   * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
-   */
-  hf_wifi_err_t StopWps();
+  // /**
+  //  * @brief Stop WPS provisioning
+  //  * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
+  //  */
+  // hf_wifi_err_t StopWps();
 
   /**
    * @brief Initialize ESP-MESH networking
@@ -380,7 +383,7 @@ private:
 
   // Advanced features state
   std::atomic<bool> m_smartconfig_active; /**< SmartConfig active */
-  std::atomic<bool> m_wps_active;         /**< WPS active */
+  // std::atomic<bool> m_wps_active;         /**< WPS active */
   std::atomic<bool> m_mesh_active;        /**< Mesh active */
 
   // ========== Internal Helper Methods ==========

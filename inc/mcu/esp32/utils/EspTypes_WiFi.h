@@ -28,7 +28,8 @@ extern "C" {
 #include "esp_smartconfig.h"
 #include "esp_wifi.h"
 #include "esp_wifi_types.h"
-#include "esp_wps.h"
+// WPS not available on ESP32-C6
+// #include "esp_wps.h"
 #include "lwip/ip_addr.h"
 
 #ifdef __cplusplus
@@ -188,23 +189,23 @@ struct HfEspWifiPerformanceConfig {
  */
 inline wifi_auth_mode_t hfWifiSecurityToEspAuthMode(hf_wifi_security_t security) {
   switch (security) {
-    case hf_wifi_security_t::OPEN:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_OPEN:
       return WIFI_AUTH_OPEN;
-    case hf_wifi_security_t::WEP:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_WEP:
       return WIFI_AUTH_WEP;
-    case hf_wifi_security_t::WPA_PSK:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK:
       return WIFI_AUTH_WPA_PSK;
-    case hf_wifi_security_t::WPA2_PSK:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK:
       return WIFI_AUTH_WPA2_PSK;
-    case hf_wifi_security_t::WPA_WPA2_PSK:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK:
       return WIFI_AUTH_WPA_WPA2_PSK;
-    case hf_wifi_security_t::WPA2_ENTERPRISE:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE:
       return WIFI_AUTH_WPA2_ENTERPRISE;
-    case hf_wifi_security_t::WPA3_PSK:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK:
       return WIFI_AUTH_WPA3_PSK;
-    case hf_wifi_security_t::WPA2_WPA3_PSK:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK:
       return WIFI_AUTH_WPA2_WPA3_PSK;
-    case hf_wifi_security_t::WAPI_PSK:
+    case hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK:
       return WIFI_AUTH_WAPI_PSK;
     default:
       return WIFI_AUTH_OPEN;
@@ -219,25 +220,25 @@ inline wifi_auth_mode_t hfWifiSecurityToEspAuthMode(hf_wifi_security_t security)
 inline hf_wifi_security_t espAuthModeTohf_wifi_security_t(wifi_auth_mode_t auth_mode) {
   switch (auth_mode) {
     case WIFI_AUTH_OPEN:
-      return hf_wifi_security_t::OPEN;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
     case WIFI_AUTH_WEP:
-      return hf_wifi_security_t::WEP;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_WEP;
     case WIFI_AUTH_WPA_PSK:
-      return hf_wifi_security_t::WPA_PSK;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK;
     case WIFI_AUTH_WPA2_PSK:
-      return hf_wifi_security_t::WPA2_PSK;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK;
     case WIFI_AUTH_WPA_WPA2_PSK:
-      return hf_wifi_security_t::WPA_WPA2_PSK;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK;
     case WIFI_AUTH_WPA2_ENTERPRISE:
-      return hf_wifi_security_t::WPA2_ENTERPRISE;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE;
     case WIFI_AUTH_WPA3_PSK:
-      return hf_wifi_security_t::WPA3_PSK;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK;
     case WIFI_AUTH_WPA2_WPA3_PSK:
-      return hf_wifi_security_t::WPA2_WPA3_PSK;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK;
     case WIFI_AUTH_WAPI_PSK:
-      return hf_wifi_security_t::WAPI_PSK;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK;
     default:
-      return hf_wifi_security_t::OPEN;
+      return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
   }
 }
 
@@ -288,11 +289,11 @@ inline hf_wifi_mode_t espModeTohf_wifi_mode_t(wifi_mode_t mode) {
  */
 inline wifi_ps_type_t hfWifiPowerSaveToEspPowerSave(hf_wifi_power_save_t power_save) {
   switch (power_save) {
-    case hf_wifi_power_save_t::NONE:
+    case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE:
       return WIFI_PS_NONE;
-    case hf_wifi_power_save_t::MIN_MODEM:
+    case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MIN_MODEM:
       return WIFI_PS_MIN_MODEM;
-    case hf_wifi_power_save_t::MAX_MODEM:
+    case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MAX_MODEM:
       return WIFI_PS_MAX_MODEM;
     default:
       return WIFI_PS_NONE;
@@ -307,13 +308,13 @@ inline wifi_ps_type_t hfWifiPowerSaveToEspPowerSave(hf_wifi_power_save_t power_s
 inline hf_wifi_power_save_t espPowerSaveTohf_wifi_power_save_t(wifi_ps_type_t power_save) {
   switch (power_save) {
     case WIFI_PS_NONE:
-      return hf_wifi_power_save_t::NONE;
+      return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE;
     case WIFI_PS_MIN_MODEM:
-      return hf_wifi_power_save_t::MIN_MODEM;
+      return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MIN_MODEM;
     case WIFI_PS_MAX_MODEM:
-      return hf_wifi_power_save_t::MAX_MODEM;
+      return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MAX_MODEM;
     default:
-      return hf_wifi_power_save_t::NONE;
+      return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE;
   }
 }
 
@@ -322,36 +323,36 @@ inline hf_wifi_power_save_t espPowerSaveTohf_wifi_power_save_t(wifi_ps_type_t po
  * @param esp_err ESP-IDF error code
  * @return HardFOC WiFi error code
  */
-inline HfWifiErr espErrorToHfWifiError(esp_err_t esp_err) {
+inline hf_wifi_err_t espErrorToHfWifiError(esp_err_t esp_err) {
   switch (esp_err) {
     case ESP_OK:
-      return HfWifiErr::WIFI_SUCCESS;
+      return hf_wifi_err_t::WIFI_SUCCESS;
     case ESP_ERR_INVALID_ARG:
-      return HfWifiErr::WIFI_ERR_INVALID_PARAM;
+      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
     case ESP_ERR_INVALID_STATE:
-      return HfWifiErr::WIFI_ERR_INVALID_STATE;
+      return hf_wifi_err_t::WIFI_ERR_FAILURE;
     case ESP_ERR_NO_MEM:
-      return HfWifiErr::WIFI_ERR_NO_MEMORY;
+      return hf_wifi_err_t::WIFI_ERR_NO_MEMORY;
     case ESP_ERR_TIMEOUT:
-      return HfWifiErr::WIFI_ERR_TIMEOUT;
+      return hf_wifi_err_t::WIFI_ERR_TIMEOUT;
     case ESP_ERR_WIFI_NOT_INIT:
-      return HfWifiErr::WIFI_ERR_NOT_INITIALIZED;
+      return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
     case ESP_ERR_WIFI_NOT_STARTED:
-      return HfWifiErr::WIFI_ERR_NOT_INITIALIZED;
+      return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
     case ESP_ERR_WIFI_CONN:
-      return HfWifiErr::WIFI_ERR_CONNECTION_FAILED;
+      return hf_wifi_err_t::WIFI_ERR_CONNECTION_FAILED;
     case ESP_ERR_WIFI_SSID:
-      return HfWifiErr::WIFI_ERR_INVALID_SSID;
+      return hf_wifi_err_t::WIFI_ERR_INVALID_SSID;
     case ESP_ERR_WIFI_PASSWORD:
-      return HfWifiErr::WIFI_ERR_INVALID_PASSWORD;
+      return hf_wifi_err_t::WIFI_ERR_INVALID_PASSWORD;
     case ESP_ERR_WIFI_TIMEOUT:
-      return HfWifiErr::WIFI_ERR_TIMEOUT;
+      return hf_wifi_err_t::WIFI_ERR_TIMEOUT;
     case ESP_ERR_WIFI_WAKE_FAIL:
-      return HfWifiErr::WIFI_ERR_FAILURE;
+      return hf_wifi_err_t::WIFI_ERR_FAILURE;
     case ESP_ERR_WIFI_WOULD_BLOCK:
-      return HfWifiErr::WIFI_ERR_TIMEOUT;
+      return hf_wifi_err_t::WIFI_ERR_TIMEOUT;
     default:
-      return HfWifiErr::WIFI_ERR_FAILURE;
+      return hf_wifi_err_t::WIFI_ERR_FAILURE;
   }
 }
 
@@ -409,11 +410,11 @@ inline bool isValidSsid(const std::string& ssid) {
  * @return true if valid, false otherwise
  */
 inline bool isValidWifiPassword(const std::string& password, hf_wifi_security_t security) {
-  if (security == hf_wifi_security_t::OPEN) {
+  if (security == hf_wifi_security_t::HF_WIFI_SECURITY_OPEN) {
     return password.empty();
   }
 
-  if (security == hf_wifi_security_t::WEP) {
+  if (security == hf_wifi_security_t::HF_WIFI_SECURITY_WEP) {
     // WEP key length constants
     static constexpr size_t WEP_KEY_64_BIT_ASCII = 5;   // 64-bit WEP ASCII key
     static constexpr size_t WEP_KEY_128_BIT_ASCII = 13; // 128-bit WEP ASCII key
@@ -435,7 +436,7 @@ inline bool isValidWifiPassword(const std::string& password, hf_wifi_security_t 
  * @param network_info HardFOC network info output
  */
 inline void espScanRecordToHfNetworkInfo(const wifi_ap_record_t& scan_record,
-                                         HfWifiNetworkInfo& network_info) {
+                                         hf_wifi_network_info_t& network_info) {
   network_info.ssid = std::string(reinterpret_cast<const char*>(scan_record.ssid));
   std::memcpy(network_info.bssid, scan_record.bssid, 6);
   network_info.security = espAuthModeTohf_wifi_security_t(scan_record.authmode);
@@ -449,7 +450,7 @@ inline void espScanRecordToHfNetworkInfo(const wifi_ap_record_t& scan_record,
  * @param hf_config HardFOC station configuration
  * @param esp_config ESP-IDF station configuration output
  */
-inline void hfStationConfigToEspConfig(const HfWifiStationConfig& hf_config,
+inline void hfStationConfigToEspConfig(const hf_wifi_station_config_t& hf_config,
                                        wifi_sta_config_t& esp_config) {
   std::memset(&esp_config, 0, sizeof(esp_config));
 
@@ -486,7 +487,7 @@ inline void hfStationConfigToEspConfig(const HfWifiStationConfig& hf_config,
  * @param hf_config HardFOC AP configuration
  * @param esp_config ESP-IDF AP configuration output
  */
-inline void hfApConfigToEspConfig(const HfWifiApConfig& hf_config, wifi_ap_config_t& esp_config) {
+inline void hfApConfigToEspConfig(const hf_wifi_ap_config_t& hf_config, wifi_ap_config_t& esp_config) {
   std::memset(&esp_config, 0, sizeof(esp_config));
 
   // Copy SSID

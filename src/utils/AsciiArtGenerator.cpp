@@ -176,3 +176,30 @@ std::string AsciiArtGenerator::GetSupportedCharacters() const noexcept {
   }
   return result;
 }
+
+//==============================================================================
+// PRIVATE METHODS
+//==============================================================================
+
+std::vector<std::string> AsciiArtGenerator::GetCharacterArt(char character) const noexcept {
+  // First check custom characters
+  auto custom_it = custom_characters_.find(character);
+  if (custom_it != custom_characters_.end()) {
+    return custom_it->second;
+  }
+
+  // Then check built-in characters
+  auto builtin_it = CHARACTER_ART.find(character);
+  if (builtin_it != CHARACTER_ART.end()) {
+    return builtin_it->second;
+  }
+
+  // Return space character for unsupported characters
+  auto space_it = CHARACTER_ART.find(' ');
+  if (space_it != CHARACTER_ART.end()) {
+    return space_it->second;
+  }
+
+  // Fallback: return empty lines
+  return std::vector<std::string>(ART_HEIGHT, " ");
+}

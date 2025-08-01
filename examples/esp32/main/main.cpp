@@ -80,8 +80,8 @@ extern "C" void app_main(void) {
   // Demonstrate ASCII Art Generator
   ESP_LOGI(TAG, "=== ASCII Art Generator Test ===");
   AsciiArtGenerator art_gen;
-  ESP_LOGI(TAG, "%s", art_gen.CreateBanner("HardFOC").c_str());
-  ESP_LOGI(TAG, "%s", art_gen.CreateBox("ESP32-C6 Integration", 50).c_str());
+  ESP_LOGI(TAG, "%s", art_gen.Generate("HardFOC").c_str());
+  ESP_LOGI(TAG, "%s", art_gen.Generate("ESP32-C6 Integration").c_str());
 
   // 1. EspGpio
   ESP_LOGI(TAG, "=== Testing EspGpio ===");
@@ -127,9 +127,9 @@ extern "C" void app_main(void) {
   spi_bus_cfg.miso_pin = 9;
   spi_bus_cfg.sclk_pin = 11;
   spi_bus_cfg.clock_speed_hz = 1000000;
-  spi_bus_cfg.host = hf_spi_host_device_t::HF_SPI2_HOST;
+  spi_bus_cfg.host = SPI2_HOST;
   EspSpiBus test_spi_bus(spi_bus_cfg);
-  bool spi_bus_init = test_spi_bus.EnsureInitialized();
+  bool spi_bus_init = test_spi_bus.Initialize();
   ESP_LOGI(TAG, "EspSpiBus initialized: %s", spi_bus_init ? "SUCCESS" : "FAILED");
   
   // Create SPI device on the bus
@@ -145,12 +145,12 @@ extern "C" void app_main(void) {
   // 6. EspI2c (Bus-Device Architecture)
   ESP_LOGI(TAG, "=== Testing EspI2c (Bus-Device Architecture) ===");
   hf_i2c_master_bus_config_t i2c_cfg = {};
-  i2c_cfg.i2c_port = 0;
+  i2c_cfg.i2c_port = I2C_NUM_0;
   i2c_cfg.sda_io_num = 21;
   i2c_cfg.scl_io_num = 22;
   i2c_cfg.enable_internal_pullup = true;
   EspI2cBus test_i2c_bus(i2c_cfg);
-  bool i2c_bus_init = test_i2c_bus.EnsureInitialized();
+  bool i2c_bus_init = test_i2c_bus.IsInitialized();
   ESP_LOGI(TAG, "EspI2cBus initialized: %s", i2c_bus_init ? "SUCCESS" : "FAILED");
 
   // 7. EspPwm
@@ -168,28 +168,23 @@ extern "C" void app_main(void) {
 
   // 8. EspTemperature
   ESP_LOGI(TAG, "=== Testing EspTemperature ===");
-  hf_temperature_sensor_config_t temp_cfg = {};
-  temp_cfg.dac_offset = 0;
-  temp_cfg.clk_src = hf_temperature_sensor_clk_src_t::HF_TEMPERATURE_SENSOR_CLK_SRC_DEFAULT;
-  EspTemperature test_temp(temp_cfg);
-  auto temp_init = test_temp.EnsureInitialized();
+  EspTemperature test_temp;
+  auto temp_init = test_temp.IsInitialized();
   ESP_LOGI(TAG, "EspTemperature initialized: %s", temp_init ? "SUCCESS" : "FAILED");
   
   // Read temperature if initialized successfully
-  if (temp_init == hf_temperature_err_t::TEMPERATURE_SUCCESS) {
-    float temperature = 0.0f;
-    auto temp_read = test_temp.ReadTemperature(&temperature);
-    if (temp_read == hf_temperature_err_t::TEMPERATURE_SUCCESS) {
-      ESP_LOGI(TAG, "Chip temperature: %.2f°C", temperature);
+  if (temp_init == hf_temp_err_t::TEMP_SUCCESS) {
+          hf_temp_reading_t temp_reading = {};
+      auto temp_read = test_temp.ReadTemperature(&temp_reading);
+    if (temp_read == hf_temp_err_t::TEMP_SUCCESS) {
+              ESP_LOGI(TAG, "Chip temperature: %.2f°C", temp_reading.temperature_raw);
     }
   }
 
   // 9. EspWifi
   ESP_LOGI(TAG, "=== Testing EspWifi ===");
-  hf_wifi_config_t wifi_cfg = {};
-  wifi_cfg.mode = hf_wifi_mode_t::HF_WIFI_MODE_STA;
-  EspWifi test_wifi(wifi_cfg);
-  auto wifi_init = test_wifi.EnsureInitialized();
+  EspWifi test_wifi;
+  auto wifi_init = test_wifi.IsInitialized();
   ESP_LOGI(TAG, "EspWifi initialized: %s", wifi_init ? "SUCCESS" : "FAILED");
 
   // 10. EspPeriodicTimer
@@ -202,7 +197,7 @@ extern "C" void app_main(void) {
     }
   };
   EspPeriodicTimer test_timer(timer_callback, nullptr);
-  auto timer_init = test_timer.EnsureInitialized();
+  auto timer_init = test_timer.IsInitialized();
   ESP_LOGI(TAG, "EspPeriodicTimer initialized: %s", timer_init ? "SUCCESS" : "FAILED");
   
   if (timer_init) {
@@ -218,11 +213,9 @@ extern "C" void app_main(void) {
 
   // 12. EspNvs
   ESP_LOGI(TAG, "=== Testing EspNvs ===");
-  hf_nvs_config_t nvs_cfg = {};
-  nvs_cfg.namespace_name = "hardfoc";
-  nvs_cfg.partition_name = "nvs";
-  EspNvs test_nvs(nvs_cfg);
-  auto nvs_init = test_nvs.EnsureInitialized();
+  // NVS configuration is handled internally by EspNvs
+  EspNvs test_nvs("hardfoc");
+  auto nvs_init = test_nvs.IsInitialized();
   ESP_LOGI(TAG, "EspNvs initialized: %s", nvs_init ? "SUCCESS" : "FAILED");
 
   // Test hardware types
@@ -231,7 +224,7 @@ extern "C" void app_main(void) {
   hf_port_num_t test_port = 0;
   hf_frequency_hz_t test_freq = 1000000;
   hf_timestamp_us_t test_timestamp = 12345678;
-  hf_voltage_mv_t test_voltage = 3300;
+  uint32_t test_voltage = 3300;
   ESP_LOGI(TAG, "Pin: %d, Port: %d, Freq: %lu Hz", test_pin, test_port, test_freq);
   ESP_LOGI(TAG, "Timestamp: %llu us, Voltage: %d mV", test_timestamp, test_voltage);
   
@@ -240,12 +233,12 @@ extern "C" void app_main(void) {
 
   // Test memory utilities
   ESP_LOGI(TAG, "=== Testing Memory Utilities ===");
-  auto unique_int = make_unique_nothrow<int>(42);
+  auto unique_int = hf::utils::make_unique_nothrow<int>(42);
   if (unique_int) {
     ESP_LOGI(TAG, "make_unique_nothrow created int with value: %d", *unique_int);
   }
   
-  auto unique_array = make_unique_nothrow<int[]>(10);
+  auto unique_array = std::make_unique<int[]>(10);
   if (unique_array) {
     for (int i = 0; i < 10; i++) {
       unique_array[i] = i * i;
@@ -254,13 +247,13 @@ extern "C" void app_main(void) {
   }
 
   ESP_LOGI(TAG, "=== ESP32 IID Comprehensive Test Complete ===");
-  ESP_LOGI(TAG, "%s", art_gen.CreateBanner("ALL TESTS COMPLETE").c_str());
+  ESP_LOGI(TAG, "%s", art_gen.Generate("ALL TESTS COMPLETE").c_str());
 
   // Keep the task running with periodic status updates
   int count = 0;
   while (true) {
     // Toggle LED if GPIO was initialized successfully
-    if (gpio_init == hf_gpio_err_t::GPIO_SUCCESS) {
+    if (gpio_init) {
       test_gpio.SetState(count % 2 == 0 ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
     }
     

@@ -41,8 +41,13 @@
 #define HAS_A2DP_SUPPORT 1
 #define HAS_AVRCP_SUPPORT 1
 #define HAS_SPP_SUPPORT 1
+#if defined(CONFIG_BT_NIMBLE_ENABLED)
 #define HAS_NIMBLE_SUPPORT 1
+#define HAS_BLUEDROID_SUPPORT 0
+#else
+#define HAS_NIMBLE_SUPPORT 0
 #define HAS_BLUEDROID_SUPPORT 1
+#endif
 #elif defined(CONFIG_IDF_TARGET_ESP32C6)
 // BLE-only with NimBLE (preferred for ESP32C6)
 #define HAS_CLASSIC_BLUETOOTH 0
@@ -50,8 +55,13 @@
 #define HAS_A2DP_SUPPORT 0
 #define HAS_AVRCP_SUPPORT 0
 #define HAS_SPP_SUPPORT 0
+#if defined(CONFIG_BT_NIMBLE_ENABLED)
 #define HAS_NIMBLE_SUPPORT 1
 #define HAS_BLUEDROID_SUPPORT 0
+#else
+#define HAS_NIMBLE_SUPPORT 0
+#define HAS_BLUEDROID_SUPPORT 1
+#endif
 #elif defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32H2)
 // BLE-only with Bluedroid
 #define HAS_CLASSIC_BLUETOOTH 0
@@ -59,8 +69,13 @@
 #define HAS_A2DP_SUPPORT 0
 #define HAS_AVRCP_SUPPORT 0
 #define HAS_SPP_SUPPORT 0
+#if defined(CONFIG_BT_NIMBLE_ENABLED)
+#define HAS_NIMBLE_SUPPORT 1
+#define HAS_BLUEDROID_SUPPORT 0
+#else
 #define HAS_NIMBLE_SUPPORT 0
 #define HAS_BLUEDROID_SUPPORT 1
+#endif
 #elif defined(CONFIG_IDF_TARGET_ESP32S2)
 // No Bluetooth support
 #define HAS_CLASSIC_BLUETOOTH 0
@@ -85,8 +100,7 @@
 #if HAS_BLE_SUPPORT
 
 #if HAS_NIMBLE_SUPPORT
-// NimBLE headers for ESP32C6
-#include "esp_nimble_hci.h"
+// NimBLE headers for ESP32C6 (ESP-IDF v5.5+)
 #include "nimble/nimble_port.h"
 #include "nimble/nimble_port_freertos.h"
 #include "host/ble_hs.h"
@@ -94,6 +108,7 @@
 #include "host/ble_gap.h"
 #include "host/ble_gatt.h"
 #include "host/ble_att.h"
+#include "host/util/util.h"
 #include "services/gap/ble_svc_gap.h"
 #include "services/gatt/ble_svc_gatt.h"
 #endif
@@ -151,8 +166,7 @@ private:
     std::map<std::string, hf_bluetooth_device_info_t> m_connected_devices;
     
     // Configuration
-    hf_bluetooth_scan_config_t m_scan_config;
-    hf_bluetooth_adv_config_t m_adv_config;
+    hf_bluetooth_ble_config_t m_ble_config;
     
     // Synchronization
     mutable std::mutex m_device_mutex;
@@ -160,6 +174,7 @@ private:
     
     // Callback functions
     hf_bluetooth_event_callback_t m_event_callback;
+    hf_bluetooth_data_callback_t m_data_callback;
     void* m_callback_context;
 
 #if HAS_NIMBLE_SUPPORT
@@ -176,8 +191,6 @@ private:
     // NimBLE utility functions
     hf_bluetooth_err_t InitializeNimBLE();
     hf_bluetooth_err_t DeinitializeNimBLE();
-    hf_bluetooth_err_t StartAdvertising();
-    hf_bluetooth_err_t StopAdvertising();
     hf_bluetooth_err_t StartScanning();
     hf_bluetooth_err_t StopScanning();
     
@@ -287,7 +300,7 @@ public:
      * @param address Reference to store the local address
      * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
      */
-    hf_bluetooth_err_t GetLocalAddress(hf_bluetooth_address_t& address) override;
+    hf_bluetooth_err_t GetLocalAddress(hf_bluetooth_address_t& address) const override;
     
     /**
      * @brief Set local device name
@@ -298,19 +311,21 @@ public:
     
     /**
      * @brief Get local device name
-     * @param name Reference to store device name
-     * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+     * @return Device name string
      */
-    hf_bluetooth_err_t GetDeviceName(std::string& name) override;
+    std::string GetDeviceName() const override;
 
     // ========== Discovery and Scanning ==========
     
     /**
      * @brief Start device discovery/scanning
-     * @param config Scan configuration
+     * @param duration_ms Scan duration in milliseconds (0 for indefinite)
+     * @param type Scan type (BLE only)
      * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
      */
-    hf_bluetooth_err_t StartScan(const hf_bluetooth_scan_config_t& config) override;
+    hf_bluetooth_err_t StartScan(
+        uint32_t duration_ms = 0,
+        hf_bluetooth_scan_type_t type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) override;
     
     /**
      * @brief Stop device discovery/scanning
@@ -341,10 +356,9 @@ public:
     
     /**
      * @brief Start BLE advertising
-     * @param config Advertising configuration
      * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
      */
-    hf_bluetooth_err_t StartAdvertising(const hf_bluetooth_adv_config_t& config) override;
+    hf_bluetooth_err_t StartAdvertising() override;
     
     /**
      * @brief Stop BLE advertising
@@ -507,18 +521,18 @@ public:
     // ========== Event Handling ==========
     
     /**
-     * @brief Set event callback function
+     * @brief Register event callback function
      * @param callback Callback function
-     * @param context User context pointer
      * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
      */
-    hf_bluetooth_err_t SetEventCallback(hf_bluetooth_event_callback_t callback, void* context = nullptr) override;
+    hf_bluetooth_err_t RegisterEventCallback(hf_bluetooth_event_callback_t callback) override;
     
     /**
-     * @brief Clear event callback
+     * @brief Register data callback function
+     * @param callback Callback function
      * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
      */
-    hf_bluetooth_err_t ClearEventCallback() override;
+    hf_bluetooth_err_t RegisterDataCallback(hf_bluetooth_data_callback_t callback) override;
 
     // ========== Utility Methods ==========
     
@@ -526,7 +540,7 @@ public:
      * @brief Get implementation-specific information
      * @return String containing implementation details
      */
-    std::string GetImplementationInfo() const override;
+    std::string GetImplementationInfo() const;
     
     /**
      * @brief Get supported features for current target
