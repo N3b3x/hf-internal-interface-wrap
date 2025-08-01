@@ -77,7 +77,23 @@
   X(BLUETOOTH_ERR_ENCRYPTION_FAILED, 22, "Encryption failed")               \
   X(BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED, 23, "Operation not supported")   \
   X(BLUETOOTH_ERR_GATT_ERROR, 24, "GATT operation error")                   \
-  X(BLUETOOTH_ERR_INVALID_STATE, 25, "Invalid state for operation")
+  X(BLUETOOTH_ERR_INVALID_STATE, 25, "Invalid state for operation")         \
+  X(BLUETOOTH_ERR_PERMISSION_DENIED, 26, "Permission denied")               \
+  X(BLUETOOTH_ERR_BUSY, 27, "Device or operation busy")                     \
+  X(BLUETOOTH_ERR_SECURITY_ERROR, 28, "Security error")                     \
+  X(BLUETOOTH_ERR_INIT_FAILED, 29, "Initialization failed")                 \
+  X(BLUETOOTH_ERR_NOT_SUPPORTED, 30, "Operation not supported")             \
+  X(BLUETOOTH_ERR_ALREADY_STARTED, 31, "Operation already started")         \
+  X(BLUETOOTH_ERR_CONFIG_FAILED, 32, "Configuration failed")                \
+  X(BLUETOOTH_ERR_START_FAILED, 33, "Start operation failed")               \
+  X(BLUETOOTH_ERR_STOP_FAILED, 34, "Stop operation failed")                 \
+  X(BLUETOOTH_ERR_CONNECTION_NOT_FOUND, 35, "Connection not found")         \
+  X(BLUETOOTH_ERR_MAX_CONNECTIONS_REACHED, 36, "Maximum connections reached") \
+  X(BLUETOOTH_ERR_SEND_FAILED, 37, "Send operation failed")                 \
+  X(BLUETOOTH_ERR_GATT_SERVICE_ADD_FAILED, 38, "GATT service add failed")   \
+  X(BLUETOOTH_ERR_GATT_CHAR_ADD_FAILED, 39, "GATT characteristic add failed") \
+  X(BLUETOOTH_ERR_GATT_SERVICE_NOT_FOUND, 40, "GATT service not found")     \
+  X(BLUETOOTH_ERR_GATT_SERVICE_START_FAILED, 41, "GATT service start failed")
 
 /**
  * @ingroup bluetooth

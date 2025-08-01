@@ -36,7 +36,7 @@
 #include <cmath>
 #include <cstring>
 
-static const char* TAG __attribute__((unused)) = "EspTemperature";
+const char* EspTemperature::TAG = "EspTemperature";
 
 //--------------------------------------
 //  ESP32-C6 Temperature Range Configuration

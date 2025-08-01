@@ -33,6 +33,7 @@
 tests/build/
 
 **/build/
+**/build_*/
 **/dependencies.lock
 
 **/.vscode/

@@ -16,7 +16,7 @@
 #pragma once
 
 #include "HardwareTypes.h"
-#include "McuSelect.h" // Central MCU platform selection (includes all ESP-IDF headers)
+#include "../../utils/McuSelect.h" // Central MCU platform selection (includes all ESP-IDF headers)
 #include <atomic>
 #include <cstdint>
 

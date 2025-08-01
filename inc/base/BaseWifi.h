@@ -233,6 +233,12 @@ struct hf_wifi_ip_info_t {
 using hf_wifi_event_callback_t = std::function<void(hf_wifi_event_t event, void* event_data)>;
 
 /**
+ * @ingroup wifi
+ * @brief WiFi scan callback function type
+ */
+using hf_wifi_scan_callback_t = std::function<void(const std::vector<hf_wifi_network_info_t>& networks)>;
+
+/**
  * @class BaseWifi
  * @ingroup wifi
  * @brief Abstract base class for WiFi functionality
