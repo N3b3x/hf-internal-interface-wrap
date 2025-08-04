@@ -78,6 +78,7 @@ jobs:
             # Copy source and include directories to maintain relative paths
             cp -r src ${{ env.BUILD_PATH }}/src
             cp -r inc ${{ env.BUILD_PATH }}/inc
+            cp examples/esp32/sdkconfig ${{ env.BUILD_PATH }}/sdkconfig
             # Build specific example type (main directory already has the correct CMakeLists.txt)
             idf.py -C ${{ env.BUILD_PATH }} \
               -DIDF_TARGET=${{ env.IDF_TARGET }} \
