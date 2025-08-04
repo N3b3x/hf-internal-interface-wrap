@@ -30,8 +30,8 @@
 #pragma once
 
 #include "BaseSpi.h"
-#include "utils/EspTypes.h"
 #include "RtosMutex.h"
+#include "utils/EspTypes.h"
 #include <memory>
 #include <vector>
 

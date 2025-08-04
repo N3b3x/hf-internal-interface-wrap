@@ -38,8 +38,8 @@ extern "C" {
 #include "utils/AsciiArtGenerator.h"
 #include "utils/DigitalOutputGuard.h"
 #include "utils/McuSelect.h"
-#include "utils/memory_utils.h"
 #include "utils/RtosMutex.h"
+#include "utils/memory_utils.h"
 
 // ESP32 implementation classes
 #include "mcu/esp32/EspAdc.h"
@@ -131,7 +131,7 @@ extern "C" void app_main(void) {
   EspSpiBus test_spi_bus(spi_bus_cfg);
   bool spi_bus_init = test_spi_bus.Initialize();
   ESP_LOGI(TAG, "EspSpiBus initialized: %s", spi_bus_init ? "SUCCESS" : "FAILED");
-  
+
   // Create SPI device on the bus
   if (spi_bus_init) {
     hf_spi_device_config_t spi_dev_cfg = {};
@@ -171,13 +171,13 @@ extern "C" void app_main(void) {
   EspTemperature test_temp;
   auto temp_init = test_temp.IsInitialized();
   ESP_LOGI(TAG, "EspTemperature initialized: %s", temp_init ? "SUCCESS" : "FAILED");
-  
+
   // Read temperature if initialized successfully
   if (temp_init == hf_temp_err_t::TEMP_SUCCESS) {
-          hf_temp_reading_t temp_reading = {};
-      auto temp_read = test_temp.ReadTemperature(&temp_reading);
+    hf_temp_reading_t temp_reading = {};
+    auto temp_read = test_temp.ReadTemperature(&temp_reading);
     if (temp_read == hf_temp_err_t::TEMP_SUCCESS) {
-              ESP_LOGI(TAG, "Chip temperature: %.2f°C", temp_reading.temperature_raw);
+      ESP_LOGI(TAG, "Chip temperature: %.2f°C", temp_reading.temperature_raw);
     }
   }
 
@@ -199,7 +199,7 @@ extern "C" void app_main(void) {
   EspPeriodicTimer test_timer(timer_callback, nullptr);
   auto timer_init = test_timer.IsInitialized();
   ESP_LOGI(TAG, "EspPeriodicTimer initialized: %s", timer_init ? "SUCCESS" : "FAILED");
-  
+
   if (timer_init) {
     test_timer.Start(1000000); // 1 second interval
     ESP_LOGI(TAG, "EspPeriodicTimer started with 1-second interval");
@@ -227,9 +227,10 @@ extern "C" void app_main(void) {
   uint32_t test_voltage = 3300;
   ESP_LOGI(TAG, "Pin: %d, Port: %d, Freq: %lu Hz", test_pin, test_port, test_freq);
   ESP_LOGI(TAG, "Timestamp: %llu us, Voltage: %d mV", test_timestamp, test_voltage);
-  
+
   hf_gpio_state_t test_state = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
-  ESP_LOGI(TAG, "GPIO state: %s", test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
+  ESP_LOGI(TAG, "GPIO state: %s",
+           test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
 
   // Test memory utilities
   ESP_LOGI(TAG, "=== Testing Memory Utilities ===");
@@ -237,7 +238,7 @@ extern "C" void app_main(void) {
   if (unique_int) {
     ESP_LOGI(TAG, "make_unique_nothrow created int with value: %d", *unique_int);
   }
-  
+
   auto unique_array = std::make_unique<int[]>(10);
   if (unique_array) {
     for (int i = 0; i < 10; i++) {
@@ -254,9 +255,10 @@ extern "C" void app_main(void) {
   while (true) {
     // Toggle LED if GPIO was initialized successfully
     if (gpio_init) {
-      test_gpio.SetState(count % 2 == 0 ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
+      test_gpio.SetState(count % 2 == 0 ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE
+                                        : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
     }
-    
+
     vTaskDelay(pdMS_TO_TICKS(5000));
     ESP_LOGI(TAG, "System running... All interfaces operational (iteration %d)", ++count);
   }

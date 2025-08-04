@@ -65,15 +65,19 @@ enum class hf_spi_mode_t : uint8_t {
 //  */
 // enum class hf_spi_host_device_t : uint8_t {
 //   HF_SPI2_HOST =
-//       static_cast<uint8_t>(spi_host_device_t::SPI2_HOST), ///< SPI2 host (general purpose) - ESP-IDF SPI2_HOST
+//       static_cast<uint8_t>(spi_host_device_t::SPI2_HOST), ///< SPI2 host (general purpose) -
+//       ESP-IDF SPI2_HOST
 // #ifdef HF_MCU_ESP32C6
 //   // ESP32-C6 only has SPI2_HOST available for general purpose use
 //   HF_SPI_HOST_MAX =
-//       static_cast<uint8_t>(spi_host_device_t::SPI2_HOST + 1), ///< Maximum number of SPI hosts for ESP32-C6
+//       static_cast<uint8_t>(spi_host_device_t::SPI2_HOST + 1), ///< Maximum number of SPI hosts
+//       for ESP32-C6
 // #else
 //   HF_SPI3_HOST =
-//       static_cast<uint8_t>(spi_host_device_t::SPI3_HOST), ///< SPI3 host (general purpose) - ESP-IDF SPI3_HOST
-//   HF_SPI_HOST_MAX = static_cast<uint8_t>(spi_host_device_t::SPI_HOST_MAX), ///< Maximum number of SPI hosts
+//       static_cast<uint8_t>(spi_host_device_t::SPI3_HOST), ///< SPI3 host (general purpose) -
+//       ESP-IDF SPI3_HOST
+//   HF_SPI_HOST_MAX = static_cast<uint8_t>(spi_host_device_t::SPI_HOST_MAX), ///< Maximum number of
+//   SPI hosts
 // #endif
 // };
 

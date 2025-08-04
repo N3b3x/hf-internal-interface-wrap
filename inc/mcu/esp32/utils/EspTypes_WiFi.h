@@ -487,7 +487,8 @@ inline void hfStationConfigToEspConfig(const hf_wifi_station_config_t& hf_config
  * @param hf_config HardFOC AP configuration
  * @param esp_config ESP-IDF AP configuration output
  */
-inline void hfApConfigToEspConfig(const hf_wifi_ap_config_t& hf_config, wifi_ap_config_t& esp_config) {
+inline void hfApConfigToEspConfig(const hf_wifi_ap_config_t& hf_config,
+                                  wifi_ap_config_t& esp_config) {
   std::memset(&esp_config, 0, sizeof(esp_config));
 
   // Copy SSID

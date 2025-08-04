@@ -150,9 +150,10 @@ static hf_wifi_security_t ConvertFromEspAuthMode(wifi_auth_mode_t auth_mode) {
 }
 
 EspWifi::EspWifi(const EspWifiAdvancedConfig* advanced_config)
-    : m_initialized(false), m_enabled(false), m_mode(hf_wifi_mode_t::HF_WIFI_MODE_DISABLED), m_state(hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED),
-      m_sta_netif(nullptr), m_ap_netif(nullptr), m_event_group(nullptr),
-      m_event_callback(nullptr), m_scan_callback(nullptr), m_event_user_data(nullptr), m_scan_user_data(nullptr),
+    : m_initialized(false), m_enabled(false), m_mode(hf_wifi_mode_t::HF_WIFI_MODE_DISABLED),
+      m_state(hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED), m_sta_netif(nullptr),
+      m_ap_netif(nullptr), m_event_group(nullptr), m_event_callback(nullptr),
+      m_scan_callback(nullptr), m_event_user_data(nullptr), m_scan_user_data(nullptr),
       m_scanning(false), m_connected(false), m_ap_active(false), m_rssi(0), m_channel(0),
       m_smartconfig_active(false), m_mesh_active(false) {
   // Copy advanced configuration or use defaults
@@ -328,7 +329,7 @@ bool EspWifi::IsInitialized() const {
 
 hf_wifi_err_t EspWifi::SetMode(hf_wifi_mode_t mode) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
@@ -340,37 +341,38 @@ hf_wifi_err_t EspWifi::SetMode(hf_wifi_mode_t mode) {
 
 hf_wifi_err_t EspWifi::ConfigureStation(const hf_wifi_station_config_t& config) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
 
   // Store station configuration
   m_sta_config = config;
-  
+
   // Configure ESP-IDF station config
   wifi_config_t wifi_config = {};
   strncpy((char*)wifi_config.sta.ssid, config.ssid.c_str(), sizeof(wifi_config.sta.ssid) - 1);
-  strncpy((char*)wifi_config.sta.password, config.password.c_str(), sizeof(wifi_config.sta.password) - 1);
-  
+  strncpy((char*)wifi_config.sta.password, config.password.c_str(),
+          sizeof(wifi_config.sta.password) - 1);
+
   if (config.bssid_set) {
     memcpy(wifi_config.sta.bssid, config.bssid, 6);
     wifi_config.sta.bssid_set = true;
   }
-  
+
   wifi_config.sta.channel = config.channel;
   wifi_config.sta.scan_method = static_cast<wifi_scan_method_t>(config.scan_method);
   wifi_config.sta.sort_method = static_cast<wifi_sort_method_t>(config.sort_method);
   wifi_config.sta.threshold.rssi = config.threshold_rssi;
   wifi_config.sta.threshold.authmode = ConvertToEspAuthMode(config.threshold_authmode);
-  
+
   esp_err_t err = esp_wifi_set_config(WIFI_IF_STA, &wifi_config);
   return ConvertEspError(err);
 }
 
 hf_wifi_err_t EspWifi::Connect(uint32_t timeout_ms) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
@@ -383,7 +385,7 @@ hf_wifi_err_t EspWifi::Connect(uint32_t timeout_ms) {
   if (timeout_ms > 0) {
     // Wait for connection with timeout
     EventBits_t bits = xEventGroupWaitBits(m_event_group, WIFI_CONNECTED_BIT | WIFI_FAIL_BIT,
-                                          pdFALSE, pdFALSE, pdMS_TO_TICKS(timeout_ms));
+                                           pdFALSE, pdFALSE, pdMS_TO_TICKS(timeout_ms));
     if (bits & WIFI_FAIL_BIT) {
       return hf_wifi_err_t::WIFI_ERR_CONNECTION_FAILED;
     } else if (!(bits & WIFI_CONNECTED_BIT)) {
@@ -396,13 +398,14 @@ hf_wifi_err_t EspWifi::Connect(uint32_t timeout_ms) {
 
 hf_wifi_err_t EspWifi::GetIpInfo(hf_wifi_ip_info_t& ip_info) const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
 
   esp_netif_ip_info_t esp_ip_info;
-  esp_err_t err = esp_netif_get_ip_info(esp_netif_get_handle_from_ifkey("WIFI_STA_DEF"), &esp_ip_info);
+  esp_err_t err =
+      esp_netif_get_ip_info(esp_netif_get_handle_from_ifkey("WIFI_STA_DEF"), &esp_ip_info);
   if (err != ESP_OK) {
     return ConvertEspError(err);
   }
@@ -410,39 +413,40 @@ hf_wifi_err_t EspWifi::GetIpInfo(hf_wifi_ip_info_t& ip_info) const {
   ip_info.ip = esp_ip_info.ip.addr;
   ip_info.netmask = esp_ip_info.netmask.addr;
   ip_info.gateway = esp_ip_info.gw.addr;
-  
+
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::ConfigureAccessPoint(const hf_wifi_ap_config_t& config) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
 
   // Store AP configuration
   m_ap_config = config;
-  
+
   // Configure ESP-IDF AP config
   wifi_config_t wifi_config = {};
   strncpy((char*)wifi_config.ap.ssid, config.ssid.c_str(), sizeof(wifi_config.ap.ssid) - 1);
-  strncpy((char*)wifi_config.ap.password, config.password.c_str(), sizeof(wifi_config.ap.password) - 1);
-  
+  strncpy((char*)wifi_config.ap.password, config.password.c_str(),
+          sizeof(wifi_config.ap.password) - 1);
+
   wifi_config.ap.ssid_len = config.ssid_len;
   wifi_config.ap.channel = config.channel;
   wifi_config.ap.authmode = ConvertToEspAuthMode(config.authmode);
   wifi_config.ap.ssid_hidden = config.ssid_hidden;
   wifi_config.ap.max_connection = config.max_connection;
   wifi_config.ap.beacon_interval = config.beacon_interval;
-  
+
   esp_err_t err = esp_wifi_set_config(WIFI_IF_AP, &wifi_config);
   return ConvertEspError(err);
 }
 
 hf_wifi_err_t EspWifi::StartAccessPoint() {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
@@ -456,7 +460,7 @@ hf_wifi_err_t EspWifi::StartAccessPoint() {
 
 hf_wifi_err_t EspWifi::StopAccessPoint() {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
@@ -475,7 +479,7 @@ bool EspWifi::IsAccessPointActive() const {
 
 int EspWifi::GetConnectedStationCount() const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized || !m_ap_active) {
     return 0;
   }
@@ -485,13 +489,13 @@ int EspWifi::GetConnectedStationCount() const {
   if (err != ESP_OK) {
     return 0;
   }
-  
+
   return sta_list.num;
 }
 
 hf_wifi_err_t EspWifi::StartScan(bool show_hidden, bool passive, uint32_t duration_ms) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
@@ -513,16 +517,17 @@ hf_wifi_err_t EspWifi::StartScan(bool show_hidden, bool passive, uint32_t durati
   return ConvertEspError(err);
 }
 
-hf_wifi_err_t EspWifi::GetScanResults(std::vector<hf_wifi_network_info_t>& networks, uint16_t max_count) {
+hf_wifi_err_t EspWifi::GetScanResults(std::vector<hf_wifi_network_info_t>& networks,
+                                      uint16_t max_count) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
 
   wifi_ap_record_t* scan_results = nullptr;
   uint16_t scan_count = 0;
-  
+
   esp_err_t err = esp_wifi_scan_get_ap_num(&scan_count);
   if (err != ESP_OK) {
     return ConvertEspError(err);
@@ -578,7 +583,7 @@ hf_wifi_state_t EspWifi::GetState() const {
 
 std::string EspWifi::GetConnectedSsid() const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized || !m_connected) {
     return "";
   }
@@ -588,13 +593,13 @@ std::string EspWifi::GetConnectedSsid() const {
   if (err != ESP_OK) {
     return "";
   }
-  
+
   return std::string((char*)ap_info.ssid);
 }
 
 hf_wifi_err_t EspWifi::GetConnectedBssid(uint8_t* bssid) const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized || !m_connected || !bssid) {
     return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
   }
@@ -611,7 +616,7 @@ hf_wifi_err_t EspWifi::GetConnectedBssid(uint8_t* bssid) const {
 
 hf_wifi_err_t EspWifi::SetPowerSave(hf_wifi_power_save_t mode) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
@@ -637,7 +642,7 @@ hf_wifi_err_t EspWifi::SetPowerSave(hf_wifi_power_save_t mode) {
 
 hf_wifi_power_save_t EspWifi::GetPowerSave() const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE;
   }
@@ -674,7 +679,7 @@ hf_wifi_err_t EspWifi::UnregisterEventCallback() {
 
 hf_wifi_err_t EspWifi::GetMacAddress(uint8_t mac[6], uint8_t interface) const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized || !mac) {
     return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
   }
@@ -697,7 +702,7 @@ hf_wifi_err_t EspWifi::GetMacAddress(uint8_t mac[6], uint8_t interface) const {
 
 hf_wifi_err_t EspWifi::SetMacAddress(const uint8_t mac[6], uint8_t interface) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized || !mac) {
     return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
   }
@@ -720,7 +725,7 @@ hf_wifi_err_t EspWifi::SetMacAddress(const uint8_t mac[6], uint8_t interface) {
 
 uint8_t EspWifi::GetChannel() const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return 0;
   }
@@ -730,13 +735,13 @@ uint8_t EspWifi::GetChannel() const {
   if (err != ESP_OK) {
     return 0;
   }
-  
+
   return channel;
 }
 
 hf_wifi_err_t EspWifi::SetChannel(uint8_t channel) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
@@ -747,7 +752,7 @@ hf_wifi_err_t EspWifi::SetChannel(uint8_t channel) {
 
 hf_wifi_mode_t EspWifi::GetMode() const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
   }
@@ -757,11 +762,9 @@ hf_wifi_mode_t EspWifi::GetMode() const {
   if (err != ESP_OK) {
     return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
   }
-  
+
   return ConvertFromEspMode(mode);
 }
-
-
 
 wifi_mode_t EspWifi::ConvertToEspMode(hf_wifi_mode_t mode) const {
   return ::ConvertToEspMode(mode);
@@ -771,17 +774,20 @@ wifi_mode_t EspWifi::ConvertToEspMode(hf_wifi_mode_t mode) const {
 // EVENT HANDLERS
 //==============================================================================
 
-void EspWifi::wifiEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
+void EspWifi::wifiEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id,
+                               void* event_data) {
   EspWifi* wifi = static_cast<EspWifi*>(arg);
   wifi->handleWifiEvent(event_id, event_data);
 }
 
-void EspWifi::ipEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
+void EspWifi::ipEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id,
+                             void* event_data) {
   EspWifi* wifi = static_cast<EspWifi*>(arg);
   wifi->handleIpEvent(event_id, event_data);
 }
 
-void EspWifi::smartconfigEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
+void EspWifi::smartconfigEventHandler(void* arg, esp_event_base_t event_base, int32_t event_id,
+                                      void* event_data) {
   EspWifi* wifi = static_cast<EspWifi*>(arg);
   wifi->handleSmartconfigEvent(event_id, event_data);
 }
@@ -861,7 +867,7 @@ hf_wifi_err_t EspWifi::DeinitNetif() {
 
 hf_wifi_err_t EspWifi::Disconnect() {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
@@ -877,7 +883,7 @@ bool EspWifi::IsConnected() const {
 
 int8_t EspWifi::GetRssi() const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return 0;
   }
@@ -887,7 +893,7 @@ int8_t EspWifi::GetRssi() const {
   if (err != ESP_OK) {
     return 0;
   }
-  
+
   return ap_info.rssi;
 }
 

@@ -236,7 +236,8 @@ using hf_wifi_event_callback_t = std::function<void(hf_wifi_event_t event, void*
  * @ingroup wifi
  * @brief WiFi scan callback function type
  */
-using hf_wifi_scan_callback_t = std::function<void(const std::vector<hf_wifi_network_info_t>& networks)>;
+using hf_wifi_scan_callback_t =
+    std::function<void(const std::vector<hf_wifi_network_info_t>& networks)>;
 
 /**
  * @class BaseWifi

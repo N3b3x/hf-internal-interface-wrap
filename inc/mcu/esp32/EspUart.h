@@ -467,7 +467,7 @@ public:
   int VPrintf(const char* format, va_list args) noexcept;
 
 private:
-  
+
   //==============================================================================
   // INITIALIZATION AND DEINITIALIZATION
   //==============================================================================

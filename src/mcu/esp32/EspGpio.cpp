@@ -37,12 +37,12 @@ extern "C" {
 #include "esp_log.h"
 #include "esp_sleep.h"
 #include "esp_timer.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
 #include "hal/gpio_types.h"
 #include "hal/rtc_io_types.h"
 #include "soc/clk_tree_defs.h"
 #include "soc/gpio_sig_map.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
 
 #ifdef __cplusplus
 }
