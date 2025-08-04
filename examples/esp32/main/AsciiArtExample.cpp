@@ -34,7 +34,7 @@ void DemonstrateCustomCharacters() {
   AsciiArtGenerator generator;
 
   // Add custom character
-  std::vector<std::string> custom_char = {"  ___  ", " /   \\", "|     |",
+  std::vector<std::string> custom_char = {"  ___  ", " /   \\",  "|     |",
                                           "|     |", " \\___/ ", "       "};
 
   generator.AddCustomCharacter('@', custom_char);
