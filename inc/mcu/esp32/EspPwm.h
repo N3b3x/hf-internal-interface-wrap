@@ -350,6 +350,7 @@ private:
   /**
    * @brief Platform-specific interrupt handler
    * @param channel_id Channel that generated interrupt
+   * @param user_data User data passed to interrupt handler (EspPwm instance)
    */
   static void IRAM_ATTR InterruptHandler(hf_channel_id_t channel_id, void* user_data) noexcept;
 

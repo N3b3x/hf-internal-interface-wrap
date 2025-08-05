@@ -48,7 +48,7 @@ std::unique_ptr<T> make_unique_nothrow(Args&&... args) {
  * @param size Number of elements to allocate
  * @return std::unique_ptr<T[]> Valid pointer on success, nullptr on allocation failure
  *
- * @example
+ * @par Array Allocation Example:
  * @code
  * auto arr = make_unique_array_nothrow<int>(1000);
  * if (!arr) {

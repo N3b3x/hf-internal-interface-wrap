@@ -183,10 +183,6 @@ struct hf_uart_diagnostics_t {
 class BaseUart {
 public:
   /**
-   * @brief Constructor with port.
-   * @param port UART port number
-   */
-  /**
    * @brief Virtual destructor ensures proper cleanup in derived classes.
    */
   virtual ~BaseUart() noexcept = default;
@@ -389,9 +385,8 @@ public:
 
 protected:
   /**
-   * @brief Protected constructor with port and configuration.
+   * @brief Protected constructor with port.
    * @param port UART port number
-   * @param config UART configuration parameters
    */
   BaseUart(hf_port_num_t port) noexcept
       : port_(port), initialized_(false), statistics_{}, diagnostics_{} {}

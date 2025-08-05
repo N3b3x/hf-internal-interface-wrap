@@ -416,8 +416,8 @@ public:
 
 protected:
   /**
-   * @brief Protected constructor with configuration.
-   * @param config I2C bus configuration parameters
+   * @brief Protected default constructor.
+   * Initializes base I2C state with default values.
    */
   explicit BaseI2c() noexcept : initialized_(false), statistics_{}, diagnostics_{} {}
 

@@ -570,6 +570,7 @@ public:
    * @brief Enable or disable CAN-FD mode.
    * @param enable true to enable CAN-FD, false to disable
    * @param data_baudrate Data phase baudrate for CAN-FD (default: 2Mbps)
+   * @param timeout_ms Timeout for mode change operation in milliseconds (default: 1000ms)
    * @return true if successful, false otherwise
    * @note Default implementation returns false (not supported)
    */
