@@ -610,15 +610,15 @@ private:
 /**
  * @brief Default ESP32-C6 temperature sensor configuration
  */
-#define ESP_TEMP_CONFIG_DEFAULT()                     \
-  {.range = ESP_TEMP_RANGE_NEG10_80,                  \
-   .calibration_offset = 0.0f,                        \
-   .enable_threshold_monitoring = false,              \
-   .high_threshold_celsius = 80.0f,                   \
-   .low_threshold_celsius = -10.0f,                   \
-   .enable_continuous_monitoring = false,             \
-   .sample_rate_hz = ESP_TEMP_DEFAULT_SAMPLE_RATE_HZ, \
-   .allow_power_down = true,                          \
-   .clk_src = 0}
+#define ESP_TEMP_CONFIG_DEFAULT() \
+  { .range = ESP_TEMP_RANGE_NEG10_80, \
+    .calibration_offset = 0.0f, \
+    .enable_threshold_monitoring = false, \
+    .high_threshold_celsius = 80.0f, \
+    .low_threshold_celsius = -10.0f, \
+    .enable_continuous_monitoring = false, \
+    .sample_rate_hz = ESP_TEMP_DEFAULT_SAMPLE_RATE_HZ, \
+    .allow_power_down = true, \
+    .clk_src = 0 }
 
 // #endif // HF_MCU_FAMILY_ESP32

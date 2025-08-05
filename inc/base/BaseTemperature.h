@@ -325,19 +325,19 @@ using hf_temp_error_callback_t =
 /**
  * @brief Default temperature sensor configuration
  */
-#define HF_TEMP_CONFIG_DEFAULT()               \
-  {.range_min_celsius = -40.0f,                \
-   .range_max_celsius = 125.0f,                \
-   .resolution = 0.1f,                         \
-   .sample_rate_hz = 0,                        \
-   .enable_threshold_monitoring = false,       \
-   .high_threshold_celsius = 100.0f,           \
-   .low_threshold_celsius = -20.0f,            \
-   .enable_power_management = false,           \
-   .enable_calibration = false,                \
-   .timeout_ms = 1000,                         \
-   .sensor_type = HF_TEMP_SENSOR_TYPE_UNKNOWN, \
-   .capabilities = HF_TEMP_CAP_NONE}
+#define HF_TEMP_CONFIG_DEFAULT() \
+  { .range_min_celsius = -40.0f, \
+    .range_max_celsius = 125.0f, \
+    .resolution = 0.1f, \
+    .sample_rate_hz = 0, \
+    .enable_threshold_monitoring = false, \
+    .high_threshold_celsius = 100.0f, \
+    .low_threshold_celsius = -20.0f, \
+    .enable_power_management = false, \
+    .enable_calibration = false, \
+    .timeout_ms = 1000, \
+    .sensor_type = HF_TEMP_SENSOR_TYPE_UNKNOWN, \
+    .capabilities = HF_TEMP_CAP_NONE }
 
 /**
  * @brief Get error description string
