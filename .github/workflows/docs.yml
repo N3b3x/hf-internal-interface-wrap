@@ -27,7 +27,7 @@ jobs:
           path: |
             ~/.cache/apt
             /var/cache/apt
-          key: doxygen-tools-${{ runner.os }}-${{ hashFiles('Doxyfile') }}
+          key: doxygen-tools-${{ runner.os }}-${{ hashFiles('Doxyfile', 'docs/**') }}
           restore-keys: |
             doxygen-tools-${{ runner.os }}-
       
@@ -36,17 +36,48 @@ jobs:
       
       - name: Install Doxygen
         run: |
-          sudo apt-get update
-          sudo apt-get install -y doxygen graphviz
+          if ! command -v doxygen &> /dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y doxygen graphviz
+          else
+            echo "Doxygen already installed"
+          fi
       
       - name: Build documentation
-        run: doxygen Doxyfile
+        run: |
+          echo "Building documentation with Doxygen..."
+          echo "Current directory: $(pwd)"
+          echo "Input directories exist check:"
+          ls -la inc/ src/ examples/ 2>/dev/null || echo "Some input directories missing"
+          
+          echo "Running Doxygen..."
+          doxygen Doxyfile
+          
+          echo "Checking generated files..."
+          echo "Output directory structure:"
+          find docs/ -type d 2>/dev/null || echo "docs/ directory structure:"
+          ls -la docs/ 2>/dev/null || echo "docs/ directory not found"
+          
+          if [ -d "docs/doxygen" ]; then
+            echo "docs/doxygen contents:"
+            ls -la docs/doxygen/
+            if [ -d "docs/doxygen/html" ]; then
+              echo "docs/doxygen/html contents:"
+              ls -la docs/doxygen/html/ | head -10
+              echo "HTML files found: $(find docs/doxygen/html -name "*.html" | wc -l)"
+            else
+              echo "docs/doxygen/html directory not found!"
+            fi
+          else
+            echo "docs/doxygen directory not found!"
+          fi
       
       - name: Upload documentation
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: docs-html
-          path: docs/html
+          path: docs/doxygen/html/
           retention-days: 7
       
       - name: Deploy to GitHub Pages
@@ -54,5 +85,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/html
+          publish_dir: docs/doxygen/html
           force_orphan: true
