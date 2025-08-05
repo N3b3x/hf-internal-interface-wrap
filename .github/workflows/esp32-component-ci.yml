@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      clean_build:
+        description: 'Force clean build (ignore all caches)'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -51,6 +57,7 @@ jobs:
 
       - name: Cache Docker layers
         uses: actions/cache@v4
+        if: ${{ !inputs.clean_build }}
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ matrix.idf_version }}
@@ -58,13 +65,24 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Cache ccache
+        id: ccache-cache
         uses: actions/cache@v4
+        if: ${{ !inputs.clean_build }}
         with:
           path: ~/.ccache
-          key: ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
+          key: >-
+            ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
           restore-keys: |
             ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
             ccache-${{ matrix.idf_version }}-
+      - name: Log ccache cache result
+        run: |
+          if [ "${{ inputs.clean_build }}" = "true" ]; then
+            echo "🧹 Clean build requested - all caches skipped"
+          else
+            echo "ccache cache hit - ${{ steps.ccache-cache.outputs.cache-hit }}"
+          fi
+
 
       - name: Install ccache (clang-format installed separately)
         run: sudo apt-get update && sudo apt-get install -y ccache
@@ -94,10 +112,15 @@ jobs:
             cp -r src ${{ env.BUILD_PATH }}/src &&
             cp -r inc ${{ env.BUILD_PATH }}/inc &&
             cp examples/esp32/sdkconfig ${{ env.BUILD_PATH }}/sdkconfig &&
-            idf.py -C ${{ env.BUILD_PATH }} -DIDF_TARGET=${{ env.IDF_TARGET }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DEXAMPLE_TYPE=${{ matrix.example_type }} --ccache reconfigure build &&
+            idf.py -C ${{ env.BUILD_PATH }} \
+              -DIDF_TARGET=${{ env.IDF_TARGET }} \
+              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+              -DEXAMPLE_TYPE=${{ matrix.example_type }} \
+              --ccache reconfigure build &&
             idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt &&
             idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json &&
-            ccache -s
+            ccache -s &&
+            ccache -s > ${{ env.BUILD_PATH }}/build/ccache_stats.txt
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -110,6 +133,7 @@ jobs:
             ${{ env.BUILD_PATH }}/build/*.elf
             ${{ env.BUILD_PATH }}/build/*.map
             ${{ env.BUILD_PATH }}/build/size.*
+            ${{ env.BUILD_PATH }}/build/ccache_stats.txt
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
