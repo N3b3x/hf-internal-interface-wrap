@@ -37,6 +37,7 @@ jobs:
         build_type: [Release, Debug]
         example_type: [comprehensive, ascii_art]
         exclude:
+          # Exclude some combinations to reduce CI time
           - build_type: Debug
             example_type: ascii_art
 
@@ -73,13 +74,8 @@ jobs:
           esp_idf_version: ${{ matrix.idf_version }}
           target: ${{ env.IDF_TARGET }}
           path: .
-          extra_docker_args: >
-            -v $HOME/.ccache:/root/.ccache
-            -e CCACHE_DIR=/root/.ccache
-            -v $HOME/.espressif:/root/.espressif
-            -e IDF_TOOLS_PATH=/root/.espressif
-            -v $HOME/.cache/pip:/root/.cache/pip
-          command: >
+          extra_docker_args: "-v $HOME/.ccache:/root/.ccache -e CCACHE_DIR=/root/.ccache -v $HOME/.espressif:/root/.espressif -e IDF_TOOLS_PATH=/root/.espressif -v $HOME/.cache/pip:/root/.cache/pip"
+          command: |
             idf.py create-project ${{ env.BUILD_PATH }} &&
             cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt &&
             rm -rf ${{ env.BUILD_PATH }}/main &&
