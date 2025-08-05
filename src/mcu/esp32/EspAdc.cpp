@@ -89,10 +89,10 @@ static esp_err_t AdcChannelToGpio(adc_unit_t unit_id, adc_channel_t channel, int
 EspAdc::EspAdc(const hf_adc_unit_config_t& config) noexcept
     : BaseAdc(), config_(config), continuous_running_(false),
       last_error_(hf_adc_err_t::ADC_SUCCESS), config_mutex_(), stats_mutex_(),
-      oneshot_handle_(nullptr), continuous_handle_(nullptr), calibration_handles_{},
-      filter_handles_{}, monitor_handles_{}, continuous_callback_(nullptr),
-      continuous_user_data_(nullptr), monitor_callbacks_{}, monitor_user_data_{}, statistics_{},
-      diagnostics_{} {
+      oneshot_handle_(nullptr),
+      continuous_handle_(nullptr), calibration_handles_{}, filter_handles_{}, monitor_handles_{},
+      continuous_callback_(nullptr), continuous_user_data_(nullptr), monitor_callbacks_{},
+      monitor_user_data_{}, statistics_{}, diagnostics_{} {
   // Initialize arrays to nullptr
   std::fill(calibration_handles_.begin(), calibration_handles_.end(), nullptr);
   std::fill(filter_handles_.begin(), filter_handles_.end(), nullptr);

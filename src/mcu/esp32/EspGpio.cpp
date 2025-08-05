@@ -133,8 +133,9 @@ EspGpio::EspGpio(hf_pin_num_t pin_num, hf_gpio_direction_t direction,
       interrupt_callback_(nullptr), interrupt_user_data_(nullptr), interrupt_enabled_(false),
       interrupt_count_(0), platform_semaphore_(nullptr), drive_capability_(drive_capability),
       glitch_filter_type_(hf_gpio_glitch_filter_type_t::HF_GPIO_GLITCH_FILTER_NONE),
-      pin_glitch_filter_enabled_(false), flex_glitch_filter_enabled_(false), flex_filter_config_{},
-      sleep_config_{}, hold_enabled_(false), rtc_gpio_enabled_(false), wakeup_config_{},
+      pin_glitch_filter_enabled_(false),
+      flex_glitch_filter_enabled_(false), flex_filter_config_{}, sleep_config_{},
+      hold_enabled_(false), rtc_gpio_enabled_(false), wakeup_config_{},
       glitch_filter_handle_(nullptr), rtc_gpio_handle_(nullptr), initialized_(false) {
   // Validate pin number for target platform
   if (!HF_GPIO_IS_VALID_GPIO(pin_num)) {
@@ -325,7 +326,7 @@ hf_u8_t EspGpio::GetMaxPins() const noexcept {
 #ifdef HF_MCU_ESP32C6
   return HF_MCU_GPIO_PIN_COUNT;
 #else
-  return 32; // Generic default
+  return 32;                     // Generic default
 #endif
 }
 

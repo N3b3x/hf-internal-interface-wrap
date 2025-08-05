@@ -49,9 +49,9 @@ static constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT = 1024U;
  * @return RTOS ticks (implementation-specific)
  */
 #define HF_TICKS_FROM_MS(ms) (pdMS_TO_TICKS(ms))
-#define HF_MS_FROM_TICKS(ticks) ((ticks) * portTICK_PERIOD_MS)
+#define HF_MS_FROM_TICKS(ticks) ((ticks)*portTICK_PERIOD_MS)
 #define HF_US_TO_TICKS(us) ((us) / (portTICK_PERIOD_MS * 1000))
-#define HF_TICKS_TO_US(ticks) ((ticks) * portTICK_PERIOD_MS * 1000)
+#define HF_TICKS_TO_US(ticks) ((ticks)*portTICK_PERIOD_MS * 1000)
 
 //==============================================================================
 // ESP32 POWER MANAGEMENT AND TIMING TYPES

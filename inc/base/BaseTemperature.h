@@ -299,14 +299,14 @@ using hf_temp_error_callback_t =
  * @param celsius Temperature in Celsius
  * @return Temperature in Fahrenheit
  */
-#define HF_TEMP_CELSIUS_TO_FAHRENHEIT(celsius) ((celsius) * 9.0f / 5.0f + 32.0f)
+#define HF_TEMP_CELSIUS_TO_FAHRENHEIT(celsius) ((celsius)*9.0f / 5.0f + 32.0f)
 
 /**
  * @brief Convert Fahrenheit to Celsius
  * @param fahrenheit Temperature in Fahrenheit
  * @return Temperature in Celsius
  */
-#define HF_TEMP_FAHRENHEIT_TO_CELSIUS(fahrenheit) (((fahrenheit) - 32.0f) * 5.0f / 9.0f)
+#define HF_TEMP_FAHRENHEIT_TO_CELSIUS(fahrenheit) (((fahrenheit)-32.0f) * 5.0f / 9.0f)
 
 /**
  * @brief Convert Celsius to Kelvin
@@ -320,24 +320,19 @@ using hf_temp_error_callback_t =
  * @param kelvin Temperature in Kelvin
  * @return Temperature in Celsius
  */
-#define HF_TEMP_KELVIN_TO_CELSIUS(kelvin) ((kelvin) - 273.15f)
+#define HF_TEMP_KELVIN_TO_CELSIUS(kelvin) ((kelvin)-273.15f)
 
 /**
  * @brief Default temperature sensor configuration
  */
-#define HF_TEMP_CONFIG_DEFAULT()               \
-  {.range_min_celsius = -40.0f,                \
-   .range_max_celsius = 125.0f,                \
-   .resolution = 0.1f,                         \
-   .sample_rate_hz = 0,                        \
-   .enable_threshold_monitoring = false,       \
-   .high_threshold_celsius = 100.0f,           \
-   .low_threshold_celsius = -20.0f,            \
-   .enable_power_management = false,           \
-   .enable_calibration = false,                \
-   .timeout_ms = 1000,                         \
-   .sensor_type = HF_TEMP_SENSOR_TYPE_UNKNOWN, \
-   .capabilities = HF_TEMP_CAP_NONE}
+#define HF_TEMP_CONFIG_DEFAULT()                                                                 \
+  {                                                                                              \
+    .range_min_celsius = -40.0f, .range_max_celsius = 125.0f, .resolution = 0.1f,                \
+    .sample_rate_hz = 0, .enable_threshold_monitoring = false, .high_threshold_celsius = 100.0f, \
+    .low_threshold_celsius = -20.0f, .enable_power_management = false,                           \
+    .enable_calibration = false, .timeout_ms = 1000, .sensor_type = HF_TEMP_SENSOR_TYPE_UNKNOWN, \
+    .capabilities = HF_TEMP_CAP_NONE                                                             \
+  }
 
 /**
  * @brief Get error description string

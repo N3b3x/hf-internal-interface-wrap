@@ -50,8 +50,8 @@ static const char* TAG = "EspCan";
 
 EspCan::EspCan(const hf_esp_can_config_t& config) noexcept
     : BaseCan(), config_(config), is_initialized_(false), is_started_(false), config_mutex_(),
-      stats_mutex_(), twai_handle_(nullptr), receive_callback_(nullptr), statistics_{},
-      diagnostics_{} {
+      stats_mutex_(), twai_handle_(nullptr),
+      receive_callback_(nullptr), statistics_{}, diagnostics_{} {
   // **LAZY INITIALIZATION** - Store configuration but do NOT initialize hardware
   // This follows the exact same pattern as EspAdc
   ESP_LOGD(TAG, "Creating EspCan for controller %d - LAZY INIT",

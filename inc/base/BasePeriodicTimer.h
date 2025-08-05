@@ -341,8 +341,8 @@ protected:
    * @param user_data User data passed to callback
    */
   explicit BasePeriodicTimer(hf_timer_callback_t callback, void* user_data = nullptr) noexcept
-      : callback_(callback), user_data_(user_data), initialized_(false), running_(false),
-        statistics_{}, diagnostics_{} {}
+      : callback_(callback), user_data_(user_data), initialized_(false),
+        running_(false), statistics_{}, diagnostics_{} {}
 
   /**
    * @brief Set the initialized state.
