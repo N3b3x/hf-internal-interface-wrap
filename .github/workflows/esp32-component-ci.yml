@@ -71,7 +71,8 @@ jobs:
         with:
           path: ~/.ccache
           key: >-
-            ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
+            ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
+            ${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
           restore-keys: |
             ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
             ccache-${{ matrix.idf_version }}-
