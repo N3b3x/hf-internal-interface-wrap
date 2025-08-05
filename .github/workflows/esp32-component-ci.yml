@@ -59,7 +59,7 @@ jobs:
             esp-idf-${{ matrix.idf_version }}-
 
       - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y clang-format-20 ccache
+        run: sudo apt-get update && sudo apt-get install -y clang-format ccache
 
       - name: ESP-IDF build
         uses: espressif/esp-idf-ci-action@v1
