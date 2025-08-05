@@ -191,20 +191,33 @@ jobs:
             ~/.cache/apt
             /var/cache/apt
             ~/actionlint
+            ~/.local/bin
           key: workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
           restore-keys: |
             workflow-tools-${{ runner.os }}-
 
       - name: Install yamllint
-        run: sudo apt-get update && sudo apt-get install -y yamllint
+        run: |
+          if ! command -v yamllint &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y yamllint
+          else
+            echo "yamllint already installed"
+          fi
 
       - name: Run yamllint
         run: yamllint .github/workflows/
 
       - name: Install actionlint
         run: |
-          curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
-          sudo mv actionlint /usr/local/bin/
+          if [ ! -f ~/actionlint ]; then
+            echo "Downloading actionlint..."
+            curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
+            mv actionlint ~/actionlint
+            chmod +x ~/actionlint
+          else
+            echo "actionlint found in cache"
+          fi
+          sudo cp ~/actionlint /usr/local/bin/ || sudo ln -sf ~/actionlint /usr/local/bin/actionlint
 
       - name: Run actionlint
         run: actionlint .github/workflows/*.yml
