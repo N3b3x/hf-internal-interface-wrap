@@ -59,7 +59,7 @@ jobs:
             esp-idf-${{ matrix.idf_version }}-
 
       - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y clang-format ccache
+        run: sudo apt-get update && sudo apt-get install -y clang-format-20 ccache
 
       - name: ESP-IDF build
         uses: espressif/esp-idf-ci-action@v1
@@ -153,6 +153,7 @@ jobs:
           include: 'src/*,inc/*,examples/*'
           exclude: 'build/*'
 
+  
   workflow-lint:
     name: Workflow Lint (actionlint + yamllint)
     runs-on: ubuntu-latest
