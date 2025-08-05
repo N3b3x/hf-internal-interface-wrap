@@ -19,8 +19,7 @@ env:
   IDF_TARGET: esp32c6
   BUILD_PATH: ci_project
   ESP_IDF_VERSIONS: '["release-v5.5"]'
-  # enable ccache globally so idf.py uses it [oai_citation:5‡docs.espressif.com](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/tools/idf-py.html#:~:text=%2A%20%60,dramatically%20reduce%20the%20build%20time)
-  IDF_CCACHE_ENABLE: "1"
+  IDF_CCACHE_ENABLE: "1"  # Enables ccache inside ESP-IDF
 
 defaults:
   run:
@@ -46,8 +45,7 @@ jobs:
         with:
           submodules: recursive
 
-      # Restore cached IDF tools, ccache and pip packages
-      - name: Cache ESP‑IDF tools, ccache and pip
+      - name: Cache IDF tools, ccache and pip
         uses: actions/cache@v4
         with:
           path: |
@@ -59,51 +57,42 @@ jobs:
             esp-idf-${{ matrix.idf_version }}-
             esp-idf-
 
-      - name: Install build tools
+      - name: Install ccache (clang-format installed separately)
         run: sudo apt-get update && sudo apt-get install -y ccache
 
-      # Use clang-format 20 to enforce formatting
-      - name: Check formatting (clang-format 20)
+      - name: Clang-format check (version 20)
         uses: jidicula/clang-format-action@v4.15.0
         with:
           clang-format-version: '20'
           check-path: '.'
           fallback-style: 'LLVM'
 
-      - name: ESP‑IDF build
+      - name: ESP-IDF Build with caching
         uses: espressif/esp-idf-ci-action@v1
         with:
           esp_idf_version: ${{ matrix.idf_version }}
           target: ${{ env.IDF_TARGET }}
           path: .
-          # Mount cached directories into the container [oai_citation:6‡github.com](https://github.com/marketplace/actions/espressif-iot-development-framework-esp-idf#:~:text=Additional%20parameters%20to%20pass%20to,empty) and set variables
           extra_docker_args: >
             -v $HOME/.ccache:/root/.ccache
             -e CCACHE_DIR=/root/.ccache
             -v $HOME/.espressif:/root/.espressif
             -e IDF_TOOLS_PATH=/root/.espressif
             -v $HOME/.cache/pip:/root/.cache/pip
-          command: |
-            idf.py create-project ${{ env.BUILD_PATH }}
-            cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt
-            rm -rf ${{ env.BUILD_PATH }}/main
-            cp -r examples/esp32/main ${{ env.BUILD_PATH }}/main
-            cp -r examples/esp32/components ${{ env.BUILD_PATH }}/components
-            cp -r examples/common ${{ env.BUILD_PATH }}/common
-            cp -r src ${{ env.BUILD_PATH }}/src
-            cp -r inc ${{ env.BUILD_PATH }}/inc
-            cp examples/esp32/sdkconfig ${{ env.BUILD_PATH }}/sdkconfig
-            # use --ccache with idf.py to speed up builds [oai_citation:7‡docs.espressif.com](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/tools/idf-py.html#:~:text=%2A%20%60,dramatically%20reduce%20the%20build%20time)
-            idf.py -C ${{ env.BUILD_PATH }} \
-              -DIDF_TARGET=${{ env.IDF_TARGET }} \
-              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-              -DEXAMPLE_TYPE=${{ matrix.example_type }} \
-              --ccache \
-              reconfigure build
-            idf.py -C ${{ env.BUILD_PATH }} size-components > \
-              ${{ env.BUILD_PATH }}/build/size.txt
-            idf.py -C ${{ env.BUILD_PATH }} size --format json > \
-              ${{ env.BUILD_PATH }}/build/size.json
+          command: >
+            idf.py create-project ${{ env.BUILD_PATH }} &&
+            cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt &&
+            rm -rf ${{ env.BUILD_PATH }}/main &&
+            cp -r examples/esp32/main ${{ env.BUILD_PATH }}/main &&
+            cp -r examples/esp32/components ${{ env.BUILD_PATH }}/components &&
+            cp -r examples/common ${{ env.BUILD_PATH }}/common &&
+            cp -r src ${{ env.BUILD_PATH }}/src &&
+            cp -r inc ${{ env.BUILD_PATH }}/inc &&
+            cp examples/esp32/sdkconfig ${{ env.BUILD_PATH }}/sdkconfig &&
+            idf.py -C ${{ env.BUILD_PATH }} -DIDF_TARGET=${{ env.IDF_TARGET }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DEXAMPLE_TYPE=${{ matrix.example_type }} --ccache reconfigure build &&
+            idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt &&
+            idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json &&
+            ccache -s
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -118,7 +107,7 @@ jobs:
             ${{ env.BUILD_PATH }}/build/size.*
 
   static-analysis:
-    name: Static Analysis (cppcheck + clang‑tidy)
+    name: Static Analysis (cppcheck + clang-tidy)
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     needs: build
@@ -126,6 +115,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+
       - name: Cache static analysis tools
         uses: actions/cache@v4
         with:
@@ -136,10 +126,12 @@ jobs:
           key: static-analysis-${{ runner.os }}-${{ hashFiles('**/*.cpp', '**/*.h', '.clang-tidy') }}
           restore-keys: |
             static-analysis-${{ runner.os }}-
+
       - name: Install analysis tools
         run: |
           sudo apt-get update
           sudo apt-get install -y clang-tidy cppcheck
+
       - name: Run cppcheck
         uses: deep5050/cppcheck-action@v3.0
         with:
@@ -147,6 +139,7 @@ jobs:
           enable: all
           inconclusive: true
           std: c++17
+
       - name: Run clang-tidy
         uses: ZedThree/clang-tidy-review@v0.21.0
         with:
@@ -160,7 +153,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Cache workflow tools
+
+      - name: Cache lint tools
         uses: actions/cache@v4
         with:
           path: |
@@ -170,13 +164,17 @@ jobs:
           key: workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
           restore-keys: |
             workflow-tools-${{ runner.os }}-
+
       - name: Install yamllint
         run: sudo apt-get update && sudo apt-get install -y yamllint
+
       - name: Run yamllint
         run: yamllint .github/workflows/
+
       - name: Install actionlint
         run: |
           curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
           sudo mv actionlint /usr/local/bin/
+
       - name: Run actionlint
         run: actionlint .github/workflows/*.yml
