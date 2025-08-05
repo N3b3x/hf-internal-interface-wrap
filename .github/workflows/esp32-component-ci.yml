@@ -46,17 +46,25 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Cache IDF tools, ccache and pip
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
         uses: actions/cache@v4
         with:
-          path: |
-            ~/.espressif
-            ~/.ccache
-            ~/.cache/pip
-          key: esp-idf-${{ matrix.idf_version }}-${{ runner.os }}
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ matrix.idf_version }}
           restore-keys: |
-            esp-idf-${{ matrix.idf_version }}-
-            esp-idf-
+            ${{ runner.os }}-buildx-
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: ~/.ccache
+          key: ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
+          restore-keys: |
+            ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
+            ccache-${{ matrix.idf_version }}-
 
       - name: Install ccache (clang-format installed separately)
         run: sudo apt-get update && sudo apt-get install -y ccache
@@ -74,7 +82,7 @@ jobs:
           esp_idf_version: ${{ matrix.idf_version }}
           target: ${{ env.IDF_TARGET }}
           path: .
-          extra_docker_args: "-v $HOME/.ccache:/root/.ccache -e CCACHE_DIR=/root/.ccache -v $HOME/.espressif:/root/.espressif -e IDF_TOOLS_PATH=/root/.espressif -v $HOME/.cache/pip:/root/.cache/pip"
+          extra_docker_args: "-v $HOME/.ccache:/root/.ccache -e CCACHE_DIR=/root/.ccache -e IDF_CCACHE_ENABLE=1"
           command: |
             idf.py create-project ${{ env.BUILD_PATH }} &&
             cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt &&
