@@ -48,51 +48,51 @@
  * @details X-macro pattern for comprehensive error enumeration. Each entry contains:
  *          X(NAME, VALUE, DESCRIPTION)
  */
-#define HF_BLUETOOTH_ERR_LIST(X)                                            \
-  /* Success codes */                                                       \
-  X(BLUETOOTH_SUCCESS, 0, "Success")                                        \
-                                                                            \
-  /* General errors */                                                      \
-  X(BLUETOOTH_ERR_FAILURE, 1, "General failure")                            \
-  X(BLUETOOTH_ERR_INVALID_PARAM, 2, "Invalid parameter")                    \
-  X(BLUETOOTH_ERR_NOT_INITIALIZED, 3, "Bluetooth not initialized")          \
-  X(BLUETOOTH_ERR_ALREADY_INITIALIZED, 4, "Bluetooth already initialized")  \
-  X(BLUETOOTH_ERR_NOT_ENABLED, 5, "Bluetooth not enabled")                  \
-  X(BLUETOOTH_ERR_ALREADY_ENABLED, 6, "Bluetooth already enabled")          \
-  X(BLUETOOTH_ERR_NOT_CONNECTED, 7, "Bluetooth not connected")              \
-  X(BLUETOOTH_ERR_ALREADY_CONNECTED, 8, "Bluetooth already connected")      \
-  X(BLUETOOTH_ERR_CONNECTION_FAILED, 9, "Connection failed")                \
-  X(BLUETOOTH_ERR_DISCONNECTION_FAILED, 10, "Disconnection failed")         \
-  X(BLUETOOTH_ERR_SCAN_FAILED, 11, "Device scan failed")                    \
-  X(BLUETOOTH_ERR_PAIR_FAILED, 12, "Pairing failed")                        \
-  X(BLUETOOTH_ERR_UNPAIR_FAILED, 13, "Unpairing failed")                    \
-  X(BLUETOOTH_ERR_TIMEOUT, 14, "Operation timeout")                         \
-  X(BLUETOOTH_ERR_NO_MEMORY, 15, "Insufficient memory")                     \
-  X(BLUETOOTH_ERR_INVALID_ADDRESS, 16, "Invalid Bluetooth address")         \
-  X(BLUETOOTH_ERR_DEVICE_NOT_FOUND, 17, "Device not found")                 \
-  X(BLUETOOTH_ERR_SERVICE_NOT_FOUND, 18, "Service not found")               \
-  X(BLUETOOTH_ERR_CHARACTERISTIC_NOT_FOUND, 19, "Characteristic not found") \
-  X(BLUETOOTH_ERR_AUTHENTICATION_FAILED, 20, "Authentication failed")       \
-  X(BLUETOOTH_ERR_AUTHORIZATION_FAILED, 21, "Authorization failed")         \
-  X(BLUETOOTH_ERR_ENCRYPTION_FAILED, 22, "Encryption failed")               \
-  X(BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED, 23, "Operation not supported")   \
-  X(BLUETOOTH_ERR_GATT_ERROR, 24, "GATT operation error")                   \
-  X(BLUETOOTH_ERR_INVALID_STATE, 25, "Invalid state for operation")         \
-  X(BLUETOOTH_ERR_PERMISSION_DENIED, 26, "Permission denied")               \
-  X(BLUETOOTH_ERR_BUSY, 27, "Device or operation busy")                     \
-  X(BLUETOOTH_ERR_SECURITY_ERROR, 28, "Security error")                     \
-  X(BLUETOOTH_ERR_INIT_FAILED, 29, "Initialization failed")                 \
-  X(BLUETOOTH_ERR_NOT_SUPPORTED, 30, "Operation not supported")             \
-  X(BLUETOOTH_ERR_ALREADY_STARTED, 31, "Operation already started")         \
-  X(BLUETOOTH_ERR_CONFIG_FAILED, 32, "Configuration failed")                \
-  X(BLUETOOTH_ERR_START_FAILED, 33, "Start operation failed")               \
-  X(BLUETOOTH_ERR_STOP_FAILED, 34, "Stop operation failed")                 \
-  X(BLUETOOTH_ERR_CONNECTION_NOT_FOUND, 35, "Connection not found")         \
+#define HF_BLUETOOTH_ERR_LIST(X)                                              \
+  /* Success codes */                                                         \
+  X(BLUETOOTH_SUCCESS, 0, "Success")                                          \
+                                                                              \
+  /* General errors */                                                        \
+  X(BLUETOOTH_ERR_FAILURE, 1, "General failure")                              \
+  X(BLUETOOTH_ERR_INVALID_PARAM, 2, "Invalid parameter")                      \
+  X(BLUETOOTH_ERR_NOT_INITIALIZED, 3, "Bluetooth not initialized")            \
+  X(BLUETOOTH_ERR_ALREADY_INITIALIZED, 4, "Bluetooth already initialized")    \
+  X(BLUETOOTH_ERR_NOT_ENABLED, 5, "Bluetooth not enabled")                    \
+  X(BLUETOOTH_ERR_ALREADY_ENABLED, 6, "Bluetooth already enabled")            \
+  X(BLUETOOTH_ERR_NOT_CONNECTED, 7, "Bluetooth not connected")                \
+  X(BLUETOOTH_ERR_ALREADY_CONNECTED, 8, "Bluetooth already connected")        \
+  X(BLUETOOTH_ERR_CONNECTION_FAILED, 9, "Connection failed")                  \
+  X(BLUETOOTH_ERR_DISCONNECTION_FAILED, 10, "Disconnection failed")           \
+  X(BLUETOOTH_ERR_SCAN_FAILED, 11, "Device scan failed")                      \
+  X(BLUETOOTH_ERR_PAIR_FAILED, 12, "Pairing failed")                          \
+  X(BLUETOOTH_ERR_UNPAIR_FAILED, 13, "Unpairing failed")                      \
+  X(BLUETOOTH_ERR_TIMEOUT, 14, "Operation timeout")                           \
+  X(BLUETOOTH_ERR_NO_MEMORY, 15, "Insufficient memory")                       \
+  X(BLUETOOTH_ERR_INVALID_ADDRESS, 16, "Invalid Bluetooth address")           \
+  X(BLUETOOTH_ERR_DEVICE_NOT_FOUND, 17, "Device not found")                   \
+  X(BLUETOOTH_ERR_SERVICE_NOT_FOUND, 18, "Service not found")                 \
+  X(BLUETOOTH_ERR_CHARACTERISTIC_NOT_FOUND, 19, "Characteristic not found")   \
+  X(BLUETOOTH_ERR_AUTHENTICATION_FAILED, 20, "Authentication failed")         \
+  X(BLUETOOTH_ERR_AUTHORIZATION_FAILED, 21, "Authorization failed")           \
+  X(BLUETOOTH_ERR_ENCRYPTION_FAILED, 22, "Encryption failed")                 \
+  X(BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED, 23, "Operation not supported")     \
+  X(BLUETOOTH_ERR_GATT_ERROR, 24, "GATT operation error")                     \
+  X(BLUETOOTH_ERR_INVALID_STATE, 25, "Invalid state for operation")           \
+  X(BLUETOOTH_ERR_PERMISSION_DENIED, 26, "Permission denied")                 \
+  X(BLUETOOTH_ERR_BUSY, 27, "Device or operation busy")                       \
+  X(BLUETOOTH_ERR_SECURITY_ERROR, 28, "Security error")                       \
+  X(BLUETOOTH_ERR_INIT_FAILED, 29, "Initialization failed")                   \
+  X(BLUETOOTH_ERR_NOT_SUPPORTED, 30, "Operation not supported")               \
+  X(BLUETOOTH_ERR_ALREADY_STARTED, 31, "Operation already started")           \
+  X(BLUETOOTH_ERR_CONFIG_FAILED, 32, "Configuration failed")                  \
+  X(BLUETOOTH_ERR_START_FAILED, 33, "Start operation failed")                 \
+  X(BLUETOOTH_ERR_STOP_FAILED, 34, "Stop operation failed")                   \
+  X(BLUETOOTH_ERR_CONNECTION_NOT_FOUND, 35, "Connection not found")           \
   X(BLUETOOTH_ERR_MAX_CONNECTIONS_REACHED, 36, "Maximum connections reached") \
-  X(BLUETOOTH_ERR_SEND_FAILED, 37, "Send operation failed")                 \
-  X(BLUETOOTH_ERR_GATT_SERVICE_ADD_FAILED, 38, "GATT service add failed")   \
+  X(BLUETOOTH_ERR_SEND_FAILED, 37, "Send operation failed")                   \
+  X(BLUETOOTH_ERR_GATT_SERVICE_ADD_FAILED, 38, "GATT service add failed")     \
   X(BLUETOOTH_ERR_GATT_CHAR_ADD_FAILED, 39, "GATT characteristic add failed") \
-  X(BLUETOOTH_ERR_GATT_SERVICE_NOT_FOUND, 40, "GATT service not found")     \
+  X(BLUETOOTH_ERR_GATT_SERVICE_NOT_FOUND, 40, "GATT service not found")       \
   X(BLUETOOTH_ERR_GATT_SERVICE_START_FAILED, 41, "GATT service start failed")
 
 /**

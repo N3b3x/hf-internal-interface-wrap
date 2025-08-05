@@ -384,7 +384,7 @@ private:
   // Advanced features state
   std::atomic<bool> m_smartconfig_active; /**< SmartConfig active */
   // std::atomic<bool> m_wps_active;         /**< WPS active */
-  std::atomic<bool> m_mesh_active;        /**< Mesh active */
+  std::atomic<bool> m_mesh_active; /**< Mesh active */
 
   // ========== Internal Helper Methods ==========
 
