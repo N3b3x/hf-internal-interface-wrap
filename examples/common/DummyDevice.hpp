@@ -87,13 +87,7 @@ public:
   }
 
 private:
-<<<<<<< Current (Your changes)
-  EspI2cBus& bus_;           ///< Reference to I2C bus
-  uint8_t address_;          ///< Device I2C address
-  int device_index_;         ///< Device index on the bus (-1 if not initialized)
-=======
   EspI2cBus& bus_;   ///< Reference to I2C bus
   uint8_t address_;  ///< Device I2C address
   int device_index_; ///< Device index on the bus (-1 if not initialized)
->>>>>>> Incoming (Background Agent changes)
 };
