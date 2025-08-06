@@ -115,43 +115,7 @@ enum class hf_gpio_glitch_filter_clk_src_t : uint8_t {
   HF_GLITCH_FILTER_CLK_SRC_XTAL = 2     ///< XTAL clock (40MHz typically)
 };
 
-/**
- * @brief Dedicated GPIO bundle configuration flags.
- * @details Control flags for dedicated GPIO bundle behavior.
- */
-struct hf_dedic_gpio_bundle_flags_t {
-  uint32_t in_en : 1;      ///< Enable input capability
-  uint32_t in_invert : 1;  ///< Invert input signals
-  uint32_t out_en : 1;     ///< Enable output capability
-  uint32_t out_invert : 1; ///< Invert output signals
-  uint32_t reserved : 28;  ///< Reserved for future use
-};
 
-/**
- * @brief Dedicated GPIO bundle handle type.
- * @details Platform-specific handle for dedicated GPIO bundle operations.
- */
-#ifdef dedic_gpio_bundle_handle_t
-using hf_dedic_gpio_bundle_handle_t = dedic_gpio_bundle_handle_t;
-#else
-using hf_dedic_gpio_bundle_handle_t = void*; // Fallback for older ESP-IDF versions
-#endif
-
-/**
- * @brief Dedicated GPIO bundle configuration structure.
- * @details Complete configuration for creating dedicated GPIO bundles.
- */
-struct hf_dedic_gpio_bundle_config_t {
-  const int* gpio_array;              ///< Array of GPIO numbers
-  size_t array_size;                  ///< Number of GPIOs in array
-  hf_dedic_gpio_bundle_flags_t flags; ///< Bundle configuration flags
-};
-
-/**
- * @brief Dedicated GPIO bundle read/write data type.
- * @details Data type for reading from or writing to dedicated GPIO bundles.
- */
-using hf_dedic_gpio_bundle_data_t = uint32_t;
 
 /**
  * @brief Low-Power IO configuration for ultra-low power operation.
@@ -261,8 +225,6 @@ struct hf_gpio_status_info_t {
   bool glitch_filter_enabled;               ///< Glitch filter enabled
   uint32_t interrupt_count;                 ///< Number of interrupts occurred
   bool is_wake_source;                      ///< Pin configured as wake source
-  bool is_dedicated_gpio;                   ///< Pin used in dedicated GPIO bundle
-  uint8_t dedicated_channel;                ///< Dedicated GPIO channel number (if applicable)
   bool sleep_hold_active;                   ///< Sleep hold currently active
   uint32_t last_interrupt_time_us;          ///< Last interrupt timestamp (microseconds)
 };
@@ -342,9 +304,6 @@ typedef struct {
 
 #define HF_GPIO_SUPPORTS_OPEN_DRAIN(gpio_num) (HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num))
 
-#define HF_GPIO_SUPPORTS_DEDICATED_GPIO(gpio_num) \
-  (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_SPI_FLASH_PIN(gpio_num))
-
 /**
  * @brief ESP32 GPIO to ADC channel mapping.
  */
@@ -377,13 +336,7 @@ typedef struct {
  */
 using hf_gpio_isr_callback_t = void (*)(uint32_t gpio_num, void* user_data);
 
-/**
- * @brief GPIO bundle operations callback type for dedicated GPIO.
- * @param bundle_handle Handle to the GPIO bundle
- * @param mask GPIO mask within the bundle
- * @param user_data User-provided data
- */
-using hf_gpio_bundle_callback_t = void (*)(void* bundle_handle, uint32_t mask, void* user_data);
+
 
 /**
  * @brief GPIO configuration validation result.

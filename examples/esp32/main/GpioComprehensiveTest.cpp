@@ -732,12 +732,7 @@ bool test_gpio_diagnostics_and_statistics() noexcept {
       ESP_LOGI(TAG, "[INFO] Pin %d does not support RTC GPIO", test_pins[i]);
     }
 
-    // Test dedicated GPIO support
-    if (diag_gpio.SupportsDedicatedGpio()) {
-      ESP_LOGI(TAG, "[SUCCESS] Pin %d supports dedicated GPIO functionality", test_pins[i]);
-    } else {
-      ESP_LOGI(TAG, "[INFO] Pin %d does not support dedicated GPIO", test_pins[i]);
-    }
+    // Note: Dedicated GPIO support removed from EspGpio implementation
 
     ESP_LOGI(TAG, "");
   }

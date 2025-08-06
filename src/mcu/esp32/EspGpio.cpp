@@ -1346,8 +1346,7 @@ hf_gpio_status_info_t EspGpio::GetConfigurationDump() const noexcept {
   dump.glitch_filter_enabled = pin_glitch_filter_enabled_ || flex_glitch_filter_enabled_;
   dump.interrupt_count = interrupt_count_.load();
   dump.is_wake_source = false;     // Set as appropriate
-  dump.is_dedicated_gpio = false;  // Set as appropriate
-  dump.dedicated_channel = 0;      // Set as appropriate
+
   dump.sleep_hold_active = false;  // Set as appropriate
   dump.last_interrupt_time_us = 0; // Set as appropriate
 #endif
