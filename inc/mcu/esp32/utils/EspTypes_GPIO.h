@@ -287,7 +287,6 @@ typedef struct {
 } hf_gpio_pin_capabilities_t;
 
 // Only define each macro once, use 'pin' as the parameter name
-// Only define each macro once, use 'pin' as the parameter name
 #ifndef HF_GPIO_IS_ADC_CAPABLE
 #define HF_GPIO_IS_ADC_CAPABLE(pin) (false)
 #endif

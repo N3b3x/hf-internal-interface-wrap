@@ -6,9 +6,10 @@ This document explains how to build and use different examples in the ESP32 Hard
 
 The project contains example applications that demonstrate different aspects of the HardFOC system:
 
-1. **Comprehensive Test** - Main integration test of all interfaces
-2. **ASCII Art Generator** - Advanced text formatting and display
-3. **Nimble Test** - Nimble bluetooth test
+1. **ASCII Art Generator** - Advanced text formatting and display
+2. **Peripheral Test Suites** - Individual tests for each hardware interface (GPIO, ADC, UART, etc.)
+3. **Bluetooth Test Suite** - Comprehensive Bluetooth/NimBLE testing
+4. **Utilities Test Suite** - Testing of utility functions, memory utilities, and hardware types
 
 ## Quick Start
 
@@ -16,62 +17,79 @@ The project contains example applications that demonstrate different aspects of 
 
 #### Windows (PowerShell)
 ```powershell
-# Build comprehensive test (default)
+# Build ASCII art example (default)
 .\build_example.ps1
 
 # Build specific examples
 .\build_example.ps1 ascii_art Debug
-.\build_example.ps1 ascii_art Release
+.\build_example.ps1 gpio_test Release
+.\build_example.ps1 bluetooth_test Release
+.\build_example.ps1 utils_test Release
 ```
 
 #### Linux/macOS (Bash)
 ```bash
-# Build comprehensive test (default)
+# Build ASCII art example (default)
 ./build_example.sh
 
 # Build specific examples
 ./build_example.sh ascii_art Debug
-./build_example.sh ascii_art Release
-./build_example.sh nimble_test Debug
+./build_example.sh gpio_test Release
+./build_example.sh bluetooth_test Debug
+./build_example.sh utils_test Release
 ```
 
 ## Detailed Examples
 
-### 1. Comprehensive Test (`comprehensive`)
-**File:** `main.cpp`
-**Description:** Complete integration test of all HardFOC interfaces
+### 1. ASCII Art Generator (`ascii_art`)
+**File:** `AsciiArtExample.cpp`
+**Description:** Advanced text formatting and display capabilities
 **Features:**
-- All interface initialization testing
-- GPIO, SPI, I2C, UART, PWM, ADC testing
-- Error handling verification
-- Real-time diagnostics
+- Text-to-ASCII art conversion
+- Multiple formatting styles
+- Display utilities
 
 **Expected Output:**
 - ASCII art banners and boxes
-- Initialization status for all interfaces
-- Continuous status updates
+- Text formatting demonstrations
 
-### 2. ASCII Art Generator (`ascii_art`)
-**File:** `AsciiArtExample.cpp`
-**Description:** Advanced text formatting and display
+### 2. Peripheral Test Suites
+Individual comprehensive test suites for each hardware interface:
+
+- **GPIO Test** (`gpio_test`) - Digital I/O testing
+- **ADC Test** (`adc_test`) - Analog-to-digital conversion
+- **UART Test** (`uart_test`) - Serial communication
+- **SPI Test** (`spi_test`) - SPI bus communication
+- **I2C Test** (`i2c_test`) - I2C bus communication
+- **PWM Test** (`pwm_test`) - Pulse-width modulation
+- **CAN Test** (`can_test`) - CAN bus communication
+- **Temperature Test** (`temperature_test`) - Temperature sensor interface
+- **NVS Test** (`nvs_test`) - Non-volatile storage
+- **Timer Test** (`timer_test`) - Hardware timer functionality
+- **WiFi Test** (`wifi_test`) - WiFi connectivity and features
+
+### 3. Bluetooth Test Suite (`bluetooth_test`)
+**File:** `BluetoothComprehensiveTest.cpp`
+**Description:** Comprehensive Bluetooth/NimBLE testing
 **Features:**
-- Banner creation
-- Box drawing with borders
-- Color formatting (ANSI codes)
-- Text styling (bold, italic, underline)
-- Custom character sets
+- Device name configuration
+- BLE scanning and discovery
+- Callback event handling
+- Connection state management
 
-### 3. Nimble BLE test (`nimble_test`)
-**File:** `Esp32c6NimbleTest.cpp`
-**Description:** Nimble BLE wrapper testing 
+### 4. Utilities Test Suite (`utils_test`)
+**File:** `UtilsComprehensiveTest.cpp`
+**Description:** Testing of utility functions and helper classes
 **Features:**
-- Sets Device Name
-- Scanning and Discovering
-- Callback Test
+- ASCII art generation testing
+- Memory utility function verification
+- Hardware type definitions testing
 
-**Build:**
+**Build Examples:**
 ```bash
-./build_example.sh ascii_art Release
+./build_example.sh gpio_test Release
+./build_example.sh bluetooth_test Debug
+./build_example.sh utils_test Release
 ```
 
 ## Build System Architecture

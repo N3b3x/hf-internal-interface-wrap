@@ -41,13 +41,38 @@ jobs:
       matrix:
         idf_version: [release-v5.5]
         build_type: [Release, Debug]
-        example_type: [comprehensive, ascii_art, nimble_test]
+        example_type: [
+          ascii_art, gpio_test,
+          adc_test, uart_test, spi_test, i2c_test,
+          pwm_test, can_test, temperature_test, nvs_test,
+          timer_test, wifi_test, bluetooth_test, utils_test
+        ]
         exclude:
           # Exclude some combinations to reduce CI time
           - build_type: Debug
             example_type: ascii_art
           - build_type: Debug
-            example_type: nimble_test
+            example_type: adc_test
+          - build_type: Debug
+            example_type: uart_test
+          - build_type: Debug
+            example_type: spi_test
+          - build_type: Debug
+            example_type: i2c_test
+          - build_type: Debug
+            example_type: pwm_test
+          - build_type: Debug
+            example_type: can_test
+          - build_type: Debug
+            example_type: temperature_test
+          - build_type: Debug
+            example_type: nvs_test
+          - build_type: Debug
+            example_type: timer_test
+          - build_type: Debug
+            example_type: wifi_test
+          - build_type: Debug
+            example_type: bluetooth_test
 
     steps:
       - uses: actions/checkout@v4

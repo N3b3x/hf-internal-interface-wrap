@@ -2,13 +2,14 @@
 # Usage: .\build_example.ps1 [example_type] [build_type]
 # 
 # Example types:
-#   comprehensive  - Main integration test (default)
 #   ascii_art      - ASCII art generator example
+#   bluetooth_test - Comprehensive Bluetooth testing suite
+#   utils_test     - Utilities testing suite
 #
 # Build types: Debug, Release (default: Release)
 
 param(
-    [string]$ExampleType = "comprehensive",
+    [string]$ExampleType = "ascii_art",
     [string]$BuildType = "Release"
 )
 
@@ -16,7 +17,13 @@ $ErrorActionPreference = "Stop"
 
 # Configuration
 $ProjectDir = $PSScriptRoot
-$ValidExampleTypes = @("comprehensive", "ascii_art")
+$ValidExampleTypes = @(
+    "ascii_art",
+    "gpio_test", "adc_test", "i2c_test", "spi_test", "uart_test", 
+    "can_test", "pwm_test", "timer_test", "logger_test", "nvs_test", 
+    "wifi_test", "pio_test", "temperature_test", "bluetooth_test", "interrupts_test",
+    "utils_test"
+)
 $ValidBuildTypes = @("Debug", "Release")
 
 Write-Host "=== ESP32 HardFOC Interface Wrapper Build System ===" -ForegroundColor Green
