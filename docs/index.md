@@ -285,12 +285,18 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 |-------------------|----------------|----------------------|-------------------|
 | [**`EspGpio`**](api/EspGpio.md) | BaseGpio | Drive strength, slew rate control | ✅ Complete |
 | [**`EspAdc`**](api/EspAdc.md) | BaseAdc | 12-bit resolution, multiple units | ✅ Complete |
-| **`EspPwm`** | BasePwm | LEDC controller, fade effects | 📝 In Progress |
-| **`EspI2c`** | BaseI2c | Clock stretching, multi-master | 📝 In Progress |
-| **`EspSpi`** | BaseSpi | Full-duplex, DMA support | 📝 In Progress |
-| **`EspUart`** | BaseUart | Hardware flow control | 📝 In Progress |
-| **`EspCan`** | BaseCan | TWAI controller | 📝 In Progress |
-| **`EspWifi`** | BaseWifi | 802.11n, WPA3, mesh | 📝 In Progress |
+| **`EspPwm`** | BasePwm | LEDC controller, fade effects | ✅ Complete |
+| **`EspI2c`** | BaseI2c | Clock stretching, multi-master | ✅ Complete |
+| **`EspSpi`** | BaseSpi | Full-duplex, DMA support | ✅ Complete |
+| **`EspUart`** | BaseUart | Hardware flow control | ✅ Complete |
+| **`EspCan`** | BaseCan | TWAI controller | ✅ Complete |
+| **`EspWifi`** | BaseWifi | 802.11n, WPA3, mesh | ✅ Complete |
+| **`EspBluetooth`** | BaseBluetooth | BLE/Classic, NimBLE optimized | ✅ Complete |
+| **`EspNvs`** | BaseNvs | Encrypted storage, wear leveling | ✅ Complete |
+| **`EspPeriodicTimer`** | BasePeriodicTimer | High precision, multi-timer | ✅ Complete |
+| **`EspTemperature`** | BaseTemperature | Internal sensor, I2C/1-Wire | ✅ Complete |
+| **`EspPio`** | BasePio | RMT peripheral, custom protocols | ✅ Complete |
+| **`EspLogger`** | BaseLogger | Multi-output, network logging | ✅ Complete |
 
 ### 🎯 **Type System Reference**
 
@@ -316,12 +322,12 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 git clone https://github.com/hardfoc/hf-internal-interface-wrap.git
 cd hf-internal-interface-wrap
 
-# Add to your HardFOC project
-echo 'idf_component_register(
+# Add to your HardFOC project's CMakeLists.txt
+idf_component_register(
     SRCS "main.cpp"
     INCLUDE_DIRS "."
     REQUIRES hf_internal_interface_wrap
-)' >> CMakeLists.txt
+)
 ```
 
 ### 🎯 **Basic HardFOC GPIO Example**
@@ -401,7 +407,7 @@ void read_hardfoc_sensors() {
 - **Bluetooth Classic** - Serial communication for HardFOC
 
 ### 🚀 **Advanced Integration Examples for HardFOC**
-- **Complete HardFOC TMC9660 Controller** - Full-featured TMC9660 system
+- **Complete HardFOC Motor Controller** - Full-featured motor control with TMC-style controllers
 - **HardFOC IoT Gateway** - WiFi bridge with monitoring
 - **HardFOC Multi-Sensor Logger** - Data collection system
 - **Secure HardFOC Communication** - Encrypted data transfer
