@@ -41,7 +41,6 @@ static constexpr hf_channel_id_t TEST_CHANNEL_2 = 1; // GPIO1 - ADC1_CH1
 static constexpr hf_channel_id_t TEST_CHANNEL_3 = 2; // GPIO2 - ADC1_CH2
 
 // Expected voltage ranges for test validation (in millivolts)
-static constexpr uint32_t VOLTAGE_TOLERANCE_MV = 200; // ±200mV tolerance
 static constexpr uint32_t MIN_VALID_VOLTAGE_MV = 100;  // Minimum valid voltage
 static constexpr uint32_t MAX_VALID_VOLTAGE_MV = 3200; // Maximum valid voltage
 
@@ -102,7 +101,7 @@ bool configure_test_channels(EspAdc& adc) noexcept {
     result = adc.ConfigureChannel(TEST_CHANNEL_1, hf_adc_atten_t::ATTEN_DB_12, 
                                   hf_adc_bitwidth_t::WIDTH_12BIT);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to configure channel %d: %d", TEST_CHANNEL_1, static_cast<int>(result));
+        ESP_LOGE(TAG, "Failed to configure channel %lu: %d", static_cast<unsigned long>(TEST_CHANNEL_1), static_cast<int>(result));
         return false;
     }
 
@@ -110,7 +109,7 @@ bool configure_test_channels(EspAdc& adc) noexcept {
     result = adc.ConfigureChannel(TEST_CHANNEL_2, hf_adc_atten_t::ATTEN_DB_12, 
                                   hf_adc_bitwidth_t::WIDTH_12BIT);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to configure channel %d: %d", TEST_CHANNEL_2, static_cast<int>(result));
+        ESP_LOGE(TAG, "Failed to configure channel %lu: %d", static_cast<unsigned long>(TEST_CHANNEL_2), static_cast<int>(result));
         return false;
     }
 
@@ -118,26 +117,26 @@ bool configure_test_channels(EspAdc& adc) noexcept {
     result = adc.ConfigureChannel(TEST_CHANNEL_3, hf_adc_atten_t::ATTEN_DB_12, 
                                   hf_adc_bitwidth_t::WIDTH_12BIT);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to configure channel %d: %d", TEST_CHANNEL_3, static_cast<int>(result));
+        ESP_LOGE(TAG, "Failed to configure channel %lu: %d", static_cast<unsigned long>(TEST_CHANNEL_3), static_cast<int>(result));
         return false;
     }
 
     // Enable all test channels
     result = adc.EnableChannel(TEST_CHANNEL_1);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to enable channel %d", TEST_CHANNEL_1);
+        ESP_LOGE(TAG, "Failed to enable channel %lu", static_cast<unsigned long>(TEST_CHANNEL_1));
         return false;
     }
 
     result = adc.EnableChannel(TEST_CHANNEL_2);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to enable channel %d", TEST_CHANNEL_2);
+        ESP_LOGE(TAG, "Failed to enable channel %lu", static_cast<unsigned long>(TEST_CHANNEL_2));
         return false;
     }
 
     result = adc.EnableChannel(TEST_CHANNEL_3);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to enable channel %d", TEST_CHANNEL_3);
+        ESP_LOGE(TAG, "Failed to enable channel %lu", static_cast<unsigned long>(TEST_CHANNEL_3));
         return false;
     }
 
@@ -163,6 +162,7 @@ bool validate_voltage_reading(uint32_t voltage_mv, const char* channel_name) noe
  * @brief Continuous mode callback function (ISR-safe)
  */
 bool continuous_callback(const hf_adc_continuous_data_t* data, void* user_data) noexcept {
+    (void)user_data; // Suppress unused parameter warning
     if (!continuous_test_active || data == nullptr) {
         return false;
     }
@@ -248,29 +248,29 @@ bool test_adc_channel_configuration() noexcept {
 
     // Verify channels are enabled
     if (!test_adc.IsChannelEnabled(TEST_CHANNEL_1)) {
-        ESP_LOGE(TAG, "Channel %d should be enabled", TEST_CHANNEL_1);
+        ESP_LOGE(TAG, "Channel %lu should be enabled", static_cast<unsigned long>(TEST_CHANNEL_1));
         return false;
     }
 
     if (!test_adc.IsChannelEnabled(TEST_CHANNEL_2)) {
-        ESP_LOGE(TAG, "Channel %d should be enabled", TEST_CHANNEL_2);
+        ESP_LOGE(TAG, "Channel %lu should be enabled", static_cast<unsigned long>(TEST_CHANNEL_2));
         return false;
     }
 
     if (!test_adc.IsChannelEnabled(TEST_CHANNEL_3)) {
-        ESP_LOGE(TAG, "Channel %d should be enabled", TEST_CHANNEL_3);
+        ESP_LOGE(TAG, "Channel %lu should be enabled", static_cast<unsigned long>(TEST_CHANNEL_3));
         return false;
     }
 
     // Test disabling a channel
     hf_adc_err_t result = test_adc.DisableChannel(TEST_CHANNEL_3);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to disable channel %d", TEST_CHANNEL_3);
+        ESP_LOGE(TAG, "Failed to disable channel %lu", static_cast<unsigned long>(TEST_CHANNEL_3));
         return false;
     }
 
     if (test_adc.IsChannelEnabled(TEST_CHANNEL_3)) {
-        ESP_LOGE(TAG, "Channel %d should be disabled", TEST_CHANNEL_3);
+        ESP_LOGE(TAG, "Channel %lu should be disabled", static_cast<unsigned long>(TEST_CHANNEL_3));
         return false;
     }
 
@@ -302,8 +302,8 @@ bool test_adc_basic_conversion() noexcept {
     uint32_t raw_value = 0;
     hf_adc_err_t result = test_adc.ReadSingleRaw(TEST_CHANNEL_1, raw_value);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to read raw value from channel %d: %d", 
-                 TEST_CHANNEL_1, static_cast<int>(result));
+                 ESP_LOGE(TAG, "Failed to read raw value from channel %lu: %d", 
+                  static_cast<unsigned long>(TEST_CHANNEL_1), static_cast<int>(result));
         return false;
     }
 
@@ -312,14 +312,14 @@ bool test_adc_basic_conversion() noexcept {
         return false;
     }
 
-    ESP_LOGI(TAG, "Channel %d raw reading: %lu", TEST_CHANNEL_1, raw_value);
+    ESP_LOGI(TAG, "Channel %lu raw reading: %lu", static_cast<unsigned long>(TEST_CHANNEL_1), raw_value);
 
     // Test voltage reading
     uint32_t voltage_mv = 0;
     result = test_adc.ReadSingleVoltage(TEST_CHANNEL_1, voltage_mv);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to read voltage from channel %d: %d", 
-                 TEST_CHANNEL_1, static_cast<int>(result));
+                 ESP_LOGE(TAG, "Failed to read voltage from channel %lu: %d", 
+                  static_cast<unsigned long>(TEST_CHANNEL_1), static_cast<int>(result));
         return false;
     }
 
@@ -331,20 +331,20 @@ bool test_adc_basic_conversion() noexcept {
     float voltage_v = 0.0f;
     result = test_adc.ReadChannelV(TEST_CHANNEL_2, voltage_v);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to read voltage (V) from channel %d: %d", 
-                 TEST_CHANNEL_2, static_cast<int>(result));
+                 ESP_LOGE(TAG, "Failed to read voltage (V) from channel %lu: %d", 
+                  static_cast<unsigned long>(TEST_CHANNEL_2), static_cast<int>(result));
         return false;
     }
 
     uint32_t count = 0;
     result = test_adc.ReadChannelCount(TEST_CHANNEL_2, count);
     if (result != hf_adc_err_t::ADC_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to read count from channel %d: %d", 
-                 TEST_CHANNEL_2, static_cast<int>(result));
+                 ESP_LOGE(TAG, "Failed to read count from channel %lu: %d", 
+                  static_cast<unsigned long>(TEST_CHANNEL_2), static_cast<int>(result));
         return false;
     }
 
-    ESP_LOGI(TAG, "Channel %d: %.3fV, count: %lu", TEST_CHANNEL_2, voltage_v, count);
+    ESP_LOGI(TAG, "Channel %lu: %.3fV, count: %lu", static_cast<unsigned long>(TEST_CHANNEL_2), voltage_v, count);
 
     ESP_LOGI(TAG, "[SUCCESS] Basic ADC conversion test passed");
     return true;
@@ -488,8 +488,8 @@ bool test_adc_averaging() noexcept {
             return false;
         }
 
-        ESP_LOGI(TAG, "Channel %d averaged over %d samples: %lu", 
-                 TEST_CHANNEL_1, sample_counts[i], averaged_value);
+        ESP_LOGI(TAG, "Channel %lu averaged over %d samples: %lu", 
+                 static_cast<unsigned long>(TEST_CHANNEL_1), sample_counts[i], averaged_value);
 
         if (averaged_value > 4095) {
             ESP_LOGE(TAG, "Averaged value %lu exceeds 12-bit maximum", averaged_value);
@@ -505,8 +505,8 @@ bool test_adc_averaging() noexcept {
         return false;
     }
 
-    ESP_LOGI(TAG, "Channel %d averaged voltage (8 samples, 10ms between): %.3fV", 
-             TEST_CHANNEL_2, voltage_v);
+    ESP_LOGI(TAG, "Channel %lu averaged voltage (8 samples, 10ms between): %.3fV", 
+             static_cast<unsigned long>(TEST_CHANNEL_2), voltage_v);
 
     ESP_LOGI(TAG, "[SUCCESS] ADC averaging test passed");
     return true;
