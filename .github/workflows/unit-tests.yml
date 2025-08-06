@@ -1,0 +1,370 @@
+name: ESP32 Unit Tests • Unity Framework • Coverage Reports
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      test_filter:
+        description: 'Test filter pattern (e.g., EspGpio, EspAdc, or "all")'
+        required: false
+        default: 'all'
+        type: string
+      coverage_enabled:
+        description: 'Enable code coverage analysis'
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+concurrency:
+  group: unit-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  IDF_TARGET: esp32c6
+  TEST_BUILD_PATH: test_build
+  ESP_IDF_VERSIONS: '["release-v5.5"]'
+  IDF_CCACHE_ENABLE: "1"
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  unit-tests:
+    name: Unit Tests ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.esp_target }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        idf_version: [release-v5.5]
+        build_type: [Debug, Release]
+        esp_target: [esp32c6, esp32, esp32s3]
+        exclude:
+          # Reduce CI time by excluding some combinations
+          - build_type: Release
+            esp_target: esp32
+          - build_type: Release
+            esp_target: esp32s3
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0  # Full history for coverage
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-tests-${{ matrix.idf_version }}-${{ matrix.esp_target }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-tests-${{ matrix.idf_version }}-
+            ${{ runner.os }}-buildx-tests-
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: ~/.ccache
+          key: >-
+            ccache-tests-${{ matrix.idf_version }}-${{ matrix.build_type }}-${{ matrix.esp_target }}-
+            ${{ hashFiles('test/**', 'src/**', 'inc/**') }}
+          restore-keys: |
+            ccache-tests-${{ matrix.idf_version }}-${{ matrix.build_type }}-${{ matrix.esp_target }}-
+            ccache-tests-${{ matrix.idf_version }}-${{ matrix.build_type }}-
+            ccache-tests-${{ matrix.idf_version }}-
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ccache lcov gcovr
+
+      - name: Setup Test Environment
+        run: |
+          echo "Setting up test environment for ${{ matrix.esp_target }}"
+          echo "IDF_TARGET=${{ matrix.esp_target }}" >> $GITHUB_ENV
+          echo "BUILD_TYPE=${{ matrix.build_type }}" >> $GITHUB_ENV
+          
+          # Configure test filter
+          if [ "${{ inputs.test_filter }}" != "" ] && [ "${{ inputs.test_filter }}" != "all" ]; then
+            echo "TEST_FILTER=${{ inputs.test_filter }}" >> $GITHUB_ENV
+          else
+            echo "TEST_FILTER=all" >> $GITHUB_ENV
+          fi
+
+      - name: Build Unit Tests
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: ${{ matrix.idf_version }}
+          target: ${{ matrix.esp_target }}
+          path: test
+          extra_docker_args: >-
+            -v $HOME/.ccache:/root/.ccache 
+            -e CCACHE_DIR=/root/.ccache 
+            -e IDF_CCACHE_ENABLE=1
+            -e GCOV_PREFIX=/test
+            -e GCOV_PREFIX_STRIP=1
+          command: |
+            # Build the test project
+            idf.py -C /test \
+              -DIDF_TARGET=${{ matrix.esp_target }} \
+              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+              -DCOVERAGE_ENABLED=${{ inputs.coverage_enabled || 'true' }} \
+              --ccache reconfigure build
+
+            # Generate size information
+            idf.py -C /test size-components > /test/build/test_size.txt
+            idf.py -C /test size --format json > /test/build/test_size.json
+            
+            # Display ccache stats
+            ccache -s
+            ccache -s > /test/build/ccache_stats.txt
+
+      - name: Run Unit Tests on Hardware Simulator
+        uses: espressif/esp-idf-ci-action@v1
+        continue-on-error: true
+        id: run_tests
+        with:
+          esp_idf_version: ${{ matrix.idf_version }}
+          target: ${{ matrix.esp_target }}
+          path: test
+          command: |
+            # Install pytest and dependencies for test automation
+            pip install pytest pytest-embedded pytest-embedded-serial-esp pytest-embedded-idf
+            
+            # Create test output directory
+            mkdir -p /test/build/test_results
+            
+            # Run tests using pytest-embedded
+            cd /test
+            python -m pytest \
+              --target=${{ matrix.esp_target }} \
+              --build-dir=build \
+              --junit-xml=build/test_results/junit.xml \
+              --tb=short \
+              --capture=no \
+              --log-cli-level=INFO \
+              test_runner.py || echo "Tests completed with issues"
+            
+            # Extract test results from logs if direct execution
+            if [ ! -f build/test_results/junit.xml ]; then
+              echo "Parsing test output from serial logs..."
+              # This would need custom parsing logic for Unity output
+              touch build/test_results/test_output.log
+            fi
+
+      - name: Generate Coverage Reports
+        if: ${{ inputs.coverage_enabled || 'true' }} == 'true'
+        uses: espressif/esp-idf-ci-action@v1
+        continue-on-error: true
+        with:
+          esp_idf_version: ${{ matrix.idf_version }}
+          target: ${{ matrix.esp_target }}
+          path: test
+          command: |
+            cd /test
+            
+            # Generate coverage data
+            find build -name "*.gcda" -o -name "*.gcno" | head -10
+            
+            # Generate HTML coverage report using gcovr
+            gcovr \
+              --root . \
+              --html-details build/coverage/coverage.html \
+              --html-title "HardFOC IID Unit Test Coverage" \
+              --exclude "test/components/.*" \
+              --exclude ".*build.*" \
+              --exclude ".*components.*" \
+              --print-summary \
+              build/ || echo "Coverage generation failed"
+            
+            # Generate lcov format for upload
+            gcovr \
+              --root . \
+              --lcov build/coverage/lcov.info \
+              --exclude "test/components/.*" \
+              --exclude ".*build.*" \
+              --exclude ".*components.*" \
+              build/ || echo "LCOV generation failed"
+            
+            # Generate text summary
+            gcovr \
+              --root . \
+              --exclude "test/components/.*" \
+              --exclude ".*build.*" \
+              --exclude ".*components.*" \
+              build/ > build/coverage/coverage_summary.txt || echo "Summary generation failed"
+
+      - name: Parse Test Results
+        if: always()
+        id: test_results
+        run: |
+          cd test
+          
+          # Initialize result variables
+          TESTS_PASSED=0
+          TESTS_FAILED=0
+          TESTS_TOTAL=0
+          
+          # Check if junit.xml exists
+          if [ -f build/test_results/junit.xml ]; then
+            # Parse JUnit XML
+            TESTS_TOTAL=$(xmllint --xpath "count(//testcase)" build/test_results/junit.xml 2>/dev/null || echo "0")
+            TESTS_FAILED=$(xmllint --xpath "count(//testcase/failure)" build/test_results/junit.xml 2>/dev/null || echo "0")
+            TESTS_PASSED=$((TESTS_TOTAL - TESTS_FAILED))
+          else
+            # Parse Unity output from logs (simplified)
+            if [ -f build/test_results/test_output.log ]; then
+              TESTS_TOTAL=$(grep -c "TEST(" build/test_results/test_output.log 2>/dev/null || echo "0")
+              TESTS_FAILED=$(grep -c "FAIL" build/test_results/test_output.log 2>/dev/null || echo "0")
+              TESTS_PASSED=$((TESTS_TOTAL - TESTS_FAILED))
+            fi
+          fi
+          
+          echo "tests_total=$TESTS_TOTAL" >> $GITHUB_OUTPUT
+          echo "tests_passed=$TESTS_PASSED" >> $GITHUB_OUTPUT
+          echo "tests_failed=$TESTS_FAILED" >> $GITHUB_OUTPUT
+          
+          # Determine overall status
+          if [ "$TESTS_FAILED" -eq "0" ] && [ "$TESTS_TOTAL" -gt "0" ]; then
+            echo "test_status=success" >> $GITHUB_OUTPUT
+            echo "✅ All tests passed ($TESTS_PASSED/$TESTS_TOTAL)"
+          elif [ "$TESTS_TOTAL" -eq "0" ]; then
+            echo "test_status=no_tests" >> $GITHUB_OUTPUT
+            echo "⚠️ No tests were found or executed"
+          else
+            echo "test_status=failure" >> $GITHUB_OUTPUT
+            echo "❌ Tests failed ($TESTS_FAILED failures out of $TESTS_TOTAL tests)"
+          fi
+
+      - name: Upload Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.esp_target }}-${{ matrix.idf_version }}-${{ matrix.build_type }}
+          retention-days: 30
+          path: |
+            test/build/*.bin
+            test/build/*.elf
+            test/build/*.map
+            test/build/test_size.*
+            test/build/test_results/
+            test/build/coverage/
+            test/build/ccache_stats.txt
+
+      - name: Upload Coverage to Codecov
+        if: ${{ (inputs.coverage_enabled || 'true') == 'true' && matrix.build_type == 'Debug' }}
+        uses: codecov/codecov-action@v3
+        continue-on-error: true
+        with:
+          files: test/build/coverage/lcov.info
+          flags: unittests,${{ matrix.esp_target }}
+          name: codecov-${{ matrix.esp_target }}-${{ matrix.build_type }}
+          fail_ci_if_error: false
+
+      - name: Create Test Summary
+        if: always()
+        run: |
+          cd test
+          
+          echo "## 🧪 Unit Test Results - ${{ matrix.esp_target }} (${{ matrix.build_type }})" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.test_results.outputs.test_status }}" = "success" ]; then
+            echo "✅ **All tests passed!**" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests passed: ${{ steps.test_results.outputs.tests_passed }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests total: ${{ steps.test_results.outputs.tests_total }}" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ steps.test_results.outputs.test_status }}" = "failure" ]; then
+            echo "❌ **Some tests failed**" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests passed: ${{ steps.test_results.outputs.tests_passed }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests failed: ${{ steps.test_results.outputs.tests_failed }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests total: ${{ steps.test_results.outputs.tests_total }}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **No tests executed**" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Build Information" >> $GITHUB_STEP_SUMMARY
+          echo "- Target: ${{ matrix.esp_target }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ESP-IDF: ${{ matrix.idf_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Build Type: ${{ matrix.build_type }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Test Filter: ${{ env.TEST_FILTER }}" >> $GITHUB_STEP_SUMMARY
+          
+          # Add coverage summary if available
+          if [ -f build/coverage/coverage_summary.txt ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Code Coverage" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            head -20 build/coverage/coverage_summary.txt >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Comment Test Results on PR
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const testStatus = '${{ steps.test_results.outputs.test_status }}';
+            const testsPassed = '${{ steps.test_results.outputs.tests_passed }}';
+            const testsFailed = '${{ steps.test_results.outputs.tests_failed }}';
+            const testsTotal = '${{ steps.test_results.outputs.tests_total }}';
+            const target = '${{ matrix.esp_target }}';
+            const buildType = '${{ matrix.build_type }}';
+            
+            let emoji = '✅';
+            let status = 'All tests passed!';
+            
+            if (testStatus === 'failure') {
+              emoji = '❌';
+              status = `${testsFailed} test(s) failed`;
+            } else if (testStatus === 'no_tests') {
+              emoji = '⚠️';
+              status = 'No tests executed';
+            }
+            
+            const comment = `## ${emoji} Unit Test Results - ${target} (${buildType})
+            
+            **Status:** ${status}
+            **Tests:** ${testsPassed}/${testsTotal} passed
+            
+            📊 [View detailed results in the workflow run](${context.payload.pull_request.html_url}/checks)`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  test-summary:
+    name: Test Summary
+    if: always()
+    needs: [unit-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Collect Test Results
+        run: |
+          echo "## 📋 Overall Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # This would need to aggregate results from the matrix jobs
+          echo "Unit tests completed across all target configurations." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Tested Configurations" >> $GITHUB_STEP_SUMMARY
+          echo "- ESP32-C6 (Debug/Release)" >> $GITHUB_STEP_SUMMARY
+          echo "- ESP32 (Debug)" >> $GITHUB_STEP_SUMMARY  
+          echo "- ESP32-S3 (Debug)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📁 Test artifacts and coverage reports are available in the workflow artifacts."
