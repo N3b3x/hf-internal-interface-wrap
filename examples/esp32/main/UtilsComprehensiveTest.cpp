@@ -19,7 +19,8 @@
 #include "freertos/task.h"
 #include <memory>
 
-#include "base/HardwareTypes.h"
+// ESP-specific types for proper hardware abstraction
+#include "mcu/esp32/utils/EspTypes.h"
 #include "utils/AsciiArtGenerator.h"
 #include "utils/memory_utils.h"
 
@@ -121,20 +122,20 @@ bool test_hardware_types() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Pin: %d, Port: %d, Freq: %lu Hz", test_pin, test_port, test_freq);
   ESP_LOGI(TAG, "[SUCCESS] Timestamp: %llu us, Voltage: %d mV", test_timestamp, test_voltage);
 
-//   // Test GPIO state enum
-//   hf_gpio_state_t test_state = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
-//   if (test_state != hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) {
-//     ESP_LOGE(TAG, "GPIO state test failed");
-//     return false;
-//   }
+  // Test GPIO state enum
+  hf_gpio_state_t test_state = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
+  if (test_state != hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) {
+    ESP_LOGE(TAG, "GPIO state test failed");
+    return false;
+  }
 
-//   ESP_LOGI(TAG, "[SUCCESS] GPIO state: %s",
-//            test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
+  ESP_LOGI(TAG, "[SUCCESS] GPIO state: %s",
+           test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
 
-//   // Test state toggle
-//   test_state = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
-//   ESP_LOGI(TAG, "[SUCCESS] GPIO state toggled: %s",
-//            test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
+  // Test state toggle
+  test_state = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
+  ESP_LOGI(TAG, "[SUCCESS] GPIO state toggled: %s",
+           test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
 
   return true;
 }
