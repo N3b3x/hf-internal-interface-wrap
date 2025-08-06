@@ -553,6 +553,59 @@ public:
    */
   hf_bluetooth_err_t RegisterDataCallback(hf_bluetooth_data_callback_t callback) override;
 
+  /**
+   * @brief Unregister event callback function
+   * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   */
+  hf_bluetooth_err_t UnregisterEventCallback() override;
+
+  /**
+   * @brief Unregister data callback function
+   * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   */
+  hf_bluetooth_err_t UnregisterDataCallback() override;
+
+  // ========== Classic Bluetooth Operations ==========
+
+  /**
+   * @brief Configure Bluetooth Classic parameters
+   * @param config Classic configuration
+   * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   */
+  hf_bluetooth_err_t ConfigureClassic(const hf_bluetooth_classic_config_t& config) override;
+
+  /**
+   * @brief Make device discoverable
+   * @param discoverable True to make discoverable, false otherwise
+   * @param timeout_ms Discoverable timeout in milliseconds (0 for indefinite)
+   * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   */
+  hf_bluetooth_err_t SetDiscoverable(bool discoverable, uint32_t timeout_ms = 0) override;
+
+  /**
+   * @brief Check if device is discoverable
+   * @return true if discoverable, false otherwise
+   */
+  bool IsDiscoverable() const override;
+
+  // ========== BLE Operations ==========
+
+  /**
+   * @brief Configure Bluetooth Low Energy parameters
+   * @param config BLE configuration
+   * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   */
+  hf_bluetooth_err_t ConfigureBle(const hf_bluetooth_ble_config_t& config) override;
+
+  // ========== Pairing and Bonding ==========
+
+  /**
+   * @brief Get list of paired devices
+   * @param devices Vector to store paired devices
+   * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
+   */
+  hf_bluetooth_err_t GetPairedDevices(std::vector<hf_bluetooth_device_info_t>& devices) override;
+
   // ========== Utility Methods ==========
 
   /**
