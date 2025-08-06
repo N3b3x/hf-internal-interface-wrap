@@ -43,5 +43,4 @@ extern "C" void app_main(void) {
   RUN_TEST(test_can_initialization);
   print_test_summary(g_test_results, "CAN", TAG);
   while (true) vTaskDelay(pdMS_TO_TICKS(10000));
-  while (true) vTaskDelay(pdMS_TO_TICKS(10000));
 }

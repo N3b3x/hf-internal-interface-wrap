@@ -3,7 +3,7 @@
 
 # Get example type from parent
 if(NOT DEFINED EXAMPLE_TYPE)
-    set(EXAMPLE_TYPE "comprehensive")
+    set(EXAMPLE_TYPE "ascii_art")
 endif()
 
 # Debug information
