@@ -14,10 +14,10 @@
  * @copyright HardFOC
  */
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "esp_log.h"
 #include "esp_timer.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include <vector>
 
 #include "base/BaseBluetooth.h"
@@ -83,7 +83,7 @@ bool test_bluetooth_cleanup() noexcept;
 
 bool test_bluetooth_initialization() noexcept {
   ESP_LOGI(TAG, "Testing Bluetooth initialization...");
-  
+
   // Register event callback
   hf_bluetooth_err_t ret = bluetooth_instance.RegisterEventCallback(bluetooth_event_callback);
   if (ret != hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
@@ -242,7 +242,8 @@ bool test_bluetooth_state_management() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Current Bluetooth mode: %d", static_cast<int>(mode));
 
   // Test mode setting (should remain BLE for ESP32C6)
-  hf_bluetooth_err_t ret = bluetooth_instance.SetMode(hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC);
+  hf_bluetooth_err_t ret =
+      bluetooth_instance.SetMode(hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC);
   if (ret != hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
     ESP_LOGI(TAG, "[SUCCESS] Correctly rejected Classic mode for ESP32C6");
   } else {
@@ -312,20 +313,20 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "║                ESP32-C6 BLUETOOTH COMPREHENSIVE TEST SUITE                 ║");
   ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
-  
+
   ESP_LOGI(TAG, "Target: %s", CONFIG_IDF_TARGET);
   ESP_LOGI(TAG, "ESP-IDF Version: %s", IDF_VER);
-  
+
   vTaskDelay(pdMS_TO_TICKS(1000));
-  
+
   RUN_TEST(test_bluetooth_initialization);
   RUN_TEST(test_bluetooth_basic_operations);
   RUN_TEST(test_bluetooth_scanning);
   RUN_TEST(test_bluetooth_state_management);
   RUN_TEST(test_bluetooth_cleanup);
-  
+
   print_test_summary(g_test_results, "BLUETOOTH", TAG);
-  
+
   if (g_test_results.failed_tests == 0) {
     ESP_LOGI(TAG, "[SUCCESS] ALL BLUETOOTH TESTS PASSED!");
     ESP_LOGI(TAG, "==================================================");
@@ -342,7 +343,7 @@ extern "C" void app_main(void) {
   } else {
     ESP_LOGE(TAG, "[FAILED] Some tests failed.");
   }
-  
+
   while (true) {
     vTaskDelay(pdMS_TO_TICKS(10000));
   }
