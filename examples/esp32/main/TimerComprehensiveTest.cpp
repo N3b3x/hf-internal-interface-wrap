@@ -37,13 +37,14 @@ bool test_timer_initialization() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Periodic timer initialization successful");
 
   // Test starting the timer
-  if (test_timer.Start(1000000)) { // 1 second interval
+  auto start_result = test_timer.Start(1000000); // 1 second interval
+  if (start_result == hf_timer_err_t::TIMER_SUCCESS) {
     ESP_LOGI(TAG, "[SUCCESS] Periodic timer started with 1-second interval");
     vTaskDelay(pdMS_TO_TICKS(3000)); // Let it run for 3 seconds
     test_timer.Stop();
     ESP_LOGI(TAG, "[SUCCESS] Periodic timer stopped");
   } else {
-    ESP_LOGW(TAG, "Could not start timer, but initialization was successful");
+    ESP_LOGW(TAG, "Could not start timer: %d, but initialization was successful", static_cast<int>(start_result));
   }
 
   return true;

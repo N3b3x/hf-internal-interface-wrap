@@ -168,6 +168,11 @@ using hf_time_t = hf_u32_t;
  */
 using hf_timeout_ms_t = hf_time_t;
 
+/**
+ * @brief Timeout value in microseconds.
+ */
+using hf_timeout_us_t = hf_time_t;
+
 //==============================================================================
 // TIMEOUT CONSTANTS
 //==============================================================================

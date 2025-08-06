@@ -286,6 +286,7 @@ protected:
    */
   hf_gpio_err_t GetOutputModeImpl(hf_gpio_output_mode_t& mode) const noexcept override;
 
+public:
   //==============================================================//
   // ADVANCED GPIO FEATURES (ESP32C6/ESP-IDF v5.5+)
   //==============================================================//
