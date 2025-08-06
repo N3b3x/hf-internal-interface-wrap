@@ -27,13 +27,11 @@ set(HF_ESP32_SRCS
     "${SRC_ROOT}/src/mcu/esp32/EspSpi.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspUart.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspBluetooth.cpp"    # ESP32C6 NimBLE Bluetooth implementation
-    # Temporarily excluded due to missing dependencies:
-    "${SRC_ROOT}/src/mcu/esp32/EspAdc.cpp"          # Missing esp_adc headers for ESP32-C6
-      
-    "${SRC_ROOT}/src/mcu/esp32/EspCan.cpp"          # May have TWAI compatibility issues
-    "${SRC_ROOT}/src/mcu/esp32/EspPio.cpp"          # May have RMT compatibility issues
-    "${SRC_ROOT}/src/mcu/esp32/EspTemperature.cpp"  # May have sensor compatibility issues
-    "${SRC_ROOT}/src/mcu/esp32/EspWifi.cpp"         # May have WiFi config compatibility issues
+    "${SRC_ROOT}/src/mcu/esp32/EspAdc.cpp"          
+    "${SRC_ROOT}/src/mcu/esp32/EspCan.cpp"         
+    "${SRC_ROOT}/src/mcu/esp32/EspPio.cpp"         
+    "${SRC_ROOT}/src/mcu/esp32/EspTemperature.cpp" 
+    "${SRC_ROOT}/src/mcu/esp32/EspWifi.cpp"        
 )
 
 # List utility source files
@@ -47,9 +45,9 @@ set(EXISTING_SRCS "")
 foreach(src_file ${HF_ESP32_SRCS} ${HF_UTIL_SRCS})
     if(EXISTS "${src_file}")
         list(APPEND EXISTING_SRCS "${src_file}")
-        message(STATUS "✓ Found source: ${src_file}")
+        message(STATUS "Found source: ${src_file}")
     else()
-        message(WARNING "✗ Source file not found: ${src_file}")
+        message(WARNING "Source file not found: ${src_file}")
     endif()
 endforeach()
 
@@ -222,18 +220,18 @@ endif()
 # Final status messages
 list(LENGTH EXISTING_SRCS NUM_SOURCES)
 message(STATUS "=== HF Internal Interface Wrap Component Summary ===")
-message(STATUS "✓ Component configured successfully")
-message(STATUS "✓ Included ${NUM_SOURCES} source files")
+message(STATUS "Component configured successfully")
+message(STATUS "Included ${NUM_SOURCES} source files")
 if(CONFIG_IDF_TARGET_ESP32)
-    message(STATUS "✓ Target MCU: ESP32")
+    message(STATUS "Target MCU: ESP32")
 elseif(CONFIG_IDF_TARGET_ESP32C6)
-    message(STATUS "✓ Target MCU: ESP32-C6")
+    message(STATUS "Target MCU: ESP32-C6")
 elseif(CONFIG_IDF_TARGET_ESP32S3)
-    message(STATUS "✓ Target MCU: ESP32-S3")
+    message(STATUS "Target MCU: ESP32-S3")
 else()
-    message(STATUS "✓ Target MCU: ESP32 (default)")
+    message(STATUS "Target MCU: ESP32 (default)")
 endif()
-message(STATUS "✓ C++ Standard: C++17")
-message(STATUS "✓ Thread Safety: ENABLED")
-message(STATUS "✓ Optimization: LTO enabled (if configured)")
+message(STATUS "C++ Standard: C++17")
+message(STATUS "Thread Safety: ENABLED")
+message(STATUS "Optimization: LTO enabled (if configured)")
 message(STATUS "===============================================")
