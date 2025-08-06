@@ -1,21 +1,16 @@
 cmake_minimum_required(VERSION 3.16)
 
 # HardFOC Internal Interface Wrapper Component
-# This component provides base classes and ESP32 implementations for WiFi
+# This component provides comprehensive hardware abstraction layer for HardFOC motor controller boards
+# Currently supports ESP32-C6 with complete peripheral implementations
 
 set(COMPONENT_SRCDIR "src/mcu/esp32")
 set(COMPONENT_INCLUDE_DIRS "inc" "inc/base" "inc/mcu/esp32" "inc/utils" "inc/mcu/esp32/utils")
 
 # Source files
 set(COMPONENT_SRCS
-    # Base classes would be here if they had implementations
-    # For now, they are header-only abstract classes
-    
-    # ESP32 implementations (if they exist)
-    # "src/mcu/esp32/EspWifi.cpp"
-    
-    # "src/mcu/esp32/EspGpio.cpp"
-    # ... other ESP implementations
+    # Base classes are header-only abstract interfaces
+    # ESP32 implementations are added automatically below via GLOB_RECURSE
 )
 
 # Add all available source files from the ESP32 directory

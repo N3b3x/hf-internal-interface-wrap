@@ -1,15 +1,15 @@
-# 🚀 ESP32 Hardware Interface Wrapper
+# 🚀 HardFOC Internal Interface Wrapper
 
 <div align="center">
 
-![ESP32 Interface Wrapper](https://img.shields.io/badge/ESP32-Hardware%20Interface%20Wrapper-blue?style=for-the-badge&logo=espressif)
+![HardFOC Interface Wrapper](https://img.shields.io/badge/HardFOC-Internal%20Interface%20Wrapper-blue?style=for-the-badge&logo=espressif)
 ![C++17](https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=cplusplus)
 ![ESP32-C6](https://img.shields.io/badge/ESP32--C6-Supported-green?style=for-the-badge&logo=espressif)
 ![License](https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge&logo=opensourceinitiative)
 
-**🎯 Comprehensive Hardware Abstraction Layer for ESP32 Microcontrollers**
+**🎯 Comprehensive Hardware Abstraction Layer for HardFOC Motor Controller Boards**
 
-*A professional, platform-agnostic interface wrapper providing unified APIs across ESP32 variants with complete wireless, communication, and peripheral support for embedded applications*
+*A professional, platform-agnostic interface wrapper specifically designed for HardFOC motor controller boards, providing unified APIs across different MCU implementations with complete wireless, communication, and sensor support*
 
 </div>
 
@@ -32,29 +32,29 @@
 
 ## 🎯 **Overview**
 
-The **ESP32 Hardware Interface Wrapper** is a comprehensive, production-ready hardware abstraction layer designed for **ESP32 microcontroller families**. It provides unified APIs across different ESP32 platforms while maintaining high performance, thread safety, and extensive hardware support for wireless communication, sensors, and advanced peripherals.
+The **HardFOC Internal Interface Wrapper** is a comprehensive, production-ready hardware abstraction layer specifically designed for **HardFOC motor controller boards**. It provides unified APIs across different MCU platforms while maintaining the high performance, thread safety, and extensive hardware support that HardFOC motor controller boards require, including wireless communication, sensors, and advanced peripherals.
 
-### 🏆 **Why Choose This Wrapper for ESP32 Projects?**
+### 🏆 **Why Choose This Wrapper for HardFOC Boards?**
 
-- **🎯 ESP32 Optimized** - Designed specifically for ESP32 variants (ESP32, ESP32-S2/S3, ESP32-C3/C6, ESP32-H2) and their capabilities
-- **🔌 Complete Hardware Coverage** - 14 comprehensive base interfaces covering all ESP32 peripherals
-- **📈 Production Ready** - Professional-grade error handling, logging, and monitoring for embedded applications
-- **🌐 Modern Connectivity** - Full WiFi and Bluetooth support for IoT-enabled ESP32 projects
-- **🛡️ Industrial Grade** - Robust design for critical real-time embedded applications
-- **📚 Extensively Documented** - Complete API documentation with practical examples
+- **🎯 HardFOC Optimized** - Designed specifically for HardFOC motor controller boards and their real-time requirements
+- **🔌 Complete Hardware Coverage** - 14 comprehensive base interfaces covering all aspects of HardFOC boards
+- **📈 Production Ready** - Professional-grade error handling, logging, and monitoring for HardFOC applications
+- **🌐 Modern Connectivity** - Full WiFi and Bluetooth support for IoT-enabled HardFOC motor controller boards
+- **🛡️ Industrial Grade** - Robust design for critical HardFOC motor control applications
+- **📚 Extensively Documented** - Complete API documentation with HardFOC-specific examples
 
 ---
 
 ## 🏗️ **Architecture**
 
-The wrapper follows a sophisticated multi-layered architecture that maximizes flexibility, maintainability, and performance for ESP32-based embedded systems:
+The wrapper follows a sophisticated multi-layered architecture that maximizes flexibility, maintainability, and performance for HardFOC motor controller boards:
 
 ```mermaid
 graph TB
-    subgraph "🎯 Application Layer"
-        A[Embedded Applications]
-        B[IoT Systems]
-        C[Real-time Control]
+    subgraph "🎯 HardFOC Application Layer"
+        A[HardFOC Motor Control Application]
+        B[HardFOC System Management]
+        C[HardFOC IoT Integration]
     end
     
     subgraph "🔒 Thread-Safe Layer (Optional)"
@@ -62,7 +62,7 @@ graph TB
         E[Concurrent Access Control]
     end
     
-    subgraph "🏛️ Base Interface Layer"
+    subgraph "🏛️ HardFOC Base Interface Layer"
         F[Core Interfaces]
         G[Communication Interfaces] 
         H[Wireless Interfaces]
@@ -71,13 +71,13 @@ graph TB
     
     subgraph "⚙️ Platform Implementation Layer"
         J[ESP32 Implementations]
-        K[External Hardware Drivers]
+        K[Future MCU Support]
         L[I2C/SPI Device Support]
     end
     
-    subgraph "🔧 Hardware Layer"
-        M[ESP32 Family MCUs]
-        N[External Components]
+    subgraph "🔧 HardFOC Hardware Layer"
+        M[ESP32-C6 Primary MCU]
+        N[HardFOC Board Components]
         O[Sensors & Actuators]
     end
     
@@ -102,16 +102,16 @@ graph TB
 
 ### 🔧 **Consistent Type System**
 
-All interfaces use a unified type system for maximum portability and consistency across ESP32 platforms:
+All interfaces use a unified type system for maximum portability and consistency across HardFOC motor controller boards:
 
 ```cpp
-// Platform-agnostic type definitions
+// Platform-agnostic type definitions for HardFOC boards
 using hf_u8_t = uint8_t;    // 8-bit unsigned
 using hf_u16_t = uint16_t;  // 16-bit unsigned  
 using hf_u32_t = uint32_t;  // 32-bit unsigned
 using hf_u64_t = uint64_t;  // 64-bit unsigned
 
-// Hardware abstraction types for embedded applications
+// Hardware-specific semantic types for HardFOC applications
 using hf_pin_num_t = hf_i32_t;      // GPIO pin numbers
 using hf_channel_id_t = hf_u32_t;   // ADC/PWM/DMA channels
 using hf_frequency_hz_t = hf_u32_t; // Frequency values in Hz
@@ -122,74 +122,82 @@ using hf_timeout_ms_t = hf_u32_t;   // Timeout values in milliseconds
 
 ## ✨ **Key Features**
 
-### 🔌 **Comprehensive Hardware Support for ESP32**
-- **14 Complete Interfaces** - From basic GPIO to advanced wireless communication for embedded applications
-- **ESP32 Family Optimized** - Full support for ESP32, ESP32-S2/S3, ESP32-C3/C6, and ESP32-H2 capabilities
-- **External Hardware** - Extensive support for I2C/SPI devices and external controllers
-- **Sensor Integration** - Built-in support for temperature sensors and peripheral devices
+### 🔌 **Comprehensive Hardware Support for HardFOC Boards**
+- **14 Complete Interfaces** - From basic GPIO to advanced wireless communication for HardFOC applications
+- **MCU Platform Agnostic** - Currently implemented for ESP32-C6, designed for future MCU support
+- **External Hardware** - Extensive support for I2C/SPI devices and external controllers commonly used with HardFOC boards
+- **Sensor Integration** - Built-in support for temperature, motor feedback, and diagnostic sensors used in HardFOC systems
 
-### ⚡ **Performance & Reliability for Embedded Applications**
-- **Real-Time Optimized** - Designed for critical timing requirements of embedded systems
-- **Thread-Safe Options** - Optional thread-safe wrappers for concurrent applications
-- **Lazy Initialization** - Resources allocated only when needed for optimal memory usage
-- **Comprehensive Error Handling** - Detailed error codes and validation across all interfaces
+### ⚡ **Performance & Reliability for HardFOC Applications**
+- **Real-Time Optimized** - Designed for critical motor control timing requirements of HardFOC boards
+- **Thread-Safe Options** - Optional thread-safe wrappers for concurrent HardFOC applications
+- **Lazy Initialization** - Resources allocated only when needed for optimal memory usage on HardFOC boards
+- **Comprehensive Error Handling** - Detailed error codes and validation across all interfaces for HardFOC reliability
 
-### 🌐 **Modern Connectivity for IoT Applications**
-- **WiFi Support** - Complete station/AP modes with WPA3 security for IoT integration
-- **Bluetooth Integration** - Both Classic and BLE support for mobile and IoT connectivity
-- **IoT Ready** - Built-in networking capabilities for cloud connectivity
-- **Remote Monitoring** - Advanced logging with network output support for remote diagnostics
+### 🌐 **Modern Connectivity for HardFOC IoT Applications**
+- **WiFi Support** - Complete station/AP modes with WPA3 security for HardFOC IoT integration
+- **Bluetooth Integration** - Both Classic and BLE support for mobile integration with HardFOC boards
+- **IoT Ready** - Built-in networking capabilities for cloud connectivity of HardFOC motor controller systems
+- **Remote Monitoring** - Advanced logging with network output support for HardFOC diagnostics
 
-### 📊 **Professional Features for Embedded Systems**
-- **Advanced Logging** - Multi-level logging with multiple output destinations
-- **Performance Monitoring** - Built-in diagnostics and performance tracking
-- **Configuration Management** - Non-volatile storage for system settings
-- **Thermal Management** - Comprehensive temperature monitoring and protection
+### 📊 **Professional Features for HardFOC Systems**
+- **Advanced Logging** - Multi-level logging with multiple output destinations for HardFOC debugging
+- **Performance Monitoring** - Built-in diagnostics and performance tracking for HardFOC optimization
+- **Configuration Management** - Non-volatile storage for HardFOC system settings
+- **Thermal Management** - Comprehensive temperature monitoring and protection for HardFOC boards
 
 ---
 
 ## 🔌 **Complete Interface Support**
 
-### 🏛️ **Core Interfaces for ESP32**
-| Interface | Description | Key Features | ESP32 Hardware Support |
+### 🏛️ **Core Interfaces for HardFOC Boards**
+| Interface | Description | Key Features | HardFOC Hardware Support |
 |-----------|-------------|--------------|------------------|
-| [`BaseGpio`](docs/api/BaseGpio.md) | 🔌 Digital I/O Operations | Dynamic modes, interrupts, pull resistors | All ESP32 variants, I2C/SPI Expanders |
-| [`BaseAdc`](docs/api/BaseAdc.md) | 📊 Analog-to-Digital Conversion | Multi-channel, calibration, voltage conversion | All ESP32 variants, External ADCs |
-| [`BasePwm`](docs/api/BasePwm.md) | 🎛️ Pulse Width Modulation | Multi-channel, frequency control, LEDC | All ESP32 variants |
-| [`BasePio`](docs/api/BasePio.md) | 📻 Programmable I/O | Custom protocols, precise timing, RMT | ESP32/ESP32-S2/S3/C6/H2 |
+| [`BaseGpio`](docs/api/BaseGpio.md) | 🔌 Digital I/O Operations | Dynamic modes, interrupts, pull resistors | ESP32-C6, I2C/SPI Expanders |
+| [`BaseAdc`](docs/api/BaseAdc.md) | 📊 Analog-to-Digital Conversion | Multi-channel, calibration, voltage conversion | ESP32-C6, External ADCs |
+| [`BasePwm`](docs/api/BasePwm.md) | 🎛️ Pulse Width Modulation | Multi-channel, frequency control, motor drive | ESP32-C6, External Controllers |
+| [`BasePio`](docs/api/BasePio.md) | 📻 Programmable I/O | Custom protocols, precise timing, encoding | ESP32-C6 RMT |
 
-### 📡 **Communication Interfaces for ESP32 Systems**
-| Interface | Description | Key Features | ESP32 Hardware Support |
+### 📡 **Communication Interfaces for HardFOC Systems**
+| Interface | Description | Key Features | HardFOC Hardware Support |
 |-----------|-------------|--------------|------------------|
-| [`BaseI2c`](docs/api/BaseI2c.md) | 🔄 I2C Communication | Master mode, device scanning, error recovery | All ESP32 variants |
-| [`BaseSpi`](docs/api/BaseSpi.md) | ⚡ SPI Communication | Full-duplex, configurable modes, DMA support | All ESP32 variants |
-| [`BaseUart`](docs/api/BaseUart.md) | 📡 UART Communication | Async I/O, flow control, configurable parameters | All ESP32 variants |
-| [`BaseCan`](docs/api/BaseCan.md) | 🚗 CAN Bus Communication | Standard/Extended frames, filtering, TWAI | ESP32/ESP32-S2/S3/C6 |
+| [`BaseI2c`](docs/api/BaseI2c.md) | 🔄 I2C Communication | Master mode, device scanning, error recovery | ESP32-C6, Software I2C |
+| [`BaseSpi`](docs/api/BaseSpi.md) | ⚡ SPI Communication | Full-duplex, configurable modes, DMA support | ESP32-C6, Software SPI |
+| [`BaseUart`](docs/api/BaseUart.md) | 📡 UART Communication | Async I/O, flow control, configurable parameters | ESP32-C6, USB-Serial |
+| [`BaseCan`](docs/api/BaseCan.md) | 🚗 CAN Bus Communication | Standard/Extended frames, filtering, error handling | ESP32-C6 TWAI, External CAN |
 
-### 🌐 **Wireless Interfaces for ESP32 IoT**
-| Interface | Description | Key Features | ESP32 Hardware Support |
+### 🌐 **Wireless Interfaces for HardFOC IoT**
+| Interface | Description | Key Features | HardFOC Hardware Support |
 |-----------|-------------|--------------|------------------|
-| [`BaseWifi`](docs/api/BaseWifi.md) | 📶 WiFi Communication | Station/AP modes, WPA3 security, mesh networking | ESP32/ESP32-S2/S3/C3/C6 |
-| [`BaseBluetooth`](docs/api/BaseBluetooth.md) | 📲 Bluetooth Communication | Classic & BLE, pairing, service discovery | ESP32/ESP32-S3/C3/C6/H2 |
+| [`BaseWifi`](docs/api/BaseWifi.md) | 📶 WiFi Communication | Station/AP modes, WPA3 security, mesh networking | ESP32-C6 WiFi |
+| [`BaseBluetooth`](docs/api/BaseBluetooth.md) | 📲 Bluetooth Communication | Classic & BLE, pairing, service discovery | ESP32-C6 Bluetooth |
 
-### 🛠️ **System Interfaces for ESP32 Applications**
-| Interface | Description | Key Features | ESP32 Hardware Support |
+### 🛠️ **System Interfaces for HardFOC Applications**
+| Interface | Description | Key Features | HardFOC Hardware Support |
 |-----------|-------------|--------------|------------------|
-| [`BaseNvs`](docs/api/BaseNvs.md) | 💾 Non-Volatile Storage | Key-value storage, encryption, wear leveling | All ESP32 variants |
-| [`BasePeriodicTimer`](docs/api/BasePeriodicTimer.md) | ⏰ Periodic Timers | Callback scheduling, high precision, multi-timer | All ESP32 variants |
-| [`BaseTemperature`](docs/api/BaseTemperature.md) | 🌡️ Temperature Sensing | Multi-sensor support, calibration, thermal protection | All ESP32 variants |
-| [`BaseLogger`](docs/api/BaseLogger.md) | 📝 System Logging | Multi-level logging, thread-safe, network output | All ESP32 variants |
+| [`BaseNvs`](docs/api/BaseNvs.md) | 💾 Non-Volatile Storage | Key-value storage, encryption, wear leveling | ESP32-C6 Flash, External |
+| [`BasePeriodicTimer`](docs/api/BasePeriodicTimer.md) | ⏰ Periodic Timers | Callback scheduling, high precision, multi-timer | ESP32-C6 Hardware Timers |
+| [`BaseTemperature`](docs/api/BaseTemperature.md) | 🌡️ Temperature Sensing | Multi-sensor support, calibration, thermal protection | Internal, I2C, 1-Wire Sensors |
+| [`BaseLogger`](docs/api/BaseLogger.md) | 📝 System Logging | Multi-level logging, thread-safe, network output | UART, File, Network, Memory |
 
-### 📊 **ESP32 Platform Support Matrix**
+### 📊 **HardFOC Implementation Status Matrix**
 
-| ESP32 Variant | GPIO | ADC | PWM | I2C | SPI | UART | CAN | WiFi | BT | Temp | NVS | Timer | PIO | Log |
-|----------------|------|-----|-----|-----|-----|------|-----|------|----|----- |-----|-------|-----|-----|
-| **ESP32** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **ESP32-S2** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **ESP32-S3** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **ESP32-C3** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **ESP32-C6** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **ESP32-H2** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Component** | **Interface Status** | **ESP32-C6 Implementation** | **Status** | **HardFOC Use Cases** |
+|---------------|---------------------|-----------------------------|-----------|-----------------------|
+| **GPIO** | ✅ Complete | ✅ EspGpio | ✅ Production Ready | Enable pins, limit switches, status LEDs |
+| **ADC** | ✅ Complete | ✅ EspAdc | ✅ Production Ready | Current sensing, position feedback |
+| **PWM** | ✅ Complete | ✅ EspPwm | ✅ Production Ready | Motor speed control, servo control |
+| **I2C** | ✅ Complete | ✅ EspI2c | ✅ Production Ready | Sensor communication, display control |
+| **SPI** | ✅ Complete | ✅ EspSpi | ✅ Production Ready | High-speed motor controller communication |
+| **UART** | ✅ Complete | ✅ EspUart | ✅ Production Ready | Debug output, external communication |
+| **CAN** | ✅ Complete | ✅ EspCan | ✅ Production Ready | Industrial networking, multi-motor coordination |
+| **WiFi** | ✅ Complete | ✅ EspWifi | ✅ Production Ready | Cloud connectivity, remote monitoring |
+| **Bluetooth** | ✅ Complete | ✅ EspBluetooth | ✅ Production Ready | Mobile apps, wireless configuration |
+| **NVS** | ✅ Complete | ✅ EspNvs | ✅ Production Ready | Configuration storage, calibration data |
+| **Timer** | ✅ Complete | ✅ EspPeriodicTimer | ✅ Production Ready | Control loops, sensor sampling |
+| **Temperature** | ✅ Complete | ✅ EspTemperature | ✅ Production Ready | Thermal monitoring, safety protection |
+| **PIO** | ✅ Complete | ✅ EspPio | ✅ Production Ready | Encoder reading, custom protocols |
+| **Logger** | ✅ Complete | ✅ EspLogger | ✅ Production Ready | System diagnostics, performance monitoring |
 
 ---
 
@@ -197,10 +205,10 @@ using hf_timeout_ms_t = hf_u32_t;   // Timeout values in milliseconds
 
 ### 📋 **Prerequisites**
 
-- **ESP-IDF v5.0+** for ESP32 development
+- **ESP-IDF v5.0+** for ESP32-C6 development
 - **C++17** compatible compiler (GCC 8+ or Clang 7+)
 - **CMake 3.16+** for build system management
-- **ESP32 development board** (any variant)
+- **HardFOC Motor Controller Board** with ESP32-C6
 
 ### ⚙️ **Installation**
 
@@ -237,7 +245,9 @@ idf_component_register(
 #include "inc/mcu/esp32/EspTemperature.h"
 ```
 
-### 💡 **Basic ESP32 Multi-Interface Example**
+### 💡 **HardFOC Motor Controller Example**
+
+*This example demonstrates how to integrate with a TMC9660-style motor controller using the HardFOC wrapper interfaces*
 
 ```cpp
 #include "inc/mcu/esp32/EspGpio.h"
@@ -247,90 +257,93 @@ idf_component_register(
 #include "inc/mcu/esp32/EspLogger.h"
 #include "inc/mcu/esp32/EspSpi.h"
 
-class IoTSensorController {
+class HardFOCMotorController {
 private:
-    EspGpio led_pin_;
-    EspSpi sensor_spi_;
-    EspAdc voltage_monitor_;
+    EspGpio enable_pin_;
+    EspSpi motor_controller_spi_;  // For TMC9660 or similar motor controller
+    EspAdc current_sensor_;
     EspTemperature temp_sensor_;
     EspLogger logger_;
-    EspPwm status_led_;
     
 public:
-    IoTSensorController() 
-        : led_pin_(GPIO_NUM_2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT)
-        , sensor_spi_(SPI2_HOST, GPIO_NUM_18, GPIO_NUM_19, GPIO_NUM_5)  // SCLK, MISO, MOSI
-        , voltage_monitor_(ADC_UNIT_1, ADC_ATTEN_DB_11)
-        , status_led_(LEDC_TIMER_0, LEDC_CHANNEL_0)
+    HardFOCMotorController() 
+        : enable_pin_(GPIO_NUM_2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT)
+        , motor_controller_spi_(SPI2_HOST, GPIO_NUM_18, GPIO_NUM_19, GPIO_NUM_5)  // SCLK, MISO, MOSI
+        , current_sensor_(ADC_UNIT_1, ADC_ATTEN_DB_11)
     {}
     
     bool initialize() {
-        // Initialize all components
+        // Initialize all HardFOC components
         bool success = true;
         success &= (logger_.EnsureInitialized() == hf_logger_err_t::LOGGER_SUCCESS);
-        success &= (led_pin_.EnsureInitialized() == hf_gpio_err_t::GPIO_SUCCESS);
-        success &= (sensor_spi_.EnsureInitialized() == hf_spi_err_t::SPI_SUCCESS);
-        success &= (voltage_monitor_.EnsureInitialized() == hf_adc_err_t::ADC_SUCCESS);
+        success &= (enable_pin_.EnsureInitialized() == hf_gpio_err_t::GPIO_SUCCESS);
+        success &= (motor_controller_spi_.EnsureInitialized() == hf_spi_err_t::SPI_SUCCESS);
+        success &= (current_sensor_.EnsureInitialized() == hf_adc_err_t::ADC_SUCCESS);
         success &= (temp_sensor_.EnsureInitialized() == hf_temp_err_t::TEMP_SUCCESS);
-        success &= (status_led_.EnsureInitialized() == hf_pwm_err_t::PWM_SUCCESS);
         
         if (success) {
-            // Configure status LED PWM
-            status_led_.SetFrequency(1000);  // 1kHz
-            status_led_.EnableChannel(GPIO_NUM_8);
-            logger_.LogInfo("SENSOR", "IoT sensor controller initialized successfully");
+            // Configure motor controller via SPI (example for TMC9660-style controllers)
+            configure_motor_controller();
+            logger_.LogInfo("HARDFOC", "HardFOC motor controller initialized successfully");
         } else {
-            logger_.LogError("SENSOR", "IoT sensor controller initialization failed");
+            logger_.LogError("HARDFOC", "HardFOC motor controller initialization failed");
         }
         
         return success;
     }
     
-    void monitor_system() {
-        // Read system parameters
-        float temperature, voltage;
+    void control_motor(float speed_percent) {
+        // Safety checks for HardFOC operation
+        float temperature, current;
         temp_sensor_.ReadTemperature(temperature);
-        voltage_monitor_.ReadChannelV(ADC_CHANNEL_0, voltage);
+        current_sensor_.ReadChannelV(ADC_CHANNEL_0, current);
         
-        // Safety checks
-        if (temperature > 70.0f) {
-            logger_.LogError("SENSOR", "High temperature detected: %.1f°C", temperature);
-            set_status_led_error();
+        if (temperature > 85.0f) {
+            logger_.LogError("HARDFOC", "HardFOC board overheating detected: %.1f°C", temperature);
+            emergency_stop();
             return;
         }
         
-        if (voltage < 3.0f) {
-            logger_.LogWarn("SENSOR", "Low voltage: %.2fV", voltage);
-            set_status_led_warning();
-        } else {
-            set_status_led_normal();
+        if (current > 10.0f) {
+            logger_.LogWarn("HARDFOC", "HardFOC high current: %.2fA", current);
         }
         
-        // Read external sensor via SPI
-        read_external_sensor();
+        // Send velocity command to motor controller via SPI
+        send_velocity_command(speed_percent);
         
-        logger_.LogDebug("SENSOR", "Temp: %.1f°C, Voltage: %.2fV", temperature, voltage);
+        logger_.LogDebug("HARDFOC", "Motor Speed: %.1f%%, Current: %.2fA, Temp: %.1f°C", 
+                        speed_percent, current, temperature);
+    }
+    
+    void emergency_stop() {
+        enable_pin_.SetInactive();
+        send_stop_command();
+        logger_.LogError("HARDFOC", "HardFOC emergency stop activated");
     }
     
 private:
-    void read_external_sensor() {
-        // Example SPI sensor reading
-        hf_u8_t cmd[] = {0x03, 0x00};  // Read command
-        hf_u8_t response[4];
-        sensor_spi_.WriteRead(cmd, response, sizeof(cmd));
-        // Process sensor data...
+    void configure_motor_controller() {
+        // Example configuration for TMC9660-style motor controller
+        // Set motor parameters, current limits, etc.
+        hf_u8_t config_data[] = {0x80, 0x00, 0x00, 0x01};  // Example configuration
+        motor_controller_spi_.WriteRead(config_data, nullptr, sizeof(config_data));
     }
     
-    void set_status_led_normal() {
-        status_led_.SetDutyCycle(10);  // Low brightness for normal operation
+    void send_velocity_command(float speed_percent) {
+        // Example: Convert speed percentage to motor controller velocity command
+        hf_u32_t velocity = static_cast<hf_u32_t>(speed_percent * 1000);  // Example scaling
+        hf_u8_t cmd[] = {0x00, 0x03,  // Velocity register (example)
+                         static_cast<hf_u8_t>(velocity >> 24),
+                         static_cast<hf_u8_t>(velocity >> 16),
+                         static_cast<hf_u8_t>(velocity >> 8),
+                         static_cast<hf_u8_t>(velocity)};
+        motor_controller_spi_.WriteRead(cmd, nullptr, sizeof(cmd));
     }
     
-    void set_status_led_warning() {
-        status_led_.SetDutyCycle(50);  // Medium brightness for warning
-    }
-    
-    void set_status_led_error() {
-        status_led_.SetDutyCycle(100); // Full brightness for error
+    void send_stop_command() {
+        // Example: Send immediate stop command to motor controller
+        hf_u8_t stop_cmd[] = {0x00, 0x03, 0x00, 0x00, 0x00, 0x00};  // Zero velocity
+        motor_controller_spi_.WriteRead(stop_cmd, nullptr, sizeof(stop_cmd));
     }
 };
 ```
@@ -422,7 +435,7 @@ set(COMPONENT_REQUIRES
 - **Bluetooth Classic** - Serial over Bluetooth for HardFOC
 
 ### 🚀 **Advanced HardFOC Integration Examples**
-- **Complete HardFOC TMC9660 Controller** - Full-featured TMC9660 motor control
+- **Complete HardFOC Motor Controller** - Full-featured motor control with TMC-style controllers
 - **HardFOC IoT Gateway** - WiFi bridge with HardFOC monitoring
 - **HardFOC Data Logger** - Multi-sensor data collection for HardFOC
 - **Secure HardFOC Communication** - Encrypted data transfer for HardFOC
