@@ -137,9 +137,9 @@
 
 #endif // HAS_BLE_SUPPORT
 
+#include "RtosMutex.h"
 #include <functional>
 #include <map>
-#include <mutex>
 #include <vector>
 
 /**
@@ -169,8 +169,8 @@ private:
   hf_bluetooth_ble_config_t m_ble_config;
 
   // Synchronization
-  mutable std::mutex m_device_mutex;
-  mutable std::mutex m_state_mutex;
+  mutable RtosMutex m_device_mutex;
+  mutable RtosMutex m_state_mutex;
 
   // Callback functions
   hf_bluetooth_event_callback_t m_event_callback;

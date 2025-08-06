@@ -23,8 +23,8 @@ static const char* TAG = "ESP32C6_BLE_TEST";
 // Global Bluetooth instance
 static EspBluetooth bluetooth_instance;
 
-// Event callback function
-void bluetooth_event_callback(hf_bluetooth_event_t event, const void* data, void* context) {
+// Event callback function - corrected signature to match BaseBluetooth API
+void bluetooth_event_callback(hf_bluetooth_event_t event, void* event_data) {
   switch (event) {
     case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_ENABLED:
       ESP_LOGI(TAG, "Bluetooth enabled successfully");
@@ -314,6 +314,7 @@ extern "C" void app_main() {
   ESP_LOGI(TAG, "✓ Event-driven architecture");
   ESP_LOGI(TAG, "✓ Thread-safe implementation");
   ESP_LOGI(TAG, "✓ Modern BaseBluetooth API usage");
+  ESP_LOGI(TAG, "✓ Correct callback signatures");
   ESP_LOGI(TAG, "==================================================");
 
   // Keep the task running
