@@ -101,6 +101,7 @@
 
 #if HAS_NIMBLE_SUPPORT
 // NimBLE headers for ESP32C6 (ESP-IDF v5.5+)
+extern "C" {
 #include "host/ble_att.h"
 #include "host/ble_gap.h"
 #include "host/ble_gatt.h"
@@ -111,10 +112,12 @@
 #include "nimble/nimble_port_freertos.h"
 #include "services/gap/ble_svc_gap.h"
 #include "services/gatt/ble_svc_gatt.h"
+}
 #endif
 
 #if HAS_BLUEDROID_SUPPORT
 // Bluedroid BLE headers for other targets
+extern "C" {
 #include "esp_bt.h"
 #include "esp_bt_defs.h"
 #include "esp_bt_main.h"
@@ -122,10 +125,12 @@
 #include "esp_gatt_common_api.h"
 #include "esp_gattc_api.h"
 #include "esp_gatts_api.h"
+}
 #endif
 
 #if HAS_CLASSIC_BLUETOOTH
 // Classic Bluetooth headers (ESP32/ESP32S3 only)
+extern "C" {
 #include "esp_gap_bt_api.h"
 #include "esp_hf_client_api.h"
 #include "esp_spp_api.h"
@@ -133,6 +138,7 @@
 #include "esp_a2dp_api.h"
 #include "esp_avrc_api.h"
 #endif
+}
 #endif
 
 #endif // HAS_BLE_SUPPORT
