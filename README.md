@@ -47,7 +47,7 @@ The **HardFOC Internal Interface Wrapper** is a comprehensive, production-ready 
 
 ## 🏗️ **Architecture**
 
-The wrapper follows a sophisticated multi-layered architecture that maximizes flexibility, maintainability, and performance for HardFOC motor controller boards:
+The wrapper follows a multi-layered architecture that maximizes flexibility, maintainability, and performance for HardFOC motor controller boards:
 
 ```mermaid
 graph TB
