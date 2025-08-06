@@ -3,11 +3,11 @@
  * @brief Comprehensive Periodic Timer testing suite for ESP32-C6 DevKit-M-1 (noexcept)
  */
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
+#include "base/BasePeriodicTimer.h"
 #include "esp_log.h"
 #include "esp_timer.h"
-#include "base/BasePeriodicTimer.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include "mcu/esp32/EspPeriodicTimer.h"
 
 #include "TestFramework.h"
@@ -18,7 +18,7 @@ static TestResults g_test_results;
 
 bool test_timer_initialization() noexcept {
   ESP_LOGI(TAG, "Testing periodic timer initialization...");
-  
+
   auto timer_callback = [](void* user_data) {
     static int count = 0;
     count++;
@@ -26,17 +26,17 @@ bool test_timer_initialization() noexcept {
       ESP_LOGI("Timer", "Timer callback executed %d times", count);
     }
   };
-  
+
   EspPeriodicTimer test_timer(timer_callback, nullptr);
   auto timer_init = test_timer.IsInitialized();
-  
+
   if (!timer_init) {
     ESP_LOGE(TAG, "Failed to initialize periodic timer");
     return false;
   }
-  
+
   ESP_LOGI(TAG, "[SUCCESS] Periodic timer initialization successful");
-  
+
   // Test starting the timer
   if (test_timer.Start(1000000)) { // 1 second interval
     ESP_LOGI(TAG, "[SUCCESS] Periodic timer started with 1-second interval");
@@ -46,7 +46,7 @@ bool test_timer_initialization() noexcept {
   } else {
     ESP_LOGW(TAG, "Could not start timer, but initialization was successful");
   }
-  
+
   return true;
 }
 
@@ -57,5 +57,6 @@ extern "C" void app_main(void) {
   vTaskDelay(pdMS_TO_TICKS(1000));
   RUN_TEST(test_timer_initialization);
   print_test_summary(g_test_results, "TIMER", TAG);
-  while (true) vTaskDelay(pdMS_TO_TICKS(10000));
+  while (true)
+    vTaskDelay(pdMS_TO_TICKS(10000));
 }
