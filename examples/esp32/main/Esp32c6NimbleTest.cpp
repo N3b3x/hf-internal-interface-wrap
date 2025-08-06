@@ -68,10 +68,10 @@ void bluetooth_event_callback(hf_bluetooth_event_t event, const void* data, void
 void test_bluetooth_basic_operations() {
   ESP_LOGI(TAG, "=== Testing ESP32C6 NimBLE Basic Operations ===");
 
-  // Set event callback
-  hf_bluetooth_err_t ret = bluetooth_instance.SetEventCallback(bluetooth_event_callback, nullptr);
+  // Register event callback
+  hf_bluetooth_err_t ret = bluetooth_instance.RegisterEventCallback(bluetooth_event_callback);
   if (ret != hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to set event callback");
+    ESP_LOGE(TAG, "Failed to register event callback");
     return;
   }
 
@@ -109,9 +109,7 @@ void test_bluetooth_basic_operations() {
   hf_bluetooth_address_t local_addr;
   ret = bluetooth_instance.GetLocalAddress(local_addr);
   if (ret == hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
-    ESP_LOGI(TAG, "✓ Local BLE address: %02X:%02X:%02X:%02X:%02X:%02X", local_addr.addr[0],
-             local_addr.addr[1], local_addr.addr[2], local_addr.addr[3], local_addr.addr[4],
-             local_addr.addr[5]);
+    ESP_LOGI(TAG, "✓ Local BLE address: %s", local_addr.ToString().c_str());
   } else {
     ESP_LOGW(TAG, "Could not get local address: %d", static_cast<int>(ret));
   }
@@ -125,12 +123,11 @@ void test_bluetooth_basic_operations() {
   }
 
   // Get device name
-  std::string device_name;
-  ret = bluetooth_instance.GetDeviceName(device_name);
-  if (ret == hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
+  std::string device_name = bluetooth_instance.GetDeviceName();
+  if (!device_name.empty()) {
     ESP_LOGI(TAG, "✓ Device name: %s", device_name.c_str());
   } else {
-    ESP_LOGW(TAG, "Failed to get device name: %d", static_cast<int>(ret));
+    ESP_LOGW(TAG, "Failed to get device name");
   }
 
   // Get implementation info
@@ -153,20 +150,14 @@ void test_bluetooth_scanning() {
     return;
   }
 
-  // Configure scan parameters
-  hf_bluetooth_scan_config_t scan_config;
-  scan_config.duration_ms = 5000; // 5 second scan
-  scan_config.type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE;
-  scan_config.mode = hf_bluetooth_scan_mode_t::HF_BLUETOOTH_SCAN_MODE_LE_GENERAL;
-
   // Clear previously discovered devices
   hf_bluetooth_err_t ret = bluetooth_instance.ClearDiscoveredDevices();
   if (ret == hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
     ESP_LOGI(TAG, "✓ Cleared discovered devices list");
   }
 
-  // Start scanning
-  ret = bluetooth_instance.StartScan(scan_config);
+  // Start scanning with 5 second duration
+  ret = bluetooth_instance.StartScan(5000, hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE);
   if (ret != hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
     ESP_LOGE(TAG, "Failed to start scanning: %d", static_cast<int>(ret));
     return;
@@ -200,9 +191,7 @@ void test_bluetooth_scanning() {
     for (size_t i = 0; i < discovered_devices.size() && i < 10; i++) {
       const auto& device = discovered_devices[i];
       ESP_LOGI(TAG, "  Device %zu:", i + 1);
-      ESP_LOGI(TAG, "    Address: %02X:%02X:%02X:%02X:%02X:%02X", device.address.addr[0],
-               device.address.addr[1], device.address.addr[2], device.address.addr[3],
-               device.address.addr[4], device.address.addr[5]);
+      ESP_LOGI(TAG, "    Address: %s", device.address.ToString().c_str());
       ESP_LOGI(TAG, "    RSSI: %d dBm", device.rssi);
       if (!device.name.empty()) {
         ESP_LOGI(TAG, "    Name: %s", device.name.c_str());
@@ -285,10 +274,10 @@ void test_bluetooth_cleanup() {
     ESP_LOGW(TAG, "Bluetooth still showing as initialized");
   }
 
-  // Clear event callback
-  ret = bluetooth_instance.ClearEventCallback();
+  // Unregister event callback
+  ret = bluetooth_instance.UnregisterEventCallback();
   if (ret == hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
-    ESP_LOGI(TAG, "✓ Event callback cleared successfully");
+    ESP_LOGI(TAG, "✓ Event callback unregistered successfully");
   }
 
   ESP_LOGI(TAG, "=== Cleanup Test Completed ===");
@@ -324,6 +313,7 @@ extern "C" void app_main() {
   ESP_LOGI(TAG, "✓ Device discovery and management");
   ESP_LOGI(TAG, "✓ Event-driven architecture");
   ESP_LOGI(TAG, "✓ Thread-safe implementation");
+  ESP_LOGI(TAG, "✓ Modern BaseBluetooth API usage");
   ESP_LOGI(TAG, "==================================================");
 
   // Keep the task running
