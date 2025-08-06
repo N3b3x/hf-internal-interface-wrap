@@ -3,11 +3,11 @@
  * @brief Comprehensive PWM testing suite for ESP32-C6 DevKit-M-1 (noexcept)
  */
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
+#include "base/BasePwm.h"
 #include "esp_log.h"
 #include "esp_timer.h"
-#include "base/BasePwm.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include "mcu/esp32/EspPwm.h"
 
 #include "TestFramework.h"
@@ -18,7 +18,7 @@ static TestResults g_test_results;
 
 bool test_pwm_initialization() noexcept {
   ESP_LOGI(TAG, "Testing PWM initialization...");
-  
+
   hf_pwm_unit_config_t pwm_cfg = {};
   pwm_cfg.unit_id = 0;
   pwm_cfg.mode = hf_pwm_mode_t::HF_PWM_MODE_FADE;
@@ -27,12 +27,12 @@ bool test_pwm_initialization() noexcept {
   pwm_cfg.enable_fade = true;
   pwm_cfg.enable_interrupts = true;
   EspPwm test_pwm(pwm_cfg);
-  
+
   if (!test_pwm.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize PWM");
     return false;
   }
-  
+
   ESP_LOGI(TAG, "[SUCCESS] PWM initialization successful");
   return true;
 }
@@ -44,5 +44,6 @@ extern "C" void app_main(void) {
   vTaskDelay(pdMS_TO_TICKS(1000));
   RUN_TEST(test_pwm_initialization);
   print_test_summary(g_test_results, "PWM", TAG);
-  while (true) vTaskDelay(pdMS_TO_TICKS(10000));
+  while (true)
+    vTaskDelay(pdMS_TO_TICKS(10000));
 }
