@@ -61,8 +61,6 @@ extern "C" {
 
 static const char* TAG = "GPIO_Test";
 
-static TestResults g_test_results;
-
 // ESP32-C6 DevKit-M-1 Safe Test Pins
 namespace TestPins {
 // Safe pins for ESP32-C6 DevKit-M-1 (avoiding strapping, USB-JTAG, SPI flash pins)
@@ -203,9 +201,8 @@ bool test_gpio_initialization_and_configuration() noexcept {
     }
 
     // Verify configuration
-    hf_gpio_direction_t read_direction;
-    auto result = test_gpio.GetDirection(read_direction);
-    if (result != hf_gpio_err_t::GPIO_SUCCESS || read_direction != direction) {
+    auto read_direction = test_gpio.GetDirection();
+    if (read_direction != direction) {
       ESP_LOGE(TAG, "Direction mismatch for pin %d", pin);
       return false;
     }
@@ -246,20 +243,14 @@ bool test_gpio_input_output_operations() noexcept {
 
   for (size_t i = 0; i < num_states; i++) {
     auto state = test_states[i];
-    auto result = output_gpio.Write(state);
+    auto result = output_gpio.SetState(state);
     if (result != hf_gpio_err_t::GPIO_SUCCESS) {
       ESP_LOGE(TAG, "Failed to write state %d", static_cast<int>(state));
       return false;
     }
 
     // Verify the written state
-    hf_gpio_state_t read_state;
-    result = output_gpio.Read(read_state);
-    if (result != hf_gpio_err_t::GPIO_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to read GPIO state");
-      return false;
-    }
-
+    auto read_state = output_gpio.GetCurrentState();
     if (read_state != state) {
       ESP_LOGE(TAG, "State mismatch: wrote %d, read %d", static_cast<int>(state),
                static_cast<int>(read_state));
@@ -269,31 +260,25 @@ bool test_gpio_input_output_operations() noexcept {
     vTaskDelay(pdMS_TO_TICKS(50));
   }
 
-  // Test pin level operations
-  const hf_gpio_level_t test_levels[] = {
-      hf_gpio_level_t::HF_GPIO_LEVEL_HIGH, hf_gpio_level_t::HF_GPIO_LEVEL_LOW,
-      hf_gpio_level_t::HF_GPIO_LEVEL_HIGH, hf_gpio_level_t::HF_GPIO_LEVEL_LOW};
+  // Test additional state operations
+  const hf_gpio_state_t test_states_2[] = {
+      hf_gpio_state_t::HF_GPIO_STATE_ACTIVE, hf_gpio_state_t::HF_GPIO_STATE_INACTIVE,
+      hf_gpio_state_t::HF_GPIO_STATE_ACTIVE, hf_gpio_state_t::HF_GPIO_STATE_INACTIVE};
 
-  const size_t num_levels = sizeof(test_levels) / sizeof(test_levels[0]);
+  const size_t num_states_2 = sizeof(test_states_2) / sizeof(test_states_2[0]);
 
-  for (size_t i = 0; i < num_levels; i++) {
-    auto level = test_levels[i];
-    auto result = output_gpio.SetPinLevel(level);
+  for (size_t i = 0; i < num_states_2; i++) {
+    auto state = test_states_2[i];
+    auto result = output_gpio.SetState(state);
     if (result != hf_gpio_err_t::GPIO_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set pin level %d", static_cast<int>(level));
+      ESP_LOGE(TAG, "Failed to set pin state %d", static_cast<int>(state));
       return false;
     }
 
-    hf_gpio_level_t read_level;
-    result = output_gpio.GetPinLevel(read_level);
-    if (result != hf_gpio_err_t::GPIO_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to read pin level");
-      return false;
-    }
-
-    if (read_level != level) {
-      ESP_LOGE(TAG, "Level mismatch: set %d, read %d", static_cast<int>(level),
-               static_cast<int>(read_level));
+    auto read_state = output_gpio.GetCurrentState();
+    if (read_state != state) {
+      ESP_LOGE(TAG, "State mismatch: set %d, read %d", static_cast<int>(state),
+               static_cast<int>(read_state));
       return false;
     }
 
@@ -342,12 +327,10 @@ bool test_gpio_pull_resistors() noexcept {
     }
 
     // Read the pin state and log it
-    hf_gpio_level_t level;
-    result = pull_test_gpio.GetPinLevel(level);
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      ESP_LOGI(TAG, "Pull mode %d -> Pin level: %s", static_cast<int>(pull_mode),
-               level == hf_gpio_level_t::HF_GPIO_LEVEL_HIGH ? "HIGH" : "LOW");
-    }
+    // Read current state instead of pin level
+    auto state = pull_test_gpio.GetCurrentState();
+    ESP_LOGI(TAG, "Pull mode %d -> Pin state: %s", static_cast<int>(pull_mode),
+             state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
 
     vTaskDelay(pdMS_TO_TICKS(100));
   }
@@ -556,7 +539,7 @@ bool test_gpio_sleep_and_wakeup() noexcept {
       .sleep_mode = hf_gpio_mode_t::HF_GPIO_MODE_INPUT,
       .sleep_direction = hf_gpio_mode_t::HF_GPIO_MODE_INPUT,
       .sleep_pull_mode = hf_gpio_pull_t::HF_GPIO_PULL_UP,
-      .sleep_drive_strength = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_0,
+      .sleep_drive_strength = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK,
       .sleep_output_enable = false,
       .sleep_input_enable = true,
       .hold_during_sleep = false,
@@ -676,11 +659,11 @@ bool test_gpio_drive_capabilities() noexcept {
   ESP_LOGI(TAG, "Testing different drive capability settings...");
 
   // Test all available drive capabilities
-  hf_gpio_drive_capability_t capabilities[] = {
-      hf_gpio_drive_capability_t::HF_GPIO_DRIVE_CAP_0, // ~5mA
-      hf_gpio_drive_capability_t::HF_GPIO_DRIVE_CAP_1, // ~10mA
-      hf_gpio_drive_capability_t::HF_GPIO_DRIVE_CAP_2, // ~20mA
-      hf_gpio_drive_capability_t::HF_GPIO_DRIVE_CAP_3  // ~40mA
+  hf_gpio_drive_cap_t capabilities[] = {
+      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK,     // ~5mA
+      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGER, // ~10mA
+      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM,   // ~20mA
+      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST // ~40mA
   };
 
   const char* cap_names[] = {"5mA", "10mA", "20mA", "40mA"};
@@ -730,12 +713,17 @@ bool test_gpio_diagnostics_and_statistics() noexcept {
     // Test configuration dump
     ESP_LOGI(TAG, "Getting configuration dump for pin %d...", test_pins[i]);
     auto config_dump = diag_gpio.GetConfigurationDump();
-    ESP_LOGI(TAG, "[SUCCESS] Configuration dump: %s", config_dump.c_str());
+    ESP_LOGI(TAG, "[SUCCESS] Configuration dump retrieved for pin %d", test_pins[i]);
 
     // Test pin capabilities
     ESP_LOGI(TAG, "Getting pin capabilities for pin %d...", test_pins[i]);
-    auto capabilities = diag_gpio.GetPinCapabilities();
-    ESP_LOGI(TAG, "[SUCCESS] Pin capabilities: %s", capabilities.c_str());
+    hf_gpio_pin_capabilities_t capabilities;
+    auto cap_result = diag_gpio.GetPinCapabilities(capabilities);
+    if (cap_result == hf_gpio_err_t::GPIO_SUCCESS) {
+      ESP_LOGI(TAG, "[SUCCESS] Pin capabilities retrieved for pin %d", test_pins[i]);
+    } else {
+      ESP_LOGW(TAG, "[FAILURE] Failed to get pin capabilities for pin %d", test_pins[i]);
+    }
 
     // Test RTC GPIO support
     if (diag_gpio.SupportsRtcGpio()) {
@@ -795,7 +783,7 @@ bool test_gpio_loopback_operations() noexcept {
   }
 
   // Configure input with pulldown to ensure clean test
-  auto result = input_gpio.SetPullMode(hf_gpio_pull_mode_t::HF_GPIO_PULL_DOWN);
+  auto result = input_gpio.SetPullMode(hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN);
   if (result != hf_gpio_err_t::GPIO_SUCCESS) {
     ESP_LOGW(TAG, "Failed to set pulldown on input pin");
   }

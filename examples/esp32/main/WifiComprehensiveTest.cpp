@@ -6,7 +6,6 @@
 #include "TestFramework.h"
 #include "base/BaseWifi.h"
 #include "esp_log.h"
-#include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "mcu/esp32/EspWifi.h"

@@ -5,7 +5,6 @@
 
 #include "base/BaseI2c.h"
 #include "esp_log.h"
-#include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "mcu/esp32/EspI2c.h"
