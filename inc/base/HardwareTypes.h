@@ -173,6 +173,11 @@ using hf_timeout_ms_t = hf_time_t;
  */
 using hf_timeout_us_t = hf_time_t;
 
+/**
+ * @brief Timestamp value in microseconds.
+ */
+using hf_timestamp_us_t = hf_u64_t;
+
 //==============================================================================
 // TIMEOUT CONSTANTS
 //==============================================================================
