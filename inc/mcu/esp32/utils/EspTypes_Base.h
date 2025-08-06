@@ -82,7 +82,10 @@ enum class hf_sleep_mode_t : uint8_t {
 /**
  * @brief High-resolution timing types for operations.
  */
-using hf_timestamp_us_t = uint64_t; ///< Microsecond timestamp
-using hf_timestamp_ns_t = uint64_t; ///< Nanosecond timestamp
-using hf_duration_us_t = uint32_t;  ///< Duration in microseconds
-using hf_duration_ns_t = uint32_t;  ///< Duration in nanoseconds
+#ifndef HF_TIMESTAMP_US_T_DEFINED
+#define HF_TIMESTAMP_US_T_DEFINED
+using hf_timestamp_us_t = hf_u64_t; ///< Microsecond timestamp
+#endif
+using hf_timestamp_ns_t = hf_u64_t; ///< Nanosecond timestamp
+using hf_duration_us_t = hf_u32_t;  ///< Duration in microseconds
+using hf_duration_ns_t = hf_u32_t;  ///< Duration in nanoseconds

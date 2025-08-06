@@ -38,7 +38,10 @@ extern "C" {
 typedef esp_timer_handle_t hf_timer_handle_t;
 
 // Timestamp type
-typedef uint64_t hf_timestamp_us_t;
+#ifndef HF_TIMESTAMP_US_T_DEFINED
+#define HF_TIMESTAMP_US_T_DEFINED
+typedef hf_u64_t hf_timestamp_us_t;
+#endif
 
 //==============================================================================
 // END OF ESPTIMER TYPES - MINIMAL AND ESSENTIAL ONLY
