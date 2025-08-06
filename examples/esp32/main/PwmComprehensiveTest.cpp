@@ -50,14 +50,15 @@ hf_pwm_unit_config_t create_test_config() noexcept {
 hf_pwm_channel_config_t create_test_channel_config(hf_gpio_num_t gpio_pin) noexcept {
   hf_pwm_channel_config_t config = {};
   config.gpio_pin = gpio_pin;
-  config.frequency_hz = 1000;
-  config.resolution_bits = 10;
-  config.duty_cycle = 0.5f;
-  config.phase_shift_degrees = 0.0f;
-  config.idle_level = 0;
+  config.channel_id = 0;
+  config.timer_id = 0;
+  config.speed_mode = hf_pwm_mode_t::HF_PWM_MODE_BASIC;
+  config.duty_initial = 512; // 50% for 10-bit resolution
+  config.intr_type = hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE;
   config.invert_output = false;
-  config.enable_pull_up = false;
-  config.enable_pull_down = false;
+  config.hpoint = 0;
+  config.idle_level = 0;
+  config.output_invert = false;
   return config;
 }
 
@@ -68,53 +69,44 @@ hf_pwm_channel_config_t create_test_channel_config(hf_gpio_num_t gpio_pin) noexc
 bool test_constructor_default() noexcept {
   ESP_LOGI(TAG, "Testing default constructor...");
   
-  try {
-    EspPwm pwm1;
-    ESP_LOGI(TAG, "[SUCCESS] Default constructor completed");
-    
-    // Test constructor with unit config
-    hf_pwm_unit_config_t config = create_test_config();
-    EspPwm pwm2(config);
-    ESP_LOGI(TAG, "[SUCCESS] Constructor with config completed");
-    
-    // Test legacy constructor
-    EspPwm pwm3(HF_PWM_APB_CLOCK_HZ);
-    ESP_LOGI(TAG, "[SUCCESS] Legacy constructor completed");
-    
-    return true;
-  } catch (...) {
-    ESP_LOGE(TAG, "Exception caught during constructor test");
-    return false;
-  }
+  // Test constructors without exception handling
+  EspPwm pwm1;
+  ESP_LOGI(TAG, "[SUCCESS] Default constructor completed");
+  
+  // Test constructor with unit config
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm2(config);
+  ESP_LOGI(TAG, "[SUCCESS] Constructor with config completed");
+  
+  // Test legacy constructor
+  EspPwm pwm3(HF_PWM_APB_CLOCK_HZ);
+  ESP_LOGI(TAG, "[SUCCESS] Legacy constructor completed");
+  
+  return true;
 }
 
 bool test_destructor_cleanup() noexcept {
   ESP_LOGI(TAG, "Testing destructor cleanup...");
   
-  try {
-    {
-      hf_pwm_unit_config_t config = create_test_config();
-      EspPwm pwm(config);
-      
-      // Initialize and configure a channel
-      if (!pwm.EnsureInitialized()) {
-        ESP_LOGE(TAG, "Failed to initialize PWM for destructor test");
-        return false;
-      }
-      
-      hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
-      pwm.ConfigureChannel(0, ch_config);
-      pwm.EnableChannel(0);
-      
-      ESP_LOGI(TAG, "PWM configured, testing destructor cleanup...");
-    } // pwm should be destroyed here
+  {
+    hf_pwm_unit_config_t config = create_test_config();
+    EspPwm pwm(config);
     
-    ESP_LOGI(TAG, "[SUCCESS] Destructor cleanup completed");
-    return true;
-  } catch (...) {
-    ESP_LOGE(TAG, "Exception caught during destructor test");
-    return false;
-  }
+    // Initialize and configure a channel
+    if (!pwm.EnsureInitialized()) {
+      ESP_LOGE(TAG, "Failed to initialize PWM for destructor test");
+      return false;
+    }
+    
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+    pwm.ConfigureChannel(0, ch_config);
+    pwm.EnableChannel(0);
+    
+    ESP_LOGI(TAG, "PWM configured, testing destructor cleanup...");
+  } // pwm should be destroyed here
+  
+  ESP_LOGI(TAG, "[SUCCESS] Destructor cleanup completed");
+  return true;
 }
 
 //==============================================================================
@@ -304,9 +296,9 @@ bool test_channel_configuration() noexcept {
   
   // Test configuring multiple channels
   for (hf_channel_id_t ch = 0; ch < 4; ch++) {
-    hf_pwm_channel_config_t ch_config = create_test_channel_config(static_cast<hf_gpio_num_t>(2 + ch));
-    ch_config.frequency_hz = 1000 + (ch * 500); // Different frequencies
-    ch_config.duty_cycle = 0.25f + (ch * 0.15f); // Different duty cycles
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(2 + ch);
+    ch_config.channel_id = ch;
+    ch_config.duty_initial = 256 + (ch * 128); // Different duty cycles
     
     hf_pwm_err_t result = pwm.ConfigureChannel(ch, ch_config);
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
@@ -318,7 +310,7 @@ bool test_channel_configuration() noexcept {
   }
   
   // Test invalid channel configuration
-  hf_pwm_channel_config_t invalid_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_10);
+  hf_pwm_channel_config_t invalid_config = create_test_channel_config(10);
   hf_pwm_err_t result = pwm.ConfigureChannel(EspPwm::MAX_CHANNELS, invalid_config);
   if (result == hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Invalid channel should not be configurable");
@@ -341,7 +333,7 @@ bool test_channel_enable_disable() noexcept {
   }
   
   // Configure a channel first
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
   hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure channel for enable/disable test");
@@ -405,7 +397,7 @@ bool test_duty_cycle_control() noexcept {
   }
   
   // Configure and enable a channel
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
   pwm.ConfigureChannel(0, ch_config);
   pwm.EnableChannel(0);
   
@@ -472,7 +464,7 @@ bool test_frequency_control() noexcept {
   }
   
   // Configure and enable a channel
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
   pwm.ConfigureChannel(0, ch_config);
   pwm.EnableChannel(0);
   
@@ -527,7 +519,8 @@ bool test_phase_shift_control() noexcept {
   
   // Configure and enable channels
   for (hf_channel_id_t ch = 0; ch < 3; ch++) {
-    hf_pwm_channel_config_t ch_config = create_test_channel_config(static_cast<hf_gpio_num_t>(2 + ch));
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(2 + ch);
+    ch_config.channel_id = ch;
     pwm.ConfigureChannel(ch, ch_config);
     pwm.EnableChannel(ch);
   }
@@ -575,8 +568,9 @@ bool test_synchronized_operations() noexcept {
   
   // Configure multiple channels
   for (hf_channel_id_t ch = 0; ch < 4; ch++) {
-    hf_pwm_channel_config_t ch_config = create_test_channel_config(static_cast<hf_gpio_num_t>(2 + ch));
-    ch_config.duty_cycle = 0.3f + (ch * 0.1f);
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(2 + ch);
+    ch_config.channel_id = ch;
+    ch_config.duty_initial = 300 + (ch * 100);
     pwm.ConfigureChannel(ch, ch_config);
     pwm.EnableChannel(ch);
   }
@@ -626,8 +620,8 @@ bool test_complementary_outputs() noexcept {
   }
   
   // Configure primary and complementary channels
-  hf_pwm_channel_config_t primary_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
-  hf_pwm_channel_config_t comp_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_3);
+  hf_pwm_channel_config_t primary_config = create_test_channel_config(2);
+  hf_pwm_channel_config_t comp_config = create_test_channel_config(3);
   
   pwm.ConfigureChannel(0, primary_config);
   pwm.ConfigureChannel(1, comp_config);
@@ -673,7 +667,7 @@ bool test_hardware_fade() noexcept {
   }
   
   // Configure and enable a channel
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
   pwm.ConfigureChannel(0, ch_config);
   pwm.EnableChannel(0);
   
@@ -751,7 +745,7 @@ bool test_idle_level_control() noexcept {
   }
   
   // Configure channels
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
   pwm.ConfigureChannel(0, ch_config);
   
   // Test different idle levels
@@ -789,23 +783,22 @@ bool test_timer_management() noexcept {
     return false;
   }
   
-  // Configure channels with different frequencies to test timer allocation
+  // Configure channels with different configurations to test timer allocation
   struct ChannelConfig {
     hf_channel_id_t channel;
-    hf_frequency_hz_t frequency;
     hf_gpio_num_t gpio;
   };
   
   ChannelConfig configs[] = {
-    {0, 1000, hf_gpio_num_t::HF_GPIO_NUM_2},   // Timer 0
-    {1, 1000, hf_gpio_num_t::HF_GPIO_NUM_3},   // Should share Timer 0
-    {2, 2000, hf_gpio_num_t::HF_GPIO_NUM_4},   // Timer 1
-    {3, 5000, hf_gpio_num_t::HF_GPIO_NUM_5}    // Timer 2
+    {0, 2},   // Timer 0
+    {1, 3},   // Should share Timer 0
+    {2, 4},   // Timer 1
+    {3, 5}    // Timer 2
   };
   
   for (const auto& cfg : configs) {
     hf_pwm_channel_config_t ch_config = create_test_channel_config(cfg.gpio);
-    ch_config.frequency_hz = cfg.frequency;
+    ch_config.channel_id = cfg.channel;
     
     hf_pwm_err_t result = pwm.ConfigureChannel(cfg.channel, ch_config);
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
@@ -814,8 +807,7 @@ bool test_timer_management() noexcept {
     }
     
     int8_t timer_id = pwm.GetTimerAssignment(cfg.channel);
-    ESP_LOGI(TAG, "Channel %d (freq %lu Hz) assigned to timer %d", 
-             cfg.channel, cfg.frequency, timer_id);
+    ESP_LOGI(TAG, "Channel %d assigned to timer %d", cfg.channel, timer_id);
   }
   
   // Test forced timer assignment
@@ -851,9 +843,8 @@ bool test_status_reporting() noexcept {
   }
   
   // Configure and enable a channel
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
-  ch_config.frequency_hz = 2000;
-  ch_config.duty_cycle = 0.6f;
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+  ch_config.duty_initial = 600; // ~60% for 10-bit resolution
   
   pwm.ConfigureChannel(0, ch_config);
   pwm.EnableChannel(0);
@@ -909,7 +900,7 @@ bool test_statistics_and_diagnostics() noexcept {
   }
   
   // Perform some operations to generate statistics
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
   pwm.ConfigureChannel(0, ch_config);
   pwm.EnableChannel(0);
   
@@ -992,8 +983,8 @@ bool test_callbacks() noexcept {
   pwm.SetFaultCallback(test_fault_callback, nullptr);
   
   // Configure and enable a channel
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
-  ch_config.frequency_hz = 10; // Low frequency to trigger period callbacks quickly
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+  ch_config.duty_initial = 10; // Low duty cycle to trigger period callbacks quickly
   
   pwm.ConfigureChannel(0, ch_config);
   pwm.EnableChannel(0);
@@ -1027,7 +1018,7 @@ bool test_edge_cases() noexcept {
   }
   
   // Test boundary duty cycles
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(hf_gpio_num_t::HF_GPIO_NUM_2);
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
   pwm.ConfigureChannel(0, ch_config);
   pwm.EnableChannel(0);
   
@@ -1082,9 +1073,9 @@ bool test_stress_scenarios() noexcept {
   
   // Configure maximum number of channels
   for (hf_channel_id_t ch = 0; ch < EspPwm::MAX_CHANNELS; ch++) {
-    hf_pwm_channel_config_t ch_config = create_test_channel_config(static_cast<hf_gpio_num_t>(2 + ch));
-    ch_config.frequency_hz = 1000 + (ch * 200);
-    ch_config.duty_cycle = 0.2f + (ch * 0.1f);
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(2 + ch);
+    ch_config.channel_id = ch;
+    ch_config.duty_initial = 200 + (ch * 100);
     
     hf_pwm_err_t result = pwm.ConfigureChannel(ch, ch_config);
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
