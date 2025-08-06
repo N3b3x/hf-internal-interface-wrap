@@ -1,5 +1,5 @@
 /**
- * @file esp32c6_nimble_test.cpp
+ * @file Esp32c6NimbleTest.cpp
  * @brief Test example for ESP32C6 NimBLE Bluetooth implementation
  *
  * This example demonstrates basic NimBLE functionality for ESP32C6:
@@ -330,4 +330,4 @@ extern "C" void app_main() {
   while (1) {
     vTaskDelay(pdMS_TO_TICKS(10000));
   }
-}
+} 

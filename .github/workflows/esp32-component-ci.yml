@@ -41,11 +41,13 @@ jobs:
       matrix:
         idf_version: [release-v5.5]
         build_type: [Release, Debug]
-        example_type: [comprehensive, ascii_art]
+        example_type: [comprehensive, ascii_art, nimble_test]
         exclude:
           # Exclude some combinations to reduce CI time
           - build_type: Debug
             example_type: ascii_art
+          - build_type: Debug
+            example_type: nimble_test
 
     steps:
       - uses: actions/checkout@v4

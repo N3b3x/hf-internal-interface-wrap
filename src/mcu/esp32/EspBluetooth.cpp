@@ -29,7 +29,7 @@
 
 static const char* TAG = "EspBluetooth";
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
 // Static instance for NimBLE callbacks
 EspBluetooth* EspBluetooth::s_instance = nullptr;
 
@@ -57,12 +57,12 @@ EspBluetooth::EspBluetooth()
     : m_initialized(false), m_enabled(false), m_mode(hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE),
       m_state(hf_bluetooth_state_t::HF_BLUETOOTH_STATE_DISABLED), m_event_callback(nullptr),
       m_callback_context(nullptr)
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
       ,
       m_conn_handle(BLE_HS_CONN_HANDLE_NONE), m_addr_type(BLE_OWN_ADDR_PUBLIC)
 #endif
 {
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   s_instance = this;
 #endif
 
@@ -84,7 +84,7 @@ EspBluetooth::~EspBluetooth() {
     Deinitialize();
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   if (s_instance == this) {
     s_instance = nullptr;
   }
@@ -101,7 +101,7 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   // ESP32C6 supports only BLE mode
   if (mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE &&
       mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
@@ -161,7 +161,7 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() {
     Disable();
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   hf_bluetooth_err_t ret = DeinitializeNimBLE();
   if (ret != hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
     ESP_LOGE(TAG, "Failed to deinitialize NimBLE");
@@ -200,7 +200,7 @@ hf_bluetooth_err_t EspBluetooth::Enable() {
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   // NimBLE enable sequence
   ESP_LOGI(TAG, "Enabling NimBLE stack");
 
@@ -254,7 +254,7 @@ hf_bluetooth_err_t EspBluetooth::Disable() {
     Disconnect(device.address);
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   // Stop NimBLE host task
   int ret = nimble_port_stop();
   if (ret == 0) {
@@ -283,7 +283,7 @@ bool EspBluetooth::IsEnabled() const {
 hf_bluetooth_err_t EspBluetooth::SetMode(hf_bluetooth_mode_t mode) {
   std::lock_guard<std::mutex> lock(m_state_mutex);
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   // ESP32C6 only supports BLE
   if (mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE &&
       mode != hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_DUAL) {
@@ -305,7 +305,7 @@ hf_bluetooth_mode_t EspBluetooth::GetMode() const {
 
 // ========== NimBLE Implementation Functions ==========
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
 
 hf_bluetooth_err_t EspBluetooth::InitializeNimBLE() {
   ESP_LOGI(TAG, "Initializing NimBLE for ESP32C6");
@@ -507,7 +507,7 @@ hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address
     return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_INITIALIZED;
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   uint8_t addr[6];
   int ret = ble_hs_id_copy_addr(BLE_ADDR_PUBLIC, addr, nullptr);
   if (ret != 0) {
@@ -539,7 +539,7 @@ hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
     return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_INITIALIZED;
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   int ret = ble_svc_gap_device_name_set(name.c_str());
   if (ret != 0) {
     ESP_LOGE(TAG, "Failed to set device name: %d", ret);
@@ -567,7 +567,7 @@ std::string EspBluetooth::GetDeviceName() const {
     return "";
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   const char* device_name = ble_svc_gap_device_name();
   if (device_name) {
     return std::string(device_name);
@@ -595,7 +595,7 @@ hf_bluetooth_err_t EspBluetooth::StartScan(uint32_t duration_ms, hf_bluetooth_sc
   // Use provided duration or default
   // uint32_t scan_duration = (duration_ms > 0) ? duration_ms : DEFAULT_SCAN_DURATION_MS;
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   return StartScanning();
 #elif HAS_BLUEDROID_SUPPORT
   // Implement Bluedroid scanning
@@ -631,7 +631,7 @@ hf_bluetooth_err_t EspBluetooth::StartScan(uint32_t duration_ms, hf_bluetooth_sc
 #endif
 }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
 hf_bluetooth_err_t EspBluetooth::StartScanning() {
   struct ble_gap_disc_params disc_params = {
       .itvl = BLE_GAP_SCAN_ITVL_MS(100),
@@ -681,7 +681,7 @@ hf_bluetooth_err_t EspBluetooth::StopScan() {
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
   }
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   return StopScanning();
 #elif HAS_BLUEDROID_SUPPORT
   esp_err_t ret = esp_ble_gap_stop_scanning();
@@ -855,7 +855,7 @@ std::string EspBluetooth::GetImplementationInfo() const {
   info << "Target: " << CONFIG_IDF_TARGET << "\n";
   info << "ESP-IDF Version: " << IDF_VER << "\n";
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   info << "Stack: NimBLE (ESP32C6 optimized)\n";
   info << "Features: BLE-only\n";
 #elif HAS_BLUEDROID_SUPPORT

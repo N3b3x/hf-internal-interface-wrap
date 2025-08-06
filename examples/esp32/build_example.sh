@@ -5,6 +5,7 @@
 # Example types:
 #   comprehensive  - Main integration test (default)
 #   ascii_art      - ASCII art generator example
+#   nimble_test    - NimBLE test example
 #
 # Build types: Debug, Release (default: Release)
 
@@ -23,12 +24,12 @@ echo "======================================================"
 
 # Validate example type
 case $EXAMPLE_TYPE in
-    comprehensive|ascii_art)
+    comprehensive|ascii_art|nimble_test)
         echo "Valid example type: $EXAMPLE_TYPE"
         ;;
     *)
         echo "ERROR: Invalid example type: $EXAMPLE_TYPE"
-        echo "Available types: comprehensive, ascii_art"
+        echo "Available types: comprehensive, ascii_art, nimble_test"
         exit 1
         ;;
 esac

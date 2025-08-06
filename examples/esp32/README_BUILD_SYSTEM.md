@@ -8,6 +8,7 @@ The project contains example applications that demonstrate different aspects of 
 
 1. **Comprehensive Test** - Main integration test of all interfaces
 2. **ASCII Art Generator** - Advanced text formatting and display
+3. **Nimble Test** - Nimble bluetooth test
 
 ## Quick Start
 
@@ -31,6 +32,7 @@ The project contains example applications that demonstrate different aspects of 
 # Build specific examples
 ./build_example.sh ascii_art Debug
 ./build_example.sh ascii_art Release
+./build_example.sh nimble_test Debug
 ```
 
 ## Detailed Examples
@@ -59,6 +61,14 @@ The project contains example applications that demonstrate different aspects of 
 - Text styling (bold, italic, underline)
 - Custom character sets
 
+### 3. Nimble BLE test (`nimble_test`)
+**File:** `Esp32c6NimbleTest.cpp`
+**Description:** Nimble BLE wrapper testing 
+**Features:**
+- Sets Device Name
+- Scanning and Discovering
+- Callback Test
+
 **Build:**
 ```bash
 ./build_example.sh ascii_art Release
@@ -75,6 +85,7 @@ The project uses a flexible CMakeLists.txt system that allows switching between 
 set(EXAMPLE_SOURCES
     comprehensive "main.cpp"
     ascii_art "AsciiArtExample.cpp"
+    nimble_test "Esp32c6NimbleTest.cpp"
 )
 ```
 
@@ -84,6 +95,7 @@ set(EXAMPLE_SOURCES
 # Manual build with idf.py
 idf.py build -DEXAMPLE_TYPE=comprehensive -DBUILD_TYPE=Release
 idf.py build -DEXAMPLE_TYPE=ascii_art -DBUILD_TYPE=Debug
+idf.py build -DEXAMPLE_TYPE=nimble_test -DBUILD_TYPE=Debug
 
 # Flash and monitor
 idf.py flash monitor

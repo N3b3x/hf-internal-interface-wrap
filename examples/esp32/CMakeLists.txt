@@ -6,6 +6,7 @@ cmake_minimum_required(VERSION 3.16)
 # Example types:
 #   comprehensive  - Main integration test (default)
 #   ascii_art      - ASCII art generator example
+#   nimble_test    - NimBLE test example
 #
 # Build types: Debug, Release (default: Release)
 
@@ -14,7 +15,7 @@ set(EXAMPLE_TYPE "comprehensive" CACHE STRING "Example type to build")
 set(BUILD_TYPE "Release" CACHE STRING "Build type (Debug/Release)")
 
 # Validate example type
-set(VALID_EXAMPLE_TYPES "comprehensive;ascii_art")
+set(VALID_EXAMPLE_TYPES "comprehensive;ascii_art;nimble_test")
 if(NOT EXAMPLE_TYPE IN_LIST VALID_EXAMPLE_TYPES)
     message(FATAL_ERROR "Invalid EXAMPLE_TYPE: ${EXAMPLE_TYPE}. Valid types: ${VALID_EXAMPLE_TYPES}")
 endif()
