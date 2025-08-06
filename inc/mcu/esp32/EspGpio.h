@@ -430,53 +430,6 @@ public:
    */
   hf_gpio_err_t GetStatusInfo(hf_gpio_status_info_t& status) const noexcept;
 
-  //==============================================================//
-  // DEDICATED GPIO SUPPORT (ESP32C6 ESP-IDF v5.5+)
-  //==============================================================//
-
-  /**
-   * @brief Check if pin supports dedicated GPIO functionality.
-   * @return true if pin supports dedicated GPIO
-   * @details Dedicated GPIO provides high-speed bit-banging capabilities.
-   */
-  [[nodiscard]] bool SupportsDedicatedGpio() const noexcept;
-
-  /**
-   * @brief Create a dedicated GPIO bundle for high-speed operations.
-   * @param config Dedicated GPIO bundle configuration
-   * @param bundle_handle Output handle for the created bundle
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   * @details Dedicated GPIO bundles enable high-speed bit-banging operations
-   *          with minimal CPU overhead, perfect for custom protocols.
-   */
-  static hf_gpio_err_t CreateDedicatedBundle(const hf_dedic_gpio_bundle_config_t& config,
-                                             hf_dedic_gpio_bundle_handle_t& bundle_handle) noexcept;
-
-  /**
-   * @brief Delete a dedicated GPIO bundle.
-   * @param bundle_handle Handle of the bundle to delete
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   */
-  static hf_gpio_err_t DeleteDedicatedBundle(hf_dedic_gpio_bundle_handle_t bundle_handle) noexcept;
-
-  /**
-   * @brief Read data from a dedicated GPIO bundle.
-   * @param bundle_handle Handle of the bundle to read from
-   * @param data Output data from the bundle
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   */
-  static hf_gpio_err_t ReadDedicatedBundle(hf_dedic_gpio_bundle_handle_t bundle_handle,
-                                           hf_dedic_gpio_bundle_data_t& data) noexcept;
-
-  /**
-   * @brief Write data to a dedicated GPIO bundle.
-   * @param bundle_handle Handle of the bundle to write to
-   * @param data Data to write to the bundle
-   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
-   */
-  static hf_gpio_err_t WriteDedicatedBundle(hf_dedic_gpio_bundle_handle_t bundle_handle,
-                                            hf_dedic_gpio_bundle_data_t data) noexcept;
-
   /**
    * @brief Get total interrupt count across all GPIO instances.
    * @return Total number of GPIO interrupts that have occurred

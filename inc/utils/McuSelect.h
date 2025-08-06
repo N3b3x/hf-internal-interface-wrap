@@ -196,7 +196,6 @@
 #define HF_MCU_GPIO_LP_IO_PIN_COUNT 8       ///< LP_IO pins (LP_GPIO0-LP_GPIO7)
 #define HF_MCU_GPIO_ADC_PIN_COUNT 7         ///< ADC capable pins (GPIO0-GPIO6)
 #define HF_MCU_GPIO_FLEX_FILTER_COUNT 8     ///< Number of flexible glitch filters
-#define HF_MCU_GPIO_DEDIC_BUNDLE_MAX_SIZE 8 ///< Maximum GPIOs per dedicated bundle
 #define HF_MCU_GPIO_TOUCH_PIN_COUNT 0       ///< ESP32C6 has no touch pins
 #define HF_MCU_GPIO_DAC_PIN_COUNT 0         ///< ESP32C6 has no DAC pins
 #define HF_MCU_GPIO_ETM_CHANNEL_COUNT 50    ///< Number of ETM channels available
@@ -215,7 +214,6 @@
 
 // ESP32-C6 GPIO Feature Support Flags
 #define HF_MCU_GPIO_HAS_GLITCH_FILTER 1  ///< Hardware glitch filtering support
-#define HF_MCU_GPIO_HAS_DEDICATED_GPIO 1 ///< Dedicated GPIO bundle support
 #define HF_MCU_GPIO_HAS_RTC_GPIO 1       ///< RTC GPIO domain support
 #define HF_MCU_GPIO_HAS_LP_IO 1          ///< Low-power IO domain support
 #define HF_MCU_GPIO_HAS_ETM 1            ///< Event Task Matrix support
