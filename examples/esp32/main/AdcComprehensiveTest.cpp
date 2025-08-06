@@ -51,6 +51,11 @@ static constexpr uint32_t CONTINUOUS_SAMPLES_PER_FRAME = 64;
 static constexpr uint32_t CONTINUOUS_MAX_STORE_FRAMES = 4;
 
 // Global test data for continuous mode
+struct adc_queue_message_t {
+    uint32_t sample_count;
+    uint64_t timestamp;
+};
+
 static QueueHandle_t adc_data_queue = nullptr;
 static volatile bool continuous_test_active = false;
 static volatile uint32_t continuous_samples_received = 0;
@@ -166,11 +171,7 @@ bool continuous_callback(const hf_adc_continuous_data_t* data, void* user_data) 
     continuous_samples_received += data->conversion_count;
 
     // Send minimal data to queue for processing in main task
-    struct {
-        uint32_t sample_count;
-        uint64_t timestamp;
-    } msg;
-    
+    adc_queue_message_t msg;
     msg.sample_count = data->conversion_count;
     msg.timestamp = data->timestamp_us;
 
@@ -518,7 +519,7 @@ bool test_adc_continuous_mode() noexcept {
     ESP_LOGI(TAG, "Testing ADC continuous mode...");
 
     // Create queue for continuous mode data
-    adc_data_queue = xQueueCreate(10, sizeof(struct { uint32_t sample_count; uint64_t timestamp; }));
+    adc_data_queue = xQueueCreate(10, sizeof(adc_queue_message_t));
     if (adc_data_queue == nullptr) {
         ESP_LOGE(TAG, "Failed to create ADC data queue");
         return false;
@@ -585,7 +586,7 @@ bool test_adc_continuous_mode() noexcept {
     uint32_t messages_received = 0;
     
     while ((xTaskGetTickCount() * portTICK_PERIOD_MS - start_time) < CONTINUOUS_TEST_DURATION_MS) {
-        struct { uint32_t sample_count; uint64_t timestamp; } msg;
+        adc_queue_message_t msg;
         
         if (xQueueReceive(adc_data_queue, &msg, pdMS_TO_TICKS(100)) == pdTRUE) {
             messages_received++;
