@@ -48,7 +48,7 @@ jobs:
           echo "Building documentation with Doxygen..."
           echo "Current directory: $(pwd)"
           echo "Input directories exist check:"
-          ls -la inc/ src/ examples/ 2>/dev/null || echo "Some input directories missing"
+          find inc/ src/ examples/ -maxdepth 1 -type d 2>/dev/null || echo "Some input directories missing"
           
           echo "Running Doxygen..."
           doxygen Doxyfile
@@ -56,14 +56,14 @@ jobs:
           echo "Checking generated files..."
           echo "Output directory structure:"
           find docs/ -type d 2>/dev/null || echo "docs/ directory structure:"
-          ls -la docs/ 2>/dev/null || echo "docs/ directory not found"
+          find docs/ -maxdepth 1 2>/dev/null || echo "docs/ directory not found"
           
           if [ -d "docs/doxygen" ]; then
             echo "docs/doxygen contents:"
-            ls -la docs/doxygen/
+            find docs/doxygen/ -maxdepth 1 2>/dev/null
             if [ -d "docs/doxygen/html" ]; then
               echo "docs/doxygen/html contents:"
-              ls -la docs/doxygen/html/ | head -10
+              find docs/doxygen/html/ -maxdepth 1 2>/dev/null | head -10
               echo "HTML files found: $(find docs/doxygen/html -name "*.html" | wc -l)"
             else
               echo "docs/doxygen/html directory not found!"
