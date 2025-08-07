@@ -26,7 +26,7 @@ set(EXAMPLE_TYPE "ascii_art" CACHE STRING "Example type to build")
 set(BUILD_TYPE "Release" CACHE STRING "Build type (Debug/Release)")
 
 # Validate example type
-set(VALID_EXAMPLE_TYPES "ascii_art;gpio_test;adc_test;uart_test;spi_test;i2c_test;pwm_test;can_test;temperature_test;nvs_test;timer_test;wifi_test;bluetooth_test;utils_test")
+set(VALID_EXAMPLE_TYPES "ascii_art;gpio_test;adc_test;uart_test;spi_test;i2c_test;pwm_test;can_test;temperature_test;nvs_test;timer_test;wifi_test;bluetooth_test;utils_test;logger_test")
 if(NOT EXAMPLE_TYPE IN_LIST VALID_EXAMPLE_TYPES)
     message(FATAL_ERROR "Invalid EXAMPLE_TYPE: ${EXAMPLE_TYPE}. Valid types: ${VALID_EXAMPLE_TYPES}")
 endif()

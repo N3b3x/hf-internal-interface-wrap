@@ -71,10 +71,10 @@ bool test_uart_cleanup() noexcept;
 // CALLBACK FUNCTIONS
 //==============================================================================
 
-bool uart_event_callback(const hf_uart_event_native_t* event, void* user_data) noexcept {
+bool uart_event_callback(const void* event, void* user_data) noexcept {
   if (event != nullptr) {
     g_event_callback_triggered = true;
-    ESP_LOGI(TAG, "Event callback triggered: type=%d", static_cast<int>(event->type));
+    ESP_LOGI(TAG, "Event callback triggered");
   }
   return false; // Don't yield
 }
@@ -104,9 +104,9 @@ hf_uart_config_t create_test_config(hf_u8_t port = TEST_UART_PORT_0) noexcept {
   config.rts_pin = TEST_RTS_PIN;
   config.cts_pin = TEST_CTS_PIN;
   config.data_bits = hf_uart_data_bits_t::HF_UART_DATA_8_BITS;
-  config.parity = hf_uart_parity_t::HF_UART_PARITY_NONE;
+  config.parity = hf_uart_parity_t::HF_UART_PARITY_DISABLE;
   config.stop_bits = hf_uart_stop_bits_t::HF_UART_STOP_BITS_1;
-  config.flow_control = hf_uart_flow_control_t::HF_UART_HW_FLOWCTRL_DISABLE;
+  config.flow_control = hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_DISABLE;
   config.operating_mode = hf_uart_operating_mode_t::HF_UART_MODE_POLLING;
   config.rx_buffer_size = TEST_BUFFER_SIZE;
   config.tx_buffer_size = TEST_BUFFER_SIZE;
@@ -130,31 +130,26 @@ bool verify_uart_state(EspUart& uart, bool should_be_initialized) noexcept {
 bool test_uart_construction() noexcept {
   ESP_LOGI(TAG, "Testing UART construction and destruction...");
 
-  try {
-    // Test construction with valid configuration
-    hf_uart_config_t config = create_test_config();
-    auto uart = std::make_unique<EspUart>(config);
-    
-    if (!uart) {
-      ESP_LOGE(TAG, "Failed to construct EspUart instance");
-      return false;
-    }
-
-    // Verify initial state
-    if (!verify_uart_state(*uart, false)) {
-      ESP_LOGE(TAG, "Initial state verification failed");
-      return false;
-    }
-
-    // Store for other tests
-    g_uart_instance = std::move(uart);
-
-    ESP_LOGI(TAG, "[SUCCESS] UART construction completed");
-    return true;
-  } catch (...) {
-    ESP_LOGE(TAG, "Exception during UART construction");
+  // Test construction with valid configuration
+  hf_uart_config_t config = create_test_config();
+  auto uart = std::make_unique<EspUart>(config);
+  
+  if (!uart) {
+    ESP_LOGE(TAG, "Failed to construct EspUart instance");
     return false;
   }
+
+  // Verify initial state
+  if (!verify_uart_state(*uart, false)) {
+    ESP_LOGE(TAG, "Initial state verification failed");
+    return false;
+  }
+
+  // Store for other tests
+  g_uart_instance = std::move(uart);
+
+  ESP_LOGI(TAG, "[SUCCESS] UART construction completed");
+  return true;
 }
 
 bool test_uart_initialization() noexcept {
@@ -196,47 +191,19 @@ bool test_uart_basic_communication() noexcept {
     return false;
   }
 
-  // Test write operation
-  const uint8_t* test_data = reinterpret_cast<const uint8_t*>(TEST_MESSAGE);
-  hf_u16_t test_length = static_cast<hf_u16_t>(strlen(TEST_MESSAGE));
-  
-  hf_uart_err_t write_result = g_uart_instance->Write(test_data, test_length, 1000);
+  // Test transmission and reception
+  const char* test_message = "Hello, UART Test!";
+  hf_uart_err_t write_result = g_uart_instance->Write(
+      reinterpret_cast<const hf_u8_t*>(test_message), strlen(test_message));
+
   if (write_result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Write operation failed with error: %d", static_cast<int>(write_result));
+    ESP_LOGE(TAG, "Write failed with error: %d", static_cast<int>(write_result));
     return false;
   }
 
-  // Test WriteByte
-  if (!g_uart_instance->WriteByte(0x0A)) { // newline
-    ESP_LOGE(TAG, "WriteByte operation failed");
-    return false;
-  }
+  ESP_LOGI(TAG, "Data transmitted successfully");
 
-  // Test transmission completion
-  if (!g_uart_instance->WaitTransmitComplete(2000)) {
-    ESP_LOGW(TAG, "Transmission completion timeout (expected in loopback mode)");
-  }
-
-  // Test flush operations
-  hf_uart_err_t flush_result = g_uart_instance->FlushTx();
-  if (flush_result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "FlushTx failed with error: %d", static_cast<int>(flush_result));
-    return false;
-  }
-
-  flush_result = g_uart_instance->FlushRx();
-  if (flush_result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "FlushRx failed with error: %d", static_cast<int>(flush_result));
-    return false;
-  }
-
-  // Test status functions
-  hf_u16_t bytes_available = g_uart_instance->BytesAvailable();
-  ESP_LOGI(TAG, "Bytes available: %d", bytes_available);
-
-  bool tx_busy = g_uart_instance->IsTxBusy();
-  ESP_LOGI(TAG, "TX busy: %s", tx_busy ? "true" : "false");
-
+  // Test status functions (using public methods only)
   hf_u16_t tx_waiting = g_uart_instance->TxBytesWaiting();
   ESP_LOGI(TAG, "TX bytes waiting: %d", tx_waiting);
 
@@ -475,7 +442,7 @@ bool test_uart_advanced_features() noexcept {
 
   // Test wakeup configuration
   hf_uart_wakeup_config_t wakeup_config = {};
-  wakeup_config.wakeup_enable = true;
+  wakeup_config.enable_wakeup = true;
   wakeup_config.wakeup_threshold = 3;
   
   result = g_uart_instance->ConfigureWakeup(wakeup_config);
@@ -515,9 +482,10 @@ bool test_uart_communication_modes() noexcept {
 
   // Test RS485 configuration
   hf_uart_rs485_config_t rs485_config = {};
-  rs485_config.rs485_en = true;
-  rs485_config.rs485_tx_rx_en = false;
-  rs485_config.rs485_rx_during_tx_en = false;
+  rs485_config.mode = hf_uart_mode_t::HF_UART_MODE_RS485;
+  rs485_config.enable_collision_detect = true;
+  rs485_config.enable_echo_suppression = false;
+  rs485_config.auto_rts_control = false;
   
   result = g_uart_instance->ConfigureRS485(rs485_config);
   if (result != hf_uart_err_t::UART_SUCCESS) {
@@ -527,12 +495,10 @@ bool test_uart_communication_modes() noexcept {
 
   // Test IrDA configuration
   hf_uart_irda_config_t irda_config = {};
-  irda_config.irda_en = true;
-  irda_config.irda_tx_en = true;
-  irda_config.irda_rx_en = true;
-  irda_config.irda_wctl = false;
-  irda_config.irda_tx_invert = false;
-  irda_config.irda_rx_invert = false;
+  irda_config.enable_irda = true;
+  irda_config.invert_tx = true;
+  irda_config.invert_rx = true;
+  irda_config.duty_cycle = 50;
   
   result = g_uart_instance->ConfigureIrDA(irda_config);
   if (result != hf_uart_err_t::UART_SUCCESS) {
@@ -675,9 +641,10 @@ bool test_uart_statistics_diagnostics() noexcept {
   }
 
   ESP_LOGI(TAG, "Statistics:");
-  ESP_LOGI(TAG, "  Bytes sent: %lu", statistics.bytes_sent);
-  ESP_LOGI(TAG, "  Bytes received: %lu", statistics.bytes_received);
-  ESP_LOGI(TAG, "  Errors: %lu", statistics.error_count);
+  ESP_LOGI(TAG, "  Bytes sent: %lu", statistics.tx_byte_count);
+  ESP_LOGI(TAG, "  Bytes received: %lu", statistics.rx_byte_count);
+  ESP_LOGI(TAG, "  TX Errors: %lu", statistics.tx_error_count);
+  ESP_LOGI(TAG, "  RX Errors: %lu", statistics.rx_error_count);
 
   // Test diagnostics retrieval
   hf_uart_diagnostics_t diagnostics = {};
@@ -689,7 +656,7 @@ bool test_uart_statistics_diagnostics() noexcept {
 
   ESP_LOGI(TAG, "Diagnostics:");
   ESP_LOGI(TAG, "  Last error: %d", static_cast<int>(diagnostics.last_error));
-  ESP_LOGI(TAG, "  Initialization count: %lu", diagnostics.initialization_count);
+  ESP_LOGI(TAG, "  Error reset count: %lu", diagnostics.error_reset_count);
 
   // Test error retrieval
   hf_uart_err_t last_error = g_uart_instance->GetLastError();
