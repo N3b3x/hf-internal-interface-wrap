@@ -21,6 +21,7 @@ message(STATUS "Source Root: ${SRC_ROOT}")
 set(HF_ESP32_SRCS
     "${SRC_ROOT}/src/mcu/esp32/EspGpio.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspI2c.cpp"
+    "${SRC_ROOT}/src/mcu/esp32/EspLogger.cpp"       # ESP32 Logger implementation
     "${SRC_ROOT}/src/mcu/esp32/EspNvs.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspPeriodicTimer.cpp"
     "${SRC_ROOT}/src/mcu/esp32/EspPwm.cpp"
