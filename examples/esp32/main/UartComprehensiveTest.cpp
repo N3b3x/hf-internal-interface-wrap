@@ -38,7 +38,6 @@ static constexpr hf_u8_t TEST_RTS_PIN = 22;
 static constexpr hf_u8_t TEST_CTS_PIN = 23;
 
 // Test data
-static const char* TEST_MESSAGE = "Hello EspUart Test!";
 static const uint8_t TEST_PATTERN = 0x0A; // Line feed
 static constexpr hf_u16_t TEST_BUFFER_SIZE = 256;
 
@@ -665,12 +664,10 @@ bool test_uart_statistics_diagnostics() noexcept {
   // Test status checks
   bool is_transmitting = g_uart_instance->IsTransmitting();
   bool is_receiving = g_uart_instance->IsReceiving();
-  bool break_detected = g_uart_instance->IsBreakDetected();
 
-  ESP_LOGI(TAG, "Status: TX=%s, RX=%s, Break=%s", 
+  ESP_LOGI(TAG, "Status: TX=%s, RX=%s", 
            is_transmitting ? "true" : "false",
-           is_receiving ? "true" : "false",
-           break_detected ? "true" : "false");
+           is_receiving ? "true" : "false");
 
   ESP_LOGI(TAG, "[SUCCESS] Statistics and diagnostics test completed");
   return true;
