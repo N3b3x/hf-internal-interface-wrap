@@ -395,6 +395,33 @@ public:
    */
   hf_gpio_err_t ConfigureWakeUp(const hf_gpio_wakeup_config_t& config) noexcept;
 
+  //==============================================================//
+  // LP_IO (LOW-POWER I/O) SUPPORT FOR ESP32-C6
+  //==============================================================//
+
+  /**
+   * @brief Check if pin supports LP_IO (Low-Power I/O) functionality.
+   * @return true if pin supports LP_IO domain operations
+   * @details ESP32-C6 pins GPIO0-7 support LP_IO for ultra-low power operation.
+   */
+  [[nodiscard]] bool SupportsLpIo() const noexcept;
+
+  /**
+   * @brief Configure LP_IO functionality for ultra-low power operation.
+   * @param config LP_IO configuration parameters
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   * @details Configures GPIO for LP_IO domain operation during deep sleep.
+   *          Allows GPIO operation with minimal power consumption.
+   */
+  hf_gpio_err_t ConfigureLpIo(const hf_lp_io_config_t& config) noexcept;
+
+  /**
+   * @brief Enable/disable LP_IO functionality.
+   * @param enable Enable or disable LP_IO mode
+   * @return hf_gpio_err_t::GPIO_SUCCESS if successful, error code otherwise
+   */
+  hf_gpio_err_t EnableLpIo(bool enable) noexcept;
+
   /**
    * @brief Get comprehensive GPIO configuration information.
    * @return Complete configuration dump structure
@@ -536,11 +563,14 @@ private:
   hf_gpio_sleep_config_t sleep_config_;             ///< Sleep configuration
   bool hold_enabled_;                               ///< Hold function enabled
   bool rtc_gpio_enabled_;                           ///< RTC GPIO functionality enabled
+  bool lp_io_enabled_;                              ///< LP_IO functionality enabled
   hf_gpio_wakeup_config_t wakeup_config_;           ///< Wake-up configuration
+  hf_lp_io_config_t lp_io_config_;                  ///< LP_IO configuration
 
   // Platform-specific handles for advanced features
   void* glitch_filter_handle_; ///< Platform-specific glitch filter handle
   void* rtc_gpio_handle_;      ///< Platform-specific RTC GPIO handle
+  void* lp_io_handle_;         ///< Platform-specific LP_IO handle
 
   // Static members for ISR management
   static bool gpio_isr_handler_installed_; ///< Track if ISR service is installed
