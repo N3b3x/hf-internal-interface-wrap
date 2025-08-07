@@ -32,7 +32,6 @@ extern "C" {
 // ESP32-C6 specific includes with ESP-IDF v5.5+ features
 #include "driver/gpio.h"
 #include "driver/gpio_filter.h"
-#include "driver/lp_io.h"
 #include "driver/rtc_io.h"
 #include "esp_log.h"
 #include "esp_sleep.h"
@@ -134,8 +133,8 @@ EspGpio::EspGpio(hf_pin_num_t pin_num, hf_gpio_direction_t direction,
       interrupt_count_(0), platform_semaphore_(nullptr), drive_capability_(drive_capability),
       glitch_filter_type_(hf_gpio_glitch_filter_type_t::HF_GPIO_GLITCH_FILTER_NONE),
       pin_glitch_filter_enabled_(false), flex_glitch_filter_enabled_(false), flex_filter_config_{},
-      sleep_config_{}, hold_enabled_(false), rtc_gpio_enabled_(false), lp_io_enabled_(false), wakeup_config_{}, lp_io_config_{},
-      glitch_filter_handle_(nullptr), rtc_gpio_handle_(nullptr), lp_io_handle_(nullptr), initialized_(false) {
+      sleep_config_{}, hold_enabled_(false), rtc_gpio_enabled_(false), wakeup_config_{},
+      glitch_filter_handle_(nullptr), rtc_gpio_handle_(nullptr), initialized_(false) {
   // Validate pin number for target platform
   if (!HF_GPIO_IS_VALID_GPIO(pin_num)) {
     ESP_LOGE(TAG, "Invalid GPIO pin number: %d", static_cast<int>(pin_num));
@@ -1324,173 +1323,6 @@ hf_gpio_err_t EspGpio::ConfigureWakeUp(const hf_gpio_wakeup_config_t& config) no
 #endif
 }
 
-//==============================================================================
-// LP_IO (LOW-POWER I/O) SUPPORT IMPLEMENTATION
-//==============================================================================
-
-bool EspGpio::SupportsLpIo() const noexcept {
-#ifdef HF_MCU_ESP32C6
-  return HF_GPIO_IS_VALID_LP_IO(pin_);
-#else
-  return false;
-#endif
-}
-
-hf_gpio_err_t EspGpio::ConfigureLpIo(const hf_lp_io_config_t& config) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
-  }
-
-#ifdef HF_MCU_ESP32C6
-  if (!HF_GPIO_IS_VALID_LP_IO(pin_)) {
-    ESP_LOGW(TAG, "GPIO%d does not support LP_IO functionality", static_cast<int>(pin_));
-    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
-  }
-
-  esp_err_t err;
-
-  // Initialize LP_IO 
-  err = lp_io_init(static_cast<lp_io_num_t>(pin_));
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to initialize LP_IO%d: %s", static_cast<int>(pin_), esp_err_to_name(err));
-    return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
-  }
-
-  // Configure LP_IO mode
-  lp_io_mode_t lp_mode;
-  switch (config.mode) {
-    case hf_gpio_mode_t::HF_GPIO_MODE_INPUT:
-      lp_mode = LP_IO_MODE_INPUT;
-      break;
-    case hf_gpio_mode_t::HF_GPIO_MODE_OUTPUT:
-      lp_mode = LP_IO_MODE_OUTPUT;
-      break;
-    case hf_gpio_mode_t::HF_GPIO_MODE_INPUT_OUTPUT:
-      lp_mode = LP_IO_MODE_INPUT_OUTPUT;
-      break;
-    case hf_gpio_mode_t::HF_GPIO_MODE_OUTPUT_OD:
-      lp_mode = LP_IO_MODE_OUTPUT_OD;
-      break;
-    default:
-      lp_mode = LP_IO_MODE_DISABLE;
-      break;
-  }
-
-  err = lp_io_set_direction(static_cast<lp_io_num_t>(pin_), lp_mode);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to set LP_IO%d direction: %s", static_cast<int>(pin_), esp_err_to_name(err));
-    return hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH;
-  }
-
-  // Configure LP_IO pull mode
-  switch (config.pull_mode) {
-    case hf_gpio_pull_t::HF_GPIO_PULL_UP:
-      lp_io_pullup_en(static_cast<lp_io_num_t>(pin_));
-      lp_io_pulldown_dis(static_cast<lp_io_num_t>(pin_));
-      break;
-    case hf_gpio_pull_t::HF_GPIO_PULL_DOWN:
-      lp_io_pullup_dis(static_cast<lp_io_num_t>(pin_));
-      lp_io_pulldown_en(static_cast<lp_io_num_t>(pin_));
-      break;
-    case hf_gpio_pull_t::HF_GPIO_PULL_NONE:
-    default:
-      lp_io_pullup_dis(static_cast<lp_io_num_t>(pin_));
-      lp_io_pulldown_dis(static_cast<lp_io_num_t>(pin_));
-      break;
-  }
-
-  // Configure drive strength for LP_IO
-  lp_io_drive_capability_t lp_drive;
-  switch (config.drive_strength) {
-    case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK:
-      lp_drive = LP_IO_DRIVE_CAP_0;
-      break;
-    case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGER:
-      lp_drive = LP_IO_DRIVE_CAP_1;
-      break;
-    case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM:
-      lp_drive = LP_IO_DRIVE_CAP_2;
-      break;
-    case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST:
-      lp_drive = LP_IO_DRIVE_CAP_3;
-      break;
-    default:
-      lp_drive = LP_IO_DRIVE_CAP_2;
-      break;
-  }
-
-  err = lp_io_set_drive_capability(static_cast<lp_io_num_t>(pin_), lp_drive);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to set LP_IO%d drive capability: %s", static_cast<int>(pin_), esp_err_to_name(err));
-    return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
-  }
-
-  // Configure hold if requested
-  if (config.hold_enable) {
-    err = lp_io_hold_en(static_cast<lp_io_num_t>(pin_));
-    if (err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to enable LP_IO%d hold: %s", static_cast<int>(pin_), esp_err_to_name(err));
-      return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
-    }
-  }
-
-  lp_io_config_ = config;
-  lp_io_enabled_ = true;
-  
-  ESP_LOGI(TAG, "LP_IO configured successfully for GPIO%d", static_cast<int>(pin_));
-  return hf_gpio_err_t::GPIO_SUCCESS;
-#else
-  ESP_LOGW(TAG, "LP_IO not supported on this platform");
-  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
-#endif
-}
-
-hf_gpio_err_t EspGpio::EnableLpIo(bool enable) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED;
-  }
-
-#ifdef HF_MCU_ESP32C6
-  if (!HF_GPIO_IS_VALID_LP_IO(pin_)) {
-    ESP_LOGW(TAG, "GPIO%d does not support LP_IO functionality", static_cast<int>(pin_));
-    return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
-  }
-
-  esp_err_t err;
-
-  if (enable) {
-    if (!lp_io_enabled_) {
-      // Initialize LP_IO with default configuration
-      hf_lp_io_config_t default_config = {
-        .mode = static_cast<hf_gpio_mode_t>(current_direction_),
-        .pull_mode = MapPullModeToHardware(pull_mode_),
-        .drive_strength = drive_capability_,
-        .input_enable = (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT),
-        .output_enable = (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT),
-        .hold_enable = false,
-        .force_hold = false
-      };
-      return ConfigureLpIo(default_config);
-    }
-  } else {
-    if (lp_io_enabled_) {
-      err = lp_io_deinit(static_cast<lp_io_num_t>(pin_));
-      if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to deinitialize LP_IO%d: %s", static_cast<int>(pin_), esp_err_to_name(err));
-        return hf_gpio_err_t::GPIO_ERR_DRIVER_ERROR;
-      }
-      lp_io_enabled_ = false;
-      ESP_LOGI(TAG, "LP_IO disabled for GPIO%d", static_cast<int>(pin_));
-    }
-  }
-
-  return hf_gpio_err_t::GPIO_SUCCESS;
-#else
-  ESP_LOGW(TAG, "LP_IO not supported on this platform");
-  return hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED;
-#endif
-}
-
 hf_gpio_status_info_t EspGpio::GetConfigurationDump() const noexcept {
   hf_gpio_status_info_t dump = {};
 #ifdef HF_MCU_ESP32C6
@@ -1507,7 +1339,6 @@ hf_gpio_status_info_t EspGpio::GetConfigurationDump() const noexcept {
   dump.sleep_sel_enabled = false; // Set as appropriate
   dump.hold_enabled = hold_enabled_;
   dump.rtc_enabled = rtc_gpio_enabled_;
-  dump.lp_io_enabled = false; // Set as appropriate
   dump.function_select = 0;   // Set as appropriate
   dump.filter_type = glitch_filter_type_;
   dump.glitch_filter_enabled = pin_glitch_filter_enabled_ || flex_glitch_filter_enabled_;

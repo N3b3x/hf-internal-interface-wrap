@@ -72,7 +72,7 @@ static constexpr hf_pin_num_t DIGITAL_IN_2 = 3;     // General purpose input
 static constexpr hf_pin_num_t INTERRUPT_PIN = 2;    // Interrupt testing
 static constexpr hf_pin_num_t PULL_TEST_PIN = 3;    // Pull resistor testing
 static constexpr hf_pin_num_t DRIVE_TEST_PIN = 16;  // Drive capability testing
-static constexpr hf_pin_num_t RTC_GPIO_PIN = 7;     // RTC GPIO (LP_IO 7)
+static constexpr hf_pin_num_t RTC_GPIO_PIN = 7;     // RTC GPIO pin
 static constexpr hf_pin_num_t ANALOG_PIN = 6;       // ADC capable pin
 static constexpr hf_pin_num_t LOOPBACK_OUT = 20;    // Output for loopback testing
 static constexpr hf_pin_num_t LOOPBACK_IN = 21;     // Input for loopback testing
@@ -95,7 +95,6 @@ bool test_gpio_pull_resistors() noexcept;
 bool test_gpio_interrupt_functionality() noexcept;
 bool test_gpio_advanced_features() noexcept;
 bool test_gpio_rtc_functionality() noexcept;
-bool test_gpio_lp_io_functionality() noexcept;
 bool test_gpio_glitch_filters() noexcept;
 bool test_gpio_sleep_and_wakeup() noexcept;
 bool test_gpio_hold_functionality() noexcept;
@@ -500,7 +499,7 @@ bool test_gpio_advanced_features() noexcept {
 bool test_gpio_rtc_functionality() noexcept {
   ESP_LOGI(TAG, "=== Testing RTC GPIO Functionality ===");
 
-  // Use a pin that supports RTC GPIO (LP_IO)
+  // Use a pin that supports RTC GPIO
   EspGpio rtc_gpio(TestPins::RTC_GPIO_PIN, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
                    hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
 
@@ -527,154 +526,6 @@ bool test_gpio_rtc_functionality() noexcept {
   }
 
   ESP_LOGI(TAG, "[SUCCESS] RTC GPIO functionality test completed");
-  return true;
-}
-
-/**
- * @brief Test LP_IO (Low-Power I/O) functionality for ultra-low power operations
- */
-bool test_gpio_lp_io_functionality() noexcept {
-  ESP_LOGI(TAG, "=== Testing LP_IO (Low-Power I/O) Functionality ===");
-
-  // Use a pin that supports LP_IO (GPIO0-7 on ESP32-C6)
-  EspGpio lp_io_gpio(TestPins::RTC_GPIO_PIN, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-                     hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
-
-  if (!lp_io_gpio.EnsureInitialized()) {
-    ESP_LOGE(TAG, "Failed to initialize LP_IO test GPIO");
-    return false;
-  }
-
-  // Check if pin supports LP_IO functionality
-  if (!lp_io_gpio.SupportsLpIo()) {
-    ESP_LOGW(TAG, "Pin %d does not support LP_IO, skipping LP_IO specific tests", TestPins::RTC_GPIO_PIN);
-    ESP_LOGI(TAG, "[SUCCESS] LP_IO support detection working correctly");
-    return true;
-  }
-
-  ESP_LOGI(TAG, "[SUCCESS] Pin %d supports LP_IO functionality", TestPins::RTC_GPIO_PIN);
-
-  ESP_LOGI(TAG, "Testing basic LP_IO operations...");
-
-  // Test basic LP_IO operations first
-  auto result = lp_io_gpio.SetActive();
-  if (result != hf_gpio_err_t::GPIO_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to set LP_IO GPIO active");
-    return false;
-  }
-
-  vTaskDelay(pdMS_TO_TICKS(100));
-
-  result = lp_io_gpio.SetInactive();
-  if (result != hf_gpio_err_t::GPIO_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to set LP_IO GPIO inactive");
-    return false;
-  }
-
-  ESP_LOGI(TAG, "Testing LP_IO domain configuration...");
-
-  // Configure LP_IO with ultra-low power settings
-  hf_lp_io_config_t lp_config = {
-    .mode = hf_gpio_mode_t::HF_GPIO_MODE_INPUT_OUTPUT,
-    .pull_mode = hf_gpio_pull_t::HF_GPIO_PULL_UP,
-    .drive_strength = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK, // Lowest power consumption
-    .input_enable = true,
-    .output_enable = true,
-    .hold_enable = true, // Maintain state during sleep
-    .force_hold = false
-  };
-
-  result = lp_io_gpio.ConfigureLpIo(lp_config);
-  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-    ESP_LOGI(TAG, "[SUCCESS] LP_IO domain configured successfully");
-    
-    // Test operations in LP_IO mode
-    ESP_LOGI(TAG, "Testing operations in LP_IO mode...");
-    
-    result = lp_io_gpio.SetActive();
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      ESP_LOGI(TAG, "[SUCCESS] LP_IO set active");
-    }
-    
-    vTaskDelay(pdMS_TO_TICKS(100));
-    
-    result = lp_io_gpio.SetInactive();
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      ESP_LOGI(TAG, "[SUCCESS] LP_IO set inactive");
-    }
-    
-    // Test different LP_IO drive strengths
-    ESP_LOGI(TAG, "Testing LP_IO drive strength settings...");
-    
-    const hf_gpio_drive_cap_t lp_drive_levels[] = {
-      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK,
-      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGER,
-      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM,
-      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST
-    };
-    
-    for (auto drive : lp_drive_levels) {
-      lp_config.drive_strength = drive;
-      result = lp_io_gpio.ConfigureLpIo(lp_config);
-      if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-        ESP_LOGI(TAG, "[SUCCESS] LP_IO drive strength %d configured", static_cast<int>(drive));
-      }
-      vTaskDelay(pdMS_TO_TICKS(50));
-    }
-    
-    // Test LP_IO pull modes
-    ESP_LOGI(TAG, "Testing LP_IO pull resistor configurations...");
-    
-    const hf_gpio_pull_t lp_pull_modes[] = {
-      hf_gpio_pull_t::HF_GPIO_PULL_NONE,
-      hf_gpio_pull_t::HF_GPIO_PULL_UP,
-      hf_gpio_pull_t::HF_GPIO_PULL_DOWN
-    };
-    
-    lp_io_gpio.SetDirection(hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT); // Switch to input for pull testing
-    
-    for (auto pull : lp_pull_modes) {
-      lp_config.pull_mode = pull;
-      lp_config.mode = hf_gpio_mode_t::HF_GPIO_MODE_INPUT;
-      lp_config.output_enable = false;
-      
-      result = lp_io_gpio.ConfigureLpIo(lp_config);
-      if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-        ESP_LOGI(TAG, "[SUCCESS] LP_IO pull mode %d configured", static_cast<int>(pull));
-        
-        // Read pin state with this pull configuration
-        auto state = lp_io_gpio.GetCurrentState();
-        ESP_LOGI(TAG, "  LP_IO state with pull mode %d: %s", static_cast<int>(pull),
-                 (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? "ACTIVE" : "INACTIVE");
-      }
-      vTaskDelay(pdMS_TO_TICKS(100));
-    }
-    
-  } else if (result == hf_gpio_err_t::GPIO_ERR_NOT_SUPPORTED) {
-    ESP_LOGW(TAG, "[INFO] LP_IO functionality not available on this platform");
-    return true; // This is acceptable - not all pins support LP_IO
-  } else {
-    ESP_LOGW(TAG, "[FAILURE] LP_IO configuration failed: %d", static_cast<int>(result));
-  }
-
-  // Test LP_IO enable/disable
-  ESP_LOGI(TAG, "Testing LP_IO enable/disable functionality...");
-  
-  result = lp_io_gpio.EnableLpIo(false);
-  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-    ESP_LOGI(TAG, "[SUCCESS] LP_IO disabled successfully");
-  }
-  
-  result = lp_io_gpio.EnableLpIo(true);
-  if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-    ESP_LOGI(TAG, "[SUCCESS] LP_IO re-enabled successfully");
-  }
-
-  // Clean up - disable LP_IO
-  lp_io_gpio.EnableLpIo(false);
-  lp_io_gpio.SetInactive();
-
-  ESP_LOGI(TAG, "[SUCCESS] LP_IO (Low-Power I/O) functionality test completed");
   return true;
 }
 
@@ -1383,7 +1234,7 @@ bool test_gpio_power_consumption() noexcept {
     vTaskDelay(pdMS_TO_TICKS(100));
   }
 
-  // Test RTC/LP_IO configuration for ultra-low power
+  // Test RTC GPIO configuration for ultra-low power
   if (power_gpio.SupportsRtcGpio()) {
     ESP_LOGI(TAG, "Testing RTC GPIO for ultra-low power operation...");
     
@@ -1409,34 +1260,11 @@ bool test_gpio_power_consumption() noexcept {
     }
   }
 
-  // Test LP_IO if supported
-  if (power_gpio.SupportsLpIo()) {
-    ESP_LOGI(TAG, "Testing LP_IO for ultra-low power operation...");
-    
-    hf_lp_io_config_t lp_config = {
-      .mode = hf_gpio_mode_t::HF_GPIO_MODE_INPUT,
-      .pull_mode = hf_gpio_pull_t::HF_GPIO_PULL_UP,
-      .drive_strength = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK,
-      .input_enable = true,
-      .output_enable = false,
-      .hold_enable = true,
-      .force_hold = false
-    };
-
-    auto result = power_gpio.ConfigureLpIo(lp_config);
-    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
-      ESP_LOGI(TAG, "[SUCCESS] LP_IO configuration applied for ultra-low power operation");
-    } else {
-      ESP_LOGW(TAG, "[WARNING] LP_IO configuration not available");
-    }
-  }
-
   ESP_LOGI(TAG, "Power optimization recommendations:");
   ESP_LOGI(TAG, "  1. Use WEAK drive capability when possible (~5mA vs ~40mA)");
   ESP_LOGI(TAG, "  2. Use pull resistors on inputs to define states");
   ESP_LOGI(TAG, "  3. Configure RTC GPIO for deep sleep applications");
-  ESP_LOGI(TAG, "  4. Use LP_IO domain for ultra-low power scenarios");
-  ESP_LOGI(TAG, "  5. Enable hold function to maintain state during sleep");
+  ESP_LOGI(TAG, "  4. Enable hold function to maintain state during sleep");
 
   ESP_LOGI(TAG, "[SUCCESS] GPIO power consumption test completed");
   return true;
@@ -1480,7 +1308,6 @@ extern "C" void app_main(void) {
 
   // ESP32-C6 specific tests
   RUN_TEST(test_gpio_rtc_functionality);
-  RUN_TEST(test_gpio_lp_io_functionality);
   RUN_TEST(test_gpio_glitch_filters);
   RUN_TEST(test_gpio_sleep_and_wakeup);
   RUN_TEST(test_gpio_hold_functionality);

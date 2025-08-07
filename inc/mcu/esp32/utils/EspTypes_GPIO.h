@@ -195,10 +195,8 @@ struct hf_gpio_advanced_config_t {
   hf_gpio_pin_filter_config_t pin_filter_config;   ///< Pin filter configuration
   hf_gpio_sleep_config_t sleep_config;             ///< Sleep mode configuration
   hf_gpio_wakeup_config_t wakeup_config;           ///< Wake-up configuration
-  hf_lp_io_config_t lp_io_config;                  ///< Low-power IO configuration
   bool enable_hold_function;                       ///< Enable GPIO hold function
   bool enable_rtc_gpio;                            ///< Enable RTC GPIO functionality
-  bool enable_lp_io;                               ///< Enable LP_IO functionality
 };
 
 /**
@@ -217,7 +215,6 @@ struct hf_gpio_status_info_t {
   bool sleep_sel_enabled;                   ///< Sleep selection enabled
   bool hold_enabled;                        ///< Hold function enabled
   bool rtc_enabled;                         ///< RTC GPIO enabled
-  bool lp_io_enabled;                       ///< LP_IO enabled
   uint32_t function_select;                 ///< IOMUX function selection
   hf_gpio_glitch_filter_type_t filter_type; ///< Active glitch filter type
   bool glitch_filter_enabled;               ///< Glitch filter enabled
@@ -310,7 +307,7 @@ typedef struct {
 #define HF_GPIO_TO_ADC_CHANNEL(gpio_num) (HF_GPIO_SUPPORTS_ADC(gpio_num) ? (gpio_num) : 0xFF)
 
 /**
- * @brief ESP32 GPIO to RTC/LP_IO mapping.
+ * @brief ESP32 GPIO to RTC mapping.
  */
 #define HF_GPIO_TO_RTC_GPIO(gpio_num) (HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ? (gpio_num) : 0xFF)
 
