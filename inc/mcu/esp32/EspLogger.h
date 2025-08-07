@@ -351,6 +351,12 @@ public:
   hf_logger_err_t ResetStatistics() noexcept override;
 
   /**
+   * @brief Reset diagnostics
+   * @return hf_logger_err_t Success or error code
+   */
+  hf_logger_err_t ResetDiagnostics() noexcept override;
+
+  /**
    * @brief Check if logger is healthy
    * @return true if healthy, false otherwise
    */
@@ -381,6 +387,34 @@ public:
    * @return 1 for Log V1, 2 for Log V2
    */
   hf_u8_t GetLogVersion() const noexcept;
+
+  //==============================================================================
+  // DIAGNOSTIC PRINTING METHODS
+  //==============================================================================
+
+  /**
+   * @brief Print statistics to log output
+   * @param tag Log tag for the output (optional, uses internal tag if nullptr)
+   * @param detailed If true, prints detailed per-level statistics
+   * @return hf_logger_err_t Success or error code
+   */
+  hf_logger_err_t PrintStatistics(const char* tag = nullptr, bool detailed = true) const noexcept override;
+
+  /**
+   * @brief Print diagnostics to log output
+   * @param tag Log tag for the output (optional, uses internal tag if nullptr)
+   * @param detailed If true, prints detailed diagnostic information
+   * @return hf_logger_err_t Success or error code
+   */
+  hf_logger_err_t PrintDiagnostics(const char* tag = nullptr, bool detailed = true) const noexcept override;
+
+  /**
+   * @brief Print both statistics and diagnostics
+   * @param tag Log tag for the output (optional, uses internal tag if nullptr)
+   * @param detailed If true, prints detailed information
+   * @return hf_logger_err_t Success or error code
+   */
+  hf_logger_err_t PrintStatus(const char* tag = nullptr, bool detailed = true) const noexcept override;
 
 private:
   //==============================================================================

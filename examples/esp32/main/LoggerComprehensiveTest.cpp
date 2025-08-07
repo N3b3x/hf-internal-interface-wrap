@@ -22,6 +22,9 @@
 #include "mcu/esp32/EspLogger.h"
 
 #include "TestFramework.h"
+#include "utils/memory_utils.h"
+
+#include <string>
 
 static const char* TAG = "EspLOGGER_Test";
 
@@ -31,7 +34,6 @@ static TestResults g_test_results;
 static constexpr hf_u32_t TEST_MAX_MESSAGE_LENGTH = 512;
 static constexpr hf_u32_t TEST_BUFFER_SIZE = 1024;
 static const char* TEST_TAG = "TEST_TAG";
-static const char* TEST_MESSAGE = "Test log message";
 
 // Global test instance
 static std::unique_ptr<EspLogger> g_logger_instance = nullptr;
@@ -68,9 +70,10 @@ hf_logger_config_t create_test_config() noexcept {
   config.format_options = hf_log_format_t::LOG_FORMAT_DEFAULT;
   config.max_message_length = TEST_MAX_MESSAGE_LENGTH;
   config.buffer_size = TEST_BUFFER_SIZE;
+  config.flush_interval_ms = 100;  // Set flush interval
   config.enable_thread_safety = true;
   config.enable_performance_monitoring = true;
-  config.enable_health_monitoring = true;
+  // Note: enable_health_monitoring doesn't exist in config structure
   return config;
 }
 
@@ -101,30 +104,25 @@ void log_performance_metrics(const char* test_name, hf_u64_t start_time, hf_u32_
 bool test_logger_construction() noexcept {
   ESP_LOGI(TAG, "Testing Logger construction and destruction...");
 
-  try {
-    // Test construction with default parameters
-    auto logger = std::make_unique<EspLogger>();
-    
-    if (!logger) {
-      ESP_LOGE(TAG, "Failed to construct EspLogger instance");
-      return false;
-    }
-
-    // Verify initial state
-    if (!verify_logger_state(*logger, false)) {
-      ESP_LOGE(TAG, "Initial state verification failed");
-      return false;
-    }
-
-    // Store for other tests
-    g_logger_instance = std::move(logger);
-
-    ESP_LOGI(TAG, "[SUCCESS] Logger construction completed");
-    return true;
-  } catch (...) {
-    ESP_LOGE(TAG, "Exception during Logger construction");
+  // Test construction with default parameters using nothrow allocation
+  auto logger = hf::utils::make_unique_nothrow<EspLogger>();
+  
+  if (!logger) {
+    ESP_LOGE(TAG, "Failed to construct EspLogger instance - out of memory");
     return false;
   }
+
+  // Verify initial state
+  if (!verify_logger_state(*logger, false)) {
+    ESP_LOGE(TAG, "Initial state verification failed");
+    return false;
+  }
+
+  // Store for other tests
+  g_logger_instance = std::move(logger);
+
+  ESP_LOGI(TAG, "[SUCCESS] Logger construction completed");
+  return true;
 }
 
 bool test_logger_initialization() noexcept {
@@ -137,6 +135,8 @@ bool test_logger_initialization() noexcept {
 
   // Test initialization with custom configuration
   hf_logger_config_t config = create_test_config();
+  ESP_LOGI(TAG, "Initializing with config: max_msg_len=%lu, buffer_size=%lu, flush_interval=%lu ms",
+           config.max_message_length, config.buffer_size, config.flush_interval_ms);
   hf_logger_err_t result = g_logger_instance->Initialize(config);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "Failed to initialize logger: %d", static_cast<int>(result));
@@ -159,6 +159,13 @@ bool test_logger_initialization() noexcept {
   result = g_logger_instance->Initialize(config);
   if (result != hf_logger_err_t::LOGGER_ERR_ALREADY_INITIALIZED) {
     ESP_LOGW(TAG, "Double initialization should return ALREADY_INITIALIZED error");
+  }
+
+  // Demonstrate the PrintStatus method
+  ESP_LOGI(TAG, "Demonstrating PrintStatus method:");
+  result = g_logger_instance->PrintStatus("INIT_STATUS", false);  // Brief status after init
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    ESP_LOGW(TAG, "PrintStatus failed: %d", static_cast<int>(result));
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Logger initialization successful");
@@ -521,51 +528,32 @@ bool test_logger_statistics_diagnostics() noexcept {
     return false;
   }
 
-  // Test statistics retrieval
-  hf_logger_statistics_t statistics = {};
-  hf_logger_err_t result = g_logger_instance->GetStatistics(statistics);
+  // Test and print statistics using the logger's built-in method
+  hf_logger_err_t result = g_logger_instance->PrintStatistics(TAG, true);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get statistics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print statistics: %d", static_cast<int>(result));
     return false;
   }
-
-  ESP_LOGI(TAG, "Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %lu", statistics.messages_logged);
-  ESP_LOGI(TAG, "  Bytes logged: %lu", statistics.bytes_logged);
-  ESP_LOGI(TAG, "  Errors: %lu", statistics.error_count);
-  ESP_LOGI(TAG, "  Warnings: %lu", statistics.warning_count);
 
   // Log some messages to change statistics
   g_logger_instance->Info(TEST_TAG, "Statistics test message 1");
   g_logger_instance->Error(TEST_TAG, "Statistics test error");
   g_logger_instance->Warn(TEST_TAG, "Statistics test warning");
 
-  // Get updated statistics
-  hf_logger_statistics_t updated_stats = {};
-  result = g_logger_instance->GetStatistics(updated_stats);
+  // Print updated statistics using the logger's built-in method
+  ESP_LOGI(TAG, "=== Updated Statistics After Logging ===");
+  result = g_logger_instance->PrintStatistics(TAG, true);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get updated statistics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print updated statistics: %d", static_cast<int>(result));
     return false;
   }
 
-  ESP_LOGI(TAG, "Updated Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %lu", updated_stats.messages_logged);
-  ESP_LOGI(TAG, "  Bytes logged: %lu", updated_stats.bytes_logged);
-  ESP_LOGI(TAG, "  Errors: %lu", updated_stats.error_count);
-  ESP_LOGI(TAG, "  Warnings: %lu", updated_stats.warning_count);
-
-  // Test diagnostics retrieval
-  hf_logger_diagnostics_t diagnostics = {};
-  result = g_logger_instance->GetDiagnostics(diagnostics);
+  // Test and print diagnostics using the logger's built-in method
+  result = g_logger_instance->PrintDiagnostics(TAG, true);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get diagnostics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print diagnostics: %d", static_cast<int>(result));
     return false;
   }
-
-  ESP_LOGI(TAG, "Diagnostics:");
-  ESP_LOGI(TAG, "  Initialization time: %llu", diagnostics.initialization_time);
-  ESP_LOGI(TAG, "  Last error: %d", static_cast<int>(diagnostics.last_error));
-  ESP_LOGI(TAG, "  Health status: %s", diagnostics.health_status ? "healthy" : "unhealthy");
 
   // Test statistics reset
   result = g_logger_instance->ResetStatistics();
@@ -574,17 +562,28 @@ bool test_logger_statistics_diagnostics() noexcept {
     return false;
   }
 
-  // Verify reset
-  hf_logger_statistics_t reset_stats = {};
-  result = g_logger_instance->GetStatistics(reset_stats);
+  // Verify and print reset statistics using the logger's built-in method
+  ESP_LOGI(TAG, "=== Statistics After Reset ===");
+  result = g_logger_instance->PrintStatistics(TAG, false);  // Brief output after reset
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get reset statistics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print reset statistics: %d", static_cast<int>(result));
     return false;
   }
 
-  ESP_LOGI(TAG, "Reset Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %lu", reset_stats.messages_logged);
-  ESP_LOGI(TAG, "  Bytes logged: %lu", reset_stats.bytes_logged);
+  // Test diagnostics reset
+  result = g_logger_instance->ResetDiagnostics();
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to reset diagnostics: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Print reset diagnostics using the logger's built-in method
+  ESP_LOGI(TAG, "=== Diagnostics After Reset ===");
+  result = g_logger_instance->PrintDiagnostics(TAG, false);  // Brief output after reset
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to print reset diagnostics: %d", static_cast<int>(result));
+    return false;
+  }
 
   ESP_LOGI(TAG, "[SUCCESS] Statistics and diagnostics test completed");
   return true;
@@ -768,6 +767,33 @@ bool test_logger_utility_functions() noexcept {
   ESP_LOGI(TAG, "Logger version information:");
   ESP_LOGI(TAG, "  Log version: %d", log_version);
   ESP_LOGI(TAG, "  Log V2 available: %s", log_v2_available ? "true" : "false");
+
+  // Test custom output callback functionality
+  ESP_LOGI(TAG, "Testing custom output callback functionality...");
+  
+  // Create a test logger instance with custom callback
+  static std::string captured_output;
+  auto custom_callback = [](const char* message, hf_u32_t length) {
+    captured_output = std::string(message, length);
+    printf("[CUSTOM] %s\n", captured_output.c_str());
+  };
+
+  hf_logger_config_t custom_config = create_test_config();
+  custom_config.custom_output_callback = custom_callback;
+  
+  auto custom_logger = hf::utils::make_unique_nothrow<EspLogger>();
+  if (custom_logger) {
+    hf_logger_err_t result = custom_logger->Initialize(custom_config);
+    if (result == hf_logger_err_t::LOGGER_SUCCESS) {
+      custom_logger->Info("CUSTOM_TEST", "This message should go to custom callback");
+      custom_logger->Deinitialize();
+      ESP_LOGI(TAG, "Custom callback test completed successfully");
+    } else {
+      ESP_LOGW(TAG, "Custom callback test skipped due to initialization failure");
+    }
+  } else {
+    ESP_LOGW(TAG, "Custom callback test skipped due to memory allocation failure");
+  }
 
   ESP_LOGI(TAG, "[SUCCESS] Utility functions test completed");
   return true;
