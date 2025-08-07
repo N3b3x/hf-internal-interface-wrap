@@ -458,25 +458,53 @@ protected:
 //==============================================================================
 
 /**
- * @brief Convert logger error code to string
+ * @brief Convert logger error code to string using X-macro pattern
  * @param error Error code
  * @return const char* Error string
  */
-const char* HfLoggerErrToString(hf_logger_err_t error) noexcept;
+inline const char* HfLoggerErrToString(hf_logger_err_t error) noexcept {
+  switch (error) {
+#define HF_LOGGER_ERR_TO_STRING(name, value, description) \
+    case hf_logger_err_t::name: return description;
+    HF_LOGGER_ERR_LIST(HF_LOGGER_ERR_TO_STRING)
+#undef HF_LOGGER_ERR_TO_STRING
+    default: return "Unknown error";
+  }
+}
 
 /**
  * @brief Convert log level to string
  * @param level Log level
  * @return const char* Level string
  */
-const char* HfLogLevelToString(hf_log_level_t level) noexcept;
+inline const char* HfLogLevelToString(hf_log_level_t level) noexcept {
+  switch (level) {
+    case hf_log_level_t::LOG_LEVEL_NONE: return "NONE";
+    case hf_log_level_t::LOG_LEVEL_ERROR: return "ERROR";
+    case hf_log_level_t::LOG_LEVEL_WARN: return "WARN";
+    case hf_log_level_t::LOG_LEVEL_INFO: return "INFO";
+    case hf_log_level_t::LOG_LEVEL_DEBUG: return "DEBUG";
+    case hf_log_level_t::LOG_LEVEL_VERBOSE: return "VERBOSE";
+    default: return "UNKNOWN";
+  }
+}
 
 /**
  * @brief Convert log level to short string
  * @param level Log level
  * @return const char* Short level string
  */
-const char* HfLogLevelToShortString(hf_log_level_t level) noexcept;
+inline const char* HfLogLevelToShortString(hf_log_level_t level) noexcept {
+  switch (level) {
+    case hf_log_level_t::LOG_LEVEL_NONE: return "N";
+    case hf_log_level_t::LOG_LEVEL_ERROR: return "E";
+    case hf_log_level_t::LOG_LEVEL_WARN: return "W";
+    case hf_log_level_t::LOG_LEVEL_INFO: return "I";
+    case hf_log_level_t::LOG_LEVEL_DEBUG: return "D";
+    case hf_log_level_t::LOG_LEVEL_VERBOSE: return "V";
+    default: return "?";
+  }
+}
 
 /**
  * @brief Get current timestamp in microseconds
