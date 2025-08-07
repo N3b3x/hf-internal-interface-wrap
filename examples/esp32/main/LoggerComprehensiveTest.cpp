@@ -22,6 +22,7 @@
 #include "mcu/esp32/EspLogger.h"
 
 #include "TestFramework.h"
+#include "utils/memory_utils.h"
 
 #include <string>
 
@@ -103,30 +104,25 @@ void log_performance_metrics(const char* test_name, hf_u64_t start_time, hf_u32_
 bool test_logger_construction() noexcept {
   ESP_LOGI(TAG, "Testing Logger construction and destruction...");
 
-  try {
-    // Test construction with default parameters
-    auto logger = std::make_unique<EspLogger>();
-    
-    if (!logger) {
-      ESP_LOGE(TAG, "Failed to construct EspLogger instance");
-      return false;
-    }
-
-    // Verify initial state
-    if (!verify_logger_state(*logger, false)) {
-      ESP_LOGE(TAG, "Initial state verification failed");
-      return false;
-    }
-
-    // Store for other tests
-    g_logger_instance = std::move(logger);
-
-    ESP_LOGI(TAG, "[SUCCESS] Logger construction completed");
-    return true;
-  } catch (...) {
-    ESP_LOGE(TAG, "Exception during Logger construction");
+  // Test construction with default parameters using nothrow allocation
+  auto logger = hf::utils::make_unique_nothrow<EspLogger>();
+  
+  if (!logger) {
+    ESP_LOGE(TAG, "Failed to construct EspLogger instance - out of memory");
     return false;
   }
+
+  // Verify initial state
+  if (!verify_logger_state(*logger, false)) {
+    ESP_LOGE(TAG, "Initial state verification failed");
+    return false;
+  }
+
+  // Store for other tests
+  g_logger_instance = std::move(logger);
+
+  ESP_LOGI(TAG, "[SUCCESS] Logger construction completed");
+  return true;
 }
 
 bool test_logger_initialization() noexcept {
@@ -819,14 +815,18 @@ bool test_logger_utility_functions() noexcept {
   hf_logger_config_t custom_config = create_test_config();
   custom_config.custom_output_callback = custom_callback;
   
-  auto custom_logger = std::make_unique<EspLogger>();
-  hf_logger_err_t result = custom_logger->Initialize(custom_config);
-  if (result == hf_logger_err_t::LOGGER_SUCCESS) {
-    custom_logger->Info("CUSTOM_TEST", "This message should go to custom callback");
-    custom_logger->Deinitialize();
-    ESP_LOGI(TAG, "Custom callback test completed successfully");
+  auto custom_logger = hf::utils::make_unique_nothrow<EspLogger>();
+  if (custom_logger) {
+    hf_logger_err_t result = custom_logger->Initialize(custom_config);
+    if (result == hf_logger_err_t::LOGGER_SUCCESS) {
+      custom_logger->Info("CUSTOM_TEST", "This message should go to custom callback");
+      custom_logger->Deinitialize();
+      ESP_LOGI(TAG, "Custom callback test completed successfully");
+    } else {
+      ESP_LOGW(TAG, "Custom callback test skipped due to initialization failure");
+    }
   } else {
-    ESP_LOGW(TAG, "Custom callback test skipped due to initialization failure");
+    ESP_LOGW(TAG, "Custom callback test skipped due to memory allocation failure");
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Utility functions test completed");
