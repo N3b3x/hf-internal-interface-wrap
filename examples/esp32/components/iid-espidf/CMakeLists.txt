@@ -41,9 +41,14 @@ set(HF_UTIL_SRCS
     "${SRC_ROOT}/src/utils/DigitalOutputGuard.cpp"
 )
 
+# List base implementation source files
+set(HF_BASE_SRCS
+    "${SRC_ROOT}/src/base/BaseLoggerUtils.cpp"     # Logger utility functions
+)
+
 # Check which source files actually exist and add them
 set(EXISTING_SRCS "")
-foreach(src_file ${HF_ESP32_SRCS} ${HF_UTIL_SRCS})
+foreach(src_file ${HF_ESP32_SRCS} ${HF_UTIL_SRCS} ${HF_BASE_SRCS})
     if(EXISTS "${src_file}")
         list(APPEND EXISTING_SRCS "${src_file}")
         message(STATUS "Found source: ${src_file}")
