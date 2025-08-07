@@ -669,13 +669,13 @@ private:
 
   // Forward declarations and internal structures
   struct MonitorContext {
-    uint8_t monitor_id;             ///< Monitor ID (0-1)
-    hf_channel_id_t channel_id;     ///< Channel ID being monitored
-    uint32_t high_threshold;        ///< High threshold value
-    uint32_t low_threshold;         ///< Low threshold value
+    uint8_t monitor_id;                 ///< Monitor ID (0-1)
+    hf_channel_id_t channel_id;         ///< Channel ID being monitored
+    uint32_t high_threshold;            ///< High threshold value
+    uint32_t low_threshold;             ///< Low threshold value
     hf_adc_monitor_callback_t callback; ///< User callback function
-    void* user_data;                ///< User data for callback
-    EspAdc* adc_instance;           ///< Pointer to ADC instance
+    void* user_data;                    ///< User data for callback
+    EspAdc* adc_instance;               ///< Pointer to ADC instance
   };
 
   // Internal helper methods
@@ -691,12 +691,15 @@ private:
   void UpdateDiagnostics(hf_adc_err_t error) noexcept;
 
   // Static callback functions for ESP-IDF
-  static hf_bool_t IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const adc_continuous_evt_data_t* edata,
+  static hf_bool_t IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle,
+                                                const adc_continuous_evt_data_t* edata,
                                                 void* user_data) noexcept;
   static hf_bool_t IRAM_ATTR HighThresholdCallback(adc_monitor_handle_t monitor_handle,
-                                                   const adc_monitor_evt_data_t* event_data, void* user_data) noexcept;
+                                                   const adc_monitor_evt_data_t* event_data,
+                                                   void* user_data) noexcept;
   static hf_bool_t IRAM_ATTR LowThresholdCallback(adc_monitor_handle_t monitor_handle,
-                                                  const adc_monitor_evt_data_t* event_data, void* user_data) noexcept;
+                                                  const adc_monitor_evt_data_t* event_data,
+                                                  void* user_data) noexcept;
 
   //==============================================//
   // MEMBER VARIABLES
@@ -723,8 +726,8 @@ private:
   hf_adc_continuous_callback_t continuous_callback_; ///< Continuous callback function
   void* continuous_user_data_;                       ///< Continuous callback user data
   std::array<hf_adc_monitor_callback_t, HF_ADC_MAX_MONITORS>
-      monitor_callbacks_;                                    ///< Monitor callbacks
-  std::array<void*, HF_ADC_MAX_MONITORS> monitor_user_data_; ///< Monitor callback user data
+      monitor_callbacks_;                                            ///< Monitor callbacks
+  std::array<void*, HF_ADC_MAX_MONITORS> monitor_user_data_;         ///< Monitor callback user data
   std::array<MonitorContext, HF_ADC_MAX_MONITORS> monitor_contexts_; ///< Monitor context data
 
   // Statistics and diagnostics

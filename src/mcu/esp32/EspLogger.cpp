@@ -553,15 +553,16 @@ hf_logger_err_t EspLogger::ResetDiagnostics() noexcept {
 
   // Reset diagnostics to default values while preserving initialization state
   hf_logger_diagnostics_t reset_diagnostics = {};
-  reset_diagnostics.is_initialized = true;  // Keep initialized state
-  reset_diagnostics.is_healthy = true;      // Reset to healthy
+  reset_diagnostics.is_initialized = true; // Keep initialized state
+  reset_diagnostics.is_healthy = true;     // Reset to healthy
   reset_diagnostics.last_error = hf_logger_err_t::LOGGER_SUCCESS;
   reset_diagnostics.last_error_timestamp = GetCurrentTimestamp();
   reset_diagnostics.consecutive_errors = 0;
   reset_diagnostics.error_recovery_count = 0;
-  reset_diagnostics.uptime_seconds = 0;    // Will be recalculated in GetDiagnostics
+  reset_diagnostics.uptime_seconds = 0; // Will be recalculated in GetDiagnostics
   reset_diagnostics.last_health_check = GetCurrentTimestamp();
-  std::memset(reset_diagnostics.last_error_message, 0, sizeof(reset_diagnostics.last_error_message));
+  std::memset(reset_diagnostics.last_error_message, 0,
+              sizeof(reset_diagnostics.last_error_message));
 
   diagnostics_ = reset_diagnostics;
   ESP_LOGI(TAG, "Diagnostics reset");
@@ -673,7 +674,7 @@ hf_logger_err_t EspLogger::PrintDiagnostics(const char* tag, bool detailed) cons
     ESP_LOGI(print_tag, "  Consecutive errors: %u", diag.consecutive_errors);
     ESP_LOGI(print_tag, "  Error recovery count: %u", diag.error_recovery_count);
     ESP_LOGI(print_tag, "  Last health check: %llu µs", diag.last_health_check);
-    
+
     if (strlen(diag.last_error_message) > 0) {
       ESP_LOGI(print_tag, "  Last error message: %s", diag.last_error_message);
     } else {
@@ -689,7 +690,7 @@ hf_logger_err_t EspLogger::PrintStatus(const char* tag, bool detailed) const noe
   const char* print_tag = tag ? tag : "LOGGER_STATUS";
 
   ESP_LOGI(print_tag, "=== Logger Complete Status ===");
-  ESP_LOGI(print_tag, "Logger Version: %d (%s)", GetLogVersion(), 
+  ESP_LOGI(print_tag, "Logger Version: %d (%s)", GetLogVersion(),
            IsLogV2Available() ? "Log V2 Available" : "Log V1 Only");
 
   hf_logger_err_t result = PrintStatistics(print_tag, detailed);
@@ -836,13 +837,13 @@ hf_logger_err_t EspLogger::WriteMessageV(hf_log_level_t level, const char* tag, 
 void EspLogger::UpdateStatistics(hf_log_level_t level, hf_u32_t message_length,
                                  bool success) noexcept {
   statistics_.total_messages++;
-  
+
   // Update per-level statistics with bounds checking
   hf_u8_t level_index = static_cast<hf_u8_t>(level);
-  if (level_index < 6) {  // Array size is 6 (indices 0-5)
+  if (level_index < 6) { // Array size is 6 (indices 0-5)
     statistics_.messages_by_level[level_index]++;
   }
-  
+
   statistics_.total_bytes_written += message_length;
   statistics_.last_message_timestamp = GetCurrentTimestamp();
 
