@@ -360,22 +360,22 @@ bool test_spi_transfer_basic() noexcept {
   // Test 1: Single byte transfer
   uint8_t tx_byte = 0xAA;
   uint8_t rx_byte = 0x00;
-  hf_spi_err_t result = device->Transfer(&tx_byte, &rx_byte, 1);
+  hf_spi_err_t result = device->Transfer(&tx_byte, &rx_byte, 1, 0);
   ESP_LOGI(TAG, "Single byte transfer result: %s (TX: 0x%02X, RX: 0x%02X)", 
            HfSpiErrToString(result).data(), tx_byte, rx_byte);
 
   // Test 2: Multi-byte transfer
   uint8_t tx_data[] = {0x01, 0x02, 0x03, 0x04, 0x05};
   uint8_t rx_data[sizeof(tx_data)] = {0};
-  result = device->Transfer(tx_data, rx_data, sizeof(tx_data));
+  result = device->Transfer(tx_data, rx_data, sizeof(tx_data), 0);
   ESP_LOGI(TAG, "Multi-byte transfer result: %s", HfSpiErrToString(result).data());
 
   // Test 3: Write-only transfer
-  result = device->Transfer(tx_data, nullptr, sizeof(tx_data));
+  result = device->Transfer(tx_data, nullptr, sizeof(tx_data), 0);
   ESP_LOGI(TAG, "Write-only transfer result: %s", HfSpiErrToString(result).data());
 
   // Test 4: Read-only transfer
-  result = device->Transfer(nullptr, rx_data, sizeof(rx_data));
+  result = device->Transfer(nullptr, rx_data, sizeof(rx_data), 0);
   ESP_LOGI(TAG, "Read-only transfer result: %s", HfSpiErrToString(result).data());
 
   ESP_LOGI(TAG, "[SUCCESS] Basic transfer tests passed");
@@ -413,7 +413,7 @@ bool test_spi_transfer_modes() noexcept {
     // Test transfer with this mode
     uint8_t tx_data[] = {0xAA, 0x55, 0xFF, 0x00};
     uint8_t rx_data[sizeof(tx_data)] = {0};
-    hf_spi_err_t result = device->Transfer(tx_data, rx_data, sizeof(tx_data));
+    hf_spi_err_t result = device->Transfer(tx_data, rx_data, sizeof(tx_data), 0);
     
     ESP_LOGI(TAG, "Mode %d transfer result: %s", mode, HfSpiErrToString(result).data());
 
@@ -463,7 +463,7 @@ bool test_spi_transfer_sizes() noexcept {
     generate_test_pattern(tx_buffer.get(), size);
     std::memset(rx_buffer.get(), 0, size);
     
-    hf_spi_err_t result = device->Transfer(tx_buffer.get(), rx_buffer.get(), size);
+    hf_spi_err_t result = device->Transfer(tx_buffer.get(), rx_buffer.get(), size, 0);
     ESP_LOGI(TAG, "Transfer size %zu bytes: %s", size, HfSpiErrToString(result).data());
     
     if (result == hf_spi_err_t::SPI_SUCCESS) {
@@ -513,7 +513,7 @@ bool test_spi_dma_operations() noexcept {
   std::memset(rx_buffer.get(), 0, dma_test_size);
 
   uint64_t start_time = esp_timer_get_time();
-  hf_spi_err_t result = device_dma->Transfer(tx_buffer.get(), rx_buffer.get(), dma_test_size);
+  hf_spi_err_t result = device_dma->Transfer(tx_buffer.get(), rx_buffer.get(), dma_test_size, 0);
   uint64_t end_time = esp_timer_get_time();
   uint64_t dma_time = end_time - start_time;
 
@@ -536,7 +536,7 @@ bool test_spi_dma_operations() noexcept {
     BaseSpi* device_no_dma = test_bus_no_dma->GetDevice(device_index);
     if (device_no_dma) {
       start_time = esp_timer_get_time();
-      result = device_no_dma->Transfer(tx_buffer.get(), rx_buffer.get(), dma_test_size);
+      result = device_no_dma->Transfer(tx_buffer.get(), rx_buffer.get(), dma_test_size, 0);
       end_time = esp_timer_get_time();
       uint64_t no_dma_time = end_time - start_time;
 
@@ -602,7 +602,7 @@ bool test_spi_clock_speeds() noexcept {
     
     BaseSpi* device = test_bus->GetDevice(device_index);
     if (device) {
-      hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data));
+      hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data), 0);
       ESP_LOGI(TAG, "Transfer at %lu Hz: %s", speed, HfSpiErrToString(result).data());
     }
 
@@ -661,7 +661,7 @@ bool test_spi_multi_device_operations() noexcept {
     uint8_t test_data[] = {static_cast<uint8_t>(0xA0 + i), 0x55, 0xFF, 0x00};
     uint8_t rx_data[sizeof(test_data)] = {0};
     
-    hf_spi_err_t result = devices[i]->Transfer(test_data, rx_data, sizeof(test_data));
+    hf_spi_err_t result = devices[i]->Transfer(test_data, rx_data, sizeof(test_data), 0);
     ESP_LOGI(TAG, "Device %zu transfer result: %s", i, HfSpiErrToString(result).data());
     
     // Small delay between operations
@@ -704,18 +704,18 @@ bool test_spi_error_handling() noexcept {
   hf_spi_err_t result;
 
   // Test null pointer with non-zero length
-  result = device->Transfer(nullptr, &test_data, 1);
+  result = device->Transfer(nullptr, &test_data, 1, 0);
   ESP_LOGI(TAG, "Transfer with null TX pointer: %s", HfSpiErrToString(result).data());
 
-  result = device->Transfer(&test_data, nullptr, 1);
+  result = device->Transfer(&test_data, nullptr, 1, 0);
   ESP_LOGI(TAG, "Transfer with null RX pointer: %s", HfSpiErrToString(result).data());
 
   // Test zero length transfer
-  result = device->Transfer(&test_data, &test_data, 0);
+  result = device->Transfer(&test_data, &test_data, 0, 0);
   ESP_LOGI(TAG, "Zero length transfer: %s", HfSpiErrToString(result).data());
 
   // Test both null pointers
-  result = device->Transfer(nullptr, nullptr, 1);
+  result = device->Transfer(nullptr, nullptr, 1, 0);
   ESP_LOGI(TAG, "Both null pointers transfer: %s", HfSpiErrToString(result).data());
 
   ESP_LOGI(TAG, "[SUCCESS] Error handling tests passed");
@@ -822,7 +822,7 @@ bool test_spi_esp_specific_features() noexcept {
   uint8_t test_data[] = {0xAA, 0x55, 0xFF, 0x00};
   uint8_t rx_data[sizeof(test_data)] = {0};
   
-  hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data));
+  hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data), 0);
   ESP_LOGI(TAG, "ESP-specific transfer result: %s", HfSpiErrToString(result).data());
 
   ESP_LOGI(TAG, "[SUCCESS] ESP-specific feature tests passed");
@@ -873,7 +873,7 @@ bool test_spi_iomux_optimization() noexcept {
   generate_test_pattern(tx_buffer.get(), test_size);
 
   uint64_t start_time = esp_timer_get_time();
-  hf_spi_err_t result = device_iomux->Transfer(tx_buffer.get(), rx_buffer.get(), test_size);
+  hf_spi_err_t result = device_iomux->Transfer(tx_buffer.get(), rx_buffer.get(), test_size, 0);
   uint64_t end_time = esp_timer_get_time();
   uint64_t iomux_time = end_time - start_time;
 
@@ -895,7 +895,7 @@ bool test_spi_iomux_optimization() noexcept {
       BaseSpi* device_gpio = test_bus_gpio->GetDevice(device_index);
       if (device_gpio) {
         start_time = esp_timer_get_time();
-        result = device_gpio->Transfer(tx_buffer.get(), rx_buffer.get(), test_size);
+        result = device_gpio->Transfer(tx_buffer.get(), rx_buffer.get(), test_size, 0);
         end_time = esp_timer_get_time();
         uint64_t gpio_time = end_time - start_time;
 
@@ -949,7 +949,7 @@ bool test_spi_thread_safety() noexcept {
   for (int i = 0; i < 20; ++i) {
     hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data), 50);
     if (result != hf_spi_err_t::SPI_SUCCESS && 
-        result != hf_spi_err_t::SPI_ERR_TIMEOUT) {
+        result != hf_spi_err_t::SPI_ERR_TRANSFER_TIMEOUT) {
       ESP_LOGW(TAG, "Unexpected error in thread safety test: %s", 
                HfSpiErrToString(result).data());
     }
@@ -995,7 +995,7 @@ bool test_spi_performance_benchmarks() noexcept {
     generate_test_pattern(tx_buffer.get(), size);
 
     // Warm-up transfer
-    device->Transfer(tx_buffer.get(), rx_buffer.get(), size);
+    device->Transfer(tx_buffer.get(), rx_buffer.get(), size, 0);
 
     // Benchmark transfer
     const int num_transfers = 10;
@@ -1003,7 +1003,7 @@ bool test_spi_performance_benchmarks() noexcept {
 
     for (int i = 0; i < num_transfers; ++i) {
       uint64_t start_time = esp_timer_get_time();
-      hf_spi_err_t result = device->Transfer(tx_buffer.get(), rx_buffer.get(), size);
+      hf_spi_err_t result = device->Transfer(tx_buffer.get(), rx_buffer.get(), size, 0);
       uint64_t end_time = esp_timer_get_time();
       
       if (result == hf_spi_err_t::SPI_SUCCESS) {
@@ -1056,13 +1056,13 @@ bool test_spi_edge_cases() noexcept {
   
   generate_test_pattern(large_tx_buffer.get(), max_transfer_size);
   
-  hf_spi_err_t result = device->Transfer(large_tx_buffer.get(), large_rx_buffer.get(), max_transfer_size);
+  hf_spi_err_t result = device->Transfer(large_tx_buffer.get(), large_rx_buffer.get(), max_transfer_size, 0);
   ESP_LOGI(TAG, "Maximum transfer size (%zu bytes): %s", 
            max_transfer_size, HfSpiErrToString(result).data());
 
   // Test very small transfers
   uint8_t single_byte = 0xAA;
-  result = device->Transfer(&single_byte, &single_byte, 1);
+  result = device->Transfer(&single_byte, &single_byte, 1, 0);
   ESP_LOGI(TAG, "Single byte transfer: %s", HfSpiErrToString(result).data());
 
   // Test rapid successive transfers
@@ -1113,7 +1113,7 @@ bool test_spi_bus_acquisition() noexcept {
     uint8_t rx_data[sizeof(test_data)] = {0};
     
     for (int i = 0; i < 5; ++i) {
-      esp_device->Transfer(test_data, rx_data, sizeof(test_data));
+      esp_device->Transfer(test_data, rx_data, sizeof(test_data), 0);
     }
 
     // Release the bus
