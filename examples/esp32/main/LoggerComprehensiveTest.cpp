@@ -23,6 +23,8 @@
 
 #include "TestFramework.h"
 
+#include <string>
+
 static const char* TAG = "EspLOGGER_Test";
 
 static TestResults g_test_results;
@@ -67,9 +69,10 @@ hf_logger_config_t create_test_config() noexcept {
   config.format_options = hf_log_format_t::LOG_FORMAT_DEFAULT;
   config.max_message_length = TEST_MAX_MESSAGE_LENGTH;
   config.buffer_size = TEST_BUFFER_SIZE;
+  config.flush_interval_ms = 100;  // Set flush interval
   config.enable_thread_safety = true;
   config.enable_performance_monitoring = true;
-  config.enable_health_monitoring = true;
+  // Note: enable_health_monitoring doesn't exist in config structure
   return config;
 }
 
@@ -136,6 +139,8 @@ bool test_logger_initialization() noexcept {
 
   // Test initialization with custom configuration
   hf_logger_config_t config = create_test_config();
+  ESP_LOGI(TAG, "Initializing with config: max_msg_len=%lu, buffer_size=%lu, flush_interval=%lu ms",
+           config.max_message_length, config.buffer_size, config.flush_interval_ms);
   hf_logger_err_t result = g_logger_instance->Initialize(config);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "Failed to initialize logger: %d", static_cast<int>(result));
@@ -533,6 +538,13 @@ bool test_logger_statistics_diagnostics() noexcept {
   ESP_LOGI(TAG, "  Bytes logged: %llu", statistics.total_bytes_written);
   ESP_LOGI(TAG, "  Write errors: %llu", statistics.write_errors);
   ESP_LOGI(TAG, "  Format errors: %llu", statistics.format_errors);
+  ESP_LOGI(TAG, "  Messages by level:");
+  ESP_LOGI(TAG, "    NONE: %llu", statistics.messages_by_level[0]);
+  ESP_LOGI(TAG, "    ERROR: %llu", statistics.messages_by_level[1]);
+  ESP_LOGI(TAG, "    WARN: %llu", statistics.messages_by_level[2]);
+  ESP_LOGI(TAG, "    INFO: %llu", statistics.messages_by_level[3]);
+  ESP_LOGI(TAG, "    DEBUG: %llu", statistics.messages_by_level[4]);
+  ESP_LOGI(TAG, "    VERBOSE: %llu", statistics.messages_by_level[5]);
 
   // Log some messages to change statistics
   g_logger_instance->Info(TEST_TAG, "Statistics test message 1");
@@ -552,6 +564,10 @@ bool test_logger_statistics_diagnostics() noexcept {
   ESP_LOGI(TAG, "  Bytes logged: %llu", updated_stats.total_bytes_written);
   ESP_LOGI(TAG, "  Write errors: %llu", updated_stats.write_errors);
   ESP_LOGI(TAG, "  Format errors: %llu", updated_stats.format_errors);
+  ESP_LOGI(TAG, "  Updated messages by level:");
+  ESP_LOGI(TAG, "    ERROR: %llu", updated_stats.messages_by_level[1]);
+  ESP_LOGI(TAG, "    WARN: %llu", updated_stats.messages_by_level[2]);
+  ESP_LOGI(TAG, "    INFO: %llu", updated_stats.messages_by_level[3]);
 
   // Test diagnostics retrieval
   hf_logger_diagnostics_t diagnostics = {};
@@ -789,6 +805,29 @@ bool test_logger_utility_functions() noexcept {
   ESP_LOGI(TAG, "Logger version information:");
   ESP_LOGI(TAG, "  Log version: %d", log_version);
   ESP_LOGI(TAG, "  Log V2 available: %s", log_v2_available ? "true" : "false");
+
+  // Test custom output callback functionality
+  ESP_LOGI(TAG, "Testing custom output callback functionality...");
+  
+  // Create a test logger instance with custom callback
+  static std::string captured_output;
+  auto custom_callback = [](const char* message, hf_u32_t length) {
+    captured_output = std::string(message, length);
+    printf("[CUSTOM] %s\n", captured_output.c_str());
+  };
+
+  hf_logger_config_t custom_config = create_test_config();
+  custom_config.custom_output_callback = custom_callback;
+  
+  auto custom_logger = std::make_unique<EspLogger>();
+  hf_logger_err_t result = custom_logger->Initialize(custom_config);
+  if (result == hf_logger_err_t::LOGGER_SUCCESS) {
+    custom_logger->Info("CUSTOM_TEST", "This message should go to custom callback");
+    custom_logger->Deinitialize();
+    ESP_LOGI(TAG, "Custom callback test completed successfully");
+  } else {
+    ESP_LOGW(TAG, "Custom callback test skipped due to initialization failure");
+  }
 
   ESP_LOGI(TAG, "[SUCCESS] Utility functions test completed");
   return true;

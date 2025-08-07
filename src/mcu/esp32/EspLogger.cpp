@@ -678,9 +678,14 @@ hf_logger_err_t EspLogger::WriteMessage(hf_log_level_t level, const char* tag, c
     return hf_logger_err_t::LOGGER_ERR_NULL_POINTER;
   }
 
-  // Use ESP-IDF logging
-  esp_log_level_t esp_level = ConvertLogLevel(level);
-  esp_log_write(esp_level, tag, "%s", message);
+  // Use custom output callback if configured
+  if (config_.custom_output_callback) {
+    config_.custom_output_callback(message, std::strlen(message));
+  } else {
+    // Use ESP-IDF logging
+    esp_log_level_t esp_level = ConvertLogLevel(level);
+    esp_log_write(esp_level, tag, "%s", message);
+  }
 
   return hf_logger_err_t::LOGGER_SUCCESS;
 }
@@ -689,6 +694,17 @@ hf_logger_err_t EspLogger::WriteMessageV(hf_log_level_t level, const char* tag, 
                                          va_list args) noexcept {
   if (!tag || !format) {
     return hf_logger_err_t::LOGGER_ERR_NULL_POINTER;
+  }
+
+  // Use custom output callback if configured
+  if (config_.custom_output_callback) {
+    // Format message for custom callback
+    char formatted_message[config_.max_message_length];
+    int len = vsnprintf(formatted_message, sizeof(formatted_message), format, args);
+    if (len > 0) {
+      config_.custom_output_callback(formatted_message, static_cast<hf_u32_t>(len));
+    }
+    return hf_logger_err_t::LOGGER_SUCCESS;
   }
 
   esp_log_level_t esp_level = ConvertLogLevel(level);
@@ -714,7 +730,13 @@ hf_logger_err_t EspLogger::WriteMessageV(hf_log_level_t level, const char* tag, 
 void EspLogger::UpdateStatistics(hf_log_level_t level, hf_u32_t message_length,
                                  bool success) noexcept {
   statistics_.total_messages++;
-  statistics_.messages_by_level[static_cast<hf_u8_t>(level)]++;
+  
+  // Update per-level statistics with bounds checking
+  hf_u8_t level_index = static_cast<hf_u8_t>(level);
+  if (level_index < 6) {  // Array size is 6 (indices 0-5)
+    statistics_.messages_by_level[level_index]++;
+  }
+  
   statistics_.total_bytes_written += message_length;
   statistics_.last_message_timestamp = GetCurrentTimestamp();
 
