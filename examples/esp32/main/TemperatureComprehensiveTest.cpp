@@ -5,6 +5,7 @@
 
 #include "base/BaseTemperature.h"
 #include "esp_log.h"
+#include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "mcu/esp32/EspTemperature.h"
@@ -61,7 +62,7 @@ bool test_temperature_sensor_initialization() noexcept {
     EspTemperature test_temp;
     
     // Test initial state
-    if (test_temp.GetCurrentState() != HF_TEMP_STATE_UNINITIALIZED) {
+    if (test_temp.GetState() != HF_TEMP_STATE_UNINITIALIZED) {
         ESP_LOGE(TAG, "Initial state should be UNINITIALIZED");
         return false;
     }
@@ -74,7 +75,7 @@ bool test_temperature_sensor_initialization() noexcept {
     }
 
     // Verify state after initialization
-    if (test_temp.GetCurrentState() != HF_TEMP_STATE_INITIALIZED) {
+    if (test_temp.GetState() != HF_TEMP_STATE_INITIALIZED) {
         ESP_LOGE(TAG, "State should be INITIALIZED after init");
         return false;
     }
@@ -428,7 +429,7 @@ bool test_power_management() noexcept {
     }
 
     // Verify state is SLEEPING
-    if (test_temp.GetCurrentState() != HF_TEMP_STATE_SLEEPING) {
+    if (test_temp.GetState() != HF_TEMP_STATE_SLEEPING) {
         ESP_LOGE(TAG, "State should be SLEEPING");
         return false;
     }
