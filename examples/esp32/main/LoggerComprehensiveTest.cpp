@@ -31,7 +31,6 @@ static TestResults g_test_results;
 static constexpr hf_u32_t TEST_MAX_MESSAGE_LENGTH = 512;
 static constexpr hf_u32_t TEST_BUFFER_SIZE = 1024;
 static const char* TEST_TAG = "TEST_TAG";
-static const char* TEST_MESSAGE = "Test log message";
 
 // Global test instance
 static std::unique_ptr<EspLogger> g_logger_instance = nullptr;
@@ -583,8 +582,8 @@ bool test_logger_statistics_diagnostics() noexcept {
   }
 
   ESP_LOGI(TAG, "Reset Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %lu", reset_stats.messages_logged);
-  ESP_LOGI(TAG, "  Bytes logged: %lu", reset_stats.bytes_logged);
+  ESP_LOGI(TAG, "  Messages logged: %llu", reset_stats.total_messages);
+  ESP_LOGI(TAG, "  Bytes logged: %llu", reset_stats.total_bytes_written);
 
   ESP_LOGI(TAG, "[SUCCESS] Statistics and diagnostics test completed");
   return true;
