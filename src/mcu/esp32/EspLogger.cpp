@@ -601,6 +601,112 @@ hf_u8_t EspLogger::GetLogVersion() const noexcept {
 }
 
 //==============================================================================
+// DIAGNOSTIC PRINTING METHODS
+//==============================================================================
+
+hf_logger_err_t EspLogger::PrintStatistics(const char* tag, bool detailed) const noexcept {
+  if (!initialized_.load()) {
+    return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
+  }
+
+  const char* print_tag = tag ? tag : "LOGGER_STATS";
+
+  // Get current statistics
+  hf_logger_statistics_t stats = {};
+  hf_logger_err_t result = GetStatistics(stats);
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    ESP_LOGE(print_tag, "Failed to get statistics: %s", HfLoggerErrToString(result));
+    return result;
+  }
+
+  // Print basic statistics
+  ESP_LOGI(print_tag, "=== Logger Statistics ===");
+  ESP_LOGI(print_tag, "  Total messages: %llu", stats.total_messages);
+  ESP_LOGI(print_tag, "  Total bytes written: %llu", stats.total_bytes_written);
+  ESP_LOGI(print_tag, "  Write errors: %llu", stats.write_errors);
+  ESP_LOGI(print_tag, "  Format errors: %llu", stats.format_errors);
+
+  if (detailed) {
+    ESP_LOGI(print_tag, "  Buffer overflows: %llu", stats.buffer_overflows);
+    ESP_LOGI(print_tag, "  Performance monitor calls: %llu", stats.performance_monitor_calls);
+    ESP_LOGI(print_tag, "  Last message timestamp: %llu µs", stats.last_message_timestamp);
+    ESP_LOGI(print_tag, "  Average message length: %llu bytes", stats.average_message_length);
+    ESP_LOGI(print_tag, "  Max message length seen: %llu bytes", stats.max_message_length_seen);
+
+    ESP_LOGI(print_tag, "  Messages by level:");
+    ESP_LOGI(print_tag, "    NONE: %llu", stats.messages_by_level[0]);
+    ESP_LOGI(print_tag, "    ERROR: %llu", stats.messages_by_level[1]);
+    ESP_LOGI(print_tag, "    WARN: %llu", stats.messages_by_level[2]);
+    ESP_LOGI(print_tag, "    INFO: %llu", stats.messages_by_level[3]);
+    ESP_LOGI(print_tag, "    DEBUG: %llu", stats.messages_by_level[4]);
+    ESP_LOGI(print_tag, "    VERBOSE: %llu", stats.messages_by_level[5]);
+  }
+
+  ESP_LOGI(print_tag, "========================");
+  return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
+hf_logger_err_t EspLogger::PrintDiagnostics(const char* tag, bool detailed) const noexcept {
+  if (!initialized_.load()) {
+    return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
+  }
+
+  const char* print_tag = tag ? tag : "LOGGER_DIAG";
+
+  // Get current diagnostics
+  hf_logger_diagnostics_t diag = {};
+  hf_logger_err_t result = GetDiagnostics(diag);
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    ESP_LOGE(print_tag, "Failed to get diagnostics: %s", HfLoggerErrToString(result));
+    return result;
+  }
+
+  // Print basic diagnostics
+  ESP_LOGI(print_tag, "=== Logger Diagnostics ===");
+  ESP_LOGI(print_tag, "  Initialized: %s", diag.is_initialized ? "YES" : "NO");
+  ESP_LOGI(print_tag, "  Health status: %s", diag.is_healthy ? "HEALTHY" : "UNHEALTHY");
+  ESP_LOGI(print_tag, "  Last error: %s", HfLoggerErrToString(diag.last_error));
+  ESP_LOGI(print_tag, "  Uptime: %llu seconds", diag.uptime_seconds);
+
+  if (detailed) {
+    ESP_LOGI(print_tag, "  Last error timestamp: %llu µs", diag.last_error_timestamp);
+    ESP_LOGI(print_tag, "  Consecutive errors: %u", diag.consecutive_errors);
+    ESP_LOGI(print_tag, "  Error recovery count: %u", diag.error_recovery_count);
+    ESP_LOGI(print_tag, "  Last health check: %llu µs", diag.last_health_check);
+    
+    if (strlen(diag.last_error_message) > 0) {
+      ESP_LOGI(print_tag, "  Last error message: %s", diag.last_error_message);
+    } else {
+      ESP_LOGI(print_tag, "  Last error message: <none>");
+    }
+  }
+
+  ESP_LOGI(print_tag, "==========================");
+  return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
+hf_logger_err_t EspLogger::PrintStatus(const char* tag, bool detailed) const noexcept {
+  const char* print_tag = tag ? tag : "LOGGER_STATUS";
+
+  ESP_LOGI(print_tag, "=== Logger Complete Status ===");
+  ESP_LOGI(print_tag, "Logger Version: %d (%s)", GetLogVersion(), 
+           IsLogV2Available() ? "Log V2 Available" : "Log V1 Only");
+
+  hf_logger_err_t result = PrintStatistics(print_tag, detailed);
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    return result;
+  }
+
+  result = PrintDiagnostics(print_tag, detailed);
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    return result;
+  }
+
+  ESP_LOGI(print_tag, "==============================");
+  return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
+//==============================================================================
 // PRIVATE METHODS
 //==============================================================================
 

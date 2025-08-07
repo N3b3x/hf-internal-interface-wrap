@@ -161,6 +161,13 @@ bool test_logger_initialization() noexcept {
     ESP_LOGW(TAG, "Double initialization should return ALREADY_INITIALIZED error");
   }
 
+  // Demonstrate the PrintStatus method
+  ESP_LOGI(TAG, "Demonstrating PrintStatus method:");
+  result = g_logger_instance->PrintStatus("INIT_STATUS", false);  // Brief status after init
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    ESP_LOGW(TAG, "PrintStatus failed: %d", static_cast<int>(result));
+  }
+
   ESP_LOGI(TAG, "[SUCCESS] Logger initialization successful");
   return true;
 }
@@ -521,64 +528,32 @@ bool test_logger_statistics_diagnostics() noexcept {
     return false;
   }
 
-  // Test statistics retrieval
-  hf_logger_statistics_t statistics = {};
-  hf_logger_err_t result = g_logger_instance->GetStatistics(statistics);
+  // Test and print statistics using the logger's built-in method
+  hf_logger_err_t result = g_logger_instance->PrintStatistics(TAG, true);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get statistics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print statistics: %d", static_cast<int>(result));
     return false;
   }
-
-  ESP_LOGI(TAG, "Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %llu", statistics.total_messages);
-  ESP_LOGI(TAG, "  Bytes logged: %llu", statistics.total_bytes_written);
-  ESP_LOGI(TAG, "  Write errors: %llu", statistics.write_errors);
-  ESP_LOGI(TAG, "  Format errors: %llu", statistics.format_errors);
-  ESP_LOGI(TAG, "  Messages by level:");
-  ESP_LOGI(TAG, "    NONE: %llu", statistics.messages_by_level[0]);
-  ESP_LOGI(TAG, "    ERROR: %llu", statistics.messages_by_level[1]);
-  ESP_LOGI(TAG, "    WARN: %llu", statistics.messages_by_level[2]);
-  ESP_LOGI(TAG, "    INFO: %llu", statistics.messages_by_level[3]);
-  ESP_LOGI(TAG, "    DEBUG: %llu", statistics.messages_by_level[4]);
-  ESP_LOGI(TAG, "    VERBOSE: %llu", statistics.messages_by_level[5]);
 
   // Log some messages to change statistics
   g_logger_instance->Info(TEST_TAG, "Statistics test message 1");
   g_logger_instance->Error(TEST_TAG, "Statistics test error");
   g_logger_instance->Warn(TEST_TAG, "Statistics test warning");
 
-  // Get updated statistics
-  hf_logger_statistics_t updated_stats = {};
-  result = g_logger_instance->GetStatistics(updated_stats);
+  // Print updated statistics using the logger's built-in method
+  ESP_LOGI(TAG, "=== Updated Statistics After Logging ===");
+  result = g_logger_instance->PrintStatistics(TAG, true);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get updated statistics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print updated statistics: %d", static_cast<int>(result));
     return false;
   }
 
-  ESP_LOGI(TAG, "Updated Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %llu", updated_stats.total_messages);
-  ESP_LOGI(TAG, "  Bytes logged: %llu", updated_stats.total_bytes_written);
-  ESP_LOGI(TAG, "  Write errors: %llu", updated_stats.write_errors);
-  ESP_LOGI(TAG, "  Format errors: %llu", updated_stats.format_errors);
-  ESP_LOGI(TAG, "  Updated messages by level:");
-  ESP_LOGI(TAG, "    ERROR: %llu", updated_stats.messages_by_level[1]);
-  ESP_LOGI(TAG, "    WARN: %llu", updated_stats.messages_by_level[2]);
-  ESP_LOGI(TAG, "    INFO: %llu", updated_stats.messages_by_level[3]);
-
-  // Test diagnostics retrieval
-  hf_logger_diagnostics_t diagnostics = {};
-  result = g_logger_instance->GetDiagnostics(diagnostics);
+  // Test and print diagnostics using the logger's built-in method
+  result = g_logger_instance->PrintDiagnostics(TAG, true);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get diagnostics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print diagnostics: %d", static_cast<int>(result));
     return false;
   }
-
-  ESP_LOGI(TAG, "Diagnostics:");
-  ESP_LOGI(TAG, "  Initialized: %s", diagnostics.is_initialized ? "yes" : "no");
-  ESP_LOGI(TAG, "  Last error: %d", static_cast<int>(diagnostics.last_error));
-  ESP_LOGI(TAG, "  Health status: %s", diagnostics.is_healthy ? "healthy" : "unhealthy");
-  ESP_LOGI(TAG, "  Uptime: %llu seconds", diagnostics.uptime_seconds);
-  ESP_LOGI(TAG, "  Consecutive errors: %u", diagnostics.consecutive_errors);
 
   // Test statistics reset
   result = g_logger_instance->ResetStatistics();
@@ -587,17 +562,13 @@ bool test_logger_statistics_diagnostics() noexcept {
     return false;
   }
 
-  // Verify reset
-  hf_logger_statistics_t reset_stats = {};
-  result = g_logger_instance->GetStatistics(reset_stats);
+  // Verify and print reset statistics using the logger's built-in method
+  ESP_LOGI(TAG, "=== Statistics After Reset ===");
+  result = g_logger_instance->PrintStatistics(TAG, false);  // Brief output after reset
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get reset statistics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print reset statistics: %d", static_cast<int>(result));
     return false;
   }
-
-  ESP_LOGI(TAG, "Reset Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %llu", reset_stats.total_messages);
-  ESP_LOGI(TAG, "  Bytes logged: %llu", reset_stats.total_bytes_written);
 
   // Test diagnostics reset
   result = g_logger_instance->ResetDiagnostics();
@@ -606,18 +577,13 @@ bool test_logger_statistics_diagnostics() noexcept {
     return false;
   }
 
-  // Verify diagnostics reset
-  hf_logger_diagnostics_t reset_diagnostics = {};
-  result = g_logger_instance->GetDiagnostics(reset_diagnostics);
+  // Print reset diagnostics using the logger's built-in method
+  ESP_LOGI(TAG, "=== Diagnostics After Reset ===");
+  result = g_logger_instance->PrintDiagnostics(TAG, false);  // Brief output after reset
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get reset diagnostics: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to print reset diagnostics: %d", static_cast<int>(result));
     return false;
   }
-
-  ESP_LOGI(TAG, "Reset Diagnostics:");
-  ESP_LOGI(TAG, "  Initialized: %s", reset_diagnostics.is_initialized ? "yes" : "no");
-  ESP_LOGI(TAG, "  Health status: %s", reset_diagnostics.is_healthy ? "healthy" : "unhealthy");
-  ESP_LOGI(TAG, "  Consecutive errors: %u", reset_diagnostics.consecutive_errors);
 
   ESP_LOGI(TAG, "[SUCCESS] Statistics and diagnostics test completed");
   return true;

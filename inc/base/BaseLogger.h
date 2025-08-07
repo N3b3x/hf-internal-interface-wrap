@@ -426,6 +426,34 @@ public:
   virtual hf_logger_err_t GetLastErrorMessage(char* message,
                                               hf_u32_t max_length) const noexcept = 0;
 
+  //==============================================================================
+  // DIAGNOSTIC PRINTING METHODS
+  //==============================================================================
+
+  /**
+   * @brief Print statistics to log output
+   * @param tag Log tag for the output (optional, uses implementation-specific default if nullptr)
+   * @param detailed If true, prints detailed per-level statistics
+   * @return hf_logger_err_t Success or error code
+   */
+  virtual hf_logger_err_t PrintStatistics(const char* tag = nullptr, bool detailed = true) const noexcept = 0;
+
+  /**
+   * @brief Print diagnostics to log output
+   * @param tag Log tag for the output (optional, uses implementation-specific default if nullptr)
+   * @param detailed If true, prints detailed diagnostic information
+   * @return hf_logger_err_t Success or error code
+   */
+  virtual hf_logger_err_t PrintDiagnostics(const char* tag = nullptr, bool detailed = true) const noexcept = 0;
+
+  /**
+   * @brief Print both statistics and diagnostics
+   * @param tag Log tag for the output (optional, uses implementation-specific default if nullptr)
+   * @param detailed If true, prints detailed information
+   * @return hf_logger_err_t Success or error code
+   */
+  virtual hf_logger_err_t PrintStatus(const char* tag = nullptr, bool detailed = true) const noexcept = 0;
+
 protected:
   /**
    * @brief Default constructor
