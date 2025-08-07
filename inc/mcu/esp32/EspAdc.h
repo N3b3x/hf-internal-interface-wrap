@@ -17,7 +17,7 @@
  * @date 2025
  * @copyright HardFOC
  *
- * @note This implementation is designed for all ESP32 variants using ESP-IDF v5.4+
+ * @note This implementation is designed for all ESP32 variants using ESP-IDF v5.5+
  * @note Supports ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2
  * @note Each EspAdc instance represents a single ADC unit
  * @note Higher-level applications should instantiate multiple EspAdc objects for multi-unit boards
@@ -667,6 +667,17 @@ private:
   // PRIVATE IMPLEMENTATION
   //==============================================//
 
+  // Forward declarations and internal structures
+  struct MonitorContext {
+    uint8_t monitor_id;             ///< Monitor ID (0-1)
+    hf_channel_id_t channel_id;     ///< Channel ID being monitored
+    uint32_t high_threshold;        ///< High threshold value
+    uint32_t low_threshold;         ///< Low threshold value
+    hf_adc_monitor_callback_t callback; ///< User callback function
+    void* user_data;                ///< User data for callback
+    EspAdc* adc_instance;           ///< Pointer to ADC instance
+  };
+
   // Internal helper methods
   hf_adc_err_t InitializeOneshot() noexcept;
   hf_adc_err_t InitializeContinuous() noexcept;
@@ -682,8 +693,10 @@ private:
   // Static callback functions for ESP-IDF
   static hf_bool_t IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
                                                 void* user_data) noexcept;
-  static hf_bool_t IRAM_ATTR MonitorCallback(adc_monitor_handle_t monitor_handle,
-                                             const void* event_data, void* user_data) noexcept;
+  static hf_bool_t IRAM_ATTR HighThresholdCallback(adc_monitor_handle_t monitor_handle,
+                                                   const adc_monitor_evt_data_t* event_data, void* user_data) noexcept;
+  static hf_bool_t IRAM_ATTR LowThresholdCallback(adc_monitor_handle_t monitor_handle,
+                                                  const adc_monitor_evt_data_t* event_data, void* user_data) noexcept;
 
   //==============================================//
   // MEMBER VARIABLES
@@ -712,6 +725,7 @@ private:
   std::array<hf_adc_monitor_callback_t, HF_ADC_MAX_MONITORS>
       monitor_callbacks_;                                    ///< Monitor callbacks
   std::array<void*, HF_ADC_MAX_MONITORS> monitor_user_data_; ///< Monitor callback user data
+  std::array<MonitorContext, HF_ADC_MAX_MONITORS> monitor_contexts_; ///< Monitor context data
 
   // Statistics and diagnostics
   mutable hf_adc_statistics_t statistics_;   ///< Operation statistics

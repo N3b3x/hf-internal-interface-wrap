@@ -164,11 +164,12 @@ struct hf_adc_diagnostics_t {
   float referenceVoltage;      ///< Reference voltage
   bool calibrationValid;       ///< Calibration validity
   hf_u32_t enabled_channels;   ///< Bit mask of enabled channels
+  bool initialization_state;///< Initialization state
 
   hf_adc_diagnostics_t()
       : adcHealthy(true), lastErrorCode(hf_adc_err_t::ADC_SUCCESS), lastErrorTimestamp(0),
         consecutiveErrors(0), temperatureC(25.0f), referenceVoltage(3.3f), calibrationValid(false),
-        enabled_channels(0) {}
+        enabled_channels(0), initialization_state(false) {}
 };
 
 //==============================================================================

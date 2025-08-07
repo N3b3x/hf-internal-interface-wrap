@@ -21,7 +21,7 @@
  * @copyright HardFOC
  *
  * @note All interface classes (CAN, UART, I2C, SPI, GPIO, ADC, PWM, RMT) must use only these types.
- * @note This implementation is verified against ESP-IDF v5.4+ documentation and supports all latest
+ * @note This implementation is verified against ESP-IDF v5.5+ documentation and supports all latest
  * features.
  */
 

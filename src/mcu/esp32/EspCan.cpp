@@ -3,14 +3,14 @@
  * @brief ESP32 CAN (TWAI) implementation for the HardFOC system.
  *
  * This file provides a clean, minimal, and robust CAN bus implementation for the ESP32
- * microcontroller family using modern ESP-IDF v5.4+ TWAI (Two-Wire Automotive Interface) APIs.
+ * microcontroller family using modern ESP-IDF v5.5+ TWAI (Two-Wire Automotive Interface) APIs.
  * The implementation follows the same clean, minimal, and robust architectural pattern as EspAdc.
  *
  * Key Features Implemented:
  * - Clean architectural pattern following EspAdc design
  * - Lazy initialization for efficient resource management
  * - Thread-safe operations with proper resource management
- * - Modern ESP-IDF v5.4+ handle-based TWAI API
+ * - Modern ESP-IDF v5.5+ handle-based TWAI API
  * - Support for all ESP32 family members
  * - Comprehensive error handling and diagnostics
  *
@@ -19,7 +19,7 @@
  * @copyright HardFOC
  *
  * @note This implementation follows the EspAdc architectural pattern
- * @note Requires ESP-IDF v5.4 or later for full feature support
+ * @note Requires ESP-IDF v5.5 or later for full feature support
  */
 
 #include "EspCan.h"
@@ -192,7 +192,7 @@ hf_can_err_t EspCan::ReceiveMessage(hf_can_message_t& message, hf_u32_t timeout_
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  // Note: With modern ESP-IDF v5.4+ API, message reception is typically handled via callbacks
+  // Note: With modern ESP-IDF v5.5+ API, message reception is typically handled via callbacks
   // This method is provided for compatibility but may not be the preferred approach
   ESP_LOGW(TAG, "Polling receive not recommended with modern TWAI API - use callbacks instead");
 

@@ -4,13 +4,13 @@
  *
  * This file contains the ESP32 CAN (TWAI) implementation that extends the BaseCan
  * abstract class. It provides a clean, minimal, and robust CAN interface using
- * the modern ESP-IDF v5.4+ handle-based TWAI API.
+ * the modern ESP-IDF v5.5+ handle-based TWAI API.
  *
  * Key Features:
  * - Clean architectural pattern following EspAdc design
  * - Lazy initialization for efficient resource management
  * - Thread-safe operations with proper resource management
- * - Modern ESP-IDF v5.4+ handle-based TWAI API
+ * - Modern ESP-IDF v5.5+ handle-based TWAI API
  * - Support for all ESP32 family members
  * - Comprehensive error handling and diagnostics
  *
@@ -80,14 +80,14 @@ struct hf_esp_can_config_t {
  * @brief ESP32 CAN (TWAI) implementation following EspAdc architectural pattern.
  *
  * This class provides clean, minimal CAN communication using the ESP32's TWAI
- * (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.4+ APIs.
+ * (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.5+ APIs.
  * The implementation follows the same clean, minimal, and robust pattern as EspAdc.
  *
  * Key Features:
  * - Clean architectural pattern following EspAdc design
  * - Lazy initialization for efficient resource management
  * - Thread-safe operations with proper resource management
- * - Modern ESP-IDF v5.4+ handle-based TWAI API
+ * - Modern ESP-IDF v5.5+ handle-based TWAI API
  * - Support for all ESP32 family members
  * - Comprehensive error handling and diagnostics
  *

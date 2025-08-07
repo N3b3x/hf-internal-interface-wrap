@@ -8,7 +8,7 @@
  * threshold monitoring, and robust error handling.
  *
  * Key features implemented:
- * - One-shot and continuous ADC modes using ESP-IDF v5.4+ APIs
+ * - One-shot and continuous ADC modes using ESP-IDF v5.5+ APIs
  * - Hardware calibration for accurate voltage measurements
  * - Digital IIR filters for noise reduction
  * - Threshold monitors with interrupt callbacks
@@ -21,7 +21,7 @@
  * @date 2025
  * @copyright HardFOC
  *
- * @note ESP32 variant-specific implementation using ESP-IDF v5.4+
+ * @note ESP32 variant-specific implementation using ESP-IDF v5.5+
  * @note Each EspAdc instance represents a single ADC unit
  * @note Higher-level applications should instantiate multiple EspAdc objects for multi-unit boards
  */
@@ -164,7 +164,7 @@ hf_bool_t EspAdc::Initialize() noexcept {
       }
     }
 
-    // diagnostics_.initialization_state = 1; // Initialized state - TODO: Add to diagnostics
+    diagnostics_.initialization_state = true;
     // structure
     ESP_LOGI(TAG, "ADC initialization completed successfully for unit %d", config_.unit_id);
 
@@ -218,11 +218,8 @@ hf_bool_t EspAdc::Deinitialize() noexcept {
     DeinitializeContinuous();
   }
 
-  // diagnostics_.initialization_state = 0; // Uninitialized state - TODO: Add to diagnostics
-  // structure diagnostics_.continuous_mode_active = false; // TODO: Add to diagnostics structure
-  // diagnostics_.enabled_channels = 0; // TODO: Add to diagnostics structure
-  // diagnostics_.active_filters = 0; // TODO: Add to diagnostics structure
-  // diagnostics_.active_monitors = 0; // TODO: Add to diagnostics structure
+  diagnostics_.initialization_state = false;
+  diagnostics_.enabled_channels = 0;
 
   ESP_LOGI(TAG, "ADC deinitialization completed for unit %d", config_.unit_id);
   return result == hf_adc_err_t::ADC_SUCCESS;
@@ -812,28 +809,42 @@ hf_adc_err_t EspAdc::ConfigureMonitor(const hf_adc_monitor_config_t& monitor_con
     if (esp_err != ESP_OK) {
       ESP_LOGW(TAG, "Failed to disable monitor: %s", esp_err_to_name(esp_err));
     }
+    esp_err = adc_del_continuous_monitor(monitor_handles_[monitor_config.monitor_id]);
+    if (esp_err != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to delete monitor: %s", esp_err_to_name(esp_err));
+    }
     monitor_handles_[monitor_config.monitor_id] = nullptr;
   }
 
-  // Configure threshold monitor
-  // adc_monitor_config_t esp_monitor_config = {};  // Unused for now
-  // esp_monitor_config.unit_id = static_cast<adc_unit_t>(config_.unit_id); // TODO: Fix monitor
-  // config esp_monitor_config.channel = static_cast<adc_channel_t>(monitor_config.channel_id);
-  // esp_monitor_config.h_threshold = monitor_config.high_threshold;
-  // esp_monitor_config.l_threshold = monitor_config.low_threshold;
+  // Store monitor context for callback identification
+  MonitorContext& context = monitor_contexts_[monitor_config.monitor_id];
+  context.monitor_id = monitor_config.monitor_id;
+  context.channel_id = monitor_config.channel_id;
+  context.high_threshold = monitor_config.high_threshold;
+  context.low_threshold = monitor_config.low_threshold;
+  context.callback = nullptr; // Will be set by SetMonitorCallback
+  context.user_data = nullptr;
+  context.adc_instance = this;
 
-  adc_monitor_evt_cbs_t callbacks = {};
-  // callbacks.on_over_high_thresh = MonitorCallback; // TODO: Fix callback signature
-  // callbacks.on_below_low_thresh = MonitorCallback; // TODO: Fix callback signature
+  // Configure threshold monitor using ESP-IDF v5.5 API
+  adc_monitor_config_t esp_monitor_config = {};
+  esp_monitor_config.adc_unit = static_cast<adc_unit_t>(config_.unit_id);
+  esp_monitor_config.channel = static_cast<adc_channel_t>(monitor_config.channel_id);
+  esp_monitor_config.h_threshold = static_cast<int32_t>(monitor_config.high_threshold);
+  esp_monitor_config.l_threshold = static_cast<int32_t>(monitor_config.low_threshold);
 
-  // esp_err_t esp_err = adc_continuous_new_monitor(continuous_handle_, &esp_monitor_config,
-  //                                               &monitor_handles_[monitor_config.monitor_id]); //
-  //                                               TODO: Implement monitor creation
-  esp_err_t esp_err = ESP_OK; // Placeholder
+  // Create the monitor using ESP-IDF v5.5 API
+  esp_err_t esp_err = adc_new_continuous_monitor(continuous_handle_, &esp_monitor_config,
+                                                 &monitor_handles_[monitor_config.monitor_id]);
 
   if (esp_err == ESP_OK) {
+    // Register monitor callbacks using monitor context as user data
+    adc_monitor_evt_cbs_t callbacks = {};
+    callbacks.on_over_high_thresh = HighThresholdCallback;
+    callbacks.on_below_low_thresh = LowThresholdCallback;
+
     esp_err = adc_continuous_monitor_register_event_callbacks(
-        monitor_handles_[monitor_config.monitor_id], &callbacks, this);
+        monitor_handles_[monitor_config.monitor_id], &callbacks, &context);
   }
 
   if (esp_err == ESP_OK) {
@@ -853,6 +864,11 @@ hf_adc_err_t EspAdc::SetMonitorCallback(hf_u8_t monitor_id, hf_adc_monitor_callb
 
   MutexLockGuard lock(config_mutex_);
 
+  // Update the callback and user data in the context
+  monitor_contexts_[monitor_id].callback = callback;
+  monitor_contexts_[monitor_id].user_data = user_data;
+  
+  // Also store in the old arrays for backward compatibility
   monitor_callbacks_[monitor_id] = callback;
   monitor_user_data_[monitor_id] = user_data;
 
@@ -1055,36 +1071,50 @@ hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, c
   return esp_adc->continuous_callback_(&hf_data, esp_adc->continuous_user_data_);
 }
 
-hf_bool_t IRAM_ATTR EspAdc::MonitorCallback(adc_monitor_handle_t monitor_handle,
-                                            const void* event_data, void* user_data) noexcept {
-  auto* esp_adc = static_cast<EspAdc*>(user_data);
+hf_bool_t IRAM_ATTR EspAdc::HighThresholdCallback(adc_monitor_handle_t monitor_handle,
+                                                   const adc_monitor_evt_data_t* event_data, void* user_data) noexcept {
+  // user_data points to the MonitorContext
+  auto* context = static_cast<MonitorContext*>(user_data);
 
-  if (esp_adc == nullptr) {
+  if (context == nullptr || context->callback == nullptr) {
     return false;
   }
 
-  // Find which monitor triggered the callback
-  for (hf_u8_t i = 0; i < HF_ADC_MAX_MONITORS; ++i) {
-    if (esp_adc->monitor_handles_[i] == monitor_handle &&
-        esp_adc->monitor_callbacks_[i] != nullptr) {
-      // const auto* mon_data = static_cast<const adc_monitor_evt_data_t*>(event_data);  // Unused
-      // for now
+  // Convert ESP-IDF event data to HF format for HIGH threshold event
+  hf_adc_monitor_event_t hf_event = {};
+  hf_event.monitor_id = context->monitor_id;
+  hf_event.channel_id = context->channel_id;
+  hf_event.raw_value = 0; // Event data structure is reserved for extensibility in ESP-IDF v5.5
+  hf_event.event_type = hf_adc_monitor_event_type_t::HIGH_THRESH;
+  hf_event.timestamp_us = (context->adc_instance != nullptr) ? 
+                         context->adc_instance->GetCurrentTimeUs() : 0;
 
-      // Convert ESP-IDF event data to HF format
-      hf_adc_monitor_event_t hf_event = {};
-      hf_event.monitor_id = i;
-      // hf_event.channel_id = static_cast<hf_channel_id_t>(mon_data->channel); // TODO: Fix monitor
-      // event data hf_event.raw_value = mon_data->conversion_raw_data; // TODO: Fix monitor event
-      // data hf_event.event_type = (mon_data->is_over_upper_thresh) ?
-      //     hf_adc_monitor_event_type_t::HIGH_THRESH : hf_adc_monitor_event_type_t::LOW_THRESH; //
-      //     TODO: Fix monitor event data
-      hf_event.timestamp_us = esp_adc->GetCurrentTimeUs();
+  // Call user callback using context
+  context->callback(&hf_event, context->user_data);
 
-      // Call user callback
-      esp_adc->monitor_callbacks_[i](&hf_event, esp_adc->monitor_user_data_[i]);
-      break;
-    }
+  return false;
+}
+
+hf_bool_t IRAM_ATTR EspAdc::LowThresholdCallback(adc_monitor_handle_t monitor_handle,
+                                                  const adc_monitor_evt_data_t* event_data, void* user_data) noexcept {
+  // user_data points to the MonitorContext
+  auto* context = static_cast<MonitorContext*>(user_data);
+
+  if (context == nullptr || context->callback == nullptr) {
+    return false;
   }
+
+  // Convert ESP-IDF event data to HF format for LOW threshold event
+  hf_adc_monitor_event_t hf_event = {};
+  hf_event.monitor_id = context->monitor_id;
+  hf_event.channel_id = context->channel_id;
+  hf_event.raw_value = 0; // Event data structure is reserved for extensibility in ESP-IDF v5.5
+  hf_event.event_type = hf_adc_monitor_event_type_t::LOW_THRESH;
+  hf_event.timestamp_us = (context->adc_instance != nullptr) ? 
+                         context->adc_instance->GetCurrentTimeUs() : 0;
+
+  // Call user callback using context
+  context->callback(&hf_event, context->user_data);
 
   return false;
 }
@@ -1206,15 +1236,14 @@ hf_adc_err_t EspAdc::InitializeContinuous() noexcept {
 
   // Register callback if set
   if (continuous_callback_) {
-    // TODO: Fix callback signature for ESP-IDF v5.5
-    ESP_LOGW(TAG, "Continuous callback registration not implemented for ESP-IDF v5.5");
-    // adc_continuous_evt_cbs_t cbs = {
-    //     .on_conv_done = ContinuousCallback,
-    // };
-    // esp_result = adc_continuous_register_event_callbacks(continuous_handle_, &cbs, this);
-    // if (esp_result != ESP_OK) {
-    //     ESP_LOGW(TAG, "Failed to register continuous callback: %s", esp_err_to_name(esp_result));
-    // }
+    adc_continuous_evt_cbs_t cbs = {};
+    cbs.on_conv_done = ContinuousCallback;
+    cbs.on_pool_ovf = ContinuousCallback; // Use same callback for overflow events
+
+    esp_result = adc_continuous_register_event_callbacks(continuous_handle_, &cbs, this);
+    if (esp_result != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to register continuous callback: %s", esp_err_to_name(esp_result));
+    }
   }
 
   ESP_LOGI(TAG, "Continuous ADC initialization completed successfully");
