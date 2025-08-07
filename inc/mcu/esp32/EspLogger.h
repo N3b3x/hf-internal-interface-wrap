@@ -351,6 +351,12 @@ public:
   hf_logger_err_t ResetStatistics() noexcept override;
 
   /**
+   * @brief Reset diagnostics
+   * @return hf_logger_err_t Success or error code
+   */
+  hf_logger_err_t ResetDiagnostics() noexcept override;
+
+  /**
    * @brief Check if logger is healthy
    * @return true if healthy, false otherwise
    */

@@ -529,10 +529,10 @@ bool test_logger_statistics_diagnostics() noexcept {
   }
 
   ESP_LOGI(TAG, "Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %lu", statistics.messages_logged);
-  ESP_LOGI(TAG, "  Bytes logged: %lu", statistics.bytes_logged);
-  ESP_LOGI(TAG, "  Errors: %lu", statistics.error_count);
-  ESP_LOGI(TAG, "  Warnings: %lu", statistics.warning_count);
+  ESP_LOGI(TAG, "  Messages logged: %llu", statistics.total_messages);
+  ESP_LOGI(TAG, "  Bytes logged: %llu", statistics.total_bytes_written);
+  ESP_LOGI(TAG, "  Write errors: %llu", statistics.write_errors);
+  ESP_LOGI(TAG, "  Format errors: %llu", statistics.format_errors);
 
   // Log some messages to change statistics
   g_logger_instance->Info(TEST_TAG, "Statistics test message 1");
@@ -548,10 +548,10 @@ bool test_logger_statistics_diagnostics() noexcept {
   }
 
   ESP_LOGI(TAG, "Updated Statistics:");
-  ESP_LOGI(TAG, "  Messages logged: %lu", updated_stats.messages_logged);
-  ESP_LOGI(TAG, "  Bytes logged: %lu", updated_stats.bytes_logged);
-  ESP_LOGI(TAG, "  Errors: %lu", updated_stats.error_count);
-  ESP_LOGI(TAG, "  Warnings: %lu", updated_stats.warning_count);
+  ESP_LOGI(TAG, "  Messages logged: %llu", updated_stats.total_messages);
+  ESP_LOGI(TAG, "  Bytes logged: %llu", updated_stats.total_bytes_written);
+  ESP_LOGI(TAG, "  Write errors: %llu", updated_stats.write_errors);
+  ESP_LOGI(TAG, "  Format errors: %llu", updated_stats.format_errors);
 
   // Test diagnostics retrieval
   hf_logger_diagnostics_t diagnostics = {};
@@ -562,9 +562,11 @@ bool test_logger_statistics_diagnostics() noexcept {
   }
 
   ESP_LOGI(TAG, "Diagnostics:");
-  ESP_LOGI(TAG, "  Initialization time: %llu", diagnostics.initialization_time);
+  ESP_LOGI(TAG, "  Initialized: %s", diagnostics.is_initialized ? "yes" : "no");
   ESP_LOGI(TAG, "  Last error: %d", static_cast<int>(diagnostics.last_error));
-  ESP_LOGI(TAG, "  Health status: %s", diagnostics.health_status ? "healthy" : "unhealthy");
+  ESP_LOGI(TAG, "  Health status: %s", diagnostics.is_healthy ? "healthy" : "unhealthy");
+  ESP_LOGI(TAG, "  Uptime: %llu seconds", diagnostics.uptime_seconds);
+  ESP_LOGI(TAG, "  Consecutive errors: %u", diagnostics.consecutive_errors);
 
   // Test statistics reset
   result = g_logger_instance->ResetStatistics();
@@ -584,6 +586,26 @@ bool test_logger_statistics_diagnostics() noexcept {
   ESP_LOGI(TAG, "Reset Statistics:");
   ESP_LOGI(TAG, "  Messages logged: %llu", reset_stats.total_messages);
   ESP_LOGI(TAG, "  Bytes logged: %llu", reset_stats.total_bytes_written);
+
+  // Test diagnostics reset
+  result = g_logger_instance->ResetDiagnostics();
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to reset diagnostics: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Verify diagnostics reset
+  hf_logger_diagnostics_t reset_diagnostics = {};
+  result = g_logger_instance->GetDiagnostics(reset_diagnostics);
+  if (result != hf_logger_err_t::LOGGER_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to get reset diagnostics: %d", static_cast<int>(result));
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Reset Diagnostics:");
+  ESP_LOGI(TAG, "  Initialized: %s", reset_diagnostics.is_initialized ? "yes" : "no");
+  ESP_LOGI(TAG, "  Health status: %s", reset_diagnostics.is_healthy ? "healthy" : "unhealthy");
+  ESP_LOGI(TAG, "  Consecutive errors: %u", reset_diagnostics.consecutive_errors);
 
   ESP_LOGI(TAG, "[SUCCESS] Statistics and diagnostics test completed");
   return true;

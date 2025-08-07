@@ -400,6 +400,12 @@ public:
   virtual hf_logger_err_t ResetStatistics() noexcept = 0;
 
   /**
+   * @brief Reset diagnostics
+   * @return hf_logger_err_t Success or error code
+   */
+  virtual hf_logger_err_t ResetDiagnostics() noexcept = 0;
+
+  /**
    * @brief Check if logger is healthy
    * @return true if healthy, false otherwise
    */

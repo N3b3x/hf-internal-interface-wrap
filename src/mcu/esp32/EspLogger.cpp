@@ -544,6 +544,31 @@ hf_logger_err_t EspLogger::ResetStatistics() noexcept {
   return hf_logger_err_t::LOGGER_SUCCESS;
 }
 
+hf_logger_err_t EspLogger::ResetDiagnostics() noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!initialized_.load()) {
+    return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
+  }
+
+  // Reset diagnostics to default values while preserving initialization state
+  hf_logger_diagnostics_t reset_diagnostics = {};
+  reset_diagnostics.is_initialized = true;  // Keep initialized state
+  reset_diagnostics.is_healthy = true;      // Reset to healthy
+  reset_diagnostics.last_error = hf_logger_err_t::LOGGER_SUCCESS;
+  reset_diagnostics.last_error_timestamp = GetCurrentTimestamp();
+  reset_diagnostics.consecutive_errors = 0;
+  reset_diagnostics.error_recovery_count = 0;
+  reset_diagnostics.uptime_seconds = 0;    // Will be recalculated in GetDiagnostics
+  reset_diagnostics.last_health_check = GetCurrentTimestamp();
+  std::memset(reset_diagnostics.last_error_message, 0, sizeof(reset_diagnostics.last_error_message));
+
+  diagnostics_ = reset_diagnostics;
+  ESP_LOGI(TAG, "Diagnostics reset");
+
+  return hf_logger_err_t::LOGGER_SUCCESS;
+}
+
 bool EspLogger::IsHealthy() const noexcept {
   return healthy_.load();
 }
