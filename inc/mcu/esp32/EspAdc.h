@@ -691,7 +691,7 @@ private:
   void UpdateDiagnostics(hf_adc_err_t error) noexcept;
 
   // Static callback functions for ESP-IDF
-  static hf_bool_t IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const void* edata,
+  static hf_bool_t IRAM_ATTR ContinuousCallback(adc_continuous_handle_t handle, const adc_continuous_evt_data_t* edata,
                                                 void* user_data) noexcept;
   static hf_bool_t IRAM_ATTR HighThresholdCallback(adc_monitor_handle_t monitor_handle,
                                                    const adc_monitor_evt_data_t* event_data, void* user_data) noexcept;
