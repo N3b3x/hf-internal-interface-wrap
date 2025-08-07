@@ -48,7 +48,7 @@ static CallbackTestData g_callback_data;
 // Precision timer callback for testing
 static void precision_timer_callback(void* user_data) {
     uint64_t current_time = esp_timer_get_time();
-    g_callback_data.call_count++;
+    ++g_callback_data.call_count;
     g_callback_data.callback_executed = true;
     
     if (g_callback_data.last_call_time_us != 0) {
@@ -74,7 +74,7 @@ static void precision_timer_callback(void* user_data) {
 
 // Simple callback for basic tests
 static void simple_timer_callback(void* user_data) {
-    g_callback_data.call_count++;
+    ++g_callback_data.call_count;
     g_callback_data.callback_executed = true;
 }
 
@@ -88,7 +88,7 @@ bool test_timer_initialization() noexcept {
     {
         EspPeriodicTimer timer(simple_timer_callback, nullptr);
         
-        // Timer should not be initialized by default
+        // Timer should not be initialized by default - needs explicit Initialize()
         if (timer.IsInitialized()) {
             ESP_LOGE(TAG, "Timer should not be initialized after construction");
             return false;
@@ -232,7 +232,7 @@ bool test_timer_start_stop() noexcept {
     ESP_LOGI(TAG, "[PASS] Timer stops successfully");
     
     // Test 2e: Double start/stop error conditions
-    auto double_start = timer.Start(test_period_us);
+    timer.Start(test_period_us);
     auto restart_while_running = timer.Start(test_period_us); // Should fail
     
     if (restart_while_running != hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING) {
@@ -470,7 +470,7 @@ bool test_timer_statistics() noexcept {
         return false;
     }
     
-    auto stats_reset = timer.GetStats(callback_count, missed_callbacks, last_error);
+    timer.GetStats(callback_count, missed_callbacks, last_error);
     if (callback_count != 0 || missed_callbacks != 0) {
         ESP_LOGE(TAG, "Statistics should be reset to zero");
         return false;
@@ -790,7 +790,7 @@ extern "C" void app_main(void) {
     
     print_test_summary(g_test_results, "TIMER COMPREHENSIVE", TAG);
     
-    if (g_test_results.failed == 0) {
+    if (g_test_results.failed_tests == 0) {
         ESP_LOGI(TAG, "🎉 ALL TIMER TESTS PASSED! EspPeriodicTimer implementation is robust.");
     } else {
         ESP_LOGE(TAG, "❌ SOME TESTS FAILED! Implementation needs improvement.");
