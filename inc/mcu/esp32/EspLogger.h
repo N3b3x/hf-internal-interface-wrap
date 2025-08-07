@@ -398,7 +398,8 @@ public:
    * @param detailed If true, prints detailed per-level statistics
    * @return hf_logger_err_t Success or error code
    */
-  hf_logger_err_t PrintStatistics(const char* tag = nullptr, bool detailed = true) const noexcept override;
+  hf_logger_err_t PrintStatistics(const char* tag = nullptr,
+                                  bool detailed = true) const noexcept override;
 
   /**
    * @brief Print diagnostics to log output
@@ -406,7 +407,8 @@ public:
    * @param detailed If true, prints detailed diagnostic information
    * @return hf_logger_err_t Success or error code
    */
-  hf_logger_err_t PrintDiagnostics(const char* tag = nullptr, bool detailed = true) const noexcept override;
+  hf_logger_err_t PrintDiagnostics(const char* tag = nullptr,
+                                   bool detailed = true) const noexcept override;
 
   /**
    * @brief Print both statistics and diagnostics
@@ -414,7 +416,8 @@ public:
    * @param detailed If true, prints detailed information
    * @return hf_logger_err_t Success or error code
    */
-  hf_logger_err_t PrintStatus(const char* tag = nullptr, bool detailed = true) const noexcept override;
+  hf_logger_err_t PrintStatus(const char* tag = nullptr,
+                              bool detailed = true) const noexcept override;
 
 private:
   //==============================================================================

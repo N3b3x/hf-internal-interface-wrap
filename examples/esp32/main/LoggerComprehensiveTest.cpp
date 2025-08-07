@@ -57,7 +57,8 @@ bool test_logger_cleanup() noexcept;
 // Helper functions
 hf_logger_config_t create_test_config() noexcept;
 bool verify_logger_state(EspLogger& logger, bool should_be_initialized) noexcept;
-void log_performance_metrics(const char* test_name, hf_u64_t start_time, hf_u32_t operations) noexcept;
+void log_performance_metrics(const char* test_name, hf_u64_t start_time,
+                             hf_u32_t operations) noexcept;
 
 //==============================================================================
 // HELPER FUNCTIONS
@@ -70,7 +71,7 @@ hf_logger_config_t create_test_config() noexcept {
   config.format_options = hf_log_format_t::LOG_FORMAT_DEFAULT;
   config.max_message_length = TEST_MAX_MESSAGE_LENGTH;
   config.buffer_size = TEST_BUFFER_SIZE;
-  config.flush_interval_ms = 100;  // Set flush interval
+  config.flush_interval_ms = 100; // Set flush interval
   config.enable_thread_safety = true;
   config.enable_performance_monitoring = true;
   // Note: enable_health_monitoring doesn't exist in config structure
@@ -87,14 +88,15 @@ bool verify_logger_state(EspLogger& logger, bool should_be_initialized) noexcept
   return true;
 }
 
-void log_performance_metrics(const char* test_name, hf_u64_t start_time, hf_u32_t operations) noexcept {
+void log_performance_metrics(const char* test_name, hf_u64_t start_time,
+                             hf_u32_t operations) noexcept {
   hf_u64_t end_time = esp_timer_get_time();
   hf_u64_t duration_us = end_time - start_time;
   double duration_ms = duration_us / 1000.0;
   double ops_per_sec = (operations * 1000000.0) / duration_us;
-  
-  ESP_LOGI(TAG, "%s Performance: %lu ops in %.2f ms (%.2f ops/sec)", 
-           test_name, operations, duration_ms, ops_per_sec);
+
+  ESP_LOGI(TAG, "%s Performance: %lu ops in %.2f ms (%.2f ops/sec)", test_name, operations,
+           duration_ms, ops_per_sec);
 }
 
 //==============================================================================
@@ -106,7 +108,7 @@ bool test_logger_construction() noexcept {
 
   // Test construction with default parameters using nothrow allocation
   auto logger = hf::utils::make_unique_nothrow<EspLogger>();
-  
+
   if (!logger) {
     ESP_LOGE(TAG, "Failed to construct EspLogger instance - out of memory");
     return false;
@@ -163,7 +165,7 @@ bool test_logger_initialization() noexcept {
 
   // Demonstrate the PrintStatus method
   ESP_LOGI(TAG, "Demonstrating PrintStatus method:");
-  result = g_logger_instance->PrintStatus("INIT_STATUS", false);  // Brief status after init
+  result = g_logger_instance->PrintStatus("INIT_STATUS", false); // Brief status after init
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGW(TAG, "PrintStatus failed: %d", static_cast<int>(result));
   }
@@ -219,7 +221,8 @@ bool test_logger_basic_logging() noexcept {
   }
 
   // Test generic Log method
-  result = g_logger_instance->Log(hf_log_level_t::LOG_LEVEL_INFO, TEST_TAG, "Generic log message: %s", "test");
+  result = g_logger_instance->Log(hf_log_level_t::LOG_LEVEL_INFO, TEST_TAG,
+                                  "Generic log message: %s", "test");
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "Generic Log method failed: %d", static_cast<int>(result));
     return false;
@@ -238,13 +241,9 @@ bool test_logger_level_management() noexcept {
   }
 
   // Test setting and getting log levels
-  hf_log_level_t test_levels[] = {
-    hf_log_level_t::LOG_LEVEL_ERROR,
-    hf_log_level_t::LOG_LEVEL_WARN,
-    hf_log_level_t::LOG_LEVEL_INFO,
-    hf_log_level_t::LOG_LEVEL_DEBUG,
-    hf_log_level_t::LOG_LEVEL_VERBOSE
-  };
+  hf_log_level_t test_levels[] = {hf_log_level_t::LOG_LEVEL_ERROR, hf_log_level_t::LOG_LEVEL_WARN,
+                                  hf_log_level_t::LOG_LEVEL_INFO, hf_log_level_t::LOG_LEVEL_DEBUG,
+                                  hf_log_level_t::LOG_LEVEL_VERBOSE};
 
   hf_u8_t num_levels = sizeof(test_levels) / sizeof(test_levels[0]);
 
@@ -252,7 +251,8 @@ bool test_logger_level_management() noexcept {
     // Set log level for specific tag
     hf_logger_err_t result = g_logger_instance->SetLogLevel(TEST_TAG, test_levels[i]);
     if (result != hf_logger_err_t::LOGGER_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set log level %d: %d", static_cast<int>(test_levels[i]), static_cast<int>(result));
+      ESP_LOGE(TAG, "Failed to set log level %d: %d", static_cast<int>(test_levels[i]),
+               static_cast<int>(result));
       return false;
     }
 
@@ -265,15 +265,15 @@ bool test_logger_level_management() noexcept {
     }
 
     if (retrieved_level != test_levels[i]) {
-      ESP_LOGE(TAG, "Log level mismatch. Expected: %d, Got: %d", 
-               static_cast<int>(test_levels[i]), static_cast<int>(retrieved_level));
+      ESP_LOGE(TAG, "Log level mismatch. Expected: %d, Got: %d", static_cast<int>(test_levels[i]),
+               static_cast<int>(retrieved_level));
       return false;
     }
 
     // Test if level is enabled
     bool level_enabled = g_logger_instance->IsLevelEnabled(test_levels[i], TEST_TAG);
-    ESP_LOGI(TAG, "Level %d enabled for tag '%s': %s", 
-             static_cast<int>(test_levels[i]), TEST_TAG, level_enabled ? "true" : "false");
+    ESP_LOGI(TAG, "Level %d enabled for tag '%s': %s", static_cast<int>(test_levels[i]), TEST_TAG,
+             level_enabled ? "true" : "false");
   }
 
   // Test default tag level management
@@ -338,8 +338,8 @@ bool test_logger_formatted_logging() noexcept {
 
   // Long format string test
   const char* long_format = "Long message with many parameters: %d %s %f %c %x %o %p %zu %ld %u";
-  result = g_logger_instance->Info(TEST_TAG, long_format, 
-                                  42, "test", 3.14, 'X', 0xFF, 077, test_ptr, sizeof(int), 1000L, 500U);
+  result = g_logger_instance->Info(TEST_TAG, long_format, 42, "test", 3.14, 'X', 0xFF, 077,
+                                   test_ptr, sizeof(int), 1000L, 500U);
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "Long format string failed: %d", static_cast<int>(result));
     return false;
@@ -360,9 +360,9 @@ bool test_logger_log_v2_features() noexcept {
   // Check Log V2 availability
   bool log_v2_available = g_logger_instance->IsLogV2Available();
   hf_u8_t log_version = g_logger_instance->GetLogVersion();
-  
-  ESP_LOGI(TAG, "Log V2 available: %s, Log version: %d", 
-           log_v2_available ? "true" : "false", log_version);
+
+  ESP_LOGI(TAG, "Log V2 available: %s, Log version: %d", log_v2_available ? "true" : "false",
+           log_version);
 
   if (log_v2_available) {
     ESP_LOGI(TAG, "Testing Log V2 specific features...");
@@ -372,7 +372,8 @@ bool test_logger_log_v2_features() noexcept {
                                0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10};
 
     // Test LogBuffer
-    hf_logger_err_t result = g_logger_instance->LogBuffer(TEST_TAG, test_buffer, sizeof(test_buffer));
+    hf_logger_err_t result =
+        g_logger_instance->LogBuffer(TEST_TAG, test_buffer, sizeof(test_buffer));
     if (result != hf_logger_err_t::LOGGER_SUCCESS) {
       ESP_LOGE(TAG, "LogBuffer failed: %d", static_cast<int>(result));
       return false;
@@ -433,7 +434,8 @@ bool test_logger_buffer_logging() noexcept {
   }
 
   // Test small buffer
-  hf_logger_err_t result = g_logger_instance->LogBuffer(TEST_TAG, small_buffer, sizeof(small_buffer));
+  hf_logger_err_t result =
+      g_logger_instance->LogBuffer(TEST_TAG, small_buffer, sizeof(small_buffer));
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "Small buffer logging failed: %d", static_cast<int>(result));
     return false;
@@ -484,9 +486,8 @@ bool test_logger_location_logging() noexcept {
   hf_u32_t test_line = __LINE__ + 2;
   const char* test_function = __FUNCTION__;
   hf_logger_err_t result = g_logger_instance->LogWithLocation(
-    hf_log_level_t::LOG_LEVEL_INFO, TEST_TAG, test_file, test_line, test_function,
-    "Location test message with parameters: %d, %s", 42, "test"
-  );
+      hf_log_level_t::LOG_LEVEL_INFO, TEST_TAG, test_file, test_line, test_function,
+      "Location test message with parameters: %d, %s", 42, "test");
 
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "LogWithLocation failed: %d", static_cast<int>(result));
@@ -494,10 +495,9 @@ bool test_logger_location_logging() noexcept {
   }
 
   // Test with different log levels
-  result = g_logger_instance->LogWithLocation(
-    hf_log_level_t::LOG_LEVEL_ERROR, TEST_TAG, test_file, __LINE__, test_function,
-    "Error location test: %s", "critical error"
-  );
+  result = g_logger_instance->LogWithLocation(hf_log_level_t::LOG_LEVEL_ERROR, TEST_TAG, test_file,
+                                              __LINE__, test_function, "Error location test: %s",
+                                              "critical error");
 
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "Error level LogWithLocation failed: %d", static_cast<int>(result));
@@ -505,10 +505,8 @@ bool test_logger_location_logging() noexcept {
   }
 
   // Test with null parameters (should handle gracefully)
-  result = g_logger_instance->LogWithLocation(
-    hf_log_level_t::LOG_LEVEL_WARN, TEST_TAG, nullptr, 0, nullptr,
-    "Null parameters test"
-  );
+  result = g_logger_instance->LogWithLocation(hf_log_level_t::LOG_LEVEL_WARN, TEST_TAG, nullptr, 0,
+                                              nullptr, "Null parameters test");
 
   if (result == hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGI(TAG, "Null parameters location logging succeeded");
@@ -564,7 +562,7 @@ bool test_logger_statistics_diagnostics() noexcept {
 
   // Verify and print reset statistics using the logger's built-in method
   ESP_LOGI(TAG, "=== Statistics After Reset ===");
-  result = g_logger_instance->PrintStatistics(TAG, false);  // Brief output after reset
+  result = g_logger_instance->PrintStatistics(TAG, false); // Brief output after reset
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "Failed to print reset statistics: %d", static_cast<int>(result));
     return false;
@@ -579,7 +577,7 @@ bool test_logger_statistics_diagnostics() noexcept {
 
   // Print reset diagnostics using the logger's built-in method
   ESP_LOGI(TAG, "=== Diagnostics After Reset ===");
-  result = g_logger_instance->PrintDiagnostics(TAG, false);  // Brief output after reset
+  result = g_logger_instance->PrintDiagnostics(TAG, false); // Brief output after reset
   if (result != hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGE(TAG, "Failed to print reset diagnostics: %d", static_cast<int>(result));
     return false;
@@ -611,7 +609,8 @@ bool test_logger_health_monitoring() noexcept {
 
   // Test error message retrieval
   char error_message[256];
-  hf_logger_err_t result = g_logger_instance->GetLastErrorMessage(error_message, sizeof(error_message));
+  hf_logger_err_t result =
+      g_logger_instance->GetLastErrorMessage(error_message, sizeof(error_message));
   if (result == hf_logger_err_t::LOGGER_SUCCESS) {
     ESP_LOGI(TAG, "Last error message: %s", error_message);
   } else {
@@ -700,8 +699,8 @@ bool test_logger_performance_testing() noexcept {
   // Test formatted logging performance
   start_time = esp_timer_get_time();
   for (hf_u32_t i = 0; i < num_operations; i++) {
-    g_logger_instance->Info(TEST_TAG, "Format test: %d, %s, %.2f", 
-                           static_cast<int>(i), "test", static_cast<double>(i) * 0.1);
+    g_logger_instance->Info(TEST_TAG, "Format test: %d, %s, %.2f", static_cast<int>(i), "test",
+                            static_cast<double>(i) * 0.1);
   }
   log_performance_metrics("Formatted Logging", start_time, num_operations);
 
@@ -742,35 +741,31 @@ bool test_logger_utility_functions() noexcept {
   }
 
   // Test level checking for various tags and levels
-  hf_log_level_t test_levels[] = {
-    hf_log_level_t::LOG_LEVEL_ERROR,
-    hf_log_level_t::LOG_LEVEL_WARN,
-    hf_log_level_t::LOG_LEVEL_INFO,
-    hf_log_level_t::LOG_LEVEL_DEBUG,
-    hf_log_level_t::LOG_LEVEL_VERBOSE
-  };
+  hf_log_level_t test_levels[] = {hf_log_level_t::LOG_LEVEL_ERROR, hf_log_level_t::LOG_LEVEL_WARN,
+                                  hf_log_level_t::LOG_LEVEL_INFO, hf_log_level_t::LOG_LEVEL_DEBUG,
+                                  hf_log_level_t::LOG_LEVEL_VERBOSE};
 
   for (hf_u8_t i = 0; i < sizeof(test_levels) / sizeof(test_levels[0]); i++) {
     bool enabled = g_logger_instance->IsLevelEnabled(test_levels[i], TEST_TAG);
-    ESP_LOGI(TAG, "Level %d enabled for %s: %s", 
-             static_cast<int>(test_levels[i]), TEST_TAG, enabled ? "true" : "false");
+    ESP_LOGI(TAG, "Level %d enabled for %s: %s", static_cast<int>(test_levels[i]), TEST_TAG,
+             enabled ? "true" : "false");
 
     enabled = g_logger_instance->IsLevelEnabled(test_levels[i], nullptr);
-    ESP_LOGI(TAG, "Level %d enabled for default: %s", 
-             static_cast<int>(test_levels[i]), enabled ? "true" : "false");
+    ESP_LOGI(TAG, "Level %d enabled for default: %s", static_cast<int>(test_levels[i]),
+             enabled ? "true" : "false");
   }
 
   // Test version information
   hf_u8_t log_version = g_logger_instance->GetLogVersion();
   bool log_v2_available = g_logger_instance->IsLogV2Available();
-  
+
   ESP_LOGI(TAG, "Logger version information:");
   ESP_LOGI(TAG, "  Log version: %d", log_version);
   ESP_LOGI(TAG, "  Log V2 available: %s", log_v2_available ? "true" : "false");
 
   // Test custom output callback functionality
   ESP_LOGI(TAG, "Testing custom output callback functionality...");
-  
+
   // Create a test logger instance with custom callback
   static std::string captured_output;
   auto custom_callback = [](const char* message, hf_u32_t length) {
@@ -780,7 +775,7 @@ bool test_logger_utility_functions() noexcept {
 
   hf_logger_config_t custom_config = create_test_config();
   custom_config.custom_output_callback = custom_callback;
-  
+
   auto custom_logger = hf::utils::make_unique_nothrow<EspLogger>();
   if (custom_logger) {
     hf_logger_err_t result = custom_logger->Initialize(custom_config);

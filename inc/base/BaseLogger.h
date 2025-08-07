@@ -436,7 +436,8 @@ public:
    * @param detailed If true, prints detailed per-level statistics
    * @return hf_logger_err_t Success or error code
    */
-  virtual hf_logger_err_t PrintStatistics(const char* tag = nullptr, bool detailed = true) const noexcept = 0;
+  virtual hf_logger_err_t PrintStatistics(const char* tag = nullptr,
+                                          bool detailed = true) const noexcept = 0;
 
   /**
    * @brief Print diagnostics to log output
@@ -444,7 +445,8 @@ public:
    * @param detailed If true, prints detailed diagnostic information
    * @return hf_logger_err_t Success or error code
    */
-  virtual hf_logger_err_t PrintDiagnostics(const char* tag = nullptr, bool detailed = true) const noexcept = 0;
+  virtual hf_logger_err_t PrintDiagnostics(const char* tag = nullptr,
+                                           bool detailed = true) const noexcept = 0;
 
   /**
    * @brief Print both statistics and diagnostics
@@ -452,7 +454,8 @@ public:
    * @param detailed If true, prints detailed information
    * @return hf_logger_err_t Success or error code
    */
-  virtual hf_logger_err_t PrintStatus(const char* tag = nullptr, bool detailed = true) const noexcept = 0;
+  virtual hf_logger_err_t PrintStatus(const char* tag = nullptr,
+                                      bool detailed = true) const noexcept = 0;
 
 protected:
   /**
@@ -493,10 +496,12 @@ protected:
 inline const char* HfLoggerErrToString(hf_logger_err_t error) noexcept {
   switch (error) {
 #define HF_LOGGER_ERR_TO_STRING(name, value, description) \
-    case hf_logger_err_t::name: return description;
+  case hf_logger_err_t::name:                             \
+    return description;
     HF_LOGGER_ERR_LIST(HF_LOGGER_ERR_TO_STRING)
 #undef HF_LOGGER_ERR_TO_STRING
-    default: return "Unknown error";
+    default:
+      return "Unknown error";
   }
 }
 
@@ -507,13 +512,20 @@ inline const char* HfLoggerErrToString(hf_logger_err_t error) noexcept {
  */
 inline const char* HfLogLevelToString(hf_log_level_t level) noexcept {
   switch (level) {
-    case hf_log_level_t::LOG_LEVEL_NONE: return "NONE";
-    case hf_log_level_t::LOG_LEVEL_ERROR: return "ERROR";
-    case hf_log_level_t::LOG_LEVEL_WARN: return "WARN";
-    case hf_log_level_t::LOG_LEVEL_INFO: return "INFO";
-    case hf_log_level_t::LOG_LEVEL_DEBUG: return "DEBUG";
-    case hf_log_level_t::LOG_LEVEL_VERBOSE: return "VERBOSE";
-    default: return "UNKNOWN";
+    case hf_log_level_t::LOG_LEVEL_NONE:
+      return "NONE";
+    case hf_log_level_t::LOG_LEVEL_ERROR:
+      return "ERROR";
+    case hf_log_level_t::LOG_LEVEL_WARN:
+      return "WARN";
+    case hf_log_level_t::LOG_LEVEL_INFO:
+      return "INFO";
+    case hf_log_level_t::LOG_LEVEL_DEBUG:
+      return "DEBUG";
+    case hf_log_level_t::LOG_LEVEL_VERBOSE:
+      return "VERBOSE";
+    default:
+      return "UNKNOWN";
   }
 }
 
@@ -524,13 +536,20 @@ inline const char* HfLogLevelToString(hf_log_level_t level) noexcept {
  */
 inline const char* HfLogLevelToShortString(hf_log_level_t level) noexcept {
   switch (level) {
-    case hf_log_level_t::LOG_LEVEL_NONE: return "N";
-    case hf_log_level_t::LOG_LEVEL_ERROR: return "E";
-    case hf_log_level_t::LOG_LEVEL_WARN: return "W";
-    case hf_log_level_t::LOG_LEVEL_INFO: return "I";
-    case hf_log_level_t::LOG_LEVEL_DEBUG: return "D";
-    case hf_log_level_t::LOG_LEVEL_VERBOSE: return "V";
-    default: return "?";
+    case hf_log_level_t::LOG_LEVEL_NONE:
+      return "N";
+    case hf_log_level_t::LOG_LEVEL_ERROR:
+      return "E";
+    case hf_log_level_t::LOG_LEVEL_WARN:
+      return "W";
+    case hf_log_level_t::LOG_LEVEL_INFO:
+      return "I";
+    case hf_log_level_t::LOG_LEVEL_DEBUG:
+      return "D";
+    case hf_log_level_t::LOG_LEVEL_VERBOSE:
+      return "V";
+    default:
+      return "?";
   }
 }
 

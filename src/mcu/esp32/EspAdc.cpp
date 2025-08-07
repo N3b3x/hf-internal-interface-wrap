@@ -867,7 +867,7 @@ hf_adc_err_t EspAdc::SetMonitorCallback(hf_u8_t monitor_id, hf_adc_monitor_callb
   // Update the callback and user data in the context
   monitor_contexts_[monitor_id].callback = callback;
   monitor_contexts_[monitor_id].user_data = user_data;
-  
+
   // Also store in the old arrays for backward compatibility
   monitor_callbacks_[monitor_id] = callback;
   monitor_user_data_[monitor_id] = user_data;
@@ -1050,7 +1050,8 @@ hf_adc_err_t EspAdc::ReadMultipleChannels(const hf_channel_id_t* channel_ids, hf
 }
 
 // Static callback functions for ESP-IDF
-hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, const adc_continuous_evt_data_t* edata,
+hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle,
+                                               const adc_continuous_evt_data_t* edata,
                                                void* user_data) noexcept {
   auto* esp_adc = static_cast<EspAdc*>(user_data);
 
@@ -1072,7 +1073,8 @@ hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle, c
 }
 
 hf_bool_t IRAM_ATTR EspAdc::HighThresholdCallback(adc_monitor_handle_t monitor_handle,
-                                                   const adc_monitor_evt_data_t* event_data, void* user_data) noexcept {
+                                                  const adc_monitor_evt_data_t* event_data,
+                                                  void* user_data) noexcept {
   // user_data points to the MonitorContext
   auto* context = static_cast<MonitorContext*>(user_data);
 
@@ -1086,8 +1088,8 @@ hf_bool_t IRAM_ATTR EspAdc::HighThresholdCallback(adc_monitor_handle_t monitor_h
   hf_event.channel_id = context->channel_id;
   hf_event.raw_value = 0; // Event data structure is reserved for extensibility in ESP-IDF v5.5
   hf_event.event_type = hf_adc_monitor_event_type_t::HIGH_THRESH;
-  hf_event.timestamp_us = (context->adc_instance != nullptr) ? 
-                         context->adc_instance->GetCurrentTimeUs() : 0;
+  hf_event.timestamp_us =
+      (context->adc_instance != nullptr) ? context->adc_instance->GetCurrentTimeUs() : 0;
 
   // Call user callback using context
   context->callback(&hf_event, context->user_data);
@@ -1096,7 +1098,8 @@ hf_bool_t IRAM_ATTR EspAdc::HighThresholdCallback(adc_monitor_handle_t monitor_h
 }
 
 hf_bool_t IRAM_ATTR EspAdc::LowThresholdCallback(adc_monitor_handle_t monitor_handle,
-                                                  const adc_monitor_evt_data_t* event_data, void* user_data) noexcept {
+                                                 const adc_monitor_evt_data_t* event_data,
+                                                 void* user_data) noexcept {
   // user_data points to the MonitorContext
   auto* context = static_cast<MonitorContext*>(user_data);
 
@@ -1110,8 +1113,8 @@ hf_bool_t IRAM_ATTR EspAdc::LowThresholdCallback(adc_monitor_handle_t monitor_ha
   hf_event.channel_id = context->channel_id;
   hf_event.raw_value = 0; // Event data structure is reserved for extensibility in ESP-IDF v5.5
   hf_event.event_type = hf_adc_monitor_event_type_t::LOW_THRESH;
-  hf_event.timestamp_us = (context->adc_instance != nullptr) ? 
-                         context->adc_instance->GetCurrentTimeUs() : 0;
+  hf_event.timestamp_us =
+      (context->adc_instance != nullptr) ? context->adc_instance->GetCurrentTimeUs() : 0;
 
   // Call user callback using context
   context->callback(&hf_event, context->user_data);
