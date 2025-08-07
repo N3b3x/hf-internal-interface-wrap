@@ -45,7 +45,7 @@ jobs:
           ascii_art, gpio_test,
           adc_test, uart_test, spi_test, i2c_test,
           pwm_test, can_test, temperature_test, nvs_test,
-          timer_test, wifi_test, bluetooth_test, utils_test
+          timer_test, logger_test, wifi_test, bluetooth_test, utils_test
         ]
         exclude:
           # Exclude some combinations to reduce CI time
@@ -69,6 +69,8 @@ jobs:
             example_type: nvs_test
           - build_type: Debug
             example_type: timer_test
+          - build_type: Debug
+            example_type: logger_test
           - build_type: Debug
             example_type: wifi_test
           - build_type: Debug
