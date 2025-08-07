@@ -41,7 +41,6 @@ extern "C" {
 #include "freertos/semphr.h"
 #include "hal/gpio_types.h"
 #include "hal/rtc_io_types.h"
-#include "hal/lp_io_types.h"
 #include "soc/clk_tree_defs.h"
 #include "soc/gpio_sig_map.h"
 
