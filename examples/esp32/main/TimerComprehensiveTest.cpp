@@ -44,7 +44,8 @@ bool test_timer_initialization() noexcept {
     test_timer.Stop();
     ESP_LOGI(TAG, "[SUCCESS] Periodic timer stopped");
   } else {
-    ESP_LOGW(TAG, "Could not start timer: %d, but initialization was successful", static_cast<int>(start_result));
+    ESP_LOGW(TAG, "Could not start timer: %d, but initialization was successful",
+             static_cast<int>(start_result));
   }
 
   return true;

@@ -132,7 +132,7 @@ bool test_uart_construction() noexcept {
   // Test construction with valid configuration
   hf_uart_config_t config = create_test_config();
   auto uart = std::make_unique<EspUart>(config);
-  
+
   if (!uart) {
     ESP_LOGE(TAG, "Failed to construct EspUart instance");
     return false;
@@ -192,8 +192,8 @@ bool test_uart_basic_communication() noexcept {
 
   // Test transmission and reception
   const char* test_message = "Hello, UART Test!";
-  hf_uart_err_t write_result = g_uart_instance->Write(
-      reinterpret_cast<const hf_u8_t*>(test_message), strlen(test_message));
+  hf_uart_err_t write_result =
+      g_uart_instance->Write(reinterpret_cast<const hf_u8_t*>(test_message), strlen(test_message));
 
   if (write_result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Write failed with error: %d", static_cast<int>(write_result));
@@ -227,10 +227,10 @@ bool test_uart_baud_rate_configuration() noexcept {
       ESP_LOGE(TAG, "Failed to set baud rate: %lu", test_baud_rates[i]);
       return false;
     }
-    
+
     // Small delay to allow hardware to settle
     vTaskDelay(pdMS_TO_TICKS(10));
-    
+
     ESP_LOGI(TAG, "Successfully set baud rate to: %lu", test_baud_rates[i]);
   }
 
@@ -340,14 +340,12 @@ bool test_uart_buffer_operations() noexcept {
   // Test ReadUntil with terminator
   uint8_t read_buffer[128];
   const char* test_string = "Hello\nWorld";
-  
+
   // Write test string
-  hf_uart_err_t write_result = g_uart_instance->Write(
-    reinterpret_cast<const uint8_t*>(test_string), 
-    static_cast<hf_u16_t>(strlen(test_string)), 
-    1000
-  );
-  
+  hf_uart_err_t write_result =
+      g_uart_instance->Write(reinterpret_cast<const uint8_t*>(test_string),
+                             static_cast<hf_u16_t>(strlen(test_string)), 1000);
+
   if (write_result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGW(TAG, "Write failed for ReadUntil test (expected in no-loopback mode)");
   }
@@ -408,15 +406,12 @@ bool test_uart_advanced_features() noexcept {
 
   // Test with loopback enabled
   const char* loopback_msg = "Loopback Test";
-  result = g_uart_instance->Write(
-    reinterpret_cast<const uint8_t*>(loopback_msg), 
-    static_cast<hf_u16_t>(strlen(loopback_msg)), 
-    1000
-  );
-  
+  result = g_uart_instance->Write(reinterpret_cast<const uint8_t*>(loopback_msg),
+                                  static_cast<hf_u16_t>(strlen(loopback_msg)), 1000);
+
   if (result == hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGI(TAG, "Loopback write successful");
-    
+
     // Try to read back (should work in loopback mode)
     uint8_t loopback_buffer[64];
     result = g_uart_instance->Read(loopback_buffer, sizeof(loopback_buffer), 500);
@@ -443,7 +438,7 @@ bool test_uart_advanced_features() noexcept {
   hf_uart_wakeup_config_t wakeup_config = {};
   wakeup_config.enable_wakeup = true;
   wakeup_config.wakeup_threshold = 3;
-  
+
   result = g_uart_instance->ConfigureWakeup(wakeup_config);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure wakeup: %d", static_cast<int>(result));
@@ -485,7 +480,7 @@ bool test_uart_communication_modes() noexcept {
   rs485_config.enable_collision_detect = true;
   rs485_config.enable_echo_suppression = false;
   rs485_config.auto_rts_control = false;
-  
+
   result = g_uart_instance->ConfigureRS485(rs485_config);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure RS485: %d", static_cast<int>(result));
@@ -498,7 +493,7 @@ bool test_uart_communication_modes() noexcept {
   irda_config.invert_tx = true;
   irda_config.invert_rx = true;
   irda_config.duty_cycle = 50;
-  
+
   result = g_uart_instance->ConfigureIrDA(irda_config);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure IrDA: %d", static_cast<int>(result));
@@ -613,7 +608,7 @@ bool test_uart_callbacks() noexcept {
 
   // Note: In normal testing without external devices, callbacks may not trigger
   // This test verifies that callback registration works without errors
-  
+
   ESP_LOGI(TAG, "Callback registration completed");
   ESP_LOGI(TAG, "Event callback triggered: %s", g_event_callback_triggered ? "true" : "false");
   ESP_LOGI(TAG, "Pattern callback triggered: %s", g_pattern_callback_triggered ? "true" : "false");
@@ -665,8 +660,7 @@ bool test_uart_statistics_diagnostics() noexcept {
   bool is_transmitting = g_uart_instance->IsTransmitting();
   bool is_receiving = g_uart_instance->IsReceiving();
 
-  ESP_LOGI(TAG, "Status: TX=%s, RX=%s", 
-           is_transmitting ? "true" : "false",
+  ESP_LOGI(TAG, "Status: TX=%s, RX=%s", is_transmitting ? "true" : "false",
            is_receiving ? "true" : "false");
 
   ESP_LOGI(TAG, "[SUCCESS] Statistics and diagnostics test completed");
@@ -712,7 +706,7 @@ bool test_uart_error_handling() noexcept {
   }
 
   // Test invalid parameters (should handle gracefully)
-  
+
   // Test write with null data
   hf_uart_err_t result = g_uart_instance->Write(nullptr, 10, 1000);
   if (result == hf_uart_err_t::UART_SUCCESS) {
