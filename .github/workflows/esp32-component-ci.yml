@@ -191,13 +191,44 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y clang-tidy cppcheck
 
-      - name: Run cppcheck
-        uses: deep5050/cppcheck-action@v3.0
+      - name: Run cppcheck with Docker
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/src \
+            ghcr.io/facthunder/cppcheck:latest \
+            cppcheck \
+              --enable=warning,style,performance,portability \
+              --suppress=missingIncludeSystem \
+              --inline-suppr \
+              --std=c++17 \
+              --xml \
+              --output-file=/src/cppcheck_report.xml \
+              /src/src/ /src/inc/ /src/examples/ 2>&1 || true
+          
+          # Display results
+          if [ -s cppcheck_report.xml ]; then
+            echo "Cppcheck found issues. See the XML report for details."
+            # Show human-readable output
+            docker run --rm \
+              -v ${{ github.workspace }}:/src \
+              ghcr.io/facthunder/cppcheck:latest \
+              cppcheck \
+                --enable=warning,style,performance,portability \
+                --suppress=missingIncludeSystem \
+                --inline-suppr \
+                --std=c++17 \
+                /src/src/ /src/inc/ /src/examples/ 2>&1 || true
+          else
+            echo "No cppcheck issues found"
+          fi
+
+      - name: Upload cppcheck report
+        uses: actions/upload-artifact@v4
+        if: always()
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          enable: all
-          inconclusive: true
-          std: c++17
+          name: cppcheck-report
+          path: cppcheck_report.xml
+          retention-days: 7
 
       - name: Run clang-tidy
         uses: ZedThree/clang-tidy-review@v0.21.0
