@@ -115,8 +115,6 @@ enum class hf_gpio_glitch_filter_clk_src_t : uint8_t {
   HF_GLITCH_FILTER_CLK_SRC_XTAL = 2     ///< XTAL clock (40MHz typically)
 };
 
-
-
 /**
  * @brief Low-Power IO configuration for ultra-low power operation.
  * @details Configuration for LP_IO domain operations during deep sleep.
@@ -335,8 +333,6 @@ typedef struct {
  * @param user_data User-provided data passed to the callback
  */
 using hf_gpio_isr_callback_t = void (*)(uint32_t gpio_num, void* user_data);
-
-
 
 /**
  * @brief GPIO configuration validation result.

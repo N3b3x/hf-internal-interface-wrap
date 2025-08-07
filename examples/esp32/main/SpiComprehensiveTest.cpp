@@ -3,7 +3,7 @@
  * @brief Comprehensive SPI testing suite for ESP32-C6 DevKit-M-1 (noexcept)
  *
  * This file contains comprehensive testing for the ESP SPI implementation including:
- * - Bus initialization and configuration validation  
+ * - Bus initialization and configuration validation
  * - Device creation and management
  * - Data transfer operations (full-duplex, half-duplex, various modes)
  * - DMA operations and performance testing
@@ -28,13 +28,13 @@
 #include "freertos/task.h"
 
 #include "base/BaseSpi.h"
+#include "esp_timer.h"
 #include "mcu/esp32/EspSpi.h"
 #include "mcu/esp32/utils/EspTypes_SPI.h"
-#include "esp_timer.h"
-#include <vector>
-#include <memory>
 #include <algorithm>
 #include <cstring>
+#include <memory>
+#include <vector>
 
 #include "TestFramework.h"
 
@@ -49,9 +49,9 @@ static constexpr hf_pin_num_t TEST_CS_PIN_1 = 12;
 static constexpr hf_pin_num_t TEST_CS_PIN_2 = 13;
 static constexpr hf_pin_num_t TEST_CS_PIN_3 = 14;
 static constexpr uint32_t SLOW_SPEED = 1000000;    // 1MHz
-static constexpr uint32_t MEDIUM_SPEED = 10000000;  // 10MHz
-static constexpr uint32_t FAST_SPEED = 40000000;    // 40MHz
-static constexpr uint32_t MAX_SPEED = 80000000;     // 80MHz
+static constexpr uint32_t MEDIUM_SPEED = 10000000; // 10MHz
+static constexpr uint32_t FAST_SPEED = 40000000;   // 40MHz
+static constexpr uint32_t MAX_SPEED = 80000000;    // 80MHz
 
 // Forward declarations
 bool test_spi_bus_initialization() noexcept;
@@ -91,7 +91,7 @@ bool test_spi_bus_initialization() noexcept {
   bus_config.sclk_pin = TEST_SCLK_PIN;
   bus_config.clock_speed_hz = MEDIUM_SPEED;
   bus_config.host = SPI2_HOST;
-  bus_config.dma_channel = 0;  // Auto DMA
+  bus_config.dma_channel = 0; // Auto DMA
   bus_config.use_iomux = true;
 
   auto test_bus = std::make_unique<EspSpiBus>(bus_config);
@@ -117,7 +117,7 @@ bool test_spi_bus_initialization() noexcept {
   test_bus->Deinitialize();
 
   // Test 4: Initialization without DMA
-  bus_config.dma_channel = 0xFF;  // Disable DMA
+  bus_config.dma_channel = 0xFF; // Disable DMA
   auto test_bus_no_dma = std::make_unique<EspSpiBus>(bus_config);
 
   if (!test_bus_no_dma->Initialize()) {
@@ -176,7 +176,7 @@ bool test_spi_configuration_validation() noexcept {
   log_test_separator("SPI Configuration Validation");
 
   // Test different hosts
-  for (auto host : {SPI2_HOST}) {  // ESP32-C6 typically has SPI2_HOST available
+  for (auto host : {SPI2_HOST}) { // ESP32-C6 typically has SPI2_HOST available
     hf_spi_bus_config_t bus_config = {};
     bus_config.mosi_pin = TEST_MOSI_PIN;
     bus_config.miso_pin = TEST_MISO_PIN;
@@ -287,7 +287,7 @@ bool test_spi_device_management() noexcept {
   for (size_t i = 0; i < speeds.size(); ++i) {
     hf_spi_device_config_t device_config = {};
     device_config.clock_speed_hz = speeds[i];
-    device_config.mode = static_cast<hf_spi_mode_t>(i % 4);  // Test different modes
+    device_config.mode = static_cast<hf_spi_mode_t>(i % 4); // Test different modes
     device_config.cs_pin = cs_pins[i];
 
     int idx = test_bus->CreateDevice(device_config);
@@ -305,7 +305,7 @@ bool test_spi_device_management() noexcept {
   }
 
   // Test device removal
-  int remove_index = device_indices[1];  // Remove middle device
+  int remove_index = device_indices[1]; // Remove middle device
   if (!test_bus->RemoveDevice(remove_index)) {
     ESP_LOGE(TAG, "Failed to remove device");
     return false;
@@ -320,7 +320,7 @@ bool test_spi_device_management() noexcept {
   // Verify remaining devices are still accessible
   BaseSpi* device_0 = test_bus->GetDevice(device_indices[0]);
   BaseSpi* device_2 = test_bus->GetDevice(device_indices[2]);
-  
+
   if (!device_0 || !device_2) {
     ESP_LOGE(TAG, "Remaining devices not accessible");
     return false;
@@ -361,7 +361,7 @@ bool test_spi_transfer_basic() noexcept {
   uint8_t tx_byte = 0xAA;
   uint8_t rx_byte = 0x00;
   hf_spi_err_t result = device->Transfer(&tx_byte, &rx_byte, 1, 0);
-  ESP_LOGI(TAG, "Single byte transfer result: %s (TX: 0x%02X, RX: 0x%02X)", 
+  ESP_LOGI(TAG, "Single byte transfer result: %s (TX: 0x%02X, RX: 0x%02X)",
            HfSpiErrToString(result).data(), tx_byte, rx_byte);
 
   // Test 2: Multi-byte transfer
@@ -414,7 +414,7 @@ bool test_spi_transfer_modes() noexcept {
     uint8_t tx_data[] = {0xAA, 0x55, 0xFF, 0x00};
     uint8_t rx_data[sizeof(tx_data)] = {0};
     hf_spi_err_t result = device->Transfer(tx_data, rx_data, sizeof(tx_data), 0);
-    
+
     ESP_LOGI(TAG, "Mode %d transfer result: %s", mode, HfSpiErrToString(result).data());
 
     // Remove device for next test
@@ -454,18 +454,18 @@ bool test_spi_transfer_sizes() noexcept {
 
   // Test various transfer sizes
   std::vector<size_t> test_sizes = {1, 4, 16, 64, 256, 1024};
-  
+
   for (auto size : test_sizes) {
     auto tx_buffer = std::make_unique<uint8_t[]>(size);
     auto rx_buffer = std::make_unique<uint8_t[]>(size);
-    
+
     // Generate test pattern
     generate_test_pattern(tx_buffer.get(), size);
     std::memset(rx_buffer.get(), 0, size);
-    
+
     hf_spi_err_t result = device->Transfer(tx_buffer.get(), rx_buffer.get(), size, 0);
     ESP_LOGI(TAG, "Transfer size %zu bytes: %s", size, HfSpiErrToString(result).data());
-    
+
     if (result == hf_spi_err_t::SPI_SUCCESS) {
       // For loopback testing (if MOSI and MISO are connected), verify data
       // In normal operation, this would depend on the connected device
@@ -508,7 +508,7 @@ bool test_spi_dma_operations() noexcept {
   const size_t dma_test_size = 2048;
   auto tx_buffer = std::make_unique<uint8_t[]>(dma_test_size);
   auto rx_buffer = std::make_unique<uint8_t[]>(dma_test_size);
-  
+
   generate_test_pattern(tx_buffer.get(), dma_test_size, 0x55);
   std::memset(rx_buffer.get(), 0, dma_test_size);
 
@@ -517,8 +517,8 @@ bool test_spi_dma_operations() noexcept {
   uint64_t end_time = esp_timer_get_time();
   uint64_t dma_time = end_time - start_time;
 
-  ESP_LOGI(TAG, "DMA transfer %zu bytes: %s (time: %llu μs)", 
-           dma_test_size, HfSpiErrToString(result).data(), dma_time);
+  ESP_LOGI(TAG, "DMA transfer %zu bytes: %s (time: %llu μs)", dma_test_size,
+           HfSpiErrToString(result).data(), dma_time);
 
   test_bus_dma->Deinitialize();
   delete test_bus_dma;
@@ -540,11 +540,11 @@ bool test_spi_dma_operations() noexcept {
       end_time = esp_timer_get_time();
       uint64_t no_dma_time = end_time - start_time;
 
-      ESP_LOGI(TAG, "Non-DMA transfer %zu bytes: %s (time: %llu μs)", 
-               dma_test_size, HfSpiErrToString(result).data(), no_dma_time);
-      
+      ESP_LOGI(TAG, "Non-DMA transfer %zu bytes: %s (time: %llu μs)", dma_test_size,
+               HfSpiErrToString(result).data(), no_dma_time);
+
       if (dma_time < no_dma_time) {
-        ESP_LOGI(TAG, "DMA performance improvement: %.1f%%", 
+        ESP_LOGI(TAG, "DMA performance improvement: %.1f%%",
                  ((float)(no_dma_time - dma_time) / no_dma_time) * 100.0f);
       }
     }
@@ -561,10 +561,10 @@ bool test_spi_clock_speeds() noexcept {
   log_test_separator("SPI Clock Speed Tests");
 
   std::vector<uint32_t> test_speeds = {
-    SLOW_SPEED,    // 1MHz
-    MEDIUM_SPEED,  // 10MHz
-    FAST_SPEED,    // 40MHz
-    MAX_SPEED      // 80MHz
+      SLOW_SPEED,   // 1MHz
+      MEDIUM_SPEED, // 10MHz
+      FAST_SPEED,   // 40MHz
+      MAX_SPEED     // 80MHz
   };
 
   for (auto speed : test_speeds) {
@@ -592,14 +592,14 @@ bool test_spi_clock_speeds() noexcept {
     if (esp_device) {
       uint32_t actual_freq;
       hf_spi_err_t result = esp_device->GetActualClockFrequency(actual_freq);
-      ESP_LOGI(TAG, "Speed %lu Hz: actual frequency %lu Hz (result: %s)", 
-               speed, actual_freq, HfSpiErrToString(result).data());
+      ESP_LOGI(TAG, "Speed %lu Hz: actual frequency %lu Hz (result: %s)", speed, actual_freq,
+               HfSpiErrToString(result).data());
     }
 
     // Test transfer at this speed
     uint8_t test_data[] = {0xAA, 0x55, 0xFF, 0x00};
     uint8_t rx_data[sizeof(test_data)] = {0};
-    
+
     BaseSpi* device = test_bus->GetDevice(device_index);
     if (device) {
       hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data), 0);
@@ -608,7 +608,7 @@ bool test_spi_clock_speeds() noexcept {
 
     test_bus->Deinitialize();
     delete test_bus;
-    
+
     ESP_LOGI(TAG, "Successfully tested clock speed: %lu Hz", speed);
   }
 
@@ -629,11 +629,8 @@ bool test_spi_multi_device_operations() noexcept {
   std::vector<BaseSpi*> devices;
   std::vector<hf_pin_num_t> cs_pins = {TEST_CS_PIN_1, TEST_CS_PIN_2, TEST_CS_PIN_3};
   std::vector<uint32_t> speeds = {SLOW_SPEED, MEDIUM_SPEED, FAST_SPEED};
-  std::vector<hf_spi_mode_t> modes = {
-    hf_spi_mode_t::HF_SPI_MODE_0, 
-    hf_spi_mode_t::HF_SPI_MODE_1, 
-    hf_spi_mode_t::HF_SPI_MODE_2
-  };
+  std::vector<hf_spi_mode_t> modes = {hf_spi_mode_t::HF_SPI_MODE_0, hf_spi_mode_t::HF_SPI_MODE_1,
+                                      hf_spi_mode_t::HF_SPI_MODE_2};
 
   for (size_t i = 0; i < cs_pins.size(); ++i) {
     hf_spi_device_config_t device_config = {};
@@ -660,10 +657,10 @@ bool test_spi_multi_device_operations() noexcept {
   for (size_t i = 0; i < devices.size(); ++i) {
     uint8_t test_data[] = {static_cast<uint8_t>(0xA0 + i), 0x55, 0xFF, 0x00};
     uint8_t rx_data[sizeof(test_data)] = {0};
-    
+
     hf_spi_err_t result = devices[i]->Transfer(test_data, rx_data, sizeof(test_data), 0);
     ESP_LOGI(TAG, "Device %zu transfer result: %s", i, HfSpiErrToString(result).data());
-    
+
     // Small delay between operations
     vTaskDelay(pdMS_TO_TICKS(10));
   }
@@ -759,8 +756,8 @@ bool test_spi_timeout_handling() noexcept {
   uint64_t end_time = esp_timer_get_time();
   uint64_t duration_ms = (end_time - start_time) / 1000;
 
-  ESP_LOGI(TAG, "Short timeout test: %s (took %llu ms)", 
-           HfSpiErrToString(result).data(), duration_ms);
+  ESP_LOGI(TAG, "Short timeout test: %s (took %llu ms)", HfSpiErrToString(result).data(),
+           duration_ms);
 
   // Test with very short timeout
   start_time = esp_timer_get_time();
@@ -768,8 +765,8 @@ bool test_spi_timeout_handling() noexcept {
   end_time = esp_timer_get_time();
   duration_ms = (end_time - start_time) / 1000;
 
-  ESP_LOGI(TAG, "Very short timeout test: %s (took %llu ms)", 
-           HfSpiErrToString(result).data(), duration_ms);
+  ESP_LOGI(TAG, "Very short timeout test: %s (took %llu ms)", HfSpiErrToString(result).data(),
+           duration_ms);
 
   ESP_LOGI(TAG, "[SUCCESS] Timeout handling tests passed");
   return true;
@@ -799,12 +796,12 @@ bool test_spi_esp_specific_features() noexcept {
   device_config.clock_speed_hz = FAST_SPEED;
   device_config.mode = hf_spi_mode_t::HF_SPI_MODE_0;
   device_config.cs_pin = TEST_CS_PIN_1;
-  device_config.command_bits = 8;    // Command phase
-  device_config.address_bits = 24;   // Address phase
-  device_config.dummy_bits = 8;      // Dummy bits
-  device_config.cs_ena_pretrans = 2; // CS setup time
+  device_config.command_bits = 8;     // Command phase
+  device_config.address_bits = 24;    // Address phase
+  device_config.dummy_bits = 8;       // Dummy bits
+  device_config.cs_ena_pretrans = 2;  // CS setup time
   device_config.cs_ena_posttrans = 2; // CS hold time
-  device_config.input_delay_ns = 0;  // Input delay compensation
+  device_config.input_delay_ns = 0;   // Input delay compensation
 
   int device_index = test_bus->CreateDevice(device_config);
   if (device_index < 0) {
@@ -821,7 +818,7 @@ bool test_spi_esp_specific_features() noexcept {
   // Test transfer with command and address phases
   uint8_t test_data[] = {0xAA, 0x55, 0xFF, 0x00};
   uint8_t rx_data[sizeof(test_data)] = {0};
-  
+
   hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data), 0);
   ESP_LOGI(TAG, "ESP-specific transfer result: %s", HfSpiErrToString(result).data());
 
@@ -838,7 +835,7 @@ bool test_spi_iomux_optimization() noexcept {
   bus_config_iomux.miso_pin = TEST_MISO_PIN;
   bus_config_iomux.sclk_pin = TEST_SCLK_PIN;
   bus_config_iomux.host = SPI2_HOST;
-  bus_config_iomux.clock_speed_hz = MAX_SPEED;  // High speed for IOMUX test
+  bus_config_iomux.clock_speed_hz = MAX_SPEED; // High speed for IOMUX test
   bus_config_iomux.use_iomux = true;
   bus_config_iomux.dma_channel = 0;
 
@@ -877,15 +874,15 @@ bool test_spi_iomux_optimization() noexcept {
   uint64_t end_time = esp_timer_get_time();
   uint64_t iomux_time = end_time - start_time;
 
-  ESP_LOGI(TAG, "IOMUX transfer %zu bytes: %s (time: %llu μs)", 
-           test_size, HfSpiErrToString(result).data(), iomux_time);
+  ESP_LOGI(TAG, "IOMUX transfer %zu bytes: %s (time: %llu μs)", test_size,
+           HfSpiErrToString(result).data(), iomux_time);
 
   test_bus_iomux->Deinitialize();
 
   // Compare with GPIO matrix
   hf_spi_bus_config_t bus_config_gpio = bus_config_iomux;
   bus_config_gpio.use_iomux = false;
-  bus_config_gpio.clock_speed_hz = FAST_SPEED;  // Lower speed for GPIO matrix
+  bus_config_gpio.clock_speed_hz = FAST_SPEED; // Lower speed for GPIO matrix
 
   auto test_bus_gpio = std::make_unique<EspSpiBus>(bus_config_gpio);
   if (test_bus_gpio->Initialize()) {
@@ -899,11 +896,11 @@ bool test_spi_iomux_optimization() noexcept {
         end_time = esp_timer_get_time();
         uint64_t gpio_time = end_time - start_time;
 
-        ESP_LOGI(TAG, "GPIO matrix transfer %zu bytes: %s (time: %llu μs)", 
-                 test_size, HfSpiErrToString(result).data(), gpio_time);
-        
+        ESP_LOGI(TAG, "GPIO matrix transfer %zu bytes: %s (time: %llu μs)", test_size,
+                 HfSpiErrToString(result).data(), gpio_time);
+
         if (iomux_time < gpio_time) {
-          ESP_LOGI(TAG, "IOMUX performance improvement: %.1f%%", 
+          ESP_LOGI(TAG, "IOMUX performance improvement: %.1f%%",
                    ((float)(gpio_time - iomux_time) / gpio_time) * 100.0f);
         }
       }
@@ -948,10 +945,8 @@ bool test_spi_thread_safety() noexcept {
 
   for (int i = 0; i < 20; ++i) {
     hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data), 50);
-    if (result != hf_spi_err_t::SPI_SUCCESS && 
-        result != hf_spi_err_t::SPI_ERR_TRANSFER_TIMEOUT) {
-      ESP_LOGW(TAG, "Unexpected error in thread safety test: %s", 
-               HfSpiErrToString(result).data());
+    if (result != hf_spi_err_t::SPI_SUCCESS && result != hf_spi_err_t::SPI_ERR_TRANSFER_TIMEOUT) {
+      ESP_LOGW(TAG, "Unexpected error in thread safety test: %s", HfSpiErrToString(result).data());
     }
   }
 
@@ -962,7 +957,7 @@ bool test_spi_thread_safety() noexcept {
 bool test_spi_performance_benchmarks() noexcept {
   log_test_separator("SPI Performance Benchmarks");
 
-  auto test_bus = create_test_bus(FAST_SPEED, true);  // Use DMA for performance
+  auto test_bus = create_test_bus(FAST_SPEED, true); // Use DMA for performance
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
     return false;
@@ -988,7 +983,7 @@ bool test_spi_performance_benchmarks() noexcept {
 
   // Benchmark different transfer sizes
   std::vector<size_t> benchmark_sizes = {64, 256, 1024, 4096};
-  
+
   for (auto size : benchmark_sizes) {
     auto tx_buffer = std::make_unique<uint8_t[]>(size);
     auto rx_buffer = std::make_unique<uint8_t[]>(size);
@@ -1005,17 +1000,17 @@ bool test_spi_performance_benchmarks() noexcept {
       uint64_t start_time = esp_timer_get_time();
       hf_spi_err_t result = device->Transfer(tx_buffer.get(), rx_buffer.get(), size, 0);
       uint64_t end_time = esp_timer_get_time();
-      
+
       if (result == hf_spi_err_t::SPI_SUCCESS) {
         total_time += (end_time - start_time);
       }
     }
 
     uint64_t avg_time_us = total_time / num_transfers;
-    double throughput_mbps = (size * 8.0) / avg_time_us;  // Mbps
+    double throughput_mbps = (size * 8.0) / avg_time_us; // Mbps
 
-    ESP_LOGI(TAG, "Size %zu bytes: avg time %llu μs, throughput %.2f Mbps", 
-             size, avg_time_us, throughput_mbps);
+    ESP_LOGI(TAG, "Size %zu bytes: avg time %llu μs, throughput %.2f Mbps", size, avg_time_us,
+             throughput_mbps);
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Performance benchmark tests completed");
@@ -1050,15 +1045,16 @@ bool test_spi_edge_cases() noexcept {
   }
 
   // Test maximum transfer size (implementation dependent)
-  const size_t max_transfer_size = 4092;  // ESP32 typical maximum
+  const size_t max_transfer_size = 4092; // ESP32 typical maximum
   auto large_tx_buffer = std::make_unique<uint8_t[]>(max_transfer_size);
   auto large_rx_buffer = std::make_unique<uint8_t[]>(max_transfer_size);
-  
+
   generate_test_pattern(large_tx_buffer.get(), max_transfer_size);
-  
-  hf_spi_err_t result = device->Transfer(large_tx_buffer.get(), large_rx_buffer.get(), max_transfer_size, 0);
-  ESP_LOGI(TAG, "Maximum transfer size (%zu bytes): %s", 
-           max_transfer_size, HfSpiErrToString(result).data());
+
+  hf_spi_err_t result =
+      device->Transfer(large_tx_buffer.get(), large_rx_buffer.get(), max_transfer_size, 0);
+  ESP_LOGI(TAG, "Maximum transfer size (%zu bytes): %s", max_transfer_size,
+           HfSpiErrToString(result).data());
 
   // Test very small transfers
   uint8_t single_byte = 0xAA;
@@ -1068,7 +1064,7 @@ bool test_spi_edge_cases() noexcept {
   // Test rapid successive transfers
   for (int i = 0; i < 100; ++i) {
     uint8_t data = static_cast<uint8_t>(i);
-    device->Transfer(&data, &data, 1, 10);  // Short timeout
+    device->Transfer(&data, &data, 1, 10); // Short timeout
   }
   ESP_LOGI(TAG, "Rapid successive transfers completed");
 
@@ -1111,7 +1107,7 @@ bool test_spi_bus_acquisition() noexcept {
     // Perform operations while holding the bus
     uint8_t test_data[] = {0xAA, 0x55, 0xFF, 0x00};
     uint8_t rx_data[sizeof(test_data)] = {0};
-    
+
     for (int i = 0; i < 5; ++i) {
       esp_device->Transfer(test_data, rx_data, sizeof(test_data), 0);
     }
@@ -1136,7 +1132,7 @@ bool test_spi_power_management() noexcept {
   bus_config.host = SPI2_HOST;
   bus_config.clock_speed_hz = MEDIUM_SPEED;
   bus_config.dma_channel = 0;
-  bus_config.timeout_ms = 2000;  // Extended timeout for power management
+  bus_config.timeout_ms = 2000; // Extended timeout for power management
 
   auto test_bus = std::make_unique<EspSpiBus>(bus_config);
   if (!test_bus->Initialize()) {
@@ -1157,7 +1153,7 @@ EspSpiBus* create_test_bus(uint32_t speed, bool use_dma) noexcept {
   bus_config.sclk_pin = TEST_SCLK_PIN;
   bus_config.host = SPI2_HOST;
   bus_config.clock_speed_hz = speed;
-  bus_config.dma_channel = use_dma ? 0 : 0xFF;  // 0 = auto DMA, 0xFF = disabled
+  bus_config.dma_channel = use_dma ? 0 : 0xFF; // 0 = auto DMA, 0xFF = disabled
   bus_config.use_iomux = true;
   bus_config.timeout_ms = 1000;
 
@@ -1166,12 +1162,13 @@ EspSpiBus* create_test_bus(uint32_t speed, bool use_dma) noexcept {
     return nullptr;
   }
 
-  return bus.release();  // Transfer ownership to caller
+  return bus.release(); // Transfer ownership to caller
 }
 
 bool verify_transfer_data(const uint8_t* tx_data, const uint8_t* rx_data, size_t length) noexcept {
-  if (!tx_data || !rx_data) return false;
-  
+  if (!tx_data || !rx_data)
+    return false;
+
   for (size_t i = 0; i < length; ++i) {
     if (tx_data[i] != rx_data[i]) {
       return false;
@@ -1181,19 +1178,21 @@ bool verify_transfer_data(const uint8_t* tx_data, const uint8_t* rx_data, size_t
 }
 
 void generate_test_pattern(uint8_t* buffer, size_t length, uint8_t seed) noexcept {
-  if (!buffer) return;
-  
+  if (!buffer)
+    return;
+
   for (size_t i = 0; i < length; ++i) {
     buffer[i] = static_cast<uint8_t>(seed + i);
   }
 }
 
 void log_test_separator(const char* test_name) noexcept {
-  ESP_LOGI(TAG, "\n" 
-                "═══════════════════════════════════════════════════════════════════\n"
-                "  %s\n"
-                "═══════════════════════════════════════════════════════════════════", 
-                test_name);
+  ESP_LOGI(TAG,
+           "\n"
+           "═══════════════════════════════════════════════════════════════════\n"
+           "  %s\n"
+           "═══════════════════════════════════════════════════════════════════",
+           test_name);
 }
 
 extern "C" void app_main(void) {
