@@ -522,8 +522,7 @@ bool test_can_error_handling() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "Node info - State: %d, TX errors: %d, RX errors: %d",
-           node_info.state, node_info.tx_error_counter, node_info.rx_error_counter);
+  ESP_LOGI(TAG, "Node info - Bus errors: %d", node_info.bus_err_num);
 
   ESP_LOGI(TAG, "[SUCCESS] CAN error handling test passed");
   return true;
@@ -804,7 +803,7 @@ bool test_can_signal_quality() noexcept {
       hf_can_message_t test_message{};
       test_message.id = TEST_CAN_ID_STANDARD + repeat;
       test_message.dlc = 8;
-      std::memcpy(test_message.data, pattern.data(), 8);
+      memcpy(test_message.data, pattern.data(), 8);
 
       messages_received.store(0);
       

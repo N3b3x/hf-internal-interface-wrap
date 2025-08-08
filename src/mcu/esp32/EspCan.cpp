@@ -105,14 +105,18 @@ hf_can_err_t EspCan::Initialize() noexcept {
     .io_cfg = {
       .tx = static_cast<gpio_num_t>(config_.tx_pin),
       .rx = static_cast<gpio_num_t>(config_.rx_pin),
+      .quanta_clk_out = GPIO_NUM_NC,
+      .bus_off_indicator = GPIO_NUM_NC,
     },
+    .clk_src = TWAI_CLK_SRC_DEFAULT,
     .bit_timing = {
       .bitrate = config_.baud_rate,
       .sp_permill = static_cast<uint16_t>(config_.sample_point_permill),
       .ssp_permill = static_cast<uint16_t>(config_.secondary_sample_point),
     },
-    .tx_queue_depth = config_.tx_queue_depth,
+    .data_timing = {},
     .fail_retry_cnt = config_.fail_retry_cnt,
+    .tx_queue_depth = config_.tx_queue_depth,
     .intr_priority = config_.intr_priority,
     .flags = {
       .enable_self_test = config_.enable_self_test,
@@ -120,10 +124,6 @@ hf_can_err_t EspCan::Initialize() noexcept {
       .enable_listen_only = config_.enable_listen_only,
       .no_receive_rtr = config_.no_receive_rtr,
     },
-    .clk_src = TWAI_CLK_SRC_DEFAULT,
-    .quanta_clk_out = false,
-    .bus_off_indicator = false,
-    .data_timing = {},
   };
 
   // Create TWAI node using ESP-IDF v5.5 API
@@ -135,10 +135,10 @@ hf_can_err_t EspCan::Initialize() noexcept {
 
   // Register event callbacks for comprehensive event handling
   twai_event_callbacks_t callbacks = {
-    .on_rx_done = InternalReceiveCallback,
-    .on_error = InternalErrorCallback,
-    .on_state_change = InternalStateChangeCallback,
     .on_tx_done = nullptr,
+    .on_rx_done = InternalReceiveCallback,
+    .on_state_change = InternalStateChangeCallback,
+    .on_error = InternalErrorCallback,
   };
 
   esp_err = twai_node_register_event_callbacks(twai_node_handle_, &callbacks, this);
@@ -221,6 +221,10 @@ hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, hf_u32_t timeo
 
   // Convert to ESP-IDF v5.5 TWAI frame
   twai_frame_t frame;
+  uint8_t frame_buffer[8];  // CAN frame data buffer
+  frame.buffer = frame_buffer;
+  frame.buffer_len = sizeof(frame_buffer);
+  
   hf_can_err_t convert_result = ConvertToTwaiFrame(message, frame);
   if (convert_result != hf_can_err_t::CAN_SUCCESS) {
     UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
@@ -331,20 +335,21 @@ hf_can_err_t EspCan::GetStatus(hf_can_status_t& status) noexcept {
   }
 
   // Get TWAI node info using ESP-IDF v5.5 API
-  twai_node_record_t node_info;
-  esp_err_t esp_err = twai_node_get_info(twai_node_handle_, &node_info);
+  twai_node_status_t node_status;
+  twai_node_record_t node_record;
+  esp_err_t esp_err = twai_node_get_info(twai_node_handle_, &node_status, &node_record);
   if (esp_err != ESP_OK) {
     return ConvertEspError(esp_err);
   }
 
   // Convert to CAN bus status - match BaseCan.h structure
-  status.tx_error_count = node_info.tx_error_counter;
-  status.rx_error_count = node_info.rx_error_counter;
+  status.tx_error_count = node_status.tx_error_count;
+  status.rx_error_count = node_status.rx_error_count;
   status.tx_failed_count = 0; // Not directly available in v5.5 API
   status.rx_missed_count = 0; // Not directly available in v5.5 API
 
   // Set state flags based on TWAI state
-  switch (node_info.state) {
+  switch (node_status.state) {
     case TWAI_ERROR_BUS_OFF:
       status.bus_off = true;
       status.error_warning = false;
@@ -450,11 +455,12 @@ hf_can_err_t EspCan::GetDiagnostics(hf_can_diagnostics_t& diagnostics) noexcept 
   MutexLockGuard lock(stats_mutex_);
 
   // Update diagnostics with current TWAI node status
-  twai_node_record_t node_info;
-  esp_err_t esp_err = twai_node_get_info(twai_node_handle_, &node_info);
+  twai_node_status_t node_status;
+  twai_node_record_t node_record;
+  esp_err_t esp_err = twai_node_get_info(twai_node_handle_, &node_status, &node_record);
   if (esp_err == ESP_OK) {
-    diagnostics_.tx_error_count = node_info.tx_error_counter;
-    diagnostics_.rx_error_count = node_info.rx_error_counter;
+    diagnostics_.tx_error_count = node_status.tx_error_count;
+    diagnostics_.rx_error_count = node_status.rx_error_count;
     diagnostics_.last_error_timestamp = esp_timer_get_time() / 1000; // Convert to milliseconds
   }
 
@@ -475,14 +481,14 @@ hf_can_err_t EspCan::ConfigureAdvancedTiming(const hf_esp_can_timing_config_t& t
 
   // Configure advanced timing for improved signal quality
   twai_timing_config_t esp_timing_config = {
+    .clk_src = TWAI_CLK_SRC_DEFAULT,
+    .quanta_resolution_hz = 0,
     .brp = static_cast<uint8_t>(timing_config.brp),
     .prop_seg = static_cast<uint8_t>(timing_config.prop_seg),
     .tseg_1 = static_cast<uint8_t>(timing_config.tseg_1),
     .tseg_2 = static_cast<uint8_t>(timing_config.tseg_2),
     .sjw = static_cast<uint8_t>(timing_config.sjw),
     .ssp_offset = static_cast<uint8_t>(timing_config.ssp_offset),
-    .clk_src = TWAI_CLK_SRC_DEFAULT,
-    .quanta_resolution_hz = 0,
     .triple_sampling = false,
   };
 
@@ -564,7 +570,9 @@ hf_can_err_t EspCan::GetNodeInfo(twai_node_record_t& node_info) noexcept {
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  esp_err_t esp_err = twai_node_get_info(twai_node_handle_, &node_info);
+  // Get both status and record info
+  twai_node_status_t node_status;
+  esp_err_t esp_err = twai_node_get_info(twai_node_handle_, &node_status, &node_info);
   if (esp_err != ESP_OK) {
     return ConvertEspError(esp_err);
   }
@@ -605,6 +613,7 @@ bool EspCan::InternalReceiveCallback(twai_node_handle_t handle,
   // Receive message from ISR
   uint8_t recv_buffer[8];
   twai_frame_t rx_frame = {
+    .header = {},
     .buffer = recv_buffer,
     .buffer_len = sizeof(recv_buffer),
   };
@@ -628,9 +637,9 @@ bool EspCan::InternalErrorCallback(twai_node_handle_t handle,
   }
 
   // Use the correct field name from ESP-IDF error event data
-  esp_can->UpdateErrorStatistics(event_data->error_flags);
+  esp_can->UpdateErrorStatistics(event_data->err_flags.val);
   
-  ESP_LOGW(TAG, "TWAI error occurred: flags=0x%X", event_data->error_flags);
+  ESP_LOGW(TAG, "TWAI error occurred: flags=0x%X", event_data->err_flags.val);
 
   return false;
 }
@@ -682,12 +691,9 @@ hf_can_err_t EspCan::ConvertToTwaiFrame(const hf_can_message_t& hf_message,
   twai_frame.header.rtr = hf_message.is_rtr;
   twai_frame.header.dlc = hf_message.dlc;
 
-  // Set buffer and data length
-  twai_frame.buffer_len = hf_message.dlc;
-  
   // Copy data if not a remote frame
-  if (!hf_message.is_rtr && hf_message.dlc > 0) {
-    std::memcpy(const_cast<uint8_t*>(twai_frame.buffer), hf_message.data, hf_message.dlc);
+  if (!hf_message.is_rtr && hf_message.dlc > 0 && twai_frame.buffer) {
+    std::memcpy(twai_frame.buffer, hf_message.data, hf_message.dlc);
   }
 
   return hf_can_err_t::CAN_SUCCESS;

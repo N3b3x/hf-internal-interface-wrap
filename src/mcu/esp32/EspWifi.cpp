@@ -91,7 +91,7 @@ static wifi_mode_t ConvertToEspMode(hf_wifi_mode_t mode) {
 /**
  * @brief Convert ESP-IDF WiFi mode to HardFOC WiFi mode
  */
-static hf_wifi_mode_t ConvertFromEspMode(wifi_mode_t mode) {
+[[maybe_unused]] static hf_wifi_mode_t ConvertFromEspMode(wifi_mode_t mode) {
   switch (mode) {
     case WIFI_MODE_STA:
       return hf_wifi_mode_t::HF_WIFI_MODE_STATION;
@@ -107,7 +107,7 @@ static hf_wifi_mode_t ConvertFromEspMode(wifi_mode_t mode) {
 /**
  * @brief Convert HardFOC WiFi security to ESP-IDF auth mode
  */
-static wifi_auth_mode_t ConvertToEspAuthMode(hf_wifi_security_t security) {
+[[maybe_unused]] static wifi_auth_mode_t ConvertToEspAuthMode(hf_wifi_security_t security) {
   switch (security) {
     case hf_wifi_security_t::HF_WIFI_SECURITY_OPEN:
       return WIFI_AUTH_OPEN;
@@ -135,7 +135,7 @@ static wifi_auth_mode_t ConvertToEspAuthMode(hf_wifi_security_t security) {
 /**
  * @brief Convert ESP-IDF auth mode to HardFOC WiFi security
  */
-static hf_wifi_security_t ConvertFromEspAuthMode(wifi_auth_mode_t auth_mode) {
+[[maybe_unused]] static hf_wifi_security_t ConvertFromEspAuthMode(wifi_auth_mode_t auth_mode) {
   switch (auth_mode) {
     case WIFI_AUTH_OPEN:
       return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
