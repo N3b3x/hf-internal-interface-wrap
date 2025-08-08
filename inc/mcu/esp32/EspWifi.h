@@ -19,6 +19,12 @@
 
 #pragma once
 
+// Suppress pedantic warnings for ESP-IDF headers
+#ifdef __cplusplus
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+#endif
+
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
 extern "C" {
@@ -37,6 +43,11 @@ extern "C" {
 
 #ifdef __cplusplus
 }
+#endif
+
+// Restore warnings after ESP-IDF headers
+#ifdef __cplusplus
+#pragma GCC diagnostic pop
 #endif
 
 // C++ headers

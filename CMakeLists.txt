@@ -55,6 +55,8 @@ target_compile_options(${COMPONENT_LIB} PRIVATE
     $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
     $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
     $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++17>
+    # Suppress ESP-IDF specific warnings in C++ builds
+    $<$<COMPILE_LANGUAGE:CXX>:-Wno-pedantic>
 )
 
 # Define component version (optional)

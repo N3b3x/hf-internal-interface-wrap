@@ -35,6 +35,12 @@
 #include <memory>
 #include <vector>
 
+// Suppress pedantic warnings for ESP-IDF headers
+#ifdef __cplusplus
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
+#endif
+
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
 extern "C" {
@@ -44,6 +50,11 @@ extern "C" {
 #include "esp_log.h"
 #ifdef __cplusplus
 }
+#endif
+
+// Restore warnings after ESP-IDF headers
+#ifdef __cplusplus
+#pragma GCC diagnostic pop
 #endif
 
 class EspSpiBus;
