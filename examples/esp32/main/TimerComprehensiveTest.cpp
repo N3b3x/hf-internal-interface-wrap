@@ -8,11 +8,21 @@
  */
 
 #include "base/BasePeriodicTimer.h"
+#include "mcu/esp32/EspPeriodicTimer.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_log.h"
+#include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "mcu/esp32/EspPeriodicTimer.h"
-#include "esp_timer.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 #include "TestFramework.h"
 

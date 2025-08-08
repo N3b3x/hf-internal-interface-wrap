@@ -14,13 +14,22 @@
  * @copyright HardFOC
  */
 
+#include "base/BaseUart.h"
+#include "mcu/esp32/EspUart.h"
+#include "mcu/esp32/utils/EspTypes_UART.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#include "base/BaseUart.h"
-#include "mcu/esp32/EspUart.h"
-#include "mcu/esp32/utils/EspTypes_UART.h"
+#ifdef __cplusplus
+}
+#endif
 
 #include "TestFramework.h"
 

@@ -14,12 +14,21 @@
  * @copyright HardFOC
  */
 
+#include "base/BaseLogger.h"
+#include "mcu/esp32/EspLogger.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#include "base/BaseLogger.h"
-#include "mcu/esp32/EspLogger.h"
+#ifdef __cplusplus
+}
+#endif
 
 #include "TestFramework.h"
 #include "utils/memory_utils.h"

@@ -12,10 +12,20 @@
  */
 
 #include "base/BaseNvs.h"
+#include "mcu/esp32/EspNvs.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "mcu/esp32/EspNvs.h"
+
+#ifdef __cplusplus
+}
+#endif
 #include <cstring>
 #include <cstdio>
 #include <random>

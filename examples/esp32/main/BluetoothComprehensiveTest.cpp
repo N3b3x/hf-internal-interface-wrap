@@ -14,13 +14,23 @@
  * @copyright HardFOC
  */
 
+#include "base/BaseBluetooth.h"
+#include "mcu/esp32/EspBluetooth.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include <vector>
 
-#include "base/BaseBluetooth.h"
-#include "mcu/esp32/EspBluetooth.h"
+#ifdef __cplusplus
+}
+#endif
+
+#include <vector>
 
 // Shared test framework
 #include "TestFramework.h"

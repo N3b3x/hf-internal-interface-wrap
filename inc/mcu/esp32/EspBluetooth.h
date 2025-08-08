@@ -29,9 +29,17 @@
 #include "BaseBluetooth.h"
 #include "HardwareTypes.h"
 
-// ESP-IDF includes
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_log.h"
 #include "nvs_flash.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 // ESP32 variant detection and feature matrix
 #if defined(CONFIG_IDF_TARGET_ESP32) || defined(CONFIG_IDF_TARGET_ESP32S3)

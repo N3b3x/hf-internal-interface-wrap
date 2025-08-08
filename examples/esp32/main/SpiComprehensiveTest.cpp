@@ -22,15 +22,24 @@
  * @copyright HardFOC
  */
 
+#include "base/BaseSpi.h"
+#include "mcu/esp32/EspSpi.h"
+#include "mcu/esp32/utils/EspTypes_SPI.h"
+
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "driver/spi_master.h"
 #include "esp_log.h"
+#include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#include "base/BaseSpi.h"
-#include "esp_timer.h"
-#include "mcu/esp32/EspSpi.h"
-#include "mcu/esp32/utils/EspTypes_SPI.h"
+#ifdef __cplusplus
+}
+#endif
 #include <algorithm>
 #include <cstring>
 #include <memory>
