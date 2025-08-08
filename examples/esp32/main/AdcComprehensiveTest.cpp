@@ -28,16 +28,8 @@
 // Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
-// Additional ESP-IDF C headers needed by this test
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "freertos/queue.h"
-
-#ifdef __cplusplus
-}
-#endif
+// Note: All ESP-IDF functionality accessed through EspAdc class interface
+// No direct ESP-IDF includes needed - TestFramework.h provides common functions
 
 static const char* TAG = "ADC_Test";
 

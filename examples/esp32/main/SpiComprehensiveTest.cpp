@@ -26,16 +26,8 @@
 #include "mcu/esp32/EspSpi.h"
 #include "mcu/esp32/utils/EspTypes_SPI.h"
 
-// Additional ESP-IDF C headers needed by this test
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "driver/spi_master.h"
-
-#ifdef __cplusplus
-}
-#endif
+// Note: All ESP-IDF functionality accessed through EspSpi class interface
+// No direct ESP-IDF includes needed - TestFramework.h provides common functions
 #include <algorithm>
 #include <cstring>
 #include <memory>

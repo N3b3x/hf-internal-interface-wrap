@@ -23,16 +23,8 @@
 #include "mcu/esp32/EspI2c.h"
 #include "mcu/esp32/utils/EspTypes_I2C.h"
 
-// Additional ESP-IDF C headers needed by this test
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "driver/i2c_master.h"
-
-#ifdef __cplusplus
-}
-#endif
+// Note: All ESP-IDF functionality accessed through EspI2c class interface
+// No direct ESP-IDF includes needed - TestFramework.h provides common functions
 
 #include <algorithm>
 #include <memory>

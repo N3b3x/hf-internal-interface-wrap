@@ -18,21 +18,8 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpedantic"
 
-// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// Additional ESP-IDF headers specific to GPIO testing
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "driver/gpio.h"
-#include "esp_sleep.h"
-#include "esp_system.h"
-
-#ifdef __cplusplus
-}
-#endif
+// Note: All ESP-IDF functionality accessed through EspGpio class interface
+// No direct ESP-IDF includes needed - TestFramework.h provides common functions
 
 #include <memory>
 #include <vector>
