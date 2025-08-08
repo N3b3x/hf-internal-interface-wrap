@@ -25,22 +25,19 @@
 #include "mcu/esp32/EspAdc.h"
 #include "mcu/esp32/utils/EspTypes_ADC.h"
 
-// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
+#include "TestFramework.h"
+
+// Additional ESP-IDF C headers needed by this test
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
-#include "freertos/task.h"
 
 #ifdef __cplusplus
 }
 #endif
-
-// Shared test framework
-#include "TestFramework.h"
 
 static const char* TAG = "ADC_Test";
 

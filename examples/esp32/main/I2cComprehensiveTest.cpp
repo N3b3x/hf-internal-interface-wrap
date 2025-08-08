@@ -23,24 +23,22 @@
 #include "mcu/esp32/EspI2c.h"
 #include "mcu/esp32/utils/EspTypes_I2C.h"
 
-// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+// Additional ESP-IDF C headers needed by this test
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "driver/i2c_master.h"
-#include "esp_log.h"
-#include "esp_timer.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 
 #ifdef __cplusplus
 }
 #endif
+
 #include <algorithm>
 #include <memory>
 #include <vector>
 
+// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 static const char* TAG = "I2C_Test";

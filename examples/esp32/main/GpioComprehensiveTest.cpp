@@ -23,14 +23,12 @@
 extern "C" {
 #endif
 
+// Additional ESP-IDF headers specific to GPIO testing
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-
 #include "driver/gpio.h"
-#include "esp_log.h"
 #include "esp_sleep.h"
 #include "esp_system.h"
-#include "esp_timer.h"
 
 #ifdef __cplusplus
 }
@@ -51,7 +49,7 @@ extern "C" {
 #include "mcu/esp32/EspGpio.h"
 #include "mcu/esp32/utils/EspTypes_GPIO.h"
 
-// Shared test framework
+// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 #pragma GCC diagnostic pop

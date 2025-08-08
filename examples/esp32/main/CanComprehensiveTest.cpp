@@ -6,19 +6,7 @@
 #include "base/BaseCan.h"
 #include "mcu/esp32/EspCan.h"
 
-// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-
-#ifdef __cplusplus
-}
-#endif
-
+// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 static const char* TAG = "CAN_Test";
