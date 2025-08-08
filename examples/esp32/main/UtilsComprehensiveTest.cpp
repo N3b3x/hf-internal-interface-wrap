@@ -19,8 +19,6 @@
 #include "base/HardwareTypes.h"
 #include "utils/AsciiArtGenerator.h"
 #include "utils/memory_utils.h"
-
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 static const char* TAG = "UTILS_Test";

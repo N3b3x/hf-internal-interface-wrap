@@ -5,8 +5,6 @@
 
 #include "base/BaseTemperature.h"
 #include "mcu/esp32/EspTemperature.h"
-
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 #include <atomic>
 

@@ -5,8 +5,6 @@
 
 #include "base/BaseCan.h"
 #include "mcu/esp32/EspCan.h"
-
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 static const char* TAG = "CAN_Test";

@@ -18,9 +18,6 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpedantic"
 
-// Note: All ESP-IDF functionality accessed through EspGpio class interface
-// No direct ESP-IDF includes needed - TestFramework.h provides common functions
-
 #include <memory>
 #include <vector>
 
@@ -36,7 +33,6 @@
 #include "mcu/esp32/EspGpio.h"
 #include "mcu/esp32/utils/EspTypes_GPIO.h"
 
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 #pragma GCC diagnostic pop

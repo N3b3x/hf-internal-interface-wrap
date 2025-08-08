@@ -18,8 +18,6 @@
 #include "mcu/esp32/EspBluetooth.h"
 
 #include <vector>
-
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 static const char* TAG = "BT_Test";

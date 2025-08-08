@@ -25,15 +25,11 @@
 #include "base/BaseSpi.h"
 #include "mcu/esp32/EspSpi.h"
 #include "mcu/esp32/utils/EspTypes_SPI.h"
-
-// Note: All ESP-IDF functionality accessed through EspSpi class interface
-// No direct ESP-IDF includes needed - TestFramework.h provides common functions
 #include <algorithm>
 #include <cstring>
 #include <memory>
 #include <vector>
 
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 static const char* TAG = "SPI_Test";

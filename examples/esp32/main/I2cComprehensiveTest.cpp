@@ -23,14 +23,10 @@
 #include "mcu/esp32/EspI2c.h"
 #include "mcu/esp32/utils/EspTypes_I2C.h"
 
-// Note: All ESP-IDF functionality accessed through EspI2c class interface
-// No direct ESP-IDF includes needed - TestFramework.h provides common functions
-
 #include <algorithm>
 #include <memory>
 #include <vector>
 
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 static const char* TAG = "I2C_Test";

@@ -16,8 +16,6 @@
 #include <cstring>
 #include <cstdio>
 #include <random>
-
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
 
 static const char* TAG = "NVS_Test";

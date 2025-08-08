@@ -25,11 +25,7 @@
 #include "mcu/esp32/EspAdc.h"
 #include "mcu/esp32/utils/EspTypes_ADC.h"
 
-// Shared test framework (provides esp_log.h, esp_timer.h, freertos/FreeRTOS.h, freertos/task.h)
 #include "TestFramework.h"
-
-// Note: All ESP-IDF functionality accessed through EspAdc class interface
-// No direct ESP-IDF includes needed - TestFramework.h provides common functions
 
 static const char* TAG = "ADC_Test";
 
