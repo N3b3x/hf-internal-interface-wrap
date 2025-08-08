@@ -42,16 +42,33 @@ The project contains example applications that demonstrate different aspects of 
 ## Detailed Examples
 
 ### 1. ASCII Art Generator (`ascii_art`)
-**File:** `AsciiArtExample.cpp`
-**Description:** Advanced text formatting and display capabilities
+**File:** `AsciiArtComprehensiveTest.cpp`
+**Description:** Comprehensive testing suite for the AsciiArtGenerator class
 **Features:**
-- Text-to-ASCII art conversion
-- Multiple formatting styles
-- Display utilities
+- Complete functionality testing of AsciiArtGenerator
+- Basic text generation validation
+- Uppercase conversion testing
+- Special characters and symbols testing
+- Numbers and punctuation testing
+- Empty and edge case handling
+- Custom character management (add/remove/clear)
+- Character support validation
+- Supported characters list testing
+- Complex text generation testing
+- Performance and stability testing
+
+**Test Coverage:**
+- 10 comprehensive test functions
+- All public methods of AsciiArtGenerator
+- Edge cases and error conditions
+- Memory stability and performance
+- Custom character lifecycle management
 
 **Expected Output:**
-- ASCII art banners and boxes
-- Text formatting demonstrations
+- Detailed test results for each functionality
+- ASCII art examples for various text types
+- Performance metrics and timing information
+- Success/failure summary with statistics
 
 ### 2. Peripheral Test Suites
 Individual comprehensive test suites for each hardware interface:
@@ -87,6 +104,7 @@ Individual comprehensive test suites for each hardware interface:
 
 **Build Examples:**
 ```bash
+./build_example.sh ascii_art Release
 ./build_example.sh gpio_test Release
 ./build_example.sh bluetooth_test Debug
 ./build_example.sh utils_test Release

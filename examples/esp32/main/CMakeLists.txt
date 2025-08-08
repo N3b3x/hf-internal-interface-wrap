@@ -16,7 +16,7 @@ message(STATUS "===============================")
 
 # Map example types to source files
 if(EXAMPLE_TYPE STREQUAL "ascii_art")
-    set(MAIN_SOURCE "AsciiArtExample.cpp")
+    set(MAIN_SOURCE "AsciiArtComprehensiveTest.cpp")
 elseif(EXAMPLE_TYPE STREQUAL "gpio_test")
     set(MAIN_SOURCE "GpioComprehensiveTest.cpp")
 elseif(EXAMPLE_TYPE STREQUAL "adc_test")
