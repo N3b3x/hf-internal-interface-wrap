@@ -368,7 +368,8 @@ private:
    * @return hf_can_err_t error code
    */
   hf_can_err_t ConvertToTwaiFrame(const hf_can_message_t& hf_message,
-                                 twai_frame_t& twai_frame) noexcept;
+                                 twai_frame_t& twai_frame,
+                                 uint8_t* buffer) noexcept;
 
   /**
    * @brief Convert ESP-IDF v5.5 TWAI frame to HF CAN message.

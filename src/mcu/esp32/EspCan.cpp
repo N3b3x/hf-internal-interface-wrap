@@ -201,7 +201,8 @@ hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, hf_u32_t timeo
 
   // Convert to ESP-IDF v5.5 TWAI frame
   twai_frame_t frame;
-  hf_can_err_t convert_result = ConvertToTwaiFrame(message, frame);
+  uint8_t frame_buffer[8] = {0};
+  hf_can_err_t convert_result = ConvertToTwaiFrame(message, frame, frame_buffer);
   if (convert_result != hf_can_err_t::CAN_SUCCESS) {
     UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
     return convert_result;
@@ -571,13 +572,20 @@ bool EspCan::InternalStateChangeCallback(twai_node_handle_t handle,
     return false;
   }
 
-  ESP_LOGI(TAG, "TWAI state changed: %d -> %d", event_data->previous_state, event_data->current_state);
+  // Note: The actual structure fields may vary between ESP-IDF versions
+  // For now, we'll log the state change without accessing specific fields
+  ESP_LOGI(TAG, "TWAI state change event occurred");
 
-  // Handle bus recovery completion
-  if (event_data->previous_state == TWAI_ERROR_BUS_OFF && 
-      event_data->current_state == TWAI_ERROR_ACTIVE) {
-    esp_can->is_recovering_.store(false);
-    ESP_LOGI(TAG, "Bus recovery completed successfully");
+  // Get current node info to check state instead of relying on event data structure
+  twai_node_info_t node_info;
+  if (twai_node_get_info(handle, &node_info) == ESP_OK) {
+    ESP_LOGI(TAG, "Current TWAI state: %d", node_info.state);
+    
+    // Handle bus recovery completion by checking current state
+    if (esp_can->is_recovering_.load() && node_info.state == TWAI_ERROR_ACTIVE) {
+      esp_can->is_recovering_.store(false);
+      ESP_LOGI(TAG, "Bus recovery completed successfully");
+    }
   }
 
   return false;
@@ -588,27 +596,24 @@ bool EspCan::InternalStateChangeCallback(twai_node_handle_t handle,
 //==============================================//
 
 hf_can_err_t EspCan::ConvertToTwaiFrame(const hf_can_message_t& hf_message,
-                                       twai_frame_t& twai_frame) noexcept {
+                                       twai_frame_t& twai_frame,
+                                       uint8_t* buffer) noexcept {
   // Validate message
   if (hf_message.dlc > 8) {
     return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_DLC;
   }
 
-  // Clear frame
-  std::memset(&twai_frame, 0, sizeof(twai_frame));
-
-  // Set header fields
+  // Initialize frame structure
   twai_frame.header.id = hf_message.id;
   twai_frame.header.ide = hf_message.is_extended;
   twai_frame.header.rtr = hf_message.is_rtr;
   twai_frame.header.dlc = hf_message.dlc;
-
-  // Set buffer and data length
+  twai_frame.buffer = buffer;
   twai_frame.buffer_len = hf_message.dlc;
   
   // Copy data if not a remote frame
-  if (!hf_message.is_rtr && hf_message.dlc > 0) {
-    std::memcpy(const_cast<uint8_t*>(twai_frame.buffer), hf_message.data, hf_message.dlc);
+  if (!hf_message.is_rtr && hf_message.dlc > 0 && buffer != nullptr) {
+    std::memcpy(buffer, hf_message.data, hf_message.dlc);
   }
 
   return hf_can_err_t::CAN_SUCCESS;
