@@ -14,9 +14,6 @@
  * @copyright HardFOC
  */
 
-#include <memory>
-#include <vector>
-
 // Include utility classes
 #include "utils/AsciiArtGenerator.h"
 #include "utils/memory_utils.h"
@@ -25,6 +22,9 @@
 #include "base/BaseGpio.h"
 #include "mcu/esp32/EspGpio.h"
 #include "mcu/esp32/utils/EspTypes_GPIO.h"
+
+#include <memory>
+#include <vector>
 
 #include "TestFramework.h"
 
