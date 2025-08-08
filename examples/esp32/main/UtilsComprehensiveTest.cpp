@@ -14,16 +14,11 @@
  * @copyright HardFOC
  */
 
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include <memory>
 
 #include "base/HardwareTypes.h"
 #include "utils/AsciiArtGenerator.h"
 #include "utils/memory_utils.h"
-
-// Shared test framework
 #include "TestFramework.h"
 
 static const char* TAG = "UTILS_Test";

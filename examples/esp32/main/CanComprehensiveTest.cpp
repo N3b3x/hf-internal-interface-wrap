@@ -4,11 +4,7 @@
  */
 
 #include "base/BaseCan.h"
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "mcu/esp32/EspCan.h"
-
 #include "TestFramework.h"
 
 static const char* TAG = "CAN_Test";

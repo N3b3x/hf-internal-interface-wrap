@@ -21,16 +21,10 @@
  * @copyright HardFOC
  */
 
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/queue.h"
-#include "freertos/task.h"
-
 #include "base/BaseAdc.h"
 #include "mcu/esp32/EspAdc.h"
 #include "mcu/esp32/utils/EspTypes_ADC.h"
 
-// Shared test framework
 #include "TestFramework.h"
 
 static const char* TAG = "ADC_Test";

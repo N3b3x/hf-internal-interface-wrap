@@ -3,12 +3,9 @@
  * @brief Comprehensive WiFi testing suite for ESP32-C6 DevKit-M-1 (noexcept)
  */
 
-#include "TestFramework.h"
 #include "base/BaseWifi.h"
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "mcu/esp32/EspWifi.h"
+#include "TestFramework.h"
 
 static const char* TAG = "WIFI_Test";
 

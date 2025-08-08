@@ -18,25 +18,8 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpedantic"
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include <memory>
 #include <vector>
-
-// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "driver/gpio.h"
-#include "esp_log.h"
-#include "esp_sleep.h"
-#include "esp_system.h"
-#include "esp_timer.h"
-
-#ifdef __cplusplus
-}
-#endif
 
 // Include base classes
 #include "base/BaseGpio.h"
@@ -50,7 +33,6 @@ extern "C" {
 #include "mcu/esp32/EspGpio.h"
 #include "mcu/esp32/utils/EspTypes_GPIO.h"
 
-// Shared test framework
 #include "TestFramework.h"
 
 #pragma GCC diagnostic pop

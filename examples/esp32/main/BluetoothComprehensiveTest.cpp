@@ -14,15 +14,10 @@
  * @copyright HardFOC
  */
 
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include <vector>
-
 #include "base/BaseBluetooth.h"
 #include "mcu/esp32/EspBluetooth.h"
 
-// Shared test framework
+#include <vector>
 #include "TestFramework.h"
 
 static const char* TAG = "BT_Test";

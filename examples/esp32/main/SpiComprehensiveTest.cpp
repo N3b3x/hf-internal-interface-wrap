@@ -22,13 +22,7 @@
  * @copyright HardFOC
  */
 
-#include "driver/spi_master.h"
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-
 #include "base/BaseSpi.h"
-#include "esp_timer.h"
 #include "mcu/esp32/EspSpi.h"
 #include "mcu/esp32/utils/EspTypes_SPI.h"
 #include <algorithm>

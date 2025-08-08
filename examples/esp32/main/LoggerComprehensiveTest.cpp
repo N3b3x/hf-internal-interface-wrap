@@ -14,13 +14,8 @@
  * @copyright HardFOC
  */
 
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-
 #include "base/BaseLogger.h"
 #include "mcu/esp32/EspLogger.h"
-
 #include "TestFramework.h"
 #include "utils/memory_utils.h"
 

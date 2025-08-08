@@ -4,12 +4,7 @@
  */
 
 #include "base/BaseTemperature.h"
-#include "esp_log.h"
-#include "esp_timer.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "mcu/esp32/EspTemperature.h"
-
 #include "TestFramework.h"
 #include <atomic>
 

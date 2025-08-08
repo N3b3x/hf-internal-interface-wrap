@@ -14,14 +14,9 @@
  * @copyright HardFOC
  */
 
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-
 #include "base/BaseUart.h"
 #include "mcu/esp32/EspUart.h"
 #include "mcu/esp32/utils/EspTypes_UART.h"
-
 #include "TestFramework.h"
 
 static const char* TAG = "UART_Test";

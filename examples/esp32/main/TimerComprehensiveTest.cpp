@@ -8,12 +8,7 @@
  */
 
 #include "base/BasePeriodicTimer.h"
-#include "esp_log.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "mcu/esp32/EspPeriodicTimer.h"
-#include "esp_timer.h"
-
 #include "TestFramework.h"
 
 static const char* TAG = "TIMER_Test";
