@@ -370,7 +370,7 @@ public:
    * @param node_info Reference to store node information
    * @return hf_can_err_t error code
    */
-  hf_can_err_t GetNodeInfo(twai_node_info_t& node_info) noexcept;
+  hf_can_err_t GetNodeInfo(twai_node_record_t& node_info) noexcept;
 
   /**
    * @brief Send multiple messages in a batch for improved performance.

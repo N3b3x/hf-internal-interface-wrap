@@ -31,6 +31,22 @@
  * @copyright HardFOC
  */
 
+// ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "esp_log.h"
+#include "esp_timer.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "freertos/event_groups.h"
+
+#ifdef __cplusplus
+}
+#endif
+
+// HardFOC interface includes
 #include "base/BaseCan.h"
 #include "mcu/esp32/EspCan.h"
 #include "TestFramework.h"
@@ -500,7 +516,7 @@ bool test_can_error_handling() noexcept {
   }
 
   // Test node info retrieval (ESP-IDF v5.5 specific)
-  twai_node_info_t node_info{};
+  twai_node_record_t node_info{};
   if (test_can.GetNodeInfo(node_info) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to get TWAI node info");
     return false;
@@ -831,8 +847,6 @@ bool test_can_signal_quality() noexcept {
   return true;
 }
 
-// (Removed enhanced multi-callback tests in single-callback design)
-
 //=============================================================================
 // MAIN TEST RUNNER
 //=============================================================================
@@ -880,8 +894,6 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "\n=== SN65 TRANSCEIVER TESTS ===");
   RUN_TEST(test_sn65_transceiver_integration);
   RUN_TEST(test_can_signal_quality);
-
-  // (Enhanced multi-callback tests removed in single-callback design)
 
   print_test_summary(g_test_results, "ESP32-C6 CAN (ESP-IDF v5.5 + SN65)", TAG);
   
