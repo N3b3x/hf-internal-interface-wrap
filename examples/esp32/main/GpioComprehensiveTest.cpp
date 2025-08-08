@@ -14,32 +14,19 @@
  * @copyright HardFOC
  */
 
-// Disable pedantic warnings for ESP-IDF headers and our ESP32 includes
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-
 #include <memory>
 #include <vector>
-
-// Include base classes
-#include "base/BaseGpio.h"
-#include "base/HardwareTypes.h"
 
 // Include utility classes
 #include "utils/AsciiArtGenerator.h"
 #include "utils/memory_utils.h"
 
 // ESP32 implementation classes
+#include "base/BaseGpio.h"
 #include "mcu/esp32/EspGpio.h"
 #include "mcu/esp32/utils/EspTypes_GPIO.h"
 
 #include "TestFramework.h"
-
-#pragma GCC diagnostic pop
-
-// ESP32 utility types
-#include "mcu/esp32/utils/EspTypes.h"
-#include "mcu/esp32/utils/EspTypes_GPIO.h"
 
 static const char* TAG = "GPIO_Test";
 
