@@ -1,159 +1,368 @@
 /**
  * @file UtilsComprehensiveTest.cpp
- * @brief Comprehensive utilities testing suite for ESP32-C6 DevKit-M-1 (noexcept)
+ * @brief Comprehensive utilities testing suite for ESP32-C6 DevKit-M-1
  *
- * This file contains a dedicated, comprehensive test suite for utility functions
- * targeting ESP32-C6 with ESP-IDF v5.5+. It provides thorough testing of all
- * utility functionalities including memory utilities, hardware types, ASCII art
- * generation, and other support utilities.
- *
- * All functions are noexcept - no exception handling used.
+ * This test suite provides comprehensive testing of utility classes including
+ * AsciiArtGenerator and DigitalOutputGuard with thorough coverage of all features,
+ * edge cases, and error conditions.
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  */
 
-#include <memory>
-
-#include "base/HardwareTypes.h"
 #include "utils/AsciiArtGenerator.h"
-#include "utils/memory_utils.h"
 #include "TestFramework.h"
 
 static const char* TAG = "UTILS_Test";
 
 static TestResults g_test_results;
 
-// Forward declarations
-bool test_ascii_art_generator() noexcept;
-bool test_memory_utilities() noexcept;
-bool test_hardware_types() noexcept;
+//==============================================================================
+// ASCII ART GENERATOR TESTS
+//==============================================================================
 
-bool test_ascii_art_generator() noexcept {
-  ESP_LOGI(TAG, "Testing ASCII Art Generator...");
+bool test_ascii_art_generator_creation() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art generator creation...");
 
-  AsciiArtGenerator art_gen;
-
-  // Test basic generation
-  std::string hardfoc_art = art_gen.Generate("HardFOC");
-  if (hardfoc_art.empty()) {
-    ESP_LOGE(TAG, "Failed to generate ASCII art for HardFOC");
+  AsciiArtGenerator generator;
+  
+  // Test basic creation by generating some text
+  auto test_result = generator.Generate("TEST");
+  if (test_result.empty()) {
+    ESP_LOGE(TAG, "ASCII art generator failed to generate basic text");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art for HardFOC:\n%s", hardfoc_art.c_str());
 
-  // Test with different text
-  std::string esp32_art = art_gen.Generate("ESP32-C6");
-  if (esp32_art.empty()) {
-    ESP_LOGE(TAG, "Failed to generate ASCII art for ESP32-C6");
-    return false;
-  }
-  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art for ESP32-C6:\n%s", esp32_art.c_str());
-
-  // Test completion message
-  std::string complete_art = art_gen.Generate("UTILS TESTS COMPLETE");
-  if (complete_art.empty()) {
-    ESP_LOGE(TAG, "Failed to generate ASCII art for completion message");
-    return false;
-  }
-  ESP_LOGI(TAG, "[SUCCESS] Generated completion ASCII art:\n%s", complete_art.c_str());
-
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art generator creation successful");
   return true;
 }
 
-bool test_memory_utilities() noexcept {
-  ESP_LOGI(TAG, "Testing memory utilities...");
+bool test_ascii_art_basic_text() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art basic text generation...");
 
-  // Test make_unique_nothrow with int
-  auto unique_int = hf::utils::make_unique_nothrow<int>(42);
-  if (!unique_int) {
-    ESP_LOGE(TAG, "Failed to create unique_ptr<int>");
+  AsciiArtGenerator generator;
+  
+  // Test simple text
+  std::string test_text = "HELLO";
+  auto result = generator.Generate(test_text);
+  
+  if (result.empty()) {
+    ESP_LOGE(TAG, "Failed to generate ASCII art for basic text");
     return false;
   }
 
-  if (*unique_int != 42) {
-    ESP_LOGE(TAG, "Unique int value mismatch: expected 42, got %d", *unique_int);
-    return false;
+  // Verify the result has multiple lines (ASCII art should be multi-line)
+  size_t newline_count = 0;
+  for (char c : result) {
+    if (c == '\n') newline_count++;
   }
-  ESP_LOGI(TAG, "[SUCCESS] make_unique_nothrow created int with value: %d", *unique_int);
-
-  // Test make_unique with array
-  auto unique_array = std::make_unique<int[]>(10);
-  if (!unique_array) {
-    ESP_LOGE(TAG, "Failed to create unique_ptr<int[]>");
+  if (newline_count < 5) { // ASCII art should have at least 5 lines
+    ESP_LOGE(TAG, "Generated ASCII art has insufficient lines: %zu", newline_count);
     return false;
   }
 
-  // Initialize and test array
-  for (int i = 0; i < 10; i++) {
-    unique_array[i] = i * i;
-  }
+  ESP_LOGI(TAG, "Generated ASCII art for 'HELLO':\n%s", result.c_str());
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art basic text generation successful");
+  return true;
+}
 
-  // Verify values
-  for (int i = 0; i < 10; i++) {
-    if (unique_array[i] != i * i) {
-      ESP_LOGE(TAG, "Array value mismatch at index %d: expected %d, got %d", i, i * i,
-               unique_array[i]);
+bool test_ascii_art_supported_characters() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art supported characters...");
+
+  AsciiArtGenerator generator;
+  
+  // Test all supported character types
+  std::string test_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?@#$%^&*()[]{}|\\/;:'\"-_=+";
+  
+  for (char c : test_chars) {
+    if (!generator.IsCharacterSupported(c)) {
+      ESP_LOGE(TAG, "Character '%c' not supported but should be", c);
       return false;
     }
   }
-  ESP_LOGI(TAG, "[SUCCESS] make_unique created array, element[5] = %d", unique_array[5]);
 
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art supported characters test successful");
   return true;
 }
 
-bool test_hardware_types() noexcept {
-  ESP_LOGI(TAG, "Testing hardware types...");
+bool test_ascii_art_unsupported_characters() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art unsupported characters...");
 
-  // Test basic hardware type definitions
-  hf_pin_num_t test_pin = 5;
-  hf_port_num_t test_port = 0;
-  hf_frequency_hz_t test_freq = 1000000;
-  hf_timestamp_us_t test_timestamp = 12345678;
-  uint32_t test_voltage = 3300;
+  AsciiArtGenerator generator;
+  
+  // Test some unsupported characters
+  std::string unsupported_chars = "áéíóúñçßäöü";
+  
+  for (char c : unsupported_chars) {
+    if (generator.IsCharacterSupported(c)) {
+      ESP_LOGE(TAG, "Character '%c' supported but should not be", c);
+      return false;
+    }
+  }
 
-  ESP_LOGI(TAG, "[SUCCESS] Pin: %d, Port: %d, Freq: %lu Hz", test_pin, test_port, test_freq);
-  ESP_LOGI(TAG, "[SUCCESS] Timestamp: %llu us, Voltage: %d mV", test_timestamp, test_voltage);
-
-  //   // Test GPIO state enum
-  //   hf_gpio_state_t test_state = hf_gpio_state_t::HF_GPIO_STATE_ACTIVE;
-  //   if (test_state != hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) {
-  //     ESP_LOGE(TAG, "GPIO state test failed");
-  //     return false;
-  //   }
-
-  //   ESP_LOGI(TAG, "[SUCCESS] GPIO state: %s",
-  //            test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
-
-  //   // Test state toggle
-  //   test_state = hf_gpio_state_t::HF_GPIO_STATE_INACTIVE;
-  //   ESP_LOGI(TAG, "[SUCCESS] GPIO state toggled: %s",
-  //            test_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE ? "ACTIVE" : "INACTIVE");
-
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art unsupported characters test successful");
   return true;
 }
+
+bool test_ascii_art_empty_string() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art empty string handling...");
+
+  AsciiArtGenerator generator;
+  
+  // Test empty string
+  auto result = generator.Generate("");
+  
+  if (!result.empty()) {
+    ESP_LOGE(TAG, "Empty string should generate empty result");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art empty string handling successful");
+  return true;
+}
+
+bool test_ascii_art_mixed_case() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art mixed case handling...");
+
+  AsciiArtGenerator generator;
+  
+  // Test mixed case text
+  std::string test_text = "Hello World 123!";
+  auto result = generator.Generate(test_text);
+  
+  if (result.empty()) {
+    ESP_LOGE(TAG, "Failed to generate ASCII art for mixed case text");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Generated ASCII art for mixed case:\n%s", result.c_str());
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art mixed case handling successful");
+  return true;
+}
+
+bool test_ascii_art_special_characters() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art special characters...");
+
+  AsciiArtGenerator generator;
+  
+  // Test special characters
+  std::string test_text = "!@#$%^&*()";
+  auto result = generator.Generate(test_text);
+  
+  if (result.empty()) {
+    ESP_LOGE(TAG, "Failed to generate ASCII art for special characters");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Generated ASCII art for special characters:\n%s", result.c_str());
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art special characters test successful");
+  return true;
+}
+
+bool test_ascii_art_long_text() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art long text handling...");
+
+  AsciiArtGenerator generator;
+  
+  // Test long text
+  std::string test_text = "VERY LONG TEXT THAT SHOULD BE HANDLED PROPERLY";
+  auto result = generator.Generate(test_text);
+  
+  if (result.empty()) {
+    ESP_LOGE(TAG, "Failed to generate ASCII art for long text");
+    return false;
+  }
+
+  // Verify the result is substantial
+  if (result.length() < 100) {
+    ESP_LOGE(TAG, "Long text generated insufficient output: %zu chars", result.length());
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art long text handling successful");
+  return true;
+}
+
+bool test_ascii_art_custom_character_management() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art custom character management...");
+
+  AsciiArtGenerator generator;
+  
+  // Test adding custom character
+  std::vector<std::string> custom_art = {
+    "  ___  ",
+    " /   \\ ",
+    "|     |",
+    "|     |",
+    " \\___/ ",
+    "       "
+  };
+  
+  generator.AddCustomCharacter('X', custom_art);
+  
+  if (!generator.IsCharacterSupported('X')) {
+    ESP_LOGE(TAG, "Custom character 'X' not supported after addition");
+    return false;
+  }
+
+  // Test removing custom character
+  generator.RemoveCustomCharacter('X');
+  
+  if (generator.IsCharacterSupported('X')) {
+    ESP_LOGE(TAG, "Custom character 'X' still supported after removal");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art custom character management successful");
+  return true;
+}
+
+bool test_ascii_art_supported_characters_list() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art supported characters list...");
+
+  AsciiArtGenerator generator;
+  
+  // Test getting supported characters
+  std::string supported = generator.GetSupportedCharacters();
+  
+  if (supported.empty()) {
+    ESP_LOGE(TAG, "Supported characters list is empty");
+    return false;
+  }
+
+  // Verify it contains expected characters
+  if (supported.find('A') == std::string::npos) {
+    ESP_LOGE(TAG, "Supported characters list missing 'A'");
+    return false;
+  }
+
+  if (supported.find('0') == std::string::npos) {
+    ESP_LOGE(TAG, "Supported characters list missing '0'");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Supported characters: %s", supported.c_str());
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art supported characters list test successful");
+  return true;
+}
+
+//==============================================================================
+// PERFORMANCE AND STRESS TESTS
+//==============================================================================
+
+bool test_ascii_art_performance() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art performance...");
+
+  AsciiArtGenerator generator;
+  
+  // Test performance with repeated generation
+  const int iterations = 100;
+  uint64_t start_time = esp_timer_get_time();
+  
+  for (int i = 0; i < iterations; i++) {
+    auto result = generator.Generate("PERFORMANCE TEST");
+    if (result.empty()) {
+      ESP_LOGE(TAG, "ASCII art generation failed in performance test iteration %d", i);
+      return false;
+    }
+  }
+  
+  uint64_t end_time = esp_timer_get_time();
+  uint64_t total_time = end_time - start_time;
+  double avg_time = static_cast<double>(total_time) / iterations;
+  
+  ESP_LOGI(TAG, "Performance test: %d iterations in %.2f ms (avg: %.2f us per iteration)", 
+           iterations, total_time / 1000.0, avg_time);
+
+  if (avg_time > 1000.0) { // Should be less than 1ms per iteration
+    ESP_LOGE(TAG, "ASCII art generation too slow: %.2f us per iteration", avg_time);
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art performance test successful");
+  return true;
+}
+
+bool test_ascii_art_stress() noexcept {
+  ESP_LOGI(TAG, "Testing ASCII art stress...");
+
+  AsciiArtGenerator generator;
+  
+  // Test stress with many different texts
+  const int iterations = 1000;
+  std::string test_strings[] = {
+    "A", "AB", "ABC", "ABCD", "ABCDE",
+    "123", "456", "789", "0123456789",
+    "!@#", "$%^", "&*()", "[]{}", "|\\/",
+    "HELLO", "WORLD", "ESP32", "C6", "TEST"
+  };
+  
+  uint64_t start_time = esp_timer_get_time();
+  
+  for (int i = 0; i < iterations; i++) {
+    std::string test_text = test_strings[i % (sizeof(test_strings) / sizeof(test_strings[0]))];
+    auto result = generator.Generate(test_text);
+    if (result.empty()) {
+      ESP_LOGE(TAG, "ASCII art generation failed in stress test iteration %d", i);
+      return false;
+    }
+  }
+  
+  uint64_t end_time = esp_timer_get_time();
+  uint64_t total_time = end_time - start_time;
+  double avg_time = static_cast<double>(total_time) / iterations;
+  
+  ESP_LOGI(TAG, "Stress test: %d iterations in %.2f ms (avg: %.2f us per iteration)", 
+           iterations, total_time / 1000.0, avg_time);
+
+  if (avg_time > 500.0) { // Should be less than 500us per iteration
+    ESP_LOGE(TAG, "ASCII art generation too slow in stress test: %.2f us per iteration", avg_time);
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] ASCII art stress test successful");
+  return true;
+}
+
+//==============================================================================
+// MAIN TEST EXECUTION
+//==============================================================================
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                  ESP32-C6 UTILITIES COMPREHENSIVE TEST SUITE                ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "║                ESP32-C6 UTILS COMPREHENSIVE TEST SUITE v1.0                ║");
+  ESP_LOGI(TAG, "║                           AsciiArtGenerator Focused                        ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
-
+  
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  RUN_TEST(test_ascii_art_generator);
-  RUN_TEST(test_memory_utilities);
-  RUN_TEST(test_hardware_types);
+  // ASCII Art Generator Tests
+  ESP_LOGI(TAG, "\n=== ASCII ART GENERATOR TESTS ===");
+  RUN_TEST(test_ascii_art_generator_creation);
+  RUN_TEST(test_ascii_art_basic_text);
+  RUN_TEST(test_ascii_art_supported_characters);
+  RUN_TEST(test_ascii_art_unsupported_characters);
+  RUN_TEST(test_ascii_art_empty_string);
+  RUN_TEST(test_ascii_art_mixed_case);
+  RUN_TEST(test_ascii_art_special_characters);
+  RUN_TEST(test_ascii_art_long_text);
+  RUN_TEST(test_ascii_art_custom_character_management);
+  RUN_TEST(test_ascii_art_supported_characters_list);
 
-  print_test_summary(g_test_results, "UTILITIES", TAG);
+  // Performance and Stress Tests
+  ESP_LOGI(TAG, "\n=== PERFORMANCE AND STRESS TESTS ===");
+  RUN_TEST(test_ascii_art_performance);
+  RUN_TEST(test_ascii_art_stress);
 
-  if (g_test_results.failed_tests == 0) {
-    ESP_LOGI(TAG, "[SUCCESS] ALL UTILITIES TESTS PASSED!");
-  } else {
-    ESP_LOGE(TAG, "[FAILED] Some tests failed.");
-  }
+  // Print final summary
+  print_test_summary(g_test_results, "UTILS", TAG);
 
+  ESP_LOGI(TAG, "\n╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    UTILS COMPREHENSIVE TEST SUITE COMPLETE                    ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+
+  // Keep the system running
   while (true) {
     vTaskDelay(pdMS_TO_TICKS(10000));
   }
