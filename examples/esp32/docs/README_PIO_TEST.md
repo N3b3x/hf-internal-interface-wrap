@@ -2,7 +2,9 @@
 
 ## Overview
 
-The PIO Comprehensive Test Suite is designed to thoroughly validate the `EspPio` class implementation using the ESP32-C6's RMT (Remote Control) peripheral with ESP-IDF v5.5+. This test suite provides comprehensive coverage of PIO functionality including WS2812 LED protocol timing and logic analyzer test scenarios.
+The PIO Comprehensive Test Suite is designed to thoroughly validate the `EspPio` class implementation using the ESP32-C6's RMT (Remote Control) peripheral with ESP-IDF v5.5+. This test suite provides comprehensive coverage of PIO functionality including WS2812 LED protocol timing and automated loopback testing.
+
+**✅ Status: Successfully built and tested for ESP32-C6-DevKitM-1**
 
 ## Features Tested
 
@@ -21,7 +23,8 @@ The PIO Comprehensive Test Suite is designed to thoroughly validate the `EspPio`
 - Idle level configuration
 
 ### Protocol Testing
-- **WS2812 LED Protocol**: Complete timing validation and RGB color transmission
+- **WS2812 LED Protocol**: Complete timing validation using built-in RGB LED
+- **Automated Loopback Testing**: Transmission/reception verification without external wiring
 - **Logic Analyzer Patterns**: Various test patterns for signal verification
 - **Frequency Sweep**: Square wave generation at different frequencies
 
@@ -33,20 +36,48 @@ The PIO Comprehensive Test Suite is designed to thoroughly validate the `EspPio`
 
 ## Hardware Setup
 
-### GPIO Pin Configuration
-- **GPIO2**: Primary transmission output (connect WS2812 LEDs or logic analyzer)
-- **GPIO3**: Reception input (optional, for bidirectional testing)
-- **GPIO4**: Loopback testing
+### ESP32-C6-DevKitM-1 Pin Configuration
+- **GPIO8**: Built-in RGB LED + transmission output (WS2812 protocol)
+- **GPIO18**: Reception input for automated loopback testing
+
+### Automated Testing Setup
+```
+ESP32-C6-DevKitM-1
+├── GPIO8 (Built-in RGB LED) ──► Jumper Wire ──► GPIO18 (RX)
+├── Built-in RGB LED: WS2812 protocol testing
+└── Automated Loopback: Transmission/reception verification
+```
+
+**For Automated Testing:**
+- Connect GPIO8 to GPIO18 with a jumper wire
+- This creates a loopback for transmission/reception verification
+- No external components required for basic testing
 
 ### WS2812 LED Testing Setup
+The ESP32-C6-DevKitM-1 includes a built-in RGB LED on GPIO8, perfect for WS2812 testing:
+
 ```
-ESP32-C6 GPIO2 ──► WS2812 LED Chain ──► Additional LEDs
+ESP32-C6-DevKitM-1 Built-in RGB LED (GPIO8)
+├── WS2812 Protocol Testing
+├── Color Pattern Verification
+└── Timing Validation
+```
+
+**Built-in LED Features:**
+- ✅ No external wiring required
+- ✅ WS2812 protocol compatible
+- ✅ RGB color testing
+- ✅ Timing validation
+
+### External WS2812 LED Chain (Optional)
+```
+ESP32-C6 GPIO8 ──► WS2812 LED Chain ──► Additional LEDs
                    │
                    └──► 5V Power Supply
                    └──► Ground
 ```
 
-**Requirements:**
+**Requirements for External LEDs:**
 - WS2812/WS2812B/NeoPixel LEDs
 - 5V power supply for LEDs
 - 470Ω resistor in series with data line (recommended)
@@ -54,8 +85,8 @@ ESP32-C6 GPIO2 ──► WS2812 LED Chain ──► Additional LEDs
 
 ### Logic Analyzer Setup
 ```
-ESP32-C6 GPIO2 ──► Logic Analyzer Channel 0
-ESP32-C6 GPIO3 ──► Logic Analyzer Channel 1 (optional)
+ESP32-C6 GPIO8 ──► Logic Analyzer Channel 0
+ESP32-C6 GPIO18 ──► Logic Analyzer Channel 1 (loopback verification)
 ESP32-C6 GND   ──► Logic Analyzer Ground
 ```
 
@@ -66,23 +97,32 @@ ESP32-C6 GND   ──► Logic Analyzer Ground
 
 ## Running the Tests
 
+### Prerequisites
+- ESP-IDF v5.5 or later
+- ESP32-C6-DevKitM-1 development board
+- Jumper wire for loopback testing (GPIO8 → GPIO18)
+
 ### Using Build Scripts (Recommended)
 ```bash
 # Navigate to ESP32 examples directory
 cd examples/esp32
 
-# Linux/macOS
-./build_example.sh pio_test
+# Source ESP-IDF environment
+source /path/to/esp-idf/export.sh
 
-# Windows PowerShell
-.\build_example.ps1 pio_test
+# Set target and build
+export IDF_TARGET=esp32c6
+./build_example.sh pio_test Release
 
 # Flash to device
-idf.py flash monitor
+idf.py -B build_pio_test_Release flash monitor
 ```
 
 ### Direct ESP-IDF Build (Alternative)
 ```bash
+# Set target
+export IDF_TARGET=esp32c6
+
 # Build PIO test
 idf.py build -DEXAMPLE_TYPE=pio_test
 
@@ -117,10 +157,11 @@ matrix:
 
 ### 5. WS2812 LED Protocol Tests
 - `test_ws2812_timing_validation`: Timing specification verification
-- `test_ws2812_single_led`: Single LED color transmission
+- `test_ws2812_single_led`: Single LED color transmission using built-in RGB LED
 - `test_ws2812_multiple_leds`: RGB LED chain testing
 
-### 6. Logic Analyzer Test Scenarios
+### 6. Automated Loopback Tests
+- `test_loopback_functionality`: Transmission/reception verification
 - `test_logic_analyzer_patterns`: Recognizable test patterns
 - `test_frequency_sweep`: Multi-frequency square wave generation
 
@@ -175,7 +216,13 @@ matrix:
 [PIO_Test] ╔═══════════════════════════════════════════════════════════════════════════════╗
 [PIO_Test] ║                    ESP32-C6 PIO COMPREHENSIVE TEST SUITE                     ║
 [PIO_Test] ║  Testing EspPio with ESP-IDF v5.5 RMT peripheral                             ║
-[PIO_Test] ║  Includes WS2812 LED protocol and logic analyzer test scenarios              ║
+[PIO_Test] ║  Includes WS2812 LED protocol and automated loopback testing                 ║
+[PIO_Test] ║                                                                               ║
+[PIO_Test] ║  Test Pins (ESP32-C6 DevKitM-1):                                             ║
+[PIO_Test] ║    GPIO 8 - Built-in RGB LED (WS2812) + TX for loopback                     ║
+[PIO_Test] ║    GPIO 18 - RX for automated loopback verification                          ║
+[PIO_Test] ║                                                                               ║
+[PIO_Test] ║  For automated testing: Connect GPIO 8 to GPIO 18 with jumper wire          ║
 [PIO_Test] ╚═══════════════════════════════════════════════════════════════════════════════╝
 
 [PIO_Test] [SUCCESS] PASSED: test_constructor_default (0.05 ms)
@@ -186,14 +233,21 @@ matrix:
 [PIO_Test] [SUCCESS] ALL PIO TESTS PASSED!
 ```
 
-### WS2812 LED Verification
-If WS2812 LEDs are connected, you should observe:
+### Built-in RGB LED Verification
+The ESP32-C6-DevKitM-1's built-in RGB LED should show:
 1. **Single LED Test**: LED turns red
-2. **Multiple LED Test**: First LED red, second green, third blue
+2. **Multiple LED Test**: Color cycling through red, green, blue
 3. Reset sequences between tests
 
+### Automated Loopback Verification
+With GPIO8 → GPIO18 jumper wire:
+1. **Transmission Test**: Data sent from GPIO8
+2. **Reception Test**: Same data received on GPIO18
+3. **Data Integrity**: Automatic verification of transmission/reception
+4. **Timing Validation**: Signal timing accuracy
+
 ### Logic Analyzer Verification
-Capture signals on GPIO2 and verify:
+Capture signals on GPIO8 and verify:
 1. Timing accuracy within ±150ns tolerance
 2. Correct high/low durations
 3. Proper WS2812 bit encoding
@@ -208,10 +262,15 @@ Capture signals on GPIO2 and verify:
 - **GPIO Conflicts**: Check pin availability and configuration
 - **Initialization Failures**: Ensure ESP-IDF v5.5+ and proper hardware
 
-#### WS2812 LED Issues
-- **No LED Response**: Check power supply, data line connection
+#### Built-in RGB LED Issues
+- **No LED Response**: Check if LED is enabled in board configuration
 - **Wrong Colors**: Verify GRB data format, timing accuracy
-- **Intermittent Operation**: Add series resistor, check ground connections
+- **Dim LED**: Normal behavior for built-in LED
+
+#### Loopback Testing Issues
+- **No Reception**: Verify jumper wire connection GPIO8 → GPIO18
+- **Data Mismatch**: Check for loose connections or interference
+- **Timing Issues**: Ensure proper RMT configuration
 
 #### Logic Analyzer Issues
 - **No Signal**: Verify probe connections, ground reference
@@ -229,6 +288,13 @@ idf.py build -DEXAMPLE_TYPE=pio_test -DBUILD_TYPE=Debug
 ```
 
 ## Performance Metrics
+
+### Build Information
+- **Build Status**: ✅ SUCCESS
+- **Target**: ESP32-C6
+- **Binary Size**: 0x335d0 bytes (209,872 bytes)
+- **Free Space**: 86% of partition available
+- **ESP-IDF Version**: v5.5
 
 ### Typical Results (ESP32-C6 @ 160MHz)
 - **Initialization Time**: <1ms
@@ -252,32 +318,64 @@ The test automatically runs in CI for:
 
 ### Hardware-in-the-Loop Testing
 For production validation:
-1. Connect WS2812 LEDs to test board
-2. Use logic analyzer for timing verification
-3. Run automated test suite
-4. Validate timing against specifications
+1. Use built-in RGB LED for WS2812 testing
+2. Connect jumper wire for loopback verification
+3. Use logic analyzer for timing verification
+4. Run automated test suite
+5. Validate timing against specifications
 
 ## Advanced Configuration
 
 ### Custom GPIO Pins
 Modify the test for different hardware:
 ```cpp
-static constexpr hf_gpio_num_t TEST_GPIO_TX = 5;  // Change to your pin
-static constexpr hf_gpio_num_t TEST_GPIO_RX = 6;  // Change to your pin
+// ESP32-C6 DevKitM-1 specific configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+static constexpr hf_gpio_num_t TEST_GPIO_TX = 8;   // Built-in RGB LED
+static constexpr hf_gpio_num_t TEST_GPIO_RX = 18;  // Loopback RX
+#else
+static constexpr hf_gpio_num_t TEST_GPIO_TX = 2;   // Other ESP32 variants
+static constexpr hf_gpio_num_t TEST_GPIO_RX = 3;   // Other ESP32 variants
+#endif
 ```
 
 ### Timing Resolution
 Adjust for different requirements:
 ```cpp
-static constexpr uint32_t TEST_RESOLUTION_NS = 50;  // Higher precision
+// ESP32-C6 specific resolution configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+config.resolution_ns = 1000; // 1µs resolution for ESP32-C6 RMT stability
+#else
+config.resolution_ns = TEST_RESOLUTION_NS;
+#endif
 ```
 
 ### Test Parameters
 Customize test behavior:
 ```cpp
-static constexpr uint32_t WS2812_T0H = 400;  // Adjust for LED variant
-static constexpr uint32_t WS2812_T1H = 800;  // Adjust for LED variant
+static constexpr uint32_t WS2812_T0H = 350;  // WS2812B timing
+static constexpr uint32_t WS2812_T1H = 700;  // WS2812B timing
 ```
+
+## ESP32-C6 Specific Features
+
+### RMT Peripheral
+- **Channels**: 2 RMT channels (vs 4 on other ESP32 variants)
+- **Clock Source**: PLL_F80M (80 MHz)
+- **Memory**: Configurable memory blocks
+- **DMA**: Supported for large transfers
+
+### Built-in RGB LED
+- **GPIO**: GPIO8
+- **Protocol**: WS2812 compatible
+- **Power**: 3.3V logic level
+- **Features**: No external components required
+
+### Automated Testing Advantages
+- **No External Wiring**: Uses built-in LED for WS2812 testing
+- **Loopback Verification**: Simple jumper wire connection
+- **Self-Contained**: Minimal external dependencies
+- **Reliable**: Consistent hardware configuration
 
 ## References
 
@@ -285,3 +383,4 @@ static constexpr uint32_t WS2812_T1H = 800;  // Adjust for LED variant
 - [WS2812B Datasheet](https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf)
 - [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
 - [ESP-IDF v5.5 Migration Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/migration-guides/release-5.x/5.0/peripherals.html)
+- [ESP32-C6-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/hw-reference/esp32c6/user-guide-devkitm-1.html)

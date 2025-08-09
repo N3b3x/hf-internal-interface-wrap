@@ -8,15 +8,17 @@
  * - Channel configuration and management
  * - Symbol transmission and reception
  * - RMT-specific features (carrier modulation, loopback, encoder configuration)
- * - WS2812 LED protocol timing validation
+ * - WS2812 LED protocol timing validation (using built-in RGB LED on GPIO8)
+ * - Automated loopback testing (GPIO8 TX -> GPIO18 RX)
  * - Logic analyzer test scenarios
  * - Advanced RMT features (DMA, memory blocks, queue depth)
  * - Status and diagnostics (statistics, error reporting)
  * - Callbacks (transmit, receive, error)
  * - Edge cases and stress testing
  *
- * @note This test suite is designed for ESP32-C6 with ESP-IDF v5.5+ RMT driver
- * @note Tests can be used with WS2812 LEDs or logic analyzer for signal verification
+ * @note This test suite is designed for ESP32-C6 DevKitM-1 with ESP-IDF v5.5+ RMT driver
+ * @note Uses built-in RGB LED on GPIO8 for WS2812 testing and automated loopback
+ * @note Automated testing: Connect GPIO8 (TX) to GPIO18 (RX) with jumper wire
  */
 
 #include "TestFramework.h"
@@ -37,16 +39,17 @@ static constexpr uint32_t WS2812_T1H = 700;    // 1 code, high time
 static constexpr uint32_t WS2812_T1L = 600;    // 1 code, low time
 static constexpr uint32_t WS2812_RESET = 50000; // Reset time (>50µs)
 
-// Test GPIO pins (configurable for different setups)
-// ESP32-C6 specific GPIO configuration for RMT compatibility
+// Test GPIO pins for automated loopback testing
+// ESP32-C6 DevKitM-1 specific GPIO configuration for automated testing
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-static constexpr hf_gpio_num_t TEST_GPIO_TX = 2;   // GPIO2 for transmission (RMT compatible)
-static constexpr hf_gpio_num_t TEST_GPIO_RX = 3;   // GPIO3 for reception (RMT compatible)
-static constexpr hf_gpio_num_t TEST_GPIO_LOOP = 4; // GPIO4 for loopback tests
+static constexpr hf_gpio_num_t TEST_GPIO_TX = 8;   // GPIO8 for built-in RGB LED (WS2812) - TX
+static constexpr hf_gpio_num_t TEST_GPIO_RX = 18;  // GPIO18 for reception (RMT compatible) - RX
+// For automated testing: Connect GPIO8 (TX) to GPIO18 (RX) with a jumper wire
+// This creates a loopback that allows the test to verify transmission/reception
 #else
 static constexpr hf_gpio_num_t TEST_GPIO_TX = 2;   // GPIO2 for transmission
 static constexpr hf_gpio_num_t TEST_GPIO_RX = 3;   // GPIO3 for reception
-static constexpr hf_gpio_num_t TEST_GPIO_LOOP = 4; // GPIO4 for loopback tests
+// For automated testing: Connect GPIO2 (TX) to GPIO3 (RX) with a jumper wire
 #endif
 
 // Test resolution for timing precision
@@ -759,7 +762,7 @@ bool test_loopback_functionality() noexcept {
         return false;
     }
     
-    hf_pio_channel_config_t config = create_test_channel_config(TEST_GPIO_LOOP);
+    hf_pio_channel_config_t config = create_test_channel_config(TEST_GPIO_RX);
     pio.ConfigureChannel(0, config);
     
     // Enable loopback mode
@@ -1008,12 +1011,13 @@ extern "C" void app_main() {
     ESP_LOGI(TAG, "║                    ESP32-C6 PIO COMPREHENSIVE TEST SUITE                     ║");
     ESP_LOGI(TAG, "║                                                                               ║");
     ESP_LOGI(TAG, "║  Testing EspPio with ESP-IDF v5.5 RMT peripheral                             ║");
-    ESP_LOGI(TAG, "║  Includes WS2812 LED protocol and logic analyzer test scenarios              ║");
+    ESP_LOGI(TAG, "║  Includes WS2812 LED protocol and automated loopback testing                 ║");
     ESP_LOGI(TAG, "║                                                                               ║");
-    ESP_LOGI(TAG, "║  Test Pins:                                                                   ║");
-    ESP_LOGI(TAG, "║    GPIO %d - Transmission output (connect WS2812 or logic analyzer)          ║", TEST_GPIO_TX);
-    ESP_LOGI(TAG, "║    GPIO %d - Reception input (optional)                                       ║", TEST_GPIO_RX);
-    ESP_LOGI(TAG, "║    GPIO %d - Loopback testing                                                 ║", TEST_GPIO_LOOP);
+    ESP_LOGI(TAG, "║  Test Pins (ESP32-C6 DevKitM-1):                                             ║");
+    ESP_LOGI(TAG, "║    GPIO %d - Built-in RGB LED (WS2812) + TX for loopback                     ║", TEST_GPIO_TX);
+    ESP_LOGI(TAG, "║    GPIO %d - RX for automated loopback verification                          ║", TEST_GPIO_RX);
+    ESP_LOGI(TAG, "║                                                                               ║");
+    ESP_LOGI(TAG, "║  For automated testing: Connect GPIO %d to GPIO %d with jumper wire          ║", TEST_GPIO_TX, TEST_GPIO_RX);
     ESP_LOGI(TAG, "╚═══════════════════════════════════════════════════════════════════════════════╝");
     ESP_LOGI(TAG, "");
 
@@ -1069,7 +1073,8 @@ extern "C" void app_main() {
     ESP_LOGI(TAG, "╔═══════════════════════════════════════════════════════════════════════════════╗");
     ESP_LOGI(TAG, "║                           TEST COMPLETE                                      ║");
     ESP_LOGI(TAG, "║                                                                               ║");
-    ESP_LOGI(TAG, "║  For WS2812 testing: Connect LEDs to GPIO %d and observe color changes       ║", TEST_GPIO_TX);
+    ESP_LOGI(TAG, "║  For WS2812 testing: Built-in RGB LED on GPIO %d should show color changes   ║", TEST_GPIO_TX);
+    ESP_LOGI(TAG, "║  For automated loopback: Verify transmission/reception on GPIO %d -> GPIO %d  ║", TEST_GPIO_TX, TEST_GPIO_RX);
     ESP_LOGI(TAG, "║  For logic analyzer: Capture signals on GPIO %d and verify timing            ║", TEST_GPIO_TX);
     ESP_LOGI(TAG, "║                                                                               ║");
     ESP_LOGI(TAG, "║  Expected WS2812 timing (±150ns tolerance):                                  ║");
