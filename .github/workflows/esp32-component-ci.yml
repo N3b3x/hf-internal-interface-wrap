@@ -182,12 +182,12 @@ jobs:
             ~/.cache/apt
             /var/cache/apt
             ~/.cache/clang-tidy
-          key: "static-analysis-${{ runner.os }}-${{ hashFiles('**/*.cpp', '**/*.h', '.clang-tidy') }}"
+          key: "static-analysis-${{ runner.os }}-${{ hashFiles('src/**', 'inc/**', '.clang-tidy') }}"
           restore-keys: |
             static-analysis-${{ runner.os }}-
 
       - name: Print hashFiles result
-        run: echo "${{ hashFiles('**/*.cpp', '**/*.h', '.clang-tidy') }}"
+        run: echo "${{ hashFiles('src/**', 'inc/**', '.clang-tidy') }}"
 
       - name: Install analysis tools
         run: |
