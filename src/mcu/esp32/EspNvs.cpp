@@ -62,6 +62,7 @@ extern "C" {
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "nvs_flash.h"
+#include "nvs.h"
 
 #ifdef CONFIG_NVS_SEC_PROVIDER_SUPPORTED
 #include "nvs_sec_provider.h"
@@ -230,7 +231,7 @@ hf_nvs_err_t EspNvs::Deinitialize() noexcept {
   }
 
   if (nvs_handle_) {
-    nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
     nvs_close(handle);
   }
 
@@ -260,9 +261,9 @@ hf_nvs_err_t EspNvs::SetU32(const char* key, hf_u32_t value) noexcept {
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
-  // Check for key too long (ESP-IDF limit: NVS_KEY_NAME_MAX_SIZE-1 = 15 chars)
-  if (strlen(key) >= NVS_KEY_NAME_MAX_SIZE) {
-    ESP_LOGE(TAG, "SetU32 failed: key too long (%zu >= %d)", strlen(key), NVS_KEY_NAME_MAX_SIZE);
+  // Check for key too long (ESP-IDF limit: 16 chars including null terminator, so 15 usable)
+  if (strlen(key) >= 16) {
+    ESP_LOGE(TAG, "SetU32 failed: key too long (%zu >= 16)", strlen(key));
     UpdateStatistics(true);
     return hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG;
   }
@@ -334,6 +335,7 @@ hf_nvs_err_t EspNvs::SetString(const char* key, const char* value) noexcept {
   }
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+
   esp_err_t err = nvs_set_str(handle, key, value);
   if (err != ESP_OK) {
     UpdateStatistics(true);
@@ -363,6 +365,7 @@ hf_nvs_err_t EspNvs::GetString(const char* key, char* buffer, size_t buffer_size
   }
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+
   size_t required_size = buffer_size;
   esp_err_t err = nvs_get_str(handle, key, buffer, &required_size);
 
@@ -386,6 +389,7 @@ hf_nvs_err_t EspNvs::SetBlob(const char* key, const void* data, size_t data_size
   }
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+
   esp_err_t err = nvs_set_blob(handle, key, data, data_size);
   if (err != ESP_OK) {
     UpdateStatistics(true);
@@ -415,6 +419,7 @@ hf_nvs_err_t EspNvs::GetBlob(const char* key, void* buffer, size_t buffer_size,
   }
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+
   size_t required_size = buffer_size;
   esp_err_t err = nvs_get_blob(handle, key, buffer, &required_size);
 
@@ -438,6 +443,7 @@ hf_nvs_err_t EspNvs::EraseKey(const char* key) noexcept {
   }
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+
   esp_err_t err = nvs_erase_key(handle, key);
   if (err != ESP_OK) {
     UpdateStatistics(true);
@@ -458,6 +464,7 @@ hf_nvs_err_t EspNvs::Commit() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+
   esp_err_t err = nvs_commit(handle);
   UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
@@ -493,6 +500,7 @@ hf_nvs_err_t EspNvs::GetSize(const char* key, size_t& size) noexcept {
   }
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+
   esp_err_t err = nvs_get_str(handle, key, nullptr, &size);
   UpdateStatistics(err != ESP_OK);
   return ConvertMcuError(err);
@@ -592,6 +600,8 @@ hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
 //==============================================================================
 // PRIVATE HELPER FUNCTIONS - Production-Ready Utilities
 //==============================================================================
+
+
 
 void EspNvs::UpdateStatistics(bool error_occurred) noexcept {
   // Increment total operations

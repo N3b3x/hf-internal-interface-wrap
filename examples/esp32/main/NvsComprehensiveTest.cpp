@@ -180,6 +180,8 @@ bool test_nvs_u32_operations() noexcept {
     return false;
   }
 
+
+
   // Test 5: Invalid parameters
   result = nvs.SetU32(nullptr, TEST_U32_VALUE);
   if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
@@ -200,6 +202,8 @@ bool test_nvs_u32_operations() noexcept {
     return false;
   }
 
+
+
   // Test 7: Maximum key length (15 characters for ESP32)
   char max_key[16];
   memset(max_key, 'K', 15);
@@ -211,6 +215,8 @@ bool test_nvs_u32_operations() noexcept {
     return false;
   }
 
+
+
   // Test 8: Key too long
   char long_key[32];
   memset(long_key, 'L', 31);
@@ -221,6 +227,8 @@ bool test_nvs_u32_operations() noexcept {
     ESP_LOGE(TAG, "SetU32 with too long key should return NVS_ERR_KEY_TOO_LONG");
     return false;
   }
+
+
 
   ESP_LOGI(TAG, "[SUCCESS] NVS U32 operations tests passed");
   return true;
