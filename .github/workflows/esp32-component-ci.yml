@@ -44,7 +44,7 @@ jobs:
         example_type: [
           ascii_art, gpio_test,
           adc_test, uart_test, spi_test, i2c_test,
-          pwm_test, can_test, temperature_test, nvs_test,
+          pwm_test, can_test, pio_test, temperature_test, nvs_test,
           timer_test, logger_test, wifi_test, bluetooth_test, utils_test
         ]
         exclude:
@@ -63,6 +63,8 @@ jobs:
             example_type: pwm_test
           - build_type: Debug
             example_type: can_test
+          - build_type: Debug
+            example_type: pio_test
           - build_type: Debug
             example_type: temperature_test
           - build_type: Debug
