@@ -38,9 +38,16 @@ static constexpr uint32_t WS2812_T1L = 600;    // 1 code, low time
 static constexpr uint32_t WS2812_RESET = 50000; // Reset time (>50µs)
 
 // Test GPIO pins (configurable for different setups)
-static constexpr hf_gpio_num_t TEST_GPIO_TX = 2;  // GPIO2 for transmission
-static constexpr hf_gpio_num_t TEST_GPIO_RX = 3;  // GPIO3 for reception
+// ESP32-C6 specific GPIO configuration for RMT compatibility
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+static constexpr hf_gpio_num_t TEST_GPIO_TX = 2;   // GPIO2 for transmission (RMT compatible)
+static constexpr hf_gpio_num_t TEST_GPIO_RX = 3;   // GPIO3 for reception (RMT compatible)
 static constexpr hf_gpio_num_t TEST_GPIO_LOOP = 4; // GPIO4 for loopback tests
+#else
+static constexpr hf_gpio_num_t TEST_GPIO_TX = 2;   // GPIO2 for transmission
+static constexpr hf_gpio_num_t TEST_GPIO_RX = 3;   // GPIO3 for reception
+static constexpr hf_gpio_num_t TEST_GPIO_LOOP = 4; // GPIO4 for loopback tests
+#endif
 
 // Test resolution for timing precision
 static constexpr uint32_t TEST_RESOLUTION_NS = 100; // 100ns resolution for precise WS2812 timing
@@ -51,13 +58,21 @@ static constexpr uint32_t TEST_RESOLUTION_NS = 100; // 100ns resolution for prec
 
 /**
  * @brief Create a default PIO channel configuration for testing
+ * ESP32-C6 specific configuration for RMT compatibility
  */
 hf_pio_channel_config_t create_test_channel_config(hf_gpio_num_t gpio_pin, 
                                                    hf_pio_direction_t direction = hf_pio_direction_t::Transmit) noexcept {
     hf_pio_channel_config_t config = {};
     config.gpio_pin = gpio_pin;
     config.direction = direction;
+    
+    // ESP32-C6 specific resolution configuration
+    #if defined(CONFIG_IDF_TARGET_ESP32C6)
+    config.resolution_ns = 1000; // 1µs resolution for ESP32-C6 RMT stability
+    #else
     config.resolution_ns = TEST_RESOLUTION_NS;
+    #endif
+    
     config.polarity = hf_pio_polarity_t::Normal;
     config.idle_state = hf_pio_idle_state_t::Low;
     config.timeout_us = 10000;
@@ -121,6 +136,11 @@ void create_logic_analyzer_test_pattern(hf_pio_symbol_t* symbols, size_t& symbol
 
 bool test_constructor_default() noexcept {
     ESP_LOGI(TAG, "Testing default constructor...");
+    
+    // ESP32-C6 specific validation
+    #if defined(CONFIG_IDF_TARGET_ESP32C6)
+    ESP_LOGI(TAG, "Running on ESP32-C6 with RMT peripheral");
+    #endif
     
     EspPio pio;
     
@@ -244,6 +264,11 @@ bool test_lazy_initialization() noexcept {
 
 bool test_channel_configuration() noexcept {
     ESP_LOGI(TAG, "Testing channel configuration...");
+    
+    // ESP32-C6 specific validation
+    #if defined(CONFIG_IDF_TARGET_ESP32C6)
+    ESP_LOGI(TAG, "Testing ESP32-C6 RMT channel configuration");
+    #endif
     
     EspPio pio;
     if (!pio.EnsureInitialized()) {
@@ -514,7 +539,7 @@ bool test_ws2812_timing_validation() noexcept {
     ESP_LOGI(TAG, "  Reset: %u ticks (%uns)", reset_ticks, reset_ticks * TEST_RESOLUTION_NS);
     
     // Check timing tolerances (WS2812 has ±150ns tolerance)
-    uint32_t tolerance_ticks = 150 / TEST_RESOLUTION_NS;
+    [[maybe_unused]] uint32_t tolerance_ticks = 150 / TEST_RESOLUTION_NS;
     
     if (t0h_ticks < (350 - 150) / TEST_RESOLUTION_NS || 
         t0h_ticks > (350 + 150) / TEST_RESOLUTION_NS) {

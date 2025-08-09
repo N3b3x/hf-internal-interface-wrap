@@ -28,9 +28,16 @@
 // ESP32 PIO/RMT CONSTANTS
 //==============================================================================
 
-static constexpr uint8_t HF_RMT_MAX_CHANNELS = 4;
-static constexpr uint8_t HF_RMT_MAX_TX_CHANNELS = 2;
-static constexpr uint8_t HF_RMT_MAX_RX_CHANNELS = 2;
+// ESP32-C6 specific RMT channel limits
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+static constexpr uint8_t HF_RMT_MAX_CHANNELS = 2;      // ESP32-C6 has 2 RMT channels
+static constexpr uint8_t HF_RMT_MAX_TX_CHANNELS = 2;   // Both can be used for TX
+static constexpr uint8_t HF_RMT_MAX_RX_CHANNELS = 2;   // Both can be used for RX
+#else
+static constexpr uint8_t HF_RMT_MAX_CHANNELS = 4;      // Other ESP32 variants have 4 channels
+static constexpr uint8_t HF_RMT_MAX_TX_CHANNELS = 2;   // 2 TX channels
+static constexpr uint8_t HF_RMT_MAX_RX_CHANNELS = 2;   // 2 RX channels
+#endif
 static constexpr size_t HF_RMT_MIN_MEM_BLOCK_SYMBOLS = 48;
 static constexpr size_t HF_RMT_MAX_MEM_BLOCK_SYMBOLS = 1024;
 static constexpr size_t HF_RMT_DEFAULT_MEM_BLOCK_SYMBOLS = 64;
