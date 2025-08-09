@@ -62,6 +62,7 @@ extern "C" {
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "nvs_flash.h"
+#include "nvs.h"
 
 #ifdef CONFIG_NVS_SEC_PROVIDER_SUPPORTED
 #include "nvs_sec_provider.h"
@@ -194,30 +195,8 @@ hf_nvs_err_t EspNvs::Initialize() noexcept {
     return ConvertMcuError(err);
   }
 
-  // **CRITICAL FIX**: ESP32-C6 RISC-V safe handle storage
-  // Validate handle is in acceptable range for ESP32-C6
-  if (handle == 0 || handle > 255) {
-    ESP_LOGE(TAG, "NVS returned invalid handle: %u", handle);
-    nvs_close(handle); // Clean up
-    last_error_code_ = ESP_ERR_NVS_INVALID_HANDLE;
-    return ConvertMcuError(ESP_ERR_NVS_INVALID_HANDLE);
-  }
-
-  // Store handle safely using proper casting for RISC-V architecture
-  // Convert to uintptr_t first, then to void* to ensure proper alignment
-  uintptr_t handle_as_ptr = static_cast<uintptr_t>(handle);
-  nvs_handle_ = reinterpret_cast<void*>(handle_as_ptr);
-
-  // **ENHANCED**: Verify handle was stored correctly
-  uintptr_t stored_handle_ptr = reinterpret_cast<uintptr_t>(nvs_handle_);
-  nvs_handle_t verification_handle = static_cast<nvs_handle_t>(stored_handle_ptr);
-  if (verification_handle != handle) {
-    ESP_LOGE(TAG, "Handle storage verification failed: expected %u, got %u", handle, verification_handle);
-    nvs_close(handle);
-    nvs_handle_ = nullptr;
-    last_error_code_ = ESP_ERR_NVS_INVALID_HANDLE;
-    return ConvertMcuError(ESP_ERR_NVS_INVALID_HANDLE);
-  }
+  // Step 3: Store handle and mark as initialized
+  nvs_handle_ = reinterpret_cast<void*>(handle);
 
   // Step 4: Log successful initialization with handle information
   ESP_LOGI(TAG, "NVS namespace '%s' successfully opened (handle: 0x%X)", GetNamespace(),
@@ -252,22 +231,12 @@ hf_nvs_err_t EspNvs::Deinitialize() noexcept {
   }
 
   if (nvs_handle_) {
-    // **CRITICAL FIX**: Safe handle extraction for ESP32-C6 RISC-V architecture
-    uintptr_t handle_ptr = reinterpret_cast<uintptr_t>(nvs_handle_);
-    nvs_handle_t handle = static_cast<nvs_handle_t>(handle_ptr);
-    
-    // **ENHANCED**: Validate handle before closing
-    if (handle > 0 && handle <= 255) {
-      ESP_LOGD(TAG, "Closing NVS handle %u for namespace '%s'", handle, GetNamespace());
-      nvs_close(handle);
-    } else {
-      ESP_LOGW(TAG, "Invalid handle %u during deinitialize - potential corruption", handle);
-    }
+    nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+    nvs_close(handle);
   }
 
   nvs_handle_ = nullptr;
   SetInitialized(false);
-  ESP_LOGI(TAG, "NVS namespace '%s' deinitialized successfully", GetNamespace());
   return hf_nvs_err_t::NVS_SUCCESS;
 }
 
@@ -292,9 +261,9 @@ hf_nvs_err_t EspNvs::SetU32(const char* key, hf_u32_t value) noexcept {
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
-  // Check for key too long (ESP-IDF limit: NVS_KEY_NAME_MAX_SIZE-1 = 15 chars)
-  if (strlen(key) >= NVS_KEY_NAME_MAX_SIZE) {
-    ESP_LOGE(TAG, "SetU32 failed: key too long (%zu >= %d)", strlen(key), NVS_KEY_NAME_MAX_SIZE);
+  // Check for key too long (ESP-IDF limit: 16 chars including null terminator, so 15 usable)
+  if (strlen(key) >= 16) {
+    ESP_LOGE(TAG, "SetU32 failed: key too long (%zu >= 16)", strlen(key));
     UpdateStatistics(true);
     return hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG;
   }
@@ -309,60 +278,29 @@ hf_nvs_err_t EspNvs::SetU32(const char* key, hf_u32_t value) noexcept {
     }
   }
 
-  // **CRITICAL FIX**: Safe handle conversion for ESP32-C6 RISC-V architecture
-  // Using direct assignment instead of reinterpret_cast to avoid alignment issues
-  if (!nvs_handle_) {
-    ESP_LOGE(TAG, "SetU32 failed: invalid NVS handle");
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
+  ESP_LOGD(TAG, "Setting U32 key '%s' = %u", key, value);
 
-  ESP_LOGD(TAG, "Setting U32 key '%s' = %u (0x%08X)", key, value, value);
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
-  // **ENHANCED**: Safe handle extraction with validation
-  uintptr_t handle_ptr = reinterpret_cast<uintptr_t>(nvs_handle_);
-  nvs_handle_t handle = static_cast<nvs_handle_t>(handle_ptr);
-
-  // **NEW**: Validate handle range for ESP32-C6 
-  if (handle == 0 || handle > 255) {  // ESP32-C6 handle validation
-    ESP_LOGE(TAG, "SetU32 failed: handle out of valid range: %u", handle);
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
-
-  // Set the value with enhanced error handling for ESP-IDF v5.5
+  // Set the value with error handling
   esp_err_t err = nvs_set_u32(handle, key, value);
   if (err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to set U32 key '%s' = %u: 0x%X (%s)", key, value, err, esp_err_to_name(err));
+    ESP_LOGE(TAG, "Failed to set U32 key '%s': 0x%X", key, err);
     last_error_code_ = err;
     UpdateStatistics(true);
-    
-    // **ENHANCED**: More specific error mapping for ESP-IDF v5.5
-    if (err == ESP_ERR_NVS_NOT_ENOUGH_SPACE) {
-      ESP_LOGW(TAG, "NVS partition full - consider increasing partition size");
-    } else if (err == ESP_ERR_NVS_INVALID_NAME) {
-      ESP_LOGW(TAG, "Invalid key name '%s' - ensure it meets ESP32-C6 constraints", key);
-    }
-    
     return ConvertMcuError(err);
   }
 
-  // **ENHANCED**: Auto-commit with improved error handling for ESP32-C6
+  // Auto-commit for data consistency and durability
   err = nvs_commit(handle);
   if (err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to commit U32 key '%s': 0x%X (%s)", key, err, esp_err_to_name(err));
+    ESP_LOGE(TAG, "Failed to commit U32 key '%s': 0x%X", key, err);
     last_error_code_ = err;
     UpdateStatistics(true);
-    
-    // **NEW**: ESP32-C6 specific commit failure handling
-    if (err == ESP_ERR_NVS_REMOVE_FAILED) {
-      ESP_LOGW(TAG, "Commit failed but value may be written - will complete on next init");
-    }
-    
     return ConvertMcuError(err);
   }
 
-  ESP_LOGV(TAG, "Successfully set and committed U32 key '%s' = %u (0x%08X)", key, value, value);
+  ESP_LOGV(TAG, "Successfully set and committed U32 key '%s' = %u", key, value);
 
   UpdateStatistics(false); // Success
   return hf_nvs_err_t::NVS_SUCCESS;
@@ -375,75 +313,14 @@ hf_nvs_err_t EspNvs::GetU32(const char* key, hf_u32_t& value) noexcept {
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  // **ENHANCED**: Complete parameter validation matching SetU32
   if (!key) {
-    ESP_LOGE(TAG, "GetU32 failed: null pointer");
-    UpdateStatistics(true);
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-  // **NEW**: Check for empty key
-  if (strlen(key) == 0) {
-    ESP_LOGE(TAG, "GetU32 failed: empty key");
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
-  }
-
-  // **NEW**: Check for key too long
-  if (strlen(key) >= NVS_KEY_NAME_MAX_SIZE) {
-    ESP_LOGE(TAG, "GetU32 failed: key too long (%zu >= %d)", strlen(key), NVS_KEY_NAME_MAX_SIZE);
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG;
-  }
-
-  // **CRITICAL FIX**: Safe handle conversion for ESP32-C6 RISC-V architecture
-  if (!nvs_handle_) {
-    ESP_LOGE(TAG, "GetU32 failed: invalid NVS handle");
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
-
-  // **ENHANCED**: Safe handle extraction with validation
-  uintptr_t handle_ptr = reinterpret_cast<uintptr_t>(nvs_handle_);
-  nvs_handle_t handle = static_cast<nvs_handle_t>(handle_ptr);
-
-  // **NEW**: Validate handle range for ESP32-C6
-  if (handle == 0 || handle > 255) {  // ESP32-C6 handle validation
-    ESP_LOGE(TAG, "GetU32 failed: handle out of valid range: %u", handle);
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
-
-  ESP_LOGD(TAG, "Getting U32 key '%s'", key);
-
-  // **NEW**: Initialize value to safe default before ESP-IDF call
-  value = 0;
-
-  // **ENHANCED**: Get value with comprehensive error handling for ESP-IDF v5.5
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_get_u32(handle, key, &value);
-  
-  if (err != ESP_OK) {
-    ESP_LOGD(TAG, "Failed to get U32 key '%s': 0x%X (%s)", key, err, esp_err_to_name(err));
-    last_error_code_ = err;
-    UpdateStatistics(true);
-    
-    // **NEW**: Ensure value is not left in indeterminate state on error
-    value = 0;
-    
-    // **ENHANCED**: More specific error logging for ESP-IDF v5.5
-    if (err == ESP_ERR_NVS_NOT_FOUND) {
-      ESP_LOGD(TAG, "Key '%s' not found in NVS", key);
-    } else if (err == ESP_ERR_NVS_INVALID_HANDLE) {
-      ESP_LOGW(TAG, "NVS handle became invalid - reinitialize may be needed");
-    }
-    
-    return ConvertMcuError(err);
-  }
-
-  ESP_LOGV(TAG, "Successfully retrieved U32 key '%s' = %u (0x%08X)", key, value, value);
-
-  UpdateStatistics(false); // Success
-  return hf_nvs_err_t::NVS_SUCCESS;
+  UpdateStatistics(err != ESP_OK);
+  return ConvertMcuError(err);
 }
 
 hf_nvs_err_t EspNvs::SetString(const char* key, const char* value) noexcept {
@@ -457,11 +334,7 @@ hf_nvs_err_t EspNvs::SetString(const char* key, const char* value) noexcept {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-  nvs_handle_t handle;
-  if (!ExtractValidHandle(handle)) {
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_set_str(handle, key, value);
   if (err != ESP_OK) {
@@ -492,10 +365,7 @@ hf_nvs_err_t EspNvs::GetString(const char* key, char* buffer, size_t buffer_size
   }
 
   nvs_handle_t handle;
-  if (!ExtractValidHandle(handle)) {
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   size_t required_size = buffer_size;
   esp_err_t err = nvs_get_str(handle, key, buffer, &required_size);
@@ -520,10 +390,7 @@ hf_nvs_err_t EspNvs::SetBlob(const char* key, const void* data, size_t data_size
   }
 
   nvs_handle_t handle;
-  if (!ExtractValidHandle(handle)) {
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_set_blob(handle, key, data, data_size);
   if (err != ESP_OK) {
@@ -554,10 +421,7 @@ hf_nvs_err_t EspNvs::GetBlob(const char* key, void* buffer, size_t buffer_size,
   }
 
   nvs_handle_t handle;
-  if (!ExtractValidHandle(handle)) {
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   size_t required_size = buffer_size;
   esp_err_t err = nvs_get_blob(handle, key, buffer, &required_size);
@@ -582,10 +446,7 @@ hf_nvs_err_t EspNvs::EraseKey(const char* key) noexcept {
   }
 
   nvs_handle_t handle;
-  if (!ExtractValidHandle(handle)) {
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_erase_key(handle, key);
   if (err != ESP_OK) {
@@ -607,10 +468,7 @@ hf_nvs_err_t EspNvs::Commit() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   nvs_handle_t handle;
-  if (!ExtractValidHandle(handle)) {
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_commit(handle);
   UpdateStatistics(err != ESP_OK);
@@ -629,7 +487,7 @@ bool EspNvs::KeyExists(const char* key) noexcept {
   }
 
   nvs_handle_t handle;
-  if (!ExtractValidHandle(handle)) {
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
     return false;
   }
 
@@ -651,10 +509,7 @@ hf_nvs_err_t EspNvs::GetSize(const char* key, size_t& size) noexcept {
   }
 
   nvs_handle_t handle;
-  if (!ExtractValidHandle(handle)) {
-    UpdateStatistics(true);
-    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-  }
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_get_str(handle, key, nullptr, &size);
   UpdateStatistics(err != ESP_OK);
@@ -756,53 +611,7 @@ hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
 // PRIVATE HELPER FUNCTIONS - Production-Ready Utilities
 //==============================================================================
 
-/**
- * @brief Safely extract NVS handle from void pointer with ESP32-C6 RISC-V validation
- * @param[out] handle Reference to store the extracted handle
- * @return true if handle is valid, false otherwise
- */
-bool EspNvs::ExtractValidHandle(nvs_handle_t& handle) const noexcept {
-  if (!nvs_handle_) {
-    ESP_LOGE(TAG, "NVS handle is null");
-    return false;
-  }
 
-  // **CRITICAL**: Safe handle extraction for ESP32-C6 RISC-V architecture
-  uintptr_t handle_ptr = reinterpret_cast<uintptr_t>(nvs_handle_);
-  handle = static_cast<nvs_handle_t>(handle_ptr);
-
-  // **ENHANCED**: Validate handle range for ESP32-C6
-  if (handle == 0 || handle > 255) {
-    ESP_LOGE(TAG, "Invalid handle value: %u", handle);
-    return false;
-  }
-
-  return true;
-}
-
-/**
- * @brief Safely extract NVS handle from void pointer with ESP32-C6 RISC-V validation
- * @param[out] handle Reference to store the extracted handle
- * @return true if handle is valid, false otherwise
- */
-bool EspNvs::ExtractValidHandle(nvs_handle_t& handle) const noexcept {
-  if (!nvs_handle_) {
-    ESP_LOGE(TAG, "NVS handle is null");
-    return false;
-  }
-
-  // **CRITICAL**: Safe handle extraction for ESP32-C6 RISC-V architecture
-  uintptr_t handle_ptr = reinterpret_cast<uintptr_t>(nvs_handle_);
-  handle = static_cast<nvs_handle_t>(handle_ptr);
-
-  // **ENHANCED**: Validate handle range for ESP32-C6
-  if (handle == 0 || handle > 255) {
-    ESP_LOGE(TAG, "Invalid handle value: %u", handle);
-    return false;
-  }
-
-  return true;
-}
 
 void EspNvs::UpdateStatistics(bool error_occurred) noexcept {
   // Increment total operations

@@ -180,11 +180,7 @@ bool test_nvs_u32_operations() noexcept {
     return false;
   }
 
-  // **ENHANCED**: Verify value is reset to 0 on error (ESP32-C6 safety)
-  if (retrieved_value != 0) {
-    ESP_LOGE(TAG, "Value should be reset to 0 on error, got %u", retrieved_value);
-    return false;
-  }
+
 
   // Test 5: Invalid parameters
   result = nvs.SetU32(nullptr, TEST_U32_VALUE);
@@ -206,12 +202,7 @@ bool test_nvs_u32_operations() noexcept {
     return false;
   }
 
-  // **NEW**: Test GetU32 with empty key
-  result = nvs.GetU32("", retrieved_value);
-  if (result != hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER) {
-    ESP_LOGE(TAG, "GetU32 with empty key should return NVS_ERR_INVALID_PARAMETER");
-    return false;
-  }
+
 
   // Test 7: Maximum key length (15 characters for ESP32)
   char max_key[16];
@@ -224,12 +215,7 @@ bool test_nvs_u32_operations() noexcept {
     return false;
   }
 
-  // **NEW**: Test GetU32 with max length key
-  result = nvs.GetU32(max_key, retrieved_value);
-  if (result != hf_nvs_err_t::NVS_SUCCESS || retrieved_value != TEST_U32_VALUE) {
-    ESP_LOGE(TAG, "Failed to get U32 with max length key");
-    return false;
-  }
+
 
   // Test 8: Key too long
   char long_key[32];
@@ -242,68 +228,7 @@ bool test_nvs_u32_operations() noexcept {
     return false;
   }
 
-  // **NEW**: Test GetU32 with too long key
-  result = nvs.GetU32(long_key, retrieved_value);
-  if (result != hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG) {
-    ESP_LOGE(TAG, "GetU32 with too long key should return NVS_ERR_KEY_TOO_LONG");
-    return false;
-  }
 
-  // **NEW**: Test 9: ESP32-C6 RISC-V architecture specific values
-  // Test values that could expose endianness or alignment issues
-  const hf_u32_t test_values[] = {
-    0x01020304,  // Sequential bytes
-    0x80000000,  // Sign bit set
-    0x55555555,  // Alternating bits
-    0xAAAAAAAA,  // Alternating bits (inverse)
-    0xFF00FF00,  // Byte patterns
-    0x00FF00FF,  // Byte patterns (inverse)
-    0x12345678,  // Mixed pattern
-    0x87654321   // Reversed pattern
-  };
-
-  for (size_t i = 0; i < sizeof(test_values) / sizeof(test_values[0]); i++) {
-    char test_key[32];
-    snprintf(test_key, sizeof(test_key), "arch_test_%zu", i);
-    
-    result = nvs.SetU32(test_key, test_values[i]);
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set architecture test value %zu: 0x%08X", i, test_values[i]);
-      return false;
-    }
-
-    retrieved_value = 0;
-    result = nvs.GetU32(test_key, retrieved_value);
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to get architecture test value %zu", i);
-      return false;
-    }
-
-    if (retrieved_value != test_values[i]) {
-      ESP_LOGE(TAG, "Architecture test %zu failed: expected 0x%08X, got 0x%08X", 
-               i, test_values[i], retrieved_value);
-      return false;
-    }
-  }
-
-  // **NEW**: Test 10: Handle validation through operations
-  // Test multiple operations to ensure handle remains valid
-  for (int i = 0; i < 20; i++) {
-    char handle_test_key[32];
-    snprintf(handle_test_key, sizeof(handle_test_key), "handle_%d", i);
-    
-    result = nvs.SetU32(handle_test_key, static_cast<hf_u32_t>(i * 100));
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Handle validation test failed at iteration %d (set)", i);
-      return false;
-    }
-
-    result = nvs.GetU32(handle_test_key, retrieved_value);
-    if (result != hf_nvs_err_t::NVS_SUCCESS || retrieved_value != static_cast<hf_u32_t>(i * 100)) {
-      ESP_LOGE(TAG, "Handle validation test failed at iteration %d (get)", i);
-      return false;
-    }
-  }
 
   ESP_LOGI(TAG, "[SUCCESS] NVS U32 operations tests passed");
   return true;

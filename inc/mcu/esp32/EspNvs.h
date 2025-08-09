@@ -280,12 +280,7 @@ private:
    */
   bool IsValidKey(const char* key) const noexcept;
 
-  /**
-   * @brief Safely extract NVS handle from void pointer with ESP32-C6 RISC-V validation.
-   * @param[out] handle Reference to store the extracted handle
-   * @return true if handle is valid, false otherwise
-   */
-  bool ExtractValidHandle(nvs_handle_t& handle) const noexcept;
+
 
   //==============================================//
   // PRIVATE MEMBER VARIABLES                     //
