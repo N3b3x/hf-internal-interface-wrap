@@ -66,25 +66,28 @@ ESP32-C6 GND   ──► Logic Analyzer Ground
 
 ## Running the Tests
 
-### Build and Flash
+### Using Build Scripts (Recommended)
 ```bash
 # Navigate to ESP32 examples directory
 cd examples/esp32
 
-# Build PIO test
-idf.py build -DEXAMPLE_TYPE=pio_test
-
-# Flash to device
-idf.py flash monitor
-```
-
-### Using Build Scripts
-```bash
 # Linux/macOS
 ./build_example.sh pio_test
 
 # Windows PowerShell
 .\build_example.ps1 pio_test
+
+# Flash to device
+idf.py flash monitor
+```
+
+### Direct ESP-IDF Build (Alternative)
+```bash
+# Build PIO test
+idf.py build -DEXAMPLE_TYPE=pio_test
+
+# Flash to device
+idf.py flash monitor
 ```
 
 ### CI/CD Integration
@@ -218,6 +221,10 @@ Capture signals on GPIO2 and verify:
 ### Debug Mode
 Enable detailed logging by building in Debug mode:
 ```bash
+# Using build scripts (recommended)
+./build_example.sh pio_test Debug
+
+# Or direct ESP-IDF build
 idf.py build -DEXAMPLE_TYPE=pio_test -DBUILD_TYPE=Debug
 ```
 

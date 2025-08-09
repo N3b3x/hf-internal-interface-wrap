@@ -3,6 +3,7 @@
 # 
 # Example types:
 #   ascii_art      - ASCII art generator example
+#   pio_test       - Comprehensive PIO/RMT testing suite with WS2812 and logic analyzer
 #   bluetooth_test - Comprehensive Bluetooth testing suite
 #   utils_test     - Utilities testing suite
 #

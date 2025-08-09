@@ -4,6 +4,7 @@
 # 
 # Example types:
 #   ascii_art      - ASCII art generator example
+#   pio_test       - Comprehensive PIO/RMT testing suite with WS2812 and logic analyzer
 #   bluetooth_test - Comprehensive Bluetooth testing suite
 #   utils_test     - Utilities testing suite
 #
@@ -29,7 +30,7 @@ case $EXAMPLE_TYPE in
         ;;
     *)
         echo "ERROR: Invalid example type: $EXAMPLE_TYPE"
-        echo "Available types: ascii_art, gpio_test, adc_test, i2c_test, spi_test, uart_test, can_test, pwm_test, timer_test, logger_test, nvs_test, wifi_test, pio_test, temperature_test, bluetooth_test, interrupts_test, utils_test"
+        echo "Available types: ascii_art, gpio_test, adc_test, i2c_test, spi_test, uart_test, can_test, pwm_test, pio_test, timer_test, logger_test, nvs_test, wifi_test, temperature_test, bluetooth_test, interrupts_test, utils_test"
         exit 1
         ;;
 esac
