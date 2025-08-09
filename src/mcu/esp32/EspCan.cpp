@@ -54,14 +54,10 @@ static const char* TAG = "EspCan";
 //==============================================================================
 
 EspCan::EspCan(const hf_esp_can_config_t& config) noexcept
-    : BaseCan(), config_(config), is_initialized_(false), is_enabled_(false), 
-      is_recovering_(false), config_mutex_(), stats_mutex_(), callback_mutex_(),
-      twai_node_handle_(nullptr),
-      receive_cb_{}, receive_ud_(nullptr),
-      error_cb_{}, error_ud_(nullptr),
-      state_cb_{}, state_ud_(nullptr),
-      tx_cb_{}, tx_ud_(nullptr),
-      statistics_{}, diagnostics_{}, advanced_timing_{}, 
+    : BaseCan(), config_(config), is_initialized_(false), is_enabled_(false), is_recovering_(false),
+      config_mutex_(), stats_mutex_(), callback_mutex_(), twai_node_handle_(nullptr), receive_cb_{},
+      receive_ud_(nullptr), error_cb_{}, error_ud_(nullptr), state_cb_{}, state_ud_(nullptr),
+      tx_cb_{}, tx_ud_(nullptr), statistics_{}, diagnostics_{}, advanced_timing_{},
       current_filter_{}, filter_configured_(false) {
   // **LAZY INITIALIZATION** - Store configuration but do NOT initialize hardware
   // This follows the same pattern as EspAdc
@@ -75,13 +71,13 @@ EspCan::~EspCan() noexcept {
     ESP_LOGW(TAG, "EspCan destructor called on initialized instance - performing cleanup");
     Deinitialize();
   }
-  
+
   // Clear callbacks (single-callback design)
   ClearReceiveCallbackEx();
   ClearErrorCallback();
   ClearStateChangeCallback();
   ClearTxCompleteCallback();
-  
+
   ESP_LOGD(TAG, "EspCan controller %d destroyed", static_cast<int>(config_.controller_id));
 }
 
@@ -93,8 +89,7 @@ hf_can_err_t EspCan::Initialize() noexcept {
   MutexLockGuard lock(config_mutex_);
 
   if (is_initialized_.load()) {
-    ESP_LOGD(TAG, "TWAI node %u already initialized",
-             static_cast<unsigned>(config_.controller_id));
+    ESP_LOGD(TAG, "TWAI node %u already initialized", static_cast<unsigned>(config_.controller_id));
     return hf_can_err_t::CAN_SUCCESS;
   }
 
@@ -102,28 +97,31 @@ hf_can_err_t EspCan::Initialize() noexcept {
 
   // Create TWAI node configuration using ESP-IDF v5.5 API
   twai_onchip_node_config_t node_config = {
-    .io_cfg = {
-      .tx = static_cast<gpio_num_t>(config_.tx_pin),
-      .rx = static_cast<gpio_num_t>(config_.rx_pin),
-      .quanta_clk_out = GPIO_NUM_NC,
-      .bus_off_indicator = GPIO_NUM_NC,
-    },
-    .clk_src = TWAI_CLK_SRC_DEFAULT,
-    .bit_timing = {
-      .bitrate = config_.baud_rate,
-      .sp_permill = static_cast<uint16_t>(config_.sample_point_permill),
-      .ssp_permill = static_cast<uint16_t>(config_.secondary_sample_point),
-    },
-    .data_timing = {},
-    .fail_retry_cnt = config_.fail_retry_cnt,
-    .tx_queue_depth = config_.tx_queue_depth,
-    .intr_priority = config_.intr_priority,
-    .flags = {
-      .enable_self_test = config_.enable_self_test,
-      .enable_loopback = config_.enable_loopback,
-      .enable_listen_only = config_.enable_listen_only,
-      .no_receive_rtr = config_.no_receive_rtr,
-    },
+      .io_cfg =
+          {
+              .tx = static_cast<gpio_num_t>(config_.tx_pin),
+              .rx = static_cast<gpio_num_t>(config_.rx_pin),
+              .quanta_clk_out = GPIO_NUM_NC,
+              .bus_off_indicator = GPIO_NUM_NC,
+          },
+      .clk_src = TWAI_CLK_SRC_DEFAULT,
+      .bit_timing =
+          {
+              .bitrate = config_.baud_rate,
+              .sp_permill = static_cast<uint16_t>(config_.sample_point_permill),
+              .ssp_permill = static_cast<uint16_t>(config_.secondary_sample_point),
+          },
+      .data_timing = {},
+      .fail_retry_cnt = config_.fail_retry_cnt,
+      .tx_queue_depth = config_.tx_queue_depth,
+      .intr_priority = config_.intr_priority,
+      .flags =
+          {
+              .enable_self_test = config_.enable_self_test,
+              .enable_loopback = config_.enable_loopback,
+              .enable_listen_only = config_.enable_listen_only,
+              .no_receive_rtr = config_.no_receive_rtr,
+          },
   };
 
   // Create TWAI node using ESP-IDF v5.5 API
@@ -135,10 +133,10 @@ hf_can_err_t EspCan::Initialize() noexcept {
 
   // Register event callbacks for comprehensive event handling
   twai_event_callbacks_t callbacks = {
-    .on_tx_done = nullptr,
-    .on_rx_done = InternalReceiveCallback,
-    .on_state_change = InternalStateChangeCallback,
-    .on_error = InternalErrorCallback,
+      .on_tx_done = nullptr,
+      .on_rx_done = InternalReceiveCallback,
+      .on_state_change = InternalStateChangeCallback,
+      .on_error = InternalErrorCallback,
   };
 
   esp_err = twai_node_register_event_callbacks(twai_node_handle_, &callbacks, this);
@@ -221,10 +219,10 @@ hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, hf_u32_t timeo
 
   // Convert to ESP-IDF v5.5 TWAI frame
   twai_frame_t frame;
-  uint8_t frame_buffer[8];  // CAN frame data buffer
+  uint8_t frame_buffer[8]; // CAN frame data buffer
   frame.buffer = frame_buffer;
   frame.buffer_len = sizeof(frame_buffer);
-  
+
   hf_can_err_t convert_result = ConvertToTwaiFrame(message, frame);
   if (convert_result != hf_can_err_t::CAN_SUCCESS) {
     UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
@@ -258,7 +256,8 @@ hf_can_err_t EspCan::ReceiveMessage(hf_can_message_t& message, hf_u32_t timeout_
 
   // Note: With ESP-IDF v5.5 node API, message reception is handled via callbacks
   // This method is provided for legacy compatibility but may not be the preferred approach
-  ESP_LOGW(TAG, "Polling receive not recommended with ESP-IDF v5.5 node API - use callbacks instead");
+  ESP_LOGW(TAG,
+           "Polling receive not recommended with ESP-IDF v5.5 node API - use callbacks instead");
 
   UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, false);
   return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
@@ -270,15 +269,18 @@ hf_can_err_t EspCan::SetReceiveCallback(hf_can_receive_callback_t callback) noex
 }
 
 void EspCan::ClearReceiveCallback() noexcept {
-  ESP_LOGW(TAG, "ClearReceiveCallback (BaseCan) is deprecated - use ClearReceiveCallbackEx instead");
+  ESP_LOGW(TAG,
+           "ClearReceiveCallback (BaseCan) is deprecated - use ClearReceiveCallbackEx instead");
 }
 
 //==============================================================================
 // SINGLE-CALLBACK PER EVENT MANAGEMENT
 //==============================================================================
 
-hf_can_err_t EspCan::SetReceiveCallbackEx(hf_esp_can_receive_callback_t cb, void* user_data) noexcept {
-  if (!cb) return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
+hf_can_err_t EspCan::SetReceiveCallbackEx(hf_esp_can_receive_callback_t cb,
+                                          void* user_data) noexcept {
+  if (!cb)
+    return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   MutexLockGuard lock(callback_mutex_);
   receive_cb_ = std::move(cb);
   receive_ud_ = user_data;
@@ -291,7 +293,8 @@ void EspCan::ClearReceiveCallbackEx() noexcept {
 }
 
 hf_can_err_t EspCan::SetErrorCallback(hf_esp_can_error_callback_t cb, void* user_data) noexcept {
-  if (!cb) return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
+  if (!cb)
+    return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   MutexLockGuard lock(callback_mutex_);
   error_cb_ = std::move(cb);
   error_ud_ = user_data;
@@ -303,8 +306,10 @@ void EspCan::ClearErrorCallback() noexcept {
   error_ud_ = nullptr;
 }
 
-hf_can_err_t EspCan::SetStateChangeCallback(hf_esp_can_state_callback_t cb, void* user_data) noexcept {
-  if (!cb) return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
+hf_can_err_t EspCan::SetStateChangeCallback(hf_esp_can_state_callback_t cb,
+                                            void* user_data) noexcept {
+  if (!cb)
+    return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   MutexLockGuard lock(callback_mutex_);
   state_cb_ = std::move(cb);
   state_ud_ = user_data;
@@ -317,7 +322,8 @@ void EspCan::ClearStateChangeCallback() noexcept {
 }
 
 hf_can_err_t EspCan::SetTxCompleteCallback(hf_esp_can_tx_callback_t cb, void* user_data) noexcept {
-  if (!cb) return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
+  if (!cb)
+    return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   MutexLockGuard lock(callback_mutex_);
   tx_cb_ = std::move(cb);
   tx_ud_ = user_data;
@@ -403,8 +409,7 @@ hf_can_err_t EspCan::Reset() noexcept {
     return ConvertEspError(esp_err);
   }
 
-  ESP_LOGI(TAG, "TWAI node %u reset successfully",
-           static_cast<unsigned>(config_.controller_id));
+  ESP_LOGI(TAG, "TWAI node %u reset successfully", static_cast<unsigned>(config_.controller_id));
   return hf_can_err_t::CAN_SUCCESS;
 }
 
@@ -472,7 +477,8 @@ hf_can_err_t EspCan::GetDiagnostics(hf_can_diagnostics_t& diagnostics) noexcept 
 // ESP-IDF v5.5 SPECIFIC ADVANCED FEATURES
 //==============================================//
 
-hf_can_err_t EspCan::ConfigureAdvancedTiming(const hf_esp_can_timing_config_t& timing_config) noexcept {
+hf_can_err_t EspCan::ConfigureAdvancedTiming(
+    const hf_esp_can_timing_config_t& timing_config) noexcept {
   if (!is_initialized_.load()) {
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
@@ -481,15 +487,15 @@ hf_can_err_t EspCan::ConfigureAdvancedTiming(const hf_esp_can_timing_config_t& t
 
   // Configure advanced timing for improved signal quality
   twai_timing_config_t esp_timing_config = {
-    .clk_src = TWAI_CLK_SRC_DEFAULT,
-    .quanta_resolution_hz = 0,
-    .brp = static_cast<uint8_t>(timing_config.brp),
-    .prop_seg = static_cast<uint8_t>(timing_config.prop_seg),
-    .tseg_1 = static_cast<uint8_t>(timing_config.tseg_1),
-    .tseg_2 = static_cast<uint8_t>(timing_config.tseg_2),
-    .sjw = static_cast<uint8_t>(timing_config.sjw),
-    .ssp_offset = static_cast<uint8_t>(timing_config.ssp_offset),
-    .triple_sampling = false,
+      .clk_src = TWAI_CLK_SRC_DEFAULT,
+      .quanta_resolution_hz = 0,
+      .brp = static_cast<uint8_t>(timing_config.brp),
+      .prop_seg = static_cast<uint8_t>(timing_config.prop_seg),
+      .tseg_1 = static_cast<uint8_t>(timing_config.tseg_1),
+      .tseg_2 = static_cast<uint8_t>(timing_config.tseg_2),
+      .sjw = static_cast<uint8_t>(timing_config.sjw),
+      .ssp_offset = static_cast<uint8_t>(timing_config.ssp_offset),
+      .triple_sampling = false,
   };
 
   esp_err_t esp_err = twai_node_reconfig_timing(twai_node_handle_, &esp_timing_config, nullptr);
@@ -506,7 +512,8 @@ hf_can_err_t EspCan::ConfigureAdvancedTiming(const hf_esp_can_timing_config_t& t
   return hf_can_err_t::CAN_SUCCESS;
 }
 
-hf_can_err_t EspCan::ConfigureAdvancedFilter(const hf_esp_can_filter_config_t& filter_config) noexcept {
+hf_can_err_t EspCan::ConfigureAdvancedFilter(
+    const hf_esp_can_filter_config_t& filter_config) noexcept {
   if (!is_initialized_.load()) {
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
@@ -517,11 +524,8 @@ hf_can_err_t EspCan::ConfigureAdvancedFilter(const hf_esp_can_filter_config_t& f
 
   if (filter_config.is_dual_filter) {
     // Configure dual filter mode
-    mask_filter = twai_make_dual_filter(
-      filter_config.id, filter_config.mask,
-      filter_config.id2, filter_config.mask2,
-      filter_config.is_extended
-    );
+    mask_filter = twai_make_dual_filter(filter_config.id, filter_config.mask, filter_config.id2,
+                                        filter_config.mask2, filter_config.is_extended);
   } else {
     // Configure single filter mode
     mask_filter.id = filter_config.id;
@@ -554,7 +558,7 @@ hf_can_err_t EspCan::InitiateBusRecovery() noexcept {
            static_cast<unsigned>(config_.controller_id));
 
   is_recovering_.store(true);
-  
+
   esp_err_t esp_err = twai_node_recover(twai_node_handle_);
   if (esp_err != ESP_OK) {
     is_recovering_.store(false);
@@ -581,7 +585,7 @@ hf_can_err_t EspCan::GetNodeInfo(twai_node_record_t& node_info) noexcept {
 }
 
 uint32_t EspCan::SendMessageBatch(const hf_can_message_t* messages, uint32_t count,
-                                 uint32_t timeout_ms) noexcept {
+                                  uint32_t timeout_ms) noexcept {
   if (!messages || count == 0 || !is_initialized_.load()) {
     return 0;
   }
@@ -603,8 +607,8 @@ uint32_t EspCan::SendMessageBatch(const hf_can_message_t* messages, uint32_t cou
 //==============================================//
 
 bool EspCan::InternalReceiveCallback(twai_node_handle_t handle,
-                                   const twai_rx_done_event_data_t* event_data,
-                                   void* user_ctx) noexcept {
+                                     const twai_rx_done_event_data_t* event_data,
+                                     void* user_ctx) noexcept {
   EspCan* esp_can = static_cast<EspCan*>(user_ctx);
   if (!esp_can) {
     return false;
@@ -613,9 +617,9 @@ bool EspCan::InternalReceiveCallback(twai_node_handle_t handle,
   // Receive message from ISR
   uint8_t recv_buffer[8];
   twai_frame_t rx_frame = {
-    .header = {},
-    .buffer = recv_buffer,
-    .buffer_len = sizeof(recv_buffer),
+      .header = {},
+      .buffer = recv_buffer,
+      .buffer_len = sizeof(recv_buffer),
   };
 
   if (twai_node_receive_from_isr(handle, &rx_frame) == ESP_OK) {
@@ -629,8 +633,8 @@ bool EspCan::InternalReceiveCallback(twai_node_handle_t handle,
 }
 
 bool EspCan::InternalErrorCallback(twai_node_handle_t handle,
-                                 const twai_error_event_data_t* event_data,
-                                 void* user_ctx) noexcept {
+                                   const twai_error_event_data_t* event_data,
+                                   void* user_ctx) noexcept {
   EspCan* esp_can = static_cast<EspCan*>(user_ctx);
   if (!esp_can || !event_data) {
     return false;
@@ -638,15 +642,15 @@ bool EspCan::InternalErrorCallback(twai_node_handle_t handle,
 
   // Use the correct field name from ESP-IDF error event data
   esp_can->UpdateErrorStatistics(event_data->err_flags.val);
-  
+
   ESP_LOGW(TAG, "TWAI error occurred: flags=0x%X", event_data->err_flags.val);
 
   return false;
 }
 
 bool EspCan::InternalStateChangeCallback(twai_node_handle_t handle,
-                                       const twai_state_change_event_data_t* event_data,
-                                       void* user_ctx) noexcept {
+                                         const twai_state_change_event_data_t* event_data,
+                                         void* user_ctx) noexcept {
   EspCan* esp_can = static_cast<EspCan*>(user_ctx);
   if (!esp_can || !event_data) {
     return false;
@@ -665,7 +669,7 @@ bool EspCan::InternalStateChangeCallback(twai_node_handle_t handle,
   state_info.previous_state = 0; // Would need actual previous state from ESP-IDF
   state_info.current_state = 1;  // Would need actual current state from ESP-IDF
   state_info.timestamp_us = esp_timer_get_time();
-  
+
   esp_can->DispatchStateChangeCallbacks(state_info);
 
   return false;
@@ -676,7 +680,7 @@ bool EspCan::InternalStateChangeCallback(twai_node_handle_t handle,
 //==============================================//
 
 hf_can_err_t EspCan::ConvertToTwaiFrame(const hf_can_message_t& hf_message,
-                                       twai_frame_t& twai_frame) noexcept {
+                                        twai_frame_t& twai_frame) noexcept {
   // Validate message
   if (hf_message.dlc > 8) {
     return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_DLC;
@@ -700,7 +704,7 @@ hf_can_err_t EspCan::ConvertToTwaiFrame(const hf_can_message_t& hf_message,
 }
 
 hf_can_err_t EspCan::ConvertFromTwaiFrame(const twai_frame_t& twai_frame,
-                                         hf_can_message_t& hf_message) noexcept {
+                                          hf_can_message_t& hf_message) noexcept {
   // Clear message
   hf_message = hf_can_message_t{};
 
@@ -814,7 +818,7 @@ void EspCan::DispatchTxCompleteCallbacks(const hf_esp_can_tx_info_t& tx_info) no
 
 void EspCan::UpdateErrorStatistics(uint32_t error_type) noexcept {
   MutexLockGuard lock(stats_mutex_);
-  
+
   // Update error counters
   switch (error_type) {
     case 0x01: // TX error
@@ -830,19 +834,19 @@ void EspCan::UpdateErrorStatistics(uint32_t error_type) noexcept {
       statistics_.bus_error_count++;
       break;
   }
-  
+
   statistics_.last_activity_timestamp = esp_timer_get_time() / 1000;
-  
+
   // Create error info and dispatch to callbacks
   hf_esp_can_error_info_t error_info;
   error_info.error_type = error_type;
-  error_info.tx_error_count = 0; // Not available in statistics structure
-  error_info.rx_error_count = 0; // Not available in statistics structure
+  error_info.tx_error_count = 0;    // Not available in statistics structure
+  error_info.rx_error_count = 0;    // Not available in statistics structure
   error_info.bus_off_state = false; // Would need to query actual state
   error_info.error_warning = false; // Would need to query actual state
   error_info.error_passive = false; // Would need to query actual state
   error_info.timestamp_us = esp_timer_get_time();
-  
+
   DispatchErrorCallbacks(error_info);
 }
 

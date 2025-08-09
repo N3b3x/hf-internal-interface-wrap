@@ -342,33 +342,27 @@ bool test_gpio_interrupt_functionality() noexcept {
 
   // Test different interrupt trigger types
   const hf_gpio_interrupt_trigger_t trigger_types[] = {
-    hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE,
-    hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE,
-    hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES,
-    hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL,
-    hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL
-  };
+      hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE,
+      hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE,
+      hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES,
+      hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL,
+      hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL};
 
-  const char* trigger_names[] = {
-    "RISING_EDGE",
-    "FALLING_EDGE", 
-    "BOTH_EDGES",
-    "HIGH_LEVEL",
-    "LOW_LEVEL"
-  };
+  const char* trigger_names[] = {"RISING_EDGE", "FALLING_EDGE", "BOTH_EDGES", "HIGH_LEVEL",
+                                 "LOW_LEVEL"};
 
-  for (size_t i = 0; i < sizeof(trigger_types)/sizeof(trigger_types[0]); i++) {
+  for (size_t i = 0; i < sizeof(trigger_types) / sizeof(trigger_types[0]); i++) {
     ESP_LOGI(TAG, "Testing %s interrupt trigger...", trigger_names[i]);
-    
+
     result = interrupt_gpio.ConfigureInterrupt(trigger_types[i]);
     if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       ESP_LOGI(TAG, "[SUCCESS] %s interrupt configured", trigger_names[i]);
-      
+
       // Test enable/disable
       result = interrupt_gpio.EnableInterrupt();
       if (result == hf_gpio_err_t::GPIO_SUCCESS) {
         ESP_LOGI(TAG, "[SUCCESS] %s interrupt enabled", trigger_names[i]);
-        
+
         // Get interrupt status
         InterruptStatus status;
         result = interrupt_gpio.GetInterruptStatus(status);
@@ -376,7 +370,7 @@ bool test_gpio_interrupt_functionality() noexcept {
           ESP_LOGI(TAG, "[SUCCESS] Interrupt status retrieved: enabled=%s, count=%lu",
                    status.is_enabled ? "YES" : "NO", status.interrupt_count);
         }
-        
+
         // Disable interrupt
         result = interrupt_gpio.DisableInterrupt();
         if (result == hf_gpio_err_t::GPIO_SUCCESS) {
@@ -388,13 +382,13 @@ bool test_gpio_interrupt_functionality() noexcept {
     } else {
       ESP_LOGW(TAG, "[WARNING] Failed to configure %s interrupt", trigger_names[i]);
     }
-    
+
     vTaskDelay(pdMS_TO_TICKS(50));
   }
 
   // Test interrupt statistics
   ESP_LOGI(TAG, "Testing interrupt statistics...");
-  
+
   result = interrupt_gpio.ClearInterruptStats();
   if (result == hf_gpio_err_t::GPIO_SUCCESS) {
     ESP_LOGI(TAG, "[SUCCESS] Interrupt statistics cleared");
@@ -402,8 +396,9 @@ bool test_gpio_interrupt_functionality() noexcept {
 
   // Test wait for interrupt functionality (with short timeout)
   ESP_LOGI(TAG, "Testing wait for interrupt (timeout test)...");
-  
-  result = interrupt_gpio.ConfigureInterrupt(hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE);
+
+  result = interrupt_gpio.ConfigureInterrupt(
+      hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE);
   if (result == hf_gpio_err_t::GPIO_SUCCESS) {
     result = interrupt_gpio.EnableInterrupt();
     if (result == hf_gpio_err_t::GPIO_SUCCESS) {
@@ -810,14 +805,14 @@ bool test_gpio_error_handling() noexcept {
   // Test operations on uninitialized GPIO
   ESP_LOGI(TAG, "Testing operations on uninitialized GPIO...");
   EspGpio uninit_gpio(TestPins::DIGITAL_OUT_1);
-  
-  auto result = uninit_gpio.SetActive();  // Should fail or auto-initialize
+
+  auto result = uninit_gpio.SetActive(); // Should fail or auto-initialize
   ESP_LOGI(TAG, "SetActive on uninitialized GPIO returned: %d", static_cast<int>(result));
 
   // Test strapping pin warnings
   ESP_LOGI(TAG, "Testing strapping pin detection...");
   const hf_pin_num_t strapping_pins[] = {9, 15}; // ESP32-C6 strapping pins
-  
+
   for (auto pin : strapping_pins) {
     if (EspGpio::IsStrappingPin(pin)) {
       ESP_LOGI(TAG, "[SUCCESS] GPIO%d correctly identified as strapping pin", pin);
@@ -827,19 +822,19 @@ bool test_gpio_error_handling() noexcept {
   // Test resource exhaustion (multiple GPIO instances)
   ESP_LOGI(TAG, "Testing resource management with multiple GPIO instances...");
   std::vector<std::unique_ptr<EspGpio>> test_gpios;
-  
-  const hf_pin_num_t test_pins[] = {TestPins::DIGITAL_OUT_1, TestPins::DIGITAL_OUT_2, 
+
+  const hf_pin_num_t test_pins[] = {TestPins::DIGITAL_OUT_1, TestPins::DIGITAL_OUT_2,
                                     TestPins::DIGITAL_IN_1, TestPins::DIGITAL_IN_2};
-  
+
   for (auto pin : test_pins) {
     auto gpio = std::make_unique<EspGpio>(pin, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
     if (gpio->EnsureInitialized()) {
       test_gpios.push_back(std::move(gpio));
     }
   }
-  
+
   ESP_LOGI(TAG, "[SUCCESS] Created %zu GPIO instances successfully", test_gpios.size());
-  
+
   // Clean up will happen automatically via destructors
   test_gpios.clear();
   ESP_LOGI(TAG, "[SUCCESS] GPIO instances cleaned up successfully");
@@ -860,18 +855,18 @@ bool test_gpio_stress_testing() noexcept {
   }
 
   ESP_LOGI(TAG, "Starting rapid toggle stress test...");
-  
+
   // Rapid toggle test
   const int stress_iterations = 10000;
   uint64_t start_time = esp_timer_get_time();
-  
+
   for (int i = 0; i < stress_iterations; i++) {
     if (i % 2 == 0) {
       stress_gpio.SetActive();
     } else {
       stress_gpio.SetInactive();
     }
-    
+
     // Brief yield every 1000 iterations to prevent watchdog
     if (i % 1000 == 0) {
       vTaskDelay(1);
@@ -880,24 +875,22 @@ bool test_gpio_stress_testing() noexcept {
       }
     }
   }
-  
+
   uint64_t end_time = esp_timer_get_time();
   uint64_t duration_us = end_time - start_time;
-  
-  ESP_LOGI(TAG, "[SUCCESS] Completed %d toggle operations in %llu microseconds", 
-           stress_iterations, duration_us);
-  ESP_LOGI(TAG, "[SUCCESS] Average operation time: %.2f microseconds per toggle", 
+
+  ESP_LOGI(TAG, "[SUCCESS] Completed %d toggle operations in %llu microseconds", stress_iterations,
+           duration_us);
+  ESP_LOGI(TAG, "[SUCCESS] Average operation time: %.2f microseconds per toggle",
            (double)duration_us / stress_iterations);
 
   // Configuration change stress test
   ESP_LOGI(TAG, "Starting configuration change stress test...");
-  
-  const hf_gpio_pull_mode_t pull_modes[] = {
-    hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
-    hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP,
-    hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN
-  };
-  
+
+  const hf_gpio_pull_mode_t pull_modes[] = {hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
+                                            hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP,
+                                            hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN};
+
   for (int cycle = 0; cycle < 100; cycle++) {
     for (auto pull_mode : pull_modes) {
       auto result = stress_gpio.SetPullMode(pull_mode);
@@ -905,7 +898,7 @@ bool test_gpio_stress_testing() noexcept {
         ESP_LOGW(TAG, "Pull mode change failed at cycle %d", cycle);
       }
     }
-    
+
     if (cycle % 20 == 0) {
       ESP_LOGI(TAG, "Configuration stress test progress: %d/100 cycles", cycle);
       vTaskDelay(1); // Yield
@@ -922,8 +915,9 @@ bool test_gpio_pin_validation() noexcept {
   ESP_LOGI(TAG, "Testing ESP32-C6 pin validation functions...");
 
   // Test valid GPIO pins
-  const hf_pin_num_t valid_pins[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 14, 16, 17, 18, 19, 20, 21, 22, 23};
-  
+  const hf_pin_num_t valid_pins[] = {0,  1,  2,  3,  4,  5,  6,  7,  8,  10,
+                                     11, 14, 16, 17, 18, 19, 20, 21, 22, 23};
+
   for (auto pin : valid_pins) {
     if (EspGpio::IsValidPin(pin)) {
       ESP_LOGI(TAG, "[SUCCESS] GPIO%d correctly identified as valid", pin);
@@ -934,7 +928,7 @@ bool test_gpio_pin_validation() noexcept {
 
   // Test invalid GPIO pins
   const hf_pin_num_t invalid_pins[] = {31, 32, 50, 100};
-  
+
   for (auto pin : invalid_pins) {
     if (!EspGpio::IsValidPin(pin)) {
       ESP_LOGI(TAG, "[SUCCESS] GPIO%d correctly identified as invalid", pin);
@@ -946,7 +940,7 @@ bool test_gpio_pin_validation() noexcept {
   // Test RTC GPIO detection
   ESP_LOGI(TAG, "Testing RTC GPIO detection...");
   const hf_pin_num_t rtc_pins[] = {0, 1, 2, 3, 4, 5, 6, 7}; // ESP32-C6 RTC GPIOs
-  
+
   for (auto pin : rtc_pins) {
     if (EspGpio::IsRtcGpio(pin)) {
       ESP_LOGI(TAG, "[SUCCESS] GPIO%d correctly identified as RTC GPIO", pin);
@@ -957,7 +951,7 @@ bool test_gpio_pin_validation() noexcept {
 
   // Test non-RTC GPIO pins
   const hf_pin_num_t non_rtc_pins[] = {8, 10, 11, 14, 16, 17, 18, 19, 20, 21, 22, 23};
-  
+
   for (auto pin : non_rtc_pins) {
     if (!EspGpio::IsRtcGpio(pin)) {
       ESP_LOGI(TAG, "[SUCCESS] GPIO%d correctly identified as non-RTC GPIO", pin);
@@ -969,19 +963,17 @@ bool test_gpio_pin_validation() noexcept {
   // Test pin capabilities
   ESP_LOGI(TAG, "Testing pin capabilities detection...");
   EspGpio test_gpio(TestPins::LED_OUTPUT);
-  
+
   if (test_gpio.EnsureInitialized()) {
     hf_gpio_pin_capabilities_t capabilities;
     auto result = test_gpio.GetPinCapabilities(capabilities);
-    
+
     if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       ESP_LOGI(TAG, "[SUCCESS] Pin capabilities retrieved:");
-      ESP_LOGI(TAG, "  - Pin %d: Input=%s, Output=%s, RTC=%s, ADC=%s", 
-               capabilities.pin_number,
+      ESP_LOGI(TAG, "  - Pin %d: Input=%s, Output=%s, RTC=%s, ADC=%s", capabilities.pin_number,
                capabilities.supports_input ? "Yes" : "No",
                capabilities.supports_output ? "Yes" : "No",
-               capabilities.supports_rtc ? "Yes" : "No",
-               capabilities.supports_adc ? "Yes" : "No");
+               capabilities.supports_rtc ? "Yes" : "No", capabilities.supports_adc ? "Yes" : "No");
     }
   }
 
@@ -1091,8 +1083,10 @@ bool test_gpio_concurrent_operations() noexcept {
   // Simultaneous toggle pattern
   for (int cycle = 0; cycle < 50; cycle++) {
     // Set both outputs simultaneously with opposite states
-    auto result1 = gpio1.SetState(cycle % 2 ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
-    auto result2 = gpio2.SetState(cycle % 2 ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
+    auto result1 = gpio1.SetState(cycle % 2 ? hf_gpio_state_t::HF_GPIO_STATE_ACTIVE
+                                            : hf_gpio_state_t::HF_GPIO_STATE_INACTIVE);
+    auto result2 = gpio2.SetState(cycle % 2 ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE
+                                            : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
 
     if (result1 != hf_gpio_err_t::GPIO_SUCCESS || result2 != hf_gpio_err_t::GPIO_SUCCESS) {
       ESP_LOGW(TAG, "Concurrent operation failed at cycle %d", cycle);
@@ -1100,11 +1094,10 @@ bool test_gpio_concurrent_operations() noexcept {
 
     // Read input while toggling outputs
     auto input_state = gpio3.GetCurrentState();
-    
+
     if (cycle % 10 == 0) {
       ESP_LOGI(TAG, "Concurrent test cycle %d: GPIO1=%s, GPIO2=%s, GPIO3=%s", cycle,
-               (cycle % 2) ? "ACTIVE" : "INACTIVE",
-               (cycle % 2) ? "INACTIVE" : "ACTIVE",
+               (cycle % 2) ? "ACTIVE" : "INACTIVE", (cycle % 2) ? "INACTIVE" : "ACTIVE",
                (input_state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? "ACTIVE" : "INACTIVE");
     }
 
@@ -1123,7 +1116,7 @@ bool test_gpio_concurrent_operations() noexcept {
       temp_gpio.SetInactive();
       // temp_gpio destructor called here
     }
-    
+
     if (i % 5 == 0) {
       ESP_LOGI(TAG, "Resource test iteration %d/20", i + 1);
     }
@@ -1147,24 +1140,25 @@ bool test_gpio_power_consumption() noexcept {
 
   // Test different drive capabilities for power optimization
   ESP_LOGI(TAG, "Testing drive capability settings for power optimization...");
-  
+
   const hf_gpio_drive_cap_t drive_levels[] = {
-    hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK,      // ~5mA - Lowest power
-    hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGER,  // ~10mA
-    hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM,    // ~20mA
-    hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST  // ~40mA - Highest power
+      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK,     // ~5mA - Lowest power
+      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGER, // ~10mA
+      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM,   // ~20mA
+      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST // ~40mA - Highest power
   };
 
-  const char* drive_names[] = {"WEAK (~5mA)", "STRONGER (~10mA)", "MEDIUM (~20mA)", "STRONGEST (~40mA)"};
+  const char* drive_names[] = {"WEAK (~5mA)", "STRONGER (~10mA)", "MEDIUM (~20mA)",
+                               "STRONGEST (~40mA)"};
 
   // Switch to output for drive capability testing
   power_gpio.SetDirection(hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 
-  for (size_t i = 0; i < sizeof(drive_levels)/sizeof(drive_levels[0]); i++) {
+  for (size_t i = 0; i < sizeof(drive_levels) / sizeof(drive_levels[0]); i++) {
     auto result = power_gpio.SetDriveCapability(drive_levels[i]);
     if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       ESP_LOGI(TAG, "[SUCCESS] Drive capability set to %s", drive_names[i]);
-      
+
       // Toggle a few times at this drive level
       for (int toggle = 0; toggle < 5; toggle++) {
         power_gpio.SetActive();
@@ -1179,25 +1173,26 @@ bool test_gpio_power_consumption() noexcept {
 
   // Test low-power pull mode configurations
   ESP_LOGI(TAG, "Testing pull resistor configurations for power optimization...");
-  
+
   power_gpio.SetDirection(hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT);
-  
+
   const hf_gpio_pull_mode_t pull_modes[] = {
-    hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING, // Highest power - no defined state
-    hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP,       // Low power - defined high state
-    hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN      // Low power - defined low state
+      hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING, // Highest power - no defined state
+      hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP,       // Low power - defined high state
+      hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN      // Low power - defined low state
   };
-  
-  const char* pull_names[] = {"FLOATING (highest power)", "PULL-UP (low power)", "PULL-DOWN (low power)"};
-  
-  for (size_t i = 0; i < sizeof(pull_modes)/sizeof(pull_modes[0]); i++) {
+
+  const char* pull_names[] = {"FLOATING (highest power)", "PULL-UP (low power)",
+                              "PULL-DOWN (low power)"};
+
+  for (size_t i = 0; i < sizeof(pull_modes) / sizeof(pull_modes[0]); i++) {
     auto result = power_gpio.SetPullMode(pull_modes[i]);
     if (result == hf_gpio_err_t::GPIO_SUCCESS) {
       ESP_LOGI(TAG, "[SUCCESS] Pull mode set to %s", pull_names[i]);
-      
+
       // Read pin state
       auto state = power_gpio.GetCurrentState();
-      ESP_LOGI(TAG, "  Pin state with %s: %s", pull_names[i], 
+      ESP_LOGI(TAG, "  Pin state with %s: %s", pull_names[i],
                (state == hf_gpio_state_t::HF_GPIO_STATE_ACTIVE) ? "ACTIVE" : "INACTIVE");
     }
     vTaskDelay(pdMS_TO_TICKS(100));
@@ -1206,20 +1201,19 @@ bool test_gpio_power_consumption() noexcept {
   // Test RTC GPIO configuration for ultra-low power
   if (power_gpio.SupportsRtcGpio()) {
     ESP_LOGI(TAG, "Testing RTC GPIO for ultra-low power operation...");
-    
+
     // Configure for low-power sleep mode
     hf_gpio_sleep_config_t sleep_config = {
-      .sleep_mode = hf_gpio_mode_t::HF_GPIO_MODE_INPUT,
-      .sleep_direction = hf_gpio_mode_t::HF_GPIO_MODE_INPUT,
-      .sleep_pull_mode = hf_gpio_pull_t::HF_GPIO_PULL_UP, // Define state to reduce power
-      .sleep_drive_strength = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK,
-      .sleep_output_enable = false,
-      .sleep_input_enable = true,
-      .hold_during_sleep = false,
-      .rtc_domain_enable = true,
-      .slp_sel_enable = true,
-      .enable_sleep_retain = true
-    };
+        .sleep_mode = hf_gpio_mode_t::HF_GPIO_MODE_INPUT,
+        .sleep_direction = hf_gpio_mode_t::HF_GPIO_MODE_INPUT,
+        .sleep_pull_mode = hf_gpio_pull_t::HF_GPIO_PULL_UP, // Define state to reduce power
+        .sleep_drive_strength = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK,
+        .sleep_output_enable = false,
+        .sleep_input_enable = true,
+        .hold_during_sleep = false,
+        .rtc_domain_enable = true,
+        .slp_sel_enable = true,
+        .enable_sleep_retain = true};
 
     auto result = power_gpio.ConfigureSleep(sleep_config);
     if (result == hf_gpio_err_t::GPIO_SUCCESS) {

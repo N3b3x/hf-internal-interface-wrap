@@ -3,9 +3,9 @@
  * @brief Comprehensive Temperature sensor testing suite for ESP32-C6 DevKit-M-1 (noexcept)
  */
 
+#include "TestFramework.h"
 #include "base/BaseTemperature.h"
 #include "mcu/esp32/EspTemperature.h"
-#include "TestFramework.h"
 #include <atomic>
 
 static const char* TAG = "TEMP_Test";

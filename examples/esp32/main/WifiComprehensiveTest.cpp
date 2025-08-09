@@ -11,8 +11,8 @@
  * @copyright HardFOC
  */
 
-#include "base/BaseWifi.h"
 #include "TestFramework.h"
+#include "base/BaseWifi.h"
 
 static const char* TAG = "WIFI_Test";
 
@@ -33,7 +33,7 @@ bool test_wifi_data_structures() noexcept {
   station_config.channel = 6;
   station_config.scan_method = 0;
   station_config.sort_method = true;
-  station_config.threshold_rssi = 70;  // Using positive value for unsigned field
+  station_config.threshold_rssi = 70; // Using positive value for unsigned field
   station_config.threshold_authmode = hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK;
 
   if (station_config.ssid != "TestSSID") {
@@ -93,10 +93,8 @@ bool test_wifi_enums() noexcept {
   ESP_LOGI(TAG, "Testing WiFi enums...");
 
   // Test WiFi modes
-  auto modes = {hf_wifi_mode_t::HF_WIFI_MODE_STATION,
-                hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT,
-                hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP,
-                hf_wifi_mode_t::HF_WIFI_MODE_DISABLED};
+  auto modes = {hf_wifi_mode_t::HF_WIFI_MODE_STATION, hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT,
+                hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP, hf_wifi_mode_t::HF_WIFI_MODE_DISABLED};
 
   for (auto mode : modes) {
     ESP_LOGI(TAG, "WiFi mode value: %d", static_cast<int>(mode));
@@ -104,15 +102,15 @@ bool test_wifi_enums() noexcept {
 
   // Test security types
   auto security_types = {hf_wifi_security_t::HF_WIFI_SECURITY_OPEN,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WEP,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE,
-                        hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK};
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WEP,
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK,
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK,
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK,
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE,
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK,
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK,
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE,
+                         hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK};
 
   for (auto security : security_types) {
     ESP_LOGI(TAG, "Security type value: %d", static_cast<int>(security));
@@ -143,13 +141,15 @@ bool test_wifi_error_codes() noexcept {
 
   auto error_string_failure = HfWifiErrToString(hf_wifi_err_t::WIFI_ERR_FAILURE);
   if (error_string_failure != "General failure") {
-    ESP_LOGE(TAG, "Error string for WIFI_ERR_FAILURE incorrect: %s", std::string(error_string_failure).c_str());
+    ESP_LOGE(TAG, "Error string for WIFI_ERR_FAILURE incorrect: %s",
+             std::string(error_string_failure).c_str());
     return false;
   }
 
   auto error_string_invalid = HfWifiErrToString(hf_wifi_err_t::WIFI_ERR_INVALID_PARAM);
   if (error_string_invalid != "Invalid parameter") {
-    ESP_LOGE(TAG, "Error string for WIFI_ERR_INVALID_PARAM incorrect: %s", std::string(error_string_invalid).c_str());
+    ESP_LOGE(TAG, "Error string for WIFI_ERR_INVALID_PARAM incorrect: %s",
+             std::string(error_string_invalid).c_str());
     return false;
   }
 
@@ -165,7 +165,7 @@ bool test_wifi_interface_validation() noexcept {
   config.ssid = "TestNetwork";
   config.password = "TestPassword123";
   config.channel = 11;
-  config.threshold_rssi = 80;  // Using positive value for unsigned field
+  config.threshold_rssi = 80; // Using positive value for unsigned field
 
   // Verify the data was set correctly
   if (config.ssid != "TestNetwork") {
@@ -185,7 +185,7 @@ bool test_wifi_interface_validation() noexcept {
 
   // Test MAC address array
   uint8_t mac_address[6] = {0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC};
-  
+
   // Verify MAC address values
   if (mac_address[0] != 0x12 || mac_address[5] != 0xBC) {
     ESP_LOGE(TAG, "Interface test: MAC address not set correctly");
@@ -201,26 +201,27 @@ bool test_wifi_performance_interface() noexcept {
 
   // Test data structure creation performance
   auto start_time = esp_timer_get_time();
-  
+
   for (int i = 0; i < 1000; i++) {
     hf_wifi_station_config_t config;
     config.ssid = "TestSSID";
     config.password = "TestPassword";
     config.channel = i % 14;
-    config.threshold_rssi = 50 + (i % 50);  // Using positive values for unsigned field
-    
+    config.threshold_rssi = 50 + (i % 50); // Using positive values for unsigned field
+
     // Verify the data was set
     if (config.ssid != "TestSSID") {
       ESP_LOGE(TAG, "Performance test failed at iteration %d", i);
       return false;
     }
   }
-  
+
   auto end_time = esp_timer_get_time();
   auto duration_us = end_time - start_time;
   auto duration_ms = duration_us / 1000;
 
-  ESP_LOGI(TAG, "Performance test completed: 1000 config creations in %lld ms (%lld us per operation)", 
+  ESP_LOGI(TAG,
+           "Performance test completed: 1000 config creations in %lld ms (%lld us per operation)",
            duration_ms, duration_us / 1000);
   ESP_LOGI(TAG, "[SUCCESS] WiFi interface performance test successful");
   return true;
@@ -234,7 +235,7 @@ bool test_wifi_integration_interface() noexcept {
   station_config.ssid = "IntegrationTest";
   station_config.password = "IntegrationPassword";
   station_config.channel = 6;
-  station_config.threshold_rssi = 70;  // Using positive value for unsigned field
+  station_config.threshold_rssi = 70; // Using positive value for unsigned field
 
   hf_wifi_ap_config_t ap_config;
   ap_config.ssid = "IntegrationAP";
@@ -249,16 +250,13 @@ bool test_wifi_integration_interface() noexcept {
   network_info.channel = 1;
 
   // Verify all configurations are set correctly
-  if (station_config.ssid != "IntegrationTest" || 
-      ap_config.ssid != "IntegrationAP" || 
+  if (station_config.ssid != "IntegrationTest" || ap_config.ssid != "IntegrationAP" ||
       network_info.ssid != "IntegrationNetwork") {
     ESP_LOGE(TAG, "Integration test: SSID values not set correctly");
     return false;
   }
 
-  if (station_config.channel != 6 || 
-      ap_config.channel != 11 || 
-      network_info.channel != 1) {
+  if (station_config.channel != 6 || ap_config.channel != 11 || network_info.channel != 1) {
     ESP_LOGE(TAG, "Integration test: Channel values not set correctly");
     return false;
   }
@@ -281,7 +279,7 @@ bool test_wifi_stress_interface() noexcept {
     config.ssid = "StressTest" + std::to_string(i);
     config.password = "StressPass" + std::to_string(i);
     config.channel = (i % 14) + 1;
-    config.threshold_rssi = 30 + (i % 70);  // Using positive values for unsigned field
+    config.threshold_rssi = 30 + (i % 70); // Using positive values for unsigned field
     config.scan_method = i % 2;
     config.sort_method = (i % 2) == 1;
     config.threshold_authmode = static_cast<hf_wifi_security_t>(i % 10);
@@ -333,9 +331,11 @@ extern "C" void app_main(void) {
   // Print final summary
   print_test_summary(g_test_results, "WIFI", TAG);
 
-  ESP_LOGI(TAG, "\n╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG,
+           "\n╔══════════════════════════════════════════════════════════════════════════════╗");
   ESP_LOGI(TAG, "║                    WIFI COMPREHENSIVE TEST SUITE COMPLETE                    ║");
-  ESP_LOGI(TAG, "║                        (Interface-Only Version)                               ║");
+  ESP_LOGI(TAG,
+           "║                        (Interface-Only Version)                               ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   // Keep the system running
