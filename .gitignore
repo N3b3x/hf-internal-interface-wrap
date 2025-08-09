@@ -41,3 +41,4 @@ tests/build/
 docs/doxygen/
 .DS_Store
 **/doxygen*
+**/.cache/
