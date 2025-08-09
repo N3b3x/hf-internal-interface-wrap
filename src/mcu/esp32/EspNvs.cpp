@@ -246,10 +246,35 @@ hf_nvs_err_t EspNvs::SetU32(const char* key, hf_u32_t value) noexcept {
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  if (!IsValidKey(key)) {
-    ESP_LOGE(TAG, "SetU32 failed: Invalid key");
+  // Check for null pointer first
+  if (!key) {
+    ESP_LOGE(TAG, "SetU32 failed: null pointer");
+    UpdateStatistics(true);
+    return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
+  }
+
+  // Check for empty key
+  if (strlen(key) == 0) {
+    ESP_LOGE(TAG, "SetU32 failed: empty key");
     UpdateStatistics(true);
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
+  }
+
+  // Check for key too long (ESP-IDF limit: NVS_KEY_NAME_MAX_SIZE-1 = 15 chars)
+  if (strlen(key) >= NVS_KEY_NAME_MAX_SIZE) {
+    ESP_LOGE(TAG, "SetU32 failed: key too long (%zu >= %d)", strlen(key), NVS_KEY_NAME_MAX_SIZE);
+    UpdateStatistics(true);
+    return hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG;
+  }
+
+  // Check for invalid characters (ESP-IDF NVS key constraints)
+  for (size_t i = 0; i < strlen(key); i++) {
+    char c = key[i];
+    if (c < 32 || c > 126 || c == ' ' || c == '\t' || c == '\n' || c == '\r') {
+      ESP_LOGE(TAG, "SetU32 failed: invalid character '%c' (0x%02X) at position %zu", c, (unsigned char)c, i);
+      UpdateStatistics(true);
+      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
+    }
   }
 
   ESP_LOGD(TAG, "Setting U32 key '%s' = %u", key, value);
@@ -521,23 +546,33 @@ hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
     case ESP_ERR_NVS_NEW_VERSION_FOUND:
       return hf_nvs_err_t::NVS_ERR_CORRUPTED; // Version mismatch indicates corruption
 
+    // Key and parameter validation errors
+    case ESP_ERR_NVS_INVALID_NAME:
+      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER; // Invalid key/namespace name
+    case ESP_ERR_NVS_KEY_TOO_LONG:
+      return hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG; // Key name too long
+    case ESP_ERR_NVS_INVALID_LENGTH:
+      return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE; // String/blob length insufficient
+    case ESP_ERR_NVS_VALUE_TOO_LONG:
+      return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE; // Value too long for entry
+
     // Encryption-related errors (ESP32-C6 specific)
     case ESP_ERR_NVS_XTS_ENCR_FAILED:
-      return hf_nvs_err_t::NVS_ERR_FAILURE; // Encryption operation failed
+      return hf_nvs_err_t::NVS_ERR_ENCRYPTION_FAILED; // Encryption operation failed
     case ESP_ERR_NVS_XTS_DECR_FAILED:
-      return hf_nvs_err_t::NVS_ERR_CORRUPTED; // Decryption failure suggests corruption
+      return hf_nvs_err_t::NVS_ERR_DECRYPTION_FAILED; // Decryption failure
     case ESP_ERR_NVS_XTS_CFG_FAILED:
       return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER; // Configuration issue
     case ESP_ERR_NVS_XTS_CFG_NOT_FOUND:
-      return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED; // Encryption not configured
+      return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_CONFIGURED; // Encryption not configured
     case ESP_ERR_NVS_ENCR_NOT_SUPPORTED:
-      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER; // Encryption not supported
+      return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_SUPPORTED; // Encryption not supported
     case ESP_ERR_NVS_KEYS_NOT_INITIALIZED:
-      return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED; // Encryption keys missing
+      return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_CONFIGURED; // Encryption keys missing
     case ESP_ERR_NVS_CORRUPT_KEY_PART:
-      return hf_nvs_err_t::NVS_ERR_CORRUPTED; // Key partition corrupted
+      return hf_nvs_err_t::NVS_ERR_KEY_PARTITION_CORRUPTED; // Key partition corrupted
     case ESP_ERR_NVS_WRONG_ENCRYPTION:
-      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER; // Wrong encryption scheme
+      return hf_nvs_err_t::NVS_ERR_WRONG_ENCRYPTION_SCHEME; // Wrong encryption scheme
     case ESP_ERR_NVS_CONTENT_DIFFERS:
       return hf_nvs_err_t::NVS_ERR_CORRUPTED; // Content validation failed
 

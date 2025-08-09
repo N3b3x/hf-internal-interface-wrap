@@ -17,10 +17,14 @@ EXAMPLE_TYPE=${1:-ascii_art}
 BUILD_TYPE=${2:-Release}
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Ensure ESP32-C6 target is set
+export IDF_TARGET=esp32c6
+
 echo "=== ESP32 HardFOC Interface Wrapper Build System ==="
 echo "Project Directory: $PROJECT_DIR"
 echo "Example Type: $EXAMPLE_TYPE"
 echo "Build Type: $BUILD_TYPE"
+echo "Target: $IDF_TARGET"
 echo "======================================================"
 
 # Validate example type
@@ -61,7 +65,7 @@ if [ -d "$BUILD_DIR" ]; then
 fi
 
 # Configure and build with proper error handling
-echo "Configuring project..."
+echo "Configuring project for $IDF_TARGET..."
 if ! idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" reconfigure; then
     echo "ERROR: Configuration failed"
     exit 1
@@ -82,6 +86,7 @@ echo "BUILD COMPLETED SUCCESSFULLY"
 echo "======================================================"
 echo "Example Type: $EXAMPLE_TYPE"
 echo "Build Type: $BUILD_TYPE"
+echo "Target: $IDF_TARGET"
 echo "Build Directory: $BUILD_DIR"
 echo "Project Name: $PROJECT_NAME"
 if [ -f "$BIN_FILE" ]; then

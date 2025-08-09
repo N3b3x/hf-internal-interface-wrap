@@ -226,12 +226,12 @@ bool test_custom_character_management() noexcept {
   }
   ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art with custom character:\n%s", custom_art.c_str());
 
-  // Test multiple custom characters
+  // Test multiple custom characters (use characters not in built-in set)
   std::vector<std::string> custom_char2 = {" _____ ", "|     |", "|     |",
                                            "|     |", "|_____|", "       "};
 
-  generator.AddCustomCharacter('&', custom_char2);
-  std::string multi_custom_art = generator.Generate("@&");
+  generator.AddCustomCharacter('\x01', custom_char2);  // Use \x01 which is not in our built-in set
+  std::string multi_custom_art = generator.Generate("@\x01");  // @ is built-in, \x01 is custom
   if (multi_custom_art.empty()) {
     ESP_LOGE(TAG, "Failed to generate ASCII art with multiple custom characters");
     return false;
@@ -240,8 +240,8 @@ bool test_custom_character_management() noexcept {
            multi_custom_art.c_str());
 
   // Test removing custom character
-  generator.RemoveCustomCharacter('@');
-  std::string after_remove_art = generator.Generate("TEST@");
+  generator.RemoveCustomCharacter('\x01');
+  std::string after_remove_art = generator.Generate("TEST\x01");
   if (after_remove_art.empty()) {
     ESP_LOGE(TAG, "Failed to generate ASCII art after removing custom character");
     return false;
@@ -251,7 +251,7 @@ bool test_custom_character_management() noexcept {
 
   // Test clearing all custom characters
   generator.ClearCustomCharacters();
-  std::string after_clear_art = generator.Generate("&");
+  std::string after_clear_art = generator.Generate("\x01");
   if (after_clear_art.empty()) {
     ESP_LOGE(TAG, "Failed to generate ASCII art after clearing custom characters");
     return false;
@@ -287,30 +287,30 @@ bool test_character_support_validation() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Character '!' is supported");
 
   // Test unsupported characters
-  if (generator.IsCharacterSupported('€')) {
-    ESP_LOGE(TAG, "Character '€' should not be supported");
+  if (generator.IsCharacterSupported('\x01')) {
+    ESP_LOGE(TAG, "Character '\\x01' should not be supported");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Character '€' is not supported");
+  ESP_LOGI(TAG, "[SUCCESS] Character '\\x01' is not supported");
 
-  // Test custom character support
+  // Test custom character support (use a character not in built-in set)
   std::vector<std::string> custom_char = {"  ___  ", " /   \\ ", "|     |",
                                           "|     |", " \\___/ ", "       "};
 
-  generator.AddCustomCharacter('@', custom_char);
-  if (!generator.IsCharacterSupported('@')) {
-    ESP_LOGE(TAG, "Custom character '@' should be supported after adding");
+  generator.AddCustomCharacter('\x01', custom_char);  // Use \x01 which is not built-in
+  if (!generator.IsCharacterSupported('\x01')) {
+    ESP_LOGE(TAG, "Custom character '\\x01' should be supported after adding");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Custom character '@' is supported after adding");
+  ESP_LOGI(TAG, "[SUCCESS] Custom character '\\x01' is supported after adding");
 
   // Test after removal
-  generator.RemoveCustomCharacter('@');
-  if (generator.IsCharacterSupported('@')) {
-    ESP_LOGE(TAG, "Custom character '@' should not be supported after removal");
+  generator.RemoveCustomCharacter('\x01');
+  if (generator.IsCharacterSupported('\x01')) {
+    ESP_LOGE(TAG, "Custom character '\\x01' should not be supported after removal");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Custom character '@' is not supported after removal");
+  ESP_LOGI(TAG, "[SUCCESS] Custom character '\\x01' is not supported after removal");
 
   return true;
 }
@@ -346,18 +346,18 @@ bool test_supported_characters_list() noexcept {
 
   ESP_LOGI(TAG, "[SUCCESS] Common characters found in supported list");
 
-  // Test custom character addition to list
+  // Test custom character addition to list (use a character not in built-in set)
   std::vector<std::string> custom_char = {"  ___  ", " /   \\ ", "|     |",
                                           "|     |", " \\___/ ", "       "};
 
-  generator.AddCustomCharacter('@', custom_char);
+  generator.AddCustomCharacter('\x01', custom_char);  // Use \x01 which is not built-in
   std::string supported_after = generator.GetSupportedCharacters();
 
-  if (supported_after.find('@') == std::string::npos) {
-    ESP_LOGE(TAG, "Custom character '@' should be in supported characters list after adding");
+  if (supported_after.find('\x01') == std::string::npos) {
+    ESP_LOGE(TAG, "Custom character '\\x01' should be in supported characters list after adding");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Custom character '@' found in supported list after adding");
+  ESP_LOGI(TAG, "[SUCCESS] Custom character '\\x01' found in supported list after adding");
 
   return true;
 }
