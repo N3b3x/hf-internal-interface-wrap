@@ -1,0 +1,31 @@
+<map id="examples/esp32/main/AsciiArtComprehensiveTest.cpp" name="examples/esp32/main/AsciiArtComprehensiveTest.cpp">
+<area shape="rect" id="Node000001" title="ASCII Art Generator comprehensive example and test suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="129,5,359,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,91,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,48,91,91,89,86,196,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="115,93,181,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,48,174,87,171,82,219,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="188,167,247,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,46,224,153,219,153,238,45"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="271,167,334,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="254,45,296,153,291,155,249,47"/>
+<area shape="rect" id="Node000006" href="$TestFramework_8h.html" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="781,93,915,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="360,39,768,92,767,97,359,44"/>
+<area shape="rect" id="Node000012" href="$AsciiArtGenerator_8h.html" title="Simple ASCII art generator." alt="" coords="307,93,487,119"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="282,43,364,85,362,89,280,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="1006,167,1090,192"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="881,116,1003,159,1001,164,879,121"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="1115,167,1213,192"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="899,116,1102,161,1100,167,898,121"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="535,167,686,192"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="811,121,663,165,661,160,809,116"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="710,167,839,192"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="838,121,798,159,795,155,834,117"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="864,167,981,192"/>
+<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="862,117,902,155,899,159,858,121"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="369,121,260,164,258,159,367,116"/>
+<area shape="poly" id="edge15_Node000012_Node000005" title=" " alt="" coords="384,121,331,160,328,156,381,117"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="460,167,511,192"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="413,117,462,156,459,160,410,121"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="359,167,436,192"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="400,119,400,153,395,153,395,119"/>
+</map>

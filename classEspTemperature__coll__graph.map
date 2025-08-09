@@ -1,0 +1,17 @@
+<map id="EspTemperature" name="EspTemperature">
+<area shape="rect" id="Node000001" title="ESP32&#45;C6 internal temperature sensor implementation." alt="" coords="317,153,444,179"/>
+<area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="25,5,161,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,24,235,39,266,50,295,65,321,85,343,109,374,152,370,155,339,112,317,89,292,70,264,55,234,44,173,29"/>
+<area shape="rect" id="Node000003" href="$structesp__temp__state__t.html" title="ESP32&#45;C6 specific temperature sensor state." alt="" coords="23,55,162,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,77,235,90,294,110,333,130,364,151,361,155,330,135,292,115,233,96,175,82"/>
+<area shape="rect" id="Node000004" href="$structesp__temp__config__t.html" title="ESP32&#45;C6 specific temperature sensor configuration." alt="" coords="21,104,165,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="179,125,294,143,328,151,327,156,293,149,178,130"/>
+<area shape="rect" id="Node000005" href="$structhf__temp__config__t.html" title="Temperature sensor configuration structure." alt="" coords="25,153,160,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="174,163,317,163,317,169,174,169"/>
+<area shape="rect" id="Node000006" href="$structhf__temp__statistics__t.html" title="Temperature sensor statistics." alt="" coords="15,203,170,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="183,201,293,183,327,176,328,181,294,189,184,206"/>
+<area shape="rect" id="Node000007" href="$structhf__temp__diagnostics__t.html" title="Temperature sensor diagnostics." alt="" coords="8,252,177,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="190,248,242,235,292,218,330,198,362,177,365,181,333,203,294,223,243,241,192,253"/>
+<area shape="rect" id="Node000008" href="$structesp__temp__range__info__t.html" title="Temperature range information structure." alt="" coords="5,301,180,327"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="193,301,244,287,292,265,318,245,340,221,370,177,374,180,344,224,321,249,295,270,246,292,194,306"/>
+</map>

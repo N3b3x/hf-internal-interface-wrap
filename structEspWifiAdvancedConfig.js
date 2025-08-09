@@ -1,0 +1,27 @@
+var structEspWifiAdvancedConfig =
+[
+    [ "bandwidth", "structEspWifiAdvancedConfig.html#adb5829534aff88bc43132405156460de", null ],
+    [ "enable_11k", "structEspWifiAdvancedConfig.html#a43255aa1401cd585ebaedf078418c0a0", null ],
+    [ "enable_11r", "structEspWifiAdvancedConfig.html#accff74a0b5f3012513dcd8efe92c74f8", null ],
+    [ "enable_11v", "structEspWifiAdvancedConfig.html#ae5113461b081c5528eeb4e92c2891d99", null ],
+    [ "enable_ampdu_rx", "structEspWifiAdvancedConfig.html#a9ef437b1859d6b66338575b279381cfa", null ],
+    [ "enable_ampdu_tx", "structEspWifiAdvancedConfig.html#af1824808925ba37cb5a2ef0ef0413f01", null ],
+    [ "enable_enterprise", "structEspWifiAdvancedConfig.html#a9e39b99083705d31f54dc2b51bb9f73e", null ],
+    [ "enable_fast_connect", "structEspWifiAdvancedConfig.html#a4eb23f1ab59c951fef8112cf91e5fb1c", null ],
+    [ "enable_mesh", "structEspWifiAdvancedConfig.html#a5c3d817992e443084bc0fe131a4a9576", null ],
+    [ "enable_pmf_required", "structEspWifiAdvancedConfig.html#a53e256af71c849df31c83d41c98dbae6", null ],
+    [ "enable_power_save", "structEspWifiAdvancedConfig.html#a0f91e24acf08df67f5818bad2732f76b", null ],
+    [ "enable_smartconfig", "structEspWifiAdvancedConfig.html#ac492f389202e623ebe5fafb50765c9d9", null ],
+    [ "enable_wpa3_transition", "structEspWifiAdvancedConfig.html#a3c0742f820dc69240755884b768916eb", null ],
+    [ "enterprise_ca_cert", "structEspWifiAdvancedConfig.html#a5dd7dda81896cad1a708bc9c9375d655", null ],
+    [ "enterprise_client_cert", "structEspWifiAdvancedConfig.html#a4f35fe9c5dac670ef6056a9bbf8719f5", null ],
+    [ "enterprise_client_key", "structEspWifiAdvancedConfig.html#a7faca24e17e2731dd12d61b688f13c98", null ],
+    [ "enterprise_password", "structEspWifiAdvancedConfig.html#a66312b8f2278d1f94bd24394da01feed", null ],
+    [ "enterprise_username", "structEspWifiAdvancedConfig.html#a931d5515e893ad1f69a7b07103d5772f", null ],
+    [ "listen_interval", "structEspWifiAdvancedConfig.html#a571f9ecf0c24854784a9c198a4d9c1cb", null ],
+    [ "mesh_max_connection", "structEspWifiAdvancedConfig.html#a518b5fc64b3088d85cbc711cf498483d", null ],
+    [ "mesh_max_layer", "structEspWifiAdvancedConfig.html#a0ca767a9cd3f740abfd6928ebe5225a1", null ],
+    [ "power_save_type", "structEspWifiAdvancedConfig.html#a877eb7a4269be41830bb985cf3f107a4", null ],
+    [ "smartconfig_type", "structEspWifiAdvancedConfig.html#a504040340e8d1ba248281c3d952a26b8", null ],
+    [ "tx_power", "structEspWifiAdvancedConfig.html#aa5e2c52e3acbffb30c141557611b6c90", null ]
+];

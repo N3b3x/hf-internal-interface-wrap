@@ -1,0 +1,30 @@
+<map id="examples/esp32/main/WifiComprehensiveTest.cpp" name="examples/esp32/main/WifiComprehensiveTest.cpp">
+<area shape="rect" id="Node000001" title="Interface&#45;only WiFi testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with ESP&#45;IDF v5.5f." alt="" coords="467,5,673,45"/>
+<area shape="rect" id="Node000002" href="$TestFramework_8h.html" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="329,93,462,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="529,48,435,90,432,85,527,43"/>
+<area shape="rect" id="Node000008" href="$BaseWifi_8h.html" title="Unified WiFi base class for all WiFi implementations." alt="" coords="829,93,956,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="648,43,833,88,832,93,647,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,89,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="339,121,104,169,102,164,338,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="114,167,213,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="359,121,215,165,213,160,357,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="237,167,388,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="384,121,338,160,335,155,380,117"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="412,167,541,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="410,117,455,156,451,160,407,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="566,167,683,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="433,116,575,160,573,165,431,121"/>
+<area shape="rect" id="Node000009" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="759,167,893,192"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="884,121,848,158,844,155,880,117"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="697,240,763,265"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="830,121,785,139,765,152,748,168,735,196,731,226,726,225,730,195,744,165,762,148,783,134,828,116"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="917,167,1004,192"/>
+<area shape="poly" id="edge12_Node000008_Node000012" title=" " alt="" coords="906,117,942,155,938,158,902,121"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1029,167,1087,192"/>
+<area shape="poly" id="edge13_Node000008_Node000013" title=" " alt="" coords="920,116,1020,159,1017,164,918,121"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1112,167,1209,192"/>
+<area shape="poly" id="edge14_Node000008_Node000014" title=" " alt="" coords="936,116,1105,161,1104,166,935,121"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="812,194,758,234,755,229,809,190"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="797,240,855,265"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="829,192,829,226,823,226,823,192"/>
+</map>

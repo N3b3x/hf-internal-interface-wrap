@@ -1,0 +1,25 @@
+<map id="examples/esp32/main/UtilsComprehensiveTest.cpp" name="examples/esp32/main/UtilsComprehensiveTest.cpp">
+<area shape="rect" id="Node000001" title="Comprehensive utilities testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1." alt="" coords="462,5,673,45"/>
+<area shape="rect" id="Node000002" href="$TestFramework_8h.html" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="329,93,462,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="527,48,434,90,432,85,525,43"/>
+<area shape="rect" id="Node000008" href="$AsciiArtGenerator_8h.html" title="Simple ASCII art generator." alt="" coords="731,93,911,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="629,43,771,87,770,92,627,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,89,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="339,121,104,169,102,164,338,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="114,167,213,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="359,121,215,165,213,160,357,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="237,167,388,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="384,121,338,160,335,155,380,117"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="412,167,541,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="410,117,455,156,451,160,407,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="566,167,683,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="433,116,575,160,573,165,431,121"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="707,167,758,192"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="808,121,759,160,756,156,805,117"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="782,167,859,192"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="823,119,823,153,818,153,818,119"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="883,167,942,192"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="837,117,889,156,885,160,834,121"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="967,167,1029,192"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="850,116,958,159,956,164,848,121"/>
+</map>
