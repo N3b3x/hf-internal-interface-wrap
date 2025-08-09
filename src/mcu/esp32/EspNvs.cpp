@@ -190,7 +190,7 @@ hf_nvs_err_t EspNvs::Initialize() noexcept {
   nvs_handle_t handle;
   err = nvs_open(GetNamespace(), NVS_READWRITE, &handle);
   if (err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to open NVS namespace '%s': 0x%X (%s)", GetNamespace(), err, esp_err_to_name(err));
+    ESP_LOGE(TAG, "Failed to open NVS namespace '%s': 0x%X", GetNamespace(), err);
     last_error_code_ = err;
     return ConvertMcuError(err);
   }
@@ -231,7 +231,7 @@ hf_nvs_err_t EspNvs::Deinitialize() noexcept {
   }
 
   if (nvs_handle_) {
-    nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
+  nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
     nvs_close(handle);
   }
 
@@ -364,7 +364,6 @@ hf_nvs_err_t EspNvs::GetString(const char* key, char* buffer, size_t buffer_size
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
-  nvs_handle_t handle;
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   size_t required_size = buffer_size;
@@ -389,7 +388,6 @@ hf_nvs_err_t EspNvs::SetBlob(const char* key, const void* data, size_t data_size
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-  nvs_handle_t handle;
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_set_blob(handle, key, data, data_size);
@@ -420,7 +418,6 @@ hf_nvs_err_t EspNvs::GetBlob(const char* key, void* buffer, size_t buffer_size,
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
-  nvs_handle_t handle;
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   size_t required_size = buffer_size;
@@ -445,7 +442,6 @@ hf_nvs_err_t EspNvs::EraseKey(const char* key) noexcept {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-  nvs_handle_t handle;
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_erase_key(handle, key);
@@ -467,7 +463,6 @@ hf_nvs_err_t EspNvs::Commit() noexcept {
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  nvs_handle_t handle;
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_commit(handle);
@@ -486,11 +481,7 @@ bool EspNvs::KeyExists(const char* key) noexcept {
     return false;
   }
 
-  nvs_handle_t handle;
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
-    return false;
-  }
-
   size_t size = 0;
   esp_err_t err = nvs_get_str(handle, key, nullptr, &size);
   UpdateStatistics(err != ESP_OK);
@@ -508,7 +499,6 @@ hf_nvs_err_t EspNvs::GetSize(const char* key, size_t& size) noexcept {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
-  nvs_handle_t handle;
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
 
   esp_err_t err = nvs_get_str(handle, key, nullptr, &size);
