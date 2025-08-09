@@ -21,8 +21,8 @@ extern "C" {
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "freertos/queue.h"
+#include "freertos/task.h"
 
 #ifdef __cplusplus
 }

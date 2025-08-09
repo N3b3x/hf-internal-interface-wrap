@@ -15,9 +15,9 @@
  * - Edge cases and stress testing
  */
 
+#include "TestFramework.h"
 #include "base/BasePwm.h"
 #include "mcu/esp32/EspPwm.h"
-#include "TestFramework.h"
 
 static const char* TAG = "PWM_Test";
 static TestResults g_test_results;

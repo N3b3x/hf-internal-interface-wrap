@@ -395,8 +395,6 @@ public:
    */
   hf_gpio_err_t ConfigureWakeUp(const hf_gpio_wakeup_config_t& config) noexcept;
 
-
-
   /**
    * @brief Get comprehensive GPIO configuration information.
    * @return Complete configuration dump structure

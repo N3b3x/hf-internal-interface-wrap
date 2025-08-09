@@ -14,9 +14,9 @@
  * @copyright HardFOC
  */
 
+#include "TestFramework.h"
 #include "base/BaseLogger.h"
 #include "mcu/esp32/EspLogger.h"
-#include "TestFramework.h"
 #include "utils/memory_utils.h"
 
 #include <string>

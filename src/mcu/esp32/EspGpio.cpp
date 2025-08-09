@@ -1339,7 +1339,7 @@ hf_gpio_status_info_t EspGpio::GetConfigurationDump() const noexcept {
   dump.sleep_sel_enabled = false; // Set as appropriate
   dump.hold_enabled = hold_enabled_;
   dump.rtc_enabled = rtc_gpio_enabled_;
-  dump.function_select = 0;   // Set as appropriate
+  dump.function_select = 0; // Set as appropriate
   dump.filter_type = glitch_filter_type_;
   dump.glitch_filter_enabled = pin_glitch_filter_enabled_ || flex_glitch_filter_enabled_;
   dump.interrupt_count = interrupt_count_.load();

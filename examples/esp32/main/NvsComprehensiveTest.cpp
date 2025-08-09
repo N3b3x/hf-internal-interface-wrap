@@ -1,22 +1,22 @@
 /**
  * @file NvsComprehensiveTest.cpp
  * @brief Comprehensive NVS (Non-Volatile Storage) testing suite for ESP32-C6 DevKit-M-1 (noexcept)
- * 
+ *
  * This test suite provides full coverage of the EspNvs class, testing all methods,
  * error conditions, edge cases, and boundary conditions. The tests are designed to
  * run without exceptions and without RTTI.
- * 
+ *
  * @author Test Suite
  * @date 2025
  * @copyright HardFOC
  */
 
+#include "TestFramework.h"
 #include "base/BaseNvs.h"
 #include "mcu/esp32/EspNvs.h"
-#include <cstring>
 #include <cstdio>
+#include <cstring>
 #include <random>
-#include "TestFramework.h"
 
 static const char* TAG = "NVS_Test";
 static TestResults g_test_results;
@@ -28,7 +28,9 @@ static constexpr hf_u32_t TEST_U32_VALUE = 0xDEADBEEF;
 static constexpr hf_u32_t TEST_U32_MAX = 0xFFFFFFFF;
 static constexpr hf_u32_t TEST_U32_MIN = 0x00000000;
 static const char* TEST_STRING = "Hello, ESP32-C6 NVS!";
-static const char* LONG_STRING = "This is a very long string that we use to test the boundaries of the NVS string storage capabilities. It should be long enough to test various buffer sizes.";
+static const char* LONG_STRING =
+    "This is a very long string that we use to test the boundaries of the NVS string storage "
+    "capabilities. It should be long enough to test various buffer sizes.";
 static const uint8_t TEST_BLOB_DATA[] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 
 // === Initialization and Deinitialization Tests ===
@@ -107,7 +109,7 @@ bool test_nvs_initialization() noexcept {
 
 bool test_nvs_u32_operations() noexcept {
   ESP_LOGI(TAG, "Testing NVS U32 operations...");
-  
+
   EspNvs nvs("test_u32");
   if (!nvs.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize NVS");
@@ -129,8 +131,8 @@ bool test_nvs_u32_operations() noexcept {
   }
 
   if (retrieved_value != TEST_U32_VALUE) {
-    ESP_LOGE(TAG, "Retrieved value mismatch: expected 0x%08X, got 0x%08X", 
-             TEST_U32_VALUE, retrieved_value);
+    ESP_LOGE(TAG, "Retrieved value mismatch: expected 0x%08X, got 0x%08X", TEST_U32_VALUE,
+             retrieved_value);
     return false;
   }
 
@@ -203,7 +205,7 @@ bool test_nvs_u32_operations() noexcept {
   char max_key[16];
   memset(max_key, 'K', 15);
   max_key[15] = '\0';
-  
+
   result = nvs.SetU32(max_key, TEST_U32_VALUE);
   if (result != hf_nvs_err_t::NVS_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set U32 with max length key");
@@ -214,7 +216,7 @@ bool test_nvs_u32_operations() noexcept {
   char long_key[32];
   memset(long_key, 'L', 31);
   long_key[31] = '\0';
-  
+
   result = nvs.SetU32(long_key, TEST_U32_VALUE);
   if (result != hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG) {
     ESP_LOGE(TAG, "SetU32 with too long key should return NVS_ERR_KEY_TOO_LONG");
@@ -229,7 +231,7 @@ bool test_nvs_u32_operations() noexcept {
 
 bool test_nvs_string_operations() noexcept {
   ESP_LOGI(TAG, "Testing NVS string operations...");
-  
+
   EspNvs nvs("test_str");
   if (!nvs.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize NVS");
@@ -259,7 +261,8 @@ bool test_nvs_string_operations() noexcept {
   }
 
   if (actual_size != strlen(TEST_STRING) + 1) {
-    ESP_LOGE(TAG, "Actual size mismatch: expected %zu, got %zu", strlen(TEST_STRING) + 1, actual_size);
+    ESP_LOGE(TAG, "Actual size mismatch: expected %zu, got %zu", strlen(TEST_STRING) + 1,
+             actual_size);
     return false;
   }
 
@@ -338,7 +341,7 @@ bool test_nvs_string_operations() noexcept {
   char very_long_string[4096];
   memset(very_long_string, 'A', sizeof(very_long_string) - 1);
   very_long_string[sizeof(very_long_string) - 1] = '\0';
-  
+
   result = nvs.SetString("test_str_too_long", very_long_string);
   if (result != hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE) {
     ESP_LOGE(TAG, "SetString with too long value should return NVS_ERR_VALUE_TOO_LARGE");
@@ -353,7 +356,7 @@ bool test_nvs_string_operations() noexcept {
 
 bool test_nvs_blob_operations() noexcept {
   ESP_LOGI(TAG, "Testing NVS blob operations...");
-  
+
   EspNvs nvs("test_blob");
   if (!nvs.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize NVS");
@@ -383,7 +386,8 @@ bool test_nvs_blob_operations() noexcept {
   }
 
   if (actual_size != sizeof(TEST_BLOB_DATA)) {
-    ESP_LOGE(TAG, "Actual size mismatch: expected %zu, got %zu", sizeof(TEST_BLOB_DATA), actual_size);
+    ESP_LOGE(TAG, "Actual size mismatch: expected %zu, got %zu", sizeof(TEST_BLOB_DATA),
+             actual_size);
     return false;
   }
 
@@ -459,7 +463,7 @@ bool test_nvs_blob_operations() noexcept {
   // Test 7: Very large blob (exceeds NVS limits)
   uint8_t very_large_blob[4096];
   memset(very_large_blob, 0xAA, sizeof(very_large_blob));
-  
+
   result = nvs.SetBlob("test_blob_too_large", very_large_blob, sizeof(very_large_blob));
   if (result != hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE) {
     ESP_LOGE(TAG, "SetBlob with too large data should return NVS_ERR_VALUE_TOO_LARGE");
@@ -474,7 +478,7 @@ bool test_nvs_blob_operations() noexcept {
 
 bool test_nvs_key_operations() noexcept {
   ESP_LOGI(TAG, "Testing NVS key operations...");
-  
+
   EspNvs nvs("test_key");
   if (!nvs.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize NVS");
@@ -582,7 +586,7 @@ bool test_nvs_key_operations() noexcept {
 
 bool test_nvs_commit_operations() noexcept {
   ESP_LOGI(TAG, "Testing NVS commit operations...");
-  
+
   EspNvs nvs("test_commit");
   if (!nvs.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize NVS");
@@ -637,7 +641,7 @@ bool test_nvs_commit_operations() noexcept {
       ESP_LOGE(TAG, "Failed to set value in loop");
       return false;
     }
-    
+
     result = nvs.Commit();
     if (result != hf_nvs_err_t::NVS_SUCCESS) {
       ESP_LOGE(TAG, "Failed to commit in loop iteration %d", i);
@@ -661,7 +665,7 @@ bool test_nvs_commit_operations() noexcept {
 
 bool test_nvs_statistics_diagnostics() noexcept {
   ESP_LOGI(TAG, "Testing NVS statistics and diagnostics...");
-  
+
   EspNvs nvs("test_stats");
   if (!nvs.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize NVS");
@@ -687,11 +691,11 @@ bool test_nvs_statistics_diagnostics() noexcept {
   nvs.SetU32("stats_test_1", 100);
   nvs.SetString("stats_test_2", "test");
   nvs.SetBlob("stats_test_3", TEST_BLOB_DATA, sizeof(TEST_BLOB_DATA));
-  
+
   // Perform some read operations
   hf_u32_t u32_val;
   nvs.GetU32("stats_test_1", u32_val);
-  
+
   char str_buffer[100];
   nvs.GetString("stats_test_2", str_buffer, sizeof(str_buffer));
 
@@ -729,7 +733,7 @@ bool test_nvs_statistics_diagnostics() noexcept {
 
   // Test 4: Trigger an error and check diagnostics
   nvs.GetU32("non_existent_key_diag", u32_val); // This should fail
-  
+
   result = nvs.GetDiagnostics(diag);
   if (result != hf_nvs_err_t::NVS_SUCCESS) {
     ESP_LOGE(TAG, "Failed to get diagnostics after error");
@@ -763,9 +767,9 @@ bool test_nvs_statistics_diagnostics() noexcept {
 
 bool test_nvs_metadata() noexcept {
   ESP_LOGI(TAG, "Testing NVS metadata functions...");
-  
+
   EspNvs nvs("test_meta");
-  
+
   // Test 1: Get description
   const char* desc = nvs.GetDescription();
   if (desc == nullptr) {
@@ -784,7 +788,7 @@ bool test_nvs_metadata() noexcept {
 
   // Test 3: Get max key length
   size_t max_key_len = nvs.GetMaxKeyLength();
-  if (max_key_len != 15) {  // ESP32 NVS limit
+  if (max_key_len != 15) { // ESP32 NVS limit
     ESP_LOGE(TAG, "Max key length should be 15, got %zu", max_key_len);
     return false;
   }
@@ -792,7 +796,7 @@ bool test_nvs_metadata() noexcept {
 
   // Test 4: Get max value size
   size_t max_val_size = nvs.GetMaxValueSize();
-  if (max_val_size != 4000) {  // ESP32 NVS conservative limit
+  if (max_val_size != 4000) { // ESP32 NVS conservative limit
     ESP_LOGE(TAG, "Max value size should be 4000, got %zu", max_val_size);
     return false;
   }
@@ -806,7 +810,7 @@ bool test_nvs_metadata() noexcept {
 
 bool test_nvs_edge_cases() noexcept {
   ESP_LOGI(TAG, "Testing NVS edge cases...");
-  
+
   EspNvs nvs("test_edge");
   if (!nvs.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize NVS");
@@ -832,7 +836,7 @@ bool test_nvs_edge_cases() noexcept {
   for (int i = 0; i < 100; ++i) {
     char key[16];
     snprintf(key, sizeof(key), "rapid_%d", i % 10);
-    
+
     result = nvs.SetU32(key, static_cast<hf_u32_t>(i));
     if (result != hf_nvs_err_t::NVS_SUCCESS) {
       ESP_LOGE(TAG, "Failed in rapid operation %d", i);
@@ -842,7 +846,7 @@ bool test_nvs_edge_cases() noexcept {
 
   // Test 3: Overwrite with different data types
   const char* multi_type_key = "multi_type";
-  
+
   // First set as U32
   result = nvs.SetU32(multi_type_key, TEST_U32_VALUE);
   if (result != hf_nvs_err_t::NVS_SUCCESS) {
@@ -876,7 +880,7 @@ bool test_nvs_edge_cases() noexcept {
   uint8_t null_buffer[sizeof(null_data)];
   size_t actual_size = 0;
   result = nvs.GetBlob("null_bytes", null_buffer, sizeof(null_buffer), &actual_size);
-  if (result != hf_nvs_err_t::NVS_SUCCESS || 
+  if (result != hf_nvs_err_t::NVS_SUCCESS ||
       memcmp(null_buffer, null_data, sizeof(null_data)) != 0) {
     ESP_LOGE(TAG, "Failed to retrieve blob with null bytes");
     return false;
@@ -905,12 +909,12 @@ bool test_nvs_edge_cases() noexcept {
 
 bool test_nvs_stress() noexcept {
   ESP_LOGI(TAG, "Testing NVS stress scenarios...");
-  
+
   // Test 1: Multiple namespaces
   EspNvs nvs1("stress_ns1");
   EspNvs nvs2("stress_ns2");
   EspNvs nvs3("stress_ns3");
-  
+
   if (!nvs1.EnsureInitialized() || !nvs2.EnsureInitialized() || !nvs3.EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize multiple namespaces");
     return false;
@@ -957,7 +961,7 @@ bool test_nvs_stress() noexcept {
   for (int i = 0; i < NUM_KEYS; ++i) {
     char key[16];
     snprintf(key, sizeof(key), "fill_%d", i);
-    
+
     result = nvs_fill.SetU32(key, static_cast<hf_u32_t>(i * 1000));
     if (result != hf_nvs_err_t::NVS_SUCCESS) {
       ESP_LOGE(TAG, "Failed to set key %s in fill test", key);
@@ -991,10 +995,10 @@ bool test_nvs_stress() noexcept {
 
   // Verify some random keys
   for (int i = 0; i < 10; ++i) {
-    int idx = (i * 7) % NUM_KEYS;  // Pseudo-random selection
+    int idx = (i * 7) % NUM_KEYS; // Pseudo-random selection
     char key[16];
     snprintf(key, sizeof(key), "fill_%d", idx);
-    
+
     hf_u32_t val = 0;
     result = nvs_fill.GetU32(key, val);
     if (result != hf_nvs_err_t::NVS_SUCCESS || val != static_cast<hf_u32_t>(idx * 1000)) {
@@ -1010,9 +1014,9 @@ bool test_nvs_stress() noexcept {
       ESP_LOGE(TAG, "Failed to initialize in cycle %d", i);
       return false;
     }
-    
+
     nvs_cycle.SetU32("cycle_test", static_cast<hf_u32_t>(i));
-    
+
     if (!nvs_cycle.EnsureDeinitialized()) {
       ESP_LOGE(TAG, "Failed to deinitialize in cycle %d", i);
       return false;
@@ -1029,7 +1033,7 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
   ESP_LOGI(TAG, "║                    ESP32-C6 NVS COMPREHENSIVE TEST SUITE                     ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
-  
+
   vTaskDelay(pdMS_TO_TICKS(1000));
 
   // Run all tests

@@ -1,7 +1,8 @@
 /**
  * @file CanComprehensiveTest.cpp
- * @brief Comprehensive CAN testing suite for ESP32-C6 with ESP-IDF v5.5 TWAI API and SN65 transceiver
- * 
+ * @brief Comprehensive CAN testing suite for ESP32-C6 with ESP-IDF v5.5 TWAI API and SN65
+ * transceiver
+ *
  * This comprehensive test suite validates all EspCan functionality including:
  * - ESP-IDF v5.5 TWAI node-based API compliance
  * - ESP32-C6 TWAI controller operation
@@ -12,20 +13,20 @@
  * - Error handling and bus recovery
  * - Performance and stress testing
  * - Self-test and loopback modes
- * 
+ *
  * Hardware Requirements:
  * - ESP32-C6 DevKit
  * - SN65HVD230/SN65HVD232 CAN transceiver
  * - CAN bus termination resistors (120Ω)
  * - Optional: Second CAN node for full bus testing
- * 
+ *
  * Wiring for ESP32-C6 + SN65:
  * - GPIO4 (TX) -> SN65 CTX pin
- * - GPIO5 (RX) -> SN65 CRX pin  
+ * - GPIO5 (RX) -> SN65 CRX pin
  * - 3.3V -> SN65 VCC
  * - GND -> SN65 GND
  * - SN65 CANH/CANL -> CAN bus
- * 
+ *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
@@ -39,21 +40,21 @@ extern "C" {
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include "freertos/event_groups.h"
+#include "freertos/task.h"
 
 #ifdef __cplusplus
 }
 #endif
 
 // HardFOC interface includes
+#include "TestFramework.h"
 #include "base/BaseCan.h"
 #include "mcu/esp32/EspCan.h"
-#include "TestFramework.h"
 
-#include <vector>
-#include <memory>
 #include <atomic>
+#include <memory>
+#include <vector>
 
 static const char* TAG = "CAN_Test";
 
@@ -64,8 +65,8 @@ static constexpr uint32_t TEST_CAN_ID_STANDARD = 0x123;
 static constexpr uint32_t TEST_CAN_ID_EXTENDED = 0x12345678;
 static constexpr uint32_t TEST_BAUD_RATE = 500000;
 static constexpr uint32_t TEST_TIMEOUT_MS = 5000;
-static constexpr hf_pin_num_t TEST_TX_PIN = 4;  // ESP32-C6 + SN65
-static constexpr hf_pin_num_t TEST_RX_PIN = 5;  // ESP32-C6 + SN65
+static constexpr hf_pin_num_t TEST_TX_PIN = 4; // ESP32-C6 + SN65
+static constexpr hf_pin_num_t TEST_RX_PIN = 5; // ESP32-C6 + SN65
 
 // Event bits for synchronization
 static constexpr int MESSAGE_RECEIVED_BIT = BIT0;
@@ -90,9 +91,9 @@ void test_receive_callback_enhanced(const hf_can_message_t& message, void* user_
   last_received_message = message;
   messages_received.fetch_add(1);
   xEventGroupSetBits(test_event_group, MESSAGE_RECEIVED_BIT);
-  
-  ESP_LOGI(TAG, "Received CAN message: ID=0x%X, DLC=%d, Extended=%s",
-           message.id, message.dlc, message.is_extended ? "Yes" : "No");
+
+  ESP_LOGI(TAG, "Received CAN message: ID=0x%X, DLC=%d, Extended=%s", message.id, message.dlc,
+           message.is_extended ? "Yes" : "No");
 }
 
 /**
@@ -104,12 +105,12 @@ hf_can_message_t create_test_message(uint32_t id, bool extended = false, uint8_t
   message.is_extended = extended;
   message.dlc = dlc;
   message.is_rtr = false;
-  
+
   // Fill with test pattern
   for (uint8_t i = 0; i < dlc && i < 8; ++i) {
     message.data[i] = static_cast<uint8_t>(0xA0 + i);
   }
-  
+
   return message;
 }
 
@@ -117,9 +118,8 @@ hf_can_message_t create_test_message(uint32_t id, bool extended = false, uint8_t
  * @brief Wait for events with timeout
  */
 bool wait_for_event(EventBits_t bits, uint32_t timeout_ms) {
-  EventBits_t result = xEventGroupWaitBits(
-    test_event_group, bits, pdTRUE, pdFALSE, pdMS_TO_TICKS(timeout_ms)
-  );
+  EventBits_t result =
+      xEventGroupWaitBits(test_event_group, bits, pdTRUE, pdFALSE, pdMS_TO_TICKS(timeout_ms));
   return (result & bits) != 0;
 }
 
@@ -137,11 +137,11 @@ bool test_can_initialization() noexcept {
   can_config.baud_rate = TEST_BAUD_RATE;
   can_config.controller_id = hf_can_controller_id_t::HF_CAN_CONTROLLER_0;
   can_config.mode = hf_can_mode_t::HF_CAN_MODE_NORMAL;
-  can_config.enable_self_test = false;  // Using external SN65 transceiver
+  can_config.enable_self_test = false; // Using external SN65 transceiver
   can_config.enable_loopback = false;
   can_config.tx_queue_depth = 10;
-  can_config.sample_point_permill = 750;  // 75% sample point for reliability
-  
+  can_config.sample_point_permill = 750; // 75% sample point for reliability
+
   EspCan test_can(can_config);
 
   // Test lazy initialization
@@ -190,9 +190,9 @@ bool test_can_self_test_mode() noexcept {
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_RX_PIN;
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = true;  // Self-test mode
-  can_config.enable_loopback = true;   // Loopback for self-reception
-  
+  can_config.enable_self_test = true; // Self-test mode
+  can_config.enable_loopback = true;  // Loopback for self-reception
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -208,7 +208,7 @@ bool test_can_self_test_mode() noexcept {
 
   // Test message transmission in self-test mode
   auto test_message = create_test_message(TEST_CAN_ID_STANDARD, false, 4);
-  
+
   messages_received.store(0);
   if (test_can.SendMessage(test_message, 1000) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to send message in self-test mode");
@@ -237,9 +237,9 @@ bool test_can_message_transmission() noexcept {
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_RX_PIN;
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = true;  // For standalone testing
+  can_config.enable_self_test = true; // For standalone testing
   can_config.enable_loopback = true;
-  
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -252,7 +252,7 @@ bool test_can_message_transmission() noexcept {
   // Test standard frame
   messages_received.store(0);
   auto std_message = create_test_message(TEST_CAN_ID_STANDARD, false, 8);
-  
+
   if (test_can.SendMessage(std_message, 1000) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to send standard frame");
     return false;
@@ -266,7 +266,7 @@ bool test_can_message_transmission() noexcept {
   // Test extended frame
   messages_received.store(0);
   auto ext_message = create_test_message(TEST_CAN_ID_EXTENDED, true, 6);
-  
+
   if (test_can.SendMessage(ext_message, 1000) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to send extended frame");
     return false;
@@ -283,7 +283,7 @@ bool test_can_message_transmission() noexcept {
   rtr_message.id = TEST_CAN_ID_STANDARD;
   rtr_message.is_rtr = true;
   rtr_message.dlc = 4;
-  
+
   if (test_can.SendMessage(rtr_message, 1000) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to send remote frame");
     return false;
@@ -317,7 +317,7 @@ bool test_can_acceptance_filtering() noexcept {
   can_config.baud_rate = TEST_BAUD_RATE;
   can_config.enable_self_test = true;
   can_config.enable_loopback = true;
-  
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -336,8 +336,8 @@ bool test_can_acceptance_filtering() noexcept {
 
   // Test accepted message
   messages_received.store(0);
-  auto accepted_msg = create_test_message(0x105, false, 4);  // Should pass filter
-  
+  auto accepted_msg = create_test_message(0x105, false, 4); // Should pass filter
+
   if (test_can.SendMessage(accepted_msg, 1000) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to send accepted message");
     return false;
@@ -347,10 +347,10 @@ bool test_can_acceptance_filtering() noexcept {
     ESP_LOGI(TAG, "Message correctly filtered and received");
   }
 
-  // Test rejected message  
+  // Test rejected message
   messages_received.store(0);
-  auto rejected_msg = create_test_message(0x200, false, 4);  // Should be filtered out
-  
+  auto rejected_msg = create_test_message(0x200, false, 4); // Should be filtered out
+
   if (test_can.SendMessage(rejected_msg, 1000) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to send rejected message");
     return false;
@@ -378,15 +378,15 @@ bool test_can_acceptance_filtering() noexcept {
 
   // Test both filter ranges
   messages_received.store(0);
-  auto msg1 = create_test_message(0x305, false, 2);  // First filter range
-  auto msg2 = create_test_message(0x405, false, 2);  // Second filter range
-  
+  auto msg1 = create_test_message(0x305, false, 2); // First filter range
+  auto msg2 = create_test_message(0x405, false, 2); // Second filter range
+
   test_can.SendMessage(msg1, 1000);
   test_can.SendMessage(msg2, 1000);
 
   // Wait for both messages
   vTaskDelay(pdMS_TO_TICKS(500));
-  
+
   if (messages_received.load() != 2) {
     ESP_LOGE(TAG, "Expected 2 messages with dual filter, got %d", messages_received.load());
     return false;
@@ -412,10 +412,10 @@ bool test_can_advanced_timing() noexcept {
   hf_esp_can_config_t can_config{};
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_RX_PIN;
-  can_config.baud_rate = 250000;  // Start with 250kbps
+  can_config.baud_rate = 250000; // Start with 250kbps
   can_config.enable_self_test = true;
   can_config.enable_loopback = true;
-  
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -425,12 +425,12 @@ bool test_can_advanced_timing() noexcept {
 
   // Test custom timing configuration for improved signal quality
   hf_esp_can_timing_config_t custom_timing{};
-  custom_timing.brp = 16;        // Prescaler for 250kbps
-  custom_timing.prop_seg = 5;    // Propagation segment
-  custom_timing.tseg_1 = 8;      // Time segment 1
-  custom_timing.tseg_2 = 3;      // Time segment 2
-  custom_timing.sjw = 2;         // Synchronization jump width
-  custom_timing.ssp_offset = 0;  // Secondary sample point offset
+  custom_timing.brp = 16;       // Prescaler for 250kbps
+  custom_timing.prop_seg = 5;   // Propagation segment
+  custom_timing.tseg_1 = 8;     // Time segment 1
+  custom_timing.tseg_2 = 3;     // Time segment 2
+  custom_timing.sjw = 2;        // Synchronization jump width
+  custom_timing.ssp_offset = 0; // Secondary sample point offset
 
   if (test_can.ConfigureAdvancedTiming(custom_timing) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure advanced timing");
@@ -442,7 +442,7 @@ bool test_can_advanced_timing() noexcept {
   // Test message transmission with custom timing
   messages_received.store(0);
   auto test_message = create_test_message(TEST_CAN_ID_STANDARD, false, 8);
-  
+
   if (test_can.SendMessage(test_message, 1000) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to send message with custom timing");
     return false;
@@ -458,7 +458,7 @@ bool test_can_advanced_timing() noexcept {
 }
 
 //=============================================================================
-// ERROR HANDLING AND RECOVERY TESTS  
+// ERROR HANDLING AND RECOVERY TESTS
 //=============================================================================
 
 bool test_can_error_handling() noexcept {
@@ -468,9 +468,9 @@ bool test_can_error_handling() noexcept {
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_RX_PIN;
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = false;  // Normal mode to potentially trigger errors
+  can_config.enable_self_test = false; // Normal mode to potentially trigger errors
   can_config.enable_alerts = true;
-  
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -537,7 +537,7 @@ bool test_can_bus_recovery() noexcept {
   can_config.baud_rate = TEST_BAUD_RATE;
   can_config.enable_self_test = true;
   can_config.enable_alerts = true;
-  
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -559,7 +559,7 @@ bool test_can_bus_recovery() noexcept {
   // Verify we can still send messages after recovery
   test_can.SetReceiveCallbackEx(test_receive_callback_enhanced);
   messages_received.store(0);
-  
+
   auto test_message = create_test_message(TEST_CAN_ID_STANDARD, false, 4);
   if (test_can.SendMessage(test_message, 1000) != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to send message after recovery");
@@ -588,8 +588,8 @@ bool test_can_batch_transmission() noexcept {
   can_config.baud_rate = TEST_BAUD_RATE;
   can_config.enable_self_test = true;
   can_config.enable_loopback = true;
-  can_config.tx_queue_depth = 20;  // Larger queue for batch testing
-  
+  can_config.tx_queue_depth = 20; // Larger queue for batch testing
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -602,7 +602,7 @@ bool test_can_batch_transmission() noexcept {
   // Create batch of test messages
   constexpr uint32_t BATCH_SIZE = 10;
   std::vector<hf_can_message_t> batch_messages;
-  
+
   for (uint32_t i = 0; i < BATCH_SIZE; ++i) {
     auto msg = create_test_message(TEST_CAN_ID_STANDARD + i, false, 8);
     batch_messages.push_back(msg);
@@ -611,9 +611,7 @@ bool test_can_batch_transmission() noexcept {
   messages_received.store(0);
 
   // Send batch using the new batch API
-  uint32_t sent_count = test_can.SendMessageBatch(
-    batch_messages.data(), BATCH_SIZE, 1000
-  );
+  uint32_t sent_count = test_can.SendMessageBatch(batch_messages.data(), BATCH_SIZE, 1000);
 
   if (sent_count != BATCH_SIZE) {
     ESP_LOGE(TAG, "Expected to send %d messages, actually sent %d", BATCH_SIZE, sent_count);
@@ -638,12 +636,12 @@ bool test_can_high_throughput() noexcept {
   hf_esp_can_config_t can_config{};
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_RX_PIN;
-  can_config.baud_rate = 1000000;  // 1 Mbps for high throughput
+  can_config.baud_rate = 1000000; // 1 Mbps for high throughput
   can_config.enable_self_test = true;
   can_config.enable_loopback = true;
   can_config.tx_queue_depth = 50;
-  can_config.sample_point_permill = 800;  // 80% for high speed
-  
+  can_config.sample_point_permill = 800; // 80% for high speed
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -655,7 +653,7 @@ bool test_can_high_throughput() noexcept {
 
   // Configure timing for 1 Mbps
   hf_esp_can_timing_config_t high_speed_timing{};
-  high_speed_timing.brp = 4;         // Prescaler for 1 Mbps
+  high_speed_timing.brp = 4; // Prescaler for 1 Mbps
   high_speed_timing.prop_seg = 5;
   high_speed_timing.tseg_1 = 8;
   high_speed_timing.tseg_2 = 2;
@@ -669,7 +667,7 @@ bool test_can_high_throughput() noexcept {
   // Measure throughput
   constexpr uint32_t TEST_MESSAGES = 100;
   messages_received.store(0);
-  
+
   uint64_t start_time = esp_timer_get_time();
 
   // Send messages as fast as possible
@@ -689,15 +687,14 @@ bool test_can_high_throughput() noexcept {
   uint32_t duration_ms = (uint32_t)(duration_us / 1000);
 
   uint32_t received_count = messages_received.load();
-  
+
   ESP_LOGI(TAG, "Throughput test results:");
   ESP_LOGI(TAG, "  Messages sent: %d/%d", sent_successfully, TEST_MESSAGES);
   ESP_LOGI(TAG, "  Messages received: %d", received_count);
   ESP_LOGI(TAG, "  Test duration: %d ms", duration_ms);
-  ESP_LOGI(TAG, "  Effective rate: %.2f msg/s", 
-           (float)received_count * 1000.0f / duration_ms);
+  ESP_LOGI(TAG, "  Effective rate: %.2f msg/s", (float)received_count * 1000.0f / duration_ms);
 
-  if (received_count < sent_successfully * 0.95f) {  // Allow 5% loss
+  if (received_count < sent_successfully * 0.95f) { // Allow 5% loss
     ESP_LOGE(TAG, "High packet loss detected in throughput test");
     return false;
   }
@@ -715,7 +712,7 @@ bool test_sn65_transceiver_integration() noexcept {
 
   // Test with different SN65 configurations
   std::vector<uint32_t> test_baud_rates = {125000, 250000, 500000, 1000000};
-  
+
   for (auto baud_rate : test_baud_rates) {
     ESP_LOGI(TAG, "Testing SN65 at %d bps...", baud_rate);
 
@@ -725,14 +722,14 @@ bool test_sn65_transceiver_integration() noexcept {
     can_config.baud_rate = baud_rate;
     can_config.enable_self_test = true;
     can_config.enable_loopback = true;
-    
+
     // Adjust sample point based on baud rate for SN65 compatibility
     if (baud_rate >= 1000000) {
-      can_config.sample_point_permill = 800;  // 80% for high speed
+      can_config.sample_point_permill = 800; // 80% for high speed
     } else {
-      can_config.sample_point_permill = 750;  // 75% for lower speeds
+      can_config.sample_point_permill = 750; // 75% for lower speeds
     }
-    
+
     EspCan test_can(can_config);
 
     if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -745,7 +742,7 @@ bool test_sn65_transceiver_integration() noexcept {
 
     // Test signal integrity at this baud rate
     auto test_message = create_test_message(TEST_CAN_ID_STANDARD, false, 8);
-    
+
     if (test_can.SendMessage(test_message, 1000) != hf_can_err_t::CAN_SUCCESS) {
       ESP_LOGE(TAG, "Failed to send message at %d bps", baud_rate);
       return false;
@@ -757,9 +754,9 @@ bool test_sn65_transceiver_integration() noexcept {
     }
 
     ESP_LOGI(TAG, "SN65 test passed at %d bps", baud_rate);
-    
+
     test_can.Deinitialize();
-    vTaskDelay(pdMS_TO_TICKS(100));  // Brief delay between tests
+    vTaskDelay(pdMS_TO_TICKS(100)); // Brief delay between tests
   }
 
   ESP_LOGI(TAG, "[SUCCESS] SN65 transceiver integration test passed");
@@ -776,7 +773,7 @@ bool test_can_signal_quality() noexcept {
   can_config.enable_self_test = true;
   can_config.enable_loopback = true;
   can_config.enable_alerts = true;
-  
+
   EspCan test_can(can_config);
 
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
@@ -788,31 +785,31 @@ bool test_can_signal_quality() noexcept {
 
   // Test signal quality with various message patterns
   std::vector<std::vector<uint8_t>> test_patterns = {
-    {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},  // All zeros
-    {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF},  // All ones  
-    {0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA},  // Alternating
-    {0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55},  // Alternating opposite
-    {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF},  // Incremental
+      {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // All zeros
+      {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}, // All ones
+      {0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA}, // Alternating
+      {0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55}, // Alternating opposite
+      {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF}, // Incremental
   };
 
   uint32_t successful_transmissions = 0;
   uint32_t total_attempts = 0;
 
   for (const auto& pattern : test_patterns) {
-    for (int repeat = 0; repeat < 10; ++repeat) {  // Test each pattern multiple times
+    for (int repeat = 0; repeat < 10; ++repeat) { // Test each pattern multiple times
       hf_can_message_t test_message{};
       test_message.id = TEST_CAN_ID_STANDARD + repeat;
       test_message.dlc = 8;
       memcpy(test_message.data, pattern.data(), 8);
 
       messages_received.store(0);
-      
+
       if (test_can.SendMessage(test_message, 500) == hf_can_err_t::CAN_SUCCESS) {
         total_attempts++;
-        
+
         if (wait_for_event(MESSAGE_RECEIVED_BIT, 500)) {
           successful_transmissions++;
-          
+
           // Verify data integrity
           bool data_correct = true;
           for (int i = 0; i < 8; ++i) {
@@ -821,7 +818,7 @@ bool test_can_signal_quality() noexcept {
               break;
             }
           }
-          
+
           if (!data_correct) {
             ESP_LOGW(TAG, "Data corruption detected in signal quality test");
           }
@@ -831,13 +828,13 @@ bool test_can_signal_quality() noexcept {
   }
 
   float success_rate = (float)successful_transmissions / total_attempts * 100.0f;
-  
+
   ESP_LOGI(TAG, "Signal quality test results:");
   ESP_LOGI(TAG, "  Total attempts: %d", total_attempts);
   ESP_LOGI(TAG, "  Successful: %d", successful_transmissions);
   ESP_LOGI(TAG, "  Success rate: %.2f%%", success_rate);
 
-  if (success_rate < 98.0f) {  // Expect very high success rate in loopback
+  if (success_rate < 98.0f) { // Expect very high success rate in loopback
     ESP_LOGE(TAG, "Signal quality below acceptable threshold");
     return false;
   }
@@ -855,14 +852,14 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "║                ESP32-C6 CAN COMPREHENSIVE TEST SUITE                        ║");
   ESP_LOGI(TAG, "║                     ESP-IDF v5.5 TWAI API + SN65                           ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
-  
+
   ESP_LOGI(TAG, "Hardware Configuration:");
   ESP_LOGI(TAG, "  MCU: ESP32-C6");
   ESP_LOGI(TAG, "  TX Pin: GPIO%d", TEST_TX_PIN);
   ESP_LOGI(TAG, "  RX Pin: GPIO%d", TEST_RX_PIN);
   ESP_LOGI(TAG, "  Transceiver: SN65HVD230/232");
   ESP_LOGI(TAG, "  API: ESP-IDF v5.5 TWAI node-based");
-  
+
   vTaskDelay(pdMS_TO_TICKS(1000));
 
   // Initialize test event group
@@ -895,11 +892,12 @@ extern "C" void app_main(void) {
   RUN_TEST(test_can_signal_quality);
 
   print_test_summary(g_test_results, "ESP32-C6 CAN (ESP-IDF v5.5 + SN65)", TAG);
-  
+
   // Cleanup
   vEventGroupDelete(test_event_group);
-  
-  ESP_LOGI(TAG, "\n╔══════════════════════════════════════════════════════════════════════════════╗");
+
+  ESP_LOGI(TAG,
+           "\n╔══════════════════════════════════════════════════════════════════════════════╗");
   ESP_LOGI(TAG, "║                      TEST SUITE COMPLETED                                   ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 

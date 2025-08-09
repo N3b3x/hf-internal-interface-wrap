@@ -17,8 +17,8 @@
 #include "base/BaseBluetooth.h"
 #include "mcu/esp32/EspBluetooth.h"
 
-#include <vector>
 #include "TestFramework.h"
+#include <vector>
 
 static const char* TAG = "BT_Test";
 

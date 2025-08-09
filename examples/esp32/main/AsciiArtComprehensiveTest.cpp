@@ -1,6 +1,7 @@
 /**
  * @file AsciiArtComprehensiveTest.cpp
- * @brief ASCII Art Generator comprehensive example and test suite for ESP32-C6 DevKit-M-1 (noexcept)
+ * @brief ASCII Art Generator comprehensive example and test suite for ESP32-C6 DevKit-M-1
+ * (noexcept)
  *
  * This file contains a comprehensive example and test suite for the AsciiArtGenerator
  * targeting ESP32-C6 with ESP-IDF v5.5+. It provides thorough testing and demonstration
@@ -23,8 +24,8 @@
 #include <string>
 #include <vector>
 
-#include "utils/AsciiArtGenerator.h"
 #include "TestFramework.h"
+#include "utils/AsciiArtGenerator.h"
 
 static const char* TAG = "ASCII_ART_Test";
 
@@ -103,7 +104,8 @@ bool test_uppercase_conversion() noexcept {
 
   // Both should produce the same result (uppercase)
   if (lowercase_art != mixed_art) {
-    ESP_LOGE(TAG, "Uppercase conversion failed - lowercase and mixed case produced different results");
+    ESP_LOGE(TAG,
+             "Uppercase conversion failed - lowercase and mixed case produced different results");
     return false;
   }
 
@@ -190,7 +192,8 @@ bool test_empty_and_edge_cases() noexcept {
     ESP_LOGE(TAG, "Failed to generate ASCII art with unsupported characters");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art with unsupported characters:\n%s", unsupported_art.c_str());
+  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art with unsupported characters:\n%s",
+           unsupported_art.c_str());
 
   // Test very long string
   std::string long_string(100, 'A');
@@ -210,17 +213,11 @@ bool test_custom_character_management() noexcept {
   AsciiArtGenerator generator;
 
   // Test adding custom character
-  std::vector<std::string> custom_char = {
-    "  ___  ",
-    " /   \\ ",
-    "|     |",
-    "|     |",
-    " \\___/ ",
-    "       "
-  };
+  std::vector<std::string> custom_char = {"  ___  ", " /   \\ ", "|     |",
+                                          "|     |", " \\___/ ", "       "};
 
   generator.AddCustomCharacter('@', custom_char);
-  
+
   // Test custom character generation
   std::string custom_art = generator.Generate("TEST@");
   if (custom_art.empty()) {
@@ -230,22 +227,17 @@ bool test_custom_character_management() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art with custom character:\n%s", custom_art.c_str());
 
   // Test multiple custom characters
-  std::vector<std::string> custom_char2 = {
-    " _____ ",
-    "|     |",
-    "|     |",
-    "|     |",
-    "|_____|",
-    "       "
-  };
-  
+  std::vector<std::string> custom_char2 = {" _____ ", "|     |", "|     |",
+                                           "|     |", "|_____|", "       "};
+
   generator.AddCustomCharacter('&', custom_char2);
   std::string multi_custom_art = generator.Generate("@&");
   if (multi_custom_art.empty()) {
     ESP_LOGE(TAG, "Failed to generate ASCII art with multiple custom characters");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art with multiple custom characters:\n%s", multi_custom_art.c_str());
+  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art with multiple custom characters:\n%s",
+           multi_custom_art.c_str());
 
   // Test removing custom character
   generator.RemoveCustomCharacter('@');
@@ -254,7 +246,8 @@ bool test_custom_character_management() noexcept {
     ESP_LOGE(TAG, "Failed to generate ASCII art after removing custom character");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art after removing custom character:\n%s", after_remove_art.c_str());
+  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art after removing custom character:\n%s",
+           after_remove_art.c_str());
 
   // Test clearing all custom characters
   generator.ClearCustomCharacters();
@@ -263,7 +256,8 @@ bool test_custom_character_management() noexcept {
     ESP_LOGE(TAG, "Failed to generate ASCII art after clearing custom characters");
     return false;
   }
-  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art after clearing custom characters:\n%s", after_clear_art.c_str());
+  ESP_LOGI(TAG, "[SUCCESS] Generated ASCII art after clearing custom characters:\n%s",
+           after_clear_art.c_str());
 
   return true;
 }
@@ -300,15 +294,9 @@ bool test_character_support_validation() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Character '€' is not supported");
 
   // Test custom character support
-  std::vector<std::string> custom_char = {
-    "  ___  ",
-    " /   \\ ",
-    "|     |",
-    "|     |",
-    " \\___/ ",
-    "       "
-  };
-  
+  std::vector<std::string> custom_char = {"  ___  ", " /   \\ ", "|     |",
+                                          "|     |", " \\___/ ", "       "};
+
   generator.AddCustomCharacter('@', custom_char);
   if (!generator.IsCharacterSupported('@')) {
     ESP_LOGE(TAG, "Custom character '@' should be supported after adding");
@@ -359,18 +347,12 @@ bool test_supported_characters_list() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Common characters found in supported list");
 
   // Test custom character addition to list
-  std::vector<std::string> custom_char = {
-    "  ___  ",
-    " /   \\ ",
-    "|     |",
-    "|     |",
-    " \\___/ ",
-    "       "
-  };
-  
+  std::vector<std::string> custom_char = {"  ___  ", " /   \\ ", "|     |",
+                                          "|     |", " \\___/ ", "       "};
+
   generator.AddCustomCharacter('@', custom_char);
   std::string supported_after = generator.GetSupportedCharacters();
-  
+
   if (supported_after.find('@') == std::string::npos) {
     ESP_LOGE(TAG, "Custom character '@' should be in supported characters list after adding");
     return false;
@@ -428,18 +410,9 @@ bool test_performance_and_stability() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Completed 10 rapid generation tests");
 
   // Test with different text lengths
-  std::vector<std::string> test_strings = {
-    "A",
-    "AB",
-    "ABC",
-    "ABCD",
-    "ABCDE",
-    "ABCDEF",
-    "ABCDEFG",
-    "ABCDEFGH",
-    "ABCDEFGHI",
-    "ABCDEFGHIJ"
-  };
+  std::vector<std::string> test_strings = {"A",         "AB",        "ABC",     "ABCD",
+                                           "ABCDE",     "ABCDEF",    "ABCDEFG", "ABCDEFGH",
+                                           "ABCDEFGHI", "ABCDEFGHIJ"};
 
   for (const auto& test_str : test_strings) {
     std::string art = generator.Generate(test_str);
@@ -452,24 +425,18 @@ bool test_performance_and_stability() noexcept {
 
   // Test memory stability with custom characters
   for (int i = 0; i < 5; ++i) {
-    std::vector<std::string> custom_char = {
-      "  ___  ",
-      " /   \\ ",
-      "|     |",
-      "|     |",
-      " \\___/ ",
-      "       "
-    };
-    
+    std::vector<std::string> custom_char = {"  ___  ", " /   \\ ", "|     |",
+                                            "|     |", " \\___/ ", "       "};
+
     char custom_char_code = 'A' + i;
     generator.AddCustomCharacter(custom_char_code, custom_char);
-    
+
     std::string art = generator.Generate(std::string(1, custom_char_code));
     if (art.empty()) {
       ESP_LOGE(TAG, "Failed to generate ASCII art for custom character '%c'", custom_char_code);
       return false;
     }
-    
+
     generator.RemoveCustomCharacter(custom_char_code);
   }
   ESP_LOGI(TAG, "[SUCCESS] Completed custom character add/remove cycle tests");
@@ -500,7 +467,7 @@ extern "C" void app_main(void) {
 
   if (g_test_results.failed_tests == 0) {
     ESP_LOGI(TAG, "[SUCCESS] ALL ASCII ART GENERATOR TESTS PASSED!");
-    
+
     // Generate a final success banner
     AsciiArtGenerator final_generator;
     std::string success_banner = final_generator.Generate("ASCII ART EXAMPLE COMPLETE!");
