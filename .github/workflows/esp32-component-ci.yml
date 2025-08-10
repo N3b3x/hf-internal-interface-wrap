@@ -32,51 +32,40 @@ defaults:
     shell: bash
 
 jobs:
+  generate-matrix:
+    name: Generate Build Matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.generate-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: pip install pyyaml
+        
+      - name: Generate matrix
+        id: generate-matrix
+        run: |
+          MATRIX=$(python .github/workflows/generate_matrix.py)
+          echo "matrix=${MATRIX}" >> $GITHUB_OUTPUT
+          echo "Generated matrix:"
+          echo "${MATRIX}" | jq .
+
   build:
     name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.example_type }}
     runs-on: ubuntu-latest
+    needs: generate-matrix
     timeout-minutes: 30
     strategy:
       fail-fast: false
-      matrix:
-        idf_version: [release-v5.5]
-        build_type: [Release, Debug]
-        example_type: [
-          ascii_art, gpio_test,
-          adc_test, uart_test, spi_test, i2c_test,
-          pwm_test, can_test, pio_test, temperature_test, nvs_test,
-          timer_test, logger_test, wifi_test, bluetooth_test, utils_test
-        ]
-        exclude:
-          # Exclude some combinations to reduce CI time
-          - build_type: Debug
-            example_type: ascii_art
-          - build_type: Debug
-            example_type: adc_test
-          - build_type: Debug
-            example_type: uart_test
-          - build_type: Debug
-            example_type: spi_test
-          - build_type: Debug
-            example_type: i2c_test
-          - build_type: Debug
-            example_type: pwm_test
-          - build_type: Debug
-            example_type: can_test
-          - build_type: Debug
-            example_type: pio_test
-          - build_type: Debug
-            example_type: temperature_test
-          - build_type: Debug
-            example_type: nvs_test
-          - build_type: Debug
-            example_type: timer_test
-          - build_type: Debug
-            example_type: logger_test
-          - build_type: Debug
-            example_type: wifi_test
-          - build_type: Debug
-            example_type: bluetooth_test
+      matrix: ${{fromJson(needs.generate-matrix.outputs.matrix).matrix}}
+      exclude: ${{fromJson(needs.generate-matrix.outputs.matrix).exclude || fromJson('[]')}}
 
     steps:
       - uses: actions/checkout@v4

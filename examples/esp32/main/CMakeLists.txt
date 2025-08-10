@@ -14,42 +14,41 @@ message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
 message(STATUS "EXAMPLE_TYPE: ${EXAMPLE_TYPE}")
 message(STATUS "===============================")
 
-# Map example types to source files
-if(EXAMPLE_TYPE STREQUAL "ascii_art")
-    set(MAIN_SOURCE "AsciiArtComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "gpio_test")
-    set(MAIN_SOURCE "GpioComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "adc_test")
-    set(MAIN_SOURCE "AdcComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "uart_test")
-    set(MAIN_SOURCE "UartComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "spi_test")
-    set(MAIN_SOURCE "SpiComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "i2c_test")
-    set(MAIN_SOURCE "I2cComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "pwm_test")
-    set(MAIN_SOURCE "PwmComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "can_test")
-    set(MAIN_SOURCE "CanComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "pio_test")
-    set(MAIN_SOURCE "PioComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "temperature_test")
-    set(MAIN_SOURCE "TemperatureComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "nvs_test")
-    set(MAIN_SOURCE "NvsComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "timer_test")
-    set(MAIN_SOURCE "TimerComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "logger_test")
-    set(MAIN_SOURCE "LoggerComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "wifi_test")
-    set(MAIN_SOURCE "WifiComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "bluetooth_test")
-    set(MAIN_SOURCE "BluetoothComprehensiveTest.cpp")
-elseif(EXAMPLE_TYPE STREQUAL "utils_test")
-    set(MAIN_SOURCE "UtilsComprehensiveTest.cpp")
-else()
-    message(FATAL_ERROR "Unknown EXAMPLE_TYPE: ${EXAMPLE_TYPE}")
+# Get source file from centralized configuration
+execute_process(
+    COMMAND python3 "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/get_example_info.py" validate "${EXAMPLE_TYPE}"
+    RESULT_VARIABLE VALIDATE_RESULT
+    OUTPUT_QUIET
+    ERROR_QUIET
+)
+
+if(NOT VALIDATE_RESULT EQUAL 0)
+    # Try to list available examples for better error message
+    execute_process(
+        COMMAND python3 "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/get_example_info.py" list
+        OUTPUT_VARIABLE AVAILABLE_EXAMPLES
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+        ERROR_QUIET
+    )
+    if(AVAILABLE_EXAMPLES)
+        message(FATAL_ERROR "Unknown EXAMPLE_TYPE: ${EXAMPLE_TYPE}\nAvailable examples: ${AVAILABLE_EXAMPLES}")
+    else
+        message(FATAL_ERROR "Unknown EXAMPLE_TYPE: ${EXAMPLE_TYPE}")
+    endif()
 endif()
+
+execute_process(
+    COMMAND python3 "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/get_example_info.py" source_file "${EXAMPLE_TYPE}"
+    OUTPUT_VARIABLE MAIN_SOURCE
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    RESULT_VARIABLE SOURCE_RESULT
+)
+
+if(NOT SOURCE_RESULT EQUAL 0)
+    message(FATAL_ERROR "Failed to get source file for EXAMPLE_TYPE: ${EXAMPLE_TYPE}")
+endif()
+
+message(STATUS "Using source file from configuration: ${MAIN_SOURCE}")
 
 # Check if source file exists
 set(SOURCE_FILE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/${MAIN_SOURCE}")

@@ -1,31 +1,42 @@
 # Build script for different ESP32 examples (PowerShell version)
 # Usage: .\build_example.ps1 [example_type] [build_type]
 # 
-# Example types:
-#   ascii_art      - ASCII art generator example
-#   pio_test       - Comprehensive PIO/RMT testing suite with WS2812 and logic analyzer
-#   bluetooth_test - Comprehensive Bluetooth testing suite
-#   utils_test     - Utilities testing suite
-#
-# Build types: Debug, Release (default: Release)
+# Example types and build types are loaded from examples_config.yml
+# Use '.\build_example.ps1 list' to see all available examples
 
 param(
-    [string]$ExampleType = "ascii_art",
-    [string]$BuildType = "Release"
+    [string]$ExampleType = "",
+    [string]$BuildType = ""
 )
 
 $ErrorActionPreference = "Stop"
 
-# Configuration
+# Load configuration
 $ProjectDir = $PSScriptRoot
-$ValidExampleTypes = @(
-    "ascii_art",
-    "gpio_test", "adc_test", "i2c_test", "spi_test", "uart_test", 
-    "can_test", "pwm_test", "timer_test", "logger_test", "nvs_test", 
-    "wifi_test", "pio_test", "temperature_test", "bluetooth_test", "interrupts_test",
-    "utils_test"
-)
-$ValidBuildTypes = @("Debug", "Release")
+. "$ProjectDir\scripts\config_loader.ps1"
+
+# Set defaults from configuration
+if (-not $ExampleType) { $ExampleType = Get-DefaultExample }
+if (-not $BuildType) { $BuildType = Get-DefaultBuildType }
+
+# Handle special commands
+if ($ExampleType -eq "list") {
+    Write-Host "=== Available Example Types ===" -ForegroundColor Green
+    Write-Host "Featured examples:" -ForegroundColor Yellow
+    foreach ($example in Get-FeaturedExampleTypes) {
+        $description = Get-ExampleDescription $example
+        Write-Host "  $example - $description" -ForegroundColor White
+    }
+    Write-Host ""
+    Write-Host "All examples:" -ForegroundColor Yellow
+    foreach ($example in Get-ExampleTypes) {
+        $description = Get-ExampleDescription $example
+        Write-Host "  $example - $description" -ForegroundColor White
+    }
+    Write-Host ""
+    Write-Host "Build types: $((Get-BuildTypes) -join ', ')" -ForegroundColor Yellow
+    exit 0
+}
 
 Write-Host "=== ESP32 HardFOC Interface Wrapper Build System ===" -ForegroundColor Green
 Write-Host "Project Directory: $ProjectDir"
@@ -34,26 +45,31 @@ Write-Host "Build Type: $BuildType"
 Write-Host "======================================================" -ForegroundColor Green
 
 # Validate example type
-if ($ExampleType -notin $ValidExampleTypes) {
+if (Test-ValidExampleType $ExampleType) {
+    Write-Host "Valid example type: $ExampleType" -ForegroundColor Green
+    $description = Get-ExampleDescription $ExampleType
+    Write-Host "Description: $description" -ForegroundColor Cyan
+} else {
     Write-Host "ERROR: Invalid example type: $ExampleType" -ForegroundColor Red
-    Write-Host "Available types: $($ValidExampleTypes -join ', ')" -ForegroundColor Yellow
+    Write-Host "Available types: $((Get-ExampleTypes) -join ', ')" -ForegroundColor Yellow
+    Write-Host "Use '.\build_example.ps1 list' to see all examples with descriptions" -ForegroundColor Yellow
     exit 1
 }
-Write-Host "Valid example type: $ExampleType" -ForegroundColor Green
 
 # Validate build type
-if ($BuildType -notin $ValidBuildTypes) {
+if (Test-ValidBuildType $BuildType) {
+    Write-Host "Valid build type: $BuildType" -ForegroundColor Green
+} else {
     Write-Host "ERROR: Invalid build type: $BuildType" -ForegroundColor Red
-    Write-Host "Available types: $($ValidBuildTypes -join ', ')" -ForegroundColor Yellow
+    Write-Host "Available types: $((Get-BuildTypes) -join ', ')" -ForegroundColor Yellow
     exit 1
 }
-Write-Host "Valid build type: $BuildType" -ForegroundColor Green
 
 # Switch to project directory
 Set-Location $ProjectDir
 
-# Set build directory
-$BuildDir = "build_${ExampleType}_${BuildType}"
+# Set build directory using configuration
+$BuildDir = Get-BuildDirectory $ExampleType $BuildType
 Write-Host "Build directory: $BuildDir" -ForegroundColor Blue
 
 # Clean previous build if it exists
@@ -78,8 +94,8 @@ try {
         throw "Build failed"
     }
 
-    # Get actual binary name from build output
-    $ProjectName = "esp32_iid_${ExampleType}_example"
+    # Get actual binary name from configuration
+    $ProjectName = Get-ProjectName $ExampleType
     $BinFile = "$BuildDir\$ProjectName.bin"
     
     Write-Host "======================================================" -ForegroundColor Green
