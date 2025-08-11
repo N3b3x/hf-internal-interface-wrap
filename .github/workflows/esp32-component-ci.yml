@@ -58,7 +58,7 @@ jobs:
         id: generate-matrix
         run: |
           MATRIX=$(python3 .github/workflows/generate_matrix.py)
-          echo "matrix=${MATRIX}" >> $GITHUB_OUTPUT
+          echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
           echo "Generated matrix:"
           python3 .github/workflows/generate_matrix.py --pretty | jq .
 
