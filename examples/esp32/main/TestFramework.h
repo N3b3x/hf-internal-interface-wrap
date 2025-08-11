@@ -132,9 +132,11 @@ inline void test_task_trampoline(void* param) {
   uint64_t execution_time = end_time - start_time;
   ctx->results->add_result(result, execution_time);
   if (result) {
-    ESP_LOGI(ctx->tag, "[SUCCESS] PASSED (task): %s (%.2f ms)", ctx->test_name, execution_time / 1000.0);
+    ESP_LOGI(ctx->tag, "[SUCCESS] PASSED (task): %s (%.2f ms)", ctx->test_name,
+             execution_time / 1000.0);
   } else {
-    ESP_LOGE(ctx->tag, "[FAILED] FAILED (task): %s (%.2f ms)", ctx->test_name, execution_time / 1000.0);
+    ESP_LOGE(ctx->tag, "[FAILED] FAILED (task): %s (%.2f ms)", ctx->test_name,
+             execution_time / 1000.0);
   }
   vTaskDelete(nullptr);
 }
@@ -146,28 +148,29 @@ inline void test_task_trampoline(void* param) {
  * @param stack_size_bytes Task stack size in bytes
  * @param priority Task priority (defaults to 5)
  */
-#define RUN_TEST_IN_TASK(name, func, stack_size_bytes, priority)                          \
-  do {                                                                                    \
-    static TestTaskContext ctx;                                                           \
-    ctx.test_name = name;                                                                 \
-    ctx.test_func = func;                                                                 \
-    ctx.results = &g_test_results;                                                        \
-    ctx.tag = TAG;                                                                        \
-    BaseType_t created = xTaskCreate(                                                     \
-        test_task_trampoline, name, (stack_size_bytes) / sizeof(StackType_t), &ctx,       \
-        (priority), nullptr);                                                             \
-    if (created != pdPASS) {                                                              \
-      ESP_LOGE(TAG, "Failed to create test task: %s", name);                             \
-      /* Fallback: run inline to avoid losing coverage */                                 \
-      RUN_TEST(func);                                                                     \
-    } else {                                                                              \
-      /* Wait for completion: simple delay loop until result count increases */           \
-      int before = g_test_results.total_tests;                                            \
-      for (int i_wait = 0; i_wait < 1000; ++i_wait) {                                     \
-        if (g_test_results.total_tests > before) break;                                   \
-        vTaskDelay(pdMS_TO_TICKS(10));                                                    \
-      }                                                                                   \
-    }                                                                                     \
+#define RUN_TEST_IN_TASK(name, func, stack_size_bytes, priority)                                \
+  do {                                                                                          \
+    static TestTaskContext ctx;                                                                 \
+    ctx.test_name = name;                                                                       \
+    ctx.test_func = func;                                                                       \
+    ctx.results = &g_test_results;                                                              \
+    ctx.tag = TAG;                                                                              \
+    BaseType_t created =                                                                        \
+        xTaskCreate(test_task_trampoline, name, (stack_size_bytes) / sizeof(StackType_t), &ctx, \
+                    (priority), nullptr);                                                       \
+    if (created != pdPASS) {                                                                    \
+      ESP_LOGE(TAG, "Failed to create test task: %s", name);                                    \
+      /* Fallback: run inline to avoid losing coverage */                                       \
+      RUN_TEST(func);                                                                           \
+    } else {                                                                                    \
+      /* Wait for completion: simple delay loop until result count increases */                 \
+      int before = g_test_results.total_tests;                                                  \
+      for (int i_wait = 0; i_wait < 1000; ++i_wait) {                                           \
+        if (g_test_results.total_tests > before)                                                \
+          break;                                                                                \
+        vTaskDelay(pdMS_TO_TICKS(10));                                                          \
+      }                                                                                         \
+    }                                                                                           \
   } while (0)
 
 /**

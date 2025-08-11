@@ -28,8 +28,7 @@ static constexpr hf_u32_t TEST_U32_VALUE = 0xDEADBEEF;
 static constexpr hf_u32_t TEST_U32_MAX = 0xFFFFFFFF;
 static constexpr hf_u32_t TEST_U32_MIN = 0x00000000;
 static const char* TEST_STRING = "Hello, ESP32-C6 NVS!";
-static const char* LONG_STRING =
-    "This is a test string for NVS storage.";
+static const char* LONG_STRING = "This is a test string for NVS storage.";
 static const uint8_t TEST_BLOB_DATA[] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 
 // === Initialization and Deinitialization Tests ===
@@ -230,123 +229,127 @@ bool test_nvs_u32_operations() noexcept {
 
 bool test_nvs_string_operations() noexcept {
   // Run string test in dedicated task to provide larger stack and isolation
-  RUN_TEST_IN_TASK("test_nvs_string_operations", []() noexcept -> bool {
-    ESP_LOGI(TAG, "Testing NVS string operations...");
+  RUN_TEST_IN_TASK(
+      "test_nvs_string_operations",
+      []() noexcept -> bool {
+        ESP_LOGI(TAG, "Testing NVS string operations...");
 
-    EspNvs nvs("test_str");
-    if (!nvs.EnsureInitialized()) {
-      ESP_LOGE(TAG, "Failed to initialize NVS");
-      return false;
-    }
+        EspNvs nvs("test_str");
+        if (!nvs.EnsureInitialized()) {
+          ESP_LOGE(TAG, "Failed to initialize NVS");
+          return false;
+        }
 
-    char buffer[128];
-    size_t actual_size = 0;
+        char buffer[128];
+        size_t actual_size = 0;
 
-    auto result = nvs.SetString("test_str_basic", TEST_STRING);
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set string value: %s", HfNvsErrToString(result));
-      return false;
-    }
+        auto result = nvs.SetString("test_str_basic", TEST_STRING);
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to set string value: %s", HfNvsErrToString(result));
+          return false;
+        }
 
-    memset(buffer, 0, sizeof(buffer));
-    result = nvs.GetString("test_str_basic", buffer, sizeof(buffer), &actual_size);
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to get string value: %s", HfNvsErrToString(result));
-      return false;
-    }
-    if (strcmp(buffer, TEST_STRING) != 0) {
-      ESP_LOGE(TAG, "Retrieved string mismatch: expected '%s', got '%s'", TEST_STRING, buffer);
-      return false;
-    }
-    if (actual_size != strlen(TEST_STRING) + 1) {
-      ESP_LOGE(TAG, "Actual size mismatch: expected %zu, got %zu", strlen(TEST_STRING) + 1, actual_size);
-      return false;
-    }
+        memset(buffer, 0, sizeof(buffer));
+        result = nvs.GetString("test_str_basic", buffer, sizeof(buffer), &actual_size);
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to get string value: %s", HfNvsErrToString(result));
+          return false;
+        }
+        if (strcmp(buffer, TEST_STRING) != 0) {
+          ESP_LOGE(TAG, "Retrieved string mismatch: expected '%s', got '%s'", TEST_STRING, buffer);
+          return false;
+        }
+        if (actual_size != strlen(TEST_STRING) + 1) {
+          ESP_LOGE(TAG, "Actual size mismatch: expected %zu, got %zu", strlen(TEST_STRING) + 1,
+                   actual_size);
+          return false;
+        }
 
-    // Empty string
-    result = nvs.SetString("test_str_empty", "");
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set empty string");
-      return false;
-    }
-    memset(buffer, 'X', sizeof(buffer));
-    result = nvs.GetString("test_str_empty", buffer, sizeof(buffer), &actual_size);
-    if (result != hf_nvs_err_t::NVS_SUCCESS || strcmp(buffer, "") != 0) {
-      ESP_LOGE(TAG, "Failed to retrieve empty string");
-      return false;
-    }
+        // Empty string
+        result = nvs.SetString("test_str_empty", "");
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to set empty string");
+          return false;
+        }
+        memset(buffer, 'X', sizeof(buffer));
+        result = nvs.GetString("test_str_empty", buffer, sizeof(buffer), &actual_size);
+        if (result != hf_nvs_err_t::NVS_SUCCESS || strcmp(buffer, "") != 0) {
+          ESP_LOGE(TAG, "Failed to retrieve empty string");
+          return false;
+        }
 
-    // Long string
-    result = nvs.SetString("test_str_long", LONG_STRING);
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set long string");
-      return false;
-    }
-    memset(buffer, 0, sizeof(buffer));
-    result = nvs.GetString("test_str_long", buffer, sizeof(buffer), &actual_size);
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to get long string");
-      return false;
-    }
-    if (strcmp(buffer, LONG_STRING) != 0) {
-      ESP_LOGE(TAG, "Retrieved long string mismatch");
-      return false;
-    }
+        // Long string
+        result = nvs.SetString("test_str_long", LONG_STRING);
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to set long string");
+          return false;
+        }
+        memset(buffer, 0, sizeof(buffer));
+        result = nvs.GetString("test_str_long", buffer, sizeof(buffer), &actual_size);
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to get long string");
+          return false;
+        }
+        if (strcmp(buffer, LONG_STRING) != 0) {
+          ESP_LOGE(TAG, "Retrieved long string mismatch");
+          return false;
+        }
 
-    // Buffer too small -> VALUE_TOO_LARGE
-    result = nvs.GetString("test_str_long", buffer, 10, &actual_size);
-    if (result != hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE) {
-      ESP_LOGE(TAG, "Getting string with small buffer should return VALUE_TOO_LARGE");
-      return false;
-    }
+        // Buffer too small -> VALUE_TOO_LARGE
+        result = nvs.GetString("test_str_long", buffer, 10, &actual_size);
+        if (result != hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE) {
+          ESP_LOGE(TAG, "Getting string with small buffer should return VALUE_TOO_LARGE");
+          return false;
+        }
 
-    // Get actual size without buffer
-    result = nvs.GetString("test_str_basic", nullptr, 0, &actual_size);
-    if (result != hf_nvs_err_t::NVS_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to get string size");
-      return false;
-    }
-    if (actual_size != strlen(TEST_STRING) + 1) {
-      ESP_LOGE(TAG, "String size mismatch");
-      return false;
-    }
+        // Get actual size without buffer
+        result = nvs.GetString("test_str_basic", nullptr, 0, &actual_size);
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to get string size");
+          return false;
+        }
+        if (actual_size != strlen(TEST_STRING) + 1) {
+          ESP_LOGE(TAG, "String size mismatch");
+          return false;
+        }
 
-    // Invalid parameters
-    result = nvs.SetString(nullptr, TEST_STRING);
-    if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
-      ESP_LOGE(TAG, "SetString with null key should return NVS_ERR_NULL_POINTER");
-      return false;
-    }
-    result = nvs.SetString("test_str_null", nullptr);
-    if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
-      ESP_LOGE(TAG, "SetString with null value should return NVS_ERR_NULL_POINTER");
-      return false;
-    }
-    result = nvs.GetString(nullptr, buffer, sizeof(buffer));
-    if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
-      ESP_LOGE(TAG, "GetString with null key should return NVS_ERR_NULL_POINTER");
-      return false;
-    }
+        // Invalid parameters
+        result = nvs.SetString(nullptr, TEST_STRING);
+        if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
+          ESP_LOGE(TAG, "SetString with null key should return NVS_ERR_NULL_POINTER");
+          return false;
+        }
+        result = nvs.SetString("test_str_null", nullptr);
+        if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
+          ESP_LOGE(TAG, "SetString with null value should return NVS_ERR_NULL_POINTER");
+          return false;
+        }
+        result = nvs.GetString(nullptr, buffer, sizeof(buffer));
+        if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
+          ESP_LOGE(TAG, "GetString with null key should return NVS_ERR_NULL_POINTER");
+          return false;
+        }
 
-    // Very long string (exceeds NVS limits) - allocate dynamically to avoid large stack
-    const size_t too_long = nvs.GetMaxValueSize() + 16;
-    char* very_long_string = static_cast<char*>(malloc(too_long));
-    if (!very_long_string) {
-      ESP_LOGE(TAG, "malloc failed for very_long_string");
-      return false;
-    }
-    memset(very_long_string, 'A', too_long - 1);
-    very_long_string[too_long - 1] = '\0';
-    result = nvs.SetString("str_too_long", very_long_string);
-    free(very_long_string);
-    if (result != hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE) {
-      ESP_LOGE(TAG, "SetString with too long value should return NVS_ERR_VALUE_TOO_LARGE");
-      return false;
-    }
+        // Very long string (exceeds NVS limits) - allocate dynamically to avoid large stack
+        const size_t too_long = nvs.GetMaxValueSize() + 16;
+        char* very_long_string = static_cast<char*>(malloc(too_long));
+        if (!very_long_string) {
+          ESP_LOGE(TAG, "malloc failed for very_long_string");
+          return false;
+        }
+        memset(very_long_string, 'A', too_long - 1);
+        very_long_string[too_long - 1] = '\0';
+        result = nvs.SetString("str_too_long", very_long_string);
+        free(very_long_string);
+        if (result != hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE) {
+          ESP_LOGE(TAG, "SetString with too long value should return NVS_ERR_VALUE_TOO_LARGE");
+          return false;
+        }
 
-    ESP_LOGI(TAG, "[SUCCESS] NVS string operations tests passed");
-    return true;
-  }, 8192 /* stack bytes */, 5);
+        ESP_LOGI(TAG, "[SUCCESS] NVS string operations tests passed");
+        return true;
+      },
+      8192 /* stack bytes */, 5);
 
   return true;
 }
@@ -355,120 +358,124 @@ bool test_nvs_string_operations() noexcept {
 
 bool test_nvs_blob_operations() noexcept {
   // Run blob test in dedicated task to provide larger stack for buffers
-  RUN_TEST_IN_TASK("test_nvs_blob_operations", []() noexcept -> bool {
-    ESP_LOGI(TAG, "Testing NVS blob operations...");
-    EspNvs nvs("test_blob");
-    if (!nvs.EnsureInitialized()) {
-      ESP_LOGE(TAG, "Failed to initialize NVS");
-      return false;
-    }
-    uint8_t buffer[TEST_BUFFER_SIZE];
-    size_t actual_size = 0;
+  RUN_TEST_IN_TASK(
+      "test_nvs_blob_operations",
+      []() noexcept -> bool {
+        ESP_LOGI(TAG, "Testing NVS blob operations...");
+        EspNvs nvs("test_blob");
+        if (!nvs.EnsureInitialized()) {
+          ESP_LOGE(TAG, "Failed to initialize NVS");
+          return false;
+        }
+        uint8_t buffer[TEST_BUFFER_SIZE];
+        size_t actual_size = 0;
 
-  // Test 1: Basic set and get
-  auto result = nvs.SetBlob("test_blob_basic", TEST_BLOB_DATA, sizeof(TEST_BLOB_DATA));
-  if (result != hf_nvs_err_t::NVS_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to set blob value: %s", HfNvsErrToString(result));
-    return false;
-  }
+        // Test 1: Basic set and get
+        auto result = nvs.SetBlob("test_blob_basic", TEST_BLOB_DATA, sizeof(TEST_BLOB_DATA));
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to set blob value: %s", HfNvsErrToString(result));
+          return false;
+        }
 
-  memset(buffer, 0, sizeof(buffer));
-  result = nvs.GetBlob("test_blob_basic", buffer, sizeof(buffer), &actual_size);
-  if (result != hf_nvs_err_t::NVS_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get blob value: %s", HfNvsErrToString(result));
-    return false;
-  }
+        memset(buffer, 0, sizeof(buffer));
+        result = nvs.GetBlob("test_blob_basic", buffer, sizeof(buffer), &actual_size);
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to get blob value: %s", HfNvsErrToString(result));
+          return false;
+        }
 
-  if (memcmp(buffer, TEST_BLOB_DATA, sizeof(TEST_BLOB_DATA)) != 0) {
-    ESP_LOGE(TAG, "Retrieved blob data mismatch");
-    return false;
-  }
+        if (memcmp(buffer, TEST_BLOB_DATA, sizeof(TEST_BLOB_DATA)) != 0) {
+          ESP_LOGE(TAG, "Retrieved blob data mismatch");
+          return false;
+        }
 
-  if (actual_size != sizeof(TEST_BLOB_DATA)) {
-    ESP_LOGE(TAG, "Actual size mismatch: expected %zu, got %zu", sizeof(TEST_BLOB_DATA),
-             actual_size);
-    return false;
-  }
+        if (actual_size != sizeof(TEST_BLOB_DATA)) {
+          ESP_LOGE(TAG, "Actual size mismatch: expected %zu, got %zu", sizeof(TEST_BLOB_DATA),
+                   actual_size);
+          return false;
+        }
 
-  // Test 2: Empty blob -> NULL_POINTER (data null)
-  result = nvs.SetBlob("test_blob_empty", nullptr, 0);
-  if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
-    ESP_LOGE(TAG, "SetBlob with null and size 0 should return NVS_ERR_NULL_POINTER");
-    return false;
-  }
+        // Test 2: Empty blob -> NULL_POINTER (data null)
+        result = nvs.SetBlob("test_blob_empty", nullptr, 0);
+        if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
+          ESP_LOGE(TAG, "SetBlob with null and size 0 should return NVS_ERR_NULL_POINTER");
+          return false;
+        }
 
-  // Test 3: Large blob
-  static uint8_t large_blob[1024];
-  for (size_t i = 0; i < sizeof(large_blob); ++i) {
-    large_blob[i] = static_cast<uint8_t>(i & 0xFF);
-  }
+        // Test 3: Large blob
+        static uint8_t large_blob[1024];
+        for (size_t i = 0; i < sizeof(large_blob); ++i) {
+          large_blob[i] = static_cast<uint8_t>(i & 0xFF);
+        }
 
-  result = nvs.SetBlob("test_blob_large", large_blob, sizeof(large_blob));
-  if (result != hf_nvs_err_t::NVS_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to set large blob");
-    return false;
-  }
+        result = nvs.SetBlob("test_blob_large", large_blob, sizeof(large_blob));
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to set large blob");
+          return false;
+        }
 
-  static uint8_t large_buffer[1024];
-  result = nvs.GetBlob("test_blob_large", large_buffer, sizeof(large_buffer), &actual_size);
-  if (result != hf_nvs_err_t::NVS_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get large blob");
-    return false;
-  }
+        static uint8_t large_buffer[1024];
+        result = nvs.GetBlob("test_blob_large", large_buffer, sizeof(large_buffer), &actual_size);
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to get large blob");
+          return false;
+        }
 
-  if (memcmp(large_buffer, large_blob, sizeof(large_blob)) != 0) {
-    ESP_LOGE(TAG, "Large blob data mismatch");
-    return false;
-  }
+        if (memcmp(large_buffer, large_blob, sizeof(large_blob)) != 0) {
+          ESP_LOGE(TAG, "Large blob data mismatch");
+          return false;
+        }
 
-  // Test 4: Buffer too small -> VALUE_TOO_LARGE
-  result = nvs.GetBlob("test_blob_large", buffer, 10, &actual_size);
-  if (result != hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE) {
-    ESP_LOGE(TAG, "Getting blob with small buffer should return VALUE_TOO_LARGE");
-    return false;
-  }
+        // Test 4: Buffer too small -> VALUE_TOO_LARGE
+        result = nvs.GetBlob("test_blob_large", buffer, 10, &actual_size);
+        if (result != hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE) {
+          ESP_LOGE(TAG, "Getting blob with small buffer should return VALUE_TOO_LARGE");
+          return false;
+        }
 
-  // Test 5: Get actual size without buffer
-  result = nvs.GetBlob("test_blob_basic", nullptr, 0, &actual_size);
-  if (result != hf_nvs_err_t::NVS_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get blob size");
-    return false;
-  }
+        // Test 5: Get actual size without buffer
+        result = nvs.GetBlob("test_blob_basic", nullptr, 0, &actual_size);
+        if (result != hf_nvs_err_t::NVS_SUCCESS) {
+          ESP_LOGE(TAG, "Failed to get blob size");
+          return false;
+        }
 
-  if (actual_size != sizeof(TEST_BLOB_DATA)) {
-    ESP_LOGE(TAG, "Blob size mismatch");
-    return false;
-  }
+        if (actual_size != sizeof(TEST_BLOB_DATA)) {
+          ESP_LOGE(TAG, "Blob size mismatch");
+          return false;
+        }
 
-  // Test 6: Invalid parameters
-  result = nvs.SetBlob(nullptr, TEST_BLOB_DATA, sizeof(TEST_BLOB_DATA));
-  if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
-    ESP_LOGE(TAG, "SetBlob with null key should return NVS_ERR_NULL_POINTER");
-    return false;
-  }
+        // Test 6: Invalid parameters
+        result = nvs.SetBlob(nullptr, TEST_BLOB_DATA, sizeof(TEST_BLOB_DATA));
+        if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
+          ESP_LOGE(TAG, "SetBlob with null key should return NVS_ERR_NULL_POINTER");
+          return false;
+        }
 
-  result = nvs.SetBlob("test_blob_null", nullptr, 10);
-  if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
-    ESP_LOGE(TAG, "SetBlob with null data should return NVS_ERR_NULL_POINTER");
-    return false;
-  }
+        result = nvs.SetBlob("test_blob_null", nullptr, 10);
+        if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
+          ESP_LOGE(TAG, "SetBlob with null data should return NVS_ERR_NULL_POINTER");
+          return false;
+        }
 
-  result = nvs.GetBlob(nullptr, buffer, sizeof(buffer));
-  if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
-    ESP_LOGE(TAG, "GetBlob with null key should return NVS_ERR_NULL_POINTER");
-    return false;
-  }
+        result = nvs.GetBlob(nullptr, buffer, sizeof(buffer));
+        if (result != hf_nvs_err_t::NVS_ERR_NULL_POINTER) {
+          ESP_LOGE(TAG, "GetBlob with null key should return NVS_ERR_NULL_POINTER");
+          return false;
+        }
 
-  // Test 7: Very large blob (exceeds NVS limits)
-  static uint8_t very_large_blob[4096];
-  memset(very_large_blob, 0xAA, sizeof(very_large_blob));
+        // Test 7: Very large blob (exceeds NVS limits)
+        static uint8_t very_large_blob[4096];
+        memset(very_large_blob, 0xAA, sizeof(very_large_blob));
 
-  // Note: The conservative 4KB guard is enforced for strings, not blobs. Blob max depends on partition.
-  // So we only perform a sanity large-blob write/read above, then skip forcing an oversize error here.
+        // Note: The conservative 4KB guard is enforced for strings, not blobs. Blob max depends on
+        // partition. So we only perform a sanity large-blob write/read above, then skip forcing an
+        // oversize error here.
 
-    ESP_LOGI(TAG, "[SUCCESS] NVS blob operations tests passed");
-    return true;
-  }, 8192 /* stack bytes */, 5);
+        ESP_LOGI(TAG, "[SUCCESS] NVS blob operations tests passed");
+        return true;
+      },
+      8192 /* stack bytes */, 5);
   return true;
 }
 

@@ -230,8 +230,8 @@ bool test_custom_character_management() noexcept {
   std::vector<std::string> custom_char2 = {" _____ ", "|     |", "|     |",
                                            "|     |", "|_____|", "       "};
 
-  generator.AddCustomCharacter('\x01', custom_char2);  // Use \x01 which is not in our built-in set
-  std::string multi_custom_art = generator.Generate("@\x01");  // @ is built-in, \x01 is custom
+  generator.AddCustomCharacter('\x01', custom_char2); // Use \x01 which is not in our built-in set
+  std::string multi_custom_art = generator.Generate("@\x01"); // @ is built-in, \x01 is custom
   if (multi_custom_art.empty()) {
     ESP_LOGE(TAG, "Failed to generate ASCII art with multiple custom characters");
     return false;
@@ -297,7 +297,7 @@ bool test_character_support_validation() noexcept {
   std::vector<std::string> custom_char = {"  ___  ", " /   \\ ", "|     |",
                                           "|     |", " \\___/ ", "       "};
 
-  generator.AddCustomCharacter('\x01', custom_char);  // Use \x01 which is not built-in
+  generator.AddCustomCharacter('\x01', custom_char); // Use \x01 which is not built-in
   if (!generator.IsCharacterSupported('\x01')) {
     ESP_LOGE(TAG, "Custom character '\\x01' should be supported after adding");
     return false;
@@ -350,7 +350,7 @@ bool test_supported_characters_list() noexcept {
   std::vector<std::string> custom_char = {"  ___  ", " /   \\ ", "|     |",
                                           "|     |", " \\___/ ", "       "};
 
-  generator.AddCustomCharacter('\x01', custom_char);  // Use \x01 which is not built-in
+  generator.AddCustomCharacter('\x01', custom_char); // Use \x01 which is not built-in
   std::string supported_after = generator.GetSupportedCharacters();
 
   if (supported_after.find('\x01') == std::string::npos) {

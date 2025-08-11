@@ -28,8 +28,8 @@ extern "C" {
 #include "esp_check.h"
 #include "esp_log.h"
 #include "hal/rmt_ll.h"
-#include "soc/soc_caps.h"
 #include "soc/clk_tree_defs.h"
+#include "soc/soc_caps.h"
 
 #ifdef __cplusplus
 }
@@ -534,13 +534,13 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       // Configure advanced TX channel for ESP32-C6 compatibility
       rmt_tx_channel_config_t tx_config = {};
       tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-      // ESP32-C6 specific clock source configuration
-      #if defined(CONFIG_IDF_TARGET_ESP32C6)
+// ESP32-C6 specific clock source configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
       tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
-      #else
+#else
       tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
-      #endif
-      
+#endif
+
       tx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
       tx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
       tx_config.trans_queue_depth = queue_depth;
@@ -605,12 +605,12 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       // Configure advanced RX channel for ESP32-C6 compatibility
       rmt_rx_channel_config_t rx_config = {};
       rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-      // ESP32-C6 specific clock source configuration
-      #if defined(CONFIG_IDF_TARGET_ESP32C6)
+// ESP32-C6 specific clock source configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
       rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
-      #else
+#else
       rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
-      #endif
+#endif
       rx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
       rx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
 
@@ -1067,19 +1067,20 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     // Configure TX channel for ESP32-C6 compatibility
     rmt_tx_channel_config_t tx_config = {};
     tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-    // ESP32-C6 specific clock source configuration
-    #if defined(CONFIG_IDF_TARGET_ESP32C6)
+// ESP32-C6 specific clock source configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
     tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
-    #else
+#else
     tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
-    #endif
+#endif
     tx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
     tx_config.mem_block_symbols = 64;
     tx_config.trans_queue_depth = 4;
 
     esp_err_t ret = rmt_new_tx_channel(&tx_config, &channel.tx_channel);
     if (ret != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to create TX channel %d: %s (error: %d)", channel_id, esp_err_to_name(ret), ret);
+      ESP_LOGE(TAG, "Failed to create TX channel %d: %s (error: %d)", channel_id,
+               esp_err_to_name(ret), ret);
       return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
 
@@ -1106,12 +1107,12 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     // Configure RX channel for ESP32-C6 compatibility
     rmt_rx_channel_config_t rx_config = {};
     rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-    // ESP32-C6 specific clock source configuration
-    #if defined(CONFIG_IDF_TARGET_ESP32C6)
+// ESP32-C6 specific clock source configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
     rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
-    #else
+#else
     rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
-    #endif
+#endif
     rx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
     rx_config.mem_block_symbols = 64;
 
