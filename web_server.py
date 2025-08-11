@@ -6,6 +6,8 @@ Web Server for Robot Control with Demo Mode Support
 import json
 import logging
 import time
+import signal
+import sys
 from datetime import datetime
 from typing import Dict, Any, Callable
 from functools import wraps
@@ -15,19 +17,12 @@ from urllib.parse import urlparse, parse_qs
 import mimetypes
 import os
 
-# Import our robot module
-try:
-    from ArmPil_mini import robot_board, robot_camera, ROBOT_AVAILABLE, get_robot_status
-except ImportError:
-    logging.error("Failed to import ArmPil_mini. Creating mock objects.")
-    ROBOT_AVAILABLE = False
-    robot_board = None
-    robot_camera = None
-    def get_robot_status():
-        return {"robot_available": False, "demo_mode": True, "error": "ArmPil_mini not available"}
+# Import configuration and robot manager
+from robot_config import config
+from robot_manager import robot_manager
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+config.setup_logging()
 logger = logging.getLogger(__name__)
 
 # Custom RPC registry to replace jsonrpc2._rpc.register
@@ -50,15 +45,16 @@ def rpc_register(func_name: str = None):
 @rpc_register("get_robot_status")
 def rpc_get_robot_status():
     """Get current robot status"""
-    if ROBOT_AVAILABLE:
-        return get_robot_status()
-    else:
+    try:
+        return robot_manager.get_status()
+    except Exception as e:
+        logger.error(f"Error getting robot status: {e}")
         return {
             "robot_available": False,
             "board_connected": False,
             "camera_connected": False,
             "demo_mode": True,
-            "message": "Running in demo mode - no hardware detected",
+            "error": str(e),
             "timestamp": time.time()
         }
 
@@ -66,20 +62,25 @@ def rpc_get_robot_status():
 @rpc_register("move_robot")
 def rpc_move_robot(x: float, y: float, z: float):
     """Move robot to specified position"""
-    if ROBOT_AVAILABLE and robot_board:
-        success = robot_board.move_to_position(x, y, z)
+    try:
+        return robot_manager.move_to_position(x, y, z)
+    except ValueError as e:
         return {
-            "success": success,
-            "message": f"Moved to position ({x}, {y}, {z})",
+            "success": False,
+            "error": f"Invalid parameters: {e}",
             "timestamp": time.time()
         }
-    else:
-        # Demo response
-        time.sleep(1)  # Simulate movement time
+    except RuntimeError as e:
         return {
-            "success": True,
-            "message": f"Demo: Simulated movement to ({x}, {y}, {z})",
-            "demo_mode": True,
+            "success": False,
+            "error": f"Robot error: {e}",
+            "timestamp": time.time()
+        }
+    except Exception as e:
+        logger.error(f"Unexpected error in move_robot: {e}")
+        return {
+            "success": False,
+            "error": f"Unexpected error: {e}",
             "timestamp": time.time()
         }
 
@@ -87,22 +88,12 @@ def rpc_move_robot(x: float, y: float, z: float):
 @rpc_register("get_robot_position")
 def rpc_get_robot_position():
     """Get current robot position"""
-    if ROBOT_AVAILABLE and robot_board:
-        position = robot_board.get_position()
+    try:
+        return robot_manager.get_position()
+    except Exception as e:
+        logger.error(f"Error getting robot position: {e}")
         return {
-            "position": {"x": position[0], "y": position[1], "z": position[2]},
-            "timestamp": time.time()
-        }
-    else:
-        # Demo response with simulated position
-        import random
-        return {
-            "position": {
-                "x": round(100 + random.uniform(-10, 10), 2),
-                "y": round(50 + random.uniform(-10, 10), 2),
-                "z": round(25 + random.uniform(-5, 5), 2)
-            },
-            "demo_mode": True,
+            "error": f"Position error: {e}",
             "timestamp": time.time()
         }
 
@@ -110,23 +101,13 @@ def rpc_get_robot_position():
 @rpc_register("control_gripper")
 def rpc_control_gripper(open_state: bool):
     """Control robot gripper"""
-    if ROBOT_AVAILABLE and robot_board:
-        success = robot_board.set_gripper(open_state)
-        action = "opened" if open_state else "closed"
+    try:
+        return robot_manager.control_gripper(open_state)
+    except Exception as e:
+        logger.error(f"Error controlling gripper: {e}")
         return {
-            "success": success,
-            "message": f"Gripper {action}",
-            "gripper_open": open_state,
-            "timestamp": time.time()
-        }
-    else:
-        # Demo response
-        action = "opened" if open_state else "closed"
-        return {
-            "success": True,
-            "message": f"Demo: Gripper {action}",
-            "gripper_open": open_state,
-            "demo_mode": True,
+            "success": False,
+            "error": f"Gripper error: {e}",
             "timestamp": time.time()
         }
 
@@ -134,21 +115,13 @@ def rpc_control_gripper(open_state: bool):
 @rpc_register("capture_image")
 def rpc_capture_image():
     """Capture image from robot camera"""
-    if ROBOT_AVAILABLE and robot_camera:
-        image_data = robot_camera.capture_image()
+    try:
+        return robot_manager.capture_image()
+    except Exception as e:
+        logger.error(f"Error capturing image: {e}")
         return {
-            "success": True,
-            "image_data": image_data,
-            "timestamp": time.time()
-        }
-    else:
-        # Demo response with a simple base64 image
-        demo_image = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
-        return {
-            "success": True,
-            "image_data": demo_image,
-            "demo_mode": True,
-            "message": "Demo image captured",
+            "success": False,
+            "error": f"Image capture error: {e}",
             "timestamp": time.time()
         }
 
@@ -156,18 +129,13 @@ def rpc_capture_image():
 @rpc_register("emergency_stop")
 def rpc_emergency_stop():
     """Emergency stop function"""
-    if ROBOT_AVAILABLE and robot_board:
-        success = robot_board.emergency_stop()
+    try:
+        return robot_manager.emergency_stop()
+    except Exception as e:
+        logger.error(f"Error during emergency stop: {e}")
         return {
-            "success": success,
-            "message": "Emergency stop activated",
-            "timestamp": time.time()
-        }
-    else:
-        return {
-            "success": True,
-            "message": "Demo: Emergency stop activated",
-            "demo_mode": True,
+            "success": False,
+            "error": f"Emergency stop error: {e}",
             "timestamp": time.time()
         }
 
@@ -175,12 +143,38 @@ def rpc_emergency_stop():
 @rpc_register("get_available_functions")
 def rpc_get_available_functions():
     """Get list of available RPC functions"""
-    return {
-        "functions": list(rpc_functions.keys()),
-        "count": len(rpc_functions),
-        "demo_mode": not ROBOT_AVAILABLE,
-        "timestamp": time.time()
-    }
+    try:
+        status = robot_manager.get_status()
+        return {
+            "functions": list(rpc_functions.keys()),
+            "count": len(rpc_functions),
+            "demo_mode": status.get("demo_mode", True),
+            "robot_available": status.get("robot_available", False),
+            "timestamp": time.time()
+        }
+    except Exception as e:
+        logger.error(f"Error getting available functions: {e}")
+        return {
+            "functions": list(rpc_functions.keys()),
+            "count": len(rpc_functions),
+            "demo_mode": True,
+            "error": str(e),
+            "timestamp": time.time()
+        }
+
+
+@rpc_register("reset_emergency_stop")
+def rpc_reset_emergency_stop():
+    """Reset emergency stop state"""
+    try:
+        return robot_manager.reset_emergency_stop()
+    except Exception as e:
+        logger.error(f"Error resetting emergency stop: {e}")
+        return {
+            "success": False,
+            "error": f"Reset error: {e}",
+            "timestamp": time.time()
+        }
 
 
 class RobotWebHandler(BaseHTTPRequestHandler):
@@ -493,6 +487,7 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             html += '                <h3>System Control</h3>\n'
             html += '                <p>Emergency and system functions</p>\n'
             html += '                <button class="btn danger" onclick="emergencyStop()">Emergency Stop</button>\n'
+            html += '                <button class="btn" onclick="resetEmergencyStop()">Reset E-Stop</button>\n'
             html += '                <button class="btn" onclick="getAvailableFunctions()">Available Functions</button>\n'
             html += '            </div>\n'
             html += '        </div>\n'
@@ -556,6 +551,7 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             html += '            }\n'
             html += '        }\n'
             html += '        async function emergencyStop() { await callRPC("emergency_stop"); }\n'
+            html += '        async function resetEmergencyStop() { await callRPC("reset_emergency_stop"); }\n'
             html += '        async function getAvailableFunctions() { await callRPC("get_available_functions"); }\n'
             html += '        refreshStatus();\n'
             html += '    </script>\n'
@@ -577,40 +573,73 @@ class RobotWebHandler(BaseHTTPRequestHandler):
 </html>"""
 
 
-def startWebServer(port: int = 8080, robot_available: bool = None):
+def signal_handler(signum, frame):
+    """Handle shutdown signals gracefully"""
+    logger.info(f"Received signal {signum}, shutting down gracefully...")
+    robot_manager.shutdown()
+    sys.exit(0)
+
+
+def startWebServer(port: int = None, host: str = None):
     """Start the web server with demo mode support"""
-    global ROBOT_AVAILABLE
+    # Use configuration values if not provided
+    port = port or config.server_port
+    host = host or config.server_host
     
-    if robot_available is not None:
-        ROBOT_AVAILABLE = robot_available
+    # Register signal handlers for graceful shutdown
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
     
-    logger.info(f"Starting Robot Web Server on port {port}")
-    logger.info(f"Robot hardware available: {ROBOT_AVAILABLE}")
-    logger.info(f"Demo mode: {not ROBOT_AVAILABLE}")
+    logger.info(f"Starting Robot Web Server on {host}:{port}")
     
-    server_address = ('', port)
+    # Get initial robot status
+    try:
+        status = robot_manager.get_status()
+        logger.info(f"Robot hardware available: {status.get('robot_available', False)}")
+        logger.info(f"Demo mode: {status.get('demo_mode', True)}")
+        if status.get('emergency_stopped'):
+            logger.warning("Robot is in emergency stop state")
+    except Exception as e:
+        logger.error(f"Error getting initial robot status: {e}")
+    
+    server_address = (host, port)
     httpd = HTTPServer(server_address, RobotWebHandler)
     
     try:
-        logger.info(f"Server running at http://localhost:{port}")
+        logger.info(f"Server running at http://{host}:{port}")
         logger.info("Press Ctrl+C to stop the server")
         httpd.serve_forever()
     except KeyboardInterrupt:
-        logger.info("Server stopped by user")
+        logger.info("Server stopped by user (Ctrl+C)")
+    except Exception as e:
+        logger.error(f"Server error: {e}")
     finally:
+        logger.info("Shutting down server...")
         httpd.server_close()
+        robot_manager.shutdown()
+        logger.info("Shutdown complete")
 
 
 if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description="Robot Control Web Server")
-    parser.add_argument("--port", type=int, default=8080, help="Server port (default: 8080)")
+    parser.add_argument("--port", type=int, help=f"Server port (default: {config.server_port})")
+    parser.add_argument("--host", type=str, help=f"Server host (default: {config.server_host})")
     parser.add_argument("--demo", action="store_true", help="Force demo mode")
+    parser.add_argument("--debug", action="store_true", help="Enable debug mode")
     
     args = parser.parse_args()
     
+    # Update configuration based on arguments
     if args.demo:
-        ROBOT_AVAILABLE = False
+        config.force_demo_mode = True
+        logger.info("Demo mode forced by command line argument")
     
-    startWebServer(args.port, ROBOT_AVAILABLE)
+    if args.debug:
+        config.debug_mode = True
+        config.log_level = "DEBUG"
+        config.setup_logging()
+        logger.info("Debug mode enabled")
+    
+    startWebServer(args.port, args.host)

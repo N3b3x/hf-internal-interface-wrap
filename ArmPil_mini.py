@@ -6,13 +6,11 @@ ArmPil Mini - Robot control module with demo mode support
 import logging
 import time
 from typing import Optional, Tuple, Any
+from robot_config import config
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+config.setup_logging()
 logger = logging.getLogger(__name__)
-
-# Global flag to control hardware-dependent code paths
-ROBOT_AVAILABLE = False
 
 class Board:
     """Board class for robot hardware control with demo mode support"""
@@ -20,7 +18,12 @@ class Board:
     def __init__(self):
         self.connected = False
         self.demo_mode = True
+        self.hardware = None
         
+        if config.force_demo_mode:
+            logger.info("Demo mode forced by configuration")
+            return
+            
         try:
             # Attempt to initialize real hardware
             logger.info("Attempting to initialize robot board...")
@@ -29,24 +32,36 @@ class Board:
             # self.hardware = board_hardware_lib.Board()
             
             # For now, simulate failure to force demo mode
+            # Comment out the next line when real hardware is available
             raise ImportError("Hardware not available")
+            
+            # If hardware initialization succeeds:
+            # self.connected = True
+            # self.demo_mode = False
             
         except (ImportError, ConnectionError, OSError) as e:
             logger.warning(f"Hardware initialization failed: {e}")
-            logger.info("Running in demo mode")
+            logger.info("Board running in demo mode")
             self.demo_mode = True
-            global ROBOT_AVAILABLE
-            ROBOT_AVAILABLE = False
+            self.connected = False
     
     def move_to_position(self, x: float, y: float, z: float) -> bool:
         """Move robot arm to specified position"""
         if self.demo_mode:
             logger.info(f"Demo: Moving to position ({x:.2f}, {y:.2f}, {z:.2f})")
-            time.sleep(0.5)  # Simulate movement time
+            movement_time = max(0.3, abs(x) * 0.01 + abs(y) * 0.01 + abs(z) * 0.01)
+            time.sleep(movement_time)  # Simulate realistic movement time
             return True
         else:
             # Real hardware movement would go here
-            pass
+            if self.hardware:
+                try:
+                    # return self.hardware.move_to(x, y, z)
+                    pass
+                except Exception as e:
+                    logger.error(f"Hardware movement error: {e}")
+                    return False
+            return False
     
     def get_position(self) -> Tuple[float, float, float]:
         """Get current robot arm position"""
@@ -89,7 +104,12 @@ class Camera:
     def __init__(self):
         self.connected = False
         self.demo_mode = True
+        self.camera = None
         
+        if config.force_demo_mode:
+            logger.info("Camera demo mode forced by configuration")
+            return
+            
         try:
             # Attempt to initialize real camera hardware
             logger.info("Attempting to initialize camera...")
@@ -98,12 +118,18 @@ class Camera:
             # self.camera = camera_hardware_lib.Camera()
             
             # For now, simulate failure to force demo mode
+            # Comment out the next line when real hardware is available
             raise ImportError("Camera hardware not available")
+            
+            # If camera initialization succeeds:
+            # self.connected = True
+            # self.demo_mode = False
             
         except (ImportError, ConnectionError, OSError) as e:
             logger.warning(f"Camera initialization failed: {e}")
             logger.info("Camera running in demo mode")
             self.demo_mode = True
+            self.connected = False
     
     def capture_image(self) -> Optional[str]:
         """Capture image and return base64 encoded data"""
@@ -151,29 +177,23 @@ def initialize_robot() -> Tuple[Optional[Board], Optional[Camera]]:
     return board, camera
 
 
-# Global instances (will be initialized when module is imported)
-robot_board = None
-robot_camera = None
-
-def get_robot_status() -> dict:
-    """Get overall robot status"""
-    global robot_board, robot_camera, ROBOT_AVAILABLE
-    
-    return {
-        "robot_available": ROBOT_AVAILABLE,
-        "board_connected": robot_board.connected if robot_board else False,
-        "camera_connected": robot_camera.connected if robot_camera else False,
-        "demo_mode": True,
-        "timestamp": time.time()
-    }
-
-
-# Initialize robot on module import
+# Module-level testing
 if __name__ == "__main__":
-    # For testing
-    robot_board, robot_camera = initialize_robot()
-    status = get_robot_status()
-    print(f"Robot status: {status}")
-else:
-    # Initialize when imported
-    robot_board, robot_camera = initialize_robot()
+    # For testing the hardware classes directly
+    print("Testing ArmPil Mini hardware classes...")
+    
+    board, camera = initialize_robot()
+    
+    if board:
+        print(f"Board demo mode: {board.demo_mode}")
+        test_result = board.move_to_position(50, 25, 10)
+        print(f"Movement test result: {test_result}")
+        position = board.get_position()
+        print(f"Current position: {position}")
+    
+    if camera:
+        print(f"Camera demo mode: {camera.demo_mode}")
+        image_data = camera.capture_image()
+        print(f"Image capture successful: {image_data is not None}")
+    
+    print("ArmPil Mini testing complete.")
