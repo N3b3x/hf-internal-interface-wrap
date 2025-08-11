@@ -102,10 +102,15 @@ def main():
             metadata = config['metadata']
             print(json.dumps(metadata))
             return
+        elif sys.argv[1] == '--pretty':
+            # Generate full matrix with pretty printing (for debugging)
+            matrix_config = generate_matrix()
+            print(json.dumps(matrix_config, indent=2))
+            return
     
-    # Generate full matrix
+    # Generate full matrix in compact format for GitHub Actions
     matrix_config = generate_matrix()
-    print(json.dumps(matrix_config, indent=2))
+    print(json.dumps(matrix_config))
 
 if __name__ == '__main__':
     main()
