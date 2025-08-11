@@ -86,8 +86,8 @@ get_example_types() {
     if check_yq; then
         run_yq '.examples | keys | .[]' -r | tr '\n' ' '
     else
-        # Fallback: extract from examples section
-        sed -n '/^examples:/,/^[a-zA-Z]/p' "$CONFIG_FILE" | grep '^  [a-z_]*:$' | sed 's/^  \(.*\):$/\1/' | tr '\n' ' '
+        # Fallback: extract from examples section (use more specific range)
+        sed -n '/^examples:/,/^build_config:/p' "$CONFIG_FILE" | grep '^  [a-z_]*:$' | sed 's/^  \(.*\):$/\1/' | sort | tr '\n' ' '
     fi
 }
 
@@ -107,8 +107,8 @@ get_example_description() {
     if check_yq; then
         run_yq ".examples.${example_type}.description" -r
     else
-        # Fallback: extract description using grep
-        sed -n "/^  ${example_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "description:" | sed 's/.*description: *"\(.*\)".*/\1/'
+        # Fallback: extract description using grep (improved regex)
+        sed -n "/^  ${example_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "description:" | sed 's/.*description: *["\x27]*\([^"\x27]*\)["\x27]*.*/\1/' | head -1
     fi
 }
 

@@ -98,7 +98,8 @@ install_system_deps() {
                 liblzma-dev \
                 zlib1g-dev \
                 libgdbm-dev \
-                libnss3-dev
+                libnss3-dev \
+                lsb-release
             ;;
         "fedora")
             sudo dnf install -y \
@@ -189,15 +190,30 @@ install_clang_tools() {
     
     case $os in
         "ubuntu")
+            # Add LLVM APT repository for clang-20
+            print_status "Adding LLVM APT repository for clang-20..."
+            wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add - 2>/dev/null || {
+                # Fallback for newer systems that deprecated apt-key
+                wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+            }
+            
+            # Detect Ubuntu codename
+            local ubuntu_codename=$(lsb_release -cs 2>/dev/null || echo "noble")
+            echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | sudo tee /etc/apt/sources.list.d/llvm.list >/dev/null
+            echo "deb-src http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | sudo tee -a /etc/apt/sources.list.d/llvm.list >/dev/null
+            
+            # Update package lists
+            sudo apt-get update
+            
             # Install clang-20 and tools
+            print_status "Installing clang-20 and tools..."
             sudo apt-get install -y \
                 clang-20 \
                 clang-format-20 \
                 clang-tidy-20 \
                 clang-tools-20 \
                 libclang-common-20-dev \
-                libclang-cpp20 \
-                libclang-rt-20-dev \
+                libclang-20-dev \
                 libclang1-20 \
                 cppcheck \
                 valgrind \
@@ -212,11 +228,10 @@ install_clang_tools() {
                 sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-20 100
                 sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
             fi
-            
             ;;
         "fedora"|"centos")
             sudo dnf install -y \
-                clang20 \
+                clang \
                 clang-tools-extra \
                 cppcheck \
                 valgrind \
@@ -226,15 +241,15 @@ install_clang_tools() {
         "macos")
             if command_exists brew; then
                 brew install \
-                    llvm@20 \
+                    llvm \
                     cppcheck \
                     valgrind \
                     gdb \
                     make
                 
-                # Set up symlinks for macOS
-                print_status "Setting up LLVM 20 symlinks for macOS..."
-                brew link --force llvm@20
+                # Set up symlinks for macOS LLVM
+                print_status "Setting up LLVM symlinks for macOS..."
+                brew link --force llvm
             fi
             ;;
     esac
