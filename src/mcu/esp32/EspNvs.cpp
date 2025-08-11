@@ -270,7 +270,8 @@ hf_nvs_err_t EspNvs::SetU32(const char* key, hf_u32_t value) noexcept {
   for (size_t i = 0; i < strlen(key); i++) {
     char c = key[i];
     if (c < 32 || c > 126 || c == ' ' || c == '\t' || c == '\n' || c == '\r') {
-      ESP_LOGE(TAG, "SetU32 failed: invalid character '%c' (0x%02X) at position %zu", c, (unsigned char)c, i);
+      ESP_LOGE(TAG, "SetU32 failed: invalid character '%c' (0x%02X) at position %zu", c,
+               (unsigned char)c, i);
       UpdateStatistics(true);
       return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
     }

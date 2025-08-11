@@ -320,12 +320,12 @@ private:
   static constexpr hf_u8_t MAX_CHANNELS = HF_RMT_MAX_CHANNELS; // Use centralized constant
   static constexpr size_t MAX_SYMBOLS_PER_TRANSMISSION = 64;
   static constexpr uint32_t DEFAULT_RESOLUTION_NS = 1000; // 1 microsecond
-  // ESP32-C6 specific clock frequency configuration
-  #if defined(CONFIG_IDF_TARGET_ESP32C6)
-  static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000;  // ESP32-C6 APB clock (80 MHz)
-  #else
-  static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000;  // 80 MHz APB clock
-  #endif
+// ESP32-C6 specific clock frequency configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+  static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000; // ESP32-C6 APB clock (80 MHz)
+#else
+  static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000; // 80 MHz APB clock
+#endif
 
   bool initialized_;
   std::array<ChannelState, MAX_CHANNELS> channels_;
