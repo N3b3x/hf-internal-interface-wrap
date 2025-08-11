@@ -39,7 +39,7 @@ main() {
     # Confirm with user
     echo "This script will install:"
     echo "  • System dependencies (build tools, libraries)"
-    echo "  • Clang-20 toolchain (compiler, formatter, analyzer)"
+    echo "  • Clang toolchain (compiler, formatter, analyzer)"
     echo "  • ESP-IDF v5.5 (ESP32 development framework)"
     echo "  • Python dependencies (PyYAML)"
     echo "  • yq (YAML processor)"
