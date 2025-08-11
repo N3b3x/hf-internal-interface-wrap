@@ -14,6 +14,8 @@ A comprehensive web server for robot control with demo mode support. This system
 - **Beautiful Landing Page**: Modern, responsive UI with gradient background
 - **Real-time Status**: Live system status updates with animated indicators
 - **Interactive Controls**: Robot movement, gripper control, camera capture
+- **3D Visualization**: Advanced Three.js-based 3D robot viewer with real-time animation
+- **CAD Model Support**: Load GLTF, OBJ, STL, PLY formats from files or uploads
 - **Response Logging**: Real-time command response display
 - **Loading Indicators**: Visual feedback during operations
 
@@ -58,6 +60,7 @@ python3 web_server.py
 - `capture_image()` - Capture image from camera
 - `emergency_stop()` - Emergency stop function
 - `reset_emergency_stop()` - Reset emergency stop state
+- `list_3d_models()` - List available 3D models in models directory
 - `get_available_functions()` - List all available RPC methods
 
 ### Example RPC Request
@@ -84,6 +87,40 @@ python3 web_server.py
 }
 ```
 
+## 🎮 3D Visualization Features
+
+The system includes an advanced 3D visualization engine built with Three.js:
+
+### ✨ **Real-time Robot Visualization**
+- **Live Animation**: Robot moves in sync with control commands
+- **Inverse Kinematics**: Realistic joint movement calculations
+- **Target Markers**: Visual indicators for movement destinations
+- **Work Envelope**: Transparent sphere showing robot reach
+
+### 🎨 **Visual Effects**
+- **Professional Lighting**: Multi-directional lighting with shadows
+- **Material Shaders**: Realistic materials with reflections
+- **Smooth Animations**: Interpolated movement with easing
+- **Interactive Camera**: Mouse/touch controls for viewing angles
+
+### 📁 **CAD Model Support**
+- **Multiple Formats**: GLTF, GLB, OBJ, STL, PLY
+- **File Upload**: Drag-and-drop or browse to upload models
+- **Model Library**: Server-side model directory with listing
+- **Auto-scaling**: Automatic model sizing and positioning
+
+### 🎛️ **Interactive Controls**
+- **Reset View**: Return to default camera position
+- **Toggle Grid**: Show/hide reference grid
+- **Toggle Axes**: Show/hide coordinate axes
+- **Model Selection**: Dropdown list of available models
+
+### 🔧 **Demo Robot**
+- **Procedural Generation**: Built-in articulated robot model
+- **Multi-joint Arm**: Base, shoulder, elbow, wrist joints
+- **Animated Gripper**: Finger movement with open/close states
+- **Color-coded Links**: Different colors for each arm segment
+
 ## Demo Mode Features
 
 When hardware is not available, the system automatically enters demo mode:
@@ -94,6 +131,7 @@ When hardware is not available, the system automatically enters demo mode:
 - ✅ **Random Positions**: Simulated position data with variations
 - ✅ **Status Indicators**: Clear demo mode indicators in UI
 - ✅ **Error Simulation**: Proper error handling demonstrations
+- ✅ **3D Animation**: Real-time 3D robot movement visualization
 
 ## File Structure
 
@@ -103,6 +141,11 @@ When hardware is not available, the system automatically enters demo mode:
 ├── robot_manager.py        # Thread-safe singleton robot manager
 ├── ArmPil_mini.py          # Robot hardware control classes
 ├── web_server.py           # Main web server with RPC endpoints
+├── static/
+│   ├── js/
+│   │   └── robot3d.js      # 3D visualization engine
+│   └── models/             # Directory for 3D robot models
+│       └── README.md       # 3D models documentation
 └── README_ROBOT_SERVER.md  # This documentation
 ```
 
@@ -126,6 +169,41 @@ curl http://localhost:8080/api/status
 curl -X POST -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","method":"get_robot_status","id":1}' \
   http://localhost:8080/rpc
+
+# List available 3D models
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"list_3d_models","id":2}' \
+  http://localhost:8080/rpc
+```
+
+## 🎯 Using Your CAD Files
+
+### Step 1: Export from CAD Software
+From SolidWorks, Fusion 360, AutoCAD, etc.:
+```bash
+# Recommended formats:
+- Export as STEP/STP → Convert to GLTF
+- Export as STL → Use directly  
+- Export as OBJ → Use directly
+```
+
+### Step 2: Convert to GLTF (Recommended)
+```bash
+# Online converters:
+- gltf.report (drag & drop conversion)
+- anyconv.com/step-to-gltf-converter
+- Or use Blender (free): Import → Export as GLTF
+```
+
+### Step 3: Add to Robot Server
+```bash
+# Place files in the models directory:
+cp your_robot.gltf /workspace/static/models/
+
+# Or use the web interface:
+1. Click "Upload 3D Model" button
+2. Select your CAD file
+3. Watch your robot come to life in 3D!
 ```
 
 ## Architecture
@@ -183,6 +261,7 @@ curl -X POST -H "Content-Type: application/json" \
 - **Robot Movement**: X/Y/Z position controls
 - **Gripper Control**: Open/close buttons
 - **Camera System**: Image capture with display
+- **3D Visualization**: Interactive 3D robot viewer with real-time animation
 - **System Control**: Emergency stop and diagnostics
 
 ### Response Log
@@ -278,6 +357,8 @@ When adding new features:
 **Architecture**: ✅ Production-Ready v2.0
 **Demo Mode**: ✅ Complete
 **Web Interface**: ✅ Beautiful & Responsive
+**3D Visualization**: ✅ Advanced Three.js Engine
+**CAD Support**: ✅ Multiple Formats (GLTF, STL, OBJ, PLY)
 **Thread Safety**: ✅ Implemented
 **Error Handling**: ✅ Comprehensive
 **Configuration**: ✅ Environment-Based

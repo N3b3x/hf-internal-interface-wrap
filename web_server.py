@@ -177,6 +177,49 @@ def rpc_reset_emergency_stop():
         }
 
 
+@rpc_register("list_3d_models")
+def rpc_list_3d_models():
+    """List available 3D models"""
+    try:
+        models_dir = "/workspace/static/models"
+        if not os.path.exists(models_dir):
+            return {
+                "models": [],
+                "message": "No models directory found",
+                "timestamp": time.time()
+            }
+        
+        supported_formats = ['.gltf', '.glb', '.obj', '.stl', '.ply']
+        models = []
+        
+        for filename in os.listdir(models_dir):
+            ext = os.path.splitext(filename)[1].lower()
+            if ext in supported_formats:
+                file_path = os.path.join(models_dir, filename)
+                file_size = os.path.getsize(file_path)
+                models.append({
+                    "name": filename,
+                    "format": ext[1:],  # Remove the dot
+                    "size": file_size,
+                    "url": f"/static/models/{filename}"
+                })
+        
+        return {
+            "models": models,
+            "count": len(models),
+            "supported_formats": supported_formats,
+            "timestamp": time.time()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error listing 3D models: {e}")
+        return {
+            "models": [],
+            "error": str(e),
+            "timestamp": time.time()
+        }
+
+
 class RobotWebHandler(BaseHTTPRequestHandler):
     """HTTP request handler for the robot web server"""
     
@@ -260,6 +303,50 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", len(error_response.encode('utf-8')))
             self.end_headers()
             self.wfile.write(error_response.encode('utf-8'))
+    
+    def serve_static_file(self, path):
+        """Serve static files (CSS, JS, images, 3D models)"""
+        try:
+            # Remove /static/ prefix and get actual file path
+            file_path = path[8:]  # Remove "/static/"
+            full_path = os.path.join("/workspace/static", file_path)
+            
+            if not os.path.exists(full_path):
+                self.send_error(404, "File not found")
+                return
+            
+            # Get MIME type
+            mime_type, _ = mimetypes.guess_type(full_path)
+            if mime_type is None:
+                # Default MIME types for 3D model formats
+                ext = os.path.splitext(full_path)[1].lower()
+                if ext == '.gltf':
+                    mime_type = 'model/gltf+json'
+                elif ext == '.glb':
+                    mime_type = 'model/gltf-binary'
+                elif ext == '.stl':
+                    mime_type = 'application/sla'
+                elif ext == '.obj':
+                    mime_type = 'application/object'
+                elif ext == '.ply':
+                    mime_type = 'application/ply'
+                else:
+                    mime_type = 'application/octet-stream'
+            
+            # Read and serve file
+            with open(full_path, 'rb') as f:
+                content = f.read()
+            
+            self.send_response(200)
+            self.send_header("Content-Type", mime_type)
+            self.send_header("Content-Length", len(content))
+            self.send_header("Cache-Control", "public, max-age=3600")  # Cache for 1 hour
+            self.end_headers()
+            self.wfile.write(content)
+            
+        except Exception as e:
+            logger.error(f"Error serving static file {path}: {e}")
+            self.send_error(500, "Internal Server Error")
     
     def handle_rpc_request(self):
         """Handle RPC requests using custom registry"""
@@ -363,6 +450,14 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             html += '    <meta charset="UTF-8">\n'
             html += '    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
             html += '    <title>Robot Control Center</title>\n'
+            html += '    <!-- Three.js Libraries -->\n'
+            html += '    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>\n'
+            html += '    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>\n'
+            html += '    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>\n'
+            html += '    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>\n'
+            html += '    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>\n'
+            html += '    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/PLYLoader.js"></script>\n'
+            html += '    <script src="/static/js/robot3d.js"></script>\n'
             html += '    <style>\n'
             html += '        * { margin: 0; padding: 0; box-sizing: border-box; }\n'
             html += '        body {\n'
@@ -437,6 +532,53 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             html += '            0% { transform: rotate(0deg); }\n'
             html += '            100% { transform: rotate(360deg); }\n'
             html += '        }\n'
+            html += '        .robot-3d-viewer {\n'
+            html += '            width: 100%; height: 400px;\n'
+            html += '            border: 2px solid #dee2e6;\n'
+            html += '            border-radius: 10px;\n'
+            html += '            background: #1a1a2e;\n'
+            html += '            position: relative;\n'
+            html += '            overflow: hidden;\n'
+            html += '        }\n'
+            html += '        .viewer-controls {\n'
+            html += '            position: absolute;\n'
+            html += '            top: 10px; right: 10px;\n'
+            html += '            z-index: 100;\n'
+            html += '            background: rgba(0,0,0,0.7);\n'
+            html += '            padding: 10px;\n'
+            html += '            border-radius: 5px;\n'
+            html += '        }\n'
+            html += '        .viewer-controls button {\n'
+            html += '            background: rgba(255,255,255,0.2);\n'
+            html += '            color: white;\n'
+            html += '            border: none;\n'
+            html += '            padding: 5px 10px;\n'
+            html += '            margin: 2px;\n'
+            html += '            border-radius: 3px;\n'
+            html += '            cursor: pointer;\n'
+            html += '            font-size: 0.8em;\n'
+            html += '        }\n'
+            html += '        .viewer-controls button:hover {\n'
+            html += '            background: rgba(255,255,255,0.3);\n'
+            html += '        }\n'
+            html += '        .model-upload {\n'
+            html += '            margin-top: 10px;\n'
+            html += '        }\n'
+            html += '        .model-upload input[type="file"] {\n'
+            html += '            display: none;\n'
+            html += '        }\n'
+            html += '        .model-upload label {\n'
+            html += '            display: inline-block;\n'
+            html += '            padding: 8px 16px;\n'
+            html += '            background: linear-gradient(45deg, #9b59b6, #8e44ad);\n'
+            html += '            color: white;\n'
+            html += '            border-radius: 5px;\n'
+            html += '            cursor: pointer;\n'
+            html += '            transition: transform 0.2s;\n'
+            html += '        }\n'
+            html += '        .model-upload label:hover {\n'
+            html += '            transform: translateY(-2px);\n'
+            html += '        }\n'
             html += '    </style>\n'
             html += '</head>\n'
             html += '<body>\n'
@@ -489,6 +631,27 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             html += '                <button class="btn danger" onclick="emergencyStop()">Emergency Stop</button>\n'
             html += '                <button class="btn" onclick="resetEmergencyStop()">Reset E-Stop</button>\n'
             html += '                <button class="btn" onclick="getAvailableFunctions()">Available Functions</button>\n'
+            html += '            </div>\n'
+            html += '        </div>\n'
+            html += '        \n'
+            html += '        <div class="control-card">\n'
+            html += '            <h3>3D Robot Visualization</h3>\n'
+            html += '            <p>Real-time 3D robot model with movement visualization</p>\n'
+            html += '            <div id="robot-3d-container" class="robot-3d-viewer">\n'
+            html += '                <div class="viewer-controls">\n'
+            html += '                    <button onclick="robot3d.resetView()">Reset View</button>\n'
+            html += '                    <button onclick="toggleGrid()">Grid</button>\n'
+            html += '                    <button onclick="toggleAxes()">Axes</button>\n'
+            html += '                </div>\n'
+            html += '            </div>\n'
+            html += '            <div class="model-upload">\n'
+            html += '                <label for="model-file">Upload 3D Model</label>\n'
+            html += '                <input type="file" id="model-file" accept=".gltf,.glb,.obj,.stl,.ply" onchange="loadCustomModel(this)">\n'
+            html += '                <button class="btn" onclick="loadDemoModel()">Load Demo Robot</button>\n'
+            html += '                <button class="btn" onclick="listAvailableModels()">List Models</button>\n'
+            html += '                <select id="model-selector" onchange="loadSelectedModel()" style="margin-left: 10px; padding: 5px;">\n'
+            html += '                    <option value="">Select Model...</option>\n'
+            html += '                </select>\n'
             html += '            </div>\n'
             html += '        </div>\n'
             html += '        <div class="control-card">\n'
@@ -553,6 +716,144 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             html += '        async function emergencyStop() { await callRPC("emergency_stop"); }\n'
             html += '        async function resetEmergencyStop() { await callRPC("reset_emergency_stop"); }\n'
             html += '        async function getAvailableFunctions() { await callRPC("get_available_functions"); }\n'
+            html += '        \n'
+            html += '        // 3D Viewer Integration\n'
+            html += '        let robot3d = null;\n'
+            html += '        let gridVisible = true;\n'
+            html += '        let axesVisible = true;\n'
+            html += '        \n'
+            html += '        function init3DViewer() {\n'
+            html += '            try {\n'
+            html += '                robot3d = new Robot3DViewer("robot-3d-container", {\n'
+            html += '                    backgroundColor: 0x1a1a2e,\n'
+            html += '                    cameraPosition: { x: 4, y: 4, z: 4 },\n'
+            html += '                    enableControls: true,\n'
+            html += '                    showGrid: true,\n'
+            html += '                    showAxes: true,\n'
+            html += '                    modelScale: 1.0,\n'
+            html += '                    animationSpeed: 2.0\n'
+            html += '                });\n'
+            html += '                console.log("3D Viewer initialized successfully");\n'
+            html += '            } catch (error) {\n'
+            html += '                console.error("Failed to initialize 3D viewer:", error);\n'
+            html += '            }\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        function toggleGrid() {\n'
+            html += '            gridVisible = !gridVisible;\n'
+            html += '            if (robot3d && robot3d.scene) {\n'
+            html += '                const grid = robot3d.scene.children.find(child => child.type === "GridHelper");\n'
+            html += '                if (grid) grid.visible = gridVisible;\n'
+            html += '            }\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        function toggleAxes() {\n'
+            html += '            axesVisible = !axesVisible;\n'
+            html += '            if (robot3d && robot3d.scene) {\n'
+            html += '                const axes = robot3d.scene.children.find(child => child.type === "AxesHelper");\n'
+            html += '                if (axes) axes.visible = axesVisible;\n'
+            html += '            }\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        function loadCustomModel(input) {\n'
+            html += '            const file = input.files[0];\n'
+            html += '            if (!file) return;\n'
+            html += '            \n'
+            html += '            const url = URL.createObjectURL(file);\n'
+            html += '            if (robot3d) {\n'
+            html += '                robot3d.loadModel(\n'
+            html += '                    url,\n'
+            html += '                    (model) => {\n'
+            html += '                        logResponse({"message": "Custom 3D model loaded successfully", "model": file.name});\n'
+            html += '                        URL.revokeObjectURL(url);\n'
+            html += '                    },\n'
+            html += '                    (progress) => {\n'
+            html += '                        console.log("Loading progress:", progress);\n'
+            html += '                    },\n'
+            html += '                    (error) => {\n'
+            html += '                        logResponse({"error": "Failed to load 3D model: " + error.message});\n'
+            html += '                        URL.revokeObjectURL(url);\n'
+            html += '                    }\n'
+            html += '                );\n'
+            html += '            }\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        function loadDemoModel() {\n'
+            html += '            if (robot3d) {\n'
+            html += '                robot3d.createDemoRobot();\n'
+            html += '                logResponse({"message": "Demo robot model loaded"});\n'
+            html += '            }\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        async function listAvailableModels() {\n'
+            html += '            const result = await callRPC("list_3d_models");\n'
+            html += '            if (result && result.result && result.result.models) {\n'
+            html += '                const selector = document.getElementById("model-selector");\n'
+            html += '                selector.innerHTML = "<option value=\\"\\">Select Model...</option>";\n'
+            html += '                \n'
+            html += '                result.result.models.forEach(model => {\n'
+            html += '                    const option = document.createElement("option");\n'
+            html += '                    option.value = model.url;\n'
+            html += '                    option.textContent = `${model.name} (${model.format.toUpperCase()}, ${(model.size/1024).toFixed(1)}KB)`;\n'
+            html += '                    selector.appendChild(option);\n'
+            html += '                });\n'
+            html += '                \n'
+            html += '                logResponse({"message": `Found ${result.result.count} 3D models`});\n'
+            html += '            }\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        function loadSelectedModel() {\n'
+            html += '            const selector = document.getElementById("model-selector");\n'
+            html += '            const url = selector.value;\n'
+            html += '            if (url && robot3d) {\n'
+            html += '                robot3d.loadModel(\n'
+            html += '                    url,\n'
+            html += '                    (model) => {\n'
+            html += '                        logResponse({"message": "3D model loaded successfully", "url": url});\n'
+            html += '                    },\n'
+            html += '                    (progress) => {\n'
+            html += '                        console.log("Loading progress:", progress);\n'
+            html += '                    },\n'
+            html += '                    (error) => {\n'
+            html += '                        logResponse({"error": "Failed to load 3D model: " + error.message});\n'
+            html += '                    }\n'
+            html += '                );\n'
+            html += '            }\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        // Override movement function to update 3D view\n'
+            html += '        const originalMoveRobot = moveRobot;\n'
+            html += '        async function moveRobot() {\n'
+            html += '            const x = parseFloat(document.getElementById("pos-x").value);\n'
+            html += '            const y = parseFloat(document.getElementById("pos-y").value);\n'
+            html += '            const z = parseFloat(document.getElementById("pos-z").value);\n'
+            html += '            \n'
+            html += '            // Update 3D visualization\n'
+            html += '            if (robot3d) {\n'
+            html += '                robot3d.moveToPosition(x/100, y/100, z/100, true);\n'
+            html += '            }\n'
+            html += '            \n'
+            html += '            // Call original function\n'
+            html += '            await callRPC("move_robot", {x, y, z});\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        // Override gripper function to update 3D view\n'
+            html += '        const originalControlGripper = controlGripper;\n'
+            html += '        async function controlGripper(open) {\n'
+            html += '            // Update 3D visualization\n'
+            html += '            if (robot3d) {\n'
+            html += '                robot3d.setGripperState(open);\n'
+            html += '            }\n'
+            html += '            \n'
+            html += '            // Call original function\n'
+            html += '            await callRPC("control_gripper", {open_state: open});\n'
+            html += '        }\n'
+            html += '        \n'
+            html += '        // Initialize everything\n'
+            html += '        window.addEventListener("load", () => {\n'
+            html += '            setTimeout(init3DViewer, 1000); // Wait for Three.js to load\n'
+            html += '        });\n'
+            html += '        \n'
             html += '        refreshStatus();\n'
             html += '    </script>\n'
             html += '</body>\n'
