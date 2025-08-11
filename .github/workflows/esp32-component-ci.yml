@@ -156,7 +156,10 @@ jobs:
           esp_idf_version: ${{ matrix.idf_version }}
           target: ${{ env.IDF_TARGET }}
           path: .
-          extra_docker_args: "-v $HOME/.ccache:/root/.ccache -e CCACHE_DIR=/root/.ccache -e IDF_CCACHE_ENABLE=1"
+          extra_docker_args: >-
+            -v $HOME/.ccache:/root/.ccache
+            -e CCACHE_DIR=/root/.ccache
+            -e IDF_CCACHE_ENABLE=1
           command: |
             idf.py create-project ${{ env.BUILD_PATH }} &&
             cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt &&
@@ -243,9 +246,11 @@ jobs:
           echo "Installing analysis tools..."
           
           # Add LLVM APT repository for clang-20
-          wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+          wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | \
+            sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
           ubuntu_codename=$(lsb_release -cs)
-          echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | sudo tee /etc/apt/sources.list.d/llvm.list
+          echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | \
+            sudo tee /etc/apt/sources.list.d/llvm.list
           
           sudo apt-get update
           sudo apt-get install -y \
@@ -344,7 +349,8 @@ jobs:
         run: |
           if [ ! -f ~/actionlint ]; then
             echo "Downloading actionlint..."
-            curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
+            curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | \
+              bash
             mv actionlint ~/actionlint
             chmod +x ~/actionlint
           else
