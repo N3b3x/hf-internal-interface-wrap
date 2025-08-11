@@ -36,9 +36,14 @@ tests/build/
 **/build_*/
 **/dependencies.lock
 
+.vscode/
 **/.vscode/
 **/docs/doxygen/
 docs/doxygen/
 .DS_Store
 **/doxygen*
 **/.cache/
+
+.venv/
+**/venv/
+**/.venv/

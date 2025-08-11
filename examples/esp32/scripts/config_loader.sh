@@ -40,10 +40,20 @@ check_yq() {
 # Helper function to execute yq with appropriate syntax
 run_yq() {
     local query="$1"
+    local raw_flag="$2"
+    
     if [[ "$YQ_SYNTAX" == "eval" ]]; then
-        yq eval "$query" "$CONFIG_FILE"
+        if [[ "$raw_flag" == "-r" ]]; then
+            yq eval "$query" "$CONFIG_FILE" -r
+        else
+            yq eval "$query" "$CONFIG_FILE"
+        fi
     else
-        yq "$query" "$CONFIG_FILE"
+        if [[ "$raw_flag" == "-r" ]]; then
+            yq "$query" "$CONFIG_FILE" -r
+        else
+            yq "$query" "$CONFIG_FILE"
+        fi
     fi
 }
 
@@ -53,20 +63,20 @@ load_config_yq() {
         return 1
     fi
     
-    # Export configuration as environment variables
-    export CONFIG_DEFAULT_EXAMPLE=$(run_yq '.metadata.default_example')
-    export CONFIG_DEFAULT_BUILD_TYPE=$(run_yq '.metadata.default_build_type')
-    export CONFIG_TARGET=$(run_yq '.metadata.target')
+    # Export configuration as environment variables (raw output, no quotes)
+    export CONFIG_DEFAULT_EXAMPLE=$(run_yq '.metadata.default_example' -r)
+    export CONFIG_DEFAULT_BUILD_TYPE=$(run_yq '.metadata.default_build_type' -r)
+    export CONFIG_TARGET=$(run_yq '.metadata.target' -r)
     
     return 0
 }
 
 # Fallback: Basic parsing without yq
 load_config_basic() {
-    # Extract basic configuration using grep and sed
-    export CONFIG_DEFAULT_EXAMPLE=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_example:" | sed 's/.*default_example: *"\(.*\)".*/\1/')
-    export CONFIG_DEFAULT_BUILD_TYPE=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_build_type:" | sed 's/.*default_build_type: *"\(.*\)".*/\1/')
-    export CONFIG_TARGET=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "target:" | sed 's/.*target: *"\(.*\)".*/\1/')
+    # Extract basic configuration using grep and sed (cleaner quote handling)
+    export CONFIG_DEFAULT_EXAMPLE=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_example:" | sed 's/.*default_example: *"*\([^"]*\)"*.*/\1/')
+    export CONFIG_DEFAULT_BUILD_TYPE=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_build_type:" | sed 's/.*default_build_type: *"*\([^"]*\)"*.*/\1/')
+    export CONFIG_TARGET=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "target:" | sed 's/.*target: *"*\([^"]*\)"*.*/\1/')
     
     return 0
 }
@@ -74,7 +84,7 @@ load_config_basic() {
 # Get list of valid example types
 get_example_types() {
     if check_yq; then
-        run_yq '.examples | keys | .[]' | tr '\n' ' '
+        run_yq '.examples | keys | .[]' -r | tr '\n' ' '
     else
         # Fallback: extract from examples section
         sed -n '/^examples:/,/^[a-zA-Z]/p' "$CONFIG_FILE" | grep '^  [a-z_]*:$' | sed 's/^  \(.*\):$/\1/' | tr '\n' ' '
@@ -84,7 +94,7 @@ get_example_types() {
 # Get list of valid build types
 get_build_types() {
     if check_yq; then
-        run_yq '.build_config.build_types | keys | .[]' | tr '\n' ' '
+        run_yq '.build_config.build_types | keys | .[]' -r | tr '\n' ' '
     else
         # Fallback: assume Debug and Release
         echo "Debug Release "
@@ -95,7 +105,7 @@ get_build_types() {
 get_example_description() {
     local example_type="$1"
     if check_yq; then
-        run_yq ".examples.${example_type}.description"
+        run_yq ".examples.${example_type}.description" -r
     else
         # Fallback: extract description using grep
         sed -n "/^  ${example_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "description:" | sed 's/.*description: *"\(.*\)".*/\1/'
@@ -106,7 +116,7 @@ get_example_description() {
 get_example_source_file() {
     local example_type="$1"
     if check_yq; then
-        run_yq ".examples.${example_type}.source_file"
+        run_yq ".examples.${example_type}.source_file" -r
     else
         # Fallback: extract source_file using grep
         sed -n "/^  ${example_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "source_file:" | sed 's/.*source_file: *"\(.*\)".*/\1/'
@@ -132,7 +142,7 @@ get_build_directory() {
     local example_type="$1"
     local build_type="$2"
     if check_yq; then
-        local pattern=$(run_yq '.build_config.build_directory_pattern')
+        local pattern=$(run_yq '.build_config.build_directory_pattern' -r)
         echo "${pattern}" | sed "s/{example_type}/${example_type}/g" | sed "s/{build_type}/${build_type}/g"
     else
         echo "build_${example_type}_${build_type}"
@@ -143,7 +153,7 @@ get_build_directory() {
 get_project_name() {
     local example_type="$1"
     if check_yq; then
-        local pattern=$(run_yq '.build_config.project_name_pattern')
+        local pattern=$(run_yq '.build_config.project_name_pattern' -r)
         echo "${pattern}" | sed "s/{example_type}/${example_type}/g"
     else
         echo "esp32_iid_${example_type}_example"
@@ -153,7 +163,7 @@ get_project_name() {
 # Get CI-enabled example types
 get_ci_example_types() {
     if check_yq; then
-        run_yq '.examples | to_entries | map(select(.value.ci_enabled == true)) | .[].key' | tr '\n' ' '
+        run_yq '.examples | to_entries | map(select(.value.ci_enabled == true)) | .[].key' -r | tr '\n' ' '
     else
         # Fallback: return all example types
         get_example_types
@@ -163,7 +173,7 @@ get_ci_example_types() {
 # Get featured example types
 get_featured_example_types() {
     if check_yq; then
-        run_yq '.examples | to_entries | map(select(.value.featured == true)) | .[].key' | tr '\n' ' '
+        run_yq '.examples | to_entries | map(select(.value.featured == true)) | .[].key' -r | tr '\n' ' '
     else
         # Fallback: return default featured examples
         echo "ascii_art gpio_test adc_test pio_test bluetooth_test utils_test "
