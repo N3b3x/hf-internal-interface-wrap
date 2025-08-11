@@ -1,0 +1,180 @@
+# ESP32 HardFOC Interface Wrapper - Examples Configuration
+# This file centralizes all example definitions, their source files, and metadata
+# Used by build scripts, flash scripts, CI workflows, and CMake
+
+version: "1.0"
+metadata:
+  project: "ESP32 HardFOC Interface Wrapper"
+  default_example: "ascii_art"
+  default_build_type: "Release"
+  target: "esp32c6"
+  idf_versions: ["release-v5.5"]
+
+# Define all available example types
+examples:
+  ascii_art:
+    description: "ASCII art generator example"
+    source_file: "AsciiArtComprehensiveTest.cpp"
+    category: "utility"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+
+  gpio_test:
+    description: "GPIO peripheral comprehensive testing"
+    source_file: "GpioComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+
+  adc_test:
+    description: "ADC peripheral comprehensive testing"
+    source_file: "AdcComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+
+  uart_test:
+    description: "UART peripheral comprehensive testing"
+    source_file: "UartComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  spi_test:
+    description: "SPI peripheral comprehensive testing"
+    source_file: "SpiComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  i2c_test:
+    description: "I2C peripheral comprehensive testing"
+    source_file: "I2cComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  pwm_test:
+    description: "PWM peripheral comprehensive testing"
+    source_file: "PwmComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  can_test:
+    description: "CAN peripheral comprehensive testing"
+    source_file: "CanComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  pio_test:
+    description: "Comprehensive PIO/RMT testing suite with WS2812 and logic analyzer"
+    source_file: "PioComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+    documentation: "docs/README_PIO_TEST.md"
+
+  temperature_test:
+    description: "Temperature sensor comprehensive testing"
+    source_file: "TemperatureComprehensiveTest.cpp"
+    category: "sensor"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  nvs_test:
+    description: "NVS (Non-Volatile Storage) comprehensive testing"
+    source_file: "NvsComprehensiveTest.cpp"
+    category: "storage"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+    documentation: "docs/README_NVS_TEST.md"
+
+  timer_test:
+    description: "Timer peripheral comprehensive testing"
+    source_file: "TimerComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  logger_test:
+    description: "Logger system comprehensive testing"
+    source_file: "LoggerComprehensiveTest.cpp"
+    category: "utility"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  wifi_test:
+    description: "WiFi connectivity comprehensive testing"
+    source_file: "WifiComprehensiveTest.cpp"
+    category: "connectivity"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+  bluetooth_test:
+    description: "Comprehensive Bluetooth testing suite"
+    source_file: "BluetoothComprehensiveTest.cpp"
+    category: "connectivity"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+
+  utils_test:
+    description: "Utilities testing suite"
+    source_file: "UtilsComprehensiveTest.cpp"
+    category: "utility"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+
+  interrupts_test:
+    description: "Interrupt system comprehensive testing"
+    source_file: "InterruptsComprehensiveTest.cpp"
+    category: "system"
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: false
+
+# Build configuration
+build_config:
+  build_types:
+    Debug:
+      description: "Debug symbols, verbose logging, assertions enabled"
+      cmake_build_type: "Debug"
+      optimization: "-O0"
+      debug_level: "-g3"
+      defines: ["DEBUG"]
+    Release:
+      description: "Optimized for performance and size"
+      cmake_build_type: "Release"
+      optimization: "-O2"
+      debug_level: "-g"
+      defines: ["NDEBUG"]
+
+  build_directory_pattern: "build_{example_type}_{build_type}"
+  project_name_pattern: "esp32_iid_{example_type}_example"
+
+# CI configuration
+ci_config:
+  timeout_minutes: 30
+  fail_fast: false
+  # Examples to exclude from specific build types (if needed)
+  exclude_combinations: []
+  # Examples that require special handling
+  special_examples: []
+

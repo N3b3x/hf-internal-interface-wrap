@@ -49,7 +49,6 @@
 #include "EspNvs.h"
 
 // C++ standard library headers (must be outside extern "C")
-#include <algorithm>
 #include <cstring>
 
 #ifdef HF_MCU_FAMILY_ESP32
@@ -301,7 +300,10 @@ hf_nvs_err_t EspNvs::SetU32(const char* key, hf_u32_t value) noexcept {
 
   ESP_LOGV(TAG, "Successfully set and committed U32 key '%s' = %u", key, value);
 
-  UpdateStatistics(false); // Success
+  // Update stats on successful write
+  UpdateStatistics(false);
+  statistics_.total_writes++;
+  statistics_.bytes_written += static_cast<hf_u32_t>(sizeof(hf_u32_t));
   return hf_nvs_err_t::NVS_SUCCESS;
 }
 
@@ -318,8 +320,15 @@ hf_nvs_err_t EspNvs::GetU32(const char* key, hf_u32_t& value) noexcept {
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_get_u32(handle, key, &value);
-  UpdateStatistics(err != ESP_OK);
-  return ConvertMcuError(err);
+  hf_nvs_err_t conv = ConvertMcuError(err);
+  UpdateStatistics(conv != hf_nvs_err_t::NVS_SUCCESS);
+  diagnostics_.last_error = conv;
+  statistics_.last_error = conv;
+  if (conv == hf_nvs_err_t::NVS_SUCCESS) {
+    statistics_.total_reads++;
+    statistics_.bytes_read += static_cast<hf_u32_t>(sizeof(hf_u32_t));
+  }
+  return conv;
 }
 
 hf_nvs_err_t EspNvs::SetString(const char* key, const char* value) noexcept {
@@ -333,6 +342,13 @@ hf_nvs_err_t EspNvs::SetString(const char* key, const char* value) noexcept {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
 
+  // Enforce conservative maximum value size (includes null terminator)
+  size_t value_len_with_null = strlen(value) + 1;
+  if (value_len_with_null > GetMaxValueSize()) {
+    UpdateStatistics(true);
+    return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE;
+  }
+
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_set_str(handle, key, value);
   if (err != ESP_OK) {
@@ -343,6 +359,10 @@ hf_nvs_err_t EspNvs::SetString(const char* key, const char* value) noexcept {
   // Auto-commit for consistency
   err = nvs_commit(handle);
   UpdateStatistics(err != ESP_OK);
+  if (err == ESP_OK) {
+    statistics_.total_writes++;
+    statistics_.bytes_written += static_cast<hf_u32_t>(value_len_with_null);
+  }
   return ConvertMcuError(err);
 }
 
@@ -354,11 +374,11 @@ hf_nvs_err_t EspNvs::GetString(const char* key, char* buffer, size_t buffer_size
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  if (!key || !buffer) {
+  // Support size query: buffer may be nullptr with buffer_size==0
+  if (!key) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
-
-  if (buffer_size == 0) {
+  if (buffer == nullptr && buffer_size != 0) {
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
@@ -370,8 +390,15 @@ hf_nvs_err_t EspNvs::GetString(const char* key, char* buffer, size_t buffer_size
     *actual_size = required_size;
   }
 
-  UpdateStatistics(err != ESP_OK);
-  return ConvertMcuError(err);
+  hf_nvs_err_t conv = ConvertMcuError(err);
+  UpdateStatistics(conv != hf_nvs_err_t::NVS_SUCCESS);
+  diagnostics_.last_error = conv;
+  statistics_.last_error = conv;
+  if (conv == hf_nvs_err_t::NVS_SUCCESS) {
+    statistics_.total_reads++;
+    statistics_.bytes_read += static_cast<hf_u32_t>(required_size);
+  }
+  return conv;
 }
 
 hf_nvs_err_t EspNvs::SetBlob(const char* key, const void* data, size_t data_size) noexcept {
@@ -395,6 +422,10 @@ hf_nvs_err_t EspNvs::SetBlob(const char* key, const void* data, size_t data_size
   // Auto-commit for consistency
   err = nvs_commit(handle);
   UpdateStatistics(err != ESP_OK);
+  if (err == ESP_OK) {
+    statistics_.total_writes++;
+    statistics_.bytes_written += static_cast<hf_u32_t>(data_size);
+  }
   return ConvertMcuError(err);
 }
 
@@ -406,11 +437,11 @@ hf_nvs_err_t EspNvs::GetBlob(const char* key, void* buffer, size_t buffer_size,
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  if (!key || !buffer) {
+  // Support size query: buffer may be nullptr with buffer_size==0
+  if (!key) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
   }
-
-  if (buffer_size == 0) {
+  if (buffer == nullptr && buffer_size != 0) {
     return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
   }
 
@@ -422,8 +453,15 @@ hf_nvs_err_t EspNvs::GetBlob(const char* key, void* buffer, size_t buffer_size,
     *actual_size = required_size;
   }
 
-  UpdateStatistics(err != ESP_OK);
-  return ConvertMcuError(err);
+  hf_nvs_err_t conv = ConvertMcuError(err);
+  UpdateStatistics(conv != hf_nvs_err_t::NVS_SUCCESS);
+  diagnostics_.last_error = conv;
+  statistics_.last_error = conv;
+  if (conv == hf_nvs_err_t::NVS_SUCCESS) {
+    statistics_.total_reads++;
+    statistics_.bytes_read += static_cast<hf_u32_t>(required_size);
+  }
+  return conv;
 }
 
 hf_nvs_err_t EspNvs::EraseKey(const char* key) noexcept {
@@ -447,11 +485,15 @@ hf_nvs_err_t EspNvs::EraseKey(const char* key) noexcept {
   // Auto-commit for consistency
   err = nvs_commit(handle);
   UpdateStatistics(err != ESP_OK);
+  if (err == ESP_OK) {
+    statistics_.total_erases++;
+  }
   return ConvertMcuError(err);
 }
 
 hf_nvs_err_t EspNvs::Commit() noexcept {
-  if (!EnsureInitialized()) {
+  // Do NOT auto-initialize on commit; respect explicit init semantics
+  if (!IsInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
@@ -459,8 +501,13 @@ hf_nvs_err_t EspNvs::Commit() noexcept {
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_commit(handle);
-  UpdateStatistics(err != ESP_OK);
-  return ConvertMcuError(err);
+  hf_nvs_err_t conv = ConvertMcuError(err);
+  UpdateStatistics(conv != hf_nvs_err_t::NVS_SUCCESS);
+  diagnostics_.last_error = conv;
+  if (conv == hf_nvs_err_t::NVS_SUCCESS) {
+    statistics_.total_commits++;
+  }
+  return conv;
 }
 
 bool EspNvs::KeyExists(const char* key) noexcept {
@@ -478,7 +525,27 @@ bool EspNvs::KeyExists(const char* key) noexcept {
   size_t size = 0;
   esp_err_t err = nvs_get_str(handle, key, nullptr, &size);
   UpdateStatistics(err != ESP_OK);
-  return (err == ESP_OK || err == ESP_ERR_NVS_INVALID_LENGTH);
+  if (err == ESP_OK || err == ESP_ERR_NVS_INVALID_LENGTH) {
+    statistics_.total_reads++;
+    return true;
+  }
+  // Try blob
+  size = 0;
+  err = nvs_get_blob(handle, key, nullptr, &size);
+  UpdateStatistics(err != ESP_OK);
+  if (err == ESP_OK || err == ESP_ERR_NVS_INVALID_LENGTH) {
+    statistics_.total_reads++;
+    return true;
+  }
+  // Try U32
+  hf_u32_t tmp = 0;
+  err = nvs_get_u32(handle, key, &tmp);
+  UpdateStatistics(err != ESP_OK);
+  if (err == ESP_OK) {
+    statistics_.total_reads++;
+    return true;
+  }
+  return false;
 }
 
 hf_nvs_err_t EspNvs::GetSize(const char* key, size_t& size) noexcept {
@@ -493,8 +560,34 @@ hf_nvs_err_t EspNvs::GetSize(const char* key, size_t& size) noexcept {
   }
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
-  esp_err_t err = nvs_get_str(handle, key, nullptr, &size);
-  UpdateStatistics(err != ESP_OK);
+  // Try string size first
+  size_t required_size = 0;
+  esp_err_t err = nvs_get_str(handle, key, nullptr, &required_size);
+  if (err == ESP_OK || err == ESP_ERR_NVS_INVALID_LENGTH) {
+    size = required_size;
+    UpdateStatistics(false);
+    statistics_.total_reads++;
+    return hf_nvs_err_t::NVS_SUCCESS;
+  }
+  // Try blob size
+  required_size = 0;
+  err = nvs_get_blob(handle, key, nullptr, &required_size);
+  if (err == ESP_OK || err == ESP_ERR_NVS_INVALID_LENGTH) {
+    size = required_size;
+    UpdateStatistics(false);
+    statistics_.total_reads++;
+    return hf_nvs_err_t::NVS_SUCCESS;
+  }
+  // Try U32 fixed size
+  hf_u32_t tmp = 0;
+  err = nvs_get_u32(handle, key, &tmp);
+  if (err == ESP_OK) {
+    size = sizeof(hf_u32_t);
+    UpdateStatistics(false);
+    statistics_.total_reads++;
+    return hf_nvs_err_t::NVS_SUCCESS;
+  }
+  UpdateStatistics(true);
   return ConvertMcuError(err);
 }
 
@@ -511,12 +604,18 @@ size_t EspNvs::GetMaxValueSize() const noexcept {
 }
 
 hf_nvs_err_t EspNvs::GetStatistics(hf_nvs_statistics_t& statistics) const noexcept {
+  if (!IsInitialized()) {
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
+  }
   RtosUniqueLock<RtosMutex> lock(mutex_);
   statistics = statistics_;
   return hf_nvs_err_t::NVS_SUCCESS;
 }
 
 hf_nvs_err_t EspNvs::GetDiagnostics(hf_nvs_diagnostics_t& diagnostics) const noexcept {
+  if (!IsInitialized()) {
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
+  }
   RtosUniqueLock<RtosMutex> lock(mutex_);
   diagnostics = diagnostics_;
   return hf_nvs_err_t::NVS_SUCCESS;

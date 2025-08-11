@@ -39,6 +39,49 @@ The project contains example applications that demonstrate different aspects of 
 ./build_example.sh utils_test Release
 ```
 
+### Using the Flash and Monitor Scripts
+
+The project includes dedicated scripts for flashing and monitoring that can automatically build if needed.
+
+#### Windows (PowerShell)
+```powershell
+# Flash and monitor ASCII art example (default)
+.\flash_example.ps1
+
+# Flash specific examples with different operations
+.\flash_example.ps1 gpio_test Release flash_monitor  # Flash and monitor
+.\flash_example.ps1 bluetooth_test Debug flash       # Flash only
+.\flash_example.ps1 utils_test Release monitor       # Monitor only
+
+# Auto-build examples if binary doesn't exist
+.\flash_example.ps1 pio_test Debug flash_monitor     # Builds first if needed
+```
+
+#### Linux/macOS (Bash)
+```bash
+# Flash and monitor ASCII art example (default)
+./flash_example.sh
+
+# Flash specific examples with different operations
+./flash_example.sh gpio_test Release flash_monitor   # Flash and monitor
+./flash_example.sh bluetooth_test Debug flash        # Flash only
+./flash_example.sh utils_test Release monitor        # Monitor only
+
+# Auto-build examples if binary doesn't exist
+./flash_example.sh pio_test Debug flash_monitor      # Builds first if needed
+```
+
+#### Flash Script Features
+
+- **Auto-build**: If no valid build exists, automatically builds the example before flashing
+- **Build Detection**: Uses existing builds when available (follows `build_${EXAMPLE_TYPE}_${BUILD_TYPE}` naming)
+- **Multiple Operations**: 
+  - `flash` - Flash firmware only
+  - `monitor` - Monitor serial output only  
+  - `flash_monitor` - Flash then monitor (default)
+- **Error Handling**: Comprehensive validation and error reporting
+- **Cross-platform**: Both Bash and PowerShell versions available
+
 ## Detailed Examples
 
 ### 1. ASCII Art Generator (`ascii_art`)
@@ -190,3 +233,5 @@ The project includes GitHub Actions workflows for automated testing:
 - Build artifact generation and size analysis
 
 For local CI testing, use the same build commands as the GitHub Actions workflow in `.github/workflows/esp32-component-ci.yml`.
+
+
