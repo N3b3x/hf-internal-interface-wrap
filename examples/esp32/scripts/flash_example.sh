@@ -37,6 +37,19 @@ if [ "$EXAMPLE_TYPE" = "list" ]; then
     exit 0
 fi
 
+# Ensure ESP-IDF environment is sourced
+if [ -z "$IDF_PATH" ] || ! command -v idf.py &> /dev/null; then
+    echo "ESP-IDF environment not found, attempting to source..."
+    if [ -f "$HOME/esp/esp-idf/export.sh" ]; then
+        source "$HOME/esp/esp-idf/export.sh"
+        echo "ESP-IDF environment sourced successfully"
+    else
+        echo "ERROR: ESP-IDF export.sh not found at $HOME/esp/esp-idf/export.sh"
+        echo "Please ensure ESP-IDF is installed and IDF_PATH is set"
+        exit 1
+    fi
+fi
+
 # Ensure ESP32-C6 target is set
 export IDF_TARGET=$CONFIG_TARGET
 
@@ -119,16 +132,34 @@ if [ "$BUILD_EXISTS" = false ]; then
         rm -rf "$BUILD_DIR"
     fi
     
-    # Configure and build
+    # Configure and build with retry logic
     echo "Configuring project for $IDF_TARGET..."
-    if ! idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" reconfigure; then
-        echo "ERROR: Configuration failed"
-        exit 1
-    fi
+    local config_attempts=0
+    local max_config_attempts=3
+    
+    while [ $config_attempts -lt $max_config_attempts ]; do
+        if idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" reconfigure; then
+            break
+        else
+            config_attempts=$((config_attempts + 1))
+            if [ $config_attempts -lt $max_config_attempts ]; then
+                echo "Configuration attempt $config_attempts failed, retrying..."
+                sleep 2
+            else
+                echo "ERROR: Configuration failed after $max_config_attempts attempts"
+                echo "This might be due to:"
+                echo "  - CMake version incompatibility"
+                echo "  - Missing dependencies"
+                echo "  - Corrupted build files"
+                exit 1
+            fi
+        fi
+    done
     
     echo "Building project..."
     if ! idf.py -B "$BUILD_DIR" build; then
         echo "ERROR: Build failed"
+        echo "Build logs are available in: $BUILD_DIR/log/"
         exit 1
     fi
     
@@ -147,6 +178,73 @@ if [ ! -f "$BIN_FILE" ] && [ ! -f "$BUILD_DIR/bootloader/bootloader.bin" ]; then
     exit 1
 fi
 
+# Smart port detection and permission handling
+echo ""
+echo "======================================================"
+echo "SMART PORT DETECTION AND PERMISSION HANDLING"
+echo "======================================================"
+
+# Function to find the best available port
+find_best_port() {
+    local ports=()
+    
+    # Check for ESP32-C6 native USB port first (preferred)
+    if [ -e "/dev/ttyACM0" ]; then
+        ports+=("/dev/ttyACM0")
+    fi
+    
+    # Check for other USB serial ports
+    for i in {1..10}; do
+        if [ -e "/dev/ttyACM$i" ]; then
+            ports+=("/dev/ttyACM$i")
+        fi
+    done
+    
+    # Check for traditional serial ports (fallback)
+    for i in {0..31}; do
+        if [ -e "/dev/ttyS$i" ]; then
+            ports+=("/dev/ttyS$i")
+        fi
+    done
+    
+    # Return the first available port
+    if [ ${#ports[@]} -gt 0 ]; then
+        echo "${ports[0]}"
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Function to fix port permissions
+fix_port_permissions() {
+    local port="$1"
+    if [ -e "$port" ]; then
+        # Check if user can access the port
+        if ! [ -r "$port" ]; then
+            echo "Fixing permissions for $port..."
+            sudo chmod 666 "$port" 2>/dev/null || {
+                echo "WARNING: Could not fix permissions for $port"
+                echo "You may need to run: sudo chmod 666 $port"
+            }
+        fi
+    fi
+}
+
+# Find and configure the best available port
+BEST_PORT=$(find_best_port)
+if [ -z "$BEST_PORT" ]; then
+    echo "ERROR: No serial ports found. Please connect your ESP32 device."
+    exit 1
+fi
+
+echo "Detected port: $BEST_PORT"
+fix_port_permissions "$BEST_PORT"
+
+# Set the port for ESP-IDF
+export ESPPORT="$BEST_PORT"
+echo "Using port: $ESPPORT"
+
 # Execute the requested operation
 echo ""
 echo "======================================================"
@@ -155,25 +253,25 @@ echo "======================================================"
 
 case $OPERATION in
     flash)
-        echo "Flashing $EXAMPLE_TYPE example..."
-        if ! idf.py -B "$BUILD_DIR" flash; then
+        echo "Flashing $EXAMPLE_TYPE example to $BEST_PORT..."
+        if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" flash; then
             echo "ERROR: Flash operation failed"
             exit 1
         fi
         echo "Flash completed successfully!"
         ;;
     monitor)
-        echo "Starting monitor for $EXAMPLE_TYPE example..."
+        echo "Starting monitor for $EXAMPLE_TYPE example on $BEST_PORT..."
         echo "Press Ctrl+] to exit monitor"
-        if ! idf.py -B "$BUILD_DIR" monitor; then
+        if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" monitor; then
             echo "ERROR: Monitor operation failed"
             exit 1
         fi
         ;;
     flash_monitor)
-        echo "Flashing and monitoring $EXAMPLE_TYPE example..."
+        echo "Flashing and monitoring $EXAMPLE_TYPE example on $BEST_PORT..."
         echo "Press Ctrl+] to exit monitor after flashing"
-        if ! idf.py -B "$BUILD_DIR" flash monitor; then
+        if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" flash monitor; then
             echo "ERROR: Flash and monitor operation failed"
             exit 1
         fi

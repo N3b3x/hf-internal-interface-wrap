@@ -34,6 +34,19 @@ if [ "$EXAMPLE_TYPE" = "list" ]; then
     exit 0
 fi
 
+# Ensure ESP-IDF environment is sourced
+if [ -z "$IDF_PATH" ] || ! command -v idf.py &> /dev/null; then
+    echo "ESP-IDF environment not found, attempting to source..."
+    if [ -f "$HOME/esp/esp-idf/export.sh" ]; then
+        source "$HOME/esp/esp-idf/export.sh"
+        echo "ESP-IDF environment sourced successfully"
+    else
+        echo "ERROR: ESP-IDF export.sh not found at $HOME/esp/esp-idf/export.sh"
+        echo "Please ensure ESP-IDF is installed and IDF_PATH is set"
+        exit 1
+    fi
+fi
+
 # Ensure ESP32-C6 target is set
 export IDF_TARGET=$CONFIG_TARGET
 

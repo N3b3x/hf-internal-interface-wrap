@@ -121,6 +121,38 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
+      - name: Cache ESP-IDF and tools
+        id: esp-idf-cache
+        uses: actions/cache@v4
+        if: ${{ !inputs.clean_build }}
+        with:
+          path: |
+            ~/.espressif
+            ~/esp
+          key: >-
+            esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-
+            ${{ hashFiles('examples/esp32/scripts/setup_common.sh') }}
+          restore-keys: |
+            esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-
+            esp-idf-${{ matrix.idf_version }}-
+            esp-idf-
+      
+      - name: Cache Python dependencies
+        id: python-cache
+        uses: actions/cache@v4
+        if: ${{ !inputs.clean_build }}
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.local/lib/python3.*/site-packages
+          key: >-
+            python-deps-${{ matrix.idf_version }}-${{ runner.os }}-
+            ${{ hashFiles('examples/esp32/scripts/setup_common.sh', 'examples/esp32/requirements.txt') }}
+          restore-keys: |
+            python-deps-${{ matrix.idf_version }}-${{ runner.os }}-
+            python-deps-${{ matrix.idf_version }}-
+            python-deps-
+      
       - name: Cache ccache
         id: ccache-cache
         uses: actions/cache@v4
@@ -133,11 +165,14 @@ jobs:
           restore-keys: |
             ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
             ccache-${{ matrix.idf_version }}-
-      - name: Log ccache cache result
+      
+      - name: Log cache results
         run: |
           if [ "${{ inputs.clean_build }}" = "true" ]; then
             echo "🧹 Clean build requested - all caches skipped"
           else
+            echo "ESP-IDF cache hit - ${{ steps.esp-idf-cache.outputs.cache-hit }}"
+            echo "Python deps cache hit - ${{ steps.python-cache.outputs.cache-hit }}"
             echo "ccache cache hit - ${{ steps.ccache-cache.outputs.cache-hit }}"
           fi
 

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.22)
 
 # Get the absolute path to the project root
 # In CI, the files are copied to the build directory, so we can use relative paths from CMAKE_SOURCE_DIR

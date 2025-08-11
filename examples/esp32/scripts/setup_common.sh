@@ -327,7 +327,71 @@ install_esp_idf() {
         cd - > /dev/null
     fi
     
-    print_success "ESP-IDF installed/updated"
+    # Optimize for caching by ensuring all tools are properly installed
+    print_status "Optimizing ESP-IDF installation for caching..."
+    
+    # Ensure all ESP-IDF tools are available
+    if [[ -f "$HOME/.espressif/export.sh" ]]; then
+        source "$HOME/.espressif/export.sh"
+        print_success "ESP-IDF tools environment loaded"
+    fi
+    
+    # Verify critical tools are available
+    local tools_available=0
+    local total_tools=0
+    
+    for tool in "idf.py" "esptool.py" "idf-size"; do
+        total_tools=$((total_tools + 1))
+        if command_exists "$tool" || [[ -f "$HOME/.espressif/python_env/idf5.5_py3.10_env/bin/$tool" ]]; then
+            tools_available=$((tools_available + 1))
+        fi
+    done
+    
+    if [[ $tools_available -eq $total_tools ]]; then
+        print_success "All ESP-IDF tools verified and ready for caching"
+    else
+        print_warning "Some ESP-IDF tools may not be fully cached"
+    fi
+    
+    print_success "ESP-IDF installed/updated and optimized for caching"
+}
+
+# Function to optimize cache for CI
+optimize_cache_for_ci() {
+    print_status "Optimizing cache for CI environment..."
+    
+    # Clean up unnecessary files to reduce cache size
+    if [[ -d "$HOME/.espressif" ]]; then
+        # Remove git history from ESP-IDF to save space
+        if [[ -d "$HOME/esp/esp-idf/.git" ]]; then
+            print_status "Cleaning ESP-IDF git history for cache optimization..."
+            rm -rf "$HOME/esp/esp-idf/.git"
+            print_success "Git history cleaned (saves ~100-200MB in cache)"
+        fi
+        
+        # Clean up temporary build files
+        if [[ -d "$HOME/esp/esp-idf/build" ]]; then
+            print_status "Cleaning ESP-IDF build files for cache optimization..."
+            rm -rf "$HOME/esp/esp-idf/build"
+            print_success "Build files cleaned"
+        fi
+    fi
+    
+    # Clean up pip cache if it's too large
+    if [[ -d "$HOME/.cache/pip" ]]; then
+        local pip_cache_size=$(du -sh "$HOME/.cache/pip" 2>/dev/null | cut -f1)
+        print_info "Pip cache size: $pip_cache_size"
+        
+        # If pip cache is larger than 500MB, clean it
+        local pip_cache_size_bytes=$(du -sb "$HOME/.cache/pip" 2>/dev/null | cut -f1)
+        if [[ $pip_cache_size_bytes -gt 524288000 ]]; then  # 500MB in bytes
+            print_status "Pip cache is large, cleaning for optimization..."
+            pip cache purge
+            print_success "Pip cache cleaned"
+        fi
+    fi
+    
+    print_success "Cache optimization complete"
 }
 
 # Function to install Python dependencies
@@ -366,6 +430,39 @@ setup_environment_vars() {
     fi
     
     print_success "Environment variables configured"
+}
+
+# Function to check cache status
+check_cache_status() {
+    print_status "Checking cache status..."
+    
+    # Check ESP-IDF cache
+    if [[ -d "$HOME/.espressif" && -d "$HOME/esp/esp-idf" ]]; then
+        print_success "ESP-IDF cache: AVAILABLE"
+        print_info "  ESP-IDF: $HOME/esp/esp-idf"
+        print_info "  Tools: $HOME/.espressif"
+    else
+        print_warning "ESP-IDF cache: NOT AVAILABLE"
+    fi
+    
+    # Check Python cache
+    if [[ -d "$HOME/.cache/pip" && -d "$HOME/.local/lib" ]]; then
+        print_success "Python cache: AVAILABLE"
+        print_info "  Pip cache: $HOME/.cache/pip"
+        print_info "  Site packages: $HOME/.local/lib"
+    else
+        print_warning "Python cache: NOT AVAILABLE"
+    fi
+    
+    # Check ccache
+    if [[ -d "$HOME/.ccache" ]]; then
+        local ccache_size=$(du -sh "$HOME/.ccache" 2>/dev/null | cut -f1)
+        print_success "ccache: AVAILABLE ($ccache_size)"
+    else
+        print_warning "ccache: NOT AVAILABLE"
+    fi
+    
+    echo ""
 }
 
 # Function to verify installation

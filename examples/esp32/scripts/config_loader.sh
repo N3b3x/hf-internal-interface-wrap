@@ -27,7 +27,7 @@ check_yq() {
             # yq v3.x uses direct syntax
             export YQ_SYNTAX="direct"
         fi
-        echo "Detected yq version $yq_version, using $YQ_SYNTAX syntax" >&2
+        # echo "Detected yq version $yq_version, using $YQ_SYNTAX syntax" >&2
     else
         # Fallback to direct syntax for unknown versions
         export YQ_SYNTAX="direct"
