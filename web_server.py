@@ -179,34 +179,60 @@ def rpc_reset_emergency_stop():
 
 @rpc_register("list_3d_models")
 def rpc_list_3d_models():
-    """List available 3D models"""
+    """List available 3D models from multiple possible directories"""
     try:
-        models_dir = "/workspace/static/models"
-        if not os.path.exists(models_dir):
-            return {
-                "models": [],
-                "message": "No models directory found",
-                "timestamp": time.time()
-            }
+        # Search multiple potential CAD directories
+        search_dirs = [
+            "/workspace/static/models",
+            "/workspace/CAD",
+            "/workspace/cad", 
+            "/workspace/models",
+            "/workspace/3d_models",
+            "/workspace/design",
+            "/workspace/meshes",
+            "/workspace/assets/models",
+            "/workspace/src/models",
+            "/workspace/docs/models"
+        ]
         
-        supported_formats = ['.gltf', '.glb', '.obj', '.stl', '.ply']
+        supported_formats = ['.gltf', '.glb', '.obj', '.stl', '.ply', '.step', '.stp', '.3mf']
         models = []
+        found_dirs = []
         
-        for filename in os.listdir(models_dir):
-            ext = os.path.splitext(filename)[1].lower()
-            if ext in supported_formats:
-                file_path = os.path.join(models_dir, filename)
-                file_size = os.path.getsize(file_path)
-                models.append({
-                    "name": filename,
-                    "format": ext[1:],  # Remove the dot
-                    "size": file_size,
-                    "url": f"/static/models/{filename}"
-                })
+        for models_dir in search_dirs:
+            if os.path.exists(models_dir):
+                found_dirs.append(models_dir)
+                try:
+                    for filename in os.listdir(models_dir):
+                        ext = os.path.splitext(filename)[1].lower()
+                        if ext in supported_formats:
+                            file_path = os.path.join(models_dir, filename)
+                            file_size = os.path.getsize(file_path)
+                            
+                            # Create appropriate URL based on directory
+                            if models_dir.startswith("/workspace/static/"):
+                                url = f"/static/{os.path.relpath(file_path, '/workspace/static/')}"
+                            else:
+                                # For non-static directories, we'll need to serve them differently
+                                url = f"/models/{filename}?dir={os.path.basename(models_dir)}"
+                            
+                            models.append({
+                                "name": filename,
+                                "format": ext[1:],  # Remove the dot
+                                "size": file_size,
+                                "path": file_path,
+                                "directory": models_dir,
+                                "url": url
+                            })
+                except PermissionError:
+                    logger.warning(f"Permission denied accessing {models_dir}")
+                    continue
         
         return {
             "models": models,
             "count": len(models),
+            "directories_found": found_dirs,
+            "directories_searched": search_dirs,
             "supported_formats": supported_formats,
             "timestamp": time.time()
         }
@@ -238,6 +264,8 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             self.serve_status_api()
         elif path.startswith("/static/"):
             self.serve_static_file(path)
+        elif path.startswith("/models/"):
+            self.serve_cad_model(path)
         else:
             self.send_error(404, "Not Found")
     
@@ -346,6 +374,92 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             
         except Exception as e:
             logger.error(f"Error serving static file {path}: {e}")
+            self.send_error(500, "Internal Server Error")
+    
+    def serve_cad_model(self, path):
+        """Serve CAD models from various directories"""
+        try:
+            # Parse the request: /models/filename.ext?dir=dirname
+            from urllib.parse import urlparse, parse_qs
+            
+            parsed = urlparse(path)
+            filename = os.path.basename(parsed.path)
+            query_params = parse_qs(parsed.query)
+            
+            # Get directory from query parameter
+            dir_name = query_params.get('dir', [''])[0]
+            
+            # Search for the file in known CAD directories
+            search_dirs = [
+                "/workspace/CAD",
+                "/workspace/cad", 
+                "/workspace/models",
+                "/workspace/3d_models",
+                "/workspace/design",
+                "/workspace/meshes",
+                "/workspace/assets/models",
+                "/workspace/src/models",
+                "/workspace/docs/models"
+            ]
+            
+            file_path = None
+            
+            # If directory is specified, search there first
+            if dir_name:
+                for search_dir in search_dirs:
+                    if os.path.basename(search_dir) == dir_name:
+                        potential_path = os.path.join(search_dir, filename)
+                        if os.path.exists(potential_path):
+                            file_path = potential_path
+                            break
+            
+            # If not found, search all directories
+            if not file_path:
+                for search_dir in search_dirs:
+                    potential_path = os.path.join(search_dir, filename)
+                    if os.path.exists(potential_path):
+                        file_path = potential_path
+                        break
+            
+            if not file_path:
+                self.send_error(404, f"CAD model not found: {filename}")
+                return
+            
+            # Get MIME type
+            mime_type, _ = mimetypes.guess_type(file_path)
+            if mime_type is None:
+                ext = os.path.splitext(file_path)[1].lower()
+                if ext == '.gltf':
+                    mime_type = 'model/gltf+json'
+                elif ext == '.glb':
+                    mime_type = 'model/gltf-binary'
+                elif ext == '.stl':
+                    mime_type = 'application/sla'
+                elif ext == '.obj':
+                    mime_type = 'application/object'
+                elif ext == '.ply':
+                    mime_type = 'application/ply'
+                elif ext in ['.step', '.stp']:
+                    mime_type = 'application/step'
+                else:
+                    mime_type = 'application/octet-stream'
+            
+            # Read and serve file
+            with open(file_path, 'rb') as f:
+                content = f.read()
+            
+            self.send_response(200)
+            self.send_header("Content-Type", mime_type)
+            self.send_header("Content-Length", len(content))
+            self.send_header("Cache-Control", "public, max-age=3600")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(content)
+            
+            logger.info(f"Served CAD model: {file_path}")
+            
+        except Exception as e:
+            logger.error(f"Error serving CAD model {path}: {e}")
             self.send_error(500, "Internal Server Error")
     
     def handle_rpc_request(self):
@@ -787,18 +901,52 @@ class RobotWebHandler(BaseHTTPRequestHandler):
             html += '        \n'
             html += '        async function listAvailableModels() {\n'
             html += '            const result = await callRPC("list_3d_models");\n'
-            html += '            if (result && result.result && result.result.models) {\n'
+            html += '            if (result && result.result) {\n'
             html += '                const selector = document.getElementById("model-selector");\n'
             html += '                selector.innerHTML = "<option value=\\"\\">Select Model...</option>";\n'
             html += '                \n'
-            html += '                result.result.models.forEach(model => {\n'
-            html += '                    const option = document.createElement("option");\n'
-            html += '                    option.value = model.url;\n'
-            html += '                    option.textContent = `${model.name} (${model.format.toUpperCase()}, ${(model.size/1024).toFixed(1)}KB)`;\n'
-            html += '                    selector.appendChild(option);\n'
-            html += '                });\n'
-            html += '                \n'
-            html += '                logResponse({"message": `Found ${result.result.count} 3D models`});\n'
+            html += '                if (result.result.models && result.result.models.length > 0) {\n'
+            html += '                    // Group models by directory\n'
+            html += '                    const modelsByDir = {};\n'
+            html += '                    result.result.models.forEach(model => {\n'
+            html += '                        const dirName = model.directory ? model.directory.split("/").pop() : "static";\n'
+            html += '                        if (!modelsByDir[dirName]) modelsByDir[dirName] = [];\n'
+            html += '                        modelsByDir[dirName].push(model);\n'
+            html += '                    });\n'
+            html += '                    \n'
+            html += '                    // Add models with directory grouping\n'
+            html += '                    Object.keys(modelsByDir).forEach(dirName => {\n'
+            html += '                        if (Object.keys(modelsByDir).length > 1) {\n'
+            html += '                            const optgroup = document.createElement("optgroup");\n'
+            html += '                            optgroup.label = `${dirName.toUpperCase()} Directory`;\n'
+            html += '                            selector.appendChild(optgroup);\n'
+            html += '                        }\n'
+            html += '                        \n'
+            html += '                        modelsByDir[dirName].forEach(model => {\n'
+            html += '                            const option = document.createElement("option");\n'
+            html += '                            option.value = model.url;\n'
+            html += '                            const sizeKB = (model.size / 1024).toFixed(1);\n'
+            html += '                            option.textContent = `${model.name} (${model.format.toUpperCase()}, ${sizeKB}KB)`;\n'
+            html += '                            \n'
+            html += '                            if (Object.keys(modelsByDir).length > 1) {\n'
+            html += '                                selector.lastElementChild.appendChild(option);\n'
+            html += '                            } else {\n'
+            html += '                                selector.appendChild(option);\n'
+            html += '                            }\n'
+            html += '                        });\n'
+            html += '                    });\n'
+            html += '                    \n'
+            html += '                    logResponse({\n'
+            html += '                        "message": `Found ${result.result.count} 3D models in ${result.result.directories_found.length} directories`,\n'
+            html += '                        "directories": result.result.directories_found\n'
+            html += '                    });\n'
+            html += '                } else {\n'
+            html += '                    logResponse({\n'
+            html += '                        "message": "No 3D models found",\n'
+            html += '                        "searched": result.result.directories_searched,\n'
+            html += '                        "found_dirs": result.result.directories_found\n'
+            html += '                    });\n'
+            html += '                }\n'
             html += '            }\n'
             html += '        }\n'
             html += '        \n'
