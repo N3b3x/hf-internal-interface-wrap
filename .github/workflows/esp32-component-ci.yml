@@ -238,11 +238,29 @@ jobs:
             )
           }}"
 
+      - name: Install analysis tools
+        run: |
+          echo "Installing analysis tools..."
+          
+          # Add LLVM APT repository for clang-20
+          wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+          ubuntu_codename=$(lsb_release -cs)
+          echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | sudo tee /etc/apt/sources.list.d/llvm.list
+          
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang-20 \
+            clang-tidy-20
+          
+          # Set clang-tidy-20 as default
+          sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
+          
       - name: Verify analysis tools
         run: |
-          echo "Verifying analysis tools from setup..."
+          echo "Verifying analysis tools..."
           clang-tidy --version
-          cppcheck --version
+          echo "Note: cppcheck runs via Docker container"
+          docker run --rm ghcr.io/facthunder/cppcheck:latest cppcheck --version
           echo "Analysis tools ready!"
 
       - name: Run cppcheck with Docker
