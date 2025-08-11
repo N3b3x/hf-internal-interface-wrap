@@ -44,36 +44,39 @@ def generate_matrix():
     """Generate CI matrix from configuration."""
     config = load_config()
     
-    # Get CI-enabled examples
-    ci_examples = []
-    for example_name, example_config in config['examples'].items():
-        if example_config.get('ci_enabled', True):
-            ci_examples.append(example_name)
-    
-    # Get build types
-    build_types = list(config['build_config']['build_types'].keys())
+    # Global build types as default
+    global_build_types = list(config['build_config']['build_types'].keys())
     
     # Get IDF versions
     idf_versions = config['metadata'].get('idf_versions', ['release-v5.5'])
-    
-    # Generate matrix
-    matrix = {
-        'idf_version': idf_versions,
-        'build_type': build_types,
-        'example_type': ci_examples
-    }
-    
-    # Get exclude combinations if any
+
+    # Optional excludes for special cases
     exclude_combinations = config.get('ci_config', {}).get('exclude_combinations', [])
-    
-    result = {
-        'matrix': matrix
-    }
-    
-    if exclude_combinations:
-        result['exclude'] = exclude_combinations
-    
-    return result
+
+    def is_excluded(entry: dict) -> bool:
+        for exc in exclude_combinations:
+            # If all keys in exc match the entry, then exclude
+            if all(k in entry and entry[k] == v for k, v in exc.items()):
+                return True
+        return False
+
+    # Build an explicit include list honoring per-example build types
+    include: list[dict] = []
+    for example_name, example_config in config['examples'].items():
+        if not example_config.get('ci_enabled', True):
+            continue
+        per_example_build_types = example_config.get('build_types', global_build_types)
+        for idf_version in idf_versions:
+            for build_type in per_example_build_types:
+                candidate = {
+                    'idf_version': idf_version,
+                    'build_type': build_type,
+                    'example_type': example_name,
+                }
+                if not is_excluded(candidate):
+                    include.append(candidate)
+
+    return { 'include': include }
 
 def main():
     """Main function."""

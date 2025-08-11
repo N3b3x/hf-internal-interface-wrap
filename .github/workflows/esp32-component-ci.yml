@@ -69,8 +69,7 @@ jobs:
     timeout-minutes: 30
     strategy:
       fail-fast: false
-      matrix: ${{fromJson(needs.generate-matrix.outputs.matrix).matrix}}
-      exclude: ${{fromJson(needs.generate-matrix.outputs.matrix).exclude || fromJson('[]')}}
+      matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
 
     steps:
       - uses: actions/checkout@v4
