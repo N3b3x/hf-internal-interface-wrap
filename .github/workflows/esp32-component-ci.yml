@@ -44,7 +44,6 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            /var/cache/apt
             /usr/local/bin
           key: dev-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/setup_ci.sh') }}
           restore-keys: |
@@ -245,7 +244,6 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            /var/cache/apt
             ~/.cache/clang-tidy
           key: >-
             static-analysis-${{ runner.os }}-${{
@@ -362,7 +360,6 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            /var/cache/apt
             ~/actionlint
             ~/.local/bin
           key: workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
