@@ -142,11 +142,11 @@ jobs:
           fi
 
 
-      - name: Clang-format check (version 18)
+      - name: Clang-format check (version 20)
         uses: jidicula/clang-format-action@v4.15.0
         continue-on-error: true
         with:
-          clang-format-version: '18'
+          clang-format-version: '20'
           check-path: '.'
           fallback-style: 'LLVM'
 

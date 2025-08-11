@@ -98,7 +98,8 @@ install_system_deps() {
                 liblzma-dev \
                 zlib1g-dev \
                 libgdbm-dev \
-                libnss3-dev
+                libnss3-dev \
+                lsb-release
             ;;
         "fedora")
             sudo dnf install -y \
@@ -189,47 +190,43 @@ install_clang_tools() {
     
     case $os in
         "ubuntu")
-            # Add LLVM APT repository for newer clang versions if needed
-            if ! apt-cache search clang-18 | grep -q "clang-18"; then
-                print_status "Adding LLVM APT repository for newer clang versions..."
-                wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add - 2>/dev/null || true
-                echo "deb http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main" | sudo tee /etc/apt/sources.list.d/llvm.list >/dev/null || true
-                sudo apt-get update || true
-            fi
+            # Add LLVM APT repository for clang-20
+            print_status "Adding LLVM APT repository for clang-20..."
+            wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add - 2>/dev/null || {
+                # Fallback for newer systems that deprecated apt-key
+                wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+            }
             
-            # Try to install the latest available clang version
-            # First try clang-18, fallback to default clang if not available
-            if apt-cache search clang-18 | grep -q "clang-18"; then
-                print_status "Installing clang-18 and tools..."
-                sudo apt-get install -y \
-                    clang-18 \
-                    clang-format-18 \
-                    clang-tidy-18 \
-                    clang-tools-18 \
-                    cppcheck \
-                    valgrind \
-                    gdb \
-                    make
-                
-                # Set clang-18 as default
-                if command_exists update-alternatives; then
-                    print_status "Setting clang-18 as default..."
-                    sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-18 100
-                    sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 100
-                    sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-18 100
-                    sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-18 100
-                fi
-            else
-                print_status "Installing default clang and tools..."
-                sudo apt-get install -y \
-                    clang \
-                    clang-format \
-                    clang-tidy \
-                    clang-tools \
-                    cppcheck \
-                    valgrind \
-                    gdb \
-                    make
+            # Detect Ubuntu codename
+            local ubuntu_codename=$(lsb_release -cs 2>/dev/null || echo "noble")
+            echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | sudo tee /etc/apt/sources.list.d/llvm.list >/dev/null
+            echo "deb-src http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | sudo tee -a /etc/apt/sources.list.d/llvm.list >/dev/null
+            
+            # Update package lists
+            sudo apt-get update
+            
+            # Install clang-20 and tools
+            print_status "Installing clang-20 and tools..."
+            sudo apt-get install -y \
+                clang-20 \
+                clang-format-20 \
+                clang-tidy-20 \
+                clang-tools-20 \
+                libclang-common-20-dev \
+                libclang-20-dev \
+                libclang1-20 \
+                cppcheck \
+                valgrind \
+                gdb \
+                make
+            
+            # Set clang-20 as default
+            if command_exists update-alternatives; then
+                print_status "Setting clang-20 as default..."
+                sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100
+                sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100
+                sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-20 100
+                sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
             fi
             ;;
         "fedora"|"centos")
@@ -249,6 +246,10 @@ install_clang_tools() {
                     valgrind \
                     gdb \
                     make
+                
+                # Set up symlinks for macOS LLVM
+                print_status "Setting up LLVM symlinks for macOS..."
+                brew link --force llvm
             fi
             ;;
     esac
@@ -460,33 +461,12 @@ verify_installation() {
 setup_ci_environment() {
     print_status "Setting up CI environment..."
     
-    # Set clang as default for CI (use whatever version was installed)
-    if command_exists clang-18 && command_exists update-alternatives; then
-        print_status "Setting clang-18 as default for CI..."
-        sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-18 100
-        sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 100
-        sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-18 100
-        sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-18 100
-    elif command_exists clang && command_exists update-alternatives; then
-        print_status "Setting default clang as default for CI..."
-        # Find the actual clang version and set alternatives
-        local clang_path=$(which clang)
-        local clang_pp_path=$(which clang++)
-        local clang_format_path=$(which clang-format)
-        local clang_tidy_path=$(which clang-tidy)
-        
-        if [[ -n "$clang_path" ]]; then
-            sudo update-alternatives --install /usr/bin/clang clang "$clang_path" 100
-        fi
-        if [[ -n "$clang_pp_path" ]]; then
-            sudo update-alternatives --install /usr/bin/clang++ clang++ "$clang_pp_path" 100
-        fi
-        if [[ -n "$clang_format_path" ]]; then
-            sudo update-alternatives --install /usr/bin/clang-format clang-format "$clang_format_path" 100
-        fi
-        if [[ -n "$clang_tidy_path" ]]; then
-            sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy "$clang_tidy_path" 100
-        fi
+    # Set clang-20 as default for CI
+    if command_exists update-alternatives; then
+        sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100
+        sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100
+        sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-20 100
+        sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
     fi
     
     print_success "CI environment configured"
