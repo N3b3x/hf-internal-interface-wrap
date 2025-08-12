@@ -422,29 +422,41 @@ set(COMPONENT_REQUIRES
 
 ## 📊 **Examples**
 
+The ESP32 examples demonstrate all wrapper interfaces in comprehensive test suites. All examples are available in the [`examples/esp32/`](examples/esp32/) directory with a centralized configuration system.
+
 ### 🎯 **Basic HardFOC Interface Examples**
-- **GPIO Control** - LED control and button reading for HardFOC boards
-- **ADC Monitoring** - Sensor data acquisition for HardFOC systems
-- **PWM Generation** - Motor speed control for HardFOC applications
-- **Temperature Sensing** - Thermal monitoring for HardFOC boards
+- **GPIO Control** ([`GpioComprehensiveTest.cpp`](examples/esp32/main/GpioComprehensiveTest.cpp)) - LED control and button reading for HardFOC boards
+- **ADC Monitoring** ([`AdcComprehensiveTest.cpp`](examples/esp32/main/AdcComprehensiveTest.cpp)) - Sensor data acquisition for HardFOC systems
+- **PWM Generation** ([`PwmComprehensiveTest.cpp`](examples/esp32/main/PwmComprehensiveTest.cpp)) - Motor speed control for HardFOC applications
+- **Temperature Sensing** ([`TemperatureComprehensiveTest.cpp`](examples/esp32/main/TemperatureComprehensiveTest.cpp)) - Thermal monitoring for HardFOC boards
 
 ### 🌐 **HardFOC Wireless Examples**
-- **WiFi Station** - Internet connectivity for HardFOC IoT
-- **WiFi Access Point** - Local network creation for HardFOC systems
-- **Bluetooth BLE** - Mobile app integration with HardFOC boards
-- **Bluetooth Classic** - Serial over Bluetooth for HardFOC
+- **WiFi Station** ([`WifiComprehensiveTest.cpp`](examples/esp32/main/WifiComprehensiveTest.cpp)) - Internet connectivity for HardFOC IoT
+- **Bluetooth BLE** ([`BluetoothComprehensiveTest.cpp`](examples/esp32/main/BluetoothComprehensiveTest.cpp)) - Mobile app integration with HardFOC boards
 
 ### 🚀 **Advanced HardFOC Integration Examples**
-- **Complete HardFOC Motor Controller** - Full-featured motor control with TMC-style controllers
-- **HardFOC IoT Gateway** - WiFi bridge with HardFOC monitoring
-- **HardFOC Data Logger** - Multi-sensor data collection for HardFOC
-- **Secure HardFOC Communication** - Encrypted data transfer for HardFOC
+- **PIO/RMT Testing** ([`PioComprehensiveTest.cpp`](examples/esp32/main/PioComprehensiveTest.cpp)) - Custom protocols and precise timing for HardFOC
+- **CAN Bus Communication** ([`CanComprehensiveTest.cpp`](examples/esp32/main/CanComprehensiveTest.cpp)) - Industrial networking for HardFOC
+- **NVS Storage** ([`NvsComprehensiveTest.cpp`](examples/esp32/main/NvsComprehensiveTest.cpp)) - Configuration storage for HardFOC
+- **System Utilities** ([`UtilsComprehensiveTest.cpp`](examples/esp32/main/UtilsComprehensiveTest.cpp)) - Utility functions for HardFOC
 
-### 🧪 **Production HardFOC Examples**
-- **Industrial HardFOC Control** - Complete industrial HardFOC system
-- **Automotive HardFOC Interface** - CAN bus integration for HardFOC
-- **Remote HardFOC Monitoring** - Cloud-connected HardFOC system
-- **HardFOC Diagnostic System** - Advanced HardFOC diagnostics
+### 🔧 **Building and Running Examples**
+
+```bash
+# Navigate to examples directory
+cd examples/esp32
+
+# Build an example (using centralized configuration)
+./scripts/build_example.sh gpio_test Release
+
+# Flash and monitor
+./scripts/flash_example.sh gpio_test Release flash_monitor
+
+# List all available examples
+./scripts/build_example.sh list
+```
+
+For detailed information about the centralized configuration system, see [`examples/esp32/README_CENTRALIZED_CONFIG.md`](examples/esp32/README_CENTRALIZED_CONFIG.md).
 
 ---
 

@@ -189,25 +189,19 @@ The comprehensive ADC test suite includes **12 major test categories** that run 
 ### Build Commands
 ```bash
 cd examples/esp32
+./scripts/build_example.sh adc_test
 
-# Build ADC comprehensive test
-idf.py build
-
-# Flash and monitor
-idf.py flash monitor
-
-# Or specify target explicitly
-idf.py -p COMx flash monitor  # Windows
-idf.py -p /dev/ttyUSBx flash monitor  # Linux
+# Build with specific configuration
+./scripts/build_example.sh adc_test Debug
 ```
 
 ### Alternative Build Methods
 ```bash
-# Using build scripts (if available)
-./build_example.sh adc_test
+# Using flash script with auto-build capability
+./scripts/flash_example.sh adc_test Release flash_monitor
 
-# Or PowerShell (Windows)
-./build_example.ps1 adc_test
+# Or just build without flashing
+./scripts/build_example.sh adc_test Release
 ```
 
 ## Expected Test Output

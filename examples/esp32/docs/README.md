@@ -15,11 +15,21 @@ Welcome to the ESP32 examples documentation hub. Use the links below to navigate
 - [Timer Test Report](./TIMER_TEST_REPORT.md)
 
 ## Quick Links
-- Build script (Bash): `examples/esp32/build_example.sh`
-- Build script (PowerShell): `examples/esp32/build_example.ps1`
-- Flash script (Bash): `examples/esp32/flash_example.sh`
-- Flash script (PowerShell): `examples/esp32/flash_example.ps1`
+- Build script: `examples/esp32/scripts/build_example.sh`
+- Flash script: `examples/esp32/scripts/flash_example.sh`
 - Central config file: `examples/esp32/examples_config.yml`
 - Config helpers: `examples/esp32/scripts/`
+- Available examples: Run `./scripts/build_example.sh list` to see all examples
+
+## Available Scripts
+
+All scripts are located in the `scripts/` directory:
+- `build_example.sh` - Build examples with centralized configuration
+- `flash_example.sh` - Flash and monitor examples with auto-build capability
+- `config_loader.sh` - Configuration helper functions for bash scripts
+- `get_example_info.py` - Python script for CMake integration
+- `setup_ci.sh` - CI environment setup
+- `setup_common.sh` - Common setup functions
+- `setup_repo.sh` - Repository setup
 
 
