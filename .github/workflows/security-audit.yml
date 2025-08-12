@@ -286,11 +286,13 @@ jobs:
             echo "❌ ESP-IDF installation failed - export.sh not found"
             exit 1
           fi
+          # shellcheck source=/dev/null
           source ~/esp-idf/export.sh
           echo "✅ ESP-IDF environment setup complete"
           
       - name: Analyze ESP-IDF component dependencies
         run: |
+          # shellcheck source=/dev/null
           source ~/esp-idf/export.sh
           
           echo "🔍 Analyzing ESP-IDF component dependencies..."
@@ -320,8 +322,8 @@ jobs:
           echo "📋 Security Configuration Analysis:"
           
           # Look for security-related configurations in source code
-          find . -name "*.c" -o -name "*.cpp" -o -name "*.h" | \
-            xargs grep -l -i "secure\|encrypt\|flash_encryption\|secure_boot" | head -10 || true
+          find . -name "*.c" -o -name "*.cpp" -o -name "*.h" -print0 | \
+            xargs -0 grep -l -i "secure\|encrypt\|flash_encryption\|secure_boot" | head -10 || true
           
           # Check for proper WiFi security implementation
           echo "🔍 WiFi Security Implementation:"
@@ -336,32 +338,35 @@ jobs:
           
       - name: Generate security recommendations
         run: |
-          echo "📋 Security Recommendations Report" > esp-security-report.md
-          echo "=================================" >> esp-security-report.md
-          echo "" >> esp-security-report.md
-          echo "## Component Security Analysis" >> esp-security-report.md
-          echo "" >> esp-security-report.md
-          
-          # Add ESP-IDF version analysis
-          echo "### ESP-IDF Version Security" >> esp-security-report.md
-          echo "- Using ESP-IDF version: ${{ env.ESP_IDF_VERSION }}" >> esp-security-report.md
-          echo "- Recommendation: Always use the latest stable ESP-IDF version for security patches" \
-            >> esp-security-report.md
-          echo "" >> esp-security-report.md
+          {
+            echo "📋 Security Recommendations Report"
+            echo "================================="
+            echo ""
+            echo "## Component Security Analysis"
+            echo ""
+            
+            # Add ESP-IDF version analysis
+            echo "### ESP-IDF Version Security"
+            echo "- Using ESP-IDF version: ${{ env.ESP_IDF_VERSION }}"
+            echo "- Recommendation: Always use the latest stable ESP-IDF version for security patches"
+            echo ""
+          } > esp-security-report.md
           
           # Add WiFi security recommendations
-          echo "### WiFi Security Recommendations" >> esp-security-report.md
-          echo "- Use WPA3 or WPA2 security protocols" >> esp-security-report.md
-          echo "- Implement proper password validation" >> esp-security-report.md
-          echo "- Use enterprise authentication when possible" >> esp-security-report.md
-          echo "" >> esp-security-report.md
-          
-          # Add general recommendations
-          echo "### General Security Best Practices" >> esp-security-report.md
-          echo "- Enable secure boot and flash encryption in production" >> esp-security-report.md
-          echo "- Use GitHub Secrets for sensitive configuration" >> esp-security-report.md
-          echo "- Regularly update ESP-IDF and component dependencies" >> esp-security-report.md
-          echo "- Implement proper input validation and sanitization" >> esp-security-report.md
+          {
+            echo "### WiFi Security Recommendations"
+            echo "- Use WPA3 or WPA2 security protocols"
+            echo "- Implement proper password validation"
+            echo "- Use enterprise authentication when possible"
+            echo ""
+            
+            # Add general recommendations
+            echo "### General Security Best Practices"
+            echo "- Enable secure boot and flash encryption in production"
+            echo "- Use GitHub Secrets for sensitive configuration"
+            echo "- Regularly update ESP-IDF and component dependencies"
+            echo "- Implement proper input validation and sanitization"
+          } >> esp-security-report.md
           
       - name: Upload ESP-IDF security analysis results
         uses: actions/upload-artifact@v4
@@ -390,17 +395,19 @@ jobs:
           
       - name: Generate comprehensive security report
         run: |
-          echo "# 🛡️ Security Audit Report" > security-summary-report.md
-          echo "Generated on: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> security-summary-report.md
-          echo "" >> security-summary-report.md
-          
-          # Add workflow information
-          echo "## Workflow Information" >> security-summary-report.md
-          echo "- **Repository**: ${{ github.repository }}" >> security-summary-report.md
-          echo "- **Branch**: ${{ github.ref_name }}" >> security-summary-report.md
-          echo "- **Commit**: ${{ github.sha }}" >> security-summary-report.md
-          echo "- **Workflow Run**: ${{ github.run_number }}" >> security-summary-report.md
-          echo "" >> security-summary-report.md
+          {
+            echo "# 🛡️ Security Audit Report"
+            echo "Generated on: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            echo ""
+            
+            # Add workflow information
+            echo "## Workflow Information"
+            echo "- **Repository**: ${{ github.repository }}"
+            echo "- **Branch**: ${{ github.ref_name }}"
+            echo "- **Commit**: ${{ github.sha }}"
+            echo "- **Workflow Run**: ${{ github.run_number }}"
+            echo ""
+          } > security-summary-report.md
           
           # Summarize audit results
           echo "## Audit Summary" >> security-summary-report.md
@@ -409,7 +416,7 @@ jobs:
           # Check if results exist and summarize
           if [ -d "security-results/" ]; then
             echo "### Artifacts Generated" >> security-summary-report.md
-            find security-results/ -name "*.json" -o -name "*.md" -o -name "*.txt" | while read file; do
+            find security-results/ -name "*.json" -o -name "*.md" -o -name "*.txt" | while read -r file; do
               echo "- $(basename "$file")" >> security-summary-report.md
             done
             echo "" >> security-summary-report.md
