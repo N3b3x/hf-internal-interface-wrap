@@ -48,7 +48,7 @@ def generate_matrix():
     global_build_types = list(config['build_config']['build_types'].keys())
     
     # Get IDF versions
-    idf_versions = config['metadata'].get('idf_versions', ['release-v5.5'])
+    idf_versions = config['metadata'].get('idf_versions', ['release/v5.5'])
 
     # Optional excludes for special cases
     exclude_combinations = config.get('ci_config', {}).get('exclude_combinations', [])

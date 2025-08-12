@@ -25,7 +25,7 @@ concurrency:
 env:
   IDF_TARGET: esp32c6
   BUILD_PATH: ci_project
-  ESP_IDF_VERSIONS: '["release-v5.5"]'
+  ESP_IDF_VERSIONS: '["release/v5.5"]'
   IDF_CCACHE_ENABLE: "1"  # Enables ccache inside ESP-IDF
 
 defaults:
