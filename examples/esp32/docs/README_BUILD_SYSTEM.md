@@ -15,60 +15,40 @@ The project contains example applications that demonstrate different aspects of 
 
 ### Using the Build Scripts
 
-#### Windows (PowerShell)
-```powershell
-# Build ASCII art example (default)
-.\build_example.ps1
-
-# Build specific examples
-.\build_example.ps1 ascii_art Debug
-.\build_example.ps1 gpio_test Release
-.\build_example.ps1 bluetooth_test Release
-.\build_example.ps1 utils_test Release
-```
-
 #### Linux/macOS (Bash)
 ```bash
 # Build ASCII art example (default)
-./build_example.sh
+./scripts/build_example.sh
 
 # Build specific examples
-./build_example.sh ascii_art Debug
-./build_example.sh gpio_test Release
-./build_example.sh bluetooth_test Debug
-./build_example.sh utils_test Release
+./scripts/build_example.sh ascii_art Debug
+./scripts/build_example.sh gpio_test Release
+./scripts/build_example.sh bluetooth_test Debug
+./scripts/build_example.sh utils_test Release
+
+# List all available examples
+./scripts/build_example.sh list
 ```
 
 ### Using the Flash and Monitor Scripts
 
 The project includes dedicated scripts for flashing and monitoring that can automatically build if needed.
 
-#### Windows (PowerShell)
-```powershell
-# Flash and monitor ASCII art example (default)
-.\flash_example.ps1
-
-# Flash specific examples with different operations
-.\flash_example.ps1 gpio_test Release flash_monitor  # Flash and monitor
-.\flash_example.ps1 bluetooth_test Debug flash       # Flash only
-.\flash_example.ps1 utils_test Release monitor       # Monitor only
-
-# Auto-build examples if binary doesn't exist
-.\flash_example.ps1 pio_test Debug flash_monitor     # Builds first if needed
-```
-
 #### Linux/macOS (Bash)
 ```bash
 # Flash and monitor ASCII art example (default)
-./flash_example.sh
+./scripts/flash_example.sh
 
 # Flash specific examples with different operations
-./flash_example.sh gpio_test Release flash_monitor   # Flash and monitor
-./flash_example.sh bluetooth_test Debug flash        # Flash only
-./flash_example.sh utils_test Release monitor        # Monitor only
+./scripts/flash_example.sh gpio_test Release flash_monitor   # Flash and monitor
+./scripts/flash_example.sh bluetooth_test Debug flash        # Flash only
+./scripts/flash_example.sh utils_test Release monitor        # Monitor only
 
 # Auto-build examples if binary doesn't exist
-./flash_example.sh pio_test Debug flash_monitor      # Builds first if needed
+./scripts/flash_example.sh pio_test Debug flash_monitor      # Builds first if needed
+
+# List all available examples
+./scripts/flash_example.sh list
 ```
 
 #### Flash Script Features
@@ -80,7 +60,7 @@ The project includes dedicated scripts for flashing and monitoring that can auto
   - `monitor` - Monitor serial output only  
   - `flash_monitor` - Flash then monitor (default)
 - **Error Handling**: Comprehensive validation and error reporting
-- **Cross-platform**: Both Bash and PowerShell versions available
+- **Centralized Configuration**: Uses the centralized `examples_config.yml` for all configuration
 
 ## Detailed Examples
 
@@ -98,7 +78,6 @@ The project includes dedicated scripts for flashing and monitoring that can auto
 - Character support validation
 - Supported characters list testing
 - Complex text generation testing
-- Performance and stability testing
 
 **Test Coverage:**
 - 10 comprehensive test functions

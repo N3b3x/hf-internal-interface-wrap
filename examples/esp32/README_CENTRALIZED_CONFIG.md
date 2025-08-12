@@ -5,8 +5,8 @@ This document explains the centralized configuration system for ESP32 examples, 
 ## Overview
 
 The centralized configuration system eliminates the need to maintain example type lists in multiple files across the codebase. Instead of having example types scattered across:
-- Build scripts (`build_example.sh`, `build_example.ps1`)
-- Flash scripts (`flash_example.sh`, `flash_example.ps1`) 
+- Build scripts (`build_example.sh`)
+- Flash scripts (`flash_example.sh`) 
 - CI workflows (`.github/workflows/esp32-component-ci.yml`)
 - CMake files (`main/CMakeLists.txt`)
 
@@ -78,23 +78,6 @@ get_featured_example_types          # Get featured examples
 get_ci_example_types               # Get CI-enabled examples
 ```
 
-### PowerShell Configuration Loader (`scripts/config_loader.ps1`)
-
-Provides PowerShell functions with the same functionality:
-
-```powershell
-# Import the config loader
-. "scripts\config_loader.ps1"
-
-# Available functions (similar to bash):
-Get-ExampleTypes
-Get-BuildTypes
-Get-ExampleDescription "example"
-Test-ValidExampleType "example"
-Get-BuildDirectory "example" "type"
-# ... and more
-```
-
 ### Python Configuration Scripts
 
 #### `scripts/get_example_info.py`
@@ -144,8 +127,8 @@ examples:
 2. **Create the source file** (`main/MyNewTest.cpp`)
 
 3. **That's it!** The example is now automatically available in:
-   - Build scripts: `./build_example.sh my_new_test`
-   - Flash scripts: `./flash_example.sh my_new_test`
+   - Build scripts: `./scripts/build_example.sh my_new_test`
+   - Flash scripts: `./scripts/flash_example.sh my_new_test`
    - CI workflows (will build automatically)
    - CMake (will find source file automatically)
 
@@ -153,12 +136,12 @@ examples:
 
 ```bash
 # List available examples
-./build_example.sh list
-./flash_example.sh list
+./scripts/build_example.sh list
+./scripts/flash_example.sh list
 
 # Build specific example
-./build_example.sh gpio_test Release
-./flash_example.sh bluetooth_test Debug flash_monitor
+./scripts/build_example.sh gpio_test Release
+./scripts/flash_example.sh bluetooth_test Debug flash_monitor
 ```
 
 ### Disabling CI for an Example
@@ -188,11 +171,11 @@ examples:
 ## Integration Points
 
 ### Build Scripts
-- `build_example.sh` and `build_example.ps1` use config for validation and defaults
+- `scripts/build_example.sh` uses config for validation and defaults
 - Support `list` command to show all available examples with descriptions
 
 ### Flash Scripts  
-- `flash_example.sh` and `flash_example.ps1` use config for validation
+- `scripts/flash_example.sh` uses config for validation
 - Auto-build functionality respects configuration settings
 
 ### CI Workflows
@@ -204,6 +187,30 @@ examples:
 - `main/CMakeLists.txt` queries configuration for source file mapping
 - Validation happens at CMake configure time
 - Better error messages with available example lists
+
+## Available Examples
+
+The following examples are currently available in the system:
+
+### Featured Examples (displayed first in listings)
+- **ascii_art** - ASCII art generator example
+- **gpio_test** - GPIO peripheral comprehensive testing
+- **adc_test** - ADC peripheral comprehensive testing
+- **pio_test** - Comprehensive PIO/RMT testing suite with WS2812 and logic analyzer
+- **bluetooth_test** - Comprehensive Bluetooth testing suite
+- **utils_test** - Utilities testing suite
+
+### Additional Examples
+- **uart_test** - UART peripheral comprehensive testing
+- **spi_test** - SPI peripheral comprehensive testing
+- **i2c_test** - I2C peripheral comprehensive testing
+- **pwm_test** - PWM peripheral comprehensive testing
+- **can_test** - CAN peripheral comprehensive testing
+- **temperature_test** - Temperature sensor comprehensive testing
+- **nvs_test** - NVS (Non-Volatile Storage) comprehensive testing
+- **timer_test** - Timer peripheral comprehensive testing
+- **logger_test** - Logger system comprehensive testing
+- **wifi_test** - WiFi connectivity comprehensive testing
 
 ## Benefits
 
@@ -226,14 +233,6 @@ sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/
 sudo chmod +x /usr/local/bin/yq
 ```
 
-### Missing `powershell-yaml` Module
-
-The PowerShell scripts fall back to basic parsing:
-```powershell
-# Install module for better parsing (optional)
-Install-Module powershell-yaml -Scope CurrentUser
-```
-
 ### Python Dependencies
 
 For CI matrix generation:
@@ -251,4 +250,56 @@ When migrating from the old scattered approach:
 4. ✅ **CI improvements** - Dynamic matrix generation, easy enable/disable
 
 No breaking changes to existing workflows!
+
+## File Structure
+
+The current file structure for the ESP32 examples is:
+
+```
+examples/esp32/
+├── README_CENTRALIZED_CONFIG.md    # This file
+├── examples_config.yml             # Centralized configuration
+├── CMakeLists.txt                  # ESP-IDF project file
+├── sdkconfig                       # ESP-IDF configuration
+├── requirements.txt                # Python dependencies
+├── main/                           # Example source files
+│   ├── CMakeLists.txt
+│   ├── TestFramework.h
+│   ├── AdcComprehensiveTest.cpp
+│   ├── AsciiArtComprehensiveTest.cpp
+│   ├── BluetoothComprehensiveTest.cpp
+│   ├── CanComprehensiveTest.cpp
+│   ├── GpioComprehensiveTest.cpp
+│   ├── I2cComprehensiveTest.cpp
+│   ├── LoggerComprehensiveTest.cpp
+│   ├── NvsComprehensiveTest.cpp
+│   ├── PioComprehensiveTest.cpp
+│   ├── PwmComprehensiveTest.cpp
+│   ├── SpiComprehensiveTest.cpp
+│   ├── TemperatureComprehensiveTest.cpp
+│   ├── TimerComprehensiveTest.cpp
+│   ├── UartComprehensiveTest.cpp
+│   ├── UtilsComprehensiveTest.cpp
+│   └── WifiComprehensiveTest.cpp
+├── scripts/                        # Build and utility scripts
+│   ├── build_example.sh
+│   ├── config_loader.sh
+│   ├── flash_example.sh
+│   ├── get_example_info.py
+│   ├── setup_ci.sh
+│   ├── setup_common.sh
+│   └── setup_repo.sh
+├── components/                     # ESP-IDF components
+│   └── iid-espidf/
+└── docs/                          # Documentation
+    ├── README.md
+    ├── README_BUILD_SYSTEM.md
+    ├── README_PIO_TEST.md
+    ├── README_TESTING_INFRASTRUCTURE.md
+    ├── README_ADC_TESTING.md
+    ├── README_NVS_TEST.md
+    ├── README_GPIO_TEST.md
+    ├── CI_CACHING_STRATEGY.md
+    └── TIMER_TEST_REPORT.md
+```
 
