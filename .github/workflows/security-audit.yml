@@ -29,7 +29,7 @@ permissions:
 
 env:
   PYTHON_VERSION: '3.11'
-  ESP_IDF_VERSION: 'release-v5.5'
+  ESP_IDF_VERSION: 'release/v5.5'
 
 defaults:
   run:
@@ -40,7 +40,10 @@ jobs:
   python-security-audit:
     name: Python Dependencies Security Audit
     runs-on: ubuntu-latest
-    if: github.event.inputs.scan_type == 'all' || github.event.inputs.scan_type == 'dependencies' || github.event.inputs.scan_type == ''
+    if: >-
+      github.event.inputs.scan_type == 'all' ||
+      github.event.inputs.scan_type == 'dependencies' ||
+      github.event.inputs.scan_type == ''
     
     steps:
       - name: Checkout code
@@ -88,11 +91,13 @@ jobs:
           if [ -s temp_requirements.txt ]; then
             echo "🔍 Running pip-audit on dependencies..."
             pip-audit --requirement temp_requirements.txt --format=json --output=pip-audit-results.json || true
-            pip-audit --requirement temp_requirements.txt --format=cyclonedx-json --output=pip-audit-sbom.json || true
+            pip-audit --requirement temp_requirements.txt \
+              --format=cyclonedx-json --output=pip-audit-sbom.json || true
             
             # Display results in human-readable format
             echo "📋 Pip-audit results:"
-            pip-audit --requirement temp_requirements.txt || echo "⚠️ Some vulnerabilities found, check detailed results"
+            pip-audit --requirement temp_requirements.txt || \
+              echo "⚠️ Some vulnerabilities found, check detailed results"
           else
             echo "No requirements file to audit"
           fi
@@ -138,7 +143,10 @@ jobs:
   secrets-detection:
     name: Secrets and Sensitive Data Detection
     runs-on: ubuntu-latest
-    if: github.event.inputs.scan_type == 'all' || github.event.inputs.scan_type == 'secrets' || github.event.inputs.scan_type == ''
+    if: >-
+      github.event.inputs.scan_type == 'all' ||
+      github.event.inputs.scan_type == 'secrets' ||
+      github.event.inputs.scan_type == ''
     
     steps:
       - name: Checkout code
@@ -158,7 +166,8 @@ jobs:
           pip install detect-secrets truffleHog3
           
           # Install GitLeaks
-          wget -O gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.18.0/gitleaks_8.18.0_linux_x64.tar.gz
+          wget -O gitleaks.tar.gz \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.18.0/gitleaks_8.18.0_linux_x64.tar.gz
           tar -xzf gitleaks.tar.gz
           chmod +x gitleaks
           sudo mv gitleaks /usr/local/bin/
@@ -213,7 +222,9 @@ jobs:
           echo "📋 Custom credential pattern scan results:"
           while IFS= read -r pattern; do
             echo "Checking pattern: $pattern"
-            grep -r -i -n "$pattern" --include="*.c" --include="*.cpp" --include="*.h" --include="*.hpp" --include="*.py" --include="*.yml" --include="*.yaml" . | head -10 || true
+            grep -r -i -n "$pattern" \
+              --include="*.c" --include="*.cpp" --include="*.h" --include="*.hpp" \
+              --include="*.py" --include="*.yml" --include="*.yaml" . | head -10 || true
           done < credential_patterns.txt
           
       - name: Upload secrets detection results
@@ -232,7 +243,10 @@ jobs:
   esp-idf-security:
     name: ESP-IDF Component Security Analysis
     runs-on: ubuntu-latest
-    if: github.event.inputs.scan_type == 'all' || github.event.inputs.scan_type == 'esp-idf' || github.event.inputs.scan_type == ''
+    if: >-
+      github.event.inputs.scan_type == 'all' ||
+      github.event.inputs.scan_type == 'esp-idf' ||
+      github.event.inputs.scan_type == ''
     
     steps:
       - name: Checkout code
@@ -243,7 +257,20 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           
+      - name: Cache ESP-IDF installation
+        id: esp-idf-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/esp-idf
+            ~/.espressif
+          key: esp-idf-${{ env.ESP_IDF_VERSION }}-${{ runner.os }}
+          restore-keys: |
+            esp-idf-${{ env.ESP_IDF_VERSION }}-
+            esp-idf-
+
       - name: Install ESP-IDF
+        if: steps.esp-idf-cache.outputs.cache-hit != 'true'
         run: |
           echo "🔧 Installing ESP-IDF for component analysis..."
           git clone --recursive --depth 1 --branch ${{ env.ESP_IDF_VERSION }} \
@@ -251,6 +278,16 @@ jobs:
           
           cd ~/esp-idf
           ./install.sh esp32,esp32c6,esp32s3
+          
+      - name: Setup ESP-IDF environment
+        run: |
+          echo "🔧 Setting up ESP-IDF environment..."
+          if [ ! -f ~/esp-idf/export.sh ]; then
+            echo "❌ ESP-IDF installation failed - export.sh not found"
+            exit 1
+          fi
+          source ~/esp-idf/export.sh
+          echo "✅ ESP-IDF environment setup complete"
           
       - name: Analyze ESP-IDF component dependencies
         run: |
@@ -261,8 +298,10 @@ jobs:
           # Check component manifest for security issues
           if [ -f "examples/esp32/components/iid-espidf/idf_component.yml" ]; then
             echo "📋 ESP-IDF Component Manifest Analysis:"
-            echo "Component name: $(grep '^name:' examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
-            echo "Component version: $(grep '^version:' examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
+            echo "Component name: $(grep '^name:' \
+              examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
+            echo "Component version: $(grep '^version:' \
+              examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
             
             # Check for known vulnerable dependency patterns
             echo "🔍 Checking for known vulnerable dependencies..."
@@ -281,15 +320,19 @@ jobs:
           echo "📋 Security Configuration Analysis:"
           
           # Look for security-related configurations in source code
-          find . -name "*.c" -o -name "*.cpp" -o -name "*.h" | xargs grep -l -i "secure\|encrypt\|flash_encryption\|secure_boot" | head -10 || true
+          find . -name "*.c" -o -name "*.cpp" -o -name "*.h" | \
+            xargs grep -l -i "secure\|encrypt\|flash_encryption\|secure_boot" | head -10 || true
           
           # Check for proper WiFi security implementation
           echo "🔍 WiFi Security Implementation:"
-          grep -r -n "WPA\|WEP\|OPEN" --include="*.c" --include="*.cpp" --include="*.h" . | head -10 || true
+          grep -r -n "WPA\|WEP\|OPEN" \
+            --include="*.c" --include="*.cpp" --include="*.h" . | head -10 || true
           
           # Check for proper password handling
           echo "🔍 Password Handling Analysis:"
-          grep -r -n -i "password\|credential" --include="*.c" --include="*.cpp" --include="*.h" . | grep -v "test\|example" | head -10 || true
+          grep -r -n -i "password\|credential" \
+            --include="*.c" --include="*.cpp" --include="*.h" . | \
+            grep -v "test\|example" | head -10 || true
           
       - name: Generate security recommendations
         run: |
@@ -302,7 +345,8 @@ jobs:
           # Add ESP-IDF version analysis
           echo "### ESP-IDF Version Security" >> esp-security-report.md
           echo "- Using ESP-IDF version: ${{ env.ESP_IDF_VERSION }}" >> esp-security-report.md
-          echo "- Recommendation: Always use the latest stable ESP-IDF version for security patches" >> esp-security-report.md
+          echo "- Recommendation: Always use the latest stable ESP-IDF version for security patches" \
+            >> esp-security-report.md
           echo "" >> esp-security-report.md
           
           # Add WiFi security recommendations
