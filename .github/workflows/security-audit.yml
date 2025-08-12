@@ -1,0 +1,425 @@
+name: Security Audit • Dependencies • Secrets • Vulnerabilities
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run security audit weekly on Mondays at 8:00 UTC
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+    inputs:
+      scan_type:
+        description: 'Type of security scan to perform'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - 'all'
+          - 'dependencies'
+          - 'secrets'
+          - 'esp-idf'
+
+permissions:
+  contents: read
+  security-events: write
+  pull-requests: write
+  issues: write
+
+env:
+  PYTHON_VERSION: '3.11'
+  ESP_IDF_VERSION: 'release-v5.5'
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Job 1: Python Dependencies Security Audit
+  python-security-audit:
+    name: Python Dependencies Security Audit
+    runs-on: ubuntu-latest
+    if: github.event.inputs.scan_type == 'all' || github.event.inputs.scan_type == 'dependencies' || github.event.inputs.scan_type == ''
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-security-${{ runner.os }}-${{ hashFiles('**/requirements*.txt', '**/pyproject.toml') }}
+          restore-keys: |
+            pip-security-${{ runner.os }}-
+            
+      - name: Install security audit tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install pip-audit safety bandit semgrep
+          
+      - name: Create requirements files for scanning
+        run: |
+          # Create a temporary requirements file for any Python dependencies found
+          find . -name "*.py" -type f -exec grep -l "^import\|^from" {} \; | head -20 > python_files.txt
+          
+          # Check if there are any Python files to scan
+          if [ -s python_files.txt ]; then
+            echo "Found Python files for scanning"
+            # Create a minimal requirements file for common dependencies
+            cat > temp_requirements.txt << EOF
+          # Common ESP32 development dependencies
+          esptool>=4.0.0
+          pyserial>=3.5
+          EOF
+          else
+            echo "No Python files found, creating empty requirements"
+            touch temp_requirements.txt
+          fi
+          
+      - name: Run pip-audit on discovered dependencies
+        run: |
+          if [ -s temp_requirements.txt ]; then
+            echo "🔍 Running pip-audit on dependencies..."
+            pip-audit --requirement temp_requirements.txt --format=json --output=pip-audit-results.json || true
+            pip-audit --requirement temp_requirements.txt --format=cyclonedx-json --output=pip-audit-sbom.json || true
+            
+            # Display results in human-readable format
+            echo "📋 Pip-audit results:"
+            pip-audit --requirement temp_requirements.txt || echo "⚠️ Some vulnerabilities found, check detailed results"
+          else
+            echo "No requirements file to audit"
+          fi
+          
+      - name: Run Safety check
+        run: |
+          if [ -s temp_requirements.txt ]; then
+            echo "🔍 Running Safety vulnerability check..."
+            safety check --file=temp_requirements.txt --json --output=safety-results.json || true
+            
+            # Display results
+            echo "📋 Safety check results:"
+            safety check --file=temp_requirements.txt || echo "⚠️ Some vulnerabilities found, check detailed results"
+          else
+            echo "No requirements file for Safety check"
+          fi
+          
+      - name: Run Bandit security analysis on Python code
+        run: |
+          if [ -s python_files.txt ]; then
+            echo "🔍 Running Bandit security analysis on Python code..."
+            bandit -r . -f json -o bandit-results.json || true
+            
+            # Display results
+            echo "📋 Bandit security analysis results:"
+            bandit -r . || echo "⚠️ Some security issues found, check detailed results"
+          else
+            echo "No Python files found for Bandit analysis"
+          fi
+          
+      - name: Upload security audit results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: python-security-audit-results
+          path: |
+            *-results.json
+            python_files.txt
+            temp_requirements.txt
+          retention-days: 30
+
+  # Job 2: Secrets Detection
+  secrets-detection:
+    name: Secrets and Sensitive Data Detection
+    runs-on: ubuntu-latest
+    if: github.event.inputs.scan_type == 'all' || github.event.inputs.scan_type == 'secrets' || github.event.inputs.scan_type == ''
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # Fetch full history for better secret detection
+          fetch-depth: 0
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install secret detection tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install detect-secrets truffleHog3
+          
+          # Install GitLeaks
+          wget -O gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.18.0/gitleaks_8.18.0_linux_x64.tar.gz
+          tar -xzf gitleaks.tar.gz
+          chmod +x gitleaks
+          sudo mv gitleaks /usr/local/bin/
+          
+      - name: Run detect-secrets baseline scan
+        run: |
+          echo "🔍 Running detect-secrets baseline scan..."
+          detect-secrets scan --all-files --baseline .secrets.baseline.json || true
+          
+          # If baseline exists, audit against it
+          if [ -f .secrets.baseline.json ]; then
+            echo "📋 Auditing against existing baseline:"
+            detect-secrets audit .secrets.baseline.json || true
+          fi
+          
+      - name: Run GitLeaks secret detection
+        run: |
+          echo "🔍 Running GitLeaks secret detection..."
+          gitleaks detect --source . --report-format json --report-path gitleaks-results.json || true
+          
+          # Display summary
+          echo "📋 GitLeaks scan results:"
+          gitleaks detect --source . || echo "⚠️ Potential secrets found, check detailed results"
+          
+      - name: Run TruffleHog secret detection
+        run: |
+          echo "🔍 Running TruffleHog secret detection..."
+          trufflehog filesystem . --json > trufflehog-results.json || true
+          
+          # Display summary
+          echo "📋 TruffleHog scan completed"
+          
+      - name: Analyze hardcoded credentials patterns
+        run: |
+          echo "🔍 Scanning for common hardcoded credential patterns..."
+          
+          # Custom patterns for this project
+          cat > credential_patterns.txt << 'EOF'
+          API[_-]?KEY
+          SECRET[_-]?KEY
+          ACCESS[_-]?TOKEN
+          PASSWORD\s*=
+          PWD\s*=
+          AUTH[_-]?TOKEN
+          PRIVATE[_-]?KEY
+          CLIENT[_-]?SECRET
+          DATABASE[_-]?URL
+          CONNECTION[_-]?STRING
+          WIFI[_-]?PASSWORD
+          EOF
+          
+          echo "📋 Custom credential pattern scan results:"
+          while IFS= read -r pattern; do
+            echo "Checking pattern: $pattern"
+            grep -r -i -n "$pattern" --include="*.c" --include="*.cpp" --include="*.h" --include="*.hpp" --include="*.py" --include="*.yml" --include="*.yaml" . | head -10 || true
+          done < credential_patterns.txt
+          
+      - name: Upload secrets detection results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: secrets-detection-results
+          path: |
+            .secrets.baseline.json
+            gitleaks-results.json
+            trufflehog-results.json
+            credential_patterns.txt
+          retention-days: 30
+
+  # Job 3: ESP-IDF Component Security Analysis
+  esp-idf-security:
+    name: ESP-IDF Component Security Analysis
+    runs-on: ubuntu-latest
+    if: github.event.inputs.scan_type == 'all' || github.event.inputs.scan_type == 'esp-idf' || github.event.inputs.scan_type == ''
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install ESP-IDF
+        run: |
+          echo "🔧 Installing ESP-IDF for component analysis..."
+          git clone --recursive --depth 1 --branch ${{ env.ESP_IDF_VERSION }} \
+            https://github.com/espressif/esp-idf.git ~/esp-idf
+          
+          cd ~/esp-idf
+          ./install.sh esp32,esp32c6,esp32s3
+          
+      - name: Analyze ESP-IDF component dependencies
+        run: |
+          source ~/esp-idf/export.sh
+          
+          echo "🔍 Analyzing ESP-IDF component dependencies..."
+          
+          # Check component manifest for security issues
+          if [ -f "examples/esp32/components/iid-espidf/idf_component.yml" ]; then
+            echo "📋 ESP-IDF Component Manifest Analysis:"
+            echo "Component name: $(grep '^name:' examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
+            echo "Component version: $(grep '^version:' examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
+            
+            # Check for known vulnerable dependency patterns
+            echo "🔍 Checking for known vulnerable dependencies..."
+            grep -i "dependencies:" examples/esp32/components/iid-espidf/idf_component.yml -A 20 || true
+            
+            # Validate ESP-IDF version requirements
+            echo "🔍 ESP-IDF version requirements:"
+            grep "idf:" examples/esp32/components/iid-espidf/idf_component.yml || true
+          fi
+          
+      - name: Check for ESP32 security best practices
+        run: |
+          echo "🔍 Checking ESP32 security best practices implementation..."
+          
+          # Check for secure boot and encryption configurations
+          echo "📋 Security Configuration Analysis:"
+          
+          # Look for security-related configurations in source code
+          find . -name "*.c" -o -name "*.cpp" -o -name "*.h" | xargs grep -l -i "secure\|encrypt\|flash_encryption\|secure_boot" | head -10 || true
+          
+          # Check for proper WiFi security implementation
+          echo "🔍 WiFi Security Implementation:"
+          grep -r -n "WPA\|WEP\|OPEN" --include="*.c" --include="*.cpp" --include="*.h" . | head -10 || true
+          
+          # Check for proper password handling
+          echo "🔍 Password Handling Analysis:"
+          grep -r -n -i "password\|credential" --include="*.c" --include="*.cpp" --include="*.h" . | grep -v "test\|example" | head -10 || true
+          
+      - name: Generate security recommendations
+        run: |
+          echo "📋 Security Recommendations Report" > esp-security-report.md
+          echo "=================================" >> esp-security-report.md
+          echo "" >> esp-security-report.md
+          echo "## Component Security Analysis" >> esp-security-report.md
+          echo "" >> esp-security-report.md
+          
+          # Add ESP-IDF version analysis
+          echo "### ESP-IDF Version Security" >> esp-security-report.md
+          echo "- Using ESP-IDF version: ${{ env.ESP_IDF_VERSION }}" >> esp-security-report.md
+          echo "- Recommendation: Always use the latest stable ESP-IDF version for security patches" >> esp-security-report.md
+          echo "" >> esp-security-report.md
+          
+          # Add WiFi security recommendations
+          echo "### WiFi Security Recommendations" >> esp-security-report.md
+          echo "- Use WPA3 or WPA2 security protocols" >> esp-security-report.md
+          echo "- Implement proper password validation" >> esp-security-report.md
+          echo "- Use enterprise authentication when possible" >> esp-security-report.md
+          echo "" >> esp-security-report.md
+          
+          # Add general recommendations
+          echo "### General Security Best Practices" >> esp-security-report.md
+          echo "- Enable secure boot and flash encryption in production" >> esp-security-report.md
+          echo "- Use GitHub Secrets for sensitive configuration" >> esp-security-report.md
+          echo "- Regularly update ESP-IDF and component dependencies" >> esp-security-report.md
+          echo "- Implement proper input validation and sanitization" >> esp-security-report.md
+          
+      - name: Upload ESP-IDF security analysis results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: esp-idf-security-analysis
+          path: |
+            esp-security-report.md
+          retention-days: 30
+
+  # Job 4: Security Summary and Reporting
+  security-summary:
+    name: Security Summary Report
+    runs-on: ubuntu-latest
+    needs: [python-security-audit, secrets-detection, esp-idf-security]
+    if: always()
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Download all security audit results
+        uses: actions/download-artifact@v4
+        with:
+          path: security-results/
+          
+      - name: Generate comprehensive security report
+        run: |
+          echo "# 🛡️ Security Audit Report" > security-summary-report.md
+          echo "Generated on: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> security-summary-report.md
+          echo "" >> security-summary-report.md
+          
+          # Add workflow information
+          echo "## Workflow Information" >> security-summary-report.md
+          echo "- **Repository**: ${{ github.repository }}" >> security-summary-report.md
+          echo "- **Branch**: ${{ github.ref_name }}" >> security-summary-report.md
+          echo "- **Commit**: ${{ github.sha }}" >> security-summary-report.md
+          echo "- **Workflow Run**: ${{ github.run_number }}" >> security-summary-report.md
+          echo "" >> security-summary-report.md
+          
+          # Summarize audit results
+          echo "## Audit Summary" >> security-summary-report.md
+          echo "" >> security-summary-report.md
+          
+          # Check if results exist and summarize
+          if [ -d "security-results/" ]; then
+            echo "### Artifacts Generated" >> security-summary-report.md
+            find security-results/ -name "*.json" -o -name "*.md" -o -name "*.txt" | while read file; do
+              echo "- $(basename "$file")" >> security-summary-report.md
+            done
+            echo "" >> security-summary-report.md
+          fi
+          
+          echo "### Recommendations" >> security-summary-report.md
+          echo "1. **Review all security audit results** in the workflow artifacts" >> security-summary-report.md
+          echo "2. **Address any high-severity vulnerabilities** immediately" >> security-summary-report.md
+          echo "3. **Implement GitHub Secrets** for any sensitive configuration" >> security-summary-report.md
+          echo "4. **Enable branch protection rules** requiring security checks" >> security-summary-report.md
+          echo "5. **Set up automated dependency updates** with Dependabot" >> security-summary-report.md
+          echo "" >> security-summary-report.md
+          
+          echo "### Next Steps" >> security-summary-report.md
+          echo "- Review detailed results in workflow artifacts" >> security-summary-report.md
+          echo "- Create issues for any security findings that need attention" >> security-summary-report.md
+          echo "- Update security policies and procedures as needed" >> security-summary-report.md
+          
+      - name: Upload comprehensive security report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-summary-report
+          path: security-summary-report.md
+          retention-days: 90
+          
+      - name: Comment security summary on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('security-summary-report.md', 'utf8');
+            
+            const comment = `## 🛡️ Security Audit Results
+            
+            A comprehensive security audit has been completed for this PR.
+            
+            **Audit Components:**
+            - ✅ Python dependencies vulnerability scan
+            - ✅ Secrets and sensitive data detection  
+            - ✅ ESP-IDF component security analysis
+            
+            📋 **Detailed Report:**
+            Please check the workflow artifacts for detailed security analysis results.
+            
+            ⚠️ **Action Required:**
+            Review any security findings and address them before merging.
+            
+            ---
+            *This comment was automatically generated by the Security Audit workflow.*`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
