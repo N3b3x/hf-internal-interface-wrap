@@ -322,7 +322,7 @@ jobs:
           echo "📋 Security Configuration Analysis:"
           
           # Look for security-related configurations in source code
-          find . -name "*.c" -o -name "*.cpp" -o -name "*.h" -print0 | \
+          find . \( -name "*.c" -o -name "*.cpp" -o -name "*.h" \) -print0 | \
             xargs -0 grep -l -i "secure\|encrypt\|flash_encryption\|secure_boot" | head -10 || true
           
           # Check for proper WiFi security implementation
@@ -410,29 +410,33 @@ jobs:
           } > security-summary-report.md
           
           # Summarize audit results
-          echo "## Audit Summary" >> security-summary-report.md
-          echo "" >> security-summary-report.md
+          {
+            echo "## Audit Summary"
+            echo ""
+          } >> security-summary-report.md
           
           # Check if results exist and summarize
           if [ -d "security-results/" ]; then
             echo "### Artifacts Generated" >> security-summary-report.md
-            find security-results/ -name "*.json" -o -name "*.md" -o -name "*.txt" | while read -r file; do
+            find security-results/ \( -name "*.json" -o -name "*.md" -o -name "*.txt" \) | while read -r file; do
               echo "- $(basename "$file")" >> security-summary-report.md
             done
             echo "" >> security-summary-report.md
           fi
           
-          echo "### Recommendations" >> security-summary-report.md
-          echo "1. **Review all security audit results** in the workflow artifacts" >> security-summary-report.md
-          echo "2. **Address any high-severity vulnerabilities** immediately" >> security-summary-report.md
-          echo "3. **Implement GitHub Secrets** for any sensitive configuration" >> security-summary-report.md
-          echo "4. **Enable branch protection rules** requiring security checks" >> security-summary-report.md
-          echo "5. **Set up automated dependency updates** with Dependabot" >> security-summary-report.md
-          echo "" >> security-summary-report.md
-          
-          echo "### Next Steps" >> security-summary-report.md
-          echo "- Review detailed results in workflow artifacts" >> security-summary-report.md
-          echo "- Create issues for any security findings that need attention" >> security-summary-report.md
+          {
+            echo "### Recommendations"
+            echo "1. **Review all security audit results** in the workflow artifacts"
+            echo "2. **Address any high-severity vulnerabilities** immediately"
+            echo "3. **Implement GitHub Secrets** for any sensitive configuration"
+            echo "4. **Enable branch protection rules** requiring security checks"
+            echo "5. **Set up automated dependency updates** with Dependabot"
+            echo ""
+            
+            echo "### Next Steps"
+            echo "- Review detailed results in workflow artifacts"
+            echo "- Create issues for any security findings that need attention"
+          } >> security-summary-report.md
           echo "- Update security policies and procedures as needed" >> security-summary-report.md
           
       - name: Upload comprehensive security report
