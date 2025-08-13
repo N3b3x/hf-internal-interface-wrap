@@ -131,14 +131,14 @@ enum class hf_pio_idle_state_t : hf_u8_t {
 struct hf_pio_channel_config_t {
   hf_pin_num_t gpio_pin;          ///< GPIO pin for PIO signal
   hf_pio_direction_t direction;   ///< Channel direction
-  hf_u32_t resolution_hz;         ///< Time resolution in Hz (replaces resolution_ns for RMT compatibility)
+  hf_u32_t resolution_ns;         ///< Time resolution in nanoseconds (user-friendly interface)
   hf_pio_polarity_t polarity;     ///< Signal polarity
   hf_pio_idle_state_t idle_state; ///< Idle state
   hf_u32_t timeout_us;            ///< Operation timeout in microseconds
   size_t buffer_size;             ///< Buffer size for symbols/durations
 
   hf_pio_channel_config_t() noexcept
-      : gpio_pin(-1), direction(hf_pio_direction_t::Transmit), resolution_hz(1000000), // 1MHz default
+      : gpio_pin(-1), direction(hf_pio_direction_t::Transmit), resolution_ns(1000), // 1µs default
         polarity(hf_pio_polarity_t::Normal), idle_state(hf_pio_idle_state_t::Low),
         timeout_us(10000), buffer_size(64) {}
 };

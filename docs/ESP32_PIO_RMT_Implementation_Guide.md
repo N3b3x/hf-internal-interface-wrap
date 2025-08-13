@@ -142,7 +142,7 @@ uint8_t tx_channel = HfRmtGetTxChannel(0);  // First available TX channel
 hf_pio_channel_config_t config;
 config.gpio_pin = 8;                               // GPIO pin
 config.direction = hf_pio_direction_t::Transmit;   // TX direction
-config.resolution_hz = 8000000;                    // 8MHz for precise timing
+config.resolution_ns = 1000;  // 1µs in nanoseconds (automatically converted to optimal Hz)
 config.polarity = hf_pio_polarity_t::Normal;
 config.idle_state = hf_pio_idle_state_t::Low;
 

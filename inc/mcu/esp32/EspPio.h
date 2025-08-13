@@ -282,6 +282,35 @@ public:
    */
   hf_pio_err_t ResetChannelStatistics(hf_u8_t channel_id) noexcept;
 
+  /**
+   * @brief Get the actual achieved resolution for a channel in nanoseconds
+   * @param channel_id Channel identifier
+   * @param achieved_resolution_ns [out] Actual resolution achieved by hardware
+   * @return Error code indicating success or failure
+   * @note Due to 8-bit clock divider limitations (1-255), the actual resolution
+   *       may differ from the requested resolution_ns in the configuration
+   */
+  hf_pio_err_t GetActualResolution(hf_u8_t channel_id, hf_u32_t& achieved_resolution_ns) const noexcept;
+
+  /**
+   * @brief Calculate the best possible resolution_hz from requested resolution_ns
+   * @param resolution_ns Requested resolution in nanoseconds
+   * @param actual_resolution_ns [out] Actual resolution that will be achieved
+   * @return Calculated resolution_hz for RMT peripheral
+   * @note This handles the 8-bit divider constraint (1-255) and returns the closest achievable resolution
+   */
+  hf_u32_t CalculateResolutionHz(hf_u32_t resolution_ns, hf_u32_t& actual_resolution_ns) const noexcept;
+
+  /**
+   * @brief Get information about resolution constraints for current ESP32 variant
+   * @param min_resolution_ns [out] Minimum achievable resolution in nanoseconds
+   * @param max_resolution_ns [out] Maximum achievable resolution in nanoseconds
+   * @param clock_freq_hz [out] Source clock frequency in Hz
+   * @return Error code indicating success or failure
+   */
+  hf_pio_err_t GetResolutionConstraints(hf_u32_t& min_resolution_ns, hf_u32_t& max_resolution_ns, 
+                                       hf_u32_t& clock_freq_hz) const noexcept;
+
 private:
   //==============================================//
   // Internal Structures
@@ -306,6 +335,7 @@ private:
 
     // Timing
     uint64_t last_operation_time;
+    hf_u32_t actual_resolution_ns;  // Actual achieved resolution due to divider constraints
 
     // Idle level configuration
     bool idle_level;
@@ -321,7 +351,7 @@ private:
     ChannelState() noexcept
         : configured(false), busy(false), config(), status(), tx_channel(nullptr),
           rx_channel(nullptr), encoder(nullptr), bytes_encoder(nullptr), rx_buffer(nullptr),
-          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0), idle_level(false),
+          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0), actual_resolution_ns(0), idle_level(false),
           transmit_callback(nullptr), transmit_user_data(nullptr), receive_callback(nullptr),
           receive_user_data(nullptr), error_callback(nullptr), error_user_data(nullptr) {}
   };
@@ -404,10 +434,12 @@ private:
 
   /**
    * @brief Calculate RMT clock divider for desired resolution
-   * @param resolution_hz Desired resolution in Hz
+   * @param resolution_ns Desired resolution in nanoseconds 
+   * @param actual_resolution_ns [out] Actual resolution that will be achieved
    * @return Clock divider value (1-255)
+   * @note This method handles the 8-bit divider constraint and calculates the closest achievable resolution
    */
-  uint32_t CalculateClockDivider(uint32_t resolution_hz) const noexcept;
+  uint32_t CalculateClockDivider(uint32_t resolution_ns, uint32_t& actual_resolution_ns) const noexcept;
 
   /**
    * @brief Get effective RMT clock frequency for a given divider

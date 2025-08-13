@@ -138,10 +138,10 @@ hf_pio_err_t EspPio::ConfigureChannel(hf_u8_t channel_id,
   }
 
   channels_[channel_id].configured = true;
-  ESP_LOGI(TAG, "Channel %d configured on GPIO %d for %s with %u Hz resolution", 
+  ESP_LOGI(TAG, "Channel %d configured on GPIO %d for %s: requested %uns, achieved %uns", 
            channel_id, config.gpio_pin, 
            HfRmtGetVariantName(),
-           config.resolution_hz);
+           config.resolution_ns, channels_[channel_id].actual_resolution_ns);
 
   return hf_pio_err_t::PIO_SUCCESS;
 }
@@ -302,8 +302,8 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
 
   // Create receive configuration
   rmt_receive_config_t rx_config = {};
-  rx_config.signal_range_min_ns = 1000000000UL / channel.config.resolution_hz;  // Convert Hz to ns
-  rx_config.signal_range_max_ns = (1000000000UL / channel.config.resolution_hz) * 32767; // Max duration    // Allocate RMT symbol buffer for reception
+  rx_config.signal_range_min_ns = channel.actual_resolution_ns;  // Use actual resolution
+  rx_config.signal_range_max_ns = channel.actual_resolution_ns * 32767; // Max duration based on actual resolution
   size_t rmt_buffer_size = std::min(buffer_size, static_cast<size_t>(64)); // RMT buffer limit
 
   // Start reception
@@ -585,7 +585,11 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
 
     // Reconfigure with advanced settings
     const auto& config = stored_config;
-    hf_u32_t clock_divider = CalculateClockDivider(config.resolution_hz);
+    hf_u32_t actual_resolution_ns;
+    hf_u32_t resolution_hz = CalculateResolutionHz(config.resolution_ns, actual_resolution_ns);
+    
+    // Store the actual resolution achieved
+    channel.actual_resolution_ns = actual_resolution_ns;
 
     if (config.direction == hf_pio_direction_t::Transmit ||
         config.direction == hf_pio_direction_t::Bidirectional) {
@@ -599,7 +603,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       tx_config.clk_src = RMT_CLK_SRC_APB; // Use APB clock as default
 #endif
 
-      tx_config.resolution_hz = config.resolution_hz;
+      tx_config.resolution_hz = resolution_hz;
       tx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
       tx_config.trans_queue_depth = queue_depth;
 
@@ -669,7 +673,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
 #else
       rx_config.clk_src = RMT_CLK_SRC_APB; // Use APB clock as default
 #endif
-      rx_config.resolution_hz = config.resolution_hz;
+      rx_config.resolution_hz = resolution_hz;
       rx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
 
       esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
@@ -795,7 +799,7 @@ hf_pio_err_t EspPio::GetChannelStatistics(hf_u8_t channel_id,
   stats.last_operation_time = channel.last_operation_time;
   stats.is_configured = channel.configured;
   stats.is_busy = channel.busy;
-  stats.current_resolution_ns = 1000000000UL / channel.config.resolution_hz;  // Convert Hz to ns
+  stats.current_resolution_ns = channel.actual_resolution_ns;  // Use actual achieved resolution
   stats.memory_blocks_allocated = 64; // Default or actual allocation
   stats.dma_enabled = false;          // Would be tracked based on channel configuration
 
@@ -809,6 +813,50 @@ hf_pio_err_t EspPio::ResetChannelStatistics(hf_u8_t channel_id) noexcept {
 
   // Reset statistics counters (would be implemented with actual counters)
   ESP_LOGD(TAG, "Reset statistics for channel %d", channel_id);
+  return hf_pio_err_t::PIO_SUCCESS;
+}
+
+hf_pio_err_t EspPio::GetActualResolution(hf_u8_t channel_id, hf_u32_t& achieved_resolution_ns) const noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+
+  const auto& channel = channels_[channel_id];
+  if (!channel.configured) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  achieved_resolution_ns = channel.actual_resolution_ns;
+  return hf_pio_err_t::PIO_SUCCESS;
+}
+
+hf_u32_t EspPio::CalculateResolutionHz(hf_u32_t resolution_ns, hf_u32_t& actual_resolution_ns) const noexcept {
+  // Use the internal clock divider calculation to get the actual achievable resolution
+  hf_u32_t divider = CalculateClockDivider(resolution_ns, actual_resolution_ns);
+  
+  // Convert the actual resolution back to Hz for the RMT peripheral
+  // resolution_hz = 1e9 / actual_resolution_ns
+  hf_u32_t resolution_hz = 1000000000UL / actual_resolution_ns;
+  
+  ESP_LOGD(TAG, "Resolution conversion: %uns -> %u Hz (actual: %uns)", 
+           resolution_ns, resolution_hz, actual_resolution_ns);
+  
+  return resolution_hz;
+}
+
+hf_pio_err_t EspPio::GetResolutionConstraints(hf_u32_t& min_resolution_ns, hf_u32_t& max_resolution_ns, 
+                                             hf_u32_t& clock_freq_hz) const noexcept {
+  clock_freq_hz = RMT_CLK_SRC_FREQ;
+  
+  // Calculate minimum resolution (divider = 1)
+  min_resolution_ns = 1000000000UL / RMT_CLK_SRC_FREQ;
+  
+  // Calculate maximum resolution (divider = 255)
+  max_resolution_ns = (1000000000ULL * 255) / RMT_CLK_SRC_FREQ;
+  
+  ESP_LOGD(TAG, "Resolution constraints: min=%uns, max=%uns, clock=%u Hz", 
+           min_resolution_ns, max_resolution_ns, clock_freq_hz);
+  
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -932,8 +980,8 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
 
   // Configure reception parameters
   rmt_receive_config_t rx_config = {};
-  rx_config.signal_range_min_ns = 1000000000UL / channel.config.resolution_hz;  // Convert Hz to ns
-  rx_config.signal_range_max_ns = (1000000000UL / channel.config.resolution_hz) * 32767; // Max duration
+  rx_config.signal_range_min_ns = channel.actual_resolution_ns;  // Use actual resolution
+  rx_config.signal_range_max_ns = channel.actual_resolution_ns * 32767; // Max duration based on actual resolution
 
   // Mark channel as busy
   channels_[channel_id].busy = true;
@@ -1034,39 +1082,51 @@ hf_pio_err_t EspPio::ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_u32_t EspPio::CalculateClockDivider(hf_u32_t resolution_hz) const noexcept {
-  // Calculate clock divider to achieve desired resolution
-  // For ESP32-C6: RMT source clock is typically 80 MHz
-  // Formula: divider = source_freq_hz / resolution_hz
+hf_u32_t EspPio::CalculateClockDivider(hf_u32_t resolution_ns, hf_u32_t& actual_resolution_ns) const noexcept {
+  // Calculate clock divider to achieve desired resolution in nanoseconds
+  // For ESP32-C6: RMT source clock is typically 80 MHz (12.5ns period)
+  // Formula: resolution_ns = (1e9 / clock_freq_hz) * divider
+  //          divider = (resolution_ns * clock_freq_hz) / 1e9
   
-  // Ensure we don't have division by zero
-  if (resolution_hz == 0) {
-    ESP_LOGW(TAG, "Invalid resolution_hz=0, using minimum divider");
+  // Ensure we don't have invalid input
+  if (resolution_ns == 0) {
+    ESP_LOGW(TAG, "Invalid resolution_ns=0, using minimum resolution");
+    actual_resolution_ns = 1000000000UL / RMT_CLK_SRC_FREQ; // Clock period in ns
     return 1;
   }
   
-  // Validate resolution is within supported range
-  if (resolution_hz > RMT_CLK_SRC_FREQ) {
-    ESP_LOGW(TAG, "Resolution %u Hz exceeds source clock %u Hz, using minimum divider", 
-             resolution_hz, RMT_CLK_SRC_FREQ);
-    return 1;
-  }
+  // Calculate the required divider for the requested resolution
+  // resolution_ns = (1e9 / RMT_CLK_SRC_FREQ) * divider
+  // divider = (resolution_ns * RMT_CLK_SRC_FREQ) / 1e9
+  uint64_t divider_calc = ((uint64_t)resolution_ns * RMT_CLK_SRC_FREQ) / 1000000000ULL;
   
-  // Calculate divider: divider = source_freq / target_freq
-  hf_u32_t divider = RMT_CLK_SRC_FREQ / resolution_hz;
-  
-  // RMT hardware supports clock dividers from 1 to 255
-  if (divider < 1) {
-    ESP_LOGW(TAG, "Calculated divider %d too small, clamping to 1", divider);
+  // RMT hardware supports clock dividers from 1 to 255 (8-bit)
+  hf_u32_t divider;
+  if (divider_calc < 1) {
+    ESP_LOGW(TAG, "Requested resolution %uns too fast, clamping to minimum (divider=1)", resolution_ns);
     divider = 1;
-  } else if (divider > 255) {
-    ESP_LOGW(TAG, "Calculated divider %d too large, clamping to 255", divider);
+  } else if (divider_calc > 255) {
+    ESP_LOGW(TAG, "Requested resolution %uns too slow, clamping to maximum (divider=255)", resolution_ns);
     divider = 255;
+  } else {
+    divider = static_cast<hf_u32_t>(divider_calc);
   }
+  
+  // Calculate the actual resolution that will be achieved with this divider
+  actual_resolution_ns = (1000000000ULL * divider) / RMT_CLK_SRC_FREQ;
   
   hf_u32_t effective_freq = GetEffectiveClockFrequency(divider);
-  ESP_LOGD(TAG, "Target resolution %u Hz -> Clock divider %d (effective freq: %u Hz)", 
-           resolution_hz, divider, effective_freq);
+  ESP_LOGD(TAG, "Requested: %uns -> Divider: %u -> Actual: %uns (effective freq: %u Hz)", 
+           resolution_ns, divider, actual_resolution_ns, effective_freq);
+  
+  // Warn if there's a significant difference between requested and actual
+  if (actual_resolution_ns != resolution_ns) {
+    float error_percent = (float)abs((int)actual_resolution_ns - (int)resolution_ns) / resolution_ns * 100.0f;
+    if (error_percent > 5.0f) { // More than 5% error
+      ESP_LOGW(TAG, "Resolution error: requested %uns, achieved %uns (%.1f%% difference)", 
+               resolution_ns, actual_resolution_ns, error_percent);
+    }
+  }
   
   return divider;
 }
@@ -1089,9 +1149,14 @@ hf_pio_err_t EspPio::ValidateChannelConfiguration(hf_u8_t channel_id,
   }
   
   // Validate resolution is within supported range
-  if (!HF_RMT_IS_VALID_RESOLUTION(config.resolution_hz)) {
-    ESP_LOGE(TAG, "Invalid resolution %u Hz for channel %d (range: %u-%u Hz)", 
-             config.resolution_hz, channel_id, HF_RMT_MIN_RESOLUTION_HZ, HF_RMT_MAX_RESOLUTION_HZ);
+  // Get the constraints for the current hardware
+  hf_u32_t min_resolution_ns, max_resolution_ns, clock_freq_hz;
+  GetResolutionConstraints(min_resolution_ns, max_resolution_ns, clock_freq_hz);
+  
+  if (config.resolution_ns < min_resolution_ns || config.resolution_ns > max_resolution_ns) {
+    ESP_LOGE(TAG, "Invalid resolution %uns for channel %d (range: %u-%uns)", 
+             config.resolution_ns, channel_id, min_resolution_ns, max_resolution_ns);
+    ESP_LOGE(TAG, "Hardware constraint: 8-bit divider (1-255) with %u Hz clock", clock_freq_hz);
     return hf_pio_err_t::PIO_ERR_INVALID_RESOLUTION;
   }
   
@@ -1227,8 +1292,12 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
   auto& channel = channels_[channel_id];
   const auto& config = channel.config;
 
-  // Calculate clock settings
-  hf_u32_t clock_divider = CalculateClockDivider(config.resolution_hz);
+  // Calculate clock settings and store actual resolution
+  hf_u32_t actual_resolution_ns;
+  hf_u32_t resolution_hz = CalculateResolutionHz(config.resolution_ns, actual_resolution_ns);
+  
+  // Store the actual resolution achieved
+  channel.actual_resolution_ns = actual_resolution_ns;
 
   if (config.direction == hf_pio_direction_t::Transmit ||
       config.direction == hf_pio_direction_t::Bidirectional) {
@@ -1241,7 +1310,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
 #else
     tx_config.clk_src = RMT_CLK_SRC_APB; // Use APB clock as default
 #endif
-    tx_config.resolution_hz = config.resolution_hz;
+    tx_config.resolution_hz = resolution_hz;
     tx_config.mem_block_symbols = 64;
     tx_config.trans_queue_depth = 4;
 
@@ -1281,7 +1350,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
 #else
     rx_config.clk_src = RMT_CLK_SRC_APB; // Use APB clock as default
 #endif
-    rx_config.resolution_hz = config.resolution_hz;
+    rx_config.resolution_hz = resolution_hz;
     rx_config.mem_block_symbols = 64;
 
     esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
@@ -1298,7 +1367,8 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     }
   }
 
-  ESP_LOGI(TAG, "Initialized channel %d with %u Hz resolution", channel_id, config.resolution_hz);
+  ESP_LOGI(TAG, "Initialized channel %d: requested %uns, achieved %uns (%u Hz)", 
+           channel_id, config.resolution_ns, actual_resolution_ns, resolution_hz);
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -1474,7 +1544,7 @@ hf_pio_err_t EspPio::GetDiagnostics(hf_u8_t channel_id, hf_pio_diagnostics_t& di
   }
   
   diagnostics.lastErrorCode = channel.status.last_error;
-  diagnostics.currentResolutionNs = 1000000000UL / channel.config.resolution_hz;  // Convert Hz to ns
+  diagnostics.currentResolutionNs = channel.actual_resolution_ns;  // Use actual achieved resolution
   
   return hf_pio_err_t::PIO_SUCCESS;
 }
