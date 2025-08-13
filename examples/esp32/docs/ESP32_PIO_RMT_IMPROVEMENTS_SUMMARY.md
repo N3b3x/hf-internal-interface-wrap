@@ -205,11 +205,11 @@ static bool OnTransmitComplete(rmt_channel_handle_t channel,
 ### Migration Required
 ```cpp
 // Old API:
-config.resolution_ns = 1000;  // 1µs
+config.resolution_ns = 1000;  // 1µs (internal conversion to Hz with optimal divider)
 pio.SetTransmitCallback(callback, user_data);
 
 // New API:
-config.resolution_hz = 1000000;  // 1MHz (1µs period)
+config.resolution_hz = 1000000;  // 1MHz (1µs equivalent)
 pio.SetTransmitCallback(channel_id, callback, user_data);
 ```
 

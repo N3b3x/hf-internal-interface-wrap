@@ -324,6 +324,30 @@ install_yq() {
 install_esp_idf() {
     print_status "Installing ESP-IDF..."
     
+    # Load configuration to get IDF version
+    local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    local project_dir="$(cd "$script_dir/.." && pwd)"
+    local config_file="$project_dir/examples_config.yml"
+    
+    if [[ -f "$config_file" ]]; then
+        source "$script_dir/config_loader.sh"
+        if load_config; then
+            local idf_version=$(get_idf_version)
+            if [[ -n "$idf_version" ]]; then
+                print_status "Using IDF version from config: $idf_version"
+            else
+                print_warning "Could not read IDF version from config, using default: release/v5.5"
+                local idf_version="release/v5.5"
+            fi
+        else
+            print_warning "Could not load config, using default IDF version: release/v5.5"
+            local idf_version="release/v5.5"
+        fi
+    else
+        print_warning "Config file not found, using default IDF version: release/v5.5"
+        local idf_version="release/v5.5"
+    fi
+    
     local esp_dir="$HOME/esp"
     local idf_dir="$esp_dir/esp-idf"
     
@@ -334,14 +358,14 @@ install_esp_idf() {
         print_status "ESP-IDF already exists, updating..."
         cd "$idf_dir"
         git fetch origin
-        git checkout release/v5.5
-        git pull origin release/v5.5
+        git checkout "$idf_version"
+        git pull origin "$idf_version"
         ./install.sh esp32c6
         cd - > /dev/null
     else
         print_status "Cloning ESP-IDF..."
         cd "$esp_dir"
-        git clone --recursive --branch release/v5.5 https://github.com/espressif/esp-idf.git
+        git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git
         cd esp-idf
         ./install.sh esp32c6
         cd - > /dev/null

@@ -29,7 +29,6 @@ permissions:
 
 env:
   PYTHON_VERSION: '3.11'
-  ESP_IDF_VERSION: 'release/v5.5'
 
 defaults:
   run:
@@ -53,6 +52,31 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Get ESP-IDF version from config
+        id: get-idf-version
+        run: |
+          echo "Reading ESP-IDF version from examples_config.yml..."
+          if [ -f "examples/esp32/examples_config.yml" ]; then
+            # Try to use yq if available
+            if command -v yq &> /dev/null; then
+              IDF_VERSION=$(yq '.metadata.idf_versions[0]' examples/esp32/examples_config.yml)
+            else
+              # Fallback to grep/sed
+              IDF_VERSION=$(grep -A 5 "metadata:" examples/esp32/examples_config.yml | grep "idf_versions:" | sed 's/.*idf_versions: *\["*\([^"]*\)"*\].*/\1/' | head -1)
+            fi
+            
+            if [ -n "$IDF_VERSION" ]; then
+              echo "idf_version=${IDF_VERSION}" >> "$GITHUB_OUTPUT"
+              echo "Using ESP-IDF version from config: ${IDF_VERSION}"
+            else
+              echo "idf_version=release/v5.5" >> "$GITHUB_OUTPUT"
+              echo "Could not read from config, using default: release/v5.5"
+            fi
+          else
+            echo "idf_version=release/v5.5" >> "$GITHUB_OUTPUT"
+            echo "Config file not found, using default: release/v5.5"
+          fi
           
       - name: Cache pip dependencies
         uses: actions/cache@v4
@@ -89,13 +113,13 @@ jobs:
       - name: Run pip-audit on discovered dependencies
         run: |
           if [ -s temp_requirements.txt ]; then
-            echo "🔍 Running pip-audit on dependencies..."
+            echo "Running pip-audit on dependencies..."
             pip-audit --requirement temp_requirements.txt --format=json --output=pip-audit-results.json || true
             pip-audit --requirement temp_requirements.txt \
               --format=cyclonedx-json --output=pip-audit-sbom.json || true
             
             # Display results in human-readable format
-            echo "📋 Pip-audit results:"
+            echo "Pip-audit results:"
             pip-audit --requirement temp_requirements.txt || \
               echo "⚠️ Some vulnerabilities found, check detailed results"
           else
@@ -105,11 +129,11 @@ jobs:
       - name: Run Safety check
         run: |
           if [ -s temp_requirements.txt ]; then
-            echo "🔍 Running Safety vulnerability check..."
+            echo "Running Safety vulnerability check..."
             safety check --file=temp_requirements.txt --json --output=safety-results.json || true
             
             # Display results
-            echo "📋 Safety check results:"
+            echo "Safety check results:"
             safety check --file=temp_requirements.txt || echo "⚠️ Some vulnerabilities found, check detailed results"
           else
             echo "No requirements file for Safety check"
@@ -118,11 +142,11 @@ jobs:
       - name: Run Bandit security analysis on Python code
         run: |
           if [ -s python_files.txt ]; then
-            echo "🔍 Running Bandit security analysis on Python code..."
+            echo "Running Bandit security analysis on Python code..."
             bandit -r . -f json -o bandit-results.json || true
             
             # Display results
-            echo "📋 Bandit security analysis results:"
+            echo "Bandit security analysis results:"
             bandit -r . || echo "⚠️ Some security issues found, check detailed results"
           else
             echo "No Python files found for Bandit analysis"
@@ -174,35 +198,35 @@ jobs:
           
       - name: Run detect-secrets baseline scan
         run: |
-          echo "🔍 Running detect-secrets baseline scan..."
+          echo "Running detect-secrets baseline scan..."
           detect-secrets scan --all-files --baseline .secrets.baseline.json || true
           
           # If baseline exists, audit against it
           if [ -f .secrets.baseline.json ]; then
-            echo "📋 Auditing against existing baseline:"
+            echo "Auditing against existing baseline:"
             detect-secrets audit .secrets.baseline.json || true
           fi
           
       - name: Run GitLeaks secret detection
         run: |
-          echo "🔍 Running GitLeaks secret detection..."
+          echo "Running GitLeaks secret detection..."
           gitleaks detect --source . --report-format json --report-path gitleaks-results.json || true
           
           # Display summary
-          echo "📋 GitLeaks scan results:"
+          echo "GitLeaks scan results:"
           gitleaks detect --source . || echo "⚠️ Potential secrets found, check detailed results"
           
       - name: Run TruffleHog secret detection
         run: |
-          echo "🔍 Running TruffleHog secret detection..."
+          echo "Running TruffleHog secret detection..."
           trufflehog filesystem . --json > trufflehog-results.json || true
           
           # Display summary
-          echo "📋 TruffleHog scan completed"
+          echo "TruffleHog scan completed"
           
       - name: Analyze hardcoded credentials patterns
         run: |
-          echo "🔍 Scanning for common hardcoded credential patterns..."
+          echo "Scanning for common hardcoded credential patterns..."
           
           # Custom patterns for this project
           cat > credential_patterns.txt << 'EOF'
@@ -219,7 +243,7 @@ jobs:
           WIFI[_-]?PASSWORD
           EOF
           
-          echo "📋 Custom credential pattern scan results:"
+          echo "Custom credential pattern scan results:"
           while IFS= read -r pattern; do
             echo "Checking pattern: $pattern"
             grep -r -i -n "$pattern" \
@@ -264,16 +288,16 @@ jobs:
           path: |
             ~/esp-idf
             ~/.espressif
-          key: esp-idf-${{ env.ESP_IDF_VERSION }}-${{ runner.os }}
+          key: esp-idf-${{ steps.get-idf-version.outputs.idf_version }}-${{ runner.os }}
           restore-keys: |
-            esp-idf-${{ env.ESP_IDF_VERSION }}-
+            esp-idf-${{ steps.get-idf-version.outputs.idf_version }}-
             esp-idf-
 
       - name: Install ESP-IDF
         if: steps.esp-idf-cache.outputs.cache-hit != 'true'
         run: |
           echo "🔧 Installing ESP-IDF for component analysis..."
-          git clone --recursive --depth 1 --branch ${{ env.ESP_IDF_VERSION }} \
+          git clone --recursive --depth 1 --branch ${{ steps.get-idf-version.outputs.idf_version }} \
             https://github.com/espressif/esp-idf.git ~/esp-idf
           
           cd ~/esp-idf
@@ -283,55 +307,55 @@ jobs:
         run: |
           echo "🔧 Setting up ESP-IDF environment..."
           if [ ! -f ~/esp-idf/export.sh ]; then
-            echo "❌ ESP-IDF installation failed - export.sh not found"
+            echo "ESP-IDF installation failed - export.sh not found"
             exit 1
           fi
           # shellcheck source=/dev/null
           source ~/esp-idf/export.sh
-          echo "✅ ESP-IDF environment setup complete"
+          echo "ESP-IDF environment setup complete"
           
       - name: Analyze ESP-IDF component dependencies
         run: |
           # shellcheck source=/dev/null
           source ~/esp-idf/export.sh
           
-          echo "🔍 Analyzing ESP-IDF component dependencies..."
+          echo "Analyzing ESP-IDF component dependencies..."
           
           # Check component manifest for security issues
           if [ -f "examples/esp32/components/iid-espidf/idf_component.yml" ]; then
-            echo "📋 ESP-IDF Component Manifest Analysis:"
+            echo "ESP-IDF Component Manifest Analysis:"
             echo "Component name: $(grep '^name:' \
               examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
             echo "Component version: $(grep '^version:' \
               examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
             
             # Check for known vulnerable dependency patterns
-            echo "🔍 Checking for known vulnerable dependencies..."
+            echo "Checking for known vulnerable dependencies..."
             grep -i "dependencies:" examples/esp32/components/iid-espidf/idf_component.yml -A 20 || true
             
             # Validate ESP-IDF version requirements
-            echo "🔍 ESP-IDF version requirements:"
+            echo "ESP-IDF version requirements:"
             grep "idf:" examples/esp32/components/iid-espidf/idf_component.yml || true
           fi
           
       - name: Check for ESP32 security best practices
         run: |
-          echo "🔍 Checking ESP32 security best practices implementation..."
+          echo "Checking ESP32 security best practices implementation..."
           
           # Check for secure boot and encryption configurations
-          echo "📋 Security Configuration Analysis:"
+          echo "Security Configuration Analysis:"
           
           # Look for security-related configurations in source code
           find . \( -name "*.c" -o -name "*.cpp" -o -name "*.h" \) -print0 | \
             xargs -0 grep -l -i "secure\|encrypt\|flash_encryption\|secure_boot" | head -10 || true
           
           # Check for proper WiFi security implementation
-          echo "🔍 WiFi Security Implementation:"
+          echo "WiFi Security Implementation:"
           grep -r -n "WPA\|WEP\|OPEN" \
             --include="*.c" --include="*.cpp" --include="*.h" . | head -10 || true
           
           # Check for proper password handling
-          echo "🔍 Password Handling Analysis:"
+          echo "Password Handling Analysis:"
           grep -r -n -i "password\|credential" \
             --include="*.c" --include="*.cpp" --include="*.h" . | \
             grep -v "test\|example" | head -10 || true
@@ -347,7 +371,7 @@ jobs:
             
             # Add ESP-IDF version analysis
             echo "### ESP-IDF Version Security"
-            echo "- Using ESP-IDF version: ${{ env.ESP_IDF_VERSION }}"
+            echo "- Using ESP-IDF version: ${{ steps.get-idf-version.outputs.idf_version }}"
             echo "- Recommendation: Always use the latest stable ESP-IDF version for security patches"
             echo ""
           } > esp-security-report.md

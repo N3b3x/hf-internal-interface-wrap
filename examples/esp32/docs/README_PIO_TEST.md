@@ -258,7 +258,7 @@ Capture signals on GPIO8 and verify:
 ### Common Issues
 
 #### Test Failures
-- **Timing Issues**: Verify TEST_RESOLUTION_NS matches RMT capabilities
+- **Timing Issues**: Verify resolution_ns values are within hardware constraints (use GetResolutionConstraints())
 - **GPIO Conflicts**: Check pin availability and configuration
 - **Initialization Failures**: Ensure ESP-IDF v5.5+ and proper hardware
 
@@ -344,9 +344,9 @@ Adjust for different requirements:
 ```cpp
 // ESP32-C6 specific resolution configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-config.resolution_ns = 1000; // 1µs resolution for ESP32-C6 RMT stability
+config.resolution_ns = 1000; // 1µs resolution - automatically optimized for ESP32-C6 RMT
 #else
-config.resolution_ns = TEST_RESOLUTION_NS;
+config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // Use nanosecond equivalent of standard resolution
 #endif
 ```
 
