@@ -77,13 +77,21 @@ examples:
     featured: false
 
   pio_test:
-    description: "Comprehensive PIO/RMT testing suite with WS2812 and logic analyzer"
+    description: "Enhanced PIO/RMT testing suite with channel-specific callbacks, ESP32 variant validation, WS2812, and ASCII art decoration"
     source_file: "PioComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
     ci_enabled: true
     featured: true
     documentation: "docs/README_PIO_TEST.md"
+    enhanced_features:
+      - "Channel-specific callbacks with user data"
+      - "Resolution_hz usage for direct ESP-IDF compatibility"
+      - "ESP32 variant-specific channel validation (all variants supported)"
+      - "Enhanced clock divider calculation with overflow protection"
+      - "ASCII Art test result decoration"
+      - "Comprehensive WS2812 timing validation"
+      - "Automated loopback testing capabilities"
 
   temperature_test:
     description: "Temperature sensor comprehensive testing"
