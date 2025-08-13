@@ -13,6 +13,7 @@
  * @copyright HardFOC
  */
 #include "EspPio.h"
+#include "EspTypes_PIO.h"  // Include ESP32 PIO/RMT type definitions
 
 // C++ standard library headers (must be outside extern "C")
 #include <algorithm>
@@ -224,8 +225,11 @@ hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
     ESP_LOGE(TAG, "Failed to register TX callbacks for channel %d: %d", channel_id, ret);
     return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
+  
+  // Use the copy encoder to transmit the converted RMT symbols
+  // The data parameter expects the actual data to be encoded, and size should be in bytes
   ret = rmt_transmit(channel.tx_channel, channel.encoder,
-                     reinterpret_cast<const rmt_symbol_word_t*>(rmt_symbols),
+                     rmt_symbols,  // Raw symbols for copy encoder
                      rmt_symbol_count * sizeof(rmt_symbol_word_t), &tx_config);
 
   if (ret != ESP_OK) {
@@ -581,7 +585,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
 
     // Reconfigure with advanced settings
     const auto& config = stored_config;
-    hf_u32_t clock_divider = CalculateClockDivider(config.resolution_ns);
+    hf_u32_t clock_divider = CalculateClockDivider(config.resolution_hz);
 
     if (config.direction == hf_pio_direction_t::Transmit ||
         config.direction == hf_pio_direction_t::Bidirectional) {
@@ -590,9 +594,9 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-      tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
+      tx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses APB clock (80 MHz)
 #else
-      tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
+      tx_config.clk_src = RMT_CLK_SRC_APB; // Use APB clock as default
 #endif
 
       tx_config.resolution_hz = config.resolution_hz;
@@ -661,9 +665,9 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-      rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
+      rx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses APB clock (80 MHz)
 #else
-      rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
+      rx_config.clk_src = RMT_CLK_SRC_APB; // Use APB clock as default
 #endif
       rx_config.resolution_hz = config.resolution_hz;
       rx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
@@ -854,7 +858,7 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
   tx_config.loop_count = 0; // Single transmission
   // For raw RMT symbols, we transmit directly using the copy encoder
   esp_err_t result = rmt_transmit(channel.tx_channel, channel.encoder,
-                                  reinterpret_cast<const rmt_symbol_word_t*>(rmt_symbols),
+                                  rmt_symbols,  // Raw symbols for copy encoder
                                   symbol_count * sizeof(rmt_symbol_word_t), &tx_config);
 
   if (result != ESP_OK) {
@@ -937,7 +941,7 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
   channels_[channel_id].status.timestamp_us = esp_timer_get_time();
   // Start RMT reception
   esp_err_t result =
-      rmt_receive(channel.rx_channel, reinterpret_cast<rmt_symbol_word_t*>(rmt_buffer),
+      rmt_receive(channel.rx_channel, rmt_buffer,  // Buffer for reception
                   buffer_size_bytes, &rx_config);
 
   if (result != ESP_OK) {
@@ -1233,9 +1237,9 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-    tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
+    tx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses APB clock (80 MHz)
 #else
-    tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
+    tx_config.clk_src = RMT_CLK_SRC_APB; // Use APB clock as default
 #endif
     tx_config.resolution_hz = config.resolution_hz;
     tx_config.mem_block_symbols = 64;
@@ -1273,9 +1277,9 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-    rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
+    rx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses APB clock (80 MHz)
 #else
-    rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
+    rx_config.clk_src = RMT_CLK_SRC_APB; // Use APB clock as default
 #endif
     rx_config.resolution_hz = config.resolution_hz;
     rx_config.mem_block_symbols = 64;

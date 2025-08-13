@@ -317,7 +317,7 @@ pio.SetTransmitCallback(channel_id, my_callback, user_data);
 config.resolution_ns = 1000;  // 1µs in nanoseconds
 
 // New configuration:
-config.resolution_hz = 1000000;  // 1µs as 1MHz frequency
+config.resolution_hz = 1000000;  // 1MHz (1µs equivalent in nanoseconds)
 ```
 
 #### 3. Add Channel Validation

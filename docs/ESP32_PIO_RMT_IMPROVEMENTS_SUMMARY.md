@@ -209,7 +209,7 @@ config.resolution_ns = 1000;  // 1µs
 pio.SetTransmitCallback(callback, user_data);
 
 // New API:
-config.resolution_hz = 1000000;  // 1MHz (1µs period)
+config.resolution_hz = 1000000;  // 1MHz (1µs equivalent)
 pio.SetTransmitCallback(channel_id, callback, user_data);
 ```
 

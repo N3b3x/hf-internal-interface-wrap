@@ -217,7 +217,7 @@ bool EnsureInitialized() noexcept;
  * hf_pio_channel_config_t config;
  * config.gpio_pin = 18;
  * config.direction = hf_pio_direction_t::Transmit;
- * config.resolution_ns = 1000;  // 1μs resolution
+ * config.resolution_hz = 1000000;  // 1MHz resolution (replaces resolution_ns)
  * config.polarity = hf_pio_polarity_t::Normal;
  * config.idle_state = hf_pio_idle_state_t::Low;
  * 
@@ -371,7 +371,7 @@ virtual void ClearCallbacks() noexcept = 0;
 struct hf_pio_channel_config_t {
     hf_pin_num_t gpio_pin;          ///< GPIO pin for PIO signal
     hf_pio_direction_t direction;   ///< Channel direction
-    uint32_t resolution_ns;         ///< Time resolution in nanoseconds
+    uint32_t resolution_hz;         ///< Time resolution in Hz
     hf_pio_polarity_t polarity;     ///< Signal polarity
     hf_pio_idle_state_t idle_state; ///< Idle state
     uint32_t timeout_us;            ///< Operation timeout in microseconds
@@ -461,7 +461,7 @@ public:
         hf_pio_channel_config_t config;
         config.gpio_pin = 18;  // WS2812 data pin
         config.direction = hf_pio_direction_t::Transmit;
-        config.resolution_ns = 100;  // 100ns resolution
+        config.resolution_hz = 1000000;  // 1MHz resolution (replaces resolution_ns)
         config.polarity = hf_pio_polarity_t::Normal;
         config.idle_state = hf_pio_idle_state_t::Low;
         
@@ -523,7 +523,7 @@ public:
         hf_pio_channel_config_t config;
         config.gpio_pin = 4;  // IR LED pin
         config.direction = hf_pio_direction_t::Transmit;
-        config.resolution_ns = 1000;  // 1μs resolution
+        config.resolution_hz = 1000000;  // 1MHz resolution (1μs equivalent)
         config.polarity = hf_pio_polarity_t::Normal;
         config.idle_state = hf_pio_idle_state_t::Low;
         
@@ -622,7 +622,7 @@ public:
         hf_pio_channel_config_t config;
         config.gpio_pin = 26;  // Step pin
         config.direction = hf_pio_direction_t::Transmit;
-        config.resolution_ns = 1000;  // 1μs resolution
+        config.resolution_hz = 1000000;  // 1MHz resolution (1μs equivalent)
         config.polarity = hf_pio_polarity_t::Normal;
         config.idle_state = hf_pio_idle_state_t::Low;
         
@@ -677,7 +677,7 @@ public:
         hf_pio_channel_config_t config;
         config.gpio_pin = 5;  // IR receiver pin
         config.direction = hf_pio_direction_t::Receive;
-        config.resolution_ns = 1000;  // 1μs resolution
+        config.resolution_hz = 1000000;  // 1MHz resolution (1μs equivalent)
         config.polarity = hf_pio_polarity_t::Normal;
         config.idle_state = hf_pio_idle_state_t::High;  // IR receivers idle high
         
@@ -766,9 +766,9 @@ if (pio.GetCapabilities(caps) == hf_pio_err_t::PIO_SUCCESS) {
 }
 
 // ✅ Use appropriate timing resolution
-uint32_t resolution_ns = 1000;  // 1μs for most applications
-if (high_precision_needed) {
-    resolution_ns = 100;  // 100ns for precise timing
+uint32_t resolution_hz = 1000000;  // 1MHz for most applications (1μs equivalent)
+if (precise_timing_needed) {
+    resolution_hz = 10000000;  // 10MHz for precise timing (100ns equivalent)
 }
 
 // ✅ Handle transmission errors gracefully
