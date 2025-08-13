@@ -404,10 +404,10 @@ private:
 
   /**
    * @brief Calculate RMT clock divider for desired resolution
-   * @param resolution_ns Desired resolution in nanoseconds
+   * @param resolution_hz Desired resolution in Hz
    * @return Clock divider value (1-255)
    */
-  uint32_t CalculateClockDivider(uint32_t resolution_ns) const noexcept;
+  uint32_t CalculateClockDivider(uint32_t resolution_hz) const noexcept;
 
   /**
    * @brief Get effective RMT clock frequency for a given divider
@@ -415,6 +415,15 @@ private:
    * @return Effective clock frequency in Hz
    */
   uint32_t GetEffectiveClockFrequency(uint32_t clock_divider) const noexcept;
+
+  /**
+   * @brief Validate channel configuration for current ESP32 variant
+   * @param channel_id Channel identifier
+   * @param config Channel configuration to validate
+   * @return Error code indicating validation result
+   */
+  hf_pio_err_t ValidateChannelConfiguration(hf_u8_t channel_id, 
+                                           const hf_pio_channel_config_t& config) const noexcept;
 
   /**
    * @brief Invoke channel-specific error callback
