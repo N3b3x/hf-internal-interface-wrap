@@ -408,27 +408,36 @@ public:
 
   /**
    * @brief Set callback for transmission complete events
+   * @param channel_id Channel identifier
    * @param callback Callback function
    * @param user_data User data to pass to callback
    */
-  virtual void SetTransmitCallback(hf_pio_transmit_callback_t callback,
+  virtual void SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t callback,
                                    void* user_data = nullptr) noexcept = 0;
 
   /**
    * @brief Set callback for reception complete events
+   * @param channel_id Channel identifier
    * @param callback Callback function
    * @param user_data User data to pass to callback
    */
-  virtual void SetReceiveCallback(hf_pio_receive_callback_t callback,
+  virtual void SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t callback,
                                   void* user_data = nullptr) noexcept = 0;
 
   /**
    * @brief Set callback for error events
+   * @param channel_id Channel identifier
    * @param callback Callback function
    * @param user_data User data to pass to callback
    */
-  virtual void SetErrorCallback(hf_pio_error_callback_t callback,
+  virtual void SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callback,
                                 void* user_data = nullptr) noexcept = 0;
+
+  /**
+   * @brief Clear all callbacks for a specific channel
+   * @param channel_id Channel identifier
+   */
+  virtual void ClearChannelCallbacks(hf_u8_t channel_id) noexcept = 0;
 
   /**
    * @brief Clear all callbacks
@@ -461,21 +470,23 @@ public:
 
   /**
    * @brief Get PIO operation statistics
+   * @param channel_id Channel identifier
    * @param statistics Reference to store statistics data
    * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_pio_err_t GetStatistics(hf_pio_statistics_t& statistics) const noexcept {
-    statistics = statistics_; // Return statistics by default
+  virtual hf_pio_err_t GetStatistics(hf_u8_t channel_id, hf_pio_statistics_t& statistics) const noexcept {
+    // This method needs to be implemented to return platform-specific statistics
     return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
    * @brief Get PIO diagnostic information
+   * @param channel_id Channel identifier
    * @param diagnostics Reference to store diagnostics data
    * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept {
-    diagnostics = diagnostics_; // Return diagnostics by default
+  virtual hf_pio_err_t GetDiagnostics(hf_u8_t channel_id, hf_pio_diagnostics_t& diagnostics) const noexcept {
+    // This method needs to be implemented to return platform-specific diagnostics
     return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
   }
 

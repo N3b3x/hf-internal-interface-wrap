@@ -148,27 +148,30 @@ public:
                                 hf_pio_channel_status_t& status) const noexcept override;
   hf_pio_err_t GetCapabilities(hf_pio_capabilities_t& capabilities) const noexcept override;
 
-  void SetTransmitCallback(hf_pio_transmit_callback_t callback,
+  void SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t callback,
                            void* user_data = nullptr) noexcept override;
-  void SetReceiveCallback(hf_pio_receive_callback_t callback,
+  void SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t callback,
                           void* user_data = nullptr) noexcept override;
-  void SetErrorCallback(hf_pio_error_callback_t callback,
+  void SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callback,
                         void* user_data = nullptr) noexcept override;
+  void ClearChannelCallbacks(hf_u8_t channel_id) noexcept override;
   void ClearCallbacks() noexcept override;
 
   /**
    * @brief Get PIO operation statistics.
+   * @param channel_id Channel identifier
    * @param statistics Reference to statistics structure to fill
    * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
    */
-  hf_pio_err_t GetStatistics(hf_pio_statistics_t& statistics) const noexcept override;
+  hf_pio_err_t GetStatistics(hf_u8_t channel_id, hf_pio_statistics_t& statistics) const noexcept override;
 
   /**
    * @brief Get PIO diagnostic information.
+   * @param channel_id Channel identifier
    * @param diagnostics Reference to diagnostics structure to fill
    * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
    */
-  hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept override;
+  hf_pio_err_t GetDiagnostics(hf_u8_t channel_id, hf_pio_diagnostics_t& diagnostics) const noexcept override;
 
   //==============================================//
   // Lazy Initialization Support
@@ -307,10 +310,20 @@ private:
     // Idle level configuration
     bool idle_level;
 
+    // Callbacks
+    hf_pio_transmit_callback_t transmit_callback;
+    void* transmit_user_data;
+    hf_pio_receive_callback_t receive_callback;
+    void* receive_user_data;
+    hf_pio_error_callback_t error_callback;
+    void* error_user_data;
+
     ChannelState() noexcept
         : configured(false), busy(false), config(), status(), tx_channel(nullptr),
           rx_channel(nullptr), encoder(nullptr), bytes_encoder(nullptr), rx_buffer(nullptr),
-          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0), idle_level(false) {}
+          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0), idle_level(false),
+          transmit_callback(nullptr), transmit_user_data(nullptr), receive_callback(nullptr),
+          receive_user_data(nullptr), error_callback(nullptr), error_user_data(nullptr) {}
   };
 
   //==============================================//
@@ -331,11 +344,9 @@ private:
   std::array<ChannelState, MAX_CHANNELS> channels_;
   mutable RtosMutex state_mutex_;
 
-  // Callbacks
-  hf_pio_transmit_callback_t transmit_callback_;
-  hf_pio_receive_callback_t receive_callback_;
-  hf_pio_error_callback_t error_callback_;
-  void* callback_user_data_;
+  // Global statistics and diagnostics
+  hf_pio_statistics_t global_statistics_;
+  hf_pio_diagnostics_t global_diagnostics_;
 
   //==============================================//
   // Internal Helper Methods
@@ -393,8 +404,24 @@ private:
 
   /**
    * @brief Calculate RMT clock divider for desired resolution
+   * @param resolution_ns Desired resolution in nanoseconds
+   * @return Clock divider value (1-255)
    */
   uint32_t CalculateClockDivider(uint32_t resolution_ns) const noexcept;
+
+  /**
+   * @brief Get effective RMT clock frequency for a given divider
+   * @param clock_divider Clock divider value
+   * @return Effective clock frequency in Hz
+   */
+  uint32_t GetEffectiveClockFrequency(uint32_t clock_divider) const noexcept;
+
+  /**
+   * @brief Invoke channel-specific error callback
+   * @param channel_id Channel identifier
+   * @param error Error that occurred
+   */
+  void InvokeChannelErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept;
 
 private:
   static constexpr const char* TAG = "EspPio"; ///< Logging tag

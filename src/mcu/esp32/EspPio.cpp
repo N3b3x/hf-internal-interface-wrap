@@ -42,8 +42,7 @@ extern "C" {
 //==============================================================================
 
 EspPio::EspPio() noexcept
-    : BasePio(), initialized_(false), channels_{}, transmit_callback_(nullptr),
-      receive_callback_(nullptr), error_callback_(nullptr), callback_user_data_(nullptr) {
+    : BasePio(), initialized_(false), channels_{}, global_statistics_{}, global_diagnostics_{} {
   ESP_LOGD(TAG, "EspPio constructed");
 }
 
@@ -91,10 +90,10 @@ hf_pio_err_t EspPio::Deinitialize() noexcept {
   }
 
   // Clear callbacks
-  transmit_callback_ = nullptr;
-  receive_callback_ = nullptr;
-  error_callback_ = nullptr;
-  callback_user_data_ = nullptr;
+  // transmit_callback_ = nullptr; // Removed global callback
+  // receive_callback_ = nullptr; // Removed global callback
+  // error_callback_ = nullptr; // Removed global callback
+  // callback_user_data_ = nullptr; // Removed global callback
 
   initialized_ = false;
   ESP_LOGI(TAG, "EspPio deinitialized");
@@ -409,30 +408,87 @@ hf_pio_err_t EspPio::GetCapabilities(hf_pio_capabilities_t& capabilities) const 
 // CALLBACK MANAGEMENT
 //==============================================================================
 
-void EspPio::SetTransmitCallback(hf_pio_transmit_callback_t callback, void* user_data) noexcept {
+void EspPio::SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t callback,
+                                 void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  transmit_callback_ = callback;
-  callback_user_data_ = user_data;
+  
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for transmit callback", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  channel.transmit_callback = callback;
+  channel.transmit_user_data = user_data;
+  
+  ESP_LOGD(TAG, "Set transmit callback for channel %d", channel_id);
 }
 
-void EspPio::SetReceiveCallback(hf_pio_receive_callback_t callback, void* user_data) noexcept {
+void EspPio::SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t callback,
+                                void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  receive_callback_ = callback;
-  callback_user_data_ = user_data;
+  
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for receive callback", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  channel.receive_callback = callback;
+  channel.receive_user_data = user_data;
+  
+  ESP_LOGD(TAG, "Set receive callback for channel %d", channel_id);
 }
 
-void EspPio::SetErrorCallback(hf_pio_error_callback_t callback, void* user_data) noexcept {
+void EspPio::SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callback,
+                              void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  error_callback_ = callback;
-  callback_user_data_ = user_data;
+  
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for error callback", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  channel.error_callback = callback;
+  channel.error_user_data = user_data;
+  
+  ESP_LOGD(TAG, "Set error callback for channel %d", channel_id);
+}
+
+void EspPio::ClearChannelCallbacks(hf_u8_t channel_id) noexcept {
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for clearing callbacks", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  channel.transmit_callback = nullptr;
+  channel.transmit_user_data = nullptr;
+  channel.receive_callback = nullptr;
+  channel.receive_user_data = nullptr;
+  channel.error_callback = nullptr;
+  channel.error_user_data = nullptr;
+  
+  ESP_LOGD(TAG, "Cleared callbacks for channel %d", channel_id);
 }
 
 void EspPio::ClearCallbacks() noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  transmit_callback_ = nullptr;
-  receive_callback_ = nullptr;
-  error_callback_ = nullptr;
-  callback_user_data_ = nullptr;
+  
+  for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
+    auto& channel = channels_[i];
+    channel.transmit_callback = nullptr;
+    channel.transmit_user_data = nullptr;
+    channel.receive_callback = nullptr;
+    channel.receive_user_data = nullptr;
+    channel.error_callback = nullptr;
+    channel.error_user_data = nullptr;
+  }
+  
+  ESP_LOGD(TAG, "Cleared all callbacks for all channels");
 }
 
 //==============================================================================
@@ -808,7 +864,7 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
     channels_[channel_id].status.is_transmitting = false;
     ESP_LOGE(TAG, "Raw RMT symbol transmission failed on channel %d: %s", channel_id,
              esp_err_to_name(result));
-    InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
+    InvokeChannelErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
     return hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE;
   }
 
@@ -822,7 +878,7 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
     if (result != ESP_OK) {
       ESP_LOGW(TAG, "Wait for transmission completion timed out on channel %d: %s", channel_id,
                esp_err_to_name(result));
-      InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT);
+      InvokeChannelErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT);
       return hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT;
     }
 
@@ -892,7 +948,7 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
     ESP_LOGE(TAG, "Failed to start RMT reception on channel %d: %s", channel_id,
              esp_err_to_name(result));
     symbols_received = 0;
-    InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
+    InvokeChannelErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
     return hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE;
   }
 
@@ -978,10 +1034,62 @@ hf_pio_err_t EspPio::ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols,
 
 hf_u32_t EspPio::CalculateClockDivider(hf_u32_t resolution_ns) const noexcept {
   // Calculate clock divider to achieve desired resolution
-  // RMT source clock is typically 80 MHz (12.5 ns per tick)
-  hf_u32_t divider = (resolution_ns * RMT_CLK_SRC_FREQ) / 1000000000UL;
-  return std::max<hf_u32_t>(
-      1U, std::min<hf_u32_t>(255U, static_cast<hf_u32_t>(divider))); // Clamp to valid range
+  // For ESP32-C6: RMT source clock is typically 80 MHz (12.5 ns per tick)
+  // Formula: divider = (resolution_ns * source_freq_hz) / 1,000,000,000
+  
+  // Ensure we don't have integer overflow
+  if (resolution_ns == 0) {
+    ESP_LOGW(TAG, "Invalid resolution_ns=0, using minimum divider");
+    return 1;
+  }
+  
+  // Calculate with proper precision handling
+  uint64_t divider_calc = (static_cast<uint64_t>(resolution_ns) * RMT_CLK_SRC_FREQ) / 1000000000ULL;
+  
+  // RMT hardware supports clock dividers from 1 to 255
+  hf_u32_t divider = static_cast<hf_u32_t>(divider_calc);
+  
+  // Clamp to valid range and provide feedback
+  if (divider < 1) {
+    ESP_LOGW(TAG, "Calculated divider %d too small, clamping to 1", divider);
+    divider = 1;
+  } else if (divider > 255) {
+    ESP_LOGW(TAG, "Calculated divider %d too large, clamping to 255", divider);
+    divider = 255;
+  }
+  
+  ESP_LOGD(TAG, "Resolution %d ns -> Clock divider %d (effective freq: %d Hz)", 
+           resolution_ns, divider, GetEffectiveClockFrequency(divider));
+  
+  return divider;
+}
+
+uint32_t EspPio::GetEffectiveClockFrequency(uint32_t clock_divider) const noexcept {
+  if (clock_divider == 0) {
+    ESP_LOGE(TAG, "Invalid clock_divider=0");
+    return 0;
+  }
+  
+  return RMT_CLK_SRC_FREQ / clock_divider;
+}
+
+void EspPio::InvokeChannelErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for error callback", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  
+  // Invoke channel-specific error callback if set
+  if (channel.error_callback) {
+    channel.error_callback(channel_id, error, channel.error_user_data);
+  }
+  
+  // Update channel status
+  channel.status.last_error = error;
+  
+  ESP_LOGD(TAG, "Invoked error callback for channel %d with error %d", channel_id, static_cast<int>(error));
 }
 
 bool EspPio::OnTransmitComplete(rmt_channel_handle_t channel, const rmt_tx_done_event_data_t* edata,
@@ -1001,10 +1109,10 @@ bool EspPio::OnTransmitComplete(rmt_channel_handle_t channel, const rmt_tx_done_
       ch.status.symbols_processed = ch.status.symbols_queued;
       ch.status.timestamp_us = esp_timer_get_time();
 
-      // Invoke user callback if set
-      if (instance->transmit_callback_) {
-        instance->transmit_callback_(i, ch.status.symbols_processed, instance->callback_user_data_);
-      }
+              // Invoke channel-specific user callback if set
+        if (ch.transmit_callback) {
+          ch.transmit_callback(i, ch.status.symbols_processed, ch.transmit_user_data);
+        }
 
       ESP_LOGD(TAG, "Transmission complete on channel %d", i);
       break;
@@ -1041,11 +1149,10 @@ bool EspPio::OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_e
       ch.status.symbols_processed = symbols_converted;
       ch.status.timestamp_us = esp_timer_get_time();
 
-      // Invoke user callback if set
-      if (instance->receive_callback_) {
-        instance->receive_callback_(i, ch.rx_buffer, symbols_converted,
-                                    instance->callback_user_data_);
-      }
+              // Invoke channel-specific user callback if set
+        if (ch.receive_callback) {
+          ch.receive_callback(i, ch.rx_buffer, symbols_converted, ch.receive_user_data);
+        }
 
       ESP_LOGD(TAG, "Reception complete on channel %d, received %d symbols", i, symbols_converted);
       break;
@@ -1184,12 +1291,7 @@ void EspPio::UpdateChannelStatus(hf_u8_t channel_id) noexcept {
   channel.status.last_error = hf_pio_err_t::PIO_SUCCESS;
 }
 
-void EspPio::InvokeErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept {
-  if (error_callback_) {
-    error_callback_(channel_id, error, callback_user_data_);
-  }
-  channels_[channel_id].status.last_error = error;
-}
+// This method is now replaced by InvokeChannelErrorCallback
 
 bool EspPio::ValidatePioSystem() noexcept {
   ESP_LOGI(TAG, "Starting comprehensive PIO system validation");
@@ -1280,13 +1382,39 @@ bool EspPio::ValidatePioSystem() noexcept {
 // STATISTICS AND DIAGNOSTICS
 //==============================================================================
 
-hf_pio_err_t EspPio::GetStatistics(hf_pio_statistics_t& statistics) const noexcept {
-  statistics = statistics_;
+hf_pio_err_t EspPio::GetStatistics(hf_u8_t channel_id, hf_pio_statistics_t& statistics) const noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+  
+  // For now, return global statistics
+  // In a real implementation, this would gather channel-specific statistics
+  statistics = global_statistics_;
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t EspPio::GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept {
-  diagnostics = diagnostics_;
+hf_pio_err_t EspPio::GetDiagnostics(hf_u8_t channel_id, hf_pio_diagnostics_t& diagnostics) const noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+  
+  const auto& channel = channels_[channel_id];
+  
+  // Fill in channel-specific diagnostics
+  diagnostics = global_diagnostics_;
+  diagnostics.pioInitialized = initialized_;
+  diagnostics.activeChannels = 0;
+  
+  // Count active channels
+  for (const auto& ch : channels_) {
+    if (ch.configured) {
+      diagnostics.activeChannels++;
+    }
+  }
+  
+  diagnostics.lastErrorCode = channel.status.last_error;
+  diagnostics.currentResolutionNs = channel.config.resolution_ns;
+  
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
