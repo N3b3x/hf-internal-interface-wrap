@@ -23,6 +23,7 @@ extern "C" {
 #include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
 #include "freertos/task.h"
+#include "freertos/semphr.h" // Added for semaphore handling
 
 #ifdef __cplusplus
 }
@@ -113,6 +114,7 @@ struct TestTaskContext {
   bool (*test_func)() noexcept;
   TestResults* results;
   const char* tag;
+  SemaphoreHandle_t completion_semaphore;  // Add semaphore for synchronization
 };
 
 /**
@@ -138,6 +140,12 @@ inline void test_task_trampoline(void* param) {
     ESP_LOGE(ctx->tag, "[FAILED] FAILED (task): %s (%.2f ms)", ctx->test_name,
              execution_time / 1000.0);
   }
+  
+  // Signal completion before deleting task
+  if (ctx->completion_semaphore != nullptr) {
+    xSemaphoreGive(ctx->completion_semaphore);
+  }
+  
   vTaskDelete(nullptr);
 }
 
@@ -155,20 +163,30 @@ inline void test_task_trampoline(void* param) {
     ctx.test_func = func;                                                                       \
     ctx.results = &g_test_results;                                                              \
     ctx.tag = TAG;                                                                              \
-    BaseType_t created =                                                                        \
-        xTaskCreate(test_task_trampoline, name, (stack_size_bytes) / sizeof(StackType_t), &ctx, \
-                    (priority), nullptr);                                                       \
-    if (created != pdPASS) {                                                                    \
-      ESP_LOGE(TAG, "Failed to create test task: %s", name);                                    \
+    ctx.completion_semaphore = xSemaphoreCreateBinary();                                        \
+    if (ctx.completion_semaphore == nullptr) {                                                  \
+      ESP_LOGE(TAG, "Failed to create semaphore for test: %s", name);                          \
       /* Fallback: run inline to avoid losing coverage */                                       \
       RUN_TEST(func);                                                                           \
     } else {                                                                                    \
-      /* Wait for completion: simple delay loop until result count increases */                 \
-      int before = g_test_results.total_tests;                                                  \
-      for (int i_wait = 0; i_wait < 1000; ++i_wait) {                                           \
-        if (g_test_results.total_tests > before)                                                \
-          break;                                                                                \
-        vTaskDelay(pdMS_TO_TICKS(10));                                                          \
+      BaseType_t created =                                                                      \
+          xTaskCreate(test_task_trampoline, name, (stack_size_bytes) / sizeof(StackType_t), &ctx, \
+                      (priority), nullptr);                                                     \
+      if (created != pdPASS) {                                                                  \
+        ESP_LOGE(TAG, "Failed to create test task: %s", name);                                 \
+        vSemaphoreDelete(ctx.completion_semaphore);                                             \
+        /* Fallback: run inline to avoid losing coverage */                                     \
+        RUN_TEST(func);                                                                         \
+      } else {                                                                                  \
+        /* Wait for test completion using semaphore with timeout */                             \
+        if (xSemaphoreTake(ctx.completion_semaphore, pdMS_TO_TICKS(30000)) == pdTRUE) {        \
+          ESP_LOGI(TAG, "Test task completed: %s", name);                                       \
+        } else {                                                                                \
+          ESP_LOGW(TAG, "Test task timeout: %s", name);                                         \
+        }                                                                                       \
+        vSemaphoreDelete(ctx.completion_semaphore);                                             \
+        /* Add small delay between tests to ensure proper cleanup */                             \
+        vTaskDelay(pdMS_TO_TICKS(100));                                                         \
       }                                                                                         \
     }                                                                                           \
   } while (0)
