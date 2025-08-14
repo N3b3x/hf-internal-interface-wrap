@@ -4,26 +4,25 @@ Welcome to the ESP32 examples documentation hub. This comprehensive guide provid
 
 ## 📋 Test Status Overview
 
-### ✅ **Fully Tested & Working** (5 tests)
+### ✅ **Fully Tested & Working** (6 tests)
 - [**GPIO Test**](#gpio-comprehensive-test) - GPIO peripheral testing with interrupts, RTC, and advanced features
 - [**PIO Test**](#pio-comprehensive-test) - Enhanced PIO/RMT testing with WS2812 LED support and callbacks  
 - [**NVS Test**](#nvs-comprehensive-test) - Non-Volatile Storage comprehensive testing
 - [**Logger Test**](#logger-comprehensive-test) - Logger system with ESP-IDF Log V2 integration
 - [**ASCII Art Test**](#ascii-art-comprehensive-test) - ASCII art generator with full character support
+- [**Temperature Test**](#temperature-comprehensive-test) - Built-in temperature sensor with calibration and monitoring
 
-### 🔧 **In Development/Debugging** (12 tests)
+### 🔧 **In Development/Debugging** (11 tests)
 - **ADC Test** - Hardware-in-the-loop ADC testing with potentiometer control
 - **UART Test** - Serial communication peripheral testing
 - **SPI Test** - SPI bus communication testing
 - **I2C Test** - I2C bus communication testing  
 - **PWM Test** - Pulse Width Modulation testing
 - **CAN Test** - Controller Area Network testing
-- **Temperature Test** - Built-in temperature sensor testing
 - **Timer Test** - Periodic timer functionality testing
 - **WiFi Test** - WiFi connectivity testing
 - **Bluetooth Test** - Bluetooth communication testing
 - **Utils Test** - Utility functions testing
-- **ASCII Art Test** - ASCII art generation utilities
 
 ## 🎯 Quick Start
 
@@ -73,9 +72,9 @@ cd examples/esp32
 ./scripts/flash_example.sh <test_name> <build_type> [options]
 
 # Examples:
-./scripts/flash_example.sh gpio_test Release              # Auto-detect port and flash
-./scripts/flash_example.sh pio_test Debug --port /dev/ttyUSB0  # Specific port
-./scripts/flash_example.sh nvs_test Release --monitor     # Flash and start monitoring
+./scripts/flash_example.sh gpio_test Release flash              # Auto-detect port and flash
+./scripts/flash_example.sh pio_test Debug flash_monitor         # Flash and monitor  
+./scripts/flash_example.sh nvs_test Release monitor             # Monitor only (after flashing)
 
 # What flash_example.sh provides:
 # ✅ Automatic serial port detection (Linux: /dev/ttyUSB*, /dev/ttyACM*)
@@ -94,35 +93,57 @@ cd examples/esp32
 
 # Build and flash GPIO test
 ./scripts/build_example.sh gpio_test Release
-./scripts/flash_example.sh gpio_test Release --monitor
+./scripts/flash_example.sh gpio_test Release flash_monitor
 
 # Build and flash PIO test with debug
 ./scripts/build_example.sh pio_test Debug  
-./scripts/flash_example.sh pio_test Debug --port /dev/ttyUSB0 --monitor
+./scripts/flash_example.sh pio_test Debug flash_monitor
 ```
 
 ### 📋 **Script Benefits & Features**
 
 #### **setup_repo.sh - Repository Initialization**
-- **Environment Validation**: Checks ESP-IDF installation, version compatibility
-- **Automatic Configuration**: Sets up target, toolchain, and environment variables
-- **Dependency Management**: Installs Python packages, validates tools
-- **Cross-Platform**: Works on Linux, macOS, Windows WSL
-- **Error Recovery**: Provides helpful error messages and solutions
+**✅ Strengths:**
+- **Complete Environment Setup**: Handles ESP-IDF v5.5+ installation and configuration
+- **Dependency Management**: Installs Python packages (PyYAML), yq, build tools
+- **Cross-Platform Support**: Linux, macOS, Windows WSL compatibility
+- **User Safety**: Prevents running as root, validates sudo access
+- **Interactive Setup**: User confirmation before installation
+
+**⚠️ Limitations:**
+- **Assumes Standard ESP-IDF Location**: Looks for ESP-IDF at `$HOME/esp/esp-idf/`
+- **Requires Internet**: Downloads packages and dependencies
+- **User Interaction Required**: Not fully automated (requires user confirmation)
+- **Limited Customization**: Fixed installation paths and configuration
 
 #### **build_example.sh - Intelligent Building**
-- **Centralized Configuration**: Uses `examples_config.yml` for all settings
-- **Build Optimization**: Automatic compiler flags per build type
-- **Dependency Tracking**: Only rebuilds when necessary
-- **Artifact Management**: Organized build directories and cleanup
-- **Validation**: Pre-build checks for configuration and dependencies
+**✅ Strengths:**
+- **Centralized Configuration**: Loads all settings from `examples_config.yml`
+- **Build Optimization**: Automatic Release (-O2) and Debug (-O0 -g3) flags
+- **Clean Builds**: Always removes existing build directory for consistency
+- **Validation**: Checks example type and build type before building
+- **Clear Output**: Detailed build information and next steps
+
+**⚠️ Limitations:**
+- **Requires ESP-IDF Environment**: Must have ESP-IDF already sourced or at standard location
+- **Always Clean Builds**: No incremental builds (slower but more reliable)
+- **Fixed Configuration**: Limited customization beyond YAML config
+- **No Parallel Builds**: Single-threaded building
 
 #### **flash_example.sh - Smart Flashing**
-- **Auto-Detection**: Finds ESP32 devices automatically
-- **Build Integration**: Builds if needed before flashing
-- **Error Handling**: Comprehensive error recovery and reporting
-- **Monitoring**: Integrated serial monitor with proper formatting
-- **Multi-Device**: Handles multiple connected ESP32 devices
+**✅ Strengths:**
+- **Auto Port Detection**: Prioritizes ESP32-C6 native USB (/dev/ttyACM0) over serial ports
+- **Auto-Build Integration**: Builds missing or outdated binaries automatically
+- **Three Operation Modes**: `flash`, `monitor`, `flash_monitor` (default)
+- **Permission Handling**: Attempts to fix port permissions automatically
+- **Retry Logic**: Configuration retry with exponential backoff
+- **Comprehensive Error Handling**: Detailed error messages and recovery suggestions
+
+**⚠️ Limitations:**
+- **Requires ESP-IDF Environment**: Attempts to source from `$HOME/esp/esp-idf/export.sh`
+- **Linux-Centric Port Detection**: Primarily designed for Linux port naming
+- **Sudo Dependency**: May require sudo for port permission fixes
+- **Limited Port Customization**: No direct port specification in current interface
 
 ### 🛠️ **Alternative: Raw ESP-IDF Commands**
 
@@ -222,17 +243,18 @@ cd examples/esp32
 # === DAILY WORKFLOW ===
 ./scripts/build_example.sh list                            # List all available tests
 ./scripts/build_example.sh gpio_test Release               # Build GPIO test
-./scripts/flash_example.sh gpio_test Release --monitor     # Flash and monitor GPIO test
+./scripts/flash_example.sh gpio_test Release flash_monitor # Flash and monitor GPIO test
 
 # === WORKING TESTS (Ready to Use) ===
-./scripts/build_example.sh gpio_test Release && ./scripts/flash_example.sh gpio_test Release --monitor
-./scripts/build_example.sh pio_test Release && ./scripts/flash_example.sh pio_test Release --monitor  
-./scripts/build_example.sh nvs_test Release && ./scripts/flash_example.sh nvs_test Release --monitor
-./scripts/build_example.sh logger_test Release && ./scripts/flash_example.sh logger_test Release --monitor
-./scripts/build_example.sh ascii_art Release && ./scripts/flash_example.sh ascii_art Release --monitor
+./scripts/build_example.sh gpio_test Release && ./scripts/flash_example.sh gpio_test Release flash_monitor
+./scripts/build_example.sh pio_test Release && ./scripts/flash_example.sh pio_test Release flash_monitor  
+./scripts/build_example.sh nvs_test Release && ./scripts/flash_example.sh nvs_test Release flash_monitor
+./scripts/build_example.sh logger_test Release && ./scripts/flash_example.sh logger_test Release flash_monitor
+./scripts/build_example.sh ascii_art Release && ./scripts/flash_example.sh ascii_art Release flash_monitor
+./scripts/build_example.sh temperature_test Release && ./scripts/flash_example.sh temperature_test Release flash_monitor
 
 # === DEBUG BUILDS ===
-./scripts/build_example.sh gpio_test Debug && ./scripts/flash_example.sh gpio_test Debug --monitor
+./scripts/build_example.sh gpio_test Debug && ./scripts/flash_example.sh gpio_test Debug flash_monitor
 ```
 
 #### **⚙️ ALTERNATIVE: Raw ESP-IDF Workflow (Manual Control)**
@@ -264,7 +286,7 @@ idf.py monitor --print_filter="*:I"                       # Filtered monitoring
 ```bash
 # Script approach (recommended for beginners)
 cd examples/esp32 && ./scripts/setup_repo.sh
-./scripts/build_example.sh gpio_test Release && ./scripts/flash_example.sh gpio_test Release --monitor
+./scripts/build_example.sh gpio_test Release && ./scripts/flash_example.sh gpio_test Release flash_monitor
 
 # Raw idf.py approach (for ESP-IDF experts)  
 source $IDF_PATH/export.sh && export IDF_TARGET=esp32c6 && cd examples/esp32
@@ -281,8 +303,8 @@ idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release && idf.py flash monit
 | **Logger** | Utility | None | EspLogger, ESP-IDF Log V2, Buffers | ✅ Complete | [Logger Guide](docs/README_LOGGER_TEST.md) |
 | **ASCII Art** | Utility | None | AsciiArtGenerator, Character support | ✅ Complete | [ASCII Guide](docs/README_ASCII_ART_TEST.md) |
 | **ADC** | Peripheral | 10kΩ pot, resistors | EspAdc, Calibration, Thresholds | 🔧 Debug | [ADC Guide](docs/README_ADC_TESTING.md) |
-| **Temperature** | Sensor | None (built-in) | EspTemperature, Monitoring, Calibration | 🔧 Debug | [Temp Guide](docs/README_TEMPERATURE_TEST.md) |
-| **Timer** | Peripheral | None | EspPeriodicTimer, ESP Timer API | 🔧 Debug | [Timer Report](docs/TIMER_TEST_REPORT.md) |
+| **Temperature** | Sensor | None (built-in) | EspTemperature, Monitoring, Calibration | ✅ Complete | [Temp Guide](docs/README_TEMPERATURE_TEST.md) |
+| **Timer** | Peripheral | None | EspPeriodicTimer, ESP Timer API | 🔧 Debug | *In Development* |
 | **UART** | Peripheral | Loopback wire | EspUart, Serial comm, Protocols | 🔧 Debug | *In Development* |
 | **SPI** | Peripheral | SPI device/loopback | EspSpi, Bus communication | 🔧 Debug | *In Development* |
 | **I2C** | Peripheral | I2C device | EspI2c, Bus scanning, Devices | 🔧 Debug | *In Development* |
@@ -413,6 +435,30 @@ idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release && idf.py flash monit
 **Character Set**: A-Z, 0-9, punctuation, mathematical symbols, special characters
 
 **API Coverage**: Complete AsciiArtGenerator class implementation
+
+---
+
+### Temperature Comprehensive Test
+**Status**: ✅ **Fully Working & Tested**
+
+**Hardware**: ESP32-C6 DevKit-M-1 (no external components required)
+
+**Features Tested**:
+- ✅ Basic temperature reading with single-shot and continuous modes
+- ✅ Sensor initialization and proper configuration
+- ✅ Temperature calibration with offset and gain validation
+- ✅ Threshold monitoring with high/low temperature detection and callbacks
+- ✅ Continuous monitoring with configurable intervals
+- ✅ Range management and dynamic temperature range configuration
+- ✅ Statistics collection with temperature history and min/max tracking
+- ✅ Power management with low-power modes and wake-up functionality
+- ✅ Health monitoring with sensor diagnostics and system checks
+- ✅ Error handling with comprehensive error condition testing
+- ✅ Performance testing with reading speed and accuracy validation
+
+**Temperature Range**: -40°C to +125°C with ±2°C accuracy (after calibration)
+
+**API Coverage**: Complete EspTemperature class with built-in sensor integration
 
 ## 🔧 Tests Under Development
 
@@ -593,50 +639,51 @@ All examples are configured through `examples_config.yml`:
 ```bash
 # GPIO Test - Complete peripheral testing
 ./scripts/build_example.sh gpio_test Release
-./scripts/flash_example.sh gpio_test Release --monitor
+./scripts/flash_example.sh gpio_test Release flash_monitor
 
 # PIO Test - RMT with WS2812 LED (requires GPIO8→GPIO18 jumper)
 ./scripts/build_example.sh pio_test Release  
-./scripts/flash_example.sh pio_test Release --monitor
+./scripts/flash_example.sh pio_test Release flash_monitor
 
 # NVS Test - Non-volatile storage
 ./scripts/build_example.sh nvs_test Release
-./scripts/flash_example.sh nvs_test Release --monitor
+./scripts/flash_example.sh nvs_test Release flash_monitor
 
 # Logger Test - Logging system
 ./scripts/build_example.sh logger_test Release
-./scripts/flash_example.sh logger_test Release --monitor
+./scripts/flash_example.sh logger_test Release flash_monitor
 
 # ASCII Art Test - Character generation
 ./scripts/build_example.sh ascii_art Release
-./scripts/flash_example.sh ascii_art Release --monitor
+./scripts/flash_example.sh ascii_art Release flash_monitor
+
+# Temperature Test - Built-in sensor
+./scripts/build_example.sh temperature_test Release
+./scripts/flash_example.sh temperature_test Release flash_monitor
 ```
 
 #### **Debug Builds for Development**
 ```bash
 # Build with debug symbols and verbose logging
 ./scripts/build_example.sh gpio_test Debug
-./scripts/flash_example.sh gpio_test Debug --monitor
+./scripts/flash_example.sh gpio_test Debug flash_monitor
 
 # Multiple tests for development
-./scripts/build_example.sh pio_test Debug
-./scripts/build_example.sh nvs_test Debug  
-./scripts/build_example.sh logger_test Debug
+./scripts/build_example.sh pio_test Debug && ./scripts/flash_example.sh pio_test Debug flash_monitor
+./scripts/build_example.sh nvs_test Debug && ./scripts/flash_example.sh nvs_test Debug flash_monitor
+./scripts/build_example.sh logger_test Debug && ./scripts/flash_example.sh logger_test Debug flash_monitor
+./scripts/build_example.sh temperature_test Debug && ./scripts/flash_example.sh temperature_test Debug flash_monitor
 ```
 
 #### **Tests Under Development (May Require Debugging)**
 ```bash
 # ADC Test - Hardware-in-the-loop (requires potentiometer setup)
 ./scripts/build_example.sh adc_test Debug
-./scripts/flash_example.sh adc_test Debug --monitor
+./scripts/flash_example.sh adc_test Debug flash_monitor
 
 # Timer Test - Periodic timers (mostly working)
 ./scripts/build_example.sh timer_test Debug  
-./scripts/flash_example.sh timer_test Debug --monitor
-
-# Temperature Test - Built-in sensor
-./scripts/build_example.sh temperature_test Debug
-./scripts/flash_example.sh temperature_test Debug --monitor
+./scripts/flash_example.sh timer_test Debug flash_monitor
 ```
 
 ### **Alternative: Raw ESP-IDF Commands**
@@ -687,16 +734,16 @@ matrix:
 
 ## 📋 Test Completion Checklist
 
-### ✅ **Completed Tests (5/17)**
+### ✅ **Completed Tests (6/17)**
 - [x] **GPIO Test** - Full peripheral testing with interrupts and RTC
 - [x] **PIO Test** - Complete RMT testing with WS2812 and callbacks  
 - [x] **NVS Test** - Comprehensive storage testing with all data types
 - [x] **Logger Test** - Full logging system with ESP-IDF integration
 - [x] **ASCII Art Test** - Complete character generation and validation
+- [x] **Temperature Test** - Built-in sensor with calibration and threshold monitoring
 
-### 🔧 **In Progress Tests (12/17)**
+### 🔧 **In Progress Tests (11/17)**
 - [ ] **ADC Test** - Hardware-in-the-loop testing (70% complete)
-- [ ] **Temperature Test** - Built-in sensor testing (60% complete)
 - [ ] **Timer Test** - Periodic timer functionality (80% complete)
 - [ ] **UART Test** - Serial communication (40% complete)
 - [ ] **SPI Test** - SPI bus communication (40% complete)
@@ -735,7 +782,6 @@ matrix:
 ### Core Guides
 - [Centralized Configuration System](README_CENTRALIZED_CONFIG.md)
 - [Build & Flash Guide](docs/README_BUILD_SYSTEM.md)
-- [Testing Infrastructure](docs/README_TESTING_INFRASTRUCTURE.md)
 
 ### Hardware References
 - [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
@@ -782,16 +828,23 @@ pip install -r requirements.txt
 
 #### **flash_example.sh Problems**
 ```bash
-# Port detection issues
-./scripts/flash_example.sh gpio_test Release --port /dev/ttyUSB0
+# Port detection issues - script auto-detects but you can manually check
+ls /dev/tty* | grep -E "(ACM|USB)"                 # List available ports
+./scripts/flash_example.sh gpio_test Release flash # Try flash only first
 
 # Permission issues
 sudo usermod -a -G dialout $USER                   # Add user to dialout group
-sudo chmod 666 /dev/ttyUSB0                        # Temporary fix
+sudo chmod 666 /dev/ttyACM0                        # Temporary fix for ESP32-C6
+sudo chmod 666 /dev/ttyUSB0                        # Temporary fix for other adapters
 
 # Device not found
 lsusb | grep -i esp                                # Check USB connection
-ls /dev/tty*                                       # List available ports
+./scripts/flash_example.sh gpio_test Release monitor # Monitor existing flash
+
+# Wrong operation mode
+./scripts/flash_example.sh gpio_test Release flash         # Flash only
+./scripts/flash_example.sh gpio_test Release monitor       # Monitor only
+./scripts/flash_example.sh gpio_test Release flash_monitor # Flash then monitor (default)
 ```
 
 ### **Raw ESP-IDF Workflow Issues**
@@ -867,6 +920,83 @@ idf.py monitor --print_filter="*:V"               # Verbose output
 | Customization | Limited | Full control | 🏆 Raw idf.py |
 | Learning curve | Minimal | Steep | 🏆 Scripts |
 | Cross-platform | Excellent | Good | 🏆 Scripts |
+
+## 🧪 **Testing Infrastructure**
+
+### **Test Framework Architecture**
+
+All ESP32 tests use a standardized **noexcept architecture** designed specifically for embedded systems requirements:
+
+#### **Core Components**
+- **TestFramework.h**: Shared testing infrastructure used by all test files
+- **Standardized Reporting**: Consistent [SUCCESS]/[FAILED]/[INFO] output format
+- **No Exceptions**: Complete noexcept system for embedded compatibility
+- **Hardware Initialization**: Real hardware configuration in each test
+- **Build System Integration**: CMake support for flexible example selection
+
+#### **Test Categories Covered**
+- 🚦 **GPIO Testing** - Digital I/O, interrupts, pull resistors, RTC GPIO
+- 📊 **ADC Testing** - Analog-to-digital conversion, calibration, continuous mode  
+- 🔌 **UART Testing** - Serial communication, async operations, flow control
+- 🌐 **SPI Testing** - SPI bus architecture, device management, transfers
+- 🔗 **I2C Testing** - I2C communication, device scanning, transactions
+- ⚡ **PWM Testing** - Pulse width modulation, frequency control, duty cycles
+- 🚗 **CAN Testing** - CAN bus communication, message filtering, error handling
+- 🌡️ **Temperature Testing** - Internal temperature sensor operations
+- 💾 **NVS Testing** - Non-volatile storage operations, key-value pairs
+- ⏰ **Timer Testing** - Periodic timer operations, callbacks, precision
+- 📶 **WiFi Testing** - WiFi connectivity, AP/STA modes, network operations
+- 🔵 **Bluetooth Testing** - BLE operations, GAP/GATT, advertising
+- 🛠️ **Utils Testing** - Utility functions, memory utilities, hardware types
+- 🎨 **ASCII Art** - Text formatting and display utilities
+- 📡 **PIO Testing** - Enhanced RMT/PIO with WS2812 LED protocol
+
+### **Test File Structure**
+
+Each test follows this standardized pattern:
+```cpp
+// Header with comprehensive test suite description
+// noexcept architecture for embedded compatibility
+// Hardware-specific test functions with real initialization
+// Standardized test execution macros (RUN_TEST)
+// Summary reporting with pass/fail statistics
+// Complete cleanup and resource management
+```
+
+### **Build System Integration**
+
+The CMake build system supports flexible test selection:
+```bash
+# Build specific test (current architecture)
+idf.py -DEXAMPLE_TYPE=gpio_test build
+idf.py -DEXAMPLE_TYPE=pio_test build  
+idf.py -DEXAMPLE_TYPE=temperature_test build
+# ... for all 17 test types
+```
+
+### **CI Pipeline Integration**
+
+GitHub Actions CI pipeline supports all test types:
+```yaml
+example_type: [
+  gpio_test, pio_test, nvs_test, logger_test, ascii_art,
+  temperature_test, adc_test, uart_test, spi_test, i2c_test,
+  pwm_test, can_test, timer_test, wifi_test, bluetooth_test, utils_test
+]
+```
+
+**Build Matrix:**
+- **ESP-IDF Versions**: v5.5+ (latest stable)
+- **Build Types**: Release (all tests), Debug (select tests)
+- **Target Hardware**: ESP32-C6 DevKit-M-1
+- **Automated Testing**: Build validation for all test types
+
+### **Hardware Requirements**
+
+- **Primary Target**: ESP32-C6 DevKit-M-1
+- **ESP-IDF Version**: v5.5+ required
+- **Development Environment**: VS Code with ESP-IDF extension recommended
+- **Additional Hardware**: Test-specific (external sensors, devices, connections)
 
 ## 🤝 Contributing
 
