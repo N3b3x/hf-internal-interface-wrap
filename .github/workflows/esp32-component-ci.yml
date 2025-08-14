@@ -117,7 +117,7 @@ jobs:
         if: ${{ !inputs.clean_build }}
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ matrix.idf_version }}
+          key: ${{ runner.os }}-buildx-${{ matrix.idf_version_docker }}
           restore-keys: |
             ${{ runner.os }}-buildx-
 
@@ -130,11 +130,11 @@ jobs:
             ~/.espressif
             ~/esp
           key: >-
-            esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-
+            esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             ${{ hashFiles('examples/esp32/scripts/setup_common.sh') }}
           restore-keys: |
-            esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-
-            esp-idf-${{ matrix.idf_version }}-
+            esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
+            esp-idf-${{ matrix.idf_version_docker }}-
             esp-idf-
       
       - name: Cache Python dependencies
@@ -146,11 +146,11 @@ jobs:
             ~/.cache/pip
             ~/.local/lib/python3.*/site-packages
           key: >-
-            python-deps-${{ matrix.idf_version }}-${{ runner.os }}-
+            python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             ${{ hashFiles('examples/esp32/scripts/setup_common.sh', 'examples/esp32/requirements.txt') }}
           restore-keys: |
-            python-deps-${{ matrix.idf_version }}-${{ runner.os }}-
-            python-deps-${{ matrix.idf_version }}-
+            python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
+            python-deps-${{ matrix.idf_version_docker }}-
             python-deps-
       
       - name: Cache ccache
@@ -160,11 +160,11 @@ jobs:
         with:
           path: ~/.ccache
           key: >-
-            ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
+            ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}-
             ${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
           restore-keys: |
-            ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
-            ccache-${{ matrix.idf_version }}-
+            ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}-
+            ccache-${{ matrix.idf_version_docker }}-
       
       - name: Log cache results
         run: |
@@ -221,7 +221,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ matrix.example_type }}-${{ matrix.idf_version }}-${{ matrix.build_type }}
+          name: fw-${{ matrix.example_type }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
           retention-days: 7
           path: |
             ${{ env.BUILD_PATH }}/build/*.bin

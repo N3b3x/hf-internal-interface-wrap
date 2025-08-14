@@ -67,9 +67,12 @@ def generate_matrix():
             continue
         per_example_build_types = example_config.get('build_types', global_build_types)
         for idf_version in idf_versions:
+            # Create Docker-safe version for artifact naming (replace / with -)
+            docker_safe_version = idf_version.replace('/', '-')
             for build_type in per_example_build_types:
                 candidate = {
-                    'idf_version': idf_version,
+                    'idf_version': idf_version,  # Git format for ESP-IDF cloning
+                    'idf_version_docker': docker_safe_version,  # Docker-safe format for artifacts
                     'build_type': build_type,
                     'example_type': example_name,
                 }
