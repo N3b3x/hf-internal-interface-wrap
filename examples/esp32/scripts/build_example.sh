@@ -11,9 +11,51 @@ set -e  # Exit on any error
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 source "$PROJECT_DIR/scripts/config_loader.sh"
 
-# Configuration
-EXAMPLE_TYPE=${1:-$CONFIG_DEFAULT_EXAMPLE}
-BUILD_TYPE=${2:-$CONFIG_DEFAULT_BUILD_TYPE}
+# Usage helper
+print_usage() {
+	echo "Usage: ./build_example.sh [example_type] [build_type] [--clean|--no-clean] [--use-cache|--no-cache]"
+	echo "Examples:"
+	echo "  ./build_example.sh                # defaults from config"
+	echo "  ./build_example.sh list           # list available examples/build types"
+	echo "  ./build_example.sh gpio_test Release --clean"
+	echo "  ./build_example.sh adc_test Debug --no-cache"
+}
+
+# Defaults (env overrides allowed); flags below can override these
+CLEAN=${CLEAN:-0}
+USE_CCACHE=${USE_CCACHE:-1}
+
+# Parse arguments: collect non-flag args as positionals
+POSITIONAL_ARGS=()
+for arg in "$@"; do
+	case "$arg" in
+		--clean)
+			CLEAN=1
+			;;
+		--no-clean)
+			CLEAN=0
+			;;
+		--use-cache)
+			USE_CCACHE=1
+			;;
+		--no-cache)
+			USE_CCACHE=0
+			;;
+		-h|--help)
+			print_usage
+			exit 0
+			;;
+		*)
+			POSITIONAL_ARGS+=("$arg")
+			;;
+	esac
+done
+
+# Configuration derived from positionals or config defaults
+EXAMPLE_TYPE=${POSITIONAL_ARGS[0]:-$CONFIG_DEFAULT_EXAMPLE}
+BUILD_TYPE=${POSITIONAL_ARGS[1]:-$CONFIG_DEFAULT_BUILD_TYPE}
+
+# Handle special commands
 
 # Handle special commands
 if [ "$EXAMPLE_TYPE" = "list" ]; then
@@ -31,6 +73,8 @@ if [ "$EXAMPLE_TYPE" = "list" ]; then
     done
     echo ""
     echo "Build types: $(get_build_types)"
+    echo ""
+    echo "Flags: --clean | --no-clean | --use-cache | --no-cache"
     exit 0
 fi
 
@@ -55,6 +99,13 @@ echo "Project Directory: $PROJECT_DIR"
 echo "Example Type: $EXAMPLE_TYPE"
 echo "Build Type: $BUILD_TYPE"
 echo "Target: $IDF_TARGET"
+if [ "$USE_CCACHE" = "1" ]; then
+    export IDF_CCACHE_ENABLE=1
+    echo "Compiler cache: ENABLED"
+else
+    unset IDF_CCACHE_ENABLE
+    echo "Compiler cache: DISABLED"
+fi
 echo "======================================================"
 
 # Validate example type
@@ -85,15 +136,19 @@ cd "$PROJECT_DIR"
 BUILD_DIR=$(get_build_directory "$EXAMPLE_TYPE" "$BUILD_TYPE")
 echo "Build directory: $BUILD_DIR"
 
-# Clean previous build if it exists
-if [ -d "$BUILD_DIR" ]; then
-    echo "Cleaning previous build..."
+# Clean previous build only if explicitly requested
+if [ "$CLEAN" = "1" ] && [ -d "$BUILD_DIR" ]; then
+    echo "CLEAN=1 set: removing previous build directory..."
     rm -rf "$BUILD_DIR"
+else
+    if [ -d "$BUILD_DIR" ]; then
+        echo "Incremental build: preserving existing build directory"
+    fi
 fi
 
 # Configure and build with proper error handling
 echo "Configuring project for $IDF_TARGET..."
-if ! idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" reconfigure; then
+if ! idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" -D IDF_CCACHE_ENABLE="$USE_CCACHE" reconfigure; then
     echo "ERROR: Configuration failed"
     exit 1
 fi

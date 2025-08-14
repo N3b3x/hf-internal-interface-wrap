@@ -1301,32 +1301,29 @@ bool test_pio_system_validation() noexcept {
 
 extern "C" void app_main() {
   ESP_LOGI(TAG, "\n");
-  ESP_LOGI(TAG,
-           "╔═══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║               ESP32 PIO COMPREHENSIVE TEST SUITE (ENHANCED)                  ║");
-  ESP_LOGI(TAG,
-           "║                                                                               ║");
-  ESP_LOGI(TAG, "║  Testing EspPio with ESP-IDF v5.5 RMT peripheral + Latest Improvements      ║");
-  ESP_LOGI(TAG, "║  • Channel-specific callbacks with user data                                 ║");
-  ESP_LOGI(TAG, "║  • Resolution_hz usage for direct ESP-IDF compatibility                     ║");
-  ESP_LOGI(TAG, "║  • ESP32 variant-specific channel validation                                 ║");
-  ESP_LOGI(TAG, "║  • Enhanced clock divider calculation                                        ║");
-  ESP_LOGI(TAG, "║  • WS2812 LED protocol and automated loopback testing                       ║");
-  ESP_LOGI(TAG, "║  • ASCII Art test result decoration                                          ║");
-  ESP_LOGI(TAG,
-           "║                                                                               ║");
-  ESP_LOGI(TAG, "║  ESP32 Variant: %-32s                                ║", HfRmtGetVariantName());
+  ESP_LOGI(TAG, "╔═══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║               ESP32 PIO COMPREHENSIVE TEST SUITE (ENHANCED)                   ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                            ║");
+  ESP_LOGI(TAG, "╚═══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "║  Testing EspPio with ESP-IDF v5.5 RMT peripheral + Latest Improvements        ║");
+  ESP_LOGI(TAG, "║  • Channel-specific callbacks with user data                                  ║");
+  ESP_LOGI(TAG, "║  • Resolution_hz usage for direct ESP-IDF compatibility                       ║");
+  ESP_LOGI(TAG, "║  • ESP32 variant-specific channel validation                                  ║");
+  ESP_LOGI(TAG, "║  • Enhanced clock divider calculation                                         ║");
+  ESP_LOGI(TAG, "║  • WS2812 LED protocol and automated loopback testing                         ║");
+  ESP_LOGI(TAG, "║  • ASCII Art test result decoration                                           ║");
+  ESP_LOGI(TAG, "║                                                                               ║");
+  ESP_LOGI(TAG, "║  ESP32 Variant: %-32s                                                         ║",
+             HfRmtGetVariantName());
   ESP_LOGI(TAG, "║  Test Pins:                                                                   ║");
-  ESP_LOGI(TAG, "║    GPIO %d - Built-in RGB LED (WS2812) + TX for loopback                     ║",
+  ESP_LOGI(TAG, "║    GPIO %d - Built-in RGB LED (WS2812) + TX for loopback                      ║",
            TEST_GPIO_TX);
-  ESP_LOGI(TAG, "║    GPIO %d - RX for automated loopback verification                          ║",
+  ESP_LOGI(TAG, "║    GPIO %d - RX for automated loopback verification                           ║",
            TEST_GPIO_RX);
-  ESP_LOGI(TAG,
-           "║                                                                               ║");
-  ESP_LOGI(TAG, "║  For automated testing: Connect GPIO %d to GPIO %d with jumper wire          ║",
+  ESP_LOGI(TAG, "║                                                                               ║");
+  ESP_LOGI(TAG, "║  For automated testing: Connect GPIO %d to GPIO %d with jumper wire           ║",
            TEST_GPIO_TX, TEST_GPIO_RX);
-  ESP_LOGI(TAG,
-           "╚═══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "╚═══════════════════════════════════════════════════════════════════════════════╝");
   ESP_LOGI(TAG, "");
 
   // ASCII art banners removed
@@ -1384,6 +1381,10 @@ extern "C" void app_main() {
   // Print final summary
   print_test_summary(g_test_results, "PIO", TAG);
 
+  ESP_LOGI(TAG, "PIO comprehensive testing completed.");
+  ESP_LOGI(TAG, "System will continue running. Press RESET to restart tests.");
+
+  // Post-test banner
   ESP_LOGI(TAG, "\n");
   ESP_LOGI(TAG,
            "╔═══════════════════════════════════════════════════════════════════════════════╗");

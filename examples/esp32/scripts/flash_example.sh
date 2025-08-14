@@ -97,7 +97,7 @@ esac
 # Switch to project directory
 cd "$PROJECT_DIR"
 
-# Set build directory using configuration
+# Set build directory using configuration (same logic as build_example.sh)
 BUILD_DIR=$(get_build_directory "$EXAMPLE_TYPE" "$BUILD_TYPE")
 echo "Build directory: $BUILD_DIR"
 
@@ -132,13 +132,17 @@ if [ "$BUILD_EXISTS" = false ]; then
         rm -rf "$BUILD_DIR"
     fi
     
-    # Configure and build with retry logic
+    # Configure and build with retry logic (matching build_example.sh configuration)
     echo "Configuring project for $IDF_TARGET..."
+    
+    # Enable ccache by default (matching build script behavior)
+    export IDF_CCACHE_ENABLE=1
+    
     local config_attempts=0
     local max_config_attempts=3
     
     while [ $config_attempts -lt $max_config_attempts ]; do
-        if idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" reconfigure; then
+        if idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" -D IDF_CCACHE_ENABLE=1 reconfigure; then
             break
         else
             config_attempts=$((config_attempts + 1))

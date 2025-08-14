@@ -823,9 +823,18 @@ bool test_logger_cleanup() noexcept {
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                 ESP32-C6 ESPLOGGER COMPREHENSIVE TEST SUITE                 ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "║                 ESP32-C6 ESPLOGGER COMPREHENSIVE TEST SUITE                  ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                  ║");
+  ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                               ║");
+  ESP_LOGI(TAG, "║ Features: Logger, Logging, Logging Levels, Logging Formats, Logging Buffers, ║");
+  ESP_LOGI(TAG, "║ Logging Locations, Logging Statistics, Logging Diagnostics, Logging Health   ║");
+  ESP_LOGI(TAG, "║ Monitoring, Logging Error Handling, Logging Performance, Logging Utility     ║");
+  ESP_LOGI(TAG, "║ Functions, Logging Cleanup, Logging Edge Cases, Logging Stress Tests         ║");
+  ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                               ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "\n");
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
@@ -852,6 +861,17 @@ extern "C" void app_main(void) {
   } else {
     ESP_LOGE(TAG, "[FAILED] Some tests failed.");
   }
+
+  ESP_LOGI(TAG, "Logger comprehensive testing completed.");
+  ESP_LOGI(TAG, "System will continue running. Press RESET to restart tests.");
+
+  // Post-test banner
+  ESP_LOGI(TAG, "\n");
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                 ESP32-C6 ESPLOGGER COMPREHENSIVE TEST SUITE                  ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "\n");
 
   while (true) {
     vTaskDelay(pdMS_TO_TICKS(10000));

@@ -29,11 +29,17 @@
 // ESP32 PWM CONSTANTS
 //==============================================================================
 
+// Number of LEDC channels depends on the MCU variant. For ESP32-C6, there are 6.
+// Use centralized selection from McuSelect.h when available.
+#ifdef HF_MCU_PWM_MAX_CHANNELS
+static constexpr uint8_t HF_PWM_MAX_CHANNELS = HF_MCU_PWM_MAX_CHANNELS;
+#else
 static constexpr uint8_t HF_PWM_MAX_CHANNELS = 8;
+#endif
 static constexpr uint8_t HF_PWM_MAX_TIMERS = 4;
 static constexpr uint8_t HF_PWM_MAX_RESOLUTION = 14;
-static constexpr uint32_t HF_PWM_MIN_FREQUENCY = 1;
-static constexpr uint32_t HF_PWM_MAX_FREQUENCY = 40000000;
+static constexpr uint32_t HF_PWM_MIN_FREQUENCY = 100; // ESP32-C6 LEDC practical minimum with 10-bit resolution
+static constexpr uint32_t HF_PWM_MAX_FREQUENCY = 20000000; // ESP32-C6 LEDC practical maximum
 static constexpr uint32_t HF_PWM_DEFAULT_FREQUENCY = 1000;
 static constexpr uint8_t HF_PWM_DEFAULT_RESOLUTION = 10;
 static constexpr uint32_t HF_PWM_APB_CLOCK_HZ = 80000000;

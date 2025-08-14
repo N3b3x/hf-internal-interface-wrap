@@ -64,7 +64,6 @@ EspPwm::EspPwm(hf_u32_t base_clock_hz) noexcept : EspPwm() {
 }
 
 EspPwm::~EspPwm() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
   if (initialized_.load()) {
     ESP_LOGI(TAG, "EspPwm destructor - cleaning up");
     Deinitialize();
@@ -99,8 +98,8 @@ hf_pwm_err_t EspPwm::Initialize() noexcept {
     return result;
   }
 
-  // Enable fade functionality if requested
-  if (unit_config_.enable_fade) {
+  // Enable fade functionality if requested (guard repeated installs)
+  if (unit_config_.enable_fade && !fade_functionality_installed_) {
     result = EnableFade();
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
       ESP_LOGW(TAG, "Failed to enable fade functionality: %d", static_cast<int>(result));
@@ -109,6 +108,7 @@ hf_pwm_err_t EspPwm::Initialize() noexcept {
   }
 
   initialized_.store(true);
+  BasePwm::initialized_ = true;
   last_global_error_ = hf_pwm_err_t::PWM_SUCCESS;
   statistics_.initialization_timestamp = esp_timer_get_time();
   statistics_.last_activity_timestamp = statistics_.initialization_timestamp;
@@ -118,8 +118,6 @@ hf_pwm_err_t EspPwm::Initialize() noexcept {
 }
 
 hf_pwm_err_t EspPwm::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
   if (!initialized_.load()) {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
@@ -140,7 +138,15 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
     }
   }
 
+  // Uninstall fade functionality if installed (per ESP-IDF LEDC docs)
+  if (fade_functionality_installed_) {
+    ledc_fade_func_uninstall();
+    ESP_LOGD(TAG, "LEDC fade functionality uninstalled");
+    fade_functionality_installed_ = false;
+  }
+
   initialized_.store(false);
+  BasePwm::initialized_ = false;
   ESP_LOGI(TAG, "ESP32C6 PWM system deinitialized");
   return hf_pwm_err_t::PWM_SUCCESS;
 }
@@ -192,9 +198,13 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
   }
 
-  if (!BasePwm::IsValidDutyCycle(config.duty_initial)) {
-    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE);
-    return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
+  // Validate initial duty as RAW ticks against default resolution range
+  {
+    const hf_u32_t max_raw = (1u << HF_PWM_DEFAULT_RESOLUTION) - 1u;
+    if (config.duty_initial > max_raw) {
+      SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE);
+      return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
+    }
   }
 
   // Frequency validation will be done when configuring the timer
@@ -334,28 +344,36 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
+  ESP_LOGI(TAG, "Setting duty cycle for channel %lu to %.2f", channel_id, duty_cycle);
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
+  ESP_LOGI(TAG, "Validating channel id");
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
+  ESP_LOGI(TAG, "Validating channel configured");
   if (!channels_[channel_id].configured) {
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
+  ESP_LOGI(TAG, "Validating duty cycle");
   if (!BasePwm::IsValidDutyCycle(duty_cycle)) {
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE);
     return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
   }
 
+  ESP_LOGI(TAG, "Getting timer id");
   uint8_t timer_id = channels_[channel_id].assigned_timer;
   if (timer_id >= MAX_TIMERS) {
+    ESP_LOGE(TAG, "Invalid timer id: %d", timer_id);
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
+  ESP_LOGI(TAG, "Converting duty cycle to raw");
   uint32_t raw_duty = BasePwm::DutyCycleToRaw(duty_cycle, timers_[timer_id].resolution_bits);
+  ESP_LOGI(TAG, "Setting duty cycle raw (unlocked path): %lu", raw_duty);
   return SetDutyCycleRaw(channel_id, raw_duty);
 }
 
@@ -979,12 +997,13 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
   timer_config.duty_resolution = static_cast<ledc_timer_bit_t>(resolution_bits);
   timer_config.freq_hz = frequency_hz;
   ledc_clk_cfg_t clk_cfg = LEDC_AUTO_CLK;
+  // ESP32-C6 LEDC supports low-speed only; map clocks accordingly.
   switch (clock_source_) {
     case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-      clk_cfg = LEDC_AUTO_CLK;
+      clk_cfg = LEDC_AUTO_CLK; // PLL_80M/APB
       break;
     case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
-      clk_cfg = LEDC_USE_RC_FAST_CLK; // Use RC_FAST instead of deprecated RTC8M for ESP32
+      clk_cfg = LEDC_USE_XTAL_CLK;
       break;
     case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
       clk_cfg = LEDC_USE_RC_FAST_CLK;
@@ -1011,6 +1030,13 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
 hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
                                               const hf_pwm_channel_config_t& config,
                                               hf_u8_t timer_id) noexcept {
+  // Proactively free the GPIO from any previous owner before attaching LEDC
+  // This helps avoid: "GPIO X is not usable, maybe conflict with others"
+  if (HF_GPIO_IS_VALID_GPIO(config.gpio_pin)) {
+    gpio_hold_dis(static_cast<gpio_num_t>(config.gpio_pin));
+    gpio_reset_pin(static_cast<gpio_num_t>(config.gpio_pin));
+    gpio_set_pull_mode(static_cast<gpio_num_t>(config.gpio_pin), GPIO_FLOATING);
+  }
   ledc_channel_config_t channel_config = {};
   channel_config.speed_mode = LEDC_LOW_SPEED_MODE;
   channel_config.channel = static_cast<ledc_channel_t>(channel_id);
@@ -1018,15 +1044,17 @@ hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
   channel_config.intr_type = LEDC_INTR_DISABLE;
   channel_config.gpio_num = config.gpio_pin;
 
-  // Calculate initial duty
-  uint32_t initial_duty = BasePwm::DutyCycleToRaw(0.0f, HF_PWM_DEFAULT_RESOLUTION);
+  // Calculate initial duty (use requested initial duty if provided)
+  uint32_t initial_duty = std::min<hf_u32_t>(config.duty_initial,
+                                             (1u << HF_PWM_DEFAULT_RESOLUTION) - 1u);
   if (config.output_invert) {
     uint32_t max_duty = (1U << HF_PWM_DEFAULT_RESOLUTION) - 1;
     initial_duty = max_duty - initial_duty;
   }
   channel_config.duty = initial_duty;
 
-  channel_config.hpoint = 0; // Start at the beginning of the period
+  // Apply hpoint (phase offset) if provided
+  channel_config.hpoint = static_cast<int>(config.hpoint);
 
   esp_err_t ret = ledc_channel_config(&channel_config);
   if (ret != ESP_OK) {
@@ -1108,10 +1136,10 @@ hf_pwm_err_t EspPwm::SetClockSource(hf_pwm_clock_source_t clock_source) noexcept
   ledc_clk_cfg_t esp_clock_source;
   switch (clock_source) {
     case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-      esp_clock_source = LEDC_AUTO_CLK;
+      esp_clock_source = LEDC_AUTO_CLK; // PLL_80M/APB
       break;
     case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
-      esp_clock_source = LEDC_USE_RC_FAST_CLK; // Use RC_FAST instead of deprecated RTC8M for ESP32
+      esp_clock_source = LEDC_USE_XTAL_CLK;
       break;
     case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
       esp_clock_source = LEDC_USE_RC_FAST_CLK;
@@ -1157,7 +1185,12 @@ hf_pwm_err_t EspPwm::InitializeFadeFunctionality() noexcept {
   }
 
   esp_err_t ret = ledc_fade_func_install(0); // Install without ISR
-  if (ret != ESP_OK) {
+  if (ret == ESP_ERR_INVALID_STATE) {
+    // Already installed; treat as success
+    fade_functionality_installed_ = true;
+    ESP_LOGW(TAG, "LEDC fade functionality already installed");
+    return hf_pwm_err_t::PWM_SUCCESS;
+  } else if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to install LEDC fade functionality: %s", esp_err_to_name(ret));
     return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
@@ -1214,7 +1247,11 @@ hf_pwm_err_t EspPwm::EnableFade() noexcept {
   ESP_LOGD(TAG, "Enabling LEDC fade functionality");
 
   esp_err_t result = ledc_fade_func_install(0);
-  if (result != ESP_OK) {
+  if (result == ESP_ERR_INVALID_STATE) {
+    fade_functionality_installed_ = true;
+    ESP_LOGW(TAG, "LEDC fade function already installed");
+    return hf_pwm_err_t::PWM_SUCCESS;
+  } else if (result != ESP_OK) {
     ESP_LOGE(TAG, "Failed to install LEDC fade function: %s", esp_err_to_name(result));
     return hf_pwm_err_t::PWM_ERR_FAILURE;
   }

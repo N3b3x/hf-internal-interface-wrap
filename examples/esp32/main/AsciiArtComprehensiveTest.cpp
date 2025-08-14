@@ -446,8 +446,13 @@ bool test_performance_and_stability() noexcept {
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                    ESP32-C6 ASCII ART GENERATOR EXAMPLE                    ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "║                    ESP32-C6 ASCII ART GENERATOR EXAMPLE                      ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                  ║");
+  ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                               ║");
+  ESP_LOGI(TAG, "║ Features: ASCII Art Generator, Custom Character Management, Performance Tests║");
+  ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                               ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   vTaskDelay(pdMS_TO_TICKS(1000));
@@ -475,6 +480,16 @@ extern "C" void app_main(void) {
   } else {
     ESP_LOGE(TAG, "[FAILED] Some ASCII art generator tests failed.");
   }
+
+  ESP_LOGI(TAG, "ASCII art generator comprehensive testing completed.");
+  ESP_LOGI(TAG, "System will continue running. Press RESET to restart tests.");
+
+  // Post-test banner
+  ESP_LOGI(TAG, "\n");
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    ESP32-C6 ASCII ART GENERATOR EXAMPLE                      ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   while (true) {
     vTaskDelay(pdMS_TO_TICKS(10000));

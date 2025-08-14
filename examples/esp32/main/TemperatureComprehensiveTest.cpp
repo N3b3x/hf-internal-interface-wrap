@@ -739,7 +739,14 @@ bool test_performance_and_stress() noexcept {
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║              ESP32-C6 TEMPERATURE COMPREHENSIVE TEST SUITE                  ║");
+  ESP_LOGI(TAG, "║              ESP32-C6 TEMPERATURE COMPREHENSIVE TEST SUITE                   ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                  ║");
+  ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                               ║");
+  ESP_LOGI(TAG, "║ Features: Temperature Sensor, Range Management, Threshold Monitoring,        ║");
+  ESP_LOGI(TAG, "║ Continuous Monitoring, Calibration, Power Management, Self-Test, Health      ║");
+  ESP_LOGI(TAG, "║ Monitoring, Statistics, Diagnostics, ESP32-Specific Features, Error Handling,║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   vTaskDelay(pdMS_TO_TICKS(1000));
@@ -767,6 +774,17 @@ extern "C" void app_main(void) {
 
   // Print final results
   print_test_summary(g_test_results, "TEMPERATURE", TAG);
+
+  ESP_LOGI(TAG, "Temperature comprehensive testing completed.");
+  ESP_LOGI(TAG, "System will continue running. Press RESET to restart tests.");
+
+  // Post-test banner
+  ESP_LOGI(TAG, "\n");
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║              ESP32-C6 TEMPERATURE COMPREHENSIVE TEST SUITE                  ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "\n");
 
   // Keep running
   while (true) {

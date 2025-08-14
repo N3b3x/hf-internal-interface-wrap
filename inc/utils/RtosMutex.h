@@ -76,7 +76,7 @@ public:
 
 class RtosMutex {
 public:
-  RtosMutex() noexcept : handle_(xSemaphoreCreateMutex()) {}
+  RtosMutex() noexcept : handle_(xSemaphoreCreateRecursiveMutex()) {}
 
   ~RtosMutex() noexcept {
     if (handle_) {
@@ -105,25 +105,25 @@ public:
   bool lock() noexcept {
     if (!handle_)
       return false;
-    return xSemaphoreTake(handle_, portMAX_DELAY) == pdTRUE;
+    return xSemaphoreTakeRecursive(handle_, portMAX_DELAY) == pdTRUE;
   }
 
   bool try_lock() noexcept {
     if (!handle_)
       return false;
-    return xSemaphoreTake(handle_, 0) == pdTRUE;
+    return xSemaphoreTakeRecursive(handle_, 0) == pdTRUE;
   }
 
   bool try_lock_for(uint32_t timeout_ms) noexcept {
     if (!handle_)
       return false;
     const TickType_t ticks = RtosTime::MsToTicks(timeout_ms);
-    return xSemaphoreTake(handle_, ticks) == pdTRUE;
+    return xSemaphoreTakeRecursive(handle_, ticks) == pdTRUE;
   }
 
   void unlock() noexcept {
     if (handle_) {
-      xSemaphoreGive(handle_);
+      xSemaphoreGiveRecursive(handle_);
     }
   }
 

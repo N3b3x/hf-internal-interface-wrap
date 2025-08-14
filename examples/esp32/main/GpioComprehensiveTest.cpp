@@ -30,26 +30,29 @@
 
 static const char* TAG = "GPIO_Test";
 
-// ESP32-C6 DevKit-M-1 Safe Test Pins
+// ESP32-C6 DevKit-M-1 Test Pins (aligned to user's instrumented wiring)
 namespace TestPins {
-// Safe pins for ESP32-C6 DevKit-M-1 (avoiding strapping, USB-JTAG, SPI flash pins)
-static constexpr hf_pin_num_t LED_OUTPUT = 14;      // General purpose output
-static constexpr hf_pin_num_t DIGITAL_OUT_1 = 10;   // General purpose output
-static constexpr hf_pin_num_t DIGITAL_OUT_2 = 11;   // General purpose output
-static constexpr hf_pin_num_t DIGITAL_IN_1 = 2;     // General purpose input
-static constexpr hf_pin_num_t DIGITAL_IN_2 = 3;     // General purpose input
-static constexpr hf_pin_num_t INTERRUPT_PIN = 2;    // Interrupt testing
-static constexpr hf_pin_num_t PULL_TEST_PIN = 3;    // Pull resistor testing
-static constexpr hf_pin_num_t DRIVE_TEST_PIN = 16;  // Drive capability testing
-static constexpr hf_pin_num_t RTC_GPIO_PIN = 7;     // RTC GPIO pin
-static constexpr hf_pin_num_t ANALOG_PIN = 6;       // ADC capable pin
-static constexpr hf_pin_num_t LOOPBACK_OUT = 20;    // Output for loopback testing
-static constexpr hf_pin_num_t LOOPBACK_IN = 21;     // Input for loopback testing
-static constexpr hf_pin_num_t STRESS_TEST_PIN = 23; // Stress testing
+// Use only the following pins for general tests: 2, 4, 5, 16, 17, 23, 19, 20, 14, 15
+static constexpr hf_pin_num_t LED_OUTPUT     = 14; // Visible output; also planned for TWAI
+static constexpr hf_pin_num_t DIGITAL_OUT_1  = 4;  // General output (SPI test line)
+static constexpr hf_pin_num_t DIGITAL_OUT_2  = 23; // General output (shared with stress test)
+static constexpr hf_pin_num_t DIGITAL_IN_1   = 2;  // General input (RTC/ADC capable)
+static constexpr hf_pin_num_t DIGITAL_IN_2   = 17; // General input (SPI test line)
+static constexpr hf_pin_num_t INTERRUPT_PIN  = 2;  // Interrupt testing
+static constexpr hf_pin_num_t PULL_TEST_PIN  = 17; // Pull resistor testing
+static constexpr hf_pin_num_t DRIVE_TEST_PIN = 16; // Drive capability testing
+static constexpr hf_pin_num_t RTC_GPIO_PIN   = 5;  // RTC-capable pin within allowed set
+static constexpr hf_pin_num_t ANALOG_PIN     = 4;  // ADC-capable pin within allowed set
+
+// Loopback pair hard-wired externally; prioritize use in loopback/ISR tests
+static constexpr hf_pin_num_t LOOPBACK_OUT   = 19; // Output for loopback testing
+static constexpr hf_pin_num_t LOOPBACK_IN    = 20; // Input for loopback/ISR testing
+
+static constexpr hf_pin_num_t STRESS_TEST_PIN = 23; // Stress testing (heavily toggled)
 
 // Pins to avoid (strapping, flash, USB-JTAG)
 // GPIO 9  - Boot strapping pin
-// GPIO 15 - Boot strapping pin
+// GPIO 15 - Boot strapping pin (will be used later for TWAI, treat with care)
 // GPIO 12, 13 - USB-JTAG (D-, D+)
 // GPIO 24-30 - SPI flash pins
 } // namespace TestPins
@@ -1374,6 +1377,14 @@ extern "C" void app_main(void) {
 
   ESP_LOGI(TAG, "GPIO comprehensive testing completed.");
   ESP_LOGI(TAG, "System will continue running. Press RESET to restart tests.");
+
+  // Post-test banner
+  ESP_LOGI(TAG, "\n");
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    ESP32-C6 GPIO COMPREHENSIVE TEST SUITE                   ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "\n");
 
   // Keep the system running for monitoring
   while (true) {
