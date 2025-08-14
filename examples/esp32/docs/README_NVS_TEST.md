@@ -1,10 +1,12 @@
 # ESP32-C6 NVS Comprehensive Test Suite
 
-This document explains how to build and run the comprehensive NVS (Non-Volatile Storage) test suite for the ESP32-C6 platform.
-
 ## Overview
 
-The NVS comprehensive test suite provides full coverage of the `EspNvs` class, testing all methods, error conditions, edge cases, and boundary conditions. The tests are designed to run without exceptions and without RTTI, making them suitable for embedded environments.
+The NVS Comprehensive Test Suite provides extensive validation of the `EspNvs` class for ESP32-C6 platforms using ESP-IDF v5.5+. This test suite demonstrates complete Non-Volatile Storage functionality, data persistence, error handling, and performance optimization with a focus on embedded environments using `noexcept` functions.
+
+**✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware**
+
+The comprehensive test suite provides full coverage of the `EspNvs` class, testing all methods, error conditions, edge cases, and boundary conditions. The tests are designed to run without exceptions and without RTTI, making them suitable for embedded environments.
 
 ## Test Coverage
 
@@ -70,41 +72,63 @@ The test suite covers:
     - Rapid init/deinit cycles
     - Mixed operation types
 
-## Building the Test
+## Hardware Requirements
+
+### Supported Platforms
+- **Primary Target**: ESP32-C6-DevKitM-1
+- **ESP-IDF Version**: v5.5 or later
+- **Minimum Flash**: 4MB
+- **Minimum RAM**: 256KB
+
+### Connections
+- **USB**: For flashing and serial monitoring (built-in USB-JTAG)
+- **No External Hardware Required**: All tests use internal NVS partition
+
+## Building and Running
 
 ### Prerequisites
-- ESP-IDF v5.5 or later
-- ESP32-C6 DevKit
-- USB cable for flashing
+```bash
+# ESP-IDF v5.5+ installation required
+. $IDF_PATH/export.sh
 
-### Build Steps
+# Set target platform
+export IDF_TARGET=esp32c6
+```
 
-1. **Set up ESP-IDF environment:**
-   ```bash
-   . $IDF_PATH/export.sh
-   ```
+### Quick Start
+```bash
+# Navigate to examples directory
+cd examples/esp32
 
-2. **Navigate to the examples directory:**
-   ```bash
-   cd examples/esp32
-   ```
+# Build NVS test
+idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Release
 
-3. **Build the NVS test:**
-   ```bash
-   idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Release
-   ```
+# Flash and monitor
+idf.py -p /dev/ttyUSB0 flash monitor
+```
 
-   For debug build with more verbose output:
-   ```bash
-   idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Debug
-   ```
+### Alternative Build Methods
 
-4. **Flash to device:**
-   ```bash
-   idf.py -p /dev/ttyUSB0 flash monitor
-   ```
-   
-   Replace `/dev/ttyUSB0` with your actual serial port.
+#### Using Build Scripts (Recommended)
+```bash
+# Source ESP-IDF environment
+source /path/to/esp-idf/export.sh
+
+# Build with optimization
+./build_example.sh nvs_test Release
+
+# Flash to device
+idf.py -B build_nvs_test_Release flash monitor
+```
+
+#### Debug Build for Development
+```bash
+# Build with debug symbols and verbose output
+idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Debug
+
+# Run with detailed logging
+idf.py -p /dev/ttyUSB0 flash monitor
+```
 
 ## Running the Test
 
