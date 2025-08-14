@@ -323,20 +323,20 @@ bool test_ascii_art_stress() noexcept {
 //==============================================================================
 
 /**
- * @brief Test basic recursive mutex creation and destruction
+ * @brief Test basic mutex creation and destruction (now recursive by default)
  */
 bool test_recursive_mutex_creation() noexcept {
-  ESP_LOGI(TAG, "Testing recursive mutex creation...");
+  ESP_LOGI(TAG, "Testing RtosMutex creation (now recursive by default)...");
 
   {
-    RtosRecursiveMutex mutex;
+    RtosMutex mutex;
     if (mutex.native_handle() == nullptr) {
-      ESP_LOGE(TAG, "Failed to create recursive mutex");
+      ESP_LOGE(TAG, "Failed to create RtosMutex");
       return false;
     }
   } // Mutex should be destroyed here
 
-  ESP_LOGI(TAG, "[SUCCESS] Recursive mutex creation successful");
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex creation successful");
   return true;
 }
 
@@ -344,20 +344,20 @@ bool test_recursive_mutex_creation() noexcept {
  * @brief Test basic lock/unlock operations
  */
 bool test_recursive_mutex_basic_lock() noexcept {
-  ESP_LOGI(TAG, "Testing recursive mutex basic lock/unlock...");
+  ESP_LOGI(TAG, "Testing RtosMutex basic lock/unlock...");
 
-  RtosRecursiveMutex mutex;
+  RtosMutex mutex;
 
   // Test basic lock
   if (!mutex.lock()) {
-    ESP_LOGE(TAG, "Failed to lock recursive mutex");
+    ESP_LOGE(TAG, "Failed to lock RtosMutex");
     return false;
   }
 
   // Test unlock
   mutex.unlock();
 
-  ESP_LOGI(TAG, "[SUCCESS] Recursive mutex basic lock/unlock successful");
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex basic lock/unlock successful");
   return true;
 }
 
@@ -365,23 +365,23 @@ bool test_recursive_mutex_basic_lock() noexcept {
  * @brief Test recursive locking - same task acquiring mutex multiple times
  */
 bool test_recursive_mutex_recursive_lock() noexcept {
-  ESP_LOGI(TAG, "Testing recursive mutex recursive locking...");
+  ESP_LOGI(TAG, "Testing RtosMutex recursive locking...");
 
-  RtosRecursiveMutex mutex;
+  RtosMutex mutex;
 
   // Lock the mutex multiple times
   if (!mutex.lock()) {
-    ESP_LOGE(TAG, "Failed to lock recursive mutex (first time)");
+    ESP_LOGE(TAG, "Failed to lock RtosMutex (first time)");
     return false;
   }
 
   if (!mutex.lock()) {
-    ESP_LOGE(TAG, "Failed to lock recursive mutex (second time)");
+    ESP_LOGE(TAG, "Failed to lock RtosMutex (second time)");
     return false;
   }
 
   if (!mutex.lock()) {
-    ESP_LOGE(TAG, "Failed to lock recursive mutex (third time)");
+    ESP_LOGE(TAG, "Failed to lock RtosMutex (third time)");
     return false;
   }
 
@@ -390,7 +390,7 @@ bool test_recursive_mutex_recursive_lock() noexcept {
   mutex.unlock();
   mutex.unlock();
 
-  ESP_LOGI(TAG, "[SUCCESS] Recursive mutex recursive locking successful");
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex recursive locking successful");
   return true;
 }
 
@@ -398,9 +398,9 @@ bool test_recursive_mutex_recursive_lock() noexcept {
  * @brief Test try_lock functionality
  */
 bool test_recursive_mutex_try_lock() noexcept {
-  ESP_LOGI(TAG, "Testing recursive mutex try_lock...");
+  ESP_LOGI(TAG, "Testing RtosMutex try_lock...");
 
-  RtosRecursiveMutex mutex;
+  RtosMutex mutex;
 
   // Test successful try_lock
   if (!mutex.try_lock()) {
@@ -418,7 +418,7 @@ bool test_recursive_mutex_try_lock() noexcept {
   mutex.unlock();
   mutex.unlock();
 
-  ESP_LOGI(TAG, "[SUCCESS] Recursive mutex try_lock successful");
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex try_lock successful");
   return true;
 }
 
@@ -426,9 +426,9 @@ bool test_recursive_mutex_try_lock() noexcept {
  * @brief Test try_lock_for functionality with timeout
  */
 bool test_recursive_mutex_try_lock_for() noexcept {
-  ESP_LOGI(TAG, "Testing recursive mutex try_lock_for...");
+  ESP_LOGI(TAG, "Testing RtosMutex try_lock_for...");
 
-  RtosRecursiveMutex mutex;
+  RtosMutex mutex;
 
   // Test try_lock_for with timeout when mutex is available
   if (!mutex.try_lock_for(100)) {
@@ -446,7 +446,7 @@ bool test_recursive_mutex_try_lock_for() noexcept {
   mutex.unlock();
   mutex.unlock();
 
-  ESP_LOGI(TAG, "[SUCCESS] Recursive mutex try_lock_for successful");
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex try_lock_for successful");
   return true;
 }
 
@@ -454,9 +454,9 @@ bool test_recursive_mutex_try_lock_for() noexcept {
  * @brief Test FreeRTOS-style Take/Give API
  */
 bool test_recursive_mutex_take_give() noexcept {
-  ESP_LOGI(TAG, "Testing recursive mutex Take/Give API...");
+  ESP_LOGI(TAG, "Testing RtosMutex Take/Give API...");
 
-  RtosRecursiveMutex mutex;
+  RtosMutex mutex;
 
   // Test Take
   if (!mutex.Take()) {
@@ -474,7 +474,7 @@ bool test_recursive_mutex_take_give() noexcept {
   mutex.Give();
   mutex.Give();
 
-  ESP_LOGI(TAG, "[SUCCESS] Recursive mutex Take/Give API successful");
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex Take/Give API successful");
   return true;
 }
 
@@ -482,47 +482,47 @@ bool test_recursive_mutex_take_give() noexcept {
  * @brief Test RAII lock guard with recursive mutex
  */
 bool test_recursive_mutex_lock_guard() noexcept {
-  ESP_LOGI(TAG, "Testing recursive mutex with RAII lock guard...");
+  ESP_LOGI(TAG, "Testing RtosMutex with RAII lock guard...");
 
-  RtosRecursiveMutex mutex;
+  RtosMutex mutex;
 
   {
     // Create lock guard
-    RecursiveMutexLockGuard guard(mutex);
+    MutexLockGuard guard(mutex);
     if (!guard.IsLocked()) {
-      ESP_LOGE(TAG, "Lock guard failed to acquire recursive mutex");
+      ESP_LOGE(TAG, "Lock guard failed to acquire RtosMutex");
       return false;
     }
 
     {
       // Create nested lock guard
-      RecursiveMutexLockGuard nested_guard(mutex);
+      MutexLockGuard nested_guard(mutex);
       if (!nested_guard.IsLocked()) {
-        ESP_LOGE(TAG, "Nested lock guard failed to acquire recursive mutex");
+        ESP_LOGE(TAG, "Nested lock guard failed to acquire RtosMutex");
         return false;
       }
     } // nested_guard destructor should unlock once
 
   } // guard destructor should unlock once more
 
-  ESP_LOGI(TAG, "[SUCCESS] Recursive mutex RAII lock guard successful");
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex RAII lock guard successful");
   return true;
 }
 
 /**
  * @brief Demonstrate a practical use case with nested function calls
  */
-static RtosRecursiveMutex g_shared_resource_mutex;
+static RtosMutex g_shared_resource_mutex;
 static int g_shared_counter = 0;
 
 void increment_counter_nested() {
-  RecursiveMutexLockGuard guard(g_shared_resource_mutex);
+  MutexLockGuard guard(g_shared_resource_mutex);
   g_shared_counter++;
   ESP_LOGD(TAG, "Nested function: counter = %d", g_shared_counter);
 }
 
 void increment_counter_with_nested_call() {
-  RecursiveMutexLockGuard guard(g_shared_resource_mutex);
+  MutexLockGuard guard(g_shared_resource_mutex);
   g_shared_counter++;
   ESP_LOGD(TAG, "Main function: counter = %d", g_shared_counter);
   
@@ -534,7 +534,7 @@ void increment_counter_with_nested_call() {
 }
 
 bool test_recursive_mutex_practical_example() noexcept {
-  ESP_LOGI(TAG, "Testing recursive mutex practical example...");
+  ESP_LOGI(TAG, "Testing RtosMutex practical example...");
 
   g_shared_counter = 0;
 
@@ -546,7 +546,7 @@ bool test_recursive_mutex_practical_example() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "[SUCCESS] Recursive mutex practical example successful");
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex practical example successful");
   return true;
 }
 
@@ -580,8 +580,8 @@ extern "C" void app_main(void) {
   RUN_TEST(test_ascii_art_performance);
   RUN_TEST(test_ascii_art_stress);
 
-  // Recursive Mutex Tests
-  ESP_LOGI(TAG, "\n=== RECURSIVE MUTEX TESTS ===");
+  // Recursive Mutex Tests (RtosMutex now recursive by default)
+  ESP_LOGI(TAG, "\n=== RTOS MUTEX TESTS (NOW RECURSIVE) ===");
   RUN_TEST(test_recursive_mutex_creation);
   RUN_TEST(test_recursive_mutex_basic_lock);
   RUN_TEST(test_recursive_mutex_recursive_lock);

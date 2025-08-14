@@ -4,7 +4,7 @@
  *
  * This header provides platform-agnostic mutex, lock guard, and timing utilities
  * that work across different RTOS implementations (FreeRTOS on ESP32, STM32, RP2040).
- * The implementation includes standard mutexes, shared mutexes for reader-writer patterns,
+ * The implementation includes recursive mutexes, shared mutexes for reader-writer patterns,
  * RAII lock guards, and high-resolution timing functions for synchronization.
  *
  * @author Nebiyu Tadesse
@@ -15,28 +15,29 @@
  *
  * @section recursive_mutex_example Recursive Mutex Usage Example
  * 
- * The RtosRecursiveMutex class allows the same task to acquire the mutex multiple times
- * without blocking itself. This is particularly useful for nested function calls or
- * recursive algorithms that need synchronized access to shared resources.
+ * The RtosMutex class now uses recursive mutexes by default, allowing the same task 
+ * to acquire the mutex multiple times without blocking itself. This is particularly 
+ * useful for nested function calls or recursive algorithms that need synchronized 
+ * access to shared resources.
  * 
  * @code
  * #include "utils/RtosMutex.h"
  * 
  * // Global recursive mutex for protecting shared resource
- * RtosRecursiveMutex g_resource_mutex;
+ * RtosMutex g_resource_mutex;
  * int g_shared_counter = 0;
  * 
  * void nested_function() {
  *     // This function can be called from within another function that
  *     // already holds the mutex, preventing self-deadlock
- *     RecursiveMutexLockGuard lock(g_resource_mutex);
+ *     MutexLockGuard lock(g_resource_mutex);
  *     g_shared_counter++;
  *     ESP_LOGI("TAG", "Nested: counter = %d", g_shared_counter);
  * }
  * 
  * void main_function() {
  *     // Acquire the mutex
- *     RecursiveMutexLockGuard lock(g_resource_mutex);
+ *     MutexLockGuard lock(g_resource_mutex);
  *     g_shared_counter++;
  *     ESP_LOGI("TAG", "Main: counter = %d", g_shared_counter);
  *     
@@ -49,7 +50,7 @@
  * 
  * // Alternative manual locking approach
  * void manual_recursive_locking() {
- *     RtosRecursiveMutex mutex;
+ *     RtosMutex mutex;
  *     
  *     // Lock multiple times
  *     mutex.lock();   // First acquisition
@@ -128,7 +129,7 @@ public:
 
 class RtosMutex {
 public:
-  RtosMutex() noexcept : handle_(xSemaphoreCreateMutex()) {}
+  RtosMutex() noexcept : handle_(xSemaphoreCreateRecursiveMutex()) {}
 
   ~RtosMutex() noexcept {
     if (handle_) {
@@ -144,109 +145,6 @@ public:
   }
 
   RtosMutex& operator=(RtosMutex&& other) noexcept {
-    if (this != &other) {
-      if (handle_) {
-        vSemaphoreDelete(handle_);
-      }
-      handle_ = other.handle_;
-      other.handle_ = nullptr;
-    }
-    return *this;
-  }
-
-  bool lock() noexcept {
-    if (!handle_)
-      return false;
-    return xSemaphoreTake(handle_, portMAX_DELAY) == pdTRUE;
-  }
-
-  bool try_lock() noexcept {
-    if (!handle_)
-      return false;
-    return xSemaphoreTake(handle_, 0) == pdTRUE;
-  }
-
-  bool try_lock_for(uint32_t timeout_ms) noexcept {
-    if (!handle_)
-      return false;
-    const TickType_t ticks = RtosTime::MsToTicks(timeout_ms);
-    return xSemaphoreTake(handle_, ticks) == pdTRUE;
-  }
-
-  void unlock() noexcept {
-    if (handle_) {
-      xSemaphoreGive(handle_);
-    }
-  }
-
-  SemaphoreHandle_t native_handle() const noexcept {
-    return handle_;
-  }
-
-  // Convenience FreeRTOS-style API -------------------------------------------------
-  bool Take(uint32_t timeout_ms = 0) noexcept {
-    if (timeout_ms > 0) {
-      return try_lock_for(timeout_ms);
-    }
-    return lock();
-  }
-
-  void Give() noexcept {
-    unlock();
-  }
-
-  // Shared lock methods (delegated to regular mutex for simplicity)
-  bool lock_shared() noexcept {
-    return lock();
-  }
-
-  bool try_lock_shared() noexcept {
-    return try_lock();
-  }
-
-  bool try_lock_shared_for(uint32_t timeout_ms) noexcept {
-    return try_lock_for(timeout_ms);
-  }
-
-  void unlock_shared() noexcept {
-    unlock();
-  }
-
-private:
-  SemaphoreHandle_t handle_;
-};
-
-/**
- * @brief Recursive mutex implementation for RTOS environments.
- * 
- * This class provides a recursive mutex that allows the same task to acquire
- * the mutex multiple times without blocking itself. Each successful lock
- * operation must be matched with a corresponding unlock operation.
- * 
- * Features:
- * - Prevents self-deadlocks when a task needs to acquire the same mutex multiple times
- * - Compatible with existing RAII lock guard classes
- * - Standard mutex interface (lock, unlock, try_lock, etc.)
- * - FreeRTOS-style API (Take, Give)
- */
-class RtosRecursiveMutex {
-public:
-  RtosRecursiveMutex() noexcept : handle_(xSemaphoreCreateRecursiveMutex()) {}
-
-  ~RtosRecursiveMutex() noexcept {
-    if (handle_) {
-      vSemaphoreDelete(handle_);
-    }
-  }
-
-  RtosRecursiveMutex(const RtosRecursiveMutex&) = delete;
-  RtosRecursiveMutex& operator=(const RtosRecursiveMutex&) = delete;
-
-  RtosRecursiveMutex(RtosRecursiveMutex&& other) noexcept : handle_(other.handle_) {
-    other.handle_ = nullptr;
-  }
-
-  RtosRecursiveMutex& operator=(RtosRecursiveMutex&& other) noexcept {
     if (this != &other) {
       if (handle_) {
         vSemaphoreDelete(handle_);
@@ -318,6 +216,7 @@ public:
 private:
   SemaphoreHandle_t handle_;
 };
+
 
 class RtosSharedMutex {
 public:
@@ -605,8 +504,5 @@ private:
 template <typename Mutex>
 using RtosLockGuard = RtosUniqueLock<Mutex>;
 
-/// @brief Convenience alias for RtosMutex lock guard
+/// @brief Convenience alias for RtosMutex lock guard (now recursive)
 using MutexLockGuard = RtosUniqueLock<RtosMutex>;
-
-/// @brief Convenience alias for RtosRecursiveMutex lock guard
-using RecursiveMutexLockGuard = RtosUniqueLock<RtosRecursiveMutex>;
