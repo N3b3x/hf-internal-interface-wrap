@@ -1,38 +1,42 @@
-# PIO Comprehensive Test Suite Documentation
+# ESP32-C6 PIO Comprehensive Test Suite Documentation
 
 ## Overview
 
-The PIO Comprehensive Test Suite is designed to thoroughly validate the `EspPio` class implementation using the ESP32-C6's RMT (Remote Control) peripheral with ESP-IDF v5.5+. This test suite provides comprehensive coverage of PIO functionality including WS2812 LED protocol timing and automated loopback testing.
+The PIO Comprehensive Test Suite provides extensive validation of the `EspPio` class for ESP32-C6 platforms using the ESP32-C6's RMT (Remote Control) peripheral with ESP-IDF v5.5+. This test suite demonstrates complete PIO functionality including WS2812 LED protocol timing, automated loopback testing, channel-specific callbacks, and advanced RMT features with a focus on embedded environments using `noexcept` functions.
 
-**✅ Status: Successfully built and tested for ESP32-C6-DevKitM-1**
+**✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware**
 
 ## Features Tested
 
 ### Core Functionality
-- Constructor/Destructor behavior
-- Lifecycle management (Initialize/Deinitialize)
-- Channel configuration and management
-- Symbol transmission and reception
-- Error handling and edge cases
+- **Constructor/Destructor Behavior**: Object lifecycle management and resource allocation
+- **Lifecycle Management**: Initialize/Deinitialize operations with state validation
+- **Channel Configuration**: Multi-channel setup and management
+- **Symbol Transmission/Reception**: High-speed data transfer with timing validation
+- **Error Handling**: Comprehensive error condition testing and recovery
 
-### RMT-Specific Features
-- Carrier modulation (38kHz for IR protocols)
-- Loopback mode testing
-- Encoder configuration
-- Advanced RMT configuration (DMA, memory blocks, queue depth)
-- Idle level configuration
+### Advanced RMT Features
+- **Channel-Specific Callbacks**: Individual channel callback management with proper user data handling
+- **Resolution Control**: Nanosecond-precision timing configuration with internal conversion
+- **Carrier Modulation**: 38kHz carrier generation for IR protocols
+- **Loopback Mode Testing**: Internal signal routing for validation
+- **Encoder Configuration**: Hardware encoder setup and optimization
+- **DMA Support**: Direct Memory Access for high-performance transfers
+- **Memory Block Management**: Configurable memory allocation per channel
 
 ### Protocol Testing
-- **WS2812 LED Protocol**: Complete timing validation using built-in RGB LED
-- **Automated Loopback Testing**: Transmission/reception verification without external wiring
-- **Logic Analyzer Patterns**: Various test patterns for signal verification
-- **Frequency Sweep**: Square wave generation at different frequencies
+- **WS2812 LED Protocol**: Complete timing validation using built-in RGB LED on GPIO8
+- **Automated Loopback Testing**: TX/RX verification with GPIO8→GPIO18 connection
+- **Logic Analyzer Patterns**: Recognizable test patterns for signal analysis
+- **Frequency Sweep**: Multi-frequency square wave generation and validation
+- **Timing Precision**: Nanosecond-level timing accuracy verification
 
-### Diagnostics
-- Statistics and performance metrics
-- System validation
-- Callback functionality
-- Stress testing
+### Diagnostics & Performance
+- **Statistics Tracking**: Comprehensive performance metrics and operation counting
+- **System Validation**: End-to-end system functionality verification
+- **Callback Functionality**: Interrupt-driven callback testing with channel isolation
+- **Stress Testing**: High-load scenarios and rapid operation cycles
+- **Channel Isolation**: Independent channel operation verification
 
 ## Hardware Setup
 
