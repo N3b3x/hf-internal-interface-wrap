@@ -62,6 +62,7 @@ bool test_gpio_initialization_and_configuration() noexcept;
 bool test_gpio_input_output_operations() noexcept;
 bool test_gpio_pull_resistors() noexcept;
 bool test_gpio_interrupt_functionality() noexcept;
+bool test_gpio_interrupt_loopback() noexcept;
 bool test_gpio_advanced_features() noexcept;
 bool test_gpio_rtc_functionality() noexcept;
 bool test_gpio_glitch_filters() noexcept;
@@ -416,6 +417,87 @@ bool test_gpio_interrupt_functionality() noexcept {
   ESP_LOGI(TAG, "Note: For complete interrupt testing, external signal generation would be needed");
   ESP_LOGI(TAG, "[SUCCESS] GPIO interrupt functionality test completed");
   return true;
+}
+
+/**
+ * @brief Test ISR callback handling using loopback between output and input pins
+ */
+static volatile uint32_t s_isr_loopback_count = 0;
+
+static void IRAM_ATTR gpio_isr_loopback_cb(BaseGpio* /*gpio*/,
+                                           hf_gpio_interrupt_trigger_t /*trigger*/,
+                                           void* /*user_data*/) {
+  s_isr_loopback_count++;
+}
+
+bool test_gpio_interrupt_loopback() noexcept {
+  ESP_LOGI(TAG, "=== Testing GPIO Interrupt Loopback (ISR) ===");
+
+  // Use the same loopback pins as the loopback test
+  EspGpio output_gpio(TestPins::LOOPBACK_OUT, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                      hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+  EspGpio input_gpio(TestPins::LOOPBACK_IN, hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+                     hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+
+  if (!output_gpio.EnsureInitialized() || !input_gpio.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize GPIOs for ISR loopback test");
+    return false;
+  }
+
+  // Ensure input has a defined idle level
+  input_gpio.SetPullMode(hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN);
+
+  // Clear counters and configure BOTH_EDGES with ISR callback
+  s_isr_loopback_count = 0;
+
+  auto cfg_res = input_gpio.ConfigureInterrupt(
+      hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES, gpio_isr_loopback_cb,
+      nullptr);
+  if (cfg_res != hf_gpio_err_t::GPIO_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure ISR on input pin");
+    return false;
+  }
+
+  if (input_gpio.EnableInterrupt() != hf_gpio_err_t::GPIO_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable ISR on input pin");
+    return false;
+  }
+
+  // Generate edges by toggling output: expect 10 interrupts (5 high + 5 low)
+  const int cycles = 5;
+  output_gpio.SetInactive();
+  vTaskDelay(pdMS_TO_TICKS(10));
+  for (int i = 0; i < cycles; i++) {
+    output_gpio.SetActive();
+    vTaskDelay(pdMS_TO_TICKS(10));
+    output_gpio.SetInactive();
+    vTaskDelay(pdMS_TO_TICKS(10));
+  }
+
+  // Small settle time
+  vTaskDelay(pdMS_TO_TICKS(20));
+
+  // Read interrupt stats
+  InterruptStatus status;
+  input_gpio.GetInterruptStatus(status);
+
+  input_gpio.DisableInterrupt();
+
+  // Accept if we saw most of the expected edges (tolerate minor timing variance)
+  const uint32_t expected = static_cast<uint32_t>(cycles * 2);
+  const uint32_t observed = status.interrupt_count;
+
+  ESP_LOGI(TAG, "ISR loopback: expected >= %u, observed %u (callback count %u)", expected,
+           observed, s_isr_loopback_count);
+
+  bool pass = observed >= expected - 1; // allow off-by-one
+  if (pass) {
+    ESP_LOGI(TAG, "[SUCCESS] GPIO interrupt loopback test passed");
+  } else {
+    ESP_LOGE(TAG, "[FAILURE] GPIO interrupt loopback test failed");
+  }
+
+  return pass;
 }
 
 /**
@@ -1283,6 +1365,7 @@ extern "C" void app_main(void) {
 
   // Specialized tests
   RUN_TEST(test_gpio_loopback_operations);
+  RUN_TEST(test_gpio_interrupt_loopback);
   RUN_TEST(test_gpio_diagnostics_and_statistics);
   RUN_TEST(test_gpio_power_consumption);
 
