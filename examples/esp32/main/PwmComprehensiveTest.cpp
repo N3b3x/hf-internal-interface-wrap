@@ -13,18 +13,73 @@
  * - Status and diagnostics (statistics, error reporting)
  * - Callbacks (period, fault)
  * - Edge cases and stress testing
+ *
+ * GPIO14 is used as a test progression indicator that toggles between HIGH/LOW
+ * each time a test completes, providing visual feedback for test progression.
  */
 
 #include "TestFramework.h"
 #include "base/BasePwm.h"
 #include "mcu/esp32/EspPwm.h"
+#include "mcu/esp32/EspGpio.h" // Add GPIO support for test progression indicator
 
 static const char* TAG = "PWM_Test";
 static TestResults g_test_results;
 
+// Test progression indicator GPIO
+static EspGpio* g_test_progress_gpio = nullptr;
+static bool g_test_progress_state = false;
+
 //==============================================================================
 // HELPER FUNCTIONS
 //==============================================================================
+
+/**
+ * @brief Initialize the test progression indicator GPIO
+ */
+bool init_test_progress_indicator() noexcept {
+  // Use GPIO14 as the test progression indicator (visible LED on most ESP32 dev boards)
+  g_test_progress_gpio = new EspGpio(14, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                                     hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+  
+  if (!g_test_progress_gpio->EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO");
+    return false;
+  }
+  
+  // Start with LOW state
+  g_test_progress_gpio->SetInactive();
+  g_test_progress_state = false;
+  
+  ESP_LOGI(TAG, "Test progression indicator initialized on GPIO14");
+  return true;
+}
+
+/**
+ * @brief Flip the test progression indicator to show next test
+ */
+void flip_test_progress_indicator() noexcept {
+  if (g_test_progress_gpio) {
+    g_test_progress_state = !g_test_progress_state;
+    if (g_test_progress_state) {
+      g_test_progress_gpio->SetActive();
+    } else {
+      g_test_progress_gpio->SetInactive();
+    }
+    ESP_LOGI(TAG, "Test progression indicator: %s", g_test_progress_state ? "HIGH" : "LOW");
+  }
+}
+
+/**
+ * @brief Cleanup the test progression indicator GPIO
+ */
+void cleanup_test_progress_indicator() noexcept {
+  if (g_test_progress_gpio) {
+    g_test_progress_gpio->SetInactive(); // Ensure pin is low
+    delete g_test_progress_gpio;
+    g_test_progress_gpio = nullptr;
+  }
+}
 
 /**
  * @brief Create a default PWM configuration for testing
@@ -1166,57 +1221,88 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
+  // Initialize test progression indicator GPIO14
+  // This pin will toggle between HIGH/LOW each time a test completes
+  // providing visual feedback for test progression on oscilloscope/logic analyzer
+  if (!init_test_progress_indicator()) {
+    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
+  }
+
   // Constructor/Destructor Tests
   ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
   RUN_TEST(test_constructor_default);
+  flip_test_progress_indicator();
   RUN_TEST(test_destructor_cleanup);
+  flip_test_progress_indicator();
 
   // Lifecycle Tests
   ESP_LOGI(TAG, "\n=== LIFECYCLE TESTS ===");
   RUN_TEST(test_initialization_states);
+  flip_test_progress_indicator();
   RUN_TEST(test_lazy_initialization);
+  flip_test_progress_indicator();
 
   // Configuration Tests
   ESP_LOGI(TAG, "\n=== CONFIGURATION TESTS ===");
   RUN_TEST(test_mode_configuration);
+  flip_test_progress_indicator();
   RUN_TEST(test_clock_source_configuration);
+  flip_test_progress_indicator();
 
   // Channel Management Tests
   ESP_LOGI(TAG, "\n=== CHANNEL MANAGEMENT TESTS ===");
   RUN_TEST(test_channel_configuration);
+  flip_test_progress_indicator();
   RUN_TEST(test_channel_enable_disable);
+  flip_test_progress_indicator();
 
   // PWM Control Tests
   ESP_LOGI(TAG, "\n=== PWM CONTROL TESTS ===");
   RUN_TEST(test_duty_cycle_control);
+  flip_test_progress_indicator();
   RUN_TEST(test_frequency_control);
+  flip_test_progress_indicator();
   RUN_TEST(test_phase_shift_control);
+  flip_test_progress_indicator();
 
   // Advanced Features Tests
   ESP_LOGI(TAG, "\n=== ADVANCED FEATURES TESTS ===");
   RUN_TEST(test_synchronized_operations);
+  flip_test_progress_indicator();
   RUN_TEST(test_complementary_outputs);
+  flip_test_progress_indicator();
 
   // ESP32-Specific Features Tests
   ESP_LOGI(TAG, "\n=== ESP32-SPECIFIC FEATURES TESTS ===");
   RUN_TEST(test_hardware_fade);
+  flip_test_progress_indicator();
   RUN_TEST(test_idle_level_control);
+  flip_test_progress_indicator();
   RUN_TEST(test_timer_management);
+  flip_test_progress_indicator();
 
   // Status and Diagnostics Tests
   ESP_LOGI(TAG, "\n=== STATUS AND DIAGNOSTICS TESTS ===");
   RUN_TEST(test_status_reporting);
+  flip_test_progress_indicator();
   RUN_TEST(test_statistics_and_diagnostics);
+  flip_test_progress_indicator();
 
   // Callback Tests
   ESP_LOGI(TAG, "\n=== CALLBACK TESTS ===");
   RUN_TEST(test_callbacks);
+  flip_test_progress_indicator();
 
   // Edge Cases and Stress Tests
   ESP_LOGI(TAG, "\n=== EDGE CASES AND STRESS TESTS ===");
   RUN_TEST(test_edge_cases);
+  flip_test_progress_indicator();
   RUN_TEST(test_stress_scenarios);
+  flip_test_progress_indicator();
 
+  // Final test progression indicator flip
+  flip_test_progress_indicator();
+  
   // Print final summary
   ESP_LOGI(TAG, "\n");
   print_test_summary(g_test_results, "ESP32 PWM COMPREHENSIVE", TAG);
@@ -1230,6 +1316,9 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "║                    ESP32-C6 PWM COMPREHENSIVE TEST SUITE                       ║");
   ESP_LOGI(TAG, "║                         HardFOC Internal Interface                             ║");
   ESP_LOGI(TAG, "╚════════════════════════════════════════════════════════════════════════════════╝");
+
+  // Cleanup test progression indicator
+  cleanup_test_progress_indicator();
 
   while (true) {
     vTaskDelay(pdMS_TO_TICKS(10000));
