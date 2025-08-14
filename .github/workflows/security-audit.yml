@@ -302,9 +302,9 @@ jobs:
         if: steps.esp-idf-cache.outputs.cache-hit != 'true'
         run: |
           echo "🔧 Installing ESP-IDF for component analysis..."
-          if [ -d "~/esp-idf/.git" ]; then
+          if [ -d "$HOME/esp-idf/.git" ]; then
             echo "Existing esp-idf repo found, updating..."
-            cd ~/esp-idf
+            cd "$HOME/esp-idf"
             git remote set-url origin https://github.com/espressif/esp-idf.git
             git fetch --tags --force origin
             BR="${{ steps.get-idf-version.outputs.idf_git_branch }}"
@@ -312,28 +312,28 @@ jobs:
               git checkout -B "$BR" "origin/$BR"
             git submodule update --init --recursive
           else
-            rm -rf ~/esp-idf
+            rm -rf "$HOME/esp-idf"
             git clone --recursive --depth 1 --branch ${{ steps.get-idf-version.outputs.idf_git_branch }} \
-              https://github.com/espressif/esp-idf.git ~/esp-idf
-            cd ~/esp-idf
+              https://github.com/espressif/esp-idf.git "$HOME/esp-idf"
+            cd "$HOME/esp-idf"
           fi
           ./install.sh esp32,esp32c6,esp32s3
           
       - name: Setup ESP-IDF environment
         run: |
           echo "🔧 Setting up ESP-IDF environment..."
-          if [ ! -f ~/esp-idf/export.sh ]; then
+          if [ ! -f "$HOME/esp-idf/export.sh" ]; then
             echo "ESP-IDF installation failed - export.sh not found"
             exit 1
           fi
           # shellcheck source=/dev/null
-          source ~/esp-idf/export.sh
+          source "$HOME/esp-idf/export.sh"
           echo "ESP-IDF environment setup complete"
           
       - name: Analyze ESP-IDF component dependencies
         run: |
           # shellcheck source=/dev/null
-          source ~/esp-idf/export.sh
+          source "$HOME/esp-idf/export.sh"
           
           echo "Analyzing ESP-IDF component dependencies..."
           
