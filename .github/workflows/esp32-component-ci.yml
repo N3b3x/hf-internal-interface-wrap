@@ -188,7 +188,7 @@ jobs:
       - name: ESP-IDF Build with caching
         uses: espressif/esp-idf-ci-action@v1
         with:
-          esp_idf_version: ${{ matrix.idf_version }}
+          esp_idf_version: ${{ matrix.idf_version_docker }}
           target: ${{ env.IDF_TARGET }}
           path: .
           extra_docker_args: >-
