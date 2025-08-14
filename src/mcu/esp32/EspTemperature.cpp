@@ -37,6 +37,9 @@
 #include <cstring>
 
 const char* EspTemperature::TAG = "EspTemperature";
+RtosMutex EspTemperature::s_shared_mutex_;
+std::atomic<int> EspTemperature::s_refcount_{0};
+temperature_sensor_handle_t EspTemperature::s_shared_handle_ = nullptr;
 
 //--------------------------------------
 //  ESP32-C6 Temperature Range Configuration
@@ -111,12 +114,10 @@ EspTemperature::EspTemperature(const esp_temp_config_t& esp_config) noexcept : E
 }
 
 EspTemperature::~EspTemperature() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
-
+  // Avoid locking here to prevent nested lock in Deinitialize()
   if (initialized_) {
     Deinitialize();
   }
-
   ESP_LOGD(TAG, "EspTemperature instance destroyed");
 }
 
@@ -125,7 +126,7 @@ EspTemperature::~EspTemperature() noexcept {
 //==============================================================================
 
 bool EspTemperature::Initialize() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   const hf_u64_t start_time = GetCurrentTimeUs();
 
@@ -137,37 +138,39 @@ bool EspTemperature::Initialize() noexcept {
 
   ESP_LOGI(TAG, "Initializing ESP32-C6 temperature sensor...");
 
-  // Configure temperature sensor
-  temperature_sensor_config_t temp_config = {};
-  temp_config.range_min = -10;
-  temp_config.range_max = 80;
-  temp_config.clk_src = TEMPERATURE_SENSOR_CLK_SRC_DEFAULT;
-  temp_config.flags.allow_pd = 0;
-
-  // Adjust configuration based on current range
+  // Configure or adopt shared temperature sensor
   float min_temp, max_temp, accuracy;
   GetRangeConfig(esp_config_.range, &min_temp, &max_temp, &accuracy);
-  temp_config.range_min = static_cast<int>(min_temp);
-  temp_config.range_max = static_cast<int>(max_temp);
 
-  // Install temperature sensor
-  esp_err_t esp_err = temperature_sensor_install(&temp_config, &esp_state_.handle);
-  if (esp_err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to install temperature sensor: %s", esp_err_to_name(esp_err));
-    SetLastError(ConvertEspError(esp_err));
-    UpdateStatistics(false, GetCurrentTimeUs() - start_time);
-    return false;
-  }
+  {
+    MutexLockGuard sharedLock(s_shared_mutex_);
+    if (s_shared_handle_ == nullptr) {
+      temperature_sensor_config_t temp_config = {};
+      temp_config.range_min = static_cast<int>(min_temp);
+      temp_config.range_max = static_cast<int>(max_temp);
+      temp_config.clk_src = TEMPERATURE_SENSOR_CLK_SRC_DEFAULT;
+      temp_config.flags.allow_pd = 0;
 
-  // Enable temperature sensor
-  esp_err = temperature_sensor_enable(esp_state_.handle);
-  if (esp_err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to enable temperature sensor: %s", esp_err_to_name(esp_err));
-    temperature_sensor_uninstall(esp_state_.handle);
-    esp_state_.handle = nullptr;
-    SetLastError(ConvertEspError(esp_err));
-    UpdateStatistics(false, GetCurrentTimeUs() - start_time);
-    return false;
+      esp_err_t esp_err = temperature_sensor_install(&temp_config, &s_shared_handle_);
+      if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to install temperature sensor: %s", esp_err_to_name(esp_err));
+        SetLastError(ConvertEspError(esp_err));
+        UpdateStatistics(false, GetCurrentTimeUs() - start_time);
+        return false;
+      }
+
+      esp_err = temperature_sensor_enable(s_shared_handle_);
+      if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to enable temperature sensor: %s", esp_err_to_name(esp_err));
+        temperature_sensor_uninstall(s_shared_handle_);
+        s_shared_handle_ = nullptr;
+        SetLastError(ConvertEspError(esp_err));
+        UpdateStatistics(false, GetCurrentTimeUs() - start_time);
+        return false;
+      }
+    }
+    s_refcount_++;
+    esp_state_.handle = s_shared_handle_;
   }
 
   // Update state
@@ -175,13 +178,10 @@ bool EspTemperature::Initialize() noexcept {
   esp_state_.calibration_offset = esp_config_.calibration_offset;
   current_state_ = HF_TEMP_STATE_INITIALIZED;
 
-  // Setup threshold monitoring if requested
+  // Setup threshold monitoring bookkeeping only (avoid nested locking here)
   if (esp_config_.enable_threshold_monitoring) {
-    hf_temp_err_t threshold_err =
-        SetThresholds(esp_config_.low_threshold_celsius, esp_config_.high_threshold_celsius);
-    if (threshold_err != hf_temp_err_t::TEMP_SUCCESS) {
-      ESP_LOGW(TAG, "Failed to setup threshold monitoring: %s", GetTempErrorString(threshold_err));
-    }
+    esp_state_.threshold_monitoring_enabled = true;
+    diagnostics_.threshold_monitoring_enabled = true;
   }
 
   ESP_LOGI(TAG, "ESP32-C6 temperature sensor initialized successfully");
@@ -193,7 +193,7 @@ bool EspTemperature::Initialize() noexcept {
 }
 
 bool EspTemperature::Deinitialize() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   const hf_u64_t start_time = GetCurrentTimeUs();
 
@@ -207,31 +207,60 @@ bool EspTemperature::Deinitialize() noexcept {
 
   // Stop continuous monitoring if active
   if (esp_state_.continuous_monitoring_active) {
-    StopContinuousMonitoring();
+    // Inline StopContinuousMonitoring() without taking the lock again
+    bool success_monitor = true;
+    if (esp_state_.monitoring_timer != nullptr) {
+      esp_err_t esp_err = esp_timer_stop(esp_state_.monitoring_timer);
+      if (esp_err != ESP_OK && esp_err != ESP_ERR_INVALID_STATE) {
+        ESP_LOGE(TAG, "Failed to stop monitoring timer: %s", esp_err_to_name(esp_err));
+        success_monitor = false;
+      }
+      esp_err = esp_timer_delete(esp_state_.monitoring_timer);
+      if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to delete monitoring timer: %s", esp_err_to_name(esp_err));
+        success_monitor = false;
+      }
+      esp_state_.monitoring_timer = nullptr;
+    }
+    esp_state_.continuous_monitoring_active = false;
+    diagnostics_.continuous_monitoring_active = false;
+    monitoring_callback_ = nullptr;
+    esp_monitoring_callback_ = nullptr;
+    monitoring_user_data_ = nullptr;
+    (void)success_monitor;
   }
 
   // Disable threshold monitoring if active
   if (esp_state_.threshold_monitoring_enabled) {
-    DisableThresholdMonitoring();
+    // Inline DisableThresholdMonitoring() without taking the lock again
+    esp_state_.threshold_monitoring_enabled = false;
+    diagnostics_.threshold_monitoring_enabled = false;
+    threshold_callback_ = nullptr;
+    esp_threshold_callback_ = nullptr;
+    threshold_user_data_ = nullptr;
   }
 
   bool success = true;
 
-  // Disable temperature sensor
+  // Decrement refcount and possibly tear down shared sensor
   if (esp_state_.handle != nullptr) {
-    esp_err_t esp_err = temperature_sensor_disable(esp_state_.handle);
-    if (esp_err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to disable temperature sensor: %s", esp_err_to_name(esp_err));
-      success = false;
+    MutexLockGuard sharedLock(s_shared_mutex_);
+    if (s_refcount_ > 0) {
+      s_refcount_--;
     }
-
-    // Uninstall temperature sensor
-    esp_err = temperature_sensor_uninstall(esp_state_.handle);
-    if (esp_err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to uninstall temperature sensor: %s", esp_err_to_name(esp_err));
-      success = false;
+    if (s_refcount_ == 0 && s_shared_handle_ != nullptr) {
+      esp_err_t esp_err = temperature_sensor_disable(s_shared_handle_);
+      if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to disable temperature sensor: %s", esp_err_to_name(esp_err));
+        success = false;
+      }
+      esp_err = temperature_sensor_uninstall(s_shared_handle_);
+      if (esp_err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to uninstall temperature sensor: %s", esp_err_to_name(esp_err));
+        success = false;
+      }
+      s_shared_handle_ = nullptr;
     }
-
     esp_state_.handle = nullptr;
   }
 
@@ -265,7 +294,7 @@ hf_temp_err_t EspTemperature::ReadTemperatureCelsiusImpl(float* temperature_cels
     return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   const hf_u64_t start_time = GetCurrentTimeUs();
 
@@ -355,7 +384,7 @@ hf_temp_err_t EspTemperature::GetSensorInfo(hf_temp_sensor_info_t* info) const n
     return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   // Get current range configuration
   float min_temp, max_temp, accuracy;
@@ -386,15 +415,13 @@ hf_u32_t EspTemperature::GetCapabilities() const noexcept {
 //==============================================================================
 
 hf_temp_err_t EspTemperature::SetRange(float min_celsius, float max_celsius) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
-
   if (min_celsius >= max_celsius) {
     ESP_LOGE(TAG, "Invalid range: min (%.1f) >= max (%.1f)", min_celsius, max_celsius);
     return SetLastError(hf_temp_err_t::TEMP_ERR_INVALID_RANGE),
            hf_temp_err_t::TEMP_ERR_INVALID_RANGE;
   }
 
-  // Find optimal range for the given requirements
+  // Find optimal range for the given requirements (no lock needed)
   esp_temp_range_t optimal_range = FindOptimalRange(min_celsius, max_celsius);
 
   if (optimal_range >= ESP_TEMP_RANGE_COUNT) {
@@ -403,6 +430,7 @@ hf_temp_err_t EspTemperature::SetRange(float min_celsius, float max_celsius) noe
            hf_temp_err_t::TEMP_ERR_UNSUPPORTED_RANGE;
   }
 
+  // Apply range change with internal locking
   return SetMeasurementRange(optimal_range);
 }
 
@@ -411,7 +439,7 @@ hf_temp_err_t EspTemperature::GetRange(float* min_celsius, float* max_celsius) c
     return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   float accuracy;
   GetRangeConfig(esp_state_.current_range, min_celsius, max_celsius, &accuracy);
@@ -430,7 +458,7 @@ hf_temp_err_t EspTemperature::GetResolution(float* resolution_celsius) const noe
 
 hf_temp_err_t EspTemperature::SetThresholds(float low_threshold_celsius,
                                             float high_threshold_celsius) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   if (low_threshold_celsius >= high_threshold_celsius) {
     ESP_LOGE(TAG, "Invalid thresholds: low (%.1f) >= high (%.1f)", low_threshold_celsius,
@@ -463,7 +491,7 @@ hf_temp_err_t EspTemperature::GetThresholds(float* low_threshold_celsius,
     return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   *low_threshold_celsius = esp_config_.low_threshold_celsius;
   *high_threshold_celsius = esp_config_.high_threshold_celsius;
@@ -473,7 +501,7 @@ hf_temp_err_t EspTemperature::GetThresholds(float* low_threshold_celsius,
 
 hf_temp_err_t EspTemperature::EnableThresholdMonitoring(hf_temp_threshold_callback_t callback,
                                                         void* user_data) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   if (!initialized_) {
     ESP_LOGE(TAG, "Temperature sensor not initialized");
@@ -493,7 +521,7 @@ hf_temp_err_t EspTemperature::EnableThresholdMonitoring(hf_temp_threshold_callba
 }
 
 hf_temp_err_t EspTemperature::DisableThresholdMonitoring() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   esp_state_.threshold_monitoring_enabled = false;
   diagnostics_.threshold_monitoring_enabled = false;
@@ -509,7 +537,7 @@ hf_temp_err_t EspTemperature::DisableThresholdMonitoring() noexcept {
 hf_temp_err_t EspTemperature::StartContinuousMonitoring(hf_u32_t sample_rate_hz,
                                                         hf_temp_reading_callback_t callback,
                                                         void* user_data) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   if (!initialized_) {
     ESP_LOGE(TAG, "Temperature sensor not initialized");
@@ -568,7 +596,7 @@ hf_temp_err_t EspTemperature::StartContinuousMonitoring(hf_u32_t sample_rate_hz,
 }
 
 hf_temp_err_t EspTemperature::StopContinuousMonitoring() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   if (!esp_state_.continuous_monitoring_active) {
     ESP_LOGW(TAG, "Continuous monitoring not active");
@@ -608,12 +636,12 @@ hf_temp_err_t EspTemperature::StopContinuousMonitoring() noexcept {
 }
 
 bool EspTemperature::IsMonitoringActive() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
   return esp_state_.continuous_monitoring_active;
 }
 
 hf_temp_err_t EspTemperature::SetCalibrationOffset(float offset_celsius) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   // Validate offset is reasonable
   if (std::abs(offset_celsius) > 20.0f) {
@@ -634,7 +662,7 @@ hf_temp_err_t EspTemperature::GetCalibrationOffset(float* offset_celsius) const 
     return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
   *offset_celsius = esp_state_.calibration_offset;
 
   return hf_temp_err_t::TEMP_SUCCESS;
@@ -645,7 +673,7 @@ hf_temp_err_t EspTemperature::ResetCalibration() noexcept {
 }
 
 hf_temp_err_t EspTemperature::EnterSleepMode() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   if (!initialized_) {
     ESP_LOGE(TAG, "Temperature sensor not initialized");
@@ -673,7 +701,7 @@ hf_temp_err_t EspTemperature::EnterSleepMode() noexcept {
 }
 
 hf_temp_err_t EspTemperature::ExitSleepMode() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   if (current_state_ != HF_TEMP_STATE_SLEEPING) {
     ESP_LOGW(TAG, "Temperature sensor not in sleep mode");
@@ -694,17 +722,19 @@ hf_temp_err_t EspTemperature::ExitSleepMode() noexcept {
 }
 
 bool EspTemperature::IsSleeping() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
   return (current_state_ == HF_TEMP_STATE_SLEEPING);
 }
 
 hf_temp_err_t EspTemperature::SelfTest() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
-
-  if (!initialized_) {
-    ESP_LOGE(TAG, "Temperature sensor not initialized");
-    return SetLastError(hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED),
-           hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
+  // Check init status under lock, then release before nested calls
+  {
+    MutexLockGuard lock(mutex_);
+    if (!initialized_) {
+      ESP_LOGE(TAG, "Temperature sensor not initialized");
+      return SetLastError(hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED),
+             hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
+    }
   }
 
   ESP_LOGI(TAG, "Starting temperature sensor self-test...");
@@ -750,7 +780,7 @@ hf_temp_err_t EspTemperature::SelfTest() noexcept {
 }
 
 hf_temp_err_t EspTemperature::CheckHealth() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   bool healthy = true;
 
@@ -793,13 +823,13 @@ hf_temp_err_t EspTemperature::CheckHealth() noexcept {
 }
 
 hf_temp_err_t EspTemperature::GetStatistics(hf_temp_statistics_t& statistics) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
   statistics = statistics_;
   return hf_temp_err_t::TEMP_SUCCESS;
 }
 
 hf_temp_err_t EspTemperature::GetDiagnostics(hf_temp_diagnostics_t& diagnostics) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   // Update current diagnostics
   diagnostics_.sensor_available = (esp_state_.handle != nullptr);
@@ -812,19 +842,20 @@ hf_temp_err_t EspTemperature::GetDiagnostics(hf_temp_diagnostics_t& diagnostics)
 }
 
 hf_temp_err_t EspTemperature::ResetStatistics() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
-
-  statistics_ = hf_temp_statistics_t{};
-  statistics_.min_operation_time_us = UINT32_MAX;
-  statistics_.min_temperature_celsius = 1000.0f;
-  statistics_.max_temperature_celsius = -1000.0f;
-
+  // Avoid lock if called inside other locked code paths; lock briefly
+  {
+    MutexLockGuard lock(mutex_);
+    statistics_ = hf_temp_statistics_t{};
+    statistics_.min_operation_time_us = UINT32_MAX;
+    statistics_.min_temperature_celsius = 1000.0f;
+    statistics_.max_temperature_celsius = -1000.0f;
+  }
   ESP_LOGI(TAG, "Statistics reset");
   return hf_temp_err_t::TEMP_SUCCESS;
 }
 
 hf_temp_err_t EspTemperature::ResetDiagnostics() noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   diagnostics_.last_error_code = hf_temp_err_t::TEMP_SUCCESS;
   diagnostics_.last_error_timestamp = 0;
@@ -845,7 +876,7 @@ hf_temp_err_t EspTemperature::InitializeEsp32(const esp_temp_config_t& esp_confi
 }
 
 hf_temp_err_t EspTemperature::SetMeasurementRange(esp_temp_range_t range) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   if (range >= ESP_TEMP_RANGE_COUNT) {
     ESP_LOGE(TAG, "Invalid range: %d", static_cast<int>(range));
@@ -913,7 +944,7 @@ hf_temp_err_t EspTemperature::SetMeasurementRange(esp_temp_range_t range) noexce
 }
 
 esp_temp_range_t EspTemperature::GetMeasurementRange() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
   return esp_state_.current_range;
 }
 
@@ -961,7 +992,7 @@ hf_temp_err_t EspTemperature::ReadRawTemperature(float* raw_value) noexcept {
     return hf_temp_err_t::TEMP_ERR_NULL_POINTER;
   }
 
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
 
   if (!initialized_ || esp_state_.handle == nullptr) {
     return hf_temp_err_t::TEMP_ERR_NOT_INITIALIZED;
@@ -976,20 +1007,20 @@ hf_temp_err_t EspTemperature::ReadRawTemperature(float* raw_value) noexcept {
 }
 
 temperature_sensor_handle_t EspTemperature::GetEspHandle() const noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
   return esp_state_.handle;
 }
 
 hf_temp_err_t EspTemperature::SetEspThresholdCallback(
     esp_temp_threshold_callback_t callback) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
   esp_threshold_callback_ = callback;
   return hf_temp_err_t::TEMP_SUCCESS;
 }
 
 hf_temp_err_t EspTemperature::SetEspMonitoringCallback(
     esp_temp_monitoring_callback_t callback) noexcept {
-  std::lock_guard<std::mutex> lock(mutex_);
+  MutexLockGuard lock(mutex_);
   esp_monitoring_callback_ = callback;
   return hf_temp_err_t::TEMP_SUCCESS;
 }
