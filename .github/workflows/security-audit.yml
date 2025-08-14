@@ -282,7 +282,7 @@ jobs:
             fi
           fi
           echo "idf_version=${IDF_TAG}" >> "$GITHUB_OUTPUT"
-          IDF_GIT_BRANCH=$(echo "${IDF_TAG}" | sed -E 's/^release-v([0-9]+\.[0-9]+)$/release\/\1/')
+          IDF_GIT_BRANCH=$(echo "${IDF_TAG}" | sed -E 's#^release-(v[0-9]+\.[0-9]+)$#release/\1#')
           echo "idf_git_branch=${IDF_GIT_BRANCH}" >> "$GITHUB_OUTPUT"
           echo "Using ESP-IDF docker tag: ${IDF_TAG}; git branch: ${IDF_GIT_BRANCH}"
           
@@ -302,10 +302,20 @@ jobs:
         if: steps.esp-idf-cache.outputs.cache-hit != 'true'
         run: |
           echo "🔧 Installing ESP-IDF for component analysis..."
-          git clone --recursive --depth 1 --branch ${{ steps.get-idf-version.outputs.idf_git_branch }} \
-            https://github.com/espressif/esp-idf.git ~/esp-idf
-          
-          cd ~/esp-idf
+          if [ -d "~/esp-idf/.git" ]; then
+            echo "Existing esp-idf repo found, updating..."
+            cd ~/esp-idf
+            git remote set-url origin https://github.com/espressif/esp-idf.git
+            git fetch --tags --force origin
+            git checkout --force "${{ steps.get-idf-version.outputs.idf_git_branch }}" || \
+              git checkout -B "${{ steps.get-idf-version.outputs.idf_git_branch }}" "origin/${{ steps.get-idf-version.outputs.idf_git_branch }}"
+            git submodule update --init --recursive
+          else
+            rm -rf ~/esp-idf
+            git clone --recursive --depth 1 --branch ${{ steps.get-idf-version.outputs.idf_git_branch }} \
+              https://github.com/espressif/esp-idf.git ~/esp-idf
+            cd ~/esp-idf
+          fi
           ./install.sh esp32,esp32c6,esp32s3
           
       - name: Setup ESP-IDF environment
