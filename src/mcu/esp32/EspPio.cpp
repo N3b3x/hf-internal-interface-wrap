@@ -13,6 +13,7 @@
  * @copyright HardFOC
  */
 #include "EspPio.h"
+#include "EspTypes_PIO.h"  // Include ESP32 PIO/RMT type definitions
 
 // C++ standard library headers (must be outside extern "C")
 #include <algorithm>
@@ -29,6 +30,7 @@ extern "C" {
 #include "esp_log.h"
 #include "hal/rmt_ll.h"
 #include "soc/clk_tree_defs.h"
+#include "esp_clk_tree.h"
 #include "soc/soc_caps.h"
 
 #ifdef __cplusplus
@@ -42,8 +44,7 @@ extern "C" {
 //==============================================================================
 
 EspPio::EspPio() noexcept
-    : BasePio(), initialized_(false), channels_{}, transmit_callback_(nullptr),
-      receive_callback_(nullptr), error_callback_(nullptr), callback_user_data_(nullptr) {
+    : BasePio(), channels_{}, global_statistics_{}, global_diagnostics_{} {
   ESP_LOGD(TAG, "EspPio constructed");
 }
 
@@ -91,10 +92,10 @@ hf_pio_err_t EspPio::Deinitialize() noexcept {
   }
 
   // Clear callbacks
-  transmit_callback_ = nullptr;
-  receive_callback_ = nullptr;
-  error_callback_ = nullptr;
-  callback_user_data_ = nullptr;
+  // transmit_callback_ = nullptr; // Removed global callback
+  // receive_callback_ = nullptr; // Removed global callback
+  // error_callback_ = nullptr; // Removed global callback
+  // callback_user_data_ = nullptr; // Removed global callback
 
   initialized_ = false;
   ESP_LOGI(TAG, "EspPio deinitialized");
@@ -122,18 +123,19 @@ hf_pio_err_t EspPio::ConfigureChannel(hf_u8_t channel_id,
     return hf_pio_err_t::PIO_ERR_CHANNEL_BUSY;
   }
 
-  // Validate configuration
-  if (config.gpio_pin < 0) {
-    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
-  }
-
-  if (config.resolution_ns == 0) {
-    return hf_pio_err_t::PIO_ERR_INVALID_RESOLUTION;
+  // Validate channel configuration for current ESP32 variant
+  hf_pio_err_t validation_result = ValidateChannelConfiguration(channel_id, config);
+  if (validation_result != hf_pio_err_t::PIO_SUCCESS) {
+    return validation_result;
   }
 
   // Store configuration
   channels_[channel_id].config = config;
 
+  // If already configured, deinit before re-init to avoid resource leak / no-free-channel errors
+  if (channels_[channel_id].configured) {
+    DeinitializeChannel(channel_id);
+  }
   // Initialize the channel hardware
   hf_pio_err_t result = InitializeChannel(channel_id);
   if (result != hf_pio_err_t::PIO_SUCCESS) {
@@ -141,7 +143,10 @@ hf_pio_err_t EspPio::ConfigureChannel(hf_u8_t channel_id,
   }
 
   channels_[channel_id].configured = true;
-  ESP_LOGI(TAG, "Channel %d configured on GPIO %d", channel_id, config.gpio_pin);
+  ESP_LOGI(TAG, "Channel %d configured on GPIO %d for %s: requested %uns, achieved %uns", 
+           channel_id, config.gpio_pin, 
+           HfRmtGetVariantName(),
+           config.resolution_ns, channels_[channel_id].actual_resolution_ns);
 
   return hf_pio_err_t::PIO_SUCCESS;
 }
@@ -175,7 +180,10 @@ hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
     return hf_pio_err_t::PIO_ERR_CHANNEL_BUSY;
   }
 
-  if (symbols == nullptr || symbol_count == 0) {
+  if (symbols == nullptr) {
+    return hf_pio_err_t::PIO_ERR_NULL_POINTER;
+  }
+  if (symbol_count == 0) {
     return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
 
@@ -207,6 +215,8 @@ hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
   // Create transmit configuration
   rmt_transmit_config_t tx_config = {};
   tx_config.loop_count = 0; // No loop
+  // Hint driver to avoid extra fragmentation under tight timing
+  tx_config.flags.eot_level = channel.idle_level ? 1 : 0;
 
   // Start transmission
   channel.busy = true;
@@ -214,19 +224,12 @@ hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
   channel.status.symbols_queued = symbol_count;
   channel.status.timestamp_us = esp_timer_get_time();
 
-  // Register TX callbacks
-  rmt_tx_event_callbacks_t tx_callbacks = {};
-  tx_callbacks.on_trans_done = OnTransmitComplete;
-
-  esp_err_t ret = rmt_tx_register_event_callbacks(channel.tx_channel, &tx_callbacks, this);
-  if (ret != ESP_OK) {
-    channel.busy = false;
-    channel.status.is_transmitting = false;
-    ESP_LOGE(TAG, "Failed to register TX callbacks for channel %d: %d", channel_id, ret);
-    return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
-  }
+  // Callbacks are registered at channel initialization and kept installed
+  esp_err_t ret = ESP_OK;
+  
+  // Use the copy encoder to transmit the converted RMT symbols
   ret = rmt_transmit(channel.tx_channel, channel.encoder,
-                     reinterpret_cast<const rmt_symbol_word_t*>(rmt_symbols),
+                     rmt_symbols,  // Packed RMT symbols
                      rmt_symbol_count * sizeof(rmt_symbol_word_t), &tx_config);
 
   if (ret != ESP_OK) {
@@ -237,11 +240,17 @@ hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
   }
   if (wait_completion) {
     // Wait for transmission to complete using ESP-IDF API
-    hf_u32_t timeout_us = channel.config.timeout_us;
-    ret = rmt_tx_wait_all_done(channel.tx_channel,
-                               timeout_us == 0 ? portMAX_DELAY : pdMS_TO_TICKS(timeout_us / 1000));
+    TickType_t wait_ticks = portMAX_DELAY;
+    if (channel.config.timeout_us > 0) {
+      // Round up to next millisecond
+      uint32_t timeout_ms = (channel.config.timeout_us + 999) / 1000;
+      wait_ticks = pdMS_TO_TICKS(timeout_ms);
+    }
+    ret = rmt_tx_wait_all_done(channel.tx_channel, wait_ticks);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Transmission timeout on channel %d", channel_id);
+      channel.busy = false;
+      channel.status.is_transmitting = false;
       return hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT;
     }
     channel.busy = false;
@@ -299,10 +308,8 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
 
   // Create receive configuration
   rmt_receive_config_t rx_config = {};
-  rx_config.signal_range_min_ns = channel.config.resolution_ns;
-  rx_config.signal_range_max_ns =
-      channel.config.resolution_ns *
-      32767; // Max duration    // Allocate RMT symbol buffer for reception
+  rx_config.signal_range_min_ns = channel.actual_resolution_ns;  // Use actual resolution
+  rx_config.signal_range_max_ns = channel.actual_resolution_ns * 32767; // Max duration based on actual resolution
   size_t rmt_buffer_size = std::min(buffer_size, static_cast<size_t>(64)); // RMT buffer limit
 
   // Start reception
@@ -409,30 +416,87 @@ hf_pio_err_t EspPio::GetCapabilities(hf_pio_capabilities_t& capabilities) const 
 // CALLBACK MANAGEMENT
 //==============================================================================
 
-void EspPio::SetTransmitCallback(hf_pio_transmit_callback_t callback, void* user_data) noexcept {
+void EspPio::SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t callback,
+                                 void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  transmit_callback_ = callback;
-  callback_user_data_ = user_data;
+  
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for transmit callback", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  channel.transmit_callback = callback;
+  channel.transmit_user_data = user_data;
+  
+  ESP_LOGD(TAG, "Set transmit callback for channel %d", channel_id);
 }
 
-void EspPio::SetReceiveCallback(hf_pio_receive_callback_t callback, void* user_data) noexcept {
+void EspPio::SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t callback,
+                                void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  receive_callback_ = callback;
-  callback_user_data_ = user_data;
+  
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for receive callback", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  channel.receive_callback = callback;
+  channel.receive_user_data = user_data;
+  
+  ESP_LOGD(TAG, "Set receive callback for channel %d", channel_id);
 }
 
-void EspPio::SetErrorCallback(hf_pio_error_callback_t callback, void* user_data) noexcept {
+void EspPio::SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callback,
+                              void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  error_callback_ = callback;
-  callback_user_data_ = user_data;
+  
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for error callback", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  channel.error_callback = callback;
+  channel.error_user_data = user_data;
+  
+  ESP_LOGD(TAG, "Set error callback for channel %d", channel_id);
+}
+
+void EspPio::ClearChannelCallbacks(hf_u8_t channel_id) noexcept {
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for clearing callbacks", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  channel.transmit_callback = nullptr;
+  channel.transmit_user_data = nullptr;
+  channel.receive_callback = nullptr;
+  channel.receive_user_data = nullptr;
+  channel.error_callback = nullptr;
+  channel.error_user_data = nullptr;
+  
+  ESP_LOGD(TAG, "Cleared callbacks for channel %d", channel_id);
 }
 
 void EspPio::ClearCallbacks() noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  transmit_callback_ = nullptr;
-  receive_callback_ = nullptr;
-  error_callback_ = nullptr;
-  callback_user_data_ = nullptr;
+  
+  for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
+    auto& channel = channels_[i];
+    channel.transmit_callback = nullptr;
+    channel.transmit_user_data = nullptr;
+    channel.receive_callback = nullptr;
+    channel.receive_user_data = nullptr;
+    channel.error_callback = nullptr;
+    channel.error_user_data = nullptr;
+  }
+  
+  ESP_LOGD(TAG, "Cleared all callbacks for all channels");
 }
 
 //==============================================================================
@@ -527,7 +591,11 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
 
     // Reconfigure with advanced settings
     const auto& config = stored_config;
-    hf_u32_t clock_divider = CalculateClockDivider(config.resolution_ns);
+    hf_u32_t actual_resolution_ns;
+    hf_u32_t resolution_hz = CalculateResolutionHz(config.resolution_ns, actual_resolution_ns, channel.source_clock_hz);
+    
+    // Store the actual resolution achieved
+    channel.actual_resolution_ns = actual_resolution_ns;
 
     if (config.direction == hf_pio_direction_t::Transmit ||
         config.direction == hf_pio_direction_t::Bidirectional) {
@@ -536,12 +604,12 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-      tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
+      tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M (80 MHz)
 #else
-      tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
+      tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
 #endif
 
-      tx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
+      tx_config.resolution_hz = resolution_hz;
       tx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
       tx_config.trans_queue_depth = queue_depth;
 
@@ -607,11 +675,11 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-      rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
+      rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M (80 MHz)
 #else
-      rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
+      rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
 #endif
-      rx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
+      rx_config.resolution_hz = resolution_hz;
       rx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
 
       esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
@@ -737,7 +805,7 @@ hf_pio_err_t EspPio::GetChannelStatistics(hf_u8_t channel_id,
   stats.last_operation_time = channel.last_operation_time;
   stats.is_configured = channel.configured;
   stats.is_busy = channel.busy;
-  stats.current_resolution_ns = channel.config.resolution_ns;
+  stats.current_resolution_ns = channel.actual_resolution_ns;  // Use actual achieved resolution
   stats.memory_blocks_allocated = 64; // Default or actual allocation
   stats.dma_enabled = false;          // Would be tracked based on channel configuration
 
@@ -751,6 +819,51 @@ hf_pio_err_t EspPio::ResetChannelStatistics(hf_u8_t channel_id) noexcept {
 
   // Reset statistics counters (would be implemented with actual counters)
   ESP_LOGD(TAG, "Reset statistics for channel %d", channel_id);
+  return hf_pio_err_t::PIO_SUCCESS;
+}
+
+hf_pio_err_t EspPio::GetActualResolution(hf_u8_t channel_id, hf_u32_t& achieved_resolution_ns) const noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+
+  const auto& channel = channels_[channel_id];
+  if (!channel.configured) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
+  }
+
+  achieved_resolution_ns = channel.actual_resolution_ns;
+  return hf_pio_err_t::PIO_SUCCESS;
+}
+
+hf_u32_t EspPio::CalculateResolutionHz(hf_u32_t resolution_ns, hf_u32_t& actual_resolution_ns,
+                                       hf_u32_t source_clock_hz) const noexcept {
+  // Use the internal clock divider calculation to get the actual achievable resolution
+  hf_u32_t divider = CalculateClockDivider(resolution_ns, actual_resolution_ns, source_clock_hz);
+  
+  // Convert the actual resolution back to Hz for the RMT peripheral
+  // resolution_hz = 1e9 / actual_resolution_ns
+  hf_u32_t resolution_hz = 1000000000UL / actual_resolution_ns;
+  
+  ESP_LOGD(TAG, "Resolution conversion: %uns -> %u Hz (actual: %uns)", 
+           resolution_ns, resolution_hz, actual_resolution_ns);
+  
+  return resolution_hz;
+}
+
+hf_pio_err_t EspPio::GetResolutionConstraints(hf_u32_t& min_resolution_ns, hf_u32_t& max_resolution_ns, 
+                                             hf_u32_t& clock_freq_hz) const noexcept {
+  clock_freq_hz = RMT_CLK_SRC_FREQ;
+  
+  // Calculate minimum resolution (divider = 1)
+  min_resolution_ns = 1000000000UL / RMT_CLK_SRC_FREQ;
+  
+  // Calculate maximum resolution (divider = 255)
+  max_resolution_ns = (1000000000ULL * 255) / RMT_CLK_SRC_FREQ;
+  
+  ESP_LOGD(TAG, "Resolution constraints: min=%uns, max=%uns, clock=%u Hz", 
+           min_resolution_ns, max_resolution_ns, clock_freq_hz);
+  
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -800,7 +913,7 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
   tx_config.loop_count = 0; // Single transmission
   // For raw RMT symbols, we transmit directly using the copy encoder
   esp_err_t result = rmt_transmit(channel.tx_channel, channel.encoder,
-                                  reinterpret_cast<const rmt_symbol_word_t*>(rmt_symbols),
+                                  rmt_symbols,  // Raw symbols for copy encoder
                                   symbol_count * sizeof(rmt_symbol_word_t), &tx_config);
 
   if (result != ESP_OK) {
@@ -808,7 +921,7 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
     channels_[channel_id].status.is_transmitting = false;
     ESP_LOGE(TAG, "Raw RMT symbol transmission failed on channel %d: %s", channel_id,
              esp_err_to_name(result));
-    InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
+    InvokeChannelErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
     return hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE;
   }
 
@@ -822,7 +935,7 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
     if (result != ESP_OK) {
       ESP_LOGW(TAG, "Wait for transmission completion timed out on channel %d: %s", channel_id,
                esp_err_to_name(result));
-      InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT);
+      InvokeChannelErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT);
       return hf_pio_err_t::PIO_ERR_COMMUNICATION_TIMEOUT;
     }
 
@@ -874,8 +987,8 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
 
   // Configure reception parameters
   rmt_receive_config_t rx_config = {};
-  rx_config.signal_range_min_ns = channel.config.resolution_ns;
-  rx_config.signal_range_max_ns = channel.config.resolution_ns * 32767; // Max duration
+  rx_config.signal_range_min_ns = channel.actual_resolution_ns;  // Use actual resolution
+  rx_config.signal_range_max_ns = channel.actual_resolution_ns * 32767; // Max duration based on actual resolution
 
   // Mark channel as busy
   channels_[channel_id].busy = true;
@@ -883,7 +996,7 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
   channels_[channel_id].status.timestamp_us = esp_timer_get_time();
   // Start RMT reception
   esp_err_t result =
-      rmt_receive(channel.rx_channel, reinterpret_cast<rmt_symbol_word_t*>(rmt_buffer),
+      rmt_receive(channel.rx_channel, rmt_buffer,  // Buffer for reception
                   buffer_size_bytes, &rx_config);
 
   if (result != ESP_OK) {
@@ -892,7 +1005,7 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
     ESP_LOGE(TAG, "Failed to start RMT reception on channel %d: %s", channel_id,
              esp_err_to_name(result));
     symbols_received = 0;
-    InvokeErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
+    InvokeChannelErrorCallback(channel_id, hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE);
     return hf_pio_err_t::PIO_ERR_COMMUNICATION_FAILURE;
   }
 
@@ -941,25 +1054,30 @@ hf_pio_err_t EspPio::ConvertToRmtSymbols(const hf_pio_symbol_t* symbols, size_t 
     return hf_pio_err_t::PIO_ERR_BUFFER_TOO_LARGE;
   }
 
-  rmt_symbol_count = symbol_count;
+  // Pack two hf_pio_symbol_t entries (high then low, or vice versa) into one rmt_symbol_word_t
+  size_t out_index = 0;
+  for (size_t i = 0; i < symbol_count; ) {
+    const hf_pio_symbol_t& first = symbols[i];
+    rmt_symbol_word_t word = {};
+    word.level0 = first.level ? 1 : 0;
+    word.duration0 = first.duration;
 
-  for (size_t i = 0; i < symbol_count; ++i) {
-    // Set level and duration for first half of RMT symbol
-    rmt_symbols[i].level0 = symbols[i].level ? 1 : 0;
-    rmt_symbols[i].duration0 = symbols[i].duration;
-
-    // For the second half, set to idle state or next symbol
     if (i + 1 < symbol_count) {
-      // Use next symbol's complementary level for transition
-      rmt_symbols[i].level1 = symbols[i + 1].level ? 0 : 1;
-      rmt_symbols[i].duration1 = 1; // Minimal transition time
+      const hf_pio_symbol_t& second = symbols[i + 1];
+      word.level1 = second.level ? 1 : 0;
+      word.duration1 = second.duration;
+      i += 2;
     } else {
-      // Last symbol - end with idle state
-      rmt_symbols[i].level1 = 0;    // Idle low
-      rmt_symbols[i].duration1 = 0; // End marker
+      // No second half; terminate with non-zero minimal duration
+      word.level1 = first.level ? 0 : 1;
+      word.duration1 = 1;
+      i += 1;
     }
+
+    rmt_symbols[out_index++] = word;
   }
 
+  rmt_symbol_count = out_index;
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -976,12 +1094,182 @@ hf_pio_err_t EspPio::ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_u32_t EspPio::CalculateClockDivider(hf_u32_t resolution_ns) const noexcept {
-  // Calculate clock divider to achieve desired resolution
-  // RMT source clock is typically 80 MHz (12.5 ns per tick)
-  hf_u32_t divider = (resolution_ns * RMT_CLK_SRC_FREQ) / 1000000000UL;
-  return std::max<hf_u32_t>(
-      1U, std::min<hf_u32_t>(255U, static_cast<hf_u32_t>(divider))); // Clamp to valid range
+hf_pio_err_t EspPio::SetClockSource(hf_u8_t channel_id, rmt_clock_source_t clk_src) noexcept {
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+  auto& ch = channels_[channel_id];
+  if (ch.busy) {
+    return hf_pio_err_t::PIO_ERR_RESOURCE_BUSY;
+  }
+  ch.selected_clk_src = clk_src;
+  ch.source_clock_hz = GetClockSourceFrequency(clk_src);
+  return hf_pio_err_t::PIO_SUCCESS;
+}
+
+hf_pio_err_t EspPio::GetClockSource(hf_u8_t channel_id, rmt_clock_source_t& clk_src) const noexcept {
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+  clk_src = channels_[channel_id].selected_clk_src;
+  return hf_pio_err_t::PIO_SUCCESS;
+}
+
+hf_pio_err_t EspPio::GetSourceClockHz(hf_u8_t channel_id, hf_u32_t& clock_hz) const noexcept {
+  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+  clock_hz = channels_[channel_id].source_clock_hz;
+  return hf_pio_err_t::PIO_SUCCESS;
+}
+
+inline hf_u32_t EspPio::ResolveClockSourceHz(rmt_clock_source_t clk_src) noexcept {
+#if SOC_CLK_TREE_SUPPORTED
+  uint32_t freq = 0;
+  switch (clk_src) {
+    case RMT_CLK_SRC_PLL_F80M:
+      // PLL_F80M is fixed 80 MHz
+      return 80000000UL;
+    case RMT_CLK_SRC_XTAL:
+      // Query XTAL via clk tree
+      esp_clk_tree_src_get_freq_hz(SOC_MOD_CLK_XTAL, ESP_CLK_TREE_SRC_FREQ_PRECISION_CACHED, &freq);
+      return freq ? freq : 40000000UL;
+    case RMT_CLK_SRC_RC_FAST:
+      esp_clk_tree_src_get_freq_hz(SOC_MOD_CLK_RC_FAST, ESP_CLK_TREE_SRC_FREQ_PRECISION_CACHED, &freq);
+      return freq ? freq : 17500000UL;
+    default:
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+      return 80000000UL;
+#else
+      return 80000000UL;
+#endif
+  }
+#else
+  // Fallback: nominal constants
+  return GetClockSourceFrequency(clk_src);
+#endif
+}
+
+// Legacy alias retained for internal calls
+inline hf_u32_t EspPio::GetClockSourceFrequency(rmt_clock_source_t clk_src) noexcept {
+  switch (clk_src) {
+    case RMT_CLK_SRC_PLL_F80M: return 80000000UL;
+    case RMT_CLK_SRC_XTAL:     return 40000000UL;
+    case RMT_CLK_SRC_RC_FAST:  return 17500000UL;
+    default:                   return 80000000UL;
+  }
+}
+
+hf_u32_t EspPio::CalculateClockDivider(hf_u32_t resolution_ns, hf_u32_t& actual_resolution_ns,
+                                       hf_u32_t source_clock_hz) const noexcept {
+  if (resolution_ns == 0) {
+    ESP_LOGW(TAG, "Invalid resolution_ns=0, using minimum resolution");
+    actual_resolution_ns = 1000000000UL / source_clock_hz;
+    return 1;
+  }
+
+  uint64_t divider_calc = ((uint64_t)resolution_ns * source_clock_hz) / 1000000000ULL;
+
+  hf_u32_t divider;
+  if (divider_calc < 1) {
+    divider = 1;
+  } else if (divider_calc > 255) {
+    divider = 255;
+  } else {
+    divider = static_cast<hf_u32_t>(divider_calc);
+  }
+
+  actual_resolution_ns = (1000000000ULL * divider) / source_clock_hz;
+  return divider;
+}
+
+uint32_t EspPio::GetEffectiveClockFrequency(uint32_t clock_divider, uint32_t source_clock_hz) const noexcept {
+  if (clock_divider == 0) {
+    ESP_LOGE(TAG, "Invalid clock_divider=0");
+    return 0;
+  }
+  return source_clock_hz / clock_divider;
+}
+
+hf_pio_err_t EspPio::ValidateChannelConfiguration(hf_u8_t channel_id, 
+                                                 const hf_pio_channel_config_t& config) const noexcept {
+  // Validate GPIO pin
+  if (config.gpio_pin < 0) {
+    ESP_LOGE(TAG, "Invalid GPIO pin %d for channel %d", config.gpio_pin, channel_id);
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
+  }
+  
+  // Validate resolution is within supported range
+  // Get the constraints for the current hardware
+  hf_u32_t min_resolution_ns, max_resolution_ns, clock_freq_hz;
+  GetResolutionConstraints(min_resolution_ns, max_resolution_ns, clock_freq_hz);
+  
+  if (config.resolution_ns < min_resolution_ns || config.resolution_ns > max_resolution_ns) {
+    ESP_LOGE(TAG, "Invalid resolution %uns for channel %d (range: %u-%uns)", 
+             config.resolution_ns, channel_id, min_resolution_ns, max_resolution_ns);
+    ESP_LOGE(TAG, "Hardware constraint: 8-bit divider (1-255) with %u Hz clock", clock_freq_hz);
+    return hf_pio_err_t::PIO_ERR_INVALID_RESOLUTION;
+  }
+  
+  // Validate channel is appropriate for the direction on current ESP32 variant
+  if (!HfRmtIsChannelValidForDirection(channel_id, config.direction)) {
+    ESP_LOGE(TAG, "Channel %d is not valid for %s direction on %s", 
+             channel_id, 
+             (config.direction == hf_pio_direction_t::Transmit) ? "TX" : 
+             (config.direction == hf_pio_direction_t::Receive) ? "RX" : "Bidirectional",
+             HfRmtGetVariantName());
+    
+    // Provide helpful suggestions
+    if (config.direction == hf_pio_direction_t::Transmit) {
+      ESP_LOGE(TAG, "Valid TX channels for %s: %d-%d", 
+               HfRmtGetVariantName(), 
+               HF_RMT_TX_CHANNEL_START, 
+               HF_RMT_TX_CHANNEL_START + HF_RMT_MAX_TX_CHANNELS - 1);
+    } else if (config.direction == hf_pio_direction_t::Receive) {
+      ESP_LOGE(TAG, "Valid RX channels for %s: %d-%d", 
+               HfRmtGetVariantName(), 
+               HF_RMT_RX_CHANNEL_START, 
+               HF_RMT_RX_CHANNEL_START + HF_RMT_MAX_RX_CHANNELS - 1);
+    }
+    
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+  
+  // Validate buffer size
+  if (config.buffer_size == 0) {
+    ESP_LOGE(TAG, "Invalid buffer size 0 for channel %d", channel_id);
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
+  }
+  
+  // Validate timeout
+  if (config.timeout_us == 0) {
+    ESP_LOGW(TAG, "Timeout is 0 for channel %d - operations will block indefinitely", channel_id);
+  }
+  
+  ESP_LOGD(TAG, "Channel %d configuration validated successfully for %s", channel_id, HfRmtGetVariantName());
+  return hf_pio_err_t::PIO_SUCCESS;
+}
+
+void EspPio::InvokeChannelErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    ESP_LOGE(TAG, "Invalid channel ID %d for error callback", channel_id);
+    return;
+  }
+  
+  auto& channel = channels_[channel_id];
+  
+  // Invoke channel-specific error callback if set
+  if (channel.error_callback) {
+    channel.error_callback(channel_id, error, channel.error_user_data);
+  }
+  
+  // Update channel status
+  channel.status.last_error = error;
+  
+  ESP_LOGD(TAG, "Invoked error callback for channel %d with error %d", channel_id, static_cast<int>(error));
 }
 
 bool EspPio::OnTransmitComplete(rmt_channel_handle_t channel, const rmt_tx_done_event_data_t* edata,
@@ -993,20 +1281,19 @@ bool EspPio::OnTransmitComplete(rmt_channel_handle_t channel, const rmt_tx_done_
   // Find the channel ID by comparing channel handles
   for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (instance->channels_[i].tx_channel == channel) {
-      RtosUniqueLock<RtosMutex> lock(instance->state_mutex_);
-
+      // ISR context: avoid blocking or taking mutexes
       auto& ch = instance->channels_[i];
       ch.busy = false;
       ch.status.is_transmitting = false;
       ch.status.symbols_processed = ch.status.symbols_queued;
       ch.status.timestamp_us = esp_timer_get_time();
 
-      // Invoke user callback if set
-      if (instance->transmit_callback_) {
-        instance->transmit_callback_(i, ch.status.symbols_processed, instance->callback_user_data_);
-      }
+        // Invoke channel-specific user callback if set
+        if (ch.transmit_callback) {
+          ch.transmit_callback(i, ch.status.symbols_processed, ch.transmit_user_data);
+        }
 
-      ESP_LOGD(TAG, "Transmission complete on channel %d", i);
+      ESP_EARLY_LOGD(TAG, "Transmission complete on channel %d", i);
       break;
     }
   }
@@ -1023,11 +1310,10 @@ bool EspPio::OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_e
   // Find the channel ID by comparing channel handles
   for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (instance->channels_[i].rx_channel == channel) {
-      RtosUniqueLock<RtosMutex> lock(instance->state_mutex_);
-
+      // ISR context: avoid blocking or taking mutexes
       auto& ch = instance->channels_[i];
 
-      // Convert received RMT symbols back to hf_pio_symbol_ts
+      // Convert received RMT symbols back to hf_pio_symbol_ts as a lightweight copy
       size_t symbols_converted = 0;
       if (ch.rx_buffer && edata->received_symbols) {
         instance->ConvertFromRmtSymbols(
@@ -1041,13 +1327,12 @@ bool EspPio::OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_e
       ch.status.symbols_processed = symbols_converted;
       ch.status.timestamp_us = esp_timer_get_time();
 
-      // Invoke user callback if set
-      if (instance->receive_callback_) {
-        instance->receive_callback_(i, ch.rx_buffer, symbols_converted,
-                                    instance->callback_user_data_);
-      }
+        // Invoke channel-specific user callback if set
+        if (ch.receive_callback) {
+          ch.receive_callback(i, ch.rx_buffer, symbols_converted, ch.receive_user_data);
+        }
 
-      ESP_LOGD(TAG, "Reception complete on channel %d, received %d symbols", i, symbols_converted);
+      ESP_EARLY_LOGD(TAG, "Reception complete on channel %d, received %d symbols", i, symbols_converted);
       break;
     }
   }
@@ -1059,23 +1344,33 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
   auto& channel = channels_[channel_id];
   const auto& config = channel.config;
 
-  // Calculate clock settings
-  hf_u32_t clock_divider = CalculateClockDivider(config.resolution_ns);
+  // Choose clock source: use user-selected if set, otherwise target default
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+  rmt_clock_source_t default_src = RMT_CLK_SRC_PLL_F80M;
+#else
+  rmt_clock_source_t default_src = RMT_CLK_SRC_DEFAULT;
+#endif
+  rmt_clock_source_t chosen_src = (channels_[channel_id].selected_clk_src == RMT_CLK_SRC_DEFAULT)
+                                      ? default_src
+                                      : channels_[channel_id].selected_clk_src;
+  channel.selected_clk_src = chosen_src;
+  channel.source_clock_hz = GetClockSourceFrequency(chosen_src);
+
+  // Calculate clock settings from requested ns and selected source clock
+  hf_u32_t actual_resolution_ns;
+  hf_u32_t resolution_hz = CalculateResolutionHz(config.resolution_ns, actual_resolution_ns,
+                                                 channel.source_clock_hz);
+  channel.actual_resolution_ns = actual_resolution_ns;
 
   if (config.direction == hf_pio_direction_t::Transmit ||
       config.direction == hf_pio_direction_t::Bidirectional) {
-    // Configure TX channel for ESP32-C6 compatibility
     rmt_tx_channel_config_t tx_config = {};
     tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-// ESP32-C6 specific clock source configuration
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-    tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
-#else
-    tx_config.clk_src = RMT_CLK_SRC_DEFAULT;
-#endif
-    tx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
+    tx_config.clk_src = chosen_src;
+    tx_config.resolution_hz = resolution_hz;
+    // Balanced buffering to allow multi-channel allocations
     tx_config.mem_block_symbols = 64;
-    tx_config.trans_queue_depth = 4;
+    tx_config.trans_queue_depth = 8;
 
     esp_err_t ret = rmt_new_tx_channel(&tx_config, &channel.tx_channel);
     if (ret != ESP_OK) {
@@ -1084,7 +1379,6 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
       return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
 
-    // Create copy encoder (simple symbol transmission)
     rmt_copy_encoder_config_t encoder_config = {};
     ret = rmt_new_copy_encoder(&encoder_config, &channel.encoder);
     if (ret != ESP_OK) {
@@ -1094,7 +1388,20 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
       return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
 
-    // Enable channel
+    // Register TX done callback once at channel bring-up
+    {
+      rmt_tx_event_callbacks_t tx_callbacks = {};
+      tx_callbacks.on_trans_done = OnTransmitComplete;
+      esp_err_t cb_ret = rmt_tx_register_event_callbacks(channel.tx_channel, &tx_callbacks, this);
+      if (cb_ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to register TX callbacks for channel %d: %d", channel_id, cb_ret);
+        rmt_del_encoder(channel.encoder);
+        rmt_del_channel(channel.tx_channel);
+        channel.tx_channel = nullptr;
+        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
+      }
+    }
+
     ret = rmt_enable(channel.tx_channel);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to enable TX channel %d: %d", channel_id, ret);
@@ -1104,16 +1411,10 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
 
   if (config.direction == hf_pio_direction_t::Receive ||
       config.direction == hf_pio_direction_t::Bidirectional) {
-    // Configure RX channel for ESP32-C6 compatibility
     rmt_rx_channel_config_t rx_config = {};
     rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-// ESP32-C6 specific clock source configuration
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-    rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M clock
-#else
-    rx_config.clk_src = RMT_CLK_SRC_DEFAULT;
-#endif
-    rx_config.resolution_hz = RMT_CLK_SRC_FREQ / clock_divider;
+    rx_config.clk_src = chosen_src;
+    rx_config.resolution_hz = resolution_hz;
     rx_config.mem_block_symbols = 64;
 
     esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
@@ -1122,7 +1423,19 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
       return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
 
-    // Enable channel
+    // Register RX done callback once at channel bring-up
+    {
+      rmt_rx_event_callbacks_t rx_callbacks = {};
+      rx_callbacks.on_recv_done = OnReceiveComplete;
+      esp_err_t cb_ret = rmt_rx_register_event_callbacks(channel.rx_channel, &rx_callbacks, this);
+      if (cb_ret != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to register RX callbacks for channel %d: %d", channel_id, cb_ret);
+        rmt_del_channel(channel.rx_channel);
+        channel.rx_channel = nullptr;
+        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
+      }
+    }
+
     ret = rmt_enable(channel.rx_channel);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Failed to enable RX channel %d: %d", channel_id, ret);
@@ -1130,7 +1443,9 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     }
   }
 
-  ESP_LOGI(TAG, "Initialized channel %d with %d ns resolution", channel_id, config.resolution_ns);
+  ESP_LOGI(TAG, "Initialized channel %d: clk_src=%d (%u Hz), requested %uns, achieved %uns (%u Hz)",
+           channel_id, static_cast<int>(chosen_src), channel.source_clock_hz,
+           config.resolution_ns, channel.actual_resolution_ns, 1000000000UL / channel.actual_resolution_ns);
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -1151,6 +1466,10 @@ hf_pio_err_t EspPio::DeinitializeChannel(hf_u8_t channel_id) noexcept {
 
   if (channel.encoder) {
     rmt_del_encoder(channel.encoder);
+    // If bytes_encoder aliases encoder, avoid double-free
+    if (channel.bytes_encoder == channel.encoder) {
+      channel.bytes_encoder = nullptr;
+    }
     channel.encoder = nullptr;
   }
   if (channel.bytes_encoder) {
@@ -1184,12 +1503,7 @@ void EspPio::UpdateChannelStatus(hf_u8_t channel_id) noexcept {
   channel.status.last_error = hf_pio_err_t::PIO_SUCCESS;
 }
 
-void EspPio::InvokeErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept {
-  if (error_callback_) {
-    error_callback_(channel_id, error, callback_user_data_);
-  }
-  channels_[channel_id].status.last_error = error;
-}
+// This method is now replaced by InvokeChannelErrorCallback
 
 bool EspPio::ValidatePioSystem() noexcept {
   ESP_LOGI(TAG, "Starting comprehensive PIO system validation");
@@ -1244,10 +1558,13 @@ bool EspPio::ValidatePioSystem() noexcept {
 
   // Test 6: Validate clock divider calculation
   ESP_LOGI(TAG, "Testing clock divider calculation...");
-  hf_u32_t divider = CalculateClockDivider(1000); // 1 microsecond
+  hf_u32_t actual_ns_test = 0;
+  hf_u32_t divider = CalculateClockDivider(1000, actual_ns_test, GetClockSourceFrequency(channels_[0].selected_clk_src)); // 1 microsecond using a channel clock
   if (divider == 0 || divider > 255) {
     ESP_LOGE(TAG, "Clock divider calculation failed: %d", divider);
     all_tests_passed = false;
+  } else {
+    ESP_LOGD(TAG, "Divider=%u, actual_ns=%u", divider, actual_ns_test);
   }
 
   // Test 7: Validate capabilities structure
@@ -1280,13 +1597,39 @@ bool EspPio::ValidatePioSystem() noexcept {
 // STATISTICS AND DIAGNOSTICS
 //==============================================================================
 
-hf_pio_err_t EspPio::GetStatistics(hf_pio_statistics_t& statistics) const noexcept {
-  statistics = statistics_;
+hf_pio_err_t EspPio::GetStatistics(hf_u8_t channel_id, hf_pio_statistics_t& statistics) const noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+  
+  // For now, return global statistics
+  // In a real implementation, this would gather channel-specific statistics
+  statistics = global_statistics_;
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-hf_pio_err_t EspPio::GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept {
-  diagnostics = diagnostics_;
+hf_pio_err_t EspPio::GetDiagnostics(hf_u8_t channel_id, hf_pio_diagnostics_t& diagnostics) const noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
+  }
+  
+  const auto& channel = channels_[channel_id];
+  
+  // Fill in channel-specific diagnostics
+  diagnostics = global_diagnostics_;
+  diagnostics.pioInitialized = initialized_;
+  diagnostics.activeChannels = 0;
+  
+  // Count active channels
+  for (const auto& ch : channels_) {
+    if (ch.configured) {
+      diagnostics.activeChannels++;
+    }
+  }
+  
+  diagnostics.lastErrorCode = channel.status.last_error;
+  diagnostics.currentResolutionNs = channel.actual_resolution_ns;  // Use actual achieved resolution
+  
   return hf_pio_err_t::PIO_SUCCESS;
 }
 

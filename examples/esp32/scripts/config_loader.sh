@@ -180,6 +180,17 @@ get_featured_example_types() {
     fi
 }
 
+# Get IDF version from config
+get_idf_version() {
+    if check_yq; then
+        # Get the first IDF version from the array
+        run_yq '.metadata.idf_versions[0]' -r
+    else
+        # Fallback: extract IDF version using grep
+        grep -A 5 "metadata:" "$CONFIG_FILE" | grep "idf_versions:" | sed 's/.*idf_versions: *\["*\([^"]*\)"*\].*/\1/' | head -1
+    fi
+}
+
 # Load configuration
 load_config() {
     if ! [ -f "$CONFIG_FILE" ]; then

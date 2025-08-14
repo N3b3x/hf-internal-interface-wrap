@@ -25,7 +25,7 @@ metadata:
   default_example: "ascii_art"
   default_build_type: "Release"
   target: "esp32c6"
-  idf_versions: ["release-v5.5"]
+  idf_versions: ["release/v5.5"]
 
 examples:
   example_name:

@@ -217,7 +217,7 @@ bool EnsureInitialized() noexcept;
  * hf_pio_channel_config_t config;
  * config.gpio_pin = 18;
  * config.direction = hf_pio_direction_t::Transmit;
- * config.resolution_ns = 1000;  // 1μs resolution
+ * config.resolution_ns = 1000;  // 1μs resolution (will be adjusted to closest achievable)
  * config.polarity = hf_pio_polarity_t::Normal;
  * config.idle_state = hf_pio_idle_state_t::Low;
  * 
@@ -371,7 +371,7 @@ virtual void ClearCallbacks() noexcept = 0;
 struct hf_pio_channel_config_t {
     hf_pin_num_t gpio_pin;          ///< GPIO pin for PIO signal
     hf_pio_direction_t direction;   ///< Channel direction
-    uint32_t resolution_ns;         ///< Time resolution in nanoseconds
+    uint32_t resolution_ns;         ///< Time resolution in nanoseconds (user-friendly interface)
     hf_pio_polarity_t polarity;     ///< Signal polarity
     hf_pio_idle_state_t idle_state; ///< Idle state
     uint32_t timeout_us;            ///< Operation timeout in microseconds
@@ -461,7 +461,7 @@ public:
         hf_pio_channel_config_t config;
         config.gpio_pin = 18;  // WS2812 data pin
         config.direction = hf_pio_direction_t::Transmit;
-        config.resolution_ns = 100;  // 100ns resolution
+        config.resolution_ns = 1000;  // 1μs resolution (will be adjusted to closest achievable)
         config.polarity = hf_pio_polarity_t::Normal;
         config.idle_state = hf_pio_idle_state_t::Low;
         
@@ -767,8 +767,20 @@ if (pio.GetCapabilities(caps) == hf_pio_err_t::PIO_SUCCESS) {
 
 // ✅ Use appropriate timing resolution
 uint32_t resolution_ns = 1000;  // 1μs for most applications
-if (high_precision_needed) {
-    resolution_ns = 100;  // 100ns for precise timing
+if (precise_timing_needed) {
+    resolution_ns = 100;  // 100ns for precise timing (hardware permitting)
+}
+
+// ✅ Query actual achieved resolution (ESP32 specific)
+uint32_t actual_resolution_ns;
+if (pio.GetActualResolution(channel_id, actual_resolution_ns) == hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGI(TAG, "Requested: %uns, Achieved: %uns", resolution_ns, actual_resolution_ns);
+}
+
+// ✅ Check hardware constraints before configuration
+uint32_t min_ns, max_ns, clock_hz;
+if (pio.GetResolutionConstraints(min_ns, max_ns, clock_hz) == hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGI(TAG, "Hardware limits: %u-%uns with %u Hz clock", min_ns, max_ns, clock_hz);
 }
 
 // ✅ Handle transmission errors gracefully

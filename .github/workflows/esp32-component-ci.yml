@@ -25,7 +25,6 @@ concurrency:
 env:
   IDF_TARGET: esp32c6
   BUILD_PATH: ci_project
-  ESP_IDF_VERSIONS: '["release/v5.5"]'
   IDF_CCACHE_ENABLE: "1"  # Enables ccache inside ESP-IDF
 
 defaults:
@@ -117,7 +116,7 @@ jobs:
         if: ${{ !inputs.clean_build }}
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ matrix.idf_version }}
+          key: ${{ runner.os }}-buildx-${{ matrix.idf_version_docker }}
           restore-keys: |
             ${{ runner.os }}-buildx-
 
@@ -130,11 +129,11 @@ jobs:
             ~/.espressif
             ~/esp
           key: >-
-            esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-
+            esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             ${{ hashFiles('examples/esp32/scripts/setup_common.sh') }}
           restore-keys: |
-            esp-idf-${{ matrix.idf_version }}-${{ runner.os }}-
-            esp-idf-${{ matrix.idf_version }}-
+            esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
+            esp-idf-${{ matrix.idf_version_docker }}-
             esp-idf-
       
       - name: Cache Python dependencies
@@ -146,11 +145,11 @@ jobs:
             ~/.cache/pip
             ~/.local/lib/python3.*/site-packages
           key: >-
-            python-deps-${{ matrix.idf_version }}-${{ runner.os }}-
+            python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             ${{ hashFiles('examples/esp32/scripts/setup_common.sh', 'examples/esp32/requirements.txt') }}
           restore-keys: |
-            python-deps-${{ matrix.idf_version }}-${{ runner.os }}-
-            python-deps-${{ matrix.idf_version }}-
+            python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
+            python-deps-${{ matrix.idf_version_docker }}-
             python-deps-
       
       - name: Cache ccache
@@ -160,11 +159,11 @@ jobs:
         with:
           path: ~/.ccache
           key: >-
-            ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
+            ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}-
             ${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
           restore-keys: |
-            ccache-${{ matrix.idf_version }}-${{ matrix.build_type }}-
-            ccache-${{ matrix.idf_version }}-
+            ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}-
+            ccache-${{ matrix.idf_version_docker }}-
       
       - name: Log cache results
         run: |
@@ -188,7 +187,7 @@ jobs:
       - name: ESP-IDF Build with caching
         uses: espressif/esp-idf-ci-action@v1
         with:
-          esp_idf_version: ${{ matrix.idf_version }}
+          esp_idf_version: ${{ matrix.idf_version_docker }}
           target: ${{ env.IDF_TARGET }}
           path: .
           extra_docker_args: >-
@@ -203,7 +202,6 @@ jobs:
             cp -r examples/esp32/components ${{ env.BUILD_PATH }}/components &&
             cp -r examples/esp32/scripts ${{ env.BUILD_PATH }}/scripts &&
             cp examples/esp32/examples_config.yml ${{ env.BUILD_PATH }}/examples_config.yml &&
-            cp -r examples/common ${{ env.BUILD_PATH }}/common &&
             cp -r src ${{ env.BUILD_PATH }}/src &&
             cp -r inc ${{ env.BUILD_PATH }}/inc &&
             cp examples/esp32/sdkconfig ${{ env.BUILD_PATH }}/sdkconfig &&
@@ -221,7 +219,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ matrix.example_type }}-${{ matrix.idf_version }}-${{ matrix.build_type }}
+          name: fw-${{ matrix.example_type }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
           retention-days: 7
           path: |
             ${{ env.BUILD_PATH }}/build/*.bin

@@ -148,27 +148,30 @@ public:
                                 hf_pio_channel_status_t& status) const noexcept override;
   hf_pio_err_t GetCapabilities(hf_pio_capabilities_t& capabilities) const noexcept override;
 
-  void SetTransmitCallback(hf_pio_transmit_callback_t callback,
+  void SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t callback,
                            void* user_data = nullptr) noexcept override;
-  void SetReceiveCallback(hf_pio_receive_callback_t callback,
+  void SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t callback,
                           void* user_data = nullptr) noexcept override;
-  void SetErrorCallback(hf_pio_error_callback_t callback,
+  void SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callback,
                         void* user_data = nullptr) noexcept override;
+  void ClearChannelCallbacks(hf_u8_t channel_id) noexcept override;
   void ClearCallbacks() noexcept override;
 
   /**
    * @brief Get PIO operation statistics.
+   * @param channel_id Channel identifier
    * @param statistics Reference to statistics structure to fill
    * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
    */
-  hf_pio_err_t GetStatistics(hf_pio_statistics_t& statistics) const noexcept override;
+  hf_pio_err_t GetStatistics(hf_u8_t channel_id, hf_pio_statistics_t& statistics) const noexcept override;
 
   /**
    * @brief Get PIO diagnostic information.
+   * @param channel_id Channel identifier
    * @param diagnostics Reference to diagnostics structure to fill
    * @return hf_pio_err_t::PIO_SUCCESS if successful, error code otherwise
    */
-  hf_pio_err_t GetDiagnostics(hf_pio_diagnostics_t& diagnostics) const noexcept override;
+  hf_pio_err_t GetDiagnostics(hf_u8_t channel_id, hf_pio_diagnostics_t& diagnostics) const noexcept override;
 
   //==============================================//
   // Lazy Initialization Support
@@ -279,6 +282,36 @@ public:
    */
   hf_pio_err_t ResetChannelStatistics(hf_u8_t channel_id) noexcept;
 
+  /**
+   * @brief Get the actual achieved resolution for a channel in nanoseconds
+   * @param channel_id Channel identifier
+   * @param achieved_resolution_ns [out] Actual resolution achieved by hardware
+   * @return Error code indicating success or failure
+   * @note Due to 8-bit clock divider limitations (1-255), the actual resolution
+   *       may differ from the requested resolution_ns in the configuration
+   */
+  hf_pio_err_t GetActualResolution(hf_u8_t channel_id, hf_u32_t& achieved_resolution_ns) const noexcept;
+
+  /**
+   * @brief Allow caller to choose the RMT clock source per channel
+   * @param channel_id Channel identifier
+   * @param clk_src RMT clock source (e.g. RMT_CLK_SRC_PLL_F80M, RMT_CLK_SRC_XTAL, RMT_CLK_SRC_RC_FAST)
+   * @return Error code indicating success or failure
+   * @note Must be called before ConfigureChannel() to take effect for initial install.
+   *       Reconfiguration via ConfigureAdvancedRmt() also respects this selection.
+   */
+  hf_pio_err_t SetClockSource(hf_u8_t channel_id, rmt_clock_source_t clk_src) noexcept;
+
+  /**
+   * @brief Get the currently selected RMT clock source for a channel
+   */
+  hf_pio_err_t GetClockSource(hf_u8_t channel_id, rmt_clock_source_t& clk_src) const noexcept;
+
+  /**
+   * @brief Get the current source clock frequency for a channel (Hz)
+   */
+  hf_pio_err_t GetSourceClockHz(hf_u8_t channel_id, hf_u32_t& clock_hz) const noexcept;
+
 private:
   //==============================================//
   // Internal Structures
@@ -303,14 +336,28 @@ private:
 
     // Timing
     uint64_t last_operation_time;
+    hf_u32_t actual_resolution_ns;  // Actual achieved resolution due to divider constraints
+    rmt_clock_source_t selected_clk_src; // Selected clock source for this channel
+    hf_u32_t source_clock_hz;           // Source clock frequency in Hz for calculations
 
     // Idle level configuration
     bool idle_level;
 
+    // Callbacks
+    hf_pio_transmit_callback_t transmit_callback;
+    void* transmit_user_data;
+    hf_pio_receive_callback_t receive_callback;
+    void* receive_user_data;
+    hf_pio_error_callback_t error_callback;
+    void* error_user_data;
+
     ChannelState() noexcept
         : configured(false), busy(false), config(), status(), tx_channel(nullptr),
           rx_channel(nullptr), encoder(nullptr), bytes_encoder(nullptr), rx_buffer(nullptr),
-          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0), idle_level(false) {}
+          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0), actual_resolution_ns(0),
+          selected_clk_src(RMT_CLK_SRC_DEFAULT), source_clock_hz(80000000), idle_level(false),
+          transmit_callback(nullptr), transmit_user_data(nullptr), receive_callback(nullptr),
+          receive_user_data(nullptr), error_callback(nullptr), error_user_data(nullptr) {}
   };
 
   //==============================================//
@@ -318,7 +365,7 @@ private:
   //==============================================//
 
   static constexpr hf_u8_t MAX_CHANNELS = HF_RMT_MAX_CHANNELS; // Use centralized constant
-  static constexpr size_t MAX_SYMBOLS_PER_TRANSMISSION = 64;
+  static constexpr size_t MAX_SYMBOLS_PER_TRANSMISSION = 256;
   static constexpr uint32_t DEFAULT_RESOLUTION_NS = 1000; // 1 microsecond
 // ESP32-C6 specific clock frequency configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
@@ -327,15 +374,12 @@ private:
   static constexpr uint32_t RMT_CLK_SRC_FREQ = 80000000; // 80 MHz APB clock
 #endif
 
-  bool initialized_;
   std::array<ChannelState, MAX_CHANNELS> channels_;
   mutable RtosMutex state_mutex_;
 
-  // Callbacks
-  hf_pio_transmit_callback_t transmit_callback_;
-  hf_pio_receive_callback_t receive_callback_;
-  hf_pio_error_callback_t error_callback_;
-  void* callback_user_data_;
+  // Global statistics and diagnostics
+  hf_pio_statistics_t global_statistics_;
+  hf_pio_diagnostics_t global_diagnostics_;
 
   //==============================================//
   // Internal Helper Methods
@@ -392,10 +436,72 @@ private:
   void InvokeErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept;
 
   /**
-   * @brief Calculate RMT clock divider for desired resolution
+   * @brief Calculate the best possible resolution_hz from requested resolution_ns
+   * @param resolution_ns Requested resolution in nanoseconds
+   * @param actual_resolution_ns [out] Actual resolution that will be achieved
+   * @param source_clock_hz Source clock frequency in Hz for the selected clk_src
+   * @return Calculated resolution_hz for RMT peripheral
+   * @note This handles the 8-bit divider constraint (1-255) and returns the closest achievable resolution
    */
-  uint32_t CalculateClockDivider(uint32_t resolution_ns) const noexcept;
+  hf_u32_t CalculateResolutionHz(hf_u32_t resolution_ns, hf_u32_t& actual_resolution_ns,
+                                 hf_u32_t source_clock_hz) const noexcept;
 
-private:
+  /**
+   * @brief Calculate RMT clock divider for desired resolution
+   * @param resolution_ns Desired resolution in nanoseconds 
+   * @param actual_resolution_ns [out] Actual resolution that will be achieved
+   * @param source_clock_hz Source clock frequency in Hz for the selected clk_src
+   * @return Clock divider value (1-255)
+   * @note This method handles the 8-bit divider constraint and calculates the closest achievable resolution
+   */
+  uint32_t CalculateClockDivider(uint32_t resolution_ns, uint32_t& actual_resolution_ns,
+                                 uint32_t source_clock_hz) const noexcept;
+
+  /**
+   * @brief Get effective RMT clock frequency for a given divider
+   * @param clock_divider Clock divider value
+   * @param source_clock_hz Source clock frequency in Hz for the selected clk_src
+   * @return Effective clock frequency in Hz
+   */
+  uint32_t GetEffectiveClockFrequency(uint32_t clock_divider, uint32_t source_clock_hz) const noexcept;
+
+  /**
+   * @brief Get information about resolution constraints for current ESP32 variant
+   * @param min_resolution_ns [out] Minimum achievable resolution in nanoseconds
+   * @param max_resolution_ns [out] Maximum achievable resolution in nanoseconds
+   * @param clock_freq_hz [out] Source clock frequency in Hz
+   * @return Error code indicating success or failure
+   */
+  hf_pio_err_t GetResolutionConstraints(hf_u32_t& min_resolution_ns, hf_u32_t& max_resolution_ns, 
+                                       hf_u32_t& clock_freq_hz) const noexcept;
+
+  /**
+   * @brief Get resolution constraints for a specific channel's selected clock source
+   */
+  hf_pio_err_t GetResolutionConstraints(hf_u8_t channel_id, hf_u32_t& min_resolution_ns,
+                                       hf_u32_t& max_resolution_ns, hf_u32_t& clock_freq_hz) const noexcept;
+
+  /**
+   * @brief Map an RMT clock source to its nominal frequency in Hz
+   */
+  static inline hf_u32_t GetClockSourceFrequency(rmt_clock_source_t clk_src) noexcept;
+  static inline hf_u32_t ResolveClockSourceHz(rmt_clock_source_t clk_src) noexcept;
+
+  /**
+   * @brief Validate channel configuration for current ESP32 variant
+   * @param channel_id Channel identifier
+   * @param config Channel configuration to validate
+   * @return Error code indicating validation result
+   */
+  hf_pio_err_t ValidateChannelConfiguration(hf_u8_t channel_id, 
+                                           const hf_pio_channel_config_t& config) const noexcept;
+
+  /**
+   * @brief Invoke channel-specific error callback
+   * @param channel_id Channel identifier
+   * @param error Error that occurred
+   */
+  void InvokeChannelErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept;
+
   static constexpr const char* TAG = "EspPio"; ///< Logging tag
 };
