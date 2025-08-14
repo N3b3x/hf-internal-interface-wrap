@@ -52,31 +52,20 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          
+      
       - name: Get ESP-IDF version from config
         id: get-idf-version
         run: |
           echo "Reading ESP-IDF version from examples_config.yml..."
+          IDF_TAG="release-v5.5"
           if [ -f "examples/esp32/examples_config.yml" ]; then
-            # Try to use yq if available
-            if command -v yq &> /dev/null; then
-              IDF_VERSION=$(yq '.metadata.idf_versions[0]' examples/esp32/examples_config.yml)
-            else
-              # Fallback to grep/sed
-              IDF_VERSION=$(grep -A 5 "metadata:" examples/esp32/examples_config.yml | grep "idf_versions:" | sed 's/.*idf_versions: *\["*\([^"]*\)"*\].*/\1/' | head -1)
+            IDF_LINE=$(grep -m1 "idf_versions:" examples/esp32/examples_config.yml || true)
+            if [ -n "$IDF_LINE" ]; then
+              IDF_TAG=$(echo "$IDF_LINE" | tr -d '[]"' | awk -F: '{print $2}' | awk '{print $1}')
             fi
-            
-            if [ -n "$IDF_VERSION" ]; then
-              echo "idf_version=${IDF_VERSION}" >> "$GITHUB_OUTPUT"
-              echo "Using ESP-IDF version from config: ${IDF_VERSION}"
-            else
-              echo "idf_version=release/v5.5" >> "$GITHUB_OUTPUT"
-              echo "Could not read from config, using default: release/v5.5"
-            fi
-          else
-            echo "idf_version=release/v5.5" >> "$GITHUB_OUTPUT"
-            echo "Config file not found, using default: release/v5.5"
           fi
+          echo "idf_version=${IDF_TAG}" >> "$GITHUB_OUTPUT"
+          echo "Using ESP-IDF version from config (docker tag): ${IDF_TAG}"
           
       - name: Cache pip dependencies
         uses: actions/cache@v4
@@ -280,6 +269,22 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Get ESP-IDF version from config
+        id: get-idf-version
+        run: |
+          echo "Reading ESP-IDF version from examples_config.yml..."
+          IDF_TAG="release-v5.5"
+          if [ -f "examples/esp32/examples_config.yml" ]; then
+            IDF_LINE=$(grep -m1 "idf_versions:" examples/esp32/examples_config.yml || true)
+            if [ -n "$IDF_LINE" ]; then
+              IDF_TAG=$(echo "$IDF_LINE" | tr -d '[]"' | awk -F: '{print $2}' | awk '{print $1}')
+            fi
+          fi
+          echo "idf_version=${IDF_TAG}" >> "$GITHUB_OUTPUT"
+          IDF_GIT_BRANCH=$(echo "${IDF_TAG}" | sed -E 's/^release-v([0-9]+\.[0-9]+)$/release\/\1/')
+          echo "idf_git_branch=${IDF_GIT_BRANCH}" >> "$GITHUB_OUTPUT"
+          echo "Using ESP-IDF docker tag: ${IDF_TAG}; git branch: ${IDF_GIT_BRANCH}"
           
       - name: Cache ESP-IDF installation
         id: esp-idf-cache
@@ -297,7 +302,7 @@ jobs:
         if: steps.esp-idf-cache.outputs.cache-hit != 'true'
         run: |
           echo "🔧 Installing ESP-IDF for component analysis..."
-          git clone --recursive --depth 1 --branch ${{ steps.get-idf-version.outputs.idf_version }} \
+          git clone --recursive --depth 1 --branch ${{ steps.get-idf-version.outputs.idf_git_branch }} \
             https://github.com/espressif/esp-idf.git ~/esp-idf
           
           cd ~/esp-idf
