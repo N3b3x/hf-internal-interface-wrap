@@ -51,3 +51,6 @@ docs/doxygen/
 
 __pycache__/
 **/__pycache__/
+
+actionlint*
+**/actionlint*
