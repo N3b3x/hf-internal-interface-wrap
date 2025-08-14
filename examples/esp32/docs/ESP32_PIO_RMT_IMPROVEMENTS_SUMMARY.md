@@ -134,7 +134,7 @@ static bool OnTransmitComplete(rmt_channel_handle_t channel,
 ### 6. 📋 Comprehensive Base Tests
 
 #### What Was Created
-- **PioBaseTests.cpp**: Comprehensive test suite using PioComprehensiveTest framework
+- **PioComprehensiveTest.cpp**: Comprehensive test suite incorporating all base functionality
 - **ESP32 Variant Testing**: Tests work across all ESP32 variants
 - **Channel Validation Testing**: Validates channel allocation for each variant
 - **Resolution Testing**: Tests boundary conditions and clock calculations
