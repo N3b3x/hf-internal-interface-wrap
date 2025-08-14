@@ -2,9 +2,22 @@
 
 ## Overview
 
-The PIO Comprehensive Test Suite provides extensive validation of the `EspPio` class for ESP32-C6 platforms using the ESP32-C6's RMT (Remote Control) peripheral with ESP-IDF v5.5+. This test suite demonstrates complete PIO functionality including WS2812 LED protocol timing, automated loopback testing, channel-specific callbacks, and advanced RMT features with a focus on embedded environments using `noexcept` functions.
+The PIO Comprehensive Test Suite provides extensive validation of the `EspPio` class for ESP32 platforms using the RMT (Remote Control) peripheral with ESP-IDF v5.5+. This test suite demonstrates complete PIO functionality including WS2812 LED protocol timing, automated loopback testing, channel-specific callbacks, and advanced RMT features with a focus on embedded environments using `noexcept` functions.
 
 **✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware**
+
+### Supported ESP32 Variants
+
+The implementation automatically adapts to different ESP32 variants with their specific RMT channel allocation constraints:
+
+| ESP32 Variant | Total Channels | TX Channels | RX Channels | Channel Allocation |
+|---------------|----------------|-------------|-------------|-------------------|
+| ESP32         | 8              | 8 (0-7)     | 8 (0-7)     | Any channel can be TX or RX |
+| ESP32-S2      | 4              | 4 (0-3)     | 4 (0-3)     | Any channel can be TX or RX |
+| ESP32-S3      | 8              | 4 (0-3)     | 4 (4-7)     | **Hardcoded allocation** |
+| ESP32-C3      | 4              | 2 (0-1)     | 2 (2-3)     | **Hardcoded allocation** |
+| ESP32-C6      | 4              | 2 (0-1)     | 2 (2-3)     | **Hardcoded allocation** |
+| ESP32-H2      | 4              | 2 (0-1)     | 2 (2-3)     | **Hardcoded allocation** |
 
 ## Features Tested
 

@@ -478,5 +478,5 @@ void set_led_color(uint8_t red, uint8_t green, uint8_t blue) {
 ## See Also
 
 - [BasePio API Reference](BasePio.md)
-- [ESP32 PIO/RMT Implementation Guide](../ESP32_PIO_RMT_Implementation_Guide.md)
+- [ESP32 PIO Test Documentation](../../examples/esp32/docs/README_PIO_TEST.md)
 - [HardwareTypes Reference](HardwareTypes.md)
