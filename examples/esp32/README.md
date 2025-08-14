@@ -27,34 +27,248 @@ Welcome to the ESP32 examples documentation hub. This comprehensive guide provid
 
 ## 🎯 Quick Start
 
-### Prerequisites
-```bash
-# ESP-IDF v5.5+ installation required
-. $IDF_PATH/export.sh
+### 🚀 **Recommended: Automated Script Workflow**
 
-# Set target platform
-export IDF_TARGET=esp32c6
-```
+The ESP32 examples include powerful automation scripts that handle environment setup, dependency management, and streamlined building. **This is the recommended approach for most users.**
 
-### Build and Flash Any Test
+#### **Step 1: Repository Setup (One-time)**
 ```bash
-# Navigate to examples directory
+# Navigate to ESP32 examples directory
 cd examples/esp32
 
-# Build specific test (replace 'gpio_test' with desired test)
+# Run repository setup (handles ESP-IDF environment, dependencies, target configuration)
+./scripts/setup_repo.sh
+
+# What setup_repo.sh does:
+# ✅ Validates ESP-IDF installation and version (v5.5+)
+# ✅ Sets up environment variables and target (esp32c6)
+# ✅ Installs Python dependencies from requirements.txt
+# ✅ Validates hardware target compatibility
+# ✅ Sets up development environment for optimal performance
+# ✅ Creates necessary directories and permissions
+```
+
+#### **Step 2: Build Examples**
+```bash
+# Build any test with automated configuration
+./scripts/build_example.sh <test_name> <build_type>
+
+# Examples:
+./scripts/build_example.sh gpio_test Release      # GPIO test optimized
+./scripts/build_example.sh pio_test Debug        # PIO test with debug symbols
+./scripts/build_example.sh nvs_test Release      # NVS test optimized
+
+# What build_example.sh provides:
+# ✅ Automatic configuration loading from examples_config.yml
+# ✅ Intelligent build directory management (build_<test>_<type>)
+# ✅ Optimized compiler flags per build type
+# ✅ Dependency validation and error checking
+# ✅ Build artifact organization and cleanup
+# ✅ Cross-platform compatibility (Linux, macOS, Windows WSL)
+```
+
+#### **Step 3: Flash and Monitor**
+```bash
+# Flash with intelligent device detection and monitoring
+./scripts/flash_example.sh <test_name> <build_type> [options]
+
+# Examples:
+./scripts/flash_example.sh gpio_test Release              # Auto-detect port and flash
+./scripts/flash_example.sh pio_test Debug --port /dev/ttyUSB0  # Specific port
+./scripts/flash_example.sh nvs_test Release --monitor     # Flash and start monitoring
+
+# What flash_example.sh provides:
+# ✅ Automatic serial port detection (Linux: /dev/ttyUSB*, /dev/ttyACM*)
+# ✅ Intelligent baud rate selection based on target
+# ✅ Auto-build if binary doesn't exist or is outdated
+# ✅ Flash verification and error recovery
+# ✅ Integrated serial monitoring with proper terminal setup
+# ✅ Support for multiple ESP32 variants and development boards
+```
+
+#### **Complete Workflow Example**
+```bash
+# One-time setup
+cd examples/esp32
+./scripts/setup_repo.sh
+
+# Build and flash GPIO test
+./scripts/build_example.sh gpio_test Release
+./scripts/flash_example.sh gpio_test Release --monitor
+
+# Build and flash PIO test with debug
+./scripts/build_example.sh pio_test Debug  
+./scripts/flash_example.sh pio_test Debug --port /dev/ttyUSB0 --monitor
+```
+
+### 📋 **Script Benefits & Features**
+
+#### **setup_repo.sh - Repository Initialization**
+- **Environment Validation**: Checks ESP-IDF installation, version compatibility
+- **Automatic Configuration**: Sets up target, toolchain, and environment variables
+- **Dependency Management**: Installs Python packages, validates tools
+- **Cross-Platform**: Works on Linux, macOS, Windows WSL
+- **Error Recovery**: Provides helpful error messages and solutions
+
+#### **build_example.sh - Intelligent Building**
+- **Centralized Configuration**: Uses `examples_config.yml` for all settings
+- **Build Optimization**: Automatic compiler flags per build type
+- **Dependency Tracking**: Only rebuilds when necessary
+- **Artifact Management**: Organized build directories and cleanup
+- **Validation**: Pre-build checks for configuration and dependencies
+
+#### **flash_example.sh - Smart Flashing**
+- **Auto-Detection**: Finds ESP32 devices automatically
+- **Build Integration**: Builds if needed before flashing
+- **Error Handling**: Comprehensive error recovery and reporting
+- **Monitoring**: Integrated serial monitor with proper formatting
+- **Multi-Device**: Handles multiple connected ESP32 devices
+
+### 🛠️ **Alternative: Raw ESP-IDF Commands**
+
+For users who prefer direct control or need custom configurations, raw `idf.py` commands are fully supported:
+
+#### **Manual Environment Setup**
+```bash
+# Manual ESP-IDF environment setup
+source $IDF_PATH/export.sh
+export IDF_TARGET=esp32c6
+
+# Navigate to examples directory
+cd examples/esp32
+```
+
+#### **Direct Build Commands**
+```bash
+# Set target (required once per clean workspace)
+idf.py set-target esp32c6
+
+# Build specific test with custom configuration
 idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release
+
+# Alternative: Configure then build
+idf.py reconfigure -DEXAMPLE_TYPE=pio_test -DBUILD_TYPE=Debug
+idf.py build
+
+# Clean and rebuild
+idf.py clean
+idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Release
+```
+
+#### **Direct Flash and Monitor**
+```bash
+# Flash with automatic port detection
+idf.py flash
+
+# Flash with specific port
+idf.py -p /dev/ttyUSB0 flash
 
 # Flash and monitor
 idf.py -p /dev/ttyUSB0 flash monitor
+
+# Monitor only (after flashing)
+idf.py -p /dev/ttyUSB0 monitor
+
+# Custom baud rate
+idf.py -p /dev/ttyUSB0 -b 921600 flash monitor
 ```
 
-### Using Build Scripts (Recommended)
+#### **Advanced Raw ESP-IDF Usage**
 ```bash
-# Build with optimization
-./scripts/build_example.sh gpio_test Release
+# Build with custom optimization
+idf.py build -DEXAMPLE_TYPE=gpio_test -DCMAKE_BUILD_TYPE=RelWithDebInfo
 
-# Flash to device
-idf.py -B build_gpio_test_Release flash monitor
+# Menuconfig for detailed configuration
+idf.py menuconfig
+
+# Size analysis
+idf.py size
+idf.py size-components
+
+# Erase flash completely
+idf.py erase-flash
+
+# Monitor with filters
+idf.py monitor --print_filter="*:I"
+
+# Partition table info
+idf.py partition-table
+```
+
+### 🤔 **Which Approach to Choose?**
+
+#### **✅ Use Scripts When:**
+- You want the fastest, most reliable workflow
+- You're new to ESP-IDF or this project
+- You want automated error handling and recovery
+- You need cross-platform compatibility
+- You prefer the "just works" approach
+
+#### **⚙️ Use Raw idf.py When:**
+- You need fine-grained control over build process
+- You're debugging build system issues
+- You want to customize compiler flags or configurations
+- You're integrating with external build systems
+- You're an experienced ESP-IDF developer
+
+### 📝 **Quick Reference Commands**
+
+#### **🚀 RECOMMENDED: Script Workflow (Automated & Reliable)**
+```bash
+# === ONE-TIME SETUP ===
+cd examples/esp32
+./scripts/setup_repo.sh                                    # Complete environment setup
+
+# === DAILY WORKFLOW ===
+./scripts/build_example.sh list                            # List all available tests
+./scripts/build_example.sh gpio_test Release               # Build GPIO test
+./scripts/flash_example.sh gpio_test Release --monitor     # Flash and monitor GPIO test
+
+# === WORKING TESTS (Ready to Use) ===
+./scripts/build_example.sh gpio_test Release && ./scripts/flash_example.sh gpio_test Release --monitor
+./scripts/build_example.sh pio_test Release && ./scripts/flash_example.sh pio_test Release --monitor  
+./scripts/build_example.sh nvs_test Release && ./scripts/flash_example.sh nvs_test Release --monitor
+./scripts/build_example.sh logger_test Release && ./scripts/flash_example.sh logger_test Release --monitor
+./scripts/build_example.sh ascii_art Release && ./scripts/flash_example.sh ascii_art Release --monitor
+
+# === DEBUG BUILDS ===
+./scripts/build_example.sh gpio_test Debug && ./scripts/flash_example.sh gpio_test Debug --monitor
+```
+
+#### **⚙️ ALTERNATIVE: Raw ESP-IDF Workflow (Manual Control)**
+```bash
+# === ENVIRONMENT SETUP ===
+source $IDF_PATH/export.sh && export IDF_TARGET=esp32c6    # Load ESP-IDF environment
+cd examples/esp32                                          # Navigate to project
+
+# === BUILD AND FLASH ===
+idf.py set-target esp32c6                                  # Set target (once per workspace)
+idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release # Build specific test
+idf.py -p /dev/ttyUSB0 flash monitor                      # Flash and monitor
+
+# === WORKING TESTS (Raw Commands) ===
+idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release && idf.py flash monitor
+idf.py build -DEXAMPLE_TYPE=pio_test -DBUILD_TYPE=Release && idf.py flash monitor
+idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Release && idf.py flash monitor
+idf.py build -DEXAMPLE_TYPE=logger_test -DBUILD_TYPE=Release && idf.py flash monitor
+idf.py build -DEXAMPLE_TYPE=ascii_art -DBUILD_TYPE=Release && idf.py flash monitor
+
+# === ADVANCED COMMANDS ===
+idf.py menuconfig                                          # Detailed configuration
+idf.py clean && idf.py build -DEXAMPLE_TYPE=gpio_test     # Clean rebuild
+idf.py size && idf.py size-components                     # Size analysis
+idf.py monitor --print_filter="*:I"                       # Filtered monitoring
+```
+
+#### **🎯 Most Common Commands (Copy & Paste Ready)**
+```bash
+# Script approach (recommended for beginners)
+cd examples/esp32 && ./scripts/setup_repo.sh
+./scripts/build_example.sh gpio_test Release && ./scripts/flash_example.sh gpio_test Release --monitor
+
+# Raw idf.py approach (for ESP-IDF experts)  
+source $IDF_PATH/export.sh && export IDF_TARGET=esp32c6 && cd examples/esp32
+idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release && idf.py flash monitor
 ```
 
 ## 📊 Detailed Test Coverage Matrix
@@ -315,33 +529,152 @@ All examples are configured through `examples_config.yml`:
 - **Release**: Optimized builds (`-O2`, performance focused)
 - **Debug**: Debug builds (`-O0 -g3`, development focused)
 
-### Available Scripts
-- `build_example.sh` - Build examples with centralized configuration
-- `flash_example.sh` - Flash and monitor with auto-build capability  
-- `config_loader.sh` - Configuration helper functions
-- `get_example_info.py` - Python script for CMake integration
-- `setup_ci.sh` - CI environment setup
+### 📜 **Available Scripts (Detailed)**
+
+#### **Core Workflow Scripts**
+- **`setup_repo.sh`** - One-time repository initialization and environment setup
+  - ESP-IDF environment validation and configuration
+  - Python dependency installation and verification
+  - Target platform setup (ESP32-C6) and toolchain validation
+  - Development environment optimization
+
+- **`build_example.sh`** - Intelligent build system with centralized configuration
+  - Automated configuration loading from `examples_config.yml`
+  - Optimized build flags per build type (Release/Debug)
+  - Dependency validation and incremental builds
+  - Cross-platform compatibility and error handling
+
+- **`flash_example.sh`** - Smart flashing with device detection and monitoring
+  - Automatic ESP32 device detection and port selection
+  - Integrated build-on-demand if binaries are missing/outdated
+  - Serial monitoring with proper terminal configuration
+  - Multi-device support and error recovery
+
+#### **Supporting Scripts** 
+- **`config_loader.sh`** - Configuration helper functions for bash scripts
+  - YAML parsing utilities for `examples_config.yml`
+  - Environment variable management and validation
+  - Cross-script configuration sharing
+
+- **`get_example_info.py`** - Python integration script for CMake
+  - Example metadata extraction for build system
+  - Configuration validation and preprocessing
+  - CMake variable generation from YAML configuration
+
+- **`setup_ci.sh`** - Continuous Integration environment setup
+  - CI-specific environment configuration and optimization
+  - Automated testing pipeline setup
+  - Matrix build configuration for multiple test combinations
+
+#### **Script Usage Patterns**
+```bash
+# Complete workflow with all scripts
+./scripts/setup_repo.sh                           # One-time setup
+./scripts/build_example.sh gpio_test Release      # Build with config
+./scripts/flash_example.sh gpio_test Release      # Flash with automation
+
+# Direct script help
+./scripts/build_example.sh --help                 # Show build options
+./scripts/flash_example.sh --help                 # Show flash options
+./scripts/setup_repo.sh --check                   # Validate environment
+```
 
 ## 🚀 Usage Examples
 
-### Build Specific Test
-```bash
-# GPIO test
-./scripts/build_example.sh gpio_test Release
-idf.py -B build_gpio_test_Release flash monitor
+### **Recommended Script-Based Workflow**
 
-# PIO test with debug
-./scripts/build_example.sh pio_test Debug
-idf.py -B build_pio_test_Debug flash monitor
-
-# NVS test
-./scripts/build_example.sh nvs_test Release
-idf.py -B build_nvs_test_Release flash monitor
-```
-
-### List Available Examples
+#### **List Available Tests**
 ```bash
 ./scripts/build_example.sh list
+# Shows all available tests with descriptions and build types
+```
+
+#### **Working Tests (Ready to Use)**
+```bash
+# GPIO Test - Complete peripheral testing
+./scripts/build_example.sh gpio_test Release
+./scripts/flash_example.sh gpio_test Release --monitor
+
+# PIO Test - RMT with WS2812 LED (requires GPIO8→GPIO18 jumper)
+./scripts/build_example.sh pio_test Release  
+./scripts/flash_example.sh pio_test Release --monitor
+
+# NVS Test - Non-volatile storage
+./scripts/build_example.sh nvs_test Release
+./scripts/flash_example.sh nvs_test Release --monitor
+
+# Logger Test - Logging system
+./scripts/build_example.sh logger_test Release
+./scripts/flash_example.sh logger_test Release --monitor
+
+# ASCII Art Test - Character generation
+./scripts/build_example.sh ascii_art Release
+./scripts/flash_example.sh ascii_art Release --monitor
+```
+
+#### **Debug Builds for Development**
+```bash
+# Build with debug symbols and verbose logging
+./scripts/build_example.sh gpio_test Debug
+./scripts/flash_example.sh gpio_test Debug --monitor
+
+# Multiple tests for development
+./scripts/build_example.sh pio_test Debug
+./scripts/build_example.sh nvs_test Debug  
+./scripts/build_example.sh logger_test Debug
+```
+
+#### **Tests Under Development (May Require Debugging)**
+```bash
+# ADC Test - Hardware-in-the-loop (requires potentiometer setup)
+./scripts/build_example.sh adc_test Debug
+./scripts/flash_example.sh adc_test Debug --monitor
+
+# Timer Test - Periodic timers (mostly working)
+./scripts/build_example.sh timer_test Debug  
+./scripts/flash_example.sh timer_test Debug --monitor
+
+# Temperature Test - Built-in sensor
+./scripts/build_example.sh temperature_test Debug
+./scripts/flash_example.sh temperature_test Debug --monitor
+```
+
+### **Alternative: Raw ESP-IDF Commands**
+
+#### **Working Tests with Direct idf.py**
+```bash
+# Setup environment
+source $IDF_PATH/export.sh
+export IDF_TARGET=esp32c6
+cd examples/esp32
+
+# GPIO Test
+idf.py set-target esp32c6
+idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release
+idf.py -p /dev/ttyUSB0 flash monitor
+
+# PIO Test  
+idf.py build -DEXAMPLE_TYPE=pio_test -DBUILD_TYPE=Release
+idf.py -p /dev/ttyUSB0 flash monitor
+
+# NVS Test
+idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Release
+idf.py -p /dev/ttyUSB0 flash monitor
+```
+
+#### **Advanced Raw Commands**
+```bash
+# Clean build with size analysis
+idf.py clean
+idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release  
+idf.py size
+
+# Custom build configurations
+idf.py build -DEXAMPLE_TYPE=pio_test -DCMAKE_BUILD_TYPE=RelWithDebInfo
+idf.py menuconfig  # For detailed configuration
+
+# Monitor with specific filters
+idf.py monitor --print_filter="GPIO_Test:*"
 ```
 
 ### CI/CD Integration
@@ -415,15 +748,136 @@ matrix:
 - [ESP-IDF NVS API](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/storage/nvs_flash.html)
 - [ESP-IDF Logging API](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/system/log.html)
 
+## 🛠️ **Troubleshooting & Common Issues**
+
+### **Script-Based Workflow Issues**
+
+#### **setup_repo.sh Problems**
+```bash
+# ESP-IDF not found
+export IDF_PATH=/path/to/esp-idf
+./scripts/setup_repo.sh
+
+# Permission issues
+chmod +x scripts/*.sh
+./scripts/setup_repo.sh
+
+# Python dependency issues
+pip install -r requirements.txt
+./scripts/setup_repo.sh --force-deps
+```
+
+#### **build_example.sh Problems**
+```bash
+# Invalid test name
+./scripts/build_example.sh list                    # See available tests
+
+# Configuration issues  
+./scripts/build_example.sh gpio_test Release --clean # Clean build
+./scripts/build_example.sh gpio_test Release --verbose # Debug output
+
+# Build type issues
+./scripts/build_example.sh gpio_test Debug         # Try debug build
+```
+
+#### **flash_example.sh Problems**
+```bash
+# Port detection issues
+./scripts/flash_example.sh gpio_test Release --port /dev/ttyUSB0
+
+# Permission issues
+sudo usermod -a -G dialout $USER                   # Add user to dialout group
+sudo chmod 666 /dev/ttyUSB0                        # Temporary fix
+
+# Device not found
+lsusb | grep -i esp                                # Check USB connection
+ls /dev/tty*                                       # List available ports
+```
+
+### **Raw ESP-IDF Workflow Issues**
+
+#### **Environment Problems**
+```bash
+# ESP-IDF environment not loaded
+source $IDF_PATH/export.sh
+export IDF_TARGET=esp32c6
+
+# Target not set
+idf.py set-target esp32c6
+
+# Clean environment reset
+idf.py fullclean
+idf.py set-target esp32c6
+```
+
+#### **Build Problems** 
+```bash
+# Configuration issues
+idf.py clean
+idf.py reconfigure -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release
+
+# Dependency issues
+idf.py menuconfig                                  # Check component config
+idf.py build --verbose                             # Debug build process
+
+# Cache issues
+rm -rf build/ sdkconfig.old
+idf.py set-target esp32c6
+idf.py build -DEXAMPLE_TYPE=gpio_test
+```
+
+#### **Flash and Monitor Problems**
+```bash
+# Port issues
+idf.py -p /dev/ttyUSB0 flash                      # Specific port
+idf.py -p /dev/ttyACM0 flash                      # Alternative port
+
+# Baud rate issues  
+idf.py -p /dev/ttyUSB0 -b 115200 flash            # Slower baud rate
+idf.py -p /dev/ttyUSB0 -b 921600 flash            # Faster baud rate
+
+# Monitor issues
+idf.py -p /dev/ttyUSB0 monitor                    # Monitor only
+idf.py monitor --print_filter="*:V"               # Verbose output
+```
+
+### **When to Use Which Approach**
+
+#### **✅ Use Scripts For:**
+- **First-time users**: Automated setup and error handling
+- **Production workflows**: Reliable, tested automation
+- **Team development**: Consistent environment and processes
+- **CI/CD integration**: Standardized build and test processes
+- **Cross-platform development**: Windows WSL, Linux, macOS support
+
+#### **⚙️ Use Raw idf.py For:**
+- **Custom build configurations**: Non-standard compiler flags or options
+- **Debugging build issues**: Direct access to ESP-IDF build system
+- **Integration projects**: Embedding into existing build systems
+- **Advanced development**: Fine-grained control over build process
+- **ESP-IDF experts**: Leveraging deep ESP-IDF knowledge
+
+### **Performance Comparison**
+
+| Task | Scripts | Raw idf.py | Winner |
+|------|---------|------------|---------|
+| First-time setup | ~30 seconds | ~5-10 minutes | 🏆 Scripts |
+| Regular builds | ~15 seconds | ~15 seconds | 🤝 Tie |
+| Error recovery | Automatic | Manual debugging | 🏆 Scripts |
+| Customization | Limited | Full control | 🏆 Raw idf.py |
+| Learning curve | Minimal | Steep | 🏆 Scripts |
+| Cross-platform | Excellent | Good | 🏆 Scripts |
+
 ## 🤝 Contributing
 
 When adding new tests or modifying existing ones:
 
 1. **Follow Test Patterns**: Use the established test framework in `TestFramework.h`
 2. **Add Configuration**: Update `examples_config.yml` with test metadata
-3. **Create Documentation**: Add detailed README in `docs/` directory
+3. **Create Documentation**: Add detailed README in `docs/` directory  
 4. **Update This Guide**: Add test information to the matrix and checklists
-5. **CI Integration**: Ensure test works in CI pipeline
+5. **Script Integration**: Ensure tests work with both script and raw workflows
+6. **CI Integration**: Verify tests pass in automated CI pipeline
 
 ## 📄 License
 
