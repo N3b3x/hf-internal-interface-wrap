@@ -45,18 +45,27 @@ The PWM Comprehensive Test Suite provides extensive validation of the `EspPwm` c
 The test suite uses the following safe GPIO pins on ESP32-C6 DevKit-M-1:
 
 ```
-PWM Test Pins Configuration:
+PWM Test Pins Configuration (Based on Actual Test Code):
 ┌─────────────────────────────────────────────────┐
 │ Function              │ GPIO Pin  │ Channel ID  │
 ├───────────────────────┼───────────┼─────────────┤
 │ Primary PWM Channel   │ GPIO 2    │ Channel 0   │
-│ Secondary PWM Channel │ GPIO 4    │ Channel 1   │
-│ Third PWM Channel     │ GPIO 5    │ Channel 2   │
-│ Fourth PWM Channel    │ GPIO 6    │ Channel 3   │
-│ Phase Test Channel    │ GPIO 7    │ Channel 4   │
-│ Fade Test Channel     │ GPIO 8    │ Channel 5   │
-│ Stress Test Channel   │ GPIO 10   │ Channel 6   │
-│ Complementary Channel │ GPIO 11   │ Channel 7   │
+│ Secondary PWM Channel │ GPIO 6    │ Channel 1   │
+│ Third PWM Channel     │ GPIO 4    │ Channel 2   │
+│ Fourth PWM Channel    │ GPIO 5    │ Channel 3   │
+│ Additional Channels   │ GPIO 7-9* │ Channel 4-7 │
+│ Stress Test Channels  │ GPIO 2,6,4,5,7,8,9,10 │ All 8   │
+└───────────────────────┴───────────┴─────────────┘
+
+*Note: GPIO 3 is deliberately avoided in the test code and 
+replaced with GPIO 6 when the sequence would use it.
+
+Actual Pin Mapping from Test Code:
+- Most tests use: GPIO 2 (primary test pin)
+- Multi-channel tests use: GPIO 2, 6, 4, 5 (avoids GPIO 3)
+- Complementary tests use: GPIO 2 (primary) + GPIO 6 (complementary)
+- Timer management test uses: GPIO 2, 6, 4, 5
+- Stress tests use: GPIO 2, 6, 4, 5, 7, 8, 9, 10 (up to 8 channels)
 └───────────────────────┴───────────┴─────────────┘
 
 Pins to Avoid (ESP32-C6 Specific):
@@ -72,9 +81,12 @@ Pins to Avoid (ESP32-C6 Specific):
 
 ### Logic Analyzer Setup
 For comprehensive testing and verification, connect logic analyzer probes to:
-- **Channels 0-7**: GPIO 2, 4, 5, 6, 7, 8, 10, 11
+- **Primary Channel**: GPIO 2 (most test activity)
+- **Multi-Channel**: GPIO 2, 6, 4, 5 (for synchronized operations)
+- **All Channels**: GPIO 2, 6, 4, 5, 7, 8, 9, 10 (for stress testing)
 - **Sample Rate**: Minimum 1MHz (recommended 10MHz for high-frequency tests)
 - **Trigger**: Rising edge on GPIO 2 (primary channel)
+- **Time Base**: 100μs/div for high freq, 1ms/div for duty cycle, 1s/div for fade
 
 ## Building and Running
 
@@ -92,34 +104,46 @@ export IDF_TARGET=esp32c6
 # Navigate to examples directory
 cd examples/esp32
 
-# Build PWM test
-idf.py build -DEXAMPLE_TYPE=pwm_test -DBUILD_TYPE=Release
+# Build PWM test using example scripts (Recommended)
+./scripts/build_example.sh pwm_test Release
 
-# Flash and monitor
-idf.py -p /dev/ttyUSB0 flash monitor
+# Flash and monitor using example scripts (Recommended)
+./scripts/flash_example.sh pwm_test Release flash_monitor
 ```
 
 ### Alternative Build Methods
 
-#### Using Build Scripts (Recommended)
+#### Using ESP-IDF directly
 ```bash
-# Source ESP-IDF environment
-source /path/to/esp-idf/export.sh
+# Build with idf.py
+idf.py build -DEXAMPLE_TYPE=pwm_test -DBUILD_TYPE=Release
 
-# Build with optimization
-./build_example.sh pwm_test Release
-
-# Flash to device
-idf.py -B build_pwm_test_Release flash monitor
+# Flash and monitor with idf.py
+idf.py -p /dev/ttyUSB0 flash monitor
 ```
 
 #### Debug Build for Development
 ```bash
-# Build with debug symbols and verbose output
-idf.py build -DEXAMPLE_TYPE=pwm_test -DBUILD_TYPE=Debug
+# Build debug version using example scripts
+./scripts/build_example.sh pwm_test Debug --clean
 
-# Run with detailed logging
-idf.py -p /dev/ttyUSB0 flash monitor
+# Flash debug build
+./scripts/flash_example.sh pwm_test Debug flash_monitor
+```
+
+#### Available Example Script Options
+```bash
+# List all available examples and build types
+./scripts/build_example.sh list
+./scripts/flash_example.sh list
+
+# Build with additional options
+./scripts/build_example.sh pwm_test Release --clean --no-cache
+
+# Flash operations
+./scripts/flash_example.sh pwm_test Release flash      # Flash only
+./scripts/flash_example.sh pwm_test Release monitor   # Monitor only
+./scripts/flash_example.sh pwm_test Release flash_monitor  # Both (default)
 ```
 
 ## Test Categories
@@ -280,16 +304,16 @@ idf.py -p /dev/ttyUSB0 flash monitor
 - **Logic Analyzer (4 Channels)**:
   ```
   Before StartAll():
-  GPIO 2-6: ________________________________________
+  GPIO 2,6,4,5: ________________________________________
   
   After StartAll():
   GPIO 2:   ████____████____████____████____  (30% duty)
-  GPIO 4:   █████___█████___█████___█████___  (40% duty)  
-  GPIO 5:   ██████__██████__██████__██████__  (50% duty)
-  GPIO 6:   ███████_███████_███████_███████_  (60% duty)
+  GPIO 6:   █████___█████___█████___█████___  (40% duty)  
+  GPIO 4:   ██████__██████__██████__██████__  (50% duty)
+  GPIO 5:   ███████_███████_███████_███████_  (60% duty)
   
   After StopAll():
-  GPIO 2-6: ________________________________________
+  GPIO 2,6,4,5: ________________________________________
   ```
 
 #### `test_complementary_outputs()`
@@ -443,15 +467,16 @@ idf.py -p /dev/ttyUSB0 flash monitor
   ```
   All channels active with different duty cycles:
   GPIO 2:  ██__██__██__██__██__██__██__██__  (20% + iterations)
-  GPIO 4:  ███_███_███_███_███_███_███_███_  (30% + iterations)
-  GPIO 5:  ████████████████████████████████  (40% + iterations)
-  GPIO 6:  █████___█████___█████___█████___  (50% + iterations)
+  GPIO 6:  ███_███_███_███_███_███_███_███_  (30% + iterations)
+  GPIO 4:  ████████████████████████████████  (40% + iterations)
+  GPIO 5:  █████___█████___█████___█████___  (50% + iterations)
   GPIO 7:  ██████__██████__██████__██████__  (60% + iterations)
   GPIO 8:  ███████_███████_███████_███████_  (70% + iterations)
-  GPIO 10: ████████████████████████████████  (80% + iterations)
-  GPIO 11: █████████_█████████_█████████_█  (90% + iterations)
+  GPIO 9:  ████████████████████████████████  (80% + iterations)
+  GPIO 10: █████████_█████████_█████████_█  (90% + iterations)
   
   Rapid changes: Duty cycles and frequencies update every 10-50ms
+  Note: Sequence avoids GPIO 3, replacing it with GPIO 6
   ```
 
 ## Logic Analyzer Analysis Guide
