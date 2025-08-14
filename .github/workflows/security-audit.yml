@@ -307,8 +307,9 @@ jobs:
             cd ~/esp-idf
             git remote set-url origin https://github.com/espressif/esp-idf.git
             git fetch --tags --force origin
-            git checkout --force "${{ steps.get-idf-version.outputs.idf_git_branch }}" || \
-              git checkout -B "${{ steps.get-idf-version.outputs.idf_git_branch }}" "origin/${{ steps.get-idf-version.outputs.idf_git_branch }}"
+            BR="${{ steps.get-idf-version.outputs.idf_git_branch }}"
+            git checkout --force "$BR" || \
+              git checkout -B "$BR" "origin/$BR"
             git submodule update --init --recursive
           else
             rm -rf ~/esp-idf

@@ -360,6 +360,9 @@ install_esp_idf() {
         git fetch origin
         git checkout "$idf_version"
         git pull origin "$idf_version"
+        # Ensure submodules are synced and updated to match the checked-out branch
+        git submodule sync --recursive
+        git submodule update --init --recursive
         ./install.sh esp32c6
         cd - > /dev/null
     else
@@ -367,6 +370,9 @@ install_esp_idf() {
         cd "$esp_dir"
         git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git
         cd esp-idf
+        # Extra safety to keep submodules in sync even after clone
+        git submodule sync --recursive
+        git submodule update --init --recursive
         ./install.sh esp32c6
         cd - > /dev/null
     fi
