@@ -238,136 +238,101 @@ idf.py -p /dev/ttyUSB0 flash monitor
 ### 5. PWM Control Tests
 
 #### `test_duty_cycle_control()`
-- **Purpose**: Validates precise duty cycle control
+- **Purpose**: Validates precise duty cycle control across the full range
 - **Tests**:
-  - Duty cycles: 0%, 25%, 50%, 75%, 100%
-  - Raw duty cycle values: 0, 256, 512, 768, 1023 (10-bit)
-  - Invalid duty cycle rejection (-10%, 110%)
-- **Expected Results**: Accurate duty cycle generation
-- **Logic Analyzer (GPIO 2)**:
-  ```
-  0% Duty:   ________________________________________
-  25% Duty:  ██____██____██____██____██____██____██____
-  50% Duty:  ████____████____████____████____████____
-  75% Duty:  ██████__██████__██████__██████__██████__
-  100% Duty: ████████████████████████████████████████
-  
-  Frequency: ~1kHz, Period: 1ms
-  Pulse Width: 0ms, 0.25ms, 0.5ms, 0.75ms, 1ms respectively
-  ```
+  - **Float duty cycles**: 0.0, 0.25, 0.5, 0.75, 1.0 (0% to 100%)
+  - **Raw duty cycle values**: 0, 256, 512, 768, 1023 (10-bit resolution)
+  - **Invalid input rejection**: Negative values (-0.1) and over-range (1.1)
+  - **Accuracy verification**: Actual vs commanded duty cycle within ±1%
+- **Expected Results**: 
+  - Clean square wave generation on GPIO 2
+  - Duty cycle accuracy within tolerance
+  - Proper rejection of invalid values
+  - Both float and raw value interfaces work correctly
 
 #### `test_frequency_control()`
-- **Purpose**: Tests dynamic frequency adjustment
+- **Purpose**: Tests dynamic frequency adjustment and accuracy validation
 - **Tests**:
-  - Frequencies: 100Hz, 500Hz, 1kHz, 5kHz, 10kHz, 20kHz
-  - Frequency accuracy validation (±5% tolerance)
-  - Invalid frequency rejection (0Hz, >max frequency)
-- **Expected Results**: Accurate frequency generation within tolerance
-- **Logic Analyzer (GPIO 2, 50% duty cycle)**:
-  ```
-  100Hz:  ████____████____████____████____  (10ms period)
-  500Hz:  ██__██__██__██__██__██__██__██__  (2ms period)
-  1kHz:   █_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_  (1ms period)
-  5kHz:   █_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_  (200μs period)
-  10kHz:  █_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_  (100μs period)
-  20kHz:  █_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_  (50μs period)
-  ```
+  - **Frequency range**: 100Hz, 500Hz, 1kHz, 5kHz, 10kHz, 20kHz
+  - **Accuracy verification**: Measured vs commanded frequency within ±5% tolerance
+  - **Invalid frequency rejection**: Zero frequency and values exceeding HF_PWM_MAX_FREQUENCY
+  - **Real-time updates**: Frequency changes while PWM is running
+- **Expected Results**: 
+  - Accurate frequency generation across the full range
+  - Proper error handling for invalid frequencies
+  - Stable operation during frequency transitions
+  - Expected periods: 10ms, 2ms, 1ms, 200μs, 100μs, 50μs respectively
 
 #### `test_phase_shift_control()`
-- **Purpose**: Tests phase relationship between channels
+- **Purpose**: Tests phase relationship capabilities between PWM channels
 - **Tests**:
-  - Phase shifts: 0°, 90°, 180°, 270°
-  - Multi-channel phase coordination
-  - Invalid phase shift rejection (>360°)
+  - **Phase values**: 0°, 90°, 180°, 270° between channels 0, 1, 2
+  - **Multi-channel coordination**: Simultaneous phase-shifted operation
+  - **Invalid input rejection**: Phase values greater than 360°
+  - **Hardware limitation detection**: Graceful handling if unsupported
 - **Expected Results**: 
-  - May be skipped on ESP32-C6 (LEDC limitation)
-  - If supported, accurate phase relationships
-- **Logic Analyzer (3 Channels)**:
-  ```
-  Channel 0 (0°):   ████____████____████____████____
-  Channel 1 (90°):  ___████____████____████____████__
-  Channel 2 (180°): ____████____████____████____████
-  
-  Note: ESP32-C6 LEDC may not support phase shift
-  Expected: [SKIPPED] message in test output
-  ```
+  - **ESP32-C6 LEDC limitation**: Test likely skipped with [SKIPPED] message
+  - **If supported**: Accurate phase relationships with time offsets
+  - **Error handling**: Proper rejection of invalid phase values
+  - **Channels used**: GPIO 2, 6, 4 for the three test channels
 
 ### 6. Advanced Features Tests
 
 #### `test_synchronized_operations()`
-- **Purpose**: Validates coordinated multi-channel operations
+- **Purpose**: Validates coordinated multi-channel operations and timing synchronization
 - **Tests**:
-  - StartAll() command on channels 0-3
-  - UpdateAll() synchronization
-  - StopAll() simultaneous shutdown
-- **Expected Results**: All channels respond simultaneously
-- **Logic Analyzer (4 Channels)**:
-  ```
-  Before StartAll():
-  GPIO 2,6,4,5: ________________________________________
-  
-  After StartAll():
-  GPIO 2:   ████____████____████____████____  (30% duty)
-  GPIO 6:   █████___█████___█████___█████___  (40% duty)  
-  GPIO 4:   ██████__██████__██████__██████__  (50% duty)
-  GPIO 5:   ███████_███████_███████_███████_  (60% duty)
-  
-  After StopAll():
-  GPIO 2,6,4,5: ________________________________________
-  ```
+  - **StartAll()**: Simultaneous activation of channels 0-3 (GPIO 2,6,4,5)
+  - **UpdateAll()**: Synchronized parameter updates across all active channels
+  - **StopAll()**: Coordinated shutdown of all PWM outputs
+  - **Channel configuration**: Each channel has different duty cycles (30%, 40%, 50%, 60%)
+- **Expected Results**: 
+  - All channels start/stop within microseconds of each other
+  - No visible timing skew between channels during synchronized operations
+  - Clean transitions with minimal glitching
+  - Proper channel isolation (no cross-talk between channels)
 
 #### `test_complementary_outputs()`
-- **Purpose**: Tests complementary PWM pair generation
+- **Purpose**: Tests complementary PWM pair generation with deadtime control
 - **Tests**:
-  - Primary channel (GPIO 2) and complementary (GPIO 6)
-  - Deadtime insertion (1μs)
-  - Various duty cycles with complementary behavior
-- **Expected Results**: Complementary outputs with deadtime
-- **Logic Analyzer (2 Channels)**:
-  ```
-  Primary (GPIO 2):     ████____████____████____████____
-  Complementary (GPIO 6): ___████____████____████____████
-                           ^deadtime gaps
-  
-  Deadtime: 1μs gaps between transitions
-  Duty cycles: Primary + Complementary ≈ 100% (minus deadtime)
-  ```
+  - **Channel pairing**: Primary channel (GPIO 2) paired with complementary (GPIO 6)
+  - **Deadtime insertion**: 1μs deadtime between complementary transitions
+  - **Duty cycle testing**: Multiple duty cycles (20%, 50%, 80%) with complementary behavior
+  - **SetComplementaryOutput()**: Configuration and validation of complementary relationship
+- **Expected Results**: 
+  - Primary and complementary outputs are never high simultaneously
+  - Deadtime gaps visible during all transitions (rising/falling edges)
+  - Combined duty cycle ≈ 100% minus deadtime
+  - Proper error handling for invalid deadtime values
 
 ### 7. ESP32-Specific Features Tests
 
 #### `test_hardware_fade()`
-- **Purpose**: Validates ESP32-C6 hardware fade functionality
+- **Purpose**: Validates ESP32-C6 LEDC hardware fade functionality and smooth transitions
 - **Tests**:
-  - Fade from 10% to 80% over 1000ms
-  - Fade from 80% to 20% over 800ms
-  - Fade from 20% to 90% over 1200ms
-  - Fade to 0% over 500ms
-  - Stop fade operation mid-transition
-- **Expected Results**: Smooth hardware-controlled transitions
-- **Logic Analyzer (GPIO 2)**:
-  ```
-  Fade 10% → 80% (1000ms):
-  T=0ms:    █__██__██__██__██__██__██__██__  (10% duty)
-  T=250ms:  ███_███_███_███_███_███_███_███  (30% duty)
-  T=500ms:  █████___█████___█████___█████___  (50% duty)
-  T=750ms:  ███████_███████_███████_███████  (70% duty)
-  T=1000ms: ████████████████████████████████  (80% duty)
-  
-  Smooth gradual transition visible as duty cycle increases
-  ```
+  - **Fade sequences**: 10%→80% (1000ms), 80%→20% (800ms), 20%→90% (1200ms), 90%→0% (500ms)
+  - **SetHardwareFade()**: Configure target duty cycle and fade duration
+  - **IsFadeActive()**: Monitor fade operation status during transitions
+  - **StopHardwareFade()**: Interrupt fade operation mid-transition
+  - **Fade completion detection**: Verify fade finishes within expected timeframe
+- **Expected Results**: 
+  - Smooth, continuous duty cycle transitions (no stepping or glitching)
+  - Accurate fade timing within ±10% of commanded duration
+  - IsFadeActive() returns true during fade, false when complete
+  - StopHardwareFade() immediately halts transition
+  - Hardware-controlled operation (no CPU intervention during fade)
 
 #### `test_idle_level_control()`
-- **Purpose**: Tests output state during idle periods
+- **Purpose**: Tests GPIO output state configuration when PWM channel is idle/disabled
 - **Tests**:
-  - Idle level LOW (0)
-  - Idle level HIGH (1)
-  - Invalid idle level rejection (2)
-- **Expected Results**: Correct idle state configuration
-- **Logic Analyzer (GPIO 2)**:
-  ```
-  Idle Level LOW:  Channel disabled → GPIO 2 stays LOW
-  Idle Level HIGH: Channel disabled → GPIO 2 stays HIGH
-  ```
+  - **SetIdleLevel(0)**: Configure output to remain LOW when channel disabled
+  - **SetIdleLevel(1)**: Configure output to remain HIGH when channel disabled
+  - **Invalid value rejection**: Test SetIdleLevel(2) returns error
+  - **State verification**: Check actual GPIO state matches configured idle level
+- **Expected Results**: 
+  - GPIO 2 maintains configured idle level when channel is disabled
+  - Valid idle levels (0, 1) are accepted and applied correctly
+  - Invalid idle levels are rejected with appropriate error codes
+  - Idle level setting persists across enable/disable cycles
 
 #### `test_timer_management()`
 - **Purpose**: Validates ESP32-C6 timer resource allocation
@@ -381,103 +346,74 @@ idf.py -p /dev/ttyUSB0 flash monitor
 ### 8. Status and Diagnostics Tests
 
 #### `test_status_reporting()`
-- **Purpose**: Validates PWM status monitoring capabilities
+- **Purpose**: Validates PWM status monitoring and diagnostic capabilities
 - **Tests**:
-  - Channel status retrieval (enabled, configured, duty, frequency)
-  - PWM capabilities reporting
-  - Error state tracking
-- **Expected Results**: Accurate status information
-- **Logic Analyzer (GPIO 2)**:
-  ```
-  Test Pattern (60% duty, 1kHz):
-  ██████__██████__██████__██████__██████__
-  
-  Status Report Should Show:
-  - enabled: true
-  - configured: true  
-  - current_duty_cycle: 0.60
-  - current_frequency: 1000
-  ```
+  - **GetChannelStatus()**: Retrieve channel state (enabled, configured, duty, frequency)
+  - **GetCapabilities()**: Query hardware capabilities and limitations
+  - **GetLastError()**: Error state tracking for individual channels
+  - **Status accuracy**: Verify reported values match actual configuration
+- **Expected Results**: 
+  - Channel status correctly reports: enabled=true, configured=true
+  - Current duty cycle and frequency match last set values
+  - Capabilities structure contains valid hardware limits
+  - Error tracking accurately reflects last operation result
 
 #### `test_statistics_and_diagnostics()`
-- **Purpose**: Tests operational statistics collection
+- **Purpose**: Tests operational statistics collection and hardware diagnostics
 - **Tests**:
-  - Duty cycle update counting
-  - Frequency change tracking
-  - Channel enable/disable counters
-  - Hardware state diagnostics
-- **Expected Results**: Accurate operation counters
-- **Logic Analyzer (GPIO 2)**:
-  ```
-  5 duty cycle changes: 20%, 35%, 50%, 65%, 80%
-  5 frequency changes: 1000Hz, 1500Hz, 2000Hz, 2500Hz, 3000Hz
-  
-  Expected Statistics:
-  - duty_updates_count: 5
-  - frequency_changes_count: 5
-  - channel_enables_count: 1
-  - channel_disables_count: 1
-  ```
+  - **Operation counting**: 5 duty cycle updates, 5 frequency changes, enable/disable cycles
+  - **GetStatistics()**: Retrieve duty_updates_count, frequency_changes_count, enable/disable counters
+  - **GetDiagnostics()**: Hardware state (initialized, fade_ready, active_channels, active_timers)
+  - **Counter accuracy**: Verify statistics match actual performed operations
+- **Expected Results**: 
+  - Statistics accurately reflect operations: 5 duty updates, 5 frequency changes
+  - Enable/disable counters track channel state changes correctly
+  - Diagnostics show hardware initialization status and resource usage
+  - All counters increment properly during test execution
 
 ### 9. Callback Tests
 
 #### `test_callbacks()`
-- **Purpose**: Validates PWM interrupt-driven callbacks
+- **Purpose**: Validates PWM interrupt-driven callback functionality
 - **Tests**:
-  - Period completion callbacks
-  - Fault detection callbacks
-  - Callback parameter passing
-- **Expected Results**: Callbacks trigger appropriately
-- **Logic Analyzer (GPIO 2)**:
-  ```
-  Low duty cycle (1%) for frequent period callbacks:
-  █_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_
-  
-  Each period completion may trigger callback
-  (Actual behavior depends on ESP32-C6 interrupt configuration)
-  ```
+  - **SetPeriodCallback()**: Register callback for PWM period completion events
+  - **SetFaultCallback()**: Register callback for fault/error detection
+  - **Callback triggering**: Use low duty cycle (1%) to generate frequent period events
+  - **Parameter passing**: Verify channel ID and user data are passed correctly
+- **Expected Results**: 
+  - Period callbacks may trigger based on ESP32-C6 LEDC interrupt capabilities
+  - Fault callbacks trigger appropriately on error conditions
+  - Callback functions receive correct channel ID and parameters
+  - Test completion regardless of callback activity (hardware dependent)
 
 ### 10. Edge Cases and Stress Tests
 
 #### `test_edge_cases()`
-- **Purpose**: Tests boundary conditions and limits
+- **Purpose**: Tests boundary conditions, limits, and error handling
 - **Tests**:
-  - Minimum duty cycle (0.0%)
-  - Maximum duty cycle (100.0%)
-  - Minimum frequency (HF_PWM_MIN_FREQUENCY)
-  - High frequency (20kHz)
-  - Invalid channel operations
-- **Expected Results**: Proper boundary handling
-- **Logic Analyzer (GPIO 2)**:
-  ```
-  0% Duty:   ________________________________________
-  100% Duty: ████████████████████████████████████████
-  20kHz:     █_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_█_ (50μs period)
-  ```
+  - **Duty cycle boundaries**: 0.0% (constant LOW) and 100.0% (constant HIGH)
+  - **Frequency boundaries**: HF_PWM_MIN_FREQUENCY and high frequency (20kHz)
+  - **Invalid channel operations**: Operations on non-existent channels
+  - **Parameter validation**: Verify proper rejection of out-of-range values
+- **Expected Results**: 
+  - Boundary values are accepted and generate correct outputs
+  - Invalid parameters return appropriate error codes
+  - System remains stable under boundary conditions
+  - No undefined behavior or crashes with invalid inputs
 
 #### `test_stress_scenarios()`
-- **Purpose**: Tests system under maximum load
+- **Purpose**: Tests system stability under maximum load and rapid operations
 - **Tests**:
-  - All 8 channels simultaneously active
-  - 20 rapid duty cycle updates per channel
-  - 10 rapid frequency changes per channel
-  - Synchronized operations under load
-- **Expected Results**: System maintains stability
-- **Logic Analyzer (8 Channels)**:
-  ```
-  All channels active with different duty cycles:
-  GPIO 2:  ██__██__██__██__██__██__██__██__  (20% + iterations)
-  GPIO 6:  ███_███_███_███_███_███_███_███_  (30% + iterations)
-  GPIO 4:  ████████████████████████████████  (40% + iterations)
-  GPIO 5:  █████___█████___█████___█████___  (50% + iterations)
-  GPIO 7:  ██████__██████__██████__██████__  (60% + iterations)
-  GPIO 8:  ███████_███████_███████_███████_  (70% + iterations)
-  GPIO 9:  ████████████████████████████████  (80% + iterations)
-  GPIO 10: █████████_█████████_█████████_█  (90% + iterations)
-  
-  Rapid changes: Duty cycles and frequencies update every 10-50ms
-  Note: Sequence avoids GPIO 3, replacing it with GPIO 6
-  ```
+  - **Maximum channels**: All 8 channels (GPIO 2,6,4,5,7,8,9,10) active simultaneously
+  - **Rapid duty updates**: 20 duty cycle changes per channel (every 10ms)
+  - **Rapid frequency updates**: 10 frequency changes per channel (every 50ms)
+  - **Synchronized operations**: StartAll/UpdateAll/StopAll under load
+- **Expected Results**: 
+  - System maintains stability throughout rapid update sequences
+  - No channel interference or cross-talk between channels
+  - Memory usage remains stable (no leaks)
+  - All channels maintain independent operation despite high update rates
+  - Timer resource allocation handles maximum channel load efficiently
 
 ## Logic Analyzer Analysis Guide
 
@@ -503,31 +439,14 @@ idf.py -p /dev/ttyUSB0 flash monitor
    - Verify simultaneous start/stop operations
    - Check for timing skew between channels
 
-### Common Waveform Patterns
+### Logic Analyzer Measurement Guidelines
 
-#### Normal PWM Signal (50% duty, 1kHz)
-```
- ____████____████____████____████____
- |<-500μs->|<-500μs->|<--1ms period->|
-```
-
-#### Hardware Fade (25% → 75% over 1s)
-```
-Start: ██__██__██__██__██__██__██__██__  (25%)
-  →    ███_███_███_███_███_███_███_███_  (37.5%)
-  →    ████████████████████████████████  (50%)
-  →    █████___█████___█████___█████___  (62.5%)
-End:   ██████__██████__██████__██████__  (75%)
-```
-
-#### Complementary Outputs with Deadtime
-```
-Primary:      ████____████____████____████____
-              ↑  ↓    ↑  ↓    ↑  ↓    ↑  ↓
-Deadtime:     --XX----XX----XX----XX----XX--
-              ↓  ↑    ↓  ↑    ↓  ↑    ↓  ↑  
-Complement:   ____████____████____████____████
-```
+#### Key Measurement Techniques
+- **Duty Cycle**: Measure pulse width (ON time) vs total period
+- **Frequency**: Measure time between consecutive rising edges
+- **Phase Relationships**: Measure time offset between channels (if supported)
+- **Fade Operations**: Use extended time base to capture transitions
+- **Synchronization**: Verify simultaneous channel operations
 
 ## Troubleshooting
 
