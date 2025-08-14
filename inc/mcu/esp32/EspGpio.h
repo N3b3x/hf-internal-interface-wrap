@@ -196,7 +196,7 @@ public:
    * @return true if initialized, false otherwise
    */
   [[nodiscard]] bool IsInitialized() const noexcept {
-    return initialized_;
+    return BaseGpio::IsInitialized();
   }
 
   //==============================================================//
@@ -526,6 +526,7 @@ private:
   bool interrupt_enabled_;                        ///< Interrupt currently enabled
   std::atomic<hf_u32_t> interrupt_count_;         ///< Number of interrupts occurred (thread-safe)
   void* platform_semaphore_; ///< Platform-specific semaphore for WaitForInterrupt
+  bool isr_handler_added_;   ///< Whether ISR handler was added for this pin
 
   // Advanced GPIO state
   hf_gpio_drive_cap_t drive_capability_;            ///< Current drive capability setting
@@ -545,6 +546,4 @@ private:
   // Static members for ISR management
   static bool gpio_isr_handler_installed_; ///< Track if ISR service is installed
 
-  // Initialization state
-  bool initialized_; ///< Lazy initialization state
 };

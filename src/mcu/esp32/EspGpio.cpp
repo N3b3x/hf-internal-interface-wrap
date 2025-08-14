@@ -130,11 +130,12 @@ EspGpio::EspGpio(hf_pin_num_t pin_num, hf_gpio_direction_t direction,
     : BaseGpio(pin_num, direction, active_state, output_mode, pull_mode),
       interrupt_trigger_(hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE),
       interrupt_callback_(nullptr), interrupt_user_data_(nullptr), interrupt_enabled_(false),
-      interrupt_count_(0), platform_semaphore_(nullptr), drive_capability_(drive_capability),
+      interrupt_count_(0), platform_semaphore_(nullptr), isr_handler_added_(false),
+      drive_capability_(drive_capability),
       glitch_filter_type_(hf_gpio_glitch_filter_type_t::HF_GPIO_GLITCH_FILTER_NONE),
       pin_glitch_filter_enabled_(false), flex_glitch_filter_enabled_(false), flex_filter_config_{},
       sleep_config_{}, hold_enabled_(false), rtc_gpio_enabled_(false), wakeup_config_{},
-      glitch_filter_handle_(nullptr), rtc_gpio_handle_(nullptr), initialized_(false) {
+      glitch_filter_handle_(nullptr), rtc_gpio_handle_(nullptr) {
   // Validate pin number for target platform
   if (!HF_GPIO_IS_VALID_GPIO(pin_num)) {
     ESP_LOGE(TAG, "Invalid GPIO pin number: %d", static_cast<int>(pin_num));
@@ -265,11 +266,31 @@ bool EspGpio::Initialize() noexcept {
     return false;
   }
 
-  // Set drive capability
+  // Set drive capability without re-entering initialization
   if (current_direction_ == hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {
-    hf_gpio_err_t drv_ret = SetDriveCapability(drive_capability_);
-    if (drv_ret != hf_gpio_err_t::GPIO_SUCCESS) {
-      ESP_LOGW(TAG, "Failed to set drive capability for GPIO%d", static_cast<int>(pin_));
+    gpio_drive_cap_t esp_cap;
+    switch (drive_capability_) {
+      case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_WEAK:
+        esp_cap = GPIO_DRIVE_CAP_0;
+        break;
+      case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGER:
+        esp_cap = GPIO_DRIVE_CAP_1;
+        break;
+      case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM:
+        esp_cap = GPIO_DRIVE_CAP_2;
+        break;
+      case hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST:
+        esp_cap = GPIO_DRIVE_CAP_3;
+        break;
+      default:
+        esp_cap = GPIO_DRIVE_CAP_2;
+        break;
+    }
+
+    esp_err_t dret = gpio_set_drive_capability(static_cast<gpio_num_t>(pin_), esp_cap);
+    if (dret != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to set drive capability for GPIO%d: %s", static_cast<int>(pin_),
+               esp_err_to_name(dret));
     }
   }
 
@@ -392,6 +413,7 @@ hf_gpio_err_t EspGpio::ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger,
                esp_err_to_name(ret));
       return hf_gpio_err_t::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
     }
+    isr_handler_added_ = true;
   }
 
   ESP_LOGI(TAG, "Interrupt configured successfully for GPIO%d", static_cast<int>(pin_));
@@ -435,8 +457,11 @@ hf_gpio_err_t EspGpio::DisableInterrupt() noexcept {
     return hf_gpio_err_t::GPIO_ERR_INTERRUPT_HANDLER_FAILED;
   }
 
-  // Remove ISR handler
-  gpio_isr_handler_remove(static_cast<gpio_num_t>(pin_));
+  // Remove ISR handler only if previously added and ISR service installed
+  if (isr_handler_added_ && gpio_isr_handler_installed_) {
+    gpio_isr_handler_remove(static_cast<gpio_num_t>(pin_));
+    isr_handler_added_ = false;
+  }
 
   interrupt_enabled_ = false;
   ESP_LOGD(TAG, "Interrupt disabled for GPIO%d", static_cast<int>(pin_));
