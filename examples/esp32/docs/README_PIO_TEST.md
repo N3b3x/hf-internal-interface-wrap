@@ -28,7 +28,7 @@ The implementation automatically detects and adapts to different ESP32 variants 
 - **Symbol Transmission/Reception**: High-speed data transfer with timing validation
 - **Error Handling**: Comprehensive error condition testing and recovery
 
-### ESP32 Variant-Specific Features (NEW)
+### ESP32 Variant-Specific Features
 - **Automatic Variant Detection**: Runtime detection of ESP32 chip variant
 - **Channel Allocation Helpers**: Variant-specific TX/RX channel management
 - **Channel Direction Validation**: Hardware-enforced TX/RX channel restrictions
@@ -43,7 +43,7 @@ The implementation automatically detects and adapts to different ESP32 variants 
 - **DMA Support**: Direct Memory Access for high-performance transfers
 - **Memory Block Management**: Configurable memory allocation per channel
 
-### Enhanced WS2812 LED Protocol Testing (SIGNIFICANTLY EXPANDED)
+### WS2812 LED Protocol Testing
 - **WS2812 Timing Validation**: Complete timing specification verification
 - **Single LED Testing**: Built-in RGB LED on GPIO8
 - **Multiple LED Chain Testing**: RGB LED chain support
@@ -76,7 +76,7 @@ The implementation automatically detects and adapts to different ESP32 variants 
 
 ### ESP32-C6-DevKitM-1 Pin Configuration
 - **GPIO8**: Built-in RGB LED + transmission output (WS2812 protocol)
-- **GPIO14**: Test progression indicator (NEW - visual feedback)
+- **GPIO14**: Test progression indicator (visual feedback)
 - **GPIO18**: Reception input for automated loopback testing
 
 ### Automated Testing Setup
@@ -114,7 +114,7 @@ ESP32-C6-DevKitM-1 Built-in RGB LED (GPIO8)
 - ✅ Timing validation with nanosecond precision
 - ✅ Visual verification of test patterns
 
-### Test Progression Indicator (NEW)
+### Test Progression Indicator
 ```
 ESP32-C6 GPIO14 ──► Visual LED Indicator
                    │
@@ -201,7 +201,7 @@ matrix:
 
 ## Test Categories
 
-### 1. ESP32 Variant Information Tests (NEW)
+### 1. ESP32 Variant Information Tests
 - `test_esp32_variant_detection`: Automatic ESP32 variant detection and reporting
 - `test_channel_allocation_helpers`: TX/RX channel helper function validation
 - `test_channel_direction_validation`: Hardware-enforced channel direction validation
@@ -215,27 +215,27 @@ matrix:
 - `test_initialization_states`: Tests manual initialization/deinitialization
 - `test_lazy_initialization`: Validates automatic initialization
 
-### 4. Channel Configuration Tests (ENHANCED)
+### 4. Channel Configuration Tests
 - `test_channel_configuration`: Basic channel setup validation with variant awareness
 - `test_multiple_channel_configuration`: Multi-channel operation with TX/RX allocation
 
-### 5. Transmission Tests (ENHANCED)
+### 5. Transmission Tests
 - `test_basic_symbol_transmission`: Basic symbol transmission with improved error handling
 - `test_transmission_edge_cases`: Error handling and boundary conditions
 
-### 6. WS2812 LED Protocol Tests (SIGNIFICANTLY ENHANCED)
+### 6. WS2812 LED Protocol Tests
 - `test_ws2812_single_led`: Single LED color transmission using built-in RGB LED
 - `test_ws2812_multiple_leds`: RGB LED chain testing
-- `test_ws2812_color_cycle`: **NEW** - Comprehensive 30+ color pattern testing including:
+- `test_ws2812_color_cycle`: Comprehensive 30+ color pattern testing including:
   - Primary colors at maximum brightness
   - Secondary colors and white variations
   - Gradient patterns and brightness levels
   - Specific bit patterns for timing verification
   - Color wheel simulation
   - Rapid color change stress testing
-- `test_ws2812_brightness_sweep`: **NEW** - Individual color channel intensity sweep (0-255)
-- `test_ws2812_pattern_validation`: **NEW** - Specific bit patterns for protocol accuracy
-- `test_ws2812_rainbow_transition`: **NEW** - HSV to RGB rainbow transitions with smooth color wheel
+- `test_ws2812_brightness_sweep`: Individual color channel intensity sweep (0-255)
+- `test_ws2812_pattern_validation`: Specific bit patterns for protocol accuracy
+- `test_ws2812_rainbow_transition`: HSV to RGB rainbow transitions with smooth color wheel
 
 ### 7. Logic Analyzer Test Scenarios
 - `test_logic_analyzer_patterns`: Recognizable test patterns for signal analysis
@@ -249,7 +249,7 @@ matrix:
 ### 9. Loopback and Reception Tests
 - `test_loopback_functionality`: Transmission/reception verification with automated setup
 
-### 10. Callback Tests (ENHANCED)
+### 10. Callback Tests
 - `test_callback_functionality`: Channel-specific interrupt-driven callbacks with user data
 
 ### 11. Statistics and Diagnostics Tests
@@ -275,7 +275,7 @@ matrix:
 - **Resolution**: 8 bits per color channel
 - **Total**: 24 bits per LED
 
-### Comprehensive Test Colors (NEW - EXPANDED)
+### Comprehensive Test Colors
 #### Primary Colors (Maximum Brightness)
 - **Red**: RGB(255, 0, 0) → GRB(0, 255, 0)
 - **Green**: RGB(0, 255, 0) → GRB(255, 0, 0)  
@@ -316,7 +316,7 @@ matrix:
 - 50kHz: 10µs HIGH, 10µs LOW
 - 100kHz: 5µs HIGH, 5µs LOW
 
-### Pattern 3: Test Progression Monitoring (NEW)
+### Pattern 3: Test Progression Monitoring
 - **GPIO14 Toggle**: HIGH/LOW transition for each completed test
 - **Test Sequence**: Visual feedback for 25+ individual tests
 - **Timing Reference**: Consistent toggle pattern for analyzer triggering
@@ -348,7 +348,7 @@ matrix:
 [PIO_Test] [SUCCESS] PASSED: test_constructor_default (0.05 ms)
 [PIO_Test] [SUCCESS] PASSED: test_destructor_cleanup (0.32 ms)
 
-[PIO_Test] === WS2812 LED PROTOCOL TESTS (ENHANCED) ===
+[PIO_Test] === WS2812 LED PROTOCOL TESTS ===
 [PIO_Test] [SUCCESS] PASSED: test_ws2812_single_led (2.34 ms)
 [PIO_Test] [SUCCESS] PASSED: test_ws2812_multiple_leds (5.67 ms)
 [PIO_Test] [SUCCESS] PASSED: test_ws2812_color_cycle (45.23 ms)
@@ -371,7 +371,7 @@ matrix:
 [PIO_Test] ║    ✓ Comprehensive WS2812 color testing (30+ patterns)                     ║
 ```
 
-### Enhanced Built-in RGB LED Verification
+### Built-in RGB LED Verification
 The ESP32-C6-DevKitM-1's built-in RGB LED demonstrates comprehensive testing:
 1. **Single LED Test**: LED turns red
 2. **Color Cycle Test**: 30+ color patterns including:
@@ -392,7 +392,7 @@ With GPIO8 → GPIO18 jumper wire:
 3. **Data Integrity**: Automatic verification of transmission/reception
 4. **Timing Validation**: Signal timing accuracy verification
 
-### Test Progression Monitoring (NEW)
+### Test Progression Monitoring
 With GPIO14 monitoring:
 1. **Visual Feedback**: LED toggles for each completed test
 2. **Logic Analyzer Triggering**: Consistent reference for capture
@@ -417,14 +417,14 @@ Capture signals on GPIO8, GPIO14, and GPIO18 to verify:
 - **Initialization Failures**: Ensure ESP-IDF v5.5+ and proper hardware
 - **Variant Detection**: Verify ESP32 variant is properly detected and supported
 
-#### Enhanced Built-in RGB LED Issues
+#### Built-in RGB LED Issues
 - **No LED Response**: Check if LED is enabled in board configuration
 - **Wrong Colors**: Verify GRB data format, timing accuracy
 - **Dim LED**: Normal behavior for built-in LED at reduced intensity
 - **Color Pattern Issues**: Verify test progression indicator shows completion
 - **Rapid Color Changes**: Normal during stress testing sequences
 
-#### Test Progression Indicator Issues (NEW)
+#### Test Progression Indicator Issues
 - **No GPIO14 Activity**: Check GPIO14 initialization and connectivity
 - **Irregular Toggle Pattern**: Verify test sequence completion
 - **Logic Analyzer Sync**: Use GPIO14 as trigger reference
@@ -435,7 +435,7 @@ Capture signals on GPIO8, GPIO14, and GPIO18 to verify:
 - **Timing Issues**: Ensure proper RMT configuration
 - **Channel Allocation**: Verify TX/RX channels available for current ESP32 variant
 
-#### Enhanced WS2812 Testing Issues
+#### WS2812 Testing Issues
 - **Color Accuracy**: Use logic analyzer to verify bit timing
 - **Pattern Recognition**: Monitor GPIO8 during specific pattern tests
 - **Rainbow Transitions**: Smooth color changes indicate proper HSV conversion
@@ -486,7 +486,7 @@ idf.py build -DEXAMPLE_TYPE=pio_test -DBUILD_TYPE=Debug
 ## Integration with Development Workflow
 
 ### Continuous Integration
-The enhanced test automatically runs in CI for:
+The test automatically runs in CI for:
 - Pull request validation
 - Main branch commits
 - Release candidate testing
@@ -530,10 +530,10 @@ config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // 1µs standard resolution
 #endif
 ```
 
-### Enhanced Test Parameters
-Customize comprehensive test behavior:
+### Test Parameters
+Customize test behavior:
 ```cpp
-// WS2812 timing (enhanced precision)
+// WS2812 timing specifications
 static constexpr uint32_t WS2812_T0H = 350;  // WS2812B high time for '0'
 static constexpr uint32_t WS2812_T0L = 900;  // WS2812B low time for '0'
 static constexpr uint32_t WS2812_T1H = 700;  // WS2812B high time for '1'
@@ -559,7 +559,7 @@ static constexpr uint32_t TEST_PROGRESS_DELAY_MS = 100; // Progress indicator ti
 - **Features**: No external components required
 - **Testing**: 30+ comprehensive color patterns
 
-### Enhanced Testing Advantages
+### Testing Advantages
 - **No External Wiring**: Uses built-in LED for WS2812 testing
 - **Visual Feedback**: GPIO14 progression indicator
 - **Loopback Verification**: Simple jumper wire connection
