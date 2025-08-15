@@ -13,7 +13,13 @@
  * - Channel configuration and management
  * - Symbol transmission and reception
  * - RMT-specific features (carrier modulation, loopback, encoder configuration)
- * - WS2812 LED protocol timing validation (using built-in RGB LED on GPIO8)
+ * - WS2812 LED protocol timing validation with comprehensive color testing (GPIO8)
+ *   • Primary colors (R/G/B) at maximum brightness for timing stress testing
+ *   • Secondary colors (Yellow/Magenta/Cyan) and white variations
+ *   • Brightness sweep tests (0-255) for each color channel
+ *   • Bit pattern validation (alternating, edge cases, specific patterns)
+ *   • Rainbow color wheel transitions with HSV to RGB conversion
+ *   • Rapid color change sequences for protocol stress testing
  * - Automated loopback testing (GPIO8 TX -> GPIO18 RX)
  * - Logic analyzer test scenarios
  * - Advanced RMT features (DMA, memory blocks, queue depth)
@@ -32,9 +38,14 @@
 #include "base/BasePio.h"
 #include "mcu/esp32/EspPio.h"
 #include "mcu/esp32/utils/EspTypes_PIO.h"
+#include "mcu/esp32/EspGpio.h" // Add GPIO support for test progression indicator
 
 static const char* TAG = "PIO_Test";
 static TestResults g_test_results;
+
+// Test progression indicator GPIO
+static EspGpio* g_test_progress_gpio = nullptr;
+static bool g_test_progress_state = false;
 
 //==============================================================================
 // WS2812 PROTOCOL CONSTANTS (for RGB LED testing)
@@ -57,6 +68,57 @@ static constexpr hf_gpio_num_t TEST_GPIO_RX = 18; // GPIO18 for reception (RMT c
 static constexpr uint32_t TEST_RESOLUTION_WS2812_NS = 125;   // 8 MHz -> 125ns per tick
 static constexpr uint32_t TEST_RESOLUTION_STANDARD_NS = 1000; // 1 MHz -> 1µs per tick
 static constexpr uint32_t TEST_RESOLUTION_LOW_NS = 10000;     // 100 kHz -> 10µs per tick
+
+//==============================================================================
+// TEST PROGRESSION INDICATOR FUNCTIONS
+//==============================================================================
+
+/**
+ * @brief Initialize the test progression indicator GPIO
+ */
+bool init_test_progress_indicator() noexcept {
+  // Use GPIO14 as the test progression indicator (visible LED on most ESP32 dev boards)
+  g_test_progress_gpio = new EspGpio(14, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                                     hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+  
+  if (!g_test_progress_gpio->EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO");
+    return false;
+  }
+  
+  // Start with LOW state
+  g_test_progress_gpio->SetInactive();
+  g_test_progress_state = false;
+  
+  ESP_LOGI(TAG, "Test progression indicator initialized on GPIO14");
+  return true;
+}
+
+/**
+ * @brief Flip the test progression indicator to show next test
+ */
+void flip_test_progress_indicator() noexcept {
+  if (g_test_progress_gpio) {
+    g_test_progress_state = !g_test_progress_state;
+    if (g_test_progress_state) {
+      g_test_progress_gpio->SetActive();
+    } else {
+      g_test_progress_gpio->SetInactive();
+    }
+    ESP_LOGI(TAG, "Test progression indicator: %s", g_test_progress_state ? "HIGH" : "LOW");
+  }
+}
+
+/**
+ * @brief Cleanup the test progression indicator GPIO
+ */
+void cleanup_test_progress_indicator() noexcept {
+  if (g_test_progress_gpio) {
+    g_test_progress_gpio->SetInactive(); // Ensure pin is low
+    delete g_test_progress_gpio;
+    g_test_progress_gpio = nullptr;
+  }
+}
 
 //==============================================================================
 // CALLBACK TEST INFRASTRUCTURE
@@ -840,6 +902,395 @@ bool test_ws2812_multiple_leds() noexcept {
   return true;
 }
 
+bool test_ws2812_color_cycle() noexcept {
+  ESP_LOGI(TAG, "Testing WS2812 comprehensive color cycle for protocol verification...");
+
+  EspPio pio;
+  if (!pio.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PIO");
+    return false;
+  }
+
+  // Get appropriate TX channel for current ESP32 variant
+  int8_t tx_channel = HfRmtGetTxChannel(0);
+  if (tx_channel < 0) {
+    ESP_LOGE(TAG, "No TX channels available on %s", HfRmtGetVariantName());
+    return false;
+  }
+
+  hf_pio_channel_config_t config = create_test_channel_config(TEST_GPIO_TX);
+  config.resolution_ns = TEST_RESOLUTION_WS2812_NS;
+  config.timeout_us = 300000; // Extended timeout for long sequences
+  hf_pio_err_t result = pio.ConfigureChannel(static_cast<hf_u8_t>(tx_channel), config);
+  if (result != hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure TX channel %d: %s", tx_channel, HfPioErrToString(result).data());
+    return false;
+  }
+
+  uint32_t actual_ns = config.resolution_ns;
+  (void)pio.GetActualResolution(tx_channel, actual_ns);
+  ESP_LOGI(TAG, "Using TX channel %d with %uns resolution for color cycle", tx_channel, actual_ns);
+
+  // Comprehensive color test patterns for protocol verification
+  struct ColorTest {
+    uint8_t r, g, b;
+    const char* name;
+    uint32_t delay_ms;
+  };
+
+  const ColorTest color_tests[] = {
+    // Primary colors - maximum brightness (stress test for timing)
+    {255, 0, 0,    "RED_MAX",        500},
+    {0, 255, 0,    "GREEN_MAX",      500},
+    {0, 0, 255,    "BLUE_MAX",       500},
+    
+    // Secondary colors
+    {255, 255, 0,  "YELLOW",         400},
+    {255, 0, 255,  "MAGENTA",        400},
+    {0, 255, 255,  "CYAN",           400},
+    
+    // White variations (high bit density test)
+    {255, 255, 255, "WHITE_MAX",     600},
+    {128, 128, 128, "WHITE_MID",     400},
+    {64, 64, 64,   "WHITE_LOW",      400},
+    
+    // Black (all zeros - timing verification)
+    {0, 0, 0,      "BLACK",          300},
+    
+    // Gradient patterns (mixed bit patterns)
+    {255, 128, 64, "ORANGE",         400},
+    {128, 0, 128,  "PURPLE",         400},
+    {0, 128, 64,   "TEAL",           400},
+    {192, 192, 64, "OLIVE",          400},
+    
+    // Brightness levels (single color, varying intensity)
+    {32, 0, 0,     "RED_DIM",        300},
+    {64, 0, 0,     "RED_LOW",        300},
+    {128, 0, 0,    "RED_MID",        300},
+    {192, 0, 0,    "RED_HIGH",       300},
+    
+    // Pattern verification colors (specific bit patterns)
+    {85, 85, 85,   "PATTERN_01",     300}, // 01010101 pattern
+    {170, 170, 170, "PATTERN_10",    300}, // 10101010 pattern
+    {15, 15, 15,   "PATTERN_0F",     300}, // 00001111 pattern
+    {240, 240, 240, "PATTERN_F0",    300}, // 11110000 pattern
+    
+    // Edge case values
+    {1, 1, 1,      "MIN_NONZERO",    300},
+    {254, 254, 254, "MAX_MINUS_ONE", 300},
+    
+    // Color wheel simulation (smooth transitions)
+    {255, 32, 0,   "WHEEL_1",        250},
+    {255, 64, 0,   "WHEEL_2",        250},
+    {255, 128, 0,  "WHEEL_3",        250},
+    {128, 255, 0,  "WHEEL_4",        250},
+    {0, 255, 128,  "WHEEL_5",        250},
+    {0, 128, 255,  "WHEEL_6",        250},
+    {128, 0, 255,  "WHEEL_7",        250},
+    {255, 0, 128,  "WHEEL_8",        250},
+  };
+
+  constexpr size_t num_tests = sizeof(color_tests) / sizeof(color_tests[0]);
+  ESP_LOGI(TAG, "Running %zu color pattern tests for comprehensive protocol verification", num_tests);
+
+  hf_pio_symbol_t led_symbols[48]; // Single LED: 24 bits * 2 symbols per bit
+  hf_pio_symbol_t reset_symbol = create_ws2812_reset_symbol(actual_ns);
+
+  for (size_t i = 0; i < num_tests; i++) {
+    const ColorTest& test = color_tests[i];
+    
+    ESP_LOGI(TAG, "Test %zu/%zu: %s (R:%d, G:%d, B:%d)", 
+             i + 1, num_tests, test.name, test.r, test.g, test.b);
+    
+    // Create RGB symbols for current color
+    create_ws2812_rgb_symbols(test.r, test.g, test.b, led_symbols, actual_ns);
+    
+    // Transmit color data
+    result = pio.Transmit(tx_channel, led_symbols, 48, true);
+    if (result != hf_pio_err_t::PIO_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to transmit color %s: %s", test.name, HfPioErrToString(result).data());
+      return false;
+    }
+    
+    // Send reset to latch the color
+    result = pio.Transmit(tx_channel, &reset_symbol, 1, true);
+    if (result != hf_pio_err_t::PIO_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to transmit reset for %s: %s", test.name, HfPioErrToString(result).data());
+      return false;
+    }
+    
+    // Delay to allow visual verification and timing analysis
+    vTaskDelay(pdMS_TO_TICKS(test.delay_ms));
+  }
+
+  // Final sequence - rapid color changes for timing stress test
+  ESP_LOGI(TAG, "Running rapid color change sequence (timing stress test)...");
+  const ColorTest rapid_sequence[] = {
+    {255, 0, 0, "RAPID_RED", 50},
+    {0, 255, 0, "RAPID_GREEN", 50},
+    {0, 0, 255, "RAPID_BLUE", 50},
+    {255, 255, 255, "RAPID_WHITE", 50},
+    {0, 0, 0, "RAPID_BLACK", 50},
+  };
+
+  for (int cycle = 0; cycle < 5; cycle++) {
+    for (const auto& test : rapid_sequence) {
+      create_ws2812_rgb_symbols(test.r, test.g, test.b, led_symbols, actual_ns);
+      pio.Transmit(tx_channel, led_symbols, 48, true);
+      pio.Transmit(tx_channel, &reset_symbol, 1, true);
+      vTaskDelay(pdMS_TO_TICKS(test.delay_ms));
+    }
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] WS2812 comprehensive color cycle completed - %zu patterns tested", num_tests);
+  return true;
+}
+
+bool test_ws2812_brightness_sweep() noexcept {
+  ESP_LOGI(TAG, "Testing WS2812 brightness sweep for timing verification...");
+
+  EspPio pio;
+  if (!pio.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PIO");
+    return false;
+  }
+
+  int8_t tx_channel = HfRmtGetTxChannel(0);
+  if (tx_channel < 0) {
+    ESP_LOGE(TAG, "No TX channels available");
+    return false;
+  }
+
+  hf_pio_channel_config_t config = create_test_channel_config(TEST_GPIO_TX);
+  config.resolution_ns = TEST_RESOLUTION_WS2812_NS;
+  config.timeout_us = 200000;
+  pio.ConfigureChannel(static_cast<hf_u8_t>(tx_channel), config);
+
+  uint32_t actual_ns = config.resolution_ns;
+  (void)pio.GetActualResolution(tx_channel, actual_ns);
+
+  hf_pio_symbol_t led_symbols[48];
+  hf_pio_symbol_t reset_symbol = create_ws2812_reset_symbol(actual_ns);
+
+  // Test brightness sweep for each primary color
+  const char* colors[] = {"RED", "GREEN", "BLUE"};
+  
+  for (int color_idx = 0; color_idx < 3; color_idx++) {
+    ESP_LOGI(TAG, "Testing %s brightness sweep (0-255)...", colors[color_idx]);
+    
+    // Sweep up
+    for (int brightness = 0; brightness <= 255; brightness += 8) {
+      uint8_t r = (color_idx == 0) ? brightness : 0;
+      uint8_t g = (color_idx == 1) ? brightness : 0;
+      uint8_t b = (color_idx == 2) ? brightness : 0;
+      
+      create_ws2812_rgb_symbols(r, g, b, led_symbols, actual_ns);
+      pio.Transmit(tx_channel, led_symbols, 48, true);
+      pio.Transmit(tx_channel, &reset_symbol, 1, true);
+      vTaskDelay(pdMS_TO_TICKS(30));
+    }
+    
+    // Sweep down
+    for (int brightness = 255; brightness >= 0; brightness -= 8) {
+      uint8_t r = (color_idx == 0) ? brightness : 0;
+      uint8_t g = (color_idx == 1) ? brightness : 0;
+      uint8_t b = (color_idx == 2) ? brightness : 0;
+      
+      create_ws2812_rgb_symbols(r, g, b, led_symbols, actual_ns);
+      pio.Transmit(tx_channel, led_symbols, 48, true);
+      pio.Transmit(tx_channel, &reset_symbol, 1, true);
+      vTaskDelay(pdMS_TO_TICKS(30));
+    }
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] WS2812 brightness sweep completed");
+  return true;
+}
+
+bool test_ws2812_pattern_validation() noexcept {
+  ESP_LOGI(TAG, "Testing WS2812 bit pattern validation for protocol accuracy...");
+
+  EspPio pio;
+  if (!pio.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PIO");
+    return false;
+  }
+
+  int8_t tx_channel = HfRmtGetTxChannel(0);
+  if (tx_channel < 0) {
+    ESP_LOGE(TAG, "No TX channels available");
+    return false;
+  }
+
+  hf_pio_channel_config_t config = create_test_channel_config(TEST_GPIO_TX);
+  config.resolution_ns = TEST_RESOLUTION_WS2812_NS;
+  config.timeout_us = 200000;
+  pio.ConfigureChannel(static_cast<hf_u8_t>(tx_channel), config);
+
+  uint32_t actual_ns = config.resolution_ns;
+  (void)pio.GetActualResolution(tx_channel, actual_ns);
+
+  ESP_LOGI(TAG, "Testing specific bit patterns for timing analysis...");
+
+  // Test patterns designed to verify WS2812 protocol timing
+  struct PatternTest {
+    uint8_t value;
+    const char* pattern_name;
+    const char* binary;
+  };
+
+  const PatternTest bit_patterns[] = {
+    {0x00, "ALL_ZEROS", "00000000"},
+    {0xFF, "ALL_ONES",  "11111111"},
+    {0xAA, "ALTERNATING_10", "10101010"},
+    {0x55, "ALTERNATING_01", "01010101"},
+    {0xF0, "HIGH_NIBBLE", "11110000"},
+    {0x0F, "LOW_NIBBLE",  "00001111"},
+    {0xCC, "PATTERN_CC", "11001100"},
+    {0x33, "PATTERN_33", "00110011"},
+    {0xA5, "PATTERN_A5", "10100101"},
+    {0x5A, "PATTERN_5A", "01011010"},
+  };
+
+  hf_pio_symbol_t led_symbols[48];
+  hf_pio_symbol_t reset_symbol = create_ws2812_reset_symbol(actual_ns);
+
+  for (const auto& pattern : bit_patterns) {
+    ESP_LOGI(TAG, "Testing pattern %s (0x%02X = %s)", 
+             pattern.pattern_name, pattern.value, pattern.binary);
+    
+    // Test pattern in each color channel
+    for (int channel = 0; channel < 3; channel++) {
+      uint8_t r = (channel == 0) ? pattern.value : 0;
+      uint8_t g = (channel == 1) ? pattern.value : 0;
+      uint8_t b = (channel == 2) ? pattern.value : 0;
+      
+      const char* channel_name = (channel == 0) ? "RED" : (channel == 1) ? "GREEN" : "BLUE";
+      ESP_LOGI(TAG, "  %s channel: R=%d, G=%d, B=%d", channel_name, r, g, b);
+      
+      create_ws2812_rgb_symbols(r, g, b, led_symbols, actual_ns);
+      
+      hf_pio_err_t result = pio.Transmit(tx_channel, led_symbols, 48, true);
+      if (result != hf_pio_err_t::PIO_SUCCESS) {
+        ESP_LOGE(TAG, "Failed to transmit pattern %s: %s", 
+                 pattern.pattern_name, HfPioErrToString(result).data());
+        return false;
+      }
+      
+      result = pio.Transmit(tx_channel, &reset_symbol, 1, true);
+      if (result != hf_pio_err_t::PIO_SUCCESS) {
+        ESP_LOGE(TAG, "Failed to transmit reset: %s", HfPioErrToString(result).data());
+        return false;
+      }
+      
+      vTaskDelay(pdMS_TO_TICKS(200)); // Allow time for timing analysis
+    }
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] WS2812 bit pattern validation completed");
+  return true;
+}
+
+bool test_ws2812_rainbow_transition() noexcept {
+  ESP_LOGI(TAG, "Testing WS2812 rainbow color transitions for visual and timing verification...");
+
+  EspPio pio;
+  if (!pio.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PIO");
+    return false;
+  }
+
+  int8_t tx_channel = HfRmtGetTxChannel(0);
+  if (tx_channel < 0) {
+    ESP_LOGE(TAG, "No TX channels available");
+    return false;
+  }
+
+  hf_pio_channel_config_t config = create_test_channel_config(TEST_GPIO_TX);
+  config.resolution_ns = TEST_RESOLUTION_WS2812_NS;
+  config.timeout_us = 200000;
+  pio.ConfigureChannel(static_cast<hf_u8_t>(tx_channel), config);
+
+  uint32_t actual_ns = config.resolution_ns;
+  (void)pio.GetActualResolution(tx_channel, actual_ns);
+
+  ESP_LOGI(TAG, "Generating rainbow color wheel transitions...");
+
+  hf_pio_symbol_t led_symbols[48];
+  hf_pio_symbol_t reset_symbol = create_ws2812_reset_symbol(actual_ns);
+
+  // Generate smooth rainbow transitions using HSV to RGB conversion
+  for (int cycle = 0; cycle < 3; cycle++) {
+    ESP_LOGI(TAG, "Rainbow cycle %d/3", cycle + 1);
+    
+    for (int hue = 0; hue < 360; hue += 5) { // 5-degree steps for smooth transition
+      // Simple HSV to RGB conversion for rainbow effect
+      uint8_t r, g, b;
+      
+      if (hue < 60) {
+        r = 255;
+        g = (hue * 255) / 60;
+        b = 0;
+      } else if (hue < 120) {
+        r = ((120 - hue) * 255) / 60;
+        g = 255;
+        b = 0;
+      } else if (hue < 180) {
+        r = 0;
+        g = 255;
+        b = ((hue - 120) * 255) / 60;
+      } else if (hue < 240) {
+        r = 0;
+        g = ((240 - hue) * 255) / 60;
+        b = 255;
+      } else if (hue < 300) {
+        r = ((hue - 240) * 255) / 60;
+        g = 0;
+        b = 255;
+      } else {
+        r = 255;
+        g = 0;
+        b = ((360 - hue) * 255) / 60;
+      }
+
+      // Scale down intensity for easier viewing
+      r = (r * 128) / 255;
+      g = (g * 128) / 255;
+      b = (b * 128) / 255;
+      
+      create_ws2812_rgb_symbols(r, g, b, led_symbols, actual_ns);
+      
+      hf_pio_err_t result = pio.Transmit(tx_channel, led_symbols, 48, true);
+      if (result != hf_pio_err_t::PIO_SUCCESS) {
+        ESP_LOGE(TAG, "Failed to transmit rainbow color at hue %d: %s", 
+                 hue, HfPioErrToString(result).data());
+        return false;
+      }
+      
+      result = pio.Transmit(tx_channel, &reset_symbol, 1, true);
+      if (result != hf_pio_err_t::PIO_SUCCESS) {
+        ESP_LOGE(TAG, "Failed to transmit reset at hue %d: %s", 
+                 hue, HfPioErrToString(result).data());
+        return false;
+      }
+      
+      vTaskDelay(pdMS_TO_TICKS(25)); // Smooth transition speed
+    }
+  }
+
+  // End with a fade to black
+  ESP_LOGI(TAG, "Fading to black...");
+  for (int brightness = 128; brightness >= 0; brightness -= 4) {
+    create_ws2812_rgb_symbols(brightness, brightness, brightness, led_symbols, actual_ns);
+    pio.Transmit(tx_channel, led_symbols, 48, true);
+    pio.Transmit(tx_channel, &reset_symbol, 1, true);
+    vTaskDelay(pdMS_TO_TICKS(30));
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] WS2812 rainbow transition test completed");
+  return true;
+}
+
 // test_ws2812_timing_validation removed as redundant
 
 //==============================================================================
@@ -1323,60 +1774,116 @@ extern "C" void app_main() {
   ESP_LOGI(TAG, "║                                                                               ║");
   ESP_LOGI(TAG, "║  For automated testing: Connect GPIO %d to GPIO %d with jumper wire           ║",
            TEST_GPIO_TX, TEST_GPIO_RX);
+  ESP_LOGI(TAG, "║  Test progression indicator: GPIO14 toggles HIGH/LOW after each test         ║");
   ESP_LOGI(TAG, "╚═══════════════════════════════════════════════════════════════════════════════╝");
   ESP_LOGI(TAG, "");
 
-  // ASCII art banners removed
+  vTaskDelay(pdMS_TO_TICKS(1000));
+
+  // Initialize test progression indicator GPIO14
+  // This pin will toggle between HIGH/LOW each time a test completes
+  // providing visual feedback for test progression on oscilloscope/logic analyzer
+  if (!init_test_progress_indicator()) {
+    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
+  }
 
   // ESP32 Variant Information Tests (NEW)
+  ESP_LOGI(TAG, "\n=== ESP32 VARIANT INFORMATION TESTS ===");
   RUN_TEST(test_esp32_variant_detection);
+  flip_test_progress_indicator();
   RUN_TEST(test_channel_allocation_helpers);
+  flip_test_progress_indicator();
   RUN_TEST(test_channel_direction_validation);
+  flip_test_progress_indicator();
   RUN_TEST(test_resolution_ns_usage);
+  flip_test_progress_indicator();
 
   // Constructor/Destructor Tests
+  ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
   RUN_TEST(test_constructor_default);
+  flip_test_progress_indicator();
   RUN_TEST(test_destructor_cleanup);
+  flip_test_progress_indicator();
 
   // Lifecycle Tests
+  ESP_LOGI(TAG, "\n=== LIFECYCLE TESTS ===");
   RUN_TEST(test_initialization_states);
+  flip_test_progress_indicator();
   RUN_TEST(test_lazy_initialization);
+  flip_test_progress_indicator();
 
   // Channel Configuration Tests (ENHANCED)
+  ESP_LOGI(TAG, "\n=== CHANNEL CONFIGURATION TESTS ===");
   RUN_TEST(test_channel_configuration);
+  flip_test_progress_indicator();
   RUN_TEST(test_multiple_channel_configuration);
+  flip_test_progress_indicator();
 
   // Basic Transmission Tests (ENHANCED)
+  ESP_LOGI(TAG, "\n=== BASIC TRANSMISSION TESTS ===");
   RUN_TEST(test_basic_symbol_transmission);
+  flip_test_progress_indicator();
   RUN_TEST(test_transmission_edge_cases);
+  flip_test_progress_indicator();
 
   // WS2812 LED Protocol Tests (ENHANCED)
+  ESP_LOGI(TAG, "\n=== WS2812 LED PROTOCOL TESTS (ENHANCED) ===");
   RUN_TEST(test_ws2812_single_led);
+  flip_test_progress_indicator();
   RUN_TEST(test_ws2812_multiple_leds);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_color_cycle);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_brightness_sweep);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_pattern_validation);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_rainbow_transition);
+  flip_test_progress_indicator();
 
   // Logic Analyzer Test Scenarios
+  ESP_LOGI(TAG, "\n=== LOGIC ANALYZER TEST SCENARIOS ===");
   RUN_TEST(test_logic_analyzer_patterns);
+  flip_test_progress_indicator();
   RUN_TEST(test_frequency_sweep);
+  flip_test_progress_indicator();
 
   // Advanced RMT Feature Tests
+  ESP_LOGI(TAG, "\n=== ADVANCED RMT FEATURE TESTS ===");
   RUN_TEST(test_rmt_encoder_configuration);
+  flip_test_progress_indicator();
   RUN_TEST(test_rmt_carrier_modulation);
+  flip_test_progress_indicator();
   RUN_TEST(test_rmt_advanced_configuration);
+  flip_test_progress_indicator();
 
   // Loopback and Reception Tests
+  ESP_LOGI(TAG, "\n=== LOOPBACK AND RECEPTION TESTS ===");
   RUN_TEST(test_loopback_functionality);
+  flip_test_progress_indicator();
 
   // Callback Tests (ENHANCED - Channel-specific)
+  ESP_LOGI(TAG, "\n=== CALLBACK TESTS ===");
   RUN_TEST(test_callback_functionality);
+  flip_test_progress_indicator();
 
   // Statistics and Diagnostics Tests
+  ESP_LOGI(TAG, "\n=== STATISTICS AND DIAGNOSTICS TESTS ===");
   RUN_TEST(test_statistics_and_diagnostics);
+  flip_test_progress_indicator();
 
   // Stress and Performance Tests
+  ESP_LOGI(TAG, "\n=== STRESS AND PERFORMANCE TESTS ===");
   RUN_TEST(test_stress_transmission);
+  flip_test_progress_indicator();
 
   // System Validation
+  ESP_LOGI(TAG, "\n=== SYSTEM VALIDATION TESTS ===");
   RUN_TEST(test_pio_system_validation);
+  flip_test_progress_indicator();
+
+  // Final test progression indicator flip
+  flip_test_progress_indicator();
 
   // Print final summary
   print_test_summary(g_test_results, "PIO", TAG);
@@ -1399,7 +1906,7 @@ extern "C" void app_main() {
            HF_RMT_MAX_RX_CHANNELS, HF_RMT_RX_CHANNEL_START, HF_RMT_RX_CHANNEL_START + HF_RMT_MAX_RX_CHANNELS - 1);
   ESP_LOGI(TAG,
            "║                                                                               ║");
-  ESP_LOGI(TAG, "║  For WS2812 testing: Built-in RGB LED on GPIO %d should show color changes   ║",
+  ESP_LOGI(TAG, "║  For WS2812 testing: Built-in RGB LED on GPIO %d shows comprehensive colors  ║",
            TEST_GPIO_TX);
   ESP_LOGI(TAG, "║  For automated loopback: Verify transmission/reception on GPIO %d -> GPIO %d  ║",
            TEST_GPIO_TX, TEST_GPIO_RX);
@@ -1422,6 +1929,9 @@ extern "C" void app_main() {
   ESP_LOGI(TAG, "║    ✓ ASCII Art test result decoration                                       ║");
   ESP_LOGI(TAG,
            "╚═══════════════════════════════════════════════════════════════════════════════╝");
+
+  // Cleanup test progression indicator
+  cleanup_test_progress_indicator();
 
   // Keep running for continuous testing if needed
   while (true) {
