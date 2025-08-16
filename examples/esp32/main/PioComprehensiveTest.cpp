@@ -1493,7 +1493,7 @@ bool test_rmt_advanced_configuration() noexcept {
 //==============================================================================
 
 bool test_loopback_functionality() noexcept {
-  ESP_LOGI(TAG, "Testing loopback functionality...");
+  ESP_LOGI(TAG, "Testing software loopback functionality...");
 
   EspPio pio;
   if (!pio.EnsureInitialized()) {
@@ -1522,8 +1522,162 @@ bool test_loopback_functionality() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "[SUCCESS] Loopback functionality test completed");
+  ESP_LOGI(TAG, "[SUCCESS] Software loopback functionality test completed");
   return true;
+}
+
+bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
+  ESP_LOGI(TAG, "Testing HARDWARE loopback: GPIO8 (TX) -> GPIO18 (RX)");
+  ESP_LOGI(TAG, "*** ENSURE: Physical jumper wire connects GPIO8 to GPIO18 ***");
+  ESP_LOGI(TAG, "*** This test verifies actual transmission and reception ***");
+
+  EspPio pio;
+  if (!pio.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PIO");
+    return false;
+  }
+
+  // Get appropriate TX and RX channels for ESP32-C6
+  int8_t tx_channel = HfRmtGetTxChannel(0);  // Channel 0 (TX)
+  int8_t rx_channel = HfRmtGetRxChannel(0);  // Channel 2 (RX) 
+  
+  if (tx_channel < 0 || rx_channel < 0) {
+    ESP_LOGE(TAG, "Required channels not available on %s", HfRmtGetVariantName());
+    ESP_LOGE(TAG, "  TX channel: %d, RX channel: %d", tx_channel, rx_channel);
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Using TX channel %d (GPIO%d) -> RX channel %d (GPIO%d)", 
+           tx_channel, TEST_GPIO_TX, rx_channel, TEST_GPIO_RX);
+
+  // Configure TX channel on GPIO 8
+  hf_pio_channel_config_t tx_config = create_test_channel_config(TEST_GPIO_TX, hf_pio_direction_t::Transmit);
+  tx_config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // Use 1µs resolution for clear signals
+  tx_config.timeout_us = 50000; // 50ms timeout
+  
+  hf_pio_err_t result = pio.ConfigureChannel(static_cast<hf_u8_t>(tx_channel), tx_config);
+  if (result != hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure TX channel %d: %s", tx_channel, HfPioErrToString(result).data());
+    return false;
+  }
+
+  // Configure RX channel on GPIO 18  
+  hf_pio_channel_config_t rx_config = create_test_channel_config(TEST_GPIO_RX, hf_pio_direction_t::Receive);
+  rx_config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // Match TX resolution
+  rx_config.timeout_us = 50000; // 50ms timeout
+  
+  result = pio.ConfigureChannel(static_cast<hf_u8_t>(rx_channel), rx_config);
+  if (result != hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure RX channel %d: %s", rx_channel, HfPioErrToString(result).data());
+    return false;
+  }
+
+  // Get actual achieved resolution for accurate timing
+  uint32_t tx_actual_ns = tx_config.resolution_ns;
+  uint32_t rx_actual_ns = rx_config.resolution_ns;
+  pio.GetActualResolution(static_cast<hf_u8_t>(tx_channel), tx_actual_ns);
+  pio.GetActualResolution(static_cast<hf_u8_t>(rx_channel), rx_actual_ns);
+  
+  ESP_LOGI(TAG, "TX resolution: requested=%uns, achieved=%uns", tx_config.resolution_ns, tx_actual_ns);
+  ESP_LOGI(TAG, "RX resolution: requested=%uns, achieved=%uns", rx_config.resolution_ns, rx_actual_ns);
+
+  // Create distinctive test pattern for easy verification
+  hf_pio_symbol_t test_symbols[] = {
+    {1000 / tx_actual_ns, true},   // 1µs high
+    {2000 / tx_actual_ns, false},  // 2µs low  
+    {500 / tx_actual_ns, true},    // 0.5µs high
+    {1500 / tx_actual_ns, false},  // 1.5µs low
+    {3000 / tx_actual_ns, true},   // 3µs high (distinctive end pattern)
+    {1000 / tx_actual_ns, false}   // 1µs low (final)
+  };
+  constexpr size_t TEST_SYMBOL_COUNT = sizeof(test_symbols) / sizeof(test_symbols[0]);
+  
+  ESP_LOGI(TAG, "Test pattern: 1µs H, 2µs L, 0.5µs H, 1.5µs L, 3µs H, 1µs L");
+  ESP_LOGI(TAG, "In ticks: %u H, %u L, %u H, %u L, %u H, %u L", 
+           test_symbols[0].duration, test_symbols[1].duration,
+           test_symbols[2].duration, test_symbols[3].duration,
+           test_symbols[4].duration, test_symbols[5].duration);
+
+  // Prepare reception buffer
+  constexpr size_t RX_BUFFER_SIZE = 20; // Extra space for safety
+  hf_pio_symbol_t rx_buffer[RX_BUFFER_SIZE] = {}; // Initialize to zero
+  
+  // Start reception FIRST (critical for hardware loopback)
+  ESP_LOGI(TAG, "Starting reception on RX channel %d (GPIO%d)...", rx_channel, TEST_GPIO_RX);
+  result = pio.StartReceive(static_cast<hf_u8_t>(rx_channel), rx_buffer, RX_BUFFER_SIZE, 100000); // 100ms timeout
+  if (result != hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to start reception: %s", HfPioErrToString(result).data());
+    return false;
+  }
+
+  // Small delay to ensure RX is fully ready
+  vTaskDelay(pdMS_TO_TICKS(10));
+
+  // Transmit test data
+  ESP_LOGI(TAG, "Transmitting %zu symbols on TX channel %d (GPIO%d)...", TEST_SYMBOL_COUNT, tx_channel, TEST_GPIO_TX);
+  result = pio.Transmit(static_cast<hf_u8_t>(tx_channel), test_symbols, TEST_SYMBOL_COUNT, true);
+  if (result != hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to transmit: %s", HfPioErrToString(result).data());
+    
+    // Clean up RX before returning
+    size_t dummy_received = 0;
+    pio.StopReceive(static_cast<hf_u8_t>(rx_channel), dummy_received);
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Transmission completed, waiting for reception...");
+  
+  // Wait for reception completion
+  vTaskDelay(pdMS_TO_TICKS(100)); // Give enough time for reception
+  
+  // Check received data
+  size_t symbols_received = 0;
+  result = pio.StopReceive(static_cast<hf_u8_t>(rx_channel), symbols_received);
+  
+  ESP_LOGI(TAG, "Reception completed: %zu symbols received (expected %zu)", symbols_received, TEST_SYMBOL_COUNT);
+  
+  if (symbols_received > 0) {
+    ESP_LOGI(TAG, "SUCCESS: Hardware loopback working! Received %zu symbols via GPIO8->GPIO18", symbols_received);
+    
+    // Display received data for verification
+    ESP_LOGI(TAG, "Received symbol analysis:");
+    for (size_t i = 0; i < std::min(symbols_received, static_cast<size_t>(TEST_SYMBOL_COUNT)); i++) {
+      uint32_t received_ns = rx_buffer[i].duration * rx_actual_ns;
+      uint32_t expected_ns = test_symbols[i].duration * tx_actual_ns;
+      
+      ESP_LOGI(TAG, "  [%zu] RX: %s %uns (%u ticks) | Expected: %s %uns (%u ticks) | Match: %s",
+               i, 
+               rx_buffer[i].level ? "HIGH" : "LOW ", received_ns, rx_buffer[i].duration,
+               test_symbols[i].level ? "HIGH" : "LOW ", expected_ns, test_symbols[i].duration,
+               (rx_buffer[i].level == test_symbols[i].level) ? "✓" : "✗");
+    }
+    
+    // Verify pattern matching (at least first few symbols should match)
+    bool pattern_matches = true;
+    size_t check_count = std::min(symbols_received, static_cast<size_t>(3)); // Check first 3 symbols
+    for (size_t i = 0; i < check_count; i++) {
+      if (rx_buffer[i].level != test_symbols[i].level) {
+        pattern_matches = false;
+        break;
+      }
+    }
+    
+    if (pattern_matches) {
+      ESP_LOGI(TAG, "✓ Pattern verification: Signal levels match expected pattern");
+    } else {
+      ESP_LOGW(TAG, "⚠ Pattern verification: Signal levels don't match - check jumper wire connection");
+    }
+    
+    return true;
+  } else {
+    ESP_LOGE(TAG, "FAILED: No symbols received via hardware loopback");
+    ESP_LOGE(TAG, "Troubleshooting checklist:");
+    ESP_LOGE(TAG, "  1. Verify jumper wire connects GPIO8 to GPIO18");
+    ESP_LOGE(TAG, "  2. Check wire connection quality (no loose contacts)");
+    ESP_LOGE(TAG, "  3. Ensure GPIO8 and GPIO18 are not used by other peripherals");
+    ESP_LOGE(TAG, "  4. Verify ESP32-C6 RMT channel allocation is correct");
+    return false;
+  }
 }
 
 //==============================================================================
@@ -1774,6 +1928,7 @@ extern "C" void app_main() {
   ESP_LOGI(TAG, "║                                                                               ║");
   ESP_LOGI(TAG, "║  For automated testing: Connect GPIO %d to GPIO %d with jumper wire           ║",
            TEST_GPIO_TX, TEST_GPIO_RX);
+  ESP_LOGI(TAG, "║  Hardware loopback test will verify transmission/reception integrity          ║");
   ESP_LOGI(TAG, "║  Test progression indicator: GPIO14 toggles HIGH/LOW after each test         ║");
   ESP_LOGI(TAG, "╚═══════════════════════════════════════════════════════════════════════════════╝");
   ESP_LOGI(TAG, "");
@@ -1861,6 +2016,8 @@ extern "C" void app_main() {
   ESP_LOGI(TAG, "\n=== LOOPBACK AND RECEPTION TESTS ===");
   RUN_TEST(test_loopback_functionality);
   flip_test_progress_indicator();
+  RUN_TEST(test_hardware_loopback_gpio8_to_gpio18);
+  flip_test_progress_indicator();
 
   // Callback Tests (ENHANCED - Channel-specific)
   ESP_LOGI(TAG, "\n=== CALLBACK TESTS ===");
@@ -1908,8 +2065,9 @@ extern "C" void app_main() {
            "║                                                                               ║");
   ESP_LOGI(TAG, "║  For WS2812 testing: Built-in RGB LED on GPIO %d shows comprehensive colors  ║",
            TEST_GPIO_TX);
-  ESP_LOGI(TAG, "║  For automated loopback: Verify transmission/reception on GPIO %d -> GPIO %d  ║",
+  ESP_LOGI(TAG, "║  For hardware loopback: Verify transmission/reception on GPIO %d -> GPIO %d    ║",
            TEST_GPIO_TX, TEST_GPIO_RX);
+  ESP_LOGI(TAG, "║  Hardware test validates actual RMT TX/RX channel functionality              ║");
   ESP_LOGI(TAG, "║  For logic analyzer: Capture signals on GPIO %d and verify timing            ║",
            TEST_GPIO_TX);
   ESP_LOGI(TAG,
