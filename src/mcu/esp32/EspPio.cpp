@@ -311,7 +311,9 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
   rmt_receive_config_t rx_config = {};
   // Increase minimum signal range to account for timing variations, hardware delays, and signal propagation
   // The RMT peripheral needs a more generous range to capture signals that may have slight timing differences
-  rx_config.signal_range_min_ns = channel.actual_resolution_ns / 2;  // Allow signals down to half resolution
+  // FIXED: Use a more generous minimum signal range for better real-world signal capture
+  // Instead of half resolution, use a much smaller value to catch shorter glitches and timing variations
+  rx_config.signal_range_min_ns = 100;  // 100ns minimum - much more tolerant than resolution/2
   
   // Set maximum signal range to a reasonable value for most applications (1ms instead of max possible)
   // This provides better noise filtering and prevents extremely long signals from blocking reception
@@ -1499,13 +1501,15 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
 #endif
     rx_config.resolution_hz = resolution_hz;
-    rx_config.mem_block_symbols = 64;
+    // IMPROVED: Increase memory block size for better reception reliability
+    rx_config.mem_block_symbols = 128;  // Increased from 64 to 128 for better buffering
     
     // ESP-IDF v5.5 specific RX channel configuration
     rx_config.flags.invert_in = false;        // Don't invert input signal
     rx_config.flags.with_dma = false;         // Disable DMA for standard operation
     rx_config.flags.io_loop_back = false;     // Disable internal loopback
-    rx_config.intr_priority = 0;              // Default interrupt priority
+    // IMPROVED: Use higher interrupt priority for better real-time response
+    rx_config.intr_priority = 1;              // Higher priority for RX (was 0)
 
     esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
     if (ret != ESP_OK) {

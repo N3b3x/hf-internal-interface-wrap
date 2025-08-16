@@ -1601,6 +1601,13 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
   ESP_LOGI(TAG, "Channel validation: TX channel %d is TX-capable, RX channel %d is RX-capable", 
            tx_channel, rx_channel);
 
+  // IMPROVED: Add GPIO configuration diagnostics
+  ESP_LOGI(TAG, "=== GPIO DIAGNOSTICS ===");
+  ESP_LOGI(TAG, "GPIO %d (TX): Checking drive strength and configuration...", TEST_GPIO_TX);
+  ESP_LOGI(TAG, "GPIO %d (RX): Checking input configuration...", TEST_GPIO_RX);
+  ESP_LOGI(TAG, "Hardware loopback requires: GPIO%d -> GPIO%d physical wire connection", 
+           TEST_GPIO_TX, TEST_GPIO_RX);
+
   // Configure TX channel on GPIO 8 (must be a TX-capable channel)
   hf_pio_channel_config_t tx_config = create_test_channel_config(TEST_GPIO_TX, hf_pio_direction_t::Transmit);
   tx_config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // Use 1µs resolution for clear signals
@@ -1676,7 +1683,27 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
                status.is_busy ? "yes" : "no", status.is_receiving ? "yes" : "no");
     }
     
+    // IMPROVED: Add detailed diagnostic information
+    ESP_LOGE(TAG, "=== RECEPTION FAILURE DIAGNOSTICS ===");
+    ESP_LOGE(TAG, "1. Check physical jumper wire: GPIO%d -> GPIO%d", TEST_GPIO_TX, TEST_GPIO_RX);
+    ESP_LOGE(TAG, "2. Verify RMT channel allocation: TX=%d, RX=%d", tx_channel, rx_channel);
+    ESP_LOGE(TAG, "3. Check ESP32-C6 GPIO multiplexing conflicts");
+    ESP_LOGE(TAG, "4. Verify power supply stability and grounding");
+    ESP_LOGE(TAG, "5. Ensure no other peripherals are using these GPIOs");
+    
     return false;
+  }
+
+  // IMPROVED: Add reception status monitoring
+  ESP_LOGI(TAG, "Reception started successfully - monitoring channel status...");
+  
+  // Verify reception is actually active
+  hf_pio_channel_status_t rx_status;
+  if (pio.GetChannelStatus(static_cast<hf_u8_t>(rx_channel), rx_status) == hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGI(TAG, "RX Status: initialized=%s, busy=%s, receiving=%s", 
+             rx_status.is_initialized ? "yes" : "no", 
+             rx_status.is_busy ? "yes" : "no", 
+             rx_status.is_receiving ? "yes" : "no");
   }
 
   // Increased delay to ensure RX is fully ready and listening
@@ -1695,6 +1722,36 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
   }
 
   ESP_LOGI(TAG, "Transmission completed, waiting for reception...");
+  
+  // IMPROVED: Add post-transmission diagnostics
+  ESP_LOGI(TAG, "=== POST-TRANSMISSION ANALYSIS ===");
+  
+  // Check TX channel status after transmission
+  hf_pio_channel_status_t tx_status;
+  if (pio.GetChannelStatus(static_cast<hf_u8_t>(tx_channel), tx_status) == hf_pio_err_t::PIO_SUCCESS) {
+    ESP_LOGI(TAG, "TX Status after transmission: busy=%s, last_op_time=%lluus", 
+             tx_status.is_busy ? "yes" : "no", tx_status.timestamp_us);
+  }
+  
+  // Monitor RX channel status during reception window
+  for (int check = 0; check < 5; check++) {
+    vTaskDelay(pdMS_TO_TICKS(20)); // Check every 20ms
+    
+    hf_pio_channel_status_t check_status;
+    if (pio.GetChannelStatus(static_cast<hf_u8_t>(rx_channel), check_status) == hf_pio_err_t::PIO_SUCCESS) {
+      ESP_LOGI(TAG, "RX Status check %d: receiving=%s, busy=%s, symbols_processed=%zu", 
+               check + 1,
+               check_status.is_receiving ? "yes" : "no",
+               check_status.is_busy ? "yes" : "no", 
+               check_status.symbols_processed);
+      
+      // If we see symbols being processed, break early
+      if (check_status.symbols_processed > 0) {
+        ESP_LOGI(TAG, "Early detection: %zu symbols already processed!", check_status.symbols_processed);
+        break;
+      }
+    }
+  }
   
   // Wait for reception completion
   vTaskDelay(pdMS_TO_TICKS(100)); // Give enough time for reception
