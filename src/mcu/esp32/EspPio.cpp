@@ -28,6 +28,7 @@ extern "C" {
 
 #include "esp_check.h"
 #include "esp_log.h"
+#include "esp_heap_caps.h"
 #include "hal/rmt_ll.h"
 #include "soc/clk_tree_defs.h"
 #include "esp_clk_tree.h"
@@ -308,8 +309,18 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
 
   // Create receive configuration
   rmt_receive_config_t rx_config = {};
-  rx_config.signal_range_min_ns = channel.actual_resolution_ns;  // Use actual resolution
-  rx_config.signal_range_max_ns = channel.actual_resolution_ns * 32767; // Max duration based on actual resolution
+  // Increase minimum signal range to account for timing variations, hardware delays, and signal propagation
+  // The RMT peripheral needs a more generous range to capture signals that may have slight timing differences
+  rx_config.signal_range_min_ns = channel.actual_resolution_ns / 2;  // Allow signals down to half resolution
+  
+  // Set maximum signal range to a reasonable value for most applications (1ms instead of max possible)
+  // This provides better noise filtering and prevents extremely long signals from blocking reception
+  rx_config.signal_range_max_ns = 1000000; // 1ms maximum signal duration
+  
+  // ESP-IDF v5.5 specific RX channel configuration flags
+  // Note: rmt_receive_config_t only supports en_partial_rx flag, other flags are in rmt_rx_channel_config_t
+  rx_config.flags.en_partial_rx = false;    // Disable partial reception for standard operation
+  
   size_t rmt_buffer_size = std::min(buffer_size, static_cast<size_t>(64)); // RMT buffer limit
 
   // Start reception
@@ -328,14 +339,48 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
     ESP_LOGE(TAG, "Failed to register RX callbacks for channel %d: %d", channel_id, ret);
     return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
-  // Start reception with allocated buffer
-  ret = rmt_receive(channel.rx_channel, nullptr, rmt_buffer_size * sizeof(rmt_symbol_word_t),
+  
+  // Allocate RMT buffer for reception (RMT driver requires a valid buffer)
+  rmt_symbol_word_t* rmt_rx_buffer = static_cast<rmt_symbol_word_t*>(
+      heap_caps_malloc(rmt_buffer_size * sizeof(rmt_symbol_word_t), MALLOC_CAP_DMA));
+  if (rmt_rx_buffer == nullptr) {
+    channel.busy = false;
+    channel.status.is_receiving = false;
+    ESP_LOGE(TAG, "Failed to allocate RMT RX buffer for channel %d", channel_id);
+    return hf_pio_err_t::PIO_ERR_OUT_OF_MEMORY;
+  }
+  
+  // Store the allocated RMT buffer for cleanup
+  channel.rmt_rx_buffer = rmt_rx_buffer;
+  
+  ESP_LOGD(TAG, "Allocated RMT RX buffer: channel %d, size %zu symbols (%zu bytes), buffer ptr: %p", 
+           channel_id, rmt_buffer_size, rmt_buffer_size * sizeof(rmt_symbol_word_t), rmt_rx_buffer);
+  
+  // Start reception with allocated RMT buffer
+  ret = rmt_receive(channel.rx_channel, rmt_rx_buffer, rmt_buffer_size * sizeof(rmt_symbol_word_t),
                     &rx_config);
   if (ret != ESP_OK) {
     channel.busy = false;
     channel.status.is_receiving = false;
-    ESP_LOGE(TAG, "Failed to start reception on channel %d: %d", channel_id, ret);
-    return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
+    heap_caps_free(rmt_rx_buffer);
+    channel.rmt_rx_buffer = nullptr;
+    
+    // ESP-IDF v5.5 specific error handling
+    switch (ret) {
+      case ESP_ERR_INVALID_ARG:
+        ESP_LOGE(TAG, "Invalid arguments for RMT reception on channel %d", channel_id);
+        return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
+      case ESP_ERR_INVALID_STATE:
+        ESP_LOGE(TAG, "RMT channel %d not in valid state for reception", channel_id);
+        return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
+      case ESP_ERR_NO_MEM:
+        ESP_LOGE(TAG, "Insufficient memory for RMT reception on channel %d", channel_id);
+        return hf_pio_err_t::PIO_ERR_OUT_OF_MEMORY;
+      default:
+        ESP_LOGE(TAG, "Failed to start reception on channel %d: %s (error: %d)", 
+                 channel_id, esp_err_to_name(ret), ret);
+        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
+    }
   }
 
   ESP_LOGI(TAG, "Started reception on channel %d", channel_id);
@@ -364,6 +409,12 @@ hf_pio_err_t EspPio::StopReceive(hf_u8_t channel_id, size_t& symbols_received) n
   channel.busy = false;
   channel.status.is_receiving = false;
   symbols_received = channel.rx_symbols_received;
+
+  // Free the allocated RMT buffer
+  if (channel.rmt_rx_buffer != nullptr) {
+    heap_caps_free(channel.rmt_rx_buffer);
+    channel.rmt_rx_buffer = nullptr;
+  }
 
   ESP_LOGI(TAG, "Stopped reception on channel %d, received %d symbols", channel_id,
            symbols_received);
@@ -987,8 +1038,16 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
 
   // Configure reception parameters
   rmt_receive_config_t rx_config = {};
-  rx_config.signal_range_min_ns = channel.actual_resolution_ns;  // Use actual resolution
-  rx_config.signal_range_max_ns = channel.actual_resolution_ns * 32767; // Max duration based on actual resolution
+  // Increase minimum signal range to account for timing variations, hardware delays, and signal propagation
+  rx_config.signal_range_min_ns = channel.actual_resolution_ns / 2;  // Allow signals down to half resolution
+  
+  // Set maximum signal range to a reasonable value for most applications (1ms instead of max possible)
+  // This provides better noise filtering and prevents extremely long signals from blocking reception
+  rx_config.signal_range_max_ns = 1000000; // 1ms maximum signal duration
+  
+  // ESP-IDF v5.5 specific RX channel configuration flags
+  // Note: rmt_receive_config_t only supports en_partial_rx flag, other flags are in rmt_rx_channel_config_t
+  rx_config.flags.en_partial_rx = false;    // Disable partial reception for standard operation
 
   // Mark channel as busy
   channels_[channel_id].busy = true;
@@ -1316,9 +1375,17 @@ bool EspPio::OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_e
       // Convert received RMT symbols back to hf_pio_symbol_ts as a lightweight copy
       size_t symbols_converted = 0;
       if (ch.rx_buffer && edata->received_symbols) {
+        // Add debugging information about received data
+        ESP_EARLY_LOGD(TAG, "RX callback: channel %d, raw symbols: %d, data ptr: %p", 
+                       i, edata->num_symbols, edata->received_symbols);
+        
         instance->ConvertFromRmtSymbols(
             reinterpret_cast<const rmt_symbol_word_t*>(edata->received_symbols), edata->num_symbols,
             ch.rx_buffer, symbols_converted);
+        
+        ESP_EARLY_LOGD(TAG, "RX callback: channel %d, converted symbols: %d", i, symbols_converted);
+      } else {
+        ESP_EARLY_LOGW(TAG, "RX callback: channel %d, missing buffer or data", i);
       }
 
       ch.busy = false;
@@ -1366,11 +1433,22 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
       config.direction == hf_pio_direction_t::Bidirectional) {
     rmt_tx_channel_config_t tx_config = {};
     tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-    tx_config.clk_src = chosen_src;
+// ESP32-C6 specific clock source configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+    tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M (80 MHz)
+#else
+    tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
+#endif
     tx_config.resolution_hz = resolution_hz;
     // Balanced buffering to allow multi-channel allocations
     tx_config.mem_block_symbols = 64;
     tx_config.trans_queue_depth = 8;
+    
+    // ESP-IDF v5.5 specific TX channel configuration
+    tx_config.flags.invert_out = false;       // Don't invert output signal
+    tx_config.flags.with_dma = false;         // Disable DMA for standard operation
+    tx_config.flags.io_loop_back = false;     // Disable internal loopback
+    tx_config.intr_priority = 0;              // Default interrupt priority
 
     esp_err_t ret = rmt_new_tx_channel(&tx_config, &channel.tx_channel);
     if (ret != ESP_OK) {
@@ -1411,11 +1489,23 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
 
   if (config.direction == hf_pio_direction_t::Receive ||
       config.direction == hf_pio_direction_t::Bidirectional) {
+    // Configure advanced RX channel for ESP32-C6 compatibility
     rmt_rx_channel_config_t rx_config = {};
     rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-    rx_config.clk_src = chosen_src;
+// ESP32-C6 specific clock source configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+    rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M (80 MHz)
+#else
+    rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
+#endif
     rx_config.resolution_hz = resolution_hz;
     rx_config.mem_block_symbols = 64;
+    
+    // ESP-IDF v5.5 specific RX channel configuration
+    rx_config.flags.invert_in = false;        // Don't invert input signal
+    rx_config.flags.with_dma = false;         // Disable DMA for standard operation
+    rx_config.flags.io_loop_back = false;     // Disable internal loopback
+    rx_config.intr_priority = 0;              // Default interrupt priority
 
     esp_err_t ret = rmt_new_rx_channel(&rx_config, &channel.rx_channel);
     if (ret != ESP_OK) {
@@ -1476,6 +1566,17 @@ hf_pio_err_t EspPio::DeinitializeChannel(hf_u8_t channel_id) noexcept {
     rmt_del_encoder(channel.bytes_encoder);
     channel.bytes_encoder = nullptr;
   }
+
+  // Free allocated RMT buffer if present
+  if (channel.rmt_rx_buffer != nullptr) {
+    heap_caps_free(channel.rmt_rx_buffer);
+    channel.rmt_rx_buffer = nullptr;
+  }
+
+  // Clear buffer references
+  channel.rx_buffer = nullptr;
+  channel.rx_buffer_size = 0;
+  channel.rx_symbols_received = 0;
 
   channel.configured = false;
   channel.busy = false;

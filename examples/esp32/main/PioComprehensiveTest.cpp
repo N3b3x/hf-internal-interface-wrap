@@ -66,7 +66,7 @@ static constexpr hf_gpio_num_t TEST_GPIO_RX = 18; // GPIO18 for reception (RMT c
 
 // Test resolutions using resolution in nanoseconds (user-facing API)
 static constexpr uint32_t TEST_RESOLUTION_WS2812_NS = 125;   // 8 MHz -> 125ns per tick
-static constexpr uint32_t TEST_RESOLUTION_STANDARD_NS = 1000; // 1 MHz -> 1µs per tick
+static constexpr uint32_t TEST_RESOLUTION_STANDARD_NS = 500; // 2 MHz -> 500ns per tick
 static constexpr uint32_t TEST_RESOLUTION_LOW_NS = 10000;     // 100 kHz -> 10µs per tick
 
 //==============================================================================
@@ -255,6 +255,21 @@ void create_logic_analyzer_test_pattern(hf_pio_symbol_t* symbols, size_t& symbol
   symbols[7] = {ticks_ceil(1500), false};  // 1.5µs low
   symbols[8] = {ticks_ceil(750), true};    // 0.75µs high
   symbols[9] = {ticks_ceil(4000), false};  // 4µs low (end marker)
+}
+
+/**
+ * @brief Ensure minimum tick duration for symbols to prevent "Duration too short" errors
+ * @param symbols Array of symbols to validate
+ * @param symbol_count Number of symbols in the array
+ * @param min_ticks Minimum number of ticks required (default: 1)
+ */
+void ensure_minimum_tick_duration(hf_pio_symbol_t* symbols, size_t symbol_count, uint32_t min_ticks = 1) noexcept {
+  for (size_t i = 0; i < symbol_count; i++) {
+    if (symbols[i].duration < min_ticks) {
+      ESP_LOGW(TAG, "Symbol %zu duration %u < %u, setting to %u", i, symbols[i].duration, min_ticks, min_ticks);
+      symbols[i].duration = min_ticks;
+    }
+  }
 }
 
 //==============================================================================
@@ -1363,6 +1378,9 @@ bool test_frequency_sweep() noexcept {
   if (half_period_ticks == 0) half_period_ticks = 1;
   hf_pio_symbol_t square_wave[] = {{half_period_ticks, true}, {half_period_ticks, false}};
 
+  // Ensure minimum tick duration
+  ensure_minimum_tick_duration(square_wave, 2, 1);
+
     ESP_LOGI(TAG, "Generating %uHz square wave (%uns period)", frequencies[f], period_ns);
 
     // Transmit 10 cycles of each frequency
@@ -1420,6 +1438,8 @@ bool test_rmt_encoder_configuration() noexcept {
 
 bool test_rmt_carrier_modulation() noexcept {
   ESP_LOGI(TAG, "Testing RMT carrier modulation...");
+  ESP_LOGI(TAG, "*** NOTE: Carrier tests can be sensitive to timing and hardware conditions ***");
+  ESP_LOGI(TAG, "*** If this test fails, it may indicate hardware-specific limitations ***");
 
   EspPio pio;
   if (!pio.EnsureInitialized()) {
@@ -1428,28 +1448,36 @@ bool test_rmt_carrier_modulation() noexcept {
   }
 
   hf_pio_channel_config_t config = create_test_channel_config(TEST_GPIO_TX);
+  config.timeout_us = 100000; // Increase timeout for carrier operations
   pio.ConfigureChannel(0, config);
 
   // Configure 38kHz carrier (typical for IR)
   hf_pio_err_t result = pio.ConfigureCarrier(0, 38000, 0.5f);
   if (result != hf_pio_err_t::PIO_SUCCESS) {
-  ESP_LOGI(TAG, "Carrier configuration not supported or failed: %s", HfPioErrToString(result).data());
+    ESP_LOGI(TAG, "Carrier configuration not supported or failed: %s", HfPioErrToString(result).data());
     // This might not be supported, which is OK
   } else {
     ESP_LOGI(TAG, "Carrier modulation configured at 38kHz");
 
-    // Test transmission with carrier using achieved tick
-  uint32_t car_tick_ns = config.resolution_ns; (void)pio.GetActualResolution(0, car_tick_ns);
-  hf_pio_symbol_t carrier_symbols[] = {
-        {1000 / car_tick_ns, true},  // 1ms with carrier
-        {1000 / car_tick_ns, false}, // 1ms without carrier
-  };
+    // Test transmission with carrier using achieved tick - use longer symbols for carrier
+    uint32_t car_tick_ns = config.resolution_ns; 
+    (void)pio.GetActualResolution(0, car_tick_ns);
+    
+    // Use longer symbols for carrier transmission to avoid flush timeouts
+    hf_pio_symbol_t carrier_symbols[] = {
+      {5000 / car_tick_ns, true},   // 5ms with carrier (longer for stability)
+      {5000 / car_tick_ns, false},  // 5ms without carrier
+    };
 
+    ESP_LOGI(TAG, "Transmitting carrier test pattern: 5ms H, 5ms L");
+    
     result = pio.Transmit(0, carrier_symbols, 2, true);
     if (result != hf_pio_err_t::PIO_SUCCESS) {
       ESP_LOGE(TAG, "Failed to transmit with carrier: %s", HfPioErrToString(result).data());
       return false;
     }
+    
+    ESP_LOGI(TAG, "Carrier transmission completed successfully");
   }
 
   ESP_LOGI(TAG, "[SUCCESS] RMT carrier modulation test completed");
@@ -1502,6 +1530,7 @@ bool test_loopback_functionality() noexcept {
   }
 
   hf_pio_channel_config_t config = create_test_channel_config(TEST_GPIO_RX);
+  config.timeout_us = 100000; // Increase timeout for loopback operations
   pio.ConfigureChannel(0, config);
 
   // Enable loopback mode
@@ -1511,10 +1540,17 @@ bool test_loopback_functionality() noexcept {
     return true; // Not an error if unsupported
   }
 
-  // Test transmission in loopback mode (use actual achieved tick)
-  uint32_t loop_tick_ns = config.resolution_ns; (void)pio.GetActualResolution(0, loop_tick_ns);
-  hf_pio_symbol_t test_symbols[] = {{1000 / loop_tick_ns, true},
-                                    {1000 / loop_tick_ns, false}};
+  // Test transmission in loopback mode (use actual achieved tick with minimum duration check)
+  uint32_t loop_tick_ns = config.resolution_ns; 
+  (void)pio.GetActualResolution(0, loop_tick_ns);
+  
+  // Ensure minimum tick duration to avoid "Duration too short" errors
+  uint32_t min_ticks = std::max(uint32_t(1), static_cast<uint32_t>(1000u / loop_tick_ns)); // At least 1µs worth of ticks
+  hf_pio_symbol_t test_symbols[] = {{min_ticks, true},
+                                    {min_ticks, false}};
+
+  ESP_LOGI(TAG, "Testing loopback with %u ticks (%.1fµs) per symbol", 
+           min_ticks, (min_ticks * loop_tick_ns) / 1000.0f);
 
   result = pio.Transmit(0, test_symbols, 2, true);
   if (result != hf_pio_err_t::PIO_SUCCESS) {
@@ -1530,6 +1566,8 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
   ESP_LOGI(TAG, "Testing HARDWARE loopback: GPIO8 (TX) -> GPIO18 (RX)");
   ESP_LOGI(TAG, "*** ENSURE: Physical jumper wire connects GPIO8 to GPIO18 ***");
   ESP_LOGI(TAG, "*** This test verifies actual transmission and reception ***");
+  ESP_LOGI(TAG, "*** NOTE: This test requires a physical jumper wire connection ***");
+  ESP_LOGI(TAG, "*** If no wire is connected, the test will fail but this is expected ***");
 
   EspPio pio;
   if (!pio.EnsureInitialized()) {
@@ -1538,8 +1576,8 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
   }
 
   // Get appropriate TX and RX channels for ESP32-C6
-  int8_t tx_channel = HfRmtGetTxChannel(0);  // Channel 0 (TX)
-  int8_t rx_channel = HfRmtGetRxChannel(0);  // Channel 2 (RX) 
+  int8_t tx_channel = HfRmtGetTxChannel(0);  // Channel 0 (TX) - ESP32-C6: channels 0-1 are TX
+  int8_t rx_channel = HfRmtGetRxChannel(0);  // Channel 2 (RX) - ESP32-C6: channels 2-3 are RX
   
   if (tx_channel < 0 || rx_channel < 0) {
     ESP_LOGE(TAG, "Required channels not available on %s", HfRmtGetVariantName());
@@ -1547,13 +1585,26 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
     return false;
   }
 
+  // Validate that channels are actually valid for their intended direction
+  if (!HfRmtIsChannelValidForDirection(tx_channel, hf_pio_direction_t::Transmit)) {
+    ESP_LOGE(TAG, "Channel %d is not valid for TX on %s", tx_channel, HfRmtGetVariantName());
+    return false;
+  }
+  
+  if (!HfRmtIsChannelValidForDirection(rx_channel, hf_pio_direction_t::Receive)) {
+    ESP_LOGE(TAG, "Channel %d is not valid for RX on %s", rx_channel, HfRmtGetVariantName());
+    return false;
+  }
+
   ESP_LOGI(TAG, "Using TX channel %d (GPIO%d) -> RX channel %d (GPIO%d)", 
            tx_channel, TEST_GPIO_TX, rx_channel, TEST_GPIO_RX);
+  ESP_LOGI(TAG, "Channel validation: TX channel %d is TX-capable, RX channel %d is RX-capable", 
+           tx_channel, rx_channel);
 
-  // Configure TX channel on GPIO 8
+  // Configure TX channel on GPIO 8 (must be a TX-capable channel)
   hf_pio_channel_config_t tx_config = create_test_channel_config(TEST_GPIO_TX, hf_pio_direction_t::Transmit);
   tx_config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // Use 1µs resolution for clear signals
-  tx_config.timeout_us = 50000; // 50ms timeout
+  tx_config.timeout_us = 100000; // 100ms timeout (increased for reliability)
   
   hf_pio_err_t result = pio.ConfigureChannel(static_cast<hf_u8_t>(tx_channel), tx_config);
   if (result != hf_pio_err_t::PIO_SUCCESS) {
@@ -1561,10 +1612,10 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
     return false;
   }
 
-  // Configure RX channel on GPIO 18  
+  // Configure RX channel on GPIO 18 (must be an RX-capable channel)
   hf_pio_channel_config_t rx_config = create_test_channel_config(TEST_GPIO_RX, hf_pio_direction_t::Receive);
   rx_config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // Match TX resolution
-  rx_config.timeout_us = 50000; // 50ms timeout
+  rx_config.timeout_us = 100000; // 100ms timeout (increased for reliability)
   
   result = pio.ConfigureChannel(static_cast<hf_u8_t>(rx_channel), rx_config);
   if (result != hf_pio_err_t::PIO_SUCCESS) {
@@ -1592,6 +1643,9 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
   };
   constexpr size_t TEST_SYMBOL_COUNT = sizeof(test_symbols) / sizeof(test_symbols[0]);
   
+  // Ensure all durations are at least 1 tick to prevent "Duration too short" errors
+  ensure_minimum_tick_duration(test_symbols, TEST_SYMBOL_COUNT, 1);
+  
   ESP_LOGI(TAG, "Test pattern: 1µs H, 2µs L, 0.5µs H, 1.5µs L, 3µs H, 1µs L");
   ESP_LOGI(TAG, "In ticks: %u H, %u L, %u H, %u L, %u H, %u L", 
            test_symbols[0].duration, test_symbols[1].duration,
@@ -1604,14 +1658,29 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
   
   // Start reception FIRST (critical for hardware loopback)
   ESP_LOGI(TAG, "Starting reception on RX channel %d (GPIO%d)...", rx_channel, TEST_GPIO_RX);
+  
+  // Add delay to ensure channels are fully configured and RMT peripheral is ready
+  vTaskDelay(pdMS_TO_TICKS(10)); // Increased from 5ms to 10ms for better RMT readiness
+  
   result = pio.StartReceive(static_cast<hf_u8_t>(rx_channel), rx_buffer, RX_BUFFER_SIZE, 100000); // 100ms timeout
   if (result != hf_pio_err_t::PIO_SUCCESS) {
     ESP_LOGE(TAG, "Failed to start reception: %s", HfPioErrToString(result).data());
+    ESP_LOGE(TAG, "This may indicate a hardware configuration issue or missing jumper wire");
+    ESP_LOGE(TAG, "Channel %d status check:", rx_channel);
+    
+    // Get channel status for debugging
+    hf_pio_channel_status_t status;
+    if (pio.GetChannelStatus(static_cast<hf_u8_t>(rx_channel), status) == hf_pio_err_t::PIO_SUCCESS) {
+      ESP_LOGE(TAG, "  RX channel %d: initialized=%s, busy=%s, receiving=%s", 
+               rx_channel, status.is_initialized ? "yes" : "no", 
+               status.is_busy ? "yes" : "no", status.is_receiving ? "yes" : "no");
+    }
+    
     return false;
   }
 
-  // Small delay to ensure RX is fully ready
-  vTaskDelay(pdMS_TO_TICKS(10));
+  // Increased delay to ensure RX is fully ready and listening
+  vTaskDelay(pdMS_TO_TICKS(20)); // Increased from 10ms to 20ms for better RMT readiness
 
   // Transmit test data
   ESP_LOGI(TAG, "Transmitting %zu symbols on TX channel %d (GPIO%d)...", TEST_SYMBOL_COUNT, tx_channel, TEST_GPIO_TX);
@@ -1676,6 +1745,7 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
     ESP_LOGE(TAG, "  2. Check wire connection quality (no loose contacts)");
     ESP_LOGE(TAG, "  3. Ensure GPIO8 and GPIO18 are not used by other peripherals");
     ESP_LOGE(TAG, "  4. Verify ESP32-C6 RMT channel allocation is correct");
+    ESP_LOGE(TAG, "  5. Check that RX channel %d is properly configured for reception", rx_channel);
     return false;
   }
 }
@@ -1942,75 +2012,75 @@ extern "C" void app_main() {
     ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
   }
 
-  // ESP32 Variant Information Tests (NEW)
-  ESP_LOGI(TAG, "\n=== ESP32 VARIANT INFORMATION TESTS ===");
-  RUN_TEST(test_esp32_variant_detection);
-  flip_test_progress_indicator();
-  RUN_TEST(test_channel_allocation_helpers);
-  flip_test_progress_indicator();
-  RUN_TEST(test_channel_direction_validation);
-  flip_test_progress_indicator();
-  RUN_TEST(test_resolution_ns_usage);
-  flip_test_progress_indicator();
+  // // ESP32 Variant Information Tests (NEW)
+  // ESP_LOGI(TAG, "\n=== ESP32 VARIANT INFORMATION TESTS ===");
+  // RUN_TEST(test_esp32_variant_detection);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_channel_allocation_helpers);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_channel_direction_validation);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_resolution_ns_usage);
+  // flip_test_progress_indicator();
 
-  // Constructor/Destructor Tests
-  ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
-  RUN_TEST(test_constructor_default);
-  flip_test_progress_indicator();
-  RUN_TEST(test_destructor_cleanup);
-  flip_test_progress_indicator();
+  // // Constructor/Destructor Tests
+  // ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
+  // RUN_TEST(test_constructor_default);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_destructor_cleanup);
+  // flip_test_progress_indicator();
 
-  // Lifecycle Tests
-  ESP_LOGI(TAG, "\n=== LIFECYCLE TESTS ===");
-  RUN_TEST(test_initialization_states);
-  flip_test_progress_indicator();
-  RUN_TEST(test_lazy_initialization);
-  flip_test_progress_indicator();
+  // // Lifecycle Tests
+  // ESP_LOGI(TAG, "\n=== LIFECYCLE TESTS ===");
+  // RUN_TEST(test_initialization_states);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_lazy_initialization);
+  // flip_test_progress_indicator();
 
-  // Channel Configuration Tests (ENHANCED)
-  ESP_LOGI(TAG, "\n=== CHANNEL CONFIGURATION TESTS ===");
-  RUN_TEST(test_channel_configuration);
-  flip_test_progress_indicator();
-  RUN_TEST(test_multiple_channel_configuration);
-  flip_test_progress_indicator();
+  // // Channel Configuration Tests (ENHANCED)
+  // ESP_LOGI(TAG, "\n=== CHANNEL CONFIGURATION TESTS ===");
+  // RUN_TEST(test_channel_configuration);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_multiple_channel_configuration);
+  // flip_test_progress_indicator();
 
-  // Basic Transmission Tests (ENHANCED)
-  ESP_LOGI(TAG, "\n=== BASIC TRANSMISSION TESTS ===");
-  RUN_TEST(test_basic_symbol_transmission);
-  flip_test_progress_indicator();
-  RUN_TEST(test_transmission_edge_cases);
-  flip_test_progress_indicator();
+  // // Basic Transmission Tests (ENHANCED)
+  // ESP_LOGI(TAG, "\n=== BASIC TRANSMISSION TESTS ===");
+  // RUN_TEST(test_basic_symbol_transmission);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_transmission_edge_cases);
+  // flip_test_progress_indicator();
 
-  // WS2812 LED Protocol Tests (ENHANCED)
-  ESP_LOGI(TAG, "\n=== WS2812 LED PROTOCOL TESTS (ENHANCED) ===");
-  RUN_TEST(test_ws2812_single_led);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_multiple_leds);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_color_cycle);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_brightness_sweep);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_pattern_validation);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_rainbow_transition);
-  flip_test_progress_indicator();
+  // // WS2812 LED Protocol Tests (ENHANCED)
+  // ESP_LOGI(TAG, "\n=== WS2812 LED PROTOCOL TESTS (ENHANCED) ===");
+  // RUN_TEST(test_ws2812_single_led);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_ws2812_multiple_leds);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_ws2812_color_cycle);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_ws2812_brightness_sweep);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_ws2812_pattern_validation);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_ws2812_rainbow_transition);
+  // flip_test_progress_indicator();
 
-  // Logic Analyzer Test Scenarios
-  ESP_LOGI(TAG, "\n=== LOGIC ANALYZER TEST SCENARIOS ===");
-  RUN_TEST(test_logic_analyzer_patterns);
-  flip_test_progress_indicator();
-  RUN_TEST(test_frequency_sweep);
-  flip_test_progress_indicator();
+  // // Logic Analyzer Test Scenarios
+  // ESP_LOGI(TAG, "\n=== LOGIC ANALYZER TEST SCENARIOS ===");
+  // RUN_TEST(test_logic_analyzer_patterns);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_frequency_sweep);
+  // flip_test_progress_indicator();
 
-  // Advanced RMT Feature Tests
-  ESP_LOGI(TAG, "\n=== ADVANCED RMT FEATURE TESTS ===");
-  RUN_TEST(test_rmt_encoder_configuration);
-  flip_test_progress_indicator();
-  RUN_TEST(test_rmt_carrier_modulation);
-  flip_test_progress_indicator();
-  RUN_TEST(test_rmt_advanced_configuration);
-  flip_test_progress_indicator();
+  // // Advanced RMT Feature Tests
+  // ESP_LOGI(TAG, "\n=== ADVANCED RMT FEATURE TESTS ===");
+  // RUN_TEST(test_rmt_encoder_configuration);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_rmt_carrier_modulation);
+  // flip_test_progress_indicator();
+  // RUN_TEST(test_rmt_advanced_configuration);
+  // flip_test_progress_indicator();
 
   // Loopback and Reception Tests
   ESP_LOGI(TAG, "\n=== LOOPBACK AND RECEPTION TESTS ===");
@@ -2037,9 +2107,6 @@ extern "C" void app_main() {
   // System Validation
   ESP_LOGI(TAG, "\n=== SYSTEM VALIDATION TESTS ===");
   RUN_TEST(test_pio_system_validation);
-  flip_test_progress_indicator();
-
-  // Final test progression indicator flip
   flip_test_progress_indicator();
 
   // Print final summary

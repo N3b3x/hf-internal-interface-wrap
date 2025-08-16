@@ -333,6 +333,7 @@ private:
     hf_pio_symbol_t* rx_buffer;
     size_t rx_buffer_size;
     size_t rx_symbols_received;
+    rmt_symbol_word_t* rmt_rx_buffer; // Allocated RMT buffer for reception
 
     // Timing
     uint64_t last_operation_time;
@@ -354,7 +355,7 @@ private:
     ChannelState() noexcept
         : configured(false), busy(false), config(), status(), tx_channel(nullptr),
           rx_channel(nullptr), encoder(nullptr), bytes_encoder(nullptr), rx_buffer(nullptr),
-          rx_buffer_size(0), rx_symbols_received(0), last_operation_time(0), actual_resolution_ns(0),
+          rx_buffer_size(0), rx_symbols_received(0), rmt_rx_buffer(nullptr), last_operation_time(0), actual_resolution_ns(0),
           selected_clk_src(RMT_CLK_SRC_DEFAULT), source_clock_hz(80000000), idle_level(false),
           transmit_callback(nullptr), transmit_user_data(nullptr), receive_callback(nullptr),
           receive_user_data(nullptr), error_callback(nullptr), error_user_data(nullptr) {}
