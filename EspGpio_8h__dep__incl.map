@@ -1,0 +1,11 @@
+<map id="inc/mcu/esp32/EspGpio.h" name="inc/mcu/esp32/EspGpio.h">
+<area shape="rect" id="Node000001" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="365,5,550,31"/>
+<area shape="rect" id="Node000002" href="$GpioComprehensiveTest_8cpp.html" title="Comprehensive GPIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,79,216,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="394,36,194,81,193,76,393,31"/>
+<area shape="rect" id="Node000003" href="$PioComprehensiveTest_8cpp.html" title="Comprehensive PIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with RMT peripheral (noexcept)" alt="" coords="241,79,442,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="430,41,371,81,368,76,427,36"/>
+<area shape="rect" id="Node000004" href="$PwmComprehensiveTest_8cpp.html" title="Comprehensive PWM testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="467,79,680,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="488,36,547,76,544,81,485,41"/>
+<area shape="rect" id="Node000005" href="$EspGpio_8cpp.html" title="Production&#45;quality ESP32C6 GPIO implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="704,86,904,111"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="522,31,754,83,753,89,520,36"/>
+</map>

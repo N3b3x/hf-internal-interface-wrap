@@ -1,0 +1,9 @@
+<map id="inc/mcu/esp32/utils/EspTypes_NVS.h" name="inc/mcu/esp32/utils/EspTypes_NVS.h">
+<area shape="rect" id="Node000001" title="ESP32 NVS type definitions for hardware abstraction." alt="" coords="147,5,295,45"/>
+<area shape="rect" id="Node000002" href="$EspNvs_8h.html" title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features." alt="" coords="131,93,311,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,59,223,93,218,93,218,59"/>
+<area shape="rect" id="Node000003" href="$NvsComprehensiveTest_8cpp.html" title="Comprehensive NVS (Non&#45;Volatile Storage) testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,167,212,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="194,129,137,169,134,164,191,124"/>
+<area shape="rect" id="Node000004" href="$EspNvs_8cpp.html" title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="237,174,431,199"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="250,124,319,172,316,176,247,129"/>
+</map>

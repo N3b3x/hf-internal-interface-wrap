@@ -1,0 +1,13 @@
+<map id="inc/base/BaseNvs.h" name="inc/base/BaseNvs.h">
+<area shape="rect" id="Node000001" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="85,5,234,31"/>
+<area shape="rect" id="Node000002" href="$NvsComprehensiveTest_8cpp.html" title="Comprehensive NVS (Non&#45;Volatile Storage) testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,240,212,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,45,115,240,110,239,151,44"/>
+<area shape="rect" id="Node000003" href="$EspNvs_8h.html" title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features." alt="" coords="164,167,344,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,44,172,80,188,117,212,144,237,164,234,169,208,148,184,120,167,82,159,45"/>
+<area shape="rect" id="Node000005" href="$EspTypes__NVS_8h.html" title="ESP32 NVS type definitions for hardware abstraction." alt="" coords="197,79,345,119"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="189,36,246,76,243,81,186,41"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="222,201,145,242,142,237,219,196"/>
+<area shape="rect" id="Node000004" href="$EspNvs_8cpp.html" title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="237,247,431,273"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="278,200,324,245,320,249,274,204"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="267,133,259,167,254,166,262,131"/>
+</map>

@@ -1,0 +1,34 @@
+<map id="inc/base/BaseAdc.h" name="inc/base/BaseAdc.h">
+<area shape="rect" id="Node000001" title="Abstract base class for ADC implementations in the HardFOC system." alt="" coords="674,5,822,31"/>
+<area shape="rect" id="Node000002" href="$AdcComprehensiveTest_8cpp.html" title="Comprehensive ADC testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="589,167,795,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="737,44,720,80,706,126,698,167,692,166,701,125,715,78,732,41"/>
+<area shape="rect" id="Node000003" href="$EspTypes__ADC_8h.html" title="ESP32 ADC type definitions for hardware abstraction." alt="" coords="730,79,878,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="766,40,793,77,788,80,762,43"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="770,129,718,169,715,164,766,125"/>
+<area shape="rect" id="Node000004" href="$EspTypes_8h.html" title="Consolidated MCU&#45;specific type definitions for hardware abstraction (hf_* types)." alt="" coords="819,167,967,207"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="836,127,875,165,872,168,832,130"/>
+<area shape="rect" id="Node000005" href="$EspI2c_8h.html" title="Advanced ESP32&#45;integrated I2C controller for ESP&#45;IDF v5.5+ with proper bus&#45;device architecture." alt="" coords="237,262,411,287"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="806,209,590,243,412,266,411,261,589,238,806,204"/>
+<area shape="rect" id="Node000008" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="685,255,880,295"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="859,217,809,257,806,252,856,213"/>
+<area shape="rect" id="Node000011" href="$EspPio_8h.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="918,262,1093,287"/>
+<area shape="poly" id="edge11_Node000004_Node000011" title=" " alt="" coords="931,213,991,259,988,264,927,217"/>
+<area shape="rect" id="Node000014" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="1358,262,1533,287"/>
+<area shape="poly" id="edge14_Node000004_Node000014" title=" " alt="" coords="982,199,1372,259,1371,265,981,204"/>
+<area shape="rect" id="Node000006" href="$I2cComprehensiveTest_8cpp.html" title="Comprehensive I2C testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,343,205,383"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="283,295,155,345,153,340,281,290"/>
+<area shape="rect" id="Node000007" href="$EspI2c_8cpp.html" title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture." alt="" coords="229,350,419,375"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="327,301,327,349,321,349,321,301"/>
+<area shape="rect" id="Node000009" href="$TimerComprehensiveTest_8cpp.html" title="Comprehensive Periodic Timer testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="443,343,661,383"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="720,302,603,345,602,340,719,297"/>
+<area shape="rect" id="Node000010" href="$EspPeriodicTimer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="685,343,880,383"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="785,309,785,342,780,342,780,309"/>
+<area shape="rect" id="Node000012" href="$PioComprehensiveTest_8cpp.html" title="Comprehensive PIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with RMT peripheral (noexcept)" alt="" coords="905,343,1106,383"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="1008,301,1008,342,1003,342,1003,301"/>
+<area shape="rect" id="Node000013" href="$EspPio_8cpp.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation." alt="" coords="1130,350,1321,375"/>
+<area shape="poly" id="edge13_Node000011_Node000013" title=" " alt="" coords="1049,290,1197,347,1195,352,1047,295"/>
+<area shape="rect" id="Node000015" href="$SpiComprehensiveTest_8cpp.html" title="Comprehensive SPI testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="1345,343,1546,383"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="1448,301,1448,342,1443,342,1443,301"/>
+<area shape="rect" id="Node000016" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features." alt="" coords="1570,350,1761,375"/>
+<area shape="poly" id="edge16_Node000014_Node000016" title=" " alt="" coords="1489,290,1637,347,1635,352,1487,295"/>
+</map>

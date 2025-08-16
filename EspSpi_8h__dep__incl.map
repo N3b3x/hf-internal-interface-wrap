@@ -1,0 +1,7 @@
+<map id="inc/mcu/esp32/EspSpi.h" name="inc/mcu/esp32/EspSpi.h">
+<area shape="rect" id="Node000001" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="128,5,303,31"/>
+<area shape="rect" id="Node000002" href="$SpiComprehensiveTest_8cpp.html" title="Comprehensive SPI testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,79,207,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,41,134,81,131,76,187,36"/>
+<area shape="rect" id="Node000003" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features." alt="" coords="231,86,421,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="245,37,311,84,308,88,242,41"/>
+</map>
