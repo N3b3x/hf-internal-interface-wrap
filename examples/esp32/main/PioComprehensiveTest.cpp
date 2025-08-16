@@ -1600,8 +1600,7 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
 
   // Prepare reception buffer
   constexpr size_t RX_BUFFER_SIZE = 20; // Extra space for safety
-  hf_pio_symbol_t rx_buffer[RX_BUFFER_SIZE];
-  memset(rx_buffer, 0, sizeof(rx_buffer));
+  hf_pio_symbol_t rx_buffer[RX_BUFFER_SIZE] = {}; // Initialize to zero
   
   // Start reception FIRST (critical for hardware loopback)
   ESP_LOGI(TAG, "Starting reception on RX channel %d (GPIO%d)...", rx_channel, TEST_GPIO_RX);
