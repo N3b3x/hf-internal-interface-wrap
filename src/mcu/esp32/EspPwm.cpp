@@ -208,13 +208,19 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     }
   }
 
-  // Frequency validation will be done when configuring the timer
-
+  // CRITICAL FIX: Add ESP32-C6 frequency/resolution validation
   // Find or allocate a timer for this frequency/resolution combination
   // Note: We need to get frequency and resolution from the channel's timer assignment
   // For now, use default values since they're not in the config struct
   hf_u32_t frequency_hz = HF_PWM_DEFAULT_FREQUENCY;
   hf_u8_t resolution_bits = HF_PWM_DEFAULT_RESOLUTION;
+
+  // Validate frequency/resolution combination before proceeding
+  if (!ValidateFrequencyResolutionCombination(frequency_hz, resolution_bits)) {
+    ESP_LOGE(TAG, "Invalid frequency/resolution combination: %lu Hz @ %d bits", frequency_hz, resolution_bits);
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH);
+    return hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH;
+  }
 
   hf_i8_t timer_id = FindOrAllocateTimer(frequency_hz, resolution_bits);
   if (timer_id < 0) {
@@ -240,12 +246,18 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   channels_[channel_id].configured = true;
   channels_[channel_id].config = config;
   channels_[channel_id].assigned_timer = timer_id;
+  // CRITICAL FIX: Properly handle duty_initial as RAW value, not percentage
   // Get resolution from the assigned timer
   hf_u8_t assigned_timer = static_cast<hf_u8_t>(channels_[channel_id].assigned_timer);
   hf_u8_t timer_resolution = (assigned_timer < MAX_TIMERS) ? timers_[assigned_timer].resolution_bits
                                                            : HF_PWM_DEFAULT_RESOLUTION;
-  channels_[channel_id].raw_duty_value =
-      BasePwm::DutyCycleToRaw(config.duty_initial, timer_resolution);
+  
+  // config.duty_initial is a RAW value, not a percentage - validate and store directly
+  hf_u32_t max_duty_raw = (1U << timer_resolution) - 1;
+  channels_[channel_id].raw_duty_value = std::min<hf_u32_t>(config.duty_initial, max_duty_raw);
+  
+  ESP_LOGD(TAG, "Channel %lu initial duty: raw=%lu (max=%lu, resolution=%d bits)", 
+           channel_id, channels_[channel_id].raw_duty_value, max_duty_raw, timer_resolution);
   channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
 
   ESP_LOGI(TAG, "Channel %lu configured: pin=%d, freq=%lu Hz, res=%d bits, timer=%d", channel_id,
@@ -467,6 +479,14 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id,
   hf_u32_t current_frequency = timers_[current_timer].frequency_hz;
   hf_u8_t current_resolution = timers_[current_timer].resolution_bits;
 
+  // CRITICAL FIX: Validate new frequency with current resolution
+  if (!ValidateFrequencyResolutionCombination(frequency_hz, current_resolution)) {
+    ESP_LOGE(TAG, "New frequency %lu Hz incompatible with current resolution %d bits", 
+             frequency_hz, current_resolution);
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH);
+    return hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH;
+  }
+
   // If frequency is significantly different, we need a new timer
   const float frequency_tolerance = 0.01f; // 1% tolerance
   bool frequency_changed = (std::abs(static_cast<float>(frequency_hz - current_frequency) /
@@ -685,11 +705,16 @@ hf_pwm_err_t EspPwm::GetChannelStatus(hf_channel_id_t channel_id,
   uint8_t timer_id = channels_[channel_id].assigned_timer;
   if (timer_id < MAX_TIMERS) {
     status.current_frequency = timers_[timer_id].frequency_hz;
+    // CRITICAL FIX: Use actual timer resolution, not hardcoded default
+    status.resolution_bits = timers_[timer_id].resolution_bits;
+    status.current_duty_cycle = BasePwm::RawToDutyCycle(channels_[channel_id].raw_duty_value, 
+                                                       timers_[timer_id].resolution_bits);
   } else {
     status.current_frequency = 0;
+    status.resolution_bits = HF_PWM_DEFAULT_RESOLUTION;
+    status.current_duty_cycle = BasePwm::RawToDutyCycle(channels_[channel_id].raw_duty_value, 
+                                                       HF_PWM_DEFAULT_RESOLUTION);
   }
-  status.current_duty_cycle =
-      BasePwm::RawToDutyCycle(channels_[channel_id].raw_duty_value, HF_PWM_DEFAULT_RESOLUTION);
   status.raw_duty_value = channels_[channel_id].raw_duty_value;
   status.last_error = channels_[channel_id].last_error;
 
@@ -1047,6 +1072,12 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
     return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
+  // CRITICAL FIX: Ensure timer state reflects actual hardware configuration
+  // This is essential for correct duty cycle calculations
+  timers_[timer_id].frequency_hz = frequency_hz;
+  timers_[timer_id].resolution_bits = resolution_bits;
+  timers_[timer_id].in_use = true;
+
   statistics_.last_activity_timestamp = esp_timer_get_time();
 
   ESP_LOGD(TAG, "Timer %d configured: freq=%lu Hz, resolution=%d bits", timer_id, frequency_hz,
@@ -1071,12 +1102,20 @@ hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
   channel_config.intr_type = LEDC_INTR_DISABLE;
   channel_config.gpio_num = config.gpio_pin;
 
+  // CRITICAL FIX: Use timer's actual resolution, not hardcoded default
+  // This ensures duty cycle calculations are consistent across all functions
+  hf_u8_t timer_resolution = timers_[timer_id].resolution_bits;
+  if (timer_resolution == 0) {
+    ESP_LOGE(TAG, "Timer %d resolution not set! Using default %d bits", timer_id, HF_PWM_DEFAULT_RESOLUTION);
+    timer_resolution = HF_PWM_DEFAULT_RESOLUTION;
+  }
+  
   // Calculate initial duty (use requested initial duty if provided)
-  uint32_t initial_duty = std::min<hf_u32_t>(config.duty_initial,
-                                             (1u << HF_PWM_DEFAULT_RESOLUTION) - 1u);
+  uint32_t max_duty_value = (1u << timer_resolution) - 1u;
+  uint32_t initial_duty = std::min<hf_u32_t>(config.duty_initial, max_duty_value);
+  
   if (config.output_invert) {
-    uint32_t max_duty = (1U << HF_PWM_DEFAULT_RESOLUTION) - 1;
-    initial_duty = max_duty - initial_duty;
+    initial_duty = max_duty_value - initial_duty;
   }
   channel_config.duty = initial_duty;
 
@@ -1254,6 +1293,38 @@ hf_u32_t EspPwm::CalculateClockDivider(hf_u32_t frequency_hz,
   hf_u32_t clock_divider = period / max_duty;
 
   return clock_divider;
+}
+
+bool EspPwm::ValidateFrequencyResolutionCombination(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept {
+  // ESP32-C6 LEDC hardware constraint validation
+  // The LEDC timer clock must satisfy: freq_hz * (2^resolution_bits) <= source_clock_hz
+  
+  // Validate input parameters
+  if (frequency_hz == 0 || resolution_bits == 0 || resolution_bits > HF_PWM_MAX_RESOLUTION) {
+    ESP_LOGE(TAG, "Invalid parameters: freq=%lu Hz, res=%d bits", frequency_hz, resolution_bits);
+    return false;
+  }
+  
+  // Calculate required timer clock frequency
+  // Using 64-bit arithmetic to prevent overflow
+  uint64_t required_clock = static_cast<uint64_t>(frequency_hz) * (1ULL << resolution_bits);
+  
+  // ESP32-C6 LEDC source clock is typically 80MHz (APB_CLK)
+  // Allow some margin for clock accuracy and divider limitations
+  const uint64_t max_source_clock = 80000000ULL; // 80MHz
+  const uint64_t practical_limit = max_source_clock * 95 / 100; // 95% of max for safety margin
+  
+  bool is_valid = required_clock <= practical_limit;
+  
+  if (!is_valid) {
+    ESP_LOGW(TAG, "Frequency/resolution combination not achievable: %lu Hz @ %d bits requires %llu Hz (max: %llu Hz)",
+             frequency_hz, resolution_bits, required_clock, practical_limit);
+  } else {
+    ESP_LOGD(TAG, "Frequency/resolution combination valid: %lu Hz @ %d bits requires %llu Hz",
+             frequency_hz, resolution_bits, required_clock);
+  }
+  
+  return is_valid;
 }
 
 hf_pwm_err_t EspPwm::InitializeTimers() noexcept {

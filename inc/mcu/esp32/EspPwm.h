@@ -392,6 +392,15 @@ private:
    */
   hf_u32_t CalculateClockDivider(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
 
+  /**
+   * @brief Validate frequency/resolution combination for ESP32-C6 LEDC
+   * @param frequency_hz Target frequency in Hz
+   * @param resolution_bits Target resolution in bits
+   * @return true if combination is achievable, false otherwise
+   * @note ESP32-C6 LEDC constraint: freq_hz * (2^resolution_bits) <= 80MHz
+   */
+  bool ValidateFrequencyResolutionCombination(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
+
   //==============================================================================
   // MEMBER VARIABLES
   //==============================================================================

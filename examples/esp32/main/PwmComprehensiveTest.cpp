@@ -1207,6 +1207,165 @@ bool test_fade_mode_functionality() noexcept {
   return true;
 }
 
+/**
+ * @brief Test resolution-specific duty cycle accuracy (NEW CRITICAL TEST)
+ */
+bool test_resolution_specific_duty_cycles() noexcept {
+  ESP_LOGI(TAG, "Testing resolution-specific duty cycle accuracy...");
+
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Configure channel with known raw duty value
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+  ch_config.duty_initial = 512; // Exactly 50% for 10-bit resolution
+  
+  hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure channel for resolution test");
+    return false;
+  }
+
+  result = pwm.EnableChannel(0);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable channel for resolution test");
+    return false;
+  }
+
+  // Test multiple duty cycles with precise validation
+  struct DutyCycleTest {
+    float percentage;
+    uint32_t expected_raw_10bit;
+    const char* description;
+  };
+
+  DutyCycleTest duty_tests[] = {
+    {0.0f,   0,    "0% duty cycle"},
+    {0.25f,  255,  "25% duty cycle"},
+    {0.5f,   511,  "50% duty cycle"},
+    {0.75f,  767,  "75% duty cycle"},
+    {1.0f,   1023, "100% duty cycle"}
+  };
+
+  ESP_LOGI(TAG, "Testing duty cycle accuracy with 10-bit resolution (max=1023)");
+  
+  for (const auto& test : duty_tests) {
+    ESP_LOGI(TAG, "Setting %s (%.2f)", test.description, test.percentage);
+    
+    result = pwm.SetDutyCycle(0, test.percentage);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to set %s: %s", test.description, HfPwmErrToString(result));
+      return false;
+    }
+
+    // Verify the duty cycle reads back correctly
+    float actual_duty = pwm.GetDutyCycle(0);
+    float expected_duty = test.percentage;
+    float tolerance = 0.002f; // Allow 0.2% tolerance for rounding
+
+    if (abs(actual_duty - expected_duty) > tolerance) {
+      ESP_LOGE(TAG, "Duty cycle mismatch for %s: expected %.4f, got %.4f (diff=%.4f)", 
+               test.description, expected_duty, actual_duty, abs(actual_duty - expected_duty));
+      return false;
+    }
+
+    // Test raw duty cycle setting as well
+    result = pwm.SetDutyCycleRaw(0, test.expected_raw_10bit);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to set raw duty cycle %lu: %s", test.expected_raw_10bit, HfPwmErrToString(result));
+      return false;
+    }
+
+    actual_duty = pwm.GetDutyCycle(0);
+    if (abs(actual_duty - expected_duty) > tolerance) {
+      ESP_LOGE(TAG, "Raw duty cycle mismatch for %s: expected %.4f, got %.4f", 
+               test.description, expected_duty, actual_duty);
+      return false;
+    }
+
+    ESP_LOGI(TAG, "✓ %s verified: %.4f%% (raw=%lu)", test.description, actual_duty * 100.0f, test.expected_raw_10bit);
+    vTaskDelay(pdMS_TO_TICKS(50));
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Resolution-specific duty cycle accuracy test passed");
+  return true;
+}
+
+/**
+ * @brief Test frequency/resolution validation (NEW CRITICAL TEST)
+ */
+bool test_frequency_resolution_validation() noexcept {
+  ESP_LOGI(TAG, "Testing frequency/resolution validation...");
+
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Configure a basic channel first
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+  hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure channel for frequency validation test");
+    return false;
+  }
+
+  result = pwm.EnableChannel(0);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable channel for frequency validation test");
+    return false;
+  }
+
+  // Test valid frequency/resolution combinations
+  struct FreqResTest {
+    uint32_t frequency;
+    bool should_succeed;
+    const char* description;
+  };
+
+  FreqResTest freq_tests[] = {
+    {1000,    true,  "1 kHz @ 10-bit (valid)"},
+    {5000,    true,  "5 kHz @ 10-bit (valid)"},
+    {10000,   true,  "10 kHz @ 10-bit (valid)"},
+    {20000,   true,  "20 kHz @ 10-bit (valid)"},
+    {50000,   true,  "50 kHz @ 10-bit (borderline valid)"},
+    {100000,  false, "100 kHz @ 10-bit (should fail - too high)"},
+  };
+
+  for (const auto& test : freq_tests) {
+    ESP_LOGI(TAG, "Testing %s", test.description);
+    
+    result = pwm.SetFrequency(0, test.frequency);
+    
+    if (test.should_succeed) {
+      if (result != hf_pwm_err_t::PWM_SUCCESS) {
+        ESP_LOGE(TAG, "Expected success for %s but got: %s", test.description, HfPwmErrToString(result));
+        return false;
+      }
+      ESP_LOGI(TAG, "✓ %s succeeded as expected", test.description);
+    } else {
+      if (result == hf_pwm_err_t::PWM_SUCCESS) {
+        ESP_LOGE(TAG, "Expected failure for %s but got success", test.description);
+        return false;
+      }
+      ESP_LOGI(TAG, "✓ %s failed as expected: %s", test.description, HfPwmErrToString(result));
+    }
+    
+    vTaskDelay(pdMS_TO_TICKS(50));
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Frequency/resolution validation test passed");
+  return true;
+}
+
 //==============================================================================
 // EDGE CASES AND STRESS TESTS
 //==============================================================================
@@ -1413,6 +1572,13 @@ extern "C" void app_main(void) {
   RUN_TEST(test_idle_level_control);
   flip_test_progress_indicator();
   RUN_TEST(test_timer_management);
+  flip_test_progress_indicator();
+
+  // CRITICAL NEW TESTS: Resolution and Validation
+  ESP_LOGI(TAG, "\n=== RESOLUTION AND VALIDATION TESTS (NEW) ===");
+  RUN_TEST(test_resolution_specific_duty_cycles);
+  flip_test_progress_indicator();
+  RUN_TEST(test_frequency_resolution_validation);
   flip_test_progress_indicator();
 
   // Status and Diagnostics Tests
