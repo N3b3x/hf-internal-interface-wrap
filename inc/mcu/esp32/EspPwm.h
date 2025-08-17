@@ -161,6 +161,34 @@ public:
                                              hf_u8_t preferred_resolution) noexcept;
 
   /**
+   * @brief Set PWM resolution for a channel
+   * @param channel_id Channel identifier
+   * @param resolution_bits Resolution in bits (4-14)
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note This may require timer reallocation if resolution changes significantly
+   */
+  hf_pwm_err_t SetResolution(hf_channel_id_t channel_id, hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Get current PWM resolution for a channel
+   * @param channel_id Channel identifier
+   * @return Current resolution in bits, or 0 on error
+   */
+  hf_u8_t GetResolution(hf_channel_id_t channel_id) const noexcept;
+
+  /**
+   * @brief Set frequency and resolution together (atomic operation)
+   * @param channel_id Channel identifier
+   * @param frequency_hz Frequency in Hz
+   * @param resolution_bits Resolution in bits
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note This is the most efficient way to change both parameters simultaneously
+   */
+  hf_pwm_err_t SetFrequencyAndResolution(hf_channel_id_t channel_id, 
+                                         hf_frequency_hz_t frequency_hz,
+                                         hf_u8_t resolution_bits) noexcept;
+
+  /**
    * @brief Enable automatic fallback to alternative resolutions
    * @return PWM_SUCCESS on success, error code on failure
    * @note When enabled, SetFrequency() will automatically try alternative resolutions

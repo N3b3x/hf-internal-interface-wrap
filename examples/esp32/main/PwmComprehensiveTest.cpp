@@ -124,20 +124,45 @@ hf_pwm_unit_config_t create_basic_with_fade_config() noexcept {
 }
 
 /**
- * @brief Create a default channel configuration for testing
+ * @brief Create a default channel configuration for testing with explicit resolution control
  */
-hf_pwm_channel_config_t create_test_channel_config(hf_gpio_num_t gpio_pin) noexcept {
+hf_pwm_channel_config_t create_test_channel_config(hf_gpio_num_t gpio_pin, 
+                                                   hf_u32_t frequency_hz = HF_PWM_DEFAULT_FREQUENCY,
+                                                   hf_u8_t resolution_bits = HF_PWM_DEFAULT_RESOLUTION) noexcept {
   hf_pwm_channel_config_t config = {};
   config.gpio_pin = gpio_pin;
   config.channel_id = 0;
   config.timer_id = 0;
   config.speed_mode = hf_pwm_mode_t::HF_PWM_MODE_BASIC;
-  config.duty_initial = 512; // 50% for 10-bit resolution
+  
+  // ✅ NEW: Explicit frequency and resolution control
+  config.frequency_hz = frequency_hz;
+  config.resolution_bits = resolution_bits;
+  
+  // Calculate 50% duty cycle for the specified resolution
+  config.duty_initial = (1u << resolution_bits) / 2; // 50% duty cycle
+  
   config.intr_type = hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE;
   config.invert_output = false;
   config.hpoint = 0;
   config.idle_level = 0;
   config.output_invert = false;
+  return config;
+}
+
+/**
+ * @brief Create channel configuration with specific duty cycle percentage
+ */
+hf_pwm_channel_config_t create_test_channel_config_with_duty(hf_gpio_num_t gpio_pin,
+                                                            float duty_percentage,
+                                                            hf_u32_t frequency_hz = HF_PWM_DEFAULT_FREQUENCY,
+                                                            hf_u8_t resolution_bits = HF_PWM_DEFAULT_RESOLUTION) noexcept {
+  hf_pwm_channel_config_t config = create_test_channel_config(gpio_pin, frequency_hz, resolution_bits);
+  
+  // Calculate raw duty value for the specified percentage and resolution
+  hf_u32_t max_duty = (1u << resolution_bits) - 1;
+  config.duty_initial = static_cast<hf_u32_t>(duty_percentage * max_duty);
+  
   return config;
 }
 
@@ -371,15 +396,27 @@ bool test_channel_configuration() noexcept {
     return false;
   }
 
-  // Test configuring multiple channels (avoid GPIO3 -> use GPIO6 instead)
+  // Test configuring multiple channels with different resolutions (avoid GPIO3 -> use GPIO6 instead)
+  struct ChannelTestConfig {
+    hf_gpio_num_t pin;
+    hf_u32_t frequency;
+    hf_u8_t resolution;
+    float duty_percentage;
+  };
+  
+  ChannelTestConfig test_configs[] = {
+    {2, 1000, 8,  0.25f}, // GPIO2: 1kHz @ 8-bit, 25%
+    {6, 2000, 10, 0.50f}, // GPIO6: 2kHz @ 10-bit, 50%
+    {4, 1500, 12, 0.75f}, // GPIO4: 1.5kHz @ 12-bit, 75%
+    {5, 3000, 9,  0.33f}  // GPIO5: 3kHz @ 9-bit, 33%
+  };
+
   for (hf_channel_id_t ch = 0; ch < 4; ch++) {
-    hf_gpio_num_t test_pin = static_cast<hf_gpio_num_t>(2 + ch);
-    if (test_pin == 3) {
-      test_pin = 6;
-    }
-    hf_pwm_channel_config_t ch_config = create_test_channel_config(test_pin);
+    const auto& test_cfg = test_configs[ch];
+    
+    hf_pwm_channel_config_t ch_config = create_test_channel_config_with_duty(
+      test_cfg.pin, test_cfg.duty_percentage, test_cfg.frequency, test_cfg.resolution);
     ch_config.channel_id = ch;
-    ch_config.duty_initial = 256 + (ch * 128); // Different duty cycles
 
     hf_pwm_err_t result = pwm.ConfigureChannel(ch, ch_config);
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
@@ -387,7 +424,22 @@ bool test_channel_configuration() noexcept {
       return false;
     }
 
-    ESP_LOGI(TAG, "Channel %d configured successfully", ch);
+    // Verify the configuration was applied correctly
+    uint8_t actual_resolution = pwm.GetResolution(ch);
+    uint32_t actual_frequency = pwm.GetFrequency(ch);
+    
+    if (actual_resolution != test_cfg.resolution) {
+      ESP_LOGE(TAG, "Channel %d resolution mismatch: expected %d, got %d", ch, test_cfg.resolution, actual_resolution);
+      return false;
+    }
+    
+    if (actual_frequency != test_cfg.frequency) {
+      ESP_LOGE(TAG, "Channel %d frequency mismatch: expected %lu, got %lu", ch, test_cfg.frequency, actual_frequency);
+      return false;
+    }
+
+    ESP_LOGI(TAG, "Channel %d configured successfully: %lu Hz @ %d-bit, %.1f%% duty", 
+             ch, actual_frequency, actual_resolution, test_cfg.duty_percentage * 100.0f);
   }
 
   // Test invalid channel configuration
@@ -1382,17 +1434,20 @@ bool test_percentage_consistency_across_resolutions() noexcept {
     return false;
   }
 
-  // Test different frequency/resolution combinations
+  // Test different resolution combinations with explicit resolution control
   struct ResolutionTest {
     uint32_t frequency;
-    uint8_t expected_resolution;
+    uint8_t resolution_bits;
     const char* description;
   };
 
   ResolutionTest res_tests[] = {
-    {1000,  10, "1kHz @ 10-bit"},   // Conservative for testing
-    {5000,  10, "5kHz @ 10-bit"},   // Medium frequency
-    {10000, 10, "10kHz @ 10-bit"},  // Higher frequency
+    {1000,  8,  "1kHz @ 8-bit"},    // Low resolution
+    {1000,  10, "1kHz @ 10-bit"},   // Default resolution
+    {1000,  12, "1kHz @ 12-bit"},   // High resolution
+    {5000,  8,  "5kHz @ 8-bit"},    // Medium frequency, low resolution
+    {5000,  10, "5kHz @ 10-bit"},   // Medium frequency, default resolution
+    {10000, 8,  "10kHz @ 8-bit"},   // High frequency, low resolution
   };
 
   // Test percentages to verify
@@ -1401,8 +1456,8 @@ bool test_percentage_consistency_across_resolutions() noexcept {
   for (const auto& res_test : res_tests) {
     ESP_LOGI(TAG, "Testing %s", res_test.description);
     
-    // Configure channel for this frequency
-    hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+    // ✅ NEW: Configure channel with explicit frequency and resolution
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(2, res_test.frequency, res_test.resolution_bits);
     ch_config.duty_initial = 0; // Start at 0%
     
     hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
@@ -1417,10 +1472,11 @@ bool test_percentage_consistency_across_resolutions() noexcept {
       return false;
     }
 
-    // Set the frequency for this test
-    result = pwm.SetFrequency(0, res_test.frequency);
-    if (result != hf_pwm_err_t::PWM_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set frequency for %s", res_test.description);
+    // Verify the resolution was set correctly
+    uint8_t actual_resolution = pwm.GetResolution(0);
+    if (actual_resolution != res_test.resolution_bits) {
+      ESP_LOGE(TAG, "Resolution mismatch for %s: expected %d, got %d", 
+               res_test.description, res_test.resolution_bits, actual_resolution);
       return false;
     }
 
@@ -1436,17 +1492,20 @@ bool test_percentage_consistency_across_resolutions() noexcept {
 
       // Verify the percentage reads back correctly
       float actual_percentage = pwm.GetDutyCycle(0);
-      float tolerance = 0.005f; // 0.5% tolerance for rounding
-
+      
+      // Calculate expected tolerance based on resolution
+      float tolerance = 1.0f / (1u << res_test.resolution_bits); // One step tolerance
+      tolerance += 0.001f; // Add small floating point tolerance
+      
       if (abs(actual_percentage - percentage) > tolerance) {
-        ESP_LOGE(TAG, "Percentage mismatch for %s at %.1f%%: expected %.4f, got %.4f", 
-                 res_test.description, percentage * 100.0f, percentage, actual_percentage);
+        ESP_LOGE(TAG, "Percentage mismatch for %s at %.1f%%: expected %.4f, got %.4f (tolerance=%.4f)", 
+                 res_test.description, percentage * 100.0f, percentage, actual_percentage, tolerance);
         return false;
       }
 
-      ESP_LOGI(TAG, "  ✓ %.1f%% verified: actual=%.4f%% (diff=%.4f%%)", 
+      ESP_LOGI(TAG, "  ✓ %.1f%% verified: actual=%.4f%% (diff=%.4f%%, tolerance=%.4f%%)", 
                percentage * 100.0f, actual_percentage * 100.0f, 
-               abs(actual_percentage - percentage) * 100.0f);
+               abs(actual_percentage - percentage) * 100.0f, tolerance * 100.0f);
     }
 
     ESP_LOGI(TAG, "✓ %s passed all percentage tests", res_test.description);
@@ -1454,6 +1513,233 @@ bool test_percentage_consistency_across_resolutions() noexcept {
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Percentage consistency across resolutions test passed");
+  return true;
+}
+
+/**
+ * @brief Test direct resolution control methods (NEW)
+ */
+bool test_resolution_control_methods() noexcept {
+  ESP_LOGI(TAG, "Testing direct resolution control methods...");
+
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Configure channel with default resolution
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2, 1000, 10); // 1kHz @ 10-bit
+  hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure channel for resolution control test");
+    return false;
+  }
+
+  result = pwm.EnableChannel(0);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable channel for resolution control test");
+    return false;
+  }
+
+  // Set initial duty cycle
+  result = pwm.SetDutyCycle(0, 0.5f); // 50%
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set initial duty cycle");
+    return false;
+  }
+
+  // Test GetResolution
+  uint8_t initial_resolution = pwm.GetResolution(0);
+  if (initial_resolution != 10) {
+    ESP_LOGE(TAG, "Initial resolution should be 10 bits, got %d", initial_resolution);
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ GetResolution() returned correct initial resolution: %d bits", initial_resolution);
+
+  // Test SetResolution - change to 8-bit
+  ESP_LOGI(TAG, "Changing resolution from 10-bit to 8-bit...");
+  result = pwm.SetResolution(0, 8);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set resolution to 8 bits: %s", HfPwmErrToString(result));
+    return false;
+  }
+
+  // Verify resolution changed
+  uint8_t new_resolution = pwm.GetResolution(0);
+  if (new_resolution != 8) {
+    ESP_LOGE(TAG, "Resolution should be 8 bits after change, got %d", new_resolution);
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Resolution successfully changed to 8 bits");
+
+  // Verify duty cycle percentage is preserved (should still be ~50%)
+  float duty_after_resolution_change = pwm.GetDutyCycle(0);
+  if (abs(duty_after_resolution_change - 0.5f) > 0.02f) { // 2% tolerance
+    ESP_LOGE(TAG, "Duty cycle not preserved after resolution change: expected ~50%%, got %.2f%%", 
+             duty_after_resolution_change * 100.0f);
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Duty cycle preserved after resolution change: %.2f%%", duty_after_resolution_change * 100.0f);
+
+  // Test SetResolution - change to 12-bit
+  ESP_LOGI(TAG, "Changing resolution from 8-bit to 12-bit...");
+  result = pwm.SetResolution(0, 12);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set resolution to 12 bits: %s", HfPwmErrToString(result));
+    return false;
+  }
+
+  // Verify resolution changed
+  new_resolution = pwm.GetResolution(0);
+  if (new_resolution != 12) {
+    ESP_LOGE(TAG, "Resolution should be 12 bits after change, got %d", new_resolution);
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Resolution successfully changed to 12 bits");
+
+  // Test SetFrequencyAndResolution - atomic operation
+  ESP_LOGI(TAG, "Testing atomic frequency and resolution change...");
+  result = pwm.SetFrequencyAndResolution(0, 2000, 9); // 2kHz @ 9-bit
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set frequency and resolution atomically: %s", HfPwmErrToString(result));
+    return false;
+  }
+
+  // Verify both parameters changed
+  uint32_t new_frequency = pwm.GetFrequency(0);
+  new_resolution = pwm.GetResolution(0);
+  
+  if (new_frequency != 2000) {
+    ESP_LOGE(TAG, "Frequency should be 2000 Hz after atomic change, got %lu", new_frequency);
+    return false;
+  }
+  
+  if (new_resolution != 9) {
+    ESP_LOGE(TAG, "Resolution should be 9 bits after atomic change, got %d", new_resolution);
+    return false;
+  }
+  
+  ESP_LOGI(TAG, "✓ Atomic frequency and resolution change successful: %lu Hz @ %d bits", 
+           new_frequency, new_resolution);
+
+  // Test invalid resolution values
+  ESP_LOGI(TAG, "Testing invalid resolution handling...");
+  
+  // Too low resolution
+  result = pwm.SetResolution(0, 3);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Should reject resolution below 4 bits");
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Correctly rejected resolution below 4 bits");
+
+  // Too high resolution
+  result = pwm.SetResolution(0, 15);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Should reject resolution above %d bits", HF_PWM_MAX_RESOLUTION);
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Correctly rejected resolution above %d bits", HF_PWM_MAX_RESOLUTION);
+
+  ESP_LOGI(TAG, "[SUCCESS] Resolution control methods test passed");
+  return true;
+}
+
+/**
+ * @brief Test resolution-aware duty cycle calculations (NEW)
+ */
+bool test_resolution_aware_duty_calculations() noexcept {
+  ESP_LOGI(TAG, "Testing resolution-aware duty cycle calculations...");
+
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Test different resolutions with precise duty cycle calculations
+  struct ResolutionDutyTest {
+    uint8_t resolution_bits;
+    float duty_percentage;
+    uint32_t expected_raw_value;
+    const char* description;
+  };
+
+  ResolutionDutyTest tests[] = {
+    {8,  0.5f,  127,  "8-bit @ 50%"},   // 255/2 ≈ 127
+    {8,  0.25f, 63,   "8-bit @ 25%"},   // 255/4 ≈ 63
+    {8,  1.0f,  255,  "8-bit @ 100%"},  // 255
+    {10, 0.5f,  511,  "10-bit @ 50%"},  // 1023/2 ≈ 511
+    {10, 0.25f, 255,  "10-bit @ 25%"},  // 1023/4 ≈ 255
+    {10, 1.0f,  1023, "10-bit @ 100%"}, // 1023
+    {12, 0.5f,  2047, "12-bit @ 50%"},  // 4095/2 ≈ 2047
+    {12, 0.25f, 1023, "12-bit @ 25%"},  // 4095/4 ≈ 1023
+    {12, 1.0f,  4095, "12-bit @ 100%"}, // 4095
+  };
+
+  for (const auto& test : tests) {
+    ESP_LOGI(TAG, "Testing %s", test.description);
+    
+    // Configure channel with specific resolution
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(2, 1000, test.resolution_bits);
+    ch_config.duty_initial = 0; // Start at 0%
+    
+    hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to configure channel for %s", test.description);
+      return false;
+    }
+
+    result = pwm.EnableChannel(0);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to enable channel for %s", test.description);
+      return false;
+    }
+
+    // Set duty cycle as percentage
+    result = pwm.SetDutyCycle(0, test.duty_percentage);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to set duty cycle for %s", test.description);
+      return false;
+    }
+
+    // Verify the duty cycle reads back correctly
+    float actual_duty = pwm.GetDutyCycle(0);
+    float tolerance = 1.0f / (1u << test.resolution_bits); // One step tolerance
+    
+    if (abs(actual_duty - test.duty_percentage) > tolerance) {
+      ESP_LOGE(TAG, "Duty cycle mismatch for %s: expected %.4f, got %.4f", 
+               test.description, test.duty_percentage, actual_duty);
+      return false;
+    }
+
+    // Test raw duty cycle setting with expected value
+    result = pwm.SetDutyCycleRaw(0, test.expected_raw_value);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to set raw duty cycle for %s", test.description);
+      return false;
+    }
+
+    // Verify raw value produces expected percentage
+    actual_duty = pwm.GetDutyCycle(0);
+    if (abs(actual_duty - test.duty_percentage) > tolerance) {
+      ESP_LOGE(TAG, "Raw duty cycle mismatch for %s: expected %.4f, got %.4f", 
+               test.description, test.duty_percentage, actual_duty);
+      return false;
+    }
+
+    ESP_LOGI(TAG, "✓ %s verified: %.4f%% (raw=%lu)", 
+             test.description, actual_duty * 100.0f, test.expected_raw_value);
+    
+    vTaskDelay(pdMS_TO_TICKS(50));
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Resolution-aware duty calculations test passed");
   return true;
 }
 
@@ -1672,6 +1958,10 @@ extern "C" void app_main(void) {
   RUN_TEST(test_frequency_resolution_validation);
   flip_test_progress_indicator();
   RUN_TEST(test_percentage_consistency_across_resolutions);
+  flip_test_progress_indicator();
+  RUN_TEST(test_resolution_control_methods);
+  flip_test_progress_indicator();
+  RUN_TEST(test_resolution_aware_duty_calculations);
   flip_test_progress_indicator();
 
   // Status and Diagnostics Tests
