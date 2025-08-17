@@ -349,15 +349,16 @@ private:
   bool IsValidChannelId(hf_channel_id_t channel_id) const noexcept;
 
   /**
-   * @brief Find or allocate a timer for the given frequency/resolution
+   * @brief Unified timer allocation with comprehensive strategy
    * @param frequency_hz Required frequency
    * @param resolution_bits Required resolution
    * @return Timer ID (0-3), or -1 if no timer available
+   * @note Combines all allocation strategies: reuse, new allocation, eviction
    */
-  int8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+  hf_i8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
 
   /**
-   * @brief Release a timer if no longer needed
+   * @brief Release a timer if no longer needed with hardware cleanup
    * @param timer_id Timer to potentially release
    */
   void ReleaseTimerIfUnused(hf_u8_t timer_id) noexcept;
@@ -471,20 +472,14 @@ private:
   hf_u8_t FindBestAlternativeResolution(hf_u32_t frequency_hz, hf_u8_t preferred_resolution) const noexcept;
 
   /**
-   * @brief Find existing timer with same frequency and resolution
+   * @brief Unified validation for frequency/resolution combinations and timer constraints
    * @param frequency_hz Target frequency
    * @param resolution_bits Target resolution
-   * @return Timer ID if found, -1 otherwise
+   * @param timer_id Optional timer ID for specific validation (default: -1 for general validation)
+   * @return true if configuration is valid and achievable
+   * @note Combines hardware constraint validation and timer-specific checks
    */
-  hf_i8_t FindExistingTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
-
-  /**
-   * @brief Smart timer allocation with eviction strategy
-   * @param frequency_hz Target frequency
-   * @param resolution_bits Target resolution
-   * @return Timer ID if allocated, -1 if failed
-   */
-  hf_i8_t FindOrAllocateTimerSmart(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+  bool ValidateTimerConfiguration(hf_u32_t frequency_hz, hf_u8_t resolution_bits, hf_i8_t timer_id = -1) const noexcept;
 
   /**
    * @brief Notify channels that their timer has been reconfigured
@@ -495,37 +490,11 @@ private:
   void NotifyTimerReconfiguration(hf_u8_t timer_id, hf_u32_t new_frequency, hf_u8_t resolution_bits) noexcept;
 
   /**
-   * @brief Check if a channel can safely change its frequency
-   * @param channel_id Channel to check
-   * @return true if channel can change frequency safely, false otherwise
-   * @note A channel can safely change frequency if it's the only user of its timer
-   */
-  bool CanChannelChangeFrequency(hf_channel_id_t channel_id) const noexcept;
-
-  /**
    * @brief Get timer usage information for debugging
    * @param timer_id Timer to get info for
    * @return String with timer usage information
    */
   std::string GetTimerUsageInfo(hf_u8_t timer_id) const noexcept;
-
-  /**
-   * @brief Advanced timer allocation with enhanced conflict detection and ESP32-C6 optimization
-   * @param frequency_hz Target frequency
-   * @param resolution_bits Target resolution
-   * @return Timer ID if allocated, -1 if failed
-   * @note This method implements ESP32-C6 specific optimizations and conflict avoidance
-   */
-  hf_i8_t FindOrAllocateTimerAdvanced(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
-
-  /**
-   * @brief Validate timer configuration against ESP32-C6 hardware constraints
-   * @param timer_id Timer to validate
-   * @param frequency_hz Target frequency
-   * @param resolution_bits Target resolution
-   * @return true if configuration is valid and achievable
-   */
-  bool ValidateTimerConfiguration(hf_u8_t timer_id, hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
 
   /**
    * @brief Perform comprehensive timer health check and cleanup

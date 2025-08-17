@@ -1327,53 +1327,104 @@ bool EspPwm::IsValidChannelId(hf_channel_id_t channel_id) const noexcept {
 }
 
 hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept {
-  ESP_LOGD(TAG, "Finding/allocating timer for freq=%lu Hz, res=%d bits", frequency_hz, resolution_bits);
+  ESP_LOGD(TAG, "Unified timer allocation for freq=%lu Hz, res=%d bits", frequency_hz, resolution_bits);
   
-  // First, try to find an existing timer with the same frequency and resolution
+  // Phase 1: Validation - early rejection of invalid combinations
+  if (!ValidateTimerConfiguration(frequency_hz, resolution_bits)) {
+    ESP_LOGW(TAG, "Frequency/resolution combination %lu Hz @ %d bits failed validation", frequency_hz, resolution_bits);
+    return -1;
+  }
+  
+  // Phase 2: Optimal reuse - exact match with available capacity
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
-    if (timers_[timer_id].in_use && timers_[timer_id].frequency_hz == frequency_hz &&
-        timers_[timer_id].resolution_bits == resolution_bits) {
+    if (timers_[timer_id].in_use && 
+        timers_[timer_id].frequency_hz == frequency_hz &&
+        timers_[timer_id].resolution_bits == resolution_bits &&
+        timers_[timer_id].channel_count < 8 && // ESP32-C6 supports up to 8 channels per timer
+        !timers_[timer_id].has_hardware_conflicts) {
+      
       timers_[timer_id].channel_count++;
-      ESP_LOGD(TAG, "Reusing existing timer %d (freq=%lu Hz, res=%d bits)", 
-               timer_id, frequency_hz, resolution_bits);
+      ESP_LOGD(TAG, "Reusing optimal timer %d (channels=%d)", timer_id, timers_[timer_id].channel_count);
       return timer_id;
     }
   }
-
-  // If no existing timer found, find an unused timer
+  
+  // Phase 3: Compatible frequency reuse (5% tolerance)
+  const float frequency_tolerance = 0.05f;
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (timers_[timer_id].in_use && 
+        timers_[timer_id].resolution_bits == resolution_bits &&
+        timers_[timer_id].channel_count < 8 &&
+        !timers_[timer_id].has_hardware_conflicts) {
+      
+      float freq_diff = std::abs(static_cast<float>(timers_[timer_id].frequency_hz - frequency_hz)) / 
+                       static_cast<float>(frequency_hz);
+      
+      if (freq_diff <= frequency_tolerance) {
+        ESP_LOGD(TAG, "Found compatible timer %d (freq_diff=%.2f%%)", timer_id, freq_diff * 100.0f);
+        timers_[timer_id].channel_count++;
+        return timer_id;
+      }
+    }
+  }
+  
+  // Phase 4: New allocation
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (!timers_[timer_id].in_use) {
-      timers_[timer_id].in_use = true;
-      timers_[timer_id].frequency_hz = frequency_hz;
-      timers_[timer_id].resolution_bits = resolution_bits;
-      timers_[timer_id].channel_count = 1;
-      ESP_LOGD(TAG, "Allocated new timer %d for freq=%lu Hz, res=%d bits", 
-               timer_id, frequency_hz, resolution_bits);
-      return timer_id;
+      if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
+        timers_[timer_id].in_use = true;
+        timers_[timer_id].frequency_hz = frequency_hz;
+        timers_[timer_id].resolution_bits = resolution_bits;
+        timers_[timer_id].channel_count = 1;
+        timers_[timer_id].has_hardware_conflicts = false;
+        
+        ESP_LOGD(TAG, "Allocated new timer %d", timer_id);
+        return timer_id;
+      }
     }
   }
   
-  // If no unused timers, try to find a timer that can be reconfigured
-  // This is more aggressive than the previous approach but prevents timer exhaustion
-  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
-    if (timers_[timer_id].in_use && timers_[timer_id].channel_count <= 1) {
-      // Only reconfigure if this timer has 1 or fewer channels (safe to reconfigure)
-      ESP_LOGW(TAG, "Reconfiguring timer %d from freq=%lu Hz to %lu Hz (was used by %d channels)", 
-               timer_id, timers_[timer_id].frequency_hz, frequency_hz, timers_[timer_id].channel_count);
-      
-      // Reset timer state and reconfigure
-      timers_[timer_id].frequency_hz = frequency_hz;
-      timers_[timer_id].resolution_bits = resolution_bits;
-      timers_[timer_id].channel_count = 1; // Reset to 1 for new usage
-      
-      ESP_LOGD(TAG, "Reconfigured timer %d for freq=%lu Hz, res=%d bits", 
-               timer_id, frequency_hz, resolution_bits);
-      return timer_id;
+  // Phase 5: Health check and retry
+  hf_u8_t cleaned_timers = PerformTimerHealthCheck();
+  if (cleaned_timers > 0) {
+    ESP_LOGD(TAG, "Health check cleaned %d timers, retrying", cleaned_timers);
+    // Quick retry after health check
+    for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+      if (!timers_[timer_id].in_use && ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
+        timers_[timer_id].in_use = true;
+        timers_[timer_id].frequency_hz = frequency_hz;
+        timers_[timer_id].resolution_bits = resolution_bits;
+        timers_[timer_id].channel_count = 1;
+        timers_[timer_id].has_hardware_conflicts = false;
+        return timer_id;
+      }
     }
   }
-
-  ESP_LOGE(TAG, "No available timers (all %d timers in use)", MAX_TIMERS);
-  return -1; // No available timer
+  
+  // Phase 6: Smart eviction (last resort)
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (timers_[timer_id].in_use && timers_[timer_id].channel_count <= 1) {
+      ESP_LOGW(TAG, "Evicting timer %d (channels=%d)", timer_id, timers_[timer_id].channel_count);
+      
+      if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
+        NotifyTimerReconfiguration(timer_id, frequency_hz, resolution_bits);
+        
+        hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+        if (result == hf_pwm_err_t::PWM_SUCCESS) {
+          timers_[timer_id].frequency_hz = frequency_hz;
+          timers_[timer_id].resolution_bits = resolution_bits;
+          timers_[timer_id].channel_count = 1;
+          timers_[timer_id].has_hardware_conflicts = false;
+          
+          ESP_LOGD(TAG, "Successfully evicted and reconfigured timer %d", timer_id);
+          return timer_id;
+        }
+      }
+    }
+  }
+  
+  ESP_LOGE(TAG, "All timer allocation strategies failed for %lu Hz @ %d bits", frequency_hz, resolution_bits);
+  return -1;
 }
 
 void EspPwm::ReleaseTimerIfUnused(hf_u8_t timer_id) noexcept {
