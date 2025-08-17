@@ -1366,6 +1366,95 @@ bool test_frequency_resolution_validation() noexcept {
   return true;
 }
 
+/**
+ * @brief Test percentage consistency across different resolutions (NEW)
+ */
+bool test_percentage_consistency_across_resolutions() noexcept {
+  ESP_LOGI(TAG, "Testing percentage consistency across different resolutions...");
+
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Test different frequency/resolution combinations
+  struct ResolutionTest {
+    uint32_t frequency;
+    uint8_t expected_resolution;
+    const char* description;
+  };
+
+  ResolutionTest res_tests[] = {
+    {1000,  10, "1kHz @ 10-bit"},   // Conservative for testing
+    {5000,  10, "5kHz @ 10-bit"},   // Medium frequency
+    {10000, 10, "10kHz @ 10-bit"},  // Higher frequency
+  };
+
+  // Test percentages to verify
+  float test_percentages[] = {0.0f, 0.1f, 0.25f, 0.5f, 0.75f, 0.9f, 1.0f};
+
+  for (const auto& res_test : res_tests) {
+    ESP_LOGI(TAG, "Testing %s", res_test.description);
+    
+    // Configure channel for this frequency
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+    ch_config.duty_initial = 0; // Start at 0%
+    
+    hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to configure channel for %s", res_test.description);
+      return false;
+    }
+
+    result = pwm.EnableChannel(0);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to enable channel for %s", res_test.description);
+      return false;
+    }
+
+    // Set the frequency for this test
+    result = pwm.SetFrequency(0, res_test.frequency);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to set frequency for %s", res_test.description);
+      return false;
+    }
+
+    // Test each percentage
+    for (float percentage : test_percentages) {
+      ESP_LOGI(TAG, "  Setting %.1f%% duty cycle", percentage * 100.0f);
+      
+      result = pwm.SetDutyCycle(0, percentage);
+      if (result != hf_pwm_err_t::PWM_SUCCESS) {
+        ESP_LOGE(TAG, "Failed to set %.1f%% duty cycle for %s", percentage * 100.0f, res_test.description);
+        return false;
+      }
+
+      // Verify the percentage reads back correctly
+      float actual_percentage = pwm.GetDutyCycle(0);
+      float tolerance = 0.005f; // 0.5% tolerance for rounding
+
+      if (abs(actual_percentage - percentage) > tolerance) {
+        ESP_LOGE(TAG, "Percentage mismatch for %s at %.1f%%: expected %.4f, got %.4f", 
+                 res_test.description, percentage * 100.0f, percentage, actual_percentage);
+        return false;
+      }
+
+      ESP_LOGI(TAG, "  ✓ %.1f%% verified: actual=%.4f%% (diff=%.4f%%)", 
+               percentage * 100.0f, actual_percentage * 100.0f, 
+               abs(actual_percentage - percentage) * 100.0f);
+    }
+
+    ESP_LOGI(TAG, "✓ %s passed all percentage tests", res_test.description);
+    vTaskDelay(pdMS_TO_TICKS(100));
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Percentage consistency across resolutions test passed");
+  return true;
+}
+
 //==============================================================================
 // EDGE CASES AND STRESS TESTS
 //==============================================================================
@@ -1579,6 +1668,8 @@ extern "C" void app_main(void) {
   RUN_TEST(test_resolution_specific_duty_cycles);
   flip_test_progress_indicator();
   RUN_TEST(test_frequency_resolution_validation);
+  flip_test_progress_indicator();
+  RUN_TEST(test_percentage_consistency_across_resolutions);
   flip_test_progress_indicator();
 
   // Status and Diagnostics Tests
