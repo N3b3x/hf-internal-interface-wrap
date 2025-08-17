@@ -509,6 +509,30 @@ private:
    */
   std::string GetTimerUsageInfo(hf_u8_t timer_id) const noexcept;
 
+  /**
+   * @brief Advanced timer allocation with enhanced conflict detection and ESP32-C6 optimization
+   * @param frequency_hz Target frequency
+   * @param resolution_bits Target resolution
+   * @return Timer ID if allocated, -1 if failed
+   * @note This method implements ESP32-C6 specific optimizations and conflict avoidance
+   */
+  hf_i8_t FindOrAllocateTimerAdvanced(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Validate timer configuration against ESP32-C6 hardware constraints
+   * @param timer_id Timer to validate
+   * @param frequency_hz Target frequency
+   * @param resolution_bits Target resolution
+   * @return true if configuration is valid and achievable
+   */
+  bool ValidateTimerConfiguration(hf_u8_t timer_id, hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
+
+  /**
+   * @brief Perform comprehensive timer health check and cleanup
+   * @return Number of timers cleaned up
+   */
+  hf_u8_t PerformTimerHealthCheck() noexcept;
+
   //==============================================================================
   // MEMBER VARIABLES
   //==============================================================================

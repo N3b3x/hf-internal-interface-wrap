@@ -17,6 +17,7 @@
 // C++ standard library headers (must be outside extern "C")
 #include <algorithm>
 #include <cstring>
+#include <vector>
 
 // Platform-specific includes and definitions
 #ifdef HF_MCU_FAMILY_ESP32
@@ -132,23 +133,58 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
     fade_functionality_installed_ = false;
   }
 
-  // 2. Stop all channels (now without fade functionality)
+  // 2. Stop all channels with proper GPIO cleanup (now without fade functionality)
   for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
     if (channels_[channel_id].configured) {
+      // Stop the LEDC channel
       ledc_stop(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), 0);
+      
+      // CRITICAL FIX: Reset GPIO pin to default state
+      hf_gpio_num_t gpio_pin = channels_[channel_id].config.gpio_pin;
+      if (HF_GPIO_IS_VALID_GPIO(gpio_pin)) {
+        // Disable GPIO hold and reset to default state
+        gpio_hold_dis(static_cast<gpio_num_t>(gpio_pin));
+        gpio_reset_pin(static_cast<gpio_num_t>(gpio_pin));
+        ESP_LOGD(TAG, "GPIO %d reset to default state", gpio_pin);
+      }
+      
+      // Clear channel state
+      channels_[channel_id] = ChannelState{};
     }
   }
 
-  // 3. Reset all timers
+  // 3. Reset all timers with proper hardware cleanup
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (timers_[timer_id].in_use) {
-      ledc_timer_rst(LEDC_LOW_SPEED_MODE, static_cast<ledc_timer_t>(timer_id));
+      esp_err_t ret = ledc_timer_rst(LEDC_LOW_SPEED_MODE, static_cast<ledc_timer_t>(timer_id));
+      if (ret != ESP_OK) {
+        ESP_LOGW(TAG, "Failed to reset timer %d during deinitialization: %s", 
+                 timer_id, esp_err_to_name(ret));
+      }
+      
+      // Clear timer state
+      timers_[timer_id] = TimerState{};
     }
   }
 
+  // 4. Clear complementary pair configurations
+  for (auto& pair : complementary_pairs_) {
+    pair = ComplementaryPair{};
+  }
+
+  // 5. Clear callbacks
+  period_callback_ = nullptr;
+  period_callback_user_data_ = nullptr;
+  fault_callback_ = nullptr;
+  fault_callback_user_data_ = nullptr;
+
+  // 6. Update state and statistics
   initialized_.store(false);
   BasePwm::initialized_ = false;
-  ESP_LOGI(TAG, "ESP32C6 PWM system deinitialized");
+  last_global_error_ = hf_pwm_err_t::PWM_SUCCESS;
+  statistics_.last_activity_timestamp = esp_timer_get_time();
+  
+  ESP_LOGI(TAG, "ESP32C6 PWM system deinitialized with comprehensive cleanup");
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
@@ -417,6 +453,9 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
     return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
   }
 
+  // CRITICAL FIX: Use enhanced duty cycle clamping for safety
+  duty_cycle = BasePwm::ClampDutyCycle(duty_cycle);
+
   ESP_LOGI(TAG, "Getting timer id");
   uint8_t timer_id = channels_[channel_id].assigned_timer;
   if (timer_id >= MAX_TIMERS) {
@@ -478,13 +517,12 @@ hf_pwm_err_t EspPwm::SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_va
     timers_[timer_id].resolution_bits = resolution;
   }
   
-  hf_u32_t max_duty = (1U << resolution) - 1;
-  
-  // CRITICAL FIX: Clamp raw value to valid range instead of rejecting
-  if (raw_value > max_duty) {
+  // CRITICAL FIX: Use enhanced BasePwm validation and clamping
+  if (!BasePwm::IsValidRawDuty(raw_value, resolution)) {
+    hf_u32_t max_duty = (1U << resolution) - 1;
     ESP_LOGW(TAG, "Raw duty value %lu exceeds maximum %lu for %d-bit resolution, clamping", 
              raw_value, max_duty, resolution);
-    raw_value = max_duty;
+    raw_value = std::min(raw_value, max_duty);
   }
 
   hf_u32_t actual_duty = raw_value;
@@ -1348,10 +1386,25 @@ void EspPwm::ReleaseTimerIfUnused(hf_u8_t timer_id) noexcept {
   }
 
   if (timers_[timer_id].channel_count == 0) {
+    // CRITICAL FIX: Proper hardware cleanup before marking timer as unused
+    ESP_LOGD(TAG, "Releasing timer %d - performing hardware cleanup", timer_id);
+    
+    // Reset the LEDC timer hardware before releasing
+    esp_err_t ret = ledc_timer_rst(LEDC_LOW_SPEED_MODE, static_cast<ledc_timer_t>(timer_id));
+    if (ret != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to reset timer %d during release: %s", timer_id, esp_err_to_name(ret));
+    }
+    
+    // Mark timer as unused and reset all state
     timers_[timer_id].in_use = false;
     timers_[timer_id].frequency_hz = 0;
     timers_[timer_id].resolution_bits = 0;
     timers_[timer_id].has_hardware_conflicts = false; // Reset conflicts when timer is released
+    
+    ESP_LOGD(TAG, "Timer %d released and hardware reset completed", timer_id);
+    
+    // Update statistics
+    statistics_.last_activity_timestamp = esp_timer_get_time();
   }
 }
 
@@ -1895,7 +1948,15 @@ hf_i8_t EspPwm::FindOrAllocateTimerSmart(hf_u32_t frequency_hz, hf_u8_t resoluti
     }
   }
   
-  ESP_LOGE(TAG, "Smart timer allocation failed: no available timers for frequency %lu Hz", frequency_hz);
+  // Final fallback: try advanced allocation method
+  ESP_LOGW(TAG, "Standard smart allocation failed, trying advanced method");
+  hf_i8_t advanced_result = FindOrAllocateTimerAdvanced(frequency_hz, resolution_bits);
+  if (advanced_result >= 0) {
+    ESP_LOGI(TAG, "Advanced timer allocation succeeded with timer %d", advanced_result);
+    return advanced_result;
+  }
+  
+  ESP_LOGE(TAG, "All timer allocation methods failed for frequency %lu Hz @ %d bits", frequency_hz, resolution_bits);
   return -1;
 }
 
@@ -1988,3 +2049,239 @@ hf_u8_t EspPwm::FindBestAlternativeResolution(hf_u32_t frequency_hz, hf_u8_t pre
            frequency_hz, preferred_resolution);
   return preferred_resolution;
 }
+
+//==============================================================================
+// ADVANCED TIMER MANAGEMENT METHODS (ESP32-C6 OPTIMIZED)
+//==============================================================================
+
+hf_i8_t EspPwm::FindOrAllocateTimerAdvanced(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept {
+  ESP_LOGD(TAG, "Advanced timer allocation for freq=%lu Hz, res=%d bits", frequency_hz, resolution_bits);
+  
+  // Phase 1: Pre-validation and early rejection
+  if (!ValidateFrequencyResolutionCombination(frequency_hz, resolution_bits)) {
+    ESP_LOGW(TAG, "Frequency/resolution combination %lu Hz @ %d bits failed validation", frequency_hz, resolution_bits);
+    return -1;
+  }
+  
+  // Phase 2: Optimal reuse - find existing timer with exact match
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (timers_[timer_id].in_use && 
+        timers_[timer_id].frequency_hz == frequency_hz &&
+        timers_[timer_id].resolution_bits == resolution_bits &&
+        timers_[timer_id].channel_count < 8 && // ESP32-C6 supports up to 8 channels per timer
+        !timers_[timer_id].has_hardware_conflicts) {
+      
+      // Validate this timer configuration is still viable
+      if (ValidateTimerConfiguration(timer_id, frequency_hz, resolution_bits)) {
+        timers_[timer_id].channel_count++;
+        ESP_LOGD(TAG, "Reusing optimal timer %d (channels=%d)", timer_id, timers_[timer_id].channel_count);
+        return timer_id;
+      }
+    }
+  }
+  
+  // Phase 3: Compatible frequency reuse - find timer with compatible frequency
+  const float frequency_tolerance = 0.05f; // 5% tolerance for frequency matching
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (timers_[timer_id].in_use && 
+        timers_[timer_id].resolution_bits == resolution_bits &&
+        timers_[timer_id].channel_count < 8 &&
+        !timers_[timer_id].has_hardware_conflicts) {
+      
+      float freq_diff = std::abs(static_cast<float>(timers_[timer_id].frequency_hz - frequency_hz)) / 
+                       static_cast<float>(frequency_hz);
+      
+      if (freq_diff <= frequency_tolerance) {
+        ESP_LOGD(TAG, "Found compatible timer %d (freq_diff=%.2f%%)", timer_id, freq_diff * 100.0f);
+        timers_[timer_id].channel_count++;
+        return timer_id;
+      }
+    }
+  }
+  
+  // Phase 4: New allocation - find unused timer
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (!timers_[timer_id].in_use) {
+      if (ValidateTimerConfiguration(timer_id, frequency_hz, resolution_bits)) {
+        timers_[timer_id].in_use = true;
+        timers_[timer_id].frequency_hz = frequency_hz;
+        timers_[timer_id].resolution_bits = resolution_bits;
+        timers_[timer_id].channel_count = 1;
+        timers_[timer_id].has_hardware_conflicts = false;
+        
+        ESP_LOGD(TAG, "Allocated new timer %d for freq=%lu Hz", timer_id, frequency_hz);
+        return timer_id;
+      }
+    }
+  }
+  
+  // Phase 5: Smart eviction with health check
+  hf_u8_t cleaned_timers = PerformTimerHealthCheck();
+  if (cleaned_timers > 0) {
+    ESP_LOGD(TAG, "Health check cleaned %d timers, retrying allocation", cleaned_timers);
+    // Retry new allocation after health check
+    for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+      if (!timers_[timer_id].in_use) {
+        if (ValidateTimerConfiguration(timer_id, frequency_hz, resolution_bits)) {
+          timers_[timer_id].in_use = true;
+          timers_[timer_id].frequency_hz = frequency_hz;
+          timers_[timer_id].resolution_bits = resolution_bits;
+          timers_[timer_id].channel_count = 1;
+          timers_[timer_id].has_hardware_conflicts = false;
+          
+          ESP_LOGD(TAG, "Allocated timer %d after health check", timer_id);
+          return timer_id;
+        }
+      }
+    }
+  }
+  
+  // Phase 6: Prioritized eviction based on usage and conflicts
+  struct TimerCandidate {
+    hf_u8_t timer_id;
+    hf_u8_t channel_count;
+    bool has_conflicts;
+    hf_u32_t frequency_diff;
+  };
+  
+  std::vector<TimerCandidate> candidates;
+  
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (timers_[timer_id].in_use && timers_[timer_id].channel_count <= 2) {
+      TimerCandidate candidate = {
+        timer_id,
+        timers_[timer_id].channel_count,
+        timers_[timer_id].has_hardware_conflicts,
+        std::abs(timers_[timer_id].frequency_hz - frequency_hz)
+      };
+      candidates.push_back(candidate);
+    }
+  }
+  
+  // Sort candidates: prefer timers with conflicts, then fewer channels, then closer frequency
+  std::sort(candidates.begin(), candidates.end(), 
+    [](const TimerCandidate& a, const TimerCandidate& b) {
+      if (a.has_conflicts != b.has_conflicts) return a.has_conflicts > b.has_conflicts;
+      if (a.channel_count != b.channel_count) return a.channel_count < b.channel_count;
+      return a.frequency_diff < b.frequency_diff;
+    });
+  
+  for (const auto& candidate : candidates) {
+    hf_u8_t timer_id = candidate.timer_id;
+    ESP_LOGW(TAG, "Attempting eviction of timer %d (channels=%d, conflicts=%s)", 
+             timer_id, candidate.channel_count, candidate.has_conflicts ? "yes" : "no");
+    
+    if (ValidateTimerConfiguration(timer_id, frequency_hz, resolution_bits)) {
+      // Notify channels about timer reconfiguration
+      NotifyTimerReconfiguration(timer_id, frequency_hz, resolution_bits);
+      
+      // Reconfigure timer
+      hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+      if (result == hf_pwm_err_t::PWM_SUCCESS) {
+        timers_[timer_id].frequency_hz = frequency_hz;
+        timers_[timer_id].resolution_bits = resolution_bits;
+        timers_[timer_id].channel_count = 1;
+        timers_[timer_id].has_hardware_conflicts = false;
+        
+        ESP_LOGD(TAG, "Successfully evicted and reconfigured timer %d", timer_id);
+        return timer_id;
+      }
+    }
+  }
+  
+  ESP_LOGE(TAG, "Advanced timer allocation failed: no available timers for %lu Hz @ %d bits", 
+           frequency_hz, resolution_bits);
+  return -1;
+}
+
+bool EspPwm::ValidateTimerConfiguration(hf_u8_t timer_id, hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept {
+  if (timer_id >= MAX_TIMERS) {
+    return false;
+  }
+  
+  // ESP32-C6 LEDC hardware validation
+  uint64_t required_clock = static_cast<uint64_t>(frequency_hz) * (1ULL << resolution_bits);
+  const uint64_t max_ledc_clock = 80000000ULL; // 80MHz APB clock
+  
+  if (required_clock > max_ledc_clock) {
+    ESP_LOGD(TAG, "Timer %d validation failed: required clock %llu Hz > max %llu Hz", 
+             timer_id, required_clock, max_ledc_clock);
+    return false;
+  }
+  
+  // Check for known problematic combinations
+  if (IsLikelyToCauseConflicts(frequency_hz, resolution_bits)) {
+    ESP_LOGD(TAG, "Timer %d validation failed: combination likely to cause conflicts", timer_id);
+    return false;
+  }
+  
+  // Validate against current timer state if in use
+  if (timers_[timer_id].in_use) {
+    // Check if we can safely reconfigure this timer
+    if (timers_[timer_id].has_hardware_conflicts) {
+      ESP_LOGD(TAG, "Timer %d validation failed: has known hardware conflicts", timer_id);
+      return false;
+    }
+    
+    // Check if frequency change is too drastic for existing channels
+    if (timers_[timer_id].channel_count > 0) {
+      float freq_change = std::abs(static_cast<float>(timers_[timer_id].frequency_hz - frequency_hz)) / 
+                         static_cast<float>(timers_[timer_id].frequency_hz);
+      if (freq_change > 0.5f) { // More than 50% frequency change
+        ESP_LOGD(TAG, "Timer %d validation failed: frequency change too drastic (%.1f%%)", 
+                 timer_id, freq_change * 100.0f);
+        return false;
+      }
+    }
+  }
+  
+  return true;
+}
+
+hf_u8_t EspPwm::PerformTimerHealthCheck() noexcept {
+  hf_u8_t cleaned_count = 0;
+  
+  ESP_LOGD(TAG, "Performing timer health check");
+  
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (!timers_[timer_id].in_use) {
+      continue;
+    }
+    
+    // Count actual channels using this timer
+    hf_u8_t actual_channel_count = 0;
+    for (hf_u8_t ch = 0; ch < MAX_CHANNELS; ch++) {
+      if (channels_[ch].configured && channels_[ch].assigned_timer == timer_id) {
+        actual_channel_count++;
+      }
+    }
+    
+    // Fix channel count mismatch
+    if (timers_[timer_id].channel_count != actual_channel_count) {
+      ESP_LOGW(TAG, "Timer %d channel count mismatch: recorded=%d, actual=%d", 
+               timer_id, timers_[timer_id].channel_count, actual_channel_count);
+      timers_[timer_id].channel_count = actual_channel_count;
+    }
+    
+    // Clean up unused timers
+    if (actual_channel_count == 0) {
+      ESP_LOGD(TAG, "Health check: releasing unused timer %d", timer_id);
+      ReleaseTimerIfUnused(timer_id);
+      cleaned_count++;
+    }
+    
+    // Reset conflict flags for timers that might have recovered
+    if (timers_[timer_id].has_hardware_conflicts && actual_channel_count == 0) {
+      ESP_LOGD(TAG, "Health check: resetting conflict flag for timer %d", timer_id);
+      timers_[timer_id].has_hardware_conflicts = false;
+    }
+  }
+  
+  if (cleaned_count > 0) {
+    ESP_LOGI(TAG, "Timer health check completed: cleaned %d timers", cleaned_count);
+  }
+  
+  return cleaned_count;
+}
+
+
