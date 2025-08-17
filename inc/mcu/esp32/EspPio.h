@@ -399,9 +399,14 @@ private:
 
   /**
    * @brief Convert RMT symbols back to hf_pio_symbol_t format
+   * @param rmt_symbols Input RMT symbols to convert
+   * @param rmt_symbol_count Number of RMT symbols to convert
+   * @param symbols Output buffer for converted PIO symbols
+   * @param max_symbols Maximum number of PIO symbols that can be stored in the buffer
+   * @param symbols_converted [out] Actual number of PIO symbols converted
    */
   hf_pio_err_t ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols, size_t rmt_symbol_count,
-                                     hf_pio_symbol_t* symbols, size_t& symbol_count) noexcept;
+                                     hf_pio_symbol_t* symbols, size_t max_symbols, size_t& symbols_converted) noexcept;
 
 #ifdef HF_MCU_FAMILY_ESP32
   // Update callback signatures to match ESP-IDF v5.5 API
@@ -426,15 +431,9 @@ private:
    */
   hf_pio_err_t ValidateSymbols(const hf_pio_symbol_t* symbols, size_t symbol_count) const noexcept;
 
-  /**
-   * @brief Update channel status
-   */
-  void UpdateChannelStatus(hf_u8_t channel_id) noexcept;
 
-  /**
-   * @brief Invoke error callback if set
-   */
-  void InvokeErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) noexcept;
+
+
 
   /**
    * @brief Calculate the best possible resolution_hz from requested resolution_ns

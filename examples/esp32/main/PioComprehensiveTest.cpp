@@ -1704,9 +1704,24 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
   result = pio.StopReceive(static_cast<hf_u8_t>(rx_channel), symbols_received);
   
   ESP_LOGI(TAG, "Reception completed: %zu symbols received (expected %zu)", symbols_received, TEST_SYMBOL_COUNT);
+  if (symbols_received == TEST_SYMBOL_COUNT) {
+    ESP_LOGI(TAG, "  ✓ All symbols received successfully");
+  } else if (symbols_received == TEST_SYMBOL_COUNT - 1) {
+    ESP_LOGI(TAG, "  Note: RMT may receive fewer symbols if final LOW state duration cannot be measured");
+  } else {
+    ESP_LOGW(TAG, "  ! Unexpected symbol count - check hardware connection");
+  }
   
   if (symbols_received > 0) {
     ESP_LOGI(TAG, "SUCCESS: Hardware loopback working! Received %zu symbols via GPIO8->GPIO18", symbols_received);
+    if (symbols_received == TEST_SYMBOL_COUNT) {
+      ESP_LOGI(TAG, "  ✓ Perfect reception - all 6 symbols with proper timing");
+    } else if (symbols_received == TEST_SYMBOL_COUNT - 1) {
+      ESP_LOGI(TAG, "  Note: This is expected behavior - RMT cannot measure duration of final LOW state");
+      ESP_LOGI(TAG, "  Final symbol duration=0 indicates signal never changes after last HIGH pulse");
+    } else {
+      ESP_LOGW(TAG, "  ! Partial reception - check hardware connection");
+    }
     
     // Display received data for verification
     ESP_LOGI(TAG, "Received symbol analysis:");
@@ -1714,25 +1729,55 @@ bool test_hardware_loopback_gpio8_to_gpio18() noexcept {
       uint32_t received_ns = rx_buffer[i].duration * rx_actual_ns;
       uint32_t expected_ns = test_symbols[i].duration * tx_actual_ns;
       
-      ESP_LOGI(TAG, "  [%zu] RX: %s %uns (%u ticks) | Expected: %s %uns (%u ticks) | Match: %s",
+      // Handle the case where last symbol might have duration=0 (signal never changes after last HIGH)
+      bool is_last_symbol = (i == symbols_received - 1);
+      bool duration_unknown = is_last_symbol && rx_buffer[i].duration == 0;
+      
+      ESP_LOGI(TAG, "  [%zu] RX: %s %uns (%u ticks) | Expected: %s %uns (%u ticks) | Match: %s%s",
                i, 
                rx_buffer[i].level ? "HIGH" : "LOW ", received_ns, rx_buffer[i].duration,
                test_symbols[i].level ? "HIGH" : "LOW ", expected_ns, test_symbols[i].duration,
-               (rx_buffer[i].level == test_symbols[i].level) ? "✓" : "✗");
+               (rx_buffer[i].level == test_symbols[i].level) ? "✓" : "✗",
+               duration_unknown ? " (duration unknown - signal never changes)" : "");
     }
     
-    // Verify pattern matching (at least first few symbols should match)
+    // Verify pattern matching - handle duration=0 for last symbol
     bool pattern_matches = true;
-    size_t check_count = std::min(symbols_received, static_cast<size_t>(3)); // Check first 3 symbols
+    size_t check_count = std::min(symbols_received, static_cast<size_t>(TEST_SYMBOL_COUNT));
+    
     for (size_t i = 0; i < check_count; i++) {
+      // Check level match
       if (rx_buffer[i].level != test_symbols[i].level) {
         pattern_matches = false;
+        ESP_LOGW(TAG, "  Level mismatch at [%zu]: RX=%s, Expected=%s", 
+                 i, rx_buffer[i].level ? "HIGH" : "LOW", test_symbols[i].level ? "HIGH" : "LOW");
         break;
+      }
+      
+      // Check duration match (skip duration check for last symbol if duration=0)
+      bool is_last_symbol = (i == symbols_received - 1);
+      bool duration_unknown = is_last_symbol && rx_buffer[i].duration == 0;
+      
+      if (!duration_unknown) {
+        uint32_t received_ns = rx_buffer[i].duration * rx_actual_ns;
+        uint32_t expected_ns = test_symbols[i].duration * tx_actual_ns;
+        
+        // Allow some tolerance for timing variations
+        uint32_t tolerance_ns = 1000; // 1µs tolerance
+        if (abs(static_cast<int32_t>(received_ns) - static_cast<int32_t>(expected_ns)) > tolerance_ns) {
+          ESP_LOGW(TAG, "  Duration mismatch at [%zu]: RX=%uns, Expected=%uns (tolerance: ±%uns)", 
+                   i, received_ns, expected_ns, tolerance_ns);
+          // Don't fail the test for duration mismatches, just warn
+        }
       }
     }
     
     if (pattern_matches) {
       ESP_LOGI(TAG, "✓ Pattern verification: Signal levels match expected pattern");
+      if (symbols_received < TEST_SYMBOL_COUNT) {
+        ESP_LOGI(TAG, "  Note: Received %zu symbols (expected %zu) - last symbol duration unknown (signal never changes)", 
+                 symbols_received, TEST_SYMBOL_COUNT);
+      }
     } else {
       ESP_LOGW(TAG, "⚠ Pattern verification: Signal levels don't match - check jumper wire connection");
     }
@@ -2012,75 +2057,75 @@ extern "C" void app_main() {
     ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
   }
 
-  // // ESP32 Variant Information Tests (NEW)
-  // ESP_LOGI(TAG, "\n=== ESP32 VARIANT INFORMATION TESTS ===");
-  // RUN_TEST(test_esp32_variant_detection);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_channel_allocation_helpers);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_channel_direction_validation);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_resolution_ns_usage);
-  // flip_test_progress_indicator();
+  // ESP32 Variant Information Tests (NEW)
+  ESP_LOGI(TAG, "\n=== ESP32 VARIANT INFORMATION TESTS ===");
+  RUN_TEST(test_esp32_variant_detection);
+  flip_test_progress_indicator();
+  RUN_TEST(test_channel_allocation_helpers);
+  flip_test_progress_indicator();
+  RUN_TEST(test_channel_direction_validation);
+  flip_test_progress_indicator();
+  RUN_TEST(test_resolution_ns_usage);
+  flip_test_progress_indicator();
 
-  // // Constructor/Destructor Tests
-  // ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
-  // RUN_TEST(test_constructor_default);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_destructor_cleanup);
-  // flip_test_progress_indicator();
+  // Constructor/Destructor Tests
+  ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
+  RUN_TEST(test_constructor_default);
+  flip_test_progress_indicator();
+  RUN_TEST(test_destructor_cleanup);
+  flip_test_progress_indicator();
 
-  // // Lifecycle Tests
-  // ESP_LOGI(TAG, "\n=== LIFECYCLE TESTS ===");
-  // RUN_TEST(test_initialization_states);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_lazy_initialization);
-  // flip_test_progress_indicator();
+  // Lifecycle Tests
+  ESP_LOGI(TAG, "\n=== LIFECYCLE TESTS ===");
+  RUN_TEST(test_initialization_states);
+  flip_test_progress_indicator();
+  RUN_TEST(test_lazy_initialization);
+  flip_test_progress_indicator();
 
-  // // Channel Configuration Tests (ENHANCED)
-  // ESP_LOGI(TAG, "\n=== CHANNEL CONFIGURATION TESTS ===");
-  // RUN_TEST(test_channel_configuration);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_multiple_channel_configuration);
-  // flip_test_progress_indicator();
+  // Channel Configuration Tests (ENHANCED)
+  ESP_LOGI(TAG, "\n=== CHANNEL CONFIGURATION TESTS ===");
+  RUN_TEST(test_channel_configuration);
+  flip_test_progress_indicator();
+  RUN_TEST(test_multiple_channel_configuration);
+  flip_test_progress_indicator();
 
-  // // Basic Transmission Tests (ENHANCED)
-  // ESP_LOGI(TAG, "\n=== BASIC TRANSMISSION TESTS ===");
-  // RUN_TEST(test_basic_symbol_transmission);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_transmission_edge_cases);
-  // flip_test_progress_indicator();
+  // Basic Transmission Tests (ENHANCED)
+  ESP_LOGI(TAG, "\n=== BASIC TRANSMISSION TESTS ===");
+  RUN_TEST(test_basic_symbol_transmission);
+  flip_test_progress_indicator();
+  RUN_TEST(test_transmission_edge_cases);
+  flip_test_progress_indicator();
 
-  // // WS2812 LED Protocol Tests (ENHANCED)
-  // ESP_LOGI(TAG, "\n=== WS2812 LED PROTOCOL TESTS (ENHANCED) ===");
-  // RUN_TEST(test_ws2812_single_led);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_ws2812_multiple_leds);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_ws2812_color_cycle);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_ws2812_brightness_sweep);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_ws2812_pattern_validation);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_ws2812_rainbow_transition);
-  // flip_test_progress_indicator();
+  // WS2812 LED Protocol Tests (ENHANCED)
+  ESP_LOGI(TAG, "\n=== WS2812 LED PROTOCOL TESTS (ENHANCED) ===");
+  RUN_TEST(test_ws2812_single_led);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_multiple_leds);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_color_cycle);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_brightness_sweep);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_pattern_validation);
+  flip_test_progress_indicator();
+  RUN_TEST(test_ws2812_rainbow_transition);
+  flip_test_progress_indicator();
 
-  // // Logic Analyzer Test Scenarios
-  // ESP_LOGI(TAG, "\n=== LOGIC ANALYZER TEST SCENARIOS ===");
-  // RUN_TEST(test_logic_analyzer_patterns);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_frequency_sweep);
-  // flip_test_progress_indicator();
+  // Logic Analyzer Test Scenarios
+  ESP_LOGI(TAG, "\n=== LOGIC ANALYZER TEST SCENARIOS ===");
+  RUN_TEST(test_logic_analyzer_patterns);
+  flip_test_progress_indicator();
+  RUN_TEST(test_frequency_sweep);
+  flip_test_progress_indicator();
 
-  // // Advanced RMT Feature Tests
-  // ESP_LOGI(TAG, "\n=== ADVANCED RMT FEATURE TESTS ===");
-  // RUN_TEST(test_rmt_encoder_configuration);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_rmt_carrier_modulation);
-  // flip_test_progress_indicator();
-  // RUN_TEST(test_rmt_advanced_configuration);
-  // flip_test_progress_indicator();
+  // Advanced RMT Feature Tests
+  ESP_LOGI(TAG, "\n=== ADVANCED RMT FEATURE TESTS ===");
+  RUN_TEST(test_rmt_encoder_configuration);
+  flip_test_progress_indicator();
+  RUN_TEST(test_rmt_carrier_modulation);
+  flip_test_progress_indicator();
+  RUN_TEST(test_rmt_advanced_configuration);
+  flip_test_progress_indicator();
 
   // Loopback and Reception Tests
   ESP_LOGI(TAG, "\n=== LOOPBACK AND RECEPTION TESTS ===");

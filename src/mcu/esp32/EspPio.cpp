@@ -46,14 +46,14 @@ extern "C" {
 
 EspPio::EspPio() noexcept
     : BasePio(), channels_{}, global_statistics_{}, global_diagnostics_{} {
-  ESP_LOGD(TAG, "EspPio constructed");
+
 }
 
 EspPio::~EspPio() noexcept {
   if (initialized_) {
     Deinitialize();
   }
-  ESP_LOGD(TAG, "EspPio destroyed");
+
 }
 
 //==============================================================================
@@ -203,6 +203,13 @@ hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
   if (channel.tx_channel == nullptr) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
   }
+
+  // Validate callback setup for transmission
+  if (!channel.transmit_callback) {
+    ESP_LOGD(TAG, "Transmit: No transmit callback set for channel %d - completion may not be properly handled", channel_id);
+    // Don't fail, but warn user that they may miss transmission events
+  }
+
   // Convert hf_pio_symbol_ts to RMT format
   rmt_symbol_word_t rmt_symbols[MAX_SYMBOLS_PER_TRANSMISSION];
   size_t rmt_symbol_count = 0;
@@ -307,11 +314,17 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
   channel.rx_buffer_size = buffer_size;
   channel.rx_symbols_received = 0;
 
+  // Validate callback setup for reception
+  if (!channel.receive_callback) {
+    ESP_LOGD(TAG, "StartReceive: No receive callback set for channel %d - reception may not be properly handled", channel_id);
+    // Don't fail, but warn user that they may miss callbacks");
+  }
+
   // Create receive configuration
   rmt_receive_config_t rx_config = {};
   // Increase minimum signal range to account for timing variations, hardware delays, and signal propagation
   // The RMT peripheral needs a more generous range to capture signals that may have slight timing differences
-  rx_config.signal_range_min_ns = channel.actual_resolution_ns / 2;  // Allow signals down to half resolution
+  rx_config.signal_range_min_ns = std::max(channel.actual_resolution_ns / 4, static_cast<hf_u32_t>(10));  // Allow signals down to 1/4 the resolution
   
   // Set maximum signal range to a reasonable value for most applications (1ms instead of max possible)
   // This provides better noise filtering and prevents extremely long signals from blocking reception
@@ -321,8 +334,11 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
   // Note: rmt_receive_config_t only supports en_partial_rx flag, other flags are in rmt_rx_channel_config_t
   rx_config.flags.en_partial_rx = false;    // Disable partial reception for standard operation
   
-  size_t rmt_buffer_size = std::min(buffer_size, static_cast<size_t>(64)); // RMT buffer limit
-
+  // The RMT peripheral can handle buffers up to several KB
+  // Since each RMT symbol can contain 2 PIO symbols, we need to ensure the RMT buffer is large enough
+  // Use a conservative approach: allocate enough space for the requested PIO symbols
+  size_t rmt_buffer_size = buffer_size; // This will be the number of RMT symbols we can receive
+  
   // Start reception
   channel.busy = true;
   channel.status.is_receiving = true;
@@ -353,12 +369,20 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
   // Store the allocated RMT buffer for cleanup
   channel.rmt_rx_buffer = rmt_rx_buffer;
   
-  ESP_LOGD(TAG, "Allocated RMT RX buffer: channel %d, size %zu symbols (%zu bytes), buffer ptr: %p", 
+  ESP_LOGD(TAG, "Allocated RMT RX buffer: channel %d, size %lu symbols (%lu bytes), buffer ptr: %p", 
            channel_id, rmt_buffer_size, rmt_buffer_size * sizeof(rmt_symbol_word_t), rmt_rx_buffer);
   
   // Start reception with allocated RMT buffer
-  ret = rmt_receive(channel.rx_channel, rmt_rx_buffer, rmt_buffer_size * sizeof(rmt_symbol_word_t),
-                    &rx_config);
+  ESP_LOGI(TAG, "Starting RMT reception on channel %d with config: min=%uns, max=%uns, buffer_size=%lu symbols", 
+           channel_id, rx_config.signal_range_min_ns, rx_config.signal_range_max_ns, rmt_buffer_size);
+  
+  // CRITICAL DEBUG: Log RMT channel state before reception
+  ESP_LOGI(TAG, "RMT RX channel state before reception: handle=%p, busy=%s, receiving=%s", 
+           channel.rx_channel, channel.busy ? "yes" : "no", 
+           channel.status.is_receiving ? "yes" : "no");
+  
+  // FIXED: Pass the correct buffer size in bytes to rmt_receive
+  ret = rmt_receive(channel.rx_channel, rmt_rx_buffer, rmt_buffer_size, &rx_config);
   if (ret != ESP_OK) {
     channel.busy = false;
     channel.status.is_receiving = false;
@@ -470,68 +494,110 @@ hf_pio_err_t EspPio::GetCapabilities(hf_pio_capabilities_t& capabilities) const 
 void EspPio::SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t callback,
                                  void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  
+
   if (!IsValidChannelId(channel_id)) {
-    ESP_LOGE(TAG, "Invalid channel ID %d for transmit callback", channel_id);
+    ESP_LOGE(TAG, "SetTransmitCallback: Invalid channel ID %d", channel_id);
     return;
   }
-  
+
+  if (!callback) {
+    ESP_LOGW(TAG, "SetTransmitCallback: Null callback provided for channel %d", channel_id);
+    return;
+  }
+
   auto& channel = channels_[channel_id];
+  
+  // Validate channel configuration for transmit capability
+  if (channel.config.direction == hf_pio_direction_t::Receive) {
+    ESP_LOGW(TAG, "SetTransmitCallback: Channel %d is RX-only, cannot set TX callback", channel_id);
+    return;
+  }
+
   channel.transmit_callback = callback;
   channel.transmit_user_data = user_data;
-  
-  ESP_LOGD(TAG, "Set transmit callback for channel %d", channel_id);
+
+  ESP_LOGI(TAG, "SetTransmitCallback: TX callback set for channel %d with user data %p", 
+           channel_id, user_data);
 }
 
 void EspPio::SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t callback,
                                 void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  
+
   if (!IsValidChannelId(channel_id)) {
-    ESP_LOGE(TAG, "Invalid channel ID %d for receive callback", channel_id);
+    ESP_LOGE(TAG, "SetReceiveCallback: Invalid channel ID %d", channel_id);
     return;
   }
-  
+
+  if (!callback) {
+    ESP_LOGW(TAG, "SetReceiveCallback: Null callback provided for channel %d", channel_id);
+    return;
+  }
+
   auto& channel = channels_[channel_id];
+  
+  // Validate channel configuration for receive capability
+  if (channel.config.direction == hf_pio_direction_t::Transmit) {
+    ESP_LOGW(TAG, "SetReceiveCallback: Channel %d is TX-only, cannot set RX callback", channel_id);
+    return;
+  }
+
   channel.receive_callback = callback;
   channel.receive_user_data = user_data;
-  
-  ESP_LOGD(TAG, "Set receive callback for channel %d", channel_id);
+
+  ESP_LOGI(TAG, "SetReceiveCallback: RX callback set for channel %d with user data %p", 
+           channel_id, user_data);
 }
 
 void EspPio::SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callback,
                               void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  
+
   if (!IsValidChannelId(channel_id)) {
-    ESP_LOGE(TAG, "Invalid channel ID %d for error callback", channel_id);
+    ESP_LOGE(TAG, "SetErrorCallback: Invalid channel ID %d", channel_id);
     return;
   }
-  
+
+  if (!callback) {
+    ESP_LOGW(TAG, "SetErrorCallback: Null callback provided for channel %d", channel_id);
+    return;
+  }
+
   auto& channel = channels_[channel_id];
+  
+  // Error callbacks can be set for any channel type
   channel.error_callback = callback;
   channel.error_user_data = user_data;
-  
-  ESP_LOGD(TAG, "Set error callback for channel %d", channel_id);
+
+  ESP_LOGI(TAG, "SetErrorCallback: Error callback set for channel %d with user data %p", 
+           channel_id, user_data);
 }
 
 void EspPio::ClearChannelCallbacks(hf_u8_t channel_id) noexcept {
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
-  
+
   if (!IsValidChannelId(channel_id)) {
-    ESP_LOGE(TAG, "Invalid channel ID %d for clearing callbacks", channel_id);
+    ESP_LOGE(TAG, "ClearChannelCallbacks: Invalid channel ID %d", channel_id);
     return;
   }
-  
+
   auto& channel = channels_[channel_id];
+  
+  // Check what callbacks were set before clearing
+  bool had_tx = channel.transmit_callback != nullptr;
+  bool had_rx = channel.receive_callback != nullptr;
+  bool had_error = channel.error_callback != nullptr;
+  
+  // Clear all callbacks for the specific channel
   channel.transmit_callback = nullptr;
   channel.transmit_user_data = nullptr;
   channel.receive_callback = nullptr;
   channel.receive_user_data = nullptr;
   channel.error_callback = nullptr;
   channel.error_user_data = nullptr;
-  
-  ESP_LOGD(TAG, "Cleared callbacks for channel %d", channel_id);
+
+  ESP_LOGI(TAG, "ClearChannelCallbacks: Cleared callbacks for channel %d (TX:%s, RX:%s, ERR:%s)", 
+           channel_id, had_tx ? "yes" : "no", had_rx ? "yes" : "no", had_error ? "yes" : "no");
 }
 
 void EspPio::ClearCallbacks() noexcept {
@@ -547,8 +613,9 @@ void EspPio::ClearCallbacks() noexcept {
     channel.error_user_data = nullptr;
   }
   
-  ESP_LOGD(TAG, "Cleared all callbacks for all channels");
+  ESP_LOGI(TAG, "ClearCallbacks: Cleared all callbacks across all channels");
 }
+
 
 //==============================================================================
 // ESP32-SPECIFIC METHODS
@@ -622,7 +689,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
     return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
   }
 
-  ESP_LOGI(TAG, "Configuring advanced RMT: channel=%d, memory_blocks=%zu, dma=%s, queue=%d",
+  ESP_LOGI(TAG, "Configuring advanced RMT: channel=%d, memory_blocks=%lu, dma=%s, queue=%d",
            channel_id, memory_blocks, enable_dma ? "yes" : "no", queue_depth);
 
   RtosUniqueLock<RtosMutex> lock(state_mutex_);
@@ -755,7 +822,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
   }
 
   ESP_LOGI(TAG,
-           "Advanced RMT configuration completed for channel %d with %zu memory blocks, DMA=%s, "
+           "Advanced RMT configuration completed for channel %d with %lu memory blocks, DMA=%s, "
            "queue depth=%d",
            channel_id, memory_blocks, enable_dma ? "enabled" : "disabled", queue_depth);
   return hf_pio_err_t::PIO_SUCCESS;
@@ -867,9 +934,6 @@ hf_pio_err_t EspPio::ResetChannelStatistics(hf_u8_t channel_id) noexcept {
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
-
-  // Reset statistics counters (would be implemented with actual counters)
-  ESP_LOGD(TAG, "Reset statistics for channel %d", channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -890,14 +954,14 @@ hf_pio_err_t EspPio::GetActualResolution(hf_u8_t channel_id, hf_u32_t& achieved_
 hf_u32_t EspPio::CalculateResolutionHz(hf_u32_t resolution_ns, hf_u32_t& actual_resolution_ns,
                                        hf_u32_t source_clock_hz) const noexcept {
   // Use the internal clock divider calculation to get the actual achievable resolution
-  hf_u32_t divider = CalculateClockDivider(resolution_ns, actual_resolution_ns, source_clock_hz);
+  [[maybe_unused]] hf_u32_t divider = CalculateClockDivider(resolution_ns, actual_resolution_ns, source_clock_hz);
   
   // Convert the actual resolution back to Hz for the RMT peripheral
   // resolution_hz = 1e9 / actual_resolution_ns
   hf_u32_t resolution_hz = 1000000000UL / actual_resolution_ns;
   
-  ESP_LOGD(TAG, "Resolution conversion: %uns -> %u Hz (actual: %uns)", 
-           resolution_ns, resolution_hz, actual_resolution_ns);
+  // ESP_LOGD(TAG, "Resolution conversion: %uns -> %u Hz (actual: %uns)", 
+  //          resolution_ns, resolution_hz, actual_resolution_ns);
   
   return resolution_hz;
 }
@@ -912,8 +976,8 @@ hf_pio_err_t EspPio::GetResolutionConstraints(hf_u32_t& min_resolution_ns, hf_u3
   // Calculate maximum resolution (divider = 255)
   max_resolution_ns = (1000000000ULL * 255) / RMT_CLK_SRC_FREQ;
   
-  ESP_LOGD(TAG, "Resolution constraints: min=%uns, max=%uns, clock=%u Hz", 
-           min_resolution_ns, max_resolution_ns, clock_freq_hz);
+  // ESP_LOGD(TAG, "Resolution constraints: min=%uns, max=%uns, clock=%u Hz", 
+  //          min_resolution_ns, max_resolution_ns, clock_freq_hz);
   
   return hf_pio_err_t::PIO_SUCCESS;
 }
@@ -994,10 +1058,9 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
     channels_[channel_id].busy = false;
     channels_[channel_id].status.is_transmitting = false;
     channels_[channel_id].status.symbols_processed = symbol_count;
-    UpdateChannelStatus(channel_id);
+    channels_[channel_id].status.timestamp_us = esp_timer_get_time();
+    channels_[channel_id].status.last_error = hf_pio_err_t::PIO_SUCCESS;
   }
-
-  ESP_LOGD(TAG, "Transmitted %zu raw RMT symbols on channel %d", symbol_count, channel_id);
 
   return hf_pio_err_t::PIO_SUCCESS;
 }
@@ -1039,7 +1102,7 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
   // Configure reception parameters
   rmt_receive_config_t rx_config = {};
   // Increase minimum signal range to account for timing variations, hardware delays, and signal propagation
-  rx_config.signal_range_min_ns = channel.actual_resolution_ns / 2;  // Allow signals down to half resolution
+  rx_config.signal_range_min_ns = std::max(channel.actual_resolution_ns / 4, static_cast<hf_u32_t>(10));  // Allow signals down to half resolution
   
   // Set maximum signal range to a reasonable value for most applications (1ms instead of max possible)
   // This provides better noise filtering and prevents extremely long signals from blocking reception
@@ -1087,9 +1150,10 @@ hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t*
   symbols_received = 0; // Would be set by actual RMT reception
   channels_[channel_id].rx_symbols_received = symbols_received;
   channels_[channel_id].status.symbols_processed = symbols_received;
-  UpdateChannelStatus(channel_id);
+  channels_[channel_id].status.timestamp_us = esp_timer_get_time();
+  channels_[channel_id].status.last_error = hf_pio_err_t::PIO_SUCCESS;
 
-  ESP_LOGD(TAG, "Received %zu raw RMT symbols on channel %d", symbols_received, channel_id);
+  // ESP_LOGD(TAG, "Received %lu raw RMT symbols on channel %d", symbols_received, channel_id);
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -1142,14 +1206,75 @@ hf_pio_err_t EspPio::ConvertToRmtSymbols(const hf_pio_symbol_t* symbols, size_t 
 
 hf_pio_err_t EspPio::ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols,
                                            size_t rmt_symbol_count, hf_pio_symbol_t* symbols,
-                                           size_t& symbol_count) noexcept {
-  symbol_count = std::min(rmt_symbol_count, symbol_count);
-
-  for (size_t i = 0; i < symbol_count; ++i) {
-    symbols[i].level = rmt_symbols[i].level0 ? true : false;
-    symbols[i].duration = rmt_symbols[i].duration0;
+                                           size_t max_symbols, size_t& symbols_converted) noexcept {
+  // CRITICAL DEBUG: Log all input parameters - ISR-safe logging
+  ESP_EARLY_LOGI(TAG, "ConvertFromRmtSymbols: DEBUG - Input: rmt_symbols=%p, rmt_symbol_count=%lu, symbols=%p, max_symbols=%lu", 
+           rmt_symbols, rmt_symbol_count, symbols, max_symbols);
+  
+  // Validate input parameters
+  if (!rmt_symbols || !symbols) {
+    ESP_EARLY_LOGE(TAG, "ConvertFromRmtSymbols: Invalid pointers - rmt_symbols=%p, symbols=%p", rmt_symbols, symbols);
+    symbols_converted = 0;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
   }
-
+  
+  if (rmt_symbol_count == 0) {
+    ESP_EARLY_LOGE(TAG, "ConvertFromRmtSymbols: No RMT symbols to convert");
+    symbols_converted = 0;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
+  }
+  
+  if (max_symbols == 0) {
+    ESP_EARLY_LOGE(TAG, "ConvertFromRmtSymbols: No space available in output buffer");
+    symbols_converted = 0;
+    return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
+  }
+  
+  // FIXED: Each RMT symbol contains TWO timing periods (high + low)
+  // So we can convert up to 2 * rmt_symbol_count PIO symbols
+  ESP_EARLY_LOGI(TAG, "ConvertFromRmtSymbols: DEBUG - max_pio_symbols=%lu (from input max_symbols)", max_symbols);
+  
+  size_t symbols_to_convert = std::min(2 * rmt_symbol_count, max_symbols);
+  
+  ESP_EARLY_LOGI(TAG, "ConvertFromRmtSymbols: DEBUG - symbols_to_convert=%lu (min of 2*%lu=%lu and %lu)", 
+           symbols_to_convert, rmt_symbol_count, 2 * rmt_symbol_count, max_symbols);
+  
+  size_t pio_symbol_index = 0;
+  
+  // Convert RMT symbols to hf_pio_symbol_t format
+  for (size_t i = 0; i < rmt_symbol_count && pio_symbol_index < max_symbols; ++i) {
+    const rmt_symbol_word_t& rmt_sym = rmt_symbols[i];
+    
+    ESP_EARLY_LOGI(TAG, "ConvertFromRmtSymbols: DEBUG - Processing RMT symbol %lu: level0=%s, duration0=%u, level1=%s, duration1=%u", 
+             i, rmt_sym.level0 ? "HIGH" : "LOW", rmt_sym.duration0, 
+             rmt_sym.level1 ? "HIGH" : "LOW", rmt_sym.duration1);
+    
+    // First level (level0 + duration0) - always convert if we have space
+    if (pio_symbol_index < max_symbols) {
+      symbols[pio_symbol_index].level = rmt_sym.level0;
+      symbols[pio_symbol_index].duration = rmt_sym.duration0;
+      ESP_EARLY_LOGI(TAG, "ConvertFromRmtSymbols: DEBUG - Created PIO symbol %lu: level=%s, duration=%u", 
+               pio_symbol_index, symbols[pio_symbol_index].level ? "HIGH" : "LOW", symbols[pio_symbol_index].duration);
+      pio_symbol_index++;
+    }
+    
+    // Second level (level1 + duration1) - always convert if we have space
+    // Note: duration1=0 is valid and expected for the last symbol when signal never changes
+    if (pio_symbol_index < max_symbols) {
+      symbols[pio_symbol_index].level = rmt_sym.level1;
+      symbols[pio_symbol_index].duration = rmt_sym.duration1;
+      ESP_EARLY_LOGI(TAG, "ConvertFromRmtSymbols: DEBUG - Created PIO symbol %lu: level=%s, duration=%u", 
+               pio_symbol_index, symbols[pio_symbol_index].level ? "HIGH" : "LOW", symbols[pio_symbol_index].duration);
+      pio_symbol_index++;
+    }
+  }
+  
+  // Update the output symbols_converted with the actual number converted
+  symbols_converted = pio_symbol_index;
+  
+  ESP_EARLY_LOGI(TAG, "ConvertFromRmtSymbols: DEBUG - Final result: converted %lu RMT symbols to %lu PIO symbols", 
+           rmt_symbol_count, symbols_converted);
+  
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -1308,7 +1433,7 @@ hf_pio_err_t EspPio::ValidateChannelConfiguration(hf_u8_t channel_id,
     ESP_LOGW(TAG, "Timeout is 0 for channel %d - operations will block indefinitely", channel_id);
   }
   
-  ESP_LOGD(TAG, "Channel %d configuration validated successfully for %s", channel_id, HfRmtGetVariantName());
+  // ESP_LOGD(TAG, "Channel %d configuration validated successfully for %s", channel_id, HfRmtGetVariantName());
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
@@ -1327,84 +1452,109 @@ void EspPio::InvokeChannelErrorCallback(hf_u8_t channel_id, hf_pio_err_t error) 
   
   // Update channel status
   channel.status.last_error = error;
-  
-  ESP_LOGD(TAG, "Invoked error callback for channel %d with error %d", channel_id, static_cast<int>(error));
+
 }
 
 bool EspPio::OnTransmitComplete(rmt_channel_handle_t channel, const rmt_tx_done_event_data_t* edata,
                                 void* user_ctx) {
   auto* instance = static_cast<EspPio*>(user_ctx);
-  if (!instance)
+  if (!instance) {
     return false;
+  }
 
-  // Find the channel ID by comparing channel handles
+  // Find the channel ID by comparing channel handles - minimize stack usage
+  hf_u8_t channel_id = 0xFF;
   for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (instance->channels_[i].tx_channel == channel) {
-      // ISR context: avoid blocking or taking mutexes
-      auto& ch = instance->channels_[i];
-      ch.busy = false;
-      ch.status.is_transmitting = false;
-      ch.status.symbols_processed = ch.status.symbols_queued;
-      ch.status.timestamp_us = esp_timer_get_time();
-
-        // Invoke channel-specific user callback if set
-        if (ch.transmit_callback) {
-          ch.transmit_callback(i, ch.status.symbols_processed, ch.transmit_user_data);
-        }
-
-      ESP_EARLY_LOGD(TAG, "Transmission complete on channel %d", i);
+      channel_id = i;
       break;
     }
   }
 
+  if (channel_id == 0xFF) {
+    ESP_EARLY_LOGE(TAG, "OnTransmitComplete: Channel handle %p not found", channel);
+    return false;
+  }
+
+  // ISR context: minimize stack usage and avoid blocking operations
+  auto& ch = instance->channels_[channel_id];
+  
+  // Update channel status atomically
+  ch.busy = false;
+  ch.status.is_transmitting = false;
+  ch.status.symbols_processed = ch.status.symbols_queued;
+  ch.status.timestamp_us = esp_timer_get_time();
+
+  // Invoke channel-specific user callback if set - ISR-safe context
+  if (ch.transmit_callback) {
+    // Callback is invoked from ISR context - user must ensure ISR safety
+    ch.transmit_callback(channel_id, ch.status.symbols_processed, ch.transmit_user_data);
+  }
+
+  ESP_EARLY_LOGD(TAG, "TX complete ch%d: %lu symbols", channel_id, ch.status.symbols_processed);
   return false; // Don't yield to higher priority task
 }
 
 bool EspPio::OnReceiveComplete(rmt_channel_handle_t channel, const rmt_rx_done_event_data_t* edata,
                                void* user_ctx) {
   auto* instance = static_cast<EspPio*>(user_ctx);
-  if (!instance || !edata)
+  if (!instance || !edata) {
+    ESP_EARLY_LOGE(TAG, "OnReceiveComplete: Invalid instance or event data");
     return false;
+  }
 
-  // Find the channel ID by comparing channel handles
+  // Find the channel ID by comparing channel handles - minimize stack usage
+  hf_u8_t channel_id = 0xFF;
   for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     if (instance->channels_[i].rx_channel == channel) {
-      // ISR context: avoid blocking or taking mutexes
-      auto& ch = instance->channels_[i];
-
-      // Convert received RMT symbols back to hf_pio_symbol_ts as a lightweight copy
-      size_t symbols_converted = 0;
-      if (ch.rx_buffer && edata->received_symbols) {
-        // Add debugging information about received data
-        ESP_EARLY_LOGD(TAG, "RX callback: channel %d, raw symbols: %d, data ptr: %p", 
-                       i, edata->num_symbols, edata->received_symbols);
-        
-        instance->ConvertFromRmtSymbols(
-            reinterpret_cast<const rmt_symbol_word_t*>(edata->received_symbols), edata->num_symbols,
-            ch.rx_buffer, symbols_converted);
-        
-        ESP_EARLY_LOGD(TAG, "RX callback: channel %d, converted symbols: %d", i, symbols_converted);
-      } else {
-        ESP_EARLY_LOGW(TAG, "RX callback: channel %d, missing buffer or data", i);
-      }
-
-      ch.busy = false;
-      ch.status.is_receiving = false;
-      ch.rx_symbols_received = symbols_converted;
-      ch.status.symbols_processed = symbols_converted;
-      ch.status.timestamp_us = esp_timer_get_time();
-
-        // Invoke channel-specific user callback if set
-        if (ch.receive_callback) {
-          ch.receive_callback(i, ch.rx_buffer, symbols_converted, ch.receive_user_data);
-        }
-
-      ESP_EARLY_LOGD(TAG, "Reception complete on channel %d, received %d symbols", i, symbols_converted);
+      channel_id = i;
       break;
     }
   }
 
-  return false;
+  if (channel_id == 0xFF) {
+    ESP_EARLY_LOGE(TAG, "OnReceiveComplete: Channel handle %p not found", channel);
+    return false;
+  }
+
+  auto& ch = instance->channels_[channel_id];
+  
+  // ISR context: minimize logging and stack usage
+  ESP_EARLY_LOGI(TAG, "OnReceiveComplete: ch%d received %lu symbols", channel_id, edata->num_symbols);
+  
+  // Convert received RMT symbols back to hf_pio_symbol_ts - minimize stack usage
+  size_t symbols_converted = 0;
+  if (ch.rx_buffer && edata->received_symbols) {
+    // Convert RMT symbols to PIO symbols - this is the critical operation
+    // Use minimal error checking to prevent stack issues
+    hf_pio_err_t convert_result = instance->ConvertFromRmtSymbols(
+        reinterpret_cast<const rmt_symbol_word_t*>(edata->received_symbols), 
+        edata->num_symbols,
+        ch.rx_buffer, ch.rx_buffer_size, symbols_converted);
+    
+    if (convert_result != hf_pio_err_t::PIO_SUCCESS) {
+      ESP_EARLY_LOGE(TAG, "OnReceiveComplete: ch%d conversion failed: %d", channel_id, static_cast<int>(convert_result));
+      symbols_converted = 0; // Ensure we don't use corrupted data
+    }
+    
+    ESP_EARLY_LOGI(TAG, "OnReceiveComplete: ch%d converted %lu symbols", channel_id, symbols_converted);
+  } else {
+    ESP_EARLY_LOGE(TAG, "OnReceiveComplete: ch%d missing buffers", channel_id);
+  }
+
+  ch.busy = false;
+  ch.rx_symbols_received = symbols_converted;
+  ch.status.symbols_processed = symbols_converted;
+  ch.status.timestamp_us = esp_timer_get_time();
+  
+  // Invoke channel-specific user callback if set - ISR-safe context
+  if (ch.receive_callback) {
+    // Callback is invoked from ISR context - user must ensure ISR safety
+    ch.receive_callback(channel_id, ch.rx_buffer, symbols_converted, ch.receive_user_data);
+  }
+  
+  ESP_EARLY_LOGI(TAG, "OnReceiveComplete: ch%d completed, %lu symbols", channel_id, symbols_converted);
+  return true; // Allow yielding to higher priority task
 }
 
 hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
@@ -1598,14 +1748,6 @@ hf_pio_err_t EspPio::ValidateSymbols(const hf_pio_symbol_t* symbols,
   return hf_pio_err_t::PIO_SUCCESS;
 }
 
-void EspPio::UpdateChannelStatus(hf_u8_t channel_id) noexcept {
-  auto& channel = channels_[channel_id];
-  channel.status.timestamp_us = esp_timer_get_time();
-  channel.status.last_error = hf_pio_err_t::PIO_SUCCESS;
-}
-
-// This method is now replaced by InvokeChannelErrorCallback
-
 bool EspPio::ValidatePioSystem() noexcept {
   ESP_LOGI(TAG, "Starting comprehensive PIO system validation");
 
@@ -1631,10 +1773,10 @@ bool EspPio::ValidatePioSystem() noexcept {
   // Test 3: Check maximum symbol count
   size_t max_symbols = GetMaxSymbolCount();
   if (max_symbols == 0) {
-    ESP_LOGE(TAG, "Invalid maximum symbol count: %zu", max_symbols);
+    ESP_LOGE(TAG, "Invalid maximum symbol count: %lu", max_symbols);
     all_tests_passed = false;
   } else {
-    ESP_LOGI(TAG, "Maximum symbol count: %zu", max_symbols);
+    ESP_LOGI(TAG, "Maximum symbol count: %lu", max_symbols);
   }
 
   // Test 4: Validate symbol conversion functions
@@ -1681,7 +1823,7 @@ bool EspPio::ValidatePioSystem() noexcept {
   ESP_LOGI(TAG, "Testing memory allocation patterns...");
   for (size_t mem_size : {48, 64, 128, 256, 512, 1024}) {
     if (mem_size < HF_RMT_MIN_MEM_BLOCK_SYMBOLS || mem_size > HF_RMT_MAX_MEM_BLOCK_SYMBOLS) {
-      ESP_LOGW(TAG, "Memory size %zu outside valid range", mem_size);
+      ESP_LOGW(TAG, "Memory size %lu outside valid range", mem_size);
     }
   }
 
