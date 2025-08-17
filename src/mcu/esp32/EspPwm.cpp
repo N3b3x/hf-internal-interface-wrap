@@ -124,25 +124,26 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
 
   ESP_LOGI(TAG, "Deinitializing ESP32C6 PWM system");
 
-  // Stop all channels first
+  // 1. Remove fade functionality FIRST (before stopping channels)
+  // This prevents fade-out behavior during ledc_stop calls
+  if (fade_functionality_installed_) {
+    ledc_fade_func_uninstall();
+    ESP_LOGD(TAG, "LEDC fade functionality uninstalled");
+    fade_functionality_installed_ = false;
+  }
+
+  // 2. Stop all channels (now without fade functionality)
   for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
     if (channels_[channel_id].configured) {
       ledc_stop(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), 0);
     }
   }
 
-  // Reset all timers
+  // 3. Reset all timers
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (timers_[timer_id].in_use) {
       ledc_timer_rst(LEDC_LOW_SPEED_MODE, static_cast<ledc_timer_t>(timer_id));
     }
-  }
-
-  // Uninstall fade functionality if installed (per ESP-IDF LEDC docs)
-  if (fade_functionality_installed_) {
-    ledc_fade_func_uninstall();
-    ESP_LOGD(TAG, "LEDC fade functionality uninstalled");
-    fade_functionality_installed_ = false;
   }
 
   initialized_.store(false);
@@ -273,12 +274,36 @@ hf_pwm_err_t EspPwm::EnableChannel(hf_channel_id_t channel_id) noexcept {
     return hf_pwm_err_t::PWM_SUCCESS; // Already enabled
   }
 
-  // Start the channel with current duty cycle
-  esp_err_t ret =
-      ledc_set_duty_and_update(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id),
-                               channels_[channel_id].raw_duty_value,
-                               0 // No hpoint (phase shift)
-      );
+  esp_err_t ret;
+  
+  // Use conditional LEDC functions based on mode and fade settings
+  if (current_mode_ == hf_pwm_mode_t::HF_PWM_MODE_FADE || unit_config_.enable_fade) {
+    // Fade mode or fade enabled - use fade-compatible function
+    if (!fade_functionality_installed_) {
+      // Install fade service if not already installed
+      hf_pwm_err_t fade_result = InitializeFadeFunctionality();
+      if (fade_result != hf_pwm_err_t::PWM_SUCCESS) {
+        ESP_LOGE(TAG, "Failed to initialize fade functionality for channel %lu", channel_id);
+        SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT);
+        return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
+      }
+    }
+    
+    // Use ledc_set_duty_and_update which requires fade service
+    ret = ledc_set_duty_and_update(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id),
+                                   channels_[channel_id].raw_duty_value,
+                                   0 // No hpoint (phase shift)
+        );
+  } else {
+    // Basic mode without fade - use separate duty set and update
+    // First set the duty cycle
+    ret = ledc_set_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id),
+                         channels_[channel_id].raw_duty_value);
+    if (ret == ESP_OK) {
+      // Then update the duty cycle
+      ret = ledc_update_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id));
+    }
+  }
 
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable channel %lu: %s", channel_id, esp_err_to_name(ret));
@@ -287,7 +312,9 @@ hf_pwm_err_t EspPwm::EnableChannel(hf_channel_id_t channel_id) noexcept {
   }
 
   channels_[channel_id].enabled = true;
-  ESP_LOGI(TAG, "Channel %lu enabled", channel_id);
+  ESP_LOGI(TAG, "Channel %lu enabled (mode=%d, fade=%s)", channel_id, 
+           static_cast<int>(current_mode_),
+           (current_mode_ == hf_pwm_mode_t::HF_PWM_MODE_FADE || unit_config_.enable_fade) ? "enabled" : "disabled");
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
@@ -1074,16 +1101,35 @@ hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
 
 hf_pwm_err_t EspPwm::UpdatePlatformDuty(hf_channel_id_t channel_id,
                                         hf_u32_t raw_duty_value) noexcept {
-  esp_err_t ret =
-      ledc_set_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), raw_duty_value);
-  if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "ledc_set_duty failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
-    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
+  esp_err_t ret;
+  
+  // Use conditional LEDC functions based on mode and fade settings
+  if (current_mode_ == hf_pwm_mode_t::HF_PWM_MODE_FADE || unit_config_.enable_fade) {
+    // Fade mode or fade enabled - use fade-compatible function
+    if (!fade_functionality_installed_) {
+      // Install fade service if not already installed
+      hf_pwm_err_t fade_result = InitializeFadeFunctionality();
+      if (fade_result != hf_pwm_err_t::PWM_SUCCESS) {
+        ESP_LOGE(TAG, "Failed to initialize fade functionality for duty update on channel %lu", channel_id);
+        return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
+      }
+    }
+    
+    // Use ledc_set_duty_and_update which requires fade service
+    ret = ledc_set_duty_and_update(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id),
+                                   raw_duty_value, 0); // No hpoint (phase shift)
+  } else {
+    // Basic mode without fade - use separate duty set and update
+    // First set the duty cycle
+    ret = ledc_set_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), raw_duty_value);
+    if (ret == ESP_OK) {
+      // Then update the duty cycle
+      ret = ledc_update_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id));
+    }
   }
-
-  ret = ledc_update_duty(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id));
+  
   if (ret != ESP_OK) {
-    ESP_LOGE(TAG, "ledc_update_duty failed for channel %lu: %s", channel_id, esp_err_to_name(ret));
+    ESP_LOGE(TAG, "Failed to update duty cycle for channel %lu: %s", channel_id, esp_err_to_name(ret));
     return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 

@@ -87,10 +87,38 @@ void cleanup_test_progress_indicator() noexcept {
 hf_pwm_unit_config_t create_test_config() noexcept {
   hf_pwm_unit_config_t config = {};
   config.unit_id = 0;
-  config.mode = hf_pwm_mode_t::HF_PWM_MODE_FADE;
+  config.mode = hf_pwm_mode_t::HF_PWM_MODE_BASIC;
   config.base_clock_hz = HF_PWM_APB_CLOCK_HZ;
   config.clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT;
-  config.enable_fade = true;
+  config.enable_fade = false;  // Basic mode without fade
+  config.enable_interrupts = true;
+  return config;
+}
+
+/**
+ * @brief Create a PWM configuration specifically for fade testing
+ */
+hf_pwm_unit_config_t create_fade_test_config() noexcept {
+  hf_pwm_unit_config_t config = {};
+  config.unit_id = 0;
+  config.mode = hf_pwm_mode_t::HF_PWM_MODE_FADE;  // Use FADE mode
+  config.base_clock_hz = HF_PWM_APB_CLOCK_HZ;
+  config.clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT;
+  config.enable_fade = true;   // Enable fade functionality
+  config.enable_interrupts = true;
+  return config;
+}
+
+/**
+ * @brief Create a PWM configuration for basic mode with fade enabled (for channel enable operations)
+ */
+hf_pwm_unit_config_t create_basic_with_fade_config() noexcept {
+  hf_pwm_unit_config_t config = {};
+  config.unit_id = 0;
+  config.mode = hf_pwm_mode_t::HF_PWM_MODE_BASIC;  // Basic mode
+  config.base_clock_hz = HF_PWM_APB_CLOCK_HZ;
+  config.clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT;
+  config.enable_fade = true;   // Enable fade for channel operations
   config.enable_interrupts = true;
   return config;
 }
@@ -729,8 +757,7 @@ bool test_complementary_outputs() noexcept {
 bool test_hardware_fade() noexcept {
   ESP_LOGI(TAG, "Testing hardware fade functionality...");
 
-  hf_pwm_unit_config_t config = create_test_config();
-  config.enable_fade = true;
+  hf_pwm_unit_config_t config = create_fade_test_config();
   EspPwm pwm(config);
 
   if (!pwm.EnsureInitialized()) {
@@ -906,7 +933,7 @@ bool test_timer_management() noexcept {
 bool test_status_reporting() noexcept {
   ESP_LOGI(TAG, "Testing status reporting...");
 
-  hf_pwm_unit_config_t config = create_test_config();
+  hf_pwm_unit_config_t config = create_basic_with_fade_config();  // Basic mode with fade for channel enable
   EspPwm pwm(config);
 
   if (!pwm.EnsureInitialized()) {
@@ -963,7 +990,7 @@ bool test_status_reporting() noexcept {
 bool test_statistics_and_diagnostics() noexcept {
   ESP_LOGI(TAG, "Testing statistics and diagnostics...");
 
-  hf_pwm_unit_config_t config = create_test_config();
+  hf_pwm_unit_config_t config = create_basic_with_fade_config();  // Basic mode with fade for channel enable
   EspPwm pwm(config);
 
   if (!pwm.EnsureInitialized()) {
@@ -1041,7 +1068,7 @@ void test_fault_callback(hf_channel_id_t channel_id, hf_pwm_err_t error, void* u
 bool test_callbacks() noexcept {
   ESP_LOGI(TAG, "Testing callback functionality...");
 
-  hf_pwm_unit_config_t config = create_test_config();
+  hf_pwm_unit_config_t config = create_fade_test_config();  // Use fade mode for callback testing
   config.enable_interrupts = true;
   EspPwm pwm(config);
 
@@ -1077,6 +1104,109 @@ bool test_callbacks() noexcept {
   return true;
 }
 
+/**
+ * @brief Test basic mode without fade functionality
+ */
+bool test_basic_mode_without_fade() noexcept {
+  ESP_LOGI(TAG, "Testing basic mode without fade...");
+
+  hf_pwm_unit_config_t config = create_test_config();  // Basic mode without fade
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Test that we can configure channels without fade
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+  hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure channel in basic mode without fade");
+    return false;
+  }
+
+  // Test that we can set duty cycles without fade
+  result = pwm.SetDutyCycle(0, 0.5f);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set duty cycle in basic mode without fade");
+    return false;
+  }
+
+  // Test that we can set frequency without fade
+  result = pwm.SetFrequency(0, 2000);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set frequency in basic mode without fade");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Basic mode without fade test passed");
+  return true;
+}
+
+/**
+ * @brief Test fade mode functionality
+ */
+bool test_fade_mode_functionality() noexcept {
+  ESP_LOGI(TAG, "Testing fade mode functionality...");
+
+  hf_pwm_unit_config_t config = create_fade_test_config();  // Fade mode with fade enabled
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Test that we can configure channels in fade mode
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+  hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure channel in fade mode");
+    return false;
+  }
+
+  // Test that we can enable channels in fade mode
+  result = pwm.EnableChannel(0);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable channel in fade mode");
+    return false;
+  }
+
+  // Test that we can set duty cycles in fade mode
+  result = pwm.SetDutyCycle(0, 0.5f);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set duty cycle in fade mode");
+    return false;
+  }
+
+  // Test that we can use hardware fade in fade mode
+  result = pwm.SetHardwareFade(0, 0.8f, 1000);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set hardware fade in fade mode");
+    return false;
+  }
+
+  // Wait a bit for fade to start
+  vTaskDelay(pdMS_TO_TICKS(100));
+
+  // Test that fade is active
+  if (!pwm.IsFadeActive(0)) {
+    ESP_LOGE(TAG, "Fade should be active in fade mode");
+    return false;
+  }
+
+  // Stop the fade
+  result = pwm.StopHardwareFade(0);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to stop hardware fade in fade mode");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Fade mode functionality test passed");
+  return true;
+}
+
 //==============================================================================
 // EDGE CASES AND STRESS TESTS
 //==============================================================================
@@ -1084,7 +1214,7 @@ bool test_callbacks() noexcept {
 bool test_edge_cases() noexcept {
   ESP_LOGI(TAG, "Testing edge cases...");
 
-  hf_pwm_unit_config_t config = create_test_config();
+  hf_pwm_unit_config_t config = create_basic_with_fade_config();  // Basic mode with fade for channel enable
   EspPwm pwm(config);
 
   if (!pwm.EnsureInitialized()) {
@@ -1138,7 +1268,7 @@ bool test_edge_cases() noexcept {
 bool test_stress_scenarios() noexcept {
   ESP_LOGI(TAG, "Testing stress scenarios...");
 
-  hf_pwm_unit_config_t config = create_test_config();
+  hf_pwm_unit_config_t config = create_basic_with_fade_config();  // Basic mode with fade for channel enable
   EspPwm pwm(config);
 
   if (!pwm.EnsureInitialized()) {
@@ -1248,6 +1378,8 @@ extern "C" void app_main(void) {
   flip_test_progress_indicator();
   RUN_TEST(test_clock_source_configuration);
   flip_test_progress_indicator();
+  RUN_TEST(test_basic_mode_without_fade);
+  flip_test_progress_indicator();
 
   // Channel Management Tests
   ESP_LOGI(TAG, "\n=== CHANNEL MANAGEMENT TESTS ===");
@@ -1276,6 +1408,8 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "\n=== ESP32-SPECIFIC FEATURES TESTS ===");
   RUN_TEST(test_hardware_fade);
   flip_test_progress_indicator();
+  RUN_TEST(test_fade_mode_functionality);
+  flip_test_progress_indicator();
   RUN_TEST(test_idle_level_control);
   flip_test_progress_indicator();
   RUN_TEST(test_timer_management);
@@ -1298,9 +1432,6 @@ extern "C" void app_main(void) {
   RUN_TEST(test_edge_cases);
   flip_test_progress_indicator();
   RUN_TEST(test_stress_scenarios);
-  flip_test_progress_indicator();
-
-  // Final test progression indicator flip
   flip_test_progress_indicator();
   
   // Print final summary
