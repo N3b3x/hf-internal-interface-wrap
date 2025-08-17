@@ -27,6 +27,7 @@
 #include "utils/EspTypes_PWM.h"
 #include <array>
 #include <atomic>
+#include <string>
 
 /**
  * @class EspPwm
@@ -130,6 +131,54 @@ public:
                             hf_frequency_hz_t frequency_hz) noexcept override;
   hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id,
                              float phase_shift_degrees) noexcept override;
+
+  //==============================================================================
+  // USER-CONTROLLED FREQUENCY/RESOLUTION METHODS
+  //==============================================================================
+
+  /**
+   * @brief Set frequency with explicit resolution choice (user-controlled)
+   * @param channel_id Channel identifier
+   * @param frequency_hz Target frequency in Hz
+   * @param resolution_bits Explicit resolution choice in bits
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note User explicitly chooses the resolution, bypassing automatic validation
+   */
+  hf_pwm_err_t SetFrequencyWithResolution(hf_channel_id_t channel_id,
+                                          hf_frequency_hz_t frequency_hz,
+                                          hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Set frequency with automatic fallback to alternative resolutions
+   * @param channel_id Channel identifier
+   * @param frequency_hz Target frequency in Hz
+   * @param preferred_resolution Preferred resolution in bits
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note Automatically tries alternative resolutions if preferred fails
+   */
+  hf_pwm_err_t SetFrequencyWithAutoFallback(hf_channel_id_t channel_id,
+                                             hf_frequency_hz_t frequency_hz,
+                                             hf_u8_t preferred_resolution) noexcept;
+
+  /**
+   * @brief Enable automatic fallback to alternative resolutions
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note When enabled, SetFrequency() will automatically try alternative resolutions
+   */
+  hf_pwm_err_t EnableAutoFallback() noexcept;
+
+  /**
+   * @brief Disable automatic fallback to alternative resolutions
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note When disabled, SetFrequency() will fail validation for problematic combinations
+   */
+  hf_pwm_err_t DisableAutoFallback() noexcept;
+
+  /**
+   * @brief Check if auto-fallback mode is enabled
+   * @return true if auto-fallback is enabled, false otherwise
+   */
+  bool IsAutoFallbackEnabled() const noexcept;
 
   //==============================================================================
   // ADVANCED FEATURES (BasePwm Interface)
@@ -255,10 +304,11 @@ private:
     hf_u32_t raw_duty_value;        ///< Current raw duty value
     hf_pwm_err_t last_error;        ///< Last error for this channel
     bool fade_active;               ///< Hardware fade is active
+    bool needs_reconfiguration;     ///< Channel needs reconfiguration due to timer change
 
     ChannelState() noexcept
         : configured(false), enabled(false), assigned_timer(0xFF), raw_duty_value(0),
-          last_error(hf_pwm_err_t::PWM_SUCCESS), fade_active(false) {}
+          last_error(hf_pwm_err_t::PWM_SUCCESS), fade_active(false), needs_reconfiguration(false) {}
   };
 
   /**
@@ -269,8 +319,9 @@ private:
     hf_u32_t frequency_hz;   ///< Timer frequency
     hf_u8_t resolution_bits; ///< Timer resolution
     hf_u8_t channel_count;   ///< Number of channels using this timer
+    bool has_hardware_conflicts; ///< Timer has hardware conflicts (avoid reusing)
 
-    TimerState() noexcept : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0) {}
+    TimerState() noexcept : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0), has_hardware_conflicts(false) {}
   };
 
   /**
@@ -401,6 +452,63 @@ private:
    */
   bool ValidateFrequencyResolutionCombination(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
 
+  /**
+   * @brief Check if frequency/resolution combination is likely to cause hardware conflicts
+   * @param frequency_hz Target frequency in Hz
+   * @param resolution_bits Target resolution in bits
+   * @return true if combination is likely to cause conflicts, false otherwise
+   * @note This helps avoid known problematic combinations that cause timer clock conflicts
+   */
+  bool IsLikelyToCauseConflicts(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
+
+  /**
+   * @brief Find the best alternative resolution for a given frequency
+   * @param frequency_hz Target frequency in Hz
+   * @param preferred_resolution Preferred resolution in bits
+   * @return Best alternative resolution that avoids hardware conflicts, or preferred_resolution if no conflicts
+   * @note This helps find working resolutions when the preferred one causes hardware conflicts
+   */
+  hf_u8_t FindBestAlternativeResolution(hf_u32_t frequency_hz, hf_u8_t preferred_resolution) const noexcept;
+
+  /**
+   * @brief Find existing timer with same frequency and resolution
+   * @param frequency_hz Target frequency
+   * @param resolution_bits Target resolution
+   * @return Timer ID if found, -1 otherwise
+   */
+  hf_i8_t FindExistingTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Smart timer allocation with eviction strategy
+   * @param frequency_hz Target frequency
+   * @param resolution_bits Target resolution
+   * @return Timer ID if allocated, -1 if failed
+   */
+  hf_i8_t FindOrAllocateTimerSmart(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Notify channels that their timer has been reconfigured
+   * @param timer_id Timer that was reconfigured
+   * @param new_frequency New frequency
+   * @param new_resolution New resolution
+   */
+  void NotifyTimerReconfiguration(hf_u8_t timer_id, hf_u32_t new_frequency, hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Check if a channel can safely change its frequency
+   * @param channel_id Channel to check
+   * @return true if channel can change frequency safely, false otherwise
+   * @note A channel can safely change frequency if it's the only user of its timer
+   */
+  bool CanChannelChangeFrequency(hf_channel_id_t channel_id) const noexcept;
+
+  /**
+   * @brief Get timer usage information for debugging
+   * @param timer_id Timer to get info for
+   * @return String with timer usage information
+   */
+  std::string GetTimerUsageInfo(hf_u8_t timer_id) const noexcept;
+
   //==============================================================================
   // MEMBER VARIABLES
   //==============================================================================
@@ -427,4 +535,5 @@ private:
   hf_pwm_mode_t current_mode_;       ///< Current operating mode
   hf_pwm_statistics_t statistics_;   ///< PWM statistics
   hf_pwm_diagnostics_t diagnostics_; ///< PWM diagnostics
+  bool auto_fallback_enabled_;       ///< Whether to automatically try alternative resolutions
 };

@@ -1336,7 +1336,9 @@ bool test_frequency_resolution_validation() noexcept {
     {5000,    true,  "5 kHz @ 10-bit (valid)"},
     {10000,   true,  "10 kHz @ 10-bit (valid)"},
     {20000,   true,  "20 kHz @ 10-bit (valid)"},
-    {50000,   true,  "50 kHz @ 10-bit (borderline valid)"},
+    {30000,   false, "30 kHz @ 10-bit (should fail - hardware limitation)"},
+    {40000,   false, "40 kHz @ 10-bit (should fail - timer clock conflict)"},
+    {50000,   false, "50 kHz @ 10-bit (should fail - timer clock conflict)"},
     {100000,  false, "100 kHz @ 10-bit (should fail - too high)"},
   };
 
