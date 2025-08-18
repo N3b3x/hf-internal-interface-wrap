@@ -141,7 +141,7 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
       // Stop the LEDC channel
       ledc_stop(LEDC_LOW_SPEED_MODE, static_cast<ledc_channel_t>(channel_id), 0);
       
-      // CRITICAL FIX: Reset GPIO pin to default state
+      // Reset GPIO pin to default state
       hf_gpio_num_t gpio_pin = channels_[channel_id].config.gpio_pin;
       if (HF_GPIO_IS_VALID_GPIO(gpio_pin)) {
         // Disable GPIO hold and reset to default state
@@ -237,7 +237,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
   }
 
-  // ✅ FIXED: Use frequency and resolution from channel config
+  // Use frequency and resolution from channel config
   hf_u32_t frequency_hz = config.frequency_hz;
   hf_u8_t resolution_bits = config.resolution_bits;
 
@@ -248,7 +248,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
   }
 
-  // ✅ FIXED: Validate initial duty against actual resolution
+  // Validate initial duty against actual resolution
   const hf_u32_t max_raw = (1u << resolution_bits) - 1u;
   if (config.duty_initial > max_raw) {
     ESP_LOGE(TAG, "Initial duty %lu exceeds maximum %lu for %d-bit resolution", 
@@ -264,7 +264,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH;
   }
 
-  // ✅ FIX: Handle timer assignment changes properly
+  // FIX: Handle timer assignment changes properly
   hf_u8_t old_timer = channels_[channel_id].configured ? channels_[channel_id].assigned_timer : 0xFF;
   bool is_reconfiguration = channels_[channel_id].configured;
 
@@ -288,7 +288,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     return channel_result;
   }
 
-  // ✅ FIX: Properly manage timer channel counts during reconfiguration
+  // FIX: Properly manage timer channel counts during reconfiguration
   if (is_reconfiguration && old_timer != timer_id && old_timer < MAX_TIMERS) {
     // Moving to a different timer - decrement old timer count
     if (timers_[old_timer].channel_count > 0) {
@@ -298,7 +298,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     ReleaseTimerIfUnused(old_timer);
   }
 
-  // ✅ FIXED: Update internal state with proper resolution handling
+  // Update internal state with proper resolution handling
   channels_[channel_id].configured = true;
   channels_[channel_id].config = config;
   channels_[channel_id].assigned_timer = timer_id;
@@ -307,7 +307,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   channels_[channel_id].raw_duty_value = config.duty_initial;
   channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
   
-  // ✅ NEW: Store channel protection settings
+  // NEW: Store channel protection settings
   channels_[channel_id].priority = config.priority;
   channels_[channel_id].is_critical = config.is_critical;
   channels_[channel_id].description = config.description;
@@ -377,7 +377,7 @@ hf_pwm_err_t EspPwm::EnableChannel(hf_channel_id_t channel_id) noexcept {
 
   channels_[channel_id].enabled = true;
   
-  // CRITICAL FIX: Update statistics for channel enable
+  // Update statistics for channel enable
   statistics_.channel_enables_count++;
   statistics_.last_activity_timestamp = esp_timer_get_time();
   
@@ -429,7 +429,7 @@ hf_pwm_err_t EspPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
     ReleaseTimerIfUnused(timer_id);
   }
   
-  // CRITICAL FIX: Update statistics for channel disable
+  // Update statistics for channel disable
   statistics_.channel_disables_count++;
   statistics_.last_activity_timestamp = esp_timer_get_time();
   
@@ -475,7 +475,7 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
     return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
   }
 
-  // CRITICAL FIX: Use enhanced duty cycle clamping for safety
+  // Use enhanced duty cycle clamping for safety
   duty_cycle = BasePwm::ClampDutyCycle(duty_cycle);
 
   ESP_LOGI(TAG, "Getting timer id");
@@ -499,7 +499,7 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
   
   uint32_t raw_duty = BasePwm::DutyCycleToRaw(duty_cycle, resolution);
   
-  // CRITICAL FIX: Ensure raw duty doesn't exceed maximum for this resolution
+  // Ensure raw duty doesn't exceed maximum for this resolution
   hf_u32_t max_duty = (1U << resolution) - 1;
   if (raw_duty > max_duty) {
     ESP_LOGW(TAG, "Calculated raw duty %lu exceeds maximum %lu for %d-bit resolution, clamping", 
@@ -539,7 +539,7 @@ hf_pwm_err_t EspPwm::SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_va
     timers_[timer_id].resolution_bits = resolution;
   }
   
-  // CRITICAL FIX: Use enhanced BasePwm validation and clamping
+  // Use enhanced BasePwm validation and clamping
   if (!BasePwm::IsValidRawDuty(raw_value, resolution)) {
     hf_u32_t max_duty = (1U << resolution) - 1;
     ESP_LOGW(TAG, "Raw duty value %lu exceeds maximum %lu for %d-bit resolution, clamping", 
@@ -553,7 +553,7 @@ hf_pwm_err_t EspPwm::SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_va
     channels_[channel_id].raw_duty_value = actual_duty;
     channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
     
-    // CRITICAL FIX: Update statistics for successful duty cycle changes
+    // Update statistics for successful duty cycle changes
     statistics_.duty_updates_count++;
     statistics_.last_activity_timestamp = esp_timer_get_time();
   } else {
@@ -590,7 +590,7 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id,
   hf_u32_t current_frequency = timers_[current_timer].frequency_hz;
   hf_u8_t current_resolution = timers_[current_timer].resolution_bits;
 
-  // CRITICAL FIX: Validate new frequency with current resolution
+  // Validate new frequency with current resolution
   // By default, fail validation for problematic combinations (strict mode)
   // User must explicitly enable auto-fallback or use SetFrequencyWithResolution() for alternatives
   if (!ValidateFrequencyResolutionCombination(frequency_hz, current_resolution)) {
@@ -1203,7 +1203,7 @@ hf_pwm_err_t EspPwm::GetChannelStatus(hf_channel_id_t channel_id,
   uint8_t timer_id = channels_[channel_id].assigned_timer;
   if (timer_id < MAX_TIMERS) {
     status.current_frequency = timers_[timer_id].frequency_hz;
-    // CRITICAL FIX: Use actual timer resolution, not hardcoded default
+    // Use actual timer resolution, not hardcoded default
     status.resolution_bits = timers_[timer_id].resolution_bits;
     status.current_duty_cycle = BasePwm::RawToDutyCycle(channels_[channel_id].raw_duty_value, 
                                                        timers_[timer_id].resolution_bits);
@@ -1754,7 +1754,7 @@ void EspPwm::ReleaseTimerIfUnused(hf_u8_t timer_id) noexcept {
   }
 
   if (timers_[timer_id].channel_count == 0) {
-    // CRITICAL FIX: Proper hardware cleanup before marking timer as unused
+    // Proper hardware cleanup before marking timer as unused
     ESP_LOGD(TAG, "Releasing timer %d - performing hardware cleanup", timer_id);
     
     // Reset the LEDC timer hardware before releasing
@@ -1807,7 +1807,7 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
     return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
-  // CRITICAL FIX: Ensure timer state reflects actual hardware configuration
+  // Ensure timer state reflects actual hardware configuration
   // This is essential for correct duty cycle calculations
   timers_[timer_id].frequency_hz = frequency_hz;
   timers_[timer_id].resolution_bits = resolution_bits;
@@ -1837,7 +1837,7 @@ hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
   channel_config.intr_type = LEDC_INTR_DISABLE;
   channel_config.gpio_num = config.gpio_pin;
 
-  // CRITICAL FIX: Use timer's actual resolution, not hardcoded default
+  // Use timer's actual resolution, not hardcoded default
   // This ensures duty cycle calculations are consistent across all functions
   hf_u8_t timer_resolution = timers_[timer_id].resolution_bits;
   if (timer_resolution == 0) {
@@ -2057,7 +2057,7 @@ bool EspPwm::ValidateFrequencyResolutionCombination(hf_u32_t frequency_hz, hf_u8
   
   ESP_LOGD(TAG, "DEBUG: Max source clock: %llu Hz, Practical limit: %llu Hz", max_source_clock, practical_limit);
   
-  // CRITICAL FIX: More aggressive rejection of problematic combinations
+  // More aggressive rejection of problematic combinations
   // These combinations cause hardware conflicts and should fail validation
   
   // 1. Explicit rejection of 100kHz+ @ 10-bit+ (test requirement)
