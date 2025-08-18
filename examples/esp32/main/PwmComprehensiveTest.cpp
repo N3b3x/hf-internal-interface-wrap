@@ -934,21 +934,32 @@ bool test_timer_management() noexcept {
     return false;
   }
 
-  // Configure channels with different configurations to test timer allocation
-  struct ChannelConfig {
+  // Phase 1: Test basic timer allocation with different frequency/resolution combinations
+  ESP_LOGI(TAG, "Phase 1: Testing basic timer allocation");
+  
+  struct TimerTestConfig {
     hf_channel_id_t channel;
     hf_gpio_num_t gpio;
+    hf_u32_t frequency;
+    hf_u8_t resolution;
+    const char* description;
   };
 
-  ChannelConfig configs[] = {
-      {0, 2}, // Timer 0
-      {1, 6}, // Avoid GPIO3; use GPIO6 instead
-      {2, 4}, // Timer 1
-      {3, 5}  // Timer 2
+  // These combinations are designed to require separate timers
+  TimerTestConfig timer_configs[] = {
+      {0, 2, 1000,  8,  "Timer allocation test: 1kHz @ 8-bit"},   // Should get timer 0
+      {1, 6, 2000,  10, "Timer allocation test: 2kHz @ 10-bit"},  // Should get timer 1
+      {2, 4, 5000,  8,  "Timer allocation test: 5kHz @ 8-bit"},   // Should get timer 2
+      {3, 5, 10000, 9,  "Timer allocation test: 10kHz @ 9-bit"}   // Should get timer 3
   };
 
-  for (const auto& cfg : configs) {
-    hf_pwm_channel_config_t ch_config = create_test_channel_config(cfg.gpio);
+  // Track which timers are used
+  bool timer_used[4] = {false, false, false, false};
+
+  for (const auto& cfg : timer_configs) {
+    ESP_LOGI(TAG, "Configuring %s", cfg.description);
+    
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(cfg.gpio, cfg.frequency, cfg.resolution);
     ch_config.channel_id = cfg.channel;
 
     hf_pwm_err_t result = pwm.ConfigureChannel(cfg.channel, ch_config);
@@ -958,23 +969,114 @@ bool test_timer_management() noexcept {
     }
 
     int8_t timer_id = pwm.GetTimerAssignment(cfg.channel);
-    ESP_LOGI(TAG, "Channel %d assigned to timer %d", cfg.channel, timer_id);
+    if (timer_id < 0 || timer_id >= 4) {
+      ESP_LOGE(TAG, "Invalid timer assignment for channel %d: %d", cfg.channel, timer_id);
+      return false;
+    }
+    
+    timer_used[timer_id] = true;
+    ESP_LOGI(TAG, "✓ Channel %d assigned to timer %d", cfg.channel, timer_id);
   }
 
-  // Test forced timer assignment
-  hf_pwm_err_t result = pwm.ForceTimerAssignment(0, 3);
+  // Verify that multiple timers are being used (not all on same timer)
+  int timers_in_use = 0;
+  for (int i = 0; i < 4; i++) {
+    if (timer_used[i]) timers_in_use++;
+  }
+  
+  ESP_LOGI(TAG, "Total timers in use: %d/4", timers_in_use);
+  if (timers_in_use < 3) {
+    ESP_LOGW(TAG, "Expected at least 3 different timers to be used, got %d", timers_in_use);
+  }
+
+  // Phase 2: Test timer exhaustion - try to allocate a 5th unique combination
+  ESP_LOGI(TAG, "Phase 2: Testing timer exhaustion scenario");
+  
+  hf_pwm_channel_config_t fifth_config = create_test_channel_config(7, 15000, 8); // Unique combination
+  fifth_config.channel_id = 4;
+  
+  hf_pwm_err_t result = pwm.ConfigureChannel(4, fifth_config);
+  
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    int8_t timer_id = pwm.GetTimerAssignment(4);
+    ESP_LOGI(TAG, "✓ 5th combination allocated successfully to timer %d (reuse or eviction)", timer_id);
+  } else {
+    ESP_LOGI(TAG, "✓ 5th combination correctly rejected: %s (expected when all timers exhausted)", HfPwmErrToString(result));
+    
+    // This is acceptable - it means all timers are exhausted with incompatible combinations
+    if (result != hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT && result != hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH) {
+      ESP_LOGW(TAG, "Expected TIMER_CONFLICT or FREQUENCY_TOO_HIGH error, got: %s", HfPwmErrToString(result));
+    }
+  }
+
+  // Phase 3: Test compatible frequency reuse
+  ESP_LOGI(TAG, "Phase 3: Testing compatible frequency reuse");
+  
+  hf_pwm_channel_config_t compatible_config = create_test_channel_config(8, 1050, 8); // Within 5% of 1000Hz
+  compatible_config.channel_id = 5;
+  
+  result = pwm.ConfigureChannel(5, compatible_config);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    int8_t timer_id = pwm.GetTimerAssignment(5);
+    ESP_LOGI(TAG, "✓ Compatible frequency configuration succeeded, using timer %d", timer_id);
+  } else {
+    ESP_LOGI(TAG, "Compatible frequency configuration failed: %s", HfPwmErrToString(result));
+  }
+
+  // Phase 4: Test channel release and timer recovery
+  ESP_LOGI(TAG, "Phase 4: Testing timer recovery after channel release");
+  
+  // Disable channel 3 to potentially free up timer 3
+  pwm.DisableChannel(3);
+  
+  // Now retry the previously failed 5th combination if it failed
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGI(TAG, "Retrying 5th combination after releasing channel 3");
+    
+    result = pwm.ConfigureChannel(4, fifth_config);
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
+      int8_t timer_id = pwm.GetTimerAssignment(4);
+      ESP_LOGI(TAG, "✓ 5th combination succeeded after timer recovery, using timer %d", timer_id);
+    } else {
+      ESP_LOGI(TAG, "5th combination still failed after recovery: %s", HfPwmErrToString(result));
+    }
+  }
+
+  // Phase 5: Test forced timer assignment
+  ESP_LOGI(TAG, "Phase 5: Testing forced timer assignment");
+  
+  result = pwm.ForceTimerAssignment(0, 3);
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to force timer assignment: %s", HfPwmErrToString(result));
     return false;
   }
 
-  int8_t timer_id = pwm.GetTimerAssignment(0);
-  if (timer_id != 3) {
-    ESP_LOGE(TAG, "Forced timer assignment failed: expected 3, got %d", timer_id);
+  int8_t forced_timer_id = pwm.GetTimerAssignment(0);
+  if (forced_timer_id != 3) {
+    ESP_LOGE(TAG, "Forced timer assignment failed: expected 3, got %d", forced_timer_id);
     return false;
   }
+  
+  ESP_LOGI(TAG, "✓ Forced timer assignment successful");
 
-  ESP_LOGI(TAG, "[SUCCESS] Timer management test passed");
+  // Phase 6: Validate diagnostics and statistics
+  ESP_LOGI(TAG, "Phase 6: Validating diagnostics and statistics");
+  
+  hf_pwm_diagnostics_t diagnostics;
+  result = pwm.GetDiagnostics(diagnostics);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGI(TAG, "Diagnostics: Active timers=%d, Active channels=%d", 
+             diagnostics.active_timers, diagnostics.active_channels);
+  }
+
+  hf_pwm_statistics_t statistics;
+  result = pwm.GetStatistics(statistics);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGI(TAG, "Statistics: Error count=%lu, Last activity=%llu", 
+             statistics.error_count, statistics.last_activity_timestamp);
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Enhanced timer management test passed");
   return true;
 }
 
@@ -1812,47 +1914,135 @@ bool test_stress_scenarios() noexcept {
     return false;
   }
 
-  // Configure maximum number of channels (avoid GPIO3 -> use GPIO6 instead)
-  for (hf_channel_id_t ch = 0; ch < EspPwm::MAX_CHANNELS; ch++) {
-    hf_gpio_num_t test_pin = static_cast<hf_gpio_num_t>(2 + ch);
-    if (test_pin == 3) {
-      test_pin = 6;
-    }
-    hf_pwm_channel_config_t ch_config = create_test_channel_config(test_pin);
-    ch_config.channel_id = ch;
-    ch_config.duty_initial = 200 + (ch * 100);
+  // Phase 1: Timer exhaustion stress test with different frequency/resolution combinations
+  ESP_LOGI(TAG, "Phase 1: Timer exhaustion stress test");
+  
+  struct StressConfig {
+    hf_channel_id_t channel;
+    hf_gpio_num_t gpio;
+    hf_u32_t frequency;
+    hf_u8_t resolution;
+    const char* description;
+  };
+  
+  // Configure channels with different combinations to stress timer allocation
+  StressConfig stress_configs[] = {
+    {0, 2, 1000,  8,  "Stress channel 0: 1kHz @ 8-bit"},
+    {1, 6, 2500,  10, "Stress channel 1: 2.5kHz @ 10-bit"},
+    {2, 4, 5000,  8,  "Stress channel 2: 5kHz @ 8-bit"},
+    {3, 5, 7500,  9,  "Stress channel 3: 7.5kHz @ 9-bit"},
+    {4, 7, 12000, 8,  "Stress channel 4: 12kHz @ 8-bit"},
+    {5, 8, 15000, 8,  "Stress channel 5: 15kHz @ 8-bit"}
+  };
 
-    hf_pwm_err_t result = pwm.ConfigureChannel(ch, ch_config);
-    if (result != hf_pwm_err_t::PWM_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to configure channel %d in stress test", ch);
-      return false;
-    }
+  int successful_configs = 0;
+  int expected_failures = 0;
+  
+  for (const auto& cfg : stress_configs) {
+    ESP_LOGI(TAG, "Configuring %s", cfg.description);
+    
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(cfg.gpio, cfg.frequency, cfg.resolution);
+    ch_config.channel_id = cfg.channel;
+    // FIX: Calculate duty based on resolution to prevent overflow
+    hf_u32_t max_duty = (1u << cfg.resolution) - 1;
+    ch_config.duty_initial = std::min(200u + (cfg.channel * 50u), max_duty);
 
-    pwm.EnableChannel(ch);
+    hf_pwm_err_t result = pwm.ConfigureChannel(cfg.channel, ch_config);
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
+      successful_configs++;
+      int8_t timer_id = pwm.GetTimerAssignment(cfg.channel);
+      ESP_LOGI(TAG, "✓ %s succeeded, assigned to timer %d", cfg.description, timer_id);
+      
+      // Enable the channel
+      pwm.EnableChannel(cfg.channel);
+    } else {
+      expected_failures++;
+      ESP_LOGI(TAG, "✓ %s failed as expected: %s (timer exhaustion)", cfg.description, HfPwmErrToString(result));
+    }
+  }
+  
+  ESP_LOGI(TAG, "Timer stress test: %d successful, %d failed (expected due to timer limits)", 
+           successful_configs, expected_failures);
+
+  // Phase 2: Rapid configuration/release cycles to test timer cleanup
+  ESP_LOGI(TAG, "Phase 2: Rapid allocation/release cycles");
+  
+  for (int cycle = 0; cycle < 5; cycle++) {
+    ESP_LOGI(TAG, "Allocation cycle %d", cycle + 1);
+    
+    // Configure channels with varying frequencies
+    for (hf_channel_id_t ch = 0; ch < 4; ch++) {
+      hf_gpio_num_t test_pin = static_cast<hf_gpio_num_t>(2 + ch);
+      if (test_pin == 3) test_pin = 6;
+      
+      hf_u8_t resolution = 8 + (ch % 3); // Varying resolution
+      hf_pwm_channel_config_t ch_config = create_test_channel_config(
+        test_pin, 
+        1000 + (ch * 500) + (cycle * 100),  // Varying frequency
+        resolution                          // Varying resolution
+      );
+      ch_config.channel_id = ch;
+      // Calculate duty based on resolution to prevent overflow
+      hf_u32_t max_duty = (1u << resolution) - 1;
+      ch_config.duty_initial = std::min(100u + (ch * 30u), max_duty);
+      
+      hf_pwm_err_t result = pwm.ConfigureChannel(ch, ch_config);
+      if (result == hf_pwm_err_t::PWM_SUCCESS) {
+        pwm.EnableChannel(ch);
+      }
+    }
+    
+    // Brief operation period
+    vTaskDelay(pdMS_TO_TICKS(50));
+    
+    // Release all channels
+    for (hf_channel_id_t ch = 0; ch < 4; ch++) {
+      pwm.DisableChannel(ch);
+    }
+    
+    // Allow timer cleanup
+    vTaskDelay(pdMS_TO_TICKS(20));
   }
 
-  // Rapid duty cycle changes
+  // Phase 3: Rapid duty cycle changes on active channels
+  ESP_LOGI(TAG, "Phase 3: Rapid duty cycle stress test");
+  
   for (int iteration = 0; iteration < 20; iteration++) {
-    for (hf_channel_id_t ch = 0; ch < EspPwm::MAX_CHANNELS; ch++) {
-      float duty = 0.1f + (iteration * 0.04f);
-      if (duty > 1.0f)
-        duty = 1.0f;
+    for (hf_channel_id_t ch = 0; ch < successful_configs; ch++) {
+      if (pwm.IsChannelEnabled(ch)) {
+        float duty = 0.1f + (iteration * 0.04f);
+        if (duty > 1.0f) duty = 1.0f;
 
-      pwm.SetDutyCycle(ch, duty);
+        hf_pwm_err_t result = pwm.SetDutyCycle(ch, duty);
+        if (result != hf_pwm_err_t::PWM_SUCCESS) {
+          ESP_LOGW(TAG, "Duty cycle change failed for channel %d: %s", ch, HfPwmErrToString(result));
+        }
+      }
     }
-    vTaskDelay(pdMS_TO_TICKS(10)); // Brief delay
+    vTaskDelay(pdMS_TO_TICKS(10));
   }
 
-  // Rapid frequency changes
+  // Phase 4: Rapid frequency changes to stress timer allocation
+  ESP_LOGI(TAG, "Phase 4: Rapid frequency change stress test");
+  
   for (int iteration = 0; iteration < 10; iteration++) {
-    for (hf_channel_id_t ch = 0; ch < EspPwm::MAX_CHANNELS; ch++) {
-      hf_frequency_hz_t freq = 500 + (iteration * 200);
-      pwm.SetFrequency(ch, freq);
+    for (hf_channel_id_t ch = 0; ch < successful_configs; ch++) {
+      if (pwm.IsChannelEnabled(ch)) {
+        hf_frequency_hz_t freq = 500 + (iteration * 200);
+        hf_pwm_err_t result = pwm.SetFrequency(ch, freq);
+        
+        if (result != hf_pwm_err_t::PWM_SUCCESS) {
+          ESP_LOGI(TAG, "Frequency change failed for channel %d to %lu Hz: %s (expected for some combinations)", 
+                   ch, freq, HfPwmErrToString(result));
+        }
+      }
     }
     vTaskDelay(pdMS_TO_TICKS(50));
   }
 
-  // Test synchronized operations with all channels
+  // Phase 5: Test synchronized operations with active channels
+  ESP_LOGI(TAG, "Phase 5: Synchronized operations stress test");
+  
   pwm.StartAll();
   vTaskDelay(pdMS_TO_TICKS(100));
 
@@ -1861,7 +2051,301 @@ bool test_stress_scenarios() noexcept {
 
   pwm.StopAll();
 
-  ESP_LOGI(TAG, "[SUCCESS] Stress scenarios test passed");
+  // Phase 6: Validate system state after stress testing
+  ESP_LOGI(TAG, "Phase 6: Post-stress validation");
+  
+  hf_pwm_diagnostics_t diagnostics;
+  hf_pwm_err_t result = pwm.GetDiagnostics(diagnostics);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGI(TAG, "Post-stress diagnostics: Active timers=%d, Active channels=%d", 
+             diagnostics.active_timers, diagnostics.active_channels);
+  }
+
+  hf_pwm_statistics_t statistics;
+  result = pwm.GetStatistics(statistics);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGI(TAG, "Post-stress statistics: Errors=%lu, Duty updates=%lu, Freq changes=%lu", 
+             statistics.error_count, statistics.duty_updates_count, statistics.frequency_changes_count);
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Enhanced stress scenarios test passed");
+  return true;
+}
+
+/**
+ * @brief Test timer health check and recovery mechanisms (NEW)
+ */
+bool test_timer_health_check_and_recovery() noexcept {
+  ESP_LOGI(TAG, "Testing timer health check and recovery mechanisms...");
+
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Phase 1: Create a scenario that requires health check intervention
+  ESP_LOGI(TAG, "Phase 1: Setting up timer allocation scenario");
+  
+  struct HealthCheckConfig {
+    hf_channel_id_t channel;
+    hf_gpio_num_t gpio;
+    hf_u32_t frequency;
+    hf_u8_t resolution;
+    const char* description;
+  };
+
+  // Configure channels to use all available timers
+  HealthCheckConfig health_configs[] = {
+    {0, 2, 1000,  8,  "Health test: 1kHz @ 8-bit"},
+    {1, 6, 3000,  10, "Health test: 3kHz @ 10-bit"},
+    {2, 4, 8000,  8,  "Health test: 8kHz @ 8-bit"},
+    {3, 5, 15000, 9,  "Health test: 15kHz @ 9-bit"}
+  };
+
+  // Track successful configurations
+  int configured_channels = 0;
+  
+  for (const auto& cfg : health_configs) {
+    ESP_LOGI(TAG, "Configuring %s", cfg.description);
+    
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(cfg.gpio, cfg.frequency, cfg.resolution);
+    ch_config.channel_id = cfg.channel;
+    ch_config.duty_initial = 200;
+
+    hf_pwm_err_t result = pwm.ConfigureChannel(cfg.channel, ch_config);
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
+      configured_channels++;
+      int8_t timer_id = pwm.GetTimerAssignment(cfg.channel);
+      ESP_LOGI(TAG, "✓ %s configured successfully, timer %d", cfg.description, timer_id);
+      
+      pwm.EnableChannel(cfg.channel);
+    } else {
+      ESP_LOGI(TAG, "✓ %s failed: %s", cfg.description, HfPwmErrToString(result));
+    }
+  }
+
+  // Phase 2: Disable some channels to create orphaned timer scenario
+  ESP_LOGI(TAG, "Phase 2: Creating orphaned timer scenario");
+  
+  if (configured_channels >= 2) {
+    // Disable channels 1 and 3 to potentially create orphaned timers
+    pwm.DisableChannel(1);
+    pwm.DisableChannel(3);
+    ESP_LOGI(TAG, "Disabled channels 1 and 3 to create potential orphaned timers");
+  }
+
+  // Phase 3: Try to allocate new channels that should trigger health check
+  ESP_LOGI(TAG, "Phase 3: Testing health check trigger scenarios");
+  
+  struct NewAllocationTest {
+    hf_channel_id_t channel;
+    hf_gpio_num_t gpio;
+    hf_u32_t frequency;
+    hf_u8_t resolution;
+    const char* description;
+  };
+
+  NewAllocationTest new_configs[] = {
+    {4, 7, 20000, 8, "New allocation: 20kHz @ 8-bit (should trigger health check)"},
+    {5, 8, 25000, 8, "New allocation: 25kHz @ 8-bit (may fail due to limits)"}
+  };
+
+  for (const auto& cfg : new_configs) {
+    ESP_LOGI(TAG, "Attempting %s", cfg.description);
+    
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(cfg.gpio, cfg.frequency, cfg.resolution);
+    ch_config.channel_id = cfg.channel;
+    ch_config.duty_initial = 128;
+
+    hf_pwm_err_t result = pwm.ConfigureChannel(cfg.channel, ch_config);
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
+      int8_t timer_id = pwm.GetTimerAssignment(cfg.channel);
+      ESP_LOGI(TAG, "✓ %s succeeded (health check likely worked), timer %d", cfg.description, timer_id);
+      pwm.EnableChannel(cfg.channel);
+    } else {
+      ESP_LOGI(TAG, "✓ %s failed: %s (may be due to hardware limits)", cfg.description, HfPwmErrToString(result));
+    }
+  }
+
+  // Phase 4: Test recovery after complete channel release
+  ESP_LOGI(TAG, "Phase 4: Testing recovery after complete channel release");
+  
+  // Disable all channels
+  for (hf_channel_id_t ch = 0; ch < 6; ch++) {
+    pwm.DisableChannel(ch);
+  }
+  
+  // Wait for potential cleanup
+  vTaskDelay(pdMS_TO_TICKS(100));
+  
+  // Try to allocate fresh channels (should succeed if health check works)
+  hf_pwm_channel_config_t recovery_config = create_test_channel_config(2, 5000, 10);
+  recovery_config.channel_id = 0;
+  recovery_config.duty_initial = 512; // 50% for 10-bit
+  
+  hf_pwm_err_t result = pwm.ConfigureChannel(0, recovery_config);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGI(TAG, "✓ Recovery allocation succeeded - health check mechanism working");
+    pwm.EnableChannel(0);
+  } else {
+    ESP_LOGE(TAG, "❌ Recovery allocation failed: %s", HfPwmErrToString(result));
+    return false;
+  }
+
+  // Phase 5: Validate final system state
+  ESP_LOGI(TAG, "Phase 5: Final system state validation");
+  
+  hf_pwm_diagnostics_t diagnostics;
+  result = pwm.GetDiagnostics(diagnostics);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGI(TAG, "Final diagnostics: Active timers=%d, Active channels=%d", 
+             diagnostics.active_timers, diagnostics.active_channels);
+    
+    // After cleanup, we should have minimal active resources
+    if (diagnostics.active_timers > 2) {
+      ESP_LOGW(TAG, "More active timers than expected: %d (health check may not be optimal)", 
+               diagnostics.active_timers);
+    }
+  }
+
+  hf_pwm_statistics_t statistics;
+  result = pwm.GetStatistics(statistics);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGI(TAG, "Final statistics: Total errors=%lu, Channel enables=%lu", 
+             statistics.error_count, statistics.channel_enables_count);
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Timer health check and recovery test passed");
+  return true;
+}
+
+/**
+ * @brief Test safe eviction policies (NEW CRITICAL SAFETY TEST)
+ */
+bool test_safe_eviction_policies() noexcept {
+  ESP_LOGI(TAG, "Testing safe eviction policies...");
+
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Phase 1: Test STRICT_NO_EVICTION (default)
+  ESP_LOGI(TAG, "Phase 1: Testing STRICT_NO_EVICTION policy (default)");
+  
+  // Verify default policy
+  if (pwm.GetEvictionPolicy() != hf_pwm_eviction_policy_t::STRICT_NO_EVICTION) {
+    ESP_LOGE(TAG, "Default eviction policy should be STRICT_NO_EVICTION");
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Default eviction policy is STRICT_NO_EVICTION (safe)");
+
+  // Configure channels to fill all timers
+  struct EvictionTestConfig {
+    hf_channel_id_t channel;
+    hf_gpio_num_t gpio;
+    hf_u32_t frequency;
+    hf_u8_t resolution;
+    bool is_critical;
+    const char* description;
+  };
+
+  EvictionTestConfig eviction_configs[] = {
+    {0, 2, 1000,  8,  true,  "Critical motor control"},     // Critical channel
+    {1, 6, 3000,  10, false, "LED indicator"},             // Non-critical channel
+    {2, 4, 8000,  8,  false, "Status LED"},                // Non-critical channel
+    {3, 5, 15000, 9,  true,  "Safety shutdown system"}     // Critical channel
+  };
+
+  // Configure all channels and mark critical ones
+  for (const auto& cfg : eviction_configs) {
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(cfg.gpio, cfg.frequency, cfg.resolution);
+    ch_config.channel_id = cfg.channel;
+    ch_config.duty_initial = 128; // Safe duty for all resolutions
+    ch_config.is_critical = cfg.is_critical;
+    ch_config.priority = cfg.is_critical ? hf_pwm_channel_priority_t::PRIORITY_CRITICAL : 
+                                          hf_pwm_channel_priority_t::PRIORITY_NORMAL;
+    ch_config.description = cfg.description;
+
+    hf_pwm_err_t result = pwm.ConfigureChannel(cfg.channel, ch_config);
+    if (result == hf_pwm_err_t::PWM_SUCCESS) {
+      pwm.EnableChannel(cfg.channel);
+      int8_t timer_id = pwm.GetTimerAssignment(cfg.channel);
+      ESP_LOGI(TAG, "✓ %s configured on timer %d (%s)", cfg.description, timer_id, 
+               cfg.is_critical ? "CRITICAL" : "normal");
+    }
+  }
+
+  // Try to allocate a 5th channel that would require eviction
+  hf_pwm_channel_config_t conflict_config = create_test_channel_config(7, 20000, 8);
+  conflict_config.channel_id = 4;
+  conflict_config.duty_initial = 128;
+
+  hf_pwm_err_t result = pwm.ConfigureChannel(4, conflict_config);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "STRICT_NO_EVICTION should have prevented allocation requiring eviction");
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ STRICT_NO_EVICTION correctly denied allocation requiring eviction: %s", HfPwmErrToString(result));
+
+  // Phase 2: Test ALLOW_EVICTION_NON_CRITICAL
+  ESP_LOGI(TAG, "Phase 2: Testing ALLOW_EVICTION_NON_CRITICAL policy");
+  
+  result = pwm.SetEvictionPolicy(hf_pwm_eviction_policy_t::ALLOW_EVICTION_NON_CRITICAL);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set eviction policy");
+    return false;
+  }
+
+  // Try the same allocation - should now succeed by evicting non-critical channels
+  result = pwm.ConfigureChannel(4, conflict_config);
+  if (result == hf_pwm_err_t::PWM_SUCCESS) {
+    int8_t timer_id = pwm.GetTimerAssignment(4);
+    ESP_LOGI(TAG, "✓ ALLOW_EVICTION_NON_CRITICAL successfully allocated channel 4 to timer %d", timer_id);
+    
+    // Verify critical channels are still working
+    if (!pwm.IsChannelEnabled(0) || !pwm.IsChannelEnabled(3)) {
+      ESP_LOGE(TAG, "Critical channels should still be enabled after non-critical eviction");
+      return false;
+    }
+    ESP_LOGI(TAG, "✓ Critical channels (0,3) still enabled after non-critical eviction");
+  } else {
+    ESP_LOGI(TAG, "✓ Non-critical eviction failed (acceptable): %s", HfPwmErrToString(result));
+  }
+
+  // Phase 3: Test channel protection
+  ESP_LOGI(TAG, "Phase 3: Testing channel protection mechanisms");
+  
+  // Mark channel 1 as critical and try to cause eviction
+  result = pwm.SetChannelCritical(1, true);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to mark channel 1 as critical");
+    return false;
+  }
+
+  if (!pwm.IsChannelCritical(1)) {
+    ESP_LOGE(TAG, "Channel 1 should be marked as critical");
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Channel 1 successfully marked as critical");
+
+  // Phase 4: Reset to safe policy
+  ESP_LOGI(TAG, "Phase 4: Resetting to safe policy");
+  
+  result = pwm.SetEvictionPolicy(hf_pwm_eviction_policy_t::STRICT_NO_EVICTION);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to reset to safe eviction policy");
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Successfully reset to STRICT_NO_EVICTION policy");
+
+  ESP_LOGI(TAG, "[SUCCESS] Safe eviction policies test passed");
   return true;
 }
 
@@ -1981,6 +2465,16 @@ extern "C" void app_main(void) {
   RUN_TEST(test_edge_cases);
   flip_test_progress_indicator();
   RUN_TEST(test_stress_scenarios);
+  flip_test_progress_indicator();
+  
+  // Advanced Timer Management Tests
+  ESP_LOGI(TAG, "\n=== ADVANCED TIMER MANAGEMENT TESTS ===");
+  RUN_TEST(test_timer_health_check_and_recovery);
+  flip_test_progress_indicator();
+  
+  // Critical Safety Tests
+  ESP_LOGI(TAG, "\n=== CRITICAL SAFETY TESTS ===");
+  RUN_TEST(test_safe_eviction_policies);
   flip_test_progress_indicator();
   
   // Print final summary

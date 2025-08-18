@@ -50,7 +50,9 @@ EspPwm::EspPwm(const hf_pwm_unit_config_t& config) noexcept
       period_callback_(nullptr), period_callback_user_data_(nullptr), fault_callback_(nullptr),
       fault_callback_user_data_(nullptr), last_global_error_(hf_pwm_err_t::PWM_SUCCESS),
       fade_functionality_installed_(false), unit_config_(config), current_mode_(config.mode),
-      statistics_(), diagnostics_(), auto_fallback_enabled_(false) {
+      statistics_(), diagnostics_(), auto_fallback_enabled_(false),
+      eviction_policy_(hf_pwm_eviction_policy_t::STRICT_NO_EVICTION), eviction_callback_(nullptr),
+      eviction_callback_user_data_(nullptr) {
   ESP_LOGD(TAG, "EspPwm constructed with unit_id=%d, mode=%d, clock_hz=%lu", config.unit_id,
            static_cast<int>(config.mode), config.base_clock_hz);
 }
@@ -262,6 +264,10 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH;
   }
 
+  // ✅ FIX: Handle timer assignment changes properly
+  hf_u8_t old_timer = channels_[channel_id].configured ? channels_[channel_id].assigned_timer : 0xFF;
+  bool is_reconfiguration = channels_[channel_id].configured;
+
   hf_i8_t timer_id = FindOrAllocateTimer(frequency_hz, resolution_bits);
   if (timer_id < 0) {
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
@@ -282,6 +288,16 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     return channel_result;
   }
 
+  // ✅ FIX: Properly manage timer channel counts during reconfiguration
+  if (is_reconfiguration && old_timer != timer_id && old_timer < MAX_TIMERS) {
+    // Moving to a different timer - decrement old timer count
+    if (timers_[old_timer].channel_count > 0) {
+      timers_[old_timer].channel_count--;
+      ESP_LOGD(TAG, "Decremented old timer %d channel count to %d", old_timer, timers_[old_timer].channel_count);
+    }
+    ReleaseTimerIfUnused(old_timer);
+  }
+
   // ✅ FIXED: Update internal state with proper resolution handling
   channels_[channel_id].configured = true;
   channels_[channel_id].config = config;
@@ -290,6 +306,11 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   // Store the validated raw duty value (already checked against actual resolution)
   channels_[channel_id].raw_duty_value = config.duty_initial;
   channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
+  
+  // ✅ NEW: Store channel protection settings
+  channels_[channel_id].priority = config.priority;
+  channels_[channel_id].is_critical = config.is_critical;
+  channels_[channel_id].description = config.description;
 
   ESP_LOGI(TAG, "Channel %lu configured: pin=%d, freq=%lu Hz, res=%d bits, timer=%d", channel_id,
            config.gpio_pin, frequency_hz, resolution_bits, timer_id);
@@ -397,6 +418,16 @@ hf_pwm_err_t EspPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
   }
 
   channels_[channel_id].enabled = false;
+  
+  // Decrement timer channel count when disabling channel
+  hf_u8_t timer_id = channels_[channel_id].assigned_timer;
+  if (timer_id < MAX_TIMERS && timers_[timer_id].channel_count > 0) {
+    timers_[timer_id].channel_count--;
+    ESP_LOGD(TAG, "Decremented timer %d channel count to %d", timer_id, timers_[timer_id].channel_count);
+    
+    // Release timer if no longer used
+    ReleaseTimerIfUnused(timer_id);
+  }
   
   // CRITICAL FIX: Update statistics for channel disable
   statistics_.channel_disables_count++;
@@ -1438,26 +1469,167 @@ hf_pwm_err_t EspPwm::ForceTimerAssignment(hf_channel_id_t channel_id, hf_u8_t ti
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
-  // Release current timer and assign new one
+  // Get channel's frequency and resolution BEFORE releasing the timer
+  hf_u32_t channel_frequency = channels_[channel_id].config.frequency_hz;
+  hf_u8_t channel_resolution = channels_[channel_id].config.resolution_bits;
+
+  // Release current timer if it's different from the target timer
   hf_u8_t old_timer = channels_[channel_id].assigned_timer;
-  ReleaseTimerIfUnused(old_timer);
-
-  // Configure new timer
-  hf_u8_t current_timer = channels_[channel_id].assigned_timer;
-  if (current_timer < MAX_TIMERS) {
-    hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, timers_[current_timer].frequency_hz,
-                                                 timers_[current_timer].resolution_bits);
-    if (result == hf_pwm_err_t::PWM_SUCCESS) {
-      channels_[channel_id].assigned_timer = timer_id;
-      timers_[timer_id].channel_count++;
-
-      // Reconfigure the channel with new timer
-      result = ConfigurePlatformChannel(channel_id, channels_[channel_id].config, timer_id);
+  if (old_timer != timer_id) {
+    // Decrement channel count before potential release
+    if (old_timer < MAX_TIMERS && timers_[old_timer].channel_count > 0) {
+      timers_[old_timer].channel_count--;
     }
+    ReleaseTimerIfUnused(old_timer);
+  }
+
+  // Configure the target timer with the channel's frequency and resolution
+  hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, channel_frequency, channel_resolution);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure forced timer %d: %s", timer_id, HfPwmErrToString(result));
+    SetChannelError(channel_id, result);
     return result;
   }
 
-  return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
+  // Update timer state to reflect the new configuration
+  timers_[timer_id].in_use = true;
+  timers_[timer_id].frequency_hz = channel_frequency;
+  timers_[timer_id].resolution_bits = channel_resolution;
+  timers_[timer_id].has_hardware_conflicts = false;
+  
+  // Increment channel count if this is a new assignment
+  if (old_timer != timer_id) {
+    timers_[timer_id].channel_count++;
+  }
+
+  // Assign channel to new timer
+  channels_[channel_id].assigned_timer = timer_id;
+
+  // Reconfigure the channel with the new timer
+  result = ConfigurePlatformChannel(channel_id, channels_[channel_id].config, timer_id);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to reconfigure channel %d with forced timer %d: %s", 
+             channel_id, timer_id, HfPwmErrToString(result));
+    SetChannelError(channel_id, result);
+    return result;
+  }
+
+  ESP_LOGD(TAG, "Successfully forced channel %d to timer %d (%lu Hz @ %d bits)", 
+           channel_id, timer_id, channel_frequency, channel_resolution);
+
+  return hf_pwm_err_t::PWM_SUCCESS;
+}
+
+//==============================================================================
+// SAFE EVICTION POLICY MANAGEMENT
+//==============================================================================
+
+hf_pwm_err_t EspPwm::SetEvictionPolicy(hf_pwm_eviction_policy_t policy) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  eviction_policy_ = policy;
+  
+  const char* policy_names[] = {"STRICT_NO_EVICTION", "ALLOW_EVICTION_WITH_CONSENT", 
+                               "ALLOW_EVICTION_NON_CRITICAL", "FORCE_EVICTION"};
+  ESP_LOGI(TAG, "Eviction policy set to: %s", policy_names[static_cast<int>(policy)]);
+  
+  return hf_pwm_err_t::PWM_SUCCESS;
+}
+
+hf_pwm_eviction_policy_t EspPwm::GetEvictionPolicy() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  return eviction_policy_;
+}
+
+hf_pwm_err_t EspPwm::SetEvictionCallback(hf_pwm_eviction_callback_t callback, void* user_data) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  eviction_callback_ = callback;
+  eviction_callback_user_data_ = user_data;
+  
+  ESP_LOGI(TAG, "Eviction callback %s", callback ? "registered" : "cleared");
+  return hf_pwm_err_t::PWM_SUCCESS;
+}
+
+hf_pwm_err_t EspPwm::SetChannelPriority(hf_channel_id_t channel_id, hf_pwm_channel_priority_t priority) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+  if (!channels_[channel_id].configured) {
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+  channels_[channel_id].priority = priority;
+  channels_[channel_id].config.priority = priority;
+  
+  const char* priority_names[] = {"LOW", "NORMAL", "HIGH", "CRITICAL"};
+  ESP_LOGI(TAG, "Channel %lu priority set to: %s", channel_id, priority_names[static_cast<int>(priority)]);
+  
+  return hf_pwm_err_t::PWM_SUCCESS;
+}
+
+hf_pwm_channel_priority_t EspPwm::GetChannelPriority(hf_channel_id_t channel_id) const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
+    return hf_pwm_channel_priority_t::PRIORITY_NORMAL;
+  }
+
+  return channels_[channel_id].priority;
+}
+
+hf_pwm_err_t EspPwm::SetChannelCritical(hf_channel_id_t channel_id, bool is_critical) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+  if (!channels_[channel_id].configured) {
+    SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+  channels_[channel_id].is_critical = is_critical;
+  channels_[channel_id].config.is_critical = is_critical;
+  
+  // Automatically set priority to CRITICAL if marked as critical
+  if (is_critical) {
+    channels_[channel_id].priority = hf_pwm_channel_priority_t::PRIORITY_CRITICAL;
+    channels_[channel_id].config.priority = hf_pwm_channel_priority_t::PRIORITY_CRITICAL;
+  }
+  
+  ESP_LOGI(TAG, "Channel %lu marked as %s", channel_id, is_critical ? "CRITICAL (protected)" : "non-critical");
+  
+  return hf_pwm_err_t::PWM_SUCCESS;
+}
+
+bool EspPwm::IsChannelCritical(hf_channel_id_t channel_id) const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
+    return false;
+  }
+
+  return channels_[channel_id].is_critical;
 }
 
 //==============================================================================
@@ -1529,7 +1701,11 @@ hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bi
   // Phase 5: Health check and retry
   hf_u8_t cleaned_timers = PerformTimerHealthCheck();
   if (cleaned_timers > 0) {
-    ESP_LOGD(TAG, "Health check cleaned %d timers, retrying", cleaned_timers);
+    ESP_LOGD(TAG, "Health check cleaned %d timers, retrying allocation", cleaned_timers);
+    
+    // Update statistics for health check operations
+    statistics_.last_activity_timestamp = esp_timer_get_time();
+    
     // Quick retry after health check
     for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
       if (!timers_[timer_id].in_use && ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
@@ -1538,34 +1714,33 @@ hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bi
         timers_[timer_id].resolution_bits = resolution_bits;
         timers_[timer_id].channel_count = 1;
         timers_[timer_id].has_hardware_conflicts = false;
+        
+        ESP_LOGD(TAG, "Successfully allocated timer %d after health check", timer_id);
         return timer_id;
       }
     }
+    
+    ESP_LOGD(TAG, "Health check completed but no suitable timer found for %lu Hz @ %d bits", frequency_hz, resolution_bits);
   }
   
-  // Phase 6: Smart eviction (last resort)
-  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
-    if (timers_[timer_id].in_use && timers_[timer_id].channel_count <= 1) {
-      ESP_LOGW(TAG, "Evicting timer %d (channels=%d)", timer_id, timers_[timer_id].channel_count);
-      
-      if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
-        NotifyTimerReconfiguration(timer_id, frequency_hz, resolution_bits);
-        
-        hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
-        if (result == hf_pwm_err_t::PWM_SUCCESS) {
-          timers_[timer_id].frequency_hz = frequency_hz;
-          timers_[timer_id].resolution_bits = resolution_bits;
-          timers_[timer_id].channel_count = 1;
-          timers_[timer_id].has_hardware_conflicts = false;
-          
-          ESP_LOGD(TAG, "Successfully evicted and reconfigured timer %d", timer_id);
-          return timer_id;
-        }
-      }
-    }
+  // Phase 6: Safe eviction (user-controlled, policy-based)
+  hf_i8_t eviction_result = AttemptSafeEviction(frequency_hz, resolution_bits);
+  if (eviction_result >= 0) {
+    return eviction_result;
   }
   
+  // Provide detailed failure analysis
   ESP_LOGE(TAG, "All timer allocation strategies failed for %lu Hz @ %d bits", frequency_hz, resolution_bits);
+  ESP_LOGE(TAG, "Timer allocation failure analysis:");
+  ESP_LOGE(TAG, "  - Required timer clock: %llu Hz (max: 80MHz)", 
+           static_cast<uint64_t>(frequency_hz) * (1ULL << resolution_bits));
+  ESP_LOGE(TAG, "  - All %d timers exhausted or incompatible", MAX_TIMERS);
+  ESP_LOGE(TAG, "  - Consider using lower resolution or frequency, or releasing unused channels");
+  
+  // Update error statistics
+  statistics_.error_count++;
+  statistics_.last_activity_timestamp = esp_timer_get_time();
+  
   return -1;
 }
 
@@ -1693,9 +1868,6 @@ hf_pwm_err_t EspPwm::ConfigurePlatformChannel(hf_channel_id_t channel_id,
              esp_err_to_name(ret));
     return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
-
-  // Increment timer usage count
-  timers_[timer_id].channel_count++;
 
   ESP_LOGD(TAG, "Channel %lu configured: pin=%d, timer=%d, duty=%lu", channel_id, config.gpio_pin,
            timer_id, initial_duty);
@@ -2141,6 +2313,177 @@ bool EspPwm::ValidateTimerConfiguration(hf_u32_t frequency_hz, hf_u8_t resolutio
   }
   
   return true;
+}
+
+hf_i8_t EspPwm::AttemptSafeEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept {
+  ESP_LOGD(TAG, "Attempting safe eviction for %lu Hz @ %d bits (policy: %d)", 
+           frequency_hz, resolution_bits, static_cast<int>(eviction_policy_));
+
+  // Check eviction policy
+  switch (eviction_policy_) {
+    case hf_pwm_eviction_policy_t::STRICT_NO_EVICTION:
+      ESP_LOGI(TAG, "Eviction denied: STRICT_NO_EVICTION policy - will not disrupt existing channels");
+      return -1;
+
+    case hf_pwm_eviction_policy_t::ALLOW_EVICTION_WITH_CONSENT:
+      return AttemptEvictionWithConsent(frequency_hz, resolution_bits);
+
+    case hf_pwm_eviction_policy_t::ALLOW_EVICTION_NON_CRITICAL:
+      return AttemptEvictionNonCritical(frequency_hz, resolution_bits);
+
+    case hf_pwm_eviction_policy_t::FORCE_EVICTION:
+      ESP_LOGW(TAG, "FORCE_EVICTION policy active - attempting aggressive eviction");
+      return AttemptForceEviction(frequency_hz, resolution_bits);
+
+    default:
+      ESP_LOGE(TAG, "Unknown eviction policy: %d", static_cast<int>(eviction_policy_));
+      return -1;
+  }
+}
+
+hf_i8_t EspPwm::AttemptEvictionWithConsent(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept {
+  if (!eviction_callback_) {
+    ESP_LOGW(TAG, "Eviction policy requires consent but no callback registered - denying eviction");
+    return -1;
+  }
+
+  // Find potential eviction candidates (timers with low channel count)
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (timers_[timer_id].in_use && timers_[timer_id].channel_count <= 1) {
+      
+      // Check if any affected channels are critical
+      bool has_critical_channels = false;
+      hf_channel_id_t affected_channel = 0xFF;
+      
+      for (hf_u8_t ch = 0; ch < MAX_CHANNELS; ch++) {
+        if (channels_[ch].configured && channels_[ch].assigned_timer == timer_id) {
+          affected_channel = ch;
+          if (channels_[ch].is_critical || channels_[ch].priority == hf_pwm_channel_priority_t::PRIORITY_CRITICAL) {
+            has_critical_channels = true;
+            break;
+          }
+        }
+      }
+
+      if (has_critical_channels) {
+        ESP_LOGI(TAG, "Timer %d has critical channels - skipping eviction request", timer_id);
+        continue;
+      }
+
+      if (affected_channel != 0xFF && ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
+        // Prepare eviction request for user callback
+        hf_pwm_eviction_request_t request;
+        request.affected_channel = affected_channel;
+        request.current_timer = timer_id;
+        request.current_frequency = timers_[timer_id].frequency_hz;
+        request.current_resolution = timers_[timer_id].resolution_bits;
+        request.requested_frequency = frequency_hz;
+        request.requested_resolution = resolution_bits;
+        request.requesting_channel = 0xFF; // Unknown in this context
+
+        // Ask user for consent
+        hf_pwm_eviction_decision_t decision = eviction_callback_(request, eviction_callback_user_data_);
+        
+        if (decision == hf_pwm_eviction_decision_t::ALLOW_EVICTION) {
+          ESP_LOGI(TAG, "User approved eviction of timer %d affecting channel %d", timer_id, affected_channel);
+          
+          NotifyTimerReconfiguration(timer_id, frequency_hz, resolution_bits);
+          hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+          if (result == hf_pwm_err_t::PWM_SUCCESS) {
+            timers_[timer_id].frequency_hz = frequency_hz;
+            timers_[timer_id].resolution_bits = resolution_bits;
+            timers_[timer_id].channel_count = 1;
+            timers_[timer_id].has_hardware_conflicts = false;
+            
+            ESP_LOGI(TAG, "Successfully evicted timer %d with user consent", timer_id);
+            return timer_id;
+          }
+        } else {
+          ESP_LOGI(TAG, "User denied eviction of timer %d - respecting user decision", timer_id);
+        }
+      }
+    }
+  }
+  
+  ESP_LOGI(TAG, "No eviction possible with user consent");
+  return -1;
+}
+
+hf_i8_t EspPwm::AttemptEvictionNonCritical(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept {
+  ESP_LOGD(TAG, "Attempting eviction of non-critical channels only");
+
+  // Find timers with only non-critical, low-priority channels
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (timers_[timer_id].in_use && timers_[timer_id].channel_count <= 1) {
+      
+      bool can_evict = true;
+      hf_channel_id_t affected_channel = 0xFF;
+      
+      // Check all channels using this timer
+      for (hf_u8_t ch = 0; ch < MAX_CHANNELS; ch++) {
+        if (channels_[ch].configured && channels_[ch].assigned_timer == timer_id) {
+          affected_channel = ch;
+          
+          // Protect critical channels and high-priority channels
+          if (channels_[ch].is_critical || 
+              channels_[ch].priority == hf_pwm_channel_priority_t::PRIORITY_CRITICAL ||
+              channels_[ch].priority == hf_pwm_channel_priority_t::PRIORITY_HIGH) {
+            can_evict = false;
+            ESP_LOGD(TAG, "Timer %d protected - has critical/high-priority channel %d", timer_id, ch);
+            break;
+          }
+        }
+      }
+
+      if (can_evict && affected_channel != 0xFF && ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
+        ESP_LOGI(TAG, "Evicting timer %d (non-critical channel %d)", timer_id, affected_channel);
+        
+        NotifyTimerReconfiguration(timer_id, frequency_hz, resolution_bits);
+        hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+        if (result == hf_pwm_err_t::PWM_SUCCESS) {
+          timers_[timer_id].frequency_hz = frequency_hz;
+          timers_[timer_id].resolution_bits = resolution_bits;
+          timers_[timer_id].channel_count = 1;
+          timers_[timer_id].has_hardware_conflicts = false;
+          
+          ESP_LOGI(TAG, "Successfully evicted non-critical timer %d", timer_id);
+          return timer_id;
+        }
+      }
+    }
+  }
+  
+  ESP_LOGI(TAG, "No non-critical timers available for eviction");
+  return -1;
+}
+
+hf_i8_t EspPwm::AttemptForceEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept {
+  ESP_LOGW(TAG, "FORCE_EVICTION: Attempting aggressive eviction (may disrupt critical channels!)");
+
+  // Original aggressive eviction logic (preserved for advanced users)
+  for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
+    if (timers_[timer_id].in_use && timers_[timer_id].channel_count <= 1) {
+      ESP_LOGW(TAG, "Force evicting timer %d (channels=%d)", timer_id, timers_[timer_id].channel_count);
+      
+      if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
+        NotifyTimerReconfiguration(timer_id, frequency_hz, resolution_bits);
+        
+        hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+        if (result == hf_pwm_err_t::PWM_SUCCESS) {
+          timers_[timer_id].frequency_hz = frequency_hz;
+          timers_[timer_id].resolution_bits = resolution_bits;
+          timers_[timer_id].channel_count = 1;
+          timers_[timer_id].has_hardware_conflicts = false;
+          
+          ESP_LOGW(TAG, "Force evicted timer %d - existing channels may be affected!", timer_id);
+          return timer_id;
+        }
+      }
+    }
+  }
+  
+  ESP_LOGW(TAG, "Force eviction failed - no suitable timers found");
+  return -1;
 }
 
 hf_u8_t EspPwm::PerformTimerHealthCheck() noexcept {

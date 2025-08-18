@@ -289,6 +289,63 @@ public:
    */
   hf_pwm_err_t ForceTimerAssignment(hf_channel_id_t channel_id, hf_u8_t timer_id) noexcept;
 
+  //==============================================================================
+  // SAFE EVICTION POLICY MANAGEMENT
+  //==============================================================================
+
+  /**
+   * @brief Set timer eviction policy for resource management
+   * @param policy Eviction policy to use
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note Default is STRICT_NO_EVICTION for safety
+   */
+  hf_pwm_err_t SetEvictionPolicy(hf_pwm_eviction_policy_t policy) noexcept;
+
+  /**
+   * @brief Get current eviction policy
+   * @return Current eviction policy
+   */
+  hf_pwm_eviction_policy_t GetEvictionPolicy() const noexcept;
+
+  /**
+   * @brief Set eviction consent callback for user-controlled eviction
+   * @param callback Callback function to approve/deny eviction requests
+   * @param user_data User data passed to callback
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note Only used when policy is ALLOW_EVICTION_WITH_CONSENT
+   */
+  hf_pwm_err_t SetEvictionCallback(hf_pwm_eviction_callback_t callback, void* user_data = nullptr) noexcept;
+
+  /**
+   * @brief Set channel priority for eviction decisions
+   * @param channel_id Channel identifier
+   * @param priority Priority level
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t SetChannelPriority(hf_channel_id_t channel_id, hf_pwm_channel_priority_t priority) noexcept;
+
+  /**
+   * @brief Get channel priority
+   * @param channel_id Channel identifier
+   * @return Channel priority, or PRIORITY_NORMAL if channel not configured
+   */
+  hf_pwm_channel_priority_t GetChannelPriority(hf_channel_id_t channel_id) const noexcept;
+
+  /**
+   * @brief Mark channel as critical (never evict)
+   * @param channel_id Channel identifier
+   * @param is_critical True to protect from eviction, false to allow
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t SetChannelCritical(hf_channel_id_t channel_id, bool is_critical) noexcept;
+
+  /**
+   * @brief Check if channel is marked as critical
+   * @param channel_id Channel identifier
+   * @return True if channel is critical, false otherwise
+   */
+  bool IsChannelCritical(hf_channel_id_t channel_id) const noexcept;
+
   /**
    * @brief Set clock source for PWM timers
    * @param clock_source Clock source selection
@@ -333,10 +390,16 @@ private:
     hf_pwm_err_t last_error;        ///< Last error for this channel
     bool fade_active;               ///< Hardware fade is active
     bool needs_reconfiguration;     ///< Channel needs reconfiguration due to timer change
+    
+    // ✅ NEW: Channel protection and priority for safe eviction
+    hf_pwm_channel_priority_t priority; ///< Channel priority for eviction decisions
+    bool is_critical;                   ///< Mark as critical (never evict)
+    const char* description;            ///< Optional description for debugging
 
     ChannelState() noexcept
         : configured(false), enabled(false), assigned_timer(0xFF), raw_duty_value(0),
-          last_error(hf_pwm_err_t::PWM_SUCCESS), fade_active(false), needs_reconfiguration(false) {}
+          last_error(hf_pwm_err_t::PWM_SUCCESS), fade_active(false), needs_reconfiguration(false),
+          priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr) {}
   };
 
   /**
@@ -530,6 +593,39 @@ private:
    */
   hf_u8_t PerformTimerHealthCheck() noexcept;
 
+  /**
+   * @brief Attempt safe timer eviction based on user policy
+   * @param frequency_hz Required frequency
+   * @param resolution_bits Required resolution
+   * @return Timer ID if eviction successful, -1 if denied/failed
+   */
+  hf_i8_t AttemptSafeEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Attempt eviction with user consent callback
+   * @param frequency_hz Required frequency
+   * @param resolution_bits Required resolution
+   * @return Timer ID if approved and successful, -1 if denied/failed
+   */
+  hf_i8_t AttemptEvictionWithConsent(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Attempt eviction of non-critical channels only
+   * @param frequency_hz Required frequency
+   * @param resolution_bits Required resolution
+   * @return Timer ID if successful, -1 if no non-critical timers available
+   */
+  hf_i8_t AttemptEvictionNonCritical(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+
+  /**
+   * @brief Attempt aggressive eviction (original behavior)
+   * @param frequency_hz Required frequency
+   * @param resolution_bits Required resolution
+   * @return Timer ID if successful, -1 if failed
+   * @note Only used with FORCE_EVICTION policy - may disrupt critical channels!
+   */
+  hf_i8_t AttemptForceEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+
   //==============================================================================
   // MEMBER VARIABLES
   //==============================================================================
@@ -557,4 +653,9 @@ private:
   hf_pwm_statistics_t statistics_;   ///< PWM statistics
   hf_pwm_diagnostics_t diagnostics_; ///< PWM diagnostics
   bool auto_fallback_enabled_;       ///< Whether to automatically try alternative resolutions
+
+  // ✅ NEW: Safe eviction policy management
+  hf_pwm_eviction_policy_t eviction_policy_;   ///< Timer eviction policy (default: STRICT_NO_EVICTION)
+  hf_pwm_eviction_callback_t eviction_callback_; ///< User callback for eviction consent
+  void* eviction_callback_user_data_;           ///< User data for eviction callback
 };

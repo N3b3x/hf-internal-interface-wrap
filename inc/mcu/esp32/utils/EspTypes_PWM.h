@@ -93,6 +93,62 @@ enum class hf_pwm_intr_type_t : uint8_t {
 };
 
 /**
+ * @brief Timer eviction policy for resource management.
+ * @details Controls how the PWM system handles timer resource conflicts.
+ */
+enum class hf_pwm_eviction_policy_t : uint8_t {
+  STRICT_NO_EVICTION = 0,           ///< Never evict existing channels (default, safest)
+  ALLOW_EVICTION_WITH_CONSENT = 1,  ///< Require callback approval before eviction
+  ALLOW_EVICTION_NON_CRITICAL = 2,  ///< Only evict channels marked as non-critical
+  FORCE_EVICTION = 3                ///< Aggressive eviction (advanced users only)
+};
+
+/**
+ * @brief Channel priority levels for eviction decisions.
+ */
+enum class hf_pwm_channel_priority_t : uint8_t {
+  PRIORITY_LOW = 0,        ///< Low priority - can be evicted first
+  PRIORITY_NORMAL = 1,     ///< Normal priority - default
+  PRIORITY_HIGH = 2,       ///< High priority - protect from eviction
+  PRIORITY_CRITICAL = 3    ///< Critical priority - never evict
+};
+
+/**
+ * @brief Eviction request information passed to user callback.
+ */
+struct hf_pwm_eviction_request_t {
+  hf_channel_id_t affected_channel;     ///< Channel that would be affected
+  hf_u8_t current_timer;                ///< Timer that would be reconfigured
+  hf_u32_t current_frequency;           ///< Current timer frequency
+  hf_u8_t current_resolution;           ///< Current timer resolution
+  hf_u32_t requested_frequency;         ///< Requested new frequency
+  hf_u8_t requested_resolution;         ///< Requested new resolution
+  hf_channel_id_t requesting_channel;   ///< Channel requesting the change
+  
+  hf_pwm_eviction_request_t() noexcept
+      : affected_channel(0), current_timer(0), current_frequency(0), current_resolution(0),
+        requested_frequency(0), requested_resolution(0), requesting_channel(0) {}
+};
+
+/**
+ * @brief Eviction decision from user callback.
+ */
+enum class hf_pwm_eviction_decision_t : uint8_t {
+  DENY_EVICTION = 0,      ///< Deny the eviction request
+  ALLOW_EVICTION = 1,     ///< Allow the eviction to proceed
+  SUGGEST_ALTERNATIVE = 2 ///< Suggest alternative (not implemented yet)
+};
+
+// Forward declarations for callback types
+/**
+ * @brief Callback function for eviction consent.
+ * @param request Information about the eviction request
+ * @param user_data User-provided data
+ * @return Decision on whether to allow eviction
+ */
+using hf_pwm_eviction_callback_t = hf_pwm_eviction_decision_t(*)(const hf_pwm_eviction_request_t& request, void* user_data);
+
+/**
  * @brief ESP32 PWM unit configuration.
  */
 struct hf_pwm_unit_config_t {
@@ -177,12 +233,18 @@ struct hf_pwm_channel_config_t {
   uint8_t idle_level; ///< Idle state level (0 or 1)
   bool output_invert; ///< Hardware output inversion
 
+  // ✅ NEW: Channel protection and priority for safe eviction
+  hf_pwm_channel_priority_t priority; ///< Channel priority for eviction decisions
+  bool is_critical;                   ///< Mark as critical (never evict)
+  const char* description;            ///< Optional description for debugging
+
   hf_pwm_channel_config_t() noexcept
       : gpio_pin(static_cast<hf_gpio_num_t>(HF_INVALID_PIN)), channel_id(0), timer_id(0),
         speed_mode(hf_pwm_mode_t::HF_PWM_MODE_BASIC), 
         frequency_hz(HF_PWM_DEFAULT_FREQUENCY), resolution_bits(HF_PWM_DEFAULT_RESOLUTION),
         duty_initial(0), intr_type(hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE), invert_output(false), 
-        hpoint(0), idle_level(0), output_invert(false) {}
+        hpoint(0), idle_level(0), output_invert(false),
+        priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr) {}
 };
 
 /**
