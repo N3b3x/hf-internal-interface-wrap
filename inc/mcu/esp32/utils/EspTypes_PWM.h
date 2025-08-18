@@ -156,14 +156,19 @@ struct hf_pwm_timing_config_t {
 
 /**
  * @brief ESP32 PWM channel configuration with advanced features.
- * @details Comprehensive configuration for ESP-IDF LEDC channel features.
+ * @details Comprehensive configuration for ESP-IDF LEDC channel features with explicit resolution control.
  */
 struct hf_pwm_channel_config_t {
   hf_gpio_num_t gpio_pin;       ///< GPIO pin for PWM output
   uint8_t channel_id;           ///< Channel ID (0-7)
   uint8_t timer_id;             ///< Timer ID (0-3)
   hf_pwm_mode_t speed_mode;     ///< Speed mode configuration
-  uint32_t duty_initial;        ///< Initial duty cycle value
+  
+  // ✅ NEW: Explicit frequency and resolution control
+  uint32_t frequency_hz;        ///< PWM frequency in Hz
+  uint8_t resolution_bits;      ///< PWM resolution in bits (4-14)
+  
+  uint32_t duty_initial;        ///< Initial duty cycle value (RAW for specified resolution)
   hf_pwm_intr_type_t intr_type; ///< Interrupt type
   bool invert_output;           ///< Invert output signal
 
@@ -174,9 +179,10 @@ struct hf_pwm_channel_config_t {
 
   hf_pwm_channel_config_t() noexcept
       : gpio_pin(static_cast<hf_gpio_num_t>(HF_INVALID_PIN)), channel_id(0), timer_id(0),
-        speed_mode(hf_pwm_mode_t::HF_PWM_MODE_BASIC), duty_initial(0),
-        intr_type(hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE), invert_output(false), hpoint(0),
-        idle_level(0), output_invert(false) {}
+        speed_mode(hf_pwm_mode_t::HF_PWM_MODE_BASIC), 
+        frequency_hz(HF_PWM_DEFAULT_FREQUENCY), resolution_bits(HF_PWM_DEFAULT_RESOLUTION),
+        duty_initial(0), intr_type(hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE), invert_output(false), 
+        hpoint(0), idle_level(0), output_invert(false) {}
 };
 
 /**
