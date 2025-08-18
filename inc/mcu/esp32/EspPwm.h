@@ -117,6 +117,19 @@ public:
 
   hf_pwm_err_t ConfigureChannel(hf_channel_id_t channel_id,
                                 const hf_pwm_channel_config_t& config) noexcept;
+  
+  /**
+   * @brief Deconfigure a channel and release all associated resources
+   * @param channel_id Channel ID to deconfigure
+   * @return PWM_SUCCESS on success, error code on failure
+   * @note This method:
+   *       1. Stops the channel if it's enabled
+   *       2. Releases timer resources if no other channels are using it
+   *       3. Resets GPIO pin to default state
+   *       4. Completely resets channel state to unconfigured
+   */
+  hf_pwm_err_t DeconfigureChannel(hf_channel_id_t channel_id) noexcept;
+  
   hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept override;
   hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept override;
   bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept override;
@@ -344,20 +357,7 @@ public:
    * @param channel_id Channel identifier
    * @return True if channel is critical, false otherwise
    */
-  bool IsChannelCritical(hf_channel_id_t channel_id) const noexcept;
-
-  /**
-   * @brief Set clock source for PWM timers
-   * @param clock_source Clock source selection
-   * @return PWM_SUCCESS on success, error code on failure
-   */
-  hf_pwm_err_t SetClockSource(hf_pwm_clock_source_t clock_source) noexcept;
-
-  /**
-   * @brief Get current clock source
-   * @return Current clock source
-   */
-  hf_pwm_clock_source_t GetClockSource() const noexcept;
+  [[nodiscard]] bool IsChannelCritical(hf_channel_id_t channel_id) const noexcept;
 
   /**
    * @brief Get PWM statistics
@@ -391,7 +391,7 @@ private:
     bool fade_active;               ///< Hardware fade is active
     bool needs_reconfiguration;     ///< Channel needs reconfiguration due to timer change
     
-    // ✅ NEW: Channel protection and priority for safe eviction
+    // Channel protection and priority for safe eviction
     hf_pwm_channel_priority_t priority; ///< Channel priority for eviction decisions
     bool is_critical;                   ///< Mark as critical (never evict)
     const char* description;            ///< Optional description for debugging
@@ -410,9 +410,11 @@ private:
     hf_u32_t frequency_hz;   ///< Timer frequency
     hf_u8_t resolution_bits; ///< Timer resolution
     hf_u8_t channel_count;   ///< Number of channels using this timer
+    hf_pwm_clock_source_t clock_source; ///< Clock source configured for this timer
     bool has_hardware_conflicts; ///< Timer has hardware conflicts (avoid reusing)
 
-    TimerState() noexcept : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0), has_hardware_conflicts(false) {}
+    TimerState() noexcept : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0), 
+                           clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT), has_hardware_conflicts(false) {}
   };
 
   /**
@@ -446,7 +448,8 @@ private:
    * @return Timer ID (0-3), or -1 if no timer available
    * @note Combines all allocation strategies: reuse, new allocation, eviction
    */
-  hf_i8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+  hf_i8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits, 
+                              hf_pwm_clock_source_t clock_source) noexcept;
 
   /**
    * @brief Release a timer if no longer needed with hardware cleanup
@@ -462,7 +465,8 @@ private:
    * @return PWM_SUCCESS on success, error code on failure
    */
   hf_pwm_err_t ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency_hz,
-                                      hf_u8_t resolution_bits) noexcept;
+                                      hf_u8_t resolution_bits, 
+                                      hf_pwm_clock_source_t clock_source) noexcept;
 
   /**
    * @brief Configure platform channel
@@ -533,44 +537,109 @@ private:
    * @param resolution_bits PWM resolution
    * @return Clock divider value
    */
-  hf_u32_t CalculateClockDivider(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
+  [[nodiscard]] hf_u32_t CalculateClockDivider(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
+
+  //==============================================================================
+  // ENHANCED VALIDATION SYSTEM
+  //==============================================================================
 
   /**
-   * @brief Validate frequency/resolution combination for ESP32-C6 LEDC
-   * @param frequency_hz Target frequency in Hz
-   * @param resolution_bits Target resolution in bits
-   * @return true if combination is achievable, false otherwise
-   * @note ESP32-C6 LEDC constraint: freq_hz * (2^resolution_bits) <= 80MHz
+   * @brief Simple validation context for frequency/resolution validation
    */
-  bool ValidateFrequencyResolutionCombination(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
+  struct ValidationContext {
+    hf_u32_t frequency_hz;                    ///< Target frequency in Hz
+    hf_u8_t resolution_bits;                  ///< Target resolution in bits
+    hf_pwm_clock_source_t clock_source;       ///< Clock source for validation
+    hf_i8_t timer_id;                         ///< Optional specific timer (-1 for general)
+    
+    ValidationContext(hf_u32_t freq, hf_u8_t res, 
+                     hf_pwm_clock_source_t clk = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB,
+                     hf_i8_t timer = -1) noexcept
+        : frequency_hz(freq), resolution_bits(res), clock_source(clk), timer_id(timer) {}
+  };
 
   /**
-   * @brief Check if frequency/resolution combination is likely to cause hardware conflicts
-   * @param frequency_hz Target frequency in Hz
-   * @param resolution_bits Target resolution in bits
-   * @return true if combination is likely to cause conflicts, false otherwise
-   * @note This helps avoid known problematic combinations that cause timer clock conflicts
+   * @brief Comprehensive validation result with detailed information
    */
-  bool IsLikelyToCauseConflicts(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
+  struct ValidationResult {
+    bool is_valid;                            ///< Overall validation result
+    hf_pwm_err_t error_code;                  ///< Specific error code if invalid
+    const char* reason;                       ///< Human-readable reason for failure
+    hf_u8_t max_achievable_resolution;        ///< Maximum resolution for this frequency
+    hf_u32_t max_achievable_frequency;        ///< Maximum frequency for this resolution
+    uint64_t required_clock_hz;               ///< Required timer clock frequency
+    uint64_t available_clock_hz;              ///< Available source clock frequency
+    
+    ValidationResult() noexcept
+        : is_valid(false), error_code(hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER),
+          reason("Unknown error"), max_achievable_resolution(0), max_achievable_frequency(0),
+          required_clock_hz(0), available_clock_hz(0) {}
+  };
+
+
 
   /**
-   * @brief Find the best alternative resolution for a given frequency
+   * @brief Unified comprehensive validation for frequency/resolution combinations
+   * @param context Validation context with all parameters
+   * @return Detailed validation result with recommendations
+   * @note This replaces all individual validation functions with a unified approach
+   */
+  [[nodiscard]] ValidationResult ValidateFrequencyResolutionComplete(const ValidationContext& context) const noexcept;
+
+  /**
+   * @brief Get source clock frequency for a given clock source
+   * @param clock_source Clock source to query
+   * @return Clock frequency in Hz
+   */
+   [[nodiscard]] hf_u32_t GetSourceClockFrequency(hf_pwm_clock_source_t clock_source) const noexcept;
+
+  /**
+   * @brief Calculate maximum achievable resolution for a given frequency
+   * @param frequency_hz Target frequency in Hz
+   * @param clock_source Clock source to use (default: APB)
+   * @return Maximum resolution in bits, or 0 if frequency too high
+   */
+   [[nodiscard]] hf_u8_t CalculateMaxResolution(hf_u32_t frequency_hz, 
+                                hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
+
+  /**
+   * @brief Calculate maximum achievable frequency for a given resolution
+   * @param resolution_bits Target resolution in bits
+   * @param clock_source Clock source to use (default: APB)
+   * @return Maximum frequency in Hz, or 0 if resolution too high
+   */
+   [[nodiscard]] hf_u32_t CalculateMaxFrequency(hf_u8_t resolution_bits,
+                                hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
+
+  /**
+   * @brief Enhanced duty cycle validation with overflow protection
+   * @param raw_duty Raw duty cycle value
+   * @param resolution_bits Resolution in bits
+   * @return true if duty cycle is valid and safe
+   * @note Implements ESP-IDF overflow protection: duty < 2^resolution
+   */
+   [[nodiscard]] bool ValidateDutyCycleRange(hf_u32_t raw_duty, hf_u8_t resolution_bits) const noexcept;
+
+  /**
+   * @brief Check if two clock sources are compatible for timer sharing
+   * @param timer_clock Current timer's clock source
+   * @param requested_clock Requested clock source
+   * @return true if compatible (can share timer), false otherwise
+   * @note AUTO clock is compatible with any specific clock
+   */
+   [[nodiscard]] bool IsClockSourceCompatible(hf_pwm_clock_source_t timer_clock, hf_pwm_clock_source_t requested_clock) const noexcept;
+
+  /**
+   * @brief Find best alternative resolution using dynamic calculation
    * @param frequency_hz Target frequency in Hz
    * @param preferred_resolution Preferred resolution in bits
-   * @return Best alternative resolution that avoids hardware conflicts, or preferred_resolution if no conflicts
-   * @note This helps find working resolutions when the preferred one causes hardware conflicts
+   * @param clock_source Clock source for calculation
+   * @return Best alternative resolution, or preferred if no better option
    */
-  hf_u8_t FindBestAlternativeResolution(hf_u32_t frequency_hz, hf_u8_t preferred_resolution) const noexcept;
+   [[nodiscard]] hf_u8_t FindBestAlternativeResolutionDynamic(hf_u32_t frequency_hz, hf_u8_t preferred_resolution,
+                                               hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
 
-  /**
-   * @brief Unified validation for frequency/resolution combinations and timer constraints
-   * @param frequency_hz Target frequency
-   * @param resolution_bits Target resolution
-   * @param timer_id Optional timer ID for specific validation (default: -1 for general validation)
-   * @return true if configuration is valid and achievable
-   * @note Combines hardware constraint validation and timer-specific checks
-   */
-  bool ValidateTimerConfiguration(hf_u32_t frequency_hz, hf_u8_t resolution_bits, hf_i8_t timer_id = -1) const noexcept;
+
 
   /**
    * @brief Notify channels that their timer has been reconfigured
@@ -626,6 +695,8 @@ private:
    */
   hf_i8_t AttemptForceEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
 
+
+
   //==============================================================================
   // MEMBER VARIABLES
   //==============================================================================
@@ -654,7 +725,7 @@ private:
   hf_pwm_diagnostics_t diagnostics_; ///< PWM diagnostics
   bool auto_fallback_enabled_;       ///< Whether to automatically try alternative resolutions
 
-  // ✅ NEW: Safe eviction policy management
+  // Safe eviction policy management
   hf_pwm_eviction_policy_t eviction_policy_;   ///< Timer eviction policy (default: STRICT_NO_EVICTION)
   hf_pwm_eviction_callback_t eviction_callback_; ///< User callback for eviction consent
   void* eviction_callback_user_data_;           ///< User data for eviction callback

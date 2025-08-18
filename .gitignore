@@ -44,6 +44,8 @@ docs/doxygen/
 **/doxygen*
 **/.cache/
 
+**/compile_commands.json
+
 .venv/
 **/venv/
 **/.venv/
@@ -54,3 +56,4 @@ __pycache__/
 
 actionlint*
 **/actionlint*
+

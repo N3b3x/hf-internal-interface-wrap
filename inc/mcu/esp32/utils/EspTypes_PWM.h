@@ -12,11 +12,11 @@
 
 #pragma once
 
-#include "BasePwm.h" // For hf_pwm_err_t
+#include "../../../base/BasePwm.h" // For hf_pwm_err_t
 #include "EspTypes_Base.h"
 #include "EspTypes_GPIO.h" // For hf_gpio_num_t
-#include "HardwareTypes.h" // For basic hardware types
-#include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
+#include "../../../base/HardwareTypes.h" // For basic hardware types
+#include "../../../utils/McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 
 //==============================================================================
 // ESP32 PWM TYPE MAPPINGS
@@ -220,9 +220,10 @@ struct hf_pwm_channel_config_t {
   uint8_t timer_id;             ///< Timer ID (0-3)
   hf_pwm_mode_t speed_mode;     ///< Speed mode configuration
   
-  // ✅ NEW: Explicit frequency and resolution control
+  // Explicit frequency and resolution control
   uint32_t frequency_hz;        ///< PWM frequency in Hz
   uint8_t resolution_bits;      ///< PWM resolution in bits (4-14)
+  hf_pwm_clock_source_t clock_source; ///< Preferred clock source for this channel
   
   uint32_t duty_initial;        ///< Initial duty cycle value (RAW for specified resolution)
   hf_pwm_intr_type_t intr_type; ///< Interrupt type
@@ -233,7 +234,7 @@ struct hf_pwm_channel_config_t {
   uint8_t idle_level; ///< Idle state level (0 or 1)
   bool output_invert; ///< Hardware output inversion
 
-  // ✅ NEW: Channel protection and priority for safe eviction
+  // Channel protection and priority for safe eviction
   hf_pwm_channel_priority_t priority; ///< Channel priority for eviction decisions
   bool is_critical;                   ///< Mark as critical (never evict)
   const char* description;            ///< Optional description for debugging
@@ -242,6 +243,7 @@ struct hf_pwm_channel_config_t {
       : gpio_pin(static_cast<hf_gpio_num_t>(HF_INVALID_PIN)), channel_id(0), timer_id(0),
         speed_mode(hf_pwm_mode_t::HF_PWM_MODE_BASIC), 
         frequency_hz(HF_PWM_DEFAULT_FREQUENCY), resolution_bits(HF_PWM_DEFAULT_RESOLUTION),
+        clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB), 
         duty_initial(0), intr_type(hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE), invert_output(false), 
         hpoint(0), idle_level(0), output_invert(false),
         priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr) {}
