@@ -2090,7 +2090,7 @@ hf_u8_t EspPwm::FindBestAlternativeResolutionDynamic(hf_u32_t frequency_hz, hf_u
   
   // Find the best achievable resolution (highest that works)
   for (hf_u8_t res = std::min(preferred_resolution, max_resolution); res >= 4; res--) {
-    ValidationContext(frequency_hz, resolution_bits, clock_source, -1);
+    ValidationContext ctx(frequency_hz, res, clock_source, -1);
     ValidationResult result = ValidateFrequencyResolutionComplete(ctx);
     if (result.is_valid) {
       ESP_LOGW(TAG, "Found dynamic alternative resolution: %d bits for frequency %lu Hz (preferred: %d bits)", 
@@ -2101,7 +2101,7 @@ hf_u8_t EspPwm::FindBestAlternativeResolutionDynamic(hf_u32_t frequency_hz, hf_u
   
   // If nothing works, try lower resolutions
   for (hf_u8_t res = 4; res < preferred_resolution; res++) {
-    ValidationContext(frequency_hz, resolution_bits, clock_source, -1);
+    ValidationContext ctx(frequency_hz, res, clock_source, -1);
     ValidationResult result = ValidateFrequencyResolutionComplete(ctx);
     if (result.is_valid) {
       ESP_LOGW(TAG, "Found fallback resolution: %d bits for frequency %lu Hz (preferred: %d bits)", 
@@ -2340,7 +2340,7 @@ hf_u8_t EspPwm::FindBestAlternativeResolution(hf_u32_t frequency_hz, hf_u8_t pre
 
 bool EspPwm::ValidateTimerConfiguration(hf_u32_t frequency_hz, hf_u8_t resolution_bits, hf_i8_t timer_id) const noexcept {
   // Legacy wrapper - use new unified validation system with timer-specific context
-  ValidationContext context(frequency_hz, resolution_bits, clock_source_, timer_id, false);
+  ValidationContext context(frequency_hz, resolution_bits, clock_source_, timer_id);
   ValidationResult result = ValidateFrequencyResolutionComplete(context);
   
   if (!result.is_valid) {
