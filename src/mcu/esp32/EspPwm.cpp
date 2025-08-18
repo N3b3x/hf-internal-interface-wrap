@@ -1,16 +1,30 @@
 /**
  * @file EspPwm.cpp
- * @brief Implementation of ESP32C6 LEDC (PWM) controller for the HardFOC system.
+ * @brief Implementation of ESP32 family LEDC (PWM) controller for the HardFOC system.
  *
- * This file provides the implementation for PWM generation using the ESP32C6's
- * built-in LEDC peripheral. All platform-specific types and implementations are
- * isolated through EspTypes_PWM.h. The implementation supports multiple channels,
- * configurable frequency and resolution, complementary outputs with deadtime,
- * hardware fade support, and interrupt-driven period callbacks.
+ * This file provides the complete implementation for PWM generation using the ESP32 family's
+ * built-in LEDC (LED Controller) peripheral. The implementation is designed to work across
+ * all ESP32 variants with automatic adaptation to variant-specific capabilities and constraints.
+ *
+ * ## Key Implementation Features:
+ * - **Variant-Agnostic Design:** Automatic adaptation to ESP32 variant capabilities
+ * - **LEDC Peripheral Integration:** Full utilization of hardware fade, timer sharing, and interrupts
+ * - **Smart Resource Management:** Automatic timer allocation with conflict resolution and eviction policies
+ * - **Thread-Safe Operations:** Complete RtosMutex protection for concurrent access
+ * - **Comprehensive Validation:** Hardware constraint validation with detailed error reporting
+ * - **Performance Optimization:** Efficient timer sharing and minimal overhead design
+ * - **Motor Control Features:** Complementary outputs, deadtime, and synchronized operations
+ *
+ * ## LEDC Hardware Abstraction:
+ * All platform-specific types and ESP-IDF dependencies are isolated through EspTypes_PWM.h,
+ * providing a clean abstraction layer that can be easily ported or tested.
  *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
+ * 
+ * @see EspPwm.h for comprehensive API documentation
+ * @see EspTypes_PWM.h for type definitions and LEDC peripheral details
  */
 #include "EspPwm.h"
 

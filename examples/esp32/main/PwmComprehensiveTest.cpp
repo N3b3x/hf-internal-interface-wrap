@@ -97,6 +97,13 @@ void cleanup_test_progress_indicator() noexcept {
 
 /**
  * @brief Create a default PWM configuration for testing
+ * @return Configured PWM unit configuration for basic testing
+ * 
+ * @details Creates a standard test configuration with:
+ * - Basic PWM mode (no fade)
+ * - APB clock source (80MHz)
+ * - Interrupts enabled
+ * - Fade functionality disabled for basic testing
  */
 hf_pwm_unit_config_t create_test_config() noexcept {
   hf_pwm_unit_config_t config = {};
@@ -139,6 +146,17 @@ hf_pwm_unit_config_t create_basic_with_fade_config() noexcept {
 
 /**
  * @brief Create a default channel configuration for testing with explicit resolution control
+ * @param gpio_pin GPIO pin number for PWM output
+ * @param frequency_hz PWM frequency in Hz (default: 1kHz)
+ * @param resolution_bits PWM resolution in bits (default: 10-bit)
+ * @return Configured PWM channel configuration for testing
+ * 
+ * @details Creates a standard channel configuration with:
+ * - 50% initial duty cycle
+ * - APB clock source preference
+ * - Basic PWM mode
+ * - No output inversion
+ * - Low priority (non-critical)
  */
 hf_pwm_channel_config_t create_test_channel_config(hf_gpio_num_t gpio_pin, 
                                                    hf_u32_t frequency_hz = HF_PWM_DEFAULT_FREQUENCY,
@@ -189,6 +207,18 @@ hf_pwm_channel_config_t create_test_channel_config_with_duty(hf_gpio_num_t gpio_
 // CONSTRUCTOR/DESTRUCTOR TESTS
 //==============================================================================
 
+/**
+ * @brief Test PWM constructor variations and object creation
+ * @return true if all constructor tests pass, false otherwise
+ * 
+ * @details Validates proper object construction without hardware initialization:
+ * - Default constructor with minimal configuration
+ * - Constructor with explicit unit configuration
+ * - Legacy constructor with clock frequency parameter
+ * 
+ * @note No hardware initialization occurs during construction (lazy initialization pattern)
+ * @warning All constructors must complete without exceptions (noexcept specification)
+ */
 bool test_constructor_default() noexcept {
   ESP_LOGI(TAG, "Testing default constructor...");
 
@@ -236,6 +266,20 @@ bool test_destructor_cleanup() noexcept {
 // LIFECYCLE TESTS
 //==============================================================================
 
+/**
+ * @brief Test PWM initialization state management and lifecycle
+ * @return true if all initialization state tests pass, false otherwise
+ * 
+ * @details Validates proper initialization state transitions:
+ * - Initial uninitialized state after construction
+ * - Manual initialization with Initialize() method
+ * - Double initialization protection (returns ALREADY_INITIALIZED)
+ * - Proper deinitialization with Deinitialize() method
+ * - State consistency throughout lifecycle
+ * 
+ * @note Tests the explicit initialization path (not lazy initialization)
+ * @warning All state transitions must be atomic and thread-safe
+ */
 bool test_initialization_states() noexcept {
   ESP_LOGI(TAG, "Testing initialization states...");
 
@@ -567,6 +611,21 @@ bool test_channel_enable_disable() noexcept {
 // PWM CONTROL TESTS
 //==============================================================================
 
+/**
+ * @brief Test comprehensive duty cycle control functionality
+ * @return true if all duty cycle tests pass, false otherwise
+ * 
+ * @details Validates precise duty cycle control across full range:
+ * - **Float Interface:** Tests 0%, 25%, 50%, 75%, 100% duty cycles
+ * - **Raw Interface:** Tests raw values 0, 256, 512, 768, 1023 (10-bit)
+ * - **Input Validation:** Tests rejection of invalid values (-0.1, 1.1)
+ * - **Accuracy Verification:** Confirms readback values match set values
+ * 
+ * @note Uses GPIO 2 for PWM output with 1kHz frequency @ 10-bit resolution
+ * @warning Duty cycle accuracy should be within ±1% of commanded value
+ * 
+ * @see test_resolution_specific_duty_cycles() for resolution-specific testing
+ */
 bool test_duty_cycle_control() noexcept {
   ESP_LOGI(TAG, "Testing duty cycle control...");
 
@@ -972,6 +1031,44 @@ bool test_idle_level_control() noexcept {
   return true;
 }
 
+/**
+ * @brief Test comprehensive LEDC timer resource management
+ * @return true if all timer management tests pass, false otherwise
+ * 
+ * @details Validates advanced timer allocation and management features:
+ * 
+ * **Phase 1: Basic Timer Allocation**
+ * - Tests automatic timer assignment for different frequency/resolution combinations
+ * - Validates timer sharing optimization for compatible frequencies
+ * - Confirms proper timer resource tracking
+ * 
+ * **Phase 2: Timer Exhaustion Scenarios**
+ * - Tests behavior when all timers are allocated with incompatible combinations
+ * - Validates proper error reporting (TIMER_CONFLICT)
+ * - Confirms system stability under resource pressure
+ * 
+ * **Phase 3: Compatible Frequency Reuse**
+ * - Tests timer sharing for frequencies within tolerance (±5%)
+ * - Validates resource optimization and efficiency
+ * 
+ * **Phase 4: Timer Recovery**
+ * - Tests timer resource recovery after channel release
+ * - Validates automatic cleanup and reallocation
+ * 
+ * **Phase 5: Forced Timer Assignment**
+ * - Tests manual timer assignment with ForceTimerAssignment()
+ * - Validates override of automatic allocation
+ * 
+ * **Phase 6: Diagnostics Validation**
+ * - Tests statistics and diagnostics reporting accuracy
+ * - Validates resource usage tracking
+ * 
+ * @note This test exercises the core LEDC timer management algorithms
+ * @warning Timer allocation behavior may vary between ESP32 variants
+ * 
+ * @see FindOrAllocateTimer() for timer allocation implementation
+ * @see ForceTimerAssignment() for manual timer control
+ */
 bool test_timer_management() noexcept {
   ESP_LOGI(TAG, "Testing timer management...");
 
@@ -1576,6 +1673,35 @@ bool test_frequency_resolution_validation() noexcept {
 
 /**
  * @brief Test enhanced validation system with clock source awareness (NEW)
+ * @return true if all validation system tests pass, false otherwise
+ * 
+ * @details Comprehensive validation of the LEDC peripheral constraint system:
+ * 
+ * **Phase 1: Clock Source Validation**
+ * - Tests APB clock (80MHz) with various frequency/resolution combinations
+ * - Validates hardware constraint formula: freq × (2^resolution) ≤ clock_freq
+ * - Verifies proper error reporting for invalid combinations
+ * 
+ * **Phase 2: Dynamic Resolution Calculation**
+ * - Tests maximum achievable resolution for given frequencies
+ * - Validates theoretical vs. practical resolution limits
+ * - Confirms hardware constraint calculations
+ * 
+ * **Phase 3: Enhanced Duty Cycle Validation**
+ * - Tests overflow protection for different resolutions
+ * - Validates automatic clamping of out-of-range values
+ * - Confirms resolution-specific duty cycle ranges
+ * 
+ * **Phase 4: Auto-Fallback Functionality**
+ * - Tests automatic resolution adjustment for problematic combinations
+ * - Validates fallback resolution selection algorithms
+ * - Confirms graceful handling of impossible combinations
+ * 
+ * @note This test validates the core LEDC peripheral constraint system
+ * @warning Tests may fail on ESP32 variants with different LEDC capabilities
+ * 
+ * @see test_frequency_resolution_validation() for basic constraint testing
+ * @see SetFrequencyWithAutoFallback() for automatic resolution adjustment
  */
 bool test_enhanced_validation_system() noexcept {
   ESP_LOGI(TAG, "Testing enhanced validation system with clock source awareness...");
