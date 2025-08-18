@@ -346,7 +346,7 @@ bool test_mode_configuration() noexcept {
 }
 
 bool test_clock_source_configuration() noexcept {
-  ESP_LOGI(TAG, "Testing clock source configuration...");
+  ESP_LOGI(TAG, "Testing per-channel clock source configuration...");
 
   hf_pwm_unit_config_t config = create_test_config();
   EspPwm pwm(config);
@@ -356,28 +356,51 @@ bool test_clock_source_configuration() noexcept {
     return false;
   }
 
-  // Test different clock sources
-  hf_pwm_clock_source_t sources[] = {
-      hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT, hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB,
-      hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST};
+  // Test different clock sources per channel
+  struct ClockSourceChannelTest {
+    hf_pwm_clock_source_t clock_source;
+    hf_gpio_num_t gpio_pin;
+    uint32_t frequency;
+    uint8_t resolution;
+    const char* description;
+  };
 
-  for (auto source : sources) {
-    hf_pwm_err_t result = pwm.SetClockSource(source);
+  ClockSourceChannelTest clock_channel_tests[] = {
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT, 2, 1000, 10, "AUTO clock @ 1kHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, 3, 20000, 10, "APB clock @ 20kHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 4, 10000, 10, "XTAL clock @ 10kHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 5, 5000, 10, "RC_FAST clock @ 5kHz"},
+  };
+
+  for (size_t i = 0; i < sizeof(clock_channel_tests)/sizeof(clock_channel_tests[0]); i++) {
+    const auto& test = clock_channel_tests[i];
+    ESP_LOGI(TAG, "Testing %s on channel %lu", test.description, i);
+    
+    // Configure channel with specific clock source
+    hf_pwm_channel_config_t ch_config = create_test_channel_config(test.gpio_pin);
+    ch_config.frequency_hz = test.frequency;
+    ch_config.resolution_bits = test.resolution;
+    ch_config.clock_source = test.clock_source; // ✅ Per-channel clock source
+    
+    hf_pwm_err_t result = pwm.ConfigureChannel(i, ch_config);
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set clock source %d: %s", static_cast<int>(source),
-               HfPwmErrToString(result));
+      ESP_LOGE(TAG, "Failed to configure channel %lu with %s: %s", 
+               i, test.description, HfPwmErrToString(result));
       return false;
     }
 
-    if (pwm.GetClockSource() != source) {
-      ESP_LOGE(TAG, "Clock source not set correctly");
+    result = pwm.EnableChannel(i);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to enable channel %lu with %s: %s", 
+               i, test.description, HfPwmErrToString(result));
       return false;
     }
 
-    ESP_LOGI(TAG, "Clock source %d set successfully", static_cast<int>(source));
+    ESP_LOGI(TAG, "✓ Channel %lu configured successfully with %s", i, test.description);
+    vTaskDelay(pdMS_TO_TICKS(100));
   }
 
-  ESP_LOGI(TAG, "[SUCCESS] Clock source configuration test passed");
+  ESP_LOGI(TAG, "[SUCCESS] Per-channel clock source configuration test passed");
   return true;
 }
 
@@ -1587,15 +1610,14 @@ bool test_enhanced_validation_system() noexcept {
   for (const auto& test : clock_tests) {
     ESP_LOGI(TAG, "Testing %s", test.description);
     
-    // Set the clock source
-    result = pwm.SetClockSource(test.clock_source);
-    if (result != hf_pwm_err_t::PWM_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to set clock source for test: %s", test.description);
-      continue;
-    }
+    // Configure a new channel with specific clock source
+    hf_pwm_channel_config_t clock_test_config = create_test_channel_config(3); // Use GPIO 3 for clock tests
+    clock_test_config.frequency_hz = test.frequency;
+    clock_test_config.resolution_bits = test.resolution;
+    clock_test_config.clock_source = test.clock_source; // ✅ NEW: Per-channel clock source
     
-    // Test the frequency/resolution combination
-    result = pwm.SetFrequencyWithResolution(0, test.frequency, test.resolution);
+    // Test channel configuration with specific clock source
+    result = pwm.ConfigureChannel(1, clock_test_config); // Use channel 1 for clock tests
     
     if (test.should_succeed) {
       if (result != hf_pwm_err_t::PWM_SUCCESS) {
@@ -1614,8 +1636,7 @@ bool test_enhanced_validation_system() noexcept {
     vTaskDelay(pdMS_TO_TICKS(50));
   }
 
-  // Reset to APB clock for remaining tests
-  pwm.SetClockSource(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB);
+  // Clock source is now per-channel, no need to reset globally
 
   // Test 2: Dynamic resolution calculation
   ESP_LOGI(TAG, "Phase 2: Testing dynamic resolution calculation");

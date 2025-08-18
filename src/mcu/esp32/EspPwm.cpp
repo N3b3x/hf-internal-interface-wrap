@@ -268,14 +268,14 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   hf_u8_t old_timer = channels_[channel_id].configured ? channels_[channel_id].assigned_timer : 0xFF;
   bool is_reconfiguration = channels_[channel_id].configured;
 
-  hf_i8_t timer_id = FindOrAllocateTimer(frequency_hz, resolution_bits);
+  hf_i8_t timer_id = FindOrAllocateTimer(frequency_hz, resolution_bits, config.clock_source);
   if (timer_id < 0) {
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
     return hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT;
   }
 
-  // Configure the platform timer if needed
-  hf_pwm_err_t timer_result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+  // Configure the platform timer with channel's preferred clock source
+  hf_pwm_err_t timer_result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits, config.clock_source);
   if (timer_result != hf_pwm_err_t::PWM_SUCCESS) {
     SetChannelError(channel_id, timer_result);
     return timer_result;
@@ -639,7 +639,7 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id,
       ESP_LOGD(TAG, "Reconfiguring timer %d from %lu Hz to %lu Hz (single user)", 
                current_timer, current_frequency, frequency_hz);
       
-      hf_pwm_err_t result = ConfigurePlatformTimer(current_timer, frequency_hz, current_resolution);
+      hf_pwm_err_t result = ConfigurePlatformTimer(current_timer, frequency_hz, current_resolution, channels_[channel_id].config.clock_source);
       if (result == hf_pwm_err_t::PWM_SUCCESS) {
         // Update timer state
         timers_[current_timer].frequency_hz = frequency_hz;
@@ -684,7 +684,7 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id,
     // Strategy 3: Use smart timer allocation (last resort)
     ESP_LOGD(TAG, "No compatible timers found, using smart timer allocation for frequency %lu Hz", frequency_hz);
     
-    hf_i8_t new_timer = FindOrAllocateTimer(frequency_hz, current_resolution);
+    hf_i8_t new_timer = FindOrAllocateTimer(frequency_hz, current_resolution, channels_[channel_id].config.clock_source);
     if (new_timer < 0) {
       ESP_LOGE(TAG, "Smart timer allocation failed: no available timers for frequency %lu Hz", frequency_hz);
       SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
@@ -780,8 +780,8 @@ hf_pwm_err_t EspPwm::SetFrequencyWithResolution(hf_channel_id_t channel_id,
   ESP_LOGI(TAG, "User requested frequency %lu Hz @ %d bits (explicit resolution choice)", 
            frequency_hz, resolution_bits);
 
-  // Find or allocate timer for this specific frequency/resolution combination
-  hf_i8_t timer_id = FindOrAllocateTimer(frequency_hz, resolution_bits);
+  // Find or allocate timer for this specific frequency/resolution combination with channel's clock source
+  hf_i8_t timer_id = FindOrAllocateTimer(frequency_hz, resolution_bits, channels_[channel_id].config.clock_source);
   if (timer_id < 0) {
     ESP_LOGE(TAG, "No available timer for frequency %lu Hz @ %d bits", frequency_hz, resolution_bits);
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
@@ -789,7 +789,7 @@ hf_pwm_err_t EspPwm::SetFrequencyWithResolution(hf_channel_id_t channel_id,
   }
 
   // Configure the timer with the user-specified resolution
-  hf_pwm_err_t timer_result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+  hf_pwm_err_t timer_result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits, channels_[channel_id].config.clock_source);
   if (timer_result != hf_pwm_err_t::PWM_SUCCESS) {
     SetChannelError(channel_id, timer_result);
     return timer_result;
@@ -994,8 +994,8 @@ hf_pwm_err_t EspPwm::SetFrequencyAndResolution(hf_channel_id_t channel_id,
   // Store current duty cycle as percentage to preserve it across resolution changes
   float current_duty_percentage = GetDutyCycle(channel_id);
 
-  // Find or allocate timer for new frequency/resolution combination
-  hf_i8_t new_timer = FindOrAllocateTimer(frequency_hz, resolution_bits);
+  // Find or allocate timer for new frequency/resolution combination with channel's clock source
+  hf_i8_t new_timer = FindOrAllocateTimer(frequency_hz, resolution_bits, channels_[channel_id].config.clock_source);
   if (new_timer < 0) {
     ESP_LOGE(TAG, "No available timer for frequency %lu Hz @ %d bits", frequency_hz, resolution_bits);
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
@@ -1003,7 +1003,7 @@ hf_pwm_err_t EspPwm::SetFrequencyAndResolution(hf_channel_id_t channel_id,
   }
 
   // Configure the timer
-  hf_pwm_err_t timer_result = ConfigurePlatformTimer(new_timer, frequency_hz, resolution_bits);
+  hf_pwm_err_t timer_result = ConfigurePlatformTimer(new_timer, frequency_hz, resolution_bits, channels_[channel_id].config.clock_source);
   if (timer_result != hf_pwm_err_t::PWM_SUCCESS) {
     SetChannelError(channel_id, timer_result);
     return timer_result;
@@ -1483,8 +1483,8 @@ hf_pwm_err_t EspPwm::ForceTimerAssignment(hf_channel_id_t channel_id, hf_u8_t ti
     ReleaseTimerIfUnused(old_timer);
   }
 
-  // Configure the target timer with the channel's frequency and resolution
-  hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, channel_frequency, channel_resolution);
+  // Configure the target timer with the channel's frequency, resolution, and clock source
+  hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, channel_frequency, channel_resolution, channels_[channel_id].config.clock_source);
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure forced timer %d: %s", timer_id, HfPwmErrToString(result));
     SetChannelError(channel_id, result);
@@ -1640,55 +1640,67 @@ bool EspPwm::IsValidChannelId(hf_channel_id_t channel_id) const noexcept {
   return (channel_id < MAX_CHANNELS);
 }
 
-hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept {
-  ESP_LOGD(TAG, "Unified timer allocation for freq=%lu Hz, res=%d bits", frequency_hz, resolution_bits);
+hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits, 
+                                    hf_pwm_clock_source_t clock_source) noexcept {
+  ESP_LOGD(TAG, "Clock-aware timer allocation for freq=%lu Hz, res=%d bits, clock=%d", 
+           frequency_hz, resolution_bits, static_cast<int>(clock_source));
   
   // Phase 1: Validation - early rejection of invalid combinations
-  if (!ValidateTimerConfiguration(frequency_hz, resolution_bits)) {
-    ESP_LOGW(TAG, "Frequency/resolution combination %lu Hz @ %d bits failed validation", frequency_hz, resolution_bits);
+  ValidationContext context(frequency_hz, resolution_bits, clock_source);
+  ValidationResult validation = ValidateFrequencyResolutionComplete(context);
+  if (!validation.is_valid) {
+    ESP_LOGW(TAG, "Frequency/resolution combination %lu Hz @ %d bits failed validation: %s", 
+             frequency_hz, resolution_bits, validation.reason);
     return -1;
   }
   
-  // Phase 2: Optimal reuse - exact match with available capacity
+  // Phase 2: Optimal reuse - exact match with clock source compatibility
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (timers_[timer_id].in_use && 
         timers_[timer_id].frequency_hz == frequency_hz &&
         timers_[timer_id].resolution_bits == resolution_bits &&
-        timers_[timer_id].channel_count < 8 && // ESP32-C6 supports up to 8 channels per timer
-        !timers_[timer_id].has_hardware_conflicts) {
+        timers_[timer_id].channel_count < MAX_CHANNELS && // ESP32-C6 has 6 channels total
+        !timers_[timer_id].has_hardware_conflicts &&
+        IsClockSourceCompatible(timers_[timer_id].clock_source, clock_source)) {
       
       timers_[timer_id].channel_count++;
-      ESP_LOGD(TAG, "Reusing optimal timer %d (channels=%d)", timer_id, timers_[timer_id].channel_count);
+      ESP_LOGD(TAG, "Reusing optimal timer %d (channels=%d, clock compatible)", 
+               timer_id, timers_[timer_id].channel_count);
       return timer_id;
     }
   }
   
-  // Phase 3: Compatible frequency reuse (5% tolerance)
+  // Phase 3: Compatible frequency reuse (5% tolerance) with clock compatibility
   const float frequency_tolerance = 0.05f;
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (timers_[timer_id].in_use && 
         timers_[timer_id].resolution_bits == resolution_bits &&
-        timers_[timer_id].channel_count < 8 &&
-        !timers_[timer_id].has_hardware_conflicts) {
+        timers_[timer_id].channel_count < MAX_CHANNELS && // ESP32-C6 has 6 channels
+        !timers_[timer_id].has_hardware_conflicts &&
+        IsClockSourceCompatible(timers_[timer_id].clock_source, clock_source)) {
       
       float freq_diff = std::abs(static_cast<float>(timers_[timer_id].frequency_hz - frequency_hz)) / 
                        static_cast<float>(frequency_hz);
       
       if (freq_diff <= frequency_tolerance) {
-        ESP_LOGD(TAG, "Found compatible timer %d (freq_diff=%.2f%%)", timer_id, freq_diff * 100.0f);
+        ESP_LOGD(TAG, "Found compatible timer %d (freq_diff=%.2f%%, clock compatible)", 
+                 timer_id, freq_diff * 100.0f);
         timers_[timer_id].channel_count++;
         return timer_id;
       }
     }
   }
   
-  // Phase 4: New allocation
+  // Phase 4: New allocation with specific clock source
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (!timers_[timer_id].in_use) {
-      if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
+      ValidationContext timer_context(frequency_hz, resolution_bits, clock_source, timer_id);
+      ValidationResult timer_validation = ValidateFrequencyResolutionComplete(timer_context);
+      if (timer_validation.is_valid) {
         timers_[timer_id].in_use = true;
         timers_[timer_id].frequency_hz = frequency_hz;
         timers_[timer_id].resolution_bits = resolution_bits;
+        timers_[timer_id].clock_source = clock_source;
         timers_[timer_id].channel_count = 1;
         timers_[timer_id].has_hardware_conflicts = false;
         
@@ -1777,15 +1789,17 @@ void EspPwm::ReleaseTimerIfUnused(hf_u8_t timer_id) noexcept {
 }
 
 hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency_hz,
-                                            hf_u8_t resolution_bits) noexcept {
+                                            hf_u8_t resolution_bits, 
+                                            hf_pwm_clock_source_t clock_source) noexcept {
   ledc_timer_config_t timer_config = {};
   timer_config.speed_mode = LEDC_LOW_SPEED_MODE;
   timer_config.timer_num = static_cast<ledc_timer_t>(timer_id);
   timer_config.duty_resolution = static_cast<ledc_timer_bit_t>(resolution_bits);
   timer_config.freq_hz = frequency_hz;
+  
+  // Use channel's preferred clock source (not global PWM unit clock)
   ledc_clk_cfg_t clk_cfg = LEDC_AUTO_CLK;
-  // ESP32-C6 LEDC supports low-speed only; map clocks accordingly.
-  switch (clock_source_) {
+  switch (clock_source) {
     case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
       clk_cfg = LEDC_AUTO_CLK; // PLL_80M/APB
       break;
@@ -1795,8 +1809,9 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
     case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
       clk_cfg = LEDC_USE_RC_FAST_CLK;
       break;
+    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT:
     default:
-      clk_cfg = LEDC_AUTO_CLK;
+      clk_cfg = LEDC_AUTO_CLK; // Let ESP-IDF choose optimal clock
       break;
   }
   timer_config.clk_cfg = clk_cfg;
@@ -1807,16 +1822,20 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
     return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
   }
 
-  // Ensure timer state reflects actual hardware configuration
-  // This is essential for correct duty cycle calculations
+  // Store timer configuration including clock source
   timers_[timer_id].frequency_hz = frequency_hz;
   timers_[timer_id].resolution_bits = resolution_bits;
+  timers_[timer_id].clock_source = clock_source;
   timers_[timer_id].in_use = true;
 
   statistics_.last_activity_timestamp = esp_timer_get_time();
 
-  ESP_LOGD(TAG, "Timer %d configured: freq=%lu Hz, resolution=%d bits", timer_id, frequency_hz,
-           resolution_bits);
+  const char* clock_name = (clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) ? "APB" :
+                          (clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL) ? "XTAL" :
+                          (clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST) ? "RC_FAST" : "AUTO";
+  
+  ESP_LOGD(TAG, "Timer %d configured: freq=%lu Hz, resolution=%d bits, clock=%s", 
+           timer_id, frequency_hz, resolution_bits, clock_name);
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
@@ -1947,59 +1966,7 @@ void EspPwm::HandleFadeComplete(hf_channel_id_t channel_id) noexcept {
 // ADDITIONAL ESP32C6-SPECIFIC METHODS
 //==============================================================================
 
-hf_pwm_err_t EspPwm::SetClockSource(hf_pwm_clock_source_t clock_source) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
-  }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  // Convert to ESP-IDF clock source
-  ledc_clk_cfg_t esp_clock_source;
-  switch (clock_source) {
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-      esp_clock_source = LEDC_AUTO_CLK; // PLL_80M/APB
-      break;
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
-      esp_clock_source = LEDC_USE_XTAL_CLK;
-      break;
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
-      esp_clock_source = LEDC_USE_RC_FAST_CLK;
-      break;
-    default:
-      esp_clock_source = LEDC_AUTO_CLK;
-      break;
-  }
-
-  // Update all active timers with new clock source
-  for (uint8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
-    if (timers_[timer_id].in_use) {
-      ledc_timer_config_t timer_config = {};
-      timer_config.speed_mode = LEDC_LOW_SPEED_MODE;
-      timer_config.timer_num = static_cast<ledc_timer_t>(timer_id);
-      timer_config.duty_resolution =
-          static_cast<ledc_timer_bit_t>(timers_[timer_id].resolution_bits);
-      timer_config.freq_hz = timers_[timer_id].frequency_hz;
-      timer_config.clk_cfg = esp_clock_source;
-
-      esp_err_t ret = ledc_timer_config(&timer_config);
-      if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to update timer %d clock source: %s", timer_id, esp_err_to_name(ret));
-        return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
-      }
-    }
-  }
-
-  clock_source_ = clock_source;
-  statistics_.last_activity_timestamp = esp_timer_get_time();
-  ESP_LOGI(TAG, "Clock source updated to %d", static_cast<int>(clock_source));
-  return hf_pwm_err_t::PWM_SUCCESS;
-}
-
-hf_pwm_clock_source_t EspPwm::GetClockSource() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  return clock_source_;
-}
 
 hf_pwm_err_t EspPwm::InitializeFadeFunctionality() noexcept {
   if (fade_functionality_installed_) {
@@ -2094,6 +2061,17 @@ bool EspPwm::ValidateDutyCycleRange(hf_u32_t raw_duty, hf_u8_t resolution_bits) 
   // Allow full range including maximum value (2^resolution - 1)
   hf_u32_t max_duty = (1U << resolution_bits) - 1;
   return raw_duty <= max_duty;
+}
+
+bool EspPwm::IsClockSourceCompatible(hf_pwm_clock_source_t timer_clock, hf_pwm_clock_source_t requested_clock) const noexcept {
+  // AUTO clock is compatible with any specific clock (ESP-IDF will choose optimal)
+  if (timer_clock == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT || 
+      requested_clock == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT) {
+    return true;
+  }
+  
+  // Specific clocks must match exactly
+  return timer_clock == requested_clock;
 }
 
 hf_u8_t EspPwm::FindBestAlternativeResolutionDynamic(hf_u32_t frequency_hz, hf_u8_t preferred_resolution,
@@ -2445,7 +2423,7 @@ hf_i8_t EspPwm::AttemptEvictionWithConsent(hf_u32_t frequency_hz, hf_u8_t resolu
           ESP_LOGI(TAG, "User approved eviction of timer %d affecting channel %d", timer_id, affected_channel);
           
           NotifyTimerReconfiguration(timer_id, frequency_hz, resolution_bits);
-          hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits);
+          hf_pwm_err_t result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits, hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT);
           if (result == hf_pwm_err_t::PWM_SUCCESS) {
             timers_[timer_id].frequency_hz = frequency_hz;
             timers_[timer_id].resolution_bits = resolution_bits;

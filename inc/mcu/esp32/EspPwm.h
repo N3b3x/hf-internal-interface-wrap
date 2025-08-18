@@ -346,18 +346,7 @@ public:
    */
   bool IsChannelCritical(hf_channel_id_t channel_id) const noexcept;
 
-  /**
-   * @brief Set clock source for PWM timers
-   * @param clock_source Clock source selection
-   * @return PWM_SUCCESS on success, error code on failure
-   */
-  hf_pwm_err_t SetClockSource(hf_pwm_clock_source_t clock_source) noexcept;
 
-  /**
-   * @brief Get current clock source
-   * @return Current clock source
-   */
-  hf_pwm_clock_source_t GetClockSource() const noexcept;
 
   /**
    * @brief Get PWM statistics
@@ -410,9 +399,11 @@ private:
     hf_u32_t frequency_hz;   ///< Timer frequency
     hf_u8_t resolution_bits; ///< Timer resolution
     hf_u8_t channel_count;   ///< Number of channels using this timer
+    hf_pwm_clock_source_t clock_source; ///< Clock source configured for this timer
     bool has_hardware_conflicts; ///< Timer has hardware conflicts (avoid reusing)
 
-    TimerState() noexcept : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0), has_hardware_conflicts(false) {}
+    TimerState() noexcept : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0), 
+                           clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT), has_hardware_conflicts(false) {}
   };
 
   /**
@@ -446,7 +437,8 @@ private:
    * @return Timer ID (0-3), or -1 if no timer available
    * @note Combines all allocation strategies: reuse, new allocation, eviction
    */
-  hf_i8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+  hf_i8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits, 
+                              hf_pwm_clock_source_t clock_source) noexcept;
 
   /**
    * @brief Release a timer if no longer needed with hardware cleanup
@@ -462,7 +454,8 @@ private:
    * @return PWM_SUCCESS on success, error code on failure
    */
   hf_pwm_err_t ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency_hz,
-                                      hf_u8_t resolution_bits) noexcept;
+                                      hf_u8_t resolution_bits, 
+                                      hf_pwm_clock_source_t clock_source) noexcept;
 
   /**
    * @brief Configure platform channel
@@ -615,6 +608,15 @@ private:
    * @note Implements ESP-IDF overflow protection: duty < 2^resolution
    */
   bool ValidateDutyCycleRange(hf_u32_t raw_duty, hf_u8_t resolution_bits) const noexcept;
+
+  /**
+   * @brief Check if two clock sources are compatible for timer sharing
+   * @param timer_clock Current timer's clock source
+   * @param requested_clock Requested clock source
+   * @return true if compatible (can share timer), false otherwise
+   * @note AUTO clock is compatible with any specific clock
+   */
+  bool IsClockSourceCompatible(hf_pwm_clock_source_t timer_clock, hf_pwm_clock_source_t requested_clock) const noexcept;
 
   /**
    * @brief Find best alternative resolution using dynamic calculation
