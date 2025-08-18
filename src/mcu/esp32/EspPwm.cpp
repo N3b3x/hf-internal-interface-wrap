@@ -1529,7 +1529,11 @@ hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bi
   // Phase 5: Health check and retry
   hf_u8_t cleaned_timers = PerformTimerHealthCheck();
   if (cleaned_timers > 0) {
-    ESP_LOGD(TAG, "Health check cleaned %d timers, retrying", cleaned_timers);
+    ESP_LOGD(TAG, "Health check cleaned %d timers, retrying allocation", cleaned_timers);
+    
+    // Update statistics for health check operations
+    statistics_.last_activity_timestamp = esp_timer_get_time();
+    
     // Quick retry after health check
     for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
       if (!timers_[timer_id].in_use && ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
@@ -1538,9 +1542,13 @@ hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bi
         timers_[timer_id].resolution_bits = resolution_bits;
         timers_[timer_id].channel_count = 1;
         timers_[timer_id].has_hardware_conflicts = false;
+        
+        ESP_LOGD(TAG, "Successfully allocated timer %d after health check", timer_id);
         return timer_id;
       }
     }
+    
+    ESP_LOGD(TAG, "Health check completed but no suitable timer found for %lu Hz @ %d bits", frequency_hz, resolution_bits);
   }
   
   // Phase 6: Smart eviction (last resort)
@@ -1565,7 +1573,18 @@ hf_i8_t EspPwm::FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bi
     }
   }
   
+  // Provide detailed failure analysis
   ESP_LOGE(TAG, "All timer allocation strategies failed for %lu Hz @ %d bits", frequency_hz, resolution_bits);
+  ESP_LOGE(TAG, "Timer allocation failure analysis:");
+  ESP_LOGE(TAG, "  - Required timer clock: %llu Hz (max: 80MHz)", 
+           static_cast<uint64_t>(frequency_hz) * (1ULL << resolution_bits));
+  ESP_LOGE(TAG, "  - All %d timers exhausted or incompatible", MAX_TIMERS);
+  ESP_LOGE(TAG, "  - Consider using lower resolution or frequency, or releasing unused channels");
+  
+  // Update error statistics
+  statistics_.error_count++;
+  statistics_.last_activity_timestamp = esp_timer_get_time();
+  
   return -1;
 }
 
