@@ -535,40 +535,133 @@ private:
    */
   hf_u32_t CalculateClockDivider(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
 
+  //==============================================================================
+  // ENHANCED VALIDATION SYSTEM (NEW)
+  //==============================================================================
+
   /**
-   * @brief Validate frequency/resolution combination for ESP32-C6 LEDC
+   * @brief Validation context for comprehensive frequency/resolution validation
+   */
+  struct ValidationContext {
+    hf_u32_t frequency_hz;                    ///< Target frequency in Hz
+    hf_u8_t resolution_bits;                  ///< Target resolution in bits
+    hf_pwm_clock_source_t clock_source;       ///< Clock source for validation
+    hf_i8_t timer_id;                         ///< Optional specific timer (-1 for general)
+    bool allow_empirical_override;            ///< Allow empirical validation override
+    
+    ValidationContext(hf_u32_t freq, hf_u8_t res, 
+                     hf_pwm_clock_source_t clk = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB,
+                     hf_i8_t timer = -1, bool empirical = false) noexcept
+        : frequency_hz(freq), resolution_bits(res), clock_source(clk), 
+          timer_id(timer), allow_empirical_override(empirical) {}
+  };
+
+  /**
+   * @brief Comprehensive validation result with detailed information
+   */
+  struct ValidationResult {
+    bool is_valid;                            ///< Overall validation result
+    hf_pwm_err_t error_code;                  ///< Specific error code if invalid
+    const char* reason;                       ///< Human-readable reason for failure
+    hf_u8_t max_achievable_resolution;        ///< Maximum resolution for this frequency
+    hf_u32_t max_achievable_frequency;        ///< Maximum frequency for this resolution
+    uint64_t required_clock_hz;               ///< Required timer clock frequency
+    uint64_t available_clock_hz;              ///< Available source clock frequency
+    
+    ValidationResult() noexcept
+        : is_valid(false), error_code(hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER),
+          reason("Unknown error"), max_achievable_resolution(0), max_achievable_frequency(0),
+          required_clock_hz(0), available_clock_hz(0) {}
+  };
+
+  /**
+   * @brief Empirical validation limit entry for known hardware limitations
+   */
+  struct EmpiricalLimit {
+    hf_u32_t max_frequency;                   ///< Maximum frequency for this resolution
+    hf_u8_t resolution_bits;                  ///< Resolution in bits
+    hf_pwm_clock_source_t clock_source;       ///< Applicable clock source
+    const char* reason;                       ///< Reason for limitation
+    bool is_hard_limit;                       ///< True if absolutely cannot exceed
+  };
+
+  /**
+   * @brief Unified comprehensive validation for frequency/resolution combinations
+   * @param context Validation context with all parameters
+   * @return Detailed validation result with recommendations
+   * @note This replaces all individual validation functions with a unified approach
+   */
+  ValidationResult ValidateFrequencyResolutionComplete(const ValidationContext& context) const noexcept;
+
+  /**
+   * @brief Get source clock frequency for a given clock source
+   * @param clock_source Clock source to query
+   * @return Clock frequency in Hz
+   */
+  hf_u32_t GetSourceClockFrequency(hf_pwm_clock_source_t clock_source) const noexcept;
+
+  /**
+   * @brief Calculate maximum achievable resolution for a given frequency
    * @param frequency_hz Target frequency in Hz
+   * @param clock_source Clock source to use (default: APB)
+   * @return Maximum resolution in bits, or 0 if frequency too high
+   */
+  hf_u8_t CalculateMaxResolution(hf_u32_t frequency_hz, 
+                                hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
+
+  /**
+   * @brief Calculate maximum achievable frequency for a given resolution
    * @param resolution_bits Target resolution in bits
-   * @return true if combination is achievable, false otherwise
-   * @note ESP32-C6 LEDC constraint: freq_hz * (2^resolution_bits) <= 80MHz
+   * @param clock_source Clock source to use (default: APB)
+   * @return Maximum frequency in Hz, or 0 if resolution too high
+   */
+  hf_u32_t CalculateMaxFrequency(hf_u8_t resolution_bits,
+                                hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
+
+  /**
+   * @brief Enhanced duty cycle validation with overflow protection
+   * @param raw_duty Raw duty cycle value
+   * @param resolution_bits Resolution in bits
+   * @return true if duty cycle is valid and safe
+   * @note Implements ESP-IDF overflow protection: duty < 2^resolution
+   */
+  bool ValidateDutyCycleRange(hf_u32_t raw_duty, hf_u8_t resolution_bits) const noexcept;
+
+  /**
+   * @brief Find best alternative resolution using dynamic calculation
+   * @param frequency_hz Target frequency in Hz
+   * @param preferred_resolution Preferred resolution in bits
+   * @param clock_source Clock source for calculation
+   * @return Best alternative resolution, or preferred if no better option
+   */
+  hf_u8_t FindBestAlternativeResolutionDynamic(hf_u32_t frequency_hz, hf_u8_t preferred_resolution,
+                                               hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
+
+  //==============================================================================
+  // LEGACY VALIDATION FUNCTIONS (DEPRECATED - Use ValidateFrequencyResolutionComplete)
+  //==============================================================================
+
+  /**
+   * @deprecated Use ValidateFrequencyResolutionComplete instead
+   * @brief Legacy frequency/resolution validation (kept for compatibility)
    */
   bool ValidateFrequencyResolutionCombination(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
 
   /**
-   * @brief Check if frequency/resolution combination is likely to cause hardware conflicts
-   * @param frequency_hz Target frequency in Hz
-   * @param resolution_bits Target resolution in bits
-   * @return true if combination is likely to cause conflicts, false otherwise
-   * @note This helps avoid known problematic combinations that cause timer clock conflicts
+   * @deprecated Use ValidateFrequencyResolutionComplete instead
+   * @brief Legacy conflict detection (kept for compatibility)
    */
   bool IsLikelyToCauseConflicts(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
 
   /**
-   * @brief Find the best alternative resolution for a given frequency
-   * @param frequency_hz Target frequency in Hz
-   * @param preferred_resolution Preferred resolution in bits
-   * @return Best alternative resolution that avoids hardware conflicts, or preferred_resolution if no conflicts
-   * @note This helps find working resolutions when the preferred one causes hardware conflicts
+   * @deprecated Use FindBestAlternativeResolutionDynamic instead
+   * @brief Legacy alternative resolution finder (kept for compatibility)
    */
   hf_u8_t FindBestAlternativeResolution(hf_u32_t frequency_hz, hf_u8_t preferred_resolution) const noexcept;
 
   /**
-   * @brief Unified validation for frequency/resolution combinations and timer constraints
-   * @param frequency_hz Target frequency
-   * @param resolution_bits Target resolution
-   * @param timer_id Optional timer ID for specific validation (default: -1 for general validation)
-   * @return true if configuration is valid and achievable
-   * @note Combines hardware constraint validation and timer-specific checks
+   * @deprecated Use ValidateFrequencyResolutionComplete instead
+   * @brief Legacy timer configuration validation (kept for compatibility)
    */
   bool ValidateTimerConfiguration(hf_u32_t frequency_hz, hf_u8_t resolution_bits, hf_i8_t timer_id = -1) const noexcept;
 
@@ -625,6 +718,22 @@ private:
    * @note Only used with FORCE_EVICTION policy - may disrupt critical channels!
    */
   hf_i8_t AttemptForceEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
+
+  //==============================================================================
+  // EMPIRICAL VALIDATION DATA
+  //==============================================================================
+
+  /**
+   * @brief Get empirical validation limits for known hardware constraints
+   * @return Array of empirical limits based on real hardware testing
+   */
+  static const EmpiricalLimit* GetEmpiricalLimits() noexcept;
+
+  /**
+   * @brief Get number of empirical limit entries
+   * @return Number of entries in empirical limits array
+   */
+  static size_t GetEmpiricalLimitsCount() noexcept;
 
   //==============================================================================
   // MEMBER VARIABLES

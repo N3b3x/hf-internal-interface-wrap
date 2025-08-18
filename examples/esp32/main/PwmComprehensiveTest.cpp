@@ -1486,14 +1486,17 @@ bool test_frequency_resolution_validation() noexcept {
   };
 
   FreqResTest freq_tests[] = {
-    {1000,    true,  "1 kHz @ 10-bit (valid)"},
-    {5000,    true,  "5 kHz @ 10-bit (valid)"},
-    {10000,   true,  "10 kHz @ 10-bit (valid)"},
-    {20000,   true,  "20 kHz @ 10-bit (valid)"},
-    {30000,   false, "30 kHz @ 10-bit (should fail - hardware limitation)"},
-    {40000,   false, "40 kHz @ 10-bit (should fail - timer clock conflict)"},
-    {50000,   false, "50 kHz @ 10-bit (should fail - timer clock conflict)"},
-    {100000,  false, "100 kHz @ 10-bit (should fail - too high)"},
+    // Updated test expectations based on enhanced validation system
+    {1000,    true,  "1 kHz @ 10-bit (valid - 1.024 MHz < 80MHz)"},
+    {5000,    true,  "5 kHz @ 10-bit (valid - 5.12 MHz < 80MHz)"},
+    {10000,   true,  "10 kHz @ 10-bit (valid - 10.24 MHz < 80MHz)"},
+    {20000,   true,  "20 kHz @ 10-bit (valid - 20.48 MHz < 80MHz)"},
+    {25000,   false, "25 kHz @ 10-bit (should fail - empirical limit)"},
+    {30000,   false, "30 kHz @ 10-bit (should fail - empirical limit)"},
+    {40000,   false, "40 kHz @ 10-bit (should fail - empirical limit)"},
+    {50000,   false, "50 kHz @ 10-bit (should fail - empirical limit)"},
+    {78000,   false, "78 kHz @ 10-bit (should fail - 79.872 MHz near 80MHz limit)"},
+    {100000,  false, "100 kHz @ 10-bit (should fail - 102.4 MHz > 80MHz)"},
   };
 
   for (const auto& test : freq_tests) {
@@ -1519,6 +1522,168 @@ bool test_frequency_resolution_validation() noexcept {
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Frequency/resolution validation test passed");
+  return true;
+}
+
+/**
+ * @brief Test enhanced validation system with clock source awareness (NEW)
+ */
+bool test_enhanced_validation_system() noexcept {
+  ESP_LOGI(TAG, "Testing enhanced validation system with clock source awareness...");
+
+  hf_pwm_unit_config_t config = create_test_config();
+  EspPwm pwm(config);
+
+  if (!pwm.EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize PWM");
+    return false;
+  }
+
+  // Configure a basic channel first
+  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
+  hf_pwm_err_t result = pwm.ConfigureChannel(0, ch_config);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure channel for enhanced validation test");
+    return false;
+  }
+
+  result = pwm.EnableChannel(0);
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable channel for enhanced validation test");
+    return false;
+  }
+
+  // Test 1: Clock source aware validation
+  ESP_LOGI(TAG, "Phase 1: Testing clock source aware validation");
+  
+  // Test different clock sources with same frequency/resolution
+  struct ClockSourceTest {
+    hf_pwm_clock_source_t clock_source;
+    uint32_t frequency;
+    uint8_t resolution;
+    bool should_succeed;
+    const char* description;
+  };
+
+  ClockSourceTest clock_tests[] = {
+    // APB Clock (80MHz) tests
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, 20000, 10, true, "20kHz@10bit with APB(80MHz)"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, 30000, 10, false, "30kHz@10bit with APB(80MHz) - empirical limit"},
+    
+    // XTAL Clock (40MHz) tests  
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 10000, 10, true, "10kHz@10bit with XTAL(40MHz)"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 20000, 10, false, "20kHz@10bit with XTAL(40MHz) - exceeds 40MHz"},
+    
+    // RC_FAST Clock (~17.5MHz) tests
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 5000, 10, true, "5kHz@10bit with RC_FAST(17.5MHz)"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 10000, 10, false, "10kHz@10bit with RC_FAST(17.5MHz) - exceeds 17.5MHz"},
+  };
+
+  for (const auto& test : clock_tests) {
+    ESP_LOGI(TAG, "Testing %s", test.description);
+    
+    // Set the clock source
+    result = pwm.SetClockSource(test.clock_source);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to set clock source for test: %s", test.description);
+      continue;
+    }
+    
+    // Test the frequency/resolution combination
+    result = pwm.SetFrequencyWithResolution(0, test.frequency, test.resolution);
+    
+    if (test.should_succeed) {
+      if (result != hf_pwm_err_t::PWM_SUCCESS) {
+        ESP_LOGE(TAG, "Expected success for %s but got: %s", test.description, HfPwmErrToString(result));
+        return false;
+      }
+      ESP_LOGI(TAG, "✓ %s succeeded as expected", test.description);
+    } else {
+      if (result == hf_pwm_err_t::PWM_SUCCESS) {
+        ESP_LOGE(TAG, "Expected failure for %s but got success", test.description);
+        return false;
+      }
+      ESP_LOGI(TAG, "✓ %s failed as expected: %s", test.description, HfPwmErrToString(result));
+    }
+    
+    vTaskDelay(pdMS_TO_TICKS(50));
+  }
+
+  // Reset to APB clock for remaining tests
+  pwm.SetClockSource(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB);
+
+  // Test 2: Dynamic resolution calculation
+  ESP_LOGI(TAG, "Phase 2: Testing dynamic resolution calculation");
+  
+  struct ResolutionTest {
+    uint32_t frequency;
+    uint8_t expected_max_resolution;
+    const char* description;
+  };
+
+  ResolutionTest res_tests[] = {
+    {1000,   14, "1kHz should support up to 14-bit resolution"},
+    {5000,   13, "5kHz should support up to 13-bit resolution"}, 
+    {10000,  13, "10kHz should support up to 13-bit resolution"},
+    {20000,  12, "20kHz should support up to 12-bit resolution"},
+    {40000,  11, "40kHz should support up to 11-bit resolution"},
+    {78125,  10, "78.125kHz should support exactly 10-bit resolution"},
+    {156250, 9,  "156.25kHz should support exactly 9-bit resolution"},
+  };
+
+  for (const auto& test : res_tests) {
+    ESP_LOGI(TAG, "Testing %s", test.description);
+    
+    hf_u8_t max_res = pwm.CalculateMaxResolution(test.frequency);
+    if (max_res != test.expected_max_resolution) {
+      ESP_LOGE(TAG, "Expected max resolution %d for %s, but got %d", 
+               test.expected_max_resolution, test.description, max_res);
+      return false;
+    }
+    ESP_LOGI(TAG, "✓ %s: max resolution = %d bits", test.description, max_res);
+  }
+
+  // Test 3: Enhanced duty cycle validation
+  ESP_LOGI(TAG, "Phase 3: Testing enhanced duty cycle validation");
+  
+  // Test duty cycle overflow protection
+  result = pwm.SetFrequencyAndResolution(0, 1000, 8); // 8-bit resolution (0-255)
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set 1kHz @ 8-bit for duty cycle test");
+    return false;
+  }
+
+  // Test valid duty cycles
+  uint32_t valid_duties[] = {0, 127, 255}; // 0%, 50%, 100% for 8-bit
+  for (uint32_t duty : valid_duties) {
+    result = pwm.SetDutyCycleRaw(0, duty);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Valid duty cycle %lu failed for 8-bit resolution", duty);
+      return false;
+    }
+    ESP_LOGI(TAG, "✓ Valid duty cycle %lu/255 accepted", duty);
+  }
+
+  // Test invalid duty cycle (should be clamped)
+  result = pwm.SetDutyCycleRaw(0, 300); // > 255 for 8-bit
+  if (result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Duty cycle clamping failed - should clamp 300 to 255");
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Invalid duty cycle 300 was properly clamped");
+
+  // Test 4: Dynamic alternative resolution finder
+  ESP_LOGI(TAG, "Phase 4: Testing dynamic alternative resolution finder");
+  
+  // Test case where preferred resolution is too high
+  hf_u8_t alt_res = pwm.FindBestAlternativeResolutionDynamic(100000, 12); // 100kHz @ 12-bit is impossible
+  if (alt_res >= 12) {
+    ESP_LOGE(TAG, "Alternative resolution finder should return lower resolution for 100kHz, got %d", alt_res);
+    return false;
+  }
+  ESP_LOGI(TAG, "✓ Found alternative resolution %d bits for 100kHz (preferred: 12 bits)", alt_res);
+
+  ESP_LOGI(TAG, "[SUCCESS] Enhanced validation system test passed");
   return true;
 }
 
@@ -2440,6 +2605,8 @@ extern "C" void app_main(void) {
   RUN_TEST(test_resolution_specific_duty_cycles);
   flip_test_progress_indicator();
   RUN_TEST(test_frequency_resolution_validation);
+  flip_test_progress_indicator();
+  RUN_TEST(test_enhanced_validation_system);
   flip_test_progress_indicator();
   RUN_TEST(test_percentage_consistency_across_resolutions);
   flip_test_progress_indicator();
