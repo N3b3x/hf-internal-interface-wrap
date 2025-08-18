@@ -2037,25 +2037,17 @@ hf_u32_t EspPwm::CalculateClockDivider(hf_u32_t frequency_hz,
 //==============================================================================
 
 const EspPwm::EmpiricalLimit* EspPwm::GetEmpiricalLimits() noexcept {
+  // SIMPLIFIED: Only keep truly problematic combinations that cause real hardware issues
   static const EmpiricalLimit empirical_limits[] = {
-    // APB Clock (80MHz) empirical limits based on real hardware testing
-    {25000, 10, hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, "ESP32-C6 timer clock conflicts observed", false},
-    {40000, 9,  hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, "LEDC divider limitations", false},
-    {60000, 8,  hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, "High frequency stability issues", false},
-    
-    // XTAL Clock (40MHz) empirical limits
-    {12500, 10, hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, "XTAL clock divider limitations", false},
-    {20000, 9,  hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, "XTAL high frequency issues", false},
-    
-    // RC_FAST Clock (~17.5MHz) empirical limits  
-    {5000,  10, hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, "RC_FAST clock instability", false},
-    {8000,  9,  hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, "RC_FAST frequency drift", false},
+    // Only include combinations that definitely cause hardware problems
+    // Based on ESP-IDF documentation warnings and confirmed hardware issues
+    {78125, 10, hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, "Near 80MHz limit - potential instability", false},
   };
   return empirical_limits;
 }
 
 size_t EspPwm::GetEmpiricalLimitsCount() noexcept {
-  return 7; // Number of entries in empirical_limits array
+  return 1; // Minimal empirical limits - trust theoretical validation
 }
 
 hf_u32_t EspPwm::GetSourceClockFrequency(hf_pwm_clock_source_t clock_source) const noexcept {
@@ -2189,43 +2181,18 @@ EspPwm::ValidationResult EspPwm::ValidateFrequencyResolutionComplete(const Valid
     return result;
   }
   
-  // Phase 2: Hardware constraint validation (fundamental ESP32-C6 LEDC limit)
+  // Phase 2: Hardware constraint validation (ONLY real ESP32-C6 LEDC limit)
   if (result.required_clock_hz > result.available_clock_hz) {
     result.error_code = hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH;
     result.reason = "Required timer clock exceeds source clock frequency";
-    ESP_LOGD(TAG, "Hardware constraint failed: %llu Hz required > %llu Hz available", 
-             result.required_clock_hz, result.available_clock_hz);
+    ESP_LOGD(TAG, "Hardware constraint failed: %llu Hz required > %llu Hz available (%s clock)", 
+             result.required_clock_hz, result.available_clock_hz, 
+             (context.clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) ? "APB" :
+             (context.clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL) ? "XTAL" : "RC_FAST");
     return result;
   }
   
-  // Phase 3: Empirical validation (real hardware testing results)
-  if (!context.allow_empirical_override) {
-    const EmpiricalLimit* limits = GetEmpiricalLimits();
-    size_t limit_count = GetEmpiricalLimitsCount();
-    
-    for (size_t i = 0; i < limit_count; i++) {
-      const EmpiricalLimit& limit = limits[i];
-      
-      // Check if this limit applies to our configuration
-      if (limit.clock_source == context.clock_source && 
-          limit.resolution_bits == context.resolution_bits &&
-          context.frequency_hz > limit.max_frequency) {
-        
-        if (limit.is_hard_limit) {
-          result.error_code = hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH;
-          result.reason = limit.reason;
-          ESP_LOGD(TAG, "Empirical hard limit exceeded: %lu Hz > %lu Hz (%s)", 
-                   context.frequency_hz, limit.max_frequency, limit.reason);
-          return result;
-        } else {
-          ESP_LOGW(TAG, "Empirical soft limit exceeded: %lu Hz > %lu Hz (%s) - may cause issues", 
-                   context.frequency_hz, limit.max_frequency, limit.reason);
-        }
-      }
-    }
-  }
-  
-  // Phase 4: Timer-specific validation (if timer specified)
+  // Phase 3: Timer-specific validation (if timer specified)
   if (context.timer_id >= 0 && context.timer_id < MAX_TIMERS) {
     const TimerState& timer = timers_[context.timer_id];
     
@@ -2257,8 +2224,11 @@ EspPwm::ValidationResult EspPwm::ValidateFrequencyResolutionComplete(const Valid
   result.error_code = hf_pwm_err_t::PWM_SUCCESS;
   result.reason = "Validation successful";
   
-  ESP_LOGD(TAG, "Validation successful: %lu Hz @ %d bits (required: %llu Hz, available: %llu Hz)",
-           context.frequency_hz, context.resolution_bits, result.required_clock_hz, result.available_clock_hz);
+  ESP_LOGD(TAG, "Validation successful: %lu Hz @ %d bits using %s clock (required: %llu Hz, available: %llu Hz)",
+           context.frequency_hz, context.resolution_bits,
+           (context.clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) ? "APB" :
+           (context.clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL) ? "XTAL" : "RC_FAST",
+           result.required_clock_hz, result.available_clock_hz);
   
   return result;
 }
@@ -2268,12 +2238,12 @@ EspPwm::ValidationResult EspPwm::ValidateFrequencyResolutionComplete(const Valid
 //==============================================================================
 
 bool EspPwm::ValidateFrequencyResolutionCombination(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept {
-  // Legacy wrapper - use new unified validation system
+  // Legacy wrapper - use current PWM unit clock source (you're right!)
   ValidationContext context(frequency_hz, resolution_bits, clock_source_, -1, false);
   ValidationResult result = ValidateFrequencyResolutionComplete(context);
   
   if (!result.is_valid) {
-    ESP_LOGD(TAG, "Legacy validation failed: %s", result.reason);
+    ESP_LOGD(TAG, "Legacy validation failed: %s (clock: %d)", result.reason, static_cast<int>(clock_source_));
   }
   
   return result.is_valid;

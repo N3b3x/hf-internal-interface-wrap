@@ -1486,16 +1486,16 @@ bool test_frequency_resolution_validation() noexcept {
   };
 
   FreqResTest freq_tests[] = {
-    // Updated test expectations based on enhanced validation system
+    // CORRECTED: Based on pure theoretical ESP32-C6 LEDC limits (you're right!)
     {1000,    true,  "1 kHz @ 10-bit (valid - 1.024 MHz < 80MHz)"},
     {5000,    true,  "5 kHz @ 10-bit (valid - 5.12 MHz < 80MHz)"},
     {10000,   true,  "10 kHz @ 10-bit (valid - 10.24 MHz < 80MHz)"},
     {20000,   true,  "20 kHz @ 10-bit (valid - 20.48 MHz < 80MHz)"},
-    {25000,   false, "25 kHz @ 10-bit (should fail - empirical limit)"},
-    {30000,   false, "30 kHz @ 10-bit (should fail - empirical limit)"},
-    {40000,   false, "40 kHz @ 10-bit (should fail - empirical limit)"},
-    {50000,   false, "50 kHz @ 10-bit (should fail - empirical limit)"},
-    {78000,   false, "78 kHz @ 10-bit (should fail - 79.872 MHz near 80MHz limit)"},
+    {25000,   true,  "25 kHz @ 10-bit (valid - 25.6 MHz < 80MHz)"},
+    {30000,   true,  "30 kHz @ 10-bit (valid - 30.72 MHz < 80MHz)"},
+    {40000,   true,  "40 kHz @ 10-bit (valid - 40.96 MHz < 80MHz)"},
+    {50000,   true,  "50 kHz @ 10-bit (valid - 51.2 MHz < 80MHz)"},
+    {78000,   true,  "78 kHz @ 10-bit (valid - 79.872 MHz < 80MHz)"},
     {100000,  false, "100 kHz @ 10-bit (should fail - 102.4 MHz > 80MHz)"},
   };
 
@@ -1566,17 +1566,22 @@ bool test_enhanced_validation_system() noexcept {
   };
 
   ClockSourceTest clock_tests[] = {
-    // APB Clock (80MHz) tests
-    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, 20000, 10, true, "20kHz@10bit with APB(80MHz)"},
-    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, 30000, 10, false, "30kHz@10bit with APB(80MHz) - empirical limit"},
+    // APB Clock (80MHz) tests - theoretical limits only
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, 20000, 10, true, "20kHz@10bit with APB(80MHz) - 20.48MHz < 80MHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, 50000, 10, true, "50kHz@10bit with APB(80MHz) - 51.2MHz < 80MHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, 78000, 10, true, "78kHz@10bit with APB(80MHz) - 79.872MHz < 80MHz"},
     
-    // XTAL Clock (40MHz) tests  
-    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 10000, 10, true, "10kHz@10bit with XTAL(40MHz)"},
-    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 20000, 10, false, "20kHz@10bit with XTAL(40MHz) - exceeds 40MHz"},
+    // XTAL Clock (40MHz) tests - theoretical limits
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 10000, 10, true, "10kHz@10bit with XTAL(40MHz) - 10.24MHz < 40MHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 20000, 10, true, "20kHz@10bit with XTAL(40MHz) - 20.48MHz < 40MHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 39000, 10, true, "39kHz@10bit with XTAL(40MHz) - 39.936MHz < 40MHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL, 40000, 10, false, "40kHz@10bit with XTAL(40MHz) - 40.96MHz > 40MHz"},
     
-    // RC_FAST Clock (~17.5MHz) tests
-    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 5000, 10, true, "5kHz@10bit with RC_FAST(17.5MHz)"},
-    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 10000, 10, false, "10kHz@10bit with RC_FAST(17.5MHz) - exceeds 17.5MHz"},
+    // RC_FAST Clock (~17.5MHz) tests - theoretical limits
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 5000, 10, true, "5kHz@10bit with RC_FAST(17.5MHz) - 5.12MHz < 17.5MHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 10000, 10, true, "10kHz@10bit with RC_FAST(17.5MHz) - 10.24MHz < 17.5MHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 17000, 10, true, "17kHz@10bit with RC_FAST(17.5MHz) - 17.408MHz < 17.5MHz"},
+    {hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST, 18000, 10, false, "18kHz@10bit with RC_FAST(17.5MHz) - 18.432MHz > 17.5MHz"},
   };
 
   for (const auto& test : clock_tests) {
