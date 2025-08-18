@@ -31,30 +31,62 @@
 
 /**
  * @class EspPwm
- * @brief ESP32C6 PWM implementation using LEDC peripheral.
+ * @brief ESP32 PWM implementation using LEDC peripheral with comprehensive ESP32 variant support.
  *
- * This class provides PWM generation using the ESP32C6's built-in LEDC (LED Controller)
- * peripheral which offers high-resolution PWM with hardware fade support.
+ * This class provides PWM generation using the ESP32 family's built-in LEDC (LED Controller)
+ * peripheral which offers high-resolution PWM with hardware fade support. The implementation
+ * automatically adapts to different ESP32 variants and their specific LEDC capabilities.
  *
- * ESP32C6 LEDC Features:
- * - 8 independent PWM channels (0-7)
- * - 4 timer groups for different frequency domains (0-3)
- * - Up to 14-bit resolution at high frequencies
- * - Hardware fade functionality for smooth transitions
- * - Interrupt support for period complete events
- * - Low power mode support with sleep retention
- * - Configurable clock sources (APB, XTAL, RC_FAST)
- * - Channel-specific idle state configuration
+ * ## ESP32 Variant LEDC Capabilities:
+ * 
+ * ### ESP32 (Classic):
+ * - **Channels:** 16 channels (8 high-speed + 8 low-speed)
+ * - **Timers:** 8 timers (4 high-speed + 4 low-speed)
+ * - **Clock Sources:** APB_CLK (80MHz), REF_TICK (1MHz), RTC8M_CLK (LS only)
+ * - **Resolution:** Up to 20-bit at low frequencies, 14-bit at high frequencies
+ * - **Special Features:** Separate high-speed and low-speed modes
  *
- * Key Design Features:
- * - Lazy initialization pattern (no hardware action until needed)
- * - Thread-safe channel management with RtosMutex
- * - Automatic timer allocation and management
- * - Hardware fault detection and recovery
- * - Comprehensive error reporting
- * - Support for synchronized updates across channels
- * - Motor control oriented features (complementary outputs, deadtime)
- * - Proper abstraction of ESP-IDF types
+ * ### ESP32-S2/S3:
+ * - **Channels:** 8 channels (unified mode)
+ * - **Timers:** 4 timers (unified)
+ * - **Clock Sources:** APB_CLK (80MHz), REF_TICK (1MHz), XTAL_CLK (LS only)
+ * - **Resolution:** Up to 14-bit resolution
+ * - **Special Features:** Unified speed mode, improved power efficiency
+ *
+ * ### ESP32-C3/C6/H2:
+ * - **Channels:** 6 channels (ESP32-C6), 6 channels (ESP32-C3), 4 channels (ESP32-H2)
+ * - **Timers:** 4 timers (C3/C6), 2 timers (H2)
+ * - **Clock Sources:** APB_CLK (80MHz), REF_TICK (1MHz), XTAL_CLK
+ * - **Resolution:** Up to 14-bit resolution
+ * - **Special Features:** Compact design, optimized for IoT applications
+ *
+ * ## Clock Source Constraints:
+ * 
+ * **CRITICAL:** Different ESP32 variants have different clock source limitations:
+ * - **ESP32 Classic:** Each timer can use different clock sources independently
+ * - **ESP32-S2/S3/C3/C6/H2:** All timers typically share the same clock source
+ * - **Frequency Limitations:** Clock source determines maximum achievable frequency:
+ *   - APB_CLK (80MHz): Max ~78kHz at 10-bit resolution
+ *   - XTAL_CLK (40MHz): Max ~39kHz at 10-bit resolution
+ *   - REF_TICK (1MHz): Max ~976Hz at 10-bit resolution
+ *
+ * ## Timer Resource Management:
+ * 
+ * The LEDC peripheral uses a timer-channel architecture where:
+ * - Multiple channels can share the same timer (same frequency/resolution)
+ * - Each timer supports up to 8 channels (hardware limitation)
+ * - Timer allocation is automatic but can be controlled manually
+ * - Smart eviction policies protect critical channels
+ *
+ * ## Key Design Features:
+ * - **Variant-Aware:** Automatically detects and adapts to ESP32 variant capabilities
+ * - **Thread-Safe:** Full RtosMutex protection for concurrent access
+ * - **Smart Timer Management:** Automatic allocation with conflict resolution
+ * - **Hardware Fade Support:** Native LEDC fade functionality
+ * - **Error Recovery:** Comprehensive fault detection and recovery mechanisms
+ * - **Motor Control Ready:** Complementary outputs, deadtime, and synchronization
+ * - **Resource Protection:** Eviction policies prevent accidental channel disruption
+ * - **Performance Optimized:** Minimal overhead, efficient memory usage
  */
 class EspPwm : public BasePwm {
 public:
@@ -153,9 +185,19 @@ public:
    * @brief Set frequency with explicit resolution choice (user-controlled)
    * @param channel_id Channel identifier
    * @param frequency_hz Target frequency in Hz
-   * @param resolution_bits Explicit resolution choice in bits
+   * @param resolution_bits Explicit resolution choice in bits (4-14)
    * @return PWM_SUCCESS on success, error code on failure
-   * @note User explicitly chooses the resolution, bypassing automatic validation
+   * 
+   * @details This method allows precise control over both frequency and resolution.
+   * The combination is validated against LEDC hardware constraints:
+   * - **Formula:** Required Clock = frequency_hz × (2^resolution_bits)
+   * - **APB Clock (80MHz):** Max frequency = 80MHz / (2^resolution_bits)
+   * - **Example:** 1kHz @ 10-bit requires 1.024MHz (1.28% of 80MHz) ✓
+   * - **Example:** 100kHz @ 10-bit requires 102.4MHz (128% of 80MHz) ✗
+   * 
+   * @warning This method performs strict validation and will fail if the
+   * frequency/resolution combination exceeds hardware capabilities.
+   * Use SetFrequencyWithAutoFallback() for automatic resolution adjustment.
    */
   hf_pwm_err_t SetFrequencyWithResolution(hf_channel_id_t channel_id,
                                           hf_frequency_hz_t frequency_hz,

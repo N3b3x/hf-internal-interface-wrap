@@ -457,21 +457,17 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  ESP_LOGI(TAG, "Setting duty cycle for channel %lu to %.2f", channel_id, duty_cycle);
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  ESP_LOGI(TAG, "Validating channel id");
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
-  ESP_LOGI(TAG, "Validating channel configured");
   if (!channels_[channel_id].configured) {
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
 
-  ESP_LOGI(TAG, "Validating duty cycle");
   if (!BasePwm::IsValidDutyCycle(duty_cycle)) {
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE);
     return hf_pwm_err_t::PWM_ERR_INVALID_DUTY_CYCLE;
@@ -480,14 +476,12 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
   // Use enhanced duty cycle clamping for safety
   duty_cycle = BasePwm::ClampDutyCycle(duty_cycle);
 
-  ESP_LOGI(TAG, "Getting timer id");
   uint8_t timer_id = channels_[channel_id].assigned_timer;
   if (timer_id >= MAX_TIMERS) {
     ESP_LOGE(TAG, "Invalid timer id: %d", timer_id);
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL);
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
   }
-  ESP_LOGI(TAG, "Converting duty cycle to raw");
   
   // Safety check: ensure timer resolution is valid
   hf_u8_t resolution = timers_[timer_id].resolution_bits;
@@ -508,7 +502,9 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
              raw_duty, max_duty, resolution);
     raw_duty = max_duty;
   }
-  ESP_LOGI(TAG, "Setting duty cycle raw (unlocked path): %lu", raw_duty);
+  
+  ESP_LOGD(TAG, "Setting duty cycle for channel %lu to %.2f%% (raw: %lu)", 
+           channel_id, duty_cycle * 100.0f, raw_duty);
   return SetDutyCycleRaw(channel_id, raw_duty);
 }
 
