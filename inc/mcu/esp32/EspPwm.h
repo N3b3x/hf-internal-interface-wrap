@@ -540,20 +540,18 @@ private:
   //==============================================================================
 
   /**
-   * @brief Validation context for comprehensive frequency/resolution validation
+   * @brief Simple validation context for frequency/resolution validation
    */
   struct ValidationContext {
     hf_u32_t frequency_hz;                    ///< Target frequency in Hz
     hf_u8_t resolution_bits;                  ///< Target resolution in bits
     hf_pwm_clock_source_t clock_source;       ///< Clock source for validation
     hf_i8_t timer_id;                         ///< Optional specific timer (-1 for general)
-    bool allow_empirical_override;            ///< Allow empirical validation override
     
     ValidationContext(hf_u32_t freq, hf_u8_t res, 
                      hf_pwm_clock_source_t clk = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB,
-                     hf_i8_t timer = -1, bool empirical = false) noexcept
-        : frequency_hz(freq), resolution_bits(res), clock_source(clk), 
-          timer_id(timer), allow_empirical_override(empirical) {}
+                     hf_i8_t timer = -1) noexcept
+        : frequency_hz(freq), resolution_bits(res), clock_source(clk), timer_id(timer) {}
   };
 
   /**
@@ -574,16 +572,7 @@ private:
           required_clock_hz(0), available_clock_hz(0) {}
   };
 
-  /**
-   * @brief Empirical validation limit entry for known hardware limitations
-   */
-  struct EmpiricalLimit {
-    hf_u32_t max_frequency;                   ///< Maximum frequency for this resolution
-    hf_u8_t resolution_bits;                  ///< Resolution in bits
-    hf_pwm_clock_source_t clock_source;       ///< Applicable clock source
-    const char* reason;                       ///< Reason for limitation
-    bool is_hard_limit;                       ///< True if absolutely cannot exceed
-  };
+
 
   /**
    * @brief Unified comprehensive validation for frequency/resolution combinations
@@ -637,33 +626,7 @@ private:
   hf_u8_t FindBestAlternativeResolutionDynamic(hf_u32_t frequency_hz, hf_u8_t preferred_resolution,
                                                hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
 
-  //==============================================================================
-  // LEGACY VALIDATION FUNCTIONS (DEPRECATED - Use ValidateFrequencyResolutionComplete)
-  //==============================================================================
 
-  /**
-   * @deprecated Use ValidateFrequencyResolutionComplete instead
-   * @brief Legacy frequency/resolution validation (kept for compatibility)
-   */
-  bool ValidateFrequencyResolutionCombination(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
-
-  /**
-   * @deprecated Use ValidateFrequencyResolutionComplete instead
-   * @brief Legacy conflict detection (kept for compatibility)
-   */
-  bool IsLikelyToCauseConflicts(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
-
-  /**
-   * @deprecated Use FindBestAlternativeResolutionDynamic instead
-   * @brief Legacy alternative resolution finder (kept for compatibility)
-   */
-  hf_u8_t FindBestAlternativeResolution(hf_u32_t frequency_hz, hf_u8_t preferred_resolution) const noexcept;
-
-  /**
-   * @deprecated Use ValidateFrequencyResolutionComplete instead
-   * @brief Legacy timer configuration validation (kept for compatibility)
-   */
-  bool ValidateTimerConfiguration(hf_u32_t frequency_hz, hf_u8_t resolution_bits, hf_i8_t timer_id = -1) const noexcept;
 
   /**
    * @brief Notify channels that their timer has been reconfigured
@@ -719,21 +682,7 @@ private:
    */
   hf_i8_t AttemptForceEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
 
-  //==============================================================================
-  // EMPIRICAL VALIDATION DATA
-  //==============================================================================
 
-  /**
-   * @brief Get empirical validation limits for known hardware constraints
-   * @return Array of empirical limits based on real hardware testing
-   */
-  static const EmpiricalLimit* GetEmpiricalLimits() noexcept;
-
-  /**
-   * @brief Get number of empirical limit entries
-   * @return Number of entries in empirical limits array
-   */
-  static size_t GetEmpiricalLimitsCount() noexcept;
 
   //==============================================================================
   // MEMBER VARIABLES

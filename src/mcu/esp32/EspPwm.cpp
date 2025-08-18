@@ -2036,19 +2036,7 @@ hf_u32_t EspPwm::CalculateClockDivider(hf_u32_t frequency_hz,
 // ENHANCED VALIDATION SYSTEM IMPLEMENTATION
 //==============================================================================
 
-const EspPwm::EmpiricalLimit* EspPwm::GetEmpiricalLimits() noexcept {
-  // SIMPLIFIED: Only keep truly problematic combinations that cause real hardware issues
-  static const EmpiricalLimit empirical_limits[] = {
-    // Only include combinations that definitely cause hardware problems
-    // Based on ESP-IDF documentation warnings and confirmed hardware issues
-    {78125, 10, hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, "Near 80MHz limit - potential instability", false},
-  };
-  return empirical_limits;
-}
 
-size_t EspPwm::GetEmpiricalLimitsCount() noexcept {
-  return 1; // Minimal empirical limits - trust theoretical validation
-}
 
 hf_u32_t EspPwm::GetSourceClockFrequency(hf_pwm_clock_source_t clock_source) const noexcept {
   switch (clock_source) {
@@ -2181,14 +2169,12 @@ EspPwm::ValidationResult EspPwm::ValidateFrequencyResolutionComplete(const Valid
     return result;
   }
   
-  // Phase 2: Hardware constraint validation (ONLY real ESP32-C6 LEDC limit)
+  // Phase 2: Hardware constraint validation (ESP32-C6 LEDC fundamental limit)
   if (result.required_clock_hz > result.available_clock_hz) {
     result.error_code = hf_pwm_err_t::PWM_ERR_FREQUENCY_TOO_HIGH;
     result.reason = "Required timer clock exceeds source clock frequency";
-    ESP_LOGD(TAG, "Hardware constraint failed: %llu Hz required > %llu Hz available (%s clock)", 
-             result.required_clock_hz, result.available_clock_hz, 
-             (context.clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) ? "APB" :
-             (context.clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL) ? "XTAL" : "RC_FAST");
+    ESP_LOGD(TAG, "Hardware constraint failed: %llu Hz required > %llu Hz available", 
+             result.required_clock_hz, result.available_clock_hz);
     return result;
   }
   
@@ -2224,11 +2210,8 @@ EspPwm::ValidationResult EspPwm::ValidateFrequencyResolutionComplete(const Valid
   result.error_code = hf_pwm_err_t::PWM_SUCCESS;
   result.reason = "Validation successful";
   
-  ESP_LOGD(TAG, "Validation successful: %lu Hz @ %d bits using %s clock (required: %llu Hz, available: %llu Hz)",
-           context.frequency_hz, context.resolution_bits,
-           (context.clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) ? "APB" :
-           (context.clock_source == hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL) ? "XTAL" : "RC_FAST",
-           result.required_clock_hz, result.available_clock_hz);
+  ESP_LOGD(TAG, "Validation successful: %lu Hz @ %d bits (required: %llu Hz, available: %llu Hz)",
+           context.frequency_hz, context.resolution_bits, result.required_clock_hz, result.available_clock_hz);
   
   return result;
 }
