@@ -2080,8 +2080,8 @@ hf_u8_t EspPwm::FindBestAlternativeResolutionDynamic(hf_u32_t frequency_hz, hf_u
   hf_u8_t max_resolution = CalculateMaxResolution(frequency_hz, clock_source);
   
   if (preferred_resolution <= max_resolution) {
-    // Check empirical limits if within theoretical bounds
-    ValidationContext(frequency_hz, resolution_bits, clock_source, -1);
+    // Check if preferred resolution is valid with this clock source
+    ValidationContext ctx(frequency_hz, preferred_resolution, clock_source, -1);
     ValidationResult result = ValidateFrequencyResolutionComplete(ctx);
     if (result.is_valid) {
       return preferred_resolution;
