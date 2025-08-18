@@ -2265,7 +2265,7 @@ hf_i8_t EspPwm::FindOrAllocateTimerAdvanced(hf_u32_t frequency_hz, hf_u8_t resol
         !timers_[timer_id].has_hardware_conflicts) {
       
       // Validate this timer configuration is still viable
-      if (ValidateTimerConfiguration(timer_id, frequency_hz, resolution_bits)) {
+      if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
         timers_[timer_id].channel_count++;
         ESP_LOGD(TAG, "Reusing optimal timer %d (channels=%d)", timer_id, timers_[timer_id].channel_count);
         return timer_id;
@@ -2295,7 +2295,7 @@ hf_i8_t EspPwm::FindOrAllocateTimerAdvanced(hf_u32_t frequency_hz, hf_u8_t resol
   // Phase 4: New allocation - find unused timer
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (!timers_[timer_id].in_use) {
-      if (ValidateTimerConfiguration(timer_id, frequency_hz, resolution_bits)) {
+      if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
         timers_[timer_id].in_use = true;
         timers_[timer_id].frequency_hz = frequency_hz;
         timers_[timer_id].resolution_bits = resolution_bits;
@@ -2315,7 +2315,7 @@ hf_i8_t EspPwm::FindOrAllocateTimerAdvanced(hf_u32_t frequency_hz, hf_u8_t resol
     // Retry new allocation after health check
     for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
       if (!timers_[timer_id].in_use) {
-        if (ValidateTimerConfiguration(timer_id, frequency_hz, resolution_bits)) {
+        if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
           timers_[timer_id].in_use = true;
           timers_[timer_id].frequency_hz = frequency_hz;
           timers_[timer_id].resolution_bits = resolution_bits;
@@ -2364,7 +2364,7 @@ hf_i8_t EspPwm::FindOrAllocateTimerAdvanced(hf_u32_t frequency_hz, hf_u8_t resol
     ESP_LOGW(TAG, "Attempting eviction of timer %d (channels=%d, conflicts=%s)", 
              timer_id, candidate.channel_count, candidate.has_conflicts ? "yes" : "no");
     
-    if (ValidateTimerConfiguration(timer_id, frequency_hz, resolution_bits)) {
+            if (ValidateTimerConfiguration(frequency_hz, resolution_bits, timer_id)) {
       // Notify channels about timer reconfiguration
       NotifyTimerReconfiguration(timer_id, frequency_hz, resolution_bits);
       
@@ -2387,7 +2387,7 @@ hf_i8_t EspPwm::FindOrAllocateTimerAdvanced(hf_u32_t frequency_hz, hf_u8_t resol
   return -1;
 }
 
-bool EspPwm::ValidateTimerConfiguration(hf_u8_t timer_id, hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept {
+bool EspPwm::ValidateTimerConfiguration(hf_u32_t frequency_hz, hf_u8_t resolution_bits, hf_i8_t timer_id) const noexcept {
   if (timer_id >= MAX_TIMERS) {
     return false;
   }
