@@ -270,12 +270,7 @@ public:
    */
   hf_uart_err_t ConfigureIrDA(const hf_uart_irda_config_t& irda_config) noexcept;
 
-  /**
-   * @brief Get pattern detection position.
-   * @param pop_position true to pop the position from queue, false to peek
-   * @return Pattern position or -1 if no pattern detected
-   */
-  int GetPatternPosition(bool pop_position = false) noexcept;
+
 
   /**
    * @brief Configure software flow control (XON/XOFF).
@@ -337,119 +332,11 @@ public:
    */
   hf_uart_err_t SetSignalInversion(uint32_t inverse_mask) noexcept;
 
-  /**
-   * @brief Detect bitrate on the UART line (placeholder for future ESP-IDF versions).
-   * @param baud_rate Output parameter for detected baud rate (returns current configured rate)
-   * @return hf_uart_err_t result code
-   * @note Currently returns configured baud rate as ESP-IDF v5.5 lacks uart_detect_bitrate_bps
-   */
-  hf_uart_err_t DetectBitrate(uint32_t& baud_rate) noexcept;
 
-  /**
-   * @brief Enable pattern detection with specific character (placeholder for ESP-IDF v5.5).
-   * @param pattern_char Character to detect
-   * @param pattern_char_num Number of consecutive pattern characters
-   * @param chr_tout Timeout between pattern characters (in baud cycles)
-   * @param post_idle Idle time after pattern (in baud cycles)
-   * @param pre_idle Idle time before pattern (in baud cycles)
-   * @return hf_uart_err_t result code
-   * @note Currently a placeholder as ESP-IDF v5.5 lacks pattern detection APIs
-   */
-  hf_uart_err_t EnablePatternDetection(char pattern_char, uint8_t pattern_char_num = 1,
-                                       uint16_t chr_tout = 5, uint16_t post_idle = 5,
-                                       uint16_t pre_idle = 5) noexcept;
 
-  /**
-   * @brief Disable pattern detection (placeholder for ESP-IDF v5.5).
-   * @return hf_uart_err_t result code
-   * @note Currently a placeholder as ESP-IDF v5.5 lacks pattern detection APIs
-   */
-  hf_uart_err_t DisablePatternDetection() noexcept;
 
-  /**
-   * @brief Reset pattern detection queue (placeholder for ESP-IDF v5.5).
-   * @return hf_uart_err_t result code
-   * @note Currently a placeholder as ESP-IDF v5.5 lacks pattern detection APIs
-   */
-  hf_uart_err_t ResetPatternQueue() noexcept;
 
-  /**
-   * @brief Get collision flag status (for RS485 mode).
-   * @param collision_flag Output parameter for collision status
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t GetCollisionFlag(bool& collision_flag) noexcept;
 
-  //==============================================================================
-  // DMA SUPPORT (ESP-IDF v5.5 Feature)
-  //==============================================================================
-
-  /**
-   * @brief Enable DMA mode for UART operations.
-   * @param tx_dma_chan TX DMA channel (or -1 for automatic allocation)
-   * @param rx_dma_chan RX DMA channel (or -1 for automatic allocation)
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t EnableDMA(int tx_dma_chan = -1, int rx_dma_chan = -1) noexcept;
-
-  /**
-   * @brief Disable DMA mode for UART operations.
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t DisableDMA() noexcept;
-
-  /**
-   * @brief Check if DMA is enabled.
-   * @return true if DMA is enabled, false otherwise
-   */
-  bool IsDMAEnabled() const noexcept;
-
-  /**
-   * @brief Write data using DMA.
-   * @param data Data buffer to transmit
-   * @param length Number of bytes to write
-   * @param timeout_ms Timeout in milliseconds
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t WriteDMA(const uint8_t* data, uint16_t length, uint32_t timeout_ms = 0) noexcept;
-
-  /**
-   * @brief Read data using DMA.
-   * @param data Buffer to store received data
-   * @param length Number of bytes to read
-   * @param timeout_ms Timeout in milliseconds
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t ReadDMA(uint8_t* data, uint16_t length, uint32_t timeout_ms = 0) noexcept;
-
-  //==============================================================================
-  // LOW POWER UART SUPPORT (ESP32-C6 Feature)
-  //==============================================================================
-
-  /**
-   * @brief Configure Low Power UART (ESP32-C6 only).
-   * @param lp_config LP UART configuration
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t ConfigureLPUart(const hf_lp_uart_config_t& lp_config) noexcept;
-
-  /**
-   * @brief Check if Low Power UART is available.
-   * @return true if LP UART is available, false otherwise
-   */
-  bool IsLPUartAvailable() const noexcept;
-
-  /**
-   * @brief Enable Low Power UART mode.
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t EnableLPUart() noexcept;
-
-  /**
-   * @brief Disable Low Power UART mode.
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t DisableLPUart() noexcept;
 
   //==============================================================================
   // CALLBACKS AND EVENT HANDLING
@@ -464,14 +351,7 @@ public:
   hf_uart_err_t SetEventCallback(hf_uart_event_callback_t callback,
                                  void* user_data = nullptr) noexcept;
 
-  /**
-   * @brief Set pattern detection callback.
-   * @param callback Pattern callback function
-   * @param user_data User data pointer
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SetPatternCallback(hf_uart_pattern_callback_t callback,
-                                   void* user_data = nullptr) noexcept;
+
 
   /**
    * @brief Set break detection callback.
@@ -524,11 +404,7 @@ public:
    */
   hf_uart_mode_t GetCommunicationMode() const noexcept;
 
-  /**
-   * @brief Check if pattern detection is enabled.
-   * @return true if enabled, false otherwise
-   */
-  bool IsPatternDetectionEnabled() const noexcept;
+
 
   /**
    * @brief Check if wakeup is enabled.
@@ -726,13 +602,7 @@ private:
    */
   int InternalPrintf(const char* format, va_list args) noexcept;
 
-  /**
-   * @brief Pattern callback wrapper (ISR-safe)
-   * @param pattern_pos Pattern position
-   * @param user_data User data pointer
-   * @return true to yield to higher priority task
-   */
-  static bool IRAM_ATTR PatternCallbackWrapper(int pattern_pos, void* user_data) noexcept;
+
 
   /**
    * @brief Break callback wrapper (ISR-safe)
@@ -755,16 +625,13 @@ private:
   QueueHandle_t event_queue_;                   ///< UART event queue
   TaskHandle_t event_task_handle_;              ///< Event task handle
   hf_uart_event_callback_t event_callback_;     ///< Event callback
-  hf_uart_pattern_callback_t pattern_callback_; ///< Pattern callback
   hf_uart_break_callback_t break_callback_;     ///< Break callback
   void* event_callback_user_data_;              ///< Event callback user data
-  void* pattern_callback_user_data_;            ///< Pattern callback user data
   void* break_callback_user_data_;              ///< Break callback user data
 
   // Operating mode and communication state
   hf_uart_operating_mode_t operating_mode_; ///< Current operating mode
   hf_uart_mode_t communication_mode_;       ///< Current communication mode
-  bool pattern_detection_enabled_;          ///< Pattern detection enabled
   bool software_flow_enabled_;              ///< Software flow control enabled
   bool wakeup_enabled_;                     ///< Wakeup enabled
   bool break_detected_;                     ///< Break condition detected
@@ -772,15 +639,6 @@ private:
 
   // Error tracking
   hf_uart_err_t last_error_; ///< Last error that occurred
-
-  // DMA support
-  bool dma_enabled_;         ///< DMA enabled flag
-  int tx_dma_chan_;          ///< TX DMA channel
-  int rx_dma_chan_;          ///< RX DMA channel
-
-  // Low Power UART support (ESP32-C6)
-  bool lp_uart_enabled_;     ///< LP UART enabled flag
-  hf_lp_uart_config_t lp_uart_config_; ///< LP UART configuration
 
   // Statistics and diagnostics
   hf_uart_statistics_t statistics_;   ///< UART statistics

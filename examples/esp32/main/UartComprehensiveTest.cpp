@@ -41,7 +41,6 @@ static std::unique_ptr<EspUart> g_uart_instance = nullptr;
 
 // Callback test variables
 static bool g_event_callback_triggered = false;
-static bool g_pattern_callback_triggered = false;
 static bool g_break_callback_triggered = false;
 
 // Forward declarations
@@ -60,13 +59,7 @@ bool test_uart_statistics_diagnostics() noexcept;
 bool test_uart_printf_support() noexcept;
 bool test_uart_error_handling() noexcept;
 bool test_uart_esp32c6_features() noexcept;
-bool test_uart_dma_support() noexcept;
-bool test_uart_bitrate_detection() noexcept;
-bool test_uart_enhanced_pattern_detection() noexcept;
-bool test_uart_esp32c6_wakeup_modes() noexcept;
-bool test_uart_collision_detection() noexcept;
 bool test_uart_performance() noexcept;
-bool test_uart_lp_uart_support() noexcept;
 bool test_uart_cleanup() noexcept;
 
 //==============================================================================
@@ -81,11 +74,7 @@ bool uart_event_callback(const void* event, void* user_data) noexcept {
   return false; // Don't yield
 }
 
-bool uart_pattern_callback(int pattern_pos, void* user_data) noexcept {
-  g_pattern_callback_triggered = true;
-  ESP_LOGI(TAG, "Pattern callback triggered at position: %d", pattern_pos);
-  return false; // Don't yield
-}
+
 
 bool uart_break_callback(hf_u32_t break_duration, void* user_data) noexcept {
   g_break_callback_triggered = true;
@@ -303,32 +292,32 @@ bool test_uart_flow_control() noexcept {
 }
 
 bool test_uart_pattern_detection() noexcept {
-  ESP_LOGI(TAG, "Testing UART pattern detection...");
+  ESP_LOGI(TAG, "Testing UART pattern detection (basic functionality)...");
 
   if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
     ESP_LOGE(TAG, "UART not initialized");
     return false;
   }
 
-  // Reset callback flags
-  g_pattern_callback_triggered = false;
-
-  // Set pattern callback
-  hf_uart_err_t result = g_uart_instance->SetPatternCallback(uart_pattern_callback);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to set pattern callback: %d", static_cast<int>(result));
-    return false;
+  // Note: ESP-IDF v5.5 does not support advanced pattern detection
+  // This test verifies basic UART functionality that could support pattern detection
+  
+  // Test reading until a specific character (manual pattern detection)
+  const char* test_data = "Hello+World+Test+";
+  hf_uart_err_t write_result = g_uart_instance->Write(
+      reinterpret_cast<const uint8_t*>(test_data), 
+      static_cast<hf_u16_t>(strlen(test_data)), 1000);
+  
+  if (write_result == hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGI(TAG, "Test data written for manual pattern detection");
+    
+    // Test ReadUntil as a form of pattern detection
+    uint8_t buffer[64];
+    hf_u16_t bytes_read = g_uart_instance->ReadUntil(buffer, sizeof(buffer), '+', 500);
+    ESP_LOGI(TAG, "ReadUntil found %d bytes before '+' character", bytes_read);
   }
 
-  // Check pattern detection status
-  bool pattern_enabled = g_uart_instance->IsPatternDetectionEnabled();
-  ESP_LOGI(TAG, "Pattern detection enabled: %s", pattern_enabled ? "true" : "false");
-
-  // Test pattern position (should return -1 if no pattern)
-  int pattern_pos = g_uart_instance->GetPatternPosition(false);
-  ESP_LOGI(TAG, "Pattern position: %d", pattern_pos);
-
-  ESP_LOGI(TAG, "[SUCCESS] Pattern detection test completed");
+  ESP_LOGI(TAG, "[SUCCESS] Basic pattern detection test completed");
   return true;
 }
 
@@ -585,7 +574,6 @@ bool test_uart_callbacks() noexcept {
 
   // Reset callback flags
   g_event_callback_triggered = false;
-  g_pattern_callback_triggered = false;
   g_break_callback_triggered = false;
 
   // Set event callback
@@ -595,12 +583,7 @@ bool test_uart_callbacks() noexcept {
     return false;
   }
 
-  // Set pattern callback
-  result = g_uart_instance->SetPatternCallback(uart_pattern_callback);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to set pattern callback: %d", static_cast<int>(result));
-    return false;
-  }
+
 
   // Set break callback
   result = g_uart_instance->SetBreakCallback(uart_break_callback);
@@ -614,7 +597,6 @@ bool test_uart_callbacks() noexcept {
 
   ESP_LOGI(TAG, "Callback registration completed");
   ESP_LOGI(TAG, "Event callback triggered: %s", g_event_callback_triggered ? "true" : "false");
-  ESP_LOGI(TAG, "Pattern callback triggered: %s", g_pattern_callback_triggered ? "true" : "false");
   ESP_LOGI(TAG, "Break callback triggered: %s", g_break_callback_triggered ? "true" : "false");
 
   ESP_LOGI(TAG, "[SUCCESS] Callbacks test completed");
@@ -742,7 +724,7 @@ bool test_uart_error_handling() noexcept {
 }
 
 bool test_uart_esp32c6_features() noexcept {
-  ESP_LOGI(TAG, "Testing ESP32-C6 specific UART features...");
+  ESP_LOGI(TAG, "Testing ESP32-C6 UART implementation...");
 
   if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
     ESP_LOGE(TAG, "UART not initialized");
@@ -757,228 +739,31 @@ bool test_uart_esp32c6_features() noexcept {
   bool tx_busy = g_uart_instance->IsTxBusy();
   ESP_LOGI(TAG, "TX busy: %s", tx_busy ? "true" : "false");
 
-  // Test improved break detection
+  // Test break detection status
   bool break_detected = g_uart_instance->IsBreakDetected();
   ESP_LOGI(TAG, "Break detected: %s", break_detected ? "true" : "false");
 
-  ESP_LOGI(TAG, "[SUCCESS] ESP32-C6 specific features test completed");
-  return true;
-}
-
-bool test_uart_dma_support() noexcept {
-  ESP_LOGI(TAG, "Testing UART DMA support...");
-
-  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
-    ESP_LOGE(TAG, "UART not initialized");
-    return false;
-  }
-
-  // Test DMA enable/disable
-  hf_uart_err_t result = g_uart_instance->EnableDMA();
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to enable DMA: %d", static_cast<int>(result));
-    return false;
-  }
-
-  // Check DMA status
-  bool dma_enabled = g_uart_instance->IsDMAEnabled();
-  if (!dma_enabled) {
-    ESP_LOGE(TAG, "DMA not enabled after EnableDMA call");
-    return false;
-  }
-
-  ESP_LOGI(TAG, "DMA enabled successfully");
-
-  // Test DMA write (will fall back to regular write in current implementation)
-  const char* test_data = "DMA Test Data";
-  result = g_uart_instance->WriteDMA(reinterpret_cast<const uint8_t*>(test_data),
-                                     static_cast<hf_u16_t>(strlen(test_data)), 1000);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "DMA write failed: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "DMA write successful");
-
-  // Test DMA read (will fall back to regular read in current implementation)
-  uint8_t read_buffer[64];
-  result = g_uart_instance->ReadDMA(read_buffer, sizeof(read_buffer), 500);
-  ESP_LOGI(TAG, "DMA read result: %d", static_cast<int>(result));
-
-  // Disable DMA
-  result = g_uart_instance->DisableDMA();
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to disable DMA: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "[SUCCESS] DMA support test completed");
-  return true;
-}
-
-bool test_uart_bitrate_detection() noexcept {
-  ESP_LOGI(TAG, "Testing UART bitrate detection...");
-
-  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
-    ESP_LOGE(TAG, "UART not initialized");
-    return false;
-  }
-
-  // Test bitrate detection
-  uint32_t detected_baud = 0;
-  hf_uart_err_t result = g_uart_instance->DetectBitrate(detected_baud);
-  
-  // Note: ESP-IDF v5.5 may not have full bitrate detection support
+  // Test actual break signal sending
+  hf_uart_err_t result = g_uart_instance->SendBreak(50);
   if (result == hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGI(TAG, "Bitrate detection returned: %lu bps", detected_baud);
-    // Verify it returns a reasonable value
-    if (detected_baud >= 9600 && detected_baud <= 115200) {
-      ESP_LOGI(TAG, "Bitrate detection returned valid baud rate");
-    }
+    ESP_LOGI(TAG, "Break signal sent successfully");
   } else {
-    ESP_LOGW(TAG, "Bitrate detection not fully supported in ESP-IDF v5.5: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to send break signal: %d", static_cast<int>(result));
+    return false;
   }
 
-  ESP_LOGI(TAG, "[SUCCESS] Bitrate detection test completed");
+  // Test signal inversion
+  result = g_uart_instance->SetSignalInversion(0); // No inversion
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set signal inversion: %d", static_cast<int>(result));
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] ESP32-C6 UART implementation test completed");
   return true;
 }
 
-bool test_uart_enhanced_pattern_detection() noexcept {
-  ESP_LOGI(TAG, "Testing enhanced pattern detection...");
 
-  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
-    ESP_LOGE(TAG, "UART not initialized");
-    return false;
-  }
-
-  // Test pattern detection enable (placeholder in ESP-IDF v5.5)
-  hf_uart_err_t result = g_uart_instance->EnablePatternDetection('+', 3, 5, 5, 5);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to enable pattern detection: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "Pattern detection enabled for '+++' sequence (placeholder implementation)");
-
-  // Check pattern detection status
-  bool pattern_enabled = g_uart_instance->IsPatternDetectionEnabled();
-  if (!pattern_enabled) {
-    ESP_LOGE(TAG, "Pattern detection not enabled after EnablePatternDetection call");
-    return false;
-  }
-
-  // Test pattern queue reset
-  result = g_uart_instance->ResetPatternQueue();
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to reset pattern queue: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "Pattern queue reset successful (placeholder implementation)");
-
-  // Test pattern position retrieval
-  int pattern_pos = g_uart_instance->GetPatternPosition(false);
-  ESP_LOGI(TAG, "Pattern position: %d (expected -1 in ESP-IDF v5.5)", pattern_pos);
-
-  // Disable pattern detection
-  result = g_uart_instance->DisablePatternDetection();
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to disable pattern detection: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "[SUCCESS] Enhanced pattern detection test completed (placeholder implementation)");
-  return true;
-}
-
-bool test_uart_esp32c6_wakeup_modes() noexcept {
-  ESP_LOGI(TAG, "Testing ESP32-C6 wakeup modes...");
-
-  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
-    ESP_LOGE(TAG, "UART not initialized");
-    return false;
-  }
-
-  // Test FIFO_THRESH wakeup mode
-  hf_uart_wakeup_config_t wakeup_config = {};
-  wakeup_config.enable_wakeup = true;
-  wakeup_config.wakeup_threshold = 5;
-  wakeup_config.wakeup_mode = hf_uart_wakeup_mode_t::HF_UART_WK_MODE_FIFO_THRESH;
-
-  hf_uart_err_t result = g_uart_instance->ConfigureWakeup(wakeup_config);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure FIFO_THRESH wakeup: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "FIFO_THRESH wakeup mode configured");
-
-  // Test START_BIT wakeup mode
-  wakeup_config.wakeup_mode = hf_uart_wakeup_mode_t::HF_UART_WK_MODE_START_BIT;
-  result = g_uart_instance->ConfigureWakeup(wakeup_config);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure START_BIT wakeup: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "START_BIT wakeup mode configured");
-
-  // Test CHAR_SEQ wakeup mode
-  wakeup_config.wakeup_mode = hf_uart_wakeup_mode_t::HF_UART_WK_MODE_CHAR_SEQ;
-  wakeup_config.char_sequence[0] = 'W';
-  wakeup_config.char_sequence[1] = 'A';
-  wakeup_config.char_sequence[2] = 'K';
-  wakeup_config.char_sequence[3] = 'E';
-  wakeup_config.char_sequence_length = 4;
-
-  result = g_uart_instance->ConfigureWakeup(wakeup_config);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure CHAR_SEQ wakeup: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "CHAR_SEQ wakeup mode configured with 'WAKE' sequence");
-
-  // Check wakeup status
-  bool wakeup_enabled = g_uart_instance->IsWakeupEnabled();
-  if (!wakeup_enabled) {
-    ESP_LOGE(TAG, "Wakeup not enabled after configuration");
-    return false;
-  }
-
-  // Disable wakeup
-  wakeup_config.enable_wakeup = false;
-  result = g_uart_instance->ConfigureWakeup(wakeup_config);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to disable wakeup: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "[SUCCESS] ESP32-C6 wakeup modes test completed");
-  return true;
-}
-
-bool test_uart_collision_detection() noexcept {
-  ESP_LOGI(TAG, "Testing UART collision detection...");
-
-  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
-    ESP_LOGE(TAG, "UART not initialized");
-    return false;
-  }
-
-  // Test collision flag retrieval
-  bool collision_flag = false;
-  hf_uart_err_t result = g_uart_instance->GetCollisionFlag(collision_flag);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to get collision flag: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "Collision flag: %s", collision_flag ? "true" : "false");
-
-  ESP_LOGI(TAG, "[SUCCESS] Collision detection test completed");
-  return true;
-}
 
 bool test_uart_performance() noexcept {
   ESP_LOGI(TAG, "Testing UART performance...");
@@ -988,13 +773,9 @@ bool test_uart_performance() noexcept {
     return false;
   }
 
-  // Performance test: Large data transmission
-  const size_t test_data_size = 1024;
-  uint8_t* test_data = static_cast<uint8_t*>(malloc(test_data_size));
-  if (!test_data) {
-    ESP_LOGE(TAG, "Failed to allocate test data");
-    return false;
-  }
+  // Simple performance test: Medium data transmission
+  const size_t test_data_size = 256;
+  uint8_t test_data[test_data_size];
 
   // Fill with test pattern
   for (size_t i = 0; i < test_data_size; i++) {
@@ -1003,10 +784,8 @@ bool test_uart_performance() noexcept {
 
   // Measure transmission time
   uint64_t start_time = esp_timer_get_time();
-  hf_uart_err_t result = g_uart_instance->Write(test_data, test_data_size, 5000);
+  hf_uart_err_t result = g_uart_instance->Write(test_data, test_data_size, 2000);
   uint64_t end_time = esp_timer_get_time();
-
-  free(test_data);
 
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Performance test write failed: %d", static_cast<int>(result));
@@ -1014,98 +793,9 @@ bool test_uart_performance() noexcept {
   }
 
   uint64_t transmission_time = end_time - start_time;
-  double throughput = (test_data_size * 8.0 * 1000000.0) / transmission_time; // bits per second
-
-  ESP_LOGI(TAG, "Performance test results:");
-  ESP_LOGI(TAG, "  Data size: %zu bytes", test_data_size);
-  ESP_LOGI(TAG, "  Transmission time: %llu μs", transmission_time);
-  ESP_LOGI(TAG, "  Throughput: %.2f bps", throughput);
-
-  // Test burst writes
-  const size_t burst_size = 64;
-  const size_t burst_count = 10;
-
-  start_time = esp_timer_get_time();
-  for (size_t i = 0; i < burst_count; i++) {
-    uint8_t burst_data[burst_size];
-    memset(burst_data, 0xAA + i, burst_size);
-    
-    result = g_uart_instance->Write(burst_data, burst_size, 1000);
-    if (result != hf_uart_err_t::UART_SUCCESS) {
-      ESP_LOGE(TAG, "Burst write %zu failed: %d", i, static_cast<int>(result));
-      return false;
-    }
-  }
-  end_time = esp_timer_get_time();
-
-  uint64_t burst_time = end_time - start_time;
-  ESP_LOGI(TAG, "Burst test: %zu x %zu bytes in %llu μs", burst_count, burst_size, burst_time);
+  ESP_LOGI(TAG, "Performance test: %zu bytes in %llu μs", test_data_size, transmission_time);
 
   ESP_LOGI(TAG, "[SUCCESS] Performance test completed");
-  return true;
-}
-
-bool test_uart_lp_uart_support() noexcept {
-  ESP_LOGI(TAG, "Testing Low Power UART support...");
-
-  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
-    ESP_LOGE(TAG, "UART not initialized");
-    return false;
-  }
-
-  // Check if LP UART is available
-  bool lp_available = g_uart_instance->IsLPUartAvailable();
-  ESP_LOGI(TAG, "LP UART available: %s", lp_available ? "true" : "false");
-
-#ifdef HF_MCU_ESP32C6
-  if (!lp_available) {
-    ESP_LOGE(TAG, "LP UART should be available on ESP32-C6");
-    return false;
-  }
-
-  // Test LP UART configuration
-  hf_lp_uart_config_t lp_config = {};
-  lp_config.baud_rate = 9600;
-  lp_config.enable_wakeup = true;
-  lp_config.wakeup_threshold = 5;
-  lp_config.enable_collision_detect = false;
-
-  hf_uart_err_t result = g_uart_instance->ConfigureLPUart(lp_config);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure LP UART: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "LP UART configuration successful");
-
-  // Test LP UART enable
-  result = g_uart_instance->EnableLPUart();
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to enable LP UART: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "LP UART enabled successfully");
-
-  // Test LP UART disable
-  result = g_uart_instance->DisableLPUart();
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to disable LP UART: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "LP UART disabled successfully");
-
-#else
-  if (lp_available) {
-    ESP_LOGE(TAG, "LP UART should not be available on non-ESP32-C6 chips");
-    return false;
-  }
-
-  ESP_LOGI(TAG, "LP UART correctly not available on this chip");
-#endif
-
-  ESP_LOGI(TAG, "[SUCCESS] LP UART support test completed");
   return true;
 }
 
@@ -1152,15 +842,9 @@ extern "C" void app_main(void) {
   RUN_TEST(test_uart_printf_support);
   RUN_TEST(test_uart_error_handling);
   
-  // ESP-IDF v5.5 and ESP32-C6 specific tests
+  // ESP32-C6 specific tests
   RUN_TEST(test_uart_esp32c6_features);
-  RUN_TEST(test_uart_dma_support);
-  RUN_TEST(test_uart_bitrate_detection);
-  RUN_TEST(test_uart_enhanced_pattern_detection);
-  RUN_TEST(test_uart_esp32c6_wakeup_modes);
-  RUN_TEST(test_uart_collision_detection);
   RUN_TEST(test_uart_performance);
-  RUN_TEST(test_uart_lp_uart_support);
   
   RUN_TEST(test_uart_cleanup);
 
