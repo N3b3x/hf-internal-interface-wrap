@@ -91,7 +91,7 @@ struct TestResults {
     ESP_LOGI(TAG,                                                                                 \
              "\n"                                                                                 \
              "╔══════════════════════════════════════════════════════════════════════════════╗\n" \
-             "║ Running: " #test_func "                                                    ║\n"   \
+             "║ Running: " #test_func "                                                     \n"   \
              "╚══════════════════════════════════════════════════════════════════════════════╝"); \
     uint64_t start_time = esp_timer_get_time();                                                   \
     bool result = test_func();                                                                    \
@@ -125,7 +125,7 @@ inline void test_task_trampoline(void* param) {
   ESP_LOGI(ctx->tag,
            "\n"
            "╔══════════════════════════════════════════════════════════════════════════════╗\n"
-           "║ Running (task): %s                                                    ║\n"
+           "║ Running (task): %s                                                            \n"
            "╚══════════════════════════════════════════════════════════════════════════════╝",
            ctx->test_name);
   uint64_t start_time = esp_timer_get_time();

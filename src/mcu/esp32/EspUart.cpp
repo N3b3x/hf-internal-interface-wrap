@@ -18,12 +18,12 @@
 #include <algorithm>
 #include <cstring>
 
-#ifdef HF_MCU_FAMILY_ESP32
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include "driver/gpio.h"
 #include "driver/uart.h"
 #include "esp_err.h"
 #include "esp_log.h"
@@ -43,11 +43,9 @@ static const char* TAG = "EspUart";
 EspUart::EspUart(const hf_uart_config_t& config) noexcept
     : BaseUart(config.port_number), port_config_(config), initialized_(false),
       uart_port_(static_cast<uart_port_t>(config.port_number)), event_queue_(nullptr),
-      event_task_handle_(nullptr), event_callback_(nullptr), pattern_callback_(nullptr),
-      break_callback_(nullptr), event_callback_user_data_(nullptr),
-      pattern_callback_user_data_(nullptr), break_callback_user_data_(nullptr),
+
       operating_mode_(config.operating_mode),
-      communication_mode_(hf_uart_mode_t::HF_UART_MODE_UART), pattern_detection_enabled_(false),
+      communication_mode_(hf_uart_mode_t::HF_UART_MODE_UART),
       software_flow_enabled_(false), wakeup_enabled_(false), break_detected_(false),
       tx_in_progress_(false), last_error_(hf_uart_err_t::UART_SUCCESS) {
   // Initialize printf buffer
@@ -272,16 +270,6 @@ hf_uart_err_t EspUart::FlushRx() noexcept {
 // CONFIGURATION (BaseUart Interface)
 //==============================================================================
 
-// bool SetBaudRate removed - keeping hf_uart_err_t version
-
-// bool SetFlowControl removed - keeping hf_uart_err_t version
-
-// bool SetRTS removed - keeping hf_uart_err_t version
-
-// bool SendBreak removed - keeping hf_uart_err_t version
-
-// bool SetLoopback removed - keeping hf_uart_err_t version
-
 bool EspUart::WaitTransmitComplete(hf_u32_t timeout_ms) noexcept {
   if (!EnsureInitialized()) {
     return false;
@@ -308,12 +296,45 @@ bool EspUart::WaitTransmitComplete(hf_u32_t timeout_ms) noexcept {
 
 // Implement missing overrides
 hf_u16_t EspUart::BytesAvailable() noexcept {
-  // TODO: Implement actual logic
-  return 0;
+  if (!EnsureInitialized()) {
+    return 0;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  size_t buffered_size = 0;
+  esp_err_t result = uart_get_buffered_data_len(uart_port_, &buffered_size);
+  if (result == ESP_OK) {
+    return static_cast<hf_u16_t>(buffered_size);
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    return 0;
+  }
 }
 bool EspUart::IsTxBusy() noexcept {
-  // TODO: Implement actual logic
-  return false;
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  // Check if transmission is in progress using internal state
+  if (tx_in_progress_) {
+    return true;
+  }
+  
+  // Check if there are bytes waiting in TX buffer
+  size_t tx_buffered = 0;
+  esp_err_t result = uart_get_buffered_data_len(uart_port_, &tx_buffered);
+  if (result == ESP_OK && tx_buffered > 0) {
+    return true;
+  }
+  
+  // Check if UART is actively transmitting by checking TX FIFO
+  // Note: Low-level UART functions may not be available in all ESP-IDF versions
+  // Using a simpler approach for broader compatibility
+  return false; // Conservative approach - assume not busy if we can't check hardware directly
 }
 
 hf_u16_t EspUart::TxBytesWaiting() noexcept {
@@ -385,27 +406,10 @@ hf_uart_err_t EspUart::SetOperatingMode(hf_uart_operating_mode_t mode) noexcept 
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  if (operating_mode_ == mode) {
-    return hf_uart_err_t::UART_SUCCESS; // Already in requested mode
-  }
-
-  // Stop current mode if different
-  if (operating_mode_ == hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    StopEventTask();
-  }
-
   operating_mode_ = mode;
   port_config_.operating_mode = mode;
 
-  // Start new mode if needed
-  if (mode == hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    hf_uart_err_t result = StartEventTask();
-    if (result != hf_uart_err_t::UART_SUCCESS) {
-      return result;
-    }
-  }
-
-  ESP_LOGI(TAG, "Operating mode changed to %d", static_cast<int>(mode));
+  ESP_LOGI(TAG, "Operating mode set to %d (user handles event tasks)", static_cast<int>(mode));
   return hf_uart_err_t::UART_SUCCESS;
 }
 
@@ -420,9 +424,18 @@ bool EspUart::SetBaudRate(hf_u32_t baud_rate) noexcept {
     return false;
   }
 
-  port_config_.baud_rate = baud_rate;
-  // TODO: Implement actual logic
-  return true;
+  // Apply the new baud rate to the hardware
+  esp_err_t result = uart_set_baudrate(uart_port_, baud_rate);
+  if (result == ESP_OK) {
+    port_config_.baud_rate = baud_rate;
+    ESP_LOGI(TAG, "Baud rate changed to %lu", baud_rate);
+    return true;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to set baud rate to %lu: %s", baud_rate, esp_err_to_name(result));
+    return false;
+  }
 }
 
 hf_uart_err_t EspUart::SetFlowControl(bool enable) noexcept {
@@ -433,7 +446,9 @@ hf_uart_err_t EspUart::SetFlowControl(bool enable) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   uart_hw_flowcontrol_t flow_ctrl = enable ? UART_HW_FLOWCTRL_CTS_RTS : UART_HW_FLOWCTRL_DISABLE;
-  esp_err_t result = uart_set_hw_flow_ctrl(uart_port_, flow_ctrl, 122);
+  // ESP32-C6 UART FIFO is only 128 bytes, use a reasonable threshold
+  uint8_t threshold = enable ? 64 : 0;  // 50% of FIFO size when enabled
+  esp_err_t result = uart_set_hw_flow_ctrl(uart_port_, flow_ctrl, threshold);
   if (result == ESP_OK) {
     port_config_.flow_control = enable ? hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_CTS_RTS
                                        : hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_DISABLE;
@@ -478,17 +493,62 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  // uart_send_break not available in ESP-IDF v5.5 - use alternative approach
-  esp_err_t result = ESP_OK; // TODO: Implement break sending for ESP-IDF v5.5
+  // Try multiple approaches for sending break signal on ESP32-C6
+  esp_err_t result = ESP_ERR_NOT_SUPPORTED;
+
+  // Approach 1: Try uart_write_bytes_with_break (ESP-IDF v5.5 standard)
+  const char dummy_data[] = {0x00};
+  result = uart_write_bytes_with_break(uart_port_, &dummy_data, 1, pdMS_TO_TICKS(duration_ms));
+  
   if (result == ESP_OK) {
     statistics_.break_count++;
-    ESP_LOGD(TAG, "Break condition sent for %lu ms", duration_ms);
+    ESP_LOGD(TAG, "Break condition sent via uart_write_bytes_with_break for %lu ms", duration_ms);
     return hf_uart_err_t::UART_SUCCESS;
-  } else {
-    hf_uart_err_t error = ConvertPlatformError(result);
-    UpdateDiagnostics(error);
-    return error;
   }
+
+  // Approach 2: If uart_write_bytes_with_break fails, try manual break via GPIO control
+  // This is a fallback for ESP32-C6 which may have issues with the standard break function
+  ESP_LOGW(TAG, "uart_write_bytes_with_break failed (%s), trying manual break via GPIO", esp_err_to_name(result));
+  
+  // Use the configured TX pin from our configuration instead of trying to query it
+  if (port_config_.tx_pin != HF_UART_IO_UNUSED) {
+    // Temporarily configure TX pin as GPIO output
+    gpio_config_t gpio_cfg = {};
+    gpio_cfg.pin_bit_mask = (1ULL << port_config_.tx_pin);
+    gpio_cfg.mode = GPIO_MODE_OUTPUT;
+    gpio_cfg.pull_up_en = GPIO_PULLUP_DISABLE;
+    gpio_cfg.pull_down_en = GPIO_PULLDOWN_DISABLE;
+    gpio_cfg.intr_type = GPIO_INTR_DISABLE;
+    
+    esp_err_t gpio_result = gpio_config(&gpio_cfg);
+    if (gpio_result == ESP_OK) {
+      // Send break by pulling TX line low for the specified duration
+      gpio_set_level(static_cast<gpio_num_t>(port_config_.tx_pin), 0);  // Pull TX low
+      vTaskDelay(pdMS_TO_TICKS(duration_ms));  // Hold for break duration
+      gpio_set_level(static_cast<gpio_num_t>(port_config_.tx_pin), 1);  // Release TX line
+      
+      // Restore UART pin configuration
+      uart_set_pin(uart_port_, port_config_.tx_pin, port_config_.rx_pin, 
+                   port_config_.rts_pin, port_config_.cts_pin);
+      
+      statistics_.break_count++;
+      ESP_LOGW(TAG, "Break condition sent via manual GPIO control for %lu ms (ESP32-C6 fallback)", duration_ms);
+      return hf_uart_err_t::UART_SUCCESS;
+    } else {
+      ESP_LOGE(TAG, "Failed to configure GPIO for manual break: %s", esp_err_to_name(gpio_result));
+    }
+  } else {
+    ESP_LOGE(TAG, "TX pin not configured for manual break control");
+  }
+
+  // Approach 3: If all else fails, log the issue and return appropriate error
+  ESP_LOGE(TAG, "All break signal methods failed on ESP32-C6. This is a known hardware limitation.");
+  ESP_LOGE(TAG, "Break signal functionality may not be fully supported on this MCU variant.");
+  
+  // Return a specific error code for unsupported operations
+  hf_uart_err_t error = hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
+  UpdateDiagnostics(error);
+  return error;
 }
 
 hf_uart_err_t EspUart::SetLoopback(bool enable) noexcept {
@@ -636,17 +696,7 @@ hf_uart_err_t EspUart::ConfigureIrDA(const hf_uart_irda_config_t& irda_config) n
   return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
 }
 
-int EspUart::GetPatternPosition(bool pop_position) noexcept {
-  if (!EnsureInitialized() || !pattern_detection_enabled_) {
-    return -1;
-  }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  // TODO: Implement pattern detection for ESP-IDF v5.5
-  ESP_LOGW(TAG, "Pattern detection not supported in ESP-IDF v5.5");
-  return -1;
-}
 
 hf_uart_err_t EspUart::ConfigureSoftwareFlowControl(bool enable, hf_u8_t xon_threshold,
                                                     hf_u8_t xoff_threshold) noexcept {
@@ -690,20 +740,22 @@ hf_uart_err_t EspUart::ConfigureWakeup(const hf_uart_wakeup_config_t& wakeup_con
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (wakeup_config.enable_wakeup) {
-    // esp_err_t result = uart_enable_rx_wakeup(uart_port_, wakeup_config.wakeup_threshold);
-    esp_err_t result = ESP_OK; // TODO: Implement wakeup support
+    // ESP-IDF v5.5 supports wakeup threshold configuration
+    esp_err_t result = uart_set_wakeup_threshold(uart_port_, wakeup_config.wakeup_threshold);
     if (result == ESP_OK) {
       wakeup_enabled_ = true;
+      
       ESP_LOGI(TAG, "UART wakeup enabled with threshold %d", wakeup_config.wakeup_threshold);
       return hf_uart_err_t::UART_SUCCESS;
     } else {
       hf_uart_err_t error = ConvertPlatformError(result);
       UpdateDiagnostics(error);
+      ESP_LOGE(TAG, "Failed to enable wakeup: %s", esp_err_to_name(result));
       return error;
     }
   } else {
-    // esp_err_t result = uart_disable_rx_wakeup(uart_port_);
-    esp_err_t result = ESP_OK; // TODO: Implement wakeup support
+    // Disable wakeup by setting threshold to 0 (or maximum value to effectively disable)
+    esp_err_t result = uart_set_wakeup_threshold(uart_port_, 0);
     if (result == ESP_OK) {
       wakeup_enabled_ = false;
       ESP_LOGI(TAG, "UART wakeup disabled");
@@ -711,104 +763,9 @@ hf_uart_err_t EspUart::ConfigureWakeup(const hf_uart_wakeup_config_t& wakeup_con
     } else {
       hf_uart_err_t error = ConvertPlatformError(result);
       UpdateDiagnostics(error);
+      ESP_LOGE(TAG, "Failed to disable wakeup: %s", esp_err_to_name(result));
       return error;
     }
-  }
-}
-
-hf_uart_err_t EspUart::SetRxFullThreshold(hf_u8_t threshold) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
-  }
-
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  esp_err_t result = uart_set_rx_full_threshold(uart_port_, threshold);
-  if (result == ESP_OK) {
-    ESP_LOGD(TAG, "RX full threshold set to %d", threshold);
-    return hf_uart_err_t::UART_SUCCESS;
-  } else {
-    hf_uart_err_t error = ConvertPlatformError(result);
-    UpdateDiagnostics(error);
-    return error;
-  }
-}
-
-hf_uart_err_t EspUart::SetTxEmptyThreshold(hf_u8_t threshold) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
-  }
-
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  esp_err_t result = uart_set_tx_empty_threshold(uart_port_, threshold);
-  if (result == ESP_OK) {
-    ESP_LOGD(TAG, "TX empty threshold set to %d", threshold);
-    return hf_uart_err_t::UART_SUCCESS;
-  } else {
-    hf_uart_err_t error = ConvertPlatformError(result);
-    UpdateDiagnostics(error);
-    return error;
-  }
-}
-
-hf_uart_err_t EspUart::SetRxTimeoutThreshold(hf_u8_t timeout_threshold) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
-  }
-
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  esp_err_t result = uart_set_rx_timeout(uart_port_, timeout_threshold);
-  if (result == ESP_OK) {
-    ESP_LOGD(TAG, "RX timeout threshold set to %d", timeout_threshold);
-    return hf_uart_err_t::UART_SUCCESS;
-  } else {
-    hf_uart_err_t error = ConvertPlatformError(result);
-    UpdateDiagnostics(error);
-    return error;
-  }
-}
-
-hf_uart_err_t EspUart::EnableRxInterrupts(bool enable) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
-  }
-
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  esp_err_t result = uart_enable_rx_intr(uart_port_);
-  if (result == ESP_OK) {
-    ESP_LOGD(TAG, "RX interrupts %s", enable ? "enabled" : "disabled");
-    return hf_uart_err_t::UART_SUCCESS;
-  } else {
-    hf_uart_err_t error = ConvertPlatformError(result);
-    UpdateDiagnostics(error);
-    return error;
-  }
-}
-
-hf_uart_err_t EspUart::EnableTxInterrupts(bool enable, hf_u8_t threshold) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
-  }
-
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  esp_err_t result;
-  if (enable) {
-    result = uart_enable_tx_intr(uart_port_, threshold, 10);
-  } else {
-    result = uart_disable_tx_intr(uart_port_);
-  }
-
-  if (result == ESP_OK) {
-    ESP_LOGD(TAG, "TX interrupts %s", enable ? "enabled" : "disabled");
-    return hf_uart_err_t::UART_SUCCESS;
-  } else {
-    hf_uart_err_t error = ConvertPlatformError(result);
-    UpdateDiagnostics(error);
-    return error;
   }
 }
 
@@ -831,34 +788,157 @@ hf_uart_err_t EspUart::SetSignalInversion(hf_u32_t inverse_mask) noexcept {
 }
 
 //==============================================================================
-// CALLBACKS AND EVENT HANDLING
+// EVENT QUEUE ACCESS (User Creates Own Tasks)
 //==============================================================================
 
-hf_uart_err_t EspUart::SetEventCallback(hf_uart_event_callback_t callback,
-                                        void* user_data) noexcept {
+QueueHandle_t EspUart::GetEventQueue() const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  event_callback_ = callback;
-  event_callback_user_data_ = user_data;
-  ESP_LOGD(TAG, "Event callback %s", callback ? "set" : "cleared");
+  return event_queue_;
+}
+
+bool EspUart::IsEventQueueAvailable() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  return (event_queue_ != nullptr);
+}
+
+hf_uart_err_t EspUart::ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rxfifo_full_thresh,
+                                           uint8_t rx_timeout_thresh) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  // Configure interrupt settings using ESP-IDF v5.5 API
+  uart_intr_config_t intr_config = {
+    .intr_enable_mask = intr_enable_mask,
+    .rx_timeout_thresh = rx_timeout_thresh,
+    .txfifo_empty_intr_thresh = 10,  // Default TX empty threshold
+    .rxfifo_full_thresh = rxfifo_full_thresh,
+  };
+
+  esp_err_t result = uart_intr_config(uart_port_, &intr_config);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "UART interrupts configured (mask: 0x%08lx, rx_thresh: %d, timeout: %d)",
+             intr_enable_mask, rxfifo_full_thresh, rx_timeout_thresh);
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to configure interrupts: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+hf_uart_err_t EspUart::ResetEventQueue() noexcept {
+  if (!EnsureInitialized() || !event_queue_) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  // Reset the FreeRTOS queue to clear all pending events
+  xQueueReset(event_queue_);
+  ESP_LOGD(TAG, "Event queue reset");
   return hf_uart_err_t::UART_SUCCESS;
 }
 
-hf_uart_err_t EspUart::SetPatternCallback(hf_uart_pattern_callback_t callback,
-                                          void* user_data) noexcept {
+//==============================================================================
+// PATTERN DETECTION (ESP-IDF v5.5 Feature)
+//==============================================================================
+
+hf_uart_err_t EspUart::EnablePatternDetection(char pattern_chr, uint8_t chr_num,
+                                              int chr_tout, int post_idle, int pre_idle) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  pattern_callback_ = callback;
-  pattern_callback_user_data_ = user_data;
-  ESP_LOGD(TAG, "Pattern callback %s", callback ? "set" : "cleared");
-  return hf_uart_err_t::UART_SUCCESS;
+
+  // Enable pattern detection using ESP-IDF v5.5 API
+  esp_err_t result = uart_enable_pattern_det_baud_intr(uart_port_, pattern_chr, chr_num,
+                                                       chr_tout, post_idle, pre_idle);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "Pattern detection enabled: '%c' x%d (chr_tout=%d, post_idle=%d, pre_idle=%d)",
+             pattern_chr, chr_num, chr_tout, post_idle, pre_idle);
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to enable pattern detection: %s", esp_err_to_name(result));
+    return error;
+  }
 }
 
-hf_uart_err_t EspUart::SetBreakCallback(hf_uart_break_callback_t callback,
-                                        void* user_data) noexcept {
+hf_uart_err_t EspUart::DisablePatternDetection() noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  break_callback_ = callback;
-  break_callback_user_data_ = user_data;
-  ESP_LOGD(TAG, "Break callback %s", callback ? "set" : "cleared");
-  return hf_uart_err_t::UART_SUCCESS;
+
+  esp_err_t result = uart_disable_pattern_det_intr(uart_port_);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "Pattern detection disabled");
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to disable pattern detection: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+hf_uart_err_t EspUart::ResetPatternQueue(int queue_length) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  esp_err_t result = uart_pattern_queue_reset(uart_port_, queue_length);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "Pattern queue reset with length %d", queue_length);
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to reset pattern queue: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+int EspUart::PopPatternPosition() noexcept {
+  if (!EnsureInitialized()) {
+    return -1;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  int position = uart_pattern_pop_pos(uart_port_);
+  if (position >= 0) {
+    ESP_LOGD(TAG, "Pattern position popped: %d", position);
+    statistics_.pattern_detect_count++;
+  } else {
+    ESP_LOGD(TAG, "No pattern position available (queue empty or overflow)");
+  }
+  
+  return position;
+}
+
+int EspUart::PeekPatternPosition() noexcept {
+  if (!EnsureInitialized()) {
+    return -1;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  int position = uart_pattern_get_pos(uart_port_);
+  if (position >= 0) {
+    ESP_LOGD(TAG, "Pattern position peeked: %d", position);
+  }
+  
+  return position;
 }
 
 //==============================================================================
@@ -897,10 +977,7 @@ hf_uart_mode_t EspUart::GetCommunicationMode() const noexcept {
   return communication_mode_;
 }
 
-bool EspUart::IsPatternDetectionEnabled() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  return pattern_detection_enabled_;
-}
+
 
 bool EspUart::IsWakeupEnabled() const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
@@ -915,6 +992,11 @@ bool EspUart::IsTransmitting() const noexcept {
 bool EspUart::IsReceiving() const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   return diagnostics_.is_receiving;
+}
+
+bool EspUart::IsBreakDetected() noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  return break_detected_;
 }
 
 //==============================================================================
@@ -992,25 +1074,15 @@ hf_uart_err_t EspUart::PlatformInitialize() noexcept {
     return pin_result;
   }
 
-  // Start event task if in interrupt mode
-  if (operating_mode_ == hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    hf_uart_err_t task_result = StartEventTask();
-    if (task_result != hf_uart_err_t::UART_SUCCESS) {
-      UninstallDriver();
-      return task_result;
-    }
-  }
+  // Event queue is available for user to create their own tasks
+  ESP_LOGI(TAG, "Event queue available for user task creation");
 
   return hf_uart_err_t::UART_SUCCESS;
 }
 
 hf_uart_err_t EspUart::PlatformDeinitialize() noexcept {
-  // Stop event task if running
-  if (operating_mode_ == hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    StopEventTask();
-  }
-
-  // Uninstall driver
+  // User is responsible for stopping their own event tasks before deinitializing
+  // Uninstall driver (this will also clean up the event queue)
   return UninstallDriver();
 }
 
@@ -1132,109 +1204,7 @@ hf_uart_err_t EspUart::ConfigurePins() noexcept {
   return hf_uart_err_t::UART_SUCCESS;
 }
 
-hf_uart_err_t EspUart::StartEventTask() noexcept {
-  if (event_task_handle_ != nullptr) {
-    return hf_uart_err_t::UART_SUCCESS; // Already running
-  }
 
-  BaseType_t result = xTaskCreate(EventTask, "UART_Event", 2048, this, 5, &event_task_handle_);
-  if (result != pdPASS) {
-    ESP_LOGE(TAG, "Failed to create UART event task");
-    return hf_uart_err_t::UART_ERR_OUT_OF_MEMORY;
-  }
-
-  ESP_LOGI(TAG, "UART event task started");
-  return hf_uart_err_t::UART_SUCCESS;
-}
-
-hf_uart_err_t EspUart::StopEventTask() noexcept {
-  if (event_task_handle_ == nullptr) {
-    return hf_uart_err_t::UART_SUCCESS; // Not running
-  }
-
-  vTaskDelete(event_task_handle_);
-  event_task_handle_ = nullptr;
-  ESP_LOGI(TAG, "UART event task stopped");
-  return hf_uart_err_t::UART_SUCCESS;
-}
-
-void EspUart::EventTask(void* arg) noexcept {
-  auto* uart = static_cast<EspUart*>(arg);
-  if (!uart) {
-    return;
-  }
-
-  uart_event_t event;
-  while (true) {
-    if (xQueueReceive(uart->event_queue_, &event, portMAX_DELAY)) {
-      uart->HandleUartEvent(&event);
-    }
-  }
-}
-
-void EspUart::HandleUartEvent(const uart_event_t* event) noexcept {
-  if (!event) {
-    return;
-  }
-
-  switch (event->type) {
-    case UART_DATA:
-      statistics_.rx_byte_count += event->size;
-      diagnostics_.is_receiving = true;
-      break;
-
-    case UART_FIFO_OVF:
-      statistics_.overrun_error_count++;
-      UpdateDiagnostics(hf_uart_err_t::UART_ERR_OVERRUN_ERROR);
-      break;
-
-    case UART_BUFFER_FULL:
-      statistics_.rx_error_count++;
-      UpdateDiagnostics(hf_uart_err_t::UART_ERR_BUFFER_FULL);
-      break;
-
-    case UART_BREAK:
-      statistics_.break_count++;
-      break_detected_ = true;
-      if (break_callback_) {
-        break_callback_(0, break_callback_user_data_);
-      }
-      break;
-
-    case UART_PARITY_ERR:
-      statistics_.parity_error_count++;
-      UpdateDiagnostics(hf_uart_err_t::UART_ERR_PARITY_ERROR);
-      break;
-
-    case UART_FRAME_ERR:
-      statistics_.frame_error_count++;
-      UpdateDiagnostics(hf_uart_err_t::UART_ERR_FRAME_ERROR);
-      break;
-
-    case UART_PATTERN_DET:
-      statistics_.pattern_detect_count++;
-      if (pattern_callback_) {
-        pattern_callback_(event->size, pattern_callback_user_data_);
-      }
-      break;
-
-      // case UART_WAKEUP:
-      //   statistics_.wakeup_count++;
-      //   if (wakeup_enabled_) {
-      //     ESP_LOGI(TAG, "UART wakeup detected");
-      //   }
-      //   break;
-
-    default:
-      ESP_LOGW(TAG, "Unknown UART event: %d", event->type);
-      break;
-  }
-
-  // Call user event callback if set
-  if (event_callback_) {
-    event_callback_(event, event_callback_user_data_);
-  }
-}
 
 hf_uart_err_t EspUart::ConvertPlatformError(int32_t platform_error) noexcept {
   switch (platform_error) {
@@ -1298,22 +1268,6 @@ int EspUart::InternalPrintf(const char* format, va_list args) noexcept {
     }
   }
   return -1;
-}
-
-bool IRAM_ATTR EspUart::PatternCallbackWrapper(int pattern_pos, void* user_data) noexcept {
-  auto* uart = static_cast<EspUart*>(user_data);
-  if (uart && uart->pattern_callback_) {
-    return uart->pattern_callback_(pattern_pos, uart->pattern_callback_user_data_);
-  }
-  return false;
-}
-
-bool IRAM_ATTR EspUart::BreakCallbackWrapper(hf_u32_t break_duration, void* user_data) noexcept {
-  auto* uart = static_cast<EspUart*>(user_data);
-  if (uart && uart->break_callback_) {
-    return uart->break_callback_(break_duration, uart->break_callback_user_data_);
-  }
-  return false;
 }
 
 //==============================================================================
@@ -1487,5 +1441,3 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
   return false;
 #endif
 }
-
-#endif // HF_MCU_FAMILY_ESP32

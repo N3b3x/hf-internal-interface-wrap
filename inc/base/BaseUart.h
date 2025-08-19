@@ -85,7 +85,7 @@ enum class hf_uart_err_t : hf_u8_t {
  * @param err The error code to convert
  * @return String view of the error description
  */
-constexpr std::string_view hf_uart_err_to_string(hf_uart_err_t err) noexcept {
+constexpr std::string_view HfUartErrToString(hf_uart_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC) \
   case hf_uart_err_t::NAME:  \

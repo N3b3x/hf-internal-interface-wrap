@@ -20,10 +20,6 @@
 #pragma once
 
 #include "McuSelect.h"
-
-// Only compile for ESP32 family
-#ifdef HF_MCU_FAMILY_ESP32
-
 #include "BaseUart.h"
 #include "RtosMutex.h"
 #include "utils/EspTypes.h"
@@ -271,13 +267,6 @@ public:
   hf_uart_err_t ConfigureIrDA(const hf_uart_irda_config_t& irda_config) noexcept;
 
   /**
-   * @brief Get pattern detection position.
-   * @param pop_position true to pop the position from queue, false to peek
-   * @return Pattern position or -1 if no pattern detected
-   */
-  int GetPatternPosition(bool pop_position = false) noexcept;
-
-  /**
    * @brief Configure software flow control (XON/XOFF).
    * @param enable true to enable, false to disable
    * @param xon_threshold XON threshold (default: 20)
@@ -295,78 +284,89 @@ public:
   hf_uart_err_t ConfigureWakeup(const hf_uart_wakeup_config_t& wakeup_config) noexcept;
 
   /**
-   * @brief Set RX full threshold for interrupts.
-   * @param threshold Threshold value
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SetRxFullThreshold(uint8_t threshold) noexcept;
-
-  /**
-   * @brief Set TX empty threshold for interrupts.
-   * @param threshold Threshold value
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SetTxEmptyThreshold(uint8_t threshold) noexcept;
-
-  /**
-   * @brief Set RX timeout threshold.
-   * @param timeout_threshold Timeout threshold value
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t SetRxTimeoutThreshold(uint8_t timeout_threshold) noexcept;
-
-  /**
-   * @brief Enable or disable RX interrupts.
-   * @param enable true to enable, false to disable
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t EnableRxInterrupts(bool enable) noexcept;
-
-  /**
-   * @brief Enable or disable TX interrupts.
-   * @param enable true to enable, false to disable
-   * @param threshold TX empty threshold (default: 10)
-   * @return hf_uart_err_t result code
-   */
-  hf_uart_err_t EnableTxInterrupts(bool enable, uint8_t threshold = 10) noexcept;
-
-  /**
    * @brief Set signal inversion mask.
    * @param inverse_mask Inversion mask (UART_SIGNAL_INV_DISABLE, UART_SIGNAL_INV_TXD, etc.)
    * @return hf_uart_err_t result code
    */
   hf_uart_err_t SetSignalInversion(uint32_t inverse_mask) noexcept;
+  
+  //==============================================================================
+  // EVENT QUEUE ACCESS (User Creates Own Tasks)
+  //==============================================================================
+
+  /**
+   * @brief Get the ESP-IDF event queue handle for user task creation.
+   * @return QueueHandle_t for ESP-IDF uart_event_t structures, or nullptr if not available
+   * @note User is responsible for creating FreeRTOS task to handle events
+   * @note Only available when driver is installed with event queue
+   */
+  QueueHandle_t GetEventQueue() const noexcept;
+
+  /**
+   * @brief Check if event queue is available.
+   * @return true if event queue is available, false otherwise
+   */
+  bool IsEventQueueAvailable() const noexcept;
+
+  /**
+   * @brief Configure UART interrupt settings.
+   * @param intr_enable_mask Interrupt enable mask (UART_INTR_RXFIFO_FULL | UART_INTR_RXFIFO_TOUT)
+   * @param rxfifo_full_thresh RX FIFO full threshold
+   * @param rx_timeout_thresh RX timeout threshold
+   * @return hf_uart_err_t result code
+   * @note Use ESP-IDF constants: UART_INTR_RXFIFO_FULL, UART_INTR_RXFIFO_TOUT, etc.
+   */
+  hf_uart_err_t ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rxfifo_full_thresh = 100,
+                                    uint8_t rx_timeout_thresh = 10) noexcept;
+
+  /**
+   * @brief Reset event queue (clear all pending events).
+   * @return hf_uart_err_t result code
+   */
+  hf_uart_err_t ResetEventQueue() noexcept;
 
   //==============================================================================
-  // CALLBACKS AND EVENT HANDLING
+  // PATTERN DETECTION (ESP-IDF v5.5 Feature)
   //==============================================================================
 
   /**
-   * @brief Set UART event callback.
-   * @param callback Event callback function
-   * @param user_data User data pointer
+   * @brief Enable pattern detection for repeated byte sequences.
+   * @param pattern_chr Byte to detect (e.g., '\n', '+')
+   * @param chr_num Number of repeats to trigger detection (>=1)
+   * @param chr_tout Max idle between pattern bytes (baud periods)
+   * @param post_idle Required idle after pattern (baud periods)
+   * @param pre_idle Required idle before pattern (baud periods)
    * @return hf_uart_err_t result code
+   * @note Uses uart_enable_pattern_det_baud_intr from ESP-IDF v5.5
    */
-  hf_uart_err_t SetEventCallback(hf_uart_event_callback_t callback,
-                                 void* user_data = nullptr) noexcept;
+  hf_uart_err_t EnablePatternDetection(char pattern_chr, uint8_t chr_num = 1,
+                                       int chr_tout = 9, int post_idle = 0, int pre_idle = 0) noexcept;
 
   /**
-   * @brief Set pattern detection callback.
-   * @param callback Pattern callback function
-   * @param user_data User data pointer
+   * @brief Disable pattern detection.
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t SetPatternCallback(hf_uart_pattern_callback_t callback,
-                                   void* user_data = nullptr) noexcept;
+  hf_uart_err_t DisablePatternDetection() noexcept;
 
   /**
-   * @brief Set break detection callback.
-   * @param callback Break callback function
-   * @param user_data User data pointer
+   * @brief Reset pattern detection queue.
+   * @param queue_length Pattern position queue length
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t SetBreakCallback(hf_uart_break_callback_t callback,
-                                 void* user_data = nullptr) noexcept;
+  hf_uart_err_t ResetPatternQueue(int queue_length = 32) noexcept;
+
+  /**
+   * @brief Pop pattern position from queue (consumes entry).
+   * @return Pattern position index, or -1 if queue empty/overflow
+   * @note Call immediately before uart_read_bytes() to maintain data integrity
+   */
+  int PopPatternPosition() noexcept;
+
+  /**
+   * @brief Peek pattern position without consuming.
+   * @return Pattern position index, or -1 if queue empty
+   */
+  int PeekPatternPosition() noexcept;
 
   //==============================================================================
   // STATUS AND INFORMATION
@@ -409,12 +409,6 @@ public:
    * @return Current communication mode
    */
   hf_uart_mode_t GetCommunicationMode() const noexcept;
-
-  /**
-   * @brief Check if pattern detection is enabled.
-   * @return true if enabled, false otherwise
-   */
-  bool IsPatternDetectionEnabled() const noexcept;
 
   /**
    * @brief Check if wakeup is enabled.
@@ -552,29 +546,6 @@ private:
    */
   hf_uart_err_t ConfigurePins() noexcept;
 
-  /**
-   * @brief Start event task for interrupt mode
-   * @return UART_SUCCESS on success, error code on failure
-   */
-  hf_uart_err_t StartEventTask() noexcept;
-
-  /**
-   * @brief Stop event task
-   * @return UART_SUCCESS on success, error code on failure
-   */
-  hf_uart_err_t StopEventTask() noexcept;
-
-  /**
-   * @brief Event task function
-   * @param arg Task argument (this pointer)
-   */
-  static void EventTask(void* arg) noexcept;
-
-  /**
-   * @brief Handle UART events
-   * @param event UART event
-   */
-  void HandleUartEvent(const uart_event_t* event) noexcept;
 
   /**
    * @brief Convert platform error to HardFOC error
@@ -612,21 +583,9 @@ private:
    */
   int InternalPrintf(const char* format, va_list args) noexcept;
 
-  /**
-   * @brief Pattern callback wrapper (ISR-safe)
-   * @param pattern_pos Pattern position
-   * @param user_data User data pointer
-   * @return true to yield to higher priority task
-   */
-  static bool IRAM_ATTR PatternCallbackWrapper(int pattern_pos, void* user_data) noexcept;
 
-  /**
-   * @brief Break callback wrapper (ISR-safe)
-   * @param break_duration Break duration
-   * @param user_data User data pointer
-   * @return true to yield to higher priority task
-   */
-  static bool IRAM_ATTR BreakCallbackWrapper(uint32_t break_duration, void* user_data) noexcept;
+
+
 
   //==============================================================================
   // MEMBER VARIABLES
@@ -637,20 +596,12 @@ private:
   std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
   uart_port_t uart_port_;         ///< Native UART port handle
 
-  // Event handling for interrupt mode
-  QueueHandle_t event_queue_;                   ///< UART event queue
-  TaskHandle_t event_task_handle_;              ///< Event task handle
-  hf_uart_event_callback_t event_callback_;     ///< Event callback
-  hf_uart_pattern_callback_t pattern_callback_; ///< Pattern callback
-  hf_uart_break_callback_t break_callback_;     ///< Break callback
-  void* event_callback_user_data_;              ///< Event callback user data
-  void* pattern_callback_user_data_;            ///< Pattern callback user data
-  void* break_callback_user_data_;              ///< Break callback user data
+  // Event queue (user creates own tasks)
+  QueueHandle_t event_queue_;                   ///< ESP-IDF UART event queue handle
 
   // Operating mode and communication state
   hf_uart_operating_mode_t operating_mode_; ///< Current operating mode
   hf_uart_mode_t communication_mode_;       ///< Current communication mode
-  bool pattern_detection_enabled_;          ///< Pattern detection enabled
   bool software_flow_enabled_;              ///< Software flow control enabled
   bool wakeup_enabled_;                     ///< Wakeup enabled
   bool break_detected_;                     ///< Break condition detected
@@ -666,13 +617,10 @@ private:
   // Printf buffer
   char printf_buffer_[256]; ///< Printf buffer
 
+public:
   // Add missing overrides for BaseUart pure virtuals
   uint16_t BytesAvailable() noexcept override;
   hf_uart_err_t FlushTx() noexcept override;
   hf_uart_err_t FlushRx() noexcept override;
   bool IsTxBusy() noexcept;
 };
-
-#else
-#error "Unsupported MCU platform. Please add support for your target MCU."
-#endif
