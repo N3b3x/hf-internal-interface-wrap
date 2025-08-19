@@ -344,9 +344,10 @@ public:
 
   /**
    * @brief Set UART event callback.
-   * @param callback Event callback function
+   * @param callback Event callback function (receives HardFOC event structure)
    * @param user_data User data pointer
    * @return hf_uart_err_t result code
+   * @note Automatically starts event task in interrupt mode
    */
   hf_uart_err_t SetEventCallback(hf_uart_event_callback_t callback,
                                  void* user_data = nullptr) noexcept;
@@ -604,13 +605,7 @@ private:
 
 
 
-  /**
-   * @brief Break callback wrapper (ISR-safe)
-   * @param break_duration Break duration
-   * @param user_data User data pointer
-   * @return true to yield to higher priority task
-   */
-  static bool IRAM_ATTR BreakCallbackWrapper(uint32_t break_duration, void* user_data) noexcept;
+
 
   //==============================================================================
   // MEMBER VARIABLES

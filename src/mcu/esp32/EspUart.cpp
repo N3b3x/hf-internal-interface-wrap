@@ -887,9 +887,25 @@ hf_uart_err_t EspUart::SetSignalInversion(hf_u32_t inverse_mask) noexcept {
 
 hf_uart_err_t EspUart::SetEventCallback(hf_uart_event_callback_t callback,
                                         void* user_data) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
+  
   event_callback_ = callback;
   event_callback_user_data_ = user_data;
+  
+  // Automatically switch to interrupt mode and start event task when callback is set
+  if (callback && operating_mode_ != hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
+    ESP_LOGI(TAG, "Switching to interrupt mode for event callbacks");
+    hf_uart_err_t mode_result = SetOperatingMode(hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT);
+    if (mode_result != hf_uart_err_t::UART_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to switch to interrupt mode for callbacks");
+      return mode_result;
+    }
+  }
+  
   ESP_LOGD(TAG, "Event callback %s", callback ? "set" : "cleared");
   return hf_uart_err_t::UART_SUCCESS;
 }
@@ -898,9 +914,25 @@ hf_uart_err_t EspUart::SetEventCallback(hf_uart_event_callback_t callback,
 
 hf_uart_err_t EspUart::SetBreakCallback(hf_uart_break_callback_t callback,
                                         void* user_data) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
+  
   break_callback_ = callback;
   break_callback_user_data_ = user_data;
+  
+  // Automatically switch to interrupt mode and start event task when callback is set
+  if (callback && operating_mode_ != hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
+    ESP_LOGI(TAG, "Switching to interrupt mode for break callbacks");
+    hf_uart_err_t mode_result = SetOperatingMode(hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT);
+    if (mode_result != hf_uart_err_t::UART_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to switch to interrupt mode for break callbacks");
+      return mode_result;
+    }
+  }
+  
   ESP_LOGD(TAG, "Break callback %s", callback ? "set" : "cleared");
   return hf_uart_err_t::UART_SUCCESS;
 }
@@ -1218,61 +1250,70 @@ void EspUart::HandleUartEvent(const uart_event_t* event) noexcept {
     return;
   }
 
+  // Convert ESP-IDF event to HardFOC event structure
+  hf_uart_event_t hf_event = {};
+  hf_event.size = event->size;
+  hf_event.timeout_flag = event->timeout_flag;
+
   switch (event->type) {
     case UART_DATA:
+      hf_event.type = hf_uart_event_type_t::HF_UART_DATA;
       statistics_.rx_byte_count += event->size;
       diagnostics_.is_receiving = true;
       break;
 
     case UART_FIFO_OVF:
+      hf_event.type = hf_uart_event_type_t::HF_UART_FIFO_OVF;
       statistics_.overrun_error_count++;
       UpdateDiagnostics(hf_uart_err_t::UART_ERR_OVERRUN_ERROR);
       break;
 
     case UART_BUFFER_FULL:
+      hf_event.type = hf_uart_event_type_t::HF_UART_BUFFER_FULL;
       statistics_.rx_error_count++;
       UpdateDiagnostics(hf_uart_err_t::UART_ERR_BUFFER_FULL);
       break;
 
     case UART_BREAK:
+      hf_event.type = hf_uart_event_type_t::HF_UART_BREAK;
       statistics_.break_count++;
       break_detected_ = true;
       if (break_callback_) {
-        break_callback_(0, break_callback_user_data_);
+        // ESP-IDF doesn't provide break duration in the event, use a default value
+        uint32_t break_duration = 10; // Estimated break duration in ms
+        break_callback_(break_duration, break_callback_user_data_);
       }
       break;
 
     case UART_PARITY_ERR:
+      hf_event.type = hf_uart_event_type_t::HF_UART_PARITY_ERR;
       statistics_.parity_error_count++;
       UpdateDiagnostics(hf_uart_err_t::UART_ERR_PARITY_ERROR);
       break;
 
     case UART_FRAME_ERR:
+      hf_event.type = hf_uart_event_type_t::HF_UART_FRAME_ERR;
       statistics_.frame_error_count++;
       UpdateDiagnostics(hf_uart_err_t::UART_ERR_FRAME_ERROR);
       break;
 
     case UART_PATTERN_DET:
+      hf_event.type = hf_uart_event_type_t::HF_UART_PATTERN_DET;
       statistics_.pattern_detect_count++;
-      // Note: Pattern detection callbacks not supported in ESP-IDF v5.5
-      ESP_LOGD(TAG, "Pattern detected (callback not available)");
+      ESP_LOGD(TAG, "Pattern detected in event");
       break;
-
-      // case UART_WAKEUP:
-      //   statistics_.wakeup_count++;
-      //   if (wakeup_enabled_) {
-      //     ESP_LOGI(TAG, "UART wakeup detected");
-      //   }
-      //   break;
 
     default:
       ESP_LOGW(TAG, "Unknown UART event: %d", event->type);
-      break;
+      return; // Don't call user callback for unknown events
   }
 
-  // Call user event callback if set
+  // Call user event callback with converted HardFOC event structure
   if (event_callback_) {
-    event_callback_(event, event_callback_user_data_);
+    bool should_yield = event_callback_(&hf_event, event_callback_user_data_);
+    if (should_yield) {
+      portYIELD_FROM_ISR();
+    }
   }
 }
 
@@ -1342,13 +1383,7 @@ int EspUart::InternalPrintf(const char* format, va_list args) noexcept {
 
 
 
-bool IRAM_ATTR EspUart::BreakCallbackWrapper(hf_u32_t break_duration, void* user_data) noexcept {
-  auto* uart = static_cast<EspUart*>(user_data);
-  if (uart && uart->break_callback_) {
-    return uart->break_callback_(break_duration, uart->break_callback_user_data_);
-  }
-  return false;
-}
+
 
 //==============================================================================
 // UTILITY FUNCTIONS

@@ -243,12 +243,35 @@ struct hf_uart_wakeup_config_t {
 //==============================================================================
 
 /**
+ * @brief HardFOC UART event types (mapped from ESP-IDF events).
+ */
+enum class hf_uart_event_type_t : uint8_t {
+  HF_UART_DATA = 0,        ///< Data received
+  HF_UART_FIFO_OVF = 1,    ///< FIFO overflow
+  HF_UART_BUFFER_FULL = 2, ///< Buffer full
+  HF_UART_BREAK = 3,       ///< Break detected
+  HF_UART_PARITY_ERR = 4,  ///< Parity error
+  HF_UART_FRAME_ERR = 5,   ///< Frame error
+  HF_UART_PATTERN_DET = 6, ///< Pattern detected
+  HF_UART_EVENT_MAX = 7    ///< Maximum event type
+};
+
+/**
+ * @brief HardFOC UART event structure.
+ */
+struct hf_uart_event_t {
+  hf_uart_event_type_t type; ///< Event type
+  size_t size;               ///< Data size (for data events)
+  uint8_t timeout_flag;      ///< Timeout flag
+};
+
+/**
  * @brief UART event callback function type.
- * @param event Pointer to UART event
+ * @param event Pointer to HardFOC UART event
  * @param user_data User data pointer
  * @return true to yield to higher priority task, false otherwise
  */
-using hf_uart_event_callback_t = bool (*)(const void* event, void* user_data);
+using hf_uart_event_callback_t = bool (*)(const hf_uart_event_t* event, void* user_data);
 
 
 

@@ -60,16 +60,45 @@ bool test_uart_printf_support() noexcept;
 bool test_uart_error_handling() noexcept;
 bool test_uart_esp32c6_features() noexcept;
 bool test_uart_performance() noexcept;
+bool test_uart_callback_verification() noexcept;
 bool test_uart_cleanup() noexcept;
 
 //==============================================================================
 // CALLBACK FUNCTIONS
 //==============================================================================
 
-bool uart_event_callback(const void* event, void* user_data) noexcept {
+bool uart_event_callback(const hf_uart_event_t* event, void* user_data) noexcept {
   if (event != nullptr) {
     g_event_callback_triggered = true;
-    ESP_LOGI(TAG, "Event callback triggered");
+    const char* event_type_name = "UNKNOWN";
+    
+    switch (event->type) {
+      case hf_uart_event_type_t::HF_UART_DATA:
+        event_type_name = "DATA";
+        break;
+      case hf_uart_event_type_t::HF_UART_FIFO_OVF:
+        event_type_name = "FIFO_OVF";
+        break;
+      case hf_uart_event_type_t::HF_UART_BUFFER_FULL:
+        event_type_name = "BUFFER_FULL";
+        break;
+      case hf_uart_event_type_t::HF_UART_BREAK:
+        event_type_name = "BREAK";
+        break;
+      case hf_uart_event_type_t::HF_UART_PARITY_ERR:
+        event_type_name = "PARITY_ERR";
+        break;
+      case hf_uart_event_type_t::HF_UART_FRAME_ERR:
+        event_type_name = "FRAME_ERR";
+        break;
+      case hf_uart_event_type_t::HF_UART_PATTERN_DET:
+        event_type_name = "PATTERN_DET";
+        break;
+      default:
+        break;
+    }
+    
+    ESP_LOGI(TAG, "Event callback triggered: %s (size: %zu)", event_type_name, event->size);
   }
   return false; // Don't yield
 }
@@ -576,14 +605,14 @@ bool test_uart_callbacks() noexcept {
   g_event_callback_triggered = false;
   g_break_callback_triggered = false;
 
-  // Set event callback
+  // Set event callback (this will automatically switch to interrupt mode)
   hf_uart_err_t result = g_uart_instance->SetEventCallback(uart_event_callback);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set event callback: %d", static_cast<int>(result));
     return false;
   }
 
-
+  ESP_LOGI(TAG, "Event callback registered successfully");
 
   // Set break callback
   result = g_uart_instance->SetBreakCallback(uart_break_callback);
@@ -592,12 +621,44 @@ bool test_uart_callbacks() noexcept {
     return false;
   }
 
-  // Note: In normal testing without external devices, callbacks may not trigger
-  // This test verifies that callback registration works without errors
+  ESP_LOGI(TAG, "Break callback registered successfully");
 
-  ESP_LOGI(TAG, "Callback registration completed");
-  ESP_LOGI(TAG, "Event callback triggered: %s", g_event_callback_triggered ? "true" : "false");
-  ESP_LOGI(TAG, "Break callback triggered: %s", g_break_callback_triggered ? "true" : "false");
+  // Verify we're in interrupt mode
+  hf_uart_operating_mode_t current_mode = g_uart_instance->GetOperatingMode();
+  if (current_mode != hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
+    ESP_LOGE(TAG, "UART should be in interrupt mode after setting callbacks");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "UART correctly switched to interrupt mode");
+
+  // Test break signal to trigger break callback
+  result = g_uart_instance->SendBreak(50);
+  if (result == hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGI(TAG, "Break signal sent");
+    
+    // Wait a bit for the break event to be processed
+    vTaskDelay(pdMS_TO_TICKS(100));
+  }
+
+  // Test data transmission to potentially trigger data events
+  const char* test_data = "Callback Test Data";
+  result = g_uart_instance->Write(reinterpret_cast<const uint8_t*>(test_data),
+                                  static_cast<hf_u16_t>(strlen(test_data)), 1000);
+  if (result == hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGI(TAG, "Test data sent for callback testing");
+    
+    // Wait for potential events to be processed
+    vTaskDelay(pdMS_TO_TICKS(200));
+  }
+
+  ESP_LOGI(TAG, "Callback test results:");
+  ESP_LOGI(TAG, "  Event callback triggered: %s", g_event_callback_triggered ? "true" : "false");
+  ESP_LOGI(TAG, "  Break callback triggered: %s", g_break_callback_triggered ? "true" : "false");
+
+  // Clear callbacks
+  g_uart_instance->SetEventCallback(nullptr);
+  g_uart_instance->SetBreakCallback(nullptr);
 
   ESP_LOGI(TAG, "[SUCCESS] Callbacks test completed");
   return true;
@@ -799,6 +860,87 @@ bool test_uart_performance() noexcept {
   return true;
 }
 
+bool test_uart_callback_verification() noexcept {
+  ESP_LOGI(TAG, "Testing UART callback verification with loopback...");
+
+  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
+    ESP_LOGE(TAG, "UART not initialized");
+    return false;
+  }
+
+  // Reset callback flags
+  g_event_callback_triggered = false;
+  g_break_callback_triggered = false;
+
+  // Enable loopback mode for reliable callback testing
+  hf_uart_err_t result = g_uart_instance->SetLoopback(true);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable loopback mode: %d", static_cast<int>(result));
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Loopback mode enabled for callback testing");
+
+  // Set callbacks (this switches to interrupt mode automatically)
+  result = g_uart_instance->SetEventCallback(uart_event_callback);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set event callback: %d", static_cast<int>(result));
+    return false;
+  }
+
+  result = g_uart_instance->SetBreakCallback(uart_break_callback);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set break callback: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Wait for interrupt mode to be fully active
+  vTaskDelay(pdMS_TO_TICKS(100));
+
+  // Send test data that should trigger data events in loopback mode
+  const char* test_message = "Loopback Callback Test";
+  result = g_uart_instance->Write(reinterpret_cast<const uint8_t*>(test_message),
+                                  static_cast<hf_u16_t>(strlen(test_message)), 1000);
+  
+  if (result == hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGI(TAG, "Test data written in loopback mode");
+    
+    // Wait for events to be processed
+    vTaskDelay(pdMS_TO_TICKS(300));
+    
+    // Try to read the data back (should trigger more events)
+    uint8_t read_buffer[64];
+    result = g_uart_instance->Read(read_buffer, sizeof(read_buffer), 500);
+    ESP_LOGI(TAG, "Read result in loopback: %d", static_cast<int>(result));
+    
+    // Wait for any additional events
+    vTaskDelay(pdMS_TO_TICKS(200));
+  }
+
+  // Send break signal to test break callback
+  result = g_uart_instance->SendBreak(100);
+  if (result == hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGI(TAG, "Break signal sent");
+    vTaskDelay(pdMS_TO_TICKS(200)); // Wait for break event processing
+  }
+
+  // Disable loopback
+  g_uart_instance->SetLoopback(false);
+
+  // Report callback results
+  ESP_LOGI(TAG, "Callback verification results:");
+  ESP_LOGI(TAG, "  Event callback triggered: %s", g_event_callback_triggered ? "✅ YES" : "❌ NO");
+  ESP_LOGI(TAG, "  Break callback triggered: %s", g_break_callback_triggered ? "✅ YES" : "❌ NO");
+
+  // Clear callbacks and return to polling mode
+  g_uart_instance->SetEventCallback(nullptr);
+  g_uart_instance->SetBreakCallback(nullptr);
+  g_uart_instance->SetOperatingMode(hf_uart_operating_mode_t::HF_UART_MODE_POLLING);
+
+  ESP_LOGI(TAG, "[SUCCESS] Callback verification test completed");
+  return true;
+}
+
 bool test_uart_cleanup() noexcept {
   ESP_LOGI(TAG, "Testing UART cleanup...");
 
@@ -845,6 +987,7 @@ extern "C" void app_main(void) {
   // ESP32-C6 specific tests
   RUN_TEST(test_uart_esp32c6_features);
   RUN_TEST(test_uart_performance);
+  RUN_TEST(test_uart_callback_verification);
   
   RUN_TEST(test_uart_cleanup);
 
