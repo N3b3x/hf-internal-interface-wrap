@@ -524,40 +524,7 @@ public:
   // CALLBACKS (BasePwm Interface)
   //==============================================================================
 
-  /**
-   * @brief Set callback for PWM period completion events (DEPRECATED - use per-channel version)
-   * @param callback Function to call on period completion (or nullptr to disable)
-   * @param user_data Optional user data passed to callback function
-   * 
-   * @details Registers a global callback function that may be triggered on PWM period boundaries.
-   * This method is deprecated in favor of per-channel callbacks for better granular control.
-   * 
-   * @deprecated Use SetChannelPeriodCallback() for per-channel period callbacks
-   * @note Callback execution depends on LEDC interrupt support and configuration
-   * @warning Callback functions should be ISR-safe and execute quickly
-   * 
-   * @see SetChannelPeriodCallback() for per-channel period callbacks
-   * @see SetFaultCallback() for error condition callbacks
-   */
-  void SetPeriodCallback(hf_pwm_period_callback_t callback, void* user_data = nullptr) noexcept;
-  
-  /**
-   * @brief Set callback for PWM fault/error conditions (DEPRECATED - use per-channel version)
-   * @param callback Function to call on fault detection (or nullptr to disable)
-   * @param user_data Optional user data passed to callback function
-   * 
-   * @details Registers a global callback function for hardware fault conditions or
-   * critical errors that require immediate attention.
-   * This method is deprecated in favor of per-channel callbacks for better granular control.
-   * 
-   * @deprecated Use SetChannelFaultCallback() for per-channel fault callbacks
-   * @note Callback is triggered for hardware faults and critical software errors
-   * @warning Callback functions should be ISR-safe and execute quickly
-   * 
-   * @see SetChannelFaultCallback() for per-channel fault callbacks
-   * @see SetPeriodCallback() for period completion callbacks
-   */
-  void SetFaultCallback(hf_pwm_fault_callback_t callback, void* user_data = nullptr) noexcept;
+
 
 
 
