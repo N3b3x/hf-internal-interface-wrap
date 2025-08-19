@@ -81,7 +81,6 @@ bool test_uart_error_handling() noexcept;
 bool test_uart_esp32c6_features() noexcept;
 bool test_uart_performance() noexcept;
 bool test_uart_callback_verification() noexcept;
-bool test_uart_pattern_detection_v55() noexcept;
 bool test_uart_user_event_task() noexcept;
 bool test_uart_event_driven_pattern_detection() noexcept;
 bool test_uart_cleanup() noexcept;
@@ -1481,12 +1480,7 @@ bool test_uart_callback_verification() noexcept {
   return true;
 }
 
-// This test is now combined with test_uart_pattern_detection()
-// Keeping this function as a stub that redirects to the main test
-bool test_uart_pattern_detection_v55() noexcept {
-  ESP_LOGI(TAG, "Pattern detection v5.5 test is now integrated into main pattern detection test");
-  return true; // Return true as the functionality is tested elsewhere
-}
+
 
 bool test_uart_user_event_task() noexcept {
   ESP_LOGI(TAG, "Testing user-created event task (ESP-IDF v5.5 pattern)...");
@@ -1896,12 +1890,8 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "║ Features: UART, Baud Rate Configuration, Flow Control, Pattern Detection,      ║");
   ESP_LOGI(TAG, "║ Buffer Operations, Advanced Features, Communication Modes, Async Operations,   ║");
   ESP_LOGI(TAG, "║ Callbacks, Statistics and Diagnostics, printf Support, Error Handling,         ║");
-  ESP_LOGI(TAG, "║ ESP32-C6 Features, Performance, Callback Verification, Pattern Detection v5.5, ║");
-  ESP_LOGI(TAG, "║ User Event Task, Cleanup, Edge Cases, Stress Tests, ESP32-Specific Features,   ║");
-  ESP_LOGI(TAG, "║ Error Handling, Performance, Utility Functions, Cleanup, Edge Cases, Stress    ║");
-  ESP_LOGI(TAG, "║ Tests, ESP32-Specific Features, Error Handling, Performance, Utility Functions,║");
-  ESP_LOGI(TAG, "║ Cleanup, Edge Cases, Stress Tests, ESP32-Specific Features, Error Handling,    ║");
-  ESP_LOGI(TAG, "║ Performance, Utility Functions, Cleanup, Edge Cases, Stress Tests              ║");
+  ESP_LOGI(TAG, "║ ESP32-C6 Features, Performance, Callback Verification, User Event Task,        ║");
+  ESP_LOGI(TAG, "║ Event-Driven Pattern Detection, Cleanup                                        ║");
   ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                                 ║");
   ESP_LOGI(TAG, "╚════════════════════════════════════════════════════════════════════════════════╝");
 
@@ -1960,10 +1950,8 @@ extern "C" void app_main(void) {
   RUN_TEST(test_uart_callback_verification);
   flip_test_progress_indicator();
   
-  // ESP-IDF v5.5 Pattern Detection and User Task Tests
-  ESP_LOGI(TAG, "\n=== ESP-IDF v5.5 PATTERN DETECTION AND USER TASK TESTS ===");
-  RUN_TEST(test_uart_pattern_detection_v55);
-  flip_test_progress_indicator();
+  // User Event Task Test
+  ESP_LOGI(TAG, "\n=== USER EVENT TASK TEST ===");
   RUN_TEST(test_uart_user_event_task);
   flip_test_progress_indicator();
   
