@@ -33,6 +33,13 @@ static constexpr hf_pin_num_t HF_UART_IO_UNUSED = 0xFFFFFFFF;
 static constexpr uint32_t HF_UART_BREAK_MIN_DURATION = 1;    ///< Minimum break duration (ms)
 static constexpr uint32_t HF_UART_BREAK_MAX_DURATION = 1000; ///< Maximum break duration (ms)
 
+// ESP32-C6 Low Power UART constants
+#ifdef HF_MCU_ESP32C6
+static constexpr hf_pin_num_t HF_LP_UART_TX_PIN = 5;  ///< LP UART TX pin (fixed)
+static constexpr hf_pin_num_t HF_LP_UART_RX_PIN = 4;  ///< LP UART RX pin (fixed)
+static constexpr uint16_t HF_LP_UART_FIFO_SIZE = 16;  ///< LP UART FIFO size (smaller than regular UART)
+#endif
+
 // ESP32 UART port limits
 #ifdef HF_MCU_ESP32C6
 static constexpr uint8_t HF_ESP32_UART_MAX_PORTS = 3; // ESP32-C6 has 3 UART ports
@@ -225,15 +232,49 @@ struct hf_uart_irda_config_t {
 };
 
 /**
+ * @brief ESP32-C6 UART wakeup modes (ESP-IDF v5.5 feature).
+ */
+enum class hf_uart_wakeup_mode_t : uint8_t {
+  HF_UART_WK_MODE_FIFO_THRESH = 0, ///< Wakeup when RX FIFO reaches threshold
+  HF_UART_WK_MODE_START_BIT = 1,   ///< Wakeup on start bit detection
+  HF_UART_WK_MODE_CHAR_SEQ = 2     ///< Wakeup on specific character sequence
+};
+
+/**
  * @brief ESP32 UART wakeup configuration.
  */
 struct hf_uart_wakeup_config_t {
-  bool enable_wakeup;       ///< Enable UART wakeup from light sleep
-  uint8_t wakeup_threshold; ///< Number of RX edges to trigger wakeup (3-1023)
-  bool use_ref_tick;        ///< Use REF_TICK as clock source during sleep
+  bool enable_wakeup;                 ///< Enable UART wakeup from light sleep
+  uint8_t wakeup_threshold;           ///< Number of RX edges to trigger wakeup (3-1023)
+  bool use_ref_tick;                  ///< Use REF_TICK as clock source during sleep
+  hf_uart_wakeup_mode_t wakeup_mode;  ///< Wakeup mode (ESP32-C6 specific)
+  uint8_t char_sequence[4];           ///< Character sequence for CHAR_SEQ mode
+  uint8_t char_sequence_length;       ///< Length of character sequence (1-4)
 
   hf_uart_wakeup_config_t() noexcept
-      : enable_wakeup(false), wakeup_threshold(3), use_ref_tick(false) {}
+      : enable_wakeup(false), wakeup_threshold(3), use_ref_tick(false),
+        wakeup_mode(hf_uart_wakeup_mode_t::HF_UART_WK_MODE_FIFO_THRESH),
+        char_sequence{0}, char_sequence_length(0) {}
+};
+
+/**
+ * @brief ESP32-C6 Low Power UART configuration.
+ */
+struct hf_lp_uart_config_t {
+  hf_baud_rate_t baud_rate;                ///< Baud rate in bits per second
+  hf_uart_data_bits_t data_bits;           ///< Data bits (5-8)
+  hf_uart_parity_t parity;                 ///< Parity configuration
+  hf_uart_stop_bits_t stop_bits;           ///< Stop bits (1, 1.5, 2)
+  bool enable_wakeup;                      ///< Enable wakeup from deep sleep
+  uint8_t wakeup_threshold;                ///< Wakeup threshold
+  bool enable_collision_detect;            ///< Enable collision detection
+  uint32_t source_clk_hz;                  ///< Source clock frequency
+
+  hf_lp_uart_config_t() noexcept
+      : baud_rate(115200), data_bits(hf_uart_data_bits_t::HF_UART_DATA_8_BITS),
+        parity(hf_uart_parity_t::HF_UART_PARITY_DISABLE),
+        stop_bits(hf_uart_stop_bits_t::HF_UART_STOP_BITS_1), enable_wakeup(false),
+        wakeup_threshold(3), enable_collision_detect(false), source_clk_hz(16000000) {}
 };
 
 //==============================================================================

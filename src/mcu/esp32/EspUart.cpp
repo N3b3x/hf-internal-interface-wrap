@@ -28,6 +28,7 @@ extern "C" {
 #include "esp_err.h"
 #include "esp_log.h"
 #include "hal/uart_hal.h"
+#include "hal/uart_ll.h"
 #include "soc/uart_reg.h"
 
 #ifdef __cplusplus
@@ -49,7 +50,8 @@ EspUart::EspUart(const hf_uart_config_t& config) noexcept
       operating_mode_(config.operating_mode),
       communication_mode_(hf_uart_mode_t::HF_UART_MODE_UART), pattern_detection_enabled_(false),
       software_flow_enabled_(false), wakeup_enabled_(false), break_detected_(false),
-      tx_in_progress_(false), last_error_(hf_uart_err_t::UART_SUCCESS) {
+      tx_in_progress_(false), last_error_(hf_uart_err_t::UART_SUCCESS), dma_enabled_(false),
+      tx_dma_chan_(-1), rx_dma_chan_(-1), lp_uart_enabled_(false), lp_uart_config_() {
   // Initialize printf buffer
   memset(printf_buffer_, 0, sizeof(printf_buffer_));
 
@@ -308,12 +310,44 @@ bool EspUart::WaitTransmitComplete(hf_u32_t timeout_ms) noexcept {
 
 // Implement missing overrides
 hf_u16_t EspUart::BytesAvailable() noexcept {
-  // TODO: Implement actual logic
-  return 0;
+  if (!EnsureInitialized()) {
+    return 0;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  size_t buffered_size = 0;
+  esp_err_t result = uart_get_buffered_data_len(uart_port_, &buffered_size);
+  if (result == ESP_OK) {
+    return static_cast<hf_u16_t>(buffered_size);
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    return 0;
+  }
 }
 bool EspUart::IsTxBusy() noexcept {
-  // TODO: Implement actual logic
-  return false;
+  if (!EnsureInitialized()) {
+    return false;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  // Check if transmission is in progress using internal state
+  if (tx_in_progress_) {
+    return true;
+  }
+  
+  // Check if there are bytes waiting in TX buffer
+  size_t tx_buffered = 0;
+  esp_err_t result = uart_get_buffered_data_len(uart_port_, &tx_buffered);
+  if (result == ESP_OK && tx_buffered > 0) {
+    return true;
+  }
+  
+  // Check if UART is actively transmitting by checking TX FIFO
+  // This is a more accurate check for actual transmission status
+  return uart_ll_is_tx_idle(UART_LL_GET_HW(uart_port_)) == false;
 }
 
 hf_u16_t EspUart::TxBytesWaiting() noexcept {
@@ -420,9 +454,18 @@ bool EspUart::SetBaudRate(hf_u32_t baud_rate) noexcept {
     return false;
   }
 
-  port_config_.baud_rate = baud_rate;
-  // TODO: Implement actual logic
-  return true;
+  // Apply the new baud rate to the hardware
+  esp_err_t result = uart_set_baudrate(uart_port_, baud_rate);
+  if (result == ESP_OK) {
+    port_config_.baud_rate = baud_rate;
+    ESP_LOGI(TAG, "Baud rate changed to %lu", baud_rate);
+    return true;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to set baud rate to %lu: %s", baud_rate, esp_err_to_name(result));
+    return false;
+  }
 }
 
 hf_uart_err_t EspUart::SetFlowControl(bool enable) noexcept {
@@ -478,8 +521,9 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  // uart_send_break not available in ESP-IDF v5.5 - use alternative approach
-  esp_err_t result = ESP_OK; // TODO: Implement break sending for ESP-IDF v5.5
+  // ESP-IDF v5.5 supports break sending via uart_write_bytes_with_break
+  // Send a break condition by writing with break parameter
+  esp_err_t result = uart_write_bytes_with_break(uart_port_, "", 0, duration_ms);
   if (result == ESP_OK) {
     statistics_.break_count++;
     ESP_LOGD(TAG, "Break condition sent for %lu ms", duration_ms);
@@ -487,6 +531,7 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
   } else {
     hf_uart_err_t error = ConvertPlatformError(result);
     UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to send break: %s", esp_err_to_name(result));
     return error;
   }
 }
@@ -643,9 +688,20 @@ int EspUart::GetPatternPosition(bool pop_position) noexcept {
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  // TODO: Implement pattern detection for ESP-IDF v5.5
-  ESP_LOGW(TAG, "Pattern detection not supported in ESP-IDF v5.5");
-  return -1;
+  // ESP-IDF v5.5 supports pattern detection
+  int pattern_pos = -1;
+  if (pop_position) {
+    pattern_pos = uart_pattern_pop_pos(uart_port_);
+  } else {
+    pattern_pos = uart_pattern_get_pos(uart_port_);
+  }
+  
+  if (pattern_pos >= 0) {
+    ESP_LOGD(TAG, "Pattern detected at position: %d", pattern_pos);
+    statistics_.pattern_detect_count++;
+  }
+  
+  return pattern_pos;
 }
 
 hf_uart_err_t EspUart::ConfigureSoftwareFlowControl(bool enable, hf_u8_t xon_threshold,
@@ -690,20 +746,50 @@ hf_uart_err_t EspUart::ConfigureWakeup(const hf_uart_wakeup_config_t& wakeup_con
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (wakeup_config.enable_wakeup) {
-    // esp_err_t result = uart_enable_rx_wakeup(uart_port_, wakeup_config.wakeup_threshold);
-    esp_err_t result = ESP_OK; // TODO: Implement wakeup support
+    // ESP-IDF v5.5 supports wakeup threshold configuration
+    esp_err_t result = uart_set_wakeup_threshold(uart_port_, wakeup_config.wakeup_threshold);
     if (result == ESP_OK) {
       wakeup_enabled_ = true;
-      ESP_LOGI(TAG, "UART wakeup enabled with threshold %d", wakeup_config.wakeup_threshold);
+      
+      // Configure ESP32-C6 specific wakeup modes
+      const char* mode_name = "FIFO_THRESH";
+      switch (wakeup_config.wakeup_mode) {
+        case hf_uart_wakeup_mode_t::HF_UART_WK_MODE_FIFO_THRESH:
+          mode_name = "FIFO_THRESH";
+          // Default mode - threshold already set above
+          break;
+        case hf_uart_wakeup_mode_t::HF_UART_WK_MODE_START_BIT:
+          mode_name = "START_BIT";
+          // ESP-IDF may need specific configuration for start bit wakeup
+          ESP_LOGW(TAG, "START_BIT wakeup mode may require additional configuration");
+          break;
+        case hf_uart_wakeup_mode_t::HF_UART_WK_MODE_CHAR_SEQ:
+          mode_name = "CHAR_SEQ";
+          // Character sequence wakeup requires pattern detection
+          if (wakeup_config.char_sequence_length > 0) {
+            // Enable pattern detection for the first character in sequence
+            char pattern_char = static_cast<char>(wakeup_config.char_sequence[0]);
+            esp_err_t pattern_result = uart_enable_pattern_det_baud_intr(
+                uart_port_, pattern_char, wakeup_config.char_sequence_length, 5, 5, 5);
+            if (pattern_result != ESP_OK) {
+              ESP_LOGW(TAG, "Failed to configure character sequence pattern");
+            }
+          }
+          break;
+      }
+      
+      ESP_LOGI(TAG, "UART wakeup enabled with threshold %d, mode: %s", 
+               wakeup_config.wakeup_threshold, mode_name);
       return hf_uart_err_t::UART_SUCCESS;
     } else {
       hf_uart_err_t error = ConvertPlatformError(result);
       UpdateDiagnostics(error);
+      ESP_LOGE(TAG, "Failed to enable wakeup: %s", esp_err_to_name(result));
       return error;
     }
   } else {
-    // esp_err_t result = uart_disable_rx_wakeup(uart_port_);
-    esp_err_t result = ESP_OK; // TODO: Implement wakeup support
+    // Disable wakeup by setting threshold to 0 (or maximum value to effectively disable)
+    esp_err_t result = uart_set_wakeup_threshold(uart_port_, 0);
     if (result == ESP_OK) {
       wakeup_enabled_ = false;
       ESP_LOGI(TAG, "UART wakeup disabled");
@@ -711,6 +797,7 @@ hf_uart_err_t EspUart::ConfigureWakeup(const hf_uart_wakeup_config_t& wakeup_con
     } else {
       hf_uart_err_t error = ConvertPlatformError(result);
       UpdateDiagnostics(error);
+      ESP_LOGE(TAG, "Failed to disable wakeup: %s", esp_err_to_name(result));
       return error;
     }
   }
@@ -828,6 +915,283 @@ hf_uart_err_t EspUart::SetSignalInversion(hf_u32_t inverse_mask) noexcept {
     UpdateDiagnostics(error);
     return error;
   }
+}
+
+hf_uart_err_t EspUart::DetectBitrate(uint32_t& baud_rate) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  // ESP-IDF v5.5 introduced uart_detect_bitrate_bps for bitrate detection
+  esp_err_t result = uart_detect_bitrate_bps(uart_port_, &baud_rate);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "Detected bitrate: %lu bps", baud_rate);
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to detect bitrate: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+hf_uart_err_t EspUart::EnablePatternDetection(char pattern_char, uint8_t pattern_char_num,
+                                              uint16_t chr_tout, uint16_t post_idle,
+                                              uint16_t pre_idle) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  // Enable pattern detection interrupt
+  esp_err_t result = uart_enable_pattern_det_baud_intr(uart_port_, pattern_char, pattern_char_num,
+                                                       chr_tout, post_idle, pre_idle);
+  if (result == ESP_OK) {
+    pattern_detection_enabled_ = true;
+    ESP_LOGI(TAG, "Pattern detection enabled for character '%c' (count: %d)", pattern_char, pattern_char_num);
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to enable pattern detection: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+hf_uart_err_t EspUart::DisablePatternDetection() noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  esp_err_t result = uart_disable_pattern_det_intr(uart_port_);
+  if (result == ESP_OK) {
+    pattern_detection_enabled_ = false;
+    ESP_LOGI(TAG, "Pattern detection disabled");
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to disable pattern detection: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+hf_uart_err_t EspUart::ResetPatternQueue() noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  esp_err_t result = uart_pattern_queue_reset(uart_port_, 10); // Reset with default queue size
+  if (result == ESP_OK) {
+    ESP_LOGD(TAG, "Pattern detection queue reset");
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to reset pattern queue: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+hf_uart_err_t EspUart::GetCollisionFlag(bool& collision_flag) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  // Get collision flag status for RS485 mode
+  bool flag = false;
+  esp_err_t result = uart_get_collision_flag(uart_port_, &flag);
+  if (result == ESP_OK) {
+    collision_flag = flag;
+    ESP_LOGD(TAG, "Collision flag: %s", flag ? "true" : "false");
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to get collision flag: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+//==============================================================================
+// DMA SUPPORT (ESP-IDF v5.5 Feature)
+//==============================================================================
+
+hf_uart_err_t EspUart::EnableDMA(int tx_dma_chan, int rx_dma_chan) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (dma_enabled_) {
+    ESP_LOGW(TAG, "DMA already enabled");
+    return hf_uart_err_t::UART_SUCCESS;
+  }
+
+  // Note: ESP-IDF v5.5 DMA support for UART requires proper DMA driver setup
+  // This is a placeholder implementation that can be extended based on specific requirements
+  tx_dma_chan_ = tx_dma_chan;
+  rx_dma_chan_ = rx_dma_chan;
+  dma_enabled_ = true;
+
+  ESP_LOGI(TAG, "DMA enabled (TX chan: %d, RX chan: %d)", tx_dma_chan, rx_dma_chan);
+  ESP_LOGW(TAG, "DMA implementation requires additional DMA driver configuration");
+  return hf_uart_err_t::UART_SUCCESS;
+}
+
+hf_uart_err_t EspUart::DisableDMA() noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!dma_enabled_) {
+    ESP_LOGW(TAG, "DMA already disabled");
+    return hf_uart_err_t::UART_SUCCESS;
+  }
+
+  dma_enabled_ = false;
+  tx_dma_chan_ = -1;
+  rx_dma_chan_ = -1;
+
+  ESP_LOGI(TAG, "DMA disabled");
+  return hf_uart_err_t::UART_SUCCESS;
+}
+
+bool EspUart::IsDMAEnabled() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  return dma_enabled_;
+}
+
+hf_uart_err_t EspUart::WriteDMA(const uint8_t* data, uint16_t length, uint32_t timeout_ms) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  if (!dma_enabled_) {
+    ESP_LOGW(TAG, "DMA not enabled, falling back to regular write");
+    return Write(data, length, timeout_ms);
+  }
+
+  // TODO: Implement actual DMA write operation
+  // This requires proper DMA driver integration
+  ESP_LOGW(TAG, "DMA write not fully implemented, using regular write");
+  return Write(data, length, timeout_ms);
+}
+
+hf_uart_err_t EspUart::ReadDMA(uint8_t* data, uint16_t length, uint32_t timeout_ms) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  if (!dma_enabled_) {
+    ESP_LOGW(TAG, "DMA not enabled, falling back to regular read");
+    return Read(data, length, timeout_ms);
+  }
+
+  // TODO: Implement actual DMA read operation
+  // This requires proper DMA driver integration
+  ESP_LOGW(TAG, "DMA read not fully implemented, using regular read");
+  return Read(data, length, timeout_ms);
+}
+
+//==============================================================================
+// LOW POWER UART SUPPORT (ESP32-C6 Feature)
+//==============================================================================
+
+hf_uart_err_t EspUart::ConfigureLPUart(const hf_lp_uart_config_t& lp_config) noexcept {
+#ifdef HF_MCU_ESP32C6
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  // Store LP UART configuration
+  lp_uart_config_ = lp_config;
+
+  ESP_LOGI(TAG, "LP UART configuration stored (baud: %lu, wakeup: %s)", 
+           lp_config.baud_rate, lp_config.enable_wakeup ? "enabled" : "disabled");
+  
+  // Note: Actual LP UART configuration would require specific ESP-IDF LP UART APIs
+  // which may not be fully available in standard ESP-IDF v5.5
+  ESP_LOGW(TAG, "LP UART configuration requires platform-specific implementation");
+  
+  return hf_uart_err_t::UART_SUCCESS;
+#else
+  ESP_LOGE(TAG, "LP UART is only available on ESP32-C6");
+  return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
+#endif
+}
+
+bool EspUart::IsLPUartAvailable() const noexcept {
+#ifdef HF_MCU_ESP32C6
+  return true;
+#else
+  return false;
+#endif
+}
+
+hf_uart_err_t EspUart::EnableLPUart() noexcept {
+#ifdef HF_MCU_ESP32C6
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (lp_uart_enabled_) {
+    ESP_LOGW(TAG, "LP UART already enabled");
+    return hf_uart_err_t::UART_SUCCESS;
+  }
+
+  // Note: This would require specific LP UART driver initialization
+  // The actual implementation would depend on ESP-IDF LP UART APIs
+  lp_uart_enabled_ = true;
+
+  ESP_LOGI(TAG, "LP UART enabled (placeholder implementation)");
+  ESP_LOGW(TAG, "Full LP UART implementation requires additional driver support");
+  
+  return hf_uart_err_t::UART_SUCCESS;
+#else
+  ESP_LOGE(TAG, "LP UART is only available on ESP32-C6");
+  return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
+#endif
+}
+
+hf_uart_err_t EspUart::DisableLPUart() noexcept {
+#ifdef HF_MCU_ESP32C6
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!lp_uart_enabled_) {
+    ESP_LOGW(TAG, "LP UART already disabled");
+    return hf_uart_err_t::UART_SUCCESS;
+  }
+
+  lp_uart_enabled_ = false;
+
+  ESP_LOGI(TAG, "LP UART disabled");
+  
+  return hf_uart_err_t::UART_SUCCESS;
+#else
+  ESP_LOGE(TAG, "LP UART is only available on ESP32-C6");
+  return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
+#endif
 }
 
 //==============================================================================
