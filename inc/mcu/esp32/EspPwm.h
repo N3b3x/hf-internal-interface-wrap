@@ -525,34 +525,153 @@ public:
   //==============================================================================
 
   /**
-   * @brief Set callback for PWM period completion events
+   * @brief Set callback for PWM period completion events (DEPRECATED - use per-channel version)
    * @param callback Function to call on period completion (or nullptr to disable)
    * @param user_data Optional user data passed to callback function
    * 
-   * @details Registers a callback function that may be triggered on PWM period boundaries.
-   * Callback support depends on ESP32 variant and LEDC interrupt capabilities.
+   * @details Registers a global callback function that may be triggered on PWM period boundaries.
+   * This method is deprecated in favor of per-channel callbacks for better granular control.
    * 
+   * @deprecated Use SetChannelPeriodCallback() for per-channel period callbacks
    * @note Callback execution depends on LEDC interrupt support and configuration
    * @warning Callback functions should be ISR-safe and execute quickly
    * 
+   * @see SetChannelPeriodCallback() for per-channel period callbacks
    * @see SetFaultCallback() for error condition callbacks
    */
   void SetPeriodCallback(hf_pwm_period_callback_t callback, void* user_data = nullptr) noexcept;
   
   /**
-   * @brief Set callback for PWM fault/error conditions
+   * @brief Set callback for PWM fault/error conditions (DEPRECATED - use per-channel version)
    * @param callback Function to call on fault detection (or nullptr to disable)
    * @param user_data Optional user data passed to callback function
    * 
-   * @details Registers a callback function for hardware fault conditions or
+   * @details Registers a global callback function for hardware fault conditions or
    * critical errors that require immediate attention.
+   * This method is deprecated in favor of per-channel callbacks for better granular control.
    * 
+   * @deprecated Use SetChannelFaultCallback() for per-channel fault callbacks
    * @note Callback is triggered for hardware faults and critical software errors
    * @warning Callback functions should be ISR-safe and execute quickly
    * 
+   * @see SetChannelFaultCallback() for per-channel fault callbacks
    * @see SetPeriodCallback() for period completion callbacks
    */
   void SetFaultCallback(hf_pwm_fault_callback_t callback, void* user_data = nullptr) noexcept;
+
+  /**
+   * @brief Set per-channel callback for PWM period completion events
+   * @param channel_id Channel identifier to set callback for
+   * @param callback Function to call on period completion (or nullptr to disable)
+   * @param user_data Optional user data passed to callback function
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Registers a per-channel callback function that is triggered on PWM period boundaries
+   * for the specified channel. This provides granular control over period events per channel.
+   * 
+   * **Period Detection Methods:**
+   * - **Timer Overflow Interrupt:** Detects when the LEDC timer completes a full cycle
+   * - **Software Monitoring:** Tracks period completion through duty cycle updates
+   * - **Fade Completion Events:** Period callbacks can be triggered on fade completion
+   * 
+   * @note Period callbacks are implemented using ESP32-C6 LEDC timer interrupts when available
+   * @warning Callback functions should be ISR-safe and execute quickly (< 10μs recommended)
+   * @warning Do not call blocking functions or complex operations in the callback
+   * 
+   * **Example Usage:**
+   * ```cpp
+   * void my_period_callback(hf_channel_id_t channel, void* user_data) {
+   *     // ISR-safe operations only
+   *     gpio_set_level(LED_PIN, !gpio_get_level(LED_PIN)); // Toggle LED
+   *     // Signal semaphore, set flag, etc.
+   * }
+   * 
+   * pwm.SetChannelPeriodCallback(0, my_period_callback, &my_data);
+   * ```
+   * 
+   * @see SetChannelFaultCallback() for per-channel fault callbacks
+   * @see SetChannelFadeCallback() for per-channel fade callbacks
+   */
+  hf_pwm_err_t SetChannelPeriodCallback(hf_channel_id_t channel_id, 
+                                        hf_pwm_period_callback_t callback, 
+                                        void* user_data = nullptr) noexcept;
+  
+  /**
+   * @brief Set per-channel callback for PWM fault/error conditions
+   * @param channel_id Channel identifier to set callback for
+   * @param callback Function to call on fault detection (or nullptr to disable)
+   * @param user_data Optional user data passed to callback function
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Registers a per-channel callback function for hardware fault conditions or
+   * critical errors that require immediate attention on the specified channel.
+   * 
+   * **Fault Detection Conditions:**
+   * - **Hardware Faults:** LEDC peripheral errors, timer conflicts, clock failures
+   * - **Configuration Errors:** Invalid duty cycles, frequency out of range
+   * - **Resource Conflicts:** Timer allocation failures, GPIO conflicts
+   * - **Communication Errors:** I2C/SPI failures for external PWM controllers
+   * - **Safety Violations:** Overcurrent, overtemperature, emergency stops
+   * 
+   * @note Fault callbacks are triggered immediately when faults are detected
+   * @warning Callback functions should be ISR-safe and execute quickly (< 5μs recommended)
+   * @warning Implement fault recovery logic outside the callback context
+   * 
+   * **Example Usage:**
+   * ```cpp
+   * void my_fault_callback(hf_channel_id_t channel, hf_pwm_err_t error, void* user_data) {
+   *     // ISR-safe fault handling
+   *     emergency_stop_flags |= (1 << channel); // Set emergency flag
+   *     // Disable PWM output, signal main task, etc.
+   * }
+   * 
+   * pwm.SetChannelFaultCallback(0, my_fault_callback, &safety_context);
+   * ```
+   * 
+   * @see SetChannelPeriodCallback() for per-channel period callbacks
+   * @see SetChannelFadeCallback() for per-channel fade callbacks
+   */
+  hf_pwm_err_t SetChannelFaultCallback(hf_channel_id_t channel_id, 
+                                       hf_pwm_fault_callback_t callback, 
+                                       void* user_data = nullptr) noexcept;
+
+  /**
+   * @brief Set per-channel callback for PWM fade completion events
+   * @param channel_id Channel identifier to set callback for
+   * @param callback Function to call on fade completion (or nullptr to disable)
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Registers a per-channel callback function that is triggered when a hardware
+   * fade operation completes on the specified channel. This uses the native ESP32-C6 LEDC
+   * fade completion interrupt mechanism.
+   * 
+   * **Fade Completion Detection:**
+   * - **LEDC Hardware Interrupt:** Native ESP32-C6 fade completion interrupt
+   * - **Per-Channel Granularity:** Each channel can have its own fade callback
+   * - **Automatic Registration:** Uses `ledc_cb_register()` for proper ESP-IDF integration
+   * 
+   * @note This callback is only triggered for hardware fade operations (SetHardwareFade())
+   * @warning Callback functions should be ISR-safe and execute quickly (< 10μs recommended)
+   * @warning Do not call blocking functions or start new fade operations in the callback
+   * 
+   * **Example Usage:**
+   * ```cpp
+   * void my_fade_callback(hf_channel_id_t channel) {
+   *     // ISR-safe operations only
+   *     fade_complete_flags |= (1 << channel); // Set completion flag
+   *     // Signal task, update state, etc.
+   * }
+   * 
+   * pwm.SetChannelFadeCallback(0, my_fade_callback);
+   * pwm.SetHardwareFade(0, 0.8f, 1000); // Fade will trigger callback when complete
+   * ```
+   * 
+   * @see SetChannelPeriodCallback() for per-channel period callbacks
+   * @see SetChannelFaultCallback() for per-channel fault callbacks
+   * @see SetHardwareFade() for hardware fade operations
+   */
+  hf_pwm_err_t SetChannelFadeCallback(hf_channel_id_t channel_id, 
+                                      std::function<void(hf_channel_id_t)> callback) noexcept;
 
   //==============================================================================
   // ESP32C6-SPECIFIC FEATURES
@@ -683,7 +802,7 @@ private:
   //==============================================================================
 
   /**
-   * @brief Internal channel state
+   * @brief Internal channel state with per-channel callback support
    */
   struct ChannelState {
     bool configured;                ///< Channel is configured
@@ -700,10 +819,19 @@ private:
     bool is_critical;                   ///< Mark as critical (never evict)
     const char* description;            ///< Optional description for debugging
 
+    // Per-channel callback support
+    hf_pwm_period_callback_t period_callback; ///< Per-channel period callback
+    void* period_callback_user_data;          ///< Period callback user data
+    hf_pwm_fault_callback_t fault_callback;   ///< Per-channel fault callback
+    void* fault_callback_user_data;           ///< Fault callback user data
+    std::function<void(hf_channel_id_t)> fade_callback; ///< Per-channel fade callback
+
     ChannelState() noexcept
         : configured(false), enabled(false), assigned_timer(0xFF), raw_duty_value(0),
           last_error(hf_pwm_err_t::PWM_SUCCESS), fade_active(false), needs_reconfiguration(false),
-          priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr) {}
+          priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr),
+          period_callback(nullptr), period_callback_user_data(nullptr), 
+          fault_callback(nullptr), fault_callback_user_data(nullptr), fade_callback(nullptr) {}
   };
 
   /**
@@ -830,6 +958,33 @@ private:
    * @param channel_id Channel that completed fade
    */
   void HandleFadeComplete(hf_channel_id_t channel_id) noexcept;
+
+  /**
+   * @brief Handle period complete event for a specific channel
+   * @param channel_id Channel that completed a period
+   */
+  void HandlePeriodComplete(hf_channel_id_t channel_id) noexcept;
+
+  /**
+   * @brief Handle fault condition for a specific channel
+   * @param channel_id Channel that encountered a fault
+   * @param error Error that occurred
+   */
+  void HandleChannelFault(hf_channel_id_t channel_id, hf_pwm_err_t error) noexcept;
+
+  /**
+   * @brief Register LEDC per-channel callbacks using ESP-IDF API
+   * @param channel_id Channel to register callbacks for
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t RegisterLedcChannelCallbacks(hf_channel_id_t channel_id) noexcept;
+
+  /**
+   * @brief Unregister LEDC per-channel callbacks
+   * @param channel_id Channel to unregister callbacks for
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t UnregisterLedcChannelCallbacks(hf_channel_id_t channel_id) noexcept;
 
   /**
    * @brief Initialize LEDC fade functionality

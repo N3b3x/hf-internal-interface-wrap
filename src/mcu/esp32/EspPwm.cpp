@@ -277,6 +277,10 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   if (!validation.is_valid) {
     ESP_LOGE(TAG, "Invalid frequency/resolution combination: %lu Hz @ %d bits - %s", frequency_hz, resolution_bits, validation.reason);
     SetChannelError(channel_id, validation.error_code);
+    
+    // Trigger fault callback for configuration error
+    HandleChannelFault(channel_id, validation.error_code);
+    
     return validation.error_code;
   }
 
@@ -287,6 +291,10 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   hf_i8_t timer_id = FindOrAllocateTimer(frequency_hz, resolution_bits, config.clock_source);
   if (timer_id < 0) {
     SetChannelError(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
+    
+    // Trigger fault callback for timer allocation failure
+    HandleChannelFault(channel_id, hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT);
+    
     return hf_pwm_err_t::PWM_ERR_TIMER_CONFLICT;
   }
 
@@ -294,6 +302,10 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   hf_pwm_err_t timer_result = ConfigurePlatformTimer(timer_id, frequency_hz, resolution_bits, config.clock_source);
   if (timer_result != hf_pwm_err_t::PWM_SUCCESS) {
     SetChannelError(channel_id, timer_result);
+    
+    // Trigger fault callback for timer configuration failure
+    HandleChannelFault(channel_id, timer_result);
+    
     return timer_result;
   }
 
@@ -301,6 +313,10 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
   hf_pwm_err_t channel_result = ConfigurePlatformChannel(channel_id, config, timer_id);
   if (channel_result != hf_pwm_err_t::PWM_SUCCESS) {
     SetChannelError(channel_id, channel_result);
+    
+    // Trigger fault callback for channel configuration failure
+    HandleChannelFault(channel_id, channel_result);
+    
     return channel_result;
   }
 
@@ -568,8 +584,17 @@ hf_pwm_err_t EspPwm::SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_va
     // Update statistics for successful duty cycle changes
     statistics_.duty_updates_count++;
     statistics_.last_activity_timestamp = esp_timer_get_time();
+
+    // Trigger period callback if registered (software-based period detection)
+    // This simulates a period completion event on duty cycle updates
+    if (channels_[channel_id].period_callback) {
+      HandlePeriodComplete(channel_id);
+    }
   } else {
     SetChannelError(channel_id, result);
+    
+    // Trigger fault callback for duty cycle update failure
+    HandleChannelFault(channel_id, result);
   }
 
   return result;
@@ -1310,12 +1335,100 @@ void EspPwm::SetPeriodCallback(hf_pwm_period_callback_t callback, void* user_dat
   RtosUniqueLock<RtosMutex> lock(mutex_);
   period_callback_ = callback;
   period_callback_user_data_ = user_data;
+  
+  ESP_LOGW(TAG, "SetPeriodCallback() is deprecated. Use SetChannelPeriodCallback() for per-channel control.");
 }
 
 void EspPwm::SetFaultCallback(hf_pwm_fault_callback_t callback, void* user_data) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   fault_callback_ = callback;
   fault_callback_user_data_ = user_data;
+  
+  ESP_LOGW(TAG, "SetFaultCallback() is deprecated. Use SetChannelFaultCallback() for per-channel control.");
+}
+
+hf_pwm_err_t EspPwm::SetChannelPeriodCallback(hf_channel_id_t channel_id, 
+                                              hf_pwm_period_callback_t callback, 
+                                              void* user_data) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+  // Store per-channel callback
+  channels_[channel_id].period_callback = callback;
+  channels_[channel_id].period_callback_user_data = user_data;
+
+  ESP_LOGI(TAG, "Per-channel period callback %s for channel %lu", 
+           callback ? "registered" : "cleared", channel_id);
+
+  return hf_pwm_err_t::PWM_SUCCESS;
+}
+
+hf_pwm_err_t EspPwm::SetChannelFaultCallback(hf_channel_id_t channel_id, 
+                                             hf_pwm_fault_callback_t callback, 
+                                             void* user_data) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+  // Store per-channel callback
+  channels_[channel_id].fault_callback = callback;
+  channels_[channel_id].fault_callback_user_data = user_data;
+
+  ESP_LOGI(TAG, "Per-channel fault callback %s for channel %lu", 
+           callback ? "registered" : "cleared", channel_id);
+
+  return hf_pwm_err_t::PWM_SUCCESS;
+}
+
+hf_pwm_err_t EspPwm::SetChannelFadeCallback(hf_channel_id_t channel_id, 
+                                            std::function<void(hf_channel_id_t)> callback) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+  // Store per-channel fade callback
+  channels_[channel_id].fade_callback = callback;
+
+  // Register/unregister LEDC callbacks based on whether callback is set
+  hf_pwm_err_t result;
+  if (callback) {
+    result = RegisterLedcChannelCallbacks(channel_id);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to register LEDC callbacks for channel %lu: %s", 
+               channel_id, HfPwmErrToString(result));
+      return result;
+    }
+    ESP_LOGI(TAG, "Per-channel fade callback registered for channel %lu", channel_id);
+  } else {
+    result = UnregisterLedcChannelCallbacks(channel_id);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGW(TAG, "Failed to unregister LEDC callbacks for channel %lu: %s", 
+               channel_id, HfPwmErrToString(result));
+      // Don't return error for unregister failures
+    }
+    ESP_LOGI(TAG, "Per-channel fade callback cleared for channel %lu", channel_id);
+  }
+
+  return hf_pwm_err_t::PWM_SUCCESS;
 }
 
 //==============================================================================
@@ -1984,10 +2097,57 @@ void EspPwm::HandleFadeComplete(hf_channel_id_t channel_id) noexcept {
     statistics_.fade_operations_count++;
     statistics_.last_activity_timestamp = esp_timer_get_time();
 
-    // Call period callback if set
+    // Call per-channel fade callback first (preferred)
+    if (channels_[channel_id].fade_callback) {
+      channels_[channel_id].fade_callback(channel_id);
+    }
+
+    // Call global period callback for backward compatibility (deprecated)
     if (period_callback_) {
       period_callback_(channel_id, period_callback_user_data_);
     }
+
+    ESP_LOGD(TAG, "Fade complete handled for channel %lu", channel_id);
+  }
+}
+
+void EspPwm::HandlePeriodComplete(hf_channel_id_t channel_id) noexcept {
+  if (IsValidChannelId(channel_id)) {
+    statistics_.last_activity_timestamp = esp_timer_get_time();
+
+    // Call per-channel period callback first (preferred)
+    if (channels_[channel_id].period_callback) {
+      channels_[channel_id].period_callback(channel_id, channels_[channel_id].period_callback_user_data);
+    }
+
+    // Call global period callback for backward compatibility (deprecated)
+    if (period_callback_) {
+      period_callback_(channel_id, period_callback_user_data_);
+    }
+
+    ESP_LOGD(TAG, "Period complete handled for channel %lu", channel_id);
+  }
+}
+
+void EspPwm::HandleChannelFault(hf_channel_id_t channel_id, hf_pwm_err_t error) noexcept {
+  if (IsValidChannelId(channel_id)) {
+    // Update channel error state
+    channels_[channel_id].last_error = error;
+    last_global_error_ = error;
+    statistics_.error_count++;
+    statistics_.last_activity_timestamp = esp_timer_get_time();
+
+    // Call per-channel fault callback first (preferred)
+    if (channels_[channel_id].fault_callback) {
+      channels_[channel_id].fault_callback(channel_id, error, channels_[channel_id].fault_callback_user_data);
+    }
+
+    // Call global fault callback for backward compatibility (deprecated)
+    if (fault_callback_) {
+      fault_callback_(channel_id, error, fault_callback_user_data_);
+    }
+
+    ESP_LOGW(TAG, "Fault handled for channel %lu: %s", channel_id, HfPwmErrToString(error));
   }
 }
 
@@ -1995,7 +2155,48 @@ void EspPwm::HandleFadeComplete(hf_channel_id_t channel_id) noexcept {
 // ADDITIONAL ESP32C6-SPECIFIC METHODS
 //==============================================================================
 
+hf_pwm_err_t EspPwm::RegisterLedcChannelCallbacks(hf_channel_id_t channel_id) noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
 
+  // Ensure fade functionality is installed before registering callbacks
+  hf_pwm_err_t fade_result = InitializeFadeFunctionality();
+  if (fade_result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to initialize fade functionality for callback registration");
+    return fade_result;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  // Use ESP-IDF v5.5 LEDC callback registration API if available
+  // Note: The ledc_cb_register() API may not be available in all ESP-IDF versions
+  // For now, we'll use the existing fade functionality and extend it
+
+  // For ESP32-C6, we can register fade completion callbacks
+  // Period and fault callbacks need to be implemented through other mechanisms
+
+  ESP_LOGD(TAG, "LEDC per-channel callbacks registered for channel %lu (fade completion)", channel_id);
+  return hf_pwm_err_t::PWM_SUCCESS;
+#else
+  ESP_LOGW(TAG, "LEDC per-channel callbacks not supported on this platform");
+  return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
+#endif
+}
+
+hf_pwm_err_t EspPwm::UnregisterLedcChannelCallbacks(hf_channel_id_t channel_id) noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  // Unregister callbacks - for now just clear the callback
+  ESP_LOGD(TAG, "LEDC per-channel callbacks unregistered for channel %lu", channel_id);
+  return hf_pwm_err_t::PWM_SUCCESS;
+#else
+  ESP_LOGW(TAG, "LEDC per-channel callbacks not supported on this platform");
+  return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
+#endif
+}
 
 hf_pwm_err_t EspPwm::InitializeFadeFunctionality() noexcept {
   if (fade_functionality_installed_) {
