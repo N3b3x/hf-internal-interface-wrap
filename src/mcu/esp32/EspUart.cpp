@@ -43,9 +43,7 @@ static const char* TAG = "EspUart";
 EspUart::EspUart(const hf_uart_config_t& config) noexcept
     : BaseUart(config.port_number), port_config_(config), initialized_(false),
       uart_port_(static_cast<uart_port_t>(config.port_number)), event_queue_(nullptr),
-      event_task_handle_(nullptr), event_callback_(nullptr),
-      break_callback_(nullptr), event_callback_user_data_(nullptr),
-      break_callback_user_data_(nullptr),
+
       operating_mode_(config.operating_mode),
       communication_mode_(hf_uart_mode_t::HF_UART_MODE_UART),
       software_flow_enabled_(false), wakeup_enabled_(false), break_detected_(false),
@@ -418,27 +416,10 @@ hf_uart_err_t EspUart::SetOperatingMode(hf_uart_operating_mode_t mode) noexcept 
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  if (operating_mode_ == mode) {
-    return hf_uart_err_t::UART_SUCCESS; // Already in requested mode
-  }
-
-  // Stop current mode if different
-  if (operating_mode_ == hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    StopEventTask();
-  }
-
   operating_mode_ = mode;
   port_config_.operating_mode = mode;
 
-  // Start new mode if needed
-  if (mode == hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    hf_uart_err_t result = StartEventTask();
-    if (result != hf_uart_err_t::UART_SUCCESS) {
-      return result;
-    }
-  }
-
-  ESP_LOGI(TAG, "Operating mode changed to %d", static_cast<int>(mode));
+  ESP_LOGI(TAG, "Operating mode set to %d (user handles event tasks)", static_cast<int>(mode));
   return hf_uart_err_t::UART_SUCCESS;
 }
 
@@ -882,59 +863,46 @@ hf_uart_err_t EspUart::SetSignalInversion(hf_u32_t inverse_mask) noexcept {
 
 
 //==============================================================================
-// CALLBACKS AND EVENT HANDLING
+// EVENT QUEUE ACCESS (User Creates Own Tasks)
 //==============================================================================
 
-hf_uart_err_t EspUart::SetEventCallback(hf_uart_event_callback_t callback,
-                                        void* user_data) noexcept {
-  if (!EnsureInitialized()) {
-    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
-  }
-
+QueueHandle_t EspUart::GetEventQueue() const noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  event_callback_ = callback;
-  event_callback_user_data_ = user_data;
-  
-  // Automatically switch to interrupt mode and start event task when callback is set
-  if (callback && operating_mode_ != hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    ESP_LOGI(TAG, "Switching to interrupt mode for event callbacks");
-    hf_uart_err_t mode_result = SetOperatingMode(hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT);
-    if (mode_result != hf_uart_err_t::UART_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to switch to interrupt mode for callbacks");
-      return mode_result;
-    }
-  }
-  
-  ESP_LOGD(TAG, "Event callback %s", callback ? "set" : "cleared");
-  return hf_uart_err_t::UART_SUCCESS;
+  return event_queue_;
 }
 
+bool EspUart::IsEventQueueAvailable() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  return (event_queue_ != nullptr);
+}
 
-
-hf_uart_err_t EspUart::SetBreakCallback(hf_uart_break_callback_t callback,
-                                        void* user_data) noexcept {
+hf_uart_err_t EspUart::ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rxfifo_full_thresh,
+                                           uint8_t rx_timeout_thresh, uint8_t txfifo_empty_thresh) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  
-  break_callback_ = callback;
-  break_callback_user_data_ = user_data;
-  
-  // Automatically switch to interrupt mode and start event task when callback is set
-  if (callback && operating_mode_ != hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    ESP_LOGI(TAG, "Switching to interrupt mode for break callbacks");
-    hf_uart_err_t mode_result = SetOperatingMode(hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT);
-    if (mode_result != hf_uart_err_t::UART_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to switch to interrupt mode for break callbacks");
-      return mode_result;
-    }
+
+  // Configure interrupt settings using ESP-IDF v5.5 API
+  uart_intr_config_t intr_config = {
+    .intr_enable_mask = intr_enable_mask,
+    .rxfifo_full_thresh = rxfifo_full_thresh,
+    .rx_timeout_thresh = rx_timeout_thresh,
+    .txfifo_empty_thresh = txfifo_empty_thresh,
+  };
+
+  esp_err_t result = uart_intr_config(uart_port_, &intr_config);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "UART interrupts configured (mask: 0x%08lx, rx_thresh: %d, timeout: %d, tx_thresh: %d)",
+             intr_enable_mask, rxfifo_full_thresh, rx_timeout_thresh, txfifo_empty_thresh);
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to configure interrupts: %s", esp_err_to_name(result));
+    return error;
   }
-  
-  ESP_LOGD(TAG, "Break callback %s", callback ? "set" : "cleared");
-  return hf_uart_err_t::UART_SUCCESS;
 }
 
 //==============================================================================
@@ -1065,25 +1033,15 @@ hf_uart_err_t EspUart::PlatformInitialize() noexcept {
     return pin_result;
   }
 
-  // Start event task if in interrupt mode
-  if (operating_mode_ == hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    hf_uart_err_t task_result = StartEventTask();
-    if (task_result != hf_uart_err_t::UART_SUCCESS) {
-      UninstallDriver();
-      return task_result;
-    }
-  }
+  // Event queue is available for user to create their own tasks
+  ESP_LOGI(TAG, "Event queue available for user task creation");
 
   return hf_uart_err_t::UART_SUCCESS;
 }
 
 hf_uart_err_t EspUart::PlatformDeinitialize() noexcept {
-  // Stop event task if running
-  if (operating_mode_ == hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT) {
-    StopEventTask();
-  }
-
-  // Uninstall driver
+  // User is responsible for stopping their own event tasks before deinitializing
+  // Uninstall driver (this will also clean up the event queue)
   return UninstallDriver();
 }
 
@@ -1205,117 +1163,7 @@ hf_uart_err_t EspUart::ConfigurePins() noexcept {
   return hf_uart_err_t::UART_SUCCESS;
 }
 
-hf_uart_err_t EspUart::StartEventTask() noexcept {
-  if (event_task_handle_ != nullptr) {
-    return hf_uart_err_t::UART_SUCCESS; // Already running
-  }
 
-  BaseType_t result = xTaskCreate(EventTask, "UART_Event", 2048, this, 5, &event_task_handle_);
-  if (result != pdPASS) {
-    ESP_LOGE(TAG, "Failed to create UART event task");
-    return hf_uart_err_t::UART_ERR_OUT_OF_MEMORY;
-  }
-
-  ESP_LOGI(TAG, "UART event task started");
-  return hf_uart_err_t::UART_SUCCESS;
-}
-
-hf_uart_err_t EspUart::StopEventTask() noexcept {
-  if (event_task_handle_ == nullptr) {
-    return hf_uart_err_t::UART_SUCCESS; // Not running
-  }
-
-  vTaskDelete(event_task_handle_);
-  event_task_handle_ = nullptr;
-  ESP_LOGI(TAG, "UART event task stopped");
-  return hf_uart_err_t::UART_SUCCESS;
-}
-
-void EspUart::EventTask(void* arg) noexcept {
-  auto* uart = static_cast<EspUart*>(arg);
-  if (!uart) {
-    return;
-  }
-
-  uart_event_t event;
-  while (true) {
-    if (xQueueReceive(uart->event_queue_, &event, portMAX_DELAY)) {
-      uart->HandleUartEvent(&event);
-    }
-  }
-}
-
-void EspUart::HandleUartEvent(const uart_event_t* event) noexcept {
-  if (!event) {
-    return;
-  }
-
-  // Convert ESP-IDF event to HardFOC event structure
-  hf_uart_event_t hf_event = {};
-  hf_event.size = event->size;
-  hf_event.timeout_flag = event->timeout_flag;
-
-  switch (event->type) {
-    case UART_DATA:
-      hf_event.type = hf_uart_event_type_t::HF_UART_DATA;
-      statistics_.rx_byte_count += event->size;
-      diagnostics_.is_receiving = true;
-      break;
-
-    case UART_FIFO_OVF:
-      hf_event.type = hf_uart_event_type_t::HF_UART_FIFO_OVF;
-      statistics_.overrun_error_count++;
-      UpdateDiagnostics(hf_uart_err_t::UART_ERR_OVERRUN_ERROR);
-      break;
-
-    case UART_BUFFER_FULL:
-      hf_event.type = hf_uart_event_type_t::HF_UART_BUFFER_FULL;
-      statistics_.rx_error_count++;
-      UpdateDiagnostics(hf_uart_err_t::UART_ERR_BUFFER_FULL);
-      break;
-
-    case UART_BREAK:
-      hf_event.type = hf_uart_event_type_t::HF_UART_BREAK;
-      statistics_.break_count++;
-      break_detected_ = true;
-      if (break_callback_) {
-        // ESP-IDF doesn't provide break duration in the event, use a default value
-        uint32_t break_duration = 10; // Estimated break duration in ms
-        break_callback_(break_duration, break_callback_user_data_);
-      }
-      break;
-
-    case UART_PARITY_ERR:
-      hf_event.type = hf_uart_event_type_t::HF_UART_PARITY_ERR;
-      statistics_.parity_error_count++;
-      UpdateDiagnostics(hf_uart_err_t::UART_ERR_PARITY_ERROR);
-      break;
-
-    case UART_FRAME_ERR:
-      hf_event.type = hf_uart_event_type_t::HF_UART_FRAME_ERR;
-      statistics_.frame_error_count++;
-      UpdateDiagnostics(hf_uart_err_t::UART_ERR_FRAME_ERROR);
-      break;
-
-    case UART_PATTERN_DET:
-      hf_event.type = hf_uart_event_type_t::HF_UART_PATTERN_DET;
-      statistics_.pattern_detect_count++;
-      ESP_LOGD(TAG, "Pattern detected in event");
-      break;
-
-    default:
-      ESP_LOGW(TAG, "Unknown UART event: %d", event->type);
-      return; // Don't call user callback for unknown events
-  }
-
-  // Call user event callback with converted HardFOC event structure
-  if (event_callback_) {
-    bool should_yield = event_callback_(&hf_event, event_callback_user_data_);
-    if (should_yield) {
-      portYIELD_FROM_ISR();
-    }
-  }
-}
 
 hf_uart_err_t EspUart::ConvertPlatformError(int32_t platform_error) noexcept {
   switch (platform_error) {

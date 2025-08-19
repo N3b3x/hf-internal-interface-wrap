@@ -339,29 +339,33 @@ public:
 
 
   //==============================================================================
-  // CALLBACKS AND EVENT HANDLING
+  // EVENT QUEUE ACCESS (User Creates Own Tasks)
   //==============================================================================
 
   /**
-   * @brief Set UART event callback.
-   * @param callback Event callback function (receives HardFOC event structure)
-   * @param user_data User data pointer
-   * @return hf_uart_err_t result code
-   * @note Automatically starts event task in interrupt mode
+   * @brief Get the ESP-IDF event queue handle for user task creation.
+   * @return QueueHandle_t for ESP-IDF uart_event_t structures, or nullptr if not available
+   * @note User is responsible for creating FreeRTOS task to handle events
+   * @note Only available when driver is installed with event queue
    */
-  hf_uart_err_t SetEventCallback(hf_uart_event_callback_t callback,
-                                 void* user_data = nullptr) noexcept;
-
-
+  QueueHandle_t GetEventQueue() const noexcept;
 
   /**
-   * @brief Set break detection callback.
-   * @param callback Break callback function
-   * @param user_data User data pointer
+   * @brief Check if event queue is available.
+   * @return true if event queue is available, false otherwise
+   */
+  bool IsEventQueueAvailable() const noexcept;
+
+  /**
+   * @brief Configure UART interrupt settings.
+   * @param intr_enable_mask Interrupt enable mask
+   * @param rxfifo_full_thresh RX FIFO full threshold
+   * @param rx_timeout_thresh RX timeout threshold
+   * @param txfifo_empty_thresh TX FIFO empty threshold
    * @return hf_uart_err_t result code
    */
-  hf_uart_err_t SetBreakCallback(hf_uart_break_callback_t callback,
-                                 void* user_data = nullptr) noexcept;
+  hf_uart_err_t ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rxfifo_full_thresh = 100,
+                                    uint8_t rx_timeout_thresh = 10, uint8_t txfifo_empty_thresh = 10) noexcept;
 
   //==============================================================================
   // STATUS AND INFORMATION
@@ -543,29 +547,7 @@ private:
    */
   hf_uart_err_t ConfigurePins() noexcept;
 
-  /**
-   * @brief Start event task for interrupt mode
-   * @return UART_SUCCESS on success, error code on failure
-   */
-  hf_uart_err_t StartEventTask() noexcept;
 
-  /**
-   * @brief Stop event task
-   * @return UART_SUCCESS on success, error code on failure
-   */
-  hf_uart_err_t StopEventTask() noexcept;
-
-  /**
-   * @brief Event task function
-   * @param arg Task argument (this pointer)
-   */
-  static void EventTask(void* arg) noexcept;
-
-  /**
-   * @brief Handle UART events
-   * @param event UART event
-   */
-  void HandleUartEvent(const uart_event_t* event) noexcept;
 
   /**
    * @brief Convert platform error to HardFOC error
@@ -616,13 +598,8 @@ private:
   std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
   uart_port_t uart_port_;         ///< Native UART port handle
 
-  // Event handling for interrupt mode
-  QueueHandle_t event_queue_;                   ///< UART event queue
-  TaskHandle_t event_task_handle_;              ///< Event task handle
-  hf_uart_event_callback_t event_callback_;     ///< Event callback
-  hf_uart_break_callback_t break_callback_;     ///< Break callback
-  void* event_callback_user_data_;              ///< Event callback user data
-  void* break_callback_user_data_;              ///< Break callback user data
+  // Event queue (user creates own tasks)
+  QueueHandle_t event_queue_;                   ///< ESP-IDF UART event queue handle
 
   // Operating mode and communication state
   hf_uart_operating_mode_t operating_mode_; ///< Current operating mode
