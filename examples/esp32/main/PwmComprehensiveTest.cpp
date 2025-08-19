@@ -1,21 +1,35 @@
 /**
  * @file PwmComprehensiveTest.cpp
- * @brief Comprehensive PWM testing suite for ESP32-C6 DevKit-M-1 (noexcept)
+ * @brief Comprehensive PWM testing suite for ESP32 family (noexcept)
  *
- * This comprehensive test suite validates all functionality of the EspPwm class:
- * - Constructor/Destructor behavior
- * - Lifecycle management (Initialize/Deinitialize)
- * - Configuration (modes, clock sources, unit config)
- * - Channel management (configure, enable/disable, validation)
- * - PWM control (duty cycle, frequency, phase shift)
- * - Advanced features (synchronized operations, complementary outputs)
- * - ESP32-specific features (hardware fade, idle levels, timer management)
- * - Status and diagnostics (statistics, error reporting)
- * - Callbacks (period, fault)
- * - Edge cases and stress testing
+ * This comprehensive test suite validates all functionality of the EspPwm class
+ * across different ESP32 variants, with particular focus on LEDC peripheral
+ * capabilities and constraints:
  *
- * GPIO14 is used as a test progression indicator that toggles between HIGH/LOW
- * each time a test completes, providing visual feedback for test progression.
+ * ## Test Coverage:
+ * - **Lifecycle Management:** Constructor/Destructor, Initialize/Deinitialize
+ * - **Configuration:** Modes, clock sources, unit configuration
+ * - **Channel Management:** Configure, enable/disable, validation
+ * - **PWM Control:** Duty cycle, frequency, resolution control
+ * - **Advanced Features:** Synchronized operations, complementary outputs
+ * - **ESP32-Specific:** Hardware fade, idle levels, timer management
+ * - **LEDC Validation:** Clock source constraints, frequency/resolution limits
+ * - **Resource Management:** Timer allocation, eviction policies, health checks
+ * - **Status & Diagnostics:** Statistics, error reporting, capability detection
+ * - **Callbacks:** Period and fault callback mechanisms
+ * - **Edge Cases & Stress:** Boundary conditions, resource exhaustion, recovery
+ *
+ * ## Hardware Requirements:
+ * - ESP32 development board (any variant: ESP32, ESP32-S2/S3, ESP32-C3/C6, ESP32-H2)
+ * - GPIO pins for PWM output testing (configurable)
+ * - Optional: Logic analyzer or oscilloscope for signal verification
+ *
+ * ## Test Progression Indicator:
+ * GPIO14 toggles HIGH/LOW after each test completion for visual feedback.
+ * This allows monitoring test progress without serial output.
+ *
+ * @note This test suite is designed to be variant-agnostic and will adapt
+ * to the specific LEDC capabilities of the target ESP32 variant.
  */
 
 #include "TestFramework.h"
@@ -83,6 +97,13 @@ void cleanup_test_progress_indicator() noexcept {
 
 /**
  * @brief Create a default PWM configuration for testing
+ * @return Configured PWM unit configuration for basic testing
+ * 
+ * @details Creates a standard test configuration with:
+ * - Basic PWM mode (no fade)
+ * - APB clock source (80MHz)
+ * - Interrupts enabled
+ * - Fade functionality disabled for basic testing
  */
 hf_pwm_unit_config_t create_test_config() noexcept {
   hf_pwm_unit_config_t config = {};
@@ -125,6 +146,17 @@ hf_pwm_unit_config_t create_basic_with_fade_config() noexcept {
 
 /**
  * @brief Create a default channel configuration for testing with explicit resolution control
+ * @param gpio_pin GPIO pin number for PWM output
+ * @param frequency_hz PWM frequency in Hz (default: 1kHz)
+ * @param resolution_bits PWM resolution in bits (default: 10-bit)
+ * @return Configured PWM channel configuration for testing
+ * 
+ * @details Creates a standard channel configuration with:
+ * - 50% initial duty cycle
+ * - APB clock source preference
+ * - Basic PWM mode
+ * - No output inversion
+ * - Low priority (non-critical)
  */
 hf_pwm_channel_config_t create_test_channel_config(hf_gpio_num_t gpio_pin, 
                                                    hf_u32_t frequency_hz = HF_PWM_DEFAULT_FREQUENCY,
@@ -175,6 +207,18 @@ hf_pwm_channel_config_t create_test_channel_config_with_duty(hf_gpio_num_t gpio_
 // CONSTRUCTOR/DESTRUCTOR TESTS
 //==============================================================================
 
+/**
+ * @brief Test PWM constructor variations and object creation
+ * @return true if all constructor tests pass, false otherwise
+ * 
+ * @details Validates proper object construction without hardware initialization:
+ * - Default constructor with minimal configuration
+ * - Constructor with explicit unit configuration
+ * - Legacy constructor with clock frequency parameter
+ * 
+ * @note No hardware initialization occurs during construction (lazy initialization pattern)
+ * @warning All constructors must complete without exceptions (noexcept specification)
+ */
 bool test_constructor_default() noexcept {
   ESP_LOGI(TAG, "Testing default constructor...");
 
@@ -222,6 +266,20 @@ bool test_destructor_cleanup() noexcept {
 // LIFECYCLE TESTS
 //==============================================================================
 
+/**
+ * @brief Test PWM initialization state management and lifecycle
+ * @return true if all initialization state tests pass, false otherwise
+ * 
+ * @details Validates proper initialization state transitions:
+ * - Initial uninitialized state after construction
+ * - Manual initialization with Initialize() method
+ * - Double initialization protection (returns ALREADY_INITIALIZED)
+ * - Proper deinitialization with Deinitialize() method
+ * - State consistency throughout lifecycle
+ * 
+ * @note Tests the explicit initialization path (not lazy initialization)
+ * @warning All state transitions must be atomic and thread-safe
+ */
 bool test_initialization_states() noexcept {
   ESP_LOGI(TAG, "Testing initialization states...");
 
@@ -361,62 +419,58 @@ bool test_clock_source_configuration() noexcept {
     return false;
   }
 
-  // ESP32-C6 limitation: All timers must use the same clock source AND compatible dividers
-  // We'll use APB clock (80MHz) with frequencies that can share timers or use same dividers
-  ESP_LOGI(TAG, "Note: ESP32-C6 requires all timers to use same clock source AND compatible dividers - using APB clock (80MHz)");
+  // ESP32 clock source constraints: Most variants require shared clock sources
+  ESP_LOGI(TAG, "Testing clock source configuration (APB 80MHz with compatible frequencies)");
 
-  // Test different channels with APB clock source (80MHz) - use frequencies that can share timers
-  struct ClockSourceChannelTest {
+  // Test different channels with APB clock source - frequencies designed for timer sharing
+  struct ClockSourceTest {
     hf_gpio_num_t gpio_pin;
     uint32_t frequency;
     uint8_t resolution;
     const char* description;
   };
 
-  ClockSourceChannelTest clock_channel_tests[] = {
-    {2, 1000, 10, "APB clock (80MHz) @ 1kHz"},
-    {3, 2000, 10, "APB clock (80MHz) @ 2kHz (can share timer with 1kHz)"},
-    {4, 4000, 10, "APB clock (80MHz) @ 4kHz (can share timer with 1kHz)"},
-    {5, 8000, 10, "APB clock (80MHz) @ 8kHz (can share timer with 1kHz)"},
+  ClockSourceTest tests[] = {
+    {2, 1000, 10, "1kHz @ 10-bit"},
+    {3, 2000, 10, "2kHz @ 10-bit"},
+    {4, 4000, 10, "4kHz @ 10-bit"},
+    {5, 8000, 10, "8kHz @ 10-bit"},
   };
 
-  for (size_t i = 0; i < sizeof(clock_channel_tests)/sizeof(clock_channel_tests[0]); i++) {
-    const auto& test = clock_channel_tests[i];
-    ESP_LOGI(TAG, "Testing %s on channel %lu", test.description, i);
+  for (size_t i = 0; i < sizeof(tests)/sizeof(tests[0]); i++) {
+    const auto& test = tests[i];
     
-    // Clean up previous configuration if it exists - use DeconfigureChannel for proper cleanup
+    // Clean up previous configuration if needed
     if (pwm.IsChannelEnabled(i)) {
-      ESP_LOGI(TAG, "Deconfiguring channel %lu before reconfiguration...", i);
       pwm.DeconfigureChannel(i);
-      // Wait a bit for cleanup to complete
       vTaskDelay(pdMS_TO_TICKS(20));
     }
     
-    // Configure channel with APB clock source (80MHz) - all timers will use same source
+    // Configure with APB clock source
     hf_pwm_channel_config_t ch_config = create_test_channel_config(test.gpio_pin);
     ch_config.frequency_hz = test.frequency;
     ch_config.resolution_bits = test.resolution;
-    ch_config.clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB; // APB clock (80MHz)
+    ch_config.clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB;
     
     hf_pwm_err_t result = pwm.ConfigureChannel(i, ch_config);
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to configure channel %lu with %s: %s", 
+      ESP_LOGE(TAG, "Failed to configure channel %lu (%s): %s", 
                i, test.description, HfPwmErrToString(result));
       return false;
     }
 
     result = pwm.EnableChannel(i);
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
-      ESP_LOGE(TAG, "Failed to enable channel %lu with %s: %s", 
+      ESP_LOGE(TAG, "Failed to enable channel %lu (%s): %s", 
                i, test.description, HfPwmErrToString(result));
       return false;
     }
 
-    ESP_LOGI(TAG, "✓ Channel %lu configured successfully with %s", i, test.description);
-    vTaskDelay(pdMS_TO_TICKS(100));
+    ESP_LOGI(TAG, "✓ Channel %lu: %s", i, test.description);
+    vTaskDelay(pdMS_TO_TICKS(50)); // Reduced delay
   }
 
-  ESP_LOGI(TAG, "[SUCCESS] Per-channel clock source configuration test passed (using APB clock 80MHz with compatible frequencies)");
+  ESP_LOGI(TAG, "[SUCCESS] Clock source configuration test passed");
   return true;
 }
 
@@ -557,6 +611,21 @@ bool test_channel_enable_disable() noexcept {
 // PWM CONTROL TESTS
 //==============================================================================
 
+/**
+ * @brief Test comprehensive duty cycle control functionality
+ * @return true if all duty cycle tests pass, false otherwise
+ * 
+ * @details Validates precise duty cycle control across full range:
+ * - **Float Interface:** Tests 0%, 25%, 50%, 75%, 100% duty cycles
+ * - **Raw Interface:** Tests raw values 0, 256, 512, 768, 1023 (10-bit)
+ * - **Input Validation:** Tests rejection of invalid values (-0.1, 1.1)
+ * - **Accuracy Verification:** Confirms readback values match set values
+ * 
+ * @note Uses GPIO 2 for PWM output with 1kHz frequency @ 10-bit resolution
+ * @warning Duty cycle accuracy should be within ±1% of commanded value
+ * 
+ * @see test_resolution_specific_duty_cycles() for resolution-specific testing
+ */
 bool test_duty_cycle_control() noexcept {
   ESP_LOGI(TAG, "Testing duty cycle control...");
 
@@ -962,6 +1031,44 @@ bool test_idle_level_control() noexcept {
   return true;
 }
 
+/**
+ * @brief Test comprehensive LEDC timer resource management
+ * @return true if all timer management tests pass, false otherwise
+ * 
+ * @details Validates advanced timer allocation and management features:
+ * 
+ * **Phase 1: Basic Timer Allocation**
+ * - Tests automatic timer assignment for different frequency/resolution combinations
+ * - Validates timer sharing optimization for compatible frequencies
+ * - Confirms proper timer resource tracking
+ * 
+ * **Phase 2: Timer Exhaustion Scenarios**
+ * - Tests behavior when all timers are allocated with incompatible combinations
+ * - Validates proper error reporting (TIMER_CONFLICT)
+ * - Confirms system stability under resource pressure
+ * 
+ * **Phase 3: Compatible Frequency Reuse**
+ * - Tests timer sharing for frequencies within tolerance (±5%)
+ * - Validates resource optimization and efficiency
+ * 
+ * **Phase 4: Timer Recovery**
+ * - Tests timer resource recovery after channel release
+ * - Validates automatic cleanup and reallocation
+ * 
+ * **Phase 5: Forced Timer Assignment**
+ * - Tests manual timer assignment with ForceTimerAssignment()
+ * - Validates override of automatic allocation
+ * 
+ * **Phase 6: Diagnostics Validation**
+ * - Tests statistics and diagnostics reporting accuracy
+ * - Validates resource usage tracking
+ * 
+ * @note This test exercises the core LEDC timer management algorithms
+ * @warning Timer allocation behavior may vary between ESP32 variants
+ * 
+ * @see FindOrAllocateTimer() for timer allocation implementation
+ * @see ForceTimerAssignment() for manual timer control
+ */
 bool test_timer_management() noexcept {
   ESP_LOGI(TAG, "Testing timer management...");
 
@@ -1566,6 +1673,35 @@ bool test_frequency_resolution_validation() noexcept {
 
 /**
  * @brief Test enhanced validation system with clock source awareness (NEW)
+ * @return true if all validation system tests pass, false otherwise
+ * 
+ * @details Comprehensive validation of the LEDC peripheral constraint system:
+ * 
+ * **Phase 1: Clock Source Validation**
+ * - Tests APB clock (80MHz) with various frequency/resolution combinations
+ * - Validates hardware constraint formula: freq × (2^resolution) ≤ clock_freq
+ * - Verifies proper error reporting for invalid combinations
+ * 
+ * **Phase 2: Dynamic Resolution Calculation**
+ * - Tests maximum achievable resolution for given frequencies
+ * - Validates theoretical vs. practical resolution limits
+ * - Confirms hardware constraint calculations
+ * 
+ * **Phase 3: Enhanced Duty Cycle Validation**
+ * - Tests overflow protection for different resolutions
+ * - Validates automatic clamping of out-of-range values
+ * - Confirms resolution-specific duty cycle ranges
+ * 
+ * **Phase 4: Auto-Fallback Functionality**
+ * - Tests automatic resolution adjustment for problematic combinations
+ * - Validates fallback resolution selection algorithms
+ * - Confirms graceful handling of impossible combinations
+ * 
+ * @note This test validates the core LEDC peripheral constraint system
+ * @warning Tests may fail on ESP32 variants with different LEDC capabilities
+ * 
+ * @see test_frequency_resolution_validation() for basic constraint testing
+ * @see SetFrequencyWithAutoFallback() for automatic resolution adjustment
  */
 bool test_enhanced_validation_system() noexcept {
   ESP_LOGI(TAG, "Testing enhanced validation system with clock source awareness...");

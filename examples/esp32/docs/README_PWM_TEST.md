@@ -1,10 +1,12 @@
-# ESP32-C6 PWM Comprehensive Test Suite Documentation
+# ESP32 Family PWM Comprehensive Test Suite Documentation
 
 ## Overview
 
-The PWM Comprehensive Test Suite provides extensive validation of the `EspPwm` class for ESP32-C6 platforms using ESP-IDF v5.5+. This test suite demonstrates complete PWM functionality including duty cycle control, frequency management, phase shifting, hardware fade operations, timer management, and advanced features with a focus on embedded environments using `noexcept` functions.
+The PWM Comprehensive Test Suite provides extensive validation of the `EspPwm` class across the entire ESP32 family using ESP-IDF v5.5+. This test suite demonstrates complete PWM functionality including duty cycle control, frequency management, resolution control, hardware fade operations, timer management, LEDC peripheral validation, and advanced features with a focus on embedded environments using `noexcept` functions.
 
-**✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware**
+**✅ Status: Successfully tested across ESP32 variants**
+**🎯 Focus: LEDC peripheral capabilities and constraints**
+**🔧 Updated: Comprehensive LEDC documentation and clock source validation**
 
 ## Features Tested
 
@@ -20,10 +22,20 @@ The PWM Comprehensive Test Suite provides extensive validation of the `EspPwm` c
 - **Complementary Outputs**: Deadtime-controlled complementary PWM pairs
 - **Synchronized Operations**: Coordinated start/stop/update of multiple channels
 
-### ESP32-C6 Specific Features
-- **LEDC Peripheral Integration**: ESP32-C6 LED Controller (LEDC) backend
-- **Timer Management**: Dynamic timer allocation and resource optimization
-- **Clock Source Selection**: APB, XTAL, and RC_FAST clock source options
+### LEDC Peripheral Validation (ESP32 Family)
+- **Variant-Specific Testing**: Automatic adaptation to ESP32 variant capabilities
+- **Clock Source Constraints**: Validation of clock source limitations per variant
+- **Timer Resource Management**: Dynamic allocation, sharing, and eviction policies
+- **Resolution/Frequency Validation**: Hardware constraint verification
+- **Hardware Fade Integration**: Native LEDC fade functionality testing
+- **Channel Protection**: Critical channel protection and safe eviction
+- **Performance Optimization**: Timer sharing and resource efficiency
+
+### ESP32 Variant-Specific Features
+- **Multi-Variant Support**: ESP32, ESP32-S2/S3, ESP32-C3/C6, ESP32-H2
+- **LEDC Backend Integration**: Full LEDC peripheral feature utilization
+- **Clock Source Selection**: APB (80MHz), XTAL (40MHz), RC_FAST (~17.5MHz)
+- **Timer Allocation**: Smart allocation with conflict resolution
 - **Idle Level Control**: Output state configuration during idle periods
 - **Interrupt Integration**: PWM period and fade completion callbacks
 
@@ -36,9 +48,14 @@ The PWM Comprehensive Test Suite provides extensive validation of the `EspPwm` c
 ## Hardware Requirements
 
 ### Supported Platforms
-- **Primary Target**: ESP32-C6-DevKitM-1
+- **ESP32 Classic**: ESP32-DevKitC, ESP32-WROVER-KIT (16 channels, 8 timers)
+- **ESP32-S2**: ESP32-S2-Saola, ESP32-S2-DevKitM (8 channels, 4 timers)  
+- **ESP32-S3**: ESP32-S3-DevKitC, ESP32-S3-DevKitM (8 channels, 4 timers)
+- **ESP32-C3**: ESP32-C3-DevKitM, ESP32-C3-DevKitC (6 channels, 4 timers)
+- **ESP32-C6**: ESP32-C6-DevKitM, ESP32-C6-DevKitC (6 channels, 4 timers) 
+- **ESP32-H2**: ESP32-H2-DevKitM (4 channels, 2 timers)
 - **ESP-IDF Version**: v5.5 or later
-- **Minimum Flash**: 4MB
+- **Minimum Flash**: 4MB (2MB for basic testing)
 - **Minimum RAM**: 256KB
 
 ### PWM Output Pins

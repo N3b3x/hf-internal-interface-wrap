@@ -31,30 +31,62 @@
 
 /**
  * @class EspPwm
- * @brief ESP32C6 PWM implementation using LEDC peripheral.
+ * @brief ESP32 PWM implementation using LEDC peripheral with comprehensive ESP32 variant support.
  *
- * This class provides PWM generation using the ESP32C6's built-in LEDC (LED Controller)
- * peripheral which offers high-resolution PWM with hardware fade support.
+ * This class provides PWM generation using the ESP32 family's built-in LEDC (LED Controller)
+ * peripheral which offers high-resolution PWM with hardware fade support. The implementation
+ * automatically adapts to different ESP32 variants and their specific LEDC capabilities.
  *
- * ESP32C6 LEDC Features:
- * - 8 independent PWM channels (0-7)
- * - 4 timer groups for different frequency domains (0-3)
- * - Up to 14-bit resolution at high frequencies
- * - Hardware fade functionality for smooth transitions
- * - Interrupt support for period complete events
- * - Low power mode support with sleep retention
- * - Configurable clock sources (APB, XTAL, RC_FAST)
- * - Channel-specific idle state configuration
+ * ## ESP32 Variant LEDC Capabilities:
+ * 
+ * ### ESP32 (Classic):
+ * - **Channels:** 16 channels (8 high-speed + 8 low-speed)
+ * - **Timers:** 8 timers (4 high-speed + 4 low-speed)
+ * - **Clock Sources:** APB_CLK (80MHz), REF_TICK (1MHz), RTC8M_CLK (LS only)
+ * - **Resolution:** Up to 20-bit at low frequencies, 14-bit at high frequencies
+ * - **Special Features:** Separate high-speed and low-speed modes
  *
- * Key Design Features:
- * - Lazy initialization pattern (no hardware action until needed)
- * - Thread-safe channel management with RtosMutex
- * - Automatic timer allocation and management
- * - Hardware fault detection and recovery
- * - Comprehensive error reporting
- * - Support for synchronized updates across channels
- * - Motor control oriented features (complementary outputs, deadtime)
- * - Proper abstraction of ESP-IDF types
+ * ### ESP32-S2/S3:
+ * - **Channels:** 8 channels (unified mode)
+ * - **Timers:** 4 timers (unified)
+ * - **Clock Sources:** APB_CLK (80MHz), REF_TICK (1MHz), XTAL_CLK (LS only)
+ * - **Resolution:** Up to 14-bit resolution
+ * - **Special Features:** Unified speed mode, improved power efficiency
+ *
+ * ### ESP32-C3/C6/H2:
+ * - **Channels:** 6 channels (ESP32-C6), 6 channels (ESP32-C3), 4 channels (ESP32-H2)
+ * - **Timers:** 4 timers (C3/C6), 2 timers (H2)
+ * - **Clock Sources:** APB_CLK (80MHz), REF_TICK (1MHz), XTAL_CLK
+ * - **Resolution:** Up to 14-bit resolution
+ * - **Special Features:** Compact design, optimized for IoT applications
+ *
+ * ## Clock Source Constraints:
+ * 
+ * **CRITICAL:** Different ESP32 variants have different clock source limitations:
+ * - **ESP32 Classic:** Each timer can use different clock sources independently
+ * - **ESP32-S2/S3/C3/C6/H2:** All timers typically share the same clock source
+ * - **Frequency Limitations:** Clock source determines maximum achievable frequency:
+ *   - APB_CLK (80MHz): Max ~78kHz at 10-bit resolution
+ *   - XTAL_CLK (40MHz): Max ~39kHz at 10-bit resolution
+ *   - REF_TICK (1MHz): Max ~976Hz at 10-bit resolution
+ *
+ * ## Timer Resource Management:
+ * 
+ * The LEDC peripheral uses a timer-channel architecture where:
+ * - Multiple channels can share the same timer (same frequency/resolution)
+ * - Each timer supports up to 8 channels (hardware limitation)
+ * - Timer allocation is automatic but can be controlled manually
+ * - Smart eviction policies protect critical channels
+ *
+ * ## Key Design Features:
+ * - **Variant-Aware:** Automatically detects and adapts to ESP32 variant capabilities
+ * - **Thread-Safe:** Full RtosMutex protection for concurrent access
+ * - **Smart Timer Management:** Automatic allocation with conflict resolution
+ * - **Hardware Fade Support:** Native LEDC fade functionality
+ * - **Error Recovery:** Comprehensive fault detection and recovery mechanisms
+ * - **Motor Control Ready:** Complementary outputs, deadtime, and synchronization
+ * - **Resource Protection:** Eviction policies prevent accidental channel disruption
+ * - **Performance Optimized:** Minimal overhead, efficient memory usage
  */
 class EspPwm : public BasePwm {
 public:
@@ -95,7 +127,39 @@ public:
   // LIFECYCLE (BasePwm Interface)
   //==============================================================================
 
+  /**
+   * @brief Initialize the LEDC peripheral and PWM subsystem
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Performs comprehensive LEDC peripheral initialization:
+   * - Initializes timer and channel state arrays
+   * - Sets up fade functionality if enabled in configuration
+   * - Validates ESP32 variant capabilities
+   * - Prepares resource management systems
+   * 
+   * @note This method is called automatically by EnsureInitialized() (lazy initialization)
+   * @warning Multiple calls return PWM_ERR_ALREADY_INITIALIZED (safe to call repeatedly)
+   * 
+   * @see Deinitialize() for cleanup and resource release
+   */
   hf_pwm_err_t Initialize() noexcept override;
+  
+  /**
+   * @brief Deinitialize the LEDC peripheral and release all resources
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Performs comprehensive cleanup and resource release:
+   * - Stops all active PWM channels with proper idle level setting
+   * - Releases and resets all LEDC timers with hardware cleanup
+   * - Resets all GPIO pins to default state
+   * - Uninstalls fade functionality to prevent conflicts
+   * - Clears all internal state and statistics
+   * 
+   * @note Safe to call multiple times or on already deinitialized instances
+   * @warning All PWM outputs will stop and GPIOs will be reset to default state
+   * 
+   * @see Initialize() for PWM subsystem initialization
+   */
   hf_pwm_err_t Deinitialize() noexcept override;
 
   /**
@@ -115,6 +179,24 @@ public:
   // CHANNEL MANAGEMENT (BasePwm Interface)
   //==============================================================================
 
+  /**
+   * @brief Configure a PWM channel with comprehensive LEDC feature support
+   * @param channel_id Channel identifier (0 to MAX_CHANNELS-1)
+   * @param config Complete channel configuration including GPIO, frequency, resolution
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details This method configures a PWM channel with full LEDC peripheral integration:
+   * - **Timer Assignment:** Automatic or manual timer allocation with conflict resolution
+   * - **Frequency/Resolution Validation:** Hardware constraint verification against clock source
+   * - **GPIO Configuration:** Pin matrix validation and hardware setup
+   * - **Resource Management:** Smart timer sharing and eviction policy enforcement
+   * 
+   * @note The channel must be enabled separately using EnableChannel()
+   * @warning Invalid frequency/resolution combinations will be rejected with detailed error codes
+   * 
+   * @see SetFrequencyWithResolution() for explicit frequency/resolution control
+   * @see EnableChannel() to activate the configured channel
+   */
   hf_pwm_err_t ConfigureChannel(hf_channel_id_t channel_id,
                                 const hf_pwm_channel_config_t& config) noexcept;
   
@@ -130,18 +212,102 @@ public:
    */
   hf_pwm_err_t DeconfigureChannel(hf_channel_id_t channel_id) noexcept;
   
+  /**
+   * @brief Enable a configured PWM channel to start signal generation
+   * @param channel_id Channel identifier to enable
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Activates PWM signal generation on the specified channel using the LEDC peripheral.
+   * The channel must be previously configured with ConfigureChannel().
+   * 
+   * @note Uses fade-compatible or basic LEDC functions based on current mode
+   * @warning Channel must be configured before enabling
+   */
   hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept override;
+  
+  /**
+   * @brief Disable a PWM channel and stop signal generation
+   * @param channel_id Channel identifier to disable
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Stops PWM signal generation and sets output to configured idle level.
+   * Timer resources are automatically managed and released if unused.
+   * 
+   * @note GPIO pin will be set to the configured idle level (0 or 1)
+   */
   hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept override;
+  
+  /**
+   * @brief Check if a PWM channel is currently enabled
+   * @param channel_id Channel identifier to check
+   * @return true if channel is enabled and generating PWM signals, false otherwise
+   * 
+   * @note Returns false for unconfigured channels or channels that failed to enable
+   */
   bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept override;
 
   //==============================================================================
   // PWM CONTROL (BasePwm Interface)
   //==============================================================================
 
+  /**
+   * @brief Set PWM duty cycle as a percentage (0.0 to 1.0)
+   * @param channel_id Channel identifier to update
+   * @param duty_cycle Duty cycle as percentage (0.0 = 0%, 1.0 = 100%)
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Converts percentage to raw value based on channel's current resolution
+   * and updates the LEDC peripheral. Supports both fade and basic modes.
+   * 
+   * @note Duty cycle is automatically clamped to valid range [0.0, 1.0]
+   * @warning Channel must be configured and enabled for immediate effect
+   */
   hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) noexcept override;
+  
+  /**
+   * @brief Set PWM duty cycle using raw timer counts
+   * @param channel_id Channel identifier to update  
+   * @param raw_value Raw duty cycle value (0 to (2^resolution - 1))
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Directly sets LEDC timer compare value for maximum precision.
+   * Value is validated against current channel resolution.
+   * 
+   * @note Raw value is clamped to maximum for current resolution
+   * @warning Use GetResolution() to determine valid raw value range
+   */
   hf_pwm_err_t SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_value) noexcept override;
+  
+  /**
+   * @brief Set PWM frequency with automatic timer management
+   * @param channel_id Channel identifier to update
+   * @param frequency_hz Target frequency in Hz
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Automatically manages timer allocation and sharing for efficient resource usage.
+   * May trigger timer reconfiguration or reallocation if frequency change is significant.
+   * 
+   * @note Frequency is validated against current resolution and clock source
+   * @warning Large frequency changes may affect other channels sharing the same timer
+   * 
+   * @see SetFrequencyWithResolution() for explicit frequency/resolution control
+   * @see EnableAutoFallback() for automatic resolution adjustment
+   */
   hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id,
                             hf_frequency_hz_t frequency_hz) noexcept override;
+  
+  /**
+   * @brief Set PWM phase shift (ESP32 LEDC limitation: not supported)
+   * @param channel_id Channel identifier (unused)
+   * @param phase_shift_degrees Phase shift in degrees (unused)
+   * @return PWM_ERR_INVALID_PARAMETER (LEDC doesn't support phase shift)
+   * 
+   * @details The ESP32 LEDC peripheral does not support hardware phase shifting.
+   * This method is provided for interface compatibility but will always return an error.
+   * 
+   * @note For phase relationships, consider using timer offsets or software timing
+   * @warning This method will always fail on ESP32 LEDC peripheral
+   */
   hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id,
                              float phase_shift_degrees) noexcept override;
 
@@ -153,9 +319,19 @@ public:
    * @brief Set frequency with explicit resolution choice (user-controlled)
    * @param channel_id Channel identifier
    * @param frequency_hz Target frequency in Hz
-   * @param resolution_bits Explicit resolution choice in bits
+   * @param resolution_bits Explicit resolution choice in bits (4-14)
    * @return PWM_SUCCESS on success, error code on failure
-   * @note User explicitly chooses the resolution, bypassing automatic validation
+   * 
+   * @details This method allows precise control over both frequency and resolution.
+   * The combination is validated against LEDC hardware constraints:
+   * - **Formula:** Required Clock = frequency_hz × (2^resolution_bits)
+   * - **APB Clock (80MHz):** Max frequency = 80MHz / (2^resolution_bits)
+   * - **Example:** 1kHz @ 10-bit requires 1.024MHz (1.28% of 80MHz) ✓
+   * - **Example:** 100kHz @ 10-bit requires 102.4MHz (128% of 80MHz) ✗
+   * 
+   * @warning This method performs strict validation and will fail if the
+   * frequency/resolution combination exceeds hardware capabilities.
+   * Use SetFrequencyWithAutoFallback() for automatic resolution adjustment.
    */
   hf_pwm_err_t SetFrequencyWithResolution(hf_channel_id_t channel_id,
                                           hf_frequency_hz_t frequency_hz,
@@ -225,9 +401,55 @@ public:
   // ADVANCED FEATURES (BasePwm Interface)
   //==============================================================================
 
+  /**
+   * @brief Start all configured PWM channels simultaneously
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Enables all configured channels in a coordinated manner for synchronized startup.
+   * Channels that are already enabled remain unaffected.
+   * 
+   * @note Only affects channels that have been configured with ConfigureChannel()
+   * @warning Individual channel errors are logged but don't stop the overall operation
+   */
   hf_pwm_err_t StartAll() noexcept override;
+  
+  /**
+   * @brief Stop all enabled PWM channels simultaneously  
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Disables all enabled channels in a coordinated manner for synchronized shutdown.
+   * Each channel's GPIO will be set to its configured idle level.
+   * 
+   * @note Timer resources are automatically managed and released as appropriate
+   */
   hf_pwm_err_t StopAll() noexcept override;
+  
+  /**
+   * @brief Update all enabled PWM channels with their current settings
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Forces a synchronized update of all active LEDC channels to ensure
+   * any pending duty cycle or configuration changes take effect simultaneously.
+   * 
+   * @note Useful after multiple SetDutyCycle() calls to ensure synchronized updates
+   */
   hf_pwm_err_t UpdateAll() noexcept override;
+  
+  /**
+   * @brief Configure complementary PWM output pair with deadtime
+   * @param primary_channel Primary channel identifier
+   * @param complementary_channel Complementary channel identifier  
+   * @param deadtime_ns Deadtime between transitions in nanoseconds
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Creates a complementary PWM pair where outputs are never high simultaneously.
+   * Deadtime prevents shoot-through in power electronics applications.
+   * 
+   * @note Both channels must be configured and use the same timer
+   * @warning Complementary operation is implemented in software, not hardware
+   * 
+   * @see ConfigureChannel() to set up both channels before pairing
+   */
   hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel,
                                       hf_channel_id_t complementary_channel,
                                       hf_u32_t deadtime_ns) noexcept override;
@@ -236,18 +458,100 @@ public:
   // STATUS AND INFORMATION (BasePwm Interface)
   //==============================================================================
 
+  /**
+   * @brief Get current duty cycle as a percentage
+   * @param channel_id Channel identifier to query
+   * @return Current duty cycle (0.0 to 1.0), or 0.0 if channel not configured
+   * 
+   * @details Reads the current LEDC timer compare value and converts to percentage
+   * based on the channel's current resolution setting.
+   * 
+   * @note Returns 0.0 for unconfigured channels or on error
+   */
   float GetDutyCycle(hf_channel_id_t channel_id) const noexcept override;
+  
+  /**
+   * @brief Get current PWM frequency in Hz
+   * @param channel_id Channel identifier to query  
+   * @return Current frequency in Hz, or 0 if channel not configured
+   * 
+   * @details Returns the frequency of the timer assigned to this channel.
+   * Multiple channels sharing the same timer will return the same frequency.
+   * 
+   * @note Returns 0 for unconfigured channels or on error
+   */
   hf_frequency_hz_t GetFrequency(hf_channel_id_t channel_id) const noexcept override;
+  
+  /**
+   * @brief Get comprehensive channel status and configuration
+   * @param channel_id Channel identifier to query
+   * @param status Reference to status structure to populate
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Provides complete channel state including enabled status, current settings,
+   * resolution, raw duty value, and error state for diagnostic purposes.
+   * 
+   * @note Status structure is zeroed on error or for unconfigured channels
+   */
   hf_pwm_err_t GetChannelStatus(hf_channel_id_t channel_id,
                                 hf_pwm_channel_status_t& status) const noexcept;
+  
+  /**
+   * @brief Get ESP32 variant-specific PWM capabilities
+   * @param capabilities Reference to capabilities structure to populate
+   * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Returns hardware-specific limits including channel count, timer count,
+   * maximum resolution, frequency ranges, and supported features for the current ESP32 variant.
+   * 
+   * @note Capabilities are determined at compile-time based on target ESP32 variant
+   */
   hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t& capabilities) const noexcept;
+  
+  /**
+   * @brief Get the last error code for a specific channel
+   * @param channel_id Channel identifier to query
+   * @return Last error code for this channel, or PWM_ERR_INVALID_CHANNEL for invalid ID
+   * 
+   * @details Each channel maintains its own error state for detailed error tracking.
+   * Useful for debugging channel-specific issues in multi-channel applications.
+   * 
+   * @note Error state is cleared on successful operations
+   */
   hf_pwm_err_t GetLastError(hf_channel_id_t channel_id) const noexcept;
 
   //==============================================================================
   // CALLBACKS (BasePwm Interface)
   //==============================================================================
 
+  /**
+   * @brief Set callback for PWM period completion events
+   * @param callback Function to call on period completion (or nullptr to disable)
+   * @param user_data Optional user data passed to callback function
+   * 
+   * @details Registers a callback function that may be triggered on PWM period boundaries.
+   * Callback support depends on ESP32 variant and LEDC interrupt capabilities.
+   * 
+   * @note Callback execution depends on LEDC interrupt support and configuration
+   * @warning Callback functions should be ISR-safe and execute quickly
+   * 
+   * @see SetFaultCallback() for error condition callbacks
+   */
   void SetPeriodCallback(hf_pwm_period_callback_t callback, void* user_data = nullptr) noexcept;
+  
+  /**
+   * @brief Set callback for PWM fault/error conditions
+   * @param callback Function to call on fault detection (or nullptr to disable)
+   * @param user_data Optional user data passed to callback function
+   * 
+   * @details Registers a callback function for hardware fault conditions or
+   * critical errors that require immediate attention.
+   * 
+   * @note Callback is triggered for hardware faults and critical software errors
+   * @warning Callback functions should be ISR-safe and execute quickly
+   * 
+   * @see SetPeriodCallback() for period completion callbacks
+   */
   void SetFaultCallback(hf_pwm_fault_callback_t callback, void* user_data = nullptr) noexcept;
 
   //==============================================================================
@@ -443,10 +747,20 @@ private:
 
   /**
    * @brief Unified timer allocation with comprehensive strategy
-   * @param frequency_hz Required frequency
-   * @param resolution_bits Required resolution
-   * @return Timer ID (0-3), or -1 if no timer available
-   * @note Combines all allocation strategies: reuse, new allocation, eviction
+   * @param frequency_hz Required frequency in Hz
+   * @param resolution_bits Required resolution in bits (4-14)
+   * @param clock_source Preferred clock source for timer configuration
+   * @return Timer ID (0 to MAX_TIMERS-1), or -1 if no timer available
+   * 
+   * @details Implements a multi-phase allocation strategy:
+   * 1. **Optimal Reuse:** Find exact frequency/resolution match
+   * 2. **Compatible Reuse:** Find compatible frequency within tolerance
+   * 3. **New Allocation:** Allocate unused timer with validation
+   * 4. **Health Check:** Clean up orphaned timers and retry
+   * 5. **Safe Eviction:** Apply user-defined eviction policies
+   * 
+   * @note Combines all allocation strategies for maximum efficiency
+   * @warning Returns -1 if all strategies fail (no available timers)
    */
   hf_i8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits, 
                               hf_pwm_clock_source_t clock_source) noexcept;
@@ -458,11 +772,21 @@ private:
   void ReleaseTimerIfUnused(hf_u8_t timer_id) noexcept;
 
   /**
-   * @brief Configure platform timer
-   * @param timer_id Timer to configure
-   * @param frequency_hz Timer frequency
-   * @param resolution_bits Timer resolution
+   * @brief Configure platform timer with LEDC peripheral integration
+   * @param timer_id Timer identifier to configure (0 to MAX_TIMERS-1)
+   * @param frequency_hz Timer frequency in Hz
+   * @param resolution_bits Timer resolution in bits (4-14)
+   * @param clock_source Clock source for timer configuration
    * @return PWM_SUCCESS on success, error code on failure
+   * 
+   * @details Configures an LEDC timer with specified parameters:
+   * - Maps clock source enum to ESP-IDF LEDC clock configuration
+   * - Validates frequency/resolution combination against hardware constraints
+   * - Updates internal timer state for resource tracking
+   * - Performs actual LEDC timer hardware configuration
+   * 
+   * @note Timer configuration affects all channels assigned to this timer
+   * @warning Invalid combinations will cause hardware configuration failure
    */
   hf_pwm_err_t ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency_hz,
                                       hf_u8_t resolution_bits, 
