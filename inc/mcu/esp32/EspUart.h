@@ -338,9 +338,10 @@ public:
   hf_uart_err_t SetSignalInversion(uint32_t inverse_mask) noexcept;
 
   /**
-   * @brief Detect bitrate on the UART line (ESP-IDF v5.5 feature).
-   * @param baud_rate Output parameter for detected baud rate
+   * @brief Detect bitrate on the UART line (placeholder for future ESP-IDF versions).
+   * @param baud_rate Output parameter for detected baud rate (returns current configured rate)
    * @return hf_uart_err_t result code
+   * @note Currently returns configured baud rate as ESP-IDF v5.5 lacks uart_detect_bitrate_bps
    */
   hf_uart_err_t DetectBitrate(uint32_t& baud_rate) noexcept;
 

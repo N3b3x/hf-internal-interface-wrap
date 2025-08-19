@@ -828,11 +828,15 @@ bool test_uart_bitrate_detection() noexcept {
   uint32_t detected_baud = 0;
   hf_uart_err_t result = g_uart_instance->DetectBitrate(detected_baud);
   
-  // Note: This may fail in test environment without actual data transmission
+  // Note: ESP-IDF v5.5 may not have full bitrate detection support
   if (result == hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGI(TAG, "Detected bitrate: %lu bps", detected_baud);
+    ESP_LOGI(TAG, "Bitrate detection returned: %lu bps", detected_baud);
+    // Verify it returns a reasonable value
+    if (detected_baud >= 9600 && detected_baud <= 115200) {
+      ESP_LOGI(TAG, "Bitrate detection returned valid baud rate");
+    }
   } else {
-    ESP_LOGW(TAG, "Bitrate detection failed (expected in test environment): %d", static_cast<int>(result));
+    ESP_LOGW(TAG, "Bitrate detection not fully supported in ESP-IDF v5.5: %d", static_cast<int>(result));
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Bitrate detection test completed");
