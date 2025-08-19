@@ -851,14 +851,14 @@ bool test_uart_enhanced_pattern_detection() noexcept {
     return false;
   }
 
-  // Test pattern detection enable
+  // Test pattern detection enable (placeholder in ESP-IDF v5.5)
   hf_uart_err_t result = g_uart_instance->EnablePatternDetection('+', 3, 5, 5, 5);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to enable pattern detection: %d", static_cast<int>(result));
     return false;
   }
 
-  ESP_LOGI(TAG, "Pattern detection enabled for '+++' sequence");
+  ESP_LOGI(TAG, "Pattern detection enabled for '+++' sequence (placeholder implementation)");
 
   // Check pattern detection status
   bool pattern_enabled = g_uart_instance->IsPatternDetectionEnabled();
@@ -874,11 +874,11 @@ bool test_uart_enhanced_pattern_detection() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "Pattern queue reset successful");
+  ESP_LOGI(TAG, "Pattern queue reset successful (placeholder implementation)");
 
   // Test pattern position retrieval
   int pattern_pos = g_uart_instance->GetPatternPosition(false);
-  ESP_LOGI(TAG, "Pattern position: %d", pattern_pos);
+  ESP_LOGI(TAG, "Pattern position: %d (expected -1 in ESP-IDF v5.5)", pattern_pos);
 
   // Disable pattern detection
   result = g_uart_instance->DisablePatternDetection();
@@ -887,7 +887,7 @@ bool test_uart_enhanced_pattern_detection() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "[SUCCESS] Enhanced pattern detection test completed");
+  ESP_LOGI(TAG, "[SUCCESS] Enhanced pattern detection test completed (placeholder implementation)");
   return true;
 }
 

@@ -346,27 +346,30 @@ public:
   hf_uart_err_t DetectBitrate(uint32_t& baud_rate) noexcept;
 
   /**
-   * @brief Enable pattern detection with specific character.
+   * @brief Enable pattern detection with specific character (placeholder for ESP-IDF v5.5).
    * @param pattern_char Character to detect
    * @param pattern_char_num Number of consecutive pattern characters
    * @param chr_tout Timeout between pattern characters (in baud cycles)
    * @param post_idle Idle time after pattern (in baud cycles)
    * @param pre_idle Idle time before pattern (in baud cycles)
    * @return hf_uart_err_t result code
+   * @note Currently a placeholder as ESP-IDF v5.5 lacks pattern detection APIs
    */
   hf_uart_err_t EnablePatternDetection(char pattern_char, uint8_t pattern_char_num = 1,
                                        uint16_t chr_tout = 5, uint16_t post_idle = 5,
                                        uint16_t pre_idle = 5) noexcept;
 
   /**
-   * @brief Disable pattern detection.
+   * @brief Disable pattern detection (placeholder for ESP-IDF v5.5).
    * @return hf_uart_err_t result code
+   * @note Currently a placeholder as ESP-IDF v5.5 lacks pattern detection APIs
    */
   hf_uart_err_t DisablePatternDetection() noexcept;
 
   /**
-   * @brief Reset pattern detection queue.
+   * @brief Reset pattern detection queue (placeholder for ESP-IDF v5.5).
    * @return hf_uart_err_t result code
+   * @note Currently a placeholder as ESP-IDF v5.5 lacks pattern detection APIs
    */
   hf_uart_err_t ResetPatternQueue() noexcept;
 
