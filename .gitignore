@@ -36,8 +36,12 @@ tests/build/
 **/build_*/
 **/dependencies.lock
 
-.vscode/
-**/.vscode/
+# Don't exclude .vscode folder
+# .vscode/
+# But exclude user-specific files
+.vscode/settings.json.user
+.vscode/*.backup
+
 **/docs/doxygen/
 docs/doxygen/
 .DS_Store

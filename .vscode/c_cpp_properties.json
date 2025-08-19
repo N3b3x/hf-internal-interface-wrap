@@ -1,0 +1,45 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "ESP32-C6",
+            "includePath": [
+                "${workspaceFolder}/inc/**",
+                "${workspaceFolder}/inc/base",
+                "${workspaceFolder}/inc/mcu/esp32/**",
+                "${workspaceFolder}/inc/mcu/esp32/utils",
+                "${workspaceFolder}/inc/utils",
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/examples/esp32/main",
+                "${env:IDF_PATH}/components/**",
+                "${env:HOME}/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/riscv32-esp-elf/include/**",
+                "${env:HOME}/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/15.1.0/include/**",
+                "${env:HOME}/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/riscv32-esp-elf/include/**",
+                "${env:HOME}/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/14.2.0/include/**"
+            ],
+            "defines": [
+                "ESP_PLATFORM=1",
+                "CONFIG_IDF_TARGET_ESP32C6=1",
+                "HF_TARGET_MCU_ESP32C6=1",
+                "HF_MCU_ESP32C6=1", 
+                "HF_MCU_FAMILY_ESP32=1",
+                "HF_THREAD_SAFE=1",
+                "ESP32C6=1",
+                "__riscv",
+                "__riscv_xlen=32"
+            ],
+            "compilerPath": "${env:HOME}/.espressif/tools/riscv32-esp-elf/esp-15.1.0_20250607/riscv32-esp-elf/bin/riscv32-esp-elf-gcc",
+            "cStandard": "c11",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compileCommands": "${workspaceFolder}/compile_commands.json",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**",
+                    "${env:IDF_PATH}/components/**"
+                ],
+                "limitSymbolsToIncludedHeaders": false
+            }
+        }
+    ]
+}

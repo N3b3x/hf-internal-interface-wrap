@@ -1,0 +1,919 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build All Examples (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["ascii_art", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build All Examples (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["ascii_art", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash All Examples (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["ascii_art", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash All Examples (Debug)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["ascii_art", "Debug", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "--- Peripheral Tests ---",
+            "type": "shell",
+            "command": "echo",
+            "args": ["Peripheral Tests Section"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Build GPIO Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["gpio_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build GPIO Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["gpio_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash GPIO Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["gpio_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build ADC Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["adc_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build ADC Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["adc_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash ADC Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["adc_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build UART Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["uart_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build UART Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["uart_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash UART Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["uart_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build SPI Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["spi_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build SPI Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["spi_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash SPI Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["spi_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build I2C Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["i2c_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build I2C Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["i2c_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash I2C Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["i2c_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build PWM Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["pwm_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build PWM Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["pwm_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash PWM Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["pwm_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build CAN Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["can_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build CAN Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["can_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash CAN Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["can_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build PIO Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["pio_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build PIO Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["pio_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash PIO Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["pio_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Timer Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["timer_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Timer Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["timer_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash Timer Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["timer_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "--- Sensor & Storage Tests ---",
+            "type": "shell",
+            "command": "echo",
+            "args": ["Sensor & Storage Tests Section"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Build Temperature Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["temperature_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Temperature Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["temperature_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash Temperature Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["temperature_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build NVS Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["nvs_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build NVS Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["nvs_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash NVS Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["nvs_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "--- Utility & Connectivity Tests ---",
+            "type": "shell",
+            "command": "echo",
+            "args": ["Utility & Connectivity Tests Section"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Build Logger Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["logger_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Logger Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["logger_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash Logger Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["logger_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build WiFi Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["wifi_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build WiFi Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["wifi_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash WiFi Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["wifi_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Bluetooth Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["bluetooth_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Bluetooth Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["bluetooth_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash Bluetooth Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["bluetooth_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Utils Test (Release)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["utils_test", "Release"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Utils Test (Debug)",
+            "type": "shell",
+            "command": "./scripts/build_example.sh",
+            "args": ["utils_test", "Debug"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash Utils Test (Release)",
+            "type": "shell",
+            "command": "./scripts/flash_example.sh",
+            "args": ["utils_test", "Release", "flash_monitor"],
+            "options": {
+                "cwd": "${workspaceFolder}/examples/esp32"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "--- Utility Tasks ---",
+            "type": "shell",
+            "command": "echo",
+            "args": ["Utility Tasks Section"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Regenerate compile_commands.json",
+            "type": "shell", 
+            "command": "cp",
+            "args": ["examples/esp32/build_ascii_art_Release/compile_commands.json", "."],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build"
+        },
+        {
+            "label": "Clean All Builds",
+            "type": "shell",
+            "command": "rm",
+            "args": ["-rf", "examples/esp32/build_*"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ]
+}

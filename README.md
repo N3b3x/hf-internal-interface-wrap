@@ -245,6 +245,55 @@ idf_component_register(
 #include "inc/mcu/esp32/EspTemperature.h"
 ```
 
+### 🖥️ **VS Code Development Environment Setup**
+
+The project includes a pre-configured VS Code environment for seamless HardFOC development. The `.vscode` folder contains all necessary configurations for IntelliSense, building, and flashing.
+
+#### **Prerequisites**
+- **VS Code** or **Cursor IDE** with C/C++ extension
+- **ESP-IDF v5.0+** installed and sourced
+
+#### **Quick Setup**
+1. **Source ESP-IDF environment:**
+   ```bash
+   source ~/esp/esp-idf/export.sh
+   ```
+
+2. **Open the project in VS Code:**
+   ```bash
+   code .  # or open VS Code and File -> Open Folder
+   ```
+
+3. **Install C/C++ extension** if prompted
+
+4. **Reload VS Code window** (Ctrl+Shift+P → "Developer: Reload Window")
+
+#### **What's Pre-Configured**
+- ✅ **Complete IntelliSense** for ESP-IDF and project files
+- ✅ **Build and flash tasks** for all 16 examples
+- ✅ **Proper include paths** and compiler settings
+- ✅ **Computer agnostic** configuration (works on any system)
+- ✅ **Organized task categories** (Peripheral, Sensor, Utility, etc.)
+
+#### **Available Tasks**
+- **Build Tasks**: Build any example in Debug/Release mode
+- **Flash Tasks**: Flash and monitor any example
+- **Utility Tasks**: Clean builds, regenerate compile commands
+
+#### **Using Tasks**
+1. Press `Ctrl+Shift+P` → "Tasks: Run Task"
+2. Select from available tasks:
+   - **Build GPIO Test (Release)** - Build GPIO example
+   - **Flash PWM Test (Release)** - Flash PWM example
+   - **Clean All Builds** - Remove all build directories
+
+#### **Troubleshooting VS Code Setup**
+- **IntelliSense not working**: Ensure ESP-IDF is sourced and reload VS Code
+- **Tasks not found**: Check that you're in the workspace root
+- **Path issues**: Run the toolchain update script in `.vscode/` folder
+
+For detailed VS Code configuration information, see [`.vscode/README.md`](.vscode/README.md).
+
 ### 💡 **HardFOC Motor Controller Example**
 
 *This example demonstrates how to integrate with a TMC9660-style motor controller using the HardFOC wrapper interfaces*
