@@ -70,15 +70,6 @@ EspPwm::EspPwm(const hf_pwm_unit_config_t& config) noexcept
            static_cast<int>(config.mode), config.base_clock_hz);
 }
 
-EspPwm::EspPwm(hf_u32_t base_clock_hz) noexcept : EspPwm() {
-  // Override base clock if provided
-  if (base_clock_hz != 0) {
-    base_clock_hz_ = base_clock_hz;
-    unit_config_.base_clock_hz = base_clock_hz;
-  }
-  ESP_LOGD(TAG, "EspPwm legacy constructor with clock_hz=%lu", base_clock_hz);
-}
-
 EspPwm::~EspPwm() noexcept {
   if (initialized_.load()) {
     ESP_LOGI(TAG, "EspPwm destructor - cleaning up");

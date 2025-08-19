@@ -114,7 +114,6 @@ public:
    * @note Uses lazy initialization - no hardware action until first operation
    */
   explicit EspPwm(const hf_pwm_unit_config_t& config = hf_pwm_unit_config_t{}) noexcept;
-  EspPwm(hf_u32_t base_clock_hz) noexcept;
 
   /**
    * @brief Destructor - ensures clean shutdown
@@ -145,6 +144,8 @@ public:
    * @warning Multiple calls return PWM_ERR_ALREADY_INITIALIZED (safe to call repeatedly)
    * 
    * @see Deinitialize() for cleanup and resource release
+   * 
+   * @implements BasePwm::Initialize() - ESP32-specific implementation using LEDC peripheral
    */
   hf_pwm_err_t Initialize() noexcept override;
   
@@ -163,6 +164,8 @@ public:
    * @warning All PWM outputs will stop and GPIOs will be reset to default state
    * 
    * @see Initialize() for PWM subsystem initialization
+   * 
+   * @implements BasePwm::Deinitialize() - ESP32-specific cleanup with LEDC peripheral reset
    */
   hf_pwm_err_t Deinitialize() noexcept override;
 
@@ -311,6 +314,8 @@ public:
    * 
    * @note For phase relationships, consider using timer offsets or software timing
    * @warning This method will always fail on ESP32 LEDC peripheral
+   * 
+   * @implements BasePwm::SetPhaseShift() - Required by base class interface but not supported by ESP32 LEDC hardware
    */
   hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id,
                              float phase_shift_degrees) noexcept override;
@@ -453,6 +458,8 @@ public:
    * @warning Complementary operation is implemented in software, not hardware
    * 
    * @see ConfigureChannel() to set up both channels before pairing
+   * 
+   * @implements BasePwm::SetComplementaryOutput() - Software-based complementary PWM for motor control
    */
   hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel,
                                       hf_channel_id_t complementary_channel,

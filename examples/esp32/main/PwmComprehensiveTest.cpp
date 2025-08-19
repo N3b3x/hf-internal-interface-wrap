@@ -214,7 +214,6 @@ hf_pwm_channel_config_t create_test_channel_config_with_duty(hf_gpio_num_t gpio_
  * @details Validates proper object construction without hardware initialization:
  * - Default constructor with minimal configuration
  * - Constructor with explicit unit configuration
- * - Legacy constructor with clock frequency parameter
  * 
  * @note No hardware initialization occurs during construction (lazy initialization pattern)
  * @warning All constructors must complete without exceptions (noexcept specification)
@@ -230,10 +229,6 @@ bool test_constructor_default() noexcept {
   hf_pwm_unit_config_t config = create_test_config();
   EspPwm pwm2(config);
   ESP_LOGI(TAG, "[SUCCESS] Constructor with config completed");
-
-  // Test legacy constructor
-  EspPwm pwm3(HF_PWM_APB_CLOCK_HZ);
-  ESP_LOGI(TAG, "[SUCCESS] Legacy constructor completed");
 
   return true;
 }
