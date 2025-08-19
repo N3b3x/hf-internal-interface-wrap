@@ -66,6 +66,7 @@ bool test_uart_cleanup() noexcept;
 //==============================================================================
 
 bool uart_event_callback(const void* event, void* user_data) noexcept {
+  (void)user_data;
   if (event != nullptr) {
     g_event_callback_triggered = true;
     ESP_LOGI(TAG, "Event callback triggered");
@@ -74,12 +75,14 @@ bool uart_event_callback(const void* event, void* user_data) noexcept {
 }
 
 bool uart_pattern_callback(int pattern_pos, void* user_data) noexcept {
+  (void)user_data;
   g_pattern_callback_triggered = true;
   ESP_LOGI(TAG, "Pattern callback triggered at position: %d", pattern_pos);
   return false; // Don't yield
 }
 
 bool uart_break_callback(hf_u32_t break_duration, void* user_data) noexcept {
+  (void)user_data;
   g_break_callback_triggered = true;
   ESP_LOGI(TAG, "Break callback triggered with duration: %lu", break_duration);
   return false; // Don't yield

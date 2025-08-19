@@ -36,6 +36,7 @@
 #include "base/BasePwm.h"
 #include "mcu/esp32/EspPwm.h"
 #include "mcu/esp32/EspGpio.h" // Add GPIO support for test progression indicator
+#include <array>
 
 static const char* TAG = "PWM_Test";
 static TestResults g_test_results;
@@ -173,7 +174,7 @@ hf_pwm_channel_config_t create_test_channel_config(hf_gpio_num_t gpio_pin,
   config.clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB;
 
   // Calculate 50% duty cycle for the specified resolution
-  config.duty_initial = (1u << resolution_bits) / 2; // 50% duty cycle
+  config.duty_initial = (1U << resolution_bits) / 2; // 50% duty cycle
   
   config.intr_type = hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE;
   config.invert_output = false;
@@ -197,7 +198,7 @@ hf_pwm_channel_config_t create_test_channel_config_with_duty(hf_gpio_num_t gpio_
   hf_pwm_channel_config_t config = create_test_channel_config(gpio_pin, frequency_hz, resolution_bits);
   
   // Calculate raw duty value for the specified percentage and resolution
-  hf_u32_t max_duty = (1u << resolution_bits) - 1;
+  hf_u32_t max_duty = (1U << resolution_bits) - 1;
   config.duty_initial = static_cast<hf_u32_t>(duty_percentage * max_duty);
   
   return config;
@@ -419,20 +420,20 @@ bool test_clock_source_configuration() noexcept {
 
   // Test different channels with APB clock source - frequencies designed for timer sharing
   struct ClockSourceTest {
-    hf_gpio_num_t gpio_pin;
-    uint32_t frequency;
-    uint8_t resolution;
-    const char* description;
+    hf_gpio_num_t gpio_pin{};
+    uint32_t frequency{};
+    uint8_t resolution{};
+    const char* description{};
   };
 
-  ClockSourceTest tests[] = {
+  std::array<ClockSourceTest, 4> tests = {{
     {2, 1000, 10, "1kHz @ 10-bit"},
     {3, 2000, 10, "2kHz @ 10-bit"},
     {4, 4000, 10, "4kHz @ 10-bit"},
     {5, 8000, 10, "8kHz @ 10-bit"},
-  };
+  }};
 
-  for (size_t i = 0; i < sizeof(tests)/sizeof(tests[0]); i++) {
+  for (size_t i = 0; i < tests.size(); i++) {
     const auto& test = tests[i];
     
     // Clean up previous configuration if needed
@@ -486,18 +487,18 @@ bool test_channel_configuration() noexcept {
 
   // Test configuring multiple channels with different resolutions (avoid GPIO3 -> use GPIO6 instead)
   struct ChannelTestConfig {
-    hf_gpio_num_t pin;
-    hf_u32_t frequency;
-    hf_u8_t resolution;
-    float duty_percentage;
+    hf_gpio_num_t pin{};
+    hf_u32_t frequency{};
+    hf_u8_t resolution{};
+    float duty_percentage{};
   };
   
-  ChannelTestConfig test_configs[] = {
-    {2, 1000, 8,  0.25f}, // GPIO2: 1kHz @ 8-bit, 25%
-    {6, 2000, 10, 0.50f}, // GPIO6: 2kHz @ 10-bit, 50%
-    {4, 1500, 12, 0.75f}, // GPIO4: 1.5kHz @ 12-bit, 75%
-    {5, 3000, 9,  0.33f}  // GPIO5: 3kHz @ 9-bit, 33%
-  };
+  std::array<ChannelTestConfig, 4> test_configs = {{
+    {2, 1000, 8,  0.25F}, // GPIO2: 1kHz @ 8-bit, 25%
+    {6, 2000, 10, 0.50F}, // GPIO6: 2kHz @ 10-bit, 50%
+    {4, 1500, 12, 0.75F}, // GPIO4: 1.5kHz @ 12-bit, 75%
+    {5, 3000, 9,  0.33F}  // GPIO5: 3kHz @ 9-bit, 33%
+  }};
 
   for (hf_channel_id_t ch = 0; ch < 4; ch++) {
     const auto& test_cfg = test_configs[ch];
@@ -527,7 +528,7 @@ bool test_channel_configuration() noexcept {
     }
 
     ESP_LOGI(TAG, "Channel %d configured successfully: %lu Hz @ %d-bit, %.1f%% duty", 
-             ch, actual_frequency, actual_resolution, test_cfg.duty_percentage * 100.0f);
+              ch, actual_frequency, actual_resolution, test_cfg.duty_percentage * 100.0F);
   }
 
   // Test invalid channel configuration
@@ -638,7 +639,7 @@ bool test_duty_cycle_control() noexcept {
   pwm.EnableChannel(0);
 
   // Test different duty cycles
-  float test_duties[] = {0.0f, 0.25f, 0.5f, 0.75f, 1.0f};
+  std::array<float, 5> test_duties = {{0.0F, 0.25F, 0.5F, 0.75F, 1.0F}};
 
   ESP_LOGI(TAG, "Testing duty cycle control...");
   for (float duty : test_duties) {
@@ -659,7 +660,7 @@ bool test_duty_cycle_control() noexcept {
   }
 
   // Test raw duty cycle setting
-  hf_u32_t raw_values[] = {0, 256, 512, 768, 1023}; // For 10-bit resolution
+      std::array<hf_u32_t, 5> raw_values = {{0, 256, 512, 768, 1023}}; // For 10-bit resolution
 
   for (hf_u32_t raw_val : raw_values) {
     hf_pwm_err_t result = pwm.SetDutyCycleRaw(0, raw_val);
@@ -673,7 +674,7 @@ bool test_duty_cycle_control() noexcept {
   }
 
   // Test invalid duty cycles
-  hf_pwm_err_t result = pwm.SetDutyCycle(0, -0.1f);
+      hf_pwm_err_t result = pwm.SetDutyCycle(0, -0.1F);
   if (result == hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Negative duty cycle should not be accepted");
     return false;
@@ -706,7 +707,7 @@ bool test_frequency_control() noexcept {
   pwm.EnableChannel(0);
 
   // Test different frequencies
-  hf_frequency_hz_t test_frequencies[] = {100, 500, 1000, 5000, 10000, 20000};
+  std::array<hf_frequency_hz_t, 6> test_frequencies = {{100, 500, 1000, 5000, 10000, 20000}};
 
   for (hf_frequency_hz_t freq : test_frequencies) {
     hf_pwm_err_t result = pwm.SetFrequency(0, freq);
@@ -767,7 +768,7 @@ bool test_phase_shift_control() noexcept {
   }
 
   // Test if phase shift is supported by trying to set a valid phase
-  hf_pwm_err_t result = pwm.SetPhaseShift(0, 0.0f);
+      hf_pwm_err_t result = pwm.SetPhaseShift(0, 0.0F);
   if (result == hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER) {
     // ESP32-C6 LEDC doesn't support phase shift - skip this test
     ESP_LOGW(TAG, "Phase shift not supported on this hardware - skipping test");
@@ -776,7 +777,7 @@ bool test_phase_shift_control() noexcept {
   }
 
   // If we get here, phase shift is supported, so run the full test
-  float test_phases[] = {0.0f, 90.0f, 180.0f, 270.0f};
+  std::array<float, 4> test_phases = {{0.0F, 90.0F, 180.0F, 270.0F}};
 
   for (int i = 0; i < 3; i++) {
     float phase = test_phases[i];
@@ -791,7 +792,7 @@ bool test_phase_shift_control() noexcept {
   }
 
   // Test invalid phase shift
-  result = pwm.SetPhaseShift(0, 400.0f);
+      result = pwm.SetPhaseShift(0, 400.0F);
   if (result == hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Phase shift > 360 degrees should not be accepted");
     return false;
@@ -893,7 +894,7 @@ bool test_complementary_outputs() noexcept {
   pwm.EnableChannel(1);
 
   // Test different duty cycles with complementary outputs
-  float test_duties[] = {0.2f, 0.5f, 0.8f};
+  std::array<float, 3> test_duties = {{0.2F, 0.5F, 0.8F}};
 
   for (float duty : test_duties) {
     pwm.SetDutyCycle(0, duty);
@@ -926,21 +927,21 @@ bool test_hardware_fade() noexcept {
   pwm.EnableChannel(0);
 
   // Set initial duty cycle
-  pwm.SetDutyCycle(0, 0.1f);
+      pwm.SetDutyCycle(0, 0.1F);
   vTaskDelay(pdMS_TO_TICKS(100));
 
   // Test fade operations
   struct FadeTest {
-    float target_duty;
-    hf_u32_t fade_time_ms;
+    float target_duty{};
+    hf_u32_t fade_time_ms{};
   };
 
-  FadeTest fade_tests[] = {
-      {0.8f, 1000}, // Fade up
-      {0.2f, 800},  // Fade down
-      {0.9f, 1200}, // Fade up again
-      {0.0f, 500}   // Fade to minimum
-  };
+  std::array<FadeTest, 4> fade_tests = {{
+      {0.8F, 1000}, // Fade up
+      {0.2F, 800},  // Fade down
+      {0.9F, 1200}, // Fade up again
+      {0.0F, 500}   // Fade to minimum
+  }};
 
   for (const auto& test : fade_tests) {
     ESP_LOGI(TAG, "Starting fade to %.1f over %lu ms", test.target_duty, test.fade_time_ms);
@@ -969,7 +970,7 @@ bool test_hardware_fade() noexcept {
   }
 
   // Test stop fade
-  pwm.SetHardwareFade(0, 0.5f, 2000); // Start a long fade
+      pwm.SetHardwareFade(0, 0.5F, 2000); // Start a long fade
   vTaskDelay(pdMS_TO_TICKS(200));
 
   hf_pwm_err_t result = pwm.StopHardwareFade(0);
@@ -1003,7 +1004,7 @@ bool test_idle_level_control() noexcept {
   pwm.ConfigureChannel(0, ch_config);
 
   // Test different idle levels
-  hf_u8_t idle_levels[] = {0, 1};
+  std::array<hf_u8_t, 2> idle_levels = {{0, 1}};
 
   for (hf_u8_t idle_level : idle_levels) {
     hf_pwm_err_t result = pwm.SetIdleLevel(0, idle_level);
@@ -1079,20 +1080,20 @@ bool test_timer_management() noexcept {
   ESP_LOGI(TAG, "Phase 1: Testing basic timer allocation");
   
   struct TimerTestConfig {
-    hf_channel_id_t channel;
-    hf_gpio_num_t gpio;
-    hf_u32_t frequency;
-    hf_u8_t resolution;
-    const char* description;
+    hf_channel_id_t channel{};
+    hf_gpio_num_t gpio{};
+    hf_u32_t frequency{};
+    hf_u8_t resolution{};
+    const char* description{};
   };
 
   // These combinations are designed to require separate timers
-  TimerTestConfig timer_configs[] = {
+  std::array<TimerTestConfig, 4> timer_configs = {{
       {0, 2, 1000,  8,  "Timer allocation test: 1kHz @ 8-bit"},   // Should get timer 0
       {1, 6, 2000,  10, "Timer allocation test: 2kHz @ 10-bit"},  // Should get timer 1
       {2, 4, 5000,  8,  "Timer allocation test: 5kHz @ 8-bit"},   // Should get timer 2
       {3, 5, 10000, 9,  "Timer allocation test: 10kHz @ 9-bit"}   // Should get timer 3
-  };
+  }};
 
   // Track which timers are used
   bool timer_used[4] = {false, false, false, false};
@@ -1299,7 +1300,7 @@ bool test_statistics_and_diagnostics() noexcept {
   pwm.EnableChannel(0);
 
   for (int i = 0; i < 5; i++) {
-    pwm.SetDutyCycle(0, 0.2f + (i * 0.15f));
+          pwm.SetDutyCycle(0, 0.2F + (i * 0.15F));
     pwm.SetFrequency(0, 1000 + (i * 500));
     vTaskDelay(pdMS_TO_TICKS(50));
   }
@@ -1423,7 +1424,7 @@ bool test_callbacks() noexcept {
   pwm.SetChannelFadeCallback(0, nullptr); // Clear callback
   g_fade_callback_called[0] = false;
   
-  pwm.SetHardwareFade(0, 0.1f, 200); // Should not trigger callback
+      pwm.SetHardwareFade(0, 0.1F, 200); // Should not trigger callback
   vTaskDelay(pdMS_TO_TICKS(400));
   
   if (g_fade_callback_called[0]) {
@@ -1460,7 +1461,7 @@ bool test_basic_mode_without_fade() noexcept {
   }
 
   // Test that we can set duty cycles without fade
-  result = pwm.SetDutyCycle(0, 0.5f);
+  result = pwm.SetDutyCycle(0, 0.5F);
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set duty cycle in basic mode without fade");
     return false;
@@ -1507,14 +1508,14 @@ bool test_fade_mode_functionality() noexcept {
   }
 
   // Test that we can set duty cycles in fade mode
-  result = pwm.SetDutyCycle(0, 0.5f);
+  result = pwm.SetDutyCycle(0, 0.5F);
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set duty cycle in fade mode");
     return false;
   }
 
   // Test that we can use hardware fade in fade mode
-  result = pwm.SetHardwareFade(0, 0.8f, 1000);
+      result = pwm.SetHardwareFade(0, 0.8F, 1000);
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set hardware fade in fade mode");
     return false;
@@ -1577,13 +1578,13 @@ bool test_resolution_specific_duty_cycles() noexcept {
     const char* description;
   };
 
-  DutyCycleTest duty_tests[] = {
+  std::array<DutyCycleTest, 5> duty_tests = {{
     {0.0F,   0,    "0% duty cycle"},
     {0.25F,  255,  "25% duty cycle"},
-    {0.5f,   511,  "50% duty cycle"},
-    {0.75f,  767,  "75% duty cycle"},
-    {1.0f,   1023, "100% duty cycle"}
-  };
+    {0.5F,   511,  "50% duty cycle"},
+    {0.75F,  767,  "75% duty cycle"},
+    {1.0F,   1023, "100% duty cycle"}
+  }};
 
   ESP_LOGI(TAG, "Testing duty cycle accuracy with 10-bit resolution (max=1023)");
   
@@ -1599,7 +1600,7 @@ bool test_resolution_specific_duty_cycles() noexcept {
     // Verify the duty cycle reads back correctly
     float actual_duty = pwm.GetDutyCycle(0);
     float expected_duty = test.percentage;
-    float tolerance = 0.002f; // Allow 0.2% tolerance for rounding
+    float tolerance = 0.002F; // Allow 0.2% tolerance for rounding
 
     if (abs(actual_duty - expected_duty) > tolerance) {
       ESP_LOGE(TAG, "Duty cycle mismatch for %s: expected %.4f, got %.4f (diff=%.4f)", 
@@ -1621,7 +1622,7 @@ bool test_resolution_specific_duty_cycles() noexcept {
       return false;
     }
 
-    ESP_LOGI(TAG, "✓ %s verified: %.4f%% (raw=%lu)", test.description, actual_duty * 100.0f, test.expected_raw_10bit);
+    ESP_LOGI(TAG, "✓ %s verified: %.4f%% (raw=%lu)", test.description, actual_duty * 100.0F, test.expected_raw_10bit);
     vTaskDelay(pdMS_TO_TICKS(50));
   }
 
@@ -1659,12 +1660,12 @@ bool test_frequency_resolution_validation() noexcept {
 
   // Test valid frequency/resolution combinations
   struct FreqResTest {
-    uint32_t frequency;
-    bool should_succeed;
-    const char* description;
+    uint32_t frequency{};
+    bool should_succeed{};
+    const char* description{};
   };
 
-  FreqResTest freq_tests[] = {
+  std::array<FreqResTest, 10> freq_tests = {{
     // CORRECTED: Based on pure theoretical ESP32-C6 LEDC limits (you're right!)
     {1000,    true,  "1 kHz @ 10-bit (valid - 1.024 MHz < 80MHz)"},
     {5000,    true,  "5 kHz @ 10-bit (valid - 5.12 MHz < 80MHz)"},
@@ -1676,7 +1677,7 @@ bool test_frequency_resolution_validation() noexcept {
     {50000,   true,  "50 kHz @ 10-bit (valid - 51.2 MHz < 80MHz)"},
     {78000,   true,  "78 kHz @ 10-bit (valid - 79.872 MHz < 80MHz)"},
     {100000,  false, "100 kHz @ 10-bit (should fail - 102.4 MHz > 80MHz)"},
-  };
+  }};
 
   for (const auto& test : freq_tests) {
     ESP_LOGI(TAG, "Testing %s", test.description);
@@ -1768,19 +1769,19 @@ bool test_enhanced_validation_system() noexcept {
   // Test different frequencies that can share the same timer or use compatible dividers
   // We'll use frequencies that can share timers or use the same divider values
   struct ClockSourceTest {
-    uint32_t frequency;
-    uint8_t resolution;
-    bool should_succeed;
-    const char* description;
+    uint32_t frequency{};
+    uint8_t resolution{};
+    bool should_succeed{};
+    const char* description{};
   };
 
-  ClockSourceTest clock_tests[] = {
+  std::array<ClockSourceTest, 4> clock_tests = {{
     // Test with APB clock source (80MHz) - use frequencies that can share timers
     {20000, 10, true, "20kHz@10bit with APB clock (80MHz) - should succeed [20kHz x 1024 = 20.48 MHz (25.6% of 80MHz)]"},
     {40000, 10, true, "40kHz@10bit with APB clock (80MHz) - should succeed [40kHz x 1024 = 40.96 MHz (51.2% of 80MHz)]"},
     {60000, 10, true, "60kHz@10bit with APB clock (80MHz) - should succeed [60kHz x 1024 = 61.44 MHz (76.8% of 80MHz)]"},
     {80000, 10, false, "80kHz@10bit with APB clock (80MHz) - should fail [80kHz x 1024 = 81.92 MHz (102.4% of 80MHz)]"},
-  };
+  }};
 
   for (const auto& test : clock_tests) {
     ESP_LOGI(TAG, "Testing %s", test.description);
@@ -1821,7 +1822,7 @@ bool test_enhanced_validation_system() noexcept {
     const char* description;
   };
 
-  ResolutionTest res_tests[] = {
+  std::array<ResolutionTest, 7> res_tests = {{
     {1000,   14, "1kHz should support up to 14-bit resolution [1kHz x 16383 = 16.383 MHz (20.48% of 80MHz)]"},
     {5000,   13, "5kHz should support up to 13-bit resolution [5kHz x 8191 = 40.955 MHz (51.2% of 80MHz)]"}, 
     {10000,  12, "10kHz should support up to 12-bit resolution [10kHz x 4095 = 40.95 MHz (51.2% of 80MHz)]"},
@@ -1829,7 +1830,7 @@ bool test_enhanced_validation_system() noexcept {
     {40000,  10, "40kHz should support up to 10-bit resolution [40kHz x 1023 = 40.92 MHz (51.2% of 80MHz)]"},
     {78125,  10, "78.125kHz should support exactly 10-bit resolution [78.125kHz x 1023 = 79.872 MHz (99.84% of 80MHz)]"},
     {156250, 9,  "156.25kHz should support exactly 9-bit resolution [156.25kHz x 511 = 79.872 MHz (99.84% of 80MHz)]"},
-  };
+  }};
 
   for (const auto& test : res_tests) {
     ESP_LOGI(TAG, "Testing %s", test.description);
@@ -1861,7 +1862,7 @@ bool test_enhanced_validation_system() noexcept {
   }
 
   // Test valid duty cycles
-  uint32_t valid_duties[] = {0, 127, 255}; // 0%, 50%, 100% for 8-bit
+  std::array<uint32_t, 3> valid_duties = {{0, 127, 255}}; // 0%, 50%, 100% for 8-bit
   for (uint32_t duty : valid_duties) {
     result = pwm.SetDutyCycleRaw(0, duty);
     if (result != hf_pwm_err_t::PWM_SUCCESS) {
@@ -1923,17 +1924,17 @@ bool test_percentage_consistency_across_resolutions() noexcept {
     const char* description;
   };
 
-  ResolutionTest res_tests[] = {
+  std::array<ResolutionTest, 6> res_tests = {{
     {1000,  8,  "1kHz @ 8-bit"},    // Low resolution
     {1000,  10, "1kHz @ 10-bit"},   // Default resolution
     {1000,  12, "1kHz @ 12-bit"},   // High resolution
     {5000,  8,  "5kHz @ 8-bit"},    // Medium frequency, low resolution
     {5000,  10, "5kHz @ 10-bit"},   // Medium frequency, default resolution
     {10000, 8,  "10kHz @ 8-bit"},   // High frequency, low resolution
-  };
+  }};
 
   // Test percentages to verify
-  float test_percentages[] = {0.0f, 0.1f, 0.25f, 0.5f, 0.75f, 0.9f, 1.0f};
+  std::array<float, 7> test_percentages = {{0.0F, 0.1F, 0.25F, 0.5F, 0.75F, 0.9F, 1.0F}};
 
   for (const auto& res_test : res_tests) {
     ESP_LOGI(TAG, "Testing %s", res_test.description);
@@ -1964,11 +1965,11 @@ bool test_percentage_consistency_across_resolutions() noexcept {
 
     // Test each percentage
     for (float percentage : test_percentages) {
-      ESP_LOGI(TAG, "  Setting %.1f%% duty cycle", percentage * 100.0f);
+      ESP_LOGI(TAG, "  Setting %.1f%% duty cycle", percentage * 100.0F);
       
       result = pwm.SetDutyCycle(0, percentage);
       if (result != hf_pwm_err_t::PWM_SUCCESS) {
-        ESP_LOGE(TAG, "Failed to set %.1f%% duty cycle for %s", percentage * 100.0f, res_test.description);
+        ESP_LOGE(TAG, "Failed to set %.1f%% duty cycle for %s", percentage * 100.0F, res_test.description);
         return false;
       }
 
@@ -1976,18 +1977,18 @@ bool test_percentage_consistency_across_resolutions() noexcept {
       float actual_percentage = pwm.GetDutyCycle(0);
       
       // Calculate expected tolerance based on resolution
-      float tolerance = 1.0f / (1u << res_test.resolution_bits); // One step tolerance
-      tolerance += 0.001f; // Add small floating point tolerance
+      float tolerance = 1.0F / (1U << res_test.resolution_bits); // One step tolerance
+      tolerance += 0.001F; // Add small floating point tolerance
       
       if (abs(actual_percentage - percentage) > tolerance) {
         ESP_LOGE(TAG, "Percentage mismatch for %s at %.1f%%: expected %.4f, got %.4f (tolerance=%.4f)", 
-                 res_test.description, percentage * 100.0f, percentage, actual_percentage, tolerance);
+                 res_test.description, percentage * 100.0F, percentage, actual_percentage, tolerance);
         return false;
       }
 
       ESP_LOGI(TAG, "  ✓ %.1f%% verified: actual=%.4f%% (diff=%.4f%%, tolerance=%.4f%%)", 
-               percentage * 100.0f, actual_percentage * 100.0f, 
-               abs(actual_percentage - percentage) * 100.0f, tolerance * 100.0f);
+               percentage * 100.0F, actual_percentage * 100.0F, 
+               abs(actual_percentage - percentage) * 100.0F, tolerance * 100.0F);
     }
 
     ESP_LOGI(TAG, "✓ %s passed all percentage tests", res_test.description);
@@ -2027,7 +2028,7 @@ bool test_resolution_control_methods() noexcept {
   }
 
   // Set initial duty cycle
-  result = pwm.SetDutyCycle(0, 0.5f); // 50%
+      result = pwm.SetDutyCycle(0, 0.5F); // 50%
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set initial duty cycle");
     return false;
@@ -2059,12 +2060,12 @@ bool test_resolution_control_methods() noexcept {
 
   // Verify duty cycle percentage is preserved (should still be ~50%)
   float duty_after_resolution_change = pwm.GetDutyCycle(0);
-  if (abs(duty_after_resolution_change - 0.5f) > 0.02f) { // 2% tolerance
-    ESP_LOGE(TAG, "Duty cycle not preserved after resolution change: expected ~50%%, got %.2f%%", 
-             duty_after_resolution_change * 100.0f);
+      if (abs(duty_after_resolution_change - 0.5F) > 0.02F) { // 2% tolerance
+          ESP_LOGE(TAG, "Duty cycle not preserved after resolution change: expected ~50%%, got %.2f%%", 
+               duty_after_resolution_change * 100.0F);
     return false;
   }
-  ESP_LOGI(TAG, "✓ Duty cycle preserved after resolution change: %.2f%%", duty_after_resolution_change * 100.0f);
+      ESP_LOGI(TAG, "✓ Duty cycle preserved after resolution change: %.2f%%", duty_after_resolution_change * 100.0F);
 
   // Test SetResolution - change to 12-bit
   ESP_LOGI(TAG, "Changing resolution from 8-bit to 12-bit...");
@@ -2146,23 +2147,23 @@ bool test_resolution_aware_duty_calculations() noexcept {
 
   // Test different resolutions with precise duty cycle calculations
   struct ResolutionDutyTest {
-    uint8_t resolution_bits;
-    float duty_percentage;
-    uint32_t expected_raw_value;
-    const char* description;
+    uint8_t resolution_bits{};
+    float duty_percentage{};
+    uint32_t expected_raw_value{};
+    const char* description{};
   };
 
-  ResolutionDutyTest tests[] = {
-    {8,  0.5f,  127,  "8-bit @ 50%"},   // 255/2 ≈ 127
-    {8,  0.25f, 63,   "8-bit @ 25%"},   // 255/4 ≈ 63
-    {8,  1.0f,  255,  "8-bit @ 100%"},  // 255
-    {10, 0.5f,  511,  "10-bit @ 50%"},  // 1023/2 ≈ 511
-    {10, 0.25f, 255,  "10-bit @ 25%"},  // 1023/4 ≈ 255
-    {10, 1.0f,  1023, "10-bit @ 100%"}, // 1023
-    {12, 0.5f,  2047, "12-bit @ 50%"},  // 4095/2 ≈ 2047
-    {12, 0.25f, 1023, "12-bit @ 25%"},  // 4095/4 ≈ 1023
-    {12, 1.0f,  4095, "12-bit @ 100%"}, // 4095
-  };
+  std::array<ResolutionDutyTest, 9> tests = {{
+    {8,  0.5F,  127,  "8-bit @ 50%"},   // 255/2 ≈ 127
+    {8,  0.25F, 63,   "8-bit @ 25%"},   // 255/4 ≈ 63
+    {8,  1.0F,  255,  "8-bit @ 100%"},  // 255
+    {10, 0.5F,  511,  "10-bit @ 50%"},  // 1023/2 ≈ 511
+    {10, 0.25F, 255,  "10-bit @ 25%"},  // 1023/4 ≈ 255
+    {10, 1.0F,  1023, "10-bit @ 100%"}, // 1023
+    {12, 0.5F,  2047, "12-bit @ 50%"},  // 4095/2 ≈ 2047
+    {12, 0.25F, 1023, "12-bit @ 25%"},  // 4095/4 ≈ 1023
+    {12, 1.0F,  4095, "12-bit @ 100%"}, // 4095
+  }};
 
   for (const auto& test : tests) {
     ESP_LOGI(TAG, "Testing %s", test.description);
@@ -2192,7 +2193,7 @@ bool test_resolution_aware_duty_calculations() noexcept {
 
     // Verify the duty cycle reads back correctly
     float actual_duty = pwm.GetDutyCycle(0);
-    float tolerance = 1.0f / (1u << test.resolution_bits); // One step tolerance
+    float tolerance = 1.0F / (1U << test.resolution_bits); // One step tolerance
     
     if (abs(actual_duty - test.duty_percentage) > tolerance) {
       ESP_LOGE(TAG, "Duty cycle mismatch for %s: expected %.4f, got %.4f", 
@@ -2216,7 +2217,7 @@ bool test_resolution_aware_duty_calculations() noexcept {
     }
 
     ESP_LOGI(TAG, "✓ %s verified: %.4f%% (raw=%lu)", 
-             test.description, actual_duty * 100.0f, test.expected_raw_value);
+             test.description, actual_duty * 100.0F, test.expected_raw_value);
     
     vTaskDelay(pdMS_TO_TICKS(50));
   }
@@ -2246,13 +2247,13 @@ bool test_edge_cases() noexcept {
   pwm.EnableChannel(0);
 
   // Test minimum and maximum duty cycles
-  hf_pwm_err_t result = pwm.SetDutyCycle(0, 0.0f);
+      hf_pwm_err_t result = pwm.SetDutyCycle(0, 0.0F);
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set minimum duty cycle");
     return false;
   }
 
-  result = pwm.SetDutyCycle(0, 1.0f);
+      result = pwm.SetDutyCycle(0, 1.0F);
   if (result != hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set maximum duty cycle");
     return false;
@@ -2273,7 +2274,7 @@ bool test_edge_cases() noexcept {
   }
 
   // Test invalid channel operations
-  result = pwm.SetDutyCycle(EspPwm::MAX_CHANNELS, 0.5f);
+      result = pwm.SetDutyCycle(EspPwm::MAX_CHANNELS, 0.5F);
   if (result == hf_pwm_err_t::PWM_SUCCESS) {
     ESP_LOGE(TAG, "Invalid channel operation should fail");
     return false;
@@ -2298,22 +2299,22 @@ bool test_stress_scenarios() noexcept {
   ESP_LOGI(TAG, "Phase 1: Timer exhaustion stress test");
   
   struct StressConfig {
-    hf_channel_id_t channel;
-    hf_gpio_num_t gpio;
-    hf_u32_t frequency;
-    hf_u8_t resolution;
-    const char* description;
+    hf_channel_id_t channel{};
+    hf_gpio_num_t gpio{};
+    hf_u32_t frequency{};
+    hf_u8_t resolution{};
+    const char* description{};
   };
   
   // Configure channels with different combinations to stress timer allocation
-  StressConfig stress_configs[] = {
+  std::array<StressConfig, 6> stress_configs = {{
     {0, 2, 1000,  8,  "Stress channel 0: 1kHz @ 8-bit"},
     {1, 6, 2500,  10, "Stress channel 1: 2.5kHz @ 10-bit"},
     {2, 4, 5000,  8,  "Stress channel 2: 5kHz @ 8-bit"},
     {3, 5, 7500,  9,  "Stress channel 3: 7.5kHz @ 9-bit"},
     {4, 7, 12000, 8,  "Stress channel 4: 12kHz @ 8-bit"},
     {5, 8, 15000, 8,  "Stress channel 5: 15kHz @ 8-bit"}
-  };
+  }};
 
   int successful_configs = 0;
   int expected_failures = 0;
@@ -2324,8 +2325,8 @@ bool test_stress_scenarios() noexcept {
     hf_pwm_channel_config_t ch_config = create_test_channel_config(cfg.gpio, cfg.frequency, cfg.resolution);
     ch_config.channel_id = cfg.channel;
     // FIX: Calculate duty based on resolution to prevent overflow
-    hf_u32_t max_duty = (1u << cfg.resolution) - 1;
-    ch_config.duty_initial = std::min(200u + (cfg.channel * 50u), max_duty);
+    hf_u32_t max_duty = (1U << cfg.resolution) - 1;
+    ch_config.duty_initial = std::min(200U + (cfg.channel * 50U), max_duty);
 
     hf_pwm_err_t result = pwm.ConfigureChannel(cfg.channel, ch_config);
     if (result == hf_pwm_err_t::PWM_SUCCESS) {
@@ -2363,8 +2364,8 @@ bool test_stress_scenarios() noexcept {
       );
       ch_config.channel_id = ch;
       // Calculate duty based on resolution to prevent overflow
-      hf_u32_t max_duty = (1u << resolution) - 1;
-      ch_config.duty_initial = std::min(100u + (ch * 30u), max_duty);
+      hf_u32_t max_duty = (1U << resolution) - 1;
+              ch_config.duty_initial = std::min(100U + (ch * 30U), max_duty);
       
       hf_pwm_err_t result = pwm.ConfigureChannel(ch, ch_config);
       if (result == hf_pwm_err_t::PWM_SUCCESS) {
@@ -2390,8 +2391,8 @@ bool test_stress_scenarios() noexcept {
   for (int iteration = 0; iteration < 20; iteration++) {
     for (hf_channel_id_t ch = 0; ch < successful_configs; ch++) {
       if (pwm.IsChannelEnabled(ch)) {
-        float duty = 0.1f + (iteration * 0.04f);
-        if (duty > 1.0f) duty = 1.0f;
+            float duty = 0.1F + (iteration * 0.04F);
+    if (duty > 1.0F) duty = 1.0F;
 
         hf_pwm_err_t result = pwm.SetDutyCycle(ch, duty);
         if (result != hf_pwm_err_t::PWM_SUCCESS) {
@@ -2470,20 +2471,20 @@ bool test_timer_health_check_and_recovery() noexcept {
   ESP_LOGI(TAG, "Phase 1: Setting up timer allocation scenario");
   
   struct HealthCheckConfig {
-    hf_channel_id_t channel;
-    hf_gpio_num_t gpio;
-    hf_u32_t frequency;
-    hf_u8_t resolution;
-    const char* description;
+    hf_channel_id_t channel{};
+    hf_gpio_num_t gpio{};
+    hf_u32_t frequency{};
+    hf_u8_t resolution{};
+    const char* description{};
   };
 
   // Configure channels to use all available timers
-  HealthCheckConfig health_configs[] = {
+  std::array<HealthCheckConfig, 4> health_configs = {{
     {0, 2, 1000,  8,  "Health test: 1kHz @ 8-bit"},
     {1, 6, 3000,  10, "Health test: 3kHz @ 10-bit"},
     {2, 4, 8000,  8,  "Health test: 8kHz @ 8-bit"},
     {3, 5, 15000, 9,  "Health test: 15kHz @ 9-bit"}
-  };
+  }};
 
   // Track successful configurations
   int configured_channels = 0;
@@ -2521,17 +2522,17 @@ bool test_timer_health_check_and_recovery() noexcept {
   ESP_LOGI(TAG, "Phase 3: Testing health check trigger scenarios");
   
   struct NewAllocationTest {
-    hf_channel_id_t channel;
-    hf_gpio_num_t gpio;
-    hf_u32_t frequency;
-    hf_u8_t resolution;
-    const char* description;
+    hf_channel_id_t channel{};
+    hf_gpio_num_t gpio{};
+    hf_u32_t frequency{};
+    hf_u8_t resolution{};
+    const char* description{};
   };
 
-  NewAllocationTest new_configs[] = {
+  std::array<NewAllocationTest, 2> new_configs = {{
     {4, 7, 20000, 8, "New allocation: 20kHz @ 8-bit (should trigger health check)"},
     {5, 8, 25000, 8, "New allocation: 25kHz @ 8-bit (may fail due to limits)"}
-  };
+  }};
 
   for (const auto& cfg : new_configs) {
     ESP_LOGI(TAG, "Attempting %s", cfg.description);
@@ -2628,20 +2629,20 @@ bool test_safe_eviction_policies() noexcept {
 
   // Configure channels to fill all timers
   struct EvictionTestConfig {
-    hf_channel_id_t channel;
-    hf_gpio_num_t gpio;
-    hf_u32_t frequency;
-    hf_u8_t resolution;
-    bool is_critical;
-    const char* description;
+    hf_channel_id_t channel{};
+    hf_gpio_num_t gpio{};
+    hf_u32_t frequency{};
+    hf_u8_t resolution{};
+    bool is_critical{};
+    const char* description{};
   };
 
-  EvictionTestConfig eviction_configs[] = {
+  std::array<EvictionTestConfig, 4> eviction_configs = {{
     {0, 2, 1000,  8,  true,  "Critical motor control"},     // Critical channel
     {1, 6, 3000,  10, false, "LED indicator"},             // Non-critical channel
     {2, 4, 8000,  8,  false, "Status LED"},                // Non-critical channel
     {3, 5, 15000, 9,  true,  "Safety shutdown system"}     // Critical channel
-  };
+  }};
 
   // Configure all channels and mark critical ones
   for (const auto& cfg : eviction_configs) {

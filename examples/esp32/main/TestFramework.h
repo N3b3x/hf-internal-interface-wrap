@@ -22,8 +22,8 @@ extern "C" {
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
+#include "freertos/semphr.h"
 #include "freertos/task.h"
-#include "freertos/semphr.h" // Added for semaphore handling
 
 #ifdef __cplusplus
 }
