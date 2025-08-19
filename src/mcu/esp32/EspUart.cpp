@@ -905,6 +905,117 @@ hf_uart_err_t EspUart::ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rx
   }
 }
 
+hf_uart_err_t EspUart::ResetEventQueue() noexcept {
+  if (!EnsureInitialized() || !event_queue_) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  // Reset the FreeRTOS queue to clear all pending events
+  xQueueReset(event_queue_);
+  ESP_LOGD(TAG, "Event queue reset");
+  return hf_uart_err_t::UART_SUCCESS;
+}
+
+//==============================================================================
+// PATTERN DETECTION (ESP-IDF v5.5 Feature)
+//==============================================================================
+
+hf_uart_err_t EspUart::EnablePatternDetection(char pattern_chr, uint8_t chr_num,
+                                              int chr_tout, int post_idle, int pre_idle) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  // Enable pattern detection using ESP-IDF v5.5 API
+  esp_err_t result = uart_enable_pattern_det_baud_intr(uart_port_, pattern_chr, chr_num,
+                                                       chr_tout, post_idle, pre_idle);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "Pattern detection enabled: '%c' x%d (chr_tout=%d, post_idle=%d, pre_idle=%d)",
+             pattern_chr, chr_num, chr_tout, post_idle, pre_idle);
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to enable pattern detection: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+hf_uart_err_t EspUart::DisablePatternDetection() noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  esp_err_t result = uart_disable_pattern_det_intr(uart_port_);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "Pattern detection disabled");
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to disable pattern detection: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+hf_uart_err_t EspUart::ResetPatternQueue(int queue_length) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  esp_err_t result = uart_pattern_queue_reset(uart_port_, queue_length);
+  if (result == ESP_OK) {
+    ESP_LOGI(TAG, "Pattern queue reset with length %d", queue_length);
+    return hf_uart_err_t::UART_SUCCESS;
+  } else {
+    hf_uart_err_t error = ConvertPlatformError(result);
+    UpdateDiagnostics(error);
+    ESP_LOGE(TAG, "Failed to reset pattern queue: %s", esp_err_to_name(result));
+    return error;
+  }
+}
+
+int EspUart::PopPatternPosition() noexcept {
+  if (!EnsureInitialized()) {
+    return -1;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  int position = uart_pattern_pop_pos(uart_port_);
+  if (position >= 0) {
+    ESP_LOGD(TAG, "Pattern position popped: %d", position);
+    statistics_.pattern_detect_count++;
+  } else {
+    ESP_LOGD(TAG, "No pattern position available (queue empty or overflow)");
+  }
+  
+  return position;
+}
+
+int EspUart::PeekPatternPosition() noexcept {
+  if (!EnsureInitialized()) {
+    return -1;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  int position = uart_pattern_get_pos(uart_port_);
+  if (position >= 0) {
+    ESP_LOGD(TAG, "Pattern position peeked: %d", position);
+  }
+  
+  return position;
+}
+
 //==============================================================================
 // STATUS AND INFORMATION
 //==============================================================================

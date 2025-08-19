@@ -43,6 +43,12 @@ static std::unique_ptr<EspUart> g_uart_instance = nullptr;
 static bool g_event_callback_triggered = false;
 static bool g_break_callback_triggered = false;
 
+// User event task variables
+static TaskHandle_t g_user_event_task_handle = nullptr;
+static bool g_pattern_detected = false;
+static int g_pattern_position = -1;
+static bool g_stop_event_task = false;
+
 // Forward declarations
 bool test_uart_construction() noexcept;
 bool test_uart_initialization() noexcept;
@@ -61,6 +67,8 @@ bool test_uart_error_handling() noexcept;
 bool test_uart_esp32c6_features() noexcept;
 bool test_uart_performance() noexcept;
 bool test_uart_callback_verification() noexcept;
+bool test_uart_pattern_detection_v55() noexcept;
+bool test_uart_user_event_task() noexcept;
 bool test_uart_cleanup() noexcept;
 
 //==============================================================================
@@ -109,6 +117,105 @@ bool uart_break_callback(hf_u32_t break_duration, void* user_data) noexcept {
   g_break_callback_triggered = true;
   ESP_LOGI(TAG, "Break callback triggered with duration: %lu", break_duration);
   return false; // Don't yield
+}
+
+//==============================================================================
+// USER EVENT TASK (Demonstrates Proper ESP-IDF v5.5 Usage)
+//==============================================================================
+
+static void user_uart_event_task(void* arg) noexcept {
+  EspUart* uart = static_cast<EspUart*>(arg);
+  if (!uart) {
+    ESP_LOGE(TAG, "Invalid UART instance in event task");
+    vTaskDelete(NULL);
+    return;
+  }
+
+  QueueHandle_t event_queue = uart->GetEventQueue();
+  if (!event_queue) {
+    ESP_LOGE(TAG, "No event queue available");
+    vTaskDelete(NULL);
+    return;
+  }
+
+  ESP_LOGI(TAG, "User event task started, monitoring UART events...");
+  
+  uart_event_t event;
+  uint8_t* data_buffer = static_cast<uint8_t*>(malloc(256));
+  if (!data_buffer) {
+    ESP_LOGE(TAG, "Failed to allocate event task buffer");
+    vTaskDelete(NULL);
+    return;
+  }
+
+  while (!g_stop_event_task) {
+    if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
+      switch (event.type) {
+        case UART_DATA:
+          ESP_LOGI(TAG, "USER TASK: Data event - %zu bytes available", event.size);
+          g_event_callback_triggered = true;
+          break;
+
+        case UART_PATTERN_DET:
+          ESP_LOGI(TAG, "USER TASK: Pattern detected!");
+          g_pattern_detected = true;
+          
+          // Pop pattern position immediately (ESP-IDF v5.5 best practice)
+          g_pattern_position = uart->PopPatternPosition();
+          ESP_LOGI(TAG, "Pattern position: %d", g_pattern_position);
+          
+          if (g_pattern_position >= 0) {
+            // Read exactly up to pattern position + 1 (including delimiter)
+            int bytes_to_read = g_pattern_position + 1;
+            int bytes_read = uart_read_bytes(static_cast<uart_port_t>(uart->GetPort()), 
+                                           data_buffer, bytes_to_read, pdMS_TO_TICKS(100));
+            if (bytes_read > 0) {
+              ESP_LOGI(TAG, "Read %d bytes up to pattern", bytes_read);
+              // Null terminate and log the data
+              if (bytes_read < 256) {
+                data_buffer[bytes_read] = '\0';
+                ESP_LOGI(TAG, "Pattern data: %s", (char*)data_buffer);
+              }
+            }
+          }
+          break;
+
+        case UART_BREAK:
+          ESP_LOGI(TAG, "USER TASK: Break detected");
+          g_break_callback_triggered = true;
+          break;
+
+        case UART_FIFO_OVF:
+          ESP_LOGW(TAG, "USER TASK: RX FIFO overflow");
+          uart_flush_input(static_cast<uart_port_t>(uart->GetPort()));
+          xQueueReset(event_queue);
+          break;
+
+        case UART_BUFFER_FULL:
+          ESP_LOGW(TAG, "USER TASK: Ring buffer full");
+          uart_flush_input(static_cast<uart_port_t>(uart->GetPort()));
+          xQueueReset(event_queue);
+          break;
+
+        case UART_PARITY_ERR:
+          ESP_LOGW(TAG, "USER TASK: Parity error");
+          break;
+
+        case UART_FRAME_ERR:
+          ESP_LOGW(TAG, "USER TASK: Frame error");
+          break;
+
+        default:
+          ESP_LOGD(TAG, "USER TASK: Unknown event type: %d", event.type);
+          break;
+      }
+    }
+  }
+
+  free(data_buffer);
+  ESP_LOGI(TAG, "User event task ending");
+  g_user_event_task_handle = nullptr;
+  vTaskDelete(NULL);
 }
 
 //==============================================================================
@@ -941,6 +1048,193 @@ bool test_uart_callback_verification() noexcept {
   return true;
 }
 
+bool test_uart_pattern_detection_v55() noexcept {
+  ESP_LOGI(TAG, "Testing ESP-IDF v5.5 Pattern Detection...");
+
+  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
+    ESP_LOGE(TAG, "UART not initialized");
+    return false;
+  }
+
+  // Enable loopback for reliable pattern testing
+  hf_uart_err_t result = g_uart_instance->SetLoopback(true);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable loopback: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Test 1: Line-oriented pattern detection ('\n')
+  ESP_LOGI(TAG, "Testing line-oriented pattern detection...");
+  
+  result = g_uart_instance->EnablePatternDetection('\n', 1, 9, 0, 0);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable line pattern detection: %d", static_cast<int>(result));
+    return false;
+  }
+
+  result = g_uart_instance->ResetPatternQueue(32);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to reset pattern queue: %d", static_cast<int>(result));
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Line pattern detection enabled");
+
+  // Test 2: AT escape sequence pattern detection ('+++')
+  ESP_LOGI(TAG, "Testing AT escape sequence pattern detection...");
+  
+  result = g_uart_instance->DisablePatternDetection();
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to disable pattern detection: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Enable +++ pattern (3 consecutive '+' characters)
+  result = g_uart_instance->EnablePatternDetection('+', 3, 9, 50, 50);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable +++ pattern detection: %d", static_cast<int>(result));
+    return false;
+  }
+
+  result = g_uart_instance->ResetPatternQueue(8);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to reset pattern queue for +++: %d", static_cast<int>(result));
+    return false;
+  }
+
+  ESP_LOGI(TAG, "AT escape sequence pattern detection enabled");
+
+  // Test pattern position functions
+  int peek_pos = g_uart_instance->PeekPatternPosition();
+  ESP_LOGI(TAG, "Pattern position (peek): %d", peek_pos);
+
+  int pop_pos = g_uart_instance->PopPatternPosition();
+  ESP_LOGI(TAG, "Pattern position (pop): %d", pop_pos);
+
+  // Disable pattern detection
+  result = g_uart_instance->DisablePatternDetection();
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to disable pattern detection: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Disable loopback
+  g_uart_instance->SetLoopback(false);
+
+  ESP_LOGI(TAG, "[SUCCESS] ESP-IDF v5.5 Pattern Detection test completed");
+  return true;
+}
+
+bool test_uart_user_event_task() noexcept {
+  ESP_LOGI(TAG, "Testing user-created event task (ESP-IDF v5.5 pattern)...");
+
+  if (!g_uart_instance || !g_uart_instance->IsInitialized()) {
+    ESP_LOGE(TAG, "UART not initialized");
+    return false;
+  }
+
+  // Check if event queue is available
+  if (!g_uart_instance->IsEventQueueAvailable()) {
+    ESP_LOGE(TAG, "Event queue not available");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Event queue available for user task");
+
+  // Configure interrupts for event-driven operation
+  uint32_t intr_mask = UART_INTR_RXFIFO_FULL | UART_INTR_RXFIFO_TOUT;
+  hf_uart_err_t result = g_uart_instance->ConfigureInterrupts(intr_mask, 100, 10, 10);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure interrupts: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Enable RX interrupts
+  result = g_uart_instance->EnableRxInterrupts(true);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable RX interrupts: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Enable loopback for reliable testing
+  result = g_uart_instance->SetLoopback(true);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable loopback: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Enable line pattern detection
+  result = g_uart_instance->EnablePatternDetection('\n', 1, 9, 0, 0);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to enable pattern detection: %d", static_cast<int>(result));
+    return false;
+  }
+
+  result = g_uart_instance->ResetPatternQueue(16);
+  if (result != hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to reset pattern queue: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Reset test flags
+  g_pattern_detected = false;
+  g_pattern_position = -1;
+  g_event_callback_triggered = false;
+  g_stop_event_task = false;
+
+  // Create user event task (proper ESP-IDF v5.5 pattern)
+  BaseType_t task_result = xTaskCreate(user_uart_event_task, "user_uart_events", 4096, 
+                                      g_uart_instance.get(), 10, &g_user_event_task_handle);
+  if (task_result != pdPASS) {
+    ESP_LOGE(TAG, "Failed to create user event task");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "User event task created successfully");
+
+  // Wait for task to start
+  vTaskDelay(pdMS_TO_TICKS(100));
+
+  // Send test data with line ending to trigger pattern detection
+  const char* test_line = "Hello World\n";
+  result = g_uart_instance->Write(reinterpret_cast<const uint8_t*>(test_line),
+                                  static_cast<hf_u16_t>(strlen(test_line)), 1000);
+  
+  if (result == hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGI(TAG, "Test line sent: '%s'", test_line);
+    
+    // Wait for pattern detection and processing
+    vTaskDelay(pdMS_TO_TICKS(500));
+  }
+
+  // Send another test with multiple lines
+  const char* multi_line = "Line1\nLine2\nLine3\n";
+  result = g_uart_instance->Write(reinterpret_cast<const uint8_t*>(multi_line),
+                                  static_cast<hf_u16_t>(strlen(multi_line)), 1000);
+  
+  if (result == hf_uart_err_t::UART_SUCCESS) {
+    ESP_LOGI(TAG, "Multi-line test sent");
+    vTaskDelay(pdMS_TO_TICKS(500));
+  }
+
+  // Stop the user event task
+  g_stop_event_task = true;
+  vTaskDelay(pdMS_TO_TICKS(200)); // Wait for task to exit
+
+  // Clean up
+  g_uart_instance->DisablePatternDetection();
+  g_uart_instance->SetLoopback(false);
+
+  // Report results
+  ESP_LOGI(TAG, "User event task test results:");
+  ESP_LOGI(TAG, "  Event callback triggered: %s", g_event_callback_triggered ? "✅ YES" : "❌ NO");
+  ESP_LOGI(TAG, "  Pattern detected: %s", g_pattern_detected ? "✅ YES" : "❌ NO");
+  ESP_LOGI(TAG, "  Pattern position: %d", g_pattern_position);
+
+  ESP_LOGI(TAG, "[SUCCESS] User event task test completed");
+  return true;
+}
+
 bool test_uart_cleanup() noexcept {
   ESP_LOGI(TAG, "Testing UART cleanup...");
 
@@ -988,6 +1282,10 @@ extern "C" void app_main(void) {
   RUN_TEST(test_uart_esp32c6_features);
   RUN_TEST(test_uart_performance);
   RUN_TEST(test_uart_callback_verification);
+  
+  // ESP-IDF v5.5 Pattern Detection and User Task Tests
+  RUN_TEST(test_uart_pattern_detection_v55);
+  RUN_TEST(test_uart_user_event_task);
   
   RUN_TEST(test_uart_cleanup);
 

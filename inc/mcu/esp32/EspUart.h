@@ -367,6 +367,55 @@ public:
   hf_uart_err_t ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rxfifo_full_thresh = 100,
                                     uint8_t rx_timeout_thresh = 10, uint8_t txfifo_empty_thresh = 10) noexcept;
 
+  /**
+   * @brief Reset event queue (clear all pending events).
+   * @return hf_uart_err_t result code
+   */
+  hf_uart_err_t ResetEventQueue() noexcept;
+
+  //==============================================================================
+  // PATTERN DETECTION (ESP-IDF v5.5 Feature)
+  //==============================================================================
+
+  /**
+   * @brief Enable pattern detection for repeated byte sequences.
+   * @param pattern_chr Byte to detect (e.g., '\n', '+')
+   * @param chr_num Number of repeats to trigger detection (>=1)
+   * @param chr_tout Max idle between pattern bytes (baud periods)
+   * @param post_idle Required idle after pattern (baud periods)
+   * @param pre_idle Required idle before pattern (baud periods)
+   * @return hf_uart_err_t result code
+   * @note Uses uart_enable_pattern_det_baud_intr from ESP-IDF v5.5
+   */
+  hf_uart_err_t EnablePatternDetection(char pattern_chr, uint8_t chr_num = 1,
+                                       int chr_tout = 9, int post_idle = 0, int pre_idle = 0) noexcept;
+
+  /**
+   * @brief Disable pattern detection.
+   * @return hf_uart_err_t result code
+   */
+  hf_uart_err_t DisablePatternDetection() noexcept;
+
+  /**
+   * @brief Reset pattern detection queue.
+   * @param queue_length Pattern position queue length
+   * @return hf_uart_err_t result code
+   */
+  hf_uart_err_t ResetPatternQueue(int queue_length = 32) noexcept;
+
+  /**
+   * @brief Pop pattern position from queue (consumes entry).
+   * @return Pattern position index, or -1 if queue empty/overflow
+   * @note Call immediately before uart_read_bytes() to maintain data integrity
+   */
+  int PopPatternPosition() noexcept;
+
+  /**
+   * @brief Peek pattern position without consuming.
+   * @return Pattern position index, or -1 if queue empty
+   */
+  int PeekPatternPosition() noexcept;
+
   //==============================================================================
   // STATUS AND INFORMATION
   //==============================================================================
