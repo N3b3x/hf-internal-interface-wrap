@@ -16,7 +16,7 @@
  * - **LEDC Validation:** Clock source constraints, frequency/resolution limits
  * - **Resource Management:** Timer allocation, eviction policies, health checks
  * - **Status & Diagnostics:** Statistics, error reporting, capability detection
- * - **Callbacks:** Period and fault callback mechanisms
+ * - **Callbacks:** Fade callback mechanisms (ESP-IDF LEDC native support only)
  * - **Edge Cases & Stress:** Boundary conditions, resource exhaustion, recovery
  *
  * ## Hardware Requirements:
@@ -1347,26 +1347,26 @@ bool test_statistics_and_diagnostics() noexcept {
 // CALLBACK TESTS
 //==============================================================================
 
-// Global variables for callback testing
-static volatile bool g_period_callback_called = false;
-static volatile bool g_fault_callback_called = false;
-static volatile hf_channel_id_t g_callback_channel = 0;
+// Global variables for fade callback testing (ESP-IDF LEDC native support only)
+static volatile bool g_fade_callback_called[HF_PWM_MAX_CHANNELS] = {false};
+static volatile hf_channel_id_t g_last_fade_channel = 0xFF;
 
-void test_period_callback(hf_channel_id_t channel_id, void* user_data) {
-  g_period_callback_called = true;
-  g_callback_channel = channel_id;
-  ESP_LOGI(TAG, "Period callback called for channel %d", channel_id);
+void test_fade_callback_ch0(hf_channel_id_t channel_id) {
+  // MINIMAL ISR-safe callback - only set flags!
+  g_fade_callback_called[channel_id] = true;
+  g_last_fade_channel = channel_id;
+  // NO ESP_LOG calls in ISR context - they can cause stack overflow!
 }
 
-void test_fault_callback(hf_channel_id_t channel_id, hf_pwm_err_t error, void* user_data) {
-  g_fault_callback_called = true;
-  g_callback_channel = channel_id;
-  ESP_LOGI(TAG, "Fault callback called for channel %d, error: %s", channel_id,
-           HfPwmErrToString(error));
+void test_fade_callback_ch1(hf_channel_id_t channel_id) {
+  // MINIMAL ISR-safe callback - only set flags!
+  g_fade_callback_called[channel_id] = true;
+  g_last_fade_channel = channel_id;
+  // NO ESP_LOG calls in ISR context - they can cause stack overflow!
 }
 
 bool test_callbacks() noexcept {
-  ESP_LOGI(TAG, "Testing callback functionality...");
+  ESP_LOGI(TAG, "Testing FADE CALLBACK functionality (ESP-IDF LEDC native support only)...");
 
   hf_pwm_unit_config_t config = create_fade_test_config();  // Use fade mode for callback testing
   config.enable_interrupts = true;
@@ -1377,31 +1377,69 @@ bool test_callbacks() noexcept {
     return false;
   }
 
-  // Reset callback flags
-  g_period_callback_called = false;
-  g_fault_callback_called = false;
+  // Reset fade callback flags
+  for (int i = 0; i < HF_PWM_MAX_CHANNELS; i++) {
+    g_fade_callback_called[i] = false;
+  }
+  g_last_fade_channel = 0xFF;
 
-  // Set callbacks
-  pwm.SetPeriodCallback(test_period_callback, nullptr);
-  pwm.SetFaultCallback(test_fault_callback, nullptr);
-
-  // Configure and enable a channel
-  hf_pwm_channel_config_t ch_config = create_test_channel_config(2);
-  ch_config.duty_initial = 10; // Low duty cycle to trigger period callbacks quickly
-
-  pwm.ConfigureChannel(0, ch_config);
+  // Configure channels for fade testing
+  hf_pwm_channel_config_t ch0_config = create_test_channel_config(2);
+  hf_pwm_channel_config_t ch1_config = create_test_channel_config(4);
+  
+  pwm.ConfigureChannel(0, ch0_config);
+  pwm.ConfigureChannel(1, ch1_config);
+  
+  // Set per-channel fade callbacks (ESP-IDF LEDC native support)
+  pwm.SetChannelFadeCallback(0, test_fade_callback_ch0);
+  pwm.SetChannelFadeCallback(1, test_fade_callback_ch1);
+  
   pwm.EnableChannel(0);
+  pwm.EnableChannel(1);
 
-  // Wait for potential callbacks
-  vTaskDelay(pdMS_TO_TICKS(1000));
+  ESP_LOGI(TAG, "Starting hardware fade operations to trigger callbacks...");
+  
+  // Start fade operations that will trigger callbacks
+  pwm.SetHardwareFade(0, 0.8f, 1000); // Channel 0: fade to 80% over 1 second
+  pwm.SetHardwareFade(1, 0.3f, 800);  // Channel 1: fade to 30% over 0.8 seconds
 
-  // Note: Period callbacks may not always trigger in test environment
-  // depending on ESP32 configuration and interrupt setup
-  ESP_LOGI(TAG, "Callback test completed - Period callback called: %s, Fault callback called: %s",
-           g_period_callback_called ? "YES" : "NO", g_fault_callback_called ? "YES" : "NO");
+  // Wait for fade operations to complete and callbacks to trigger
+  ESP_LOGI(TAG, "Waiting for fade operations to complete...");
+  vTaskDelay(pdMS_TO_TICKS(1500)); // Wait longer than the longest fade
 
-  ESP_LOGI(TAG, "[SUCCESS] Callback test completed");
-  return true;
+  // Check results
+  bool test_passed = true;
+  
+  if (!g_fade_callback_called[0]) {
+    ESP_LOGE(TAG, "[FAIL] Channel 0 fade callback was not called");
+    test_passed = false;
+  } else {
+    ESP_LOGI(TAG, "[SUCCESS] Channel 0 fade callback was called");
+  }
+  
+  if (!g_fade_callback_called[1]) {
+    ESP_LOGE(TAG, "[FAIL] Channel 1 fade callback was not called");
+    test_passed = false;
+  } else {
+    ESP_LOGI(TAG, "[SUCCESS] Channel 1 fade callback was called");
+  }
+
+  // Test callback clearing
+  pwm.SetChannelFadeCallback(0, nullptr); // Clear callback
+  g_fade_callback_called[0] = false;
+  
+  pwm.SetHardwareFade(0, 0.1f, 200); // Should not trigger callback
+  vTaskDelay(pdMS_TO_TICKS(400));
+  
+  if (g_fade_callback_called[0]) {
+    ESP_LOGE(TAG, "[FAIL] Channel 0 callback was called after being cleared");
+    test_passed = false;
+  } else {
+    ESP_LOGI(TAG, "[SUCCESS] Channel 0 callback correctly cleared");
+  }
+
+  ESP_LOGI(TAG, "Fade callback test completed - %s", test_passed ? "PASSED" : "FAILED");
+  return test_passed;
 }
 
 /**

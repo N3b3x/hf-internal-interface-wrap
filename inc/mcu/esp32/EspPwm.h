@@ -29,6 +29,10 @@
 #include <atomic>
 #include <string>
 
+#ifdef HF_MCU_FAMILY_ESP32
+#include "driver/ledc.h" // For ESP-IDF LEDC callback types
+#endif
+
 /**
  * @class EspPwm
  * @brief ESP32 PWM implementation using LEDC peripheral with comprehensive ESP32 variant support.
@@ -525,34 +529,41 @@ public:
   //==============================================================================
 
   /**
-   * @brief Set callback for PWM period completion events
-   * @param callback Function to call on period completion (or nullptr to disable)
-   * @param user_data Optional user data passed to callback function
+   * @brief Set per-channel callback for PWM fade completion events
+   * @param channel_id Channel identifier to set callback for
+   * @param callback Function to call on fade completion (or nullptr to disable)
+   * @return PWM_SUCCESS on success, error code on failure
    * 
-   * @details Registers a callback function that may be triggered on PWM period boundaries.
-   * Callback support depends on ESP32 variant and LEDC interrupt capabilities.
+   * @details Registers a per-channel callback function that is triggered when a hardware
+   * fade operation completes on the specified channel. This uses the native ESP32-C6 LEDC
+   * fade completion interrupt mechanism.
    * 
-   * @note Callback execution depends on LEDC interrupt support and configuration
-   * @warning Callback functions should be ISR-safe and execute quickly
+   * **Fade Completion Detection:**
+   * - **LEDC Hardware Interrupt:** Native ESP32-C6 fade completion interrupt
+   * - **Per-Channel Granularity:** Each channel can have its own fade callback
+   * - **Automatic Registration:** Uses `ledc_cb_register()` for proper ESP-IDF integration
    * 
-   * @see SetFaultCallback() for error condition callbacks
+   * @note This callback is only triggered for hardware fade operations (SetHardwareFade())
+   * @warning Callback functions should be ISR-safe and execute quickly (< 10μs recommended)
+   * @warning Do not call blocking functions or start new fade operations in the callback
+   * 
+   * **Example Usage:**
+   * ```cpp
+   * void my_fade_callback(hf_channel_id_t channel) {
+   *     // ISR-safe operations only
+   *     fade_complete_flags |= (1 << channel); // Set completion flag
+   *     // Signal task, update state, etc.
+   * }
+   * 
+   * pwm.SetChannelFadeCallback(0, my_fade_callback);
+   * pwm.SetHardwareFade(0, 0.8f, 1000); // Fade will trigger callback when complete
+   * ```
+   * 
+
+   * @see SetHardwareFade() for hardware fade operations
    */
-  void SetPeriodCallback(hf_pwm_period_callback_t callback, void* user_data = nullptr) noexcept;
-  
-  /**
-   * @brief Set callback for PWM fault/error conditions
-   * @param callback Function to call on fault detection (or nullptr to disable)
-   * @param user_data Optional user data passed to callback function
-   * 
-   * @details Registers a callback function for hardware fault conditions or
-   * critical errors that require immediate attention.
-   * 
-   * @note Callback is triggered for hardware faults and critical software errors
-   * @warning Callback functions should be ISR-safe and execute quickly
-   * 
-   * @see SetPeriodCallback() for period completion callbacks
-   */
-  void SetFaultCallback(hf_pwm_fault_callback_t callback, void* user_data = nullptr) noexcept;
+  hf_pwm_err_t SetChannelFadeCallback(hf_channel_id_t channel_id, 
+                                      std::function<void(hf_channel_id_t)> callback) noexcept;
 
   //==============================================================================
   // ESP32C6-SPECIFIC FEATURES
@@ -683,7 +694,7 @@ private:
   //==============================================================================
 
   /**
-   * @brief Internal channel state
+   * @brief Internal channel state with per-channel callback support
    */
   struct ChannelState {
     bool configured;                ///< Channel is configured
@@ -700,10 +711,14 @@ private:
     bool is_critical;                   ///< Mark as critical (never evict)
     const char* description;            ///< Optional description for debugging
 
+    // Per-channel fade callback support (ESP-IDF LEDC native support)
+    std::function<void(hf_channel_id_t)> fade_callback; ///< Per-channel fade completion callback
+
     ChannelState() noexcept
         : configured(false), enabled(false), assigned_timer(0xFF), raw_duty_value(0),
           last_error(hf_pwm_err_t::PWM_SUCCESS), fade_active(false), needs_reconfiguration(false),
-          priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr) {}
+          priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr),
+          fade_callback(nullptr) {}
   };
 
   /**
@@ -830,6 +845,30 @@ private:
    * @param channel_id Channel that completed fade
    */
   void HandleFadeComplete(hf_channel_id_t channel_id) noexcept;
+
+
+
+  /**
+   * @brief Register LEDC fade callback using ESP-IDF API
+   * @param channel_id Channel to register callback for
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t RegisterLedcFadeCallback(hf_channel_id_t channel_id) noexcept;
+
+  /**
+   * @brief Unregister LEDC fade callback
+   * @param channel_id Channel to unregister callback for
+   * @return PWM_SUCCESS on success, error code on failure
+   */
+  hf_pwm_err_t UnregisterLedcFadeCallback(hf_channel_id_t channel_id) noexcept;
+
+  /**
+   * @brief Static ESP-IDF LEDC fade callback handler (C-compatible)
+   * @param param ESP-IDF callback parameter structure
+   * @param user_arg User argument (EspPwm instance pointer)
+   * @return true if high priority task was woken up, false otherwise
+   */
+  static bool IRAM_ATTR LedcFadeEndCallback(const ledc_cb_param_t* param, void* user_arg) noexcept;
 
   /**
    * @brief Initialize LEDC fade functionality
@@ -1033,11 +1072,6 @@ private:
   std::array<ChannelState, MAX_CHANNELS> channels_;                     ///< Channel states
   std::array<TimerState, MAX_TIMERS> timers_;                           ///< Timer states
   std::array<ComplementaryPair, MAX_CHANNELS / 2> complementary_pairs_; ///< Complementary pairs
-
-  hf_pwm_period_callback_t period_callback_; ///< Period complete callback
-  void* period_callback_user_data_;          ///< Period callback user data
-  hf_pwm_fault_callback_t fault_callback_;   ///< Fault callback
-  void* fault_callback_user_data_;           ///< Fault callback user data
 
   hf_pwm_err_t last_global_error_;    ///< Last global error
   bool fade_functionality_installed_; ///< LEDC fade functionality installed

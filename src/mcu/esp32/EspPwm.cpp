@@ -61,8 +61,7 @@ static const char* TAG = "EspPwm";
 EspPwm::EspPwm(const hf_pwm_unit_config_t& config) noexcept
     : BasePwm(), mutex_(), initialized_(false), base_clock_hz_(config.base_clock_hz),
       clock_source_(config.clock_source), channels_(), timers_(), complementary_pairs_(),
-      period_callback_(nullptr), period_callback_user_data_(nullptr), fault_callback_(nullptr),
-      fault_callback_user_data_(nullptr), last_global_error_(hf_pwm_err_t::PWM_SUCCESS),
+      last_global_error_(hf_pwm_err_t::PWM_SUCCESS),
       fade_functionality_installed_(false), unit_config_(config), current_mode_(config.mode),
       statistics_(), diagnostics_(), auto_fallback_enabled_(false),
       eviction_policy_(hf_pwm_eviction_policy_t::STRICT_NO_EVICTION), eviction_callback_(nullptr),
@@ -141,7 +140,20 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
 
   ESP_LOGI(TAG, "Deinitializing ESP32C6 PWM system");
 
-  // 1. Remove fade functionality FIRST (before stopping channels)
+  // 1. Unregister all fade callbacks FIRST (while fade service is still installed)
+  for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
+    if (channels_[channel_id].configured && channels_[channel_id].fade_callback) {
+      ESP_LOGD(TAG, "Unregistering fade callback for channel %d during deinitialization", channel_id);
+      hf_pwm_err_t callback_result = UnregisterLedcFadeCallback(channel_id);
+      if (callback_result != hf_pwm_err_t::PWM_SUCCESS) {
+        ESP_LOGW(TAG, "Failed to unregister fade callback for channel %d during deinitialization: %s", 
+                 channel_id, HfPwmErrToString(callback_result));
+        // Continue with deinitialization despite callback unregister failure
+      }
+    }
+  }
+
+  // 2. Remove fade functionality AFTER unregistering callbacks
   // This prevents fade-out behavior during ledc_stop calls
   if (fade_functionality_installed_) {
     ledc_fade_func_uninstall();
@@ -149,7 +161,7 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
     fade_functionality_installed_ = false;
   }
 
-  // 2. Stop all channels with proper GPIO cleanup (now without fade functionality)
+  // 3. Stop all channels with proper GPIO cleanup (now without fade functionality)
   for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
     if (channels_[channel_id].configured) {
       // Stop the LEDC channel
@@ -169,7 +181,7 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
     }
   }
 
-  // 3. Reset all timers with proper hardware cleanup
+  // 4. Reset all timers with proper hardware cleanup
   for (hf_u8_t timer_id = 0; timer_id < MAX_TIMERS; timer_id++) {
     if (timers_[timer_id].in_use) {
       esp_err_t ret = ledc_timer_rst(LEDC_LOW_SPEED_MODE, static_cast<ledc_timer_t>(timer_id));
@@ -183,16 +195,10 @@ hf_pwm_err_t EspPwm::Deinitialize() noexcept {
     }
   }
 
-  // 4. Clear complementary pair configurations
+  // 5. Clear complementary pair configurations
   for (auto& pair : complementary_pairs_) {
     pair = ComplementaryPair{};
   }
-
-  // 5. Clear callbacks
-  period_callback_ = nullptr;
-  period_callback_user_data_ = nullptr;
-  fault_callback_ = nullptr;
-  fault_callback_user_data_ = nullptr;
 
   // 6. Update state and statistics
   initialized_.store(false);
@@ -1306,16 +1312,47 @@ hf_pwm_err_t EspPwm::GetDiagnostics(hf_pwm_diagnostics_t& diagnostics) const noe
 // CALLBACKS (BasePwm Interface)
 //==============================================================================
 
-void EspPwm::SetPeriodCallback(hf_pwm_period_callback_t callback, void* user_data) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-  period_callback_ = callback;
-  period_callback_user_data_ = user_data;
-}
 
-void EspPwm::SetFaultCallback(hf_pwm_fault_callback_t callback, void* user_data) noexcept {
+
+
+
+hf_pwm_err_t EspPwm::SetChannelFadeCallback(hf_channel_id_t channel_id, 
+                                            std::function<void(hf_channel_id_t)> callback) noexcept {
+  if (!EnsureInitialized()) {
+    return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
+  }
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  fault_callback_ = callback;
-  fault_callback_user_data_ = user_data;
+
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+  // Store per-channel fade callback
+  channels_[channel_id].fade_callback = callback;
+
+  // Register/unregister LEDC fade callback based on whether callback is set
+  hf_pwm_err_t result;
+  if (callback) {
+    result = RegisterLedcFadeCallback(channel_id);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGE(TAG, "Failed to register LEDC fade callback for channel %lu: %s", 
+               channel_id, HfPwmErrToString(result));
+      channels_[channel_id].fade_callback = nullptr; // Clear on failure
+      return result;
+    }
+    ESP_LOGI(TAG, "Per-channel fade callback registered for channel %lu", channel_id);
+  } else {
+    result = UnregisterLedcFadeCallback(channel_id);
+    if (result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGW(TAG, "Failed to unregister LEDC fade callback for channel %lu: %s", 
+               channel_id, HfPwmErrToString(result));
+      // Don't return error for unregister failures - still clear the callback
+    }
+    ESP_LOGI(TAG, "Per-channel fade callback cleared for channel %lu", channel_id);
+  }
+
+  return hf_pwm_err_t::PWM_SUCCESS;
 }
 
 //==============================================================================
@@ -1984,18 +2021,120 @@ void EspPwm::HandleFadeComplete(hf_channel_id_t channel_id) noexcept {
     statistics_.fade_operations_count++;
     statistics_.last_activity_timestamp = esp_timer_get_time();
 
-    // Call period callback if set
-    if (period_callback_) {
-      period_callback_(channel_id, period_callback_user_data_);
-    }
+    // Note: Per-channel fade callback is now called directly from ISR
+    ESP_LOGD(TAG, "Fade complete handled for channel %lu", channel_id);
   }
 }
+
+
 
 //==============================================================================
 // ADDITIONAL ESP32C6-SPECIFIC METHODS
 //==============================================================================
 
+hf_pwm_err_t EspPwm::RegisterLedcFadeCallback(hf_channel_id_t channel_id) noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
 
+  // Ensure fade functionality is installed before registering callbacks
+  hf_pwm_err_t fade_result = InitializeFadeFunctionality();
+  if (fade_result != hf_pwm_err_t::PWM_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to initialize fade functionality for callback registration");
+    return fade_result;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  // Use ESP-IDF v5.5 LEDC callback registration API
+  // Convert HF channel ID to ESP-IDF LEDC channel
+  ledc_channel_t ledc_channel = static_cast<ledc_channel_t>(channel_id);
+  ledc_mode_t ledc_mode = LEDC_LOW_SPEED_MODE; // ESP32-C6 uses low-speed mode
+  
+  // Create LEDC callback structure
+  ledc_cbs_t cbs = {
+    .fade_cb = &EspPwm::LedcFadeEndCallback,
+  };
+  
+  // Register the callback structure with this EspPwm instance as user_arg
+  esp_err_t esp_result = ledc_cb_register(ledc_mode, ledc_channel, &cbs, this);
+  
+  if (esp_result != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to register LEDC fade callback for channel %lu: %s", 
+             channel_id, esp_err_to_name(esp_result));
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
+  }
+  
+  ESP_LOGD(TAG, "LEDC fade callback registered for channel %lu", channel_id);
+  return hf_pwm_err_t::PWM_SUCCESS;
+#else
+  ESP_LOGW(TAG, "LEDC fade callbacks not supported on this platform");
+  return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
+#endif
+}
+
+hf_pwm_err_t EspPwm::UnregisterLedcFadeCallback(hf_channel_id_t channel_id) noexcept {
+  if (!IsValidChannelId(channel_id)) {
+    return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
+  }
+
+#ifdef HF_MCU_FAMILY_ESP32
+  // Convert HF channel ID to ESP-IDF LEDC channel
+  ledc_channel_t ledc_channel = static_cast<ledc_channel_t>(channel_id);
+  ledc_mode_t ledc_mode = LEDC_LOW_SPEED_MODE; // ESP32-C6 uses low-speed mode
+  
+  // Create empty LEDC callback structure to unregister
+  ledc_cbs_t cbs = {
+    .fade_cb = nullptr,
+  };
+  
+  // Unregister callback by setting callback to nullptr
+  esp_err_t esp_result = ledc_cb_register(ledc_mode, ledc_channel, &cbs, nullptr);
+  
+  if (esp_result != ESP_OK) {
+    ESP_LOGW(TAG, "Failed to unregister LEDC fade callback for channel %lu: %s", 
+             channel_id, esp_err_to_name(esp_result));
+    return hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT;
+  }
+  
+  ESP_LOGD(TAG, "LEDC fade callback unregistered for channel %lu", channel_id);
+  return hf_pwm_err_t::PWM_SUCCESS;
+#else
+  ESP_LOGW(TAG, "LEDC fade callbacks not supported on this platform");
+  return hf_pwm_err_t::PWM_ERR_UNSUPPORTED_OPERATION;
+#endif
+}
+
+// Static ESP-IDF LEDC fade callback handler (C-compatible)
+bool IRAM_ATTR EspPwm::LedcFadeEndCallback(const ledc_cb_param_t* param, void* user_arg) noexcept {
+  // MINIMAL ISR-safe callback - do as little as possible!
+  if (!param || !user_arg) {
+    return false; // Safety check - invalid parameters
+  }
+  
+  // Extract channel ID from ESP-IDF callback parameter
+  hf_channel_id_t channel_id = static_cast<hf_channel_id_t>(param->channel);
+  
+  // Validate channel ID is within our range
+  if (channel_id >= HF_PWM_MAX_CHANNELS) {
+    return false; // Invalid channel ID
+  }
+  
+  // Cast user_arg back to EspPwm instance
+  EspPwm* pwm_instance = static_cast<EspPwm*>(user_arg);
+  
+  // CRITICAL: Only do minimal work in ISR context
+  // Just call the user's callback directly if it exists
+  if (pwm_instance->channels_[channel_id].fade_callback) {
+    // Call user callback directly (it should be ISR-safe)
+    pwm_instance->channels_[channel_id].fade_callback(channel_id);
+  }
+  
+  // Mark fade as inactive (minimal state update)
+  pwm_instance->channels_[channel_id].fade_active = false;
+  
+  // Return false as we don't wake up high priority tasks
+  return false;
+}
 
 hf_pwm_err_t EspPwm::InitializeFadeFunctionality() noexcept {
   if (fade_functionality_installed_) {
@@ -2618,7 +2757,18 @@ hf_pwm_err_t EspPwm::DeconfigureChannel(hf_channel_id_t channel_id) noexcept {
     }
   }
 
-  // 5. Reset GPIO pin to default state
+  // 5. Unregister any fade callbacks for this channel
+  if (channels_[channel_id].fade_callback) {
+    ESP_LOGD(TAG, "Unregistering fade callback for channel %d", channel_id);
+    hf_pwm_err_t callback_result = UnregisterLedcFadeCallback(channel_id);
+    if (callback_result != hf_pwm_err_t::PWM_SUCCESS) {
+      ESP_LOGW(TAG, "Failed to unregister fade callback for channel %d: %s", 
+               channel_id, HfPwmErrToString(callback_result));
+      // Continue with deconfiguration despite callback unregister failure
+    }
+  }
+
+  // 6. Reset GPIO pin to default state
   hf_gpio_num_t gpio_pin = channels_[channel_id].config.gpio_pin;
   if (HF_GPIO_IS_VALID_GPIO(gpio_pin)) {
     ESP_LOGD(TAG, "Resetting GPIO pin %d to default state", gpio_pin);
@@ -2626,7 +2776,7 @@ hf_pwm_err_t EspPwm::DeconfigureChannel(hf_channel_id_t channel_id) noexcept {
     gpio_reset_pin(static_cast<gpio_num_t>(gpio_pin));
   }
 
-  // 6. Reset channel state completely to unconfigured state
+  // 7. Reset channel state completely to unconfigured state
   channels_[channel_id] = ChannelState{};
   channels_[channel_id].last_error = hf_pwm_err_t::PWM_SUCCESS;
 
