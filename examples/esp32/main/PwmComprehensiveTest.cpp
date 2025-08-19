@@ -1579,7 +1579,7 @@ bool test_resolution_specific_duty_cycles() noexcept {
 
   DutyCycleTest duty_tests[] = {
     {0.0F,   0,    "0% duty cycle"},
-    {0.25f,  255,  "25% duty cycle"},
+    {0.25F,  255,  "25% duty cycle"},
     {0.5f,   511,  "50% duty cycle"},
     {0.75f,  767,  "75% duty cycle"},
     {1.0f,   1023, "100% duty cycle"}
