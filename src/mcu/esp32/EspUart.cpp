@@ -877,7 +877,7 @@ bool EspUart::IsEventQueueAvailable() const noexcept {
 }
 
 hf_uart_err_t EspUart::ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rxfifo_full_thresh,
-                                           uint8_t rx_timeout_thresh, uint8_t txfifo_empty_thresh) noexcept {
+                                           uint8_t rx_timeout_thresh) noexcept {
   if (!EnsureInitialized()) {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
@@ -889,13 +889,12 @@ hf_uart_err_t EspUart::ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rx
     .intr_enable_mask = intr_enable_mask,
     .rxfifo_full_thresh = rxfifo_full_thresh,
     .rx_timeout_thresh = rx_timeout_thresh,
-    .txfifo_empty_thresh = txfifo_empty_thresh,
   };
 
   esp_err_t result = uart_intr_config(uart_port_, &intr_config);
   if (result == ESP_OK) {
-    ESP_LOGI(TAG, "UART interrupts configured (mask: 0x%08lx, rx_thresh: %d, timeout: %d, tx_thresh: %d)",
-             intr_enable_mask, rxfifo_full_thresh, rx_timeout_thresh, txfifo_empty_thresh);
+    ESP_LOGI(TAG, "UART interrupts configured (mask: 0x%08lx, rx_thresh: %d, timeout: %d)",
+             intr_enable_mask, rxfifo_full_thresh, rx_timeout_thresh);
     return hf_uart_err_t::UART_SUCCESS;
   } else {
     hf_uart_err_t error = ConvertPlatformError(result);

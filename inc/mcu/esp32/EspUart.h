@@ -358,14 +358,14 @@ public:
 
   /**
    * @brief Configure UART interrupt settings.
-   * @param intr_enable_mask Interrupt enable mask
+   * @param intr_enable_mask Interrupt enable mask (UART_INTR_RXFIFO_FULL | UART_INTR_RXFIFO_TOUT)
    * @param rxfifo_full_thresh RX FIFO full threshold
    * @param rx_timeout_thresh RX timeout threshold
-   * @param txfifo_empty_thresh TX FIFO empty threshold
    * @return hf_uart_err_t result code
+   * @note Use ESP-IDF constants: UART_INTR_RXFIFO_FULL, UART_INTR_RXFIFO_TOUT, etc.
    */
   hf_uart_err_t ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rxfifo_full_thresh = 100,
-                                    uint8_t rx_timeout_thresh = 10, uint8_t txfifo_empty_thresh = 10) noexcept;
+                                    uint8_t rx_timeout_thresh = 10) noexcept;
 
   /**
    * @brief Reset event queue (clear all pending events).

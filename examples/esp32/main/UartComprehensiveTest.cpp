@@ -1143,7 +1143,7 @@ bool test_uart_user_event_task() noexcept {
 
   // Configure interrupts for event-driven operation
   uint32_t intr_mask = UART_INTR_RXFIFO_FULL | UART_INTR_RXFIFO_TOUT;
-  hf_uart_err_t result = g_uart_instance->ConfigureInterrupts(intr_mask, 100, 10, 10);
+  hf_uart_err_t result = g_uart_instance->ConfigureInterrupts(intr_mask, 100, 10);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure interrupts: %d", static_cast<int>(result));
     return false;
