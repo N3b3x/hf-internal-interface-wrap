@@ -114,30 +114,40 @@ bool EspI2cBus::Deinitialize() noexcept {
 
   ESP_LOGI(TAG, "Deinitializing I2C bus");
 
-  // Remove all devices first with proper cleanup
-  // We need to remove devices from ESP-IDF bus before clearing our vector
+  // Remove all devices from ESP-IDF first
   for (auto& device : devices_) {
-    if (device) {
-      // First remove from ESP-IDF bus
+    if (device && device->GetHandle()) {
+      ESP_LOGI(TAG, "Removing device 0x%02X from ESP-IDF bus", device->GetDeviceAddress());
+      
+      // Bus removes from ESP-IDF
       esp_err_t err = i2c_master_bus_rm_device(device->GetHandle());
       if (err != ESP_OK) {
-        ESP_LOGW(TAG, "Failed to remove device from ESP-IDF bus: %s", esp_err_to_name(err));
+        ESP_LOGW(TAG, "Failed to remove device 0x%02X from ESP-IDF bus: %s", 
+                 device->GetDeviceAddress(), esp_err_to_name(err));
+        // Continue with other devices even if one fails
+      } else {
+        ESP_LOGI(TAG, "Successfully removed device 0x%02X from ESP-IDF bus", 
+                 device->GetDeviceAddress());
       }
-      // Then deinitialize the device
-      device->Deinitialize();
+      
+      // Mark device as deinitialized (don't call Deinitialize())
+      device->MarkAsDeinitialized();
     }
   }
   
-  // Clear our device vector (this will call destructors)
+  // Clear device vector (destructors won't try to remove from ESP-IDF)
   devices_.clear();
 
   // Now delete the master bus (should succeed since all devices are removed)
   if (bus_handle_) {
+    ESP_LOGI(TAG, "Deleting I2C master bus");
     esp_err_t err = i2c_del_master_bus(bus_handle_);
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to delete I2C master bus: %s", esp_err_to_name(err));
       // Force a delay to allow ESP-IDF to clean up internal state
       vTaskDelay(pdMS_TO_TICKS(100));
+    } else {
+      ESP_LOGI(TAG, "Successfully deleted I2C master bus");
     }
     bus_handle_ = nullptr;
   }
@@ -272,18 +282,41 @@ bool EspI2cBus::RemoveDevice(int device_index) noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "Removing I2C device at index %d", device_index);
+  auto& device = devices_[device_index];
+  if (!device) {
+    ESP_LOGW(TAG, "Device at index %d is null", device_index);
+    return false;
+  }
 
-  // Remove the device (destructor will handle ESP-IDF cleanup)
+  ESP_LOGI(TAG, "Removing I2C device at index %d (address 0x%02X)", 
+           device_index, device->GetDeviceAddress());
+
+  // Remove from ESP-IDF bus first
+  if (device->GetHandle()) {
+    esp_err_t err = i2c_master_bus_rm_device(device->GetHandle());
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to remove device 0x%02X from ESP-IDF bus: %s", 
+               device->GetDeviceAddress(), esp_err_to_name(err));
+      return false;
+    }
+    ESP_LOGI(TAG, "Successfully removed device 0x%02X from ESP-IDF bus", 
+             device->GetDeviceAddress());
+  }
+  
+  // Mark device as deinitialized
+  device->MarkAsDeinitialized();
+
+  // Remove from vector (destructor won't try to remove from ESP-IDF)
   devices_.erase(devices_.begin() + device_index);
 
-  ESP_LOGI(TAG, "I2C device removed successfully");
+  ESP_LOGI(TAG, "I2C device removed successfully from index %d", device_index);
   return true;
 }
 
 bool EspI2cBus::RemoveDeviceByAddress(hf_u16_t device_address) noexcept {
   int index = FindDeviceIndexByAddress(device_address);
   if (index >= 0) {
+    ESP_LOGI(TAG, "Found device at address 0x%02X at index %d, removing...", device_address, index);
     return RemoveDevice(index);
   }
 
@@ -542,7 +575,26 @@ EspI2cDevice::EspI2cDevice(EspI2cBus* parent, i2c_master_dev_handle_t handle,
 
 EspI2cDevice::~EspI2cDevice() noexcept {
   ESP_LOGI(TAG, "Destroying EspI2cDevice for address 0x%02X", config_.device_address);
-  Deinitialize();
+  // Don't call Deinitialize() - ESP-IDF cleanup is handled by the bus
+  // Just ensure internal state is clean
+  
+  // Safety check: if we still have a handle, something went wrong
+  if (handle_) {
+    ESP_LOGW(TAG, "Device destroyed while still having ESP-IDF handle - this indicates improper cleanup");
+    // Don't try to remove from ESP-IDF - let the bus handle it
+    handle_ = nullptr;
+  }
+  
+  if (initialized_) {
+    ESP_LOGW(TAG, "Device destroyed while still initialized - this may indicate improper cleanup");
+    initialized_ = false;
+  }
+  
+  // Clear any pending operations
+  async_operation_in_progress_ = false;
+  sync_operation_in_progress_ = false;
+  current_callback_ = nullptr;
+  current_user_data_ = nullptr;
 }
 
 bool EspI2cDevice::Initialize() noexcept {
@@ -557,6 +609,39 @@ bool EspI2cDevice::Initialize() noexcept {
   return true;
 }
 
+bool EspI2cDevice::MarkAsDeinitialized() noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!initialized_) {
+    return true;
+  }
+
+  ESP_LOGI(TAG, "Marking EspI2cDevice as deinitialized for address 0x%02X", config_.device_address);
+
+  // Clear internal state but don't remove from ESP-IDF bus
+  // The bus handles ESP-IDF cleanup
+  
+  // Clear any pending async operations
+  if (async_operation_in_progress_) {
+    ESP_LOGW(TAG, "Device marked as deinitialized while async operation in progress");
+    async_operation_in_progress_ = false;
+    current_callback_ = nullptr;
+    current_user_data_ = nullptr;
+  }
+
+  if (sync_operation_in_progress_) {
+    ESP_LOGW(TAG, "Device marked as deinitialized while sync operation in progress");
+    sync_operation_in_progress_ = false;
+  }
+
+  // Clear handle reference (bus will handle ESP-IDF cleanup)
+  handle_ = nullptr;
+  
+  initialized_ = false;
+  ESP_LOGI(TAG, "EspI2cDevice marked as deinitialized for address 0x%02X", config_.device_address);
+  return true;
+}
+
 bool EspI2cDevice::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
@@ -564,15 +649,26 @@ bool EspI2cDevice::Deinitialize() noexcept {
     return true;
   }
 
-  // Remove device from ESP-IDF
-  if (handle_) {
-    esp_err_t err = i2c_master_bus_rm_device(handle_);
-    if (err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to remove I2C device: %s", esp_err_to_name(err));
-      return false;
-    }
-    handle_ = nullptr;
+  ESP_LOGI(TAG, "Deinitializing EspI2cDevice for address 0x%02X", config_.device_address);
+
+  // Don't remove from ESP-IDF bus - the bus handles this
+  // Just clear internal state and mark as deinitialized
+  
+  // Clear any pending async operations
+  if (async_operation_in_progress_) {
+    ESP_LOGW(TAG, "Device deinitialized while async operation in progress");
+    async_operation_in_progress_ = false;
+    current_callback_ = nullptr;
+    current_user_data_ = nullptr;
   }
+
+  if (sync_operation_in_progress_) {
+    ESP_LOGW(TAG, "Device deinitialized while sync operation in progress");
+    sync_operation_in_progress_ = false;
+  }
+
+  // Clear handle reference (bus will handle ESP-IDF cleanup)
+  handle_ = nullptr;
 
   initialized_ = false;
   ESP_LOGI(TAG, "EspI2cDevice deinitialized for address 0x%02X", config_.device_address);
@@ -584,6 +680,7 @@ hf_i2c_err_t EspI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot write: device not properly initialized or handle invalid");
     return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
 
@@ -640,6 +737,7 @@ hf_i2c_err_t EspI2cDevice::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot read: device not properly initialized or handle invalid");
     return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
 
@@ -1006,9 +1104,15 @@ bool EspI2cDevice::RegisterTemporaryCallback(hf_i2c_async_callback_t callback,
                                              hf_u32_t timeout_ms) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
+  // Safety check: ensure device is properly initialized
+  if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot register callback: device not properly initialized or handle invalid");
+    return false;
+  }
+
   // Wait for any existing async operation to complete
   if (async_operation_in_progress_) {
-    ESP_LOGD(TAG, "Waiting for existing async operation to complete...");
+    ESP_LOGW(TAG, "Waiting for existing async operation to complete...");
     
     // Simple lock-free waiting - callback will clear async_operation_in_progress_
     uint64_t start_time = esp_timer_get_time();
@@ -1068,6 +1172,12 @@ void EspI2cDevice::UnregisterTemporaryCallback() noexcept {
 void EspI2cDevice::StartAsyncOperationTracking() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   
+  // Safety check: ensure device is properly initialized
+  if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot start async tracking: device not properly initialized or handle invalid");
+    return;
+  }
+  
   // Start tracking the async operation
   async_operation_in_progress_ = true;
   async_start_time_ = esp_timer_get_time();
@@ -1125,6 +1235,12 @@ bool EspI2cDevice::InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
 
 void EspI2cDevice::HandleAsyncCompletion(hf_i2c_err_t result) noexcept {
   // This method is called from ISR context - keep it minimal!
+  
+  // Safety check: ensure device is still valid
+  if (!initialized_ || !handle_) {
+    ESP_LOGW(TAG, "Async completion for deinitialized device - ignoring");
+    return;
+  }
   
   // Store callback info before clearing it
   hf_i2c_async_callback_t callback = current_callback_;

@@ -128,8 +128,20 @@ public:
   bool Initialize() noexcept override;
 
   /**
-   * @brief Deinitialize the I2C device and free resources.
-   * @return true if successful, false otherwise
+   * @brief Mark device as deinitialized without ESP-IDF cleanup
+   * @return true if successful
+   * 
+   * This method is called by the bus when it handles ESP-IDF cleanup.
+   * The device should not attempt to remove itself from the ESP-IDF bus.
+   */
+  bool MarkAsDeinitialized() noexcept;
+
+  /**
+   * @brief Deinitialize the device (internal cleanup only)
+   * @return true if successful
+   * 
+   * This method only handles internal device cleanup.
+   * ESP-IDF cleanup is handled by the parent bus.
    */
   bool Deinitialize() noexcept override;
 
