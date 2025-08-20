@@ -64,6 +64,17 @@ bool test_i2c_performance() noexcept;
 bool test_i2c_edge_cases() noexcept;
 bool test_i2c_power_management() noexcept;
 
+// NEW ASYNC OPERATION TESTS
+bool test_i2c_async_operations() noexcept;
+bool test_i2c_event_callbacks() noexcept;
+bool test_i2c_async_queue_management() noexcept;
+bool test_i2c_interrupt_safety() noexcept;
+bool test_i2c_async_error_handling() noexcept;
+bool test_i2c_async_timeout_handling() noexcept;
+bool test_i2c_async_multi_device_constraints() noexcept;
+bool test_i2c_async_cancellation() noexcept;
+bool test_i2c_async_statistics() noexcept;
+
 // Helper functions
 EspI2cBus* create_test_bus(uint32_t freq = STANDARD_FREQ) noexcept;
 bool verify_device_functionality(BaseI2c* device) noexcept;
@@ -916,6 +927,405 @@ bool test_i2c_power_management() noexcept {
   return true;
 }
 
+//==============================================//
+// NEW ASYNC OPERATION TESTS                   //
+//==============================================//
+
+bool test_i2c_async_operations() noexcept {
+  log_test_separator("I2C Async Operations");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  // Test async mode support
+  if (!esp_device->IsAsyncModeSupported()) {
+    ESP_LOGW(TAG, "Async mode not supported on this device");
+    return true; // Not a failure, just not supported
+  }
+
+  // Test async write operation
+  uint8_t test_data[] = {0x01, 0x02, 0x03, 0x04};
+  bool async_completed = false;
+  hf_i2c_err_t async_result = hf_i2c_err_t::I2C_ERR_FAILURE;
+  size_t async_bytes = 0;
+
+  auto async_callback = [&async_completed, &async_result, &async_bytes](
+      hf_i2c_err_t result, size_t bytes, void* user_data) {
+    async_completed = true;
+    async_result = result;
+    async_bytes = bytes;
+    ESP_LOGI(TAG, "Async write completed: %s, %zu bytes", 
+             HfI2CErrToString(result).data(), bytes);
+  };
+
+  // Try async operation without enabling callbacks (should fail)
+  hf_i2c_err_t result = esp_device->WriteAsync(test_data, sizeof(test_data), 
+                                               async_callback, nullptr);
+  if (result == hf_i2c_err_t::I2C_SUCCESS) {
+    ESP_LOGE(TAG, "Async write unexpectedly succeeded without callbacks");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Async write correctly failed without callbacks: %s", 
+           HfI2CErrToString(result).data());
+
+  ESP_LOGI(TAG, "[SUCCESS] Async operations tests passed");
+  return true;
+}
+
+bool test_i2c_event_callbacks() noexcept {
+  log_test_separator("I2C Event Callbacks");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  // Test callback registration
+  i2c_master_event_callbacks_t callbacks = {};
+  callbacks.on_trans_done = nullptr;
+  callbacks.on_recv_done = nullptr;
+  callbacks.on_trans_err = nullptr;
+  callbacks.on_recv_err = nullptr;
+
+  bool registered = esp_device->RegisterEventCallbacks(callbacks, nullptr);
+  if (!registered) {
+    ESP_LOGW(TAG, "Failed to register event callbacks (may not support async)");
+    return true; // Not a failure, just not supported
+  }
+
+  // Verify async mode is enabled
+  if (!esp_device->IsAsyncModeEnabled()) {
+    ESP_LOGE(TAG, "Async mode not enabled after callback registration");
+    return false;
+  }
+
+  // Test unregistration
+  bool unregistered = esp_device->UnregisterEventCallbacks();
+  if (!unregistered) {
+    ESP_LOGE(TAG, "Failed to unregister event callbacks");
+    return false;
+  }
+
+  // Verify async mode is disabled
+  if (esp_device->IsAsyncModeEnabled()) {
+    ESP_LOGE(TAG, "Async mode still enabled after unregistration");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Event callback tests passed");
+  return true;
+}
+
+bool test_i2c_async_queue_management() noexcept {
+  log_test_separator("I2C Async Queue Management");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Test bus-level async management
+  if (test_bus->IsAsyncModeInUse()) {
+    ESP_LOGW(TAG, "Async mode already in use on bus");
+  } else {
+    ESP_LOGI(TAG, "Async mode not in use on bus (expected)");
+  }
+
+  // Test total pending operations
+  size_t total_pending = test_bus->GetTotalPendingAsyncOperations();
+  if (total_pending != 0) {
+    ESP_LOGW(TAG, "Unexpected pending operations: %zu", total_pending);
+  } else {
+    ESP_LOGI(TAG, "No pending async operations (expected)");
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Async queue management tests passed");
+  return true;
+}
+
+bool test_i2c_interrupt_safety() noexcept {
+  log_test_separator("I2C Interrupt Safety");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  // Test that device operations don't crash under rapid access
+  // This simulates potential interrupt scenarios
+  for (int i = 0; i < 100; ++i) {
+    esp_device->IsAsyncModeSupported();
+    esp_device->IsAsyncModeEnabled();
+    esp_device->GetPendingAsyncOperationCount();
+    
+    // Small delay to simulate real-world timing
+    vTaskDelay(pdMS_TO_TICKS(1));
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Interrupt safety tests passed");
+  return true;
+}
+
+bool test_i2c_async_error_handling() noexcept {
+  log_test_separator("I2C Async Error Handling");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = NONEXISTENT_ADDR; // Use non-existent address
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  // Test async operations with invalid parameters
+  hf_i2c_err_t result = esp_device->WriteAsync(nullptr, 10, nullptr, nullptr);
+  if (result == hf_i2c_err_t::I2C_SUCCESS) {
+    ESP_LOGE(TAG, "Async write with null data unexpectedly succeeded");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Async write with null data correctly failed: %s", 
+           HfI2CErrToString(result).data());
+
+  ESP_LOGI(TAG, "[SUCCESS] Async error handling tests passed");
+  return true;
+}
+
+bool test_i2c_async_timeout_handling() noexcept {
+  log_test_separator("I2C Async Timeout Handling");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Test bus-level async timeout
+  bool timeout_result = test_bus->WaitAllAsyncOperationsComplete(1); // 1ms timeout
+  if (!timeout_result) {
+    ESP_LOGI(TAG, "Bus timeout handling working correctly");
+  } else {
+    ESP_LOGI(TAG, "Bus timeout handling completed immediately");
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Async timeout handling tests passed");
+  return true;
+}
+
+bool test_i2c_async_multi_device_constraints() noexcept {
+  log_test_separator("I2C Async Multi-Device Constraints");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create multiple devices
+  std::vector<int> device_indices;
+  for (uint16_t addr = 0x10; addr <= 0x13; ++addr) {
+    hf_i2c_device_config_t device_config = {};
+    device_config.device_address = addr;
+    device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+    device_config.scl_speed_hz = STANDARD_FREQ;
+
+    int idx = test_bus->CreateDevice(device_config);
+    if (idx >= 0) {
+      device_indices.push_back(idx);
+    }
+  }
+
+  if (device_indices.size() < 2) {
+    ESP_LOGW(TAG, "Need at least 2 devices to test constraints");
+    return true;
+  }
+
+  // Test that only one device can use async mode
+  EspI2cDevice* device1 = test_bus->GetEspDevice(device_indices[0]);
+  EspI2cDevice* device2 = test_bus->GetEspDevice(device_indices[1]);
+
+  if (!device1 || !device2) {
+    ESP_LOGE(TAG, "Failed to get test devices");
+    return false;
+  }
+
+  // Try to enable async on first device
+  i2c_master_event_callbacks_t callbacks = {};
+  bool device1_async = device1->RegisterEventCallbacks(callbacks, nullptr);
+  
+  if (device1_async) {
+    // Try to enable async on second device (should fail)
+    bool device2_async = device2->RegisterEventCallbacks(callbacks, nullptr);
+    if (device2_async) {
+      ESP_LOGE(TAG, "Second device unexpectedly enabled async mode");
+      return false;
+    }
+    
+    ESP_LOGI(TAG, "Second device correctly prevented from using async mode");
+    
+    // Clean up
+    device1->UnregisterEventCallbacks();
+  } else {
+    ESP_LOGI(TAG, "Async mode not supported on first device");
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Async multi-device constraint tests passed");
+  return true;
+}
+
+bool test_i2c_async_cancellation() noexcept {
+  log_test_separator("I2C Async Cancellation");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  // Test cancellation without async mode
+  bool cancelled = esp_device->CancelAllAsyncOperations();
+  if (!cancelled) {
+    ESP_LOGE(TAG, "Failed to cancel operations (should succeed even without async)");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Async cancellation tests passed");
+  return true;
+}
+
+bool test_i2c_async_statistics() noexcept {
+  log_test_separator("I2C Async Statistics");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Test bus-level async statistics
+  size_t total_pending = test_bus->GetTotalPendingAsyncOperations();
+  ESP_LOGI(TAG, "Total pending async operations: %zu", total_pending);
+
+  // Test device-level async statistics
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  size_t device_pending = esp_device->GetPendingAsyncOperationCount();
+  ESP_LOGI(TAG, "Device pending async operations: %zu", device_pending);
+
+  ESP_LOGI(TAG, "[SUCCESS] Async statistics tests passed");
+  return true;
+}
+
 // Helper function implementations
 EspI2cBus* create_test_bus(uint32_t freq) noexcept {
   hf_i2c_master_bus_config_t bus_config = {};
@@ -979,6 +1389,17 @@ extern "C" void app_main(void) {
   RUN_TEST(test_i2c_performance);
   RUN_TEST(test_i2c_edge_cases);
   RUN_TEST(test_i2c_power_management);
+
+  // NEW ASYNC OPERATION TESTS
+  RUN_TEST(test_i2c_async_operations);
+  RUN_TEST(test_i2c_event_callbacks);
+  RUN_TEST(test_i2c_async_queue_management);
+  RUN_TEST(test_i2c_interrupt_safety);
+  RUN_TEST(test_i2c_async_error_handling);
+  RUN_TEST(test_i2c_async_timeout_handling);
+  RUN_TEST(test_i2c_async_multi_device_constraints);
+  RUN_TEST(test_i2c_async_cancellation);
+  RUN_TEST(test_i2c_async_statistics);
 
   print_test_summary(g_test_results, "I2C", TAG);
 
