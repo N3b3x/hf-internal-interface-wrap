@@ -102,6 +102,8 @@ class EspI2cDevice;
  *
  * @note Thread-safe. All operations are protected by RtosMutex.
  * @note Each device maintains its own handle and configuration.
+ * @note Supports both synchronous and asynchronous operations.
+ * @warning ESP-IDF v5.5 constraint: Only one device per bus can use async mode
  */
 class EspI2cDevice : public BaseI2c {
 public:
@@ -165,6 +167,92 @@ public:
   hf_i2c_err_t WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length, hf_u8_t* rx_data,
                          hf_u16_t rx_length, hf_u32_t timeout_ms = 0) noexcept override;
 
+  //==============================================//
+  // ASYNC OPERATIONS - ESP-IDF v5.5+ FEATURES   //
+  //==============================================//
+
+  /**
+   * @brief Write data to the I2C device asynchronously.
+   * @param data Pointer to data buffer to write
+   * @param length Number of bytes to write
+   * @param callback Callback function for operation completion
+   * @param user_data User data passed to callback
+   * @param timeout_ms Timeout to wait for async slot availability (0 = no wait)
+   * @return I2C operation result
+   * @note Returns immediately once async operation starts
+   * @note Completion is reported via callback
+   * @warning Only one device per bus can use async mode at a time
+   * @note Will wait for timeout_ms if another async operation is in progress
+   */
+  hf_i2c_err_t WriteAsync(const hf_u8_t* data, hf_u16_t length,
+                          hf_i2c_async_callback_t callback,
+                          void* user_data = nullptr,
+                          hf_u32_t timeout_ms = 1000) noexcept;
+
+  /**
+   * @brief Read data from the I2C device asynchronously.
+   * @param data Pointer to buffer to store received data
+   * @param length Number of bytes to read
+   * @param callback Callback function for operation completion
+   * @param user_data User data passed to callback
+   * @param timeout_ms Timeout to wait for async slot availability (0 = no wait)
+   * @return I2C operation result
+   * @note Returns immediately once async operation starts
+   * @note Completion is reported via callback
+   * @warning Only one device per bus can use async mode at a time
+   * @note Will wait for timeout_ms if another async operation is in progress
+   */
+  hf_i2c_err_t ReadAsync(hf_u8_t* data, hf_u16_t length,
+                         hf_i2c_async_callback_t callback,
+                         void* user_data = nullptr,
+                         hf_u32_t timeout_ms = 1000) noexcept;
+
+  /**
+   * @brief Write then read data from the I2C device asynchronously.
+   * @param tx_data Pointer to data buffer to write
+   * @param tx_length Number of bytes to write
+   * @param rx_data Pointer to buffer to store received data
+   * @param rx_length Number of bytes to read
+   * @param callback Callback function for operation completion
+   * @param user_data User data passed to callback
+   * @param timeout_ms Timeout to wait for async slot availability (0 = no wait)
+   * @return I2C operation result
+   * @note Returns immediately once async operation starts
+   * @note Completion is reported via callback
+   * @warning Only one device per bus can use async mode at a time
+   * @note Will wait for timeout_ms if another async operation is in progress
+   */
+  hf_i2c_err_t WriteReadAsync(const hf_u8_t* tx_data, hf_u16_t tx_length,
+                              hf_u8_t* rx_data, hf_u16_t rx_length,
+                              hf_i2c_async_callback_t callback,
+                              void* user_data = nullptr,
+                              hf_u32_t timeout_ms = 1000) noexcept;
+
+  /**
+   * @brief Check if async mode is supported on this device.
+   * @return true if async mode is available, false otherwise
+   */
+  bool IsAsyncModeSupported() const noexcept;
+
+  /**
+   * @brief Check if an async operation is currently in progress.
+   * @return true if async operation is active, false otherwise
+   */
+  bool IsAsyncOperationInProgress() const noexcept;
+
+  /**
+   * @brief Check if a sync operation is currently in progress.
+   * @return true if sync operation is active, false otherwise
+   */
+  bool IsSyncOperationInProgress() const noexcept;
+
+  /**
+   * @brief Wait for current async operation to complete.
+   * @param timeout_ms Timeout in milliseconds (0 = wait indefinitely)
+   * @return true if operation completed, false on timeout
+   */
+  bool WaitAsyncOperationComplete(hf_u32_t timeout_ms = 0) noexcept;
+
   /**
    * @brief Get I2C bus statistics.
    * @param statistics Reference to statistics structure to fill
@@ -216,6 +304,12 @@ public:
    */
   bool ProbeDevice() noexcept;
 
+  /**
+   * @brief Get the ESP-IDF device handle for internal operations.
+   * @return ESP-IDF device handle
+   */
+  i2c_master_dev_handle_t GetDeviceHandle() const noexcept { return handle_; }
+
 private:
   EspI2cBus* parent_bus_;                    ///< Parent bus pointer
   i2c_master_dev_handle_t handle_;           ///< ESP-IDF device handle
@@ -224,6 +318,59 @@ private:
   mutable hf_i2c_statistics_t statistics_;   ///< Per-device statistics
   mutable hf_i2c_diagnostics_t diagnostics_; ///< Per-device diagnostics
   mutable RtosMutex mutex_;                  ///< Device mutex for thread safety
+
+  //==============================================//
+  // ASYNC OPERATION SUPPORT                     //
+  //==============================================//
+  bool async_operation_in_progress_;           ///< Is async operation active
+  bool sync_operation_in_progress_;            ///< Is sync operation active (mutual exclusion)
+  hf_i2c_async_callback_t current_callback_;  ///< Current user callback
+  void* current_user_data_;                   ///< Current user data
+  hf_u64_t async_start_time_;                 ///< Async operation start time
+  hf_i2c_transaction_type_t current_op_type_; ///< Current operation type
+
+  //==============================================//
+  // ESP-IDF v5.5 ASYNC CALLBACK BRIDGE          //
+  //==============================================//
+  
+  /**
+   * @brief Internal C callback bridge for ESP-IDF callbacks.
+   * @param i2c_dev ESP-IDF device handle
+   * @param evt_data Event data from ESP-IDF (i2c_master_event_data_t)
+   * @param arg User data (pointer to EspI2cDevice)
+   * @return false (no high priority wake needed)
+   * @note This single callback handles ALL operation types (write/read/write-read)
+   */
+  static bool InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
+                                   const i2c_master_event_data_t* evt_data,
+                                   void* arg);
+
+  /**
+   * @brief Handle completion of async operation.
+   * @param result Operation result
+   */
+  void HandleAsyncCompletion(hf_i2c_err_t result) noexcept;
+
+  /**
+   * @brief Register temporary async callback for single operation.
+   * @param callback User callback to register
+   * @param user_data User data for callback
+   * @param timeout_ms Timeout to wait for slot availability
+   * @return true if successful, false otherwise
+   */
+  bool RegisterTemporaryCallback(hf_i2c_async_callback_t callback,
+                                void* user_data,
+                                hf_u32_t timeout_ms) noexcept;
+
+  /**
+   * @brief Unregister temporary async callback after operation.
+   */
+  void UnregisterTemporaryCallback() noexcept;
+
+  /**
+   * @brief Start async operation tracking after I2C operation is successfully started.
+   */
+  inline void StartAsyncOperationTracking() noexcept;
 
   /**
    * @brief Update statistics with operation result.
@@ -342,6 +489,134 @@ public:
    * @return true if successful, false otherwise
    */
   bool RemoveDeviceByAddress(hf_u16_t device_address) noexcept;
+
+  //==============================================//
+  // INDEX-BASED ACCESS AND ITERATION METHODS    //
+  //==============================================//
+
+  /**
+   * @brief Get device by index with bounds checking.
+   * @param device_index Index of the device (0-based)
+   * @return Pointer to BaseI2c device, or nullptr if index out of bounds
+   * @note Thread-safe access to devices
+   */
+  BaseI2c* operator[](int device_index) noexcept;
+
+  /**
+   * @brief Get device by index with bounds checking (const version).
+   * @param device_index Index of the device (0-based)
+   * @return Pointer to const BaseI2c device, or nullptr if index out of bounds
+   * @note Thread-safe access to devices
+   */
+  const BaseI2c* operator[](int device_index) const noexcept;
+
+  /**
+   * @brief Get ESP-specific device by index with bounds checking.
+   * @param device_index Index of the device (0-based)
+   * @return Pointer to EspI2cDevice, or nullptr if index out of bounds
+   * @note Thread-safe access to devices
+   */
+  EspI2cDevice* At(int device_index) noexcept;
+
+  /**
+   * @brief Get ESP-specific device by index with bounds checking (const version).
+   * @param device_index Index of the device (0-based)
+   * @return Pointer to const EspI2cDevice, or nullptr if index out of bounds
+   * @note Thread-safe access to devices
+   */
+  const EspI2cDevice* At(int device_index) const noexcept;
+
+  /**
+   * @brief Check if device index is valid.
+   * @param device_index Index to check
+   * @return true if index is valid, false otherwise
+   */
+  bool IsValidIndex(int device_index) const noexcept;
+
+  /**
+   * @brief Get first device on the bus.
+   * @return Pointer to first BaseI2c device, or nullptr if no devices
+   */
+  BaseI2c* GetFirstDevice() noexcept;
+
+  /**
+   * @brief Get first device on the bus (const version).
+   * @return Pointer to first const BaseI2c device, or nullptr if no devices
+   */
+  const BaseI2c* GetFirstDevice() const noexcept;
+
+  /**
+   * @brief Get last device on the bus.
+   * @return Pointer to last BaseI2c device, or nullptr if no devices
+   */
+  BaseI2c* GetLastDevice() noexcept;
+
+  /**
+   * @brief Get last device on the bus (const version).
+   * @return Pointer to last const BaseI2c device, or nullptr if no devices
+   */
+  const BaseI2c* GetLastDevice() const noexcept;
+
+  /**
+   * @brief Get all devices as a vector of BaseI2c pointers.
+   * @return Vector of BaseI2c pointers (copy of internal device list)
+   * @note Thread-safe, returns a copy of the current device list
+   */
+  std::vector<BaseI2c*> GetAllDevices() noexcept;
+
+  /**
+   * @brief Get all devices as a vector of const BaseI2c pointers.
+   * @return Vector of const BaseI2c pointers (copy of internal device list)
+   * @note Thread-safe, returns a copy of the current device list
+   */
+  std::vector<const BaseI2c*> GetAllDevices() const noexcept;
+
+  /**
+   * @brief Get all ESP-specific devices as a vector.
+   * @return Vector of EspI2cDevice pointers (copy of internal device list)
+   * @note Thread-safe, returns a copy of the current device list
+   */
+  std::vector<EspI2cDevice*> GetAllEspDevices() noexcept;
+
+  /**
+   * @brief Get all ESP-specific devices as a vector (const version).
+   * @return Vector of const EspI2cDevice pointers (copy of internal device list)
+   * @note Thread-safe, returns a copy of the current device list
+   */
+  std::vector<const EspI2cDevice*> GetAllEspDevices() const noexcept;
+
+  /**
+   * @brief Find device index by address with bounds checking.
+   * @param device_address Device address to find
+   * @return Device index if found, -1 if not found
+   */
+  int FindDeviceIndex(hf_u16_t device_address) const noexcept;
+
+  /**
+   * @brief Get device addresses as a vector.
+   * @return Vector of device addresses
+   * @note Thread-safe, returns a copy of current device addresses
+   */
+  std::vector<hf_u16_t> GetDeviceAddresses() const noexcept;
+
+  /**
+   * @brief Check if bus has any devices.
+   * @return true if bus has devices, false if empty
+   */
+  bool HasDevices() const noexcept;
+
+  /**
+   * @brief Check if bus is empty (no devices).
+   * @return true if bus is empty, false if it has devices
+   */
+  bool IsEmpty() const noexcept;
+
+  /**
+   * @brief Clear all devices from the bus.
+   * @return true if successful, false otherwise
+   * @note All devices will be properly deinitialized and removed
+   */
+  bool ClearAllDevices() noexcept;
 
   /**
    * @brief Get the bus configuration.

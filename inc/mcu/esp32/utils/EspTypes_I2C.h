@@ -61,9 +61,10 @@ static constexpr uint8_t HF_I2C_MAX_RETRY_COUNT = 3;
  * @brief ESP32 I2C clock source selection.
  */
 enum class hf_i2c_clock_source_t : uint8_t {
-  HF_I2C_CLK_SRC_DEFAULT = 0, ///< Default clock source
-  HF_I2C_CLK_SRC_APB = 1,     ///< APB clock
-  HF_I2C_CLK_SRC_XTAL = 2     ///< Crystal oscillator
+  HF_I2C_CLK_SRC_DEFAULT = 0, ///< Default clock source (XTAL for ESP32-C6)
+  HF_I2C_CLK_SRC_XTAL = 0,    ///< XTAL clock (ESP32-C6 SOC_MOD_CLK_XTAL)
+  HF_I2C_CLK_SRC_RC_FAST = 1, ///< RC_FAST clock (ESP32-C6 SOC_MOD_CLK_RC_FAST)
+  HF_I2C_CLK_SRC_APB = 0      ///< APB clock (mapped to XTAL for ESP32-C6)
 };
 
 /**

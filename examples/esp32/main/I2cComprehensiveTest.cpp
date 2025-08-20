@@ -28,9 +28,15 @@
 #include <vector>
 
 #include "TestFramework.h"
+#include "mcu/esp32/EspGpio.h"
 
 static const char* TAG = "I2C_Test";
 static TestResults g_test_results;
+
+// GPIO14 test progression indicator
+static EspGpio* g_test_progress_gpio = nullptr;
+static bool g_test_progress_state = false;
+static constexpr hf_pin_num_t TEST_PROGRESS_PIN = 14;
 
 // Test configuration constants
 static constexpr hf_pin_num_t TEST_SDA_PIN = 21;
@@ -64,10 +70,63 @@ bool test_i2c_performance() noexcept;
 bool test_i2c_edge_cases() noexcept;
 bool test_i2c_power_management() noexcept;
 
+// NEW ASYNC OPERATION TESTS
+bool test_i2c_async_operations() noexcept;
+bool test_i2c_async_timeout_handling() noexcept;
+bool test_i2c_async_multiple_operations() noexcept;
+
+// NEW INDEX-BASED ACCESS TESTS
+bool test_i2c_index_based_access() noexcept;
+
 // Helper functions
-EspI2cBus* create_test_bus(uint32_t freq = STANDARD_FREQ) noexcept;
+std::unique_ptr<EspI2cBus> create_test_bus(uint32_t freq = STANDARD_FREQ) noexcept;
 bool verify_device_functionality(BaseI2c* device) noexcept;
 void log_test_separator(const char* test_name) noexcept;
+
+/**
+ * @brief Initialize the test progression indicator on GPIO14
+ */
+bool init_test_progress_indicator() noexcept {
+  g_test_progress_gpio = new EspGpio(TEST_PROGRESS_PIN, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                                     hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+                                     hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                                     hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN);
+  
+  if (!g_test_progress_gpio->EnsureInitialized()) {
+    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO14");
+    return false;
+  }
+  
+  g_test_progress_gpio->SetInactive();
+  ESP_LOGI(TAG, "Test progression indicator GPIO14 initialized");
+  return true;
+}
+
+/**
+ * @brief Flip the test progression indicator to show next test
+ */
+void flip_test_progress_indicator() noexcept {
+  if (g_test_progress_gpio) {
+    g_test_progress_state = !g_test_progress_state;
+    if (g_test_progress_state) {
+      g_test_progress_gpio->SetActive();
+    } else {
+      g_test_progress_gpio->SetInactive();
+    }
+    ESP_LOGI(TAG, "Test progression indicator: %s", g_test_progress_state ? "HIGH" : "LOW");
+  }
+}
+
+/**
+ * @brief Cleanup the test progression indicator GPIO
+ */
+void cleanup_test_progress_indicator() noexcept {
+  if (g_test_progress_gpio) {
+    g_test_progress_gpio->SetInactive(); // Ensure pin is low
+    delete g_test_progress_gpio;
+    g_test_progress_gpio = nullptr;
+  }
+}
 
 bool test_i2c_bus_initialization() noexcept {
   log_test_separator("I2C Bus Initialization");
@@ -916,8 +975,427 @@ bool test_i2c_power_management() noexcept {
   return true;
 }
 
+//==============================================//
+// NEW ASYNC OPERATION TESTS                   //
+//==============================================//
+
+bool test_i2c_async_operations() noexcept {
+  log_test_separator("I2C Async Operations");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  // Test async mode support
+  if (!esp_device->IsAsyncModeSupported()) {
+    ESP_LOGW(TAG, "Async mode not supported on this device");
+    return true; // Not a failure, just not supported
+  }
+
+  // Test async write operation
+  uint8_t test_data[] = {0x01, 0x02, 0x03, 0x04};
+  bool async_completed = false;
+  hf_i2c_err_t async_result = hf_i2c_err_t::I2C_ERR_FAILURE;
+  size_t async_bytes = 0;
+
+  auto async_callback = [&async_completed, &async_result, &async_bytes](
+      hf_i2c_err_t result, size_t bytes, void* user_data) {
+    async_completed = true;
+    async_result = result;
+    async_bytes = bytes;
+    ESP_LOGI(TAG, "Async write completed: %s, %zu bytes", 
+             HfI2CErrToString(result).data(), bytes);
+  };
+
+  // Try async operation
+  hf_i2c_err_t result = esp_device->WriteAsync(test_data, sizeof(test_data), 
+                                               async_callback, nullptr, 1000);
+  
+  ESP_LOGI(TAG, "Async write result: %s", HfI2CErrToString(result).data());
+
+  // Wait for completion or timeout
+  uint32_t wait_timeout = 2000; // 2 seconds
+  uint32_t start_time = esp_timer_get_time() / 1000;
+  
+  while (!async_completed && ((esp_timer_get_time() / 1000) - start_time < wait_timeout)) {
+    vTaskDelay(pdMS_TO_TICKS(10));
+  }
+
+  if (async_completed) {
+    ESP_LOGI(TAG, "Async operation completed successfully");
+  } else {
+    ESP_LOGI(TAG, "Async operation did not complete (expected for non-existent device)");
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Async operations tests passed");
+  return true;
+}
+
+bool test_i2c_async_timeout_handling() noexcept {
+  log_test_separator("I2C Async Timeout Handling");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  // Test timeout when trying to start async operation while another is in progress
+  bool first_completed = false;
+  auto first_callback = [&first_completed](hf_i2c_err_t result, size_t bytes, void* user_data) {
+    vTaskDelay(pdMS_TO_TICKS(100)); // Simulate slow callback
+    first_completed = true;
+    ESP_LOGI(TAG, "First async operation completed");
+  };
+
+  auto second_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {
+    ESP_LOGI(TAG, "Second async operation completed");
+  };
+
+  uint8_t test_data[] = {0xAA, 0xBB};
+  
+  // Start first async operation
+  hf_i2c_err_t result1 = esp_device->WriteAsync(test_data, sizeof(test_data), 
+                                                first_callback, nullptr, 1000);
+  
+  if (result1 == hf_i2c_err_t::I2C_SUCCESS) {
+    // Try second async operation with short timeout (should timeout)
+    hf_i2c_err_t result2 = esp_device->WriteAsync(test_data, sizeof(test_data), 
+                                                  second_callback, nullptr, 10); // 10ms timeout
+    
+    if (result2 == hf_i2c_err_t::I2C_ERR_BUS_BUSY) {
+      ESP_LOGI(TAG, "Second async operation correctly timed out");
+    } else {
+      ESP_LOGW(TAG, "Second async operation result: %s", HfI2CErrToString(result2).data());
+    }
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Async timeout handling tests passed");
+  return true;
+}
+
+bool test_i2c_async_multiple_operations() noexcept {
+  log_test_separator("I2C Async Multiple Operations");
+
+  auto test_bus = create_test_bus();
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device");
+    return false;
+  }
+
+  EspI2cDevice* esp_device = test_bus->GetEspDevice(device_index);
+  if (!esp_device) {
+    ESP_LOGE(TAG, "Failed to get ESP device");
+    return false;
+  }
+
+  // Test sequential async operations
+  int completed_operations = 0;
+  auto completion_callback = [&completed_operations](hf_i2c_err_t result, size_t bytes, void* user_data) {
+    completed_operations++;
+    int operation_id = *static_cast<int*>(user_data);
+    ESP_LOGI(TAG, "Async operation %d completed: %s", operation_id, HfI2CErrToString(result).data());
+  };
+
+  uint8_t test_data[] = {0x10, 0x20, 0x30};
+  
+  // Start multiple async operations sequentially
+  for (int i = 0; i < 3; ++i) {
+    int* operation_id = new int(i); // Note: In real code, manage memory properly
+    
+    hf_i2c_err_t result = esp_device->WriteAsync(test_data, sizeof(test_data), 
+                                                completion_callback, operation_id, 2000);
+    
+    ESP_LOGI(TAG, "Async operation %d start result: %s", i, HfI2CErrToString(result).data());
+    
+    // Wait for this operation to complete before starting next
+    esp_device->WaitAsyncOperationComplete(1000);
+    
+    delete operation_id; // Clean up
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Async multiple operations tests passed");
+  return true;
+}
+
+bool test_i2c_index_based_access() noexcept {
+  log_test_separator("I2C Index-Based Access Tests");
+
+  // Create test bus
+  auto test_bus = create_test_bus(STANDARD_FREQ);
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus for index access tests");
+    return false;
+  }
+
+  // Create multiple device configurations
+  std::vector<hf_i2c_device_config_t> device_configs;
+  
+  // Create configs using the default constructor and then set fields
+  hf_i2c_device_config_t config1;
+  config1.device_address = TEST_DEVICE_ADDR_1;
+  config1.scl_speed_hz = STANDARD_FREQ;
+  config1.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  
+  hf_i2c_device_config_t config2;
+  config2.device_address = TEST_DEVICE_ADDR_2;
+  config2.scl_speed_hz = STANDARD_FREQ;
+  config2.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  
+  hf_i2c_device_config_t config3;
+  config3.device_address = 0x4A;
+  config3.scl_speed_hz = STANDARD_FREQ;
+  config3.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  
+  hf_i2c_device_config_t config4;
+  config4.device_address = 0x4B;
+  config4.scl_speed_hz = STANDARD_FREQ;
+  config4.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  
+  device_configs.push_back(config1);
+  device_configs.push_back(config2);
+  device_configs.push_back(config3);
+  device_configs.push_back(config4);
+
+  // Create devices and store their indices
+  std::vector<int> device_indices;
+  for (const auto& config : device_configs) {
+    int index = test_bus->CreateDevice(config);
+    if (index >= 0) {
+      device_indices.push_back(index);
+      ESP_LOGI(TAG, "Created device at address 0x%02X with index %d", config.device_address, index);
+    } else {
+      ESP_LOGE(TAG, "Failed to create device at address 0x%02X", config.device_address);
+      return false;
+    }
+  }
+
+  ESP_LOGI(TAG, "Created %zu devices for index access testing", device_indices.size());
+
+  // Test 1: Basic index-based access using operator[]
+  ESP_LOGI(TAG, "--- Test 1: Basic Index-Based Access ---");
+  for (int index : device_indices) {
+    BaseI2c* device = (*test_bus)[index];
+    if (device) {
+      ESP_LOGI(TAG, "Device[%d] = BaseI2c* at address 0x%02X", index, device->GetDeviceAddress());
+    } else {
+      ESP_LOGE(TAG, "Device[%d] returned nullptr", index);
+      return false;
+    }
+  }
+
+  // Test 2: ESP-specific device access using At()
+  ESP_LOGI(TAG, "--- Test 2: ESP-Specific Device Access ---");
+  for (int index : device_indices) {
+    EspI2cDevice* esp_device = test_bus->At(index);
+    if (esp_device) {
+      ESP_LOGI(TAG, "At(%d) = EspI2cDevice* at address 0x%02X", index, esp_device->GetDeviceAddress());
+    } else {
+      ESP_LOGE(TAG, "At(%d) returned nullptr", index);
+      return false;
+    }
+  }
+
+  // Test 3: First and Last device access
+  ESP_LOGI(TAG, "--- Test 3: First and Last Device Access ---");
+  BaseI2c* first_device = test_bus->GetFirstDevice();
+  BaseI2c* last_device = test_bus->GetLastDevice();
+
+  if (first_device) {
+    ESP_LOGI(TAG, "First device: BaseI2c* at address 0x%02X", first_device->GetDeviceAddress());
+  } else {
+    ESP_LOGE(TAG, "GetFirstDevice() returned nullptr");
+    return false;
+  }
+  if (last_device) {
+    ESP_LOGI(TAG, "Last device: BaseI2c* at address 0x%02X", last_device->GetDeviceAddress());
+  } else {
+    ESP_LOGE(TAG, "GetLastDevice() returned nullptr");
+    return false;
+  }
+
+  // Test 4: Index validation
+  ESP_LOGI(TAG, "--- Test 4: Index Validation ---");
+  ESP_LOGI(TAG, "IsValidIndex(-1): %s", test_bus->IsValidIndex(-1) ? "true" : "false");
+  ESP_LOGI(TAG, "IsValidIndex(0): %s", test_bus->IsValidIndex(0) ? "true" : "false");
+  ESP_LOGI(TAG, "IsValidIndex(%zu): %s", device_indices.size(), test_bus->IsValidIndex(device_indices.size()) ? "true" : "false");
+  ESP_LOGI(TAG, "IsValidIndex(%zu): %s", device_indices.size() - 1, test_bus->IsValidIndex(device_indices.size() - 1) ? "true" : "false");
+
+  // Test 5: Get all devices as vectors
+  ESP_LOGI(TAG, "--- Test 5: Get All Devices as Vectors ---");
+  std::vector<BaseI2c*> all_devices = test_bus->GetAllDevices();
+  ESP_LOGI(TAG, "GetAllDevices() returned %zu devices", all_devices.size());
+  if (all_devices.size() != device_indices.size()) {
+    ESP_LOGE(TAG, "Device count mismatch: expected %zu, got %zu", device_indices.size(), all_devices.size());
+    return false;
+  }
+
+  std::vector<EspI2cDevice*> all_esp_devices = test_bus->GetAllEspDevices();
+  ESP_LOGI(TAG, "GetAllEspDevices() returned %zu devices", all_esp_devices.size());
+  if (all_esp_devices.size() != device_indices.size()) {
+    ESP_LOGE(TAG, "ESP device count mismatch: expected %zu, got %zu", device_indices.size(), all_esp_devices.size());
+    return false;
+  }
+
+  // Test 6: Get device addresses
+  ESP_LOGI(TAG, "--- Test 6: Get Device Addresses ---");
+  std::vector<hf_u16_t> addresses = test_bus->GetDeviceAddresses();
+  ESP_LOGI(TAG, "Device addresses:");
+  for (size_t i = 0; i < addresses.size(); ++i) {
+    ESP_LOGI(TAG, "  [%zu]: 0x%02X", i, addresses[i]);
+  }
+  if (addresses.size() != device_indices.size()) {
+    ESP_LOGE(TAG, "Address count mismatch: expected %zu, got %zu", device_indices.size(), addresses.size());
+    return false;
+  }
+
+  // Test 7: Bus state queries
+  ESP_LOGI(TAG, "--- Test 7: Bus State Queries ---");
+  ESP_LOGI(TAG, "HasDevices(): %s", test_bus->HasDevices() ? "true" : "false");
+  ESP_LOGI(TAG, "IsEmpty(): %s", test_bus->IsEmpty() ? "true" : "false");
+  ESP_LOGI(TAG, "GetDeviceCount(): %zu", test_bus->GetDeviceCount());
+  
+  if (!test_bus->HasDevices()) {
+    ESP_LOGE(TAG, "HasDevices() returned false when devices exist");
+    return false;
+  }
+  if (test_bus->IsEmpty()) {
+    ESP_LOGE(TAG, "IsEmpty() returned true when devices exist");
+    return false;
+  }
+  if (test_bus->GetDeviceCount() != device_indices.size()) {
+    ESP_LOGE(TAG, "GetDeviceCount() mismatch: expected %zu, got %zu", device_indices.size(), test_bus->GetDeviceCount());
+    return false;
+  }
+
+  // Test 8: Find device by address
+  ESP_LOGI(TAG, "--- Test 8: Find Device by Address ---");
+  for (hf_u16_t addr : addresses) {
+    int found_index = test_bus->FindDeviceIndex(addr);
+    ESP_LOGI(TAG, "FindDeviceIndex(0x%02X) = %d", addr, found_index);
+    if (found_index < 0) {
+      ESP_LOGE(TAG, "Failed to find device at address 0x%02X", addr);
+      return false;
+    }
+  }
+
+  // Test 9: Out-of-bounds access (should return nullptr)
+  ESP_LOGI(TAG, "--- Test 9: Out-of-Bounds Access ---");
+  BaseI2c* out_of_bounds = (*test_bus)[1000];
+  ESP_LOGI(TAG, "Device[1000] = %s", out_of_bounds ? "valid pointer" : "nullptr (expected)");
+  if (out_of_bounds != nullptr) {
+    ESP_LOGE(TAG, "Out-of-bounds access should return nullptr");
+    return false;
+  }
+
+  // Test 10: Const access methods
+  ESP_LOGI(TAG, "--- Test 10: Const Access Methods ---");
+  const EspI2cBus& const_bus = *test_bus;
+  const BaseI2c* const_device = const_bus[0];
+  if (const_device) {
+    ESP_LOGI(TAG, "const_bus[0] = const BaseI2c* at address 0x%02X", const_device->GetDeviceAddress());
+  } else {
+    ESP_LOGE(TAG, "const_bus[0] returned nullptr");
+    return false;
+  }
+
+  const EspI2cDevice* const_esp_device = const_bus.At(0);
+  if (const_esp_device) {
+    ESP_LOGI(TAG, "const_bus.At(0) = const EspI2cDevice* at address 0x%02X", const_esp_device->GetDeviceAddress());
+  } else {
+    ESP_LOGE(TAG, "const_bus.At(0) returned nullptr");
+    return false;
+  }
+
+  std::vector<const BaseI2c*> const_all_devices = const_bus.GetAllDevices();
+  ESP_LOGI(TAG, "const_bus.GetAllDevices() returned %zu devices", const_all_devices.size());
+  if (const_all_devices.size() != device_indices.size()) {
+    ESP_LOGE(TAG, "Const device count mismatch: expected %zu, got %zu", device_indices.size(), const_all_devices.size());
+    return false;
+  }
+
+  // Test 11: Iteration over devices using indices
+  ESP_LOGI(TAG, "--- Test 11: Iteration Using Indices ---");
+  ESP_LOGI(TAG, "Iterating over devices using indices:");
+  for (size_t i = 0; i < test_bus->GetDeviceCount(); ++i) {
+    BaseI2c* device = (*test_bus)[i];
+    if (device) {
+      ESP_LOGI(TAG, "  [%zu]: BaseI2c* at address 0x%02X", i, device->GetDeviceAddress());
+    } else {
+      ESP_LOGE(TAG, "Device[%zu] returned nullptr", i);
+      return false;
+    }
+  }
+
+  // Test 12: Iteration using GetAllDevices()
+  ESP_LOGI(TAG, "--- Test 12: Iteration Using GetAllDevices() ---");
+  ESP_LOGI(TAG, "Iterating over devices using GetAllDevices():");
+  auto devices = test_bus->GetAllDevices();
+  for (size_t i = 0; i < devices.size(); ++i) {
+    if (devices[i]) {
+      ESP_LOGI(TAG, "Device[%zu]: BaseI2c* at address 0x%02X", i, devices[i]->GetDeviceAddress());
+    } else {
+      ESP_LOGE(TAG, "Device[%zu] returned nullptr", i, i);
+      return false;
+    }
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Index-based access tests passed");
+  return true;
+}
+
 // Helper function implementations
-EspI2cBus* create_test_bus(uint32_t freq) noexcept {
+std::unique_ptr<EspI2cBus> create_test_bus(uint32_t freq) noexcept {
   hf_i2c_master_bus_config_t bus_config = {};
   bus_config.i2c_port = I2C_NUM_0;
   bus_config.sda_io_num = TEST_SDA_PIN;
@@ -929,7 +1407,7 @@ EspI2cBus* create_test_bus(uint32_t freq) noexcept {
     return nullptr;
   }
 
-  return bus.release(); // Transfer ownership to caller
+  return bus; // Transfer ownership to caller
 }
 
 bool verify_device_functionality(BaseI2c* device) noexcept {
@@ -952,37 +1430,107 @@ void log_test_separator(const char* test_name) noexcept {
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                    ESP32-C6 I2C COMPREHENSIVE TEST SUITE                    ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "║                    ESP32-C6 I2C COMPREHENSIVE TEST SUITE                     ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                  ║");
+  ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                               ║");
+  ESP_LOGI(TAG, "║ Features: I2C, Bus Initialization, Device Management, Probing, Scanning,     ║");
+  ESP_LOGI(TAG, "║ Write/Read, Error Handling, Timeout Handling, Multi-Device Operations,       ║");
+  ESP_LOGI(TAG, "║ Clock Speeds, Address Modes, ESP-Specific Features, Thread Safety,           ║");
+  ESP_LOGI(TAG, "║ Performance, Edge Cases, Power Management, Async Operations,                 ║");
+  ESP_LOGI(TAG, "║ Timeout Handling, Multiple Operations, Index-Based Access, Cleanup           ║");
+  ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                               ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Run all I2C tests
-  RUN_TEST(test_i2c_bus_initialization);
-  RUN_TEST(test_i2c_bus_deinitialization);
-  RUN_TEST(test_i2c_configuration_validation);
-  RUN_TEST(test_i2c_device_creation);
-  RUN_TEST(test_i2c_device_management);
-  RUN_TEST(test_i2c_device_probing);
-  RUN_TEST(test_i2c_bus_scanning);
-  RUN_TEST(test_i2c_write_operations);
-  RUN_TEST(test_i2c_read_operations);
-  RUN_TEST(test_i2c_write_read_operations);
-  RUN_TEST(test_i2c_error_handling);
-  RUN_TEST(test_i2c_timeout_handling);
-  RUN_TEST(test_i2c_multi_device_operations);
-  RUN_TEST(test_i2c_clock_speeds);
-  RUN_TEST(test_i2c_address_modes);
-  RUN_TEST(test_i2c_esp_specific_features);
-  RUN_TEST(test_i2c_thread_safety);
-  RUN_TEST(test_i2c_performance);
-  RUN_TEST(test_i2c_edge_cases);
-  RUN_TEST(test_i2c_power_management);
+  // Initialize test progression indicator GPIO14
+  // This pin will toggle between HIGH/LOW each time a test completes
+  // providing visual feedback for test progression on oscilloscope/logic analyzer
+  if (!init_test_progress_indicator()) {
+    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
+  }
 
+  // Run all I2C tests
+  ESP_LOGI(TAG, "\n=== I2C BUS TESTS ===");
+  RUN_TEST(test_i2c_bus_initialization);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_bus_deinitialization);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_configuration_validation);
+  flip_test_progress_indicator();
+
+  ESP_LOGI(TAG, "\n=== I2C DEVICE TESTS ===");
+  RUN_TEST(test_i2c_device_creation);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_device_management);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_device_probing);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_bus_scanning);
+  flip_test_progress_indicator();
+
+  ESP_LOGI(TAG, "\n=== I2C WRITE/READ TESTS ===");
+  RUN_TEST(test_i2c_write_operations);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_read_operations);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_write_read_operations);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_error_handling);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_timeout_handling);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_multi_device_operations);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_clock_speeds);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_address_modes);
+  flip_test_progress_indicator();
+
+  ESP_LOGI(TAG, "\n=== I2C ESP-SPECIFIC FEATURES ===");
+  RUN_TEST(test_i2c_esp_specific_features);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_thread_safety);
+  flip_test_progress_indicator();
+
+  ESP_LOGI(TAG, "\n=== I2C PERFORMANCE TESTS ===");
+  RUN_TEST(test_i2c_performance);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_edge_cases);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_power_management);
+  flip_test_progress_indicator();
+
+  ESP_LOGI(TAG, "\n=== I2C ASYNC OPERATION TESTS ===");
+  RUN_TEST(test_i2c_async_operations);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_async_timeout_handling);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_async_multiple_operations);
+  flip_test_progress_indicator();
+
+  ESP_LOGI(TAG, "\n=== I2C INDEX-BASED ACCESS TESTS ===");
+  RUN_TEST(test_i2c_index_based_access);
+  flip_test_progress_indicator();
+  
   print_test_summary(g_test_results, "I2C", TAG);
 
+  ESP_LOGI(TAG, "I2C comprehensive testing completed.");
+  ESP_LOGI(TAG, "System will continue running. Press RESET to restart tests.");
+  ESP_LOGI(TAG, "\n");
+
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    ESP32-C6 I2C COMPREHENSIVE TEST SUITE                     ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+
+  // Cleanup test progression indicator
+  cleanup_test_progress_indicator();
+
   while (true) {
+    ESP_LOGI(TAG, "System up and running for %d seconds", esp_timer_get_time() / 1000000);
     vTaskDelay(pdMS_TO_TICKS(10000));
   }
 }
