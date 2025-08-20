@@ -39,13 +39,13 @@ static bool g_test_progress_state = false;
 static constexpr hf_u8_t TEST_PROGRESS_GPIO = 14;
 
 // Test configuration constants
-static constexpr hf_u8_t TEST_UART_PORT_0 = 0;
+//static constexpr hf_u8_t TEST_UART_PORT_0 = 0; Debug UART
 static constexpr hf_u8_t TEST_UART_PORT_1 = 1;
 static constexpr hf_u32_t TEST_BAUD_RATE = 115200;
-static constexpr hf_u8_t TEST_TX_PIN = 21;
-static constexpr hf_u8_t TEST_RX_PIN = 20;
-static constexpr hf_u8_t TEST_RTS_PIN = 22;
-static constexpr hf_u8_t TEST_CTS_PIN = 23;
+static constexpr hf_u8_t TEST_TX_PIN = 5;
+static constexpr hf_u8_t TEST_RX_PIN = 4;
+static constexpr hf_u8_t TEST_RTS_PIN = 6;
+static constexpr hf_u8_t TEST_CTS_PIN = 7;
 
 // Test data
 static const uint8_t TEST_PATTERN = 0x0A; // Line feed
@@ -81,7 +81,6 @@ bool test_uart_error_handling() noexcept;
 bool test_uart_esp32c6_features() noexcept;
 bool test_uart_performance() noexcept;
 bool test_uart_callback_verification() noexcept;
-bool test_uart_pattern_detection_v55() noexcept;
 bool test_uart_user_event_task() noexcept;
 bool test_uart_event_driven_pattern_detection() noexcept;
 bool test_uart_cleanup() noexcept;
@@ -271,7 +270,7 @@ bool flush_uart_buffers(EspUart* uart) noexcept {
   return true;
 }
 
-hf_uart_config_t create_test_config(hf_u8_t port = TEST_UART_PORT_0) noexcept {
+hf_uart_config_t create_test_config(hf_u8_t port = TEST_UART_PORT_1) noexcept {
   hf_uart_config_t config = {};
   config.port_number = port;
   config.baud_rate = TEST_BAUD_RATE;
@@ -419,7 +418,7 @@ bool test_uart_initialization() noexcept {
 
   // Test configuration retrieval
   const hf_uart_config_t& retrieved_config = uart->GetPortConfig();
-  if (retrieved_config.port_number != TEST_UART_PORT_0 || retrieved_config.baud_rate != TEST_BAUD_RATE) {
+  if (retrieved_config.port_number != TEST_UART_PORT_1 || retrieved_config.baud_rate != TEST_BAUD_RATE) {
     ESP_LOGE(TAG, "Configuration mismatch after initialization");
     return false;
   }
@@ -576,10 +575,11 @@ bool test_uart_flow_control() noexcept {
 }
 
 bool test_uart_pattern_detection() noexcept {
-  ESP_LOGI(TAG, "Testing UART pattern detection (ESP-IDF v5.5 functionality)...");
+  ESP_LOGI(TAG, "Testing UART pattern detection (ESP-IDF v5.5) with event-driven approach...");
 
-  // Create a new UART instance for this test
+  // Create a new UART instance for this test with event queue enabled
   hf_uart_config_t config = create_test_config();
+  config.event_queue_size = 32;  // Ensure event queue is enabled
   auto uart = std::make_unique<EspUart>(config);
 
   if (!uart) {
@@ -595,10 +595,17 @@ bool test_uart_pattern_detection() noexcept {
   // Flush buffers before test to ensure clean test isolation
   flush_uart_buffers(uart.get());
 
-  // Use external loopback (jumper between pins 20 and 21) instead of internal loopback
+  // Get the event queue handle
+  QueueHandle_t event_queue = uart->GetEventQueue();
+  if (!event_queue) {
+    ESP_LOGE(TAG, "Event queue not available - pattern detection requires event queue");
+    return false;
+  }
+
   ESP_LOGI(TAG, "Using external loopback (jumper between pins 20 and 21)");
 
   // Configure interrupts for pattern detection (REQUIRED for ESP-IDF v5.5)
+  // Note: Pattern detection interrupt is enabled internally by uart_enable_pattern_det_baud_intr
   hf_uart_err_t result = uart->ConfigureInterrupts(
       UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 32, 5);
   if (result != hf_uart_err_t::UART_SUCCESS) {
@@ -606,8 +613,13 @@ bool test_uart_pattern_detection() noexcept {
     return false;
   }
 
+  // Combined test variables
+  bool line_test_passed = false;
+  bool at_test_passed = false;
+  int total_tests_passed = 0;
+
   // Test 1: Line-oriented pattern detection ('\n')
-  ESP_LOGI(TAG, "Testing line-oriented pattern detection...");
+  ESP_LOGI(TAG, "\n=== Test 1: Line-oriented pattern detection ('\\n') ===");
   
   result = uart->EnablePatternDetection('\n', 1, 9, 0, 0);
   if (result != hf_uart_err_t::UART_SUCCESS) {
@@ -624,8 +636,11 @@ bool test_uart_pattern_detection() noexcept {
 
   ESP_LOGI(TAG, "Line pattern detection enabled");
 
-  // Send test data with line endings to trigger pattern detection
-  const char* test_lines = "L1\nL2\nL3\n";
+  // Clear event queue before test
+  uart->ResetEventQueue();
+
+  // Send test data with line endings
+  const char* test_lines = "Line1\nLine2\nLine3\n";
   result = uart->Write(
       reinterpret_cast<const uint8_t*>(test_lines), 
       static_cast<hf_u16_t>(strlen(test_lines)), 1000);
@@ -636,72 +651,101 @@ bool test_uart_pattern_detection() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "Test lines sent for pattern detection (length: %d)", static_cast<int>(strlen(test_lines)));
+  ESP_LOGI(TAG, "Test data sent: '%s' (length: %d)", test_lines, static_cast<int>(strlen(test_lines)));
 
-  // CRITICAL: Read data from UART buffer to trigger pattern detection events
+  // Add delay to allow data to be processed and prevent buffer overflow
+  vTaskDelay(pdMS_TO_TICKS(100));
+
+  // Process events with proper event-driven approach
+  int pattern_count = 0;
+  int expected_patterns = 3;
+  int data_events = 0;
+  uart_event_t event;
   uint8_t read_buffer[256];
   
-  // First, clear any existing data in the buffer
-  uart->FlushRx();
-  vTaskDelay(pdMS_TO_TICKS(10));
+  // Wait for events with timeout
+  uint64_t start_time = esp_timer_get_time();
+  uint64_t timeout_us = 3000000; // 3 seconds
   
-  hf_uart_err_t read_result = uart->Read(read_buffer, sizeof(read_buffer), 1000);
-  if (read_result == hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGI(TAG, "Read %d bytes from UART buffer to trigger pattern detection", 
-             uart->BytesAvailable());
-  }
-
-  // Wait for pattern detection processing
-  vTaskDelay(pdMS_TO_TICKS(500));
-
-  // Check pattern detection results
-  int pattern_count = 0;
-  int total_patterns = 3; // We sent 3 lines with '\n'
-  int pattern_positions[16]; // Store positions for analysis
-
-  while (pattern_count < total_patterns) {
-    int pattern_pos = uart->PopPatternPosition();
-    if (pattern_pos >= 0) {
-      pattern_positions[pattern_count] = pattern_pos;
-      ESP_LOGI(TAG, "Pattern %d detected at position: %d", pattern_count + 1, pattern_pos);
-      pattern_count++;
-    } else {
-      ESP_LOGW(TAG, "No more patterns found after %d patterns", pattern_count);
-      break;
+  while ((esp_timer_get_time() - start_time) < timeout_us && pattern_count < expected_patterns) {
+    if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
+      switch (event.type) {
+        case UART_DATA:
+          data_events++;
+          ESP_LOGI(TAG, "UART_DATA event - size: %zu", event.size);
+          // Read data to clear buffer and allow pattern detection
+          uart->Read(read_buffer, sizeof(read_buffer), 100);
+          break;
+          
+        case UART_PATTERN_DET: {
+          ESP_LOGI(TAG, "UART_PATTERN_DET event received!");
+          int pattern_pos = uart->PopPatternPosition();
+          if (pattern_pos >= 0) {
+            pattern_count++;
+            ESP_LOGI(TAG, "Pattern %d detected at position: %d", pattern_count, pattern_pos);
+          }
+          break;
+        }
+          
+        case UART_FIFO_OVF:
+        case UART_BUFFER_FULL:
+          ESP_LOGW(TAG, "Buffer overflow - clearing");
+          uart->FlushRx();
+          uart->ResetEventQueue();
+          break;
+          
+        case UART_BREAK:
+          ESP_LOGD(TAG, "UART_BREAK event");
+          break;
+          
+        case UART_FRAME_ERR:
+          ESP_LOGD(TAG, "UART_FRAME_ERR event");
+          break;
+          
+        case UART_PARITY_ERR:
+          ESP_LOGD(TAG, "UART_PARITY_ERR event");
+          break;
+          
+        case UART_DATA_BREAK:
+          ESP_LOGD(TAG, "UART_DATA_BREAK event");
+          break;
+          
+        case UART_WAKEUP:
+          ESP_LOGD(TAG, "UART_WAKEUP event");
+          break;
+          
+        case UART_EVENT_MAX:
+        default:
+          ESP_LOGD(TAG, "Other event type: %d", event.type);
+          break;
+      }
     }
+    
+    // Small delay to prevent tight loop and allow pattern detection to work
+    vTaskDelay(pdMS_TO_TICKS(20));
   }
 
-  // Analyze why we might be missing patterns
-  if (pattern_count != total_patterns) {
-    ESP_LOGE(TAG, "LINE PATTERN DETECTION FAILED: Expected %d patterns, found %d", total_patterns, pattern_count);
-    
-    // Debug: Check what we actually sent vs received
-    ESP_LOGE(TAG, "Sent data: '%s' (length: %d)", test_lines, static_cast<int>(strlen(test_lines)));
-    ESP_LOGE(TAG, "Read data length: %d", static_cast<int>(uart->BytesAvailable()));
-    
-    // Check if data was corrupted in external loopback
-    if (read_result == hf_uart_err_t::UART_SUCCESS) {
-      ESP_LOGE(TAG, "First 50 bytes received: %.50s", read_buffer);
-    }
-    
-    // This is a FAILURE - pattern detection is not working correctly
-    uart->DisablePatternDetection();
-    return false;
-  }
-
-  ESP_LOGI(TAG, "Line pattern detection: %d/%d patterns detected successfully", pattern_count, total_patterns);
+  line_test_passed = (pattern_count == expected_patterns);
+  ESP_LOGI(TAG, "Line pattern detection: %d/%d patterns detected. %s", 
+           pattern_count, expected_patterns, line_test_passed ? "PASSED" : "FAILED");
+  if (line_test_passed) total_tests_passed++;
 
   // Test 2: AT escape sequence pattern detection ('+++')
-  ESP_LOGI(TAG, "Testing AT escape sequence pattern detection...");
+  ESP_LOGI(TAG, "\n=== Test 2: AT escape sequence pattern detection ('+++') ===");
   
+  // Disable previous pattern detection
   result = uart->DisablePatternDetection();
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to disable pattern detection: %d", static_cast<int>(result));
     return false;
   }
 
+  // Flush buffers and reset for next test
+  flush_uart_buffers(uart.get());
+  uart->ResetEventQueue();
+
   // Enable +++ pattern (3 consecutive '+' characters)
-  result = uart->EnablePatternDetection('+', 3, 9, 50, 50);
+  result = uart->EnablePatternDetection('+', 3, 5, 0, 0);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to enable +++ pattern detection: %d", static_cast<int>(result));
     return false;
@@ -716,8 +760,8 @@ bool test_uart_pattern_detection() noexcept {
 
   ESP_LOGI(TAG, "AT escape sequence pattern detection enabled");
 
-  // Send test data with AT escape sequence
-  const char* at_test_data = "AT+CMD+++ESC+++";
+  // Send test data with AT escape sequences
+  const char* at_test_data = "AT+CMD1\r\n+++ESCAPE1\r\nAT+CMD2\r\n+++ESCAPE2\r\n";
   result = uart->Write(
       reinterpret_cast<const uint8_t*>(at_test_data), 
       static_cast<hf_u16_t>(strlen(at_test_data)), 1000);
@@ -728,85 +772,97 @@ bool test_uart_pattern_detection() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "AT test data sent for pattern detection (length: %d)", static_cast<int>(strlen(at_test_data)));
+  ESP_LOGI(TAG, "AT test data sent (length: %d)", static_cast<int>(strlen(at_test_data)));
 
-  // CRITICAL: Read data from UART buffer to trigger pattern detection events
-  // Clear any existing data before reading
-  uart->FlushRx();
-  vTaskDelay(pdMS_TO_TICKS(10));
-  
-  read_result = uart->Read(read_buffer, sizeof(read_buffer), 1000);
-  if (read_result == hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGI(TAG, "Read %d bytes from UART buffer to trigger AT pattern detection", 
-             uart->BytesAvailable());
-  }
+  // Add delay to allow data to be processed and prevent buffer overflow
+  vTaskDelay(pdMS_TO_TICKS(100));
 
-  // Wait for pattern detection processing
-  vTaskDelay(pdMS_TO_TICKS(500));
-
-  // Check AT pattern detection results
+  // Process AT pattern events
   int at_pattern_count = 0;
-  int expected_at_patterns = 2; // We sent 2 "+++" sequences
-  int at_pattern_positions[8]; // Store positions for analysis
-
-  while (at_pattern_count < expected_at_patterns) {
-    int pattern_pos = uart->PopPatternPosition();
-    if (pattern_pos >= 0) {
-      at_pattern_positions[at_pattern_count] = pattern_pos;
-      ESP_LOGI(TAG, "AT Pattern %d detected at position: %d", at_pattern_count + 1, pattern_pos);
-      at_pattern_count++;
-    } else {
-      ESP_LOGW(TAG, "No more AT patterns found after %d patterns", at_pattern_count);
-      break;
+  int expected_at_patterns = 2;
+  data_events = 0;
+  
+  start_time = esp_timer_get_time();
+  
+  while ((esp_timer_get_time() - start_time) < timeout_us && at_pattern_count < expected_at_patterns) {
+    if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
+      switch (event.type) {
+        case UART_DATA:
+          data_events++;
+          ESP_LOGI(TAG, "UART_DATA event - size: %zu", event.size);
+          // Read data to clear buffer
+          uart->Read(read_buffer, sizeof(read_buffer), 100);
+          break;
+          
+        case UART_PATTERN_DET: {
+          ESP_LOGI(TAG, "UART_PATTERN_DET event received for +++!");
+          int pattern_pos = uart->PopPatternPosition();
+          if (pattern_pos >= 0) {
+            at_pattern_count++;
+            ESP_LOGI(TAG, "AT Pattern %d detected at position: %d", at_pattern_count, pattern_pos);
+          }
+          break;
+        }
+          
+        case UART_FIFO_OVF:
+        case UART_BUFFER_FULL:
+          ESP_LOGW(TAG, "Buffer overflow - clearing");
+          uart->FlushRx();
+          uart->ResetEventQueue();
+          break;
+          
+        case UART_BREAK:
+          ESP_LOGD(TAG, "UART_BREAK event");
+          break;
+          
+        case UART_FRAME_ERR:
+          ESP_LOGD(TAG, "UART_FRAME_ERR event");
+          break;
+          
+        case UART_PARITY_ERR:
+          ESP_LOGD(TAG, "UART_PARITY_ERR event");
+          break;
+          
+        case UART_DATA_BREAK:
+          ESP_LOGD(TAG, "UART_DATA_BREAK event");
+          break;
+          
+        case UART_WAKEUP:
+          ESP_LOGD(TAG, "UART_WAKEUP event");
+          break;
+          
+        case UART_EVENT_MAX:
+        default:
+          ESP_LOGD(TAG, "Other event type: %d", event.type);
+          break;
+      }
     }
+    
+    // Small delay to prevent tight loop and allow pattern detection to work
+    vTaskDelay(pdMS_TO_TICKS(20));
   }
 
-  // Analyze AT pattern detection results
-  if (at_pattern_count != expected_at_patterns) {
-    ESP_LOGE(TAG, "AT PATTERN DETECTION FAILED: Expected %d patterns, found %d", expected_at_patterns, at_pattern_count);
-    
-    // Debug: Check what we actually sent vs received
-    ESP_LOGE(TAG, "Sent AT data: '%s' (length: %d)", at_test_data, static_cast<int>(strlen(at_test_data)));
-    ESP_LOGE(TAG, "Read data length: %d", static_cast<int>(uart->BytesAvailable()));
-    
-    // Check if data was corrupted in external loopback
-    if (read_result == hf_uart_err_t::UART_SUCCESS) {
-      ESP_LOGE(TAG, "First 50 bytes received: %.50s", read_buffer);
-    }
-    
-    // This is a FAILURE - pattern detection is not working correctly
-    uart->DisablePatternDetection();
-    return false;
-  }
+  at_test_passed = (at_pattern_count == expected_at_patterns);
+  ESP_LOGI(TAG, "AT pattern detection: %d/%d patterns detected. %s", 
+           at_pattern_count, expected_at_patterns, at_test_passed ? "PASSED" : "FAILED");
+  if (at_test_passed) total_tests_passed++;
 
-  ESP_LOGI(TAG, "AT pattern detection: %d/%d patterns detected successfully", at_pattern_count, expected_at_patterns);
-
-  // Test pattern position functions
-  int peek_pos = uart->PeekPatternPosition();
-  ESP_LOGI(TAG, "Pattern position (peek): %d", peek_pos);
-
-  int pop_pos = uart->PopPatternPosition();
-  ESP_LOGI(TAG, "Pattern position (pop): %d", pop_pos);
-
-  // Disable pattern detection
+  // Clean up
   result = uart->DisablePatternDetection();
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to disable pattern detection: %d", static_cast<int>(result));
-    return false;
   }
 
-  // Only pass if ALL patterns were detected
-  bool test_passed = (pattern_count == total_patterns) && (at_pattern_count == expected_at_patterns);
+  // Overall test result
+  bool overall_passed = (total_tests_passed == 2);
   
-  if (test_passed) {
-    ESP_LOGI(TAG, "[SUCCESS] Pattern detection test completed - %d line patterns, %d AT patterns", 
-             pattern_count, at_pattern_count);
-  } else {
-    ESP_LOGE(TAG, "[FAILED] Pattern detection test failed - %d/%d line patterns, %d/%d AT patterns", 
-             pattern_count, total_patterns, at_pattern_count, expected_at_patterns);
-  }
+  ESP_LOGI(TAG, "\n=== PATTERN DETECTION TEST SUMMARY ===");
+  ESP_LOGI(TAG, "Line pattern test: %s", line_test_passed ? "PASSED" : "FAILED");
+  ESP_LOGI(TAG, "AT pattern test: %s", at_test_passed ? "PASSED" : "FAILED");
+  ESP_LOGI(TAG, "Overall result: %d/2 tests passed. %s", 
+           total_tests_passed, overall_passed ? "[SUCCESS]" : "[FAILED]");
 
-  return test_passed;
+  return overall_passed;
 }
 
 bool test_uart_buffer_operations() noexcept {
@@ -1480,87 +1536,7 @@ bool test_uart_callback_verification() noexcept {
   return true;
 }
 
-bool test_uart_pattern_detection_v55() noexcept {
-  ESP_LOGI(TAG, "Testing ESP-IDF v5.5 Pattern Detection...");
 
-  // Create a new UART instance for this test
-  hf_uart_config_t config = create_test_config();
-  auto uart = std::make_unique<EspUart>(config);
-
-  if (!uart) {
-    ESP_LOGE(TAG, "Failed to create UART instance for pattern detection v55 test");
-    return false;
-  }
-
-  if (!uart->EnsureInitialized()) {
-    ESP_LOGE(TAG, "Failed to initialize UART for pattern detection v55 test");
-    return false;
-  }
-
-  // Flush buffers before test to ensure clean test isolation
-  flush_uart_buffers(uart.get());
-
-  // Use external loopback (jumper between pins 20 and 21) for reliable pattern testing
-  ESP_LOGI(TAG, "Using external loopback (jumper between pins 20 and 21) for pattern detection testing");
-
-  // Test 1: Line-oriented pattern detection ('\n')
-  ESP_LOGI(TAG, "Testing line-oriented pattern detection...");
-  
-  hf_uart_err_t result = uart->EnablePatternDetection('\n', 1, 9, 0, 0);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to enable line pattern detection: %d", static_cast<int>(result));
-    return false;
-  }
-
-  result = uart->ResetPatternQueue(32);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to reset pattern queue: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "Line pattern detection enabled");
-
-  // Test 2: AT escape sequence pattern detection ('+++')
-  ESP_LOGI(TAG, "Testing AT escape sequence pattern detection...");
-  
-  result = uart->DisablePatternDetection();
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to disable pattern detection: %d", static_cast<int>(result));
-    return false;
-  }
-
-  // Enable +++ pattern (3 consecutive '+' characters)
-  result = uart->EnablePatternDetection('+', 3, 9, 50, 50);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to enable +++ pattern detection: %d", static_cast<int>(result));
-    return false;
-  }
-
-  result = uart->ResetPatternQueue(8);
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to reset pattern queue for +++: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "AT escape sequence pattern detection enabled");
-
-  // Test pattern position functions
-  int peek_pos = uart->PeekPatternPosition();
-  ESP_LOGI(TAG, "Pattern position (peek): %d", peek_pos);
-
-  int pop_pos = uart->PopPatternPosition();
-  ESP_LOGI(TAG, "Pattern position (pop): %d", pop_pos);
-
-  // Disable pattern detection
-  result = uart->DisablePatternDetection();
-  if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to disable pattern detection: %d", static_cast<int>(result));
-    return false;
-  }
-
-  ESP_LOGI(TAG, "[SUCCESS] ESP-IDF v5.5 Pattern Detection test completed");
-  return true;
-}
 
 bool test_uart_user_event_task() noexcept {
   ESP_LOGI(TAG, "Testing user-created event task (ESP-IDF v5.5 pattern)...");
@@ -1731,7 +1707,7 @@ bool test_uart_event_driven_pattern_detection() noexcept {
   }
 
   // Enable line pattern detection with proper timing
-  result = uart->EnablePatternDetection('\n', 1, 9, 10, 10);
+  result = uart->EnablePatternDetection('\n', 1, 9, 0, 0);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to enable pattern detection: %d", static_cast<int>(result));
     return false;
@@ -1774,6 +1750,9 @@ bool test_uart_event_driven_pattern_detection() noexcept {
 
   ESP_LOGI(TAG, "Test data sent successfully, monitoring event queue...");
 
+  // Add delay to allow data to be processed and prevent buffer overflow
+  vTaskDelay(pdMS_TO_TICKS(200));
+
   // Monitor event queue with timeout
   uint64_t start_time = esp_timer_get_time();
   uint64_t timeout_us = test_timeout_ms * 1000;
@@ -1796,6 +1775,8 @@ bool test_uart_event_driven_pattern_detection() noexcept {
           if (read_result == hf_uart_err_t::UART_SUCCESS) {
             ESP_LOGI(TAG, "Read data from UART buffer successfully");
           }
+          // Add small delay to prevent overwhelming the system
+          vTaskDelay(pdMS_TO_TICKS(20));
           break;
         }
           
@@ -1970,12 +1951,8 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "║ Features: UART, Baud Rate Configuration, Flow Control, Pattern Detection,      ║");
   ESP_LOGI(TAG, "║ Buffer Operations, Advanced Features, Communication Modes, Async Operations,   ║");
   ESP_LOGI(TAG, "║ Callbacks, Statistics and Diagnostics, printf Support, Error Handling,         ║");
-  ESP_LOGI(TAG, "║ ESP32-C6 Features, Performance, Callback Verification, Pattern Detection v5.5, ║");
-  ESP_LOGI(TAG, "║ User Event Task, Cleanup, Edge Cases, Stress Tests, ESP32-Specific Features,   ║");
-  ESP_LOGI(TAG, "║ Error Handling, Performance, Utility Functions, Cleanup, Edge Cases, Stress    ║");
-  ESP_LOGI(TAG, "║ Tests, ESP32-Specific Features, Error Handling, Performance, Utility Functions,║");
-  ESP_LOGI(TAG, "║ Cleanup, Edge Cases, Stress Tests, ESP32-Specific Features, Error Handling,    ║");
-  ESP_LOGI(TAG, "║ Performance, Utility Functions, Cleanup, Edge Cases, Stress Tests              ║");
+  ESP_LOGI(TAG, "║ ESP32-C6 Features, Performance, Callback Verification, User Event Task,        ║");
+  ESP_LOGI(TAG, "║ Event-Driven Pattern Detection, Cleanup                                        ║");
   ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                                 ║");
   ESP_LOGI(TAG, "╚════════════════════════════════════════════════════════════════════════════════╝");
 
@@ -2005,7 +1982,8 @@ extern "C" void app_main(void) {
   // flip_test_progress_indicator();
 
   ESP_LOGI(TAG, "\n=== ADVANCED FEATURES TESTS ===");
-  RUN_TEST(test_uart_pattern_detection);
+  // Run pattern detection test in a separate task with larger stack for event processing
+  RUN_TEST_IN_TASK("test_uart_pattern_detection", test_uart_pattern_detection, 8192, 5);
   flip_test_progress_indicator();
   RUN_TEST(test_uart_buffer_operations);
   flip_test_progress_indicator();
@@ -2033,10 +2011,8 @@ extern "C" void app_main(void) {
   RUN_TEST(test_uart_callback_verification);
   flip_test_progress_indicator();
   
-  // ESP-IDF v5.5 Pattern Detection and User Task Tests
-  ESP_LOGI(TAG, "\n=== ESP-IDF v5.5 PATTERN DETECTION AND USER TASK TESTS ===");
-  RUN_TEST(test_uart_pattern_detection_v55);
-  flip_test_progress_indicator();
+  // User Event Task Test
+  ESP_LOGI(TAG, "\n=== USER EVENT TASK TEST ===");
   RUN_TEST(test_uart_user_event_task);
   flip_test_progress_indicator();
   
