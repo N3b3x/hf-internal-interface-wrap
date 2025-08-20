@@ -364,7 +364,7 @@ private:
    * @return true if high priority wake requested
    */
   static bool OnTransmitDoneCallback(i2c_master_dev_handle_t dev,
-                                     const i2c_master_callback_t* edata,
+                                     const void* edata,
                                      void* user_data);
 
   /**
@@ -375,7 +375,7 @@ private:
    * @return true if high priority wake requested
    */
   static bool OnReceiveDoneCallback(i2c_master_dev_handle_t dev,
-                                    const i2c_master_callback_t* edata,
+                                    const void* edata,
                                     void* user_data);
 
   /**
@@ -386,7 +386,7 @@ private:
    * @return true if high priority wake requested
    */
   static bool OnTransmitErrorCallback(i2c_master_dev_handle_t dev,
-                                      const i2c_master_callback_t* edata,
+                                      const void* edata,
                                       void* user_data);
 
   /**
@@ -397,7 +397,7 @@ private:
    * @return true if high priority wake requested
    */
   static bool OnReceiveErrorCallback(i2c_master_dev_handle_t dev,
-                                     const i2c_master_callback_t* edata,
+                                     const void* edata,
                                      void* user_data);
 
   /**
@@ -608,6 +608,12 @@ public:
   size_t GetTotalPendingAsyncOperations() const noexcept;
 
   /**
+   * @brief Update total pending async operations count.
+   * @param delta Change in pending operations (+1 for new, -1 for completed)
+   */
+  void UpdateTotalPendingAsyncOperations(int delta) noexcept;
+
+  /**
    * @brief Scan the I2C bus for devices.
    * @param found_devices Vector to store found device addresses
    * @param start_addr Starting address for scan (default: 0x08)
@@ -656,12 +662,6 @@ private:
    * @return HardFOC I2C error code
    */
   hf_i2c_err_t ConvertEspError(esp_err_t esp_error) const noexcept;
-
-  /**
-   * @brief Update total pending async operations count.
-   * @param delta Change in pending operations (+1 for new, -1 for completed)
-   */
-  void UpdateTotalPendingAsyncOperations(int delta) noexcept;
 };
 
 #endif // ESP_I2C_H_
