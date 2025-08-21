@@ -128,8 +128,20 @@ public:
   bool Initialize() noexcept override;
 
   /**
-   * @brief Deinitialize the I2C device and free resources.
-   * @return true if successful, false otherwise
+   * @brief Mark device as deinitialized without ESP-IDF cleanup
+   * @return true if successful
+   * 
+   * This method is called by the bus when it handles ESP-IDF cleanup.
+   * The device should not attempt to remove itself from the ESP-IDF bus.
+   */
+  bool MarkAsDeinitialized() noexcept;
+
+  /**
+   * @brief Deinitialize the device (internal cleanup only)
+   * @return true if successful
+   * 
+   * This method only handles internal device cleanup.
+   * ESP-IDF cleanup is handled by the parent bus.
    */
   bool Deinitialize() noexcept override;
 
@@ -406,7 +418,7 @@ public:
   explicit EspI2cBus(const hf_i2c_master_bus_config_t& config) noexcept;
 
   /**
-   * @brief Destructor. Automatically deinitializes the bus if needed.
+   * @brief Destructor. Automatically deinitializes the bus and devices if needed.
    */
   ~EspI2cBus() noexcept;
 
@@ -647,17 +659,19 @@ public:
    * @param found_devices Vector to store found device addresses
    * @param start_addr Starting address for scan (default: 0x08)
    * @param end_addr Ending address for scan (default: 0x77)
+   * @param scan_timeout_ms Timeout for each probe operation (0 = use fast 10ms timeout)
    * @return Number of devices found
    */
   size_t ScanDevices(std::vector<hf_u16_t>& found_devices, hf_u16_t start_addr = 0x08,
-                     hf_u16_t end_addr = 0x77) noexcept;
+                     hf_u16_t end_addr = 0x77, hf_u32_t scan_timeout_ms = 0) noexcept;
 
   /**
    * @brief Probe for device presence on the bus.
    * @param device_addr Device address to probe
+   * @param timeout_ms Timeout in milliseconds (0 = use default 1000ms)
    * @return true if device responds, false otherwise
    */
-  bool ProbeDevice(hf_u16_t device_addr) noexcept;
+  bool ProbeDevice(hf_u16_t device_addr, hf_u32_t timeout_ms = 10) noexcept;
 
   /**
    * @brief Reset the I2C bus.

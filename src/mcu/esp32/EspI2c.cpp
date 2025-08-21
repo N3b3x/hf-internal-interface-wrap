@@ -76,22 +76,25 @@ bool EspI2cBus::Initialize() noexcept {
   bus_cfg.i2c_port = config_.i2c_port;
   bus_cfg.sda_io_num = static_cast<gpio_num_t>(config_.sda_io_num);
   bus_cfg.scl_io_num = static_cast<gpio_num_t>(config_.scl_io_num);
-  
-  // Map our clock source to ESP32-C6 clock source values
-  // ESP32-C6: SOC_MOD_CLK_XTAL = 0, SOC_MOD_CLK_RC_FAST = 1
-  if (config_.clk_source == hf_i2c_clock_source_t::HF_I2C_CLK_SRC_RC_FAST) {
-    bus_cfg.clk_source = I2C_CLK_SRC_RC_FAST;  // Use RC_FAST for testing
-  } else {
-    bus_cfg.clk_source = I2C_CLK_SRC_XTAL;     // Default to XTAL (most stable)
-  }
-  
+  bus_cfg.clk_source = static_cast<i2c_clock_source_t>(config_.clk_source);
+
+  // Add glitch ignore count
   bus_cfg.glitch_ignore_cnt = static_cast<uint8_t>(config_.glitch_ignore_cnt);
   bus_cfg.intr_priority = 0;  // Use default priority (1,2,3) instead of custom value
   bus_cfg.trans_queue_depth = config_.trans_queue_depth;
 
   // Configure flags
-  bus_cfg.flags.enable_internal_pullup = config_.enable_internal_pullup;
-  bus_cfg.flags.allow_pd = config_.allow_pd;
+  bus_cfg.flags.enable_internal_pullup = config_.flags.enable_internal_pullup;
+  bus_cfg.flags.allow_pd = config_.flags.allow_pd;
+  
+  // CRITICAL: Force external pull-ups for reliable I2C scanning
+  // ESP32 internal pull-ups (45kΩ) are often too weak for I2C
+    ESP_LOGW(TAG, "I2C bus: Internal pull-ups %s. For reliable scanning, use EXTERNAL 4.7kΩ pull-ups on SDA/SCL",
+           config_.flags.enable_internal_pullup ? "ENABLED" : "DISABLED");
+  
+  if (config_.flags.enable_internal_pullup) {
+    ESP_LOGW(TAG, "WARNING: Internal pull-ups may be insufficient for I2C scanning. Consider external 4.7kΩ resistors.");
+  }
 
   // Create the master bus
   esp_err_t err = i2c_new_master_bus(&bus_cfg, &bus_handle_);
@@ -102,6 +105,15 @@ bool EspI2cBus::Initialize() noexcept {
 
   initialized_ = true;
   ESP_LOGI(TAG, "I2C bus initialized successfully");
+  
+  // CRITICAL: Verify bus is actually generating I2C traffic
+  ESP_LOGI(TAG, "I2C bus configuration:");
+  ESP_LOGI(TAG, "  - Port: %d", config_.i2c_port);
+  ESP_LOGI(TAG, "  - SDA: GPIO%d", config_.sda_io_num);
+  ESP_LOGI(TAG, "  - SCL: GPIO%d", config_.scl_io_num);
+  ESP_LOGI(TAG, "  - Internal pull-ups: %s", config_.flags.enable_internal_pullup ? "ENABLED" : "DISABLED");
+  ESP_LOGI(TAG, "  - Clock source: %d", static_cast<int>(config_.clk_source));
+  
   return true;
 }
 
@@ -114,30 +126,40 @@ bool EspI2cBus::Deinitialize() noexcept {
 
   ESP_LOGI(TAG, "Deinitializing I2C bus");
 
-  // Remove all devices first with proper cleanup
-  // We need to remove devices from ESP-IDF bus before clearing our vector
+  // Remove all devices from ESP-IDF first
   for (auto& device : devices_) {
-    if (device) {
-      // First remove from ESP-IDF bus
+    if (device && device->GetHandle()) {
+      ESP_LOGI(TAG, "Removing device 0x%02X from ESP-IDF bus", device->GetDeviceAddress());
+      
+      // Bus removes from ESP-IDF
       esp_err_t err = i2c_master_bus_rm_device(device->GetHandle());
       if (err != ESP_OK) {
-        ESP_LOGW(TAG, "Failed to remove device from ESP-IDF bus: %s", esp_err_to_name(err));
+        ESP_LOGW(TAG, "Failed to remove device 0x%02X from ESP-IDF bus: %s", 
+                 device->GetDeviceAddress(), esp_err_to_name(err));
+        // Continue with other devices even if one fails
+      } else {
+        ESP_LOGI(TAG, "Successfully removed device 0x%02X from ESP-IDF bus", 
+                 device->GetDeviceAddress());
       }
-      // Then deinitialize the device
-      device->Deinitialize();
+      
+      // Mark device as deinitialized (don't call Deinitialize())
+      device->MarkAsDeinitialized();
     }
   }
   
-  // Clear our device vector (this will call destructors)
+  // Clear device vector (destructors won't try to remove from ESP-IDF)
   devices_.clear();
 
   // Now delete the master bus (should succeed since all devices are removed)
   if (bus_handle_) {
+    ESP_LOGI(TAG, "Deleting I2C master bus");
     esp_err_t err = i2c_del_master_bus(bus_handle_);
     if (err != ESP_OK) {
       ESP_LOGE(TAG, "Failed to delete I2C master bus: %s", esp_err_to_name(err));
       // Force a delay to allow ESP-IDF to clean up internal state
       vTaskDelay(pdMS_TO_TICKS(100));
+    } else {
+      ESP_LOGI(TAG, "Successfully deleted I2C master bus");
     }
     bus_handle_ = nullptr;
   }
@@ -272,18 +294,41 @@ bool EspI2cBus::RemoveDevice(int device_index) noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "Removing I2C device at index %d", device_index);
+  auto& device = devices_[device_index];
+  if (!device) {
+    ESP_LOGW(TAG, "Device at index %d is null", device_index);
+    return false;
+  }
 
-  // Remove the device (destructor will handle ESP-IDF cleanup)
+  ESP_LOGI(TAG, "Removing I2C device at index %d (address 0x%02X)", 
+           device_index, device->GetDeviceAddress());
+
+  // Remove from ESP-IDF bus first
+  if (device->GetHandle()) {
+    esp_err_t err = i2c_master_bus_rm_device(device->GetHandle());
+    if (err != ESP_OK) {
+      ESP_LOGE(TAG, "Failed to remove device 0x%02X from ESP-IDF bus: %s", 
+               device->GetDeviceAddress(), esp_err_to_name(err));
+      return false;
+    }
+    ESP_LOGI(TAG, "Successfully removed device 0x%02X from ESP-IDF bus", 
+             device->GetDeviceAddress());
+  }
+  
+  // Mark device as deinitialized
+  device->MarkAsDeinitialized();
+
+  // Remove from vector (destructor won't try to remove from ESP-IDF)
   devices_.erase(devices_.begin() + device_index);
 
-  ESP_LOGI(TAG, "I2C device removed successfully");
+  ESP_LOGI(TAG, "I2C device removed successfully from index %d", device_index);
   return true;
 }
 
 bool EspI2cBus::RemoveDeviceByAddress(hf_u16_t device_address) noexcept {
   int index = FindDeviceIndexByAddress(device_address);
   if (index >= 0) {
+    ESP_LOGI(TAG, "Found device at address 0x%02X at index %d, removing...", device_address, index);
     return RemoveDevice(index);
   }
 
@@ -309,33 +354,68 @@ bool EspI2cBus::IsInitialized() const noexcept {
 }
 
 size_t EspI2cBus::ScanDevices(std::vector<hf_u16_t>& found_devices, hf_u16_t start_addr,
-                              hf_u16_t end_addr) noexcept {
+                              hf_u16_t end_addr, hf_u32_t scan_timeout_ms) noexcept {
   if (!initialized_) {
-    ESP_LOGE(TAG, "I2C bus not initialized");
+    ESP_LOGE(TAG, "ScanDevices: I2C bus not initialized");
+    return 0;
+  }
+
+  // Validate scan range (7-bit: 0x08-0x77, 10-bit: 0x000-0x3FF)
+  if (start_addr < 0x08 || end_addr > 0x77 || start_addr > end_addr) {
+    ESP_LOGE(TAG, "ScanDevices: INVALID scan range: 0x%02X to 0x%02X. Valid range is 0x08-0x77", 
+             start_addr, end_addr);
     return 0;
   }
 
   found_devices.clear();
-  ESP_LOGI(TAG, "Scanning I2C bus from 0x%02X to 0x%02X", start_addr, end_addr);
+  
+  // Use fast scanning timeout (10ms) for quick device discovery
+  hf_u32_t fast_scan_timeout = (scan_timeout_ms > 0) ? scan_timeout_ms : 10;
+  
+  ESP_LOGI(TAG, "ScanDevices: Starting scan from 0x%02X to 0x%02X with %lu ms timeout", 
+           start_addr, end_addr, fast_scan_timeout);
 
   for (hf_u16_t addr = start_addr; addr <= end_addr; ++addr) {
-    if (ProbeDevice(addr)) {
+    ESP_LOGI(TAG, "ScanDevices: About to probe address 0x%02X", addr);
+    if (ProbeDevice(addr, fast_scan_timeout)) {
       found_devices.push_back(addr);
-      ESP_LOGI(TAG, "Found I2C device at address 0x%02X", addr);
+      ESP_LOGI(TAG, "ScanDevices: Found I2C device at address 0x%02X", addr);
     }
   }
 
-  ESP_LOGI(TAG, "I2C bus scan completed. Found %zu devices", found_devices.size());
+  ESP_LOGI(TAG, "ScanDevices: Scan completed. Found %zu devices", found_devices.size());
   return found_devices.size();
 }
 
-bool EspI2cBus::ProbeDevice(hf_u16_t device_addr) noexcept {
+bool EspI2cBus::ProbeDevice(hf_u16_t device_addr, hf_u32_t timeout_ms) noexcept {
   if (!initialized_) {
+    ESP_LOGE(TAG, "ProbeDevice: Bus not initialized");
     return false;
   }
 
-  esp_err_t err = i2c_master_probe(bus_handle_, device_addr, 1000);
-  return (err == ESP_OK);
+  // CRITICAL: Block invalid addresses that ESP-IDF might try to probe internally
+  if (device_addr < 0x01 || device_addr > 0x7F) {
+    ESP_LOGW(TAG, "ProbeDevice: BLOCKING invalid address 0x%02X - ESP-IDF internal probe detected! (valid range: 0x01-0x7F)", device_addr);
+    
+    // Log this as a potential ESP-IDF bug or system-level probing
+    ESP_LOGE(TAG, "ProbeDevice: WARNING - Address 0x%02X is outside valid range. This suggests ESP-IDF internal probing or system-level scanning.", device_addr);
+    
+    // Return false immediately without calling ESP-IDF
+    return false;
+  }
+
+  ESP_LOGI(TAG, "ProbeDevice: Probing address 0x%02X with %lu ms timeout", device_addr, timeout_ms);
+  
+  // Use provided timeout or default to 1000ms
+  hf_u32_t actual_timeout = (timeout_ms > 0) ? timeout_ms : 1000;
+  
+  esp_err_t err = i2c_master_probe(bus_handle_, device_addr, actual_timeout);
+  bool result = (err == ESP_OK);
+  
+  ESP_LOGI(TAG, "ProbeDevice: Address 0x%02X probe result: %s (err: %s)", 
+           device_addr, result ? "FOUND" : "NOT FOUND", esp_err_to_name(err));
+  
+  return result;
 }
 
 bool EspI2cBus::ResetBus() noexcept {
@@ -344,6 +424,9 @@ bool EspI2cBus::ResetBus() noexcept {
     return false;
   }
 
+  ESP_LOGI(TAG, "Attempting to reset I2C bus to recover from potential hanging state");
+  
+  // First try the standard ESP-IDF bus reset
   esp_err_t err = i2c_master_bus_reset(bus_handle_);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to reset I2C bus: %s", esp_err_to_name(err));
@@ -557,6 +640,39 @@ bool EspI2cDevice::Initialize() noexcept {
   return true;
 }
 
+bool EspI2cDevice::MarkAsDeinitialized() noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!initialized_) {
+    return true;
+  }
+
+  ESP_LOGI(TAG, "Marking EspI2cDevice as deinitialized for address 0x%02X", config_.device_address);
+
+  // Clear internal state but don't remove from ESP-IDF bus
+  // The bus handles ESP-IDF cleanup
+  
+  // Clear any pending async operations
+  if (async_operation_in_progress_) {
+    ESP_LOGW(TAG, "Device marked as deinitialized while async operation in progress");
+    async_operation_in_progress_ = false;
+    current_callback_ = nullptr;
+    current_user_data_ = nullptr;
+  }
+
+  if (sync_operation_in_progress_) {
+    ESP_LOGW(TAG, "Device marked as deinitialized while sync operation in progress");
+    sync_operation_in_progress_ = false;
+  }
+
+  // Clear handle reference (bus will handle ESP-IDF cleanup)
+  handle_ = nullptr;
+  
+  initialized_ = false;
+  ESP_LOGI(TAG, "EspI2cDevice marked as deinitialized for address 0x%02X", config_.device_address);
+  return true;
+}
+
 bool EspI2cDevice::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
@@ -564,15 +680,26 @@ bool EspI2cDevice::Deinitialize() noexcept {
     return true;
   }
 
-  // Remove device from ESP-IDF
-  if (handle_) {
-    esp_err_t err = i2c_master_bus_rm_device(handle_);
-    if (err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to remove I2C device: %s", esp_err_to_name(err));
-      return false;
-    }
-    handle_ = nullptr;
+  ESP_LOGI(TAG, "Deinitializing EspI2cDevice for address 0x%02X", config_.device_address);
+
+  // Don't remove from ESP-IDF bus - the bus handles this
+  // Just clear internal state and mark as deinitialized
+  
+  // Clear any pending async operations
+  if (async_operation_in_progress_) {
+    ESP_LOGW(TAG, "Device deinitialized while async operation in progress");
+    async_operation_in_progress_ = false;
+    current_callback_ = nullptr;
+    current_user_data_ = nullptr;
   }
+
+  if (sync_operation_in_progress_) {
+    ESP_LOGW(TAG, "Device deinitialized while sync operation in progress");
+    sync_operation_in_progress_ = false;
+  }
+
+  // Clear handle reference (bus will handle ESP-IDF cleanup)
+  handle_ = nullptr;
 
   initialized_ = false;
   ESP_LOGI(TAG, "EspI2cDevice deinitialized for address 0x%02X", config_.device_address);
@@ -584,6 +711,7 @@ hf_i2c_err_t EspI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot write: device not properly initialized or handle invalid");
     return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
 
@@ -599,8 +727,16 @@ hf_i2c_err_t EspI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
     return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
   }
   
+  // Check if device is in a healthy state
+  if (!handle_) {
+    ESP_LOGE(TAG, "Device handle is invalid - device may have been deinitialized");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  }
+  
   // Clear any existing callbacks to ensure blocking behavior
-  esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, nullptr, nullptr);
+  // ESP-IDF requires a valid callback structure even when clearing
+  i2c_master_event_callbacks_t empty_cbs = { .on_trans_done = nullptr };
+  esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
   if (clear_err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to clear callbacks for sync write: %s", esp_err_to_name(clear_err));
     return hf_i2c_err_t::I2C_ERR_FAILURE;
@@ -640,6 +776,7 @@ hf_i2c_err_t EspI2cDevice::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot read: device not properly initialized or handle invalid");
     return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
 
@@ -655,8 +792,16 @@ hf_i2c_err_t EspI2cDevice::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout
     return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
   }
   
+  // Check if device is in a healthy state
+  if (!handle_) {
+    ESP_LOGE(TAG, "Device handle is invalid - device may have been deinitialized");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  }
+  
   // Clear any existing callbacks to ensure blocking behavior
-  esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, nullptr, nullptr);
+  // ESP-IDF requires a valid callback structure even when clearing
+  i2c_master_event_callbacks_t empty_cbs = {.on_trans_done = nullptr};
+  esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
   if (clear_err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to clear callbacks for sync read: %s", esp_err_to_name(clear_err));
     return hf_i2c_err_t::I2C_ERR_FAILURE;
@@ -713,7 +858,9 @@ hf_i2c_err_t EspI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
   }
   
   // Clear any existing callbacks to ensure blocking behavior
-  esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, nullptr, nullptr);
+  // ESP-IDF requires a valid callback structure even when clearing
+  i2c_master_event_callbacks_t empty_cbs = { .on_trans_done = nullptr };
+  esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
   if (clear_err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to clear callbacks for sync write-read: %s", esp_err_to_name(clear_err));
     return hf_i2c_err_t::I2C_ERR_FAILURE;
@@ -1006,9 +1153,15 @@ bool EspI2cDevice::RegisterTemporaryCallback(hf_i2c_async_callback_t callback,
                                              hf_u32_t timeout_ms) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
+  // Safety check: ensure device is properly initialized
+  if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot register callback: device not properly initialized or handle invalid");
+    return false;
+  }
+
   // Wait for any existing async operation to complete
   if (async_operation_in_progress_) {
-    ESP_LOGD(TAG, "Waiting for existing async operation to complete...");
+    ESP_LOGW(TAG, "Waiting for existing async operation to complete...");
     
     // Simple lock-free waiting - callback will clear async_operation_in_progress_
     uint64_t start_time = esp_timer_get_time();
@@ -1052,7 +1205,9 @@ void EspI2cDevice::UnregisterTemporaryCallback() noexcept {
   }
 
   // Unregister ESP-IDF callback
-  esp_err_t err = i2c_master_register_event_callbacks(handle_, nullptr, nullptr);
+  // ESP-IDF requires a valid callback structure even when clearing
+  i2c_master_event_callbacks_t empty_cbs = { .on_trans_done = nullptr };
+  esp_err_t err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
   if (err != ESP_OK) {
     ESP_LOGW(TAG, "Failed to unregister ESP-IDF callback: %s", esp_err_to_name(err));
   }
@@ -1067,6 +1222,12 @@ void EspI2cDevice::UnregisterTemporaryCallback() noexcept {
 
 void EspI2cDevice::StartAsyncOperationTracking() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  // Safety check: ensure device is properly initialized
+  if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot start async tracking: device not properly initialized or handle invalid");
+    return;
+  }
   
   // Start tracking the async operation
   async_operation_in_progress_ = true;
@@ -1126,6 +1287,12 @@ bool EspI2cDevice::InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
 void EspI2cDevice::HandleAsyncCompletion(hf_i2c_err_t result) noexcept {
   // This method is called from ISR context - keep it minimal!
   
+  // Safety check: ensure device is still valid
+  if (!initialized_ || !handle_) {
+    ESP_LOGW(TAG, "Async completion for deinitialized device - ignoring");
+    return;
+  }
+  
   // Store callback info before clearing it
   hf_i2c_async_callback_t callback = current_callback_;
   void* user_data = current_user_data_;
@@ -1136,7 +1303,9 @@ void EspI2cDevice::HandleAsyncCompletion(hf_i2c_err_t result) noexcept {
   current_user_data_ = nullptr;
   
   // Unregister the ESP-IDF callback (this allows next async operation)
-  i2c_master_register_event_callbacks(handle_, nullptr, nullptr);
+  // ESP-IDF requires a valid callback structure even when clearing
+  i2c_master_event_callbacks_t empty_cbs = { .on_trans_done = nullptr };
+  i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
   
   // Call user callback - ESP-IDF doesn't provide actual bytes transferred
   // Pass 0 to indicate we don't have this information

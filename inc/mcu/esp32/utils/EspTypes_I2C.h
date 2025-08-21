@@ -61,10 +61,9 @@ static constexpr uint8_t HF_I2C_MAX_RETRY_COUNT = 3;
  * @brief ESP32 I2C clock source selection.
  */
 enum class hf_i2c_clock_source_t : uint8_t {
-  HF_I2C_CLK_SRC_DEFAULT = 0, ///< Default clock source (XTAL for ESP32-C6)
-  HF_I2C_CLK_SRC_XTAL = 0,    ///< XTAL clock (ESP32-C6 SOC_MOD_CLK_XTAL)
-  HF_I2C_CLK_SRC_RC_FAST = 1, ///< RC_FAST clock (ESP32-C6 SOC_MOD_CLK_RC_FAST)
-  HF_I2C_CLK_SRC_APB = 0      ///< APB clock (mapped to XTAL for ESP32-C6)
+  HF_I2C_CLK_SRC_DEFAULT = I2C_CLK_SRC_DEFAULT,   ///< Default clock source (APB for ESP32-C6)
+  HF_I2C_CLK_SRC_XTAL = I2C_CLK_SRC_XTAL,         ///< External crystal oscillator clock
+  HF_I2C_CLK_SRC_RC_FAST = I2C_CLK_SRC_RC_FAST    ///< RC_FAST clock (ESP32-C6 SOC_MOD_CLK_RC_FAST)
 };
 
 /**
@@ -188,25 +187,26 @@ struct hf_i2c_master_bus_config_t {
   i2c_port_t i2c_port;                      ///< I2C port number (0 to MAX_PORTS-1)
   hf_pin_num_t sda_io_num;                  ///< SDA GPIO pin number
   hf_pin_num_t scl_io_num;                  ///< SCL GPIO pin number
-  bool enable_internal_pullup;              ///< Enable internal pull-up resistors
   hf_i2c_clock_source_t clk_source;         ///< Clock source selection
   uint32_t clk_flags;                       ///< Additional clock configuration flags
   hf_i2c_glitch_filter_t glitch_ignore_cnt; ///< Digital glitch filter length
   uint32_t trans_queue_depth;               ///< Transaction queue depth for async ops
   uint32_t intr_priority;                   ///< Interrupt priority (0-7, 0=lowest)
-  uint32_t flags;                           ///< Additional configuration flags
-  bool allow_pd;                            ///< Allow power down in sleep modes
+  struct {
+    bool enable_internal_pullup;
+    bool allow_pd;
+  } flags;
 
   /**
    * @brief Default constructor with sensible defaults.
    */
   hf_i2c_master_bus_config_t() noexcept
       : i2c_port(I2C_NUM_0), sda_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)),
-        scl_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)), enable_internal_pullup(true),
+        scl_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)),
         clk_source(hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT), clk_flags(0),
         glitch_ignore_cnt(hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_7_CYCLES),
-        trans_queue_depth(8), intr_priority(5), flags(0), allow_pd(false) {}
-};
+        trans_queue_depth(32), intr_priority(0), flags{true, false} {}
+};  
 
 /**
  * @brief I2C device configuration structure.
