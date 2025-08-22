@@ -122,8 +122,17 @@ bool EspI2cBus::Initialize() noexcept {
   return true;
 }
 
-// DRY: Single deinitialization helper
-void EspI2cBus::DeinitializeDevices() noexcept {
+bool EspI2cBus::Deinitialize() noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+
+  if (!initialized_) {
+    return true;
+  }
+
+  ESP_LOGI(TAG, "Deinitializing I2C bus in %s mode", 
+           (current_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? "ASYNC" : "SYNC");
+
+  // Remove all devices first - inline the helper since it's only used once
   for (auto& device : devices_) {
     if (device && device->GetHandle()) {
       ESP_LOGI(TAG, "Removing device 0x%02X from ESP-IDF bus", device->GetDeviceAddress());
@@ -140,20 +149,6 @@ void EspI2cBus::DeinitializeDevices() noexcept {
     }
   }
   devices_.clear();
-}
-
-bool EspI2cBus::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  if (!initialized_) {
-    return true;
-  }
-
-  ESP_LOGI(TAG, "Deinitializing I2C bus in %s mode", 
-           (current_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? "ASYNC" : "SYNC");
-
-  // Remove all devices first
-  DeinitializeDevices();
 
   // Delete the master bus
   if (bus_handle_) {

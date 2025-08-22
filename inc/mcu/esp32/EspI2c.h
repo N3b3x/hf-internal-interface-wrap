@@ -883,11 +883,6 @@ private:
   hf_i2c_mode_t current_mode_;                        ///< Current operation mode
 
   /**
-   * @brief Deinitialize all devices (helper for cleanup)
-   */
-  void DeinitializeDevices() noexcept;
-
-  /**
    * @brief Find device index by address.
    * @param device_address Device address to find
    * @return Device index if found, -1 otherwise
