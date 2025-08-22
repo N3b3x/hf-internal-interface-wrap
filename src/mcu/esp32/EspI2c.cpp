@@ -52,6 +52,29 @@ extern "C" {
 static const char* TAG = "EspI2c";
 
 //======================================================//
+// OPERATION TYPE TO STRING CONVERSION                 //
+//======================================================//
+
+const char* HfI2COperationToString(hf_i2c_operation_t op) noexcept {
+  switch (op) {
+    case hf_i2c_operation_t::HF_I2C_OP_WRITE:
+      return "Write";
+    case hf_i2c_operation_t::HF_I2C_OP_READ:
+      return "Read";
+    case hf_i2c_operation_t::HF_I2C_OP_WRITE_READ:
+      return "WriteRead";
+    case hf_i2c_operation_t::HF_I2C_OP_WRITE_ASYNC:
+      return "WriteAsync";
+    case hf_i2c_operation_t::HF_I2C_OP_READ_ASYNC:
+      return "ReadAsync";
+    case hf_i2c_operation_t::HF_I2C_OP_WRITE_READ_ASYNC:
+      return "WriteReadAsync";
+    default:
+      return "Unknown";
+  }
+}
+
+//======================================================//
 // ESP I2C BUS IMPLEMENTATION
 //======================================================//
 
@@ -869,12 +892,12 @@ hf_i2c_err_t EspI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
   }
   
   // Validate operation parameters
-  if (!ValidateOperation(data, length, "Write")) {
+  if (!ValidateOperation(data, length, hf_i2c_operation_t::HF_I2C_OP_WRITE)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
   }
 
   // Setup sync operation
-  if (!SetupSyncOperation("Write")) {
+  if (!SetupSyncOperation(hf_i2c_operation_t::HF_I2C_OP_WRITE)) {
     return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
   }
 
@@ -914,12 +937,12 @@ hf_i2c_err_t EspI2cDevice::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout
   }
   
   // Validate operation parameters
-  if (!ValidateOperation(data, length, "Read")) {
+  if (!ValidateOperation(data, length, hf_i2c_operation_t::HF_I2C_OP_READ)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
   }
 
   // Setup sync operation
-  if (!SetupSyncOperation("Read")) {
+  if (!SetupSyncOperation(hf_i2c_operation_t::HF_I2C_OP_READ)) {
     return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
   }
 
@@ -966,7 +989,7 @@ hf_i2c_err_t EspI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
   }
 
   // Setup sync operation
-  if (!SetupSyncOperation("WriteRead")) {
+  if (!SetupSyncOperation(hf_i2c_operation_t::HF_I2C_OP_WRITE_READ)) {
     return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
   }
 
@@ -1015,7 +1038,7 @@ hf_i2c_err_t EspI2cDevice::WriteAsync(const hf_u8_t* data, hf_u16_t length,
   }
   
   // Validate operation parameters
-  if (!ValidateOperation(data, length, "WriteAsync")) {
+  if (!ValidateOperation(data, length, hf_i2c_operation_t::HF_I2C_OP_WRITE_ASYNC)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
   }
 
@@ -1059,7 +1082,7 @@ hf_i2c_err_t EspI2cDevice::ReadAsync(hf_u8_t* data, hf_u16_t length,
   }
   
   // Validate operation parameters
-  if (!ValidateOperation(data, length, "ReadAsync")) {
+  if (!ValidateOperation(data, length, hf_i2c_operation_t::HF_I2C_OP_READ_ASYNC)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
   }
 
@@ -1221,26 +1244,26 @@ bool EspI2cDevice::ProbeDevice() noexcept {
 // HELPER METHODS FOR COMMON OPERATIONS        //
 //==============================================//
 
-bool EspI2cDevice::ValidateOperation(const void* data, hf_u16_t length, const char* operation_name) noexcept {
+bool EspI2cDevice::ValidateOperation(const void* data, hf_u16_t length, hf_i2c_operation_t operation_type) noexcept {
   if (!initialized_ || !handle_) {
-    ESP_LOGE(TAG, "Cannot %s: device not properly initialized", operation_name);
+    ESP_LOGE(TAG, "Cannot %s: device not properly initialized", HfI2COperationToString(operation_type));
     return false;
   }
 
   if (!data || length == 0) {
-    ESP_LOGE(TAG, "Invalid parameters for %s operation", operation_name);
+    ESP_LOGE(TAG, "Invalid parameters for %s operation", HfI2COperationToString(operation_type));
     return false;
   }
 
   return true;
 }
 
-bool EspI2cDevice::SetupSyncOperation(const char* operation_name) noexcept {
+bool EspI2cDevice::SetupSyncOperation(hf_i2c_operation_t operation_type) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   // Ensure no async operations are running before sync operation
   if (async_operation_in_progress_) {
-    ESP_LOGW(TAG, "Cannot perform sync %s: async operation in progress", operation_name);
+    ESP_LOGW(TAG, "Cannot perform sync %s: async operation in progress", HfI2COperationToString(operation_type));
     return false;
   }
   
@@ -1257,7 +1280,7 @@ bool EspI2cDevice::SetupSyncOperation(const char* operation_name) noexcept {
     esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
     if (clear_err != ESP_OK) {
       ESP_LOGW(TAG, "Failed to clear callbacks for sync %s: %s (continuing anyway)", 
-               operation_name, esp_err_to_name(clear_err));
+               HfI2COperationToString(operation_type), esp_err_to_name(clear_err));
       // Don't fail the operation - this is just cleanup
     }
   }
@@ -1265,7 +1288,7 @@ bool EspI2cDevice::SetupSyncOperation(const char* operation_name) noexcept {
   // CRITICAL: Ensure bus is ready before operation
   esp_err_t bus_ready_err = i2c_master_bus_wait_all_done(parent_bus_->GetHandle(), 100);
   if (bus_ready_err != ESP_OK) {
-    ESP_LOGE(TAG, "Bus not ready for %s operation: %s", operation_name, esp_err_to_name(bus_ready_err));
+    ESP_LOGE(TAG, "Bus not ready for %s operation: %s", HfI2COperationToString(operation_type), esp_err_to_name(bus_ready_err));
     return false;
   }
 

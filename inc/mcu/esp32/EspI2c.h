@@ -130,6 +130,26 @@ class EspI2cBus;
 class EspI2cDevice;
 
 /**
+ * @enum hf_i2c_operation_t
+ * @brief Enumeration for I2C operation types used in logging and validation
+ */
+enum class hf_i2c_operation_t : uint8_t {
+  HF_I2C_OP_WRITE = 0,           ///< Write operation
+  HF_I2C_OP_READ = 1,            ///< Read operation
+  HF_I2C_OP_WRITE_READ = 2,      ///< Write-then-read operation
+  HF_I2C_OP_WRITE_ASYNC = 3,     ///< Asynchronous write operation
+  HF_I2C_OP_READ_ASYNC = 4,      ///< Asynchronous read operation
+  HF_I2C_OP_WRITE_READ_ASYNC = 5 ///< Asynchronous write-then-read operation
+};
+
+/**
+ * @brief Convert operation type to string for logging
+ * @param op Operation type
+ * @return String representation of operation
+ */
+const char* HfI2COperationToString(hf_i2c_operation_t op) noexcept;
+
+/**
  * @class EspI2cDevice
  * @brief Represents a single I2C device on a bus.
  *
@@ -464,17 +484,17 @@ private:
    * @brief Common validation for all I2C operations.
    * @param data Data buffer pointer
    * @param length Data length
-   * @param operation_name Operation name for logging
+   * @param operation_type Operation type for logging
    * @return true if validation passes, false otherwise
    */
-  bool ValidateOperation(const void* data, hf_u16_t length, const char* operation_name) noexcept;
+  bool ValidateOperation(const void* data, hf_u16_t length, hf_i2c_operation_t operation_type) noexcept;
 
   /**
    * @brief Common sync operation setup and cleanup.
-   * @param operation_name Operation name for logging
+   * @param operation_type Operation type for logging
    * @return true if setup successful, false otherwise
    */
-  bool SetupSyncOperation(const char* operation_name) noexcept;
+  bool SetupSyncOperation(hf_i2c_operation_t operation_type) noexcept;
 
   /**
    * @brief Common sync operation cleanup.
