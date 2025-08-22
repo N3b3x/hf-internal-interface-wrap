@@ -460,82 +460,35 @@ private:
    */
   hf_i2c_err_t ConvertEspError(esp_err_t esp_error) const noexcept;
 
-  //==============================================//
-  // COMMON OPERATION IMPLEMENTATIONS       //
-  //==============================================//
+  /**
+   * @brief Common validation for all I2C operations.
+   * @param data Data buffer pointer
+   * @param length Data length
+   * @param operation_name Operation name for logging
+   * @return true if validation passes, false otherwise
+   */
+  bool ValidateOperation(const void* data, hf_u16_t length, const char* operation_name) noexcept;
 
   /**
-   * @brief Perform sync write operation (common implementation)
-   * @param data Data to write
-   * @param length Number of bytes to write
-   * @param timeout_ms Timeout in milliseconds
-   * @return Operation result
+   * @brief Common sync operation setup and cleanup.
+   * @param operation_name Operation name for logging
+   * @return true if setup successful, false otherwise
    */
-  hf_i2c_err_t PerformSyncWrite(const hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms) noexcept;
+  bool SetupSyncOperation(const char* operation_name) noexcept;
 
   /**
-   * @brief Perform sync read operation (common implementation)
-   * @param data Buffer to store read data
-   * @param length Number of bytes to read
-   * @param timeout_ms Timeout in milliseconds
-   * @return Operation result
+   * @brief Common sync operation cleanup.
    */
-  hf_i2c_err_t PerformSyncRead(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms) noexcept;
+  void CleanupSyncOperation() noexcept;
 
   /**
-   * @brief Perform sync write-read operation (common implementation)
-   * @param tx_data Data to write
-   * @param tx_length Number of bytes to write
-   * @param rx_data Buffer to store read data
-   * @param rx_length Number of bytes to read
-   * @param timeout_ms Timeout in milliseconds
-   * @return Operation result
+   * @brief Common async operation setup.
+   * @param callback User callback
+   * @param user_data User data
+   * @param timeout_ms Timeout for slot availability
+   * @return true if setup successful, false otherwise
    */
-  hf_i2c_err_t PerformSyncWriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
-                                   hf_u8_t* rx_data, hf_u16_t rx_length,
-                                   hf_u32_t timeout_ms) noexcept;
-
-  /**
-   * @brief Perform async write operation (common implementation)
-   * @param data Data to write
-   * @param length Number of bytes to write
-   * @param callback User callback for completion
-   * @param user_data User data for callback
-   * @param timeout_ms Timeout to wait for slot availability
-   * @return Operation result
-   */
-  hf_i2c_err_t PerformAsyncWrite(const hf_u8_t* data, hf_u16_t length,
-                                hf_i2c_async_callback_t callback,
-                                void* user_data, hf_u32_t timeout_ms) noexcept;
-
-  /**
-   * @brief Perform async read operation (common implementation)
-   * @param data Buffer to store read data
-   * @param length Number of bytes to read
-   * @param callback User callback for completion
-   * @param user_data User data for callback
-   * @param timeout_ms Timeout to wait for slot availability
-   * @return Operation result
-   */
-  hf_i2c_err_t PerformAsyncRead(hf_u8_t* data, hf_u16_t length,
-                               hf_i2c_async_callback_t callback,
-                               void* user_data, hf_u32_t timeout_ms) noexcept;
-
-  /**
-   * @brief Perform async write-read operation (common implementation)
-   * @param tx_data Data to write
-   * @param tx_length Number of bytes to write
-   * @param rx_data Buffer to store read data
-   * @param rx_length Number of bytes to read
-   * @param callback User callback for completion
-   * @param user_data User data for callback
-   * @param timeout_ms Timeout to wait for slot availability
-   * @return Operation result
-   */
-  hf_i2c_err_t PerformAsyncWriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
-                                    hf_u8_t* rx_data, hf_u16_t rx_length,
-                                    hf_i2c_async_callback_t callback,
-                                    void* user_data, hf_u32_t timeout_ms) noexcept;
+  bool SetupAsyncOperation(hf_i2c_async_callback_t callback, void* user_data, hf_u32_t timeout_ms) noexcept;
 };
 
 /**
