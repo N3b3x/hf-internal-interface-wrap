@@ -104,15 +104,39 @@ echo "Build directory: $BUILD_DIR"
 # Get project information using configuration
 PROJECT_NAME=$(get_project_name "$EXAMPLE_TYPE")
 BIN_FILE="$BUILD_DIR/$PROJECT_NAME.bin"
+echo "Expected binary: $BIN_FILE"
+echo "Project name: $PROJECT_NAME"
 
 # Check if build exists and is valid
 BUILD_EXISTS=false
 if [ -d "$BUILD_DIR" ]; then
-    if [ -f "$BIN_FILE" ] || [ -f "$BUILD_DIR/bootloader/bootloader.bin" ]; then
-        echo "Found existing build in $BUILD_DIR"
+    # Check for multiple indicators of a valid build
+    if [ -f "$BIN_FILE" ]; then
+        echo "Found existing build with main binary: $BIN_FILE"
+        BUILD_EXISTS=true
+    elif [ -f "$BUILD_DIR/bootloader/bootloader.bin" ]; then
+        echo "Found existing build with bootloader binary"
+        BUILD_EXISTS=true
+    elif [ -f "$BUILD_DIR/.bin_timestamp" ] && [ -f "$BUILD_DIR/build.ninja" ]; then
+        echo "Found existing build with build artifacts (.bin_timestamp and build.ninja)"
+        BUILD_EXISTS=true
+    elif [ -f "$BUILD_DIR/CMakeCache.txt" ] && [ -f "$BUILD_DIR/build.ninja" ]; then
+        echo "Found existing build with CMake artifacts"
         BUILD_EXISTS=true
     else
-        echo "Build directory exists but no valid binary found"
+        echo "Build directory exists but no clear indicators of valid build found"
+        echo "Checking for any binary files..."
+        # Look for any .bin files in the build directory
+        if find "$BUILD_DIR" -name "*.bin" -type f | grep -q .; then
+            echo "Found .bin files, considering build valid"
+            echo "Available .bin files:"
+            find "$BUILD_DIR" -name "*.bin" -type f | sed 's/^/  /'
+            BUILD_EXISTS=true
+        else
+            echo "No .bin files found, build may be incomplete"
+            echo "Build directory contents:"
+            ls -la "$BUILD_DIR" 2>/dev/null | head -20 || echo "Cannot list build directory contents"
+        fi
     fi
 else
     echo "No build directory found"
@@ -125,6 +149,16 @@ if [ "$BUILD_EXISTS" = false ]; then
     echo "NO VALID BUILD FOUND - STARTING AUTO-BUILD"
     echo "======================================================"
     echo "Building $EXAMPLE_TYPE ($BUILD_TYPE) before flashing..."
+    echo ""
+    echo "Build validation failed because:"
+    if [ ! -d "$BUILD_DIR" ]; then
+        echo "  - Build directory does not exist: $BUILD_DIR"
+    else
+        echo "  - Build directory exists but validation failed"
+        echo "  - Expected binary: $BIN_FILE"
+        echo "  - Build directory: $BUILD_DIR"
+    fi
+    echo ""
     
     # Clean any existing incomplete build
     if [ -d "$BUILD_DIR" ]; then
