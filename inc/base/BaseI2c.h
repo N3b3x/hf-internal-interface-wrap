@@ -72,7 +72,8 @@
   /* System errors */                                               \
   X(I2C_ERR_SYSTEM_ERROR, 28, "System error")                       \
   X(I2C_ERR_PERMISSION_DENIED, 29, "Permission denied")             \
-  X(I2C_ERR_OPERATION_ABORTED, 30, "Operation aborted")
+  X(I2C_ERR_OPERATION_ABORTED, 30, "Operation aborted")             \
+  X(I2C_ERR_INVALID_STATE, 31, "Invalid state")                     \
 
 enum class hf_i2c_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
@@ -318,6 +319,14 @@ public:
     // Try to read 1 byte from the device
     hf_u8_t dummy;
     return Read(&dummy, 1, 100) == hf_i2c_err_t::I2C_SUCCESS;
+  }
+
+  /**
+   * @brief Probe if this device is present on the bus (alias for IsDevicePresent).
+   * @return true if device responds, false otherwise
+   */
+  virtual bool ProbeDevice() noexcept {
+    return IsDevicePresent();
   }
 
   /**

@@ -133,6 +133,15 @@ enum class hf_i2c_command_type_t : uint8_t {
   HF_I2C_CMD_DELAY = 5       ///< Delay
 };
 
+/**
+ * @brief I2C operation mode - determines available APIs
+ * @note ESP-IDF v5.5+ enforces strict separation between sync/async modes
+ */
+enum class hf_i2c_mode_t : uint8_t {
+  HF_I2C_MODE_SYNC = 0,    ///< Sync mode: blocking operations only, no queue
+  HF_I2C_MODE_ASYNC = 1     ///< Async mode: non-blocking operations only, with queue
+};
+
 //==============================================================================
 // ESP32 I2C CALLBACK TYPES
 //==============================================================================
@@ -187,10 +196,10 @@ struct hf_i2c_master_bus_config_t {
   i2c_port_t i2c_port;                      ///< I2C port number (0 to MAX_PORTS-1)
   hf_pin_num_t sda_io_num;                  ///< SDA GPIO pin number
   hf_pin_num_t scl_io_num;                  ///< SCL GPIO pin number
-  hf_i2c_clock_source_t clk_source;         ///< Clock source selection
-  uint32_t clk_flags;                       ///< Additional clock configuration flags
-  hf_i2c_glitch_filter_t glitch_ignore_cnt; ///< Digital glitch filter length
+  hf_i2c_mode_t mode;                       ///< Operation mode (sync/async)
   uint32_t trans_queue_depth;               ///< Transaction queue depth for async ops
+  hf_i2c_clock_source_t clk_source;         ///< Clock source selection
+  hf_i2c_glitch_filter_t glitch_ignore_cnt; ///< Digital glitch filter length
   uint32_t intr_priority;                   ///< Interrupt priority (0-7, 0=lowest)
   struct {
     bool enable_internal_pullup;
@@ -203,9 +212,10 @@ struct hf_i2c_master_bus_config_t {
   hf_i2c_master_bus_config_t() noexcept
       : i2c_port(I2C_NUM_0), sda_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)),
         scl_io_num(static_cast<hf_pin_num_t>(HF_INVALID_PIN)),
-        clk_source(hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT), clk_flags(0),
+        mode(hf_i2c_mode_t::HF_I2C_MODE_SYNC), trans_queue_depth(0),
+        clk_source(hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT),
         glitch_ignore_cnt(hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_7_CYCLES),
-        trans_queue_depth(32), intr_priority(0), flags{true, false} {}
+        intr_priority(0), flags{true, false} {}
 };  
 
 /**
