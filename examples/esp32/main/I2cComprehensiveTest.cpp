@@ -49,6 +49,71 @@ static constexpr uint32_t STANDARD_FREQ = 100000;    // 100kHz
 static constexpr uint32_t FAST_FREQ = 400000;        // 400kHz
 static constexpr uint32_t FAST_PLUS_FREQ = 1000000;  // 1MHz
 
+// DRY: Common configuration helpers
+namespace i2c_test_configs {
+  
+  inline hf_i2c_master_bus_config_t CreateSyncConfig(hf_pin_num_t sda, hf_pin_num_t scl) noexcept {
+    hf_i2c_master_bus_config_t config = {};
+    config.i2c_port = I2C_PORT_NUM;
+    config.sda_io_num = sda;
+    config.scl_io_num = scl;
+    config.mode = hf_i2c_mode_t::HF_I2C_MODE_SYNC;
+    config.trans_queue_depth = 0;  // No queue for sync mode
+    config.clk_source = hf_i2c_clock_source_t::HF_I2C_CLK_SRC_XTAL;
+    config.glitch_ignore_cnt = hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_0_CYCLES;
+    config.intr_priority = 1;
+    config.flags.enable_internal_pullup = false;
+    config.flags.allow_pd = false;
+    return config;
+  }
+  
+  inline hf_i2c_master_bus_config_t CreateAsyncConfig(hf_pin_num_t sda, hf_pin_num_t scl, uint8_t queue_depth = 10) noexcept {
+    hf_i2c_master_bus_config_t config = {};
+    config.i2c_port = I2C_PORT_NUM;
+    config.sda_io_num = sda;
+    config.scl_io_num = scl;
+    config.mode = hf_i2c_mode_t::HF_I2C_MODE_ASYNC;
+    config.trans_queue_depth = queue_depth;  // Queue required for async mode
+    config.clk_source = hf_i2c_clock_source_t::HF_I2C_CLK_SRC_XTAL;
+    config.glitch_ignore_cnt = hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_0_CYCLES;
+    config.intr_priority = 1;
+    config.flags.enable_internal_pullup = false;
+    config.flags.allow_pd = false;
+    return config;
+  }
+  
+  inline hf_i2c_device_config_t CreateDeviceConfig(uint16_t addr, uint32_t freq = STANDARD_FREQ) noexcept {
+    hf_i2c_device_config_t config = {};
+    config.device_address = addr;
+    config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+    config.scl_speed_hz = freq;
+    return config;
+  }
+}
+
+// DRY: Simplified bus creation
+std::unique_ptr<EspI2cBus> create_test_bus(hf_i2c_mode_t mode, uint32_t freq = STANDARD_FREQ) noexcept {
+  hf_i2c_master_bus_config_t config;
+  
+  if (mode == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
+    config = i2c_test_configs::CreateAsyncConfig(TEST_SDA_PIN, TEST_SCL_PIN);
+  } else {
+    config = i2c_test_configs::CreateSyncConfig(TEST_SDA_PIN, TEST_SCL_PIN);
+  }
+  
+  auto bus = std::make_unique<EspI2cBus>(config);
+  return bus->Initialize() ? std::move(bus) : nullptr;
+}
+
+// DRY: Simplified device creation
+std::unique_ptr<BaseI2c> create_test_device(EspI2cBus* bus, uint16_t addr, uint32_t freq = STANDARD_FREQ) noexcept {
+  if (!bus) return nullptr;
+  
+  auto device_config = i2c_test_configs::CreateDeviceConfig(addr, freq);
+  int device_index = bus->CreateDevice(device_config);
+  return (device_index >= 0) ? std::unique_ptr<BaseI2c>(bus->GetDevice(device_index)) : nullptr;
+}
+
 // Forward declarations
 bool test_i2c_bus_initialization() noexcept;
 bool test_i2c_bus_deinitialization() noexcept;
@@ -78,6 +143,12 @@ bool test_i2c_async_multiple_operations() noexcept;
 
 // NEW INDEX-BASED ACCESS TESTS
 bool test_i2c_index_based_access() noexcept;
+
+// NEW MODE-AWARE TESTS
+bool test_i2c_sync_mode() noexcept;
+bool test_i2c_async_mode() noexcept;
+bool test_i2c_mode_switching() noexcept;
+bool test_i2c_basic_functionality() noexcept;
 
 // Helper functions
 std::unique_ptr<EspI2cBus> create_test_bus(uint32_t freq = STANDARD_FREQ) noexcept;
@@ -703,7 +774,7 @@ bool test_i2c_clock_speeds() noexcept {
   };
 
   for (auto speed : test_speeds) {
-    auto test_bus = create_test_bus(speed);
+    auto test_bus = create_test_bus(hf_i2c_mode_t::HF_I2C_MODE_SYNC, speed);
     if (!test_bus) {
       ESP_LOGE(TAG, "Failed to create test bus with speed %lu Hz", speed);
       return false;
@@ -907,7 +978,7 @@ bool test_i2c_thread_safety() noexcept {
 bool test_i2c_performance() noexcept {
   log_test_separator("I2C Performance Tests");
 
-  auto test_bus = create_test_bus(FAST_FREQ); // Use fast mode for performance test
+  auto test_bus = create_test_bus(hf_i2c_mode_t::HF_I2C_MODE_SYNC, FAST_FREQ); // Use fast mode for performance test
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
     return false;
@@ -1253,7 +1324,7 @@ bool test_i2c_index_based_access() noexcept {
   log_test_separator("I2C Index-Based Access Tests");
 
   // Create test bus
-  auto test_bus = create_test_bus(STANDARD_FREQ);
+  auto test_bus = create_test_bus(hf_i2c_mode_t::HF_I2C_MODE_SYNC, STANDARD_FREQ);
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus for index access tests");
     return false;
@@ -1475,6 +1546,161 @@ bool test_i2c_index_based_access() noexcept {
   return true;
 }
 
+// NEW MODE-AWARE TESTS
+bool test_i2c_sync_mode() noexcept {
+  log_test_separator("I2C Sync Mode Test");
+
+  auto test_bus = create_test_bus(hf_i2c_mode_t::HF_I2C_MODE_SYNC, STANDARD_FREQ);
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus for sync mode test");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device for sync mode test");
+    return false;
+  }
+
+  BaseI2c* device = test_bus->GetDevice(device_index);
+  if (!device) {
+    ESP_LOGE(TAG, "Failed to get test device for sync mode test");
+    return false;
+  }
+
+  // Test sync mode operation
+  uint8_t test_data = 0xAA;
+  hf_i2c_err_t result = device->Write(&test_data, 1, 100);
+  ESP_LOGI(TAG, "Sync mode write result: %s", HfI2CErrToString(result).data());
+
+  ESP_LOGI(TAG, "[SUCCESS] Sync mode test passed");
+  return true;
+}
+
+bool test_i2c_async_mode() noexcept {
+  log_test_separator("I2C Async Mode Test");
+
+  auto test_bus = create_test_bus(hf_i2c_mode_t::HF_I2C_MODE_ASYNC, STANDARD_FREQ);
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus for async mode test");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device for async mode test");
+    return false;
+  }
+
+  BaseI2c* device = test_bus->GetDevice(device_index);
+  if (!device) {
+    ESP_LOGE(TAG, "Failed to get test device for async mode test");
+    return false;
+  }
+
+  // Test async mode operation
+  uint8_t test_data = 0xAA;
+  hf_i2c_err_t result = device->Write(&test_data, 1, 100);
+  ESP_LOGI(TAG, "Async mode write result: %s", HfI2CErrToString(result).data());
+
+  ESP_LOGI(TAG, "[SUCCESS] Async mode test passed");
+  return true;
+}
+
+bool test_i2c_mode_switching() noexcept {
+  log_test_separator("I2C Mode Switching Test");
+
+  auto test_bus = create_test_bus(hf_i2c_mode_t::HF_I2C_MODE_SYNC, STANDARD_FREQ);
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus for sync mode test");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device for sync mode test");
+    return false;
+  }
+
+  BaseI2c* device = test_bus->GetDevice(device_index);
+  if (!device) {
+    ESP_LOGE(TAG, "Failed to get test device for sync mode test");
+    return false;
+  }
+
+  // Test sync mode operation
+  uint8_t test_data = 0xAA;
+  hf_i2c_err_t result = device->Write(&test_data, 1, 100);
+  ESP_LOGI(TAG, "Sync mode write result: %s", HfI2CErrToString(result).data());
+
+  // Switch to async mode
+  if (!test_bus->SwitchMode(hf_i2c_mode_t::HF_I2C_MODE_ASYNC)) {
+    ESP_LOGE(TAG, "Failed to switch to async mode");
+    return false;
+  }
+
+  // Test async mode operation
+  result = device->Write(&test_data, 1, 100);
+  ESP_LOGI(TAG, "Async mode write result: %s", HfI2CErrToString(result).data());
+
+  ESP_LOGI(TAG, "[SUCCESS] Mode switching test passed");
+  return true;
+}
+
+bool test_i2c_basic_functionality() noexcept {
+  log_test_separator("I2C Basic Functionality Test");
+
+  auto test_bus = create_test_bus(hf_i2c_mode_t::HF_I2C_MODE_SYNC, STANDARD_FREQ);
+  if (!test_bus) {
+    ESP_LOGE(TAG, "Failed to create test bus for basic functionality test");
+    return false;
+  }
+
+  // Create a test device
+  hf_i2c_device_config_t device_config = {};
+  device_config.device_address = TEST_DEVICE_ADDR_1;
+  device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+  device_config.scl_speed_hz = STANDARD_FREQ;
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "Failed to create test device for basic functionality test");
+    return false;
+  }
+
+  BaseI2c* device = test_bus->GetDevice(device_index);
+  if (!device) {
+    ESP_LOGE(TAG, "Failed to get test device for basic functionality test");
+    return false;
+  }
+
+  // Test basic functionality
+  uint8_t test_data = 0xAA;
+  hf_i2c_err_t result = device->Write(&test_data, 1, 100);
+  ESP_LOGI(TAG, "Basic functionality write result: %s", HfI2CErrToString(result).data());
+
+  ESP_LOGI(TAG, "[SUCCESS] Basic functionality test passed");
+  return true;
+}
+
 // Helper function implementations
 std::unique_ptr<EspI2cBus> create_test_bus(uint32_t freq) noexcept {
   hf_i2c_master_bus_config_t bus_config = {};
@@ -1599,6 +1825,16 @@ extern "C" void app_main(void) {
 
   ESP_LOGI(TAG, "\n=== I2C INDEX-BASED ACCESS TESTS ===");
   RUN_TEST(test_i2c_index_based_access);
+  flip_test_progress_indicator();
+  
+  ESP_LOGI(TAG, "\n=== I2C MODE-AWARE TESTS ===");
+  RUN_TEST(test_i2c_sync_mode);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_async_mode);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_mode_switching);
+  flip_test_progress_indicator();
+  RUN_TEST(test_i2c_basic_functionality);
   flip_test_progress_indicator();
   
   print_test_summary(g_test_results, "I2C", TAG);

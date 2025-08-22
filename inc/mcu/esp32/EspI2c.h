@@ -14,6 +14,7 @@
  * @section features ESP32C6/ESP-IDF v5.5+ Features Supported:
  * - **Bus-Device Architecture**: Separate EspI2cBus and EspI2cDevice classes
  * - **Modern API**: Uses i2c_new_master_bus() and i2c_master_bus_add_device()
+ * - **Mode-Aware Operations**: Single mode variable determines sync vs async capabilities
  * - **Per-Device Configuration**: Each device has its own clock speed and settings
  * - **Thread Safety**: Full RTOS integration with proper synchronization
  * - **Device Management**: Dynamic device addition/removal with proper cleanup
@@ -33,20 +34,22 @@
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
- * @version 3.0.0 - Complete bus-device architecture rewrite
+ * @version 4.0.0 - Mode-aware architecture with DRY implementation
  *
  * @note This implementation requires ESP-IDF v5.5+ and is optimized for ESP32C6.
  * @note Thread-safe operation is guaranteed for all public methods.
  * @note Follows the same architectural pattern as EspSpi for consistency.
+ * @note ESP-IDF v5.5+ enforces strict separation between sync/async modes.
  *
  * @example Basic Usage:
  * @code
- * // Create bus configuration
+ * // Create sync mode bus configuration
  * hf_i2c_master_bus_config_t bus_config = {};
  * bus_config.i2c_port = 0;
  * bus_config.sda_io_num = 21;
  * bus_config.scl_io_num = 22;
- * bus_config.enable_internal_pullup = true;
+ * bus_config.mode = hf_i2c_mode_t::HF_I2C_MODE_SYNC;  // Sync mode only
+ * bus_config.trans_queue_depth = 0;  // No queue for sync mode
  *
  * // Create I2C bus
  * EspI2cBus i2c_bus(bus_config);
@@ -64,9 +67,43 @@
  * int device_index = i2c_bus.CreateDevice(device_config);
  * BaseI2c* device = i2c_bus.GetDevice(device_index);
  *
- * // Use device for I2C operations
+ * // Use device for I2C operations (sync mode)
  * uint8_t data[] = {0x10, 0x20, 0x30};
  * hf_i2c_err_t result = device->Write(data, sizeof(data));
+ * @endcode
+ *
+ * @example Async Mode Usage:
+ * @code
+ * // Create async mode bus configuration
+ * hf_i2c_master_bus_config_t bus_config = {};
+ * bus_config.i2c_port = 0;
+ * bus_config.sda_io_num = 21;
+ * bus_config.scl_io_num = 22;
+ * bus_config.mode = hf_i2c_mode_t::HF_I2C_MODE_ASYNC;  // Async mode only
+ * bus_config.trans_queue_depth = 10;  // Queue required for async mode
+ *
+ * // Create I2C bus
+ * EspI2cBus i2c_bus(bus_config);
+ * if (!i2c_bus.Initialize()) {
+ *     // Handle initialization error
+ * }
+ *
+ * // Create device configuration
+ * hf_i2c_device_config_t device_config = {};
+ * device_config.device_address = 0x48;
+ * device_config.scl_speed_hz = 400000;
+ * device_config.dev_addr_length = hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT;
+ *
+ * // Add device to bus
+ * int device_index = i2c_bus.CreateDevice(device_config);
+ * BaseI2c* device = i2c_bus.GetDevice(device_index);
+ *
+ * // Use device for I2C operations (async mode)
+ * uint8_t data[] = {0x10, 0x20, 0x30};
+ * hf_i2c_err_t result = device->WriteAsync(data, sizeof(data), 
+ *     [](hf_i2c_err_t err, void* user_data) {
+ *         ESP_LOGI("Async write completed: %s", HfI2CErrToString(err).data());
+ *     });
  * @endcode
  */
 
@@ -91,6 +128,33 @@ extern "C" {
 // Forward declarations
 class EspI2cBus;
 class EspI2cDevice;
+
+/**
+ * @brief I2C operation mode - determines available APIs
+ * @note ESP-IDF v5.5+ enforces strict separation between sync/async modes
+ */
+enum class hf_i2c_mode_t : uint8_t {
+  HF_I2C_MODE_SYNC = 0,    ///< Sync mode: blocking operations only, no queue
+  HF_I2C_MODE_ASYNC = 1     ///< Async mode: non-blocking operations only, with queue
+};
+
+/**
+ * @brief I2C master bus configuration
+ */
+typedef struct {
+  i2c_port_t i2c_port;                    ///< I2C port number
+  hf_pin_num_t sda_io_num;                ///< SDA GPIO number
+  hf_pin_num_t scl_io_num;                ///< SCL GPIO number
+  hf_i2c_mode_t mode;                     ///< Operation mode (sync/async)
+  uint8_t trans_queue_depth;              ///< Transaction queue depth (0 for sync, >0 for async)
+  hf_i2c_clock_source_t clk_source;       ///< Clock source
+  hf_i2c_glitch_filter_t glitch_ignore_cnt; ///< Glitch filter cycles
+  uint8_t intr_priority;                  ///< Interrupt priority
+  struct {
+    bool enable_internal_pullup : 1;       ///< Enable internal pull-up resistors
+    bool allow_pd : 1;                     ///< Allow power down
+  } flags;
+} hf_i2c_master_bus_config_t;
 
 /**
  * @class EspI2cDevice
@@ -322,6 +386,28 @@ public:
    */
   i2c_master_dev_handle_t GetDeviceHandle() const noexcept { return handle_; }
 
+  //==============================================//
+  // MODE-AWARE OPERATION METHODS                //
+  //==============================================//
+
+  /**
+   * @brief Get the current I2C operation mode for this device
+   * @return Current operation mode (sync/async)
+   */
+  hf_i2c_mode_t GetMode() const noexcept;
+
+  /**
+   * @brief Check if this device is in async mode
+   * @return true if in async mode, false if in sync mode
+   */
+  bool IsAsyncMode() const noexcept;
+
+  /**
+   * @brief Check if this device is in sync mode
+   * @return true if in sync mode, false if in async mode
+   */
+  bool IsSyncMode() const noexcept;
+
 private:
   EspI2cBus* parent_bus_;                    ///< Parent bus pointer
   i2c_master_dev_handle_t handle_;           ///< ESP-IDF device handle
@@ -330,6 +416,7 @@ private:
   mutable hf_i2c_statistics_t statistics_;   ///< Per-device statistics
   mutable hf_i2c_diagnostics_t diagnostics_; ///< Per-device diagnostics
   mutable RtosMutex mutex_;                  ///< Device mutex for thread safety
+  hf_i2c_mode_t device_mode_;               ///< Device operation mode (inherited from bus)
 
   //==============================================//
   // ASYNC OPERATION SUPPORT                     //
@@ -399,6 +486,83 @@ private:
    * @return HardFOC I2C error code
    */
   hf_i2c_err_t ConvertEspError(esp_err_t esp_error) const noexcept;
+
+  //==============================================//
+  // DRY: COMMON OPERATION IMPLEMENTATIONS       //
+  //==============================================//
+
+  /**
+   * @brief Perform sync write operation (common implementation)
+   * @param data Data to write
+   * @param length Number of bytes to write
+   * @param timeout_ms Timeout in milliseconds
+   * @return Operation result
+   */
+  hf_i2c_err_t PerformSyncWrite(const hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms) noexcept;
+
+  /**
+   * @brief Perform sync read operation (common implementation)
+   * @param data Buffer to store read data
+   * @param length Number of bytes to read
+   * @param timeout_ms Timeout in milliseconds
+   * @return Operation result
+   */
+  hf_i2c_err_t PerformSyncRead(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms) noexcept;
+
+  /**
+   * @brief Perform sync write-read operation (common implementation)
+   * @param tx_data Data to write
+   * @param tx_length Number of bytes to write
+   * @param rx_data Buffer to store read data
+   * @param rx_length Number of bytes to read
+   * @param timeout_ms Timeout in milliseconds
+   * @return Operation result
+   */
+  hf_i2c_err_t PerformSyncWriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
+                                   hf_u8_t* rx_data, hf_u16_t rx_length,
+                                   hf_u32_t timeout_ms) noexcept;
+
+  /**
+   * @brief Perform async write operation (common implementation)
+   * @param data Data to write
+   * @param length Number of bytes to write
+   * @param callback User callback for completion
+   * @param user_data User data for callback
+   * @param timeout_ms Timeout to wait for slot availability
+   * @return Operation result
+   */
+  hf_i2c_err_t PerformAsyncWrite(const hf_u8_t* data, hf_u16_t length,
+                                hf_i2c_async_callback_t callback,
+                                void* user_data, hf_u32_t timeout_ms) noexcept;
+
+  /**
+   * @brief Perform async read operation (common implementation)
+   * @param data Buffer to store read data
+   * @param length Number of bytes to read
+   * @param callback User callback for completion
+   * @param user_data User data for callback
+   * @param timeout_ms Timeout to wait for slot availability
+   * @return Operation result
+   */
+  hf_i2c_err_t PerformAsyncRead(hf_u8_t* data, hf_u16_t length,
+                               hf_i2c_async_callback_t callback,
+                               void* user_data, hf_u32_t timeout_ms) noexcept;
+
+  /**
+   * @brief Perform async write-read operation (common implementation)
+   * @param tx_data Data to write
+   * @param tx_length Number of bytes to write
+   * @param rx_data Buffer to store read data
+   * @param rx_length Number of bytes to read
+   * @param callback User callback for completion
+   * @param user_data User data for callback
+   * @param timeout_ms Timeout to wait for slot availability
+   * @return Operation result
+   */
+  hf_i2c_err_t PerformAsyncWriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length,
+                                    hf_u8_t* rx_data, hf_u16_t rx_length,
+                                    hf_i2c_async_callback_t callback,
+                                    void* user_data, hf_u32_t timeout_ms) noexcept;
 };
 
 /**
@@ -679,12 +843,49 @@ public:
    */
   bool ResetBus() noexcept;
 
+  //==============================================//
+  // MODE MANAGEMENT METHODS                      //
+  //==============================================//
+
+  /**
+   * @brief Get the current I2C operation mode
+   * @return Current operation mode (sync/async)
+   */
+  hf_i2c_mode_t GetMode() const noexcept;
+
+  /**
+   * @brief Check if async mode is enabled
+   * @return true if in async mode, false if in sync mode
+   */
+  bool IsAsyncMode() const noexcept;
+
+  /**
+   * @brief Check if sync mode is enabled
+   * @return true if in sync mode, false if in async mode
+   */
+  bool IsSyncMode() const noexcept;
+
+  /**
+   * @brief Switch operation mode (recreates bus)
+   * @param new_mode New operation mode to switch to
+   * @param queue_depth Queue depth for async mode (ignored for sync mode)
+   * @return true if successful, false otherwise
+   * @note This will deinitialize and reinitialize the bus
+   */
+  bool SwitchMode(hf_i2c_mode_t new_mode, uint8_t queue_depth = 10) noexcept;
+
 private:
   hf_i2c_master_bus_config_t config_;                  ///< Bus configuration
   i2c_master_bus_handle_t bus_handle_;                 ///< ESP-IDF bus handle
   bool initialized_;                                   ///< Initialization status
   mutable RtosMutex mutex_;                            ///< Bus mutex for thread safety
   std::vector<std::unique_ptr<EspI2cDevice>> devices_; ///< Device instances
+  hf_i2c_mode_t current_mode_;                        ///< Current operation mode
+
+  /**
+   * @brief Deinitialize all devices (helper for cleanup)
+   */
+  void DeinitializeDevices() noexcept;
 
   /**
    * @brief Find device index by address.
