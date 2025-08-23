@@ -29,6 +29,7 @@ set(COMPONENT_REQUIRES
     esp_wifi
     bt
     nvs_flash
+    esp_driver_i2c
 )
 
 # Optional dependencies
