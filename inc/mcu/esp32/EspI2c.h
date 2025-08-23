@@ -121,6 +121,8 @@ extern "C" {
 #endif
 #include "driver/i2c_master.h"
 #include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #ifdef __cplusplus
 }
 #endif
@@ -323,6 +325,14 @@ public:
   bool WaitAsyncOperationComplete(hf_u32_t timeout_ms = 0) noexcept;
 
   /**
+   * @brief Wait for async operation completion using FreeRTOS task notification.
+   * @param timeout_ms Timeout in milliseconds (0 = wait indefinitely)
+   * @return true if operation completed, false on timeout
+   * @note This method properly handles ESP-IDF v5.5 async completion events
+   */
+  bool WaitAsyncOperationCompleteWithNotification(hf_u32_t timeout_ms = 0) noexcept;
+
+  /**
    * @brief Get I2C bus statistics.
    * @param statistics Reference to statistics structure to fill
    * @return Operation result
@@ -379,6 +389,12 @@ public:
    */
   i2c_master_dev_handle_t GetDeviceHandle() const noexcept { return handle_; }
 
+  /**
+   * @brief Get the FreeRTOS task handle for async operation completion.
+   * @return Task handle of the task that initiated the async operation
+   */
+  TaskHandle_t GetTaskHandle() const noexcept { return current_task_handle_; }
+
   //==============================================//
   // MODE-AWARE OPERATION METHODS                //
   //==============================================//
@@ -420,6 +436,14 @@ private:
   void* current_user_data_;                   ///< Current user data
   hf_u64_t async_start_time_;                 ///< Async operation start time
   hf_i2c_transaction_type_t current_op_type_; ///< Current operation type
+  TaskHandle_t current_task_handle_;          ///< Task handle for the current async operation
+
+  //==============================================//
+  // ASYNC COMPLETION RESULT STORAGE             //
+  //==============================================//
+  hf_i2c_err_t pending_completion_result_;   ///< Pending completion result from ISR
+  size_t pending_completion_bytes_;           ///< Pending completion bytes from ISR
+  bool completion_result_ready_;              ///< Flag indicating completion result is ready
 
   //==============================================//
   // ESP-IDF v5.5 ASYNC CALLBACK BRIDGE          //
@@ -442,6 +466,13 @@ private:
    * @param result Operation result
    */
   void HandleAsyncCompletion(hf_i2c_err_t result) noexcept;
+
+  /**
+   * @brief Handle async completion in task context (called from task notification).
+   * @param result Operation result
+   * @param bytes_transferred Number of bytes transferred
+   */
+  void HandleAsyncCompletionInTask(hf_i2c_err_t result, size_t bytes_transferred) noexcept;
 
   /**
    * @brief Register temporary async callback for single operation.
@@ -509,6 +540,14 @@ private:
    * @return true if setup successful, false otherwise
    */
   bool SetupAsyncOperation(hf_i2c_async_callback_t callback, void* user_data, hf_u32_t timeout_ms) noexcept;
+
+  /**
+   * @brief Store async completion result for task context retrieval.
+   * @param result Operation result
+   * @param bytes_transferred Number of bytes transferred
+   * @note This method is called from ISR context - keep it minimal!
+   */
+  void StoreAsyncCompletionResult(hf_i2c_err_t result, size_t bytes_transferred) noexcept;
 };
 
 /**

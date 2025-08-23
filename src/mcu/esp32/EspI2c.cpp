@@ -788,7 +788,8 @@ EspI2cDevice::EspI2cDevice(EspI2cBus* parent, i2c_master_dev_handle_t handle,
                            const hf_i2c_device_config_t& config)
           : BaseI2c(), parent_bus_(parent), handle_(handle), config_(config), initialized_(true),
         device_mode_(parent->GetMode()), async_operation_in_progress_(false), sync_operation_in_progress_(false), current_callback_(nullptr), current_user_data_(nullptr),
-        async_start_time_(0), current_op_type_(hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE) {
+        async_start_time_(0), current_op_type_(hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE), current_task_handle_(nullptr),
+        pending_completion_result_(hf_i2c_err_t::I2C_ERR_FAILURE), pending_completion_bytes_(0), completion_result_ready_(false) {
   // Initialize statistics and diagnostics
   statistics_ = hf_i2c_statistics_t{};
   diagnostics_ = hf_i2c_diagnostics_t{};
@@ -1179,20 +1180,60 @@ bool EspI2cDevice::WaitAsyncOperationComplete(hf_u32_t timeout_ms) noexcept {
     return true;
   }
 
+  // Simple polling wait - not ideal but safe
   uint64_t start_time = esp_timer_get_time();
   uint64_t timeout_us = static_cast<uint64_t>(timeout_ms) * 1000;
-
+  
   while (async_operation_in_progress_) {
     if (timeout_ms > 0 && (esp_timer_get_time() - start_time) > timeout_us) {
-      ESP_LOGW(TAG, "Timeout waiting for async operation to complete");
       return false;
     }
+    
+    // Small delay to avoid busy waiting
+    vTaskDelay(pdMS_TO_TICKS(1));
+  }
+  
+  return true;
+}
 
-    vTaskDelay(pdMS_TO_TICKS(1)); // Small delay to avoid busy waiting
+bool EspI2cDevice::WaitAsyncOperationCompleteWithNotification(hf_u32_t timeout_ms) noexcept {
+  if (!async_operation_in_progress_) {
+    return true;
   }
 
-  ESP_LOGI(TAG, "Async operation completed for device 0x%02X", config_.device_address);
-  return true;
+  // Wait for task notification from ISR callback
+  // This is the proper way to wait for ESP-IDF v5.5 async completion
+  uint32_t notification_value;
+  TickType_t timeout_ticks = (timeout_ms == 0) ? portMAX_DELAY : pdMS_TO_TICKS(timeout_ms);
+  
+  BaseType_t result = xTaskNotifyWait(
+    0,                          // Don't clear any bits on entry
+    UINT32_MAX,                 // Clear all bits on exit
+    &notification_value,         // Notification value (not used)
+    timeout_ticks                // Timeout
+  );
+  
+  if (result == pdTRUE) {
+    // Task was notified - async operation completed
+    // Retrieve the stored completion result and handle it
+    if (completion_result_ready_) {
+      HandleAsyncCompletionInTask(pending_completion_result_, pending_completion_bytes_);
+      
+      // Clear the stored result
+      completion_result_ready_ = false;
+      pending_completion_result_ = hf_i2c_err_t::I2C_ERR_FAILURE;
+      pending_completion_bytes_ = 0;
+      
+      return true;
+    } else {
+      ESP_LOGW(TAG, "Task notified but completion result not ready");
+      return false;
+    }
+  } else {
+    // Timeout occurred
+    ESP_LOGW(TAG, "Timeout waiting for async operation completion");
+    return false;
+  }
 }
 
 hf_i2c_err_t EspI2cDevice::GetStatistics(hf_i2c_statistics_t& statistics) const noexcept {
@@ -1308,45 +1349,14 @@ bool EspI2cDevice::SetupAsyncOperation(hf_i2c_async_callback_t callback, void* u
   }
   return true;
 }
+
+void EspI2cDevice::StoreAsyncCompletionResult(hf_i2c_err_t result, size_t bytes_transferred) noexcept {
+  // This method is called from ISR context - keep it minimal!
+  // Only store primitive values - no complex operations
   
-  // CRITICAL FIX: Only clear callbacks in async mode (queue_depth > 0)
-  // In sync mode (queue_depth = 0), ESP-IDF doesn't use callbacks, so no need to clear them
-  if (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
-    i2c_master_event_callbacks_t empty_cbs = {.on_trans_done = nullptr};
-    esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
-    if (clear_err != ESP_OK) {
-      ESP_LOGW(TAG, "Failed to clear callbacks for sync read: %s (continuing anyway)", esp_err_to_name(clear_err));
-      // Don't fail the operation - this is just cleanup
-    }
-  }
-
-  // Mark sync operation as in progress
-  sync_operation_in_progress_ = true;
-
-  // Use timeout_ms if specified, otherwise use default
-  int timeout = (timeout_ms == 0) ? 1000 : static_cast<int>(timeout_ms);
-
-  hf_u64_t start_time = esp_timer_get_time();
-  esp_err_t err = i2c_master_receive(handle_, data, length, timeout);
-  hf_u64_t end_time = esp_timer_get_time();
-
-  hf_i2c_err_t result = ConvertEspError(err);
-  UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, end_time - start_time);
-  
-  // Clear sync operation flag
-  sync_operation_in_progress_ = false;
-  
-  if (result != hf_i2c_err_t::I2C_SUCCESS) {
-    ESP_LOGE(TAG, "I2C read failed: %s", esp_err_to_name(err));
-    diagnostics_.last_error_code = result;
-    diagnostics_.last_error_timestamp_us = end_time;
-    diagnostics_.consecutive_errors++;
-  } else {
-    diagnostics_.consecutive_errors = 0;
-    ESP_LOGD(TAG, "I2C read successful: %d bytes in %lld us", length, end_time - start_time);
-  }
-
-  return result;
+  pending_completion_result_ = result;
+  pending_completion_bytes_ = bytes_transferred;
+  completion_result_ready_ = true;
 }
 
 // PerformSyncWriteRead function removed - logic moved inline to WriteRead method
@@ -1483,6 +1493,9 @@ void EspI2cDevice::StartAsyncOperationTracking() noexcept {
     return;
   }
   
+  // Store the current task handle for async completion notification
+  current_task_handle_ = xTaskGetCurrentTaskHandle();
+  
   // Start tracking the async operation
   async_operation_in_progress_ = true;
   async_start_time_ = esp_timer_get_time();
@@ -1503,22 +1516,22 @@ bool EspI2cDevice::InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
   
   if (evt_data) {
     switch (evt_data->event) {
-      case I2C_EVENT_DONE:
+      case I2C_MASTER_EVENT_DONE:
         // Transaction completed successfully
         result = hf_i2c_err_t::I2C_SUCCESS;
         break;
         
-      case I2C_EVENT_NACK:
+      case I2C_MASTER_EVENT_NACK:
         // No ACK received - transaction failed
         result = hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
         break;
         
-      case I2C_EVENT_TIMEOUT:
+      case I2C_MASTER_EVENT_TIMEOUT:
         // Transaction timed out
         result = hf_i2c_err_t::I2C_ERR_TIMEOUT;
         break;
         
-      case I2C_EVENT_ALIVE:
+      case I2C_MASTER_EVENT_ALIVE:
         // Bus is alive but transaction not complete yet
         return false; // Don't complete yet
         
@@ -1532,8 +1545,19 @@ bool EspI2cDevice::InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
     result = hf_i2c_err_t::I2C_ERR_FAILURE;
   }
 
-  // Handle completion in the device - ESP-IDF doesn't provide bytes transferred
-  device->HandleAsyncCompletion(result);
+  // Store completion result in device for task context retrieval
+  // This is safe because we're only storing primitive values
+  device->StoreAsyncCompletionResult(result, evt_data ? evt_data->trans_len : 0);
+  
+  // Notify the task that initiated the async operation
+  // This will wake up the task and allow it to handle completion safely
+  BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+  vTaskNotifyGiveFromISR(device->GetTaskHandle(), &xHigherPriorityTaskWoken);
+  
+  // Yield if a higher priority task was woken
+  if (xHigherPriorityTaskWoken) {
+    portYIELD_FROM_ISR();
+  }
 
   return false; // No high priority wake needed
 }
@@ -1573,6 +1597,49 @@ void EspI2cDevice::HandleAsyncCompletion(hf_i2c_err_t result) noexcept {
 
   ESP_LOGD(TAG, "Async operation completed for device 0x%02X: %s", 
            config_.device_address, HfI2CErrToString(result).data());
+}
+
+void EspI2cDevice::HandleAsyncCompletionInTask(hf_i2c_err_t result, size_t bytes_transferred) noexcept {
+  // This method is called in task context - safe to perform complex operations
+  
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  
+  // Safety check: ensure device is still valid
+  if (!initialized_ || !handle_) {
+    ESP_LOGW(TAG, "Async completion for deinitialized device - ignoring");
+    return;
+  }
+  
+  // Store callback info before clearing it
+  hf_i2c_async_callback_t callback = current_callback_;
+  void* user_data = current_user_data_;
+  
+  // Clear the async state
+  async_operation_in_progress_ = false;
+  current_callback_ = nullptr;
+  current_user_data_ = nullptr;
+  current_task_handle_ = nullptr;
+  
+  // Unregister the ESP-IDF callback (this allows next async operation)
+  // ESP-IDF requires a valid callback structure even when clearing
+  i2c_master_event_callbacks_t empty_cbs = { .on_trans_done = nullptr };
+  esp_err_t err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
+  if (err != ESP_OK) {
+    ESP_LOGW(TAG, "Failed to unregister ESP-IDF callback in completion: %s (continuing)", esp_err_to_name(err));
+    // Continue with callback execution even if unregistration fails
+  }
+  
+  // Update statistics
+  UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, bytes_transferred, 
+                   esp_timer_get_time() - async_start_time_);
+  
+  // Call user callback with actual bytes transferred
+  if (callback) {
+    callback(result, bytes_transferred, user_data);
+  }
+
+  ESP_LOGD(TAG, "Async operation completed for device 0x%02X: %s (%zu bytes)", 
+           config_.device_address, HfI2CErrToString(result).data(), bytes_transferred);
 }
 
 // Mode-aware operation methods
