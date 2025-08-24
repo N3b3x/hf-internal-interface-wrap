@@ -41,6 +41,7 @@ extern "C" {
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "driver/gpio.h"
 #ifdef __cplusplus
 }
 #endif
@@ -79,10 +80,18 @@ const char* HfI2COperationToString(hf_i2c_operation_t op) noexcept {
 //======================================================//
 
 EspI2cBus::EspI2cBus(const hf_i2c_master_bus_config_t& config) noexcept
-    : config_(config), bus_handle_(nullptr), initialized_(false), current_mode_(config.mode) {
-  ESP_LOGI(TAG, "Creating I2C bus on port %d in %s mode", 
-           config_.i2c_port, 
+    : config_(config), bus_handle_(nullptr), initialized_(false), mutex_(), devices_(),
+      current_mode_(config.mode) {
+  
+  ESP_LOGI(TAG, "EspI2cBus: Created for port %d (SDA:GPIO%d, SCL:GPIO%d) in %s mode", 
+           config.i2c_port, config.sda_io_num, config.scl_io_num,
            (current_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? "ASYNC" : "SYNC");
+  
+  // Initialize bus-level statistics and diagnostics
+  statistics_ = hf_i2c_statistics_t{};
+  diagnostics_ = hf_i2c_diagnostics_t{};
+  
+  ESP_LOGI(TAG, "EspI2cBus: Ready for initialization");
 }
 
 EspI2cBus::~EspI2cBus() noexcept {
@@ -94,7 +103,7 @@ bool EspI2cBus::Initialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (initialized_) {
-    ESP_LOGW(TAG, "I2C bus already initialized");
+    ESP_LOGI(TAG, "I2C bus already initialized");
     return true;
   }
 
@@ -119,37 +128,36 @@ bool EspI2cBus::Initialize() noexcept {
       ESP_LOGW(TAG, "Async mode requires trans_queue_depth>0, setting to 10 (was 0)");
       actual_queue_depth = 32;
     }
-  }
+  }         
+  // Create ESP-IDF master bus configuration
+  i2c_master_bus_config_t bus_config = {
+    .i2c_port = config_.i2c_port,
+    .sda_io_num = static_cast<gpio_num_t>(config_.sda_io_num),
+    .scl_io_num = static_cast<gpio_num_t>(config_.scl_io_num),
+    .clk_source = static_cast<i2c_clock_source_t>(config_.clk_source),
+    .glitch_ignore_cnt = static_cast<uint8_t>(config_.glitch_ignore_cnt),
+    .intr_priority = static_cast<int>(config_.intr_priority),
+    .trans_queue_depth = actual_queue_depth,
+    .flags = {
+      .enable_internal_pullup = config_.flags.enable_internal_pullup,
+      .allow_pd = config_.flags.allow_pd,
+    },
+  };
 
-  // Create ESP-IDF bus configuration
-  i2c_master_bus_config_t bus_cfg = {};
-  bus_cfg.i2c_port = static_cast<i2c_port_num_t>(config_.i2c_port);
-  bus_cfg.sda_io_num = static_cast<gpio_num_t>(config_.sda_io_num);
-  bus_cfg.scl_io_num = static_cast<gpio_num_t>(config_.scl_io_num);
-  bus_cfg.clk_source = static_cast<i2c_clock_source_t>(config_.clk_source);
-  bus_cfg.glitch_ignore_cnt = static_cast<uint8_t>(config_.glitch_ignore_cnt);
-  bus_cfg.intr_priority = config_.intr_priority;
-  bus_cfg.trans_queue_depth = actual_queue_depth;
-  bus_cfg.flags.enable_internal_pullup = config_.flags.enable_internal_pullup;
-  bus_cfg.flags.allow_pd = config_.flags.allow_pd;
-
-  ESP_LOGI(TAG, "ESP-IDF config: port=%d, sda=%d, scl=%d, queue_depth=%d, mode=%s",
-           bus_cfg.i2c_port, bus_cfg.sda_io_num, bus_cfg.scl_io_num, 
-           actual_queue_depth, (current_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? "ASYNC" : "SYNC");
-
-  // Create the master bus
-  esp_err_t err = i2c_new_master_bus(&bus_cfg, &bus_handle_);
+  // Create the I2C master bus
+  esp_err_t err = i2c_new_master_bus(&bus_config, &bus_handle_);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to create I2C master bus: %s", esp_err_to_name(err));
     return false;
   }
 
-  // CRITICAL FIX: Wait for bus to be fully ready (ESP32-C6 requirement)
+  ESP_LOGI(TAG, "I2C master bus created successfully");
+
+  // Wait for bus to be fully ready (ESP32-C6 requirement)
   // This ensures the I2C peripheral is fully initialized before any operations
   err = i2c_master_bus_wait_all_done(bus_handle_, 100);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to wait for I2C bus readiness: %s", esp_err_to_name(err));
-    // Clean up and return failure
     i2c_del_master_bus(bus_handle_);
     bus_handle_ = nullptr;
     return false;
@@ -157,7 +165,6 @@ bool EspI2cBus::Initialize() noexcept {
   ESP_LOGI(TAG, "I2C bus is ready and waiting for operations");
 
   // Try bus reset to ensure peripheral is in known state
-  // This can fail when no physical I2C devices are connected or pull-ups are missing
   err = i2c_master_bus_reset(bus_handle_);
   if (err != ESP_OK) {
     ESP_LOGW(TAG, "Bus reset failed: %s (this is normal without a stuck bus [SDA and/or SCL held LOW])", esp_err_to_name(err));
@@ -256,59 +263,48 @@ int EspI2cBus::CreateDevice(const hf_i2c_device_config_t& device_config) noexcep
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
-    ESP_LOGE(TAG, "I2C bus not initialized");
+    ESP_LOGE(TAG, "Cannot create device on uninitialized bus");
     return -1;
   }
 
+  // CRITICAL DEBUG: Track device creation input
+  ESP_LOGI(TAG, "=== BUS CREATE DEVICE DEBUG ===");
+  ESP_LOGI(TAG, "Input device_config.device_address = 0x%02X", device_config.device_address);
   ESP_LOGI(TAG, "Creating I2C device at address 0x%02X in %s mode", 
            device_config.device_address,
            (current_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? "ASYNC" : "SYNC");
 
   // Check if device already exists
   if (FindDeviceIndexByAddress(device_config.device_address) >= 0) {
-    ESP_LOGW(TAG, "Device at address 0x%02X already exists", device_config.device_address);
-    return -1;
-  }
-
-  // Create ESP-IDF device configuration
-  i2c_device_config_t dev_cfg = {};
-  dev_cfg.dev_addr_length = static_cast<i2c_addr_bit_len_t>(device_config.dev_addr_length);
-  dev_cfg.device_address = device_config.device_address;
-  dev_cfg.scl_speed_hz = device_config.scl_speed_hz;
-  dev_cfg.scl_wait_us = device_config.scl_wait_us;
-  dev_cfg.flags.disable_ack_check = device_config.disable_ack_check;
-
-  // Add device to the bus
-  i2c_master_dev_handle_t dev_handle;
-  esp_err_t err = i2c_master_bus_add_device(bus_handle_, &dev_cfg, &dev_handle);
-  if (err != ESP_OK) {
-    ESP_LOGE(TAG, "Failed to add I2C device: %s", esp_err_to_name(err));
+    ESP_LOGE(TAG, "Device with address 0x%02X already exists", device_config.device_address);
     return -1;
   }
 
   // Create EspI2cDevice instance using nothrow allocation
-  auto device = hf::utils::make_unique_nothrow<EspI2cDevice>(this, dev_handle, device_config);
+  // Note: We don't call i2c_master_bus_add_device here - that happens in Initialize()
+  auto device = hf::utils::make_unique_nothrow<EspI2cDevice>(this, device_config);
   if (!device) {
     ESP_LOGE(TAG, "Failed to allocate memory for EspI2cDevice");
-    esp_err_t cleanup_err = i2c_master_bus_rm_device(dev_handle);
-    if (cleanup_err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to remove I2C device during cleanup: %s", esp_err_to_name(cleanup_err));
-    }
     return -1;
   }
 
   // Check if devices vector can accommodate new device
   if (devices_.size() >= devices_.max_size()) {
-    ESP_LOGE(TAG, "Failed to add EspI2cDevice: maximum devices reached");
-    i2c_master_bus_rm_device(dev_handle);
+    ESP_LOGE(TAG, "Maximum number of devices reached");
     return -1;
   }
 
+  // Add device to our internal vector
+  int device_index = static_cast<int>(devices_.size());
   devices_.push_back(std::move(device));
-  int device_index = devices_.size() - 1;
 
-  ESP_LOGI(TAG, "I2C device created successfully at index %d in %s mode", 
-           device_index, (current_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? "ASYNC" : "SYNC");
+  // Update device statistics
+  statistics_.devices_added++;
+  diagnostics_.active_device_count = static_cast<hf_u32_t>(devices_.size());
+
+  ESP_LOGI(TAG, "Created EspI2cDevice at index %d for address 0x%02X", device_index, device_config.device_address);
+  ESP_LOGI(TAG, "Note: Device must be initialized before use (call Initialize())");
+
   return device_index;
 }
 
@@ -423,6 +419,14 @@ bool EspI2cBus::CustomFastProbe(hf_u16_t device_addr, hf_u32_t timeout_ms) noexc
     return false;
   }
   
+  // Initialize the temporary device before use
+  if (!temp_device->Initialize()) {
+    ESP_LOGE(TAG, "CustomFastProbe: Failed to initialize temporary device for address 0x%02X", device_addr);
+    // Clean up the failed device
+    RemoveDevice(device_index);
+    return false;
+  }
+  
   // Perform fast probe by reading 1 byte
   uint8_t dummy_byte = 0x11;
   uint64_t probe_start_time = esp_timer_get_time();
@@ -478,6 +482,10 @@ bool EspI2cBus::RemoveDevice(int device_index) noexcept {
 
   // Remove from vector (destructor won't try to remove from ESP-IDF)
   devices_.erase(devices_.begin() + device_index);
+
+  // Update device statistics
+  statistics_.devices_removed++;
+  diagnostics_.active_device_count = static_cast<hf_u32_t>(devices_.size());
 
   ESP_LOGI(TAG, "I2C device removed successfully from index %d", device_index);
   return true;
@@ -542,6 +550,11 @@ size_t EspI2cBus::ScanDevices(std::vector<hf_u16_t>& found_devices, hf_u16_t sta
   }
 
   ESP_LOGI(TAG, "ScanDevices: Scan completed. Found %zu devices", found_devices.size());
+  
+  // Update scan statistics
+  diagnostics_.total_device_scans++;
+  diagnostics_.devices_found_last_scan = static_cast<hf_u32_t>(found_devices.size());
+  
   return found_devices.size();
 }
 
@@ -606,10 +619,26 @@ bool EspI2cBus::ResetBus() noexcept {
   if (err != ESP_OK) {
     ESP_LOGW(TAG, "I2C bus reset failed: %s (normal without physical devices or pull-ups)", esp_err_to_name(err));
     ESP_LOGI(TAG, "Bus reset not required for testing scenarios - continuing");
+    
+    // Update error recovery statistics for all devices
+    for (auto& device : devices_) {
+      if (device) {
+        device->UpdateErrorRecoveryAttempt();
+      }
+    }
+    
     return true; // Return true to indicate this is acceptable for testing
   }
 
   ESP_LOGI(TAG, "I2C bus reset successfully");
+  
+  // Update error recovery statistics for all devices
+  for (auto& device : devices_) {
+    if (device) {
+      device->UpdateErrorRecoveryAttempt();
+    }
+  }
+  
   return true;
 }
 
@@ -784,70 +813,135 @@ hf_i2c_err_t EspI2cBus::ConvertEspError(esp_err_t esp_error) const noexcept {
 // ESP I2C DEVICE IMPLEMENTATION
 //======================================================//
 
-EspI2cDevice::EspI2cDevice(EspI2cBus* parent, i2c_master_dev_handle_t handle,
-                           const hf_i2c_device_config_t& config)
-          : BaseI2c(), parent_bus_(parent), handle_(handle), config_(config), initialized_(true),
-        device_mode_(parent->GetMode()), async_operation_in_progress_(false), sync_operation_in_progress_(false), current_callback_(nullptr), current_user_data_(nullptr),
-        async_start_time_(0), current_op_type_(hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE) {
-  // Initialize statistics and diagnostics
-  statistics_ = hf_i2c_statistics_t{};
-  diagnostics_ = hf_i2c_diagnostics_t{};
+EspI2cDevice::EspI2cDevice(EspI2cBus* parent, const hf_i2c_device_config_t& config)
+    : parent_bus_(parent), handle_(nullptr), config_(config), initialized_(false),
+      statistics_(), diagnostics_(), mutex_(), device_mode_(parent ? parent->GetMode() : hf_i2c_mode_t::HF_I2C_MODE_SYNC),
+      async_operation_in_progress_(false), sync_operation_in_progress_(false),
+      current_callback_(nullptr), current_user_data_(nullptr), async_start_time_(0),
+      current_op_type_(hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE) {
+  
+  if (!parent_bus_) {
+    ESP_LOGE(TAG, "EspI2cDevice: Parent bus cannot be null");
+    return;
+  }
 
+  // Initialize diagnostics with default values
   diagnostics_.bus_healthy = true;
+  diagnostics_.sda_line_state = true;
+  diagnostics_.scl_line_state = true;
+  diagnostics_.bus_locked = false;
   diagnostics_.last_error_code = hf_i2c_err_t::I2C_SUCCESS;
+  diagnostics_.last_error_timestamp_us = 0;
+  diagnostics_.consecutive_errors = 0;
+  diagnostics_.error_recovery_attempts = 0;
+  diagnostics_.bus_utilization_percent = 0.0f;
+  diagnostics_.average_response_time_us = 0;
+  diagnostics_.clock_stretching_events = 0;
+  diagnostics_.active_device_count = 0;
+  diagnostics_.total_device_scans = 0;
+  diagnostics_.devices_found_last_scan = 0;
 
-  ESP_LOGI(TAG, "EspI2cDevice created for address 0x%02X in %s mode", 
-           config_.device_address,
-           (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? "ASYNC" : "SYNC");
+  // Initialize statistics with default values
+  statistics_.total_transactions = 0;
+  statistics_.successful_transactions = 0;
+  statistics_.failed_transactions = 0;
+  statistics_.timeout_count = 0;
+  statistics_.bytes_written = 0;
+  statistics_.bytes_read = 0;
+  statistics_.total_transaction_time_us = 0;
+  statistics_.max_transaction_time_us = 0;
+  statistics_.min_transaction_time_us = UINT32_MAX;
+  statistics_.nack_errors = 0;
+  statistics_.bus_errors = 0;
+  statistics_.arbitration_lost_count = 0;
+  statistics_.clock_stretch_timeouts = 0;
+  statistics_.devices_added = 0;
+  statistics_.devices_removed = 0;
+
+  ESP_LOGI(TAG, "EspI2cDevice: Created for address 0x%02X, SCL speed: %lu Hz", 
+           config.device_address, config.scl_speed_hz);
+  ESP_LOGI(TAG, "Note: Device must be initialized before use (call Initialize())");
 }
 
 EspI2cDevice::~EspI2cDevice() noexcept {
-  ESP_LOGI(TAG, "Destroying EspI2cDevice for address 0x%02X", config_.device_address);
-  Deinitialize();
+  ESP_LOGI(TAG, "EspI2cDevice destructor called for address 0x%02X", config_.device_address);
+  
+  // Ensure device is properly deinitialized
+  if (initialized_) {
+    ESP_LOGW(TAG, "Device was still initialized during destruction - calling Deinitialize()");
+    Deinitialize();
+  }
+  
+  // Clear any remaining references
+  parent_bus_ = nullptr;
+  handle_ = nullptr;
+  current_callback_ = nullptr;
+  current_user_data_ = nullptr;
+  
+  ESP_LOGI(TAG, "EspI2cDevice destructor completed for address 0x%02X", config_.device_address);
 }
 
 bool EspI2cDevice::Initialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (initialized_) {
+    ESP_LOGI(TAG, "EspI2cDevice already initialized for address 0x%02X", config_.device_address);
     return true;
   }
 
-  // Device is already initialized when created by the bus
+  if (!parent_bus_ || !parent_bus_->IsInitialized()) {
+    ESP_LOGE(TAG, "Cannot initialize device: parent bus not available or not initialized");
+    return false;
+  }
+
+  ESP_LOGI(TAG, "Initializing EspI2cDevice for address 0x%02X", config_.device_address);
+
+  // Create ESP-IDF device configuration
+  i2c_device_config_t dev_cfg = {
+    .dev_addr_length = static_cast<i2c_addr_bit_len_t>(config_.dev_addr_length),
+    .device_address = config_.device_address,
+    .scl_speed_hz = config_.scl_speed_hz,
+    .scl_wait_us = config_.scl_wait_us,
+    .flags = {
+      .disable_ack_check = config_.disable_ack_check
+    }
+  };
+
+  // Add device to the ESP-IDF bus
+  i2c_master_dev_handle_t dev_handle;
+  esp_err_t err = i2c_master_bus_add_device(parent_bus_->GetHandle(), &dev_cfg, &dev_handle);
+  
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to add I2C device to ESP-IDF bus: %s", esp_err_to_name(err));
+    return false;
+  }
+
+  handle_ = dev_handle;
   initialized_ = true;
+  
+  ESP_LOGI(TAG, "EspI2cDevice initialized successfully for address 0x%02X", config_.device_address);
   return true;
 }
 
 bool EspI2cDevice::MarkAsDeinitialized() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
+  // Check if device is initialized
   if (!initialized_) {
+    ESP_LOGI(TAG, "Device at address 0x%02X is already marked as deinitialized", config_.device_address);
     return true;
   }
 
-  ESP_LOGI(TAG, "Marking EspI2cDevice as deinitialized for address 0x%02X", config_.device_address);
-
-  // Clear internal state but don't remove from ESP-IDF bus
-  // The bus handles ESP-IDF cleanup
+  ESP_LOGI(TAG, "Marking device at address 0x%02X as deinitialized", config_.device_address);
   
-  // Clear any pending async operations
-  if (async_operation_in_progress_) {
-    ESP_LOGW(TAG, "Device marked as deinitialized while async operation in progress");
-    async_operation_in_progress_ = false;
-    current_callback_ = nullptr;
-    current_user_data_ = nullptr;
-  }
-
-  if (sync_operation_in_progress_) {
-    ESP_LOGW(TAG, "Device marked as deinitialized while sync operation in progress");
-    sync_operation_in_progress_ = false;
-  }
-
-  // Clear handle reference (bus will handle ESP-IDF cleanup)
-  handle_ = nullptr;
-  
+  // Clear internal state without ESP-IDF cleanup
   initialized_ = false;
-  ESP_LOGI(TAG, "EspI2cDevice marked as deinitialized for address 0x%02X", config_.device_address);
+  async_operation_in_progress_ = false;
+  sync_operation_in_progress_ = false;
+  current_callback_ = nullptr;
+  current_user_data_ = nullptr;
+  async_start_time_ = 0;
+  
+  // Note: handle_ is not cleared here as ESP-IDF cleanup is handled by the parent bus
+  
   return true;
 }
 
@@ -855,42 +949,58 @@ bool EspI2cDevice::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
   if (!initialized_) {
+    ESP_LOGI(TAG, "EspI2cDevice already deinitialized");
     return true;
   }
 
-  ESP_LOGI(TAG, "Deinitializing EspI2cDevice for address 0x%02X", config_.device_address);
-
-  // Don't remove from ESP-IDF bus - the bus handles this
-  // Just clear internal state and mark as deinitialized
-  
-  // Clear any pending async operations
+  // Wait for any pending async operations to complete
   if (async_operation_in_progress_) {
-    ESP_LOGW(TAG, "Device deinitialized while async operation in progress");
-    async_operation_in_progress_ = false;
-    current_callback_ = nullptr;
-    current_user_data_ = nullptr;
+    ESP_LOGW(TAG, "Waiting for async operation to complete before deinitialization");
+    // Wait up to 1 second for async operation to complete
+    uint32_t wait_start = esp_timer_get_time() / 1000;
+    while (async_operation_in_progress_ && ((esp_timer_get_time() / 1000) - wait_start < 1000)) {
+      vTaskDelay(pdMS_TO_TICKS(10));
+    }
+    if (async_operation_in_progress_) {
+      ESP_LOGW(TAG, "Async operation did not complete within timeout - forcing deinitialization");
+    }
   }
 
-  if (sync_operation_in_progress_) {
-    ESP_LOGW(TAG, "Device deinitialized while sync operation in progress");
-    sync_operation_in_progress_ = false;
+  // Remove device from ESP-IDF bus if we have a valid handle
+  if (handle_ && parent_bus_ && parent_bus_->GetHandle()) {
+    esp_err_t err = i2c_master_bus_rm_device(handle_);
+    if (err != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to remove I2C device from ESP-IDF bus: %s", esp_err_to_name(err));
+      // Continue with deinitialization even if removal fails
+    } else {
+      ESP_LOGI(TAG, "Successfully removed I2C device from ESP-IDF bus");
+    }
+    
+    // Clear the handle
+    handle_ = nullptr;
   }
 
-  // Clear handle reference (bus will handle ESP-IDF cleanup)
-  handle_ = nullptr;
-
+  // Reset internal state
   initialized_ = false;
-  ESP_LOGI(TAG, "EspI2cDevice deinitialized for address 0x%02X", config_.device_address);
+  async_operation_in_progress_ = false;
+  sync_operation_in_progress_ = false;
+  current_callback_ = nullptr;
+  current_user_data_ = nullptr;
+  async_start_time_ = 0;
+
+  ESP_LOGI(TAG, "EspI2cDevice deinitialized successfully for address 0x%02X", config_.device_address);
   return true;
 }
 
 hf_i2c_err_t EspI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
                                  hf_u32_t timeout_ms) noexcept {
-  if (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
-    ESP_LOGE(TAG, "Write() called on async-mode device. Use WriteAsync() instead.");
-    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot write to uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
-  
+
   // Validate operation parameters
   if (!ValidateOperation(data, length, hf_i2c_operation_t::HF_I2C_OP_WRITE)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
@@ -898,44 +1008,61 @@ hf_i2c_err_t EspI2cDevice::Write(const hf_u8_t* data, hf_u16_t length,
 
   // Setup sync operation
   if (!SetupSyncOperation(hf_i2c_operation_t::HF_I2C_OP_WRITE)) {
-    return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
   }
 
-  // Use timeout_ms if specified, otherwise use default
-  int timeout = (timeout_ms == 0) ? 1000 : static_cast<int>(timeout_ms);
+  // Use default timeout if none specified
+  if (timeout_ms == 0) {
+    timeout_ms = HF_I2C_DEFAULT_TIMEOUT_MS;
+  }
 
-  // Perform the I2C write operation
-  hf_u64_t start_time = esp_timer_get_time();
-  esp_err_t err = i2c_master_transmit(handle_, data, length, timeout);
-  hf_u64_t end_time = esp_timer_get_time();
+  ESP_LOGD(TAG, "Writing %u bytes to device 0x%02X with timeout %lu ms", 
+           length, config_.device_address, timeout_ms);
 
-  // Convert result and update statistics
-  hf_i2c_err_t result = ConvertEspError(err);
-  UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, end_time - start_time);
+  uint64_t start_time = esp_timer_get_time();
+  esp_err_t err = i2c_master_transmit(handle_, data, length, timeout_ms);
+  uint64_t end_time = esp_timer_get_time();
+
+  // Update statistics with write-specific information
+  bool success = (err == ESP_OK);
+  UpdateStatistics(success, length, end_time - start_time);
   
+  // Update write-specific statistics
+  if (success) {
+    statistics_.bytes_written += length;
+  } else {
+    // Update diagnostics with specific error information
+    hf_i2c_err_t hf_error = ConvertEspError(err);
+    diagnostics_.last_error_code = hf_error;
+    diagnostics_.last_error_timestamp_us = end_time;
+    
+    // Update specific error statistics
+    UpdateErrorStatistics(hf_error);
+    
+    // Log specific error details
+    ESP_LOGW(TAG, "Write failed: %s (ESP-IDF: %s)", 
+             HfI2CErrToString(hf_error).data(), esp_err_to_name(err));
+  }
+
   // Cleanup sync operation
   CleanupSyncOperation();
-  
-  // Log result
-  if (result != hf_i2c_err_t::I2C_SUCCESS) {
-    ESP_LOGE(TAG, "I2C write failed: %s", esp_err_to_name(err));
-    diagnostics_.last_error_code = result;
-    diagnostics_.last_error_timestamp_us = end_time;
-    diagnostics_.consecutive_errors++;
-  } else {
-    diagnostics_.consecutive_errors = 0;
-    ESP_LOGD(TAG, "I2C write successful: %d bytes in %lld us", length, end_time - start_time);
+
+  if (err != ESP_OK) {
+    return ConvertEspError(err);
   }
 
-  return result;
+  ESP_LOGD(TAG, "Write successful: %u bytes to device 0x%02X", length, config_.device_address);
+  return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 hf_i2c_err_t EspI2cDevice::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms) noexcept {
-  if (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
-    ESP_LOGE(TAG, "Read() called on async-mode device. Use ReadAsync() instead.");
-    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot read from uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
-  
+
   // Validate operation parameters
   if (!ValidateOperation(data, length, hf_i2c_operation_t::HF_I2C_OP_READ)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
@@ -943,85 +1070,118 @@ hf_i2c_err_t EspI2cDevice::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout
 
   // Setup sync operation
   if (!SetupSyncOperation(hf_i2c_operation_t::HF_I2C_OP_READ)) {
-    return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
   }
 
-  // Use timeout_ms if specified, otherwise use default
-  int timeout = (timeout_ms == 0) ? 1000 : static_cast<int>(timeout_ms);
+  // Use default timeout if none specified
+  if (timeout_ms == 0) {
+    timeout_ms = HF_I2C_DEFAULT_TIMEOUT_MS;
+  }
 
-  // Perform the I2C read operation
-  hf_u64_t start_time = esp_timer_get_time();
-  esp_err_t err = i2c_master_receive(handle_, data, length, timeout);
-  hf_u64_t end_time = esp_timer_get_time();
+  ESP_LOGD(TAG, "Reading %u bytes from device 0x%02X with timeout %lu ms", 
+           length, config_.device_address, timeout_ms);
 
-  // Convert result and update statistics
-  hf_i2c_err_t result = ConvertEspError(err);
-  UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, length, end_time - start_time);
+  uint64_t start_time = esp_timer_get_time();
+  esp_err_t err = i2c_master_receive(handle_, data, length, timeout_ms);
+  uint64_t end_time = esp_timer_get_time();
+
+  // Update statistics with read-specific information
+  bool success = (err == ESP_OK);
+  UpdateStatistics(success, length, end_time - start_time);
   
+  // Update read-specific statistics
+  if (success) {
+    statistics_.bytes_read += length;
+  } else {
+    // Update diagnostics with specific error information
+    hf_i2c_err_t hf_error = ConvertEspError(err);
+    diagnostics_.last_error_code = hf_error;
+    diagnostics_.last_error_timestamp_us = end_time;
+    
+    // Update specific error statistics
+    UpdateErrorStatistics(hf_error);
+    
+    // Log specific error details
+    ESP_LOGW(TAG, "Read failed: %s (ESP-IDF: %s)", 
+             HfI2CErrToString(hf_error).data(), esp_err_to_name(err));
+  }
+
   // Cleanup sync operation
   CleanupSyncOperation();
-  
-  // Log result
-  if (result != hf_i2c_err_t::I2C_SUCCESS) {
-    ESP_LOGE(TAG, "I2C read failed: %s", esp_err_to_name(err));
-    diagnostics_.last_error_code = result;
-    diagnostics_.last_error_timestamp_us = end_time;
-    diagnostics_.consecutive_errors++;
-  } else {
-    diagnostics_.consecutive_errors = 0;
-    ESP_LOGD(TAG, "I2C read successful: %d bytes in %lld us", length, end_time - start_time);
+
+  if (err != ESP_OK) {
+    return ConvertEspError(err);
   }
 
-  return result;
+  ESP_LOGD(TAG, "Read successful: %u bytes from device 0x%02X", length, config_.device_address);
+  return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 hf_i2c_err_t EspI2cDevice::WriteRead(const hf_u8_t* tx_data, hf_u16_t tx_length, hf_u8_t* rx_data,
                                      hf_u16_t rx_length, hf_u32_t timeout_ms) noexcept {
-  if (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
-    ESP_LOGE(TAG, "WriteRead() called on async-mode device. Use WriteReadAsync() instead.");
-    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot perform WriteRead on uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
-  
+
   // Validate operation parameters
-  if (!tx_data || tx_length == 0 || !rx_data || rx_length == 0) {
-    ESP_LOGE(TAG, "Invalid parameters for WriteRead operation");
+  if (!ValidateOperation(tx_data, tx_length, hf_i2c_operation_t::HF_I2C_OP_WRITE_READ) ||
+      !ValidateOperation(rx_data, rx_length, hf_i2c_operation_t::HF_I2C_OP_WRITE_READ)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
   }
 
   // Setup sync operation
   if (!SetupSyncOperation(hf_i2c_operation_t::HF_I2C_OP_WRITE_READ)) {
-    return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
   }
 
-  // Use timeout_ms if specified, otherwise use default
-  int timeout = (timeout_ms == 0) ? 1000 : static_cast<int>(timeout_ms);
+  // Use default timeout if none specified
+  if (timeout_ms == 0) {
+    timeout_ms = HF_I2C_DEFAULT_TIMEOUT_MS;
+  }
 
-  // Perform the I2C write-read operation
-  hf_u64_t start_time = esp_timer_get_time();
-  esp_err_t err = i2c_master_transmit_receive(handle_, tx_data, tx_length, rx_data, rx_length, timeout);
-  hf_u64_t end_time = esp_timer_get_time();
+  ESP_LOGD(TAG, "Writing %u bytes and reading %u bytes from device 0x%02X with timeout %lu ms", 
+           tx_length, rx_length, config_.device_address, timeout_ms);
 
-  // Convert result and update statistics
-  hf_i2c_err_t result = ConvertEspError(err);
+  uint64_t start_time = esp_timer_get_time();
+  esp_err_t err = i2c_master_transmit_receive(handle_, tx_data, tx_length, rx_data, rx_length, timeout_ms);
+  uint64_t end_time = esp_timer_get_time();
+
+  // Update statistics with combined operation information
+  bool success = (err == ESP_OK);
   size_t total_bytes = tx_length + rx_length;
-  UpdateStatistics(result == hf_i2c_err_t::I2C_SUCCESS, total_bytes, end_time - start_time);
+  UpdateStatistics(success, total_bytes, end_time - start_time);
   
+  // Update read/write-specific statistics
+  if (success) {
+    statistics_.bytes_written += tx_length;
+    statistics_.bytes_read += rx_length;
+  } else {
+    // Update diagnostics with specific error information
+    hf_i2c_err_t hf_error = ConvertEspError(err);
+    diagnostics_.last_error_code = hf_error;
+    diagnostics_.last_error_timestamp_us = end_time;
+    
+    // Update specific error statistics
+    UpdateErrorStatistics(hf_error);
+    
+    // Log specific error details
+    ESP_LOGW(TAG, "WriteRead failed: %s (ESP-IDF: %s)", 
+             HfI2CErrToString(hf_error).data(), esp_err_to_name(err));
+  }
+
   // Cleanup sync operation
   CleanupSyncOperation();
-  
-  // Log result
-  if (result != hf_i2c_err_t::I2C_SUCCESS) {
-    ESP_LOGE(TAG, "I2C write-read failed: %s", esp_err_to_name(err));
-    diagnostics_.last_error_code = result;
-    diagnostics_.last_error_timestamp_us = end_time;
-    diagnostics_.consecutive_errors++;
-  } else {
-    diagnostics_.consecutive_errors = 0;
-    ESP_LOGD(TAG, "I2C write-read successful: %d+%d bytes in %lld us", 
-             tx_length, rx_length, end_time - start_time);
+
+  if (err != ESP_OK) {
+    return ConvertEspError(err);
   }
 
-  return result;
+  ESP_LOGD(TAG, "WriteRead successful: %d+%d bytes from device 0x%02X", 
+           tx_length, rx_length, config_.device_address);
+  return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 //==============================================//
@@ -1032,90 +1192,112 @@ hf_i2c_err_t EspI2cDevice::WriteAsync(const hf_u8_t* data, hf_u16_t length,
                                       hf_i2c_async_callback_t callback,
                                       void* user_data,
                                       hf_u32_t timeout_ms) noexcept {
-  if (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_SYNC) {
-    ESP_LOGE(TAG, "WriteAsync() called on sync-mode device. Use Write() instead.");
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot perform async write on uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  }
+
+  // Check if device supports async mode
+  if (device_mode_ != hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
+    ESP_LOGE(TAG, "Async write called on sync-mode device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Use Write() for sync-mode devices");
     return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
   }
-  
+
   // Validate operation parameters
   if (!ValidateOperation(data, length, hf_i2c_operation_t::HF_I2C_OP_WRITE_ASYNC)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
   }
 
-  if (!callback) {
-    ESP_LOGE(TAG, "Callback required for async operation");
-    return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
-  }
-
   // Setup async operation
   if (!SetupAsyncOperation(callback, user_data, timeout_ms)) {
-    return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
   }
 
-  // Set operation context for this write operation
-  current_op_type_ = hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE;
-
-  // Start async transmission (returns immediately if callbacks registered)
-  esp_err_t err = i2c_master_transmit(handle_, data, length, 0);
-
-  if (err != ESP_OK) {
-    // Unregister callback on failure
-    UnregisterTemporaryCallback();
-    return ConvertEspError(err);
+  // Use default timeout if none specified
+  if (timeout_ms == 0) {
+    timeout_ms = HF_I2C_DEFAULT_TIMEOUT_MS;
   }
 
-  // I2C operation started successfully - mark as in progress
-  async_operation_in_progress_ = true;
-  async_start_time_ = esp_timer_get_time();
+  ESP_LOGD(TAG, "Starting async write of %u bytes to device 0x%02X with timeout %lu ms", 
+           length, config_.device_address, timeout_ms);
 
-  ESP_LOGD(TAG, "Async write started for device 0x%02X: %d bytes", 
-           config_.device_address, length);
-  return hf_i2c_err_t::I2C_SUCCESS;
+  // Start async operation tracking
+  StartAsyncOperationTracking();
+
+  // Note: ESP-IDF v5.5 async operations would be implemented here
+  // For now, we'll simulate the operation and call the callback immediately
+  ESP_LOGW(TAG, "Async operations not yet implemented in ESP-IDF v5.5 wrapper");
+  
+  // Simulate completion
+  if (callback) {
+    callback(hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION, 0, user_data);
+  }
+
+  // Cleanup async operation
+  async_operation_in_progress_ = false;
+  current_callback_ = nullptr;
+  current_user_data_ = nullptr;
+
+  return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
 }
 
 hf_i2c_err_t EspI2cDevice::ReadAsync(hf_u8_t* data, hf_u16_t length,
                                      hf_i2c_async_callback_t callback,
                                      void* user_data,
                                      hf_u32_t timeout_ms) noexcept {
-  if (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_SYNC) {
-    ESP_LOGE(TAG, "ReadAsync() called on sync-mode device. Use Read() instead.");
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot perform async read on uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  }
+
+  // Check if device supports async mode
+  if (device_mode_ != hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
+    ESP_LOGE(TAG, "Async read called on sync-mode device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Use Read() for sync-mode devices");
     return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
   }
-  
+
   // Validate operation parameters
   if (!ValidateOperation(data, length, hf_i2c_operation_t::HF_I2C_OP_READ_ASYNC)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
   }
 
-  if (!callback) {
-    ESP_LOGE(TAG, "Callback required for async operation");
-    return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
-  }
-
   // Setup async operation
   if (!SetupAsyncOperation(callback, user_data, timeout_ms)) {
-    return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
   }
 
-  // Set operation context for this read operation
-  current_op_type_ = hf_i2c_transaction_type_t::HF_I2C_TRANS_READ;
-
-  // Start async reception (returns immediately if callbacks registered)
-  esp_err_t err = i2c_master_receive(handle_, data, length, 0);
-
-  if (err != ESP_OK) {
-    // Unregister callback on failure
-    UnregisterTemporaryCallback();
-    return ConvertEspError(err);
+  // Use default timeout if none specified
+  if (timeout_ms == 0) {
+    timeout_ms = HF_I2C_DEFAULT_TIMEOUT_MS;
   }
 
-  // I2C operation started successfully - mark as in progress
-  async_operation_in_progress_ = true;
-  async_start_time_ = esp_timer_get_time();
+  ESP_LOGD(TAG, "Starting async read of %u bytes from device 0x%02X with timeout %lu ms", 
+           length, config_.device_address, timeout_ms);
 
-  ESP_LOGD(TAG, "Async read started for device 0x%02X: %d bytes", 
-           config_.device_address, length);
-  return hf_i2c_err_t::I2C_SUCCESS;
+  // Start async operation tracking
+  StartAsyncOperationTracking();
+
+  // Note: ESP-IDF v5.5 async operations would be implemented here
+  // For now, we'll simulate the operation and call the callback immediately
+  ESP_LOGW(TAG, "Async operations not yet implemented in ESP-IDF v5.5 wrapper");
+  
+  // Simulate completion
+  if (callback) {
+    callback(hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION, 0, user_data);
+  }
+
+  // Cleanup async operation
+  async_operation_in_progress_ = false;
+  current_callback_ = nullptr;
+  current_user_data_ = nullptr;
+
+  return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
 }
 
 hf_i2c_err_t EspI2cDevice::WriteReadAsync(const hf_u8_t* tx_data, hf_u16_t tx_length,
@@ -1123,126 +1305,236 @@ hf_i2c_err_t EspI2cDevice::WriteReadAsync(const hf_u8_t* tx_data, hf_u16_t tx_le
                                           hf_i2c_async_callback_t callback,
                                           void* user_data,
                                           hf_u32_t timeout_ms) noexcept {
-  if (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_SYNC) {
-    ESP_LOGE(TAG, "WriteReadAsync() called on sync-mode device. Use WriteRead() instead.");
-    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
-  }
-  
-  // Validate operation parameters
-  if (!tx_data || tx_length == 0 || !rx_data || rx_length == 0) {
-    ESP_LOGE(TAG, "Invalid parameters for WriteReadAsync operation");
-    return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot perform async WriteRead on uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
 
-  if (!callback) {
-    ESP_LOGE(TAG, "Callback required for async operation");
+  // Check if device supports async mode
+  if (device_mode_ != hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
+    ESP_LOGE(TAG, "Async WriteRead called on sync-mode device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Use WriteRead() for sync-mode devices");
+    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
+  }
+
+  // Validate operation parameters
+  if (!ValidateOperation(tx_data, tx_length, hf_i2c_operation_t::HF_I2C_OP_WRITE_READ_ASYNC) ||
+      !ValidateOperation(rx_data, rx_length, hf_i2c_operation_t::HF_I2C_OP_WRITE_READ_ASYNC)) {
     return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
   }
 
   // Setup async operation
   if (!SetupAsyncOperation(callback, user_data, timeout_ms)) {
-    return hf_i2c_err_t::I2C_ERR_BUS_BUSY;
+    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
   }
 
-  // Set operation context for this write-read operation
-  current_op_type_ = hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE_READ;
-
-  // Start async write-read operation (returns immediately if callbacks registered)
-  esp_err_t err = i2c_master_transmit_receive(handle_, tx_data, tx_length, rx_data, rx_length, 0);
-
-  if (err != ESP_OK) {
-    // Unregister callback on failure
-    UnregisterTemporaryCallback();
-    return ConvertEspError(err);
+  // Use default timeout if none specified
+  if (timeout_ms == 0) {
+    timeout_ms = HF_I2C_DEFAULT_TIMEOUT_MS;
   }
 
-  // I2C operation started successfully - mark as in progress
-  async_operation_in_progress_ = true;
-  async_start_time_ = esp_timer_get_time();
+  ESP_LOGD(TAG, "Starting async WriteRead: %u bytes write, %u bytes read from device 0x%02X with timeout %lu ms", 
+           tx_length, rx_length, config_.device_address, timeout_ms);
 
-  ESP_LOGD(TAG, "Async write-read started for device 0x%02X: %d+%d bytes", 
-           config_.device_address, tx_length, rx_length);
-  return hf_i2c_err_t::I2C_SUCCESS;
+  // Start async operation tracking
+  StartAsyncOperationTracking();
+
+  // Note: ESP-IDF v5.5 async operations would be implemented here
+  // For now, we'll simulate the operation and call the callback immediately
+  ESP_LOGW(TAG, "Async operations not yet implemented in ESP-IDF v5.5 wrapper");
+  
+  // Simulate completion
+  if (callback) {
+    callback(hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION, 0, user_data);
+  }
+
+  // Cleanup async operation
+  async_operation_in_progress_ = false;
+  current_callback_ = nullptr;
+  current_user_data_ = nullptr;
+
+  return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
 }
 
 bool EspI2cDevice::IsAsyncModeSupported() const noexcept {
-  return initialized_ && handle_ != nullptr;
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot check async mode support for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return false;
+  }
+
+  return device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC;
 }
 
 bool EspI2cDevice::IsAsyncOperationInProgress() const noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot check async operation status for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return false;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   return async_operation_in_progress_;
 }
 
 bool EspI2cDevice::IsSyncOperationInProgress() const noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot check sync operation status for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return false;
+  }
+
+  RtosUniqueLock<RtosMutex> lock(mutex_);
   return sync_operation_in_progress_;
 }
 
 bool EspI2cDevice::WaitAsyncOperationComplete(hf_u32_t timeout_ms) noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot wait for async operation on uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return false;
+  }
+
+  // Check if device supports async mode
+  if (device_mode_ != hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
+    ESP_LOGE(TAG, "WaitAsyncOperationComplete called on sync-mode device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "This method is only for async-mode devices");
+    return false;
+  }
+
   if (!async_operation_in_progress_) {
+    ESP_LOGD(TAG, "No async operation in progress for device 0x%02X", config_.device_address);
     return true;
   }
 
-  // Simple polling wait - not ideal but safe
-  uint64_t start_time = esp_timer_get_time();
-  uint64_t timeout_us = static_cast<uint64_t>(timeout_ms) * 1000;
-  
-  while (async_operation_in_progress_) {
-    if (timeout_ms > 0 && (esp_timer_get_time() - start_time) > timeout_us) {
-      return false;
-    }
-    
-    // Small delay to avoid busy waiting
-    vTaskDelay(pdMS_TO_TICKS(1));
+  // Use default timeout if none specified
+  if (timeout_ms == 0) {
+    timeout_ms = HF_I2C_DEFAULT_TIMEOUT_MS;
   }
-  
+
+  ESP_LOGD(TAG, "Waiting for async operation to complete on device 0x%02X with timeout %lu ms", 
+           config_.device_address, timeout_ms);
+
+  uint32_t start_time = esp_timer_get_time() / 1000;
+  while (async_operation_in_progress_ && ((esp_timer_get_time() / 1000) - start_time < timeout_ms)) {
+    vTaskDelay(pdMS_TO_TICKS(10));
+  }
+
+  if (async_operation_in_progress_) {
+    ESP_LOGW(TAG, "Async operation did not complete within %lu ms timeout on device 0x%02X", 
+             timeout_ms, config_.device_address);
+    return false;
+  }
+
+  ESP_LOGD(TAG, "Async operation completed successfully on device 0x%02X", config_.device_address);
   return true;
 }
 
 
 
 hf_i2c_err_t EspI2cDevice::GetStatistics(hf_i2c_statistics_t& statistics) const noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot get statistics for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  }
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
   statistics = statistics_;
   return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 hf_i2c_err_t EspI2cDevice::GetDiagnostics(hf_i2c_diagnostics_t& diagnostics) const noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot get diagnostics for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  }
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
   diagnostics = diagnostics_;
   return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 hf_u16_t EspI2cDevice::GetDeviceAddress() const noexcept {
+  // Note: This method can be called even on uninitialized devices
+  // as it just returns the configuration value
   return config_.device_address;
 }
 
 hf_i2c_err_t EspI2cDevice::ResetStatistics() noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot reset statistics for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  }
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
   statistics_ = hf_i2c_statistics_t{};
+  ESP_LOGI(TAG, "Statistics reset for device at address 0x%02X", config_.device_address);
   return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 i2c_master_dev_handle_t EspI2cDevice::GetHandle() const noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot get handle for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return nullptr;
+  }
+
   return handle_;
 }
 
 const hf_i2c_device_config_t& EspI2cDevice::GetConfig() const noexcept {
+  // Note: This method can be called even on uninitialized devices
+  // as it just returns the configuration value
   return config_;
 }
 
 hf_i2c_err_t EspI2cDevice::GetActualClockFrequency(hf_u32_t& actual_freq_hz) const noexcept {
-  // ESP-IDF doesn't provide a direct way to get actual clock frequency
-  // Return the configured frequency
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot get clock frequency for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  }
+
+  // For now, return the configured frequency
+  // In a future implementation, we could query the actual hardware frequency
   actual_freq_hz = config_.scl_speed_hz;
   return hf_i2c_err_t::I2C_SUCCESS;
 }
 
 bool EspI2cDevice::ProbeDevice() noexcept {
-  if (!initialized_ || !handle_ || !parent_bus_) {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot probe uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
     return false;
   }
 
-  return parent_bus_->ProbeDevice(config_.device_address);
+  // Use a simple read operation to probe the device
+  uint8_t dummy_byte;
+  hf_i2c_err_t result = Read(&dummy_byte, 1, 100); // 100ms timeout for probing
+  
+  if (result == hf_i2c_err_t::I2C_SUCCESS) {
+    ESP_LOGD(TAG, "Device probe successful for address 0x%02X", config_.device_address);
+    return true;
+  } else {
+    ESP_LOGD(TAG, "Device probe failed for address 0x%02X: %s", 
+             config_.device_address, HfI2CErrToString(result).data());
+    return false;
+  }
 }
 
 //==============================================//
@@ -1266,44 +1558,40 @@ bool EspI2cDevice::ValidateOperation(const void* data, hf_u16_t length, hf_i2c_o
 bool EspI2cDevice::SetupSyncOperation(hf_i2c_operation_t operation_type) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
 
-  // Ensure no async operations are running before sync operation
-  if (async_operation_in_progress_) {
-    ESP_LOGW(TAG, "Cannot perform sync %s: async operation in progress", HfI2COperationToString(operation_type));
+  if (!initialized_ || !handle_) {
+    ESP_LOGE(TAG, "Cannot setup sync operation: device not properly initialized");
     return false;
-  }
-  
-  // Check if device is in a healthy state
-  if (!handle_) {
-    ESP_LOGE(TAG, "Device handle is invalid - device may have been deinitialized");
-    return false;
-  }
-  
-  // CRITICAL FIX: Only clear callbacks in async mode (queue_depth > 0)
-  // In sync mode (queue_depth = 0), ESP-IDF doesn't use callbacks, so no need to clear them
-  if (device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) {
-    i2c_master_event_callbacks_t empty_cbs = {.on_trans_done = nullptr};
-    esp_err_t clear_err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
-    if (clear_err != ESP_OK) {
-      ESP_LOGW(TAG, "Failed to clear callbacks for sync %s: %s (continuing anyway)", 
-               HfI2COperationToString(operation_type), esp_err_to_name(clear_err));
-      // Don't fail the operation - this is just cleanup
-    }
   }
 
-  // CRITICAL: Ensure bus is ready before operation
-  esp_err_t bus_ready_err = i2c_master_bus_wait_all_done(parent_bus_->GetHandle(), 100);
-  if (bus_ready_err != ESP_OK) {
-    ESP_LOGE(TAG, "Bus not ready for %s operation: %s", HfI2COperationToString(operation_type), esp_err_to_name(bus_ready_err));
+  if (async_operation_in_progress_) {
+    ESP_LOGE(TAG, "Cannot setup sync operation: async operation in progress");
+    return false;
+  }
+
+  if (sync_operation_in_progress_) {
+    ESP_LOGE(TAG, "Cannot setup sync operation: sync operation already in progress");
     return false;
   }
 
   // Mark sync operation as in progress
   sync_operation_in_progress_ = true;
+  
+  // Update bus lock status
+  diagnostics_.bus_locked = true;
+
+  ESP_LOGD(TAG, "Sync operation setup complete for operation type: %s", 
+           HfI2COperationToString(operation_type));
   return true;
 }
 
 void EspI2cDevice::CleanupSyncOperation() noexcept {
+  // Mark sync operation as complete
   sync_operation_in_progress_ = false;
+  
+  // Update bus lock status
+  diagnostics_.bus_locked = false;
+  
+  ESP_LOGD(TAG, "Sync operation cleanup complete");
 }
 
 bool EspI2cDevice::SetupAsyncOperation(hf_i2c_async_callback_t callback, void* user_data, hf_u32_t timeout_ms) noexcept {
@@ -1322,16 +1610,21 @@ bool EspI2cDevice::SetupAsyncOperation(hf_i2c_async_callback_t callback, void* u
 
 void EspI2cDevice::UpdateStatistics(bool success, size_t bytes_transferred,
                                     hf_u64_t operation_time_us) noexcept {
+  // Update basic transaction statistics
   statistics_.total_transactions++;
 
   if (success) {
     statistics_.successful_transactions++;
-    statistics_.bytes_written += bytes_transferred; // This could be split based on operation type
-    statistics_.bytes_read += bytes_transferred;    // This could be split based on operation type
+    // Note: bytes_written and bytes_read are updated in the specific operation methods
+    // to properly distinguish between read and write operations
   } else {
     statistics_.failed_transactions++;
+    // Update error tracking in diagnostics
+    diagnostics_.consecutive_errors++;
+    diagnostics_.last_error_timestamp_us = esp_timer_get_time();
   }
 
+  // Update timing statistics
   statistics_.total_transaction_time_us += operation_time_us;
 
   if (operation_time_us > statistics_.max_transaction_time_us) {
@@ -1342,6 +1635,61 @@ void EspI2cDevice::UpdateStatistics(bool success, size_t bytes_transferred,
       operation_time_us < statistics_.min_transaction_time_us) {
     statistics_.min_transaction_time_us = static_cast<hf_u32_t>(operation_time_us);
   }
+
+  // Update diagnostics
+  if (success) {
+    diagnostics_.consecutive_errors = 0; // Reset error counter on success
+    diagnostics_.last_error_code = hf_i2c_err_t::I2C_SUCCESS;
+    diagnostics_.bus_healthy = (diagnostics_.consecutive_errors <= 3); // Mark healthy if few errors
+  } else {
+    diagnostics_.bus_healthy = (diagnostics_.consecutive_errors <= 3); // Mark unhealthy after 3 consecutive errors
+  }
+
+  // Update bus utilization (simplified calculation)
+  if (statistics_.total_transactions > 0) {
+    diagnostics_.bus_utilization_percent = 
+        (float)(statistics_.successful_transactions) / statistics_.total_transactions * 100.0f;
+  }
+
+  // Update average response time
+  if (statistics_.successful_transactions > 0) {
+    diagnostics_.average_response_time_us = 
+        static_cast<hf_u32_t>(statistics_.total_transaction_time_us / statistics_.successful_transactions);
+  }
+}
+
+// Enhanced error tracking method for specific error types
+void EspI2cDevice::UpdateErrorStatistics(hf_i2c_err_t error_code) noexcept {
+  switch (error_code) {
+    case hf_i2c_err_t::I2C_ERR_TIMEOUT:
+      statistics_.timeout_count++;
+      // Timeouts can indicate clock stretching or device not responding
+      diagnostics_.clock_stretching_events++;
+      break;
+    case hf_i2c_err_t::I2C_ERR_DEVICE_NACK:
+      statistics_.nack_errors++;
+      break;
+    case hf_i2c_err_t::I2C_ERR_BUS_ERROR:
+      statistics_.bus_errors++;
+      break;
+    case hf_i2c_err_t::I2C_ERR_BUS_ARBITRATION_LOST:
+      statistics_.arbitration_lost_count++;
+      break;
+    case hf_i2c_err_t::I2C_ERR_CLOCK_STRETCH_TIMEOUT:
+      statistics_.clock_stretch_timeouts++;
+      diagnostics_.clock_stretching_events++;
+      break;
+    default:
+      // General error - already counted in failed_transactions
+      break;
+  }
+}
+
+// Update error recovery attempt statistics
+void EspI2cDevice::UpdateErrorRecoveryAttempt() noexcept {
+  diagnostics_.error_recovery_attempts++;
+  ESP_LOGD(TAG, "Error recovery attempt recorded for device 0x%02X (total: %u)", 
+           config_.device_address, diagnostics_.error_recovery_attempts);
 }
 
 hf_i2c_err_t EspI2cDevice::ConvertEspError(esp_err_t esp_error) const noexcept {
@@ -1357,9 +1705,18 @@ hf_i2c_err_t EspI2cDevice::ConvertEspError(esp_err_t esp_error) const noexcept {
     case ESP_ERR_NO_MEM:
       return hf_i2c_err_t::I2C_ERR_OUT_OF_MEMORY;
     case ESP_ERR_INVALID_STATE:
-      return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+      return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
+    case ESP_ERR_INVALID_SIZE:
+      return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
+    case ESP_ERR_NOT_SUPPORTED:
+      return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
+    case ESP_ERR_INVALID_RESPONSE:
+      return hf_i2c_err_t::I2C_ERR_DEVICE_NACK;
+    case ESP_ERR_INVALID_CRC:
+      return hf_i2c_err_t::I2C_ERR_COMMUNICATION_FAILURE;
+    case ESP_ERR_WIFI_BASE:
+      return hf_i2c_err_t::I2C_ERR_SYSTEM_ERROR;
     case ESP_FAIL:
-      return hf_i2c_err_t::I2C_ERR_FAILURE;
     default:
       return hf_i2c_err_t::I2C_ERR_FAILURE;
   }
@@ -1419,26 +1776,17 @@ bool EspI2cDevice::RegisterTemporaryCallback(hf_i2c_async_callback_t callback,
 }
 
 void EspI2cDevice::UnregisterTemporaryCallback() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
-
-  if (!async_operation_in_progress_) {
-    return;
-  }
-
-  // Unregister ESP-IDF callback
-  i2c_master_event_callbacks_t empty_cbs = { .on_trans_done = nullptr };
-  esp_err_t err = i2c_master_register_event_callbacks(handle_, &empty_cbs, nullptr);
-  if (err != ESP_OK) {
-    ESP_LOGW(TAG, "Failed to unregister ESP-IDF callback: %s (continuing cleanup)", esp_err_to_name(err));
-    // Continue with cleanup even if unregistration fails
-  }
-
-  // Clear callback state
-  async_operation_in_progress_ = false;
+  // Clear callback information
   current_callback_ = nullptr;
   current_user_data_ = nullptr;
-
-  ESP_LOGD(TAG, "Temporary async callback unregistered for device 0x%02X", config_.device_address);
+  
+  // Mark async operation as complete
+  async_operation_in_progress_ = false;
+  
+  // Update bus lock status
+  diagnostics_.bus_locked = false;
+  
+  ESP_LOGD(TAG, "Temporary callback unregistered, async operation tracking cleared");
 }
 
 
@@ -1505,10 +1853,8 @@ bool EspI2cDevice::InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
   
   // Call user callback with actual bytes transferred
   // Note: ESP-IDF v5.5 doesn't provide bytes transferred in event data
-  // We'll use the expected transfer size from the operation
+  // We'll use a reasonable default or track this separately if needed
   if (callback) {
-    // Since ESP-IDF v5.5 doesn't provide bytes transferred in event data,
-    // we'll use a reasonable default or track this separately if needed
     size_t bytes_transferred = 0; // Could be enhanced to track actual bytes
     callback(result, bytes_transferred, user_data);
   }
@@ -1520,14 +1866,46 @@ bool EspI2cDevice::InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
 }
 
 // Mode-aware operation methods
-hf_i2c_mode_t EspI2cDevice::GetMode() const noexcept { 
-  return device_mode_; 
+hf_i2c_mode_t EspI2cDevice::GetMode() const noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot get mode for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return hf_i2c_mode_t::HF_I2C_MODE_SYNC; // Return safe default
+  }
+
+  return device_mode_;
 }
 
-bool EspI2cDevice::IsAsyncMode() const noexcept { 
-  return device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC; 
+bool EspI2cDevice::IsAsyncMode() const noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot check async mode for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return false;
+  }
+
+  return device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_ASYNC;
 }
 
-bool EspI2cDevice::IsSyncMode() const noexcept { 
-  return device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_SYNC; 
+bool EspI2cDevice::IsSyncMode() const noexcept {
+  // Check if device is initialized
+  if (!initialized_) {
+    ESP_LOGE(TAG, "Cannot check sync mode for uninitialized device at address 0x%02X", config_.device_address);
+    ESP_LOGE(TAG, "Call Initialize() before using the device");
+    return false;
+  }
+
+  return device_mode_ == hf_i2c_mode_t::HF_I2C_MODE_SYNC;
+}
+
+void EspI2cDevice::StartAsyncOperationTracking() noexcept {
+  // Mark async operation as in progress
+  async_operation_in_progress_ = true;
+  async_start_time_ = esp_timer_get_time();
+  
+  // Update bus lock status
+  diagnostics_.bus_locked = true;
+  
+  ESP_LOGD(TAG, "Async operation tracking started at %llu us", async_start_time_);
 }

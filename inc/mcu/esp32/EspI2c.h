@@ -167,11 +167,9 @@ public:
   /**
    * @brief Construct a new EspI2cDevice.
    * @param parent Pointer to the parent EspI2cBus
-   * @param handle ESP-IDF device handle
    * @param config Device configuration
    */
-  EspI2cDevice(EspI2cBus* parent, i2c_master_dev_handle_t handle,
-               const hf_i2c_device_config_t& config);
+  EspI2cDevice(EspI2cBus* parent, const hf_i2c_device_config_t& config);
 
   /**
    * @brief Destructor. Automatically removes device from bus if needed.
@@ -391,6 +389,12 @@ public:
    */
   void* GetCurrentUserData() const noexcept { return current_user_data_; }
 
+  /**
+   * @brief Update error recovery attempt statistics.
+   * @note This method is called by the bus during recovery operations
+   */
+  void UpdateErrorRecoveryAttempt() noexcept;
+
   //==============================================//
   // MODE-AWARE OPERATION METHODS                //
   //==============================================//
@@ -414,24 +418,6 @@ public:
   bool IsSyncMode() const noexcept;
 
 private:
-  EspI2cBus* parent_bus_;                    ///< Parent bus pointer
-  i2c_master_dev_handle_t handle_;           ///< ESP-IDF device handle
-  hf_i2c_device_config_t config_;            ///< Device configuration
-  bool initialized_;                         ///< Initialization status
-  mutable hf_i2c_statistics_t statistics_;   ///< Per-device statistics
-  mutable hf_i2c_diagnostics_t diagnostics_; ///< Per-device diagnostics
-  mutable RtosMutex mutex_;                  ///< Device mutex for thread safety
-  hf_i2c_mode_t device_mode_;               ///< Device operation mode (inherited from bus)
-
-  //==============================================//
-  // ASYNC OPERATION SUPPORT                     //
-  //==============================================//
-  bool async_operation_in_progress_;           ///< Is async operation active
-  bool sync_operation_in_progress_;            ///< Is sync operation active (mutual exclusion)
-  hf_i2c_async_callback_t current_callback_;  ///< Current user callback
-  void* current_user_data_;                   ///< Current user data
-  hf_u64_t async_start_time_;                 ///< Async operation start time
-  hf_i2c_transaction_type_t current_op_type_; ///< Current operation type
 
 
   //==============================================//
@@ -483,6 +469,12 @@ private:
                         hf_u64_t operation_time_us) noexcept;
 
   /**
+   * @brief Update error-specific statistics.
+   * @param error_code The specific error code to track
+   */
+  void UpdateErrorStatistics(hf_i2c_err_t error_code) noexcept;
+
+  /**
    * @brief Convert ESP-IDF error to HardFOC error.
    * @param esp_error ESP-IDF error code
    * @return HardFOC I2C error code
@@ -518,6 +510,29 @@ private:
    * @return true if setup successful, false otherwise
    */
   bool SetupAsyncOperation(hf_i2c_async_callback_t callback, void* user_data, hf_u32_t timeout_ms) noexcept;
+
+  //==============================================//
+  // MEMBER VARIABLES                            //
+  //==============================================//
+
+  EspI2cBus* parent_bus_;                    ///< Parent bus pointer
+  i2c_master_dev_handle_t handle_;           ///< ESP-IDF device handle
+  hf_i2c_device_config_t config_;            ///< Device configuration
+  bool initialized_;                         ///< Initialization status
+  mutable hf_i2c_statistics_t statistics_;   ///< Per-device statistics
+  mutable hf_i2c_diagnostics_t diagnostics_; ///< Per-device diagnostics
+  mutable RtosMutex mutex_;                  ///< Device mutex for thread safety
+  hf_i2c_mode_t device_mode_;               ///< Device operation mode (inherited from bus)
+
+  //==============================================//
+  // ASYNC OPERATION SUPPORT                     //
+  //==============================================//
+  bool async_operation_in_progress_;           ///< Is async operation active
+  bool sync_operation_in_progress_;            ///< Is sync operation active (mutual exclusion)
+  hf_i2c_async_callback_t current_callback_;  ///< Current user callback
+  void* current_user_data_;                   ///< Current user data
+  hf_u64_t async_start_time_;                 ///< Async operation start time
+  hf_i2c_transaction_type_t current_op_type_; ///< Current operation type
 };
 
 /**
@@ -830,12 +845,10 @@ public:
   bool SwitchMode(hf_i2c_mode_t new_mode, uint8_t queue_depth = 10) noexcept;
 
 private:
-  hf_i2c_master_bus_config_t config_;                  ///< Bus configuration
-  i2c_master_bus_handle_t bus_handle_;                 ///< ESP-IDF bus handle
-  bool initialized_;                                   ///< Initialization status
-  mutable RtosMutex mutex_;                            ///< Bus mutex for thread safety
-  std::vector<std::unique_ptr<EspI2cDevice>> devices_; ///< Device instances
-  hf_i2c_mode_t current_mode_;                        ///< Current operation mode
+
+  //==============================================//
+  // PRIVATE METHODS                              //
+  //==============================================//
 
   /**
    * @brief Find device index by address.
@@ -860,6 +873,21 @@ private:
    * @note Much faster and more reliable than ESP-IDF's broken probe function
    */
   bool CustomFastProbe(hf_u16_t device_addr, hf_u32_t timeout_ms) noexcept;
+
+  //==============================================//
+  // MEMBER VARIABLES                            //
+  //==============================================//
+
+  hf_i2c_master_bus_config_t config_;                  ///< Bus configuration
+  i2c_master_bus_handle_t bus_handle_;                 ///< ESP-IDF bus handle
+  bool initialized_;                                   ///< Initialization status
+  mutable RtosMutex mutex_;                            ///< Bus mutex for thread safety
+  std::vector<std::unique_ptr<EspI2cDevice>> devices_; ///< Device instances
+  hf_i2c_mode_t current_mode_;                        ///< Current operation mode
+  
+  // Bus-level statistics and diagnostics
+  mutable hf_i2c_statistics_t statistics_;             ///< Bus-level statistics
+  mutable hf_i2c_diagnostics_t diagnostics_;           ///< Bus-level diagnostics
 };
 
 #endif // ESP_I2C_H_
