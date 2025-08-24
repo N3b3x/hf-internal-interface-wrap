@@ -1163,7 +1163,7 @@ bool test_i2c_power_management() noexcept {
 bool test_i2c_async_operations() noexcept {
   log_test_separator("I2C Async Operations");
 
-  CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
+  CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_ASYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
     return false;
@@ -1241,7 +1241,7 @@ bool test_i2c_async_operations() noexcept {
 bool test_i2c_async_timeout_handling() noexcept {
   log_test_separator("I2C Async Timeout Handling");
 
-  CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
+  CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_ASYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
     return false;
@@ -1308,7 +1308,7 @@ bool test_i2c_async_timeout_handling() noexcept {
 bool test_i2c_async_multiple_operations() noexcept {
   log_test_separator("I2C Async Multiple Operations");
 
-  CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
+  CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_ASYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
     return false;

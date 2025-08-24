@@ -70,8 +70,8 @@ enum class hf_i2c_clock_source_t : uint8_t {
  * @brief ESP32 I2C address bit length.
  */
 enum class hf_i2c_address_bits_t : uint8_t {
-  HF_I2C_ADDR_7_BIT = 7,  ///< 7-bit address
-  HF_I2C_ADDR_10_BIT = 10 ///< 10-bit address
+  HF_I2C_ADDR_7_BIT = I2C_ADDR_BIT_LEN_7,  ///< 7-bit address
+  HF_I2C_ADDR_10_BIT = I2C_ADDR_BIT_LEN_10 ///< 10-bit address
 };
 
 /**
