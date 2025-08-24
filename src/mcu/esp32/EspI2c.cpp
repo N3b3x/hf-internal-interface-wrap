@@ -898,7 +898,8 @@ bool EspI2cDevice::Initialize() noexcept {
 
   // Create ESP-IDF device configuration
   i2c_device_config_t dev_cfg = {
-    .dev_addr_length = static_cast<i2c_addr_bit_len_t>(config_.dev_addr_length),
+    .dev_addr_length = (config_.dev_addr_length == hf_i2c_address_bits_t::HF_I2C_ADDR_7_BIT) ? 
+                       I2C_ADDR_BIT_LEN_7 : I2C_ADDR_BIT_LEN_10,
     .device_address = config_.device_address,
     .scl_speed_hz = config_.scl_speed_hz,
     .scl_wait_us = config_.scl_wait_us,

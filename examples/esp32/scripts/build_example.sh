@@ -178,7 +178,16 @@ else
 fi
 echo ""
 echo "Next steps:"
-echo "  Flash and monitor: idf.py -B $BUILD_DIR flash monitor"
-echo "  Monitor only:      idf.py -B $BUILD_DIR monitor"
+echo "  Flash and monitor: ./scripts/flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE flash_monitor"
+echo "  Flash only:        ./scripts/flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE flash"
+echo "  Monitor only:      ./scripts/flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE monitor"
 echo "  Size analysis:     idf.py -B $BUILD_DIR size"
+echo ""
+echo "======================================================"
+echo "BUILD SIZE INFORMATION"
+echo "======================================================"
+# Show size information
+if ! idf.py -B "$BUILD_DIR" size; then
+    echo "WARNING: Could not display size information"
+fi
 echo "======================================================"
