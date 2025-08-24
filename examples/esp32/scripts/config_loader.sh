@@ -11,8 +11,13 @@ CONFIG_FILE="$PROJECT_DIR/examples_config.yml"
 
 # Check if yq is available for YAML parsing and detect version
 check_yq() {
+    # Always check for yq availability (no caching) - this allows detecting newly installed yq
     if ! command -v yq &> /dev/null; then
-        echo "Warning: yq not found. Falling back to basic parsing." >&2
+        # Only show warning if we haven't shown it in this script execution
+        if [[ -z "$YQ_WARNING_SHOWN" ]]; then
+            echo "Warning: yq not found. Falling back to basic parsing." >&2
+            export YQ_WARNING_SHOWN=1
+        fi
         return 1
     fi
     

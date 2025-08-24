@@ -10,7 +10,7 @@ set -e  # Exit on any error
 
 # Load configuration
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-source "$PROJECT_DIR/scripts/config_loader.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/config_loader.sh"
 
 # Configuration
 EXAMPLE_TYPE=${1:-$CONFIG_DEFAULT_EXAMPLE}
@@ -166,43 +166,18 @@ if [ "$BUILD_EXISTS" = false ]; then
         rm -rf "$BUILD_DIR"
     fi
     
-    # Configure and build with retry logic (matching build_example.sh configuration)
-    echo "Configuring project for $IDF_TARGET..."
+    # Use build_example.sh as the single source of truth for building
+    echo "Calling build_example.sh to ensure consistent build process..."
+    echo ""
     
-    # Enable ccache by default (matching build script behavior)
-    export IDF_CCACHE_ENABLE=1
-    
-    local config_attempts=0
-    local max_config_attempts=3
-    
-    while [ $config_attempts -lt $max_config_attempts ]; do
-        if idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" -D IDF_CCACHE_ENABLE=1 reconfigure; then
-            break
-        else
-            config_attempts=$((config_attempts + 1))
-            if [ $config_attempts -lt $max_config_attempts ]; then
-                echo "Configuration attempt $config_attempts failed, retrying..."
-                sleep 2
-            else
-                echo "ERROR: Configuration failed after $max_config_attempts attempts"
-                echo "This might be due to:"
-                echo "  - CMake version incompatibility"
-                echo "  - Missing dependencies"
-                echo "  - Corrupted build files"
-                exit 1
-            fi
-        fi
-    done
-    
-    echo "Building project..."
-    if ! idf.py -B "$BUILD_DIR" build; then
-        echo "ERROR: Build failed"
-        echo "Build logs are available in: $BUILD_DIR/log/"
+    # Call build_example.sh with the same parameters
+    if ! "$(dirname "${BASH_SOURCE[0]}")/build_example.sh" "$EXAMPLE_TYPE" "$BUILD_TYPE"; then
+        echo "ERROR: Build failed - see build_example.sh output above"
         exit 1
     fi
     
-    echo "Build completed successfully!"
-    echo "======================================================"
+    echo "Build completed successfully via build_example.sh!"
+    echo "=================================================="
 else
     echo "Using existing build in $BUILD_DIR"
 fi
@@ -222,61 +197,254 @@ echo "======================================================"
 echo "SMART PORT DETECTION AND PERMISSION HANDLING"
 echo "======================================================"
 
-# Function to find the best available port
-find_best_port() {
-    local ports=()
-    
-    # Check for ESP32-C6 native USB port first (preferred)
-    if [ -e "/dev/ttyACM0" ]; then
-        ports+=("/dev/ttyACM0")
-    fi
-    
-    # Check for other USB serial ports
-    for i in {1..10}; do
-        if [ -e "/dev/ttyACM$i" ]; then
-            ports+=("/dev/ttyACM$i")
-        fi
-    done
-    
-    # Check for traditional serial ports (fallback)
-    for i in {0..31}; do
-        if [ -e "/dev/ttyS$i" ]; then
-            ports+=("/dev/ttyS$i")
-        fi
-    done
-    
-    # Return the first available port
-    if [ ${#ports[@]} -gt 0 ]; then
-        echo "${ports[0]}"
-        return 0
-    else
-        return 1
-    fi
+# Function to detect operating system
+detect_os() {
+    case "$(uname -s)" in
+        Darwin*)    echo "macos" ;;
+        Linux*)     echo "linux" ;;
+        CYGWIN*|MINGW*|MSYS*) echo "windows" ;;
+        *)          echo "unknown" ;;
+    esac
 }
 
-# Function to fix port permissions
+# Function to find ESP32 devices using system-specific methods
+find_esp32_devices() {
+    local os=$(detect_os)
+    local devices=()
+    
+    case "$os" in
+        "macos")
+            # macOS: Look for ESP32 devices in /dev/cu.* (callout devices are better for serial)
+            # ESP32 devices typically appear as usbmodem, usbserial, or similar
+            for port in /dev/cu.usbmodem* /dev/cu.usbserial* /dev/cu.SLAB_USBtoUART* /dev/cu.CP210* /dev/cu.CH340*; do
+                if [ -e "$port" ]; then
+                    devices+=("$port")
+                fi
+            done
+            
+            # Also check /dev/tty.* as fallback
+            for port in /dev/tty.usbmodem* /dev/tty.usbserial* /dev/tty.SLAB_USBtoUART* /dev/tty.CP210* /dev/tty.CH340*; do
+                if [ -e "$port" ]; then
+                    devices+=("$port")
+                fi
+            done
+            ;;
+            
+        "linux")
+            # Linux: Check for ESP32 devices in /dev/ttyACM* and /dev/ttyUSB*
+            # ESP32-C6 typically uses /dev/ttyACM*, older ESP32 uses /dev/ttyUSB*
+            for port in /dev/ttyACM* /dev/ttyUSB*; do
+                if [ -e "$port" ]; then
+                    devices+=("$port")
+                fi
+            done
+            
+            # Also check for specific ESP32 device names if available
+            if command -v lsusb &> /dev/null; then
+                # Look for ESP32-related USB devices
+                if lsusb | grep -q "Silicon Labs\|CP210\|CH340\|ESP\|Espressif"; then
+                    # Silent detection - no output needed here
+                    :
+                fi
+            fi
+            ;;
+            
+        *)
+            # Silent warning for unsupported OS
+            :
+            ;;
+    esac
+    
+    # Return devices as space-separated string
+    echo "${devices[@]}"
+}
+
+# Function to find the best available port
+find_best_port() {
+    local os=$(detect_os)
+    local esp32_devices=($(find_esp32_devices))
+    local fallback_ports=()
+    
+    # First priority: ESP32-specific devices
+    if [ ${#esp32_devices[@]} -gt 0 ]; then
+        # Prefer callout devices on macOS (cu.* over tty.*)
+        if [ "$os" = "macos" ]; then
+            for port in "${esp32_devices[@]}"; do
+                if [[ "$port" == "/dev/cu."* ]]; then
+                    echo "$port"
+                    return 0
+                fi
+            done
+        fi
+        
+        # Use first ESP32 device found
+        echo "${esp32_devices[0]}"
+        return 0
+    fi
+    
+    # Second priority: Fallback to common serial ports
+    case "$os" in
+        "macos")
+            # macOS fallback ports
+            for port in /dev/cu.usbmodem* /dev/cu.usbserial* /dev/cu.*; do
+                if [ -e "$port" ] && [[ "$port" != "/dev/cu.Bluetooth"* ]] && [[ "$port" != "/dev/cu.debug"* ]] && [[ "$port" != "/dev/cu.wlan"* ]]; then
+                    fallback_ports+=("$port")
+                fi
+            done
+            ;;
+        "linux")
+            # Linux fallback ports
+            for port in /dev/ttyACM* /dev/ttyUSB* /dev/ttyS*; do
+                if [ -e "$port" ]; then
+                    fallback_ports+=("$port")
+                fi
+            done
+            ;;
+    esac
+    
+    if [ ${#fallback_ports[@]} -gt 0 ]; then
+        echo "Using fallback port: ${fallback_ports[0]}"
+        echo "${fallback_ports[0]}"
+        return 0
+    fi
+    
+    # No ports found
+    return 1
+}
+
+# Function to fix port permissions (Linux-specific)
 fix_port_permissions() {
     local port="$1"
-    if [ -e "$port" ]; then
+    local os=$(detect_os)
+    
+    if [ "$os" = "linux" ] && [ -e "$port" ]; then
         # Check if user can access the port
         if ! [ -r "$port" ]; then
             echo "Fixing permissions for $port..."
             sudo chmod 666 "$port" 2>/dev/null || {
                 echo "WARNING: Could not fix permissions for $port"
                 echo "You may need to run: sudo chmod 666 $port"
+                echo "Or add your user to the dialout group: sudo usermod -a -G dialout $USER"
             }
+        fi
+    elif [ "$os" = "macos" ]; then
+        # On macOS, permissions are usually handled by system
+        echo "macOS detected - checking port accessibility..."
+        if [ -r "$port" ]; then
+            echo "Port $port is accessible"
+        else
+            echo "WARNING: Port $port is not accessible"
+            echo "This might be a permission issue. Try:"
+            echo "  - Disconnecting and reconnecting the device"
+            echo "  - Checking System Preferences > Security & Privacy > Privacy > Full Disk Access"
         fi
     fi
 }
 
+# Function to validate port and get device info
+validate_port() {
+    local port="$1"
+    local os=$(detect_os)
+    
+    if [ ! -e "$port" ]; then
+        echo "ERROR: Port $port does not exist"
+        return 1
+    fi
+    
+    if [ ! -r "$port" ]; then
+        echo "ERROR: Port $port is not readable"
+        return 1
+    fi
+    
+    # Try to get device info
+    case "$os" in
+        "macos")
+            if [[ "$port" == "/dev/cu."* ]] || [[ "$port" == "/dev/tty."* ]]; then
+                echo "Port $port appears to be a valid serial device"
+                return 0
+            fi
+            ;;
+        "linux")
+            if [[ "$port" == "/dev/tty"* ]]; then
+                echo "Port $port appears to be a valid serial device"
+                return 0
+            fi
+            ;;
+    esac
+    
+    echo "WARNING: Port $port format is unexpected for this OS"
+    return 0  # Still allow it as it might work
+}
+
 # Find and configure the best available port
+echo "Searching for ESP32 devices..."
 BEST_PORT=$(find_best_port)
+
 if [ -z "$BEST_PORT" ]; then
-    echo "ERROR: No serial ports found. Please connect your ESP32 device."
-    exit 1
+    echo ""
+    echo "ERROR: No suitable serial ports found!"
+    echo ""
+    echo "Troubleshooting steps:"
+    echo "1. Ensure your ESP32 device is connected via USB"
+    echo "2. Check if the device appears in your system:"
+    
+    case "$(detect_os)" in
+        "macos")
+            echo "   - System Information > USB"
+            echo "   - Terminal: ls /dev/cu.* /dev/tty.*"
+            echo "   - Look for usbmodem, usbserial, or similar devices"
+            ;;
+        "linux")
+            echo "   - lsusb (if available)"
+            echo "   - ls /dev/ttyACM* /dev/ttyUSB*"
+            echo "   - dmesg | tail (after connecting device)"
+            ;;
+    esac
+    
+    echo "3. Try disconnecting and reconnecting the device"
+    echo "4. Check if you need to install USB-to-UART drivers"
+    echo "5. Ensure the device is not being used by another application"
+    echo ""
+    
+    # Offer manual port specification
+    echo "You can also try manually specifying a port:"
+    echo "  export ESPPORT=/dev/your_port_here"
+    echo "  ./flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE $OPERATION"
+    echo ""
+    echo "Or run the port detection script for help:"
+    echo "  ./examples/esp32/scripts/detect_ports.sh --verbose --test-connection"
+    echo ""
+    
+    # Check if ESPPORT is already set
+    if [ -n "$ESPPORT" ]; then
+        echo "ESPPORT is currently set to: $ESPPORT"
+        if [ -e "$ESPPORT" ]; then
+            echo "This port exists. Would you like to use it? (y/n)"
+            read -r response
+            if [[ "$response" =~ ^[Yy]$ ]]; then
+                BEST_PORT="$ESPPORT"
+                echo "Using manually specified port: $BEST_PORT"
+            else
+                exit 1
+            fi
+        else
+            echo "WARNING: ESPPORT is set to $ESPPORT but this port does not exist"
+            exit 1
+        fi
+    else
+        exit 1
+    fi
 fi
 
 echo "Detected port: $BEST_PORT"
+
+# Validate the port
+if ! validate_port "$BEST_PORT"; then
+    echo "ERROR: Port validation failed for $BEST_PORT"
+    exit 1
+fi
+
+# Fix permissions if needed
 fix_port_permissions "$BEST_PORT"
 
 # Set the port for ESP-IDF
