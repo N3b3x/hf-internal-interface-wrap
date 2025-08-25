@@ -309,6 +309,8 @@ export USE_CCACHE=0
 - **`setup_ci.sh`** - CI/CD environment setup
 - **`setup_common.sh`** - Shared setup functions
 
+> **Note**: CI-specific build scripts are located in [`.github/workflows/scripts/`](../../../.github/workflows/scripts/) to maintain clean architecture separation.
+
 ## 🌐 Portability Features
 
 ### **🔒 No Hardcoded Dependencies**
