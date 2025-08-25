@@ -195,8 +195,8 @@ jobs:
             -e CCACHE_DIR=/root/.ccache
             -e IDF_CCACHE_ENABLE=1
           command: |
-            chmod +x examples/esp32/scripts/setup_build_directory.sh &&
-            ./examples/esp32/scripts/setup_build_directory.sh \
+            chmod +x .github/workflows/scripts/setup_build_directory.sh &&
+            ./.github/workflows/scripts/setup_build_directory.sh \
               -p ${{ env.BUILD_PATH }} \
               -t ${{ env.IDF_TARGET }} \
               -b ${{ matrix.build_type }} \
