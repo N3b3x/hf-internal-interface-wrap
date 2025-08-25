@@ -196,6 +196,62 @@ get_idf_version() {
     fi
 }
 
+# Get global default IDF version from config
+get_global_default_idf_version() {
+    if check_yq; then
+        run_yq '.metadata.default_idf_version' -r
+    else
+        # Fallback: extract default IDF version using grep
+        grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_idf_version:" | sed 's/.*default_idf_version: *"*\([^"]*\)"*.*/\1/' | head -1
+    fi
+}
+
+# Get per-app preferred IDF version (with fallback to global default)
+get_app_preferred_idf_version() {
+    local app_type="$1"
+    if check_yq; then
+        local app_idf_version=$(run_yq ".apps.${app_type}.preferred_idf_version" -r)
+        if [[ -n "$app_idf_version" && "$app_idf_version" != "null" ]]; then
+            echo "$app_idf_version"
+        else
+            # Fallback to global default
+            get_global_default_idf_version
+        fi
+    else
+        # Fallback: extract per-app IDF version using grep
+        local app_idf_version=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "preferred_idf_version:" | sed 's/.*preferred_idf_version: *"*\([^"]*\)"*.*/\1/' | head -1)
+        if [[ -n "$app_idf_version" && "$app_idf_version" != "null" ]]; then
+            echo "$app_idf_version"
+        else
+            # Fallback to global default
+            get_global_default_idf_version
+        fi
+    fi
+}
+
+# Get per-app preferred default build type (with fallback to global default)
+get_app_preferred_default_build_type() {
+    local app_type="$1"
+    if check_yq; then
+        local app_build_type=$(run_yq ".apps.${app_type}.preferred_default_build_type" -r)
+        if [[ -n "$app_build_type" && "$app_build_type" != "null" ]]; then
+            echo "$app_build_type"
+        else
+            # Fallback to global default
+            run_yq '.metadata.default_build_type' -r
+        fi
+    else
+        # Fallback: extract per-app default build type using grep
+        local app_build_type=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "preferred_default_build_type:" | sed 's/.*preferred_default_build_type: *"*\([^"]*\)"*.*/\1/' | head -1)
+        if [[ -n "$app_build_type" && "$app_build_type" != "null" ]]; then
+            echo "$app_build_type"
+        else
+            # Fallback to global default
+            grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_build_type:" | sed 's/.*default_build_type: *"*\([^"]*\)"*.*/\1/' | head -1
+        fi
+    fi
+}
+
 # Load configuration
 load_config() {
     if ! [ -f "$CONFIG_FILE" ]; then
@@ -239,6 +295,10 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     echo "  get_project_name          - Get project name for app type"
     echo "  get_ci_app_types          - Get CI-enabled app types"
     echo "  get_featured_app_types    - Get featured app types"
+    echo "  get_idf_version           - Get global IDF version"
+    echo "  get_global_default_idf_version - Get global default IDF version"
+    echo "  get_app_preferred_idf_version - Get per-app preferred IDF version"
+    echo "  get_app_preferred_default_build_type - Get per-app preferred default build type"
 else
     # Script is being sourced, initialize configuration
     init_config

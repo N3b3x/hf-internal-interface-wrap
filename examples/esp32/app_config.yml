@@ -9,6 +9,8 @@ metadata:
   default_build_type: "Release"
   target: "esp32c6"
   idf_versions: ["release/v5.5"]
+  # Global default ESP-IDF version (used as fallback when apps don't specify)
+  default_idf_version: "release/v5.5"
 
 # Define all available app types
 apps:
@@ -17,6 +19,10 @@ apps:
     source_file: "AsciiArtComprehensiveTest.cpp"
     category: "utility"
     build_types: ["Debug", "Release"]
+    # Per-app ESP-IDF version preference (optional, falls back to global default)
+    preferred_idf_version: "release/v5.5"
+    # Per-app default build type (optional, falls back to global default)
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: true
 
@@ -25,6 +31,8 @@ apps:
     source_file: "GpioComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Debug"  # Example: GPIO tests prefer Debug for better debugging
     ci_enabled: true
     featured: true
 
@@ -33,6 +41,8 @@ apps:
     source_file: "AdcComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: true
 
@@ -41,6 +51,8 @@ apps:
     source_file: "UartComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -49,6 +61,8 @@ apps:
     source_file: "SpiComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -57,6 +71,8 @@ apps:
     source_file: "I2cComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -65,6 +81,8 @@ apps:
     source_file: "PwmComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -73,6 +91,8 @@ apps:
     source_file: "CanComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -81,6 +101,8 @@ apps:
     source_file: "PioComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: true
     documentation: "docs/README_PIO_TEST.md"
@@ -98,6 +120,8 @@ apps:
     source_file: "TemperatureComprehensiveTest.cpp"
     category: "sensor"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -106,6 +130,8 @@ apps:
     source_file: "NvsComprehensiveTest.cpp"
     category: "storage"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
     documentation: "docs/README_NVS_TEST.md"
@@ -115,6 +141,8 @@ apps:
     source_file: "TimerComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -123,6 +151,8 @@ apps:
     source_file: "LoggerComprehensiveTest.cpp"
     category: "utility"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -131,6 +161,8 @@ apps:
     source_file: "WifiComprehensiveTest.cpp"
     category: "connectivity"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: false
 
@@ -139,6 +171,8 @@ apps:
     source_file: "BluetoothComprehensiveTest.cpp"
     category: "connectivity"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: true
 
@@ -147,6 +181,8 @@ apps:
     source_file: "UtilsComprehensiveTest.cpp"
     category: "utility"
     build_types: ["Debug", "Release"]
+    preferred_idf_version: "release/v5.5"
+    preferred_default_build_type: "Release"
     ci_enabled: true
     featured: true
 

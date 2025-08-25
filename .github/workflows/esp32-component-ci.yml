@@ -195,6 +195,9 @@ jobs:
             -e CCACHE_DIR=/root/.ccache
             -e IDF_CCACHE_ENABLE=1
           command: |
+            echo "Building app: ${{ matrix.app_name }} with ESP-IDF version: ${{ matrix.idf_version }} (Docker: ${{ matrix.idf_version_docker }})"
+            echo "App default build type: ${{ matrix.app_default_build_type }}"
+            echo "Current build type: ${{ matrix.build_type }}"
             idf.py create-project ${{ env.BUILD_PATH }} &&
             cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt &&
             rm -rf ${{ env.BUILD_PATH }}/main &&
