@@ -61,3 +61,7 @@ __pycache__/
 actionlint*
 **/actionlint*
 
+# Log files
+**/logs/
+**/*.log
+logs/

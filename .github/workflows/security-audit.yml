@@ -56,10 +56,10 @@ jobs:
       - name: Get ESP-IDF version from config
         id: get-idf-version
         run: |
-          echo "Reading ESP-IDF version from examples_config.yml..."
+          echo "Reading ESP-IDF version from app_config.yml..."
           IDF_TAG="release-v5.5"
-          if [ -f "examples/esp32/examples_config.yml" ]; then
-            IDF_LINE=$(grep -m1 "idf_versions:" examples/esp32/examples_config.yml || true)
+          if [ -f "examples/esp32/app_config.yml" ]; then
+            IDF_LINE=$(grep -m1 "idf_versions:" examples/esp32/app_config.yml || true)
             if [ -n "$IDF_LINE" ]; then
               IDF_TAG=$(echo "$IDF_LINE" | tr -d '[]"' | awk -F: '{print $2}' | awk '{print $1}')
             fi
@@ -273,10 +273,10 @@ jobs:
       - name: Get ESP-IDF version from config
         id: get-idf-version
         run: |
-          echo "Reading ESP-IDF version from examples_config.yml..."
+          echo "Reading ESP-IDF version from app_config.yml..."
           IDF_TAG="release-v5.5"
-          if [ -f "examples/esp32/examples_config.yml" ]; then
-            IDF_LINE=$(grep -m1 "idf_versions:" examples/esp32/examples_config.yml || true)
+          if [ -f "examples/esp32/app_config.yml" ]; then
+            IDF_LINE=$(grep -m1 "idf_versions:" examples/esp32/app_config.yml || true)
             if [ -n "$IDF_LINE" ]; then
               IDF_TAG=$(echo "$IDF_LINE" | tr -d '[]"' | awk -F: '{print $2}' | awk '{print $1}')
             fi

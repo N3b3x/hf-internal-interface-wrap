@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 3.16)
 
 # CRITICAL: Set variables BEFORE any other processing
 # This ensures they are available during component configuration
-if(DEFINED EXAMPLE_TYPE)
-    message(STATUS "EXAMPLE_TYPE from command line: ${EXAMPLE_TYPE}")
+if(DEFINED APP_TYPE)
+    message(STATUS "APP_TYPE from command line: ${APP_TYPE}")
 else()
-    set(EXAMPLE_TYPE "ascii_art")
-    message(STATUS "EXAMPLE_TYPE defaulting to: ${EXAMPLE_TYPE}")
+    set(APP_TYPE "ascii_art")
+    message(STATUS "APP_TYPE defaulting to: ${APP_TYPE}")
 endif()
 
 if(DEFINED BUILD_TYPE)
@@ -16,11 +16,11 @@ else()
     message(STATUS "BUILD_TYPE defaulting to: ${BUILD_TYPE}")
 endif()
 
-# Flexible build system for different example types
-# Usage: idf.py build -DEXAMPLE_TYPE=<type> -DBUILD_TYPE=<type>
+# Flexible build system for different app types
+# Usage: idf.py build -DAPP_TYPE=<type> -DBUILD_TYPE=<type>
 # 
-# Example types:
-#   ascii_art        - ASCII art generator example (default)
+# App types:
+#   ascii_art        - ASCII art generator app (default)
 #   gpio_test        - Comprehensive GPIO testing suite
 #   adc_test         - Comprehensive ADC testing suite
 #   uart_test        - Comprehensive UART testing suite
@@ -38,10 +38,10 @@ endif()
 #
 # Build types: Debug, Release (default: Release)
 
-# Validate example type
-set(VALID_EXAMPLE_TYPES "ascii_art;gpio_test;adc_test;uart_test;spi_test;i2c_test;pwm_test;can_test;pio_test;temperature_test;nvs_test;timer_test;wifi_test;bluetooth_test;utils_test;logger_test")
-if(NOT EXAMPLE_TYPE IN_LIST VALID_EXAMPLE_TYPES)
-    message(FATAL_ERROR "Invalid EXAMPLE_TYPE: ${EXAMPLE_TYPE}. Valid types: ${VALID_EXAMPLE_TYPES}")
+# Validate app type
+set(VALID_APP_TYPES "ascii_art;gpio_test;adc_test;uart_test;spi_test;i2c_test;pwm_test;can_test;pio_test;temperature_test;nvs_test;timer_test;wifi_test;bluetooth_test;utils_test;logger_test")
+if(NOT APP_TYPE IN_LIST VALID_APP_TYPES)
+    message(FATAL_ERROR "Invalid APP_TYPE: ${APP_TYPE}. Valid types: ${VALID_APP_TYPES}")
 endif()
 
 # Validate build type
@@ -50,17 +50,17 @@ if(NOT BUILD_TYPE IN_LIST VALID_BUILD_TYPES)
     message(FATAL_ERROR "Invalid BUILD_TYPE: ${BUILD_TYPE}. Valid types: ${VALID_BUILD_TYPES}")
 endif()
 
-message(STATUS "Building example type: ${EXAMPLE_TYPE}")
+message(STATUS "Building app type: ${APP_TYPE}")
 message(STATUS "Build type: ${BUILD_TYPE}")
 message(STATUS "CMake source dir: ${CMAKE_SOURCE_DIR}")
 message(STATUS "CMake current source dir: ${CMAKE_CURRENT_SOURCE_DIR}")
 
 # CRITICAL: Set these as global variables for all components
-set(EXAMPLE_TYPE "${EXAMPLE_TYPE}" CACHE STRING "Example type to build" FORCE)
+set(APP_TYPE "${APP_TYPE}" CACHE STRING "App type to build" FORCE)
 set(BUILD_TYPE "${BUILD_TYPE}" CACHE STRING "Build type (Debug/Release)" FORCE)
 
 # Include ESP-IDF build system
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
-# Set project name based on example type
-project(esp32_iid_${EXAMPLE_TYPE}_example)
+# Set project name based on app type
+project(esp32_iid_${APP_TYPE}_app)

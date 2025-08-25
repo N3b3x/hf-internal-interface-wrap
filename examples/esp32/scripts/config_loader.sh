@@ -1,13 +1,13 @@
 #!/bin/bash
-# Configuration loader for ESP32 examples
-# This script provides functions to load and parse the examples_config.yml file
+# Configuration loader for ESP32 apps
+# This script provides functions to load and parse the app_config.yml file
 
 set -e
 
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-CONFIG_FILE="$PROJECT_DIR/examples_config.yml"
+CONFIG_FILE="$PROJECT_DIR/app_config.yml"
 
 # Check if yq is available for YAML parsing and detect version
 check_yq() {
@@ -69,7 +69,7 @@ load_config_yq() {
     fi
     
     # Export configuration as environment variables (raw output, no quotes)
-    export CONFIG_DEFAULT_EXAMPLE=$(run_yq '.metadata.default_example' -r)
+    export CONFIG_DEFAULT_APP=$(run_yq '.metadata.default_app' -r)
     export CONFIG_DEFAULT_BUILD_TYPE=$(run_yq '.metadata.default_build_type' -r)
     export CONFIG_TARGET=$(run_yq '.metadata.target' -r)
     
@@ -79,20 +79,20 @@ load_config_yq() {
 # Fallback: Basic parsing without yq
 load_config_basic() {
     # Extract basic configuration using grep and sed (cleaner quote handling)
-    export CONFIG_DEFAULT_EXAMPLE=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_example:" | sed 's/.*default_example: *"*\([^"]*\)"*.*/\1/')
+    export CONFIG_DEFAULT_APP=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_app:" | sed 's/.*default_app: *"*\([^"]*\)"*.*/\1/')
     export CONFIG_DEFAULT_BUILD_TYPE=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_build_type:" | sed 's/.*default_build_type: *"*\([^"]*\)"*.*/\1/')
     export CONFIG_TARGET=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "target:" | sed 's/.*target: *"*\([^"]*\)"*.*/\1/')
     
     return 0
 }
 
-# Get list of valid example types
-get_example_types() {
+# Get list of valid app types
+get_app_types() {
     if check_yq; then
-        run_yq '.examples | keys | .[]' -r | tr '\n' ' '
+        run_yq '.apps | keys | .[]' -r | tr '\n' ' '
     else
-        # Fallback: extract from examples section (use more specific range)
-        sed -n '/^examples:/,/^build_config:/p' "$CONFIG_FILE" | grep '^  [a-z_]*:$' | sed 's/^  \(.*\):$/\1/' | sort | tr '\n' ' '
+        # Fallback: extract from apps section (use more specific range)
+        sed -n '/^apps:/,/^build_config:/p' "$CONFIG_FILE" | grep '^  [a-z_]*:$' | sed 's/^  \(.*\):$/\1/' | sort | tr '\n' ' '
     fi
 }
 
@@ -106,33 +106,33 @@ get_build_types() {
     fi
 }
 
-# Get description for an example type
-get_example_description() {
-    local example_type="$1"
+# Get description for an app type
+get_app_description() {
+    local app_type="$1"
     if check_yq; then
-        run_yq ".examples.${example_type}.description" -r
+        run_yq ".apps.${app_type}.description" -r
     else
         # Fallback: extract description using grep (improved regex)
-        sed -n "/^  ${example_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "description:" | sed 's/.*description: *["\x27]*\([^"\x27]*\)["\x27]*.*/\1/' | head -1
+        sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "description:" | sed 's/.*description: *["\x27]*\([^"\x27]*\)["\x27]*.*/\1/' | head -1
     fi
 }
 
-# Get source file for an example type
-get_example_source_file() {
-    local example_type="$1"
+# Get source file for an app type
+get_app_source_file() {
+    local app_type="$1"
     if check_yq; then
-        run_yq ".examples.${example_type}.source_file" -r
+        run_yq ".apps.${app_type}.source_file" -r
     else
         # Fallback: extract source_file using grep
-        sed -n "/^  ${example_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "source_file:" | sed 's/.*source_file: *"\(.*\)".*/\1/'
+        sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "source_file:" | sed 's/.*source_file: *"\(.*\)".*/\1/'
     fi
 }
 
-# Check if example type is valid
-is_valid_example_type() {
-    local example_type="$1"
-    local valid_types=$(get_example_types)
-    echo "$valid_types" | grep -q "\b$example_type\b"
+# Check if app type is valid
+is_valid_app_type() {
+    local app_type="$1"
+    local valid_types=$(get_app_types)
+    echo "$valid_types" | grep -q "\b$app_type\b"
 }
 
 # Check if build type is valid
@@ -144,43 +144,43 @@ is_valid_build_type() {
 
 # Get build directory pattern
 get_build_directory() {
-    local example_type="$1"
+    local app_type="$1"
     local build_type="$2"
     if check_yq; then
         local pattern=$(run_yq '.build_config.build_directory_pattern' -r)
-        echo "${pattern}" | sed "s/{example_type}/${example_type}/g" | sed "s/{build_type}/${build_type}/g"
+        echo "${pattern}" | sed "s/{app_type}/${app_type}/g" | sed "s/{build_type}/${build_type}/g"
     else
-        echo "build_${example_type}_${build_type}"
+        echo "build_${app_type}_${build_type}"
     fi
 }
 
 # Get project name pattern
 get_project_name() {
-    local example_type="$1"
+    local app_type="$1"
     if check_yq; then
         local pattern=$(run_yq '.build_config.project_name_pattern' -r)
-        echo "${pattern}" | sed "s/{example_type}/${example_type}/g"
+        echo "${pattern}" | sed "s/{app_type}/${app_type}/g"
     else
-        echo "esp32_iid_${example_type}_example"
+        echo "esp32_iid_${app_type}_app"
     fi
 }
 
-# Get CI-enabled example types
-get_ci_example_types() {
+# Get CI-enabled app types
+get_ci_app_types() {
     if check_yq; then
-        run_yq '.examples | to_entries | map(select(.value.ci_enabled == true)) | .[].key' -r | tr '\n' ' '
+        run_yq '.apps | to_entries | map(select(.value.ci_enabled == true)) | .[].key' -r | tr '\n' ' '
     else
-        # Fallback: return all example types
-        get_example_types
+        # Fallback: return all app types
+        get_app_types
     fi
 }
 
-# Get featured example types
-get_featured_example_types() {
+# Get featured app types
+get_featured_app_types() {
     if check_yq; then
-        run_yq '.examples | to_entries | map(select(.value.featured == true)) | .[].key' -r | tr '\n' ' '
+        run_yq '.apps | to_entries | map(select(.value.featured == true)) | .[].key' -r | tr '\n' ' '
     else
-        # Fallback: return default featured examples
+        # Fallback: return default featured apps
         echo "ascii_art gpio_test adc_test pio_test bluetooth_test utils_test "
     fi
 }
@@ -216,7 +216,7 @@ init_config() {
     load_config
     
     # Set defaults if not already set
-    : ${CONFIG_DEFAULT_EXAMPLE:="ascii_art"}
+    : ${CONFIG_DEFAULT_APP:="ascii_art"}
     : ${CONFIG_DEFAULT_BUILD_TYPE:="Release"}
     : ${CONFIG_TARGET:="esp32c6"}
 }
@@ -224,21 +224,21 @@ init_config() {
 # Export functions for use in other scripts
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     # Script is being executed directly, not sourced
-    echo "ESP32 Examples Configuration Loader"
+    echo "ESP32 Apps Configuration Loader"
     echo "Usage: source this script to use configuration functions"
     echo ""
     echo "Available functions:"
     echo "  init_config               - Initialize configuration"
-    echo "  get_example_types         - Get all valid example types"
+    echo "  get_app_types             - Get all valid app types"
     echo "  get_build_types           - Get all valid build types"
-    echo "  get_example_description   - Get description for example type"
-    echo "  get_example_source_file   - Get source file for example type"
-    echo "  is_valid_example_type     - Check if example type is valid"
+    echo "  get_app_description       - Get description for app type"
+    echo "  get_app_source_file       - Get source file for app type"
+    echo "  is_valid_app_type         - Check if app type is valid"
     echo "  is_valid_build_type       - Check if build type is valid"
-    echo "  get_build_directory       - Get build directory for example/build type"
-    echo "  get_project_name          - Get project name for example type"
-    echo "  get_ci_example_types      - Get CI-enabled example types"
-    echo "  get_featured_example_types - Get featured example types"
+    echo "  get_build_directory       - Get build directory for app/build type"
+    echo "  get_project_name          - Get project name for app type"
+    echo "  get_ci_app_types          - Get CI-enabled app types"
+    echo "  get_featured_app_types    - Get featured app types"
 else
     # Script is being sourced, initialize configuration
     init_config

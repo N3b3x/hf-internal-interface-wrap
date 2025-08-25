@@ -2,6 +2,12 @@
 
 This guide explains how to use the improved port detection system for ESP32 devices on both macOS and Linux systems.
 
+---
+
+**Navigation**: [← Previous: Utility Scripts](README_UTILITY_SCRIPTS.md) | [Back to Scripts](../README.md) | [Next: Scripts Overview →](README_SCRIPTS_OVERVIEW.md)
+
+---
+
 ## Overview
 
 The flash system has been enhanced with intelligent port detection that automatically finds ESP32 devices on your system. This solves common issues where users couldn't find the correct USB port for their ESP32 device.
@@ -10,16 +16,16 @@ The flash system has been enhanced with intelligent port detection that automati
 
 ### 1. Automatic Port Detection (Recommended)
 
-The `flash_example.sh` script now automatically detects ESP32 devices:
+The `flash_app.sh` script now automatically detects ESP32 devices:
 
 ```bash
 # From project root
-./examples/esp32/scripts/flash_example.sh <example_name> <build_type> <operation>
+./examples/esp32/scripts/flash_app.sh <example_name> <build_type> <operation>
 ```
 
 **Example:**
 ```bash
-./examples/esp32/scripts/flash_example.sh gpio Release flash_monitor
+./examples/esp32/scripts/flash_app.sh gpio Release flash_monitor
 ```
 
 The script will:
@@ -51,7 +57,7 @@ You can also manually specify a port:
 
 ```bash
 export ESPPORT="/dev/your_port_here"
-./examples/esp32/scripts/flash_example.sh <example_name> <build_type> <operation>
+./examples/esp32/scripts/flash_app.sh <example_name> <build_type> <operation>
 ```
 
 ## Platform-Specific Details
@@ -140,7 +146,7 @@ This tests if the detected ports are actually accessible.
 ### 3. Test Full Flash Process
 
 ```bash
-./examples/esp32/scripts/flash_example.sh <example_name> Release flash
+./examples/esp32/scripts/flash_app.sh <example_name> Release flash
 ```
 
 This will test the complete process including port detection and flashing.
@@ -149,7 +155,7 @@ This will test the complete process including port detection and flashing.
 
 ### Custom Port Detection
 
-If you have a custom setup, you can modify the port detection functions in `flash_example.sh`:
+If you have a custom setup, you can modify the port detection functions in `flash_app.sh`:
 
 - `detect_os()`: Operating system detection
 - `find_esp32_devices()`: ESP32 device detection
@@ -169,21 +175,21 @@ If you have a custom setup, you can modify the port detection functions in `flas
 
 ```bash
 # Flash and monitor GPIO example
-./examples/esp32/scripts/flash_example.sh gpio Release flash_monitor
+./examples/esp32/scripts/flash_app.sh gpio Release flash_monitor
 ```
 
 ### Flash Only
 
 ```bash
 # Flash only (no monitor)
-./examples/esp32/scripts/flash_example.sh gpio Release flash
+./examples/esp32/scripts/flash_app.sh gpio Release flash
 ```
 
 ### Monitor Only
 
 ```bash
 # Monitor only (assumes already flashed)
-./examples/esp32/scripts/flash_example.sh gpio Release monitor
+./examples/esp32/scripts/flash_app.sh gpio Release monitor
 ```
 
 ### With Manual Port
@@ -191,7 +197,7 @@ If you have a custom setup, you can modify the port detection functions in `flas
 ```bash
 # Use specific port
 export ESPPORT="/dev/cu.usbmodem1201"
-./examples/esp32/scripts/flash_example.sh gpio Release flash_monitor
+./examples/esp32/scripts/flash_app.sh gpio Release flash_monitor
 ```
 
 ## Support
@@ -205,3 +211,7 @@ If you continue to have issues:
 5. Try different USB cables and ports
 
 The improved port detection system should handle most common scenarios automatically, but these tools are available for troubleshooting when needed.
+
+---
+
+**Navigation**: [← Previous: Utility Scripts](README_UTILITY_SCRIPTS.md) | [Back to Scripts](../README.md) | [Next: Scripts Overview →](README_SCRIPTS_OVERVIEW.md)

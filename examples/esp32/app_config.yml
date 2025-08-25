@@ -1,17 +1,17 @@
-# ESP32 HardFOC Interface Wrapper - Examples Configuration
-# This file centralizes all example definitions, their source files, and metadata
+# ESP32 HardFOC Interface Wrapper - Apps Configuration
+# This file centralizes all app definitions, their source files, and metadata
 # Used by build scripts, flash scripts, CI workflows, and CMake
 
 version: "1.0"
 metadata:
   project: "ESP32 HardFOC Interface Wrapper"
-  default_example: "ascii_art"
+  default_app: "ascii_art"
   default_build_type: "Release"
   target: "esp32c6"
   idf_versions: ["release/v5.5"]
 
-# Define all available example types
-examples:
+# Define all available app types
+apps:
   ascii_art:
     description: "ASCII art generator example"
     source_file: "AsciiArtComprehensiveTest.cpp"
@@ -168,15 +168,15 @@ build_config:
       debug_level: "-g"
       defines: ["NDEBUG"]
 
-  build_directory_pattern: "build_{example_type}_{build_type}"
-  project_name_pattern: "esp32_iid_{example_type}_example"
+  build_directory_pattern: "build_{app_type}_{build_type}"
+  project_name_pattern: "esp32_iid_{app_type}_app"
 
 # CI configuration
 ci_config:
   timeout_minutes: 30
   fail_fast: false
-  # Examples to exclude from specific build types (if needed)
+  # Apps to exclude from specific build types (if needed)
   exclude_combinations: []
-  # Examples that require special handling
-  special_examples: []
+  # Apps that require special handling
+  special_apps: []
 

@@ -1,9 +1,9 @@
 #!/bin/bash
-# Build script for different ESP32 examples (Bash version)
-# Usage: ./build_example.sh [example_type] [build_type]
+# Build script for different ESP32 apps (Bash version)
+# Usage: ./build_app.sh [app_type] [build_type]
 # 
-# Example types and build types are loaded from examples_config.yml
-# Use './build_example.sh list' to see all available examples
+# App types and build types are loaded from app_config.yml
+# Use './build_app.sh list' to see all available apps
 
 set -e  # Exit on any error
 
@@ -13,12 +13,12 @@ source "$PROJECT_DIR/scripts/config_loader.sh"
 
 # Usage helper
 print_usage() {
-	echo "Usage: ./build_example.sh [example_type] [build_type] [--clean|--no-clean] [--use-cache|--no-cache]"
+	echo "Usage: ./build_app.sh [app_type] [build_type] [--clean|--no-clean] [--use-cache|--no-cache]"
 	echo "Examples:"
-	echo "  ./build_example.sh                # defaults from config"
-	echo "  ./build_example.sh list           # list available examples/build types"
-	echo "  ./build_example.sh gpio_test Release --clean"
-	echo "  ./build_example.sh adc_test Debug --no-cache"
+	echo "  ./build_app.sh                # defaults from config"
+	echo "  ./build_app.sh list           # list available apps/build types"
+	echo "  ./build_app.sh gpio_test Release --clean"
+	echo "  ./build_app.sh adc_test Debug --no-cache"
 }
 
 # Defaults (env overrides allowed); flags below can override these
@@ -52,24 +52,24 @@ for arg in "$@"; do
 done
 
 # Configuration derived from positionals or config defaults
-EXAMPLE_TYPE=${POSITIONAL_ARGS[0]:-$CONFIG_DEFAULT_EXAMPLE}
+APP_TYPE=${POSITIONAL_ARGS[0]:-$CONFIG_DEFAULT_APP}
 BUILD_TYPE=${POSITIONAL_ARGS[1]:-$CONFIG_DEFAULT_BUILD_TYPE}
 
 # Handle special commands
 
 # Handle special commands
-if [ "$EXAMPLE_TYPE" = "list" ]; then
-    echo "=== Available Example Types ==="
-    echo "Featured examples:"
-    for example in $(get_featured_example_types); do
-        description=$(get_example_description "$example")
-        echo "  $example - $description"
+if [ "$APP_TYPE" = "list" ]; then
+    echo "=== Available App Types ==="
+    echo "Featured apps:"
+    for app in $(get_featured_app_types); do
+        description=$(get_app_description "$app")
+        echo "  $app - $description"
     done
     echo ""
-    echo "All examples:"
-    for example in $(get_example_types); do
-        description=$(get_example_description "$example")
-        echo "  $example - $description"
+    echo "All apps:"
+    for app in $(get_app_types); do
+        description=$(get_app_description "$app")
+        echo "  $app - $description"
     done
     echo ""
     echo "Build types: $(get_build_types)"
@@ -96,7 +96,7 @@ export IDF_TARGET=$CONFIG_TARGET
 
 echo "=== ESP32 HardFOC Interface Wrapper Build System ==="
 echo "Project Directory: $PROJECT_DIR"
-echo "Example Type: $EXAMPLE_TYPE"
+echo "App Type: $APP_TYPE"
 echo "Build Type: $BUILD_TYPE"
 echo "Target: $IDF_TARGET"
 if [ "$USE_CCACHE" = "1" ]; then
@@ -108,15 +108,15 @@ else
 fi
 echo "======================================================"
 
-# Validate example type
-if is_valid_example_type "$EXAMPLE_TYPE"; then
-    echo "Valid example type: $EXAMPLE_TYPE"
-    description=$(get_example_description "$EXAMPLE_TYPE")
+# Validate app type
+if is_valid_app_type "$APP_TYPE"; then
+    echo "Valid app type: $APP_TYPE"
+    description=$(get_app_description "$APP_TYPE")
     echo "Description: $description"
 else
-    echo "ERROR: Invalid example type: $EXAMPLE_TYPE"
-    echo "Available types: $(get_example_types)"
-    echo "Use './build_example.sh list' to see all examples with descriptions"
+    echo "ERROR: Invalid app type: $APP_TYPE"
+    echo "Available types: $(get_app_types)"
+    echo "Use './build_app.sh list' to see all apps with descriptions"
     exit 1
 fi
 
@@ -133,7 +133,7 @@ fi
 cd "$PROJECT_DIR"
 
 # Set build directory using configuration
-BUILD_DIR=$(get_build_directory "$EXAMPLE_TYPE" "$BUILD_TYPE")
+BUILD_DIR=$(get_build_directory "$APP_TYPE" "$BUILD_TYPE")
 echo "Build directory: $BUILD_DIR"
 
 # Clean previous build only if explicitly requested
@@ -148,7 +148,7 @@ fi
 
 # Configure and build with proper error handling
 echo "Configuring project for $IDF_TARGET..."
-if ! idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D EXAMPLE_TYPE="$EXAMPLE_TYPE" -D IDF_CCACHE_ENABLE="$USE_CCACHE" reconfigure; then
+if ! idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D APP_TYPE="$APP_TYPE" -D IDF_CCACHE_ENABLE="$USE_CCACHE" reconfigure; then
     echo "ERROR: Configuration failed"
     exit 1
 fi
@@ -160,13 +160,13 @@ if ! idf.py -B "$BUILD_DIR" build; then
 fi
 
 # Get actual binary information using configuration
-PROJECT_NAME=$(get_project_name "$EXAMPLE_TYPE")
+PROJECT_NAME=$(get_project_name "$APP_TYPE")
 BIN_FILE="$BUILD_DIR/$PROJECT_NAME.bin"
 
 echo "======================================================"
 echo "BUILD COMPLETED SUCCESSFULLY"
 echo "======================================================"
-echo "Example Type: $EXAMPLE_TYPE"
+echo "App Type: $APP_TYPE"
 echo "Build Type: $BUILD_TYPE"
 echo "Target: $IDF_TARGET"
 echo "Build Directory: $BUILD_DIR"
@@ -178,9 +178,9 @@ else
 fi
 echo ""
 echo "Next steps:"
-echo "  Flash and monitor: ./scripts/flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE flash_monitor"
-echo "  Flash only:        ./scripts/flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE flash"
-echo "  Monitor only:      ./scripts/flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE monitor"
+echo "  Flash and monitor: ./scripts/flash_app.sh flash_monitor $APP_TYPE $BUILD_TYPE"
+echo "  Flash only:        ./scripts/flash_app.sh flash $APP_TYPE $BUILD_TYPE"
+echo "  Monitor only:      ./scripts/flash_app.sh monitor"
 echo "  Size analysis:     idf.py -B $BUILD_DIR size"
 echo ""
 echo "======================================================"

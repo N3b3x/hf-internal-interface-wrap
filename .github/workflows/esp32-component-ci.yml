@@ -95,7 +95,7 @@ jobs:
           python3 .github/workflows/generate_matrix.py --pretty | jq .
 
   build:
-    name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.example_type }}
+    name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.app_name }}
     runs-on: ubuntu-latest
     needs: [setup-environment, generate-matrix]
     timeout-minutes: 30
@@ -201,14 +201,14 @@ jobs:
             cp -r examples/esp32/main ${{ env.BUILD_PATH }}/main &&
             cp -r examples/esp32/components ${{ env.BUILD_PATH }}/components &&
             cp -r examples/esp32/scripts ${{ env.BUILD_PATH }}/scripts &&
-            cp examples/esp32/examples_config.yml ${{ env.BUILD_PATH }}/examples_config.yml &&
+            cp examples/esp32/app_config.yml ${{ env.BUILD_PATH }}/app_config.yml &&
             cp -r src ${{ env.BUILD_PATH }}/src &&
             cp -r inc ${{ env.BUILD_PATH }}/inc &&
             cp examples/esp32/sdkconfig ${{ env.BUILD_PATH }}/sdkconfig &&
             idf.py -C ${{ env.BUILD_PATH }} \
               -DIDF_TARGET=${{ env.IDF_TARGET }} \
               -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-              -DEXAMPLE_TYPE=${{ matrix.example_type }} \
+              -DAPP_TYPE=${{ matrix.app_name }} \
               --ccache reconfigure build &&
             idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt &&
             idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json &&
@@ -219,7 +219,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ matrix.example_type }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
+          name: fw-${{ matrix.app_name }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
           retention-days: 7
           path: |
             ${{ env.BUILD_PATH }}/build/*.bin

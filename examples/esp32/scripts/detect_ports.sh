@@ -20,13 +20,20 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         --help|-h)
-            echo "ESP32 Port Detection and Troubleshooting Script"
+            echo "ESP32 Port Detection Script"
             echo "Usage: $0 [--verbose] [--test-connection]"
             echo ""
+            echo "Purpose: Automatically find ESP32 devices and troubleshoot port issues"
+            echo ""
             echo "Options:"
-            echo "  --verbose          Show detailed device information"
-            echo "  --test-connection  Test if ports are accessible"
+            echo "  --verbose          Show detailed device info (USB details, permissions)"
+            echo "  --test-connection  Test if detected ports are actually accessible"
             echo "  --help, -h         Show this help message"
+            echo ""
+            echo "Examples:"
+            echo "  $0                 # Quick port detection"
+            echo "  $0 --verbose       # Detailed device information"
+            echo "  $0 --test-connection  # Verify ports work"
             exit 0
             ;;
         *)

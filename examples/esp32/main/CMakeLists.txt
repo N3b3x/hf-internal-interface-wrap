@@ -1,9 +1,9 @@
-# Flexible main component for different example types
-# Determine source file based on EXAMPLE_TYPE
+# Flexible main component for different app types
+# Determine source file based on APP_TYPE
 
-# Get example type from parent
-if(NOT DEFINED EXAMPLE_TYPE)
-    set(EXAMPLE_TYPE "ascii_art")
+# Get app type from parent
+if(NOT DEFINED APP_TYPE)
+    set(APP_TYPE "ascii_art")
 endif()
 
 # Debug information
@@ -11,30 +11,30 @@ message(STATUS "=== CMake Debug Information ===")
 message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
 message(STATUS "CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
 message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
-message(STATUS "EXAMPLE_TYPE: ${EXAMPLE_TYPE}")
+message(STATUS "APP_TYPE: ${APP_TYPE}")
 message(STATUS "===============================")
 
 # Get source file from centralized configuration
 execute_process(
-    COMMAND python3 "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/get_example_info.py" validate "${EXAMPLE_TYPE}"
+    COMMAND python3 "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/get_app_info.py" validate "${APP_TYPE}"
     RESULT_VARIABLE VALIDATE_RESULT
     OUTPUT_QUIET
     ERROR_QUIET
 )
 
 if(NOT VALIDATE_RESULT EQUAL 0)
-    message(FATAL_ERROR "Unknown EXAMPLE_TYPE: ${EXAMPLE_TYPE}")
+    message(FATAL_ERROR "Unknown APP_TYPE: ${APP_TYPE}")
 endif()
 
 execute_process(
-    COMMAND python3 "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/get_example_info.py" source_file "${EXAMPLE_TYPE}"
+    COMMAND python3 "${CMAKE_CURRENT_SOURCE_DIR}/../scripts/get_app_info.py" source_file "${APP_TYPE}"
     OUTPUT_VARIABLE MAIN_SOURCE
     OUTPUT_STRIP_TRAILING_WHITESPACE
     RESULT_VARIABLE SOURCE_RESULT
 )
 
 if(NOT SOURCE_RESULT EQUAL 0)
-    message(FATAL_ERROR "Failed to get source file for EXAMPLE_TYPE: ${EXAMPLE_TYPE}")
+    message(FATAL_ERROR "Failed to get source file for APP_TYPE: ${APP_TYPE}")
 endif()
 
 message(STATUS "Using source file from configuration: ${MAIN_SOURCE}")
@@ -112,5 +112,5 @@ endif()
 
 # Add compile definitions for each example type
 target_compile_definitions(${COMPONENT_LIB} PRIVATE 
-    "EXAMPLE_TYPE_${EXAMPLE_TYPE}=1"
+    "EXAMPLE_TYPE_${APP_TYPE}=1"
 )

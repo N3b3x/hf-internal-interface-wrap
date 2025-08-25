@@ -10,11 +10,45 @@ export SETUP_MODE="local"
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Show help if requested
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo "ESP32 Local Development Setup Script"
+    echo ""
+    echo "Usage: ./setup_repo.sh [--help]"
+    echo ""
+    echo "Purpose: Set up complete ESP32 development environment on your machine"
+    echo ""
+    echo "What it installs:"
+    echo "  • System dependencies (build tools, libraries)"
+    echo "  • Clang-20 toolchain (compiler, formatter, analyzer)"
+    echo "  • ESP-IDF v5.5 (ESP32 development framework)"
+    echo "  • Python dependencies (PyYAML)"
+    echo "  • yq (YAML processor)"
+    echo "  • Development aliases and environment variables"
+    echo ""
+    echo "What it does:"
+    echo "  • Detects your OS automatically"
+    echo "  • Installs all required dependencies"
+    echo "  • Configures your development environment"
+    echo "  • Adds useful aliases to ~/.bashrc"
+    echo "  • Verifies the installation"
+    echo ""
+    echo "Requirements:"
+    echo "  • sudo access for package installation"
+    echo "  • Internet connection for downloads"
+    echo "  • Regular user account (not root)"
+    echo ""
+    echo "For CI environment setup, use: ./setup_ci.sh"
+    echo "For detailed information, see: docs/README_UTILITY_SCRIPTS.md"
+    exit 0
+fi
+
 # Source the common setup functions
 source "$SCRIPT_DIR/setup_common.sh"
 
 # Main setup function for local development
 main() {
+    echo "================================================================"
     echo "🚀 ESP32 HardFOC Interface Wrapper - Local Development Setup"
     echo "================================================================"
     echo ""
@@ -88,13 +122,13 @@ main() {
     print_status "1. Restart your terminal or run: source ~/.bashrc"
     print_status "2. Navigate to the examples/esp32 directory"
     print_status "3. Run: get_idf"
-    print_status "4. Build examples with: ./scripts/build_example.sh <example_type> <build_type>"
-    print_status "5. List available examples with: ./scripts/build_example.sh list"
+    print_status "4. Build apps with: ./scripts/build_app.sh <app_type> <build_type>"
+    print_status "5. List available apps with: ./scripts/build_app.sh list"
     echo ""
     print_status "Useful aliases have been added to your ~/.bashrc:"
-    print_status "  • build_example - Build examples from anywhere"
-    print_status "  • flash_example - Flash examples to ESP32"
-    print_status "  • list_examples - Show all available examples"
+    print_status "  • build_app - Build apps from anywhere"
+    print_status "  • flash_app - Flash apps to ESP32"
+    print_status "  • list_apps - Show all available apps"
     echo ""
     print_status "Happy coding! 🚀"
 }

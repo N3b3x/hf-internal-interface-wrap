@@ -4,6 +4,29 @@
 
 set -e  # Exit on any error
 
+# Show help if requested
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo "ESP32 HardFOC Interface Wrapper - Common Setup Functions"
+    echo ""
+    echo "Usage: source ./setup_common.sh [--help]"
+    echo ""
+    echo "This script contains shared functions used by both local and CI setup scripts:"
+    echo "  • System dependency installation (Ubuntu, Fedora, CentOS, macOS)"
+    echo "  • Clang toolchain installation and configuration"
+    echo "  • ESP-IDF installation and setup"
+    echo "  • Python dependency management"
+    echo "  • Environment variable configuration"
+    echo "  • Cache optimization functions"
+    echo ""
+    echo "Note: This script is designed to be sourced by other scripts, not run directly."
+    echo "For setup scripts, use:"
+    echo "  • ./setup_repo.sh     - Local development setup"
+    echo "  • ./setup_ci.sh       - CI environment setup"
+    echo ""
+    echo "For detailed information, see: docs/README_UTILITY_SCRIPTS.md"
+    exit 0
+fi
+
 # Colors for output (only used in local setup)
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -327,7 +350,7 @@ install_esp_idf() {
     # Load configuration to get IDF version
     local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     local project_dir="$(cd "$script_dir/.." && pwd)"
-    local config_file="$project_dir/examples_config.yml"
+    local config_file="$project_dir/app_config.yml"
     
     if [[ -f "$config_file" ]]; then
         source "$script_dir/config_loader.sh"
@@ -581,7 +604,7 @@ verify_installation() {
             print_status "1. Restart your terminal or run: source ~/.bashrc"
             print_status "2. Navigate to examples/esp32 directory"
             print_status "3. Run: get_idf"
-            print_status "4. Build examples with: ./scripts/build_example.sh <example_type> <build_type>"
+            print_status "4. Build apps with: ./scripts/build_app.sh <app_type> <build_type>"
         fi
     else
         print_error "Installation verification failed with $errors errors"
@@ -613,12 +636,12 @@ setup_local_environment() {
     
     # Create useful aliases
     local bashrc="$HOME/.bashrc"
-    if ! grep -q "alias build_example" "$bashrc" 2>/dev/null; then
+    if ! grep -q "alias build_app" "$bashrc" 2>/dev/null; then
         echo "" >> "$bashrc"
         echo "# ESP32 Development Aliases" >> "$bashrc"
-        echo "alias build_example='./scripts/build_example.sh'" >> "$bashrc"
-        echo "alias flash_example='./scripts/flash_example.sh'" >> "$bashrc"
-        echo "alias list_examples='./scripts/build_example.sh list'" >> "$bashrc"
+        echo "alias build_app='./scripts/build_app.sh'" >> "$bashrc"
+        echo "alias flash_app='./scripts/flash_app.sh'" >> "$bashrc"
+        echo "alias list_apps='./scripts/build_app.sh list'" >> "$bashrc"
     fi
     
     print_success "Local development environment configured"

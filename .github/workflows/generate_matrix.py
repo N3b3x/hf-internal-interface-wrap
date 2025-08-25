@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate CI matrix from centralized configuration.
-This script reads examples_config.yml and outputs GitHub Actions matrix configuration.
+This script reads app_config.yml and outputs GitHub Actions matrix configuration.
 """
 
 import sys
@@ -10,15 +10,15 @@ import json
 from pathlib import Path
 
 def load_config():
-    """Load the examples configuration file."""
+    """Load the apps configuration file."""
     # Try multiple possible paths for the configuration file
     possible_paths = [
         # When run from workspace root
-        Path("examples/esp32/examples_config.yml"),
+        Path("examples/esp32/app_config.yml"),
         # When run from .github/workflows directory  
-        Path("../../examples/esp32/examples_config.yml"),
+        Path("../../examples/esp32/app_config.yml"),
         # Absolute path calculation from script location
-        Path(__file__).resolve().parent.parent / "examples" / "esp32" / "examples_config.yml"
+        Path(__file__).resolve().parent.parent / "examples" / "esp32" / "app_config.yml"
     ]
     
     config_file = None
@@ -61,21 +61,21 @@ def generate_matrix():
                 return True
         return False
 
-    # Build an explicit include list honoring per-example build types
+    # Build an explicit include list honoring per-app build types
     include: list[dict] = []
-    for example_name, example_config in config['examples'].items():
-        if not example_config.get('ci_enabled', True):
+    for app_name, app_config in config['apps'].items():
+        if not app_config.get('ci_enabled', True):
             continue
-        per_example_build_types = example_config.get('build_types', global_build_types)
+        per_app_build_types = app_config.get('build_types', global_build_types)
         for idf_version in idf_versions:
             # Create Docker-safe version for artifact naming (replace / with -)
             docker_safe_version = idf_version.replace('/', '-')
-            for build_type in per_example_build_types:
+            for build_type in per_app_build_types:
                 candidate = {
                     'idf_version': idf_version,  # Git format for ESP-IDF cloning
                     'idf_version_docker': docker_safe_version,  # Docker-safe format for artifacts
                     'build_type': build_type,
-                    'example_type': example_name,
+                    'app_name': app_name,  # Use app_name for consistency
                 }
                 if not is_excluded(candidate):
                     include.append(candidate)
@@ -85,14 +85,14 @@ def generate_matrix():
 def main():
     """Main function."""
     if len(sys.argv) > 1:
-        if sys.argv[1] == '--examples-only':
-            # Output only the example types for simpler usage
+        if sys.argv[1] == '--apps-only':
+            # Output only the app types for simpler usage
             config = load_config()
-            ci_examples = []
-            for example_name, example_config in config['examples'].items():
-                if example_config.get('ci_enabled', True):
-                    ci_examples.append(example_name)
-            print(json.dumps(ci_examples))
+            ci_apps = []
+            for app_name, app_config in config['apps'].items():
+                if app_config.get('ci_enabled', True):
+                    ci_apps.append(app_name)
+            print(json.dumps(ci_apps))
             return
         elif sys.argv[1] == '--build-types-only':
             # Output only the build types

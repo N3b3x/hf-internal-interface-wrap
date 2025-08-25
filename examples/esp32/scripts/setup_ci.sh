@@ -10,6 +10,31 @@ export SETUP_MODE="ci"
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Show help if requested (before sourcing common functions)
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo "ESP32 CI Environment Setup Script"
+    echo ""
+    echo "Usage: ./setup_ci.sh [--help]"
+    echo ""
+    echo "Purpose: Set up minimal ESP32 development environment for CI/CD builds"
+    echo ""
+    echo "What it installs:"
+    echo "  • System dependencies (build tools, libraries)"
+    echo "  • Clang-20 toolchain (compiler, formatter, analyzer)"
+    echo "  • ESP-IDF v5.5 (ESP32 development framework)"
+    echo "  • Python dependencies (PyYAML)"
+    echo "  • yq (YAML processor)"
+    echo "  • Development aliases and environment variables"
+    echo ""
+    echo "CI-specific features:"
+    echo "  • Skips installation if components found in cache"
+    echo "  • Optimizes cache usage for CI environments"
+    echo "  • Provides detailed cache statistics"
+    echo ""
+    echo "For local development setup, use: ./setup_repo.sh"
+    exit 0
+fi
+
 # Source the common setup functions
 source "$SCRIPT_DIR/setup_common.sh"
 
@@ -80,6 +105,8 @@ main() {
     echo "======================================================="
     echo "CI environment setup complete!"
 }
+
+
 
 # Run main function
 main "$@"
