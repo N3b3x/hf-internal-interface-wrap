@@ -91,6 +91,33 @@ if [ -z "$IDF_PATH" ] || ! command -v idf.py &> /dev/null; then
     fi
 fi
 
+# Ensure we're using the correct ESP-IDF version for this app
+echo "Checking ESP-IDF version requirements for app: $APP_TYPE"
+APP_PREFERRED_IDF_VERSION=$(get_app_preferred_idf_version "$APP_TYPE")
+CURRENT_IDF_VERSION=$(cd "$HOME/esp/esp-idf" && git describe --tags --exact-match 2>/dev/null || git rev-parse --abbrev-ref HEAD)
+
+if [[ "$CURRENT_IDF_VERSION" != "$APP_PREFERRED_IDF_VERSION" ]]; then
+    echo "Switching to ESP-IDF version required by app '$APP_TYPE': $APP_PREFERRED_IDF_VERSION"
+    echo "Current version: $CURRENT_IDF_VERSION"
+    
+    # Use the manage_idf_versions script to switch versions
+    if ! "$PROJECT_DIR/scripts/manage_idf_versions.sh" switch "$APP_PREFERRED_IDF_VERSION"; then
+        echo "ERROR: Failed to switch to ESP-IDF version: $APP_PREFERRED_IDF_VERSION"
+        exit 1
+    fi
+    
+    # Re-source the environment after switching
+    if [ -f "$HOME/esp/esp-idf/export.sh" ]; then
+        source "$HOME/esp/esp-idf/export.sh"
+        echo "ESP-IDF environment re-sourced after version switch"
+    else
+        echo "ERROR: ESP-IDF export.sh not found after version switch"
+        exit 1
+    fi
+else
+    echo "Using correct ESP-IDF version: $CURRENT_IDF_VERSION"
+fi
+
 # Ensure ESP32-C6 target is set
 export IDF_TARGET=$CONFIG_TARGET
 

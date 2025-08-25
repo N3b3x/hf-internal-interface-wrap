@@ -355,19 +355,20 @@ install_esp_idf() {
     if [[ -f "$config_file" ]]; then
         source "$script_dir/config_loader.sh"
         if load_config; then
-            local idf_version=$(get_idf_version)
+            # Use global default IDF version for initial setup
+            local idf_version=$(get_global_default_idf_version)
             if [[ -n "$idf_version" ]]; then
-                print_status "Using IDF version from config: $idf_version"
+                print_status "Using global default IDF version: $idf_version"
             else
-                print_warning "Could not read IDF version from config, using default: release/v5.5"
+                print_warning "Could not read global default IDF version from config, using fallback: release/v5.5"
                 local idf_version="release/v5.5"
             fi
         else
-            print_warning "Could not load config, using default IDF version: release/v5.5"
+            print_warning "Could not load config, using fallback IDF version: release/v5.5"
             local idf_version="release/v5.5"
         fi
     else
-        print_warning "Config file not found, using default IDF version: release/v5.5"
+        print_warning "Config file not found, using fallback IDF version: release/v5.5"
         local idf_version="release/v5.5"
     fi
     

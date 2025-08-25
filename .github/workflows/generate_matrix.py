@@ -47,10 +47,10 @@ def generate_matrix():
     # Global build types as default
     global_build_types = list(config['build_config']['build_types'].keys())
     
-    # Get IDF versions
-    # Docker images use dash in release tags (e.g., release-v5.5)
-    idf_versions = config['metadata'].get('idf_versions', ['release-v5.5'])
-
+    # Get global default values
+    global_default_idf_version = config['metadata'].get('default_idf_version', 'release/v5.5')
+    global_default_build_type = config['metadata'].get('default_build_type', 'Release')
+    
     # Optional excludes for special cases
     exclude_combinations = config.get('ci_config', {}).get('exclude_combinations', [])
 
@@ -61,24 +61,32 @@ def generate_matrix():
                 return True
         return False
 
-    # Build an explicit include list honoring per-app build types
+    # Build an explicit include list honoring per-app preferences
     include: list[dict] = []
     for app_name, app_config in config['apps'].items():
         if not app_config.get('ci_enabled', True):
             continue
+        
+        # Get per-app preferences with fallbacks to global defaults
+        app_idf_version = app_config.get('preferred_idf_version', global_default_idf_version)
+        app_default_build_type = app_config.get('preferred_default_build_type', global_default_build_type)
+        
+        # Get build types for this app (per-app or global)
         per_app_build_types = app_config.get('build_types', global_build_types)
-        for idf_version in idf_versions:
-            # Create Docker-safe version for artifact naming (replace / with -)
-            docker_safe_version = idf_version.replace('/', '-')
-            for build_type in per_app_build_types:
-                candidate = {
-                    'idf_version': idf_version,  # Git format for ESP-IDF cloning
-                    'idf_version_docker': docker_safe_version,  # Docker-safe format for artifacts
-                    'build_type': build_type,
-                    'app_name': app_name,  # Use app_name for consistency
-                }
-                if not is_excluded(candidate):
-                    include.append(candidate)
+        
+        # Create Docker-safe version for artifact naming (replace / with -)
+        docker_safe_version = app_idf_version.replace('/', '-')
+        
+        for build_type in per_app_build_types:
+            candidate = {
+                'idf_version': app_idf_version,  # Git format for ESP-IDF cloning
+                'idf_version_docker': docker_safe_version,  # Docker-safe format for artifacts
+                'build_type': build_type,
+                'app_name': app_name,  # Use app_name for consistency
+                'app_default_build_type': app_default_build_type,  # Per-app default for reference
+            }
+            if not is_excluded(candidate):
+                include.append(candidate)
 
     return { 'include': include }
 
