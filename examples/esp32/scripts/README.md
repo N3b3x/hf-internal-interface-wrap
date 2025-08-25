@@ -308,6 +308,8 @@ export USE_CCACHE=0
 - **`setup_repo.sh`** - Local development environment setup
 - **`setup_ci.sh`** - CI/CD environment setup
 - **`setup_common.sh`** - Shared setup functions
+- **`setup_build_directory.sh`** - Complete build directory setup and building
+- **`prepare_build_directory.sh`** - Prepare build directory structure only (no building)
 
 ## 🌐 Portability Features
 

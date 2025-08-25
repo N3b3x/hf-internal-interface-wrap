@@ -195,25 +195,12 @@ jobs:
             -e CCACHE_DIR=/root/.ccache
             -e IDF_CCACHE_ENABLE=1
           command: |
-            idf.py create-project ${{ env.BUILD_PATH }} &&
-            cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt &&
-            rm -rf ${{ env.BUILD_PATH }}/main &&
-            cp -r examples/esp32/main ${{ env.BUILD_PATH }}/main &&
-            cp -r examples/esp32/components ${{ env.BUILD_PATH }}/components &&
-            cp -r examples/esp32/scripts ${{ env.BUILD_PATH }}/scripts &&
-            cp examples/esp32/app_config.yml ${{ env.BUILD_PATH }}/app_config.yml &&
-            cp -r src ${{ env.BUILD_PATH }}/src &&
-            cp -r inc ${{ env.BUILD_PATH }}/inc &&
-            cp examples/esp32/sdkconfig ${{ env.BUILD_PATH }}/sdkconfig &&
-            idf.py -C ${{ env.BUILD_PATH }} \
-              -DIDF_TARGET=${{ env.IDF_TARGET }} \
-              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-              -DAPP_TYPE=${{ matrix.app_name }} \
-              --ccache reconfigure build &&
-            idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt &&
-            idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json &&
-            ccache -s &&
-            ccache -s > ${{ env.BUILD_PATH }}/build/ccache_stats.txt
+            chmod +x examples/esp32/scripts/setup_build_directory.sh &&
+            ./examples/esp32/scripts/setup_build_directory.sh \
+              -p ${{ env.BUILD_PATH }} \
+              -t ${{ env.IDF_TARGET }} \
+              -b ${{ matrix.build_type }} \
+              -a ${{ matrix.app_name }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
