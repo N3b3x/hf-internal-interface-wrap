@@ -1,10 +1,11 @@
 #!/bin/bash
 # Flash and monitor script for different ESP32 examples (Bash version)
-# Usage: ./flash_example.sh [example_type] [build_type] [operation]
+# Usage: ./flash_example.sh [example_type] [build_type] [operation] [enable_logging]
 # 
 # Example types and build types are loaded from examples_config.yml
 # Use './flash_example.sh list' to see all available examples
 # Operations: flash, monitor, flash_monitor (default: flash_monitor)
+# Logging: true/false (default: false) - saves monitor output to logs/
 
 set -e  # Exit on any error
 
@@ -16,6 +17,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/config_loader.sh"
 EXAMPLE_TYPE=${1:-$CONFIG_DEFAULT_EXAMPLE}
 BUILD_TYPE=${2:-$CONFIG_DEFAULT_BUILD_TYPE}
 OPERATION=${3:-flash_monitor}
+ENABLE_LOGGING=${4:-false}  # Fourth parameter to enable logging
 
 # Handle special commands
 if [ "$EXAMPLE_TYPE" = "list" ]; then
@@ -34,6 +36,11 @@ if [ "$EXAMPLE_TYPE" = "list" ]; then
     echo ""
     echo "Build types: $(get_build_types)"
     echo "Operations: flash, monitor, flash_monitor"
+    echo "Logging: true/false (saves monitor output to logs/ directory)"
+    echo ""
+    echo "Examples:"
+    echo "  ./flash_example.sh gpio Debug flash_monitor true  # Enable logging"
+    echo "  ./flash_example.sh i2c Release monitor false     # Disable logging"
     exit 0
 fi
 
@@ -59,6 +66,7 @@ echo "Example Type: $EXAMPLE_TYPE"
 echo "Build Type: $BUILD_TYPE"
 echo "Operation: $OPERATION"
 echo "Target: $IDF_TARGET"
+echo "Logging Enabled: $ENABLE_LOGGING"
 echo "======================================================"
 
 # Validate example type
@@ -451,6 +459,27 @@ fix_port_permissions "$BEST_PORT"
 export ESPPORT="$BEST_PORT"
 echo "Using port: $ESPPORT"
 
+# Setup logging if enabled
+LOG_FILE=""
+if [[ "$ENABLE_LOGGING" == "true" ]] && [[ "$OPERATION" == "monitor" || "$OPERATION" == "flash_monitor" ]]; then
+    # Create logs directory if it doesn't exist
+    LOGS_DIR="$PROJECT_DIR/logs"
+    mkdir -p "$LOGS_DIR"
+    
+    # Generate timestamped log filename
+    TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
+    LOG_FILE="$LOGS_DIR/${EXAMPLE_TYPE}_${BUILD_TYPE}_${TIMESTAMP}.log"
+    
+    echo ""
+    echo "======================================================"
+    echo "LOGGING SETUP"
+    echo "======================================================"
+    echo "Monitor output will be saved to: $LOG_FILE"
+    echo "Real-time viewing: enabled (using tee)"
+    echo "Log directory: $LOGS_DIR"
+    echo "======================================================"
+fi
+
 # Execute the requested operation
 echo ""
 echo "======================================================"
@@ -469,17 +498,33 @@ case $OPERATION in
     monitor)
         echo "Starting monitor for $EXAMPLE_TYPE example on $BEST_PORT..."
         echo "Press Ctrl+] to exit monitor"
-        if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" monitor; then
-            echo "ERROR: Monitor operation failed"
-            exit 1
+        if [[ -n "$LOG_FILE" ]]; then
+            echo "Monitor output being logged to: $LOG_FILE"
+            if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" monitor 2>&1 | tee "$LOG_FILE"; then
+                echo "ERROR: Monitor operation failed"
+                exit 1
+            fi
+        else
+            if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" monitor; then
+                echo "ERROR: Monitor operation failed"
+                exit 1
+            fi
         fi
         ;;
     flash_monitor)
         echo "Flashing and monitoring $EXAMPLE_TYPE example on $BEST_PORT..."
         echo "Press Ctrl+] to exit monitor after flashing"
-        if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" flash monitor; then
-            echo "ERROR: Flash and monitor operation failed"
-            exit 1
+        if [[ -n "$LOG_FILE" ]]; then
+            echo "Monitor output being logged to: $LOG_FILE"
+            if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" flash monitor 2>&1 | tee "$LOG_FILE"; then
+                echo "ERROR: Flash and monitor operation failed"
+                exit 1
+            fi
+        else
+            if ! idf.py -B "$BUILD_DIR" -p "$BEST_PORT" flash monitor; then
+                echo "ERROR: Flash and monitor operation failed"
+                exit 1
+            fi
         fi
         ;;
 esac
@@ -497,11 +542,19 @@ echo "Project Name: $PROJECT_NAME"
 if [ -f "$BIN_FILE" ]; then
     echo "Binary: $BIN_FILE"
 fi
+if [[ -n "$LOG_FILE" && -f "$LOG_FILE" ]]; then
+    echo "Monitor Output Log: $LOG_FILE"
+    echo "Log File Size: $(du -h "$LOG_FILE" | cut -f1)"
+fi
 echo ""
 echo "Available operations:"
 echo "  Flash only:        ./flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE flash"
-echo "  Monitor only:      ./flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE monitor"
-echo "  Flash & monitor:   ./flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE flash_monitor"
+echo "  Monitor only:      ./flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE monitor [true|false]"
+echo "  Flash & monitor:   ./flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE flash_monitor [true|false]"
 echo "  Build only:        ./build_example.sh $EXAMPLE_TYPE $BUILD_TYPE"
+echo ""
+echo "Logging examples:"
+echo "  With logging:      ./flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE monitor true"
+echo "  Without logging:   ./flash_example.sh $EXAMPLE_TYPE $BUILD_TYPE monitor false"
 echo "======================================================"
 

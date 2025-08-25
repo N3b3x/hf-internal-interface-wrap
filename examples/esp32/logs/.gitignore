@@ -1,0 +1,8 @@
+# ESP32 Monitor Log Files
+# These files contain runtime output and should not be committed
+*.log
+*.txt
+
+# Keep the directory structure but ignore all log content
+*
+!.gitignore
