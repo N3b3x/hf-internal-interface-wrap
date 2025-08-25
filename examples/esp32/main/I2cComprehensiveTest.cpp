@@ -31,14 +31,32 @@
 #include "mcu/esp32/EspGpio.h"
 
 static const char* TAG = "I2C_Test";
+
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core I2C functionality tests
+static constexpr bool ENABLE_CORE_TESTS = false;                    // ESP-IDF verification, bus/device init, basic operations
+static constexpr bool ENABLE_OPERATION_TESTS = false;               // Read/write, error handling, timeouts, multi-device
+static constexpr bool ENABLE_ADVANCED_TESTS = false;                // Clock speeds, address modes, ESP-specific, thread safety
+static constexpr bool ENABLE_PERFORMANCE_TESTS = false;             // Performance, edge cases, power management
+static constexpr bool ENABLE_SPECIALIZED_TESTS = true;              // Async operations, mode switching, index access, probing
+
 static TestResults g_test_results;
 
-
-
+//=============================================================================
+// TEST PROGRESSION INDICATOR
+//=============================================================================
 // GPIO14 test progression indicator
 static EspGpio* g_test_progress_gpio = nullptr;
 static bool g_test_progress_state = false;
 static constexpr hf_pin_num_t TEST_PROGRESS_PIN = 14;
+
+//=============================================================================
+// TEST CONFIGURATION
+//=============================================================================
 
 // Test configuration constants
 static constexpr i2c_port_t I2C_PORT_NUM = I2C_NUM_0;
@@ -102,6 +120,10 @@ hf_i2c_master_bus_config_t create_test_bus_config(
     return false; \
   }
 
+//=============================================================================
+// TEST FUNCTIONS DECLARATIONS
+//=============================================================================
+
 // Forward declarations
 bool test_i2c_espidf_direct_api() noexcept;  // ESP-IDF Direct API Test (FIRST)
 bool test_i2c_espidf_wrapper_replica() noexcept;  // EspI2cBus Wrapper Replica Test (SECOND)
@@ -147,6 +169,10 @@ bool test_i2c_probe_methods_comparison() noexcept;
 // Helper functions
 bool verify_device_functionality(BaseI2c* device) noexcept;
 void log_test_separator(const char* test_name) noexcept;
+
+//=============================================================================
+// TEST FUNCTIONS IMPLEMENTATION
+//=============================================================================
 
 /**
  * @brief Initialize the test progression indicator on GPIO14
@@ -1210,8 +1236,6 @@ bool test_i2c_async_operations() noexcept {
     async_completed = true;
     async_result = result;
     async_bytes = bytes;
-    ESP_LOGI(TAG, "Async write completed: %s, %zu bytes", 
-             HfI2CErrToString(result).data(), bytes);
   };
 
   // Try async operation
@@ -1276,11 +1300,9 @@ bool test_i2c_async_timeout_handling() noexcept {
   auto first_callback = [&first_completed](hf_i2c_err_t result, size_t bytes, void* user_data) {
     vTaskDelay(pdMS_TO_TICKS(TIMEOUT_STANDARD_MS)); // Simulate slow callback
     first_completed = true;
-    ESP_LOGI(TAG, "First async operation completed");
   };
 
   auto second_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {
-    ESP_LOGI(TAG, "Second async operation completed");
   };
 
   uint8_t test_data[] = {0xAA, 0xBB};
@@ -1343,7 +1365,6 @@ bool test_i2c_async_multiple_operations() noexcept {
   auto completion_callback = [&completed_operations](hf_i2c_err_t result, size_t bytes, void* user_data) {
     completed_operations++;
     int operation_id = *static_cast<int*>(user_data);
-    ESP_LOGI(TAG, "Async operation %d completed: %s", operation_id, HfI2CErrToString(result).data());
   };
 
   uint8_t test_data[] = {0x10, 0x20, 0x30};
@@ -2394,106 +2415,110 @@ extern "C" void app_main(void) {
     ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
   }
 
-  // Run all I2C tests
-  ESP_LOGI(TAG, "\n=== ESP-IDF DIRECT I2C API VERIFICATION (FIRST) ===");
-  ESP_LOGI(TAG, "This test runs FIRST to verify ESP-IDF I2C driver functionality");
-  ESP_LOGI(TAG, "If this test fails, the issue is with ESP-IDF itself, not our wrapper");
-  RUN_TEST_IN_TASK("espidf_direct_api", test_i2c_espidf_direct_api, 8192, 1);
-  flip_test_progress_indicator();
+  // Report test section configuration
+  print_test_section_status(TAG, "I2C");
   
-  ESP_LOGI(TAG, "\n=== ESP-IDF WRAPPER REPLICA COMPARISON (SECOND) ===");
-  ESP_LOGI(TAG, "This test runs SECOND to compare EspI2cBus wrapper with ESP-IDF direct API");
-  ESP_LOGI(TAG, "Uses identical configuration and test pattern for direct comparison");
-  RUN_TEST_IN_TASK("espidf_wrapper_replica", test_i2c_espidf_wrapper_replica, 8192, 1);
-  flip_test_progress_indicator();
+  // Run all I2C tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_CORE_TESTS, "I2C CORE TESTS",
+    // ESP-IDF verification tests
+    ESP_LOGI(TAG, "Running ESP-IDF verification tests...");
+    RUN_TEST_IN_TASK("espidf_direct_api", test_i2c_espidf_direct_api, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("espidf_wrapper_replica", test_i2c_espidf_wrapper_replica, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("espidf_wrapper_continuous", test_i2c_espidf_wrapper_replica_continuous, 8192, 1);
+    flip_test_progress_indicator();
+    
+    // Bus and device tests
+    ESP_LOGI(TAG, "Running bus and device tests...");
+    RUN_TEST_IN_TASK("bus_initialization", test_i2c_bus_initialization, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("bus_deinitialization", test_i2c_bus_deinitialization, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("configuration_validation", test_i2c_configuration_validation, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("device_creation", test_i2c_device_creation, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("device_management", test_i2c_device_management, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("device_probing", test_i2c_device_probing, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("bus_scanning", test_i2c_bus_scanning, 8192, 1);
+    flip_test_progress_indicator();
+  );
   
-  ESP_LOGI(TAG, "\n=== ESP-IDF WRAPPER REPLICA COMPARISON (SECOND) ===");
-  ESP_LOGI(TAG, "This test runs SECOND to compare EspI2cBus wrapper with ESP-IDF direct API");
-  ESP_LOGI(TAG, "Uses identical configuration and test pattern for direct comparison");
-  RUN_TEST_IN_TASK("espidf_wrapper_replica", test_i2c_espidf_wrapper_replica, 8192, 1);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_OPERATION_TESTS, "I2C OPERATION TESTS",
+    // Read/write operations
+    ESP_LOGI(TAG, "Running read/write operation tests...");
+    RUN_TEST_IN_TASK("write_operations", test_i2c_write_operations, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("read_operations", test_i2c_read_operations, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("write_read_operations", test_i2c_write_read_operations, 8192, 1);
+    flip_test_progress_indicator();
+    
+    // Error handling and timeouts
+    ESP_LOGI(TAG, "Running error handling and timeout tests...");
+    RUN_TEST_IN_TASK("error_handling", test_i2c_error_handling, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("timeout_handling", test_i2c_timeout_handling, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("multi_device_operations", test_i2c_multi_device_operations, 8192, 1);
+    flip_test_progress_indicator();
+  );
   
-  ESP_LOGI(TAG, "\n=== ESP-IDF WRAPPER CONTINUOUS TEST (STABILITY) ===");
-  ESP_LOGI(TAG, "This test runs the replica pattern continuously to verify stability");
-  ESP_LOGI(TAG, "Tests multiple create/destroy cycles to identify any issues");
-  RUN_TEST_IN_TASK("espidf_wrapper_continuous", test_i2c_espidf_wrapper_replica_continuous, 8192, 1);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_ADVANCED_TESTS, "I2C ADVANCED TESTS",
+    // ESP-specific features
+    ESP_LOGI(TAG, "Running ESP-specific feature tests...");
+    RUN_TEST_IN_TASK("esp_specific_features", test_i2c_esp_specific_features, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("thread_safety", test_i2c_thread_safety, 8192, 1);
+    flip_test_progress_indicator();
+    
+    // Clock speeds and address modes
+    ESP_LOGI(TAG, "Running clock speed and address mode tests...");
+    RUN_TEST_IN_TASK("clock_speeds", test_i2c_clock_speeds, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("address_modes", test_i2c_address_modes, 8192, 1);
+    flip_test_progress_indicator();
+  );
   
-  ESP_LOGI(TAG, "\n=== I2C BUS TESTS ===");
-  RUN_TEST_IN_TASK("bus_initialization", test_i2c_bus_initialization, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("bus_deinitialization", test_i2c_bus_deinitialization, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("configuration_validation", test_i2c_configuration_validation, 8192, 1);
-  flip_test_progress_indicator();
-
-  ESP_LOGI(TAG, "\n=== I2C DEVICE TESTS ===");
-  RUN_TEST_IN_TASK("device_creation", test_i2c_device_creation, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("device_management", test_i2c_device_management, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("device_probing", test_i2c_device_probing, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("bus_scanning", test_i2c_bus_scanning, 8192, 1);
-  flip_test_progress_indicator();
-
-  ESP_LOGI(TAG, "\n=== I2C WRITE/READ TESTS ===");
-  RUN_TEST_IN_TASK("write_operations", test_i2c_write_operations, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("read_operations", test_i2c_read_operations, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("write_read_operations", test_i2c_write_read_operations, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("error_handling", test_i2c_error_handling, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("timeout_handling", test_i2c_timeout_handling, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("multi_device_operations", test_i2c_multi_device_operations, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("clock_speeds", test_i2c_clock_speeds, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("address_modes", test_i2c_address_modes, 8192, 1);
-  flip_test_progress_indicator();
-
-  ESP_LOGI(TAG, "\n=== I2C ESP-SPECIFIC FEATURES ===");
-  RUN_TEST_IN_TASK("esp_specific_features", test_i2c_esp_specific_features, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("thread_safety", test_i2c_thread_safety, 8192, 1);
-  flip_test_progress_indicator();
-
-  ESP_LOGI(TAG, "\n=== I2C PERFORMANCE TESTS ===");
-  RUN_TEST_IN_TASK("performance", test_i2c_performance, 8192, 1);
-  flip_test_progress_indicator(); 
-  RUN_TEST_IN_TASK("edge_cases", test_i2c_edge_cases, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("power_management", test_i2c_power_management, 8192, 1);
-  flip_test_progress_indicator();
-
-  ESP_LOGI(TAG, "\n=== I2C ASYNC OPERATION TESTS ===");
-  RUN_TEST_IN_TASK("async_operations", test_i2c_async_operations, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("async_timeout_handling", test_i2c_async_timeout_handling, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("async_multiple_operations", test_i2c_async_multiple_operations, 8192, 1);
-  flip_test_progress_indicator();
-
-  ESP_LOGI(TAG, "\n=== I2C INDEX-BASED ACCESS TESTS ===");
-  RUN_TEST_IN_TASK("index_based_access", test_i2c_index_based_access, 8192, 1);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_PERFORMANCE_TESTS, "I2C PERFORMANCE TESTS",
+    // Performance and edge cases
+    ESP_LOGI(TAG, "Running performance and edge case tests...");
+    RUN_TEST_IN_TASK("performance", test_i2c_performance, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("edge_cases", test_i2c_edge_cases, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("power_management", test_i2c_power_management, 8192, 1);
+    flip_test_progress_indicator();
+  );
   
-  ESP_LOGI(TAG, "\n=== I2C MODE-AWARE TESTS ===");
-  RUN_TEST_IN_TASK("sync_mode", test_i2c_sync_mode, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("async_mode", test_i2c_async_mode, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("mode_switching", test_i2c_mode_switching, 8192, 1);
-  flip_test_progress_indicator();
-  RUN_TEST_IN_TASK("basic_functionality", test_i2c_basic_functionality, 8192, 1);
-  flip_test_progress_indicator();
-  
-  ESP_LOGI(TAG, "\n=== I2C PROBE METHODS COMPARISON ===");
-  RUN_TEST_IN_TASK("probe_methods_comparison", test_i2c_probe_methods_comparison, 8192, 1);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_SPECIALIZED_TESTS, "I2C SPECIALIZED TESTS",
+    // Async operations
+    ESP_LOGI(TAG, "Running async operation tests...");
+    RUN_TEST_IN_TASK("async_operations", test_i2c_async_operations, 16384, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("async_timeout_handling", test_i2c_async_timeout_handling, 16384, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("async_multiple_operations", test_i2c_async_multiple_operations, 16384, 1);
+    flip_test_progress_indicator();
+    
+    // Mode and access patterns
+    ESP_LOGI(TAG, "Running mode and access pattern tests...");
+    RUN_TEST_IN_TASK("index_based_access", test_i2c_index_based_access, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("sync_mode", test_i2c_sync_mode, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("async_mode", test_i2c_async_mode, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("mode_switching", test_i2c_mode_switching, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("basic_functionality", test_i2c_basic_functionality, 8192, 1);
+    flip_test_progress_indicator();
+    RUN_TEST_IN_TASK("probe_methods_comparison", test_i2c_probe_methods_comparison, 8192, 1);
+    flip_test_progress_indicator();
+  );
   
   print_test_summary(g_test_results, "I2C", TAG);
 

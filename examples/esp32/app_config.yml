@@ -77,7 +77,7 @@ apps:
     featured: false
 
   pio_test:
-    description: "Enhanced PIO/RMT testing suite with channel-specific callbacks, ESP32 variant validation, WS2812, and ASCII art decoration"
+    description: "PIO/RMT comprehensive testing"
     source_file: "PioComprehensiveTest.cpp"
     category: "peripheral"
     build_types: ["Debug", "Release"]

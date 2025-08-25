@@ -503,6 +503,11 @@ private:
   void CleanupSyncOperation() noexcept;
 
   /**
+   * @brief Common async operation cleanup.
+   */
+  void CleanupAsyncOperation() noexcept;
+
+  /**
    * @brief Common async operation setup.
    * @param callback User callback
    * @param user_data User data
@@ -533,6 +538,8 @@ private:
   void* current_user_data_;                   ///< Current user data
   hf_u64_t async_start_time_;                 ///< Async operation start time
   hf_i2c_transaction_type_t current_op_type_; ///< Current operation type
+  hf_u16_t last_write_length_;                ///< Length of last write operation for async tracking
+  hf_u16_t last_read_length_;                 ///< Length of last read operation for async tracking
 };
 
 /**

@@ -1,4 +1,4 @@
-# ESP32 HardFOC Interface Wrapper - Flash System Documentation
+# 📱 ESP32 HardFOC Interface Wrapper - Flash System Documentation
 
 This document provides comprehensive documentation for the `flash_app.sh` script, which is the main development workflow script for flashing and monitoring ESP32 apps.
 
@@ -8,7 +8,15 @@ This document provides comprehensive documentation for the `flash_app.sh` script
 
 ---
 
-## Overview
+## 📋 Table of Contents
+
+- [📋 Overview](#-overview)
+- [🚀 Basic Usage](#️-basic-usage)
+- [⚙️ Advanced Features](#️-advanced-features)
+- [🔍 Troubleshooting](#️-troubleshooting)
+- [📚 Getting Help](#️-getting-help)
+
+## 📋 Overview
 
 The `flash_app.sh` script is a feature-rich tool that handles the complete ESP32 development workflow:
 - **Automatic port detection** - Finds ESP32 devices automatically

@@ -1,4 +1,4 @@
-# ESP32 HardFOC Interface Wrapper - Build Configuration Guide
+# 🔨 ESP32 HardFOC Interface Wrapper - Build Configuration Guide
 
 This document explains how to build and use different apps in the ESP32 HardFOC Interface Wrapper project.
 
@@ -8,11 +8,20 @@ This document explains how to build and use different apps in the ESP32 HardFOC 
 
 ---
 
-## Overview
+## 📋 Table of Contents
+
+- [📋 Overview](#-overview)
+- [⚙️ Configuration Structure](#️-configuration-structure)
+- [🔧 How app_config.yml Drives the Build System](#️-how-app_configyml-drives-the-build-system)
+- [🚀 Usage Examples](#️-usage-examples)
+- [🔍 Troubleshooting](#️-troubleshooting)
+- [📚 Getting Help](#️-getting-help)
+
+## 📋 Overview
 
 The build system is a configuration-driven system that automatically extracts build information from `app_config.yml` and provides flexible build options for ESP32 apps. It's designed to be independent of specific test implementations and focuses on the build process itself.
 
-### Key Features
+### ✨ Key Features
 - **Configuration-Driven**: All build information extracted from `app_config.yml`
 - **Flexible Build Types**: Debug and Release configurations with customizable parameters
 - **Smart Defaults**: Automatic fallbacks when configuration is incomplete
@@ -20,16 +29,16 @@ The build system is a configuration-driven system that automatically extracts bu
 - **Cross-Platform**: Works on Linux, macOS, and Windows (WSL)
 - **ESP-IDF Integration**: Direct integration with ESP-IDF build system
 
-## Configuration Structure
+## ⚙️ Configuration Structure
 
-### Configuration File: `app_config.yml`
+### 📝 Configuration File: `app_config.yml`
 
 The build system reads from a centralized YAML configuration file located at:
 ```
 examples/esp32/app_config.yml
 ```
 
-#### Configuration Structure
+#### 🔧 Configuration Structure
 ```yaml
 # Metadata section - global defaults
 metadata:
@@ -84,7 +93,7 @@ build_config:
   project_name_pattern: "esp32_project_{app_type}_app"
 ```
 
-### Configuration Loading Process
+### 🔄 Configuration Loading Process
 
 The build system uses `config_loader.sh` to extract information:
 
@@ -93,7 +102,7 @@ The build system uses `config_loader.sh` to extract information:
 3. **Environment Variables**: Exports configuration as shell variables
 4. **Validation**: Checks configuration integrity and provides defaults
 
-#### Available Configuration Functions
+#### 🛠️ Available Configuration Functions
 ```bash
 # Load and initialize configuration
 init_config
@@ -114,9 +123,9 @@ get_build_directory "gpio_test" "Release"  # Build directory path
 get_project_name "gpio_test"               # Project name
 ```
 
-### **How app_config.yml Drives the Build System**
+### 🚀 **How app_config.yml Drives the Build System**
 
-#### **Automatic Configuration Detection**
+#### **🔍 Automatic Configuration Detection**
 The build system automatically finds and loads your configuration:
 
 ```bash
@@ -129,7 +138,7 @@ source "$PROJECT_DIR/scripts/config_loader.sh"
 init_config
 ```
 
-#### **Configuration Validation**
+#### **✅ Configuration Validation**
 Before building, the system validates your configuration:
 
 ```bash
@@ -157,7 +166,7 @@ if ! is_valid_build_type "$BUILD_TYPE"; then
 fi
 ```
 
-#### **Dynamic Build Directory Creation**
+#### **📁 Dynamic Build Directory Creation**
 Build directories are created based on your configuration patterns:
 
 ```bash
@@ -171,7 +180,7 @@ BUILD_DIR=$(get_build_directory "$APP_TYPE" "$BUILD_TYPE")
 # build_directory_pattern: "build_{app_type}_{build_type}"
 ```
 
-#### **Project Name Generation**
+#### **🏷️ Project Name Generation**
 Binary files are named using your configured patterns:
 
 ```bash
@@ -185,7 +194,7 @@ PROJECT_NAME=$(get_project_name "$APP_TYPE")
 # project_name_pattern: "esp32_project_{app_type}_app"
 ```
 
-#### **CMake Integration**
+#### **🔨 CMake Integration**
 Your configuration drives CMake variables automatically:
 
 ```bash
@@ -202,7 +211,7 @@ idf.py -B "$BUILD_DIR" \
 # - IDF_CCACHE_ENABLE: 1 or 0 (from --use-cache flag)
 ```
 
-#### **Source File Resolution**
+#### **💻 Source File Resolution**
 The system automatically finds your source files:
 
 ```bash
@@ -220,33 +229,33 @@ if [ ! -f "$SOURCE_FILE" ]; then
 fi
 ```
 
-## Build System Script: `build_app.sh`
+## 🔨 Build System Script: `build_app.sh`
 
-### Command Syntax
+### 📝 Command Syntax
 ```bash
 ./scripts/build_app.sh [app_type] [build_type] [flags]
 ```
 
-### Parameters
+### 📋 Parameters
 - **`app_type`** - Type of app to build (e.g., `gpio_test`, `adc_test`)
 - **`build_type`** - Build configuration (`Debug` or `Release`)
 - **`flags`** - Build control flags (see below)
 
-### Build Control Flags
+### 🚀 Build Control Flags
 
-#### Clean Build Options
+#### 🧹 Clean Build Options
 ```bash
 --clean          # Remove existing build directory before building
 --no-clean       # Preserve existing build directory (default)
 ```
 
-#### Cache Control Options
+#### ⚡ Cache Control Options
 ```bash
 --use-cache     # Enable ccache for faster builds (default)
 --no-cache      # Disable ccache for clean builds
 ```
 
-#### Environment Variable Overrides
+#### 🔧 Environment Variable Overrides
 ```bash
 export CLEAN=1              # Force clean builds
 export USE_CCACHE=0         # Disable ccache
@@ -254,15 +263,15 @@ export APP_TYPE="gpio_test"  # Override app type
 export BUILD_TYPE="Debug"   # Override build type
 ```
 
-### Default Values
+### ⚙️ Default Values
 - **`app_type`**: Loaded from `app_config.yml` → `metadata.default_app` (e.g., `ascii_art`)
 - **`build_type`**: Loaded from `app_config.yml` → `metadata.default_build_type` (e.g., `Release`)
 - **`CLEAN`**: `0` (preserve existing builds)
 - **`USE_CCACHE`**: `1` (enable compiler cache)
 
-## Build Process
+## 🔄 Build Process
 
-### 1. Configuration Loading
+### 1. ⚙️ Configuration Loading
 ```bash
 # Source configuration loader
 source ./scripts/config_loader.sh
@@ -276,7 +285,7 @@ echo $CONFIG_DEFAULT_BUILD_TYPE   # DEFAULT: Release
 echo $CONFIG_TARGET               # DEFAULT: esp32c6
 ```
 
-### 2. App and Build Type Validation
+### 2. ✅ App and Build Type Validation
 ```bash
 # Validate app type
 if is_valid_app_type "$APP_TYPE"; then
@@ -299,7 +308,7 @@ else
 fi
 ```
 
-### 3. Build Directory Configuration
+### 3. 📁 Build Directory Configuration
 ```bash
 # Get build directory using configuration
 BUILD_DIR=$(get_build_directory "$APP_TYPE" "$BUILD_TYPE")
