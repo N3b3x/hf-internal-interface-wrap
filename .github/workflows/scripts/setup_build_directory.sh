@@ -142,11 +142,7 @@ try:
         app_config = config['apps'][app_name]
         
         # Extract app-specific IDF versions and build types
-        app_idf_versions 
-bash
-￼
-# Get available ESP-IDF versionsget_idf_versions()# Get app-specific ESP-IDF versionsget_app_idf_versi
-= app_config.get('idf_versions', [])
+        app_idf_versions = app_config.get('idf_versions', [])
         app_build_types = app_config.get('build_types', [])
         
         # Check if current IDF version is supported by this app
