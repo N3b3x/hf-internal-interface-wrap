@@ -44,7 +44,7 @@ The script now automatically:
 
 **Example Output**:
 ```
-[INFO] Reading app configuration from examples/esp32/app_config.yml...
+[INFO] Reading app configuration from ${{ env.ESP32_PROJECT_PATH }}/app_config.yml...
 [SUCCESS] App configuration validated successfully
 App: ascii_art
 Description: ASCII art generator example
@@ -82,6 +82,26 @@ These scripts are used by the following GitHub Actions workflows:
 
 - **`esp32-component-ci.yml`** - Main ESP32 CI pipeline
 - **`generate_matrix.py`** - Build matrix generation
+
+## 📍 **Centralized Project Location**
+
+All scripts use the `ESP32_PROJECT_PATH` environment variable to determine the ESP32 project location. This provides flexibility for different project structures.
+
+**Environment Variable**:
+```bash
+ESP32_PROJECT_PATH=examples/esp32  # Default value
+```
+
+**Script Behavior**:
+- **In CI**: Uses the value from `${{ env.ESP32_PROJECT_PATH }}`
+- **Locally**: Falls back to `examples/esp32` if not set
+- **Custom**: Can be set to any path for different project structures
+
+**Benefits**:
+- **Flexible**: Works with any project location
+- **Consistent**: All scripts use the same path reference
+- **Maintainable**: Change one variable to update all scripts
+- **Backward Compatible**: Defaults to current structure if not set
 
 ## 📚 Documentation
 
@@ -198,7 +218,7 @@ Dynamic CI matrix generator that creates build combinations based on `app_config
 ## 🚀 Generate Matrix Script
 
 ### **Purpose**
-The `generate_matrix.py` script dynamically generates GitHub Actions CI matrices by reading application configurations from `examples/esp32/app_config.yml`. It supports hierarchical configuration, per-app overrides, and flexible build type specifications.
+The `generate_matrix.py` script dynamically generates GitHub Actions CI matrices by reading application configurations from `${{ env.ESP32_PROJECT_PATH }}/app_config.yml`. It supports hierarchical configuration, per-app overrides, and flexible build type specifications.
 
 ### **Features**
 - **Dynamic Matrix Generation**: Creates build combinations on-the-fly
@@ -327,7 +347,7 @@ jobs:
       - name: Generate Matrix
         id: matrix
         run: |
-          python3 examples/esp32/scripts/generate_matrix.py
+          python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py
         shell: bash
 ```
 
@@ -447,15 +467,15 @@ python3 generate_matrix.py --build-types-only
 
 ## 📚 Related Documentation
 
-- [App Configuration Guide](../../../examples/esp32/README.md)
+- [App Configuration Guide](../../../${{ env.ESP32_PROJECT_PATH }}/README.md)
 - [CI Workflow Documentation](../README.md)
-- [ESP32 Examples](../../../examples/esp32/README.md)
+- [ESP32 Examples](../../../${{ env.ESP32_PROJECT_PATH }}/README.md)
 - [GitHub Actions Workflows](../README.md)
 
 ## 🔧 Technical Details
 
 - **Language**: Python 3.8+
 - **Dependencies**: Standard library only (json, sys, yaml)
-- **Input**: `examples/esp32/app_config.yml`
+- **Input**: `${{ env.ESP32_PROJECT_PATH }}/app_config.yml`
 - **Output**: JSON matrix for GitHub Actions
 - **License**: Project-specific license

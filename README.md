@@ -473,6 +473,29 @@ set(COMPONENT_REQUIRES
 
 The ESP32 examples demonstrate all wrapper interfaces in comprehensive test suites. All examples are available in the [`examples/esp32/`](examples/esp32/) directory with a centralized configuration system.
 
+## 📍 **Centralized Project Location**
+
+The ESP32 project location is centralized using the `ESP32_PROJECT_PATH` environment variable across all CI workflows and scripts. This makes it easy to change the project location in the future without updating multiple files.
+
+**Current Configuration**:
+```bash
+ESP32_PROJECT_PATH=examples/esp32  # Default value
+```
+
+**Benefits**:
+- **Easy Maintenance**: Change one variable to update all paths across the entire CI system
+- **Future-Proof**: Move the ESP32 project to any location by updating the variable
+- **Consistency**: All workflows and scripts use the same path reference
+- **Reduced Errors**: No more mismatched paths between different workflow files
+
+**How to Change Project Location**:
+If you need to move the ESP32 project to a different location (e.g., `projects/esp32` or `embedded/esp32`), simply update the `ESP32_PROJECT_PATH` variable in the workflow files:
+
+```yaml
+env:
+  ESP32_PROJECT_PATH: projects/esp32  # New location
+```
+
 ### 🎯 **Basic HardFOC Interface Examples**
 - **GPIO Control** ([`GpioComprehensiveTest.cpp`](examples/esp32/main/GpioComprehensiveTest.cpp)) - LED control and button reading for HardFOC boards
 - **ADC Monitoring** ([`AdcComprehensiveTest.cpp`](examples/esp32/main/AdcComprehensiveTest.cpp)) - Sensor data acquisition for HardFOC systems

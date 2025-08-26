@@ -22,6 +22,30 @@ This directory contains GitHub Actions workflows for continuous integration and 
 
 ## 🚀 Available Workflows
 
+## 📍 **Centralized Project Location**
+
+All workflows use a centralized variable `ESP32_PROJECT_PATH` to specify the ESP32 project location. This makes it easy to change the project location in the future without updating multiple files.
+
+**Current Configuration**:
+```yaml
+env:
+  ESP32_PROJECT_PATH: examples/esp32  # Centralized ESP32 project location
+```
+
+**Benefits**:
+- **Easy Maintenance**: Change one variable to update all paths across the entire CI system
+- **Future-Proof**: Move the ESP32 project to any location by updating the variable
+- **Consistency**: All workflows and scripts use the same path reference
+- **Reduced Errors**: No more mismatched paths between different workflow files
+
+**How to Change Project Location**:
+If you need to move the ESP32 project to a different location (e.g., `projects/esp32` or `embedded/esp32`), simply update the `ESP32_PROJECT_PATH` variable in the workflow files:
+
+```yaml
+env:
+  ESP32_PROJECT_PATH: projects/esp32  # New location
+```
+
 ### **ESP32 Component CI** (`esp32-component-ci.yml`)
 **Purpose**: Continuous integration for ESP32 components and applications
 
@@ -44,7 +68,7 @@ strategy:
 - name: Generate Matrix
   id: matrix
   run: |
-    python3 examples/esp32/scripts/generate_matrix.py
+    python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py
 ```
 
 ### **Security Audit** (`security-audit.yml`)
@@ -86,7 +110,7 @@ strategy:
 ## 🔧 Scripts
 
 ### **Matrix Generation** (`scripts/generate_matrix.py`)
-Dynamic CI matrix generator that creates build combinations based on `examples/esp32/app_config.yml` configuration.
+Dynamic CI matrix generator that creates build combinations based on `${{ env.ESP32_PROJECT_PATH }}/app_config.yml` configuration.
 
 **Key Features**:
 - **Hierarchical Configuration**: Global defaults with per-app overrides
@@ -97,13 +121,13 @@ Dynamic CI matrix generator that creates build combinations based on `examples/e
 **Usage**:
 ```bash
 # Generate matrix for GitHub Actions
-python3 examples/esp32/scripts/generate_matrix.py
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py
 
 # Pretty-printed output for debugging
-python3 examples/esp32/scripts/generate_matrix.py --pretty
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --pretty
 
 # Hierarchical configuration analysis
-python3 examples/esp32/scripts/generate_matrix.py --hierarchical-info
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --hierarchical-info
 ```
 
 **For detailed documentation, see**: [`scripts/README.md`](scripts/README.md)
@@ -149,7 +173,7 @@ Simplified script that only prepares the build directory structure and copies fi
 
 ## 📋 Configuration
 
-### **App Configuration** (`examples/esp32/app_config.yml`)
+### **App Configuration** (`${{ env.ESP32_PROJECT_PATH }}/app_config.yml`)
 Central configuration file that defines:
 - **Application metadata**: Names, descriptions, categories
 - **Build configurations**: Build types, optimization levels
@@ -203,13 +227,13 @@ Each matrix entry contains:
 ### **Matrix Analysis**
 ```bash
 # Check total build count
-python3 examples/esp32/scripts/generate_matrix.py --pretty | jq '.include | length'
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --pretty | jq '.include | length'
 
 # Analyze specific app builds
-python3 examples/esp32/scripts/generate_matrix.py --pretty | jq '.include[] | select(.app_name == "app_name")'
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --pretty | jq '.include[] | select(.app_name == "app_name")'
 
 # Hierarchical configuration analysis
-python3 examples/esp32/scripts/generate_matrix.py --hierarchical-info
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --hierarchical-info
 ```
 
 ### **Build Artifacts**
@@ -241,16 +265,16 @@ python3 examples/esp32/scripts/generate_matrix.py --hierarchical-info
 ## 🔗 Related Documentation
 
 - [Scripts Documentation](scripts/README.md) - Detailed script usage and configuration
-- [ESP32 Examples](../../examples/esp32/README.md) - Application examples and testing
+- [ESP32 Examples](../../${{ env.ESP32_PROJECT_PATH }}/README.md) - Application examples and testing
 - [Clean Principles Refactor](docs/CLEAN_PRINCIPLES_REFACTOR.md) - Architecture refactoring details
-- [App Configuration](../../examples/esp32/app_config.yml) - Application configuration file
+- [App Configuration](../../${{ env.ESP32_PROJECT_PATH }}/app_config.yml) - Application configuration file
 
 ## 🚨 Troubleshooting
 
 ### **Common Issues**
 
 **1. Matrix Generation Fails**
-- Verify `app_config.yml` syntax
+- Verify `${{ env.ESP32_PROJECT_PATH }}/app_config.yml` syntax
 - Check file paths and permissions
 - Run with `--hierarchical-info` for analysis
 
@@ -282,13 +306,13 @@ python3 examples/esp32/scripts/generate_matrix.py --hierarchical-info
 ### **Debug Commands**
 ```bash
 # Validate configuration
-python3 examples/esp32/scripts/generate_matrix.py --metadata
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --metadata
 
 # Check matrix structure
-python3 examples/esp32/scripts/generate_matrix.py --pretty
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --pretty
 
 # Analyze configuration hierarchy
-python3 examples/esp32/scripts/generate_matrix.py --hierarchical-info
+python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --hierarchical-info
 ```
 
 ---
