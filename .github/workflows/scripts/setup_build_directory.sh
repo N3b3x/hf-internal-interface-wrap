@@ -246,6 +246,15 @@ setup_build_directory() {
     cp -r inc "$BUILD_PATH/inc"
     cp examples/esp32/sdkconfig "$BUILD_PATH/sdkconfig"
     
+    # Create app configuration file for CMake to read
+    print_status "Creating app configuration for CMake..."
+    cat > "$BUILD_PATH/app_config.cmake" << EOF
+# Auto-generated app configuration
+set(APP_TYPE "$APP_TYPE")
+set(BUILD_TYPE "$BUILD_TYPE")
+message(STATUS "App config loaded: APP_TYPE=\${APP_TYPE}, BUILD_TYPE=\${BUILD_TYPE}")
+EOF
+    
     print_success "Build directory setup complete"
 }
 

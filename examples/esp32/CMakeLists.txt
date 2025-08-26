@@ -2,6 +2,14 @@ cmake_minimum_required(VERSION 3.16)
 
 # CRITICAL: Set variables BEFORE any other processing
 # This ensures they are available during component configuration
+
+# First, try to include the auto-generated app config file
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/app_config.cmake")
+    include("${CMAKE_CURRENT_SOURCE_DIR}/app_config.cmake")
+    message(STATUS "Loaded app config from app_config.cmake")
+endif()
+
+# Then check command line arguments
 if(DEFINED APP_TYPE)
     message(STATUS "APP_TYPE from command line: ${APP_TYPE}")
 else()
