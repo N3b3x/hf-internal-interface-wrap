@@ -32,7 +32,15 @@ env:
   ESP32_PROJECT_PATH: examples/esp32  # Centralized ESP32 project location
 ```
 
+**Architecture**:
+- **CI Pipeline**: Single source of truth for project location
+- **Scripts**: Accept project path as command-line argument (`-e` or `--esp32-path`)
+- **No Environment Variables**: Scripts don't rely on environment variables for project location
+- **Clean Separation**: CI controls location, scripts are portable
+
 **Benefits**:
+- **Single Source of Truth**: CI pipeline is the only place that defines project location
+- **Portable Scripts**: Scripts work anywhere without environment variable dependencies
 - **Easy Maintenance**: Change one variable to update all paths across the entire CI system
 - **Future-Proof**: Move the ESP32 project to any location by updating the variable
 - **Consistency**: All workflows and scripts use the same path reference
@@ -44,6 +52,13 @@ If you need to move the ESP32 project to a different location (e.g., `projects/e
 ```yaml
 env:
   ESP32_PROJECT_PATH: projects/esp32  # New location
+```
+
+**Script Usage**:
+```bash
+# Scripts now accept the ESP32 project path as an argument
+./setup_build_directory.sh -e ${{ env.ESP32_PROJECT_PATH }} -p build_dir -a my_app
+./prepare_build_directory.sh -e ${{ env.ESP32_PROJECT_PATH }} -p build_dir
 ```
 
 ### **ESP32 Component CI** (`esp32-component-ci.yml`)

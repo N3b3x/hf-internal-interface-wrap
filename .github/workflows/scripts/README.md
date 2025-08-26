@@ -85,23 +85,25 @@ These scripts are used by the following GitHub Actions workflows:
 
 ## 📍 **Centralized Project Location**
 
-All scripts use the `ESP32_PROJECT_PATH` environment variable to determine the ESP32 project location. This provides flexibility for different project structures.
+All scripts accept the ESP32 project path as a command-line argument (`-e` or `--esp32-path`). This makes the scripts truly portable and the CI pipeline the single source of truth.
 
-**Environment Variable**:
+**Command Line Argument**:
 ```bash
-ESP32_PROJECT_PATH=examples/esp32  # Default value
+-e, --esp32-path PATH    ESP32 project path (default: examples/esp32)
 ```
 
 **Script Behavior**:
-- **In CI**: Uses the value from `${{ env.ESP32_PROJECT_PATH }}`
-- **Locally**: Falls back to `examples/esp32` if not set
-- **Custom**: Can be set to any path for different project structures
+- **In CI**: Uses the path passed from the CI pipeline (`${{ env.ESP32_PROJECT_PATH }}`)
+- **Locally**: Defaults to `examples/esp32` if not specified
+- **Custom**: Can be set to any path via command line argument
 
 **Benefits**:
-- **Flexible**: Works with any project location
-- **Consistent**: All scripts use the same path reference
-- **Maintainable**: Change one variable to update all scripts
-- **Backward Compatible**: Defaults to current structure if not set
+- **Single Source of Truth**: CI pipeline controls project location
+- **Portable Scripts**: Scripts work anywhere without environment variable dependencies
+- **Clean Architecture**: Clear separation between CI configuration and script logic
+- **Flexible**: Works with any project location via command line
+- **Consistent**: All scripts use the same path reference mechanism
+- **Maintainable**: Change one variable in CI to update all script calls
 
 ## 📚 Documentation
 

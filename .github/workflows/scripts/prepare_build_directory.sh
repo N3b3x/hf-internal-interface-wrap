@@ -13,6 +13,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Default values
 BUILD_PATH="ci_project"
+ESP32_PROJECT_PATH="examples/esp32"  # Default ESP32 project path
 
 # Function to show help
 show_help() {
@@ -22,6 +23,7 @@ show_help() {
     echo ""
     echo "Options:"
     echo "  -p, --build-path PATH    Build directory path (default: ci_project)"
+    echo "  -e, --esp32-path PATH    ESP32 project path (default: examples/esp32)"
     echo "  -h, --help               Show this help message"
     echo ""
     echo "Purpose: Prepare build directory structure for ESP32 CI builds"
@@ -33,7 +35,7 @@ show_help() {
     echo "  • Does NOT build the project (use setup_build_directory.sh for that)"
     echo ""
     echo "Example:"
-    echo "  ./prepare_build_directory.sh -p my_build"
+    echo "  ./prepare_build_directory.sh -p my_build -e my_esp32_project"
     exit 0
 }
 
@@ -58,6 +60,10 @@ parse_args() {
                 BUILD_PATH="$2"
                 shift 2
                 ;;
+            -e|--esp32-path)
+                ESP32_PROJECT_PATH="$2"
+                shift 2
+                ;;
             -h|--help)
                 show_help
                 ;;
@@ -73,15 +79,12 @@ parse_args() {
 check_prerequisites() {
     print_status "Checking prerequisites..."
     
-    # Use ESP32_PROJECT_PATH environment variable if set, otherwise fall back to default
-    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
-    
     local required_files=(
-        "$esp32_project_path/CMakeLists.txt"
-        "$esp32_project_path/main"
-        "$esp32_project_path/components"
-        "$esp32_project_path/app_config.yml"
-        "$esp32_project_path/sdkconfig"
+        "$ESP32_PROJECT_PATH/CMakeLists.txt"
+        "$ESP32_PROJECT_PATH/main"
+        "$ESP32_PROJECT_PATH/components"
+        "$ESP32_PROJECT_PATH/app_config.yml"
+        "$ESP32_PROJECT_PATH/sdkconfig"
         "src"
         "inc"
     )
@@ -112,18 +115,16 @@ setup_build_directory() {
     
     # Copy project files
     print_status "Copying project files..."
-    # Use ESP32_PROJECT_PATH environment variable if set, otherwise fall back to default
-    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
     
-    cp "$esp32_project_path/CMakeLists.txt" "$BUILD_PATH/CMakeLists.txt"
+    cp "$ESP32_PROJECT_PATH/CMakeLists.txt" "$BUILD_PATH/CMakeLists.txt"
     rm -rf "$BUILD_PATH/main"
-    cp -r "$esp32_project_path/main" "$BUILD_PATH/main"
-    cp -r "$esp32_project_path/components" "$BUILD_PATH/components"
+    cp -r "$ESP32_PROJECT_PATH/main" "$BUILD_PATH/main"
+    cp -r "$ESP32_PROJECT_PATH/components" "$BUILD_PATH/components"
     # Note: Not copying scripts directory to avoid conflicts with CI scripts
-    cp "$esp32_project_path/app_config.yml" "$BUILD_PATH/app_config.yml"
+    cp "$ESP32_PROJECT_PATH/app_config.yml" "$BUILD_PATH/app_config.yml"
     cp -r src "$BUILD_PATH/src"
     cp -r inc "$BUILD_PATH/inc"
-    cp "$esp32_project_path/sdkconfig" "$BUILD_PATH/sdkconfig"
+    cp "$ESP32_PROJECT_PATH/sdkconfig" "$BUILD_PATH/sdkconfig"
     
     print_success "Build directory setup complete"
 }

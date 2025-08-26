@@ -202,7 +202,8 @@ jobs:
               -t ${{ env.IDF_TARGET }} \
               -b ${{ matrix.build_type }} \
               -a ${{ matrix.app_name }} \
-              -v ${{ matrix.idf_version }}
+              -v ${{ matrix.idf_version }} \
+              -e ${{ env.ESP32_PROJECT_PATH }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

@@ -18,6 +18,7 @@ IDF_TARGET="esp32c6"
 BUILD_TYPE="Release"
 APP_TYPE="hardfoc_interface"
 IDF_VERSION="release/v5.5"  # NEW: ESP-IDF version parameter
+ESP32_PROJECT_PATH="examples/esp32"  # Default ESP32 project path
 
 # Function to show help
 show_help() {
@@ -31,6 +32,7 @@ show_help() {
     echo "  -b, --build-type TYPE    Build type: Debug, Release, RelWithDebInfo, MinSizeRel (default: Release)"
     echo "  -a, --app-type APP       Application type (default: hardfoc_interface)"
     echo "  -v, --idf-version VER    ESP-IDF version (default: release/v5.5)"
+    echo "  -e, --esp32-path PATH    ESP32 project path (default: examples/esp32)"
     echo "  -h, --help               Show this help message"
     echo ""
     echo "Purpose: Set up build directory structure for ESP32 CI builds"
@@ -44,7 +46,7 @@ show_help() {
     echo "  • NEW: Reads app_config.yml for app-specific configuration"
     echo ""
     echo "Example:"
-    echo "  ./setup_build_directory.sh -p my_build -t esp32c6 -b Release -a my_app -v release/v5.5"
+    echo "  ./setup_build_directory.sh -p my_build -t esp32c6 -b Release -a my_app -v release/v5.5 -e my_esp32_project"
     exit 0
 }
 
@@ -85,6 +87,10 @@ parse_args() {
                 IDF_VERSION="$2"
                 shift 2
                 ;;
+            -e|--esp32-path)
+                ESP32_PROJECT_PATH="$2"
+                shift 2
+                ;;
             -h|--help)
                 show_help
                 ;;
@@ -117,9 +123,7 @@ validate_build_type() {
 
 # NEW: Function to read and understand app configuration
 read_app_config() {
-    # Use ESP32_PROJECT_PATH environment variable if set, otherwise fall back to default
-    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
-    local app_config_file="$esp32_project_path/app_config.yml"
+    local app_config_file="$ESP32_PROJECT_PATH/app_config.yml"
     
     if [[ ! -f "$app_config_file" ]]; then
         print_error "App configuration file not found: $app_config_file"
@@ -206,15 +210,12 @@ except Exception as e:
 check_prerequisites() {
     print_status "Checking prerequisites..."
     
-    # Use ESP32_PROJECT_PATH environment variable if set, otherwise fall back to default
-    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
-    
     local required_files=(
-        "$esp32_project_path/CMakeLists.txt"
-        "$esp32_project_path/main"
-        "$esp32_project_path/components"
-        "$esp32_project_path/app_config.yml"
-        "$esp32_project_path/sdkconfig"
+        "$ESP32_PROJECT_PATH/CMakeLists.txt"
+        "$ESP32_PROJECT_PATH/main"
+        "$ESP32_PROJECT_PATH/components"
+        "$ESP32_PROJECT_PATH/app_config.yml"
+        "$ESP32_PROJECT_PATH/sdkconfig"
         "src"
         "inc"
     )
@@ -245,18 +246,16 @@ setup_build_directory() {
     
     # Copy project files
     print_status "Copying project files..."
-    # Use ESP32_PROJECT_PATH environment variable if set, otherwise fall back to default
-    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
     
-    cp "$esp32_project_path/CMakeLists.txt" "$BUILD_PATH/CMakeLists.txt"
+    cp "$ESP32_PROJECT_PATH/CMakeLists.txt" "$BUILD_PATH/CMakeLists.txt"
     rm -rf "$BUILD_PATH/main"
-    cp -r "$esp32_project_path/main" "$BUILD_PATH/main"
-    cp -r "$esp32_project_path/components" "$BUILD_PATH/components"
+    cp -r "$ESP32_PROJECT_PATH/main" "$BUILD_PATH/main"
+    cp -r "$ESP32_PROJECT_PATH/components" "$BUILD_PATH/components"
     # Note: Not copying scripts directory to avoid conflicts with CI scripts
-    cp "$esp32_project_path/app_config.yml" "$BUILD_PATH/app_config.yml"
+    cp "$ESP32_PROJECT_PATH/app_config.yml" "$BUILD_PATH/app_config.yml"
     cp -r src "$BUILD_PATH/src"
     cp -r inc "$BUILD_PATH/inc"
-    cp "$esp32_project_path/sdkconfig" "$BUILD_PATH/sdkconfig"
+    cp "$ESP32_PROJECT_PATH/sdkconfig" "$BUILD_PATH/sdkconfig"
     
     print_success "Build directory setup complete"
 }
