@@ -26,6 +26,7 @@ env:
   IDF_TARGET: esp32c6
   BUILD_PATH: ci_project
   IDF_CCACHE_ENABLE: "1"  # Enables ccache inside ESP-IDF
+  ESP32_PROJECT_PATH: examples/esp32  # Centralized ESP32 project location
 
 defaults:
   run:
@@ -45,15 +46,15 @@ jobs:
           path: |
             ~/.cache/apt
             /usr/local/bin
-          key: dev-tools-${{ runner.os }}-${{ hashFiles('examples/esp32/scripts/setup_ci.sh') }}
+          key: dev-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
           restore-keys: |
             dev-tools-${{ runner.os }}-
         
       - name: Setup development environment
         run: |
           echo "Setting up development environment..."
-          chmod +x examples/esp32/scripts/setup_ci.sh
-          ./examples/esp32/scripts/setup_ci.sh
+          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
           
       - name: Verify clang-20 installation
         run: |
@@ -89,10 +90,10 @@ jobs:
       - name: Generate matrix
         id: generate-matrix
         run: |
-          MATRIX=$(python3 examples/esp32/scripts/generate_matrix.py)
+          MATRIX=$(python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py)
           echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
           echo "Generated matrix:"
-          python3 examples/esp32/scripts/generate_matrix.py --pretty | jq .
+          python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --pretty | jq .
 
   build:
     name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.app_name }}
@@ -130,7 +131,7 @@ jobs:
             ~/esp
           key: >-
             esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
-            ${{ hashFiles('examples/esp32/scripts/setup_common.sh') }}
+            ${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh') }}
           restore-keys: |
             esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             esp-idf-${{ matrix.idf_version_docker }}-
@@ -146,7 +147,7 @@ jobs:
             ~/.local/lib/python3.*/site-packages
           key: >-
             python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
-            ${{ hashFiles('examples/esp32/scripts/setup_common.sh', 'examples/esp32/requirements.txt') }}
+            ${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh', '${{ env.ESP32_PROJECT_PATH }}/requirements.txt') }}
           restore-keys: |
             python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             python-deps-${{ matrix.idf_version_docker }}-

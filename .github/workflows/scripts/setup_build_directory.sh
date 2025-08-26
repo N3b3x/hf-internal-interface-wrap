@@ -117,7 +117,9 @@ validate_build_type() {
 
 # NEW: Function to read and understand app configuration
 read_app_config() {
-    local app_config_file="examples/esp32/app_config.yml"
+    # Use ESP32_PROJECT_PATH environment variable if set, otherwise fall back to default
+    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
+    local app_config_file="$esp32_project_path/app_config.yml"
     
     if [[ ! -f "$app_config_file" ]]; then
         print_error "App configuration file not found: $app_config_file"
@@ -204,12 +206,15 @@ except Exception as e:
 check_prerequisites() {
     print_status "Checking prerequisites..."
     
+    # Use ESP32_PROJECT_PATH environment variable if set, otherwise fall back to default
+    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
+    
     local required_files=(
-        "examples/esp32/CMakeLists.txt"
-        "examples/esp32/main"
-        "examples/esp32/components"
-        "examples/esp32/app_config.yml"
-        "examples/esp32/sdkconfig"
+        "$esp32_project_path/CMakeLists.txt"
+        "$esp32_project_path/main"
+        "$esp32_project_path/components"
+        "$esp32_project_path/app_config.yml"
+        "$esp32_project_path/sdkconfig"
         "src"
         "inc"
     )
@@ -240,15 +245,18 @@ setup_build_directory() {
     
     # Copy project files
     print_status "Copying project files..."
-    cp examples/esp32/CMakeLists.txt "$BUILD_PATH/CMakeLists.txt"
+    # Use ESP32_PROJECT_PATH environment variable if set, otherwise fall back to default
+    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
+    
+    cp "$esp32_project_path/CMakeLists.txt" "$BUILD_PATH/CMakeLists.txt"
     rm -rf "$BUILD_PATH/main"
-    cp -r examples/esp32/main "$BUILD_PATH/main"
-    cp -r examples/esp32/components "$BUILD_PATH/components"
+    cp -r "$esp32_project_path/main" "$BUILD_PATH/main"
+    cp -r "$esp32_project_path/components" "$BUILD_PATH/components"
     # Note: Not copying scripts directory to avoid conflicts with CI scripts
-    cp examples/esp32/app_config.yml "$BUILD_PATH/app_config.yml"
+    cp "$esp32_project_path/app_config.yml" "$BUILD_PATH/app_config.yml"
     cp -r src "$BUILD_PATH/src"
     cp -r inc "$BUILD_PATH/inc"
-    cp examples/esp32/sdkconfig "$BUILD_PATH/sdkconfig"
+    cp "$esp32_project_path/sdkconfig" "$BUILD_PATH/sdkconfig"
     
     print_success "Build directory setup complete"
 }
