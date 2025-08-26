@@ -59,6 +59,10 @@ message(STATUS "CMake current source dir: ${CMAKE_CURRENT_SOURCE_DIR}")
 set(APP_TYPE "${APP_TYPE}" CACHE STRING "App type to build" FORCE)
 set(BUILD_TYPE "${BUILD_TYPE}" CACHE STRING "Build type (Debug/Release)" FORCE)
 
+# Also set as global properties to ensure components can access them
+set_property(GLOBAL PROPERTY APP_TYPE "${APP_TYPE}")
+set_property(GLOBAL PROPERTY BUILD_TYPE "${BUILD_TYPE}")
+
 # Include ESP-IDF build system
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 

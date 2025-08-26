@@ -1,9 +1,20 @@
 # Flexible main component for different app types
 # Determine source file based on APP_TYPE
 
-# Get app type from parent
+# Get app type from parent - only set default if not already defined
+# This prevents overriding APP_TYPE passed from command line or project level
 if(NOT DEFINED APP_TYPE)
-    set(APP_TYPE "ascii_art")
+    # Try to get from global property first
+    get_property(APP_TYPE_FROM_PROP GLOBAL PROPERTY APP_TYPE)
+    if(APP_TYPE_FROM_PROP)
+        set(APP_TYPE "${APP_TYPE_FROM_PROP}")
+        message(STATUS "APP_TYPE retrieved from global property: ${APP_TYPE}")
+    else()
+        set(APP_TYPE "ascii_art")
+        message(STATUS "APP_TYPE not defined, defaulting to: ${APP_TYPE}")
+    endif()
+else()
+    message(STATUS "APP_TYPE already defined as: ${APP_TYPE}")
 endif()
 
 # Debug information
