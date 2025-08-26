@@ -1,0 +1,10 @@
+<map id="inc/base/BaseBluetooth.h" name="inc/base/BaseBluetooth.h">
+<area shape="rect" id="Node000001" title="Unified Bluetooth base class for all Bluetooth implementations." alt="" coords="107,5,294,31"/>
+<area shape="rect" id="Node000002" href="$BluetoothComprehensiveTest_8cpp.html" title="Comprehensive Bluetooth/NimBLE testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,152,249,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,43,155,80,141,118,133,152,128,151,136,116,150,77,177,39"/>
+<area shape="rect" id="Node000003" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)" alt="" coords="165,79,383,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,38,264,77,260,80,221,42"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="242,113,164,154,161,149,239,108"/>
+<area shape="rect" id="Node000004" href="$EspBluetooth_8cpp.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32C6)" alt="" coords="273,159,507,185"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="304,110,374,157,371,161,301,114"/>
+</map>

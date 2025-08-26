@@ -1,0 +1,35 @@
+<map id="inc/mcu/esp32/utils/EspTypes_PWM.h" name="inc/mcu/esp32/utils/EspTypes_PWM.h">
+<area shape="rect" id="Node000001" title="ESP32 PWM type definitions for LEDC peripheral hardware abstraction." alt="" coords="381,5,529,45"/>
+<area shape="rect" id="Node000002" href="$BasePwm_8h.html" title="Abstract base class for PWM implementations in the HardFOC system." alt="" coords="669,167,838,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="493,43,720,158,717,163,491,48"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="329,240,463,265"/>
+<area shape="poly" id="edge20_Node000001_Node000003" title=" " alt="" coords="423,48,398,68,378,94,370,129,371,165,378,199,388,227,383,228,373,200,366,165,364,128,374,92,394,64,419,43"/>
+<area shape="rect" id="Node000007" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="164,167,297,192"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="407,48,362,69,318,96,281,127,251,158,247,154,277,123,314,91,360,64,404,43"/>
+<area shape="rect" id="Node000010" href="$EspTypes__GPIO_8h.html" title="ESP32 GPIO type definitions for hardware abstraction." alt="" coords="388,93,521,119"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="457,46,457,79,452,79,452,46"/>
+<area shape="rect" id="Node000012" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="543,167,644,192"/>
+<area shape="poly" id="edge21_Node000001_Node000012" title=" " alt="" coords="482,44,535,92,581,153,577,156,531,95,478,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="696,195,468,240,467,235,695,189"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="459,313,525,339"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="746,194,713,230,665,268,601,298,539,317,538,312,599,293,663,263,709,226,742,190"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="565,240,651,265"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="731,194,645,236,643,232,729,190"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="413,263,467,303,464,307,410,268"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="367,313,425,339"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="399,266,399,300,393,300,393,266"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="258,190,358,232,355,237,256,194"/>
+<area shape="poly" id="edge11_Node000007_Node000004" title=" " alt="" coords="241,190,273,226,317,263,349,280,383,294,446,313,444,318,381,299,347,285,315,268,269,230,237,194"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,240,163,265"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="208,194,121,236,119,232,206,190"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="187,240,253,265"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="232,193,226,227,221,226,226,192"/>
+<area shape="poly" id="edge18_Node000010_Node000003" title=" " alt="" coords="445,121,428,142,413,168,404,198,400,227,395,226,399,197,408,166,424,139,441,117"/>
+<area shape="poly" id="edge17_Node000010_Node000007" title=" " alt="" coords="419,121,281,165,279,160,418,116"/>
+<area shape="rect" id="Node000011" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="423,167,519,192"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="460,118,468,153,463,154,455,120"/>
+<area shape="poly" id="edge19_Node000010_Node000012" title=" " alt="" coords="478,116,560,158,557,163,476,121"/>
+<area shape="poly" id="edge14_Node000011_Node000003" title=" " alt="" coords="461,194,420,232,416,229,457,190"/>
+<area shape="poly" id="edge15_Node000011_Node000004" title=" " alt="" coords="475,192,491,299,486,300,470,193"/>
+<area shape="poly" id="edge16_Node000011_Node000006" title=" " alt="" coords="494,190,575,231,572,236,492,194"/>
+</map>

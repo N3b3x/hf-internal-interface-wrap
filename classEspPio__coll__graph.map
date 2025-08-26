@@ -1,0 +1,13 @@
+<map id="EspPio" name="EspPio">
+<area shape="rect" id="Node000001" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with advanced ESP&#45;IDF v5...." alt="" coords="257,181,323,207"/>
+<area shape="rect" id="Node000002" href="$classBasePio.html" title="Abstract base class for Programmable IO Channel implementations." alt="" coords="189,93,263,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,128,283,179,279,182,241,131"/>
+<area shape="rect" id="Node000003" href="$structhf__pio__statistics__t.html" title="PIO operation statistics." alt="" coords="5,5,145,31"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="65,44,54,81,54,100,62,117,81,138,104,154,129,167,157,177,211,187,257,191,257,196,210,193,155,182,127,172,101,159,77,142,57,120,49,101,49,80,60,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="96,39,130,67,159,82,189,92,187,97,157,87,127,72,92,43"/>
+<area shape="rect" id="Node000004" href="$structhf__pio__diagnostics__t.html" title="PIO diagnostic information." alt="" coords="202,5,357,31"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="292,43,295,54,299,90,299,126,294,181,289,181,294,126,294,91,290,55,287,44"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="227,39,210,56,207,64,208,74,218,92,214,94,203,75,202,64,205,53,224,35"/>
+<area shape="rect" id="Node000005" href="$classRtosMutex.html" title=" " alt="" coords="469,93,561,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="473,126,321,184,319,179,471,121"/>
+</map>

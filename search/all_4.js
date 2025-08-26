@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['4_20async_20operations_20tests_0',['4. Async Operations Tests',['../md_examples_2esp32_2docs_2README__UART__TESTING.html#autotoc_md471',1,'']]],
+  ['4_20basic_20conversion_20test_1',['4. Basic Conversion Test',['../md_examples_2esp32_2docs_2README__ADC__TEST.html#autotoc_md31',1,'']]],
+  ['4_20build_20execution_20strong_2',['&lt;strong&gt;4. Build Execution&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__BUILD__SYSTEM.html#autotoc_md636',1,'']]],
+  ['4_20cache_20issues_20strong_3',['&lt;strong&gt;4. Cache Issues&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__BUILD__SYSTEM.html#autotoc_md670',1,'']]],
+  ['4_20channel_20configuration_20tests_4',['4. Channel Configuration Tests',['../md_examples_2esp32_2docs_2README__PIO__TEST.html#autotoc_md267',1,'']]],
+  ['4_20channel_20management_20tests_5',['4. Channel Management Tests',['../md_examples_2esp32_2docs_2README__PWM__TEST.html#autotoc_md350',1,'']]],
+  ['4_20environment_20variable_20conflicts_20strong_6',['4 environment variable conflicts strong',['../md_examples_2esp32_2scripts_2docs_2README__CENTRALIZED__CONFIG.html#autotoc_md752',1,'&lt;strong&gt;4. Environment Variable Conflicts&lt;/strong&gt;'],['../md_examples_2esp32_2scripts_2docs_2README__CONFIG__SYSTEM.html#autotoc_md828',1,'&lt;strong&gt;4. Environment Variable Conflicts&lt;/strong&gt;']]],
+  ['4_20esp32_20c6_20specific_20tests_7',['4. ESP32-C6 Specific Tests',['../md_examples_2esp32_2docs_2README__GPIO__TEST.html#autotoc_md141',1,'']]],
+  ['4_20formatted_20logging_8',['4. Formatted Logging',['../md_examples_2esp32_2docs_2README__LOGGER__TEST.html#autotoc_md185',1,'']]],
+  ['4_20integration_20and_20automation_20strong_9',['&lt;strong&gt;4. Integration and Automation&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__CENTRALIZED__CONFIG.html#autotoc_md769',1,'']]],
+  ['4_20log_20performance_20strong_10',['&lt;strong&gt;4. Log Performance&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__LOGGING__SYSTEM.html#autotoc_md1020',1,'']]],
+  ['4_20monitor_20issues_20strong_11',['&lt;strong&gt;4. Monitor Issues&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__FLASH__SYSTEM.html#autotoc_md908',1,'']]],
+  ['4_20numbers_20and_20symbols_12',['4. Numbers and Symbols',['../md_examples_2esp32_2docs_2README__ASCII__ART__TEST.html#autotoc_md81',1,'']]],
+  ['4_20performance_20and_20optimization_20strong_13',['&lt;strong&gt;4. Performance and Optimization&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__CONFIG__SYSTEM.html#autotoc_md846',1,'']]],
+  ['4_20performance_20monitoring_20strong_14',['&lt;strong&gt;4. Performance Monitoring&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__BUILD__SYSTEM.html#autotoc_md692',1,'']]],
+  ['4_20performance_20optimization_20strong_15',['&lt;strong&gt;4. Performance Optimization&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__FLASH__SYSTEM.html#autotoc_md930',1,'']]],
+  ['4_20performance_20strong_16',['&lt;strong&gt;4. Performance&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__PORT__DETECTION.html#autotoc_md1109',1,'']]],
+  ['4_20permission_20issues_20strong_17',['&lt;strong&gt;4. Permission Issues&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__SCRIPTS__OVERVIEW.html#autotoc_md1166',1,'']]],
+  ['4_20post_20flash_20operations_20strong_18',['&lt;strong&gt;4. Post-Flash Operations&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__FLASH__SYSTEM.html#autotoc_md877',1,'']]],
+  ['4_20range_20management_20tests_19',['4. Range Management Tests',['../md_examples_2esp32_2docs_2README__TEMPERATURE__TEST.html#autotoc_md405',1,'']]],
+  ['4_20regular_20maintenance_20strong_20',['&lt;strong&gt;4. Regular Maintenance&lt;/strong&gt;',['..//home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/examples/esp32/scripts/README.md#autotoc_md1314',1,'']]],
+  ['4_20troubleshooting_20strong_21',['&lt;strong&gt;4. Troubleshooting&lt;/strong&gt;',['../md_examples_2esp32_2scripts_2docs_2README__UTILITY__SCRIPTS.html#autotoc_md1273',1,'']]],
+  ['40mhz_20power_20efficient_20option_22',['XTAL_CLK (40MHz) - Power-efficient option',['../EspTypes__PWM_8h.html#autotoc_md11',1,'']]],
+  ['4_3a_20connectivity_23',['Phase 4: Connectivity',['../index.html#autotoc_md587',1,'']]]
+];

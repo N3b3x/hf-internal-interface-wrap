@@ -1,0 +1,15 @@
+<map id="src/mcu/esp32/EspCan.cpp" name="src/mcu/esp32/EspCan.cpp">
+<area shape="rect" id="Node000001" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="188,5,383,31"/>
+<area shape="rect" id="Node000002" href="$EspCan_8h.html" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="136,79,219,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="269,33,208,73,205,69,267,28"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="243,79,328,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="288,31,288,65,283,65,283,31"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="352,79,419,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="303,29,359,68,356,73,300,33"/>
+<area shape="rect" id="Node000003" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="5,152,107,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="159,106,89,147,86,143,156,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="131,152,223,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="180,104,180,138,175,138,175,104"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="247,152,390,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="201,102,285,143,282,148,199,106"/>
+</map>

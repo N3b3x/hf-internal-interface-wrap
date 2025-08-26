@@ -1,0 +1,172 @@
+<map id="examples/esp32/main/PioComprehensiveTest.cpp" name="examples/esp32/main/PioComprehensiveTest.cpp">
+<area shape="rect" id="Node000001" title="Comprehensive PIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with RMT peripheral (noexcept)" alt="" coords="2177,5,2379,45"/>
+<area shape="rect" id="Node000002" href="$TestFramework_8h.html" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="546,313,679,339"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2178,47,1068,243,686,313,686,308,1067,237,2177,41"/>
+<area shape="rect" id="Node000009" href="$BasePio_8h.html" title="Abstract base class for Programmable IO Channel implementations in the HardFOC system." alt="" coords="3453,387,3575,412"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="2379,28,2636,43,2945,71,3088,91,3206,114,3252,128,3287,143,3310,159,3318,177,3318,254,3322,278,3331,299,3346,318,3365,335,3410,362,3456,380,3454,385,3407,366,3362,339,3342,322,3327,302,3317,279,3313,254,3313,179,3306,163,3285,148,3250,133,3205,120,3087,96,2945,76,2635,48,2379,34"/>
+<area shape="rect" id="Node000015" href="$EspPio_8h.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="2466,93,2618,119"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="2342,43,2491,87,2490,92,2341,48"/>
+<area shape="rect" id="Node000033" href="$EspTypes__PIO_8h.html" title="ESP32 PIO/RMT type definitions for hardware abstraction." alt="" coords="2217,313,2339,339"/>
+<area shape="poly" id="edge114_Node000001_Node000033" title=" " alt="" coords="2281,46,2281,300,2275,300,2275,46"/>
+<area shape="rect" id="Node000048" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="385,240,547,265"/>
+<area shape="poly" id="edge115_Node000001_Node000048" title=" " alt="" coords="2177,31,1791,39,1280,53,822,72,668,83,620,89,595,96,556,123,523,159,497,197,480,229,475,226,493,194,519,156,552,119,593,91,619,84,668,78,822,66,1280,47,1791,33,2177,26"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="180,387,264,412"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="547,341,279,389,278,384,546,336"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="766,387,865,412"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="646,336,771,380,769,385,644,341"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="288,387,439,412"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="573,341,418,385,416,380,572,336"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="27,387,156,412"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="546,339,170,389,169,384,545,334"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="463,387,600,412"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="601,341,557,380,553,376,598,337"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="625,387,742,412"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="626,337,664,375,661,379,623,341"/>
+<area shape="rect" id="Node000010" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="2277,460,2412,485"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="3454,413,3441,415,3148,440,2860,457,2426,472,2426,467,2860,451,3148,434,3441,409,3453,408"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="2637,533,2703,559"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="3468,415,3317,450,3127,488,2898,522,2718,543,2717,537,2897,516,3126,483,3316,445,3467,410"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="2768,460,2855,485"/>
+<area shape="poly" id="edge13_Node000009_Node000013" title=" " alt="" coords="3454,413,3441,415,3294,431,3180,441,2918,463,2869,468,2868,462,2918,457,3179,435,3294,426,3440,409,3453,408"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="2931,460,3028,485"/>
+<area shape="poly" id="edge14_Node000009_Node000014" title=" " alt="" coords="3454,413,3441,415,3042,466,3042,461,3440,409,3453,408"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="2398,483,2624,532,2623,537,2397,488"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="2315,533,2374,559"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="2347,486,2347,520,2342,520,2342,486"/>
+<area shape="poly" id="edge16_Node000015_Node000009" title=" " alt="" coords="2549,117,2568,154,2583,173,2601,190,2648,210,2732,234,2969,289,3232,343,3440,382,3439,387,3231,348,2968,295,2731,240,2646,215,2598,194,2579,177,2563,157,2544,120"/>
+<area shape="rect" id="Node000016" href="$EspTypes_8h.html" title="Consolidated MCU&#45;specific type definitions for hardware abstraction (hf_* types)." alt="" coords="1723,167,1817,192"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="2466,117,1832,175,1831,170,2466,112"/>
+<area shape="rect" id="Node000043" href="$RtosMutex_8h.html" title="Cross&#45;platform RTOS mutex and synchronization primitives." alt="" coords="703,313,807,339"/>
+<area shape="poly" id="edge103_Node000015_Node000043" title=" " alt="" coords="2466,113,2137,131,1925,148,1710,169,1451,205,1198,245,821,314,820,309,1197,240,1451,199,1710,164,1924,142,2137,126,2465,108"/>
+<area shape="rect" id="Node000044" title=" " alt="" coords="2481,167,2537,192"/>
+<area shape="poly" id="edge110_Node000015_Node000044" title=" " alt="" coords="2539,120,2522,155,2518,153,2534,118"/>
+<area shape="rect" id="Node000045" title=" " alt="" coords="2611,167,2769,192"/>
+<area shape="poly" id="edge111_Node000015_Node000045" title=" " alt="" coords="2567,116,2655,158,2653,163,2565,121"/>
+<area shape="rect" id="Node000046" title=" " alt="" coords="2793,167,2912,192"/>
+<area shape="poly" id="edge112_Node000015_Node000046" title=" " alt="" coords="2593,116,2790,161,2789,166,2591,121"/>
+<area shape="rect" id="Node000047" title=" " alt="" coords="2936,167,3055,192"/>
+<area shape="poly" id="edge113_Node000015_Node000047" title=" " alt="" coords="2616,116,2923,164,2922,169,2615,121"/>
+<area shape="poly" id="edge18_Node000016_Node000010" title=" " alt="" coords="1722,182,1529,184,1391,189,1234,199,1063,216,886,239,707,272,535,316,510,328,484,341,431,350,357,355,183,361,104,366,43,375,23,382,11,390,9,399,16,410,46,417,119,424,367,435,1107,448,2214,457,2264,461,2264,466,2214,463,1107,454,367,440,118,429,45,422,13,414,3,399,7,387,20,377,41,370,103,361,183,355,357,349,431,345,483,336,508,324,533,311,706,267,885,234,1063,210,1233,194,1391,184,1529,179,1722,177"/>
+<area shape="rect" id="Node000017" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="1483,387,1585,412"/>
+<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="1723,187,1689,192,1653,203,1617,219,1587,242,1565,272,1550,308,1542,343,1538,373,1533,373,1537,342,1545,306,1560,270,1583,238,1615,214,1651,198,1688,187,1722,181"/>
+<area shape="rect" id="Node000018" href="$EspTypes__ADC_8h.html" title="ESP32 ADC type definitions for hardware abstraction." alt="" coords="1801,313,1931,339"/>
+<area shape="poly" id="edge20_Node000016_Node000018" title=" " alt="" coords="1780,191,1853,300,1849,303,1776,194"/>
+<area shape="rect" id="Node000020" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="2123,387,2257,412"/>
+<area shape="poly" id="edge35_Node000016_Node000020" title=" " alt="" coords="1790,190,1897,255,2046,336,2147,379,2145,384,2044,341,1894,260,1787,195"/>
+<area shape="rect" id="Node000025" href="$EspTypes__CAN_8h.html" title="ESP32 CAN type definitions for hardware abstraction." alt="" coords="1648,313,1777,339"/>
+<area shape="poly" id="edge36_Node000016_Node000025" title=" " alt="" coords="1770,193,1746,266,1728,303,1724,300,1741,264,1765,192"/>
+<area shape="rect" id="Node000027" href="$EspTypes__GPIO_8h.html" title="ESP32 GPIO type definitions for hardware abstraction." alt="" coords="1191,313,1325,339"/>
+<area shape="poly" id="edge45_Node000016_Node000027" title=" " alt="" coords="1723,192,1623,214,1507,243,1395,278,1302,311,1300,306,1394,273,1505,237,1622,208,1722,187"/>
+<area shape="rect" id="Node000029" href="$EspTypes__I2C_8h.html" title="ESP32 I2C type definitions for hardware abstraction." alt="" coords="2414,313,2537,339"/>
+<area shape="poly" id="edge53_Node000016_Node000029" title=" " alt="" coords="1818,185,1958,206,2129,237,2288,273,2421,307,2419,312,2287,279,2128,243,1957,212,1818,190"/>
+<area shape="poly" id="edge65_Node000016_Node000033" title=" " alt="" coords="1818,184,1937,204,2007,219,2076,237,2168,271,2244,305,2241,310,2166,276,2075,243,2006,224,1936,209,1818,190"/>
+<area shape="rect" id="Node000034" href="$EspTypes__PWM_8h.html" title="ESP32 PWM type definitions for LEDC peripheral hardware abstraction." alt="" coords="1597,240,1732,265"/>
+<area shape="poly" id="edge70_Node000016_Node000034" title=" " alt="" coords="1755,194,1695,235,1692,230,1752,190"/>
+<area shape="rect" id="Node000036" href="$EspTypes__SPI_8h.html" title="ESP32 SPI type definitions for hardware abstraction." alt="" coords="1400,313,1521,339"/>
+<area shape="poly" id="edge79_Node000016_Node000036" title=" " alt="" coords="1723,188,1635,205,1587,221,1542,242,1506,272,1479,304,1474,300,1502,268,1539,238,1585,216,1634,200,1722,183"/>
+<area shape="rect" id="Node000039" href="$EspTypes__Timer_8h.html" title="ESP32 timer type definitions for hardware abstraction." alt="" coords="1029,313,1167,339"/>
+<area shape="poly" id="edge89_Node000016_Node000039" title=" " alt="" coords="1723,190,1589,212,1427,243,1277,279,1151,312,1150,307,1275,273,1426,237,1588,206,1722,185"/>
+<area shape="rect" id="Node000040" href="$EspTypes__UART_8h.html" title="ESP32 UART type definitions for hardware abstraction." alt="" coords="2057,313,2192,339"/>
+<area shape="poly" id="edge94_Node000016_Node000040" title=" " alt="" coords="1818,181,1866,186,1923,197,1983,213,2039,238,2080,268,2110,301,2106,304,2076,272,2037,242,1981,218,1922,202,1866,191,1818,186"/>
+<area shape="poly" id="edge31_Node000018_Node000010" title=" " alt="" coords="1802,340,1755,351,1714,367,1701,376,1693,386,1692,397,1700,410,2264,462,2263,467,1697,414,1687,399,1688,385,1697,372,1712,362,1753,346,1800,335"/>
+<area shape="poly" id="edge32_Node000018_Node000017" title=" " alt="" coords="1813,341,1599,387,1598,382,1812,336"/>
+<area shape="rect" id="Node000019" href="$BaseAdc_8h.html" title="Abstract base class for ADC implementations in the HardFOC system." alt="" coords="2853,387,2943,412"/>
+<area shape="poly" id="edge21_Node000018_Node000019" title=" " alt="" coords="1931,329,2045,336,2267,346,2441,351,2616,361,2839,384,2839,389,2615,366,2441,357,2267,352,2045,341,1931,334"/>
+<area shape="poly" id="edge26_Node000018_Node000020" title=" " alt="" coords="1919,336,2125,381,2124,386,1918,341"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="1710,387,1902,412"/>
+<area shape="poly" id="edge33_Node000018_Node000023" title=" " alt="" coords="1858,341,1827,378,1823,374,1854,337"/>
+<area shape="rect" id="Node000024" title=" " alt="" coords="1926,387,2099,412"/>
+<area shape="poly" id="edge34_Node000018_Node000024" title=" " alt="" coords="1891,336,1978,378,1976,383,1889,341"/>
+<area shape="poly" id="edge22_Node000019_Node000010" title=" " alt="" coords="2853,413,2841,415,2616,445,2426,466,2426,461,2615,440,2840,409,2852,407"/>
+<area shape="poly" id="edge23_Node000019_Node000011" title=" " alt="" coords="2900,413,2891,449,2882,470,2868,487,2833,512,2794,529,2754,539,2718,545,2717,539,2753,534,2792,524,2831,507,2864,483,2877,467,2886,447,2894,412"/>
+<area shape="poly" id="edge24_Node000019_Node000013" title=" " alt="" coords="2886,414,2838,453,2834,449,2883,410"/>
+<area shape="poly" id="edge25_Node000019_Node000014" title=" " alt="" coords="2913,410,2958,449,2954,453,2909,414"/>
+<area shape="poly" id="edge28_Node000020_Node000010" title=" " alt="" coords="2216,410,2308,452,2306,457,2214,414"/>
+<area shape="poly" id="edge30_Node000020_Node000011" title=" " alt="" coords="2199,411,2225,448,2244,467,2266,483,2295,494,2334,505,2432,521,2623,539,2623,544,2432,526,2333,510,2293,500,2264,488,2240,471,2221,451,2194,414"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="2045,460,2202,485"/>
+<area shape="poly" id="edge27_Node000020_Node000021" title=" " alt="" coords="2181,414,2146,452,2142,448,2177,411"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="1734,460,1801,485"/>
+<area shape="poly" id="edge29_Node000020_Node000022" title=" " alt="" coords="2124,414,1815,466,1814,461,2123,409"/>
+<area shape="poly" id="edge43_Node000025_Node000010" title=" " alt="" coords="1705,340,1684,375,1680,394,1686,410,2264,462,2263,467,1683,414,1675,394,1679,373,1701,337"/>
+<area shape="poly" id="edge44_Node000025_Node000017" title=" " alt="" coords="1685,341,1577,384,1575,379,1683,336"/>
+<area shape="poly" id="edge42_Node000025_Node000020" title=" " alt="" coords="1778,334,1789,336,2110,384,2109,389,1788,341,1777,340"/>
+<area shape="rect" id="Node000026" href="$BaseCan_8h.html" title="Abstract base class for CAN bus implementations in the HardFOC system." alt="" coords="2738,387,2829,412"/>
+<area shape="poly" id="edge37_Node000025_Node000026" title=" " alt="" coords="1778,335,1789,336,1931,348,2052,354,2257,357,2463,361,2583,369,2725,384,2726,384,2725,389,2725,389,2583,375,2462,366,2257,362,2052,359,1931,353,1789,341,1778,340"/>
+<area shape="poly" id="edge38_Node000026_Node000010" title=" " alt="" coords="2738,412,2725,415,2426,462,2425,457,2724,409,2738,407"/>
+<area shape="poly" id="edge39_Node000026_Node000011" title=" " alt="" coords="2776,414,2690,524,2685,521,2772,411"/>
+<area shape="poly" id="edge40_Node000026_Node000013" title=" " alt="" coords="2791,411,2804,446,2799,448,2786,413"/>
+<area shape="poly" id="edge41_Node000026_Node000014" title=" " alt="" coords="2816,410,2936,453,2934,458,2814,415"/>
+<area shape="poly" id="edge51_Node000027_Node000010" title=" " alt="" coords="1244,341,1226,356,1210,375,1202,394,1203,402,1208,410,1224,417,1259,423,1372,433,1704,447,2214,457,2264,461,2264,466,2214,463,1704,452,1372,439,1258,428,1222,422,1204,414,1198,404,1197,393,1205,372,1222,352,1240,337"/>
+<area shape="poly" id="edge52_Node000027_Node000017" title=" " alt="" coords="1303,336,1477,381,1475,386,1302,341"/>
+<area shape="poly" id="edge50_Node000027_Node000020" title=" " alt="" coords="1325,331,1388,336,1589,349,1747,357,1906,366,2110,384,2109,389,1906,371,1747,362,1589,354,1387,341,1325,336"/>
+<area shape="rect" id="Node000028" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="990,387,1086,412"/>
+<area shape="poly" id="edge46_Node000027_Node000028" title=" " alt="" coords="1224,341,1087,385,1086,380,1222,336"/>
+<area shape="poly" id="edge47_Node000028_Node000010" title=" " alt="" coords="1087,407,1105,409,1273,425,1416,434,1659,441,1902,444,2214,457,2264,461,2264,466,2214,463,1902,449,1659,446,1416,440,1273,430,1105,415,1086,412"/>
+<area shape="poly" id="edge48_Node000028_Node000011" title=" " alt="" coords="1087,405,1357,442,1722,483,1989,504,2250,521,2623,540,2623,545,2250,527,1989,510,1722,488,1356,447,1086,410"/>
+<area shape="poly" id="edge49_Node000028_Node000013" title=" " alt="" coords="1087,400,1301,409,2754,466,2754,472,1301,415,1086,405"/>
+<area shape="poly" id="edge60_Node000029_Node000010" title=" " alt="" coords="2467,340,2423,388,2366,451,2362,448,2419,385,2463,337"/>
+<area shape="poly" id="edge62_Node000029_Node000013" title=" " alt="" coords="2537,334,2556,336,2647,339,2767,339,2826,342,2881,350,2926,363,2944,373,2958,385,2965,399,2965,412,2957,423,2945,434,2909,450,2869,462,2868,457,2908,445,2942,429,2953,420,2960,410,2960,400,2953,388,2941,377,2924,368,2880,355,2826,348,2766,345,2647,344,2555,341,2537,339"/>
+<area shape="poly" id="edge61_Node000029_Node000017" title=" " alt="" coords="2414,336,2352,341,1598,396,1598,391,2351,336,2413,331"/>
+<area shape="poly" id="edge59_Node000029_Node000020" title=" " alt="" coords="2430,341,2250,386,2249,381,2429,336"/>
+<area shape="rect" id="Node000030" href="$BaseI2c_8h.html" title="Abstract base class for I2C device implementations in the HardFOC system." alt="" coords="3257,387,3342,412"/>
+<area shape="poly" id="edge54_Node000029_Node000030" title=" " alt="" coords="2537,334,2556,336,2749,351,2900,357,3051,364,3244,384,3244,384,3244,389,3243,389,3050,369,2900,362,2749,357,2555,341,2537,339"/>
+<area shape="rect" id="Node000031" title=" " alt="" coords="3367,387,3429,412"/>
+<area shape="poly" id="edge63_Node000029_Node000031" title=" " alt="" coords="2537,334,2556,336,2676,346,2778,351,2953,353,3129,359,3232,368,3354,384,3353,390,3232,373,3129,364,2953,358,2778,356,2675,351,2555,341,2537,339"/>
+<area shape="rect" id="Node000032" title=" " alt="" coords="3137,387,3232,412"/>
+<area shape="poly" id="edge64_Node000029_Node000032" title=" " alt="" coords="2537,334,2556,336,2714,351,2838,358,2963,366,3124,384,3123,389,2963,372,2838,363,2713,356,2555,341,2537,339"/>
+<area shape="poly" id="edge55_Node000030_Node000010" title=" " alt="" coords="3257,413,3244,415,3012,440,2782,457,2426,472,2426,467,2781,452,3011,435,3243,409,3256,407"/>
+<area shape="poly" id="edge56_Node000030_Node000011" title=" " alt="" coords="3275,415,3184,451,3068,488,2971,509,2874,525,2717,543,2717,538,2873,520,2970,504,3067,483,3183,446,3273,410"/>
+<area shape="poly" id="edge57_Node000030_Node000013" title=" " alt="" coords="3257,412,3244,415,3037,446,2869,467,2868,462,3037,440,3243,409,3256,407"/>
+<area shape="poly" id="edge58_Node000030_Node000014" title=" " alt="" coords="3257,413,3042,460,3041,455,3256,408"/>
+<area shape="poly" id="edge66_Node000033_Node000009" title=" " alt="" coords="2340,331,2402,336,2692,350,2919,355,3148,362,3440,384,3440,389,3147,367,2919,360,2692,356,2402,341,2340,336"/>
+<area shape="poly" id="edge68_Node000033_Node000010" title=" " alt="" coords="2288,338,2315,386,2339,446,2334,448,2310,388,2283,340"/>
+<area shape="poly" id="edge69_Node000033_Node000017" title=" " alt="" coords="2217,340,2204,341,1863,376,1599,396,1598,391,1863,370,2203,336,2216,334"/>
+<area shape="poly" id="edge67_Node000033_Node000020" title=" " alt="" coords="2266,341,2217,380,2214,376,2262,337"/>
+<area shape="poly" id="edge77_Node000034_Node000010" title=" " alt="" coords="1598,263,1497,281,1442,296,1389,316,1334,347,1307,368,1290,388,1285,400,1289,410,1304,416,1336,422,1440,432,1745,446,2214,457,2264,461,2264,467,2214,463,1745,451,1440,437,1335,427,1302,421,1286,414,1280,400,1285,385,1303,364,1331,343,1386,311,1440,291,1496,276,1597,258"/>
+<area shape="poly" id="edge78_Node000034_Node000017" title=" " alt="" coords="1656,268,1556,378,1552,375,1652,264"/>
+<area shape="poly" id="edge75_Node000034_Node000020" title=" " alt="" coords="1733,262,1833,282,1943,311,1973,323,2002,336,2137,380,2136,385,2000,341,1971,328,1941,316,1832,287,1732,267"/>
+<area shape="poly" id="edge76_Node000034_Node000027" title=" " alt="" coords="1600,268,1337,314,1337,308,1599,263"/>
+<area shape="rect" id="Node000035" href="$BasePwm_8h.html" title="Abstract base class for PWM implementations in the HardFOC system." alt="" coords="2433,387,2603,412"/>
+<area shape="poly" id="edge71_Node000034_Node000035" title=" " alt="" coords="1733,254,2055,272,2228,289,2298,299,2352,311,2485,378,2482,383,2351,316,2297,304,2227,294,2055,278,1732,259"/>
+<area shape="poly" id="edge72_Node000035_Node000010" title=" " alt="" coords="2491,414,2387,457,2385,452,2489,410"/>
+<area shape="poly" id="edge73_Node000035_Node000011" title=" " alt="" coords="2532,411,2650,522,2646,526,2529,414"/>
+<area shape="poly" id="edge74_Node000035_Node000013" title=" " alt="" coords="2566,409,2755,455,2754,460,2565,415"/>
+<area shape="poly" id="edge86_Node000036_Node000010" title=" " alt="" coords="1401,340,1355,352,1316,368,1303,377,1296,387,1295,398,1303,410,1317,416,1348,422,1451,432,1752,446,2214,457,2264,461,2264,467,2214,463,1751,451,1451,437,1348,427,1315,421,1299,414,1290,399,1291,386,1299,374,1314,363,1354,347,1399,335"/>
+<area shape="poly" id="edge87_Node000036_Node000017" title=" " alt="" coords="1475,337,1514,375,1510,379,1471,341"/>
+<area shape="poly" id="edge85_Node000036_Node000020" title=" " alt="" coords="1522,329,1774,350,2110,384,2110,389,1774,355,1522,334"/>
+<area shape="rect" id="Node000037" href="$BaseSpi_8h.html" title="Abstract base class for SPI device implementations in the HardFOC system." alt="" coords="2627,387,2713,412"/>
+<area shape="poly" id="edge80_Node000036_Node000037" title=" " alt="" coords="1522,329,1636,336,1909,346,2123,349,2338,357,2464,368,2613,384,2612,389,2464,373,2338,363,2123,355,1909,352,1635,341,1522,334"/>
+<area shape="rect" id="Node000038" title=" " alt="" coords="1313,387,1459,412"/>
+<area shape="poly" id="edge88_Node000036_Node000038" title=" " alt="" coords="1451,341,1410,379,1406,375,1447,337"/>
+<area shape="poly" id="edge81_Node000037_Node000010" title=" " alt="" coords="2627,413,2411,460,2410,454,2626,408"/>
+<area shape="poly" id="edge82_Node000037_Node000011" title=" " alt="" coords="2673,412,2673,520,2667,520,2667,412"/>
+<area shape="poly" id="edge83_Node000037_Node000013" title=" " alt="" coords="2694,410,2778,451,2775,456,2692,414"/>
+<area shape="poly" id="edge84_Node000037_Node000014" title=" " alt="" coords="2714,408,2918,455,2917,460,2713,413"/>
+<area shape="poly" id="edge93_Node000039_Node000004" title=" " alt="" coords="1053,341,875,386,874,381,1052,336"/>
+<area shape="poly" id="edge91_Node000039_Node000010" title=" " alt="" coords="1109,337,1143,375,1168,394,1195,409,1264,423,1382,434,1701,446,2214,457,2264,461,2264,466,2214,463,1701,452,1382,439,1263,429,1193,415,1165,399,1140,379,1105,341"/>
+<area shape="poly" id="edge92_Node000039_Node000017" title=" " alt="" coords="1168,335,1470,384,1469,389,1167,341"/>
+<area shape="poly" id="edge90_Node000039_Node000020" title=" " alt="" coords="1168,335,1180,336,1439,354,1643,360,1848,365,2110,384,2109,389,1847,371,1643,365,1439,360,1179,341,1167,340"/>
+<area shape="poly" id="edge101_Node000040_Node000010" title=" " alt="" coords="2167,336,2218,356,2270,384,2305,415,2331,447,2327,451,2301,419,2267,389,2216,360,2165,341"/>
+<area shape="poly" id="edge102_Node000040_Node000017" title=" " alt="" coords="2057,338,1599,393,1598,388,2057,333"/>
+<area shape="poly" id="edge100_Node000040_Node000020" title=" " alt="" coords="2138,337,2172,375,2168,378,2134,341"/>
+<area shape="rect" id="Node000041" href="$BaseUart_8h.html" title="Abstract base class for UART driver implementations in the HardFOC system." alt="" coords="3019,387,3113,412"/>
+<area shape="poly" id="edge95_Node000040_Node000041" title=" " alt="" coords="2193,335,2205,336,2416,354,2580,362,2745,370,2956,384,3006,389,3005,394,2955,389,2744,375,2580,368,2415,359,2205,341,2192,340"/>
+<area shape="poly" id="edge96_Node000041_Node000010" title=" " alt="" coords="3019,408,2956,415,2426,466,2426,461,2955,409,3018,403"/>
+<area shape="poly" id="edge97_Node000041_Node000011" title=" " alt="" coords="3069,413,3063,450,3055,470,3041,487,3017,502,2982,514,2894,531,2799,541,2718,546,2717,540,2798,536,2893,526,2981,509,3015,497,3038,483,3050,467,3058,448,3063,412"/>
+<area shape="poly" id="edge98_Node000041_Node000013" title=" " alt="" coords="3026,415,2866,459,2865,454,3025,409"/>
+<area shape="poly" id="edge99_Node000041_Node000014" title=" " alt="" coords="3054,414,3006,453,3002,449,3051,410"/>
+<area shape="poly" id="edge105_Node000043_Node000005" title=" " alt="" coords="704,339,440,387,440,382,703,334"/>
+<area shape="poly" id="edge106_Node000043_Node000007" title=" " alt="" coords="720,341,581,385,580,380,719,336"/>
+<area shape="poly" id="edge107_Node000043_Node000008" title=" " alt="" coords="745,341,707,379,703,375,742,337"/>
+<area shape="poly" id="edge109_Node000043_Node000011" title=" " alt="" coords="781,336,878,384,900,398,922,410,1005,435,1077,452,1141,462,1202,468,1329,473,1492,483,1737,499,2070,516,2623,540,2623,545,2070,521,1736,504,1491,488,1329,478,1201,473,1140,468,1076,457,1004,440,920,414,897,403,875,389,779,341"/>
+<area shape="poly" id="edge104_Node000043_Node000017" title=" " alt="" coords="808,327,1087,346,1275,362,1470,384,1470,389,1275,367,1086,351,808,333"/>
+<area shape="poly" id="edge108_Node000043_Node000022" title=" " alt="" coords="790,336,922,384,950,398,979,409,1045,422,1133,433,1347,450,1720,467,1720,473,1347,455,1133,438,1044,427,977,415,948,403,920,389,788,341"/>
+<area shape="poly" id="edge119_Node000048_Node000027" title=" " alt="" coords="548,257,823,277,1178,311,1178,316,823,282,547,262"/>
+<area shape="poly" id="edge118_Node000048_Node000028" title=" " alt="" coords="548,260,677,279,820,311,920,344,1002,378,1000,383,918,349,819,316,676,285,547,266"/>
+<area shape="rect" id="Node000049" title=" " alt="" coords="165,313,269,339"/>
+<area shape="poly" id="edge116_Node000048_Node000049" title=" " alt="" coords="427,268,271,312,270,307,425,263"/>
+<area shape="rect" id="Node000050" title=" " alt="" coords="293,313,380,339"/>
+<area shape="poly" id="edge117_Node000048_Node000050" title=" " alt="" coords="447,268,372,309,369,304,444,263"/>
+<area shape="rect" id="Node000051" title=" " alt="" coords="405,313,471,339"/>
+<area shape="poly" id="edge120_Node000048_Node000051" title=" " alt="" coords="464,267,450,302,445,300,459,265"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="inc/base/BasePeriodicTimer.h" name="inc/base/BasePeriodicTimer.h">
+<area shape="rect" id="Node000001" title="Abstract base class for periodic timer implementations in the HardFOC system." alt="" coords="75,5,288,31"/>
+<area shape="rect" id="Node000002" href="$TimerComprehensiveTest_8cpp.html" title="Comprehensive Periodic Timer testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,167,224,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,43,142,80,127,126,120,167,114,166,122,125,138,78,161,40"/>
+<area shape="rect" id="Node000003" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="152,79,347,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,39,235,77,231,80,198,43"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="209,129,146,169,143,164,206,124"/>
+<area shape="rect" id="Node000004" href="$EspPeriodicTimer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="248,167,443,207"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="283,126,326,164,322,168,279,130"/>
+</map>

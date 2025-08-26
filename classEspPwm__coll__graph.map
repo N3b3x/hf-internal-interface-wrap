@@ -1,0 +1,17 @@
+<map id="EspPwm" name="EspPwm">
+<area shape="rect" id="Node000001" title="ESP32 PWM implementation using LEDC peripheral with comprehensive ESP32 variant support." alt="" coords="680,163,757,189"/>
+<area shape="rect" id="Node000002" href="$classBasePwm.html" title="Abstract base class for PWM implementations." alt="" coords="363,81,449,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="464,90,556,97,608,108,657,124,685,142,707,161,704,165,682,146,655,129,606,113,556,103,463,95"/>
+<area shape="rect" id="Node000003" href="$structhf__pwm__statistics__t.html" title="PWM statistics information." alt="" coords="13,31,165,57"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="175,27,279,18,340,17,404,19,470,27,535,41,598,63,657,92,677,108,693,127,714,162,709,165,688,130,673,112,655,97,596,67,534,46,469,32,404,25,340,22,279,23,176,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="179,55,363,84,362,89,178,60"/>
+<area shape="rect" id="Node000004" href="$structhf__pwm__diagnostics__t.html" title="PWM diagnostics information." alt="" coords="5,101,172,126"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="186,119,656,161,680,165,679,171,656,167,186,124"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="186,105,362,93,363,99,186,110"/>
+<area shape="rect" id="Node000005" href="$classRtosMutex.html" title=" " alt="" coords="360,194,452,219"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="466,198,680,177,680,182,466,204"/>
+<area shape="rect" id="Node000006" href="$structhf__pwm__unit__config__t.html" title="ESP32 PWM unit configuration." alt="" coords="324,243,488,269"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="502,247,578,234,655,212,679,200,700,187,703,191,682,205,657,217,579,239,503,252"/>
+<area shape="rect" id="Node000007" href="$structhf__pwm__eviction__request__t.html" title="Eviction request information passed to user callback." alt="" coords="305,293,507,318"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="520,303,590,291,623,279,655,263,674,247,690,226,710,188,715,190,694,229,678,250,657,268,625,284,591,296,521,309"/>
+</map>

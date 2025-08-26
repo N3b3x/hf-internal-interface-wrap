@@ -1,0 +1,27 @@
+var structEspPio_1_1ChannelState =
+[
+    [ "ChannelState", "structEspPio_1_1ChannelState.html#a2b569f282be1e6daf7dd32ede6b2581e", null ],
+    [ "actual_resolution_ns", "structEspPio_1_1ChannelState.html#a5d7710275e5b7570c6842dd4234bfd60", null ],
+    [ "busy", "structEspPio_1_1ChannelState.html#ae227a6367a4e594d3241549c896bad17", null ],
+    [ "bytes_encoder", "structEspPio_1_1ChannelState.html#a606c6915332b5358f83649cb79b9b969", null ],
+    [ "config", "structEspPio_1_1ChannelState.html#ac265c25b47f5804ee5ac387d8b7ae8ac", null ],
+    [ "configured", "structEspPio_1_1ChannelState.html#a6bdc2a6f5ee79308b8a691ca6c914f4e", null ],
+    [ "encoder", "structEspPio_1_1ChannelState.html#a31ab779d4b2f7fe2d727500570e0c225", null ],
+    [ "error_callback", "structEspPio_1_1ChannelState.html#a9f0685a3dfd883474fd288256c3ee127", null ],
+    [ "error_user_data", "structEspPio_1_1ChannelState.html#a623299f94fd7ba16e6fa691c04266929", null ],
+    [ "idle_level", "structEspPio_1_1ChannelState.html#af3b5d576273d0edb1bbf3249810312e8", null ],
+    [ "last_operation_time", "structEspPio_1_1ChannelState.html#a2b6b7171c5477b5646394295761f06cc", null ],
+    [ "receive_callback", "structEspPio_1_1ChannelState.html#af9be8cff3303a3874c08c039967194e6", null ],
+    [ "receive_user_data", "structEspPio_1_1ChannelState.html#a5b7b44120ef8a37524444a723d61d87a", null ],
+    [ "rmt_rx_buffer", "structEspPio_1_1ChannelState.html#a846d9b9f6c690f65cfb52907b8ce4545", null ],
+    [ "rx_buffer", "structEspPio_1_1ChannelState.html#a6201b425584214725e2f6c81cff9a25c", null ],
+    [ "rx_buffer_size", "structEspPio_1_1ChannelState.html#ab8ea931d6508b8dd0e8728b82dcb4697", null ],
+    [ "rx_channel", "structEspPio_1_1ChannelState.html#a81f2871c5e6cd9e846fd4f4794187ba1", null ],
+    [ "rx_symbols_received", "structEspPio_1_1ChannelState.html#a44ff89dd92035b8a9d3f9386892e2045", null ],
+    [ "selected_clk_src", "structEspPio_1_1ChannelState.html#a85db0030071a59d3b0ecaf568f7c5ad1", null ],
+    [ "source_clock_hz", "structEspPio_1_1ChannelState.html#a9a314ac007120b3b36eee4c9fac74254", null ],
+    [ "status", "structEspPio_1_1ChannelState.html#a8818461d1b2f31924a3ad472573fc8d4", null ],
+    [ "transmit_callback", "structEspPio_1_1ChannelState.html#af931c86b00255f46bdefb8c647f8367a", null ],
+    [ "transmit_user_data", "structEspPio_1_1ChannelState.html#a7a28b7e6ed0cd90f53c82a08c3705f4f", null ],
+    [ "tx_channel", "structEspPio_1_1ChannelState.html#ac6000ad8168d0bb531f1353ca27444bd", null ]
+];
