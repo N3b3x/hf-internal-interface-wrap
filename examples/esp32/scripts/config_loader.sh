@@ -73,6 +73,9 @@ load_config_yq() {
     export CONFIG_DEFAULT_BUILD_TYPE=$(run_yq '.metadata.default_build_type' -r)
     export CONFIG_TARGET=$(run_yq '.metadata.target' -r)
     
+    # NEW: Load ESP-IDF version information
+    export CONFIG_DEFAULT_IDF_VERSION=$(run_yq '.metadata.idf_versions[0]' -r 2>/dev/null || echo "release/v5.5")
+    
     return 0
 }
 
@@ -82,6 +85,9 @@ load_config_basic() {
     export CONFIG_DEFAULT_APP=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_app:" | sed 's/.*default_app: *"*\([^"]*\)"*.*/\1/')
     export CONFIG_DEFAULT_BUILD_TYPE=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_build_type:" | sed 's/.*default_build_type: *"*\([^"]*\)"*.*/\1/')
     export CONFIG_TARGET=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "target:" | sed 's/.*target: *"*\([^"]*\)"*.*/\1/')
+    
+    # NEW: Extract default ESP-IDF version
+    export CONFIG_DEFAULT_IDF_VERSION=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "idf_versions:" | sed 's/.*idf_versions: *\[*"*\([^"]*\)"*.*/\1/' | head -1 || echo "release/v5.5")
     
     return 0
 }
@@ -99,11 +105,99 @@ get_app_types() {
 # Get list of valid build types
 get_build_types() {
     if check_yq; then
-        run_yq '.build_config.build_types | keys | .[]' -r | tr '\n' ' '
+        run_yq '.metadata.default_build_types | .[] | .[]' -r 2>/dev/null | sort -u | tr '\n' ' '
     else
-        # Fallback: assume Debug and Release
-        echo "Debug Release "
+        # Fallback: extract from metadata section
+        grep -A 10 "metadata:" "$CONFIG_FILE" | grep "default_build_types:" | sed 's/.*default_build_types: *\[*\[*"*\([^"]*\)"*.*/\1/' | tr -d '[]' | tr ',' ' ' | tr '\n' ' '
     fi
+}
+
+# NEW: Get list of available ESP-IDF versions
+get_idf_versions() {
+    if check_yq; then
+        run_yq '.metadata.idf_versions | .[]' -r 2>/dev/null | tr '\n' ' '
+    else
+        # Fallback: extract from metadata section
+        grep -A 10 "metadata:" "$CONFIG_FILE" | grep "idf_versions:" | sed 's/.*idf_versions: *\[*"*\([^"]*\)"*.*/\1/' | tr -d '[]' | tr ',' ' ' | tr '\n' ' '
+    fi
+}
+
+# NEW: Get app-specific ESP-IDF versions
+get_app_idf_versions() {
+    local app_type="$1"
+    if check_yq; then
+        run_yq ".apps.$app_type.idf_versions | .[]" -r 2>/dev/null | tr '\n' ' '
+    else
+        # Fallback: extract from apps section
+        sed -n "/^  $app_type:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:" | sed 's/.*idf_versions: *\[*"*\([^"]*\)"*.*/\1/' | tr -d '[]' | tr ',' ' ' | tr '\n' ' '
+    fi
+}
+
+# NEW: Get app-specific build types
+get_app_build_types() {
+    local app_type="$1"
+    if check_yq; then
+        run_yq ".apps.$app_type.build_types | .[]" -r 2>/dev/null | tr '\n' ' '
+    else
+        # Fallback: extract from apps section
+        sed -n "/^  $app_type:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "build_types:" | sed 's/.*build_types: *\[*"*\([^"]*\)"*.*/\1/' | tr -d '[]' | tr ',' ' ' | tr '\n' ' '
+    fi
+}
+
+# NEW: Validate ESP-IDF version compatibility with app
+validate_app_idf_version() {
+    local app_type="$1"
+    local idf_version="$2"
+    
+    # Get app-specific IDF versions
+    local app_idf_versions=$(get_app_idf_versions "$app_type")
+    
+    # If app has specific IDF versions, check compatibility
+    if [[ -n "$app_idf_versions" ]]; then
+        for version in $app_idf_versions; do
+            if [[ "$version" == "$idf_version" ]]; then
+                return 0  # Compatible
+            fi
+        done
+        return 1  # Not compatible
+    fi
+    
+    # If app doesn't specify IDF versions, use global defaults
+    local global_idf_versions=$(get_idf_versions)
+    for version in $global_idf_versions; do
+        if [[ "$version" == "$idf_version" ]]; then
+            return 0  # Compatible
+        fi
+    done
+    return 1  # Not compatible
+}
+
+# NEW: Validate build type compatibility with app
+validate_app_build_type() {
+    local app_type="$1"
+    local build_type="$2"
+    
+    # Get app-specific build types
+    local app_build_types=$(get_app_build_types "$app_type")
+    
+    # If app has specific build types, check compatibility
+    if [[ -n "$app_build_types" ]]; then
+        for type in $app_build_types; do
+            if [[ "$type" == "$build_type" ]]; then
+                return 0  # Compatible
+            fi
+        done
+        return 1  # Not compatible
+    fi
+    
+    # If app doesn't specify build types, use global defaults
+    local global_build_types=$(get_build_types)
+    for type in $global_build_types; do
+        if [[ "$type" == "$build_type" ]]; then
+            return 0  # Compatible
+        fi
+    done
+    return 1  # Not compatible
 }
 
 # Get description for an app type

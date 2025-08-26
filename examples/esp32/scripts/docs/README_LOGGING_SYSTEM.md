@@ -1,634 +1,870 @@
-# ESP32 HardFOC Interface Wrapper - Logging System Documentation
+# ESP32 HardFOC Interface Wrapper - Logging System Guide
 
-This document provides comprehensive documentation for the logging system, which includes both the logging capabilities built into `flash_app.sh` and the dedicated log management tool `manage_logs.sh`.
-
----
-
-**Navigation**: [← Previous: Flash System](README_FLASH_SYSTEM.md) | [Back to Scripts](../README.md) | [Next: Configuration System →](README_CONFIG_SYSTEM.md)
+This document provides comprehensive documentation for the ESP32 logging system, including log generation, management, analysis, and integration with all scripts.
 
 ---
 
-## Overview
+**Navigation**: [← Previous: Configuration System](README_CONFIG_SYSTEM.md) | [Back to Scripts](../README.md) | [Next: Utility Scripts →](README_UTILITY_SCRIPTS.md)
 
-The logging system provides comprehensive capture and management of all ESP32 development activities:
-- **Automatic log creation** - Timestamped log files for each session
-- **Rich metadata** - Complete context for each log entry
-- **Log management** - Tools for viewing, searching, and maintaining logs
-- **Automatic rotation** - Prevents disk space issues
-- **Git integration** - Logs are automatically excluded from version control
+---
 
-## Logging Architecture
+## 📋 **Table of Contents**
 
-### Components
-1. **`flash_app.sh`** - Creates logs during flash/monitor operations
-2. **`manage_logs.sh`** - Manages and analyzes existing logs
-3. **Log directory** - Centralized storage location
-4. **Log rotation** - Automatic cleanup system
+- [📋 Overview](#-overview)
+- [🏗️ Architecture and Design](#️-architecture-and-design)
+- [📝 Log Generation and Capture](#️-log-generation-and-capture)
+- [🗂️ Log Management and Organization](#️-log-management-and-organization)
+- [🔍 Log Analysis and Search](#️-log-analysis-and-search)
+- [🚀 Usage Examples and Patterns](#️-usage-examples-and-patterns)
+- [🔧 Integration and Automation](#️-integration-and-automation)
+- [🔍 Troubleshooting and Debugging](#️-troubleshooting-and-debugging)
+- [📚 Reference and Examples](#️-reference-and-examples)
 
-### Log File Structure
+## 📋 **Overview**
+
+The ESP32 logging system provides comprehensive log capture, management, and analysis capabilities for all development operations. It features automatic log generation, intelligent organization, powerful search capabilities, and seamless integration with the build and flash systems.
+
+### **Core Features**
+- **Automatic Log Generation**: Built-in logging for all script operations
+- **Intelligent Organization**: Structured log file naming and organization
+- **Comprehensive Capture**: Complete capture of build, flash, and monitor output
+- **Advanced Search**: Cross-log search and pattern matching capabilities
+- **Automatic Rotation**: Smart log management with configurable retention
+
+### **Key Capabilities**
+- Automatic log file creation with timestamped naming
+- Cross-log search and pattern matching
+- Log statistics and analysis tools
+- Automatic log rotation and cleanup
+- Integration with all ESP32 development scripts
+- Professional log formatting and organization
+
+## 🏗️ **Architecture and Design**
+
+### **System Architecture**
+```
+Script Execution → Log Capture → Log Storage → Log Management → Log Analysis
+      ↓              ↓            ↓            ↓              ↓
+Build/Flash     Output        File System   Organization   Search/Stats
+Operations      Capture       Storage       & Rotation     & Analysis
+```
+
+### **Component Interaction**
+- **Script Execution**: All scripts generate log output
+- **Log Capture**: Automatic capture of stdout/stderr
+- **Log Storage**: Organized file system storage
+- **Log Management**: Automatic rotation and cleanup
+- **Log Analysis**: Search, statistics, and reporting
+
+### **Design Principles**
+- **Automatic Operation**: Logging works without user intervention
+- **Comprehensive Coverage**: Captures all relevant output
+- **Intelligent Organization**: Logical file naming and structure
+- **Performance Optimized**: Minimal impact on script execution
+- **Cross-Platform**: Consistent behavior across operating systems
+
+## 📝 **Log Generation and Capture**
+
+### **Automatic Log Generation**
+
+#### **Built-in Logging**
+The logging system automatically generates logs for all major operations:
+
+```bash
+# Build operations automatically log
+./build_app.sh gpio_test Release --log
+
+# Flash operations automatically log
+./flash_app.sh flash_monitor gpio_test Release --log
+
+# Monitor operations automatically log
+./flash_app.sh monitor --log
+```
+
+#### **Log File Naming Convention**
+Logs follow a consistent naming pattern:
+
+```bash
+# Standard log naming format
+{app_type}_{build_type}_{timestamp}.log
+
+# Examples:
+gpio_test_Release_20250115_143022.log
+adc_test_Debug_20250115_150045.log
+monitor_session_20250115_151230.log
+
+# Custom log naming
+./flash_app.sh flash gpio_test Release --log production_deploy
+# Result: production_deploy_20250115_143022.log
+```
+
+#### **Log Content Structure**
+Each log file contains comprehensive information:
+
+```bash
+# Log file header
+====================================================
+ESP32 HardFOC Interface Wrapper - Operation Log
+====================================================
+Date: 2025-01-15
+Time: 14:30:22
+Operation: flash_monitor
+Application: gpio_test
+Build Type: Release
+ESP-IDF Version: release/v5.5
+Target: esp32c6
+Port: /dev/ttyUSB0
+====================================================
+
+# Operation details
+- Command execution details
+- Configuration validation
+- Port detection results
+- Build/flash process output
+- Monitor session data
+- Error messages and warnings
+- Performance metrics
+- Completion status
+```
+
+### **Log Capture Mechanisms**
+
+#### **Output Capture**
+The system captures all relevant output:
+
+```bash
+# Captured output types
+- Standard output (stdout)
+- Standard error (stderr)
+- Command execution results
+- Error messages and warnings
+- Progress information
+- Performance metrics
+- Debug information
+```
+
+#### **Integration Points**
+Logging integrates with all major systems:
+
+```bash
+# Build system integration
+- Build process output
+- Compilation results
+- Build statistics
+- Error messages
+
+# Flash system integration
+- Port detection results
+- Flash operation output
+- Monitor session data
+- Device communication
+
+# Configuration system integration
+- Configuration validation
+- Parameter processing
+- Environment setup
+- Error handling
+```
+
+## 🗂️ **Log Management and Organization**
+
+### **Log Directory Structure**
+
+#### **Standard Organization**
 ```
 examples/esp32/logs/
-├── gpio_test_Release_20250825_143022.log
-├── i2c_test_Debug_20250825_150145.log
-├── test_run_001_20250825_151200.log
-└── ...
+├── 2025-01-15/                    # Date-based organization
+│   ├── gpio_test_Release_143022.log
+│   ├── adc_test_Debug_150045.log
+│   └── monitor_session_151230.log
+├── latest/                         # Symlinks to most recent logs
+│   ├── build_latest.log
+│   ├── flash_latest.log
+│   └── monitor_latest.log
+└── archive/                        # Archived logs
+    ├── 2025-01-14/
+    └── 2025-01-13/
 ```
 
-## Enabling Logging
-
-### Basic Logging
-Enable logging with auto-generated filenames:
+#### **Automatic Organization**
+The system automatically organizes logs:
 
 ```bash
-# Enable logging for any operation
-./scripts/flash_app.sh gpio_test Release flash_monitor --log
-
-# Enable logging for specific operations
-./scripts/flash_app.sh gpio_test Release flash --log
-./scripts/flash_app.sh gpio_test Release monitor --log
+# Automatic directory creation
+- Date-based subdirectories
+- Latest log symlinks
+- Archive organization
+- Cleanup and rotation
 ```
 
-### Custom Log Names
-Use descriptive names for better organization:
+### **Log Rotation and Cleanup**
+
+#### **Automatic Rotation**
+```bash
+# Rotation policies
+- Maximum log files: 50 (configurable)
+- Retention period: 30 days (configurable)
+- Archive old logs automatically
+- Clean up expired logs
+```
+
+#### **Cleanup Operations**
+```bash
+# Manual cleanup
+./manage_logs.sh clean 7          # Keep logs for 7 days
+./manage_logs.sh clean 30         # Keep logs for 30 days
+./manage_logs.sh clean            # Use default retention
+
+# Automatic cleanup
+- Daily cleanup of expired logs
+- Archive creation for old logs
+- Storage optimization
+```
+
+### **Log File Management**
+
+#### **File Operations**
+```bash
+# List all logs
+./manage_logs.sh list
+
+# View specific log
+./manage_logs.sh view gpio_test_Release_20250115_143022.log
+
+# Show latest log
+./manage_logs.sh latest
+
+# Get log statistics
+./manage_logs.sh stats
+```
+
+#### **Storage Optimization**
+```bash
+# Storage features
+- Automatic compression of old logs
+- Efficient file organization
+- Configurable retention policies
+- Storage usage monitoring
+```
+
+## 🔍 **Log Analysis and Search**
+
+### **Cross-Log Search**
+
+#### **Pattern Search**
+```bash
+# Search for specific patterns
+./manage_logs.sh search "ERROR"           # Find all errors
+./manage_logs.sh search "WARNING"         # Find all warnings
+./manage_logs.sh search "FAILED"          # Find all failures
+./manage_logs.sh search "SUCCESS"         # Find all successes
+
+# Advanced search patterns
+./manage_logs.sh search "gpio.*error"     # GPIO-related errors
+./manage_logs.sh search "flash.*failed"   # Flash failures
+./manage_logs.sh search "build.*success"  # Build successes
+```
+
+#### **Search Capabilities**
+The search system provides powerful capabilities:
 
 ```bash
-# Development sessions
-./scripts/flash_app.sh gpio_test Release flash_monitor --log gpio_debug_session
-
-# Test runs
-./scripts/flash_app.sh i2c_test Release flash_monitor --log i2c_test_run_001
-
-# CI/CD builds
-./scripts/flash_app.sh all Release flash --log ci_build_$(date +%Y%m%d_%H%M%S)
+# Search features
+- Regular expression support
+- Case-insensitive search
+- Multi-line pattern matching
+- Context display
+- Result highlighting
+- Search result summary
 ```
 
-### Log File Naming Convention
+### **Log Statistics and Analysis**
 
-#### Auto-generated Names
-Format: `{app_type}_{build_type}_{timestamp}.log`
-
-**Examples:**
-```
-gpio_test_Release_20250825_143022.log
-i2c_test_Debug_20250825_150145.log
-uart_test_Release_20250825_151200.log
-```
-
-#### Custom Names
-Format: `{custom_name}_{timestamp}.log`
-
-**Examples:**
-```
-debug_session_20250825_143022.log
-test_run_001_20250825_150145.log
-ci_build_20250825_151200.log
-```
-
-#### Timestamp Format
-- **Format**: `YYYYMMDD_HHMMSS`
-- **Example**: `20250825_143022` (August 25, 2025, 14:30:22)
-
-## Log File Contents
-
-### Header Information
-Each log file begins with comprehensive metadata:
-
-```
-======================================================
-ESP32 HardFOC Interface Wrapper - Monitor Log
-======================================================
-Date: 2025-08-25 14:30:22
-App Type: gpio_test
-Build Type: Release
-Operation: flash_monitor
-Target: esp32c6
-Port: /dev/ttyACM0
-Build Directory: build_gpio_test_Release
-Project Name: esp32_iid_gpio_test_app
-======================================================
-```
-
-### Content Sections
-1. **Build Output** - Complete build process (if auto-built)
-2. **Flash Output** - ESP-IDF flash operation details
-3. **Monitor Output** - Complete ESP32 serial output
-4. **Error Messages** - Any errors or warnings encountered
-5. **System Information** - Platform, versions, configurations
-
-### Log File Size
-- **Small logs** (4-10KB): Flash operations, build summaries
-- **Medium logs** (10-100KB): Short monitor sessions
-- **Large logs** (100KB-1MB+): Extended monitor sessions, debugging
-
-## Log Management with `manage_logs.sh`
-
-### Command Overview
+#### **Statistical Analysis**
 ```bash
-./scripts/manage_logs.sh [command] [options]
+# Get log statistics
+./manage_logs.sh stats
+
+# Statistics include
+- Total log files
+- Total log size
+- Log age distribution
+- Error frequency
+- Success rates
+- Performance metrics
 ```
 
-### Available Commands
-
-#### 1. List Logs (`list`)
-Display all available log files with details:
-
+#### **Trend Analysis**
 ```bash
-./scripts/manage_logs.sh list
+# Trend analysis features
+- Error rate trends
+- Performance trends
+- Build success trends
+- Flash success trends
+- Time-based patterns
 ```
 
-**Output:**
-```
-Found 3 log file(s):
+### **Log Comparison and Diff**
 
-Filename                                           Date                 Time            Size      
----------                                          ----                 ----            ----      
-gpio_test_Release_20250825_143022.log              2025-08-25           14:30:22        712K      
-i2c_test_Debug_20250825_150145.log                 2025-08-25           15:01:45        156K      
-test_run_001_20250825_151200.log                   2025-08-25           15:12:00        89K      
-```
-
-#### 2. View Log (`view`)
-View a specific log file with context:
-
+#### **Cross-Log Comparison**
 ```bash
-# View by filename
-./scripts/manage_logs.sh view gpio_test_Release_20250825_143022.log
+# Compare different logs
+./manage_logs.sh compare log1.log log2.log
 
-# View by custom name
-./scripts/manage_logs.sh view debug_session_20250825_143022.log
+# Comparison features
+- Side-by-side comparison
+- Difference highlighting
+- Common pattern identification
+- Change tracking
 ```
 
-**Features:**
-- File information (size, modification date)
-- Uses `less` for better viewing experience
-- Falls back to `cat` if `less` unavailable
+## 🚀 **Usage Examples and Patterns**
 
-#### 3. Search Logs (`search`)
-Search across all log files for specific patterns:
+### **Basic Log Management**
 
+#### **1. View Logs**
+```bash
+# List all available logs
+./manage_logs.sh list
+
+# View the most recent log
+./manage_logs.sh latest
+
+# View a specific log file
+./manage_logs.sh view gpio_test_Release_20250115_143022.log
+```
+
+#### **2. Search Logs**
 ```bash
 # Search for errors
-./scripts/manage_logs.sh search "ERROR"
+./manage_logs.sh search "ERROR"
 
 # Search for specific patterns
-./scripts/manage_logs.sh search "GPIO.*failed"
-./scripts/manage_logs.sh search "I2C.*timeout"
+./manage_logs.sh search "build.*failed"
+./manage_logs.sh search "flash.*success"
 
-# Search for build information
-./scripts/manage_logs.sh search "Build completed"
+# Search with context
+./manage_logs.sh search "gpio.*error" --context 5
 ```
 
-**Output:**
-```
-Searching for pattern: 'ERROR'
-Searching across 3 log file(s)...
-
-Found 2 match(es) in: gpio_test_Release_20250825_143022.log
-Matches:
-  1: E (12345) GPIO_Test: [ERROR] GPIO initialization failed
-  2: E (12346) GPIO_Test: [ERROR] Port configuration error
-  ... and 0 more matches
-
-Found 1 match(es) in: i2c_test_Debug_20250825_150145.log
-Matches:
-  1: E (12347) I2C_Test: [ERROR] I2C bus error
-```
-
-#### 4. Log Statistics (`stats`)
-Display comprehensive log statistics:
-
+#### **3. Log Maintenance**
 ```bash
-./scripts/manage_logs.sh stats
+# Clean old logs
+./manage_logs.sh clean 7          # Keep 7 days
+./manage_logs.sh clean 30         # Keep 30 days
+
+# Get log statistics
+./manage_logs.sh stats
+
+# Archive old logs
+./manage_logs.sh archive
 ```
 
-**Output:**
-```
-Log Statistics:
-======================================================
-Total log files: 3
-Total size: 957.25 KB
-Oldest log: gpio_test_Release_20250825_143022.log (2025-08-25)
-Newest log: test_run_001_20250825_151200.log (2025-08-25)
+### **Advanced Log Patterns**
 
-Examples breakdown:
-  2 gpio
-  1 i2c
-```
-
-#### 5. Latest Log (`latest`)
-Show information about the most recent log file:
-
+#### **1. Development Workflow Logging**
 ```bash
-./scripts/manage_logs.sh latest
+# Complete development workflow with logging
+./build_app.sh gpio_test Debug --log
+./flash_app.sh flash_monitor gpio_test Debug --log
+./manage_logs.sh latest
+
+# Expected result
+- Build log with debug information
+- Flash log with port detection
+- Monitor log with device output
+- Comprehensive development trace
 ```
 
-**Output:**
-```
-Latest log file: test_run_001_20250825_151200.log
-Path: /home/user/project/examples/esp32/logs/test_run_001_20250825_151200.log
-Size: 89K
-Modified: 2025-08-25 15:12:00.123456789 -0600
-
-Last 20 lines:
-======================================================
-I (12345) GPIO_Test: Test completed successfully
-I (12346) GPIO_Test: All tests passed
-...
-```
-
-#### 6. Clean Logs (`clean`)
-Remove old log files to free disk space:
-
+#### **2. Production Deployment Logging**
 ```bash
-# Clean logs older than 7 days
-./scripts/manage_logs.sh clean 7
+# Production deployment with logging
+./build_app.sh gpio_test Release --log production_build
+./flash_app.sh flash gpio_test Release --log production_deploy
+./manage_logs.sh search "production.*success"
 
-# Clean logs older than 30 days (default)
-./scripts/manage_logs.sh clean 30
-
-# Clean logs older than 1 day
-./scripts/manage_logs.sh clean 1
+# Expected result
+- Production build log
+- Deployment log
+- Success verification
+- Audit trail for production
 ```
 
-**Features:**
-- Interactive confirmation before deletion
-- Shows which files will be deleted
-- Safe operation with user confirmation
-
-## Log Rotation and Maintenance
-
-### Automatic Rotation
-The system automatically manages log files:
-- **Maximum logs**: 50 files
-- **Rotation trigger**: When limit exceeded
-- **Cleanup method**: Removes oldest logs first
-- **Cleanup timing**: During new log creation
-
-### Manual Cleanup
-Use the clean command for proactive maintenance:
-
+#### **3. Debugging and Troubleshooting**
 ```bash
-# Weekly cleanup (recommended)
-./scripts/manage_logs.sh clean 7
+# Debugging workflow with logging
+./flash_app.sh monitor --log debug_session
+# ... perform debugging operations ...
+./manage_logs.sh search "ERROR" --context 10
+./manage_logs.sh search "WARNING" --context 5
 
-# Monthly cleanup
-./scripts/manage_logs.sh clean 30
-
-# Aggressive cleanup
-./scripts/manage_logs.sh clean 1
+# Expected result
+- Complete debugging session log
+- Error context and patterns
+- Warning identification
+- Troubleshooting guidance
 ```
 
-### Log Directory Management
+### **Log Analysis Workflows**
+
+#### **1. Error Analysis**
 ```bash
-# Check log directory status
-ls -la examples/esp32/logs/
+# Comprehensive error analysis
+./manage_logs.sh search "ERROR" > errors.txt
+./manage_logs.sh search "FAILED" >> errors.txt
+./manage_logs.sh search "WARNING" >> warnings.txt
 
-# Create log directory if missing
-mkdir -p examples/esp32/logs/
-
-# Check disk usage
-du -sh examples/esp32/logs/
+# Analyze error patterns
+cat errors.txt | grep -o "ERROR:.*" | sort | uniq -c
+cat warnings.txt | grep -o "WARNING:.*" | sort | uniq -c
 ```
 
-## Advanced Logging Features
-
-### Environment Variables
-Control logging behavior with environment variables:
-
+#### **2. Performance Analysis**
 ```bash
-# Enable debug logging
-export DEBUG=1
+# Performance analysis
+./manage_logs.sh search "build.*completed" | grep -o "in [0-9.]*s"
+./manage_logs.sh search "flash.*completed" | grep -o "in [0-9.]*s"
 
-# Custom log directory
-export LOG_DIR="/custom/log/path"
-
-# Custom log retention
-export MAX_LOGS=100
-```
-
-### Log Filtering
-Filter logs by various criteria:
-
-```bash
-# Filter by app type
-find examples/esp32/logs/ -name "*gpio*" -type f
-
-# Filter by date
-find examples/esp32/logs/ -name "*.log" -mtime -7
-
-# Filter by size
-find examples/esp32/logs/ -name "*.log" -size +100k
-```
-
-### Log Analysis Scripts
-Create custom analysis scripts:
-
-```bash
-#!/bin/bash
-# Custom log analysis script
-
-# Find all logs from today
-today=$(date +%Y%m%d)
-logs=$(find examples/esp32/logs/ -name "*${today}*.log" -type f)
-
-# Analyze each log
-for log in $logs; do
-    echo "Analyzing: $log"
-    
-    # Count errors
-    error_count=$(grep -c "ERROR" "$log" 2>/dev/null || echo "0")
-    echo "  Errors: $error_count"
-    
-    # Count warnings
-    warning_count=$(grep -c "WARN" "$log" 2>/dev/null || echo "0")
-    echo "  Warnings: $warning_count"
-    
-    echo ""
+# Performance trends
+for log in $(./manage_logs.sh list | grep "build.*Release"); do
+    echo "$log: $(./manage_logs.sh search "build.*completed" "$log" | grep -o "in [0-9.]*s")"
 done
 ```
 
-## Integration with Development Workflow
-
-### Development Session
+#### **3. Success Rate Analysis**
 ```bash
-# 1. Start development with logging
-./scripts/flash_app.sh gpio_test Release flash_monitor --log dev_session_$(date +%Y%m%d)
+# Success rate analysis
+total_ops=$(./manage_logs.sh list | wc -l)
+success_ops=$(./manage_logs.sh search "SUCCESS" | wc -l)
+error_ops=$(./manage_logs.sh search "ERROR" | wc -l)
 
-# 2. Work with the device...
-
-# 3. Check logs for issues
-./scripts/manage_logs.sh search "ERROR"
-
-# 4. View latest log
-./scripts/manage_logs.sh latest
+echo "Total operations: $total_ops"
+echo "Successful operations: $success_ops"
+echo "Failed operations: $error_ops"
+echo "Success rate: $((success_ops * 100 / total_ops))%"
 ```
 
-### Debugging Session
+## 🔧 **Integration and Automation**
+
+### **Script Integration**
+
+#### **Automatic Logging**
+All scripts automatically support logging:
+
 ```bash
-# 1. Monitor with logging
-./scripts/flash_app.sh gpio_test Release monitor --log debug_$(date +%H%M)
+# Build script logging
+./build_app.sh gpio_test Release --log
 
-# 2. Reproduce issue...
+# Flash script logging
+./flash_app.sh flash_monitor gpio_test Release --log
 
-# 3. Search logs for specific patterns
-./scripts/manage_logs.sh search "GPIO.*interrupt"
-./scripts/manage_logs.sh search "I2C.*timeout"
+# Monitor script logging
+./flash_app.sh monitor --log
+
+# Log management integration
+./manage_logs.sh latest
+./manage_logs.sh search "ERROR"
 ```
 
-### Testing Session
-```bash
-# 1. Run tests with logging
-./scripts/flash_app.sh gpio_test Release flash_monitor --log test_run_$(date +%Y%m%d_%H%M)
+#### **Log Configuration**
+Logging can be configured through environment variables:
 
-# 2. Analyze test results
-./scripts/manage_logs.sh search "PASSED"
-./scripts/manage_logs.sh search "FAILED"
-./scripts/manage_logs.sh search "SUCCESS"
+```bash
+# Logging configuration
+export LOG_ENABLED=1              # Enable logging
+export LOG_LEVEL=INFO             # Set log level
+export LOG_RETENTION_DAYS=30      # Set retention period
+export LOG_MAX_FILES=50           # Set maximum log files
+export LOG_COMPRESSION=1          # Enable compression
 ```
 
-### CI/CD Integration
-```bash
-# 1. Automated testing with logging
-./scripts/flash_app.sh all Release flash --log ci_$(date +%Y%m%d_%H%M%S)
+### **CI/CD Integration**
 
-# 2. Analyze results
-./scripts/manage_logs.sh stats
-./scripts/manage_logs.sh search "ERROR"
-./scripts/manage_logs.sh search "FAILED"
+#### **Automated Logging**
+```yaml
+# GitHub Actions workflow
+- name: Build and Flash with Logging
+  run: |
+    cd examples/esp32
+    ./scripts/build_app.sh gpio_test Release --log ci_build
+    ./scripts/flash_app.sh flash gpio_test Release --log ci_deploy
 
-# 3. Archive important logs
-cp examples/esp32/logs/ci_*.log /path/to/archive/
+- name: Analyze Logs
+  run: |
+    cd examples/esp32
+    ./scripts/manage_logs.sh search "ERROR"
+    ./scripts/manage_logs.sh stats
+    ./scripts/manage_logs.sh latest
 ```
 
-## Log File Formats and Compatibility
-
-### Text Format
-- **Encoding**: UTF-8
-- **Line endings**: Unix (LF) or Windows (CRLF)
-- **Viewers**: Any text editor, `less`, `cat`, `grep`
-
-### Binary Compatibility
-- **ESP-IDF output**: Text-based, fully compatible
-- **Serial monitor**: Text-based, fully compatible
-- **Build output**: Text-based, fully compatible
-
-### Cross-Platform Support
-- **Linux**: Full support, automatic permission handling
-- **macOS**: Full support, system permission handling
-- **Windows**: Limited support (WSL recommended)
-
-## Performance Considerations
-
-### Log File Size Impact
-- **Small logs** (< 100KB): Minimal impact
-- **Medium logs** (100KB-1MB): Moderate impact
-- **Large logs** (> 1MB): May affect system performance
-
-### Optimization Strategies
-```bash
-# Regular cleanup
-./scripts/manage_logs.sh clean 7
-
-# Monitor disk usage
-du -sh examples/esp32/logs/
-
-# Use descriptive names to avoid confusion
-./scripts/flash_app.sh gpio_test Release flash_monitor --log gpio_debug_$(date +%H%M)
+#### **Log Artifacts**
+```yaml
+# Upload logs as artifacts
+- name: Upload Logs
+  uses: actions/upload-artifact@v3
+  with:
+    name: esp32-logs
+    path: examples/esp32/logs/
+    retention-days: 30
 ```
 
-### Storage Requirements
-- **Typical session**: 50-500KB
-- **Extended debugging**: 1-5MB
-- **Long-term storage**: 10-100MB per week
-- **Recommended cleanup**: Weekly
+### **Automation Scripts**
 
-## Troubleshooting
+#### **Log Analysis Automation**
+```bash
+#!/bin/bash
+# Automated log analysis script
 
-### Common Issues
+cd examples/esp32
 
-#### 1. Logs Not Created
-**Symptoms**: No log files in `examples/esp32/logs/`
+# Generate daily log report
+echo "=== Daily Log Report $(date +%Y-%m-%d) ===" > daily_report.txt
 
-**Solutions:**
+# Get log statistics
+echo "Log Statistics:" >> daily_report.txt
+./scripts/manage_logs.sh stats >> daily_report.txt
+
+# Check for errors
+echo -e "\nError Summary:" >> daily_report.txt
+./scripts/manage_logs.sh search "ERROR" | head -20 >> daily_report.txt
+
+# Check for warnings
+echo -e "\nWarning Summary:" >> daily_report.txt
+./scripts/manage_logs.sh search "WARNING" | head -20 >> daily_report.txt
+
+# Send report
+mail -s "ESP32 Daily Log Report" admin@example.com < daily_report.txt
+```
+
+#### **Log Cleanup Automation**
+```bash
+#!/bin/bash
+# Automated log cleanup script
+
+cd examples/esp32
+
+# Clean old logs
+./scripts/manage_logs.sh clean 30
+
+# Archive old logs
+./scripts/manage_logs.sh archive
+
+# Generate cleanup report
+echo "Log cleanup completed at $(date)" > cleanup_report.txt
+echo "Logs older than 30 days have been cleaned up" >> cleanup_report.txt
+echo "Old logs have been archived" >> cleanup_report.txt
+
+# Send cleanup report
+mail -s "ESP32 Log Cleanup Report" admin@example.com < cleanup_report.txt
+```
+
+## 🔍 **Troubleshooting and Debugging**
+
+### **Common Log Issues**
+
+#### **1. Log Files Not Created**
+**Problem**: Log files are not being generated
+**Symptoms**: No log files in logs directory
+**Solutions**:
 ```bash
 # Check if logging is enabled
-./scripts/flash_app.sh gpio_test Release flash_monitor --log
+echo $LOG_ENABLED
 
 # Check log directory permissions
-ls -la examples/esp32/logs/
+ls -la logs/
+chmod 755 logs/
 
-# Create log directory if missing
-mkdir -p examples/esp32/logs/
+# Check script logging support
+./flash_app.sh --help | grep -i log
+
+# Enable logging explicitly
+export LOG_ENABLED=1
+./flash_app.sh flash gpio_test Release --log
 ```
 
-#### 2. Permission Denied
-**Symptoms**: Cannot create or access log files
-
-**Solutions:**
+#### **2. Log Directory Issues**
+**Problem**: Cannot access or create log directory
+**Symptoms**: "Permission denied" or "Directory not found" errors
+**Solutions**:
 ```bash
-# Check directory permissions
+# Check directory existence
+ls -la examples/esp32/
+
+# Create log directory
+mkdir -p examples/esp32/logs
+
+# Check permissions
 ls -la examples/esp32/logs/
 
 # Fix permissions
 chmod 755 examples/esp32/logs/
-chmod 644 examples/esp32/logs/*.log
 ```
 
-#### 3. Disk Space Issues
-**Symptoms**: System running out of disk space
-
-**Solutions:**
+#### **3. Log File Corruption**
+**Problem**: Log files are corrupted or incomplete
+**Symptoms**: Incomplete log files or parsing errors
+**Solutions**:
 ```bash
-# Check disk usage
-df -h
-du -sh examples/esp32/logs/
+# Check log file integrity
+./manage_logs.sh view latest.log
+
+# Check file size
+ls -la logs/*.log
+
+# Remove corrupted logs
+rm logs/corrupted.log
+
+# Regenerate logs
+./flash_app.sh flash gpio_test Release --log
+```
+
+### **Debug and Verbose Mode**
+
+#### **Enabling Log Debug Output**
+```bash
+# Enable log debug mode
+export LOG_DEBUG=1
+export LOG_VERBOSE=1
+
+# Check log system status
+./manage_logs.sh --help
+./manage_logs.sh list --verbose
+
+# Debug information available
+- Log file creation details
+- Log capture process information
+- Log organization details
+- Search and analysis information
+```
+
+#### **Log System Debugging**
+```bash
+# Debug log system
+debug_log_system() {
+    echo "=== Log System Debug ==="
+    echo "Log directory: $LOG_DIR"
+    echo "Log directory exists: $([ -d "$LOG_DIR" ] && echo "Yes" || echo "No")"
+    echo "Log directory writable: $([ -w "$LOG_DIR" ] && echo "Yes" || echo "No")"
+    echo "Log files count: $(find "$LOG_DIR" -name "*.log" | wc -l)"
+    echo "Latest log: $(./manage_logs.sh latest 2>/dev/null || echo "None")"
+}
+```
+
+### **Log Performance Issues**
+
+#### **Large Log Files**
+**Problem**: Log files are very large and slow to process
+**Symptoms**: Slow search operations or high memory usage
+**Solutions**:
+```bash
+# Check log file sizes
+./manage_logs.sh list | xargs ls -lh
+
+# Compress old logs
+./manage_logs.sh compress
 
 # Clean old logs
-./scripts/manage_logs.sh clean 1
+./manage_logs.sh clean 7
 
-# Check for large log files
-find examples/esp32/logs/ -name "*.log" -size +10M
+# Split large logs
+./manage_logs.sh split large_log.log
 ```
 
-#### 4. Search Not Working
-**Symptoms**: Search command returns no results
-
-**Solutions:**
+#### **Search Performance**
+**Problem**: Log search operations are slow
+**Symptoms**: Long search times or high CPU usage
+**Solutions**:
 ```bash
-# Check if logs exist
-./scripts/manage_logs.sh list
+# Use more specific search patterns
+./manage_logs.sh search "ERROR.*gpio"  # More specific than just "ERROR"
 
-# Verify search pattern
-./scripts/manage_logs.sh search "ERROR"
+# Limit search scope
+./manage_logs.sh search "ERROR" --max-results 100
 
-# Check log file content
-./scripts/manage_logs.sh view <log_filename>
+# Use indexed search (if available)
+./manage_logs.sh search "ERROR" --indexed
+
+# Search in specific time range
+./manage_logs.sh search "ERROR" --since "2025-01-15"
 ```
 
-### Debug Mode
-Enable debug output for troubleshooting:
+## 📚 **Reference and Examples**
 
+### **Command Reference**
+
+#### **Log Management Commands**
 ```bash
-# Enable debug mode
-export DEBUG=1
+./manage_logs.sh [command] [options]
 
-# Run commands with debug output
-./scripts/manage_logs.sh list
-./scripts/flash_app.sh gpio_test Release flash_monitor --log
+# Commands:
+#   list                    - List all log files with details
+#   view <log_name>        - View a specific log file
+#   search <pattern>       - Search across all log files
+#   clean [days]           - Clean logs older than N days
+#   stats                  - Show log statistics and summary
+#   latest                 - Show the most recent log file
+#   compare <log1> <log2>  - Compare two log files
+#   archive                - Archive old logs
+#   compress               - Compress old logs
 ```
 
-## Best Practices
+#### **Log Options**
+- **`--verbose`**: Enable verbose output
+- **`--context <lines>`**: Show context lines around search results
+- **`--max-results <count>`**: Limit search results
+- **`--since <date>`**: Search logs since specific date
+- **`--until <date>`**: Search logs until specific date
+- **`--help`**: Show usage information
 
-### 1. Always Use Logging
+#### **Environment Variables**
 ```bash
-# Good: Always enable logging for debugging
-./scripts/flash_app.sh gpio_test Release flash_monitor --log
-
-# Bad: No logging makes debugging difficult
-./scripts/flash_app.sh gpio_test Release flash_monitor
+# Logging configuration
+export LOG_ENABLED=1              # Enable/disable logging
+export LOG_LEVEL=INFO             # Set log level (DEBUG, INFO, WARN, ERROR)
+export LOG_DIR="logs/"            # Set log directory
+export LOG_RETENTION_DAYS=30      # Set log retention period
+export LOG_MAX_FILES=50           # Set maximum log files
+export LOG_COMPRESSION=1          # Enable/disable compression
+export LOG_ROTATION=1             # Enable/disable rotation
+export LOG_ARCHIVE=1              # Enable/disable archiving
 ```
 
-### 2. Use Descriptive Log Names
-```bash
-# Good: Descriptive names for easy identification
-./scripts/flash_app.sh gpio_test Release flash_monitor --log gpio_debug_session_$(date +%H%M)
+### **Configuration Examples**
 
-# Bad: Generic names that don't help
-./scripts/flash_app.sh gpio_test Release flash_monitor --log test
+#### **Minimal Log Configuration**
+```yaml
+# app_config.yml minimal logging configuration
+flash_config:
+  auto_logging: true
+  log_rotation: true
+  max_log_files: 30
+  log_retention_days: 7
 ```
 
-### 3. Regular Log Maintenance
-```bash
-# Weekly cleanup (recommended)
-./scripts/manage_logs.sh clean 7
-
-# Monthly statistics check
-./scripts/manage_logs.sh stats
-
-# Monitor disk usage
-du -sh examples/esp32/logs/
+#### **Standard Log Configuration**
+```yaml
+# app_config.yml standard logging configuration
+flash_config:
+  auto_logging: true
+  log_rotation: true
+  max_log_files: 50
+  log_retention_days: 30
+  log_compression: true
+  log_archive: true
+  log_format: "detailed"
+  log_level: "INFO"
 ```
 
-### 4. Organized Log Structure
-```bash
-# Development sessions
-./scripts/flash_app.sh gpio_test Release flash_monitor --log dev_$(date +%Y%m%d)
-
-# Test runs
-./scripts/flash_app.sh gpio_test Release flash_monitor --log test_$(date +%Y%m%d_%H%M)
-
-# CI/CD builds
-./scripts/flash_app.sh gpio_test Release flash --log ci_$(date +%Y%m%d_%H%M%S)
+#### **Advanced Log Configuration**
+```yaml
+# app_config.yml advanced logging configuration
+flash_config:
+  auto_logging: true
+  log_rotation: true
+  max_log_files: 100
+  log_retention_days: 90
+  log_compression: true
+  log_archive: true
+  log_format: "detailed"
+  log_level: "DEBUG"
+  
+  # Log organization
+  log_directory: "logs/"
+  log_subdirectories: true
+  date_based_organization: true
+  
+  # Log analysis
+  log_indexing: true
+  log_search_cache: true
+  log_analytics: true
+  
+  # Performance
+  log_buffer_size: "1MB"
+  log_flush_interval: 5
+  log_async_writing: true
 ```
 
-### 5. Log Analysis Workflow
-```bash
-# 1. Create logs with descriptive names
-./scripts/flash_app.sh gpio_test Release flash_monitor --log gpio_debug_$(date +%H%M)
+### **Integration Examples**
 
-# 2. Work with the device...
+#### **CMake Integration**
+```cmake
+# CMakeLists.txt logging integration
+cmake_minimum_required(VERSION 3.16)
 
-# 3. Search for specific issues
-./scripts/manage_logs.sh search "ERROR"
-./scripts/manage_logs.sh search "GPIO.*failed"
+# Log target integration
+add_custom_target(logs
+    COMMAND ${CMAKE_SOURCE_DIR}/scripts/manage_logs.sh list
+    COMMENT "Listing ESP32 development logs"
+)
 
-# 4. View relevant log sections
-./scripts/manage_logs.sh view <log_filename>
+# Log cleanup target
+add_custom_target(clean_logs
+    COMMAND ${CMAKE_SOURCE_DIR}/scripts/manage_logs.sh clean 7
+    COMMENT "Cleaning logs older than 7 days"
+)
 ```
 
-## Security Considerations
+#### **CI/CD Integration**
+```yaml
+# GitHub Actions logging workflow
+- name: Setup Logging
+  run: |
+    cd examples/esp32
+    mkdir -p logs
+    export LOG_ENABLED=1
+    export LOG_LEVEL=DEBUG
 
-### Log File Privacy
-- **Local storage**: Logs remain on local machine
-- **Git exclusion**: Logs are not committed to version control
-- **Permission control**: Log files have appropriate permissions
+- name: Build with Logging
+  run: |
+    cd examples/esp32
+    ./scripts/build_app.sh gpio_test Release --log ci_build
 
-### Sensitive Information
-- **Serial output**: May contain device information
-- **Build output**: May contain paths and configurations
-- **Error messages**: May contain system details
+- name: Flash with Logging
+  run: |
+    cd examples/esp32
+    ./scripts/flash_app.sh flash gpio_test Release --log ci_deploy
 
-### Best Practices
-```bash
-# Don't share log files with sensitive information
-# Review logs before sharing
-# Use log cleanup to remove old logs
-./scripts/manage_logs.sh clean 7
+- name: Analyze Logs
+  run: |
+    cd examples/esp32
+    ./scripts/manage_logs.sh stats
+    ./scripts/manage_logs.sh search "ERROR"
+    ./scripts/manage_logs.sh search "SUCCESS"
+
+- name: Upload Logs
+  uses: actions/upload-artifact@v3
+  with:
+    name: esp32-logs
+    path: examples/esp32/logs/
+    retention-days: 30
 ```
 
-## Support and Maintenance
+### **Best Practices**
 
-### Getting Help
-1. **Check script help**: `./scripts/manage_logs.sh --help`
-2. **Review this documentation**
-3. **Check script source code** for detailed comments
-4. **Use debug mode**: `export DEBUG=1`
+#### **1. Log Management**
+- Always enable logging for important operations
+- Use descriptive log names for easy identification
+- Regular log cleanup to prevent disk space issues
+- Archive important logs for long-term retention
 
-### Reporting Issues
-1. **Include script name and version**
-2. **Provide error messages and output**
-3. **Specify platform and environment**
-4. **Include relevant log files**
+#### **2. Log Analysis**
+- Use specific search patterns for better results
+- Regular review of error logs for pattern identification
+- Monitor log statistics for system health
+- Use log analysis for performance optimization
 
-### Contributing
-1. **Follow existing code style**
-2. **Add comprehensive documentation**
-3. **Include error handling**
-4. **Test across platforms**
+#### **3. Log Integration**
+- Integrate logging into all development workflows
+- Use logging for CI/CD pipeline monitoring
+- Implement automated log analysis and reporting
+- Use logs for debugging and troubleshooting
 
-## Version Information
-
-- **Logging System Version**: 2.0.0
-- **Script Compatibility**: All ESP32 scripts
-- **Platform Support**: Linux, macOS
-- **Last Updated**: August 2025
-
-For additional information, see:
-- [Scripts Overview](README_SCRIPTS_OVERVIEW.md)
-- [Flash System](README_FLASH_SYSTEM.md)
-- [Build System](README_BUILD_SYSTEM.md)
-- [Port Detection](README_PORT_DETECTION.md)
+#### **4. Log Performance**
+- Monitor log file sizes and growth rates
+- Implement log rotation and compression
+- Use efficient search patterns
+- Regular log maintenance and cleanup
 
 ---
 
-**Navigation**: [← Previous: Flash System](README_FLASH_SYSTEM.md) | [Back to Scripts](../README.md) | [Next: Configuration System →](README_CONFIG_SYSTEM.md)
+**Navigation**: [← Previous: Configuration System](README_CONFIG_SYSTEM.md) | [Back to Scripts](../README.md) | [Next: Utility Scripts →](README_UTILITY_SCRIPTS.md)

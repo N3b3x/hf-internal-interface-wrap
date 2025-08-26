@@ -1,529 +1,662 @@
-# 📱 ESP32 HardFOC Interface Wrapper - Flash System Documentation
+# ESP32 HardFOC Interface Wrapper - Flash System Guide
 
-This document provides comprehensive documentation for the `flash_app.sh` script, which is the main development workflow script for flashing and monitoring ESP32 apps.
-
----
-
-**Navigation**: [← Previous: Build System](README_BUILD_SYSTEM.md) | [Back to Scripts](../README.md) | [Next: Logging System →](README_LOGGING_SYSTEM.md)
+This document provides comprehensive documentation for the ESP32 flash system, including port detection, firmware flashing, monitoring, and troubleshooting.
 
 ---
 
-## 📋 Table of Contents
+**Navigation**: [← Previous: Build System](README_BUILD_SYSTEM.md) | [Back to Scripts](../README.md) | [Next: Configuration System →](README_CONFIG_SYSTEM.md)
+
+---
+
+## 📋 **Table of Contents**
 
 - [📋 Overview](#-overview)
-- [🚀 Basic Usage](#️-basic-usage)
-- [⚙️ Advanced Features](#️-advanced-features)
-- [🔍 Troubleshooting](#️-troubleshooting)
-- [📚 Getting Help](#️-getting-help)
+- [🏗️ Architecture and Design](#️-architecture-and-design)
+- [🔌 Port Detection and Management](#️-port-detection-and-management)
+- [⚡ Flash Operations and Workflows](#️-flash-operations-and-workflows)
+- [📺 Monitoring and Logging](#️-monitoring-and-logging)
+- [🚀 Usage Examples and Patterns](#️-usage-examples-and-patterns)
+- [🔍 Troubleshooting and Debugging](#️-troubleshooting-and-debugging)
+- [📚 Reference and Examples](#️-reference-and-examples)
 
-## 📋 Overview
+## 📋 **Overview**
 
-The `flash_app.sh` script is a feature-rich tool that handles the complete ESP32 development workflow:
-- **Automatic port detection** - Finds ESP32 devices automatically
-- **Smart build management** - Builds apps if needed
-- **Comprehensive logging** - Captures all output for debugging
-- **Error handling** - Provides detailed error messages and solutions
-- **Cross-platform support** - Works on Linux and macOS
+The ESP32 flash system is a comprehensive solution for firmware deployment, device monitoring, and development workflow management. It provides intelligent port detection, robust flashing operations, and integrated logging for professional ESP32 development.
 
-## Basic Usage
+### **Core Features**
+- **Intelligent Port Detection**: Automatic ESP32 device identification across platforms
+- **Operation-First Syntax**: Intuitive command structure for better usability
+- **Comprehensive Logging**: Built-in logging system with automatic rotation
+- **Cross-Platform Compatibility**: Consistent behavior on Linux and macOS
+- **Error Prevention**: Validation and error handling with clear troubleshooting guidance
 
-### Command Syntax
-```bash
-# Operation-first format (RECOMMENDED)
-./scripts/flash_app.sh <operation> [app_type] [build_type] [--log [log_name]]
+### **Key Capabilities**
+- Automatic ESP32 device detection and port identification
+- Firmware flashing with validation and error checking
+- Real-time device monitoring and debugging
+- Integrated logging and log management
+- Port connectivity testing and troubleshooting
+- Cross-platform serial port management
 
-# Examples:
-./scripts/flash_app.sh flash gpio_test Release --log
-./scripts/flash_app.sh flash_monitor gpio_test Release --log
-./scripts/flash_app.sh monitor --log
+## 🏗️ **Architecture and Design**
 
-# Legacy format (still supported)
-./scripts/flash_app.sh [app_type] [build_type] [operation] [--log [log_name]]
+### **System Architecture**
+```
+User Commands → flash_app.sh → Port Detection → ESP-IDF Tools → Device Communication
+     ↓              ↓              ↓              ↓              ↓
+Operation      Parameter      Device ID      Flash/Monitor   Serial I/O
+Specification  Validation     & Port         Commands        & Control
 ```
 
-### Parameters
-- **`operation`** - Operation to perform (`flash`, `monitor`, `flash_monitor`) - **Required first argument**
-- **`app_type`** - Type of app to flash (e.g., `gpio_test`, `i2c_test`) - **Required for flash operations**
-- **`build_type`** - Build configuration (`Debug` or `Release`) - **Required for flash operations**
-- **`--log [log_name]`** - Enable logging with optional custom name
+### **Component Interaction**
+- **`flash_app.sh`**: Main flash orchestration script
+- **`detect_ports.sh`**: Port detection and device identification
+- **`manage_logs.sh`**: Logging system integration
+- **ESP-IDF Tools**: esptool, idf.py for device communication
+- **Serial Port Management**: Cross-platform port access and control
 
-### Default Values
-- **`app_type`**: Loaded from `app_config.yml` (for flash operations)
-- **`build_type`**: Loaded from `app_config.yml` (for flash operations)
-- **`operation`**: `flash_monitor` (flash then monitor)
-- **`logging`**: Disabled by default
+### **Design Principles**
+- **Operation-First**: Commands start with the operation for clarity
+- **Intelligent Defaults**: Sensible fallbacks when parameters are omitted
+- **Fail-Safe Operations**: Validation before execution to prevent errors
+- **Cross-Platform Consistency**: Uniform behavior across operating systems
+- **User Experience**: Clear error messages and troubleshooting guidance
 
-### Special Cases
-- **`monitor` command**: Can be used standalone without app type or build type
-- **`monitor --log`**: Enables logging for monitor-only operations
-- **`monitor --log custom_name`**: Enables logging with custom name for monitor-only operations
+## 🔌 **Port Detection and Management**
 
-## Operations
+### **Automatic Device Detection**
 
-### 1. Flash Only (`flash`)
-Flashes the firmware to the ESP32 device without starting the monitor.
+#### **Cross-Platform Detection**
+The flash system automatically detects ESP32 devices across different platforms:
 
+**Linux Detection**:
 ```bash
-./scripts/flash_app.sh flash gpio_test Release
+# USB serial devices
+/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyACM0
+
+# ESP32-specific patterns
+/dev/ttyUSB* (CP210x, CH340, FTDI)
+/dev/ttyACM* (CDC ACM devices)
 ```
 
-**Use cases:**
-- Quick firmware updates
-- Batch flashing multiple devices
-- CI/CD pipelines
-- When you only need to update firmware
+**macOS Detection**:
+```bash
+# USB serial devices
+/dev/cu.usbserial-*, /dev/cu.SLAB_USBtoUART*
 
-### 2. Monitor Only (`monitor`)
-Starts the serial monitor for an already-flashed device. This command can be used standalone without specifying app type or build type.
+# ESP32-specific patterns
+/dev/cu.usbmodem*, /dev/cu.usbserial*
+```
+
+
+
+#### **Device Identification Patterns**
+The system recognizes common ESP32 development board USB identifiers:
 
 ```bash
-# Monitor existing firmware (no app/build type needed)
-./scripts/flash_app.sh monitor
+# Common ESP32 USB identifiers
+CP210x: Silicon Labs CP210x USB to UART Bridge
+CH340: WCH CH340 USB to Serial
+FTDI: FTDI FT232R USB UART
+CDC ACM: USB CDC ACM devices
+```
 
-# Monitor with logging
-./scripts/flash_app.sh monitor --log
+### **Port Validation and Testing**
+
+#### **Connectivity Testing**
+```bash
+# Test port connectivity
+./detect_ports.sh --test-connection
+
+# Verify port accessibility
+./detect_ports.sh --verbose
+
+# Check port permissions and status
+./detect_ports.sh --verbose --test-connection
+```
+
+#### **Permission Management**
+The system handles common permission issues:
+
+```bash
+# Linux udev rules for ESP32 devices
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", MODE="0666"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", MODE="0666"
+
+# User group membership
+sudo usermod -a -G dialout $USER
+sudo usermod -a -G tty $USER
+```
+
+### **Port Selection Logic**
+
+#### **Automatic Port Selection**
+When multiple ports are available, the system uses intelligent selection:
+
+```bash
+# Priority order for port selection
+1. ESP32-specific USB identifiers (CP210x, CH340, FTDI)
+2. Previously used ports (from configuration)
+3. First available USB serial port
+4. Fallback to manual selection
+```
+
+#### **Manual Port Override**
+```bash
+# Override automatic port detection
+export ESPPORT="/dev/ttyUSB0"
+./flash_app.sh flash gpio_test Release
+
+# Specify port in command
+./flash_app.sh flash gpio_test Release --port /dev/ttyUSB1
+```
+
+## ⚡ **Flash Operations and Workflows**
+
+### **Operation Types**
+
+#### **1. Flash Operations**
+- **`flash`**: Flash firmware only (no monitoring)
+- **`flash_monitor`**: Flash firmware and start monitoring (default)
+- **`monitor`**: Monitor existing firmware (no flashing)
+- **`list`**: List available applications and configurations
+
+#### **2. Operation Syntax**
+The system supports both operation-first and legacy syntax:
+
+```bash
+# Operation-first syntax (RECOMMENDED)
+./flash_app.sh flash gpio_test Release
+./flash_app.sh monitor --log
+./flash_app.sh flash_monitor adc_test Debug
+
+# Legacy syntax (still supported)
+./flash_app.sh gpio_test Release flash
+./flash_app.sh gpio_test Release flash_monitor
+```
+
+### **Flash Process Workflow**
+
+#### **1. Pre-Flash Validation**
+```bash
+# Validate configuration
+- Check app exists in configuration
+- Verify build type support
+- Validate ESP-IDF version compatibility
+- Confirm target device compatibility
+```
+
+#### **2. Port Detection and Selection**
+```bash
+# Automatic port detection
+- Scan for available ESP32 devices
+- Identify compatible ports
+- Test port connectivity
+- Select optimal port for operation
+```
+
+#### **3. Flash Execution**
+```bash
+# ESP-IDF flash process
+- Set target MCU (esp32c6)
+- Configure flash parameters
+- Execute flash operation
+- Validate flash completion
+```
+
+#### **4. Post-Flash Operations**
+```bash
+# Post-flash actions
+- Verify firmware integrity
+- Start monitoring (if requested)
+- Generate operation logs
+- Update port configuration
+```
+
+### **Flash Configuration Options**
+
+#### **Build Type Integration**
+```bash
+# Flash with specific build type
+./flash_app.sh flash gpio_test Release
+./flash_app.sh flash gpio_test Debug
+
+# Automatic build type validation
+- Ensures build type is supported by app
+- Validates against app_config.yml configuration
+- Provides clear error messages for incompatibilities
+```
+
+#### **ESP-IDF Version Support**
+```bash
+# Flash with specific ESP-IDF version
+./flash_app.sh flash gpio_test Release release/v5.5
+./flash_app.sh flash gpio_test Release release/v5.4
+
+# Version compatibility validation
+- Checks app support for specified version
+- Validates against app configuration
+- Ensures consistent toolchain usage
+```
+
+## 📺 **Monitoring and Logging**
+
+### **Integrated Logging System**
+
+#### **Log Generation**
+The flash system automatically generates comprehensive logs:
+
+```bash
+# Automatic log creation
+./flash_app.sh flash_monitor gpio_test Release --log
+
+# Log file naming convention
+gpio_test_Release_20250115_143022.log
+# Format: {app}_{build_type}_{date}_{time}.log
+```
+
+#### **Log Content and Structure**
+```bash
+# Log file contents
+- Command execution details
+- Port detection results
+- Flash operation output
+- Monitor session data
+- Error messages and warnings
+- Performance metrics
+```
+
+### **Monitoring Capabilities**
+
+#### **Real-Time Monitoring**
+```bash
+# Start monitoring after flash
+./flash_app.sh flash_monitor gpio_test Release --log
+
+# Monitor existing firmware
+./flash_app.sh monitor --log
 
 # Monitor with custom log name
-./scripts/flash_app.sh monitor --log debug_session
+./flash_app.sh monitor --log debug_session
 ```
 
-**Use cases:**
-- Debugging existing firmware
-- Monitoring device output
-- Testing without reflashing
-- Development iteration
-- Quick debugging sessions
-
-### 3. Flash and Monitor (`flash_monitor`)
-Flashes the firmware and then starts the monitor (default operation).
-
+#### **Monitor Configuration**
 ```bash
-./scripts/flash_app.sh flash_monitor gpio_test Release
-# or simply:
-./scripts/flash_app.sh flash_monitor gpio_test Release
+# Monitor options
+- Baud rate: 115200 (configurable)
+- Data bits: 8
+- Parity: None
+- Stop bits: 1
+- Flow control: None
 ```
 
-**Use cases:**
-- Development workflow
-- Testing new firmware
-- Debugging with fresh code
-- Most common development scenario
+### **Log Management Integration**
 
-## Logging System
-
-### Enabling Logging
-The script includes a comprehensive logging system that captures all output for later analysis.
-
-#### Basic Logging
+#### **Automatic Log Rotation**
 ```bash
-# Enable logging with auto-generated filename
-./scripts/flash_app.sh flash_monitor gpio_test Release --log
+# Log rotation features
+- Timestamped log files
+- Automatic log directory management
+- Configurable retention policies
+- Storage optimization
 ```
 
-#### Custom Log Names
+#### **Log Analysis Tools**
 ```bash
-# Enable logging with custom name
-./scripts/flash_app.sh flash_monitor gpio_test Release --log test_run_001
-./scripts/flash_app.sh flash_monitor gpio_test Release --log debug_session
+# Integrated log management
+./manage_logs.sh list          # List all logs
+./manage_logs.sh latest        # Show latest log
+./manage_logs.sh search "ERROR" # Search for errors
+./manage_logs.sh stats         # Log statistics
 ```
 
-### Log File Naming Convention
-- **Auto-generated**: `{app_type}_{build_type}_{timestamp}.log`
-- **Custom name**: `{custom_name}_{timestamp}.log`
-- **Timestamp format**: `YYYYMMDD_HHMMSS`
+## 🚀 **Usage Examples and Patterns**
 
-**Examples:**
-```
-gpio_test_Release_20250825_143022.log
-test_run_001_20250825_143022.log
-debug_session_20250825_143022.log
-```
+### **Basic Flash Workflows**
 
-### Log File Contents
-Each log file contains:
-- **Header information** - Date, app type, build type, target, port
-- **Build output** - Complete build process output
-- **Flash output** - ESP-IDF flash operation output
-- **Monitor output** - Complete ESP32 serial output
-- **Error messages** - Any errors or warnings encountered
-
-### Log Directory
-Logs are stored in `examples/esp32/logs/` and are automatically:
-- **Created** when logging is enabled
-- **Rotated** (keeps last 50 logs)
-- **Ignored by git** (via `.gitignore`)
-
-## Port Detection and Management
-
-### Automatic Port Detection
-The script automatically detects ESP32 devices using platform-specific methods:
-
-#### Linux
-- Searches `/dev/ttyACM*` (ESP32-C6)
-- Searches `/dev/ttyUSB*` (older ESP32)
-- Uses `lsusb` for device identification
-- Automatically fixes permissions
-
-#### macOS
-- Searches `/dev/cu.*` (callout devices, preferred)
-- Searches `/dev/tty.*` (terminal devices)
-- Identifies common ESP32 device patterns
-- Handles permission issues
-
-### Manual Port Specification
-You can manually specify a port using the `ESPPORT` environment variable:
-
+#### **1. Development Flash Workflow**
 ```bash
-export ESPPORT="/dev/ttyACM0"
-./scripts/flash_app.sh flash_monitor gpio_test Release
+# Build and flash for development
+./build_app.sh gpio_test Debug
+./flash_app.sh flash_monitor gpio_test Debug --log
+
+# Expected result:
+# - Firmware flashed to device
+# - Monitoring started automatically
+# - Debug output captured in logs
+# - Real-time debugging available
 ```
 
-### Port Validation
-The script validates ports by:
-- Checking if the port exists
-- Verifying port readability
-- Testing port format compatibility
-- Providing detailed error messages
-
-## Build Management
-
-### Automatic Building
-If no valid build exists, the script automatically builds the app:
-
+#### **2. Production Flash Workflow**
 ```bash
-./scripts/flash_app.sh flash_monitor gpio_test Release
-# If build doesn't exist:
-# 1. Automatically calls build_app.sh
-# 2. Builds the app
-# 3. Proceeds with flashing
+# Build and flash for production
+./build_app.sh gpio_test Release
+./flash_app.sh flash gpio_test Release --log production_deploy
+
+# Expected result:
+# - Optimized firmware flashed
+# - No monitoring (production mode)
+# - Deployment log generated
+# - Ready for production use
 ```
 
-### Build Validation
-The script validates builds by checking for:
-- Main binary file (`.bin`)
-- Bootloader binary
-- Build artifacts (`.ninja`, `CMakeCache.txt`)
-- Build timestamp files
-
-### Build Directory Naming
-Builds follow the pattern: `build_{app_type}_{build_type}`
-
-**Examples:**
-```
-build_gpio_test_Release/
-build_i2c_test_Debug/
-build_ascii_art_Release/
-```
-
-## Error Handling and Troubleshooting
-
-### Common Error Scenarios
-
-#### 1. ESP-IDF Not Found
+#### **3. Debugging Workflow**
 ```bash
-ERROR: ESP-IDF environment not found, attempting to source...
-ERROR: ESP-IDF export.sh not found at $HOME/esp/esp-idf/export.sh
+# Monitor existing firmware
+./flash_app.sh monitor --log debug_session
+
+# Search for issues
+./manage_logs.sh search "ERROR"
+./manage_logs.sh search "WARNING"
+
+# Analyze log patterns
+./manage_logs.sh stats
 ```
 
-**Solutions:**
-- Install ESP-IDF v5.5+
-- Source ESP-IDF manually: `source ~/esp/esp-idf/export.sh`
-- Use `setup_common.sh` script
+### **Advanced Flash Patterns**
 
-#### 2. No Suitable Ports Found
+#### **1. Multi-Device Deployment**
 ```bash
-ERROR: No suitable serial ports found!
-```
-
-**Solutions:**
-- Connect ESP32 device via USB
-- Check device enumeration: `./scripts/detect_ports.sh --verbose`
-- Install USB-to-UART drivers
-- Try different USB cable/port
-
-#### 3. Port Not Accessible
-```bash
-ERROR: Port /dev/ttyACM0 is not readable
-```
-
-**Solutions:**
-- **Linux**: `sudo chmod 666 /dev/ttyACM0`
-- **Linux**: Add user to dialout group: `sudo usermod -a -G dialout $USER`
-- **macOS**: Check System Preferences > Security & Privacy
-
-#### 4. Build Validation Failed
-```bash
-NO VALID BUILD FOUND - STARTING AUTO-BUILD
-```
-
-**Solutions:**
-- Let the script auto-build (recommended)
-- Manually build: `./scripts/build_app.sh gpio_test Release`
-- Check build configuration
-
-### Debug Mode
-Enable debug output for troubleshooting:
-
-```bash
-export DEBUG=1
-./scripts/flash_app.sh flash_monitor gpio_test Release --log
-```
-
-## Advanced Features
-
-### Environment Variables
-The script respects several environment variables:
-
-```bash
-# ESP-IDF configuration
-export IDF_PATH="/path/to/esp-idf"
-export IDF_TARGET="esp32c6"
-
-# Port specification
-export ESPPORT="/dev/ttyACM0"
-
-# Debug mode
-export DEBUG=1
-```
-
-### Configuration Integration
-The script integrates with the centralized configuration system:
-
-- **`app_config.yml`** - App definitions and descriptions
-- **`config_loader.sh`** - Configuration loading and validation
-- **Build types** - Debug/Release configurations
-- **Target settings** - MCU-specific configurations
-
-### Cross-Platform Compatibility
-The script automatically adapts to different platforms:
-
-- **Operating system detection**
-- **Platform-specific port detection**
-- **Platform-specific permission handling**
-- **Platform-specific error messages**
-
-## Examples and Use Cases
-
-### Development Workflow
-```bash
-# 1. Build the app
-./scripts/build_app.sh gpio_test Release
-
-# 2. Flash and monitor with logging
-./scripts/flash_app.sh flash_monitor gpio_test Release --log
-
-# 3. View the logs
-./scripts/manage_logs.sh latest
-```
-
-### Monitor-Only Workflow
-```bash
-# 1. Monitor existing firmware
-./scripts/flash_app.sh monitor
-
-# 2. Monitor with logging
-./scripts/flash_app.sh monitor --log
-
-# 3. Monitor with custom log name
-./scripts/flash_app.sh monitor --log debug_session
-
-# 4. View the logs
-./scripts/manage_logs.sh latest
-```
-
-### Debugging Session
-```bash
-# 1. Monitor existing firmware with logging
-./scripts/flash_app.sh monitor --log debug_session
-
-# 2. Search logs for errors
-./scripts/manage_logs.sh search "ERROR"
-
-# 3. View specific log file
-./scripts/manage_logs.sh view debug_session_20250825_143022.log
-```
-
-### Batch Operations
-```bash
-# Flash multiple apps
-for app in gpio_test i2c_test uart_test; do
-    ./scripts/flash_app.sh flash $app Release --log batch_$(date +%Y%m%d)
+# Flash to multiple devices
+for port in /dev/ttyUSB0 /dev/ttyUSB1 /dev/ttyUSB2; do
+    export ESPPORT="$port"
+    ./flash_app.sh flash gpio_test Release --log "deploy_${port}"
 done
 ```
 
-### CI/CD Integration
+#### **2. Conditional Flash Operations**
 ```bash
-# Automated testing with logging
-./scripts/flash_app.sh flash_monitor gpio_test Release --log ci_test_$(date +%Y%m%d_%H%M%S)
+# Flash only if build is newer
+if [ "build_gpio_test_Release/gpio_test.bin" -nt "last_flash" ]; then
+    ./flash_app.sh flash gpio_test Release --log
+    touch last_flash
+fi
 ```
 
-## Integration with Other Scripts
-
-### Build System
-- **`build_app.sh`** - Called automatically when needed
-- **`config_loader.sh`** - Provides configuration and validation
-- **`app_config.yml`** - Defines available apps
-
-### Log Management
-- **`manage_logs.sh`** - Manages generated log files
-- **Log rotation** - Automatically manages log file count
-- **Log cleanup** - Prevents disk space issues
-
-### Port Detection
-- **`detect_ports.sh`** - Provides detailed port information
-- **Port testing** - Validates port connectivity
-- **Troubleshooting** - Helps resolve port issues
-
-## Performance and Optimization
-
-### Build Caching
-- **ccache integration** - Faster rebuilds
-- **Build validation** - Prevents unnecessary rebuilds
-- **Smart detection** - Uses existing builds when possible
-
-### Logging Performance
-- **Efficient capture** - Minimal performance impact
-- **Automatic rotation** - Prevents disk space issues
-- **Compressed storage** - Efficient log file storage
-
-## Security Considerations
-
-### Permission Handling
-- **Automatic permission fixing** - Linux port permissions
-- **User group management** - dialout group for Linux
-- **Secure defaults** - Minimal required permissions
-
-### Log File Security
-- **Git exclusion** - Logs are not committed to version control
-- **Local storage** - Logs remain on local machine
-- **Permission control** - Log files have appropriate permissions
-
-## Troubleshooting Guide
-
-### Quick Diagnostics
+#### **3. Automated Testing Flash**
 ```bash
-# 1. Check available apps
-./scripts/flash_app.sh list
+# Flash for automated testing
+./flash_app.sh flash gpio_test Release --log "test_$(date +%Y%m%d_%H%M%S)"
 
-# 2. Check available ports
-./scripts/detect_ports.sh --verbose
-
-# 3. Test port connectivity
-./scripts/detect_ports.sh --test-connection
-
-# 4. Check ESP-IDF environment
-echo $IDF_PATH
-which idf.py
+# Run automated tests
+# Monitor test results
+# Collect test logs
 ```
 
-### Common Issues and Solutions
+### **Integration with Build System**
 
-#### Issue: Script fails with "command not found"
-**Solution**: Ensure ESP-IDF is sourced:
+#### **Build-Flash Integration**
 ```bash
-source ~/esp/esp-idf/export.sh
+# Combined build and flash
+./build_app.sh gpio_test Release && \
+./flash_app.sh flash_monitor gpio_test Release --log
+
+# Automatic build verification
+- Ensures build exists before flashing
+- Validates build type compatibility
+- Checks firmware integrity
 ```
 
-#### Issue: Permission denied on port
-**Solution**: Fix port permissions:
-```bash
-sudo chmod 666 /dev/ttyACM0
-sudo usermod -a -G dialout $USER
+#### **CI/CD Integration**
+```yaml
+# GitHub Actions flash workflow
+- name: Flash ESP32 Application
+  run: |
+    cd examples/esp32
+    ./scripts/flash_app.sh flash gpio_test Release --log ci_deploy
+
+- name: Verify Flash
+  run: |
+    ./scripts/flash_app.sh monitor --log ci_verify
+    timeout 30s ./scripts/flash_app.sh monitor --log ci_verify
 ```
 
-#### Issue: Build always fails
-**Solution**: Check configuration:
+## 🔍 **Troubleshooting and Debugging**
+
+### **Common Flash Issues**
+
+#### **1. Port Detection Issues**
+**Problem**: No ESP32 devices detected
+**Symptoms**: "No ports detected" or "Port not accessible" errors
+**Solutions**:
 ```bash
-./scripts/config_loader.sh --validate
-```
-
-#### Issue: Logs not being created
-**Solution**: Check log directory permissions:
-```bash
-ls -la examples/esp32/logs/
-mkdir -p examples/esp32/logs/
-```
-
-## Best Practices
-
-### 1. Always Use Logging
-```bash
-# Good: Always enable logging for debugging
-./scripts/flash_app.sh flash_monitor gpio_test Release --log
-
-# Bad: No logging makes debugging difficult
-./scripts/flash_app.sh flash_monitor gpio_test Release
-```
-
-### 2. Use Descriptive Log Names
-```bash
-# Good: Descriptive log names
-./scripts/flash_app.sh flash_monitor gpio_test Release --log gpio_debug_session
-
-# Bad: Generic log names
-./scripts/flash_app.sh flash_monitor gpio_test Release --log test
-```
-
-### 3. Regular Log Maintenance
-```bash
-# Clean old logs weekly
-./scripts/manage_logs.sh clean 7
-
-# Check log statistics monthly
-./scripts/manage_logs.sh stats
-```
-
-### 4. Port Validation
-```bash
-# Always verify ports before flashing
-./scripts/detect_ports.sh --verbose
+# Check device connections
+./detect_ports.sh --verbose
 
 # Test port connectivity
-./scripts/detect_ports.sh --test-connection
+./detect_ports.sh --test-connection
+
+# Verify USB drivers
+lsusb | grep -i esp
+system_profiler SPUSBDataType | grep -i esp
 ```
 
-### 5. Use Monitor-Only for Quick Debugging
+#### **2. Permission Issues**
+**Problem**: Port access denied
+**Symptoms**: "Permission denied" or "Access denied" errors
+**Solutions**:
 ```bash
-# Good: Quick debugging without rebuilding
-./scripts/flash_app.sh monitor --log debug_session
+# Check user permissions
+ls -la /dev/ttyUSB*
+groups $USER
 
-# Bad: Rebuilding when you just want to monitor
-./scripts/flash_app.sh monitor gpio_test Release --log debug_session
+# Add user to required groups
+sudo usermod -a -G dialout,tty $USER
+
+# Create udev rules
+sudo nano /etc/udev/rules.d/99-esp32.rules
 ```
 
-## Support and Maintenance
+#### **3. Flash Failures**
+**Problem**: Firmware flash fails
+**Symptoms**: "Flash failed" or "Upload failed" errors
+**Solutions**:
+```bash
+# Check device connection
+./detect_ports.sh --test-connection
 
-### Getting Help
-1. **Check script help**: `./scripts/flash_app.sh --help`
-2. **Review this documentation**
-3. **Check script source code** for detailed comments
-4. **Use debug mode**: `export DEBUG=1`
+# Verify firmware file
+ls -la build_gpio_test_Release/*.bin
 
-### Reporting Issues
-1. **Include script name and version**
-2. **Provide error messages and output**
-3. **Specify platform and environment**
-4. **Include relevant log files**
+# Check device mode
+./flash_app.sh monitor --log flash_debug
 
-### Contributing
-1. **Follow existing code style**
-2. **Add comprehensive documentation**
-3. **Include error handling**
-4. **Test across platforms**
+# Reset device and retry
+# Hold BOOT button during flash
+```
 
-## Version Information
+#### **4. Monitor Issues**
+**Problem**: Cannot monitor device
+**Symptoms**: "Monitor failed" or "No output" errors
+**Solutions**:
+```bash
+# Check baud rate compatibility
+./flash_app.sh monitor --log
 
-- **Script Version**: 2.0.0
-- **ESP-IDF Compatibility**: v5.5+
-- **Platform Support**: Linux, macOS
-- **Last Updated**: August 2025
+# Verify device is running
+./flash_app.sh monitor --log debug_monitor
 
-For additional information, see:
-- [Scripts Overview](README_SCRIPTS_OVERVIEW.md)
-- [Build System](README_BUILD_SYSTEM.md)
-- [Port Detection](README_PORT_DETECTION.md)
-- [Logging System](README_LOGGING_SYSTEM.md)
+# Check for bootloader mode
+# Press RESET button to restart
+```
+
+### **Debug and Verbose Mode**
+
+#### **Enabling Debug Output**
+```bash
+# Enable debug mode
+export DEBUG=1
+./flash_app.sh flash_monitor gpio_test Release --log
+
+# Enable verbose ESP-IDF output
+export IDF_VERBOSE=1
+./flash_app.sh flash gpio_test Release --log
+```
+
+#### **Debug Information Available**
+- Port detection and selection details
+- Flash operation progress and status
+- Monitor session configuration
+- Error context and troubleshooting suggestions
+- Performance metrics and timing
+
+### **Log Analysis for Troubleshooting**
+
+#### **Flash Log Analysis**
+```bash
+# Check flash operation logs
+./manage_logs.sh latest
+./manage_logs.sh search "ERROR"
+./manage_logs.sh search "FAILED"
+
+# Analyze flash patterns
+./manage_logs.sh search "Flash completed"
+./manage_logs.sh search "Upload failed"
+```
+
+#### **Monitor Log Analysis**
+```bash
+# Check monitor session logs
+./manage_logs.sh search "monitor"
+./manage_logs.sh search "serial"
+
+# Analyze device output
+./manage_logs.sh search "ESP32"
+./manage_logs.sh search "boot"
+```
+
+## 📚 **Reference and Examples**
+
+### **Command Reference**
+
+#### **Flash Script Parameters**
+```bash
+./flash_app.sh [operation] [app_type] [build_type] [idf_version] [options]
+
+# Parameters:
+#   operation    - What to do (flash, monitor, flash_monitor, list)
+#   app_type     - Application to flash (from app_config.yml)
+#   build_type   - Build type to flash (Debug, Release)
+#   idf_version  - ESP-IDF version used for build
+#   options      - Flash options (--log, --port, etc.)
+```
+
+#### **Flash Options**
+- **`--log [name]`**: Enable logging with optional custom name
+- **`--port <port>`**: Override automatic port detection
+- **`--baud <rate>`**: Set custom baud rate for monitoring
+- **`--help`**: Show usage information
+- **`list`**: List available applications and configurations
+
+#### **Environment Variables**
+```bash
+# Override default application
+export CONFIG_DEFAULT_APP="gpio_test"
+
+# Override default build type
+export CONFIG_DEFAULT_BUILD_TYPE="Debug"
+
+# Override default ESP-IDF version
+export CONFIG_DEFAULT_IDF_VERSION="release/v5.4"
+
+# Override port detection
+export ESPPORT="/dev/ttyUSB0"
+
+# Enable debug mode
+export DEBUG=1
+```
+
+### **Configuration Examples**
+
+#### **Minimal Flash Configuration**
+```yaml
+# app_config.yml minimal configuration
+metadata:
+  default_app: "gpio_test"
+  default_build_type: "Release"
+  target: "esp32c6"
+
+apps:
+  gpio_test:
+    source_file: "GpioComprehensiveTest.cpp"
+    build_types: ["Debug", "Release"]
+```
+
+#### **Advanced Flash Configuration**
+```yaml
+# app_config.yml advanced configuration
+metadata:
+  default_app: "gpio_test"
+  default_build_type: "Release"
+  target: "esp32c6"
+  idf_versions: ["release/v5.5", "release/v5.4"]
+
+apps:
+  gpio_test:
+    description: "GPIO testing application"
+    source_file: "GpioComprehensiveTest.cpp"
+    category: "peripheral"
+    build_types: ["Debug", "Release"]
+    idf_versions: ["release/v5.5"]
+    ci_enabled: true
+    featured: true
+```
+
+### **Integration Examples**
+
+#### **CMake Integration**
+```cmake
+# CMakeLists.txt flash integration
+cmake_minimum_required(VERSION 3.16)
+
+# Flash target integration
+add_custom_target(flash
+    COMMAND ${CMAKE_SOURCE_DIR}/scripts/flash_app.sh flash ${APP_TYPE} ${BUILD_TYPE}
+    DEPENDS ${PROJECT_NAME}
+    COMMENT "Flashing ${APP_TYPE} ${BUILD_TYPE} to device"
+)
+```
+
+#### **CI/CD Integration**
+```yaml
+# GitHub Actions flash workflow
+- name: Flash ESP32 Application
+  run: |
+    cd examples/esp32
+    ./scripts/flash_app.sh flash gpio_test Release --log ci_deploy
+
+- name: Verify Flash
+  run: |
+    ./scripts/flash_app.sh monitor --log ci_verify
+    timeout 30s ./scripts/flash_app.sh monitor --log ci_verify
+```
+
+### **Best Practices**
+
+#### **1. Flash Operations**
+- Always use logging for debugging and troubleshooting
+- Verify device connections before flashing
+- Use appropriate build types for different purposes
+- Test flash operations in development before production
+
+#### **2. Port Management**
+- Use automatic port detection when possible
+- Verify port permissions and access rights
+- Test port connectivity before operations
+- Handle multiple device scenarios gracefully
+
+#### **3. Error Handling**
+- Always check flash operation results
+- Use debug mode for troubleshooting
+- Analyze logs for error patterns
+- Implement proper error handling in automation
+
+#### **4. Performance Optimization**
+- Use appropriate flash parameters
+- Optimize monitor settings for your use case
+- Regular log maintenance and cleanup
+- Monitor flash performance and reliability
 
 ---
 
-**Navigation**: [← Previous: Build System](README_BUILD_SYSTEM.md) | [Back to Scripts](../README.md) | [Next: Logging System →](README_LOGGING_SYSTEM.md)
+**Navigation**: [← Previous: Build System](README_BUILD_SYSTEM.md) | [Back to Scripts](../README.md) | [Next: Configuration System →](README_CONFIG_SYSTEM.md)

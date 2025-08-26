@@ -1,11 +1,12 @@
 #!/bin/bash
 # Flash and monitor script for different ESP32 apps (Bash version)
-# Usage: ./flash_app.sh [app_type] [build_type] [operation] [--log [log_name]]
+# Usage: ./flash_app.sh [app_type] [build_type] [idf_version] [operation] [--log [log_name]]
 # 
 # App types and build types are loaded from app_config.yml
 # Use './flash_app.sh list' to see all available apps
 # Operations: flash, monitor, flash_monitor (default: flash_monitor)
 # Logging: --log [log_name] to enable logging with optional custom name
+# NEW: ESP-IDF version parameter for compatibility validation
 
 set -e  # Exit on any error
 
@@ -16,136 +17,172 @@ source "$(dirname "${BASH_SOURCE[0]}")/config_loader.sh"
 # Configuration
 APP_TYPE=${1:-$CONFIG_DEFAULT_APP}
 BUILD_TYPE=${2:-$CONFIG_DEFAULT_BUILD_TYPE}
-OPERATION=${3:-flash_monitor}
+IDF_VERSION=${3:-$CONFIG_DEFAULT_IDF_VERSION}  # NEW: ESP-IDF version parameter
+OPERATION=${4:-flash_monitor}
 
 # Parse arguments with operation-first approach
 OPERATION=""
 APP_TYPE=""
 BUILD_TYPE=""
+IDF_VERSION=""
 ENABLE_LOGGING=false
 CUSTOM_LOG_NAME=""
 LOG_DIR="$PROJECT_DIR/logs"
 
 # Parse arguments
-    case $# in
-    0)
-        # No arguments - use defaults
-        OPERATION="flash_monitor"
-        APP_TYPE=$CONFIG_DEFAULT_APP
-        BUILD_TYPE=$CONFIG_DEFAULT_BUILD_TYPE
-        ;;
-    1)
-        # One argument - could be operation or app type
-        if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
-            # It's an operation
-            OPERATION="$1"
-            if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
-                # Flash operations need app and build type
-                APP_TYPE=$CONFIG_DEFAULT_APP
-                BUILD_TYPE=$CONFIG_DEFAULT_BUILD_TYPE
-            fi
-        else
-            # It's an app type, use default operation
-            OPERATION="flash_monitor"
-            APP_TYPE="$1"
+case $# in
+0)
+    # No arguments - use defaults
+    OPERATION="flash_monitor"
+    APP_TYPE=$CONFIG_DEFAULT_APP
+    BUILD_TYPE=$CONFIG_DEFAULT_BUILD_TYPE
+    IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
+    ;;
+1)
+    # One argument - could be operation or app type
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+        # It's an operation
+        OPERATION="$1"
+        if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
+            # Flash operations need app, build type, and IDF version
+            APP_TYPE=$CONFIG_DEFAULT_APP
             BUILD_TYPE=$CONFIG_DEFAULT_BUILD_TYPE
+            IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
         fi
-        ;;
-    2)
-        # Two arguments
-        if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
-            # First is operation, second is app type
-            OPERATION="$1"
-            if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
-                APP_TYPE="$2"
-                BUILD_TYPE=$CONFIG_DEFAULT_BUILD_TYPE
-            fi
-        else
-            # First is app type, second is build type
-            OPERATION="flash_monitor"
-            APP_TYPE="$1"
-            BUILD_TYPE="$2"
+    else
+        # It's an app type, use default operation
+        OPERATION="flash_monitor"
+        APP_TYPE="$1"
+        BUILD_TYPE=$CONFIG_DEFAULT_BUILD_TYPE
+        IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
+    fi
+    ;;
+2)
+    # Two arguments
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+        # First is operation, second is app type
+        OPERATION="$1"
+        if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
+            APP_TYPE="$2"
+            BUILD_TYPE=$CONFIG_DEFAULT_BUILD_TYPE
+            IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
         fi
-        ;;
-    3)
-        # Three arguments
-        if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
-            # First is operation, second is app type, third is build type
-            OPERATION="$1"
-            if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
-                APP_TYPE="$2"
-                BUILD_TYPE="$3"
-            fi
-        else
-            # First is app type, second is build type, third is operation
-            OPERATION="$3"
-            APP_TYPE="$1"
-            BUILD_TYPE="$2"
+    else
+        # First is app type, second is build type
+        OPERATION="flash_monitor"
+        APP_TYPE="$1"
+        BUILD_TYPE="$2"
+        IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
+    fi
+    ;;
+3)
+    # Three arguments
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+        # First is operation, second is app type, third is build type
+        OPERATION="$1"
+        if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
+            APP_TYPE="$2"
+            BUILD_TYPE="$3"
+            IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
         fi
-        ;;
-    4)
-        # Four arguments - check for logging flag
-        if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
-            # Operation-first format: operation app build_type --log
-            OPERATION="$1"
-            if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
-                APP_TYPE="$2"
-                BUILD_TYPE="$3"
-            fi
-            if [ "$4" = "--log" ]; then
-                ENABLE_LOGGING=true
-            fi
-        else
-            # Legacy format: app build_type operation --log
-            OPERATION="$3"
-            APP_TYPE="$1"
-            BUILD_TYPE="$2"
-            if [ "$4" = "--log" ]; then
-                ENABLE_LOGGING=true
-            fi
+    else
+        # First is app type, second is build type, third is IDF version
+        OPERATION="flash_monitor"
+        APP_TYPE="$1"
+        BUILD_TYPE="$2"
+        IDF_VERSION="$3"
+    fi
+    ;;
+4)
+    # Four arguments - check for logging flag
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+        # Operation-first format: operation app build_type idf_version
+        OPERATION="$1"
+        if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
+            APP_TYPE="$2"
+            BUILD_TYPE="$3"
+            IDF_VERSION="$4"
         fi
-        ;;
-    5)
-        # Five arguments - check for logging flag
-        if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
-            # Operation-first format: operation app build_type --log name
-            OPERATION="$1"
-            if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
-                APP_TYPE="$2"
-                BUILD_TYPE="$3"
-            fi
-            if [ "$4" = "--log" ]; then
-                ENABLE_LOGGING=true
-                CUSTOM_LOG_NAME="$5"
-            fi
-        else
-            # Legacy format: app build_type operation --log name
-            OPERATION="$3"
-            APP_TYPE="$1"
-            BUILD_TYPE="$2"
-            if [ "$4" = "--log" ]; then
-                ENABLE_LOGGING=true
-                CUSTOM_LOG_NAME="$5"
-            fi
+    else
+        # App-first format: app build_type idf_version operation
+        OPERATION="$4"
+        APP_TYPE="$1"
+        BUILD_TYPE="$2"
+        IDF_VERSION="$3"
+    fi
+    ;;
+5)
+    # Five arguments - check for logging flag
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+        # Operation-first format: operation app build_type idf_version --log
+        OPERATION="$1"
+        if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
+            APP_TYPE="$2"
+            BUILD_TYPE="$3"
+            IDF_VERSION="$4"
         fi
-        ;;
+        if [ "$5" = "--log" ]; then
+            ENABLE_LOGGING=true
+        fi
+    else
+        # App-first format: app build_type idf_version operation --log
+        OPERATION="$4"
+        APP_TYPE="$1"
+        BUILD_TYPE="$2"
+        IDF_VERSION="$3"
+        if [ "$5" = "--log" ]; then
+            ENABLE_LOGGING=true
+        fi
+    fi
+    ;;
+6)
+    # Six arguments - check for logging flag and custom name
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+        # Operation-first format: operation app build_type idf_version --log name
+        OPERATION="$1"
+        if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
+            APP_TYPE="$2"
+            BUILD_TYPE="$3"
+            IDF_VERSION="$4"
+        fi
+        if [ "$5" = "--log" ]; then
+            ENABLE_LOGGING=true
+            CUSTOM_LOG_NAME="$6"
+        fi
+    else
+        # App-first format: app build_type idf_version operation --log name
+        OPERATION="$4"
+        APP_TYPE="$1"
+        BUILD_TYPE="$2"
+        IDF_VERSION="$3"
+        if [ "$5" = "--log" ]; then
+            ENABLE_LOGGING=true
+            CUSTOM_LOG_NAME="$6"
+        fi
+    fi
+    ;;
+*)
+    echo "ERROR: Too many arguments"
+    print_usage
+    exit 1
+    ;;
 esac
 
 # Handle special commands
 if [ "$OPERATION" = "list" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
         echo "ESP32 HardFOC Interface Wrapper - Flash and Monitor Script"
-        echo "Usage: ./flash_app.sh [operation] [app_type] [build_type] [--log [log_name]]"
+        echo "Usage: ./flash_app.sh [operation] [app_type] [build_type] [idf_version] [--log [log_name]]"
         echo ""
         echo "Operations:"
-        echo "  flash [app] [build_type]     - Flash firmware only"
-        echo "  flash_monitor [app] [build_type] - Flash and monitor (default)"
+        echo "  flash [app] [build_type] [idf_version]     - Flash firmware only"
+        echo "  flash_monitor [app] [build_type] [idf_version] - Flash and monitor (default)"
         echo "  monitor                          - Monitor existing firmware"
         echo "  list                             - List available apps"
         echo ""
         echo "Examples:"
-        echo "  ./flash_app.sh flash gpio_test Release --log"
-        echo "  ./flash_app.sh flash_monitor gpio_test Release --log debug_session"
+        echo "  ./flash_app.sh flash gpio_test Release release/v5.5 --log"
+        echo "  ./flash_app.sh flash_monitor gpio_test Release release/v5.5 --log debug_session"
         echo "  ./flash_app.sh monitor --log"
         echo "  ./flash_app.sh list"
         echo ""
@@ -168,29 +205,31 @@ if [ "$OPERATION" = "list" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     done
     echo ""
     echo "Build types: $(get_build_types)"
+    echo "ESP-IDF versions: $(get_idf_versions)"  # NEW: Show available ESP-IDF versions
     echo "Operations: flash, flash_monitor, monitor"
     echo ""
     echo "Operation details:"
-    echo "  <operation> [app_type] [build_type] [--log [log_name]]"
+    echo "  <operation> [app_type] [build_type] [idf_version] [--log [log_name]]"
     echo ""
     echo "Operations:"
-    echo "  flash [app] [build_type]     - Flash firmware only (app/build type defaulted if not specified)"
-    echo "  flash_monitor [app] [build_type] - Flash and monitor (app/build type defaulted if not specified)"
-    echo "  monitor                          - Monitor existing firmware (no app/build type needed)"
+    echo "  flash [app] [build_type] [idf_version]     - Flash firmware only (app/build type/idf version defaulted if not specified)"
+    echo "  flash_monitor [app] [build_type] [idf_version] - Flash and monitor (app/build type/idf version defaulted if not specified)"
+    echo "  monitor                          - Monitor existing firmware (no app/build type/idf version needed)"
     echo ""
     echo "Parameter order:"
-    echo "  Operation-first (recommended):   ./flash_app.sh <operation> [app] [build_type] [--log [name]]"
-    echo "  Legacy format:                   ./flash_app.sh [app] [build_type] [operation] [--log [name]]"
+    echo "  Operation-first (recommended):   ./flash_app.sh <operation> [app] [build_type] [idf_version] [--log [name]]"
+    echo "  Legacy format:                   ./flash_app.sh [app] [build_type] [idf_version] [operation] [--log [name]]"
     echo ""
     echo "Logging options:"
     echo "  --log [name]     Enable logging with optional custom name"
     echo "  Examples:"
-    echo "    ./flash_app.sh flash gpio Release --log                    # Flash with logging"
-    echo "    ./flash_app.sh flash_monitor gpio Release --log            # Flash and monitor with logging"
-    echo "    ./flash_app.sh flash gpio --log                            # Flash with default build type and logging"
-    echo "    ./flash_app.sh flash --log                                 # Flash with defaults and logging"
-    echo "    ./flash_app.sh monitor --log                               # Monitor with logging"
-    echo "    ./flash_app.sh monitor --log debug_session                 # Monitor with custom log name"
+    echo "    ./flash_app.sh flash gpio Release release/v5.5 --log                    # Flash with logging"
+    echo "    ./flash_app.sh flash_monitor gpio Release release/v5.5 --log            # Flash and monitor with logging"
+    echo "    ./flash_app.sh flash gpio Release --log                                 # Flash with default IDF version and logging"
+    echo "    ./flash_app.sh flash gpio --log                                         # Flash with default build type, IDF version and logging"
+    echo "    ./flash_app.sh flash --log                                              # Flash with defaults and logging"
+    echo "    ./flash_app.sh monitor --log                                            # Monitor with logging"
+    echo "    ./flash_app.sh monitor --log debug_session                              # Monitor with custom log name"
     exit 0
 fi
 
@@ -199,6 +238,25 @@ if [ "$OPERATION" = "monitor" ]; then
     # Monitor command - no app type or build type needed
     # Don't set fake values, just leave them empty for monitor-only operations
     :
+fi
+
+# NEW: Validate ESP-IDF version and build type compatibility for flash operations
+if [[ "$OPERATION" =~ ^(flash|flash_monitor)$ ]] && [[ -n "$APP_TYPE" ]]; then
+    # Validate ESP-IDF version compatibility with app
+    if ! validate_app_idf_version "$APP_TYPE" "$IDF_VERSION"; then
+        echo "ERROR: App '$APP_TYPE' does not support ESP-IDF version '$IDF_VERSION'"
+        echo "Supported versions for '$APP_TYPE': $(get_app_idf_versions "$APP_TYPE")"
+        echo "Global ESP-IDF versions: $(get_idf_versions)"
+        exit 1
+    fi
+    
+    # Validate build type compatibility with app
+    if ! validate_app_build_type "$APP_TYPE" "$BUILD_TYPE"; then
+        echo "ERROR: App '$APP_TYPE' does not support build type '$BUILD_TYPE'"
+        echo "Supported build types for '$APP_TYPE': $(get_app_build_types "$APP_TYPE")"
+        echo "Global build types: $(get_build_types)"
+        exit 1
+    fi
 fi
 
 # Ensure ESP-IDF environment is sourced

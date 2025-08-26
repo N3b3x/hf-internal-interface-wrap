@@ -47,7 +47,7 @@ Our project implements multiple security layers:
 
 For detailed security guidelines, best practices, and implementation details, see our comprehensive security documentation:
 
-**[📖 Complete Security Policy & Guidelines](docs/security/SECURITY.md)**
+**[📖 Complete Security Policy & Guidelines](docs/security/README_SECURITY.md)**
 
 This includes:
 - Development security guidelines

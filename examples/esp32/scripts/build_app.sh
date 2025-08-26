@@ -13,12 +13,17 @@ source "$PROJECT_DIR/scripts/config_loader.sh"
 
 # Usage helper
 print_usage() {
-	echo "Usage: ./build_app.sh [app_type] [build_type] [--clean|--no-clean] [--use-cache|--no-cache]"
+	echo "Usage: ./build_app.sh [app_type] [build_type] [idf_version] [--clean|--no-clean] [--use-cache|--no-cache]"
 	echo "Examples:"
-	echo "  ./build_app.sh                # defaults from config"
-	echo "  ./build_app.sh list           # list available apps/build types"
-	echo "  ./build_app.sh gpio_test Release --clean"
-	echo "  ./build_app.sh adc_test Debug --no-cache"
+	echo "  ./build_app.sh                                    # defaults from config"
+	echo "  ./build_app.sh list                               # list available apps/build types"
+	echo "  ./build_app.sh gpio_test Release                  # specific app and build type"
+	echo "  ./build_app.sh adc_test Debug release/v5.5        # specific app, build type, and IDF version"
+	echo "  ./build_app.sh gpio_test Release --clean          # with clean build"
+	echo "  ./build_app.sh adc_test Debug --no-cache          # without cache"
+	echo ""
+	echo "ESP-IDF Versions: $(get_idf_versions)"
+	echo "Build Types: $(get_build_types)"
 }
 
 # Defaults (env overrides allowed); flags below can override these
@@ -54,6 +59,7 @@ done
 # Configuration derived from positionals or config defaults
 APP_TYPE=${POSITIONAL_ARGS[0]:-$CONFIG_DEFAULT_APP}
 BUILD_TYPE=${POSITIONAL_ARGS[1]:-$CONFIG_DEFAULT_BUILD_TYPE}
+IDF_VERSION=${POSITIONAL_ARGS[2]:-$CONFIG_DEFAULT_IDF_VERSION}  # NEW: ESP-IDF version parameter
 
 # Handle special commands
 
@@ -73,9 +79,26 @@ if [ "$APP_TYPE" = "list" ]; then
     done
     echo ""
     echo "Build types: $(get_build_types)"
+    echo "ESP-IDF versions: $(get_idf_versions)"
     echo ""
     echo "Flags: --clean | --no-clean | --use-cache | --no-cache"
     exit 0
+fi
+
+# NEW: Validate ESP-IDF version compatibility with app
+if ! validate_app_idf_version "$APP_TYPE" "$IDF_VERSION"; then
+    echo "ERROR: App '$APP_TYPE' does not support ESP-IDF version '$IDF_VERSION'"
+    echo "Supported versions for '$APP_TYPE': $(get_app_idf_versions "$APP_TYPE")"
+    echo "Global ESP-IDF versions: $(get_idf_versions)"
+    exit 1
+fi
+
+# NEW: Validate build type compatibility with app
+if ! validate_app_build_type "$APP_TYPE" "$BUILD_TYPE"; then
+    echo "ERROR: App '$APP_TYPE' does not support build type '$BUILD_TYPE'"
+    echo "Supported build types for '$APP_TYPE': $(get_app_build_types "$APP_TYPE")"
+    echo "Global build types: $(get_build_types)"
+    exit 1
 fi
 
 # Ensure ESP-IDF environment is sourced
@@ -98,15 +121,10 @@ echo "=== ESP32 HardFOC Interface Wrapper Build System ==="
 echo "Project Directory: $PROJECT_DIR"
 echo "App Type: $APP_TYPE"
 echo "Build Type: $BUILD_TYPE"
-echo "Target: $IDF_TARGET"
-if [ "$USE_CCACHE" = "1" ]; then
-    export IDF_CCACHE_ENABLE=1
-    echo "Compiler cache: ENABLED"
-else
-    unset IDF_CCACHE_ENABLE
-    echo "Compiler cache: DISABLED"
-fi
-echo "======================================================"
+echo "ESP-IDF Version: $IDF_VERSION"  # NEW: Show ESP-IDF version
+echo "Target: $CONFIG_TARGET"
+echo "Build Directory: build_${APP_TYPE}_${BUILD_TYPE}"
+echo "======================================================="
 
 # Validate app type
 if is_valid_app_type "$APP_TYPE"; then
