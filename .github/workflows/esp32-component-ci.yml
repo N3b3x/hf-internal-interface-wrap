@@ -89,10 +89,10 @@ jobs:
       - name: Generate matrix
         id: generate-matrix
         run: |
-          MATRIX=$(python3 .github/workflows/generate_matrix.py)
+          MATRIX=$(python3 .github/workflows/scripts/generate_matrix.py)
           echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
           echo "Generated matrix:"
-          python3 .github/workflows/generate_matrix.py --pretty | jq .
+          python3 .github/workflows/scripts/generate_matrix.py --pretty | jq .
 
   build:
     name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.app_name }}
