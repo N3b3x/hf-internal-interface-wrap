@@ -16,10 +16,14 @@ def load_config():
     possible_paths = [
         # When run from workspace root
         Path("examples/esp32/app_config.yml"),
+        # When run from examples/esp32 directory
+        Path("app_config.yml"),
+        # When run from examples/esp32/scripts directory
+        Path("../app_config.yml"),
         # When run from .github/workflows directory  
         Path("../../examples/esp32/app_config.yml"),
         # Absolute path calculation from script location
-        Path(__file__).resolve().parent.parent / "examples" / "esp32" / "app_config.yml"
+        Path(__file__).resolve().parent.parent / "app_config.yml"
     ]
     
     config_file = None

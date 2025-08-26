@@ -44,7 +44,7 @@ strategy:
 - name: Generate Matrix
   id: matrix
   run: |
-    python3 .github/workflows/scripts/generate_matrix.py
+    python3 examples/esp32/scripts/generate_matrix.py
 ```
 
 ### **Security Audit** (`security-audit.yml`)
@@ -97,13 +97,13 @@ Dynamic CI matrix generator that creates build combinations based on `examples/e
 **Usage**:
 ```bash
 # Generate matrix for GitHub Actions
-python3 .github/workflows/scripts/generate_matrix.py
+python3 examples/esp32/scripts/generate_matrix.py
 
 # Pretty-printed output for debugging
-python3 .github/workflows/scripts/generate_matrix.py --pretty
+python3 examples/esp32/scripts/generate_matrix.py --pretty
 
 # Hierarchical configuration analysis
-python3 .github/workflows/scripts/generate_matrix.py --hierarchical-info
+python3 examples/esp32/scripts/generate_matrix.py --hierarchical-info
 ```
 
 **For detailed documentation, see**: [`scripts/README.md`](scripts/README.md)
@@ -203,13 +203,13 @@ Each matrix entry contains:
 ### **Matrix Analysis**
 ```bash
 # Check total build count
-python3 .github/workflows/scripts/generate_matrix.py --pretty | jq '.include | length'
+python3 examples/esp32/scripts/generate_matrix.py --pretty | jq '.include | length'
 
 # Analyze specific app builds
-python3 .github/workflows/scripts/generate_matrix.py --pretty | jq '.include[] | select(.app_name == "app_name")'
+python3 examples/esp32/scripts/generate_matrix.py --pretty | jq '.include[] | select(.app_name == "app_name")'
 
 # Hierarchical configuration analysis
-python3 .github/workflows/scripts/generate_matrix.py --hierarchical-info
+python3 examples/esp32/scripts/generate_matrix.py --hierarchical-info
 ```
 
 ### **Build Artifacts**
@@ -282,13 +282,13 @@ python3 .github/workflows/scripts/generate_matrix.py --hierarchical-info
 ### **Debug Commands**
 ```bash
 # Validate configuration
-python3 .github/workflows/scripts/generate_matrix.py --metadata
+python3 examples/esp32/scripts/generate_matrix.py --metadata
 
 # Check matrix structure
-python3 .github/workflows/scripts/generate_matrix.py --pretty
+python3 examples/esp32/scripts/generate_matrix.py --pretty
 
 # Analyze configuration hierarchy
-python3 .github/workflows/scripts/generate_matrix.py --hierarchical-info
+python3 examples/esp32/scripts/generate_matrix.py --hierarchical-info
 ```
 
 ---

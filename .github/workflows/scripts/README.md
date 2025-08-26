@@ -327,7 +327,7 @@ jobs:
       - name: Generate Matrix
         id: matrix
         run: |
-          python3 .github/workflows/scripts/generate_matrix.py
+          python3 examples/esp32/scripts/generate_matrix.py
         shell: bash
 ```
 
