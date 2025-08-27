@@ -32,41 +32,10 @@ defaults:
     shell: bash
 
 jobs:
-  setup-environment:
-    name: Setup Development Environment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Cache development tools
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/apt
-            /usr/local/bin
-          key: dev-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
-          restore-keys: |
-            dev-tools-${{ runner.os }}-
-        
-      - name: Setup development environment
-        run: |
-          echo "Setting up development environment..."
-          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
-          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
-          
-      - name: Verify clang-20 installation
-        run: |
-          echo "Verifying clang-20 installation..."
-          clang --version
-          clang-format --version
-          clang-tidy --version
-          echo "Development environment setup complete!"
-
   generate-matrix:
     name: Generate Build Matrix
     runs-on: ubuntu-latest
-    needs: setup-environment
+    # No dependencies needed - this job can run independently
     outputs:
       matrix: ${{ steps.generate-matrix.outputs.matrix }}
     steps:
@@ -96,8 +65,13 @@ jobs:
 
   build:
     name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.app_name }}
+    # This job runs for EACH matrix combination in parallel
+    # Each job gets a fresh runner that:
+    #   - Sets up its own CI build environment
+    #   - Gets ESP-IDF environment from espressif/esp-idf-ci-action@v1
+    #   - Builds using build_app.sh in the prepared CI environment
     runs-on: ubuntu-latest
-    needs: [setup-environment, generate-matrix]
+    needs: [generate-matrix]
     timeout-minutes: 30
     strategy:
       fail-fast: false
@@ -107,6 +81,24 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: Cache essential tools
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/apt
+            /usr/local/bin
+          key: esp32-ci-essential-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
+          restore-keys: |
+            esp32-ci-essential-tools-${{ runner.os }}-
+
+      - name: Setup CI build environment
+        run: |
+          echo "Setting up CI build environment for this build job..."
+          echo "This installs essential build tools and prepares build directory structure"
+          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+          set -e  # Enable error handling
+          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -120,21 +112,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Cache ESP-IDF and tools
-        id: esp-idf-cache
-        uses: actions/cache@v4
-        if: ${{ !inputs.clean_build }}
-        with:
-          path: |
-            ~/.espressif
-            ~/esp
-          key: >-
-            esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
-            ${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh') }}
-          restore-keys: |
-            esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
-            esp-idf-${{ matrix.idf_version_docker }}-
-            esp-idf-
+      # ESP-IDF caching is handled automatically by espressif/esp-idf-ci-action@v1
+      # No need for manual ESP-IDF cache management
       
       - name: Cache Python dependencies
         id: python-cache
@@ -145,12 +124,12 @@ jobs:
             ~/.cache/pip
             ~/.local/lib/python3.*/site-packages
           key: >-
-            python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
+            esp32-ci-python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             ${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh', '${{ env.ESP32_PROJECT_PATH }}/requirements.txt') }}
           restore-keys: |
-            python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
-            python-deps-${{ matrix.idf_version_docker }}-
-            python-deps-
+            esp32-ci-python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
+            esp32-ci-python-deps-${{ matrix.idf_version_docker }}-
+            esp32-ci-python-deps-
       
       - name: Cache ccache
         id: ccache-cache
@@ -159,18 +138,19 @@ jobs:
         with:
           path: ~/.ccache
           key: >-
-            ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}-
+            esp32-ci-ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}-
             ${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
           restore-keys: |
-            ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}-
-            ccache-${{ matrix.idf_version_docker }}-
+            esp32-ci-ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}-
+            esp32-ci-ccache-${{ matrix.idf_version_docker }}-
       
       - name: Log cache results
         run: |
           if [ "${{ inputs.clean_build }}" = "true" ]; then
             echo "🧹 Clean build requested - all caches skipped"
           else
-            echo "ESP-IDF cache hit - ${{ steps.esp-idf-cache.outputs.cache-hit }}"
+            echo "ESP-IDF cache: handled automatically by ESP-IDF CI action"
+            echo "Essential tools cache: using esp32-ci-essential-tools cache"
             echo "Python deps cache hit - ${{ steps.python-cache.outputs.cache-hit }}"
             echo "ccache cache hit - ${{ steps.ccache-cache.outputs.cache-hit }}"
           fi
@@ -186,6 +166,11 @@ jobs:
 
       - name: ESP-IDF Build with caching
         id: build
+        # This action automatically:
+        # 1. Downloads/installs ESP-IDF for the specified version
+        # 2. Sources the ESP-IDF environment (export.sh, PATH, etc.)
+        # 3. Sets up build tools (idf.py, cmake, ninja, etc.)
+        # 4. Provides Docker container with consistent environment
         uses: espressif/esp-idf-ci-action@v1
         with:
           esp_idf_version: ${{ matrix.idf_version_docker }}
@@ -202,14 +187,16 @@ jobs:
             export IDF_TARGET="${{ matrix.target }}"
             export BUILD_TYPE="${{ matrix.build_type }}"
             export APP_TYPE="${{ matrix.app_name }}"
-            export IDF_VERSION="${{ matrix.idf_version }}"
+            # IDF_VERSION is handled automatically by espressif/esp-idf-ci-action@v1
             
-            # Source the CI setup script (which sources setup_common.sh internally)
-            source ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+            # Enable error handling to ensure failures propagate
+            set -e
             
-            # Use the standard build_app.sh for consistency with local development
             echo "Building using build_app.sh for consistency..."
-            cd ${{ env.ESP32_PROJECT_PATH }}
+            echo "Using CI build environment: ${{ env.BUILD_PATH }}"
+            
+            # Change to the CI build environment (prepared by setup_ci.sh)
+            cd ${{ env.BUILD_PATH }}
             
             # Build the application using the same tool as local development
             ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
@@ -248,11 +235,28 @@ jobs:
     name: Static Analysis (cppcheck + clang-tidy)
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    needs: [setup-environment, build]
+    needs: [build]
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: Cache essential tools
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/apt
+            /usr/local/bin
+          key: esp32-ci-essential-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
+          restore-keys: |
+            esp32-ci-essential-tools-${{ runner.os }}-
+
+      - name: Setup CI build environment
+        run: |
+          echo "Setting up CI build environment for static analysis..."
+          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+          set -e  # Enable error handling
+          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
 
       - name: Cache static analysis tools
         uses: actions/cache@v4
@@ -261,7 +265,7 @@ jobs:
             ~/.cache/apt
             ~/.cache/clang-tidy
           key: >-
-            static-analysis-${{ runner.os }}-${{
+            esp32-ci-static-analysis-${{ runner.os }}-${{
               hashFiles(
                 'src/**/*.cpp',
                 'src/**/*.h',
@@ -273,7 +277,7 @@ jobs:
               )
             }}
           restore-keys: |
-            static-analysis-${{ runner.os }}-
+            esp32-ci-static-analysis-${{ runner.os }}-
 
       - name: Print hashFiles result
         run: >-
@@ -289,28 +293,10 @@ jobs:
             )
           }}"
 
-      - name: Install analysis tools
-        run: |
-          echo "Installing analysis tools..."
-          
-          # Add LLVM APT repository for clang-20
-          wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | \
-            sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
-          ubuntu_codename=$(lsb_release -cs)
-          echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | \
-            sudo tee /etc/apt/sources.list.d/llvm.list
-          
-          sudo apt-get update
-          sudo apt-get install -y \
-            clang-20 \
-            clang-tidy-20
-          
-          # Set clang-tidy-20 as default
-          sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
-          
       - name: Verify analysis tools
         run: |
           echo "Verifying analysis tools..."
+          echo "Note: clang-20 and clang-tidy-20 installed by setup_ci.sh"
           clang-tidy --version
           echo "Note: cppcheck runs via Docker container"
           docker run --rm ghcr.io/facthunder/cppcheck:latest cppcheck --version
@@ -366,9 +352,26 @@ jobs:
   workflow-lint:
     name: Workflow Lint (actionlint + yamllint)
     runs-on: ubuntu-latest
-    needs: setup-environment
+    # No dependencies needed - this job can run independently
     steps:
       - uses: actions/checkout@v4
+
+      - name: Cache essential tools
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/apt
+            /usr/local/bin
+          key: esp32-ci-essential-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
+          restore-keys: |
+            esp32-ci-essential-tools-${{ runner.os }}-
+
+      - name: Setup CI build environment
+        run: |
+          echo "Setting up CI build environment for workflow linting..."
+          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+          set -e  # Enable error handling
+          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
 
       - name: Cache lint tools
         uses: actions/cache@v4
@@ -377,9 +380,9 @@ jobs:
             ~/.cache/apt
             ~/actionlint
             ~/.local/bin
-          key: workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
+          key: esp32-ci-workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
           restore-keys: |
-            workflow-tools-${{ runner.os }}-
+            esp32-ci-workflow-tools-${{ runner.os }}-
 
       - name: Install yamllint
         run: |

@@ -1,6 +1,7 @@
 #!/bin/bash
 # ESP32 CI Environment Setup Script
-# This script sets up minimal ESP32 development environment for CI/CD builds
+# This script sets up ONLY what's needed for CI builds
+# ESP-IDF installation and environment is handled by espressif/esp-idf-ci-action@v1
 
 set -e  # Exit on any error
 
@@ -10,7 +11,7 @@ export SETUP_MODE="ci"
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Show help if requested (before sourcing common functions)
+# Show help if requested
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "ESP32 CI Environment Setup Script"
     echo ""
@@ -20,177 +21,267 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "  --help, -h          Show this help message"
     echo ""
     echo "PURPOSE:"
-    echo "  Set up minimal ESP32 development environment for CI/CD builds"
-    echo ""
-    echo "WHAT IT INSTALLS:"
-    echo "  • System dependencies (build tools, libraries, minimal packages)"
-    echo "  • Clang-20 toolchain (compiler, formatter, analyzer, tools)"
-    echo "  • ESP-IDF v5.5 (ESP32 development framework with tools)"
-    echo "  • Python dependencies (PyYAML, pip packages)"
-    echo "  • yq (YAML processor for configuration parsing)"
-    echo "  • CI-optimized environment configuration"
-    echo "  • Cache optimization for CI environments"
+    echo "  Set up minimal CI environment for ESP32 builds"
+    echo "  ESP-IDF installation is handled by espressif/esp-idf-ci-action@v1"
     echo ""
     echo "WHAT IT DOES:"
-    echo "  • Installs minimal required dependencies for CI builds"
-    echo "  • Sets up ESP-IDF development framework"
-    echo "  • Configures Clang toolchain for CI builds"
-    echo "  • Optimizes environment for CI/CD pipelines"
-    echo "  • Provides cache optimization and statistics"
-    echo "  • Skips installation if components found in cache"
-    echo "  • Sets up environment variables for CI builds"
+    echo "  • Installs essential build tools (clang-20, clang-format, clang-tidy)"
+    echo "  • Installs Python dependencies (PyYAML, yq)"
+    echo "  • Sets up CI build directory structure"
+    echo "  • Prepares environment for build_app.sh"
     echo ""
-    echo "CI-SPECIFIC FEATURES:"
-    echo "  • Cache-aware installation (skips if already present)"
-    echo "  • Minimal dependency installation (CI-optimized)"
-    echo "  • Cache usage optimization and statistics"
-    echo "  • Environment variable configuration for CI"
-    echo "  • Build directory management for CI builds"
-    echo "  • Automated project building and testing"
+    echo "WHAT IT DOES NOT DO:"
+    echo "  • Install ESP-IDF (handled by ESP-IDF CI action)"
+    echo "  • Source ESP-IDF environment (handled by ESP-IDF CI action)"
+    echo "  • Set up build tools (handled by ESP-IDF CI action)"
     echo ""
-    echo "BUILD APPROACH:"
-    echo "  • Environment setup: setup_ci.sh (this script)"
-    echo "  • Building: build_app.sh (for consistency with local development)"
-    echo "  • Environment-based configuration via variables"
-    echo "  • Cache optimization for faster CI builds"
+    echo "CI WORKFLOW:"
+    echo "  1. This script runs in setup-environment job"
+    echo "  2. ESP-IDF CI action handles ESP-IDF setup in build jobs"
+    echo "  3. build_app.sh creates build directories and builds"
     echo ""
-    echo "REQUIREMENTS:"
-    echo "  • sudo access for package installation"
-    echo "  • Internet connection for downloads"
-    echo "  • CI environment with caching support"
-    echo "  • At least 1GB free disk space"
-    echo "  • Supported operating systems: Ubuntu, Fedora, CentOS"
-    echo ""
-    echo "CI VARIABLES:"
-    echo "  • BUILD_PATH: Custom build directory path"
-    echo "  • ESP32_PROJECT_PATH: Path to ESP32 project"
-    echo "  • IDF_TARGET: Target MCU (default: esp32c6)"
-    echo "  • BUILD_TYPE: Build configuration (default: Release)"
-    echo "  • APP_TYPE: Application type (default: hardfoc_interface)"
-    echo "  • IDF_VERSION: ESP-IDF version (default: release/v5.5)"
-    echo ""
-    echo "CACHE OPTIMIZATION:"
-    echo "  • ESP-IDF git history cleaning (saves ~100-200MB)"
-    echo "  • Build file cleanup for cache optimization"
-    echo "  • Pip cache management and optimization"
-    echo "  • ccache integration for build acceleration"
-    echo ""
-    echo "ALTERNATIVES:"
-    echo "  • For local development setup, use: ./setup_repo.sh"
-    echo "  • For shared functions only, use: source ./setup_common.sh"
-    echo ""
-    echo "For detailed information, see: docs/README_UTILITY_SCRIPTS.md"
     exit 0
 fi
 
-# Source the common setup functions
-source "$SCRIPT_DIR/setup_common.sh"
+# Source the common setup functions for utility functions only
+if ! source "$SCRIPT_DIR/setup_common.sh"; then
+    echo "ERROR: Failed to source setup_common.sh"
+    echo "This script requires the common setup functions to be available"
+    exit 1
+fi
 
-# Main setup function for CI
-main() {
-    echo "Setting up CI environment..."
+# Function to install essential build tools for CI
+install_ci_build_tools() {
+    echo "Installing essential build tools for CI..."
     
-    # Install essential components for CI
-    install_system_deps
-    install_clang_tools
-    install_yq
-    
-    # Cache-aware ESP-IDF installation
-    if [[ -d "$HOME/.espressif" && -d "$HOME/esp/esp-idf" ]]; then
-        echo "ESP-IDF found in cache, skipping installation"
-        echo "ESP-IDF path: $HOME/esp/esp-idf"
-        echo "Tools path: $HOME/.espressif"
-    else
-        echo "ESP-IDF not found in cache, installing..."
-        install_esp_idf
-    fi
-    
-    # Source ESP-IDF environment for CI builds
-    echo "Setting up ESP-IDF environment for CI builds..."
-    if [[ -f "$HOME/.espressif/export.sh" ]]; then
-        source "$HOME/.espressif/export.sh"
-        echo "ESP-IDF environment sourced successfully"
+    # Add LLVM APT repository for clang-20
+    if ! command -v clang-20 &> /dev/null; then
+        echo "Installing Clang-20 toolchain..."
+        wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | \
+            sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+        ubuntu_codename=$(lsb_release -cs)
+        echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | \
+            sudo tee /etc/apt/sources.list.d/llvm.list
         
-        # Verify idf.py is available
-        if command_exists idf.py; then
-            echo "idf.py verified: $(idf.py --version | head -1)"
-        else
-            echo "ERROR: idf.py not found after sourcing ESP-IDF environment"
-            exit 1
-        fi
+        sudo apt-get update
+        sudo apt-get install -y \
+            clang-20 \
+            clang-format-20 \
+            clang-tidy-20
+        
+        # Set clang-20 as default
+        sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100
+        sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-20 100
+        sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
+        
+        echo "Clang-20 toolchain installed successfully"
     else
-        echo "ERROR: ESP-IDF export.sh not found"
-        exit 1
+        echo "Clang-20 toolchain already installed"
     fi
-    
-    # Cache-aware Python dependencies installation
-    if [[ -d "$HOME/.cache/pip" && -d "$HOME/.local/lib" ]]; then
-        echo "Python dependencies found in cache, skipping installation"
-    else
-        echo "Python dependencies not found in cache, installing..."
-        install_python_deps
-    fi
-    
-    # Optimize cache for CI environment
-    ci_optimize_cache
-    
-    ci_setup_environment
-    
-    # Check cache status
-    ci_check_cache_status
-    
-    # Verify essential tools
-    verify_installation
-    
-    # Show cache statistics
-    echo ""
-    echo "======================================================="
-    echo "CACHE STATISTICS SUMMARY"
-    echo "======================================================="
-    
-    if [[ -d "$HOME/.espressif" ]]; then
-        local esp_size=$(du -sh "$HOME/.espressif" 2>/dev/null | cut -f1)
-        echo "ESP-IDF Tools: $esp_size"
-    fi
-    
-    if [[ -d "$HOME/esp" ]]; then
-        local esp_idf_size=$(du -sh "$HOME/esp" 2>/dev/null | cut -f1)
-        echo "ESP-IDF Source: $esp_idf_size"
-    fi
-    
-    if [[ -d "$HOME/.cache/pip" ]]; then
-        local pip_size=$(du -sh "$HOME/.cache/pip" 2>/dev/null | cut -f1)
-        echo "Python Cache: $pip_size"
-    fi
-    
-    if [[ -d "$HOME/.ccache" ]]; then
-        local ccache_size=$(du -sh "$HOME/.ccache" 2>/dev/null | cut -f1)
-        echo "ccache: $ccache_size"
-    fi
-    
-    echo "======================================================="
-    echo "CI environment setup complete!"
-    
-    # Show build capabilities
-    echo ""
-    echo "======================================================="
-    echo "BUILD CAPABILITIES AVAILABLE"
-    echo "======================================================="
-    echo "Environment variables for builds:"
-    echo "  • BUILD_PATH - Build directory path (default: ci_build_path)"
-    echo "  • ESP32_PROJECT_PATH - ESP32 project path (default: examples/esp32)"
-    echo "  • IDF_TARGET - ESP-IDF target (default: esp32c6)"
-    echo "  • BUILD_TYPE - Build type (default: Release)"
-    echo "  • APP_TYPE - Application type (default: hardfoc_interface)"
-    echo "  • IDF_VERSION - ESP-IDF version (default: release/v5.5)"
-    echo ""
-    echo "Build approach:"
-    echo "  • Environment setup: setup_ci.sh (this script)"
-    echo "  • Building: build_app.sh (for consistency with local development)"
-    echo "======================================================="
 }
 
+# Function to install Python dependencies for CI
+install_ci_python_deps() {
+    echo "Installing Python dependencies for CI..."
+    
+    # Install PyYAML for configuration parsing
+    if ! python3 -c "import yaml" 2>/dev/null; then
+        echo "Installing PyYAML..."
+        pip3 install PyYAML
+    else
+        echo "PyYAML already installed"
+    fi
+    
+    # Install yq for YAML processing
+    if ! command -v yq &> /dev/null; then
+        echo "Installing yq..."
+        sudo wget -qO /usr/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+        sudo chmod +x /usr/bin/yq
+        echo "yq installed successfully"
+    else
+        echo "yq already installed"
+    fi
+}
 
+# Function to setup CI build directory structure
+setup_ci_build_structure() {
+    echo "Setting up CI build directory structure..."
+    
+    # Get project paths
+    local project_dir="$SCRIPT_DIR/.."
+    local ci_build_path="${BUILD_PATH:-ci_build_path}"
+    
+    echo "Project directory: $project_dir"
+    echo "CI build path: $ci_build_path"
+    
+    # Create CI build directory
+    mkdir -p "$ci_build_path"
+    
+    # Copy essential files for CI builds
+    echo "Copying essential files to CI build directory..."
+    
+    # Copy scripts directory (needed by build_app.sh)
+    if [[ -d "$project_dir/scripts" ]]; then
+        cp -r "$project_dir/scripts" "$ci_build_path/"
+        echo "✓ Scripts directory copied"
+    else
+        echo "⚠ Scripts directory not found"
+    fi
+    
+    # Copy app_config.yml (needed for configuration)
+    if [[ -f "$project_dir/app_config.yml" ]]; then
+        cp "$project_dir/app_config.yml" "$ci_build_path/"
+        echo "✓ app_config.yml copied"
+    else
+        echo "⚠ app_config.yml not found"
+    fi
+    
+    # Copy source files (needed for building)
+    if [[ -d "$project_dir/src" ]]; then
+        cp -r "$project_dir/src" "$ci_build_path/"
+        echo "✓ Source files copied"
+    else
+        echo "⚠ Source files not found"
+    fi
+    
+    # Copy include files (needed for building)
+    if [[ -d "$project_dir/inc" ]]; then
+        cp -r "$project_dir/inc" "$ci_build_path/"
+        echo "✓ Include files copied"
+    else
+        echo "⚠ Include files not found"
+    fi
+    
+    # Copy CMakeLists.txt and other build files
+    for file in CMakeLists.txt main CMakeLists.txt.in; do
+        if [[ -f "$project_dir/$file" ]]; then
+            cp "$project_dir/$file" "$ci_build_path/"
+            echo "✓ $file copied"
+        fi
+    done
+    
+    # Copy examples directory (contains the actual apps)
+    if [[ -d "$project_dir/examples" ]]; then
+        cp -r "$project_dir/examples" "$ci_build_path/"
+        echo "✓ Examples directory copied"
+    else
+        echo "⚠ Examples directory not found"
+    fi
+    
+    echo "CI build directory structure setup complete"
+    echo "Build directory: $ci_build_path"
+    ls -la "$ci_build_path"
+}
 
-# Run main function
-main "$@"
+# Function to verify CI setup
+verify_ci_setup() {
+    echo "Verifying CI setup..."
+    
+    local project_dir="$SCRIPT_DIR/.."
+    local ci_build_path="${BUILD_PATH:-ci_build_path}"
+    
+    # Check essential tools
+    local tools_ok=true
+    for tool in clang-20 clang-format-20 clang-tidy-20 python3 yq; do
+        if command -v "$tool" &> /dev/null; then
+            echo "✓ $tool: $(command -v "$tool")"
+        else
+            echo "✗ $tool: not found"
+            tools_ok=false
+        fi
+    done
+    
+    # Check Python dependencies
+    local python_ok=true
+    for module in yaml; do
+        if python3 -c "import $module" 2>/dev/null; then
+            echo "✓ Python module: $module"
+        else
+            echo "✗ Python module: $module: not found"
+            python_ok=false
+        fi
+    done
+    
+    # Check build directory structure
+    local structure_ok=true
+    local required_files=("scripts" "app_config.yml" "src" "inc" "examples")
+    for item in "${required_files[@]}"; do
+        if [[ -e "$ci_build_path/$item" ]]; then
+            echo "✓ Build directory: $item"
+        else
+            echo "✗ Build directory: $item: not found"
+            structure_ok=false
+        fi
+    done
+    
+    # Summary
+    echo ""
+    echo "CI Setup Verification Summary:"
+    if $tools_ok && $python_ok && $structure_ok; then
+        echo "✅ All components ready for CI builds"
+        return 0
+    else
+        echo "❌ Some components missing - CI builds may fail"
+        return 1
+    fi
+}
+
+# Main CI setup function
+main() {
+    echo "Setting up CI environment..."
+    echo ""
+    
+    # Debug environment variables
+    echo "CI Environment Variables:"
+    echo "  BUILD_PATH: ${BUILD_PATH:-'not set (using default: ci_build_path)'}"
+    echo "  ESP32_PROJECT_PATH: ${ESP32_PROJECT_PATH:-'not set'}"
+    echo "  IDF_TARGET: ${IDF_TARGET:-'not set'}"
+    echo "  BUILD_TYPE: ${BUILD_TYPE:-'not set'}"
+    echo "  APP_TYPE: ${APP_TYPE:-'not set'}"
+    echo "  IDF_VERSION: ${IDF_VERSION:-'not set (handled by ESP-IDF CI action)'}"
+    echo ""
+    
+    # Install essential build tools
+    install_ci_build_tools
+    
+    # Install Python dependencies
+    install_ci_python_deps
+    
+    # Setup CI build directory structure
+    setup_ci_build_structure
+    
+    # Verify setup
+    if verify_ci_setup; then
+        echo ""
+        echo "======================================================="
+        echo "CI ENVIRONMENT SETUP COMPLETED SUCCESSFULLY"
+        echo "======================================================="
+        echo ""
+        echo "What happens next:"
+        echo "  1. ESP-IDF CI action will handle ESP-IDF installation"
+        echo "  2. build_app.sh will create build directories in $ci_build_path"
+        echo "  3. Builds will use the prepared CI environment"
+        echo ""
+        echo "Build directory: ${BUILD_PATH:-ci_build_path}"
+        echo "Ready for CI builds!"
+    else
+        echo ""
+        echo "======================================================="
+        echo "CI ENVIRONMENT SETUP COMPLETED WITH WARNINGS"
+        echo "======================================================="
+        echo "Some components may not be available for builds"
+        echo "Check the verification output above for details"
+    fi
+}
+
+# Run main function with error handling
+if main "$@"; then
+    exit 0
+else
+    echo ""
+    echo "======================================================="
+    echo "CI ENVIRONMENT SETUP FAILED"
+    echo "======================================================="
+    echo "Please check the error messages above for details"
+    exit 1
+fi

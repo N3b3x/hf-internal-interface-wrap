@@ -25,31 +25,71 @@ The ESP32 utility scripts provide essential tools for development environment se
 
 ### **Core Features**
 - **Cross-Platform Port Detection**: Automatic ESP32 device identification
-- **Environment Automation**: Complete development environment setup
+- **Environment Separation**: Clear separation between local development and CI environments
 - **Intelligent Troubleshooting**: Automated problem detection and resolution
 - **Configuration Management**: Centralized configuration and information access
-- **CI/CD Integration**: Optimized for automated environments
+- **CI/CD Integration**: Optimized for automated environments with minimal dependencies
 
 ### **Key Capabilities**
 - Automatic ESP32 device detection across platforms
-- Complete development environment setup and configuration
+- **Dual Environment Setup**: Local development (complete) and CI (minimal)
 - Intelligent dependency management and installation
 - Cross-platform compatibility and optimization
 - Automated troubleshooting and problem resolution
+- **CI-Specific Optimizations**: Cache management and build directory preparation
 
 ## 🏗️ **Architecture and Design**
 
-### **System Architecture**
+### **New System Architecture**
 ```
-Utility Scripts → Platform Detection → Environment Setup → Tool Installation → Validation
+Utility Scripts → Environment Detection → Setup Selection → Tool Installation → Validation
       ↓              ↓                    ↓                ↓                ↓
-Port Detection   OS Detection      Dependency Mgmt    Tool Setup      Environment
-& Troubleshooting  & Adaptation     & Installation     & Config        Verification
+Port Detection   Local vs CI        setup_repo.sh      Dependency Mgmt   Environment
+& Troubleshooting  Environment       vs setup_ci.sh     & Installation    Verification
+```
+
+### **Environment Setup Architecture**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           SETUP COMMON FUNCTIONS                            │
+│                    (setup_common.sh - shared utilities)                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  • System dependency installation                                           │
+│  • Clang toolchain setup                                                    │
+│  • ESP-IDF installation and management                                      │
+│  • Python dependency management                                             │
+│  • Cross-platform compatibility functions                                   │
+│  • Cache optimization and management                                        │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    ENVIRONMENT-SPECIFIC SETUP                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  🏠 LOCAL DEVELOPMENT (setup_repo.sh)        🏭 CI/CD (setup_ci.sh)         │
+│  • Full development environment              • Minimal CI dependencies      │
+│  • Interactive user setup                    • Non-interactive operation    │
+│  • Complete tool installation                • Cache-aware installation     │
+│  • Environment variables setup               • Build directory preparation  │
+│  • Development aliases                       • CI-specific optimizations    │
+│  • ESP-IDF auto-installation                • ESP-IDF handled by CI action  │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           BUILD SYSTEM INTEGRATION                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  • build_app.sh uses environment from setup                                 │
+│  • flash_app.sh integrates with setup                                       │
+│  • CI workflows use setup_ci.sh for environment                             │
+│  • Local development uses setup_repo.sh for environment                     │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### **Component Interaction**
 - **Port Detection**: Cross-platform ESP32 device identification
-- **Environment Setup**: Automated dependency and tool installation
+- **Environment Setup**: Automated dependency and tool installation with environment separation
 - **Configuration Tools**: Centralized configuration management
 - **Troubleshooting**: Automated problem detection and resolution
 - **Platform Adaptation**: Cross-platform compatibility and optimization
@@ -60,6 +100,7 @@ Port Detection   OS Detection      Dependency Mgmt    Tool Setup      Environmen
 - **Intelligent Fallbacks**: Graceful degradation when tools unavailable
 - **Performance Optimized**: Efficient execution and resource usage
 - **User Experience**: Clear feedback and error handling
+- **Environment Separation**: Clear distinction between local development and CI needs
 
 ## 🔌 **Port Detection and Troubleshooting**
 
@@ -164,11 +205,13 @@ groups $USER
 
 ## ⚙️ **Environment Setup and Automation**
 
-### **Local Development Setup**
+### **Dual Environment Setup System**
 
-#### **Complete Environment Initialization**
+The system now provides two distinct setup approaches optimized for different use cases:
+
+#### **Local Development Setup (setup_repo.sh)**
 ```bash
-# Full development environment setup
+# Complete development environment setup
 ./setup_repo.sh
 
 # What it installs
@@ -178,40 +221,54 @@ groups $USER
 - Python dependencies (PyYAML)
 - yq (YAML processor)
 - Development aliases and environment variables
+- Complete development toolchain
 ```
 
-#### **Interactive Setup Process**
+#### **CI/CD Environment Setup (setup_ci.sh)**
 ```bash
-# User-friendly setup
+# CI-optimized environment setup
+./setup_ci.sh
+
+# What it installs
+- Essential build tools (clang-20, clang-format, clang-tidy)
+- Python dependencies (PyYAML, yq)
+- CI build directory structure
+- Minimal dependencies for CI builds
+- ESP-IDF handled by ESP-IDF CI action
+```
+
+### **Environment-Specific Features**
+
+#### **Local Development Features**
+```bash
+# Interactive setup process
 - OS detection and adaptation
 - Dependency verification
 - Installation confirmation
 - Progress feedback
 - Completion verification
+- User guidance and troubleshooting
 ```
 
-### **CI/CD Environment Setup**
-
-#### **Optimized CI Environment**
+#### **CI/CD Environment Features**
 ```bash
-# CI-specific setup
-./setup_ci.sh
-
 # CI optimizations
 - Cache-aware installation
 - Minimal dependency installation
 - Non-interactive operation
 - Cache statistics and reporting
+- Build directory preparation
+- ESP-IDF integration with CI actions
 ```
 
-#### **Cache Management**
-```bash
-# Cache optimization
-- ESP-IDF toolchain caching
-- Python dependency caching
-- Build tool caching
-- Cache hit rate monitoring
-```
+### **Setup Script Selection Guide**
+
+| Use Case | Setup Script | Key Benefits |
+|----------|--------------|--------------|
+| **Local Development** | `setup_repo.sh` | Complete toolchain, interactive setup, ESP-IDF auto-installation |
+| **CI/CD Pipelines** | `setup_ci.sh` | Minimal dependencies, cache optimization, non-interactive |
+| **New Developer Setup** | `setup_repo.sh` | Full environment, user guidance, complete toolchain |
+| **Automated Builds** | `setup_ci.sh` | Fast setup, minimal resources, CI integration |
 
 ### **Cross-Platform Compatibility**
 
@@ -236,6 +293,7 @@ groups $USER
 - Version compatibility checking
 - Installation method selection
 - Fallback mechanisms
+- Environment-specific optimization
 ```
 
 ## 🔧 **Configuration and Information Tools**
@@ -295,6 +353,49 @@ execute_process(
 
 ## 🚀 **Usage Examples and Patterns**
 
+### **Environment Setup Workflows**
+
+#### **1. Local Development Setup**
+```bash
+# Complete local setup
+./setup_repo.sh
+
+# Setup process
+1. OS detection and adaptation
+2. Dependency verification
+3. Tool installation
+4. Environment configuration
+5. Verification and testing
+6. User guidance and troubleshooting
+```
+
+#### **2. CI/CD Environment Setup**
+```bash
+# CI environment setup
+./setup_ci.sh
+
+# CI process
+1. Cache-aware installation
+2. Minimal dependency setup
+3. Environment optimization
+4. Cache statistics
+5. Build directory preparation
+6. ESP-IDF CI action integration
+```
+
+#### **3. Environment Verification**
+```bash
+# Verify setup
+./setup_repo.sh --verify
+
+# Verification checks
+- Tool availability
+- Version compatibility
+- Path configuration
+- Environment variables
+- Functionality testing
+```
+
 ### **Port Detection Workflows**
 
 #### **1. Basic Port Detection**
@@ -329,47 +430,6 @@ execute_process(
 - Port accessibility verification
 - Connection stability testing
 - Error detection and reporting
-```
-
-### **Environment Setup Workflows**
-
-#### **1. Local Development Setup**
-```bash
-# Complete local setup
-./setup_repo.sh
-
-# Setup process
-1. OS detection and adaptation
-2. Dependency verification
-3. Tool installation
-4. Environment configuration
-5. Verification and testing
-```
-
-#### **2. CI/CD Environment Setup**
-```bash
-# CI environment setup
-./setup_ci.sh
-
-# CI process
-1. Cache-aware installation
-2. Minimal dependency setup
-3. Environment optimization
-4. Cache statistics
-5. Verification
-```
-
-#### **3. Environment Verification**
-```bash
-# Verify setup
-./setup_repo.sh --verify
-
-# Verification checks
-- Tool availability
-- Version compatibility
-- Path configuration
-- Environment variables
-- Functionality testing
 ```
 
 ### **Configuration Management Workflows**
@@ -428,6 +488,19 @@ execute_process(
 5. Verification testing
 ```
 
+#### **3. Environment-Specific Troubleshooting**
+```bash
+# Local development issues
+./setup_repo.sh --debug
+
+# CI environment issues
+./setup_ci.sh --debug
+
+# Environment verification
+./setup_repo.sh --verify  # Local
+./setup_ci.sh --verify    # CI
+```
+
 ## 🔍 **Troubleshooting and Debugging**
 
 ### **Common Port Issues**
@@ -482,7 +555,23 @@ sudo nano /etc/udev/rules.d/99-esp32.rules
 
 ### **Environment Setup Issues**
 
-#### **1. Dependency Installation Failures**
+#### **1. Setup Script Selection Issues**
+**Problem**: Wrong setup script for environment
+**Symptoms**: Setup errors or missing functionality
+**Solutions**:
+```bash
+# For local development (complete environment)
+./setup_repo.sh
+
+# For CI/CD (minimal environment)
+./setup_ci.sh
+
+# Check script help for details
+./setup_repo.sh --help
+./setup_ci.sh --help
+```
+
+#### **2. Dependency Installation Failures**
 **Problem**: Required tools not installed
 **Symptoms**: "Command not found" or installation errors
 **Solutions**:
@@ -494,27 +583,28 @@ which git cmake ninja ccache
 sudo apt-get install git cmake ninja-build ccache
 
 # Verify installation
-./setup_repo.sh --verify
+./setup_repo.sh --verify  # Local
+./setup_ci.sh --verify    # CI
 ```
 
-#### **2. ESP-IDF Installation Issues**
+#### **3. ESP-IDF Installation Issues**
 **Problem**: ESP-IDF not properly installed
 **Symptoms**: "ESP-IDF not found" or environment errors
 **Solutions**:
 ```bash
-# Check ESP-IDF installation
-ls -la ~/esp/esp-idf/
-echo $IDF_PATH
-
-# Reinstall ESP-IDF
+# Local development
 ./setup_repo.sh --reinstall-esp-idf
+
+# CI environment
+# Ensure ESP-IDF CI action is properly configured
+# setup_ci.sh doesn't install ESP-IDF
 
 # Verify environment
 source ~/esp/esp-idf/export.sh
 idf.py --version
 ```
 
-#### **3. Permission and Path Issues**
+#### **4. Permission and Path Issues**
 **Problem**: Insufficient permissions or incorrect paths
 **Symptoms**: "Permission denied" or "Path not found" errors
 **Solutions**:
@@ -543,6 +633,7 @@ export VERBOSE=1
 # Run with debug output
 ./detect_ports.sh --verbose
 ./setup_repo.sh --debug
+./setup_ci.sh --debug
 ./get_app_info.py --verbose
 ```
 
@@ -555,6 +646,8 @@ export VERBOSE=1
 - Installation process information
 - Configuration loading details
 - Error context and resolution
+- Environment setup process details
+- CI vs local environment differences
 ```
 
 ## 📚 **Reference and Examples**
@@ -573,14 +666,23 @@ export VERBOSE=1
 
 #### **Setup Commands**
 ```bash
-./setup_repo.sh [options]     # Local development setup
-./setup_ci.sh [options]       # CI/CD environment setup
+./setup_repo.sh [options]     # Local development setup (complete environment)
+./setup_ci.sh [options]       # CI/CD environment setup (minimal dependencies)
 
 # Common options:
 #   --help, -h           - Show usage information
 #   --verify             - Verify installation
 #   --debug             - Enable debug output
-#   --reinstall-esp-idf - Reinstall ESP-IDF
+#   --reinstall-esp-idf - Reinstall ESP-IDF (setup_repo.sh only)
+
+# Environment-specific options:
+# setup_repo.sh:
+#   --interactive        - Interactive setup mode
+#   --non-interactive   - Non-interactive setup mode
+
+# setup_ci.sh:
+#   --optimize-cache    - Optimize cache for CI
+#   --check-cache       - Check cache status
 ```
 
 #### **Configuration Commands**
@@ -611,6 +713,13 @@ export SETUP_MODE="local"          # Set setup mode (local/ci)
 export ESP_IDF_VERSION="v5.5"      # Set ESP-IDF version
 export CLANG_VERSION="20"          # Set Clang version
 export PYTHON_VERSION="3.9"        # Set Python version
+
+# Environment-specific variables
+export BUILD_PATH="ci_build_path"  # CI build path (setup_ci.sh)
+export ESP32_PROJECT_PATH="examples/esp32"  # Project path
+export IDF_TARGET="esp32c6"        # Target MCU
+export BUILD_TYPE="Release"        # Build type
+export APP_TYPE="gpio_test"        # Application type
 ```
 
 #### **Debug Configuration Variables**
@@ -648,15 +757,31 @@ export PORT_DEBUG=1                # Enable port debug mode
 ```
 
 #### **Environment Setup Configuration**
+
+#### **Local Development Setup**
 ```bash
 # Complete environment setup
 ./setup_repo.sh
 
 # Expected behavior
 - OS detection and adaptation
-- Dependency installation
+- Complete dependency installation
 - Tool configuration
 - Environment verification
+- Interactive user guidance
+```
+
+#### **CI/CD Environment Setup**
+```bash
+# CI-optimized environment setup
+./setup_ci.sh
+
+# Expected behavior
+- Minimal dependency installation
+- Cache-aware setup
+- Build directory preparation
+- Non-interactive operation
+- CI-specific optimizations
 ```
 
 ### **Integration Examples**
@@ -680,6 +805,8 @@ add_custom_target(validate_config
 ```
 
 #### **CI/CD Integration**
+
+#### **GitHub Actions Integration**
 ```yaml
 # GitHub Actions utility integration
 - name: Setup ESP32 Environment
@@ -698,6 +825,42 @@ add_custom_target(validate_config
     python3 ./scripts/get_app_info.py validate gpio_test
 ```
 
+#### **GitLab CI Integration**
+```yaml
+# GitLab CI utility integration
+setup_environment:
+  script:
+    - cd examples/esp32
+    - ./scripts/setup_ci.sh
+  artifacts:
+    paths:
+      - examples/esp32/ci_build_path/
+```
+
+#### **Jenkins Pipeline Integration**
+```groovy
+// Jenkins Pipeline utility integration
+pipeline {
+  agent any
+  stages {
+    stage('Setup Environment') {
+      steps {
+        script {
+          sh 'cd examples/esp32 && ./scripts/setup_ci.sh'
+        }
+      }
+    }
+    stage('Detect Ports') {
+      steps {
+        script {
+          sh 'cd examples/esp32 && ./scripts/detect_ports.sh --verbose'
+        }
+      }
+    }
+  }
+}
+```
+
 #### **Automation Scripts**
 ```bash
 #!/bin/bash
@@ -705,13 +868,22 @@ add_custom_target(validate_config
 
 cd examples/esp32
 
-# Setup development environment
-echo "Setting up development environment..."
-./setup_repo.sh
+# Choose setup based on environment
+if [[ "$CI" == "true" ]]; then
+    echo "Setting up CI environment..."
+    ./setup_ci.sh
+else
+    echo "Setting up local development environment..."
+    ./setup_repo.sh
+fi
 
 # Verify setup
 echo "Verifying setup..."
-./setup_repo.sh --verify
+if [[ "$CI" == "true" ]]; then
+    ./setup_ci.sh --verify
+else
+    ./setup_repo.sh --verify
+fi
 
 # Detect available ports
 echo "Detecting ESP32 ports..."
@@ -733,7 +905,8 @@ echo "Setup complete!"
 - Use automatic detection when possible
 
 #### **2. Environment Setup**
-- Use appropriate setup script for your environment
+- **Local Development**: Use `setup_repo.sh` for complete development environment
+- **CI/CD**: Use `setup_ci.sh` for minimal CI dependencies
 - Verify installation after setup
 - Monitor cache usage and optimization
 - Regular environment verification
@@ -749,6 +922,7 @@ echo "Setup complete!"
 - Use systematic problem resolution approach
 - Document solutions for future reference
 - Regular system health checks
+- Use environment-specific troubleshooting approaches
 
 ---
 

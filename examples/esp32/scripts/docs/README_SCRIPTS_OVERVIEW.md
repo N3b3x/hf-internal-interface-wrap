@@ -25,21 +25,23 @@ The ESP32 scripts directory contains a comprehensive suite of scripts designed t
 
 ### **Core Design Principles**
 - **Configuration-Driven**: All behavior controlled through centralized YAML configuration
-- **🛡️ Enhanced Validation**: Smart combination validation and error prevention
-- **🧠 Smart Defaults**: Automatic ESP-IDF version selection based on app and build type
+- **Enhanced Validation**: Smart combination validation and error prevention
+- **Smart Defaults**: Automatic ESP-IDF version selection based on app and build type
 - **Cross-Platform**: Consistent behavior across Linux and macOS
 - **Professional Quality**: Comprehensive error handling, logging, and user feedback
 - **Modular Design**: Scripts can be used independently or as part of integrated workflows
+- **Environment Separation**: Clear separation between local development and CI environments
 
 ### **Key Capabilities**
 - **Build Management**: Intelligent ESP-IDF integration with validation
-- **🆕 Enhanced Validation**: Smart combination validation and error prevention
-- **🆕 Smart Defaults**: Automatic ESP-IDF version selection for builds
+- **Enhanced Validation**: Smart combination validation and error prevention
+- **Smart Defaults**: Automatic ESP-IDF version selection for builds
 - **Flash Operations**: Port detection, firmware flashing, and monitoring
 - **Log Management**: Comprehensive logging with search and analysis
 - **Environment Setup**: Automated dependency installation and configuration
 - **Port Detection**: Cross-platform ESP32 device identification
 - **Configuration Validation**: YAML-based configuration with intelligent fallbacks
+- **CI/CD Optimization**: Specialized CI environment setup with minimal dependencies
 
 ## 🏗️ **Architecture and Design**
 
@@ -59,23 +61,64 @@ examples/esp32/scripts/
 ├── manage_logs.sh                  # Log management and analysis
 ├── config_loader.sh                # Configuration loading and validation
 ├── detect_ports.sh                 # Port detection and troubleshooting
-├── setup_common.sh                 # Common setup and environment
-├── setup_ci.sh                     # CI/CD environment setup
-├── setup_repo.sh                   # Repository setup and initialization
+├── setup_common.sh                 # Shared setup functions for all environments
+├── setup_ci.sh                     # CI/CD environment setup (minimal dependencies)
+├── setup_repo.sh                   # Local development setup (full environment)
 └── get_app_info.py                 # Python script for app information
 ```
 
-### **Architecture Patterns**
+### **New Architecture Patterns**
 - **Configuration-First**: All scripts read from centralized `app_config.yml`
-- **🛡️ Enhanced Validation Layer**: `config_loader.sh` provides smart combination validation
-- **🧠 Smart Defaults**: Automatic ESP-IDF version selection and fallbacks
-- **Modular Functions**: Common functionality shared through `setup_common.sh`
+- **Enhanced Validation Layer**: `config_loader.sh` provides smart combination validation
+- **Smart Defaults**: Automatic ESP-IDF version selection and fallbacks
+- **Environment Separation**: Clear separation between local and CI setup processes
+- **Shared Functions**: Common functionality shared through `setup_common.sh`
+- **CI Optimization**: Specialized CI setup with minimal dependencies and cache optimization
 - **Error Handling**: Consistent error reporting and troubleshooting guidance
 - **Logging Integration**: Unified logging system across all scripts
 
+### **Environment Setup Architecture**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           SETUP COMMON FUNCTIONS                            │
+│                    (setup_common.sh - shared utilities)                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  • System dependency installation                                           │
+│  • Clang toolchain setup                                                    │
+│  • ESP-IDF installation and management                                      │
+│  • Python dependency management                                             │
+│  • Cross-platform compatibility functions                                   │
+│  • Cache optimization and management                                        │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    ENVIRONMENT-SPECIFIC SETUP                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  🏠 LOCAL DEVELOPMENT (setup_repo.sh)        🏭 CI/CD (setup_ci.sh)         │
+│  • Full development environment              • Minimal CI dependencies      │
+│  • Interactive user setup                    • Non-interactive operation    │
+│  • Complete tool installation                • Cache-aware installation     │
+│  • Environment variables setup               • Build directory preparation  │
+│  • Development aliases                       • CI-specific optimizations    │
+│  • ESP-IDF auto-installation                 • ESP-IDF handled by CI action │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           BUILD SYSTEM INTEGRATION                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  • build_app.sh uses environment from setup                                 │
+│  • flash_app.sh integrates with setup                                       │
+│  • CI workflows use setup_ci.sh for environment                             │
+│  • Local development uses setup_repo.sh for environment                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
 ---
 
-## 🛡️ **Enhanced Validation System**
+## **Enhanced Validation System**
 
 The scripts now include a comprehensive validation system that prevents invalid build combinations and provides clear guidance to users.
 
@@ -103,7 +146,7 @@ The build system now includes several new commands for better user experience:
 ./scripts/build_app.sh validate gpio_test Release release/v5.4
 ```
 
-#### **🛡️ Validation Examples**
+#### **Validation Examples**
 ```bash
 # Valid combination - proceeds with build
 ./scripts/build_app.sh validate gpio_test Release
@@ -131,45 +174,45 @@ The build system now includes several new commands for better user experience:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           BUILD REQUEST                                    │
-│  app: gpio_test, build_type: Release, idf_version: (unspecified)         │
+│                           BUILD REQUEST                                     │
+│  app: gpio_test, build_type: Release, idf_version: (unspecified)            │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        BASIC VALIDATION FIRST                              │
-│  • Validate app type exists                                              │
-│  • Validate build type is supported                                      │
-│  • Fail fast if basic validation fails                                   │
+│                        BASIC VALIDATION FIRST                               │
+│  • Validate app type exists                                                 │
+│  • Validate build type is supported                                         │
+│  • Fail fast if basic validation fails                                      │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        SMART DEFAULT SELECTION                             │
-│  • Only if basic validation passes                                       │
-│  • Check app-specific IDF versions                                       │
-│  • Find first version supporting requested build type                     │
-│  • Fallback to global defaults if needed                                 │
-│  • Result: release/v5.5                                                  │
+│                        SMART DEFAULT SELECTION                              │
+│  • Only if basic validation passes                                          │
+│  • Check app-specific IDF versions                                          │
+│  • Find first version supporting requested build type                       │
+│  • Fallback to global defaults if needed                                    │
+│  • Result: release/v5.5                                                     │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        FINAL COMBINATION VALIDATION                        │
-│  • Single comprehensive check (no redundant individual validations)       │
-│  • Functions remain standalone-safe for independent sourcing              │
-│  • Check combination constraints                                         │
+│                        FINAL COMBINATION VALIDATION                         │
+│  • Single comprehensive check (no redundant individual validations)         │
+│  • Functions remain standalone-safe for independent sourcing                │
+│  • Check combination constraints                                            │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           VALIDATION RESULT                                │
-│  ✅ VALID: gpio_test + Release + release/v5.5                            │
-│  → Proceed with build                                                    │
+│                           VALIDATION RESULT                                 │
+│  ✅ VALID: gpio_test + Release + release/v5.5                               │
+│  → Proceed with build                                                       │  
 │                                                                             │
-│  ❌ INVALID: gpio_test + Release + release/v5.4                          │
-│  → Show error with valid combinations                                     │
-│  → Provide helpful next steps                                             │
+│  ❌ INVALID: gpio_test + Release + release/v5.4                             │
+│  → Show error with valid combinations                                       │
+│  → Provide helpful next steps                                               │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -281,8 +324,8 @@ Definitions      Fallbacks        & Execution      & Output
 - Default value management
 - Environment-specific overrides
 
-#### **`setup_common.sh` - Environment Setup Functions**
-**Purpose**: Shared setup and environment configuration functions
+#### **`setup_common.sh` - Shared Setup Functions**
+**Purpose**: Common setup and environment configuration functions shared across all environments
 
 **Key Capabilities**:
 - Cross-platform dependency installation
@@ -290,6 +333,8 @@ Definitions      Fallbacks        & Execution      & Output
 - Clang toolchain setup
 - Python dependency management
 - Cache optimization functions
+- System detection and adaptation
+- Environment variable management
 
 **Dependencies**:
 - System package managers (apt, dnf, yum, brew)
@@ -302,6 +347,7 @@ Definitions      Fallbacks        & Execution      & Output
 - CI/CD environment preparation
 - Dependency installation automation
 - Environment configuration management
+- Cross-platform compatibility
 
 #### **`setup_repo.sh` - Local Development Setup**
 **Purpose**: Complete local development environment initialization
@@ -312,6 +358,8 @@ Definitions      Fallbacks        & Execution      & Output
 - Complete dependency installation
 - Environment variable configuration
 - Development alias setup
+- ESP-IDF auto-installation and configuration
+- Full development toolchain setup
 
 **Dependencies**:
 - `setup_common.sh` functions
@@ -324,28 +372,33 @@ Definitions      Fallbacks        & Execution      & Output
 - New developer onboarding
 - Environment refresh and updates
 - Dependency troubleshooting
+- Complete development environment
 
 #### **`setup_ci.sh` - CI/CD Environment Setup**
-**Purpose**: Optimized CI/CD environment preparation
+**Purpose**: Optimized CI/CD environment preparation with minimal dependencies
 
 **Key Capabilities**:
-- Cache-aware installation
-- Minimal dependency installation
-- CI-specific optimizations
-- Cache statistics and reporting
+- CI-specific minimal dependency installation
+- ESP-IDF installation handled by ESP-IDF CI action
+- Cache-aware installation and optimization
 - Non-interactive operation
+- Build directory structure preparation
+- CI-specific environment variables
+- Essential build tools only (clang-20, yq, PyYAML)
 
 **Dependencies**:
-- `setup_common.sh` functions
+- `setup_common.sh` functions (for utility functions only)
 - CI environment variables
 - Cache directory access
 - Non-interactive terminal
+- ESP-IDF CI action for ESP-IDF setup
 
 **Use Cases**:
 - GitHub Actions workflow setup
 - GitLab CI environment preparation
 - Jenkins build environment setup
 - Automated testing environment
+- CI-specific optimizations
 
 ### **3. Utility and Helper Scripts**
 
@@ -488,10 +541,39 @@ Scripts automatically validate:
 
 ## 🚀 **Usage Patterns and Workflows**
 
+### **Environment Setup Workflows**
+
+#### **Local Development Setup**
+```bash
+# Complete local development environment
+./setup_repo.sh
+
+# What it provides:
+# • Full development toolchain (clang, clang-format, clang-tidy)
+# • ESP-IDF auto-installation and configuration
+# • Development aliases and environment variables
+# • Interactive setup with user guidance
+# • Complete dependency installation
+```
+
+#### **CI/CD Environment Setup**
+```bash
+# CI-optimized environment setup
+./setup_ci.sh
+
+# What it provides:
+# • Minimal CI dependencies (clang-20, yq, PyYAML)
+# • Build directory structure preparation
+# • Cache-aware installation
+# • Non-interactive operation
+# • ESP-IDF handled by ESP-IDF CI action
+```
+
 ### **Development Workflow**
 ```bash
-# 1. Initial setup
-./setup_repo.sh
+# 1. Initial setup (choose one)
+./setup_repo.sh          # Local development
+./setup_ci.sh            # CI environment
 
 # 2. Build application
 ./build_app.sh gpio_test Release
@@ -556,6 +638,7 @@ Scripts automatically validate:
 - **Cross-Platform**: Consistent behavior across operating systems
 - **Performance**: Efficient execution and resource usage
 - **Maintainability**: Clear code structure and documentation
+- **Environment Separation**: Clear separation between local and CI concerns
 
 #### **Adding New Scripts**
 1. Follow existing naming conventions and patterns
@@ -563,12 +646,14 @@ Scripts automatically validate:
 3. Add proper error handling and validation
 4. Document in appropriate README files
 5. Test across different platforms and configurations
+6. Consider environment-specific requirements (local vs CI)
 
 #### **Modifying Existing Scripts**
 1. Maintain backward compatibility where possible
 2. Update documentation and help text
 3. Test with existing workflows and configurations
 4. Consider impact on other scripts and dependencies
+5. Maintain clear separation between local and CI functionality
 
 ### **Testing and Validation**
 
@@ -578,6 +663,7 @@ Scripts automatically validate:
 - **Error Handling Testing**: Invalid inputs and error conditions
 - **Integration Testing**: Script interaction and dependencies
 - **Performance Testing**: Resource usage and execution time
+- **Environment Testing**: Local development vs CI environment testing
 
 #### **Validation Procedures**
 - **Syntax Checking**: Bash syntax validation
@@ -585,6 +671,7 @@ Scripts automatically validate:
 - **Integration Testing**: End-to-end workflow testing
 - **Documentation Review**: Help text and documentation accuracy
 - **User Experience Testing**: Usability and error message clarity
+- **Environment Validation**: Verify local and CI setup processes
 
 ## 🔍 **Troubleshooting and Support**
 
@@ -603,7 +690,8 @@ Scripts automatically validate:
 **Problem**: Build or flash operations fail
 **Symptoms**: "ESP-IDF not found" or "idf.py command not found" errors
 **Solutions**:
-- Run `./setup_repo.sh` to install ESP-IDF
+- Run `./setup_repo.sh` to install ESP-IDF (local development)
+- For CI: Ensure ESP-IDF CI action is properly configured
 - Source ESP-IDF environment: `source ~/esp/esp-idf/export.sh`
 - Check ESP-IDF version compatibility
 - Verify target MCU configuration
@@ -626,6 +714,16 @@ Scripts automatically validate:
 - Add udev rules for ESP32 devices
 - Use `sudo` for system-level operations when appropriate
 
+#### **5. Environment Setup Issues**
+**Problem**: Setup scripts fail or don't work as expected
+**Symptoms**: Setup errors or missing dependencies
+**Solutions**:
+- **Local Development**: Use `./setup_repo.sh` for complete environment
+- **CI Environment**: Use `./setup_ci.sh` for minimal CI setup
+- Check script permissions: `chmod +x scripts/*.sh`
+- Verify system requirements and dependencies
+- Check environment variables and paths
+
 ### **Debug and Verbose Mode**
 
 #### **Enabling Debug Output**
@@ -643,6 +741,8 @@ export DEBUG=1
 - Port detection and connection testing results
 - Build process and dependency information
 - Error context and troubleshooting suggestions
+- Environment setup process details
+- CI vs local environment differences
 
 ### **Getting Help and Support**
 
@@ -673,6 +773,7 @@ When reporting issues, include:
 4. **Reproduction Steps**: Clear steps to reproduce the issue
 5. **Log Files**: Relevant log files and configuration
 6. **Expected Behavior**: What you expected to happen
+7. **Environment Type**: Local development or CI environment
 
 ## 📊 **Performance and Optimization**
 
@@ -693,38 +794,21 @@ When reporting issues, include:
 - **Build Cache**: ccache integration and management
 - **Python Cache**: pip and dependency caching
 - **System Cache**: Package manager and system cache utilization
+- **CI Cache**: Specialized CI cache optimization
 
 ## 🔄 **Version Information and Compatibility**
 
 ### **Current Version**
-- **Scripts Version**: 2.1.0
+- **Scripts Version**: 2.2.0
 - **ESP-IDF Compatibility**: v5.5+
 - **Platform Support**: Linux, macOS
 - **Last Updated**: January 2025
 
-### **Version Compatibility Matrix**
-| Script Category | ESP-IDF v5.5 | ESP-IDF v5.4 | ESP-IDF v5.3 |
-|-----------------|---------------|---------------|---------------|
-| Build System    | ✅ Full       | ⚠️ Limited    | ❌ Not Supported |
-| Flash System    | ✅ Full       | ⚠️ Limited    | ❌ Not Supported |
-| Configuration   | ✅ Full       | ⚠️ Limited    | ❌ Not Supported |
-| Setup Scripts   | ✅ Full       | ⚠️ Limited    | ❌ Not Supported |
-
-**Legend:**
-- ✅ **Full**: Supports Debug and Release builds
-- ⚠️ **Limited**: Supports Debug builds only
-- ❌ **Not Supported**: Version not configured in the system
-
-**Current ESP-IDF Version Support:**
-- **ESP-IDF v5.5**: Full support with Debug and Release builds for all apps
-- **ESP-IDF v5.4**: Limited support with Debug builds only (Release builds not configured)
-- **ESP-IDF v5.3**: Not currently configured or supported
-
-**Available ESP-IDF Versions:**
-- **`release/v5.5`**: Current stable release (✅ Full support)
-- **`release/v5.4`**: Previous stable release (⚠️ Limited support)
-- **`release/v5.3`**: Older stable release (❌ Not configured)
-- **`master`**: Development branch (❌ Not configured)
+### **Environment Support Matrix**
+| Environment | Setup Script | ESP-IDF Management | Dependencies | Use Case |
+|-------------|--------------|-------------------|--------------|----------|
+| **Local Development** | `setup_repo.sh` | Auto-installation | Full toolchain | Developer setup |
+| **CI/CD** | `setup_ci.sh` | ESP-IDF CI action | Minimal | Automated builds |
 
 **Note**: To add support for ESP-IDF v5.4 (Release builds) or v5.3, update the `examples/esp32/app_config.yml` file in the `metadata.idf_versions` and `metadata.default_build_types` sections.
 
@@ -733,6 +817,7 @@ When reporting issues, include:
 - **Command Syntax**: Legacy syntax still supported
 - **Environment Variables**: Compatible with existing setups
 - **Dependencies**: Maintains compatibility with older ESP-IDF versions
+- **Setup Scripts**: New architecture maintains compatibility with existing workflows
 
 ## 🚀 **Future Development and Roadmap**
 
@@ -742,6 +827,7 @@ When reporting issues, include:
 - **Configuration Validation**: Enhanced YAML schema validation
 - **Performance Monitoring**: Build and execution performance metrics
 - **Plugin System**: Extensible script functionality
+- **Enhanced Environment Management**: Better separation and optimization of local vs CI environments
 
 ### **Community Contributions**
 - **Code Contributions**: Guidelines for contributing improvements

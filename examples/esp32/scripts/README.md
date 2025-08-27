@@ -43,6 +43,7 @@ The scripts directory contains a comprehensive build system designed for profess
 - **🌐 CI/CD Integration** - Seamless GitHub Actions integration
 - **📁 Structured Output** - Parseable build directories and artifact management
 - **🔍 Comprehensive Logging** - Detailed build logs and error reporting
+- **🆕 Environment Separation** - Clear separation between local development and CI environments
 
 ---
 
@@ -52,59 +53,98 @@ The scripts directory contains a comprehensive build system designed for profess
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           📁 CONFIGURATION LAYER                           │
+│                           📁 CONFIGURATION LAYER                            │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  app_config.yml  ──┐                                                      │
-│                     │                                                      │
-│  generate_matrix.py │                                                      │
-│                     │                                                      │
-│  config_loader.sh  ──┘                                                      │
+│  app_config.yml   ──┐                                                       │
+│                     │                                                       │
+│  generate_matrix.py │                                                       │
+│                     │                                                       │
+│  config_loader.sh ──┘                                                       │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                             🔧 SETUP LAYER                                 │
+│                             🔧 SETUP LAYER                                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  setup_common.sh  ──┐                                                      │
+│  setup_common.sh   ──┐                                                      │
 │                      │                                                      │
-│  setup_ci.sh        │                                                      │
+│  setup_ci.sh         │                                                      │
 │                      │                                                      │
-│  setup_repo.sh      ──┘                                                      │
+│  setup_repo.sh     ──┘                                                      │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                             🚀 BUILD LAYER                                 │
+│                            🔄 CI/CD LAYER                                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  build_app.sh  ──────┐                                                    │
-│                       │                                                    │
-│  flash_app.sh        │                                                    │
-│                       │                                                    │
-│  manage_idf.sh       ──┘                                                    │
-└─────────────────────┬───────────────────────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                            🔄 CI/CD LAYER                                  │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  GitHub Actions  ────┐                                                    │
-│                       │                                                    │
-│  Matrix Generation    │                                                    │
-│                       │                                                    │
-│  Artifact Upload      ──┘                                                    │
+│  GitHub Actions   ────┐                                                     │
+│                       │                                                     │
+│  Matrix Generation    │                                                     │
+│                       │                                                     │
+│  Artifact Upload    ──┘                                                     │
 └─────────────────────────────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             🚀 BUILD LAYER                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  build_app.sh  ──────┐                                                      │
+│                      │                                                      │
+│  flash_app.sh        │                                                      │
+│                      │                                                      │
+│  manage_idf.sh     ──┘                                                      │
+└─────────────────────┬───────────────────────────────────────────────────────┘
 
 Data Flow:
 app_config.yml → config_loader.sh → build_app.sh
 setup_common.sh → setup_ci.sh/setup_repo.sh → build_app.sh
-build_app.sh → flash_app.sh
-build_app.sh → GitHub Actions → Matrix Generation → Artifact Upload
+  -local: build_app.sh → flash_app.sh
+  -ci: GitHub Actions → Matrix Generation →build_app.sh → Artifact Upload
+```
+
+### **🆕 New Environment Setup Architecture**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           SETUP COMMON FUNCTIONS                            │
+│                    (setup_common.sh - shared utilities)                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  • System dependency installation                                           │
+│  • Clang toolchain setup                                                    │
+│  • ESP-IDF installation and management                                      │
+│  • Python dependency management                                             │
+│  • Cross-platform compatibility functions                                   │
+│  • Cache optimization and management                                        │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    ENVIRONMENT-SPECIFIC SETUP                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  🏠 LOCAL DEVELOPMENT (setup_repo.sh)        🏭 CI/CD (setup_ci.sh)         │
+│  • Full development environment              • Minimal CI dependencies      │
+│  • Interactive user setup                    • Non-interactive operation    │
+│  • Complete tool installation                • Cache-aware installation     │
+│  • Environment variables setup               • Build directory preparation  │
+│  • Development aliases                       • CI-specific optimizations    │
+│  • ESP-IDF auto-installation                • ESP-IDF handled by CI action  │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           BUILD SYSTEM INTEGRATION                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  • build_app.sh uses environment from setup                                 │
+│  • flash_app.sh integrates with setup                                       │
+│  • CI workflows use setup_ci.sh for environment                             │
+│  • Local development uses setup_repo.sh for environment                     │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### **Script Categories**
 
 1. **Configuration Scripts** - Load and parse configuration files
-2. **Setup Scripts** - Environment setup and tool installation
+2. **Setup Scripts** - Environment setup with clear separation of concerns
 3. **Build Scripts** - Application building and management
 4. **Utility Scripts** - Helper functions and tools
 5. **CI/CD Scripts** - Automation and integration
@@ -126,45 +166,45 @@ The build system now includes a comprehensive validation system that prevents in
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           BUILD REQUEST                                    │
-│  app: gpio_test, build_type: Release, idf_version: (unspecified)         │
+│                           BUILD REQUEST                                     │
+│  app: gpio_test, build_type: Release, idf_version: (unspecified)            │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        BASIC VALIDATION FIRST                              │
-│  • Validate app type exists                                              │
-│  • Validate build type is supported                                      │
-│  • Fail fast if basic validation fails                                   │
+│                        BASIC VALIDATION FIRST                               │
+│  • Validate app type exists                                                 │
+│  • Validate build type is supported                                         │
+│  • Fail fast if basic validation fails                                      │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        SMART DEFAULT SELECTION                             │
-│  • Only if basic validation passes                                       │
-│  • Check app-specific IDF versions                                       │
-│  • Find first version supporting requested build type                     │
-│  • Fallback to global defaults if needed                                 │
-│  • Result: release/v5.5                                                  │
+│                        SMART DEFAULT SELECTION                              │
+│  • Only if basic validation passes                                          │
+│  • Check app-specific IDF versions                                          │
+│  • Find first version supporting requested build type                       │
+│  • Fallback to global defaults if needed                                    │
+│  • Result: release/v5.5                                                     │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        FINAL COMBINATION VALIDATION                        │
-│  • Single comprehensive check (no redundant individual validations)       │
-│  • Functions remain standalone-safe for independent sourcing              │
-│  • Check combination constraints                                         │
+│                        FINAL COMBINATION VALIDATION                         │  
+│  • Single comprehensive check (no redundant individual validations)         │
+│  • Functions remain standalone-safe for independent sourcing                │
+│  • Check combination constraints                                            │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           VALIDATION RESULT                                │
-│  ✅ VALID: gpio_test + Release + release/v5.5                            │
-│  → Proceed with build                                                    │
+│                           VALIDATION RESULT                                 │
+│  ✅ VALID: gpio_test + Release + release/v5.5                               │
+│  → Proceed with build                                                       │
 │                                                                             │
-│  ❌ INVALID: gpio_test + Release + release/v5.4                          │
-│  → Show error with valid combinations                                     │
-│  → Provide helpful next steps                                             │
+│  ❌ INVALID: gpio_test + Release + release/v5.4                             │
+│  → Show error with valid combinations                                       │
+│  → Provide helpful next steps                                               │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -185,9 +225,9 @@ scripts/
 ├── 📄 app_config.yml           # Centralized configuration
 ├── 📄 generate_matrix.py       # CI matrix generator
 ├── 📄 config_loader.sh         # Configuration utilities
-├── 📄 setup_common.sh          # Shared setup functions
-├── 📄 setup_ci.sh              # CI environment setup
-├── 📄 setup_repo.sh            # Local development setup
+├── 📄 setup_common.sh          # Shared setup functions for all environments
+├── 📄 setup_ci.sh              # CI environment setup (minimal dependencies)
+├── 📄 setup_repo.sh            # Local development setup (full environment)
 ├── 📄 build_app.sh             # Main build script
 ├── 📄 flash_app.sh             # Flashing and monitoring
 └── 📄 README.md                # This documentation
@@ -200,9 +240,9 @@ scripts/
 | `app_config.yml` | None | Configuration source | All scripts |
 | `generate_matrix.py` | `pyyaml` | CI matrix generation | CI/CD |
 | `config_loader.sh` | `yq`, `sed` | Configuration parsing | Build scripts |
-| `setup_common.sh` | System tools | Shared functions | Setup scripts |
-| `setup_ci.sh` | `setup_common.sh` | CI environment | CI/CD |
-| `setup_repo.sh` | `setup_common.sh` | Local environment | Development |
+| `setup_common.sh` | System tools | Shared functions for all environments | Setup scripts |
+| `setup_ci.sh` | `setup_common.sh` | CI environment (minimal dependencies) | CI/CD |
+| `setup_repo.sh` | `setup_common.sh` | Local development (full environment) | Development |
 | `build_app.sh` | `config_loader.sh` | Application building | All users |
 | `flash_app.sh` | `config_loader.sh` | Device flashing | Development |
 
@@ -217,8 +257,8 @@ The primary build script that orchestrates the entire build process.
 #### **Functionality**
 - **ESP-IDF Management** - Auto-detection, installation, and environment setup
 - **Configuration Loading** - Loads app configuration and build parameters
-- **🛡️ Enhanced Validation** - Validates build combinations before proceeding
-- **🧠 Smart Defaults** - Automatic ESP-IDF version selection when not specified
+- **Enhanced Validation** - Validates build combinations before proceeding
+- **Smart Defaults** - Automatic ESP-IDF version selection when not specified
 - **Build Execution** - Runs ESP-IDF build with project-specific settings
 - **Output Management** - Creates structured build directories and exports paths
 - **Error Handling** - Comprehensive error checking and reporting
@@ -347,6 +387,7 @@ Sets up the local development environment.
 - **ESP-IDF Setup** - Configure ESP-IDF environment for local development
 - **Environment Variables** - Set development-specific environment variables
 - **Tool Verification** - Verify all tools are properly installed
+- **Complete Development Environment** - Full toolchain and user guidance
 
 #### **Usage**
 ```bash
@@ -358,6 +399,7 @@ source scripts/setup_repo.sh
 # 2. Setup ESP-IDF environment
 # 3. Configure build tools
 # 4. Export necessary environment variables
+# 5. Provide complete development environment
 ```
 
 #### **Installed Tools**
@@ -367,15 +409,17 @@ source scripts/setup_repo.sh
 - **ESP-IDF Tools** - ESP32 development tools
 - **Build Tools** - CMake, Ninja, and related tools
 
-### **`setup_ci.sh` - CI/CD Environment Setup**
+### **`setup_ci.sh` - 🆕 CI/CD Environment Setup**
 
 Sets up the CI/CD environment for automated builds.
 
 #### **Functionality**
-- **CI Tools** - Install CI-specific tools and dependencies
-- **ESP-IDF Setup** - Configure ESP-IDF for automated builds
+- **CI Tools** - Install CI-specific minimal tools and dependencies
+- **ESP-IDF Integration** - ESP-IDF handled by ESP-IDF CI action
 - **Environment Variables** - Set CI-specific environment variables
 - **Tool Verification** - Verify CI environment is properly configured
+- **Build Directory Preparation** - Prepare build directory structure
+- **Cache Optimization** - CI-specific cache management
 
 #### **Usage**
 ```bash
@@ -383,10 +427,11 @@ Sets up the CI/CD environment for automated builds.
 source scripts/setup_ci.sh
 
 # This will:
-# 1. Install CI-specific tools
-# 2. Setup ESP-IDF environment
+# 1. Install minimal CI dependencies (clang-20, yq, PyYAML)
+# 2. Prepare build directory structure
 # 3. Configure for automated builds
 # 4. Export CI-specific variables
+# 5. Optimize for CI environment
 ```
 
 #### **CI Environment Features**
@@ -394,6 +439,8 @@ source scripts/setup_ci.sh
 - **Automated Setup** - No user interaction required
 - **Error Handling** - Comprehensive error checking and reporting
 - **Logging** - Detailed setup logs for debugging
+- **Cache Optimization** - CI-specific cache management
+- **Build Directory Preparation** - Ready for CI builds
 
 ---
 
@@ -829,6 +876,34 @@ ci_config:
 
 ## 🚀 **Usage Examples**
 
+### **Environment Setup Workflows**
+
+#### **Local Development Setup**
+```bash
+# Complete local development environment
+./setup_repo.sh
+
+# What it provides:
+# • Full development toolchain (clang, clang-format, clang-tidy)
+# • ESP-IDF auto-installation and configuration
+# • Development aliases and environment variables
+# • Interactive setup with user guidance
+# • Complete dependency installation
+```
+
+#### **CI/CD Environment Setup**
+```bash
+# CI-optimized environment setup
+./setup_ci.sh
+
+# What it provides:
+# • Minimal CI dependencies (clang-20, yq, PyYAML)
+# • Build directory structure preparation
+# • Cache-aware installation
+# • Non-interactive operation
+# • ESP-IDF handled by ESP-IDF CI action
+```
+
 ### **New Enhanced Commands**
 
 The build system now includes several new commands for better user experience and validation:
@@ -873,9 +948,9 @@ The build system now includes several new commands for better user experience an
 ### **Local Development Workflow**
 
 ```bash
-# 1. Setup development environment
-cd examples/esp32
-source scripts/setup_repo.sh
+# 1. Setup development environment (choose one)
+./setup_repo.sh          # Local development
+./setup_ci.sh            # CI environment
 
 # 2. Build application
 ./scripts/build_app.sh gpio_test Release
@@ -1019,6 +1094,24 @@ metadata:
   build_types: [["Debug", "Release"], ["Debug"]]
 ```
 
+#### **🆕 Environment Setup Issues**
+**Problem**: Setup scripts fail or don't work as expected
+**Symptoms**: Setup errors or missing dependencies
+**Solutions**:
+```bash
+# For local development (complete environment)
+./setup_repo.sh
+
+# For CI/CD (minimal environment)
+./setup_ci.sh
+
+# Check script permissions
+chmod +x scripts/*.sh
+
+# Verify system requirements and dependencies
+# Check environment variables and paths
+```
+
 ### **Debug Mode**
 
 Enable verbose output for debugging:
@@ -1098,6 +1191,7 @@ cat build-*/.ninja_log
 - **Documentation** - Clear usage instructions and examples
 - **Testing** - Test all functionality and edge cases
 - **CI Compatibility** - Ensure scripts work in CI environment
+- **🆕 Environment Separation** - Maintain clear separation between local and CI concerns
 
 ---
 
