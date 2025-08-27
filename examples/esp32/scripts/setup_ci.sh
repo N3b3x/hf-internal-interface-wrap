@@ -27,18 +27,19 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "WHAT IT DOES:"
     echo "  • Installs essential build tools (clang-20, clang-format, clang-tidy)"
     echo "  • Installs Python dependencies (PyYAML, yq)"
+    echo "  • Sets up CI build directory structure with all necessary files"
     echo "  • Prepares environment for ESP-IDF CI action"
     echo ""
     echo "WHAT IT DOES NOT DO:"
     echo "  • Install ESP-IDF (handled by ESP-IDF CI action)"
     echo "  • Source ESP-IDF environment (handled by ESP-IDF CI action)"
     echo "  • Set up build tools (handled by ESP-IDF CI action)"
-    echo "  • Copy project files (handled by ESP-IDF CI action)"
+    echo "  • Build the project (handled by ESP-IDF CI action)"
     echo ""
     echo "CI WORKFLOW:"
     echo "  1. This script runs in setup-environment job"
-    echo "  2. ESP-IDF CI action handles ESP-IDF setup and file copying in build jobs"
-    echo "  3. ESP-IDF CI action builds the project directly"
+    echo "  2. This script sets up CI build directory structure with all files"
+    echo "  3. ESP-IDF CI action handles ESP-IDF setup and builds the project"
     echo ""
     exit 0
 fi
@@ -129,16 +130,118 @@ verify_ci_setup() {
         fi
     done
     
+    # Check build structure
+    local structure_ok=true
+    if verify_ci_build_structure; then
+        echo "✓ Build structure verification passed"
+    else
+        echo "✗ Build structure verification failed"
+        structure_ok=false
+    fi
+    
     # Summary
     echo ""
     echo "CI Setup Verification Summary:"
-    if $tools_ok && $python_ok; then
+    if $tools_ok && $python_ok && $structure_ok; then
         echo "✅ All components ready for CI builds"
         return 0
     else
         echo "❌ Some components missing - CI builds may fail"
         return 1
     fi
+}
+
+# Function to setup CI build directory structure
+setup_ci_build_structure() {
+    echo "Setting up CI build directory structure..."
+    
+    # Get project paths
+    local project_dir="$SCRIPT_DIR/.."
+    local ci_build_path="${BUILD_PATH:-ci_build_path}"
+    
+    echo "Project directory: $project_dir"
+    echo "CI build path: $ci_build_path"
+    
+    # Create CI build directory
+    mkdir -p "$ci_build_path"
+    
+    # Copy all necessary project files (following the working pipeline pattern)
+    echo "Copying project files to CI build path..."
+    
+    # Copy ESP32 project files
+    cp "$project_dir/CMakeLists.txt" "$ci_build_path/"
+    echo "✓ CMakeLists.txt copied"
+    
+    # Handle main directory (remove existing, copy fresh)
+    rm -rf "$ci_build_path/main"
+    cp -r "$project_dir/main" "$ci_build_path/"
+    echo "✓ main directory copied"
+    
+    # Copy other project directories
+    cp -r "$project_dir/components" "$ci_build_path/"
+    echo "✓ components directory copied"
+    
+    cp -r "$project_dir/scripts" "$ci_build_path/"
+    echo "✓ scripts directory copied"
+    
+    # Copy configuration files
+    cp "$project_dir/app_config.yml" "$ci_build_path/"
+    echo "✓ app_config.yml copied"
+    
+    cp "$project_dir/sdkconfig" "$ci_build_path/"
+    echo "✓ sdkconfig copied"
+    
+    # Copy source and include files from workspace root (needed for building)
+    local workspace_root="$SCRIPT_DIR/../.."
+    echo "Copying source and include files from workspace root..."
+    if [[ -d "$workspace_root/src" ]]; then
+        cp -r "$workspace_root/src" "$ci_build_path/"
+        echo "✓ Source files copied"
+    else
+        echo "⚠️  Warning: src directory not found at $workspace_root/src"
+    fi
+    
+    if [[ -d "$workspace_root/inc" ]]; then
+        cp -r "$workspace_root/inc" "$ci_build_path/"
+        echo "✓ Include files copied"
+    else
+        echo "⚠️  Warning: inc directory not found at $workspace_root/inc"
+    fi
+    
+    echo "CI build directory structure setup complete"
+    echo "Build directory: $ci_build_path"
+    ls -la "$ci_build_path"
+}
+
+# Function to verify CI build structure
+verify_ci_build_structure() {
+    echo "Verifying CI build structure..."
+    
+    local ci_build_path="${BUILD_PATH:-ci_build_path}"
+    local structure_ok=true
+    
+    # Check required files and directories
+    local required_items=(
+        "CMakeLists.txt"
+        "main"
+        "components" 
+        "scripts"
+        "app_config.yml"
+        "sdkconfig"
+        "src"
+        "inc"
+    )
+    
+    for item in "${required_items[@]}"; do
+        if [[ -e "$ci_build_path/$item" ]]; then
+            echo "✓ Build directory: $item"
+        else
+            echo "✗ Build directory: $item: not found"
+            structure_ok=false
+        fi
+    done
+    
+    return $([ "$structure_ok" = true ] && echo 0 || echo 1)
 }
 
 # Main CI setup function
@@ -162,6 +265,9 @@ main() {
     # Install Python dependencies
     install_ci_python_deps
     
+    # Setup CI build directory structure
+    setup_ci_build_structure
+    
     # Verify setup
     if verify_ci_setup; then
         echo ""
@@ -171,8 +277,8 @@ main() {
         echo ""
         echo "What happens next:"
         echo "  1. ESP-IDF CI action will handle ESP-IDF installation"
-        echo "  2. ESP-IDF CI action will copy project files and build"
-        echo "  3. Builds will use the prepared CI environment"
+        echo "  2. ESP-IDF CI action will build using the prepared CI environment"
+        echo "  3. Builds will use the prepared CI environment with all files copied"
         echo ""
         echo "Ready for CI builds!"
     else

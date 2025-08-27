@@ -202,22 +202,10 @@ jobs:
             
             echo "Setting up build environment in ${{ env.BUILD_PATH }}..."
             
-            # Create the build project directory
-            idf.py create-project ${{ env.BUILD_PATH }}
-            
-            # Copy all necessary project files (following the working pipeline pattern)
-            echo "Copying project files to build directory..."
-            cp examples/esp32/CMakeLists.txt ${{ env.BUILD_PATH }}/CMakeLists.txt
-            rm -rf ${{ env.BUILD_PATH }}/main
-            cp -r examples/esp32/main ${{ env.BUILD_PATH }}/main
-            cp -r examples/esp32/components ${{ env.BUILD_PATH }}/components
-            cp -r examples/esp32/scripts ${{ env.BUILD_PATH }}/scripts
-            cp examples/esp32/app_config.yml ${{ env.BUILD_PATH }}/app_config.yml
-            cp -r src ${{ env.BUILD_PATH }}/src
-            cp -r inc ${{ env.BUILD_PATH }}/inc
-            cp examples/esp32/sdkconfig ${{ env.BUILD_PATH }}/sdkconfig
-            
-            echo "Project files copied successfully. Building..."
+            # The setup_ci.sh script has already prepared the build directory structure
+            # All necessary files are already copied to ${{ env.BUILD_PATH }}
+            echo "Build directory structure prepared by setup_ci.sh"
+            echo "Building..."
             
             # Build the application using the same tool as local development
             ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
