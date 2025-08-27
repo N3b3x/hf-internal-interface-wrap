@@ -279,14 +279,13 @@ jobs:
           if [ -f "${{ env.ESP32_PROJECT_PATH }}/app_config.yml" ]; then
             IDF_LINE=$(grep -m1 "idf_versions:" ${{ env.ESP32_PROJECT_PATH }}/app_config.yml || true)
             if [ -n "$IDF_LINE" ]; then
-              # Extract first version from array, handling both ["v1", "v2"] and ["v1"] formats
-              IDF_TAG=$(echo "$IDF_LINE" | sed 's/.*\["*\([^",]*\)"*.*/\1/' | tr -d '[]"' | head -1)
+              IDF_TAG=$(echo "$IDF_LINE" | tr -d '[]"' | awk -F: '{print $2}' | awk '{print $1}')
               # Sanitize for cache key (remove special characters that cause validation errors)
               IDF_TAG_CLEAN=$(echo "$IDF_TAG" | sed 's/[^a-zA-Z0-9._-]/-/g')
             fi
           fi
           echo "idf_version=${IDF_TAG_CLEAN}" >> "$GITHUB_OUTPUT"
-          IDF_GIT_BRANCH=$(echo "${IDF_TAG}" | sed -E 's#^release-(v[0-9]+\.[0-9]+)$#release/\1#')
+          IDF_GIT_BRANCH=$(echo "${IDF_TAG}" | sed -E 's#^release/(v[0-9]+\.[0-9]+)$#release/\1#')
           echo "idf_git_branch=${IDF_GIT_BRANCH}" >> "$GITHUB_OUTPUT"
           echo "Using ESP-IDF docker tag: ${IDF_TAG}; git branch: ${IDF_GIT_BRANCH}"
           echo "Cache-safe version: ${IDF_TAG_CLEAN}"

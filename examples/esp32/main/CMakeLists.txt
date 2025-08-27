@@ -81,7 +81,7 @@ endif()
 message(STATUS "Using include base path: ${INC_BASE_PATH}")
 
 idf_component_register(
-    SRCS "${MAIN_SOURCE}"
+    SRCS "${SOURCE_FILE_PATH}"
     INCLUDE_DIRS "." "${INC_BASE_PATH}" "${INC_BASE_PATH}/base" "${INC_BASE_PATH}/mcu/esp32"
     REQUIRES driver esp_timer freertos iid-espidf
 )
