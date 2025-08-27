@@ -738,6 +738,59 @@ get_idf_version() {
     fi
 }
 
+# Get IDF version that supports a specific build type (smart selection)
+get_idf_version_for_build_type() {
+    local app_type="$1"
+    local build_type="$2"
+    
+    if [[ -z "$app_type" || -z "$build_type" ]]; then
+        echo "ERROR: Both app_type and build_type are required" >&2
+        return 1
+    fi
+    
+    # First, check if the app has specific IDF version requirements
+    local app_idf_versions=""
+    if check_yq; then
+        app_idf_versions=$(run_yq ".apps.${app_type}.idf_versions[0]" -r 2>/dev/null)
+    else
+        # Fallback: extract per-app IDF version using grep
+        local app_idf_versions_line=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
+        if [[ -n "$app_idf_versions_line" ]]; then
+            app_idf_versions=$(echo "$app_idf_versions_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | awk '{print $1}')
+        fi
+    fi
+    
+    # If no app-specific versions, use global versions
+    if [[ -z "$app_idf_versions" || "$app_idf_versions" == "null" ]]; then
+        if check_yq; then
+            app_idf_versions=$(run_yq '.metadata.idf_versions | .[]' -r | tr '\n' ' ')
+        else
+            # Fallback: extract global IDF versions
+            local idf_line=$(grep -A 5 "metadata:" "$CONFIG_FILE" | grep "idf_versions:")
+            if [[ -n "$idf_line" ]]; then
+                app_idf_versions=$(echo "$idf_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g')
+            fi
+        fi
+    fi
+    
+    # Convert to array and check each version for build type support
+    local idf_versions_array=($app_idf_versions)
+    for idf_version in "${idf_versions_array[@]}"; do
+        if [[ -n "$idf_version" ]]; then
+            # Check if this IDF version supports the requested build type
+            if is_valid_build_type "$build_type" "$app_type" "$idf_version"; then
+                echo "$idf_version"
+                return 0
+            fi
+        fi
+    done
+    
+    # If no version supports the build type, return the first available version
+    # (this will fail later in validation, but at least we have a version to work with)
+    echo "${idf_versions_array[0]}"
+    return 0
+}
+
 # Load configuration
 load_config() {
     if ! [ -f "$CONFIG_FILE" ]; then

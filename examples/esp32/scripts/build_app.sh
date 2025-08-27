@@ -210,7 +210,7 @@ fi
 if [ "$APP_TYPE" = "validate" ] && [ -n "${POSITIONAL_ARGS[1]}" ] && [ -n "${POSITIONAL_ARGS[2]}" ]; then
     app_name="${POSITIONAL_ARGS[1]}"
     build_type="${POSITIONAL_ARGS[2]}"
-    idf_version="${POSITIONAL_ARGS[3]:-$(get_idf_version_smart "$app_name" "$build_type")}"
+    idf_version="${POSITIONAL_ARGS[3]:-$(get_idf_version_for_build_type "$app_name" "$build_type")}"
     
     echo "=== Validating Build Combination ==="
     echo "App: $app_name"
@@ -251,8 +251,8 @@ if [ -n "${POSITIONAL_ARGS[2]}" ]; then
 else
     # Use smart default based on app and build type
     source "$PROJECT_DIR/scripts/config_loader.sh"
-    IDF_VERSION=$(get_idf_version_smart "$APP_TYPE" "$BUILD_TYPE")
-    echo "No IDF version specified, using smart default: $IDF_VERSION"
+    IDF_VERSION=$(get_idf_version_for_build_type "$APP_TYPE" "$BUILD_TYPE")
+    echo "No IDF version specified, using smart default for $BUILD_TYPE: $IDF_VERSION"
 fi
 
 # Ensure ESP-IDF environment is sourced for the specified version
