@@ -207,6 +207,12 @@ jobs:
             echo "Build directory structure prepared by setup_ci.sh"
             echo "Building..."
             
+            # Change to the build directory where all files are copied
+            cd ${{ env.BUILD_PATH }}
+            echo "Changed to build directory: $(pwd)"
+            echo "Available files:"
+            ls -la
+            
             # Build the application using the same tool as local development
             ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
             
