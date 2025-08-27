@@ -203,7 +203,7 @@ jobs:
             echo "Setting up build environment in ${{ env.BUILD_PATH }}..."
             
             # Create the build project directory
-            mkdir -p ${{ env.BUILD_PATH }}
+            idf.py create-project ${{ env.BUILD_PATH }}
             
             # Copy all necessary project files (following the working pipeline pattern)
             echo "Copying project files to build directory..."
@@ -219,27 +219,30 @@ jobs:
             
             echo "Project files copied successfully. Building..."
             
-            # Build the application using ESP-IDF directly
-            idf.py -C ${{ env.BUILD_PATH }} \
-              -DIDF_TARGET=${{ matrix.target }} \
-              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-              -DAPP_TYPE=${{ matrix.app_name }} \
-              --ccache reconfigure build
+            # Build the application using the same tool as local development
+            ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
             
-            echo "Build completed successfully. Generating size reports..."
-            
-            # Generate size reports
-            idf.py -C ${{ env.BUILD_PATH }} size-components > ${{ env.BUILD_PATH }}/build/size.txt
-            idf.py -C ${{ env.BUILD_PATH }} size --format json > ${{ env.BUILD_PATH }}/build/size.json
-            
-            # Show ccache statistics
-            ccache -s
-            ccache -s > ${{ env.BUILD_PATH }}/build/ccache_stats.txt
-            
-            # Set output for artifact upload step
-            echo "build_dir=${{ env.BUILD_PATH }}/build" >> $GITHUB_OUTPUT
-            
-            echo "Build and size analysis completed successfully!"
+            # Get the build directory that build_app.sh exported
+            if [ -n "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
+              echo "Build completed. Build directory from build_app.sh: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+              
+              # Verify build artifacts exist
+              if [ -d "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
+                echo "Build artifacts found in: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+                ls -la "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY/"
+                
+                # Set output for artifact upload step to use
+                echo "build_dir=$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" >> $GITHUB_OUTPUT
+              else
+                echo "ERROR: Build directory not found: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+                exit 1
+              fi
+            else
+              echo "ERROR: ESP32_BUILD_APP_MOST_RECENT_DIRECTORY not set by build_app.sh"
+              echo "Available directories:"
+              ls -la build_*/ || echo "No build directories found"
+              exit 1
+            fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
