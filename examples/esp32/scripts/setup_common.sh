@@ -451,7 +451,7 @@ install_esp_idf() {
             local config_idf_versions=$(get_idf_versions)
             if [[ -n "$config_idf_versions" ]]; then
                 # Convert space-separated string to array
-                readarray -t idf_versions <<< "$config_idf_versions"
+                IFS=' ' read -ra idf_versions <<< "$config_idf_versions"
                 print_status "Using IDF versions from config: ${idf_versions[*]}"
             else
                 print_warning "Could not read IDF versions from config, using default: release/v5.5"
@@ -479,19 +479,36 @@ install_esp_idf() {
         git checkout "$idf_version"
         git pull origin "$idf_version"
         # Ensure submodules are synced and updated to match the checked-out branch
-        git submodule sync --recursive
-        git submodule update --init --recursive
-        ./install.sh esp32c6
+        if ! git submodule sync --recursive; then
+            print_warning "Failed to sync submodules, continuing anyway..."
+        fi
+        if ! git submodule update --init --recursive; then
+            print_warning "Failed to update submodules, continuing anyway..."
+        fi
+        if ! ./install.sh esp32c6; then
+            print_error "Failed to install ESP-IDF tools"
+            return 1
+        fi
         cd - > /dev/null
     else
             print_status "Cloning ESP-IDF $idf_version..."
         cd "$esp_dir"
-            git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git "esp-idf-${idf_version//\//_}"
-            cd "esp-idf-${idf_version//\//_}"
+        if ! git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git "esp-idf-${idf_version//\//_}"; then
+            print_error "Failed to clone ESP-IDF $idf_version"
+            return 1
+        fi
+        cd "esp-idf-${idf_version//\//_}"
         # Extra safety to keep submodules in sync even after clone
-        git submodule sync --recursive
-        git submodule update --init --recursive
-        ./install.sh esp32c6
+        if ! git submodule sync --recursive; then
+            print_warning "Failed to sync submodules, continuing anyway..."
+        fi
+        if ! git submodule update --init --recursive; then
+            print_warning "Failed to update submodules, continuing anyway..."
+        fi
+        if ! ./install.sh esp32c6; then
+            print_error "Failed to install ESP-IDF tools"
+            return 1
+        fi
         cd - > /dev/null
     fi
         
@@ -601,25 +618,49 @@ install_esp_idf_version() {
     # Change to ESP directory
     cd "$esp_dir"
     
-    # Clone the specific ESP-IDF version
-    local idf_dir="esp-idf-${idf_version//\//_}"
+    # Sanitize version string for directory name - handle more special characters
+    local sanitized_version=$(echo "$idf_version" | sed 's/[^a-zA-Z0-9._-]/-/g')
+    local idf_dir="esp-idf-${sanitized_version}"
+    
+    print_status "Using sanitized directory name: $idf_dir"
     
     if [[ -d "$idf_dir" ]]; then
         print_status "ESP-IDF directory already exists, updating..."
         cd "$idf_dir"
-        git fetch origin
-        git checkout "$idf_version"
-        git pull origin "$idf_version"
+        if ! git fetch origin; then
+            print_error "Failed to fetch from origin"
+            return 1
+        fi
+        if ! git checkout "$idf_version"; then
+            print_error "Failed to checkout $idf_version"
+            return 1
+        fi
+        if ! git pull origin "$idf_version"; then
+            print_error "Failed to pull $idf_version"
+            return 1
+        fi
     else
         print_status "Cloning ESP-IDF version $idf_version..."
-        git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git "$idf_dir"
-        cd "$idf_dir"
+        if git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git "$idf_dir"; then
+            cd "$idf_dir"
+        else
+            print_error "Failed to clone ESP-IDF version $idf_version"
+            return 1
+        fi
     fi
     
     # Install ESP-IDF tools
     print_status "Installing ESP-IDF tools..."
     if ./install.sh esp32c6; then
         print_success "ESP-IDF tools installed successfully"
+        
+        # Create a symlink for easy access
+        cd "$esp_dir"
+        if [[ -L "esp-idf" ]]; then
+            rm "esp-idf"
+        fi
+        ln -sf "$idf_dir" "esp-idf"
+        print_status "Created symlink: esp-idf -> $idf_dir"
     else
         print_error "Failed to install ESP-IDF tools"
         return 1
