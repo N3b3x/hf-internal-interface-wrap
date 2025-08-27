@@ -117,56 +117,10 @@ setup_ci_build_structure() {
     # Create CI build directory
     mkdir -p "$ci_build_path"
     
-    # Copy essential files for CI builds
-    echo "Copying essential files to CI build directory..."
-    
-    # Copy scripts directory (needed by build_app.sh)
-    if [[ -d "$project_dir/scripts" ]]; then
-        cp -r "$project_dir/scripts" "$ci_build_path/"
-        echo "✓ Scripts directory copied"
-    else
-        echo "⚠ Scripts directory not found"
-    fi
-    
-    # Copy app_config.yml (needed for configuration)
-    if [[ -f "$project_dir/app_config.yml" ]]; then
-        cp "$project_dir/app_config.yml" "$ci_build_path/"
-        echo "✓ app_config.yml copied"
-    else
-        echo "⚠ app_config.yml not found"
-    fi
-    
-    # Copy source files (needed for building)
-    if [[ -d "$project_dir/src" ]]; then
-        cp -r "$project_dir/src" "$ci_build_path/"
-        echo "✓ Source files copied"
-    else
-        echo "⚠ Source files not found"
-    fi
-    
-    # Copy include files (needed for building)
-    if [[ -d "$project_dir/inc" ]]; then
-        cp -r "$project_dir/inc" "$ci_build_path/"
-        echo "✓ Include files copied"
-    else
-        echo "⚠ Include files not found"
-    fi
-    
-    # Copy CMakeLists.txt and other build files
-    for file in CMakeLists.txt main CMakeLists.txt.in; do
-        if [[ -f "$project_dir/$file" ]]; then
-            cp "$project_dir/$file" "$ci_build_path/"
-            echo "✓ $file copied"
-        fi
-    done
-    
-    # Copy examples directory (contains the actual apps)
-    if [[ -d "$project_dir/examples" ]]; then
-        cp -r "$project_dir/examples" "$ci_build_path/"
-        echo "✓ Examples directory copied"
-    else
-        echo "⚠ Examples directory not found"
-    fi
+    # Copy the entire project directory (much simpler and ensures nothing is missed)
+    echo "Copying entire project directory to CI build path..."
+    cp -r "$project_dir"/* "$ci_build_path/"
+    echo "✓ Entire project directory copied"
     
     echo "CI build directory structure setup complete"
     echo "Build directory: $ci_build_path"
