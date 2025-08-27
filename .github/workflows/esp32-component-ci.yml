@@ -224,23 +224,23 @@ jobs:
             # Build the application using the same tool as local development
             ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
             
-            # Get the build directory that build_app.sh exported
-            if [ -n "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
-              echo "Build completed. Build directory from build_app.sh: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+            # Construct the build directory path based on the known pattern
+            # Format: build-app-{app_type}-type-{build_type}-target-{target}-idf-{sanitized_idf_version}
+            local sanitized_idf_version=$(echo "${{ matrix.idf_version }}" | sed 's/[\/\.]/_/g')
+            local build_dir="build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-${sanitized_idf_version}"
+            
+            echo "Looking for build directory: $build_dir"
+            
+            # Check if the build directory exists
+            if [ -d "$build_dir" ]; then
+              echo "Build completed. Build directory found: $build_dir"
+              echo "Build artifacts:"
+              ls -la "$build_dir/"
               
-              # Verify build artifacts exist
-              if [ -d "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
-                echo "Build artifacts found in: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
-                ls -la "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY/"
-                
-                # Set output for artifact upload step to use
-                echo "build_dir=$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" >> $GITHUB_OUTPUT
-              else
-                echo "ERROR: Build directory not found: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
-                exit 1
-              fi
+              # Set output for artifact upload step to use
+              echo "build_dir=$build_dir" >> $GITHUB_OUTPUT
             else
-              echo "ERROR: ESP32_BUILD_APP_MOST_RECENT_DIRECTORY not set by build_app.sh"
+              echo "ERROR: Build directory not found: $build_dir"
               echo "Available directories:"
               ls -la build_*/ || echo "No build directories found"
               exit 1
