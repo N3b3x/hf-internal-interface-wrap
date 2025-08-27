@@ -341,8 +341,6 @@ validate_build_combination "$APP_TYPE" "$BUILD_TYPE" "$IDF_VERSION"
 BUILD_DIR=$(get_build_directory "$APP_TYPE" "$BUILD_TYPE" "$IDF_TARGET" "$IDF_VERSION")
 echo "Build directory: $BUILD_DIR"
 
-
-
 # Clean previous build only if explicitly requested
 if [ "$CLEAN" = "1" ] && [ -d "$BUILD_DIR" ]; then
     echo "CLEAN=1 set: removing previous build directory..."
