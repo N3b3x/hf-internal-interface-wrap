@@ -337,12 +337,11 @@ echo "Valid build type: $BUILD_TYPE"
 # Validate the complete combination
 validate_build_combination "$APP_TYPE" "$BUILD_TYPE" "$IDF_VERSION"
 
-# Switch to project directory
-cd "$PROJECT_DIR"
-
 # Set build directory using configuration (includes target and IDF version)
 BUILD_DIR=$(get_build_directory "$APP_TYPE" "$BUILD_TYPE" "$IDF_TARGET" "$IDF_VERSION")
 echo "Build directory: $BUILD_DIR"
+
+
 
 # Clean previous build only if explicitly requested
 if [ "$CLEAN" = "1" ] && [ -d "$BUILD_DIR" ]; then
@@ -356,7 +355,8 @@ fi
 
 # Configure and build with proper error handling
 echo "Configuring project for $IDF_TARGET..."
-if ! idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D APP_TYPE="$APP_TYPE" -D IDF_CCACHE_ENABLE="$USE_CCACHE" reconfigure; then
+
+if ! idf.py -B "$BUILD_DIR" -D CMAKE_BUILD_TYPE="$BUILD_TYPE" -D BUILD_TYPE="$BUILD_TYPE" -D APP_TYPE="$APP_TYPE" -D IDF_CCACHE_ENABLE="$USE_CCACHE" reconfigure; then
     echo "ERROR: Configuration failed"
     exit 1
 fi
