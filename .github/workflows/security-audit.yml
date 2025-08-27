@@ -153,7 +153,39 @@ jobs:
             temp_requirements.txt
           retention-days: 30
 
-  # Job 2: Secrets Detection
+  # Job 2: Generate Unique IDF Versions for Security Audit
+  generate-idf-versions:
+    name: Generate Unique IDF Versions
+    runs-on: ubuntu-latest
+    outputs:
+      idf_versions: ${{ steps.extract-versions.outputs.versions }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install dependencies
+        run: pip install pyyaml
+        
+      - name: Extract unique IDF versions
+        id: extract-versions
+        run: |
+          echo "Extracting unique IDF versions from app_config.yml..."
+          
+          # Generate matrix to see all combinations
+          MATRIX=$(python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --format json)
+          
+          # Extract unique IDF versions using Python
+          UNIQUE_VERSIONS=$(python3 -c "import json; data = json.loads('''$MATRIX'''); versions = [item['idf_version'] for item in data['include']]; print(' '.join(set(versions)))" 2>/dev/null || echo "release/v5.5")
+          
+          echo "versions=${UNIQUE_VERSIONS}" >> "$GITHUB_OUTPUT"
+          echo "Unique IDF versions: ${UNIQUE_VERSIONS}"
+
+  # Job 3: Secrets Detection
   secrets-detection:
     name: Secrets and Sensitive Data Detection
     runs-on: ubuntu-latest
@@ -253,10 +285,15 @@ jobs:
             credential_patterns.txt
           retention-days: 30
 
-  # Job 3: ESP-IDF Component Security Analysis
+  # Job 3: ESP-IDF Component Security Analysis (IDF-only matrix)
   esp-idf-security:
-    name: ESP-IDF Component Security Analysis
+    name: ESP-IDF Security Analysis ➜ ${{ matrix.idf_version }}
     runs-on: ubuntu-latest
+    needs: [generate-idf-versions]
+    strategy:
+      fail-fast: false
+      matrix:
+        idf_version: ${{ fromJson(needs.generate-idf-versions.outputs.idf_versions) }}
     if: >-
       github.event.inputs.scan_type == 'all' ||
       github.event.inputs.scan_type == 'esp-idf' ||
@@ -271,25 +308,15 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       
-      - name: Get ESP-IDF version from config
-        id: get-idf-version
+      - name: Use Matrix ESP-IDF Version
+        id: matrix-idf-version
         run: |
-          echo "Reading ESP-IDF version from app_config.yml..."
-          IDF_TAG="release-v5.5"
-          if [ -f "${{ env.ESP32_PROJECT_PATH }}/app_config.yml" ]; then
-            IDF_LINE=$(grep -m1 "idf_versions:" ${{ env.ESP32_PROJECT_PATH }}/app_config.yml || true)
-            if [ -n "$IDF_LINE" ]; then
-              # Extract first version from array, handling both ["v1", "v2"] and ["v1"] formats
-              IDF_TAG=$(echo "$IDF_LINE" | sed 's/.*\["*\([^",]*\)"*.*/\1/' | tr -d '[]"' | head -1)
-              # Sanitize for cache key (remove special characters that cause validation errors)
-              IDF_TAG_CLEAN="${IDF_TAG//[^a-zA-Z0-9._-]/-}"
-            fi
-          fi
-          echo "idf_version=${IDF_TAG_CLEAN}" >> "$GITHUB_OUTPUT"
-          IDF_GIT_BRANCH=$(echo "${IDF_TAG}" | sed -E 's#^release-(v[0-9]+\.[0-9]+)$#release/\1#')
-          echo "idf_git_branch=${IDF_GIT_BRANCH}" >> "$GITHUB_OUTPUT"
-          echo "Using ESP-IDF docker tag: ${IDF_TAG}; git branch: ${IDF_GIT_BRANCH}"
-          echo "Cache-safe version: ${IDF_TAG_CLEAN}"
+          echo "Using matrix ESP-IDF version: ${{ matrix.idf_version }}"
+          
+          # Convert git branch format to docker tag format
+          IDF_DOCKER_TAG=$(echo "${{ matrix.idf_version }}" | sed 's#release/##')
+          echo "idf_docker_tag=${IDF_DOCKER_TAG}" >> "$GITHUB_OUTPUT"
+          echo "Docker tag format: ${IDF_DOCKER_TAG}"
           
       - name: Cache ESP-IDF installation
         id: esp-idf-cache
@@ -298,42 +325,22 @@ jobs:
           path: |
             ~/esp-idf
             ~/.espressif
-          key: esp-idf-${{ steps.get-idf-version.outputs.idf_version }}-${{ runner.os }}
+          key: esp-idf-${{ steps.matrix-idf-version.outputs.idf_docker_tag }}-${{ runner.os }}
           restore-keys: |
-            esp-idf-${{ steps.get-idf-version.outputs.idf_version }}-
+            esp-idf-${{ steps.matrix-idf-version.outputs.idf_docker_tag }}-
             esp-idf-
 
-      - name: Install ESP-IDF
-        if: steps.esp-idf-cache.outputs.cache-hit != 'true'
-        run: |
-          echo "🔧 Installing ESP-IDF for component analysis..."
-          if [ -d "$HOME/esp-idf/.git" ]; then
-            echo "Existing esp-idf repo found, updating..."
-            cd "$HOME/esp-idf"
-            git remote set-url origin https://github.com/espressif/esp-idf.git
-            git fetch --tags --force origin
-            BR="${{ steps.get-idf-version.outputs.idf_git_branch }}"
-            git checkout --force "$BR" || \
-              git checkout -B "$BR" "origin/$BR"
-            git submodule update --init --recursive
-          else
-            rm -rf "$HOME/esp-idf"
-            git clone --recursive --depth 1 --branch ${{ steps.get-idf-version.outputs.idf_git_branch }} \
-              https://github.com/espressif/esp-idf.git "$HOME/esp-idf"
-            cd "$HOME/esp-idf"
-          fi
-          ./install.sh esp32,esp32c6,esp32s3
-          
-      - name: Setup ESP-IDF environment
-        run: |
-          echo "🔧 Setting up ESP-IDF environment..."
-          if [ ! -f "$HOME/esp-idf/export.sh" ]; then
-            echo "ESP-IDF installation failed - export.sh not found"
-            exit 1
-          fi
-          # shellcheck source=/dev/null
-          source "$HOME/esp-idf/export.sh"
-          echo "ESP-IDF environment setup complete"
+      - name: Setup ESP-IDF for Security Analysis
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: ${{ steps.matrix-idf-version.outputs.idf_docker_tag }}
+          target: esp32c6
+          path: .
+          command: |
+            echo "🔧 ESP-IDF environment ready for security analysis"
+            echo "ESP-IDF version: ${{ steps.matrix-idf-version.outputs.idf_docker_tag }}"
+            echo "Target: esp32c6"
+            echo "Security analysis environment setup complete"
           
       - name: Analyze ESP-IDF component dependencies
         run: |
@@ -422,11 +429,11 @@ jobs:
             esp-security-report.md
           retention-days: 30
 
-  # Job 4: Security Summary and Reporting
+  # Job 5: Security Summary and Reporting
   security-summary:
     name: Security Summary Report
     runs-on: ubuntu-latest
-    needs: [python-security-audit, secrets-detection, esp-idf-security]
+    needs: [python-security-audit, secrets-detection, generate-idf-versions]
     if: always()
     
     steps:
@@ -445,13 +452,20 @@ jobs:
             echo "Generated on: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
             echo ""
             
-            # Add workflow information
-            echo "## Workflow Information"
-            echo "- **Repository**: ${{ github.repository }}"
-            echo "- **Branch**: ${{ github.ref_name }}"
-            echo "- **Commit**: ${{ github.sha }}"
-            echo "- **Workflow Run**: ${{ github.run_number }}"
-            echo ""
+                      # Add workflow information
+          echo "## Workflow Information"
+          echo "- **Repository**: ${{ github.repository }}"
+          echo "- **Branch**: ${{ github.ref_name }}"
+          echo "- **Commit**: ${{ github.sha }}"
+          echo "- **Workflow Run**: ${{ github.run_number }}"
+          echo ""
+          
+          # Add IDF coverage information
+          echo "## ESP-IDF Security Coverage"
+          echo "- **ESP-IDF Security Analysis**: IDF-version-based coverage (not app-specific)"
+          echo "- **Efficient Coverage**: Only unique ESP-IDF versions are audited"
+          echo "- **Parallel Execution**: Multiple runners for different IDF versions"
+          echo ""
           } > security-summary-report.md
           
           # Summarize audit results
@@ -506,7 +520,7 @@ jobs:
             **Audit Components:**
             - ✅ Python dependencies vulnerability scan
             - ✅ Secrets and sensitive data detection  
-            - ✅ ESP-IDF component security analysis
+            - ✅ ESP-IDF component security analysis (IDF-version-based coverage)
             
             📋 **Detailed Report:**
             Please check the workflow artifacts for detailed security analysis results.
