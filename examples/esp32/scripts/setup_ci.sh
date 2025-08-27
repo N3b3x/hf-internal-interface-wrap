@@ -185,8 +185,25 @@ main() {
             
             # Try to install specific version, fallback to default if it fails
             echo "Attempting to install ESP-IDF version: $IDF_VERSION"
+            echo "Installation process starting..."
+            
             if install_esp_idf_version "$IDF_VERSION"; then
                 echo "ESP-IDF version $IDF_VERSION installed successfully"
+                
+                # Verify installation immediately
+                echo "Verifying installation..."
+                if [[ -f "$HOME/.espressif/export.sh" ]]; then
+                    echo "✓ ESP-IDF tools export.sh found after installation"
+                else
+                    echo "✗ ESP-IDF tools export.sh missing after installation"
+                fi
+                
+                if [[ -d "$HOME/esp" ]]; then
+                    echo "✓ ESP directory exists after installation"
+                    ls -la "$HOME/esp" 2>/dev/null | head -5 || echo "Could not list ESP directory"
+                else
+                    echo "✗ ESP directory missing after installation"
+                fi
             else
                 echo "WARNING: Failed to install ESP-IDF version $IDF_VERSION"
                 echo "This may be due to network issues, invalid version, or other problems"
@@ -208,7 +225,20 @@ main() {
     
     # Source ESP-IDF environment for CI builds
     echo "Setting up ESP-IDF environment for CI builds..."
-    if [[ -n "$IDF_VERSION" ]]; then
+    
+    # First, try to source from the ESP-IDF tools directory (this is where tools are installed)
+    if [[ -f "$HOME/.espressif/export.sh" ]]; then
+        echo "Found ESP-IDF tools export.sh, sourcing from there..."
+        echo "ESP-IDF tools export.sh location: $HOME/.espressif/export.sh"
+        echo "ESP-IDF tools export.sh size: $(ls -lh "$HOME/.espressif/export.sh" 2>/dev/null | awk '{print $5}' || echo 'unknown')"
+        
+        if source "$HOME/.espressif/export.sh"; then
+            echo "ESP-IDF environment sourced successfully from tools directory"
+        else
+            echo "ERROR: Failed to source ESP-IDF environment from tools directory"
+            exit 1
+        fi
+    elif [[ -n "$IDF_VERSION" ]]; then
         # CI mode: Source specific ESP-IDF version
         local esp_dir="$HOME/esp"
         # Use same sanitization logic as install_esp_idf_version
@@ -217,8 +247,13 @@ main() {
         
         echo "Looking for ESP-IDF at: $idf_dir"
         echo "Sanitized version: $sanitized_version"
+        echo "Original IDF_VERSION: $IDF_VERSION"
+        echo "ESP directory: $esp_dir"
         
         if [[ -f "$idf_dir/export.sh" ]]; then
+            echo "Found ESP-IDF source export.sh at: $idf_dir/export.sh"
+            echo "ESP-IDF source export.sh size: $(ls -lh "$idf_dir/export.sh" 2>/dev/null | awk '{print $5}' || echo 'unknown')"
+            
             if source "$idf_dir/export.sh"; then
                 echo "ESP-IDF environment sourced successfully for version: $IDF_VERSION"
             else
@@ -251,22 +286,53 @@ main() {
                 exit 1
             fi
         fi
-    elif [[ -f "$HOME/.espressif/export.sh" ]]; then
-        # Local mode: Source default ESP-IDF environment
-        if source "$HOME/.espressif/export.sh"; then
-            echo "ESP-IDF environment sourced successfully"
-        else
-            echo "ERROR: Failed to source default ESP-IDF environment"
-            exit 1
-        fi
     else
         echo "ERROR: ESP-IDF export.sh not found"
         echo "This suggests that ESP-IDF tools were not properly installed"
+        echo "Checking for ESP-IDF installation..."
+        
+        # Check what's available
+        if [[ -d "$HOME/.espressif" ]]; then
+            echo "ESP-IDF tools directory exists: $HOME/.espressif"
+            ls -la "$HOME/.espressif" 2>/dev/null || echo "Could not list ESP-IDF tools directory"
+        fi
+        
+        if [[ -d "$HOME/esp" ]]; then
+            echo "ESP directory exists: $HOME/esp"
+            ls -la "$HOME/esp" 2>/dev/null || echo "Could not list ESP directory"
+        fi
+        
         exit 1
     fi
     
     # Verify idf.py is available
     echo "Verifying ESP-IDF tools availability..."
+    
+    # Check ESP-IDF installation status
+    echo "ESP-IDF installation status:"
+    if [[ -d "$HOME/.espressif" ]]; then
+        echo "  ✓ ESP-IDF tools directory exists: $HOME/.espressif"
+        if [[ -f "$HOME/.espressif/export.sh" ]]; then
+            echo "  ✓ ESP-IDF export.sh found"
+        else
+            echo "  ✗ ESP-IDF export.sh missing"
+        fi
+        if [[ -d "$HOME/.espressif/tools" ]]; then
+            echo "  ✓ ESP-IDF tools subdirectory exists"
+        else
+            echo "  ✗ ESP-IDF tools subdirectory missing"
+        fi
+    else
+        echo "  ✗ ESP-IDF tools directory missing"
+    fi
+    
+    if [[ -d "$HOME/esp" ]]; then
+        echo "  ✓ ESP directory exists: $HOME/esp"
+        ls -la "$HOME/esp" 2>/dev/null | head -10 || echo "  Could not list ESP directory"
+    else
+        echo "  ✗ ESP directory missing"
+    fi
+    
     if command_exists idf.py; then
         if idf.py --version >/dev/null 2>&1; then
             echo "idf.py verified: $(idf.py --version | head -1)"

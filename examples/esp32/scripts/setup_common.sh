@@ -651,6 +651,9 @@ install_esp_idf_version() {
     
     # Install ESP-IDF tools
     print_status "Installing ESP-IDF tools..."
+    print_status "Current directory: $(pwd)"
+    print_status "Installing for targets: esp32c6"
+    
     if ./install.sh esp32c6; then
         print_success "ESP-IDF tools installed successfully"
         
@@ -661,6 +664,22 @@ install_esp_idf_version() {
         fi
         ln -sf "$idf_dir" "esp-idf"
         print_status "Created symlink: esp-idf -> $idf_dir"
+        
+        # Verify that tools are installed to the correct location
+        if [[ -f "$HOME/.espressif/export.sh" ]]; then
+            print_status "ESP-IDF tools verified at $HOME/.espressif/export.sh"
+        else
+            print_warning "ESP-IDF tools export.sh not found at expected location"
+            print_status "Checking what was installed..."
+            ls -la "$HOME/.espressif" 2>/dev/null || print_warning "Could not list ESP-IDF tools directory"
+        fi
+        
+        # Check if the ESP-IDF source directory has export.sh
+        if [[ -f "$idf_dir/export.sh" ]]; then
+            print_status "ESP-IDF source export.sh found at $idf_dir/export.sh"
+        else
+            print_warning "ESP-IDF source export.sh not found at $idf_dir/export.sh"
+        fi
     else
         print_error "Failed to install ESP-IDF tools"
         return 1
