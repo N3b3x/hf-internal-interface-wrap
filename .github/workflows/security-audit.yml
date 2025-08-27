@@ -282,7 +282,7 @@ jobs:
               # Extract first version from array, handling both ["v1", "v2"] and ["v1"] formats
               IDF_TAG=$(echo "$IDF_LINE" | sed 's/.*\["*\([^",]*\)"*.*/\1/' | tr -d '[]"' | head -1)
               # Sanitize for cache key (remove special characters that cause validation errors)
-              IDF_TAG_CLEAN=$(echo "$IDF_TAG" | sed 's/[^a-zA-Z0-9._-]/-/g')
+              IDF_TAG_CLEAN="${IDF_TAG//[^a-zA-Z0-9._-]/-}"
             fi
           fi
           echo "idf_version=${IDF_TAG_CLEAN}" >> "$GITHUB_OUTPUT"

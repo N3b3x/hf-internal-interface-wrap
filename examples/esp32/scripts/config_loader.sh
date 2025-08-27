@@ -365,6 +365,19 @@ is_valid_app_type() {
 # Check if build type is valid
 is_valid_build_type() {
     local build_type="$1"
+    local app_type="${2:-}"
+    
+    # If app type is specified, check app-specific build types first
+    if [[ -n "$app_type" ]]; then
+        local app_build_types=$(get_app_build_types "$app_type")
+        if [[ -n "$app_build_types" ]]; then
+            if echo "$app_build_types" | grep -q "\b$build_type\b"; then
+                return 0  # Valid for this app
+            fi
+        fi
+    fi
+    
+    # Fall back to global build types
     local valid_types=$(get_build_types)
     echo "$valid_types" | grep -q "\b$build_type\b"
 }
@@ -647,8 +660,8 @@ is_valid_combination() {
         return 1
     fi
     
-    # Check if build type is valid
-    if ! is_valid_build_type "$build_type"; then
+    # Check if build type is valid for this app
+    if ! is_valid_build_type "$build_type" "$app_type"; then
         return 1
     fi
     

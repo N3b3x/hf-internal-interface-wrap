@@ -374,11 +374,11 @@ if [ "$OPERATION" != "monitor" ]; then
     fi
 
     # Validate build type
-    if is_valid_build_type "$BUILD_TYPE"; then
+    if is_valid_build_type "$BUILD_TYPE" "$APP_TYPE"; then
         echo "Valid build type: $BUILD_TYPE"
     else
         echo "ERROR: Invalid build type: $BUILD_TYPE"
-        echo "Available types: $(get_build_types)"
+        echo "Available types for $APP_TYPE: $(get_app_build_types "$APP_TYPE")"
         exit 1
     fi
 else
