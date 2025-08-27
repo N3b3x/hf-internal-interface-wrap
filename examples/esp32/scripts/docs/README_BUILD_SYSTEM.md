@@ -82,45 +82,45 @@ The build system now includes a comprehensive validation system that prevents in
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           BUILD REQUEST                                    │
-│  app: gpio_test, build_type: Release, idf_version: (unspecified)         │
+│                           BUILD REQUEST                                     │
+│  app: gpio_test, build_type: Release, idf_version: (unspecified)            │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        BASIC VALIDATION FIRST                              │
-│  • Validate app type exists                                              │
-│  • Validate build type is supported                                      │
-│  • Fail fast if basic validation fails                                   │
+│                        BASIC VALIDATION FIRST                               │
+│  • Validate app type exists                                                 │
+│  • Validate build type is supported                                         │
+│  • Fail fast if basic validation fails                                      │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        SMART DEFAULT SELECTION                             │
-│  • Only if basic validation passes                                       │
-│  • Check app-specific IDF versions                                       │
-│  • Find first version supporting requested build type                     │
-│  • Fallback to global defaults if needed                                 │
-│  • Result: release/v5.5                                                  │
+│                        SMART DEFAULT SELECTION                              │
+│  • Only if basic validation passes                                          │
+│  • Check app-specific IDF versions                                          │
+│  • Find first version supporting requested build type                       │
+│  • Fallback to global defaults if needed                                    │
+│  • Result: release/v5.5                                                     │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        FINAL COMBINATION VALIDATION                        │
-│  • Single comprehensive check (no redundant individual validations)       │
-│  • Functions remain standalone-safe for independent sourcing              │
-│  • Check combination constraints                                         │
+│                        FINAL COMBINATION VALIDATION                         │
+│  • Single comprehensive check (no redundant individual validations)         │
+│  • Functions remain standalone-safe for independent sourcing                │
+│  • Check combination constraints                                            │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           VALIDATION RESULT                                │
-│  ✅ VALID: gpio_test + Release + release/v5.5                            │
-│  → Proceed with build                                                    │
+│                           VALIDATION RESULT                                 │
+│  ✅ VALID: gpio_test + Release + release/v5.5                               │
+│  → Proceed with build                                                       │
 │                                                                             │
-│  ❌ INVALID: gpio_test + Release + release/v5.4                          │
-│  → Show error with valid combinations                                     │
-│  → Provide helpful next steps                                             │
+│  ❌ INVALID: gpio_test + Release + release/v5.4                             │
+│  → Show error with valid combinations                                       │
+│  → Provide helpful next steps                                               │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 

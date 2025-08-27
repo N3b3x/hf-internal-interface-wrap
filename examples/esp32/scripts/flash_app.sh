@@ -310,18 +310,12 @@ fi
 
 # NEW: Validate ESP-IDF version and build type compatibility for flash and size operations
 if [[ "$OPERATION" =~ ^(flash|flash_monitor|size)$ ]] && [[ -n "$APP_TYPE" ]]; then
-    # Validate ESP-IDF version compatibility with app
-    if ! validate_app_idf_version "$APP_TYPE" "$IDF_VERSION"; then
-        echo "ERROR: App '$APP_TYPE' does not support ESP-IDF version '$IDF_VERSION'"
+    # Validate combination using enhanced function
+    if ! is_valid_combination "$APP_TYPE" "$BUILD_TYPE" "$IDF_VERSION"; then
+        echo "ERROR: Invalid combination: $APP_TYPE + $BUILD_TYPE + $IDF_VERSION"
         echo "Supported versions for '$APP_TYPE': $(get_app_idf_versions "$APP_TYPE")"
+        echo "Supported build types for '$APP_TYPE': $(get_build_types "$APP_TYPE")"
         echo "Global ESP-IDF versions: $(get_idf_versions)"
-        exit 1
-    fi
-    
-    # Validate build type compatibility with app
-    if ! validate_app_build_type "$APP_TYPE" "$BUILD_TYPE"; then
-        echo "ERROR: App '$APP_TYPE' does not support build type '$BUILD_TYPE'"
-        echo "Supported build types for '$APP_TYPE': $(get_app_build_types "$APP_TYPE")"
         echo "Global build types: $(get_build_types)"
         exit 1
     fi
@@ -378,7 +372,7 @@ if [ "$OPERATION" != "monitor" ]; then
         echo "Valid build type: $BUILD_TYPE"
     else
         echo "ERROR: Invalid build type: $BUILD_TYPE"
-        echo "Available types for $APP_TYPE: $(get_app_build_types "$APP_TYPE")"
+        echo "Available types for $APP_TYPE: $(get_build_types "$APP_TYPE")"
         exit 1
     fi
 else

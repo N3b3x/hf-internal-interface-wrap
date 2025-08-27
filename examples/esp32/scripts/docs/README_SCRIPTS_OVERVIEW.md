@@ -308,6 +308,10 @@ Definitions      Fallbacks        & Execution      & Output
 **Key Capabilities**:
 - YAML configuration parsing with `yq`
 - Fallback parsing for systems without `yq`
+- **App-specific build type and IDF version overrides**
+- **Version-aware build type validation**
+- **Smart fallback to metadata defaults**
+- **Comprehensive combination validation for CI pipeline**
 - Configuration validation and error checking
 - Environment variable overrides
 - Cross-platform path handling

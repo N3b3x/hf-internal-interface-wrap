@@ -25,16 +25,16 @@ The ESP32 configuration system provides centralized, intelligent configuration m
 
 ### **Core Features**
 - **Centralized Configuration**: Single YAML file manages all script behavior
-- **🛡️ Enhanced Validation**: Smart combination validation and error prevention
-- **🧠 Smart Defaults**: Automatic ESP-IDF version selection based on app and build type
+- **Enhanced Validation**: Smart combination validation and error prevention
+- **Smart Defaults**: Automatic ESP-IDF version selection based on app and build type
 - **Smart Fallbacks**: Graceful degradation when configuration is incomplete
 - **Cross-Platform**: Consistent behavior across Linux and macOS
 - **Environment Integration**: Environment variable overrides and customization
 
 ### **Key Capabilities**
 - YAML configuration parsing with `yq` and fallback methods
-- **🆕 Smart combination validation** - Prevents invalid app + build type + IDF version combinations
-- **🆕 Automatic ESP-IDF version selection** - Chooses the right version when not specified
+- **Smart combination validation** - Prevents invalid app + build type + IDF version combinations
+- **Automatic ESP-IDF version selection** - Chooses the right version when not specified
 - Application and build type validation
 - ESP-IDF version compatibility checking
 - Environment variable override support
@@ -59,8 +59,8 @@ Definitions      Validation       Fallbacks         Execution
 
 ### **Design Principles**
 - **Single Source of Truth**: All configuration in one YAML file
-- **🛡️ Fail-Fast Validation**: Configuration errors caught early with clear messages
-- **🧠 Intelligent Defaults**: Sensible fallbacks when configuration is incomplete
+- **Fail-Fast Validation**: Configuration errors caught early with clear messages
+- **Intelligent Defaults**: Sensible fallbacks when configuration is incomplete
 - **Cross-Platform Consistency**: Uniform behavior across operating systems
 - **Performance Optimization**: Efficient parsing and caching mechanisms
 
@@ -100,7 +100,7 @@ is_valid_combination() {
     if ! echo "$app_idf_versions_array" | grep -q "$idf_version"; then return 1; fi
     
     # Check if app supports this build type for this IDF version
-    local app_build_types=$(get_app_build_types "$app_type")
+    local app_build_types=$(get_build_types "$app_type")
     local clean_build_types=$(echo "$app_build_types" | sed 's/\[//g' | sed 's/\]//g' | sed 's/"//g' | tr ',' ' ')
     
     if [[ "$clean_build_types" == *"$build_type"* ]]; then return 0; fi
@@ -111,102 +111,66 @@ is_valid_combination() {
 
 #### **Smart Default Selection**
 ```bash
-# Smart IDF version selection with build type matching
-get_idf_version_smart() {
-    local app_type="$1"
-    local build_type="$2"
-    
-    # Check for app-specific override first
-    if check_yq; then
-        local app_idf_versions=$(run_yq ".apps.${app_type}.idf_versions" -r 2>/dev/null)
-        if [ "$app_idf_versions" != "null" ] && [ -n "$app_idf_versions" ]; then
-            local app_build_types=$(run_yq ".apps.${app_type}.build_types" -r 2>/dev/null)
-            if [ "$app_build_types" != "null" ] && [ -n "$app_build_types" ]; then
-                if [[ "$app_build_types" == *"["* ]]; then
-                    local version_index=0
-                    while IFS= read -r version; do
-                        local build_types_for_version=$(echo "$app_build_types" | jq -r ".[$version_index]" 2>/dev/null)
-                        if [[ "$build_types_for_version" == *"$build_type"* ]]; then
-                            echo "$version"
-                            return 0
-                        fi
-                        ((version_index++))
-                    done < <(echo "$app_idf_versions" | tr ',' '\n')
-                else
-                    echo "$app_idf_versions" | sed 's/\[//g' | sed 's/\]//g' | sed 's/"//g' | tr ',' '\n' | head -n1
-                    return 0
-                fi
-            else
-                echo "$app_idf_versions" | sed 's/\[//g' | sed 's/\]//g' | sed 's/"//g' | tr ',' '\n' | head -n1
-                return 0
-            fi
-        fi
-    fi
-    
-    # Fallback to global defaults
-    if check_yq; then
-        local global_idf_versions=$(run_yq '.metadata.idf_versions' -r)
-        local global_build_types=$(run_yq '.metadata.build_types' -r)
-        if [ "$global_idf_versions" != "null" ] && [ -n "$global_idf_versions" ]; then
-            local version_index=0
-            while IFS= read -r version; do
-                local build_types_for_version=$(echo "$global_build_types" | jq -r ".[$version_index]" 2>/dev/null)
-                if [[ "$build_types_for_version" == *"$build_type"* ]]; then
-                    echo "$version"
-                    return 0
-                fi
-                ((version_index++))
-            done < <(echo "$global_idf_versions" | tr ',' '\n')
-        fi
-    fi
-    
-    echo "release/v5.5"
-}
+# Enhanced IDF version selection with comprehensive validation
+# Now handled by enhanced get_idf_version() and is_valid_combination()
+
+# Get app-specific IDF version with fallback
+idf_version=$(get_idf_version "gpio_test")
+
+# Comprehensive combination validation
+if is_valid_combination "gpio_test" "Release" "release/v5.5"; then
+    echo "Valid combination for CI pipeline"
+fi
+
+# Enhanced build type validation with app overrides
+if is_valid_build_type "Release" "gpio_test" "release/v5.5"; then
+    echo "Valid build type for app and IDF version"
+fi
 ```
 
 ### **Validation Flow**
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           CONFIGURATION LOADING                            │
-│  app_config.yml → config_loader.sh → Validation Functions                 │
+│                           CONFIGURATION LOADING                             │
+│  app_config.yml → config_loader.sh → Validation Functions                   │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        BASIC VALIDATION FIRST                              │
-│  • Validate app type exists                                              │
-│  • Validate build type is supported                                      │
-│  • Fail fast if basic validation fails                                   │
+│                        BASIC VALIDATION FIRST                               │
+│  • Validate app type exists                                                 │
+│  • Validate build type is supported                                         │
+│  • Fail fast if basic validation fails                                      │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        SMART DEFAULT SELECTION                             │
-│  • Only if basic validation passes                                       │
-│  • Check app-specific IDF versions                                       │
-│  • Find first version supporting requested build type                     │
-│  • Fallback to global defaults if needed                                 │
-│  • Result: release/v5.5                                                  │
+│                        SMART DEFAULT SELECTION                              │
+│  • Only if basic validation passes                                          │
+│  • Check app-specific IDF versions                                          │
+│  • Find first version supporting requested build type                       │
+│  • Fallback to global defaults if needed                                    │
+│  • Result example: release/v5.5                                                     │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        FINAL COMBINATION VALIDATION                        │
-│  • Single comprehensive check (no redundant individual validations)       │
-│  • Functions remain standalone-safe for independent sourcing              │
-│  • Check combination constraints                                         │
+│                        FINAL COMBINATION VALIDATION                         │
+│  • Single comprehensive check (no redundant individual validations)         │
+│  • Functions remain standalone-safe for independent sourcing                │
+│  • Check combination constraints                                            │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           VALIDATION RESULT                                │
-│  ✅ VALID: gpio_test + Release + release/v5.5                            │
-│  → Proceed with build                                                    │
+│                           VALIDATION RESULT                                 │
+│  ✅ VALID: gpio_test + Release + release/v5.5                               │
+│  → Proceed with build                                                       │
 │                                                                             │
-│  ❌ INVALID: gpio_test + Release + release/v5.4                          │
-│  → Show error with valid combinations                                     │
-│  → Provide helpful next steps                                             │
+│  ❌ INVALID: gpio_test + Release + release/v5.4                             │
+│  → Show error with valid combinations                                       │
+│  → Provide helpful next steps                                               │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -921,7 +885,7 @@ for app in $(get_app_types); do
     fi
     
     # Validate build types
-    app_build_types=$(get_app_build_types "$app")
+    app_build_types=$(get_build_types "$app")
     for build_type in $app_build_types; do
         if ! is_valid_build_type "$build_type"; then
             echo "ERROR: Invalid build type for $app: $build_type" >&2
@@ -1190,7 +1154,6 @@ load_config_basic              # Load configuration using fallback method
 validate_current_config        # Validate current configuration
 validate_app_type             # Validate application type
 validate_build_type           # Validate build type
-validate_app_idf_version      # Validate ESP-IDF version compatibility
 
 # Configuration access
 get_app_types                 # Get all available application types
@@ -1200,7 +1163,7 @@ get_app_category              # Get application category
 get_build_types               # Get all available build types
 get_idf_versions              # Get supported ESP-IDF versions
 get_app_idf_versions          # Get ESP-IDF versions for specific app
-get_app_build_types           # Get build types for specific app
+get_build_types               # Get build types (with app override support)
 
 # Configuration utilities
 get_build_directory           # Get build directory path
@@ -1220,7 +1183,7 @@ detect_yq_version             # Detect yq version and set syntax
 is_valid_app_type             # Check if app type is valid
 is_valid_build_type           # Check if build type is valid
 is_valid_idf_version          # Check if ESP-IDF version is valid
-is_valid_app_idf_version      # Check if app supports ESP-IDF version
+is_valid_combination           # Check if app + build type + IDF version combination is valid
 
 # Configuration utilities
 get_featured_app_types        # Get featured application types
@@ -1386,6 +1349,81 @@ system_config:
   optional_tools: ["yq", "screen", "tmux"]
   cache_directories: ["$HOME/.ccache", "$HOME/.espressif", "$HOME/.cache/pip"]
 ```
+
+## 🚀 **Enhanced Functionality**
+
+#### **App-Specific Overrides**
+- **Smart Build Type Handling**: `get_build_types(app_type)` now checks app-specific overrides first
+- **Version-Aware Validation**: Functions now understand the relationship between IDF versions and build types
+- **Intelligent Fallbacks**: When app overrides aren't specified, functions fall back to metadata defaults
+
+#### **🆕 Enhanced Validation Functions**
+- **`is_valid_build_type(build_type, app_type, idf_version)`**: Comprehensive validation with app and version context
+- **`is_valid_combination(app_type, build_type, idf_version)`**: Single function for complete combination validation
+- **`get_app_build_types_for_idf_version(app_type, idf_version)`**: Get build types for specific app-IDF combinations
+
+#### **CI Pipeline Optimization**
+- **Robust Combination Validation**: Prevents invalid app + build type + IDF version combinations
+- **Smart Error Messages**: Clear guidance on what combinations are allowed
+- **Fallback Parsing**: Works reliably even when `yq` is not available in CI environments
+
+### **Enhanced Function Examples**
+
+#### **Smart Build Type Retrieval**
+```bash
+# Before: Only global build types
+build_types=$(get_build_types)  # Returns: Debug Release
+
+# After: App-specific with fallback
+build_types=$(get_build_types)                    # Global: Debug Release
+app_build_types=$(get_build_types "gpio_test")   # App-specific: Debug Release
+```
+
+#### **Comprehensive Validation**
+```bash
+# Before: Separate validation functions
+validate_app_type "gpio_test"
+validate_build_type "Release"
+validate_app_idf_version "gpio_test" "release/v5.5"
+
+# After: Single comprehensive validation
+if is_valid_combination "gpio_test" "Release" "release/v5.5"; then
+    echo "Valid combination for CI pipeline"
+fi
+```
+
+#### **Version-Aware Build Type Validation**
+```bash
+# Enhanced validation with context
+if is_valid_build_type "Release" "gpio_test" "release/v5.5"; then
+    echo "Valid build type for app and IDF version"
+fi
+
+# Get version-specific build types
+version_build_types=$(get_build_types_for_idf_version "release/v5.5")
+echo "Build types for v5.5: $version_build_types"
+```
+
+### **Migration Guide**
+
+#### **Functions Removed in Version 2.0**
+- `get_app_build_types()` → Use `get_build_types(app_type)` instead
+- `validate_app_build_type()` → Use `is_valid_build_type(build_type, app_type)` instead
+- `validate_app_idf_version()` → Use `is_valid_combination(app_type, build_type, idf_version)` instead
+- `get_idf_version_smart()` → Use `get_idf_version(app_type)` + `is_valid_combination()` instead
+
+#### **Updated Function Signatures**
+```bash
+# Before
+get_build_types()                    # Only global
+is_valid_build_type(build_type)      # Basic validation
+
+# After
+get_build_types([app_type])          # Global or app-specific
+is_valid_build_type(build_type, [app_type], [idf_version])  # Comprehensive validation
+```
+
+---
 
 ### **Best Practices**
 
