@@ -88,7 +88,10 @@ jobs:
           path: |
             ~/.cache/apt
             /usr/local/bin
-          key: esp32-ci-essential-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
+          key: >-
+            esp32-ci-essential-tools-${{ runner.os }}-${{ 
+              hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
+            }}
           restore-keys: |
             esp32-ci-essential-tools-${{ runner.os }}-
 
@@ -125,7 +128,12 @@ jobs:
             ~/.local/lib/python3.*/site-packages
           key: >-
             esp32-ci-python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
-            ${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh', '${{ env.ESP32_PROJECT_PATH }}/requirements.txt') }}
+            ${{ 
+              hashFiles(
+                '${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh',
+                '${{ env.ESP32_PROJECT_PATH }}/requirements.txt'
+              ) 
+            }}
           restore-keys: |
             esp32-ci-python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             esp32-ci-python-deps-${{ matrix.idf_version_docker }}-
@@ -247,7 +255,10 @@ jobs:
           path: |
             ~/.cache/apt
             /usr/local/bin
-          key: esp32-ci-essential-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
+          key: >-
+            esp32-ci-essential-tools-${{ runner.os }}-${{ 
+              hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
+            }}
           restore-keys: |
             esp32-ci-essential-tools-${{ runner.os }}-
 
@@ -362,7 +373,10 @@ jobs:
           path: |
             ~/.cache/apt
             /usr/local/bin
-          key: esp32-ci-essential-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
+          key: >-
+            esp32-ci-essential-tools-${{ runner.os }}-${{ 
+              hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
+            }}
           restore-keys: |
             esp32-ci-essential-tools-${{ runner.os }}-
 

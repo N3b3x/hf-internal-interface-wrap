@@ -210,7 +210,14 @@ get_build_types() {
         run_yq '.metadata.build_types | .[] | .[]' -r 2>/dev/null | sort -u | tr '\n' ' '
     else
         # Fallback: extract from metadata section
-        grep -A 10 "metadata:" "$CONFIG_FILE" | grep "build_types:" | sed 's/.*build_types: *\[*\[*"*\([^"]*\)"*.*/\1/' | tr -d '[]' | tr ',' ' ' | tr '\n' ' '
+        local build_line=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "build_types:")
+        if [[ -n "$build_line" ]]; then
+            # Extract all build types from nested array, handling quotes and commas
+            echo "$build_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | sed 's/\[//g' | sed 's/\]//g' | tr '\n' ' ' | sed 's/^ *//' | sed 's/ *$//'
+        else
+            echo "ERROR: Could not extract build types from config" >&2
+            return 1
+        fi
     fi
 }
 
@@ -220,7 +227,14 @@ get_idf_versions() {
         run_yq '.metadata.idf_versions | .[]' -r 2>/dev/null | tr '\n' ' '
     else
         # Fallback: extract from metadata section
-        grep -A 10 "metadata:" "$CONFIG_FILE" | grep "idf_versions:" | sed 's/.*idf_versions: *\[*"*\([^"]*\)"*.*/\1/' | tr -d '[]' | tr ',' ' ' | tr '\n' ' '
+        local idf_line=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "idf_versions:")
+        if [[ -n "$idf_line" ]]; then
+            # Extract all versions from array, handling quotes and commas
+            echo "$idf_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | tr '\n' ' '
+        else
+            echo "ERROR: Could not extract IDF versions from config" >&2
+            return 1
+        fi
     fi
 }
 
@@ -231,7 +245,14 @@ get_app_idf_versions() {
         run_yq ".apps.$app_type.idf_versions | .[]" -r 2>/dev/null | tr '\n' ' '
     else
         # Fallback: extract from apps section
-        sed -n "/^  $app_type:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:" | sed 's/.*idf_versions: *\[*"*\([^"]*\)"*.*/\1/' | tr -d '[]' | tr ',' ' ' | tr '\n' ' '
+        local idf_line=$(sed -n "/^  $app_type:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
+        if [[ -n "$idf_line" ]]; then
+            # Extract all versions from array, handling quotes and commas
+            echo "$idf_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | tr '\n' ' '
+        else
+            echo "ERROR: Could not extract app IDF versions from config" >&2
+            return 1
+        fi
     fi
 }
 
@@ -242,7 +263,14 @@ get_app_build_types() {
         run_yq ".apps.$app_type.build_types | .[]" -r 2>/dev/null | tr '\n' ' '
     else
         # Fallback: extract from apps section
-        sed -n "/^  $app_type:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "build_types:" | sed 's/.*build_types: *\[*"*\([^"]*\)"*.*/\1/' | tr -d '[]' | tr ',' ' ' | tr '\n' ' '
+        local build_line=$(sed -n "/^  $app_type:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "build_types:")
+        if [[ -n "$build_line" ]]; then
+            # Extract all build types from array, handling quotes and commas
+            echo "$build_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | tr '\n' ' ' | sed 's/^ *//' | sed 's/ *$//'
+        else
+            echo "ERROR: Could not extract app build types from config" >&2
+            return 1
+        fi
     fi
 }
 
@@ -437,9 +465,10 @@ get_idf_version() {
             fi
         else
             # Fallback: extract per-app IDF version using grep
-            local app_idf_versions=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:" | sed 's/.*idf_versions: *\["*\([^"]*\)"*\].*/\1/' | head -1)
+            local app_idf_versions=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
             if [[ -n "$app_idf_versions" ]]; then
-                echo "$app_idf_versions" | sed 's/\[//' | sed 's/\]//' | sed 's/,.*//' | tr -d '"'
+                # Extract first version from array, handling quotes and commas
+                echo "$app_idf_versions" | sed 's/.*\["*\([^",]*\)"*.*/\1/' | tr -d '[]"' | head -1
                 return 0
             fi
         fi
@@ -451,7 +480,15 @@ get_idf_version() {
         run_yq '.metadata.idf_versions[0]' -r
     else
         # Fallback: extract IDF version using grep
-        grep -A 5 "metadata:" "$CONFIG_FILE" | grep "idf_versions:" | sed 's/.*idf_versions: *\["*\([^"]*\)"*\].*/\1/' | head -1
+        # Extract the first version from the array, handling both ["v1", "v2"] and ["v1"] formats
+        local idf_line=$(grep -A 5 "metadata:" "$CONFIG_FILE" | grep "idf_versions:")
+        if [[ -n "$idf_line" ]]; then
+            # Extract first version from array, handling quotes and commas
+            echo "$idf_line" | sed 's/.*\["*\([^",]*\)"*.*/\1/' | tr -d '[]"' | head -1
+        else
+            echo "ERROR: Could not extract IDF version from config" >&2
+            return 1
+        fi
     fi
 }
 
@@ -680,22 +717,6 @@ get_app_idf_versions_array() {
     
     # Fallback to global IDF versions
     get_idf_versions
-}
-
-# Get app-specific build types
-get_app_build_types() {
-    local app_type="$1"
-    
-    if check_yq; then
-        local app_build_types=$(run_yq ".apps.${app_type}.build_types" -r 2>/dev/null)
-        if [ "$app_build_types" != "null" ] && [ -n "$app_build_types" ]; then
-            echo "$app_build_types"
-            return 0
-        fi
-    fi
-    
-    # Fallback to global build types
-    get_build_types
 }
 
 # Show valid combinations for a specific app
