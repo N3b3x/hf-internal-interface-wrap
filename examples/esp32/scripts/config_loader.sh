@@ -207,16 +207,69 @@ get_app_types() {
 # Get list of valid build types
 get_build_types() {
     if check_yq; then
+        # Handle nested array structure: [["Debug", "Release"], ["Debug"]]
+        # Extract all build types from all nested arrays and flatten them
         run_yq '.metadata.build_types | .[] | .[]' -r 2>/dev/null | sort -u | tr '\n' ' '
     else
         # Fallback: extract from metadata section
         local build_line=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "build_types:")
         if [[ -n "$build_line" ]]; then
             # Extract all build types from nested array, handling quotes and commas
+            # This handles both nested: [["Debug", "Release"], ["Debug"]] and flat: ["Debug", "Release"]
+            # For now, use a simpler approach that extracts all build types
             echo "$build_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | sed 's/\[//g' | sed 's/\]//g' | tr '\n' ' ' | sed 's/^ *//' | sed 's/ *$//'
         else
             echo "ERROR: Could not extract build types from config" >&2
             return 1
+        fi
+    fi
+}
+
+# NEW: Get build types for a specific ESP-IDF version
+get_build_types_for_idf_version() {
+    local idf_version="$1"
+    
+    if check_yq; then
+        # Get the index of the IDF version in the metadata.idf_versions array
+        local idf_index=$(run_yq ".metadata.idf_versions | index(\"$idf_version\")" -r 2>/dev/null)
+        if [[ -n "$idf_index" && "$idf_index" != "null" ]]; then
+            # Get the build types for this specific IDF version index
+            run_yq ".metadata.build_types[$idf_index] | .[]" -r 2>/dev/null | tr '\n' ' '
+        else
+            # Fallback to all build types if version not found
+            get_build_types
+        fi
+    else
+        # Fallback: extract from metadata section
+        local idf_versions_line=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "idf_versions:")
+        local build_types_line=$(grep -A 10 "metadata:" "$CONFIG_FILE" | grep "build_types:")
+        
+        if [[ -n "$idf_versions_line" && -n "$build_types_line" ]]; then
+            # Find the index of the IDF version
+            local idf_index=0
+            local found=0
+            local idf_versions=$(echo "$idf_versions_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g')
+            
+            for version in $idf_versions; do
+                if [[ "$version" == "$idf_version" ]]; then
+                    found=1
+                    break
+                fi
+                ((idf_index++))
+            done
+            
+            if [[ $found -eq 1 ]]; then
+                # For now, use a simpler approach: return all build types
+                # The complex nested parsing is error-prone with sed
+                # TODO: Improve this when yq is available
+                get_build_types
+            else
+                # Fallback to all build types if version not found
+                get_build_types
+            fi
+        else
+            # Fallback to all build types if metadata not found
+            get_build_types
         fi
     fi
 }
@@ -365,7 +418,16 @@ is_valid_app_type() {
 # Check if build type is valid
 is_valid_build_type() {
     local build_type="$1"
-    local valid_types=$(get_build_types)
+    local idf_version="${2:-}"
+    
+    if [[ -n "$idf_version" ]]; then
+        # Check against ESP-IDF version-specific build types
+        local valid_types=$(get_build_types_for_idf_version "$idf_version")
+    else
+        # Check against all available build types
+        local valid_types=$(get_build_types)
+    fi
+    
     echo "$valid_types" | grep -q "\b$build_type\b"
 }
 
@@ -647,8 +709,8 @@ is_valid_combination() {
         return 1
     fi
     
-    # Check if build type is valid
-    if ! is_valid_build_type "$build_type"; then
+    # Check if build type is valid for this specific ESP-IDF version
+    if ! is_valid_build_type "$build_type" "$idf_version"; then
         return 1
     fi
     

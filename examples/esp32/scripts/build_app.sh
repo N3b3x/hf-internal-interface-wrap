@@ -238,14 +238,7 @@ if ! is_valid_app_type "$APP_TYPE"; then
     exit 1
 fi
 
-# Validate build type
-if ! is_valid_build_type "$BUILD_TYPE"; then
-    echo "ERROR: Invalid build type: $BUILD_TYPE"
-    echo "Available types: $(get_build_types)"
-    exit 1
-fi
-
-# Smart IDF version selection (only after basic validation passes)
+# Smart IDF version selection (before build type validation)
 if [ -n "${POSITIONAL_ARGS[2]}" ]; then
     IDF_VERSION="${POSITIONAL_ARGS[2]}"
 else
@@ -253,6 +246,14 @@ else
     source "$PROJECT_DIR/scripts/config_loader.sh"
     IDF_VERSION=$(get_idf_version_smart "$APP_TYPE" "$BUILD_TYPE")
     echo "No IDF version specified, using smart default: $IDF_VERSION"
+fi
+
+# Validate build type against the specific ESP-IDF version
+if ! is_valid_build_type "$BUILD_TYPE" "$IDF_VERSION"; then
+    echo "ERROR: Invalid build type: $BUILD_TYPE"
+    echo "Available types for ESP-IDF $IDF_VERSION: $(get_build_types_for_idf_version "$IDF_VERSION")"
+    echo "All available types: $(get_build_types)"
+    exit 1
 fi
 
 # Ensure ESP-IDF environment is sourced for the specified version
