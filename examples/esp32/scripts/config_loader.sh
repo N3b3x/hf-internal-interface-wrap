@@ -216,8 +216,17 @@ get_build_types() {
         if [[ -n "$build_line" ]]; then
             # Extract all build types from nested array, handling quotes and commas
             # This handles both nested: [["Debug", "Release"], ["Debug"]] and flat: ["Debug", "Release"]
-            # For now, use a simpler approach that extracts all build types
-            echo "$build_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | sed 's/\[//g' | sed 's/\]//g' | tr '\n' ' ' | sed 's/^ *//' | sed 's/ *$//'
+            local build_content=$(echo "$build_line" | sed 's/.*build_types: *//')
+            
+            # Check if this is a nested array structure
+            if [[ "$build_content" == *"[["* ]]; then
+                # Nested array: [["Debug", "Release"], ["Debug"]]
+                # Use a simpler approach: extract all quoted strings and deduplicate
+                echo "$build_content" | grep -o '"[^"]*"' | sed 's/"//g' | sort -u | tr '\n' ' '
+            else
+                # Flat array: ["Debug", "Release"]
+                echo "$build_content" | sed 's/^\[//' | sed 's/\]$//' | sed 's/"//g' | sed 's/,/ /g'
+            fi
         else
             echo "ERROR: Could not extract build types from config" >&2
             return 1
@@ -259,10 +268,19 @@ get_build_types_for_idf_version() {
             done
             
             if [[ $found -eq 1 ]]; then
-                # For now, use a simpler approach: return all build types
-                # The complex nested parsing is error-prone with sed
-                # TODO: Improve this when yq is available
-                get_build_types
+                # Extract build types for this specific index
+                local build_content=$(echo "$build_types_line" | sed 's/.*build_types: *//')
+                
+                # Check if this is a nested array structure
+                if [[ "$build_content" == *"[["* ]]; then
+                    # Nested array: [["Debug", "Release"], ["Debug"]]
+                    # For now, return all build types since the index-specific parsing is complex
+                    # TODO: Improve this when yq is available or implement better parsing
+                    get_build_types
+                else
+                    # Flat array: ["Debug", "Release"] - return all for any version
+                    echo "$build_content" | sed 's/^\[//' | sed 's/\]$//' | sed 's/"//g' | sed 's/,/ /g'
+                fi
             else
                 # Fallback to all build types if version not found
                 get_build_types

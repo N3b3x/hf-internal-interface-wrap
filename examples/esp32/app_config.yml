@@ -13,7 +13,7 @@ metadata:
   default_app: "ascii_art"
   target: "esp32c6"
   idf_versions: ["release/v5.5", "release/v5.4"]
-  build_types: ["Debug", "Release"]
+  build_types: [["Debug", "Release"], ["Debug"]]
 
 apps:
   ascii_art:
