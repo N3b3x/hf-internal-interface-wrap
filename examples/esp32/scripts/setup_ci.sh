@@ -122,6 +122,18 @@ setup_ci_build_structure() {
     cp -r "$project_dir"/* "$ci_build_path/"
     echo "✓ Entire project directory copied"
     
+    # Copy source and include files from workspace root (needed for building)
+    local workspace_root="$SCRIPT_DIR/../.."
+    echo "Copying source and include files from workspace root..."
+    if [[ -d "$workspace_root/src" ]]; then
+        cp -r "$workspace_root/src" "$ci_build_path/"
+        echo "✓ Source files copied"
+    fi
+    if [[ -d "$workspace_root/inc" ]]; then
+        cp -r "$workspace_root/inc" "$ci_build_path/"
+        echo "✓ Include files copied"
+    fi
+    
     echo "CI build directory structure setup complete"
     echo "Build directory: $ci_build_path"
     ls -la "$ci_build_path"
