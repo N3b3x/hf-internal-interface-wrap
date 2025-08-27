@@ -213,6 +213,14 @@ jobs:
             echo "Available files:"
             ls -la
             
+            echo "Checking directory structure:"
+            echo "main/ contents:"
+            ls -la main/
+            echo "inc/ contents:"
+            ls -la inc/
+            echo "Path from main to inc:"
+            ls -la main/../inc/
+            
             # Build the application using the same tool as local development
             ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
             

@@ -192,18 +192,21 @@ setup_ci_build_structure() {
     echo "✓ sdkconfig copied"
     
     # Copy source and include files from workspace root (needed for building)
-    local workspace_root="$SCRIPT_DIR/../.."
+    local workspace_root="$SCRIPT_DIR/../../.."
     echo "Copying source and include files from workspace root..."
+    echo "Workspace root path: $workspace_root"
+    echo "Current script directory: $SCRIPT_DIR"
+    
     if [[ -d "$workspace_root/src" ]]; then
         cp -r "$workspace_root/src" "$ci_build_path/"
-        echo "✓ Source files copied"
+        echo "✓ Source files copied from $workspace_root/src"
     else
         echo "⚠️  Warning: src directory not found at $workspace_root/src"
     fi
     
     if [[ -d "$workspace_root/inc" ]]; then
         cp -r "$workspace_root/inc" "$ci_build_path/"
-        echo "✓ Include files copied"
+        echo "✓ Include files copied from $workspace_root/inc"
     else
         echo "⚠️  Warning: inc directory not found at $workspace_root/inc"
     fi
