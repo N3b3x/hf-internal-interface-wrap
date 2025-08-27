@@ -1,6 +1,6 @@
 #!/bin/bash
-# CI Environment Setup Script for ESP32 HardFOC Interface Wrapper
-# This script sets up a minimal development environment for CI builds
+# ESP32 CI Environment Setup Script
+# This script sets up minimal ESP32 development environment for CI/CD builds
 
 set -e  # Exit on any error
 
@@ -14,24 +14,72 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "ESP32 CI Environment Setup Script"
     echo ""
-    echo "Usage: ./setup_ci.sh [--help]"
+    echo "Usage: ./setup_ci.sh [OPTIONS]"
     echo ""
-    echo "Purpose: Set up minimal ESP32 development environment for CI/CD builds"
+    echo "OPTIONS:"
+    echo "  --help, -h          Show this help message"
     echo ""
-    echo "What it installs:"
-    echo "  • System dependencies (build tools, libraries)"
-    echo "  • Clang-20 toolchain (compiler, formatter, analyzer)"
-    echo "  • ESP-IDF v5.5 (ESP32 development framework)"
-    echo "  • Python dependencies (PyYAML)"
-    echo "  • yq (YAML processor)"
-    echo "  • Development aliases and environment variables"
+    echo "PURPOSE:"
+    echo "  Set up minimal ESP32 development environment for CI/CD builds"
     echo ""
-    echo "CI-specific features:"
+    echo "WHAT IT INSTALLS:"
+    echo "  • System dependencies (build tools, libraries, minimal packages)"
+    echo "  • Clang-20 toolchain (compiler, formatter, analyzer, tools)"
+    echo "  • ESP-IDF v5.5 (ESP32 development framework with tools)"
+    echo "  • Python dependencies (PyYAML, pip packages)"
+    echo "  • yq (YAML processor for configuration parsing)"
+    echo "  • CI-optimized environment configuration"
+    echo "  • Cache optimization for CI environments"
+    echo ""
+    echo "WHAT IT DOES:"
+    echo "  • Installs minimal required dependencies for CI builds"
+    echo "  • Sets up ESP-IDF development framework"
+    echo "  • Configures Clang toolchain for CI builds"
+    echo "  • Optimizes environment for CI/CD pipelines"
+    echo "  • Provides cache optimization and statistics"
     echo "  • Skips installation if components found in cache"
-    echo "  • Optimizes cache usage for CI environments"
-    echo "  • Provides detailed cache statistics"
+    echo "  • Sets up environment variables for CI builds"
     echo ""
-    echo "For local development setup, use: ./setup_repo.sh"
+    echo "CI-SPECIFIC FEATURES:"
+    echo "  • Cache-aware installation (skips if already present)"
+    echo "  • Minimal dependency installation (CI-optimized)"
+    echo "  • Cache usage optimization and statistics"
+    echo "  • Environment variable configuration for CI"
+    echo "  • Build directory management for CI builds"
+    echo "  • Automated project building and testing"
+    echo ""
+    echo "BUILD APPROACH:"
+    echo "  • Environment setup: setup_ci.sh (this script)"
+    echo "  • Building: build_app.sh (for consistency with local development)"
+    echo "  • Environment-based configuration via variables"
+    echo "  • Cache optimization for faster CI builds"
+    echo ""
+    echo "REQUIREMENTS:"
+    echo "  • sudo access for package installation"
+    echo "  • Internet connection for downloads"
+    echo "  • CI environment with caching support"
+    echo "  • At least 1GB free disk space"
+    echo "  • Supported operating systems: Ubuntu, Fedora, CentOS"
+    echo ""
+    echo "CI VARIABLES:"
+    echo "  • BUILD_PATH: Custom build directory path"
+    echo "  • ESP32_PROJECT_PATH: Path to ESP32 project"
+    echo "  • IDF_TARGET: Target MCU (default: esp32c6)"
+    echo "  • BUILD_TYPE: Build configuration (default: Release)"
+    echo "  • APP_TYPE: Application type (default: hardfoc_interface)"
+    echo "  • IDF_VERSION: ESP-IDF version (default: release/v5.5)"
+    echo ""
+    echo "CACHE OPTIMIZATION:"
+    echo "  • ESP-IDF git history cleaning (saves ~100-200MB)"
+    echo "  • Build file cleanup for cache optimization"
+    echo "  • Pip cache management and optimization"
+    echo "  • ccache integration for build acceleration"
+    echo ""
+    echo "ALTERNATIVES:"
+    echo "  • For local development setup, use: ./setup_repo.sh"
+    echo "  • For shared functions only, use: source ./setup_common.sh"
+    echo ""
+    echo "For detailed information, see: docs/README_UTILITY_SCRIPTS.md"
     exit 0
 fi
 
@@ -57,6 +105,24 @@ main() {
         install_esp_idf
     fi
     
+    # Source ESP-IDF environment for CI builds
+    echo "Setting up ESP-IDF environment for CI builds..."
+    if [[ -f "$HOME/.espressif/export.sh" ]]; then
+        source "$HOME/.espressif/export.sh"
+        echo "ESP-IDF environment sourced successfully"
+        
+        # Verify idf.py is available
+        if command_exists idf.py; then
+            echo "idf.py verified: $(idf.py --version | head -1)"
+        else
+            echo "ERROR: idf.py not found after sourcing ESP-IDF environment"
+            exit 1
+        fi
+    else
+        echo "ERROR: ESP-IDF export.sh not found"
+        exit 1
+    fi
+    
     # Cache-aware Python dependencies installation
     if [[ -d "$HOME/.cache/pip" && -d "$HOME/.local/lib" ]]; then
         echo "Python dependencies found in cache, skipping installation"
@@ -66,12 +132,12 @@ main() {
     fi
     
     # Optimize cache for CI environment
-    optimize_cache_for_ci
+    ci_optimize_cache
     
-    setup_ci_environment
+    ci_setup_environment
     
     # Check cache status
-    check_cache_status
+    ci_check_cache_status
     
     # Verify essential tools
     verify_installation
@@ -104,6 +170,24 @@ main() {
     
     echo "======================================================="
     echo "CI environment setup complete!"
+    
+    # Show build capabilities
+    echo ""
+    echo "======================================================="
+    echo "BUILD CAPABILITIES AVAILABLE"
+    echo "======================================================="
+    echo "Environment variables for builds:"
+    echo "  • BUILD_PATH - Build directory path (default: ci_build_path)"
+    echo "  • ESP32_PROJECT_PATH - ESP32 project path (default: examples/esp32)"
+    echo "  • IDF_TARGET - ESP-IDF target (default: esp32c6)"
+    echo "  • BUILD_TYPE - Build type (default: Release)"
+    echo "  • APP_TYPE - Application type (default: hardfoc_interface)"
+    echo "  • IDF_VERSION - ESP-IDF version (default: release/v5.5)"
+    echo ""
+    echo "Build approach:"
+    echo "  • Environment setup: setup_ci.sh (this script)"
+    echo "  • Building: build_app.sh (for consistency with local development)"
+    echo "======================================================="
 }
 
 

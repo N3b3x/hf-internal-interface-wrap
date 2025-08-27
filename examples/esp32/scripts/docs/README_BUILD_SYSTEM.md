@@ -25,7 +25,8 @@ The ESP32 build system is a configuration-driven, intelligent build management s
 
 ### **Core Features**
 - **Configuration-Driven**: All build parameters extracted from centralized YAML configuration
-- **Intelligent Validation**: Automatic ESP-IDF version and build type compatibility checking
+- **🛡️ Enhanced Validation**: Smart combination validation and error prevention
+- **🧠 Smart Defaults**: Automatic ESP-IDF version selection based on app and build type
 - **Cross-Platform**: Consistent behavior across Linux and macOS
 - **Build Optimization**: ccache integration and incremental build support
 - **Error Prevention**: Prevents incompatible build configurations with clear error messages
@@ -33,6 +34,8 @@ The ESP32 build system is a configuration-driven, intelligent build management s
 ### **Key Capabilities**
 - ESP-IDF version compatibility validation
 - Build type support verification and optimization
+- **🆕 Smart combination validation** - Prevents invalid app + build type + IDF version combinations
+- **🆕 Automatic ESP-IDF version selection** - Chooses the right version when not specified
 - Automatic dependency detection and management
 - Cross-platform build environment setup
 - Build cache management and optimization
@@ -57,10 +60,116 @@ Definitions      Fallbacks        & Execution    Process  & Artifacts
 
 ### **Design Principles**
 - **Separation of Concerns**: Configuration, validation, and execution are clearly separated
-- **Fail-Fast Validation**: Configuration errors are caught early with clear messages
-- **Intelligent Defaults**: Sensible fallbacks when configuration is incomplete
+- **🛡️ Fail-Fast Validation**: Configuration errors are caught early with clear messages
+- **🧠 Intelligent Defaults**: Sensible fallbacks when configuration is incomplete
 - **Cross-Platform Consistency**: Uniform behavior across different operating systems
 - **Performance Optimization**: Build acceleration and cache management
+
+---
+
+## 🛡️ **Enhanced Validation System**
+
+The build system now includes a comprehensive validation system that prevents invalid build combinations and provides clear guidance to users.
+
+### **Validation Features**
+
+- **🔍 Combination Validation** - Validates app + build type + IDF version combinations
+- **🚫 Invalid Build Prevention** - Blocks builds with unsupported combinations
+- **💡 Smart Error Messages** - Clear guidance on what combinations are allowed
+- **🧠 Smart Defaults** - Automatic ESP-IDF version selection when not specified
+
+### **✅ OPTIMIZED Validation Flow**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           BUILD REQUEST                                    │
+│  app: gpio_test, build_type: Release, idf_version: (unspecified)         │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        BASIC VALIDATION FIRST                              │
+│  • Validate app type exists                                              │
+│  • Validate build type is supported                                      │
+│  • Fail fast if basic validation fails                                   │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        SMART DEFAULT SELECTION                             │
+│  • Only if basic validation passes                                       │
+│  • Check app-specific IDF versions                                       │
+│  • Find first version supporting requested build type                     │
+│  • Fallback to global defaults if needed                                 │
+│  • Result: release/v5.5                                                  │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        FINAL COMBINATION VALIDATION                        │
+│  • Single comprehensive check (no redundant individual validations)       │
+│  • Functions remain standalone-safe for independent sourcing              │
+│  • Check combination constraints                                         │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           VALIDATION RESULT                                │
+│  ✅ VALID: gpio_test + Release + release/v5.5                            │
+│  → Proceed with build                                                    │
+│                                                                             │
+│  ❌ INVALID: gpio_test + Release + release/v5.4                          │
+│  → Show error with valid combinations                                     │
+│  → Provide helpful next steps                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Key Optimization Points:**
+- **Early Exit**: Basic validation happens first, failing fast on invalid inputs
+- **Smart Defaults**: IDF version selection only occurs after basic validation passes
+- **Function Safety**: Individual validation functions remain standalone-safe for independent sourcing
+- **No Redundancy**: Combination validation doesn't repeat basic checks already performed
+
+### **New Validation Commands**
+
+The build system now includes several new commands for better user experience:
+
+#### **📋 Information Commands**
+```bash
+# Show detailed information for a specific app
+./scripts/build_app.sh info gpio_test
+
+# Show all valid build combinations across all apps
+./scripts/build_app.sh combinations
+
+# Validate a specific build combination
+./scripts/build_app.sh validate gpio_test Release
+./scripts/build_app.sh validate gpio_test Release release/v5.4
+```
+
+#### **🛡️ Validation Examples**
+```bash
+# Valid combination - proceeds with build
+./scripts/build_app.sh validate gpio_test Release
+# Output: ✅ VALID: This combination is allowed!
+
+# Invalid combination - shows error with guidance
+./scripts/build_app.sh validate gpio_test Release release/v5.4
+# Output: ❌ INVALID: This combination is not allowed!
+#        Valid combinations for 'gpio_test':
+#        • release/v5.5: Debug Release
+```
+
+#### **🧠 Smart Default Examples**
+```bash
+# No IDF version specified - uses smart default
+./scripts/build_app.sh gpio_test Release
+# Output: No IDF version specified, using smart default: release/v5.5
+
+# IDF version explicitly specified
+./scripts/build_app.sh gpio_test Release release/v5.5
+# Output: Uses specified version directly
+```
 
 ## ⚙️ **Configuration System**
 

@@ -1,9 +1,74 @@
 #!/bin/bash
-# ESP32 Port Detection and Troubleshooting Script
-# This script helps identify ESP32 devices and troubleshoot port issues
-# Usage: ./detect_ports.sh [--verbose] [--test-connection]
+# ESP32 Port Detection Script
+# This script automatically finds ESP32 devices and troubleshoots port issues
 
-set -e
+set -e  # Exit on any error
+
+# Show help if requested
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo "ESP32 Port Detection Script"
+    echo ""
+    echo "Usage: ./detect_ports.sh [OPTIONS]"
+    echo ""
+    echo "OPTIONS:"
+    echo "  --verbose                   - Show detailed device info (USB details, permissions)"
+    echo "  --test-connection           - Test if detected ports are actually accessible"
+    echo "  --help, -h                  - Show this help message"
+    echo ""
+    echo "PURPOSE:"
+    echo "  Automatically find ESP32 devices and troubleshoot port issues"
+    echo ""
+    echo "WHAT IT DOES:"
+    echo "  • Scans system for available serial ports"
+    echo "  • Identifies ESP32 devices by USB vendor/product IDs"
+    echo "  • Checks port permissions and accessibility"
+    echo "  • Tests port connectivity and responsiveness"
+    echo "  • Provides troubleshooting information for common issues"
+    echo "  • Suggests solutions for permission and access problems"
+    echo ""
+    echo "DETECTION METHODS:"
+    echo "  • USB device enumeration (lsusb, udev)"
+    echo "  • Serial port scanning (/dev/tty*, /dev/ttyUSB*)"
+    echo "  • ESP32-specific device identification"
+    echo "  • Permission and ownership verification"
+    echo "  • Port accessibility testing"
+    echo ""
+    echo "EXAMPLES:"
+    echo "  ./detect_ports.sh                    # Quick port detection"
+    echo "  ./detect_ports.sh --verbose          # Detailed device information"
+    echo "  ./detect_ports.sh --test-connection  # Verify ports work and test connectivity"
+    echo ""
+    echo "OUTPUT INFORMATION:"
+    echo "  • Available serial ports"
+    echo "  • ESP32 device identification"
+    echo "  • Port permissions and ownership"
+    echo "  • USB device details (with --verbose)"
+    echo "  • Connection test results (with --test-connection)"
+    echo "  • Troubleshooting suggestions"
+    echo ""
+    echo "COMMON ISSUES AND SOLUTIONS:"
+    echo "  • Permission denied: Add user to dialout group or use udev rules"
+    echo "  • Port not found: Check USB connection and cable"
+    echo "  • Device not recognized: Install proper USB drivers"
+    echo "  • Port busy: Close other applications using the port"
+    echo "  • Access timeout: Check device boot mode and reset if needed"
+    echo ""
+    echo "TROUBLESHOOTING STEPS:"
+    echo "  1. Run: ./detect_ports.sh --verbose"
+    echo "  2. Check port permissions and ownership"
+    echo "  3. Test connection: ./detect_ports.sh --test-connection"
+    echo "  4. Add user to dialout group: sudo usermod -a -G dialout $USER"
+    echo "  5. Create udev rules for persistent permissions"
+    echo "  6. Restart terminal or log out/in after permission changes"
+    echo ""
+    echo "UDEV RULES (for persistent permissions):"
+    echo "  Create /etc/udev/rules.d/99-esp32.rules:"
+    echo "  SUBSYSTEM==\"tty\", ATTRS{idVendor}==\"10c4\", ATTRS{idProduct}==\"ea60\", MODE=\"0666\""
+    echo "  SUBSYSTEM==\"tty\", ATTRS{idVendor}==\"1a86\", ATTRS{idProduct}==\"7523\", MODE=\"0666\""
+    echo ""
+    echo "For detailed information, see: docs/README_PORT_DETECTION.md"
+    exit 0
+fi
 
 VERBOSE=false
 TEST_CONNECTION=false
@@ -18,23 +83,6 @@ while [[ $# -gt 0 ]]; do
         --test-connection)
             TEST_CONNECTION=true
             shift
-            ;;
-        --help|-h)
-            echo "ESP32 Port Detection Script"
-            echo "Usage: $0 [--verbose] [--test-connection]"
-            echo ""
-            echo "Purpose: Automatically find ESP32 devices and troubleshoot port issues"
-            echo ""
-            echo "Options:"
-            echo "  --verbose          Show detailed device info (USB details, permissions)"
-            echo "  --test-connection  Test if detected ports are actually accessible"
-            echo "  --help, -h         Show this help message"
-            echo ""
-            echo "Examples:"
-            echo "  $0                 # Quick port detection"
-            echo "  $0 --verbose       # Detailed device information"
-            echo "  $0 --test-connection  # Verify ports work"
-            exit 0
             ;;
         *)
             echo "Unknown option: $1"

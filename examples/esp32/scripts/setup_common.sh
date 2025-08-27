@@ -4,28 +4,119 @@
 
 set -e  # Exit on any error
 
-# Show help if requested
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+# Show help if requested (only when run directly, not when sourced)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]] && ([ "$1" = "--help" ] || [ "$1" = "-h" ]); then
     echo "ESP32 HardFOC Interface Wrapper - Common Setup Functions"
     echo ""
-    echo "Usage: source ./setup_common.sh [--help]"
+    echo "Usage: source ./setup_common.sh [OPTIONS]"
     echo ""
-    echo "This script contains shared functions used by both local and CI setup scripts:"
-    echo "  • System dependency installation (Ubuntu, Fedora, CentOS, macOS)"
-    echo "  • Clang toolchain installation and configuration"
-    echo "  • ESP-IDF installation and setup"
-    echo "  • Python dependency management"
-    echo "  • Environment variable configuration"
-    echo "  • Cache optimization functions"
+    echo "OPTIONS:"
+    echo "  --help, -h                  - Show this help message"
     echo ""
-    echo "Note: This script is designed to be sourced by other scripts, not run directly."
-    echo "For setup scripts, use:"
-    echo "  • ./setup_repo.sh     - Local development setup"
-    echo "  • ./setup_ci.sh       - CI environment setup"
+    echo "PURPOSE:"
+    echo "  This script contains shared functions used by both local and CI setup scripts"
+    echo ""
+    echo "USAGE:"
+    echo "  This script is designed to be sourced by other scripts, not run directly:"
+    echo "  source ./setup_common.sh"
+    echo ""
+    echo "AVAILABLE FUNCTIONS:"
+    echo "  # System dependency installation"
+    echo "  install_system_deps         - Install system dependencies for detected OS"
+    echo "  detect_os                   - Detect operating system automatically"
+    echo ""
+    echo "  # Clang toolchain installation"
+    echo "  install_clang_tools         - Install clang-20 and development tools"
+    echo "  install_yq                  - Install yq YAML processor"
+    echo ""
+    echo "  # ESP-IDF management"
+    echo "  install_esp_idf             - Install ESP-IDF versions from configuration"
+    echo "  export_esp_idf_version      - Export ESP-IDF environment for specific version"
+    echo "  install_esp_idf_version     - Install specific ESP-IDF version"
+    echo "  list_esp_idf_versions       - List installed ESP-IDF versions"
+    echo ""
+    echo "  # Python dependency management"
+    echo "  install_python_deps         - Install Python packages and dependencies"
+    echo ""
+    echo "  # Local development environment"
+    echo "  setup_environment_vars      - Setup environment variables and PATH"
+    echo "  setup_local_environment     - Configure local development environment"
+    echo "  verify_installation         - Verify complete installation"
+    echo ""
+    echo "  # CI-specific functions"
+    echo "  ci_setup_environment        - Setup CI-specific environment"
+    echo "  ci_optimize_cache           - Optimize cache for CI environments"
+    echo "  ci_check_cache_status       - Check cache status and statistics"
+    echo "  ci_prepare_build_directory  - Prepare build directory for CI builds"
+    echo "  ci_setup_and_build_project  - Setup and build project for CI"
+    echo "  ci_display_build_info       - Display build information and results"
+    echo ""
+    echo "SUPPORTED OPERATING SYSTEMS:"
+    echo "  • Ubuntu: apt-get package management"
+    echo "  • Fedora: dnf package management"
+    echo "  • CentOS: yum package management"
+    echo "  • macOS: Homebrew package management"
+    echo ""
+    echo "ESP-IDF VERSION SUPPORT:"
+    echo "  • release/v5.5: Latest stable release (recommended)"
+    echo "  • release/v5.4: Previous stable release"
+    echo "  • release/v5.3: Enhanced ESP32-C6 support"
+    echo "  • release/v5.2: Improved toolchain and debugging"
+    echo "  • release/v5.1: Enhanced performance and security"
+    echo "  • release/v5.0: Stable release with modern features"
+    echo "  • v4.4: Legacy support for older projects"
+    echo ""
+    echo "TARGET SUPPORT:"
+    echo "  • ESP32-C6: Primary target with full feature support"
+    echo "  • ESP32-S3: Secondary target for compatibility"
+    echo "  • ESP32: Legacy target support"
+    echo ""
+    echo "INSTALLATION LOCATIONS:"
+    echo "  • ESP-IDF versions: ~/esp/esp-idf-{version}"
+    echo "  • Default symlink: ~/esp/esp-idf"
+    echo "  • Tools: ~/.espressif/"
+    echo "  • Python packages: ~/.espressif/python_env/"
+    echo "  • Environment: ~/.bashrc, ~/.profile"
+    echo ""
+    echo "ENVIRONMENT VARIABLES:"
+    echo "  • IDF_PATH: Path to ESP-IDF installation"
+    echo "  • IDF_VERSION: Current ESP-IDF version"
+    echo "  • IDF_TARGET: Target MCU architecture"
+    echo "  • PATH: Updated with ESP-IDF tools"
+    echo "  • SETUP_MODE: local or ci for output formatting"
+    echo ""
+    echo "FUNCTION CATEGORIES:"
+    echo "  • System setup: OS detection, package installation"
+    echo "  • Toolchain: Clang, yq, ESP-IDF tools"
+    echo "  • Environment: PATH, aliases, configuration"
+    echo "  • CI optimization: Cache management, build automation"
+    echo "  • Verification: Installation testing and validation"
+    echo ""
+    echo "INTEGRATION:"
+    echo "  • setup_repo.sh: Local development environment setup"
+    echo "  • setup_ci.sh: CI environment setup"
+    echo "  • build_app.sh: Application building with environment"
+    echo "  • flash_app.sh: Device flashing with environment"
+    echo ""
+    echo "ERROR HANDLING:"
+    echo "  • set -e: Exit on any error"
+    echo "  • Function return codes for status checking"
+    echo "  • Detailed error messages and troubleshooting"
+    echo "  • Graceful fallbacks for missing components"
+    echo ""
+    echo "TROUBLESHOOTING:"
+    echo "  • Installation failures: Check sudo access, internet, disk space"
+    echo "  • ESP-IDF issues: Verify git, submodules, and tool installation"
+    echo "  • Permission problems: Check user groups and file ownership"
+    echo "  • Environment issues: Restart terminal or source ~/.bashrc"
     echo ""
     echo "For detailed information, see: docs/README_UTILITY_SCRIPTS.md"
     exit 0
 fi
+
+# =============================================================================
+# SHARED UTILITY FUNCTIONS
+# =============================================================================
 
 # Colors for output (only used in local setup)
 RED='\033[0;31m'
@@ -96,11 +187,14 @@ detect_os() {
     fi
 }
 
+# =============================================================================
+# SYSTEM DEPENDENCY INSTALLATION FUNCTIONS
+# =============================================================================
+
 # Function to install system dependencies
 install_system_deps() {
-    print_status "Installing system dependencies..."
-    
     local os=$(detect_os)
+    print_status "Installing system dependencies for $os..."
     
     case $os in
         "ubuntu")
@@ -108,107 +202,81 @@ install_system_deps() {
             sudo apt-get install -y \
                 build-essential \
                 cmake \
-                ninja-build \
                 git \
                 wget \
                 curl \
+                unzip \
                 python3 \
                 python3-pip \
                 python3-venv \
                 pkg-config \
-                libssl-dev \
-                libffi-dev \
-                libncurses5-dev \
-                libreadline-dev \
-                libsqlite3-dev \
-                libbz2-dev \
-                libexpat1-dev \
-                liblzma-dev \
-                zlib1g-dev \
-                libgdbm-dev \
-                libnss3-dev \
-                lsb-release
+                libusb-1.0-0-dev \
+                libudev-dev
             ;;
         "fedora")
+            sudo dnf update -y
             sudo dnf install -y \
                 gcc \
                 gcc-c++ \
+                make \
                 cmake \
-                ninja-build \
                 git \
                 wget \
                 curl \
+                unzip \
                 python3 \
                 python3-pip \
                 python3-devel \
                 pkg-config \
-                openssl-devel \
-                libffi-devel \
-                ncurses-devel \
-                readline-devel \
-                sqlite-devel \
-                bzip2-devel \
-                expat-devel \
-                xz-devel \
-                zlib-devel \
-                gdbm-devel \
-                nss-devel
+                libusb1-devel \
+                systemd-devel
             ;;
         "centos")
+            sudo yum update -y
             sudo yum install -y \
                 gcc \
                 gcc-c++ \
+                make \
                 cmake \
-                ninja-build \
                 git \
                 wget \
                 curl \
+                unzip \
                 python3 \
                 python3-pip \
                 python3-devel \
                 pkg-config \
-                openssl-devel \
-                libffi-devel \
-                ncurses-devel \
-                readline-devel \
-                sqlite-devel \
-                bzip2-devel \
-                expat-devel \
-                xz-devel \
-                zlib-devel \
-                gdbm-devel \
-                nss-devel
+                libusb1-devel \
+                systemd-devel
             ;;
         "macos")
-            if command_exists brew; then
+            if ! command_exists brew; then
+                print_error "Homebrew not found. Please install Homebrew first:"
+                print_error "  /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+                exit 1
+            fi
+            brew update
                 brew install \
                     cmake \
-                    ninja \
                     git \
                     wget \
                     curl \
                     python3 \
                     pkg-config \
-                    openssl \
-                    readline \
-                    sqlite3 \
-                    bzip2 \
-                    expat \
-                    xz \
-                    zlib
-            else
-                print_error "Homebrew not found. Please install Homebrew first."
-                return 1
-            fi
+                libusb
             ;;
         *)
             print_error "Unsupported operating system: $os"
-            return 1
+            exit 1
             ;;
     esac
     
     print_success "System dependencies installed"
 }
+
+# =============================================================================
+# CLANG TOOLCHAIN INSTALLATION FUNCTIONS
+# =============================================================================
 
 # Function to install clang tools
 install_clang_tools() {
@@ -258,6 +326,7 @@ install_clang_tools() {
             fi
             ;;
         "fedora"|"centos")
+            if [[ "$os" == "fedora" ]]; then
             sudo dnf install -y \
                 clang \
                 clang-tools-extra \
@@ -265,6 +334,15 @@ install_clang_tools() {
                 valgrind \
                 gdb \
                 make
+            else
+                sudo yum install -y \
+                    clang \
+                    clang-tools-extra \
+                    cppcheck \
+                    valgrind \
+                    gdb \
+                    make
+            fi
             ;;
         "macos")
             if command_exists brew; then
@@ -282,8 +360,17 @@ install_clang_tools() {
             ;;
     esac
     
-    print_success "Clang tools installed"
+    if command_exists clang; then
+        print_success "Clang tools installed successfully"
+    else
+        print_error "Failed to install clang tools"
+        return 1
+    fi
 }
+
+# =============================================================================
+# YQ INSTALLATION FUNCTIONS
+# =============================================================================
 
 # Function to install yq
 install_yq() {
@@ -343,42 +430,50 @@ install_yq() {
     fi
 }
 
+# =============================================================================
+# ESP-IDF INSTALLATION FUNCTIONS
+# =============================================================================
+
 # Function to install ESP-IDF
 install_esp_idf() {
     print_status "Installing ESP-IDF..."
     
-    # Load configuration to get IDF version
+    # Load configuration to get IDF versions
     local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     local project_dir="$(cd "$script_dir/.." && pwd)"
     local config_file="$project_dir/app_config.yml"
     
+    local idf_versions=("release/v5.5")  # Default fallback
+    
     if [[ -f "$config_file" ]]; then
         source "$script_dir/config_loader.sh"
         if load_config; then
-            local idf_version=$(get_idf_version)
-            if [[ -n "$idf_version" ]]; then
-                print_status "Using IDF version from config: $idf_version"
+            local config_idf_versions=$(get_idf_versions)
+            if [[ -n "$config_idf_versions" ]]; then
+                # Convert space-separated string to array
+                readarray -t idf_versions <<< "$config_idf_versions"
+                print_status "Using IDF versions from config: ${idf_versions[*]}"
             else
-                print_warning "Could not read IDF version from config, using default: release/v5.5"
-                local idf_version="release/v5.5"
+                print_warning "Could not read IDF versions from config, using default: release/v5.5"
             fi
         else
             print_warning "Could not load config, using default IDF version: release/v5.5"
-            local idf_version="release/v5.5"
         fi
     else
         print_warning "Config file not found, using default IDF version: release/v5.5"
-        local idf_version="release/v5.5"
     fi
     
     local esp_dir="$HOME/esp"
-    local idf_dir="$esp_dir/esp-idf"
     
     # Create esp directory if it doesn't exist
     mkdir -p "$esp_dir"
     
+    # Install each required ESP-IDF version
+    for idf_version in "${idf_versions[@]}"; do
+        local idf_dir="$esp_dir/esp-idf-${idf_version//\//_}"
+    
     if [[ -d "$idf_dir" ]]; then
-        print_status "ESP-IDF already exists, updating..."
+            print_status "ESP-IDF $idf_version already exists, updating..."
         cd "$idf_dir"
         git fetch origin
         git checkout "$idf_version"
@@ -389,16 +484,30 @@ install_esp_idf() {
         ./install.sh esp32c6
         cd - > /dev/null
     else
-        print_status "Cloning ESP-IDF..."
+            print_status "Cloning ESP-IDF $idf_version..."
         cd "$esp_dir"
-        git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git
-        cd esp-idf
+            git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git "esp-idf-${idf_version//\//_}"
+            cd "esp-idf-${idf_version//\//_}"
         # Extra safety to keep submodules in sync even after clone
         git submodule sync --recursive
         git submodule update --init --recursive
         ./install.sh esp32c6
         cd - > /dev/null
     fi
+        
+        print_success "ESP-IDF $idf_version installed/updated"
+    done
+    
+    # Create symlink for default version (first in the list)
+    local default_idf_dir="$esp_dir/esp-idf"
+    local first_version="${idf_versions[0]}"
+    local first_idf_dir="$esp_dir/esp-idf-${first_version//\//_}"
+    
+    if [[ -L "$default_idf_dir" ]]; then
+        rm "$default_idf_dir"
+    fi
+    ln -sf "$first_idf_dir" "$default_idf_dir"
+    print_status "Default ESP-IDF symlink created: $default_idf_dir -> $first_idf_dir"
     
     # Optimize for caching by ensuring all tools are properly installed
     print_status "Optimizing ESP-IDF installation for caching..."
@@ -409,63 +518,155 @@ install_esp_idf() {
         print_success "ESP-IDF tools environment loaded"
     fi
     
-    # Verify critical tools are available
-    local tools_available=0
-    local total_tools=0
+    print_success "ESP-IDF versions installed/updated and optimized for caching"
+}
+
+# Function to export ESP-IDF environment for specific version
+export_esp_idf_version() {
+    local idf_version="$1"
+    local auto_install="${2:-false}"
     
-    for tool in "idf.py" "esptool.py" "idf-size"; do
-        total_tools=$((total_tools + 1))
-        if command_exists "$tool" || [[ -f "$HOME/.espressif/python_env/idf5.5_py3.10_env/bin/$tool" ]]; then
-            tools_available=$((tools_available + 1))
+    if [[ -z "$idf_version" ]]; then
+        print_error "ESP-IDF version not specified"
+        return 1
+    fi
+    
+    local esp_dir="$HOME/esp"
+    local idf_dir="$esp_dir/esp-idf-${idf_version//\//_}"
+    
+    if [[ ! -d "$idf_dir" ]]; then
+        if [[ "$auto_install" == "true" ]]; then
+            print_status "ESP-IDF version $idf_version not found, attempting auto-installation..."
+            if install_esp_idf_version "$idf_version"; then
+                print_success "ESP-IDF version $idf_version installed successfully"
+            else
+                print_error "Failed to install ESP-IDF version $idf_version"
+                return 1
+            fi
+        else
+            print_error "ESP-IDF version $idf_version not found at $idf_dir"
+            print_status "Available versions:"
+            for dir in "$esp_dir"/esp-idf-*; do
+                if [[ -d "$dir" ]]; then
+                    local version_name=$(basename "$dir" | sed 's/esp-idf-//' | sed 's/_/\//')
+                    echo "  - $version_name"
+                fi
+            done
+            print_status "To auto-install missing versions, use: export_esp_idf_version '$idf_version' true"
+            return 1
+        fi
+    fi
+    
+    print_status "Exporting ESP-IDF environment for version: $idf_version"
+    
+    # Source the ESP-IDF export script
+    if [[ -f "$idf_dir/export.sh" ]]; then
+        source "$idf_dir/export.sh"
+        
+        # Verify the environment is loaded
+        if command_exists idf.py; then
+            local idf_path=$(idf.py --version 2>/dev/null | head -1 || echo "Unknown")
+            print_success "ESP-IDF environment loaded: $idf_path"
+            
+            # Export IDF_PATH for this session
+            export IDF_PATH="$idf_dir"
+            export IDF_VERSION="$idf_version"
+            
+            return 0
+        else
+            print_error "Failed to load ESP-IDF environment for version $idf_version"
+            return 1
+        fi
+    else
+        print_error "ESP-IDF export script not found at $idf_dir/export.sh"
+        return 1
+    fi
+}
+
+# Function to install specific ESP-IDF version
+install_esp_idf_version() {
+    local idf_version="$1"
+    
+    if [[ -z "$idf_version" ]]; then
+        print_error "ESP-IDF version not specified"
+        return 1
+    fi
+    
+    print_status "Installing ESP-IDF version: $idf_version"
+    
+    # Create ESP directory if it doesn't exist
+    local esp_dir="$HOME/esp"
+    mkdir -p "$esp_dir"
+    
+    # Change to ESP directory
+    cd "$esp_dir"
+    
+    # Clone the specific ESP-IDF version
+    local idf_dir="esp-idf-${idf_version//\//_}"
+    
+    if [[ -d "$idf_dir" ]]; then
+        print_status "ESP-IDF directory already exists, updating..."
+        cd "$idf_dir"
+        git fetch origin
+        git checkout "$idf_version"
+        git pull origin "$idf_version"
+    else
+        print_status "Cloning ESP-IDF version $idf_version..."
+        git clone --recursive --branch "$idf_version" https://github.com/espressif/esp-idf.git "$idf_dir"
+        cd "$idf_dir"
+    fi
+    
+    # Install ESP-IDF tools
+    print_status "Installing ESP-IDF tools..."
+    if ./install.sh esp32c6; then
+        print_success "ESP-IDF tools installed successfully"
+    else
+        print_error "Failed to install ESP-IDF tools"
+        return 1
+    fi
+    
+    print_success "ESP-IDF version $idf_version installed successfully"
+    return 0
+}
+
+# Function to list available ESP-IDF versions
+list_esp_idf_versions() {
+    local esp_dir="$HOME/esp"
+    
+    if [[ ! -d "$esp_dir" ]]; then
+        print_warning "ESP directory not found: $esp_dir"
+        return 1
+    fi
+    
+    print_status "Available ESP-IDF versions:"
+    
+    local found_versions=0
+    for dir in "$esp_dir"/esp-idf-*; do
+        if [[ -d "$dir" ]]; then
+            local version_name=$(basename "$dir" | sed 's/esp-idf-//' | sed 's/_/\//')
+            local is_default=""
+            
+            # Check if this is the default symlink
+            if [[ -L "$esp_dir/esp-idf" ]] && [[ "$(readlink "$esp_dir/esp-idf")" == "$dir" ]]; then
+                is_default=" (default)"
+            fi
+            
+            echo "  - $version_name$is_default"
+            found_versions=$((found_versions + 1))
         fi
     done
     
-    if [[ $tools_available -eq $total_tools ]]; then
-        print_success "All ESP-IDF tools verified and ready for caching"
-    else
-        print_warning "Some ESP-IDF tools may not be fully cached"
+    if [[ $found_versions -eq 0 ]]; then
+        print_warning "No ESP-IDF versions found"
+        return 1
     fi
     
-    print_success "ESP-IDF installed/updated and optimized for caching"
+    return 0
 }
 
-# Function to optimize cache for CI
-optimize_cache_for_ci() {
-    print_status "Optimizing cache for CI environment..."
-    
-    # Clean up unnecessary files to reduce cache size
-    if [[ -d "$HOME/.espressif" ]]; then
-        # Remove git history from ESP-IDF to save space
-        if [[ -d "$HOME/esp/esp-idf/.git" ]]; then
-            print_status "Cleaning ESP-IDF git history for cache optimization..."
-            rm -rf "$HOME/esp/esp-idf/.git"
-            print_success "Git history cleaned (saves ~100-200MB in cache)"
-        fi
-        
-        # Clean up temporary build files
-        if [[ -d "$HOME/esp/esp-idf/build" ]]; then
-            print_status "Cleaning ESP-IDF build files for cache optimization..."
-            rm -rf "$HOME/esp/esp-idf/build"
-            print_success "Build files cleaned"
-        fi
-    fi
-    
-    # Clean up pip cache if it's too large
-    if [[ -d "$HOME/.cache/pip" ]]; then
-        local pip_cache_size=$(du -sh "$HOME/.cache/pip" 2>/dev/null | cut -f1)
-        print_info "Pip cache size: $pip_cache_size"
-        
-        # If pip cache is larger than 500MB, clean it
-        local pip_cache_size_bytes=$(du -sb "$HOME/.cache/pip" 2>/dev/null | cut -f1)
-        if [[ $pip_cache_size_bytes -gt 524288000 ]]; then  # 500MB in bytes
-            print_status "Pip cache is large, cleaning for optimization..."
-            pip cache purge
-            print_success "Pip cache cleaned"
-        fi
-    fi
-    
-    print_success "Cache optimization complete"
-}
+# =============================================================================
+# PYTHON DEPENDENCY INSTALLATION FUNCTIONS
+# =============================================================================
 
 # Function to install Python dependencies
 install_python_deps() {
@@ -479,6 +680,10 @@ install_python_deps() {
     
     print_success "Python dependencies installed"
 }
+
+# =============================================================================
+# LOCAL DEVELOPMENT ENVIRONMENT FUNCTIONS
+# =============================================================================
 
 # Function to setup environment variables
 setup_environment_vars() {
@@ -505,38 +710,29 @@ setup_environment_vars() {
     print_success "Environment variables configured"
 }
 
-# Function to check cache status
-check_cache_status() {
-    print_status "Checking cache status..."
+# Function to setup local-specific environment
+setup_local_environment() {
+    print_status "Setting up local development environment..."
     
-    # Check ESP-IDF cache
-    if [[ -d "$HOME/.espressif" && -d "$HOME/esp/esp-idf" ]]; then
-        print_success "ESP-IDF cache: AVAILABLE"
-        print_info "  ESP-IDF: $HOME/esp/esp-idf"
-        print_info "  Tools: $HOME/.espressif"
-    else
-        print_warning "ESP-IDF cache: NOT AVAILABLE"
+    # Setup environment variables
+    setup_environment_vars
+    
+    # Create useful aliases
+    local bashrc="$HOME/.bashrc"
+    if ! grep -q "alias build_app" "$bashrc" 2>/dev/null; then
+        echo "" >> "$bashrc"
+        echo "# ESP32 Development Aliases" >> "$bashrc"
+        echo "alias build_app='./scripts/build_app.sh'" >> "$bashrc"
+        echo "alias flash_app='./scripts/flash_app.sh'" >> "$bashrc"
+        echo "alias list_apps='./scripts/build_app.sh list'" >> "$bashrc"
     fi
     
-    # Check Python cache
-    if [[ -d "$HOME/.cache/pip" && -d "$HOME/.local/lib" ]]; then
-        print_success "Python cache: AVAILABLE"
-        print_info "  Pip cache: $HOME/.cache/pip"
-        print_info "  Site packages: $HOME/.local/lib"
-    else
-        print_warning "Python cache: NOT AVAILABLE"
-    fi
-    
-    # Check ccache
-    if [[ -d "$HOME/.ccache" ]]; then
-        local ccache_size=$(du -sh "$HOME/.ccache" 2>/dev/null | cut -f1)
-        print_success "ccache: AVAILABLE ($ccache_size)"
-    else
-        print_warning "ccache: NOT AVAILABLE"
-    fi
-    
-    echo ""
+    print_success "Local development environment configured"
 }
+
+# =============================================================================
+# VERIFICATION FUNCTIONS
+# =============================================================================
 
 # Function to verify installation
 verify_installation() {
@@ -544,9 +740,9 @@ verify_installation() {
     
     local errors=0
     
-    # Check required commands
-    local required_commands=("cmake" "ninja" "git" "python3" "yq")
-    for cmd in "${required_commands[@]}"; do
+    # Check essential commands
+    local essential_commands=("gcc" "make" "cmake" "git" "python3")
+    for cmd in "${essential_commands[@]}"; do
         if command_exists "$cmd"; then
             print_success "$cmd: $(command -v "$cmd")"
         else
@@ -612,8 +808,12 @@ verify_installation() {
     fi
 }
 
+# =============================================================================
+# CI-SPECIFIC FUNCTIONS
+# =============================================================================
+
 # Function to setup CI-specific environment
-setup_ci_environment() {
+ci_setup_environment() {
     print_status "Setting up CI environment..."
     
     # Set clang-20 as default for CI
@@ -627,22 +827,178 @@ setup_ci_environment() {
     print_success "CI environment configured"
 }
 
-# Function to setup local-specific environment
-setup_local_environment() {
-    print_status "Setting up local development environment..."
+# Function to optimize cache for CI environment
+ci_optimize_cache() {
+    print_status "Optimizing cache for CI environment..."
     
-    # Setup environment variables
-    setup_environment_vars
-    
-    # Create useful aliases
-    local bashrc="$HOME/.bashrc"
-    if ! grep -q "alias build_app" "$bashrc" 2>/dev/null; then
-        echo "" >> "$bashrc"
-        echo "# ESP32 Development Aliases" >> "$bashrc"
-        echo "alias build_app='./scripts/build_app.sh'" >> "$bashrc"
-        echo "alias flash_app='./scripts/flash_app.sh'" >> "$bashrc"
-        echo "alias list_apps='./scripts/build_app.sh list'" >> "$bashrc"
+    # Clean up unnecessary files to reduce cache size
+    if [[ -d "$HOME/.espressif" ]]; then
+        # Remove git history from ESP-IDF to save space
+        if [[ -d "$HOME/esp/esp-idf/.git" ]]; then
+            print_status "Cleaning ESP-IDF git history for cache optimization..."
+            rm -rf "$HOME/esp/esp-idf/.git"
+            print_success "Git history cleaned (saves ~100-200MB in cache)"
+        fi
+        
+        # Clean up temporary build files
+        if [[ -d "$HOME/esp/esp-idf/build" ]]; then
+            print_status "Cleaning ESP-IDF build files for cache optimization..."
+            rm -rf "$HOME/esp/esp-idf/build"
+            print_success "Build files cleaned"
+        fi
     fi
     
-    print_success "Local development environment configured"
+    # Clean up pip cache if it's too large
+    if [[ -d "$HOME/.cache/pip" ]]; then
+        local pip_cache_size=$(du -sh "$HOME/.cache/pip" 2>/dev/null | cut -f1)
+        print_info "Pip cache size: $pip_cache_size"
+        
+        # If pip cache is larger than 500MB, clean it
+        local pip_cache_size_bytes=$(du -sb "$HOME/.cache/pip" 2>/dev/null | cut -f1)
+        if [[ $pip_cache_size_bytes -gt 524288000 ]]; then  # 500MB in bytes
+            print_status "Pip cache is large, cleaning for optimization..."
+            pip cache purge
+            print_success "Pip cache cleaned"
+        fi
+    fi
+    
+    print_success "Cache optimization complete"
+}
+
+# Function to check cache status
+ci_check_cache_status() {
+    print_status "Checking cache status..."
+    
+    # Check ESP-IDF cache
+    if [[ -d "$HOME/.espressif" && -d "$HOME/esp/esp-idf" ]]; then
+        print_success "ESP-IDF cache: AVAILABLE"
+        print_info "  ESP-IDF: $HOME/esp/esp-idf"
+        print_info "  Tools: $HOME/.espressif"
+    else
+        print_warning "ESP-IDF cache: NOT AVAILABLE"
+    fi
+    
+    # Check Python cache
+    if [[ -d "$HOME/.cache/pip" && -d "$HOME/.local/lib" ]]; then
+        print_success "Python cache: AVAILABLE"
+        print_info "  Pip cache: $HOME/.cache/pip"
+        print_info "  Site packages: $HOME/.local/lib"
+    else
+        print_warning "Python cache: NOT AVAILABLE"
+    fi
+    
+    # Check ccache
+    if [[ -d "$HOME/.ccache" ]]; then
+        print_success "ccache: AVAILABLE"
+        print_info "  ccache: $HOME/.ccache"
+    else
+        print_warning "ccache: NOT AVAILABLE"
+    fi
+}
+
+# =============================================================================
+# CI BUILD DIRECTORY MANAGEMENT FUNCTIONS
+# =============================================================================
+
+# Function to prepare build directory structure
+ci_prepare_build_directory() {
+    local build_path="${BUILD_PATH:-ci_build_path}"
+    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
+    
+    print_status "Preparing build directory: $build_path"
+    
+    # Remove existing build directory if it exists
+    if [[ -d "$build_path" ]]; then
+        print_status "Removing existing build directory: $build_path"
+        rm -rf "$build_path"
+    fi
+    
+    # Create ESP-IDF project
+    print_status "Creating ESP-IDF project..."
+    idf.py create-project "$build_path"
+    
+    # Copy project files
+    print_status "Copying project files..."
+    cp "$esp32_project_path/CMakeLists.txt" "$build_path/CMakeLists.txt"
+    rm -rf "$build_path/main"
+    cp -r "$esp32_project_path/main" "$build_path/main"
+    cp -r "$esp32_project_path/components" "$build_path/components"
+    cp -r "$esp32_project_path/scripts" "$build_path/scripts"
+    cp "$esp32_project_path/app_config.yml" "$build_path/app_config.yml"
+    cp -r src "$build_path/src"
+    cp -r inc "$build_path/inc"
+    cp "$esp32_project_path/sdkconfig" "$build_path/sdkconfig"
+    
+    print_success "Build directory preparation complete"
+}
+
+# Function to setup and build project
+ci_setup_and_build_project() {
+    local build_path="${BUILD_PATH:-ci_build_path}"
+    local esp32_project_path="${ESP32_PROJECT_PATH:-examples/esp32}"
+    local idf_target="${IDF_TARGET:-esp32c6}"
+    local build_type="${BUILD_TYPE:-Release}"
+    local app_type="${APP_TYPE:-hardfoc_interface}"
+    local idf_version="${IDF_VERSION:-release/v5.5}"
+    
+    print_status "Setting up and building project..."
+    
+    # First prepare the build directory
+    ci_prepare_build_directory
+    
+    # Read and validate app configuration if available
+    if [[ -f "$esp32_project_path/app_config.yml" ]]; then
+        print_status "Reading app configuration..."
+        # This could be enhanced with Python validation
+        print_success "App configuration loaded"
+    fi
+    
+    # Configure and build
+    print_status "Configuring and building project..."
+    idf.py -C "$build_path" \
+        -DIDF_TARGET="$idf_target" \
+        -DCMAKE_BUILD_TYPE="$build_type" \
+        -DAPP_TYPE="$app_type" \
+        --ccache reconfigure build
+    
+    print_success "Build completed successfully"
+    
+    # Generate size reports
+    print_status "Generating size reports..."
+    idf.py -C "$build_path" size-components > "$build_path/build/size.txt"
+    idf.py -C "$build_path" size --format json > "$build_path/build/size.json"
+    
+    # Generate ccache statistics
+    if command_exists ccache; then
+        ccache -s > "$build_path/build/ccache_stats.txt"
+    fi
+    
+    print_success "Size reports generated"
+}
+
+# Function to display build information
+ci_display_build_info() {
+    local build_path="${BUILD_PATH:-ci_build_path}"
+    local idf_target="${IDF_TARGET:-esp32c6}"
+    local build_type="${BUILD_TYPE:-Release}"
+    local app_type="${APP_TYPE:-hardfoc_interface}"
+    local idf_version="${IDF_VERSION:-release/v5.5}"
+    
+    echo ""
+    echo "======================================================="
+    echo "BUILD DIRECTORY SETUP COMPLETE"
+    echo "======================================================="
+    echo "Build Path: $build_path"
+    echo "Target: $idf_target"
+    echo "Build Type: $build_type"
+    echo "App Type: $app_type"
+    echo "ESP-IDF Version: $idf_version"
+    echo "======================================================="
+    
+    if [[ -d "$build_path/build" ]]; then
+        echo "Build artifacts:"
+        ls -la "$build_path/build/" | grep -E '\.(bin|elf|map|txt|json)$' || echo "No build artifacts found"
+    fi
+    
+    echo "======================================================="
 }

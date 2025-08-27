@@ -29,6 +29,7 @@ permissions:
 
 env:
   PYTHON_VERSION: '3.11'
+  ESP32_PROJECT_PATH: examples/esp32  # Centralized ESP32 project location
 
 defaults:
   run:
@@ -58,8 +59,8 @@ jobs:
         run: |
           echo "Reading ESP-IDF version from app_config.yml..."
           IDF_TAG="release-v5.5"
-          if [ -f "examples/esp32/app_config.yml" ]; then
-            IDF_LINE=$(grep -m1 "idf_versions:" examples/esp32/app_config.yml || true)
+          if [ -f "${{ env.ESP32_PROJECT_PATH }}/app_config.yml" ]; then
+            IDF_LINE=$(grep -m1 "idf_versions:" ${{ env.ESP32_PROJECT_PATH }}/app_config.yml || true)
             if [ -n "$IDF_LINE" ]; then
               IDF_TAG=$(echo "$IDF_LINE" | tr -d '[]"' | awk -F: '{print $2}' | awk '{print $1}')
             fi
@@ -275,8 +276,8 @@ jobs:
         run: |
           echo "Reading ESP-IDF version from app_config.yml..."
           IDF_TAG="release-v5.5"
-          if [ -f "examples/esp32/app_config.yml" ]; then
-            IDF_LINE=$(grep -m1 "idf_versions:" examples/esp32/app_config.yml || true)
+          if [ -f "${{ env.ESP32_PROJECT_PATH }}/app_config.yml" ]; then
+            IDF_LINE=$(grep -m1 "idf_versions:" ${{ env.ESP32_PROJECT_PATH }}/app_config.yml || true)
             if [ -n "$IDF_LINE" ]; then
               IDF_TAG=$(echo "$IDF_LINE" | tr -d '[]"' | awk -F: '{print $2}' | awk '{print $1}')
             fi
@@ -338,20 +339,20 @@ jobs:
           echo "Analyzing ESP-IDF component dependencies..."
           
           # Check component manifest for security issues
-          if [ -f "examples/esp32/components/iid-espidf/idf_component.yml" ]; then
+          if [ -f "${{ env.ESP32_PROJECT_PATH }}/components/iid-espidf/idf_component.yml" ]; then
             echo "ESP-IDF Component Manifest Analysis:"
             echo "Component name: $(grep '^name:' \
-              examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
+              ${{ env.ESP32_PROJECT_PATH }}/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
             echo "Component version: $(grep '^version:' \
-              examples/esp32/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
+              ${{ env.ESP32_PROJECT_PATH }}/components/iid-espidf/idf_component.yml | cut -d' ' -f2)"
             
             # Check for known vulnerable dependency patterns
             echo "Checking for known vulnerable dependencies..."
-            grep -i "dependencies:" examples/esp32/components/iid-espidf/idf_component.yml -A 20 || true
+            grep -i "dependencies:" ${{ env.ESP32_PROJECT_PATH }}/components/iid-espidf/idf_component.yml -A 20 || true
             
             # Validate ESP-IDF version requirements
             echo "ESP-IDF version requirements:"
-            grep "idf:" examples/esp32/components/iid-espidf/idf_component.yml || true
+            grep "idf:" ${{ env.ESP32_PROJECT_PATH }}/components/iid-espidf/idf_component.yml || true
           fi
           
       - name: Check for ESP32 security best practices

@@ -11,20 +11,15 @@ version: "1.0"
 metadata:
   project: "ESP32 HardFOC Interface Wrapper"
   default_app: "ascii_art"
-  target: "esp32c6"  # ESP32 target variant
-  # Build types per IDF version: [["Debug", "Release"], ["Debug"]] 
-  # First array: build types for first IDF version (v5.5), second array: build types for second IDF version (v5.4)
-  default_build_types: [["Debug", "Release"], ["Debug"]]
-  # Global IDF versions - used by all apps unless overridden
+  target: "esp32c6"
   idf_versions: ["release/v5.5", "release/v5.4"]
+  build_types: [["Debug", "Release"], ["Debug"]]
 
-# Define all available app types
 apps:
   ascii_art:
     description: "ASCII art generator example"
     source_file: "AsciiArtComprehensiveTest.cpp"
     category: "utility"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -34,7 +29,6 @@ apps:
     description: "GPIO peripheral comprehensive testing"
     source_file: "GpioComprehensiveTest.cpp"
     category: "peripheral"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -44,7 +38,6 @@ apps:
     description: "ADC peripheral comprehensive testing"
     source_file: "AdcComprehensiveTest.cpp"
     category: "peripheral"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -54,7 +47,6 @@ apps:
     description: "UART peripheral comprehensive testing"
     source_file: "UartComprehensiveTest.cpp"
     category: "peripheral"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -74,7 +66,6 @@ apps:
     description: "I2C peripheral comprehensive testing"
     source_file: "I2cComprehensiveTest.cpp"
     category: "peripheral"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -84,7 +75,6 @@ apps:
     description: "PWM peripheral comprehensive testing"
     source_file: "PwmComprehensiveTest.cpp"
     category: "peripheral"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -94,7 +84,6 @@ apps:
     description: "CAN peripheral comprehensive testing"
     source_file: "CanComprehensiveTest.cpp"
     category: "peripheral"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -104,7 +93,6 @@ apps:
     description: "PIO/RMT comprehensive testing"
     source_file: "PioComprehensiveTest.cpp"
     category: "peripheral"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -123,7 +111,6 @@ apps:
     description: "Temperature sensor comprehensive testing"
     source_file: "TemperatureComprehensiveTest.cpp"
     category: "sensor"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -133,7 +120,6 @@ apps:
     description: "NVS (Non-Volatile Storage) comprehensive testing"
     source_file: "NvsComprehensiveTest.cpp"
     category: "storage"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -144,7 +130,6 @@ apps:
     description: "Timer peripheral comprehensive testing"
     source_file: "TimerComprehensiveTest.cpp"
     category: "peripheral"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -154,7 +139,6 @@ apps:
     description: "Logger system comprehensive testing"
     source_file: "LoggerComprehensiveTest.cpp"
     category: "utility"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -164,7 +148,6 @@ apps:
     description: "WiFi connectivity comprehensive testing"
     source_file: "WifiComprehensiveTest.cpp"
     category: "connectivity"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -174,7 +157,6 @@ apps:
     description: "Comprehensive Bluetooth testing suite"
     source_file: "BluetoothComprehensiveTest.cpp"
     category: "connectivity"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
@@ -184,16 +166,11 @@ apps:
     description: "Utilities testing suite"
     source_file: "UtilsComprehensiveTest.cpp"
     category: "utility"
-    # Override global: use only ESP-IDF v5.5 with Debug and Release
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
     featured: true
 
-  # TEST: App with multiple IDF versions and different build types per version
-
-
-# Build configuration
 build_config:
   build_types:
     Debug:
@@ -221,10 +198,9 @@ build_config:
       debug_level: "-g0"
       defines: ["NDEBUG"]
   
-  build_directory_pattern: "build_{app_type}_{build_type}"
+  build_directory_pattern: "build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}"
   project_name_pattern: "esp32_iid_{app_type}_app"
 
-# CI configuration
 ci_config:
   timeout_minutes: 30
   fail_fast: false

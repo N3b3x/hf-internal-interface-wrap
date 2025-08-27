@@ -14,6 +14,81 @@ set -e  # Exit on any error
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 source "$(dirname "${BASH_SOURCE[0]}")/config_loader.sh"
 
+# Function to show help
+show_help() {
+    echo "ESP32 HardFOC Interface Wrapper - Flash and Monitor Script"
+    echo ""
+    echo "Usage: ./flash_app.sh [COMMAND] [OPTIONS]"
+    echo ""
+    echo "COMMANDS:"
+    echo "  flash [app] [build_type] [idf_version]     - Flash firmware only"
+    echo "  flash_monitor [app] [build_type] [idf_version] - Flash and monitor (default)"
+    echo "  monitor [app] [build_type] [idf_version]   - Monitor existing firmware"
+    echo "  size [app] [build_type] [idf_version]      - Show firmware size information"
+    echo "  list                                        - List available apps and build types"
+    echo ""
+    echo "ARGUMENT PATTERNS:"
+    echo "  Operation-First Syntax (Recommended):"
+    echo "    ./flash_app.sh flash gpio_test Release release/v5.5"
+    echo "    ./flash_app.sh size gpio_test Release"
+    echo "    ./flash_app.sh monitor"
+    echo ""
+    echo "  App-First Syntax (Legacy):"
+    echo "    ./flash_app.sh gpio_test Release flash"
+    echo "    ./flash_app.sh gpio_test Release size"
+    echo "    ./flash_app.sh gpio_test Release monitor"
+    echo ""
+    echo "  Minimal Syntax:"
+    echo "    ./flash_app.sh                                    # Use defaults (flash_monitor)"
+    echo "    ./flash_app.sh gpio_test                          # App only (defaults: Release, flash_monitor)"
+    echo "    ./flash_app.sh gpio_test Release                  # App + build type (defaults: flash_monitor)"
+    echo ""
+    echo "OPTIONS:"
+    echo "  --log [log_name]                                   - Enable logging with optional custom name"
+    echo "  -h, --help                                         - Show this help message"
+    echo ""
+    echo "ARGUMENTS:"
+    echo "  operation           - Operation to perform (flash, flash_monitor, monitor, size, list)"
+    echo "  app                 - Application type (e.g., gpio_test, adc_test)"
+    echo "  build_type          - Build configuration (Debug, Release)"
+    echo "  idf_version         - ESP-IDF version (e.g., release/v5.5, release/v5.4)"
+    echo "  log_name            - Custom name for log file (optional)"
+    echo ""
+    echo "EXAMPLES:"
+    echo "  # Operation-first syntax (recommended)"
+    echo "  ./flash_app.sh flash gpio_test Release release/v5.5"
+    echo "  ./flash_app.sh flash_monitor gpio_test Release release/v5.5"
+    echo "  ./flash_app.sh size gpio_test Release release/v5.5"
+    echo "  ./flash_app.sh monitor"
+    echo ""
+    echo "  # App-first syntax (legacy)"
+    echo "  ./flash_app.sh gpio_test Release flash"
+    echo "  ./flash_app.sh gpio_test Release size"
+    echo "  ./flash_app.sh gpio_test Release monitor"
+    echo ""
+    echo "  # With logging"
+    echo "  ./flash_app.sh flash gpio_test Release --log"
+    echo "  ./flash_app.sh flash_monitor gpio_test Release --log debug_session"
+    echo "  ./flash_app.sh size gpio_test Release --log size_analysis"
+    echo ""
+    echo "  # Minimal usage"
+    echo "  ./flash_app.sh                                    # Defaults: ascii_art Release flash_monitor"
+    echo "  ./flash_app.sh gpio_test                          # Defaults: Release flash_monitor"
+    echo "  ./flash_app.sh gpio_test Release                  # Defaults: flash_monitor"
+    echo ""
+    echo "  # Information commands"
+    echo "  ./flash_app.sh list                               # List all available apps"
+    echo "  ./flash_app.sh --help                             # Show this help"
+    echo ""
+    echo "DEFAULTS:"
+    echo "  Default app:        $CONFIG_DEFAULT_APP"
+    echo "  Default build type: $CONFIG_DEFAULT_BUILD_TYPE"
+    echo "  Default operation:  flash_monitor"
+    echo ""
+    echo "For detailed information, see: docs/README_FLASH_SYSTEM.md"
+    exit 0
+}
+
 # Configuration
 APP_TYPE=${1:-$CONFIG_DEFAULT_APP}
 BUILD_TYPE=${2:-$CONFIG_DEFAULT_BUILD_TYPE}
@@ -40,11 +115,11 @@ case $# in
     ;;
 1)
     # One argument - could be operation or app type
-    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|size|list)$ ]]; then
         # It's an operation
         OPERATION="$1"
         if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
-            # Flash operations need app, build type, and IDF version
+            # Flash and size operations need app, build type, and IDF version
             APP_TYPE=$CONFIG_DEFAULT_APP
             BUILD_TYPE=$CONFIG_DEFAULT_BUILD_TYPE
             IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
@@ -59,7 +134,7 @@ case $# in
     ;;
 2)
     # Two arguments
-    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|size|list)$ ]]; then
         # First is operation, second is app type
         OPERATION="$1"
         if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
@@ -77,7 +152,7 @@ case $# in
     ;;
 3)
     # Three arguments
-    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|size|list)$ ]]; then
         # First is operation, second is app type, third is build type
         OPERATION="$1"
         if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
@@ -86,16 +161,25 @@ case $# in
             IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
         fi
     else
-        # First is app type, second is build type, third is IDF version
-        OPERATION="flash_monitor"
-        APP_TYPE="$1"
-        BUILD_TYPE="$2"
-        IDF_VERSION="$3"
+        # Check if third argument is an operation
+        if [[ "$3" =~ ^(flash|flash_monitor|monitor|size|list)$ ]]; then
+            # App-first format: app build_type operation
+            OPERATION="$3"
+            APP_TYPE="$1"
+            BUILD_TYPE="$2"
+            IDF_VERSION=$CONFIG_DEFAULT_IDF_VERSION
+        else
+            # App-first format: app build_type idf_version (default operation)
+            OPERATION="flash_monitor"
+            APP_TYPE="$1"
+            BUILD_TYPE="$2"
+            IDF_VERSION="$3"
+        fi
     fi
     ;;
 4)
     # Four arguments - check for logging flag
-    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|size|list)$ ]]; then
         # Operation-first format: operation app build_type idf_version
         OPERATION="$1"
         if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
@@ -113,7 +197,7 @@ case $# in
     ;;
 5)
     # Five arguments - check for logging flag
-    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|size|list)$ ]]; then
         # Operation-first format: operation app build_type idf_version --log
         OPERATION="$1"
         if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
@@ -137,7 +221,7 @@ case $# in
     ;;
 6)
     # Six arguments - check for logging flag and custom name
-    if [[ "$1" =~ ^(flash|flash_monitor|monitor|list)$ ]]; then
+    if [[ "$1" =~ ^(flash|flash_monitor|monitor|size|list)$ ]]; then
         # Operation-first format: operation app build_type idf_version --log name
         OPERATION="$1"
         if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "list" ]; then
@@ -169,29 +253,13 @@ case $# in
 esac
 
 # Handle special commands
-if [ "$OPERATION" = "list" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-    if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-        echo "ESP32 HardFOC Interface Wrapper - Flash and Monitor Script"
-        echo "Usage: ./flash_app.sh [operation] [app_type] [build_type] [idf_version] [--log [log_name]]"
-        echo ""
-        echo "Operations:"
-        echo "  flash [app] [build_type] [idf_version]     - Flash firmware only"
-        echo "  flash_monitor [app] [build_type] [idf_version] - Flash and monitor (default)"
-        echo "  monitor                          - Monitor existing firmware"
-        echo "  list                             - List available apps"
-        echo ""
-        echo "Examples:"
-        echo "  ./flash_app.sh flash gpio_test Release release/v5.5 --log"
-        echo "  ./flash_app.sh flash_monitor gpio_test Release release/v5.5 --log debug_session"
-        echo "  ./flash_app.sh monitor --log"
-        echo "  ./flash_app.sh list"
-        echo ""
-        echo "For detailed information, see: docs/README_FLASH_SYSTEM.md"
-        echo ""
-        echo "=== Available App Types ==="
-    else
-        echo "=== Available App Types ==="
-    fi
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    show_help
+    exit 0
+fi
+
+if [ "$OPERATION" = "list" ]; then
+    echo "=== Available App Types ==="
     echo "Featured apps:"
     for app in $(get_featured_app_types); do
         description=$(get_app_description "$app")
@@ -240,8 +308,8 @@ if [ "$OPERATION" = "monitor" ]; then
     :
 fi
 
-# NEW: Validate ESP-IDF version and build type compatibility for flash operations
-if [[ "$OPERATION" =~ ^(flash|flash_monitor)$ ]] && [[ -n "$APP_TYPE" ]]; then
+# NEW: Validate ESP-IDF version and build type compatibility for flash and size operations
+if [[ "$OPERATION" =~ ^(flash|flash_monitor|size)$ ]] && [[ -n "$APP_TYPE" ]]; then
     # Validate ESP-IDF version compatibility with app
     if ! validate_app_idf_version "$APP_TYPE" "$IDF_VERSION"; then
         echo "ERROR: App '$APP_TYPE' does not support ESP-IDF version '$IDF_VERSION'"
@@ -319,12 +387,12 @@ fi
 
 # Validate operation
 case $OPERATION in
-    flash|monitor|flash_monitor)
+    flash|monitor|flash_monitor|size)
         echo "Valid operation: $OPERATION"
         ;;
     *)
         echo "ERROR: Invalid operation: $OPERATION"
-        echo "Available operations: flash, monitor, flash_monitor"
+        echo "Available operations: flash, monitor, flash_monitor, size"
         exit 1
         ;;
 esac
@@ -351,7 +419,7 @@ else
 fi
 
 # Check if build exists and is valid (skip for monitor operation)
-if [ "$OPERATION" != "monitor" ]; then
+if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "size" ]; then
     BUILD_EXISTS=false
     if [ -d "$BUILD_DIR" ]; then
         # Check for multiple indicators of a valid build
@@ -390,8 +458,8 @@ else
     BUILD_EXISTS=true
 fi
 
-# Auto-build if necessary (skip for monitor operation)
-if [ "$OPERATION" != "monitor" ] && [ "$BUILD_EXISTS" = false ]; then
+# Auto-build if necessary (skip for monitor and size operations)
+if [ "$OPERATION" != "monitor" ] && [ "$OPERATION" != "size" ] && [ "$BUILD_EXISTS" = false ]; then
     echo ""
     echo "======================================================"
     echo "NO VALID BUILD FOUND - STARTING AUTO-BUILD"
@@ -707,79 +775,85 @@ cleanup_old_logs() {
     fi
 }
 
-# Find and configure the best available port
-echo "Searching for ESP32 devices..."
-BEST_PORT=$(find_best_port)
+# Find and configure the best available port (skip for size operations)
+if [ "$OPERATION" != "size" ]; then
+    echo "Searching for ESP32 devices..."
+    BEST_PORT=$(find_best_port)
 
-if [ -z "$BEST_PORT" ]; then
-    echo ""
-    echo "ERROR: No suitable serial ports found!"
-    echo ""
-    echo "Troubleshooting steps:"
-    echo "1. Ensure your ESP32 device is connected via USB"
-    echo "2. Check if the device appears in your system:"
-    
-    case "$(detect_os)" in
-        "macos")
-            echo "   - System Information > USB"
-            echo "   - Terminal: ls /dev/cu.* /dev/tty.*"
-            echo "   - Look for usbmodem, usbserial, or similar devices"
-            ;;
-        "linux")
-            echo "   - lsusb (if available)"
-            echo "   - ls /dev/ttyACM* /dev/ttyUSB*"
-            echo "   - dmesg | tail (after connecting device)"
-            ;;
-    esac
-    
-    echo "3. Try disconnecting and reconnecting the device"
-    echo "4. Check if you need to install USB-to-UART drivers"
-    echo "5. Ensure the device is not being used by another application"
-    echo ""
-    
-    # Offer manual port specification
-    echo "You can also try manually specifying a port:"
-    echo "  export ESPPORT=/dev/your_port_here"
-    echo ""
-    echo "Or run the port detection script for help:"
-    echo "  ./examples/esp32/scripts/detect_ports.sh --verbose --test-connection"
-    echo ""
-    
-    # Check if ESPPORT is already set
-    if [ -n "$ESPPORT" ]; then
-        echo "ESPPORT is currently set to: $ESPPORT"
-        if [ -e "$ESPPORT" ]; then
-            echo "This port exists. Would you like to use it? (y/n)"
-            read -r response
-            if [[ "$response" =~ ^[Yy]$ ]]; then
-                BEST_PORT="$ESPPORT"
-                echo "Using manually specified port: $BEST_PORT"
+    if [ -z "$BEST_PORT" ]; then
+        echo ""
+        echo "ERROR: No suitable serial ports found!"
+        echo ""
+        echo "Troubleshooting steps:"
+        echo "1. Ensure your ESP32 device is connected via USB"
+        echo "2. Check if the device appears in your system:"
+        
+        case "$(detect_os)" in
+            "macos")
+                echo "   - System Information > USB"
+                echo "   - Terminal: ls /dev/cu.* /dev/tty.*"
+                echo "   - Look for usbmodem, usbserial, or similar devices"
+                ;;
+            "linux")
+                echo "   - lsusb (if available)"
+                echo "   - ls /dev/ttyACM* /dev/ttyUSB*"
+                echo "   - dmesg | tail (after connecting device)"
+                ;;
+        esac
+        
+        echo "3. Try disconnecting and reconnecting the device"
+        echo "4. Check if you need to install USB-to-UART drivers"
+        echo "5. Ensure the device is not being used by another application"
+        echo ""
+        
+        # Offer manual port specification
+        echo "You can also try manually specifying a port:"
+        echo "  export ESPPORT=/dev/your_port_here"
+        echo ""
+        echo "Or run the port detection script for help:"
+        echo "  ./examples/esp32/scripts/detect_ports.sh --verbose --test-connection"
+        echo ""
+        
+        # Check if ESPPORT is already set
+        if [ -n "$ESPPORT" ]; then
+            echo "ESPPORT is currently set to: $ESPPORT"
+            if [ -e "$ESPPORT" ]; then
+                echo "This port exists. Would you like to use it? (y/n)"
+                read -r response
+                if [[ "$response" =~ ^[Yy]$ ]]; then
+                    BEST_PORT="$ESPPORT"
+                    echo "Using manually specified port: $BEST_PORT"
+                else
+                    exit 1
+                fi
             else
+                echo "WARNING: ESPPORT is set to $ESPPORT but this port does not exist"
                 exit 1
             fi
         else
-            echo "WARNING: ESPPORT is set to $ESPPORT but this port does not exist"
             exit 1
         fi
-    else
+    fi
+
+    echo "Detected port: $BEST_PORT"
+
+    # Validate the port
+    if ! validate_port "$BEST_PORT"; then
+        echo "ERROR: Port validation failed for $BEST_PORT"
         exit 1
     fi
+
+    # Fix permissions if needed
+    fix_port_permissions "$BEST_PORT"
+
+    # Set the port for ESP-IDF
+    export ESPPORT="$BEST_PORT"
+    echo "Using port: $ESPPORT"
+else
+    # For size operations, set a dummy port to avoid errors
+    BEST_PORT="size_operation"
+    echo "Size operation - no port detection needed"
 fi
-
-echo "Detected port: $BEST_PORT"
-
-# Validate the port
-if ! validate_port "$BEST_PORT"; then
-    echo "ERROR: Port validation failed for $BEST_PORT"
-    exit 1
-fi
-
-# Fix permissions if needed
-fix_port_permissions "$BEST_PORT"
-
-# Set the port for ESP-IDF
-export ESPPORT="$BEST_PORT"
-echo "Using port: $ESPPORT"
 
 # Setup logging if enabled
 if [ "$ENABLE_LOGGING" = true ]; then
@@ -807,7 +881,7 @@ case $OPERATION in
         fi
         echo "Flash completed successfully!"
         ;;
-        monitor)
+    monitor)
         echo "Starting monitor on $BEST_PORT..."
         echo "Press Ctrl+] to exit monitor"
         if [ "$ENABLE_LOGGING" = true ]; then
@@ -847,6 +921,38 @@ case $OPERATION in
             fi
         fi
         ;;
+    size)
+        echo "Showing size information for $APP_TYPE app..."
+        echo "Build directory: $BUILD_DIR"
+        echo "Project name: $PROJECT_NAME"
+        echo ""
+        
+        # Check if build directory exists
+        if [ ! -d "$BUILD_DIR" ]; then
+            echo "ERROR: Build directory not found: $BUILD_DIR"
+            echo "Please build the project first using: ./build_app.sh $APP_TYPE $BUILD_TYPE $IDF_VERSION"
+            exit 1
+        fi
+        
+        # Show size information using idf.py
+        echo "=== Firmware Size Analysis ==="
+        if ! idf.py -B "$BUILD_DIR" size; then
+            echo "ERROR: Size analysis failed"
+            exit 1
+        fi
+        
+        echo ""
+        echo "=== Component Size Breakdown ==="
+        if ! idf.py -B "$BUILD_DIR" size-components; then
+            echo "WARNING: Component size breakdown failed"
+        fi
+        
+        echo ""
+        echo "=== Memory Usage Summary ==="
+        if ! idf.py -B "$BUILD_DIR" size --format json | python3 -m json.tool 2>/dev/null | grep -E "(used|total|available)" || echo "JSON format not available"; then
+            echo "WARNING: Memory usage summary failed"
+        fi
+        ;;
 esac
 
 echo ""
@@ -875,6 +981,7 @@ echo "Available operations:"
 if [ "$OPERATION" != "monitor" ]; then
     echo "  Flash only:        ./flash_app.sh $APP_TYPE $BUILD_TYPE flash"
     echo "  Flash & monitor:   ./flash_app.sh $APP_TYPE $BUILD_TYPE flash_monitor"
+    echo "  Size analysis:     ./flash_app.sh $APP_TYPE $BUILD_TYPE size"
     echo "  Build only:        ./build_app.sh $APP_TYPE $BUILD_TYPE"
     echo ""
     echo "Logging options:"
@@ -883,6 +990,7 @@ if [ "$OPERATION" != "monitor" ]; then
     echo "  Examples:"
     echo "    ./flash_app.sh gpio Release flash --log                    # Flash with logging"
     echo "    ./flash_app.sh gpio Release flash_monitor --log            # Flash and monitor with logging"
+    echo "    ./flash_app.sh gpio Release size                           # Size analysis"
 else
     echo "  Monitor existing firmware: ./flash_app.sh monitor"
     echo "  Monitor with logging:      ./flash_app.sh monitor --log"

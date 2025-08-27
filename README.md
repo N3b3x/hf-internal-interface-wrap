@@ -42,6 +42,7 @@ The **HardFOC Internal Interface Wrapper** is a comprehensive, production-ready 
 - **🌐 Modern Connectivity** - Full WiFi and Bluetooth support for IoT-enabled HardFOC motor controller boards
 - **🛡️ Industrial Grade** - Robust design for critical HardFOC motor control applications
 - **📚 Extensively Documented** - Complete API documentation with HardFOC-specific examples
+- **🛡️ Enhanced Build System** - Smart validation and automated ESP-IDF management for reliable builds
 
 ---
 
@@ -49,55 +50,52 @@ The **HardFOC Internal Interface Wrapper** is a comprehensive, production-ready 
 
 The wrapper follows a multi-layered architecture that maximizes flexibility, maintainability, and performance for HardFOC motor controller boards:
 
-```mermaid
-graph TB
-    subgraph "🎯 HardFOC Application Layer"
-        A[HardFOC Motor Control Application]
-        B[HardFOC System Management]
-        C[HardFOC IoT Integration]
-    end
-    
-    subgraph "🔒 Thread-Safe Layer (Optional)"
-        D[Thread-Safe Wrappers]
-        E[Concurrent Access Control]
-    end
-    
-    subgraph "🏛️ HardFOC Base Interface Layer"
-        F[Core Interfaces]
-        G[Communication Interfaces] 
-        H[Wireless Interfaces]
-        I[System Interfaces]
-    end
-    
-    subgraph "⚙️ Platform Implementation Layer"
-        J[ESP32 Implementations]
-        K[Future MCU Support]
-        L[I2C/SPI Device Support]
-    end
-    
-    subgraph "🔧 HardFOC Hardware Layer"
-        M[ESP32-C6 Primary MCU]
-        N[HardFOC Board Components]
-        O[Sensors & Actuators]
-    end
-    
-    A --> D
-    B --> E
-    C --> D
-    
-    D --> F
-    E --> G
-    D --> H
-    E --> I
-    
-    F --> J
-    G --> K
-    H --> J
-    I --> L
-    
-    J --> M
-    K --> N
-    L --> O
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    🎯 HARDFOC APPLICATION LAYER                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  HardFOC Motor Control Application  ──┐                                   │
+│                                        │                                   │
+│  HardFOC System Management            │                                   │
+│                                        │                                   │
+│  HardFOC IoT Integration              ──┘                                   │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    🔒 THREAD-SAFE LAYER (OPTIONAL)                         │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Thread-Safe Wrappers      ──┐                                             │
+│                               │                                             │
+│  Concurrent Access Control    ──┘                                             │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                  🏛️ HARDFOC BASE INTERFACE LAYER                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Core Interfaces           │  Communication Interfaces                     │
+│  Wireless Interfaces       │  System Interfaces                           │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                 ⚙️ PLATFORM IMPLEMENTATION LAYER                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  ESP32 Implementations     │  Future MCU Support                           │
+│  I2C/SPI Device Support    │                                               │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    🔧 HARDFOC HARDWARE LAYER                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  ESP32-C6 Primary MCU      │  HardFOC Board Components                    │
+│  Sensors & Actuators        │                                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Data Flow:
+Application Layer → Thread-Safe Layer → Base Interface Layer → Platform Implementation → Hardware
 ```
 
 ### 🔧 **Consistent Type System**
@@ -209,6 +207,45 @@ using hf_timeout_ms_t = hf_u32_t;   // Timeout values in milliseconds
 - **C++17** compatible compiler (GCC 8+ or Clang 7+)
 - **CMake 3.16+** for build system management
 - **HardFOC Motor Controller Board** with ESP32-C6
+
+### 🛡️ **Enhanced Build System**
+
+The project includes a comprehensive build system with smart validation and automated ESP-IDF management:
+
+#### **Key Features**
+- **🔍 Smart Validation** - Prevents invalid build combinations before they fail
+- **🧠 Automatic ESP-IDF Selection** - Chooses the right ESP-IDF version based on app and build type
+- **📊 Comprehensive Error Messages** - Clear guidance when validation fails
+- **🔄 CI/CD Integration** - Seamless GitHub Actions integration with matrix generation
+
+#### **Build Commands**
+```bash
+# Basic build with smart defaults
+./examples/esp32/scripts/build_app.sh gpio_test Release
+
+# Validate build combination before building
+./examples/esp32/scripts/build_app.sh validate gpio_test Release
+
+# Show app information and supported combinations
+./examples/esp32/scripts/build_app.sh info gpio_test
+
+# List all valid build combinations
+./examples/esp32/scripts/build_app.sh combinations
+```
+
+#### **Smart Default Behavior**
+```bash
+# No IDF version specified - system automatically selects:
+# 1. App-specific IDF version if defined
+# 2. First global IDF version supporting the build type
+# 3. Fallback to release/v5.5
+
+./scripts/build_app.sh gpio_test Release
+# → Automatically uses release/v5.5 (smart default)
+
+./scripts/build_app.sh gpio_test Release release/v5.4
+# → Uses specified version (if valid)
+```
 
 ### ⚙️ **Installation**
 
@@ -424,33 +461,152 @@ private:
 
 ## 🔧 **Building**
 
-### 🏗️ **Build Configuration for HardFOC Boards**
+The project features an automated build system designed for both local development and CI/CD pipelines:
 
-```bash
-# Set up ESP-IDF environment for HardFOC development
-. $IDF_PATH/export.sh
+### **🏗️ Build System Architecture**
 
-# Configure HardFOC project
-idf.py menuconfig
-
-# Build the HardFOC project
-idf.py build
-
-# Flash to HardFOC board and monitor
-idf.py -p /dev/ttyUSB0 flash monitor
+```mermaid
+graph TB
+    subgraph "📁 Project Structure"
+        A[app_config.yml]
+        B[generate_matrix.py]
+        C[build_app.sh]
+        D[setup_ci.sh]
+        E[setup_repo.sh]
+    end
+    
+    subgraph "🔄 Build Process"
+        F[Load Configuration]
+        G[Auto-Detect ESP-IDF]
+        H[Generate Build Matrix]
+        I[Build Applications]
+        J[Export Build Paths]
+    end
+    
+    subgraph "📦 Output Management"
+        K[Dynamic Build Directories]
+        L[Structured Naming]
+        M[Complete Artifacts]
+        N[CI Integration]
+    end
+    
+    A --> F
+    B --> G
+    C --> H
+    D --> I
+    E --> J
+    
+    F --> K
+    G --> L
+    H --> M
+    I --> N
 ```
 
-### ⚙️ **HardFOC Configuration Options**
+### **🚀 ESP-IDF Management**
 
-The wrapper supports extensive configuration through ESP-IDF's menuconfig for HardFOC boards:
+The build system automatically manages ESP-IDF versions and environments:
 
-- **Interface Selection** - Enable/disable specific interfaces for HardFOC applications
-- **Performance Tuning** - Optimize for speed vs. memory usage on HardFOC boards
-- **Buffer Sizes** - Configure communication and logging buffers for HardFOC systems
-- **Security Settings** - WiFi and Bluetooth security configuration for HardFOC IoT
-- **Debug Options** - Comprehensive logging and diagnostics for HardFOC development
+- **🔄 Auto-Detection**: Automatically detects installed ESP-IDF versions
+- **📥 Auto-Installation**: Downloads and installs required ESP-IDF versions if missing
+- **🔧 Environment Setup**: Automatically sources the correct ESP-IDF environment
+- **📚 Version Support**: Supports multiple ESP-IDF versions (v4.4, v5.0, v5.1, v5.2, v5.3, v5.4, v5.5)
+- **🎯 Target Support**: Full ESP32-C6 support with automatic target detection
 
-### 📦 **Dependencies**
+#### **ESP-IDF Auto-Setup Process**
+
+```bash
+# The build system automatically:
+1. Checks for existing ESP-IDF installations
+2. Downloads required version if not found
+3. Installs and configures ESP-IDF
+4. Sources the environment
+5. Sets up build tools and compilers
+6. Configures target-specific settings
+```
+
+### **📁 Build Directory Naming Convention**
+
+Build directories use a structured, parseable naming system:
+
+```
+build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}
+```
+
+**Examples:**
+- `build-app-gpio_test-type-Release-target-esp32c6-idf-release_v5_5`
+- `build-app-adc_test-type-Debug-target-esp32c6-idf-release_v5_4`
+- `build-app-wifi_test-type-Release-target-esp32c6-idf-release_v5_3`
+
+**Benefits:**
+- ✅ **ESP-IDF Compatible** - No special characters that cause build issues
+- ✅ **Cross-Platform Safe** - Works on all file systems
+- ✅ **Handles Hyphenated Names** - No ambiguity in parsing
+- ✅ **Structured & Parsable** - Clear section boundaries with prefixes
+- ✅ **CI/CD Ready** - Easy integration with automated pipelines
+
+### **🔧 Build Commands**
+
+#### **Local Development**
+```bash
+# Setup development environment
+source examples/esp32/scripts/setup_repo.sh
+
+# Build an application
+./examples/esp32/scripts/build_app.sh <app_name> <build_type> [idf_version]
+
+# Examples:
+./examples/esp32/scripts/build_app.sh gpio_test Release
+./examples/esp32/scripts/build_app.sh adc_test Debug release/v5.4
+```
+
+#### **CI/CD Pipeline**
+```bash
+# Setup CI environment
+source examples/esp32/scripts/setup_ci.sh
+
+# Build with CI environment
+./examples/esp32/scripts/build_app.sh <app_name> <build_type> [idf_version]
+```
+
+### **📦 Build Artifacts**
+
+Each build produces comprehensive artifacts:
+
+- **Main Binary**: `{app_name}.bin` - Flashable firmware
+- **ELF File**: `{app_name}.elf` - Debugging and analysis
+- **Map File**: `{app_name}.map` - Memory layout and symbol information
+- **Bootloader**: `bootloader/bootloader.bin` - ESP32 bootloader
+- **Partition Table**: `partition_table/partition-table.bin` - Flash layout
+- **Build Configuration**: `sdkconfig` - ESP-IDF configuration
+- **Compile Commands**: `compile_commands.json` - IDE integration
+
+### **🔄 Build Configuration**
+
+Configuration is centralized in `examples/esp32/app_config.yml`:
+
+```yaml
+metadata:
+  idf_versions: ["release/v5.5", "release/v5.4", "release/v5.3"]
+  build_types: [["Debug", "Release"], ["Debug", "Release"], ["Debug"]]
+  target: "esp32c6"
+
+apps:
+  gpio_test:
+    ci_enabled: true
+    description: "GPIO peripheral comprehensive testing"
+    idf_versions: ["release/v5.5"]  # Override global
+    build_types: [["Debug", "Release"]]  # Override global
+```
+
+### **⚡ Build Performance Features**
+
+- **🔄 Incremental Builds**: Preserves existing build artifacts when possible
+- **💾 ccache Integration**: Automatic caching for faster rebuilds
+- **🧹 Clean Builds**: Optional clean rebuilds with `CLEAN=1`
+- **📊 Build Statistics**: Comprehensive size and memory analysis
+- **🔍 Debug Information**: Detailed build logs and configuration
+
+### **📦 Dependencies**
 
 ```cmake
 set(COMPONENT_REQUIRES
@@ -472,6 +628,66 @@ set(COMPONENT_REQUIRES
 ## 📊 **Examples**
 
 The ESP32 examples demonstrate all wrapper interfaces in comprehensive test suites. All examples are available in the [`examples/esp32/`](examples/esp32/) directory with a centralized configuration system.
+
+## 📍 **Centralized Project Location**
+
+The ESP32 project location is centralized using the `ESP32_PROJECT_PATH` environment variable in CI workflows, with scripts accepting the path as a command-line argument. This creates a clean architecture where the CI pipeline is the single source of truth.
+
+**Current Configuration**:
+```yaml
+env:
+  ESP32_PROJECT_PATH: examples/esp32  # Centralized in CI workflows
+```
+
+**Architecture**:
+- **CI Pipeline**: Single source of truth for project location
+- **Scripts**: Accept project path as command-line argument (`-e` or `--esp32-path`)
+- **Clean Separation**: CI controls location, scripts are portable and reusable
+
+**Benefits**:
+- **Single Source of Truth**: CI pipeline is the only place that defines project location
+- **Portable Scripts**: Scripts work anywhere without environment variable dependencies
+- **Easy Maintenance**: Change one variable to update all paths across the entire CI system
+- **Future-Proof**: Move the ESP32 project to any location by updating the variable
+- **Consistency**: All workflows and scripts use the same path reference
+- **Reduced Errors**: No more mismatched paths between different workflow files
+
+**How to Change Project Location**:
+If you need to move the ESP32 project to a different location (e.g., `projects/esp32` or `embedded/esp32`), simply update the `ESP32_PROJECT_PATH` variable in the workflow files:
+
+```yaml
+env:
+  ESP32_PROJECT_PATH: projects/esp32  # New location
+```
+
+**Script Usage**:
+```bash
+# For CI builds: Use setup_ci.sh for environment, build_app.sh for building
+cd examples/esp32
+source scripts/setup_ci.sh
+./scripts/build_app.sh gpio_test Release
+
+# For local development: Use setup_repo.sh for environment, build_app.sh for building
+cd examples/esp32
+source scripts/setup_repo.sh
+./scripts/build_app.sh gpio_test Release
+
+# For flashing: Use flash_app.sh
+./scripts/flash_app.sh flash gpio_test Release
+```
+
+**Self-Contained Builds**:
+Scripts now create self-contained build directories that include:
+- All source files and components
+- Configuration files (CMakeLists.txt, app_config.yml, sdkconfig)
+- **Scripts directory** for post-build operations and CI usage
+- Build artifacts and reports
+
+This enables:
+- **CI Consistency**: Scripts are available during CI execution
+- **Post-Build Operations**: Run additional scripts after building
+- **Debugging**: Easier troubleshooting with scripts available
+- **Portability**: Build artifacts can be moved with their scripts
 
 ### 🎯 **Basic HardFOC Interface Examples**
 - **GPIO Control** ([`GpioComprehensiveTest.cpp`](examples/esp32/main/GpioComprehensiveTest.cpp)) - LED control and button reading for HardFOC boards
@@ -496,13 +712,13 @@ The ESP32 examples demonstrate all wrapper interfaces in comprehensive test suit
 cd examples/esp32
 
 # Build an example (using centralized configuration)
-./scripts/build_example.sh gpio_test Release
+./scripts/build_app.sh gpio_test Release
 
 # Flash and monitor
-./scripts/flash_example.sh gpio_test Release flash_monitor
+./scripts/flash_app.sh flash_monitor gpio_test Release
 
 # List all available examples
-./scripts/build_example.sh list
+./scripts/build_app.sh list
 ```
 
 For detailed information about the centralized configuration system, see [`examples/esp32/README_CENTRALIZED_CONFIG.md`](examples/esp32/README_CENTRALIZED_CONFIG.md).

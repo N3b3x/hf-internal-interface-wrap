@@ -159,6 +159,7 @@ export ESPPORT="/dev/ttyUSB0"
 - **`flash`**: Flash firmware only (no monitoring)
 - **`flash_monitor`**: Flash firmware and start monitoring (default)
 - **`monitor`**: Monitor existing firmware (no flashing)
+- **`size`**: Show firmware size information and memory usage analysis
 - **`list`**: List available applications and configurations
 
 #### **2. Operation Syntax**
@@ -169,10 +170,13 @@ The system supports both operation-first and legacy syntax:
 ./flash_app.sh flash gpio_test Release
 ./flash_app.sh monitor --log
 ./flash_app.sh flash_monitor adc_test Debug
+./flash_app.sh size gpio_test Release
+./flash_app.sh size gpio_test Release release/v5.5
 
 # Legacy syntax (still supported)
 ./flash_app.sh gpio_test Release flash
 ./flash_app.sh gpio_test Release flash_monitor
+./flash_app.sh gpio_test Release size
 ```
 
 ### **Flash Process Workflow**
@@ -238,6 +242,28 @@ The system supports both operation-first and legacy syntax:
 - Validates against app configuration
 - Ensures consistent toolchain usage
 ```
+
+#### **Size Analysis Operations**
+The size operation provides comprehensive firmware analysis without requiring device connection:
+
+```bash
+# Basic size analysis
+./flash_app.sh size gpio_test Release
+
+# Size analysis with specific ESP-IDF version
+./flash_app.sh size gpio_test Release release/v5.5
+
+# Size analysis with app-first syntax
+./flash_app.sh gpio_test Release size
+```
+
+**Size Operation Features**:
+- **Firmware Size Analysis**: Total image size and memory usage breakdown
+- **Component Size Breakdown**: Per-archive contributions to ELF file
+- **Memory Usage Summary**: Flash, DIRAM, and LP SRAM usage analysis
+- **Build Validation**: Ensures build exists before analysis
+- **No Port Required**: Works without device connection
+- **Smart Build Detection**: Automatically finds correct build directory
 
 ## 📺 **Monitoring and Logging**
 
@@ -351,6 +377,25 @@ gpio_test_Release_20250115_143022.log
 
 # Analyze log patterns
 ./manage_logs.sh stats
+```
+
+#### **4. Size Analysis Workflow**
+```bash
+# Analyze firmware size before deployment
+./flash_app.sh size gpio_test Release
+
+# Check memory usage for optimization
+./flash_app.sh size gpio_test Debug
+
+# Compare sizes between versions
+./flash_app.sh size gpio_test Release release/v5.5
+./flash_app.sh size gpio_test Release release/v5.4
+
+# Expected result:
+# - Comprehensive size analysis
+# - Component breakdown
+# - Memory usage summary
+# - No device connection required
 ```
 
 ### **Advanced Flash Patterns**

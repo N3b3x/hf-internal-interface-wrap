@@ -1,16 +1,93 @@
 #!/bin/bash
-# Log management script for ESP32 apps
-# Usage: ./manage_logs.sh [command] [options]
-#
-# Commands:
-#   list                    List all log files with details
-#   view <log_name>        View a specific log file
-#   search <pattern>       Search across all log files
-#   clean [days]           Clean logs older than N days (default: 30)
-#   stats                  Show log statistics
-#   latest                 Show the most recent log file
+# ESP32 Log Management Script
+# This script helps view, search, and manage ESP32 development logs
 
-set -e
+set -e  # Exit on any error
+
+# Show help if requested
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    echo "ESP32 Log Management Script"
+    echo ""
+    echo "Usage: ./manage_logs.sh [COMMAND] [OPTIONS] [ARGUMENTS]"
+    echo ""
+    echo "COMMANDS:"
+    echo "  list [pattern]              - List all log files with details (optional pattern filter)"
+    echo "  view <log_name>             - View a specific log file"
+    echo "  search <pattern>            - Search across all log files for text patterns"
+    echo "  clean [days]                - Clean logs older than N days (default: 30)"
+    echo "  stats                       - Show log statistics and summary"
+    echo "  latest                      - Show the most recent log file"
+    echo "  tail <log_name> [lines]     - Show last N lines of a log file (default: 50)"
+    echo "  grep <log_name> <pattern>   - Search within a specific log file"
+    echo ""
+    echo "OPTIONS:"
+    echo "  --help, -h                  - Show this help message"
+    echo "  --verbose                    - Show detailed output"
+    echo "  --no-color                   - Disable colored output"
+    echo "  --follow                     - Follow log file in real-time (for tail command)"
+    echo ""
+    echo "ARGUMENTS:"
+    echo "  log_name                    - Name of log file to operate on"
+    echo "  pattern                     - Text pattern to search for"
+    echo "  days                        - Number of days for log retention"
+    echo "  lines                       - Number of lines to show (for tail command)"
+    echo ""
+    echo "EXAMPLES:"
+    echo "  # List and view logs"
+    echo "  ./manage_logs.sh list                           # List all logs"
+    echo "  ./manage_logs.sh list gpio                     # List logs containing 'gpio'"
+    echo "  ./manage_logs.sh view gpio_Release_20241201_143022.log  # View specific log"
+    echo "  ./manage_logs.sh latest                         # Show latest log"
+    echo ""
+    echo "  # Search and filter"
+    echo "  ./manage_logs.sh search \"ERROR\"               # Search for errors in all logs"
+    echo "  ./manage_logs.sh search \"build failed\"        # Search for build failures"
+    echo "  ./manage_logs.sh grep gpio_test.log \"GPIO\"    # Search within specific log"
+    echo ""
+    echo "  # Log maintenance"
+    echo "  ./manage_logs.sh clean 7                        # Clean logs older than 7 days"
+    echo "  ./manage_logs.sh clean                          # Clean logs older than 30 days"
+    echo "  ./manage_logs.sh stats                          # Show log statistics"
+    echo ""
+    echo "  # Real-time monitoring"
+    echo "  ./manage_logs.sh tail gpio_test.log             # Show last 50 lines"
+    echo "  ./manage_logs.sh tail gpio_test.log 100         # Show last 100 lines"
+    echo "  ./manage_logs.sh tail gpio_test.log --follow    # Follow log in real-time"
+    echo ""
+    echo "LOG FILE NAMING CONVENTION:"
+    echo "  • Format: {app_type}_{build_type}_{date}_{time}.log"
+    echo "  • Example: gpio_test_Release_20241201_143022.log"
+    echo "  • Location: examples/esp32/logs/"
+    echo "  • Date format: YYYYMMDD"
+    echo "  • Time format: HHMMSS"
+    echo ""
+    echo "SEARCH PATTERNS:"
+    echo "  • Simple text: \"ERROR\", \"build failed\", \"GPIO\""
+    echo "  • Regular expressions: \"ERROR|WARN\", \"build.*failed\""
+    echo "  • Case insensitive: \"error\", \"Error\", \"ERROR\""
+    echo "  • Multi-word: \"build failed\", \"GPIO test\""
+    echo ""
+    echo "LOG RETENTION:"
+    echo "  • Default retention: 30 days"
+  echo "  • Configurable via days argument"
+  echo "  • Automatic cleanup of old logs"
+  echo "  • Safe deletion with confirmation"
+  echo ""
+  echo "OUTPUT FORMATS:"
+  echo "  • List: File name, size, date, age"
+  echo "  • Stats: Total logs, total size, oldest/newest dates"
+  echo "  • Search: File name, line number, matching text"
+  echo "  • View: Full log content with syntax highlighting"
+  echo ""
+  echo "TROUBLESHOOTING:"
+  echo "  • No logs found: Check logs directory exists and contains files"
+  echo "  • Permission denied: Check file permissions and ownership"
+  echo "  • Search not working: Verify pattern syntax and case sensitivity"
+  echo "  • Clean not working: Check write permissions and disk space"
+  echo ""
+  echo "For detailed information, see: docs/README_LOGGING_SYSTEM.md"
+  exit 0
+fi
 
 # Load configuration
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -34,16 +111,16 @@ print_color() {
 show_usage() {
     echo "ESP32 Log Management Script"
     echo ""
-    echo "Usage: $0 [command] [options]"
+    echo "Usage: $0 [command] [options] [arguments]"
     echo ""
     echo "Purpose: View, search, and manage ESP32 development logs"
     echo ""
     echo "Commands:"
     echo "  list                    List all log files with details"
     echo "  view <log_name>        View a specific log file"
-    echo "  search <pattern>       Search across all log files for text patterns"
+    echo "  search <pattern>       Search across all log files"
     echo "  clean [days]           Clean logs older than N days (default: 30)"
-    echo "  stats                  Show log statistics and summary"
+    echo "  stats                  Show log statistics"
     echo "  latest                 Show the most recent log file"
     echo ""
     echo "Examples:"

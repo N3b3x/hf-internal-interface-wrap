@@ -25,13 +25,16 @@ The ESP32 configuration system provides centralized, intelligent configuration m
 
 ### **Core Features**
 - **Centralized Configuration**: Single YAML file manages all script behavior
-- **Intelligent Validation**: Automatic compatibility checking and error prevention
+- **🛡️ Enhanced Validation**: Smart combination validation and error prevention
+- **🧠 Smart Defaults**: Automatic ESP-IDF version selection based on app and build type
 - **Smart Fallbacks**: Graceful degradation when configuration is incomplete
 - **Cross-Platform**: Consistent behavior across Linux and macOS
 - **Environment Integration**: Environment variable overrides and customization
 
 ### **Key Capabilities**
 - YAML configuration parsing with `yq` and fallback methods
+- **🆕 Smart combination validation** - Prevents invalid app + build type + IDF version combinations
+- **🆕 Automatic ESP-IDF version selection** - Chooses the right version when not specified
 - Application and build type validation
 - ESP-IDF version compatibility checking
 - Environment variable override support
@@ -56,10 +59,156 @@ Definitions      Validation       Fallbacks         Execution
 
 ### **Design Principles**
 - **Single Source of Truth**: All configuration in one YAML file
-- **Fail-Fast Validation**: Configuration errors caught early with clear messages
-- **Intelligent Defaults**: Sensible fallbacks when configuration is incomplete
+- **🛡️ Fail-Fast Validation**: Configuration errors caught early with clear messages
+- **🧠 Intelligent Defaults**: Sensible fallbacks when configuration is incomplete
 - **Cross-Platform Consistency**: Uniform behavior across operating systems
 - **Performance Optimization**: Efficient parsing and caching mechanisms
+
+---
+
+## 🛡️ **Enhanced Validation System**
+
+The configuration system now includes comprehensive validation to prevent invalid build combinations and provide clear guidance to users.
+
+### **Validation Features**
+
+- **🔍 Combination Validation** - Validates app + build type + IDF version combinations
+- **🚫 Invalid Build Prevention** - Blocks builds with unsupported combinations
+- **💡 Smart Error Messages** - Clear guidance on what combinations are allowed
+- **🧠 Smart Defaults** - Automatic ESP-IDF version selection when not specified
+
+### **Validation Functions**
+
+The configuration system provides several new validation functions:
+
+#### **Combination Validation**
+```bash
+# Check if a build combination is valid
+is_valid_combination() {
+    local app_type="$1"
+    local build_type="$2"
+    local idf_version="$3"
+    
+    # Validate app type exists
+    if ! is_valid_app_type "$app_type"; then return 1; fi
+    
+    # Validate build type is supported
+    if ! is_valid_build_type "$build_type"; then return 1; fi
+    
+    # Check if app supports this IDF version
+    local app_idf_versions_array=$(get_app_idf_versions_array "$app_type")
+    if ! echo "$app_idf_versions_array" | grep -q "$idf_version"; then return 1; fi
+    
+    # Check if app supports this build type for this IDF version
+    local app_build_types=$(get_app_build_types "$app_type")
+    local clean_build_types=$(echo "$app_build_types" | sed 's/\[//g' | sed 's/\]//g' | sed 's/"//g' | tr ',' ' ')
+    
+    if [[ "$clean_build_types" == *"$build_type"* ]]; then return 0; fi
+    
+    return 1
+}
+```
+
+#### **Smart Default Selection**
+```bash
+# Smart IDF version selection with build type matching
+get_idf_version_smart() {
+    local app_type="$1"
+    local build_type="$2"
+    
+    # Check for app-specific override first
+    if check_yq; then
+        local app_idf_versions=$(run_yq ".apps.${app_type}.idf_versions" -r 2>/dev/null)
+        if [ "$app_idf_versions" != "null" ] && [ -n "$app_idf_versions" ]; then
+            local app_build_types=$(run_yq ".apps.${app_type}.build_types" -r 2>/dev/null)
+            if [ "$app_build_types" != "null" ] && [ -n "$app_build_types" ]; then
+                if [[ "$app_build_types" == *"["* ]]; then
+                    local version_index=0
+                    while IFS= read -r version; do
+                        local build_types_for_version=$(echo "$app_build_types" | jq -r ".[$version_index]" 2>/dev/null)
+                        if [[ "$build_types_for_version" == *"$build_type"* ]]; then
+                            echo "$version"
+                            return 0
+                        fi
+                        ((version_index++))
+                    done < <(echo "$app_idf_versions" | tr ',' '\n')
+                else
+                    echo "$app_idf_versions" | sed 's/\[//g' | sed 's/\]//g' | sed 's/"//g' | tr ',' '\n' | head -n1
+                    return 0
+                fi
+            else
+                echo "$app_idf_versions" | sed 's/\[//g' | sed 's/\]//g' | sed 's/"//g' | tr ',' '\n' | head -n1
+                return 0
+            fi
+        fi
+    fi
+    
+    # Fallback to global defaults
+    if check_yq; then
+        local global_idf_versions=$(run_yq '.metadata.idf_versions' -r)
+        local global_build_types=$(run_yq '.metadata.build_types' -r)
+        if [ "$global_idf_versions" != "null" ] && [ -n "$global_idf_versions" ]; then
+            local version_index=0
+            while IFS= read -r version; do
+                local build_types_for_version=$(echo "$global_build_types" | jq -r ".[$version_index]" 2>/dev/null)
+                if [[ "$build_types_for_version" == *"$build_type"* ]]; then
+                    echo "$version"
+                    return 0
+                fi
+                ((version_index++))
+            done < <(echo "$global_idf_versions" | tr ',' '\n')
+        fi
+    fi
+    
+    echo "release/v5.5"
+}
+```
+
+### **Validation Flow**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           CONFIGURATION LOADING                            │
+│  app_config.yml → config_loader.sh → Validation Functions                 │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        BASIC VALIDATION FIRST                              │
+│  • Validate app type exists                                              │
+│  • Validate build type is supported                                      │
+│  • Fail fast if basic validation fails                                   │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        SMART DEFAULT SELECTION                             │
+│  • Only if basic validation passes                                       │
+│  • Check app-specific IDF versions                                       │
+│  • Find first version supporting requested build type                     │
+│  • Fallback to global defaults if needed                                 │
+│  • Result: release/v5.5                                                  │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        FINAL COMBINATION VALIDATION                        │
+│  • Single comprehensive check (no redundant individual validations)       │
+│  • Functions remain standalone-safe for independent sourcing              │
+│  • Check combination constraints                                         │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           VALIDATION RESULT                                │
+│  ✅ VALID: gpio_test + Release + release/v5.5                            │
+│  → Proceed with build                                                    │
+│                                                                             │
+│  ❌ INVALID: gpio_test + Release + release/v5.4                          │
+│  → Show error with valid combinations                                     │
+│  → Provide helpful next steps                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ## ⚙️ **Configuration File Structure**
 

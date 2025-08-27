@@ -1,327 +1,628 @@
-# GitHub Actions Workflows
+# 🔄 GitHub Actions CI/CD - HardFOC Internal Interface Wrapper
 
-This directory contains GitHub Actions workflows for continuous integration and deployment of the ESP32 HardFOC Interface Wrapper project.
+<div align="center">
 
-## 📁 Directory Structure
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue?style=for-the-badge&logo=github)
+![ESP32](https://img.shields.io/badge/ESP32-Automated%20Builds-green?style=for-the-badge&logo=espressif)
+![ESP-IDF](https://img.shields.io/badge/ESP--IDF-Auto%20Management-orange?style=for-the-badge&logo=espressif)
+
+**🎯 Professional CI/CD Pipeline with Automated ESP-IDF Management for HardFOC ESP32 Development**
+
+*Enterprise-grade continuous integration and deployment with intelligent build matrix generation, automated ESP-IDF setup, and comprehensive artifact management*
+
+</div>
+
+---
+
+## 📚 **Table of Contents**
+
+- [🎯 **Overview**](#-overview)
+- [🏗️ **CI/CD Architecture**](#️-cicd-architecture)
+- [📊 **Workflow Structure**](#-workflow-structure)
+- [🚀 **ESP-IDF Management**](#-esp-idf-management)
+- [🔧 **Build Process**](#-build-process)
+- [📦 **Artifact Management**](#-artifact-management)
+- [⚙️ **Configuration**](#️-configuration)
+- [🔄 **Matrix Generation**](#️-matrix-generation)
+- [🔍 **Monitoring and Debugging**](#️-monitoring-and-debugging)
+- [🤝 **Contributing**](#-contributing)
+
+---
+
+## 🎯 **Overview**
+
+The GitHub Actions CI/CD pipeline provides comprehensive automation for HardFOC ESP32 development, featuring intelligent build matrix generation, automated ESP-IDF management, and professional-grade artifact handling.
+
+### 🏆 **Key Features**
+
+- **🔧 Automated ESP-IDF Management** - Auto-detection, installation, and environment setup
+- **📊 Dynamic Build Matrix Generation** - CI matrix generation from centralized configuration
+- **🔄 Intelligent Caching** - Multi-layer caching for faster builds
+- **📦 Complete Artifact Management** - All build outputs properly organized and uploaded
+- **🌐 Cross-Platform Support** - Linux and Windows compatibility
+- **🔍 Comprehensive Testing** - Build, size analysis, and static analysis
+- **🛡️ Enhanced Validation** - Smart combination validation and error prevention in CI
+- **🧠 Smart Defaults** - Automatic ESP-IDF version selection for CI builds
+
+---
+
+## 🏗️ **CI/CD Architecture**
+
+### **Pipeline Overview**
 
 ```
-.github/workflows/
-├── README.md                           # This file - workflows overview
-├── esp32-component-ci.yml             # Main ESP32 CI workflow
-├── security-audit.yml                 # Security vulnerability scanning workflow
-├── secrets-management-guide.yml       # Secure secrets handling workflow
-├── docs.yml                           # Documentation build workflow
-├── scripts/                           # CI-specific scripts
-│   ├── README.md                      # Scripts documentation
-│   ├── setup_build_directory.sh       # Build directory setup script
-│   ├── prepare_build_directory.sh     # Build directory preparation script
-│   └── generate_matrix.py             # Dynamic CI matrix generator
-└── docs/                              # Workflow documentation
-    └── CLEAN_PRINCIPLES_REFACTOR.md   # Refactoring documentation
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           🚀 TRIGGER LAYER                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Push to main      ──┐                                                      │
+│  Pull Request        │                                                      │
+│  Manual Dispatch   ──┘                                                      │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           🔧 SETUP LAYER                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Setup Environment  ──┐                                                     │
+│  Install Tools        │                                                     │
+│  Cache Dependencies ──┘                                                     │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           📊 MATRIX LAYER                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Generate Matrix    ──┐                                                     │
+│  Parse Configuration  │                                                     │
+│  Create Build Jobs  ──┘                                                     │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           🏗️ BUILD LAYER                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Build Applications ──┐                                                     │
+│  Generate Artifacts   │                                                     │
+│  Export Paths       ──┘                                                     │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           📦 OUTPUT LAYER                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Upload Artifacts    ──┐                                                    │
+│  Static Analysis       │                                                    │
+│  Workflow Validation ──┘                                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Data Flow:
+Trigger → Setup → Matrix → Build → Output
 ```
 
-## 🚀 Available Workflows
+### **Workflow Components**
 
-### **ESP32 Component CI** (`esp32-component-ci.yml`)
-**Purpose**: Continuous integration for ESP32 components and applications
+1. **Setup Environment** - Install development tools and ESP-IDF
+2. **Generate Matrix** - Create build matrix from `app_config.yml`
+3. **Build Applications** - Build all applications with different configurations
+4. **Static Analysis** - Code quality and security analysis
+5. **Workflow Validation** - YAML and action validation
 
-**Features**:
-- **Dynamic Matrix Generation**: Uses `generate_matrix.py` to create build combinations
-- **Multi-IDF Support**: Builds against multiple ESP-IDF versions
-- **Comprehensive Testing**: Builds all enabled applications with multiple build types
-- **Artifact Management**: Generates and uploads build outputs, size reports, and ccache statistics
-- **Smart Caching**: Uses ccache for faster incremental builds
+---
 
-**Matrix Generation**:
+## 📊 **Workflow Structure**
+
+### **Main Workflow: `esp32-component-ci.yml`**
+
+#### **Workflow Triggers**
 ```yaml
-strategy:
-  matrix:
-    include: ${{ fromJSON(steps.matrix.outputs.matrix) }}
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      clean_build:
+        description: 'Force clean build (ignore all caches)'
+        required: false
+        default: false
+        type: boolean
 ```
 
-**Matrix Source**:
+#### **Job Structure**
 ```yaml
-- name: Generate Matrix
-  id: matrix
-  run: |
-    python3 .github/workflows/scripts/generate_matrix.py
+jobs:
+  setup-environment:     # Setup development tools
+  generate-matrix:       # Generate build matrix from config
+  build:                 # Build all applications
+  static-analysis:       # Code quality analysis
+  workflow-lint:         # Workflow validation
 ```
 
-### **Security Audit** (`security-audit.yml`)
-**Purpose**: Automated security vulnerability scanning and analysis
-
-**Features**:
-- **CodeQL Analysis**: Advanced semantic code analysis for security vulnerabilities
-- **Dependency Scanning**: Automated scanning of dependencies for known vulnerabilities
-- **SAST (Static Application Security Testing)**: Static code analysis for security issues
-- **Security Reporting**: Comprehensive security reports and alerts
-- **Automated Remediation**: Suggestions for fixing identified vulnerabilities
-
-**Triggers**: Push to main, PRs, scheduled runs
-
-### **Secrets Management Guide** (`secrets-management-guide.yml`)
-**Purpose**: Demonstrates secure secrets handling and management practices
-
-**Features**:
-- **Environment-Specific Secrets**: Different secrets for different environments
-- **Secrets Rotation**: Automated secrets rotation strategies
-- **Secure Storage**: Best practices for storing and accessing secrets
-- **Access Control**: Role-based access to sensitive information
-- **Audit Logging**: Comprehensive logging of secrets access
-
-**Triggers**: Manual dispatch, scheduled runs
-
-### **Documentation Build** (`docs.yml`)
-**Purpose**: Automated documentation building and deployment
-
-**Features**:
-- **Documentation Generation**: Builds project documentation from source
-- **Format Validation**: Ensures documentation meets quality standards
-- **Deployment**: Automatically deploys updated documentation
-- **Link Checking**: Validates internal and external links
-- **Version Control**: Tracks documentation changes and versions
-
-**Triggers**: Documentation changes, manual dispatch
-
-## 🔧 Scripts
-
-### **Matrix Generation** (`scripts/generate_matrix.py`)
-Dynamic CI matrix generator that creates build combinations based on `examples/esp32/app_config.yml` configuration.
-
-**Key Features**:
-- **Hierarchical Configuration**: Global defaults with per-app overrides
-- **Flexible Build Types**: Support for flat and nested build type arrays
-- **Multiple IDF Versions**: Per-app ESP-IDF version specification
-- **Configuration Source Tracking**: Identifies settings source (global vs app-specific)
-
-**Usage**:
-```bash
-# Generate matrix for GitHub Actions
-python3 .github/workflows/scripts/generate_matrix.py
-
-# Pretty-printed output for debugging
-python3 .github/workflows/scripts/generate_matrix.py --pretty
-
-# Hierarchical configuration analysis
-python3 .github/workflows/scripts/generate_matrix.py --hierarchical-info
-```
-
-**For detailed documentation, see**: [`scripts/README.md`](scripts/README.md)
-
-### **Build Directory Setup** (`scripts/setup_build_directory.sh`)
-Comprehensive build environment setup script that:
-- Creates ESP-IDF project structure
-- Copies source files and components
-- Configures build with ccache
-- Generates size reports and ccache statistics
-- Intelligently reads `app_config.yml` for app-specific configuration
-- Validates ESP-IDF version and build type compatibility
-
-**Usage**:
-```bash
-./.github/workflows/scripts/setup_build_directory.sh \
-  -p <build_path> \
-  -t <idf_target> \
-  -b <build_type> \
-  -a <app_type> \
-  -v <idf_version>
-```
-
-**Intelligent Configuration**:
-The script now automatically:
-1. **Reads `app_config.yml`** to understand app-specific settings
-2. **Validates ESP-IDF version** compatibility with the app
-3. **Validates build type** compatibility with the app
-4. **Provides detailed feedback** about app configuration
-5. **Fails gracefully** if configuration is incompatible
-
-### **Build Directory Preparation** (`scripts/prepare_build_directory.sh`)
-Simplified script that only prepares the build directory structure and copies files.
-
-**Usage**:
-```bash
-./.github/workflows/scripts/prepare_build_directory.sh \
-  -p <build_path> \
-  -t <idf_target> \
-  -b <build_type> \
-  -a <app_type>
-```
-
-## 📋 Configuration
-
-### **App Configuration** (`examples/esp32/app_config.yml`)
-Central configuration file that defines:
-- **Application metadata**: Names, descriptions, categories
-- **Build configurations**: Build types, optimization levels
-- **CI settings**: Timeouts, exclusions, special handling
-- **Global defaults**: Default build types and IDF versions
-- **Per-app overrides**: App-specific IDF versions and build types
-
-**Configuration Patterns**:
+#### **Concurrency Control**
 ```yaml
-# Global defaults
-metadata:
-  default_build_types: [["Debug", "Release"], ["Debug"]]
-  idf_versions: ["release/v5.5", "release/v5.4"]
-
-# App with overrides
-apps:
-  my_app:
-    idf_versions: ["release/v5.5"]  # Override global
-    build_types: ["Debug", "Release"]  # Override global
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 ```
 
-## 🔄 Workflow Execution
+### **Environment Variables**
 
-### **Workflow Triggers**
-
-| Workflow | Triggers | Purpose |
-|----------|----------|---------|
-| **ESP32 Component CI** | Push to main, PRs, manual dispatch | Build and test ESP32 applications |
-| **Security Audit** | Push to main, PRs, scheduled runs | Security vulnerability scanning |
-| **Secrets Management** | Manual dispatch, scheduled runs | Secure secrets handling practices |
-| **Documentation Build** | Documentation changes, manual dispatch | Build and deploy documentation |
-
-### **Build Job**
-1. **Matrix Generation**: Creates build combinations dynamically
-2. **Environment Setup**: Sources ESP-IDF environment
-3. **Build Directory Setup**: Prepares project structure
-4. **Build Execution**: Compiles with specified parameters
-5. **Artifact Generation**: Creates size reports and ccache stats
-6. **Artifact Upload**: Uploads build outputs and reports
-
-### **Matrix Structure**
-Each matrix entry contains:
-- `idf_version`: ESP-IDF version for cloning
-- `idf_version_docker`: ESP-IDF version for artifacts
-- `build_type`: Build type (Debug, Release, etc.)
-- `app_name`: Application name
-- `config_source`: Configuration source (app or global)
-
-## 📊 Monitoring and Debugging
-
-### **Matrix Analysis**
-```bash
-# Check total build count
-python3 .github/workflows/scripts/generate_matrix.py --pretty | jq '.include | length'
-
-# Analyze specific app builds
-python3 .github/workflows/scripts/generate_matrix.py --pretty | jq '.include[] | select(.app_name == "app_name")'
-
-# Hierarchical configuration analysis
-python3 .github/workflows/scripts/generate_matrix.py --hierarchical-info
-```
-
-### **Build Artifacts**
-- **Binary files**: `.bin`, `.elf`, `.map`
-- **Size reports**: Component and overall size analysis
-- **Ccache statistics**: Build cache performance metrics
-- **Build logs**: Detailed compilation output
-
-## 🎯 Best Practices
-
-### **Matrix Optimization**
-1. **Limit IDF versions** to those actually needed
-2. **Use Debug + Release** as standard build types
-3. **Consider CI timeouts** when adding builds
-4. **Test configurations** before committing to CI
-
-### **Configuration Management**
-1. **Use global defaults** for common settings
-2. **Use app-specific overrides** for special requirements
-3. **Document complex configurations** with clear comments
-4. **Version control** all configuration changes
-
-### **Performance**
-1. **Enable ccache** for faster incremental builds
-2. **Monitor build times** and adjust as needed
-3. **Use parallel builds** when possible
-4. **Optimize artifact uploads** for large files
-
-## 🔗 Related Documentation
-
-- [Scripts Documentation](scripts/README.md) - Detailed script usage and configuration
-- [ESP32 Examples](../../examples/esp32/README.md) - Application examples and testing
-- [Clean Principles Refactor](docs/CLEAN_PRINCIPLES_REFACTOR.md) - Architecture refactoring details
-- [App Configuration](../../examples/esp32/app_config.yml) - Application configuration file
-
-## 🚨 Troubleshooting
-
-### **Common Issues**
-
-**1. Matrix Generation Fails**
-- Verify `app_config.yml` syntax
-- Check file paths and permissions
-- Run with `--hierarchical-info` for analysis
-
-**2. Build Failures**
-- Check ESP-IDF version compatibility
-- Verify component dependencies
-- Review build logs for specific errors
-
-**3. Security Scan Failures**
-- Check CodeQL database setup
-- Verify dependency scanning configuration
-- Review security policy settings
-
-**4. Secrets Management Issues**
-- Verify secrets are properly configured
-- Check environment access permissions
-- Review secrets rotation policies
-
-**5. Documentation Build Failures**
-- Check documentation source format
-- Verify link validation settings
-- Review deployment configuration
-
-**6. Performance Issues**
-- Monitor ccache hit rates
-- Check build timeouts
-- Optimize parallel build configuration
-
-### **Debug Commands**
-```bash
-# Validate configuration
-python3 .github/workflows/scripts/generate_matrix.py --metadata
-
-# Check matrix structure
-python3 .github/workflows/scripts/generate_matrix.py --pretty
-
-# Analyze configuration hierarchy
-python3 .github/workflows/scripts/generate_matrix.py --hierarchical-info
+```yaml
+env:
+  BUILD_PATH: ci_build_path
+  IDF_CCACHE_ENABLE: "1"  # Enables ccache inside ESP-IDF
+  ESP32_PROJECT_PATH: examples/esp32  # Centralized ESP32 project location
 ```
 
 ---
 
-*This workflow system follows clean architecture principles by separating CI concerns from project logic while providing comprehensive build optimization and reporting capabilities.*
+## 🚀 **ESP-IDF Management**
 
-## 🔗 Workflow Dependencies and Relationships
+### **Automated ESP-IDF Setup**
 
-### **Primary CI Pipeline**
-The **ESP32 Component CI** workflow is the main CI pipeline that:
-- Builds and tests all ESP32 applications
-- Generates build artifacts and reports
-- Provides the foundation for quality assurance
+The CI pipeline automatically manages ESP-IDF versions without manual intervention:
 
-### **Security and Compliance**
-The **Security Audit** workflow complements the CI pipeline by:
-- Scanning code for security vulnerabilities
-- Checking dependencies for known issues
-- Ensuring security compliance standards
+#### **Setup Process**
+```yaml
+- name: Setup development environment
+  run: |
+    echo "Setting up development environment..."
+    chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+    ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+```
 
-### **Infrastructure Management**
-The **Secrets Management** workflow provides:
-- Secure handling of sensitive information
-- Best practices for CI/CD security
-- Audit trails for secrets access
+#### **ESP-IDF Installation**
+```bash
+# The setup_ci.sh script automatically:
+1. Detects system requirements
+2. Installs development tools
+3. Downloads required ESP-IDF version
+4. Installs ESP-IDF tools and dependencies
+5. Configures build environment
+6. Exports necessary environment variables
+```
 
-### **Documentation Quality**
-The **Documentation Build** workflow ensures:
-- Documentation stays current with code changes
-- Quality standards are maintained
-- Links and references remain valid
+#### **Supported ESP-IDF Versions**
+- **v4.4** - Legacy support for older projects
+- **v5.0** - Stable release with modern features
+- **v5.1** - Enhanced performance and security
+- **v5.2** - Improved toolchain and debugging
+- **v5.3** - Latest stable with full ESP32-C6 support
+- **v5.4** - Performance optimizations
+- **v5.5** - Current latest release (recommended)
 
-### **Integration Points**
-- **ESP32 CI** → **Security Audit**: Code changes trigger security scans
-- **ESP32 CI** → **Documentation**: Build artifacts may update documentation
-- **All Workflows** → **Secrets Management**: Secure access to required credentials
+### **Environment Configuration**
+
+```yaml
+- name: ESP-IDF Build with caching
+  uses: espressif/esp-idf-ci-action@v1
+  with:
+    esp_idf_version: ${{ matrix.idf_version_docker }}
+    target: ${{ matrix.target }}
+    path: .
+    extra_docker_args: >-
+      -v $HOME/.ccache:/root/.ccache
+      -e CCACHE_DIR=/root/.ccache
+      -e IDF_CCACHE_ENABLE=1
+    command: |
+      # Set environment variables for the build
+      export BUILD_PATH="${{ env.BUILD_PATH }}"
+      export ESP32_PROJECT_PATH="${{ env.ESP32_PROJECT_PATH }}"
+      export IDF_TARGET="${{ matrix.target }}"
+      export BUILD_TYPE="${{ matrix.build_type }}"
+      export APP_TYPE="${{ matrix.app_name }}"
+      export IDF_VERSION="${{ matrix.idf_version }}"
+      
+      # Source the CI setup script
+      source ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+      
+      # Build using standard build_app.sh for consistency
+      ./${{ env.ESP32_PROJECT_PATH }}/scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
+```
+
+---
+
+## 🔧 **Build Process**
+
+### **Build Job Configuration**
+
+#### **Matrix Strategy**
+```yaml
+strategy:
+  fail-fast: false
+  matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
+```
+
+#### **Build Steps**
+```yaml
+- name: ESP-IDF Build with caching
+  id: build
+  uses: espressif/esp-idf-ci-action@v1
+  with:
+    esp_idf_version: ${{ matrix.idf_version_docker }}
+    target: ${{ matrix.target }}
+    path: .
+    command: |
+      # Build the application using the same tool as local development
+      ./${{ env.ESP32_PROJECT_PATH }}/scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
+      
+      # Get the build directory that build_app.sh exported
+      if [ -n "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
+        echo "Build completed. Build directory from build_app.sh: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+        
+        # Verify build artifacts exist
+        if [ -d "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
+          echo "Build artifacts found in: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+          ls -la "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY/"
+          
+          # Set output for artifact upload step to use
+          echo "build_dir=$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" >> $GITHUB_OUTPUT
+        else
+          echo "ERROR: Build directory not found: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+          exit 1
+        fi
+      else
+        echo "ERROR: ESP32_BUILD_APP_MOST_RECENT_DIRECTORY not set by build_app.sh"
+        exit 1
+      fi
+```
+
+### **Build Output Capture**
+
+The build process captures the build directory path for artifact upload:
+
+```bash
+# build_app.sh exports the build directory
+export ESP32_BUILD_APP_MOST_RECENT_DIRECTORY="$BUILD_DIR"
+
+# CI captures this for artifact upload
+echo "build_dir=$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" >> $GITHUB_OUTPUT
+```
+
+### **Build Artifacts**
+
+Each build produces comprehensive artifacts:
+
+- **Main Binary**: `{app_name}.bin` - Flashable firmware
+- **ELF File**: `{app_name}.elf` - Debugging and analysis
+- **Map File**: `{app_name}.map` - Memory layout and symbol information
+- **Bootloader**: `bootloader/bootloader.bin` - ESP32 bootloader
+- **Partition Table**: `partition_table/partition-table.bin` - Flash layout
+- **Build Configuration**: `sdkconfig` - ESP-IDF configuration
+- **Compile Commands**: `compile_commands.json` - IDE integration
+
+---
+
+## 📦 **Artifact Management**
+
+### **Artifact Upload**
+
+```yaml
+- name: Upload artifacts
+  uses: actions/upload-artifact@v4
+  if: always()
+  with:
+    name: fw-${{ matrix.app_name }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
+    retention-days: 7
+    path: ${{ steps.build.outputs.build_dir }}
+```
+
+### **Artifact Naming Convention**
+
+Artifacts are named using a structured format:
+
+```
+fw-{app_name}-{idf_version_docker}-{build_type}
+```
+
+**Examples:**
+- `fw-gpio_test-release-v5.5-Release`
+- `fw-adc_test-release-v5.4-Debug`
+- `fw-wifi_test-release-v5.3-Release`
+
+### **Artifact Retention**
+
+- **Retention Period**: 7 days
+- **Storage**: GitHub Actions artifact storage
+- **Access**: Available for download and analysis
+- **Cleanup**: Automatic cleanup after retention period
+
+---
+
+## ⚙️ **Configuration**
+
+### **Centralized Configuration**
+
+The CI pipeline reads configuration from `examples/esp32/app_config.yml`:
+
+```yaml
+metadata:
+  idf_versions: ["release/v5.5", "release/v5.4", "release/v5.3"]
+  build_types: [["Debug", "Release"], ["Debug", "Release"], ["Debug"]]
+  target: "esp32c6"
+  build_directory_pattern: "build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}"
+
+apps:
+  gpio_test:
+    ci_enabled: true
+    description: "GPIO peripheral comprehensive testing"
+    idf_versions: ["release/v5.5"]
+    build_types: [["Debug", "Release"]]
+    
+  adc_test:
+    ci_enabled: true
+    description: "ADC peripheral testing"
+    # Uses global configuration
+    
+  wifi_test:
+    ci_enabled: false  # Exclude from CI
+    description: "WiFi functionality testing"
+    idf_versions: ["release/v5.4"]
+    build_types: [["Release"]]
+```
+
+### **CI Configuration**
+
+```yaml
+ci_config:
+  exclude_combinations:
+    - app_name: "wifi_test"
+      idf_version: "release/v5.3"
+      build_type: "Release"
+    - app_name: "bluetooth_test"
+      idf_version: "release/v5.4"
+      build_type: "Debug"
+```
+
+---
+
+## 🔄 **Matrix Generation**
+
+### **Matrix Generation Process**
+
+The CI pipeline automatically generates build matrices from configuration:
+
+#### **Generation Script**
+```yaml
+- name: Generate matrix
+  id: generate-matrix
+  run: |
+    MATRIX=$(python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py)
+    echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
+    echo "Generated matrix:"
+    python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --format json | jq .
+```
+
+#### **Generated Matrix Example**
+```json
+{
+  "include": [
+    {
+      "idf_version": "release/v5.5",
+      "idf_version_docker": "release-v5.5",
+      "build_type": "Debug",
+      "app_name": "gpio_test",
+      "target": "esp32c6",
+      "config_source": "app"
+    },
+    {
+      "idf_version": "release/v5.5",
+      "idf_version_docker": "release-v5.5",
+      "build_type": "Release",
+      "app_name": "gpio_test",
+      "target": "esp32c6",
+      "config_source": "app"
+    }
+  ]
+}
+```
+
+#### **Matrix Features**
+- **Dynamic Generation** - Automatically generated from configuration
+- **Hierarchical Overrides** - Per-app configuration overrides global settings
+- **CI Control** - Enable/disable applications in CI builds
+- **Exclusion Rules** - Exclude specific combinations from CI
+- **Flexible Mapping** - Different build types per IDF version
+
+### **Matrix Outputs**
+
+The matrix generation provides multiple output formats and features:
+
+```bash
+# Full matrix (default JSON output)
+python3 scripts/generate_matrix.py
+
+# YAML format output
+python3 scripts/generate_matrix.py --format yaml
+
+# Filter for specific app
+python3 scripts/generate_matrix.py --filter gpio_test
+
+# Validate configuration
+python3 scripts/generate_matrix.py --validate
+
+# Verbose output with validation
+python3 scripts/generate_matrix.py --verbose --validate
+
+# Output to file
+python3 scripts/generate_matrix.py --output matrix.json
+
+# Complex combination
+python3 scripts/generate_matrix.py --filter wifi_test --validate --verbose --format yaml --output wifi_matrix.yaml
+```
+
+**Current Features:**
+- **Configuration Validation**: Validates `app_config.yml` structure and content
+- **Flexible Output**: JSON (GitHub Actions) and YAML formats
+- **App Filtering**: Filter matrix for specific applications
+- **Verbose Processing**: Detailed processing information and statistics
+- **Smart Path Detection**: Works from any directory
+- **CI Integration**: Ready for GitHub Actions, GitLab CI, and Jenkins
+
+---
+
+## 🔍 **Monitoring and Debugging**
+
+### **Build Monitoring**
+
+#### **Real-time Logs**
+```yaml
+- name: ESP-IDF Build with caching
+  id: build
+  uses: espressif/esp-idf-ci-action@v1
+  # Build logs are automatically displayed in real-time
+```
+
+#### **Build Verification**
+```bash
+# Verify build artifacts exist
+if [ -d "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
+  echo "Build artifacts found in: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+  ls -la "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY/"
+else
+  echo "ERROR: Build directory not found: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+  exit 1
+fi
+```
+
+### **Error Handling**
+
+#### **Comprehensive Error Checking**
+```bash
+# Check build directory export
+if [ -n "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
+  echo "Build completed successfully"
+else
+  echo "ERROR: ESP32_BUILD_APP_MOST_RECENT_DIRECTORY not set by build_app.sh"
+  echo "Available directories:"
+  ls -la build_*/ || echo "No build directories found"
+  exit 1
+fi
+```
+
+#### **Debug Information**
+```bash
+# Display available build directories
+ls -la build_*/ || echo "No build directories found"
+
+# Show environment variables
+echo "BUILD_PATH: $BUILD_PATH"
+echo "ESP32_PROJECT_PATH: $ESP32_PROJECT_PATH"
+echo "IDF_TARGET: $IDF_TARGET"
+echo "BUILD_TYPE: $BUILD_TYPE"
+echo "APP_TYPE: $APP_TYPE"
+echo "IDF_VERSION: $IDF_VERSION"
+```
+
+### **Cache Monitoring**
+
+#### **Cache Status**
+```yaml
+- name: Log cache results
+  run: |
+    if [ "${{ inputs.clean_build }}" = "true" ]; then
+      echo "🧹 Clean build requested - all caches skipped"
+    else
+      echo "ESP-IDF cache hit - ${{ steps.esp-idf-cache.outputs.cache-hit }}"
+      echo "Python deps cache hit - ${{ steps.python-cache.outputs.cache-hit }}"
+      echo "ccache cache hit - ${{ steps.ccache-cache.outputs.cache-hit }}"
+    fi
+```
+
+#### **Cache Configuration**
+```yaml
+- name: Cache ESP-IDF and tools
+  id: esp-idf-cache
+  uses: actions/cache@v4
+  if: ${{ !inputs.clean_build }}
+  with:
+    path: |
+      ~/.espressif
+      ~/esp
+    key: >-
+      esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
+      ${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh') }}
+    restore-keys: |
+      esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
+      esp-idf-${{ matrix.idf_version_docker }}-
+      esp-idf-
+```
+
+---
+
+## 🤝 **Contributing**
+
+### **Adding New Applications**
+
+1. **Update Configuration**
+   ```yaml
+   # app_config.yml
+   apps:
+     new_app_test:
+       ci_enabled: true
+       description: "New application testing"
+       idf_versions: ["release/v5.5"]
+       build_types: [["Debug", "Release"]]
+   ```
+
+2. **Test Locally**
+   ```bash
+   # Test build locally
+   ./examples/esp32/scripts/build_app.sh new_app_test Release
+   ```
+
+3. **Verify CI Integration**
+   - Check matrix generation
+   - Verify build process
+   - Confirm artifact upload
+
+### **Modifying CI Pipeline**
+
+1. **Update Workflow**
+   - Modify `.github/workflows/esp32-component-ci.yml`
+   - Test changes locally
+   - Verify GitHub Actions syntax
+
+2. **Update Configuration**
+   - Modify `examples/esp32/app_config.yml`
+   - Test matrix generation
+   - Verify build compatibility
+
+3. **Test Changes**
+   - Test locally first
+   - Create test branch
+   - Verify CI behavior
+
+### **CI Pipeline Standards**
+
+- **Error Handling** - Comprehensive error checking and reporting
+- **Logging** - Detailed logs for debugging
+- **Caching** - Intelligent caching for performance
+- **Artifacts** - Complete artifact management
+- **Documentation** - Clear usage instructions and examples
+
+---
+
+## 📄 **License**
+
+This project is licensed under the GPL-3.0 License - see the [LICENSE](../../LICENSE) file for details.
+
+---
+
+## 🔗 **Related Documentation**
+
+- [Main Project README](../../README.md) - Project overview and architecture
+- [ESP32 Examples README](../../examples/esp32/README.md) - Examples overview and usage
+- [Scripts Documentation](../../examples/esp32/scripts/README.md) - Build system scripts
+- [ESP-IDF Documentation](https://docs.espressif.com/projects/esp-idf/) - ESP-IDF reference
+
+---
+
+<div align="center">
+
+**🚀 Built with ❤️ for the HardFOC Community**
+
+*Enterprise-grade CI/CD with professional automation and comprehensive testing*
+
+</div>

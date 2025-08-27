@@ -23,9 +23,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IDF_TARGET: esp32c6
-  BUILD_PATH: ci_project
+  BUILD_PATH: ci_build_path
   IDF_CCACHE_ENABLE: "1"  # Enables ccache inside ESP-IDF
+  ESP32_PROJECT_PATH: examples/esp32  # Centralized ESP32 project location
 
 defaults:
   run:
@@ -45,15 +45,15 @@ jobs:
           path: |
             ~/.cache/apt
             /usr/local/bin
-          key: dev-tools-${{ runner.os }}-${{ hashFiles('examples/esp32/scripts/setup_ci.sh') }}
+          key: dev-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') }}
           restore-keys: |
             dev-tools-${{ runner.os }}-
         
       - name: Setup development environment
         run: |
           echo "Setting up development environment..."
-          chmod +x examples/esp32/scripts/setup_ci.sh
-          ./examples/esp32/scripts/setup_ci.sh
+          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
           
       - name: Verify clang-20 installation
         run: |
@@ -89,10 +89,10 @@ jobs:
       - name: Generate matrix
         id: generate-matrix
         run: |
-          MATRIX=$(python3 .github/workflows/scripts/generate_matrix.py)
+          MATRIX=$(python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py)
           echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
           echo "Generated matrix:"
-          python3 .github/workflows/scripts/generate_matrix.py --pretty | jq .
+          python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --format json | jq .
 
   build:
     name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.app_name }}
@@ -130,7 +130,7 @@ jobs:
             ~/esp
           key: >-
             esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
-            ${{ hashFiles('examples/esp32/scripts/setup_common.sh') }}
+            ${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh') }}
           restore-keys: |
             esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             esp-idf-${{ matrix.idf_version_docker }}-
@@ -146,7 +146,7 @@ jobs:
             ~/.local/lib/python3.*/site-packages
           key: >-
             python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
-            ${{ hashFiles('examples/esp32/scripts/setup_common.sh', 'examples/esp32/requirements.txt') }}
+            ${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh', '${{ env.ESP32_PROJECT_PATH }}/requirements.txt') }}
           restore-keys: |
             python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-
             python-deps-${{ matrix.idf_version_docker }}-
@@ -185,23 +185,56 @@ jobs:
           fallback-style: 'LLVM'
 
       - name: ESP-IDF Build with caching
+        id: build
         uses: espressif/esp-idf-ci-action@v1
         with:
           esp_idf_version: ${{ matrix.idf_version_docker }}
-          target: ${{ env.IDF_TARGET }}
+          target: ${{ matrix.target }}
           path: .
           extra_docker_args: >-
             -v $HOME/.ccache:/root/.ccache
             -e CCACHE_DIR=/root/.ccache
             -e IDF_CCACHE_ENABLE=1
           command: |
-            chmod +x .github/workflows/scripts/setup_build_directory.sh &&
-            ./.github/workflows/scripts/setup_build_directory.sh \
-              -p ${{ env.BUILD_PATH }} \
-              -t ${{ env.IDF_TARGET }} \
-              -b ${{ matrix.build_type }} \
-              -a ${{ matrix.app_name }} \
-              -v ${{ matrix.idf_version }}
+            # Set environment variables for the build
+            export BUILD_PATH="${{ env.BUILD_PATH }}"
+            export ESP32_PROJECT_PATH="${{ env.ESP32_PROJECT_PATH }}"
+            export IDF_TARGET="${{ matrix.target }}"
+            export BUILD_TYPE="${{ matrix.build_type }}"
+            export APP_TYPE="${{ matrix.app_name }}"
+            export IDF_VERSION="${{ matrix.idf_version }}"
+            
+            # Source the CI setup script (which sources setup_common.sh internally)
+            source ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+            
+            # Use the standard build_app.sh for consistency with local development
+            echo "Building using build_app.sh for consistency..."
+            cd ${{ env.ESP32_PROJECT_PATH }}
+            
+            # Build the application using the same tool as local development
+            ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
+            
+            # Get the build directory that build_app.sh exported
+            if [ -n "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
+              echo "Build completed. Build directory from build_app.sh: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+              
+              # Verify build artifacts exist
+              if [ -d "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
+                echo "Build artifacts found in: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+                ls -la "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY/"
+                
+                # Set output for artifact upload step to use
+                echo "build_dir=$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" >> $GITHUB_OUTPUT
+              else
+                echo "ERROR: Build directory not found: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
+                exit 1
+              fi
+            else
+              echo "ERROR: ESP32_BUILD_APP_MOST_RECENT_DIRECTORY not set by build_app.sh"
+              echo "Available directories:"
+              ls -la build_*/ || echo "No build directories found"
+              exit 1
+            fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -209,12 +242,7 @@ jobs:
         with:
           name: fw-${{ matrix.app_name }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
           retention-days: 7
-          path: |
-            ${{ env.BUILD_PATH }}/build/*.bin
-            ${{ env.BUILD_PATH }}/build/*.elf
-            ${{ env.BUILD_PATH }}/build/*.map
-            ${{ env.BUILD_PATH }}/build/size.*
-            ${{ env.BUILD_PATH }}/build/ccache_stats.txt
+          path: ${{ steps.build.outputs.build_dir }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)

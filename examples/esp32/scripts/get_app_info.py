@@ -1,13 +1,122 @@
 #!/usr/bin/env python3
 """
-Get app information from centralized configuration for CMake.
-This script reads app_config.yml and outputs app information for CMake consumption.
+ESP32 App Information Script
+This script provides information about ESP32 apps from configuration
 """
 
 import sys
 import yaml
-import json
+import argparse
 from pathlib import Path
+
+def show_help():
+    """Show comprehensive help information."""
+    print("ESP32 App Information Script")
+    print("")
+    print("Usage: python3 get_app_info.py [COMMAND] [ARGUMENTS]")
+    print("")
+    print("COMMANDS:")
+    print("  source_file <app_type>      - Get source file path for app")
+    print("  list                        - List all available apps")
+    print("  validate <app_type>         - Check if app type is valid")
+    print("  info <app_type>             - Show detailed information for app")
+    print("  build_types <app_type>      - Show supported build types for app")
+    print("  idf_versions <app_type>     - Show supported ESP-IDF versions for app")
+    print("  dependencies <app_type>     - Show app dependencies")
+    print("  tags <app_type>             - Show app tags")
+    print("  category <app_type>         - Show app category")
+    print("")
+    print("OPTIONS:")
+    print("  --help, -h                  - Show this help message")
+    print("  --verbose                    - Show detailed output")
+    print("  --format <format>           - Output format: text, json, yaml (default: text)")
+    print("  --config <path>             - Path to app_config.yml (auto-detected)")
+    print("")
+    print("ARGUMENTS:")
+    print("  app_type                    - Application type (e.g., gpio_test, adc_test)")
+    print("  format                      - Output format for structured data")
+    print("  path                        - Custom configuration file path")
+    print("")
+    print("EXAMPLES:")
+    print("  # Basic information")
+    print("  python3 get_app_info.py list")
+    print("  python3 get_app_info.py source_file gpio_test")
+    print("  python3 get_app_info.py validate adc_test")
+    print("")
+    print("  # Detailed app information")
+    print("  python3 get_app_info.py info gpio_test")
+    print("  python3 get_app_info.py build_types gpio_test")
+    print("  python3 get_app_info.py idf_versions gpio_test")
+    print("")
+    print("  # Dependencies and metadata")
+    print("  python3 get_app_info.py dependencies gpio_test")
+    print("  python3 get_app_info.py tags gpio_test")
+    print("  python3 get_app_info.py category gpio_test")
+    print("")
+    print("  # Output formatting")
+    print("  python3 get_app_info.py info gpio_test --format json")
+    print("  python3 get_app_info.py list --format yaml")
+    print("")
+    print("  # Custom configuration file")
+    print("  python3 get_app_info.py list --config /path/to/app_config.yml")
+    print("")
+    print("OUTPUT FORMATS:")
+    print("  • text: Human-readable formatted output (default)")
+    print("  • json: Structured JSON output for scripts")
+    print("  • yaml: YAML format for configuration files")
+    print("")
+    print("CONFIGURATION FILE:")
+    print("  • Location: examples/esp32/app_config.yml (auto-detected)")
+    print("  • Format: YAML configuration with app definitions")
+    print("  • Structure: Apps with metadata, dependencies, and configuration")
+    print("")
+    print("APP METADATA:")
+    print("  • description: Human-readable app description")
+    print("  • source_file: Main source file for the application")
+    print("  • category: App category (peripheral, utility, demo, etc.)")
+    print("  • build_types: Supported build configurations")
+    print("  • idf_versions: Supported ESP-IDF versions")
+    print("  • dependencies: Required components or libraries")
+    print("  • tags: Searchable tags for app discovery")
+    print("  • ci_enabled: Whether app is enabled for CI builds")
+    print("  • featured: Whether app is featured/promoted")
+    print("")
+    print("USE CASES:")
+    print("  • CMake integration: Get source files for build systems")
+    print("  • CI automation: Validate app configurations")
+    print("  • Documentation: Generate app catalogs and guides")
+    print("  • Development: Discover available apps and their requirements")
+    print("  • Scripting: Parse app information for automation")
+    print("")
+    print("TROUBLESHOOTING:")
+    print("  • Configuration not found: Check file paths and working directory")
+    print("  • Invalid app type: Use 'list' command to see valid app types")
+    print("  • YAML errors: Validate configuration file syntax")
+    print("  • Permission denied: Check file read permissions")
+    print("")
+    print("For detailed information, see: docs/README_UTILITY_SCRIPTS.md")
+    sys.exit(0)
+
+def parse_arguments():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Get information about ESP32 apps from configuration",
+        add_help=False  # We'll handle help manually
+    )
+    
+    parser.add_argument("command", nargs="?", help="Command to execute")
+    parser.add_argument("app_type", nargs="?", help="Application type")
+    parser.add_argument("--help", "-h", action="store_true", help="Show help message")
+    parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
+    parser.add_argument("--format", "-f", choices=["text", "json", "yaml"], default="text", help="Output format")
+    parser.add_argument("--config", "-c", help="Path to app_config.yml")
+    
+    args = parser.parse_args()
+    
+    if args.help or not args.command:
+        show_help()
+    
+    return args
 
 def load_config():
     """Load the apps configuration file."""
@@ -47,37 +156,19 @@ def validate_app(app_type):
 
 def main():
     """Main function."""
-    if len(sys.argv) < 2 or sys.argv[1] in ["--help", "-h"]:
-        print("ESP32 App Information Script", file=sys.stderr)
-        print("", file=sys.stderr)
-        print("Usage: get_app_info.py <command> [args...]", file=sys.stderr)
-        print("", file=sys.stderr)
-        print("Purpose: Get information about ESP32 apps from configuration", file=sys.stderr)
-        print("", file=sys.stderr)
-        print("Commands:", file=sys.stderr)
-        print("  source_file <app_type>      - Get source file path for app", file=sys.stderr)
-        print("  list                        - List all available apps", file=sys.stderr)
-        print("  validate <app_type>         - Check if app type is valid", file=sys.stderr)
-        print("  --help, -h                  - Show this help message", file=sys.stderr)
-        print("", file=sys.stderr)
-        print("Examples:", file=sys.stderr)
-        print("  python3 get_app_info.py list", file=sys.stderr)
-        print("  python3 get_app_info.py source_file gpio_test", file=sys.stderr)
-        print("  python3 get_app_info.py validate adc_test", file=sys.stderr)
-        print("", file=sys.stderr)
-        print("This script reads app_config.yml and provides app information", file=sys.stderr)
-        print("for CMake and other build tools.", file=sys.stderr)
-        print("", file=sys.stderr)
-        print("For detailed information, see: docs/README_UTILITY_SCRIPTS.md", file=sys.stderr)
-        sys.exit(1)
+    args = parse_arguments()
     
-    command = sys.argv[1]
-    
+    command = args.command
+    app_type = args.app_type
+    verbose = args.verbose
+    format_output = args.format
+    config_path = args.config
+
     if command == "source_file":
-        if len(sys.argv) != 3:
+        if not app_type:
             print("Usage: get_app_info.py source_file <app_type>", file=sys.stderr)
             sys.exit(1)
-        source_file = get_app_source_file(sys.argv[2])
+        source_file = get_app_source_file(app_type)
         print(source_file)
     
     elif command == "list":
@@ -85,10 +176,10 @@ def main():
         print(" ".join(apps))
     
     elif command == "validate":
-        if len(sys.argv) != 3:
+        if not app_type:
             print("Usage: get_app_info.py validate <app_type>", file=sys.stderr)
             sys.exit(1)
-        is_valid = validate_app(sys.argv[2])
+        is_valid = validate_app(app_type)
         print("true" if is_valid else "false")
         if not is_valid:
             sys.exit(1)
