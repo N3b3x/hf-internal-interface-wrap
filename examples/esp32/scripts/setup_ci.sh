@@ -102,24 +102,44 @@ main() {
         echo "Tools path: $HOME/.espressif"
     else
         echo "ESP-IDF not found in cache, installing..."
-        install_esp_idf
+        
+        # CI: Use IDF_VERSION from Docker action instead of reading global config
+        if [[ -n "$IDF_VERSION" ]]; then
+            echo "CI mode: Installing ESP-IDF version from environment: $IDF_VERSION"
+            install_esp_idf_version "$IDF_VERSION"
+        else
+            echo "Local mode: Installing ESP-IDF from global config"
+            install_esp_idf
+        fi
     fi
     
     # Source ESP-IDF environment for CI builds
     echo "Setting up ESP-IDF environment for CI builds..."
-    if [[ -f "$HOME/.espressif/export.sh" ]]; then
-        source "$HOME/.espressif/export.sh"
-        echo "ESP-IDF environment sourced successfully"
-        
-        # Verify idf.py is available
-        if command_exists idf.py; then
-            echo "idf.py verified: $(idf.py --version | head -1)"
+    if [[ -n "$IDF_VERSION" ]]; then
+        # CI mode: Source specific ESP-IDF version
+        local esp_dir="$HOME/esp"
+        local idf_dir="$esp_dir/esp-idf-${IDF_VERSION//\//_}"
+        if [[ -f "$idf_dir/export.sh" ]]; then
+            source "$idf_dir/export.sh"
+            echo "ESP-IDF environment sourced successfully for version: $IDF_VERSION"
         else
-            echo "ERROR: idf.py not found after sourcing ESP-IDF environment"
+            echo "ERROR: ESP-IDF export.sh not found at $idf_dir/export.sh"
             exit 1
         fi
+    elif [[ -f "$HOME/.espressif/export.sh" ]]; then
+        # Local mode: Source default ESP-IDF environment
+        source "$HOME/.espressif/export.sh"
+        echo "ESP-IDF environment sourced successfully"
     else
         echo "ERROR: ESP-IDF export.sh not found"
+        exit 1
+    fi
+    
+    # Verify idf.py is available
+    if command_exists idf.py; then
+        echo "idf.py verified: $(idf.py --version | head -1)"
+    else
+        echo "ERROR: idf.py not found after sourcing ESP-IDF environment"
         exit 1
     fi
     

@@ -29,7 +29,7 @@ apps:
     description: "GPIO peripheral comprehensive testing"
     source_file: "GpioComprehensiveTest.cpp"
     category: "peripheral"
-    idf_versions: ["release/v5.5"]
+    idf_versions: ["release/v5.5", "release/v5.4"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
     featured: true
@@ -38,7 +38,7 @@ apps:
     description: "ADC peripheral comprehensive testing"
     source_file: "AdcComprehensiveTest.cpp"
     category: "peripheral"
-    idf_versions: ["release/v5.5"]
+    idf_versions: ["release/v5.5", "release/v5.4"]
     build_types: ["Debug", "Release"]
     ci_enabled: true
     featured: true
