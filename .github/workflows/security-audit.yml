@@ -404,7 +404,6 @@ jobs:
             
             # Add ESP-IDF version analysis
             echo "### ESP-IDF Version Security"
-            echo "- Using ESP-IDF version: ${{ steps.get-idf-version.outputs.idf_version }}"
             echo "- Recommendation: Always use the latest stable ESP-IDF version for security patches"
             echo ""
           } > esp-security-report.md

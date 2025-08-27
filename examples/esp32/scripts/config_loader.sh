@@ -229,7 +229,7 @@ get_app_types() {
         run_yq '.apps | keys | .[]' -r | tr '\n' ' '
     else
         # Fallback: extract from apps section (use more specific range)
-        sed -n '/^apps:/,/^build_config:/p' "$CONFIG_FILE" | grep '^  [a-z_]*:$' | sed 's/^  \(.*\):$/\1/' | sort | tr '\n' ' '
+        sed -n '/^apps:/,/^build_config:/p' "$CONFIG_FILE" | grep '^  [a-zA-Z0-9_]*:$' | sed 's/^  \(.*\):$/\1/' | sort | tr '\n' ' '
     fi
 }
 
@@ -251,7 +251,7 @@ get_build_types() {
             fi
         else
             # Fallback: extract from apps section
-            local build_line=$(sed -n "/^  $app_type:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "build_types:")
+            local build_line=$(sed -n "/^  $app_type:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "build_types:")
             if [[ -n "$build_line" ]]; then
                 # Extract all build types from array, handling quotes and commas
                 local app_build_types=$(echo "$build_line" | sed 's/.*build_types: *\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | tr '\n' ' ' | sed 's/^ *//' | sed 's/ *$//')
@@ -425,8 +425,8 @@ get_app_build_types_for_idf_version() {
         return 1
     else
         # Fallback: extract using grep and sed
-        local app_idf_versions=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
-        local app_build_types=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "build_types:")
+        local app_idf_versions=$(sed -n "/^  ${app_type}:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
+        local app_build_types=$(sed -n "/^  ${app_type}:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "build_types:")
         
         if [[ -n "$app_build_types" ]]; then
             # App has specific build types
@@ -523,7 +523,7 @@ get_app_idf_versions() {
         run_yq ".apps.$app_type.idf_versions | .[]" -r 2>/dev/null | tr '\n' ' '
     else
         # Fallback: extract from apps section
-        local idf_line=$(sed -n "/^  $app_type:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
+                    local idf_line=$(sed -n "/^  $app_type:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
         if [[ -n "$idf_line" ]]; then
             # Extract all versions from array, handling quotes and commas
             echo "$idf_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | tr '\n' ' '
@@ -547,7 +547,7 @@ get_app_description() {
         run_yq ".apps.${app_type}.description" -r
     else
         # Fallback: extract description using grep (improved regex)
-        sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "description:" | sed 's/.*description: *["\x27]*\([^"\x27]*\)["\x27]*.*/\1/' | head -1
+        sed -n "/^  ${app_type}:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "description:" | sed 's/.*description: *["\x27]*\([^"\x27]*\)["\x27]*.*/\1/' | head -1
     fi
 }
 
@@ -558,7 +558,7 @@ get_app_source_file() {
         run_yq ".apps.${app_type}.source_file" -r
     else
         # Fallback: extract source_file using grep
-        sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "source_file:" | sed 's/.*source_file: *"\(.*\)".*/\1/'
+        sed -n "/^  ${app_type}:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "source_file:" | sed 's/.*source_file: *"\(.*\)".*/\1/'
     fi
 }
 
@@ -679,7 +679,7 @@ get_target() {
             fi
         else
             # Fallback: extract per-app target using grep
-            local app_target=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "target:" | sed 's/.*target: *"*\([^"]*\)"*.*/\1/' | head -1)
+            local app_target=$(sed -n "/^  ${app_type}:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "target:" | sed 's/.*target: *"*\([^"]*\)"*.*/\1/' | head -1)
             if [[ -n "$app_target" ]]; then
                 echo "$app_target"
                 return 0
@@ -711,7 +711,7 @@ get_idf_version() {
             fi
         else
             # Fallback: extract per-app IDF version using grep
-            local app_idf_versions=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
+            local app_idf_versions=$(sed -n "/^  ${app_type}:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
             if [[ -n "$app_idf_versions" ]]; then
                 # Extract first version from array, handling quotes and commas
                 echo "$app_idf_versions" | sed 's/.*\["*\([^",]*\)"*.*/\1/' | tr -d '[]"' | head -1
@@ -754,7 +754,7 @@ get_idf_version_for_build_type() {
         app_idf_versions=$(run_yq ".apps.${app_type}.idf_versions[0]" -r 2>/dev/null)
     else
         # Fallback: extract per-app IDF version using grep
-        local app_idf_versions_line=$(sed -n "/^  ${app_type}:/,/^  [a-z_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
+        local app_idf_versions_line=$(sed -n "/^  ${app_type}:/,/^  [a-zA-Z0-9_]*:/p" "$CONFIG_FILE" | grep "idf_versions:")
         if [[ -n "$app_idf_versions_line" ]]; then
             app_idf_versions=$(echo "$app_idf_versions_line" | sed 's/.*\[//' | sed 's/\].*//' | sed 's/"//g' | sed 's/,/ /g' | awk '{print $1}')
         fi
