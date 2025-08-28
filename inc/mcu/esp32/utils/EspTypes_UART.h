@@ -15,7 +15,7 @@
 #include "BaseUart.h" // For hf_uart_err_t
 #include "EspTypes_Base.h"
 #include "HardwareTypes.h" // For basic hardware types
-#include "McuSelect.h" // Central MCU platform selection (includes all ESP-IDF)
+#include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 
 //==============================================================================
 // ESP32 UART TYPE MAPPINGS

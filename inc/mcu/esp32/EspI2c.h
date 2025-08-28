@@ -100,7 +100,7 @@
  *
  * // Use device for I2C operations (async mode)
  * uint8_t data[] = {0x10, 0x20, 0x30};
- * hf_i2c_err_t result = device->WriteAsync(data, sizeof(data), 
+ * hf_i2c_err_t result = device->WriteAsync(data, sizeof(data),
  *     [](hf_i2c_err_t err, void* user_data) {
  *         ESP_LOGI("Async write completed: %s", HfI2CErrToString(err).data());
  *     });
@@ -185,7 +185,7 @@ public:
   /**
    * @brief Mark device as deinitialized without ESP-IDF cleanup
    * @return true if successful
-   * 
+   *
    * This method is called by the bus when it handles ESP-IDF cleanup.
    * The device should not attempt to remove itself from the ESP-IDF bus.
    */
@@ -194,7 +194,7 @@ public:
   /**
    * @brief Deinitialize the device (internal cleanup only)
    * @return true if successful
-   * 
+   *
    * This method only handles internal device cleanup.
    * ESP-IDF cleanup is handled by the parent bus.
    */
@@ -251,10 +251,8 @@ public:
    * @warning Only one device per bus can use async mode at a time
    * @note Will wait for timeout_ms if another async operation is in progress
    */
-  hf_i2c_err_t WriteAsync(const hf_u8_t* data, hf_u16_t length,
-                          hf_i2c_async_callback_t callback,
-                          void* user_data = nullptr,
-                          hf_u32_t timeout_ms = 1000) noexcept;
+  hf_i2c_err_t WriteAsync(const hf_u8_t* data, hf_u16_t length, hf_i2c_async_callback_t callback,
+                          void* user_data = nullptr, hf_u32_t timeout_ms = 1000) noexcept;
 
   /**
    * @brief Read data from the I2C device asynchronously.
@@ -269,10 +267,8 @@ public:
    * @warning Only one device per bus can use async mode at a time
    * @note Will wait for timeout_ms if another async operation is in progress
    */
-  hf_i2c_err_t ReadAsync(hf_u8_t* data, hf_u16_t length,
-                         hf_i2c_async_callback_t callback,
-                         void* user_data = nullptr,
-                         hf_u32_t timeout_ms = 1000) noexcept;
+  hf_i2c_err_t ReadAsync(hf_u8_t* data, hf_u16_t length, hf_i2c_async_callback_t callback,
+                         void* user_data = nullptr, hf_u32_t timeout_ms = 1000) noexcept;
 
   /**
    * @brief Write then read data from the I2C device asynchronously.
@@ -289,11 +285,9 @@ public:
    * @warning Only one device per bus can use async mode at a time
    * @note Will wait for timeout_ms if another async operation is in progress
    */
-  hf_i2c_err_t WriteReadAsync(const hf_u8_t* tx_data, hf_u16_t tx_length,
-                              hf_u8_t* rx_data, hf_u16_t rx_length,
-                              hf_i2c_async_callback_t callback,
-                              void* user_data = nullptr,
-                              hf_u32_t timeout_ms = 1000) noexcept;
+  hf_i2c_err_t WriteReadAsync(const hf_u8_t* tx_data, hf_u16_t tx_length, hf_u8_t* rx_data,
+                              hf_u16_t rx_length, hf_i2c_async_callback_t callback,
+                              void* user_data = nullptr, hf_u32_t timeout_ms = 1000) noexcept;
 
   /**
    * @brief Check if async mode is supported on this device.
@@ -375,19 +369,25 @@ public:
    * @brief Get the ESP-IDF device handle for internal operations.
    * @return ESP-IDF device handle
    */
-  i2c_master_dev_handle_t GetDeviceHandle() const noexcept { return handle_; }
+  i2c_master_dev_handle_t GetDeviceHandle() const noexcept {
+    return handle_;
+  }
 
   /**
    * @brief Get current async callback (for static callback bridge).
    * @return Current async callback function
    */
-  hf_i2c_async_callback_t GetCurrentCallback() const noexcept { return current_callback_; }
+  hf_i2c_async_callback_t GetCurrentCallback() const noexcept {
+    return current_callback_;
+  }
 
   /**
    * @brief Get current user data (for static callback bridge).
    * @return Current user data pointer
    */
-  void* GetCurrentUserData() const noexcept { return current_user_data_; }
+  void* GetCurrentUserData() const noexcept {
+    return current_user_data_;
+  }
 
   /**
    * @brief Update error recovery attempt statistics.
@@ -418,12 +418,10 @@ public:
   bool IsSyncMode() const noexcept;
 
 private:
-
-
   //==============================================//
   // ESP-IDF v5.5 ASYNC CALLBACK BRIDGE          //
   //==============================================//
-  
+
   /**
    * @brief Internal C callback bridge for ESP-IDF callbacks.
    * @param i2c_dev ESP-IDF device handle
@@ -433,10 +431,7 @@ private:
    * @note This single callback handles ALL operation types (write/read/write-read)
    */
   static bool InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
-                                   const i2c_master_event_data_t* evt_data,
-                                   void* arg);
-
-
+                                    const i2c_master_event_data_t* evt_data, void* arg);
 
   /**
    * @brief Register temporary async callback for single operation.
@@ -445,9 +440,8 @@ private:
    * @param timeout_ms Timeout to wait for slot availability
    * @return true if successful, false otherwise
    */
-  bool RegisterTemporaryCallback(hf_i2c_async_callback_t callback,
-                                void* user_data,
-                                hf_u32_t timeout_ms) noexcept;
+  bool RegisterTemporaryCallback(hf_i2c_async_callback_t callback, void* user_data,
+                                 hf_u32_t timeout_ms) noexcept;
 
   /**
    * @brief Unregister temporary async callback after operation.
@@ -488,7 +482,8 @@ private:
    * @param operation_type Operation type for logging
    * @return true if validation passes, false otherwise
    */
-  bool ValidateOperation(const void* data, hf_u16_t length, hf_i2c_operation_t operation_type) noexcept;
+  bool ValidateOperation(const void* data, hf_u16_t length,
+                         hf_i2c_operation_t operation_type) noexcept;
 
   /**
    * @brief Common sync operation setup and cleanup.
@@ -514,7 +509,8 @@ private:
    * @param timeout_ms Timeout for slot availability
    * @return true if setup successful, false otherwise
    */
-  bool SetupAsyncOperation(hf_i2c_async_callback_t callback, void* user_data, hf_u32_t timeout_ms) noexcept;
+  bool SetupAsyncOperation(hf_i2c_async_callback_t callback, void* user_data,
+                           hf_u32_t timeout_ms) noexcept;
 
   //==============================================//
   // MEMBER VARIABLES                            //
@@ -527,13 +523,13 @@ private:
   mutable hf_i2c_statistics_t statistics_;   ///< Per-device statistics
   mutable hf_i2c_diagnostics_t diagnostics_; ///< Per-device diagnostics
   mutable RtosMutex mutex_;                  ///< Device mutex for thread safety
-  hf_i2c_mode_t device_mode_;               ///< Device operation mode (inherited from bus)
+  hf_i2c_mode_t device_mode_;                ///< Device operation mode (inherited from bus)
 
   //==============================================//
   // ASYNC OPERATION SUPPORT                     //
   //==============================================//
-  bool async_operation_in_progress_;           ///< Is async operation active
-  bool sync_operation_in_progress_;            ///< Is sync operation active (mutual exclusion)
+  bool async_operation_in_progress_;          ///< Is async operation active
+  bool sync_operation_in_progress_;           ///< Is sync operation active (mutual exclusion)
   hf_i2c_async_callback_t current_callback_;  ///< Current user callback
   void* current_user_data_;                   ///< Current user data
   hf_u64_t async_start_time_;                 ///< Async operation start time
@@ -852,7 +848,6 @@ public:
   bool SwitchMode(hf_i2c_mode_t new_mode, uint8_t queue_depth = 10) noexcept;
 
 private:
-
   //==============================================//
   // PRIVATE METHODS                              //
   //==============================================//
@@ -890,11 +885,11 @@ private:
   bool initialized_;                                   ///< Initialization status
   mutable RtosMutex mutex_;                            ///< Bus mutex for thread safety
   std::vector<std::unique_ptr<EspI2cDevice>> devices_; ///< Device instances
-  hf_i2c_mode_t current_mode_;                        ///< Current operation mode
-  
+  hf_i2c_mode_t current_mode_;                         ///< Current operation mode
+
   // Bus-level statistics and diagnostics
-  mutable hf_i2c_statistics_t statistics_;             ///< Bus-level statistics
-  mutable hf_i2c_diagnostics_t diagnostics_;           ///< Bus-level diagnostics
+  mutable hf_i2c_statistics_t statistics_;   ///< Bus-level statistics
+  mutable hf_i2c_diagnostics_t diagnostics_; ///< Bus-level diagnostics
 };
 
 #endif // ESP_I2C_H_

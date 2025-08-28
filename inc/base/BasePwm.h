@@ -432,7 +432,8 @@ public:
    * @return true if valid, false otherwise
    */
   static constexpr bool IsValidRawDuty(hf_u32_t raw_value, hf_u8_t resolution_bits) noexcept {
-    if (resolution_bits == 0 || resolution_bits > 16) return false;
+    if (resolution_bits == 0 || resolution_bits > 16)
+      return false;
     hf_u32_t max_value = (1U << resolution_bits) - 1;
     return (raw_value <= max_value);
   }
@@ -443,9 +444,12 @@ public:
    * @param actual_freq Actual achieved frequency
    * @return Accuracy percentage (0.0-1.0)
    */
-  static constexpr float CalculateFrequencyAccuracy(hf_u32_t target_freq, hf_u32_t actual_freq) noexcept {
-    if (target_freq == 0) return 0.0f;
-    float diff = static_cast<float>(target_freq > actual_freq ? target_freq - actual_freq : actual_freq - target_freq);
+  static constexpr float CalculateFrequencyAccuracy(hf_u32_t target_freq,
+                                                    hf_u32_t actual_freq) noexcept {
+    if (target_freq == 0)
+      return 0.0f;
+    float diff = static_cast<float>(target_freq > actual_freq ? target_freq - actual_freq
+                                                              : actual_freq - target_freq);
     return 1.0f - (diff / static_cast<float>(target_freq));
   }
 
@@ -455,8 +459,10 @@ public:
    * @return Clamped duty cycle (0.0 - 1.0)
    */
   static constexpr float ClampDutyCycle(float duty_cycle) noexcept {
-    if (duty_cycle < 0.0f) return 0.0f;
-    if (duty_cycle > 1.0f) return 1.0f;
+    if (duty_cycle < 0.0f)
+      return 0.0f;
+    if (duty_cycle > 1.0f)
+      return 1.0f;
     return duty_cycle;
   }
 

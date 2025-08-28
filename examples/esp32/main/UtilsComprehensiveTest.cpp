@@ -327,7 +327,7 @@ bool test_rtos_mutex_recursive_locking() noexcept {
 
   // Test multiple locks from same task (recursive)
   const int lock_depth = 5;
-  
+
   for (int i = 0; i < lock_depth; i++) {
     if (!mutex.lock()) {
       ESP_LOGE(TAG, "Failed to acquire recursive lock %d", i + 1);
@@ -366,27 +366,27 @@ bool test_rtos_mutex_timeout_locking() noexcept {
 
   // Test try_lock_for when available (should succeed immediately)
   uint64_t start_time = esp_timer_get_time();
-  if (!mutex.try_lock_for(1000)) {  // 1 second timeout
+  if (!mutex.try_lock_for(1000)) { // 1 second timeout
     ESP_LOGE(TAG, "try_lock_for failed when mutex should be available");
     return false;
   }
   uint64_t lock_time = esp_timer_get_time() - start_time;
-  
-  if (lock_time > 100000) {  // Should take less than 100ms
+
+  if (lock_time > 100000) { // Should take less than 100ms
     ESP_LOGE(TAG, "try_lock_for took too long when immediately available: %llu us", lock_time);
   }
 
   // Test timeout with short duration (should timeout)
   start_time = esp_timer_get_time();
-  if (mutex.try_lock_for(100)) {  // 100ms timeout - should fail
+  if (mutex.try_lock_for(100)) { // 100ms timeout - should fail
     ESP_LOGE(TAG, "try_lock_for succeeded when mutex should be locked");
     mutex.unlock();
     mutex.unlock();
     return false;
   }
   uint64_t timeout_duration = esp_timer_get_time() - start_time;
-  
-  if (timeout_duration < 90000 || timeout_duration > 150000) {  // 90-150ms range
+
+  if (timeout_duration < 90000 || timeout_duration > 150000) { // 90-150ms range
     ESP_LOGE(TAG, "try_lock_for timeout duration incorrect: %llu us", timeout_duration);
   }
 
@@ -437,7 +437,7 @@ bool test_rtos_mutex_lock_guard_with_timeout() noexcept {
 
   // Test timeout-based lock guard
   {
-    RtosUniqueLock<RtosMutex> guard(mutex, 500);  // 500ms timeout
+    RtosUniqueLock<RtosMutex> guard(mutex, 500); // 500ms timeout
     if (!guard.IsLocked()) {
       ESP_LOGE(TAG, "Timeout lock guard failed to acquire lock");
       return false;
@@ -476,7 +476,7 @@ bool test_rtos_mutex_freertos_api() noexcept {
   mutex.Give();
 
   // Test Take with timeout
-  if (!mutex.Take(500)) {  // 500ms timeout
+  if (!mutex.Take(500)) { // 500ms timeout
     ESP_LOGE(TAG, "Failed to Take mutex with timeout");
     return false;
   }
@@ -611,23 +611,23 @@ static RtosMutex g_test_mutex;
 void concurrent_increment_task(void* param) {
   int* task_id = static_cast<int*>(param);
   const int increments = 1000;
-  
+
   ESP_LOGI(TAG, "Concurrent task %d starting", *task_id);
-  
+
   while (!g_concurrent_test_running) {
     vTaskDelay(pdMS_TO_TICKS(10));
   }
-  
+
   for (int i = 0; i < increments; i++) {
     MutexLockGuard guard(g_test_mutex);
     g_shared_counter++;
-    
+
     // Small delay to increase chance of contention
     if (i % 100 == 0) {
       vTaskDelay(pdMS_TO_TICKS(1));
     }
   }
-  
+
   ESP_LOGI(TAG, "Concurrent task %d completed", *task_id);
   vTaskDelete(nullptr);
 }
@@ -637,45 +637,39 @@ bool test_rtos_mutex_concurrent_access() noexcept {
 
   const int num_tasks = 5;
   const int expected_total = num_tasks * 1000;
-  
+
   g_shared_counter = 0;
   g_concurrent_test_running = false;
-  
+
   // Create tasks
   static int task_ids[num_tasks];
   for (int i = 0; i < num_tasks; i++) {
     task_ids[i] = i;
-    BaseType_t result = xTaskCreate(
-      concurrent_increment_task,
-      "ConcTest",
-      4096,
-      &task_ids[i],
-      5,
-      nullptr
-    );
-    
+    BaseType_t result =
+        xTaskCreate(concurrent_increment_task, "ConcTest", 4096, &task_ids[i], 5, nullptr);
+
     if (result != pdPASS) {
       ESP_LOGE(TAG, "Failed to create concurrent test task %d", i);
       return false;
     }
   }
-  
+
   // Start all tasks simultaneously
-  vTaskDelay(pdMS_TO_TICKS(100));  // Let tasks initialize
+  vTaskDelay(pdMS_TO_TICKS(100)); // Let tasks initialize
   g_concurrent_test_running = true;
-  
+
   // Wait for tasks to complete
   vTaskDelay(pdMS_TO_TICKS(5000));
   g_concurrent_test_running = false;
-  
+
   // Check results
   if (g_shared_counter != expected_total) {
-    ESP_LOGE(TAG, "Concurrent access test failed: expected %d, got %d", 
-             expected_total, g_shared_counter);
+    ESP_LOGE(TAG, "Concurrent access test failed: expected %d, got %d", expected_total,
+             g_shared_counter);
     return false;
   }
-  
-  ESP_LOGI(TAG, "[SUCCESS] RtosMutex concurrent access test successful: %d increments", 
+
+  ESP_LOGI(TAG, "[SUCCESS] RtosMutex concurrent access test successful: %d increments",
            g_shared_counter);
   return true;
 }
@@ -830,7 +824,7 @@ bool test_rtos_mutex_recursive_performance() noexcept {
     for (int depth = 0; depth < lock_depth; depth++) {
       mutex.lock();
     }
-    
+
     // Release all locks
     for (int depth = 0; depth < lock_depth; depth++) {
       mutex.unlock();
@@ -1006,7 +1000,7 @@ bool test_rtos_mutex_edge_cases() noexcept {
     return false;
   }
   uint64_t elapsed = esp_timer_get_time() - start_time;
-  
+
   if (elapsed > 10000) { // Should be nearly instantaneous
     ESP_LOGE(TAG, "try_lock_for(0) took too long: %llu us", elapsed);
   }
@@ -1082,7 +1076,7 @@ bool test_rtos_time_utilities() noexcept {
   uint64_t time1 = RtosTime::GetCurrentTimeUs();
   vTaskDelay(pdMS_TO_TICKS(100)); // Delay 100ms
   uint64_t time2 = RtosTime::GetCurrentTimeUs();
-  
+
   uint64_t elapsed = time2 - time1;
   if (elapsed < 90000 || elapsed > 150000) { // Should be ~100ms (90-150ms range)
     ESP_LOGE(TAG, "RtosTime::GetCurrentTimeUs() timing incorrect: %llu us", elapsed);

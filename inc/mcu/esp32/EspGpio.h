@@ -545,5 +545,4 @@ private:
 
   // Static members for ISR management
   static bool gpio_isr_handler_installed_; ///< Track if ISR service is installed
-
 };

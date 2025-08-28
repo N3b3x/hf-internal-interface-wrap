@@ -33,20 +33,20 @@ static const char* TAG = "GPIO_Test";
 // ESP32-C6 DevKit-M-1 Test Pins (aligned to user's instrumented wiring)
 namespace TestPins {
 // Use only the following pins for general tests: 2, 4, 5, 16, 17, 23, 19, 20, 14, 15
-static constexpr hf_pin_num_t LED_OUTPUT     = 14; // Visible output; also planned for TWAI
-static constexpr hf_pin_num_t DIGITAL_OUT_1  = 4;  // General output (SPI test line)
-static constexpr hf_pin_num_t DIGITAL_OUT_2  = 23; // General output (shared with stress test)
-static constexpr hf_pin_num_t DIGITAL_IN_1   = 2;  // General input (RTC/ADC capable)
-static constexpr hf_pin_num_t DIGITAL_IN_2   = 17; // General input (SPI test line)
-static constexpr hf_pin_num_t INTERRUPT_PIN  = 2;  // Interrupt testing
-static constexpr hf_pin_num_t PULL_TEST_PIN  = 17; // Pull resistor testing
+static constexpr hf_pin_num_t LED_OUTPUT = 14;     // Visible output; also planned for TWAI
+static constexpr hf_pin_num_t DIGITAL_OUT_1 = 4;   // General output (SPI test line)
+static constexpr hf_pin_num_t DIGITAL_OUT_2 = 23;  // General output (shared with stress test)
+static constexpr hf_pin_num_t DIGITAL_IN_1 = 2;    // General input (RTC/ADC capable)
+static constexpr hf_pin_num_t DIGITAL_IN_2 = 17;   // General input (SPI test line)
+static constexpr hf_pin_num_t INTERRUPT_PIN = 2;   // Interrupt testing
+static constexpr hf_pin_num_t PULL_TEST_PIN = 17;  // Pull resistor testing
 static constexpr hf_pin_num_t DRIVE_TEST_PIN = 16; // Drive capability testing
-static constexpr hf_pin_num_t RTC_GPIO_PIN   = 5;  // RTC-capable pin within allowed set
-static constexpr hf_pin_num_t ANALOG_PIN     = 4;  // ADC-capable pin within allowed set
+static constexpr hf_pin_num_t RTC_GPIO_PIN = 5;    // RTC-capable pin within allowed set
+static constexpr hf_pin_num_t ANALOG_PIN = 4;      // ADC-capable pin within allowed set
 
 // Loopback pair hard-wired externally; prioritize use in loopback/ISR tests
-static constexpr hf_pin_num_t LOOPBACK_OUT   = 19; // Output for loopback testing
-static constexpr hf_pin_num_t LOOPBACK_IN    = 20; // Input for loopback/ISR testing
+static constexpr hf_pin_num_t LOOPBACK_OUT = 19; // Output for loopback testing
+static constexpr hf_pin_num_t LOOPBACK_IN = 20;  // Input for loopback/ISR testing
 
 static constexpr hf_pin_num_t STRESS_TEST_PIN = 23; // Stress testing (heavily toggled)
 
@@ -490,8 +490,8 @@ bool test_gpio_interrupt_loopback() noexcept {
   const uint32_t expected = static_cast<uint32_t>(cycles * 2);
   const uint32_t observed = status.interrupt_count;
 
-  ESP_LOGI(TAG, "ISR loopback: expected >= %u, observed %u (callback count %u)", expected,
-           observed, s_isr_loopback_count);
+  ESP_LOGI(TAG, "ISR loopback: expected >= %u, observed %u (callback count %u)", expected, observed,
+           s_isr_loopback_count);
 
   bool pass = observed >= expected - 1; // allow off-by-one
   if (pass) {

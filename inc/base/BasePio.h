@@ -474,7 +474,8 @@ public:
    * @param statistics Reference to store statistics data
    * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_pio_err_t GetStatistics(hf_u8_t channel_id, hf_pio_statistics_t& statistics) const noexcept {
+  virtual hf_pio_err_t GetStatistics(hf_u8_t channel_id,
+                                     hf_pio_statistics_t& statistics) const noexcept {
     // This method needs to be implemented to return platform-specific statistics
     return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
   }
@@ -485,7 +486,8 @@ public:
    * @param diagnostics Reference to store diagnostics data
    * @return hf_pio_err_t::PIO_SUCCESS if successful, PIO_ERR_NOT_SUPPORTED if not implemented
    */
-  virtual hf_pio_err_t GetDiagnostics(hf_u8_t channel_id, hf_pio_diagnostics_t& diagnostics) const noexcept {
+  virtual hf_pio_err_t GetDiagnostics(hf_u8_t channel_id,
+                                      hf_pio_diagnostics_t& diagnostics) const noexcept {
     // This method needs to be implemented to return platform-specific diagnostics
     return hf_pio_err_t::PIO_ERR_UNSUPPORTED_OPERATION;
   }

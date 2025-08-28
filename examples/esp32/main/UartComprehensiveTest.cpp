@@ -16,8 +16,8 @@
 
 #include "TestFramework.h"
 #include "base/BaseUart.h"
-#include "mcu/esp32/EspUart.h"
 #include "mcu/esp32/EspGpio.h"
+#include "mcu/esp32/EspUart.h"
 #include "mcu/esp32/utils/EspTypes_UART.h"
 
 // ESP-IDF UART constants
@@ -39,7 +39,7 @@ static bool g_test_progress_state = false;
 static constexpr hf_u8_t TEST_PROGRESS_GPIO = 14;
 
 // Test configuration constants
-//static constexpr hf_u8_t TEST_UART_PORT_0 = 0; Debug UART
+// static constexpr hf_u8_t TEST_UART_PORT_0 = 0; Debug UART
 static constexpr hf_u8_t TEST_UART_PORT_1 = 1;
 static constexpr hf_u32_t TEST_BAUD_RATE = 115200;
 static constexpr hf_u8_t TEST_TX_PIN = 5;
@@ -93,7 +93,7 @@ bool uart_event_callback(const hf_uart_event_t* event, void* user_data) noexcept
   if (event != nullptr) {
     g_event_callback_triggered = true;
     const char* event_type_name = "UNKNOWN";
-    
+
     switch (event->type) {
       case hf_uart_event_type_t::HF_UART_DATA:
         event_type_name = "DATA";
@@ -119,13 +119,11 @@ bool uart_event_callback(const hf_uart_event_t* event, void* user_data) noexcept
       default:
         break;
     }
-    
+
     ESP_LOGI(TAG, "Event callback triggered: %s (size: %zu)", event_type_name, event->size);
   }
   return false; // Don't yield
 }
-
-
 
 bool uart_break_callback(hf_u32_t break_duration, void* user_data) noexcept {
   g_break_callback_triggered = true;
@@ -153,7 +151,7 @@ static void user_uart_event_task(void* arg) noexcept {
   }
 
   ESP_LOGI(TAG, "User event task started, monitoring UART events...");
-  
+
   uart_event_t event;
   uint8_t* data_buffer = static_cast<uint8_t*>(malloc(256));
   if (!data_buffer) {
@@ -173,16 +171,16 @@ static void user_uart_event_task(void* arg) noexcept {
         case UART_PATTERN_DET:
           ESP_LOGI(TAG, "USER TASK: Pattern detected!");
           g_pattern_detected = true;
-          
+
           // Pop pattern position immediately (ESP-IDF v5.5 best practice)
           g_pattern_position = uart->PopPatternPosition();
           ESP_LOGI(TAG, "Pattern position: %d", g_pattern_position);
-          
+
           if (g_pattern_position >= 0) {
             // Read exactly up to pattern position + 1 (including delimiter)
             int bytes_to_read = g_pattern_position + 1;
-            int bytes_read = uart_read_bytes(static_cast<uart_port_t>(uart->GetPort()), 
-                                           data_buffer, bytes_to_read, pdMS_TO_TICKS(100));
+            int bytes_read = uart_read_bytes(static_cast<uart_port_t>(uart->GetPort()), data_buffer,
+                                             bytes_to_read, pdMS_TO_TICKS(100));
             if (bytes_read > 0) {
               ESP_LOGI(TAG, "Read %d bytes up to pattern", bytes_read);
               // Null terminate and log the data
@@ -249,11 +247,11 @@ bool flush_uart_buffers(EspUart* uart) noexcept {
   // Flush both TX and RX buffers
   hf_uart_err_t tx_result = uart->FlushTx();
   hf_uart_err_t rx_result = uart->FlushRx();
-  
+
   if (tx_result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGW(TAG, "TX flush warning: %d", static_cast<int>(tx_result));
   }
-  
+
   if (rx_result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGW(TAG, "RX flush warning: %d", static_cast<int>(rx_result));
   }
@@ -265,7 +263,7 @@ bool flush_uart_buffers(EspUart* uart) noexcept {
 
   // Small delay to ensure buffers are fully cleared
   vTaskDelay(pdMS_TO_TICKS(10));
-  
+
   ESP_LOGD(TAG, "UART buffers flushed before test");
   return true;
 }
@@ -311,18 +309,19 @@ bool verify_uart_state(EspUart& uart, bool should_be_initialized) noexcept {
  */
 bool init_test_progress_indicator() noexcept {
   // Use GPIO14 as the test progression indicator (visible LED on most ESP32 dev boards)
-  g_test_progress_gpio = new EspGpio(TEST_PROGRESS_GPIO, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-                                     hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
-  
+  g_test_progress_gpio =
+      new EspGpio(TEST_PROGRESS_GPIO, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                  hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
+
   if (!g_test_progress_gpio->EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO");
     return false;
   }
-  
+
   // Start with LOW state
   g_test_progress_gpio->SetInactive();
   g_test_progress_state = false;
-  
+
   ESP_LOGI(TAG, "Test progression indicator initialized on GPIO%d", TEST_PROGRESS_GPIO);
   return true;
 }
@@ -352,7 +351,6 @@ void cleanup_test_progress_indicator() noexcept {
     g_test_progress_gpio = nullptr;
   }
 }
-
 
 //==============================================================================
 // TEST FUNCTIONS
@@ -418,7 +416,8 @@ bool test_uart_initialization() noexcept {
 
   // Test configuration retrieval
   const hf_uart_config_t& retrieved_config = uart->GetPortConfig();
-  if (retrieved_config.port_number != TEST_UART_PORT_1 || retrieved_config.baud_rate != TEST_BAUD_RATE) {
+  if (retrieved_config.port_number != TEST_UART_PORT_1 ||
+      retrieved_config.baud_rate != TEST_BAUD_RATE) {
     ESP_LOGE(TAG, "Configuration mismatch after initialization");
     return false;
   }
@@ -579,7 +578,7 @@ bool test_uart_pattern_detection() noexcept {
 
   // Create a new UART instance for this test with event queue enabled
   hf_uart_config_t config = create_test_config();
-  config.event_queue_size = 32;  // Ensure event queue is enabled
+  config.event_queue_size = 32; // Ensure event queue is enabled
   auto uart = std::make_unique<EspUart>(config);
 
   if (!uart) {
@@ -606,10 +605,11 @@ bool test_uart_pattern_detection() noexcept {
 
   // Configure interrupts for pattern detection (REQUIRED for ESP-IDF v5.5)
   // Note: Pattern detection interrupt is enabled internally by uart_enable_pattern_det_baud_intr
-  hf_uart_err_t result = uart->ConfigureInterrupts(
-      UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 32, 5);
+  hf_uart_err_t result =
+      uart->ConfigureInterrupts(UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 32, 5);
   if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure interrupts for pattern detection: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to configure interrupts for pattern detection: %d",
+             static_cast<int>(result));
     return false;
   }
 
@@ -620,7 +620,7 @@ bool test_uart_pattern_detection() noexcept {
 
   // Test 1: Line-oriented pattern detection ('\n')
   ESP_LOGI(TAG, "\n=== Test 1: Line-oriented pattern detection ('\\n') ===");
-  
+
   result = uart->EnablePatternDetection('\n', 1, 9, 0, 0);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to enable line pattern detection: %d", static_cast<int>(result));
@@ -641,17 +641,17 @@ bool test_uart_pattern_detection() noexcept {
 
   // Send test data with line endings
   const char* test_lines = "Line1\nLine2\nLine3\n";
-  result = uart->Write(
-      reinterpret_cast<const uint8_t*>(test_lines), 
-      static_cast<hf_u16_t>(strlen(test_lines)), 1000);
-  
+  result = uart->Write(reinterpret_cast<const uint8_t*>(test_lines),
+                       static_cast<hf_u16_t>(strlen(test_lines)), 1000);
+
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to write test lines: %d", static_cast<int>(result));
     uart->DisablePatternDetection();
     return false;
   }
 
-  ESP_LOGI(TAG, "Test data sent: '%s' (length: %d)", test_lines, static_cast<int>(strlen(test_lines)));
+  ESP_LOGI(TAG, "Test data sent: '%s' (length: %d)", test_lines,
+           static_cast<int>(strlen(test_lines)));
 
   // Add delay to allow data to be processed and prevent buffer overflow
   vTaskDelay(pdMS_TO_TICKS(100));
@@ -662,11 +662,11 @@ bool test_uart_pattern_detection() noexcept {
   int data_events = 0;
   uart_event_t event;
   uint8_t read_buffer[256];
-  
+
   // Wait for events with timeout
   uint64_t start_time = esp_timer_get_time();
   uint64_t timeout_us = 3000000; // 3 seconds
-  
+
   while ((esp_timer_get_time() - start_time) < timeout_us && pattern_count < expected_patterns) {
     if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
       switch (event.type) {
@@ -676,7 +676,7 @@ bool test_uart_pattern_detection() noexcept {
           // Read data to clear buffer and allow pattern detection
           uart->Read(read_buffer, sizeof(read_buffer), 100);
           break;
-          
+
         case UART_PATTERN_DET: {
           ESP_LOGI(TAG, "UART_PATTERN_DET event received!");
           int pattern_pos = uart->PopPatternPosition();
@@ -686,53 +686,54 @@ bool test_uart_pattern_detection() noexcept {
           }
           break;
         }
-          
+
         case UART_FIFO_OVF:
         case UART_BUFFER_FULL:
           ESP_LOGW(TAG, "Buffer overflow - clearing");
           uart->FlushRx();
           uart->ResetEventQueue();
           break;
-          
+
         case UART_BREAK:
           ESP_LOGD(TAG, "UART_BREAK event");
           break;
-          
+
         case UART_FRAME_ERR:
           ESP_LOGD(TAG, "UART_FRAME_ERR event");
           break;
-          
+
         case UART_PARITY_ERR:
           ESP_LOGD(TAG, "UART_PARITY_ERR event");
           break;
-          
+
         case UART_DATA_BREAK:
           ESP_LOGD(TAG, "UART_DATA_BREAK event");
           break;
-          
+
         case UART_WAKEUP:
           ESP_LOGD(TAG, "UART_WAKEUP event");
           break;
-          
+
         case UART_EVENT_MAX:
         default:
           ESP_LOGD(TAG, "Other event type: %d", event.type);
           break;
       }
     }
-    
+
     // Small delay to prevent tight loop and allow pattern detection to work
     vTaskDelay(pdMS_TO_TICKS(20));
   }
 
   line_test_passed = (pattern_count == expected_patterns);
-  ESP_LOGI(TAG, "Line pattern detection: %d/%d patterns detected. %s", 
-           pattern_count, expected_patterns, line_test_passed ? "PASSED" : "FAILED");
-  if (line_test_passed) total_tests_passed++;
+  ESP_LOGI(TAG, "Line pattern detection: %d/%d patterns detected. %s", pattern_count,
+           expected_patterns, line_test_passed ? "PASSED" : "FAILED");
+  if (line_test_passed)
+    total_tests_passed++;
 
   // Test 2: AT escape sequence pattern detection ('+++')
   ESP_LOGI(TAG, "\n=== Test 2: AT escape sequence pattern detection ('+++') ===");
-  
+
   // Disable previous pattern detection
   result = uart->DisablePatternDetection();
   if (result != hf_uart_err_t::UART_SUCCESS) {
@@ -762,10 +763,9 @@ bool test_uart_pattern_detection() noexcept {
 
   // Send test data with AT escape sequences
   const char* at_test_data = "AT+CMD1\r\n+++ESCAPE1\r\nAT+CMD2\r\n+++ESCAPE2\r\n";
-  result = uart->Write(
-      reinterpret_cast<const uint8_t*>(at_test_data), 
-      static_cast<hf_u16_t>(strlen(at_test_data)), 1000);
-  
+  result = uart->Write(reinterpret_cast<const uint8_t*>(at_test_data),
+                       static_cast<hf_u16_t>(strlen(at_test_data)), 1000);
+
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to write AT test data: %d", static_cast<int>(result));
     uart->DisablePatternDetection();
@@ -781,10 +781,11 @@ bool test_uart_pattern_detection() noexcept {
   int at_pattern_count = 0;
   int expected_at_patterns = 2;
   data_events = 0;
-  
+
   start_time = esp_timer_get_time();
-  
-  while ((esp_timer_get_time() - start_time) < timeout_us && at_pattern_count < expected_at_patterns) {
+
+  while ((esp_timer_get_time() - start_time) < timeout_us &&
+         at_pattern_count < expected_at_patterns) {
     if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
       switch (event.type) {
         case UART_DATA:
@@ -793,7 +794,7 @@ bool test_uart_pattern_detection() noexcept {
           // Read data to clear buffer
           uart->Read(read_buffer, sizeof(read_buffer), 100);
           break;
-          
+
         case UART_PATTERN_DET: {
           ESP_LOGI(TAG, "UART_PATTERN_DET event received for +++!");
           int pattern_pos = uart->PopPatternPosition();
@@ -803,49 +804,50 @@ bool test_uart_pattern_detection() noexcept {
           }
           break;
         }
-          
+
         case UART_FIFO_OVF:
         case UART_BUFFER_FULL:
           ESP_LOGW(TAG, "Buffer overflow - clearing");
           uart->FlushRx();
           uart->ResetEventQueue();
           break;
-          
+
         case UART_BREAK:
           ESP_LOGD(TAG, "UART_BREAK event");
           break;
-          
+
         case UART_FRAME_ERR:
           ESP_LOGD(TAG, "UART_FRAME_ERR event");
           break;
-          
+
         case UART_PARITY_ERR:
           ESP_LOGD(TAG, "UART_PARITY_ERR event");
           break;
-          
+
         case UART_DATA_BREAK:
           ESP_LOGD(TAG, "UART_DATA_BREAK event");
           break;
-          
+
         case UART_WAKEUP:
           ESP_LOGD(TAG, "UART_WAKEUP event");
           break;
-          
+
         case UART_EVENT_MAX:
         default:
           ESP_LOGD(TAG, "Other event type: %d", event.type);
           break;
       }
     }
-    
+
     // Small delay to prevent tight loop and allow pattern detection to work
     vTaskDelay(pdMS_TO_TICKS(20));
   }
 
   at_test_passed = (at_pattern_count == expected_at_patterns);
-  ESP_LOGI(TAG, "AT pattern detection: %d/%d patterns detected. %s", 
-           at_pattern_count, expected_at_patterns, at_test_passed ? "PASSED" : "FAILED");
-  if (at_test_passed) total_tests_passed++;
+  ESP_LOGI(TAG, "AT pattern detection: %d/%d patterns detected. %s", at_pattern_count,
+           expected_at_patterns, at_test_passed ? "PASSED" : "FAILED");
+  if (at_test_passed)
+    total_tests_passed++;
 
   // Clean up
   result = uart->DisablePatternDetection();
@@ -855,12 +857,12 @@ bool test_uart_pattern_detection() noexcept {
 
   // Overall test result
   bool overall_passed = (total_tests_passed == 2);
-  
+
   ESP_LOGI(TAG, "\n=== PATTERN DETECTION TEST SUMMARY ===");
   ESP_LOGI(TAG, "Line pattern test: %s", line_test_passed ? "PASSED" : "FAILED");
   ESP_LOGI(TAG, "AT pattern test: %s", at_test_passed ? "PASSED" : "FAILED");
-  ESP_LOGI(TAG, "Overall result: %d/2 tests passed. %s", 
-           total_tests_passed, overall_passed ? "[SUCCESS]" : "[FAILED]");
+  ESP_LOGI(TAG, "Overall result: %d/2 tests passed. %s", total_tests_passed,
+           overall_passed ? "[SUCCESS]" : "[FAILED]");
 
   return overall_passed;
 }
@@ -890,9 +892,8 @@ bool test_uart_buffer_operations() noexcept {
   const char* test_string = "Hello\nWorld";
 
   // Write test string
-  hf_uart_err_t write_result =
-      uart->Write(reinterpret_cast<const uint8_t*>(test_string),
-                             static_cast<hf_u16_t>(strlen(test_string)), 1000);
+  hf_uart_err_t write_result = uart->Write(reinterpret_cast<const uint8_t*>(test_string),
+                                           static_cast<hf_u16_t>(strlen(test_string)), 1000);
 
   if (write_result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGW(TAG, "Write failed for ReadUntil test (expected in no-loopback mode)");
@@ -908,8 +909,8 @@ bool test_uart_buffer_operations() noexcept {
   ESP_LOGI(TAG, "ReadLine returned %d characters", line_length);
 
   // Test interrupt configuration (modern ESP-IDF v5.5 approach)
-  hf_uart_err_t result = uart->ConfigureInterrupts(
-      UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 64, 10);
+  hf_uart_err_t result =
+      uart->ConfigureInterrupts(UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 64, 10);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure interrupts: %d", static_cast<int>(result));
     return false;
@@ -948,11 +949,11 @@ bool test_uart_advanced_features() noexcept {
 
   // Test loopback mode
   ESP_LOGI(TAG, "Testing with external loopback (jumper between pins 20 and 21)");
-  
+
   // Test with external loopback enabled
   const char* loopback_msg = "Loopback Test";
   result = uart->Write(reinterpret_cast<const uint8_t*>(loopback_msg),
-                                  static_cast<hf_u16_t>(strlen(loopback_msg)), 1000);
+                       static_cast<hf_u16_t>(strlen(loopback_msg)), 1000);
 
   if (result == hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGI(TAG, "External loopback write successful");
@@ -1086,7 +1087,8 @@ bool test_uart_async_operations() noexcept {
 
   // Test interrupt configuration (modern ESP-IDF v5.5 approach)
   hf_uart_err_t result = uart->ConfigureInterrupts(
-      UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M | UART_TXFIFO_EMPTY_INT_ENA_M, 100, 10);
+      UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M | UART_TXFIFO_EMPTY_INT_ENA_M, 100,
+      10);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure interrupts: %d", static_cast<int>(result));
     return false;
@@ -1382,8 +1384,6 @@ bool test_uart_esp32c6_features() noexcept {
   return true;
 }
 
-
-
 bool test_uart_performance() noexcept {
   ESP_LOGI(TAG, "Testing UART performance...");
 
@@ -1463,7 +1463,8 @@ bool test_uart_callback_verification() noexcept {
   }
 
   // Enable RX interrupts (modern ESP-IDF v5.5 approach)
-  result = uart->ConfigureInterrupts(UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 100, 10);
+  result =
+      uart->ConfigureInterrupts(UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 100, 10);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure interrupts: %d", static_cast<int>(result));
     return false;
@@ -1481,26 +1482,26 @@ bool test_uart_callback_verification() noexcept {
   // Send test data that should trigger data events with external loopback
   const char* test_message = "External Loopback Event Test";
   result = uart->Write(reinterpret_cast<const uint8_t*>(test_message),
-                                  static_cast<hf_u16_t>(strlen(test_message)), 1000);
-  
+                       static_cast<hf_u16_t>(strlen(test_message)), 1000);
+
   if (result == hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGI(TAG, "Test data written with external loopback");
-    
+
     // Wait for events to be processed
     vTaskDelay(pdMS_TO_TICKS(300));
-    
+
     // Try to read the data back (should trigger more events)
     uint8_t read_buffer[64];
     result = uart->Read(read_buffer, sizeof(read_buffer), 500);
     ESP_LOGI(TAG, "Read result with external loopback: %d", static_cast<int>(result));
-    
+
     // Check if there are events in the queue (simple verification)
     uart_event_t event;
     if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
       ESP_LOGI(TAG, "Event received from queue: type=%d", event.type);
       g_event_callback_triggered = true;
     }
-    
+
     // Wait for any additional events
     vTaskDelay(pdMS_TO_TICKS(200));
   }
@@ -1510,7 +1511,7 @@ bool test_uart_callback_verification() noexcept {
   if (result == hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGI(TAG, "Break signal sent");
     vTaskDelay(pdMS_TO_TICKS(200)); // Wait for break event processing
-    
+
     // Check for break events
     uart_event_t event;
     if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
@@ -1535,8 +1536,6 @@ bool test_uart_callback_verification() noexcept {
   ESP_LOGI(TAG, "[SUCCESS] Event queue verification test completed");
   return true;
 }
-
-
 
 bool test_uart_user_event_task() noexcept {
   ESP_LOGI(TAG, "Testing user-created event task (ESP-IDF v5.5 pattern)...");
@@ -1575,7 +1574,8 @@ bool test_uart_user_event_task() noexcept {
   }
 
   // Enable RX interrupts (modern ESP-IDF v5.5 approach)
-  result = uart->ConfigureInterrupts(UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 100, 10);
+  result =
+      uart->ConfigureInterrupts(UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 100, 10);
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to configure interrupts: %d", static_cast<int>(result));
     return false;
@@ -1611,8 +1611,8 @@ bool test_uart_user_event_task() noexcept {
   g_stop_event_task = false;
 
   // Create user event task (proper ESP-IDF v5.5 pattern)
-  BaseType_t task_result = xTaskCreate(user_uart_event_task, "user_uart_events", 4096, 
-                                      uart.get(), 10, &g_user_event_task_handle);
+  BaseType_t task_result = xTaskCreate(user_uart_event_task, "user_uart_events", 4096, uart.get(),
+                                       10, &g_user_event_task_handle);
   if (task_result != pdPASS) {
     ESP_LOGE(TAG, "Failed to create user event task");
     return false;
@@ -1626,11 +1626,11 @@ bool test_uart_user_event_task() noexcept {
   // Send test data with line ending to trigger pattern detection
   const char* test_line = "Hello World\n";
   result = uart->Write(reinterpret_cast<const uint8_t*>(test_line),
-                                  static_cast<hf_u16_t>(strlen(test_line)), 1000);
-  
+                       static_cast<hf_u16_t>(strlen(test_line)), 1000);
+
   if (result == hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGI(TAG, "Test line sent: '%s'", test_line);
-    
+
     // Wait for pattern detection and processing
     vTaskDelay(pdMS_TO_TICKS(500));
   }
@@ -1638,8 +1638,8 @@ bool test_uart_user_event_task() noexcept {
   // Send another test with multiple lines
   const char* multi_line = "Line1\nLine2\nLine3\n";
   result = uart->Write(reinterpret_cast<const uint8_t*>(multi_line),
-                                  static_cast<hf_u16_t>(strlen(multi_line)), 1000);
-  
+                       static_cast<hf_u16_t>(strlen(multi_line)), 1000);
+
   if (result == hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGI(TAG, "Multi-line test sent");
     vTaskDelay(pdMS_TO_TICKS(500));
@@ -1702,7 +1702,8 @@ bool test_uart_event_driven_pattern_detection() noexcept {
   hf_uart_err_t result = uart->ConfigureInterrupts(
       UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M | UART_TXFIFO_EMPTY_INT_ENA_M, 32, 5);
   if (result != hf_uart_err_t::UART_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure interrupts for event-driven testing: %d", static_cast<int>(result));
+    ESP_LOGE(TAG, "Failed to configure interrupts for event-driven testing: %d",
+             static_cast<int>(result));
     return false;
   }
 
@@ -1729,19 +1730,18 @@ bool test_uart_event_driven_pattern_detection() noexcept {
   int data_events = 0;
   int pattern_events = 0;
   int other_events = 0;
-  
+
   // Test data
   const char* test_data = "Command1\nCommand2\nCommand3\n";
   const int expected_patterns = 3;
   const int test_timeout_ms = 5000; // 5 second timeout for comprehensive testing
-  
+
   ESP_LOGI(TAG, "Sending test data: '%s' (expecting %d patterns)", test_data, expected_patterns);
-  
+
   // Send test data
-  result = uart->Write(
-      reinterpret_cast<const uint8_t*>(test_data), 
-      static_cast<hf_u16_t>(strlen(test_data)), 1000);
-  
+  result = uart->Write(reinterpret_cast<const uint8_t*>(test_data),
+                       static_cast<hf_u16_t>(strlen(test_data)), 1000);
+
   if (result != hf_uart_err_t::UART_SUCCESS) {
     ESP_LOGE(TAG, "Failed to write test data: %d", static_cast<int>(result));
     uart->DisablePatternDetection();
@@ -1756,19 +1756,19 @@ bool test_uart_event_driven_pattern_detection() noexcept {
   // Monitor event queue with timeout
   uint64_t start_time = esp_timer_get_time();
   uint64_t timeout_us = test_timeout_ms * 1000;
-  
+
   while ((esp_timer_get_time() - start_time) < timeout_us) {
     uart_event_t event;
-    
+
     // Try to receive event from queue with short timeout
     if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
       events_received++;
-      
+
       switch (event.type) {
         case UART_DATA: {
           data_events++;
           ESP_LOGI(TAG, "UART_DATA event received - size: %zu", event.size);
-          
+
           // Read the data to clear the buffer and trigger more events
           uint8_t read_buffer[256];
           hf_uart_err_t read_result = uart->Read(read_buffer, sizeof(read_buffer), 100);
@@ -1779,33 +1779,35 @@ bool test_uart_event_driven_pattern_detection() noexcept {
           vTaskDelay(pdMS_TO_TICKS(20));
           break;
         }
-          
+
         case UART_PATTERN_DET: {
           pattern_events++;
           ESP_LOGI(TAG, "UART_PATTERN_DET event received!");
-          
+
           // Get pattern position
           pattern_position = uart->PopPatternPosition();
           if (pattern_position >= 0) {
             pattern_detected = true;
             ESP_LOGI(TAG, "Pattern detected at position: %d", pattern_position);
-            
+
             // Read data up to and including the pattern
             int read_len = pattern_position + 1; // Include the pattern character
             uint8_t pattern_buffer[256];
-            
+
             // Check available data before reading
             size_t buffered_len = 0;
-            esp_err_t len_result = uart_get_buffered_data_len(static_cast<uart_port_t>(uart->GetPort()), &buffered_len);
-            
+            esp_err_t len_result = uart_get_buffered_data_len(
+                static_cast<uart_port_t>(uart->GetPort()), &buffered_len);
+
             if (len_result == ESP_OK) {
               ESP_LOGI(TAG, "Buffered data length: %zu, reading up to: %d", buffered_len, read_len);
-              
+
               if (read_len > static_cast<int>(buffered_len)) {
-                ESP_LOGW(TAG, "Adjusting read length from %d to %zu (available data)", read_len, buffered_len);
+                ESP_LOGW(TAG, "Adjusting read length from %d to %zu (available data)", read_len,
+                         buffered_len);
                 read_len = static_cast<int>(buffered_len);
               }
-              
+
               hf_uart_err_t read_result = uart->Read(pattern_buffer, read_len, 100);
               if (read_result == hf_uart_err_t::UART_SUCCESS) {
                 ESP_LOGI(TAG, "Pattern data read successfully");
@@ -1816,65 +1818,65 @@ bool test_uart_event_driven_pattern_detection() noexcept {
           }
           break;
         }
-          
+
         case UART_FIFO_OVF: {
           ESP_LOGW(TAG, "UART_FIFO_OVF event - clearing buffer");
           uart->FlushRx();
           xQueueReset(event_queue);
           break;
         }
-          
+
         case UART_BUFFER_FULL: {
           ESP_LOGW(TAG, "UART_BUFFER_FULL event - clearing buffer");
           uart->FlushRx();
           xQueueReset(event_queue);
           break;
         }
-          
+
         case UART_BREAK: {
           ESP_LOGI(TAG, "UART_BREAK event received");
           break;
         }
-          
+
         case UART_PARITY_ERR: {
           ESP_LOGW(TAG, "UART_PARITY_ERR event received");
           break;
         }
-          
+
         case UART_FRAME_ERR: {
           ESP_LOGW(TAG, "UART_FRAME_ERR event received");
           break;
         }
-          
+
         case UART_DATA_BREAK: {
           ESP_LOGI(TAG, "UART_DATA_BREAK event received");
           break;
         }
-          
+
         case UART_WAKEUP: {
           ESP_LOGI(TAG, "UART_WAKEUP event received");
           break;
         }
-          
+
         case UART_EVENT_MAX: {
           ESP_LOGW(TAG, "UART_EVENT_MAX event received (should not happen)");
           break;
         }
-          
+
         default: {
           other_events++;
           ESP_LOGD(TAG, "Unknown UART event type: %d", event.type);
           break;
         }
       }
-      
+
       // Check if we've received enough pattern events
       if (pattern_events >= expected_patterns) {
         ESP_LOGI(TAG, "Received expected number of pattern events (%d)", expected_patterns);
         break;
       }
     }
-    
+
     // Small delay to prevent tight loop
     vTaskDelay(pdMS_TO_TICKS(10));
   }
@@ -1882,7 +1884,7 @@ bool test_uart_event_driven_pattern_detection() noexcept {
   // Test timeout check
   uint64_t elapsed_time = (esp_timer_get_time() - start_time) / 1000; // Convert to ms
   ESP_LOGI(TAG, "Event monitoring completed in %llu ms", elapsed_time);
-  
+
   // Report comprehensive results
   ESP_LOGI(TAG, "Event-driven pattern detection results:");
   ESP_LOGI(TAG, "  Total events received: %d", events_received);
@@ -1895,15 +1897,16 @@ bool test_uart_event_driven_pattern_detection() noexcept {
 
   // Clean up
   uart->DisablePatternDetection();
-  
+
   // Determine test success
   bool test_passed = (pattern_events >= expected_patterns) && pattern_detected;
-  
+
   if (test_passed) {
     ESP_LOGI(TAG, "[SUCCESS] Event-driven pattern detection test completed successfully");
   } else {
     ESP_LOGE(TAG, "[FAILED] Event-driven pattern detection test failed");
-    ESP_LOGE(TAG, "  Expected: %d patterns, Received: %d patterns", expected_patterns, pattern_events);
+    ESP_LOGE(TAG, "  Expected: %d patterns, Received: %d patterns", expected_patterns,
+             pattern_events);
     ESP_LOGE(TAG, "  Pattern detected: %s", pattern_detected ? "YES" : "NO");
   }
 
@@ -1942,19 +1945,32 @@ bool test_uart_cleanup() noexcept {
 //==============================================================================
 
 extern "C" void app_main(void) {
-  ESP_LOGI(TAG, "╔════════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                   ESP32-C6 UART COMPREHENSIVE TEST SUITE                       ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                             ║");
-  ESP_LOGI(TAG, "╚════════════════════════════════════════════════════════════════════════════════╝");
-  ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                    ║");
-  ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                                 ║");
-  ESP_LOGI(TAG, "║ Features: UART, Baud Rate Configuration, Flow Control, Pattern Detection,      ║");
-  ESP_LOGI(TAG, "║ Buffer Operations, Advanced Features, Communication Modes, Async Operations,   ║");
-  ESP_LOGI(TAG, "║ Callbacks, Statistics and Diagnostics, printf Support, Error Handling,         ║");
-  ESP_LOGI(TAG, "║ ESP32-C6 Features, Performance, Callback Verification, User Event Task,        ║");
-  ESP_LOGI(TAG, "║ Event-Driven Pattern Detection, Cleanup                                        ║");
-  ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                                 ║");
-  ESP_LOGI(TAG, "╚════════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG,
+           "╔════════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG,
+           "║                   ESP32-C6 UART COMPREHENSIVE TEST SUITE                       ║");
+  ESP_LOGI(TAG,
+           "║                         HardFOC Internal Interface                             ║");
+  ESP_LOGI(TAG,
+           "╚════════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG,
+           "║ Target: ESP32-C6 DevKit-M-1                                                    ║");
+  ESP_LOGI(TAG,
+           "║ ESP-IDF: v5.5+                                                                 ║");
+  ESP_LOGI(TAG,
+           "║ Features: UART, Baud Rate Configuration, Flow Control, Pattern Detection,      ║");
+  ESP_LOGI(TAG,
+           "║ Buffer Operations, Advanced Features, Communication Modes, Async Operations,   ║");
+  ESP_LOGI(TAG,
+           "║ Callbacks, Statistics and Diagnostics, printf Support, Error Handling,         ║");
+  ESP_LOGI(TAG,
+           "║ ESP32-C6 Features, Performance, Callback Verification, User Event Task,        ║");
+  ESP_LOGI(TAG,
+           "║ Event-Driven Pattern Detection, Cleanup                                        ║");
+  ESP_LOGI(TAG,
+           "║ Architecture: noexcept (no exception handling)                                 ║");
+  ESP_LOGI(TAG,
+           "╚════════════════════════════════════════════════════════════════════════════════╝");
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
@@ -1962,7 +1978,8 @@ extern "C" void app_main(void) {
   // This pin will toggle between HIGH/LOW each time a test completes
   // providing visual feedback for test progression on oscilloscope/logic analyzer
   if (!init_test_progress_indicator()) {
-    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
+    ESP_LOGE(TAG,
+             "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
   }
 
   // Run all tests in sequence
@@ -1970,7 +1987,7 @@ extern "C" void app_main(void) {
   RUN_TEST(test_uart_construction);
   flip_test_progress_indicator();
   RUN_TEST(test_uart_initialization);
-  flip_test_progress_indicator(); 
+  flip_test_progress_indicator();
 
   ESP_LOGI(TAG, "\n=== BASIC COMMUNICATION TESTS ===");
   RUN_TEST(test_uart_basic_communication);
@@ -2001,7 +2018,7 @@ extern "C" void app_main(void) {
   flip_test_progress_indicator();
   RUN_TEST(test_uart_error_handling);
   flip_test_progress_indicator();
-  
+
   // ESP32-C6 specific tests
   ESP_LOGI(TAG, "\n=== ESP32-C6 SPECIFIC TESTS ===");
   RUN_TEST(test_uart_esp32c6_features);
@@ -2010,19 +2027,19 @@ extern "C" void app_main(void) {
   flip_test_progress_indicator();
   RUN_TEST(test_uart_callback_verification);
   flip_test_progress_indicator();
-  
+
   // User Event Task Test
   ESP_LOGI(TAG, "\n=== USER EVENT TASK TEST ===");
   RUN_TEST(test_uart_user_event_task);
   flip_test_progress_indicator();
-  
+
   // Comprehensive Event-Driven Pattern Detection Test (Last Test)
   ESP_LOGI(TAG, "\n=== COMPREHENSIVE EVENT-DRIVEN PATTERN DETECTION TEST ===");
   ESP_LOGI(TAG, "This test runs with 5-second timeout and comprehensive event monitoring");
   ESP_LOGI(TAG, "It will test the complete event queue behavior for pattern detection");
   RUN_TEST(test_uart_event_driven_pattern_detection);
   flip_test_progress_indicator();
-  
+
   RUN_TEST(test_uart_cleanup);
   flip_test_progress_indicator();
 
@@ -2033,10 +2050,14 @@ extern "C" void app_main(void) {
 
   // Post-test banner
   ESP_LOGI(TAG, "\n");
-  ESP_LOGI(TAG, "╔════════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                    ESP32-C6 UART COMPREHENSIVE TEST SUITE                      ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                             ║");
-  ESP_LOGI(TAG, "╚════════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG,
+           "╔════════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG,
+           "║                    ESP32-C6 UART COMPREHENSIVE TEST SUITE                      ║");
+  ESP_LOGI(TAG,
+           "║                         HardFOC Internal Interface                             ║");
+  ESP_LOGI(TAG,
+           "╚════════════════════════════════════════════════════════════════════════════════╝");
 
   // Cleanup test progression indicator
   cleanup_test_progress_indicator();

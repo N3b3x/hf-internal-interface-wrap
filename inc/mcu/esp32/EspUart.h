@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "McuSelect.h"
 #include "BaseUart.h"
+#include "McuSelect.h"
 #include "RtosMutex.h"
 #include "utils/EspTypes.h"
 
@@ -289,7 +289,7 @@ public:
    * @return hf_uart_err_t result code
    */
   hf_uart_err_t SetSignalInversion(uint32_t inverse_mask) noexcept;
-  
+
   //==============================================================================
   // EVENT QUEUE ACCESS (User Creates Own Tasks)
   //==============================================================================
@@ -339,8 +339,8 @@ public:
    * @return hf_uart_err_t result code
    * @note Uses uart_enable_pattern_det_baud_intr from ESP-IDF v5.5
    */
-  hf_uart_err_t EnablePatternDetection(char pattern_chr, uint8_t chr_num = 1,
-                                       int chr_tout = 9, int post_idle = 0, int pre_idle = 0) noexcept;
+  hf_uart_err_t EnablePatternDetection(char pattern_chr, uint8_t chr_num = 1, int chr_tout = 9,
+                                       int post_idle = 0, int pre_idle = 0) noexcept;
 
   /**
    * @brief Disable pattern detection.
@@ -546,7 +546,6 @@ private:
    */
   hf_uart_err_t ConfigurePins() noexcept;
 
-
   /**
    * @brief Convert platform error to HardFOC error
    * @param platform_error Platform error code
@@ -583,10 +582,6 @@ private:
    */
   int InternalPrintf(const char* format, va_list args) noexcept;
 
-
-
-
-
   //==============================================================================
   // MEMBER VARIABLES
   //==============================================================================
@@ -597,7 +592,7 @@ private:
   uart_port_t uart_port_;         ///< Native UART port handle
 
   // Event queue (user creates own tasks)
-  QueueHandle_t event_queue_;                   ///< ESP-IDF UART event queue handle
+  QueueHandle_t event_queue_; ///< ESP-IDF UART event queue handle
 
   // Operating mode and communication state
   hf_uart_operating_mode_t operating_mode_; ///< Current operating mode

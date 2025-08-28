@@ -42,7 +42,7 @@
  * automatically adapts to different ESP32 variants and their specific LEDC capabilities.
  *
  * ## ESP32 Variant LEDC Capabilities:
- * 
+ *
  * ### ESP32 (Classic):
  * - **Channels:** 16 channels (8 high-speed + 8 low-speed)
  * - **Timers:** 8 timers (4 high-speed + 4 low-speed)
@@ -65,7 +65,7 @@
  * - **Special Features:** Compact design, optimized for IoT applications
  *
  * ## Clock Source Constraints:
- * 
+ *
  * **CRITICAL:** Different ESP32 variants have different clock source limitations:
  * - **ESP32 Classic:** Each timer can use different clock sources independently
  * - **ESP32-S2/S3/C3/C6/H2:** All timers typically share the same clock source
@@ -75,7 +75,7 @@
  *   - REF_TICK (1MHz): Max ~976Hz at 10-bit resolution
  *
  * ## Timer Resource Management:
- * 
+ *
  * The LEDC peripheral uses a timer-channel architecture where:
  * - Multiple channels can share the same timer (same frequency/resolution)
  * - Each timer supports up to 8 channels (hardware limitation)
@@ -133,38 +133,38 @@ public:
   /**
    * @brief Initialize the LEDC peripheral and PWM subsystem
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Performs comprehensive LEDC peripheral initialization:
    * - Initializes timer and channel state arrays
    * - Sets up fade functionality if enabled in configuration
    * - Validates ESP32 variant capabilities
    * - Prepares resource management systems
-   * 
+   *
    * @note This method is called automatically by EnsureInitialized() (lazy initialization)
    * @warning Multiple calls return PWM_ERR_ALREADY_INITIALIZED (safe to call repeatedly)
-   * 
+   *
    * @see Deinitialize() for cleanup and resource release
-   * 
+   *
    * @implements BasePwm::Initialize() - ESP32-specific implementation using LEDC peripheral
    */
   hf_pwm_err_t Initialize() noexcept override;
-  
+
   /**
    * @brief Deinitialize the LEDC peripheral and release all resources
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Performs comprehensive cleanup and resource release:
    * - Stops all active PWM channels with proper idle level setting
    * - Releases and resets all LEDC timers with hardware cleanup
    * - Resets all GPIO pins to default state
    * - Uninstalls fade functionality to prevent conflicts
    * - Clears all internal state and statistics
-   * 
+   *
    * @note Safe to call multiple times or on already deinitialized instances
    * @warning All PWM outputs will stop and GPIOs will be reset to default state
-   * 
+   *
    * @see Initialize() for PWM subsystem initialization
-   * 
+   *
    * @implements BasePwm::Deinitialize() - ESP32-specific cleanup with LEDC peripheral reset
    */
   hf_pwm_err_t Deinitialize() noexcept override;
@@ -191,22 +191,22 @@ public:
    * @param channel_id Channel identifier (0 to MAX_CHANNELS-1)
    * @param config Complete channel configuration including GPIO, frequency, resolution
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details This method configures a PWM channel with full LEDC peripheral integration:
    * - **Timer Assignment:** Automatic or manual timer allocation with conflict resolution
    * - **Frequency/Resolution Validation:** Hardware constraint verification against clock source
    * - **GPIO Configuration:** Pin matrix validation and hardware setup
    * - **Resource Management:** Smart timer sharing and eviction policy enforcement
-   * 
+   *
    * @note The channel must be enabled separately using EnableChannel()
    * @warning Invalid frequency/resolution combinations will be rejected with detailed error codes
-   * 
+   *
    * @see SetFrequencyWithResolution() for explicit frequency/resolution control
    * @see EnableChannel() to activate the configured channel
    */
   hf_pwm_err_t ConfigureChannel(hf_channel_id_t channel_id,
                                 const hf_pwm_channel_config_t& config) noexcept;
-  
+
   /**
    * @brief Deconfigure a channel and release all associated resources
    * @param channel_id Channel ID to deconfigure
@@ -218,37 +218,37 @@ public:
    *       4. Completely resets channel state to unconfigured
    */
   hf_pwm_err_t DeconfigureChannel(hf_channel_id_t channel_id) noexcept;
-  
+
   /**
    * @brief Enable a configured PWM channel to start signal generation
    * @param channel_id Channel identifier to enable
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Activates PWM signal generation on the specified channel using the LEDC peripheral.
    * The channel must be previously configured with ConfigureChannel().
-   * 
+   *
    * @note Uses fade-compatible or basic LEDC functions based on current mode
    * @warning Channel must be configured before enabling
    */
   hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept override;
-  
+
   /**
    * @brief Disable a PWM channel and stop signal generation
    * @param channel_id Channel identifier to disable
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Stops PWM signal generation and sets output to configured idle level.
    * Timer resources are automatically managed and released if unused.
-   * 
+   *
    * @note GPIO pin will be set to the configured idle level (0 or 1)
    */
   hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept override;
-  
+
   /**
    * @brief Check if a PWM channel is currently enabled
    * @param channel_id Channel identifier to check
    * @return true if channel is enabled and generating PWM signals, false otherwise
-   * 
+   *
    * @note Returns false for unconfigured channels or channels that failed to enable
    */
   bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept override;
@@ -262,60 +262,61 @@ public:
    * @param channel_id Channel identifier to update
    * @param duty_cycle Duty cycle as percentage (0.0 = 0%, 1.0 = 100%)
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Converts percentage to raw value based on channel's current resolution
    * and updates the LEDC peripheral. Supports both fade and basic modes.
-   * 
+   *
    * @note Duty cycle is automatically clamped to valid range [0.0, 1.0]
    * @warning Channel must be configured and enabled for immediate effect
    */
   hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) noexcept override;
-  
+
   /**
    * @brief Set PWM duty cycle using raw timer counts
-   * @param channel_id Channel identifier to update  
+   * @param channel_id Channel identifier to update
    * @param raw_value Raw duty cycle value (0 to (2^resolution - 1))
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Directly sets LEDC timer compare value for maximum precision.
    * Value is validated against current channel resolution.
-   * 
+   *
    * @note Raw value is clamped to maximum for current resolution
    * @warning Use GetResolution() to determine valid raw value range
    */
   hf_pwm_err_t SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_value) noexcept override;
-  
+
   /**
    * @brief Set PWM frequency with automatic timer management
    * @param channel_id Channel identifier to update
    * @param frequency_hz Target frequency in Hz
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Automatically manages timer allocation and sharing for efficient resource usage.
    * May trigger timer reconfiguration or reallocation if frequency change is significant.
-   * 
+   *
    * @note Frequency is validated against current resolution and clock source
    * @warning Large frequency changes may affect other channels sharing the same timer
-   * 
+   *
    * @see SetFrequencyWithResolution() for explicit frequency/resolution control
    * @see EnableAutoFallback() for automatic resolution adjustment
    */
   hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id,
                             hf_frequency_hz_t frequency_hz) noexcept override;
-  
+
   /**
    * @brief Set PWM phase shift (ESP32 LEDC limitation: not supported)
    * @param channel_id Channel identifier (unused)
    * @param phase_shift_degrees Phase shift in degrees (unused)
    * @return PWM_ERR_INVALID_PARAMETER (LEDC doesn't support phase shift)
-   * 
+   *
    * @details The ESP32 LEDC peripheral does not support hardware phase shifting.
    * This method is provided for interface compatibility but will always return an error.
-   * 
+   *
    * @note For phase relationships, consider using timer offsets or software timing
    * @warning This method will always fail on ESP32 LEDC peripheral
-   * 
-   * @implements BasePwm::SetPhaseShift() - Required by base class interface but not supported by ESP32 LEDC hardware
+   *
+   * @implements BasePwm::SetPhaseShift() - Required by base class interface but not supported by
+   * ESP32 LEDC hardware
    */
   hf_pwm_err_t SetPhaseShift(hf_channel_id_t channel_id,
                              float phase_shift_degrees) noexcept override;
@@ -330,14 +331,14 @@ public:
    * @param frequency_hz Target frequency in Hz
    * @param resolution_bits Explicit resolution choice in bits (4-14)
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details This method allows precise control over both frequency and resolution.
    * The combination is validated against LEDC hardware constraints:
    * - **Formula:** Required Clock = frequency_hz × (2^resolution_bits)
    * - **APB Clock (80MHz):** Max frequency = 80MHz / (2^resolution_bits)
    * - **Example:** 1kHz @ 10-bit requires 1.024MHz (1.28% of 80MHz) ✓
    * - **Example:** 100kHz @ 10-bit requires 102.4MHz (128% of 80MHz) ✗
-   * 
+   *
    * @warning This method performs strict validation and will fail if the
    * frequency/resolution combination exceeds hardware capabilities.
    * Use SetFrequencyWithAutoFallback() for automatic resolution adjustment.
@@ -355,8 +356,8 @@ public:
    * @note Automatically tries alternative resolutions if preferred fails
    */
   hf_pwm_err_t SetFrequencyWithAutoFallback(hf_channel_id_t channel_id,
-                                             hf_frequency_hz_t frequency_hz,
-                                             hf_u8_t preferred_resolution) noexcept;
+                                            hf_frequency_hz_t frequency_hz,
+                                            hf_u8_t preferred_resolution) noexcept;
 
   /**
    * @brief Set PWM resolution for a channel
@@ -382,8 +383,7 @@ public:
    * @return PWM_SUCCESS on success, error code on failure
    * @note This is the most efficient way to change both parameters simultaneously
    */
-  hf_pwm_err_t SetFrequencyAndResolution(hf_channel_id_t channel_id, 
-                                         hf_frequency_hz_t frequency_hz,
+  hf_pwm_err_t SetFrequencyAndResolution(hf_channel_id_t channel_id, hf_frequency_hz_t frequency_hz,
                                          hf_u8_t resolution_bits) noexcept;
 
   /**
@@ -413,53 +413,54 @@ public:
   /**
    * @brief Start all configured PWM channels simultaneously
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Enables all configured channels in a coordinated manner for synchronized startup.
    * Channels that are already enabled remain unaffected.
-   * 
+   *
    * @note Only affects channels that have been configured with ConfigureChannel()
    * @warning Individual channel errors are logged but don't stop the overall operation
    */
   hf_pwm_err_t StartAll() noexcept override;
-  
+
   /**
-   * @brief Stop all enabled PWM channels simultaneously  
+   * @brief Stop all enabled PWM channels simultaneously
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Disables all enabled channels in a coordinated manner for synchronized shutdown.
    * Each channel's GPIO will be set to its configured idle level.
-   * 
+   *
    * @note Timer resources are automatically managed and released as appropriate
    */
   hf_pwm_err_t StopAll() noexcept override;
-  
+
   /**
    * @brief Update all enabled PWM channels with their current settings
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Forces a synchronized update of all active LEDC channels to ensure
    * any pending duty cycle or configuration changes take effect simultaneously.
-   * 
+   *
    * @note Useful after multiple SetDutyCycle() calls to ensure synchronized updates
    */
   hf_pwm_err_t UpdateAll() noexcept override;
-  
+
   /**
    * @brief Configure complementary PWM output pair with deadtime
    * @param primary_channel Primary channel identifier
-   * @param complementary_channel Complementary channel identifier  
+   * @param complementary_channel Complementary channel identifier
    * @param deadtime_ns Deadtime between transitions in nanoseconds
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Creates a complementary PWM pair where outputs are never high simultaneously.
    * Deadtime prevents shoot-through in power electronics applications.
-   * 
+   *
    * @note Both channels must be configured and use the same timer
    * @warning Complementary operation is implemented in software, not hardware
-   * 
+   *
    * @see ConfigureChannel() to set up both channels before pairing
-   * 
-   * @implements BasePwm::SetComplementaryOutput() - Software-based complementary PWM for motor control
+   *
+   * @implements BasePwm::SetComplementaryOutput() - Software-based complementary PWM for motor
+   * control
    */
   hf_pwm_err_t SetComplementaryOutput(hf_channel_id_t primary_channel,
                                       hf_channel_id_t complementary_channel,
@@ -473,60 +474,60 @@ public:
    * @brief Get current duty cycle as a percentage
    * @param channel_id Channel identifier to query
    * @return Current duty cycle (0.0 to 1.0), or 0.0 if channel not configured
-   * 
+   *
    * @details Reads the current LEDC timer compare value and converts to percentage
    * based on the channel's current resolution setting.
-   * 
+   *
    * @note Returns 0.0 for unconfigured channels or on error
    */
   float GetDutyCycle(hf_channel_id_t channel_id) const noexcept override;
-  
+
   /**
    * @brief Get current PWM frequency in Hz
-   * @param channel_id Channel identifier to query  
+   * @param channel_id Channel identifier to query
    * @return Current frequency in Hz, or 0 if channel not configured
-   * 
+   *
    * @details Returns the frequency of the timer assigned to this channel.
    * Multiple channels sharing the same timer will return the same frequency.
-   * 
+   *
    * @note Returns 0 for unconfigured channels or on error
    */
   hf_frequency_hz_t GetFrequency(hf_channel_id_t channel_id) const noexcept override;
-  
+
   /**
    * @brief Get comprehensive channel status and configuration
    * @param channel_id Channel identifier to query
    * @param status Reference to status structure to populate
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Provides complete channel state including enabled status, current settings,
    * resolution, raw duty value, and error state for diagnostic purposes.
-   * 
+   *
    * @note Status structure is zeroed on error or for unconfigured channels
    */
   hf_pwm_err_t GetChannelStatus(hf_channel_id_t channel_id,
                                 hf_pwm_channel_status_t& status) const noexcept;
-  
+
   /**
    * @brief Get ESP32 variant-specific PWM capabilities
    * @param capabilities Reference to capabilities structure to populate
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Returns hardware-specific limits including channel count, timer count,
    * maximum resolution, frequency ranges, and supported features for the current ESP32 variant.
-   * 
+   *
    * @note Capabilities are determined at compile-time based on target ESP32 variant
    */
   hf_pwm_err_t GetCapabilities(hf_pwm_capabilities_t& capabilities) const noexcept;
-  
+
   /**
    * @brief Get the last error code for a specific channel
    * @param channel_id Channel identifier to query
    * @return Last error code for this channel, or PWM_ERR_INVALID_CHANNEL for invalid ID
-   * 
+   *
    * @details Each channel maintains its own error state for detailed error tracking.
    * Useful for debugging channel-specific issues in multi-channel applications.
-   * 
+   *
    * @note Error state is cleared on successful operations
    */
   hf_pwm_err_t GetLastError(hf_channel_id_t channel_id) const noexcept;
@@ -540,20 +541,20 @@ public:
    * @param channel_id Channel identifier to set callback for
    * @param callback Function to call on fade completion (or nullptr to disable)
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Registers a per-channel callback function that is triggered when a hardware
    * fade operation completes on the specified channel. This uses the native ESP32-C6 LEDC
    * fade completion interrupt mechanism.
-   * 
+   *
    * **Fade Completion Detection:**
    * - **LEDC Hardware Interrupt:** Native ESP32-C6 fade completion interrupt
    * - **Per-Channel Granularity:** Each channel can have its own fade callback
    * - **Automatic Registration:** Uses `ledc_cb_register()` for proper ESP-IDF integration
-   * 
+   *
    * @note This callback is only triggered for hardware fade operations (SetHardwareFade())
    * @warning Callback functions should be ISR-safe and execute quickly (< 10μs recommended)
    * @warning Do not call blocking functions or start new fade operations in the callback
-   * 
+   *
    * **Example Usage:**
    * ```cpp
    * void my_fade_callback(hf_channel_id_t channel) {
@@ -561,15 +562,15 @@ public:
    *     fade_complete_flags |= (1 << channel); // Set completion flag
    *     // Signal task, update state, etc.
    * }
-   * 
+   *
    * pwm.SetChannelFadeCallback(0, my_fade_callback);
    * pwm.SetHardwareFade(0, 0.8f, 1000); // Fade will trigger callback when complete
    * ```
-   * 
+   *
 
    * @see SetHardwareFade() for hardware fade operations
    */
-  hf_pwm_err_t SetChannelFadeCallback(hf_channel_id_t channel_id, 
+  hf_pwm_err_t SetChannelFadeCallback(hf_channel_id_t channel_id,
                                       std::function<void(hf_channel_id_t)> callback) noexcept;
 
   //==============================================================================
@@ -649,7 +650,8 @@ public:
    * @return PWM_SUCCESS on success, error code on failure
    * @note Only used when policy is ALLOW_EVICTION_WITH_CONSENT
    */
-  hf_pwm_err_t SetEvictionCallback(hf_pwm_eviction_callback_t callback, void* user_data = nullptr) noexcept;
+  hf_pwm_err_t SetEvictionCallback(hf_pwm_eviction_callback_t callback,
+                                   void* user_data = nullptr) noexcept;
 
   /**
    * @brief Set channel priority for eviction decisions
@@ -657,7 +659,8 @@ public:
    * @param priority Priority level
    * @return PWM_SUCCESS on success, error code on failure
    */
-  hf_pwm_err_t SetChannelPriority(hf_channel_id_t channel_id, hf_pwm_channel_priority_t priority) noexcept;
+  hf_pwm_err_t SetChannelPriority(hf_channel_id_t channel_id,
+                                  hf_pwm_channel_priority_t priority) noexcept;
 
   /**
    * @brief Get channel priority
@@ -712,7 +715,7 @@ private:
     hf_pwm_err_t last_error;        ///< Last error for this channel
     bool fade_active;               ///< Hardware fade is active
     bool needs_reconfiguration;     ///< Channel needs reconfiguration due to timer change
-    
+
     // Channel protection and priority for safe eviction
     hf_pwm_channel_priority_t priority; ///< Channel priority for eviction decisions
     bool is_critical;                   ///< Mark as critical (never evict)
@@ -724,23 +727,25 @@ private:
     ChannelState() noexcept
         : configured(false), enabled(false), assigned_timer(0xFF), raw_duty_value(0),
           last_error(hf_pwm_err_t::PWM_SUCCESS), fade_active(false), needs_reconfiguration(false),
-          priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr),
-          fade_callback(nullptr) {}
+          priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false),
+          description(nullptr), fade_callback(nullptr) {}
   };
 
   /**
    * @brief Internal timer state
    */
   struct TimerState {
-    bool in_use;             ///< Timer is in use
-    hf_u32_t frequency_hz;   ///< Timer frequency
-    hf_u8_t resolution_bits; ///< Timer resolution
-    hf_u8_t channel_count;   ///< Number of channels using this timer
+    bool in_use;                        ///< Timer is in use
+    hf_u32_t frequency_hz;              ///< Timer frequency
+    hf_u8_t resolution_bits;            ///< Timer resolution
+    hf_u8_t channel_count;              ///< Number of channels using this timer
     hf_pwm_clock_source_t clock_source; ///< Clock source configured for this timer
-    bool has_hardware_conflicts; ///< Timer has hardware conflicts (avoid reusing)
+    bool has_hardware_conflicts;        ///< Timer has hardware conflicts (avoid reusing)
 
-    TimerState() noexcept : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0), 
-                           clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT), has_hardware_conflicts(false) {}
+    TimerState() noexcept
+        : in_use(false), frequency_hz(0), resolution_bits(0), channel_count(0),
+          clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT),
+          has_hardware_conflicts(false) {}
   };
 
   /**
@@ -773,18 +778,18 @@ private:
    * @param resolution_bits Required resolution in bits (4-14)
    * @param clock_source Preferred clock source for timer configuration
    * @return Timer ID (0 to MAX_TIMERS-1), or -1 if no timer available
-   * 
+   *
    * @details Implements a multi-phase allocation strategy:
    * 1. **Optimal Reuse:** Find exact frequency/resolution match
    * 2. **Compatible Reuse:** Find compatible frequency within tolerance
    * 3. **New Allocation:** Allocate unused timer with validation
    * 4. **Health Check:** Clean up orphaned timers and retry
    * 5. **Safe Eviction:** Apply user-defined eviction policies
-   * 
+   *
    * @note Combines all allocation strategies for maximum efficiency
    * @warning Returns -1 if all strategies fail (no available timers)
    */
-  hf_i8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits, 
+  hf_i8_t FindOrAllocateTimer(hf_u32_t frequency_hz, hf_u8_t resolution_bits,
                               hf_pwm_clock_source_t clock_source) noexcept;
 
   /**
@@ -800,18 +805,18 @@ private:
    * @param resolution_bits Timer resolution in bits (4-14)
    * @param clock_source Clock source for timer configuration
    * @return PWM_SUCCESS on success, error code on failure
-   * 
+   *
    * @details Configures an LEDC timer with specified parameters:
    * - Maps clock source enum to ESP-IDF LEDC clock configuration
    * - Validates frequency/resolution combination against hardware constraints
    * - Updates internal timer state for resource tracking
    * - Performs actual LEDC timer hardware configuration
-   * 
+   *
    * @note Timer configuration affects all channels assigned to this timer
    * @warning Invalid combinations will cause hardware configuration failure
    */
   hf_pwm_err_t ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency_hz,
-                                      hf_u8_t resolution_bits, 
+                                      hf_u8_t resolution_bits,
                                       hf_pwm_clock_source_t clock_source) noexcept;
 
   /**
@@ -852,8 +857,6 @@ private:
    * @param channel_id Channel that completed fade
    */
   void HandleFadeComplete(hf_channel_id_t channel_id) noexcept;
-
-
 
   /**
    * @brief Register LEDC fade callback using ESP-IDF API
@@ -907,7 +910,8 @@ private:
    * @param resolution_bits PWM resolution
    * @return Clock divider value
    */
-  [[nodiscard]] hf_u32_t CalculateClockDivider(hf_u32_t frequency_hz, hf_u8_t resolution_bits) const noexcept;
+  [[nodiscard]] hf_u32_t CalculateClockDivider(hf_u32_t frequency_hz,
+                                               hf_u8_t resolution_bits) const noexcept;
 
   //==============================================================================
   // ENHANCED VALIDATION SYSTEM
@@ -917,14 +921,14 @@ private:
    * @brief Simple validation context for frequency/resolution validation
    */
   struct ValidationContext {
-    hf_u32_t frequency_hz;                    ///< Target frequency in Hz
-    hf_u8_t resolution_bits;                  ///< Target resolution in bits
-    hf_pwm_clock_source_t clock_source;       ///< Clock source for validation
-    hf_i8_t timer_id;                         ///< Optional specific timer (-1 for general)
-    
-    ValidationContext(hf_u32_t freq, hf_u8_t res, 
-                     hf_pwm_clock_source_t clk = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB,
-                     hf_i8_t timer = -1) noexcept
+    hf_u32_t frequency_hz;              ///< Target frequency in Hz
+    hf_u8_t resolution_bits;            ///< Target resolution in bits
+    hf_pwm_clock_source_t clock_source; ///< Clock source for validation
+    hf_i8_t timer_id;                   ///< Optional specific timer (-1 for general)
+
+    ValidationContext(hf_u32_t freq, hf_u8_t res,
+                      hf_pwm_clock_source_t clk = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB,
+                      hf_i8_t timer = -1) noexcept
         : frequency_hz(freq), resolution_bits(res), clock_source(clk), timer_id(timer) {}
   };
 
@@ -932,21 +936,19 @@ private:
    * @brief Comprehensive validation result with detailed information
    */
   struct ValidationResult {
-    bool is_valid;                            ///< Overall validation result
-    hf_pwm_err_t error_code;                  ///< Specific error code if invalid
-    const char* reason;                       ///< Human-readable reason for failure
-    hf_u8_t max_achievable_resolution;        ///< Maximum resolution for this frequency
-    hf_u32_t max_achievable_frequency;        ///< Maximum frequency for this resolution
-    uint64_t required_clock_hz;               ///< Required timer clock frequency
-    uint64_t available_clock_hz;              ///< Available source clock frequency
-    
+    bool is_valid;                     ///< Overall validation result
+    hf_pwm_err_t error_code;           ///< Specific error code if invalid
+    const char* reason;                ///< Human-readable reason for failure
+    hf_u8_t max_achievable_resolution; ///< Maximum resolution for this frequency
+    hf_u32_t max_achievable_frequency; ///< Maximum frequency for this resolution
+    uint64_t required_clock_hz;        ///< Required timer clock frequency
+    uint64_t available_clock_hz;       ///< Available source clock frequency
+
     ValidationResult() noexcept
         : is_valid(false), error_code(hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER),
           reason("Unknown error"), max_achievable_resolution(0), max_achievable_frequency(0),
           required_clock_hz(0), available_clock_hz(0) {}
   };
-
-
 
   /**
    * @brief Unified comprehensive validation for frequency/resolution combinations
@@ -954,14 +956,15 @@ private:
    * @return Detailed validation result with recommendations
    * @note This replaces all individual validation functions with a unified approach
    */
-  [[nodiscard]] ValidationResult ValidateFrequencyResolutionComplete(const ValidationContext& context) const noexcept;
+  [[nodiscard]] ValidationResult ValidateFrequencyResolutionComplete(
+      const ValidationContext& context) const noexcept;
 
   /**
    * @brief Get source clock frequency for a given clock source
    * @param clock_source Clock source to query
    * @return Clock frequency in Hz
    */
-   [[nodiscard]] hf_u32_t GetSourceClockFrequency(hf_pwm_clock_source_t clock_source) const noexcept;
+  [[nodiscard]] hf_u32_t GetSourceClockFrequency(hf_pwm_clock_source_t clock_source) const noexcept;
 
   /**
    * @brief Calculate maximum achievable resolution for a given frequency
@@ -969,8 +972,9 @@ private:
    * @param clock_source Clock source to use (default: APB)
    * @return Maximum resolution in bits, or 0 if frequency too high
    */
-   [[nodiscard]] hf_u8_t CalculateMaxResolution(hf_u32_t frequency_hz, 
-                                hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
+  [[nodiscard]] hf_u8_t CalculateMaxResolution(
+      hf_u32_t frequency_hz, hf_pwm_clock_source_t clock_source =
+                                 hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
 
   /**
    * @brief Calculate maximum achievable frequency for a given resolution
@@ -978,8 +982,9 @@ private:
    * @param clock_source Clock source to use (default: APB)
    * @return Maximum frequency in Hz, or 0 if resolution too high
    */
-   [[nodiscard]] hf_u32_t CalculateMaxFrequency(hf_u8_t resolution_bits,
-                                hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
+  [[nodiscard]] hf_u32_t CalculateMaxFrequency(
+      hf_u8_t resolution_bits, hf_pwm_clock_source_t clock_source =
+                                   hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
 
   /**
    * @brief Enhanced duty cycle validation with overflow protection
@@ -988,7 +993,8 @@ private:
    * @return true if duty cycle is valid and safe
    * @note Implements ESP-IDF overflow protection: duty < 2^resolution
    */
-   [[nodiscard]] bool ValidateDutyCycleRange(hf_u32_t raw_duty, hf_u8_t resolution_bits) const noexcept;
+  [[nodiscard]] bool ValidateDutyCycleRange(hf_u32_t raw_duty,
+                                            hf_u8_t resolution_bits) const noexcept;
 
   /**
    * @brief Check if two clock sources are compatible for timer sharing
@@ -997,7 +1003,8 @@ private:
    * @return true if compatible (can share timer), false otherwise
    * @note AUTO clock is compatible with any specific clock
    */
-   [[nodiscard]] bool IsClockSourceCompatible(hf_pwm_clock_source_t timer_clock, hf_pwm_clock_source_t requested_clock) const noexcept;
+  [[nodiscard]] bool IsClockSourceCompatible(hf_pwm_clock_source_t timer_clock,
+                                             hf_pwm_clock_source_t requested_clock) const noexcept;
 
   /**
    * @brief Find best alternative resolution using dynamic calculation
@@ -1006,10 +1013,10 @@ private:
    * @param clock_source Clock source for calculation
    * @return Best alternative resolution, or preferred if no better option
    */
-   [[nodiscard]] hf_u8_t FindBestAlternativeResolutionDynamic(hf_u32_t frequency_hz, hf_u8_t preferred_resolution,
-                                               hf_pwm_clock_source_t clock_source = hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
-
-
+  [[nodiscard]] hf_u8_t FindBestAlternativeResolutionDynamic(
+      hf_u32_t frequency_hz, hf_u8_t preferred_resolution,
+      hf_pwm_clock_source_t clock_source =
+          hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB) const noexcept;
 
   /**
    * @brief Notify channels that their timer has been reconfigured
@@ -1017,7 +1024,8 @@ private:
    * @param new_frequency New frequency
    * @param new_resolution New resolution
    */
-  void NotifyTimerReconfiguration(hf_u8_t timer_id, hf_u32_t new_frequency, hf_u8_t resolution_bits) noexcept;
+  void NotifyTimerReconfiguration(hf_u8_t timer_id, hf_u32_t new_frequency,
+                                  hf_u8_t resolution_bits) noexcept;
 
   /**
    * @brief Get timer usage information for debugging
@@ -1065,8 +1073,6 @@ private:
    */
   hf_i8_t AttemptForceEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bits) noexcept;
 
-
-
   //==============================================================================
   // MEMBER VARIABLES
   //==============================================================================
@@ -1091,7 +1097,8 @@ private:
   bool auto_fallback_enabled_;       ///< Whether to automatically try alternative resolutions
 
   // Safe eviction policy management
-  hf_pwm_eviction_policy_t eviction_policy_;   ///< Timer eviction policy (default: STRICT_NO_EVICTION)
+  hf_pwm_eviction_policy_t
+      eviction_policy_; ///< Timer eviction policy (default: STRICT_NO_EVICTION)
   hf_pwm_eviction_callback_t eviction_callback_; ///< User callback for eviction consent
-  void* eviction_callback_user_data_;           ///< User data for eviction callback
+  void* eviction_callback_user_data_;            ///< User data for eviction callback
 };

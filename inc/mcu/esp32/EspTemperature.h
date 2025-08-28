@@ -497,7 +497,7 @@ private:
   // [PRIVATE] MEMBER VARIABLES
   //==============================================================//
 
-  mutable RtosMutex mutex_;          ///< Thread safety mutex (RTOS-aware)
+  mutable RtosMutex mutex_;           ///< Thread safety mutex (RTOS-aware)
   esp_temp_state_t esp_state_;        ///< ESP32-specific state
   esp_temp_config_t esp_config_;      ///< ESP32-specific configuration
   hf_temp_config_t base_config_;      ///< Base class configuration
@@ -603,9 +603,9 @@ private:
   static const esp_temp_range_info_t RANGE_INFO[]; ///< Range information table
 
   // Global shared driver state (ESP-IDF temperature sensor is singleton)
-  static RtosMutex s_shared_mutex_;                       ///< Protect shared handle/refcount
-  static std::atomic<int> s_refcount_;                    ///< Number of active instances
-  static temperature_sensor_handle_t s_shared_handle_;    ///< Shared ESP-IDF handle
+  static RtosMutex s_shared_mutex_;                    ///< Protect shared handle/refcount
+  static std::atomic<int> s_refcount_;                 ///< Number of active instances
+  static temperature_sensor_handle_t s_shared_handle_; ///< Shared ESP-IDF handle
 };
 
 //--------------------------------------

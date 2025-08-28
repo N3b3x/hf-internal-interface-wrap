@@ -1038,17 +1038,17 @@ bool test_nvs_stress() noexcept {
 
 // === Main Test Runner ===
 
-  extern "C" void app_main(void) {
-    ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-    ESP_LOGI(TAG, "║                    ESP32-C6 NVS COMPREHENSIVE TEST SUITE                     ║");
-    ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
-    ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
-    ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                  ║");
-    ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                               ║");
-    ESP_LOGI(TAG, "║ Features: NVS, Statistics, Diagnostics, Metadata, Edge Cases, Stress Tests   ║");
-    ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                               ║");
-    ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
-    ESP_LOGI(TAG, "\n");
+extern "C" void app_main(void) {
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    ESP32-C6 NVS COMPREHENSIVE TEST SUITE                     ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                  ║");
+  ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                               ║");
+  ESP_LOGI(TAG, "║ Features: NVS, Statistics, Diagnostics, Metadata, Edge Cases, Stress Tests   ║");
+  ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                               ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "\n");
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 

@@ -29,11 +29,11 @@
 
 #pragma once
 
-#include "../../../base/BasePwm.h" // For hf_pwm_err_t
+#include "../../../base/BasePwm.h"       // For hf_pwm_err_t
+#include "../../../base/HardwareTypes.h" // For basic hardware types
+#include "../../../utils/McuSelect.h"    // Central MCU platform selection (includes all ESP-IDF)
 #include "EspTypes_Base.h"
 #include "EspTypes_GPIO.h" // For hf_gpio_num_t
-#include "../../../base/HardwareTypes.h" // For basic hardware types
-#include "../../../utils/McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
 
 //==============================================================================
 // ESP32 PWM TYPE MAPPINGS
@@ -55,7 +55,8 @@ static constexpr uint8_t HF_PWM_MAX_CHANNELS = 8;
 #endif
 static constexpr uint8_t HF_PWM_MAX_TIMERS = 4;
 static constexpr uint8_t HF_PWM_MAX_RESOLUTION = 14;
-static constexpr uint32_t HF_PWM_MIN_FREQUENCY = 100; // ESP32-C6 LEDC practical minimum with 10-bit resolution
+static constexpr uint32_t HF_PWM_MIN_FREQUENCY =
+    100; // ESP32-C6 LEDC practical minimum with 10-bit resolution
 static constexpr uint32_t HF_PWM_MAX_FREQUENCY = 20000000; // ESP32-C6 LEDC practical maximum
 static constexpr uint32_t HF_PWM_DEFAULT_FREQUENCY = 1000;
 static constexpr uint8_t HF_PWM_DEFAULT_RESOLUTION = 10;
@@ -67,31 +68,31 @@ static constexpr uint32_t HF_PWM_APB_CLOCK_HZ = 80000000;
 
 /**
  * @brief ESP32 PWM clock source selection with frequency and constraint details.
- * 
+ *
  * @details Clock source selection is critical for PWM performance and determines
  * the maximum achievable frequency for a given resolution. The formula is:
  * **Max Frequency = Clock Source Frequency / (2^resolution_bits)**
- * 
+ *
  * ## Clock Source Specifications:
- * 
+ *
  * ### APB_CLK (80MHz) - Recommended for most applications
  * - **Frequency:** 80MHz (stable, derived from main crystal)
  * - **Stability:** High (crystal-locked)
  * - **Max PWM Freq:** ~78kHz @ 10-bit, ~19.5kHz @ 12-bit, ~4.9kHz @ 14-bit
  * - **Use Cases:** Motor control, servo control, LED dimming, audio PWM
- * 
+ *
  * ### XTAL_CLK (40MHz) - Power-efficient option
  * - **Frequency:** 40MHz (main crystal oscillator)
  * - **Stability:** High (primary crystal)
  * - **Max PWM Freq:** ~39kHz @ 10-bit, ~9.8kHz @ 12-bit, ~2.4kHz @ 14-bit
  * - **Use Cases:** Low-frequency PWM, power-sensitive applications
- * 
+ *
  * ### RC_FAST_CLK (~17.5MHz) - Lowest power consumption
  * - **Frequency:** ~17.5MHz (internal RC oscillator)
  * - **Stability:** Moderate (temperature dependent)
  * - **Max PWM Freq:** ~17kHz @ 10-bit, ~4.3kHz @ 12-bit, ~1.1kHz @ 14-bit
  * - **Use Cases:** Low-power applications, simple LED control
- * 
+ *
  * @warning **ESP32 Variant Constraints:**
  * - **ESP32 Classic:** Each timer can use different clock sources independently
  * - **ESP32-S2/S3/C3/C6/H2:** All timers typically share the same clock source
@@ -143,34 +144,34 @@ enum class hf_pwm_intr_type_t : uint8_t {
  * @details Controls how the PWM system handles timer resource conflicts.
  */
 enum class hf_pwm_eviction_policy_t : uint8_t {
-  STRICT_NO_EVICTION = 0,           ///< Never evict existing channels (default, safest)
-  ALLOW_EVICTION_WITH_CONSENT = 1,  ///< Require callback approval before eviction
-  ALLOW_EVICTION_NON_CRITICAL = 2,  ///< Only evict channels marked as non-critical
-  FORCE_EVICTION = 3                ///< Aggressive eviction (advanced users only)
+  STRICT_NO_EVICTION = 0,          ///< Never evict existing channels (default, safest)
+  ALLOW_EVICTION_WITH_CONSENT = 1, ///< Require callback approval before eviction
+  ALLOW_EVICTION_NON_CRITICAL = 2, ///< Only evict channels marked as non-critical
+  FORCE_EVICTION = 3               ///< Aggressive eviction (advanced users only)
 };
 
 /**
  * @brief Channel priority levels for eviction decisions.
  */
 enum class hf_pwm_channel_priority_t : uint8_t {
-  PRIORITY_LOW = 0,        ///< Low priority - can be evicted first
-  PRIORITY_NORMAL = 1,     ///< Normal priority - default
-  PRIORITY_HIGH = 2,       ///< High priority - protect from eviction
-  PRIORITY_CRITICAL = 3    ///< Critical priority - never evict
+  PRIORITY_LOW = 0,     ///< Low priority - can be evicted first
+  PRIORITY_NORMAL = 1,  ///< Normal priority - default
+  PRIORITY_HIGH = 2,    ///< High priority - protect from eviction
+  PRIORITY_CRITICAL = 3 ///< Critical priority - never evict
 };
 
 /**
  * @brief Eviction request information passed to user callback.
  */
 struct hf_pwm_eviction_request_t {
-  hf_channel_id_t affected_channel;     ///< Channel that would be affected
-  hf_u8_t current_timer;                ///< Timer that would be reconfigured
-  hf_u32_t current_frequency;           ///< Current timer frequency
-  hf_u8_t current_resolution;           ///< Current timer resolution
-  hf_u32_t requested_frequency;         ///< Requested new frequency
-  hf_u8_t requested_resolution;         ///< Requested new resolution
-  hf_channel_id_t requesting_channel;   ///< Channel requesting the change
-  
+  hf_channel_id_t affected_channel;   ///< Channel that would be affected
+  hf_u8_t current_timer;              ///< Timer that would be reconfigured
+  hf_u32_t current_frequency;         ///< Current timer frequency
+  hf_u8_t current_resolution;         ///< Current timer resolution
+  hf_u32_t requested_frequency;       ///< Requested new frequency
+  hf_u8_t requested_resolution;       ///< Requested new resolution
+  hf_channel_id_t requesting_channel; ///< Channel requesting the change
+
   hf_pwm_eviction_request_t() noexcept
       : affected_channel(0), current_timer(0), current_frequency(0), current_resolution(0),
         requested_frequency(0), requested_resolution(0), requesting_channel(0) {}
@@ -192,7 +193,8 @@ enum class hf_pwm_eviction_decision_t : uint8_t {
  * @param user_data User-provided data
  * @return Decision on whether to allow eviction
  */
-using hf_pwm_eviction_callback_t = hf_pwm_eviction_decision_t(*)(const hf_pwm_eviction_request_t& request, void* user_data);
+using hf_pwm_eviction_callback_t =
+    hf_pwm_eviction_decision_t (*)(const hf_pwm_eviction_request_t& request, void* user_data);
 
 /**
  * @brief ESP32 PWM unit configuration.
@@ -258,23 +260,23 @@ struct hf_pwm_timing_config_t {
 
 /**
  * @brief ESP32 PWM channel configuration with comprehensive LEDC feature support.
- * 
+ *
  * @details This structure provides complete control over LEDC channel configuration,
  * including advanced features like hardware fade, phase shifting, and resource
  * protection. All parameters are validated against hardware constraints.
- * 
+ *
  * ## Core Configuration:
  * - **GPIO Pin:** Any valid GPIO pin (check ESP32 variant pin matrix)
  * - **Channel/Timer:** Automatic assignment or manual control
  * - **Frequency/Resolution:** Explicit control with validation
  * - **Clock Source:** Per-channel preference (subject to variant constraints)
- * 
+ *
  * ## Advanced Features:
  * - **Phase Shift (hpoint):** Delay PWM start within period (0 to max_duty)
  * - **Output Inversion:** Hardware-level signal inversion
  * - **Idle Level:** Output state when PWM is disabled
  * - **Priority System:** Protection against resource eviction
- * 
+ *
  * ## Usage Examples:
  * ```cpp
  * // Basic LED dimming
@@ -283,7 +285,7 @@ struct hf_pwm_timing_config_t {
  * led_config.frequency_hz = 1000;      // 1kHz
  * led_config.resolution_bits = 10;     // 10-bit (0-1023)
  * led_config.duty_initial = 512;       // 50% brightness
- * 
+ *
  * // Motor control with high resolution
  * hf_pwm_channel_config_t motor_config = {};
  * motor_config.gpio_pin = 4;
@@ -291,7 +293,7 @@ struct hf_pwm_timing_config_t {
  * motor_config.resolution_bits = 12;   // 12-bit (0-4095) for smooth control
  * motor_config.is_critical = true;     // Protect from eviction
  * motor_config.description = "Motor PWM";
- * 
+ *
  * // Servo control with precise timing
  * hf_pwm_channel_config_t servo_config = {};
  * servo_config.gpio_pin = 18;
@@ -301,16 +303,16 @@ struct hf_pwm_timing_config_t {
  * ```
  */
 struct hf_pwm_channel_config_t {
-  hf_gpio_num_t gpio_pin;       ///< GPIO pin for PWM output (check pin matrix)
-  uint8_t channel_id;           ///< Channel ID (0 to variant max)
-  uint8_t timer_id;             ///< Timer ID (0 to variant max)
-  hf_pwm_mode_t speed_mode;     ///< Speed mode configuration
-  
+  hf_gpio_num_t gpio_pin;   ///< GPIO pin for PWM output (check pin matrix)
+  uint8_t channel_id;       ///< Channel ID (0 to variant max)
+  uint8_t timer_id;         ///< Timer ID (0 to variant max)
+  hf_pwm_mode_t speed_mode; ///< Speed mode configuration
+
   // Explicit frequency and resolution control
-  uint32_t frequency_hz;        ///< PWM frequency in Hz (validated against clock source)
-  uint8_t resolution_bits;      ///< PWM resolution in bits (4-14, validated)
+  uint32_t frequency_hz;              ///< PWM frequency in Hz (validated against clock source)
+  uint8_t resolution_bits;            ///< PWM resolution in bits (4-14, validated)
   hf_pwm_clock_source_t clock_source; ///< Preferred clock source for this channel
-  
+
   uint32_t duty_initial;        ///< Initial duty cycle value (RAW for specified resolution)
   hf_pwm_intr_type_t intr_type; ///< Interrupt type configuration
   bool invert_output;           ///< Invert output signal polarity
@@ -327,12 +329,12 @@ struct hf_pwm_channel_config_t {
 
   hf_pwm_channel_config_t() noexcept
       : gpio_pin(static_cast<hf_gpio_num_t>(HF_INVALID_PIN)), channel_id(0), timer_id(0),
-        speed_mode(hf_pwm_mode_t::HF_PWM_MODE_BASIC), 
-        frequency_hz(HF_PWM_DEFAULT_FREQUENCY), resolution_bits(HF_PWM_DEFAULT_RESOLUTION),
-        clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB), 
-        duty_initial(0), intr_type(hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE), invert_output(false), 
-        hpoint(0), idle_level(0), output_invert(false),
-        priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL), is_critical(false), description(nullptr) {}
+        speed_mode(hf_pwm_mode_t::HF_PWM_MODE_BASIC), frequency_hz(HF_PWM_DEFAULT_FREQUENCY),
+        resolution_bits(HF_PWM_DEFAULT_RESOLUTION),
+        clock_source(hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB), duty_initial(0),
+        intr_type(hf_pwm_intr_type_t::HF_PWM_INTR_DISABLE), invert_output(false), hpoint(0),
+        idle_level(0), output_invert(false), priority(hf_pwm_channel_priority_t::PRIORITY_NORMAL),
+        is_critical(false), description(nullptr) {}
 };
 
 /**
