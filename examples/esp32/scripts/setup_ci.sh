@@ -252,14 +252,10 @@ main() {
     echo "Setting up CI environment..."
     echo ""
     
-    # Debug environment variables
-    echo "CI Environment Variables:"
-    echo "  BUILD_PATH: ${BUILD_PATH:-'not set (using default: ci_build_path)'}"
-    echo "  ESP32_PROJECT_PATH: ${ESP32_PROJECT_PATH:-'not set'}"
-    echo "  IDF_TARGET: ${IDF_TARGET:-'not set'}"
-    echo "  BUILD_TYPE: ${BUILD_TYPE:-'not set'}"
-    echo "  APP_TYPE: ${APP_TYPE:-'not set'}"
-    echo "  IDF_VERSION: ${IDF_VERSION:-'not set (handled by ESP-IDF CI action)'}"
+    # Show only relevant environment variables for CI setup
+    echo "CI Setup Environment:"
+    echo "  BUILD_PATH: ${BUILD_PATH:-ci_build_path}"
+    echo "  ESP32_PROJECT_PATH: ${ESP32_PROJECT_PATH:-examples/esp32}"
     echo ""
     
     # Install essential build tools

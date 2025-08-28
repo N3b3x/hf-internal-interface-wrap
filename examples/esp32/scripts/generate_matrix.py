@@ -220,9 +220,12 @@ def generate_matrix():
         for idf_version, build_type in effective_combinations:
             # Create Docker-safe version for artifact naming (replace / with -)
             docker_safe_version = idf_version.replace('/', '-')
+            # Create file-safe version for build directories (replace / and . with _)
+            file_safe_version = idf_version.replace('/', '_').replace('.', '_')
             candidate = {
                 'idf_version': idf_version,  # Git format for ESP-IDF cloning
                 'idf_version_docker': docker_safe_version,  # Docker-safe format for artifacts
+                'idf_version_file': file_safe_version,  # File-safe format for build directories
                 'build_type': build_type,
                 'app_name': app_name,  # Use app_name for consistency
                 'target': config['metadata'].get('target', 'esp32c6'),  # Target from config

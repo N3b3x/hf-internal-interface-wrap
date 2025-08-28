@@ -224,9 +224,8 @@ jobs:
             
             # Construct the build directory path based on the known pattern
             # Format: build-app-{app_type}-type-{build_type}-target-{target}-idf-{sanitized_idf_version}
-            sanitized_idf_version=$(echo "${{ matrix.idf_version }}" | sed 's/[\/\.]/_/g')
             build_dir="build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-"
-            build_dir="${build_dir}${sanitized_idf_version}"
+            build_dir="${build_dir}${{ matrix.idf_version_file }}"
             
             echo "Looking for build directory: $build_dir"
             
@@ -251,7 +250,7 @@ jobs:
           retention-days: 7
           path: >-
             ${{ env.BUILD_PATH }}/build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-
-            ${{ matrix.target }}-idf-${{ matrix.idf_version_docker }}
+            ${{ matrix.target }}-idf-${{ matrix.idf_version_file }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
