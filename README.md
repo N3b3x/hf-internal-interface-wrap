@@ -1,4 +1,4 @@
-# 🔧 Hardware Abstraction Layer - Multi-MCU Peripheral Interface
+# 🔧 Internal Interface Layer: **Multi-MCU Peripheral Interface**
 
 <div align="center">
 
