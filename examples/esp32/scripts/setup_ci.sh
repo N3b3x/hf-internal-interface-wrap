@@ -25,7 +25,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "  ESP-IDF installation is handled by espressif/esp-idf-ci-action@v1"
     echo ""
     echo "WHAT IT DOES:"
-    echo "  • Installs Python dependencies (PyYAML, yq)"
     echo "  • Sets up CI build directory structure with all necessary files"
     echo "  • Prepares environment for ESP-IDF CI action"
     echo ""
@@ -51,21 +50,6 @@ if ! source "$SCRIPT_DIR/setup_common.sh"; then
     exit 1
 fi
 
-# Function to install Python dependencies for CI (uses shared functions)
-install_ci_python_deps() {
-    print_status "Installing Python dependencies for CI..."
-    
-    # Ensure user bin directory exists and is in PATH (self-contained)
-    mkdir -p ~/.local/bin
-    export PATH="$HOME/.local/bin:$PATH"
-    
-    # Use shared functions from setup_common.sh
-    install_python_deps  # Installs PyYAML and other Python dependencies
-    install_yq           # Installs yq with proper OS detection and fallbacks
-    
-    print_success "Python dependencies for CI installed"
-}
-
 # Function to verify CI setup
 verify_ci_setup() {
     print_status "Verifying CI setup..."
@@ -76,23 +60,12 @@ verify_ci_setup() {
     
     # Check essential tools
     local tools_ok=true
-    for tool in python3 yq; do
+    for tool in python3; do
         if command_exists "$tool"; then
             print_info "✓ $tool: $(command -v "$tool")"
         else
             print_error "✗ $tool: not found"
             tools_ok=false
-        fi
-    done
-    
-    # Check Python dependencies
-    local python_ok=true
-    for module in yaml; do
-        if python3 -c "import $module" 2>/dev/null; then
-            print_info "✓ Python module: $module"
-        else
-            print_error "✗ Python module: $module: not found"
-            python_ok=false
         fi
     done
     
@@ -108,7 +81,7 @@ verify_ci_setup() {
     # Summary
     echo ""
     print_info "CI Setup Verification Summary:"
-    if $tools_ok && $python_ok && $structure_ok; then
+    if $tools_ok && $structure_ok; then
         print_success "All components ready for CI builds"
         return 0
     else
@@ -239,9 +212,6 @@ main() {
     echo "  PATH: $PATH"
     echo "  User bin directory: $HOME/.local/bin"
     echo ""
-    
-    # Install Python dependencies
-    install_ci_python_deps
     
     # Setup CI build directory structure
     setup_ci_build_structure
