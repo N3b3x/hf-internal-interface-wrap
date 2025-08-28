@@ -246,8 +246,8 @@ jobs:
               ls -la "$build_dir/"
               echo "Build directory ready for artifact upload"
               
-              # Export for the artifact upload step
-              echo "BUILD_DIRECTORY_NAME=$(basename $build_dir)" >> $GITHUB_ENV
+              # Export for the artifact upload step using modern GitHub Actions output
+              echo "BUILD_DIRECTORY_NAME=$(basename $build_dir)" >> $GITHUB_OUTPUT
             else
               echo "ERROR: Build directory not found: $build_dir"
               echo "Available directories:"
@@ -259,9 +259,9 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ env.BUILD_DIRECTORY_NAME }}
+          name: fw-${{ steps.build.outputs.BUILD_DIRECTORY_NAME }}
           retention-days: 7
-          path: ${{ env.BUILD_PATH }}/${{ env.BUILD_DIRECTORY_NAME }}
+          path: ${{ env.BUILD_PATH }}/${{ steps.build.outputs.BUILD_DIRECTORY_NAME }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)

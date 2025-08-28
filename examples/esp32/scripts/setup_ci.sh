@@ -55,35 +55,106 @@ fi
 install_ci_build_tools() {
     echo "Installing essential build tools for CI..."
     
-    # Add LLVM APT repository for clang-20
-    if ! command -v clang-20 &> /dev/null; then
-        echo "Installing Clang-20 toolchain..."
-        wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | \
-            sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
-        ubuntu_codename=$(lsb_release -cs)
-        echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | \
-            sudo tee /etc/apt/sources.list.d/llvm.list
-        
-        sudo apt-get update
-        sudo apt-get install -y \
-            clang-20 \
-            clang-format-20 \
-            clang-tidy-20
-        
-        # Set clang-20 as default
-        sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100
-        sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-20 100
-        sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
-        
-        echo "Clang-20 toolchain installed successfully"
-    else
-        echo "Clang-20 toolchain already installed"
+    # Ensure user bin directory exists and is in PATH (self-contained)
+    mkdir -p ~/.local/bin
+    export PATH="$HOME/.local/bin:$PATH"
+    
+    # Check if Clang tools already exist in user directory (from cache)
+    if [ -f ~/.local/bin/clang-20 ] && [ -f ~/.local/bin/clang-format-20 ] && [ -f ~/.local/bin/clang-tidy-20 ]; then
+        echo "Clang-20 toolchain found in ~/.local/bin (from cache) - no installation needed"
+        return 0
     fi
+    
+    echo "Clang-20 toolchain not found in cache - installing via APT..."
+    
+    # Add LLVM APT repository for clang-20
+    wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | \
+        sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+    ubuntu_codename=$(lsb_release -cs)
+    echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | \
+        sudo tee /etc/apt/sources.list.d/llvm.list
+    
+    sudo apt-get update
+    sudo apt-get install -y \
+        clang-20 \
+        clang-format-20 \
+        clang-tidy-20
+    
+    # Copy system-installed binaries to user-writable directory for caching
+    echo "Copying Clang tools to ~/.local/bin for caching..."
+    cp /usr/bin/clang-20 ~/.local/bin/
+    cp /usr/bin/clang-format-20 ~/.local/bin/
+    cp /usr/bin/clang-tidy-20 ~/.local/bin/
+    
+    # Verify the copies work properly
+    echo "Verifying copied tools functionality..."
+    
+    # Test clang-20
+    echo "Testing clang-20..."
+    if ~/.local/bin/clang-20 --version >/dev/null 2>&1; then
+        echo "✓ clang-20: $(~/.local/bin/clang-20 --version | head -1)"
+    else
+        echo "✗ clang-20: failed to run"
+        return 1
+    fi
+    
+    # Test clang-format-20
+    echo "Testing clang-format-20..."
+    if ~/.local/bin/clang-format-20 --version >/dev/null 2>&1; then
+        echo "✓ clang-format-20: $(~/.local/bin/clang-format-20 --version | head -1)"
+    else
+        echo "✗ clang-format-20: failed to run"
+        return 1
+    fi
+    
+    # Test clang-tidy-20
+    echo "Testing clang-tidy-20..."
+    if ~/.local/bin/clang-tidy-20 --version >/dev/null 2>&1; then
+        echo "✓ clang-tidy-20: $(~/.local/bin/clang-tidy-20 --version | head -1)"
+    else
+        echo "✗ clang-tidy-20: failed to run"
+        return 1
+    fi
+    
+    # Test actual functionality (not just version)
+    echo "Testing tool functionality..."
+    
+    # Test clang-format with a simple C++ snippet
+    echo 'int main() { return 0; }' > /tmp/test.cpp
+    if ~/.local/bin/clang-format-20 /tmp/test.cpp >/dev/null 2>&1; then
+        echo "✓ clang-format-20: can format C++ code"
+    else
+        echo "✗ clang-format-20: failed to format code"
+        rm -f /tmp/test.cpp
+        return 1
+    fi
+    rm -f /tmp/test.cpp
+    
+    # Set up alternatives for system-wide compatibility
+    echo "Setting up system alternatives..."
+    sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100
+    sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100
+    sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-20 100
+    sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
+    
+    # Keep system packages to avoid breaking dependencies
+    # The copied binaries might depend on system libraries
+    echo "Keeping system packages to maintain dependencies"
+    
+    # Remove only the APT repository to clean up
+    sudo rm -f /etc/apt/sources.list.d/llvm.list
+    sudo rm -f /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+    
+    echo "Clang-20 toolchain installed successfully to ~/.local/bin with system alternatives configured"
 }
 
 # Function to install Python dependencies for CI
 install_ci_python_deps() {
     echo "Installing Python dependencies for CI..."
+    
+    # Ensure user bin directory exists and is in PATH (self-contained)
+    mkdir -p ~/.local/bin
+    export PATH="$HOME/.local/bin:$PATH"
     
     # Install PyYAML for configuration parsing
     if ! python3 -c "import yaml" 2>/dev/null; then
@@ -97,11 +168,8 @@ install_ci_python_deps() {
     if ! command -v yq &> /dev/null; then
         echo "Installing yq..."
         # Install to user-writable directory for better caching
-        mkdir -p ~/.local/bin
         wget -qO ~/.local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
         chmod +x ~/.local/bin/yq
-        # Add to PATH for this session
-        export PATH="$HOME/.local/bin:$PATH"
         echo "yq installed successfully to ~/.local/bin"
     else
         echo "yq already installed"
@@ -112,7 +180,8 @@ install_ci_python_deps() {
 verify_ci_setup() {
     echo "Verifying CI setup..."
     
-    # Ensure user bin directory is in PATH for verification
+    # Ensure user bin directory exists and is in PATH (self-contained)
+    mkdir -p ~/.local/bin
     export PATH="$HOME/.local/bin:$PATH"
     
     # Check essential tools
@@ -161,6 +230,10 @@ verify_ci_setup() {
 # Function to setup CI build directory structure
 setup_ci_build_structure() {
     echo "Setting up CI build directory structure..."
+    
+    # Ensure user bin directory exists and is in PATH (self-contained)
+    mkdir -p ~/.local/bin
+    export PATH="$HOME/.local/bin:$PATH"
     
     # Get project paths
     local project_dir="$SCRIPT_DIR/.."
@@ -227,6 +300,10 @@ setup_ci_build_structure() {
 verify_ci_build_structure() {
     echo "Verifying CI build structure..."
     
+    # Ensure user bin directory exists and is in PATH (self-contained)
+    mkdir -p ~/.local/bin
+    export PATH="$HOME/.local/bin:$PATH"
+    
     local ci_build_path="${BUILD_PATH:-ci_build_path}"
     local structure_ok=true
     
@@ -259,7 +336,10 @@ main() {
     echo "Setting up CI environment..."
     echo ""
     
-    # Ensure user bin directory is in PATH for all operations
+    # Ensure user bin directory exists and is in PATH for all operations
+    # This PATH export persists throughout the entire script execution
+    # Note: Each function is also self-contained and sets up its own PATH if called independently
+    mkdir -p ~/.local/bin
     export PATH="$HOME/.local/bin:$PATH"
     
     # Show only relevant environment variables for CI setup
@@ -267,6 +347,7 @@ main() {
     echo "  BUILD_PATH: ${BUILD_PATH:-ci_build_path}"
     echo "  ESP32_PROJECT_PATH: ${ESP32_PROJECT_PATH:-examples/esp32}"
     echo "  PATH: $PATH"
+    echo "  User bin directory: $HOME/.local/bin"
     echo ""
     
     # Install essential build tools
