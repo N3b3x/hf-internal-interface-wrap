@@ -179,13 +179,13 @@ jobs:
           # Generate matrix to see all combinations
           MATRIX=$(python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --format json)
           
-          # Extract unique IDF versions using Python
+          # Extract unique IDF versions using Python and output as JSON array
           UNIQUE_VERSIONS=$(python3 -c "
             import json
             data = json.loads('''$MATRIX''')
-            versions = [item['idf_version'] for item in data['include']]
-            print(' '.join(set(versions)))
-          " 2>/dev/null || echo "release/v5.5")
+            versions = list(set([item['idf_version'] for item in data['include']]))
+            print(json.dumps(versions))
+          " 2>/dev/null || echo '["release/v5.5"]')
           
           echo "versions=${UNIQUE_VERSIONS}" >> "$GITHUB_OUTPUT"
           echo "Unique IDF versions: ${UNIQUE_VERSIONS}"

@@ -21,16 +21,6 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Cache Doxygen tools and APT packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/apt
-            /var/cache/apt
-          key: doxygen-tools-${{ runner.os }}-${{ hashFiles('Doxyfile', 'docs/**') }}
-          restore-keys: |
-            doxygen-tools-${{ runner.os }}-
-      
       - name: Check documentation links
         run: python3 docs/check_docs.py docs/index.md
       
@@ -42,6 +32,14 @@ jobs:
           else
             echo "Doxygen already installed"
           fi
+      
+      - name: Cache Doxygen binary
+        uses: actions/cache@v4
+        with:
+          path: /usr/bin/doxygen
+          key: doxygen-binary-${{ runner.os }}-${{ hashFiles('Doxyfile') }}
+          restore-keys: |
+            doxygen-binary-${{ runner.os }}-
       
       - name: Build documentation
         run: |
