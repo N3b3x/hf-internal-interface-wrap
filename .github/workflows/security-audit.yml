@@ -146,7 +146,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-python-security-audit-results
+          name: python-security-audit-results
           path: |
             *-results.json
             python_files.txt
@@ -285,7 +285,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-secrets-detection-results
+          name: secrets-detection-results
           path: |
             .secrets.baseline.json
             gitleaks-results.json
@@ -508,7 +508,7 @@ jobs:
       - name: Upload comprehensive security report
         uses: actions/upload-artifact@v4
         with:
-          name: fw-security-summary-report
+          name: security-summary-report
           path: security-summary-report.md
           retention-days: 90
           
