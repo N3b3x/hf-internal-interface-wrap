@@ -86,7 +86,8 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            /usr/local/bin
+            ~/.local/bin
+            ~/.local/share
           key: >-
             esp32-ci-essential-tools-${{ runner.os }}-${{ 
               hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
@@ -267,7 +268,8 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            /usr/local/bin
+            ~/.local/bin
+            ~/.local/share
           key: >-
             esp32-ci-essential-tools-${{ runner.os }}-${{ 
               hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
@@ -385,7 +387,8 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            /usr/local/bin
+            ~/.local/bin
+            ~/.local/share
           key: >-
             esp32-ci-essential-tools-${{ runner.os }}-${{ 
               hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
@@ -433,7 +436,10 @@ jobs:
           else
             echo "actionlint found in cache"
           fi
-          sudo cp ~/actionlint /usr/local/bin/ || sudo ln -sf ~/actionlint /usr/local/bin/actionlint
+          # Install to user-writable directory for better caching
+          mkdir -p ~/.local/bin
+          cp ~/actionlint ~/.local/bin/
+          export PATH="$HOME/.local/bin:$PATH"
 
       - name: Run actionlint
         run: actionlint .github/workflows/*.yml

@@ -409,7 +409,10 @@ install_yq() {
                 
                 wget -O yq "https://github.com/mikefarah/yq/releases/download/v${yq_version}/yq_linux_${arch}"
                 chmod +x yq
-                sudo mv yq /usr/local/bin/
+                # Install to user-writable directory for better caching
+                mkdir -p ~/.local/bin
+                mv yq ~/.local/bin/
+                export PATH="$HOME/.local/bin:$PATH"
             fi
             ;;
         "macos")

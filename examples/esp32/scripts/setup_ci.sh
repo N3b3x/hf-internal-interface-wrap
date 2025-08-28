@@ -96,9 +96,13 @@ install_ci_python_deps() {
     # Install yq for YAML processing
     if ! command -v yq &> /dev/null; then
         echo "Installing yq..."
-        sudo wget -qO /usr/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-        sudo chmod +x /usr/bin/yq
-        echo "yq installed successfully"
+        # Install to user-writable directory for better caching
+        mkdir -p ~/.local/bin
+        wget -qO ~/.local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+        chmod +x ~/.local/bin/yq
+        # Add to PATH for this session
+        export PATH="$HOME/.local/bin:$PATH"
+        echo "yq installed successfully to ~/.local/bin"
     else
         echo "yq already installed"
     fi
@@ -108,6 +112,9 @@ install_ci_python_deps() {
 verify_ci_setup() {
     echo "Verifying CI setup..."
     
+    # Ensure user bin directory is in PATH for verification
+    export PATH="$HOME/.local/bin:$PATH"
+    
     # Check essential tools
     local tools_ok=true
     for tool in clang-20 clang-format-20 clang-tidy-20 python3 yq; do
@@ -115,7 +122,7 @@ verify_ci_setup() {
             echo "✓ $tool: $(command -v "$tool")"
         else
             echo "✗ $tool: not found"
-            tools_ok=true
+            tools_ok=false
         fi
     done
     
@@ -252,10 +259,14 @@ main() {
     echo "Setting up CI environment..."
     echo ""
     
+    # Ensure user bin directory is in PATH for all operations
+    export PATH="$HOME/.local/bin:$PATH"
+    
     # Show only relevant environment variables for CI setup
     echo "CI Setup Environment:"
     echo "  BUILD_PATH: ${BUILD_PATH:-ci_build_path}"
     echo "  ESP32_PROJECT_PATH: ${ESP32_PROJECT_PATH:-examples/esp32}"
+    echo "  PATH: $PATH"
     echo ""
     
     # Install essential build tools

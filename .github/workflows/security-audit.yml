@@ -221,7 +221,10 @@ jobs:
             https://github.com/gitleaks/gitleaks/releases/download/v8.18.0/gitleaks_8.18.0_linux_x64.tar.gz
           tar -xzf gitleaks.tar.gz
           chmod +x gitleaks
-          sudo mv gitleaks /usr/local/bin/
+          # Install to user-writable directory for better caching
+          mkdir -p ~/.local/bin
+          mv gitleaks ~/.local/bin/
+          export PATH="$HOME/.local/bin:$PATH"
           
       - name: Run detect-secrets baseline scan
         run: |
