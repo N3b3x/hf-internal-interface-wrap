@@ -249,9 +249,9 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ env.ESP32_BUILD_APP_MOST_RECENT_DIRECTORY }}
+          name: fw-build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-${{ matrix.idf_version_file }}
           retention-days: 7
-          path: ${{ env.BUILD_PATH }}/${{ env.ESP32_BUILD_APP_MOST_RECENT_DIRECTORY }}
+          path: ${{ env.BUILD_PATH }}/build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-${{ matrix.idf_version_file }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
