@@ -165,13 +165,33 @@ jobs:
           fi
 
 
-      - name: Clang-format check (version 20)
-        uses: jidicula/clang-format-action@v4.15.0
+      - name: C/C++ Code Quality Check (clang-format + clang-tidy)
+        uses: cpp-linter/cpp-linter-action@v2
+        id: linter
         continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          clang-format-version: '20'
-          check-path: '.'
-          fallback-style: 'LLVM'
+          style: 'file'                  # Uses .clang-format config file
+          tidy-checks: ''                # Uses .clang-tidy config file (empty means use file)
+          version: '20'                  # Use clang version 20
+          files-changed-only: false     # Check all files (not just changed ones)
+          lines-changed-only: false     # Check entire files (not just changed lines)
+          thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
+          annotations: true              # Show annotations in PR diff view
+          ignore: 'build|.git'          # Ignore build directories and git files
+          extensions: 'c,cpp,cc,cxx,h,hpp'  # Specify file extensions to check
+
+      - name: Check code quality results
+        if: steps.linter.outputs.checks-failed > 0
+        run: |
+          echo "⚠️ Code quality issues found:"
+          echo "  - Style issues: ${{ steps.linter.outputs.format-checks-failed }}"
+          echo "  - Tidy issues: ${{ steps.linter.outputs.tidy-checks-failed }}"
+          echo "  - Total issues: ${{ steps.linter.outputs.checks-failed }}"
+          echo ""
+          echo "Please review the annotations and comments above to fix the issues."
+          echo "Note: Build continues due to 'continue-on-error: true' setting."
 
       - name: ESP-IDF Build with caching
         id: build
@@ -288,7 +308,7 @@ jobs:
           path: ${{ env.BUILD_PATH }}/build*
 
   static-analysis:
-    name: Static Analysis (cppcheck + clang-tidy)
+    name: Static Analysis (cppcheck)
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     needs: [build]
@@ -323,7 +343,6 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            ~/.cache/clang-tidy
           key: >-
             esp32-ci-static-analysis-${{ runner.os }}-${{
               hashFiles(
@@ -332,8 +351,7 @@ jobs:
                 'inc/**/*.cpp',
                 'inc/**/*.h',
                 'examples/**/*.cpp',
-                'examples/**/*.h',
-                '.clang-tidy'
+                'examples/**/*.h'
               )
             }}
           restore-keys: |
@@ -356,8 +374,7 @@ jobs:
       - name: Verify analysis tools
         run: |
           echo "Verifying analysis tools..."
-          echo "Note: clang-20 and clang-tidy-20 installed by setup_ci.sh"
-          clang-tidy --version
+          echo "Note: clang tools now handled by Docker actions"
           echo "Note: cppcheck runs via Docker container"
           docker run --rm ghcr.io/facthunder/cppcheck:latest cppcheck --version
           echo "Analysis tools ready!"
@@ -401,13 +418,7 @@ jobs:
           path: cppcheck_report.xml
           retention-days: 7
 
-      - name: Run clang-tidy
-        uses: ZedThree/clang-tidy-review@v0.21.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          config_file: .clang-tidy
-          include: 'src/*,inc/*,examples/*'
-          exclude: 'build/*'
+
 
   workflow-lint:
     name: Workflow Lint (actionlint + yamllint)

@@ -25,7 +25,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "  ESP-IDF installation is handled by espressif/esp-idf-ci-action@v1"
     echo ""
     echo "WHAT IT DOES:"
-    echo "  • Installs essential build tools (clang-20, clang-format, clang-tidy)"
     echo "  • Installs Python dependencies (PyYAML, yq)"
     echo "  • Sets up CI build directory structure with all necessary files"
     echo "  • Prepares environment for ESP-IDF CI action"
@@ -34,6 +33,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "  • Install ESP-IDF (handled by ESP-IDF CI action)"
     echo "  • Source ESP-IDF environment (handled by ESP-IDF CI action)"
     echo "  • Set up build tools (handled by ESP-IDF CI action)"
+    echo "  • Install code quality tools (clang-format, clang-tidy handled by Docker actions)"
     echo "  • Build the project (handled by ESP-IDF CI action)"
     echo ""
     echo "CI WORKFLOW:"
@@ -50,103 +50,6 @@ if ! source "$SCRIPT_DIR/setup_common.sh"; then
     echo "This script requires the common setup functions to be available"
     exit 1
 fi
-
-# Function to install essential build tools for CI
-install_ci_build_tools() {
-    echo "Installing essential build tools for CI..."
-    
-    # Ensure user bin directory exists and is in PATH (self-contained)
-    mkdir -p ~/.local/bin
-    export PATH="$HOME/.local/bin:$PATH"
-    
-    # Check if Clang tools already exist in user directory (from cache)
-    if [ -f ~/.local/bin/clang-20 ] && [ -f ~/.local/bin/clang-format-20 ] && [ -f ~/.local/bin/clang-tidy-20 ]; then
-        echo "Clang-20 toolchain found in ~/.local/bin (from cache) - no installation needed"
-        return 0
-    fi
-    
-    echo "Clang-20 toolchain not found in cache - installing via APT..."
-    
-    # Add LLVM APT repository for clang-20
-    wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | \
-        sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
-    ubuntu_codename=$(lsb_release -cs)
-    echo "deb http://apt.llvm.org/${ubuntu_codename}/ llvm-toolchain-${ubuntu_codename}-20 main" | \
-        sudo tee /etc/apt/sources.list.d/llvm.list
-    
-    sudo apt-get update
-    sudo apt-get install -y \
-        clang-20 \
-        clang-format-20 \
-        clang-tidy-20
-    
-    # Copy system-installed binaries to user-writable directory for caching
-    echo "Copying Clang tools to ~/.local/bin for caching..."
-    cp /usr/bin/clang-20 ~/.local/bin/
-    cp /usr/bin/clang-format-20 ~/.local/bin/
-    cp /usr/bin/clang-tidy-20 ~/.local/bin/
-    
-    # Verify the copies work properly
-    echo "Verifying copied tools functionality..."
-    
-    # Test clang-20
-    echo "Testing clang-20..."
-    if ~/.local/bin/clang-20 --version >/dev/null 2>&1; then
-        echo "✓ clang-20: $(~/.local/bin/clang-20 --version | head -1)"
-    else
-        echo "✗ clang-20: failed to run"
-        return 1
-    fi
-    
-    # Test clang-format-20
-    echo "Testing clang-format-20..."
-    if ~/.local/bin/clang-format-20 --version >/dev/null 2>&1; then
-        echo "✓ clang-format-20: $(~/.local/bin/clang-format-20 --version | head -1)"
-    else
-        echo "✗ clang-format-20: failed to run"
-        return 1
-    fi
-    
-    # Test clang-tidy-20
-    echo "Testing clang-tidy-20..."
-    if ~/.local/bin/clang-tidy-20 --version >/dev/null 2>&1; then
-        echo "✓ clang-tidy-20: $(~/.local/bin/clang-tidy-20 --version | head -1)"
-    else
-        echo "✗ clang-tidy-20: failed to run"
-        return 1
-    fi
-    
-    # Test actual functionality (not just version)
-    echo "Testing tool functionality..."
-    
-    # Test clang-format with a simple C++ snippet
-    echo 'int main() { return 0; }' > /tmp/test.cpp
-    if ~/.local/bin/clang-format-20 /tmp/test.cpp >/dev/null 2>&1; then
-        echo "✓ clang-format-20: can format C++ code"
-    else
-        echo "✗ clang-format-20: failed to format code"
-        rm -f /tmp/test.cpp
-        return 1
-    fi
-    rm -f /tmp/test.cpp
-    
-    # Set up alternatives for system-wide compatibility
-    echo "Setting up system alternatives..."
-    sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100
-    sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100
-    sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-20 100
-    sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
-    
-    # Keep system packages to avoid breaking dependencies
-    # The copied binaries might depend on system libraries
-    echo "Keeping system packages to maintain dependencies"
-    
-    # Remove only the APT repository to clean up
-    sudo rm -f /etc/apt/sources.list.d/llvm.list
-    sudo rm -f /etc/apt/trusted.gpg.d/apt.llvm.org.asc
-    
-    echo "Clang-20 toolchain installed successfully to ~/.local/bin with system alternatives configured"
-}
 
 # Function to install Python dependencies for CI
 install_ci_python_deps() {
@@ -186,7 +89,7 @@ verify_ci_setup() {
     
     # Check essential tools
     local tools_ok=true
-    for tool in clang-20 clang-format-20 clang-tidy-20 python3 yq; do
+    for tool in python3 yq; do
         if command -v "$tool" &> /dev/null; then
             echo "✓ $tool: $(command -v "$tool")"
         else
@@ -349,9 +252,6 @@ main() {
     echo "  PATH: $PATH"
     echo "  User bin directory: $HOME/.local/bin"
     echo ""
-    
-    # Install essential build tools
-    install_ci_build_tools
     
     # Install Python dependencies
     install_ci_python_deps
