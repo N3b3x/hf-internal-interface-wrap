@@ -90,18 +90,12 @@ jobs:
             ~/.local/share
           key: >-
             esp32-ci-essential-tools-${{ runner.os }}-${{ 
-              hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
+              hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh') 
             }}
           restore-keys: |
             esp32-ci-essential-tools-${{ runner.os }}-
 
-      - name: Setup CI build environment
-        run: |
-          echo "Setting up CI build environment for this build job..."
-          echo "This installs essential build tools and prepares build directory structure"
-          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
-          set -e  # Enable error handling
-          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+      # Note: setup_ci.sh is no longer needed for build job since we build directly in workspace root
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -199,29 +193,13 @@ jobs:
             # Enable error handling to ensure failures propagate
             set -e
             
-            echo "Setting up build environment in ${{ env.BUILD_PATH }}..."
-            
-            # The setup_ci.sh script has already prepared the build directory structure
-            # All necessary files are already copied to ${{ env.BUILD_PATH }}
-            echo "Build directory structure prepared by setup_ci.sh"
-            echo "Building..."
-            
-            # Change to the build directory where all files are copied
-            cd ${{ env.BUILD_PATH }}
-            echo "Changed to build directory: $(pwd)"
-            echo "Available files:"
-            ls -la
-            
-            echo "Checking directory structure:"
-            echo "main/ contents:"
-            ls -la main/
-            echo "inc/ contents:"
-            ls -la inc/
-            echo "Path from main to inc:"
-            ls -la main/../inc/
+            echo "Setting up build environment..."
+            echo "Building directly in workspace root for better artifact accessibility..."
             
             # Build the application using the same tool as local development
-            ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
+            # Build in workspace root instead of ci_build_path for better artifact access
+            ./examples/esp32/scripts/build_app.sh "${{ matrix.app_name }}" \
+              "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
             
             # Construct the build directory path based on the known pattern
             # Format: build-app-{app_type}-type-{build_type}-target-{target}-idf-{sanitized_idf_version}
@@ -250,7 +228,7 @@ jobs:
           name: fw-${{ matrix.app_name }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
           retention-days: 7
           path: >-
-            ${{ env.BUILD_PATH }}/build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-
+            build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-
             ${{ matrix.target }}-idf-${{ matrix.idf_version_file }}
 
   static-analysis:
