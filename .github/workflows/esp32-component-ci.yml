@@ -222,7 +222,8 @@ jobs:
             
             # Build the application using the same tool as local development
             # Capture the build output to extract the exported build directory
-            build_output=$(./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}" 2>&1)
+            build_output=$(./scripts/build_app.sh "${{ matrix.app_name }}" \
+              "${{ matrix.build_type }}" "${{ matrix.idf_version }}" 2>&1)
             echo "$build_output"
             
             # Extract the build directory from the build script's output
