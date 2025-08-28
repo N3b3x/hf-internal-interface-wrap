@@ -26,6 +26,7 @@ env:
   BUILD_PATH: ci_build_path
   IDF_CCACHE_ENABLE: "1"  # Enables ccache inside ESP-IDF
   ESP32_PROJECT_PATH: examples/esp32  # Centralized ESP32 project location
+  IDF_TARGET: esp32c6  # Default target from app_config.yml
 
 defaults:
   run:
@@ -195,37 +196,50 @@ jobs:
             export IDF_TARGET="${{ matrix.target }}"
             export BUILD_TYPE="${{ matrix.build_type }}"
             export APP_TYPE="${{ matrix.app_name }}"
-            # IDF_VERSION is handled automatically by espressif/esp-idf-ci-action@v1
             
             # Enable error handling to ensure failures propagate
             set -e
             
-            echo "Building using build_app.sh for consistency..."
-            echo "Using CI build environment: ${{ env.BUILD_PATH }}"
+            echo "Setting up build environment in ${{ env.BUILD_PATH }}..."
             
-            # Change to the CI build environment (prepared by setup_ci.sh)
+            # The setup_ci.sh script has already prepared the build directory structure
+            # All necessary files are already copied to ${{ env.BUILD_PATH }}
+            echo "Build directory structure prepared by setup_ci.sh"
+            echo "Building..."
+            
+            # Change to the build directory where all files are copied
             cd ${{ env.BUILD_PATH }}
+            echo "Changed to build directory: $(pwd)"
+            echo "Available files:"
+            ls -la
+            
+            echo "Checking directory structure:"
+            echo "main/ contents:"
+            ls -la main/
+            echo "inc/ contents:"
+            ls -la inc/
+            echo "Path from main to inc:"
+            ls -la main/../inc/
             
             # Build the application using the same tool as local development
             ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
             
-            # Get the build directory that build_app.sh exported
-            if [ -n "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
-              echo "Build completed. Build directory from build_app.sh: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
-              
-              # Verify build artifacts exist
-              if [ -d "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" ]; then
-                echo "Build artifacts found in: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
-                ls -la "$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY/"
-                
-                # Set output for artifact upload step to use
-                echo "build_dir=$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" >> $GITHUB_OUTPUT
-              else
-                echo "ERROR: Build directory not found: $ESP32_BUILD_APP_MOST_RECENT_DIRECTORY"
-                exit 1
-              fi
+            # Construct the build directory path based on the known pattern
+            # Format: build-app-{app_type}-type-{build_type}-target-{target}-idf-{sanitized_idf_version}
+            sanitized_idf_version=$(echo "${{ matrix.idf_version }}" | sed 's/[\/\.]/_/g')
+            build_dir="build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-"
+            build_dir="${build_dir}${sanitized_idf_version}"
+            
+            echo "Looking for build directory: $build_dir"
+            
+            # Check if the build directory exists
+            if [ -d "$build_dir" ]; then
+              echo "Build completed. Build directory found: $build_dir"
+              echo "Build artifacts:"
+              ls -la "$build_dir/"
+              echo "Build directory ready for artifact upload"
             else
-              echo "ERROR: ESP32_BUILD_APP_MOST_RECENT_DIRECTORY not set by build_app.sh"
+              echo "ERROR: Build directory not found: $build_dir"
               echo "Available directories:"
               ls -la build_*/ || echo "No build directories found"
               exit 1
@@ -237,7 +251,9 @@ jobs:
         with:
           name: fw-${{ matrix.app_name }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
           retention-days: 7
-          path: ${{ steps.build.outputs.build_dir }}
+          path: >-
+            ${{ env.BUILD_PATH }}/build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-
+            ${{ matrix.target }}-idf-${{ matrix.idf_version_docker }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
