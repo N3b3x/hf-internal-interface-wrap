@@ -252,24 +252,42 @@ jobs:
               echo "Build artifacts:"
               ls -la "$build_dir/"
               
-              # Export the build directory name for artifact upload
-              echo "BUILD_DIRECTORY_NAME=$(basename $build_dir)" >> "$GITHUB_OUTPUT"
-              echo "BUILD_DIRECTORY_PATH=$build_dir" >> "$GITHUB_OUTPUT"
+              # Store build directory info for GitHub Actions outputs
+              echo "$(basename $build_dir)" > .build_directory_name
+              echo "$build_dir" > .build_directory_path
             else
               echo "ERROR: Build directory not accessible: $build_dir"
               exit 1
             fi
 
+      - name: Set GitHub Actions outputs
+        id: set-outputs
+        run: |
+          echo "Reading build directory information..."
+          if [ -f .build_directory_name ] && [ -f .build_directory_path ]; then
+            BUILD_DIR_NAME=$(cat .build_directory_name)
+            BUILD_DIR_PATH=$(cat .build_directory_path)
+            
+            echo "BUILD_DIRECTORY_NAME=$BUILD_DIR_NAME" >> "$GITHUB_OUTPUT"
+            echo "BUILD_DIRECTORY_PATH=$BUILD_DIR_PATH" >> "$GITHUB_OUTPUT"
+            
+            echo "Outputs set:"
+            echo "  BUILD_DIRECTORY_NAME: $BUILD_DIR_NAME"
+            echo "  BUILD_DIRECTORY_PATH: $BUILD_DIR_PATH"
+          else
+            echo "ERROR: Build directory info files not found"
+            echo "Available files:"
+            ls -la .build_* || echo "No .build_* files found"
+            exit 1
+          fi
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: >-
-            fw-${{ matrix.app_name }}-${{ matrix.build_type }}-${{ matrix.idf_version_file }}-${{ 
-              steps.build.outputs.BUILD_DIRECTORY_NAME || 'build-failed' 
-            }}
+          name: fw-${{ steps.set-outputs.outputs.BUILD_DIRECTORY_NAME || 'build-failed' }}
           retention-days: 7
-          path: ${{ env.BUILD_PATH }}/${{ steps.build.outputs.BUILD_DIRECTORY_NAME || 'build_*' }}
+          path: ${{ env.BUILD_PATH }}/${{ steps.set-outputs.outputs.BUILD_DIRECTORY_PATH }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
