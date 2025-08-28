@@ -51,37 +51,24 @@ if ! source "$SCRIPT_DIR/setup_common.sh"; then
     exit 1
 fi
 
-# Function to install Python dependencies for CI
+# Function to install Python dependencies for CI (uses shared functions)
 install_ci_python_deps() {
-    echo "Installing Python dependencies for CI..."
+    print_status "Installing Python dependencies for CI..."
     
     # Ensure user bin directory exists and is in PATH (self-contained)
     mkdir -p ~/.local/bin
     export PATH="$HOME/.local/bin:$PATH"
     
-    # Install PyYAML for configuration parsing
-    if ! python3 -c "import yaml" 2>/dev/null; then
-        echo "Installing PyYAML..."
-        pip3 install PyYAML
-    else
-        echo "PyYAML already installed"
-    fi
+    # Use shared functions from setup_common.sh
+    install_python_deps  # Installs PyYAML and other Python dependencies
+    install_yq           # Installs yq with proper OS detection and fallbacks
     
-    # Install yq for YAML processing
-    if ! command -v yq &> /dev/null; then
-        echo "Installing yq..."
-        # Install to user-writable directory for better caching
-        wget -qO ~/.local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-        chmod +x ~/.local/bin/yq
-        echo "yq installed successfully to ~/.local/bin"
-    else
-        echo "yq already installed"
-    fi
+    print_success "Python dependencies for CI installed"
 }
 
 # Function to verify CI setup
 verify_ci_setup() {
-    echo "Verifying CI setup..."
+    print_status "Verifying CI setup..."
     
     # Ensure user bin directory exists and is in PATH (self-contained)
     mkdir -p ~/.local/bin
@@ -90,10 +77,10 @@ verify_ci_setup() {
     # Check essential tools
     local tools_ok=true
     for tool in python3 yq; do
-        if command -v "$tool" &> /dev/null; then
-            echo "✓ $tool: $(command -v "$tool")"
+        if command_exists "$tool"; then
+            print_info "✓ $tool: $(command -v "$tool")"
         else
-            echo "✗ $tool: not found"
+            print_error "✗ $tool: not found"
             tools_ok=false
         fi
     done
@@ -102,9 +89,9 @@ verify_ci_setup() {
     local python_ok=true
     for module in yaml; do
         if python3 -c "import $module" 2>/dev/null; then
-            echo "✓ Python module: $module"
+            print_info "✓ Python module: $module"
         else
-            echo "✗ Python module: $module: not found"
+            print_error "✗ Python module: $module: not found"
             python_ok=false
         fi
     done
@@ -120,19 +107,19 @@ verify_ci_setup() {
     
     # Summary
     echo ""
-    echo "CI Setup Verification Summary:"
+    print_info "CI Setup Verification Summary:"
     if $tools_ok && $python_ok && $structure_ok; then
-        echo "✅ All components ready for CI builds"
+        print_success "All components ready for CI builds"
         return 0
     else
-        echo "❌ Some components missing - CI builds may fail"
+        print_error "Some components missing - CI builds may fail"
         return 1
     fi
 }
 
 # Function to setup CI build directory structure
 setup_ci_build_structure() {
-    echo "Setting up CI build directory structure..."
+    print_status "Setting up CI build directory structure..."
     
     # Ensure user bin directory exists and is in PATH (self-contained)
     mkdir -p ~/.local/bin
