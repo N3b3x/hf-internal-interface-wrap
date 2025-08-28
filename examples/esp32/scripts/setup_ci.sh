@@ -25,7 +25,6 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "  ESP-IDF installation is handled by espressif/esp-idf-ci-action@v1"
     echo ""
     echo "WHAT IT DOES:"
-    echo "  • Installs Python dependencies (PyYAML, yq)"
     echo "  • Sets up CI build directory structure with all necessary files"
     echo "  • Prepares environment for ESP-IDF CI action"
     echo ""
@@ -51,21 +50,6 @@ if ! source "$SCRIPT_DIR/setup_common.sh"; then
     exit 1
 fi
 
-# Function to install Python dependencies for CI (uses shared functions)
-install_ci_python_deps() {
-    print_status "Installing Python dependencies for CI..."
-    
-    # Ensure user bin directory exists and is in PATH (self-contained)
-    mkdir -p ~/.local/bin
-    export PATH="$HOME/.local/bin:$PATH"
-    
-    # Use shared functions from setup_common.sh
-    install_python_deps  # Installs PyYAML and other Python dependencies
-    install_yq           # Installs yq with proper OS detection and fallbacks
-    
-    print_success "Python dependencies for CI installed"
-}
-
 # Function to verify CI setup
 verify_ci_setup() {
     print_status "Verifying CI setup..."
@@ -74,44 +58,17 @@ verify_ci_setup() {
     mkdir -p ~/.local/bin
     export PATH="$HOME/.local/bin:$PATH"
     
-    # Check essential tools
-    local tools_ok=true
-    for tool in python3 yq; do
-        if command_exists "$tool"; then
-            print_info "✓ $tool: $(command -v "$tool")"
-        else
-            print_error "✗ $tool: not found"
-            tools_ok=false
-        fi
-    done
-    
-    # Check Python dependencies
-    local python_ok=true
-    for module in yaml; do
-        if python3 -c "import $module" 2>/dev/null; then
-            print_info "✓ Python module: $module"
-        else
-            print_error "✗ Python module: $module: not found"
-            python_ok=false
-        fi
-    done
-    
-    # Check build structure
-    local structure_ok=true
-    if verify_ci_build_structure; then
-        echo "✓ Build structure verification passed"
-    else
-        echo "✗ Build structure verification failed"
-        structure_ok=false
-    fi
-    
-    # Summary
-    echo ""
-    print_info "CI Setup Verification Summary:"
-    if $tools_ok && $python_ok && $structure_ok; then
+    # Check project directory contents
+    if verify_ci_project_directory; then
+        echo "✓ Project directory verification passed"
+        echo ""
+        print_info "CI Setup Verification Summary:"
         print_success "All components ready for CI builds"
         return 0
     else
+        echo "✗ Project directory verification failed"
+        echo ""
+        print_info "CI Setup Verification Summary:"
         print_error "Some components missing - CI builds may fail"
         return 1
     fi
@@ -186,9 +143,9 @@ setup_ci_build_structure() {
     ls -la "$ci_build_path"
 }
 
-# Function to verify CI build structure
-verify_ci_build_structure() {
-    echo "Verifying CI build structure..."
+# Function to verify CI project directory contents
+verify_ci_project_directory() {
+    echo "Verifying CI project directory contents..."
     
     # Ensure user bin directory exists and is in PATH (self-contained)
     mkdir -p ~/.local/bin
@@ -211,9 +168,9 @@ verify_ci_build_structure() {
     
     for item in "${required_items[@]}"; do
         if [[ -e "$ci_build_path/$item" ]]; then
-            echo "✓ Build directory: $item"
+            echo "✓ Project directory: $item"
         else
-            echo "✗ Build directory: $item: not found"
+            echo "✗ Project directory: $item: not found"
             structure_ok=false
         fi
     done
@@ -239,9 +196,6 @@ main() {
     echo "  PATH: $PATH"
     echo "  User bin directory: $HOME/.local/bin"
     echo ""
-    
-    # Install Python dependencies
-    install_ci_python_deps
     
     # Setup CI build directory structure
     setup_ci_build_structure
