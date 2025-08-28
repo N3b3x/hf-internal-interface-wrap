@@ -236,9 +236,7 @@ jobs:
               echo "Build completed. Build directory found: $build_dir"
               echo "Build artifacts:"
               ls -la "$build_dir/"
-              
-              # Set output for artifact upload step to use
-              echo "build_dir=$build_dir" >> $GITHUB_OUTPUT
+              echo "Build directory ready for artifact upload"
             else
               echo "ERROR: Build directory not found: $build_dir"
               echo "Available directories:"
