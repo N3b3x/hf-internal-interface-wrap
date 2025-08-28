@@ -59,21 +59,16 @@ verify_ci_setup() {
     export PATH="$HOME/.local/bin:$PATH"
     
     # Check build structure
-    local structure_ok=true
     if verify_ci_build_structure; then
         echo "✓ Build structure verification passed"
-    else
-        echo "✗ Build structure verification failed"
-        structure_ok=false
-    fi
-    
-    # Summary
-    echo ""
-    print_info "CI Setup Verification Summary:"
-    if $structure_ok; then
+        echo ""
+        print_info "CI Setup Verification Summary:"
         print_success "All components ready for CI builds"
         return 0
     else
+        echo "✗ Build structure verification failed"
+        echo ""
+        print_info "CI Setup Verification Summary:"
         print_error "Some components missing - CI builds may fail"
         return 1
     fi
