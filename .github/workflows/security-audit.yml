@@ -72,7 +72,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: pip-security-${{ runner.os }}-${{ hashFiles('**/requirements*.txt', '**/pyproject.toml') }}
+          key: pip-security-${{ runner.os }}-${{ hashFiles('**/requirements*.txt', '**/setup_ci.sh') }}
           restore-keys: |
             pip-security-${{ runner.os }}-
             
@@ -81,24 +81,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install pip-audit safety bandit semgrep
           
-      - name: Create requirements files for scanning
+      - name: Use project requirements for scanning
         run: |
-          # Create a temporary requirements file for any Python dependencies found
-          find . -name "*.py" -type f -exec grep -l "^import\|^from" {} \; | head -20 > python_files.txt
+          # Use the project's requirements file for security scanning
+          REQUIREMENTS_FILE="${{ env.ESP32_PROJECT_PATH }}/scripts/requirements.txt"
           
-          # Check if there are any Python files to scan
-          if [ -s python_files.txt ]; then
-            echo "Found Python files for scanning"
-            # Create a minimal requirements file for common dependencies
+          if [ -f "$REQUIREMENTS_FILE" ]; then
+            echo "Found project requirements file: $REQUIREMENTS_FILE"
+            cp "$REQUIREMENTS_FILE" temp_requirements.txt
+            echo "Contents of requirements file for security scanning:"
+            cat temp_requirements.txt
+          else
+            echo "No project requirements file found, creating minimal requirements"
             cat > temp_requirements.txt << EOF
-          # Common ESP32 development dependencies
+          # Fallback minimal ESP32 dependencies
           esptool>=4.0.0
           pyserial>=3.5
+          pyyaml>=6.0
           EOF
-          else
-            echo "No Python files found, creating empty requirements"
-            touch temp_requirements.txt
           fi
+          
+          # Also create a list of Python files for Bandit scanning
+          find . -name "*.py" -type f -exec grep -l "^import\|^from" {} \; | head -20 > python_files.txt
           
       - name: Run pip-audit on discovered dependencies
         run: |

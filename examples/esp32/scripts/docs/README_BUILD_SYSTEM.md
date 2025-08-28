@@ -1,4 +1,4 @@
-# ESP32 HardFOC Interface Wrapper - Build System Guide
+# ESP32 Interface Wrapper - Build System Guide
 
 This document provides comprehensive documentation for the ESP32 build system, including architecture, configuration, usage patterns, and troubleshooting.
 

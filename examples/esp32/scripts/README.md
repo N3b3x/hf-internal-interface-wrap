@@ -6,9 +6,9 @@
 ![ESP-IDF](https://img.shields.io/badge/ESP--IDF-Auto%20Management-green?style=for-the-badge&logo=espressif)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-orange?style=for-the-badge&logo=github)
 
-**🎯 Comprehensive Build System Scripts for HardFOC ESP32 Development**
+**🎯 Build System Scripts for ESP32 Development**
 
-*Professional-grade scripts providing automated ESP-IDF management, build automation, and CI/CD integration*
+*Scripts providing automated ESP-IDF management, build automation, and CI/CD integration*
 
 </div>
 
@@ -31,7 +31,7 @@
 
 ## 🎯 **Overview**
 
-The scripts directory contains a comprehensive build system designed for professional ESP32 development, featuring automated ESP-IDF management, intelligent build processes, and seamless CI/CD integration.
+The scripts directory contains a build system designed for ESP32 development, featuring automated ESP-IDF management, build processes, and CI/CD integration.
 
 ### 🏆 **Key Features**
 
@@ -1212,8 +1212,8 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](../../LIC
 
 <div align="center">
 
-**🚀 Built with ❤️ for the HardFOC Community**
+**🚀 Built for ESP32 Development**
 
-*Professional-grade build system with enterprise-ready automation*
+*Build system with automated CI/CD integration*
 
 </div>

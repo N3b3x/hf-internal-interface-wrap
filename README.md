@@ -457,6 +457,15 @@ private:
 - **PWM Generation** - Motor speed control for HardFOC applications
 - **Temperature Sensing** - Thermal monitoring for HardFOC boards
 
+### 🔄 **CI/CD & Automation**
+
+CI/CD pipelines and automation for ESP32 development:
+
+- **🔄 [GitHub Actions Workflows](.github/README.md)** - CI/CD pipeline documentation
+- **⚡ [CI Caching Strategy](.github/workflows/docs/README_CI_CACHING_STRATEGY.md)** - Multi-layer caching for faster builds
+- **🛡️ [Security Guidelines](.github/workflows/docs/README_SECURITY.md)** - Security policies and procedures
+- **📦 [Dependabot Automation](.github/dependabot.yml)** - Automated dependency updates and security monitoring
+
 ---
 
 ## 🔧 **Building**
@@ -780,7 +789,7 @@ This project is licensed under the **GNU General Public License v3.0** - see the
 
 **🔗 Quick Links**
 
-[📖 Documentation](docs/index.md) | [🚀 Quick Start](#-quick-start) | [📊 Examples](#-examples) | [🤝 Contributing](#-contributing)
+[📖 Documentation](docs/index.md) | [🔄 CI/CD Workflows](.github/README.md) | [🚀 Quick Start](#-quick-start) | [📊 Examples](#-examples) | [🤝 Contributing](#-contributing)
 
 **📞 Support**
 

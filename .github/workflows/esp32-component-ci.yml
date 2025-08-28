@@ -131,7 +131,8 @@ jobs:
             ${{ 
               hashFiles(
                 '${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh',
-                '${{ env.ESP32_PROJECT_PATH }}/requirements.txt'
+                '${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh',
+                '${{ env.ESP32_PROJECT_PATH }}/scripts/requirements.txt'
               ) 
             }}
           restore-keys: |

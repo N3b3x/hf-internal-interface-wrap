@@ -1,4 +1,4 @@
-# ESP32 HardFOC Interface Wrapper - Utility Scripts Guide
+# ESP32 Interface Wrapper - Utility Scripts Guide
 
 This document provides comprehensive documentation for the ESP32 utility scripts, including port detection, setup automation, and helper tools for development workflow management.
 

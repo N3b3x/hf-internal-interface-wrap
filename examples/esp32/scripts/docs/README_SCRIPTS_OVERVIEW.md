@@ -1,4 +1,4 @@
-# ESP32 HardFOC Interface Wrapper - Scripts Overview
+# ESP32 Interface Wrapper - Scripts Overview
 
 This document provides a comprehensive overview of all available scripts in the ESP32 scripts directory, their purposes, capabilities, dependencies, and how they work together to provide a professional development environment.
 
