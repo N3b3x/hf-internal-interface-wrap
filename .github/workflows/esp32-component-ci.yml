@@ -238,6 +238,9 @@ jobs:
               echo "Build artifacts:"
               ls -la "$build_dir/"
               echo "Build directory ready for artifact upload"
+              
+              # Export the build directory for artifact upload
+              echo "ESP32_BUILD_APP_MOST_RECENT_DIRECTORY=$build_dir" >> $GITHUB_ENV
             else
               echo "ERROR: Build directory not found: $build_dir"
               echo "Available directories:"
@@ -249,9 +252,9 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-${{ matrix.idf_version_file }}
+          name: fw-${{ env.ESP32_BUILD_APP_MOST_RECENT_DIRECTORY }}
           retention-days: 7
-          path: ${{ env.BUILD_PATH }}/build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-${{ matrix.idf_version_file }}
+          path: ${{ env.BUILD_PATH }}/${{ env.ESP32_BUILD_APP_MOST_RECENT_DIRECTORY }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
