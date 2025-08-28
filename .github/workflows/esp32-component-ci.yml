@@ -24,9 +24,7 @@ concurrency:
 
 env:
   BUILD_PATH: ci_build_path
-  IDF_CCACHE_ENABLE: "1"  # Enables ccache inside ESP-IDF
   ESP32_PROJECT_PATH: examples/esp32  # Centralized ESP32 project location
-  IDF_TARGET: esp32c6  # Default target from app_config.yml
 
 defaults:
   run:
