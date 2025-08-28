@@ -234,10 +234,10 @@ jobs:
             
             # Look for the build directory that was created
             echo "Looking for build directories..."
-            ls -la build_*/ || echo "No build directories found"
+            ls -la build*/ || echo "No build directories found"
             
             # Find the most recent build directory
-            build_dir=$(ls -td build_* 2>/dev/null | head -1)
+            build_dir=$(ls -td build*/ 2>/dev/null | head -1)
             
             if [ -z "$build_dir" ]; then
               echo "ERROR: No build directory found after build"
