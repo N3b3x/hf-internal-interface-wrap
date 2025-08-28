@@ -221,23 +221,32 @@ jobs:
             ls -la main/../inc/
             
             # Build the application using the same tool as local development
-            ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
+            # Capture the build output to extract the exported build directory
+            build_output=$(./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}" 2>&1)
+            echo "$build_output"
             
-            # Construct the build directory path based on the known pattern
-            # Format: build-app-{app_type}-type-{build_type}-target-{target}-idf-{sanitized_idf_version}
-            build_dir="build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-"
-            build_dir="${build_dir}${{ matrix.idf_version_file }}"
+            # Extract the build directory from the build script's output
+            # The build script exports: ESP32_BUILD_APP_MOST_RECENT_DIRECTORY=<build_dir>
+            build_dir=$(echo "$build_output" | grep "ESP32_BUILD_APP_MOST_RECENT_DIRECTORY=" | cut -d'=' -f2)
             
-
+            if [ -z "$build_dir" ]; then
+              echo "ERROR: Could not extract build directory from build script output"
+              echo "Looking for any build directories..."
+              ls -la build_*/ || echo "No build directories found"
+              exit 1
+            fi
             
-            echo "Looking for build directory: $build_dir"
+            echo "Build directory extracted from build script: $build_dir"
             
-            # Check if the build directory exists
+            # Verify the build directory exists
             if [ -d "$build_dir" ]; then
               echo "Build completed. Build directory found: $build_dir"
               echo "Build artifacts:"
               ls -la "$build_dir/"
               echo "Build directory ready for artifact upload"
+              
+              # Export for the artifact upload step
+              echo "BUILD_DIRECTORY_NAME=$(basename $build_dir)" >> $GITHUB_ENV
             else
               echo "ERROR: Build directory not found: $build_dir"
               echo "Available directories:"
@@ -249,9 +258,9 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ matrix.app_name }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
+          name: fw-${{ env.BUILD_DIRECTORY_NAME }}
           retention-days: 7
-          path: ${{ env.BUILD_PATH }}/${{ env.ESP32_BUILD_APP_MOST_RECENT_DIRECTORY }}
+          path: ${{ env.BUILD_PATH }}/${{ env.BUILD_DIRECTORY_NAME }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
