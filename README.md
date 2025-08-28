@@ -1,15 +1,15 @@
-# 🚀 HardFOC Internal Interface Wrapper
+# 🔧 Hardware Abstraction Layer - Multi-MCU Peripheral Interface
 
 <div align="center">
 
-![HardFOC Interface Wrapper](https://img.shields.io/badge/HardFOC-Internal%20Interface%20Wrapper-blue?style=for-the-badge&logo=espressif)
+![HAL](https://img.shields.io/badge/HAL-Hardware%20Abstraction%20Layer-blue?style=for-the-badge&logo=microchip)
 ![C++17](https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=cplusplus)
-![ESP32-C6](https://img.shields.io/badge/ESP32--C6-Supported-green?style=for-the-badge&logo=espressif)
+![Multi-MCU](https://img.shields.io/badge/Multi--MCU-Support-green?style=for-the-badge&logo=espressif)
 ![License](https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge&logo=opensourceinitiative)
 
-**🎯 Comprehensive Hardware Abstraction Layer for HardFOC Motor Controller Boards**
+**🎯 Universal Hardware Interface for Multi-MCU Development**
 
-*A professional, platform-agnostic interface wrapper specifically designed for HardFOC motor controller boards, providing unified APIs across different MCU implementations with complete wireless, communication, and sensor support*
+*A professional hardware abstraction layer enabling seamless MCU portability through unified peripheral APIs - designed for the HardFOC board ecosystem*
 
 </div>
 
@@ -19,10 +19,10 @@
 
 - [🎯 **Overview**](#-overview)
 - [🏗️ **Architecture**](#️-architecture)
-- [✨ **Key Features**](#-key-features)
-- [🔌 **Complete Interface Support**](#-complete-interface-support)
+- [🔌 **Peripheral Interfaces**](#-peripheral-interfaces)
+- [🖥️ **MCU Support**](#️-mcu-support)
 - [🚀 **Quick Start**](#-quick-start)
-- [📖 **Documentation**](#-documentation)
+- [📖 **API Documentation**](#-api-documentation)
 - [🔧 **Building**](#-building)
 - [📊 **Examples**](#-examples)
 - [🤝 **Contributing**](#-contributing)
@@ -32,767 +32,771 @@
 
 ## 🎯 **Overview**
 
-The **HardFOC Internal Interface Wrapper** is a comprehensive, production-ready hardware abstraction layer specifically designed for **HardFOC motor controller boards**. It provides unified APIs across different MCU platforms while maintaining the high performance, thread safety, and extensive hardware support that HardFOC motor controller boards require, including wireless communication, sensors, and advanced peripherals.
+This **Internal Interface Wrap (IID)** provides a unified interface for common MCU peripherals, enabling seamless portability between different microcontroller platforms. Originally designed for the **HardFOC board** which needs to support multiple MCU types, this abstraction layer allows developers to write hardware-agnostic code while maintaining optimal performance.
 
-### 🏆 **Why Choose This Wrapper for HardFOC Boards?**
+### 🏆 **Core Benefits**
 
-- **🎯 HardFOC Optimized** - Designed specifically for HardFOC motor controller boards and their real-time requirements
-- **🔌 Complete Hardware Coverage** - 14 comprehensive base interfaces covering all aspects of HardFOC boards
-- **📈 Production Ready** - Professional-grade error handling, logging, and monitoring for HardFOC applications
-- **🌐 Modern Connectivity** - Full WiFi and Bluetooth support for IoT-enabled HardFOC motor controller boards
-- **🛡️ Industrial Grade** - Robust design for critical HardFOC motor control applications
-- **📚 Extensively Documented** - Complete API documentation with HardFOC-specific examples
-- **🛡️ Enhanced Build System** - Smart validation and automated ESP-IDF management for reliable builds
+- **🔄 MCU Portability** - Write once, run on multiple MCU platforms
+- **🎯 Unified APIs** - Consistent interface across all peripheral types
+- **⚡ Performance** - Zero-cost abstractions with compile-time optimization
+- **🛡️ Type Safety** - Strong typing with project-specific type system
+- **📈 Extensible** - Easy to add new MCUs and peripheral drivers
+- **🔌 Complete Coverage** - 14+ peripheral interfaces for comprehensive hardware control
+
+### 🎨 **Design Philosophy**
+
+```cpp
+// Write hardware-agnostic code
+BaseGpio* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);
+led->SetHigh();
+
+// Same code works on ESP32, STM32, or any supported MCU
+// The factory handles MCU-specific implementation selection
+```
 
 ---
 
 ## 🏗️ **Architecture**
 
-The wrapper follows a multi-layered architecture that maximizes flexibility, maintainability, and performance for HardFOC motor controller boards:
+### **Two-Layer Design**
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    🎯 HARDFOC APPLICATION LAYER                            │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  HardFOC Motor Control Application  ──┐                                   │
-│                                        │                                   │
-│  HardFOC System Management            │                                   │
-│                                        │                                   │
-│  HardFOC IoT Integration              ──┘                                   │
-└─────────────────────┬───────────────────────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    🔒 THREAD-SAFE LAYER (OPTIONAL)                         │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  Thread-Safe Wrappers      ──┐                                             │
-│                               │                                             │
-│  Concurrent Access Control    ──┘                                             │
-└─────────────────────┬───────────────────────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                  🏛️ HARDFOC BASE INTERFACE LAYER                           │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  Core Interfaces           │  Communication Interfaces                     │
-│  Wireless Interfaces       │  System Interfaces                           │
-└─────────────────────┬───────────────────────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                 ⚙️ PLATFORM IMPLEMENTATION LAYER                           │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  ESP32 Implementations     │  Future MCU Support                           │
-│  I2C/SPI Device Support    │                                               │
-└─────────────────────┬───────────────────────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    🔧 HARDFOC HARDWARE LAYER                               │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  ESP32-C6 Primary MCU      │  HardFOC Board Components                    │
-│  Sensors & Actuators        │                                               │
-└─────────────────────────────────────────────────────────────────────────────┘
-
-Data Flow:
-Application Layer → Thread-Safe Layer → Base Interface Layer → Platform Implementation → Hardware
+📦 Hardware Abstraction Layer
+├── 🎯 Base Layer (inc/base/)           # Abstract interfaces
+│   ├── BaseGpio.h                      # GPIO operations
+│   ├── BaseAdc.h                       # Analog-to-digital conversion
+│   ├── BasePwm.h                       # Pulse width modulation
+│   ├── BaseUart.h                      # Serial communication
+│   ├── BaseI2c.h                       # I2C bus operations
+│   ├── BaseSpi.h                       # SPI bus operations
+│   ├── BaseCan.h                       # CAN bus communication
+│   ├── BaseWifi.h                      # WiFi networking
+│   ├── BaseBluetooth.h                 # Bluetooth connectivity
+│   ├── BaseNvs.h                       # Non-volatile storage
+│   ├── BaseLogger.h                    # Unified logging system
+│   ├── BaseTemperature.h               # Temperature sensing
+│   ├── BasePeriodicTimer.h             # Timer operations
+│   └── BasePio.h                       # Programmable I/O (advanced GPIO)
+│
+└── 🔧 MCU Layer (inc/mcu/ & src/mcu/)  # Platform implementations
+    ├── esp32/                          # ESP32 family support
+    │   ├── EspGpio.h/.cpp             # ESP32 GPIO implementation
+    │   ├── EspAdc.h/.cpp              # ESP32 ADC implementation
+    │   ├── EspPwm.h/.cpp              # ESP32 PWM implementation
+    │   └── ...                        # All other ESP32 peripherals
+    │
+    ├── stm32/                          # STM32 family (future)
+    │   └── ...                        # STM32 implementations
+    │
+    └── nrf/                            # Nordic nRF (future)
+        └── ...                        # nRF implementations
 ```
 
-### 🔧 **Consistent Type System**
+### **Abstraction Benefits**
 
-All interfaces use a unified type system for maximum portability and consistency across HardFOC motor controller boards:
-
+#### **1. MCU Independence**
 ```cpp
-// Platform-agnostic type definitions for HardFOC boards
-using hf_u8_t = uint8_t;    // 8-bit unsigned
-using hf_u16_t = uint16_t;  // 16-bit unsigned  
-using hf_u32_t = uint32_t;  // 32-bit unsigned
-using hf_u64_t = uint64_t;  // 64-bit unsigned
-
-// Hardware-specific semantic types for HardFOC applications
-using hf_pin_num_t = hf_i32_t;      // GPIO pin numbers
-using hf_channel_id_t = hf_u32_t;   // ADC/PWM/DMA channels
-using hf_frequency_hz_t = hf_u32_t; // Frequency values in Hz
-using hf_timeout_ms_t = hf_u32_t;   // Timeout values in milliseconds
-```
-
----
-
-## ✨ **Key Features**
-
-### 🔌 **Comprehensive Hardware Support for HardFOC Boards**
-- **14 Complete Interfaces** - From basic GPIO to advanced wireless communication for HardFOC applications
-- **MCU Platform Agnostic** - Currently implemented for ESP32-C6, designed for future MCU support
-- **External Hardware** - Extensive support for I2C/SPI devices and external controllers commonly used with HardFOC boards
-- **Sensor Integration** - Built-in support for temperature, motor feedback, and diagnostic sensors used in HardFOC systems
-
-### ⚡ **Performance & Reliability for HardFOC Applications**
-- **Real-Time Optimized** - Designed for critical motor control timing requirements of HardFOC boards
-- **Thread-Safe Options** - Optional thread-safe wrappers for concurrent HardFOC applications
-- **Lazy Initialization** - Resources allocated only when needed for optimal memory usage on HardFOC boards
-- **Comprehensive Error Handling** - Detailed error codes and validation across all interfaces for HardFOC reliability
-
-### 🌐 **Modern Connectivity for HardFOC IoT Applications**
-- **WiFi Support** - Complete station/AP modes with WPA3 security for HardFOC IoT integration
-- **Bluetooth Integration** - Both Classic and BLE support for mobile integration with HardFOC boards
-- **IoT Ready** - Built-in networking capabilities for cloud connectivity of HardFOC motor controller systems
-- **Remote Monitoring** - Advanced logging with network output support for HardFOC diagnostics
-
-### 📊 **Professional Features for HardFOC Systems**
-- **Advanced Logging** - Multi-level logging with multiple output destinations for HardFOC debugging
-- **Performance Monitoring** - Built-in diagnostics and performance tracking for HardFOC optimization
-- **Configuration Management** - Non-volatile storage for HardFOC system settings
-- **Thermal Management** - Comprehensive temperature monitoring and protection for HardFOC boards
-
----
-
-## 🔌 **Complete Interface Support**
-
-### 🏛️ **Core Interfaces for HardFOC Boards**
-| Interface | Description | Key Features | HardFOC Hardware Support |
-|-----------|-------------|--------------|------------------|
-| [`BaseGpio`](docs/api/BaseGpio.md) | 🔌 Digital I/O Operations | Dynamic modes, interrupts, pull resistors | ESP32-C6, I2C/SPI Expanders |
-| [`BaseAdc`](docs/api/BaseAdc.md) | 📊 Analog-to-Digital Conversion | Multi-channel, calibration, voltage conversion | ESP32-C6, External ADCs |
-| [`BasePwm`](docs/api/BasePwm.md) | 🎛️ Pulse Width Modulation | Multi-channel, frequency control, motor drive | ESP32-C6, External Controllers |
-| [`BasePio`](docs/api/BasePio.md) | 📻 Programmable I/O | Custom protocols, precise timing, encoding | ESP32-C6 RMT |
-
-### 📡 **Communication Interfaces for HardFOC Systems**
-| Interface | Description | Key Features | HardFOC Hardware Support |
-|-----------|-------------|--------------|------------------|
-| [`BaseI2c`](docs/api/BaseI2c.md) | 🔄 I2C Communication | Master mode, device scanning, error recovery | ESP32-C6, Software I2C |
-| [`BaseSpi`](docs/api/BaseSpi.md) | ⚡ SPI Communication | Full-duplex, configurable modes, DMA support | ESP32-C6, Software SPI |
-| [`BaseUart`](docs/api/BaseUart.md) | 📡 UART Communication | Async I/O, flow control, configurable parameters | ESP32-C6, USB-Serial |
-| [`BaseCan`](docs/api/BaseCan.md) | 🚗 CAN Bus Communication | Standard/Extended frames, filtering, error handling | ESP32-C6 TWAI, External CAN |
-
-### 🌐 **Wireless Interfaces for HardFOC IoT**
-| Interface | Description | Key Features | HardFOC Hardware Support |
-|-----------|-------------|--------------|------------------|
-| [`BaseWifi`](docs/api/BaseWifi.md) | 📶 WiFi Communication | Station/AP modes, WPA3 security, mesh networking | ESP32-C6 WiFi |
-| [`BaseBluetooth`](docs/api/BaseBluetooth.md) | 📲 Bluetooth Communication | Classic & BLE, pairing, service discovery | ESP32-C6 Bluetooth |
-
-### 🛠️ **System Interfaces for HardFOC Applications**
-| Interface | Description | Key Features | HardFOC Hardware Support |
-|-----------|-------------|--------------|------------------|
-| [`BaseNvs`](docs/api/BaseNvs.md) | 💾 Non-Volatile Storage | Key-value storage, encryption, wear leveling | ESP32-C6 Flash, External |
-| [`BasePeriodicTimer`](docs/api/BasePeriodicTimer.md) | ⏰ Periodic Timers | Callback scheduling, high precision, multi-timer | ESP32-C6 Hardware Timers |
-| [`BaseTemperature`](docs/api/BaseTemperature.md) | 🌡️ Temperature Sensing | Multi-sensor support, calibration, thermal protection | Internal, I2C, 1-Wire Sensors |
-| [`BaseLogger`](docs/api/BaseLogger.md) | 📝 System Logging | Multi-level logging, thread-safe, network output | UART, File, Network, Memory |
-
-### 📊 **HardFOC Implementation Status Matrix**
-
-| **Component** | **Interface Status** | **ESP32-C6 Implementation** | **Status** | **HardFOC Use Cases** |
-|---------------|---------------------|-----------------------------|-----------|-----------------------|
-| **GPIO** | ✅ Complete | ✅ EspGpio | ✅ Production Ready | Enable pins, limit switches, status LEDs |
-| **ADC** | ✅ Complete | ✅ EspAdc | ✅ Production Ready | Current sensing, position feedback |
-| **PWM** | ✅ Complete | ✅ EspPwm | ✅ Production Ready | Motor speed control, servo control |
-| **I2C** | ✅ Complete | ✅ EspI2c | ✅ Production Ready | Sensor communication, display control |
-| **SPI** | ✅ Complete | ✅ EspSpi | ✅ Production Ready | High-speed motor controller communication |
-| **UART** | ✅ Complete | ✅ EspUart | ✅ Production Ready | Debug output, external communication |
-| **CAN** | ✅ Complete | ✅ EspCan | ✅ Production Ready | Industrial networking, multi-motor coordination |
-| **WiFi** | ✅ Complete | ✅ EspWifi | ✅ Production Ready | Cloud connectivity, remote monitoring |
-| **Bluetooth** | ✅ Complete | ✅ EspBluetooth | ✅ Production Ready | Mobile apps, wireless configuration |
-| **NVS** | ✅ Complete | ✅ EspNvs | ✅ Production Ready | Configuration storage, calibration data |
-| **Timer** | ✅ Complete | ✅ EspPeriodicTimer | ✅ Production Ready | Control loops, sensor sampling |
-| **Temperature** | ✅ Complete | ✅ EspTemperature | ✅ Production Ready | Thermal monitoring, safety protection |
-| **PIO** | ✅ Complete | ✅ EspPio | ✅ Production Ready | Encoder reading, custom protocols |
-| **Logger** | ✅ Complete | ✅ EspLogger | ✅ Production Ready | System diagnostics, performance monitoring |
-
----
-
-## 🚀 **Quick Start**
-
-### 📋 **Prerequisites**
-
-- **ESP-IDF v5.0+** for ESP32-C6 development
-- **C++17** compatible compiler (GCC 8+ or Clang 7+)
-- **CMake 3.16+** for build system management
-- **HardFOC Motor Controller Board** with ESP32-C6
-
-### 🛡️ **Enhanced Build System**
-
-The project includes a comprehensive build system with smart validation and automated ESP-IDF management:
-
-#### **Key Features**
-- **🔍 Smart Validation** - Prevents invalid build combinations before they fail
-- **🧠 Automatic ESP-IDF Selection** - Chooses the right ESP-IDF version based on app and build type
-- **📊 Comprehensive Error Messages** - Clear guidance when validation fails
-- **🔄 CI/CD Integration** - Seamless GitHub Actions integration with matrix generation
-
-#### **Build Commands**
-```bash
-# Basic build with smart defaults
-./examples/esp32/scripts/build_app.sh gpio_test Release
-
-# Validate build combination before building
-./examples/esp32/scripts/build_app.sh validate gpio_test Release
-
-# Show app information and supported combinations
-./examples/esp32/scripts/build_app.sh info gpio_test
-
-# List all valid build combinations
-./examples/esp32/scripts/build_app.sh combinations
-```
-
-#### **Smart Default Behavior**
-```bash
-# No IDF version specified - system automatically selects:
-# 1. App-specific IDF version if defined
-# 2. First global IDF version supporting the build type
-# 3. Fallback to release/v5.5
-
-./scripts/build_app.sh gpio_test Release
-# → Automatically uses release/v5.5 (smart default)
-
-./scripts/build_app.sh gpio_test Release release/v5.4
-# → Uses specified version (if valid)
-```
-
-### ⚙️ **Installation**
-
-1. **Clone the repository:**
-```bash
-git clone https://github.com/hardfoc/hf-internal-interface-wrap.git
-cd hf-internal-interface-wrap
-```
-
-2. **Add to your HardFOC project:**
-```cmake
-# In your HardFOC project's CMakeLists.txt
-idf_component_register(
-    SRCS "main.cpp"
-    INCLUDE_DIRS "."
-    REQUIRES hf_internal_interface_wrap
-)
-```
-
-3. **Include the headers:**
-```cpp
-// Core interfaces for HardFOC boards
-#include "inc/base/BaseGpio.h"
-#include "inc/base/BaseAdc.h"
-#include "inc/base/BasePwm.h"
-#include "inc/base/BaseWifi.h"
-#include "inc/base/BaseTemperature.h"
-
-// ESP32 implementations for HardFOC boards
-#include "inc/mcu/esp32/EspGpio.h"
-#include "inc/mcu/esp32/EspAdc.h"
-#include "inc/mcu/esp32/EspPwm.h"
-#include "inc/mcu/esp32/EspWifi.h"
-#include "inc/mcu/esp32/EspTemperature.h"
-```
-
-### 🖥️ **VS Code Development Environment Setup**
-
-The project includes a pre-configured VS Code environment for seamless HardFOC development. The `.vscode` folder contains all necessary configurations for IntelliSense, building, and flashing.
-
-#### **Prerequisites**
-- **VS Code** or **Cursor IDE** with C/C++ extension
-- **ESP-IDF v5.0+** installed and sourced
-
-#### **Quick Setup**
-1. **Source ESP-IDF environment:**
-   ```bash
-   source ~/esp/esp-idf/export.sh
-   ```
-
-2. **Open the project in VS Code:**
-   ```bash
-   code .  # or open VS Code and File -> Open Folder
-   ```
-
-3. **Install C/C++ extension** if prompted
-
-4. **Reload VS Code window** (Ctrl+Shift+P → "Developer: Reload Window")
-
-#### **What's Pre-Configured**
-- ✅ **Complete IntelliSense** for ESP-IDF and project files
-- ✅ **Build and flash tasks** for all 16 examples
-- ✅ **Proper include paths** and compiler settings
-- ✅ **Computer agnostic** configuration (works on any system)
-- ✅ **Organized task categories** (Peripheral, Sensor, Utility, etc.)
-
-#### **Available Tasks**
-- **Build Tasks**: Build any example in Debug/Release mode
-- **Flash Tasks**: Flash and monitor any example
-- **Utility Tasks**: Clean builds, regenerate compile commands
-
-#### **Using Tasks**
-1. Press `Ctrl+Shift+P` → "Tasks: Run Task"
-2. Select from available tasks:
-   - **Build GPIO Test (Release)** - Build GPIO example
-   - **Flash PWM Test (Release)** - Flash PWM example
-   - **Clean All Builds** - Remove all build directories
-
-#### **Troubleshooting VS Code Setup**
-- **IntelliSense not working**: Ensure ESP-IDF is sourced and reload VS Code
-- **Tasks not found**: Check that you're in the workspace root
-- **Path issues**: Run the toolchain update script in `.vscode/` folder
-
-For detailed VS Code configuration information, see [`.vscode/README.md`](.vscode/README.md).
-
-### 💡 **HardFOC Motor Controller Example**
-
-*This example demonstrates how to integrate with a TMC9660-style motor controller using the HardFOC wrapper interfaces*
-
-```cpp
-#include "inc/mcu/esp32/EspGpio.h"
-#include "inc/mcu/esp32/EspAdc.h"
-#include "inc/mcu/esp32/EspPwm.h"
-#include "inc/mcu/esp32/EspTemperature.h"
-#include "inc/mcu/esp32/EspLogger.h"
-#include "inc/mcu/esp32/EspSpi.h"
-
-class HardFOCMotorController {
-private:
-    EspGpio enable_pin_;
-    EspSpi motor_controller_spi_;  // For TMC9660 or similar motor controller
-    EspAdc current_sensor_;
-    EspTemperature temp_sensor_;
-    EspLogger logger_;
+// Application code remains the same across MCUs
+class MotorController {
+    BaseGpio* enable_pin;
+    BasePwm* speed_control;
+    BaseAdc* current_sensor;
     
 public:
-    HardFOCMotorController() 
-        : enable_pin_(GPIO_NUM_2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT)
-        , motor_controller_spi_(SPI2_HOST, GPIO_NUM_18, GPIO_NUM_19, GPIO_NUM_5)  // SCLK, MISO, MOSI
-        , current_sensor_(ADC_UNIT_1, ADC_ATTEN_DB_11)
-    {}
-    
-    bool initialize() {
-        // Initialize all HardFOC components
-        bool success = true;
-        success &= (logger_.EnsureInitialized() == hf_logger_err_t::LOGGER_SUCCESS);
-        success &= (enable_pin_.EnsureInitialized() == hf_gpio_err_t::GPIO_SUCCESS);
-        success &= (motor_controller_spi_.EnsureInitialized() == hf_spi_err_t::SPI_SUCCESS);
-        success &= (current_sensor_.EnsureInitialized() == hf_adc_err_t::ADC_SUCCESS);
-        success &= (temp_sensor_.EnsureInitialized() == hf_temp_err_t::TEMP_SUCCESS);
-        
-        if (success) {
-            // Configure motor controller via SPI (example for TMC9660-style controllers)
-            configure_motor_controller();
-            logger_.LogInfo("HARDFOC", "HardFOC motor controller initialized successfully");
-        } else {
-            logger_.LogError("HARDFOC", "HardFOC motor controller initialization failed");
-        }
-        
-        return success;
+    void Initialize() {
+        enable_pin = GpioFactory::Create(MOTOR_ENABLE_PIN, GPIO_OUTPUT);
+        speed_control = PwmFactory::Create(PWM_CHANNEL_1, 1000); // 1kHz
+        current_sensor = AdcFactory::Create(ADC_CHANNEL_1);
     }
     
-    void control_motor(float speed_percent) {
-        // Safety checks for HardFOC operation
-        float temperature, current;
-        temp_sensor_.ReadTemperature(temperature);
-        current_sensor_.ReadChannelV(ADC_CHANNEL_0, current);
-        
-        if (temperature > 85.0f) {
-            logger_.LogError("HARDFOC", "HardFOC board overheating detected: %.1f°C", temperature);
-            emergency_stop();
-            return;
-        }
-        
-        if (current > 10.0f) {
-            logger_.LogWarn("HARDFOC", "HardFOC high current: %.2fA", current);
-        }
-        
-        // Send velocity command to motor controller via SPI
-        send_velocity_command(speed_percent);
-        
-        logger_.LogDebug("HARDFOC", "Motor Speed: %.1f%%, Current: %.2fA, Temp: %.1f°C", 
-                        speed_percent, current, temperature);
+    void SetSpeed(hf_u16_t speed_percent) {
+        speed_control->SetDutyCycle(speed_percent);
     }
+};
+```
+
+#### **2. External Driver Support**
+The base classes can be extended for external chips:
+```cpp
+// External motor driver chip
+class DRV8302_Driver : public BasePwm {
+    BaseI2c* i2c_bus;
+    BaseSpi* spi_bus;
     
-    void emergency_stop() {
-        enable_pin_.SetInactive();
-        send_stop_command();
-        logger_.LogError("HARDFOC", "HardFOC emergency stop activated");
-    }
-    
-private:
-    void configure_motor_controller() {
-        // Example configuration for TMC9660-style motor controller
-        // Set motor parameters, current limits, etc.
-        hf_u8_t config_data[] = {0x80, 0x00, 0x00, 0x01};  // Example configuration
-        motor_controller_spi_.WriteRead(config_data, nullptr, sizeof(config_data));
-    }
-    
-    void send_velocity_command(float speed_percent) {
-        // Example: Convert speed percentage to motor controller velocity command
-        hf_u32_t velocity = static_cast<hf_u32_t>(speed_percent * 1000);  // Example scaling
-        hf_u8_t cmd[] = {0x00, 0x03,  // Velocity register (example)
-                         static_cast<hf_u8_t>(velocity >> 24),
-                         static_cast<hf_u8_t>(velocity >> 16),
-                         static_cast<hf_u8_t>(velocity >> 8),
-                         static_cast<hf_u8_t>(velocity)};
-        motor_controller_spi_.WriteRead(cmd, nullptr, sizeof(cmd));
-    }
-    
-    void send_stop_command() {
-        // Example: Send immediate stop command to motor controller
-        hf_u8_t stop_cmd[] = {0x00, 0x03, 0x00, 0x00, 0x00, 0x00};  // Zero velocity
-        motor_controller_spi_.WriteRead(stop_cmd, nullptr, sizeof(stop_cmd));
+public:
+    // Implement BasePwm interface using external chip
+    void SetDutyCycle(hf_u16_t duty) override {
+        // Send PWM command to DRV8302 via SPI/I2C
     }
 };
 ```
 
 ---
 
-## 📖 **Documentation**
+## 🔌 **Peripheral Interfaces**
 
-### 📚 **Complete API Reference for HardFOC Boards**
-- [📖 **Main Documentation**](docs/index.md) - Comprehensive HardFOC system overview
-- [🏛️ **Core Interfaces**](docs/index.md#-api-reference) - GPIO, ADC, PWM, PIO for HardFOC boards
-- [📡 **Communication Interfaces**](docs/index.md#-api-reference) - I2C, SPI, UART, CAN for HardFOC systems
-- [🌐 **Wireless Interfaces**](docs/index.md#-api-reference) - WiFi, Bluetooth for HardFOC IoT
-- [🛠️ **System Interfaces**](docs/index.md#-api-reference) - NVS, Timer, Temperature, Logger for HardFOC applications
+### **Core Peripherals**
 
-### 🎯 **API Documentation**
-- [🔧 **BaseGpio API**](docs/api/BaseGpio.md) - Digital I/O interface
-- [📊 **BaseAdc API**](docs/api/BaseAdc.md) - Analog-to-digital conversion interface
-- [🔌 **EspGpio API**](docs/api/EspGpio.md) - ESP32-C6 GPIO implementation
-- [🔧 **HardwareTypes API**](docs/api/HardwareTypes.md) - Platform-agnostic type definitions
+| **Interface** | **Purpose** | **Key Features** |
+|---------------|-------------|------------------|
+| **BaseGpio** | Digital I/O control | Input/output, interrupts, pull-up/down |
+| **BaseAdc** | Analog measurement | Multi-channel, calibration, DMA support |
+| **BasePwm** | Motor/servo control | Frequency control, duty cycle, phase alignment |
+| **BaseUart** | Serial communication | Async I/O, flow control, custom baud rates |
 
-### 📊 **HardFOC Practical Examples**
-- **GPIO Control** - LED and button control for HardFOC boards
-- **ADC Monitoring** - Sensor data acquisition for HardFOC systems
-- **PWM Generation** - Motor speed control for HardFOC applications
-- **Temperature Sensing** - Thermal monitoring for HardFOC boards
+### **Communication Buses**
 
-### 🔄 **CI/CD & Automation**
+| **Interface** | **Purpose** | **Key Features** |
+|---------------|-------------|------------------|
+| **BaseI2c** | Sensor communication | Master/slave, clock stretching, error recovery |
+| **BaseSpi** | High-speed data | Full/half duplex, DMA, chip select management |
+| **BaseCan** | Automotive/industrial | Message filtering, error handling, bus monitoring |
 
-CI/CD pipelines and automation for ESP32 development:
+### **Wireless Connectivity**
 
-- **🔄 [GitHub Actions Workflows](.github/README.md)** - CI/CD pipeline documentation
-- **⚡ [CI Caching Strategy](.github/workflows/docs/README_CI_CACHING_STRATEGY.md)** - Multi-layer caching for faster builds
-- **🛡️ [Security Guidelines](.github/workflows/docs/README_SECURITY.md)** - Security policies and procedures
-- **📦 [Dependabot Automation](.github/dependabot.yml)** - Automated dependency updates and security monitoring
+| **Interface** | **Purpose** | **Key Features** |
+|---------------|-------------|------------------|
+| **BaseWifi** | Network connectivity | STA/AP modes, WPA3 security, power management |
+| **BaseBluetooth** | Short-range wireless | Classic/BLE, pairing, service discovery |
+
+### **System Services**
+
+| **Interface** | **Purpose** | **Key Features** |
+|---------------|-------------|------------------|
+| **BaseNvs** | Configuration storage | Key-value pairs, encryption, wear leveling |
+| **BaseLogger** | Debug/monitoring | Multiple levels, async logging, filtering |
+| **BaseTemperature** | Thermal monitoring | Internal/external sensors, calibration |
+| **BasePeriodicTimer** | Task scheduling | Precise timing, ISR-safe callbacks |
+| **BasePio** | Advanced GPIO | State machines, DMA, complex protocols |
+
+---
+
+## 🖥️ **MCU Support**
+
+### **Currently Supported**
+
+#### **ESP32 Family** ✅
+- **ESP32** - Original dual-core WiFi/BT
+- **ESP32-C6** - RISC-V with WiFi 6 + Zigbee
+- **ESP32-S3** - Dual-core with AI acceleration
+- **ESP32-C3** - Single-core RISC-V WiFi/BT
+
+**Implementation Status**: All 14 peripheral interfaces fully implemented
+
+### **Planned Support**
+
+#### **STM32 Family** 🚧
+- **STM32F4** - High-performance ARM Cortex-M4
+- **STM32H7** - Dual-core ARM Cortex-M7
+- **STM32G4** - Motor control optimized
+
+#### **Nordic nRF** 🚧
+- **nRF52840** - Bluetooth 5.0 + Thread/Zigbee
+- **nRF5340** - Dual-core Bluetooth 5.2
+
+### **Adding New MCUs**
+
+1. **Create MCU directory**: `inc/mcu/your_mcu/` and `src/mcu/your_mcu/`
+2. **Implement base interfaces**: Inherit from base classes
+3. **Add factory support**: Register your implementations
+4. **Update build system**: Add MCU-specific compilation flags
+
+```cpp
+// Example: Adding STM32 GPIO support
+class Stm32Gpio : public BaseGpio {
+    GPIO_TypeDef* gpio_port;
+    hf_u16_t gpio_pin;
+    
+public:
+    void SetHigh() override {
+        HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_SET);
+    }
+    
+    void SetLow() override {
+        HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_RESET);
+    }
+};
+```
+
+---
+
+## 🚀 **Quick Start**
+
+### **1. Clone Repository**
+```bash
+git clone https://github.com/your-repo/hf-internal-interface-wrap.git
+cd hf-internal-interface-wrap
+```
+
+### **2. Setup Development Environment**
+```bash
+# For ESP32 development
+cd examples/esp32
+./scripts/setup_repo.sh
+```
+
+### **3. Build Example**
+```bash
+# Build GPIO test for ESP32
+./scripts/build_app.sh gpio_test Release esp32
+```
+
+### **4. Flash and Monitor**
+```bash
+# Flash to connected ESP32
+./scripts/flash_app.sh gpio_test Release flash
+
+# Monitor serial output
+./scripts/flash_app.sh gpio_test Release monitor
+```
+
+### **5. Basic Usage**
+```cpp
+#include "base/BaseGpio.h"
+#include "mcu/esp32/EspGpio.h"
+
+void setup() {
+    // Create GPIO instance for built-in LED
+    BaseGpio* led = new EspGpio(GPIO_NUM_2, GPIO_MODE_OUTPUT);
+    
+    // Blink LED
+    while(true) {
+        led->SetHigh();
+        vTaskDelay(pdMS_TO_TICKS(500));
+        led->SetLow();
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+}
+```
+
+---
+
+## 📖 **API Documentation**
+
+### **Generated Documentation**
+- **[API Reference](docs/api/)** - Complete interface documentation
+- **[ESP32 Implementation](docs/esp_api/)** - ESP32-specific details
+
+### **Key Concepts**
+
+#### **Type System**
+```cpp
+// Project uses consistent type definitions
+typedef uint8_t  hf_u8_t;
+typedef uint16_t hf_u16_t;
+typedef uint32_t hf_u32_t;
+
+// Enums use snake_case with _t suffix
+enum class hf_gpio_state_t {
+    LOW = 0,
+    HIGH = 1
+};
+```
+
+#### **Error Handling**
+```cpp
+// All operations return status codes
+enum class hf_gpio_err_t {
+    SUCCESS = 0,
+    INVALID_PIN,
+    ALREADY_CONFIGURED,
+    HARDWARE_ERROR
+};
+
+hf_gpio_err_t result = gpio->Configure(GPIO_MODE_OUTPUT);
+if (result != hf_gpio_err_t::SUCCESS) {
+    Logger::GetInstance().LogError("GPIO configuration failed");
+}
+```
+
+#### **Factory Pattern**
+
+The factory pattern enables completely MCU-agnostic code by automatically selecting the correct implementation at compile time. Factories support both **dynamic allocation** (heap-based) and **static allocation** (stack-based) patterns:
+
+```cpp
+// inc/utils/GpioFactory.h - MCU-agnostic factory interface
+class GpioFactory {
+public:
+    static BaseGpio* Create(hf_u8_t pin, gpio_mode_t mode);
+    static BaseGpio* CreateWithInterrupt(hf_u8_t pin, gpio_isr_t callback);
+    static void Destroy(BaseGpio* gpio);
+};
+
+// src/utils/GpioFactory.cpp - Automatic MCU selection
+BaseGpio* GpioFactory::Create(hf_u8_t pin, gpio_mode_t mode) {
+#ifdef MCU_ESP32
+    return new EspGpio(static_cast<gpio_num_t>(pin), mode);
+#elif defined(MCU_STM32)
+    return new Stm32Gpio(pin, mode);
+#elif defined(MCU_NRF)
+    return new NrfGpio(pin, mode);
+#else
+    #error "Unsupported MCU platform"
+#endif
+}
+
+// Application code - same across all MCUs
+BaseGpio* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);
+BaseGpio* button = GpioFactory::CreateWithInterrupt(GPIO_PIN_0, button_callback);
+```
+
+**Static Allocation Alternative:**
+
+For systems requiring deterministic memory usage or avoiding heap allocation:
+
+```cpp
+// inc/utils/StaticGpioFactory.h - Stack-based allocation (C++23 compatible)
+template<size_t MAX_GPIOS = 16>
+class StaticGpioFactory {
+private:
+    // Modern C++23 approach: alignas + std::byte array instead of deprecated std::aligned_storage
+    static std::array<alignas(BaseGpio) std::byte[sizeof(EspGpio)], MAX_GPIOS> gpio_storage;
+    static std::array<bool, MAX_GPIOS> gpio_used;
+    static size_t next_index;
+    
+public:
+    static BaseGpio* Create(hf_u8_t pin, gpio_mode_t mode) {
+        if (next_index >= MAX_GPIOS) return nullptr;
+        
+        // Construct in-place in pre-allocated storage using placement new
+        void* storage = &gpio_storage[next_index];
+        BaseGpio* gpio = nullptr;
+        
+#ifdef MCU_ESP32
+        gpio = new(storage) EspGpio(static_cast<gpio_num_t>(pin), mode);
+#elif defined(MCU_STM32)
+        gpio = new(storage) Stm32Gpio(pin, mode);
+#elif defined(MCU_NRF)
+        gpio = new(storage) NrfGpio(pin, mode);
+#endif
+        
+        gpio_used[next_index] = true;
+        next_index++;
+        return gpio;
+    }
+    
+    static void DestroyAll() {
+        for (size_t i = 0; i < next_index; ++i) {
+            if (gpio_used[i]) {
+                // Use std::launder for safe pointer conversion (C++17+)
+                BaseGpio* gpio = std::launder(reinterpret_cast<BaseGpio*>(&gpio_storage[i]));
+                gpio->~BaseGpio();  // Call destructor explicitly
+                gpio_used[i] = false;
+            }
+        }
+        next_index = 0;
+    }
+};
+
+// Pre-allocated object pool for known hardware configuration
+class HardwarePool {
+private:
+    // Modern C++23 approach: alignas + std::byte arrays instead of deprecated std::aligned_storage
+    alignas(BaseGpio) std::byte motor_enable_storage[sizeof(EspGpio)];
+    alignas(BaseGpio) std::byte fault_pin_storage[sizeof(EspGpio)];
+    alignas(BasePwm) std::byte motor_pwm_storage[sizeof(EspPwm)];
+    alignas(BaseAdc) std::byte current_adc_storage[sizeof(EspAdc)];
+    
+public:
+    BaseGpio* motor_enable;
+    BaseGpio* fault_pin;
+    BasePwm* motor_pwm;
+    BaseAdc* current_adc;
+    
+    // Constructor creates all objects in pre-allocated storage
+    HardwarePool() {
+#ifdef MCU_ESP32
+        motor_enable = new(&motor_enable_storage) EspGpio(GPIO_NUM_5, GPIO_MODE_OUTPUT);
+        fault_pin = new(&fault_pin_storage) EspGpio(GPIO_NUM_4, GPIO_MODE_INPUT);
+        motor_pwm = new(&motor_pwm_storage) EspPwm(LEDC_CHANNEL_0, 20000, 12, GPIO_NUM_18);
+        current_adc = new(&current_adc_storage) EspAdc(ADC1_CHANNEL_0);
+#elif defined(MCU_STM32)
+        motor_enable = new(&motor_enable_storage) Stm32Gpio(5, GPIO_MODE_OUTPUT);
+        fault_pin = new(&fault_pin_storage) Stm32Gpio(4, GPIO_MODE_INPUT);
+        motor_pwm = new(&motor_pwm_storage) Stm32Pwm(TIM1, 20000, 5);
+        current_adc = new(&current_adc_storage) Stm32Adc(ADC1, 0);
+#endif
+    }
+    
+    // Destructor calls destructors explicitly
+    ~HardwarePool() {
+        if (motor_enable) motor_enable->~BaseGpio();
+        if (fault_pin) fault_pin->~BaseGpio();
+        if (motor_pwm) motor_pwm->~BasePwm();
+        if (current_adc) current_adc->~BaseAdc();
+    }
+};
+```
+
+**Usage Comparison:**
+
+```cpp
+// Dynamic allocation (heap-based)
+class DynamicController {
+    BaseGpio* motor_enable;
+    BasePwm* motor_speed;
+    
+public:
+    void Initialize() {
+        motor_enable = GpioFactory::Create(GPIO_PIN_5, GPIO_OUTPUT);
+        motor_speed = PwmFactory::CreateMotorControl(PWM_CH_0, GPIO_PIN_18);
+    }
+    
+    ~DynamicController() {
+        GpioFactory::Destroy(motor_enable);
+        PwmFactory::Destroy(motor_speed);
+    }
+};
+
+// Static allocation (stack-based, deterministic memory)
+class StaticController {
+    HardwarePool hardware;  // All objects created in constructor
+    
+public:
+    void Initialize() {
+        // Objects already created in hardware pool constructor
+        // Just configure them
+        hardware.motor_enable->SetHigh();
+        hardware.motor_pwm->SetDutyCycle(0);
+    }
+    
+    void RunMotor(hf_u16_t speed) {
+        hardware.motor_pwm->SetDutyCycle(speed);
+        hf_u16_t current = hardware.current_adc->ReadRaw();
+        Logger::GetInstance().LogInfo("Motor speed: %d%%, Current: %d", speed, current);
+    }
+    
+    // Destructor automatically called, no manual cleanup needed
+};
+
+// Real-time system with pre-allocated pool
+void RealTimeTask() {
+    static StaticGpioFactory<8> gpio_pool;  // Max 8 GPIOs, stack allocated
+    
+    BaseGpio* led1 = gpio_pool.Create(GPIO_PIN_2, GPIO_OUTPUT);
+    BaseGpio* led2 = gpio_pool.Create(GPIO_PIN_3, GPIO_OUTPUT);
+    BaseGpio* button = gpio_pool.Create(GPIO_PIN_0, GPIO_INPUT);
+    
+    // No heap allocation, deterministic timing
+    while(true) {
+        if (button->Read() == GPIO_HIGH) {
+            led1->SetHigh();
+            led2->SetLow();
+        } else {
+            led1->SetLow();
+            led2->SetHigh();
+        }
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}
+```
+
+**Memory Allocation Benefits:**
+
+| **Allocation Type** | **Use Case** | **Benefits** | **Trade-offs** |
+|---------------------|--------------|--------------|----------------|
+| **Dynamic (Heap)** | Flexible systems | Easy to use, unlimited objects | Runtime allocation, fragmentation risk |
+| **Static Pool** | Known hardware count | Deterministic memory, no fragmentation | Fixed object count, more setup code |
+| **Pre-allocated** | Real-time systems | Constructor-based, automatic cleanup | Compile-time hardware definition |
+
+**When to Use Each:**
+- **Dynamic**: Prototyping, flexible configurations, plenty of RAM
+- **Static Pool**: Real-time systems, safety-critical applications  
+- **Pre-allocated**: Known hardware layout, maximum determinism
+
+**C++23 Compatibility Note:**
+The examples above use modern C++23 syntax with `alignas()` and `std::byte` arrays instead of the deprecated `std::aligned_storage`. As noted in [P1413R3](https://stackoverflow.com/questions/71828288/why-is-stdaligned-storage-to-be-deprecated-in-c23-and-what-to-use-instead), `std::aligned_storage` is deprecated due to API issues and potential undefined behavior. The replacement pattern `alignas(T) std::byte[sizeof(T)]` provides the same functionality with better type safety and constexpr compatibility.
+
+**Advanced Factory Examples:**
+
+```cpp
+// PWM Factory with motor control optimization
+class PwmFactory {
+public:
+    static BasePwm* CreateMotorControl(hf_u8_t channel, hf_u8_t gpio_pin) {
+        // Automatically configures optimal settings for motor control
+        // ESP32: 20kHz, 12-bit resolution
+        // STM32: 20kHz, 16-bit resolution  
+        // nRF: 20kHz, 10-bit resolution
+    }
+    
+    static BasePwm* CreateServoControl(hf_u8_t channel, hf_u8_t gpio_pin) {
+        // Automatically configures for servo control (50Hz, precise timing)
+    }
+};
+
+// Communication Factory with bus management
+class CommFactory {
+public:
+    static BaseI2c* CreateSensorBus(hf_u8_t bus_num) {
+        // Optimized I2C settings for sensor communication
+        // Handles MCU-specific pin assignments automatically
+    }
+    
+    static BaseUart* CreateDebugPort() {
+        // Creates standard debug UART on each MCU's debug pins
+        // ESP32: UART0 on GPIO1/3
+        // STM32: USART2 on PA2/PA3
+        // nRF: UART0 on P0.06/P0.08
+    }
+};
+```
 
 ---
 
 ## 🔧 **Building**
 
-The project features an automated build system designed for both local development and CI/CD pipelines:
+### **Build System Features**
+- **Multi-MCU Support** - Single build system for all platforms
+- **Automated Testing** - Comprehensive test suites
+- **CI/CD Integration** - Automated builds and validation
 
-### **🏗️ Build System Architecture**
-
-```mermaid
-graph TB
-    subgraph "📁 Project Structure"
-        A[app_config.yml]
-        B[generate_matrix.py]
-        C[build_app.sh]
-        D[setup_ci.sh]
-        E[setup_repo.sh]
-    end
-    
-    subgraph "🔄 Build Process"
-        F[Load Configuration]
-        G[Auto-Detect ESP-IDF]
-        H[Generate Build Matrix]
-        I[Build Applications]
-        J[Export Build Paths]
-    end
-    
-    subgraph "📦 Output Management"
-        K[Dynamic Build Directories]
-        L[Structured Naming]
-        M[Complete Artifacts]
-        N[CI Integration]
-    end
-    
-    A --> F
-    B --> G
-    C --> H
-    D --> I
-    E --> J
-    
-    F --> K
-    G --> L
-    H --> M
-    I --> N
-```
-
-### **🚀 ESP-IDF Management**
-
-The build system automatically manages ESP-IDF versions and environments:
-
-- **🔄 Auto-Detection**: Automatically detects installed ESP-IDF versions
-- **📥 Auto-Installation**: Downloads and installs required ESP-IDF versions if missing
-- **🔧 Environment Setup**: Automatically sources the correct ESP-IDF environment
-- **📚 Version Support**: Supports multiple ESP-IDF versions (v4.4, v5.0, v5.1, v5.2, v5.3, v5.4, v5.5)
-- **🎯 Target Support**: Full ESP32-C6 support with automatic target detection
-
-#### **ESP-IDF Auto-Setup Process**
-
+### **Build Commands**
 ```bash
-# The build system automatically:
-1. Checks for existing ESP-IDF installations
-2. Downloads required version if not found
-3. Installs and configures ESP-IDF
-4. Sources the environment
-5. Sets up build tools and compilers
-6. Configures target-specific settings
-```
-
-### **📁 Build Directory Naming Convention**
-
-Build directories use a structured, parseable naming system:
-
-```
-build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}
-```
-
-**Examples:**
-- `build-app-gpio_test-type-Release-target-esp32c6-idf-release_v5_5`
-- `build-app-adc_test-type-Debug-target-esp32c6-idf-release_v5_4`
-- `build-app-wifi_test-type-Release-target-esp32c6-idf-release_v5_3`
-
-**Benefits:**
-- ✅ **ESP-IDF Compatible** - No special characters that cause build issues
-- ✅ **Cross-Platform Safe** - Works on all file systems
-- ✅ **Handles Hyphenated Names** - No ambiguity in parsing
-- ✅ **Structured & Parsable** - Clear section boundaries with prefixes
-- ✅ **CI/CD Ready** - Easy integration with automated pipelines
-
-### **🔧 Build Commands**
-
-#### **Local Development**
-```bash
-# Setup development environment
-source examples/esp32/scripts/setup_repo.sh
-
-# Build an application
-./examples/esp32/scripts/build_app.sh <app_name> <build_type> [idf_version]
+# Build specific application
+./scripts/build_app.sh <app_name> <build_type> <target>
 
 # Examples:
-./examples/esp32/scripts/build_app.sh gpio_test Release
-./examples/esp32/scripts/build_app.sh adc_test Debug release/v5.4
+./scripts/build_app.sh gpio_test Debug esp32
+./scripts/build_app.sh pwm_test Release esp32c6
+./scripts/build_app.sh uart_test Debug esp32s3
 ```
 
-#### **CI/CD Pipeline**
-```bash
-# Setup CI environment
-source examples/esp32/scripts/setup_ci.sh
-
-# Build with CI environment
-./examples/esp32/scripts/build_app.sh <app_name> <build_type> [idf_version]
-```
-
-### **📦 Build Artifacts**
-
-Each build produces comprehensive artifacts:
-
-- **Main Binary**: `{app_name}.bin` - Flashable firmware
-- **ELF File**: `{app_name}.elf` - Debugging and analysis
-- **Map File**: `{app_name}.map` - Memory layout and symbol information
-- **Bootloader**: `bootloader/bootloader.bin` - ESP32 bootloader
-- **Partition Table**: `partition_table/partition-table.bin` - Flash layout
-- **Build Configuration**: `sdkconfig` - ESP-IDF configuration
-- **Compile Commands**: `compile_commands.json` - IDE integration
-
-### **🔄 Build Configuration**
-
-Configuration is centralized in `examples/esp32/app_config.yml`:
-
+### **Configuration**
+Applications are configured in `examples/esp32/app_config.yml`:
 ```yaml
-metadata:
-  idf_versions: ["release/v5.5", "release/v5.4", "release/v5.3"]
-  build_types: [["Debug", "Release"], ["Debug", "Release"], ["Debug"]]
-  target: "esp32c6"
-
-apps:
+applications:
   gpio_test:
-    ci_enabled: true
-    description: "GPIO peripheral comprehensive testing"
-    idf_versions: ["release/v5.5"]  # Override global
-    build_types: [["Debug", "Release"]]  # Override global
-```
-
-### **⚡ Build Performance Features**
-
-- **🔄 Incremental Builds**: Preserves existing build artifacts when possible
-- **💾 ccache Integration**: Automatic caching for faster rebuilds
-- **🧹 Clean Builds**: Optional clean rebuilds with `CLEAN=1`
-- **📊 Build Statistics**: Comprehensive size and memory analysis
-- **🔍 Debug Information**: Detailed build logs and configuration
-
-### **📦 Dependencies**
-
-```cmake
-set(COMPONENT_REQUIRES
-    freertos
-    esp_common
-    esp_hw_support
-    esp_system
-    log
-    soc
-    hal
-    esp_wifi
-    bt
-    nvs_flash
-)
+    source_file: "GpioComprehensiveTest.cpp"
+    description: "GPIO interface testing"
+    enabled: true
+    
+  pwm_test:
+    source_file: "PwmComprehensiveTest.cpp" 
+    description: "PWM interface testing"
+    enabled: true
 ```
 
 ---
 
 ## 📊 **Examples**
 
-The ESP32 examples demonstrate all wrapper interfaces in comprehensive test suites. All examples are available in the [`examples/esp32/`](examples/esp32/) directory with a centralized configuration system.
+### **Available Test Applications**
 
-## 📍 **Centralized Project Location**
+| **Application** | **Tests** | **Purpose** |
+|-----------------|-----------|-------------|
+| **gpio_test** | Digital I/O, interrupts | GPIO interface validation |
+| **adc_test** | Multi-channel sampling | ADC accuracy and performance |
+| **pwm_test** | Frequency/duty control | Motor control applications |
+| **uart_test** | Serial communication | Data transmission testing |
+| **i2c_test** | Sensor communication | I2C bus operations |
+| **spi_test** | High-speed data | SPI protocol testing |
+| **wifi_test** | Network connectivity | WiFi stack validation |
+| **bluetooth_test** | Wireless pairing | Bluetooth functionality |
 
-The ESP32 project location is centralized using the `ESP32_PROJECT_PATH` environment variable in CI workflows, with scripts accepting the path as a command-line argument. This creates a clean architecture where the CI pipeline is the single source of truth.
+### **Factory Usage Examples**
 
-**Current Configuration**:
-```yaml
-env:
-  ESP32_PROJECT_PATH: examples/esp32  # Centralized in CI workflows
+#### **Basic Factory Usage**
+```cpp
+// Simple GPIO control - works on any MCU
+void BlinkLED() {
+    BaseGpio* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);
+    
+    while(true) {
+        led->SetHigh();
+        vTaskDelay(pdMS_TO_TICKS(500));
+        led->SetLow(); 
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+    
+    GpioFactory::Destroy(led);
+}
+
+// PWM motor control - MCU-optimized automatically
+void ControlMotor() {
+    BasePwm* motor = PwmFactory::CreateMotorControl(PWM_CH_0, GPIO_PIN_5);
+    BaseAdc* current = AdcFactory::Create(ADC_CHANNEL_1);
+    
+    motor->SetDutyCycle(75);  // 75% speed
+    hf_u16_t current_ma = current->ReadMillivolts() / 10;  // Convert to mA
+    
+    Logger::GetInstance().LogInfo("Motor current: %d mA", current_ma);
+}
 ```
 
-**Architecture**:
-- **CI Pipeline**: Single source of truth for project location
-- **Scripts**: Accept project path as command-line argument (`-e` or `--esp32-path`)
-- **Clean Separation**: CI controls location, scripts are portable and reusable
+#### **Multi-Peripheral Application**
+```cpp
+class HardFOCController {
+    // Hardware interfaces - MCU agnostic
+    BaseGpio* motor_enable;
+    BaseGpio* fault_pin;
+    BasePwm* motor_speed;
+    BaseAdc* current_sensor;
+    BaseAdc* voltage_sensor;
+    BaseUart* debug_port;
+    BaseI2c* sensor_bus;
+    BaseWifi* telemetry;
+    
+public:
+    hf_gpio_err_t Initialize() {
+        // Factory creates MCU-specific implementations automatically
+        motor_enable = GpioFactory::Create(MOTOR_EN_PIN, GPIO_OUTPUT);
+        fault_pin = GpioFactory::CreateWithInterrupt(FAULT_PIN, fault_callback);
+        motor_speed = PwmFactory::CreateMotorControl(PWM_CH_0, MOTOR_PWM_PIN);
+        current_sensor = AdcFactory::Create(CURRENT_ADC_CH);
+        voltage_sensor = AdcFactory::Create(VOLTAGE_ADC_CH);
+        debug_port = CommFactory::CreateDebugPort();
+        sensor_bus = CommFactory::CreateSensorBus(I2C_BUS_0);
+        telemetry = WifiFactory::Create();
+        
+        // Validate all interfaces created successfully
+        if (!motor_enable || !motor_speed || !current_sensor) {
+            return hf_gpio_err_t::HARDWARE_ERROR;
+        }
+        
+        debug_port->Printf("HardFOC Controller initialized on %s\n", MCU_NAME);
+        return hf_gpio_err_t::SUCCESS;
+    }
+    
+    void RunMotor(hf_u16_t speed_percent) {
+        // Enable motor driver
+        motor_enable->SetHigh();
+        
+        // Set motor speed
+        motor_speed->SetDutyCycle(speed_percent);
+        
+        // Read diagnostics
+        hf_u16_t current_ma = current_sensor->ReadMillivolts() / 10;
+        hf_u16_t voltage_mv = voltage_sensor->ReadMillivolts();
+        
+        // Log locally
+        debug_port->Printf("Speed: %d%%, Current: %dmA, Voltage: %dmV\n", 
+                          speed_percent, current_ma, voltage_mv);
+        
+        // Send telemetry if connected
+        if (telemetry && telemetry->IsConnected()) {
+            telemetry->SendData("motor_speed", speed_percent);
+            telemetry->SendData("motor_current", current_ma);
+            telemetry->SendData("bus_voltage", voltage_mv);
+        }
+    }
+    
+    void EmergencyStop() {
+        motor_enable->SetLow();
+        motor_speed->SetDutyCycle(0);
+        debug_port->Printf("EMERGENCY STOP - Motor disabled\n");
+    }
+    
+    ~HardFOCController() {
+        // Clean up all resources
+        EmergencyStop();
+        GpioFactory::Destroy(motor_enable);
+        GpioFactory::Destroy(fault_pin);
+        PwmFactory::Destroy(motor_speed);
+        AdcFactory::Destroy(current_sensor);
+        AdcFactory::Destroy(voltage_sensor);
+        CommFactory::DestroyComm(debug_port);
+        CommFactory::DestroyComm(sensor_bus);
+        WifiFactory::Destroy(telemetry);
+    }
+};
 
-**Benefits**:
-- **Single Source of Truth**: CI pipeline is the only place that defines project location
-- **Portable Scripts**: Scripts work anywhere without environment variable dependencies
-- **Easy Maintenance**: Change one variable to update all paths across the entire CI system
-- **Future-Proof**: Move the ESP32 project to any location by updating the variable
-- **Consistency**: All workflows and scripts use the same path reference
-- **Reduced Errors**: No more mismatched paths between different workflow files
-
-**How to Change Project Location**:
-If you need to move the ESP32 project to a different location (e.g., `projects/esp32` or `embedded/esp32`), simply update the `ESP32_PROJECT_PATH` variable in the workflow files:
-
-```yaml
-env:
-  ESP32_PROJECT_PATH: projects/esp32  # New location
+// Same code compiles and runs on ESP32, STM32, nRF!
+HardFOCController controller;
+controller.Initialize();
+controller.RunMotor(50);  // 50% speed
 ```
 
-**Script Usage**:
-```bash
-# For CI builds: Use setup_ci.sh for environment, build_app.sh for building
-cd examples/esp32
-source scripts/setup_ci.sh
-./scripts/build_app.sh gpio_test Release
-
-# For local development: Use setup_repo.sh for environment, build_app.sh for building
-cd examples/esp32
-source scripts/setup_repo.sh
-./scripts/build_app.sh gpio_test Release
-
-# For flashing: Use flash_app.sh
-./scripts/flash_app.sh flash gpio_test Release
+#### **External Sensor Integration**
+```cpp
+// Factories can create drivers for external chips too
+class EnvironmentalMonitor {
+    BaseTemperature* internal_temp;    // MCU internal sensor
+    BaseTemperature* external_temp;    // DS18B20 external sensor
+    BaseAdc* external_adc;             // MCP3208 external ADC
+    
+public:
+    void Initialize() {
+        // Internal MCU sensors
+        internal_temp = SensorFactory::CreateInternalTemp();
+        
+        // External sensors using base interfaces
+        BaseGpio* ds18b20_pin = GpioFactory::Create(GPIO_PIN_4, GPIO_INPUT_OUTPUT);
+        external_temp = SensorFactory::CreateDS18B20(ds18b20_pin);
+        
+        BaseSpi* spi_bus = CommFactory::CreateSpi(SPI_BUS_1, 1000000);
+        BaseGpio* cs_pin = GpioFactory::Create(GPIO_PIN_10, GPIO_OUTPUT);
+        external_adc = SensorFactory::CreateMCP3208(spi_bus, cs_pin);
+    }
+    
+    void ReadAllSensors() {
+        float internal_celsius = internal_temp->ReadCelsius();
+        float external_celsius = external_temp->ReadCelsius();
+        hf_u16_t external_raw = external_adc->ReadRaw();
+        
+        Logger::GetInstance().LogInfo("Temps: Internal=%.1f°C, External=%.1f°C, ADC=%d", 
+                                     internal_celsius, external_celsius, external_raw);
+    }
+};
 ```
-
-**Self-Contained Builds**:
-Scripts now create self-contained build directories that include:
-- All source files and components
-- Configuration files (CMakeLists.txt, app_config.yml, sdkconfig)
-- **Scripts directory** for post-build operations and CI usage
-- Build artifacts and reports
-
-This enables:
-- **CI Consistency**: Scripts are available during CI execution
-- **Post-Build Operations**: Run additional scripts after building
-- **Debugging**: Easier troubleshooting with scripts available
-- **Portability**: Build artifacts can be moved with their scripts
-
-### 🎯 **Basic HardFOC Interface Examples**
-- **GPIO Control** ([`GpioComprehensiveTest.cpp`](examples/esp32/main/GpioComprehensiveTest.cpp)) - LED control and button reading for HardFOC boards
-- **ADC Monitoring** ([`AdcComprehensiveTest.cpp`](examples/esp32/main/AdcComprehensiveTest.cpp)) - Sensor data acquisition for HardFOC systems
-- **PWM Generation** ([`PwmComprehensiveTest.cpp`](examples/esp32/main/PwmComprehensiveTest.cpp)) - Motor speed control for HardFOC applications
-- **Temperature Sensing** ([`TemperatureComprehensiveTest.cpp`](examples/esp32/main/TemperatureComprehensiveTest.cpp)) - Thermal monitoring for HardFOC boards
-
-### 🌐 **HardFOC Wireless Examples**
-- **WiFi Station** ([`WifiComprehensiveTest.cpp`](examples/esp32/main/WifiComprehensiveTest.cpp)) - Internet connectivity for HardFOC IoT
-- **Bluetooth BLE** ([`BluetoothComprehensiveTest.cpp`](examples/esp32/main/BluetoothComprehensiveTest.cpp)) - Mobile app integration with HardFOC boards
-
-### 🚀 **Advanced HardFOC Integration Examples**
-- **PIO/RMT Testing** ([`PioComprehensiveTest.cpp`](examples/esp32/main/PioComprehensiveTest.cpp)) - Custom protocols and precise timing for HardFOC
-- **CAN Bus Communication** ([`CanComprehensiveTest.cpp`](examples/esp32/main/CanComprehensiveTest.cpp)) - Industrial networking for HardFOC
-- **NVS Storage** ([`NvsComprehensiveTest.cpp`](examples/esp32/main/NvsComprehensiveTest.cpp)) - Configuration storage for HardFOC
-- **System Utilities** ([`UtilsComprehensiveTest.cpp`](examples/esp32/main/UtilsComprehensiveTest.cpp)) - Utility functions for HardFOC
-
-### 🔧 **Building and Running Examples**
-
-```bash
-# Navigate to examples directory
-cd examples/esp32
-
-# Build an example (using centralized configuration)
-./scripts/build_app.sh gpio_test Release
-
-# Flash and monitor
-./scripts/flash_app.sh flash_monitor gpio_test Release
-
-# List all available examples
-./scripts/build_app.sh list
-```
-
-For detailed information about the centralized configuration system, see [`examples/esp32/README_CENTRALIZED_CONFIG.md`](examples/esp32/README_CENTRALIZED_CONFIG.md).
 
 ---
 
 ## 🤝 **Contributing**
 
-We welcome contributions to the HardFOC Internal Interface Wrapper! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
-
-- 📋 **Code Standards** - Coding style and best practices for HardFOC development
-- 🧪 **Testing** - Unit tests and hardware validation requirements for HardFOC boards
-- 📖 **Documentation** - Documentation standards and updates for HardFOC systems
-- 🐛 **Bug Reports** - How to report bugs effectively for HardFOC applications
-- ✨ **Feature Requests** - Proposing new features and enhancements for HardFOC boards
-
-### 🎯 **Development Workflow**
-
+### **Development Workflow**
 1. **Fork** the repository
-2. **Create** a feature branch
-3. **Implement** your changes with HardFOC-specific tests
-4. **Document** your changes with HardFOC examples
-5. **Submit** a pull request
+2. **Create** feature branch (`feature/new-mcu-support`)
+3. **Implement** following coding standards
+4. **Test** with existing applications
+5. **Document** your changes
+6. **Submit** pull request
 
-### 📋 **Code Quality Standards for HardFOC**
+### **Adding New Peripherals**
+1. **Create base interface** in `inc/base/BaseYourPeripheral.h`
+2. **Implement for ESP32** in `inc/mcu/esp32/EspYourPeripheral.h`
+3. **Add comprehensive tests** in `examples/esp32/main/`
+4. **Update documentation**
 
-- **C++17** standard compliance
-- **Comprehensive documentation** for all public APIs used with HardFOC boards
-- **Robust error handling** for all HardFOC operations
-- **Thread safety** considerations where applicable for HardFOC applications
-- **Performance optimization** for real-time HardFOC motor control applications
+### **Coding Standards**
+- **Functions**: CamelCase (`SetDutyCycle`, `ReadValue`)
+- **Types**: snake_case with `_t` suffix (`hf_gpio_state_t`)
+- **Enums**: snake_case enum class (`hf_adc_err_t`)
+- **Logging**: Use `Logger::GetInstance()` for all output
 
 ---
 
 ## 📄 **License**
 
-This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **GNU General Public License v3.0**.
 
-### 📜 **License Summary**
+See [LICENSE](LICENSE) for full details.
 
-- **✅ Commercial Use** - Allowed with GPL compliance
-- **✅ Modification** - Allowed with source disclosure
-- **✅ Distribution** - Allowed with GPL compliance
-- **✅ Private Use** - Allowed
-- **❌ Liability** - Limited
-- **❌ Warranty** - None provided
+---
+
+## 🔗 **Quick Links**
+
+### **Documentation**
+- 📚 [API Reference](docs/api/) - Complete interface documentation
+- 🔧 [Build System](examples/esp32/scripts/docs/) - Build and deployment guides
+- 🛡️ [CI/CD Pipeline](.github/README.md) - Automated workflows and testing
+
+### **Development**
+- 🚀 [Examples](examples/esp32/) - Test applications and usage examples
+- 🔧 [Scripts](examples/esp32/scripts/) - Build, flash, and development tools
+- 📊 [Configuration](examples/esp32/app_config.yml) - Application and build settings
+
+### **Community**
+- 🐛 [Issues](https://github.com/your-repo/hf-internal-interface-wrap/issues) - Bug reports and feature requests
+- 💬 [Discussions](https://github.com/your-repo/hf-internal-interface-wrap/discussions) - Community support
+- 🤝 [Contributing](CONTRIBUTING.md) - Development guidelines
 
 ---
 
 <div align="center">
 
-**🚀 Built with ❤️ for the HardFOC Community**
+**Built for the HardFOC ecosystem - Enabling seamless MCU portability**
 
-*Empowering innovation through comprehensive, professional hardware abstraction for HardFOC motor controller boards*
-
-*Enabling the future of HardFOC motor control technology*
-
----
-
-**🔗 Quick Links**
-
-[📖 Documentation](docs/index.md) | [🔄 CI/CD Workflows](.github/README.md) | [🚀 Quick Start](#-quick-start) | [📊 Examples](#-examples) | [🤝 Contributing](#-contributing)
-
-**📞 Support**
-
-[💬 GitHub Discussions](../../discussions) | [🐛 Issue Tracker](../../issues) | [📧 Contact](mailto:support@hardfoc.com)
+*Hardware abstraction that just works™*
 
 </div>
