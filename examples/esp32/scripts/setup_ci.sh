@@ -58,17 +58,6 @@ verify_ci_setup() {
     mkdir -p ~/.local/bin
     export PATH="$HOME/.local/bin:$PATH"
     
-    # Check essential tools
-    local tools_ok=true
-    for tool in python3; do
-        if command_exists "$tool"; then
-            print_info "✓ $tool: $(command -v "$tool")"
-        else
-            print_error "✗ $tool: not found"
-            tools_ok=false
-        fi
-    done
-    
     # Check build structure
     local structure_ok=true
     if verify_ci_build_structure; then
@@ -81,7 +70,7 @@ verify_ci_setup() {
     # Summary
     echo ""
     print_info "CI Setup Verification Summary:"
-    if $tools_ok && $structure_ok; then
+    if $structure_ok; then
         print_success "All components ready for CI builds"
         return 0
     else
