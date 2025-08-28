@@ -1,15 +1,17 @@
-# 🔄 GitHub Actions CI/CD - ESP32 Development
+# 🚀 GitHub Actions CI/CD & Configuration - ESP32 Development
 
 <div align="center">
 
-![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue?style=for-the-badge&logo=github)
+![GitHub](https://img.shields.io/badge/GitHub-Actions%20%26%20Config-blue?style=for-the-badge&logo=github)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-Automated-green?style=for-the-badge&logo=github-actions)
 ![ESP32](https://img.shields.io/badge/ESP32-Automated%20Builds-green?style=for-the-badge&logo=espressif)
 ![ESP-IDF](https://img.shields.io/badge/ESP--IDF-Auto%20Management-orange?style=for-the-badge&logo=espressif)
 ![Security](https://img.shields.io/badge/Security-Automated-red?style=for-the-badge&logo=shield)
+![Documentation](https://img.shields.io/badge/Docs-Auto%20Generation-orange?style=for-the-badge&logo=book)
 
-**🎯 CI/CD Pipeline for ESP32 Development**
+**🎯 Complete GitHub Configuration & CI/CD Pipeline for ESP32 Development**
 
-*Continuous integration with build matrix generation, ESP-IDF management, security auditing, and documentation deployment*
+*Continuous integration with build matrix generation, ESP-IDF management, security auditing, documentation deployment, and dependency management*
 
 </div>
 
@@ -18,6 +20,7 @@
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
+- [📁 **GitHub Directory Structure**](#-github-directory-structure)
 - [🏗️ **CI/CD Architecture**](#️-cicd-architecture)
 - [📊 **Workflow Matrix**](#-workflow-matrix)
 - [🚀 **ESP-IDF Management**](#-esp-idf-management)
@@ -46,6 +49,39 @@ The GitHub Actions CI/CD pipeline provides automation for ESP32 development, wit
 - **🛡️ Security** - Vulnerability scanning, dependency auditing, and secrets management
 - **📖 Documentation** - Doxygen generation, link validation, and GitHub Pages deployment
 - **🧠 Auto Configuration** - ESP-IDF version selection and build type configuration
+
+---
+
+## 📁 **GitHub Directory Structure**
+
+The `.github` directory contains all GitHub-specific configuration, workflows, and automation:
+
+```
+.github/
+├── 📁 workflows/                    # GitHub Actions workflows
+│   ├── esp32-component-ci.yml       # Main CI/CD pipeline
+│   ├── security-audit.yml           # Security scanning
+│   ├── docs-build.yml               # Documentation generation
+│   └── docs/                        # Workflow documentation
+│       ├── README.md                # This file
+│       ├── README_CI_CACHING_STRATEGY.md
+│       └── README_SECURITY.md
+├── 📁 ISSUE_TEMPLATE/               # Issue templates
+├── 📁 PULL_REQUEST_TEMPLATE/        # PR templates  
+├── dependabot.yml                   # Dependency updates
+└── CODEOWNERS                       # Code review assignments
+```
+
+### **Key Components**
+
+| **Component** | **Purpose** | **Status** |
+|---------------|-------------|------------|
+| **CI/CD Pipeline** | ESP32 build automation | ✅ Active |
+| **Security Auditing** | Vulnerability scanning | ✅ Active |
+| **Documentation** | Auto-generated docs | ✅ Active |
+| **Dependency Management** | Dependabot updates | ✅ Active |
+| **Issue Templates** | Structured issue reporting | ✅ Active |
+| **Code Review** | Automated review assignments | ✅ Active |
 
 ---
 

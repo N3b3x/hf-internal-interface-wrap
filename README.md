@@ -779,7 +779,7 @@ See [LICENSE](LICENSE) for full details.
 ### **Documentation**
 - 📚 [API Reference](docs/api/) - Complete interface documentation
 - 🔧 [Build System](examples/esp32/scripts/docs/) - Build and deployment guides
-- 🛡️ [CI/CD Pipeline](.github/README.md) - Automated workflows and testing
+- 🛡️ [CI/CD Pipeline](.github/workflows/README.md) - Automated workflows and testing
 
 ### **Development**
 - 🚀 [Examples](examples/esp32/) - Test applications and usage examples
