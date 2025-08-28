@@ -226,8 +226,8 @@ jobs:
             
             # Construct the build directory path based on the known pattern
             # Format: build-app-{app_type}-type-{build_type}-target-{target}-idf-{sanitized_idf_version}
-            local sanitized_idf_version=$(echo "${{ matrix.idf_version }}" | sed 's/[\/\.]/_/g')
-            local build_dir="build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-${sanitized_idf_version}"
+            sanitized_idf_version=$(echo "${{ matrix.idf_version }}" | sed 's/[\/\.]/_/g')
+            build_dir="build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-${sanitized_idf_version}"
             
             echo "Looking for build directory: $build_dir"
             
