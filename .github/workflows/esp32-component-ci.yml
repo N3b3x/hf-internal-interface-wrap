@@ -252,43 +252,39 @@ jobs:
               echo "Build artifacts:"
               ls -la "$build_dir/"
               
-              # Store build directory info for GitHub Actions outputs
-              # Write to the workspace directory that's mounted in Docker
-              echo "$(basename $build_dir)" > "$GITHUB_WORKSPACE/.build_directory_name"
-              echo "$build_dir" > "$GITHUB_WORKSPACE/.build_directory_path"
+
             else
               echo "ERROR: Build directory not accessible: $build_dir"
               exit 1
             fi
 
-      - name: Set GitHub Actions outputs
-        id: set-outputs
+      - name: Extract build directory name
+        id: extract-build-dir
         run: |
-          echo "Reading build directory information..."
-          if [ -f .build_directory_name ] && [ -f .build_directory_path ]; then
-            BUILD_DIR_NAME=$(cat .build_directory_name)
-            BUILD_DIR_PATH=$(cat .build_directory_path)
-            
-            echo "BUILD_DIRECTORY_NAME=$BUILD_DIR_NAME" >> "$GITHUB_OUTPUT"
-            echo "BUILD_DIRECTORY_PATH=$BUILD_DIR_PATH" >> "$GITHUB_OUTPUT"
-            
-            echo "Outputs set:"
-            echo "  BUILD_DIRECTORY_NAME: $BUILD_DIR_NAME"
-            echo "  BUILD_DIRECTORY_PATH: $BUILD_DIR_PATH"
-          else
-            echo "ERROR: Build directory info files not found"
-            echo "Available files:"
-            ls -la .build_* || echo "No .build_* files found"
+          echo "Looking for build directories in ${{ env.BUILD_PATH }}..."
+          ls -la ${{ env.BUILD_PATH }}/
+          
+          # Find the build directory name
+          BUILD_DIR=$(find ${{ env.BUILD_PATH }} -maxdepth 1 -type d -name 'build*' | head -n 1)
+          if [ -z "$BUILD_DIR" ]; then
+            echo "ERROR: No build directory found"
             exit 1
           fi
+          
+          # Extract just the directory name (not full path)
+          BUILD_DIR_NAME=$(basename "$BUILD_DIR")
+          echo "BUILD_DIR_NAME=$BUILD_DIR_NAME" >> "$GITHUB_OUTPUT"
+          
+          echo "Build directory found: $BUILD_DIR_NAME"
+          echo "Full path: $BUILD_DIR"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ steps.set-outputs.outputs.BUILD_DIRECTORY_NAME || 'build-failed' }}
+          name: fw-${{ steps.extract-build-dir.outputs.BUILD_DIR_NAME }}
           retention-days: 7
-          path: ${{ env.BUILD_PATH }}/${{ steps.set-outputs.outputs.BUILD_DIRECTORY_PATH }}
+          path: ${{ env.BUILD_PATH }}/build*
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
