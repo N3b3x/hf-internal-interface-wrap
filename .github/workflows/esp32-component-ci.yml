@@ -363,7 +363,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cppcheck-report
+          name: fw-cppcheck-report
           path: cppcheck_report.xml
           retention-days: 7
 
