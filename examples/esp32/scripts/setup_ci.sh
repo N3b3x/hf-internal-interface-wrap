@@ -58,15 +58,15 @@ verify_ci_setup() {
     mkdir -p ~/.local/bin
     export PATH="$HOME/.local/bin:$PATH"
     
-    # Check build structure
-    if verify_ci_build_structure; then
-        echo "✓ Build structure verification passed"
+    # Check project directory contents
+    if verify_ci_project_directory; then
+        echo "✓ Project directory verification passed"
         echo ""
         print_info "CI Setup Verification Summary:"
         print_success "All components ready for CI builds"
         return 0
     else
-        echo "✗ Build structure verification failed"
+        echo "✗ Project directory verification failed"
         echo ""
         print_info "CI Setup Verification Summary:"
         print_error "Some components missing - CI builds may fail"
@@ -143,9 +143,9 @@ setup_ci_build_structure() {
     ls -la "$ci_build_path"
 }
 
-# Function to verify CI build structure
-verify_ci_build_structure() {
-    echo "Verifying CI build structure..."
+# Function to verify CI project directory contents
+verify_ci_project_directory() {
+    echo "Verifying CI project directory contents..."
     
     # Ensure user bin directory exists and is in PATH (self-contained)
     mkdir -p ~/.local/bin
@@ -168,9 +168,9 @@ verify_ci_build_structure() {
     
     for item in "${required_items[@]}"; do
         if [[ -e "$ci_build_path/$item" ]]; then
-            echo "✓ Build directory: $item"
+            echo "✓ Project directory: $item"
         else
-            echo "✗ Build directory: $item: not found"
+            echo "✗ Project directory: $item: not found"
             structure_ok=false
         fi
     done
