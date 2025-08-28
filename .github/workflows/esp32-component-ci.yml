@@ -253,8 +253,8 @@ jobs:
               ls -la "$build_dir/"
               
               # Export the build directory name for artifact upload
-              echo "BUILD_DIRECTORY_NAME=$(basename $build_dir)" >> $GITHUB_OUTPUT
-              echo "BUILD_DIRECTORY_PATH=$build_dir" >> $GITHUB_OUTPUT
+              echo "BUILD_DIRECTORY_NAME=$(basename $build_dir)" >> "$GITHUB_OUTPUT"
+              echo "BUILD_DIRECTORY_PATH=$build_dir" >> "$GITHUB_OUTPUT"
             else
               echo "ERROR: Build directory not accessible: $build_dir"
               exit 1
