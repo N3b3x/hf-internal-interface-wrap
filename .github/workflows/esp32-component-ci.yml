@@ -221,37 +221,42 @@ jobs:
             ls -la main/../inc/
             
             # Build the application using the same tool as local development
-            # Capture the build output to extract the exported build directory
-            build_output=$(./scripts/build_app.sh "${{ matrix.app_name }}" \
-              "${{ matrix.build_type }}" "${{ matrix.idf_version }}" 2>&1)
-            echo "$build_output"
+            echo "Building application: ${{ matrix.app_name }} with type ${{ matrix.build_type }}"
+            echo "for IDF ${{ matrix.idf_version }}"
             
-            # Extract the build directory from the build script's output
-            # The build script exports: ESP32_BUILD_APP_MOST_RECENT_DIRECTORY=<build_dir>
-            build_dir=$(echo "$build_output" | grep "ESP32_BUILD_APP_MOST_RECENT_DIRECTORY=" | cut -d'=' -f2)
-            
-            if [ -z "$build_dir" ]; then
-              echo "ERROR: Could not extract build directory from build script output"
-              echo "Looking for any build directories..."
-              ls -la build_*/ || echo "No build directories found"
+            # Run the build script and capture output
+            if ! ./scripts/build_app.sh "${{ matrix.app_name }}" \
+              "${{ matrix.build_type }}" \
+              "${{ matrix.idf_version }}"; then
+              echo "ERROR: Build failed"
               exit 1
             fi
             
-            echo "Build directory extracted from build script: $build_dir"
+            # Look for the build directory that was created
+            echo "Looking for build directories..."
+            ls -la build_*/ || echo "No build directories found"
             
-            # Verify the build directory exists
+            # Find the most recent build directory
+            build_dir=$(ls -td build_* 2>/dev/null | head -1)
+            
+            if [ -z "$build_dir" ]; then
+              echo "ERROR: No build directory found after build"
+              exit 1
+            fi
+            
+            echo "Build directory found: $build_dir"
+            
+            # Verify the build directory exists and has content
             if [ -d "$build_dir" ]; then
-              echo "Build completed. Build directory found: $build_dir"
+              echo "Build completed successfully. Build directory: $build_dir"
               echo "Build artifacts:"
               ls -la "$build_dir/"
-              echo "Build directory ready for artifact upload"
               
-              # Export for the artifact upload step using modern GitHub Actions output
+              # Export the build directory name for artifact upload
               echo "BUILD_DIRECTORY_NAME=$(basename $build_dir)" >> $GITHUB_OUTPUT
+              echo "BUILD_DIRECTORY_PATH=$build_dir" >> $GITHUB_OUTPUT
             else
-              echo "ERROR: Build directory not found: $build_dir"
-              echo "Available directories:"
-              ls -la build_*/ || echo "No build directories found"
+              echo "ERROR: Build directory not accessible: $build_dir"
               exit 1
             fi
 
@@ -259,9 +264,12 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fw-${{ steps.build.outputs.BUILD_DIRECTORY_NAME }}
+          name: >-
+            fw-${{ matrix.app_name }}-${{ matrix.build_type }}-${{ matrix.idf_version_file }}-${{ 
+              steps.build.outputs.BUILD_DIRECTORY_NAME || 'build-failed' 
+            }}
           retention-days: 7
-          path: ${{ env.BUILD_PATH }}/${{ steps.build.outputs.BUILD_DIRECTORY_NAME }}
+          path: ${{ env.BUILD_PATH }}/${{ steps.build.outputs.BUILD_DIRECTORY_NAME || 'build_*' }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
