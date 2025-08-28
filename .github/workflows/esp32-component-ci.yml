@@ -228,8 +228,7 @@ jobs:
             build_dir="build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-${{ matrix.target }}-idf-"
             build_dir="${build_dir}${{ matrix.idf_version_file }}"
             
-            # Set output for the upload step to use
-            echo "build_dir_name=$build_dir" >> $GITHUB_OUTPUT
+
             
             echo "Looking for build directory: $build_dir"
             
@@ -252,7 +251,9 @@ jobs:
         with:
           name: fw-${{ matrix.app_name }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
           retention-days: 7
-          path: ${{ env.BUILD_PATH }}/${{ steps.build.outputs.build_dir_name }}
+          path: |
+            ${{ env.BUILD_PATH }}/build-app-${{ matrix.app_name }}-type-${{ matrix.build_type }}-target-
+            ${{ matrix.target }}-idf-${{ matrix.idf_version_file }}
 
   static-analysis:
     name: Static Analysis (cppcheck + clang-tidy)
