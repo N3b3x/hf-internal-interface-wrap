@@ -253,8 +253,9 @@ jobs:
               ls -la "$build_dir/"
               
               # Store build directory info for GitHub Actions outputs
-              echo "$(basename $build_dir)" > .build_directory_name
-              echo "$build_dir" > .build_directory_path
+              # Write to the workspace directory that's mounted in Docker
+              echo "$(basename $build_dir)" > $GITHUB_WORKSPACE/.build_directory_name
+              echo "$build_dir" > $GITHUB_WORKSPACE/.build_directory_path
             else
               echo "ERROR: Build directory not accessible: $build_dir"
               exit 1
