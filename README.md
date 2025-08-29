@@ -1,4 +1,4 @@
-# 🔧 Internal Interface Layer: **Multi-MCU Peripheral Interface**
+# 🔧 HardFOC Internal Interface Layer: **Multi-MCU Peripheral Interface**
 
 <div align="center">
 
