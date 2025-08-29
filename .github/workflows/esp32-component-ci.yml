@@ -44,23 +44,21 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.11'  # Pin to specific version for consistency
           
       - name: Install dependencies
         run: pip install pyyaml
-      
-      - name: Install jq (for pretty-printing)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq
         
       - name: Generate matrix
         id: generate-matrix
         run: |
+          # Generate matrix once and store result
           MATRIX=$(python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py)
           echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
+          
+          # Pretty-print the stored result instead of regenerating
           echo "Generated matrix:"
-          python3 ${{ env.ESP32_PROJECT_PATH }}/scripts/generate_matrix.py --format json | jq .
+          echo "$MATRIX" | python3 -m json.tool
 
   build:
     name: Build ➜ ${{ matrix.idf_version }} · ${{ matrix.build_type }} · ${{ matrix.app_name }}
@@ -86,7 +84,6 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            ~/.local/bin
             ~/.local/share
           key: >-
             esp32-ci-essential-tools-${{ runner.os }}-${{ 
@@ -102,21 +99,6 @@ jobs:
           chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
           set -e  # Enable error handling
           ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Cache Docker layers
-        uses: actions/cache@v4
-        if: ${{ !inputs.clean_build }}
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ matrix.idf_version_docker }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
-
-      # ESP-IDF caching is handled automatically by espressif/esp-idf-ci-action@v1
-      # No need for manual ESP-IDF cache management
       
       - name: Cache Python dependencies
         id: python-cache
@@ -162,6 +144,7 @@ jobs:
             echo "Essential tools cache: using esp32-ci-essential-tools cache"
             echo "Python deps cache hit - ${{ steps.python-cache.outputs.cache-hit }}"
             echo "ccache cache hit - ${{ steps.ccache-cache.outputs.cache-hit }}"
+            echo "Docker cache: removed (ESP-IDF action handles containerization)"
           fi
 
 
@@ -311,34 +294,14 @@ jobs:
     name: Static Analysis (cppcheck)
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    needs: [build]
+    # No dependencies needed - cppcheck analyzes source code, not build artifacts
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Cache essential tools
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/apt
-            ~/.local/bin
-            ~/.local/share
-          key: >-
-            esp32-ci-essential-tools-${{ runner.os }}-${{ 
-              hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
-            }}
-          restore-keys: |
-            esp32-ci-essential-tools-${{ runner.os }}-
-
-      - name: Setup CI build environment
-        run: |
-          echo "Setting up CI build environment for static analysis..."
-          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
-          set -e  # Enable error handling
-          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
-
       - name: Cache static analysis tools
+        id: static-analysis-cache
         uses: actions/cache@v4
         with:
           path: |
@@ -351,25 +314,23 @@ jobs:
                 'inc/**/*.cpp',
                 'inc/**/*.h',
                 'examples/**/*.cpp',
-                'examples/**/*.h'
+                'examples/**/*.h',
+                '.clang-tidy'
               )
             }}
           restore-keys: |
             esp32-ci-static-analysis-${{ runner.os }}-
 
-      - name: Print hashFiles result
-        run: >-
-          echo "${{
-            hashFiles(
-              'src/**/*.cpp',
-              'src/**/*.h',
-              'inc/**/*.cpp',
-              'inc/**/*.h',
-              'examples/**/*.cpp',
-              'examples/**/*.h',
-              '.clang-tidy'
-            )
-          }}"
+      - name: Log static analysis cache
+        run: |
+          echo "Static analysis cache hit - ${{ steps.static-analysis-cache.outputs.cache-hit }}"
+          echo "Cache key based on source code changes (src/, inc/, examples/)"
+
+      - name: Verify source code availability
+        run: |
+          echo "Verifying source code for static analysis..."
+          echo "Source directories:"
+          ls -la src/ inc/ examples/ 2>/dev/null || echo "Some directories may not exist yet"
 
       - name: Verify analysis tools
         run: |
@@ -427,28 +388,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache essential tools
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/apt
-            ~/.local/bin
-            ~/.local/share
-          key: >-
-            esp32-ci-essential-tools-${{ runner.os }}-${{ 
-              hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh') 
-            }}
-          restore-keys: |
-            esp32-ci-essential-tools-${{ runner.os }}-
-
-      - name: Setup CI build environment
-        run: |
-          echo "Setting up CI build environment for workflow linting..."
-          chmod +x ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
-          set -e  # Enable error handling
-          ./${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
-
-      - name: Cache lint tools
+      - name: Cache workflow lint tools
+        id: workflow-lint-cache
         uses: actions/cache@v4
         with:
           path: |
@@ -458,6 +399,17 @@ jobs:
           key: esp32-ci-workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
           restore-keys: |
             esp32-ci-workflow-tools-${{ runner.os }}-
+
+      - name: Log workflow lint cache
+        run: |
+          echo "Workflow lint cache hit - ${{ steps.workflow-lint-cache.outputs.cache-hit }}"
+          echo "Cache key based on workflow file changes (.github/workflows/*.yml)"
+
+      - name: Verify workflow files
+        run: |
+          echo "Verifying workflow files for linting..."
+          echo "Workflow files:"
+          ls -la .github/workflows/
 
       - name: Install yamllint
         run: |

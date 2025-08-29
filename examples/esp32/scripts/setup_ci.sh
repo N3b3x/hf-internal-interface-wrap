@@ -24,6 +24,12 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "  Set up minimal CI environment for ESP32 builds"
     echo "  ESP-IDF installation is handled by espressif/esp-idf-ci-action@v1"
     echo ""
+    echo "REQUIRED ENVIRONMENT VARIABLES:"
+    echo "  ESP32_PROJECT_PATH      Path to ESP32 project directory (e.g., 'examples/esp32')"
+    echo ""
+    echo "OPTIONAL ENVIRONMENT VARIABLES:"
+    echo "  BUILD_PATH              CI build directory path (default: 'ci_build_path')"
+    echo ""
     echo "WHAT IT DOES:"
     echo "  • Sets up CI build directory structure with all necessary files"
     echo "  • Prepares environment for ESP-IDF CI action"
@@ -50,37 +56,9 @@ if ! source "$SCRIPT_DIR/setup_common.sh"; then
     exit 1
 fi
 
-# Function to verify CI setup
-verify_ci_setup() {
-    print_status "Verifying CI setup..."
-    
-    # Ensure user bin directory exists and is in PATH (self-contained)
-    mkdir -p ~/.local/bin
-    export PATH="$HOME/.local/bin:$PATH"
-    
-    # Check project directory contents
-    if verify_ci_project_directory; then
-        echo "✓ Project directory verification passed"
-        echo ""
-        print_info "CI Setup Verification Summary:"
-        print_success "All components ready for CI builds"
-        return 0
-    else
-        echo "✗ Project directory verification failed"
-        echo ""
-        print_info "CI Setup Verification Summary:"
-        print_error "Some components missing - CI builds may fail"
-        return 1
-    fi
-}
-
 # Function to setup CI build directory structure
 setup_ci_build_structure() {
     print_status "Setting up CI build directory structure..."
-    
-    # Ensure user bin directory exists and is in PATH (self-contained)
-    mkdir -p ~/.local/bin
-    export PATH="$HOME/.local/bin:$PATH"
     
     # Get project paths
     local project_dir="$SCRIPT_DIR/.."
@@ -141,15 +119,29 @@ setup_ci_build_structure() {
     echo "CI build directory structure setup complete"
     echo "Build directory: $ci_build_path"
     ls -la "$ci_build_path"
+    
+    # Verify the setup
+    print_status "Verifying CI setup..."
+    
+    # Check project directory contents
+    if verify_ci_project_directory; then
+        echo "✓ Project directory verification passed"
+        echo ""
+        print_info "CI Setup Verification Summary:"
+        print_success "All components ready for CI builds"
+        return 0
+    else
+        echo "✗ Project directory verification failed"
+        echo ""
+        print_info "CI Setup Verification Summary:"
+        print_error "Some components missing - CI builds may fail"
+        return 1
+    fi
 }
 
 # Function to verify CI project directory contents
 verify_ci_project_directory() {
     echo "Verifying CI project directory contents..."
-    
-    # Ensure user bin directory exists and is in PATH (self-contained)
-    mkdir -p ~/.local/bin
-    export PATH="$HOME/.local/bin:$PATH"
     
     local ci_build_path="${BUILD_PATH:-ci_build_path}"
     local structure_ok=true
@@ -183,25 +175,27 @@ main() {
     echo "Setting up CI environment..."
     echo ""
     
-    # Ensure user bin directory exists and is in PATH for all operations
-    # This PATH export persists throughout the entire script execution
-    # Note: Each function is also self-contained and sets up its own PATH if called independently
-    mkdir -p ~/.local/bin
-    export PATH="$HOME/.local/bin:$PATH"
+    # Validate required environment variables
+    if [[ -z "${ESP32_PROJECT_PATH:-}" ]]; then
+        print_error "ESP32_PROJECT_PATH environment variable is required but not set"
+        print_error "This should point to the ESP32 project directory (e.g., 'examples/esp32')"
+        exit 1
+    fi
+    
+    if [[ ! -d "$ESP32_PROJECT_PATH" ]]; then
+        print_error "ESP32_PROJECT_PATH directory does not exist: $ESP32_PROJECT_PATH"
+        exit 1
+    fi
     
     # Show only relevant environment variables for CI setup
     echo "CI Setup Environment:"
     echo "  BUILD_PATH: ${BUILD_PATH:-ci_build_path}"
-    echo "  ESP32_PROJECT_PATH: ${ESP32_PROJECT_PATH:-examples/esp32}"
+    echo "  ESP32_PROJECT_PATH: $ESP32_PROJECT_PATH"
     echo "  PATH: $PATH"
-    echo "  User bin directory: $HOME/.local/bin"
     echo ""
     
-    # Setup CI build directory structure
-    setup_ci_build_structure
-    
-    # Verify setup
-    if verify_ci_setup; then
+    # Setup CI build directory structure and verify
+    if setup_ci_build_structure; then
         echo ""
         echo "======================================================="
         echo "CI ENVIRONMENT SETUP COMPLETED SUCCESSFULLY"
