@@ -167,7 +167,7 @@ jobs:
           files-changed-only: false     # Check all files (not just changed ones)
           lines-changed-only: false     # Check entire files (not just changed lines)
           thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
-          annotations: true              # Show annotations in PR diff view
+          file-annotations: true        # Show file annotations in PR diff view
           ignore: 'build|.git'          # Ignore build directories and git files
           extensions: 'c,cpp,cc,cxx,h,hpp'  # Specify file extensions to check
 
@@ -175,12 +175,12 @@ jobs:
         if: steps.linter.outputs.checks-failed > 0
         run: |
           echo "⚠️ Code quality issues found:"
-          echo "  - Style issues: ${{ steps.linter.outputs.format-checks-failed }}"
-          echo "  - Tidy issues: ${{ steps.linter.outputs.tidy-checks-failed }}"
+          echo "  - Style issues: ${{ steps.linter.outputs.clang-format-checks-failed }}"
+          echo "  - Tidy issues: ${{ steps.linter.outputs.clang-tidy-checks-failed }}"
           echo "  - Total issues: ${{ steps.linter.outputs.checks-failed }}"
           echo ""
           echo "Please review the annotations and comments above to fix the issues."
-          echo "Note: Build continues due to 'continue-on-error: true' setting."
+          echo "Note: Build continues due to 'continue-on-error: true' setting"
 
       - name: ESP-IDF Build with caching
         id: build
