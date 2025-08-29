@@ -396,7 +396,8 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-          key: esp32-ci-workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
+          key: >
+            esp32-ci-workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
           restore-keys: |
             esp32-ci-workflow-tools-${{ runner.os }}-
 
@@ -436,7 +437,8 @@ jobs:
             else
               # Fallback to direct download if package manager fails
               echo "Package manager not available, downloading binary..."
-              curl -sSfL -o actionlint https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64
+              curl -sSfL -o actionlint \
+                https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64
               chmod +x actionlint
               sudo mv actionlint /usr/local/bin/
             fi
