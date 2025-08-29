@@ -1,0 +1,5 @@
+<map id="inc/mcu/esp32/EspWifi.h" name="inc/mcu/esp32/EspWifi.h">
+<area shape="rect" id="Node000001" title="Advanced ESP32 implementation of the unified BaseWifi class with ESP&#45;IDF v5.5+ features." alt="" coords="13,5,193,31"/>
+<area shape="rect" id="Node000002" href="$EspWifi_8cpp.html" title="Advanced ESP32 implementation of the unified BaseWifi class with ESP&#45;IDF v5.5+ features." alt="" coords="5,79,200,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,44,105,79,100,79,100,44"/>
+</map>

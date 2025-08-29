@@ -1,0 +1,15 @@
+<map id="examples/esp32/main/TestFramework.h" name="examples/esp32/main/TestFramework.h">
+<area shape="rect" id="Node000001" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="311,5,477,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,89,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="312,48,104,95,102,90,310,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="114,93,213,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="340,48,211,91,209,86,338,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="237,93,388,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="376,47,337,85,333,82,372,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="412,93,541,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="416,44,456,82,453,86,412,47"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="565,93,703,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="452,43,587,87,585,92,451,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="727,93,845,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="478,41,716,88,715,93,477,46"/>
+</map>
