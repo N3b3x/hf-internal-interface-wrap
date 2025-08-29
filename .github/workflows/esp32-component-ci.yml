@@ -397,14 +397,15 @@ jobs:
           path: |
             ~/.cache/apt
           key: >
-            esp32-ci-workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
+            esp32-ci-workflow-lint-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
           restore-keys: |
-            esp32-ci-workflow-tools-${{ runner.os }}-
+            esp32-ci-workflow-lint-${{ runner.os }}-
 
       - name: Log workflow lint cache
         run: |
           echo "Workflow lint cache hit - ${{ steps.workflow-lint-cache.outputs.cache-hit }}"
           echo "Cache key based on workflow file changes (.github/workflows/*.yml)"
+          echo "Caching yamllint package manager cache for faster installation"
 
       - name: Verify workflow files
         run: |
@@ -431,17 +432,13 @@ jobs:
         run: |
           if ! command -v actionlint &> /dev/null; then
             echo "Installing actionlint..."
-            # Try package manager first for better reliability
-            if command -v apt-get &> /dev/null; then
-              sudo apt-get update && sudo apt-get install -y actionlint
-            else
-              # Fallback to direct download if package manager fails
-              echo "Package manager not available, downloading binary..."
-              curl -sSfL -o actionlint \
-                https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64
-              chmod +x actionlint
-              sudo mv actionlint /usr/local/bin/
-            fi
+            # Download actionlint binary directly (package not available in Ubuntu repos)
+            echo "Downloading actionlint binary..."
+            curl -sSfL -o actionlint \
+              https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64
+            chmod +x actionlint
+            sudo mv actionlint /usr/local/bin/
+            echo "actionlint installed successfully"
           else
             echo "actionlint already installed: $(actionlint --version)"
           fi
