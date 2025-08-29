@@ -263,6 +263,7 @@ The system now provides two distinct setup approaches optimized for different us
 - Cache statistics and reporting
 - Build directory preparation
 - ESP-IDF integration with CI actions
+- Reliable tool installation (no caching issues)
 ```
 
 ### **Setup Script Selection Guide**

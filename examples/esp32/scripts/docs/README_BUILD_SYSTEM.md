@@ -409,6 +409,7 @@ build_gpio_test_Release/
 - **Targeted Caching**: Job-specific cache keys for better hit rates
 - **Lightweight Setup**: Analysis jobs use minimal setup (no file copying)
 - **Docker Optimization**: Eliminated unused Docker buildx cache
+- **Reliable Tool Installation**: Tools installed fresh each run for maximum reliability
 
 ### **CI Build Workflow**
 ```

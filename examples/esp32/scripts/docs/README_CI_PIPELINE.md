@@ -317,17 +317,13 @@ workflow-lint:
   runs-on: ubuntu-latest
   # No dependencies needed - this job can run independently
   steps:
-    - name: Cache workflow lint tools
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/apt
-        key: esp32-ci-workflow-lint-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
-        
     - name: Install yamllint
       run: |
         if ! command -v yamllint &> /dev/null; then
           echo "Installing yamllint..."
-          sudo apt-get update && sudo apt-get install -y yamllint
+          sudo apt-get update
+          sudo apt-get install -y yamllint
+          echo "yamllint installed successfully"
         else
           echo "yamllint already installed: $(yamllint --version)"
         fi
@@ -336,15 +332,28 @@ workflow-lint:
       run: |
         if ! command -v actionlint &> /dev/null; then
           echo "Installing actionlint..."
-          # Try package manager first for better reliability
-          if command -v apt-get &> /dev/null; then
-            sudo apt-get update && sudo apt-get install -y actionlint
-          else
-            # Fallback to direct download if package manager fails
-            curl -sSfL -o actionlint https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64
-            chmod +x actionlint
-            sudo mv actionlint /usr/local/bin/
-          fi
+          # Download actionlint tar.gz and extract binary
+          echo "Downloading actionlint release..."
+          
+          # Get latest version and download URL
+          LATEST_VERSION=$(curl -s "https://api.github.com/repos/rhysd/actionlint/releases/latest" | \
+            grep '"tag_name"' | cut -d'"' -f4)
+          VERSION_NUM=${LATEST_VERSION#v}
+          DOWNLOAD_URL="https://github.com/rhysd/actionlint/releases/download/${LATEST_VERSION}/actionlint_${VERSION_NUM}_linux_amd64.tar.gz"
+          
+          echo "Latest version: ${LATEST_VERSION}"
+          echo "Downloading from: ${DOWNLOAD_URL}"
+          
+          # Download and extract
+          curl -sSfL -o actionlint.tar.gz "${DOWNLOAD_URL}"
+          tar -xzf actionlint.tar.gz actionlint
+          chmod +x actionlint
+          sudo mv actionlint /usr/local/bin/
+          
+          # Cleanup
+          rm -f actionlint.tar.gz
+          
+          echo "actionlint ${LATEST_VERSION} installed successfully"
         else
           echo "actionlint already installed: $(actionlint --version)"
         fi
@@ -368,8 +377,7 @@ key: esp32-ci-essential-tools-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJ
 # Static analysis cache (analysis jobs)
 key: esp32-ci-static-analysis-${{ runner.os }}-${{ hashFiles('src/**', 'inc/**', 'examples/**') }}
 
-# Workflow lint cache (lint jobs)
-key: esp32-ci-workflow-lint-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
+# Workflow lint - no caching (tools installed fresh each run)
 
 # Python dependencies cache (build jobs)
 key: esp32-ci-python-deps-${{ matrix.idf_version_docker }}-${{ runner.os }}-${{ hashFiles('${{ env.ESP32_PROJECT_PATH }}/scripts/setup_common.sh', '${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh', '${{ env.ESP32_PROJECT_PATH }}/scripts/requirements.txt') }}
@@ -390,9 +398,7 @@ path: |
 path: |
   ~/.cache/apt
 
-# Workflow lint
-path: |
-  ~/.cache/apt
+# Workflow lint - no caching (tools installed fresh each run)
 
 # Python dependencies
 path: |
@@ -507,7 +513,7 @@ ls -la ~/.ccache
 
 - **Essential Tools Cache**: High hit rate for stable setup scripts
 - **Static Analysis Cache**: Good hit rate for source code changes
-- **Workflow Lint Cache**: Excellent hit rate for workflow files
+- **Workflow Lint**: No caching - tools installed fresh each run for reliability
 - **Python Dependencies Cache**: High hit rate for stable requirements
 - **ccache**: Excellent hit rate for incremental builds
 
