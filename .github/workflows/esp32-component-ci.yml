@@ -395,7 +395,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            ~/.cache/apt
+            /var/cache/apt/archives
+            /var/lib/apt/lists
           key: >
             esp32-ci-workflow-lint-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
           restore-keys: |
@@ -405,7 +406,7 @@ jobs:
         run: |
           echo "Workflow lint cache hit - ${{ steps.workflow-lint-cache.outputs.cache-hit }}"
           echo "Cache key based on workflow file changes (.github/workflows/*.yml)"
-          echo "Caching yamllint package manager cache for faster installation"
+          echo "Caching apt package manager cache for faster yamllint installation"
 
       - name: Verify workflow files
         run: |
