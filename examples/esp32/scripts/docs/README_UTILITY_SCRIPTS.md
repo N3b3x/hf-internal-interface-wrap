@@ -235,6 +235,10 @@ The system now provides two distinct setup approaches optimized for different us
 - CI build directory structure
 - Minimal dependencies for CI builds
 - ESP-IDF handled by ESP-IDF CI action
+
+# NEW: Required environment variables
+- ESP32_PROJECT_PATH: Path to ESP32 project directory (e.g., 'examples/esp32')
+- BUILD_PATH: CI build directory path (optional, default: 'ci_build_path')
 ```
 
 ### **Environment-Specific Features**

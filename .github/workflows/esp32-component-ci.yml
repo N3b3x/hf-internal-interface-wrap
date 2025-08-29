@@ -142,8 +142,14 @@ jobs:
           else
             echo "ESP-IDF cache: handled automatically by ESP-IDF CI action"
             echo "Essential tools cache: using esp32-ci-essential-tools cache"
-            echo "Python deps cache hit - ${{ steps.python-cache.outputs.cache-hit }}"
-            echo "ccache cache hit - ${{ steps.ccache-cache.outputs.cache-hit }}"
+            
+            # Only show detailed cache info when relevant
+            if [ "${{ steps.python-cache.outputs.cache-hit }}" = "false" ]; then
+              echo "⚠️ Python dependencies cache miss - installing fresh packages"
+            fi
+            if [ "${{ steps.ccache-cache.outputs.cache-hit }}" = "false" ]; then
+              echo "⚠️ ccache miss - starting with empty compilation cache"
+            fi
             echo "Docker cache: removed (ESP-IDF action handles containerization)"
           fi
 
@@ -342,6 +348,9 @@ jobs:
 
       - name: Run cppcheck with Docker
         run: |
+          echo "Running cppcheck static analysis..."
+          
+          # Run cppcheck once with both XML output and human-readable display
           docker run --rm \
             -v ${{ github.workspace }}:/src \
             ghcr.io/facthunder/cppcheck:latest \
@@ -352,21 +361,14 @@ jobs:
               --std=c++17 \
               --xml \
               --output-file=/src/cppcheck_report.xml \
-              /src/src/ /src/inc/ /src/examples/ 2>&1 || true
+              --quiet \
+              /src/src/ /src/inc/ /src/examples/ 2>&1 | tee cppcheck_output.txt
           
-          # Display results
+          # Check results and display appropriate message
           if [ -s cppcheck_report.xml ]; then
             echo "Cppcheck found issues. See the XML report for details."
-            # Show human-readable output
-            docker run --rm \
-              -v ${{ github.workspace }}:/src \
-              ghcr.io/facthunder/cppcheck:latest \
-              cppcheck \
-                --enable=warning,style,performance,portability \
-                --suppress=missingIncludeSystem \
-                --inline-suppr \
-                --std=c++17 \
-                /src/src/ /src/inc/ /src/examples/ 2>&1 || true
+            echo "Human-readable output:"
+            cat cppcheck_output.txt
           else
             echo "No cppcheck issues found"
           fi
@@ -394,8 +396,6 @@ jobs:
         with:
           path: |
             ~/.cache/apt
-            ~/actionlint
-            ~/.local/bin
           key: esp32-ci-workflow-tools-${{ runner.os }}-${{ hashFiles('.github/workflows/*.yml') }}
           restore-keys: |
             esp32-ci-workflow-tools-${{ runner.os }}-
@@ -408,15 +408,19 @@ jobs:
       - name: Verify workflow files
         run: |
           echo "Verifying workflow files for linting..."
-          echo "Workflow files:"
-          ls -la .github/workflows/
+          if [ ! -d ".github/workflows" ]; then
+            echo "ERROR: Workflows directory missing!"
+            exit 1
+          fi
+          echo "Workflow files verified - proceeding with linting"
 
       - name: Install yamllint
         run: |
           if ! command -v yamllint &> /dev/null; then
+            echo "Installing yamllint..."
             sudo apt-get update && sudo apt-get install -y yamllint
           else
-            echo "yamllint already installed"
+            echo "yamllint already installed: $(yamllint --version)"
           fi
 
       - name: Run yamllint
@@ -424,19 +428,21 @@ jobs:
 
       - name: Install actionlint
         run: |
-          if [ ! -f ~/actionlint ]; then
-            echo "Downloading actionlint..."
-            curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | \
-              bash
-            mv actionlint ~/actionlint
-            chmod +x ~/actionlint
+          if ! command -v actionlint &> /dev/null; then
+            echo "Installing actionlint..."
+            # Try package manager first for better reliability
+            if command -v apt-get &> /dev/null; then
+              sudo apt-get update && sudo apt-get install -y actionlint
+            else
+              # Fallback to direct download if package manager fails
+              echo "Package manager not available, downloading binary..."
+              curl -sSfL -o actionlint https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64
+              chmod +x actionlint
+              sudo mv actionlint /usr/local/bin/
+            fi
           else
-            echo "actionlint found in cache"
+            echo "actionlint already installed: $(actionlint --version)"
           fi
-          # Install to user-writable directory for better caching
-          mkdir -p ~/.local/bin
-          cp ~/actionlint ~/.local/bin/
-          export PATH="$HOME/.local/bin:$PATH"
 
       - name: Run actionlint
         run: actionlint .github/workflows/*.yml

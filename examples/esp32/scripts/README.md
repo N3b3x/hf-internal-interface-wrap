@@ -44,6 +44,7 @@ The scripts directory contains a build system designed for ESP32 development, fe
 - **📁 Structured Output** - Parseable build directories and artifact management
 - **🔍 Comprehensive Logging** - Detailed build logs and error reporting
 - **🆕 Environment Separation** - Clear separation between local development and CI environments
+- **🚀 CI Pipeline Optimization** - optimized CI pipeline with parallel execution and smart caching
 
 ---
 
@@ -80,6 +81,10 @@ The scripts directory contains a build system designed for ESP32 development, fe
 │  GitHub Actions   ────┐                                                     │
 │                       │                                                     │
 │  Matrix Generation    │                                                     │
+│                       │                                                     │
+│  Parallel Execution   │                                                     │
+│                       │                                                     │
+│  Smart Caching        │                                                     │
 │                       │                                                     │
 │  Artifact Upload    ──┘                                                     │
 └─────────────────────────────────────────────────────────────────────────────┘

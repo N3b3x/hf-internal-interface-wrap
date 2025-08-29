@@ -31,6 +31,7 @@ The ESP32 scripts directory contains a comprehensive suite of scripts designed t
 - **Professional Quality**: Comprehensive error handling, logging, and user feedback
 - **Modular Design**: Scripts can be used independently or as part of integrated workflows
 - **Environment Separation**: Clear separation between local development and CI environments
+- **CI Optimization**: optimized CI pipeline with parallel execution and smart caching
 
 ### **Key Capabilities**
 - **Build Management**: Intelligent ESP-IDF integration with validation
@@ -41,7 +42,7 @@ The ESP32 scripts directory contains a comprehensive suite of scripts designed t
 - **Environment Setup**: Automated dependency installation and configuration
 - **Port Detection**: Cross-platform ESP32 device identification
 - **Configuration Validation**: YAML-based configuration with intelligent fallbacks
-- **CI/CD Optimization**: Specialized CI environment setup with minimal dependencies
+- **CI/CD Optimization**: optimized CI pipeline with parallel execution, smart caching, and minimal dependencies
 
 ## 🏗️ **Architecture and Design**
 
@@ -73,7 +74,7 @@ examples/esp32/scripts/
 - **Smart Defaults**: Automatic ESP-IDF version selection and fallbacks
 - **Environment Separation**: Clear separation between local and CI setup processes
 - **Shared Functions**: Common functionality shared through `setup_common.sh`
-- **CI Optimization**: Specialized CI setup with minimal dependencies and cache optimization
+- **CI Optimization**: optimized CI pipeline with parallel execution, smart caching, and minimal dependencies
 - **Error Handling**: Consistent error reporting and troubleshooting guidance
 - **Logging Integration**: Unified logging system across all scripts
 
