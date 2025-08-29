@@ -432,13 +432,28 @@ jobs:
         run: |
           if ! command -v actionlint &> /dev/null; then
             echo "Installing actionlint..."
-            # Download actionlint binary directly (package not available in Ubuntu repos)
-            echo "Downloading actionlint binary..."
-            curl -sSfL -o actionlint \
-              https://github.com/rhysd/actionlint/releases/latest/download/actionlint_linux_amd64
+            # Download actionlint tar.gz and extract binary
+            echo "Downloading actionlint release..."
+            
+            # Get latest version and download URL
+            LATEST_VERSION=$(curl -s "https://api.github.com/repos/rhysd/actionlint/releases/latest" | \
+              grep '"tag_name"' | cut -d'"' -f4)
+            VERSION_NUM=${LATEST_VERSION#v}
+            DOWNLOAD_URL="https://github.com/rhysd/actionlint/releases/download/${LATEST_VERSION}/actionlint_${VERSION_NUM}_linux_amd64.tar.gz"
+            
+            echo "Latest version: ${LATEST_VERSION}"
+            echo "Downloading from: ${DOWNLOAD_URL}"
+            
+            # Download and extract
+            curl -sSfL -o actionlint.tar.gz "${DOWNLOAD_URL}"
+            tar -xzf actionlint.tar.gz actionlint
             chmod +x actionlint
             sudo mv actionlint /usr/local/bin/
-            echo "actionlint installed successfully"
+            
+            # Cleanup
+            rm -f actionlint.tar.gz
+            
+            echo "actionlint ${LATEST_VERSION} installed successfully"
           else
             echo "actionlint already installed: $(actionlint --version)"
           fi
