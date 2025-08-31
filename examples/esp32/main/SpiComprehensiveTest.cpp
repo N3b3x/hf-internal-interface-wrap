@@ -35,6 +35,18 @@
 static const char* TAG = "SPI_Test";
 static TestResults g_test_results;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core SPI functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Bus initialization, configuration, device management
+static constexpr bool ENABLE_TRANSFER_TESTS = true;       // Basic transfers, modes, sizes, DMA operations
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;     // Clock speeds, multi-device, performance benchmarks
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // ESP-specific features, IOMUX, thread safety
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Error handling, timeouts, edge cases, power management
+
 // Test configuration constants
 static constexpr hf_pin_num_t TEST_MOSI_PIN = 10;
 static constexpr hf_pin_num_t TEST_MISO_PIN = 9;
@@ -1197,27 +1209,54 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Run all SPI tests
-  RUN_TEST(test_spi_bus_initialization);
-  RUN_TEST(test_spi_bus_deinitialization);
-  RUN_TEST(test_spi_configuration_validation);
-  RUN_TEST(test_spi_device_creation);
-  RUN_TEST(test_spi_device_management);
-  RUN_TEST(test_spi_transfer_basic);
-  RUN_TEST(test_spi_transfer_modes);
-  RUN_TEST(test_spi_transfer_sizes);
-  RUN_TEST(test_spi_dma_operations);
-  RUN_TEST(test_spi_clock_speeds);
-  RUN_TEST(test_spi_multi_device_operations);
-  RUN_TEST(test_spi_error_handling);
-  RUN_TEST(test_spi_timeout_handling);
-  RUN_TEST(test_spi_esp_specific_features);
-  RUN_TEST(test_spi_iomux_optimization);
-  RUN_TEST(test_spi_thread_safety);
-  RUN_TEST(test_spi_performance_benchmarks);
-  RUN_TEST(test_spi_edge_cases);
-  RUN_TEST(test_spi_bus_acquisition);
-  RUN_TEST(test_spi_power_management);
+  // Report test section configuration
+  print_test_section_status(TAG, "SPI");
+
+  // Run all SPI tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "SPI CORE TESTS",
+      // Core functionality tests
+      ESP_LOGI(TAG, "Running core SPI functionality tests...");
+      RUN_TEST_IN_TASK("bus_initialization", test_spi_bus_initialization, 8192, 1);
+      RUN_TEST_IN_TASK("bus_deinitialization", test_spi_bus_deinitialization, 8192, 1);
+      RUN_TEST_IN_TASK("configuration_validation", test_spi_configuration_validation, 8192, 1);
+      RUN_TEST_IN_TASK("device_creation", test_spi_device_creation, 8192, 1);
+      RUN_TEST_IN_TASK("device_management", test_spi_device_management, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_TRANSFER_TESTS, "SPI TRANSFER TESTS",
+      // Transfer operation tests
+      ESP_LOGI(TAG, "Running SPI transfer tests...");
+      RUN_TEST_IN_TASK("transfer_basic", test_spi_transfer_basic, 8192, 1);
+      RUN_TEST_IN_TASK("transfer_modes", test_spi_transfer_modes, 8192, 1);
+      RUN_TEST_IN_TASK("transfer_sizes", test_spi_transfer_sizes, 8192, 1);
+      RUN_TEST_IN_TASK("dma_operations", test_spi_dma_operations, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_PERFORMANCE_TESTS, "SPI PERFORMANCE TESTS",
+      // Performance and multi-device tests
+      ESP_LOGI(TAG, "Running SPI performance tests...");
+      RUN_TEST_IN_TASK("clock_speeds", test_spi_clock_speeds, 8192, 1);
+      RUN_TEST_IN_TASK("multi_device_operations", test_spi_multi_device_operations, 8192, 1);
+      RUN_TEST_IN_TASK("performance_benchmarks", test_spi_performance_benchmarks, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "SPI ADVANCED TESTS",
+      // Advanced features tests
+      ESP_LOGI(TAG, "Running SPI advanced feature tests...");
+      RUN_TEST_IN_TASK("esp_specific_features", test_spi_esp_specific_features, 8192, 1);
+      RUN_TEST_IN_TASK("iomux_optimization", test_spi_iomux_optimization, 8192, 1);
+      RUN_TEST_IN_TASK("thread_safety", test_spi_thread_safety, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_STRESS_TESTS, "SPI STRESS TESTS",
+      // Stress and error handling tests
+      ESP_LOGI(TAG, "Running SPI stress tests...");
+      RUN_TEST_IN_TASK("error_handling", test_spi_error_handling, 8192, 1);
+      RUN_TEST_IN_TASK("timeout_handling", test_spi_timeout_handling, 8192, 1);
+      RUN_TEST_IN_TASK("edge_cases", test_spi_edge_cases, 8192, 1);
+      RUN_TEST_IN_TASK("bus_acquisition", test_spi_bus_acquisition, 8192, 1);
+      RUN_TEST_IN_TASK("power_management", test_spi_power_management, 8192, 1););
 
   print_test_summary(g_test_results, "SPI", TAG);
 

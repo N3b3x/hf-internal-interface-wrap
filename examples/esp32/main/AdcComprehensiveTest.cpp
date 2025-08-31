@@ -61,6 +61,17 @@ static volatile uint32_t high_threshold_count = 0;
 static volatile uint32_t low_threshold_count = 0;
 static volatile uint64_t last_monitor_event_time = 0;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core ADC functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Hardware validation, initialization, configuration
+static constexpr bool ENABLE_CONVERSION_TESTS = true;     // Basic conversion, calibration, multiple channels
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Averaging, continuous mode, monitor thresholds
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Error handling, statistics, performance
+
 // Forward declarations
 bool test_hardware_validation() noexcept;
 bool test_adc_initialization() noexcept;
@@ -1162,19 +1173,41 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(2000));
 
-  // Run comprehensive ADC tests - hardware validation first!
-  RUN_TEST(test_hardware_validation);
-  RUN_TEST(test_adc_initialization);
-  RUN_TEST(test_adc_channel_configuration);
-  RUN_TEST(test_adc_basic_conversion);
-  RUN_TEST(test_adc_calibration);
-  RUN_TEST(test_adc_multiple_channels);
-  RUN_TEST(test_adc_averaging);
-  RUN_TEST(test_adc_continuous_mode);
-  RUN_TEST(test_adc_monitor_thresholds);
-  RUN_TEST(test_adc_error_handling);
-  RUN_TEST(test_adc_statistics);
-  RUN_TEST(test_adc_performance);
+  // Report test section configuration
+  print_test_section_status(TAG, "ADC");
+
+  // Run comprehensive ADC tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "ADC CORE TESTS",
+      // Hardware validation and initialization tests
+      ESP_LOGI(TAG, "Running hardware validation and initialization tests...");
+      RUN_TEST_IN_TASK("hardware_validation", test_hardware_validation, 8192, 1);
+      RUN_TEST_IN_TASK("adc_initialization", test_adc_initialization, 8192, 1);
+      RUN_TEST_IN_TASK("channel_configuration", test_adc_channel_configuration, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CONVERSION_TESTS, "ADC CONVERSION TESTS",
+      // Basic conversion and calibration tests
+      ESP_LOGI(TAG, "Running conversion and calibration tests...");
+      RUN_TEST_IN_TASK("basic_conversion", test_adc_basic_conversion, 8192, 1);
+      RUN_TEST_IN_TASK("adc_calibration", test_adc_calibration, 8192, 1);
+      RUN_TEST_IN_TASK("multiple_channels", test_adc_multiple_channels, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "ADC ADVANCED TESTS",
+      // Advanced features tests
+      ESP_LOGI(TAG, "Running advanced feature tests...");
+      RUN_TEST_IN_TASK("averaging", test_adc_averaging, 8192, 1);
+      RUN_TEST_IN_TASK("continuous_mode", test_adc_continuous_mode, 8192, 1);
+      RUN_TEST_IN_TASK("monitor_thresholds", test_adc_monitor_thresholds, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_PERFORMANCE_TESTS, "ADC PERFORMANCE TESTS",
+      // Performance and error handling tests
+      ESP_LOGI(TAG, "Running performance and error handling tests...");
+      RUN_TEST_IN_TASK("error_handling", test_adc_error_handling, 8192, 1);
+      RUN_TEST_IN_TASK("statistics", test_adc_statistics, 8192, 1);
+      RUN_TEST_IN_TASK("performance", test_adc_performance, 8192, 1););
 
   print_test_summary(g_test_results, "ADC", TAG);
 

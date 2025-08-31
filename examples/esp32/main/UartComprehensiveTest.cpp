@@ -63,6 +63,20 @@ static bool g_pattern_detected = false;
 static int g_pattern_position = -1;
 static bool g_stop_event_task = false;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core UART functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Construction, initialization, basic communication
+static constexpr bool ENABLE_BASIC_TESTS = true;          // Baud rate, flow control, buffer operations
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Advanced features, communication modes, async operations
+static constexpr bool ENABLE_CALLBACK_TESTS = true;       // Callbacks, statistics, diagnostics, printf support
+static constexpr bool ENABLE_ESP_SPECIFIC_TESTS = true;   // ESP32-C6 specific features, performance
+static constexpr bool ENABLE_EVENT_TESTS = true;          // User event task, event-driven pattern detection
+static constexpr bool ENABLE_CLEANUP_TESTS = true;        // Cleanup and final tests
+
 // Forward declarations
 bool test_uart_construction() noexcept;
 bool test_uart_initialization() noexcept;
@@ -1982,66 +1996,94 @@ extern "C" void app_main(void) {
              "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
   }
 
-  // Run all tests in sequence
-  ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
-  RUN_TEST(test_uart_construction);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_initialization);
-  flip_test_progress_indicator();
+  // Report test section configuration
+  print_test_section_status(TAG, "UART");
 
-  ESP_LOGI(TAG, "\n=== BASIC COMMUNICATION TESTS ===");
-  RUN_TEST(test_uart_basic_communication);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_baud_rate_configuration);
-  flip_test_progress_indicator();
-  // Temporarily skip flow control test due to ESP32-C6 compatibility issues
-  // RUN_TEST(test_uart_flow_control);
-  // flip_test_progress_indicator();
+  // Run all UART tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "UART CORE TESTS",
+      // Constructor/Destructor Tests
+      ESP_LOGI(TAG, "Running constructor/destructor tests...");
+      RUN_TEST_IN_TASK("uart_construction", test_uart_construction, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("uart_initialization", test_uart_initialization, 8192, 1);
+      flip_test_progress_indicator();
 
-  ESP_LOGI(TAG, "\n=== ADVANCED FEATURES TESTS ===");
-  // Run pattern detection test in a separate task with larger stack for event processing
-  RUN_TEST_IN_TASK("test_uart_pattern_detection", test_uart_pattern_detection, 8192, 5);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_buffer_operations);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_advanced_features);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_communication_modes);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_async_operations);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_callbacks);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_statistics_diagnostics);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_printf_support);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_error_handling);
-  flip_test_progress_indicator();
+      // Basic Communication Tests
+      ESP_LOGI(TAG, "Running basic communication tests...");
+      RUN_TEST_IN_TASK("basic_communication", test_uart_basic_communication, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("baud_rate_configuration", test_uart_baud_rate_configuration, 8192, 1);
+      flip_test_progress_indicator();
+      // Temporarily skip flow control test due to ESP32-C6 compatibility issues
+      // RUN_TEST_IN_TASK("flow_control", test_uart_flow_control, 8192, 1);
+      // flip_test_progress_indicator(););
 
-  // ESP32-C6 specific tests
-  ESP_LOGI(TAG, "\n=== ESP32-C6 SPECIFIC TESTS ===");
-  RUN_TEST(test_uart_esp32c6_features);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_performance);
-  flip_test_progress_indicator();
-  RUN_TEST(test_uart_callback_verification);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_BASIC_TESTS, "UART BASIC TESTS",
+      // Buffer Operations Tests
+      ESP_LOGI(TAG, "Running buffer operations tests...");
+      RUN_TEST_IN_TASK("buffer_operations", test_uart_buffer_operations, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // User Event Task Test
-  ESP_LOGI(TAG, "\n=== USER EVENT TASK TEST ===");
-  RUN_TEST(test_uart_user_event_task);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "UART ADVANCED TESTS",
+      // Advanced Features Tests
+      ESP_LOGI(TAG, "Running advanced feature tests...");
+      // Run pattern detection test in a separate task with larger stack for event processing
+      RUN_TEST_IN_TASK("pattern_detection", test_uart_pattern_detection, 8192, 5);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("advanced_features", test_uart_advanced_features, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("communication_modes", test_uart_communication_modes, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("async_operations", test_uart_async_operations, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Comprehensive Event-Driven Pattern Detection Test (Last Test)
-  ESP_LOGI(TAG, "\n=== COMPREHENSIVE EVENT-DRIVEN PATTERN DETECTION TEST ===");
-  ESP_LOGI(TAG, "This test runs with 5-second timeout and comprehensive event monitoring");
-  ESP_LOGI(TAG, "It will test the complete event queue behavior for pattern detection");
-  RUN_TEST(test_uart_event_driven_pattern_detection);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CALLBACK_TESTS, "UART CALLBACK TESTS",
+      // Callback and Support Tests
+      ESP_LOGI(TAG, "Running callback and support tests...");
+      RUN_TEST_IN_TASK("callbacks", test_uart_callbacks, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("statistics_diagnostics", test_uart_statistics_diagnostics, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("printf_support", test_uart_printf_support, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("error_handling", test_uart_error_handling, 8192, 1);
+      flip_test_progress_indicator(););
 
-  RUN_TEST(test_uart_cleanup);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ESP_SPECIFIC_TESTS, "UART ESP-SPECIFIC TESTS",
+      // ESP32-C6 specific tests
+      ESP_LOGI(TAG, "Running ESP32-C6 specific tests...");
+      RUN_TEST_IN_TASK("esp32c6_features", test_uart_esp32c6_features, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("performance", test_uart_performance, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("callback_verification", test_uart_callback_verification, 8192, 1);
+      flip_test_progress_indicator(););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_EVENT_TESTS, "UART EVENT TESTS",
+      // User Event Task Test
+      ESP_LOGI(TAG, "Running user event task tests...");
+      RUN_TEST_IN_TASK("user_event_task", test_uart_user_event_task, 8192, 1);
+      flip_test_progress_indicator();
+
+      // Comprehensive Event-Driven Pattern Detection Test
+      ESP_LOGI(TAG, "Running comprehensive event-driven pattern detection test...");
+      ESP_LOGI(TAG, "This test runs with 5-second timeout and comprehensive event monitoring");
+      ESP_LOGI(TAG, "It will test the complete event queue behavior for pattern detection");
+      RUN_TEST_IN_TASK("event_driven_pattern_detection", test_uart_event_driven_pattern_detection, 8192, 1);
+      flip_test_progress_indicator(););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CLEANUP_TESTS, "UART CLEANUP TESTS",
+      // Cleanup Tests
+      ESP_LOGI(TAG, "Running cleanup tests...");
+      RUN_TEST_IN_TASK("cleanup", test_uart_cleanup, 8192, 1);
+      flip_test_progress_indicator(););
 
   print_test_summary(g_test_results, "UART", TAG);
 
