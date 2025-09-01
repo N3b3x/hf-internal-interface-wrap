@@ -442,7 +442,7 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
       ESP_LOGI(TAG, "\n=== %s ===", section_name);                                                   \
       output_section_indicator(blink_count); /* Section start indicator */                           \
       __VA_ARGS__                                                                                    \
-      output_section_indicator(blink_count); /* Section end indicator */                              \
+      output_section_indicator(blink_count); /* Section end indicator */                             \
     } else {                                                                                         \
       ESP_LOGI(TAG, "\n=== %s ===", section_name);                                                   \
       ESP_LOGI(TAG, "Section disabled by configuration");                                            \
