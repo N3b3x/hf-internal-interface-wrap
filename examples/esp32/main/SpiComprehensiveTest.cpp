@@ -89,6 +89,8 @@ hf_spi_bus_config_t create_test_bus_config(uint32_t speed = MEDIUM_SPEED, bool u
                                            spi_host_device_t host = SPI2_HOST) noexcept;
 bool verify_transfer_data(const uint8_t* tx_data, const uint8_t* rx_data, size_t length) noexcept;
 void generate_test_pattern(uint8_t* buffer, size_t length, uint8_t seed = 0xAA) noexcept;
+void generate_sequential_pattern(uint8_t* buffer, size_t length, uint8_t start_value = 0x01) noexcept;
+void generate_alternating_pattern(uint8_t* buffer, size_t length, uint8_t value1 = 0x55, uint8_t value2 = 0xAA) noexcept;
 void log_test_separator(const char* test_name) noexcept;
 
 bool test_spi_bus_initialization() noexcept {
@@ -399,11 +401,13 @@ bool test_spi_transfer_basic() noexcept {
   result = device->Transfer(tx_data, rx_data, sizeof(tx_data), 0);
   ESP_LOGI(TAG, "Multi-byte transfer result: %s", HfSpiErrToString(result).data());
 
-  // Test 3: Write-only transfer
-  result = device->Transfer(tx_data, nullptr, sizeof(tx_data), 0);
+  // Test 3: Write-only transfer (use different pattern)
+  uint8_t write_only_data[] = {0x55, 0xAA, 0x55, 0xAA, 0x55};
+  result = device->Transfer(write_only_data, nullptr, sizeof(write_only_data), 0);
   ESP_LOGI(TAG, "Write-only transfer result: %s", HfSpiErrToString(result).data());
 
-  // Test 4: Read-only transfer
+  // Test 4: Read-only transfer (clear RX buffer first)
+  std::memset(rx_data, 0, sizeof(rx_data));
   result = device->Transfer(nullptr, rx_data, sizeof(rx_data), 0);
   ESP_LOGI(TAG, "Read-only transfer result: %s", HfSpiErrToString(result).data());
 
@@ -445,8 +449,9 @@ bool test_spi_transfer_modes() noexcept {
       return false;
     }
 
-    // Test transfer with this mode
-    uint8_t tx_data[] = {0xAA, 0x55, 0xFF, 0x00};
+    // Test transfer with this mode (use different pattern for each mode)
+    uint8_t tx_data[] = {static_cast<uint8_t>(0x12 + mode), static_cast<uint8_t>(0x34 + mode), 
+                         static_cast<uint8_t>(0x56 + mode), static_cast<uint8_t>(0x78 + mode)};
     uint8_t rx_data[sizeof(tx_data)] = {0};
     hf_spi_err_t result = device->Transfer(tx_data, rx_data, sizeof(tx_data), 0);
 
@@ -500,8 +505,14 @@ bool test_spi_transfer_sizes() noexcept {
     auto tx_buffer = std::make_unique<uint8_t[]>(size);
     auto rx_buffer = std::make_unique<uint8_t[]>(size);
 
-    // Generate test pattern
-    generate_test_pattern(tx_buffer.get(), size);
+    // Generate distinctive test pattern for each size
+    if (size <= 16) {
+      generate_sequential_pattern(tx_buffer.get(), size, 0x10); // Start at 0x10 for small transfers
+    } else if (size <= 256) {
+      generate_alternating_pattern(tx_buffer.get(), size, 0x55, 0xAA); // Alternating pattern for medium transfers
+    } else {
+      generate_test_pattern(tx_buffer.get(), size, 0x01); // Sequential pattern for large transfers
+    }
     std::memset(rx_buffer.get(), 0, size);
 
     hf_spi_err_t result = device->Transfer(tx_buffer.get(), rx_buffer.get(), size, 0);
@@ -551,7 +562,8 @@ bool test_spi_dma_operations() noexcept {
   auto tx_buffer = std::make_unique<uint8_t[]>(dma_test_size);
   auto rx_buffer = std::make_unique<uint8_t[]>(dma_test_size);
 
-  generate_test_pattern(tx_buffer.get(), dma_test_size, 0x55);
+  // Use distinctive pattern for DMA test
+  generate_alternating_pattern(tx_buffer.get(), dma_test_size, 0x55, 0xAA);
   std::memset(rx_buffer.get(), 0, dma_test_size);
 
   uint64_t start_time = esp_timer_get_time();
@@ -1248,8 +1260,35 @@ void generate_test_pattern(uint8_t* buffer, size_t length, uint8_t seed) noexcep
   if (!buffer)
     return;
 
+  // Create a more recognizable pattern for debugging
   for (size_t i = 0; i < length; ++i) {
-    buffer[i] = static_cast<uint8_t>(seed + i);
+    // Use a pattern that's easy to identify on logic analyzer
+    // Pattern: 0x01, 0x02, 0x03, ..., 0xFF, then repeat
+    buffer[i] = static_cast<uint8_t>((seed + i) % 256);
+    
+    // Ensure we don't have 0x00 which might be interpreted as end of string
+    if (buffer[i] == 0x00) {
+      buffer[i] = 0x01;
+    }
+  }
+}
+
+// Create distinctive patterns for different test types
+void generate_sequential_pattern(uint8_t* buffer, size_t length, uint8_t start_value) noexcept {
+  if (!buffer)
+    return;
+
+  for (size_t i = 0; i < length; ++i) {
+    buffer[i] = static_cast<uint8_t>(start_value + i);
+  }
+}
+
+void generate_alternating_pattern(uint8_t* buffer, size_t length, uint8_t value1, uint8_t value2) noexcept {
+  if (!buffer)
+    return;
+
+  for (size_t i = 0; i < length; ++i) {
+    buffer[i] = (i % 2 == 0) ? value1 : value2;
   }
 }
 
@@ -1264,8 +1303,8 @@ void log_test_separator(const char* test_name) noexcept {
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                    ESP32-C6 SPI COMPREHENSIVE TEST SUITE                    ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "║                    ESP32-C6 SPI COMPREHENSIVE TEST SUITE                     ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   vTaskDelay(pdMS_TO_TICKS(1000));

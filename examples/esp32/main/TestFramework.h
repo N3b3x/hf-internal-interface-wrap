@@ -146,14 +146,14 @@ inline void output_section_indicator(uint8_t blink_count = 5) noexcept {
   // Blink the specified number of times for section identification
   for (uint8_t i = 0; i < blink_count; ++i) {
     g_test_progress_gpio->SetActive();   // HIGH
-    vTaskDelay(pdMS_TO_TICKS(100));     // 100ms ON
+    vTaskDelay(pdMS_TO_TICKS(50));     // ON
     g_test_progress_gpio->SetInactive(); // LOW
-    vTaskDelay(pdMS_TO_TICKS(100));     // 100ms OFF
+    vTaskDelay(pdMS_TO_TICKS(50));     // OFF
     
-    // Pause between blinks (except after the last one)
-    if (i < blink_count - 1) {
-      vTaskDelay(pdMS_TO_TICKS(200)); // 200ms pause between blinks
-    }
+    // // Pause between blinks (except after the last one)
+    // if (i < blink_count - 1) {
+    //   vTaskDelay(pdMS_TO_TICKS(200)); // 200ms pause between blinks
+    // }
   }
 }
 
