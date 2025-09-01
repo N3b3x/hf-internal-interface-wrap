@@ -97,17 +97,50 @@ bool EspSpiBus::Initialize() noexcept {
   return true;
 }
 
+bool EspSpiBus::IsInitialized() const noexcept {
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  return initialized_;
+}
+
 bool EspSpiBus::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
   if (!initialized_)
     return true;
 
-  // Remove all devices first
-  devices_.clear(); // This will call destructors and remove devices from ESP-IDF
+  ESP_LOGI(TAG, "Deinitializing SPI bus");
 
+  // Remove all devices first - properly remove from ESP-IDF before clearing
+  for (auto& device : devices_) {
+    if (device && device->GetHandle()) {
+      ESP_LOGI(TAG, "Removing SPI device with CS pin %d from ESP-IDF bus",
+               device->GetConfig().cs_pin);
+
+      esp_err_t err = spi_bus_remove_device(device->GetHandle());
+      if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Failed to remove SPI device with CS pin %d: %s", device->GetConfig().cs_pin,
+                 esp_err_to_name(err));
+      } else {
+        ESP_LOGI(TAG, "Successfully removed SPI device with CS pin %d", device->GetConfig().cs_pin);
+      }
+
+      device->MarkAsDeinitialized();
+    }
+  }
+  devices_.clear();
+
+  // Free the SPI bus from ESP-IDF
   spi_host_device_t host = static_cast<spi_host_device_t>(config_.host);
-  spi_bus_free(host);
+  ESP_LOGI(TAG, "Freeing SPI bus host %d", static_cast<int>(host));
+
+  esp_err_t err = spi_bus_free(host);
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to free SPI bus: %s", esp_err_to_name(err));
+  } else {
+    ESP_LOGI(TAG, "Successfully freed SPI bus");
+  }
+
   initialized_ = false;
+  ESP_LOGI(TAG, "SPI bus deinitialized successfully");
   return true;
 }
 
@@ -130,10 +163,31 @@ int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcep
   dev_cfg.cs_ena_posttrans = device_config.cs_ena_posttrans;
   dev_cfg.flags = device_config.flags;
   dev_cfg.input_delay_ns = device_config.input_delay_ns;
-  dev_cfg.pre_cb = reinterpret_cast<transaction_cb_t>(device_config.pre_cb);
-  dev_cfg.post_cb = reinterpret_cast<transaction_cb_t>(device_config.post_cb);
-  dev_cfg.clock_source = static_cast<spi_clock_source_t>(device_config.clock_source);
-  dev_cfg.sample_point = static_cast<spi_sampling_point_t>(device_config.sampling_point);
+
+  // Set callbacks if provided
+  if (device_config.pre_cb) {
+    dev_cfg.pre_cb = reinterpret_cast<transaction_cb_t>(device_config.pre_cb);
+  }
+  if (device_config.post_cb) {
+    dev_cfg.post_cb = reinterpret_cast<transaction_cb_t>(device_config.post_cb);
+  }
+
+  // Set clock source and sampling point with ESP32-C6 compatible defaults
+  dev_cfg.clock_source = (device_config.clock_source != 0)
+                             ? static_cast<spi_clock_source_t>(device_config.clock_source)
+                             : SPI_CLK_SRC_DEFAULT;
+
+  // ESP32-C6 only supports PHASE_0 sampling point
+  if (device_config.sampling_point != 0) {
+    dev_cfg.sample_point = static_cast<spi_sampling_point_t>(device_config.sampling_point);
+    // Validate for ESP32-C6 compatibility
+    if (dev_cfg.sample_point != SPI_SAMPLING_POINT_PHASE_0) {
+      ESP_LOGW(TAG, "ESP32-C6 only supports PHASE_0 sampling point, using default");
+      dev_cfg.sample_point = SPI_SAMPLING_POINT_PHASE_0;
+    }
+  } else {
+    dev_cfg.sample_point = SPI_SAMPLING_POINT_PHASE_0;
+  }
 
   spi_device_handle_t handle = nullptr;
   spi_host_device_t host = static_cast<spi_host_device_t>(config_.host);
@@ -242,6 +296,16 @@ EspSpiDevice::~EspSpiDevice() noexcept {
 
 bool EspSpiDevice::Initialize() noexcept {
   return initialized_;
+}
+
+bool EspSpiDevice::MarkAsDeinitialized() noexcept {
+  if (!initialized_) {
+    ESP_LOGI(TAG, "Device is already marked as deinitialized");
+    return true;
+  }
+  ESP_LOGI(TAG, "Marking SPI device as deinitialized");
+  initialized_ = false;
+  return true;
 }
 
 bool EspSpiDevice::Deinitialize() noexcept {

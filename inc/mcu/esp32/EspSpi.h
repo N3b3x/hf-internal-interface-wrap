@@ -96,6 +96,13 @@ public:
   bool Deinitialize() noexcept override;
 
   /**
+   * @brief Mark the device as deinitialized without ESP-IDF cleanup.
+   * @return true if successful, false otherwise
+   * @note ESP-IDF cleanup is handled by the parent bus
+   */
+  bool MarkAsDeinitialized() noexcept;
+
+  /**
    * @brief Perform a full-duplex SPI transfer.
    * @param tx_data Pointer to transmit buffer (can be nullptr)
    * @param rx_data Pointer to receive buffer (can be nullptr)
@@ -170,11 +177,19 @@ public:
    * @brief Destructor. Automatically deinitializes the bus if needed.
    */
   ~EspSpiBus() noexcept;
+  
   /**
-   * @brief Initialize the SPI bus (no-op if already initialized).
+   * @brief Initialize the SPI bus.
    * @return true if successful, false otherwise
    */
   bool Initialize() noexcept;
+
+  /**
+   * @brief Check if the bus is initialized.
+   * @return true if initialized, false otherwise
+   */
+  bool IsInitialized() const noexcept;
+
   /**
    * @brief Deinitialize the SPI bus and free resources.
    * @return true if successful, false otherwise
