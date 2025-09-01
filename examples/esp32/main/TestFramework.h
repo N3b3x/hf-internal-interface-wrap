@@ -134,29 +134,25 @@ inline void cleanup_test_progress_indicator() noexcept {
 }
 
 /**
- * @brief Output a specific pattern on GPIO14 for section identification
- * @param pattern Pattern to output (number of blinks)
- * @param blink_count Number of blinks to perform
+ * @brief Output section start/end indicator on GPIO14
+ * @param blink_count Number of blinks to perform (default 5)
  * @note This function is automatically called by the test framework macros
  */
-inline void output_section_pattern(uint8_t pattern, uint8_t blink_count) noexcept {
+inline void output_section_indicator(uint8_t blink_count = 5) noexcept {
   if (!g_test_progress_gpio) {
     return; // Not initialized
   }
 
-  // Convert pattern to binary and blink accordingly
+  // Blink the specified number of times for section identification
   for (uint8_t i = 0; i < blink_count; ++i) {
-    // Blink pattern times
-    for (uint8_t j = 0; j < pattern; ++j) {
-      g_test_progress_gpio->SetActive();   // HIGH
-      vTaskDelay(pdMS_TO_TICKS(100));     // 100ms ON
-      g_test_progress_gpio->SetInactive(); // LOW
-      vTaskDelay(pdMS_TO_TICKS(100));     // 100ms OFF
-    }
+    g_test_progress_gpio->SetActive();   // HIGH
+    vTaskDelay(pdMS_TO_TICKS(100));     // 100ms ON
+    g_test_progress_gpio->SetInactive(); // LOW
+    vTaskDelay(pdMS_TO_TICKS(100));     // 100ms OFF
     
-    // Pause between pattern repetitions
+    // Pause between blinks (except after the last one)
     if (i < blink_count - 1) {
-      vTaskDelay(pdMS_TO_TICKS(500)); // 500ms pause
+      vTaskDelay(pdMS_TO_TICKS(200)); // 200ms pause between blinks
     }
   }
 }
@@ -438,15 +434,15 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
   RUN_TEST_SECTION_IF_ENABLED_WITH_PROGRESS(define_name, section_name,            \
                                             flip_test_progress_indicator, __VA_ARGS__)
 
-// Macro to conditionally run a test section with section-specific pattern
-#define RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(define_name, section_name, pattern, blink_count, ...) \
+// Macro to conditionally run a test section with section indicator
+#define RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(define_name, section_name, blink_count, ...) \
   do {                                                                                               \
     ensure_gpio14_initialized();                                                                     \
     if (define_name) {                                                                               \
       ESP_LOGI(TAG, "\n=== %s ===", section_name);                                                   \
-      output_section_pattern(pattern, blink_count); /* Section start pattern */                      \
+      output_section_indicator(blink_count); /* Section start indicator */                           \
       __VA_ARGS__                                                                                    \
-      output_section_pattern(pattern | 0x80, blink_count); /* Section end pattern (MSB set) */      \
+      output_section_indicator(blink_count); /* Section end indicator */                              \
     } else {                                                                                         \
       ESP_LOGI(TAG, "\n=== %s ===", section_name);                                                   \
       ESP_LOGI(TAG, "Section disabled by configuration");                                            \
@@ -492,7 +488,7 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
  *   flip_test_progress_indicator();
  * );
  *
- * RUN_TEST_SECTION_IF_ENABLED(ENABLE_CORE_FEATURE_TESTS, "CORE FEATURE TESTS",
+ * RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(ENABLE_CORE_FEATURE_TESTS, "CORE FEATURE TESTS", 5,
  *   RUN_TEST_IN_TASK("test2", test_function2, 8192, 1);
  * );
  * 

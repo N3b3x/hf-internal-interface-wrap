@@ -1274,8 +1274,8 @@ extern "C" void app_main(void) {
   print_test_section_status(TAG, "SPI");
 
   // Run all SPI tests based on configuration
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_CORE_TESTS, "SPI CORE TESTS",
+  RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
+      ENABLE_CORE_TESTS, "SPI CORE TESTS", 5,
       // Core functionality tests
       ESP_LOGI(TAG, "Running core SPI functionality tests...");
       RUN_TEST_IN_TASK("bus_initialization", test_spi_bus_initialization, 8192, 1);
@@ -1290,8 +1290,8 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after device management test
       );
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_TRANSFER_TESTS, "SPI TRANSFER TESTS",
+  RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
+      ENABLE_TRANSFER_TESTS, "SPI TRANSFER TESTS", 5,
       // Transfer operation tests
       ESP_LOGI(TAG, "Running SPI transfer tests...");
       RUN_TEST_IN_TASK("transfer_basic", test_spi_transfer_basic, 8192, 1);
@@ -1304,8 +1304,8 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after DMA test
       );
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_PERFORMANCE_TESTS, "SPI PERFORMANCE TESTS",
+  RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
+      ENABLE_PERFORMANCE_TESTS, "SPI PERFORMANCE TESTS", 5,
       // Performance and multi-device tests
       ESP_LOGI(TAG, "Running SPI performance tests...");
       RUN_TEST_IN_TASK("clock_speeds", test_spi_clock_speeds, 8192, 1);
@@ -1316,8 +1316,8 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after performance test
       );
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_ADVANCED_TESTS, "SPI ADVANCED TESTS",
+  RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
+      ENABLE_ADVANCED_TESTS, "SPI ADVANCED TESTS", 5,
       // Advanced features tests
       ESP_LOGI(TAG, "Running SPI advanced feature tests...");
       RUN_TEST_IN_TASK("esp_specific_features", test_spi_esp_specific_features, 8192, 1);
@@ -1328,8 +1328,8 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after thread safety test
       );
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_STRESS_TESTS, "SPI STRESS TESTS",
+  RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
+      ENABLE_STRESS_TESTS, "SPI STRESS TESTS", 5,
       // Stress and error handling tests
       ESP_LOGI(TAG, "Running SPI stress tests...");
       RUN_TEST_IN_TASK("error_handling", test_spi_error_handling, 8192, 1);
