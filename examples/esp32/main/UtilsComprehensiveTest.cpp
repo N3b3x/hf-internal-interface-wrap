@@ -34,6 +34,20 @@ static const char* TAG = "UTILS_Test";
 
 static TestResults g_test_results;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core utilities functionality tests
+static constexpr bool ENABLE_ASCII_ART_TESTS = true;      // AsciiArtGenerator functionality
+static constexpr bool ENABLE_RTOS_MUTEX_TESTS = true;     // RtosMutex basic functionality
+static constexpr bool ENABLE_SHARED_MUTEX_TESTS = true;   // RtosSharedMutex functionality
+static constexpr bool ENABLE_CONCURRENT_TESTS = true;      // Concurrent access testing
+static constexpr bool ENABLE_EDGE_CASE_TESTS = true;      // Edge cases and error conditions
+static constexpr bool ENABLE_TIME_UTILITY_TESTS = true;   // RtosTime utility functions
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;     // Performance and stress testing
+
 //==============================================================================
 // ASCII ART GENERATOR TESTS
 //==============================================================================
@@ -1122,59 +1136,77 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // ASCII Art Generator Tests
-  ESP_LOGI(TAG, "\n=== ASCII ART GENERATOR TESTS ===");
-  RUN_TEST(test_ascii_art_generator_creation);
-  RUN_TEST(test_ascii_art_basic_text);
-  RUN_TEST(test_ascii_art_supported_characters);
-  RUN_TEST(test_ascii_art_unsupported_characters);
-  RUN_TEST(test_ascii_art_empty_string);
-  RUN_TEST(test_ascii_art_mixed_case);
-  RUN_TEST(test_ascii_art_special_characters);
-  RUN_TEST(test_ascii_art_long_text);
-  RUN_TEST(test_ascii_art_custom_character_management);
-  RUN_TEST(test_ascii_art_supported_characters_list);
+  // Report test section configuration
+  print_test_section_status(TAG, "UTILS");
 
-  // RtosMutex Tests
-  ESP_LOGI(TAG, "\n=== RTOS MUTEX TESTS ===");
-  RUN_TEST(test_rtos_mutex_creation);
-  RUN_TEST(test_rtos_mutex_basic_lock_unlock);
-  RUN_TEST(test_rtos_mutex_try_lock);
-  RUN_TEST(test_rtos_mutex_recursive_locking);
-  RUN_TEST(test_rtos_mutex_timeout_locking);
-  RUN_TEST(test_rtos_mutex_lock_guard_raii);
-  RUN_TEST(test_rtos_mutex_lock_guard_with_timeout);
-  RUN_TEST(test_rtos_mutex_freertos_api);
+  // Run all Utils tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ASCII_ART_TESTS, "UTILS ASCII ART TESTS",
+      // ASCII Art Generator Tests
+      ESP_LOGI(TAG, "Running ASCII art generator tests...");
+      RUN_TEST_IN_TASK("generator_creation", test_ascii_art_generator_creation, 8192, 1);
+      RUN_TEST_IN_TASK("basic_text", test_ascii_art_basic_text, 8192, 1);
+      RUN_TEST_IN_TASK("supported_characters", test_ascii_art_supported_characters, 8192, 1);
+      RUN_TEST_IN_TASK("unsupported_characters", test_ascii_art_unsupported_characters, 8192, 1);
+      RUN_TEST_IN_TASK("empty_string", test_ascii_art_empty_string, 8192, 1);
+      RUN_TEST_IN_TASK("mixed_case", test_ascii_art_mixed_case, 8192, 1);
+      RUN_TEST_IN_TASK("special_characters", test_ascii_art_special_characters, 8192, 1);
+      RUN_TEST_IN_TASK("long_text", test_ascii_art_long_text, 8192, 1);
+      RUN_TEST_IN_TASK("custom_character_management", test_ascii_art_custom_character_management, 8192, 1);
+      RUN_TEST_IN_TASK("supported_characters_list", test_ascii_art_supported_characters_list, 8192, 1););
 
-  // RtosSharedMutex Tests
-  ESP_LOGI(TAG, "\n=== RTOS SHARED MUTEX TESTS ===");
-  RUN_TEST(test_rtos_shared_mutex_creation);
-  RUN_TEST(test_rtos_shared_mutex_exclusive_lock);
-  RUN_TEST(test_rtos_shared_mutex_shared_lock);
-  RUN_TEST(test_rtos_shared_mutex_lock_guards);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_RTOS_MUTEX_TESTS, "UTILS RTOS MUTEX TESTS",
+      // RtosMutex Tests
+      ESP_LOGI(TAG, "Running RTOS mutex tests...");
+      RUN_TEST_IN_TASK("creation", test_rtos_mutex_creation, 8192, 1);
+      RUN_TEST_IN_TASK("basic_lock_unlock", test_rtos_mutex_basic_lock_unlock, 8192, 1);
+      RUN_TEST_IN_TASK("try_lock", test_rtos_mutex_try_lock, 8192, 1);
+      RUN_TEST_IN_TASK("recursive_locking", test_rtos_mutex_recursive_locking, 8192, 1);
+      RUN_TEST_IN_TASK("timeout_locking", test_rtos_mutex_timeout_locking, 8192, 1);
+      RUN_TEST_IN_TASK("lock_guard_raii", test_rtos_mutex_lock_guard_raii, 8192, 1);
+      RUN_TEST_IN_TASK("lock_guard_with_timeout", test_rtos_mutex_lock_guard_with_timeout, 8192, 1);
+      RUN_TEST_IN_TASK("freertos_api", test_rtos_mutex_freertos_api, 8192, 1););
 
-  // Concurrent Access Tests (run in separate tasks with larger stacks)
-  ESP_LOGI(TAG, "\n=== CONCURRENT ACCESS TESTS ===");
-  RUN_TEST_IN_TASK("ConcurrentMutex", test_rtos_mutex_concurrent_access, 8192, 5);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_SHARED_MUTEX_TESTS, "UTILS SHARED MUTEX TESTS",
+      // RtosSharedMutex Tests
+      ESP_LOGI(TAG, "Running RTOS shared mutex tests...");
+      RUN_TEST_IN_TASK("shared_mutex_creation", test_rtos_shared_mutex_creation, 8192, 1);
+      RUN_TEST_IN_TASK("exclusive_lock", test_rtos_shared_mutex_exclusive_lock, 8192, 1);
+      RUN_TEST_IN_TASK("shared_lock", test_rtos_shared_mutex_shared_lock, 8192, 1);
+      RUN_TEST_IN_TASK("lock_guards", test_rtos_shared_mutex_lock_guards, 8192, 1););
 
-  // Edge Cases and Error Condition Tests
-  ESP_LOGI(TAG, "\n=== EDGE CASES AND ERROR CONDITION TESTS ===");
-  RUN_TEST(test_rtos_mutex_move_semantics);
-  RUN_TEST(test_rtos_shared_mutex_move_semantics);
-  RUN_TEST(test_rtos_mutex_edge_cases);
-  RUN_TEST(test_rtos_lock_guard_edge_cases);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CONCURRENT_TESTS, "UTILS CONCURRENT TESTS",
+      // Concurrent Access Tests
+      ESP_LOGI(TAG, "Running concurrent access tests...");
+      RUN_TEST_IN_TASK("concurrent_mutex", test_rtos_mutex_concurrent_access, 8192, 5););
 
-  // RtosTime Utility Tests
-  ESP_LOGI(TAG, "\n=== RTOS TIME UTILITY TESTS ===");
-  RUN_TEST(test_rtos_time_utilities);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_EDGE_CASE_TESTS, "UTILS EDGE CASE TESTS",
+      // Edge Cases and Error Condition Tests
+      ESP_LOGI(TAG, "Running edge case and error condition tests...");
+      RUN_TEST_IN_TASK("mutex_move_semantics", test_rtos_mutex_move_semantics, 8192, 1);
+      RUN_TEST_IN_TASK("shared_mutex_move_semantics", test_rtos_shared_mutex_move_semantics, 8192, 1);
+      RUN_TEST_IN_TASK("mutex_edge_cases", test_rtos_mutex_edge_cases, 8192, 1);
+      RUN_TEST_IN_TASK("lock_guard_edge_cases", test_rtos_lock_guard_edge_cases, 8192, 1););
 
-  // Performance and Stress Tests
-  ESP_LOGI(TAG, "\n=== PERFORMANCE AND STRESS TESTS ===");
-  RUN_TEST(test_ascii_art_performance);
-  RUN_TEST(test_ascii_art_stress);
-  RUN_TEST(test_rtos_mutex_performance);
-  RUN_TEST(test_rtos_mutex_recursive_performance);
-  RUN_TEST(test_rtos_shared_mutex_performance);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_TIME_UTILITY_TESTS, "UTILS TIME UTILITY TESTS",
+      // RtosTime Utility Tests
+      ESP_LOGI(TAG, "Running RTOS time utility tests...");
+      RUN_TEST_IN_TASK("time_utilities", test_rtos_time_utilities, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_PERFORMANCE_TESTS, "UTILS PERFORMANCE TESTS",
+      // Performance and Stress Tests
+      ESP_LOGI(TAG, "Running performance and stress tests...");
+      RUN_TEST_IN_TASK("ascii_art_performance", test_ascii_art_performance, 8192, 1);
+      RUN_TEST_IN_TASK("ascii_art_stress", test_ascii_art_stress, 8192, 1);
+      RUN_TEST_IN_TASK("rtos_mutex_performance", test_rtos_mutex_performance, 8192, 1);
+      RUN_TEST_IN_TASK("rtos_mutex_recursive_performance", test_rtos_mutex_recursive_performance, 8192, 1);
+      RUN_TEST_IN_TASK("rtos_shared_mutex_performance", test_rtos_shared_mutex_performance, 8192, 1););
 
   // Print final summary
   print_test_summary(g_test_results, "UTILS", TAG);

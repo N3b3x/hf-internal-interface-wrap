@@ -33,6 +33,18 @@ static const char* TEST_TAG = "TEST_TAG";
 // Global test instance
 static std::unique_ptr<EspLogger> g_logger_instance = nullptr;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core logger functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Construction, initialization, basic logging
+static constexpr bool ENABLE_LEVEL_TESTS = true;          // Level management, formatted logging
+static constexpr bool ENABLE_FEATURE_TESTS = true;        // Log V2 features, buffer logging, location logging
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, diagnostics, health monitoring
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Error handling, performance testing, utility functions
+
 // Forward declarations
 bool test_logger_construction() noexcept;
 bool test_logger_initialization() noexcept;
@@ -838,21 +850,48 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Run all tests in sequence
-  RUN_TEST(test_logger_construction);
-  RUN_TEST(test_logger_initialization);
-  RUN_TEST(test_logger_basic_logging);
-  RUN_TEST(test_logger_level_management);
-  RUN_TEST(test_logger_formatted_logging);
-  RUN_TEST(test_logger_log_v2_features);
-  RUN_TEST(test_logger_buffer_logging);
-  RUN_TEST(test_logger_location_logging);
-  RUN_TEST(test_logger_statistics_diagnostics);
-  RUN_TEST(test_logger_health_monitoring);
-  RUN_TEST(test_logger_error_handling);
-  RUN_TEST(test_logger_performance_testing);
-  RUN_TEST(test_logger_utility_functions);
-  RUN_TEST(test_logger_cleanup);
+  // Report test section configuration
+  print_test_section_status(TAG, "ESPLOGGER");
+
+  // Run all logger tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "LOGGER CORE TESTS",
+      // Core functionality tests
+      ESP_LOGI(TAG, "Running core logger functionality tests...");
+      RUN_TEST_IN_TASK("construction", test_logger_construction, 8192, 1);
+      RUN_TEST_IN_TASK("initialization", test_logger_initialization, 8192, 1);
+      RUN_TEST_IN_TASK("basic_logging", test_logger_basic_logging, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_LEVEL_TESTS, "LOGGER LEVEL TESTS",
+      // Level management tests
+      ESP_LOGI(TAG, "Running logger level management tests...");
+      RUN_TEST_IN_TASK("level_management", test_logger_level_management, 8192, 1);
+      RUN_TEST_IN_TASK("formatted_logging", test_logger_formatted_logging, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_FEATURE_TESTS, "LOGGER FEATURE TESTS",
+      // Feature tests
+      ESP_LOGI(TAG, "Running logger feature tests...");
+      RUN_TEST_IN_TASK("log_v2_features", test_logger_log_v2_features, 8192, 1);
+      RUN_TEST_IN_TASK("buffer_logging", test_logger_buffer_logging, 8192, 1);
+      RUN_TEST_IN_TASK("location_logging", test_logger_location_logging, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_DIAGNOSTIC_TESTS, "LOGGER DIAGNOSTIC TESTS",
+      // Diagnostic tests
+      ESP_LOGI(TAG, "Running logger diagnostic tests...");
+      RUN_TEST_IN_TASK("statistics_diagnostics", test_logger_statistics_diagnostics, 8192, 1);
+      RUN_TEST_IN_TASK("health_monitoring", test_logger_health_monitoring, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_STRESS_TESTS, "LOGGER STRESS TESTS",
+      // Stress and utility tests
+      ESP_LOGI(TAG, "Running logger stress tests...");
+      RUN_TEST_IN_TASK("error_handling", test_logger_error_handling, 8192, 1);
+      RUN_TEST_IN_TASK("performance_testing", test_logger_performance_testing, 8192, 1);
+      RUN_TEST_IN_TASK("utility_functions", test_logger_utility_functions, 8192, 1);
+      RUN_TEST_IN_TASK("cleanup", test_logger_cleanup, 8192, 1););
 
   print_test_summary(g_test_results, "ESPLOGGER", TAG);
 

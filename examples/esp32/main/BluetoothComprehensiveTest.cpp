@@ -27,6 +27,16 @@ static TestResults g_test_results;
 // Global Bluetooth instance for testing
 static EspBluetooth bluetooth_instance;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core Bluetooth functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, basic operations
+static constexpr bool ENABLE_SCANNING_TESTS = true;       // Scanning, device discovery
+static constexpr bool ENABLE_MANAGEMENT_TESTS = true;     // State management, cleanup
+
 // Event callback function for Bluetooth events
 void bluetooth_event_callback(hf_bluetooth_event_t event, void* event_data) noexcept {
   switch (event) {
@@ -313,11 +323,29 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  RUN_TEST(test_bluetooth_initialization);
-  RUN_TEST(test_bluetooth_basic_operations);
-  RUN_TEST(test_bluetooth_scanning);
-  RUN_TEST(test_bluetooth_state_management);
-  RUN_TEST(test_bluetooth_cleanup);
+  // Report test section configuration
+  print_test_section_status(TAG, "BLUETOOTH");
+
+  // Run all Bluetooth tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "BLUETOOTH CORE TESTS",
+      // Core functionality tests
+      ESP_LOGI(TAG, "Running Bluetooth core functionality tests...");
+      RUN_TEST_IN_TASK("initialization", test_bluetooth_initialization, 8192, 1);
+      RUN_TEST_IN_TASK("basic_operations", test_bluetooth_basic_operations, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_SCANNING_TESTS, "BLUETOOTH SCANNING TESTS",
+      // Scanning tests
+      ESP_LOGI(TAG, "Running Bluetooth scanning tests...");
+      RUN_TEST_IN_TASK("scanning", test_bluetooth_scanning, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_MANAGEMENT_TESTS, "BLUETOOTH MANAGEMENT TESTS",
+      // Management tests
+      ESP_LOGI(TAG, "Running Bluetooth management tests...");
+      RUN_TEST_IN_TASK("state_management", test_bluetooth_state_management, 8192, 1);
+      RUN_TEST_IN_TASK("cleanup", test_bluetooth_cleanup, 8192, 1););
 
   print_test_summary(g_test_results, "BLUETOOTH", TAG);
 

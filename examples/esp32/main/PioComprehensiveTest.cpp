@@ -44,6 +44,24 @@
 static const char* TAG = "PIO_Test";
 static TestResults g_test_results;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core PIO functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Constructor/destructor, lifecycle, initialization
+static constexpr bool ENABLE_VARIANT_TESTS = true;        // ESP32 variant detection, channel allocation
+static constexpr bool ENABLE_CHANNEL_TESTS = true;        // Channel configuration, multiple channels
+static constexpr bool ENABLE_TRANSMISSION_TESTS = true;   // Basic symbol transmission, edge cases
+static constexpr bool ENABLE_WS2812_TESTS = true;         // WS2812 LED protocol, color testing
+static constexpr bool ENABLE_ANALYZER_TESTS = true;       // Logic analyzer patterns, frequency sweep
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Advanced RMT features, encoder, carrier
+static constexpr bool ENABLE_LOOPBACK_TESTS = true;       // Loopback functionality, hardware loopback
+static constexpr bool ENABLE_CALLBACK_TESTS = true;       // Channel-specific callbacks
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, diagnostics, system validation
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Stress transmission, performance
+
 // Test progression indicator GPIO
 static EspGpio* g_test_progress_gpio = nullptr;
 static bool g_test_progress_state = false;
@@ -2112,102 +2130,128 @@ extern "C" void app_main() {
              "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
   }
 
-  // ESP32 Variant Information Tests (NEW)
-  ESP_LOGI(TAG, "\n=== ESP32 VARIANT INFORMATION TESTS ===");
-  RUN_TEST(test_esp32_variant_detection);
-  flip_test_progress_indicator();
-  RUN_TEST(test_channel_allocation_helpers);
-  flip_test_progress_indicator();
-  RUN_TEST(test_channel_direction_validation);
-  flip_test_progress_indicator();
-  RUN_TEST(test_resolution_ns_usage);
-  flip_test_progress_indicator();
+  // Report test section configuration
+  print_test_section_status(TAG, "PIO");
 
-  // Constructor/Destructor Tests
-  ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
-  RUN_TEST(test_constructor_default);
-  flip_test_progress_indicator();
-  RUN_TEST(test_destructor_cleanup);
-  flip_test_progress_indicator();
+  // Run all PIO tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_VARIANT_TESTS, "PIO VARIANT TESTS",
+      // ESP32 Variant Information Tests
+      ESP_LOGI(TAG, "Running ESP32 variant information tests...");
+      RUN_TEST_IN_TASK("variant_detection", test_esp32_variant_detection, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("channel_allocation_helpers", test_channel_allocation_helpers, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("channel_direction_validation", test_channel_direction_validation, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("resolution_ns_usage", test_resolution_ns_usage, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Lifecycle Tests
-  ESP_LOGI(TAG, "\n=== LIFECYCLE TESTS ===");
-  RUN_TEST(test_initialization_states);
-  flip_test_progress_indicator();
-  RUN_TEST(test_lazy_initialization);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "PIO CORE TESTS",
+      // Constructor/Destructor Tests
+      ESP_LOGI(TAG, "Running constructor/destructor tests...");
+      RUN_TEST_IN_TASK("constructor_default", test_constructor_default, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("destructor_cleanup", test_destructor_cleanup, 8192, 1);
+      flip_test_progress_indicator();
 
-  // Channel Configuration Tests (ENHANCED)
-  ESP_LOGI(TAG, "\n=== CHANNEL CONFIGURATION TESTS ===");
-  RUN_TEST(test_channel_configuration);
-  flip_test_progress_indicator();
-  RUN_TEST(test_multiple_channel_configuration);
-  flip_test_progress_indicator();
+      // Lifecycle Tests
+      ESP_LOGI(TAG, "Running lifecycle tests...");
+      RUN_TEST_IN_TASK("initialization_states", test_initialization_states, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("lazy_initialization", test_lazy_initialization, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Basic Transmission Tests (ENHANCED)
-  ESP_LOGI(TAG, "\n=== BASIC TRANSMISSION TESTS ===");
-  RUN_TEST(test_basic_symbol_transmission);
-  flip_test_progress_indicator();
-  RUN_TEST(test_transmission_edge_cases);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CHANNEL_TESTS, "PIO CHANNEL TESTS",
+      // Channel Configuration Tests
+      ESP_LOGI(TAG, "Running channel configuration tests...");
+      RUN_TEST_IN_TASK("channel_configuration", test_channel_configuration, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("multiple_channel_configuration", test_multiple_channel_configuration, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // WS2812 LED Protocol Tests (ENHANCED)
-  ESP_LOGI(TAG, "\n=== WS2812 LED PROTOCOL TESTS (ENHANCED) ===");
-  RUN_TEST(test_ws2812_single_led);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_multiple_leds);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_color_cycle);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_brightness_sweep);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_pattern_validation);
-  flip_test_progress_indicator();
-  RUN_TEST(test_ws2812_rainbow_transition);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_TRANSMISSION_TESTS, "PIO TRANSMISSION TESTS",
+      // Basic Transmission Tests
+      ESP_LOGI(TAG, "Running basic transmission tests...");
+      RUN_TEST_IN_TASK("basic_symbol_transmission", test_basic_symbol_transmission, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("transmission_edge_cases", test_transmission_edge_cases, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Logic Analyzer Test Scenarios
-  ESP_LOGI(TAG, "\n=== LOGIC ANALYZER TEST SCENARIOS ===");
-  RUN_TEST(test_logic_analyzer_patterns);
-  flip_test_progress_indicator();
-  RUN_TEST(test_frequency_sweep);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_WS2812_TESTS, "PIO WS2812 TESTS",
+      // WS2812 LED Protocol Tests
+      ESP_LOGI(TAG, "Running WS2812 LED protocol tests...");
+      RUN_TEST_IN_TASK("ws2812_single_led", test_ws2812_single_led, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("ws2812_multiple_leds", test_ws2812_multiple_leds, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("ws2812_color_cycle", test_ws2812_color_cycle, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("ws2812_brightness_sweep", test_ws2812_brightness_sweep, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("ws2812_pattern_validation", test_ws2812_pattern_validation, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("ws2812_rainbow_transition", test_ws2812_rainbow_transition, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Advanced RMT Feature Tests
-  ESP_LOGI(TAG, "\n=== ADVANCED RMT FEATURE TESTS ===");
-  RUN_TEST(test_rmt_encoder_configuration);
-  flip_test_progress_indicator();
-  RUN_TEST(test_rmt_carrier_modulation);
-  flip_test_progress_indicator();
-  RUN_TEST(test_rmt_advanced_configuration);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ANALYZER_TESTS, "PIO ANALYZER TESTS",
+      // Logic Analyzer Test Scenarios
+      ESP_LOGI(TAG, "Running logic analyzer test scenarios...");
+      RUN_TEST_IN_TASK("logic_analyzer_patterns", test_logic_analyzer_patterns, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("frequency_sweep", test_frequency_sweep, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Loopback and Reception Tests
-  ESP_LOGI(TAG, "\n=== LOOPBACK AND RECEPTION TESTS ===");
-  RUN_TEST(test_loopback_functionality);
-  flip_test_progress_indicator();
-  RUN_TEST(test_hardware_loopback_gpio8_to_gpio18);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "PIO ADVANCED TESTS",
+      // Advanced RMT Feature Tests
+      ESP_LOGI(TAG, "Running advanced RMT feature tests...");
+      RUN_TEST_IN_TASK("rmt_encoder_configuration", test_rmt_encoder_configuration, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("rmt_carrier_modulation", test_rmt_carrier_modulation, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("rmt_advanced_configuration", test_rmt_advanced_configuration, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Callback Tests (ENHANCED - Channel-specific)
-  ESP_LOGI(TAG, "\n=== CALLBACK TESTS ===");
-  RUN_TEST(test_callback_functionality);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_LOOPBACK_TESTS, "PIO LOOPBACK TESTS",
+      // Loopback and Reception Tests
+      ESP_LOGI(TAG, "Running loopback and reception tests...");
+      RUN_TEST_IN_TASK("loopback_functionality", test_loopback_functionality, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("hardware_loopback_gpio8_to_gpio18", test_hardware_loopback_gpio8_to_gpio18, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Statistics and Diagnostics Tests
-  ESP_LOGI(TAG, "\n=== STATISTICS AND DIAGNOSTICS TESTS ===");
-  RUN_TEST(test_statistics_and_diagnostics);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CALLBACK_TESTS, "PIO CALLBACK TESTS",
+      // Callback Tests
+      ESP_LOGI(TAG, "Running callback tests...");
+      RUN_TEST_IN_TASK("callback_functionality", test_callback_functionality, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Stress and Performance Tests
-  ESP_LOGI(TAG, "\n=== STRESS AND PERFORMANCE TESTS ===");
-  RUN_TEST(test_stress_transmission);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_DIAGNOSTIC_TESTS, "PIO DIAGNOSTIC TESTS",
+      // Statistics and Diagnostics Tests
+      ESP_LOGI(TAG, "Running statistics and diagnostics tests...");
+      RUN_TEST_IN_TASK("statistics_and_diagnostics", test_statistics_and_diagnostics, 8192, 1);
+      flip_test_progress_indicator();
 
-  // System Validation
-  ESP_LOGI(TAG, "\n=== SYSTEM VALIDATION TESTS ===");
-  RUN_TEST(test_pio_system_validation);
-  flip_test_progress_indicator();
+      // System Validation
+      ESP_LOGI(TAG, "Running system validation tests...");
+      RUN_TEST_IN_TASK("pio_system_validation", test_pio_system_validation, 8192, 1);
+      flip_test_progress_indicator(););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_STRESS_TESTS, "PIO STRESS TESTS",
+      // Stress and Performance Tests
+      ESP_LOGI(TAG, "Running stress and performance tests...");
+      RUN_TEST_IN_TASK("stress_transmission", test_stress_transmission, 8192, 1);
+      flip_test_progress_indicator(););
 
   // Print final summary
   print_test_summary(g_test_results, "PIO", TAG);

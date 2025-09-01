@@ -31,6 +31,18 @@ static const char* TAG = "ASCII_ART_Test";
 
 static TestResults g_test_results;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core ASCII art functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Basic generation, uppercase conversion
+static constexpr bool ENABLE_CHARACTER_TESTS = true;      // Special characters, numbers, symbols
+static constexpr bool ENABLE_EDGE_CASE_TESTS = true;      // Empty cases, edge cases
+static constexpr bool ENABLE_CUSTOM_TESTS = true;         // Custom character management, validation
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Complex text generation, performance
+
 // Forward declarations
 bool test_basic_ascii_art_generation() noexcept;
 bool test_uppercase_conversion() noexcept;
@@ -457,16 +469,44 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  RUN_TEST(test_basic_ascii_art_generation);
-  RUN_TEST(test_uppercase_conversion);
-  RUN_TEST(test_special_characters);
-  RUN_TEST(test_numbers_and_symbols);
-  RUN_TEST(test_empty_and_edge_cases);
-  RUN_TEST(test_custom_character_management);
-  RUN_TEST(test_character_support_validation);
-  RUN_TEST(test_supported_characters_list);
-  RUN_TEST(test_complex_text_generation);
-  RUN_TEST(test_performance_and_stability);
+  // Report test section configuration
+  print_test_section_status(TAG, "ASCII_ART");
+
+  // Run all ASCII art tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "ASCII ART CORE TESTS",
+      // Core functionality tests
+      ESP_LOGI(TAG, "Running core ASCII art functionality tests...");
+      RUN_TEST_IN_TASK("basic_generation", test_basic_ascii_art_generation, 8192, 1);
+      RUN_TEST_IN_TASK("uppercase_conversion", test_uppercase_conversion, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CHARACTER_TESTS, "ASCII ART CHARACTER TESTS",
+      // Character tests
+      ESP_LOGI(TAG, "Running ASCII art character tests...");
+      RUN_TEST_IN_TASK("special_characters", test_special_characters, 8192, 1);
+      RUN_TEST_IN_TASK("numbers_and_symbols", test_numbers_and_symbols, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_EDGE_CASE_TESTS, "ASCII ART EDGE CASE TESTS",
+      // Edge case tests
+      ESP_LOGI(TAG, "Running ASCII art edge case tests...");
+      RUN_TEST_IN_TASK("empty_and_edge_cases", test_empty_and_edge_cases, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CUSTOM_TESTS, "ASCII ART CUSTOM TESTS",
+      // Custom character tests
+      ESP_LOGI(TAG, "Running ASCII art custom character tests...");
+      RUN_TEST_IN_TASK("custom_character_management", test_custom_character_management, 8192, 1);
+      RUN_TEST_IN_TASK("character_support_validation", test_character_support_validation, 8192, 1);
+      RUN_TEST_IN_TASK("supported_characters_list", test_supported_characters_list, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "ASCII ART ADVANCED TESTS",
+      // Advanced tests
+      ESP_LOGI(TAG, "Running ASCII art advanced tests...");
+      RUN_TEST_IN_TASK("complex_text_generation", test_complex_text_generation, 8192, 1);
+      RUN_TEST_IN_TASK("performance_and_stability", test_performance_and_stability, 8192, 1););
 
   print_test_summary(g_test_results, "ASCII ART GENERATOR", TAG);
 

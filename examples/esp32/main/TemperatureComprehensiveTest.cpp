@@ -17,6 +17,18 @@ static std::atomic<int> g_threshold_callback_count{0};
 static std::atomic<int> g_monitoring_callback_count{0};
 static std::atomic<float> g_last_callback_temperature{0.0f};
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core temperature functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, reading, sensor info
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Range management, threshold monitoring, continuous monitoring
+static constexpr bool ENABLE_FEATURE_TESTS = true;        // Calibration, power management, self-test, health monitoring
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, diagnostics, ESP32-specific features
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Error handling, performance, stress testing
+
 //==============================================================================
 // CALLBACK FUNCTIONS FOR TESTING
 //==============================================================================
@@ -751,26 +763,47 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Basic functionality tests
-  RUN_TEST(test_temperature_sensor_initialization);
-  RUN_TEST(test_temperature_reading);
-  RUN_TEST(test_sensor_info);
+  // Report test section configuration
+  print_test_section_status(TAG, "TEMPERATURE");
 
-  // Advanced feature tests
-  RUN_TEST(test_range_management);
-  RUN_TEST(test_threshold_monitoring);
-  RUN_TEST(test_continuous_monitoring);
-  RUN_TEST(test_calibration);
-  RUN_TEST(test_power_management);
-  RUN_TEST(test_self_test_and_health);
-  RUN_TEST(test_statistics_and_diagnostics);
+  // Run all temperature tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "TEMPERATURE CORE TESTS",
+      // Basic functionality tests
+      ESP_LOGI(TAG, "Running basic temperature functionality tests...");
+      RUN_TEST_IN_TASK("sensor_initialization", test_temperature_sensor_initialization, 8192, 1);
+      RUN_TEST_IN_TASK("temperature_reading", test_temperature_reading, 8192, 1);
+      RUN_TEST_IN_TASK("sensor_info", test_sensor_info, 8192, 1););
 
-  // ESP32-specific tests
-  RUN_TEST(test_esp32_specific_features);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "TEMPERATURE ADVANCED TESTS",
+      // Advanced feature tests
+      ESP_LOGI(TAG, "Running advanced temperature feature tests...");
+      RUN_TEST_IN_TASK("range_management", test_range_management, 8192, 1);
+      RUN_TEST_IN_TASK("threshold_monitoring", test_threshold_monitoring, 8192, 1);
+      RUN_TEST_IN_TASK("continuous_monitoring", test_continuous_monitoring, 8192, 1););
 
-  // Error handling and stress tests
-  RUN_TEST(test_error_handling);
-  RUN_TEST(test_performance_and_stress);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_FEATURE_TESTS, "TEMPERATURE FEATURE TESTS",
+      // Feature and management tests
+      ESP_LOGI(TAG, "Running temperature feature tests...");
+      RUN_TEST_IN_TASK("calibration", test_calibration, 8192, 1);
+      RUN_TEST_IN_TASK("power_management", test_power_management, 8192, 1);
+      RUN_TEST_IN_TASK("self_test_and_health", test_self_test_and_health, 8192, 1);
+      RUN_TEST_IN_TASK("statistics_and_diagnostics", test_statistics_and_diagnostics, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_DIAGNOSTIC_TESTS, "TEMPERATURE DIAGNOSTIC TESTS",
+      // Diagnostic and ESP32-specific tests
+      ESP_LOGI(TAG, "Running temperature diagnostic tests...");
+      RUN_TEST_IN_TASK("esp32_specific_features", test_esp32_specific_features, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_STRESS_TESTS, "TEMPERATURE STRESS TESTS",
+      // Error handling and stress tests
+      ESP_LOGI(TAG, "Running temperature stress tests...");
+      RUN_TEST_IN_TASK("error_handling", test_error_handling, 8192, 1);
+      RUN_TEST_IN_TASK("performance_and_stress", test_performance_and_stress, 8192, 1););
 
   // Print final results
   print_test_summary(g_test_results, "TEMPERATURE", TAG);

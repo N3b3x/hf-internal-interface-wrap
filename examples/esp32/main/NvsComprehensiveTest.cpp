@@ -31,6 +31,18 @@ static const char* TEST_STRING = "Hello, ESP32-C6 NVS!";
 static const char* LONG_STRING = "This is a test string for NVS storage.";
 static const uint8_t TEST_BLOB_DATA[] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core NVS functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, deinitialization, basic operations
+static constexpr bool ENABLE_DATA_TESTS = true;           // U32, string, blob operations
+static constexpr bool ENABLE_MANAGEMENT_TESTS = true;     // Key operations, commit operations
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, diagnostics, metadata
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Edge cases, stress testing
+
 // === Initialization and Deinitialization Tests ===
 
 bool test_nvs_initialization() noexcept {
@@ -1052,17 +1064,44 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Run all tests
-  RUN_TEST(test_nvs_initialization);
-  RUN_TEST(test_nvs_u32_operations);
-  RUN_TEST(test_nvs_string_operations);
-  RUN_TEST(test_nvs_blob_operations);
-  RUN_TEST(test_nvs_key_operations);
-  RUN_TEST(test_nvs_commit_operations);
-  RUN_TEST(test_nvs_statistics_diagnostics);
-  RUN_TEST(test_nvs_metadata);
-  RUN_TEST(test_nvs_edge_cases);
-  RUN_TEST(test_nvs_stress);
+  // Report test section configuration
+  print_test_section_status(TAG, "NVS");
+
+  // Run all NVS tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "NVS CORE TESTS",
+      // Core functionality tests
+      ESP_LOGI(TAG, "Running core NVS functionality tests...");
+      RUN_TEST_IN_TASK("initialization", test_nvs_initialization, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_DATA_TESTS, "NVS DATA TESTS",
+      // Data operation tests
+      ESP_LOGI(TAG, "Running NVS data operation tests...");
+      RUN_TEST_IN_TASK("u32_operations", test_nvs_u32_operations, 8192, 1);
+      RUN_TEST_IN_TASK("string_operations", test_nvs_string_operations, 8192, 1);
+      RUN_TEST_IN_TASK("blob_operations", test_nvs_blob_operations, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_MANAGEMENT_TESTS, "NVS MANAGEMENT TESTS",
+      // Management operation tests
+      ESP_LOGI(TAG, "Running NVS management tests...");
+      RUN_TEST_IN_TASK("key_operations", test_nvs_key_operations, 8192, 1);
+      RUN_TEST_IN_TASK("commit_operations", test_nvs_commit_operations, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_DIAGNOSTIC_TESTS, "NVS DIAGNOSTIC TESTS",
+      // Diagnostic and metadata tests
+      ESP_LOGI(TAG, "Running NVS diagnostic tests...");
+      RUN_TEST_IN_TASK("statistics_diagnostics", test_nvs_statistics_diagnostics, 8192, 1);
+      RUN_TEST_IN_TASK("metadata", test_nvs_metadata, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_STRESS_TESTS, "NVS STRESS TESTS",
+      // Stress and edge case tests
+      ESP_LOGI(TAG, "Running NVS stress tests...");
+      RUN_TEST_IN_TASK("edge_cases", test_nvs_edge_cases, 8192, 1);
+      RUN_TEST_IN_TASK("stress", test_nvs_stress, 8192, 1););
 
   // Print summary
   print_test_summary(g_test_results, "NVS", TAG);

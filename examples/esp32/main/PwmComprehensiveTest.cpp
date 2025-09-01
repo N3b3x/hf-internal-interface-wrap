@@ -41,6 +41,22 @@
 static const char* TAG = "PWM_Test";
 static TestResults g_test_results;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core PWM functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Constructor/destructor, lifecycle, initialization
+static constexpr bool ENABLE_CONFIGURATION_TESTS = true;   // Mode, clock source, basic mode configuration
+static constexpr bool ENABLE_CHANNEL_TESTS = true;        // Channel management, enable/disable
+static constexpr bool ENABLE_CONTROL_TESTS = true;        // Duty cycle, frequency, phase shift control
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Synchronized operations, complementary outputs
+static constexpr bool ENABLE_ESP_SPECIFIC_TESTS = true;   // Hardware fade, idle levels, timer management
+static constexpr bool ENABLE_RESOLUTION_TESTS = true;     // Resolution-specific duty cycles, validation
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Status reporting, statistics, callbacks
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Edge cases, stress scenarios, safety tests
+
 // Test progression indicator GPIO
 static EspGpio* g_test_progress_gpio = nullptr;
 static bool g_test_progress_state = false;
@@ -2834,106 +2850,128 @@ extern "C" void app_main(void) {
              "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
   }
 
-  // Constructor/Destructor Tests
-  ESP_LOGI(TAG, "\n=== CONSTRUCTOR/DESTRUCTOR TESTS ===");
-  RUN_TEST(test_constructor_default);
-  flip_test_progress_indicator();
-  RUN_TEST(test_destructor_cleanup);
-  flip_test_progress_indicator();
+  // Report test section configuration
+  print_test_section_status(TAG, "PWM");
 
-  // Lifecycle Tests
-  ESP_LOGI(TAG, "\n=== LIFECYCLE TESTS ===");
-  RUN_TEST(test_initialization_states);
-  flip_test_progress_indicator();
-  RUN_TEST(test_lazy_initialization);
-  flip_test_progress_indicator();
+  // Run all PWM tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "PWM CORE TESTS",
+      // Constructor/Destructor Tests
+      ESP_LOGI(TAG, "Running constructor/destructor tests...");
+      RUN_TEST_IN_TASK("constructor_default", test_constructor_default, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("destructor_cleanup", test_destructor_cleanup, 8192, 1);
+      flip_test_progress_indicator();
 
-  // Configuration Tests
-  ESP_LOGI(TAG, "\n=== CONFIGURATION TESTS ===");
-  RUN_TEST(test_mode_configuration);
-  flip_test_progress_indicator();
-  RUN_TEST(test_clock_source_configuration);
-  flip_test_progress_indicator();
-  RUN_TEST(test_basic_mode_without_fade);
-  flip_test_progress_indicator();
+      // Lifecycle Tests
+      ESP_LOGI(TAG, "Running lifecycle tests...");
+      RUN_TEST_IN_TASK("initialization_states", test_initialization_states, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("lazy_initialization", test_lazy_initialization, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Channel Management Tests
-  ESP_LOGI(TAG, "\n=== CHANNEL MANAGEMENT TESTS ===");
-  RUN_TEST(test_channel_configuration);
-  flip_test_progress_indicator();
-  RUN_TEST(test_channel_enable_disable);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CONFIGURATION_TESTS, "PWM CONFIGURATION TESTS",
+      // Configuration Tests
+      ESP_LOGI(TAG, "Running configuration tests...");
+      RUN_TEST_IN_TASK("mode_configuration", test_mode_configuration, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("clock_source_configuration", test_clock_source_configuration, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("basic_mode_without_fade", test_basic_mode_without_fade, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // PWM Control Tests
-  ESP_LOGI(TAG, "\n=== PWM CONTROL TESTS ===");
-  RUN_TEST(test_duty_cycle_control);
-  flip_test_progress_indicator();
-  RUN_TEST(test_frequency_control);
-  flip_test_progress_indicator();
-  RUN_TEST(test_phase_shift_control);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CHANNEL_TESTS, "PWM CHANNEL TESTS",
+      // Channel Management Tests
+      ESP_LOGI(TAG, "Running channel management tests...");
+      RUN_TEST_IN_TASK("channel_configuration", test_channel_configuration, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("channel_enable_disable", test_channel_enable_disable, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Advanced Features Tests
-  ESP_LOGI(TAG, "\n=== ADVANCED FEATURES TESTS ===");
-  RUN_TEST(test_synchronized_operations);
-  flip_test_progress_indicator();
-  RUN_TEST(test_complementary_outputs);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CONTROL_TESTS, "PWM CONTROL TESTS",
+      // PWM Control Tests
+      ESP_LOGI(TAG, "Running PWM control tests...");
+      RUN_TEST_IN_TASK("duty_cycle_control", test_duty_cycle_control, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("frequency_control", test_frequency_control, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("phase_shift_control", test_phase_shift_control, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // ESP32-Specific Features Tests
-  ESP_LOGI(TAG, "\n=== ESP32-SPECIFIC FEATURES TESTS ===");
-  RUN_TEST(test_hardware_fade);
-  flip_test_progress_indicator();
-  RUN_TEST(test_fade_mode_functionality);
-  flip_test_progress_indicator();
-  RUN_TEST(test_idle_level_control);
-  flip_test_progress_indicator();
-  RUN_TEST(test_timer_management);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "PWM ADVANCED TESTS",
+      // Advanced Features Tests
+      ESP_LOGI(TAG, "Running advanced feature tests...");
+      RUN_TEST_IN_TASK("synchronized_operations", test_synchronized_operations, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("complementary_outputs", test_complementary_outputs, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // CRITICAL NEW TESTS: Resolution and Validation
-  ESP_LOGI(TAG, "\n=== RESOLUTION AND VALIDATION TESTS (NEW) ===");
-  RUN_TEST(test_resolution_specific_duty_cycles);
-  flip_test_progress_indicator();
-  RUN_TEST(test_frequency_resolution_validation);
-  flip_test_progress_indicator();
-  RUN_TEST(test_enhanced_validation_system);
-  flip_test_progress_indicator();
-  RUN_TEST(test_percentage_consistency_across_resolutions);
-  flip_test_progress_indicator();
-  RUN_TEST(test_resolution_control_methods);
-  flip_test_progress_indicator();
-  RUN_TEST(test_resolution_aware_duty_calculations);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ESP_SPECIFIC_TESTS, "PWM ESP-SPECIFIC TESTS",
+      // ESP32-Specific Features Tests
+      ESP_LOGI(TAG, "Running ESP32-specific feature tests...");
+      RUN_TEST_IN_TASK("hardware_fade", test_hardware_fade, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("fade_mode_functionality", test_fade_mode_functionality, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("idle_level_control", test_idle_level_control, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("timer_management", test_timer_management, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Status and Diagnostics Tests
-  ESP_LOGI(TAG, "\n=== STATUS AND DIAGNOSTICS TESTS ===");
-  RUN_TEST(test_status_reporting);
-  flip_test_progress_indicator();
-  RUN_TEST(test_statistics_and_diagnostics);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_RESOLUTION_TESTS, "PWM RESOLUTION TESTS",
+      // Resolution and Validation Tests
+      ESP_LOGI(TAG, "Running resolution and validation tests...");
+      RUN_TEST_IN_TASK("resolution_specific_duty_cycles", test_resolution_specific_duty_cycles, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("frequency_resolution_validation", test_frequency_resolution_validation, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("enhanced_validation_system", test_enhanced_validation_system, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("percentage_consistency_across_resolutions", test_percentage_consistency_across_resolutions, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("resolution_control_methods", test_resolution_control_methods, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("resolution_aware_duty_calculations", test_resolution_aware_duty_calculations, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Callback Tests
-  ESP_LOGI(TAG, "\n=== CALLBACK TESTS ===");
-  RUN_TEST(test_callbacks);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_DIAGNOSTIC_TESTS, "PWM DIAGNOSTIC TESTS",
+      // Status and Diagnostics Tests
+      ESP_LOGI(TAG, "Running status and diagnostics tests...");
+      RUN_TEST_IN_TASK("status_reporting", test_status_reporting, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("statistics_and_diagnostics", test_statistics_and_diagnostics, 8192, 1);
+      flip_test_progress_indicator();
 
-  // Edge Cases and Stress Tests
-  ESP_LOGI(TAG, "\n=== EDGE CASES AND STRESS TESTS ===");
-  RUN_TEST(test_edge_cases);
-  flip_test_progress_indicator();
-  RUN_TEST(test_stress_scenarios);
-  flip_test_progress_indicator();
+      // Callback Tests
+      ESP_LOGI(TAG, "Running callback tests...");
+      RUN_TEST_IN_TASK("callbacks", test_callbacks, 8192, 1);
+      flip_test_progress_indicator(););
 
-  // Advanced Timer Management Tests
-  ESP_LOGI(TAG, "\n=== ADVANCED TIMER MANAGEMENT TESTS ===");
-  RUN_TEST(test_timer_health_check_and_recovery);
-  flip_test_progress_indicator();
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_STRESS_TESTS, "PWM STRESS TESTS",
+      // Edge Cases and Stress Tests
+      ESP_LOGI(TAG, "Running edge cases and stress tests...");
+      RUN_TEST_IN_TASK("edge_cases", test_edge_cases, 8192, 1);
+      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("stress_scenarios", test_stress_scenarios, 8192, 1);
+      flip_test_progress_indicator();
 
-  // Critical Safety Tests
-  ESP_LOGI(TAG, "\n=== CRITICAL SAFETY TESTS ===");
-  RUN_TEST(test_safe_eviction_policies);
-  flip_test_progress_indicator();
+      // Advanced Timer Management Tests
+      ESP_LOGI(TAG, "Running advanced timer management tests...");
+      RUN_TEST_IN_TASK("timer_health_check_and_recovery", test_timer_health_check_and_recovery, 8192, 1);
+      flip_test_progress_indicator();
+
+      // Critical Safety Tests
+      ESP_LOGI(TAG, "Running critical safety tests...");
+      RUN_TEST_IN_TASK("safe_eviction_policies", test_safe_eviction_policies, 8192, 1);
+      flip_test_progress_indicator(););
 
   // Print final summary
   ESP_LOGI(TAG, "\n");

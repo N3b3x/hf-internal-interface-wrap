@@ -35,13 +35,28 @@
 static const char* TAG = "SPI_Test";
 static TestResults g_test_results;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core SPI functionality tests
+static constexpr bool ENABLE_CORE_TESTS =
+    true; // Bus initialization, configuration, device management
+static constexpr bool ENABLE_TRANSFER_TESTS = true; // Basic transfers, modes, sizes, DMA operations
+static constexpr bool ENABLE_PERFORMANCE_TESTS =
+    true; // Clock speeds, multi-device, performance benchmarks
+static constexpr bool ENABLE_ADVANCED_TESTS = true; // ESP-specific features, IOMUX, thread safety
+static constexpr bool ENABLE_STRESS_TESTS =
+    true; // Error handling, timeouts, edge cases, power management
+
 // Test configuration constants
-static constexpr hf_pin_num_t TEST_MOSI_PIN = 10;
-static constexpr hf_pin_num_t TEST_MISO_PIN = 9;
-static constexpr hf_pin_num_t TEST_SCLK_PIN = 11;
-static constexpr hf_pin_num_t TEST_CS_PIN_1 = 12;
-static constexpr hf_pin_num_t TEST_CS_PIN_2 = 13;
-static constexpr hf_pin_num_t TEST_CS_PIN_3 = 14;
+static constexpr hf_pin_num_t TEST_MOSI_PIN = 7;
+static constexpr hf_pin_num_t TEST_MISO_PIN = 2;
+static constexpr hf_pin_num_t TEST_SCLK_PIN = 6;
+static constexpr hf_pin_num_t TEST_CS_PIN_1 = 16;
+static constexpr hf_pin_num_t TEST_CS_PIN_2 = 17;
+static constexpr hf_pin_num_t TEST_CS_PIN_3 = 20;
 static constexpr uint32_t SLOW_SPEED = 1000000;    // 1MHz
 static constexpr uint32_t MEDIUM_SPEED = 10000000; // 10MHz
 static constexpr uint32_t FAST_SPEED = 40000000;   // 40MHz
@@ -70,7 +85,8 @@ bool test_spi_bus_acquisition() noexcept;
 bool test_spi_power_management() noexcept;
 
 // Helper functions
-EspSpiBus* create_test_bus(uint32_t speed = MEDIUM_SPEED, bool use_dma = true) noexcept;
+hf_spi_bus_config_t create_test_bus_config(uint32_t speed = MEDIUM_SPEED, bool use_dma = true,
+                                           spi_host_device_t host = SPI2_HOST) noexcept;
 bool verify_transfer_data(const uint8_t* tx_data, const uint8_t* rx_data, size_t length) noexcept;
 void generate_test_pattern(uint8_t* buffer, size_t length, uint8_t seed = 0xAA) noexcept;
 void log_test_separator(const char* test_name) noexcept;
@@ -126,9 +142,13 @@ bool test_spi_bus_initialization() noexcept {
 bool test_spi_bus_deinitialization() noexcept {
   log_test_separator("SPI Bus Deinitialization");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -213,9 +233,13 @@ bool test_spi_configuration_validation() noexcept {
 bool test_spi_device_creation() noexcept {
   log_test_separator("SPI Device Creation");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -261,15 +285,21 @@ bool test_spi_device_creation() noexcept {
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Device creation tests passed");
+
+  // Clean up happens automatically via RAII (unique_ptr destructor)
   return true;
 }
 
 bool test_spi_device_management() noexcept {
   log_test_separator("SPI Device Management");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Use SPI2_HOST for device management test to isolate from other tests
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus with SPI2_HOST");
     return false;
   }
 
@@ -298,7 +328,7 @@ bool test_spi_device_management() noexcept {
     return false;
   }
 
-  // Test device removal
+  // Test device removal - remove middle device
   int remove_index = device_indices[1]; // Remove middle device
   if (!test_bus->RemoveDevice(remove_index)) {
     ESP_LOGE(TAG, "Failed to remove device");
@@ -311,12 +341,13 @@ bool test_spi_device_management() noexcept {
     return false;
   }
 
-  // Verify remaining devices are still accessible
-  BaseSpi* device_0 = test_bus->GetDevice(device_indices[0]);
-  BaseSpi* device_2 = test_bus->GetDevice(device_indices[2]);
+  // Verify remaining devices are still accessible using their current indices
+  // After removal, indices shift, so we need to check the new positions
+  BaseSpi* device_0 = test_bus->GetDevice(0); // First device is now at index 0
+  BaseSpi* device_1 = test_bus->GetDevice(1); // Second device is now at index 1
 
-  if (!device_0 || !device_2) {
-    ESP_LOGE(TAG, "Remaining devices not accessible");
+  if (!device_0 || !device_1) {
+    ESP_LOGE(TAG, "Remaining devices not accessible after removal");
     return false;
   }
 
@@ -327,9 +358,13 @@ bool test_spi_device_management() noexcept {
 bool test_spi_transfer_basic() noexcept {
   log_test_separator("SPI Basic Transfer Operations");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Use SPI2_HOST for transfer tests to isolate from other tests
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus with SPI2_HOST");
     return false;
   }
 
@@ -373,15 +408,21 @@ bool test_spi_transfer_basic() noexcept {
   ESP_LOGI(TAG, "Read-only transfer result: %s", HfSpiErrToString(result).data());
 
   ESP_LOGI(TAG, "[SUCCESS] Basic transfer tests passed");
+
+  // Clean up happens automatically via RAII (unique_ptr destructor)
   return true;
 }
 
 bool test_spi_transfer_modes() noexcept {
   log_test_separator("SPI Transfer Modes");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Use SPI2_HOST for transfer tests to isolate from other tests
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus with SPI2_HOST");
     return false;
   }
 
@@ -416,15 +457,21 @@ bool test_spi_transfer_modes() noexcept {
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Transfer mode tests passed");
+
+  // Clean up happens automatically via RAII (unique_ptr destructor)
   return true;
 }
 
 bool test_spi_transfer_sizes() noexcept {
   log_test_separator("SPI Transfer Size Tests");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -474,9 +521,10 @@ bool test_spi_dma_operations() noexcept {
   log_test_separator("SPI DMA Operations");
 
   // Test with DMA enabled
-  auto test_bus_dma = create_test_bus(FAST_SPEED, true);
-  if (!test_bus_dma) {
-    ESP_LOGE(TAG, "Failed to create DMA-enabled test bus");
+  auto bus_config_dma = create_test_bus_config(FAST_SPEED, true, SPI2_HOST);
+  auto test_bus_dma = std::make_unique<EspSpiBus>(bus_config_dma);
+  if (!test_bus_dma->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize DMA-enabled test bus");
     return false;
   }
 
@@ -515,12 +563,13 @@ bool test_spi_dma_operations() noexcept {
            HfSpiErrToString(result).data(), dma_time);
 
   test_bus_dma->Deinitialize();
-  delete test_bus_dma;
+  // Clean up happens automatically via RAII (unique_ptr destructor)
 
   // Compare with non-DMA transfer
-  auto test_bus_no_dma = create_test_bus(FAST_SPEED, false);
-  if (!test_bus_no_dma) {
-    ESP_LOGW(TAG, "Failed to create non-DMA test bus for comparison");
+  auto bus_config_no_dma = create_test_bus_config(FAST_SPEED, false, SPI2_HOST);
+  auto test_bus_no_dma = std::make_unique<EspSpiBus>(bus_config_no_dma);
+  if (!test_bus_no_dma->Initialize()) {
+    ESP_LOGW(TAG, "Failed to initialize non-DMA test bus for comparison");
     ESP_LOGI(TAG, "[SUCCESS] DMA operation tests passed");
     return true;
   }
@@ -545,7 +594,7 @@ bool test_spi_dma_operations() noexcept {
   }
 
   test_bus_no_dma->Deinitialize();
-  delete test_bus_no_dma;
+  // Clean up happens automatically via RAII (unique_ptr destructor)
 
   ESP_LOGI(TAG, "[SUCCESS] DMA operation tests passed");
   return true;
@@ -562,9 +611,10 @@ bool test_spi_clock_speeds() noexcept {
   };
 
   for (auto speed : test_speeds) {
-    auto test_bus = create_test_bus(speed);
-    if (!test_bus) {
-      ESP_LOGW(TAG, "Failed to create test bus with speed %lu Hz", speed);
+    auto bus_config = create_test_bus_config(speed, true, SPI2_HOST);
+    auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+    if (!test_bus->Initialize()) {
+      ESP_LOGW(TAG, "Failed to initialize test bus with speed %lu Hz", speed);
       continue;
     }
 
@@ -578,7 +628,7 @@ bool test_spi_clock_speeds() noexcept {
     if (device_index < 0) {
       ESP_LOGW(TAG, "Failed to create device with speed %lu Hz", speed);
       test_bus->Deinitialize();
-      delete test_bus;
+      // Clean up happens automatically via RAII (unique_ptr destructor)
       continue;
     }
 
@@ -601,7 +651,7 @@ bool test_spi_clock_speeds() noexcept {
     }
 
     test_bus->Deinitialize();
-    delete test_bus;
+    // Clean up happens automatically via RAII (unique_ptr destructor)
 
     ESP_LOGI(TAG, "Successfully tested clock speed: %lu Hz", speed);
   }
@@ -613,9 +663,13 @@ bool test_spi_clock_speeds() noexcept {
 bool test_spi_multi_device_operations() noexcept {
   log_test_separator("SPI Multi-Device Operations");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -666,9 +720,13 @@ bool test_spi_multi_device_operations() noexcept {
 bool test_spi_error_handling() noexcept {
   log_test_separator("SPI Error Handling");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -716,9 +774,13 @@ bool test_spi_error_handling() noexcept {
 bool test_spi_timeout_handling() noexcept {
   log_test_separator("SPI Timeout Handling");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -909,9 +971,13 @@ bool test_spi_iomux_optimization() noexcept {
 bool test_spi_thread_safety() noexcept {
   log_test_separator("SPI Thread Safety");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -951,9 +1017,13 @@ bool test_spi_thread_safety() noexcept {
 bool test_spi_performance_benchmarks() noexcept {
   log_test_separator("SPI Performance Benchmarks");
 
-  auto test_bus = create_test_bus(FAST_SPEED, true); // Use DMA for performance
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(FAST_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -1014,9 +1084,13 @@ bool test_spi_performance_benchmarks() noexcept {
 bool test_spi_edge_cases() noexcept {
   log_test_separator("SPI Edge Cases");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -1069,9 +1143,13 @@ bool test_spi_edge_cases() noexcept {
 bool test_spi_bus_acquisition() noexcept {
   log_test_separator("SPI Bus Acquisition");
 
-  auto test_bus = create_test_bus();
-  if (!test_bus) {
-    ESP_LOGE(TAG, "Failed to create test bus");
+  // Create test bus configuration
+  auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
+
+  // Create bus as unique_ptr directly in test function
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test bus");
     return false;
   }
 
@@ -1139,24 +1217,19 @@ bool test_spi_power_management() noexcept {
   return true;
 }
 
-// Helper function implementations
-EspSpiBus* create_test_bus(uint32_t speed, bool use_dma) noexcept {
+// Helper function to create test bus configuration
+hf_spi_bus_config_t create_test_bus_config(uint32_t speed, bool use_dma,
+                                           spi_host_device_t host) noexcept {
   hf_spi_bus_config_t bus_config = {};
   bus_config.mosi_pin = TEST_MOSI_PIN;
   bus_config.miso_pin = TEST_MISO_PIN;
   bus_config.sclk_pin = TEST_SCLK_PIN;
-  bus_config.host = SPI2_HOST;
+  bus_config.host = static_cast<hf_host_id_t>(host); // Use specified host for isolation
   bus_config.clock_speed_hz = speed;
   bus_config.dma_channel = use_dma ? 0 : 0xFF; // 0 = auto DMA, 0xFF = disabled
   bus_config.use_iomux = true;
   bus_config.timeout_ms = 1000;
-
-  auto bus = std::make_unique<EspSpiBus>(bus_config);
-  if (!bus->Initialize()) {
-    return nullptr;
-  }
-
-  return bus.release(); // Transfer ownership to caller
+  return bus_config;
 }
 
 bool verify_transfer_data(const uint8_t* tx_data, const uint8_t* rx_data, size_t length) noexcept {
@@ -1197,27 +1270,79 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Run all SPI tests
-  RUN_TEST(test_spi_bus_initialization);
-  RUN_TEST(test_spi_bus_deinitialization);
-  RUN_TEST(test_spi_configuration_validation);
-  RUN_TEST(test_spi_device_creation);
-  RUN_TEST(test_spi_device_management);
-  RUN_TEST(test_spi_transfer_basic);
-  RUN_TEST(test_spi_transfer_modes);
-  RUN_TEST(test_spi_transfer_sizes);
-  RUN_TEST(test_spi_dma_operations);
-  RUN_TEST(test_spi_clock_speeds);
-  RUN_TEST(test_spi_multi_device_operations);
-  RUN_TEST(test_spi_error_handling);
-  RUN_TEST(test_spi_timeout_handling);
-  RUN_TEST(test_spi_esp_specific_features);
-  RUN_TEST(test_spi_iomux_optimization);
-  RUN_TEST(test_spi_thread_safety);
-  RUN_TEST(test_spi_performance_benchmarks);
-  RUN_TEST(test_spi_edge_cases);
-  RUN_TEST(test_spi_bus_acquisition);
-  RUN_TEST(test_spi_power_management);
+  // Report test section configuration
+  print_test_section_status(TAG, "SPI");
+
+  // Run all SPI tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "SPI CORE TESTS",
+      // Core functionality tests
+      ESP_LOGI(TAG, "Running core SPI functionality tests...");
+      RUN_TEST_IN_TASK("bus_initialization", test_spi_bus_initialization, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after core tests
+      RUN_TEST_IN_TASK("bus_deinitialization", test_spi_bus_deinitialization, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after deinit test
+      RUN_TEST_IN_TASK("configuration_validation", test_spi_configuration_validation, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after config test
+      RUN_TEST_IN_TASK("device_creation", test_spi_device_creation, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after device creation test
+      RUN_TEST_IN_TASK("device_management", test_spi_device_management, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after device management test
+      );
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_TRANSFER_TESTS, "SPI TRANSFER TESTS",
+      // Transfer operation tests
+      ESP_LOGI(TAG, "Running SPI transfer tests...");
+      RUN_TEST_IN_TASK("transfer_basic", test_spi_transfer_basic, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after basic transfer test
+      RUN_TEST_IN_TASK("transfer_modes", test_spi_transfer_modes, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after modes test
+      RUN_TEST_IN_TASK("transfer_sizes", test_spi_transfer_sizes, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after sizes test
+      RUN_TEST_IN_TASK("dma_operations", test_spi_dma_operations, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after DMA test
+      );
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_PERFORMANCE_TESTS, "SPI PERFORMANCE TESTS",
+      // Performance and multi-device tests
+      ESP_LOGI(TAG, "Running SPI performance tests...");
+      RUN_TEST_IN_TASK("clock_speeds", test_spi_clock_speeds, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after clock speeds test
+      RUN_TEST_IN_TASK("multi_device_operations", test_spi_multi_device_operations, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after multi-device test
+      RUN_TEST_IN_TASK("performance_benchmarks", test_spi_performance_benchmarks, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after performance test
+      );
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "SPI ADVANCED TESTS",
+      // Advanced features tests
+      ESP_LOGI(TAG, "Running SPI advanced feature tests...");
+      RUN_TEST_IN_TASK("esp_specific_features", test_spi_esp_specific_features, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after ESP features test
+      RUN_TEST_IN_TASK("iomux_optimization", test_spi_iomux_optimization, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after IOMUX test
+      RUN_TEST_IN_TASK("thread_safety", test_spi_thread_safety, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after thread safety test
+      );
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_STRESS_TESTS, "SPI STRESS TESTS",
+      // Stress and error handling tests
+      ESP_LOGI(TAG, "Running SPI stress tests...");
+      RUN_TEST_IN_TASK("error_handling", test_spi_error_handling, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after error handling test
+      RUN_TEST_IN_TASK("timeout_handling", test_spi_timeout_handling, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after timeout test
+      RUN_TEST_IN_TASK("edge_cases", test_spi_edge_cases, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after edge cases test
+      RUN_TEST_IN_TASK("bus_acquisition", test_spi_bus_acquisition, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after bus acquisition test
+      RUN_TEST_IN_TASK("power_management", test_spi_power_management, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after power management test
+      );
 
   print_test_summary(g_test_results, "SPI", TAG);
 

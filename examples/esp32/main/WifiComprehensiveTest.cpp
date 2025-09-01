@@ -18,6 +18,16 @@ static const char* TAG = "WIFI_Test";
 
 static TestResults g_test_results;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core WiFi interface tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Data structures, enums, error codes
+static constexpr bool ENABLE_INTERFACE_TESTS = true;      // Interface validation, integration
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Performance, stress testing
+
 //==============================================================================
 // WIFI INTERFACE AND DATA STRUCTURE TESTS
 //==============================================================================
@@ -312,21 +322,31 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Data Structure Tests
-  ESP_LOGI(TAG, "\n=== DATA STRUCTURE TESTS ===");
-  RUN_TEST(test_wifi_data_structures);
-  RUN_TEST(test_wifi_enums);
-  RUN_TEST(test_wifi_error_codes);
+  // Report test section configuration
+  print_test_section_status(TAG, "WIFI");
 
-  // Interface Validation Tests
-  ESP_LOGI(TAG, "\n=== INTERFACE VALIDATION TESTS ===");
-  RUN_TEST(test_wifi_interface_validation);
-  RUN_TEST(test_wifi_integration_interface);
+  // Run all WiFi tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "WIFI CORE TESTS",
+      // Data Structure Tests
+      ESP_LOGI(TAG, "Running WiFi data structure tests...");
+      RUN_TEST_IN_TASK("data_structures", test_wifi_data_structures, 8192, 1);
+      RUN_TEST_IN_TASK("enums", test_wifi_enums, 8192, 1);
+      RUN_TEST_IN_TASK("error_codes", test_wifi_error_codes, 8192, 1););
 
-  // Performance and Stress Tests
-  ESP_LOGI(TAG, "\n=== PERFORMANCE AND STRESS TESTS ===");
-  RUN_TEST(test_wifi_performance_interface);
-  RUN_TEST(test_wifi_stress_interface);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_INTERFACE_TESTS, "WIFI INTERFACE TESTS",
+      // Interface Validation Tests
+      ESP_LOGI(TAG, "Running WiFi interface validation tests...");
+      RUN_TEST_IN_TASK("interface_validation", test_wifi_interface_validation, 8192, 1);
+      RUN_TEST_IN_TASK("integration_interface", test_wifi_integration_interface, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_PERFORMANCE_TESTS, "WIFI PERFORMANCE TESTS",
+      // Performance and Stress Tests
+      ESP_LOGI(TAG, "Running WiFi performance and stress tests...");
+      RUN_TEST_IN_TASK("performance_interface", test_wifi_performance_interface, 8192, 1);
+      RUN_TEST_IN_TASK("stress_interface", test_wifi_stress_interface, 8192, 1););
 
   // Print final summary
   print_test_summary(g_test_results, "WIFI", TAG);

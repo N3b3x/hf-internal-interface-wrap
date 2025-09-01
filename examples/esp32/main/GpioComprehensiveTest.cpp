@@ -59,6 +59,19 @@ static constexpr hf_pin_num_t STRESS_TEST_PIN = 23; // Stress testing (heavily t
 
 static TestResults g_test_results;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core GPIO functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Basic functionality, initialization, I/O operations
+static constexpr bool ENABLE_INTERRUPT_TESTS = true;      // Interrupt functionality and loopback
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Advanced features, drive capabilities, RTC
+static constexpr bool ENABLE_ESP_SPECIFIC_TESTS = true;   // ESP32-C6 specific features (glitch filters, sleep, hold)
+static constexpr bool ENABLE_ROBUSTNESS_TESTS = true;     // Error handling, validation, stress testing
+static constexpr bool ENABLE_SPECIALIZED_TESTS = true;    // Loopback operations, concurrent operations, diagnostics
+
 // Forward declarations of test functions
 bool test_basic_gpio_functionality() noexcept;
 bool test_gpio_initialization_and_configuration() noexcept;
@@ -1343,34 +1356,58 @@ extern "C" void app_main(void) {
 
   ESP_LOGI(TAG, "Starting comprehensive GPIO testing...\n");
 
-  // Core GPIO functionality tests
-  RUN_TEST(test_basic_gpio_functionality);
-  RUN_TEST(test_gpio_initialization_and_configuration);
-  RUN_TEST(test_gpio_input_output_operations);
-  RUN_TEST(test_gpio_pull_resistors);
+  // Report test section configuration
+  print_test_section_status(TAG, "GPIO");
 
-  // Advanced functionality tests
-  RUN_TEST(test_gpio_interrupt_functionality);
-  RUN_TEST(test_gpio_advanced_features);
-  RUN_TEST(test_gpio_drive_capabilities);
+  // Run all GPIO tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "GPIO CORE TESTS",
+      // Basic functionality tests
+      ESP_LOGI(TAG, "Running basic GPIO functionality tests...");
+      RUN_TEST_IN_TASK("basic_functionality", test_basic_gpio_functionality, 8192, 1);
+      RUN_TEST_IN_TASK("initialization_config", test_gpio_initialization_and_configuration, 8192, 1);
+      RUN_TEST_IN_TASK("input_output_ops", test_gpio_input_output_operations, 8192, 1);
+      RUN_TEST_IN_TASK("pull_resistors", test_gpio_pull_resistors, 8192, 1););
 
-  // ESP32-C6 specific tests
-  RUN_TEST(test_gpio_rtc_functionality);
-  RUN_TEST(test_gpio_glitch_filters);
-  RUN_TEST(test_gpio_sleep_and_wakeup);
-  RUN_TEST(test_gpio_hold_functionality);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_INTERRUPT_TESTS, "GPIO INTERRUPT TESTS",
+      // Interrupt functionality tests
+      ESP_LOGI(TAG, "Running interrupt functionality tests...");
+      RUN_TEST_IN_TASK("interrupt_functionality", test_gpio_interrupt_functionality, 8192, 1);
+      RUN_TEST_IN_TASK("interrupt_loopback", test_gpio_interrupt_loopback, 8192, 1););
 
-  // Robustness and performance tests
-  RUN_TEST(test_gpio_error_handling);
-  RUN_TEST(test_gpio_pin_validation);
-  RUN_TEST(test_gpio_stress_testing);
-  RUN_TEST(test_gpio_concurrent_operations);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "GPIO ADVANCED TESTS",
+      // Advanced features tests
+      ESP_LOGI(TAG, "Running advanced feature tests...");
+      RUN_TEST_IN_TASK("advanced_features", test_gpio_advanced_features, 8192, 1);
+      RUN_TEST_IN_TASK("drive_capabilities", test_gpio_drive_capabilities, 8192, 1););
 
-  // Specialized tests
-  RUN_TEST(test_gpio_loopback_operations);
-  RUN_TEST(test_gpio_interrupt_loopback);
-  RUN_TEST(test_gpio_diagnostics_and_statistics);
-  RUN_TEST(test_gpio_power_consumption);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ESP_SPECIFIC_TESTS, "GPIO ESP-SPECIFIC TESTS",
+      // ESP32-C6 specific tests
+      ESP_LOGI(TAG, "Running ESP32-C6 specific tests...");
+      RUN_TEST_IN_TASK("rtc_functionality", test_gpio_rtc_functionality, 8192, 1);
+      RUN_TEST_IN_TASK("glitch_filters", test_gpio_glitch_filters, 8192, 1);
+      RUN_TEST_IN_TASK("sleep_wakeup", test_gpio_sleep_and_wakeup, 8192, 1);
+      RUN_TEST_IN_TASK("hold_functionality", test_gpio_hold_functionality, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ROBUSTNESS_TESTS, "GPIO ROBUSTNESS TESTS",
+      // Robustness and performance tests
+      ESP_LOGI(TAG, "Running robustness and performance tests...");
+      RUN_TEST_IN_TASK("error_handling", test_gpio_error_handling, 8192, 1);
+      RUN_TEST_IN_TASK("pin_validation", test_gpio_pin_validation, 8192, 1);
+      RUN_TEST_IN_TASK("stress_testing", test_gpio_stress_testing, 8192, 1);
+      RUN_TEST_IN_TASK("concurrent_operations", test_gpio_concurrent_operations, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_SPECIALIZED_TESTS, "GPIO SPECIALIZED TESTS",
+      // Specialized tests
+      ESP_LOGI(TAG, "Running specialized tests...");
+      RUN_TEST_IN_TASK("loopback_operations", test_gpio_loopback_operations, 8192, 1);
+      RUN_TEST_IN_TASK("diagnostics_statistics", test_gpio_diagnostics_and_statistics, 8192, 1);
+      RUN_TEST_IN_TASK("power_consumption", test_gpio_power_consumption, 8192, 1););
 
   // Print final results
   print_test_summary(g_test_results, "GPIO", TAG);

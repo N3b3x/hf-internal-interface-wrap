@@ -40,6 +40,17 @@ struct CallbackTestData {
 
 static CallbackTestData g_callback_data;
 
+//=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core timer functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, start/stop, period validation
+static constexpr bool ENABLE_CALLBACK_TESTS = true;       // Callback functionality and validation
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, information, error conditions
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Stress testing, resource management
+
 // Precision timer callback for testing
 static void precision_timer_callback(void* user_data) {
   uint64_t current_time = esp_timer_get_time();
@@ -774,16 +785,38 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "Starting comprehensive timer tests...");
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Execute all test suites
-  RUN_TEST(test_timer_initialization);
-  RUN_TEST(test_timer_start_stop);
-  RUN_TEST(test_timer_period_validation);
-  RUN_TEST(test_timer_callbacks);
-  RUN_TEST(test_timer_statistics);
-  RUN_TEST(test_timer_error_conditions);
-  RUN_TEST(test_timer_stress);
-  RUN_TEST(test_timer_information);
-  RUN_TEST(test_timer_resource_management);
+  // Report test section configuration
+  print_test_section_status(TAG, "TIMER");
+
+  // Run all timer tests based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "TIMER CORE TESTS",
+      // Core functionality tests
+      ESP_LOGI(TAG, "Running core timer functionality tests...");
+      RUN_TEST_IN_TASK("initialization", test_timer_initialization, 8192, 1);
+      RUN_TEST_IN_TASK("start_stop", test_timer_start_stop, 8192, 1);
+      RUN_TEST_IN_TASK("period_validation", test_timer_period_validation, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CALLBACK_TESTS, "TIMER CALLBACK TESTS",
+      // Callback functionality tests
+      ESP_LOGI(TAG, "Running timer callback tests...");
+      RUN_TEST_IN_TASK("callbacks", test_timer_callbacks, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_DIAGNOSTIC_TESTS, "TIMER DIAGNOSTIC TESTS",
+      // Diagnostic and information tests
+      ESP_LOGI(TAG, "Running timer diagnostic tests...");
+      RUN_TEST_IN_TASK("statistics", test_timer_statistics, 8192, 1);
+      RUN_TEST_IN_TASK("error_conditions", test_timer_error_conditions, 8192, 1);
+      RUN_TEST_IN_TASK("information", test_timer_information, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_STRESS_TESTS, "TIMER STRESS TESTS",
+      // Stress and resource management tests
+      ESP_LOGI(TAG, "Running timer stress tests...");
+      RUN_TEST_IN_TASK("stress", test_timer_stress, 8192, 1);
+      RUN_TEST_IN_TASK("resource_management", test_timer_resource_management, 8192, 1););
 
   // Print comprehensive test results
   ESP_LOGI(TAG, "");

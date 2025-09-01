@@ -80,6 +80,18 @@ static std::atomic<uint32_t> errors_detected{0};
 static hf_can_message_t last_received_message{};
 
 //=============================================================================
+// TEST SECTION CONFIGURATION
+//=============================================================================
+// Enable/disable specific test categories by setting to true or false
+
+// Core CAN functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, self-test, message transmission
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Acceptance filtering, advanced timing
+static constexpr bool ENABLE_ERROR_TESTS = true;          // Error handling, bus recovery
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Batch transmission, high throughput
+static constexpr bool ENABLE_TRANSCEIVER_TESTS = true;    // SN65 transceiver integration, signal quality
+
+//=============================================================================
 // TEST HELPER FUNCTIONS
 //=============================================================================
 
@@ -869,27 +881,45 @@ extern "C" void app_main(void) {
     return;
   }
 
-  // Run comprehensive test suite
-  ESP_LOGI(TAG, "\n=== BASIC FUNCTIONALITY TESTS ===");
-  RUN_TEST(test_can_initialization);
-  RUN_TEST(test_can_self_test_mode);
-  RUN_TEST(test_can_message_transmission);
+  // Report test section configuration
+  print_test_section_status(TAG, "CAN");
 
-  ESP_LOGI(TAG, "\n=== ADVANCED FEATURE TESTS ===");
-  RUN_TEST(test_can_acceptance_filtering);
-  RUN_TEST(test_can_advanced_timing);
+  // Run comprehensive test suite based on configuration
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_CORE_TESTS, "CAN CORE TESTS",
+      // Basic functionality tests
+      ESP_LOGI(TAG, "Running basic CAN functionality tests...");
+      RUN_TEST_IN_TASK("initialization", test_can_initialization, 8192, 1);
+      RUN_TEST_IN_TASK("self_test_mode", test_can_self_test_mode, 8192, 1);
+      RUN_TEST_IN_TASK("message_transmission", test_can_message_transmission, 8192, 1););
 
-  ESP_LOGI(TAG, "\n=== ERROR HANDLING TESTS ===");
-  RUN_TEST(test_can_error_handling);
-  RUN_TEST(test_can_bus_recovery);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ADVANCED_TESTS, "CAN ADVANCED TESTS",
+      // Advanced feature tests
+      ESP_LOGI(TAG, "Running advanced CAN feature tests...");
+      RUN_TEST_IN_TASK("acceptance_filtering", test_can_acceptance_filtering, 8192, 1);
+      RUN_TEST_IN_TASK("advanced_timing", test_can_advanced_timing, 8192, 1););
 
-  ESP_LOGI(TAG, "\n=== PERFORMANCE TESTS ===");
-  RUN_TEST(test_can_batch_transmission);
-  RUN_TEST(test_can_high_throughput);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_ERROR_TESTS, "CAN ERROR TESTS",
+      // Error handling tests
+      ESP_LOGI(TAG, "Running CAN error handling tests...");
+      RUN_TEST_IN_TASK("error_handling", test_can_error_handling, 8192, 1);
+      RUN_TEST_IN_TASK("bus_recovery", test_can_bus_recovery, 8192, 1););
 
-  ESP_LOGI(TAG, "\n=== SN65 TRANSCEIVER TESTS ===");
-  RUN_TEST(test_sn65_transceiver_integration);
-  RUN_TEST(test_can_signal_quality);
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_PERFORMANCE_TESTS, "CAN PERFORMANCE TESTS",
+      // Performance tests
+      ESP_LOGI(TAG, "Running CAN performance tests...");
+      RUN_TEST_IN_TASK("batch_transmission", test_can_batch_transmission, 8192, 1);
+      RUN_TEST_IN_TASK("high_throughput", test_can_high_throughput, 8192, 1););
+
+  RUN_TEST_SECTION_IF_ENABLED(
+      ENABLE_TRANSCEIVER_TESTS, "CAN TRANSCEIVER TESTS",
+      // SN65 transceiver tests
+      ESP_LOGI(TAG, "Running SN65 transceiver tests...");
+      RUN_TEST_IN_TASK("sn65_transceiver_integration", test_sn65_transceiver_integration, 8192, 1);
+      RUN_TEST_IN_TASK("can_signal_quality", test_can_signal_quality, 8192, 1););
 
   print_test_summary(g_test_results, "ESP32-C6 CAN (ESP-IDF v5.5 + SN65)", TAG);
 

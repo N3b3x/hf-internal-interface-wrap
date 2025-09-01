@@ -29,6 +29,148 @@ extern "C" {
 }
 #endif
 
+// Include the full EspGpio header for GPIO14 functionality
+#include "mcu/esp32/EspGpio.h"
+
+// Include ESP-IDF headers for GPIO operations
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#ifdef __cplusplus
+}
+#endif
+
+// Include GPIO types for proper functionality
+#include "HardwareTypes.h"
+
+//=============================================================================
+// GPIO14 TEST PROGRESSION INDICATOR MANAGEMENT
+//=============================================================================
+// GPIO14 test progression indicator - toggles between HIGH/LOW each time a test completes
+// providing visual feedback for test progression on oscilloscope/logic analyzer
+
+// Global GPIO14 test indicator instance
+static EspGpio* g_test_progress_gpio = nullptr;
+static bool g_test_progress_state = false;
+static constexpr int TEST_PROGRESS_PIN = 14;
+
+// GPIO14 test indicator functions implemented inline in this header
+
+/**
+ * @brief Initialize the test progression indicator on GPIO14
+ * @return true if successful, false otherwise
+ * @note This function is automatically called by the test framework
+ */
+inline bool init_test_progress_indicator() noexcept {
+  if (g_test_progress_gpio) {
+    return true; // Already initialized
+  }
+
+  // Create GPIO14 instance for test progression indicator
+  g_test_progress_gpio = new EspGpio(
+      TEST_PROGRESS_PIN,
+      hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+      hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+      hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+      hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN
+  );
+
+  if (!g_test_progress_gpio) {
+    return false; // Failed to allocate
+  }
+
+  // Initialize the GPIO pin
+  if (!g_test_progress_gpio->EnsureInitialized()) {
+    delete g_test_progress_gpio;
+    g_test_progress_gpio = nullptr;
+    return false;
+  }
+
+  // Start with GPIO14 LOW
+  g_test_progress_gpio->SetInactive();
+  g_test_progress_state = false;
+
+  return true;
+}
+
+/**
+ * @brief Flip the test progression indicator to show next test
+ * @note This function is automatically called by the test framework macros
+ */
+inline void flip_test_progress_indicator() noexcept {
+  if (!g_test_progress_gpio) {
+    return; // Not initialized
+  }
+
+  // Toggle GPIO14 state
+  g_test_progress_state = !g_test_progress_state;
+  
+  if (g_test_progress_state) {
+    g_test_progress_gpio->SetActive();   // Set HIGH
+  } else {
+    g_test_progress_gpio->SetInactive(); // Set LOW
+  }
+
+  // Small delay for visual effect
+  vTaskDelay(pdMS_TO_TICKS(50));
+}
+
+/**
+ * @brief Cleanup the test progression indicator GPIO
+ * @note This function is automatically called by the test framework
+ */
+inline void cleanup_test_progress_indicator() noexcept {
+  if (g_test_progress_gpio) {
+    // Ensure GPIO14 is LOW before cleanup
+    g_test_progress_gpio->SetInactive();
+    
+    // Delete the GPIO instance
+    delete g_test_progress_gpio;
+    g_test_progress_gpio = nullptr;
+    g_test_progress_state = false;
+  }
+}
+
+/**
+ * @brief Output a specific pattern on GPIO14 for section identification
+ * @param pattern Pattern to output (number of blinks)
+ * @param blink_count Number of blinks to perform
+ * @note This function is automatically called by the test framework macros
+ */
+inline void output_section_pattern(uint8_t pattern, uint8_t blink_count) noexcept {
+  if (!g_test_progress_gpio) {
+    return; // Not initialized
+  }
+
+  // Convert pattern to binary and blink accordingly
+  for (uint8_t i = 0; i < blink_count; ++i) {
+    // Blink pattern times
+    for (uint8_t j = 0; j < pattern; ++j) {
+      g_test_progress_gpio->SetActive();   // HIGH
+      vTaskDelay(pdMS_TO_TICKS(100));     // 100ms ON
+      g_test_progress_gpio->SetInactive(); // LOW
+      vTaskDelay(pdMS_TO_TICKS(100));     // 100ms OFF
+    }
+    
+    // Pause between pattern repetitions
+    if (i < blink_count - 1) {
+      vTaskDelay(pdMS_TO_TICKS(500)); // 500ms pause
+    }
+  }
+}
+
+/**
+ * @brief Automatically initialize GPIO14 test indicator if not already done
+ * @note This function is called automatically by the test framework
+ */
+inline void ensure_gpio14_initialized() noexcept {
+  if (!g_test_progress_gpio) {
+    init_test_progress_indicator();
+  }
+}
+
 /**
  * @brief Test execution tracking and results accumulation
  */
@@ -88,6 +230,7 @@ struct TestResults {
  */
 #define RUN_TEST(test_func)                                                                       \
   do {                                                                                            \
+    ensure_gpio14_initialized();                                                                  \
     ESP_LOGI(TAG,                                                                                 \
              "\n"                                                                                 \
              "╔══════════════════════════════════════════════════════════════════════════════╗\n" \
@@ -158,6 +301,7 @@ inline void test_task_trampoline(void* param) {
  */
 #define RUN_TEST_IN_TASK(name, func, stack_size_bytes, priority)                                  \
   do {                                                                                            \
+    ensure_gpio14_initialized();                                                                  \
     static TestTaskContext ctx;                                                                   \
     ctx.test_name = name;                                                                         \
     ctx.test_func = func;                                                                         \
@@ -198,6 +342,7 @@ inline void test_task_trampoline(void* param) {
  */
 inline void print_test_summary(const TestResults& test_results, const char* test_suite_name,
                                const char* tag) noexcept {
+  ensure_gpio14_initialized();
   ESP_LOGI(tag, "\n=== %s TEST SUMMARY ===", test_suite_name);
   ESP_LOGI(tag, "Total: %d, Passed: %d, Failed: %d, Success: %.2f%%, Time: %.2f ms",
            test_results.total_tests, test_results.passed_tests, test_results.failed_tests,
@@ -216,6 +361,7 @@ inline void print_test_summary(const TestResults& test_results, const char* test
  * @param test_suite_name Name of the test suite for logging
  */
 inline void print_test_section_status(const char* tag, const char* test_suite_name) noexcept {
+  ensure_gpio14_initialized();
   ESP_LOGI(tag, "\n");
   ESP_LOGI(tag, "╔══════════════════════════════════════════════════════════════════════════════╗");
   ESP_LOGI(tag, "║                    %s TEST SECTION CONFIGURATION                             ",
@@ -246,6 +392,7 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
 // Macro to conditionally run a test section
 #define RUN_TEST_SECTION_IF_ENABLED(define_name, section_name, ...) \
   do {                                                              \
+    ensure_gpio14_initialized();                                    \
     if (define_name) {                                              \
       ESP_LOGI(TAG, "\n=== %s ===", section_name);                  \
       __VA_ARGS__                                                   \
@@ -258,6 +405,7 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
 // Macro to conditionally run a single test
 #define RUN_SINGLE_TEST_IF_ENABLED(define_name, test_name, test_func, stack_size, priority) \
   do {                                                                                      \
+    ensure_gpio14_initialized();                                                            \
     if (define_name) {                                                                      \
       RUN_TEST_IN_TASK(test_name, test_func, stack_size, priority);                         \
       flip_test_progress_indicator();                                                       \
@@ -273,6 +421,7 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
 // Macro to conditionally run a test section with custom progress indicator
 #define RUN_TEST_SECTION_IF_ENABLED_WITH_PROGRESS(define_name, section_name, progress_func, ...) \
   do {                                                                                           \
+    ensure_gpio14_initialized();                                                                 \
     if (define_name) {                                                                           \
       ESP_LOGI(TAG, "\n=== %s ===", section_name);                                               \
       __VA_ARGS__                                                                                \
@@ -288,6 +437,21 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
 #define RUN_TEST_SECTION_IF_ENABLED_AUTO_PROGRESS(define_name, section_name, ...) \
   RUN_TEST_SECTION_IF_ENABLED_WITH_PROGRESS(define_name, section_name,            \
                                             flip_test_progress_indicator, __VA_ARGS__)
+
+// Macro to conditionally run a test section with section-specific pattern
+#define RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(define_name, section_name, pattern, blink_count, ...) \
+  do {                                                                                               \
+    ensure_gpio14_initialized();                                                                     \
+    if (define_name) {                                                                               \
+      ESP_LOGI(TAG, "\n=== %s ===", section_name);                                                   \
+      output_section_pattern(pattern, blink_count); /* Section start pattern */                      \
+      __VA_ARGS__                                                                                    \
+      output_section_pattern(pattern | 0x80, blink_count); /* Section end pattern (MSB set) */      \
+    } else {                                                                                         \
+      ESP_LOGI(TAG, "\n=== %s ===", section_name);                                                   \
+      ESP_LOGI(TAG, "Section disabled by configuration");                                            \
+    }                                                                                                \
+  } while (0)
 
 /**
  * @brief Test section configuration template
@@ -331,4 +495,8 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
  * RUN_TEST_SECTION_IF_ENABLED(ENABLE_CORE_FEATURE_TESTS, "CORE FEATURE TESTS",
  *   RUN_TEST_IN_TASK("test2", test_function2, 8192, 1);
  * );
+ * 
+ * // GPIO14 test indicator is automatically initialized by the test framework
+ * // You can add flip_test_progress_indicator() calls between tests if desired
+ * // Example: flip_test_progress_indicator(); // Toggle GPIO14 after each test
  */
