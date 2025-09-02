@@ -65,12 +65,15 @@ static TestResults g_test_results;
 // Enable/disable specific test categories by setting to true or false
 
 // Core GPIO functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Basic functionality, initialization, I/O operations
-static constexpr bool ENABLE_INTERRUPT_TESTS = true;      // Interrupt functionality and loopback
-static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Advanced features, drive capabilities, RTC
-static constexpr bool ENABLE_ESP_SPECIFIC_TESTS = true;   // ESP32-C6 specific features (glitch filters, sleep, hold)
-static constexpr bool ENABLE_ROBUSTNESS_TESTS = true;     // Error handling, validation, stress testing
-static constexpr bool ENABLE_SPECIALIZED_TESTS = true;    // Loopback operations, concurrent operations, diagnostics
+static constexpr bool ENABLE_CORE_TESTS =
+    true; // Basic functionality, initialization, I/O operations
+static constexpr bool ENABLE_INTERRUPT_TESTS = true; // Interrupt functionality and loopback
+static constexpr bool ENABLE_ADVANCED_TESTS = true;  // Advanced features, drive capabilities, RTC
+static constexpr bool ENABLE_ESP_SPECIFIC_TESTS =
+    true; // ESP32-C6 specific features (glitch filters, sleep, hold)
+static constexpr bool ENABLE_ROBUSTNESS_TESTS = true; // Error handling, validation, stress testing
+static constexpr bool ENABLE_SPECIALIZED_TESTS =
+    true; // Loopback operations, concurrent operations, diagnostics
 
 // Forward declarations of test functions
 bool test_basic_gpio_functionality() noexcept;
@@ -1365,7 +1368,8 @@ extern "C" void app_main(void) {
       // Basic functionality tests
       ESP_LOGI(TAG, "Running basic GPIO functionality tests...");
       RUN_TEST_IN_TASK("basic_functionality", test_basic_gpio_functionality, 8192, 1);
-      RUN_TEST_IN_TASK("initialization_config", test_gpio_initialization_and_configuration, 8192, 1);
+      RUN_TEST_IN_TASK("initialization_config", test_gpio_initialization_and_configuration, 8192,
+                       1);
       RUN_TEST_IN_TASK("input_output_ops", test_gpio_input_output_operations, 8192, 1);
       RUN_TEST_IN_TASK("pull_resistors", test_gpio_pull_resistors, 8192, 1););
 

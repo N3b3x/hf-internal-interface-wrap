@@ -85,11 +85,12 @@ static hf_can_message_t last_received_message{};
 // Enable/disable specific test categories by setting to true or false
 
 // Core CAN functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, self-test, message transmission
-static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Acceptance filtering, advanced timing
-static constexpr bool ENABLE_ERROR_TESTS = true;          // Error handling, bus recovery
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Batch transmission, high throughput
-static constexpr bool ENABLE_TRANSCEIVER_TESTS = true;    // SN65 transceiver integration, signal quality
+static constexpr bool ENABLE_CORE_TESTS = true; // Initialization, self-test, message transmission
+static constexpr bool ENABLE_ADVANCED_TESTS = true;    // Acceptance filtering, advanced timing
+static constexpr bool ENABLE_ERROR_TESTS = true;       // Error handling, bus recovery
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true; // Batch transmission, high throughput
+static constexpr bool ENABLE_TRANSCEIVER_TESTS =
+    true; // SN65 transceiver integration, signal quality
 
 //=============================================================================
 // TEST HELPER FUNCTIONS
@@ -900,12 +901,11 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("acceptance_filtering", test_can_acceptance_filtering, 8192, 1);
       RUN_TEST_IN_TASK("advanced_timing", test_can_advanced_timing, 8192, 1););
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_ERROR_TESTS, "CAN ERROR TESTS",
-      // Error handling tests
-      ESP_LOGI(TAG, "Running CAN error handling tests...");
-      RUN_TEST_IN_TASK("error_handling", test_can_error_handling, 8192, 1);
-      RUN_TEST_IN_TASK("bus_recovery", test_can_bus_recovery, 8192, 1););
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_ERROR_TESTS, "CAN ERROR TESTS",
+                              // Error handling tests
+                              ESP_LOGI(TAG, "Running CAN error handling tests...");
+                              RUN_TEST_IN_TASK("error_handling", test_can_error_handling, 8192, 1);
+                              RUN_TEST_IN_TASK("bus_recovery", test_can_bus_recovery, 8192, 1););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_PERFORMANCE_TESTS, "CAN PERFORMANCE TESTS",

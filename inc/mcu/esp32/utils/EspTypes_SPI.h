@@ -232,19 +232,19 @@ struct hf_spi_device_config_t {
         post_cb(nullptr), user_ctx(nullptr),
         clock_source(static_cast<hf_spi_clock_source_t>(SPI_CLK_SRC_DEFAULT)),
 #ifdef HF_MCU_ESP32C6
-        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_0)) {
+        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_0)){
 #else
         sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_1)) {
 #endif
-  }
+        }
 };
 
 // ESP-IDF SPI device flags (matching ESP-IDF example patterns)
-#define HF_SPI_DEVICE_HALFDUPLEX     (1 << 0)  // Half-duplex mode
-#define HF_SPI_DEVICE_POSITIVE_CS    (1 << 1)  // CS active high
-#define HF_SPI_DEVICE_CLK_AS_CS      (1 << 2)  // Clock idle state
-#define HF_SPI_DEVICE_NO_DUMMY       (1 << 3)  // No dummy bits
-#define HF_SPI_DEVICE_DDRCLK         (1 << 4)  // DDR clock mode
+#define HF_SPI_DEVICE_HALFDUPLEX (1 << 0)  // Half-duplex mode
+#define HF_SPI_DEVICE_POSITIVE_CS (1 << 1) // CS active high
+#define HF_SPI_DEVICE_CLK_AS_CS (1 << 2)   // Clock idle state
+#define HF_SPI_DEVICE_NO_DUMMY (1 << 3)    // No dummy bits
+#define HF_SPI_DEVICE_DDRCLK (1 << 4)      // DDR clock mode
 
 //==============================================================================
 // END OF ESPSPI TYPES - MINIMAL AND ESSENTIAL ONLY

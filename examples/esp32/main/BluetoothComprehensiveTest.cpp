@@ -33,9 +33,9 @@ static EspBluetooth bluetooth_instance;
 // Enable/disable specific test categories by setting to true or false
 
 // Core Bluetooth functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, basic operations
-static constexpr bool ENABLE_SCANNING_TESTS = true;       // Scanning, device discovery
-static constexpr bool ENABLE_MANAGEMENT_TESTS = true;     // State management, cleanup
+static constexpr bool ENABLE_CORE_TESTS = true;       // Initialization, basic operations
+static constexpr bool ENABLE_SCANNING_TESTS = true;   // Scanning, device discovery
+static constexpr bool ENABLE_MANAGEMENT_TESTS = true; // State management, cleanup
 
 // Event callback function for Bluetooth events
 void bluetooth_event_callback(hf_bluetooth_event_t event, void* event_data) noexcept {
@@ -334,11 +334,10 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("initialization", test_bluetooth_initialization, 8192, 1);
       RUN_TEST_IN_TASK("basic_operations", test_bluetooth_basic_operations, 8192, 1););
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_SCANNING_TESTS, "BLUETOOTH SCANNING TESTS",
-      // Scanning tests
-      ESP_LOGI(TAG, "Running Bluetooth scanning tests...");
-      RUN_TEST_IN_TASK("scanning", test_bluetooth_scanning, 8192, 1););
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_SCANNING_TESTS, "BLUETOOTH SCANNING TESTS",
+                              // Scanning tests
+                              ESP_LOGI(TAG, "Running Bluetooth scanning tests...");
+                              RUN_TEST_IN_TASK("scanning", test_bluetooth_scanning, 8192, 1););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_MANAGEMENT_TESTS, "BLUETOOTH MANAGEMENT TESTS",

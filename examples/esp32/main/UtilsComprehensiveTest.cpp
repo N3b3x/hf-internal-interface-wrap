@@ -40,13 +40,13 @@ static TestResults g_test_results;
 // Enable/disable specific test categories by setting to true or false
 
 // Core utilities functionality tests
-static constexpr bool ENABLE_ASCII_ART_TESTS = true;      // AsciiArtGenerator functionality
-static constexpr bool ENABLE_RTOS_MUTEX_TESTS = true;     // RtosMutex basic functionality
-static constexpr bool ENABLE_SHARED_MUTEX_TESTS = true;   // RtosSharedMutex functionality
-static constexpr bool ENABLE_CONCURRENT_TESTS = true;      // Concurrent access testing
-static constexpr bool ENABLE_EDGE_CASE_TESTS = true;      // Edge cases and error conditions
-static constexpr bool ENABLE_TIME_UTILITY_TESTS = true;   // RtosTime utility functions
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;     // Performance and stress testing
+static constexpr bool ENABLE_ASCII_ART_TESTS = true;    // AsciiArtGenerator functionality
+static constexpr bool ENABLE_RTOS_MUTEX_TESTS = true;   // RtosMutex basic functionality
+static constexpr bool ENABLE_SHARED_MUTEX_TESTS = true; // RtosSharedMutex functionality
+static constexpr bool ENABLE_CONCURRENT_TESTS = true;   // Concurrent access testing
+static constexpr bool ENABLE_EDGE_CASE_TESTS = true;    // Edge cases and error conditions
+static constexpr bool ENABLE_TIME_UTILITY_TESTS = true; // RtosTime utility functions
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;  // Performance and stress testing
 
 //==============================================================================
 // ASCII ART GENERATOR TESTS
@@ -1151,9 +1151,10 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("empty_string", test_ascii_art_empty_string, 8192, 1);
       RUN_TEST_IN_TASK("mixed_case", test_ascii_art_mixed_case, 8192, 1);
       RUN_TEST_IN_TASK("special_characters", test_ascii_art_special_characters, 8192, 1);
-      RUN_TEST_IN_TASK("long_text", test_ascii_art_long_text, 8192, 1);
-      RUN_TEST_IN_TASK("custom_character_management", test_ascii_art_custom_character_management, 8192, 1);
-      RUN_TEST_IN_TASK("supported_characters_list", test_ascii_art_supported_characters_list, 8192, 1););
+      RUN_TEST_IN_TASK("long_text", test_ascii_art_long_text, 8192, 1); RUN_TEST_IN_TASK(
+          "custom_character_management", test_ascii_art_custom_character_management, 8192, 1);
+      RUN_TEST_IN_TASK("supported_characters_list", test_ascii_art_supported_characters_list, 8192,
+                       1););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_RTOS_MUTEX_TESTS, "UTILS RTOS MUTEX TESTS",
@@ -1188,7 +1189,8 @@ extern "C" void app_main(void) {
       // Edge Cases and Error Condition Tests
       ESP_LOGI(TAG, "Running edge case and error condition tests...");
       RUN_TEST_IN_TASK("mutex_move_semantics", test_rtos_mutex_move_semantics, 8192, 1);
-      RUN_TEST_IN_TASK("shared_mutex_move_semantics", test_rtos_shared_mutex_move_semantics, 8192, 1);
+      RUN_TEST_IN_TASK("shared_mutex_move_semantics", test_rtos_shared_mutex_move_semantics, 8192,
+                       1);
       RUN_TEST_IN_TASK("mutex_edge_cases", test_rtos_mutex_edge_cases, 8192, 1);
       RUN_TEST_IN_TASK("lock_guard_edge_cases", test_rtos_lock_guard_edge_cases, 8192, 1););
 
@@ -1205,8 +1207,10 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("ascii_art_performance", test_ascii_art_performance, 8192, 1);
       RUN_TEST_IN_TASK("ascii_art_stress", test_ascii_art_stress, 8192, 1);
       RUN_TEST_IN_TASK("rtos_mutex_performance", test_rtos_mutex_performance, 8192, 1);
-      RUN_TEST_IN_TASK("rtos_mutex_recursive_performance", test_rtos_mutex_recursive_performance, 8192, 1);
-      RUN_TEST_IN_TASK("rtos_shared_mutex_performance", test_rtos_shared_mutex_performance, 8192, 1););
+      RUN_TEST_IN_TASK("rtos_mutex_recursive_performance", test_rtos_mutex_recursive_performance,
+                       8192, 1);
+      RUN_TEST_IN_TASK("rtos_shared_mutex_performance", test_rtos_shared_mutex_performance, 8192,
+                       1););
 
   // Print final summary
   print_test_summary(g_test_results, "UTILS", TAG);

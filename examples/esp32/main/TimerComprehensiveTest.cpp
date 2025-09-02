@@ -46,10 +46,10 @@ static CallbackTestData g_callback_data;
 // Enable/disable specific test categories by setting to true or false
 
 // Core timer functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, start/stop, period validation
-static constexpr bool ENABLE_CALLBACK_TESTS = true;       // Callback functionality and validation
-static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, information, error conditions
-static constexpr bool ENABLE_STRESS_TESTS = true;         // Stress testing, resource management
+static constexpr bool ENABLE_CORE_TESTS = true;     // Initialization, start/stop, period validation
+static constexpr bool ENABLE_CALLBACK_TESTS = true; // Callback functionality and validation
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true; // Statistics, information, error conditions
+static constexpr bool ENABLE_STRESS_TESTS = true;     // Stress testing, resource management
 
 // Precision timer callback for testing
 static void precision_timer_callback(void* user_data) {
@@ -797,11 +797,10 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("start_stop", test_timer_start_stop, 8192, 1);
       RUN_TEST_IN_TASK("period_validation", test_timer_period_validation, 8192, 1););
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_CALLBACK_TESTS, "TIMER CALLBACK TESTS",
-      // Callback functionality tests
-      ESP_LOGI(TAG, "Running timer callback tests...");
-      RUN_TEST_IN_TASK("callbacks", test_timer_callbacks, 8192, 1););
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_CALLBACK_TESTS, "TIMER CALLBACK TESTS",
+                              // Callback functionality tests
+                              ESP_LOGI(TAG, "Running timer callback tests...");
+                              RUN_TEST_IN_TASK("callbacks", test_timer_callbacks, 8192, 1););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_DIAGNOSTIC_TESTS, "TIMER DIAGNOSTIC TESTS",

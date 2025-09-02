@@ -67,10 +67,13 @@ static volatile uint64_t last_monitor_event_time = 0;
 // Enable/disable specific test categories by setting to true or false
 
 // Core ADC functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Hardware validation, initialization, configuration
-static constexpr bool ENABLE_CONVERSION_TESTS = true;     // Basic conversion, calibration, multiple channels
-static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Averaging, continuous mode, monitor thresholds
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Error handling, statistics, performance
+static constexpr bool ENABLE_CORE_TESTS =
+    true; // Hardware validation, initialization, configuration
+static constexpr bool ENABLE_CONVERSION_TESTS =
+    true; // Basic conversion, calibration, multiple channels
+static constexpr bool ENABLE_ADVANCED_TESTS =
+    true; // Averaging, continuous mode, monitor thresholds
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true; // Error handling, statistics, performance
 
 // Forward declarations
 bool test_hardware_validation() noexcept;
@@ -1201,13 +1204,12 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("continuous_mode", test_adc_continuous_mode, 8192, 1);
       RUN_TEST_IN_TASK("monitor_thresholds", test_adc_monitor_thresholds, 8192, 1););
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_PERFORMANCE_TESTS, "ADC PERFORMANCE TESTS",
-      // Performance and error handling tests
-      ESP_LOGI(TAG, "Running performance and error handling tests...");
-      RUN_TEST_IN_TASK("error_handling", test_adc_error_handling, 8192, 1);
-      RUN_TEST_IN_TASK("statistics", test_adc_statistics, 8192, 1);
-      RUN_TEST_IN_TASK("performance", test_adc_performance, 8192, 1););
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_PERFORMANCE_TESTS, "ADC PERFORMANCE TESTS",
+                              // Performance and error handling tests
+                              ESP_LOGI(TAG, "Running performance and error handling tests...");
+                              RUN_TEST_IN_TASK("error_handling", test_adc_error_handling, 8192, 1);
+                              RUN_TEST_IN_TASK("statistics", test_adc_statistics, 8192, 1);
+                              RUN_TEST_IN_TASK("performance", test_adc_performance, 8192, 1););
 
   print_test_summary(g_test_results, "ADC", TAG);
 

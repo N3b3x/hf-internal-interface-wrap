@@ -52,11 +52,6 @@ static TestResults g_test_results;
 
 //=============================================================================
 // TEST PROGRESSION INDICATOR
-//=============================================================================
-// GPIO14 test progression indicator
-static EspGpio* g_test_progress_gpio = nullptr;
-static bool g_test_progress_state = false;
-static constexpr hf_pin_num_t TEST_PROGRESS_PIN = 14;
 
 //=============================================================================
 // TEST CONFIGURATION
@@ -177,54 +172,6 @@ void log_test_separator(const char* test_name) noexcept;
 //=============================================================================
 // TEST FUNCTIONS IMPLEMENTATION
 //=============================================================================
-
-/**
- * @brief Initialize the test progression indicator on GPIO14
- */
-bool init_test_progress_indicator() noexcept {
-  g_test_progress_gpio =
-      new EspGpio(TEST_PROGRESS_PIN, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-                  hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
-                  hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
-                  hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN);
-
-  if (!g_test_progress_gpio->EnsureInitialized()) {
-    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO14");
-    return false;
-  }
-
-  g_test_progress_gpio->SetInactive();
-  ESP_LOGI(TAG, "Test progression indicator GPIO14 initialized");
-  return true;
-}
-
-/**
- * @brief Flip the test progression indicator to show next test
- */
-void flip_test_progress_indicator() noexcept {
-  if (g_test_progress_gpio) {
-    g_test_progress_state = !g_test_progress_state;
-    if (g_test_progress_state) {
-      g_test_progress_gpio->SetActive();
-    } else {
-      g_test_progress_gpio->SetInactive();
-    }
-    ESP_LOGI(TAG, "Test progression indicator: %s", g_test_progress_state ? "HIGH" : "LOW");
-  }
-
-  vTaskDelay(pdMS_TO_TICKS(100));
-}
-
-/**
- * @brief Cleanup the test progression indicator GPIO
- */
-void cleanup_test_progress_indicator() noexcept {
-  if (g_test_progress_gpio) {
-    g_test_progress_gpio->SetInactive(); // Ensure pin is low
-    delete g_test_progress_gpio;
-    g_test_progress_gpio = nullptr;
-  }
-}
 
 bool test_i2c_bus_initialization() noexcept {
   log_test_separator("I2C Bus Initialization");
@@ -2460,13 +2407,7 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(TIMEOUT_LONG_MS));
 
-  // Initialize test progression indicator GPIO14
-  // This pin will toggle between HIGH/LOW each time a test completes
-  // providing visual feedback for test progression on oscilloscope/logic analyzer
-  if (!init_test_progress_indicator()) {
-    ESP_LOGE(TAG,
-             "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
-  }
+  // Test progression indicator is automatically initialized by the test framework
 
   // Report test section configuration
   print_test_section_status(TAG, "I2C");
@@ -2581,8 +2522,7 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
-  // Cleanup test progression indicator
-  cleanup_test_progress_indicator();
+  // Test progression indicator is automatically cleaned up by the test framework
 
   while (true) {
     ESP_LOGI(TAG, "System up and running for %d seconds", esp_timer_get_time() / 1000000);

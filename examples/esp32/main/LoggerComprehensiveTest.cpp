@@ -39,11 +39,13 @@ static std::unique_ptr<EspLogger> g_logger_instance = nullptr;
 // Enable/disable specific test categories by setting to true or false
 
 // Core logger functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Construction, initialization, basic logging
-static constexpr bool ENABLE_LEVEL_TESTS = true;          // Level management, formatted logging
-static constexpr bool ENABLE_FEATURE_TESTS = true;        // Log V2 features, buffer logging, location logging
-static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, diagnostics, health monitoring
-static constexpr bool ENABLE_STRESS_TESTS = true;         // Error handling, performance testing, utility functions
+static constexpr bool ENABLE_CORE_TESTS = true;  // Construction, initialization, basic logging
+static constexpr bool ENABLE_LEVEL_TESTS = true; // Level management, formatted logging
+static constexpr bool ENABLE_FEATURE_TESTS =
+    true; // Log V2 features, buffer logging, location logging
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true; // Statistics, diagnostics, health monitoring
+static constexpr bool ENABLE_STRESS_TESTS =
+    true; // Error handling, performance testing, utility functions
 
 // Forward declarations
 bool test_logger_construction() noexcept;
