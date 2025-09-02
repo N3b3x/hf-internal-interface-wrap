@@ -104,39 +104,25 @@ bool EspSpiBus::IsInitialized() const noexcept {
 
 bool EspSpiBus::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  if (!initialized_)
+  if (!initialized_) {
     return true;
+  }
 
   ESP_LOGI(TAG, "Deinitializing SPI bus");
 
-  // Remove all devices first - properly remove from ESP-IDF before clearing
+  // Deinitialize all devices first
   for (auto& device : devices_) {
-    if (device && device->GetHandle()) {
-      ESP_LOGI(TAG, "Removing SPI device with CS pin %d from ESP-IDF bus",
-               device->GetConfig().cs_pin);
-
-      esp_err_t err = spi_bus_remove_device(device->GetHandle());
-      if (err != ESP_OK) {
-        ESP_LOGW(TAG, "Failed to remove SPI device with CS pin %d: %s", device->GetConfig().cs_pin,
-                 esp_err_to_name(err));
-      } else {
-        ESP_LOGI(TAG, "Successfully removed SPI device with CS pin %d", device->GetConfig().cs_pin);
-      }
-
-      device->MarkAsDeinitialized();
+    if (device && device->IsInitialized()) {
+      device->Deinitialize(); // This removes from ESP-IDF bus
     }
   }
   devices_.clear();
 
   // Free the SPI bus from ESP-IDF
   spi_host_device_t host = static_cast<spi_host_device_t>(config_.host);
-  ESP_LOGI(TAG, "Freeing SPI bus host %d", static_cast<int>(host));
-
   esp_err_t err = spi_bus_free(host);
   if (err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to free SPI bus: %s", esp_err_to_name(err));
-  } else {
-    ESP_LOGI(TAG, "Successfully freed SPI bus");
   }
 
   initialized_ = false;
@@ -146,81 +132,19 @@ bool EspSpiBus::Deinitialize() noexcept {
 
 int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  if (!initialized_)
-    Initialize();
-
-  // copy over the device configuration to ESP-IDF format
-  spi_device_interface_config_t dev_cfg = {};
-  dev_cfg.clock_speed_hz = device_config.clock_speed_hz;
-  dev_cfg.mode = static_cast<uint8_t>(device_config.mode);
-  dev_cfg.spics_io_num = device_config.cs_pin;
-  dev_cfg.queue_size = device_config.queue_size;
-  dev_cfg.command_bits = device_config.command_bits;
-  dev_cfg.address_bits = device_config.address_bits;
-  dev_cfg.dummy_bits = device_config.dummy_bits;
-  dev_cfg.duty_cycle_pos = device_config.duty_cycle_pos;
-  dev_cfg.cs_ena_pretrans = device_config.cs_ena_pretrans;
-  dev_cfg.cs_ena_posttrans = device_config.cs_ena_posttrans;
-  dev_cfg.flags = device_config.flags;
-  dev_cfg.input_delay_ns = device_config.input_delay_ns;
-
-  // Set callbacks if provided
-  if (device_config.pre_cb) {
-    dev_cfg.pre_cb = reinterpret_cast<transaction_cb_t>(device_config.pre_cb);
-  }
-  if (device_config.post_cb) {
-    dev_cfg.post_cb = reinterpret_cast<transaction_cb_t>(device_config.post_cb);
+  if (!initialized_) {
+    return -1; // Bus must be initialized first
   }
 
-  // Set clock source and sampling point with ESP32-C6 compatible defaults
-  dev_cfg.clock_source = (device_config.clock_source != 0)
-                             ? static_cast<spi_clock_source_t>(device_config.clock_source)
-                             : SPI_CLK_SRC_DEFAULT;
-
-  // ESP32-C6 only supports PHASE_0 sampling point
-  if (device_config.sampling_point != 0) {
-    dev_cfg.sample_point = static_cast<spi_sampling_point_t>(device_config.sampling_point);
-    // Validate for ESP32-C6 compatibility
-    if (dev_cfg.sample_point != SPI_SAMPLING_POINT_PHASE_0) {
-      ESP_LOGW(TAG, "ESP32-C6 only supports PHASE_0 sampling point, using default");
-      dev_cfg.sample_point = SPI_SAMPLING_POINT_PHASE_0;
-    }
-  } else {
-    dev_cfg.sample_point = SPI_SAMPLING_POINT_PHASE_0;
-  }
-
-  spi_device_handle_t handle = nullptr;
-  spi_host_device_t host = static_cast<spi_host_device_t>(config_.host);
-  esp_err_t err = spi_bus_add_device(host, &dev_cfg, &handle);
-
-  // Enhanced error handling based on ESP-IDF v5.5 documentation
-  if (err != ESP_OK) {
-    // Log error details for debugging
-    ESP_LOGE("EspSpiBus", "Failed to add SPI device: %s", esp_err_to_name(err));
-    return -1;
-  }
-
-  // Create and store the device using nothrow allocation
-  auto device = hf::utils::make_unique_nothrow<EspSpiDevice>(this, handle, device_config);
+  // Create C++ wrapper class first (no ESP-IDF device yet)
+  auto device = hf::utils::make_unique_nothrow<EspSpiDevice>(this, device_config);
   if (!device) {
     ESP_LOGE(TAG, "Failed to allocate memory for EspSpiDevice");
-    esp_err_t remove_err = spi_bus_remove_device(handle);
-    if (remove_err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to remove SPI device: %s", esp_err_to_name(remove_err));
-    }
     return -1;
   }
 
-  // Check if devices vector can accommodate new device
-  if (devices_.size() >= devices_.max_size()) {
-    ESP_LOGE(TAG, "Failed to add EspSpiDevice: maximum devices reached");
-    spi_bus_remove_device(handle);
-    return -1;
-  }
-
+  // Store in vector (C++ wrapper only)
   devices_.push_back(std::move(device));
-
-  // Return the index of the newly created device
   return static_cast<int>(devices_.size() - 1);
 }
 
@@ -284,10 +208,11 @@ spi_host_device_t EspSpiBus::GetHost() const noexcept {
 // ESP SPI DEVICE IMPLEMENTATION
 //======================================================//
 
-EspSpiDevice::EspSpiDevice(EspSpiBus* parent, spi_device_handle_t handle,
-                           const hf_spi_device_config_t& config)
-    : BaseSpi(), parent_bus_(parent), handle_(handle), config_(config), initialized_(true) {
-} // Properly initialize BaseSpi
+EspSpiDevice::EspSpiDevice(EspSpiBus* parent, const hf_spi_device_config_t& config)
+    : BaseSpi(), parent_bus_(parent), handle_(nullptr), config_(config), initialized_(false) {
+  // Device is NOT initialized yet - no ESP-IDF handle
+  ESP_LOGI(TAG, "EspSpiDevice created (not yet initialized), CS pin %d", config.cs_pin);
+}
 
 EspSpiDevice::~EspSpiDevice() noexcept {
   if (initialized_)
@@ -295,7 +220,70 @@ EspSpiDevice::~EspSpiDevice() noexcept {
 }
 
 bool EspSpiDevice::Initialize() noexcept {
-  return initialized_;
+  RtosUniqueLock<RtosMutex> lock(mutex_);
+  if (initialized_) {
+    return true;
+  }
+
+  // NOW create the ESP-IDF device and add to bus
+  spi_device_interface_config_t dev_cfg = {};
+  dev_cfg.clock_speed_hz = config_.clock_speed_hz;
+  dev_cfg.mode = static_cast<uint8_t>(config_.mode);
+  dev_cfg.spics_io_num = config_.cs_pin;
+  dev_cfg.queue_size = config_.queue_size;
+  dev_cfg.command_bits = config_.command_bits;
+  dev_cfg.address_bits = config_.address_bits;
+  dev_cfg.dummy_bits = config_.dummy_bits;
+  dev_cfg.duty_cycle_pos = config_.duty_cycle_pos;
+  dev_cfg.cs_ena_pretrans = config_.cs_ena_pretrans;
+  dev_cfg.cs_ena_posttrans = config_.cs_ena_posttrans;
+  dev_cfg.flags = config_.flags;
+  dev_cfg.input_delay_ns = config_.input_delay_ns;
+
+  // Set callbacks if provided
+  if (config_.pre_cb) {
+    dev_cfg.pre_cb = reinterpret_cast<transaction_cb_t>(config_.pre_cb);
+  }
+  if (config_.post_cb) {
+    dev_cfg.post_cb = reinterpret_cast<transaction_cb_t>(config_.post_cb);
+  }
+
+  // Set clock source and sampling point with ESP32-C6 compatible defaults
+  dev_cfg.clock_source = (config_.clock_source != 0)
+                             ? static_cast<spi_clock_source_t>(config_.clock_source)
+                             : SPI_CLK_SRC_DEFAULT;
+
+  // ESP32-C6 only supports PHASE_0 sampling point
+  if (config_.sampling_point != 0) {
+    dev_cfg.sample_point = static_cast<spi_sampling_point_t>(config_.sampling_point);
+    if (dev_cfg.sample_point != SPI_SAMPLING_POINT_PHASE_0) {
+      ESP_LOGW(TAG, "ESP32-C6 only supports PHASE_0 sampling point, using default");
+      dev_cfg.sample_point = SPI_SAMPLING_POINT_PHASE_0;
+    }
+  } else {
+    dev_cfg.sample_point = SPI_SAMPLING_POINT_PHASE_0;
+  }
+
+  // Add ESP-IDF specific flags
+  if (config_.flags & HF_SPI_DEVICE_HALFDUPLEX) {
+    dev_cfg.flags |= SPI_DEVICE_HALFDUPLEX;
+  }
+  if (config_.flags & HF_SPI_DEVICE_POSITIVE_CS) {
+    dev_cfg.flags |= SPI_DEVICE_POSITIVE_CS;
+  }
+
+  // Add device to ESP-IDF bus
+  spi_host_device_t host = parent_bus_->GetHost();
+  esp_err_t err = spi_bus_add_device(host, &dev_cfg, &handle_);
+
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to add SPI device: %s", esp_err_to_name(err));
+    return false;
+  }
+
+  initialized_ = true;
+  ESP_LOGI(TAG, "EspSpiDevice initialized successfully, handle %p", handle_);
+  return true;
 }
 
 bool EspSpiDevice::MarkAsDeinitialized() noexcept {
@@ -310,14 +298,29 @@ bool EspSpiDevice::MarkAsDeinitialized() noexcept {
 
 bool EspSpiDevice::Deinitialize() noexcept {
   RtosUniqueLock<RtosMutex> lock(mutex_);
-  if (!initialized_)
+  if (!initialized_) {
     return true;
-  spi_bus_remove_device(handle_);
+  }
+
+  // Remove from ESP-IDF bus
+  if (handle_) {
+    esp_err_t err = spi_bus_remove_device(handle_);
+    if (err != ESP_OK) {
+      ESP_LOGW(TAG, "Failed to remove SPI device: %s", esp_err_to_name(err));
+    }
+    handle_ = nullptr;
+  }
+
   initialized_ = false;
+  ESP_LOGI(TAG, "EspSpiDevice deinitialized");
   return true;
 }
 hf_spi_err_t EspSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf_u16_t length,
                                     hf_u32_t timeout_ms) noexcept {
+  // Note: timeout_ms parameter is reserved for future use. ESP-IDF spi_device_transmit()
+  // uses the queue_size timeout configured during device initialization.
+  (void)timeout_ms; // Suppress unused parameter warning for now
+
   RtosUniqueLock<RtosMutex> lock(mutex_);
   if (!initialized_)
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
@@ -335,29 +338,25 @@ hf_spi_err_t EspSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf
   trans.tx_buffer = tx_data;
   trans.rx_buffer = rx_data;
 
-  // Note: timeout_ms parameter is reserved for future use. ESP-IDF spi_device_transmit()
-  // uses the queue_size timeout configured during device initialization.
-  (void)timeout_ms; // Suppress unused parameter warning for now
-
-  // Use small data optimization for transfers <= 32 bits (4 bytes)
-  if (length <= 4) {
-    if (tx_data) {
-      trans.flags |= SPI_TRANS_USE_TXDATA;
-      std::memcpy(trans.tx_data, tx_data, length);
-      trans.tx_buffer = nullptr;
-    }
-    if (rx_data) {
-      trans.flags |= SPI_TRANS_USE_RXDATA;
-      trans.rx_buffer = nullptr;
-    }
-  }
+  // // Use small data optimization for transfers <= 32 bits (4 bytes)
+  // if (length <= 4) {
+  //   if (tx_data) {
+  //     trans.flags |= SPI_TRANS_USE_TXDATA;
+  //     std::memcpy(trans.tx_data, tx_data, length);
+  //     trans.tx_buffer = nullptr;
+  //   }
+  //   if (rx_data) {
+  //     trans.flags |= SPI_TRANS_USE_RXDATA;
+  //     trans.rx_buffer = nullptr;
+  //   }
+  // }
 
   esp_err_t err = spi_device_transmit(handle_, &trans);
 
-  // Copy received data for small transfers
-  if (err == ESP_OK && rx_data && (trans.flags & SPI_TRANS_USE_RXDATA)) {
-    std::memcpy(rx_data, trans.rx_data, length);
-  }
+  // // Copy received data for small transfers
+  // if (err == ESP_OK && rx_data && (trans.flags & SPI_TRANS_USE_RXDATA)) {
+  //   std::memcpy(rx_data, trans.rx_data, length);
+  // }
 
   // Enhanced error mapping based on ESP-IDF v5.5 documentation
   switch (err) {

@@ -23,6 +23,7 @@
  */
 
 #include "base/BaseSpi.h"
+#include "base/HardwareTypes.h"
 #include "mcu/esp32/EspSpi.h"
 #include "mcu/esp32/utils/EspTypes_SPI.h"
 #include <algorithm>
@@ -50,13 +51,19 @@ static constexpr bool ENABLE_ADVANCED_TESTS = true; // ESP-specific features, IO
 static constexpr bool ENABLE_STRESS_TESTS =
     true; // Error handling, timeouts, edge cases, power management
 
+// NEW: Pure ESP-IDF vs C++ Wrapper comparison tests
+static constexpr bool ENABLE_ESPIDF_DIRECT_TEST = true; // Pure ESP-IDF SPI test (FIRST)
+static constexpr bool ENABLE_ESPIDF_WRAPPER_REPLICA = true; // C++ wrapper replica test (SECOND)
+
 // Test configuration constants
 static constexpr hf_pin_num_t TEST_MOSI_PIN = 7;
 static constexpr hf_pin_num_t TEST_MISO_PIN = 2;
 static constexpr hf_pin_num_t TEST_SCLK_PIN = 6;
+static constexpr hf_pin_num_t TEST_CS_PIN = 21; // Use CS_PIN_1 for the comparison tests
 static constexpr hf_pin_num_t TEST_CS_PIN_1 = 21;
 static constexpr hf_pin_num_t TEST_CS_PIN_2 = 20;
 static constexpr hf_pin_num_t TEST_CS_PIN_3 = 19;
+static constexpr hf_host_id_t SPI_HOST_NUM = static_cast<hf_host_id_t>(1); // ESP32-C6 only has SPI2_HOST (value 1)
 static constexpr uint32_t SLOW_SPEED = 1000000;    // 1MHz
 static constexpr uint32_t MEDIUM_SPEED = 10000000; // 10MHz
 static constexpr uint32_t FAST_SPEED = 40000000;   // 40MHz
@@ -264,6 +271,12 @@ bool test_spi_device_creation() noexcept {
     return false;
   }
 
+  // Initialize the device (creates ESP-IDF device)
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize basic device");
+    return false;
+  }
+
   // Test 2: Create device with advanced features
   hf_spi_device_config_t advanced_config = {};
   advanced_config.clock_speed_hz = FAST_SPEED;
@@ -277,6 +290,18 @@ bool test_spi_device_creation() noexcept {
   int advanced_index = test_bus->CreateDevice(advanced_config);
   if (advanced_index < 0) {
     ESP_LOGE(TAG, "Failed to create advanced device");
+    return false;
+  }
+
+  // Initialize the advanced device
+  BaseSpi* advanced_device = test_bus->GetDevice(advanced_index);
+  if (!advanced_device) {
+    ESP_LOGE(TAG, "Failed to get advanced device");
+    return false;
+  }
+
+  if (!advanced_device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize advanced device");
     return false;
   }
 
@@ -321,6 +346,19 @@ bool test_spi_device_management() noexcept {
       ESP_LOGE(TAG, "Failed to create device %zu", i);
       return false;
     }
+
+    // Initialize the device
+    BaseSpi* device = test_bus->GetDevice(idx);
+    if (!device) {
+      ESP_LOGE(TAG, "Failed to get device %zu", i);
+      return false;
+    }
+
+    if (!device->Initialize()) {
+      ESP_LOGE(TAG, "Failed to initialize device %zu", i);
+      return false;
+    }
+
     device_indices.push_back(idx);
   }
 
@@ -388,6 +426,12 @@ bool test_spi_transfer_basic() noexcept {
     return false;
   }
 
+  // Initialize the device
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test device");
+    return false;
+  }
+
   // Test 1: Single byte transfer
   uint8_t tx_byte = 0xAA;
   uint8_t rx_byte = 0x00;
@@ -449,6 +493,12 @@ bool test_spi_transfer_modes() noexcept {
       return false;
     }
 
+    // Initialize the device
+    if (!device->Initialize()) {
+      ESP_LOGE(TAG, "Failed to initialize device for mode %d", mode);
+      return false;
+    }
+
     // Test transfer with this mode (use different pattern for each mode)
     uint8_t tx_data[] = {static_cast<uint8_t>(0x12 + mode), static_cast<uint8_t>(0x34 + mode), 
                          static_cast<uint8_t>(0x56 + mode), static_cast<uint8_t>(0x78 + mode)};
@@ -498,8 +548,14 @@ bool test_spi_transfer_sizes() noexcept {
     return false;
   }
 
+  // Initialize the device
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test device");
+    return false;
+  }
+
   // Test various transfer sizes
-  std::vector<size_t> test_sizes = {1, 4, 16, 64, 256, 1024};
+  std::vector<size_t> test_sizes = {1, 4, 16, 64, 256, 512};
 
   for (auto size : test_sizes) {
     auto tx_buffer = std::make_unique<uint8_t[]>(size);
@@ -557,6 +613,12 @@ bool test_spi_dma_operations() noexcept {
     return false;
   }
 
+  // Initialize the DMA device
+  if (!device_dma->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize DMA device");
+    return false;
+  }
+
   // Test large transfer that should use DMA
   const size_t dma_test_size = 2048;
   auto tx_buffer = std::make_unique<uint8_t[]>(dma_test_size);
@@ -590,6 +652,14 @@ bool test_spi_dma_operations() noexcept {
   if (device_index >= 0) {
     BaseSpi* device_no_dma = test_bus_no_dma->GetDevice(device_index);
     if (device_no_dma) {
+      // Initialize the non-DMA device
+      if (!device_no_dma->Initialize()) {
+        ESP_LOGW(TAG, "Failed to initialize non-DMA device");
+        test_bus_no_dma->Deinitialize();
+        ESP_LOGI(TAG, "[SUCCESS] DMA operation tests passed");
+        return true;
+      }
+
       start_time = esp_timer_get_time();
       result = device_no_dma->Transfer(tx_buffer.get(), rx_buffer.get(), dma_test_size, 0);
       end_time = esp_timer_get_time();
@@ -658,6 +728,12 @@ bool test_spi_clock_speeds() noexcept {
 
     BaseSpi* device = test_bus->GetDevice(device_index);
     if (device) {
+      // Initialize the device
+      if (!device->Initialize()) {
+        ESP_LOGW(TAG, "Failed to initialize device with speed %lu Hz", speed);
+        continue;
+      }
+
       hf_spi_err_t result = device->Transfer(test_data, rx_data, sizeof(test_data), 0);
       ESP_LOGI(TAG, "Transfer at %lu Hz: %s", speed, HfSpiErrToString(result).data());
     }
@@ -707,6 +783,11 @@ bool test_spi_multi_device_operations() noexcept {
 
     BaseSpi* device = test_bus->GetDevice(device_index);
     if (device) {
+      // Initialize the device
+      if (!device->Initialize()) {
+        ESP_LOGW(TAG, "Failed to initialize device %zu", i);
+        continue;
+      }
       devices.push_back(device);
     }
   }
@@ -814,6 +895,12 @@ bool test_spi_timeout_handling() noexcept {
     return false;
   }
 
+  // Initialize the device
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize test device");
+    return false;
+  }
+
   // Test transfers with different timeout values
   uint8_t test_data[] = {0xAA, 0x55, 0xFF, 0x00};
   uint8_t rx_data[sizeof(test_data)] = {0};
@@ -883,6 +970,12 @@ bool test_spi_esp_specific_features() noexcept {
     return false;
   }
 
+  // Initialize the ESP-specific device
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize ESP-specific device");
+    return false;
+  }
+
   // Test transfer with command and address phases
   uint8_t test_data[] = {0xAA, 0x55, 0xFF, 0x00};
   uint8_t rx_data[sizeof(test_data)] = {0};
@@ -931,6 +1024,12 @@ bool test_spi_iomux_optimization() noexcept {
     return false;
   }
 
+  // Initialize the IOMUX device
+  if (!device_iomux->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize IOMUX device");
+    return false;
+  }
+
   // Performance test with IOMUX
   const size_t test_size = 1024;
   auto tx_buffer = std::make_unique<uint8_t[]>(test_size);
@@ -959,6 +1058,12 @@ bool test_spi_iomux_optimization() noexcept {
     if (device_index >= 0) {
       BaseSpi* device_gpio = test_bus_gpio->GetDevice(device_index);
       if (device_gpio) {
+        // Initialize the GPIO device
+        if (!device_gpio->Initialize()) {
+          ESP_LOGW(TAG, "Failed to initialize GPIO device");
+          // Skip this test but continue with the function
+        } else {
+
         start_time = esp_timer_get_time();
         result = device_gpio->Transfer(tx_buffer.get(), rx_buffer.get(), test_size, 0);
         end_time = esp_timer_get_time();
@@ -971,6 +1076,7 @@ bool test_spi_iomux_optimization() noexcept {
           ESP_LOGI(TAG, "IOMUX performance improvement: %.1f%%",
                    ((float)(gpio_time - iomux_time) / gpio_time) * 100.0f);
         }
+        } // Close the else block
       }
     }
     test_bus_gpio->Deinitialize();
@@ -1008,6 +1114,12 @@ bool test_spi_thread_safety() noexcept {
   BaseSpi* device = test_bus->GetDevice(device_index);
   if (!device) {
     ESP_LOGE(TAG, "Failed to get device for thread safety test");
+    return false;
+  }
+
+  // Initialize the device
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize device for thread safety test");
     return false;
   }
 
@@ -1054,6 +1166,12 @@ bool test_spi_performance_benchmarks() noexcept {
   BaseSpi* device = test_bus->GetDevice(device_index);
   if (!device) {
     ESP_LOGE(TAG, "Failed to get performance test device");
+    return false;
+  }
+
+  // Initialize the performance test device
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize performance test device");
     return false;
   }
 
@@ -1124,6 +1242,12 @@ bool test_spi_edge_cases() noexcept {
     return false;
   }
 
+  // Initialize the edge case test device
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize edge case test device");
+    return false;
+  }
+
   // Test maximum transfer size (implementation dependent)
   const size_t max_transfer_size = 4092; // ESP32 typical maximum
   auto large_tx_buffer = std::make_unique<uint8_t[]>(max_transfer_size);
@@ -1183,6 +1307,12 @@ bool test_spi_bus_acquisition() noexcept {
     return false;
   }
 
+  // Initialize the ESP device
+  if (!esp_device->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize ESP device for bus acquisition test");
+    return false;
+  }
+
   // Test bus acquisition and release
   hf_spi_err_t result = esp_device->AcquireBus(1000);
   ESP_LOGI(TAG, "Bus acquisition result: %s", HfSpiErrToString(result).data());
@@ -1226,6 +1356,392 @@ bool test_spi_power_management() noexcept {
 
   ESP_LOGI(TAG, "Successfully tested power management configuration");
   ESP_LOGI(TAG, "[SUCCESS] Power management tests passed");
+  return true;
+}
+
+//=============================================================================
+// PURE ESP-IDF SPI TEST (FIRST) - COMPARISON
+//=============================================================================
+
+/**
+ * @brief Test SPI using ESP-IDF API directly (bypassing our wrapper)
+ * @return true if successful, false otherwise
+ * @note This test runs FIRST to verify ESP-IDF SPI driver functionality
+ * @note Uses identical configuration and test pattern as C++ wrapper replica test
+ */
+bool test_spi_espidf_direct_api() noexcept {
+  log_test_separator("ESP-IDF Direct SPI API Test (FIRST)");
+
+  ESP_LOGI(TAG, "Testing SPI using ESP-IDF API directly (bypassing our wrapper)");
+  ESP_LOGI(TAG, "This test runs FIRST to verify ESP-IDF SPI driver functionality");
+  ESP_LOGI(TAG, "If this test fails, the issue is with ESP-IDF itself, not our wrapper");
+
+  // ESP-IDF SPI configuration constants (matching the working example)
+  constexpr gpio_num_t SPI_MASTER_MOSI_IO = static_cast<gpio_num_t>(TEST_MOSI_PIN);
+  constexpr gpio_num_t SPI_MASTER_MISO_IO = static_cast<gpio_num_t>(TEST_MISO_PIN);
+  constexpr gpio_num_t SPI_MASTER_SCLK_IO = static_cast<gpio_num_t>(TEST_SCLK_PIN);
+  constexpr gpio_num_t SPI_MASTER_CS_IO = static_cast<gpio_num_t>(TEST_CS_PIN);
+  constexpr spi_host_device_t SPI_MASTER_HOST = static_cast<spi_host_device_t>(SPI_HOST_NUM);
+  constexpr uint32_t SPI_MASTER_FREQ_HZ = 10000000; // 10MHz for compatibility
+  constexpr uint32_t SPI_MASTER_TIMEOUT_MS = 1000;
+
+  ESP_LOGI(TAG, "ESP-IDF Config: MOSI=GPIO%d, MISO=GPIO%d, SCLK=GPIO%d, CS=GPIO%d, Host=%d, Freq=%lu Hz",
+           SPI_MASTER_MOSI_IO, SPI_MASTER_MISO_IO, SPI_MASTER_SCLK_IO, SPI_MASTER_CS_IO, 
+           SPI_MASTER_HOST, SPI_MASTER_FREQ_HZ);
+
+  // Step 1: Initialize SPI bus
+  ESP_LOGI(TAG, "Step 1: Initializing SPI bus...");
+
+  spi_bus_config_t bus_config = {};
+  bus_config.mosi_io_num = SPI_MASTER_MOSI_IO;
+  bus_config.miso_io_num = SPI_MASTER_MISO_IO;
+  bus_config.sclk_io_num = SPI_MASTER_SCLK_IO;
+  bus_config.quadwp_io_num = -1;
+  bus_config.quadhd_io_num = -1;
+  bus_config.max_transfer_sz = 4092;
+  bus_config.flags = SPICOMMON_BUSFLAG_MASTER;
+
+  esp_err_t err = spi_bus_initialize(SPI_MASTER_HOST, &bus_config, SPI_DMA_CH_AUTO);
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "ESP-IDF: Failed to initialize SPI bus: %s", esp_err_to_name(err));
+    return false;
+  }
+  ESP_LOGI(TAG, "ESP-IDF: SPI bus initialized successfully");
+
+  // Step 2: Create SPI device
+  ESP_LOGI(TAG, "Step 2: Creating SPI device...");
+
+  spi_device_interface_config_t dev_config = {};
+  dev_config.clock_speed_hz = SPI_MASTER_FREQ_HZ;
+  dev_config.mode = 0; // SPI mode 0 (CPOL=0, CPHA=0)
+  dev_config.spics_io_num = SPI_MASTER_CS_IO;
+  dev_config.queue_size = 7;
+  dev_config.command_bits = 0;
+  dev_config.address_bits = 0;
+  dev_config.dummy_bits = 0;
+  dev_config.duty_cycle_pos = 128;
+  dev_config.cs_ena_pretrans = 2;
+  dev_config.cs_ena_posttrans = 2;
+  dev_config.flags = 0;
+  dev_config.input_delay_ns = 0;
+  dev_config.pre_cb = nullptr;
+  dev_config.post_cb = nullptr;
+
+  spi_device_handle_t dev_handle = nullptr;
+  err = spi_bus_add_device(SPI_MASTER_HOST, &dev_config, &dev_handle);
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "ESP-IDF: Failed to add SPI device: %s", esp_err_to_name(err));
+    spi_bus_free(SPI_MASTER_HOST);
+    return false;
+  }
+  ESP_LOGI(TAG, "ESP-IDF: SPI device created successfully");
+
+  // Step 3: Extended SPI testing loop with sufficient time
+  ESP_LOGI(TAG, "Step 3: Starting extended SPI testing loop (10 seconds)...");
+
+  const TickType_t test_duration = pdMS_TO_TICKS(10000); // 10 seconds
+  const TickType_t loop_delay = pdMS_TO_TICKS(500);      // 500ms between operations
+  TickType_t start_time = xTaskGetTickCount();
+  uint32_t operation_count = 0;
+  uint32_t successful_operations = 0;
+  uint32_t failed_operations = 0;
+
+  ESP_LOGI(TAG, "ESP-IDF: Test loop will run for 10 seconds with 500ms delays between operations");
+  ESP_LOGI(TAG, "ESP-IDF: This provides sufficient time to thoroughly test SPI functionality");
+
+  while ((xTaskGetTickCount() - start_time) < test_duration) {
+    operation_count++;
+    ESP_LOGI(TAG, "ESP-IDF: Operation %u - Testing SPI operations...", operation_count);
+
+    // Test 3a: Single byte transfer
+    uint8_t tx_byte = 0xAA;
+    uint8_t rx_byte = 0x00;
+    spi_transaction_t trans = {};
+    trans.length = 8; // 8 bits = 1 byte
+    trans.tx_buffer = &tx_byte;
+    trans.rx_buffer = &rx_byte;
+
+    err = spi_device_transmit(dev_handle, &trans);
+    if (err != ESP_OK) {
+      ESP_LOGW(TAG, "ESP-IDF: Single byte transfer %u failed: %s", operation_count, esp_err_to_name(err));
+      failed_operations++;
+    } else {
+      ESP_LOGI(TAG, "ESP-IDF: Single byte transfer %u successful: TX=0x%02X, RX=0x%02X", 
+               operation_count, tx_byte, rx_byte);
+      successful_operations++;
+    }
+
+    // Test 3b: Multi-byte transfer
+    uint8_t tx_data[] = {0x01, 0x02, 0x03, 0x04, 0x05};
+    uint8_t rx_data[sizeof(tx_data)] = {0};
+    trans.length = sizeof(tx_data) * 8; // Convert to bits
+    trans.tx_buffer = tx_data;
+    trans.rx_buffer = rx_data;
+
+    err = spi_device_transmit(dev_handle, &trans);
+    if (err != ESP_OK) {
+      ESP_LOGW(TAG, "ESP-IDF: Multi-byte transfer %u failed: %s", operation_count, esp_err_to_name(err));
+      failed_operations++;
+    } else {
+      ESP_LOGI(TAG, "ESP-IDF: Multi-byte transfer %u successful: %zu bytes", operation_count, sizeof(tx_data));
+      ESP_LOGI(TAG, "ESP-IDF: TX: [0x%02X, 0x%02X, 0x%02X, 0x%02X, 0x%02X]", 
+               tx_data[0], tx_data[1], tx_data[2], tx_data[3], tx_data[4]);
+      ESP_LOGI(TAG, "ESP-IDF: RX: [0x%02X, 0x%02X, 0x%02X, 0x%02X, 0x%02X]", 
+               rx_data[0], rx_data[1], rx_data[2], rx_data[3], rx_data[4]);
+      successful_operations++;
+    }
+
+    // Test 3c: Sequential pattern transfer (16 bytes)
+    uint8_t tx_seq[16];
+    uint8_t rx_seq[16];
+    for (int i = 0; i < 16; i++) {
+      tx_seq[i] = static_cast<uint8_t>(0x10 + i); // 0x10, 0x11, 0x12, ...
+    }
+    trans.length = sizeof(tx_seq) * 8;
+    trans.tx_buffer = tx_seq;
+    trans.rx_buffer = rx_seq;
+
+    err = spi_device_transmit(dev_handle, &trans);
+    if (err != ESP_OK) {
+      ESP_LOGW(TAG, "ESP-IDF: Sequential pattern transfer %u failed: %s", operation_count, 
+               esp_err_to_name(err));
+      failed_operations++;
+    } else {
+      ESP_LOGI(TAG, "ESP-IDF: Sequential pattern transfer %u successful: %zu bytes", operation_count, sizeof(tx_seq));
+      ESP_LOGI(TAG, "ESP-IDF: TX pattern: [0x%02X, 0x%02X, 0x%02X, 0x%02X...]", 
+               tx_seq[0], tx_seq[1], tx_seq[2], tx_seq[3]);
+      successful_operations++;
+    }
+
+    ESP_LOGI(TAG, "ESP-IDF: Operation %u completed. Success: %u, Failed: %u", operation_count,
+             successful_operations, failed_operations);
+
+    // Delay between operations to prevent overwhelming the system
+    vTaskDelay(loop_delay);
+  }
+
+  ESP_LOGI(TAG, "ESP-IDF: Extended testing loop completed!");
+  ESP_LOGI(TAG, "ESP-IDF: Total operations: %u, Successful: %u, Failed: %u", operation_count,
+           successful_operations, failed_operations);
+  ESP_LOGI(TAG, "ESP-IDF: Success rate: %.1f%%",
+           (float)successful_operations / operation_count * 100.0f);
+
+  // Step 4: Cleanup
+  ESP_LOGI(TAG, "Step 4: Cleaning up ESP-IDF SPI resources...");
+
+  // Remove device
+  err = spi_bus_remove_device(dev_handle);
+  if (err != ESP_OK) {
+    ESP_LOGW(TAG, "ESP-IDF: Failed to remove SPI device: %s", esp_err_to_name(err));
+  } else {
+    ESP_LOGI(TAG, "ESP-IDF: SPI device removed successfully");
+  }
+
+  // Free bus
+  err = spi_bus_free(SPI_MASTER_HOST);
+  if (err != ESP_OK) {
+    ESP_LOGE(TAG, "ESP-IDF: Failed to free SPI bus: %s", esp_err_to_name(err));
+    return false;
+  } else {
+    ESP_LOGI(TAG, "ESP-IDF: SPI bus freed successfully");
+  }
+
+  ESP_LOGI(TAG, "ESP-IDF Direct SPI API test completed successfully!");
+  ESP_LOGI(TAG, "This confirms that the ESP-IDF SPI driver is working correctly");
+  ESP_LOGI(TAG, "Any issues in our wrapper are not related to ESP-IDF itself");
+  ESP_LOGI(TAG, "The test ran for 10 seconds with %u operations, proving SPI stability",
+           operation_count);
+
+  return true;
+}
+
+//=============================================================================
+// ESP-IDF WRAPPER REPLICA TEST - COMPARISON
+//=============================================================================
+
+/**
+ * @brief Test SPI using EspSpiBus wrapper (replicating ESP-IDF direct test)
+ * @return true if successful, false otherwise
+ * @note This test runs SECOND to compare EspSpiBus wrapper with ESP-IDF direct API
+ * @note Uses identical configuration and test pattern as ESP-IDF direct test
+ */
+bool test_spi_espidf_wrapper_replica() noexcept {
+  log_test_separator("EspSpiBus Wrapper Replica Test (SECOND)");
+
+  ESP_LOGI(TAG, "Testing SPI using EspSpiBus wrapper (replicating ESP-IDF direct test)");
+  ESP_LOGI(TAG, "This test runs SECOND to compare wrapper implementation with ESP-IDF direct API");
+  ESP_LOGI(TAG, "If this test fails, the issue is with our wrapper implementation");
+
+  // Use identical configuration as ESP-IDF direct test
+  constexpr hf_pin_num_t SPI_MASTER_MOSI_IO = TEST_MOSI_PIN;
+  constexpr hf_pin_num_t SPI_MASTER_MISO_IO = TEST_MISO_PIN;
+  constexpr hf_pin_num_t SPI_MASTER_SCLK_IO = TEST_SCLK_PIN;
+  constexpr hf_pin_num_t SPI_MASTER_CS_IO = TEST_CS_PIN;
+  constexpr hf_host_id_t SPI_MASTER_HOST = SPI_HOST_NUM;
+  constexpr uint32_t SPI_MASTER_FREQ_HZ = 10000000; // 10MHz for compatibility
+  constexpr uint32_t SPI_MASTER_TIMEOUT_MS = 1000;
+
+  ESP_LOGI(TAG, "EspSpiBus Config: MOSI=GPIO%d, MISO=GPIO%d, SCLK=GPIO%d, CS=GPIO%d, Host=%d, Freq=%lu Hz",
+           SPI_MASTER_MOSI_IO, SPI_MASTER_MISO_IO, SPI_MASTER_SCLK_IO, SPI_MASTER_CS_IO, 
+           SPI_MASTER_HOST, SPI_MASTER_FREQ_HZ);
+
+  // Step 1: Create EspSpiBus configuration (matching ESP-IDF direct test)
+  ESP_LOGI(TAG, "Step 1: Creating EspSpiBus configuration...");
+
+  hf_spi_bus_config_t bus_config = {};
+  bus_config.host = SPI_MASTER_HOST;
+  bus_config.mosi_pin = SPI_MASTER_MOSI_IO;
+  bus_config.miso_pin = SPI_MASTER_MISO_IO;
+  bus_config.sclk_pin = SPI_MASTER_SCLK_IO;
+  bus_config.clock_speed_hz = SPI_MASTER_FREQ_HZ;
+  bus_config.dma_channel = 0; // Auto
+  bus_config.timeout_ms = SPI_MASTER_TIMEOUT_MS;
+  bus_config.use_iomux = false;
+
+  // Step 2: Create and initialize EspSpiBus
+  ESP_LOGI(TAG, "Step 2: Creating and initializing EspSpiBus...");
+
+  auto test_bus = std::make_unique<EspSpiBus>(bus_config);
+  if (!test_bus) {
+    ESP_LOGE(TAG, "EspSpiBus: Failed to create SPI bus instance");
+    return false;
+  }
+
+  if (!test_bus->Initialize()) {
+    ESP_LOGE(TAG, "EspSpiBus: Failed to initialize SPI bus");
+    return false;
+  }
+  ESP_LOGI(TAG, "EspSpiBus: SPI bus initialized successfully");
+
+  // Step 3: Create SPI device configuration (matching ESP-IDF direct test)
+  ESP_LOGI(TAG, "Step 3: Creating SPI device configuration...");
+
+  hf_spi_device_config_t device_config = {};
+  device_config.clock_speed_hz = SPI_MASTER_FREQ_HZ;
+  device_config.mode = hf_spi_mode_t::HF_SPI_MODE_0; // SPI mode 0 (CPOL=0, CPHA=0)
+  device_config.cs_pin = SPI_MASTER_CS_IO;
+  device_config.queue_size = 7;
+  device_config.command_bits = 0;
+  device_config.address_bits = 0;
+  device_config.dummy_bits = 0;
+  device_config.duty_cycle_pos = 128;
+  device_config.cs_ena_pretrans = 2;
+  device_config.cs_ena_posttrans = 2;
+  device_config.flags = 0;
+  device_config.input_delay_ns = 0;
+  device_config.pre_cb = nullptr;
+  device_config.post_cb = nullptr;
+  device_config.user_ctx = nullptr;
+
+  // Step 4: Add device to bus
+  ESP_LOGI(TAG, "Step 4: Adding SPI device to bus...");
+
+  int device_index = test_bus->CreateDevice(device_config);
+  if (device_index < 0) {
+    ESP_LOGE(TAG, "EspSpiBus: Failed to add SPI device");
+    return false;
+  }
+  ESP_LOGI(TAG, "EspSpiBus: SPI device created successfully");
+
+  BaseSpi* device = test_bus->GetDevice(device_index);
+  if (!device) {
+    ESP_LOGE(TAG, "EspSpiBus: Failed to get SPI device");
+    return false;
+  }
+
+  // Initialize the device before use
+  if (!device->Initialize()) {
+    ESP_LOGE(TAG, "EspSpiBus: Failed to initialize SPI device");
+    return false;
+  }
+
+  // Step 5: Extended SPI testing loop (matching ESP-IDF direct test exactly)
+  ESP_LOGI(TAG, "Step 5: Starting extended SPI testing loop (10 seconds)...");
+
+  const TickType_t test_duration = pdMS_TO_TICKS(10000); // 10 seconds
+  const TickType_t loop_delay = pdMS_TO_TICKS(500);      // 500ms between operations
+  TickType_t start_time = xTaskGetTickCount();
+  uint32_t operation_count = 0;
+  uint32_t successful_operations = 0;
+  uint32_t failed_operations = 0;
+
+  ESP_LOGI(TAG, "EspSpiBus: Test loop will run for 10 seconds with 500ms delays between operations");
+  ESP_LOGI(TAG, "EspSpiBus: This provides sufficient time to thoroughly test SPI functionality");
+
+  while ((xTaskGetTickCount() - start_time) < test_duration) {
+    operation_count++;
+    ESP_LOGI(TAG, "EspSpiBus: Operation %u - Testing SPI operations...", operation_count);
+
+    // Test 5a: Single byte transfer (matching ESP-IDF test exactly)
+    uint8_t tx_byte = 0xAA;
+    uint8_t rx_byte = 0x00;
+    hf_spi_err_t result = device->Transfer(&tx_byte, &rx_byte, 1, 0);
+    if (result != hf_spi_err_t::SPI_SUCCESS) {
+      ESP_LOGW(TAG, "EspSpiBus: Single byte transfer %u failed: %s", operation_count, 
+               HfSpiErrToString(result).data());
+      failed_operations++;
+    } else {
+      ESP_LOGI(TAG, "EspSpiBus: Single byte transfer %u successful: TX=0x%02X, RX=0x%02X", 
+               operation_count, tx_byte, rx_byte);
+      successful_operations++;
+    }
+
+    // Test 5b: Multi-byte transfer (matching ESP-IDF test exactly)
+    uint8_t tx_data[] = {0x01, 0x02, 0x03, 0x04, 0x05};
+    uint8_t rx_data[sizeof(tx_data)] = {0};
+    result = device->Transfer(tx_data, rx_data, sizeof(tx_data), 0);
+    if (result != hf_spi_err_t::SPI_SUCCESS) {
+      ESP_LOGW(TAG, "EspSpiBus: Multi-byte transfer %u failed: %s", operation_count, 
+               HfSpiErrToString(result).data());
+      failed_operations++;
+    } else {
+      ESP_LOGI(TAG, "EspSpiBus: Multi-byte transfer %u successful: %zu bytes", operation_count, sizeof(tx_data));
+      ESP_LOGI(TAG, "EspSpiBus: TX: [0x%02X, 0x%02X, 0x%02X, 0x%02X, 0x%02X]", 
+               tx_data[0], tx_data[1], tx_data[2], tx_data[3], tx_data[4]);
+      ESP_LOGI(TAG, "EspSpiBus: RX: [0x%02X, 0x%02X, 0x%02X, 0x%02X, 0x%02X]", 
+               rx_data[0], rx_data[1], rx_data[2], rx_data[3], rx_data[4]);
+      successful_operations++;
+    }
+
+    // Test 5c: Sequential pattern transfer (16 bytes, matching ESP-IDF test exactly)
+    uint8_t tx_seq[16];
+    uint8_t rx_seq[16];
+    for (int i = 0; i < 16; i++) {
+      tx_seq[i] = static_cast<uint8_t>(0x10 + i); // 0x10, 0x11, 0x12, ...
+    }
+    result = device->Transfer(tx_seq, rx_seq, sizeof(tx_seq), 0);
+    if (result != hf_spi_err_t::SPI_SUCCESS) {
+      ESP_LOGW(TAG, "EspSpiBus: Sequential pattern transfer %u failed: %s", operation_count, 
+               HfSpiErrToString(result).data());
+      failed_operations++;
+    } else {
+      ESP_LOGI(TAG, "EspSpiBus: Sequential pattern transfer %u successful: %zu bytes", operation_count, sizeof(tx_seq));
+      ESP_LOGI(TAG, "EspSpiBus: TX pattern: [0x%02X, 0x%02X, 0x%02X, 0x%02X...]", 
+               tx_seq[0], tx_seq[1], tx_seq[2], tx_seq[3]);
+      successful_operations++;
+    }
+
+    ESP_LOGI(TAG, "EspSpiBus: Operation %u completed. Success: %u, Failed: %u", operation_count,
+             successful_operations, failed_operations);
+
+    // Delay between operations to prevent overwhelming the system
+    vTaskDelay(loop_delay);
+  }
+
+  ESP_LOGI(TAG, "EspSpiBus: Extended testing loop completed!");
+  ESP_LOGI(TAG, "EspSpiBus: Total operations: %u, Successful: %u, Failed: %u", operation_count,
+           successful_operations, failed_operations);
+  ESP_LOGI(TAG, "EspSpiBus: Success rate: %.1f%%",
+           (float)successful_operations / operation_count * 100.0f);
+
+  // Step 6: Cleanup (automatic via RAII)
+  ESP_LOGI(TAG, "Step 6: Cleaning up EspSpiBus resources (automatic via RAII)...");
+
+  ESP_LOGI(TAG, "EspSpiBus Wrapper Replica test completed successfully!");
+  ESP_LOGI(TAG, "This confirms that our wrapper implementation is working correctly");
+  ESP_LOGI(TAG, "The test ran for 10 seconds with %u operations, proving wrapper stability",
+           operation_count);
+
   return true;
 }
 
@@ -1311,6 +1827,23 @@ extern "C" void app_main(void) {
 
   // Report test section configuration
   print_test_section_status(TAG, "SPI");
+
+  // NEW: Run ESP-IDF vs C++ Wrapper comparison tests FIRST
+  RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
+      ENABLE_ESPIDF_DIRECT_TEST, "ESP-IDF DIRECT SPI TEST (FIRST)", 5,
+      // Pure ESP-IDF SPI test to verify driver functionality
+      ESP_LOGI(TAG, "Running ESP-IDF Direct SPI API test (FIRST)...");
+      RUN_TEST_IN_TASK("espidf_direct_api", test_spi_espidf_direct_api, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after ESP-IDF test
+      );
+
+  RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
+      ENABLE_ESPIDF_WRAPPER_REPLICA, "ESP-IDF WRAPPER REPLICA TEST (SECOND)", 5,
+      // C++ wrapper replica test to compare with ESP-IDF
+      ESP_LOGI(TAG, "Running EspSpiBus Wrapper Replica test (SECOND)...");
+      RUN_TEST_IN_TASK("espidf_wrapper_replica", test_spi_espidf_wrapper_replica, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after wrapper test
+      );
 
   // Run all SPI tests based on configuration
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(

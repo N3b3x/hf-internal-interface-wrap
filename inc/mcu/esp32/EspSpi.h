@@ -75,10 +75,9 @@ public:
   /**
    * @brief Construct a new EspSpiDevice.
    * @param parent Pointer to the parent EspSpiBus
-   * @param handle ESP-IDF device handle
    * @param config Device configuration (hf_spi_device_config_t)
    */
-  EspSpiDevice(EspSpiBus* parent, spi_device_handle_t handle, const hf_spi_device_config_t& config);
+  EspSpiDevice(EspSpiBus* parent, const hf_spi_device_config_t& config);
   /**
    * @brief Destructor. Automatically deinitializes the device if needed.
    */

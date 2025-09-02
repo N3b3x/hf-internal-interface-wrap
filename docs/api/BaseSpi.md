@@ -816,11 +816,28 @@ spi.ConfigureDevice(99, config);  // Invalid device
 
 ---
 
-## 🔗 **Related Documentation**
+## 🔗 **Navigation**
 
-- [🔒 **SfSpi**](SfSpi.md) - Thread-safe SPI wrapper
-- [⚙️ **EspSpi**](EspSpi.md) - ESP32-C6 implementation
-- [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
+### **Documentation Structure**
+
+- **[🏠 Main Documentation](../README.md)** - Complete system overview
+- **[📋 API Interfaces](README.md)** - Base classes and interfaces overview
+- **[🔧 ESP32 Implementations](../esp_api/README.md)** - Hardware-specific implementations
+- **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
+- **[🔒 Security Features](../security/README.md)** - Security implementation
+
+### **Related Documentation**
+
+- **[EspSpi Implementation](../esp_api/EspSpi.md)** - ESP32-C6 SPI implementation
+- **[SPI Comprehensive Tests](../../examples/esp32/docs/README_SPI_TEST.md)** - Complete SPI validation
+- **[Hardware Types](HardwareTypes.md)** - Type definitions and validation
+- **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html)** - Official ESP-IDF documentation
+
+### **Navigation Links**
+
+- **[⬅️ Previous: BasePwm](BasePwm.md)** - Pulse Width Modulation
+- **[➡️ Next: BaseUart](BaseUart.md)** - Serial Communication
+- **[🔙 Back to API Overview](README.md)** - API interfaces overview
 
 ---
 

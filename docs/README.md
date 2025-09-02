@@ -7,9 +7,9 @@
 ![ESP32-C6](https://img.shields.io/badge/ESP32--C6-Supported-green?style=for-the-badge&logo=espressif)
 ![License](https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge&logo=opensourceinitiative)
 
-**🎯 Comprehensive Hardware Abstraction Layer for HardFOC Motor Controller Boards**
+**🎯 Hardware Abstraction Layer for HardFOC Systems**
 
-*Professional, platform-agnostic interface wrapper specifically designed for HardFOC motor controller boards with complete wireless, communication, and sensor support*
+*Professional, platform-agnostic interface wrapper for HardFOC motor controller boards*
 
 </div>
 
@@ -34,22 +34,22 @@
 
 ## 🎯 **Overview**
 
-The **HardFOC Internal Interface Wrapper** is a comprehensive, production-ready hardware abstraction layer specifically designed for **HardFOC motor controller boards**. It provides unified APIs across different MCU platforms while maintaining the high performance, thread safety, and extensive hardware support that HardFOC motor controller boards require.
+The **HardFOC Internal Interface Wrapper** is a hardware abstraction layer for **HardFOC motor controller boards**. It provides unified APIs across different MCU platforms while maintaining performance, thread safety, and hardware support.
 
 ### 🎯 **Primary Goals for HardFOC Boards**
 
 - **🔌 Unified Interface** - Consistent APIs across all HardFOC motor controller board peripherals
-- **⚡ Real-Time Performance** - Optimized for critical HardFOC motor control timing requirements
-- **🌐 Modern Connectivity** - Complete WiFi and Bluetooth support for IoT-enabled HardFOC boards
-- **🛡️ Production Ready** - Professional-grade error handling and monitoring for HardFOC applications
+- **⚡ Real-Time Performance** - Optimized for HardFOC motor control timing requirements
+- **🌐 Modern Connectivity** - WiFi and Bluetooth support for IoT-enabled HardFOC boards
+- **🛡️ Production Ready** - Error handling and monitoring for HardFOC applications
 - **📈 Scalable Architecture** - From simple HardFOC prototypes to complex industrial systems
-- **🔧 Easy Integration** - Seamless integration with existing HardFOC motor control applications
+- **🔧 Easy Integration** - Integration with existing HardFOC motor control applications
 
 ---
 
 ## 🏗️ **Architecture**
 
-The wrapper follows a sophisticated multi-layered architecture optimized for HardFOC motor controller boards:
+The wrapper follows a multi-layered architecture for HardFOC motor controller boards:
 
 ```mermaid
 graph TB
@@ -244,6 +244,17 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 ---
 
 ## 📋 **API Reference**
+
+### 📚 **Documentation Structure**
+
+Our comprehensive documentation is organized into logical sections for easy navigation:
+
+| **Section** | **Description** | **Documentation** |
+|-------------|-----------------|-------------------|
+| **[📋 API Interfaces](api/README.md)** | Base classes and abstract interfaces | Complete API reference with examples |
+| **[🔧 ESP32 Implementations](esp_api/README.md)** | ESP32-C6 specific implementations | Hardware-specific optimizations and features |
+| **[🧪 Test Suites](../../examples/esp32/docs/README.md)** | Test documentation and examples | Test suites and examples |
+| **[🔒 Security Features](security/README.md)** | Security implementation details | Encryption, authentication, and safety |
 
 ### 🏛️ **Core Interfaces for HardFOC Boards**
 
@@ -476,15 +487,19 @@ The GPL-3.0 license ensures that improvements to the HardFOC wrapper remain open
 
 <div align="center">
 
-**🚀 Built for the HardFOC Community**
+**🚀 HardFOC Interface Wrapper**
 
-*Enabling next-generation HardFOC motor controller board development with professional hardware abstraction*
+*Hardware abstraction layer for HardFOC motor controller boards*
 
 ---
 
 **🔗 Quick Links**
 
 [🚀 Quick Start](#-quick-start) | [📋 API Reference](#-api-reference) | [📊 Examples](#-examples) | [🤝 Contributing](#-contributing)
+
+**📚 Documentation Navigation**
+
+[📋 API Interfaces](api/README.md) | [🔧 ESP32 Implementations](esp_api/README.md) | [🧪 Test Suites](../../examples/esp32/docs/README.md) | [🔒 Security](security/README.md)
 
 **📞 Support**
 

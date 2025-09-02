@@ -4,9 +4,9 @@
 
 ![HardFOC Interface](https://img.shields.io/badge/HardFOC-Interface%20Wrapper-blue?style=for-the-badge&logo=hardware)
 
-**🎯 Unified Hardware Abstraction Layer for Embedded Systems**
+**🎯 Hardware Abstraction Layer for Embedded Systems**
 
-*A comprehensive, platform-agnostic interface wrapper for all hardware peripherals*
+*A platform-agnostic interface wrapper for hardware peripherals*
 
 </div>
 
@@ -21,6 +21,7 @@
 - [🎯 **Type System**](#-type-system)
 - [📊 **Getting Started**](#-getting-started)
 - [🧪 **Examples**](#-examples)
+- [🧪 **Testing**](#-testing)
 
 ---
 
@@ -31,7 +32,7 @@ The **HardFOC Interface Wrapper** provides a unified, platform-agnostic abstract
 ### ✨ **Key Benefits**
 
 - 🔄 **Platform Portability** - Write once, run anywhere
-- 🛡️ **Type Safety** - Strongly typed interfaces with comprehensive error handling
+- 🛡️ **Type Safety** - Strongly typed interfaces with error handling
 - ⚡ **Performance Optimized** - Minimal overhead with direct hardware access
 - 🔧 **Extensible** - Easy to add new hardware platforms and peripherals
 - 📊 **Observable** - Built-in statistics, diagnostics, and monitoring
@@ -77,7 +78,7 @@ The HardFOC Interface follows a **layered abstraction pattern**:
 
 - **Comprehensive Error Codes** - Detailed error enumeration for each peripheral
 - **String Conversion** - Human-readable error messages
-- **Error Recovery** - Built-in recovery mechanisms where possible
+- **Error Recovery** - Recovery mechanisms where possible
 - **Diagnostics** - Runtime error tracking and statistics
 
 ---
@@ -115,7 +116,7 @@ ESP32-C6 specific implementations with optimized features:
 | **EspAdc** | BaseAdc | 12-bit resolution, multiple units | ✅ Available |
 | **EspPwm** | BasePwm | LEDC controller, fade effects | 📝 In Progress |
 | **EspI2c** | BaseI2c | Clock stretching, multi-master | 📝 In Progress |
-| **EspSpi** | BaseSpi | Full-duplex, DMA support | 📝 In Progress |
+| **[EspSpi](EspSpi.md)** | BaseSpi | Full-duplex, DMA support, IOMUX optimization | ✅ Complete |
 | **EspUart** | BaseUart | Hardware flow control | 📝 In Progress |
 | **EspCan** | BaseCan | TWAI controller | 📝 In Progress |
 | **EspWifi** | BaseWifi | 802.11n, WPA3, mesh | 📝 In Progress |
@@ -290,16 +291,60 @@ public:
 
 ---
 
-## 🔗 **Related Documentation**
+## 🧪 **Testing**
 
-- **[Main Documentation](../index.md)** - Complete system overview
+Comprehensive test suites for validating hardware interface implementations:
+
+- **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
+
+### **Test Features**
+
+- **Automated Testing** - Comprehensive validation of all functionality
+- **Performance Testing** - Speed, DMA, and optimization validation
+- **Error Handling** - Edge case and failure mode testing
+- **Hardware Validation** - Real hardware signal verification
+- **Pattern Testing** - Data integrity and timing validation
+
+---
+
+## 🔗 **Navigation**
+
+### **Documentation Structure**
+
+- **[🏠 Main Documentation](../README.md)** - Complete system overview
+- **[🔧 ESP32 Implementations](../esp_api/README.md)** - Hardware-specific implementations
+- **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
+- **[🔒 Security Features](../security/README.md)** - Security implementation
+
+### **Base Class Documentation**
+
+| **Interface** | **Documentation** | **Status** |
+|---------------|-------------------|------------|
+| **[BaseAdc](BaseAdc.md)** | Analog-to-Digital Conversion | ✅ Complete |
+| **[BaseGpio](BaseGpio.md)** | Digital I/O Control | ✅ Complete |
+| **[BaseI2c](BaseI2c.md)** | I2C Bus Communication | ✅ Complete |
+| **[BaseNvs](BaseNvs.md)** | Non-Volatile Storage | ✅ Complete |
+| **[BasePeriodicTimer](BasePeriodicTimer.md)** | High-Precision Timing | ✅ Complete |
+| **[BasePio](BasePio.md)** | Programmable I/O | ✅ Complete |
+| **[BasePwm](BasePwm.md)** | Pulse Width Modulation | ✅ Complete |
+| **[BaseSpi](BaseSpi.md)** | SPI Bus Communication | ✅ Complete |
+| **[BaseUart](BaseUart.md)** | Serial Communication | ✅ Complete |
+| **[BaseCan](BaseCan.md)** | CAN Bus Communication | ✅ Complete |
+| **[BaseWifi](BaseWifi.md)** | WiFi Communication | ✅ Complete |
+| **[BaseBluetooth](BaseBluetooth.md)** | Bluetooth Communication | ✅ Complete |
+| **[BaseTemperature](BaseTemperature.md)** | Temperature Sensing | ✅ Complete |
+| **[BaseLogger](BaseLogger.md)** | Logging System | ✅ Complete |
+
+### **Related Resources**
+
 - **[Contributing Guidelines](../../CONTRIBUTING.md)** - How to contribute
+- **[Hardware Types](HardwareTypes.md)** - Type definitions and validation
 
 ---
 
 <div align="center">
 
-**🚀 HardFOC Interface Wrapper - Powering the Future of Embedded Systems**
+**🚀 HardFOC Interface Wrapper**
 
 *Part of the HardFOC Ecosystem*
 

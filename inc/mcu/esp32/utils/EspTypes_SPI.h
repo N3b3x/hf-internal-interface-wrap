@@ -227,18 +227,24 @@ struct hf_spi_device_config_t {
 
   hf_spi_device_config_t() noexcept
       : clock_speed_hz(1000000), mode(hf_spi_mode_t::HF_SPI_MODE_0), cs_pin(HF_INVALID_PIN),
-        queue_size(7), command_bits(0), address_bits(0), dummy_bits(0), duty_cycle_pos(128),
-        cs_ena_pretrans(0), cs_ena_posttrans(0), flags(0), input_delay_ns(0), pre_cb(nullptr),
+        queue_size(32), command_bits(0), address_bits(0), dummy_bits(0), duty_cycle_pos(128),
+        cs_ena_pretrans(2), cs_ena_posttrans(2), flags(0), input_delay_ns(0), pre_cb(nullptr),
         post_cb(nullptr), user_ctx(nullptr),
         clock_source(static_cast<hf_spi_clock_source_t>(SPI_CLK_SRC_DEFAULT)),
 #ifdef HF_MCU_ESP32C6
-        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_1)) {
-  }
+        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_0)) {
 #else
-        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_DEFAULT)) {
-  }
+        sampling_point(static_cast<hf_spi_sampling_point_t>(SPI_SAMPLING_POINT_PHASE_1)) {
 #endif
+  }
 };
+
+// ESP-IDF SPI device flags (matching ESP-IDF example patterns)
+#define HF_SPI_DEVICE_HALFDUPLEX     (1 << 0)  // Half-duplex mode
+#define HF_SPI_DEVICE_POSITIVE_CS    (1 << 1)  // CS active high
+#define HF_SPI_DEVICE_CLK_AS_CS      (1 << 2)  // Clock idle state
+#define HF_SPI_DEVICE_NO_DUMMY       (1 << 3)  // No dummy bits
+#define HF_SPI_DEVICE_DDRCLK         (1 << 4)  // DDR clock mode
 
 //==============================================================================
 // END OF ESPSPI TYPES - MINIMAL AND ESSENTIAL ONLY
