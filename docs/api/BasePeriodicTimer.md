@@ -42,9 +42,6 @@ The `BasePeriodicTimer` class provides a comprehensive periodic timer abstractio
 | Implementation | Hardware Type | Resolution | Max Period | Features | Use Cases |
 |----------------|---------------|------------|------------|----------|-----------|
 | `EspPeriodicTimer` | ESP32-C6 Hardware | 1 μs | 8.5 hours | Multiple channels, DMA | Control loops, sampling |
-| `SoftwarePeriodicTimer` | Software Timer | 1 ms | Unlimited | Any platform | Development, testing |
-| `Tmc9660Timer` | Motor Controller | 1 μs | 1 second | Integrated with motor control | Motor control timing |
-| `ExternalTimer` | External IC | 100 ns | 1 hour | High precision | Precision timing |
 
 ---
 
@@ -74,14 +71,7 @@ classDiagram
         +GetTimerNum() timer_idx_t
     }
     
-    class SoftwarePeriodicTimer {
-        +SoftwarePeriodicTimer()
-        +SetThreadPriority(priority) void
-        +SetAffinity(core) void
-    }
-    
     BasePeriodicTimer <|-- EspPeriodicTimer
-    BasePeriodicTimer <|-- SoftwarePeriodicTimer
 ```
 
 ---
@@ -969,9 +959,7 @@ timer.Start(period);  // No callback set
 
 ## 🔗 **Related Documentation**
 
-- [🔒 **SfPeriodicTimer**](SfPeriodicTimer.md) - Thread-safe timer wrapper
 - [⚙️ **EspPeriodicTimer**](../esp_api/EspPeriodicTimer.md) - ESP32-C6 implementation
-- [💻 **SoftwarePeriodicTimer**](SoftwarePeriodicTimer.md) - Software implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---

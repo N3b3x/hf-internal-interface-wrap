@@ -42,9 +42,6 @@ The `BaseNvs` class provides a comprehensive non-volatile storage abstraction th
 | Implementation | Hardware Type | Capacity | Features | Use Cases |
 |----------------|---------------|----------|----------|-----------|
 | `EspNvs` | ESP32-C6 Flash | Up to 1MB | Encryption, wear leveling | Configuration, logs |
-| `EepromNvs` | External EEPROM | Up to 64KB | Simple, reliable | Small config storage |
-| `FlashNvs` | External Flash | Up to 16MB | Large capacity, wear leveling | Large data storage |
-| `FileNvs` | File System | Unlimited | File-based storage | Development, testing |
 
 ---
 
@@ -77,14 +74,7 @@ classDiagram
         +SetEncryption(enabled) hf_nvs_err_t
     }
     
-    class EepromNvs {
-        +EepromNvs(i2c, address)
-        +GetDeviceAddress() uint8_t
-        +GetCapacity() size_t
-    }
-    
     BaseNvs <|-- EspNvs
-    BaseNvs <|-- EepromNvs
 ```
 
 ---
@@ -967,9 +957,7 @@ if (stats.bytes_written > max_storage_bytes) {
 
 ## 🔗 **Related Documentation**
 
-- [🔒 **SfNvs**](SfNvs.md) - Thread-safe NVS wrapper
 - [⚙️ **EspNvs**](../esp_api/EspNvs.md) - ESP32-C6 implementation
-- [💾 **EepromNvs**](EepromNvs.md) - EEPROM implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---
