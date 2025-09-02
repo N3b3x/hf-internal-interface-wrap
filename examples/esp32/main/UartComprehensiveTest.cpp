@@ -1946,15 +1946,17 @@ extern "C" void app_main(void) {
       // Constructor/Destructor Tests
       ESP_LOGI(TAG, "Running constructor/destructor tests...");
       RUN_TEST_IN_TASK("uart_construction", test_uart_construction, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("uart_initialization", test_uart_initialization, 8192, 1);
+      flip_test_progress_indicator();
 
 
       // Basic Communication Tests
       ESP_LOGI(TAG, "Running basic communication tests...");
       RUN_TEST_IN_TASK("basic_communication", test_uart_basic_communication, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("baud_rate_configuration", test_uart_baud_rate_configuration, 8192, 1);
+      flip_test_progress_indicator();
 
       // Temporarily skip flow control test due to ESP32-C6 compatibility issues
       // RUN_TEST_IN_TASK("flow_control", test_uart_flow_control, 8192, 1);
@@ -1965,6 +1967,7 @@ extern "C" void app_main(void) {
       // Buffer Operations Tests
       ESP_LOGI(TAG, "Running buffer operations tests...");
       RUN_TEST_IN_TASK("buffer_operations", test_uart_buffer_operations, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -1973,12 +1976,13 @@ extern "C" void app_main(void) {
       ESP_LOGI(TAG, "Running advanced feature tests...");
       // Run pattern detection test in a separate task with larger stack for event processing
       RUN_TEST_IN_TASK("pattern_detection", test_uart_pattern_detection, 8192, 5);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("advanced_features", test_uart_advanced_features, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("communication_modes", test_uart_communication_modes, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("async_operations", test_uart_async_operations, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -1986,12 +1990,13 @@ extern "C" void app_main(void) {
       // Callback and Support Tests
       ESP_LOGI(TAG, "Running callback and support tests...");
       RUN_TEST_IN_TASK("callbacks", test_uart_callbacks, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("statistics_diagnostics", test_uart_statistics_diagnostics, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("printf_support", test_uart_printf_support, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("error_handling", test_uart_error_handling, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -1999,10 +2004,11 @@ extern "C" void app_main(void) {
       // ESP32-C6 specific tests
       ESP_LOGI(TAG, "Running ESP32-C6 specific tests...");
       RUN_TEST_IN_TASK("esp32c6_features", test_uart_esp32c6_features, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("performance", test_uart_performance, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("callback_verification", test_uart_callback_verification, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2010,13 +2016,14 @@ extern "C" void app_main(void) {
       // User Event Task Test
       ESP_LOGI(TAG, "Running user event task tests...");
       RUN_TEST_IN_TASK("user_event_task", test_uart_user_event_task, 8192, 1);
-
+      flip_test_progress_indicator();
 
       // Comprehensive Event-Driven Pattern Detection Test
       ESP_LOGI(TAG, "Running comprehensive event-driven pattern detection test...");
       ESP_LOGI(TAG, "This test runs with 5-second timeout and comprehensive event monitoring");
       ESP_LOGI(TAG, "It will test the complete event queue behavior for pattern detection");
       RUN_TEST_IN_TASK("event_driven_pattern_detection", test_uart_event_driven_pattern_detection, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2024,6 +2031,7 @@ extern "C" void app_main(void) {
       // Cleanup Tests
       ESP_LOGI(TAG, "Running cleanup tests...");
       RUN_TEST_IN_TASK("cleanup", test_uart_cleanup, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   print_test_summary(g_test_results, "UART", TAG);

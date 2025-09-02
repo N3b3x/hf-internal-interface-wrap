@@ -2082,12 +2082,13 @@ extern "C" void app_main() {
       // ESP32 Variant Information Tests
       ESP_LOGI(TAG, "Running ESP32 variant information tests...");
       RUN_TEST_IN_TASK("variant_detection", test_esp32_variant_detection, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("channel_allocation_helpers", test_channel_allocation_helpers, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("channel_direction_validation", test_channel_direction_validation, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("resolution_ns_usage", test_resolution_ns_usage, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2095,15 +2096,16 @@ extern "C" void app_main() {
       // Constructor/Destructor Tests
       ESP_LOGI(TAG, "Running constructor/destructor tests...");
       RUN_TEST_IN_TASK("constructor_default", test_constructor_default, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("destructor_cleanup", test_destructor_cleanup, 8192, 1);
-
+      flip_test_progress_indicator();
 
       // Lifecycle Tests
       ESP_LOGI(TAG, "Running lifecycle tests...");
       RUN_TEST_IN_TASK("initialization_states", test_initialization_states, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("lazy_initialization", test_lazy_initialization, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2111,8 +2113,9 @@ extern "C" void app_main() {
       // Channel Configuration Tests
       ESP_LOGI(TAG, "Running channel configuration tests...");
       RUN_TEST_IN_TASK("channel_configuration", test_channel_configuration, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("multiple_channel_configuration", test_multiple_channel_configuration, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2120,8 +2123,9 @@ extern "C" void app_main() {
       // Basic Transmission Tests
       ESP_LOGI(TAG, "Running basic transmission tests...");
       RUN_TEST_IN_TASK("basic_symbol_transmission", test_basic_symbol_transmission, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("transmission_edge_cases", test_transmission_edge_cases, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2129,16 +2133,18 @@ extern "C" void app_main() {
       // WS2812 LED Protocol Tests
       ESP_LOGI(TAG, "Running WS2812 LED protocol tests...");
       RUN_TEST_IN_TASK("ws2812_single_led", test_ws2812_single_led, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("ws2812_multiple_leds", test_ws2812_multiple_leds, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("ws2812_color_cycle", test_ws2812_color_cycle, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("ws2812_brightness_sweep", test_ws2812_brightness_sweep, 8192, 1);
+      flip_test_progress_indicator();
 
       RUN_TEST_IN_TASK("ws2812_pattern_validation", test_ws2812_pattern_validation, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("ws2812_rainbow_transition", test_ws2812_rainbow_transition, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2146,8 +2152,9 @@ extern "C" void app_main() {
       // Logic Analyzer Test Scenarios
       ESP_LOGI(TAG, "Running logic analyzer test scenarios...");
       RUN_TEST_IN_TASK("logic_analyzer_patterns", test_logic_analyzer_patterns, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("frequency_sweep", test_frequency_sweep, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2155,10 +2162,11 @@ extern "C" void app_main() {
       // Advanced RMT Feature Tests
       ESP_LOGI(TAG, "Running advanced RMT feature tests...");
       RUN_TEST_IN_TASK("rmt_encoder_configuration", test_rmt_encoder_configuration, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("rmt_carrier_modulation", test_rmt_carrier_modulation, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("rmt_advanced_configuration", test_rmt_advanced_configuration, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2166,8 +2174,9 @@ extern "C" void app_main() {
       // Loopback and Reception Tests
       ESP_LOGI(TAG, "Running loopback and reception tests...");
       RUN_TEST_IN_TASK("loopback_functionality", test_loopback_functionality, 8192, 1);
-
+      flip_test_progress_indicator();
       RUN_TEST_IN_TASK("hardware_loopback_gpio8_to_gpio18", test_hardware_loopback_gpio8_to_gpio18, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2175,6 +2184,7 @@ extern "C" void app_main() {
       // Callback Tests
       ESP_LOGI(TAG, "Running callback tests...");
       RUN_TEST_IN_TASK("callback_functionality", test_callback_functionality, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2182,11 +2192,12 @@ extern "C" void app_main() {
       // Statistics and Diagnostics Tests
       ESP_LOGI(TAG, "Running statistics and diagnostics tests...");
       RUN_TEST_IN_TASK("statistics_and_diagnostics", test_statistics_and_diagnostics, 8192, 1);
-
+      flip_test_progress_indicator();
 
       // System Validation
       ESP_LOGI(TAG, "Running system validation tests...");
       RUN_TEST_IN_TASK("pio_system_validation", test_pio_system_validation, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   RUN_TEST_SECTION_IF_ENABLED(
@@ -2194,6 +2205,7 @@ extern "C" void app_main() {
       // Stress and Performance Tests
       ESP_LOGI(TAG, "Running stress and performance tests...");
       RUN_TEST_IN_TASK("stress_transmission", test_stress_transmission, 8192, 1);
+      flip_test_progress_indicator();
 );
 
   // Print final summary
