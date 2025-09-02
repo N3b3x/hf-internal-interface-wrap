@@ -1961,6 +1961,7 @@ extern "C" void app_main(void) {
       // Temporarily skip flow control test due to ESP32-C6 compatibility issues
       // RUN_TEST_IN_TASK("flow_control", test_uart_flow_control, 8192, 1);
       // );
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_BASIC_TESTS, "UART BASIC TESTS",
