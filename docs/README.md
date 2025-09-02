@@ -294,8 +294,8 @@ Our comprehensive documentation is organized into logical sections for easy navi
 
 | **Implementation** | **Base Class** | **ESP32-C6 Features** | **Documentation** |
 |-------------------|----------------|----------------------|-------------------|
-| [**`EspGpio`**](api/EspGpio.md) | BaseGpio | Drive strength, slew rate control | ✅ Complete |
-| [**`EspAdc`**](api/EspAdc.md) | BaseAdc | 12-bit resolution, multiple units | ✅ Complete |
+| [**`EspGpio`**](esp_api/EspGpio.md) | BaseGpio | Drive strength, slew rate control | ✅ Complete |
+| **`EspAdc`** | BaseAdc | 12-bit resolution, multiple units | ✅ Complete |
 | **`EspPwm`** | BasePwm | LEDC controller, fade effects | ✅ Complete |
 | **`EspI2c`** | BaseI2c | Clock stretching, multi-master | ✅ Complete |
 | **`EspSpi`** | BaseSpi | Full-duplex, DMA support | ✅ Complete |

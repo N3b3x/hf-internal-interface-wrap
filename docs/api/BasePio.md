@@ -856,8 +856,7 @@ hf_pio_symbol_t optimized[] = {
 
 ## 🔗 **Related Documentation**
 
-- [🔒 **SfPio**](SfPio.md) - Thread-safe PIO wrapper
-- [⚙️ **EspPio**](EspPio.md) - ESP32-C6 implementation
+- [⚙️ **EspPio**](../esp_api/EspPio.md) - ESP32-C6 implementation
 - [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---

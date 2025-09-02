@@ -835,7 +835,7 @@ The `BaseWifi` class is **not inherently thread-safe**. For concurrent access fr
 
 ## 🔗 Related Documentation
 
-- **[EspWifi API Reference](EspWifi.md)** - ESP32-C6 WiFi implementation
+- **[EspWifi API Reference](../esp_api/EspWifi.md)** - ESP32-C6 WiFi implementation
 - **[BaseLogger API Reference](BaseLogger.md)** - Logging WiFi events and diagnostics
 - **[HardwareTypes Reference](HardwareTypes.md)** - Platform-agnostic type definitions
 

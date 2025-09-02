@@ -42,8 +42,6 @@ The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as 
 | Implementation | Hardware Type | Protocol | Speed | Features |
 |----------------|---------------|----------|-------|----------|
 | `EspCan` | ESP32-C6 Internal | CAN 2.0A/B | Up to 1 Mbps | Built-in error handling |
-| `Mcp2515Can` | MCP2515 External | CAN 2.0A/B | Up to 1 Mbps | SPI interface |
-| `Tmc9660Can` | Motor Controller | CAN 2.0A/B | Up to 1 Mbps | Integrated with motor control |
 
 ---
 
@@ -70,14 +68,7 @@ classDiagram
         +SetBaudRate(baudrate) hf_can_err_t
     }
     
-    class Mcp2515Can {
-        +Mcp2515Can(spi, cs_pin)
-        +GetChipId() uint8_t
-        +SetMode(mode) hf_can_err_t
-    }
-    
     BaseCan <|-- EspCan
-    BaseCan <|-- Mcp2515Can
 ```
 
 ---
@@ -962,9 +953,7 @@ if (stats.tx_queue_overflows > 0) {
 
 ## 🔗 **Related Documentation**
 
-- [🔒 **SfCan**](SfCan.md) - Thread-safe CAN wrapper
-- [⚙️ **EspCan**](EspCan.md) - ESP32-C6 implementation
-- [🎛️ **Mcp2515Can**](Mcp2515Can.md) - MCP2515 external controller
+- [⚙️ **EspCan**](../esp_api/EspCan.md) - ESP32-C6 implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---

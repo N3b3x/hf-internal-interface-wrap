@@ -685,7 +685,7 @@ The `BaseI2c` class is **not thread-safe**. For concurrent access from multiple 
 
 ## 🔗 Related Documentation
 
-- **[EspI2c API Reference](EspI2c.md)** - ESP32-C6 I2C implementation
+- **[EspI2c API Reference](../esp_api/EspI2c.md)** - ESP32-C6 I2C implementation
 - **[BaseGpio API Reference](BaseGpio.md)** - GPIO interface for I2C pins
 - **[HardwareTypes Reference](HardwareTypes.md)** - Platform-agnostic type definitions
 
