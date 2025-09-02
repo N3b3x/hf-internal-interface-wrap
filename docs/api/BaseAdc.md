@@ -361,5 +361,5 @@ The following concrete implementations are available:
 
 ## Related Documentation
 
-- [EspAdc API Reference](EspAdc.md) - ESP32-C6 implementation
+- [EspAdc API Reference](../esp_api/EspAdc.md) - ESP32-C6 implementation
 - [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions 

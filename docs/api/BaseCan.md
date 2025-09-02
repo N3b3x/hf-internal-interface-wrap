@@ -963,7 +963,7 @@ if (stats.tx_queue_overflows > 0) {
 ## 🔗 **Related Documentation**
 
 - [🔒 **SfCan**](SfCan.md) - Thread-safe CAN wrapper
-- [⚙️ **EspCan**](EspCan.md) - ESP32-C6 implementation
+- [⚙️ **EspCan**](../esp_api/EspCan.md) - ESP32-C6 implementation
 - [🎛️ **Mcp2515Can**](Mcp2515Can.md) - MCP2515 external controller
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 

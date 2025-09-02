@@ -970,7 +970,7 @@ timer.Start(period);  // No callback set
 ## 🔗 **Related Documentation**
 
 - [🔒 **SfPeriodicTimer**](SfPeriodicTimer.md) - Thread-safe timer wrapper
-- [⚙️ **EspPeriodicTimer**](EspPeriodicTimer.md) - ESP32-C6 implementation
+- [⚙️ **EspPeriodicTimer**](../esp_api/EspPeriodicTimer.md) - ESP32-C6 implementation
 - [💻 **SoftwarePeriodicTimer**](SoftwarePeriodicTimer.md) - Software implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 

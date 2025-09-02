@@ -590,7 +590,7 @@ The `BasePwm` class is **not thread-safe**. For concurrent access, use appropria
 
 ## 🔗 Related Documentation
 
-- **[EspPwm API Reference](EspPwm.md)** - ESP32-C6 PWM implementation
+- **[EspPwm API Reference](../esp_api/EspPwm.md)** - ESP32-C6 PWM implementation
 - **[BaseGpio API Reference](BaseGpio.md)** - GPIO interface for PWM output pins
 - **[HardwareTypes Reference](HardwareTypes.md)** - Platform-agnostic type definitions
 

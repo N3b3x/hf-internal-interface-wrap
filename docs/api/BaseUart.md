@@ -972,7 +972,7 @@ config.use_dma = (transfer_size > 64);  // Use DMA for transfers > 64 bytes
 ## 🔗 **Related Documentation**
 
 - [🔒 **SfUart**](SfUart.md) - Thread-safe UART wrapper
-- [⚙️ **EspUart**](EspUart.md) - ESP32-C6 implementation
+- [⚙️ **EspUart**](../esp_api/EspUart.md) - ESP32-C6 implementation
 - [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---

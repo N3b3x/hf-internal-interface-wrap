@@ -968,7 +968,7 @@ if (stats.bytes_written > max_storage_bytes) {
 ## 🔗 **Related Documentation**
 
 - [🔒 **SfNvs**](SfNvs.md) - Thread-safe NVS wrapper
-- [⚙️ **EspNvs**](EspNvs.md) - ESP32-C6 implementation
+- [⚙️ **EspNvs**](../esp_api/EspNvs.md) - ESP32-C6 implementation
 - [💾 **EepromNvs**](EepromNvs.md) - EEPROM implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
