@@ -162,9 +162,9 @@ apps:
     ci_enabled: true
     featured: true
 
-  utils_test:
-    description: "Utilities testing suite"
-    source_file: "UtilsComprehensiveTest.cpp"
+  dog_test:
+    description: "DigitalOutputGuard comprehensive testing suite"
+    source_file: "DigitalOutputGuardComprehensiveTest.cpp"
     category: "utility"
     idf_versions: ["release/v5.5"]
     build_types: ["Debug", "Release"]
