@@ -397,6 +397,6 @@ All `EspGpio` methods return appropriate error codes from the `hf_gpio_err_t` en
 
 ## Related Documentation
 
-- [BaseGpio API Reference](BaseGpio.md) - Base class interface
-- [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions
+- [BaseGpio API Reference](../api/BaseGpio.md) - Base class interface
+- [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF GPIO Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/gpio.html) - ESP-IDF documentation

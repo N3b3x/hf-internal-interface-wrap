@@ -16,17 +16,34 @@ def check_file(md_path: str) -> int:
     with open(md_path, 'r', encoding='utf-8') as f:
         for line_num, line in enumerate(f, 1):
             for match in RE_LINK.findall(line):
-                # Ignore external links
+                # Ignore external links and function signatures
                 if (
                     match.startswith('http')
                     or match.startswith('#')
                     or '://' in match
                     or match.startswith('mailto:')
-                    or match.startswith('api/')
-                    or match.startswith('..')
+                    or '&' in match  # Function signature with reference
+                    or match.startswith('const ')  # Function signature with const
+                    or match.startswith('../../')  # External references outside docs
+                    or 'void*' in match  # Function signature with void pointer
+                    or match.startswith('hf_')  # Function signature with hf_ prefix
+                    or match.startswith('../.github/')  # External GitHub references
+                    or match.startswith('../CONTRIBUTING.md')  # External contributing guide
                 ):
                     continue
-                path = os.path.normpath(os.path.join(root, match))
+                
+                # Handle cross-directory references within docs/
+                if match.startswith('api/') or match.startswith('esp_api/'):
+                    # This is a cross-directory reference, check from docs root
+                    docs_root = os.path.dirname(root) if os.path.basename(root) in ['api', 'esp_api'] else root
+                    path = os.path.normpath(os.path.join(docs_root, match))
+                elif match.startswith('..'):
+                    # Relative path going up directories
+                    path = os.path.normpath(os.path.join(root, match))
+                else:
+                    # Local file reference
+                    path = os.path.normpath(os.path.join(root, match))
+                
                 if not os.path.exists(path):
                     print(f"{md_path}:{line_num} missing file {match}")
                     missing += 1

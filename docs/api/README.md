@@ -112,11 +112,11 @@ ESP32-C6 specific implementations with optimized features:
 
 | Implementation | Base Class | ESP32-C6 Features | Documentation |
 |----------------|------------|-------------------|---------------|
-| **[EspGpio](EspGpio.md)** | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete |
+| **[EspGpio](../esp_api/EspGpio.md)** | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete |
 | **EspAdc** | BaseAdc | 12-bit resolution, multiple units | ✅ Available |
 | **EspPwm** | BasePwm | LEDC controller, fade effects | 📝 In Progress |
 | **EspI2c** | BaseI2c | Clock stretching, multi-master | 📝 In Progress |
-| **[EspSpi](EspSpi.md)** | BaseSpi | Full-duplex, DMA support, IOMUX optimization | ✅ Complete |
+| **[EspSpi](../esp_api/EspSpi.md)** | BaseSpi | Full-duplex, DMA support, IOMUX optimization | ✅ Complete |
 | **EspUart** | BaseUart | Hardware flow control | 📝 In Progress |
 | **EspCan** | BaseCan | TWAI controller | 📝 In Progress |
 | **EspWifi** | BaseWifi | 802.11n, WPA3, mesh | 📝 In Progress |

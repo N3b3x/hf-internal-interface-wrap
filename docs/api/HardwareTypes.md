@@ -359,4 +359,4 @@ bool convert_pin_number(int input_pin, hf_pin_num_t& output_pin) {
 
 - [BaseGpio API Reference](BaseGpio.md) - GPIO type usage examples
 - [BaseAdc API Reference](BaseAdc.md) - ADC channel type usage
-- [EspGpio API Reference](EspGpio.md) - ESP32-specific type mappings
+- [EspGpio API Reference](../esp_api/EspGpio.md) - ESP32-specific type mappings

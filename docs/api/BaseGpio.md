@@ -288,5 +288,5 @@ The following concrete implementations are available:
 
 ## Related Documentation
 
-- [EspGpio API Reference](EspGpio.md) - ESP32-C6 implementation
+- [EspGpio API Reference](../esp_api/EspGpio.md) - ESP32-C6 implementation
 - [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions 
