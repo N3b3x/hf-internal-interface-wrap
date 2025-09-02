@@ -37,11 +37,11 @@ static TestResults g_test_results;
 // Enable/disable specific test categories by setting to true or false
 
 // Core ASCII art functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Basic generation, uppercase conversion
-static constexpr bool ENABLE_CHARACTER_TESTS = true;      // Special characters, numbers, symbols
-static constexpr bool ENABLE_EDGE_CASE_TESTS = true;      // Empty cases, edge cases
-static constexpr bool ENABLE_CUSTOM_TESTS = true;         // Custom character management, validation
-static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Complex text generation, performance
+static constexpr bool ENABLE_CORE_TESTS = true;      // Basic generation, uppercase conversion
+static constexpr bool ENABLE_CHARACTER_TESTS = true; // Special characters, numbers, symbols
+static constexpr bool ENABLE_EDGE_CASE_TESTS = true; // Empty cases, edge cases
+static constexpr bool ENABLE_CUSTOM_TESTS = true;    // Custom character management, validation
+static constexpr bool ENABLE_ADVANCED_TESTS = true;  // Complex text generation, performance
 
 // Forward declarations
 bool test_basic_ascii_art_generation() noexcept;

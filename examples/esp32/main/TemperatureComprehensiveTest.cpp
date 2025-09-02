@@ -23,11 +23,14 @@ static std::atomic<float> g_last_callback_temperature{0.0f};
 // Enable/disable specific test categories by setting to true or false
 
 // Core temperature functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, reading, sensor info
-static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Range management, threshold monitoring, continuous monitoring
-static constexpr bool ENABLE_FEATURE_TESTS = true;        // Calibration, power management, self-test, health monitoring
-static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, diagnostics, ESP32-specific features
-static constexpr bool ENABLE_STRESS_TESTS = true;         // Error handling, performance, stress testing
+static constexpr bool ENABLE_CORE_TESTS = true; // Initialization, reading, sensor info
+static constexpr bool ENABLE_ADVANCED_TESTS =
+    true; // Range management, threshold monitoring, continuous monitoring
+static constexpr bool ENABLE_FEATURE_TESTS =
+    true; // Calibration, power management, self-test, health monitoring
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS =
+    true; // Statistics, diagnostics, ESP32-specific features
+static constexpr bool ENABLE_STRESS_TESTS = true; // Error handling, performance, stress testing
 
 //==============================================================================
 // CALLBACK FUNCTIONS FOR TESTING

@@ -176,7 +176,7 @@ public:
    * @brief Destructor. Automatically deinitializes the bus if needed.
    */
   ~EspSpiBus() noexcept;
-  
+
   /**
    * @brief Initialize the SPI bus.
    * @return true if successful, false otherwise

@@ -50,19 +50,17 @@ static TestResults g_test_results;
 // Enable/disable specific test categories by setting to true or false
 
 // Core PIO functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Constructor/destructor, lifecycle, initialization
-static constexpr bool ENABLE_VARIANT_TESTS = true;        // ESP32 variant detection, channel allocation
-static constexpr bool ENABLE_CHANNEL_TESTS = true;        // Channel configuration, multiple channels
-static constexpr bool ENABLE_TRANSMISSION_TESTS = true;   // Basic symbol transmission, edge cases
-static constexpr bool ENABLE_WS2812_TESTS = true;         // WS2812 LED protocol, color testing
-static constexpr bool ENABLE_ANALYZER_TESTS = true;       // Logic analyzer patterns, frequency sweep
-static constexpr bool ENABLE_ADVANCED_TESTS = true;       // Advanced RMT features, encoder, carrier
-static constexpr bool ENABLE_LOOPBACK_TESTS = true;       // Loopback functionality, hardware loopback
-static constexpr bool ENABLE_CALLBACK_TESTS = true;       // Channel-specific callbacks
-static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, diagnostics, system validation
-static constexpr bool ENABLE_STRESS_TESTS = true;         // Stress transmission, performance
-
-
+static constexpr bool ENABLE_CORE_TESTS = true; // Constructor/destructor, lifecycle, initialization
+static constexpr bool ENABLE_VARIANT_TESTS = true; // ESP32 variant detection, channel allocation
+static constexpr bool ENABLE_CHANNEL_TESTS = true; // Channel configuration, multiple channels
+static constexpr bool ENABLE_TRANSMISSION_TESTS = true; // Basic symbol transmission, edge cases
+static constexpr bool ENABLE_WS2812_TESTS = true;       // WS2812 LED protocol, color testing
+static constexpr bool ENABLE_ANALYZER_TESTS = true;     // Logic analyzer patterns, frequency sweep
+static constexpr bool ENABLE_ADVANCED_TESTS = true;     // Advanced RMT features, encoder, carrier
+static constexpr bool ENABLE_LOOPBACK_TESTS = true;     // Loopback functionality, hardware loopback
+static constexpr bool ENABLE_CALLBACK_TESTS = true;     // Channel-specific callbacks
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true; // Statistics, diagnostics, system validation
+static constexpr bool ENABLE_STRESS_TESTS = true;     // Stress transmission, performance
 
 //==============================================================================
 // WS2812 PROTOCOL CONSTANTS (for RGB LED testing)
@@ -85,8 +83,6 @@ static constexpr hf_gpio_num_t TEST_GPIO_RX = 18; // GPIO18 for reception (RMT c
 static constexpr uint32_t TEST_RESOLUTION_WS2812_NS = 125;   // 8 MHz -> 125ns per tick
 static constexpr uint32_t TEST_RESOLUTION_STANDARD_NS = 500; // 2 MHz -> 500ns per tick
 static constexpr uint32_t TEST_RESOLUTION_LOW_NS = 10000;    // 100 kHz -> 10µs per tick
-
-
 
 //==============================================================================
 // CALLBACK TEST INFRASTRUCTURE
@@ -2088,8 +2084,7 @@ extern "C" void app_main() {
       RUN_TEST_IN_TASK("channel_direction_validation", test_channel_direction_validation, 8192, 1);
       flip_test_progress_indicator();
       RUN_TEST_IN_TASK("resolution_ns_usage", test_resolution_ns_usage, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_CORE_TESTS, "PIO CORE TESTS",
@@ -2105,18 +2100,16 @@ extern "C" void app_main() {
       RUN_TEST_IN_TASK("initialization_states", test_initialization_states, 8192, 1);
       flip_test_progress_indicator();
       RUN_TEST_IN_TASK("lazy_initialization", test_lazy_initialization, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_CHANNEL_TESTS, "PIO CHANNEL TESTS",
       // Channel Configuration Tests
       ESP_LOGI(TAG, "Running channel configuration tests...");
       RUN_TEST_IN_TASK("channel_configuration", test_channel_configuration, 8192, 1);
-      flip_test_progress_indicator();
-      RUN_TEST_IN_TASK("multiple_channel_configuration", test_multiple_channel_configuration, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(); RUN_TEST_IN_TASK(
+          "multiple_channel_configuration", test_multiple_channel_configuration, 8192, 1);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_TRANSMISSION_TESTS, "PIO TRANSMISSION TESTS",
@@ -2125,8 +2118,7 @@ extern "C" void app_main() {
       RUN_TEST_IN_TASK("basic_symbol_transmission", test_basic_symbol_transmission, 8192, 1);
       flip_test_progress_indicator();
       RUN_TEST_IN_TASK("transmission_edge_cases", test_transmission_edge_cases, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_WS2812_TESTS, "PIO WS2812 TESTS",
@@ -2144,8 +2136,7 @@ extern "C" void app_main() {
       RUN_TEST_IN_TASK("ws2812_pattern_validation", test_ws2812_pattern_validation, 8192, 1);
       flip_test_progress_indicator();
       RUN_TEST_IN_TASK("ws2812_rainbow_transition", test_ws2812_rainbow_transition, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_ANALYZER_TESTS, "PIO ANALYZER TESTS",
@@ -2154,8 +2145,7 @@ extern "C" void app_main() {
       RUN_TEST_IN_TASK("logic_analyzer_patterns", test_logic_analyzer_patterns, 8192, 1);
       flip_test_progress_indicator();
       RUN_TEST_IN_TASK("frequency_sweep", test_frequency_sweep, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_ADVANCED_TESTS, "PIO ADVANCED TESTS",
@@ -2166,26 +2156,23 @@ extern "C" void app_main() {
       RUN_TEST_IN_TASK("rmt_carrier_modulation", test_rmt_carrier_modulation, 8192, 1);
       flip_test_progress_indicator();
       RUN_TEST_IN_TASK("rmt_advanced_configuration", test_rmt_advanced_configuration, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_LOOPBACK_TESTS, "PIO LOOPBACK TESTS",
       // Loopback and Reception Tests
       ESP_LOGI(TAG, "Running loopback and reception tests...");
       RUN_TEST_IN_TASK("loopback_functionality", test_loopback_functionality, 8192, 1);
-      flip_test_progress_indicator();
-      RUN_TEST_IN_TASK("hardware_loopback_gpio8_to_gpio18", test_hardware_loopback_gpio8_to_gpio18, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(); RUN_TEST_IN_TASK(
+          "hardware_loopback_gpio8_to_gpio18", test_hardware_loopback_gpio8_to_gpio18, 8192, 1);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_CALLBACK_TESTS, "PIO CALLBACK TESTS",
       // Callback Tests
       ESP_LOGI(TAG, "Running callback tests...");
       RUN_TEST_IN_TASK("callback_functionality", test_callback_functionality, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_DIAGNOSTIC_TESTS, "PIO DIAGNOSTIC TESTS",
@@ -2197,16 +2184,14 @@ extern "C" void app_main() {
       // System Validation
       ESP_LOGI(TAG, "Running system validation tests...");
       RUN_TEST_IN_TASK("pio_system_validation", test_pio_system_validation, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_STRESS_TESTS, "PIO STRESS TESTS",
       // Stress and Performance Tests
       ESP_LOGI(TAG, "Running stress and performance tests...");
       RUN_TEST_IN_TASK("stress_transmission", test_stress_transmission, 8192, 1);
-      flip_test_progress_indicator();
-);
+      flip_test_progress_indicator(););
 
   // Print final summary
   print_test_summary(g_test_results, "PIO", TAG);

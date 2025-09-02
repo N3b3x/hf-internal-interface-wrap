@@ -24,9 +24,9 @@ static TestResults g_test_results;
 // Enable/disable specific test categories by setting to true or false
 
 // Core WiFi interface tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Data structures, enums, error codes
-static constexpr bool ENABLE_INTERFACE_TESTS = true;      // Interface validation, integration
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Performance, stress testing
+static constexpr bool ENABLE_CORE_TESTS = true;        // Data structures, enums, error codes
+static constexpr bool ENABLE_INTERFACE_TESTS = true;   // Interface validation, integration
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true; // Performance, stress testing
 
 //==============================================================================
 // WIFI INTERFACE AND DATA STRUCTURE TESTS

@@ -37,11 +37,12 @@ static const uint8_t TEST_BLOB_DATA[] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x0
 // Enable/disable specific test categories by setting to true or false
 
 // Core NVS functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;           // Initialization, deinitialization, basic operations
-static constexpr bool ENABLE_DATA_TESTS = true;           // U32, string, blob operations
-static constexpr bool ENABLE_MANAGEMENT_TESTS = true;     // Key operations, commit operations
-static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true;     // Statistics, diagnostics, metadata
-static constexpr bool ENABLE_STRESS_TESTS = true;         // Edge cases, stress testing
+static constexpr bool ENABLE_CORE_TESTS =
+    true; // Initialization, deinitialization, basic operations
+static constexpr bool ENABLE_DATA_TESTS = true;       // U32, string, blob operations
+static constexpr bool ENABLE_MANAGEMENT_TESTS = true; // Key operations, commit operations
+static constexpr bool ENABLE_DIAGNOSTIC_TESTS = true; // Statistics, diagnostics, metadata
+static constexpr bool ENABLE_STRESS_TESTS = true;     // Edge cases, stress testing
 
 // === Initialization and Deinitialization Tests ===
 
@@ -1096,12 +1097,11 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("statistics_diagnostics", test_nvs_statistics_diagnostics, 8192, 1);
       RUN_TEST_IN_TASK("metadata", test_nvs_metadata, 8192, 1););
 
-  RUN_TEST_SECTION_IF_ENABLED(
-      ENABLE_STRESS_TESTS, "NVS STRESS TESTS",
-      // Stress and edge case tests
-      ESP_LOGI(TAG, "Running NVS stress tests...");
-      RUN_TEST_IN_TASK("edge_cases", test_nvs_edge_cases, 8192, 1);
-      RUN_TEST_IN_TASK("stress", test_nvs_stress, 8192, 1););
+  RUN_TEST_SECTION_IF_ENABLED(ENABLE_STRESS_TESTS, "NVS STRESS TESTS",
+                              // Stress and edge case tests
+                              ESP_LOGI(TAG, "Running NVS stress tests...");
+                              RUN_TEST_IN_TASK("edge_cases", test_nvs_edge_cases, 8192, 1);
+                              RUN_TEST_IN_TASK("stress", test_nvs_stress, 8192, 1););
 
   // Print summary
   print_test_summary(g_test_results, "NVS", TAG);

@@ -69,13 +69,11 @@ inline bool init_test_progress_indicator() noexcept {
   }
 
   // Create GPIO14 instance for test progression indicator
-  g_test_progress_gpio = new EspGpio(
-      TEST_PROGRESS_PIN,
-      hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-      hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
-      hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
-      hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN
-  );
+  g_test_progress_gpio =
+      new EspGpio(TEST_PROGRESS_PIN, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                  hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+                  hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                  hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN);
 
   if (!g_test_progress_gpio) {
     return false; // Failed to allocate
@@ -106,9 +104,9 @@ inline void flip_test_progress_indicator() noexcept {
 
   // Toggle GPIO14 state
   g_test_progress_state = !g_test_progress_state;
-  
+
   if (g_test_progress_state) {
-    g_test_progress_gpio->SetActive();   // Set HIGH
+    g_test_progress_gpio->SetActive(); // Set HIGH
   } else {
     g_test_progress_gpio->SetInactive(); // Set LOW
   }
@@ -128,7 +126,7 @@ inline void cleanup_test_progress_indicator() noexcept {
   if (g_test_progress_gpio) {
     // Ensure GPIO14 is LOW before cleanup
     g_test_progress_gpio->SetInactive();
-    
+
     // Delete the GPIO instance
     delete g_test_progress_gpio;
     g_test_progress_gpio = nullptr;
@@ -149,10 +147,10 @@ inline void output_section_indicator(uint8_t blink_count = 5) noexcept {
   // Blink the specified number of times for section identification
   for (uint8_t i = 0; i < blink_count; ++i) {
     g_test_progress_gpio->SetActive();   // HIGH
-    vTaskDelay(pdMS_TO_TICKS(50));     // ON
+    vTaskDelay(pdMS_TO_TICKS(50));       // ON
     g_test_progress_gpio->SetInactive(); // LOW
-    vTaskDelay(pdMS_TO_TICKS(50));     // OFF
-    
+    vTaskDelay(pdMS_TO_TICKS(50));       // OFF
+
     // // Pause between blinks (except after the last one)
     // if (i < blink_count - 1) {
     //   vTaskDelay(pdMS_TO_TICKS(200)); // 200ms pause between blinks
@@ -377,17 +375,25 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
  * @param section_name Name of the test section
  * @param enabled Whether the section is enabled
  */
-inline void print_test_section_header(const char* tag, const char* section_name, bool enabled = true) noexcept {
+inline void print_test_section_header(const char* tag, const char* section_name,
+                                      bool enabled = true) noexcept {
   if (enabled) {
     ESP_LOGI(tag, "\n");
-    ESP_LOGI(tag, "╔══════════════════════════════════════════════════════════════════════════════╗");
-    ESP_LOGI(tag, "║                              %s                                              ║", section_name);
-    ESP_LOGI(tag, "╠══════════════════════════════════════════════════════════════════════════════╣");
+    ESP_LOGI(tag,
+             "╔══════════════════════════════════════════════════════════════════════════════╗");
+    ESP_LOGI(tag,
+             "║                              %s                                              ║",
+             section_name);
+    ESP_LOGI(tag,
+             "╠══════════════════════════════════════════════════════════════════════════════╣");
   } else {
     ESP_LOGI(tag, "\n");
-    ESP_LOGI(tag, "╔══════════════════════════════════════════════════════════════════════════════╗");
-    ESP_LOGI(tag, "║                              %s (DISABLED)                                  ║", section_name);
-    ESP_LOGI(tag, "╚══════════════════════════════════════════════════════════════════════════════╝");
+    ESP_LOGI(tag,
+             "╔══════════════════════════════════════════════════════════════════════════════╗");
+    ESP_LOGI(tag, "║                              %s (DISABLED)                                  ║",
+             section_name);
+    ESP_LOGI(tag,
+             "╚══════════════════════════════════════════════════════════════════════════════╝");
   }
 }
 
@@ -396,9 +402,11 @@ inline void print_test_section_header(const char* tag, const char* section_name,
  * @param section_name Name of the test section
  * @param enabled Whether the section is enabled
  */
-inline void print_test_section_footer(const char* tag, const char* section_name, bool enabled = true) noexcept {
+inline void print_test_section_footer(const char* tag, const char* section_name,
+                                      bool enabled = true) noexcept {
   if (enabled) {
-    ESP_LOGI(tag, "╚══════════════════════════════════════════════════════════════════════════════╝");
+    ESP_LOGI(tag,
+             "╚══════════════════════════════════════════════════════════════════════════════╝");
   }
 }
 /**
@@ -454,13 +462,13 @@ inline void print_test_section_footer(const char* tag, const char* section_name,
   do {                                                                                           \
     ensure_gpio14_initialized();                                                                 \
     if (define_name) {                                                                           \
-      print_test_section_header(TAG, section_name, true);                                         \
+      print_test_section_header(TAG, section_name, true);                                        \
       __VA_ARGS__                                                                                \
       if (progress_func)                                                                         \
         progress_func();                                                                         \
-      print_test_section_footer(TAG, section_name, true);                                         \
+      print_test_section_footer(TAG, section_name, true);                                        \
     } else {                                                                                     \
-      print_test_section_header(TAG, section_name, false);                                        \
+      print_test_section_header(TAG, section_name, false);                                       \
       ESP_LOGI(TAG, "Section disabled by configuration");                                        \
     }                                                                                            \
   } while (0)
@@ -472,18 +480,18 @@ inline void print_test_section_footer(const char* tag, const char* section_name,
 
 // Macro to conditionally run a test section with section indicator
 #define RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(define_name, section_name, blink_count, ...) \
-  do {                                                                                               \
-    ensure_gpio14_initialized();                                                                     \
-    if (define_name) {                                                                               \
-      print_test_section_header(TAG, section_name, true);                                            \
-      output_section_indicator(blink_count); /* Section start indicator */                           \
-      __VA_ARGS__                                                                                    \
-      output_section_indicator(blink_count); /* Section end indicator */                             \
-      print_test_section_footer(TAG, section_name, true);                                            \
-    } else {                                                                                         \
-      print_test_section_header(TAG, section_name, false);                                           \
-      ESP_LOGI(TAG, "Section disabled by configuration");                                            \
-    }                                                                                                \
+  do {                                                                                        \
+    ensure_gpio14_initialized();                                                              \
+    if (define_name) {                                                                        \
+      print_test_section_header(TAG, section_name, true);                                     \
+      output_section_indicator(blink_count); /* Section start indicator */                    \
+      __VA_ARGS__                                                                             \
+      output_section_indicator(blink_count); /* Section end indicator */                      \
+      print_test_section_footer(TAG, section_name, true);                                     \
+    } else {                                                                                  \
+      print_test_section_header(TAG, section_name, false);                                    \
+      ESP_LOGI(TAG, "Section disabled by configuration");                                     \
+    }                                                                                         \
   } while (0)
 
 /**
@@ -528,7 +536,7 @@ inline void print_test_section_footer(const char* tag, const char* section_name,
  * RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(ENABLE_CORE_FEATURE_TESTS, "CORE FEATURE TESTS", 5,
  *   RUN_TEST_IN_TASK("test2", test_function2, 8192, 1);
  * );
- * 
+ *
  * // GPIO14 test indicator is automatically initialized by the test framework
  * // You can add flip_test_progress_indicator() calls between tests if desired
  * // Example: flip_test_progress_indicator(); // Toggle GPIO14 after each test
