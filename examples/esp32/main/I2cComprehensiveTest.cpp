@@ -52,11 +52,7 @@ static TestResults g_test_results;
 
 //=============================================================================
 // TEST PROGRESSION INDICATOR
-//=============================================================================
-// GPIO14 test progression indicator
-static EspGpio* g_test_progress_gpio = nullptr;
-static bool g_test_progress_state = false;
-static constexpr hf_pin_num_t TEST_PROGRESS_PIN = 14;
+
 
 //=============================================================================
 // TEST CONFIGURATION
@@ -178,53 +174,7 @@ void log_test_separator(const char* test_name) noexcept;
 // TEST FUNCTIONS IMPLEMENTATION
 //=============================================================================
 
-/**
- * @brief Initialize the test progression indicator on GPIO14
- */
-bool init_test_progress_indicator() noexcept {
-  g_test_progress_gpio =
-      new EspGpio(TEST_PROGRESS_PIN, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-                  hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
-                  hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
-                  hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN);
 
-  if (!g_test_progress_gpio->EnsureInitialized()) {
-    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO14");
-    return false;
-  }
-
-  g_test_progress_gpio->SetInactive();
-  ESP_LOGI(TAG, "Test progression indicator GPIO14 initialized");
-  return true;
-}
-
-/**
- * @brief Flip the test progression indicator to show next test
- */
-void flip_test_progress_indicator() noexcept {
-  if (g_test_progress_gpio) {
-    g_test_progress_state = !g_test_progress_state;
-    if (g_test_progress_state) {
-      g_test_progress_gpio->SetActive();
-    } else {
-      g_test_progress_gpio->SetInactive();
-    }
-    ESP_LOGI(TAG, "Test progression indicator: %s", g_test_progress_state ? "HIGH" : "LOW");
-  }
-
-  vTaskDelay(pdMS_TO_TICKS(100));
-}
-
-/**
- * @brief Cleanup the test progression indicator GPIO
- */
-void cleanup_test_progress_indicator() noexcept {
-  if (g_test_progress_gpio) {
-    g_test_progress_gpio->SetInactive(); // Ensure pin is low
-    delete g_test_progress_gpio;
-    g_test_progress_gpio = nullptr;
-  }
-}
 
 bool test_i2c_bus_initialization() noexcept {
   log_test_separator("I2C Bus Initialization");
@@ -2460,13 +2410,7 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(TIMEOUT_LONG_MS));
 
-  // Initialize test progression indicator GPIO14
-  // This pin will toggle between HIGH/LOW each time a test completes
-  // providing visual feedback for test progression on oscilloscope/logic analyzer
-  if (!init_test_progress_indicator()) {
-    ESP_LOGE(TAG,
-             "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
-  }
+  // Test progression indicator is automatically initialized by the test framework
 
   // Report test section configuration
   print_test_section_status(TAG, "I2C");
@@ -2477,98 +2421,98 @@ extern "C" void app_main(void) {
       // ESP-IDF verification tests
       ESP_LOGI(TAG, "Running ESP-IDF verification tests...");
       RUN_TEST_IN_TASK("espidf_direct_api", test_i2c_espidf_direct_api, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("espidf_wrapper_replica", test_i2c_espidf_wrapper_replica, 8192, 1);
-      flip_test_progress_indicator(); RUN_TEST_IN_TASK(
+ RUN_TEST_IN_TASK(
           "espidf_wrapper_continuous", test_i2c_espidf_wrapper_replica_continuous, 8192, 1);
-      flip_test_progress_indicator();
+
 
       // Bus and device tests
       ESP_LOGI(TAG, "Running bus and device tests...");
       RUN_TEST_IN_TASK("bus_initialization", test_i2c_bus_initialization, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("bus_deinitialization", test_i2c_bus_deinitialization, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("configuration_validation", test_i2c_configuration_validation, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("device_creation", test_i2c_device_creation, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("device_management", test_i2c_device_management, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("device_probing", test_i2c_device_probing, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("bus_scanning", test_i2c_bus_scanning, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_OPERATION_TESTS, "I2C OPERATION TESTS",
       // Read/write operations
       ESP_LOGI(TAG, "Running read/write operation tests...");
       RUN_TEST_IN_TASK("write_operations", test_i2c_write_operations, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("read_operations", test_i2c_read_operations, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("write_read_operations", test_i2c_write_read_operations, 8192, 1);
-      flip_test_progress_indicator();
+
 
       // Error handling and timeouts
       ESP_LOGI(TAG, "Running error handling and timeout tests...");
       RUN_TEST_IN_TASK("error_handling", test_i2c_error_handling, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("timeout_handling", test_i2c_timeout_handling, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("multi_device_operations", test_i2c_multi_device_operations, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_ADVANCED_TESTS, "I2C ADVANCED TESTS",
       // ESP-specific features
       ESP_LOGI(TAG, "Running ESP-specific feature tests...");
       RUN_TEST_IN_TASK("esp_specific_features", test_i2c_esp_specific_features, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("thread_safety", test_i2c_thread_safety, 8192, 1);
-      flip_test_progress_indicator();
+
 
       // Clock speeds and address modes
       ESP_LOGI(TAG, "Running clock speed and address mode tests...");
       RUN_TEST_IN_TASK("clock_speeds", test_i2c_clock_speeds, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("address_modes", test_i2c_address_modes, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_PERFORMANCE_TESTS, "I2C PERFORMANCE TESTS",
       // Performance and edge cases
       ESP_LOGI(TAG, "Running performance and edge case tests...");
       RUN_TEST_IN_TASK("performance", test_i2c_performance, 8192, 1);
-      flip_test_progress_indicator(); RUN_TEST_IN_TASK("edge_cases", test_i2c_edge_cases, 8192, 1);
-      flip_test_progress_indicator();
+ RUN_TEST_IN_TASK("edge_cases", test_i2c_edge_cases, 8192, 1);
+
       RUN_TEST_IN_TASK("power_management", test_i2c_power_management, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_SPECIALIZED_TESTS, "I2C SPECIALIZED TESTS",
       // Async operations
       ESP_LOGI(TAG, "Running async operation tests...");
       RUN_TEST_IN_TASK("async_operations", test_i2c_async_operations, 16384, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("async_timeout_handling", test_i2c_async_timeout_handling, 16384, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("async_multiple_operations", test_i2c_async_multiple_operations, 16384, 1);
-      flip_test_progress_indicator();
+
 
       // Mode and access patterns
       ESP_LOGI(TAG, "Running mode and access pattern tests...");
       RUN_TEST_IN_TASK("index_based_access", test_i2c_index_based_access, 8192, 1);
-      flip_test_progress_indicator(); RUN_TEST_IN_TASK("sync_mode", test_i2c_sync_mode, 8192, 1);
-      flip_test_progress_indicator(); RUN_TEST_IN_TASK("async_mode", test_i2c_async_mode, 8192, 1);
-      flip_test_progress_indicator();
+ RUN_TEST_IN_TASK("sync_mode", test_i2c_sync_mode, 8192, 1);
+ RUN_TEST_IN_TASK("async_mode", test_i2c_async_mode, 8192, 1);
+
       RUN_TEST_IN_TASK("mode_switching", test_i2c_mode_switching, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("basic_functionality", test_i2c_basic_functionality, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("probe_methods_comparison", test_i2c_probe_methods_comparison, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   print_test_summary(g_test_results, "I2C", TAG);
 
@@ -2581,8 +2525,7 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
-  // Cleanup test progression indicator
-  cleanup_test_progress_indicator();
+  // Test progression indicator is automatically cleaned up by the test framework
 
   while (true) {
     ESP_LOGI(TAG, "System up and running for %d seconds", esp_timer_get_time() / 1000000);

@@ -33,10 +33,7 @@ extern "C" {
 static const char* TAG = "UART_Test";
 static TestResults g_test_results;
 
-// Test progression indicator GPIO
-static EspGpio* g_test_progress_gpio = nullptr;
-static bool g_test_progress_state = false;
-static constexpr hf_u8_t TEST_PROGRESS_GPIO = 14;
+
 
 // Test configuration constants
 // static constexpr hf_u8_t TEST_UART_PORT_0 = 0; Debug UART
@@ -314,57 +311,7 @@ bool verify_uart_state(EspUart& uart, bool should_be_initialized) noexcept {
   return true;
 }
 
-//==============================================================================
-// PROGRESS INDICATOR HELPER FUNCTIONS
-//==============================================================================
 
-/**
- * @brief Initialize the test progression indicator GPIO
- */
-bool init_test_progress_indicator() noexcept {
-  // Use GPIO14 as the test progression indicator (visible LED on most ESP32 dev boards)
-  g_test_progress_gpio =
-      new EspGpio(TEST_PROGRESS_GPIO, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-                  hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH);
-
-  if (!g_test_progress_gpio->EnsureInitialized()) {
-    ESP_LOGE(TAG, "Failed to initialize test progression indicator GPIO");
-    return false;
-  }
-
-  // Start with LOW state
-  g_test_progress_gpio->SetInactive();
-  g_test_progress_state = false;
-
-  ESP_LOGI(TAG, "Test progression indicator initialized on GPIO%d", TEST_PROGRESS_GPIO);
-  return true;
-}
-
-/**
- * @brief Flip the test progression indicator to show next test
- */
-void flip_test_progress_indicator() noexcept {
-  if (g_test_progress_gpio) {
-    g_test_progress_state = !g_test_progress_state;
-    if (g_test_progress_state) {
-      g_test_progress_gpio->SetActive();
-    } else {
-      g_test_progress_gpio->SetInactive();
-    }
-    ESP_LOGI(TAG, "Test progression indicator: %s", g_test_progress_state ? "HIGH" : "LOW");
-  }
-}
-
-/**
- * @brief Cleanup the test progression indicator GPIO
- */
-void cleanup_test_progress_indicator() noexcept {
-  if (g_test_progress_gpio) {
-    g_test_progress_gpio->SetInactive(); // Ensure pin is low
-    delete g_test_progress_gpio;
-    g_test_progress_gpio = nullptr;
-  }
-}
 
 //==============================================================================
 // TEST FUNCTIONS
@@ -1988,13 +1935,7 @@ extern "C" void app_main(void) {
 
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  // Initialize test progression indicator GPIO14
-  // This pin will toggle between HIGH/LOW each time a test completes
-  // providing visual feedback for test progression on oscilloscope/logic analyzer
-  if (!init_test_progress_indicator()) {
-    ESP_LOGE(TAG,
-             "Failed to initialize test progression indicator GPIO. Tests may not be visible.");
-  }
+  // Test progression indicator is automatically initialized by the test framework
 
   // Report test section configuration
   print_test_section_status(TAG, "UART");
@@ -2005,26 +1946,26 @@ extern "C" void app_main(void) {
       // Constructor/Destructor Tests
       ESP_LOGI(TAG, "Running constructor/destructor tests...");
       RUN_TEST_IN_TASK("uart_construction", test_uart_construction, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("uart_initialization", test_uart_initialization, 8192, 1);
-      flip_test_progress_indicator();
+
 
       // Basic Communication Tests
       ESP_LOGI(TAG, "Running basic communication tests...");
       RUN_TEST_IN_TASK("basic_communication", test_uart_basic_communication, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("baud_rate_configuration", test_uart_baud_rate_configuration, 8192, 1);
-      flip_test_progress_indicator();
+
       // Temporarily skip flow control test due to ESP32-C6 compatibility issues
       // RUN_TEST_IN_TASK("flow_control", test_uart_flow_control, 8192, 1);
-      // flip_test_progress_indicator(););
+      // );
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_BASIC_TESTS, "UART BASIC TESTS",
       // Buffer Operations Tests
       ESP_LOGI(TAG, "Running buffer operations tests...");
       RUN_TEST_IN_TASK("buffer_operations", test_uart_buffer_operations, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_ADVANCED_TESTS, "UART ADVANCED TESTS",
@@ -2032,58 +1973,58 @@ extern "C" void app_main(void) {
       ESP_LOGI(TAG, "Running advanced feature tests...");
       // Run pattern detection test in a separate task with larger stack for event processing
       RUN_TEST_IN_TASK("pattern_detection", test_uart_pattern_detection, 8192, 5);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("advanced_features", test_uart_advanced_features, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("communication_modes", test_uart_communication_modes, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("async_operations", test_uart_async_operations, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_CALLBACK_TESTS, "UART CALLBACK TESTS",
       // Callback and Support Tests
       ESP_LOGI(TAG, "Running callback and support tests...");
       RUN_TEST_IN_TASK("callbacks", test_uart_callbacks, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("statistics_diagnostics", test_uart_statistics_diagnostics, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("printf_support", test_uart_printf_support, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("error_handling", test_uart_error_handling, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_ESP_SPECIFIC_TESTS, "UART ESP-SPECIFIC TESTS",
       // ESP32-C6 specific tests
       ESP_LOGI(TAG, "Running ESP32-C6 specific tests...");
       RUN_TEST_IN_TASK("esp32c6_features", test_uart_esp32c6_features, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("performance", test_uart_performance, 8192, 1);
-      flip_test_progress_indicator();
+
       RUN_TEST_IN_TASK("callback_verification", test_uart_callback_verification, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_EVENT_TESTS, "UART EVENT TESTS",
       // User Event Task Test
       ESP_LOGI(TAG, "Running user event task tests...");
       RUN_TEST_IN_TASK("user_event_task", test_uart_user_event_task, 8192, 1);
-      flip_test_progress_indicator();
+
 
       // Comprehensive Event-Driven Pattern Detection Test
       ESP_LOGI(TAG, "Running comprehensive event-driven pattern detection test...");
       ESP_LOGI(TAG, "This test runs with 5-second timeout and comprehensive event monitoring");
       ESP_LOGI(TAG, "It will test the complete event queue behavior for pattern detection");
       RUN_TEST_IN_TASK("event_driven_pattern_detection", test_uart_event_driven_pattern_detection, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_CLEANUP_TESTS, "UART CLEANUP TESTS",
       // Cleanup Tests
       ESP_LOGI(TAG, "Running cleanup tests...");
       RUN_TEST_IN_TASK("cleanup", test_uart_cleanup, 8192, 1);
-      flip_test_progress_indicator(););
+);
 
   print_test_summary(g_test_results, "UART", TAG);
 
@@ -2101,8 +2042,7 @@ extern "C" void app_main(void) {
   ESP_LOGI(TAG,
            "╚════════════════════════════════════════════════════════════════════════════════╝");
 
-  // Cleanup test progression indicator
-  cleanup_test_progress_indicator();
+  // Test progression indicator is automatically cleaned up by the test framework
 
   while (true) {
     ESP_LOGI(TAG, "System up and running for %d seconds", esp_timer_get_time() / 1000000);
