@@ -162,7 +162,7 @@ apps:
     ci_enabled: true
     featured: true
 
-  digital_output_guard_test:
+  dog_test:
     description: "DigitalOutputGuard comprehensive testing suite"
     source_file: "DigitalOutputGuardComprehensiveTest.cpp"
     category: "utility"
