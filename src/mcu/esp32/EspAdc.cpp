@@ -1065,6 +1065,9 @@ hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback(adc_continuous_handle_t handle,
   hf_adc_continuous_data_t hf_data = {};
   hf_data.buffer = const_cast<hf_u8_t*>(static_cast<const hf_u8_t*>(event_data->conv_frame_buffer));
   hf_data.size = event_data->size;
+
+  // ESP32-C6 uses TYPE2 format: 12-bit data in 32-bit structure (4 bytes per sample)
+  // Calculate actual conversion count based on the data format
   hf_data.conversion_count = event_data->size / sizeof(adc_digi_output_data_t);
   hf_data.timestamp_us = esp_adc->GetCurrentTimeUs();
 
@@ -1226,7 +1229,7 @@ hf_adc_err_t EspAdc::InitializeContinuous() noexcept {
       .adc_pattern = adc_pattern.data(),
       .sample_freq_hz = config_.continuous_config.sample_freq_hz,
       .conv_mode = ADC_CONV_SINGLE_UNIT_1,
-      .format = ADC_DIGI_OUTPUT_FORMAT_TYPE1,
+      .format = ADC_DIGI_OUTPUT_FORMAT_TYPE2, // ESP32-C6 requires TYPE2
   };
 
   esp_result = adc_continuous_config(continuous_handle_, &dig_cfg);

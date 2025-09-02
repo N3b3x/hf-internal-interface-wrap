@@ -185,8 +185,9 @@ private:
   void DestroyTimerHandle() noexcept;
 
   /**
-   * @brief Internal timer callback dispatcher.
-   * @param timer_handle Platform-specific timer handle
+   * @brief Internal timer callback dispatcher (ISR-safe C bridge).
+   * @param arg User data (pointer to EspPeriodicTimer instance)
+   * @note This is the C callback that bridges to C++ class methods
    */
-  static void TimerCallbackDispatcher(hf_timer_handle_t timer_handle);
+  static void InternalTimerCallback(void* arg);
 };

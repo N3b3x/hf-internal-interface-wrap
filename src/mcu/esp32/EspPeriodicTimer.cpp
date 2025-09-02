@@ -18,7 +18,6 @@
 #include <algorithm>
 #include <cstring>
 
-#ifdef HF_MCU_FAMILY_ESP32
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
 #ifdef __cplusplus
 extern "C" {
@@ -213,13 +212,14 @@ const char* EspPeriodicTimer::GetDescription() const noexcept {
 }
 
 hf_u64_t EspPeriodicTimer::GetMinPeriod() const noexcept {
-  // ESP32 timer supports periods from 1us
-  return 1;
+  // ESP32 periodic timer minimum period is 50us per ESP-IDF documentation
+  return 50;
 }
 
 hf_u64_t EspPeriodicTimer::GetMaxPeriod() const noexcept {
-  // ESP32 timer supports very large periods, but we limit for safety
-  return UINT64_MAX / 2;
+  // ESP32 timer practical maximum: UINT64_MAX/10 to avoid watchdog timeouts
+  // UINT64_MAX/2 causes system to appear unresponsive and triggers watchdog
+  return UINT64_MAX / 10;  // ~58,494 years - practical maximum
 }
 
 hf_u64_t EspPeriodicTimer::GetResolution() const noexcept {
@@ -255,14 +255,8 @@ bool EspPeriodicTimer::CreateTimerHandle() noexcept {
   }
 
   esp_timer_create_args_t timer_args = {};
-  timer_args.callback = [](void* arg) {
-    auto* self = static_cast<EspPeriodicTimer*>(arg);
-    if (self && self->HasValidCallback()) {
-      self->stats_.callback_count++;
-      self->ExecuteCallback();
-    }
-  };
-  timer_args.arg = this;
+  timer_args.callback = InternalTimerCallback; // Use static C bridge function
+  timer_args.arg = this; // Pass this pointer as user data
   timer_args.dispatch_method = ESP_TIMER_TASK;
   timer_args.name = "HardFOC_Timer";
 
@@ -306,4 +300,22 @@ hf_timer_err_t EspPeriodicTimer::GetDiagnostics(
   return hf_timer_err_t::TIMER_SUCCESS;
 }
 
-#endif // HF_MCU_FAMILY_ESP32
+//==============================================================================
+// INTERNAL CALLBACK BRIDGE (ISR-SAFE)
+//==============================================================================
+
+void EspPeriodicTimer::InternalTimerCallback(void* arg) {
+  EspPeriodicTimer* timer = static_cast<EspPeriodicTimer*>(arg);
+  if (!timer) {
+    return; // Invalid timer instance
+  }
+
+  // ISR-safe operations only - no logging, no complex operations
+  // Just increment callback count and execute user callback
+  timer->stats_.callback_count++;
+  
+  // Execute user callback if valid (this is ISR-safe as it's just a function call)
+  if (timer->HasValidCallback()) {
+    timer->ExecuteCallback();
+  }
+}

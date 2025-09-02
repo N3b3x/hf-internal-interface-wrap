@@ -363,7 +363,7 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
   ensure_gpio14_initialized();
   ESP_LOGI(tag, "\n");
   ESP_LOGI(tag, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(tag, "║                    %s TEST SECTION CONFIGURATION                             ║",
+  ESP_LOGI(tag, "║                 %s TEST SECTION CONFIGURATION                                ║",
            test_suite_name);
   ESP_LOGI(tag, "╚══════════════════════════════════════════════════════════════════════════════╝");
   ESP_LOGI(tag, "To modify test sections, edit the defines at the top of your test file");
@@ -382,7 +382,7 @@ inline void print_test_section_header(const char* tag, const char* section_name,
     ESP_LOGI(tag,
              "╔══════════════════════════════════════════════════════════════════════════════╗");
     ESP_LOGI(tag,
-             "║                              %s                                              ║",
+             "║                              %s                                              ",
              section_name);
     ESP_LOGI(tag,
              "╠══════════════════════════════════════════════════════════════════════════════╣");
@@ -390,7 +390,8 @@ inline void print_test_section_header(const char* tag, const char* section_name,
     ESP_LOGI(tag, "\n");
     ESP_LOGI(tag,
              "╔══════════════════════════════════════════════════════════════════════════════╗");
-    ESP_LOGI(tag, "║                              %s (DISABLED)                                  ║",
+    ESP_LOGI(tag, 
+             "║                         %s (DISABLED)                                  ",
              section_name);
     ESP_LOGI(tag,
              "╚══════════════════════════════════════════════════════════════════════════════╝");

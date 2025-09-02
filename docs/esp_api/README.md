@@ -84,22 +84,22 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 | **[EspGpio](EspGpio.md)** | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete | ✅ Ready |
 | **[EspSpi](EspSpi.md)** | BaseSpi | Full-duplex, DMA, IOMUX optimization | ✅ Complete | ✅ Ready |
 | **[EspPio](EspPio.md)** | BasePio | RMT peripheral, custom protocols | ✅ Complete | ✅ Ready |
-| **[EspBluetooth](EspBluetooth.md)** | BaseBluetooth | NimBLE, classic BT support | ✅ Complete | ✅ Ready |
+| **[EspAdc](EspAdc.md)** | BaseAdc | One-shot, continuous, monitors, calibration | ✅ Complete | ✅ Ready |
+| **[EspPwm](EspPwm.md)** | BasePwm | LEDC controller, fade effects, high resolution | ✅ Complete | ✅ Ready |
+| **[EspI2c](EspI2c.md)** | BaseI2c | Bus-device architecture, multi-master | ✅ Complete | ✅ Ready |
+| **[EspUart](EspUart.md)** | BaseUart | Hardware flow control, DMA, pattern detection | ✅ Complete | ✅ Ready |
+| **[EspNvs](EspNvs.md)** | BaseNvs | Encryption, wear leveling, namespace management | ✅ Complete | ✅ Ready |
+| **[EspPeriodicTimer](EspPeriodicTimer.md)** | BasePeriodicTimer | High precision, microsecond resolution | ✅ Complete | ✅ Ready |
+| **[EspTemperature](EspTemperature.md)** | BaseTemperature | Internal sensor, threshold monitoring | ✅ Complete | ✅ Ready |
+| **[EspLogger](EspLogger.md)** | BaseLogger | Multi-output, network, file logging | ✅ Complete | ✅ Ready |
 
 ### **In Progress** 🚧
 
 | **Implementation** | **Base Class** | **Current Status** | **Target Features** |
 |-------------------|----------------|-------------------|---------------------|
-| **EspAdc** | BaseAdc | Core implementation | 12-bit resolution, calibration |
-| **EspPwm** | BasePwm | Basic functionality | LEDC controller, fade effects |
-| **EspI2c** | BaseI2c | Master mode | Clock stretching, multi-master |
-| **EspUart** | BaseUart | Async I/O | Hardware flow control, buffering |
-| **EspCan** | BaseCan | TWAI controller | Standard/extended frames |
-| **EspWifi** | BaseWifi | Station mode | 802.11n, WPA3, mesh |
-| **EspNvs** | BaseNvs | Basic storage | Encryption, wear leveling |
-| **EspPeriodicTimer** | BasePeriodicTimer | High precision | Multi-timer, callbacks |
-| **EspTemperature** | BaseTemperature | Internal sensor | I2C/1-Wire support |
-| **EspLogger** | BaseLogger | Multi-output | Network, file logging |
+| **EspCan** | BaseCan | TWAI controller implementation | Standard/extended frames, error handling |
+| **EspWifi** | BaseWifi | Station mode implementation | 802.11n, WPA3, mesh networking |
+| **EspBluetooth** | BaseBluetooth | NimBLE stack integration | Classic BT, BLE, service discovery |
 
 ---
 
@@ -164,6 +164,126 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 - Secure pairing protocols
 
 **[📖 Full Documentation](EspBluetooth.md)**
+
+### **📊 EspAdc - Analog-to-Digital Conversion**
+
+**Key Features:**
+- One-shot and continuous sampling modes
+- Hardware calibration for accurate measurements
+- Digital IIR filters for noise reduction
+- Threshold monitors with ISR callbacks
+
+**ESP32-C6 Optimizations:**
+- 12-bit SAR ADC with DMA support
+- Real-time threshold monitoring
+- ESP-IDF v5.5+ TYPE2 data format support
+
+**[📖 Full Documentation](EspAdc.md)**
+
+### **🎛️ EspPwm - Pulse Width Modulation**
+
+**Key Features:**
+- LEDC controller with up to 8 channels
+- Hardware fade effects and high resolution
+- Configurable frequency and duty cycle
+- Complementary outputs with deadtime
+
+**ESP32-C6 Optimizations:**
+- Up to 20-bit resolution at low frequencies
+- Hardware-accelerated fade operations
+- Multiple timer groups for independent control
+
+**[📖 Full Documentation](EspPwm.md)**
+
+### **🔗 EspI2c - Inter-Integrated Circuit**
+
+**Key Features:**
+- Bus-device architecture with ESP-IDF v5.5+
+- Multi-master support with clock stretching
+- Per-device configuration and management
+- Thread-safe operations
+
+**ESP32-C6 Optimizations:**
+- Fast Mode Plus (1 MHz) support
+- Hardware FIFO utilization
+- Advanced error recovery mechanisms
+
+**[📖 Full Documentation](EspI2c.md)**
+
+### **📡 EspUart - Universal Asynchronous Receiver-Transmitter**
+
+**Key Features:**
+- Hardware flow control (RTS/CTS)
+- DMA integration for high performance
+- Pattern detection and interrupt support
+- Multiple port support
+
+**ESP32-C6 Optimizations:**
+- Advanced DMA channel management
+- Hardware pattern matching
+- Low-latency interrupt handling
+
+**[📖 Full Documentation](EspUart.md)**
+
+### **💾 EspNvs - Non-Volatile Storage**
+
+**Key Features:**
+- HMAC-based encryption support
+- Namespace isolation and management
+- Atomic operations and consistency guarantees
+- Wear leveling and flash optimization
+
+**ESP32-C6 Optimizations:**
+- XTS encryption for data protection
+- Secure key generation and eFuse storage
+- Advanced statistics and monitoring
+
+**[📖 Full Documentation](EspNvs.md)**
+
+### **⏱️ EspPeriodicTimer - High-Precision Timing**
+
+**Key Features:**
+- Microsecond-level precision timing
+- Multiple independent timers
+- Callback-based event notification
+- Power management integration
+
+**ESP32-C6 Optimizations:**
+- Hardware timer peripheral utilization
+- Low-power operation modes
+- High-frequency timer support
+
+**[📖 Full Documentation](EspPeriodicTimer.md)**
+
+### **🌡️ EspTemperature - Internal Temperature Sensor**
+
+**Key Features:**
+- Internal temperature sensor support
+- Multiple measurement ranges with different accuracy
+- Threshold monitoring with callbacks
+- Continuous monitoring capabilities
+
+**ESP32-C6 Optimizations:**
+- Hardware calibration and offset compensation
+- Real-time threshold detection
+- Power-efficient sleep modes
+
+**[📖 Full Documentation](EspTemperature.md)**
+
+### **📝 EspLogger - Advanced Logging System**
+
+**Key Features:**
+- ESP-IDF Log V1 and V2 integration
+- Multi-output support (console, file, network)
+- Performance monitoring and statistics
+- Tag-based logging with dynamic levels
+
+**ESP32-C6 Optimizations:**
+- Native ESP-IDF performance
+- Memory-efficient logging
+- Real-time logging capabilities
+
+**[📖 Full Documentation](EspLogger.md)**
 
 ---
 
@@ -256,6 +376,7 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 
 - **[🏠 Main Documentation](../README.md)** - Complete system overview
 - **[📋 API Interfaces](../api/README.md)** - Base classes and interfaces
+- **[🛠️ Utility Classes](../utils/README.md)** - Advanced utility classes and helpers
 - **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
 - **[🔒 Security Features](../security/README.md)** - Security implementation
 
@@ -264,6 +385,14 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 - **[EspGpio](EspGpio.md)** - GPIO implementation details
 - **[EspSpi](EspSpi.md)** - SPI implementation details
 - **[EspPio](EspPio.md)** - PIO implementation details
+- **[EspAdc](EspAdc.md)** - ADC implementation details
+- **[EspPwm](EspPwm.md)** - PWM implementation details
+- **[EspI2c](EspI2c.md)** - I2C implementation details
+- **[EspUart](EspUart.md)** - UART implementation details
+- **[EspNvs](EspNvs.md)** - NVS implementation details
+- **[EspPeriodicTimer](EspPeriodicTimer.md)** - Timer implementation details
+- **[EspTemperature](EspTemperature.md)** - Temperature sensor implementation details
+- **[EspLogger](EspLogger.md)** - Logging implementation details
 - **[EspBluetooth](EspBluetooth.md)** - Bluetooth implementation details
 
 ---

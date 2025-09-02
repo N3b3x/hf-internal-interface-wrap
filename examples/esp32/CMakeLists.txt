@@ -19,27 +19,28 @@ endif()
 # Flexible build system for different app types
 # Usage: idf.py build -DAPP_TYPE=<type> -DBUILD_TYPE=<type>
 # 
-# App types:
-#   ascii_art        - ASCII art generator app (default)
-#   gpio_test        - Comprehensive GPIO testing suite
-#   adc_test         - Comprehensive ADC testing suite
-#   uart_test        - Comprehensive UART testing suite
-#   spi_test         - Comprehensive SPI testing suite
-#   i2c_test         - Comprehensive I2C testing suite
-#   pwm_test         - Comprehensive PWM testing suite
-#   can_test         - Comprehensive CAN testing suite
-#   pio_test         - Comprehensive PIO/RMT testing suite with WS2812 and logic analyzer
-#   temperature_test - Comprehensive Temperature testing suite
-#   nvs_test         - Comprehensive NVS testing suite
-#   timer_test       - Comprehensive Timer testing suite
-#   wifi_test        - Comprehensive WiFi testing suite
-#   bluetooth_test   - Comprehensive Bluetooth testing suite
-#   utils_test       - Utilities testing suite
+# App types are dynamically read from app_config.yml (single source of truth)
+# To see available app types, run: python3 scripts/get_app_info.py list
+# To see app details, run: python3 scripts/get_app_info.py info <app_type>
 #
 # Build types: Debug, Release (default: Release)
 
-# Validate app type
-set(VALID_APP_TYPES "ascii_art;gpio_test;adc_test;uart_test;spi_test;i2c_test;pwm_test;can_test;pio_test;temperature_test;nvs_test;timer_test;wifi_test;bluetooth_test;utils_test;logger_test")
+# Validate app type by reading from app_config.yml (single source of truth)
+execute_process(
+    COMMAND python3 "${CMAKE_CURRENT_SOURCE_DIR}/scripts/get_app_info.py" list
+    OUTPUT_VARIABLE VALID_APP_TYPES_STRING
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    RESULT_VARIABLE APP_LIST_RESULT
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+)
+
+if(NOT APP_LIST_RESULT EQUAL 0)
+    message(FATAL_ERROR "Failed to read valid app types from app_config.yml")
+endif()
+
+# Convert space-separated string to CMake list
+string(REPLACE " " ";" VALID_APP_TYPES "${VALID_APP_TYPES_STRING}")
+
 if(NOT APP_TYPE IN_LIST VALID_APP_TYPES)
     message(FATAL_ERROR "Invalid APP_TYPE: ${APP_TYPE}. Valid types: ${VALID_APP_TYPES}")
 endif()

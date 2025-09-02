@@ -1,24 +1,24 @@
-# EspAdc API Reference
+# 📊 EspAdc API Reference
 
 ## Overview
 
-`EspAdc` is the ESP32-C6 implementation of the `BaseAdc` interface, providing comprehensive ADC (Analog-to-Digital Converter) functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced ADC features with hardware-specific optimizations.
+`EspAdc` provides ESP32 ADC (Analog-to-Digital Converter) functionality with comprehensive support for all ESP32 variants using ESP-IDF v5.5+. It implements the `BaseAdc` interface with hardware-specific optimizations for one-shot and continuous sampling modes, calibration, filtering, and threshold monitoring.
 
 ## Features
 
-- **ESP32-C6 SAR ADC** - Full support for ESP32-C6 SAR (Successive Approximation Register) ADC
-- **12-bit Resolution** - High-resolution analog-to-digital conversion
-- **Multiple Channels** - Support for multiple ADC channels
-- **Multiple Units** - ADC1 and ADC2 unit support
-- **Attenuation Control** - Configurable input attenuation
-- **Calibration** - Built-in calibration support
-- **Power Management** - Deep sleep compatibility
-- **Performance Optimized** - Hardware-accelerated operations
+- **Multi-Variant Support** - ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2
+- **Dual Operation Modes** - One-shot and continuous (DMA) sampling
+- **Hardware Calibration** - Automatic calibration using eFuse data
+- **Digital Filtering** - Up to 2 IIR filters for noise reduction
+- **Threshold Monitoring** - Up to 2 monitors with ISR callbacks
+- **Multi-Channel Support** - Configurable channels with individual settings
+- **Thread Safety** - Mutex-protected operations for multi-threaded access
+- **Comprehensive Diagnostics** - Statistics tracking and error reporting
 
 ## Header File
 
 ```cpp
-#include "inc/mcu/esp32/EspAdc.h"
+#include "mcu/esp32/EspAdc.h"
 ```
 
 ## Class Definition
@@ -26,191 +26,363 @@
 ```cpp
 class EspAdc : public BaseAdc {
 public:
-    // Constructor with full configuration
-    explicit EspAdc(
-        hf_adc_unit_t unit = hf_adc_unit_t::HF_ADC_UNIT_1,
-        hf_adc_channel_t channel = hf_adc_channel_t::HF_ADC_CHANNEL_0,
-        hf_adc_atten_t attenuation = hf_adc_atten_t::HF_ADC_ATTEN_DB_11,
-        hf_adc_width_t width = hf_adc_width_t::HF_ADC_WIDTH_BIT_12
-    ) noexcept;
-
-    // Destructor
-    ~EspAdc() override;
-
-    // BaseAdc implementation
+    // Constructor with configuration structure
+    explicit EspAdc(const hf_adc_unit_config_t& config) noexcept;
+    
+    // Destructor with proper cleanup
+    ~EspAdc() noexcept override;
+    
+    // Copy and move operations disabled for resource safety
+    EspAdc(const EspAdc&) = delete;
+    EspAdc& operator=(const EspAdc&) = delete;
+    EspAdc(EspAdc&&) = delete;
+    EspAdc& operator=(EspAdc&&) = delete;
+    
+    // BaseAdc interface implementation
     bool Initialize() noexcept override;
     bool Deinitialize() noexcept override;
-    bool IsInitialized() const noexcept override;
-    const char* GetDescription() const noexcept override;
+    hf_u8_t GetMaxChannels() const noexcept override;
+    bool IsChannelAvailable(hf_channel_id_t channel_id) const noexcept override;
+    
+    // Reading operations
+    hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id, float& channel_reading_v,
+                              hf_u8_t numOfSamplesToAvg = 1,
+                              hf_time_t timeBetweenSamples = 0) noexcept override;
+    hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id, hf_u32_t& channel_reading_count,
+                                  hf_u8_t numOfSamplesToAvg = 1,
+                                  hf_time_t timeBetweenSamples = 0) noexcept override;
+    hf_adc_err_t ReadChannel(hf_channel_id_t channel_id, hf_u32_t& channel_reading_count,
+                             float& channel_reading_v, hf_u8_t numOfSamplesToAvg = 1,
+                             hf_time_t timeBetweenSamples = 0) noexcept override;
+    
+    // Advanced operations
+    hf_adc_err_t SetMode(hf_adc_mode_t mode) noexcept;
+    hf_adc_err_t ConfigureChannel(hf_channel_id_t channel_id, hf_adc_atten_t attenuation,
+                                  hf_adc_bitwidth_t bitwidth = hf_adc_bitwidth_t::WIDTH_DEFAULT) noexcept;
+    hf_adc_err_t EnableChannel(hf_channel_id_t channel_id) noexcept;
+    hf_adc_err_t DisableChannel(hf_channel_id_t channel_id) noexcept;
+    
+    // Continuous mode operations
+    hf_adc_err_t ConfigureContinuous(const hf_adc_continuous_config_t& config) noexcept;
+    hf_adc_err_t SetContinuousCallback(hf_adc_continuous_callback_t callback, void* user_data = nullptr) noexcept;
+    hf_adc_err_t StartContinuous() noexcept;
+    hf_adc_err_t StopContinuous() noexcept;
+    hf_adc_err_t ReadContinuousData(hf_u8_t* buffer, hf_u32_t buffer_size, hf_u32_t& bytes_read,
+                                    hf_time_t timeout_ms) noexcept;
+    
+    // Calibration operations
+    hf_adc_err_t InitializeCalibration(hf_adc_atten_t attenuation,
+                                       hf_adc_bitwidth_t bitwidth = hf_adc_bitwidth_t::WIDTH_DEFAULT) noexcept;
+    bool IsCalibrationAvailable(hf_adc_atten_t attenuation) const noexcept;
+    hf_adc_err_t RawToVoltage(hf_u32_t raw_count, hf_adc_atten_t attenuation, hf_u32_t& voltage_mv) noexcept;
+    
+    // Filter operations
+    hf_adc_err_t ConfigureFilter(const hf_adc_filter_config_t& filter_config) noexcept;
+    hf_adc_err_t SetFilterEnabled(hf_u8_t filter_id, bool enabled) noexcept;
+    
+    // Monitor operations
+    hf_adc_err_t ConfigureMonitor(const hf_adc_monitor_config_t& monitor_config) noexcept;
+    hf_adc_err_t SetMonitorCallback(hf_u8_t monitor_id, hf_adc_monitor_callback_t callback,
+                                    void* user_data = nullptr) noexcept;
+    hf_adc_err_t SetMonitorEnabled(hf_u8_t monitor_id, bool enabled) noexcept;
+    
+    // Diagnostics
+    hf_adc_err_t GetStatistics(hf_adc_statistics_t& statistics) noexcept override;
+    hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t& diagnostics) noexcept override;
+    hf_adc_err_t ResetStatistics() noexcept override;
+};
+```
 
-    // ADC operations
-    hf_adc_err_t ReadRaw(hf_adc_raw_t* raw_value) noexcept override;
-    hf_adc_err_t ReadVoltage(hf_adc_voltage_t* voltage) noexcept override;
-    hf_adc_err_t ReadMillivolts(hf_adc_millivolts_t* millivolts) noexcept override;
-    hf_adc_err_t GetResolution(hf_adc_resolution_t* resolution) const noexcept override;
-    hf_adc_err_t GetMaxVoltage(hf_adc_voltage_t* max_voltage) const noexcept override;
+## Configuration Structures
 
-    // Advanced features
-    hf_adc_err_t SetAttenuation(hf_adc_atten_t attenuation) noexcept override;
-    hf_adc_err_t GetAttenuation(hf_adc_atten_t* attenuation) const noexcept override;
-    hf_adc_err_t SetWidth(hf_adc_width_t width) noexcept override;
-    hf_adc_err_t GetWidth(hf_adc_width_t* width) const noexcept override;
-    hf_adc_err_t Calibrate() noexcept override;
-    hf_adc_err_t IsCalibrated(bool* calibrated) const noexcept override;
+### ADC Unit Configuration
+
+```cpp
+struct hf_adc_unit_config_t {
+    uint8_t unit_id;                                // ADC unit ID (0 for ADC1, 1 for ADC2)
+    hf_adc_mode_t mode;                             // Operating mode (ONESHOT/CONTINUOUS)
+    hf_adc_bitwidth_t bit_width;                    // ADC resolution
+    hf_adc_channel_config_t channel_configs[7];     // Channel configurations
+    hf_adc_continuous_config_t continuous_config;   // Continuous mode settings
+    hf_adc_calibration_config_t calibration_config; // Calibration settings
+};
+```
+
+### Channel Configuration
+
+```cpp
+struct hf_adc_channel_config_t {
+    hf_channel_id_t channel_id;  // Channel ID (0-6 for ESP32-C6)
+    hf_adc_atten_t attenuation;  // Input attenuation level
+    hf_adc_bitwidth_t bitwidth;  // Resolution for this channel
+    bool enabled;                // Channel enable flag
+};
+```
+
+### Continuous Mode Configuration
+
+```cpp
+struct hf_adc_continuous_config_t {
+    uint32_t sample_freq_hz;      // Sampling frequency (10Hz - 100kHz)
+    uint32_t samples_per_frame;   // Samples per frame per channel (64-1024)
+    uint32_t max_store_frames;    // Maximum frames to store (1-8)
+    bool flush_pool;              // Flush pool flag
 };
 ```
 
 ## Usage Examples
 
-### Basic ADC Reading
+### Basic One-Shot Reading
 
 ```cpp
-#include "inc/mcu/esp32/EspAdc.h"
+#include "mcu/esp32/EspAdc.h"
 
-// Create ADC instance
-EspAdc adc(HF_ADC_UNIT_1, HF_ADC_CHANNEL_0, HF_ADC_ATTEN_DB_11, HF_ADC_WIDTH_BIT_12);
+// Configure ADC unit
+hf_adc_unit_config_t config = {};
+config.unit_id = 0;  // ADC1
+config.mode = hf_adc_mode_t::ONESHOT;
+config.bit_width = hf_adc_bitwidth_t::WIDTH_12BIT;
 
-// Initialize
-if (!adc.Initialize()) {
+// Configure channel 0
+config.channel_configs[0].channel_id = 0;
+config.channel_configs[0].attenuation = hf_adc_atten_t::ATTEN_DB_12;  // 0-3.3V range
+config.channel_configs[0].bitwidth = hf_adc_bitwidth_t::WIDTH_12BIT;
+config.channel_configs[0].enabled = true;
+
+// Create and initialize ADC
+EspAdc adc(config);
+if (!adc.EnsureInitialized()) {
     printf("Failed to initialize ADC\n");
     return;
 }
 
-// Read raw value
-hf_adc_raw_t raw_value;
-hf_adc_err_t err = adc.ReadRaw(&raw_value);
-if (err == HF_ADC_ERR_OK) {
-    printf("Raw ADC value: %d\n", raw_value);
-}
-
 // Read voltage
-hf_adc_voltage_t voltage;
-err = adc.ReadVoltage(&voltage);
-if (err == HF_ADC_ERR_OK) {
-    printf("Voltage: %.3f V\n", voltage);
-}
-
-// Read millivolts
-hf_adc_millivolts_t millivolts;
-err = adc.ReadMillivolts(&millivolts);
-if (err == HF_ADC_ERR_OK) {
-    printf("Millivolts: %d mV\n", millivolts);
+float voltage;
+hf_adc_err_t result = adc.ReadChannelV(0, voltage);
+if (result == hf_adc_err_t::ADC_SUCCESS) {
+    printf("Channel 0 voltage: %.3f V\n", voltage);
 }
 ```
 
-### Multiple ADC Channels
+### Multi-Channel Reading with Averaging
 
 ```cpp
-// Create multiple ADC channels
-EspAdc adc1(HF_ADC_UNIT_1, HF_ADC_CHANNEL_0, HF_ADC_ATTEN_DB_11);
-EspAdc adc2(HF_ADC_UNIT_1, HF_ADC_CHANNEL_1, HF_ADC_ATTEN_DB_11);
-EspAdc adc3(HF_ADC_UNIT_1, HF_ADC_CHANNEL_2, HF_ADC_ATTEN_DB_11);
+// Configure multiple channels
+config.channel_configs[1].channel_id = 1;
+config.channel_configs[1].attenuation = hf_adc_atten_t::ATTEN_DB_12;
+config.channel_configs[1].enabled = true;
 
-// Initialize all
-if (!adc1.Initialize() || !adc2.Initialize() || !adc3.Initialize()) {
-    printf("Failed to initialize ADC channels\n");
-    return;
+config.channel_configs[2].channel_id = 2;
+config.channel_configs[2].attenuation = hf_adc_atten_t::ATTEN_DB_6;   // 0-2.2V range
+config.channel_configs[2].enabled = true;
+
+EspAdc adc(config);
+adc.EnsureInitialized();
+
+// Read multiple channels with averaging
+hf_channel_id_t channels[] = {0, 1, 2};
+uint32_t raw_readings[3];
+float voltages[3];
+
+hf_adc_err_t result = adc.ReadMultipleChannels(channels, 3, raw_readings, voltages);
+if (result == hf_adc_err_t::ADC_SUCCESS) {
+    for (int i = 0; i < 3; i++) {
+        printf("Channel %d: %u counts, %.3f V\n", channels[i], raw_readings[i], voltages[i]);
+    }
 }
 
-// Read from all channels
-hf_adc_millivolts_t values[3];
-if (adc1.ReadMillivolts(&values[0]) == HF_ADC_ERR_OK &&
-    adc2.ReadMillivolts(&values[1]) == HF_ADC_ERR_OK &&
-    adc3.ReadMillivolts(&values[2]) == HF_ADC_ERR_OK) {
+// Read with averaging for noise reduction
+float averaged_voltage;
+result = adc.ReadChannelV(0, averaged_voltage, 10, 5);  // 10 samples, 5ms between
+if (result == hf_adc_err_t::ADC_SUCCESS) {
+    printf("Averaged voltage: %.3f V\n", averaged_voltage);
+}
+```
+
+### Continuous Mode with Callback
+
+```cpp
+// Global variables for continuous mode
+static QueueHandle_t adc_queue;
+static volatile bool data_ready = false;
+
+// ISR-safe callback function
+bool adc_continuous_callback(const hf_adc_continuous_data_t* data, void* user_data) {
+    // Signal that new data is available
+    data_ready = true;
     
-    printf("ADC readings: %d mV, %d mV, %d mV\n", 
-           values[0], values[1], values[2]);
+    // Send notification to processing task
+    BaseType_t higher_priority_task_woken = pdFALSE;
+    xQueueSendFromISR(adc_queue, &data->conversion_count, &higher_priority_task_woken);
+    
+    return higher_priority_task_woken == pdTRUE;
 }
-```
 
-### Attenuation Control
+// Configure continuous mode
+hf_adc_unit_config_t config = {};
+config.unit_id = 0;
+config.mode = hf_adc_mode_t::CONTINUOUS;
+config.continuous_config.sample_freq_hz = 1000;        // 1kHz sampling
+config.continuous_config.samples_per_frame = 64;       // 64 samples per frame
+config.continuous_config.max_store_frames = 4;         // 4 frame buffer
 
-```cpp
-// Set different attenuation levels
-hf_adc_atten_t attenuations[] = {
-    HF_ADC_ATTEN_DB_0,   // 0-1.1V
-    HF_ADC_ATTEN_DB_2_5, // 0-1.5V
-    HF_ADC_ATTEN_DB_6,   // 0-2.2V
-    HF_ADC_ATTEN_DB_11   // 0-3.3V
-};
+// Enable channels for continuous sampling
+config.channel_configs[0].enabled = true;
+config.channel_configs[1].enabled = true;
 
-for (int i = 0; i < 4; i++) {
-    hf_adc_err_t err = adc.SetAttenuation(attenuations[i]);
-    if (err == HF_ADC_ERR_OK) {
-        hf_adc_voltage_t max_voltage;
-        adc.GetMaxVoltage(&max_voltage);
-        printf("Attenuation %d: Max voltage = %.1f V\n", i, max_voltage);
+EspAdc adc(config);
+adc.EnsureInitialized();
+
+// Configure continuous mode and set callback
+adc.ConfigureContinuous(config.continuous_config);
+adc.SetContinuousCallback(adc_continuous_callback, nullptr);
+
+// Start continuous sampling
+adc.StartContinuous();
+
+// Process data in main loop
+uint8_t buffer[256];
+uint32_t bytes_read;
+while (true) {
+    if (data_ready) {
+        data_ready = false;
         
-        hf_adc_millivolts_t reading;
-        if (adc.ReadMillivolts(&reading) == HF_ADC_ERR_OK) {
-            printf("  Current reading: %d mV\n", reading);
+        // Read latest data with zero timeout (non-blocking)
+        hf_adc_err_t result = adc.ReadContinuousData(buffer, sizeof(buffer), bytes_read, 0);
+        if (result == hf_adc_err_t::ADC_SUCCESS) {
+            // Process the data buffer
+            process_adc_data(buffer, bytes_read);
         }
     }
+    vTaskDelay(pdMS_TO_TICKS(10));
 }
+
+// Stop continuous mode
+adc.StopContinuous();
 ```
 
-### Calibration
+### Threshold Monitoring
 
 ```cpp
-// Calibrate ADC for better accuracy
-hf_adc_err_t err = adc.Calibrate();
-if (err == HF_ADC_ERR_OK) {
-    printf("ADC calibrated successfully\n");
-    
-    // Check if calibrated
-    bool calibrated;
-    err = adc.IsCalibrated(&calibrated);
-    if (err == HF_ADC_ERR_OK && calibrated) {
-        printf("ADC is calibrated\n");
+// Monitor callback function
+void monitor_callback(const hf_adc_monitor_event_t* event, void* user_data) {
+    if (event->event_type == hf_adc_monitor_event_type_t::HIGH_THRESH) {
+        printf("High threshold exceeded: %u mV\n", event->raw_value);
+    } else {
+        printf("Below low threshold: %u mV\n", event->raw_value);
     }
+}
+
+// Configure continuous mode for monitoring
+hf_adc_unit_config_t config = {};
+config.unit_id = 0;
+config.mode = hf_adc_mode_t::CONTINUOUS;
+config.channel_configs[0].enabled = true;
+
+EspAdc adc(config);
+adc.EnsureInitialized();
+adc.ConfigureContinuous(config.continuous_config);
+adc.SetContinuousCallback(adc_continuous_callback, nullptr);
+
+// Configure threshold monitor
+hf_adc_monitor_config_t monitor_config = {};
+monitor_config.monitor_id = 0;
+monitor_config.channel_id = 0;
+monitor_config.high_threshold = 3000;  // Raw ADC counts
+monitor_config.low_threshold = 1000;   // Raw ADC counts
+
+adc.ConfigureMonitor(monitor_config);
+adc.SetMonitorCallback(0, monitor_callback, nullptr);
+adc.SetMonitorEnabled(0, true);
+
+// Start continuous mode with monitoring
+adc.StartContinuous();
+```
+
+### Calibration and Precise Measurements
+
+```cpp
+// Initialize calibration for specific attenuation
+hf_adc_err_t result = adc.InitializeCalibration(hf_adc_atten_t::ATTEN_DB_12);
+if (result == hf_adc_err_t::ADC_SUCCESS) {
+    printf("Calibration initialized successfully\n");
 } else {
-    printf("ADC calibration failed: %d\n", err);
+    printf("Calibration not available, using linear conversion\n");
+}
+
+// Check calibration availability
+if (adc.IsCalibrationAvailable(hf_adc_atten_t::ATTEN_DB_12)) {
+    // Read raw value and convert using calibration
+    uint32_t raw_value;
+    adc.ReadSingleRaw(0, raw_value);
+    
+    uint32_t calibrated_voltage_mv;
+    result = adc.RawToVoltage(raw_value, hf_adc_atten_t::ATTEN_DB_12, calibrated_voltage_mv);
+    if (result == hf_adc_err_t::ADC_SUCCESS) {
+        printf("Calibrated voltage: %u mV\n", calibrated_voltage_mv);
+    }
 }
 ```
 
-## ESP32-C6 Specific Features
+## ESP32 Variant Specifications
 
-### SAR ADC
+### ESP32-C6
 
-The ESP32-C6 uses a SAR (Successive Approximation Register) ADC with 12-bit resolution.
+- **ADC Units**: 1 (ADC1)
+- **Channels**: 7 (0-6)
+- **Resolution**: 12-bit (4096 levels)
+- **Sampling Rate**: 10 Hz - 100 kHz
+- **Input Range**: 0-3.3V (with 12dB attenuation)
+- **Filters**: 2 IIR filters
+- **Monitors**: 2 threshold monitors
 
-### Multiple Units
+### ESP32 Classic
 
-Support for both ADC1 and ADC2 units with different channel configurations.
+- **ADC Units**: 2 (ADC1, ADC2)
+- **Channels**: 8 per unit (0-7)
+- **Resolution**: 12-bit (4096 levels)
+- **Sampling Rate**: 10 Hz - 200 kHz
+- **Input Range**: 0-3.3V (with 12dB attenuation)
+- **Filters**: 2 IIR filters
+- **Monitors**: 2 threshold monitors
 
-### Attenuation Control
+## Attenuation Levels
 
-Configurable input attenuation for different voltage ranges:
-- 0dB: 0-1.1V
-- 2.5dB: 0-1.5V  
-- 6dB: 0-2.2V
-- 11dB: 0-3.3V
-
-### Built-in Calibration
-
-Hardware calibration support for improved accuracy.
+| Attenuation | Input Range | Use Case |
+|-------------|-------------|----------|
+| 0dB | 0-0.95V | Low voltage sensors |
+| 2.5dB | 0-1.32V | 1.2V logic levels |
+| 6dB | 0-1.98V | 1.8V logic levels |
+| 12dB | 0-3.3V | Full voltage range |
 
 ## Error Handling
 
-The `EspAdc` class provides comprehensive error handling with specific error codes:
+The `EspAdc` class provides comprehensive error reporting through the `hf_adc_err_t` enumeration:
 
-- `HF_ADC_ERR_OK` - Operation successful
-- `HF_ADC_ERR_INVALID_ARG` - Invalid parameter
-- `HF_ADC_ERR_NOT_INITIALIZED` - ADC not initialized
-- `HF_ADC_ERR_INVALID_CHANNEL` - Invalid channel
-- `HF_ADC_ERR_INVALID_UNIT` - Invalid unit
-- `HF_ADC_ERR_READ_FAILED` - Read operation failed
-- `HF_ADC_ERR_CALIBRATION_FAILED` - Calibration failed
+- `ADC_SUCCESS` - Operation completed successfully
+- `ADC_ERR_NOT_INITIALIZED` - ADC not initialized
+- `ADC_ERR_INVALID_CHANNEL` - Invalid channel ID
+- `ADC_ERR_CHANNEL_NOT_ENABLED` - Channel not enabled
+- `ADC_ERR_CALIBRATION` - Calibration error
+- `ADC_ERR_TIMEOUT` - Operation timeout
+- `ADC_ERR_BUSY` - Resource busy
+- `ADC_ERR_HARDWARE_FAILURE` - Hardware failure
 
 ## Performance Considerations
 
-- **Sampling Rate**: Higher resolution reduces maximum sampling rate
-- **Attenuation**: Choose appropriate attenuation for your voltage range
-- **Calibration**: Calibrate for better accuracy in your application
-- **Noise**: Use proper filtering for noisy signals
+- **One-Shot Mode**: ~50µs per conversion (including calibration)
+- **Continuous Mode**: Sustained sampling up to maximum frequency
+- **Calibration**: Improves accuracy by ±10mV typically
+- **Filtering**: Reduces noise at the cost of response time
+- **Multi-Channel**: Round-robin sampling in continuous mode
+
+## Thread Safety
+
+The `EspAdc` class uses mutex protection for thread-safe operation. Multiple threads can safely call ADC methods simultaneously.
 
 ## Related Documentation
 
-- [BaseAdc API Reference](../api/BaseAdc.md) - Base class interface
-- [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
-- [ESP-IDF ADC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/adc.html) - ESP-IDF documentation
+- **[BaseAdc API Reference](../api/BaseAdc.md)** - Base class interface
+- **[EspTypes_ADC.h](../../inc/mcu/esp32/utils/EspTypes_ADC.h)** - Type definitions and utilities
+- **[ADC Test Suite](../../examples/esp32/docs/README_ADC_TEST.md)** - Comprehensive testing documentation
+- **[ESP-IDF ADC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/adc.html)** - ESP-IDF documentation

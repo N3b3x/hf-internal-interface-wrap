@@ -8,9 +8,9 @@
  * and hardware-specific capabilities.
  *
  * Hardware Configuration (ESP32-C6 DevKit-M-1):
- * - GPIO3 (ADC1_CH3) - Connect to 3.3V via voltage divider (high reference)
+ * - GPIO3 (ADC1_CH3) - Connect to 3.3V via voltage divider (should read ~1.65V)
  * - GPIO0 (ADC1_CH0) - Connect to potentiometer center tap (0-3.3V variable for monitor testing)
- * - GPIO1 (ADC1_CH1) - Connect to ground via 10k resistor (low reference)
+ * - GPIO1 (ADC1_CH1) - Connect to ground via 10k resistor (should read ~0V)
  *
  * Monitor Test Requirements:
  * - Adjust potentiometer on GPIO0 during monitor test to trigger thresholds
@@ -27,6 +27,9 @@
 
 #include "TestFramework.h"
 
+// ESP-IDF headers for ADC continuous mode data structures
+#include "hal/adc_types.h"
+
 static const char* TAG = "ADC_Test";
 
 static TestResults g_test_results;
@@ -39,6 +42,27 @@ static constexpr hf_channel_id_t TEST_CHANNEL_3 = 1; // GPIO1 - ADC1_CH1
 // Expected voltage ranges for test validation (in millivolts)
 static constexpr uint32_t MIN_VALID_VOLTAGE_MV = 100;  // Minimum valid voltage
 static constexpr uint32_t MAX_VALID_VOLTAGE_MV = 3200; // Maximum valid voltage
+
+// Hardware test voltage expectations (in millivolts)
+static constexpr uint32_t VOLTAGE_DIVIDER_EXPECTED_MV = 1650; // 3.3V / 2 = 1.65V
+static constexpr uint32_t VOLTAGE_DIVIDER_TOLERANCE_MV = 150; // ±150mV tolerance
+static constexpr uint32_t GROUND_TOLERANCE_MV = 300;          // Ground should be < 300mV
+static constexpr uint32_t POTENTIOMETER_MAX_MV = 3300;        // Potentiometer max voltage
+
+// ADC technical constants
+static constexpr uint32_t ADC_12BIT_MAX_VALUE = 4095;      // 12-bit ADC maximum value
+static constexpr uint32_t ADC_12BIT_MID_VALUE = 2048;      // 12-bit ADC mid-scale value
+static constexpr uint32_t ADC_VOLTAGE_SCALE_FACTOR = 1000; // mV to V conversion factor
+
+// Monitor test constants
+static constexpr uint32_t MONITOR_TEST_DURATION_MS = 15000;      // 15 seconds
+static constexpr uint32_t MONITOR_UPDATE_INTERVAL_MS = 2000;     // 2 second updates
+static constexpr uint32_t MONITOR_THRESHOLD_SEPARATION_MV = 800; // Minimum threshold separation
+static constexpr uint32_t MONITOR_THRESHOLD_OFFSET_MV = 400;     // Threshold offset from center
+
+// Performance test constants
+static constexpr uint32_t PERFORMANCE_NUM_CONVERSIONS = 1000; // Number of conversions to test
+static constexpr uint32_t PERFORMANCE_MAX_TIME_US = 1000;     // Max acceptable time per conversion
 
 // Continuous mode test parameters
 static constexpr uint32_t CONTINUOUS_TEST_DURATION_MS = 2000;
@@ -94,6 +118,34 @@ bool initialize_test_adc(EspAdc& adc) noexcept;
 bool configure_test_channels(EspAdc& adc) noexcept;
 bool validate_voltage_reading(uint32_t voltage_mv, const char* channel_name) noexcept;
 bool continuous_callback(const hf_adc_continuous_data_t* data, void* user_data) noexcept;
+void setup_adc_config(hf_adc_unit_config_t& config,
+                      hf_adc_mode_t mode = hf_adc_mode_t::ONESHOT) noexcept;
+
+/**
+ * @brief Setup ADC configuration with test channels pre-configured
+ */
+void setup_adc_config(hf_adc_unit_config_t& config, hf_adc_mode_t mode) noexcept {
+  config = {}; // Clear the configuration
+  config.unit_id = 0;
+  config.mode = mode;
+  config.bit_width = hf_adc_bitwidth_t::WIDTH_12BIT;
+
+  // Pre-configure all test channels
+  config.channel_configs[TEST_CHANNEL_1].channel_id = TEST_CHANNEL_1;
+  config.channel_configs[TEST_CHANNEL_1].attenuation = hf_adc_atten_t::ATTEN_DB_12;
+  config.channel_configs[TEST_CHANNEL_1].bitwidth = hf_adc_bitwidth_t::WIDTH_12BIT;
+  config.channel_configs[TEST_CHANNEL_1].enabled = true;
+
+  config.channel_configs[TEST_CHANNEL_2].channel_id = TEST_CHANNEL_2;
+  config.channel_configs[TEST_CHANNEL_2].attenuation = hf_adc_atten_t::ATTEN_DB_12;
+  config.channel_configs[TEST_CHANNEL_2].bitwidth = hf_adc_bitwidth_t::WIDTH_12BIT;
+  config.channel_configs[TEST_CHANNEL_2].enabled = true;
+
+  config.channel_configs[TEST_CHANNEL_3].channel_id = TEST_CHANNEL_3;
+  config.channel_configs[TEST_CHANNEL_3].attenuation = hf_adc_atten_t::ATTEN_DB_12;
+  config.channel_configs[TEST_CHANNEL_3].bitwidth = hf_adc_bitwidth_t::WIDTH_12BIT;
+  config.channel_configs[TEST_CHANNEL_3].enabled = true;
+}
 
 /**
  * @brief Initialize ADC for testing with proper configuration
@@ -180,28 +232,33 @@ bool validate_voltage_reading(uint32_t voltage_mv, const char* channel_name) noe
 }
 
 /**
- * @brief Continuous mode callback function (ISR-safe)
+ * @brief Continuous mode callback function (ISR-safe) - extracts latest voltage in real-time
  */
 bool continuous_callback(const hf_adc_continuous_data_t* data, void* user_data) noexcept {
   (void)user_data; // Suppress unused parameter warning
-  if (!continuous_test_active || data == nullptr) {
+  if (data == nullptr) {
     return false;
   }
 
-  // Count samples received
-  continuous_samples_received += data->conversion_count;
+  // For continuous mode test
+  if (continuous_test_active) {
+    // Count samples received
+    continuous_samples_received += data->conversion_count;
 
-  // Send minimal data to queue for processing in main task
-  adc_queue_message_t msg;
-  msg.sample_count = data->conversion_count;
-  msg.timestamp = data->timestamp_us;
+    // Send minimal data to queue for processing in main task
+    adc_queue_message_t msg;
+    msg.sample_count = data->conversion_count;
+    msg.timestamp = data->timestamp_us;
 
-  BaseType_t higher_priority_task_woken = pdFALSE;
-  if (adc_data_queue != nullptr) {
-    xQueueSendFromISR(adc_data_queue, &msg, &higher_priority_task_woken);
+    BaseType_t higher_priority_task_woken = pdFALSE;
+    if (adc_data_queue != nullptr) {
+      xQueueSendFromISR(adc_data_queue, &msg, &higher_priority_task_woken);
+    }
+
+    return higher_priority_task_woken == pdTRUE;
   }
 
-  return higher_priority_task_woken == pdTRUE;
+  return false; // Don't yield to higher priority task
 }
 
 /**
@@ -232,13 +289,12 @@ void monitor_callback(const hf_adc_monitor_event_t* event, void* user_data) noex
 bool test_hardware_validation() noexcept {
   ESP_LOGI(TAG, "Validating hardware setup...");
   ESP_LOGI(TAG, "Expected connections:");
-  ESP_LOGI(TAG, "  - GPIO3: 3.3V via voltage divider (should read ~3.0V)");
+  ESP_LOGI(TAG, "  - GPIO3: 3.3V via voltage divider (should read ~1.65V)");
   ESP_LOGI(TAG, "  - GPIO0: Potentiometer center tap (variable 0-3.3V)");
   ESP_LOGI(TAG, "  - GPIO1: Ground via 10kΩ resistor (should read ~0V)");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
@@ -246,20 +302,19 @@ bool test_hardware_validation() noexcept {
     return false;
   }
 
-  if (!configure_test_channels(test_adc)) {
-    return false;
-  }
-
   // Read all channels and validate hardware connections
   bool hardware_ok = true;
 
-  // GPIO3 - High reference (should be ~3.0-3.3V)
+  // GPIO3 - High reference (should be ~1.65V from voltage divider)
   uint32_t high_voltage_mv;
   if (test_adc.ReadSingleVoltage(TEST_CHANNEL_1, high_voltage_mv) == hf_adc_err_t::ADC_SUCCESS) {
     ESP_LOGI(TAG, "GPIO3 (HIGH): %lu mV", high_voltage_mv);
-    if (high_voltage_mv < 2800 || high_voltage_mv > 3300) {
-      ESP_LOGE(TAG, "GPIO3: Expected ~3000mV, got %lu mV - check voltage divider!",
-               high_voltage_mv);
+    if (high_voltage_mv < (VOLTAGE_DIVIDER_EXPECTED_MV - VOLTAGE_DIVIDER_TOLERANCE_MV) ||
+        high_voltage_mv > (VOLTAGE_DIVIDER_EXPECTED_MV + VOLTAGE_DIVIDER_TOLERANCE_MV)) {
+      ESP_LOGE(TAG,
+               "GPIO3: Expected ~%lu mV (actual voltage divider ratio), got %lu mV - check voltage "
+               "divider!",
+               VOLTAGE_DIVIDER_EXPECTED_MV, high_voltage_mv);
       hardware_ok = false;
     } else {
       ESP_LOGI(TAG, "GPIO3: Hardware connection verified");
@@ -273,7 +328,7 @@ bool test_hardware_validation() noexcept {
   uint32_t low_voltage_mv;
   if (test_adc.ReadSingleVoltage(TEST_CHANNEL_3, low_voltage_mv) == hf_adc_err_t::ADC_SUCCESS) {
     ESP_LOGI(TAG, "GPIO1 (LOW): %lu mV", low_voltage_mv);
-    if (low_voltage_mv > 300) {
+    if (low_voltage_mv > GROUND_TOLERANCE_MV) {
       ESP_LOGE(TAG, "GPIO1: Expected ~0mV, got %lu mV - check ground connection!", low_voltage_mv);
       hardware_ok = false;
     } else {
@@ -288,7 +343,7 @@ bool test_hardware_validation() noexcept {
   uint32_t pot_voltage_mv;
   if (test_adc.ReadSingleVoltage(TEST_CHANNEL_2, pot_voltage_mv) == hf_adc_err_t::ADC_SUCCESS) {
     ESP_LOGI(TAG, "GPIO0 (POT): %lu mV", pot_voltage_mv);
-    if (pot_voltage_mv > 3300) {
+    if (pot_voltage_mv > POTENTIOMETER_MAX_MV) {
       ESP_LOGW(TAG, "GPIO0: %lu mV seems high - check potentiometer connection", pot_voltage_mv);
     } else {
       ESP_LOGI(TAG, "GPIO0: Potentiometer reading valid");
@@ -313,11 +368,8 @@ bool test_hardware_validation() noexcept {
 bool test_adc_initialization() noexcept {
   ESP_LOGI(TAG, "Testing ADC initialization...");
 
-  // Test with proper configuration
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0; // ESP32-C6 has only ADC1 (unit 0)
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
-  adc_cfg.bit_width = hf_adc_bitwidth_t::WIDTH_12BIT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
@@ -356,17 +408,12 @@ bool test_adc_initialization() noexcept {
 bool test_adc_channel_configuration() noexcept {
   ESP_LOGI(TAG, "Testing ADC channel configuration...");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
   if (!initialize_test_adc(test_adc)) {
-    return false;
-  }
-
-  if (!configure_test_channels(test_adc)) {
     return false;
   }
 
@@ -408,17 +455,12 @@ bool test_adc_channel_configuration() noexcept {
 bool test_adc_basic_conversion() noexcept {
   ESP_LOGI(TAG, "Testing basic ADC conversion...");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
   if (!initialize_test_adc(test_adc)) {
-    return false;
-  }
-
-  if (!configure_test_channels(test_adc)) {
     return false;
   }
 
@@ -431,8 +473,8 @@ bool test_adc_basic_conversion() noexcept {
     return false;
   }
 
-  if (raw_value > 4095) { // 12-bit ADC max value
-    ESP_LOGE(TAG, "Raw value %lu exceeds 12-bit maximum (4095)", raw_value);
+  if (raw_value > ADC_12BIT_MAX_VALUE) {
+    ESP_LOGE(TAG, "Raw value %lu exceeds 12-bit maximum (%lu)", raw_value, ADC_12BIT_MAX_VALUE);
     return false;
   }
 
@@ -482,18 +524,13 @@ bool test_adc_basic_conversion() noexcept {
 bool test_adc_calibration() noexcept {
   ESP_LOGI(TAG, "Testing ADC calibration...");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
   adc_cfg.calibration_config.enable_calibration = true;
 
   EspAdc test_adc(adc_cfg);
 
   if (!initialize_test_adc(test_adc)) {
-    return false;
-  }
-
-  if (!configure_test_channels(test_adc)) {
     return false;
   }
 
@@ -512,7 +549,7 @@ bool test_adc_calibration() noexcept {
     ESP_LOGI(TAG, "Calibration available for 12dB attenuation");
 
     // Test raw to voltage conversion
-    uint32_t test_raw = 2048; // Mid-scale value
+    uint32_t test_raw = ADC_12BIT_MID_VALUE; // Mid-scale value
     uint32_t converted_voltage = 0;
     result = test_adc.RawToVoltage(test_raw, hf_adc_atten_t::ATTEN_DB_12, converted_voltage);
     if (result == hf_adc_err_t::ADC_SUCCESS) {
@@ -532,9 +569,8 @@ bool test_adc_calibration() noexcept {
 bool test_adc_multiple_channels() noexcept {
   ESP_LOGI(TAG, "Testing multiple ADC channels...");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
@@ -610,9 +646,8 @@ bool test_adc_multiple_channels() noexcept {
 bool test_adc_averaging() noexcept {
   ESP_LOGI(TAG, "Testing ADC averaging...");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
@@ -674,9 +709,8 @@ bool test_adc_continuous_mode() noexcept {
     return false;
   }
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::CONTINUOUS;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::CONTINUOUS);
   adc_cfg.continuous_config.sample_freq_hz = 1000;
   adc_cfg.continuous_config.samples_per_frame = CONTINUOUS_SAMPLES_PER_FRAME;
   adc_cfg.continuous_config.max_store_frames = CONTINUOUS_MAX_STORE_FRAMES;
@@ -731,16 +765,30 @@ bool test_adc_continuous_mode() noexcept {
   ESP_LOGI(TAG, "Continuous mode started, collecting data for %lu ms...",
            CONTINUOUS_TEST_DURATION_MS);
 
-  // Wait and collect data
+  // Wait and collect data using adc_continuous_read
   uint32_t start_time = xTaskGetTickCount() * portTICK_PERIOD_MS;
   uint32_t messages_received = 0;
+  uint8_t read_buffer[256];
+  uint32_t bytes_read = 0;
 
   while ((xTaskGetTickCount() * portTICK_PERIOD_MS - start_time) < CONTINUOUS_TEST_DURATION_MS) {
-    adc_queue_message_t msg;
+    // Try to read data from continuous ADC
+    hf_adc_err_t read_result =
+        test_adc.ReadContinuousData(read_buffer, sizeof(read_buffer), bytes_read, 100);
 
-    if (xQueueReceive(adc_data_queue, &msg, pdMS_TO_TICKS(100)) == pdTRUE) {
+    if (read_result == hf_adc_err_t::ADC_SUCCESS && bytes_read > 0) {
       messages_received++;
-      ESP_LOGD(TAG, "Received %lu samples at timestamp %llu", msg.sample_count, msg.timestamp);
+      // ESP32-C6 uses TYPE2 format: 12-bit data in 32-bit structure (4 bytes per sample)
+      uint32_t samples_in_buffer = bytes_read / sizeof(uint32_t);
+      continuous_samples_received += samples_in_buffer;
+      ESP_LOGD(TAG, "Read %lu bytes (%lu samples) from continuous ADC", bytes_read,
+               samples_in_buffer);
+    } else if (read_result == hf_adc_err_t::ADC_ERR_TIMEOUT) {
+      // No data available, continue waiting
+      vTaskDelay(pdMS_TO_TICKS(10));
+    } else {
+      ESP_LOGW(TAG, "Continuous read error: %d", static_cast<int>(read_result));
+      vTaskDelay(pdMS_TO_TICKS(10));
     }
   }
 
@@ -771,195 +819,382 @@ bool test_adc_continuous_mode() noexcept {
 }
 
 /**
- * @brief Test ADC monitor threshold functionality
+ * @brief Test ADC monitor threshold functionality with proper ESP-IDF sequence
  * @details Tests threshold monitoring on the potentiometer channel (GPIO0)
+ *
+ * Proper ESP-IDF v5.5 sequence:
+ * 1. Use oneshot mode to read baseline voltage from potentiometer
+ * 2. Stop oneshot mode and setup continuous mode with monitor
+ * 3. Configure monitor -> Register callbacks -> Enable monitor -> Start continuous
+ *
  * Expected hardware setup:
  * - GPIO0: Connected to potentiometer (0-3.3V variable)
- * - Adjust potentiometer during test to trigger high/low thresholds
  */
 bool test_adc_monitor_thresholds() noexcept {
-  ESP_LOGI(TAG, "Testing ADC monitor thresholds...");
+  ESP_LOGI(TAG, "Testing ADC monitor thresholds with interactive guidance...");
   ESP_LOGI(TAG, "Hardware setup required:");
   ESP_LOGI(TAG, "  - GPIO0: Connect to potentiometer (0-3.3V)");
-  ESP_LOGI(TAG, "  - Adjust potentiometer during test to trigger thresholds");
+  ESP_LOGI(TAG, "  - You will be guided through the test step by step");
 
-  // Configure ADC for monitor testing
-  hf_adc_unit_config_t adc_config = {};
-  adc_config.unit_id = 0;                             // ESP32-C6 has only ADC1
-  adc_config.mode = hf_adc_mode_t::CONTINUOUS;        // Monitor requires continuous mode
-  adc_config.continuous_config.sample_freq_hz = 1000; // 1kHz sampling
-  adc_config.continuous_config.samples_per_frame = 64;
-  adc_config.continuous_config.max_store_frames = 4;
-
-  EspAdc adc(adc_config);
-
-  if (!initialize_test_adc(adc)) {
-    ESP_LOGE(TAG, "Failed to initialize ADC for monitor test");
-    return false;
-  }
-
-  // Configure potentiometer channel (GPIO0 = TEST_CHANNEL_2)
   const hf_channel_id_t MONITOR_CHANNEL = TEST_CHANNEL_2; // GPIO0
-  hf_adc_err_t result = adc.ConfigureChannel(MONITOR_CHANNEL, hf_adc_atten_t::ATTEN_DB_12);
-  if (result != hf_adc_err_t::ADC_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure monitor channel");
+
+  // ============================================================================
+  // STEP 1: Use oneshot mode to get baseline voltage from potentiometer
+  // ============================================================================
+
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    MONITOR THRESHOLD TEST - STEP 1                           ║");
+  ESP_LOGI(TAG, "║                                                                              ║");
+  ESP_LOGI(TAG, "║  Please adjust your potentiometer to CENTER position (around 1.5-2.0V)       ║");
+  ESP_LOGI(TAG, "║  This will be used as the baseline for setting thresholds.                   ║");
+  ESP_LOGI(TAG, "║                                                                              ║");
+  ESP_LOGI(TAG, "║  Monitoring voltage for 5 seconds - adjust potentiometer now...             ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+
+  // Configure oneshot ADC for baseline reading
+  hf_adc_unit_config_t oneshot_config;
+  setup_adc_config(oneshot_config, hf_adc_mode_t::ONESHOT);
+
+  EspAdc oneshot_adc(oneshot_config);
+  if (!initialize_test_adc(oneshot_adc)) {
+    ESP_LOGE(TAG, "Failed to initialize oneshot ADC for baseline reading");
     return false;
   }
 
-  result = adc.EnableChannel(MONITOR_CHANNEL);
+  // Configure and enable the potentiometer channel for oneshot reading
+  hf_adc_err_t result = oneshot_adc.ConfigureChannel(MONITOR_CHANNEL, hf_adc_atten_t::ATTEN_DB_12);
   if (result != hf_adc_err_t::ADC_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to enable monitor channel");
+    ESP_LOGE(TAG, "Failed to configure oneshot monitor channel");
     return false;
   }
 
-  // Read current voltage to set appropriate thresholds
-  uint32_t current_voltage_mv;
-  result = adc.ReadSingleVoltage(MONITOR_CHANNEL, current_voltage_mv);
+  result = oneshot_adc.EnableChannel(MONITOR_CHANNEL);
   if (result != hf_adc_err_t::ADC_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to read current voltage for threshold setup");
+    ESP_LOGI(TAG, "Failed to enable oneshot monitor channel");
     return false;
   }
 
-  ESP_LOGI(TAG, "Current potentiometer voltage: %lu mV", current_voltage_mv);
+  // Monitor voltage during stabilization period using oneshot mode
+  uint32_t stabilization_start = xTaskGetTickCount() * portTICK_PERIOD_MS;
+  uint32_t stabilization_last_print_time = 0;
+  uint32_t baseline_voltage_mv = 0;
+  uint32_t valid_readings = 0;
+  uint64_t voltage_sum = 0;
 
-  // Validate potentiometer is working (not stuck at rail)
-  if (current_voltage_mv < 100 || current_voltage_mv > 3200) {
-    ESP_LOGW(TAG, "Potentiometer voltage (%lu mV) at rail - may affect monitor testing",
-             current_voltage_mv);
+  ESP_LOGI(TAG, "Using oneshot mode for baseline voltage monitoring");
+
+  while ((xTaskGetTickCount() * portTICK_PERIOD_MS - stabilization_start) < 5000) {
+    uint32_t current_time = xTaskGetTickCount() * portTICK_PERIOD_MS;
+
+    // Print voltage every 1 second
+    if (current_time - stabilization_last_print_time >= 1000) {
+      uint32_t voltage_mv = 0;
+      hf_adc_err_t read_result = oneshot_adc.ReadSingleVoltage(MONITOR_CHANNEL, voltage_mv);
+
+      if (read_result == hf_adc_err_t::ADC_SUCCESS) {
+        uint32_t elapsed_sec = (current_time - stabilization_start) / 1000;
+        ESP_LOGI(TAG, "⏱️  %2lu/5 sec | Potentiometer: %4lu mV (%.3fV) | Target: 1.5-2.0V",
+                 elapsed_sec, voltage_mv, voltage_mv / 1000.0f);
+
+        // Accumulate for average calculation
+        voltage_sum += voltage_mv;
+        valid_readings++;
+      } else {
+        ESP_LOGW(TAG, "⏱️  %2lu/5 sec | Failed to read oneshot voltage: %d",
+                 (current_time - stabilization_start) / 1000, static_cast<int>(read_result));
+      }
+
+      stabilization_last_print_time = current_time;
+    }
+
+    vTaskDelay(pdMS_TO_TICKS(100)); // Check every 100ms
   }
 
-  // Set intelligent thresholds based on current voltage with proper bounds
-  // Ensure thresholds are sufficiently spread and within ADC range
-  uint32_t high_thresh_mv, low_thresh_mv;
-
-  if (current_voltage_mv < 1000) {
-    // Pot is low - set thresholds above current position
-    high_thresh_mv = current_voltage_mv + 800;
-    low_thresh_mv = (current_voltage_mv > 400) ? current_voltage_mv - 400 : 200;
-  } else if (current_voltage_mv > 2300) {
-    // Pot is high - set thresholds below current position
-    low_thresh_mv = current_voltage_mv - 800;
-    high_thresh_mv = (current_voltage_mv < 2900) ? current_voltage_mv + 400 : 3100;
+  // Calculate baseline voltage from accumulated readings
+  if (valid_readings > 0) {
+    baseline_voltage_mv = static_cast<uint32_t>(voltage_sum / valid_readings);
   } else {
-    // Pot is mid-range - set thresholds on both sides
-    high_thresh_mv = current_voltage_mv + 600;
-    low_thresh_mv = current_voltage_mv - 600;
+    ESP_LOGE(TAG, "Failed to get any valid baseline voltage readings");
+    return false;
   }
+
+  ESP_LOGI(TAG, "Baseline voltage: %lu mV (averaged from %lu readings)", baseline_voltage_mv,
+           valid_readings);
+
+  // Validate baseline is in reasonable range
+  if (baseline_voltage_mv < 500 || baseline_voltage_mv > 2800) {
+    ESP_LOGW(TAG, "Baseline voltage (%lu mV) is near rail - test may be limited",
+             baseline_voltage_mv);
+  }
+
+  // ============================================================================
+  // STEP 2: Setup continuous mode with monitor (proper ESP-IDF sequence)
+  // ============================================================================
+
+  ESP_LOGI(TAG, "Setting up continuous mode with monitor thresholds...");
+
+  // Calculate thresholds based on baseline voltage
+  uint32_t high_thresh_mv = baseline_voltage_mv + MONITOR_THRESHOLD_OFFSET_MV;
+  uint32_t low_thresh_mv = baseline_voltage_mv - MONITOR_THRESHOLD_OFFSET_MV;
 
   // Clamp to valid ADC range
   high_thresh_mv = (high_thresh_mv > 3200) ? 3200 : high_thresh_mv;
   low_thresh_mv = (low_thresh_mv < 200) ? 200 : low_thresh_mv;
 
-  // Ensure minimum separation between thresholds
-  if ((high_thresh_mv - low_thresh_mv) < 800) {
-    ESP_LOGW(TAG, "Threshold separation too small, adjusting...");
-    uint32_t mid = (high_thresh_mv + low_thresh_mv) / 2;
-    high_thresh_mv = mid + 400;
-    low_thresh_mv = mid - 400;
-  }
+  // Convert voltage thresholds to raw ADC values (use proper conversion)
+  uint32_t high_thresh_raw = (high_thresh_mv * ADC_12BIT_MAX_VALUE) / 3300; // 3.3V reference
+  uint32_t low_thresh_raw = (low_thresh_mv * ADC_12BIT_MAX_VALUE) / 3300;   // 3.3V reference
 
-  // Convert mV to raw ADC counts (approximate for 12dB attenuation)
-  // 12dB attenuation: ~0-3.3V range, 4096 counts
-  uint32_t high_thresh_raw = (high_thresh_mv * 4095) / 3300;
-  uint32_t low_thresh_raw = (low_thresh_mv * 4095) / 3300;
-
-  ESP_LOGI(TAG, "Setting thresholds:");
+  ESP_LOGI(TAG, "Monitor thresholds based on baseline (%lu mV):", baseline_voltage_mv);
   ESP_LOGI(TAG, "  - High: %lu mV (%lu counts)", high_thresh_mv, high_thresh_raw);
   ESP_LOGI(TAG, "  - Low:  %lu mV (%lu counts)", low_thresh_mv, low_thresh_raw);
 
-  // Configure monitor
-  hf_adc_monitor_config_t monitor_config = {};
+  // ============================================================================
+  // STEP 3: Setup continuous ADC with monitor (following ESP-IDF sequence)
+  // ============================================================================
+
+  // Configure continuous ADC for monitor testing (ONLY channel 0 for maximum responsiveness)
+  hf_adc_unit_config_t continuous_config;
+  continuous_config = {}; // Clear the configuration
+  continuous_config.unit_id = 0;
+  continuous_config.mode = hf_adc_mode_t::CONTINUOUS;
+  continuous_config.bit_width = hf_adc_bitwidth_t::WIDTH_12BIT;
+  continuous_config.continuous_config.sample_freq_hz = 2000; // 2kHz sampling for faster response
+  continuous_config.continuous_config.samples_per_frame = 64;
+  continuous_config.continuous_config.max_store_frames = 4;
+
+  // Enable ONLY channel 0 (potentiometer) for maximum real-time responsiveness
+  continuous_config.channel_configs[MONITOR_CHANNEL].channel_id = MONITOR_CHANNEL;
+  continuous_config.channel_configs[MONITOR_CHANNEL].attenuation = hf_adc_atten_t::ATTEN_DB_12;
+  continuous_config.channel_configs[MONITOR_CHANNEL].bitwidth = hf_adc_bitwidth_t::WIDTH_12BIT;
+  continuous_config.channel_configs[MONITOR_CHANNEL].enabled = true;
+
+  EspAdc continuous_adc(continuous_config);
+  if (!initialize_test_adc(continuous_adc)) {
+    ESP_LOGE(TAG, "Failed to initialize continuous ADC for monitor test");
+    return false;
+  }
+
+  // Configure continuous mode
+  result = continuous_adc.ConfigureContinuous(continuous_config.continuous_config);
+  if (result != hf_adc_err_t::ADC_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to configure continuous mode: %d", static_cast<int>(result));
+    return false;
+  }
+
+  // Set continuous callback
+  result = continuous_adc.SetContinuousCallback(continuous_callback, nullptr);
+  if (result != hf_adc_err_t::ADC_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to set continuous callback");
+    return false;
+  }
+
+  // Configure monitor with proper thresholds (BEFORE starting continuous mode)
+  hf_adc_monitor_config_t monitor_config;
   monitor_config.monitor_id = 0;
   monitor_config.channel_id = MONITOR_CHANNEL;
   monitor_config.high_threshold = high_thresh_raw;
   monitor_config.low_threshold = low_thresh_raw;
 
-  result = adc.ConfigureMonitor(monitor_config);
+  result = continuous_adc.ConfigureMonitor(monitor_config);
   if (result != hf_adc_err_t::ADC_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to configure monitor");
+    ESP_LOGE(TAG, "Failed to configure monitor: %d", static_cast<int>(result));
     return false;
   }
 
   // Set monitor callback
-  result = adc.SetMonitorCallback(0, monitor_callback);
+  result = continuous_adc.SetMonitorCallback(0, monitor_callback);
   if (result != hf_adc_err_t::ADC_SUCCESS) {
     ESP_LOGE(TAG, "Failed to set monitor callback");
     return false;
   }
 
-  // Start continuous mode (required for monitoring)
-  result = adc.StartContinuous();
+  // Enable monitor (BEFORE starting continuous mode)
+  result = continuous_adc.SetMonitorEnabled(0, true);
   if (result != hf_adc_err_t::ADC_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to start continuous mode");
+    ESP_LOGE(TAG, "Failed to enable monitor: %d", static_cast<int>(result));
     return false;
   }
 
-  // Enable monitor
-  result = adc.SetMonitorEnabled(0, true);
+  // NOW start continuous mode (monitor is fully configured and enabled)
+  result = continuous_adc.StartContinuous();
   if (result != hf_adc_err_t::ADC_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to enable monitor");
+    ESP_LOGE(TAG, "Failed to start continuous mode with monitor: %d", static_cast<int>(result));
     return false;
   }
 
-  // Reset counters and activate test
+  // Reset counters for actual test
   high_threshold_count = 0;
   low_threshold_count = 0;
   last_monitor_event_time = 0;
   monitor_test_active = true;
 
-  ESP_LOGI(TAG, "Monitor system active! Please adjust potentiometer now:");
-  ESP_LOGI(TAG, "   Current reading: %lu mV", current_voltage_mv);
-  ESP_LOGI(TAG, "   Turn potentiometer HIGH (above %lu mV) to trigger high threshold",
+  // ============================================================================
+  // STEP 4: Interactive threshold testing with continuous mode + monitor
+  // ============================================================================
+
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    MONITOR THRESHOLD TEST - STEP 3                           ║");
+  ESP_LOGI(TAG, "║                                                                              ║");
+  ESP_LOGI(TAG, "║  Now turn your potentiometer HIGH (above %lu mV)                             ║",
            high_thresh_mv);
-  ESP_LOGI(TAG, "   Turn potentiometer LOW (below %lu mV) to trigger low threshold", low_thresh_mv);
-  ESP_LOGI(TAG, "   Test duration: 15 seconds with real-time feedback");
-  ESP_LOGI(TAG,
-           "   Tip: Start with small movements to verify detection, then make larger adjustments");
+  ESP_LOGI(TAG, "║  You have 10 seconds to trigger the HIGH threshold                           ║");
+  ESP_LOGI(TAG, "║  Current baseline: %lu mV                                                    ║",
+           baseline_voltage_mv);
+  ESP_LOGI(TAG, "║                                                                              ║");
+  ESP_LOGI(TAG, "║  Monitoring for HIGH threshold events...                                     ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
-  // Monitor for 15 seconds with periodic status updates
-  const uint32_t TEST_DURATION_MS = 15000;
-  const uint32_t UPDATE_INTERVAL_MS = 2000; // 2 second updates
+  // Monitor for high threshold for 10 seconds using REAL-TIME callback data
+  uint32_t start_time = xTaskGetTickCount() * portTICK_PERIOD_MS;
   uint32_t elapsed_ms = 0;
+  uint32_t last_high_count = 0;
+  uint32_t last_print_time = 0;
 
-  while (elapsed_ms < TEST_DURATION_MS) {
-    vTaskDelay(pdMS_TO_TICKS(UPDATE_INTERVAL_MS));
-    elapsed_ms += UPDATE_INTERVAL_MS;
+  // Initialize monitoring variables
+  uint32_t latest_voltage_mv = baseline_voltage_mv;
 
-    // Read current voltage
-    uint32_t voltage_mv;
-    if (adc.ReadSingleVoltage(MONITOR_CHANNEL, voltage_mv) == hf_adc_err_t::ADC_SUCCESS) {
-      ESP_LOGI(TAG, "%2lu/%2lu sec | Voltage: %4lu mV | High events: %2lu | Low events: %2lu",
-               elapsed_ms / 1000, TEST_DURATION_MS / 1000, voltage_mv, high_threshold_count,
-               low_threshold_count);
+  while (elapsed_ms < 10000) {
+    vTaskDelay(pdMS_TO_TICKS(100)); // Check every 100ms for responsive monitoring
+    elapsed_ms = (xTaskGetTickCount() * portTICK_PERIOD_MS) - start_time;
+    uint32_t current_time = xTaskGetTickCount() * portTICK_PERIOD_MS;
+
+    // Drain ADC buffer to get latest data (ESP-IDF best practice)
+    uint8_t read_buffer[256];
+    uint32_t bytes_read = 0;
+
+    // Drain all available data with 0 timeout (non-blocking, get freshest data)
+    while (continuous_adc.ReadContinuousData(read_buffer, sizeof(read_buffer), bytes_read, 0) ==
+               hf_adc_err_t::ADC_SUCCESS &&
+           bytes_read > 0) {
+      // Parse from end of buffer backwards to get the most recent channel 0 voltage
+      for (int32_t i = bytes_read - sizeof(adc_digi_output_data_t); i >= 0;
+           i -= sizeof(adc_digi_output_data_t)) {
+        const adc_digi_output_data_t* sample =
+            reinterpret_cast<const adc_digi_output_data_t*>(&read_buffer[i]);
+
+        if (sample->type2.channel == 0) {
+          latest_voltage_mv = (sample->type2.data * 3300) / 4095;
+          break; // Use the latest (most recent) sample
+        }
+      }
+    }
+
+    // Print updates every 500ms using LATEST drained data
+    if (current_time - last_print_time >= 500) {
+      ESP_LOGI(TAG,
+               "📈 %2lu/10 sec | Voltage: %4lu mV (%.3fV) | High events: %2lu | Target: >%lu mV",
+               elapsed_ms / 1000, latest_voltage_mv, latest_voltage_mv / 1000.0f,
+               high_threshold_count, high_thresh_mv);
+
+      // Check if we got new high threshold events
+      if (high_threshold_count > last_high_count) {
+        ESP_LOGI(TAG, "🎉 HIGH THRESHOLD TRIGGERED! Event #%lu detected", high_threshold_count);
+        last_high_count = high_threshold_count;
+      }
+
+      last_print_time = current_time;
+    }
+  }
+
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    MONITOR THRESHOLD TEST - STEP 4                           ║");
+  ESP_LOGI(TAG, "║                                                                              ║");
+  ESP_LOGI(TAG, "║  Now turn your potentiometer LOW (below %lu mV)                             ",
+           low_thresh_mv);
+  ESP_LOGI(TAG, "║  You have 10 seconds to trigger the LOW threshold                            ║");
+  ESP_LOGI(TAG, "║                                                                              ║");
+  ESP_LOGI(TAG, "║  Monitoring for LOW threshold events...                                      ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
+
+  // Monitor for low threshold for 10 seconds using REAL-TIME callback data
+  start_time = xTaskGetTickCount() * portTICK_PERIOD_MS;
+  elapsed_ms = 0;
+  uint32_t last_low_count = 0;
+  last_print_time = 0;
+
+  while (elapsed_ms < 10000) {
+    vTaskDelay(pdMS_TO_TICKS(100)); // Check every 100ms for responsive monitoring
+    elapsed_ms = (xTaskGetTickCount() * portTICK_PERIOD_MS) - start_time;
+    uint32_t current_time = xTaskGetTickCount() * portTICK_PERIOD_MS;
+
+    // Drain ADC buffer to get latest data (ESP-IDF best practice)
+    uint8_t read_buffer[256];
+    uint32_t bytes_read = 0;
+
+    // Drain all available data with 0 timeout (non-blocking, get freshest data)
+    while (continuous_adc.ReadContinuousData(read_buffer, sizeof(read_buffer), bytes_read, 0) ==
+               hf_adc_err_t::ADC_SUCCESS &&
+           bytes_read > 0) {
+      // Parse from end of buffer backwards to get the most recent channel 0 voltage
+      for (int32_t i = bytes_read - sizeof(adc_digi_output_data_t); i >= 0;
+           i -= sizeof(adc_digi_output_data_t)) {
+        const adc_digi_output_data_t* sample =
+            reinterpret_cast<const adc_digi_output_data_t*>(&read_buffer[i]);
+
+        if (sample->type2.channel == 0) {
+          latest_voltage_mv = (sample->type2.data * 3300) / 4095;
+          break; // Use the latest (most recent) sample
+        }
+      }
+    }
+
+    // Print updates every 500ms using LATEST drained data
+    if (current_time - last_print_time >= 500) {
+      ESP_LOGI(TAG,
+               "📉 %2lu/10 sec | Voltage: %4lu mV (%.3fV) | Low events: %2lu | Target: <%lu mV",
+               elapsed_ms / 1000, latest_voltage_mv, latest_voltage_mv / 1000.0f,
+               low_threshold_count, low_thresh_mv);
+
+      // Check if we got new low threshold events
+      if (low_threshold_count > last_low_count) {
+        ESP_LOGI(TAG, "🎉 LOW THRESHOLD TRIGGERED! Event #%lu detected", low_threshold_count);
+        last_low_count = low_threshold_count;
+      }
+
+      last_print_time = current_time;
     }
   }
 
   // Stop monitoring
   monitor_test_active = false;
-  adc.SetMonitorEnabled(0, false);
-  adc.StopContinuous();
+  continuous_adc.SetMonitorEnabled(0, false);
+  continuous_adc.StopContinuous();
 
-  ESP_LOGI(TAG, "Monitor test completed:");
-  ESP_LOGI(TAG, "  - High threshold events: %lu", high_threshold_count);
-  ESP_LOGI(TAG, "  - Low threshold events:  %lu", low_threshold_count);
-  ESP_LOGI(TAG, "  - Total events:          %lu", high_threshold_count + low_threshold_count);
-  ESP_LOGI(TAG, "  - Last event time:       %llu us", last_monitor_event_time);
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                    MONITOR THRESHOLD TEST RESULTS                            ║");
+  ESP_LOGI(TAG, "║                                                                              ║");
+  ESP_LOGI(TAG, "║  High threshold events: %2lu                                                  ",
+           high_threshold_count);
+  ESP_LOGI(TAG, "║  Low threshold events:  %2lu                                                  ",
+           low_threshold_count);
+  ESP_LOGI(TAG, "║  Total events:          %2lu                                                  ",
+           high_threshold_count + low_threshold_count);
+  ESP_LOGI(TAG, "║  Last event time:       %llu us                                               ",
+           last_monitor_event_time);
+  ESP_LOGI(TAG, "║                                                                              ║");
 
   // Validation
   bool test_passed = true;
 
   if (high_threshold_count == 0 && low_threshold_count == 0) {
-    ESP_LOGW(
-        TAG,
-        "No threshold events detected - please ensure potentiometer is connected and adjusted");
-    ESP_LOGW(TAG, "   This may indicate hardware setup issues or thresholds not crossed");
+    ESP_LOGI(TAG, "║  ⚠️  No threshold events detected - check potentiometer connection         ║");
+    ESP_LOGI(TAG, "║     This may indicate hardware setup issues or thresholds not crossed      ║");
     // Don't fail the test - could be valid if thresholds weren't crossed
+  } else if (high_threshold_count > 0 && low_threshold_count > 0) {
+    ESP_LOGI(TAG, "║  ✅ Both HIGH and LOW thresholds triggered successfully!                   ║");
+  } else if (high_threshold_count > 0) {
+    ESP_LOGI(TAG, "║  ✅ HIGH threshold triggered successfully!                                 ║");
+  } else if (low_threshold_count > 0) {
+    ESP_LOGI(TAG, "║  ✅ LOW threshold triggered successfully!                                  ║");
   }
 
   if (last_monitor_event_time == 0 && (high_threshold_count > 0 || low_threshold_count > 0)) {
-    ESP_LOGE(TAG, "Events counted but no timestamp recorded - callback issue");
+    ESP_LOGE(TAG, "║  ❌ Events counted but no timestamp recorded - callback issue              ║");
     test_passed = false;
   }
+
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   if (test_passed) {
     ESP_LOGI(TAG, "[SUCCESS] ADC monitor threshold test completed");
@@ -981,9 +1216,8 @@ bool test_adc_monitor_thresholds() noexcept {
 bool test_adc_error_handling() noexcept {
   ESP_LOGI(TAG, "Testing ADC error handling...");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
@@ -1000,8 +1234,8 @@ bool test_adc_error_handling() noexcept {
   }
   ESP_LOGI(TAG, "Correctly rejected invalid channel read: %d", static_cast<int>(result));
 
-  // Test reading from disabled channel
-  result = test_adc.ReadSingleRaw(TEST_CHANNEL_1, raw_value); // Channel not configured/enabled
+  // Test reading from disabled channel (use a channel that's not in our test set)
+  result = test_adc.ReadSingleRaw(13, raw_value); // Channel 13 is not configured/enabled
   if (result == hf_adc_err_t::ADC_SUCCESS) {
     ESP_LOGE(TAG, "Should have failed to read from disabled channel");
     return false;
@@ -1047,9 +1281,8 @@ bool test_adc_error_handling() noexcept {
 bool test_adc_statistics() noexcept {
   ESP_LOGI(TAG, "Testing ADC statistics...");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
@@ -1119,9 +1352,8 @@ bool test_adc_statistics() noexcept {
 bool test_adc_performance() noexcept {
   ESP_LOGI(TAG, "Testing ADC performance...");
 
-  hf_adc_unit_config_t adc_cfg = {};
-  adc_cfg.unit_id = 0;
-  adc_cfg.mode = hf_adc_mode_t::ONESHOT;
+  hf_adc_unit_config_t adc_cfg;
+  setup_adc_config(adc_cfg, hf_adc_mode_t::ONESHOT);
 
   EspAdc test_adc(adc_cfg);
 
@@ -1134,7 +1366,7 @@ bool test_adc_performance() noexcept {
   }
 
   // Performance test: measure conversion speed
-  const uint32_t num_conversions = 1000;
+  const uint32_t num_conversions = PERFORMANCE_NUM_CONVERSIONS;
   uint64_t start_time = esp_timer_get_time();
 
   for (uint32_t i = 0; i < num_conversions; i++) {
@@ -1153,7 +1385,7 @@ bool test_adc_performance() noexcept {
   ESP_LOGI(TAG, "  - Conversions per second: %lu", 1000000 / avg_time_per_conversion_us);
 
   // Verify reasonable performance (should be faster than 1ms per conversion)
-  if (avg_time_per_conversion_us > 1000) {
+  if (avg_time_per_conversion_us > PERFORMANCE_MAX_TIME_US) {
     ESP_LOGW(TAG, "ADC conversion seems slow: %lu us per conversion", avg_time_per_conversion_us);
   }
 
@@ -1163,15 +1395,15 @@ bool test_adc_performance() noexcept {
 
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                    ESP32-C6 ADC COMPREHENSIVE TEST SUITE                    ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "║                    ESP32-C6 ADC COMPREHENSIVE TEST SUITE                     ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
   ESP_LOGI(TAG, "║                                                                              ║");
-  ESP_LOGI(TAG, "║  Hardware Setup Required (ESP32-C6 DevKit-M-1):                             ║");
-  ESP_LOGI(TAG, "║  - GPIO3 (ADC1_CH3): Connect to 3.3V via voltage divider (high reference)  ║");
-  ESP_LOGI(TAG, "║  - GPIO0 (ADC1_CH0): Connect to potentiometer center tap (variable 0-3.3V) ║");
-  ESP_LOGI(TAG, "║  - GPIO1 (ADC1_CH1): Connect to ground via 10kΩ resistor (low reference)   ║");
+  ESP_LOGI(TAG, "║  Hardware Setup Required (ESP32-C6 DevKit-M-1):                              ║");
+  ESP_LOGI(TAG, "║  - GPIO3 (ADC1_CH3): Connect to 3.3V via voltage divider (high reference)    ║");
+  ESP_LOGI(TAG, "║  - GPIO0 (ADC1_CH0): Connect to potentiometer center tap (variable 0-3.3V)   ║");
+  ESP_LOGI(TAG, "║  - GPIO1 (ADC1_CH1): Connect to ground via 10kΩ resistor (low reference)     ║");
   ESP_LOGI(TAG, "║                                                                              ║");
-  ESP_LOGI(TAG, "║  Monitor Test: Adjust potentiometer on GPIO0 during monitor test            ║");
+  ESP_LOGI(TAG, "║  Monitor Test: Adjust potentiometer on GPIO0 during monitor test             ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   vTaskDelay(pdMS_TO_TICKS(2000));
@@ -1217,33 +1449,35 @@ extern "C" void app_main(void) {
     ESP_LOGI(TAG,
              "╔══════════════════════════════════════════════════════════════════════════════╗");
     ESP_LOGI(TAG,
-             "║                      ALL ADC TESTS PASSED!                                  ║");
+             "║                      ALL ADC TESTS PASSED!                                   ║");
     ESP_LOGI(TAG,
              "║                                                                              ║");
     ESP_LOGI(TAG,
-             "║  ESP32-C6 ADC system is working correctly with comprehensive testing        ║");
+             "║  ESP32-C6 ADC system is working correctly with comprehensive testing         ║");
     ESP_LOGI(TAG,
-             "║  covering hardware validation, initialization, calibration, single/multi-   ║");
-    ESP_LOGI(TAG, "║  channel reading, continuous mode, monitor thresholds with bounds,         ║");
-    ESP_LOGI(TAG, "║  error handling, statistics, and performance testing.                      ║");
+             "║  covering hardware validation, initialization, calibration, single/multi-    ║");
+    ESP_LOGI(TAG,
+             "║  channel reading, continuous mode, monitor thresholds with bounds,           ║");
+    ESP_LOGI(TAG,
+             "║  error handling, statistics, and performance testing.                        ║");
     ESP_LOGI(TAG,
              "║                                                                              ║");
     ESP_LOGI(TAG,
-             "║  Hardware connections verified:                                             ║");
-    ESP_LOGI(TAG, "║  GPIO3 (HIGH)   GPIO0 (POT)   GPIO1 (LOW)   Monitor System                ║");
+             "║  Hardware connections verified:                                              ║");
+    ESP_LOGI(TAG,
+             "║  GPIO3 (HIGH)   GPIO0 (POT)   GPIO1 (LOW)   Monitor System                   ║");
     ESP_LOGI(TAG,
              "╚══════════════════════════════════════════════════════════════════════════════╝");
   } else {
     ESP_LOGE(TAG,
              "╔══════════════════════════════════════════════════════════════════════════════╗");
     ESP_LOGE(TAG,
-             "║                        SOME TESTS FAILED                                    ║");
+             "║                        SOME TESTS FAILED                                     ║");
     ESP_LOGE(TAG,
              "║                                                                              ║");
     ESP_LOGE(TAG,
-             "║  Please check hardware connections and review failed test details above.    ║");
-    ESP_LOGE(TAG,
-             "║  Failed tests: %2d / %2d                                                     ║",
+             "║  Please check hardware connections and review failed test details above.     ║");
+    ESP_LOGE(TAG, "║  Failed tests: %2d / %2d                                                     ",
              g_test_results.failed_tests, g_test_results.total_tests);
     ESP_LOGE(TAG,
              "╚══════════════════════════════════════════════════════════════════════════════╝");
