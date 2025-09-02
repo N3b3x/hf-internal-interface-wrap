@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
       
       - name: Check documentation links
-        run: python3 docs/check_docs.py docs/index.md
+        run: python3 docs/check_docs.py docs/README.md
       
       - name: Install Doxygen
         run: |
