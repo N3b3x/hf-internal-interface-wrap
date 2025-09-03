@@ -1,5 +1,15 @@
 # 🔌 BaseGpio API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: HardwareTypes](HardwareTypes.md) | [Back to API Index](README.md) | [Next: BaseAdc →](BaseAdc.md)
+
+</div>
+
+---
+
 ## 🌟 Overview
 
 `BaseGpio` is the unified GPIO base class for all digital GPIO implementations in the HardFOC system. It provides a comprehensive digital GPIO abstraction that serves as the foundation for all GPIO hardware implementations.
@@ -289,4 +299,14 @@ The following concrete implementations are available:
 ## Related Documentation
 
 - [EspGpio API Reference](../esp_api/EspGpio.md) - ESP32-C6 implementation
-- [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions 
+- [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: HardwareTypes](HardwareTypes.md) | [Back to API Index](README.md) | [Next: BaseAdc →](BaseAdc.md)
+
+</div> 

@@ -1,5 +1,15 @@
 # EspCan API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspUart](EspUart.md) | [Back to ESP API Index](README.md) | [Next: EspWifi →](EspWifi.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspCan` is the ESP32-C6 implementation of the `BaseCan` interface, providing comprehensive CAN (Controller Area Network) functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced CAN features with hardware-specific optimizations.
@@ -170,3 +180,13 @@ The `EspCan` class provides comprehensive error handling with specific error cod
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF TWAI Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/twai.html) - ESP-IDF documentation
 - [CAN Comprehensive Tests](../../examples/esp32/docs/README_CAN_TEST.md) - Complete CAN validation suite
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspUart](EspUart.md) | [Back to ESP API Index](README.md) | [Next: EspWifi →](EspWifi.md)
+
+</div>

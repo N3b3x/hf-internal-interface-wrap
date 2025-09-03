@@ -1,5 +1,15 @@
 # 📊 BaseAdc API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseGpio](BaseGpio.md) | [Back to API Index](README.md) | [Next: BasePwm →](BasePwm.md)
+
+</div>
+
+---
+
 ## 🌟 Overview
 
 `BaseAdc` is the abstract base class for all ADC (Analog-to-Digital Converter) implementations in the HardFOC system. It provides a unified interface for analog sensor reading with support for multi-channel operation, averaging, and comprehensive error handling.
@@ -362,4 +372,14 @@ The following concrete implementations are available:
 ## Related Documentation
 
 - [EspAdc API Reference](../esp_api/EspAdc.md) - ESP32-C6 implementation
-- [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions 
+- [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseGpio](BaseGpio.md) | [Back to API Index](README.md) | [Next: BasePwm →](BasePwm.md)
+
+</div> 

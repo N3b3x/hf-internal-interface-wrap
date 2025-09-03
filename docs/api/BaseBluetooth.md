@@ -6,6 +6,10 @@
 
 **🎯 Unified Bluetooth abstraction for Classic and BLE wireless communication**
 
+**📋 Navigation**
+
+[← Previous: BaseWifi](BaseWifi.md) | [Back to API Index](README.md) | [Next: BaseNvs →](BaseNvs.md)
+
 </div>
 
 ---
@@ -791,6 +795,16 @@ private:
    std::vector<hf_u32_t> active_connections;
    // Reuse connections instead of creating new ones
    ```
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseWifi](BaseWifi.md) | [Back to API Index](README.md) | [Next: BaseNvs →](BaseNvs.md)
+
+</div>
 
 ---
 

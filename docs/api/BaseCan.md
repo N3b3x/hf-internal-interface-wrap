@@ -6,6 +6,10 @@
 
 **🎯 Unified CAN bus abstraction for all Controller Area Network operations**
 
+**📋 Navigation**
+
+[← Previous: BaseUart](BaseUart.md) | [Back to API Index](README.md) | [Next: BaseWifi →](BaseWifi.md)
+
 </div>
 
 ---
@@ -958,6 +962,16 @@ if (stats.tx_queue_overflows > 0) {
 
 - [⚙️ **EspCan**](../esp_api/EspCan.md) - ESP32-C6 implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseUart](BaseUart.md) | [Back to API Index](README.md) | [Next: BaseWifi →](BaseWifi.md)
+
+</div>
 
 ---
 

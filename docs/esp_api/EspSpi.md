@@ -6,6 +6,10 @@
 
 **🔄 ESP32-C6 SPI implementation with ESP-IDF v5.5+ features**
 
+**📋 Navigation**
+
+[← Previous: EspI2c](EspI2c.md) | [Back to ESP API Index](README.md) | [Next: EspUart →](EspUart.md)
+
 </div>
 
 ---
@@ -387,15 +391,15 @@ ESP_LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer_time);
 - **[SPI Comprehensive Tests](../../examples/esp32/docs/README_SPI_TEST.md)** - Complete SPI validation
 - **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html)** - Official ESP-IDF documentation
 
-### **Navigation Links**
-
-- **[⬅️ Previous: EspGpio](EspGpio.md)** - GPIO implementation
-- **[➡️ Next: EspPio](EspPio.md)** - PIO implementation
-- **[🔙 Back to ESP32 Implementations](README.md)** - ESP32 implementation overview
-
 ---
 
-## 🔄 **Version History**
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspI2c](EspI2c.md) | [Back to ESP API Index](README.md) | [Next: EspUart →](EspUart.md)
+
+</div>
 
 - **Current**: ESP-IDF v5.5+ compatible implementation
 - **Features**: Full BaseSpi compliance, DMA support, IOMUX optimization

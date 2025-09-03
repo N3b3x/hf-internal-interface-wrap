@@ -1,5 +1,15 @@
 # 🎛️ BasePwm API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseAdc](BaseAdc.md) | [Back to API Index](README.md) | [Next: BaseI2c →](BaseI2c.md)
+
+</div>
+
+---
+
 ## 🌟 Overview
 
 `BasePwm` is the abstract base class for all PWM (Pulse Width Modulation) implementations in the HardFOC system. It provides a unified interface for motor control, LED dimming, servo control, and other PWM applications with comprehensive multi-channel support.
@@ -597,6 +607,12 @@ The `BasePwm` class is **not thread-safe**. For concurrent access, use appropria
 ---
 
 <div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseAdc](BaseAdc.md) | [Back to API Index](README.md) | [Next: BaseI2c →](BaseI2c.md)
+
+</div>
 
 **🎛️ BasePwm - Powering Precise Control in HardFOC Systems** 🚀
 

@@ -6,6 +6,10 @@
 
 **🎯 Unified periodic timer abstraction for all high-precision timing operations**
 
+**📋 Navigation**
+
+[← Previous: BaseTemperature](BaseTemperature.md) | [Back to API Index](README.md) | [Next: BasePio →](BasePio.md)
+
 </div>
 
 ---
@@ -961,6 +965,16 @@ timer.Start(period);  // No callback set
 
 - [⚙️ **EspPeriodicTimer**](../esp_api/EspPeriodicTimer.md) - ESP32-C6 implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseTemperature](BaseTemperature.md) | [Back to API Index](README.md) | [Next: BasePio →](BasePio.md)
+
+</div>
 
 ---
 

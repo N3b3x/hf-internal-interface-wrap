@@ -778,6 +778,9 @@ See [LICENSE](LICENSE) for full details.
 
 ### **Documentation**
 - 📚 [API Reference](docs/api/) - Complete interface documentation
+- 🔧 [ESP32 Implementations](docs/esp_api/) - Hardware-specific implementations
+- 🛠️ [Utility Classes](docs/utils/) - Advanced utility classes and helpers
+- 🔒 [Security Features](docs/security/) - Security implementation details
 - 🔧 [Build System](examples/esp32/scripts/docs/) - Build and deployment guides
 - 🛡️ [CI/CD Pipeline](.github/workflows/README.md) - Automated workflows and testing
 

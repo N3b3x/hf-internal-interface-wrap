@@ -1,5 +1,15 @@
 # EspGpio API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: ESP API Index](README.md) | [Back to ESP API Index](README.md) | [Next: EspAdc →](EspAdc.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspGpio` is the ESP32-C6 implementation of the `BaseGpio` interface, providing comprehensive GPIO functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced GPIO features with hardware-specific optimizations.
@@ -400,3 +410,13 @@ All `EspGpio` methods return appropriate error codes from the `hf_gpio_err_t` en
 - [BaseGpio API Reference](../api/BaseGpio.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF GPIO Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/gpio.html) - ESP-IDF documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: ESP API Index](README.md) | [Back to ESP API Index](README.md) | [Next: EspAdc →](EspAdc.md)
+
+</div>

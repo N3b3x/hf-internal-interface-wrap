@@ -1,5 +1,15 @@
 # 📶 BaseWifi API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseCan](BaseCan.md) | [Back to API Index](README.md) | [Next: BaseBluetooth →](BaseBluetooth.md)
+
+</div>
+
+---
+
 ## 🌟 Overview
 
 `BaseWifi` is the abstract base class for all WiFi implementations in the HardFOC system. It provides a unified interface for wireless networking operations including station mode (client), access point mode (hotspot), network scanning, security configuration, and comprehensive connection management.
@@ -842,6 +852,12 @@ The `BaseWifi` class is **not inherently thread-safe**. For concurrent access fr
 ---
 
 <div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseCan](BaseCan.md) | [Back to API Index](README.md) | [Next: BaseBluetooth →](BaseBluetooth.md)
+
+</div>
 
 **📶 BaseWifi - Connecting HardFOC to the World** 🌐
 

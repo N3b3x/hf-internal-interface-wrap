@@ -1,5 +1,15 @@
 # 📊 EspAdc API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspGpio](EspGpio.md) | [Back to ESP API Index](README.md) | [Next: EspPwm →](EspPwm.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspAdc` provides ESP32 ADC (Analog-to-Digital Converter) functionality with comprehensive support for all ESP32 variants using ESP-IDF v5.5+. It implements the `BaseAdc` interface with hardware-specific optimizations for one-shot and continuous sampling modes, calibration, filtering, and threshold monitoring.
@@ -386,3 +396,13 @@ The `EspAdc` class uses mutex protection for thread-safe operation. Multiple thr
 - **[EspTypes_ADC.h](../../inc/mcu/esp32/utils/EspTypes_ADC.h)** - Type definitions and utilities
 - **[ADC Test Suite](../../examples/esp32/docs/README_ADC_TEST.md)** - Comprehensive testing documentation
 - **[ESP-IDF ADC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/adc.html)** - ESP-IDF documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspGpio](EspGpio.md) | [Back to ESP API Index](README.md) | [Next: EspPwm →](EspPwm.md)
+
+</div>

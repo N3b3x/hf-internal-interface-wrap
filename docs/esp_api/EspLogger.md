@@ -1,5 +1,15 @@
 # 📝 EspLogger API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspTemperature](EspTemperature.md) | [Back to ESP API Index](README.md) | [Next: ESP API Index](README.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspLogger` provides ESP32-specific logging functionality using ESP-IDF's esp_log system. It implements the `BaseLogger` interface with support for both ESP-IDF Log V1 and Log V2 systems, offering comprehensive logging capabilities with performance monitoring and multi-output support.
@@ -271,3 +281,13 @@ The `EspLogger` class uses mutex protection for thread-safe operation. Multiple 
 - **[BaseLogger API Reference](../api/BaseLogger.md)** - Base class interface
 - **[ESP-IDF Logging](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/system/log.html)** - ESP-IDF documentation
 - **[DigitalOutputGuard Documentation](../utils/DigitalOutputGuard.md)** - Utility class documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspTemperature](EspTemperature.md) | [Back to ESP API Index](README.md) | [Next: ESP API Index](README.md)
+
+</div>

@@ -1,5 +1,15 @@
 # EspWifi API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspCan](EspCan.md) | [Back to ESP API Index](README.md) | [Next: EspBluetooth →](EspBluetooth.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspWifi` is the ESP32-C6 implementation of the `BaseWifi` interface, providing comprehensive WiFi functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced WiFi features with hardware-specific optimizations.
@@ -276,3 +286,13 @@ Successfully found 2 real networks:
 - [BaseWifi API Reference](../api/BaseWifi.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp_wifi.html) - ESP-IDF documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspCan](EspCan.md) | [Back to ESP API Index](README.md) | [Next: EspBluetooth →](EspBluetooth.md)
+
+</div>

@@ -6,6 +6,10 @@
 
 **🔄 Unified SPI abstraction for high-speed serial communication**
 
+**📋 Navigation**
+
+[← Previous: BaseI2c](BaseI2c.md) | [Back to API Index](README.md) | [Next: BaseUart →](BaseUart.md)
+
 </div>
 
 ---
@@ -833,15 +837,15 @@ spi.ConfigureDevice(99, config);  // Invalid device
 - **[Hardware Types](HardwareTypes.md)** - Type definitions and validation
 - **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html)** - Official ESP-IDF documentation
 
-### **Navigation Links**
-
-- **[⬅️ Previous: BasePwm](BasePwm.md)** - Pulse Width Modulation
-- **[➡️ Next: BaseUart](BaseUart.md)** - Serial Communication
-- **[🔙 Back to API Overview](README.md)** - API interfaces overview
-
 ---
 
 <div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseI2c](BaseI2c.md) | [Back to API Index](README.md) | [Next: BaseUart →](BaseUart.md)
+
+</div>
 
 **🔌 BaseSpi - High-Speed Serial Communication for HardFOC**
 

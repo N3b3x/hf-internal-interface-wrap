@@ -1,5 +1,15 @@
 # 🚌 BaseI2c API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BasePwm](BasePwm.md) | [Back to API Index](README.md) | [Next: BaseSpi →](BaseSpi.md)
+
+</div>
+
+---
+
 ## 🌟 Overview
 
 `BaseI2c` is the abstract base class for I2C (Inter-Integrated Circuit) device communication in the HardFOC system. It provides a unified interface for communicating with sensors, displays, memory devices, and other I2C peripherals with comprehensive error handling and device management.
@@ -692,6 +702,12 @@ The `BaseI2c` class is **not thread-safe**. For concurrent access from multiple 
 ---
 
 <div align="center">
+
+**📋 Navigation**
+
+[← Previous: BasePwm](BasePwm.md) | [Back to API Index](README.md) | [Next: BaseSpi →](BaseSpi.md)
+
+</div>
 
 **🚌 BaseI2c - Connecting the HardFOC Ecosystem** 🌐
 

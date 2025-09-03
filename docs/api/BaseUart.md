@@ -6,6 +6,10 @@
 
 **📡 Unified UART abstraction for serial communication**
 
+**📋 Navigation**
+
+[← Previous: BaseSpi](BaseSpi.md) | [Back to API Index](README.md) | [Next: BaseCan →](BaseCan.md)
+
 </div>
 
 ---
@@ -973,6 +977,16 @@ config.use_dma = (transfer_size > 64);  // Use DMA for transfers > 64 bytes
 
 - [⚙️ **EspUart**](../esp_api/EspUart.md) - ESP32-C6 implementation
 - [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseSpi](BaseSpi.md) | [Back to API Index](README.md) | [Next: BaseCan →](BaseCan.md)
+
+</div>
 
 ---
 

@@ -1,5 +1,15 @@
 # EspNvs API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspBluetooth](EspBluetooth.md) | [Back to ESP API Index](README.md) | [Next: EspPeriodicTimer →](EspPeriodicTimer.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspNvs` is the ESP32-C6 implementation of the `BaseNvs` interface, providing comprehensive NVS (Non-Volatile Storage) functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced NVS features with hardware-specific optimizations.
@@ -264,3 +274,13 @@ The `EspNvs` class provides comprehensive error handling with specific error cod
 - [BaseNvs API Reference](../api/BaseNvs.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF NVS Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/storage/nvs_flash.html) - ESP-IDF documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspBluetooth](EspBluetooth.md) | [Back to ESP API Index](README.md) | [Next: EspPeriodicTimer →](EspPeriodicTimer.md)
+
+</div>

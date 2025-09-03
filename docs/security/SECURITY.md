@@ -1,6 +1,16 @@
 # 🛡️ Security Policy and Guidelines
 ## HardFOC Internal Interface Wrapper Project
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: SECURITY_IMPLEMENTATION_SUMMARY](SECURITY_IMPLEMENTATION_SUMMARY.md) | [Back to Security Index](README.md) | [Next: Security Index](README.md)
+
+</div>
+
+---
+
 ### 📋 Table of Contents
 - [Security Overview](#security-overview)
 - [Supported Versions](#supported-versions)
@@ -402,3 +412,13 @@ For critical security incidents requiring immediate attention:
 **Version**: 1.0.0
 
 *This security policy is a living document and will be updated regularly to reflect new threats, technologies, and best practices.*
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: SECURITY_IMPLEMENTATION_SUMMARY](SECURITY_IMPLEMENTATION_SUMMARY.md) | [Back to Security Index](README.md) | [Next: Security Index](README.md)
+
+</div>

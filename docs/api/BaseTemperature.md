@@ -6,6 +6,10 @@
 
 **🎯 Unified temperature sensing abstraction for all thermal monitoring operations**
 
+**📋 Navigation**
+
+[← Previous: BaseLogger](BaseLogger.md) | [Back to API Index](README.md) | [Next: BasePeriodicTimer →](BasePeriodicTimer.md)
+
 </div>
 
 ---
@@ -626,6 +630,16 @@ public:
    hf_temp_statistics_t stats;
    temp_sensor.GetStatistics(stats);
    ```
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseLogger](BaseLogger.md) | [Back to API Index](README.md) | [Next: BasePeriodicTimer →](BasePeriodicTimer.md)
+
+</div>
 
 ---
 

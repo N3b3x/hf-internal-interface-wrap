@@ -1,5 +1,15 @@
 # EspI2c API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspPwm](EspPwm.md) | [Back to ESP API Index](README.md) | [Next: EspSpi →](EspSpi.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspI2c` is the ESP32-C6 implementation of the `BaseI2c` interface, providing comprehensive I2C functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced I2C features with hardware-specific optimizations.
@@ -141,3 +151,13 @@ The `EspI2c` class provides comprehensive error handling with specific error cod
 - [BaseI2c API Reference](../api/BaseI2c.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF I2C Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/i2c.html) - ESP-IDF documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspPwm](EspPwm.md) | [Back to ESP API Index](README.md) | [Next: EspSpi →](EspSpi.md)
+
+</div>

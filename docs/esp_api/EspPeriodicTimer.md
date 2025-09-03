@@ -1,5 +1,15 @@
 # EspPeriodicTimer API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspNvs](EspNvs.md) | [Back to ESP API Index](README.md) | [Next: EspTemperature →](EspTemperature.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspPeriodicTimer` is the ESP32-C6 implementation of the `BasePeriodicTimer` interface, providing comprehensive periodic timer functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced timer features with hardware-specific optimizations.
@@ -290,3 +300,13 @@ The `EspPeriodicTimer` class provides comprehensive error handling with specific
 - [BasePeriodicTimer API Reference](../api/BasePeriodicTimer.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF Timer Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/gptimer.html) - ESP-IDF documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspNvs](EspNvs.md) | [Back to ESP API Index](README.md) | [Next: EspTemperature →](EspTemperature.md)
+
+</div>

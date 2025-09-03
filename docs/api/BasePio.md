@@ -6,6 +6,10 @@
 
 **⚡ Precise digital signal I/O for timing-critical operations**
 
+**📋 Navigation**
+
+[← Previous: BasePeriodicTimer](BasePeriodicTimer.md) | [Back to API Index](README.md) | [Next: API Index](README.md)
+
 </div>
 
 ---
@@ -858,6 +862,16 @@ hf_pio_symbol_t optimized[] = {
 
 - [⚙️ **EspPio**](../esp_api/EspPio.md) - ESP32-C6 implementation
 - [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BasePeriodicTimer](BasePeriodicTimer.md) | [Back to API Index](README.md) | [Next: API Index](README.md)
+
+</div>
 
 ---
 
