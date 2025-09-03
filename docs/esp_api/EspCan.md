@@ -7,7 +7,7 @@
 ## Features
 
 - **ESP32-C6 TWAI Controller** - Full support for ESP32-C6 TWAI (Two-Wire Automotive Interface) capabilities
-- **CAN 2.0A/2.0B Support** - Standard and extended frame formats
+- **CAN 2.0A/2.0B Support** - Standard and extended frame formats (no CAN-FD support)
 - **High-Speed Operation** - Up to 1 Mbps CAN bus speeds
 - **DMA Integration** - High-performance DMA transfers
 - **Filter Support** - Hardware message filtering
@@ -134,7 +134,7 @@ if (err == HF_CAN_ERR_OK) {
 
 ### TWAI Controller
 
-The ESP32-C6 uses the TWAI (Two-Wire Automotive Interface) controller, which is fully compatible with CAN 2.0A and CAN 2.0B standards.
+The ESP32-C6 uses the TWAI (Two-Wire Automotive Interface) controller, which is fully compatible with CAN 2.0A and CAN 2.0B standards. **Note: CAN-FD is not supported by the ESP32-C6 TWAI controller.**
 
 ### Hardware Filtering
 
@@ -169,3 +169,4 @@ The `EspCan` class provides comprehensive error handling with specific error cod
 - [BaseCan API Reference](../api/BaseCan.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF TWAI Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/twai.html) - ESP-IDF documentation
+- [CAN Comprehensive Tests](../../examples/esp32/docs/README_CAN_TEST.md) - Complete CAN validation suite
