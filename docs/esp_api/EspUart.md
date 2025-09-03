@@ -1,5 +1,15 @@
 # EspUart API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspSpi](EspSpi.md) | [Back to ESP API Index](README.md) | [Next: EspCan →](EspCan.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspUart` is the ESP32-C6 implementation of the `BaseUart` interface, providing comprehensive UART (Universal Asynchronous Receiver-Transmitter) functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced UART features with hardware-specific optimizations.
@@ -244,3 +254,13 @@ The `EspUart` class provides comprehensive error handling with specific error co
 - [BaseUart API Reference](../api/BaseUart.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF UART Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/uart.html) - ESP-IDF documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspSpi](EspSpi.md) | [Back to ESP API Index](README.md) | [Next: EspCan →](EspCan.md)
+
+</div>

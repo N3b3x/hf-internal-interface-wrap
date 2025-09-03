@@ -1,5 +1,15 @@
 # ESP32C6 NimBLE Bluetooth Implementation
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspWifi](EspWifi.md) | [Back to ESP API Index](README.md) | [Next: EspNvs →](EspNvs.md)
+
+</div>
+
+---
+
 ## Overview
 
 This document describes the **production-ready** ESP32C6 Bluetooth Low Energy (BLE) implementation using the NimBLE stack for ESP-IDF v5.5. The implementation provides a unified Bluetooth interface with optimal support for different ESP32 variants through conditional compilation.
@@ -460,3 +470,13 @@ The ESP32C6 NimBLE implementation provides a **production-ready, robust, and hig
 This implementation has been **thoroughly tested and validated** and serves as a **solid, production-ready foundation** for ESP32C6 BLE applications. The comprehensive test suite ensures reliability, and the documented performance characteristics provide clear expectations for real-world deployment.
 
 **Status**: ✅ **PRODUCTION READY** - All tests passing, performance verified, documentation complete.
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspWifi](EspWifi.md) | [Back to ESP API Index](README.md) | [Next: EspNvs →](EspNvs.md)
+
+</div>

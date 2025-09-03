@@ -1,5 +1,15 @@
 # HardwareTypes API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: API Index](README.md) | [Back to API Index](README.md) | [Next: BaseGpio →](BaseGpio.md)
+
+</div>
+
+---
+
 ## Overview
 
 `HardwareTypes.h` defines platform-agnostic hardware type definitions for the HardFOC system. These types provide a consistent API across different hardware platforms without exposing MCU-specific implementation details.
@@ -360,3 +370,13 @@ bool convert_pin_number(int input_pin, hf_pin_num_t& output_pin) {
 - [BaseGpio API Reference](BaseGpio.md) - GPIO type usage examples
 - [BaseAdc API Reference](BaseAdc.md) - ADC channel type usage
 - [EspGpio API Reference](../esp_api/EspGpio.md) - ESP32-specific type mappings
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: API Index](README.md) | [Back to API Index](README.md) | [Next: BaseGpio →](BaseGpio.md)
+
+</div>

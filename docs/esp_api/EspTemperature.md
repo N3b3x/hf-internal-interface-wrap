@@ -1,5 +1,15 @@
 # 🌡️ EspTemperature API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspPeriodicTimer](EspPeriodicTimer.md) | [Back to ESP API Index](README.md) | [Next: EspLogger →](EspLogger.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspTemperature` provides ESP32-C6 internal temperature sensor functionality with comprehensive monitoring capabilities. It implements the `BaseTemperature` interface with hardware-specific optimizations for accurate temperature measurement, threshold monitoring, and continuous monitoring.
@@ -249,3 +259,16 @@ The `EspTemperature` class uses mutex protection for thread-safe operation. Mult
 
 - **[BaseTemperature API Reference](../api/BaseTemperature.md)** - Base class interface
 - **[ESP-IDF Temperature Sensor Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/temp_sensor.html)** - ESP-IDF documentation
+<<<<<<< Current (Your changes)
+=======
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspPeriodicTimer](EspPeriodicTimer.md) | [Back to ESP API Index](README.md) | [Next: EspLogger →](EspLogger.md)
+
+</div>
+>>>>>>> Incoming (Background Agent changes)

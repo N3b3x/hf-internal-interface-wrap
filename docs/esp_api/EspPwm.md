@@ -1,5 +1,15 @@
 # EspPwm API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspAdc](EspAdc.md) | [Back to ESP API Index](README.md) | [Next: EspI2c →](EspI2c.md)
+
+</div>
+
+---
+
 ## Overview
 
 `EspPwm` is the ESP32-C6 implementation of the `BasePwm` interface, providing comprehensive PWM (Pulse Width Modulation) functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced PWM features with hardware-specific optimizations.
@@ -203,3 +213,13 @@ The `EspPwm` class provides comprehensive error handling with specific error cod
 - [BasePwm API Reference](../api/BasePwm.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
 - [ESP-IDF LEDC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/ledc.html) - ESP-IDF documentation
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: EspAdc](EspAdc.md) | [Back to ESP API Index](README.md) | [Next: EspI2c →](EspI2c.md)
+
+</div>

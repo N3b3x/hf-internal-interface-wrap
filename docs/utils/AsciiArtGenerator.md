@@ -1,5 +1,15 @@
 # 🎨 AsciiArtGenerator API Reference
 
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: DigitalOutputGuard](DigitalOutputGuard.md) | [Back to Utils Index](README.md) | [Next: Utils Index](README.md)
+
+</div>
+
+---
+
 ## Overview
 
 `AsciiArtGenerator` is a utility class that converts text strings into large ASCII art characters. It provides a simple interface for generating stylized text that can be used in console output, logging, and user interfaces to enhance visual presentation.
@@ -276,3 +286,16 @@ printf("%s\n", email_art.c_str());
 - **[EspLogger API Reference](../esp_api/EspLogger.md)** - Logging integration
 - **[DigitalOutputGuard Documentation](DigitalOutputGuard.md)** - Other utility classes
 - **[Utils Overview](README.md)** - Complete utilities documentation
+<<<<<<< Current (Your changes)
+=======
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: DigitalOutputGuard](DigitalOutputGuard.md) | [Back to Utils Index](README.md) | [Next: Utils Index](README.md)
+
+</div>
+>>>>>>> Incoming (Background Agent changes)

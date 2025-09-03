@@ -255,7 +255,7 @@ Our comprehensive documentation is organized into logical sections for easy navi
 | **[🔧 ESP32 Implementations](esp_api/README.md)** | ESP32-C6 specific implementations | Hardware-specific optimizations and features |
 | **[🛠️ Utility Classes](utils/README.md)** | Advanced utility classes and helpers | RAII patterns, safety mechanisms, and convenience wrappers |
 | **[🧪 Test Suites](../../examples/esp32/docs/README.md)** | Test documentation and examples | Test suites and examples |
-| **[🔒 Security Features](security/README.md)** | Security implementation details | Encryption, authentication, and safety |
+
 
 ### 🏛️ **Core Interfaces for HardFOC Boards**
 
@@ -500,7 +500,7 @@ The GPL-3.0 license ensures that improvements to the HardFOC wrapper remain open
 
 **📚 Documentation Navigation**
 
-[📋 API Interfaces](api/README.md) | [🔧 ESP32 Implementations](esp_api/README.md) | [🛠️ Utility Classes](utils/README.md) | [🧪 Test Suites](../../examples/esp32/docs/README.md) | [🔒 Security](security/README.md)
+[📋 API Interfaces](api/README.md) | [🔧 ESP32 Implementations](esp_api/README.md) | [🛠️ Utility Classes](utils/README.md) | [🧪 Test Suites](../../examples/esp32/docs/README.md)
 
 **📞 Support**
 

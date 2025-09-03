@@ -6,6 +6,10 @@
 
 **🎯 Unified Non-Volatile Storage abstraction for all persistent data operations**
 
+**📋 Navigation**
+
+[← Previous: BaseBluetooth](BaseBluetooth.md) | [Back to API Index](README.md) | [Next: BaseLogger →](BaseLogger.md)
+
 </div>
 
 ---
@@ -959,6 +963,16 @@ if (stats.bytes_written > max_storage_bytes) {
 
 - [⚙️ **EspNvs**](../esp_api/EspNvs.md) - ESP32-C6 implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseBluetooth](BaseBluetooth.md) | [Back to API Index](README.md) | [Next: BaseLogger →](BaseLogger.md)
+
+</div>
 
 ---
 

@@ -6,6 +6,10 @@
 
 **🎯 Unified logging abstraction for comprehensive system monitoring and debugging**
 
+**📋 Navigation**
+
+[← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature →](BaseTemperature.md)
+
 </div>
 
 ---
@@ -975,6 +979,16 @@ private:
    #define LOG_VERBOSE(tag, format, ...) do {} while(0)
    #endif
    ```
+
+---
+
+<div align="center">
+
+**📋 Navigation**
+
+[← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature →](BaseTemperature.md)
+
+</div>
 
 ---
 
