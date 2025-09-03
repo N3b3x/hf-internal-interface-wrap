@@ -818,7 +818,7 @@ config.authmode = hf_wifi_security_t::WIFI_AUTH_WPA3_PSK;  // Prefer WPA3
 config.threshold_authmode = hf_wifi_security_t::WIFI_AUTH_WPA2_PSK;
 
 // ✅ Use strong passwords
-config.password = "SecurePassword123!@#";  // Strong password
+config.password = "YourSecurePassword123!@#";  // Strong password example
 
 // ✅ Monitor security events
 wifi.SetEventCallback([](hf_wifi_event_t event, void* data) {

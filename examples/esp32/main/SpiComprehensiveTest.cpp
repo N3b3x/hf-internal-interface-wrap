@@ -64,7 +64,7 @@ static constexpr hf_pin_num_t TEST_CS_PIN_1 = 21;
 static constexpr hf_pin_num_t TEST_CS_PIN_2 = 20;
 static constexpr hf_pin_num_t TEST_CS_PIN_3 = 19;
 static constexpr hf_host_id_t SPI_HOST_NUM =
-    static_cast<hf_host_id_t>(1);                  // ESP32-C6 only has SPI2_HOST (value 1)
+    static_cast<hf_host_id_t>(SPI2_HOST);                  // ESP32-C6 only has SPI2_HOST (value 1)
 static constexpr uint32_t SLOW_SPEED = 1000000;    // 1MHz
 static constexpr uint32_t MEDIUM_SPEED = 10000000; // 10MHz
 static constexpr uint32_t FAST_SPEED = 40000000;   // 40MHz
@@ -101,10 +101,9 @@ void generate_sequential_pattern(uint8_t* buffer, size_t length,
                                  uint8_t start_value = 0x01) noexcept;
 void generate_alternating_pattern(uint8_t* buffer, size_t length, uint8_t value1 = 0x55,
                                   uint8_t value2 = 0xAA) noexcept;
-void log_test_separator(const char* test_name) noexcept;
+
 
 bool test_spi_bus_initialization() noexcept {
-  log_test_separator("SPI Bus Initialization");
 
   // Test 1: Basic initialization with DMA
   hf_spi_bus_config_t bus_config = {};
@@ -152,7 +151,7 @@ bool test_spi_bus_initialization() noexcept {
 }
 
 bool test_spi_bus_deinitialization() noexcept {
-  log_test_separator("SPI Bus Deinitialization");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -199,7 +198,7 @@ bool test_spi_bus_deinitialization() noexcept {
 }
 
 bool test_spi_configuration_validation() noexcept {
-  log_test_separator("SPI Configuration Validation");
+
 
   // Test different hosts
   for (auto host : {SPI2_HOST}) { // ESP32-C6 typically has SPI2_HOST available
@@ -243,7 +242,7 @@ bool test_spi_configuration_validation() noexcept {
 }
 
 bool test_spi_device_creation() noexcept {
-  log_test_separator("SPI Device Creation");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -321,7 +320,7 @@ bool test_spi_device_creation() noexcept {
 }
 
 bool test_spi_device_management() noexcept {
-  log_test_separator("SPI Device Management");
+
 
   // Use SPI2_HOST for device management test to isolate from other tests
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -399,7 +398,7 @@ bool test_spi_device_management() noexcept {
 }
 
 bool test_spi_transfer_basic() noexcept {
-  log_test_separator("SPI Basic Transfer Operations");
+
 
   // Use SPI2_HOST for transfer tests to isolate from other tests
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -465,7 +464,7 @@ bool test_spi_transfer_basic() noexcept {
 }
 
 bool test_spi_transfer_modes() noexcept {
-  log_test_separator("SPI Transfer Modes");
+
 
   // Use SPI2_HOST for transfer tests to isolate from other tests
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -521,7 +520,7 @@ bool test_spi_transfer_modes() noexcept {
 }
 
 bool test_spi_transfer_sizes() noexcept {
-  log_test_separator("SPI Transfer Size Tests");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -589,7 +588,7 @@ bool test_spi_transfer_sizes() noexcept {
 }
 
 bool test_spi_dma_operations() noexcept {
-  log_test_separator("SPI DMA Operations");
+
 
   // Test with DMA enabled
   auto bus_config_dma = create_test_bus_config(FAST_SPEED, true, SPI2_HOST);
@@ -687,7 +686,7 @@ bool test_spi_dma_operations() noexcept {
 }
 
 bool test_spi_clock_speeds() noexcept {
-  log_test_separator("SPI Clock Speed Tests");
+
 
   std::vector<uint32_t> test_speeds = {
       SLOW_SPEED,   // 1MHz
@@ -753,7 +752,7 @@ bool test_spi_clock_speeds() noexcept {
 }
 
 bool test_spi_multi_device_operations() noexcept {
-  log_test_separator("SPI Multi-Device Operations");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -815,7 +814,7 @@ bool test_spi_multi_device_operations() noexcept {
 }
 
 bool test_spi_error_handling() noexcept {
-  log_test_separator("SPI Error Handling");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -869,7 +868,7 @@ bool test_spi_error_handling() noexcept {
 }
 
 bool test_spi_timeout_handling() noexcept {
-  log_test_separator("SPI Timeout Handling");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -932,7 +931,7 @@ bool test_spi_timeout_handling() noexcept {
 }
 
 bool test_spi_esp_specific_features() noexcept {
-  log_test_separator("ESP-Specific SPI Features");
+
 
   // Test with different clock sources (ESP32-C6 specific)
   hf_spi_bus_config_t bus_config = {};
@@ -992,7 +991,7 @@ bool test_spi_esp_specific_features() noexcept {
 }
 
 bool test_spi_iomux_optimization() noexcept {
-  log_test_separator("SPI IOMUX Optimization");
+
 
   // Test with IOMUX enabled (for maximum performance)
   hf_spi_bus_config_t bus_config_iomux = {};
@@ -1090,7 +1089,7 @@ bool test_spi_iomux_optimization() noexcept {
 }
 
 bool test_spi_thread_safety() noexcept {
-  log_test_separator("SPI Thread Safety");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -1142,7 +1141,7 @@ bool test_spi_thread_safety() noexcept {
 }
 
 bool test_spi_performance_benchmarks() noexcept {
-  log_test_separator("SPI Performance Benchmarks");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(FAST_SPEED, true, SPI2_HOST);
@@ -1215,7 +1214,7 @@ bool test_spi_performance_benchmarks() noexcept {
 }
 
 bool test_spi_edge_cases() noexcept {
-  log_test_separator("SPI Edge Cases");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -1280,7 +1279,7 @@ bool test_spi_edge_cases() noexcept {
 }
 
 bool test_spi_bus_acquisition() noexcept {
-  log_test_separator("SPI Bus Acquisition");
+
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -1339,7 +1338,7 @@ bool test_spi_bus_acquisition() noexcept {
 }
 
 bool test_spi_power_management() noexcept {
-  log_test_separator("SPI Power Management");
+
 
   // Test with power management features
   hf_spi_bus_config_t bus_config = {};
@@ -1373,7 +1372,7 @@ bool test_spi_power_management() noexcept {
  * @note Uses identical configuration and test pattern as C++ wrapper replica test
  */
 bool test_spi_espidf_direct_api() noexcept {
-  log_test_separator("ESP-IDF Direct SPI API Test (FIRST)");
+
 
   ESP_LOGI(TAG, "Testing SPI using ESP-IDF API directly (bypassing our wrapper)");
   ESP_LOGI(TAG, "This test runs FIRST to verify ESP-IDF SPI driver functionality");
@@ -1574,7 +1573,7 @@ bool test_spi_espidf_direct_api() noexcept {
  * @note Uses identical configuration and test pattern as ESP-IDF direct test
  */
 bool test_spi_espidf_wrapper_replica() noexcept {
-  log_test_separator("EspSpiBus Wrapper Replica Test (SECOND)");
+
 
   ESP_LOGI(TAG, "Testing SPI using EspSpiBus wrapper (replicating ESP-IDF direct test)");
   ESP_LOGI(TAG, "This test runs SECOND to compare wrapper implementation with ESP-IDF direct API");
@@ -1820,15 +1819,6 @@ void generate_alternating_pattern(uint8_t* buffer, size_t length, uint8_t value1
   for (size_t i = 0; i < length; ++i) {
     buffer[i] = (i % 2 == 0) ? value1 : value2;
   }
-}
-
-void log_test_separator(const char* test_name) noexcept {
-  ESP_LOGI(TAG,
-           "\n"
-           "═══════════════════════════════════════════════════════════════════\n"
-           "  %s\n"
-           "═══════════════════════════════════════════════════════════════════",
-           test_name);
 }
 
 extern "C" void app_main(void) {
