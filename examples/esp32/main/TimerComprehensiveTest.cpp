@@ -54,7 +54,8 @@ struct CallbackTestData {
 
   CallbackTestData()
       : call_count(0), last_call_time_us(0), min_interval_us(UINT64_MAX), max_interval_us(0),
-        total_interval_us(0), callback_executed(false), user_data_mismatch(false), expected_user_data(nullptr) {}
+        total_interval_us(0), callback_executed(false), user_data_mismatch(false),
+        expected_user_data(nullptr) {}
 
   void reset() {
     call_count = 0;
@@ -852,8 +853,7 @@ extern "C" void app_main(void) {
       ENABLE_STRESS_TESTS, "TIMER STRESS TESTS", 5,
       // Stress and resource management tests
       ESP_LOGI(TAG, "Running timer stress tests...");
-      RUN_TEST_IN_TASK("stress", test_timer_stress, 8192, 1);
-      flip_test_progress_indicator();
+      RUN_TEST_IN_TASK("stress", test_timer_stress, 8192, 1); flip_test_progress_indicator();
       RUN_TEST_IN_TASK("resource_management", test_timer_resource_management, 8192, 1);
       flip_test_progress_indicator(););
 
@@ -861,14 +861,10 @@ extern "C" void app_main(void) {
   print_test_summary(g_test_results, "TIMER", TAG);
 
   ESP_LOGI(TAG, "\n");
-  ESP_LOGI(TAG,
-            "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG,
-            "║                TIMER COMPREHENSIVE TEST SUITE COMPLETE                       ║");
-  ESP_LOGI(TAG,
-            "║                         HardFOC Internal Interface                           ║");
-  ESP_LOGI(TAG, 
-            "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                TIMER COMPREHENSIVE TEST SUITE COMPLETE                       ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   // Keep the system running
 

@@ -23,60 +23,60 @@
  *
  * PERFORMANCE TESTING AND EXPECTED OUTPUTS:
  * ==========================================
- * 
+ *
  * The performance tests measure critical timing characteristics of the DigitalOutputGuard:
- * 
+ *
  * 1. GUARD CREATION/DESTRUCTION PERFORMANCE:
  *    - Tests: 1000 iterations of guard creation and destruction
  *    - Measures: Complete RAII lifecycle timing
  *    - Expected: < 100 μs per cycle (typically 2-5 μs on ESP32-C6)
  *    - Output: "Guard creation/destruction: 1000 iterations in X.XX ms (avg: X.XX us per cycle)"
  *    - Significance: Validates efficient object lifecycle management
- * 
+ *
  * 2. STATE TRANSITION PERFORMANCE:
  *    - Tests: 1000 iterations of SetActive()/SetInactive() operations
  *    - Measures: GPIO state change timing
  *    - Expected: < 50 μs per operation (typically 1-3 μs on ESP32-C6)
  *    - Output: "State transitions: 1000 iterations in X.XX ms (avg: X.XX us per operation)"
  *    - Significance: Validates fast GPIO control without overhead
- * 
+ *
  * 3. STRESS TEST PERFORMANCE:
  *    - Tests: 2000 iterations with 5 state changes per iteration across 3 GPIO pins
  *    - Measures: Complex multi-GPIO scenario timing
  *    - Expected: < 200 μs per iteration (typically 5-15 μs on ESP32-C6)
  *    - Output: "Stress test: 2000 iterations in X.XX ms (avg: X.XX us per iteration)"
  *    - Significance: Validates performance under realistic usage patterns
- * 
+ *
  * 4. CONCURRENT ACCESS PERFORMANCE:
  *    - Tests: 3 concurrent tasks performing 100 operations each (300 total)
  *    - Measures: Multi-threaded access timing and thread safety
  *    - Expected: All operations complete successfully without race conditions
  *    - Output: "DigitalOutputGuard concurrent access test successful: 300 operations"
  *    - Significance: Validates thread-safe operation under concurrent load
- * 
+ *
  * PERFORMANCE INTERPRETATION:
  * ===========================
- * 
+ *
  * Excellent Performance Indicators:
  * - Guard creation/destruction < 5 μs: Minimal RAII overhead
  * - State transitions < 3 μs: Direct GPIO control efficiency
  * - Stress test < 15 μs: Good scalability under load
  * - 100% concurrent test success: Robust thread safety
- * 
+ *
  * Performance Degradation Warnings:
  * - Guard creation/destruction > 50 μs: Potential memory allocation issues
  * - State transitions > 20 μs: GPIO driver inefficiency
  * - Stress test > 100 μs: Resource contention or memory fragmentation
  * - Concurrent test failures: Thread safety violations
- * 
+ *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
  */
 
 #include "TestFramework.h"
-#include "utils/DigitalOutputGuard.h"
 #include "mcu/esp32/EspGpio.h"
+#include "utils/DigitalOutputGuard.h"
 
 static const char* TAG = "DIGITAL_OUTPUT_GUARD_Test";
 
@@ -88,13 +88,13 @@ static TestResults g_test_results;
 // Enable/disable specific test categories by setting to true or false
 
 // Core DigitalOutputGuard functionality tests
-static constexpr bool ENABLE_BASIC_TESTS = true;        // Basic RAII and state management
-static constexpr bool ENABLE_CONSTRUCTOR_TESTS = true;  // Constructor variants and error handling
-static constexpr bool ENABLE_STATE_TESTS = true;        // State transitions and GPIO control
+static constexpr bool ENABLE_BASIC_TESTS = true;          // Basic RAII and state management
+static constexpr bool ENABLE_CONSTRUCTOR_TESTS = true;    // Constructor variants and error handling
+static constexpr bool ENABLE_STATE_TESTS = true;          // State transitions and GPIO control
 static constexpr bool ENABLE_MOVE_SEMANTICS_TESTS = true; // Move operations and resource management
-static constexpr bool ENABLE_EDGE_CASE_TESTS = true;    // Edge cases and error conditions
-static constexpr bool ENABLE_CONCURRENT_TESTS = true;   // Concurrent access testing
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;  // Performance and stress testing
+static constexpr bool ENABLE_EDGE_CASE_TESTS = true;      // Edge cases and error conditions
+static constexpr bool ENABLE_CONCURRENT_TESTS = true;     // Concurrent access testing
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Performance and stress testing
 
 // Test GPIO pins - using only 3 pins for all tests
 static constexpr hf_pin_num_t TEST_GPIO_PIN_1 = 2;
@@ -293,7 +293,7 @@ bool test_digital_output_guard_null_pointer_handling() noexcept {
   }
 
   if (guard.GetLastError() != hf_gpio_err_t::GPIO_ERR_NULL_POINTER) {
-    ESP_LOGE(TAG, "Expected GPIO_ERR_NULL_POINTER, got: %d", 
+    ESP_LOGE(TAG, "Expected GPIO_ERR_NULL_POINTER, got: %d",
              static_cast<int>(guard.GetLastError()));
     return false;
   }
@@ -358,12 +358,14 @@ bool test_digital_output_guard_no_ensure_output_mode() noexcept {
   DigitalOutputGuard guard(test_gpio, false);
 
   if (guard.IsValid()) {
-    ESP_LOGE(TAG, "DigitalOutputGuard should not be valid with input mode GPIO and ensure_output_mode=false");
+    ESP_LOGE(
+        TAG,
+        "DigitalOutputGuard should not be valid with input mode GPIO and ensure_output_mode=false");
     return false;
   }
 
   if (guard.GetLastError() != hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH) {
-    ESP_LOGE(TAG, "Expected GPIO_ERR_DIRECTION_MISMATCH, got: %d", 
+    ESP_LOGE(TAG, "Expected GPIO_ERR_DIRECTION_MISMATCH, got: %d",
              static_cast<int>(guard.GetLastError()));
     return false;
   }
@@ -637,8 +639,8 @@ bool test_digital_output_guard_multiple_guards_same_gpio() noexcept {
   hf_gpio_err_t result2 = guard2.SetActive();
 
   if (result1 != hf_gpio_err_t::GPIO_SUCCESS || result2 != hf_gpio_err_t::GPIO_SUCCESS) {
-    ESP_LOGE(TAG, "Multiple guards failed to control same GPIO: %d, %d", 
-             static_cast<int>(result1), static_cast<int>(result2));
+    ESP_LOGE(TAG, "Multiple guards failed to control same GPIO: %d, %d", static_cast<int>(result1),
+             static_cast<int>(result2));
     return false;
   }
 
@@ -708,16 +710,17 @@ bool test_digital_output_guard_concurrent_access() noexcept {
   // - Measures thread safety and race condition prevention
   // Expected: All 300 operations complete successfully without race conditions
   // Significance: Validates thread-safe operation under concurrent load
-  // 
+  //
   // Test Pattern: 3 tasks × 100 operations = 300 total concurrent operations
   const int num_tasks = 3;
   const int expected_total = num_tasks * 100;
 
   // Create shared GPIO for concurrent testing
-  g_concurrent_test_gpio = new EspGpio(TEST_GPIO_PIN_1, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-                                       hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
-                                       hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
-                                       hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN);
+  g_concurrent_test_gpio =
+      new EspGpio(TEST_GPIO_PIN_1, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                  hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+                  hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                  hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN);
 
   if (!g_concurrent_test_gpio->EnsureInitialized()) {
     ESP_LOGE(TAG, "Failed to initialize concurrent test GPIO");
@@ -752,8 +755,8 @@ bool test_digital_output_guard_concurrent_access() noexcept {
 
   // Check results
   if (g_concurrent_guard_counter != expected_total) {
-    ESP_LOGE(TAG, "Concurrent guard access test failed: expected %d, got %d", 
-             expected_total, g_concurrent_guard_counter);
+    ESP_LOGE(TAG, "Concurrent guard access test failed: expected %d, got %d", expected_total,
+             g_concurrent_guard_counter);
     delete g_concurrent_test_gpio;
     return false;
   }
@@ -834,7 +837,7 @@ bool test_digital_output_guard_performance() noexcept {
 
   for (int i = 0; i < iterations; i++) {
     if (i % 2 == 0) {
-      guard.SetActive();   // Measures GPIO HIGH setting time
+      guard.SetActive(); // Measures GPIO HIGH setting time
     } else {
       guard.SetInactive(); // Measures GPIO LOW setting time
     }
@@ -869,7 +872,7 @@ bool test_digital_output_guard_stress() noexcept {
   // - Memory allocation/deallocation stress
   // Expected: < 200 μs per iteration (typically 5-15 μs on ESP32-C6)
   // Significance: Validates performance under realistic usage patterns
-  // 
+  //
   // Test Pattern: 2000 iterations × 3 GPIOs × 5 state changes = 30,000 operations
   const int num_gpios = 3;
   const hf_pin_num_t test_pins[num_gpios] = {TEST_GPIO_PIN_1, TEST_GPIO_PIN_2, TEST_GPIO_PIN_3};
@@ -896,11 +899,11 @@ bool test_digital_output_guard_stress() noexcept {
   uint64_t start_time = esp_timer_get_time();
 
   for (int i = 0; i < stress_iterations; i++) {
-    int gpio_index = i % num_gpios;  // Rotate through GPIO pins
-    
+    int gpio_index = i % num_gpios; // Rotate through GPIO pins
+
     // Create guard - measures RAII overhead under stress
     DigitalOutputGuard guard(*test_gpios[gpio_index]);
-    
+
     if (!guard.IsValid()) {
       ESP_LOGE(TAG, "Guard creation failed in stress test iteration %d", i);
       // Clean up
@@ -913,7 +916,7 @@ bool test_digital_output_guard_stress() noexcept {
     // Perform multiple state changes - measures GPIO control efficiency
     for (int j = 0; j < 5; j++) {
       if (j % 2 == 0) {
-        guard.SetActive();   // 5 state changes per iteration
+        guard.SetActive(); // 5 state changes per iteration
       } else {
         guard.SetInactive();
       }
@@ -970,21 +973,22 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("creation", test_digital_output_guard_creation, 8192, 1);
       flip_test_progress_indicator();
       RUN_TEST_IN_TASK("raii_cleanup", test_digital_output_guard_raii_cleanup, 8192, 1);
-      flip_test_progress_indicator();
-      RUN_TEST_IN_TASK("manual_state_control", test_digital_output_guard_manual_state_control, 8192, 1);
+      flip_test_progress_indicator(); RUN_TEST_IN_TASK(
+          "manual_state_control", test_digital_output_guard_manual_state_control, 8192, 1);
       flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
       ENABLE_CONSTRUCTOR_TESTS, "DIGITAL OUTPUT GUARD CONSTRUCTOR TESTS", 5,
       // Constructor Variants and Error Handling Tests
       ESP_LOGI(TAG, "Running DigitalOutputGuard constructor tests...");
-      RUN_TEST_IN_TASK("pointer_constructor", test_digital_output_guard_pointer_constructor, 8192, 1);
-      flip_test_progress_indicator();
-      RUN_TEST_IN_TASK("null_pointer_handling", test_digital_output_guard_null_pointer_handling, 8192, 1);
+      RUN_TEST_IN_TASK("pointer_constructor", test_digital_output_guard_pointer_constructor, 8192,
+                       1);
+      flip_test_progress_indicator(); RUN_TEST_IN_TASK(
+          "null_pointer_handling", test_digital_output_guard_null_pointer_handling, 8192, 1);
       flip_test_progress_indicator();
       RUN_TEST_IN_TASK("ensure_output_mode", test_digital_output_guard_ensure_output_mode, 8192, 1);
-      flip_test_progress_indicator();
-      RUN_TEST_IN_TASK("no_ensure_output_mode", test_digital_output_guard_no_ensure_output_mode, 8192, 1);
+      flip_test_progress_indicator(); RUN_TEST_IN_TASK(
+          "no_ensure_output_mode", test_digital_output_guard_no_ensure_output_mode, 8192, 1);
       flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
@@ -1011,7 +1015,8 @@ extern "C" void app_main(void) {
       ESP_LOGI(TAG, "Running DigitalOutputGuard edge case tests...");
       RUN_TEST_IN_TASK("invalid_operations", test_digital_output_guard_invalid_operations, 8192, 1);
       flip_test_progress_indicator();
-      RUN_TEST_IN_TASK("multiple_guards_same_gpio", test_digital_output_guard_multiple_guards_same_gpio, 8192, 1);
+      RUN_TEST_IN_TASK("multiple_guards_same_gpio",
+                       test_digital_output_guard_multiple_guards_same_gpio, 8192, 1);
       flip_test_progress_indicator(););
 
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
@@ -1034,14 +1039,10 @@ extern "C" void app_main(void) {
   print_test_summary(g_test_results, "DIGITAL_OUTPUT_GUARD", TAG);
 
   ESP_LOGI(TAG, "\n");
-  ESP_LOGI(TAG,
-           "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG,
-           "║                DIGITAL OUTPUT GUARD COMPREHENSIVE TEST SUITE COMPLETE        ║");
-  ESP_LOGI(TAG,
-           "║                         HardFOC Internal Interface                           ║");
-  ESP_LOGI(TAG, 
-           "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                DIGITAL OUTPUT GUARD COMPREHENSIVE TEST SUITE COMPLETE        ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
 
   // Keep the system running
   while (true) {
