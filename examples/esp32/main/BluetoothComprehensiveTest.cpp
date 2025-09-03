@@ -332,21 +332,33 @@ extern "C" void app_main(void) {
       // Core functionality tests
       ESP_LOGI(TAG, "Running Bluetooth core functionality tests...");
       RUN_TEST_IN_TASK("initialization", test_bluetooth_initialization, 8192, 1);
-      RUN_TEST_IN_TASK("basic_operations", test_bluetooth_basic_operations, 8192, 1););
+      RUN_TEST_IN_TASK("basic_operations", test_bluetooth_basic_operations, 8192, 1);
+      vTaskDelay(pdMS_TO_TICKS(500)); // Delay to ensure output is captured
+      );
 
   RUN_TEST_SECTION_IF_ENABLED(ENABLE_SCANNING_TESTS, "BLUETOOTH SCANNING TESTS",
                               // Scanning tests
                               ESP_LOGI(TAG, "Running Bluetooth scanning tests...");
-                              RUN_TEST_IN_TASK("scanning", test_bluetooth_scanning, 8192, 1););
+                              RUN_TEST_IN_TASK("scanning", test_bluetooth_scanning, 8192, 1);
+                              vTaskDelay(pdMS_TO_TICKS(500)); // Delay to ensure output is captured
+                              );
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_MANAGEMENT_TESTS, "BLUETOOTH MANAGEMENT TESTS",
       // Management tests
       ESP_LOGI(TAG, "Running Bluetooth management tests...");
       RUN_TEST_IN_TASK("state_management", test_bluetooth_state_management, 8192, 1);
-      RUN_TEST_IN_TASK("cleanup", test_bluetooth_cleanup, 8192, 1););
+      RUN_TEST_IN_TASK("cleanup", test_bluetooth_cleanup, 8192, 1);
+      vTaskDelay(pdMS_TO_TICKS(500)); // Delay to ensure output is captured
+      );
 
+  // Add delay to ensure all output is captured
+  vTaskDelay(pdMS_TO_TICKS(500));
+  
   print_test_summary(g_test_results, "BLUETOOTH", TAG);
+
+  // Add delay to ensure summary is captured
+  vTaskDelay(pdMS_TO_TICKS(500));
 
   if (g_test_results.failed_tests == 0) {
     ESP_LOGI(TAG, "[SUCCESS] ALL BLUETOOTH TESTS PASSED!");
@@ -361,6 +373,9 @@ extern "C" void app_main(void) {
     ESP_LOGI(TAG, "[SUCCESS] Modern BaseBluetooth API usage");
     ESP_LOGI(TAG, "[SUCCESS] Correct callback signatures");
     ESP_LOGI(TAG, "==================================================");
+    
+    // Add delay to ensure all success messages are captured
+    vTaskDelay(pdMS_TO_TICKS(1000));
   } else {
     ESP_LOGE(TAG, "[FAILED] Some tests failed.");
   }

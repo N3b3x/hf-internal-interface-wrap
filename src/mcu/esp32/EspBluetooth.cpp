@@ -187,6 +187,16 @@ bool EspBluetooth::IsInitialized() const {
   return m_initialized;
 }
 
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
+// NimBLE host task function - must be defined before Enable()
+static void ble_host_task(void *param) {
+  ESP_LOGI("NimBLE_HOST", "BLE Host Task Started");
+  // This function handles the NimBLE host task
+  nimble_port_run(); // This function will return only when nimble_port_stop() is called.
+  nimble_port_freertos_deinit();
+}
+#endif
+
 hf_bluetooth_err_t EspBluetooth::Enable() {
   MutexLockGuard lock(m_state_mutex);
 
@@ -204,8 +214,8 @@ hf_bluetooth_err_t EspBluetooth::Enable() {
   // NimBLE enable sequence
   ESP_LOGI(TAG, "Enabling NimBLE stack");
 
-  // Start NimBLE host task
-  nimble_port_freertos_init(nullptr);
+  // Initialize and start NimBLE host task with proper callback
+  nimble_port_freertos_init(ble_host_task);
 
   m_enabled = true;
   m_state = hf_bluetooth_state_t::HF_BLUETOOTH_STATE_ENABLED;
@@ -499,6 +509,89 @@ void EspBluetooth::ConvertHfAddr(const hf_bluetooth_address_t& hf_addr, ble_addr
 }
 
 #endif // HAS_NIMBLE_SUPPORT
+
+
+
+#if HAS_BLUEDROID_SUPPORT
+// ========== Bluedroid Implementation Functions ==========
+
+hf_bluetooth_err_t EspBluetooth::InitializeBluedroid() {
+  ESP_LOGI(TAG, "Initializing Bluedroid for ESP32");
+  
+  // Initialize NVS (required for Bluetooth)
+  esp_err_t ret = nvs_flash_init();
+  if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+    ESP_ERROR_CHECK(nvs_flash_erase());
+    ret = nvs_flash_init();
+  }
+  ESP_ERROR_CHECK(ret);
+
+  // Release Bluetooth Classic/LE controller memory
+  ESP_ERROR_CHECK(esp_bt_controller_mem_release(ESP_BT_MODE_CLASSIC_BT));
+
+  // Initialize Bluetooth controller
+  esp_bt_controller_config_t bt_cfg = BT_CONTROLLER_INIT_CONFIG_DEFAULT();
+  ret = esp_bt_controller_init(&bt_cfg);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to initialize BT controller: %s", esp_err_to_name(ret));
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
+  }
+
+  // Enable Bluetooth controller
+  ret = esp_bt_controller_enable(ESP_BT_MODE_BLE);
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to enable BT controller: %s", esp_err_to_name(ret));
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
+  }
+
+  // Initialize Bluedroid
+  ret = esp_bluedroid_init();
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to initialize Bluedroid: %s", esp_err_to_name(ret));
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
+  }
+
+  // Enable Bluedroid
+  ret = esp_bluedroid_enable();
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to enable Bluedroid: %s", esp_err_to_name(ret));
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
+  }
+
+  ESP_LOGI(TAG, "Bluedroid initialized successfully");
+  return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
+}
+
+hf_bluetooth_err_t EspBluetooth::DeinitializeBluedroid() {
+  ESP_LOGI(TAG, "Deinitializing Bluedroid");
+
+  // Disable and deinitialize Bluedroid
+  esp_err_t ret = esp_bluedroid_disable();
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to disable Bluedroid: %s", esp_err_to_name(ret));
+  }
+
+  ret = esp_bluedroid_deinit();
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to deinitialize Bluedroid: %s", esp_err_to_name(ret));
+  }
+
+  // Disable and deinitialize controller
+  ret = esp_bt_controller_disable();
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to disable BT controller: %s", esp_err_to_name(ret));
+  }
+
+  ret = esp_bt_controller_deinit();
+  if (ret != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to deinitialize BT controller: %s", esp_err_to_name(ret));
+  }
+
+  ESP_LOGI(TAG, "Bluedroid deinitialized successfully");
+  return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
+}
+
+#endif // HAS_BLUEDROID_SUPPORT
 
 // ========== Device Management ==========
 
@@ -986,15 +1079,10 @@ hf_bluetooth_address_t EspBluetooth::StringToAddress(const std::string& address_
 
 #else // !HAS_BLE_SUPPORT
 
-// Stub implementations for platforms without Bluetooth support
-EspBluetooth::EspBluetooth() : m_initialized(false), m_enabled(false) {}
-EspBluetooth::~EspBluetooth() {}
+// Stub implementations for platforms without Bluetooth support (ESP32S2)
+// Note: This section is only compiled when HAS_BLE_SUPPORT is not defined (ESP32S2)
+// For ESP32-C6, HAS_BLE_SUPPORT should be 1, so this code should not be reached.
 
-hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
-  return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
-}
-
-// All other methods return NOT_SUPPORTED...
-// (For brevity, not implementing all stub methods here)
+#error "ESP32-C6 should have BLE support enabled. Check conditional compilation."
 
 #endif // HAS_BLE_SUPPORT

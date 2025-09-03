@@ -109,6 +109,7 @@ extern "C" {
 
 #if HAS_NIMBLE_SUPPORT
 // NimBLE headers for ESP32C6 (ESP-IDF v5.5+)
+#define NIMBLE_HEADERS_AVAILABLE 1
 extern "C" {
 #include "host/ble_att.h"
 #include "host/ble_gap.h"
@@ -121,6 +122,8 @@ extern "C" {
 #include "services/gap/ble_svc_gap.h"
 #include "services/gatt/ble_svc_gatt.h"
 }
+#else
+#define NIMBLE_HEADERS_AVAILABLE 0
 #endif
 
 #if HAS_BLUEDROID_SUPPORT
