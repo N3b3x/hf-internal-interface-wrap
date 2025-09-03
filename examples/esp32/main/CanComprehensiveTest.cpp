@@ -26,21 +26,21 @@
  * - 3.3V -> SN65 VCC
  * - GND -> SN65 GND
  * - SN65 CANH/CANL -> CAN bus
- * 
+ *
  * For External Loopback Testing:
  * - Connect: SN65 CANH -> 120Ω resistor -> SN65 CANL
  * - DO NOT short TWAI TX/RX lines directly!
  *
  * IMPORTANT: Two loopback modes are tested:
- * 
+ *
  * 1. INTERNAL LOOPBACK (enable_loopback=true):
  *    - Uses ESP32's internal hardware loopback
  *    - TX and RX on same pin (GPIO4)
  *    - No external hardware required
  *    - Interrupt callbacks work correctly
- *    - Used for: message_transmission, acceptance_filtering, batch_transmission, 
+ *    - Used for: message_transmission, acceptance_filtering, batch_transmission,
  *               high_throughput, bus_recovery, self_test_mode
- * 
+ *
  * 2. EXTERNAL LOOPBACK (enable_loopback=false):
  *    - Requires proper CAN bus loopback AFTER the transceiver
  *    - Connect: SN65 CANH -> 120Ω termination resistor -> SN65 CANL
@@ -48,7 +48,7 @@
  *    - Tests actual CAN bus communication with differential signaling
  *    - Used for: external_physical_loopback (in SN65 transceiver section)
  *    - NOTE: Shorting TWAI TX/RX lines directly does NOT work!
- * 
+ *
  * ## Test Progression Indicator:
  * GPIO14 toggles HIGH/LOW after each test completion for visual feedback.
  * Test sections are indicated by 5 blinks on GPIO14 (like SpiComprehensiveTest).
@@ -96,7 +96,7 @@ static constexpr hf_pin_num_t TEST_TX_PIN = 4; // ESP32-C6 + SN65
 static constexpr hf_pin_num_t TEST_RX_PIN = 5; // ESP32-C6 + SN65
 
 // Event bits for synchronization
-  static constexpr int MESSAGE_RECEIVED_BIT = BIT0;
+static constexpr int MESSAGE_RECEIVED_BIT = BIT0;
 static constexpr int ERROR_OCCURRED_BIT = BIT1;
 static constexpr int STATE_CHANGED_BIT = BIT2;
 
@@ -128,7 +128,7 @@ static constexpr bool ENABLE_TRANSCEIVER_TESTS =
  */
 void verify_can_pin_states() {
   ESP_LOGI(TAG, "Verifying CAN pin states...");
-  
+
   // Note: We can't directly read GPIO states in this context,
   // but we can log the expected behavior
   ESP_LOGI(TAG, "Expected CAN pin behavior:");
@@ -144,10 +144,10 @@ void verify_can_pin_states() {
  */
 void test_receive_callback_enhanced(const hf_can_message_t& message, void* user_data) {
   (void)user_data; // Unused in basic tests
-  
+
   last_received_message = message;
   messages_received.fetch_add(1);
-  
+
   // Signal that a message was received (for test synchronization)
   if (test_event_group) {
     BaseType_t higher_priority_task_woken = pdFALSE;
@@ -192,22 +192,22 @@ bool wait_for_event(EventBits_t bits, uint32_t timeout_ms) {
  */
 bool test_basic_initialization() noexcept {
   ESP_LOGI(TAG, "Feature 1: Basic Initialization and State Management");
-  
+
   hf_esp_can_config_t config{};
   config.tx_pin = TEST_TX_PIN;
   config.rx_pin = TEST_RX_PIN;
   config.baud_rate = TEST_BAUD_RATE;
   config.enable_self_test = true;
   config.enable_loopback = false;
-  
+
   EspCan can(config);
-  
+
   // Test lazy initialization
   if (can.IsInitialized()) {
     ESP_LOGE(TAG, "❌ Lazy initialization failed - should not be initialized");
     return false;
   }
-  
+
   // Test initialization
   if (can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "❌ Initialization failed");
@@ -218,7 +218,7 @@ bool test_basic_initialization() noexcept {
   } else {
     ESP_LOGI(TAG, "✅ Initialization and state management - PASSED");
   }
-  
+
   // Test deinitialization
   if (can.Deinitialize() != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "❌ Deinitialization failed");
@@ -227,7 +227,7 @@ bool test_basic_initialization() noexcept {
     ESP_LOGE(TAG, "❌ IsInitialized() should return false after Deinitialize()");
     return false;
   }
-  
+
   return true;
 }
 
@@ -236,18 +236,18 @@ bool test_basic_initialization() noexcept {
  */
 bool test_message_transmission() noexcept {
   ESP_LOGI(TAG, "Feature 2: Message Transmission and Reception");
-  
+
   hf_esp_can_config_t config{};
   config.tx_pin = TEST_TX_PIN;
   config.rx_pin = TEST_TX_PIN; // Use same pin for internal loopback
   config.baud_rate = TEST_BAUD_RATE;
   config.enable_self_test = true;
   config.enable_loopback = true; // Enable internal loopback
-  
+
   EspCan can(config);
   can.Initialize();
   can.SetReceiveCallbackEx(test_receive_callback_enhanced);
-  
+
   // Test standard frame
   messages_received.store(0);
   auto std_msg = create_test_message(0x123, false, 8);
@@ -258,7 +258,7 @@ bool test_message_transmission() noexcept {
     ESP_LOGE(TAG, "❌ Standard frame transmission - FAILED");
     return false;
   }
-  
+
   // Test extended frame
   messages_received.store(0);
   auto ext_msg = create_test_message(0x12345678, true, 6);
@@ -269,7 +269,7 @@ bool test_message_transmission() noexcept {
     ESP_LOGE(TAG, "❌ Extended frame transmission - FAILED");
     return false;
   }
-  
+
   // Test RTR frame
   messages_received.store(0);
   hf_can_message_t rtr_msg = create_test_message(0x456, false, 4);
@@ -281,7 +281,7 @@ bool test_message_transmission() noexcept {
     ESP_LOGE(TAG, "❌ RTR frame transmission - FAILED");
     return false;
   }
-  
+
   return true;
 }
 
@@ -290,18 +290,18 @@ bool test_message_transmission() noexcept {
  */
 bool test_acceptance_filtering() noexcept {
   ESP_LOGI(TAG, "Feature 3: Acceptance Filtering");
-  
+
   hf_esp_can_config_t config{};
   config.tx_pin = TEST_TX_PIN;
   config.rx_pin = TEST_TX_PIN; // Use same pin for internal loopback
   config.baud_rate = TEST_BAUD_RATE;
   config.enable_self_test = true;
   config.enable_loopback = true; // Enable internal loopback
-  
+
   EspCan can(config);
   can.Initialize();
   can.SetReceiveCallbackEx(test_receive_callback_enhanced);
-  
+
   // Set filter to accept only 0x100-0x10F
   if (can.SetAcceptanceFilter(0x100, 0x7F0, false) == hf_can_err_t::CAN_SUCCESS) {
     // Test accepted message
@@ -314,7 +314,7 @@ bool test_acceptance_filtering() noexcept {
       ESP_LOGE(TAG, "❌ Filter acceptance - FAILED");
       return false;
     }
-    
+
     // Test rejected message
     messages_received.store(0);
     auto rejected_msg = create_test_message(0x200, false, 4);
@@ -329,7 +329,7 @@ bool test_acceptance_filtering() noexcept {
     ESP_LOGE(TAG, "❌ Filter configuration - FAILED");
     return false;
   }
-  
+
   return true;
 }
 
@@ -338,24 +338,24 @@ bool test_acceptance_filtering() noexcept {
  */
 bool test_advanced_timing() noexcept {
   ESP_LOGI(TAG, "Feature 4: Advanced Timing Configuration");
-  
+
   hf_esp_can_config_t config{};
   config.tx_pin = TEST_TX_PIN;
   config.rx_pin = TEST_RX_PIN;
   config.baud_rate = 250000; // Different baud rate
   config.enable_self_test = true;
   config.enable_loopback = false;
-  
+
   EspCan can(config);
   can.Initialize();
-  
+
   hf_esp_can_timing_config_t timing{};
   timing.brp = 16;
   timing.prop_seg = 5;
   timing.tseg_1 = 8;
   timing.tseg_2 = 3;
   timing.sjw = 2;
-  
+
   if (can.ConfigureAdvancedTiming(timing) == hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGI(TAG, "✅ Advanced timing configuration - PASSED");
     return true;
@@ -370,24 +370,24 @@ bool test_advanced_timing() noexcept {
  */
 bool test_statistics_diagnostics() noexcept {
   ESP_LOGI(TAG, "Feature 5: Statistics and Diagnostics");
-  
+
   hf_esp_can_config_t config{};
   config.tx_pin = TEST_TX_PIN;
   config.rx_pin = TEST_RX_PIN;
   config.baud_rate = TEST_BAUD_RATE;
   config.enable_self_test = true;
   config.enable_loopback = false;
-  
+
   EspCan can(config);
   can.Initialize();
   can.SetReceiveCallbackEx(test_receive_callback_enhanced);
-  
+
   // Reset statistics
   if (can.ResetStatistics() != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "❌ Reset statistics - FAILED");
     return false;
   }
-  
+
   // Send some messages to generate statistics
   messages_received.store(0);
   for (int i = 0; i < 5; i++) {
@@ -400,11 +400,12 @@ bool test_statistics_diagnostics() noexcept {
     vTaskDelay(pdMS_TO_TICKS(50)); // Small delay between messages
   }
   vTaskDelay(pdMS_TO_TICKS(200));
-  
+
   // Get statistics
   hf_can_statistics_t stats{};
   if (can.GetStatistics(stats) == hf_can_err_t::CAN_SUCCESS) {
-    ESP_LOGI(TAG, "Statistics: sent=%llu, received=%llu", stats.messages_sent.load(), stats.messages_received.load());
+    ESP_LOGI(TAG, "Statistics: sent=%llu, received=%llu", stats.messages_sent.load(),
+             stats.messages_received.load());
     if (stats.messages_sent.load() > 0) {
       ESP_LOGI(TAG, "✅ Statistics collection - PASSED");
     } else {
@@ -415,7 +416,7 @@ bool test_statistics_diagnostics() noexcept {
     ESP_LOGE(TAG, "❌ Get statistics - FAILED");
     return false;
   }
-  
+
   // Get diagnostics
   hf_can_diagnostics_t diagnostics{};
   if (can.GetDiagnostics(diagnostics) == hf_can_err_t::CAN_SUCCESS) {
@@ -424,7 +425,7 @@ bool test_statistics_diagnostics() noexcept {
     ESP_LOGE(TAG, "❌ Diagnostics retrieval - FAILED");
     return false;
   }
-  
+
   return true;
 }
 
@@ -433,7 +434,7 @@ bool test_statistics_diagnostics() noexcept {
  */
 bool test_batch_transmission() noexcept {
   ESP_LOGI(TAG, "Feature 6: Batch Message Transmission");
-  
+
   hf_esp_can_config_t config{};
   config.tx_pin = TEST_TX_PIN;
   config.rx_pin = TEST_TX_PIN; // Use same pin for internal loopback
@@ -441,27 +442,29 @@ bool test_batch_transmission() noexcept {
   config.enable_self_test = true;
   config.enable_loopback = true; // Enable internal loopback
   config.tx_queue_depth = 20;
-  
+
   EspCan can(config);
   can.Initialize();
   can.SetReceiveCallbackEx(test_receive_callback_enhanced);
-  
+
   // Create batch of messages (smaller batch to avoid memory issues)
   const int BATCH_SIZE = 3;
   hf_can_message_t batch_messages[BATCH_SIZE]; // Use stack array instead of vector
   for (int i = 0; i < BATCH_SIZE; i++) {
     batch_messages[i] = create_test_message(0x300 + i, false, 8);
   }
-  
+
   messages_received.store(0);
   uint32_t sent_count = can.SendMessageBatch(batch_messages, BATCH_SIZE, 500);
   vTaskDelay(pdMS_TO_TICKS(500));
-  
+
   if (sent_count >= BATCH_SIZE * 0.9f && messages_received.load() >= sent_count * 0.9f) {
-    ESP_LOGI(TAG, "✅ Batch transmission - PASSED (sent: %d, received: %d)", sent_count, messages_received.load());
+    ESP_LOGI(TAG, "✅ Batch transmission - PASSED (sent: %d, received: %d)", sent_count,
+             messages_received.load());
     return true;
   } else {
-    ESP_LOGE(TAG, "❌ Batch transmission - FAILED (sent: %d, received: %d)", sent_count, messages_received.load());
+    ESP_LOGE(TAG, "❌ Batch transmission - FAILED (sent: %d, received: %d)", sent_count,
+             messages_received.load());
     return false;
   }
 }
@@ -471,17 +474,17 @@ bool test_batch_transmission() noexcept {
  */
 bool test_error_handling() noexcept {
   ESP_LOGI(TAG, "Feature 7: Error Handling and Recovery");
-  
+
   hf_esp_can_config_t config{};
   config.tx_pin = TEST_TX_PIN;
   config.rx_pin = TEST_RX_PIN;
   config.baud_rate = TEST_BAUD_RATE;
   config.enable_self_test = true;
   config.enable_alerts = true;
-  
+
   EspCan can(config);
   can.Initialize();
-  
+
   // Test status retrieval
   hf_can_status_t status{};
   if (can.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
@@ -490,7 +493,7 @@ bool test_error_handling() noexcept {
     ESP_LOGE(TAG, "❌ Status retrieval - FAILED");
     return false;
   }
-  
+
   // Test reset functionality
   if (can.Reset() == hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGI(TAG, "✅ Reset functionality - PASSED");
@@ -498,7 +501,7 @@ bool test_error_handling() noexcept {
     ESP_LOGE(TAG, "❌ Reset functionality - FAILED");
     return false;
   }
-  
+
   // Test bus recovery
   if (can.InitiateBusRecovery() == hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGI(TAG, "✅ Bus recovery - PASSED");
@@ -506,7 +509,7 @@ bool test_error_handling() noexcept {
     ESP_LOGE(TAG, "❌ Bus recovery - FAILED");
     return false;
   }
-  
+
   return true;
 }
 
@@ -518,38 +521,38 @@ bool test_espcan_comprehensive_functionality() noexcept {
   ESP_LOGI(TAG, "🔍 COMPREHENSIVE EspCan Functionality Validation");
   ESP_LOGI(TAG, "This test validates ALL EspCan features systematically");
   ESP_LOGI(TAG, "*** USING: Internal hardware loopback (TX and RX on GPIO%d) ***", TEST_TX_PIN);
-  
+
   bool all_features_passed = true;
-  
+
   // Run individual feature tests
   if (!test_basic_initialization()) {
     all_features_passed = false;
   }
-  
+
   if (!test_message_transmission()) {
     all_features_passed = false;
   }
-  
+
   if (!test_acceptance_filtering()) {
     all_features_passed = false;
   }
-  
+
   if (!test_advanced_timing()) {
     all_features_passed = false;
   }
-  
+
   if (!test_statistics_diagnostics()) {
     all_features_passed = false;
   }
-  
+
   if (!test_batch_transmission()) {
     all_features_passed = false;
   }
-  
+
   if (!test_error_handling()) {
     all_features_passed = false;
   }
-  
+
   // ============================================================================
   // SUMMARY
   // ============================================================================
@@ -560,7 +563,7 @@ bool test_espcan_comprehensive_functionality() noexcept {
     ESP_LOGE(TAG, "💥 [FAILED] ❌ Some EspCan features failed validation!");
     ESP_LOGE(TAG, "Review the failed features above and address the issues.");
   }
-  
+
   return all_features_passed;
 }
 
@@ -625,40 +628,41 @@ bool test_can_initialization() noexcept {
 
 bool test_can_self_test_mode() noexcept {
   ESP_LOGI(TAG, "Testing comprehensive TWAI self-test modes for ESP32-C6...");
-  
+
   bool all_tests_passed = true;
-  
+
   // ============================================================================
   // TEST 1: Pure Internal Hardware Loopback (ESP-IDF v5.5 Style)
   // ============================================================================
   ESP_LOGI(TAG, "Test 1: Internal hardware loopback (enable_loopback=true)");
-  
+
   {
     hf_esp_can_config_t internal_config{};
     internal_config.tx_pin = TEST_TX_PIN;
     internal_config.rx_pin = TEST_RX_PIN;
     internal_config.baud_rate = TEST_BAUD_RATE;
-    internal_config.enable_self_test = true;  // No ACK required
-    internal_config.enable_loopback = true;   // Internal hardware loopback
-    
+    internal_config.enable_self_test = true; // No ACK required
+    internal_config.enable_loopback = true;  // Internal hardware loopback
+
     EspCan internal_can(internal_config);
-    
+
     if (internal_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
       ESP_LOGE(TAG, "Failed to initialize internal loopback CAN");
       all_tests_passed = false;
     } else {
       internal_can.SetReceiveCallbackEx(test_receive_callback_enhanced);
-      
+
       // Test with self-reception request (like ESP-IDF example)
       auto test_msg = create_test_message(TEST_CAN_ID_STANDARD, false, 4);
-      test_msg.is_self = true;  // Self-reception request flag
-      
+      test_msg.is_self = true; // Self-reception request flag
+
       messages_received.store(0);
       if (internal_can.SendMessage(test_msg, 1000) == hf_can_err_t::CAN_SUCCESS) {
         if (wait_for_event(MESSAGE_RECEIVED_BIT, 1000)) {
           ESP_LOGI(TAG, "✅ Internal loopback test PASSED");
         } else {
-          ESP_LOGW(TAG, "⚠️  Internal loopback: No message received (may be ESP-IDF v5.5 limitation)");
+          ESP_LOGW(TAG,
+                   "⚠️  Internal loopback: No message received (may be ESP-IDF v5.5 limitation)");
         }
       } else {
         ESP_LOGE(TAG, "❌ Internal loopback: Failed to send message");
@@ -666,31 +670,31 @@ bool test_can_self_test_mode() noexcept {
       }
     }
   }
-  
+
   // ============================================================================
   // TEST 2: Performance Test with Internal Loopback
   // ============================================================================
   ESP_LOGI(TAG, "Test 2: Performance test with internal loopback");
-  
+
   {
     hf_esp_can_config_t perf_config{};
     perf_config.tx_pin = TEST_TX_PIN;
     perf_config.rx_pin = TEST_TX_PIN; // Use same pin for internal loopback
     perf_config.baud_rate = TEST_BAUD_RATE;
-    perf_config.enable_self_test = true;  // No ACK required for internal loopback
-    perf_config.enable_loopback = true; // Enable internal loopback
-    perf_config.tx_queue_depth = 20; // Larger queue for performance test
-    
+    perf_config.enable_self_test = true; // No ACK required for internal loopback
+    perf_config.enable_loopback = true;  // Enable internal loopback
+    perf_config.tx_queue_depth = 20;     // Larger queue for performance test
+
     EspCan perf_can(perf_config);
-    
+
     if (perf_can.Initialize() == hf_can_err_t::CAN_SUCCESS) {
       perf_can.SetReceiveCallbackEx(test_receive_callback_enhanced);
-      
+
       const int PERF_MESSAGE_COUNT = 50;
       messages_received.store(0);
-      
+
       uint64_t start_time = esp_timer_get_time();
-      
+
       // Send burst of messages
       int sent_count = 0;
       for (int i = 0; i < PERF_MESSAGE_COUNT; i++) {
@@ -699,20 +703,20 @@ bool test_can_self_test_mode() noexcept {
           sent_count++;
         }
       }
-      
+
       // Wait for all messages to be received
       vTaskDelay(pdMS_TO_TICKS(2000));
-      
+
       uint64_t end_time = esp_timer_get_time();
       uint32_t duration_ms = (uint32_t)((end_time - start_time) / 1000);
       uint32_t received_count = messages_received.load();
-      
+
       ESP_LOGI(TAG, "Performance results:");
       ESP_LOGI(TAG, "  Messages sent: %d/%d", sent_count, PERF_MESSAGE_COUNT);
       ESP_LOGI(TAG, "  Messages received: %d", received_count);
       ESP_LOGI(TAG, "  Duration: %d ms", duration_ms);
       ESP_LOGI(TAG, "  Success rate: %.1f%%", (float)received_count / sent_count * 100.0f);
-      
+
       if (received_count >= sent_count * 0.95f) { // 95% success rate
         ESP_LOGI(TAG, "✅ Performance test PASSED");
       } else {
@@ -721,14 +725,17 @@ bool test_can_self_test_mode() noexcept {
       }
     }
   }
-  
+
   if (all_tests_passed) {
     ESP_LOGI(TAG, "[SUCCESS] ✅ Comprehensive CAN self-test mode PASSED");
-    ESP_LOGI(TAG, "NOTE: For best results, ensure GPIO%d (TX) is connected to GPIO%d (RX) with a jumper wire", TEST_TX_PIN, TEST_RX_PIN);
+    ESP_LOGI(
+        TAG,
+        "NOTE: For best results, ensure GPIO%d (TX) is connected to GPIO%d (RX) with a jumper wire",
+        TEST_TX_PIN, TEST_RX_PIN);
   } else {
     ESP_LOGE(TAG, "[FAILED] ❌ Some CAN self-test modes FAILED");
   }
-  
+
   return all_tests_passed;
 }
 
@@ -740,8 +747,8 @@ bool test_can_message_transmission() noexcept {
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_TX_PIN; // Same pin for internal loopback (like ESP-IDF example)
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = true;  // No ACK required (like ESP-IDF example)
-  can_config.enable_loopback = true;   // Enable internal loopback (like ESP-IDF example)
+  can_config.enable_self_test = true; // No ACK required (like ESP-IDF example)
+  can_config.enable_loopback = true;  // Enable internal loopback (like ESP-IDF example)
 
   EspCan test_can(can_config);
 
@@ -827,8 +834,8 @@ bool test_can_acceptance_filtering() noexcept {
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_TX_PIN; // Same pin for internal loopback (like ESP-IDF example)
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = true;  // No ACK required (like ESP-IDF example)
-  can_config.enable_loopback = true;   // Enable internal loopback (like ESP-IDF example)
+  can_config.enable_self_test = true; // No ACK required (like ESP-IDF example)
+  can_config.enable_loopback = true;  // Enable internal loopback (like ESP-IDF example)
 
   EspCan test_can(can_config);
 
@@ -905,7 +912,8 @@ bool test_can_acceptance_filtering() noexcept {
   // Wait for both messages
   vTaskDelay(pdMS_TO_TICKS(1000));
 
-  ESP_LOGI(TAG, "Dual filter test: received %d messages (expected 0-2 in loopback mode)", messages_received.load());
+  ESP_LOGI(TAG, "Dual filter test: received %d messages (expected 0-2 in loopback mode)",
+           messages_received.load());
 
   // Clear filter (accept all)
   if (test_can.ClearAcceptanceFilter() != hf_can_err_t::CAN_SUCCESS) {
@@ -928,8 +936,8 @@ bool test_can_advanced_timing() noexcept {
   hf_esp_can_config_t can_config{};
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_RX_PIN;
-  can_config.baud_rate = 250000; // Start with 250kbps
-  can_config.enable_self_test = true;  // No external ACK required
+  can_config.baud_rate = 250000;      // Start with 250kbps
+  can_config.enable_self_test = true; // No external ACK required
   can_config.enable_loopback = false; // Using physical wire loopback
 
   EspCan test_can(can_config);
@@ -1051,8 +1059,8 @@ bool test_can_bus_recovery() noexcept {
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_TX_PIN; // Use same pin for internal loopback
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = true;  // No ACK required for internal loopback
-  can_config.enable_loopback = true; // Enable internal loopback
+  can_config.enable_self_test = true; // No ACK required for internal loopback
+  can_config.enable_loopback = true;  // Enable internal loopback
   can_config.enable_alerts = true;
 
   EspCan test_can(can_config);
@@ -1104,9 +1112,9 @@ bool test_can_batch_transmission() noexcept {
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_TX_PIN; // Same pin for internal loopback (like ESP-IDF example)
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = true;  // No ACK required (like ESP-IDF example)
-  can_config.enable_loopback = true;   // Enable internal loopback (like ESP-IDF example)
-  can_config.tx_queue_depth = 20; // Larger queue for batch testing
+  can_config.enable_self_test = true; // No ACK required (like ESP-IDF example)
+  can_config.enable_loopback = true;  // Enable internal loopback (like ESP-IDF example)
+  can_config.tx_queue_depth = 20;     // Larger queue for batch testing
 
   EspCan test_can(can_config);
 
@@ -1164,10 +1172,10 @@ bool test_can_high_throughput() noexcept {
 
   hf_esp_can_config_t can_config{};
   can_config.tx_pin = TEST_TX_PIN;
-  can_config.rx_pin = TEST_TX_PIN; // Use same pin for internal loopback
-  can_config.baud_rate = 1000000; // 1 Mbps for high throughput
-  can_config.enable_self_test = true;  // No ACK required for internal loopback
-  can_config.enable_loopback = true; // Enable internal loopback
+  can_config.rx_pin = TEST_TX_PIN;    // Use same pin for internal loopback
+  can_config.baud_rate = 1000000;     // 1 Mbps for high throughput
+  can_config.enable_self_test = true; // No ACK required for internal loopback
+  can_config.enable_loopback = true;  // Enable internal loopback
   can_config.tx_queue_depth = 50;
   can_config.sample_point_permill = 800; // 80% for high speed
 
@@ -1243,45 +1251,43 @@ bool test_external_physical_loopback() noexcept {
   ESP_LOGI(TAG, "*** REQUIRES: CAN bus loopback AFTER transceiver ***");
   ESP_LOGI(TAG, "*** Connect: SN65 CANH -> 120Ω resistor -> SN65 CANL ***");
   ESP_LOGI(TAG, "*** DO NOT short TWAI TX/RX lines directly - this will NOT work! ***");
-  
+
   hf_esp_can_config_t can_config{};
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_RX_PIN;
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = true;  // Enable self-test (no ACK required)
+  can_config.enable_self_test = true; // Enable self-test (no ACK required)
   can_config.enable_loopback = false; // Disable internal loopback - using external wire
-  can_config.tx_queue_depth = 20; // Larger queue for external loopback
-  
+  can_config.tx_queue_depth = 20;     // Larger queue for external loopback
+
   EspCan test_can(can_config);
-  
+
   if (test_can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
     ESP_LOGE(TAG, "Failed to initialize CAN for external loopback test");
     return false;
   }
-  
+
   test_can.SetReceiveCallbackEx(test_receive_callback_enhanced);
-  
+
   // Test multiple message formats
   std::vector<std::pair<std::string, hf_can_message_t>> test_cases = {
-    {"Standard 11-bit ID", create_test_message(0x123, false, 8)},
-    {"Extended 29-bit ID", create_test_message(0x12345678, true, 6)},
-    {"Short message (2 bytes)", create_test_message(0x456, false, 2)},
-    {"RTR frame", [](){
-      auto rtr_msg = create_test_message(0x789, false, 4);
-      rtr_msg.is_rtr = true;
-      return rtr_msg;
-    }()}
-  };
-  
-  ESP_LOGI(TAG, "Configuration: TX=GPIO%d, RX=GPIO%d, Self-test=%s, Loopback=%s", 
-           can_config.tx_pin, can_config.rx_pin, 
-           can_config.enable_self_test ? "true" : "false",
+      {"Standard 11-bit ID", create_test_message(0x123, false, 8)},
+      {"Extended 29-bit ID", create_test_message(0x12345678, true, 6)},
+      {"Short message (2 bytes)", create_test_message(0x456, false, 2)},
+      {"RTR frame", []() {
+         auto rtr_msg = create_test_message(0x789, false, 4);
+         rtr_msg.is_rtr = true;
+         return rtr_msg;
+       }()}};
+
+  ESP_LOGI(TAG, "Configuration: TX=GPIO%d, RX=GPIO%d, Self-test=%s, Loopback=%s", can_config.tx_pin,
+           can_config.rx_pin, can_config.enable_self_test ? "true" : "false",
            can_config.enable_loopback ? "true" : "false");
-  
+
   bool all_tests_passed = true;
   for (const auto& test_case : test_cases) {
     ESP_LOGI(TAG, "Testing: %s", test_case.first.c_str());
-    
+
     messages_received.store(0);
     if (test_can.SendMessage(test_case.second, 1000) == hf_can_err_t::CAN_SUCCESS) {
       if (wait_for_event(MESSAGE_RECEIVED_BIT, 2000)) {
@@ -1302,10 +1308,10 @@ bool test_external_physical_loopback() noexcept {
       ESP_LOGE(TAG, "❌ %s - Failed to send", test_case.first.c_str());
       all_tests_passed = false;
     }
-    
+
     vTaskDelay(pdMS_TO_TICKS(100)); // Brief delay between tests
   }
-  
+
   if (all_tests_passed) {
     ESP_LOGI(TAG, "✅ External physical loopback test PASSED");
   } else {
@@ -1313,13 +1319,13 @@ bool test_external_physical_loopback() noexcept {
     ESP_LOGE(TAG, "Note: This test requires CANH->120Ω->CANL loopback AFTER transceiver");
     ESP_LOGE(TAG, "DO NOT short TWAI TX/RX lines directly - this will NOT work!");
   }
-  
+
   return all_tests_passed;
 }
 
 bool test_loopback_comparison() noexcept {
   ESP_LOGI(TAG, "Testing internal vs external loopback comparison...");
-  
+
   // Test 1: Internal loopback (should work)
   ESP_LOGI(TAG, "Test 1: Internal loopback (TX=GPIO%d, RX=GPIO%d)", TEST_TX_PIN, TEST_TX_PIN);
   {
@@ -1329,12 +1335,12 @@ bool test_loopback_comparison() noexcept {
     internal_config.baud_rate = TEST_BAUD_RATE;
     internal_config.enable_self_test = true;
     internal_config.enable_loopback = true; // Internal loopback
-    
+
     EspCan internal_can(internal_config);
     if (internal_can.Initialize() == hf_can_err_t::CAN_SUCCESS) {
       internal_can.SetReceiveCallbackEx(test_receive_callback_enhanced);
       messages_received.store(0);
-      
+
       auto test_msg = create_test_message(0x100, false, 4);
       if (internal_can.SendMessage(test_msg, 1000) == hf_can_err_t::CAN_SUCCESS) {
         if (wait_for_event(MESSAGE_RECEIVED_BIT, 1000)) {
@@ -1347,7 +1353,7 @@ bool test_loopback_comparison() noexcept {
       }
     }
   }
-  
+
   // Test 2: External loopback (with proper CAN bus loopback)
   ESP_LOGI(TAG, "Test 2: External loopback (TX=GPIO%d, RX=GPIO%d)", TEST_TX_PIN, TEST_RX_PIN);
   ESP_LOGI(TAG, "Note: This requires CANH->120Ω->CANL loopback AFTER transceiver");
@@ -1358,25 +1364,27 @@ bool test_loopback_comparison() noexcept {
     external_config.baud_rate = TEST_BAUD_RATE;
     external_config.enable_self_test = true;
     external_config.enable_loopback = false; // External loopback
-    
+
     EspCan external_can(external_config);
     if (external_can.Initialize() == hf_can_err_t::CAN_SUCCESS) {
       external_can.SetReceiveCallbackEx(test_receive_callback_enhanced);
       messages_received.store(0);
-      
+
       auto test_msg = create_test_message(0x200, false, 4);
       if (external_can.SendMessage(test_msg, 1000) == hf_can_err_t::CAN_SUCCESS) {
         if (wait_for_event(MESSAGE_RECEIVED_BIT, 1000)) {
           ESP_LOGI(TAG, "✅ External loopback: Message received successfully");
         } else {
-          ESP_LOGW(TAG, "⚠️  External loopback: No message received (requires CANH->120Ω->CANL loopback)");
+          ESP_LOGW(
+              TAG,
+              "⚠️  External loopback: No message received (requires CANH->120Ω->CANL loopback)");
         }
       } else {
         ESP_LOGE(TAG, "❌ External loopback: Failed to send message");
       }
     }
   }
-  
+
   ESP_LOGI(TAG, "Loopback comparison test completed");
   return true;
 }
@@ -1444,7 +1452,7 @@ bool test_can_signal_quality() noexcept {
   can_config.tx_pin = TEST_TX_PIN;
   can_config.rx_pin = TEST_RX_PIN;
   can_config.baud_rate = TEST_BAUD_RATE;
-  can_config.enable_self_test = true;  // No external ACK required
+  can_config.enable_self_test = true; // No external ACK required
   can_config.enable_loopback = false; // Using physical wire loopback
   can_config.enable_alerts = true;
 
@@ -1562,7 +1570,7 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after self-test mode test
       RUN_TEST_IN_TASK("message_transmission", test_can_message_transmission, 8192, 1);
       flip_test_progress_indicator(); // Toggle GPIO14 after message transmission test
-      );
+  );
 
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
       ENABLE_ADVANCED_TESTS, "CAN ADVANCED TESTS", 5,
@@ -1572,7 +1580,7 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after acceptance filtering test
       RUN_TEST_IN_TASK("advanced_timing", test_can_advanced_timing, 8192, 1);
       flip_test_progress_indicator(); // Toggle GPIO14 after advanced timing test
-      );
+  );
 
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
       ENABLE_ERROR_TESTS, "CAN ERROR TESTS", 5,
@@ -1582,7 +1590,7 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after error handling test
       RUN_TEST_IN_TASK("bus_recovery", test_can_bus_recovery, 8192, 1);
       flip_test_progress_indicator(); // Toggle GPIO14 after bus recovery test
-      );
+  );
 
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
       ENABLE_PERFORMANCE_TESTS, "CAN PERFORMANCE TESTS", 5,
@@ -1592,7 +1600,7 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after batch transmission test
       RUN_TEST_IN_TASK("high_throughput", test_can_high_throughput, 12288, 1);
       flip_test_progress_indicator(); // Toggle GPIO14 after high throughput test
-      );
+  );
 
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(
       ENABLE_TRANSCEIVER_TESTS, "CAN TRANSCEIVER TESTS", 5,
@@ -1606,14 +1614,14 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after SN65 transceiver integration test
       RUN_TEST_IN_TASK("can_signal_quality", test_can_signal_quality, 8192, 1);
       flip_test_progress_indicator(); // Toggle GPIO14 after signal quality test
-      );
+  );
 
   print_test_summary(g_test_results, "ESP32-C6 CAN (ESP-IDF v5.5 + SN65)", TAG);
 
   // Cleanup
   vEventGroupDelete(test_event_group);
 
-  ESP_LOGI(TAG,"\n");
+  ESP_LOGI(TAG, "\n");
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
   ESP_LOGI(TAG, "║                      TEST SUITE COMPLETED                                    ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");

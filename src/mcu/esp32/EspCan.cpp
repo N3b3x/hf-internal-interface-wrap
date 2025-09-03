@@ -53,8 +53,8 @@ static const char* TAG = "EspCan";
 //==============================================================================
 
 EspCan::EspCan(const hf_esp_can_config_t& config) noexcept
-    : BaseCan(), config_(config), is_enabled_(false), is_recovering_(false),
-      config_mutex_(), stats_mutex_(), callback_mutex_(), twai_node_handle_(nullptr), receive_cb_{},
+    : BaseCan(), config_(config), is_enabled_(false), is_recovering_(false), config_mutex_(),
+      stats_mutex_(), callback_mutex_(), twai_node_handle_(nullptr), receive_cb_{},
       receive_ud_(nullptr), error_cb_{}, error_ud_(nullptr), state_cb_{}, state_ud_(nullptr),
       tx_cb_{}, tx_ud_(nullptr), statistics_{}, diagnostics_{}, advanced_timing_{},
       current_filter_{}, filter_configured_(false) {
@@ -225,8 +225,8 @@ hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, hf_u32_t timeo
   }
 
   // Log message details for debugging
-  ESP_LOGD(TAG, "Sending message: ID=0x%X, DLC=%d, Extended=%s, RTR=%s", 
-           message.id, message.dlc, message.is_extended ? "yes" : "no", message.is_rtr ? "yes" : "no");
+  ESP_LOGD(TAG, "Sending message: ID=0x%X, DLC=%d, Extended=%s, RTR=%s", message.id, message.dlc,
+           message.is_extended ? "yes" : "no", message.is_rtr ? "yes" : "no");
 
   // Convert to ESP-IDF v5.5 TWAI frame
   twai_frame_t frame;
@@ -250,15 +250,15 @@ hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, hf_u32_t timeo
     return hf_can_err_t::CAN_ERR_MESSAGE_INVALID;
   }
 
-  ESP_LOGD(TAG, "Frame ready: DLC=%d, buffer=%p, buffer_len=%zu", 
-           frame.header.dlc, frame.buffer, frame.buffer_len);
+  ESP_LOGD(TAG, "Frame ready: DLC=%d, buffer=%p, buffer_len=%zu", frame.header.dlc, frame.buffer,
+           frame.buffer_len);
 
   // Send using ESP-IDF v5.5 TWAI node API
   esp_err_t esp_err = twai_node_transmit(twai_node_handle_, &frame, timeout_ms);
 
   bool success = (esp_err == ESP_OK);
   UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, success);
-  
+
   // CRITICAL: Add delay to prevent ESP-IDF driver overload during rapid transmission
   // This prevents the frame corruption issue in high-throughput scenarios
   if (success) {
@@ -451,7 +451,7 @@ hf_can_err_t EspCan::Reset() noexcept {
   twai_node_status_t node_status;
   twai_node_record_t node_record;
   esp_err_t status_err = twai_node_get_info(twai_node_handle_, &node_status, &node_record);
-  
+
   if (status_err == ESP_OK && node_status.state == TWAI_ERROR_BUS_OFF) {
     // Node is in bus-off state, recovery is appropriate
     esp_err_t esp_err = twai_node_recover(twai_node_handle_);
@@ -459,10 +459,11 @@ hf_can_err_t EspCan::Reset() noexcept {
       ESP_LOGE(TAG, "TWAI node recovery failed: %s", esp_err_to_name(esp_err));
       return ConvertEspError(esp_err);
     }
-    ESP_LOGI(TAG, "TWAI node %u recovered from bus-off state", static_cast<unsigned>(config_.controller_id));
+    ESP_LOGI(TAG, "TWAI node %u recovered from bus-off state",
+             static_cast<unsigned>(config_.controller_id));
   } else {
     // Node is not in bus-off state, just reset statistics and continue
-    ESP_LOGI(TAG, "TWAI node %u reset (statistics cleared, node operational)", 
+    ESP_LOGI(TAG, "TWAI node %u reset (statistics cleared, node operational)",
              static_cast<unsigned>(config_.controller_id));
   }
 
@@ -600,12 +601,13 @@ hf_can_err_t EspCan::ConfigureAdvancedTiming(
   };
 
   esp_err_t esp_err = twai_node_reconfig_timing(twai_node_handle_, &esp_timing_config, nullptr);
-  
+
   // Re-enable node if it was enabled before
   if (was_enabled) {
     esp_err_t enable_err = twai_node_enable(twai_node_handle_);
     if (enable_err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to re-enable node after timing config: %s", esp_err_to_name(enable_err));
+      ESP_LOGE(TAG, "Failed to re-enable node after timing config: %s",
+               esp_err_to_name(enable_err));
       return ConvertEspError(enable_err);
     }
     is_enabled_.store(true);
@@ -657,12 +659,13 @@ hf_can_err_t EspCan::ConfigureAdvancedFilter(
   }
 
   esp_err_t esp_err = twai_node_config_mask_filter(twai_node_handle_, 0, &mask_filter);
-  
+
   // Re-enable node if it was enabled before
   if (was_enabled) {
     esp_err_t enable_err = twai_node_enable(twai_node_handle_);
     if (enable_err != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to re-enable node after filter config: %s", esp_err_to_name(enable_err));
+      ESP_LOGE(TAG, "Failed to re-enable node after filter config: %s",
+               esp_err_to_name(enable_err));
       return ConvertEspError(enable_err);
     }
     is_enabled_.store(true);
@@ -695,14 +698,15 @@ hf_can_err_t EspCan::InitiateBusRecovery() noexcept {
   twai_node_status_t node_status;
   twai_node_record_t node_record;
   esp_err_t status_err = twai_node_get_info(twai_node_handle_, &node_status, &node_record);
-  
+
   if (status_err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to get node status for recovery: %s", esp_err_to_name(status_err));
     return ConvertEspError(status_err);
   }
 
   if (node_status.state != TWAI_ERROR_BUS_OFF) {
-    ESP_LOGW(TAG, "Node is not in bus-off state (current: %d), recovery not needed", node_status.state);
+    ESP_LOGW(TAG, "Node is not in bus-off state (current: %d), recovery not needed",
+             node_status.state);
     return hf_can_err_t::CAN_SUCCESS; // Not an error, just not needed
   }
 
@@ -770,7 +774,7 @@ bool EspCan::InternalReceiveCallback(twai_node_handle_t handle,
   // ESP-IDF v5.5: RX callback is just a notification that a message was received
   // The actual message retrieval should be done via polling or queue
   // For now, we'll use a simple approach: try to receive the message
-  
+
   // Try to receive message from the RX queue
   uint8_t recv_buffer[8];
   twai_frame_t rx_frame = {
@@ -786,8 +790,8 @@ bool EspCan::InternalReceiveCallback(twai_node_handle_t handle,
     esp_can->ProcessReceivedMessage(rx_frame);
     esp_can->UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, true);
   } else if (recv_result == ESP_ERR_NOT_FOUND) {
-    // No message available - this can happen if callback was triggered but message was already processed
-    // This is normal behavior, don't count as failure
+    // No message available - this can happen if callback was triggered but message was already
+    // processed This is normal behavior, don't count as failure
   } else {
     // Actual error occurred
     esp_can->UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, false);
@@ -822,7 +826,7 @@ bool EspCan::InternalStateChangeCallback(twai_node_handle_t handle,
 
   // Note: No logging in ISR context - ESP_LOGI uses mutex locks which are not ISR-safe
 
-  // Handle bus recovery completion  
+  // Handle bus recovery completion
   if (esp_can->is_recovering_.load()) {
     esp_can->is_recovering_.store(false);
     // Note: No logging in ISR context
@@ -952,7 +956,7 @@ void EspCan::DispatchReceiveCallbacks(const twai_frame_t& frame) noexcept {
     ESP_LOGE(TAG, "Failed to convert TWAI frame to HF message");
     return;
   }
-  
+
   if (receive_cb_) {
     receive_cb_(hf_message, receive_ud_);
   }

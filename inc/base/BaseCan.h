@@ -24,10 +24,10 @@
 #pragma once
 
 #include "HardwareTypes.h"
+#include <atomic>
 #include <cstdint>
 #include <functional>
 #include <string_view>
-#include <atomic>
 
 //--------------------------------------
 //  HardFOC CAN Error Codes (Table)
@@ -362,8 +362,8 @@ struct hf_can_statistics_t {
   std::atomic<hf_u32_t> error_warning_events{0};   ///< Error warning events
 
   // Performance metrics (atomic for ISR safety)
-  std::atomic<hf_u64_t> uptime_seconds{0};          ///< Total uptime in seconds
-  std::atomic<hf_u32_t> last_activity_timestamp{0}; ///< Last activity timestamp
+  std::atomic<hf_u64_t> uptime_seconds{0};                         ///< Total uptime in seconds
+  std::atomic<hf_u32_t> last_activity_timestamp{0};                ///< Last activity timestamp
   std::atomic<hf_can_err_t> last_error{hf_can_err_t::CAN_SUCCESS}; ///< Last error encountered
 
   // Queue statistics (atomic for ISR safety)

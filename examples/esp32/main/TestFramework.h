@@ -381,8 +381,7 @@ inline void print_test_section_header(const char* tag, const char* section_name,
     ESP_LOGI(tag, "\n");
     ESP_LOGI(tag,
              "╔══════════════════════════════════════════════════════════════════════════════╗");
-    ESP_LOGI(tag,
-             "║                              %s                                              ",
+    ESP_LOGI(tag, "║                              %s                                              ",
              section_name);
     ESP_LOGI(tag,
              "╠══════════════════════════════════════════════════════════════════════════════╣");
@@ -390,8 +389,7 @@ inline void print_test_section_header(const char* tag, const char* section_name,
     ESP_LOGI(tag, "\n");
     ESP_LOGI(tag,
              "╔══════════════════════════════════════════════════════════════════════════════╗");
-    ESP_LOGI(tag, 
-             "║                         %s (DISABLED)                                  ",
+    ESP_LOGI(tag, "║                         %s (DISABLED)                                  ",
              section_name);
     ESP_LOGI(tag,
              "╚══════════════════════════════════════════════════════════════════════════════╝");

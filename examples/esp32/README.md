@@ -781,6 +781,23 @@ cat build-*/.ninja_log
 - **ASCII Art** - Text-based graphics
 - **Utils** - Common utility functions
 
+### **Test Documentation**
+
+Each application includes comprehensive test documentation:
+
+- **[Test Documentation](docs/README.md)** - Complete test documentation index
+- **[CAN Test Documentation](docs/README_CAN_TEST.md)** - CAN bus testing with SN65 transceiver
+- **[GPIO Test Documentation](docs/README_GPIO_TEST.md)** - GPIO testing and validation
+- **[ADC Test Documentation](docs/README_ADC_TEST.md)** - ADC testing and calibration
+- **[PWM Test Documentation](docs/README_PWM_TEST.md)** - PWM testing and frequency control
+- **[UART Test Documentation](docs/README_UART_TESTING.md)** - UART communication testing
+- **[SPI Test Documentation](docs/README_SPI_TEST.md)** - SPI interface testing
+- **[I2C Test Documentation](docs/README_I2C_TEST.md)** - I2C device testing
+- **[PIO Test Documentation](docs/README_PIO_TEST.md)** - Programmable I/O testing
+- **[Temperature Test Documentation](docs/README_TEMPERATURE_TEST.md)** - Temperature sensor testing
+- **[NVS Test Documentation](docs/README_NVS_TEST.md)** - Non-volatile storage testing
+- **[Logger Test Documentation](docs/README_LOGGER_TEST.md)** - Logging system testing
+
 ---
 
 ## 🤝 **Contributing**
@@ -837,6 +854,7 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](../LICENS
 
 - [Main Project README](../README.md) - Project overview and architecture
 - [API Documentation](../docs/) - Interface API documentation
+- [Test Documentation](docs/README.md) - Comprehensive test documentation and examples
 - [CI/CD Workflows](../.github/workflows/) - GitHub Actions workflows
 - [ESP-IDF Documentation](https://docs.espressif.com/projects/esp-idf/) - ESP-IDF reference
 

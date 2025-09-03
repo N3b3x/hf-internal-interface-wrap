@@ -510,8 +510,8 @@ private:
   const hf_esp_can_config_t config_; ///< TWAI node configuration
 
   // State flags (atomic)
-  std::atomic<bool> is_enabled_;     ///< Node enabled state
-  std::atomic<bool> is_recovering_;  ///< Bus recovery state
+  std::atomic<bool> is_enabled_;    ///< Node enabled state
+  std::atomic<bool> is_recovering_; ///< Bus recovery state
 
   // Thread safety (RtosMutex)
   mutable RtosMutex config_mutex_;   ///< Configuration mutex
@@ -545,4 +545,3 @@ private:
 };
 
 //==============================================//
-

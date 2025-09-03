@@ -28,7 +28,7 @@ The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as 
 
 ### ✨ **Key Features**
 
-- 🚌 **CAN & CAN-FD Support** - Both classic CAN and CAN-FD protocols
+- 🚌 **CAN 2.0A/2.0B Support** - Classic CAN protocols (CAN-FD support varies by hardware)
 - 📨 **Message Filtering** - Hardware-based acceptance filtering
 - 🔄 **Error Recovery** - Automatic bus recovery and error handling
 - 📊 **Statistics & Diagnostics** - Comprehensive monitoring and reporting
@@ -41,7 +41,7 @@ The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as 
 
 | Implementation | Hardware Type | Protocol | Speed | Features |
 |----------------|---------------|----------|-------|----------|
-| `EspCan` | ESP32-C6 Internal | CAN 2.0A/B | Up to 1 Mbps | Built-in error handling |
+| `EspCan` | ESP32-C6 Internal | CAN 2.0A/B | Up to 1 Mbps | Built-in error handling, no CAN-FD |
 
 ---
 
@@ -379,7 +379,8 @@ virtual void ClearReceiveCallback() noexcept;
  * @return hf_can_err_t error code
  * 
  * 📞 Sets callback for CAN-FD messages with enhanced information.
- * Only available if CAN-FD is supported.
+ * Only available if CAN-FD is supported by the hardware.
+ * ESP32-C6 TWAI controller does not support CAN-FD.
  */
 virtual hf_can_err_t SetReceiveCallbackFD(hf_can_fd_receive_callback_t callback) noexcept;
 ```
@@ -392,6 +393,7 @@ virtual hf_can_err_t SetReceiveCallbackFD(hf_can_fd_receive_callback_t callback)
  * @return true if supported, false otherwise
  * 
  * ✅ Checks if the hardware supports CAN-FD protocol.
+ * ESP32-C6 TWAI controller returns false (no CAN-FD support).
  */
 virtual bool SupportsCanFD() const noexcept;
 
@@ -402,6 +404,7 @@ virtual bool SupportsCanFD() const noexcept;
  * @return true if successful, false otherwise
  * 
  * 🚀 Configures CAN-FD mode if supported.
+ * ESP32-C6 TWAI controller does not support CAN-FD - returns false.
  * Requires re-initialization to take effect.
  */
 virtual bool SetCanFDMode(bool enable, uint32_t data_baudrate = 2000000,

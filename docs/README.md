@@ -301,7 +301,7 @@ Our comprehensive documentation is organized into logical sections for easy navi
 | **`EspI2c`** | BaseI2c | Clock stretching, multi-master | ✅ Complete |
 | **`EspSpi`** | BaseSpi | Full-duplex, DMA support | ✅ Complete |
 | **`EspUart`** | BaseUart | Hardware flow control | ✅ Complete |
-| **`EspCan`** | BaseCan | TWAI controller | ✅ Complete |
+| **`EspCan`** | BaseCan | TWAI controller, SN65 transceiver, no CAN-FD | ✅ Complete |
 | **`EspWifi`** | BaseWifi | 802.11n, WPA3, mesh | ✅ Complete |
 | **`EspBluetooth`** | BaseBluetooth | BLE/Classic, NimBLE optimized | ✅ Complete |
 | **`EspNvs`** | BaseNvs | Encrypted storage, wear leveling | ✅ Complete |

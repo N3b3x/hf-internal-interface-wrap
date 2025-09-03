@@ -783,6 +783,7 @@ See [LICENSE](LICENSE) for full details.
 
 ### **Development**
 - 🚀 [Examples](examples/esp32/) - Test applications and usage examples
+- 🧪 [Test Documentation](examples/esp32/docs/README.md) - Comprehensive test documentation
 - 🔧 [Scripts](examples/esp32/scripts/) - Build, flash, and development tools
 - 📊 [Configuration](examples/esp32/app_config.yml) - Application and build settings
 
