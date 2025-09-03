@@ -45,9 +45,6 @@ extern "C" {
 }
 #endif
 
-// Only compile for ESP32 family
-#ifdef HF_MCU_FAMILY_ESP32
-
 #include "BaseCan.h"
 #include "RtosMutex.h"
 #include "utils/EspTypes_CAN.h"
@@ -513,7 +510,6 @@ private:
   const hf_esp_can_config_t config_; ///< TWAI node configuration
 
   // State flags (atomic)
-  std::atomic<bool> is_initialized_; ///< Initialization state
   std::atomic<bool> is_enabled_;     ///< Node enabled state
   std::atomic<bool> is_recovering_;  ///< Bus recovery state
 
@@ -550,4 +546,3 @@ private:
 
 //==============================================//
 
-#endif // HF_MCU_FAMILY_ESP32

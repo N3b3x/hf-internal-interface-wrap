@@ -27,6 +27,7 @@
 #include <cstdint>
 #include <functional>
 #include <string_view>
+#include <atomic>
 
 //--------------------------------------
 //  HardFOC CAN Error Codes (Table)
@@ -181,7 +182,7 @@ struct hf_can_message_t {
   hf_u8_t canfd_dlc; ///< CAN-FD DLC (can be > 8)
 
   hf_can_message_t() noexcept
-      : id(0), dlc(0), data{}, is_extended(false), is_rtr(false), is_ss(false), is_self(false),
+      : id(0), dlc(8), data{}, is_extended(false), is_rtr(false), is_ss(false), is_self(false),
         dlc_non_comp(false), timestamp_us(0), sequence_number(0), controller_id(0), retry_count(0),
         error_count(0), is_canfd(false), is_brs(false), is_esi(false), canfd_dlc(0) {}
 
@@ -345,38 +346,34 @@ using hf_can_fd_receive_callback_t =
  *          and identifying potential issues.
  */
 struct hf_can_statistics_t {
-  // Message counters
-  hf_u64_t messages_sent;     ///< Total messages successfully sent
-  hf_u64_t messages_received; ///< Total messages successfully received
-  hf_u64_t bytes_transmitted; ///< Total bytes transmitted
-  hf_u64_t bytes_received;    ///< Total bytes received
+  // Message counters (atomic for ISR safety)
+  std::atomic<hf_u64_t> messages_sent{0};     ///< Total messages successfully sent
+  std::atomic<hf_u64_t> messages_received{0}; ///< Total messages successfully received
+  std::atomic<hf_u64_t> bytes_transmitted{0}; ///< Total bytes transmitted
+  std::atomic<hf_u64_t> bytes_received{0};    ///< Total bytes received
 
-  // Error counters
-  hf_u32_t send_failures;          ///< Failed send operations
-  hf_u32_t receive_failures;       ///< Failed receive operations
-  hf_u32_t bus_error_count;        ///< Total bus errors
-  hf_u32_t arbitration_lost_count; ///< Arbitration lost events
-  hf_u32_t tx_failed_count;        ///< Transmission failures
-  hf_u32_t bus_off_events;         ///< Bus-off occurrences
-  hf_u32_t error_warning_events;   ///< Error warning events
+  // Error counters (atomic for ISR safety)
+  std::atomic<hf_u32_t> send_failures{0};          ///< Failed send operations
+  std::atomic<hf_u32_t> receive_failures{0};       ///< Failed receive operations
+  std::atomic<hf_u32_t> bus_error_count{0};        ///< Total bus errors
+  std::atomic<hf_u32_t> arbitration_lost_count{0}; ///< Arbitration lost events
+  std::atomic<hf_u32_t> tx_failed_count{0};        ///< Transmission failures
+  std::atomic<hf_u32_t> bus_off_events{0};         ///< Bus-off occurrences
+  std::atomic<hf_u32_t> error_warning_events{0};   ///< Error warning events
 
-  // Performance metrics
-  hf_u64_t uptime_seconds;          ///< Total uptime in seconds
-  hf_u32_t last_activity_timestamp; ///< Last activity timestamp
-  hf_can_err_t last_error;          ///< Last error encountered
+  // Performance metrics (atomic for ISR safety)
+  std::atomic<hf_u64_t> uptime_seconds{0};          ///< Total uptime in seconds
+  std::atomic<hf_u32_t> last_activity_timestamp{0}; ///< Last activity timestamp
+  std::atomic<hf_can_err_t> last_error{hf_can_err_t::CAN_SUCCESS}; ///< Last error encountered
 
-  // Queue statistics
-  hf_u32_t tx_queue_peak;      ///< Peak TX queue usage
-  hf_u32_t rx_queue_peak;      ///< Peak RX queue usage
-  hf_u32_t tx_queue_overflows; ///< TX queue overflow count
-  hf_u32_t rx_queue_overflows; ///< RX queue overflow count
+  // Queue statistics (atomic for ISR safety)
+  std::atomic<hf_u32_t> tx_queue_peak{0};      ///< Peak TX queue usage
+  std::atomic<hf_u32_t> rx_queue_peak{0};      ///< Peak RX queue usage
+  std::atomic<hf_u32_t> tx_queue_overflows{0}; ///< TX queue overflow count
+  std::atomic<hf_u32_t> rx_queue_overflows{0}; ///< RX queue overflow count
 
-  hf_can_statistics_t() noexcept
-      : messages_sent(0), messages_received(0), bytes_transmitted(0), bytes_received(0),
-        send_failures(0), receive_failures(0), bus_error_count(0), arbitration_lost_count(0),
-        tx_failed_count(0), bus_off_events(0), error_warning_events(0), uptime_seconds(0),
-        last_activity_timestamp(0), last_error(hf_can_err_t::CAN_SUCCESS), tx_queue_peak(0),
-        rx_queue_peak(0), tx_queue_overflows(0), rx_queue_overflows(0) {}
+  // Default constructor - all fields are initialized with in-class initialization
+  hf_can_statistics_t() noexcept = default;
 };
 
 /**
@@ -679,7 +676,25 @@ public:
    * @note Override this method to provide platform-specific statistics reset
    */
   virtual hf_can_err_t ResetStatistics() noexcept {
-    statistics_ = hf_can_statistics_t{}; // Reset statistics to default values
+    // Reset all atomic counters to zero (atomic operations are thread-safe)
+    statistics_.messages_sent.store(0);
+    statistics_.messages_received.store(0);
+    statistics_.bytes_transmitted.store(0);
+    statistics_.bytes_received.store(0);
+    statistics_.send_failures.store(0);
+    statistics_.receive_failures.store(0);
+    statistics_.bus_error_count.store(0);
+    statistics_.arbitration_lost_count.store(0);
+    statistics_.tx_failed_count.store(0);
+    statistics_.bus_off_events.store(0);
+    statistics_.error_warning_events.store(0);
+    statistics_.uptime_seconds.store(0);
+    statistics_.last_activity_timestamp.store(0);
+    statistics_.last_error.store(hf_can_err_t::CAN_SUCCESS);
+    statistics_.tx_queue_peak.store(0);
+    statistics_.rx_queue_peak.store(0);
+    statistics_.tx_queue_overflows.store(0);
+    statistics_.rx_queue_overflows.store(0);
     return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
 
@@ -700,7 +715,25 @@ public:
    * @note Override this method to provide platform-specific statistics
    */
   virtual hf_can_err_t GetStatistics(hf_can_statistics_t& statistics) noexcept {
-    statistics = statistics_; // Return statistics by default
+    // Copy atomic values to non-atomic structure for return (atomic operations are thread-safe)
+    statistics.messages_sent = statistics_.messages_sent.load();
+    statistics.messages_received = statistics_.messages_received.load();
+    statistics.bytes_transmitted = statistics_.bytes_transmitted.load();
+    statistics.bytes_received = statistics_.bytes_received.load();
+    statistics.send_failures = statistics_.send_failures.load();
+    statistics.receive_failures = statistics_.receive_failures.load();
+    statistics.bus_error_count = statistics_.bus_error_count.load();
+    statistics.arbitration_lost_count = statistics_.arbitration_lost_count.load();
+    statistics.tx_failed_count = statistics_.tx_failed_count.load();
+    statistics.bus_off_events = statistics_.bus_off_events.load();
+    statistics.error_warning_events = statistics_.error_warning_events.load();
+    statistics.uptime_seconds = statistics_.uptime_seconds.load();
+    statistics.last_activity_timestamp = statistics_.last_activity_timestamp.load();
+    statistics.last_error = statistics_.last_error.load();
+    statistics.tx_queue_peak = statistics_.tx_queue_peak.load();
+    statistics.rx_queue_peak = statistics_.rx_queue_peak.load();
+    statistics.tx_queue_overflows = statistics_.tx_queue_overflows.load();
+    statistics.rx_queue_overflows = statistics_.rx_queue_overflows.load();
     return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
 
