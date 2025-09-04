@@ -474,7 +474,7 @@ CLEAN=1 ./scripts/build_app.sh gpio_test Release
 ### **Modifying Existing Workflows**
 
 1. **Backup Original**
-   ```bash
+```bash
    cp .github/workflows/workflow.yml .github/workflows/workflow.yml.backup
    ```
 
