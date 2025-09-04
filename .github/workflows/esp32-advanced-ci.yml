@@ -23,7 +23,7 @@ env:
   TOOLS_DIR: examples/esp32/scripts
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
   security-events: write
   pages: write
