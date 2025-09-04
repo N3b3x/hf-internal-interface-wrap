@@ -296,7 +296,7 @@ uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
 |----------|------|---------|-----------|-----------|------|--------|
 | Advanced | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | Release | ❌ | ❌ | ❌ | ✅* | ✅ | ✅ |
-| Documentation | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Documentation | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
 
 *Release CI waits for Advanced CI to complete on release branches
 
@@ -309,11 +309,22 @@ Push to develop/feature/*/bugfix/* branch
 Advanced CI runs (comprehensive validation)
 ```
 
+**Main Branch Flow:**
+```
+Push to main branch
+    ↓
+Advanced CI runs (validation)
+    ↓
+Documentation CI runs (doc generation)
+```
+
 **Release Branch Flow:**
 ```
 Push to release/* branch
     ↓
 Advanced CI runs (validation)
+    ↓
+Documentation CI runs (doc generation)
     ↓
 Release CI waits for Advanced CI to pass
     ↓

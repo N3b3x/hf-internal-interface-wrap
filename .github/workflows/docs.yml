@@ -2,7 +2,7 @@ name: 📚 Documentation CI
 
 on:
   push:
-    branches: [main, docs/*]
+    branches: [main, release/*]
   pull_request:
     branches: [main]
     paths: ['docs/**', '*.md', 'README.md']
