@@ -39,21 +39,29 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
+      project_dir: ${{ steps.vars.outputs.project_dir }}
+      tools_dir: ${{ steps.vars.outputs.tools_dir }}
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
       
+      - name: Set local variables
+        id: vars
+        run: |
+          echo "project_dir=${{ env.PROJECT_DIR }}" >> "$GITHUB_OUTPUT"
+          echo "tools_dir=${{ env.TOOLS_DIR }}" >> "$GITHUB_OUTPUT"
+
       - name: Validate configuration
         run: |
-          cd ${{ env.PROJECT_DIR }}
-          python3 ${{ env.TOOLS_DIR }}/generate_matrix.py --validate --verbose
+          cd ${{ steps.vars.outputs.project_dir }}
+          python3 ${{ steps.vars.outputs.tools_dir }}/generate_matrix.py --validate --verbose
 
       - name: Generate build matrix
         id: matrix
         run: |
-          cd ${{ env.PROJECT_DIR }}
-          MATRIX=$(python3 ${{ env.TOOLS_DIR }}/generate_matrix.py)
+          cd ${{ steps.vars.outputs.project_dir }}
+          MATRIX=$(python3 ${{ steps.vars.outputs.tools_dir }}/generate_matrix.py)
           echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
           echo "Generated matrix with $(echo "$MATRIX" | jq '.include | length') build combinations"
 
@@ -62,8 +70,8 @@ jobs:
     needs: validate
     uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@main
     with:
-      project_dir: ${{ env.PROJECT_DIR }}
-      project_tools_dir: ${{ env.TOOLS_DIR }}
+      project_dir: ${{ needs.validate.outputs.project_dir }}
+      project_tools_dir: ${{ needs.validate.outputs.tools_dir }}
       clean_build: ${{ github.event.inputs.clean_build == 'true' }}
       tools_repo_sha: ${{ github.sha }}
 
@@ -90,8 +98,8 @@ jobs:
     if: ${{ github.event.inputs.run_security != 'false' }}
     uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@main
     with:
-      project_dir: ${{ env.PROJECT_DIR }}
-      project_tools_dir: ${{ env.TOOLS_DIR }}
+      project_dir: ${{ needs.validate.outputs.project_dir }}
+      project_tools_dir: ${{ needs.validate.outputs.tools_dir }}
       scan_type: "all"
       run_codeql: true
       codeql_languages: "cpp,python"

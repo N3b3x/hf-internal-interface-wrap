@@ -21,50 +21,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build documentation
+  # Build documentation with linting and spell checking
   docs-build:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/docs.yml@v1
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/docs.yml@main
     with:
-      project_dir: ${{ env.PROJECT_DIR }}
-      project_tools_dir: ${{ env.TOOLS_DIR }}
       doxygen_config: "Doxyfile"
       output_dir: "docs/doxygen/html"
       run_link_check: true
       link_check_paths: "docs/**,*.md,**/docs/**,README.md"
+      run_markdown_lint: true
+      markdown_lint_paths: "**/*.md"
+      run_spell_check: true
+      spell_check_paths: "**/*.md"
+      spell_check_config: ".cspell.json"
       deploy_pages: ${{ github.ref == 'refs/heads/main' }}
-
-  # Comprehensive link checking
-  link-check-comprehensive:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@v1
-    with:
-      paths: "docs/**,*.md,**/docs/**,README.md,**/*.md"
-      fail_on_errors: true
-
-  # Documentation linting
-  docs-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install markdownlint
-        run: npm install -g markdownlint-cli
-
-      - name: Lint markdown files
-        run: markdownlint "**/*.md" --ignore node_modules
-
-  # Spell checking
-  spell-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup cspell
-        run: npm install -g cspell
-
-      - name: Spell check
-        run: cspell "**/*.md" --config .cspell.json
