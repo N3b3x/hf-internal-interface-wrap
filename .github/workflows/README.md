@@ -61,18 +61,18 @@ examples/esp32/scripts/  # Git submodule: hf-espidf-project-tools
 │                           🚀 CI Workflows Layer                                 │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                             │
-│  │ Advanced    │  │ Release     │  │ Docs        │                             │
-│  │ CI          │  │ CI          │  │ CI          │                             │
-│  │             │  │             │  │             │                             │
-│  │ • Matrix    │  │ • Clean     │  │ • Doxygen   │                             │
-│  │   Builds    │  │   Builds    │  │ • Link      │                             │
-│  │ • Full      │  │ • Artifacts │  │   Check     │                             │
-│  │   Linting   │  │ • Releases  │  │ • Markdown  │                             │
-│  │ • Security  │  │ • Waits for │  │ • Spell     │                             │
-│  │ • Static    │  │   Advanced  │  │   Check     │                             │
-│  │   Analysis  │  │   CI        │  │             │                             │
-│  └─────────────┘  └─────────────┘  └─────────────┘                             │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                              │
+│  │ Advanced    │  │ Release     │  │ Docs        │                              │
+│  │ CI          │  │ CI          │  │ CI          │                              │
+│  │             │  │             │  │             │                              │
+│  │ • Matrix    │  │ • Clean     │  │ • Doxygen   │                              │
+│  │   Builds    │  │   Builds    │  │ • Link      │                              │
+│  │ • Full      │  │ • Artifacts │  │   Check     │                              │
+│  │   Linting   │  │ • Releases  │  │ • Markdown  │                              │
+│  │ • Security  │  │ • Waits for │  │ • Spell     │                              │
+│  │ • Static    │  │   Advanced  │  │   Check     │                              │
+│  │   Analysis  │  │   CI        │  │             │                              │
+│  └─────────────┘  └─────────────┘  └─────────────┘                              │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                         │
                                         ▼
@@ -132,12 +132,12 @@ CI Workflows → External Actions → Custom Tools → Hardware/Artifacts
 
 ## 🚀 Available Workflows
 
-### **1. 🚀 Advanced ESP32 CI** (`esp32-advanced-ci.yml`)
+### **1. 🚀 Advanced ESP32 CI** ([`esp32-advanced-ci.yml`](esp32-advanced-ci.yml))
 
-**Purpose**: Production-ready comprehensive CI/CD pipeline
+**Purpose**: Comprehensive CI/CD pipeline for all development work
 
 **Triggers**:
-- Push to `main`, `develop`, `release/*` branches
+- Push to `main`, `develop`, `feature/*`, `bugfix/*`, `release/*` branches
 - Pull requests to `main`, `develop`
 - Manual dispatch with options
 
@@ -146,7 +146,6 @@ CI Workflows → External Actions → Custom Tools → Hardware/Artifacts
 - ✅ Comprehensive linting and formatting
 - ✅ Full security audit
 - ✅ Static analysis
-- ✅ Documentation generation
 - ✅ Link checking
 - ✅ Build summary and notifications
 
@@ -159,60 +158,35 @@ workflow_dispatch:
     run_security: true
 ```
 
-### **2. 🔧 Development ESP32 CI** (`esp32-development-ci.yml`)
+### **2. 📦 Release ESP32 CI** ([`esp32-release-ci.yml`](esp32-release-ci.yml))
 
-**Purpose**: Fast development workflow with auto-fix capabilities
-
-**Triggers**:
-- Push to `develop`, `feature/*`, `bugfix/*` branches
-- Pull requests to `develop`
-
-**Features**:
-- ✅ Quick builds with caching
-- ✅ Auto-fix code formatting
-- ✅ Relaxed link checking
-- ✅ Development-focused linting
-
-### **3. 📦 Release ESP32 CI** (`esp32-release-ci.yml`)
-
-**Purpose**: Comprehensive release pipeline with artifact creation
+**Purpose**: Production release pipeline with artifact creation
 
 **Triggers**:
-- Push to `release/*`, `main` branches
+- Push to `release/*` branches
 - Tags matching `v*` pattern
 - Manual dispatch with version input
 
 **Features**:
+- ✅ Waits for Advanced CI to complete
 - ✅ Clean builds for release
-- ✅ Strict linting (no auto-fix)
-- ✅ Full security audit
-- ✅ Comprehensive static analysis
-- ✅ Documentation deployment
 - ✅ Release artifact creation
 - ✅ GitHub release creation
 
-### **4. 🛡️ Security-First ESP32 CI** (`esp32-security-ci.yml`)
+**Usage**:
+```yaml
+# Manual trigger with version
+workflow_dispatch:
+  inputs:
+    release_version: "v1.0.0"
+```
 
-**Purpose**: Security-critical projects with comprehensive security checks
+### **3. 📚 Documentation CI** ([`docs.yml`](docs.yml))
 
-**Triggers**:
-- Push to `main`, `security/*` branches
-- Pull requests to `main`
-- Weekly scheduled scan (Mondays 2:00 UTC)
-
-**Features**:
-- ✅ Security-first approach
-- ✅ Comprehensive vulnerability scanning
-- ✅ CodeQL analysis
-- ✅ Trivy filesystem scanning
-- ✅ Security-focused linting
-
-### **5. 📚 Documentation CI** (`docs.yml`)
-
-**Purpose**: Documentation-focused projects with comprehensive doc checks
+**Purpose**: Repository-wide documentation generation and validation
 
 **Triggers**:
-- Push to `main`, `docs/*` branches
+- Push to `main`, `release/*` branches
 - Pull requests to `main` (docs changes only)
 
 **Features**:
@@ -221,21 +195,6 @@ workflow_dispatch:
 - ✅ Markdown linting
 - ✅ Spell checking
 - ✅ GitHub Pages deployment
-
-### **6. ⚡ Performance ESP32 CI** (`esp32-performance-ci.yml`)
-
-**Purpose**: Large projects requiring maximum build performance
-
-**Triggers**:
-- Push to `main`, `develop` branches
-- Pull requests to `main`
-
-**Features**:
-- ✅ Aggressive caching
-- ✅ Minimal checks for speed
-- ✅ Performance monitoring
-- ✅ Fast link checking
-- ✅ Quick security scan
 
 ---
 
