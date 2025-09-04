@@ -12,9 +12,10 @@ env:
   TOOLS_DIR: examples/esp32/scripts
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: docs-ci-${{ github.ref }}

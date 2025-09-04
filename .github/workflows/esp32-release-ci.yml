@@ -22,6 +22,7 @@ permissions:
   security-events: write
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: release-ci-${{ github.ref }}

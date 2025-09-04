@@ -28,6 +28,7 @@ permissions:
   security-events: write
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: advanced-ci-${{ github.ref }}
