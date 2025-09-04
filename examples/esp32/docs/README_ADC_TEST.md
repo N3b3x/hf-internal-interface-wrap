@@ -8,7 +8,7 @@ The ADC comprehensive testing suite provides thorough validation of the `EspAdc`
 
 ### Target Hardware
 - **ESP32-C6 DevKit-M-1** (primary target)
-- ESP32-C6 DevKitC-1 (also supported)
+- ESP32-C6 DevKitC-1 (also supported, just wifi antenna difference)
 - USB-C cable for programming and power
 - Computer with ESP-IDF v5.5+ installed
 
