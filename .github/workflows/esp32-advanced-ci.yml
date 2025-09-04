@@ -55,14 +55,14 @@ jobs:
 
       - name: Validate configuration
         run: |
-          cd ${{ steps.vars.outputs.project_dir }}
-          python3 ${{ steps.vars.outputs.tools_dir }}/generate_matrix.py --validate --verbose
+          cd ${{ steps.vars.outputs.tools_dir }}
+          python3 generate_matrix.py --validate --verbose
 
       - name: Generate build matrix
         id: matrix
         run: |
-          cd ${{ steps.vars.outputs.project_dir }}
-          MATRIX=$(python3 ${{ steps.vars.outputs.tools_dir }}/generate_matrix.py)
+          cd ${{ steps.vars.outputs.tools_dir }}
+          MATRIX=$(python3 generate_matrix.py)
           echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
           echo "Generated matrix with $(echo "$MATRIX" | jq '.include | length') build combinations"
 
