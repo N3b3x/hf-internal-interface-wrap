@@ -23,7 +23,7 @@ concurrency:
 jobs:
   # Build documentation
   docs-build:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/docs.yml@v1
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/docs.yml@main
     with:
       project_dir: ${{ env.PROJECT_DIR }}
       project_tools_dir: ${{ env.TOOLS_DIR }}
@@ -35,7 +35,7 @@ jobs:
 
   # Comprehensive link checking
   link-check-comprehensive:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@v1
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@main
     with:
       paths: "docs/**,*.md,**/docs/**,README.md,**/*.md"
       fail_on_errors: true

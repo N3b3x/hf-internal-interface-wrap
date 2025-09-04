@@ -60,7 +60,7 @@ jobs:
   # 🏗️ Build firmware (parallel matrix)
   build:
     needs: validate
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@v1
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@main
     with:
       project_dir: ${{ env.PROJECT_DIR }}
       project_tools_dir: ${{ env.TOOLS_DIR }}
@@ -70,7 +70,7 @@ jobs:
   # 🔧 Lint and format code (runs in parallel)
   lint:
     needs: validate
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@v1
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@main
     with:
       paths: "src/**,inc/**,examples/**,components/**"
       auto_fix: true
@@ -88,7 +88,7 @@ jobs:
   security:
     needs: validate
     if: ${{ github.event.inputs.run_security != 'false' }}
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@main
     with:
       project_dir: ${{ env.PROJECT_DIR }}
       project_tools_dir: ${{ env.TOOLS_DIR }}
@@ -100,7 +100,7 @@ jobs:
   # 🔍 Static analysis (runs in parallel)
   static-analysis:
     needs: validate
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/static-analysis.yml@v1
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/static-analysis.yml@main
     with:
       paths: "src inc examples components"
       std: "c++17"
@@ -108,7 +108,7 @@ jobs:
 
   # 🔗 Check documentation links (runs in parallel, no ESP32 dependency)
   link-check:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@v1
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@main
     with:
       paths: "docs/**,*.md,**/docs/**,README.md"
       fail_on_errors: true
