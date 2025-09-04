@@ -296,8 +296,32 @@ uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
 |----------|------|---------|-----------|-----------|------|--------|
 | Advanced | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ |
 | Development | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Release | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+| Release | ❌ | ❌ | ❌ | ✅* | ✅ | ✅ |
 | Documentation | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+*Release CI waits for Advanced CI to complete on release branches
+
+### **🔄 Workflow Dependencies**
+
+**Release Branch Flow:**
+```
+Push to release/* branch
+    ↓
+Advanced CI runs (validation)
+    ↓
+Release CI waits for Advanced CI to pass
+    ↓
+Release CI creates artifacts + GitHub release
+```
+
+**Tag Flow:**
+```
+Create tag (v1.0.0)
+    ↓
+Release CI runs directly (no wait needed)
+    ↓
+Creates artifacts + GitHub release
+```
 
 ---
 

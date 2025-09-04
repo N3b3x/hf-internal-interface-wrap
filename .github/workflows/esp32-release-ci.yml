@@ -2,7 +2,7 @@ name: 📦 Release ESP32 CI
 
 on:
   push:
-    branches: [release/*, main]
+    branches: [release/*]
     tags: ['v*']
   workflow_dispatch:
     inputs:
@@ -28,8 +28,24 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Comprehensive build for release
+  # Wait for Advanced CI to complete successfully
+  wait-for-advanced-ci:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/')
+    steps:
+      - name: Wait for Advanced CI
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'Advanced ESP32 CI'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+          allowed-conclusions: success
+
+  # Build release artifacts (only for tags, not release branches)
   build-release:
+    needs: wait-for-advanced-ci
+    if: startsWith(github.ref, 'refs/tags/')
     uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@v1
     with:
       project_dir: ${{ env.PROJECT_DIR }}
@@ -37,48 +53,9 @@ jobs:
       clean_build: true  # Clean build for release
       tools_repo_sha: ${{ github.sha }}
 
-  # Strict linting for release
-  lint-release:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@v1
-    with:
-      paths: "src/**,inc/**,examples/**,components/**"
-      auto_fix: false  # No auto-fix for release
-      style: "file"
-      tidy_checks: "readability-*,performance-*,modernize-*,cert-*"
-      strict: true
-
-  # Full security audit
-  security-release:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
-    with:
-      project_dir: ${{ env.PROJECT_DIR }}
-      project_tools_dir: ${{ env.TOOLS_DIR }}
-      scan_type: "all"
-      run_codeql: true
-      codeql_languages: "cpp,python"
-      tools_repo_sha: ${{ github.sha }}
-
-  # Comprehensive static analysis
-  static-analysis-release:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/static-analysis.yml@v1
-    with:
-      paths: "src inc examples components"
-      std: "c++17"
-      strict: true  # Fail on any issues
-
-  # Build and deploy documentation
-  docs-release:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/docs.yml@v1
-    with:
-      project_dir: ${{ env.PROJECT_DIR }}
-      doxygen_config: "Doxyfile"
-      output_dir: "docs/doxygen/html"
-      run_link_check: true
-      deploy_pages: true
-
   # Create release artifacts
   create-release:
-    needs: [build-release, lint-release, security-release, static-analysis-release, docs-release]
+    needs: [wait-for-advanced-ci, build-release]
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
