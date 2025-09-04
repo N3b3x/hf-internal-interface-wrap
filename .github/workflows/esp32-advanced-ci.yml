@@ -67,8 +67,9 @@ jobs:
       clean_build: ${{ github.event.inputs.clean_build == 'true' }}
       tools_repo_sha: ${{ github.sha }}
 
-  # 🔧 Lint and format code
+  # 🔧 Lint and format code (runs in parallel)
   lint:
+    needs: validate
     uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@v1
     with:
       paths: "src/**,inc/**,examples/**,components/**"
@@ -83,8 +84,9 @@ jobs:
       step_summary: true
       file_annotations: true
 
-  # 🛡️ Security audit
+  # 🛡️ Security audit (runs in parallel)
   security:
+    needs: validate
     if: ${{ github.event.inputs.run_security != 'false' }}
     uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
     with:
@@ -95,26 +97,16 @@ jobs:
       codeql_languages: "cpp,python"
       tools_repo_sha: ${{ github.sha }}
 
-  # 🔍 Static analysis
+  # 🔍 Static analysis (runs in parallel)
   static-analysis:
+    needs: validate
     uses: N3b3x/hf-espidf-ci-tools/.github/workflows/static-analysis.yml@v1
     with:
       paths: "src inc examples components"
       std: "c++17"
       strict: false
 
-  # 📚 Build and check documentation
-  docs:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/docs.yml@v1
-    with:
-      project_dir: ${{ env.PROJECT_DIR }}
-      doxygen_config: "Doxyfile"
-      output_dir: "docs/doxygen/html"
-      run_link_check: true
-      link_check_paths: "docs/**,*.md,**/docs/**"
-      deploy_pages: ${{ github.ref == 'refs/heads/main' }}
-
-  # 🔗 Check documentation links
+  # 🔗 Check documentation links (runs in parallel, no ESP32 dependency)
   link-check:
     uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@v1
     with:
@@ -123,7 +115,7 @@ jobs:
 
   # 📊 Build summary and notifications
   summary:
-    needs: [build, lint, security, static-analysis, docs, link-check]
+    needs: [build, lint, security, static-analysis, link-check]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -140,8 +132,6 @@ jobs:
           echo "| 🛡️ Security | ${{ needs.security.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY
           echo "| 🔍 Static Analysis | ${{ needs.static-analysis.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
-            >> $GITHUB_STEP_SUMMARY
-          echo "| 📚 Docs | ${{ needs.docs.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY
           echo "| 🔗 Link Check | ${{ needs.link-check.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY

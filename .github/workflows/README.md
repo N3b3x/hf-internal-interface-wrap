@@ -62,28 +62,17 @@ examples/esp32/scripts/  # Git submodule: hf-espidf-project-tools
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
-│  │ Advanced    │  │ Development │  │ Release     │  │ Security    │             │
+│  │ Advanced    │  │ Development │  │ Release     │  │ Docs        │             │
 │  │ CI          │  │ CI          │  │ CI          │  │ CI          │             │
 │  │             │  │             │  │             │  │             │             │
-│  │ • Matrix    │  │ • Quick     │  │ • Clean     │  │ • Security  │             │
-│  │   Builds    │  │   Builds    │  │   Builds    │  │   First     │             │
-│  │ • Full      │  │ • Auto-fix  │  │ • Artifacts │  │ • CodeQL    │             │
-│  │   Linting   │  │ • Relaxed   │  │ • Releases  │  │ • Trivy     │             │
-│  │ • Security  │  │   Checks    │  │ • Strict    │  │ • Weekly    │             │
-│  │ • Docs      │  │             │  │   Linting   │  │   Scans     │             │
+│  │ • Matrix    │  │ • Quick     │  │ • Clean     │  │ • Doxygen   │             │
+│  │   Builds    │  │   Builds    │  │   Builds    │  │ • Link      │             │
+│  │ • Full      │  │ • Auto-fix  │  │ • Artifacts │  │   Check     │             │
+│  │   Linting   │  │ • Relaxed   │  │ • Releases  │  │ • Markdown  │             │
+│  │ • Security  │  │   Checks    │  │ • Strict    │  │ • Spell     │             │
+│  │ • Static    │  │             │  │   Linting   │  │   Check     │             │
+│  │   Analysis  │  │             │  │             │  │             │             │
 │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘             │
-│                                                                                 │
-│  ┌─────────────┐  ┌─────────────┐                                               │
-│  │ Docs        │  │ Performance │                                               │
-│  │ CI          │  │ CI          │                                               │
-│  │             │  │             │                                               │
-│  │ • Doxygen   │  │ • Fast      │                                               │
-│  │ • Link      │  │   Builds    │                                               │
-│  │   Check     │  │ • Caching   │                                               │
-│  │ • Markdown  │  │ • Minimal   │                                               │
-│  │ • Spell     │  │   Checks    │                                               │
-│  │   Check     │  │ • Monitor   │                                               │
-│  └─────────────┘  └─────────────┘                                               │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                         │
                                         ▼
@@ -299,9 +288,7 @@ uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
 | **Production Projects** | Advanced CI | All checks in parallel |
 | **Development** | Development CI | Auto-fix, relaxed checks |
 | **Releases** | Release CI | Comprehensive + artifacts |
-| **Security Critical** | Security-First CI | Security-first approach |
 | **Documentation Heavy** | Documentation CI | Doc-focused checks |
-| **Large Projects** | Performance CI | Maximum speed |
 
 ### **Workflow Triggers Summary**
 
@@ -310,9 +297,7 @@ uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
 | Advanced | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ |
 | Development | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | Release | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
-| Security | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | Documentation | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Performance | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 
 ---
 
