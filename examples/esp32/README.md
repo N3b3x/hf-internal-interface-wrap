@@ -8,7 +8,7 @@
 
 **🎯 Comprehensive Examples with Advanced Build System for HardFOC ESP32 Development**
 
-*Professional-grade examples demonstrating all HardFOC interface capabilities with automated ESP-IDF management, structured build system, and CI/CD integration*
+*Professional-grade examples demonstrating all HardFOC ESP32 interface capabilities with automated ESP-IDF management, structured build system, and CI/CD integration*
 
 </div>
 
