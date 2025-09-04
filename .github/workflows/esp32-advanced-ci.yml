@@ -2,7 +2,7 @@ name: 🚀 Advanced ESP32 CI
 
 on:
   push:
-    branches: [main, develop, release/*]
+    branches: [main, develop, release/*, feature/*, bugfix/*]
   pull_request:
     branches: [main, develop]
   workflow_dispatch:

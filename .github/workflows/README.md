@@ -61,18 +61,18 @@ examples/esp32/scripts/  # Git submodule: hf-espidf-project-tools
 │                           🚀 CI Workflows Layer                                 │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
-│  │ Advanced    │  │ Development │  │ Release     │  │ Docs        │             │
-│  │ CI          │  │ CI          │  │ CI          │  │ CI          │             │
-│  │             │  │             │  │             │  │             │             │
-│  │ • Matrix    │  │ • Quick     │  │ • Clean     │  │ • Doxygen   │             │
-│  │   Builds    │  │   Builds    │  │   Builds    │  │ • Link      │             │
-│  │ • Full      │  │ • Auto-fix  │  │ • Artifacts │  │   Check     │             │
-│  │   Linting   │  │ • Relaxed   │  │ • Releases  │  │ • Markdown  │             │
-│  │ • Security  │  │   Checks    │  │ • Strict    │  │ • Spell     │             │
-│  │ • Static    │  │             │  │   Linting   │  │   Check     │             │
-│  │   Analysis  │  │             │  │             │  │             │             │
-│  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘             │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                             │
+│  │ Advanced    │  │ Release     │  │ Docs        │                             │
+│  │ CI          │  │ CI          │  │ CI          │                             │
+│  │             │  │             │  │             │                             │
+│  │ • Matrix    │  │ • Clean     │  │ • Doxygen   │                             │
+│  │   Builds    │  │   Builds    │  │ • Link      │                             │
+│  │ • Full      │  │ • Artifacts │  │   Check     │                             │
+│  │   Linting   │  │ • Releases  │  │ • Markdown  │                             │
+│  │ • Security  │  │ • Waits for │  │ • Spell     │                             │
+│  │ • Static    │  │   Advanced  │  │   Check     │                             │
+│  │   Analysis  │  │   CI        │  │             │                             │
+│  └─────────────┘  └─────────────┘  └─────────────┘                             │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                         │
                                         ▼
@@ -286,22 +286,28 @@ uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
 | Use Case | Recommended Workflow | Key Features |
 |----------|---------------------|--------------|
 | **Production Projects** | Advanced CI | All checks in parallel |
-| **Development** | Development CI | Auto-fix, relaxed checks |
-| **Releases** | Release CI | Comprehensive + artifacts |
+| **Development** | Advanced CI | Comprehensive validation |
+| **Releases** | Release CI | Waits for Advanced CI + artifacts |
 | **Documentation Heavy** | Documentation CI | Doc-focused checks |
 
 ### **Workflow Triggers Summary**
 
 | Workflow | Main | Develop | Feature/* | Release/* | Tags | Manual |
 |----------|------|---------|-----------|-----------|------|--------|
-| Advanced | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ |
-| Development | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
+| Advanced | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | Release | ❌ | ❌ | ❌ | ✅* | ✅ | ✅ |
 | Documentation | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
 *Release CI waits for Advanced CI to complete on release branches
 
 ### **🔄 Workflow Dependencies**
+
+**Development Flow:**
+```
+Push to develop/feature/*/bugfix/* branch
+    ↓
+Advanced CI runs (comprehensive validation)
+```
 
 **Release Branch Flow:**
 ```
