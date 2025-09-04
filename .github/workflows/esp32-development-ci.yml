@@ -1,0 +1,48 @@
+name: 🔧 Development ESP32 CI
+
+on:
+  push:
+    branches: [develop, feature/*, bugfix/*]
+  pull_request:
+    branches: [develop]
+
+env:
+  PROJECT_DIR: examples/esp32
+  TOOLS_DIR: examples/esp32/scripts
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: dev-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Quick build for development
+  build-dev:
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@v1
+    with:
+      project_dir: ${{ env.PROJECT_DIR }}
+      project_tools_dir: ${{ env.TOOLS_DIR }}
+      clean_build: false  # Use caches for faster builds
+      tools_repo_sha: ${{ github.sha }}
+
+  # Auto-fix code formatting
+  lint-fix:
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@v1
+    with:
+      paths: "src/**,inc/**,examples/**"
+      auto_fix: true
+      commit: true
+      commit_message: "🔧 Auto-format code [skip ci]"
+      files_changed_only: true
+      style: "file"
+      tidy_checks: "readability-*"  # Only readability checks for dev
+
+  # Quick link check
+  link-check:
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@v1
+    with:
+      paths: "*.md,README.md"
+      fail_on_errors: false  # Don't fail on broken links in dev

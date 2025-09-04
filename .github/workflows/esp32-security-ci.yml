@@ -1,0 +1,77 @@
+name: 🛡️ Security-First ESP32 CI
+
+on:
+  push:
+    branches: [main, security/*]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly security scan
+
+env:
+  PROJECT_DIR: examples/esp32
+  TOOLS_DIR: examples/esp32/scripts
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+
+concurrency:
+  group: security-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Security audit (runs first)
+  security-audit:
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
+    with:
+      project_dir: ${{ env.PROJECT_DIR }}
+      project_tools_dir: ${{ env.TOOLS_DIR }}
+      scan_type: "all"
+      run_codeql: true
+      codeql_languages: "cpp,python"
+      tools_repo_sha: ${{ github.sha }}
+
+  # Build only if security passes
+  build-secure:
+    needs: security-audit
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@v1
+    with:
+      project_dir: ${{ env.PROJECT_DIR }}
+      project_tools_dir: ${{ env.TOOLS_DIR }}
+      clean_build: true
+      tools_repo_sha: ${{ github.sha }}
+
+  # Strict linting with security focus
+  lint-secure:
+    needs: security-audit
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@v1
+    with:
+      paths: "src/**,inc/**,examples/**,components/**"
+      auto_fix: false
+      style: "file"
+      tidy_checks: "cert-*,cppcoreguidelines-*,readability-*"
+      strict: true
+
+  # Additional security checks
+  security-scan:
+    needs: security-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'

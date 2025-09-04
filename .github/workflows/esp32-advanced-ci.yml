@@ -1,0 +1,147 @@
+name: 🚀 Advanced ESP32 CI
+
+on:
+  push:
+    branches: [main, develop, release/*]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      clean_build:
+        description: 'Clean build (no cache)'
+        required: false
+        default: false
+        type: boolean
+      run_security:
+        description: 'Run security checks'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  PROJECT_DIR: examples/esp32
+  TOOLS_DIR: examples/esp32/scripts
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: advanced-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # 🔍 Matrix generation and validation
+  validate:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      - name: Validate configuration
+        run: |
+          cd ${{ env.PROJECT_DIR }}
+          python3 ${{ env.TOOLS_DIR }}/generate_matrix.py --validate --verbose
+
+      - name: Generate build matrix
+        id: matrix
+        run: |
+          cd ${{ env.PROJECT_DIR }}
+          MATRIX=$(python3 ${{ env.TOOLS_DIR }}/generate_matrix.py)
+          echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
+          echo "Generated matrix with $(echo "$MATRIX" | jq '.include | length') build combinations"
+
+  # 🏗️ Build firmware (parallel matrix)
+  build:
+    needs: validate
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@v1
+    with:
+      project_dir: ${{ env.PROJECT_DIR }}
+      project_tools_dir: ${{ env.TOOLS_DIR }}
+      clean_build: ${{ github.event.inputs.clean_build == 'true' }}
+      tools_repo_sha: ${{ github.sha }}
+
+  # 🔧 Lint and format code
+  lint:
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@v1
+    with:
+      paths: "src/**,inc/**,examples/**,components/**"
+      auto_fix: true
+      commit: true
+      commit_message: "🔧 Auto-format code with clang-format"
+      git_name: "HardFOC Bot"
+      git_email: "bot@hardfoc.com"
+      style: "file"
+      tidy_checks: "readability-*,performance-*,modernize-*"
+      files_changed_only: true
+      step_summary: true
+      file_annotations: true
+
+  # 🛡️ Security audit
+  security:
+    if: ${{ github.event.inputs.run_security != 'false' }}
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@v1
+    with:
+      project_dir: ${{ env.PROJECT_DIR }}
+      project_tools_dir: ${{ env.TOOLS_DIR }}
+      scan_type: "all"
+      run_codeql: true
+      codeql_languages: "cpp,python"
+      tools_repo_sha: ${{ github.sha }}
+
+  # 🔍 Static analysis
+  static-analysis:
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/static-analysis.yml@v1
+    with:
+      paths: "src inc examples components"
+      std: "c++17"
+      strict: false
+
+  # 📚 Build and check documentation
+  docs:
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/docs.yml@v1
+    with:
+      project_dir: ${{ env.PROJECT_DIR }}
+      doxygen_config: "Doxyfile"
+      output_dir: "docs/doxygen/html"
+      run_link_check: true
+      link_check_paths: "docs/**,*.md,**/docs/**"
+      deploy_pages: ${{ github.ref == 'refs/heads/main' }}
+
+  # 🔗 Check documentation links
+  link-check:
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@v1
+    with:
+      paths: "docs/**,*.md,**/docs/**,README.md"
+      fail_on_errors: true
+
+  # 📊 Build summary and notifications
+  summary:
+    needs: [build, lint, security, static-analysis, docs, link-check]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Summary
+        run: |
+          echo "## 🚀 Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 🏗️ Build | ${{ needs.build.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+            >> $GITHUB_STEP_SUMMARY
+          echo "| 🔧 Lint | ${{ needs.lint.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+            >> $GITHUB_STEP_SUMMARY
+          echo "| 🛡️ Security | ${{ needs.security.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+            >> $GITHUB_STEP_SUMMARY
+          echo "| 🔍 Static Analysis | ${{ needs.static-analysis.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+            >> $GITHUB_STEP_SUMMARY
+          echo "| 📚 Docs | ${{ needs.docs.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+            >> $GITHUB_STEP_SUMMARY
+          echo "| 🔗 Link Check | ${{ needs.link-check.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+            >> $GITHUB_STEP_SUMMARY
