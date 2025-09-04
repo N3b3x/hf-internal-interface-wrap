@@ -66,3 +66,5 @@ actionlint*
 **/logs/
 **/*.log
 logs/
+
+ci_build_path/
