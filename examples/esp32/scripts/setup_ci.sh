@@ -8,8 +8,40 @@ set -e  # Exit on any error
 # Set setup mode for plain output (no colors)
 export SETUP_MODE="ci"
 
+# Parse --project-path flag first (before other argument parsing)
+FILTERED_ARGS=()
+i=1
+while [[ $i -le $# ]]; do
+    arg="${!i}"
+    case "$arg" in
+        --project-path)
+            # Check if next argument exists and is not another flag
+            if [[ $((i+1)) -le $# ]] && [[ "${!((i+1))}" != -* ]]; then
+                PROJECT_PATH="${!((i+1))}"
+                ((i++))  # Skip the next argument since we consumed it
+            else
+                echo "ERROR: --project-path requires a path argument" >&2
+                echo "Usage: --project-path /path/to/project" >&2
+                exit 1
+            fi
+            ;;
+        *)
+            FILTERED_ARGS+=("$arg")
+            ;;
+    esac
+    ((i++))
+done
+
+# Export PROJECT_PATH if it was set via --project-path flag
+if [[ -n "$PROJECT_PATH" ]]; then
+    export PROJECT_PATH
+fi
+
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Replace $@ with filtered arguments for the rest of the script
+set -- "${FILTERED_ARGS[@]}"
 
 # Show help if requested
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
@@ -18,6 +50,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "Usage: ./setup_ci.sh [OPTIONS]"
     echo ""
     echo "OPTIONS:"
+    echo "  --project-path <path>  Path to project directory (allows scripts to be placed anywhere)"
     echo "  --help, -h          Show this help message"
     echo ""
     echo "PURPOSE:"
@@ -61,7 +94,19 @@ setup_ci_build_structure() {
     print_status "Setting up CI build directory structure..."
     
     # Get project paths
-    local project_dir="$SCRIPT_DIR/.."
+    if [[ -n "$PROJECT_PATH" ]]; then
+        # Use provided project path (can be absolute or relative)
+        if [[ "$PROJECT_PATH" = /* ]]; then
+            # Absolute path
+            local project_dir="$PROJECT_PATH"
+        else
+            # Relative path - resolve from current working directory
+            local project_dir="$(cd "$PROJECT_PATH" && pwd)"
+        fi
+    else
+        # Default behavior: assume scripts are in project/scripts/
+        local project_dir="$SCRIPT_DIR/.."
+    fi
     local ci_build_path="${BUILD_PATH:-ci_build_path}"
     
     echo "Project directory: $project_dir"

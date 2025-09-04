@@ -108,6 +108,10 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]] && ([ "$1" = "--help" ] || [ "$1" = "-h" 
   echo "  • Validation: Automatic validation of configuration integrity"
   echo ""
   echo "ENVIRONMENT VARIABLES:"
+  echo "  • PROJECT_PATH: Path to project directory containing app_config.yml (optional)"
+  echo "    - If set, uses this project directory instead of default location"
+  echo "    - Can be absolute (/path/to/project) or relative (../project)"
+  echo "    - Allows scripts to be placed anywhere while finding correct project"
   echo "  • CONFIG_DEFAULT_APP: Default application type"
   echo "  • CONFIG_DEFAULT_BUILD_TYPE: Default build configuration"
   echo "  • CONFIG_DEFAULT_IDF_VERSION: Default ESP-IDF version"
@@ -137,8 +141,33 @@ fi
 
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-CONFIG_FILE="$PROJECT_DIR/app_config.yml"
+
+# Determine project directory and config file location
+# Priority: 1) PROJECT_PATH env var, 2) Default project location
+if [[ -n "$PROJECT_PATH" ]]; then
+    # Use provided project path (can be absolute or relative)
+    if [[ "$PROJECT_PATH" = /* ]]; then
+        # Absolute path
+        PROJECT_DIR="$PROJECT_PATH"
+    else
+        # Relative path - resolve from current working directory
+        PROJECT_DIR="$(cd "$PROJECT_PATH" && pwd)"
+    fi
+    
+    # Set config file path within the project directory
+    CONFIG_FILE="$PROJECT_DIR/app_config.yml"
+    
+    # Validate that the config file exists
+    if [[ ! -f "$CONFIG_FILE" ]]; then
+        echo "ERROR: PROJECT_PATH specified but app_config.yml not found: $CONFIG_FILE" >&2
+        echo "Please check the project path or unset PROJECT_PATH to use default location." >&2
+        return 1
+    fi
+else
+    # Default behavior: assume scripts are in project/scripts/
+    PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+    CONFIG_FILE="$PROJECT_DIR/app_config.yml"
+fi
 
 # Check if yq is available for YAML parsing and detect version
 check_yq() {
@@ -625,13 +654,18 @@ get_build_directory() {
     # Sanitize IDF version for directory names (replace / and . with _)
     local sanitized_idf_version=$(echo "$idf_version" | sed 's/[\/\.]/_/g')
     
+    # Get the build directory name pattern
+    local build_dir_name
     if check_yq; then
         local pattern=$(run_yq '.build_config.build_directory_pattern' -r)
-        echo "${pattern}" | sed "s/{app_type}/${app_type}/g" | sed "s/{build_type}/${build_type}/g" | sed "s/{target}/${target}/g" | sed "s/{idf_version}/${sanitized_idf_version}/g"
+        build_dir_name=$(echo "${pattern}" | sed "s/{app_type}/${app_type}/g" | sed "s/{build_type}/${build_type}/g" | sed "s/{target}/${target}/g" | sed "s/{idf_version}/${sanitized_idf_version}/g")
     else
         # Fallback pattern with hyphens and prefixes
-        echo "build-app-${app_type}-type-${build_type}-target-${target}-idf-${sanitized_idf_version}"
+        build_dir_name="build-app-${app_type}-type-${build_type}-target-${target}-idf-${sanitized_idf_version}"
     fi
+    
+    # Always return absolute path relative to project directory
+    echo "$PROJECT_DIR/$build_dir_name"
 }
 
 # Get project name pattern
@@ -876,21 +910,24 @@ parse_build_directory() {
         return 1
     fi
     
+    # Extract just the directory name if it's a full path
+    local dirname=$(basename "$build_dir")
+    
     # Extract all components using hyphen-prefix format
     # Handle the format: build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}
     
     # Extract app_type from app-{value}-type format
     # Handle hyphenated app names by capturing everything between app- and -type
-    local app_type=$(echo "$build_dir" | sed -n 's/.*app-\(.*\)-type.*/\1/p')
+    local app_type=$(echo "$dirname" | sed -n 's/.*app-\(.*\)-type.*/\1/p')
     
     # Extract build_type from type-{value}-target format
-    local build_type=$(echo "$build_dir" | sed -n 's/.*type-\([^-]*\)-target.*/\1/p')
+    local build_type=$(echo "$dirname" | sed -n 's/.*type-\([^-]*\)-target.*/\1/p')
     
     # Extract target from target-{value}-idf format
-    local target=$(echo "$build_dir" | sed -n 's/.*target-\([^-]*\)-idf.*/\1/p')
+    local target=$(echo "$dirname" | sed -n 's/.*target-\([^-]*\)-idf.*/\1/p')
     
     # Extract IDF version from idf-{value} format (end of string)
-    local idf_version=$(echo "$build_dir" | sed -n 's/.*idf-\([^-]*\)$/\1/p')
+    local idf_version=$(echo "$dirname" | sed -n 's/.*idf-\([^-]*\)$/\1/p')
     
     # Output as key:value pairs for easy parsing
     echo "app_type:$app_type"
@@ -919,8 +956,11 @@ get_build_component() {
 is_valid_build_directory() {
     local build_dir="$1"
     
+    # Extract just the directory name if it's a full path
+    local dirname=$(basename "$build_dir")
+    
     # Check if it matches the expected pattern with hyphens and prefixes
-    if [[ "$build_dir" =~ ^build-app-[a-zA-Z0-9_-]+-type-[a-zA-Z0-9_-]+-target-[a-zA-Z0-9_-]+-idf-[a-zA-Z0-9_-]+$ ]]; then
+    if [[ "$dirname" =~ ^build-app-[a-zA-Z0-9_-]+-type-[a-zA-Z0-9_-]+-target-[a-zA-Z0-9_-]+-idf-[a-zA-Z0-9_-]+$ ]]; then
         return 0
     else
         return 1

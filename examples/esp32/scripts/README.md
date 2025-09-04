@@ -35,6 +35,7 @@ The scripts directory contains a build system designed for ESP32 development, fe
 
 ### 🏆 **Key Features**
 
+- **🚀 Portable Scripts** - Scripts can be placed anywhere and work with any project via `--project-path`
 - **🔧 Automated ESP-IDF Management** - Auto-detection, installation, and environment setup
 - **📊 Dynamic Configuration Loading** - YAML-based configuration with hierarchical overrides
 - **🔄 Intelligent Build System** - Incremental builds with caching and optimization
@@ -45,6 +46,59 @@ The scripts directory contains a build system designed for ESP32 development, fe
 - **🔍 Comprehensive Logging** - Detailed build logs and error reporting
 - **🆕 Environment Separation** - Clear separation between local development and CI environments
 - **🚀 CI Pipeline Optimization** - optimized CI pipeline with parallel execution, smart caching, and reliable tool installation
+
+---
+
+## 🚀 **Portable Scripts**
+
+All scripts in this directory are designed to be **completely portable** and can be placed anywhere on your system while still working with any ESP32 project.
+
+### **Key Features**
+- **`--project-path` Flag**: All scripts support specifying the project directory
+- **Dynamic Script Detection**: Scripts automatically detect their own location
+- **Flexible Configuration**: Works with absolute or relative project paths
+- **Environment Variables**: Support for `PROJECT_PATH` environment variable
+- **Error Handling**: Clear error messages when project or config files are not found
+
+### **Usage Examples**
+
+```bash
+# Default behavior (scripts in project/scripts/)
+./build_app.sh gpio_test Release
+
+# Portable usage with --project-path
+./build_app.sh --project-path /path/to/project gpio_test Release
+./flash_app.sh --project-path ../project flash_monitor adc_test
+./manage_idf.sh --project-path /opt/esp32-project list
+
+# Environment variable usage
+export PROJECT_PATH=/path/to/project
+./build_app.sh gpio_test Release
+./flash_app.sh flash_monitor adc_test
+
+# Python scripts
+python3 get_app_info.py list --project-path /path/to/project
+python3 generate_matrix.py --project-path /path/to/project
+```
+
+### **Portability Scenarios**
+
+```bash
+# Scenario 1: Multiple ESP32 projects
+./scripts/build_app.sh --project-path ~/projects/robot-controller gpio_test Release
+./scripts/build_app.sh --project-path ~/projects/sensor-node adc_test Debug
+
+# Scenario 2: Shared build tools
+# Place scripts in /opt/esp32-tools/
+/opt/esp32-tools/build_app.sh --project-path ~/my-project gpio_test Release
+
+# Scenario 3: Renamed script directories
+mv scripts tools
+./tools/build_app.sh gpio_test Release  # Still works!
+
+# Scenario 4: CI/CD flexibility
+./ci-scripts/build_app.sh --project-path $GITHUB_WORKSPACE/examples/esp32 gpio_test Release
+```
 
 ---
 

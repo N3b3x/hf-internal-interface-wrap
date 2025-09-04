@@ -226,6 +226,39 @@ fi
 ESP32_PROJECT_PATH="examples/esp32" ./setup_ci.sh
 ```
 
+### **Portable CI Usage**
+
+The CI setup script supports portable usage through the `--project-path` flag:
+
+```bash
+# Portable CI setup with --project-path
+./setup_ci.sh --project-path /path/to/project
+
+# Using environment variable
+export PROJECT_PATH=/path/to/project
+./setup_ci.sh
+
+# CI environment with portable scripts
+./ci-scripts/setup_ci.sh --project-path $GITHUB_WORKSPACE/examples/esp32
+```
+
+#### **Portable CI Benefits**
+- **Flexible Script Placement**: CI scripts can be placed anywhere
+- **Multiple Project Support**: Same CI setup for different projects
+- **Environment Independence**: Works in any CI environment
+- **Path Resolution**: Automatic project directory detection
+
+#### **CI Matrix Generation with Portable Scripts**
+```bash
+# Generate matrix for any project
+python3 generate_matrix.py --project-path /path/to/project --output matrix.json
+
+# CI workflow example
+- name: Generate Build Matrix
+  run: |
+    python3 scripts/generate_matrix.py --project-path ${{ github.workspace }}/examples/esp32 --output matrix.json
+```
+
 ## 🚀 **Job Execution and Workflow**
 
 ### **Matrix Generation Job**

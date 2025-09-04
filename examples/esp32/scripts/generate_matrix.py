@@ -24,6 +24,7 @@ def show_help():
     print("  --filter <app>              - Filter output for specific app only")
     print("  --verbose                   - Show detailed processing information")
     print("  --validate                  - Validate configuration before generating matrix")
+    print("  --project-path <path>       - Path to project directory containing app_config.yml")
     print("")
     print("PURPOSE:")
     print("  Generate CI matrix from centralized configuration for GitHub Actions")
@@ -109,6 +110,7 @@ def parse_arguments():
     parser.add_argument("--filter", help="Filter output for specific app")
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
     parser.add_argument("--validate", action="store_true", help="Validate configuration")
+    parser.add_argument("--project-path", "-p", help="Path to project directory containing app_config.yml")
     
     args = parser.parse_args()
     
@@ -117,27 +119,37 @@ def parse_arguments():
     
     return args
 
-def load_config():
+def load_config(project_path=None):
     """Load the apps configuration file."""
-    # Try multiple possible paths for the configuration file
-    possible_paths = [
-        # When run from workspace root
-        Path("examples/esp32/app_config.yml"),
-        # When run from examples/esp32 directory
-        Path("app_config.yml"),
-        # When run from examples/esp32/scripts directory
-        Path("../app_config.yml"),
-        # When run from .github/workflows directory  
-        Path("../../examples/esp32/app_config.yml"),
-        # Absolute path calculation from script location
-        Path(__file__).resolve().parent.parent / "app_config.yml"
-    ]
-    
-    config_file = None
-    for path in possible_paths:
-        if path.exists():
-            config_file = path
-            break
+    if project_path:
+        # Use provided project path
+        project_dir = Path(project_path).resolve()
+        config_file = project_dir / "app_config.yml"
+        
+        if not config_file.exists():
+            print(f"Error: Configuration file not found: {config_file}", file=sys.stderr)
+            print(f"Please check the project path: {project_path}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        # Try multiple possible paths for the configuration file
+        possible_paths = [
+            # When run from workspace root
+            Path("examples/esp32/app_config.yml"),
+            # When run from examples/esp32 directory
+            Path("app_config.yml"),
+            # When run from examples/esp32/scripts directory
+            Path("../app_config.yml"),
+            # When run from .github/workflows directory  
+            Path("../../examples/esp32/app_config.yml"),
+            # Absolute path calculation from script location
+            Path(__file__).resolve().parent.parent / "app_config.yml"
+        ]
+        
+        config_file = None
+        for path in possible_paths:
+            if path.exists():
+                config_file = path
+                break
     
     if not config_file:
         print(f"Error: Configuration file not found in any of these locations:", file=sys.stderr)
@@ -152,9 +164,9 @@ def load_config():
         print(f"Error loading configuration: {e}", file=sys.stderr)
         sys.exit(1)
 
-def generate_matrix():
+def generate_matrix(project_path=None):
     """Generate CI matrix from configuration with hierarchical overrides."""
-    config = load_config()
+    config = load_config(project_path)
     
     # Global defaults from metadata
     global_idf_versions = config['metadata'].get('idf_versions', ['release/v5.5'])
@@ -311,7 +323,7 @@ def main():
     args = parse_arguments()
 
     # Load configuration
-    config = load_config()
+    config = load_config(args.project_path)
     
     if args.verbose:
         print("Loading configuration...")
@@ -347,7 +359,7 @@ def main():
     if args.verbose:
         print("Generating CI matrix...")
     
-    matrix_config = generate_matrix()
+    matrix_config = generate_matrix(args.project_path)
     
     if args.verbose:
         print(f"Matrix entries: {len(matrix_config['include'])}")

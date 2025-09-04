@@ -366,7 +366,25 @@ gpio_test_Release_20250115_143022.log
 # - Ready for production use
 ```
 
-#### **3. Debugging Workflow**
+#### **3. Portable Flash Usage**
+```bash
+# Default behavior (scripts in project/scripts/)
+./flash_app.sh flash_monitor gpio_test Release
+
+# Portable usage with --project-path
+./flash_app.sh --project-path /path/to/project flash_monitor gpio_test Release
+./flash_app.sh --project-path ../project flash adc_test Debug --log
+
+# Environment variable usage
+export PROJECT_PATH=/path/to/project
+./flash_app.sh flash_monitor gpio_test Release
+
+# Multiple project support
+./flash_app.sh --project-path ~/projects/robot-controller flash_monitor gpio_test Release
+./flash_app.sh --project-path ~/projects/sensor-node flash adc_test Debug
+```
+
+#### **4. Debugging Workflow**
 ```bash
 # Monitor existing firmware
 ./flash_app.sh monitor --log debug_session

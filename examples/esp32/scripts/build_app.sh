@@ -9,7 +9,9 @@ set -e  # Exit on any error
 
 # Parse arguments: collect non-flag args as positionals
 POSITIONAL_ARGS=()
-for arg in "$@"; do
+i=1
+while [[ $i -le $# ]]; do
+	arg="${!i}"
 	case "$arg" in
 		--clean)
 			CLEAN=1
@@ -23,6 +25,17 @@ for arg in "$@"; do
 		--no-cache)
 			USE_CCACHE=0
 			;;
+		--project-path)
+			# Check if next argument exists and is not another flag
+			if [[ $((i+1)) -le $# ]] && [[ "${!((i+1))}" != -* ]]; then
+				PROJECT_PATH="${!((i+1))}"
+				((i++))  # Skip the next argument since we consumed it
+			else
+				echo "ERROR: --project-path requires a path argument" >&2
+				echo "Usage: --project-path /path/to/project" >&2
+				exit 1
+			fi
+			;;
 		-h|--help)
 			HELP_REQUESTED=1
 			;;
@@ -30,15 +43,22 @@ for arg in "$@"; do
 			POSITIONAL_ARGS+=("$arg")
 			;;
 	esac
+	((i++))
 done
+
+# Export PROJECT_PATH if it was set via --project-path flag
+if [[ -n "$PROJECT_PATH" ]]; then
+    export PROJECT_PATH
+fi
 
 # Configuration derived from positionals or config defaults
 APP_TYPE=${POSITIONAL_ARGS[0]:-$CONFIG_DEFAULT_APP}
 BUILD_TYPE=${POSITIONAL_ARGS[1]:-$CONFIG_DEFAULT_BUILD_TYPE}
 
 # Load configuration
-PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-source "$PROJECT_DIR/scripts/config_loader.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+source "$SCRIPT_DIR/config_loader.sh"
 
 # Usage helper
 print_usage() {
@@ -58,6 +78,7 @@ print_usage() {
     echo "  --no-clean                             - Incremental build (preserve existing build directory)"
     echo "  --use-cache                            - Enable ccache for faster builds (default)"
     echo "  --no-cache                             - Disable ccache"
+    echo "  --project-path <path>                  - Path to project directory (allows scripts to be placed anywhere)"
     echo "  -h, --help                             - Show this help message"
     echo ""
     echo "ARGUMENT PATTERNS:"
@@ -67,6 +88,10 @@ print_usage() {
     echo "    idf_version  - ESP-IDF version (e.g., release/v*.*, release/v*.*)"
     echo ""
     echo "  Environment Variables:"
+    echo "    PROJECT_PATH - Path to project directory (optional)"
+    echo "      - If set, uses this project directory instead of default location"
+    echo "      - Allows scripts to be placed anywhere while finding correct project"
+    echo "      - Example: PROJECT_PATH=/path/to/project ./build_app.sh"
     echo "    CLEAN        - Set to 1 for clean builds, 0 for incremental"
     echo "    USE_CCACHE   - Set to 1 to enable ccache, 0 to disable"
     echo ""
@@ -90,11 +115,16 @@ print_usage() {
     echo "  # Environment-based usage"
     echo "  CLEAN=1 ./build_app.sh gpio_test Release          # Clean build via env var"
     echo "  USE_CCACHE=0 ./build_app.sh adc_test Debug       # No cache via env var"
+    echo "  PROJECT_PATH=/path/to/project ./build_app.sh # Custom project location"
+    echo ""
+    echo "  # Portable usage with --project-path flag"
+    echo "  ./build_app.sh --project-path /path/to/project gpio_test Release"
+    echo "  ./build_app.sh --project-path ../project adc_test Debug --clean"
     echo ""
     echo "TROUBLESHOOTING:"
     echo "  # Common Build Issues"
     echo "  • Build fails with 'command not found':"
-    echo "    - Run: source scripts/setup_repo.sh"
+    echo "    - Run: source $SCRIPT_DIR/setup_repo.sh"
     echo "    - Or: get_idf (if ESP-IDF is installed)"
     echo "    - Verify: which idf.py"
     echo ""
@@ -250,7 +280,7 @@ if [ -n "${POSITIONAL_ARGS[2]}" ]; then
     IDF_VERSION="${POSITIONAL_ARGS[2]}"
 else
     # Use smart default based on app and build type
-    source "$PROJECT_DIR/scripts/config_loader.sh"
+    source "$SCRIPT_DIR/config_loader.sh"
     IDF_VERSION=$(get_idf_version_for_build_type "$APP_TYPE" "$BUILD_TYPE")
     echo "No IDF version specified, using smart default for $BUILD_TYPE: $IDF_VERSION"
 fi
@@ -260,7 +290,7 @@ if [ -z "$IDF_PATH" ] || ! command -v idf.py &> /dev/null; then
     echo "ESP-IDF environment not found, attempting to auto-setup version $IDF_VERSION..."
     
     # Source the common setup functions to use export_esp_idf_version
-    source "$PROJECT_DIR/scripts/setup_common.sh"
+    source "$SCRIPT_DIR/setup_common.sh"
     
     # Try to auto-install and source the required ESP-IDF version
     if export_esp_idf_version "$IDF_VERSION" "true"; then
@@ -279,7 +309,7 @@ fi
 # Ensure target is set from config
 if [[ -z "$CONFIG_TARGET" ]]; then
     # Source config_loader to get target from app_config.yml
-    source "$PROJECT_DIR/scripts/config_loader.sh"
+    source "$SCRIPT_DIR/config_loader.sh"
     export IDF_TARGET=$(get_target)
     echo "Target set from config: $IDF_TARGET"
 else
@@ -397,8 +427,32 @@ echo ""
 echo "======================================================"
 echo "BUILD SIZE INFORMATION"
 echo "======================================================"
-# Show size information
-if ! idf.py -B "$BUILD_DIR" size; then
-    echo "WARNING: Could not display size information"
+
+# Print and capture size in one call
+if idf.py -B "$BUILD_DIR" size | tee "$BUILD_DIR/size.txt" >/dev/null; then
+  # If supported, also emit JSON for machine parsing
+  if idf.py -B "$BUILD_DIR" size-json >/dev/null 2>&1; then
+    idf.py -B "$BUILD_DIR" size-json > "$BUILD_DIR/size.json" || true
+  fi
+
+  # (Optional) map/ELF pointers to aid later analysis
+  ELF_FILE="$(find "$BUILD_DIR" -maxdepth 1 -name '*.elf' | head -n1 || true)"
+  MAP_FILE="$(find "$BUILD_DIR" -maxdepth 1 -name '*.map' | head -n1 || true)"
+  [ -n "$ELF_FILE" ] && echo "ELF_FILE=$ELF_FILE" >> "$BUILD_DIR/size.meta"
+  [ -n "$MAP_FILE" ] && echo "MAP_FILE=$MAP_FILE" >> "$BUILD_DIR/size.meta"
+
+  # Helpful metadata for your PR summarizer job
+  {
+    echo "APP=$APP_TYPE"
+    echo "BUILD=$BUILD_TYPE"
+    echo "IDF=$IDF_VERSION"
+    echo "TARGET=$IDF_TARGET"
+    echo "PROJECT_NAME=$PROJECT_NAME"
+    echo "BUILD_DIR=$BUILD_DIR"
+  } > "$BUILD_DIR/size.info"
+else
+  echo "WARNING: Could not display size information"
 fi
+
 echo "======================================================"
+

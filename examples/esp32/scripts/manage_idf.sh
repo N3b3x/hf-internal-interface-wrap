@@ -4,9 +4,41 @@
 
 set -e  # Exit on any error
 
+# Parse --app-config flag first (before other argument parsing)
+FILTERED_ARGS=()
+i=1
+while [[ $i -le $# ]]; do
+    arg="${!i}"
+    case "$arg" in
+        --project-path)
+            # Check if next argument exists and is not another flag
+            if [[ $((i+1)) -le $# ]] && [[ "${!((i+1))}" != -* ]]; then
+                PROJECT_PATH="${!((i+1))}"
+                ((i++))  # Skip the next argument since we consumed it
+            else
+                echo "ERROR: --project-path requires a path argument" >&2
+                echo "Usage: --project-path /path/to/project" >&2
+                exit 1
+            fi
+            ;;
+        *)
+            FILTERED_ARGS+=("$arg")
+            ;;
+    esac
+    ((i++))
+done
+
+# Export PROJECT_PATH if it was set via --project-path flag
+if [[ -n "$PROJECT_PATH" ]]; then
+    export PROJECT_PATH
+fi
+
 # Source the common setup functions
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/setup_common.sh"
+
+# Replace $@ with filtered arguments for the rest of the script
+set -- "${FILTERED_ARGS[@]}"
 
 # Show help if requested
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
@@ -24,6 +56,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     echo "  status                      - Show current ESP-IDF status"
     echo ""
     echo "OPTIONS:"
+    echo "  --project-path <path>       - Path to project directory (allows scripts to be placed anywhere)"
     echo "  --help, -h                  - Show this help message"
     echo "  --force                     - Force operations (overwrite existing)"
     echo "  --verbose                   - Show detailed output"

@@ -30,7 +30,7 @@ def show_help():
     print("  --help, -h                  - Show this help message")
     print("  --verbose                    - Show detailed output")
     print("  --format <format>           - Output format: text, json, yaml (default: text)")
-    print("  --config <path>             - Path to app_config.yml (auto-detected)")
+    print("  --project-path <path>       - Path to project directory containing app_config.yml")
     print("")
     print("ARGUMENTS:")
     print("  app_type                    - Application type (e.g., gpio_test, adc_test)")
@@ -58,7 +58,7 @@ def show_help():
     print("  python3 get_app_info.py list --format yaml")
     print("")
     print("  # Custom configuration file")
-    print("  python3 get_app_info.py list --config /path/to/app_config.yml")
+    print("  python3 get_app_info.py list --project-path /path/to/project")
     print("")
     print("OUTPUT FORMATS:")
     print("  • text: Human-readable formatted output (default)")
@@ -109,7 +109,7 @@ def parse_arguments():
     parser.add_argument("--help", "-h", action="store_true", help="Show help message")
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
     parser.add_argument("--format", "-f", choices=["text", "json", "yaml"], default="text", help="Output format")
-    parser.add_argument("--config", "-c", help="Path to app_config.yml")
+    parser.add_argument("--project-path", "-p", help="Path to project directory containing app_config.yml")
     
     args = parser.parse_args()
     
@@ -118,12 +118,20 @@ def parse_arguments():
     
     return args
 
-def load_config():
+def load_config(project_path=None):
     """Load the apps configuration file."""
-    config_file = Path(__file__).parent.parent / "app_config.yml"
+    if project_path:
+        # Use provided project path
+        project_dir = Path(project_path).resolve()
+        config_file = project_dir / "app_config.yml"
+    else:
+        # Default behavior: assume script is in project/scripts/
+        config_file = Path(__file__).parent.parent / "app_config.yml"
     
     if not config_file.exists():
         print(f"Error: Configuration file not found: {config_file}", file=sys.stderr)
+        if project_path:
+            print(f"Please check the project path: {project_path}", file=sys.stderr)
         sys.exit(1)
     
     try:
@@ -135,7 +143,7 @@ def load_config():
 
 def get_app_source_file(app_type):
     """Get source file for an app type."""
-    config = load_config()
+    config = load_config(project_path)
     
     if app_type not in config['apps']:
         print(f"Error: Unknown app type: {app_type}", file=sys.stderr)
@@ -145,13 +153,13 @@ def get_app_source_file(app_type):
 
 def list_apps():
     """List all available apps."""
-    config = load_config()
+    config = load_config(project_path)
     apps = list(config['apps'].keys())
     return apps
 
 def validate_app(app_type):
     """Validate if app type exists."""
-    config = load_config()
+    config = load_config(project_path)
     return app_type in config['apps']
 
 def main():
@@ -162,7 +170,7 @@ def main():
     app_type = args.app_type
     verbose = args.verbose
     format_output = args.format
-    config_path = args.config
+    project_path = args.project_path
 
     if command == "source_file":
         if not app_type:

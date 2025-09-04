@@ -659,6 +659,9 @@ The configuration system uses a priority-based override system:
 
 #### **Supported Environment Variables**
 ```bash
+# Project path configuration (for portable scripts)
+export PROJECT_PATH="/path/to/project"  # Override project directory location
+
 # Application configuration overrides
 export CONFIG_DEFAULT_APP="gpio_test"
 export CONFIG_DEFAULT_BUILD_TYPE="Debug"
@@ -679,6 +682,49 @@ export FLASH_MODE="dio"           # Override flash mode
 export DEBUG=1                    # Enable debug mode
 export IDF_VERBOSE=1              # Enable ESP-IDF verbose output
 export CONFIG_VERBOSE=1           # Enable configuration verbose output
+```
+
+### **Portable Configuration**
+
+The configuration system supports portable scripts through the `PROJECT_PATH` environment variable and `--project-path` command-line flag.
+
+#### **Project Path Resolution**
+```bash
+# Priority order for project path resolution:
+1. --project-path command-line flag
+2. PROJECT_PATH environment variable  
+3. Default: ../ relative to script location
+```
+
+#### **Portable Usage Examples**
+```bash
+# Using --project-path flag
+./build_app.sh --project-path /path/to/project gpio_test Release
+./flash_app.sh --project-path ../project flash_monitor adc_test
+./manage_idf.sh --project-path /opt/esp32-project list
+
+# Using PROJECT_PATH environment variable
+export PROJECT_PATH=/path/to/project
+./build_app.sh gpio_test Release
+./flash_app.sh flash_monitor adc_test
+
+# Python scripts
+python3 get_app_info.py list --project-path /path/to/project
+python3 generate_matrix.py --project-path /path/to/project
+```
+
+#### **Configuration File Discovery**
+When using portable scripts, the system automatically:
+1. Resolves the project directory path (absolute or relative)
+2. Looks for `app_config.yml` in the project directory
+3. Validates that the configuration file exists
+4. Loads and parses the configuration
+
+#### **Error Handling**
+```bash
+# Clear error messages for missing project or config
+ERROR: PROJECT_PATH specified but app_config.yml not found: /path/to/project/app_config.yml
+Please check the project path or unset PROJECT_PATH to use default location.
 ```
 
 ### **Dynamic Configuration Updates**

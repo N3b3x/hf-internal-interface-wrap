@@ -10,9 +10,42 @@
 
 set -e  # Exit on any error
 
+# Parse --app-config flag first (before other argument parsing)
+FILTERED_ARGS=()
+i=1
+while [[ $i -le $# ]]; do
+    arg="${!i}"
+    case "$arg" in
+        --project-path)
+            # Check if next argument exists and is not another flag
+            if [[ $((i+1)) -le $# ]] && [[ "${!((i+1))}" != -* ]]; then
+                PROJECT_PATH="${!((i+1))}"
+                ((i++))  # Skip the next argument since we consumed it
+            else
+                echo "ERROR: --project-path requires a path argument" >&2
+                echo "Usage: --project-path /path/to/project" >&2
+                exit 1
+            fi
+            ;;
+        *)
+            FILTERED_ARGS+=("$arg")
+            ;;
+    esac
+    ((i++))
+done
+
+# Export PROJECT_PATH if it was set via --project-path flag
+if [[ -n "$PROJECT_PATH" ]]; then
+    export PROJECT_PATH
+fi
+
 # Load configuration
-PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-source "$(dirname "${BASH_SOURCE[0]}")/config_loader.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+source "$SCRIPT_DIR/config_loader.sh"
+
+# Replace $@ with filtered arguments for the rest of the script
+set -- "${FILTERED_ARGS[@]}"
 
 # Function to show help
 show_help() {
@@ -44,8 +77,15 @@ show_help() {
     echo "    ./flash_app.sh gpio_test Release                  # App + build type (defaults: flash_monitor)"
     echo ""
     echo "OPTIONS:"
+    echo "  --project-path <path>                             - Path to project directory (allows scripts to be placed anywhere)"
     echo "  --log [log_name]                                   - Enable logging with optional custom name"
     echo "  -h, --help                                         - Show this help message"
+    echo ""
+    echo "ENVIRONMENT VARIABLES:"
+    echo "  PROJECT_PATH                                       - Path to project directory (optional)"
+    echo "    - If set, uses this project directory instead of default location"
+    echo "    - Allows scripts to be placed anywhere while finding correct project"
+    echo "    - Example: PROJECT_PATH=/path/to/project ./flash_app.sh"
     echo ""
     echo "ARGUMENTS:"
     echo "  operation           - Operation to perform (flash, flash_monitor, monitor, size, list)"
@@ -55,11 +95,15 @@ show_help() {
     echo "  log_name            - Custom name for log file (optional)"
     echo ""
     echo "EXAMPLES:"
-    echo "  # Operation-first syntax (recommended)"
-    echo "  ./flash_app.sh flash gpio_test Release release/v5.5"
-    echo "  ./flash_app.sh flash_monitor gpio_test Release release/v5.5"
-    echo "  ./flash_app.sh size gpio_test Release release/v5.5"
-    echo "  ./flash_app.sh monitor"
+      echo "  # Operation-first syntax (recommended)"
+  echo "  ./flash_app.sh flash gpio_test Release release/v5.5"
+  echo "  ./flash_app.sh flash_monitor gpio_test Release release/v5.5"
+  echo "  ./flash_app.sh size gpio_test Release release/v5.5"
+  echo "  ./flash_app.sh monitor"
+  echo ""
+  echo "  # Portable usage with --project-path flag"
+  echo "  ./flash_app.sh --project-path /path/to/project flash gpio_test Release"
+  echo "  ./flash_app.sh --project-path ../project flash_monitor gpio_test Release --log"
     echo ""
     echo "  # App-first syntax (legacy)"
     echo "  ./flash_app.sh gpio_test Release flash"

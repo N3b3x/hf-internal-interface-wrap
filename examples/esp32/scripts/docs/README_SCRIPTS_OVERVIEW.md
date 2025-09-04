@@ -24,6 +24,7 @@ This document provides a comprehensive overview of all available scripts in the 
 The ESP32 scripts directory contains a comprehensive suite of scripts designed to streamline ESP32 development workflows. These scripts provide intelligent configuration management, cross-platform compatibility, and robust error handling to ensure reliable development operations.
 
 ### **Core Design Principles**
+- **Portable Scripts**: Scripts can be placed anywhere and work with any project via `--project-path`
 - **Configuration-Driven**: All behavior controlled through centralized YAML configuration
 - **Enhanced Validation**: Smart combination validation and error prevention
 - **Smart Defaults**: Automatic ESP-IDF version selection based on app and build type
@@ -43,6 +44,63 @@ The ESP32 scripts directory contains a comprehensive suite of scripts designed t
 - **Port Detection**: Cross-platform ESP32 device identification
 - **Configuration Validation**: YAML-based configuration with intelligent fallbacks
 - **CI/CD Optimization**: optimized CI pipeline with parallel execution, smart caching, and minimal dependencies
+
+## 🚀 **Portable Scripts**
+
+All scripts in this directory are designed to be **completely portable** and can be placed anywhere on your system while still working with any ESP32 project.
+
+### **Key Features**
+- **`--project-path` Flag**: All scripts support specifying the project directory
+- **Dynamic Script Detection**: Scripts automatically detect their own location
+- **Flexible Configuration**: Works with absolute or relative project paths
+- **Environment Variables**: Support for `PROJECT_PATH` environment variable
+- **Error Handling**: Clear error messages when project or config files are not found
+
+### **Usage Examples**
+
+```bash
+# Default behavior (scripts in project/scripts/)
+./build_app.sh gpio_test Release
+
+# Portable usage with --project-path
+./build_app.sh --project-path /path/to/project gpio_test Release
+./flash_app.sh --project-path ../project flash_monitor adc_test
+./manage_idf.sh --project-path /opt/esp32-project list
+
+# Environment variable usage
+export PROJECT_PATH=/path/to/project
+./build_app.sh gpio_test Release
+./flash_app.sh flash_monitor adc_test
+
+# Python scripts
+python3 get_app_info.py list --project-path /path/to/project
+python3 generate_matrix.py --project-path /path/to/project
+```
+
+### **Portability Scenarios**
+
+```bash
+# Scenario 1: Multiple ESP32 projects
+./scripts/build_app.sh --project-path ~/projects/robot-controller gpio_test Release
+./scripts/build_app.sh --project-path ~/projects/sensor-node adc_test Debug
+
+# Scenario 2: Shared build tools
+# Place scripts in /opt/esp32-tools/
+/opt/esp32-tools/build_app.sh --project-path ~/my-project gpio_test Release
+
+# Scenario 3: Renamed script directories
+mv scripts tools
+./tools/build_app.sh gpio_test Release  # Still works!
+
+# Scenario 4: CI/CD flexibility
+./ci-scripts/build_app.sh --project-path $GITHUB_WORKSPACE/examples/esp32 gpio_test Release
+```
+
+### **How It Works**
+1. **Script Location Detection**: Each script uses `SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"` to find its own location
+2. **Project Path Resolution**: If `--project-path` is provided, it's used; otherwise defaults to `../` relative to script location
+3. **Config File Discovery**: Scripts automatically look for `app_config.yml` in the project directory
+4. **Validation**: Scripts validate that the project directory and config file exist before proceeding
 
 ## 🏗️ **Architecture and Design**
 

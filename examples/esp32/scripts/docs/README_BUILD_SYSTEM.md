@@ -340,7 +340,25 @@ The build system automatically validates:
 # - Build artifacts in build_gpio_test_Release/
 ```
 
-#### **3. Multi-Version Testing**
+#### **3. Portable Build Usage**
+```bash
+# Default behavior (scripts in project/scripts/)
+./build_app.sh gpio_test Release
+
+# Portable usage with --project-path
+./build_app.sh --project-path /path/to/project gpio_test Release
+./build_app.sh --project-path ../project adc_test Debug --clean
+
+# Environment variable usage
+export PROJECT_PATH=/path/to/project
+./build_app.sh gpio_test Release
+
+# Multiple project support
+./build_app.sh --project-path ~/projects/robot-controller gpio_test Release
+./build_app.sh --project-path ~/projects/sensor-node adc_test Debug
+```
+
+#### **4. Multi-Version Testing**
 ```bash
 # Test with different ESP-IDF versions
 ./build_app.sh gpio_test Release release/v5.5
