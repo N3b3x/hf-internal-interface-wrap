@@ -159,8 +159,8 @@ jobs:
           
           ## 🔗 Additional Resources
           
-          - [Online Documentation](https://${{ github.repository_owner }}.github.io/${{ \
-            github.event.repository.name }}/)
+          - [Online Documentation](https://${{ github.repository_owner }}.github.io/\
+            ${{ github.event.repository.name }}/)
           - [GitHub Repository](https://github.com/${{ github.repository }})
           - [Issue Tracker](https://github.com/${{ github.repository }}/issues)
           
@@ -224,12 +224,12 @@ jobs:
             4. Use `./scripts/build_app.sh <app_name> <build_type>` to build
             
             ### 📚 Documentation
-            - [Online Documentation](https://${{ github.repository_owner }}.github.io/${{ \
-              github.event.repository.name }}/)
-            - [API Reference](https://${{ github.repository_owner }}.github.io/${{ \
-              github.event.repository.name }}/api/)
-            - [ESP32 Examples](https://${{ github.repository_owner }}.github.io/${{ \
-              github.event.repository.name }}/esp_api/)
+            - [Online Documentation](https://${{ github.repository_owner }}.github.io/\
+              ${{ github.event.repository.name }}/)
+            - [API Reference](https://${{ github.repository_owner }}.github.io/\
+              ${{ github.event.repository.name }}/api/)
+            - [ESP32 Examples](https://${{ github.repository_owner }}.github.io/\
+              ${{ github.event.repository.name }}/esp_api/)
             
             ### 🛡️ Security & Quality
             - Full security audit completed

@@ -414,7 +414,7 @@ uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@main
 Problem: "fatal: remote error: upload-pack: not our ref"
 Solution: Update submodule reference to latest commit
 Commands:
-  git submodule update --init --recursive
+git submodule update --init --recursive
   git add examples/esp32/scripts
   git commit -m "Update submodule to latest commit"
 ```
