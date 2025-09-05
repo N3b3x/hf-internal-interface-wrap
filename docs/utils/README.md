@@ -355,7 +355,6 @@ void setup_led_tasks() {
 - **[📋 API Reference](../api/README.md)** - Core interface documentation
 - **[🔧 ESP32 Implementations](../esp_api/README.md)** - Hardware-specific implementations
 - **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
-- **[🔒 Security Features](#security)** - Security implementation
 
 ### **Utility Class Documentation**
 

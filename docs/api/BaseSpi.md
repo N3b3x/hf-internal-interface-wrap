@@ -828,7 +828,6 @@ spi.ConfigureDevice(99, config);  // Invalid device
 - **[📋 API Interfaces](README.md)** - Base classes and interfaces overview
 - **[🔧 ESP32 Implementations](../esp_api/README.md)** - Hardware-specific implementations
 - **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
-- **[🔒 Security Features](#security)** - Security implementation
 
 ### **Related Documentation**
 
