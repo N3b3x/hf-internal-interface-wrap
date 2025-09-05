@@ -846,16 +846,16 @@ Each application includes comprehensive test documentation:
 
 ## 📄 **License**
 
-This project is licensed under the GPL-3.0 License - see the [LICENSE](../LICENSE) file for details.
+This project is licensed under the GPL-3.0 License - see the [LICENSE](../../LICENSE) file for details.
 
 ---
 
 ## 🔗 **Related Documentation**
 
 - [Main Project README](../../README.md) - Project overview and architecture
-- [API Documentation](../docs/) - Interface API documentation
+- [API Documentation](../../docs/) - Interface API documentation
 - [Test Documentation](docs/README.md) - Comprehensive test documentation and examples
-- [CI/CD Workflows](../.github/workflows/) - GitHub Actions workflows
+- [CI/CD Workflows](../../.github/workflows/) - GitHub Actions workflows
 - [ESP-IDF Documentation](https://docs.espressif.com/projects/esp-idf/) - ESP-IDF reference
 
 ---

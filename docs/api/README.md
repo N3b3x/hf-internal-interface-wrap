@@ -315,7 +315,6 @@ Comprehensive test suites for validating hardware interface implementations:
 - **[🔧 ESP32 Implementations](../esp_api/README.md)** - Hardware-specific implementations
 - **[🛠️ Utility Classes](../utils/README.md)** - Advanced utility classes and helpers
 - **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
-- **[🔒 Security Features](#security)** - Security implementation
 
 ### **Base Class Documentation**
 
