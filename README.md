@@ -623,21 +623,21 @@ applications:
 
 |-----------------|-----------|-------------|
 
-| **gpio*test** | Digital I/O, interrupts | GPIO interface validation |
+| **gpio_test** | Digital I/O, interrupts | GPIO interface validation |
 
-| **adc*test** | Multi-channel sampling | ADC accuracy and performance |
+| **adc_test** | Multi-channel sampling | ADC accuracy and performance |
 
-| **pwm*test** | Frequency/duty control | Motor control applications |
+| **pwm_test** | Frequency/duty control | Motor control applications |
 
-| **uart*test** | Serial communication | Data transmission testing |
+| **uart_test** | Serial communication | Data transmission testing |
 
-| **i2c*test** | Sensor communication | I2C bus operations |
+| **i2c_test** | Sensor communication | I2C bus operations |
 
-| **spi*test** | High-speed data | SPI protocol testing |
+| **spi_test** | High-speed data | SPI protocol testing |
 
-| **wifi*test** | Network connectivity | WiFi stack validation |
+| **wifi_test** | Network connectivity | WiFi stack validation |
 
-| **bluetooth*test** | Wireless pairing | Bluetooth functionality |
+| **bluetooth_test** | Wireless pairing | Bluetooth functionality |
 
 ### **Factory Usage Examples**
 
