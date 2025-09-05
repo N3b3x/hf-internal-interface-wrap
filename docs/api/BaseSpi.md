@@ -17,7 +17,7 @@
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#️-class-hierarchy)
+- [🏗️ **Class Hierarchy**](#-class-hierarchy)
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
 - [📊 **Data Structures**](#-data-structures)
@@ -828,7 +828,6 @@ spi.ConfigureDevice(99, config);  // Invalid device
 - **[📋 API Interfaces](README.md)** - Base classes and interfaces overview
 - **[🔧 ESP32 Implementations](../esp_api/README.md)** - Hardware-specific implementations
 - **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
-- **[🔒 Security Features](../security/README.md)** - Security implementation
 
 ### **Related Documentation**
 

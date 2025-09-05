@@ -4,7 +4,7 @@
 
 This directory contains the comprehensive I2C test suite (`I2cComprehensiveTest.cpp`) for the ESP32 implementation. For complete documentation including test details, API reference, and usage examples, see:
 
-**📖 [Complete I2C Documentation](../../../docs/esp_api/README_I2C_COMPREHENSIVE.md)**
+**📖 Complete I2C Documentation**
 
 ## Quick Test Information
 
@@ -112,7 +112,7 @@ static constexpr uint32_t FAST_PLUS_FREQ = 1000000;  // 1MHz
 
 ## For Complete Documentation
 
-**📖 See [README_I2C_COMPREHENSIVE.md](../../../docs/esp_api/README_I2C_COMPREHENSIVE.md) for:**
+**📖 See Complete I2C Documentation for:**
 
 - Complete API reference
 - Detailed test descriptions  

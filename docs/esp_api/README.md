@@ -16,11 +16,10 @@
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#️-architecture)
+- [🏗️ **Architecture**](#-architecture)
 - [🔧 **Implementation Status**](#-implementation-status)
 - [📋 **Core Implementations**](#-core-implementations)
 - [⚡ **ESP32-C6 Features**](#-esp32-c6-features)
-- [🧪 **Testing & Validation**](#-testing--validation)
 - [📊 **Performance Benchmarks**](#-performance-benchmarks)
 - [🔍 **Troubleshooting**](#-troubleshooting)
 
@@ -378,7 +377,6 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 - **[📋 API Interfaces](../api/README.md)** - Base classes and interfaces
 - **[🛠️ Utility Classes](../utils/README.md)** - Advanced utility classes and helpers
 - **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
-- **[🔒 Security Features](../security/README.md)** - Security implementation
 
 ### **Related Documentation**
 
