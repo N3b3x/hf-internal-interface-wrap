@@ -521,4 +521,3 @@ matrix:
 - [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
 - [ESP-IDF v5.5 Programming Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/)
 - [ASCII Art Design Guidelines](https://textart.io/art)
-- [HardFOC ASCII Art Generator API Documentation](../../docs/api/ascii_art.md)

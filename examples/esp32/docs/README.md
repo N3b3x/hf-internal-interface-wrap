@@ -54,11 +54,9 @@ This directory contains comprehensive test documentation for all HardFOC ESP32 i
 
 ### **Wireless Technologies**
 - **[WiFi Testing](README_WIFI_TEST.md)** - Wireless networking, connectivity
-- **[Bluetooth Testing](README_BLUETOOTH_TEST.md)** - Short-range communication
 
 ### **System Features**
 - **[NVS Testing](README_NVS_TEST.md)** - Non-volatile storage, data persistence
-- **[Timer Testing](README_TIMER_TEST.md)** - Hardware timers, periodic events
 - **[Temperature Testing](README_TEMPERATURE_TEST.md)** - Thermal monitoring
 - **[Logger Testing](README_LOGGER_TEST.md)** - Logging system, debug output
 
@@ -81,9 +79,7 @@ This directory contains comprehensive test documentation for all HardFOC ESP32 i
 | [**I2C Test**](README_I2C_TEST.md) | ESP32-C6 I2C | Master mode, device scanning, error recovery | ✅ Complete |
 | [**CAN Test**](README_CAN_TEST.md) | ESP32-C6 + SN65 | Standard/Extended frames, filtering, error handling | ✅ Complete |
 | [**WiFi Test**](README_WIFI_TEST.md) | ESP32-C6 WiFi | Wireless networking, connectivity, security | ✅ Complete |
-| [**Bluetooth Test**](README_BLUETOOTH_TEST.md) | ESP32-C6 BT | Short-range communication, device discovery | ✅ Complete |
 | [**NVS Test**](README_NVS_TEST.md) | ESP32-C6 NVS | Non-volatile storage, data persistence | ✅ Complete |
-| [**Timer Test**](README_TIMER_TEST.md) | ESP32-C6 Timer | Hardware timers, periodic events, precision | ✅ Complete |
 | [**Temperature Test**](README_TEMPERATURE_TEST.md) | ESP32-C6 Temp | Thermal monitoring, calibration | ✅ Complete |
 | [**Logger Test**](README_LOGGER_TEST.md) | ESP32-C6 Logger | Logging system, debug output, levels | ✅ Complete |
 | [**ASCII Art Test**](README_ASCII_ART_TEST.md) | ESP32-C6 | ASCII art generation, display testing | ✅ Complete |
@@ -141,18 +137,18 @@ Most tests require minimal hardware:
 ## 🔗 **Related Documentation**
 
 ### **API Documentation**
-- [📋 Base Interfaces](../../docs/api/README.md) - Abstract base classes
-- [🔧 ESP32 Implementations](../../docs/esp_api/README.md) - Hardware-specific implementations
-- [🛠️ Utility Classes](../../docs/utils/README.md) - Helper classes and utilities
+- [📋 Base Interfaces](../../../docs/api/README.md) - Abstract base classes
+- [🔧 ESP32 Implementations](../../../docs/esp_api/README.md) - Hardware-specific implementations
+- [🛠️ Utility Classes](../../../docs/utils/README.md) - Helper classes and utilities
 
 ### **Specific Interface Documentation**
-- [BaseCan API](../../docs/api/BaseCan.md) - CAN bus interface
-- [EspCan Implementation](../../docs/esp_api/EspCan.md) - ESP32-C6 CAN implementation
-- [BaseGpio API](../../docs/api/BaseGpio.md) - GPIO interface
-- [BaseAdc API](../../docs/api/BaseAdc.md) - ADC interface
+- [BaseCan API](../../../docs/api/BaseCan.md) - CAN bus interface
+- [EspCan Implementation](../../../docs/esp_api/EspCan.md) - ESP32-C6 CAN implementation
+- [BaseGpio API](../../../docs/api/BaseGpio.md) - GPIO interface
+- [BaseAdc API](../../../docs/api/BaseAdc.md) - ADC interface
 
 ### **Project Documentation**
-- [Main Project README](../../README.md) - Project overview
+- [Main Project README](../../../README.md) - Project overview
 - [ESP32 Examples README](../README.md) - Build system and examples
 - [ESP-IDF Documentation](https://docs.espressif.com/projects/esp-idf/) - ESP-IDF reference
 

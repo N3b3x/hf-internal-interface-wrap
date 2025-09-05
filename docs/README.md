@@ -18,11 +18,11 @@
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#️-architecture)
+- [🏗️ **Architecture**](#-architecture)
 - [🔧 **Type System**](#-type-system)
 - [✨ **Key Features**](#-key-features)
 - [🔌 **Supported Hardware**](#-supported-hardware)
-- [🏛️ **Design Principles**](#️-design-principles)
+- [🏛️ **Design Principles**](#-design-principles)
 - [📋 **API Reference**](#-api-reference)
 - [🚀 **Quick Start**](#-quick-start)
 - [📊 **Examples**](#-examples)
@@ -504,6 +504,6 @@ The GPL-3.0 license ensures that improvements to the HardFOC wrapper remain open
 
 **📞 Support**
 
-[💬 GitHub Discussions](../../discussions) | [🐛 Issue Tracker](../../issues) | [📧 HardFOC Support](mailto:support@hardfoc.com)
+[📧 HardFOC Support](mailto:support@hardfoc.com)
 
 </div>

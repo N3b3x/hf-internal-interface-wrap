@@ -548,4 +548,3 @@ matrix:
 - [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
 - [ESP-IDF v5.5 Programming Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/)
 - [Temperature Sensor Calibration Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-guides/temp_sensor.html)
-- [HardFOC Temperature API Documentation](../../docs/api/temperature.md)

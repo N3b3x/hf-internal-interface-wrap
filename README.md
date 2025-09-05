@@ -18,9 +18,9 @@
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#️-architecture)
+- [🏗️ **Architecture**](#-architecture)
 - [🔌 **Peripheral Interfaces**](#-peripheral-interfaces)
-- [🖥️ **MCU Support**](#️-mcu-support)
+- [🖥️ **MCU Support**](#-mcu-support)
 - [🚀 **Quick Start**](#-quick-start)
 - [📖 **API Documentation**](#-api-documentation)
 - [🔧 **Building**](#-building)
@@ -224,7 +224,7 @@ public:
 
 ### **1. Clone Repository**
 ```bash
-git clone https://github.com/your-repo/hf-internal-interface-wrap.git
+git clone <repository-url>
 cd hf-internal-interface-wrap
 ```
 
@@ -780,7 +780,7 @@ See [LICENSE](LICENSE) for full details.
 - 📚 [API Reference](docs/api/) - Complete interface documentation
 - 🔧 [ESP32 Implementations](docs/esp_api/) - Hardware-specific implementations
 - 🛠️ [Utility Classes](docs/utils/) - Advanced utility classes and helpers
-- 🔧 [Build System](examples/esp32/scripts/docs/) - Build and deployment guides
+- 🔧 [Build System](examples/esp32/) - Build and deployment guides
 - 🛡️ [CI/CD Pipeline](.github/workflows/) - Advanced automated workflows and testing
 
 ### **Development**
@@ -790,8 +790,6 @@ See [LICENSE](LICENSE) for full details.
 - 📊 [Configuration](examples/esp32/app_config.yml) - Application and build settings
 
 ### **Community**
-- 🐛 [Issues](https://github.com/your-repo/hf-internal-interface-wrap/issues) - Bug reports and feature requests
-- 💬 [Discussions](https://github.com/your-repo/hf-internal-interface-wrap/discussions) - Community support
 - 🤝 [Contributing](CONTRIBUTING.md) - Development guidelines
 
 ---

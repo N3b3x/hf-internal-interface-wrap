@@ -17,11 +17,11 @@
 ## 📋 Table of Contents
 
 - [🎯 Overview](#-overview)
-- [🏗️ Workflow Architecture](#️-workflow-architecture)
+- [🏗️ Workflow Architecture](#-workflow-architecture)
 - [🚀 Available Workflows](#-available-workflows)
 - [🔧 Configuration](#-configuration)
 - [📊 Workflow Selection Guide](#-workflow-selection-guide)
-- [🛡️ Security Features](#️-security-features)
+- [🛡️ Security Features](#-security-features)
 - [⚡ Performance Optimization](#-performance-optimization)
 - [🔍 Troubleshooting](#-troubleshooting)
 

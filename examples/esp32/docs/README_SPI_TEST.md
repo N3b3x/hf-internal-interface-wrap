@@ -338,7 +338,6 @@ The test suite provides comprehensive debug output:
 - **[📋 API Interfaces](../../../docs/api/README.md)** - Base classes and interfaces
 - **[🔧 ESP32 Implementations](../../../docs/esp_api/README.md)** - Hardware-specific implementations
 - **[🧪 Test Suites](README.md)** - Testing and validation overview
-- **[🔒 Security Features](../../../docs/security/README.md)** - Security implementation
 
 ### **Related Documentation**
 

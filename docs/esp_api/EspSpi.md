@@ -17,7 +17,7 @@
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#️-architecture)
+- [🏗️ **Architecture**](#-architecture)
 - [🔧 **Core Classes**](#-core-classes)
 - [📋 **Configuration**](#-configuration)
 - [📊 **Data Structures**](#-data-structures)
@@ -382,7 +382,7 @@ ESP_LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer_time);
 - **[📋 API Interfaces](../api/README.md)** - Base classes and interfaces
 - **[🔧 ESP32 Implementations](README.md)** - Hardware-specific implementations
 - **[🧪 Test Suites](../../examples/esp32/docs/README.md)** - Testing and validation
-- **[🔒 Security Features](../security/README.md)** - Security implementation
+- **[🔒 Security Features](#security)** - Security implementation
 
 ### **Related Documentation**
 
