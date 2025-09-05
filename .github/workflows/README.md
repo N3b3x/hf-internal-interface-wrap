@@ -8,7 +8,7 @@
 
 **📋 Comprehensive CI/CD Pipeline for HardFOC ESP32 Development**
 
-*Advanced automated workflows leveraging custom ESP-IDF project tools*
+*Advanced automated workflows leveraging custom ESP-IDF project tools for HardFOC ecosystem*
 
 </div>
 
