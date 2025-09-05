@@ -554,8 +554,8 @@ W (4286) UART*Test: IrDA not supported on ESP32-C6 (expected): 4
 ## References
 
 - [ESP-IDF UART Documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/uart.html)
-- [ESP-IDF Pattern Detection API](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/uart.html#*CPPv429uart*enable*pattern*det*baud*intr)
-- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6*technical*reference*manual_en.pdf)
+- [ESP-IDF Pattern Detection API](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/uart.html#_CPPv429uart_enable_pattern_det_baud_intr)
+- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
 - [ESP-IDF v5.5 Migration Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/migration-guides/release-5.x/5.0/peripherals.html)
 - [ESP32-C6-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/hw-reference/esp32c6/user-guide-devkitm-1.html)
 - [UART Pattern Detection Best Practices](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-guides/uart.html#uart-pattern-detection)

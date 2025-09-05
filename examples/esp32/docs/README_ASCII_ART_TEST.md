@@ -522,6 +522,6 @@ matrix:
 ## References
 
 - [Unicode Box Drawing Characters](https://en.wikipedia.org/wiki/Box-drawing*character)
-- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6*technical*reference*manual*en.pdf)
-- [ESP-IDF v5.5 Programming Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/)
+- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
+- [ESP-IDF v5.5 Programming Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/index.html)
 - [ASCII Art Design Guidelines](https://textart.io/art)
