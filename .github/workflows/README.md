@@ -367,7 +367,7 @@ uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@main
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    ⚡ Performance Pipeline                      │
+│                    ⚡ Performance Pipeline                       │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
@@ -380,14 +380,14 @@ uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@main
 │  └─────────────┘  └─────────────┘  └─────────────┘              │
 │         │                 │                 │                   │
 │         ▼                 ▼                 ▼                   │
-│  ┌─────────────────────────────────────────────────────────────┐ │
-│  │                Smart Caching Strategy                       │ │
-│  │                                                             │ │
-│  │  • ESP-IDF Cache (2GB)                                     │ │
-│  │  • Build Artifacts Cache (1GB)                             │ │
-│  │  • Dependency Cache (500MB)                                │ │
-│  │  • Incremental Builds                                      │ │
-│  └─────────────────────────────────────────────────────────────┘ │
+│  ┌─────────────────────────────────────────────────────────────┐│
+│  │                Smart Caching Strategy                       ││
+│  │                                                             ││
+│  │  • ESP-IDF Cache (2GB)                                      ││
+│  │  • Build Artifacts Cache (1GB)                              ││
+│  │  • Dependency Cache (500MB)                                 ││
+│  │  • Incremental Builds                                       ││
+│  └─────────────────────────────────────────────────────────────┘│
 └─────────────────────────────────────────────────────────────────┘
 ```
 
