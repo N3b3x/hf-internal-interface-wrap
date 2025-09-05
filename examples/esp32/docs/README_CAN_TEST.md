@@ -2,7 +2,10 @@
 
 ## Overview
 
-This document describes the comprehensive CAN testing suite for ESP32-C6 with ESP-IDF v5.5 TWAI API and SN65 transceiver integration. The test suite validates all EspCan functionality including hardware integration, error handling, and performance characteristics.
+This document describes the comprehensive CAN testing suite for ESP32-C6 with ESP-IDF v5.5 TWAI API
+and SN65 transceiver integration.
+The test suite validates all EspCan functionality including hardware integration, error handling,
+and performance characteristics.
 
 ## Hardware Requirements
 
@@ -19,25 +22,25 @@ This document describes the comprehensive CAN testing suite for ESP32-C6 with ES
 ## Wiring Configuration
 
 ### ESP32-C6 + SN65 Transceiver
-```
+```text
 ESP32-C6    SN65HVD230/232
 GPIO4   →   CTX (TX)
 GPIO5   →   CRX (RX)
 3.3V    →   VCC
 GND     →   GND
-```
+```text
 
 ### CAN Bus Connections
-```
+```text
 SN65 CANH  →  CAN Bus High
 SN65 CANL  →  CAN Bus Low
 120Ω       →  Between CANH and CANL (termination)
-```
+```text
 
 ### External Loopback Testing
-```
+```text
 SN65 CANH  →  120Ω resistor  →  SN65 CANL
-```
+```text
 
 ## Test Configuration
 
@@ -52,20 +55,20 @@ The test suite is organized into configurable sections:
 
 ```cpp
 // Core functionality tests
-static constexpr bool ENABLE_CORE_TESTS = true;
+static constexpr bool ENABLE*CORE*TESTS = true;
 
 // Advanced feature tests  
-static constexpr bool ENABLE_ADVANCED_TESTS = true;
+static constexpr bool ENABLE*ADVANCED*TESTS = true;
 
 // Error handling tests
-static constexpr bool ENABLE_ERROR_TESTS = true;
+static constexpr bool ENABLE*ERROR*TESTS = true;
 
 // Performance tests
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;
+static constexpr bool ENABLE*PERFORMANCE*TESTS = true;
 
 // SN65 transceiver tests
-static constexpr bool ENABLE_TRANSCEIVER_TESTS = true;
-```
+static constexpr bool ENABLE*TRANSCEIVER*TESTS = true;
+```text
 
 ## Test Categories
 
@@ -95,13 +98,13 @@ static constexpr bool ENABLE_TRANSCEIVER_TESTS = true;
 ## Loopback Modes
 
 ### Internal Loopback
-- **Configuration**: `enable_loopback = true`
+- **Configuration**: `enable*loopback = true`
 - **Hardware**: TX and RX on same pin (GPIO4)
 - **Use Case**: Basic functionality testing
 - **Limitations**: No real CAN bus signaling
 
 ### External Loopback
-- **Configuration**: `enable_loopback = false`
+- **Configuration**: `enable*loopback = false`
 - **Hardware**: CANH → 120Ω → CANL (after transceiver)
 - **Use Case**: Real CAN bus testing
 - **Advantages**: Tests actual differential signaling
@@ -110,12 +113,12 @@ static constexpr bool ENABLE_TRANSCEIVER_TESTS = true;
 
 ### Running Tests
 ```bash
-# Build and flash the test
+## Build and flash the test
 idf.py build flash monitor
 
-# Enable specific test sections in CanComprehensiveTest.cpp
-# Modify the ENABLE_*_TESTS constants as needed
-```
+## Enable specific test sections in CanComprehensiveTest.cpp
+## Modify the ENABLE***TESTS constants as needed
+```text
 
 ### Monitoring Progress
 - **Serial Output**: Detailed test results via UART
@@ -149,10 +152,10 @@ idf.py build flash monitor
 
 ### Error Codes
 The test suite uses comprehensive error reporting:
-- `CAN_SUCCESS`: Operation completed successfully
-- `CAN_ERR_BUS_OFF`: Bus-off state detected
-- `CAN_ERR_TIMEOUT`: Operation timeout
-- `CAN_ERR_HARDWARE_FAULT`: Hardware issue detected
+- `CAN*SUCCESS`: Operation completed successfully
+- `CAN*ERR*BUS*OFF`: Bus-off state detected
+- `CAN*ERR*TIMEOUT`: Operation timeout
+- `CAN*ERR*HARDWARE*FAULT`: Hardware issue detected
 
 ## Performance Metrics
 

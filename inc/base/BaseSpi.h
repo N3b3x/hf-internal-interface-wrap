@@ -34,44 +34,44 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_SPI_ERR_LIST(X)                                          \
-  /* Success codes */                                               \
-  X(SPI_SUCCESS, 0, "Success")                                      \
-  /* General errors */                                              \
-  X(SPI_ERR_FAILURE, 1, "General failure")                          \
-  X(SPI_ERR_NOT_INITIALIZED, 2, "Not initialized")                  \
-  X(SPI_ERR_ALREADY_INITIALIZED, 3, "Already initialized")          \
-  X(SPI_ERR_INVALID_PARAMETER, 4, "Invalid parameter")              \
-  X(SPI_ERR_NULL_POINTER, 5, "Null pointer")                        \
-  X(SPI_ERR_OUT_OF_MEMORY, 6, "Out of memory")                      \
-  /* Bus errors */                                                  \
-  X(SPI_ERR_BUS_BUSY, 7, "Bus busy")                                \
-  X(SPI_ERR_BUS_ERROR, 8, "Bus error")                              \
-  X(SPI_ERR_BUS_NOT_AVAILABLE, 9, "Bus not available")              \
-  X(SPI_ERR_BUS_TIMEOUT, 10, "Bus timeout")                         \
-  /* Transfer errors */                                             \
-  X(SPI_ERR_TRANSFER_FAILED, 11, "Transfer failed")                 \
-  X(SPI_ERR_TRANSFER_TIMEOUT, 12, "Transfer timeout")               \
-  X(SPI_ERR_TRANSFER_TOO_LONG, 13, "Transfer too long")             \
-  X(SPI_ERR_TRANSFER_SIZE_MISMATCH, 14, "Transfer size mismatch")   \
-  /* Device errors */                                               \
-  X(SPI_ERR_DEVICE_NOT_FOUND, 15, "Device not found")               \
-  X(SPI_ERR_DEVICE_NOT_RESPONDING, 16, "Device not responding")     \
-  X(SPI_ERR_CS_CONTROL_FAILED, 17, "Chip select control failed")    \
-  /* Hardware errors */                                             \
-  X(SPI_ERR_HARDWARE_FAULT, 18, "Hardware fault")                   \
-  X(SPI_ERR_COMMUNICATION_FAILURE, 19, "Communication failure")     \
-  X(SPI_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")       \
-  X(SPI_ERR_CLOCK_ERROR, 21, "Clock error")                         \
-  /* Configuration errors */                                        \
-  X(SPI_ERR_INVALID_CONFIGURATION, 22, "Invalid configuration")     \
-  X(SPI_ERR_UNSUPPORTED_OPERATION, 23, "Unsupported operation")     \
-  X(SPI_ERR_INVALID_CLOCK_SPEED, 24, "Invalid clock speed")         \
-  X(SPI_ERR_INVALID_MODE, 25, "Invalid SPI mode")                   \
-  X(SPI_ERR_PIN_CONFIGURATION_ERROR, 26, "Pin configuration error") \
-  /* System errors */                                               \
-  X(SPI_ERR_SYSTEM_ERROR, 27, "System error")                       \
-  X(SPI_ERR_PERMISSION_DENIED, 28, "Permission denied")             \
+#define HF_SPI_ERR_LIST(X)                                                                         \
+  /* Success codes */                                                                              \
+  X(SPI_SUCCESS, 0, "Success")                                                                     \
+  /* General errors */                                                                             \
+  X(SPI_ERR_FAILURE, 1, "General failure")                                                         \
+  X(SPI_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
+  X(SPI_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
+  X(SPI_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
+  X(SPI_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
+  X(SPI_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
+  /* Bus errors */                                                                                 \
+  X(SPI_ERR_BUS_BUSY, 7, "Bus busy")                                                               \
+  X(SPI_ERR_BUS_ERROR, 8, "Bus error")                                                             \
+  X(SPI_ERR_BUS_NOT_AVAILABLE, 9, "Bus not available")                                             \
+  X(SPI_ERR_BUS_TIMEOUT, 10, "Bus timeout")                                                        \
+  /* Transfer errors */                                                                            \
+  X(SPI_ERR_TRANSFER_FAILED, 11, "Transfer failed")                                                \
+  X(SPI_ERR_TRANSFER_TIMEOUT, 12, "Transfer timeout")                                              \
+  X(SPI_ERR_TRANSFER_TOO_LONG, 13, "Transfer too long")                                            \
+  X(SPI_ERR_TRANSFER_SIZE_MISMATCH, 14, "Transfer size mismatch")                                  \
+  /* Device errors */                                                                              \
+  X(SPI_ERR_DEVICE_NOT_FOUND, 15, "Device not found")                                              \
+  X(SPI_ERR_DEVICE_NOT_RESPONDING, 16, "Device not responding")                                    \
+  X(SPI_ERR_CS_CONTROL_FAILED, 17, "Chip select control failed")                                   \
+  /* Hardware errors */                                                                            \
+  X(SPI_ERR_HARDWARE_FAULT, 18, "Hardware fault")                                                  \
+  X(SPI_ERR_COMMUNICATION_FAILURE, 19, "Communication failure")                                    \
+  X(SPI_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")                                      \
+  X(SPI_ERR_CLOCK_ERROR, 21, "Clock error")                                                        \
+  /* Configuration errors */                                                                       \
+  X(SPI_ERR_INVALID_CONFIGURATION, 22, "Invalid configuration")                                    \
+  X(SPI_ERR_UNSUPPORTED_OPERATION, 23, "Unsupported operation")                                    \
+  X(SPI_ERR_INVALID_CLOCK_SPEED, 24, "Invalid clock speed")                                        \
+  X(SPI_ERR_INVALID_MODE, 25, "Invalid SPI mode")                                                  \
+  X(SPI_ERR_PIN_CONFIGURATION_ERROR, 26, "Pin configuration error")                                \
+  /* System errors */                                                                              \
+  X(SPI_ERR_SYSTEM_ERROR, 27, "System error")                                                      \
+  X(SPI_ERR_PERMISSION_DENIED, 28, "Permission denied")                                            \
   X(SPI_ERR_OPERATION_ABORTED, 29, "Operation aborted")
 
 enum class hf_spi_err_t : hf_u8_t {
@@ -87,13 +87,13 @@ enum class hf_spi_err_t : hf_u8_t {
  */
 constexpr std::string_view HfSpiErrToString(hf_spi_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_spi_err_t::NAME:   \
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_spi_err_t::NAME:                                                                         \
     return DESC;
     HF_SPI_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

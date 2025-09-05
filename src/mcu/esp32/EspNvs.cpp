@@ -629,63 +629,63 @@ hf_nvs_err_t EspNvs::GetDiagnostics(hf_nvs_diagnostics_t& diagnostics) const noe
 hf_nvs_err_t EspNvs::ConvertMcuError(int mcu_error) const noexcept {
   // Comprehensive ESP32-C6 NVS error code mapping for ESP-IDF v5.5+
   switch (mcu_error) {
-    case ESP_OK:
-      return hf_nvs_err_t::NVS_SUCCESS;
+  case ESP_OK:
+    return hf_nvs_err_t::NVS_SUCCESS;
 
-    // Core NVS errors
-    case ESP_ERR_NVS_NOT_FOUND:
-      return hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND;
-    case ESP_ERR_NVS_INVALID_HANDLE:
-      return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
-    case ESP_ERR_NVS_READ_ONLY:
-      return hf_nvs_err_t::NVS_ERR_READ_ONLY;
-    case ESP_ERR_NVS_NOT_ENOUGH_SPACE:
-      return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
-    case ESP_ERR_NVS_NO_FREE_PAGES:
-      return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
-    case ESP_ERR_NVS_NEW_VERSION_FOUND:
-      return hf_nvs_err_t::NVS_ERR_CORRUPTED; // Version mismatch indicates corruption
+  // Core NVS errors
+  case ESP_ERR_NVS_NOT_FOUND:
+    return hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND;
+  case ESP_ERR_NVS_INVALID_HANDLE:
+    return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
+  case ESP_ERR_NVS_READ_ONLY:
+    return hf_nvs_err_t::NVS_ERR_READ_ONLY;
+  case ESP_ERR_NVS_NOT_ENOUGH_SPACE:
+    return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
+  case ESP_ERR_NVS_NO_FREE_PAGES:
+    return hf_nvs_err_t::NVS_ERR_STORAGE_FULL;
+  case ESP_ERR_NVS_NEW_VERSION_FOUND:
+    return hf_nvs_err_t::NVS_ERR_CORRUPTED; // Version mismatch indicates corruption
 
-    // Key and parameter validation errors
-    case ESP_ERR_NVS_INVALID_NAME:
-      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER; // Invalid key/namespace name
-    case ESP_ERR_NVS_KEY_TOO_LONG:
-      return hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG; // Key name too long
-    case ESP_ERR_NVS_INVALID_LENGTH:
-      return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE; // String/blob length insufficient
-    case ESP_ERR_NVS_VALUE_TOO_LONG:
-      return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE; // Value too long for entry
+  // Key and parameter validation errors
+  case ESP_ERR_NVS_INVALID_NAME:
+    return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER; // Invalid key/namespace name
+  case ESP_ERR_NVS_KEY_TOO_LONG:
+    return hf_nvs_err_t::NVS_ERR_KEY_TOO_LONG; // Key name too long
+  case ESP_ERR_NVS_INVALID_LENGTH:
+    return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE; // String/blob length insufficient
+  case ESP_ERR_NVS_VALUE_TOO_LONG:
+    return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE; // Value too long for entry
 
-    // Encryption-related errors (ESP32-C6 specific)
-    case ESP_ERR_NVS_XTS_ENCR_FAILED:
-      return hf_nvs_err_t::NVS_ERR_ENCRYPTION_FAILED; // Encryption operation failed
-    case ESP_ERR_NVS_XTS_DECR_FAILED:
-      return hf_nvs_err_t::NVS_ERR_DECRYPTION_FAILED; // Decryption failure
-    case ESP_ERR_NVS_XTS_CFG_FAILED:
-      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER; // Configuration issue
-    case ESP_ERR_NVS_XTS_CFG_NOT_FOUND:
-      return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_CONFIGURED; // Encryption not configured
-    case ESP_ERR_NVS_ENCR_NOT_SUPPORTED:
-      return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_SUPPORTED; // Encryption not supported
-    case ESP_ERR_NVS_KEYS_NOT_INITIALIZED:
-      return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_CONFIGURED; // Encryption keys missing
-    case ESP_ERR_NVS_CORRUPT_KEY_PART:
-      return hf_nvs_err_t::NVS_ERR_KEY_PARTITION_CORRUPTED; // Key partition corrupted
-    case ESP_ERR_NVS_WRONG_ENCRYPTION:
-      return hf_nvs_err_t::NVS_ERR_WRONG_ENCRYPTION_SCHEME; // Wrong encryption scheme
-    case ESP_ERR_NVS_CONTENT_DIFFERS:
-      return hf_nvs_err_t::NVS_ERR_CORRUPTED; // Content validation failed
+  // Encryption-related errors (ESP32-C6 specific)
+  case ESP_ERR_NVS_XTS_ENCR_FAILED:
+    return hf_nvs_err_t::NVS_ERR_ENCRYPTION_FAILED; // Encryption operation failed
+  case ESP_ERR_NVS_XTS_DECR_FAILED:
+    return hf_nvs_err_t::NVS_ERR_DECRYPTION_FAILED; // Decryption failure
+  case ESP_ERR_NVS_XTS_CFG_FAILED:
+    return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER; // Configuration issue
+  case ESP_ERR_NVS_XTS_CFG_NOT_FOUND:
+    return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_CONFIGURED; // Encryption not configured
+  case ESP_ERR_NVS_ENCR_NOT_SUPPORTED:
+    return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_SUPPORTED; // Encryption not supported
+  case ESP_ERR_NVS_KEYS_NOT_INITIALIZED:
+    return hf_nvs_err_t::NVS_ERR_ENCRYPTION_NOT_CONFIGURED; // Encryption keys missing
+  case ESP_ERR_NVS_CORRUPT_KEY_PART:
+    return hf_nvs_err_t::NVS_ERR_KEY_PARTITION_CORRUPTED; // Key partition corrupted
+  case ESP_ERR_NVS_WRONG_ENCRYPTION:
+    return hf_nvs_err_t::NVS_ERR_WRONG_ENCRYPTION_SCHEME; // Wrong encryption scheme
+  case ESP_ERR_NVS_CONTENT_DIFFERS:
+    return hf_nvs_err_t::NVS_ERR_CORRUPTED; // Content validation failed
 
-    // Generic parameter errors
-    case ESP_ERR_INVALID_ARG:
-      return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
-    case ESP_ERR_INVALID_SIZE:
-      return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE;
+  // Generic parameter errors
+  case ESP_ERR_INVALID_ARG:
+    return hf_nvs_err_t::NVS_ERR_INVALID_PARAMETER;
+  case ESP_ERR_INVALID_SIZE:
+    return hf_nvs_err_t::NVS_ERR_VALUE_TOO_LARGE;
 
-    // Catch-all for unknown errors
-    default:
-      ESP_LOGW(TAG, "Unmapped ESP32 error code: 0x%X (%d)", mcu_error, mcu_error);
-      return hf_nvs_err_t::NVS_ERR_FAILURE;
+  // Catch-all for unknown errors
+  default:
+    ESP_LOGW(TAG, "Unmapped ESP32 error code: 0x%X (%d)", mcu_error, mcu_error);
+    return hf_nvs_err_t::NVS_ERR_FAILURE;
   }
 }
 

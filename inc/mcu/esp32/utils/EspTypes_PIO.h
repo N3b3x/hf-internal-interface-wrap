@@ -55,7 +55,7 @@ static constexpr uint8_t HF_RMT_MAX_RX_CHANNELS = 4;  // Channels 4-7 are hardco
 static constexpr uint8_t HF_RMT_TX_CHANNEL_START = 0; // TX channels: 0-3
 static constexpr uint8_t HF_RMT_RX_CHANNEL_START = 4; // RX channels: 4-7
 
-#elif defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) || \
+#elif defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) ||                  \
     defined(CONFIG_IDF_TARGET_ESP32H2)
 // ESP32-C3/C6/H2: 4 channels, hardcoded TX/RX allocation
 static constexpr uint8_t HF_RMT_MAX_CHANNELS = 4;
@@ -171,7 +171,7 @@ struct hf_rmt_carrier_config_t {
 // ESP32-S3: Channels 0-3 for TX, 4-7 for RX
 #define HF_RMT_IS_VALID_TX_CHANNEL(ch) ((ch) >= 0 && (ch) < 4)
 #define HF_RMT_IS_VALID_RX_CHANNEL(ch) ((ch) >= 4 && (ch) < 8)
-#elif defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) || \
+#elif defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) ||                  \
     defined(CONFIG_IDF_TARGET_ESP32H2)
 // ESP32-C3/C6/H2: Channels 0-1 for TX, 2-3 for RX
 #define HF_RMT_IS_VALID_TX_CHANNEL(ch) ((ch) >= 0 && (ch) < 2)
@@ -182,9 +182,9 @@ struct hf_rmt_carrier_config_t {
 #define HF_RMT_IS_VALID_RX_CHANNEL(ch) ((ch) >= 2 && (ch) < 4)
 #endif
 
-#define HF_RMT_IS_VALID_RESOLUTION(res) \
+#define HF_RMT_IS_VALID_RESOLUTION(res)                                                            \
   ((res) >= HF_RMT_MIN_RESOLUTION_HZ && (res) <= HF_RMT_MAX_RESOLUTION_HZ)
-#define HF_RMT_IS_VALID_MEM_BLOCK_SIZE(size) \
+#define HF_RMT_IS_VALID_MEM_BLOCK_SIZE(size)                                                       \
   ((size) >= HF_RMT_MIN_MEM_BLOCK_SYMBOLS && (size) <= HF_RMT_MAX_MEM_BLOCK_SYMBOLS)
 #define HF_RMT_IS_VALID_QUEUE_DEPTH(depth) ((depth) >= 1 && (depth) <= HF_RMT_MAX_QUEUE_DEPTH)
 #define HF_RMT_IS_VALID_INTR_PRIORITY(prio) ((prio) <= HF_RMT_MAX_INTERRUPT_PRIORITY)
@@ -226,15 +226,15 @@ inline constexpr bool HfRmtIsChannelValidForDirection(uint8_t channel_id,
   }
 
   switch (direction) {
-    case hf_pio_direction_t::Transmit:
-      return HF_RMT_IS_VALID_TX_CHANNEL(channel_id);
-    case hf_pio_direction_t::Receive:
-      return HF_RMT_IS_VALID_RX_CHANNEL(channel_id);
-    case hf_pio_direction_t::Bidirectional:
-      // Bidirectional requires both TX and RX capability
-      return HF_RMT_IS_VALID_TX_CHANNEL(channel_id) && HF_RMT_IS_VALID_RX_CHANNEL(channel_id);
-    default:
-      return false;
+  case hf_pio_direction_t::Transmit:
+    return HF_RMT_IS_VALID_TX_CHANNEL(channel_id);
+  case hf_pio_direction_t::Receive:
+    return HF_RMT_IS_VALID_RX_CHANNEL(channel_id);
+  case hf_pio_direction_t::Bidirectional:
+    // Bidirectional requires both TX and RX capability
+    return HF_RMT_IS_VALID_TX_CHANNEL(channel_id) && HF_RMT_IS_VALID_RX_CHANNEL(channel_id);
+  default:
+    return false;
   }
 }
 

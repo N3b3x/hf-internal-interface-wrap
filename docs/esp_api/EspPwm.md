@@ -12,7 +12,10 @@
 
 ## Overview
 
-`EspPwm` is the ESP32-C6 implementation of the `BasePwm` interface, providing comprehensive PWM (Pulse Width Modulation) functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced PWM features with hardware-specific optimizations.
+`EspPwm` is the ESP32-C6 implementation of the `BasePwm` interface,
+providing comprehensive PWM (Pulse Width Modulation) functionality specifically optimized for
+ESP32-C6 microcontrollers running ESP-IDF v5.5+.
+It offers both basic and advanced PWM features with hardware-specific optimizations.
 
 ## Features
 
@@ -29,7 +32,7 @@
 
 ```cpp
 #include "inc/mcu/esp32/EspPwm.h"
-```
+```text
 
 ## Class Definition
 
@@ -38,11 +41,11 @@ class EspPwm : public BasePwm {
 public:
     // Constructor with full configuration
     explicit EspPwm(
-        hf_pin_num_t pin,
-        hf_pwm_channel_t channel = hf_pwm_channel_t::HF_PWM_CHANNEL_0,
-        hf_pwm_timer_t timer = hf_pwm_timer_t::HF_PWM_TIMER_0,
-        hf_pwm_freq_t frequency = 1000,
-        hf_pwm_resolution_t resolution = hf_pwm_resolution_t::HF_PWM_RESOLUTION_8_BIT
+        hf*pin*num*t pin,
+        hf*pwm*channel*t channel = hf*pwm*channel*t::HF*PWM*CHANNEL*0,
+        hf*pwm*timer*t timer = hf*pwm*timer*t::HF*PWM*TIMER*0,
+        hf*pwm*freq*t frequency = 1000,
+        hf*pwm*resolution*t resolution = hf*pwm*resolution*t::HF*PWM*RESOLUTION*8*BIT
     ) noexcept;
 
     // Destructor
@@ -55,22 +58,22 @@ public:
     const char* GetDescription() const noexcept override;
 
     // PWM operations
-    hf_pwm_err_t SetFrequency(hf_pwm_freq_t frequency) noexcept override;
-    hf_pwm_err_t GetFrequency(hf_pwm_freq_t* frequency) const noexcept override;
-    hf_pwm_err_t SetDutyCycle(hf_pwm_duty_t duty_cycle) noexcept override;
-    hf_pwm_err_t GetDutyCycle(hf_pwm_duty_t* duty_cycle) const noexcept override;
-    hf_pwm_err_t Start() noexcept override;
-    hf_pwm_err_t Stop() noexcept override;
-    hf_pwm_err_t IsRunning(bool* running) const noexcept override;
+    hf*pwm*err*t SetFrequency(hf*pwm*freq*t frequency) noexcept override;
+    hf*pwm*err*t GetFrequency(hf*pwm*freq*t* frequency) const noexcept override;
+    hf*pwm*err*t SetDutyCycle(hf*pwm*duty*t duty*cycle) noexcept override;
+    hf*pwm*err*t GetDutyCycle(hf*pwm*duty*t* duty*cycle) const noexcept override;
+    hf*pwm*err*t Start() noexcept override;
+    hf*pwm*err*t Stop() noexcept override;
+    hf*pwm*err*t IsRunning(bool* running) const noexcept override;
 
     // Advanced features
-    hf_pwm_err_t SetResolution(hf_pwm_resolution_t resolution) noexcept override;
-    hf_pwm_err_t GetResolution(hf_pwm_resolution_t* resolution) const noexcept override;
-    hf_pwm_err_t FadeStart(hf_pwm_duty_t target_duty, hf_u32_t fade_time_ms) noexcept override;
-    hf_pwm_err_t FadeStop() noexcept override;
-    hf_pwm_err_t IsFading(bool* fading) const noexcept override;
+    hf*pwm*err*t SetResolution(hf*pwm*resolution*t resolution) noexcept override;
+    hf*pwm*err*t GetResolution(hf*pwm*resolution*t* resolution) const noexcept override;
+    hf*pwm*err*t FadeStart(hf*pwm*duty*t target*duty, hf*u32*t fade*time*ms) noexcept override;
+    hf*pwm*err*t FadeStop() noexcept override;
+    hf*pwm*err*t IsFading(bool* fading) const noexcept override;
 };
-```
+```text
 
 ## Usage Examples
 
@@ -80,7 +83,7 @@ public:
 #include "inc/mcu/esp32/EspPwm.h"
 
 // Create PWM instance
-EspPwm pwm(GPIO_NUM_2, HF_PWM_CHANNEL_0, HF_PWM_TIMER_0, 1000, HF_PWM_RESOLUTION_8_BIT);
+EspPwm pwm(GPIO*NUM*2, HF*PWM*CHANNEL*0, HF*PWM*TIMER*0, 1000, HF*PWM*RESOLUTION*8*BIT);
 
 // Initialize
 if (!pwm.Initialize()) {
@@ -89,42 +92,42 @@ if (!pwm.Initialize()) {
 }
 
 // Set duty cycle (0-100%)
-hf_pwm_err_t err = pwm.SetDutyCycle(50.0f); // 50% duty cycle
-if (err != HF_PWM_ERR_OK) {
+hf*pwm*err*t err = pwm.SetDutyCycle(50.0f); // 50% duty cycle
+if (err != HF*PWM*ERR*OK) {
     printf("Failed to set duty cycle: %d\n", err);
     return;
 }
 
 // Start PWM
 err = pwm.Start();
-if (err != HF_PWM_ERR_OK) {
+if (err != HF*PWM*ERR*OK) {
     printf("Failed to start PWM: %d\n", err);
     return;
 }
 
 printf("PWM started with 50%% duty cycle\n");
-```
+```text
 
 ### Frequency Control
 
 ```cpp
 // Set different frequencies
-hf_pwm_freq_t frequencies[] = {100, 500, 1000, 5000, 10000};
+hf*pwm*freq*t frequencies[] = {100, 500, 1000, 5000, 10000};
 for (int i = 0; i < 5; i++) {
-    hf_pwm_err_t err = pwm.SetFrequency(frequencies[i]);
-    if (err == HF_PWM_ERR_OK) {
+    hf*pwm*err*t err = pwm.SetFrequency(frequencies[i]);
+    if (err == HF*PWM*ERR*OK) {
         printf("PWM frequency set to %d Hz\n", frequencies[i]);
-        vTaskDelay(pdMS_TO_TICKS(1000)); // Wait 1 second
+        vTaskDelay(pdMS*TO*TICKS(1000)); // Wait 1 second
     }
 }
-```
+```text
 
 ### Fade Effects
 
 ```cpp
 // Fade in from 0% to 100% over 2 seconds
-hf_pwm_err_t err = pwm.FadeStart(100.0f, 2000);
-if (err != HF_PWM_ERR_OK) {
+hf*pwm*err*t err = pwm.FadeStart(100.0f, 2000);
+if (err != HF*PWM*ERR*OK) {
     printf("Failed to start fade: %d\n", err);
     return;
 }
@@ -133,25 +136,25 @@ if (err != HF_PWM_ERR_OK) {
 bool fading = true;
 while (fading) {
     err = pwm.IsFading(&fading);
-    if (err != HF_PWM_ERR_OK) {
+    if (err != HF*PWM*ERR*OK) {
         break;
     }
-    vTaskDelay(pdMS_TO_TICKS(100));
+    vTaskDelay(pdMS*TO*TICKS(100));
 }
 
 printf("Fade completed\n");
 
 // Fade out from 100% to 0% over 1 second
 err = pwm.FadeStart(0.0f, 1000);
-```
+```text
 
 ### Multiple PWM Channels
 
 ```cpp
 // Create multiple PWM channels
-EspPwm pwm1(GPIO_NUM_2, HF_PWM_CHANNEL_0, HF_PWM_TIMER_0, 1000);
-EspPwm pwm2(GPIO_NUM_3, HF_PWM_CHANNEL_1, HF_PWM_TIMER_0, 1000);
-EspPwm pwm3(GPIO_NUM_4, HF_PWM_CHANNEL_2, HF_PWM_TIMER_1, 2000);
+EspPwm pwm1(GPIO*NUM*2, HF*PWM*CHANNEL*0, HF*PWM*TIMER*0, 1000);
+EspPwm pwm2(GPIO*NUM*3, HF*PWM*CHANNEL*1, HF*PWM*TIMER*0, 1000);
+EspPwm pwm3(GPIO*NUM*4, HF*PWM*CHANNEL*2, HF*PWM*TIMER*1, 2000);
 
 // Initialize all
 if (!pwm1.Initialize() || !pwm2.Initialize() || !pwm3.Initialize()) {
@@ -168,13 +171,14 @@ pwm3.SetDutyCycle(75.0f);  // 75%
 pwm1.Start();
 pwm2.Start();
 pwm3.Start();
-```
+```text
 
 ## ESP32-C6 Specific Features
 
 ### LEDC Controller
 
-The ESP32-C6 uses the LEDC (LED Control) controller, which provides high-resolution PWM with hardware-accelerated fade effects.
+The ESP32-C6 uses the LEDC (LED Control) controller, which provides high-resolution PWM with
+hardware-accelerated fade effects.
 
 ### High Resolution
 
@@ -192,14 +196,14 @@ Up to 4 independent timers with different frequencies.
 
 The `EspPwm` class provides comprehensive error handling with specific error codes:
 
-- `HF_PWM_ERR_OK` - Operation successful
-- `HF_PWM_ERR_INVALID_ARG` - Invalid parameter
-- `HF_PWM_ERR_NOT_INITIALIZED` - PWM not initialized
-- `HF_PWM_ERR_INVALID_FREQUENCY` - Invalid frequency
-- `HF_PWM_ERR_INVALID_DUTY` - Invalid duty cycle
-- `HF_PWM_ERR_CHANNEL_IN_USE` - Channel already in use
-- `HF_PWM_ERR_TIMER_IN_USE` - Timer already in use
-- `HF_PWM_ERR_FADE_IN_PROGRESS` - Fade operation in progress
+- `HF*PWM*ERR*OK` - Operation successful
+- `HF*PWM*ERR*INVALID*ARG` - Invalid parameter
+- `HF*PWM*ERR*NOT*INITIALIZED` - PWM not initialized
+- `HF*PWM*ERR*INVALID*FREQUENCY` - Invalid frequency
+- `HF*PWM*ERR*INVALID*DUTY` - Invalid duty cycle
+- `HF*PWM*ERR*CHANNEL*IN*USE` - Channel already in use
+- `HF*PWM*ERR*TIMER*IN*USE` - Timer already in use
+- `HF*PWM*ERR*FADE*IN_PROGRESS` - Fade operation in progress
 
 ## Performance Considerations
 

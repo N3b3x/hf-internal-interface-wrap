@@ -28,7 +28,9 @@
 
 ## 🎯 **Overview**
 
-The `BaseUart` class provides a comprehensive UART abstraction that serves as the unified interface for all Universal Asynchronous Receiver-Transmitter operations in the HardFOC system. It supports configurable baud rates, data formats, and flow control.
+The `BaseUart` class provides a comprehensive UART abstraction that serves as the unified interface
+for all Universal Asynchronous Receiver-Transmitter operations in the HardFOC system.
+It supports configurable baud rates, data formats, and flow control.
 
 ### ✨ **Key Features**
 
@@ -44,11 +46,17 @@ The `BaseUart` class provides a comprehensive UART abstraction that serves as th
 ### 📡 **Supported Applications**
 
 | Application | Baud Rate | Description |
+
 |-------------|-----------|-------------|
+
 | **Debug Output** | 115200 | Serial console and debugging |
+
 | **GPS Communication** | 9600 | GPS module communication |
+
 | **Bluetooth** | 115200 | Bluetooth module communication |
+
 | **Modbus RTU** | 9600-115200 | Industrial protocol communication |
+
 | **Sensor Communication** | 9600-115200 | Sensor data exchange |
 
 ---
@@ -59,24 +67,24 @@ The `BaseUart` class provides a comprehensive UART abstraction that serves as th
 classDiagram
     class BaseUart {
         <<abstract>>
-        +Initialize() hf_uart_err_t
-        +Deinitialize() hf_uart_err_t
-        +Configure(config) hf_uart_err_t
-        +Transmit(data, length) hf_uart_err_t
-        +Receive(data, length) hf_uart_err_t
-        +GetStatus(status) hf_uart_err_t
-        +GetCapabilities(capabilities) hf_uart_err_t
+        +Initialize() hf*uart*err*t
+        +Deinitialize() hf*uart*err*t
+        +Configure(config) hf*uart*err*t
+        +Transmit(data, length) hf*uart*err*t
+        +Receive(data, length) hf*uart*err*t
+        +GetStatus(status) hf*uart*err*t
+        +GetCapabilities(capabilities) hf*uart*err*t
     }
     
     class EspUart {
         +EspUart(port)
-        +GetPort() uart_port_t
-        +GetTxPin() hf_pin_num_t
-        +GetRxPin() hf_pin_num_t
+        +GetPort() uart*port*t
+        +GetTxPin() hf*pin*num*t
+        +GetRxPin() hf*pin*num*t
     }
     
     BaseUart <|-- EspUart
-```
+```text
 
 ---
 
@@ -85,49 +93,76 @@ classDiagram
 ### ✅ **Success Codes**
 
 | Code | Value | Description |
+
 |------|-------|-------------|
-| `UART_SUCCESS` | 0 | ✅ Operation completed successfully |
+
+| `UART*SUCCESS` | 0 | ✅ Operation completed successfully |
 
 ### ❌ **General Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `UART_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `UART_ERR_NOT_INITIALIZED` | 2 | ⚠️ UART not initialized | Call Initialize() first |
-| `UART_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ UART already initialized | Check initialization state |
-| `UART_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
-| `UART_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
-| `UART_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
+
+| `UART*ERR*FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
+
+| `UART*ERR*NOT*INITIALIZED` | 2 | ⚠️ UART not initialized | Call Initialize() first |
+
+| `UART*ERR*ALREADY*INITIALIZED` | 3 | ⚠️ UART already initialized | Check initialization state |
+
+| `UART*ERR*INVALID*PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
+
+| `UART*ERR*NULL*POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
+
+| `UART*ERR*OUT*OF*MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
 ### 📡 **Communication Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `UART_ERR_TRANSMIT_TIMEOUT` | 7 | ⏰ Transmit timeout | Check baud rate and flow control |
-| `UART_ERR_RECEIVE_TIMEOUT` | 8 | ⏰ Receive timeout | Check data source and timing |
-| `UART_ERR_TRANSMIT_FAILURE` | 9 | ❌ Transmit failed | Check connections and device state |
-| `UART_ERR_RECEIVE_FAILURE` | 10 | ❌ Receive failed | Check connections and device state |
-| `UART_ERR_FRAME_ERROR` | 11 | 📊 Frame error | Check baud rate and data format |
-| `UART_ERR_PARITY_ERROR` | 12 | 🔍 Parity error | Check parity settings |
+
+| `UART*ERR*TRANSMIT*TIMEOUT` | 7 | ⏰ Transmit timeout | Check baud rate and flow control |
+
+| `UART*ERR*RECEIVE*TIMEOUT` | 8 | ⏰ Receive timeout | Check data source and timing |
+
+| `UART*ERR*TRANSMIT*FAILURE` | 9 | ❌ Transmit failed | Check connections and device state |
+
+| `UART*ERR*RECEIVE*FAILURE` | 10 | ❌ Receive failed | Check connections and device state |
+
+| `UART*ERR*FRAME*ERROR` | 11 | 📊 Frame error | Check baud rate and data format |
+
+| `UART*ERR*PARITY*ERROR` | 12 | 🔍 Parity error | Check parity settings |
 
 ### ⚙️ **Configuration Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `UART_ERR_INVALID_CONFIGURATION` | 13 | ⚙️ Invalid configuration | Check configuration parameters |
-| `UART_ERR_UNSUPPORTED_BAUD_RATE` | 14 | 🚫 Unsupported baud rate | Use supported baud rate |
-| `UART_ERR_UNSUPPORTED_DATA_FORMAT` | 15 | 🚫 Unsupported data format | Use supported format |
-| `UART_ERR_PIN_CONFLICT` | 16 | 🔌 Pin already in use | Use different pins |
-| `UART_ERR_RESOURCE_BUSY` | 17 | 🔄 Resource busy | Wait for resource availability |
+
+| `UART*ERR*INVALID*CONFIGURATION` | 13 | ⚙️ Invalid configuration | Check configuration parameters |
+
+| `UART*ERR*UNSUPPORTED*BAUD*RATE` | 14 | 🚫 Unsupported baud rate | Use supported baud rate |
+
+| `UART*ERR*UNSUPPORTED*DATA*FORMAT` | 15 | 🚫 Unsupported data format | Use supported format |
+
+| `UART*ERR*PIN*CONFLICT` | 16 | 🔌 Pin already in use | Use different pins |
+
+| `UART*ERR*RESOURCE*BUSY` | 17 | 🔄 Resource busy | Wait for resource availability |
 
 ### 🌐 **Hardware Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `UART_ERR_HARDWARE_FAULT` | 18 | 💥 Hardware fault | Check power and connections |
-| `UART_ERR_COMMUNICATION_FAILURE` | 19 | 📡 Communication failure | Check bus connections |
-| `UART_ERR_DMA_ERROR` | 20 | 💾 DMA error | Check DMA configuration |
-| `UART_ERR_BUFFER_OVERFLOW` | 21 | 📈 Buffer overflow | Increase buffer size |
+
+| `UART*ERR*HARDWARE*FAULT` | 18 | 💥 Hardware fault | Check power and connections |
+
+| `UART*ERR*COMMUNICATION*FAILURE` | 19 | 📡 Communication failure | Check bus connections |
+
+| `UART*ERR*DMA*ERROR` | 20 | 💾 DMA error | Check DMA configuration |
+
+| `UART*ERR*BUFFER*OVERFLOW` | 21 | 📈 Buffer overflow | Increase buffer size |
 
 ---
 
@@ -138,27 +173,27 @@ classDiagram
 ```cpp
 /**
  * @brief Initialize the UART peripheral
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * 📝 Sets up UART hardware, configures pins, and prepares for communication.
  * Must be called before any UART operations.
  * 
  * @example
- * EspUart uart(UART_NUM_0);
- * hf_uart_err_t result = uart.Initialize();
- * if (result == hf_uart_err_t::UART_SUCCESS) {
+ * EspUart uart(UART*NUM*0);
+ * hf*uart*err*t result = uart.Initialize();
+ * if (result == hf*uart*err*t::UART*SUCCESS) {
  *     // UART ready for use
  * }
  */
-virtual hf_uart_err_t Initialize() noexcept = 0;
+virtual hf*uart*err*t Initialize() noexcept = 0;
 
 /**
  * @brief Deinitialize the UART peripheral
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * 🧹 Cleanly shuts down UART hardware and releases resources.
  */
-virtual hf_uart_err_t Deinitialize() noexcept = 0;
+virtual hf*uart*err*t Deinitialize() noexcept = 0;
 
 /**
  * @brief Check if UART is initialized
@@ -175,7 +210,7 @@ virtual hf_uart_err_t Deinitialize() noexcept = 0;
  * 🔄 Automatically initializes UART if not already initialized.
  */
 bool EnsureInitialized() noexcept;
-```
+```text
 
 ### ⚙️ **Configuration Methods**
 
@@ -183,34 +218,34 @@ bool EnsureInitialized() noexcept;
 /**
  * @brief Configure UART parameters
  * @param config UART configuration structure
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * ⚙️ Configures UART parameters including baud rate, data format,
  * flow control, and pin assignments.
  * 
  * @example
- * hf_uart_config_t config;
- * config.baud_rate = 115200;
- * config.data_bits = hf_uart_data_bits_t::DATA_8BIT;
- * config.stop_bits = hf_uart_stop_bits_t::STOP_1BIT;
- * config.parity = hf_uart_parity_t::PARITY_NONE;
- * config.flow_control = hf_uart_flow_control_t::FLOW_NONE;
- * config.tx_pin = 1;
- * config.rx_pin = 3;
+ * hf*uart*config*t config;
+ * config.baud*rate = 115200;
+ * config.data*bits = hf*uart*data*bits*t::DATA*8BIT;
+ * config.stop*bits = hf*uart*stop*bits*t::STOP*1BIT;
+ * config.parity = hf*uart*parity*t::PARITY*NONE;
+ * config.flow*control = hf*uart*flow*control*t::FLOW*NONE;
+ * config.tx*pin = 1;
+ * config.rx*pin = 3;
  * 
- * hf_uart_err_t result = uart.Configure(config);
+ * hf*uart*err*t result = uart.Configure(config);
  */
-virtual hf_uart_err_t Configure(const hf_uart_config_t &config) noexcept = 0;
+virtual hf*uart*err*t Configure(const hf*uart*config*t &config) noexcept = 0;
 
 /**
  * @brief Get current UART configuration
  * @param config [out] Current configuration structure
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * 📊 Retrieves the current UART configuration.
  */
-virtual hf_uart_err_t GetConfiguration(hf_uart_config_t &config) const noexcept = 0;
-```
+virtual hf*uart*err*t GetConfiguration(hf*uart*config*t &config) const noexcept = 0;
+```text
 
 ### 📤 **Transmission Methods**
 
@@ -219,32 +254,32 @@ virtual hf_uart_err_t GetConfiguration(hf_uart_config_t &config) const noexcept 
  * @brief Transmit data
  * @param data Data buffer to transmit
  * @param length Number of bytes to transmit
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * 📤 Transmits data over UART. Blocks until transmission is complete
  * or timeout occurs.
  * 
  * @example
  * const char* message = "Hello, World!\r\n";
- * hf_uart_err_t result = uart.Transmit(
- *     reinterpret_cast<const uint8_t*>(message), strlen(message));
- * if (result == hf_uart_err_t::UART_SUCCESS) {
+ * hf*uart*err*t result = uart.Transmit(
+ *     reinterpret*cast<const uint8*t*>(message), strlen(message));
+ * if (result == hf*uart*err*t::UART*SUCCESS) {
  *     printf("✅ Message transmitted\n");
  * }
  */
-virtual hf_uart_err_t Transmit(const uint8_t *data, size_t length) noexcept = 0;
+virtual hf*uart*err*t Transmit(const uint8*t *data, size*t length) noexcept = 0;
 
 /**
  * @brief Transmit data with timeout
  * @param data Data buffer to transmit
  * @param length Number of bytes to transmit
- * @param timeout_ms Timeout in milliseconds
- * @return hf_uart_err_t error code
+ * @param timeout*ms Timeout in milliseconds
+ * @return hf*uart*err*t error code
  * 
  * 📤 Transmits data with specified timeout.
  */
-virtual hf_uart_err_t Transmit(const uint8_t *data, size_t length, 
-                              uint32_t timeout_ms) noexcept = 0;
+virtual hf*uart*err*t Transmit(const uint8*t *data, size*t length, 
+                              uint32*t timeout*ms) noexcept = 0;
 
 /**
  * @brief Get number of bytes available for transmission
@@ -252,8 +287,8 @@ virtual hf_uart_err_t Transmit(const uint8_t *data, size_t length,
  * 
  * 📊 Returns the number of bytes that can be transmitted without blocking.
  */
-virtual size_t GetTransmitSpace() const noexcept = 0;
-```
+virtual size*t GetTransmitSpace() const noexcept = 0;
+```text
 
 ### 📥 **Reception Methods**
 
@@ -262,31 +297,31 @@ virtual size_t GetTransmitSpace() const noexcept = 0;
  * @brief Receive data
  * @param data Buffer to store received data
  * @param length Number of bytes to receive
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * 📥 Receives data from UART. Blocks until requested number of bytes
  * is received or timeout occurs.
  * 
  * @example
- * uint8_t buffer[64];
- * hf_uart_err_t result = uart.Receive(buffer, 64);
- * if (result == hf_uart_err_t::UART_SUCCESS) {
+ * uint8*t buffer[64];
+ * hf*uart*err*t result = uart.Receive(buffer, 64);
+ * if (result == hf*uart*err*t::UART*SUCCESS) {
  *     printf("📥 Received %zu bytes\n", 64);
  * }
  */
-virtual hf_uart_err_t Receive(uint8_t *data, size_t length) noexcept = 0;
+virtual hf*uart*err*t Receive(uint8*t *data, size*t length) noexcept = 0;
 
 /**
  * @brief Receive data with timeout
  * @param data Buffer to store received data
  * @param length Number of bytes to receive
- * @param timeout_ms Timeout in milliseconds
- * @return hf_uart_err_t error code
+ * @param timeout*ms Timeout in milliseconds
+ * @return hf*uart*err*t error code
  * 
  * 📥 Receives data with specified timeout.
  */
-virtual hf_uart_err_t Receive(uint8_t *data, size_t length, 
-                             uint32_t timeout_ms) noexcept = 0;
+virtual hf*uart*err*t Receive(uint8*t *data, size*t length, 
+                             uint32*t timeout*ms) noexcept = 0;
 
 /**
  * @brief Get number of bytes available for reception
@@ -294,16 +329,16 @@ virtual hf_uart_err_t Receive(uint8_t *data, size_t length,
  * 
  * 📊 Returns the number of bytes available to receive without blocking.
  */
-virtual size_t GetReceiveSpace() const noexcept = 0;
+virtual size*t GetReceiveSpace() const noexcept = 0;
 
 /**
  * @brief Flush receive buffer
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * 🧹 Clears all data in the receive buffer.
  */
-virtual hf_uart_err_t FlushReceive() noexcept = 0;
-```
+virtual hf*uart*err*t FlushReceive() noexcept = 0;
+```text
 
 ### 📊 **Status and Capabilities**
 
@@ -311,21 +346,21 @@ virtual hf_uart_err_t FlushReceive() noexcept = 0;
 /**
  * @brief Get UART status information
  * @param status [out] Status information structure
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * 📊 Retrieves comprehensive status information about UART.
  */
-virtual hf_uart_err_t GetStatus(hf_uart_status_t &status) const noexcept = 0;
+virtual hf*uart*err*t GetStatus(hf*uart*status*t &status) const noexcept = 0;
 
 /**
  * @brief Get UART capabilities
  * @param capabilities [out] Capability information structure
- * @return hf_uart_err_t error code
+ * @return hf*uart*err*t error code
  * 
  * 📋 Retrieves hardware capabilities and limitations.
  */
-virtual hf_uart_err_t GetCapabilities(hf_uart_capabilities_t &capabilities) const noexcept = 0;
-```
+virtual hf*uart*err*t GetCapabilities(hf*uart*capabilities*t &capabilities) const noexcept = 0;
+```text
 
 ---
 
@@ -334,76 +369,76 @@ virtual hf_uart_err_t GetCapabilities(hf_uart_capabilities_t &capabilities) cons
 ### ⚙️ **UART Configuration**
 
 ```cpp
-struct hf_uart_config_t {
-    uint32_t baud_rate;                    ///< Baud rate in bits per second
-    hf_uart_data_bits_t data_bits;         ///< Number of data bits
-    hf_uart_stop_bits_t stop_bits;         ///< Number of stop bits
-    hf_uart_parity_t parity;               ///< Parity setting
-    hf_uart_flow_control_t flow_control;   ///< Flow control setting
-    hf_pin_num_t tx_pin;                   ///< Transmit pin
-    hf_pin_num_t rx_pin;                   ///< Receive pin
-    hf_pin_num_t rts_pin;                  ///< RTS pin (-1 if not used)
-    hf_pin_num_t cts_pin;                  ///< CTS pin (-1 if not used)
-    uint32_t timeout_ms;                   ///< Default timeout in milliseconds
-    bool use_dma;                          ///< Use DMA for transfers
-    size_t rx_buffer_size;                 ///< Receive buffer size
-    size_t tx_buffer_size;                 ///< Transmit buffer size
+struct hf*uart*config*t {
+    uint32*t baud*rate;                    ///< Baud rate in bits per second
+    hf*uart*data*bits*t data*bits;         ///< Number of data bits
+    hf*uart*stop*bits*t stop*bits;         ///< Number of stop bits
+    hf*uart*parity*t parity;               ///< Parity setting
+    hf*uart*flow*control*t flow*control;   ///< Flow control setting
+    hf*pin*num*t tx*pin;                   ///< Transmit pin
+    hf*pin*num*t rx*pin;                   ///< Receive pin
+    hf*pin*num*t rts*pin;                  ///< RTS pin (-1 if not used)
+    hf*pin*num*t cts*pin;                  ///< CTS pin (-1 if not used)
+    uint32*t timeout*ms;                   ///< Default timeout in milliseconds
+    bool use*dma;                          ///< Use DMA for transfers
+    size*t rx*buffer*size;                 ///< Receive buffer size
+    size*t tx*buffer*size;                 ///< Transmit buffer size
 };
-```
+```text
 
 ### 📊 **UART Status**
 
 ```cpp
-struct hf_uart_status_t {
-    bool is_initialized;        ///< UART is initialized
-    bool is_configured;         ///< UART is configured
-    uint32_t current_baud_rate; ///< Current baud rate
-    size_t rx_bytes_available;  ///< Bytes available to receive
-    size_t tx_space_available;  ///< Space available for transmission
-    uint32_t rx_errors;         ///< Number of receive errors
-    uint32_t tx_errors;         ///< Number of transmit errors
-    hf_uart_err_t last_error;   ///< Last error that occurred
-    uint32_t timestamp_us;      ///< Timestamp of last operation
+struct hf*uart*status*t {
+    bool is*initialized;        ///< UART is initialized
+    bool is*configured;         ///< UART is configured
+    uint32*t current*baud*rate; ///< Current baud rate
+    size*t rx*bytes*available;  ///< Bytes available to receive
+    size*t tx*space*available;  ///< Space available for transmission
+    uint32*t rx*errors;         ///< Number of receive errors
+    uint32*t tx*errors;         ///< Number of transmit errors
+    hf*uart*err*t last*error;   ///< Last error that occurred
+    uint32*t timestamp*us;      ///< Timestamp of last operation
 };
-```
+```text
 
 ### 📋 **UART Capabilities**
 
 ```cpp
-struct hf_uart_capabilities_t {
-    uint8_t max_ports;              ///< Maximum number of UART ports
-    uint32_t min_baud_rate;         ///< Minimum baud rate
-    uint32_t max_baud_rate;         ///< Maximum baud rate
-    uint8_t supported_data_bits;    ///< Bit mask of supported data bits
-    uint8_t supported_stop_bits;    ///< Bit mask of supported stop bits
-    uint8_t supported_parity;       ///< Bit mask of supported parity
-    bool supports_flow_control;     ///< Supports hardware flow control
-    bool supports_dma;              ///< Supports DMA transfers
-    size_t max_buffer_size;         ///< Maximum buffer size
-    uint32_t max_timeout_ms;        ///< Maximum timeout value
+struct hf*uart*capabilities*t {
+    uint8*t max*ports;              ///< Maximum number of UART ports
+    uint32*t min*baud*rate;         ///< Minimum baud rate
+    uint32*t max*baud*rate;         ///< Maximum baud rate
+    uint8*t supported*data*bits;    ///< Bit mask of supported data bits
+    uint8*t supported*stop*bits;    ///< Bit mask of supported stop bits
+    uint8*t supported*parity;       ///< Bit mask of supported parity
+    bool supports*flow*control;     ///< Supports hardware flow control
+    bool supports*dma;              ///< Supports DMA transfers
+    size*t max*buffer*size;         ///< Maximum buffer size
+    uint32*t max*timeout*ms;        ///< Maximum timeout value
 };
-```
+```text
 
 ### 📈 **UART Statistics**
 
 ```cpp
-struct hf_uart_statistics_t {
-    uint32_t total_transmissions;   ///< Total transmissions performed
-    uint32_t successful_transmissions; ///< Successful transmissions
-    uint32_t failed_transmissions;  ///< Failed transmissions
-    uint32_t total_receptions;      ///< Total receptions performed
-    uint32_t successful_receptions; ///< Successful receptions
-    uint32_t failed_receptions;     ///< Failed receptions
-    uint32_t bytes_transmitted;     ///< Total bytes transmitted
-    uint32_t bytes_received;        ///< Total bytes received
-    uint32_t frame_errors;          ///< Number of frame errors
-    uint32_t parity_errors;         ///< Number of parity errors
-    uint32_t buffer_overflows;      ///< Number of buffer overflows
-    uint32_t average_transmit_time_us; ///< Average transmit time
-    uint32_t max_transmit_time_us;  ///< Maximum transmit time
-    uint32_t min_transmit_time_us;  ///< Minimum transmit time
+struct hf*uart*statistics*t {
+    uint32*t total*transmissions;   ///< Total transmissions performed
+    uint32*t successful*transmissions; ///< Successful transmissions
+    uint32*t failed*transmissions;  ///< Failed transmissions
+    uint32*t total*receptions;      ///< Total receptions performed
+    uint32*t successful*receptions; ///< Successful receptions
+    uint32*t failed*receptions;     ///< Failed receptions
+    uint32*t bytes*transmitted;     ///< Total bytes transmitted
+    uint32*t bytes*received;        ///< Total bytes received
+    uint32*t frame*errors;          ///< Number of frame errors
+    uint32*t parity*errors;         ///< Number of parity errors
+    uint32*t buffer*overflows;      ///< Number of buffer overflows
+    uint32*t average*transmit*time*us; ///< Average transmit time
+    uint32*t max*transmit*time*us;  ///< Maximum transmit time
+    uint32*t min*transmit*time*us;  ///< Minimum transmit time
 };
-```
+```text
 
 ---
 
@@ -416,35 +451,35 @@ struct hf_uart_statistics_t {
 
 class SerialCommunicator {
 private:
-    EspUart uart_;
+    EspUart uart*;
     
 public:
     bool initialize() {
-        uart_ = EspUart(UART_NUM_0);
+        uart* = EspUart(UART*NUM*0);
         
-        if (!uart_.EnsureInitialized()) {
+        if (!uart*.EnsureInitialized()) {
             printf("❌ UART initialization failed\n");
             return false;
         }
         
         // Configure for standard serial communication
-        hf_uart_config_t config;
-        config.baud_rate = 115200;
-        config.data_bits = hf_uart_data_bits_t::DATA_8BIT;
-        config.stop_bits = hf_uart_stop_bits_t::STOP_1BIT;
-        config.parity = hf_uart_parity_t::PARITY_NONE;
-        config.flow_control = hf_uart_flow_control_t::FLOW_NONE;
-        config.tx_pin = 1;  // GPIO 1
-        config.rx_pin = 3;  // GPIO 3
-        config.rts_pin = -1;  // Not used
-        config.cts_pin = -1;  // Not used
-        config.timeout_ms = 1000;
-        config.use_dma = false;
-        config.rx_buffer_size = 1024;
-        config.tx_buffer_size = 1024;
+        hf*uart*config*t config;
+        config.baud*rate = 115200;
+        config.data*bits = hf*uart*data*bits*t::DATA*8BIT;
+        config.stop*bits = hf*uart*stop*bits*t::STOP*1BIT;
+        config.parity = hf*uart*parity*t::PARITY*NONE;
+        config.flow*control = hf*uart*flow*control*t::FLOW*NONE;
+        config.tx*pin = 1;  // GPIO 1
+        config.rx*pin = 3;  // GPIO 3
+        config.rts*pin = -1;  // Not used
+        config.cts*pin = -1;  // Not used
+        config.timeout*ms = 1000;
+        config.use*dma = false;
+        config.rx*buffer*size = 1024;
+        config.tx*buffer*size = 1024;
         
-        hf_uart_err_t result = uart_.Configure(config);
-        if (result != hf_uart_err_t::UART_SUCCESS) {
+        hf*uart*err*t result = uart*.Configure(config);
+        if (result != hf*uart*err*t::UART*SUCCESS) {
             printf("❌ UART configuration failed: %s\n", HfUartErrToString(result));
             return false;
         }
@@ -453,55 +488,55 @@ public:
         return true;
     }
     
-    void send_message(const char* message) {
-        size_t length = strlen(message);
-        hf_uart_err_t result = uart_.Transmit(
-            reinterpret_cast<const uint8_t*>(message), length);
+    void send*message(const char* message) {
+        size*t length = strlen(message);
+        hf*uart*err*t result = uart*.Transmit(
+            reinterpret*cast<const uint8*t*>(message), length);
         
-        if (result == hf_uart_err_t::UART_SUCCESS) {
+        if (result == hf*uart*err*t::UART*SUCCESS) {
             printf("📤 Sent: %s", message);
         } else {
             printf("❌ Send failed: %s\n", HfUartErrToString(result));
         }
     }
     
-    void receive_message(char* buffer, size_t max_length) {
-        hf_uart_err_t result = uart_.Receive(
-            reinterpret_cast<uint8_t*>(buffer), max_length);
+    void receive*message(char* buffer, size*t max*length) {
+        hf*uart*err*t result = uart*.Receive(
+            reinterpret*cast<uint8*t*>(buffer), max*length);
         
-        if (result == hf_uart_err_t::UART_SUCCESS) {
-            buffer[max_length] = '\0';  // Null terminate
+        if (result == hf*uart*err*t::UART*SUCCESS) {
+            buffer[max*length] = '\0';  // Null terminate
             printf("📥 Received: %s", buffer);
         } else {
             printf("❌ Receive failed: %s\n", HfUartErrToString(result));
         }
     }
     
-    void echo_loop() {
+    void echo*loop() {
         char buffer[256];
         printf("🔄 Starting echo loop...\n");
         
         while (true) {
             // Check if data is available
-            if (uart_.GetReceiveSpace() > 0) {
-                hf_uart_err_t result = uart_.Receive(
-                    reinterpret_cast<uint8_t*>(buffer), 255, 100);
+            if (uart*.GetReceiveSpace() > 0) {
+                hf*uart*err*t result = uart*.Receive(
+                    reinterpret*cast<uint8*t*>(buffer), 255, 100);
                 
-                if (result == hf_uart_err_t::UART_SUCCESS) {
+                if (result == hf*uart*err*t::UART*SUCCESS) {
                     buffer[255] = '\0';
                     printf("📥 Echo: %s", buffer);
                     
                     // Echo back
-                    uart_.Transmit(reinterpret_cast<const uint8_t*>(buffer), 
+                    uart*.Transmit(reinterpret*cast<const uint8*t*>(buffer), 
                                  strlen(buffer));
                 }
             }
             
-            vTaskDelay(pdMS_TO_TICKS(10));
+            vTaskDelay(pdMS*TO*TICKS(10));
         }
     }
 };
-```
+```text
 
 ### 🗺️ **GPS Communication**
 
@@ -510,36 +545,36 @@ public:
 
 class GpsController {
 private:
-    EspUart uart_;
-    static constexpr size_t GPS_BUFFER_SIZE = 512;
-    char gps_buffer_[GPS_BUFFER_SIZE];
+    EspUart uart*;
+    static constexpr size*t GPS*BUFFER*SIZE = 512;
+    char gps*buffer*[GPS*BUFFER*SIZE];
     
 public:
     bool initialize() {
-        uart_ = EspUart(UART_NUM_1);
+        uart* = EspUart(UART*NUM*1);
         
-        if (!uart_.EnsureInitialized()) {
+        if (!uart*.EnsureInitialized()) {
             return false;
         }
         
         // Configure for GPS communication
-        hf_uart_config_t config;
-        config.baud_rate = 9600;  // Standard GPS baud rate
-        config.data_bits = hf_uart_data_bits_t::DATA_8BIT;
-        config.stop_bits = hf_uart_stop_bits_t::STOP_1BIT;
-        config.parity = hf_uart_parity_t::PARITY_NONE;
-        config.flow_control = hf_uart_flow_control_t::FLOW_NONE;
-        config.tx_pin = 17;  // GPS TX
-        config.rx_pin = 16;  // GPS RX
-        config.rts_pin = -1;
-        config.cts_pin = -1;
-        config.timeout_ms = 5000;  // 5 second timeout
-        config.use_dma = false;
-        config.rx_buffer_size = GPS_BUFFER_SIZE;
-        config.tx_buffer_size = 256;
+        hf*uart*config*t config;
+        config.baud*rate = 9600;  // Standard GPS baud rate
+        config.data*bits = hf*uart*data*bits*t::DATA*8BIT;
+        config.stop*bits = hf*uart*stop*bits*t::STOP*1BIT;
+        config.parity = hf*uart*parity*t::PARITY*NONE;
+        config.flow*control = hf*uart*flow*control*t::FLOW*NONE;
+        config.tx*pin = 17;  // GPS TX
+        config.rx*pin = 16;  // GPS RX
+        config.rts*pin = -1;
+        config.cts*pin = -1;
+        config.timeout*ms = 5000;  // 5 second timeout
+        config.use*dma = false;
+        config.rx*buffer*size = GPS*BUFFER*SIZE;
+        config.tx*buffer*size = 256;
         
-        hf_uart_err_t result = uart_.Configure(config);
-        if (result != hf_uart_err_t::UART_SUCCESS) {
+        hf*uart*err*t result = uart*.Configure(config);
+        if (result != hf*uart*err*t::UART*SUCCESS) {
             printf("❌ GPS configuration failed\n");
             return false;
         }
@@ -548,18 +583,18 @@ public:
         return true;
     }
     
-    bool read_gps_data() {
+    bool read*gps*data() {
         // Read GPS data with timeout
-        hf_uart_err_t result = uart_.Receive(
-            reinterpret_cast<uint8_t*>(gps_buffer_), GPS_BUFFER_SIZE - 1, 1000);
+        hf*uart*err*t result = uart*.Receive(
+            reinterpret*cast<uint8*t*>(gps*buffer*), GPS*BUFFER*SIZE - 1, 1000);
         
-        if (result == hf_uart_err_t::UART_SUCCESS) {
-            gps_buffer_[GPS_BUFFER_SIZE - 1] = '\0';
+        if (result == hf*uart*err*t::UART*SUCCESS) {
+            gps*buffer*[GPS*BUFFER*SIZE - 1] = '\0';
             
             // Parse NMEA sentences
-            parse_nmea_data(gps_buffer_);
+            parse*nmea*data(gps*buffer*);
             return true;
-        } else if (result == hf_uart_err_t::UART_ERR_RECEIVE_TIMEOUT) {
+        } else if (result == hf*uart*err*t::UART*ERR*RECEIVE*TIMEOUT) {
             printf("⏰ GPS timeout - no data received\n");
             return false;
         } else {
@@ -569,60 +604,60 @@ public:
     }
     
 private:
-    void parse_nmea_data(const char* data) {
+    void parse*nmea*data(const char* data) {
         // Simple NMEA parser - look for GPRMC sentences
-        char* line = strtok(const_cast<char*>(data), "\r\n");
+        char* line = strtok(const*cast<char*>(data), "\r\n");
         while (line != nullptr) {
             if (strncmp(line, "$GPRMC", 6) == 0) {
-                parse_gprmc(line);
+                parse*gprmc(line);
             } else if (strncmp(line, "$GPGGA", 6) == 0) {
-                parse_gpgga(line);
+                parse*gpgga(line);
             }
             line = strtok(nullptr, "\r\n");
         }
     }
     
-    void parse_gprmc(const char* sentence) {
+    void parse*gprmc(const char* sentence) {
         // Parse GPRMC sentence for time, date, position, speed
         printf("📍 GPRMC: %s\n", sentence);
         // Add actual parsing logic here
     }
     
-    void parse_gpgga(const char* sentence) {
+    void parse*gpgga(const char* sentence) {
         // Parse GPGGA sentence for position and altitude
         printf("🌍 GPGGA: %s\n", sentence);
         // Add actual parsing logic here
     }
     
 public:
-    void send_gps_command(const char* command) {
+    void send*gps*command(const char* command) {
         // Send command to GPS module
-        size_t length = strlen(command);
-        hf_uart_err_t result = uart_.Transmit(
-            reinterpret_cast<const uint8_t*>(command), length);
+        size*t length = strlen(command);
+        hf*uart*err*t result = uart*.Transmit(
+            reinterpret*cast<const uint8*t*>(command), length);
         
-        if (result == hf_uart_err_t::UART_SUCCESS) {
+        if (result == hf*uart*err*t::UART*SUCCESS) {
             printf("📤 GPS Command: %s", command);
         } else {
             printf("❌ GPS command failed: %s\n", HfUartErrToString(result));
         }
     }
     
-    void gps_monitoring_task() {
+    void gps*monitoring*task() {
         printf("🗺️ Starting GPS monitoring...\n");
         
         while (true) {
-            if (read_gps_data()) {
+            if (read*gps*data()) {
                 // Data received and parsed
-                vTaskDelay(pdMS_TO_TICKS(100));
+                vTaskDelay(pdMS*TO*TICKS(100));
             } else {
                 // No data or error
-                vTaskDelay(pdMS_TO_TICKS(1000));
+                vTaskDelay(pdMS*TO*TICKS(1000));
             }
         }
     }
 };
-```
+```text
 
 ### 🔵 **Bluetooth Communication**
 
@@ -631,36 +666,36 @@ public:
 
 class BluetoothController {
 private:
-    EspUart uart_;
-    static constexpr size_t BT_BUFFER_SIZE = 1024;
-    char bt_buffer_[BT_BUFFER_SIZE];
+    EspUart uart*;
+    static constexpr size*t BT*BUFFER*SIZE = 1024;
+    char bt*buffer*[BT*BUFFER*SIZE];
     
 public:
     bool initialize() {
-        uart_ = EspUart(UART_NUM_2);
+        uart* = EspUart(UART*NUM*2);
         
-        if (!uart_.EnsureInitialized()) {
+        if (!uart*.EnsureInitialized()) {
             return false;
         }
         
         // Configure for Bluetooth communication
-        hf_uart_config_t config;
-        config.baud_rate = 115200;  // Standard BT baud rate
-        config.data_bits = hf_uart_data_bits_t::DATA_8BIT;
-        config.stop_bits = hf_uart_stop_bits_t::STOP_1BIT;
-        config.parity = hf_uart_parity_t::PARITY_NONE;
-        config.flow_control = hf_uart_flow_control_t::FLOW_NONE;
-        config.tx_pin = 25;  // BT TX
-        config.rx_pin = 26;  // BT RX
-        config.rts_pin = -1;
-        config.cts_pin = -1;
-        config.timeout_ms = 1000;
-        config.use_dma = true;  // Use DMA for BT
-        config.rx_buffer_size = BT_BUFFER_SIZE;
-        config.tx_buffer_size = BT_BUFFER_SIZE;
+        hf*uart*config*t config;
+        config.baud*rate = 115200;  // Standard BT baud rate
+        config.data*bits = hf*uart*data*bits*t::DATA*8BIT;
+        config.stop*bits = hf*uart*stop*bits*t::STOP*1BIT;
+        config.parity = hf*uart*parity*t::PARITY*NONE;
+        config.flow*control = hf*uart*flow*control*t::FLOW*NONE;
+        config.tx*pin = 25;  // BT TX
+        config.rx*pin = 26;  // BT RX
+        config.rts*pin = -1;
+        config.cts*pin = -1;
+        config.timeout*ms = 1000;
+        config.use*dma = true;  // Use DMA for BT
+        config.rx*buffer*size = BT*BUFFER*SIZE;
+        config.tx*buffer*size = BT*BUFFER*SIZE;
         
-        hf_uart_err_t result = uart_.Configure(config);
-        if (result != hf_uart_err_t::UART_SUCCESS) {
+        hf*uart*err*t result = uart*.Configure(config);
+        if (result != hf*uart*err*t::UART*SUCCESS) {
             printf("❌ Bluetooth configuration failed\n");
             return false;
         }
@@ -669,27 +704,27 @@ public:
         return true;
     }
     
-    void send_data(const char* data) {
-        size_t length = strlen(data);
-        hf_uart_err_t result = uart_.Transmit(
-            reinterpret_cast<const uint8_t*>(data), length);
+    void send*data(const char* data) {
+        size*t length = strlen(data);
+        hf*uart*err*t result = uart*.Transmit(
+            reinterpret*cast<const uint8*t*>(data), length);
         
-        if (result == hf_uart_err_t::UART_SUCCESS) {
+        if (result == hf*uart*err*t::UART*SUCCESS) {
             printf("📤 BT Sent: %s", data);
         } else {
             printf("❌ BT send failed: %s\n", HfUartErrToString(result));
         }
     }
     
-    bool receive_data(char* buffer, size_t max_length) {
-        hf_uart_err_t result = uart_.Receive(
-            reinterpret_cast<uint8_t*>(buffer), max_length - 1, 100);
+    bool receive*data(char* buffer, size*t max*length) {
+        hf*uart*err*t result = uart*.Receive(
+            reinterpret*cast<uint8*t*>(buffer), max*length - 1, 100);
         
-        if (result == hf_uart_err_t::UART_SUCCESS) {
-            buffer[max_length - 1] = '\0';
+        if (result == hf*uart*err*t::UART*SUCCESS) {
+            buffer[max*length - 1] = '\0';
             printf("📥 BT Received: %s", buffer);
             return true;
-        } else if (result == hf_uart_err_t::UART_ERR_RECEIVE_TIMEOUT) {
+        } else if (result == hf*uart*err*t::UART*ERR*RECEIVE*TIMEOUT) {
             return false;  // No data available
         } else {
             printf("❌ BT receive failed: %s\n", HfUartErrToString(result));
@@ -697,33 +732,33 @@ public:
         }
     }
     
-    void bluetooth_chat_task() {
+    void bluetooth*chat*task() {
         printf("🔵 Starting Bluetooth chat...\n");
         
-        char input_buffer[256];
-        char output_buffer[256];
+        char input*buffer[256];
+        char output*buffer[256];
         
         while (true) {
             // Check for incoming data
-            if (receive_data(input_buffer, sizeof(input_buffer))) {
+            if (receive*data(input*buffer, sizeof(input*buffer))) {
                 // Process received data
-                snprintf(output_buffer, sizeof(output_buffer), 
-                        "Echo: %s", input_buffer);
-                send_data(output_buffer);
+                snprintf(output*buffer, sizeof(output*buffer), 
+                        "Echo: %s", input*buffer);
+                send*data(output*buffer);
             }
             
             // Check for local input (simulated)
             if (/* local input available */) {
-                snprintf(output_buffer, sizeof(output_buffer), 
+                snprintf(output*buffer, sizeof(output*buffer), 
                         "Local: Hello from ESP32!\n");
-                send_data(output_buffer);
+                send*data(output*buffer);
             }
             
-            vTaskDelay(pdMS_TO_TICKS(100));
+            vTaskDelay(pdMS*TO*TICKS(100));
         }
     }
 };
-```
+```text
 
 ### 🏭 **Modbus RTU Communication**
 
@@ -732,37 +767,37 @@ public:
 
 class ModbusController {
 private:
-    EspUart uart_;
-    static constexpr uint8_t MODBUS_SLAVE_ADDRESS = 1;
-    static constexpr size_t MODBUS_BUFFER_SIZE = 256;
-    uint8_t modbus_buffer_[MODBUS_BUFFER_SIZE];
+    EspUart uart*;
+    static constexpr uint8*t MODBUS*SLAVE*ADDRESS = 1;
+    static constexpr size*t MODBUS*BUFFER*SIZE = 256;
+    uint8*t modbus*buffer*[MODBUS*BUFFER*SIZE];
     
 public:
     bool initialize() {
-        uart_ = EspUart(UART_NUM_1);
+        uart* = EspUart(UART*NUM*1);
         
-        if (!uart_.EnsureInitialized()) {
+        if (!uart*.EnsureInitialized()) {
             return false;
         }
         
         // Configure for Modbus RTU
-        hf_uart_config_t config;
-        config.baud_rate = 9600;  // Standard Modbus baud rate
-        config.data_bits = hf_uart_data_bits_t::DATA_8BIT;
-        config.stop_bits = hf_uart_stop_bits_t::STOP_1BIT;
-        config.parity = hf_uart_parity_t::PARITY_EVEN;  // Modbus standard
-        config.flow_control = hf_uart_flow_control_t::FLOW_NONE;
-        config.tx_pin = 17;
-        config.rx_pin = 16;
-        config.rts_pin = -1;
-        config.cts_pin = -1;
-        config.timeout_ms = 1000;
-        config.use_dma = false;
-        config.rx_buffer_size = MODBUS_BUFFER_SIZE;
-        config.tx_buffer_size = MODBUS_BUFFER_SIZE;
+        hf*uart*config*t config;
+        config.baud*rate = 9600;  // Standard Modbus baud rate
+        config.data*bits = hf*uart*data*bits*t::DATA*8BIT;
+        config.stop*bits = hf*uart*stop*bits*t::STOP*1BIT;
+        config.parity = hf*uart*parity*t::PARITY*EVEN;  // Modbus standard
+        config.flow*control = hf*uart*flow*control*t::FLOW*NONE;
+        config.tx*pin = 17;
+        config.rx*pin = 16;
+        config.rts*pin = -1;
+        config.cts*pin = -1;
+        config.timeout*ms = 1000;
+        config.use*dma = false;
+        config.rx*buffer*size = MODBUS*BUFFER*SIZE;
+        config.tx*buffer*size = MODBUS*BUFFER*SIZE;
         
-        hf_uart_err_t result = uart_.Configure(config);
-        if (result != hf_uart_err_t::UART_SUCCESS) {
+        hf*uart*err*t result = uart*.Configure(config);
+        if (result != hf*uart*err*t::UART*SUCCESS) {
             printf("❌ Modbus configuration failed\n");
             return false;
         }
@@ -771,40 +806,40 @@ public:
         return true;
     }
     
-    bool read_holding_registers(uint8_t slave_addr, uint16_t start_addr, 
-                               uint16_t count, uint16_t* data) {
+    bool read*holding*registers(uint8*t slave*addr, uint16*t start*addr, 
+                               uint16*t count, uint16*t* data) {
         // Build Modbus RTU read holding registers request
-        uint8_t request[8];
-        request[0] = slave_addr;           // Slave address
+        uint8*t request[8];
+        request[0] = slave*addr;           // Slave address
         request[1] = 0x03;                 // Function code (read holding registers)
-        request[2] = (start_addr >> 8) & 0xFF;  // Starting address high
-        request[3] = start_addr & 0xFF;         // Starting address low
+        request[2] = (start*addr >> 8) & 0xFF;  // Starting address high
+        request[3] = start*addr & 0xFF;         // Starting address low
         request[4] = (count >> 8) & 0xFF;       // Quantity high
         request[5] = count & 0xFF;              // Quantity low
         
         // Calculate CRC
-        uint16_t crc = calculate_crc16(request, 6);
+        uint16*t crc = calculate*crc16(request, 6);
         request[6] = crc & 0xFF;           // CRC low
         request[7] = (crc >> 8) & 0xFF;    // CRC high
         
         // Send request
-        hf_uart_err_t result = uart_.Transmit(request, 8);
-        if (result != hf_uart_err_t::UART_SUCCESS) {
+        hf*uart*err*t result = uart*.Transmit(request, 8);
+        if (result != hf*uart*err*t::UART*SUCCESS) {
             printf("❌ Modbus request failed: %s\n", HfUartErrToString(result));
             return false;
         }
         
         // Receive response
-        size_t response_length = 5 + count * 2;  // Header + data + CRC
-        result = uart_.Receive(modbus_buffer_, response_length, 1000);
+        size*t response*length = 5 + count * 2;  // Header + data + CRC
+        result = uart*.Receive(modbus*buffer*, response*length, 1000);
         
-        if (result == hf_uart_err_t::UART_SUCCESS) {
+        if (result == hf*uart*err*t::UART*SUCCESS) {
             // Verify response
-            if (modbus_buffer_[0] == slave_addr && modbus_buffer_[1] == 0x03) {
+            if (modbus*buffer*[0] == slave*addr && modbus*buffer*[1] == 0x03) {
                 // Extract data
                 for (int i = 0; i < count; i++) {
-                    data[i] = (modbus_buffer_[3 + i * 2] << 8) | 
-                              modbus_buffer_[4 + i * 2];
+                    data[i] = (modbus*buffer*[3 + i * 2] << 8) | 
+                              modbus*buffer*[4 + i * 2];
                 }
                 printf("✅ Read %d holding registers\n", count);
                 return true;
@@ -818,10 +853,10 @@ public:
         }
     }
     
-    bool write_single_register(uint8_t slave_addr, uint16_t addr, uint16_t value) {
+    bool write*single*register(uint8*t slave*addr, uint16*t addr, uint16*t value) {
         // Build Modbus RTU write single register request
-        uint8_t request[8];
-        request[0] = slave_addr;           // Slave address
+        uint8*t request[8];
+        request[0] = slave*addr;           // Slave address
         request[1] = 0x06;                 // Function code (write single register)
         request[2] = (addr >> 8) & 0xFF;   // Register address high
         request[3] = addr & 0xFF;          // Register address low
@@ -829,22 +864,22 @@ public:
         request[5] = value & 0xFF;         // Value low
         
         // Calculate CRC
-        uint16_t crc = calculate_crc16(request, 6);
+        uint16*t crc = calculate*crc16(request, 6);
         request[6] = crc & 0xFF;           // CRC low
         request[7] = (crc >> 8) & 0xFF;    // CRC high
         
         // Send request
-        hf_uart_err_t result = uart_.Transmit(request, 8);
-        if (result != hf_uart_err_t::UART_SUCCESS) {
+        hf*uart*err*t result = uart*.Transmit(request, 8);
+        if (result != hf*uart*err*t::UART*SUCCESS) {
             printf("❌ Modbus write request failed: %s\n", HfUartErrToString(result));
             return false;
         }
         
         // Receive response (should be echo of request)
-        result = uart_.Receive(modbus_buffer_, 8, 1000);
+        result = uart*.Receive(modbus*buffer*, 8, 1000);
         
-        if (result == hf_uart_err_t::UART_SUCCESS) {
-            if (memcmp(request, modbus_buffer_, 8) == 0) {
+        if (result == hf*uart*err*t::UART*SUCCESS) {
+            if (memcmp(request, modbus*buffer*, 8) == 0) {
                 printf("✅ Wrote register 0x%04X = 0x%04X\n", addr, value);
                 return true;
             } else {
@@ -858,10 +893,10 @@ public:
     }
     
 private:
-    uint16_t calculate_crc16(const uint8_t* data, size_t length) {
-        uint16_t crc = 0xFFFF;
+    uint16*t calculate*crc16(const uint8*t* data, size*t length) {
+        uint16*t crc = 0xFFFF;
         
-        for (size_t i = 0; i < length; i++) {
+        for (size*t i = 0; i < length; i++) {
             crc ^= data[i];
             for (int j = 0; j < 8; j++) {
                 if (crc & 0x0001) {
@@ -875,7 +910,7 @@ private:
         return crc;
     }
 };
-```
+```text
 
 ---
 
@@ -897,8 +932,8 @@ if (!uart.EnsureInitialized()) {
 // Modbus: 9600-115200
 
 // ✅ Handle timeouts gracefully
-hf_uart_err_t result = uart.Receive(buffer, length, 1000);
-if (result == hf_uart_err_t::UART_ERR_RECEIVE_TIMEOUT) {
+hf*uart*err*t result = uart.Receive(buffer, length, 1000);
+if (result == hf*uart*err*t::UART*ERR*RECEIVE*TIMEOUT) {
     printf("⏰ No data received within timeout\n");
     return false;
 }
@@ -917,13 +952,13 @@ if (uart.GetTransmitSpace() >= length) {
 // Modbus: 8E1 (8 data bits, even parity, 1 stop bit)
 
 // ✅ Monitor statistics for system health
-hf_uart_statistics_t stats;
-if (uart.GetStatistics(stats) == hf_uart_err_t::UART_SUCCESS) {
-    if (stats.frame_errors > 10) {
+hf*uart*statistics*t stats;
+if (uart.GetStatistics(stats) == hf*uart*err*t::UART*SUCCESS) {
+    if (stats.frame*errors > 10) {
         printf("⚠️ High frame error rate detected\n");
     }
 }
-```
+```text
 
 ### ❌ **Common Pitfalls**
 
@@ -945,13 +980,13 @@ uart.Transmit(data, length);  // May fail silently
 
 // ❌ Don't assume all data formats are supported
 // Check capabilities before using specific formats
-```
+```text
 
 ### 🎯 **Performance Optimization**
 
 ```cpp
 // 🚀 Use DMA for large transfers
-config.use_dma = (transfer_size > 64);  // Use DMA for transfers > 64 bytes
+config.use*dma = (transfer*size > 64);  // Use DMA for transfers > 64 bytes
 
 // 🚀 Use appropriate buffer sizes
 // Small buffers: Lower memory usage, more frequent interrupts
@@ -969,7 +1004,7 @@ config.use_dma = (transfer_size > 64);  // Use DMA for transfers > 64 bytes
 
 // 🚀 Use flow control when needed
 // Prevents buffer overflows in high-speed communication
-```
+```text
 
 ---
 

@@ -360,18 +360,18 @@ hf_spi_err_t EspSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf
 
   // Enhanced error mapping based on ESP-IDF v5.5 documentation
   switch (err) {
-    case ESP_OK:
-      return hf_spi_err_t::SPI_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
-    case ESP_ERR_TIMEOUT:
-      return hf_spi_err_t::SPI_ERR_TRANSFER_TIMEOUT;
-    case ESP_ERR_NO_MEM:
-      return hf_spi_err_t::SPI_ERR_OUT_OF_MEMORY;
-    case ESP_ERR_INVALID_STATE:
-      return hf_spi_err_t::SPI_ERR_BUS_BUSY;
-    default:
-      return hf_spi_err_t::SPI_ERR_TRANSFER_FAILED;
+  case ESP_OK:
+    return hf_spi_err_t::SPI_SUCCESS;
+  case ESP_ERR_INVALID_ARG:
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
+  case ESP_ERR_TIMEOUT:
+    return hf_spi_err_t::SPI_ERR_TRANSFER_TIMEOUT;
+  case ESP_ERR_NO_MEM:
+    return hf_spi_err_t::SPI_ERR_OUT_OF_MEMORY;
+  case ESP_ERR_INVALID_STATE:
+    return hf_spi_err_t::SPI_ERR_BUS_BUSY;
+  default:
+    return hf_spi_err_t::SPI_ERR_TRANSFER_FAILED;
   }
 }
 
@@ -395,14 +395,14 @@ hf_spi_err_t EspSpiDevice::AcquireBus(hf_u32_t timeout_ms) noexcept {
   esp_err_t err = spi_device_acquire_bus(handle_, ticks);
 
   switch (err) {
-    case ESP_OK:
-      return hf_spi_err_t::SPI_SUCCESS;
-    case ESP_ERR_TIMEOUT:
-      return hf_spi_err_t::SPI_ERR_BUS_TIMEOUT;
-    case ESP_ERR_INVALID_ARG:
-      return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
-    default:
-      return hf_spi_err_t::SPI_ERR_BUS_BUSY;
+  case ESP_OK:
+    return hf_spi_err_t::SPI_SUCCESS;
+  case ESP_ERR_TIMEOUT:
+    return hf_spi_err_t::SPI_ERR_BUS_TIMEOUT;
+  case ESP_ERR_INVALID_ARG:
+    return hf_spi_err_t::SPI_ERR_INVALID_PARAMETER;
+  default:
+    return hf_spi_err_t::SPI_ERR_BUS_BUSY;
   }
 }
 

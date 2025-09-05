@@ -12,7 +12,10 @@
 
 ## Overview
 
-`EspI2c` is the ESP32-C6 implementation of the `BaseI2c` interface, providing comprehensive I2C functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced I2C features with hardware-specific optimizations.
+`EspI2c` is the ESP32-C6 implementation of the `BaseI2c` interface,
+providing comprehensive I2C functionality specifically optimized for ESP32-C6 microcontrollers
+running ESP-IDF v5.5+.
+It offers both basic and advanced I2C features with hardware-specific optimizations.
 
 ## Features
 
@@ -28,7 +31,7 @@
 
 ```cpp
 #include "inc/mcu/esp32/EspI2c.h"
-```
+```text
 
 ## Class Definition
 
@@ -37,11 +40,11 @@ class EspI2c : public BaseI2c {
 public:
     // Constructor with full configuration
     explicit EspI2c(
-        hf_i2c_port_t port = hf_i2c_port_t::HF_I2C_PORT_0,
-        hf_pin_num_t sda_pin = GPIO_NUM_21,
-        hf_pin_num_t scl_pin = GPIO_NUM_22,
-        hf_i2c_freq_t frequency = hf_i2c_freq_t::HF_I2C_FREQ_100K,
-        hf_i2c_mode_t mode = hf_i2c_mode_t::HF_I2C_MODE_MASTER
+        hf*i2c*port*t port = hf*i2c*port*t::HF*I2C*PORT*0,
+        hf*pin*num*t sda*pin = GPIO*NUM*21,
+        hf*pin*num*t scl*pin = GPIO*NUM*22,
+        hf*i2c*freq*t frequency = hf*i2c*freq*t::HF*I2C*FREQ*100K,
+        hf*i2c*mode*t mode = hf*i2c*mode*t::HF*I2C*MODE*MASTER
     ) noexcept;
 
     // Destructor
@@ -54,17 +57,17 @@ public:
     const char* GetDescription() const noexcept override;
 
     // I2C operations
-    hf_i2c_err_t WriteBytes(hf_u8_t device_addr, const hf_u8_t* data, hf_size_t length) noexcept override;
-    hf_i2c_err_t ReadBytes(hf_u8_t device_addr, hf_u8_t* data, hf_size_t length) noexcept override;
-    hf_i2c_err_t WriteReadBytes(hf_u8_t device_addr, const hf_u8_t* write_data, hf_size_t write_length,
-                                hf_u8_t* read_data, hf_size_t read_length) noexcept override;
+    hf*i2c*err*t WriteBytes(hf*u8*t device*addr, const hf*u8*t* data, hf*size*t length) noexcept override;
+    hf*i2c*err*t ReadBytes(hf*u8*t device*addr, hf*u8*t* data, hf*size*t length) noexcept override;
+    hf*i2c*err*t WriteReadBytes(hf*u8*t device*addr, const hf*u8*t* write*data, hf*size*t write*length,
+                                hf*u8*t* read*data, hf*size*t read*length) noexcept override;
 
     // Advanced features
-    hf_i2c_err_t SetFrequency(hf_i2c_freq_t frequency) noexcept override;
-    hf_i2c_err_t GetFrequency(hf_i2c_freq_t* frequency) const noexcept override;
-    hf_i2c_err_t ScanBus(hf_u8_t* device_addresses, hf_size_t max_devices, hf_size_t* found_count) noexcept override;
+    hf*i2c*err*t SetFrequency(hf*i2c*freq*t frequency) noexcept override;
+    hf*i2c*err*t GetFrequency(hf*i2c*freq*t* frequency) const noexcept override;
+    hf*i2c*err*t ScanBus(hf*u8*t* device*addresses, hf*size*t max*devices, hf*size*t* found*count) noexcept override;
 };
-```
+```text
 
 ## Usage Examples
 
@@ -74,7 +77,7 @@ public:
 #include "inc/mcu/esp32/EspI2c.h"
 
 // Create I2C instance
-EspI2c i2c(HF_I2C_PORT_0, GPIO_NUM_21, GPIO_NUM_22, HF_I2C_FREQ_400K);
+EspI2c i2c(HF*I2C*PORT*0, GPIO*NUM*21, GPIO*NUM*22, HF*I2C*FREQ*400K);
 
 // Initialize
 if (!i2c.Initialize()) {
@@ -83,42 +86,43 @@ if (!i2c.Initialize()) {
 }
 
 // Write data to device
-const hf_u8_t data[] = {0x01, 0x02, 0x03};
-hf_i2c_err_t err = i2c.WriteBytes(0x48, data, sizeof(data));
-if (err != HF_I2C_ERR_OK) {
+const hf*u8*t data[] = {0x01, 0x02, 0x03};
+hf*i2c*err*t err = i2c.WriteBytes(0x48, data, sizeof(data));
+if (err != HF*I2C*ERR*OK) {
     printf("I2C write failed: %d\n", err);
 }
 
 // Read data from device
-hf_u8_t read_data[4];
-err = i2c.ReadBytes(0x48, read_data, sizeof(read_data));
-if (err == HF_I2C_ERR_OK) {
+hf*u8*t read*data[4];
+err = i2c.ReadBytes(0x48, read*data, sizeof(read*data));
+if (err == HF*I2C*ERR*OK) {
     printf("Read data: %02X %02X %02X %02X\n", 
-           read_data[0], read_data[1], read_data[2], read_data[3]);
+           read*data[0], read*data[1], read*data[2], read*data[3]);
 }
-```
+```text
 
 ### Bus Scanning
 
 ```cpp
 // Scan for devices on the I2C bus
-hf_u8_t devices[16];
-hf_size_t found_count;
-hf_i2c_err_t err = i2c.ScanBus(devices, 16, &found_count);
+hf*u8*t devices[16];
+hf*size*t found*count;
+hf*i2c*err*t err = i2c.ScanBus(devices, 16, &found*count);
 
-if (err == HF_I2C_ERR_OK) {
-    printf("Found %zu devices:\n", found_count);
-    for (hf_size_t i = 0; i < found_count; i++) {
+if (err == HF*I2C*ERR*OK) {
+    printf("Found %zu devices:\n", found*count);
+    for (hf*size*t i = 0; i < found*count; i++) {
         printf("  Device at address 0x%02X\n", devices[i]);
     }
 }
-```
+```text
 
 ## ESP32-C6 Specific Features
 
 ### Clock Stretching Support
 
-The ESP32-C6 I2C controller supports hardware clock stretching, allowing slave devices to hold the clock line low when they need more time to process data.
+The ESP32-C6 I2C controller supports hardware clock stretching, allowing slave devices to hold the
+clock line low when they need more time to process data.
 
 ### Multi-Master Support
 
@@ -130,14 +134,15 @@ High-performance DMA transfers for large data blocks with minimal CPU overhead.
 
 ## Error Handling
 
-The `EspI2c` class provides comprehensive error handling with specific error codes for different failure modes:
+The `EspI2c` class provides comprehensive error handling with specific error codes for different
+failure modes:
 
-- `HF_I2C_ERR_OK` - Operation successful
-- `HF_I2C_ERR_INVALID_ARG` - Invalid parameter
-- `HF_I2C_ERR_NOT_INITIALIZED` - I2C not initialized
-- `HF_I2C_ERR_TIMEOUT` - Operation timeout
-- `HF_I2C_ERR_NACK` - Device not acknowledging
-- `HF_I2C_ERR_BUS_BUSY` - Bus busy or locked
+- `HF*I2C*ERR*OK` - Operation successful
+- `HF*I2C*ERR*INVALID*ARG` - Invalid parameter
+- `HF*I2C*ERR*NOT*INITIALIZED` - I2C not initialized
+- `HF*I2C*ERR*TIMEOUT` - Operation timeout
+- `HF*I2C*ERR*NACK` - Device not acknowledging
+- `HF*I2C*ERR*BUS*BUSY` - Bus busy or locked
 
 ## Performance Considerations
 

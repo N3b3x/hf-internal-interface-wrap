@@ -1,16 +1,11 @@
 # 📲 BaseBluetooth API Reference
 
-<div align="center">
+## 🎯 Unified Bluetooth abstraction for Classic and BLE wireless communication
 
-![BaseBluetooth](https://img.shields.io/badge/BaseBluetooth-Abstract%20Base%20Class-purple?style=for-the-badge&logo=bluetooth)
+## 📋 Navigation
 
-**🎯 Unified Bluetooth abstraction for Classic and BLE wireless communication**
-
-**📋 Navigation**
-
-[← Previous: BaseWifi](BaseWifi.md) | [Back to API Index](README.md) | [Next: BaseNvs →](BaseNvs.md)
-
-</div>
+[← Previous: BaseWifi](BaseWifi.md) | [Back to API Index](README.md) |
+[Next: BaseNvs →](BaseNvs.md)
 
 ---
 
@@ -29,7 +24,11 @@
 
 ## 🎯 **Overview**
 
-The `BaseBluetooth` class provides a comprehensive Bluetooth abstraction that serves as the unified interface for all Bluetooth operations in the HardFOC system. It supports both Bluetooth Classic and Bluetooth Low Energy (BLE), device discovery, pairing, connection management, and data transfer across different hardware implementations.
+The `BaseBluetooth` class provides a comprehensive Bluetooth abstraction
+that serves as the unified interface for all Bluetooth operations in the
+HardFOC system. It supports both Bluetooth Classic and Bluetooth Low Energy
+(BLE), device discovery, pairing, connection management, and data transfer
+across different hardware implementations.
 
 ### ✨ **Key Features**
 
@@ -46,9 +45,13 @@ The `BaseBluetooth` class provides a comprehensive Bluetooth abstraction that se
 ### 📊 **Supported Hardware**
 
 | Implementation | Classic BT | BLE | Max Connections | Range | Power |
+
 |----------------|------------|-----|-----------------|-------|-------|
+
 | `Esp32C6 Bluetooth` | ✅ | ✅ | 7 connections | 10-100m | Configurable |
+
 | `NrfBluetooth` | ✅ | ✅ | 20 connections | 10-240m | Ultra-low power |
+
 | `Ti2640Bluetooth` | ❌ | ✅ | 3 connections | 10-50m | Low power |
 
 ---
@@ -59,42 +62,42 @@ The `BaseBluetooth` class provides a comprehensive Bluetooth abstraction that se
 classDiagram
     class BaseBluetooth {
         <<abstract>>
-        +EnsureInitialized() hf_bt_err_t
-        +StartDiscovery() hf_bt_err_t
-        +StopDiscovery() hf_bt_err_t
-        +ConnectToDevice(bt_addr_t) hf_bt_err_t
-        +DisconnectDevice(hf_u32_t) hf_bt_err_t
-        +SendData(hf_u32_t, data*, size) hf_bt_err_t
-        +ReceiveData(hf_u32_t, data*, size&) hf_bt_err_t
-        +PairDevice(bt_addr_t) hf_bt_err_t
-        +SetMode(hf_bt_mode_t) hf_bt_err_t
-        +RegisterEventCallback(callback) hf_bt_err_t
+        +EnsureInitialized() hf*bt*err*t
+        +StartDiscovery() hf*bt*err*t
+        +StopDiscovery() hf*bt*err*t
+        +ConnectToDevice(bt*addr*t) hf*bt*err*t
+        +DisconnectDevice(hf*u32*t) hf*bt*err*t
+        +SendData(hf*u32*t, data*, size) hf*bt*err*t
+        +ReceiveData(hf*u32*t, data*, size&) hf*bt*err*t
+        +PairDevice(bt*addr*t) hf*bt*err*t
+        +SetMode(hf*bt*mode*t) hf*bt*err*t
+        +RegisterEventCallback(callback) hf*bt*err*t
         +IsInitialized() bool
-        +GetStatistics(hf_bt_statistics_t&) hf_bt_err_t
-        #DoInitialize() hf_bt_err_t*
-        #DoStartDiscovery() hf_bt_err_t*
-        #DoConnect(bt_addr_t) hf_bt_err_t*
+        +GetStatistics(hf*bt*statistics*t&) hf*bt*err*t
+        #DoInitialize() hf*bt*err*t*
+        #DoStartDiscovery() hf*bt*err*t*
+        #DoConnect(bt*addr*t) hf*bt*err*t*
     }
 
     class Esp32C6Bluetooth {
 +Esp32C6Bluetooth()
-        +SetClassicConfig(hf_bt_classic_config_t) hf_bt_err_t
-        +SetBleConfig(hf_ble_config_t) hf_bt_err_t
-        +StartAdvertising() hf_bt_err_t
-        +StopAdvertising() hf_bt_err_t
-        +CreateGattService(hf_ble_service_t&) hf_bt_err_t
+        +SetClassicConfig(hf*bt*classic*config*t) hf*bt*err*t
+        +SetBleConfig(hf*ble*config*t) hf*bt*err*t
+        +StartAdvertising() hf*bt*err*t
+        +StopAdvertising() hf*bt*err*t
+        +CreateGattService(hf*ble*service*t&) hf*bt*err*t
     }
 
     class NrfBluetooth {
         +NrfBluetooth()
-        +SetTxPower(hf_i8_t) hf_bt_err_t
-        +EnterLowPowerMode() hf_bt_err_t
-        +SetBondingMode(bool) hf_bt_err_t
+        +SetTxPower(hf*i8*t) hf*bt*err*t
+        +EnterLowPowerMode() hf*bt*err*t
+        +SetBondingMode(bool) hf*bt*err*t
     }
 
     BaseBluetooth <|-- Esp32C6Bluetooth
     BaseBluetooth <|-- NrfBluetooth
-```
+```text
 
 ---
 
@@ -103,75 +106,85 @@ classDiagram
 ### 🚨 **Bluetooth Error Enumeration**
 
 ```cpp
-enum class hf_bt_err_t : hf_u32_t {
+enum class hf*bt*err*t : hf*u32*t {
     // Success codes
-    BT_SUCCESS = 0,
+    BT*SUCCESS = 0,
     
     // General errors
-    BT_ERR_FAILURE = 1,
-    BT_ERR_NOT_INITIALIZED = 2,
-    BT_ERR_ALREADY_INITIALIZED = 3,
-    BT_ERR_INVALID_PARAMETER = 4,
-    BT_ERR_NULL_POINTER = 5,
-    BT_ERR_OUT_OF_MEMORY = 6,
+    BT*ERR*FAILURE = 1,
+    BT*ERR*NOT*INITIALIZED = 2,
+    BT*ERR*ALREADY*INITIALIZED = 3,
+    BT*ERR*INVALID*PARAMETER = 4,
+    BT*ERR*NULL*POINTER = 5,
+    BT*ERR*OUT*OF*MEMORY = 6,
     
     // Connection errors
-    BT_ERR_CONNECTION_FAILED = 7,
-    BT_ERR_CONNECTION_TIMEOUT = 8,
-    BT_ERR_CONNECTION_LOST = 9,
-    BT_ERR_DEVICE_NOT_FOUND = 10,
-    BT_ERR_DEVICE_UNREACHABLE = 11,
-    BT_ERR_MAX_CONNECTIONS_REACHED = 12,
+    BT*ERR*CONNECTION*FAILED = 7,
+    BT*ERR*CONNECTION*TIMEOUT = 8,
+    BT*ERR*CONNECTION*LOST = 9,
+    BT*ERR*DEVICE*NOT*FOUND = 10,
+    BT*ERR*DEVICE*UNREACHABLE = 11,
+    BT*ERR*MAX*CONNECTIONS*REACHED = 12,
     
     // Pairing errors
-    BT_ERR_PAIRING_FAILED = 13,
-    BT_ERR_PAIRING_REJECTED = 14,
-    BT_ERR_AUTHENTICATION_FAILED = 15,
-    BT_ERR_AUTHORIZATION_FAILED = 16,
-    BT_ERR_ENCRYPTION_FAILED = 17,
+    BT*ERR*PAIRING*FAILED = 13,
+    BT*ERR*PAIRING*REJECTED = 14,
+    BT*ERR*AUTHENTICATION*FAILED = 15,
+    BT*ERR*AUTHORIZATION*FAILED = 16,
+    BT*ERR*ENCRYPTION*FAILED = 17,
     
     // Discovery errors
-    BT_ERR_DISCOVERY_FAILED = 18,
-    BT_ERR_DISCOVERY_TIMEOUT = 19,
-    BT_ERR_SERVICE_NOT_FOUND = 20,
-    BT_ERR_CHARACTERISTIC_NOT_FOUND = 21,
+    BT*ERR*DISCOVERY*FAILED = 18,
+    BT*ERR*DISCOVERY*TIMEOUT = 19,
+    BT*ERR*SERVICE*NOT*FOUND = 20,
+    BT*ERR*CHARACTERISTIC*NOT*FOUND = 21,
     
     // Data transfer errors
-    BT_ERR_SEND_FAILED = 22,
-    BT_ERR_RECEIVE_FAILED = 23,
-    BT_ERR_BUFFER_OVERFLOW = 24,
-    BT_ERR_INVALID_DATA_SIZE = 25,
+    BT*ERR*SEND*FAILED = 22,
+    BT*ERR*RECEIVE*FAILED = 23,
+    BT*ERR*BUFFER*OVERFLOW = 24,
+    BT*ERR*INVALID*DATA*SIZE = 25,
     
     // BLE specific errors
-    BLE_ERR_ADVERTISING_FAILED = 26,
-    BLE_ERR_GATT_ERROR = 27,
-    BLE_ERR_INVALID_ATT_SIZE = 28,
-    BLE_ERR_INVALID_HANDLE = 29,
+    BLE*ERR*ADVERTISING*FAILED = 26,
+    BLE*ERR*GATT*ERROR = 27,
+    BLE*ERR*INVALID*ATT*SIZE = 28,
+    BLE*ERR*INVALID*HANDLE = 29,
     
     // Classic specific errors
-    BT_CLASSIC_ERR_SPP_FAILED = 30,
-    BT_CLASSIC_ERR_PROFILE_ERROR = 31,
-    BT_CLASSIC_ERR_SDP_FAILED = 32,
+    BT*CLASSIC*ERR*SPP*FAILED = 30,
+    BT*CLASSIC*ERR*PROFILE*ERROR = 31,
+    BT*CLASSIC*ERR*SDP*FAILED = 32,
     
     // System errors
-    BT_ERR_SYSTEM_ERROR = 33,
-    BT_ERR_PERMISSION_DENIED = 34,
-    BT_ERR_OPERATION_ABORTED = 35
+    BT*ERR*SYSTEM*ERROR = 33,
+    BT*ERR*PERMISSION*DENIED = 34,
+    BT*ERR*OPERATION*ABORTED = 35
 };
-```
+```text
 
 ### 📊 **Error Code Categories**
 
 | Category | Range | Description |
+
 |----------|-------|-------------|
+
 | **Success** | 0 | Successful operation |
+
 | **General** | 1-6 | Basic initialization and parameter errors |
+
 | **Connection** | 7-12 | Device connection and management errors |
+
 | **Pairing** | 13-17 | Security and pairing errors |
+
 | **Discovery** | 18-21 | Device and service discovery errors |
+
 | **Data Transfer** | 22-25 | Data transmission errors |
+
 | **BLE Specific** | 26-29 | BLE protocol specific errors |
+
 | **Classic Specific** | 30-32 | Classic Bluetooth errors |
+
 | **System** | 33-35 | System-level errors |
 
 ---
@@ -184,105 +197,105 @@ enum class hf_bt_err_t : hf_u32_t {
 ```cpp
 /**
  * @brief Ensure the Bluetooth controller is initialized
- * @return hf_bt_err_t Error code
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t EnsureInitialized() = 0;
+virtual hf*bt*err*t EnsureInitialized() = 0;
 
 /**
  * @brief Set Bluetooth operating mode
  * @param mode Bluetooth mode (Classic, BLE, or Dual)
- * @return hf_bt_err_t Error code
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t SetMode(hf_bt_mode_t mode) = 0;
+virtual hf*bt*err*t SetMode(hf*bt*mode*t mode) = 0;
 
 /**
  * @brief Check if Bluetooth is initialized
  * @return bool True if initialized
  */
 virtual bool IsInitialized() const = 0;
-```
+```text
 
 #### **Device Discovery**
 ```cpp
 /**
  * @brief Start device discovery/scanning
- * @param discovery_time_s Discovery duration in seconds
- * @return hf_bt_err_t Error code
+ * @param discovery*time*s Discovery duration in seconds
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t StartDiscovery(hf_u32_t discovery_time_s = 10) = 0;
+virtual hf*bt*err*t StartDiscovery(hf*u32*t discovery*time*s = 10) = 0;
 
 /**
  * @brief Stop device discovery/scanning
- * @return hf_bt_err_t Error code
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t StopDiscovery() = 0;
+virtual hf*bt*err*t StopDiscovery() = 0;
 
 /**
  * @brief Get discovered devices list
  * @param devices Output array of discovered devices
- * @param max_devices Maximum devices to return
- * @param actual_count Actual number of devices found
- * @return hf_bt_err_t Error code
+ * @param max*devices Maximum devices to return
+ * @param actual*count Actual number of devices found
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t GetDiscoveredDevices(hf_bt_device_t* devices,
-                                       hf_u32_t max_devices,
-                                       hf_u32_t& actual_count) = 0;
-```
+virtual hf*bt*err*t GetDiscoveredDevices(hf*bt*device*t* devices,
+                                       hf*u32*t max*devices,
+                                       hf*u32*t& actual*count) = 0;
+```text
 
 #### **Connection Management**
 ```cpp
 /**
  * @brief Connect to a Bluetooth device
- * @param device_addr Target device address
- * @param connection_id Output connection ID
- * @return hf_bt_err_t Error code
+ * @param device*addr Target device address
+ * @param connection*id Output connection ID
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t ConnectToDevice(const bt_addr_t& device_addr,
-                                  hf_u32_t& connection_id) = 0;
+virtual hf*bt*err*t ConnectToDevice(const bt*addr*t& device*addr,
+                                  hf*u32*t& connection*id) = 0;
 
 /**
  * @brief Disconnect from a device
- * @param connection_id Connection ID to disconnect
- * @return hf_bt_err_t Error code
+ * @param connection*id Connection ID to disconnect
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t DisconnectDevice(hf_u32_t connection_id) = 0;
+virtual hf*bt*err*t DisconnectDevice(hf*u32*t connection*id) = 0;
 
 /**
  * @brief Check if device is connected
- * @param connection_id Connection ID to check
- * @param is_connected Output connection status
- * @return hf_bt_err_t Error code
+ * @param connection*id Connection ID to check
+ * @param is*connected Output connection status
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t IsDeviceConnected(hf_u32_t connection_id,
-                                    bool& is_connected) = 0;
-```
+virtual hf*bt*err*t IsDeviceConnected(hf*u32*t connection*id,
+                                    bool& is*connected) = 0;
+```text
 
 #### **Data Transfer**
 ```cpp
 /**
  * @brief Send data to connected device
- * @param connection_id Target connection ID
+ * @param connection*id Target connection ID
  * @param data Data buffer to send
- * @param data_size Size of data to send
- * @return hf_bt_err_t Error code
+ * @param data*size Size of data to send
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t SendData(hf_u32_t connection_id,
-                           const hf_u8_t* data,
-                           hf_u32_t data_size) = 0;
+virtual hf*bt*err*t SendData(hf*u32*t connection*id,
+                           const hf*u8*t* data,
+                           hf*u32*t data*size) = 0;
 
 /**
  * @brief Receive data from connected device
- * @param connection_id Source connection ID
+ * @param connection*id Source connection ID
  * @param data Buffer to store received data
- * @param buffer_size Size of receive buffer
- * @param received_size Actual bytes received
- * @return hf_bt_err_t Error code
+ * @param buffer*size Size of receive buffer
+ * @param received*size Actual bytes received
+ * @return hf*bt*err*t Error code
  */
-virtual hf_bt_err_t ReceiveData(hf_u32_t connection_id,
-                              hf_u8_t* data,
-                              hf_u32_t buffer_size,
-                              hf_u32_t& received_size) = 0;
-```
+virtual hf*bt*err*t ReceiveData(hf*u32*t connection*id,
+                              hf*u8*t* data,
+                              hf*u32*t buffer*size,
+                              hf*u32*t& received*size) = 0;
+```text
 
 ---
 
@@ -291,58 +304,58 @@ virtual hf_bt_err_t ReceiveData(hf_u32_t connection_id,
 ### 📲 **Bluetooth Mode Types**
 
 ```cpp
-enum class hf_bt_mode_t : hf_u8_t {
-    BT_MODE_DISABLED = 0,           ///< Bluetooth disabled
-    BT_MODE_CLASSIC = 1,            ///< Classic Bluetooth only
-    BT_MODE_BLE = 2,                ///< BLE only
-    BT_MODE_DUAL = 3                ///< Both Classic and BLE
+enum class hf*bt*mode*t : hf*u8*t {
+    BT*MODE*DISABLED = 0,           ///< Bluetooth disabled
+    BT*MODE*CLASSIC = 1,            ///< Classic Bluetooth only
+    BT*MODE*BLE = 2,                ///< BLE only
+    BT*MODE*DUAL = 3                ///< Both Classic and BLE
 };
-```
+```text
 
 ### 📱 **Device Information**
 
 ```cpp
-struct hf_bt_device_t {
-    bt_addr_t address;                      ///< Device MAC address
+struct hf*bt*device*t {
+    bt*addr*t address;                      ///< Device MAC address
     char name[32];                          ///< Device name
-    hf_u32_t class_of_device;               ///< Class of device (Classic BT)
-    hf_i8_t rssi;                           ///< Signal strength (dBm)
-    hf_bt_device_type_t device_type;        ///< Device type (Classic/BLE/Dual)
-    bool is_paired;                         ///< Pairing status
-    bool is_bonded;                         ///< Bonding status
-    hf_u32_t last_seen_time_ms;             ///< Last discovery time
+    hf*u32*t class*of*device;               ///< Class of device (Classic BT)
+    hf*i8*t rssi;                           ///< Signal strength (dBm)
+    hf*bt*device*type*t device*type;        ///< Device type (Classic/BLE/Dual)
+    bool is*paired;                         ///< Pairing status
+    bool is*bonded;                         ///< Bonding status
+    hf*u32*t last*seen*time*ms;             ///< Last discovery time
 };
-```
+```text
 
 ### 🔐 **Security Configuration**
 
 ```cpp
-struct hf_bt_security_config_t {
-    bool require_pairing;                   ///< Require pairing for connections
-    bool require_bonding;                   ///< Require bonding (stored keys)
-    bool require_mitm_protection;           ///< Man-in-the-middle protection
-    bool use_secure_connections;            ///< Use secure connections (if available)
-    hf_u32_t passkey;                       ///< Static passkey (if used)
-    hf_bt_io_capabilities_t io_cap;         ///< I/O capabilities for pairing
+struct hf*bt*security*config*t {
+    bool require*pairing;                   ///< Require pairing for connections
+    bool require*bonding;                   ///< Require bonding (stored keys)
+    bool require*mitm*protection;           ///< Man-in-the-middle protection
+    bool use*secure*connections;            ///< Use secure connections (if available)
+    hf*u32*t passkey;                       ///< Static passkey (if used)
+    hf*bt*io*capabilities*t io*cap;         ///< I/O capabilities for pairing
 };
-```
+```text
 
 ### 📈 **Bluetooth Statistics**
 
 ```cpp
-struct hf_bt_statistics_t {
-    hf_u32_t total_connections;             ///< Total connection attempts
-    hf_u32_t successful_connections;        ///< Successful connections
-    hf_u32_t failed_connections;            ///< Failed connections
-    hf_u32_t total_bytes_sent;              ///< Total bytes transmitted
-    hf_u32_t total_bytes_received;          ///< Total bytes received
-    hf_u32_t pairing_attempts;              ///< Total pairing attempts
-    hf_u32_t successful_pairings;           ///< Successful pairings
-    hf_u32_t discovery_scans;               ///< Total discovery scans
-    hf_u32_t devices_discovered;            ///< Total devices discovered
-    hf_u32_t active_connections;            ///< Currently active connections
+struct hf*bt*statistics*t {
+    hf*u32*t total*connections;             ///< Total connection attempts
+    hf*u32*t successful*connections;        ///< Successful connections
+    hf*u32*t failed*connections;            ///< Failed connections
+    hf*u32*t total*bytes*sent;              ///< Total bytes transmitted
+    hf*u32*t total*bytes*received;          ///< Total bytes received
+    hf*u32*t pairing*attempts;              ///< Total pairing attempts
+    hf*u32*t successful*pairings;           ///< Successful pairings
+    hf*u32*t discovery*scans;               ///< Total discovery scans
+    hf*u32*t devices*discovered;            ///< Total devices discovered
+    hf*u32*t active*connections;            ///< Currently active connections
 };
-```
+```text
 
 ---
 
@@ -358,14 +371,14 @@ Classic Bluetooth is ideal for:
 
 ```cpp
 // Configure for Classic Bluetooth
-hf_bt_classic_config_t classic_config = {
-    .device_name = "HardFOC Controller",
+hf*bt*classic*config*t classic*config = {
+    .device*name = "HardFOC Controller",
     .discoverable = true,
     .connectable = true,
-    .profiles = BT_PROFILE_SPP | BT_PROFILE_A2DP
+    .profiles = BT*PROFILE*SPP | BT*PROFILE*A2DP
 };
-bluetooth.SetClassicConfig(classic_config);
-```
+bluetooth.SetClassicConfig(classic*config);
+```text
 
 ### 📡 **Bluetooth Low Energy (BLE)**
 
@@ -377,15 +390,15 @@ BLE is optimal for:
 
 ```cpp
 // Configure for BLE
-hf_ble_config_t ble_config = {
-    .device_name = "HardFOC BLE",
-    .advertising_interval_ms = 100,
-    .connection_interval_ms = 20,
-    .slave_latency = 0,
-    .supervision_timeout_ms = 4000
+hf*ble*config*t ble*config = {
+    .device*name = "HardFOC BLE",
+    .advertising*interval*ms = 100,
+    .connection*interval*ms = 20,
+    .slave*latency = 0,
+    .supervision*timeout*ms = 4000
 };
-bluetooth.SetBleConfig(ble_config);
-```
+bluetooth.SetBleConfig(ble*config);
+```text
 
 ### 🔄 **Dual Mode**
 
@@ -393,8 +406,8 @@ Dual mode enables both Classic and BLE simultaneously:
 
 ```cpp
 // Enable dual mode
-bluetooth.SetMode(hf_bt_mode_t::BT_MODE_DUAL);
-```
+bluetooth.SetMode(hf*bt*mode*t::BT*MODE*DUAL);
+```text
 
 ---
 
@@ -409,57 +422,57 @@ class BleSensorBeacon {
 private:
     // ESP32C6 implementation would inherit from BaseBluetooth
     // class Esp32C6Bluetooth : public BaseBluetooth { ... };
-    BaseBluetooth* bluetooth_;
-    hf_u32_t service_handle_;
-    hf_u32_t characteristic_handle_;
+    BaseBluetooth* bluetooth*;
+    hf*u32*t service*handle*;
+    hf*u32*t characteristic*handle*;
     
 public:
     bool initialize() {
         // Initialize Bluetooth in BLE mode
-        if (bluetooth_.EnsureInitialized() != hf_bt_err_t::BT_SUCCESS) {
+        if (bluetooth*.EnsureInitialized() != hf*bt*err*t::BT*SUCCESS) {
             return false;
         }
         
-        if (bluetooth_.SetMode(hf_bt_mode_t::BT_MODE_BLE) != hf_bt_err_t::BT_SUCCESS) {
+        if (bluetooth*.SetMode(hf*bt*mode*t::BT*MODE*BLE) != hf*bt*err*t::BT*SUCCESS) {
             return false;
         }
         
         // Create GATT service for sensor data
-        hf_ble_service_t sensor_service = {
+        hf*ble*service*t sensor*service = {
             .uuid = {0x12, 0x34, 0x56, 0x78}, // Custom UUID
             .primary = true
         };
         
-        if (bluetooth_.CreateGattService(sensor_service) != hf_bt_err_t::BT_SUCCESS) {
+        if (bluetooth*.CreateGattService(sensor*service) != hf*bt*err*t::BT*SUCCESS) {
             return false;
         }
         
         // Start advertising
-        return bluetooth_.StartAdvertising() == hf_bt_err_t::BT_SUCCESS;
+        return bluetooth*.StartAdvertising() == hf*bt*err*t::BT*SUCCESS;
     }
     
-    void advertise_sensor_data(float temperature, float humidity) {
+    void advertise*sensor*data(float temperature, float humidity) {
         // Pack sensor data
         struct {
             float temperature;
             float humidity;
-            hf_u32_t timestamp;
-        } sensor_data = {
+            hf*u32*t timestamp;
+        } sensor*data = {
             .temperature = temperature,
             .humidity = humidity,
-            .timestamp = esp_timer_get_time() / 1000
+            .timestamp = esp*timer*get*time() / 1000
         };
         
         // Update characteristic value
-        bluetooth_.UpdateCharacteristic(characteristic_handle_,
-                                      (hf_u8_t*)&sensor_data,
-                                      sizeof(sensor_data));
+        bluetooth*.UpdateCharacteristic(characteristic*handle*,
+                                      (hf*u8*t*)&sensor*data,
+                                      sizeof(sensor*data));
         
         printf("📡 BLE: Broadcasting T=%.1f°C, H=%.1f%%\n", 
                temperature, humidity);
     }
 };
-```
+```text
 
 ### 🔗 **Classic Bluetooth Serial Bridge**
 
@@ -470,105 +483,105 @@ class BluetoothSerialBridge {
 private:
     // ESP32C6 implementation would inherit from BaseBluetooth
     // class Esp32C6Bluetooth : public BaseBluetooth { ... };
-    BaseBluetooth* bluetooth_;
-    hf_u32_t spp_connection_id_;
-    bool is_connected_;
+    BaseBluetooth* bluetooth*;
+    hf*u32*t spp*connection*id*;
+    bool is*connected*;
     
 public:
-    BluetoothSerialBridge() : spp_connection_id_(0), is_connected_(false) {}
+    BluetoothSerialBridge() : spp*connection*id*(0), is*connected*(false) {}
     
     bool initialize() {
         // Initialize Classic Bluetooth with SPP profile
-        if (bluetooth_.EnsureInitialized() != hf_bt_err_t::BT_SUCCESS) {
+        if (bluetooth*.EnsureInitialized() != hf*bt*err*t::BT*SUCCESS) {
             return false;
         }
         
-        if (bluetooth_.SetMode(hf_bt_mode_t::BT_MODE_CLASSIC) != hf_bt_err_t::BT_SUCCESS) {
+        if (bluetooth*.SetMode(hf*bt*mode*t::BT*MODE*CLASSIC) != hf*bt*err*t::BT*SUCCESS) {
             return false;
         }
         
         // Configure Classic Bluetooth
-        hf_bt_classic_config_t config = {
-            .device_name = "HardFOC Serial",
+        hf*bt*classic*config*t config = {
+            .device*name = "HardFOC Serial",
             .discoverable = true,
             .connectable = true,
-            .profiles = BT_PROFILE_SPP
+            .profiles = BT*PROFILE*SPP
         };
         
-        if (bluetooth_.SetClassicConfig(config) != hf_bt_err_t::BT_SUCCESS) {
+        if (bluetooth*.SetClassicConfig(config) != hf*bt*err*t::BT*SUCCESS) {
             return false;
         }
         
         // Register connection event callback
-        bluetooth_.RegisterEventCallback([this](hf_bt_event_t& event) {
-            this->handle_bluetooth_event(event);
+        bluetooth*.RegisterEventCallback([this](hf*bt*event*t& event) {
+            this->handle*bluetooth*event(event);
         });
         
         printf("📻 Classic Bluetooth SPP ready for connections\n");
         return true;
     }
     
-    void send_message(const std::string& message) {
-        if (!is_connected_) {
+    void send*message(const std::string& message) {
+        if (!is*connected*) {
             printf("❌ No Bluetooth connection active\n");
             return;
         }
         
-        hf_bt_err_t result = bluetooth_.SendData(spp_connection_id_,
-                                                (hf_u8_t*)message.c_str(),
+        hf*bt*err*t result = bluetooth*.SendData(spp*connection*id*,
+                                                (hf*u8*t*)message.c*str(),
                                                 message.length());
         
-        if (result == hf_bt_err_t::BT_SUCCESS) {
-            printf("📤 BT Sent: %s\n", message.c_str());
+        if (result == hf*bt*err*t::BT*SUCCESS) {
+            printf("📤 BT Sent: %s\n", message.c*str());
         } else {
-            printf("❌ BT Send failed: %d\n", static_cast<int>(result));
+            printf("❌ BT Send failed: %d\n", static*cast<int>(result));
         }
     }
     
-    void check_for_messages() {
-        if (!is_connected_) return;
+    void check*for*messages() {
+        if (!is*connected*) return;
         
-        hf_u8_t buffer[256];
-        hf_u32_t received_size;
+        hf*u8*t buffer[256];
+        hf*u32*t received*size;
         
-        hf_bt_err_t result = bluetooth_.ReceiveData(spp_connection_id_,
+        hf*bt*err*t result = bluetooth*.ReceiveData(spp*connection*id*,
                                                    buffer,
                                                    sizeof(buffer) - 1,
-                                                   received_size);
+                                                   received*size);
         
-        if (result == hf_bt_err_t::BT_SUCCESS && received_size > 0) {
-            buffer[received_size] = '\0'; // Null terminate
+        if (result == hf*bt*err*t::BT*SUCCESS && received*size > 0) {
+            buffer[received*size] = '\0'; // Null terminate
             printf("📥 BT Received: %s\n", (char*)buffer);
             
             // Echo the message back
-            send_message("Echo: " + std::string((char*)buffer));
+            send*message("Echo: " + std::string((char*)buffer));
         }
     }
     
 private:
-    void handle_bluetooth_event(hf_bt_event_t& event) {
+    void handle*bluetooth*event(hf*bt*event*t& event) {
         switch (event.type) {
-            case BT_EVENT_CONNECTION_ESTABLISHED:
-                spp_connection_id_ = event.connection_id;
-                is_connected_ = true;
-                printf("✅ Bluetooth device connected (ID: %lu)\n", spp_connection_id_);
+            case BT*EVENT*CONNECTION*ESTABLISHED:
+                spp*connection*id* = event.connection*id;
+                is*connected* = true;
+                printf("✅ Bluetooth device connected (ID: %lu)\n", spp*connection*id*);
                 break;
                 
-            case BT_EVENT_CONNECTION_LOST:
-                if (event.connection_id == spp_connection_id_) {
-                    is_connected_ = false;
+            case BT*EVENT*CONNECTION*LOST:
+                if (event.connection*id == spp*connection*id*) {
+                    is*connected* = false;
                     printf("❌ Bluetooth device disconnected\n");
                 }
                 break;
                 
-            case BT_EVENT_PAIRING_REQUEST:
+            case BT*EVENT*PAIRING*REQUEST:
                 printf("🔐 Pairing request from device\n");
-                bluetooth_.AcceptPairing(event.device_addr);
+                bluetooth*.AcceptPairing(event.device*addr);
                 break;
         }
     }
 };
-```
+```text
 
 ### 🔍 **Device Scanner & Manager**
 
@@ -577,107 +590,107 @@ private:
 
 class BluetoothDeviceManager {
 private:
-    EspBluetooth bluetooth_;
-    std::vector<hf_bt_device_t> discovered_devices_;
+    EspBluetooth bluetooth*;
+    std::vector<hf*bt*device*t> discovered*devices*;
     
 public:
     bool initialize() {
-        if (bluetooth_.EnsureInitialized() != hf_bt_err_t::BT_SUCCESS) {
+        if (bluetooth*.EnsureInitialized() != hf*bt*err*t::BT*SUCCESS) {
             return false;
         }
         
         // Enable dual mode for maximum compatibility
-        return bluetooth_.SetMode(hf_bt_mode_t::BT_MODE_DUAL) == hf_bt_err_t::BT_SUCCESS;
+        return bluetooth*.SetMode(hf*bt*mode*t::BT*MODE*DUAL) == hf*bt*err*t::BT*SUCCESS;
     }
     
-    void scan_for_devices(hf_u32_t scan_duration_s = 15) {
-        printf("🔍 Starting Bluetooth device scan (%lu seconds)...\n", scan_duration_s);
+    void scan*for*devices(hf*u32*t scan*duration*s = 15) {
+        printf("🔍 Starting Bluetooth device scan (%lu seconds)...\n", scan*duration*s);
         
         // Clear previous results
-        discovered_devices_.clear();
+        discovered*devices*.clear();
         
         // Start discovery
-        if (bluetooth_.StartDiscovery(scan_duration_s) != hf_bt_err_t::BT_SUCCESS) {
+        if (bluetooth*.StartDiscovery(scan*duration*s) != hf*bt*err*t::BT*SUCCESS) {
             printf("❌ Failed to start device discovery\n");
             return;
         }
         
         // Wait for scan to complete
-        vTaskDelay(pdMS_TO_TICKS(scan_duration_s * 1000));
+        vTaskDelay(pdMS*TO*TICKS(scan*duration*s * 1000));
         
         // Get discovered devices
-        hf_bt_device_t devices[20];
-        hf_u32_t device_count;
+        hf*bt*device*t devices[20];
+        hf*u32*t device*count;
         
-        if (bluetooth_.GetDiscoveredDevices(devices, 20, device_count) == hf_bt_err_t::BT_SUCCESS) {
-            printf("📱 Found %lu Bluetooth devices:\n", device_count);
+        if (bluetooth*.GetDiscoveredDevices(devices, 20, device*count) == hf*bt*err*t::BT*SUCCESS) {
+            printf("📱 Found %lu Bluetooth devices:\n", device*count);
             
-            for (hf_u32_t i = 0; i < device_count; i++) {
-                discovered_devices_.push_back(devices[i]);
-                print_device_info(devices[i]);
+            for (hf*u32*t i = 0; i < device*count; i++) {
+                discovered*devices*.push*back(devices[i]);
+                print*device*info(devices[i]);
             }
         }
         
-        bluetooth_.StopDiscovery();
+        bluetooth*.StopDiscovery();
     }
     
-    bool connect_to_device(const std::string& device_name) {
+    bool connect*to*device(const std::string& device*name) {
         // Find device by name
-        auto device_it = std::find_if(discovered_devices_.begin(),
-                                    discovered_devices_.end(),
-                                    [&device_name](const hf_bt_device_t& dev) {
-                                        return std::string(dev.name) == device_name;
+        auto device*it = std::find*if(discovered*devices*.begin(),
+                                    discovered*devices*.end(),
+                                    [&device*name](const hf*bt*device*t& dev) {
+                                        return std::string(dev.name) == device*name;
                                     });
         
-        if (device_it == discovered_devices_.end()) {
-            printf("❌ Device '%s' not found in scan results\n", device_name.c_str());
+        if (device*it == discovered*devices*.end()) {
+            printf("❌ Device '%s' not found in scan results\n", device*name.c*str());
             return false;
         }
         
-        printf("🔗 Connecting to device: %s\n", device_name.c_str());
+        printf("🔗 Connecting to device: %s\n", device*name.c*str());
         
-        hf_u32_t connection_id;
-        hf_bt_err_t result = bluetooth_.ConnectToDevice(device_it->address, connection_id);
+        hf*u32*t connection*id;
+        hf*bt*err*t result = bluetooth*.ConnectToDevice(device*it->address, connection*id);
         
-        if (result == hf_bt_err_t::BT_SUCCESS) {
+        if (result == hf*bt*err*t::BT*SUCCESS) {
             printf("✅ Successfully connected to %s (ID: %lu)\n", 
-                   device_name.c_str(), connection_id);
+                   device*name.c*str(), connection*id);
             return true;
         } else {
             printf("❌ Failed to connect to %s: %d\n", 
-                   device_name.c_str(), static_cast<int>(result));
+                   device*name.c*str(), static*cast<int>(result));
             return false;
         }
     }
     
-    void show_statistics() {
-        hf_bt_statistics_t stats;
-        if (bluetooth_.GetStatistics(stats) == hf_bt_err_t::BT_SUCCESS) {
+    void show*statistics() {
+        hf*bt*statistics*t stats;
+        if (bluetooth*.GetStatistics(stats) == hf*bt*err*t::BT*SUCCESS) {
             printf("📊 Bluetooth Statistics:\n");
-            printf("   Total Connections: %lu\n", stats.total_connections);
+            printf("   Total Connections: %lu\n", stats.total*connections);
             printf("   Success Rate: %.1f%%\n", 
-                   (float)stats.successful_connections / stats.total_connections * 100.0f);
-            printf("   Data Sent: %lu bytes\n", stats.total_bytes_sent);
-            printf("   Data Received: %lu bytes\n", stats.total_bytes_received);
-            printf("   Active Connections: %lu\n", stats.active_connections);
-            printf("   Devices Discovered: %lu\n", stats.devices_discovered);
+                   (float)stats.successful*connections / stats.total*connections * 100.0f);
+            printf("   Data Sent: %lu bytes\n", stats.total*bytes*sent);
+            printf("   Data Received: %lu bytes\n", stats.total*bytes*received);
+            printf("   Active Connections: %lu\n", stats.active*connections);
+            printf("   Devices Discovered: %lu\n", stats.devices*discovered);
         }
     }
     
 private:
-    void print_device_info(const hf_bt_device_t& device) {
-        const char* type_str = (device.device_type == BT_DEVICE_TYPE_CLASSIC) ? "Classic" :
-                              (device.device_type == BT_DEVICE_TYPE_BLE) ? "BLE" : "Dual";
+    void print*device*info(const hf*bt*device*t& device) {
+        const char* type*str = (device.device*type == BT*DEVICE*TYPE*CLASSIC) ? "Classic" :
+                              (device.device*type == BT*DEVICE*TYPE*BLE) ? "BLE" : "Dual";
         
         printf("   📱 %s [%s] RSSI: %ddBm %s%s\n",
                device.name,
-               type_str,
+               type*str,
                device.rssi,
-               device.is_paired ? "(Paired)" : "",
-               device.is_bonded ? "(Bonded)" : "");
+               device.is*paired ? "(Paired)" : "",
+               device.is*bonded ? "(Bonded)" : "");
     }
 };
-```
+```text
 
 ---
 
@@ -688,34 +701,34 @@ private:
 1. **🎯 Choose Appropriate Mode**
    ```cpp
    // For low-power sensors
-   bluetooth.SetMode(hf_bt_mode_t::BT_MODE_BLE);
+   bluetooth.SetMode(hf*bt*mode*t::BT*MODE*BLE);
    
    // For audio/data streaming
-   bluetooth.SetMode(hf_bt_mode_t::BT_MODE_CLASSIC);
+   bluetooth.SetMode(hf*bt*mode*t::BT*MODE*CLASSIC);
    
    // For maximum compatibility
-   bluetooth.SetMode(hf_bt_mode_t::BT_MODE_DUAL);
+   bluetooth.SetMode(hf*bt*mode*t::BT*MODE*DUAL);
    ```
 
-2. **🔐 Implement Proper Security**
+1. **🔐 Implement Proper Security**
    ```cpp
-   hf_bt_security_config_t security = {
-       .require_pairing = true,
-       .require_bonding = true,
-       .require_mitm_protection = true,
-       .use_secure_connections = true
+   hf*bt*security*config*t security = {
+       .require*pairing = true,
+       .require*bonding = true,
+       .require*mitm*protection = true,
+       .use*secure*connections = true
    };
    bluetooth.SetSecurityConfig(security);
    ```
 
-3. **📡 Handle Connection Events**
+1. **📡 Handle Connection Events**
    ```cpp
-   bluetooth.RegisterEventCallback([](hf_bt_event_t& event) {
+   bluetooth.RegisterEventCallback([](hf*bt*event*t& event) {
        switch (event.type) {
-           case BT_EVENT_CONNECTION_ESTABLISHED:
+           case BT*EVENT*CONNECTION*ESTABLISHED:
                printf("✅ Device connected\n");
                break;
-           case BT_EVENT_CONNECTION_LOST:
+           case BT*EVENT*CONNECTION*LOST:
                printf("❌ Device disconnected\n");
                // Implement reconnection logic
                break;
@@ -723,12 +736,12 @@ private:
    });
    ```
 
-4. **📊 Monitor Performance**
+1. **📊 Monitor Performance**
    ```cpp
    // Regular statistics monitoring
-   hf_bt_statistics_t stats;
+   hf*bt*statistics*t stats;
    bluetooth.GetStatistics(stats);
-   if (stats.successful_connections < stats.total_connections * 0.9f) {
+   if (stats.successful*connections < stats.total*connections * 0.9f) {
        printf("⚠️ Low Bluetooth connection success rate\n");
    }
    ```
@@ -738,32 +751,32 @@ private:
 1. **🚫 Not Checking Connection Status**
    ```cpp
    // BAD: Sending without checking connection
-   bluetooth.SendData(connection_id, data, size);
+   bluetooth.SendData(connection*id, data, size);
    
    // GOOD: Always verify connection
    bool connected;
-   if (bluetooth.IsDeviceConnected(connection_id, connected) == BT_SUCCESS && connected) {
-       bluetooth.SendData(connection_id, data, size);
+   if (bluetooth.IsDeviceConnected(connection*id, connected) == BT*SUCCESS && connected) {
+       bluetooth.SendData(connection*id, data, size);
    }
    ```
 
-2. **🚫 Ignoring Power Management**
+1. **🚫 Ignoring Power Management**
    ```cpp
    // BAD: Always on, drains battery
-   bluetooth.SetMode(hf_bt_mode_t::BT_MODE_DUAL);
+   bluetooth.SetMode(hf*bt*mode*t::BT*MODE*DUAL);
    
    // GOOD: Use BLE for battery-powered applications
-   bluetooth.SetMode(hf_bt_mode_t::BT_MODE_BLE);
+   bluetooth.SetMode(hf*bt*mode*t::BT*MODE*BLE);
    bluetooth.SetLowPowerMode(true);
    ```
 
-3. **🚫 Poor Error Handling**
+1. **🚫 Poor Error Handling**
    ```cpp
    // BAD: Ignoring connection failures
-   bluetooth.ConnectToDevice(addr, connection_id);
+   bluetooth.ConnectToDevice(addr, connection*id);
    
    // GOOD: Handle connection failures gracefully
-   if (bluetooth.ConnectToDevice(addr, connection_id) != BT_SUCCESS) {
+   if (bluetooth.ConnectToDevice(addr, connection*id) != BT*SUCCESS) {
        printf("Connection failed, will retry in 5 seconds\n");
        // Implement retry logic
    }
@@ -773,14 +786,14 @@ private:
 
 1. **⚡ Optimize BLE Connection Parameters**
    ```cpp
-   hf_ble_config_t ble_config = {
-       .connection_interval_ms = 7.5f,    // Faster updates
-       .slave_latency = 0,                // No latency
-       .supervision_timeout_ms = 4000     // 4 second timeout
+   hf*ble*config*t ble*config = {
+       .connection*interval*ms = 7.5f,    // Faster updates
+       .slave*latency = 0,                // No latency
+       .supervision*timeout*ms = 4000     // 4 second timeout
    };
    ```
 
-2. **📱 Use Appropriate Advertising Intervals**
+1. **📱 Use Appropriate Advertising Intervals**
    ```cpp
    // Fast connection establishment
    bluetooth.SetAdvertisingInterval(20);  // 20ms for quick discovery
@@ -789,10 +802,10 @@ private:
    bluetooth.SetAdvertisingInterval(1000); // 1s for low power
    ```
 
-3. **🔄 Implement Connection Pooling**
+1. **🔄 Implement Connection Pooling**
    ```cpp
    // Manage multiple connections efficiently
-   std::vector<hf_u32_t> active_connections;
+   std::vector<hf*u32*t> active*connections;
    // Reuse connections instead of creating new ones
    ```
 

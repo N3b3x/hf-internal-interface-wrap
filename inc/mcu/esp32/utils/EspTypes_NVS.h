@@ -204,23 +204,23 @@ inline constexpr bool IsValidNvsValueSize(size_t size) noexcept {
  */
 inline constexpr size_t GetMaxValueSizeForType(hf_nvs_type_t type) noexcept {
   switch (type) {
-    case hf_nvs_type_t::HF_NVS_TYPE_U8:
-    case hf_nvs_type_t::HF_NVS_TYPE_I8:
-      return 1;
-    case hf_nvs_type_t::HF_NVS_TYPE_U16:
-    case hf_nvs_type_t::HF_NVS_TYPE_I16:
-      return 2;
-    case hf_nvs_type_t::HF_NVS_TYPE_U32:
-    case hf_nvs_type_t::HF_NVS_TYPE_I32:
-      return 4;
-    case hf_nvs_type_t::HF_NVS_TYPE_U64:
-    case hf_nvs_type_t::HF_NVS_TYPE_I64:
-      return 8;
-    case hf_nvs_type_t::HF_NVS_TYPE_STR:
-    case hf_nvs_type_t::HF_NVS_TYPE_BLOB:
-      return HF_NVS_MAX_VALUE_SIZE;
-    default:
-      return 0;
+  case hf_nvs_type_t::HF_NVS_TYPE_U8:
+  case hf_nvs_type_t::HF_NVS_TYPE_I8:
+    return 1;
+  case hf_nvs_type_t::HF_NVS_TYPE_U16:
+  case hf_nvs_type_t::HF_NVS_TYPE_I16:
+    return 2;
+  case hf_nvs_type_t::HF_NVS_TYPE_U32:
+  case hf_nvs_type_t::HF_NVS_TYPE_I32:
+    return 4;
+  case hf_nvs_type_t::HF_NVS_TYPE_U64:
+  case hf_nvs_type_t::HF_NVS_TYPE_I64:
+    return 8;
+  case hf_nvs_type_t::HF_NVS_TYPE_STR:
+  case hf_nvs_type_t::HF_NVS_TYPE_BLOB:
+    return HF_NVS_MAX_VALUE_SIZE;
+  default:
+    return 0;
   }
 }
 

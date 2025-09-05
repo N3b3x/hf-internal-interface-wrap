@@ -2,21 +2,34 @@
 
 ## Overview
 
-The PIO Comprehensive Test Suite provides extensive validation of the `EspPio` class for ESP32 platforms using the RMT (Remote Control) peripheral with ESP-IDF v5.5+. This comprehensive test suite demonstrates complete PIO functionality including WS2812 LED protocol timing, automated loopback testing, channel-specific callbacks, ESP32 variant detection, and advanced RMT features with a focus on embedded environments using `noexcept` functions.
+The PIO Comprehensive Test Suite provides extensive validation of the `EspPio` class for ESP32
+platforms using the RMT (Remote Control) peripheral with ESP-IDF v5.5+.
+This comprehensive test suite demonstrates complete PIO functionality including WS2812 LED protocol
+timing,
+automated loopback testing, channel-specific callbacks, ESP32 variant detection,
+and advanced RMT features with a focus on embedded environments using `noexcept` functions.
 
 **✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware with over 25 comprehensive tests**
 
 ### Supported ESP32 Variants
 
-The implementation automatically detects and adapts to different ESP32 variants with their specific RMT channel allocation constraints:
+The implementation automatically detects and adapts to different ESP32 variants with their specific
+RMT channel allocation constraints:
 
 | ESP32 Variant | Total Channels | TX Channels | RX Channels | Channel Allocation |
+
 |---------------|----------------|-------------|-------------|-------------------|
+
 | ESP32         | 8              | 8 (0-7)     | 8 (0-7)     | Any channel can be TX or RX |
+
 | ESP32-S2      | 4              | 4 (0-3)     | 4 (0-3)     | Any channel can be TX or RX |
+
 | ESP32-S3      | 8              | 4 (0-3)     | 4 (4-7)     | **Hardcoded allocation** |
+
 | ESP32-C3      | 4              | 2 (0-1)     | 2 (2-3)     | **Hardcoded allocation** |
+
 | ESP32-C6      | 4              | 2 (0-1)     | 2 (2-3)     | **Hardcoded allocation** |
+
 | ESP32-H2      | 4              | 2 (0-1)     | 2 (2-3)     | **Hardcoded allocation** |
 
 ## Features Tested
@@ -32,7 +45,7 @@ The implementation automatically detects and adapts to different ESP32 variants 
 - **Automatic Variant Detection**: Runtime detection of ESP32 chip variant
 - **Channel Allocation Helpers**: Variant-specific TX/RX channel management
 - **Channel Direction Validation**: Hardware-enforced TX/RX channel restrictions
-- **Resolution_ns Interface**: User-friendly nanosecond resolution with internal Hz conversion
+- **Resolution*ns Interface**: User-friendly nanosecond resolution with internal Hz conversion
 
 ### Advanced RMT Features
 - **Channel-Specific Callbacks**: Individual channel callback management with proper user data handling
@@ -80,13 +93,13 @@ The implementation automatically detects and adapts to different ESP32 variants 
 - **GPIO18**: Reception input for automated loopback testing
 
 ### Automated Testing Setup
-```
+```text
 ESP32-C6-DevKitM-1
 ├── GPIO8 (Built-in RGB LED) ──► Jumper Wire ──► GPIO18 (RX)
 ├── GPIO14 (Test Progress) ──► LED indicator for test progression
 ├── Built-in RGB LED: WS2812 protocol testing
 └── Automated Loopback: Transmission/reception verification
-```
+```text
 
 **For Automated Testing:**
 - Connect GPIO8 to GPIO18 with a jumper wire
@@ -95,9 +108,10 @@ ESP32-C6-DevKitM-1
 - No external components required for basic testing
 
 ### WS2812 LED Testing Setup
-The ESP32-C6-DevKitM-1 includes a built-in RGB LED on GPIO8, perfect for comprehensive WS2812 testing:
+The ESP32-C6-DevKitM-1 includes a built-in RGB LED on GPIO8, perfect for comprehensive WS2812
+testing:
 
-```
+```text
 ESP32-C6-DevKitM-1 Built-in RGB LED (GPIO8)
 ├── WS2812 Protocol Testing
 ├── 30+ Color Pattern Verification
@@ -105,7 +119,7 @@ ESP32-C6-DevKitM-1 Built-in RGB LED (GPIO8)
 ├── Brightness Sweep Testing
 ├── Bit Pattern Analysis
 └── Rainbow Transition Effects
-```
+```text
 
 **Built-in LED Features:**
 - ✅ No external wiring required
@@ -115,12 +129,12 @@ ESP32-C6-DevKitM-1 Built-in RGB LED (GPIO8)
 - ✅ Visual verification of test patterns
 
 ### Test Progression Indicator
-```
+```text
 ESP32-C6 GPIO14 ──► Visual LED Indicator
                    │
                    └──► Toggles HIGH/LOW for each completed test
                    └──► Provides feedback for logic analyzer capture
-```
+```text
 
 **Progression Indicator Features:**
 - ✅ Visual feedback for test completion
@@ -129,12 +143,12 @@ ESP32-C6 GPIO14 ──► Visual LED Indicator
 - ✅ Real-time test progress monitoring
 
 ### External WS2812 LED Chain (Optional)
-```
+```text
 ESP32-C6 GPIO8 ──► WS2812 LED Chain ──► Additional LEDs
                    │
                    └──► 5V Power Supply
                    └──► Ground
-```
+```text
 
 **Requirements for External LEDs:**
 - WS2812/WS2812B/NeoPixel LEDs
@@ -143,12 +157,12 @@ ESP32-C6 GPIO8 ──► WS2812 LED Chain ──► Additional LEDs
 - Common ground between ESP32 and LED power supply
 
 ### Logic Analyzer Setup
-```
+```text
 ESP32-C6 GPIO8 ──► Logic Analyzer Channel 0 (WS2812 data)
 ESP32-C6 GPIO14 ──► Logic Analyzer Channel 1 (test progression)
 ESP32-C6 GPIO18 ──► Logic Analyzer Channel 2 (loopback verification)
 ESP32-C6 GND   ──► Logic Analyzer Ground
-```
+```text
 
 **Logic Analyzer Settings:**
 - Sample rate: 20MHz or higher
@@ -166,108 +180,114 @@ ESP32-C6 GND   ──► Logic Analyzer Ground
 
 ### Using Build Scripts (Recommended)
 ```bash
-# Navigate to ESP32 examples directory
+## Navigate to ESP32 examples directory
 cd examples/esp32
 
-# Source ESP-IDF environment
+## Source ESP-IDF environment
 source /path/to/esp-idf/export.sh
 
-# Set target and build
-export IDF_TARGET=esp32c6
-./build_example.sh pio_test Release
+## Set target and build
+export IDF*TARGET=esp32c6
+./build*example.sh pio*test Release
 
-# Flash to device
-idf.py -B build_pio_test_Release flash monitor
-```
+## Flash to device
+idf.py -B build*pio*test*Release flash monitor
+```text
 
 ### Direct ESP-IDF Build (Alternative)
 ```bash
-# Set target
-export IDF_TARGET=esp32c6
+## Set target
+export IDF*TARGET=esp32c6
 
-# Build PIO test
-idf.py build -DEXAMPLE_TYPE=pio_test
+## Build PIO test
+idf.py build -DEXAMPLE*TYPE=pio*test
 
-# Flash to device
+## Flash to device
 idf.py flash monitor
-```
+```text
 
 ### CI/CD Integration
-The test is automatically included in the CI pipeline and will run in both Release and Debug configurations:
+The test is automatically included in the CI pipeline and will run in both Release and Debug
+configurations:
 ```yaml
 matrix:
-  example_type: [..., pio_test, ...]
-```
+  example*type: [..., pio*test, ...]
+```text
 
 ## Test Categories
 
 ### 1. ESP32 Variant Information Tests
-- `test_esp32_variant_detection`: Automatic ESP32 variant detection and reporting
-- `test_channel_allocation_helpers`: TX/RX channel helper function validation
-- `test_channel_direction_validation`: Hardware-enforced channel direction validation
-- `test_resolution_ns_usage`: Resolution_ns interface with clock calculation testing
+- `test*esp32*variant*detection`: Automatic ESP32 variant detection and reporting
+- `test*channel*allocation*helpers`: TX/RX channel helper function validation
+- `test*channel*direction*validation`: Hardware-enforced channel direction validation
+- `test*resolution*ns*usage`: Resolution*ns interface with clock calculation testing
 
 ### 2. Constructor/Destructor Tests
-- `test_constructor_default`: Validates proper object initialization
-- `test_destructor_cleanup`: Ensures clean resource deallocation
+- `test*constructor*default`: Validates proper object initialization
+- `test*destructor*cleanup`: Ensures clean resource deallocation
 
 ### 3. Lifecycle Tests
-- `test_initialization_states`: Tests manual initialization/deinitialization
-- `test_lazy_initialization`: Validates automatic initialization
+- `test*initialization*states`: Tests manual initialization/deinitialization
+- `test*lazy*initialization`: Validates automatic initialization
 
 ### 4. Channel Configuration Tests
-- `test_channel_configuration`: Basic channel setup validation with variant awareness
-- `test_multiple_channel_configuration`: Multi-channel operation with TX/RX allocation
+- `test*channel*configuration`: Basic channel setup validation with variant awareness
+- `test*multiple*channel*configuration`: Multi-channel operation with TX/RX allocation
 
 ### 5. Transmission Tests
-- `test_basic_symbol_transmission`: Basic symbol transmission with improved error handling
-- `test_transmission_edge_cases`: Error handling and boundary conditions
+- `test*basic*symbol*transmission`: Basic symbol transmission with improved error handling
+- `test*transmission*edge*cases`: Error handling and boundary conditions
 
 ### 6. WS2812 LED Protocol Tests
-- `test_ws2812_single_led`: Single LED color transmission using built-in RGB LED
-- `test_ws2812_multiple_leds`: RGB LED chain testing
-- `test_ws2812_color_cycle`: Comprehensive 30+ color pattern testing including:
+- `test*ws2812*single*led`: Single LED color transmission using built-in RGB LED
+- `test*ws2812*multiple*leds`: RGB LED chain testing
+- `test*ws2812*color*cycle`: Comprehensive 30+ color pattern testing including:
   - Primary colors at maximum brightness
   - Secondary colors and white variations
   - Gradient patterns and brightness levels
   - Specific bit patterns for timing verification
   - Color wheel simulation
   - Rapid color change stress testing
-- `test_ws2812_brightness_sweep`: Individual color channel intensity sweep (0-255)
-- `test_ws2812_pattern_validation`: Specific bit patterns for protocol accuracy
-- `test_ws2812_rainbow_transition`: HSV to RGB rainbow transitions with smooth color wheel
+- `test*ws2812*brightness*sweep`: Individual color channel intensity sweep (0-255)
+- `test*ws2812*pattern*validation`: Specific bit patterns for protocol accuracy
+- `test*ws2812*rainbow*transition`: HSV to RGB rainbow transitions with smooth color wheel
 
 ### 7. Logic Analyzer Test Scenarios
-- `test_logic_analyzer_patterns`: Recognizable test patterns for signal analysis
-- `test_frequency_sweep`: Multi-frequency square wave generation
+- `test*logic*analyzer*patterns`: Recognizable test patterns for signal analysis
+- `test*frequency*sweep`: Multi-frequency square wave generation
 
 ### 8. Advanced RMT Feature Tests
-- `test_rmt_encoder_configuration`: Hardware encoder setup
-- `test_rmt_carrier_modulation`: 38kHz carrier generation
-- `test_rmt_advanced_configuration`: DMA and advanced features
+- `test*rmt*encoder*configuration`: Hardware encoder setup
+- `test*rmt*carrier*modulation`: 38kHz carrier generation
+- `test*rmt*advanced*configuration`: DMA and advanced features
 
 ### 9. Loopback and Reception Tests
-- `test_loopback_functionality`: Transmission/reception verification with automated setup
+- `test*loopback*functionality`: Transmission/reception verification with automated setup
 
 ### 10. Callback Tests
-- `test_callback_functionality`: Channel-specific interrupt-driven callbacks with user data
+- `test*callback*functionality`: Channel-specific interrupt-driven callbacks with user data
 
 ### 11. Statistics and Diagnostics Tests
-- `test_statistics_and_diagnostics`: Comprehensive performance metrics and error reporting
+- `test*statistics*and*diagnostics`: Comprehensive performance metrics and error reporting
 
 ### 12. Stress and Performance Tests
-- `test_stress_transmission`: High-load testing with rapid operation cycles
+- `test*stress*transmission`: High-load testing with rapid operation cycles
 
 ### 13. System Validation Tests
-- `test_pio_system_validation`: End-to-end comprehensive system functionality
+- `test*pio*system*validation`: End-to-end comprehensive system functionality
 
 ## WS2812 Protocol Specifications
 
 ### Timing Requirements
+
 | Symbol | High Time | Low Time | Tolerance |
+
 |--------|-----------|----------|-----------|
+
 | '0' bit| 350ns    | 900ns    | ±150ns    |
+
 | '1' bit| 700ns    | 600ns    | ±150ns    |
+
 | Reset  | -        | >50µs    | -         |
 
 ### Color Format
@@ -305,9 +325,10 @@ matrix:
 ## Logic Analyzer Test Patterns
 
 ### Pattern 1: Basic Timing Test
-```
-1µs HIGH → 1µs LOW → 2µs HIGH → 2µs LOW → 0.5µs HIGH → 0.5µs LOW → 3µs HIGH → 1.5µs LOW → 0.75µs HIGH → 4µs LOW
-```
+```text
+1µs HIGH → 1µs LOW → 2µs HIGH → 2µs LOW → 0.5µs HIGH → 0.5µs LOW → 3µs HIGH → 1.5µs LOW → 0.75µs
+HIGH → 4µs LOW
+```text
 
 ### Pattern 2: Frequency Sweep
 - 1kHz: 500µs HIGH, 500µs LOW
@@ -324,52 +345,52 @@ matrix:
 ## Expected Test Results
 
 ### Successful Test Output
-```
-[PIO_Test] ╔═══════════════════════════════════════════════════════════════════════════════╗
-[PIO_Test] ║                    ESP32-C6 PIO COMPREHENSIVE TEST SUITE                     ║
-[PIO_Test] ║  Testing EspPio with ESP-IDF v5.5 RMT peripheral                             ║
-[PIO_Test] ║  Includes WS2812 LED protocol and automated loopback testing                 ║
-[PIO_Test] ║                                                                               ║
-[PIO_Test] ║  Test Pins (ESP32-C6 DevKitM-1):                                             ║
-[PIO_Test] ║    GPIO 8 - Built-in RGB LED (WS2812) + TX for loopback                     ║
-[PIO_Test] ║    GPIO 14 - Test progression indicator                                       ║
-[PIO_Test] ║    GPIO 18 - RX for automated loopback verification                          ║
-[PIO_Test] ║                                                                               ║
-[PIO_Test] ║  For automated testing: Connect GPIO 8 to GPIO 18 with jumper wire          ║
-[PIO_Test] ╚═══════════════════════════════════════════════════════════════════════════════╝
+```text
+[PIO*Test] ╔═══════════════════════════════════════════════════════════════════════════════╗
+[PIO*Test] ║                    ESP32-C6 PIO COMPREHENSIVE TEST SUITE                     ║
+[PIO*Test] ║  Testing EspPio with ESP-IDF v5.5 RMT peripheral                             ║
+[PIO*Test] ║  Includes WS2812 LED protocol and automated loopback testing                 ║
+[PIO*Test] ║                                                                               ║
+[PIO*Test] ║  Test Pins (ESP32-C6 DevKitM-1):                                             ║
+[PIO*Test] ║    GPIO 8 - Built-in RGB LED (WS2812) + TX for loopback                     ║
+[PIO*Test] ║    GPIO 14 - Test progression indicator                                       ║
+[PIO*Test] ║    GPIO 18 - RX for automated loopback verification                          ║
+[PIO*Test] ║                                                                               ║
+[PIO*Test] ║  For automated testing: Connect GPIO 8 to GPIO 18 with jumper wire          ║
+[PIO*Test] ╚═══════════════════════════════════════════════════════════════════════════════╝
 
-[PIO_Test] === ESP32 VARIANT INFORMATION TESTS ===
-[PIO_Test] [SUCCESS] PASSED: test_esp32_variant_detection (0.05 ms)
-[PIO_Test] [SUCCESS] PASSED: test_channel_allocation_helpers (0.12 ms)
-[PIO_Test] [SUCCESS] PASSED: test_channel_direction_validation (0.08 ms)
-[PIO_Test] [SUCCESS] PASSED: test_resolution_ns_usage (1.45 ms)
+[PIO*Test] === ESP32 VARIANT INFORMATION TESTS ===
+[PIO*Test] [SUCCESS] PASSED: test*esp32*variant*detection (0.05 ms)
+[PIO*Test] [SUCCESS] PASSED: test*channel*allocation*helpers (0.12 ms)
+[PIO*Test] [SUCCESS] PASSED: test*channel*direction*validation (0.08 ms)
+[PIO*Test] [SUCCESS] PASSED: test*resolution*ns*usage (1.45 ms)
 
-[PIO_Test] === CONSTRUCTOR/DESTRUCTOR TESTS ===
-[PIO_Test] [SUCCESS] PASSED: test_constructor_default (0.05 ms)
-[PIO_Test] [SUCCESS] PASSED: test_destructor_cleanup (0.32 ms)
+[PIO*Test] === CONSTRUCTOR/DESTRUCTOR TESTS ===
+[PIO*Test] [SUCCESS] PASSED: test*constructor*default (0.05 ms)
+[PIO*Test] [SUCCESS] PASSED: test*destructor*cleanup (0.32 ms)
 
-[PIO_Test] === WS2812 LED PROTOCOL TESTS ===
-[PIO_Test] [SUCCESS] PASSED: test_ws2812_single_led (2.34 ms)
-[PIO_Test] [SUCCESS] PASSED: test_ws2812_multiple_leds (5.67 ms)
-[PIO_Test] [SUCCESS] PASSED: test_ws2812_color_cycle (45.23 ms)
-[PIO_Test] [SUCCESS] PASSED: test_ws2812_brightness_sweep (12.89 ms)
-[PIO_Test] [SUCCESS] PASSED: test_ws2812_pattern_validation (8.76 ms)
-[PIO_Test] [SUCCESS] PASSED: test_ws2812_rainbow_transition (15.43 ms)
+[PIO*Test] === WS2812 LED PROTOCOL TESTS ===
+[PIO*Test] [SUCCESS] PASSED: test*ws2812*single*led (2.34 ms)
+[PIO*Test] [SUCCESS] PASSED: test*ws2812*multiple*leds (5.67 ms)
+[PIO*Test] [SUCCESS] PASSED: test*ws2812*color*cycle (45.23 ms)
+[PIO*Test] [SUCCESS] PASSED: test*ws2812*brightness*sweep (12.89 ms)
+[PIO*Test] [SUCCESS] PASSED: test*ws2812*pattern*validation (8.76 ms)
+[PIO*Test] [SUCCESS] PASSED: test*ws2812*rainbow*transition (15.43 ms)
 
 ...
 
-[PIO_Test] === PIO TEST SUMMARY ===
-[PIO_Test] Total: 25, Passed: 25, Failed: 0, Success: 100.00%, Time: 185.67 ms
-[PIO_Test] [SUCCESS] ALL PIO TESTS PASSED!
+[PIO*Test] === PIO TEST SUMMARY ===
+[PIO*Test] Total: 25, Passed: 25, Failed: 0, Success: 100.00%, Time: 185.67 ms
+[PIO*Test] [SUCCESS] ALL PIO TESTS PASSED!
 
-[PIO_Test] ║  New Features Tested:                                                         ║
-[PIO_Test] ║    ✓ Channel-specific callbacks with user data                               ║
-[PIO_Test] ║    ✓ Resolution_hz for direct ESP-IDF compatibility                         ║
-[PIO_Test] ║    ✓ ESP32 variant-specific channel validation                              ║
-[PIO_Test] ║    ✓ Enhanced clock divider calculation                                     ║
-[PIO_Test] ║    ✓ Test progression indicator on GPIO14                                   ║
-[PIO_Test] ║    ✓ Comprehensive WS2812 color testing (30+ patterns)                     ║
-```
+[PIO*Test] ║  New Features Tested:                                                         ║
+[PIO*Test] ║    ✓ Channel-specific callbacks with user data                               ║
+[PIO*Test] ║    ✓ Resolution*hz for direct ESP-IDF compatibility                         ║
+[PIO*Test] ║    ✓ ESP32 variant-specific channel validation                              ║
+[PIO*Test] ║    ✓ Enhanced clock divider calculation                                     ║
+[PIO*Test] ║    ✓ Test progression indicator on GPIO14                                   ║
+[PIO*Test] ║    ✓ Comprehensive WS2812 color testing (30+ patterns)                     ║
+```text
 
 ### Built-in RGB LED Verification
 The ESP32-C6-DevKitM-1's built-in RGB LED demonstrates comprehensive testing:
@@ -412,7 +433,7 @@ Capture signals on GPIO8, GPIO14, and GPIO18 to verify:
 ### Common Issues
 
 #### Test Failures
-- **Timing Issues**: Verify resolution_ns values are within hardware constraints (use GetResolutionConstraints())
+- **Timing Issues**: Verify resolution*ns values are within hardware constraints (use GetResolutionConstraints())
 - **GPIO Conflicts**: Check pin availability and configuration
 - **Initialization Failures**: Ensure ESP-IDF v5.5+ and proper hardware
 - **Variant Detection**: Verify ESP32 variant is properly detected and supported
@@ -450,12 +471,12 @@ Capture signals on GPIO8, GPIO14, and GPIO18 to verify:
 ### Debug Mode
 Enable detailed logging by building in Debug mode:
 ```bash
-# Using build scripts (recommended)
-./build_example.sh pio_test Debug
+## Using build scripts (recommended)
+./build*example.sh pio*test Debug
 
-# Or direct ESP-IDF build
-idf.py build -DEXAMPLE_TYPE=pio_test -DBUILD_TYPE=Debug
-```
+## Or direct ESP-IDF build
+idf.py build -DEXAMPLE*TYPE=pio*test -DBUILD*TYPE=Debug
+```text
 
 ## Performance Metrics
 
@@ -508,46 +529,46 @@ For production validation:
 Modify the test for different hardware:
 ```cpp
 // ESP32-C6 DevKitM-1 specific configuration
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-static constexpr hf_gpio_num_t TEST_GPIO_TX = 8;   // Built-in RGB LED
-static constexpr hf_gpio_num_t TEST_GPIO_RX = 18;  // Loopback RX
-static constexpr hf_gpio_num_t TEST_GPIO_PROGRESS = 14; // Progress indicator
+#if defined(CONFIG*IDF*TARGET*ESP32C6)
+static constexpr hf*gpio*num*t TEST*GPIO*TX = 8;   // Built-in RGB LED
+static constexpr hf*gpio*num*t TEST*GPIO*RX = 18;  // Loopback RX
+static constexpr hf*gpio*num*t TEST*GPIO*PROGRESS = 14; // Progress indicator
 #else
-static constexpr hf_gpio_num_t TEST_GPIO_TX = 2;   // Other ESP32 variants
-static constexpr hf_gpio_num_t TEST_GPIO_RX = 3;   // Other ESP32 variants
-static constexpr hf_gpio_num_t TEST_GPIO_PROGRESS = 2; // Other variants
+static constexpr hf*gpio*num*t TEST*GPIO*TX = 2;   // Other ESP32 variants
+static constexpr hf*gpio*num*t TEST*GPIO*RX = 3;   // Other ESP32 variants
+static constexpr hf*gpio*num*t TEST*GPIO*PROGRESS = 2; // Other variants
 #endif
-```
+```text
 
 ### Timing Resolution
 Adjust for different requirements:
 ```cpp
 // ESP32-C6 specific resolution configuration
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-config.resolution_ns = 125; // 8MHz resolution - optimized for WS2812 timing
+#if defined(CONFIG*IDF*TARGET*ESP32C6)
+config.resolution*ns = 125; // 8MHz resolution - optimized for WS2812 timing
 #else
-config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // 1µs standard resolution
+config.resolution*ns = TEST*RESOLUTION*STANDARD*NS; // 1µs standard resolution
 #endif
-```
+```text
 
 ### Test Parameters
 Customize test behavior:
 ```cpp
 // WS2812 timing specifications
-static constexpr uint32_t WS2812_T0H = 350;  // WS2812B high time for '0'
-static constexpr uint32_t WS2812_T0L = 900;  // WS2812B low time for '0'
-static constexpr uint32_t WS2812_T1H = 700;  // WS2812B high time for '1'
-static constexpr uint32_t WS2812_T1L = 600;  // WS2812B low time for '1'
+static constexpr uint32*t WS2812*T0H = 350;  // WS2812B high time for '0'
+static constexpr uint32*t WS2812*T0L = 900;  // WS2812B low time for '0'
+static constexpr uint32*t WS2812*T1H = 700;  // WS2812B high time for '1'
+static constexpr uint32*t WS2812*T1L = 600;  // WS2812B low time for '1'
 
 // Test progression configuration
-static constexpr uint32_t TEST_PROGRESS_DELAY_MS = 100; // Progress indicator timing
-```
+static constexpr uint32*t TEST*PROGRESS*DELAY*MS = 100; // Progress indicator timing
+```text
 
 ## ESP32-C6 Specific Features
 
 ### RMT Peripheral
 - **Channels**: 2 TX (0-1) + 2 RX (2-3) channels
-- **Clock Source**: PLL_F80M (80 MHz) with automatic fallback
+- **Clock Source**: PLL*F80M (80 MHz) with automatic fallback
 - **Memory**: Configurable memory blocks per channel
 - **DMA**: Supported for large transfers
 - **Resolution**: 125ns minimum (8MHz) for WS2812 precision
@@ -572,6 +593,6 @@ static constexpr uint32_t TEST_PROGRESS_DELAY_MS = 100; // Progress indicator ti
 
 - [ESP-IDF RMT Documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/rmt.html)
 - [WS2812B Datasheet](https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf)
-- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
+- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6*technical*reference*manual*en.pdf)
 - [ESP-IDF v5.5 Migration Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/migration-guides/release-5.x/5.0/peripherals.html)
 - [ESP32-C6-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/hw-reference/esp32c6/user-guide-devkitm-1.html)

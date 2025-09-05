@@ -2,7 +2,11 @@
 
 ## Overview
 
-The `DigitalOutputGuard` class provides **Resource Acquisition Is Initialization (RAII)** management for GPIO output operations. It ensures that a GPIO pin is automatically set to active state when the guard is created and automatically set to inactive state when the guard is destroyed, providing safe and reliable GPIO state management.
+The `DigitalOutputGuard` class provides **Resource Acquisition Is Initialization (RAII)** management
+for GPIO output operations.
+It ensures that a GPIO pin is automatically set to active state when the guard is created and
+automatically set to inactive state when the guard is destroyed,
+providing safe and reliable GPIO state management.
 
 ## Key Features
 
@@ -19,8 +23,8 @@ The `DigitalOutputGuard` class provides **Resource Acquisition Is Initialization
 class DigitalOutputGuard {
 public:
     // Constructors
-    explicit DigitalOutputGuard(BaseGpio& gpio, bool ensure_output_mode = true) noexcept;
-    explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode = true) noexcept;
+    explicit DigitalOutputGuard(BaseGpio& gpio, bool ensure*output*mode = true) noexcept;
+    explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure*output*mode = true) noexcept;
     
     // Destructor
     ~DigitalOutputGuard() noexcept;
@@ -35,38 +39,38 @@ public:
     
     // State management
     [[nodiscard]] bool IsValid() const noexcept;
-    [[nodiscard]] hf_gpio_err_t GetLastError() const noexcept;
-    hf_gpio_err_t SetActive() noexcept;
-    hf_gpio_err_t SetInactive() noexcept;
-    [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
+    [[nodiscard]] hf*gpio*err*t GetLastError() const noexcept;
+    hf*gpio*err*t SetActive() noexcept;
+    hf*gpio*err*t SetInactive() noexcept;
+    [[nodiscard]] hf*gpio*state*t GetCurrentState() const noexcept;
 };
-```
+```text
 
 ## Constructor Details
 
 ### Reference Constructor
 ```cpp
-explicit DigitalOutputGuard(BaseGpio& gpio, bool ensure_output_mode = true) noexcept;
-```
+explicit DigitalOutputGuard(BaseGpio& gpio, bool ensure*output*mode = true) noexcept;
+```text
 - **Parameters**:
   - `gpio`: Reference to the BaseGpio instance to manage
-  - `ensure_output_mode`: If true, automatically switch to output mode (default: true)
+  - `ensure*output*mode`: If true, automatically switch to output mode (default: true)
 - **Behavior**: Configures the GPIO as output (if needed) and sets it to active state
 
 ### Pointer Constructor
 ```cpp
-explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode = true) noexcept;
-```
+explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure*output*mode = true) noexcept;
+```text
 - **Parameters**:
   - `gpio`: Pointer to the BaseGpio instance to manage (must not be null)
-  - `ensure_output_mode`: If true, automatically switch to output mode (default: true)
+  - `ensure*output*mode`: If true, automatically switch to output mode (default: true)
 - **Behavior**: Same as reference constructor, but with null pointer validation
 
 ## Destructor
 
 ```cpp
 ~DigitalOutputGuard() noexcept;
-```
+```text
 - **Behavior**: Automatically sets the associated GPIO to inactive state
 - **Note**: Does not change the pin direction to preserve configuration
 
@@ -75,30 +79,30 @@ explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode = true) noex
 ### State Validation
 ```cpp
 [[nodiscard]] bool IsValid() const noexcept;
-```
+```text
 - **Returns**: `true` if the guard was successfully initialized, `false` otherwise
 - **Use Case**: Check if the guard is in a valid state before use
 
 ### Error Handling
 ```cpp
-[[nodiscard]] hf_gpio_err_t GetLastError() const noexcept;
-```
+[[nodiscard]] hf*gpio*err*t GetLastError() const noexcept;
+```text
 - **Returns**: The last error code from guard operations
 - **Use Case**: Diagnose initialization or operation failures
 
 ### Manual State Control
 ```cpp
-hf_gpio_err_t SetActive() noexcept;
-hf_gpio_err_t SetInactive() noexcept;
-```
-- **Returns**: `hf_gpio_err_t::GPIO_SUCCESS` if successful, error code otherwise
+hf*gpio*err*t SetActive() noexcept;
+hf*gpio*err*t SetInactive() noexcept;
+```text
+- **Returns**: `hf*gpio*err*t::GPIO*SUCCESS` if successful, error code otherwise
 - **Use Case**: Manual control while the guard is active
 - **Note**: The destructor will still set the pin inactive when the guard goes out of scope
 
 ### State Query
 ```cpp
-[[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
-```
+[[nodiscard]] hf*gpio*state*t GetCurrentState() const noexcept;
+```text
 - **Returns**: Current GPIO state (Active or Inactive)
 - **Use Case**: Check the current state of the managed GPIO
 
@@ -108,7 +112,7 @@ hf_gpio_err_t SetInactive() noexcept;
 ```cpp
 // GPIO will be set active when guard is created
 {
-    DigitalOutputGuard guard(my_gpio);
+    DigitalOutputGuard guard(my*gpio);
     if (!guard.IsValid()) {
         // Handle initialization error
         return;
@@ -118,11 +122,11 @@ hf_gpio_err_t SetInactive() noexcept;
     // ... perform operations ...
     
 } // GPIO automatically set inactive when guard goes out of scope
-```
+```text
 
 ### Manual State Control
 ```cpp
-DigitalOutputGuard guard(my_gpio);
+DigitalOutputGuard guard(my*gpio);
 if (!guard.IsValid()) {
     return;
 }
@@ -134,21 +138,21 @@ guard.SetActive();    // Turn back on
 // ... more operations ...
 
 // GPIO will be automatically set inactive when guard is destroyed
-```
+```text
 
 ### Pointer-based Usage
 ```cpp
-EspGpio* gpio_ptr = new EspGpio(pin, direction, active_state, output_mode, pull_mode);
-if (!gpio_ptr->EnsureInitialized()) {
-    delete gpio_ptr;
+EspGpio* gpio*ptr = new EspGpio(pin, direction, active*state, output*mode, pull*mode);
+if (!gpio*ptr->EnsureInitialized()) {
+    delete gpio*ptr;
     return;
 }
 
 {
-    DigitalOutputGuard guard(gpio_ptr);
+    DigitalOutputGuard guard(gpio*ptr);
     if (!guard.IsValid()) {
         // Handle error
-        delete gpio_ptr;
+        delete gpio*ptr;
         return;
     }
     
@@ -158,12 +162,12 @@ if (!gpio_ptr->EnsureInitialized()) {
     
 } // Guard ensures GPIO is set inactive
 
-delete gpio_ptr;
-```
+delete gpio*ptr;
+```text
 
 ### Move Semantics
 ```cpp
-DigitalOutputGuard guard1(my_gpio);
+DigitalOutputGuard guard1(my*gpio);
 if (!guard1.IsValid()) {
     return;
 }
@@ -175,40 +179,40 @@ DigitalOutputGuard guard2 = std::move(guard1);
 
 // Use guard2
 guard2.SetActive();
-```
+```text
 
 ## Error Handling
 
 The DigitalOutputGuard provides comprehensive error handling:
 
 ### Common Error Codes
-- `hf_gpio_err_t::GPIO_SUCCESS`: Operation successful
-- `hf_gpio_err_t::GPIO_ERR_NULL_POINTER`: Null pointer provided to constructor
-- `hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED`: GPIO not properly initialized
-- `hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH`: GPIO not in output mode and ensure_output_mode=false
+- `hf*gpio*err*t::GPIO*SUCCESS`: Operation successful
+- `hf*gpio*err*t::GPIO*ERR*NULL*POINTER`: Null pointer provided to constructor
+- `hf*gpio*err*t::GPIO*ERR*NOT*INITIALIZED`: GPIO not properly initialized
+- `hf*gpio*err*t::GPIO*ERR*DIRECTION*MISMATCH`: GPIO not in output mode and ensure*output*mode=false
 
 ### Error Handling Pattern
 ```cpp
-DigitalOutputGuard guard(my_gpio);
+DigitalOutputGuard guard(my*gpio);
 if (!guard.IsValid()) {
-    hf_gpio_err_t error = guard.GetLastError();
+    hf*gpio*err*t error = guard.GetLastError();
     switch (error) {
-        case hf_gpio_err_t::GPIO_ERR_NULL_POINTER:
-            ESP_LOGE(TAG, "Null pointer provided");
+        case hf*gpio*err*t::GPIO*ERR*NULL*POINTER:
+            ESP*LOGE(TAG, "Null pointer provided");
             break;
-        case hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED:
-            ESP_LOGE(TAG, "GPIO not initialized");
+        case hf*gpio*err*t::GPIO*ERR*NOT*INITIALIZED:
+            ESP*LOGE(TAG, "GPIO not initialized");
             break;
-        case hf_gpio_err_t::GPIO_ERR_DIRECTION_MISMATCH:
-            ESP_LOGE(TAG, "GPIO direction mismatch");
+        case hf*gpio*err*t::GPIO*ERR*DIRECTION*MISMATCH:
+            ESP*LOGE(TAG, "GPIO direction mismatch");
             break;
         default:
-            ESP_LOGE(TAG, "Unknown error: %d", static_cast<int>(error));
+            ESP*LOGE(TAG, "Unknown error: %d", static*cast<int>(error));
             break;
     }
     return;
 }
-```
+```text
 
 ## Performance Characteristics
 
@@ -242,7 +246,7 @@ The DigitalOutputGuard integrates seamlessly with the HardFOC hardware abstracti
 - Works with any `BaseGpio` implementation
 - Supports all GPIO directions, active states, and output modes
 - Compatible with ESP32, STM32, and other MCU implementations
-- Uses standard `hf_gpio_err_t` and `hf_gpio_state_t` types
+- Uses standard `hf*gpio*err*t` and `hf*gpio*state*t` types
 
 ## See Also
 

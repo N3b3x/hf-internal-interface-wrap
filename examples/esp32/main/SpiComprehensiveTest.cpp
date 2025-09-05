@@ -64,7 +64,7 @@ static constexpr hf_pin_num_t TEST_CS_PIN_1 = 21;
 static constexpr hf_pin_num_t TEST_CS_PIN_2 = 20;
 static constexpr hf_pin_num_t TEST_CS_PIN_3 = 19;
 static constexpr hf_host_id_t SPI_HOST_NUM =
-    static_cast<hf_host_id_t>(SPI2_HOST);                  // ESP32-C6 only has SPI2_HOST (value 1)
+    static_cast<hf_host_id_t>(SPI2_HOST);          // ESP32-C6 only has SPI2_HOST (value 1)
 static constexpr uint32_t SLOW_SPEED = 1000000;    // 1MHz
 static constexpr uint32_t MEDIUM_SPEED = 10000000; // 10MHz
 static constexpr uint32_t FAST_SPEED = 40000000;   // 40MHz
@@ -101,7 +101,6 @@ void generate_sequential_pattern(uint8_t* buffer, size_t length,
                                  uint8_t start_value = 0x01) noexcept;
 void generate_alternating_pattern(uint8_t* buffer, size_t length, uint8_t value1 = 0x55,
                                   uint8_t value2 = 0xAA) noexcept;
-
 
 bool test_spi_bus_initialization() noexcept {
 
@@ -152,7 +151,6 @@ bool test_spi_bus_initialization() noexcept {
 
 bool test_spi_bus_deinitialization() noexcept {
 
-
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -199,7 +197,6 @@ bool test_spi_bus_deinitialization() noexcept {
 
 bool test_spi_configuration_validation() noexcept {
 
-
   // Test different hosts
   for (auto host : {SPI2_HOST}) { // ESP32-C6 typically has SPI2_HOST available
     hf_spi_bus_config_t bus_config = {};
@@ -242,7 +239,6 @@ bool test_spi_configuration_validation() noexcept {
 }
 
 bool test_spi_device_creation() noexcept {
-
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -321,7 +317,6 @@ bool test_spi_device_creation() noexcept {
 
 bool test_spi_device_management() noexcept {
 
-
   // Use SPI2_HOST for device management test to isolate from other tests
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -399,7 +394,6 @@ bool test_spi_device_management() noexcept {
 
 bool test_spi_transfer_basic() noexcept {
 
-
   // Use SPI2_HOST for transfer tests to isolate from other tests
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -465,7 +459,6 @@ bool test_spi_transfer_basic() noexcept {
 
 bool test_spi_transfer_modes() noexcept {
 
-
   // Use SPI2_HOST for transfer tests to isolate from other tests
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -520,7 +513,6 @@ bool test_spi_transfer_modes() noexcept {
 }
 
 bool test_spi_transfer_sizes() noexcept {
-
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -588,7 +580,6 @@ bool test_spi_transfer_sizes() noexcept {
 }
 
 bool test_spi_dma_operations() noexcept {
-
 
   // Test with DMA enabled
   auto bus_config_dma = create_test_bus_config(FAST_SPEED, true, SPI2_HOST);
@@ -687,7 +678,6 @@ bool test_spi_dma_operations() noexcept {
 
 bool test_spi_clock_speeds() noexcept {
 
-
   std::vector<uint32_t> test_speeds = {
       SLOW_SPEED,   // 1MHz
       MEDIUM_SPEED, // 10MHz
@@ -753,7 +743,6 @@ bool test_spi_clock_speeds() noexcept {
 
 bool test_spi_multi_device_operations() noexcept {
 
-
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -815,7 +804,6 @@ bool test_spi_multi_device_operations() noexcept {
 
 bool test_spi_error_handling() noexcept {
 
-
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -868,7 +856,6 @@ bool test_spi_error_handling() noexcept {
 }
 
 bool test_spi_timeout_handling() noexcept {
-
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
@@ -932,7 +919,6 @@ bool test_spi_timeout_handling() noexcept {
 
 bool test_spi_esp_specific_features() noexcept {
 
-
   // Test with different clock sources (ESP32-C6 specific)
   hf_spi_bus_config_t bus_config = {};
   bus_config.mosi_pin = TEST_MOSI_PIN;
@@ -991,7 +977,6 @@ bool test_spi_esp_specific_features() noexcept {
 }
 
 bool test_spi_iomux_optimization() noexcept {
-
 
   // Test with IOMUX enabled (for maximum performance)
   hf_spi_bus_config_t bus_config_iomux = {};
@@ -1090,7 +1075,6 @@ bool test_spi_iomux_optimization() noexcept {
 
 bool test_spi_thread_safety() noexcept {
 
-
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -1141,7 +1125,6 @@ bool test_spi_thread_safety() noexcept {
 }
 
 bool test_spi_performance_benchmarks() noexcept {
-
 
   // Create test bus configuration
   auto bus_config = create_test_bus_config(FAST_SPEED, true, SPI2_HOST);
@@ -1215,7 +1198,6 @@ bool test_spi_performance_benchmarks() noexcept {
 
 bool test_spi_edge_cases() noexcept {
 
-
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -1280,7 +1262,6 @@ bool test_spi_edge_cases() noexcept {
 
 bool test_spi_bus_acquisition() noexcept {
 
-
   // Create test bus configuration
   auto bus_config = create_test_bus_config(MEDIUM_SPEED, true, SPI2_HOST);
 
@@ -1339,7 +1320,6 @@ bool test_spi_bus_acquisition() noexcept {
 
 bool test_spi_power_management() noexcept {
 
-
   // Test with power management features
   hf_spi_bus_config_t bus_config = {};
   bus_config.mosi_pin = TEST_MOSI_PIN;
@@ -1372,7 +1352,6 @@ bool test_spi_power_management() noexcept {
  * @note Uses identical configuration and test pattern as C++ wrapper replica test
  */
 bool test_spi_espidf_direct_api() noexcept {
-
 
   ESP_LOGI(TAG, "Testing SPI using ESP-IDF API directly (bypassing our wrapper)");
   ESP_LOGI(TAG, "This test runs FIRST to verify ESP-IDF SPI driver functionality");
@@ -1573,7 +1552,6 @@ bool test_spi_espidf_direct_api() noexcept {
  * @note Uses identical configuration and test pattern as ESP-IDF direct test
  */
 bool test_spi_espidf_wrapper_replica() noexcept {
-
 
   ESP_LOGI(TAG, "Testing SPI using EspSpiBus wrapper (replicating ESP-IDF direct test)");
   ESP_LOGI(TAG, "This test runs SECOND to compare wrapper implementation with ESP-IDF direct API");

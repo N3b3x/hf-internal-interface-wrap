@@ -154,20 +154,20 @@
 //==============================================================================
 
 // Count the number of selected target MCUs (portable version)
-#if defined(HF_TARGET_MCU_ESP32C6) + defined(HF_TARGET_MCU_ESP32) +       \
-        defined(HF_TARGET_MCU_ESP32S2) + defined(HF_TARGET_MCU_ESP32S3) + \
-        defined(HF_TARGET_MCU_ESP32C3) + defined(HF_TARGET_MCU_ESP32C2) + \
-        defined(HF_TARGET_MCU_ESP32H2) + defined(HF_TARGET_MCU_STM32F4) + \
-        defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040) >  \
+#if defined(HF_TARGET_MCU_ESP32C6) + defined(HF_TARGET_MCU_ESP32) +                                \
+        defined(HF_TARGET_MCU_ESP32S2) + defined(HF_TARGET_MCU_ESP32S3) +                          \
+        defined(HF_TARGET_MCU_ESP32C3) + defined(HF_TARGET_MCU_ESP32C2) +                          \
+        defined(HF_TARGET_MCU_ESP32H2) + defined(HF_TARGET_MCU_STM32F4) +                          \
+        defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040) >                           \
     1
-#error \
+#error                                                                                             \
     "Multiple target MCUs are selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
-#elif !defined(HF_TARGET_MCU_ESP32C6) && !defined(HF_TARGET_MCU_ESP32) && \
-    !defined(HF_TARGET_MCU_ESP32S2) && !defined(HF_TARGET_MCU_ESP32S3) && \
-    !defined(HF_TARGET_MCU_ESP32C3) && !defined(HF_TARGET_MCU_ESP32C2) && \
-    !defined(HF_TARGET_MCU_ESP32H2) && !defined(HF_TARGET_MCU_STM32F4) && \
+#elif !defined(HF_TARGET_MCU_ESP32C6) && !defined(HF_TARGET_MCU_ESP32) &&                          \
+    !defined(HF_TARGET_MCU_ESP32S2) && !defined(HF_TARGET_MCU_ESP32S3) &&                          \
+    !defined(HF_TARGET_MCU_ESP32C3) && !defined(HF_TARGET_MCU_ESP32C2) &&                          \
+    !defined(HF_TARGET_MCU_ESP32H2) && !defined(HF_TARGET_MCU_STM32F4) &&                          \
     !defined(HF_TARGET_MCU_STM32H7) && !defined(HF_TARGET_MCU_RP2040)
-#error \
+#error                                                                                             \
     "No target MCU is selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
 #endif
 

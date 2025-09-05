@@ -1031,22 +1031,22 @@ hf_temp_err_t EspTemperature::SetEspMonitoringCallback(
 
 hf_temp_err_t EspTemperature::ConvertEspError(esp_err_t esp_err) const noexcept {
   switch (esp_err) {
-    case ESP_OK:
-      return hf_temp_err_t::TEMP_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER;
-    case ESP_ERR_INVALID_STATE:
-      return hf_temp_err_t::TEMP_ERR_INVALID_STATE;
-    case ESP_ERR_NOT_FOUND:
-      return hf_temp_err_t::TEMP_ERR_SENSOR_NOT_AVAILABLE;
-    case ESP_ERR_NO_MEM:
-      return hf_temp_err_t::TEMP_ERR_OUT_OF_MEMORY;
-    case ESP_ERR_TIMEOUT:
-      return hf_temp_err_t::TEMP_ERR_TIMEOUT;
-    case ESP_ERR_NOT_SUPPORTED:
-      return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
-    default:
-      return hf_temp_err_t::TEMP_ERR_DRIVER_ERROR;
+  case ESP_OK:
+    return hf_temp_err_t::TEMP_SUCCESS;
+  case ESP_ERR_INVALID_ARG:
+    return hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER;
+  case ESP_ERR_INVALID_STATE:
+    return hf_temp_err_t::TEMP_ERR_INVALID_STATE;
+  case ESP_ERR_NOT_FOUND:
+    return hf_temp_err_t::TEMP_ERR_SENSOR_NOT_AVAILABLE;
+  case ESP_ERR_NO_MEM:
+    return hf_temp_err_t::TEMP_ERR_OUT_OF_MEMORY;
+  case ESP_ERR_TIMEOUT:
+    return hf_temp_err_t::TEMP_ERR_TIMEOUT;
+  case ESP_ERR_NOT_SUPPORTED:
+    return hf_temp_err_t::TEMP_ERR_UNSUPPORTED_OPERATION;
+  default:
+    return hf_temp_err_t::TEMP_ERR_DRIVER_ERROR;
   }
 }
 

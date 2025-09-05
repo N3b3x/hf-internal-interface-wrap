@@ -400,19 +400,19 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
 
     // ESP-IDF v5.5 specific error handling
     switch (ret) {
-      case ESP_ERR_INVALID_ARG:
-        ESP_LOGE(TAG, "Invalid arguments for RMT reception on channel %d", channel_id);
-        return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
-      case ESP_ERR_INVALID_STATE:
-        ESP_LOGE(TAG, "RMT channel %d not in valid state for reception", channel_id);
-        return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
-      case ESP_ERR_NO_MEM:
-        ESP_LOGE(TAG, "Insufficient memory for RMT reception on channel %d", channel_id);
-        return hf_pio_err_t::PIO_ERR_OUT_OF_MEMORY;
-      default:
-        ESP_LOGE(TAG, "Failed to start reception on channel %d: %s (error: %d)", channel_id,
-                 esp_err_to_name(ret), ret);
-        return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
+    case ESP_ERR_INVALID_ARG:
+      ESP_LOGE(TAG, "Invalid arguments for RMT reception on channel %d", channel_id);
+      return hf_pio_err_t::PIO_ERR_INVALID_PARAMETER;
+    case ESP_ERR_INVALID_STATE:
+      ESP_LOGE(TAG, "RMT channel %d not in valid state for reception", channel_id);
+      return hf_pio_err_t::PIO_ERR_INVALID_CONFIGURATION;
+    case ESP_ERR_NO_MEM:
+      ESP_LOGE(TAG, "Insufficient memory for RMT reception on channel %d", channel_id);
+      return hf_pio_err_t::PIO_ERR_OUT_OF_MEMORY;
+    default:
+      ESP_LOGE(TAG, "Failed to start reception on channel %d: %s (error: %d)", channel_id,
+               esp_err_to_name(ret), ret);
+      return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
     }
   }
 
@@ -1344,22 +1344,22 @@ inline hf_u32_t EspPio::ResolveClockSourceHz(rmt_clock_source_t clk_src) noexcep
 #if SOC_CLK_TREE_SUPPORTED
   uint32_t freq = 0;
   switch (clk_src) {
-    case RMT_CLK_SRC_PLL_F80M:
-      // PLL_F80M is fixed 80 MHz
-      return 80000000UL;
-    case RMT_CLK_SRC_XTAL:
-      // Query XTAL via clk tree
-      esp_clk_tree_src_get_freq_hz(SOC_MOD_CLK_XTAL, ESP_CLK_TREE_SRC_FREQ_PRECISION_CACHED, &freq);
-      return freq ? freq : 40000000UL;
-    case RMT_CLK_SRC_RC_FAST:
-      esp_clk_tree_src_get_freq_hz(SOC_MOD_CLK_RC_FAST, ESP_CLK_TREE_SRC_FREQ_PRECISION_CACHED,
-                                   &freq);
-      return freq ? freq : 17500000UL;
-    default:
+  case RMT_CLK_SRC_PLL_F80M:
+    // PLL_F80M is fixed 80 MHz
+    return 80000000UL;
+  case RMT_CLK_SRC_XTAL:
+    // Query XTAL via clk tree
+    esp_clk_tree_src_get_freq_hz(SOC_MOD_CLK_XTAL, ESP_CLK_TREE_SRC_FREQ_PRECISION_CACHED, &freq);
+    return freq ? freq : 40000000UL;
+  case RMT_CLK_SRC_RC_FAST:
+    esp_clk_tree_src_get_freq_hz(SOC_MOD_CLK_RC_FAST, ESP_CLK_TREE_SRC_FREQ_PRECISION_CACHED,
+                                 &freq);
+    return freq ? freq : 17500000UL;
+  default:
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-      return 80000000UL;
+    return 80000000UL;
 #else
-      return 80000000UL;
+    return 80000000UL;
 #endif
   }
 #else
@@ -1371,14 +1371,14 @@ inline hf_u32_t EspPio::ResolveClockSourceHz(rmt_clock_source_t clk_src) noexcep
 // Legacy alias retained for internal calls
 inline hf_u32_t EspPio::GetClockSourceFrequency(rmt_clock_source_t clk_src) noexcept {
   switch (clk_src) {
-    case RMT_CLK_SRC_PLL_F80M:
-      return 80000000UL;
-    case RMT_CLK_SRC_XTAL:
-      return 40000000UL;
-    case RMT_CLK_SRC_RC_FAST:
-      return 17500000UL;
-    default:
-      return 80000000UL;
+  case RMT_CLK_SRC_PLL_F80M:
+    return 80000000UL;
+  case RMT_CLK_SRC_XTAL:
+    return 40000000UL;
+  case RMT_CLK_SRC_RC_FAST:
+    return 17500000UL;
+  default:
+    return 80000000UL;
   }
 }
 

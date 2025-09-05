@@ -4,7 +4,8 @@
 
 **📋 Navigation**
 
-[← Previous: EspBluetooth](EspBluetooth.md) | [Back to ESP API Index](README.md) | [Next: EspPeriodicTimer →](EspPeriodicTimer.md)
+[← Previous: EspBluetooth](EspBluetooth.md) | [Back to ESP API Index](README.md) | [Next:
+EspPeriodicTimer →](EspPeriodicTimer.md)
 
 </div>
 
@@ -12,7 +13,10 @@
 
 ## Overview
 
-`EspNvs` is the ESP32-C6 implementation of the `BaseNvs` interface, providing comprehensive NVS (Non-Volatile Storage) functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced NVS features with hardware-specific optimizations.
+`EspNvs` is the ESP32-C6 implementation of the `BaseNvs` interface,
+providing comprehensive NVS (Non-Volatile Storage) functionality specifically optimized for ESP32-C6
+microcontrollers running ESP-IDF v5.5+.
+It offers both basic and advanced NVS features with hardware-specific optimizations.
 
 ## Features
 
@@ -28,7 +32,7 @@
 
 ```cpp
 #include "inc/mcu/esp32/EspNvs.h"
-```
+```text
 
 ## Class Definition
 
@@ -37,8 +41,8 @@ class EspNvs : public BaseNvs {
 public:
     // Constructor with full configuration
     explicit EspNvs(
-        const char* namespace_name = "default",
-        hf_nvs_open_mode_t open_mode = hf_nvs_open_mode_t::HF_NVS_OPEN_MODE_READWRITE
+        const char* namespace*name = "default",
+        hf*nvs*open*mode*t open*mode = hf*nvs*open*mode*t::HF*NVS*OPEN*MODE*READWRITE
     ) noexcept;
 
     // Destructor
@@ -51,27 +55,27 @@ public:
     const char* GetDescription() const noexcept override;
 
     // NVS operations
-    hf_nvs_err_t SetString(const char* key, const char* value) noexcept override;
-    hf_nvs_err_t GetString(const char* key, char* value, hf_size_t max_length) noexcept override;
-    hf_nvs_err_t SetBlob(const char* key, const void* data, hf_size_t length) noexcept override;
-    hf_nvs_err_t GetBlob(const char* key, void* data, hf_size_t* length) noexcept override;
-    hf_nvs_err_t SetU8(const char* key, hf_u8_t value) noexcept override;
-    hf_nvs_err_t GetU8(const char* key, hf_u8_t* value) noexcept override;
-    hf_nvs_err_t SetU16(const char* key, hf_u16_t value) noexcept override;
-    hf_nvs_err_t GetU16(const char* key, hf_u16_t* value) noexcept override;
-    hf_nvs_err_t SetU32(const char* key, hf_u32_t value) noexcept override;
-    hf_nvs_err_t GetU32(const char* key, hf_u32_t* value) noexcept override;
-    hf_nvs_err_t SetU64(const char* key, hf_u64_t value) noexcept override;
-    hf_nvs_err_t GetU64(const char* key, hf_u64_t* value) noexcept override;
+    hf*nvs*err*t SetString(const char* key, const char* value) noexcept override;
+    hf*nvs*err*t GetString(const char* key, char* value, hf*size*t max*length) noexcept override;
+    hf*nvs*err*t SetBlob(const char* key, const void* data, hf*size*t length) noexcept override;
+    hf*nvs*err*t GetBlob(const char* key, void* data, hf*size*t* length) noexcept override;
+    hf*nvs*err*t SetU8(const char* key, hf*u8*t value) noexcept override;
+    hf*nvs*err*t GetU8(const char* key, hf*u8*t* value) noexcept override;
+    hf*nvs*err*t SetU16(const char* key, hf*u16*t value) noexcept override;
+    hf*nvs*err*t GetU16(const char* key, hf*u16*t* value) noexcept override;
+    hf*nvs*err*t SetU32(const char* key, hf*u32*t value) noexcept override;
+    hf*nvs*err*t GetU32(const char* key, hf*u32*t* value) noexcept override;
+    hf*nvs*err*t SetU64(const char* key, hf*u64*t value) noexcept override;
+    hf*nvs*err*t GetU64(const char* key, hf*u64*t* value) noexcept override;
 
     // Advanced features
-    hf_nvs_err_t EraseKey(const char* key) noexcept override;
-    hf_nvs_err_t EraseAll() noexcept override;
-    hf_nvs_err_t Commit() noexcept override;
-    hf_nvs_err_t GetUsedEntries(hf_size_t* used_entries) const noexcept override;
-    hf_nvs_err_t GetFreeEntries(hf_size_t* free_entries) const noexcept override;
+    hf*nvs*err*t EraseKey(const char* key) noexcept override;
+    hf*nvs*err*t EraseAll() noexcept override;
+    hf*nvs*err*t Commit() noexcept override;
+    hf*nvs*err*t GetUsedEntries(hf*size*t* used*entries) const noexcept override;
+    hf*nvs*err*t GetFreeEntries(hf*size*t* free*entries) const noexcept override;
 };
-```
+```text
 
 ## Usage Examples
 
@@ -81,7 +85,7 @@ public:
 #include "inc/mcu/esp32/EspNvs.h"
 
 // Create NVS instance
-EspNvs nvs("my_app");
+EspNvs nvs("my*app");
 
 // Initialize
 if (!nvs.Initialize()) {
@@ -90,146 +94,146 @@ if (!nvs.Initialize()) {
 }
 
 // Store a string
-hf_nvs_err_t err = nvs.SetString("device_name", "ESP32-C6_Device");
-if (err != HF_NVS_ERR_OK) {
+hf*nvs*err*t err = nvs.SetString("device*name", "ESP32-C6*Device");
+if (err != HF*NVS*ERR*OK) {
     printf("Failed to set string: %d\n", err);
     return;
 }
 
 // Retrieve the string
-char device_name[64];
-err = nvs.GetString("device_name", device_name, sizeof(device_name));
-if (err == HF_NVS_ERR_OK) {
-    printf("Device name: %s\n", device_name);
-} else if (err == HF_NVS_ERR_NOT_FOUND) {
+char device*name[64];
+err = nvs.GetString("device*name", device*name, sizeof(device*name));
+if (err == HF*NVS*ERR*OK) {
+    printf("Device name: %s\n", device*name);
+} else if (err == HF*NVS*ERR*NOT*FOUND) {
     printf("Device name not found\n");
 }
-```
+```text
 
 ### Numeric Data Storage
 
 ```cpp
 // Store different numeric types
-nvs.SetU8("sensor_count", 5);
-nvs.SetU16("max_connections", 100);
-nvs.SetU32("total_runtime", 12345);
-nvs.SetU64("unique_id", 0x123456789ABCDEF0);
+nvs.SetU8("sensor*count", 5);
+nvs.SetU16("max*connections", 100);
+nvs.SetU32("total*runtime", 12345);
+nvs.SetU64("unique*id", 0x123456789ABCDEF0);
 
 // Retrieve numeric values
-hf_u8_t sensor_count;
-hf_u16_t max_connections;
-hf_u32_t total_runtime;
-hf_u64_t unique_id;
+hf*u8*t sensor*count;
+hf*u16*t max*connections;
+hf*u32*t total*runtime;
+hf*u64*t unique*id;
 
-if (nvs.GetU8("sensor_count", &sensor_count) == HF_NVS_ERR_OK) {
-    printf("Sensor count: %d\n", sensor_count);
+if (nvs.GetU8("sensor*count", &sensor*count) == HF*NVS*ERR*OK) {
+    printf("Sensor count: %d\n", sensor*count);
 }
 
-if (nvs.GetU16("max_connections", &max_connections) == HF_NVS_ERR_OK) {
-    printf("Max connections: %d\n", max_connections);
+if (nvs.GetU16("max*connections", &max*connections) == HF*NVS*ERR*OK) {
+    printf("Max connections: %d\n", max*connections);
 }
 
-if (nvs.GetU32("total_runtime", &total_runtime) == HF_NVS_ERR_OK) {
-    printf("Total runtime: %u seconds\n", total_runtime);
+if (nvs.GetU32("total*runtime", &total*runtime) == HF*NVS*ERR*OK) {
+    printf("Total runtime: %u seconds\n", total*runtime);
 }
 
-if (nvs.GetU64("unique_id", &unique_id) == HF_NVS_ERR_OK) {
-    printf("Unique ID: 0x%016llX\n", unique_id);
+if (nvs.GetU64("unique*id", &unique*id) == HF*NVS*ERR*OK) {
+    printf("Unique ID: 0x%016llX\n", unique*id);
 }
-```
+```text
 
 ### Binary Data Storage
 
 ```cpp
 // Store binary data
-struct sensor_config {
-    hf_u8_t sensor_id;
-    hf_u16_t sample_rate;
-    hf_u32_t calibration_factor;
-    hf_f32_t offset;
+struct sensor*config {
+    hf*u8*t sensor*id;
+    hf*u16*t sample*rate;
+    hf*u32*t calibration*factor;
+    hf*f32*t offset;
 };
 
-sensor_config config = {1, 100, 12345, 0.5f};
+sensor*config config = {1, 100, 12345, 0.5f};
 
-hf_nvs_err_t err = nvs.SetBlob("sensor_config", &config, sizeof(config));
-if (err != HF_NVS_ERR_OK) {
+hf*nvs*err*t err = nvs.SetBlob("sensor*config", &config, sizeof(config));
+if (err != HF*NVS*ERR*OK) {
     printf("Failed to store sensor config: %d\n", err);
     return;
 }
 
 // Retrieve binary data
-sensor_config retrieved_config;
-hf_size_t blob_length = sizeof(retrieved_config);
-err = nvs.GetBlob("sensor_config", &retrieved_config, &blob_length);
-if (err == HF_NVS_ERR_OK) {
+sensor*config retrieved*config;
+hf*size*t blob*length = sizeof(retrieved*config);
+err = nvs.GetBlob("sensor*config", &retrieved*config, &blob*length);
+if (err == HF*NVS*ERR*OK) {
     printf("Retrieved sensor config:\n");
-    printf("  ID: %d\n", retrieved_config.sensor_id);
-    printf("  Sample rate: %d\n", retrieved_config.sample_rate);
-    printf("  Calibration factor: %u\n", retrieved_config.calibration_factor);
-    printf("  Offset: %.2f\n", retrieved_config.offset);
+    printf("  ID: %d\n", retrieved*config.sensor*id);
+    printf("  Sample rate: %d\n", retrieved*config.sample*rate);
+    printf("  Calibration factor: %u\n", retrieved*config.calibration*factor);
+    printf("  Offset: %.2f\n", retrieved*config.offset);
 }
-```
+```text
 
 ### Configuration Management
 
 ```cpp
 // Store application configuration
-struct app_config {
-    char wifi_ssid[32];
-    char wifi_password[64];
-    hf_u8_t brightness;
-    hf_u16_t update_interval;
-    bool auto_start;
+struct app*config {
+    char wifi*ssid[32];
+    char wifi*password[64];
+    hf*u8*t brightness;
+    hf*u16*t update*interval;
+    bool auto*start;
 };
 
-app_config config;
-strcpy(config.wifi_ssid, "MyNetwork");
-strcpy(config.wifi_password, "MyPassword");
+app*config config;
+strcpy(config.wifi*ssid, "MyNetwork");
+strcpy(config.wifi*password, "MyPassword");
 config.brightness = 80;
-config.update_interval = 300;
-config.auto_start = true;
+config.update*interval = 300;
+config.auto*start = true;
 
 // Store configuration
-hf_nvs_err_t err = nvs.SetBlob("app_config", &config, sizeof(config));
-if (err != HF_NVS_ERR_OK) {
+hf*nvs*err*t err = nvs.SetBlob("app*config", &config, sizeof(config));
+if (err != HF*NVS*ERR*OK) {
     printf("Failed to store app config: %d\n", err);
     return;
 }
 
 // Commit changes
 err = nvs.Commit();
-if (err != HF_NVS_ERR_OK) {
+if (err != HF*NVS*ERR*OK) {
     printf("Failed to commit changes: %d\n", err);
     return;
 }
 
 printf("Configuration saved successfully\n");
-```
+```text
 
 ### Data Management
 
 ```cpp
 // Check storage usage
-hf_size_t used_entries, free_entries;
-if (nvs.GetUsedEntries(&used_entries) == HF_NVS_ERR_OK &&
-    nvs.GetFreeEntries(&free_entries) == HF_NVS_ERR_OK) {
-    printf("NVS usage: %zu used, %zu free entries\n", used_entries, free_entries);
+hf*size*t used*entries, free*entries;
+if (nvs.GetUsedEntries(&used*entries) == HF*NVS*ERR*OK &&
+    nvs.GetFreeEntries(&free*entries) == HF*NVS*ERR*OK) {
+    printf("NVS usage: %zu used, %zu free entries\n", used*entries, free*entries);
 }
 
 // Erase specific key
-hf_nvs_err_t err = nvs.EraseKey("old_setting");
-if (err == HF_NVS_ERR_OK) {
+hf*nvs*err*t err = nvs.EraseKey("old*setting");
+if (err == HF*NVS*ERR*OK) {
     printf("Key erased successfully\n");
-} else if (err == HF_NVS_ERR_NOT_FOUND) {
+} else if (err == HF*NVS*ERR*NOT*FOUND) {
     printf("Key not found\n");
 }
 
 // Erase all data (use with caution!)
 // err = nvs.EraseAll();
-// if (err == HF_NVS_ERR_OK) {
+// if (err == HF*NVS*ERR*OK) {
 //     printf("All data erased\n");
 // }
-```
+```text
 
 ## ESP32-C6 Specific Features
 
@@ -253,14 +257,14 @@ Safe concurrent access with atomic operations.
 
 The `EspNvs` class provides comprehensive error handling with specific error codes:
 
-- `HF_NVS_ERR_OK` - Operation successful
-- `HF_NVS_ERR_INVALID_ARG` - Invalid parameter
-- `HF_NVS_ERR_NOT_INITIALIZED` - NVS not initialized
-- `HF_NVS_ERR_NOT_FOUND` - Key not found
-- `HF_NVS_ERR_INVALID_LENGTH` - Invalid data length
-- `HF_NVS_ERR_NO_FREE_PAGES` - No free pages available
-- `HF_NVS_ERR_READ_ONLY` - Read-only namespace
-- `HF_NVS_ERR_COMMIT_FAILED` - Commit operation failed
+- `HF*NVS*ERR*OK` - Operation successful
+- `HF*NVS*ERR*INVALID*ARG` - Invalid parameter
+- `HF*NVS*ERR*NOT*INITIALIZED` - NVS not initialized
+- `HF*NVS*ERR*NOT*FOUND` - Key not found
+- `HF*NVS*ERR*INVALID*LENGTH` - Invalid data length
+- `HF*NVS*ERR*NO*FREE*PAGES` - No free pages available
+- `HF*NVS*ERR*READ*ONLY` - Read-only namespace
+- `HF*NVS*ERR*COMMIT*FAILED` - Commit operation failed
 
 ## Performance Considerations
 
@@ -281,6 +285,7 @@ The `EspNvs` class provides comprehensive error handling with specific error cod
 
 **📋 Navigation**
 
-[← Previous: EspBluetooth](EspBluetooth.md) | [Back to ESP API Index](README.md) | [Next: EspPeriodicTimer →](EspPeriodicTimer.md)
+[← Previous: EspBluetooth](EspBluetooth.md) | [Back to ESP API Index](README.md) | [Next:
+EspPeriodicTimer →](EspPeriodicTimer.md)
 
 </div>

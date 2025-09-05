@@ -31,37 +31,37 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_NVS_ERR_LIST(X)                                              \
-  /* Success codes */                                                   \
-  X(NVS_SUCCESS, 0, "Success")                                          \
-  /* General errors */                                                  \
-  X(NVS_ERR_FAILURE, 1, "General failure")                              \
-  X(NVS_ERR_NOT_INITIALIZED, 2, "Not initialized")                      \
-  X(NVS_ERR_ALREADY_INITIALIZED, 3, "Already initialized")              \
-  X(NVS_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                  \
-  X(NVS_ERR_NULL_POINTER, 5, "Null pointer")                            \
-  X(NVS_ERR_OUT_OF_MEMORY, 6, "Out of memory")                          \
-  /* Storage specific errors */                                         \
-  X(NVS_ERR_KEY_NOT_FOUND, 7, "Key not found")                          \
-  X(NVS_ERR_KEY_TOO_LONG, 8, "Key too long")                            \
-  X(NVS_ERR_VALUE_TOO_LARGE, 9, "Value too large")                      \
-  X(NVS_ERR_NAMESPACE_NOT_FOUND, 10, "Namespace not found")             \
-  X(NVS_ERR_STORAGE_FULL, 11, "Storage full")                           \
-  X(NVS_ERR_INVALID_DATA, 12, "Invalid data")                           \
-  X(NVS_ERR_READ_ONLY, 13, "Read only mode")                            \
-  X(NVS_ERR_CORRUPTED, 14, "Data corrupted")                            \
-  /* ESP32-C6 encryption and advanced feature errors */                 \
-  X(NVS_ERR_ENCRYPTION_FAILED, 15, "Encryption operation failed")       \
-  X(NVS_ERR_DECRYPTION_FAILED, 16, "Decryption operation failed")       \
-  X(NVS_ERR_ENCRYPTION_NOT_CONFIGURED, 17, "Encryption not configured") \
-  X(NVS_ERR_ENCRYPTION_NOT_SUPPORTED, 18, "Encryption not supported")   \
-  X(NVS_ERR_KEY_PARTITION_CORRUPTED, 19, "Key partition corrupted")     \
-  X(NVS_ERR_WRONG_ENCRYPTION_SCHEME, 20, "Wrong encryption scheme")     \
-  X(NVS_ERR_VERSION_MISMATCH, 21, "NVS version mismatch")               \
-  X(NVS_ERR_NO_FREE_PAGES, 22, "No free pages available")               \
-  X(NVS_ERR_PARTITION_NOT_FOUND, 23, "NVS partition not found")         \
-  X(NVS_ERR_ITERATOR_INVALID, 24, "Iterator invalid or expired")        \
-  X(NVS_ERR_SECURITY_VIOLATION, 25, "Security policy violation")        \
+#define HF_NVS_ERR_LIST(X)                                                                         \
+  /* Success codes */                                                                              \
+  X(NVS_SUCCESS, 0, "Success")                                                                     \
+  /* General errors */                                                                             \
+  X(NVS_ERR_FAILURE, 1, "General failure")                                                         \
+  X(NVS_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
+  X(NVS_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
+  X(NVS_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
+  X(NVS_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
+  X(NVS_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
+  /* Storage specific errors */                                                                    \
+  X(NVS_ERR_KEY_NOT_FOUND, 7, "Key not found")                                                     \
+  X(NVS_ERR_KEY_TOO_LONG, 8, "Key too long")                                                       \
+  X(NVS_ERR_VALUE_TOO_LARGE, 9, "Value too large")                                                 \
+  X(NVS_ERR_NAMESPACE_NOT_FOUND, 10, "Namespace not found")                                        \
+  X(NVS_ERR_STORAGE_FULL, 11, "Storage full")                                                      \
+  X(NVS_ERR_INVALID_DATA, 12, "Invalid data")                                                      \
+  X(NVS_ERR_READ_ONLY, 13, "Read only mode")                                                       \
+  X(NVS_ERR_CORRUPTED, 14, "Data corrupted")                                                       \
+  /* ESP32-C6 encryption and advanced feature errors */                                            \
+  X(NVS_ERR_ENCRYPTION_FAILED, 15, "Encryption operation failed")                                  \
+  X(NVS_ERR_DECRYPTION_FAILED, 16, "Decryption operation failed")                                  \
+  X(NVS_ERR_ENCRYPTION_NOT_CONFIGURED, 17, "Encryption not configured")                            \
+  X(NVS_ERR_ENCRYPTION_NOT_SUPPORTED, 18, "Encryption not supported")                              \
+  X(NVS_ERR_KEY_PARTITION_CORRUPTED, 19, "Key partition corrupted")                                \
+  X(NVS_ERR_WRONG_ENCRYPTION_SCHEME, 20, "Wrong encryption scheme")                                \
+  X(NVS_ERR_VERSION_MISMATCH, 21, "NVS version mismatch")                                          \
+  X(NVS_ERR_NO_FREE_PAGES, 22, "No free pages available")                                          \
+  X(NVS_ERR_PARTITION_NOT_FOUND, 23, "NVS partition not found")                                    \
+  X(NVS_ERR_ITERATOR_INVALID, 24, "Iterator invalid or expired")                                   \
+  X(NVS_ERR_SECURITY_VIOLATION, 25, "Security policy violation")                                   \
   X(NVS_ERR_UNSUPPORTED_OPERATION, 26, "Unsupported operation")
 
 // Generate enum class from X-macro
@@ -74,13 +74,13 @@ enum class hf_nvs_err_t : hf_i32_t {
 // Generate error description function
 constexpr const char* HfNvsErrToString(hf_nvs_err_t err) noexcept {
   switch (err) {
-#define X(name, value, desc) \
-  case hf_nvs_err_t::name:   \
+#define X(name, value, desc)                                                                       \
+  case hf_nvs_err_t::name:                                                                         \
     return desc;
     HF_NVS_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

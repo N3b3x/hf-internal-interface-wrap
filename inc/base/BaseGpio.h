@@ -42,61 +42,61 @@
  * @details X-macro pattern for comprehensive error enumeration. Each entry contains:
  *          X(NAME, VALUE, DESCRIPTION)
  */
-#define HF_GPIO_ERR_LIST(X)                                              \
-  /* Success codes */                                                    \
-  X(GPIO_SUCCESS, 0, "Success")                                          \
-                                                                         \
-  /* General errors */                                                   \
-  X(GPIO_ERR_FAILURE, 1, "General failure")                              \
-  X(GPIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                      \
-  X(GPIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")              \
-  X(GPIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                  \
-  X(GPIO_ERR_NULL_POINTER, 5, "Null pointer")                            \
-  X(GPIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                          \
-                                                                         \
-  /* Pin errors */                                                       \
-  X(GPIO_ERR_INVALID_PIN, 7, "Invalid pin")                              \
-  X(GPIO_ERR_PIN_NOT_FOUND, 8, "Pin not found")                          \
-  X(GPIO_ERR_PIN_NOT_CONFIGURED, 9, "Pin not configured")                \
-  X(GPIO_ERR_PIN_ALREADY_REGISTERED, 10, "Pin already registered")       \
-  X(GPIO_ERR_PIN_ACCESS_DENIED, 11, "Pin access denied")                 \
-  X(GPIO_ERR_PIN_BUSY, 12, "Pin busy")                                   \
-                                                                         \
-  /* Hardware errors */                                                  \
-  X(GPIO_ERR_HARDWARE_FAULT, 13, "Hardware fault")                       \
-  X(GPIO_ERR_COMMUNICATION_FAILURE, 14, "Communication failure")         \
-  X(GPIO_ERR_DEVICE_NOT_RESPONDING, 15, "Device not responding")         \
-  X(GPIO_ERR_TIMEOUT, 16, "Timeout")                                     \
-  X(GPIO_ERR_VOLTAGE_OUT_OF_RANGE, 17, "Voltage out of range")           \
-                                                                         \
-  /* Configuration errors */                                             \
-  X(GPIO_ERR_INVALID_CONFIGURATION, 18, "Invalid configuration")         \
-  X(GPIO_ERR_UNSUPPORTED_OPERATION, 19, "Unsupported operation")         \
-  X(GPIO_ERR_RESOURCE_BUSY, 20, "Resource busy")                         \
-  X(GPIO_ERR_RESOURCE_UNAVAILABLE, 21, "Resource unavailable")           \
-                                                                         \
-  /* I/O errors */                                                       \
-  X(GPIO_ERR_READ_FAILURE, 22, "Read failure")                           \
-  X(GPIO_ERR_WRITE_FAILURE, 23, "Write failure")                         \
-  X(GPIO_ERR_DIRECTION_MISMATCH, 24, "Direction mismatch")               \
-  X(GPIO_ERR_PULL_RESISTOR_FAILURE, 25, "Pull resistor failure")         \
-                                                                         \
-  /* Interrupt errors */                                                 \
-  X(GPIO_ERR_INTERRUPT_NOT_SUPPORTED, 26, "Interrupt not supported")     \
-  X(GPIO_ERR_INTERRUPT_ALREADY_ENABLED, 27, "Interrupt already enabled") \
-  X(GPIO_ERR_INTERRUPT_NOT_ENABLED, 28, "Interrupt not enabled")         \
-  X(GPIO_ERR_INTERRUPT_HANDLER_FAILED, 29, "Interrupt handler failed")   \
-                                                                         \
-  /* System errors */                                                    \
-  X(GPIO_ERR_SYSTEM_ERROR, 30, "System error")                           \
-  X(GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied")                 \
-  X(GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")                 \
-                                                                         \
-  /* Extended errors for McuGpio implementation */                       \
-  X(GPIO_ERR_NOT_SUPPORTED, 33, "Operation not supported")               \
-  X(GPIO_ERR_DRIVER_ERROR, 34, "Driver error")                           \
-  X(GPIO_ERR_INVALID_STATE, 35, "Invalid state")                         \
-  X(GPIO_ERR_INVALID_ARG, 36, "Invalid argument")                        \
+#define HF_GPIO_ERR_LIST(X)                                                                        \
+  /* Success codes */                                                                              \
+  X(GPIO_SUCCESS, 0, "Success")                                                                    \
+                                                                                                   \
+  /* General errors */                                                                             \
+  X(GPIO_ERR_FAILURE, 1, "General failure")                                                        \
+  X(GPIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
+  X(GPIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
+  X(GPIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
+  X(GPIO_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
+  X(GPIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
+                                                                                                   \
+  /* Pin errors */                                                                                 \
+  X(GPIO_ERR_INVALID_PIN, 7, "Invalid pin")                                                        \
+  X(GPIO_ERR_PIN_NOT_FOUND, 8, "Pin not found")                                                    \
+  X(GPIO_ERR_PIN_NOT_CONFIGURED, 9, "Pin not configured")                                          \
+  X(GPIO_ERR_PIN_ALREADY_REGISTERED, 10, "Pin already registered")                                 \
+  X(GPIO_ERR_PIN_ACCESS_DENIED, 11, "Pin access denied")                                           \
+  X(GPIO_ERR_PIN_BUSY, 12, "Pin busy")                                                             \
+                                                                                                   \
+  /* Hardware errors */                                                                            \
+  X(GPIO_ERR_HARDWARE_FAULT, 13, "Hardware fault")                                                 \
+  X(GPIO_ERR_COMMUNICATION_FAILURE, 14, "Communication failure")                                   \
+  X(GPIO_ERR_DEVICE_NOT_RESPONDING, 15, "Device not responding")                                   \
+  X(GPIO_ERR_TIMEOUT, 16, "Timeout")                                                               \
+  X(GPIO_ERR_VOLTAGE_OUT_OF_RANGE, 17, "Voltage out of range")                                     \
+                                                                                                   \
+  /* Configuration errors */                                                                       \
+  X(GPIO_ERR_INVALID_CONFIGURATION, 18, "Invalid configuration")                                   \
+  X(GPIO_ERR_UNSUPPORTED_OPERATION, 19, "Unsupported operation")                                   \
+  X(GPIO_ERR_RESOURCE_BUSY, 20, "Resource busy")                                                   \
+  X(GPIO_ERR_RESOURCE_UNAVAILABLE, 21, "Resource unavailable")                                     \
+                                                                                                   \
+  /* I/O errors */                                                                                 \
+  X(GPIO_ERR_READ_FAILURE, 22, "Read failure")                                                     \
+  X(GPIO_ERR_WRITE_FAILURE, 23, "Write failure")                                                   \
+  X(GPIO_ERR_DIRECTION_MISMATCH, 24, "Direction mismatch")                                         \
+  X(GPIO_ERR_PULL_RESISTOR_FAILURE, 25, "Pull resistor failure")                                   \
+                                                                                                   \
+  /* Interrupt errors */                                                                           \
+  X(GPIO_ERR_INTERRUPT_NOT_SUPPORTED, 26, "Interrupt not supported")                               \
+  X(GPIO_ERR_INTERRUPT_ALREADY_ENABLED, 27, "Interrupt already enabled")                           \
+  X(GPIO_ERR_INTERRUPT_NOT_ENABLED, 28, "Interrupt not enabled")                                   \
+  X(GPIO_ERR_INTERRUPT_HANDLER_FAILED, 29, "Interrupt handler failed")                             \
+                                                                                                   \
+  /* System errors */                                                                              \
+  X(GPIO_ERR_SYSTEM_ERROR, 30, "System error")                                                     \
+  X(GPIO_ERR_PERMISSION_DENIED, 31, "Permission denied")                                           \
+  X(GPIO_ERR_OPERATION_ABORTED, 32, "Operation aborted")                                           \
+                                                                                                   \
+  /* Extended errors for McuGpio implementation */                                                 \
+  X(GPIO_ERR_NOT_SUPPORTED, 33, "Operation not supported")                                         \
+  X(GPIO_ERR_DRIVER_ERROR, 34, "Driver error")                                                     \
+  X(GPIO_ERR_INVALID_STATE, 35, "Invalid state")                                                   \
+  X(GPIO_ERR_INVALID_ARG, 36, "Invalid argument")                                                  \
   X(GPIO_ERR_CALIBRATION_FAILURE, 37, "Calibration failure")
 
 /**
@@ -119,13 +119,13 @@ enum class hf_gpio_err_t : hf_u8_t {
  */
 constexpr const char* HfGpioErrToString(hf_gpio_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_gpio_err_t::NAME:  \
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_gpio_err_t::NAME:                                                                        \
     return DESC;
     HF_GPIO_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 
@@ -1002,90 +1002,90 @@ inline hf_gpio_state_t BaseGpio::LevelToState(hf_gpio_level_t level) const noexc
 
 inline const char* BaseGpio::ToString(hf_gpio_state_t state) noexcept {
   switch (state) {
-    case hf_gpio_state_t::HF_GPIO_STATE_ACTIVE:
-      return "Active";
-    case hf_gpio_state_t::HF_GPIO_STATE_INACTIVE:
-      return "Inactive";
-    default:
-      return "Unknown";
+  case hf_gpio_state_t::HF_GPIO_STATE_ACTIVE:
+    return "Active";
+  case hf_gpio_state_t::HF_GPIO_STATE_INACTIVE:
+    return "Inactive";
+  default:
+    return "Unknown";
   }
 }
 
 inline const char* BaseGpio::ToString(hf_gpio_level_t level) noexcept {
   switch (level) {
-    case hf_gpio_level_t::HF_GPIO_LEVEL_HIGH:
-      return "High";
-    case hf_gpio_level_t::HF_GPIO_LEVEL_LOW:
-      return "Low";
-    default:
-      return "Unknown";
+  case hf_gpio_level_t::HF_GPIO_LEVEL_HIGH:
+    return "High";
+  case hf_gpio_level_t::HF_GPIO_LEVEL_LOW:
+    return "Low";
+  default:
+    return "Unknown";
   }
 }
 
 inline const char* BaseGpio::ToString(hf_gpio_active_state_t active_state) noexcept {
   switch (active_state) {
-    case hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH:
-      return "ActiveHigh";
-    case hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW:
-      return "ActiveLow";
-    default:
-      return "Unknown";
+  case hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH:
+    return "ActiveHigh";
+  case hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW:
+    return "ActiveLow";
+  default:
+    return "Unknown";
   }
 }
 
 inline const char* BaseGpio::ToString(hf_gpio_direction_t direction) noexcept {
   switch (direction) {
-    case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
-      return "Input";
-    case hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT:
-      return "Output";
-    default:
-      return "Unknown";
+  case hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT:
+    return "Input";
+  case hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT:
+    return "Output";
+  default:
+    return "Unknown";
   }
 }
 
 inline const char* BaseGpio::ToString(hf_gpio_output_mode_t output_mode) noexcept {
   switch (output_mode) {
-    case hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL:
-      return "PushPull";
-    case hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN:
-      return "OpenDrain";
-    default:
-      return "Unknown";
+  case hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL:
+    return "PushPull";
+  case hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN:
+    return "OpenDrain";
+  default:
+    return "Unknown";
   }
 }
 
 inline const char* BaseGpio::ToString(hf_gpio_pull_mode_t pull_mode) noexcept {
   switch (pull_mode) {
-    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING:
-      return "Floating";
-    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP:
-      return "PullUp";
-    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN:
-      return "PullDown";
-    case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP_DOWN:
-      return "PullUpDown";
-    default:
-      return "Unknown";
+  case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING:
+    return "Floating";
+  case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP:
+    return "PullUp";
+  case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN:
+    return "PullDown";
+  case hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP_DOWN:
+    return "PullUpDown";
+  default:
+    return "Unknown";
   }
 }
 
 inline const char* BaseGpio::ToString(hf_gpio_interrupt_trigger_t trigger) noexcept {
   switch (trigger) {
-    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE:
-      return "None";
-    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE:
-      return "RisingEdge";
-    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE:
-      return "FallingEdge";
-    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES:
-      return "BothEdges";
-    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL:
-      return "LowLevel";
-    case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL:
-      return "HighLevel";
-    default:
-      return "Unknown";
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_NONE:
+    return "None";
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE:
+    return "RisingEdge";
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE:
+    return "FallingEdge";
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES:
+    return "BothEdges";
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL:
+    return "LowLevel";
+  case hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL:
+    return "HighLevel";
+  default:
+    return "Unknown";
   }
 }
 

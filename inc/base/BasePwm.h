@@ -30,38 +30,38 @@
  *          This enumeration is used across all PWM-related classes to provide
  *          consistent error reporting and handling.
  */
-#define HF_PWM_ERR_LIST(X)                                                \
-  /* Success codes */                                                     \
-  X(PWM_SUCCESS, 0, "Success")                                            \
-  /* General errors */                                                    \
-  X(PWM_ERR_FAILURE, 1, "General failure")                                \
-  X(PWM_ERR_NOT_INITIALIZED, 2, "Not initialized")                        \
-  X(PWM_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                \
-  X(PWM_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                    \
-  X(PWM_ERR_NULL_POINTER, 5, "Null pointer")                              \
-  X(PWM_ERR_OUT_OF_MEMORY, 6, "Out of memory")                            \
-  /* Channel errors */                                                    \
-  X(PWM_ERR_INVALID_CHANNEL, 7, "Invalid PWM channel")                    \
-  X(PWM_ERR_CHANNEL_BUSY, 8, "Channel already in use")                    \
-  X(PWM_ERR_CHANNEL_NOT_AVAILABLE, 9, "Channel not available")            \
-  X(PWM_ERR_INSUFFICIENT_CHANNELS, 10, "Insufficient channels available") \
-  /* Frequency/timing errors */                                           \
-  X(PWM_ERR_INVALID_FREQUENCY, 11, "Invalid frequency")                   \
-  X(PWM_ERR_FREQUENCY_TOO_HIGH, 12, "Frequency too high")                 \
-  X(PWM_ERR_FREQUENCY_TOO_LOW, 13, "Frequency too low")                   \
-  X(PWM_ERR_RESOLUTION_NOT_SUPPORTED, 14, "Resolution not supported")     \
-  /* Duty cycle errors */                                                 \
-  X(PWM_ERR_INVALID_DUTY_CYCLE, 15, "Invalid duty cycle")                 \
-  X(PWM_ERR_DUTY_OUT_OF_RANGE, 16, "Duty cycle out of range")             \
-  /* Hardware errors */                                                   \
-  X(PWM_ERR_HARDWARE_FAULT, 17, "Hardware fault")                         \
-  X(PWM_ERR_TIMER_CONFLICT, 18, "Timer resource conflict")                \
-  X(PWM_ERR_PIN_CONFLICT, 19, "Pin already in use")                       \
-  /* Communication errors (for external PWM ICs) */                       \
-  X(PWM_ERR_COMMUNICATION_TIMEOUT, 20, "Communication timeout")           \
-  X(PWM_ERR_COMMUNICATION_FAILURE, 21, "Communication failure")           \
-  X(PWM_ERR_DEVICE_NOT_RESPONDING, 22, "Device not responding")           \
-  X(PWM_ERR_INVALID_DEVICE_ID, 23, "Invalid device ID")                   \
+#define HF_PWM_ERR_LIST(X)                                                                         \
+  /* Success codes */                                                                              \
+  X(PWM_SUCCESS, 0, "Success")                                                                     \
+  /* General errors */                                                                             \
+  X(PWM_ERR_FAILURE, 1, "General failure")                                                         \
+  X(PWM_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
+  X(PWM_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
+  X(PWM_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
+  X(PWM_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
+  X(PWM_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
+  /* Channel errors */                                                                             \
+  X(PWM_ERR_INVALID_CHANNEL, 7, "Invalid PWM channel")                                             \
+  X(PWM_ERR_CHANNEL_BUSY, 8, "Channel already in use")                                             \
+  X(PWM_ERR_CHANNEL_NOT_AVAILABLE, 9, "Channel not available")                                     \
+  X(PWM_ERR_INSUFFICIENT_CHANNELS, 10, "Insufficient channels available")                          \
+  /* Frequency/timing errors */                                                                    \
+  X(PWM_ERR_INVALID_FREQUENCY, 11, "Invalid frequency")                                            \
+  X(PWM_ERR_FREQUENCY_TOO_HIGH, 12, "Frequency too high")                                          \
+  X(PWM_ERR_FREQUENCY_TOO_LOW, 13, "Frequency too low")                                            \
+  X(PWM_ERR_RESOLUTION_NOT_SUPPORTED, 14, "Resolution not supported")                              \
+  /* Duty cycle errors */                                                                          \
+  X(PWM_ERR_INVALID_DUTY_CYCLE, 15, "Invalid duty cycle")                                          \
+  X(PWM_ERR_DUTY_OUT_OF_RANGE, 16, "Duty cycle out of range")                                      \
+  /* Hardware errors */                                                                            \
+  X(PWM_ERR_HARDWARE_FAULT, 17, "Hardware fault")                                                  \
+  X(PWM_ERR_TIMER_CONFLICT, 18, "Timer resource conflict")                                         \
+  X(PWM_ERR_PIN_CONFLICT, 19, "Pin already in use")                                                \
+  /* Communication errors (for external PWM ICs) */                                                \
+  X(PWM_ERR_COMMUNICATION_TIMEOUT, 20, "Communication timeout")                                    \
+  X(PWM_ERR_COMMUNICATION_FAILURE, 21, "Communication failure")                                    \
+  X(PWM_ERR_DEVICE_NOT_RESPONDING, 22, "Device not responding")                                    \
+  X(PWM_ERR_INVALID_DEVICE_ID, 23, "Invalid device ID")                                            \
   X(PWM_ERR_UNSUPPORTED_OPERATION, 24, "Unsupported operation")
 
 // Generate enum class
@@ -75,13 +75,13 @@ enum class hf_pwm_err_t : hf_u32_t {
 // Generate error message function
 constexpr const char* HfPwmErrToString(hf_pwm_err_t error) noexcept {
   switch (error) {
-#define X(name, value, description) \
-  case hf_pwm_err_t::name:          \
+#define X(name, value, description)                                                                \
+  case hf_pwm_err_t::name:                                                                         \
     return description;
     HF_PWM_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown PWM error";
+  default:
+    return "Unknown PWM error";
   }
 }
 

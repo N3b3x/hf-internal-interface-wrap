@@ -633,20 +633,20 @@ hf_uart_err_t EspUart::SetCommunicationMode(hf_uart_mode_t mode) noexcept {
   esp_err_t result = ESP_OK;
 
   switch (mode) {
-    case hf_uart_mode_t::HF_UART_MODE_UART:
-      // Default UART mode - no special configuration needed
-      break;
+  case hf_uart_mode_t::HF_UART_MODE_UART:
+    // Default UART mode - no special configuration needed
+    break;
 
-    case hf_uart_mode_t::HF_UART_MODE_RS485:
-      result = uart_set_mode(uart_port_, UART_MODE_RS485_HALF_DUPLEX);
-      break;
+  case hf_uart_mode_t::HF_UART_MODE_RS485:
+    result = uart_set_mode(uart_port_, UART_MODE_RS485_HALF_DUPLEX);
+    break;
 
-    case hf_uart_mode_t::HF_UART_MODE_IRDA:
-      result = uart_set_mode(uart_port_, UART_MODE_IRDA);
-      break;
+  case hf_uart_mode_t::HF_UART_MODE_IRDA:
+    result = uart_set_mode(uart_port_, UART_MODE_IRDA);
+    break;
 
-    default:
-      return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
+  default:
+    return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
   }
 
   if (result == ESP_OK) {
@@ -1091,64 +1091,64 @@ hf_uart_err_t EspUart::InstallDriver() noexcept {
 
   // Convert HardFOC data bits to ESP-IDF format
   switch (port_config_.data_bits) {
-    case hf_uart_data_bits_t::HF_UART_DATA_5_BITS:
-      uart_config.data_bits = UART_DATA_5_BITS;
-      break;
-    case hf_uart_data_bits_t::HF_UART_DATA_6_BITS:
-      uart_config.data_bits = UART_DATA_6_BITS;
-      break;
-    case hf_uart_data_bits_t::HF_UART_DATA_7_BITS:
-      uart_config.data_bits = UART_DATA_7_BITS;
-      break;
-    case hf_uart_data_bits_t::HF_UART_DATA_8_BITS:
-    default:
-      uart_config.data_bits = UART_DATA_8_BITS;
-      break;
+  case hf_uart_data_bits_t::HF_UART_DATA_5_BITS:
+    uart_config.data_bits = UART_DATA_5_BITS;
+    break;
+  case hf_uart_data_bits_t::HF_UART_DATA_6_BITS:
+    uart_config.data_bits = UART_DATA_6_BITS;
+    break;
+  case hf_uart_data_bits_t::HF_UART_DATA_7_BITS:
+    uart_config.data_bits = UART_DATA_7_BITS;
+    break;
+  case hf_uart_data_bits_t::HF_UART_DATA_8_BITS:
+  default:
+    uart_config.data_bits = UART_DATA_8_BITS;
+    break;
   }
 
   // Convert HardFOC parity to ESP-IDF format
   switch (port_config_.parity) {
-    case hf_uart_parity_t::HF_UART_PARITY_EVEN:
-      uart_config.parity = UART_PARITY_EVEN;
-      break;
-    case hf_uart_parity_t::HF_UART_PARITY_ODD:
-      uart_config.parity = UART_PARITY_ODD;
-      break;
-    case hf_uart_parity_t::HF_UART_PARITY_DISABLE:
-    default:
-      uart_config.parity = UART_PARITY_DISABLE;
-      break;
+  case hf_uart_parity_t::HF_UART_PARITY_EVEN:
+    uart_config.parity = UART_PARITY_EVEN;
+    break;
+  case hf_uart_parity_t::HF_UART_PARITY_ODD:
+    uart_config.parity = UART_PARITY_ODD;
+    break;
+  case hf_uart_parity_t::HF_UART_PARITY_DISABLE:
+  default:
+    uart_config.parity = UART_PARITY_DISABLE;
+    break;
   }
 
   // Convert HardFOC stop bits to ESP-IDF format
   switch (port_config_.stop_bits) {
-    case hf_uart_stop_bits_t::HF_UART_STOP_BITS_1_5:
-      uart_config.stop_bits = UART_STOP_BITS_1_5;
-      break;
-    case hf_uart_stop_bits_t::HF_UART_STOP_BITS_2:
-      uart_config.stop_bits = UART_STOP_BITS_2;
-      break;
-    case hf_uart_stop_bits_t::HF_UART_STOP_BITS_1:
-    default:
-      uart_config.stop_bits = UART_STOP_BITS_1;
-      break;
+  case hf_uart_stop_bits_t::HF_UART_STOP_BITS_1_5:
+    uart_config.stop_bits = UART_STOP_BITS_1_5;
+    break;
+  case hf_uart_stop_bits_t::HF_UART_STOP_BITS_2:
+    uart_config.stop_bits = UART_STOP_BITS_2;
+    break;
+  case hf_uart_stop_bits_t::HF_UART_STOP_BITS_1:
+  default:
+    uart_config.stop_bits = UART_STOP_BITS_1;
+    break;
   }
 
   // Convert HardFOC flow control to ESP-IDF format
   switch (port_config_.flow_control) {
-    case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_RTS:
-      uart_config.flow_ctrl = UART_HW_FLOWCTRL_RTS;
-      break;
-    case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_CTS:
-      uart_config.flow_ctrl = UART_HW_FLOWCTRL_CTS;
-      break;
-    case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_CTS_RTS:
-      uart_config.flow_ctrl = UART_HW_FLOWCTRL_CTS_RTS;
-      break;
-    case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_DISABLE:
-    default:
-      uart_config.flow_ctrl = UART_HW_FLOWCTRL_DISABLE;
-      break;
+  case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_RTS:
+    uart_config.flow_ctrl = UART_HW_FLOWCTRL_RTS;
+    break;
+  case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_CTS:
+    uart_config.flow_ctrl = UART_HW_FLOWCTRL_CTS;
+    break;
+  case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_CTS_RTS:
+    uart_config.flow_ctrl = UART_HW_FLOWCTRL_CTS_RTS;
+    break;
+  case hf_uart_flow_ctrl_t::HF_UART_HW_FLOWCTRL_DISABLE:
+  default:
+    uart_config.flow_ctrl = UART_HW_FLOWCTRL_DISABLE;
+    break;
   }
 
   uart_config.source_clk = UART_SCLK_DEFAULT;
@@ -1205,22 +1205,22 @@ hf_uart_err_t EspUart::ConfigurePins() noexcept {
 
 hf_uart_err_t EspUart::ConvertPlatformError(int32_t platform_error) noexcept {
   switch (platform_error) {
-    case ESP_OK:
-      return hf_uart_err_t::UART_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
-    case ESP_ERR_NO_MEM:
-      return hf_uart_err_t::UART_ERR_OUT_OF_MEMORY;
-    case ESP_ERR_TIMEOUT:
-      return hf_uart_err_t::UART_ERR_TIMEOUT;
-    case ESP_ERR_NOT_FOUND:
-      return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
-    case ESP_ERR_NOT_SUPPORTED:
-      return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
-    case ESP_ERR_INVALID_STATE:
-      return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
-    default:
-      return hf_uart_err_t::UART_ERR_FAILURE;
+  case ESP_OK:
+    return hf_uart_err_t::UART_SUCCESS;
+  case ESP_ERR_INVALID_ARG:
+    return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
+  case ESP_ERR_NO_MEM:
+    return hf_uart_err_t::UART_ERR_OUT_OF_MEMORY;
+  case ESP_ERR_TIMEOUT:
+    return hf_uart_err_t::UART_ERR_TIMEOUT;
+  case ESP_ERR_NOT_FOUND:
+    return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
+  case ESP_ERR_NOT_SUPPORTED:
+    return hf_uart_err_t::UART_ERR_UNSUPPORTED_OPERATION;
+  case ESP_ERR_INVALID_STATE:
+    return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
+  default:
+    return hf_uart_err_t::UART_ERR_FAILURE;
   }
 }
 
@@ -1280,158 +1280,158 @@ bool GetDefaultUartPins(hf_port_num_t port_number, hf_pin_num_t& tx_pin, hf_pin_
 // ESP32-C6 Pin Mappings
 #if defined(HF_MCU_ESP32C6)
   switch (port_number) {
-    case 0:
-      tx_pin = hf_uart_pin_map_esp32c6_t::UART0_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32c6_t::UART0_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32c6_t::UART0_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32c6_t::UART0_CTS_PIN;
-      return true;
-    case 1:
-      tx_pin = hf_uart_pin_map_esp32c6_t::UART1_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32c6_t::UART1_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32c6_t::UART1_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32c6_t::UART1_CTS_PIN;
-      return true;
-    case 2:
-      tx_pin = hf_uart_pin_map_esp32c6_t::UART2_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32c6_t::UART2_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32c6_t::UART2_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32c6_t::UART2_CTS_PIN;
-      return true;
-    default:
-      return false;
+  case 0:
+    tx_pin = hf_uart_pin_map_esp32c6_t::UART0_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32c6_t::UART0_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32c6_t::UART0_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32c6_t::UART0_CTS_PIN;
+    return true;
+  case 1:
+    tx_pin = hf_uart_pin_map_esp32c6_t::UART1_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32c6_t::UART1_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32c6_t::UART1_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32c6_t::UART1_CTS_PIN;
+    return true;
+  case 2:
+    tx_pin = hf_uart_pin_map_esp32c6_t::UART2_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32c6_t::UART2_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32c6_t::UART2_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32c6_t::UART2_CTS_PIN;
+    return true;
+  default:
+    return false;
   }
 
 // ESP32 Classic Pin Mappings
 #elif defined(HF_MCU_ESP32)
   switch (port_number) {
-    case 0:
-      tx_pin = hf_uart_pin_map_esp32_t::UART0_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32_t::UART0_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32_t::UART0_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32_t::UART0_CTS_PIN;
-      return true;
-    case 1:
-      tx_pin = hf_uart_pin_map_esp32_t::UART1_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32_t::UART1_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32_t::UART1_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32_t::UART1_CTS_PIN;
-      return true;
-    case 2:
-      tx_pin = hf_uart_pin_map_esp32_t::UART2_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32_t::UART2_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32_t::UART2_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32_t::UART2_CTS_PIN;
-      return true;
-    default:
-      return false;
+  case 0:
+    tx_pin = hf_uart_pin_map_esp32_t::UART0_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32_t::UART0_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32_t::UART0_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32_t::UART0_CTS_PIN;
+    return true;
+  case 1:
+    tx_pin = hf_uart_pin_map_esp32_t::UART1_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32_t::UART1_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32_t::UART1_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32_t::UART1_CTS_PIN;
+    return true;
+  case 2:
+    tx_pin = hf_uart_pin_map_esp32_t::UART2_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32_t::UART2_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32_t::UART2_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32_t::UART2_CTS_PIN;
+    return true;
+  default:
+    return false;
   }
 
 // ESP32-S2 Pin Mappings
 #elif defined(HF_MCU_ESP32S2)
   switch (port_number) {
-    case 0:
-      tx_pin = hf_uart_pin_map_esp32s2_t::UART0_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32s2_t::UART0_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32s2_t::UART0_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32s2_t::UART0_CTS_PIN;
-      return true;
-    case 1:
-      tx_pin = hf_uart_pin_map_esp32s2_t::UART1_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32s2_t::UART1_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32s2_t::UART1_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32s2_t::UART1_CTS_PIN;
-      return true;
-    case 2:
-      tx_pin = hf_uart_pin_map_esp32s2_t::UART2_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32s2_t::UART2_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32s2_t::UART2_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32s2_t::UART2_CTS_PIN;
-      return true;
-    default:
-      return false;
+  case 0:
+    tx_pin = hf_uart_pin_map_esp32s2_t::UART0_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32s2_t::UART0_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32s2_t::UART0_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32s2_t::UART0_CTS_PIN;
+    return true;
+  case 1:
+    tx_pin = hf_uart_pin_map_esp32s2_t::UART1_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32s2_t::UART1_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32s2_t::UART1_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32s2_t::UART1_CTS_PIN;
+    return true;
+  case 2:
+    tx_pin = hf_uart_pin_map_esp32s2_t::UART2_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32s2_t::UART2_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32s2_t::UART2_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32s2_t::UART2_CTS_PIN;
+    return true;
+  default:
+    return false;
   }
 
 // ESP32-S3 Pin Mappings
 #elif defined(HF_MCU_ESP32S3)
   switch (port_number) {
-    case 0:
-      tx_pin = hf_uart_pin_map_esp32s3_t::UART0_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32s3_t::UART0_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32s3_t::UART0_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32s3_t::UART0_CTS_PIN;
-      return true;
-    case 1:
-      tx_pin = hf_uart_pin_map_esp32s3_t::UART1_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32s3_t::UART1_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32s3_t::UART1_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32s3_t::UART1_CTS_PIN;
-      return true;
-    case 2:
-      tx_pin = hf_uart_pin_map_esp32s3_t::UART2_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32s3_t::UART2_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32s3_t::UART2_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32s3_t::UART2_CTS_PIN;
-      return true;
-    default:
-      return false;
+  case 0:
+    tx_pin = hf_uart_pin_map_esp32s3_t::UART0_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32s3_t::UART0_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32s3_t::UART0_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32s3_t::UART0_CTS_PIN;
+    return true;
+  case 1:
+    tx_pin = hf_uart_pin_map_esp32s3_t::UART1_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32s3_t::UART1_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32s3_t::UART1_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32s3_t::UART1_CTS_PIN;
+    return true;
+  case 2:
+    tx_pin = hf_uart_pin_map_esp32s3_t::UART2_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32s3_t::UART2_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32s3_t::UART2_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32s3_t::UART2_CTS_PIN;
+    return true;
+  default:
+    return false;
   }
 
 // ESP32-C3 Pin Mappings
 #elif defined(HF_MCU_ESP32C3)
   switch (port_number) {
-    case 0:
-      tx_pin = hf_uart_pin_map_esp32c3_t::UART0_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32c3_t::UART0_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32c3_t::UART0_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32c3_t::UART0_CTS_PIN;
-      return true;
-    case 1:
-      tx_pin = hf_uart_pin_map_esp32c3_t::UART1_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32c3_t::UART1_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32c3_t::UART1_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32c3_t::UART1_CTS_PIN;
-      return true;
-    default:
-      return false;
+  case 0:
+    tx_pin = hf_uart_pin_map_esp32c3_t::UART0_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32c3_t::UART0_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32c3_t::UART0_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32c3_t::UART0_CTS_PIN;
+    return true;
+  case 1:
+    tx_pin = hf_uart_pin_map_esp32c3_t::UART1_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32c3_t::UART1_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32c3_t::UART1_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32c3_t::UART1_CTS_PIN;
+    return true;
+  default:
+    return false;
   }
 
 // ESP32-C2 Pin Mappings
 #elif defined(HF_MCU_ESP32C2)
   switch (port_number) {
-    case 0:
-      tx_pin = hf_uart_pin_map_esp32c2_t::UART0_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32c2_t::UART0_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32c2_t::UART0_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32c2_t::UART0_CTS_PIN;
-      return true;
-    case 1:
-      tx_pin = hf_uart_pin_map_esp32c2_t::UART1_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32c2_t::UART1_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32c2_t::UART1_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32c2_t::UART1_CTS_PIN;
-      return true;
-    default:
-      return false;
+  case 0:
+    tx_pin = hf_uart_pin_map_esp32c2_t::UART0_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32c2_t::UART0_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32c2_t::UART0_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32c2_t::UART0_CTS_PIN;
+    return true;
+  case 1:
+    tx_pin = hf_uart_pin_map_esp32c2_t::UART1_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32c2_t::UART1_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32c2_t::UART1_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32c2_t::UART1_CTS_PIN;
+    return true;
+  default:
+    return false;
   }
 
 // ESP32-H2 Pin Mappings
 #elif defined(HF_MCU_ESP32H2)
   switch (port_number) {
-    case 0:
-      tx_pin = hf_uart_pin_map_esp32h2_t::UART0_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32h2_t::UART0_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32h2_t::UART0_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32h2_t::UART0_CTS_PIN;
-      return true;
-    case 1:
-      tx_pin = hf_uart_pin_map_esp32h2_t::UART1_TX_PIN;
-      rx_pin = hf_uart_pin_map_esp32h2_t::UART1_RX_PIN;
-      rts_pin = hf_uart_pin_map_esp32h2_t::UART1_RTS_PIN;
-      cts_pin = hf_uart_pin_map_esp32h2_t::UART1_CTS_PIN;
-      return true;
-    default:
-      return false;
+  case 0:
+    tx_pin = hf_uart_pin_map_esp32h2_t::UART0_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32h2_t::UART0_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32h2_t::UART0_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32h2_t::UART0_CTS_PIN;
+    return true;
+  case 1:
+    tx_pin = hf_uart_pin_map_esp32h2_t::UART1_TX_PIN;
+    rx_pin = hf_uart_pin_map_esp32h2_t::UART1_RX_PIN;
+    rts_pin = hf_uart_pin_map_esp32h2_t::UART1_RTS_PIN;
+    cts_pin = hf_uart_pin_map_esp32h2_t::UART1_CTS_PIN;
+    return true;
+  default:
+    return false;
   }
 
 #else

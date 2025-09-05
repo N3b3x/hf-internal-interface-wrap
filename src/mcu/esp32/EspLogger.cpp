@@ -713,39 +713,39 @@ hf_logger_err_t EspLogger::PrintStatus(const char* tag, bool detailed) const noe
 
 esp_log_level_t EspLogger::ConvertLogLevel(hf_log_level_t level) const noexcept {
   switch (level) {
-    case hf_log_level_t::LOG_LEVEL_NONE:
-      return ESP_LOG_NONE;
-    case hf_log_level_t::LOG_LEVEL_ERROR:
-      return ESP_LOG_ERROR;
-    case hf_log_level_t::LOG_LEVEL_WARN:
-      return ESP_LOG_WARN;
-    case hf_log_level_t::LOG_LEVEL_INFO:
-      return ESP_LOG_INFO;
-    case hf_log_level_t::LOG_LEVEL_DEBUG:
-      return ESP_LOG_DEBUG;
-    case hf_log_level_t::LOG_LEVEL_VERBOSE:
-      return ESP_LOG_VERBOSE;
-    default:
-      return ESP_LOG_INFO;
+  case hf_log_level_t::LOG_LEVEL_NONE:
+    return ESP_LOG_NONE;
+  case hf_log_level_t::LOG_LEVEL_ERROR:
+    return ESP_LOG_ERROR;
+  case hf_log_level_t::LOG_LEVEL_WARN:
+    return ESP_LOG_WARN;
+  case hf_log_level_t::LOG_LEVEL_INFO:
+    return ESP_LOG_INFO;
+  case hf_log_level_t::LOG_LEVEL_DEBUG:
+    return ESP_LOG_DEBUG;
+  case hf_log_level_t::LOG_LEVEL_VERBOSE:
+    return ESP_LOG_VERBOSE;
+  default:
+    return ESP_LOG_INFO;
   }
 }
 
 hf_log_level_t EspLogger::ConvertLogLevel(esp_log_level_t level) const noexcept {
   switch (level) {
-    case ESP_LOG_NONE:
-      return hf_log_level_t::LOG_LEVEL_NONE;
-    case ESP_LOG_ERROR:
-      return hf_log_level_t::LOG_LEVEL_ERROR;
-    case ESP_LOG_WARN:
-      return hf_log_level_t::LOG_LEVEL_WARN;
-    case ESP_LOG_INFO:
-      return hf_log_level_t::LOG_LEVEL_INFO;
-    case ESP_LOG_DEBUG:
-      return hf_log_level_t::LOG_LEVEL_DEBUG;
-    case ESP_LOG_VERBOSE:
-      return hf_log_level_t::LOG_LEVEL_VERBOSE;
-    default:
-      return hf_log_level_t::LOG_LEVEL_INFO;
+  case ESP_LOG_NONE:
+    return hf_log_level_t::LOG_LEVEL_NONE;
+  case ESP_LOG_ERROR:
+    return hf_log_level_t::LOG_LEVEL_ERROR;
+  case ESP_LOG_WARN:
+    return hf_log_level_t::LOG_LEVEL_WARN;
+  case ESP_LOG_INFO:
+    return hf_log_level_t::LOG_LEVEL_INFO;
+  case ESP_LOG_DEBUG:
+    return hf_log_level_t::LOG_LEVEL_DEBUG;
+  case ESP_LOG_VERBOSE:
+    return hf_log_level_t::LOG_LEVEL_VERBOSE;
+  default:
+    return hf_log_level_t::LOG_LEVEL_INFO;
   }
 }
 

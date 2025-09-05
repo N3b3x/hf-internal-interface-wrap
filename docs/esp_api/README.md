@@ -27,7 +27,9 @@
 
 ## 🎯 **Overview**
 
-The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC interface wrapper, leveraging the features of ESP32-C6 and ESP-IDF v5.5+. These implementations offer performance, power efficiency, and feature support.
+The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC interface wrapper,
+leveraging the features of ESP32-C6 and ESP-IDF v5.5+.
+These implementations offer performance, power efficiency, and feature support.
 
 ### ✨ **Key Benefits**
 
@@ -43,7 +45,7 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 
 ### **ESP32-C6 Implementation Stack**
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                HardFOC Application Layer                │
 ├─────────────────────────────────────────────────────────┤
@@ -62,7 +64,7 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 ├─────────────────────────────────────────────────────────┤
 │                ESP32-C6 Hardware Layer                 │
 └─────────────────────────────────────────────────────────┘
-```
+```text
 
 ### **Design Principles**
 
@@ -79,25 +81,41 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 ### **Complete Implementations** ✅
 
 | **Implementation** | **Base Class** | **ESP32-C6 Features** | **Documentation** | **Status** |
+
 |-------------------|----------------|----------------------|-------------------|------------|
+
 | **[EspGpio](EspGpio.md)** | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete | ✅ Ready |
+
 | **[EspSpi](EspSpi.md)** | BaseSpi | Full-duplex, DMA, IOMUX optimization | ✅ Complete | ✅ Ready |
+
 | **[EspPio](EspPio.md)** | BasePio | RMT peripheral, custom protocols | ✅ Complete | ✅ Ready |
+
 | **[EspAdc](EspAdc.md)** | BaseAdc | One-shot, continuous, monitors, calibration | ✅ Complete | ✅ Ready |
+
 | **[EspPwm](EspPwm.md)** | BasePwm | LEDC controller, fade effects, high resolution | ✅ Complete | ✅ Ready |
+
 | **[EspI2c](EspI2c.md)** | BaseI2c | Bus-device architecture, multi-master | ✅ Complete | ✅ Ready |
+
 | **[EspUart](EspUart.md)** | BaseUart | Hardware flow control, DMA, pattern detection | ✅ Complete | ✅ Ready |
+
 | **[EspNvs](EspNvs.md)** | BaseNvs | Encryption, wear leveling, namespace management | ✅ Complete | ✅ Ready |
+
 | **[EspPeriodicTimer](EspPeriodicTimer.md)** | BasePeriodicTimer | High precision, microsecond resolution | ✅ Complete | ✅ Ready |
+
 | **[EspTemperature](EspTemperature.md)** | BaseTemperature | Internal sensor, threshold monitoring | ✅ Complete | ✅ Ready |
+
 | **[EspLogger](EspLogger.md)** | BaseLogger | Multi-output, network, file logging | ✅ Complete | ✅ Ready |
 
 ### **In Progress** 🚧
 
 | **Implementation** | **Base Class** | **Current Status** | **Target Features** |
+
 |-------------------|----------------|-------------------|---------------------|
+
 | **EspCan** | BaseCan | TWAI controller implementation | Standard/extended frames, error handling |
+
 | **EspWifi** | BaseWifi | Station mode implementation | 802.11n, WPA3, mesh networking |
+
 | **EspBluetooth** | BaseBluetooth | NimBLE stack integration | Classic BT, BLE, service discovery |
 
 ---
@@ -291,17 +309,29 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 ### **Hardware Capabilities**
 
 | **Feature** | **Specification** | **HardFOC Benefits** |
+
 |-------------|-------------------|----------------------|
+
 | **CPU** | RISC-V 32-bit, 160 MHz | High-performance motor control |
+
 | **Memory** | 512 KB SRAM, 448 KB ROM | Rich application support |
+
 | **GPIO** | 30 configurable pins | Flexible I/O configuration |
+
 | **ADC** | 2 × 12-bit SAR ADCs | High-precision sensing |
+
 | **PWM** | 8 × LEDC channels | Multi-motor control |
+
 | **SPI** | 2 × SPI controllers | High-speed communication |
+
 | **I2C** | 2 × I2C controllers | Sensor network support |
+
 | **UART** | 2 × UART controllers | Debug and communication |
+
 | **CAN** | 1 × TWAI controller | Industrial networking |
+
 | **WiFi** | 802.11 b/g/n | IoT connectivity |
+
 | **Bluetooth** | Bluetooth 5.0 | Wireless configuration |
 
 ### **Performance Characteristics**
@@ -312,31 +342,42 @@ The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC 
 - **PWM Frequency**: Up to 40 MHz
 - **Interrupt Latency**: < 1 μs
 
-
 ## 📊 **Performance Benchmarks**
 
 ### **GPIO Performance**
 
 | **Operation** | **Performance** | **Notes** |
+
 |---------------|-----------------|-----------|
+
 | **Pin Toggle** | 40 MHz | Maximum theoretical speed |
+
 | **Interrupt Latency** | < 1 μs | Real-time capable |
+
 | **Direction Change** | < 100 ns | Dynamic configuration |
 
 ### **SPI Performance**
 
 | **Configuration** | **Speed** | **Notes** |
+
 |-------------------|-----------|-----------|
+
 | **IOMUX + DMA** | 80 MHz | Maximum performance |
+
 | **GPIO Matrix** | 40 MHz | Flexible pin routing |
+
 | **Small Transfers** | 20 MHz | Optimized for efficiency |
 
 ### **Power Consumption**
 
 | **Mode** | **Current** | **Use Case** |
+
 |----------|-------------|--------------|
+
 | **Active** | 20-50 mA | Normal operation |
+
 | **Light Sleep** | 0.8 mA | Sensor monitoring |
+
 | **Deep Sleep** | 5 μA | Long-term storage |
 
 ---

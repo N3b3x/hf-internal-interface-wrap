@@ -31,68 +31,68 @@
  *          This enumeration is used across all temperature-related classes to provide
  *          consistent error reporting and handling.
  */
-#define HF_TEMP_ERR_LIST(X)                                                \
-  /* Success codes */                                                      \
-  X(TEMP_SUCCESS, 0, "Success")                                            \
-  /* General errors */                                                     \
-  X(TEMP_ERR_FAILURE, 1, "General failure")                                \
-  X(TEMP_ERR_NOT_INITIALIZED, 2, "Not initialized")                        \
-  X(TEMP_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                \
-  X(TEMP_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                    \
-  X(TEMP_ERR_NULL_POINTER, 5, "Null pointer")                              \
-  X(TEMP_ERR_OUT_OF_MEMORY, 6, "Out of memory")                            \
-  /* Sensor specific errors */                                             \
-  X(TEMP_ERR_SENSOR_NOT_AVAILABLE, 7, "Temperature sensor not available")  \
-  X(TEMP_ERR_SENSOR_BUSY, 8, "Sensor already in use")                      \
-  X(TEMP_ERR_SENSOR_DISABLED, 9, "Sensor is disabled")                     \
-  X(TEMP_ERR_SENSOR_NOT_READY, 10, "Sensor not ready")                     \
-  /* Reading errors */                                                     \
-  X(TEMP_ERR_READ_FAILED, 11, "Failed to read temperature")                \
-  X(TEMP_ERR_INVALID_READING, 12, "Invalid temperature reading")           \
-  X(TEMP_ERR_OUT_OF_RANGE, 13, "Temperature out of sensor range")          \
-  X(TEMP_ERR_TIMEOUT, 14, "Operation timeout")                             \
-  /* Configuration errors */                                               \
-  X(TEMP_ERR_INVALID_RANGE, 15, "Invalid temperature range")               \
-  X(TEMP_ERR_RANGE_TOO_NARROW, 16, "Temperature range too narrow")         \
-  X(TEMP_ERR_RANGE_TOO_WIDE, 17, "Temperature range too wide")             \
-  X(TEMP_ERR_UNSUPPORTED_RANGE, 18, "Unsupported temperature range")       \
-  /* Calibration errors */                                                 \
-  X(TEMP_ERR_CALIBRATION_FAILED, 19, "Calibration failed")                 \
-  X(TEMP_ERR_NOT_CALIBRATED, 20, "Sensor not calibrated")                  \
-  X(TEMP_ERR_INVALID_CALIBRATION, 21, "Invalid calibration data")          \
-  /* Communication errors */                                               \
-  X(TEMP_ERR_COMMUNICATION_FAILED, 22, "Communication with sensor failed") \
-  X(TEMP_ERR_CHECKSUM_FAILED, 23, "Data checksum verification failed")     \
-  /* Power management errors */                                            \
-  X(TEMP_ERR_POWER_DOWN_FAILED, 24, "Failed to power down sensor")         \
-  X(TEMP_ERR_POWER_UP_FAILED, 25, "Failed to power up sensor")             \
-  /* Hardware errors */                                                    \
-  X(TEMP_ERR_HARDWARE_FAULT, 26, "Hardware fault detected")                \
-  X(TEMP_ERR_OVERCURRENT, 27, "Overcurrent condition")                     \
-  X(TEMP_ERR_OVERVOLTAGE, 28, "Overvoltage condition")                     \
-  X(TEMP_ERR_UNDERVOLTAGE, 29, "Undervoltage condition")                   \
-  X(TEMP_ERR_OVERHEATING, 30, "Sensor overheating")                        \
-  /* Resource errors */                                                    \
-  X(TEMP_ERR_RESOURCE_BUSY, 31, "Required resource is busy")               \
-  X(TEMP_ERR_RESOURCE_UNAVAILABLE, 32, "Required resource unavailable")    \
-  X(TEMP_ERR_INSUFFICIENT_RESOURCES, 33, "Insufficient system resources")  \
-  /* Operation errors */                                                   \
-  X(TEMP_ERR_OPERATION_ABORTED, 34, "Operation was aborted")               \
-  X(TEMP_ERR_OPERATION_PENDING, 35, "Operation is pending")                \
-  X(TEMP_ERR_INVALID_STATE, 36, "Invalid sensor state")                    \
-  X(TEMP_ERR_STATE_TRANSITION_FAILED, 37, "State transition failed")       \
-  /* Data processing errors */                                             \
-  X(TEMP_ERR_DATA_CORRUPTION, 38, "Data corruption detected")              \
-  X(TEMP_ERR_CONVERSION_FAILED, 39, "Temperature conversion failed")       \
-  X(TEMP_ERR_FILTERING_FAILED, 40, "Temperature filtering failed")         \
-  /* Threshold and monitoring errors */                                    \
-  X(TEMP_ERR_THRESHOLD_EXCEEDED, 41, "Temperature threshold exceeded")     \
-  X(TEMP_ERR_INVALID_THRESHOLD, 42, "Invalid threshold value")             \
-  X(TEMP_ERR_MONITORING_FAILED, 43, "Temperature monitoring failed")       \
-  /* Advanced feature errors */                                            \
-  X(TEMP_ERR_UNSUPPORTED_OPERATION, 44, "Operation not supported")         \
-  X(TEMP_ERR_DRIVER_ERROR, 45, "Driver error")                             \
-  /* Maximum error code marker */                                          \
+#define HF_TEMP_ERR_LIST(X)                                                                        \
+  /* Success codes */                                                                              \
+  X(TEMP_SUCCESS, 0, "Success")                                                                    \
+  /* General errors */                                                                             \
+  X(TEMP_ERR_FAILURE, 1, "General failure")                                                        \
+  X(TEMP_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
+  X(TEMP_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
+  X(TEMP_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
+  X(TEMP_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
+  X(TEMP_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
+  /* Sensor specific errors */                                                                     \
+  X(TEMP_ERR_SENSOR_NOT_AVAILABLE, 7, "Temperature sensor not available")                          \
+  X(TEMP_ERR_SENSOR_BUSY, 8, "Sensor already in use")                                              \
+  X(TEMP_ERR_SENSOR_DISABLED, 9, "Sensor is disabled")                                             \
+  X(TEMP_ERR_SENSOR_NOT_READY, 10, "Sensor not ready")                                             \
+  /* Reading errors */                                                                             \
+  X(TEMP_ERR_READ_FAILED, 11, "Failed to read temperature")                                        \
+  X(TEMP_ERR_INVALID_READING, 12, "Invalid temperature reading")                                   \
+  X(TEMP_ERR_OUT_OF_RANGE, 13, "Temperature out of sensor range")                                  \
+  X(TEMP_ERR_TIMEOUT, 14, "Operation timeout")                                                     \
+  /* Configuration errors */                                                                       \
+  X(TEMP_ERR_INVALID_RANGE, 15, "Invalid temperature range")                                       \
+  X(TEMP_ERR_RANGE_TOO_NARROW, 16, "Temperature range too narrow")                                 \
+  X(TEMP_ERR_RANGE_TOO_WIDE, 17, "Temperature range too wide")                                     \
+  X(TEMP_ERR_UNSUPPORTED_RANGE, 18, "Unsupported temperature range")                               \
+  /* Calibration errors */                                                                         \
+  X(TEMP_ERR_CALIBRATION_FAILED, 19, "Calibration failed")                                         \
+  X(TEMP_ERR_NOT_CALIBRATED, 20, "Sensor not calibrated")                                          \
+  X(TEMP_ERR_INVALID_CALIBRATION, 21, "Invalid calibration data")                                  \
+  /* Communication errors */                                                                       \
+  X(TEMP_ERR_COMMUNICATION_FAILED, 22, "Communication with sensor failed")                         \
+  X(TEMP_ERR_CHECKSUM_FAILED, 23, "Data checksum verification failed")                             \
+  /* Power management errors */                                                                    \
+  X(TEMP_ERR_POWER_DOWN_FAILED, 24, "Failed to power down sensor")                                 \
+  X(TEMP_ERR_POWER_UP_FAILED, 25, "Failed to power up sensor")                                     \
+  /* Hardware errors */                                                                            \
+  X(TEMP_ERR_HARDWARE_FAULT, 26, "Hardware fault detected")                                        \
+  X(TEMP_ERR_OVERCURRENT, 27, "Overcurrent condition")                                             \
+  X(TEMP_ERR_OVERVOLTAGE, 28, "Overvoltage condition")                                             \
+  X(TEMP_ERR_UNDERVOLTAGE, 29, "Undervoltage condition")                                           \
+  X(TEMP_ERR_OVERHEATING, 30, "Sensor overheating")                                                \
+  /* Resource errors */                                                                            \
+  X(TEMP_ERR_RESOURCE_BUSY, 31, "Required resource is busy")                                       \
+  X(TEMP_ERR_RESOURCE_UNAVAILABLE, 32, "Required resource unavailable")                            \
+  X(TEMP_ERR_INSUFFICIENT_RESOURCES, 33, "Insufficient system resources")                          \
+  /* Operation errors */                                                                           \
+  X(TEMP_ERR_OPERATION_ABORTED, 34, "Operation was aborted")                                       \
+  X(TEMP_ERR_OPERATION_PENDING, 35, "Operation is pending")                                        \
+  X(TEMP_ERR_INVALID_STATE, 36, "Invalid sensor state")                                            \
+  X(TEMP_ERR_STATE_TRANSITION_FAILED, 37, "State transition failed")                               \
+  /* Data processing errors */                                                                     \
+  X(TEMP_ERR_DATA_CORRUPTION, 38, "Data corruption detected")                                      \
+  X(TEMP_ERR_CONVERSION_FAILED, 39, "Temperature conversion failed")                               \
+  X(TEMP_ERR_FILTERING_FAILED, 40, "Temperature filtering failed")                                 \
+  /* Threshold and monitoring errors */                                                            \
+  X(TEMP_ERR_THRESHOLD_EXCEEDED, 41, "Temperature threshold exceeded")                             \
+  X(TEMP_ERR_INVALID_THRESHOLD, 42, "Invalid threshold value")                                     \
+  X(TEMP_ERR_MONITORING_FAILED, 43, "Temperature monitoring failed")                               \
+  /* Advanced feature errors */                                                                    \
+  X(TEMP_ERR_UNSUPPORTED_OPERATION, 44, "Operation not supported")                                 \
+  X(TEMP_ERR_DRIVER_ERROR, 45, "Driver error")                                                     \
+  /* Maximum error code marker */                                                                  \
   X(TEMP_ERR_MAX, 46, "Maximum error code")
 
 //--------------------------------------
@@ -325,18 +325,18 @@ using hf_temp_error_callback_t =
 /**
  * @brief Default temperature sensor configuration
  */
-#define HF_TEMP_CONFIG_DEFAULT()               \
-  {.range_min_celsius = -40.0f,                \
-   .range_max_celsius = 125.0f,                \
-   .resolution = 0.1f,                         \
-   .sample_rate_hz = 0,                        \
-   .enable_threshold_monitoring = false,       \
-   .high_threshold_celsius = 100.0f,           \
-   .low_threshold_celsius = -20.0f,            \
-   .enable_power_management = false,           \
-   .enable_calibration = false,                \
-   .timeout_ms = 1000,                         \
-   .sensor_type = HF_TEMP_SENSOR_TYPE_UNKNOWN, \
+#define HF_TEMP_CONFIG_DEFAULT()                                                                   \
+  {.range_min_celsius = -40.0f,                                                                    \
+   .range_max_celsius = 125.0f,                                                                    \
+   .resolution = 0.1f,                                                                             \
+   .sample_rate_hz = 0,                                                                            \
+   .enable_threshold_monitoring = false,                                                           \
+   .high_threshold_celsius = 100.0f,                                                               \
+   .low_threshold_celsius = -20.0f,                                                                \
+   .enable_power_management = false,                                                               \
+   .enable_calibration = false,                                                                    \
+   .timeout_ms = 1000,                                                                             \
+   .sensor_type = HF_TEMP_SENSOR_TYPE_UNKNOWN,                                                     \
    .capabilities = HF_TEMP_CAP_NONE}
 
 /**
@@ -890,21 +890,21 @@ inline hf_temp_err_t BaseTemperature::ReadTemperatureUnit(float* temperature,
   hf_temp_err_t error = ReadTemperatureCelsius(&celsius);
   if (error == hf_temp_err_t::TEMP_SUCCESS) {
     switch (unit) {
-      case HF_TEMP_UNIT_CELSIUS:
-        *temperature = celsius;
-        break;
-      case HF_TEMP_UNIT_FAHRENHEIT:
-        *temperature = HF_TEMP_CELSIUS_TO_FAHRENHEIT(celsius);
-        break;
-      case HF_TEMP_UNIT_KELVIN:
-        *temperature = HF_TEMP_CELSIUS_TO_KELVIN(celsius);
-        break;
-      case HF_TEMP_UNIT_RANKINE:
-        *temperature = HF_TEMP_CELSIUS_TO_KELVIN(celsius) * 9.0f / 5.0f;
-        break;
-      default:
-        error = hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER;
-        break;
+    case HF_TEMP_UNIT_CELSIUS:
+      *temperature = celsius;
+      break;
+    case HF_TEMP_UNIT_FAHRENHEIT:
+      *temperature = HF_TEMP_CELSIUS_TO_FAHRENHEIT(celsius);
+      break;
+    case HF_TEMP_UNIT_KELVIN:
+      *temperature = HF_TEMP_CELSIUS_TO_KELVIN(celsius);
+      break;
+    case HF_TEMP_UNIT_RANKINE:
+      *temperature = HF_TEMP_CELSIUS_TO_KELVIN(celsius) * 9.0f / 5.0f;
+      break;
+    default:
+      error = hf_temp_err_t::TEMP_ERR_INVALID_PARAMETER;
+      break;
     }
   }
   return error;
@@ -921,13 +921,13 @@ inline hf_temp_err_t BaseTemperature::ReadTemperatureUnit(float* temperature,
  */
 inline const char* GetTempErrorString(hf_temp_err_t error) noexcept {
   switch (error) {
-#define TEMP_ERROR_STRING(name, code, desc) \
-  case name:                                \
+#define TEMP_ERROR_STRING(name, code, desc)                                                        \
+  case name:                                                                                       \
     return desc;
     HF_TEMP_ERR_LIST(TEMP_ERROR_STRING)
 #undef TEMP_ERROR_STRING
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

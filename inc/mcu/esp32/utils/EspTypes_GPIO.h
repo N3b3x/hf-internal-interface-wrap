@@ -275,12 +275,12 @@ typedef struct {
  * @brief ESP32 GPIO pin capability validation macros.
  * @details All hardware constants reference McuSelect.h directly for single source of truth.
  */
-#define HF_GPIO_IS_VALID_GPIO(gpio_num) \
+#define HF_GPIO_IS_VALID_GPIO(gpio_num)                                                            \
   ((gpio_num) >= 0 && (gpio_num) <= HF_MCU_GPIO_MAX_PIN_NUMBER)
 
 #define HF_GPIO_IS_VALID_PIN(gpio_num) HF_GPIO_IS_VALID_GPIO(gpio_num)
 
-#define HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num) \
+#define HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num)                                                     \
   (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num))
 
 #define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ((gpio_num) >= 0 && (gpio_num) <= 7)
@@ -316,8 +316,8 @@ typedef struct {
 /**
  * @brief ESP32 pin safety classification.
  */
-#define HF_GPIO_IS_SAFE_FOR_GENERAL_USE(gpio_num)                            \
-  (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_STRAPPING_PIN(gpio_num) && \
+#define HF_GPIO_IS_SAFE_FOR_GENERAL_USE(gpio_num)                                                  \
+  (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_STRAPPING_PIN(gpio_num) &&                       \
    !HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) && !HF_GPIO_IS_USB_JTAG_PIN(gpio_num))
 
 //==============================================================================
@@ -425,26 +425,26 @@ enum class hf_gpio_result_t : uint8_t {
  */
 constexpr const char* hf_gpio_result_to_string(hf_gpio_result_t result) {
   switch (result) {
-    case hf_gpio_result_t::GPIO_OK:
-      return "Success";
-    case hf_gpio_result_t::GPIO_ERR_INVALID_ARG:
-      return "Invalid argument";
-    case hf_gpio_result_t::GPIO_ERR_INVALID_STATE:
-      return "Invalid state";
-    case hf_gpio_result_t::GPIO_ERR_NOT_SUPPORTED:
-      return "Not supported";
-    case hf_gpio_result_t::GPIO_ERR_NO_MEM:
-      return "Out of memory";
-    case hf_gpio_result_t::GPIO_ERR_TIMEOUT:
-      return "Timeout";
-    case hf_gpio_result_t::GPIO_ERR_HW_FAULT:
-      return "Hardware fault";
-    case hf_gpio_result_t::GPIO_ERR_BUSY:
-      return "Resource busy";
-    case hf_gpio_result_t::GPIO_ERR_NOT_FOUND:
-      return "Resource not found";
-    default:
-      return "Unknown error";
+  case hf_gpio_result_t::GPIO_OK:
+    return "Success";
+  case hf_gpio_result_t::GPIO_ERR_INVALID_ARG:
+    return "Invalid argument";
+  case hf_gpio_result_t::GPIO_ERR_INVALID_STATE:
+    return "Invalid state";
+  case hf_gpio_result_t::GPIO_ERR_NOT_SUPPORTED:
+    return "Not supported";
+  case hf_gpio_result_t::GPIO_ERR_NO_MEM:
+    return "Out of memory";
+  case hf_gpio_result_t::GPIO_ERR_TIMEOUT:
+    return "Timeout";
+  case hf_gpio_result_t::GPIO_ERR_HW_FAULT:
+    return "Hardware fault";
+  case hf_gpio_result_t::GPIO_ERR_BUSY:
+    return "Resource busy";
+  case hf_gpio_result_t::GPIO_ERR_NOT_FOUND:
+    return "Resource not found";
+  default:
+    return "Unknown error";
   }
 }
 

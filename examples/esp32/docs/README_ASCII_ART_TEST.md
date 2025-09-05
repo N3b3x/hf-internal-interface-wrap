@@ -2,7 +2,11 @@
 
 ## Overview
 
-The ASCII Art Generator Comprehensive Test Suite provides thorough validation of the `AsciiArtGenerator` class for ESP32-C6 platforms using ESP-IDF v5.5+. This test suite demonstrates complete ASCII art generation functionality, character support validation, custom character management, and performance testing with a focus on embedded environments using `noexcept` functions.
+The ASCII Art Generator Comprehensive Test Suite provides thorough validation of the
+`AsciiArtGenerator` class for ESP32-C6 platforms using ESP-IDF v5.5+.
+This test suite demonstrates complete ASCII art generation functionality,
+character support validation, custom character management,
+and performance testing with a focus on embedded environments using `noexcept` functions.
 
 **✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware**
 
@@ -42,54 +46,54 @@ The ASCII Art Generator Comprehensive Test Suite provides thorough validation of
 
 ### Prerequisites
 ```bash
-# ESP-IDF v5.5+ installation required
-. $IDF_PATH/export.sh
+## ESP-IDF v5.5+ installation required
+. $IDF*PATH/export.sh
 
-# Set target platform
-export IDF_TARGET=esp32c6
-```
+## Set target platform
+export IDF*TARGET=esp32c6
+```text
 
 ### Quick Start
 ```bash
-# Navigate to examples directory
+## Navigate to examples directory
 cd examples/esp32
 
-# Build ASCII Art test
-idf.py build -DEXAMPLE_TYPE=ascii_art_test -DBUILD_TYPE=Release
+## Build ASCII Art test
+idf.py build -DEXAMPLE*TYPE=ascii*art*test -DBUILD*TYPE=Release
 
-# Flash and monitor
+## Flash and monitor
 idf.py -p /dev/ttyUSB0 flash monitor
-```
+```text
 
 ### Alternative Build Methods
 
 #### Using Build Scripts (Recommended)
 ```bash
-# Source ESP-IDF environment
+## Source ESP-IDF environment
 source /path/to/esp-idf/export.sh
 
-# Build with optimization
-./build_example.sh ascii_art_test Release
+## Build with optimization
+./build*example.sh ascii*art*test Release
 
-# Flash to device
-idf.py -B build_ascii_art_test_Release flash monitor
-```
+## Flash to device
+idf.py -B build*ascii*art*test*Release flash monitor
+```text
 
 #### Debug Build for Development
 ```bash
-# Build with debug symbols and verbose output
-idf.py build -DEXAMPLE_TYPE=ascii_art_test -DBUILD_TYPE=Debug
+## Build with debug symbols and verbose output
+idf.py build -DEXAMPLE*TYPE=ascii*art*test -DBUILD*TYPE=Debug
 
-# Run with detailed logging
+## Run with detailed logging
 idf.py -p /dev/ttyUSB0 flash monitor
-```
+```text
 
 ## Test Categories
 
 ### 1. Basic ASCII Art Generation
 ```cpp
-bool test_basic_ascii_art_generation() noexcept;
-```
+bool test*basic*ascii*art*generation() noexcept;
+```text
 - **Validates**: Core text-to-ASCII art conversion functionality
 - **Tests**: 
   - Word generation ("HELLO")
@@ -100,8 +104,8 @@ bool test_basic_ascii_art_generation() noexcept;
 
 ### 2. Uppercase Conversion
 ```cpp
-bool test_uppercase_conversion() noexcept;
-```
+bool test*uppercase*conversion() noexcept;
+```text
 - **Validates**: Automatic case conversion for consistent output
 - **Tests**:
   - Lowercase input ("hello")
@@ -111,8 +115,8 @@ bool test_uppercase_conversion() noexcept;
 
 ### 3. Special Characters
 ```cpp
-bool test_special_characters() noexcept;
-```
+bool test*special*characters() noexcept;
+```text
 - **Validates**: Support for punctuation and special symbols
 - **Tests**:
   - Punctuation marks (!, ?, ., etc.)
@@ -122,8 +126,8 @@ bool test_special_characters() noexcept;
 
 ### 4. Numbers and Symbols
 ```cpp
-bool test_numbers_and_symbols() noexcept;
-```
+bool test*numbers*and*symbols() noexcept;
+```text
 - **Validates**: Numeric character support and symbol generation
 - **Tests**:
   - Individual digits (0-9)
@@ -133,8 +137,8 @@ bool test_numbers_and_symbols() noexcept;
 
 ### 5. Empty and Edge Cases
 ```cpp
-bool test_empty_and_edge_cases() noexcept;
-```
+bool test*empty*and*edge*cases() noexcept;
+```text
 - **Validates**: Robust handling of boundary conditions
 - **Tests**:
   - Empty string input
@@ -145,8 +149,8 @@ bool test_empty_and_edge_cases() noexcept;
 
 ### 6. Custom Character Management
 ```cpp
-bool test_custom_character_management() noexcept;
-```
+bool test*custom*character*management() noexcept;
+```text
 - **Validates**: Custom ASCII art pattern functionality
 - **Tests**:
   - Adding custom character patterns
@@ -157,8 +161,8 @@ bool test_custom_character_management() noexcept;
 
 ### 7. Character Support Validation
 ```cpp
-bool test_character_support_validation() noexcept;
-```
+bool test*character*support*validation() noexcept;
+```text
 - **Validates**: Character support checking mechanisms
 - **Tests**:
   - Supported character detection
@@ -168,8 +172,8 @@ bool test_character_support_validation() noexcept;
 
 ### 8. Supported Characters List
 ```cpp
-bool test_supported_characters_list() noexcept;
-```
+bool test*supported*characters*list() noexcept;
+```text
 - **Validates**: Complete character inventory functionality
 - **Tests**:
   - Full supported character enumeration
@@ -179,8 +183,8 @@ bool test_supported_characters_list() noexcept;
 
 ### 9. Complex Text Generation
 ```cpp
-bool test_complex_text_generation() noexcept;
-```
+bool test*complex*text*generation() noexcept;
+```text
 - **Validates**: Advanced text processing capabilities
 - **Tests**:
   - Multi-word phrases
@@ -190,8 +194,8 @@ bool test_complex_text_generation() noexcept;
 
 ### 10. Performance and Stability
 ```cpp
-bool test_performance_and_stability() noexcept;
-```
+bool test*performance*and*stability() noexcept;
+```text
 - **Validates**: Performance characteristics and system stability
 - **Tests**:
   - Generation speed measurements
@@ -207,25 +211,25 @@ The ASCII Art Generator supports the following character set:
 
 #### Letters (A-Z)
 All uppercase letters with distinctive ASCII art patterns:
-```
+```text
  █████╗ 
 ██╔══██╗
 ███████║
 ██╔══██║
 ██║  ██║
 ╚═╝  ╚═╝
-```
+```text
 
 #### Numbers (0-9)
 All digits with clear, readable patterns:
-```
+```text
  ██████╗ 
 ██╔═══██╗
 ██║   ██║
 ██║   ██║
 ╚██████╔╝
  ╚═════╝ 
-```
+```text
 
 #### Special Characters
 Commonly used symbols and punctuation:
@@ -242,14 +246,14 @@ Commonly used symbols and punctuation:
 ## Expected Test Results
 
 ### Successful Execution Output
-```
+```text
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                ESP32-C6 ASCII ART GENERATOR COMPREHENSIVE TEST SUITE        ║
 ║                         HardFOC Internal Interface                          ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║ Running: test_basic_ascii_art_generation                                   ║
+║ Running: test*basic*ascii*art*generation                                   ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 [SUCCESS] Generated ASCII art for 'HELLO':
 
@@ -260,7 +264,7 @@ Commonly used symbols and punctuation:
 ██║  ██║███████╗███████╗███████╗╚██████╔╝
 ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝ 
 
-[SUCCESS] PASSED: test_basic_ascii_art_generation (5.23 ms)
+[SUCCESS] PASSED: test*basic*ascii*art*generation (5.23 ms)
 
 ... (additional tests) ...
 
@@ -281,7 +285,7 @@ Total: 10, Passed: 10, Failed: 0, Success: 100.00%, Time: 89.45 ms
 ██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝     ██║   ██╔══╝  ╚═╝
 ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ███████╗███████╗   ██║   ███████╗██╗
  ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝   ╚═╝   ╚══════╝╚═╝
-```
+```text
 
 ### Performance Metrics
 Typical performance on ESP32-C6 @ 160MHz:
@@ -303,16 +307,16 @@ Typical performance on ESP32-C6 @ 160MHz:
 
 #### Build Failures
 ```bash
-# Missing ESP-IDF environment
-source $IDF_PATH/export.sh
+## Missing ESP-IDF environment
+source $IDF*PATH/export.sh
 
-# Wrong target platform
+## Wrong target platform
 idf.py set-target esp32c6
 
-# Dependency issues
+## Dependency issues
 idf.py clean
 idf.py build
-```
+```text
 
 #### Runtime Issues
 - **Character Display Issues**: Check terminal/serial monitor character encoding
@@ -322,23 +326,23 @@ idf.py build
 
 #### Serial Monitor Issues
 ```bash
-# Ensure proper encoding for special characters
-idf.py monitor -p /dev/ttyUSB0 --print_filter="*"
+## Ensure proper encoding for special characters
+idf.py monitor -p /dev/ttyUSB0 --print*filter="*"
 
-# Alternative terminal configuration
+## Alternative terminal configuration
 minicom -D /dev/ttyUSB0 -b 115200
-```
+```text
 
 ### Debug Mode Configuration
 Enable enhanced debugging:
 ```bash
-# Build with debug configuration
-idf.py build -DEXAMPLE_TYPE=ascii_art_test -DBUILD_TYPE=Debug
+## Build with debug configuration
+idf.py build -DEXAMPLE*TYPE=ascii*art*test -DBUILD*TYPE=Debug
 
-# Enable verbose logging
+## Enable verbose logging
 idf.py menuconfig
-# Component config → Log output → Default log verbosity → Debug
-```
+## Component config → Log output → Default log verbosity → Debug
+```text
 
 ## Integration Examples
 
@@ -350,30 +354,30 @@ idf.py menuconfig
 AsciiArtGenerator generator;
 
 // Generate simple text
-std::string hello_art = generator.Generate("HELLO");
-ESP_LOGI("APP", "ASCII Art:\n%s", hello_art.c_str());
+std::string hello*art = generator.Generate("HELLO");
+ESP*LOGI("APP", "ASCII Art:\n%s", hello*art.c*str());
 
 // Generate numbers
-std::string number_art = generator.Generate("12345");
-ESP_LOGI("APP", "Numbers:\n%s", number_art.c_str());
-```
+std::string number*art = generator.Generate("12345");
+ESP*LOGI("APP", "Numbers:\n%s", number*art.c*str());
+```text
 
 ### Advanced Usage with Custom Characters
 ```cpp
 // Check character support
 if (generator.IsCharacterSupported('*')) {
-    std::string star_art = generator.Generate("*");
-    ESP_LOGI("APP", "Star:\n%s", star_art.c_str());
+    std::string star*art = generator.Generate("*");
+    ESP*LOGI("APP", "Star:\n%s", star*art.c*str());
 }
 
 // Get list of supported characters
-auto supported_chars = generator.GetSupportedCharacters();
-ESP_LOGI("APP", "Supported characters: %s", supported_chars.c_str());
+auto supported*chars = generator.GetSupportedCharacters();
+ESP*LOGI("APP", "Supported characters: %s", supported*chars.c*str());
 
 // Generate complex text
-std::string complex_art = generator.Generate("ESP32-C6!");
-ESP_LOGI("APP", "Complex text:\n%s", complex_art.c_str());
-```
+std::string complex*art = generator.Generate("ESP32-C6!");
+ESP*LOGI("APP", "Complex text:\n%s", complex*art.c*str());
+```text
 
 ### Performance-Optimized Usage
 ```cpp
@@ -386,7 +390,7 @@ for (const auto& word : words) {
     std::string art = generator.Generate(word);
     // Process art...
 }
-```
+```text
 
 ## API Reference
 
@@ -403,10 +407,10 @@ public:
     std::string GetSupportedCharacters() const noexcept;
     
     // Memory management
-    void ReserveMemory(size_t size) noexcept;
+    void ReserveMemory(size*t size) noexcept;
     void ClearCache() noexcept;
 };
-```
+```text
 
 ### Advanced Functions
 ```cpp
@@ -416,16 +420,16 @@ bool RemoveCustomCharacter(char c) noexcept;
 std::vector<char> GetCustomCharacters() const noexcept;
 
 // Performance utilities
-size_t EstimateOutputSize(const std::string& text) const noexcept;
+size*t EstimateOutputSize(const std::string& text) const noexcept;
 void SetOptimizationLevel(int level) noexcept;
-```
+```text
 
 ## Character Pattern Format
 
 ### Standard Pattern Structure
 Each character follows a consistent 6-line format:
 ```cpp
-const std::vector<std::string> CHAR_A = {
+const std::vector<std::string> CHAR*A = {
     " █████╗ ",
     "██╔══██╗",
     "███████║",
@@ -433,7 +437,7 @@ const std::vector<std::string> CHAR_A = {
     "██║  ██║",
     "╚═╝  ╚═╝"
 };
-```
+```text
 
 ### Design Guidelines
 - **Height**: Exactly 6 lines for consistency
@@ -451,7 +455,7 @@ When adding custom patterns:
 ## Embedded Development Best Practices
 
 ### Memory Optimization
-- Use `std::string_view` when possible to avoid copies
+- Use `std::string*view` when possible to avoid copies
 - Pre-allocate memory for known text sizes
 - Clear caches periodically in long-running applications
 - Monitor heap usage for large text generation
@@ -473,31 +477,31 @@ When adding custom patterns:
 ### System Status Display
 ```cpp
 // Boot message
-std::string boot_art = generator.Generate("SYSTEM READY");
-ESP_LOGI("BOOT", "\n%s", boot_art.c_str());
+std::string boot*art = generator.Generate("SYSTEM READY");
+ESP*LOGI("BOOT", "\n%s", boot*art.c*str());
 
 // Error codes
-std::string error_art = generator.Generate("ERROR 404");
-ESP_LOGE("ERROR", "\n%s", error_art.c_str());
-```
+std::string error*art = generator.Generate("ERROR 404");
+ESP*LOGE("ERROR", "\n%s", error*art.c*str());
+```text
 
 ### User Interface Elements
 ```cpp
 // Menu headers
-std::string menu_art = generator.Generate("MAIN MENU");
+std::string menu*art = generator.Generate("MAIN MENU");
 
 // Status indicators
-std::string status_art = generator.Generate("ONLINE");
-```
+std::string status*art = generator.Generate("ONLINE");
+```text
 
 ### Debug and Development
 ```cpp
 // Test markers
-std::string test_art = generator.Generate("TEST PASS");
+std::string test*art = generator.Generate("TEST PASS");
 
 // Progress indicators
-std::string progress_art = generator.Generate("75%");
-```
+std::string progress*art = generator.Generate("75%");
+```text
 
 ## CI/CD Integration
 
@@ -505,9 +509,9 @@ The ASCII Art test is automatically included in the continuous integration pipel
 
 ```yaml
 matrix:
-  example_type: [ascii_art_test, ...]
-  build_type: [Release, Debug]
-```
+  example*type: [ascii*art*test, ...]
+  build*type: [Release, Debug]
+```text
 
 ### Automated Testing
 - **Build Verification**: Compile-time validation
@@ -517,7 +521,7 @@ matrix:
 
 ## References
 
-- [Unicode Box Drawing Characters](https://en.wikipedia.org/wiki/Box-drawing_character)
-- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
+- [Unicode Box Drawing Characters](https://en.wikipedia.org/wiki/Box-drawing*character)
+- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6*technical*reference*manual*en.pdf)
 - [ESP-IDF v5.5 Programming Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/)
 - [ASCII Art Design Guidelines](https://textart.io/art)

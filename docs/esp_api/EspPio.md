@@ -2,7 +2,9 @@
 
 ## Overview
 
-The `EspPio` class provides a comprehensive C++ wrapper for the ESP-IDF v5.5 RMT (Remote Control Transceiver) driver, enabling precise timing control for digital signal generation and capture across all ESP32 variants.
+The `EspPio` class provides a comprehensive C++ wrapper for the ESP-IDF v5.5 RMT (Remote Control
+Transceiver) driver, enabling precise timing control for digital signal generation and capture
+across all ESP32 variants.
 
 ## Class Declaration
 
@@ -13,57 +15,57 @@ public:
     ~EspPio() noexcept override;
     
     // BasePio interface implementation
-    hf_pio_err_t Initialize() noexcept override;
-    hf_pio_err_t Deinitialize() noexcept override;
+    hf*pio*err*t Initialize() noexcept override;
+    hf*pio*err*t Deinitialize() noexcept override;
     
-    hf_pio_err_t ConfigureChannel(hf_u8_t channel_id,
-                                  const hf_pio_channel_config_t& config) noexcept override;
+    hf*pio*err*t ConfigureChannel(hf*u8*t channel*id,
+                                  const hf*pio*channel*config*t& config) noexcept override;
     
-    hf_pio_err_t Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols, 
-                          size_t symbol_count, bool wait_completion = false) noexcept override;
+    hf*pio*err*t Transmit(hf*u8*t channel*id, const hf*pio*symbol*t* symbols, 
+                          size*t symbol*count, bool wait*completion = false) noexcept override;
     
-    hf_pio_err_t StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, 
-                              size_t buffer_size, uint32_t timeout_us = 0) noexcept override;
-    hf_pio_err_t StopReceive(hf_u8_t channel_id, size_t& symbols_received) noexcept override;
+    hf*pio*err*t StartReceive(hf*u8*t channel*id, hf*pio*symbol*t* buffer, 
+                              size*t buffer*size, uint32*t timeout*us = 0) noexcept override;
+    hf*pio*err*t StopReceive(hf*u8*t channel*id, size*t& symbols*received) noexcept override;
     
-    bool IsChannelBusy(hf_u8_t channel_id) const noexcept override;
-    hf_pio_err_t GetChannelStatus(hf_u8_t channel_id,
-                                  hf_pio_channel_status_t& status) const noexcept override;
-    hf_pio_err_t GetCapabilities(hf_pio_capabilities_t& capabilities) const noexcept override;
+    bool IsChannelBusy(hf*u8*t channel*id) const noexcept override;
+    hf*pio*err*t GetChannelStatus(hf*u8*t channel*id,
+                                  hf*pio*channel*status*t& status) const noexcept override;
+    hf*pio*err*t GetCapabilities(hf*pio*capabilities*t& capabilities) const noexcept override;
     
     // Channel-specific callback management
-    void SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t callback,
-                            void* user_data = nullptr) noexcept override;
-    void SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t callback,
-                           void* user_data = nullptr) noexcept override;
-    void SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callback,
-                         void* user_data = nullptr) noexcept override;
-    void ClearChannelCallbacks(hf_u8_t channel_id) noexcept override;
+    void SetTransmitCallback(hf*u8*t channel*id, hf*pio*transmit*callback*t callback,
+                            void* user*data = nullptr) noexcept override;
+    void SetReceiveCallback(hf*u8*t channel*id, hf*pio*receive*callback*t callback,
+                           void* user*data = nullptr) noexcept override;
+    void SetErrorCallback(hf*u8*t channel*id, hf*pio*error*callback*t callback,
+                         void* user*data = nullptr) noexcept override;
+    void ClearChannelCallbacks(hf*u8*t channel*id) noexcept override;
     void ClearCallbacks() noexcept override;
     
     // Statistics and diagnostics
-    hf_pio_err_t GetStatistics(hf_u8_t channel_id, hf_pio_statistics_t& statistics) const noexcept override;
-    hf_pio_err_t GetDiagnostics(hf_u8_t channel_id, hf_pio_diagnostics_t& diagnostics) const noexcept override;
+    hf*pio*err*t GetStatistics(hf*u8*t channel*id, hf*pio*statistics*t& statistics) const noexcept override;
+    hf*pio*err*t GetDiagnostics(hf*u8*t channel*id, hf*pio*diagnostics*t& diagnostics) const noexcept override;
     
     // ESP32-specific advanced features
-    hf_pio_err_t ConfigureCarrier(hf_u8_t channel_id, uint32_t carrier_freq_hz,
-                                  float duty_cycle) noexcept;
-    hf_pio_err_t EnableLoopback(hf_u8_t channel_id, bool enable) noexcept;
-    hf_pio_err_t ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_blocks = 64,
-                                      bool enable_dma = false, uint32_t queue_depth = 4) noexcept;
+    hf*pio*err*t ConfigureCarrier(hf*u8*t channel*id, uint32*t carrier*freq*hz,
+                                  float duty*cycle) noexcept;
+    hf*pio*err*t EnableLoopback(hf*u8*t channel*id, bool enable) noexcept;
+    hf*pio*err*t ConfigureAdvancedRmt(hf*u8*t channel*id, size*t memory*blocks = 64,
+                                      bool enable*dma = false, uint32*t queue*depth = 4) noexcept;
     
     // Raw RMT symbol operations
-    hf_pio_err_t TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_word_t* rmt_symbols,
-                                       size_t symbol_count, bool wait_completion = false) noexcept;
-    hf_pio_err_t ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t* rmt_buffer,
-                                      size_t buffer_size, size_t& symbols_received,
-                                      uint32_t timeout_us = 10000) noexcept;
+    hf*pio*err*t TransmitRawRmtSymbols(hf*u8*t channel*id, const rmt*symbol*word*t* rmt*symbols,
+                                       size*t symbol*count, bool wait*completion = false) noexcept;
+    hf*pio*err*t ReceiveRawRmtSymbols(hf*u8*t channel*id, rmt*symbol*word*t* rmt*buffer,
+                                      size*t buffer*size, size*t& symbols*received,
+                                      uint32*t timeout*us = 10000) noexcept;
     
     // Utility methods
-    size_t GetMaxSymbolCount() const noexcept;
+    size*t GetMaxSymbolCount() const noexcept;
     bool ValidatePioSystem() noexcept;
 };
-```
+```text
 
 ## Constructor and Destructor
 
@@ -76,7 +78,7 @@ Creates a new EspPio instance.
 **Example:**
 ```cpp
 EspPio pio;  // Default construction
-```
+```text
 
 ### ~EspPio()
 
@@ -90,109 +92,109 @@ Destructor that automatically deinitializes the PIO system if still initialized.
 
 Initializes the PIO peripheral system.
 
-**Returns:** `hf_pio_err_t`
-- `PIO_SUCCESS`: Initialization successful
-- `PIO_ERR_ALREADY_INITIALIZED`: Already initialized
+**Returns:** `hf*pio*err*t`
+- `PIO*SUCCESS`: Initialization successful
+- `PIO*ERR*ALREADY*INITIALIZED`: Already initialized
 
 **Example:**
 ```cpp
 EspPio pio;
-hf_pio_err_t result = pio.Initialize();
-if (result != hf_pio_err_t::PIO_SUCCESS) {
-    ESP_LOGE(TAG, "PIO initialization failed: %s", HfPioErrToString(result).data());
+hf*pio*err*t result = pio.Initialize();
+if (result != hf*pio*err*t::PIO*SUCCESS) {
+    ESP*LOGE(TAG, "PIO initialization failed: %s", HfPioErrToString(result).data());
 }
-```
+```text
 
 ### Deinitialize()
 
 Deinitializes the PIO peripheral and cleans up all channels.
 
-**Returns:** `hf_pio_err_t`
-- `PIO_SUCCESS`: Deinitialization successful
-- `PIO_ERR_NOT_INITIALIZED`: Not initialized
+**Returns:** `hf*pio*err*t`
+- `PIO*SUCCESS`: Deinitialization successful
+- `PIO*ERR*NOT*INITIALIZED`: Not initialized
 
 ### ConfigureChannel()
 
 Configures a PIO channel with the specified parameters.
 
 **Parameters:**
-- `channel_id`: Channel identifier (must be valid for current ESP32 variant)
+- `channel*id`: Channel identifier (must be valid for current ESP32 variant)
 - `config`: Channel configuration structure
 
-**Returns:** `hf_pio_err_t`
-- `PIO_SUCCESS`: Configuration successful
-- `PIO_ERR_INVALID_CHANNEL`: Invalid channel ID for current ESP32 variant
-- `PIO_ERR_INVALID_PARAMETER`: Invalid configuration parameters
-- `PIO_ERR_CHANNEL_BUSY`: Channel is currently busy
+**Returns:** `hf*pio*err*t`
+- `PIO*SUCCESS`: Configuration successful
+- `PIO*ERR*INVALID*CHANNEL`: Invalid channel ID for current ESP32 variant
+- `PIO*ERR*INVALID*PARAMETER`: Invalid configuration parameters
+- `PIO*ERR*CHANNEL*BUSY`: Channel is currently busy
 
 **Example:**
 ```cpp
 // Get appropriate TX channel for current ESP32 variant
-uint8_t tx_channel = HfRmtGetTxChannel(0);
+uint8*t tx*channel = HfRmtGetTxChannel(0);
 
-hf_pio_channel_config_t config;
-config.gpio_pin = 8;
-config.direction = hf_pio_direction_t::Transmit;
-config.resolution_hz = 8000000;  // 8MHz for precise WS2812 timing
-config.polarity = hf_pio_polarity_t::Normal;
-config.idle_state = hf_pio_idle_state_t::Low;
+hf*pio*channel*config*t config;
+config.gpio*pin = 8;
+config.direction = hf*pio*direction*t::Transmit;
+config.resolution*hz = 8000000;  // 8MHz for precise WS2812 timing
+config.polarity = hf*pio*polarity*t::Normal;
+config.idle*state = hf*pio*idle*state*t::Low;
 
-hf_pio_err_t result = pio.ConfigureChannel(tx_channel, config);
-```
+hf*pio*err*t result = pio.ConfigureChannel(tx*channel, config);
+```text
 
 ### Transmit()
 
 Transmits a sequence of symbols on the specified channel.
 
 **Parameters:**
-- `channel_id`: Channel identifier
+- `channel*id`: Channel identifier
 - `symbols`: Array of symbols to transmit
-- `symbol_count`: Number of symbols in the array
-- `wait_completion`: If true, blocks until transmission completes
+- `symbol*count`: Number of symbols in the array
+- `wait*completion`: If true, blocks until transmission completes
 
-**Returns:** `hf_pio_err_t`
+**Returns:** `hf*pio*err*t`
 
 **Example:**
 ```cpp
 // WS2812 RGB color transmission
-hf_pio_symbol_t rgb_symbols[] = {
+hf*pio*symbol*t rgb*symbols[] = {
     {6, true}, {5, false},  // Bit 1: Green MSB
     {3, true}, {7, false},  // Bit 0: Green bit 6
     // ... more color bits
 };
 
-hf_pio_err_t result = pio.Transmit(tx_channel, rgb_symbols, 
-                                   sizeof(rgb_symbols) / sizeof(rgb_symbols[0]), 
+hf*pio*err*t result = pio.Transmit(tx*channel, rgb*symbols, 
+                                   sizeof(rgb*symbols) / sizeof(rgb*symbols[0]), 
                                    false);  // Async transmission
-```
+```text
 
 ### StartReceive() / StopReceive()
 
 Starts and stops symbol reception on a channel.
 
 **StartReceive Parameters:**
-- `channel_id`: Channel identifier
+- `channel*id`: Channel identifier
 - `buffer`: Buffer to store received symbols
-- `buffer_size`: Size of the buffer
-- `timeout_us`: Timeout in microseconds (0 = no timeout)
+- `buffer*size`: Size of the buffer
+- `timeout*us`: Timeout in microseconds (0 = no timeout)
 
 **StopReceive Parameters:**
-- `channel_id`: Channel identifier
-- `symbols_received`: [out] Number of symbols actually received
+- `channel*id`: Channel identifier
+- `symbols*received`: [out] Number of symbols actually received
 
 **Example:**
 ```cpp
-uint8_t rx_channel = HfRmtGetRxChannel(0);
-hf_pio_symbol_t rx_buffer[64];
+uint8*t rx*channel = HfRmtGetRxChannel(0);
+hf*pio*symbol*t rx*buffer[64];
 
 // Start reception
-hf_pio_err_t result = pio.StartReceive(rx_channel, rx_buffer, 64, 5000);  // 5ms timeout
+hf*pio*err*t result = pio.StartReceive(rx*channel, rx*buffer, 64, 5000);  // 5ms timeout
 
 // Later, stop reception
-size_t symbols_received;
-result = pio.StopReceive(rx_channel, symbols_received);
-ESP_LOGI(TAG, "Received %zu symbols", symbols_received);
-```
+size*t symbols*received;
+result = pio.StopReceive(rx*channel, symbols*received);
+ESP*LOGI(TAG, "Received %zu symbols", symbols*received);
+```text
 
 ## Channel-Specific Callback Management
 
@@ -201,25 +203,25 @@ ESP_LOGI(TAG, "Received %zu symbols", symbols_received);
 Sets a transmission completion callback for a specific channel.
 
 **Parameters:**
-- `channel_id`: Channel identifier
+- `channel*id`: Channel identifier
 - `callback`: Callback function
-- `user_data`: User data passed to callback
+- `user*data`: User data passed to callback
 
 **Callback Signature:**
 ```cpp
-void callback(hf_u8_t channel_id, size_t symbols_sent, void* user_data);
-```
+void callback(hf*u8*t channel*id, size*t symbols*sent, void* user*data);
+```text
 
 **Example:**
 ```cpp
-void OnWS2812Complete(hf_u8_t channel_id, size_t symbols_sent, void* user_data) {
-    const char* led_name = static_cast<const char*>(user_data);
-    ESP_LOGI(TAG, "LED %s on channel %d: sent %zu symbols", led_name, channel_id, symbols_sent);
+void OnWS2812Complete(hf*u8*t channel*id, size*t symbols*sent, void* user*data) {
+    const char* led*name = static*cast<const char*>(user*data);
+    ESP*LOGI(TAG, "LED %s on channel %d: sent %zu symbols", led*name, channel*id, symbols*sent);
 }
 
-const char* led_context = "Built-in RGB";
-pio.SetTransmitCallback(tx_channel, OnWS2812Complete, const_cast<char*>(led_context));
-```
+const char* led*context = "Built-in RGB";
+pio.SetTransmitCallback(tx*channel, OnWS2812Complete, const*cast<char*>(led*context));
+```text
 
 ### SetReceiveCallback()
 
@@ -227,9 +229,9 @@ Sets a reception completion callback for a specific channel.
 
 **Callback Signature:**
 ```cpp
-void callback(hf_u8_t channel_id, const hf_pio_symbol_t* symbols, 
-              size_t symbol_count, void* user_data);
-```
+void callback(hf*u8*t channel*id, const hf*pio*symbol*t* symbols, 
+              size*t symbol*count, void* user*data);
+```text
 
 ### SetErrorCallback()
 
@@ -237,15 +239,15 @@ Sets an error callback for a specific channel.
 
 **Callback Signature:**
 ```cpp
-void callback(hf_u8_t channel_id, hf_pio_err_t error, void* user_data);
-```
+void callback(hf*u8*t channel*id, hf*pio*err*t error, void* user*data);
+```text
 
 ### ClearChannelCallbacks()
 
 Clears all callbacks for a specific channel.
 
 **Parameters:**
-- `channel_id`: Channel identifier
+- `channel*id`: Channel identifier
 
 ### ClearCallbacks()
 
@@ -258,41 +260,41 @@ Clears all callbacks for all channels.
 Configures carrier modulation for IR protocols.
 
 **Parameters:**
-- `channel_id`: Channel identifier
-- `carrier_freq_hz`: Carrier frequency in Hz (0 to disable)
-- `duty_cycle`: Carrier duty cycle (0.0 to 1.0)
+- `channel*id`: Channel identifier
+- `carrier*freq*hz`: Carrier frequency in Hz (0 to disable)
+- `duty*cycle`: Carrier duty cycle (0.0 to 1.0)
 
 **Example:**
 ```cpp
 // Configure 38kHz IR carrier with 33% duty cycle
-pio.ConfigureCarrier(tx_channel, 38000, 0.33f);
-```
+pio.ConfigureCarrier(tx*channel, 38000, 0.33f);
+```text
 
 ### ConfigureAdvancedRmt()
 
 Configures advanced RMT channel settings.
 
 **Parameters:**
-- `channel_id`: Channel identifier
-- `memory_blocks`: Number of memory blocks to allocate (default: 64)
-- `enable_dma`: Enable DMA mode for large transfers (default: false)
-- `queue_depth`: Transmit queue depth (default: 4)
+- `channel*id`: Channel identifier
+- `memory*blocks`: Number of memory blocks to allocate (default: 64)
+- `enable*dma`: Enable DMA mode for large transfers (default: false)
+- `queue*depth`: Transmit queue depth (default: 4)
 
 **Example:**
 ```cpp
 // Configure for high-throughput DMA operation
-pio.ConfigureAdvancedRmt(tx_channel, 256, true, 8);
-```
+pio.ConfigureAdvancedRmt(tx*channel, 256, true, 8);
+```text
 
 ### TransmitRawRmtSymbols()
 
 Transmits raw RMT symbols directly, bypassing HardFOC symbol conversion.
 
 **Parameters:**
-- `channel_id`: Channel identifier
-- `rmt_symbols`: Array of raw RMT symbols
-- `symbol_count`: Number of RMT symbols
-- `wait_completion`: If true, blocks until transmission completes
+- `channel*id`: Channel identifier
+- `rmt*symbols`: Array of raw RMT symbols
+- `symbol*count`: Number of RMT symbols
+- `wait*completion`: If true, blocks until transmission completes
 
 **Use Case:** Maximum performance when you already have RMT-formatted symbols.
 
@@ -309,7 +311,7 @@ Returns the maximum number of symbols that can be transmitted in one operation.
 Checks if a channel is currently busy with an operation.
 
 **Parameters:**
-- `channel_id`: Channel identifier
+- `channel*id`: Channel identifier
 
 **Returns:** `true` if busy, `false` if idle
 
@@ -318,7 +320,7 @@ Checks if a channel is currently busy with an operation.
 Gets detailed status information for a channel.
 
 **Parameters:**
-- `channel_id`: Channel identifier
+- `channel*id`: Channel identifier
 - `status`: [out] Status information structure
 
 ### GetCapabilities()
@@ -330,11 +332,11 @@ Gets PIO system capabilities.
 
 **Example:**
 ```cpp
-hf_pio_capabilities_t caps;
+hf*pio*capabilities*t caps;
 pio.GetCapabilities(caps);
-ESP_LOGI(TAG, "Max channels: %d, Min resolution: %u Hz, Max resolution: %u Hz", 
-         caps.max_channels, caps.min_resolution_ns, caps.max_resolution_ns);
-```
+ESP*LOGI(TAG, "Max channels: %d, Min resolution: %u Hz, Max resolution: %u Hz", 
+         caps.max*channels, caps.min*resolution*ns, caps.max*resolution*ns);
+```text
 
 ### ValidatePioSystem()
 
@@ -346,15 +348,15 @@ Performs comprehensive system validation and diagnostics.
 
 ## ESP32 Variant Helper Functions
 
-These functions are defined in `EspTypes_PIO.h` and work with the EspPio class:
+These functions are defined in `EspTypes*PIO.h` and work with the EspPio class:
 
 ### HfRmtGetTxChannel()
 
 Gets the appropriate TX channel for the current ESP32 variant.
 
 ```cpp
-inline constexpr int8_t HfRmtGetTxChannel(uint8_t index) noexcept;
-```
+inline constexpr int8*t HfRmtGetTxChannel(uint8*t index) noexcept;
+```text
 
 **Parameters:**
 - `index`: Channel index (0-based within available TX channels)
@@ -366,17 +368,17 @@ inline constexpr int8_t HfRmtGetTxChannel(uint8_t index) noexcept;
 Gets the appropriate RX channel for the current ESP32 variant.
 
 ```cpp
-inline constexpr int8_t HfRmtGetRxChannel(uint8_t index) noexcept;
-```
+inline constexpr int8*t HfRmtGetRxChannel(uint8*t index) noexcept;
+```text
 
 ### HfRmtIsChannelValidForDirection()
 
 Validates if a channel is valid for a specific direction on the current ESP32 variant.
 
 ```cpp
-inline constexpr bool HfRmtIsChannelValidForDirection(uint8_t channel_id, 
-                                                     hf_pio_direction_t direction) noexcept;
-```
+inline constexpr bool HfRmtIsChannelValidForDirection(uint8*t channel*id, 
+                                                     hf*pio*direction*t direction) noexcept;
+```text
 
 ### HfRmtGetVariantName()
 
@@ -384,22 +386,25 @@ Returns the name of the current ESP32 variant.
 
 ```cpp
 inline constexpr const char* HfRmtGetVariantName() noexcept;
-```
+```text
 
 ## Error Handling
 
-All methods return `hf_pio_err_t` error codes. Use `HfPioErrToString()` to convert error codes to human-readable strings:
+All methods return `hf*pio*err*t` error codes.
+Use `HfPioErrToString()` to convert error codes to human-readable strings:
 
 ```cpp
-hf_pio_err_t result = pio.ConfigureChannel(channel_id, config);
-if (result != hf_pio_err_t::PIO_SUCCESS) {
-    ESP_LOGE(TAG, "Configuration failed: %s", HfPioErrToString(result).data());
+hf*pio*err*t result = pio.ConfigureChannel(channel*id, config);
+if (result != hf*pio*err*t::PIO*SUCCESS) {
+    ESP*LOGE(TAG, "Configuration failed: %s", HfPioErrToString(result).data());
 }
-```
+```text
 
 ## Thread Safety
 
-The EspPio class is thread-safe. All public methods use internal mutex protection to ensure safe concurrent access from multiple tasks.
+The EspPio class is thread-safe.
+All public methods use internal mutex protection to ensure safe concurrent access from multiple
+tasks.
 
 ## Performance Considerations
 
@@ -418,47 +423,47 @@ The EspPio class is thread-safe. All public methods use internal mutex protectio
 ### Complete WS2812 LED Control
 ```cpp
 #include "mcu/esp32/EspPio.h"
-#include "mcu/esp32/utils/EspTypes_PIO.h"
+#include "mcu/esp32/utils/EspTypes*PIO.h"
 
 EspPio pio;
-uint8_t led_channel;
+uint8*t led*channel;
 
-void setup_ws2812() {
+void setup*ws2812() {
     // Initialize PIO
     pio.Initialize();
     
     // Get appropriate TX channel for current ESP32 variant
-    led_channel = HfRmtGetTxChannel(0);
-    if (led_channel < 0) {
-        ESP_LOGE(TAG, "No TX channels available on %s", HfRmtGetVariantName());
+    led*channel = HfRmtGetTxChannel(0);
+    if (led*channel < 0) {
+        ESP*LOGE(TAG, "No TX channels available on %s", HfRmtGetVariantName());
         return;
     }
     
     // Configure channel for WS2812
-    hf_pio_channel_config_t config;
-    config.gpio_pin = 8;  // Built-in LED on ESP32-C6
-    config.direction = hf_pio_direction_t::Transmit;
-    config.resolution_hz = 8000000;  // 8MHz for 125ns precision
-    config.polarity = hf_pio_polarity_t::Normal;
-    config.idle_state = hf_pio_idle_state_t::Low;
+    hf*pio*channel*config*t config;
+    config.gpio*pin = 8;  // Built-in LED on ESP32-C6
+    config.direction = hf*pio*direction*t::Transmit;
+    config.resolution*hz = 8000000;  // 8MHz for 125ns precision
+    config.polarity = hf*pio*polarity*t::Normal;
+    config.idle*state = hf*pio*idle*state*t::Low;
     
-    hf_pio_err_t result = pio.ConfigureChannel(led_channel, config);
-    if (result != hf_pio_err_t::PIO_SUCCESS) {
-        ESP_LOGE(TAG, "Channel configuration failed: %s", HfPioErrToString(result).data());
+    hf*pio*err*t result = pio.ConfigureChannel(led*channel, config);
+    if (result != hf*pio*err*t::PIO*SUCCESS) {
+        ESP*LOGE(TAG, "Channel configuration failed: %s", HfPioErrToString(result).data());
         return;
     }
     
     // Set completion callback
-    pio.SetTransmitCallback(led_channel, [](hf_u8_t ch, size_t symbols, void* ctx) {
-        ESP_LOGI(TAG, "WS2812 transmission complete: %zu symbols", symbols);
+    pio.SetTransmitCallback(led*channel, [](hf*u8*t ch, size*t symbols, void* ctx) {
+        ESP*LOGI(TAG, "WS2812 transmission complete: %zu symbols", symbols);
     }, nullptr);
 }
 
-void set_led_color(uint8_t red, uint8_t green, uint8_t blue) {
-    hf_pio_symbol_t symbols[24];  // 8 bits × 3 colors
+void set*led*color(uint8*t red, uint8*t green, uint8*t blue) {
+    hf*pio*symbol*t symbols[24];  // 8 bits × 3 colors
     
     // Convert RGB to WS2812 symbols (8MHz resolution: 125ns per tick)
-    uint32_t color = (green << 16) | (red << 8) | blue;  // GRB order
+    uint32*t color = (green << 16) | (red << 8) | blue;  // GRB order
     
     for (int i = 0; i < 24; i++) {
         bool bit = (color >> (23 - i)) & 1;
@@ -471,9 +476,9 @@ void set_led_color(uint8_t red, uint8_t green, uint8_t blue) {
         }
     }
     
-    pio.Transmit(led_channel, symbols, 24, false);  // Async transmission
+    pio.Transmit(led*channel, symbols, 24, false);  // Async transmission
 }
-```
+```text
 
 ## See Also
 

@@ -2,7 +2,11 @@
 
 ## Overview
 
-The Temperature Sensor Comprehensive Test Suite provides extensive validation of the `EspTemperature` class for ESP32-C6 platforms using ESP-IDF v5.5+. This test suite demonstrates complete temperature sensing functionality, threshold monitoring, continuous monitoring, calibration, power management, and health diagnostics with a focus on embedded environments using `noexcept` functions.
+The Temperature Sensor Comprehensive Test Suite provides extensive validation of the
+`EspTemperature` class for ESP32-C6 platforms using ESP-IDF v5.5+.
+This test suite demonstrates complete temperature sensing functionality, threshold monitoring,
+continuous monitoring, calibration, power management,
+and health diagnostics with a focus on embedded environments using `noexcept` functions.
 
 **✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware**
 
@@ -54,54 +58,54 @@ The Temperature Sensor Comprehensive Test Suite provides extensive validation of
 
 ### Prerequisites
 ```bash
-# ESP-IDF v5.5+ installation required
-. $IDF_PATH/export.sh
+## ESP-IDF v5.5+ installation required
+. $IDF*PATH/export.sh
 
-# Set target platform
-export IDF_TARGET=esp32c6
-```
+## Set target platform
+export IDF*TARGET=esp32c6
+```text
 
 ### Quick Start
 ```bash
-# Navigate to examples directory
+## Navigate to examples directory
 cd examples/esp32
 
-# Build Temperature test
-idf.py build -DEXAMPLE_TYPE=temperature_test -DBUILD_TYPE=Release
+## Build Temperature test
+idf.py build -DEXAMPLE*TYPE=temperature*test -DBUILD*TYPE=Release
 
-# Flash and monitor
+## Flash and monitor
 idf.py -p /dev/ttyUSB0 flash monitor
-```
+```text
 
 ### Alternative Build Methods
 
 #### Using Build Scripts (Recommended)
 ```bash
-# Source ESP-IDF environment
+## Source ESP-IDF environment
 source /path/to/esp-idf/export.sh
 
-# Build with optimization
-./build_example.sh temperature_test Release
+## Build with optimization
+./build*example.sh temperature*test Release
 
-# Flash to device
-idf.py -B build_temperature_test_Release flash monitor
-```
+## Flash to device
+idf.py -B build*temperature*test*Release flash monitor
+```text
 
 #### Debug Build for Development
 ```bash
-# Build with debug symbols and verbose output
-idf.py build -DEXAMPLE_TYPE=temperature_test -DBUILD_TYPE=Debug
+## Build with debug symbols and verbose output
+idf.py build -DEXAMPLE*TYPE=temperature*test -DBUILD*TYPE=Debug
 
-# Run with detailed logging
+## Run with detailed logging
 idf.py -p /dev/ttyUSB0 flash monitor
-```
+```text
 
 ## Test Categories
 
 ### 1. Sensor Initialization Tests
 ```cpp
-bool test_temperature_sensor_initialization() noexcept;
-```
+bool test*temperature*sensor*initialization() noexcept;
+```text
 - **Validates**: Proper sensor startup and state management
 - **Tests**: 
   - Initial state verification (UNINITIALIZED)
@@ -112,8 +116,8 @@ bool test_temperature_sensor_initialization() noexcept;
 
 ### 2. Basic Temperature Reading Tests
 ```cpp
-bool test_temperature_reading() noexcept;
-```
+bool test*temperature*reading() noexcept;
+```text
 - **Validates**: Core temperature measurement functionality
 - **Tests**:
   - Single temperature reading
@@ -124,8 +128,8 @@ bool test_temperature_reading() noexcept;
 
 ### 3. Sensor Information Tests
 ```cpp
-bool test_sensor_info() noexcept;
-```
+bool test*sensor*info() noexcept;
+```text
 - **Validates**: Sensor metadata and capability reporting
 - **Tests**:
   - Sensor description retrieval
@@ -136,8 +140,8 @@ bool test_sensor_info() noexcept;
 
 ### 4. Range Management Tests
 ```cpp
-bool test_range_management() noexcept;
-```
+bool test*range*management() noexcept;
+```text
 - **Validates**: Dynamic temperature range configuration
 - **Tests**:
   - Range setting and validation
@@ -148,8 +152,8 @@ bool test_range_management() noexcept;
 
 ### 5. Threshold Monitoring Tests
 ```cpp
-bool test_threshold_monitoring() noexcept;
-```
+bool test*threshold*monitoring() noexcept;
+```text
 - **Validates**: Temperature threshold detection and alerting
 - **Tests**:
   - High threshold configuration and detection
@@ -160,8 +164,8 @@ bool test_threshold_monitoring() noexcept;
 
 ### 6. Continuous Monitoring Tests
 ```cpp
-bool test_continuous_monitoring() noexcept;
-```
+bool test*continuous*monitoring() noexcept;
+```text
 - **Validates**: Real-time temperature monitoring capabilities
 - **Tests**:
   - Continuous monitoring start/stop
@@ -172,8 +176,8 @@ bool test_continuous_monitoring() noexcept;
 
 ### 7. Calibration Tests
 ```cpp
-bool test_calibration() noexcept;
-```
+bool test*calibration() noexcept;
+```text
 - **Validates**: Temperature sensor calibration functionality
 - **Tests**:
   - Offset calibration (temperature correction)
@@ -184,8 +188,8 @@ bool test_calibration() noexcept;
 
 ### 8. Power Management Tests
 ```cpp
-bool test_power_management() noexcept;
-```
+bool test*power*management() noexcept;
+```text
 - **Validates**: Low-power operation modes
 - **Tests**:
   - Low-power mode entry/exit
@@ -196,8 +200,8 @@ bool test_power_management() noexcept;
 
 ### 9. Self-Test and Health Monitoring
 ```cpp
-bool test_self_test_and_health() noexcept;
-```
+bool test*self*test*and*health() noexcept;
+```text
 - **Validates**: Sensor health and diagnostic capabilities
 - **Tests**:
   - Self-test execution and validation
@@ -208,8 +212,8 @@ bool test_self_test_and_health() noexcept;
 
 ### 10. Statistics and Diagnostics
 ```cpp
-bool test_statistics_and_diagnostics() noexcept;
-```
+bool test*statistics*and*diagnostics() noexcept;
+```text
 - **Validates**: Performance metrics and data analysis
 - **Tests**:
   - Temperature statistics (min/max/average)
@@ -220,8 +224,8 @@ bool test_statistics_and_diagnostics() noexcept;
 
 ### 11. ESP32-Specific Features
 ```cpp
-bool test_esp32_specific_features() noexcept;
-```
+bool test*esp32*specific*features() noexcept;
+```text
 - **Validates**: ESP32-C6 specific temperature sensor features
 - **Tests**:
   - ESP32-specific callback functions
@@ -232,8 +236,8 @@ bool test_esp32_specific_features() noexcept;
 
 ### 12. Error Handling Tests
 ```cpp
-bool test_error_handling() noexcept;
-```
+bool test*error*handling() noexcept;
+```text
 - **Validates**: Robust error condition handling
 - **Tests**:
   - Invalid parameter handling
@@ -244,8 +248,8 @@ bool test_error_handling() noexcept;
 
 ### 13. Performance and Stress Tests
 ```cpp
-bool test_performance_and_stress() noexcept;
-```
+bool test*performance*and*stress() noexcept;
+```text
 - **Validates**: Performance characteristics under load
 - **Tests**:
   - Reading speed optimization
@@ -257,31 +261,31 @@ bool test_performance_and_stress() noexcept;
 ## Expected Test Results
 
 ### Successful Execution Output
-```
+```text
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                ESP32-C6 TEMPERATURE COMPREHENSIVE TEST SUITE                ║
 ║                         HardFOC Internal Interface                          ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║ Running: test_temperature_sensor_initialization                            ║
+║ Running: test*temperature*sensor*initialization                            ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 [SUCCESS] Temperature sensor initialization successful
-[SUCCESS] PASSED: test_temperature_sensor_initialization (0.85 ms)
+[SUCCESS] PASSED: test*temperature*sensor*initialization (0.85 ms)
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║ Running: test_temperature_reading                                          ║
+║ Running: test*temperature*reading                                          ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 Current temperature: 23.45°C
 [SUCCESS] Temperature reading within valid range
-[SUCCESS] PASSED: test_temperature_reading (1.23 ms)
+[SUCCESS] PASSED: test*temperature*reading (1.23 ms)
 
 ... (additional tests) ...
 
 === TEMPERATURE TEST SUMMARY ===
 Total: 13, Passed: 13, Failed: 0, Success: 100.00%, Time: 245.67 ms
 [SUCCESS] ALL TEMPERATURE TESTS PASSED!
-```
+```text
 
 ### Performance Metrics
 Typical performance on ESP32-C6 @ 160MHz:
@@ -316,23 +320,23 @@ sensor.EnsureInitialized();
 sensor.SetTemperatureRange(-20.0f, 80.0f);
 
 // Configure calibration
-sensor.SetCalibration(offset_celsius, gain_factor);
+sensor.SetCalibration(offset*celsius, gain*factor);
 
 // Set up threshold monitoring
-sensor.SetThresholds(low_threshold, high_threshold);
-```
+sensor.SetThresholds(low*threshold, high*threshold);
+```text
 
 ### Monitoring Configuration
 ```cpp
 // Continuous monitoring setup
-sensor.StartContinuousMonitoring(interval_ms);
+sensor.StartContinuousMonitoring(interval*ms);
 
 // Register monitoring callback
-sensor.RegisterMonitoringCallback(monitoring_callback, user_data);
+sensor.RegisterMonitoringCallback(monitoring*callback, user*data);
 
 // Register threshold callback
-sensor.RegisterThresholdCallback(threshold_callback, user_data);
-```
+sensor.RegisterThresholdCallback(threshold*callback, user*data);
+```text
 
 ### Power Management
 ```cpp
@@ -340,8 +344,8 @@ sensor.RegisterThresholdCallback(threshold_callback, user_data);
 sensor.EnableLowPowerMode(true);
 
 // Configure wake-up settings
-sensor.SetWakeUpInterval(wake_interval_ms);
-```
+sensor.SetWakeUpInterval(wake*interval*ms);
+```text
 
 ## Troubleshooting
 
@@ -349,16 +353,16 @@ sensor.SetWakeUpInterval(wake_interval_ms);
 
 #### Build Failures
 ```bash
-# Missing ESP-IDF environment
-source $IDF_PATH/export.sh
+## Missing ESP-IDF environment
+source $IDF*PATH/export.sh
 
-# Wrong target platform
+## Wrong target platform
 idf.py set-target esp32c6
 
-# Dependency issues
+## Dependency issues
 idf.py clean
 idf.py build
-```
+```text
 
 #### Runtime Issues
 - **Initialization Failures**: Check sensor availability and ESP-IDF version
@@ -369,22 +373,22 @@ idf.py build
 #### Calibration Issues
 ```cpp
 // Manual calibration example
-float reference_temp = 25.0f;  // Known reference temperature
-float measured_temp = sensor.ReadTemperature();
-float offset = reference_temp - measured_temp;
+float reference*temp = 25.0f;  // Known reference temperature
+float measured*temp = sensor.ReadTemperature();
+float offset = reference*temp - measured*temp;
 sensor.SetCalibrationOffset(offset);
-```
+```text
 
 ### Debug Mode Configuration
 Enable enhanced debugging:
 ```bash
-# Build with debug configuration
-idf.py build -DEXAMPLE_TYPE=temperature_test -DBUILD_TYPE=Debug
+## Build with debug configuration
+idf.py build -DEXAMPLE*TYPE=temperature*test -DBUILD*TYPE=Debug
 
-# Enable verbose sensor logging
+## Enable verbose sensor logging
 idf.py menuconfig
-# Component config → Temperature Sensor → Enable debug output
-```
+## Component config → Temperature Sensor → Enable debug output
+```text
 
 ## Integration Examples
 
@@ -393,58 +397,58 @@ idf.py menuconfig
 #include "mcu/esp32/EspTemperature.h"
 
 // Create temperature sensor instance
-EspTemperature temp_sensor;
+EspTemperature temp*sensor;
 
 // Initialize sensor
-if (temp_sensor.EnsureInitialized()) {
+if (temp*sensor.EnsureInitialized()) {
     // Read current temperature
-    hf_temp_reading_t reading = {};
-    auto result = temp_sensor.ReadTemperature(&reading);
+    hf*temp*reading*t reading = {};
+    auto result = temp*sensor.ReadTemperature(&reading);
     
-    if (result == hf_temp_err_t::TEMP_SUCCESS) {
-        ESP_LOGI("APP", "Temperature: %.2f°C", reading.temperature_celsius);
+    if (result == hf*temp*err*t::TEMP*SUCCESS) {
+        ESP*LOGI("APP", "Temperature: %.2f°C", reading.temperature*celsius);
     }
 }
-```
+```text
 
 ### Advanced Monitoring with Callbacks
 ```cpp
 // Threshold callback function
-void temperature_alert(EspTemperature* sensor, float temperature, bool is_high) {
-    if (is_high) {
-        ESP_LOGW("TEMP", "High temperature alert: %.2f°C", temperature);
+void temperature*alert(EspTemperature* sensor, float temperature, bool is*high) {
+    if (is*high) {
+        ESP*LOGW("TEMP", "High temperature alert: %.2f°C", temperature);
     } else {
-        ESP_LOGW("TEMP", "Low temperature alert: %.2f°C", temperature);
+        ESP*LOGW("TEMP", "Low temperature alert: %.2f°C", temperature);
     }
 }
 
 // Continuous monitoring callback
-void temperature_monitor(EspTemperature* sensor, float temperature, hf_u64_t timestamp) {
-    ESP_LOGI("TEMP", "Temperature: %.2f°C at %llu µs", temperature, timestamp);
+void temperature*monitor(EspTemperature* sensor, float temperature, hf*u64*t timestamp) {
+    ESP*LOGI("TEMP", "Temperature: %.2f°C at %llu µs", temperature, timestamp);
 }
 
 // Setup advanced monitoring
-temp_sensor.SetThresholds(15.0f, 35.0f);  // 15°C low, 35°C high
-temp_sensor.RegisterThresholdCallback(temperature_alert);
-temp_sensor.RegisterMonitoringCallback(temperature_monitor);
-temp_sensor.StartContinuousMonitoring(1000);  // 1 second interval
-```
+temp*sensor.SetThresholds(15.0f, 35.0f);  // 15°C low, 35°C high
+temp*sensor.RegisterThresholdCallback(temperature*alert);
+temp*sensor.RegisterMonitoringCallback(temperature*monitor);
+temp*sensor.StartContinuousMonitoring(1000);  // 1 second interval
+```text
 
 ### Calibration and Accuracy Improvement
 ```cpp
 // Perform calibration with known reference
-float known_temp = 25.0f;  // Reference temperature
-float measured = temp_sensor.ReadTemperatureValue();
-float offset = known_temp - measured;
+float known*temp = 25.0f;  // Reference temperature
+float measured = temp*sensor.ReadTemperatureValue();
+float offset = known*temp - measured;
 
 // Apply calibration
-temp_sensor.SetCalibrationOffset(offset);
+temp*sensor.SetCalibrationOffset(offset);
 
 // Verify improved accuracy
-measured = temp_sensor.ReadTemperatureValue();
-ESP_LOGI("TEMP", "Calibrated reading: %.2f°C (expected: %.2f°C)", 
-         measured, known_temp);
-```
+measured = temp*sensor.ReadTemperatureValue();
+ESP*LOGI("TEMP", "Calibrated reading: %.2f°C (expected: %.2f°C)", 
+         measured, known*temp);
+```text
 
 ## API Reference
 
@@ -455,33 +459,33 @@ public:
     // Lifecycle management
     bool EnsureInitialized() noexcept;
     bool EnsureDeinitialized() noexcept;
-    hf_temp_state_t GetState() const noexcept;
+    hf*temp*state*t GetState() const noexcept;
     
     // Basic temperature reading
-    hf_temp_err_t ReadTemperature(hf_temp_reading_t* reading) noexcept;
+    hf*temp*err*t ReadTemperature(hf*temp*reading*t* reading) noexcept;
     float ReadTemperatureValue() noexcept;
     
     // Configuration
-    hf_temp_err_t SetTemperatureRange(float min_celsius, float max_celsius) noexcept;
-    hf_temp_err_t SetCalibration(float offset, float gain) noexcept;
+    hf*temp*err*t SetTemperatureRange(float min*celsius, float max*celsius) noexcept;
+    hf*temp*err*t SetCalibration(float offset, float gain) noexcept;
 };
-```
+```text
 
 ### Advanced Functions
 ```cpp
 // Monitoring and callbacks
-hf_temp_err_t SetThresholds(float low_celsius, float high_celsius) noexcept;
-hf_temp_err_t StartContinuousMonitoring(hf_u32_t interval_ms) noexcept;
-hf_temp_err_t StopContinuousMonitoring() noexcept;
+hf*temp*err*t SetThresholds(float low*celsius, float high*celsius) noexcept;
+hf*temp*err*t StartContinuousMonitoring(hf*u32*t interval*ms) noexcept;
+hf*temp*err*t StopContinuousMonitoring() noexcept;
 
 // ESP32-specific callbacks
 void RegisterThresholdCallback(EspTempThresholdCallback callback) noexcept;
 void RegisterMonitoringCallback(EspTempMonitoringCallback callback) noexcept;
 
 // Statistics and diagnostics
-hf_temp_stats_t GetStatistics() const noexcept;
-hf_temp_health_t GetHealthStatus() const noexcept;
-```
+hf*temp*stats*t GetStatistics() const noexcept;
+hf*temp*health*t GetHealthStatus() const noexcept;
+```text
 
 ## Embedded Development Best Practices
 
@@ -508,23 +512,23 @@ hf_temp_health_t GetHealthStatus() const noexcept;
 ### Environmental Monitoring
 ```cpp
 // Monitor ambient temperature
-temp_sensor.SetThresholds(18.0f, 28.0f);  // Comfort zone
-temp_sensor.StartContinuousMonitoring(30000);  // 30-second updates
-```
+temp*sensor.SetThresholds(18.0f, 28.0f);  // Comfort zone
+temp*sensor.StartContinuousMonitoring(30000);  // 30-second updates
+```text
 
 ### Thermal Protection
 ```cpp
 // CPU/system thermal protection
-temp_sensor.SetThresholds(60.0f, 80.0f);  // Warning/critical temps
-temp_sensor.RegisterThresholdCallback(thermal_protection_handler);
-```
+temp*sensor.SetThresholds(60.0f, 80.0f);  // Warning/critical temps
+temp*sensor.RegisterThresholdCallback(thermal*protection*handler);
+```text
 
 ### Data Logging
 ```cpp
 // Regular temperature logging
-temp_sensor.StartContinuousMonitoring(60000);  // 1-minute intervals
-temp_sensor.RegisterMonitoringCallback(log_temperature_data);
-```
+temp*sensor.StartContinuousMonitoring(60000);  // 1-minute intervals
+temp*sensor.RegisterMonitoringCallback(log*temperature*data);
+```text
 
 ## CI/CD Integration
 
@@ -532,9 +536,9 @@ The temperature test is automatically included in the continuous integration pip
 
 ```yaml
 matrix:
-  example_type: [temperature_test, ...]
-  build_type: [Release, Debug]
-```
+  example*type: [temperature*test, ...]
+  build*type: [Release, Debug]
+```text
 
 ### Automated Testing
 - **Build Verification**: Compile-time validation
@@ -544,7 +548,7 @@ matrix:
 
 ## References
 
-- [ESP32-C6 Temperature Sensor Documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/temp_sensor.html)
-- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf)
+- [ESP32-C6 Temperature Sensor Documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/temp*sensor.html)
+- [ESP32-C6 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-c6*technical*reference*manual*en.pdf)
 - [ESP-IDF v5.5 Programming Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/)
 - [Temperature Sensor Calibration Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-guides/temp_sensor.html)

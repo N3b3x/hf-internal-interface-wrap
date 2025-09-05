@@ -376,16 +376,16 @@ inline constexpr hf_pin_num_t AdcChannelToGpio(hf_channel_id_t channel_id) noexc
  */
 inline constexpr uint32_t GetMaxInputVoltage(hf_adc_atten_t atten) noexcept {
   switch (atten) {
-    case hf_adc_atten_t::ATTEN_DB_0:
-      return 950; // ~0.95V
-    case hf_adc_atten_t::ATTEN_DB_2_5:
-      return 1320; // ~1.32V
-    case hf_adc_atten_t::ATTEN_DB_6:
-      return 1980; // ~1.98V
-    case hf_adc_atten_t::ATTEN_DB_12:
-      return 3300; // ~3.3V
-    default:
-      return 0;
+  case hf_adc_atten_t::ATTEN_DB_0:
+    return 950; // ~0.95V
+  case hf_adc_atten_t::ATTEN_DB_2_5:
+    return 1320; // ~1.32V
+  case hf_adc_atten_t::ATTEN_DB_6:
+    return 1980; // ~1.98V
+  case hf_adc_atten_t::ATTEN_DB_12:
+    return 3300; // ~3.3V
+  default:
+    return 0;
   }
 }
 
@@ -396,16 +396,16 @@ inline constexpr uint32_t GetMaxInputVoltage(hf_adc_atten_t atten) noexcept {
  */
 inline constexpr uint32_t GetMaxRawValue(hf_adc_bitwidth_t bitwidth) noexcept {
   switch (bitwidth) {
-    case hf_adc_bitwidth_t::WIDTH_9BIT:
-      return 511; // 2^9 - 1
-    case hf_adc_bitwidth_t::WIDTH_10BIT:
-      return 1023; // 2^10 - 1
-    case hf_adc_bitwidth_t::WIDTH_11BIT:
-      return 2047; // 2^11 - 1
-    case hf_adc_bitwidth_t::WIDTH_12BIT:
-      return 4095; // 2^12 - 1
-    default:
-      return 4095;
+  case hf_adc_bitwidth_t::WIDTH_9BIT:
+    return 511; // 2^9 - 1
+  case hf_adc_bitwidth_t::WIDTH_10BIT:
+    return 1023; // 2^10 - 1
+  case hf_adc_bitwidth_t::WIDTH_11BIT:
+    return 2047; // 2^11 - 1
+  case hf_adc_bitwidth_t::WIDTH_12BIT:
+    return 4095; // 2^12 - 1
+  default:
+    return 4095;
   }
 }
 

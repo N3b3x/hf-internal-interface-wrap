@@ -227,25 +227,25 @@ struct TestResults {
  * - g_test_results must be defined as TestResults instance
  * - test_func must be a function returning bool (true = pass, false = fail)
  */
-#define RUN_TEST(test_func)                                                                       \
-  do {                                                                                            \
-    ensure_gpio14_initialized();                                                                  \
-    ESP_LOGI(TAG,                                                                                 \
-             "\n"                                                                                 \
-             "╔══════════════════════════════════════════════════════════════════════════════╗\n" \
-             "║ Running: " #test_func "                                                     \n"   \
-             "╚══════════════════════════════════════════════════════════════════════════════╝"); \
-    uint64_t start_time = esp_timer_get_time();                                                   \
-    bool result = test_func();                                                                    \
-    uint64_t end_time = esp_timer_get_time();                                                     \
-    uint64_t execution_time = end_time - start_time;                                              \
-    g_test_results.add_result(result, execution_time);                                            \
-    if (result) {                                                                                 \
-      ESP_LOGI(TAG, "[SUCCESS] PASSED: " #test_func " (%.2f ms)", execution_time / 1000.0);       \
-    } else {                                                                                      \
-      ESP_LOGE(TAG, "[FAILED] FAILED: " #test_func " (%.2f ms)", execution_time / 1000.0);        \
-    }                                                                                             \
-    vTaskDelay(pdMS_TO_TICKS(100));                                                               \
+#define RUN_TEST(test_func)                                                                        \
+  do {                                                                                             \
+    ensure_gpio14_initialized();                                                                   \
+    ESP_LOGI(TAG,                                                                                  \
+             "\n"                                                                                  \
+             "╔══════════════════════════════════════════════════════════════════════════════╗\n"  \
+             "║ Running: " #test_func "                                                     \n"    \
+             "╚══════════════════════════════════════════════════════════════════════════════╝");  \
+    uint64_t start_time = esp_timer_get_time();                                                    \
+    bool result = test_func();                                                                     \
+    uint64_t end_time = esp_timer_get_time();                                                      \
+    uint64_t execution_time = end_time - start_time;                                               \
+    g_test_results.add_result(result, execution_time);                                             \
+    if (result) {                                                                                  \
+      ESP_LOGI(TAG, "[SUCCESS] PASSED: " #test_func " (%.2f ms)", execution_time / 1000.0);        \
+    } else {                                                                                       \
+      ESP_LOGE(TAG, "[FAILED] FAILED: " #test_func " (%.2f ms)", execution_time / 1000.0);         \
+    }                                                                                              \
+    vTaskDelay(pdMS_TO_TICKS(100));                                                                \
   } while (0)
 
 /**
@@ -298,40 +298,40 @@ inline void test_task_trampoline(void* param) {
  * @param stack_size_bytes Task stack size in bytes
  * @param priority Task priority (defaults to 5)
  */
-#define RUN_TEST_IN_TASK(name, func, stack_size_bytes, priority)                                  \
-  do {                                                                                            \
-    ensure_gpio14_initialized();                                                                  \
-    static TestTaskContext ctx;                                                                   \
-    ctx.test_name = name;                                                                         \
-    ctx.test_func = func;                                                                         \
-    ctx.results = &g_test_results;                                                                \
-    ctx.tag = TAG;                                                                                \
-    ctx.completion_semaphore = xSemaphoreCreateBinary();                                          \
-    if (ctx.completion_semaphore == nullptr) {                                                    \
-      ESP_LOGE(TAG, "Failed to create semaphore for test: %s", name);                             \
-      /* Fallback: run inline to avoid losing coverage */                                         \
-      RUN_TEST(func);                                                                             \
-    } else {                                                                                      \
-      BaseType_t created =                                                                        \
-          xTaskCreate(test_task_trampoline, name, (stack_size_bytes) / sizeof(StackType_t), &ctx, \
-                      (priority), nullptr);                                                       \
-      if (created != pdPASS) {                                                                    \
-        ESP_LOGE(TAG, "Failed to create test task: %s", name);                                    \
-        vSemaphoreDelete(ctx.completion_semaphore);                                               \
-        /* Fallback: run inline to avoid losing coverage */                                       \
-        RUN_TEST(func);                                                                           \
-      } else {                                                                                    \
-        /* Wait for test completion using semaphore with timeout */                               \
-        if (xSemaphoreTake(ctx.completion_semaphore, pdMS_TO_TICKS(30000)) == pdTRUE) {           \
-          ESP_LOGI(TAG, "Test task completed: %s", name);                                         \
-        } else {                                                                                  \
-          ESP_LOGW(TAG, "Test task timeout: %s", name);                                           \
-        }                                                                                         \
-        vSemaphoreDelete(ctx.completion_semaphore);                                               \
-        /* Add small delay between tests to ensure proper cleanup */                              \
-        vTaskDelay(pdMS_TO_TICKS(100));                                                           \
-      }                                                                                           \
-    }                                                                                             \
+#define RUN_TEST_IN_TASK(name, func, stack_size_bytes, priority)                                   \
+  do {                                                                                             \
+    ensure_gpio14_initialized();                                                                   \
+    static TestTaskContext ctx;                                                                    \
+    ctx.test_name = name;                                                                          \
+    ctx.test_func = func;                                                                          \
+    ctx.results = &g_test_results;                                                                 \
+    ctx.tag = TAG;                                                                                 \
+    ctx.completion_semaphore = xSemaphoreCreateBinary();                                           \
+    if (ctx.completion_semaphore == nullptr) {                                                     \
+      ESP_LOGE(TAG, "Failed to create semaphore for test: %s", name);                              \
+      /* Fallback: run inline to avoid losing coverage */                                          \
+      RUN_TEST(func);                                                                              \
+    } else {                                                                                       \
+      BaseType_t created =                                                                         \
+          xTaskCreate(test_task_trampoline, name, (stack_size_bytes) / sizeof(StackType_t), &ctx,  \
+                      (priority), nullptr);                                                        \
+      if (created != pdPASS) {                                                                     \
+        ESP_LOGE(TAG, "Failed to create test task: %s", name);                                     \
+        vSemaphoreDelete(ctx.completion_semaphore);                                                \
+        /* Fallback: run inline to avoid losing coverage */                                        \
+        RUN_TEST(func);                                                                            \
+      } else {                                                                                     \
+        /* Wait for test completion using semaphore with timeout */                                \
+        if (xSemaphoreTake(ctx.completion_semaphore, pdMS_TO_TICKS(30000)) == pdTRUE) {            \
+          ESP_LOGI(TAG, "Test task completed: %s", name);                                          \
+        } else {                                                                                   \
+          ESP_LOGW(TAG, "Test task timeout: %s", name);                                            \
+        }                                                                                          \
+        vSemaphoreDelete(ctx.completion_semaphore);                                                \
+        /* Add small delay between tests to ensure proper cleanup */                               \
+        vTaskDelay(pdMS_TO_TICKS(100));                                                            \
+      }                                                                                            \
+    }                                                                                              \
   } while (0)
 
 /**
@@ -427,70 +427,70 @@ inline void print_test_section_footer(const char* tag, const char* section_name,
  */
 
 // Macro to conditionally run a test section
-#define RUN_TEST_SECTION_IF_ENABLED(define_name, section_name, ...) \
-  do {                                                              \
-    ensure_gpio14_initialized();                                    \
-    if (define_name) {                                              \
-      print_test_section_header(TAG, section_name, true);           \
-      __VA_ARGS__                                                   \
-      print_test_section_footer(TAG, section_name, true);           \
-    } else {                                                        \
-      print_test_section_header(TAG, section_name, false);          \
-      ESP_LOGI(TAG, "Section disabled by configuration");           \
-    }                                                               \
+#define RUN_TEST_SECTION_IF_ENABLED(define_name, section_name, ...)                                \
+  do {                                                                                             \
+    ensure_gpio14_initialized();                                                                   \
+    if (define_name) {                                                                             \
+      print_test_section_header(TAG, section_name, true);                                          \
+      __VA_ARGS__                                                                                  \
+      print_test_section_footer(TAG, section_name, true);                                          \
+    } else {                                                                                       \
+      print_test_section_header(TAG, section_name, false);                                         \
+      ESP_LOGI(TAG, "Section disabled by configuration");                                          \
+    }                                                                                              \
   } while (0)
 
 // Macro to conditionally run a single test
-#define RUN_SINGLE_TEST_IF_ENABLED(define_name, test_name, test_func, stack_size, priority) \
-  do {                                                                                      \
-    ensure_gpio14_initialized();                                                            \
-    if (define_name) {                                                                      \
-      RUN_TEST_IN_TASK(test_name, test_func, stack_size, priority);                         \
-      flip_test_progress_indicator();                                                       \
-    } else {                                                                                \
-      ESP_LOGI(TAG, "Test '%s' disabled by configuration", test_name);                      \
-    }                                                                                       \
+#define RUN_SINGLE_TEST_IF_ENABLED(define_name, test_name, test_func, stack_size, priority)        \
+  do {                                                                                             \
+    ensure_gpio14_initialized();                                                                   \
+    if (define_name) {                                                                             \
+      RUN_TEST_IN_TASK(test_name, test_func, stack_size, priority);                                \
+      flip_test_progress_indicator();                                                              \
+    } else {                                                                                       \
+      ESP_LOGI(TAG, "Test '%s' disabled by configuration", test_name);                             \
+    }                                                                                              \
   } while (0)
 
 // Macro to conditionally run multiple tests in a section
-#define RUN_TEST_GROUP_IF_ENABLED(define_name, section_name, ...) \
+#define RUN_TEST_GROUP_IF_ENABLED(define_name, section_name, ...)                                  \
   RUN_TEST_SECTION_IF_ENABLED(define_name, section_name, __VA_ARGS__)
 
 // Macro to conditionally run a test section with custom progress indicator
-#define RUN_TEST_SECTION_IF_ENABLED_WITH_PROGRESS(define_name, section_name, progress_func, ...) \
-  do {                                                                                           \
-    ensure_gpio14_initialized();                                                                 \
-    if (define_name) {                                                                           \
-      print_test_section_header(TAG, section_name, true);                                        \
-      __VA_ARGS__                                                                                \
-      if (progress_func)                                                                         \
-        progress_func();                                                                         \
-      print_test_section_footer(TAG, section_name, true);                                        \
-    } else {                                                                                     \
-      print_test_section_header(TAG, section_name, false);                                       \
-      ESP_LOGI(TAG, "Section disabled by configuration");                                        \
-    }                                                                                            \
+#define RUN_TEST_SECTION_IF_ENABLED_WITH_PROGRESS(define_name, section_name, progress_func, ...)   \
+  do {                                                                                             \
+    ensure_gpio14_initialized();                                                                   \
+    if (define_name) {                                                                             \
+      print_test_section_header(TAG, section_name, true);                                          \
+      __VA_ARGS__                                                                                  \
+      if (progress_func)                                                                           \
+        progress_func();                                                                           \
+      print_test_section_footer(TAG, section_name, true);                                          \
+    } else {                                                                                       \
+      print_test_section_header(TAG, section_name, false);                                         \
+      ESP_LOGI(TAG, "Section disabled by configuration");                                          \
+    }                                                                                              \
   } while (0)
 
 // Macro to conditionally run a test section with automatic progress indicator
-#define RUN_TEST_SECTION_IF_ENABLED_AUTO_PROGRESS(define_name, section_name, ...) \
-  RUN_TEST_SECTION_IF_ENABLED_WITH_PROGRESS(define_name, section_name,            \
+#define RUN_TEST_SECTION_IF_ENABLED_AUTO_PROGRESS(define_name, section_name, ...)                  \
+  RUN_TEST_SECTION_IF_ENABLED_WITH_PROGRESS(define_name, section_name,                             \
                                             flip_test_progress_indicator, __VA_ARGS__)
 
 // Macro to conditionally run a test section with section indicator
-#define RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(define_name, section_name, blink_count, ...) \
-  do {                                                                                        \
-    ensure_gpio14_initialized();                                                              \
-    if (define_name) {                                                                        \
-      print_test_section_header(TAG, section_name, true);                                     \
-      output_section_indicator(blink_count); /* Section start indicator */                    \
-      __VA_ARGS__                                                                             \
-      output_section_indicator(blink_count); /* Section end indicator */                      \
-      print_test_section_footer(TAG, section_name, true);                                     \
-    } else {                                                                                  \
-      print_test_section_header(TAG, section_name, false);                                    \
-      ESP_LOGI(TAG, "Section disabled by configuration");                                     \
-    }                                                                                         \
+#define RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(define_name, section_name, blink_count, ...)      \
+  do {                                                                                             \
+    ensure_gpio14_initialized();                                                                   \
+    if (define_name) {                                                                             \
+      print_test_section_header(TAG, section_name, true);                                          \
+      output_section_indicator(blink_count); /* Section start indicator */                         \
+      __VA_ARGS__                                                                                  \
+      output_section_indicator(blink_count); /* Section end indicator */                           \
+      print_test_section_footer(TAG, section_name, true);                                          \
+    } else {                                                                                       \
+      print_test_section_header(TAG, section_name, false);                                         \
+      ESP_LOGI(TAG, "Section disabled by configuration");                                          \
+    }                                                                                              \
   } while (0)
 
 /**

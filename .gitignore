@@ -68,3 +68,5 @@ actionlint*
 logs/
 
 ci_build_path/
+**/node_modules/
+node_modules/

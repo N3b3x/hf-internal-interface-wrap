@@ -386,31 +386,31 @@ hf_can_err_t EspCan::GetStatus(hf_can_status_t& status) noexcept {
 
   // Set state flags based on TWAI state
   switch (node_status.state) {
-    case TWAI_ERROR_BUS_OFF:
-      status.bus_off = true;
-      status.error_warning = false;
-      status.error_passive = false;
-      break;
-    case TWAI_ERROR_ACTIVE:
-      status.bus_off = false;
-      status.error_warning = false;
-      status.error_passive = false;
-      break;
-    case TWAI_ERROR_WARNING:
-      status.bus_off = false;
-      status.error_warning = true;
-      status.error_passive = false;
-      break;
-    case TWAI_ERROR_PASSIVE:
-      status.bus_off = false;
-      status.error_warning = true;
-      status.error_passive = true;
-      break;
-    default:
-      status.bus_off = false;
-      status.error_warning = false;
-      status.error_passive = false;
-      break;
+  case TWAI_ERROR_BUS_OFF:
+    status.bus_off = true;
+    status.error_warning = false;
+    status.error_passive = false;
+    break;
+  case TWAI_ERROR_ACTIVE:
+    status.bus_off = false;
+    status.error_warning = false;
+    status.error_passive = false;
+    break;
+  case TWAI_ERROR_WARNING:
+    status.bus_off = false;
+    status.error_warning = true;
+    status.error_passive = false;
+    break;
+  case TWAI_ERROR_PASSIVE:
+    status.bus_off = false;
+    status.error_warning = true;
+    status.error_passive = true;
+    break;
+  default:
+    status.bus_off = false;
+    status.error_warning = false;
+    status.error_passive = false;
+    break;
   }
 
   return hf_can_err_t::CAN_SUCCESS;
@@ -897,44 +897,44 @@ hf_can_err_t EspCan::ConvertFromTwaiFrame(const twai_frame_t& twai_frame,
 
 hf_can_err_t EspCan::ConvertEspError(esp_err_t esp_err) noexcept {
   switch (esp_err) {
-    case ESP_OK:
-      return hf_can_err_t::CAN_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
-    case ESP_ERR_INVALID_STATE:
-      return hf_can_err_t::CAN_ERR_INVALID_STATE;
-    case ESP_ERR_TIMEOUT:
-      return hf_can_err_t::CAN_ERR_MESSAGE_TIMEOUT;
-    case ESP_ERR_NO_MEM:
-      return hf_can_err_t::CAN_ERR_OUT_OF_MEMORY;
-    case ESP_ERR_NOT_FOUND:
-      return hf_can_err_t::CAN_ERR_DEVICE_NOT_RESPONDING;
-    case ESP_FAIL:
-      return hf_can_err_t::CAN_ERR_FAILURE;
-    default:
-      return hf_can_err_t::CAN_ERR_SYSTEM_ERROR;
+  case ESP_OK:
+    return hf_can_err_t::CAN_SUCCESS;
+  case ESP_ERR_INVALID_ARG:
+    return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
+  case ESP_ERR_INVALID_STATE:
+    return hf_can_err_t::CAN_ERR_INVALID_STATE;
+  case ESP_ERR_TIMEOUT:
+    return hf_can_err_t::CAN_ERR_MESSAGE_TIMEOUT;
+  case ESP_ERR_NO_MEM:
+    return hf_can_err_t::CAN_ERR_OUT_OF_MEMORY;
+  case ESP_ERR_NOT_FOUND:
+    return hf_can_err_t::CAN_ERR_DEVICE_NOT_RESPONDING;
+  case ESP_FAIL:
+    return hf_can_err_t::CAN_ERR_FAILURE;
+  default:
+    return hf_can_err_t::CAN_ERR_SYSTEM_ERROR;
   }
 }
 
 void EspCan::UpdateStatistics(hf_can_operation_type_t operation_type, bool success) noexcept {
   // No mutex lock needed - using atomic operations for ISR safety
   switch (operation_type) {
-    case hf_can_operation_type_t::HF_CAN_OP_SEND:
-      if (success) {
-        statistics_.messages_sent.fetch_add(1);
-      } else {
-        statistics_.send_failures.fetch_add(1);
-      }
-      break;
-    case hf_can_operation_type_t::HF_CAN_OP_RECEIVE:
-      if (success) {
-        statistics_.messages_received.fetch_add(1);
-      } else {
-        statistics_.receive_failures.fetch_add(1);
-      }
-      break;
-    default:
-      break;
+  case hf_can_operation_type_t::HF_CAN_OP_SEND:
+    if (success) {
+      statistics_.messages_sent.fetch_add(1);
+    } else {
+      statistics_.send_failures.fetch_add(1);
+    }
+    break;
+  case hf_can_operation_type_t::HF_CAN_OP_RECEIVE:
+    if (success) {
+      statistics_.messages_received.fetch_add(1);
+    } else {
+      statistics_.receive_failures.fetch_add(1);
+    }
+    break;
+  default:
+    break;
   }
 
   statistics_.last_activity_timestamp.store(esp_timer_get_time() / 1000); // Convert to milliseconds
@@ -986,18 +986,18 @@ void EspCan::UpdateErrorStatistics(uint32_t error_type) noexcept {
   // No mutex lock needed - using atomic operations for ISR safety
   // Update error counters
   switch (error_type) {
-    case 0x01: // TX error
-      statistics_.bus_error_count.fetch_add(1);
-      break;
-    case 0x02: // RX error
-      statistics_.bus_error_count.fetch_add(1);
-      break;
-    case 0x04: // Bus error
-      statistics_.bus_error_count.fetch_add(1);
-      break;
-    default:
-      statistics_.bus_error_count.fetch_add(1);
-      break;
+  case 0x01: // TX error
+    statistics_.bus_error_count.fetch_add(1);
+    break;
+  case 0x02: // RX error
+    statistics_.bus_error_count.fetch_add(1);
+    break;
+  case 0x04: // Bus error
+    statistics_.bus_error_count.fetch_add(1);
+    break;
+  default:
+    statistics_.bus_error_count.fetch_add(1);
+    break;
   }
 
   statistics_.last_activity_timestamp.store(esp_timer_get_time() / 1000);

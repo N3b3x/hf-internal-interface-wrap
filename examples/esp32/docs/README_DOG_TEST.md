@@ -2,12 +2,16 @@
 
 ## Overview
 
-The DigitalOutputGuard Comprehensive Test Suite (`dog_test`) provides extensive testing of the `DigitalOutputGuard` class, which implements RAII (Resource Acquisition Is Initialization) pattern for GPIO output management. This test suite validates all aspects of the DigitalOutputGuard functionality, from basic RAII operations to performance characteristics and concurrent access patterns.
+The DigitalOutputGuard Comprehensive Test Suite (`dog*test`) provides extensive testing of the
+`DigitalOutputGuard` class,
+which implements RAII (Resource Acquisition Is Initialization) pattern for GPIO output management.
+This test suite validates all aspects of the DigitalOutputGuard functionality,
+from basic RAII operations to performance characteristics and concurrent access patterns.
 
 ## Test Configuration
 
 ### App Type
-- **Name**: `dog_test`
+- **Name**: `dog*test`
 - **Source File**: `DigitalOutputGuardComprehensiveTest.cpp`
 - **Category**: `utility`
 - **Build Types**: Debug, Release
@@ -16,59 +20,59 @@ The DigitalOutputGuard Comprehensive Test Suite (`dog_test`) provides extensive 
 
 ### Test GPIO Pins
 The test suite uses only **3 GPIO pins** defined as static constexpr:
-- `TEST_GPIO_PIN_1 = 2`
-- `TEST_GPIO_PIN_2 = 4` 
-- `TEST_GPIO_PIN_3 = 5`
+- `TEST*GPIO*PIN*1 = 2`
+- `TEST*GPIO*PIN*2 = 4` 
+- `TEST*GPIO*PIN*3 = 5`
 
 ## Test Sections
 
-### 1. Basic Tests (`ENABLE_BASIC_TESTS`)
+### 1. Basic Tests (`ENABLE*BASIC*TESTS`)
 **Blink Pattern**: 5 blinks at section start/end
 
 Tests fundamental RAII functionality and state management:
 - **`creation`**: Basic DigitalOutputGuard creation and validation
-- **`raii_cleanup`**: Automatic cleanup verification in scope
-- **`manual_state_control`**: Manual SetActive/SetInactive operations
+- **`raii*cleanup`**: Automatic cleanup verification in scope
+- **`manual*state*control`**: Manual SetActive/SetInactive operations
 
-### 2. Constructor Tests (`ENABLE_CONSTRUCTOR_TESTS`)
+### 2. Constructor Tests (`ENABLE*CONSTRUCTOR*TESTS`)
 **Blink Pattern**: 5 blinks at section start/end
 
 Tests constructor variants and error handling:
-- **`pointer_constructor`**: Constructor with GPIO pointer
-- **`null_pointer_handling`**: Null pointer error handling
-- **`ensure_output_mode`**: Automatic output mode configuration
-- **`no_ensure_output_mode`**: Input mode GPIO rejection
+- **`pointer*constructor`**: Constructor with GPIO pointer
+- **`null*pointer*handling`**: Null pointer error handling
+- **`ensure*output*mode`**: Automatic output mode configuration
+- **`no*ensure*output*mode`**: Input mode GPIO rejection
 
-### 3. State Tests (`ENABLE_STATE_TESTS`)
+### 3. State Tests (`ENABLE*STATE*TESTS`)
 **Blink Pattern**: 5 blinks at section start/end
 
 Tests state transitions and GPIO control:
-- **`state_transitions`**: Multiple active/inactive transitions
-- **`get_current_state`**: State query functionality
+- **`state*transitions`**: Multiple active/inactive transitions
+- **`get*current*state`**: State query functionality
 
-### 4. Move Semantics Tests (`ENABLE_MOVE_SEMANTICS_TESTS`)
+### 4. Move Semantics Tests (`ENABLE*MOVE*SEMANTICS*TESTS`)
 **Blink Pattern**: 5 blinks at section start/end
 
 Tests move operations and resource management:
-- **`move_constructor`**: Move constructor functionality
-- **`move_assignment`**: Move assignment operator
+- **`move*constructor`**: Move constructor functionality
+- **`move*assignment`**: Move assignment operator
 
-### 5. Edge Case Tests (`ENABLE_EDGE_CASE_TESTS`)
+### 5. Edge Case Tests (`ENABLE*EDGE*CASE*TESTS`)
 **Blink Pattern**: 5 blinks at section start/end
 
 Tests edge cases and error conditions:
-- **`invalid_operations`**: Operations on invalid guards
-- **`multiple_guards_same_gpio`**: Multiple guards managing same GPIO
+- **`invalid*operations`**: Operations on invalid guards
+- **`multiple*guards*same*gpio`**: Multiple guards managing same GPIO
 
-### 6. Concurrent Tests (`ENABLE_CONCURRENT_TESTS`)
+### 6. Concurrent Tests (`ENABLE*CONCURRENT*TESTS`)
 **Blink Pattern**: 5 blinks at section start/end
 
 Tests concurrent access patterns:
-- **`concurrent_access`**: Multi-threaded access with 3 concurrent tasks
+- **`concurrent*access`**: Multi-threaded access with 3 concurrent tasks
   - 3 FreeRTOS tasks × 100 operations = 300 total operations
   - Validates thread safety and race condition prevention
 
-### 7. Performance Tests (`ENABLE_PERFORMANCE_TESTS`)
+### 7. Performance Tests (`ENABLE*PERFORMANCE*TESTS`)
 **Blink Pattern**: 5 blinks at section start/end
 
 Tests performance and stress scenarios:
@@ -95,48 +99,54 @@ Tests performance and stress scenarios:
 - **Visual Feedback**: Easy monitoring of test progression
 
 ### Test Output Format
-```
-I (timestamp) DIGITAL_OUTPUT_GUARD_Test: [SUCCESS] PASSED (task): test_name (X.XX ms)
+```text
+I (timestamp) DIGITAL*OUTPUT*GUARD*Test: [SUCCESS] PASSED (task): test*name (X.XX ms)
 I (timestamp) TestFramework: Test progression indicator: HIGH/LOW
-```
+```text
 
 ## Building and Running
 
 ### Build the Test
 ```bash
-# From examples/esp32 directory
-./scripts/build_app.sh dog_test Release
-```
+## From examples/esp32 directory
+./scripts/build*app.sh dog*test Release
+```text
 
 ### Flash and Monitor
 ```bash
-# Flash the test
-./scripts/flash_app.sh flash dog_test Release
+## Flash the test
+./scripts/flash*app.sh flash dog*test Release
 
-# Monitor test output
-./scripts/flash_app.sh monitor
-```
+## Monitor test output
+./scripts/flash*app.sh monitor
+```text
 
 ### Flash and Monitor (Combined)
 ```bash
-./scripts/flash_app.sh flash_monitor dog_test Release
-```
+./scripts/flash*app.sh flash*monitor dog*test Release
+```text
 
 ## Test Output Example
 
-```
-I (254) DIGITAL_OUTPUT_GUARD_Test: ╔══════════════════════════════════════════════════════════════════════════════╗
-I (278) DIGITAL_OUTPUT_GUARD_Test: ║            ESP32-C6 DIGITAL OUTPUT GUARD COMPREHENSIVE TEST SUITE v1.0       ║
-I (288) DIGITAL_OUTPUT_GUARD_Test: ║                     RAII GPIO Management and State Control                   ║
-I (299) DIGITAL_OUTPUT_GUARD_Test: ╚══════════════════════════════════════════════════════════════════════════════╝
+```text
+I (254) DIGITAL*OUTPUT*GUARD*Test:
+╔══════════════════════════════════════════════════════════════════════════════╗
+I (278) DIGITAL*OUTPUT*GUARD*Test: ║ ESP32-C6 DIGITAL OUTPUT GUARD COMPREHENSIVE TEST SUITE v1.0 ║
+I (288) DIGITAL*OUTPUT*GUARD*Test: ║ RAII GPIO Management and State Control ║
+I (299) DIGITAL*OUTPUT*GUARD*Test:
+╚══════════════════════════════════════════════════════════════════════════════╝
 
-I (14920) DIGITAL_OUTPUT_GUARD_Test: Guard creation/destruction: 1000 iterations in 2.27 ms (avg: 2.27 us per cycle)
-I (14929) DIGITAL_OUTPUT_GUARD_Test: State transitions: 1000 iterations in 1.13 ms (avg: 1.13 us per operation)
-I (15206) DIGITAL_OUTPUT_GUARD_Test: Stress test: 2000 iterations in 16.12 ms (avg: 8.06 us per iteration)
+I (14920) DIGITAL*OUTPUT*GUARD*Test: Guard creation/destruction: 1000 iterations in 2.27 ms (avg:
+2.27 us per cycle)
+I (14929) DIGITAL*OUTPUT*GUARD*Test: State transitions: 1000 iterations in 1.13 ms (avg: 1.13 us per
+operation)
+I (15206) DIGITAL*OUTPUT*GUARD*Test: Stress test: 2000 iterations in 16.12 ms (avg: 8.06 us per
+iteration)
 
-I (15895) DIGITAL_OUTPUT_GUARD_Test: Total: 16, Passed: 16, Failed: 0, Success: 100.00%, Time: 3560.80 ms
-I (15904) DIGITAL_OUTPUT_GUARD_Test: [SUCCESS] ALL DIGITAL_OUTPUT_GUARD TESTS PASSED!
-```
+I (15895) DIGITAL*OUTPUT*GUARD*Test: Total: 16, Passed: 16, Failed: 0, Success: 100.00%, Time:
+3560.80 ms
+I (15904) DIGITAL*OUTPUT*GUARD*Test: [SUCCESS] ALL DIGITAL*OUTPUT*GUARD TESTS PASSED!
+```cpp
 
 ## Test Configuration
 
@@ -145,14 +155,14 @@ Edit the configuration constants at the top of `DigitalOutputGuardComprehensiveT
 
 ```cpp
 // Core DigitalOutputGuard functionality tests
-static constexpr bool ENABLE_BASIC_TESTS = true;        // Basic RAII and state management
-static constexpr bool ENABLE_CONSTRUCTOR_TESTS = true;  // Constructor variants and error handling
-static constexpr bool ENABLE_STATE_TESTS = true;        // State transitions and GPIO control
-static constexpr bool ENABLE_MOVE_SEMANTICS_TESTS = true; // Move operations and resource management
-static constexpr bool ENABLE_EDGE_CASE_TESTS = true;    // Edge cases and error conditions
-static constexpr bool ENABLE_CONCURRENT_TESTS = true;   // Concurrent access testing
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;  // Performance and stress testing
-```
+static constexpr bool ENABLE*BASIC*TESTS = true;        // Basic RAII and state management
+static constexpr bool ENABLE*CONSTRUCTOR*TESTS = true;  // Constructor variants and error handling
+static constexpr bool ENABLE*STATE*TESTS = true;        // State transitions and GPIO control
+static constexpr bool ENABLE*MOVE*SEMANTICS*TESTS = true; // Move operations and resource management
+static constexpr bool ENABLE*EDGE*CASE*TESTS = true;    // Edge cases and error conditions
+static constexpr bool ENABLE*CONCURRENT*TESTS = true;   // Concurrent access testing
+static constexpr bool ENABLE*PERFORMANCE*TESTS = true;  // Performance and stress testing
+```text
 
 ## Performance Interpretation
 
@@ -243,7 +253,8 @@ The DOG test integrates with the HardFOC test framework:
 
 ### Debug Information
 
-Enable debug logging by modifying the log level in the test configuration or using the ESP-IDF monitor with increased verbosity.
+Enable debug logging by modifying the log level in the test configuration or using the ESP-IDF
+monitor with increased verbosity.
 
 ## Related Documentation
 

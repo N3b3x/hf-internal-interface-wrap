@@ -2,7 +2,8 @@
 
 <div align="center">
 
-![HardFOC Utils](https://img.shields.io/badge/HardFOC-Utilities-green?style=for-the-badge&logo=tools)
+![HardFOC
+Utils](https://img.shields.io/badge/HardFOC-Utilities-green?style=for-the-badge&logo=tools)
 
 **🔧 Utility Classes and Helper Components**
 
@@ -26,7 +27,10 @@
 
 ## 🎯 **Overview**
 
-The **HardFOC Interface Wrapper Utilities** provide advanced utility classes and helper components that enhance the core hardware abstraction layer. These utilities implement common design patterns, provide safety mechanisms, and offer convenient abstractions for complex hardware operations.
+The **HardFOC Interface Wrapper Utilities** provide advanced utility classes and helper components
+that enhance the core hardware abstraction layer.
+These utilities implement common design patterns, provide safety mechanisms,
+and offer convenient abstractions for complex hardware operations.
 
 ### ✨ **Key Benefits**
 
@@ -53,7 +57,7 @@ The **HardFOC Interface Wrapper Utilities** provide advanced utility classes and
 
 The HardFOC Utilities follow a **utility-first design pattern**:
 
-```
+```text
 ┌─────────────────────────────────────┐
 │         Application Layer           │
 ├─────────────────────────────────────┤
@@ -65,7 +69,7 @@ The HardFOC Utilities follow a **utility-first design pattern**:
 ├─────────────────────────────────────┤
 │           Hardware Layer            │
 └─────────────────────────────────────┘
-```
+```text
 
 ### **Core Components**
 
@@ -88,8 +92,11 @@ The HardFOC Utilities follow a **utility-first design pattern**:
 The HardFOC Interface Wrapper provides utility classes for common patterns and safety mechanisms:
 
 | Class | Purpose | Key Features | Typical Use Cases |
+
 |-------|---------|--------------|-------------------|
+
 | **[DigitalOutputGuard](DigitalOutputGuard.md)** | RAII GPIO Management | Automatic state management, exception safety | Safe GPIO control, resource management |
+
 | **[AsciiArtGenerator](AsciiArtGenerator.md)** | ASCII Art Generation | Predefined patterns, custom banners, decorative elements | Console output, logging enhancement, visual presentation |
 
 ### **Utility Categories**
@@ -126,18 +133,18 @@ The utility classes integrate seamlessly with the HardFOC Interface:
 #include "inc/mcu/esp32/EspGpio.h"
 
 // Create GPIO instance
-EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
+EspGpio led*pin(2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
 
 // Use utility for safe GPIO management
 {
-    DigitalOutputGuard guard(led_pin);
+    DigitalOutputGuard guard(led*pin);
     if (guard.IsValid()) {
         // GPIO is automatically active
         // ... perform operations ...
     }
     // GPIO automatically set inactive when guard goes out of scope
 }
-```
+```text
 
 ### **With Platform Implementations**
 
@@ -155,21 +162,21 @@ Utilities provide convenient abstractions for application development:
 // Application code using utilities
 class MotorController {
 private:
-    EspGpio enable_pin_;
-    EspPwm motor_pwm_;
+    EspGpio enable*pin*;
+    EspPwm motor*pwm*;
     
 public:
     void EnableMotor() {
         // Safe GPIO control with automatic cleanup
-        DigitalOutputGuard guard(enable_pin_);
+        DigitalOutputGuard guard(enable*pin*);
         if (guard.IsValid()) {
             // Motor is safely enabled
-            motor_pwm_.SetDutyCycle(0, 50.0f);
+            motor*pwm*.SetDutyCycle(0, 50.0f);
         }
         // Motor automatically disabled when guard goes out of scope
     }
 };
-```
+```text
 
 ---
 
@@ -183,22 +190,22 @@ public:
 
 // Include platform implementations
 #include "inc/mcu/esp32/EspGpio.h"
-```
+```text
 
 ### **2. Create Hardware Instances**
 
 ```cpp
 // Create GPIO instance
-EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
-led_pin.EnsureInitialized();
-```
+EspGpio led*pin(2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
+led*pin.EnsureInitialized();
+```text
 
 ### **3. Use Utility Classes**
 
 ```cpp
 // Use DigitalOutputGuard for safe GPIO management
 {
-    DigitalOutputGuard guard(led_pin);
+    DigitalOutputGuard guard(led*pin);
     if (!guard.IsValid()) {
         // Handle initialization error
         return;
@@ -208,28 +215,28 @@ led_pin.EnsureInitialized();
     // ... perform operations ...
     
 } // GPIO automatically set inactive when guard goes out of scope
-```
+```text
 
 ### **4. Error Handling**
 
 ```cpp
-DigitalOutputGuard guard(led_pin);
+DigitalOutputGuard guard(led*pin);
 if (!guard.IsValid()) {
-    hf_gpio_err_t error = guard.GetLastError();
+    hf*gpio*err*t error = guard.GetLastError();
     switch (error) {
-        case hf_gpio_err_t::GPIO_ERR_NULL_POINTER:
-            ESP_LOGE(TAG, "Null pointer provided");
+        case hf*gpio*err*t::GPIO*ERR*NULL*POINTER:
+            ESP*LOGE(TAG, "Null pointer provided");
             break;
-        case hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED:
-            ESP_LOGE(TAG, "GPIO not initialized");
+        case hf*gpio*err*t::GPIO*ERR*NOT*INITIALIZED:
+            ESP*LOGE(TAG, "GPIO not initialized");
             break;
         default:
-            ESP_LOGE(TAG, "Unknown error: %d", static_cast<int>(error));
+            ESP*LOGE(TAG, "Unknown error: %d", static*cast<int>(error));
             break;
     }
     return;
 }
-```
+```text
 
 ---
 
@@ -243,25 +250,25 @@ if (!guard.IsValid()) {
 
 class StatusIndicator {
 private:
-    EspGpio status_led_;
+    EspGpio status*led*;
     
 public:
-    StatusIndicator(hf_pin_num_t pin) 
-        : status_led_(pin, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-                      hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
-                      hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
-                      hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN) {
-        status_led_.EnsureInitialized();
+    StatusIndicator(hf*pin*num*t pin) 
+        : status*led*(pin, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT,
+                      hf*gpio*active*state*t::HF*GPIO*ACTIVE*HIGH,
+                      hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
+                      hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*DOWN) {
+        status*led*.EnsureInitialized();
     }
     
-    void ShowStatus(bool is_ok) {
+    void ShowStatus(bool is*ok) {
         // Safe GPIO control with automatic cleanup
-        DigitalOutputGuard guard(status_led_);
+        DigitalOutputGuard guard(status*led*);
         if (!guard.IsValid()) {
             return;
         }
         
-        if (is_ok) {
+        if (is*ok) {
             guard.SetActive();  // LED on
         } else {
             guard.SetInactive(); // LED off
@@ -270,7 +277,7 @@ public:
         // LED automatically turned off when guard goes out of scope
     }
 };
-```
+```text
 
 ### **Motor Control with Safety**
 
@@ -281,38 +288,38 @@ public:
 
 class SafeMotorController {
 private:
-    EspGpio enable_pin_;
-    EspPwm motor_pwm_;
+    EspGpio enable*pin*;
+    EspPwm motor*pwm*;
     
 public:
-    SafeMotorController(hf_pin_num_t enable_pin, hf_pin_num_t pwm_pin) 
-        : enable_pin_(enable_pin, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT),
-          motor_pwm_() {
-        enable_pin_.EnsureInitialized();
-        motor_pwm_.EnsureInitialized();
-        motor_pwm_.EnableChannel(0);
+    SafeMotorController(hf*pin*num*t enable*pin, hf*pin*num*t pwm*pin) 
+        : enable*pin*(enable*pin, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT),
+          motor*pwm*() {
+        enable*pin*.EnsureInitialized();
+        motor*pwm*.EnsureInitialized();
+        motor*pwm*.EnableChannel(0);
     }
     
-    void SetSpeed(float speed_percent) {
+    void SetSpeed(float speed*percent) {
         // Safe motor control with automatic disable
-        DigitalOutputGuard guard(enable_pin_);
+        DigitalOutputGuard guard(enable*pin*);
         if (!guard.IsValid()) {
             return;
         }
         
         // Motor is safely enabled
-        motor_pwm_.SetDutyCycle(0, speed_percent);
+        motor*pwm*.SetDutyCycle(0, speed*percent);
         
         // Motor automatically disabled when guard goes out of scope
     }
     
     void EmergencyStop() {
         // Immediate motor disable
-        enable_pin_.SetInactive();
-        motor_pwm_.SetDutyCycle(0, 0.0f);
+        enable*pin*.SetInactive();
+        motor*pwm*.SetDutyCycle(0, 0.0f);
     }
 };
-```
+```text
 
 ### **Multi-Threaded Safety**
 
@@ -323,27 +330,27 @@ public:
 #include "freertos/task.h"
 
 // Global GPIO for shared access
-EspGpio shared_led_(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
+EspGpio shared*led*(2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
 
-void led_task(void* parameter) {
+void led*task(void* parameter) {
     while (true) {
         // Thread-safe GPIO control
-        DigitalOutputGuard guard(shared_led_);
+        DigitalOutputGuard guard(shared*led*);
         if (guard.IsValid()) {
             guard.SetActive();
-            vTaskDelay(pdMS_TO_TICKS(100));
+            vTaskDelay(pdMS*TO*TICKS(100));
             guard.SetInactive();
-            vTaskDelay(pdMS_TO_TICKS(100));
+            vTaskDelay(pdMS*TO*TICKS(100));
         }
     }
 }
 
 // Create multiple tasks safely accessing the same GPIO
-void setup_led_tasks() {
-    xTaskCreate(led_task, "led_task_1", 2048, NULL, 1, NULL);
-    xTaskCreate(led_task, "led_task_2", 2048, NULL, 1, NULL);
+void setup*led*tasks() {
+    xTaskCreate(led*task, "led*task*1", 2048, NULL, 1, NULL);
+    xTaskCreate(led*task, "led*task*2", 2048, NULL, 1, NULL);
 }
-```
+```text
 
 ---
 
@@ -359,8 +366,11 @@ void setup_led_tasks() {
 ### **Utility Class Documentation**
 
 | **Utility Class** | **Documentation** | **Status** |
+
 |-------------------|-------------------|------------|
+
 | **[DigitalOutputGuard](DigitalOutputGuard.md)** | RAII GPIO Management | ✅ Complete |
+
 | **[AsciiArtGenerator](AsciiArtGenerator.md)** | ASCII Art Generation | ✅ Complete |
 
 ### **Related Resources**

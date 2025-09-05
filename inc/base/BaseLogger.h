@@ -41,41 +41,41 @@
  * @details X-macro pattern for comprehensive error enumeration. Each entry contains:
  *          X(NAME, VALUE, DESCRIPTION)
  */
-#define HF_LOGGER_ERR_LIST(X)                                     \
-  /* Success codes */                                             \
-  X(LOGGER_SUCCESS, 0, "Success")                                 \
-                                                                  \
-  /* General errors */                                            \
-  X(LOGGER_ERR_FAILURE, 1, "General failure")                     \
-  X(LOGGER_ERR_NOT_INITIALIZED, 2, "Not initialized")             \
-  X(LOGGER_ERR_ALREADY_INITIALIZED, 3, "Already initialized")     \
-  X(LOGGER_ERR_INVALID_PARAMETER, 4, "Invalid parameter")         \
-  X(LOGGER_ERR_NULL_POINTER, 5, "Null pointer")                   \
-  X(LOGGER_ERR_OUT_OF_MEMORY, 6, "Out of memory")                 \
-                                                                  \
-  /* Configuration errors */                                      \
-  X(LOGGER_ERR_INVALID_CONFIGURATION, 7, "Invalid configuration") \
-  X(LOGGER_ERR_UNSUPPORTED_OPERATION, 8, "Unsupported operation") \
-  X(LOGGER_ERR_RESOURCE_BUSY, 9, "Resource busy")                 \
-  X(LOGGER_ERR_RESOURCE_UNAVAILABLE, 10, "Resource unavailable")  \
-                                                                  \
-  /* Output errors */                                             \
-  X(LOGGER_ERR_WRITE_FAILURE, 11, "Write failure")                \
-  X(LOGGER_ERR_OUTPUT_BUFFER_FULL, 12, "Output buffer full")      \
-  X(LOGGER_ERR_FORMAT_ERROR, 13, "Format error")                  \
-  X(LOGGER_ERR_ENCODING_ERROR, 14, "Encoding error")              \
-                                                                  \
-  /* System errors */                                             \
-  X(LOGGER_ERR_SYSTEM_ERROR, 15, "System error")                  \
-  X(LOGGER_ERR_PERMISSION_DENIED, 16, "Permission denied")        \
-  X(LOGGER_ERR_OPERATION_ABORTED, 17, "Operation aborted")        \
-                                                                  \
-  /* Extended errors */                                           \
-  X(LOGGER_ERR_NOT_SUPPORTED, 18, "Operation not supported")      \
-  X(LOGGER_ERR_DRIVER_ERROR, 19, "Driver error")                  \
-  X(LOGGER_ERR_INVALID_STATE, 20, "Invalid state")                \
-  X(LOGGER_ERR_INVALID_ARG, 21, "Invalid argument")               \
-  X(LOGGER_ERR_TIMEOUT, 22, "Timeout")                            \
+#define HF_LOGGER_ERR_LIST(X)                                                                      \
+  /* Success codes */                                                                              \
+  X(LOGGER_SUCCESS, 0, "Success")                                                                  \
+                                                                                                   \
+  /* General errors */                                                                             \
+  X(LOGGER_ERR_FAILURE, 1, "General failure")                                                      \
+  X(LOGGER_ERR_NOT_INITIALIZED, 2, "Not initialized")                                              \
+  X(LOGGER_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                      \
+  X(LOGGER_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                          \
+  X(LOGGER_ERR_NULL_POINTER, 5, "Null pointer")                                                    \
+  X(LOGGER_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                  \
+                                                                                                   \
+  /* Configuration errors */                                                                       \
+  X(LOGGER_ERR_INVALID_CONFIGURATION, 7, "Invalid configuration")                                  \
+  X(LOGGER_ERR_UNSUPPORTED_OPERATION, 8, "Unsupported operation")                                  \
+  X(LOGGER_ERR_RESOURCE_BUSY, 9, "Resource busy")                                                  \
+  X(LOGGER_ERR_RESOURCE_UNAVAILABLE, 10, "Resource unavailable")                                   \
+                                                                                                   \
+  /* Output errors */                                                                              \
+  X(LOGGER_ERR_WRITE_FAILURE, 11, "Write failure")                                                 \
+  X(LOGGER_ERR_OUTPUT_BUFFER_FULL, 12, "Output buffer full")                                       \
+  X(LOGGER_ERR_FORMAT_ERROR, 13, "Format error")                                                   \
+  X(LOGGER_ERR_ENCODING_ERROR, 14, "Encoding error")                                               \
+                                                                                                   \
+  /* System errors */                                                                              \
+  X(LOGGER_ERR_SYSTEM_ERROR, 15, "System error")                                                   \
+  X(LOGGER_ERR_PERMISSION_DENIED, 16, "Permission denied")                                         \
+  X(LOGGER_ERR_OPERATION_ABORTED, 17, "Operation aborted")                                         \
+                                                                                                   \
+  /* Extended errors */                                                                            \
+  X(LOGGER_ERR_NOT_SUPPORTED, 18, "Operation not supported")                                       \
+  X(LOGGER_ERR_DRIVER_ERROR, 19, "Driver error")                                                   \
+  X(LOGGER_ERR_INVALID_STATE, 20, "Invalid state")                                                 \
+  X(LOGGER_ERR_INVALID_ARG, 21, "Invalid argument")                                                \
+  X(LOGGER_ERR_TIMEOUT, 22, "Timeout")                                                             \
   X(LOGGER_ERR_BUFFER_OVERFLOW, 23, "Buffer overflow")
 
 /**
@@ -495,13 +495,13 @@ protected:
  */
 inline const char* HfLoggerErrToString(hf_logger_err_t error) noexcept {
   switch (error) {
-#define HF_LOGGER_ERR_TO_STRING(name, value, description) \
-  case hf_logger_err_t::name:                             \
+#define HF_LOGGER_ERR_TO_STRING(name, value, description)                                          \
+  case hf_logger_err_t::name:                                                                      \
     return description;
     HF_LOGGER_ERR_LIST(HF_LOGGER_ERR_TO_STRING)
 #undef HF_LOGGER_ERR_TO_STRING
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 
@@ -512,20 +512,20 @@ inline const char* HfLoggerErrToString(hf_logger_err_t error) noexcept {
  */
 inline const char* HfLogLevelToString(hf_log_level_t level) noexcept {
   switch (level) {
-    case hf_log_level_t::LOG_LEVEL_NONE:
-      return "NONE";
-    case hf_log_level_t::LOG_LEVEL_ERROR:
-      return "ERROR";
-    case hf_log_level_t::LOG_LEVEL_WARN:
-      return "WARN";
-    case hf_log_level_t::LOG_LEVEL_INFO:
-      return "INFO";
-    case hf_log_level_t::LOG_LEVEL_DEBUG:
-      return "DEBUG";
-    case hf_log_level_t::LOG_LEVEL_VERBOSE:
-      return "VERBOSE";
-    default:
-      return "UNKNOWN";
+  case hf_log_level_t::LOG_LEVEL_NONE:
+    return "NONE";
+  case hf_log_level_t::LOG_LEVEL_ERROR:
+    return "ERROR";
+  case hf_log_level_t::LOG_LEVEL_WARN:
+    return "WARN";
+  case hf_log_level_t::LOG_LEVEL_INFO:
+    return "INFO";
+  case hf_log_level_t::LOG_LEVEL_DEBUG:
+    return "DEBUG";
+  case hf_log_level_t::LOG_LEVEL_VERBOSE:
+    return "VERBOSE";
+  default:
+    return "UNKNOWN";
   }
 }
 
@@ -536,20 +536,20 @@ inline const char* HfLogLevelToString(hf_log_level_t level) noexcept {
  */
 inline const char* HfLogLevelToShortString(hf_log_level_t level) noexcept {
   switch (level) {
-    case hf_log_level_t::LOG_LEVEL_NONE:
-      return "N";
-    case hf_log_level_t::LOG_LEVEL_ERROR:
-      return "E";
-    case hf_log_level_t::LOG_LEVEL_WARN:
-      return "W";
-    case hf_log_level_t::LOG_LEVEL_INFO:
-      return "I";
-    case hf_log_level_t::LOG_LEVEL_DEBUG:
-      return "D";
-    case hf_log_level_t::LOG_LEVEL_VERBOSE:
-      return "V";
-    default:
-      return "?";
+  case hf_log_level_t::LOG_LEVEL_NONE:
+    return "N";
+  case hf_log_level_t::LOG_LEVEL_ERROR:
+    return "E";
+  case hf_log_level_t::LOG_LEVEL_WARN:
+    return "W";
+  case hf_log_level_t::LOG_LEVEL_INFO:
+    return "I";
+  case hf_log_level_t::LOG_LEVEL_DEBUG:
+    return "D";
+  case hf_log_level_t::LOG_LEVEL_VERBOSE:
+    return "V";
+  default:
+    return "?";
   }
 }
 
@@ -572,44 +572,44 @@ hf_u32_t HfLoggerGetThreadId() noexcept;
 /**
  * @brief Log at ERROR level with file and line information
  */
-#define HF_LOG_ERROR(tag, format, ...)                                                            \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_ERROR, tag, __FILE__, __LINE__, __FUNCTION__, format, \
+#define HF_LOG_ERROR(tag, format, ...)                                                             \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_ERROR, tag, __FILE__, __LINE__, __FUNCTION__, format,  \
                   ##__VA_ARGS__)
 
 /**
  * @brief Log at WARN level with file and line information
  */
-#define HF_LOG_WARN(tag, format, ...)                                                            \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_WARN, tag, __FILE__, __LINE__, __FUNCTION__, format, \
+#define HF_LOG_WARN(tag, format, ...)                                                              \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_WARN, tag, __FILE__, __LINE__, __FUNCTION__, format,   \
                   ##__VA_ARGS__)
 
 /**
  * @brief Log at INFO level with file and line information
  */
-#define HF_LOG_INFO(tag, format, ...)                                                            \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_INFO, tag, __FILE__, __LINE__, __FUNCTION__, format, \
+#define HF_LOG_INFO(tag, format, ...)                                                              \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_INFO, tag, __FILE__, __LINE__, __FUNCTION__, format,   \
                   ##__VA_ARGS__)
 
 /**
  * @brief Log at DEBUG level with file and line information
  */
-#define HF_LOG_DEBUG(tag, format, ...)                                                            \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_DEBUG, tag, __FILE__, __LINE__, __FUNCTION__, format, \
+#define HF_LOG_DEBUG(tag, format, ...)                                                             \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_DEBUG, tag, __FILE__, __LINE__, __FUNCTION__, format,  \
                   ##__VA_ARGS__)
 
 /**
  * @brief Log at VERBOSE level with file and line information
  */
-#define HF_LOG_VERBOSE(tag, format, ...)                                                    \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_VERBOSE, tag, __FILE__, __LINE__, __FUNCTION__, \
+#define HF_LOG_VERBOSE(tag, format, ...)                                                           \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_VERBOSE, tag, __FILE__, __LINE__, __FUNCTION__,        \
                   format, ##__VA_ARGS__)
 
 /**
  * @brief Conditional logging macro
  */
-#define HF_LOG_IF(condition, level, tag, format, ...)                                       \
-  do {                                                                                      \
-    if (condition) {                                                                        \
-      LogWithLocation(level, tag, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__); \
-    }                                                                                       \
+#define HF_LOG_IF(condition, level, tag, format, ...)                                              \
+  do {                                                                                             \
+    if (condition) {                                                                               \
+      LogWithLocation(level, tag, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__);        \
+    }                                                                                              \
   } while (0)

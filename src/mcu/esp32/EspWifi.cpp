@@ -59,15 +59,15 @@ static std::atomic<bool> g_ap_netif_created{false};
  */
 static hf_wifi_err_t ensureDefaultNetifs() {
   static std::atomic<bool> netifs_initialized{false};
-  
+
   if (netifs_initialized.load()) {
     return hf_wifi_err_t::WIFI_SUCCESS;
   }
-  
+
   // Try to get existing interfaces first
   esp_netif_t* sta_netif = esp_netif_get_handle_from_ifkey("WIFI_STA_DEF");
   esp_netif_t* ap_netif = esp_netif_get_handle_from_ifkey("WIFI_AP_DEF");
-  
+
   // Create only if they don't exist
   if (!sta_netif) {
     sta_netif = esp_netif_create_default_wifi_sta();
@@ -76,7 +76,7 @@ static hf_wifi_err_t ensureDefaultNetifs() {
       return hf_wifi_err_t::WIFI_ERR_INIT_FAILED;
     }
   }
-  
+
   if (!ap_netif) {
     ap_netif = esp_netif_create_default_wifi_ap();
     if (!ap_netif) {
@@ -84,7 +84,7 @@ static hf_wifi_err_t ensureDefaultNetifs() {
       return hf_wifi_err_t::WIFI_ERR_INIT_FAILED;
     }
   }
-  
+
   netifs_initialized.store(true);
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
@@ -120,14 +120,14 @@ static const EspWifiAdvancedConfig DEFAULT_ADVANCED_CONFIG = {.enable_power_save
  */
 static wifi_mode_t ConvertToEspMode(hf_wifi_mode_t mode) {
   switch (mode) {
-    case hf_wifi_mode_t::HF_WIFI_MODE_STATION:
-      return WIFI_MODE_STA;
-    case hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT:
-      return WIFI_MODE_AP;
-    case hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP:
-      return WIFI_MODE_APSTA;
-    default:
-      return WIFI_MODE_NULL;
+  case hf_wifi_mode_t::HF_WIFI_MODE_STATION:
+    return WIFI_MODE_STA;
+  case hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT:
+    return WIFI_MODE_AP;
+  case hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP:
+    return WIFI_MODE_APSTA;
+  default:
+    return WIFI_MODE_NULL;
   }
 }
 
@@ -136,14 +136,14 @@ static wifi_mode_t ConvertToEspMode(hf_wifi_mode_t mode) {
  */
 [[maybe_unused]] static hf_wifi_mode_t ConvertFromEspMode(wifi_mode_t mode) {
   switch (mode) {
-    case WIFI_MODE_STA:
-      return hf_wifi_mode_t::HF_WIFI_MODE_STATION;
-    case WIFI_MODE_AP:
-      return hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT;
-    case WIFI_MODE_APSTA:
-      return hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP;
-    default:
-      return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
+  case WIFI_MODE_STA:
+    return hf_wifi_mode_t::HF_WIFI_MODE_STATION;
+  case WIFI_MODE_AP:
+    return hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT;
+  case WIFI_MODE_APSTA:
+    return hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP;
+  default:
+    return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
   }
 }
 
@@ -152,26 +152,26 @@ static wifi_mode_t ConvertToEspMode(hf_wifi_mode_t mode) {
  */
 [[maybe_unused]] static wifi_auth_mode_t ConvertToEspAuthMode(hf_wifi_security_t security) {
   switch (security) {
-    case hf_wifi_security_t::HF_WIFI_SECURITY_OPEN:
-      return WIFI_AUTH_OPEN;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WEP:
-      return WIFI_AUTH_WEP;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK:
-      return WIFI_AUTH_WPA_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK:
-      return WIFI_AUTH_WPA2_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK:
-      return WIFI_AUTH_WPA_WPA2_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE:
-      return WIFI_AUTH_WPA2_ENTERPRISE;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK:
-      return WIFI_AUTH_WPA3_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK:
-      return WIFI_AUTH_WPA2_WPA3_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE:
-      return WIFI_AUTH_WPA3_ENTERPRISE;
-    default:
-      return WIFI_AUTH_OPEN;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_OPEN:
+    return WIFI_AUTH_OPEN;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WEP:
+    return WIFI_AUTH_WEP;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK:
+    return WIFI_AUTH_WPA_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK:
+    return WIFI_AUTH_WPA2_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK:
+    return WIFI_AUTH_WPA_WPA2_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE:
+    return WIFI_AUTH_WPA2_ENTERPRISE;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK:
+    return WIFI_AUTH_WPA3_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK:
+    return WIFI_AUTH_WPA2_WPA3_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE:
+    return WIFI_AUTH_WPA3_ENTERPRISE;
+  default:
+    return WIFI_AUTH_OPEN;
   }
 }
 
@@ -180,26 +180,26 @@ static wifi_mode_t ConvertToEspMode(hf_wifi_mode_t mode) {
  */
 [[maybe_unused]] static hf_wifi_security_t ConvertFromEspAuthMode(wifi_auth_mode_t auth_mode) {
   switch (auth_mode) {
-    case WIFI_AUTH_OPEN:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
-    case WIFI_AUTH_WEP:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WEP;
-    case WIFI_AUTH_WPA_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK;
-    case WIFI_AUTH_WPA2_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK;
-    case WIFI_AUTH_WPA_WPA2_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK;
-    case WIFI_AUTH_WPA2_ENTERPRISE:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE;
-    case WIFI_AUTH_WPA3_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK;
-    case WIFI_AUTH_WPA2_WPA3_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK;
-    case WIFI_AUTH_WPA3_ENTERPRISE:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE;
-    default:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
+  case WIFI_AUTH_OPEN:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
+  case WIFI_AUTH_WEP:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WEP;
+  case WIFI_AUTH_WPA_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK;
+  case WIFI_AUTH_WPA2_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK;
+  case WIFI_AUTH_WPA_WPA2_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK;
+  case WIFI_AUTH_WPA2_ENTERPRISE:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE;
+  case WIFI_AUTH_WPA3_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK;
+  case WIFI_AUTH_WPA2_WPA3_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK;
+  case WIFI_AUTH_WPA3_ENTERPRISE:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE;
+  default:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
   }
 }
 
@@ -248,7 +248,7 @@ hf_wifi_err_t EspWifi::Initialize(hf_wifi_mode_t mode) {
 
     // Create default event loop
     ESP_ERROR_CHECK(esp_event_loop_create_default());
-    
+
     g_wifi_initialized = true;
   }
 
@@ -266,11 +266,11 @@ hf_wifi_err_t EspWifi::Initialize(hf_wifi_mode_t mode) {
     DeinitNetif();
     return netif_err;
   }
-  
+
   // Get references to the default network interfaces
   m_sta_netif = esp_netif_get_handle_from_ifkey("WIFI_STA_DEF");
   m_ap_netif = esp_netif_get_handle_from_ifkey("WIFI_AP_DEF");
-  
+
   if (!m_sta_netif || !m_ap_netif) {
     ESP_LOGE(TAG, "Failed to get default netif handles");
     DeinitNetif();
@@ -480,7 +480,7 @@ hf_wifi_err_t EspWifi::SetMode(hf_wifi_mode_t mode) {
 
   // Update internal mode
   m_mode = mode;
-  
+
   ESP_LOGI(TAG, "WiFi mode changed successfully");
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
@@ -613,7 +613,7 @@ hf_wifi_err_t EspWifi::StartAccessPoint() {
   // AP is automatically started when WiFi is started in AP mode
   // Just update our internal state
   m_ap_active = true;
-  
+
   ESP_LOGI(TAG, "Access Point started successfully");
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
@@ -655,7 +655,7 @@ hf_wifi_err_t EspWifi::StopAccessPoint() {
   }
 
   m_ap_active = false;
-  
+
   ESP_LOGI(TAG, "Access Point stopped successfully");
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
@@ -708,17 +708,19 @@ hf_wifi_err_t EspWifi::StartScan(bool show_hidden, bool passive, uint32_t durati
   wifi_scan_config_t scan_config = {};
   scan_config.show_hidden = show_hidden;
   scan_config.scan_type = passive ? WIFI_SCAN_TYPE_PASSIVE : WIFI_SCAN_TYPE_ACTIVE;
-  
+
   // Set scan time - convert ms to seconds, with reasonable limits
   uint32_t scan_time_sec = (duration_ms > 0) ? (duration_ms / 1000) : 5;
-  if (scan_time_sec < 1) scan_time_sec = 1;
-  if (scan_time_sec > 10) scan_time_sec = 10;
-  
+  if (scan_time_sec < 1)
+    scan_time_sec = 1;
+  if (scan_time_sec > 10)
+    scan_time_sec = 10;
+
   scan_config.scan_time.active.min = scan_time_sec;
   scan_config.scan_time.active.max = scan_time_sec;
   scan_config.scan_time.passive = scan_time_sec;
 
-  ESP_LOGI(TAG, "Starting WiFi scan (hidden: %s, passive: %s, duration: %dms)", 
+  ESP_LOGI(TAG, "Starting WiFi scan (hidden: %s, passive: %s, duration: %dms)",
            show_hidden ? "yes" : "no", passive ? "yes" : "no", duration_ms);
 
   err = esp_wifi_scan_start(&scan_config, false);
@@ -781,29 +783,29 @@ hf_wifi_err_t EspWifi::GetScanResults(std::vector<hf_wifi_network_info_t>& netwo
   networks.reserve(scan_count);
   for (uint16_t i = 0; i < scan_count; i++) {
     hf_wifi_network_info_t network;
-    
+
     // Copy SSID (ensure null termination)
     char ssid_str[33] = {0}; // 32 chars + null terminator
     strncpy(ssid_str, (char*)scan_results[i].ssid, sizeof(ssid_str) - 1);
     network.ssid = std::string(ssid_str);
-    
+
     // Copy BSSID
     memcpy(network.bssid, scan_results[i].bssid, 6);
-    
+
     // Convert security type
     network.security = ConvertFromEspAuthMode(scan_results[i].authmode);
-    
+
     // Copy other fields
     network.rssi = scan_results[i].rssi;
     network.channel = scan_results[i].primary;
     network.hidden = (network.ssid.empty()); // Consider empty SSID as hidden
-    
+
     networks.push_back(network);
   }
 
   // Free allocated memory
   free(scan_results);
-  
+
   ESP_LOGI(TAG, "Successfully retrieved %zu network results", networks.size());
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
@@ -860,17 +862,17 @@ hf_wifi_err_t EspWifi::SetPowerSave(hf_wifi_power_save_t mode) {
 
   wifi_ps_type_t esp_mode;
   switch (mode) {
-    case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE:
-      esp_mode = WIFI_PS_NONE;
-      break;
-    case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MIN_MODEM:
-      esp_mode = WIFI_PS_MIN_MODEM;
-      break;
-    case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MAX_MODEM:
-      esp_mode = WIFI_PS_MAX_MODEM;
-      break;
-    default:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE:
+    esp_mode = WIFI_PS_NONE;
+    break;
+  case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MIN_MODEM:
+    esp_mode = WIFI_PS_MIN_MODEM;
+    break;
+  case hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MAX_MODEM:
+    esp_mode = WIFI_PS_MAX_MODEM;
+    break;
+  default:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
   }
 
   esp_err_t err = esp_wifi_set_ps(esp_mode);
@@ -891,14 +893,14 @@ hf_wifi_power_save_t EspWifi::GetPowerSave() const {
   }
 
   switch (esp_mode) {
-    case WIFI_PS_NONE:
-      return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE;
-    case WIFI_PS_MIN_MODEM:
-      return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MIN_MODEM;
-    case WIFI_PS_MAX_MODEM:
-      return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MAX_MODEM;
-    default:
-      return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE;
+  case WIFI_PS_NONE:
+    return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE;
+  case WIFI_PS_MIN_MODEM:
+    return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MIN_MODEM;
+  case WIFI_PS_MAX_MODEM:
+    return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_MAX_MODEM;
+  default:
+    return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE;
   }
 }
 
@@ -923,14 +925,14 @@ hf_wifi_err_t EspWifi::GetMacAddress(uint8_t mac[6], uint8_t interface) const {
 
   wifi_interface_t wifi_interface;
   switch (interface) {
-    case 0:
-      wifi_interface = WIFI_IF_STA;
-      break;
-    case 1:
-      wifi_interface = WIFI_IF_AP;
-      break;
-    default:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case 0:
+    wifi_interface = WIFI_IF_STA;
+    break;
+  case 1:
+    wifi_interface = WIFI_IF_AP;
+    break;
+  default:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
   }
 
   esp_err_t err = esp_wifi_get_mac(wifi_interface, mac);
@@ -946,14 +948,14 @@ hf_wifi_err_t EspWifi::SetMacAddress(const uint8_t mac[6], uint8_t interface) {
 
   wifi_interface_t wifi_interface;
   switch (interface) {
-    case 0:
-      wifi_interface = WIFI_IF_STA;
-      break;
-    case 1:
-      wifi_interface = WIFI_IF_AP;
-      break;
-    default:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case 0:
+    wifi_interface = WIFI_IF_STA;
+    break;
+  case 1:
+    wifi_interface = WIFI_IF_AP;
+    break;
+  default:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
   }
 
   esp_err_t err = esp_wifi_set_mac(wifi_interface, (uint8_t*)mac);
@@ -1035,54 +1037,54 @@ void EspWifi::smartconfigEventHandler(void* arg, esp_event_base_t event_base, in
 
 hf_wifi_err_t EspWifi::ConvertEspError(esp_err_t esp_err) const {
   switch (esp_err) {
-    case ESP_OK:
-      return hf_wifi_err_t::WIFI_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_INVALID_STATE:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_NO_MEM:
-      return hf_wifi_err_t::WIFI_ERR_NO_MEMORY;
-    case ESP_ERR_TIMEOUT:
-      return hf_wifi_err_t::WIFI_ERR_TIMEOUT;
-    case ESP_ERR_NOT_FOUND:
-      return hf_wifi_err_t::WIFI_ERR_FAILURE;
-    case ESP_ERR_NOT_SUPPORTED:
-      return hf_wifi_err_t::WIFI_ERR_FAILURE;
-    case ESP_ERR_WIFI_BASE:
-      return hf_wifi_err_t::WIFI_ERR_FAILURE;
-    case ESP_ERR_WIFI_NOT_INIT:
-      return hf_wifi_err_t::WIFI_ERR_INIT_FAILED;
-    case ESP_ERR_WIFI_NOT_STARTED:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_WIFI_NOT_STOPPED:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_WIFI_IF:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_WIFI_MODE:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_WIFI_STATE:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_WIFI_CONN:
-      return hf_wifi_err_t::WIFI_ERR_CONNECTION_FAILED;
-    case ESP_ERR_WIFI_NVS:
-      return hf_wifi_err_t::WIFI_ERR_FAILURE;
-    case ESP_ERR_WIFI_MAC:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_WIFI_SSID:
-      return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
-    case ESP_ERR_WIFI_PASSWORD:
-      return hf_wifi_err_t::WIFI_ERR_AUTHENTICATION_FAILED;
-    case ESP_ERR_WIFI_TIMEOUT:
-      return hf_wifi_err_t::WIFI_ERR_TIMEOUT;
-    case ESP_ERR_WIFI_WAKE_FAIL:
-      return hf_wifi_err_t::WIFI_ERR_FAILURE;
-    case ESP_ERR_WIFI_WOULD_BLOCK:
-      return hf_wifi_err_t::WIFI_ERR_FAILURE;
-    case ESP_ERR_WIFI_NOT_CONNECT:
-      return hf_wifi_err_t::WIFI_ERR_NOT_CONNECTED;
-    default:
-      return hf_wifi_err_t::WIFI_ERR_FAILURE;
+  case ESP_OK:
+    return hf_wifi_err_t::WIFI_SUCCESS;
+  case ESP_ERR_INVALID_ARG:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_INVALID_STATE:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_NO_MEM:
+    return hf_wifi_err_t::WIFI_ERR_NO_MEMORY;
+  case ESP_ERR_TIMEOUT:
+    return hf_wifi_err_t::WIFI_ERR_TIMEOUT;
+  case ESP_ERR_NOT_FOUND:
+    return hf_wifi_err_t::WIFI_ERR_FAILURE;
+  case ESP_ERR_NOT_SUPPORTED:
+    return hf_wifi_err_t::WIFI_ERR_FAILURE;
+  case ESP_ERR_WIFI_BASE:
+    return hf_wifi_err_t::WIFI_ERR_FAILURE;
+  case ESP_ERR_WIFI_NOT_INIT:
+    return hf_wifi_err_t::WIFI_ERR_INIT_FAILED;
+  case ESP_ERR_WIFI_NOT_STARTED:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_WIFI_NOT_STOPPED:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_WIFI_IF:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_WIFI_MODE:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_WIFI_STATE:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_WIFI_CONN:
+    return hf_wifi_err_t::WIFI_ERR_CONNECTION_FAILED;
+  case ESP_ERR_WIFI_NVS:
+    return hf_wifi_err_t::WIFI_ERR_FAILURE;
+  case ESP_ERR_WIFI_MAC:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_WIFI_SSID:
+    return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
+  case ESP_ERR_WIFI_PASSWORD:
+    return hf_wifi_err_t::WIFI_ERR_AUTHENTICATION_FAILED;
+  case ESP_ERR_WIFI_TIMEOUT:
+    return hf_wifi_err_t::WIFI_ERR_TIMEOUT;
+  case ESP_ERR_WIFI_WAKE_FAIL:
+    return hf_wifi_err_t::WIFI_ERR_FAILURE;
+  case ESP_ERR_WIFI_WOULD_BLOCK:
+    return hf_wifi_err_t::WIFI_ERR_FAILURE;
+  case ESP_ERR_WIFI_NOT_CONNECT:
+    return hf_wifi_err_t::WIFI_ERR_NOT_CONNECTED;
+  default:
+    return hf_wifi_err_t::WIFI_ERR_FAILURE;
   }
 }
 
@@ -1133,62 +1135,62 @@ int8_t EspWifi::GetRssi() const {
 
 void EspWifi::handleWifiEvent(int32_t event_id, void* event_data) {
   ESP_LOGI(TAG, "WiFi event received: %d", event_id);
-  
+
   switch (event_id) {
-    case WIFI_EVENT_STA_START:
-      ESP_LOGI(TAG, "WiFi station started");
-      m_state = hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED;
-      break;
-      
-    case WIFI_EVENT_STA_STOP:
-      ESP_LOGI(TAG, "WiFi station stopped");
-      m_state = hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED;
-      m_connected = false;
-      break;
-      
-    case WIFI_EVENT_STA_CONNECTED:
-      ESP_LOGI(TAG, "WiFi station connected to AP");
-      m_state = hf_wifi_state_t::HF_WIFI_STATE_CONNECTED;
-      m_connected = true;
-      break;
-      
-    case WIFI_EVENT_STA_DISCONNECTED:
-      ESP_LOGI(TAG, "WiFi station disconnected from AP");
-      m_state = hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED;
-      m_connected = false;
-      break;
-      
-    case WIFI_EVENT_AP_START:
-      ESP_LOGI(TAG, "WiFi Access Point started");
-      m_ap_active = true;
-      break;
-      
-    case WIFI_EVENT_AP_STOP:
-      ESP_LOGI(TAG, "WiFi Access Point stopped");
-      m_ap_active = false;
-      break;
-      
-    case WIFI_EVENT_AP_STACONNECTED:
-      ESP_LOGI(TAG, "Station connected to our AP");
-      break;
-      
-    case WIFI_EVENT_AP_STADISCONNECTED:
-      ESP_LOGI(TAG, "Station disconnected from our AP");
-      break;
-      
-    case WIFI_EVENT_SCAN_DONE:
-      ESP_LOGI(TAG, "WiFi scan completed");
-      m_scanning = false;
-      break;
-      
-    case WIFI_EVENT_AP_PROBEREQRECVED:
-      // Probe request received - this is normal for AP mode
-      ESP_LOGD(TAG, "Probe request received");
-      break;
-      
-    default:
-      ESP_LOGW(TAG, "Unhandled WiFi event: %d", event_id);
-      break;
+  case WIFI_EVENT_STA_START:
+    ESP_LOGI(TAG, "WiFi station started");
+    m_state = hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED;
+    break;
+
+  case WIFI_EVENT_STA_STOP:
+    ESP_LOGI(TAG, "WiFi station stopped");
+    m_state = hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED;
+    m_connected = false;
+    break;
+
+  case WIFI_EVENT_STA_CONNECTED:
+    ESP_LOGI(TAG, "WiFi station connected to AP");
+    m_state = hf_wifi_state_t::HF_WIFI_STATE_CONNECTED;
+    m_connected = true;
+    break;
+
+  case WIFI_EVENT_STA_DISCONNECTED:
+    ESP_LOGI(TAG, "WiFi station disconnected from AP");
+    m_state = hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED;
+    m_connected = false;
+    break;
+
+  case WIFI_EVENT_AP_START:
+    ESP_LOGI(TAG, "WiFi Access Point started");
+    m_ap_active = true;
+    break;
+
+  case WIFI_EVENT_AP_STOP:
+    ESP_LOGI(TAG, "WiFi Access Point stopped");
+    m_ap_active = false;
+    break;
+
+  case WIFI_EVENT_AP_STACONNECTED:
+    ESP_LOGI(TAG, "Station connected to our AP");
+    break;
+
+  case WIFI_EVENT_AP_STADISCONNECTED:
+    ESP_LOGI(TAG, "Station disconnected from our AP");
+    break;
+
+  case WIFI_EVENT_SCAN_DONE:
+    ESP_LOGI(TAG, "WiFi scan completed");
+    m_scanning = false;
+    break;
+
+  case WIFI_EVENT_AP_PROBEREQRECVED:
+    // Probe request received - this is normal for AP mode
+    ESP_LOGD(TAG, "Probe request received");
+    break;
+
+  default:
+    ESP_LOGW(TAG, "Unhandled WiFi event: %d", event_id);
+    break;
   }
 
   // Notify user callback if registered
@@ -1199,23 +1201,23 @@ void EspWifi::handleWifiEvent(int32_t event_id, void* event_data) {
 
 void EspWifi::handleIpEvent(int32_t event_id, void* event_data) {
   ESP_LOGI(TAG, "IP event received: %d", event_id);
-  
+
   switch (event_id) {
-    case IP_EVENT_STA_GOT_IP:
-      ESP_LOGI(TAG, "Station got IP address");
-      m_state = hf_wifi_state_t::HF_WIFI_STATE_CONNECTED;
-      m_connected = true;
-      break;
-      
-    case IP_EVENT_STA_LOST_IP:
-      ESP_LOGI(TAG, "Station lost IP address");
-      m_state = hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED;
-      m_connected = false;
-      break;
-      
-    default:
-      ESP_LOGW(TAG, "Unhandled IP event: %d", event_id);
-      break;
+  case IP_EVENT_STA_GOT_IP:
+    ESP_LOGI(TAG, "Station got IP address");
+    m_state = hf_wifi_state_t::HF_WIFI_STATE_CONNECTED;
+    m_connected = true;
+    break;
+
+  case IP_EVENT_STA_LOST_IP:
+    ESP_LOGI(TAG, "Station lost IP address");
+    m_state = hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED;
+    m_connected = false;
+    break;
+
+  default:
+    ESP_LOGW(TAG, "Unhandled IP event: %d", event_id);
+    break;
   }
 
   // Notify user callback if registered
@@ -1226,12 +1228,12 @@ void EspWifi::handleIpEvent(int32_t event_id, void* event_data) {
 
 void EspWifi::handleSmartconfigEvent(int32_t event_id, void* event_data) {
   switch (event_id) {
-    case SC_EVENT_GOT_SSID_PSWD:
-      m_state = hf_wifi_state_t::HF_WIFI_STATE_CONNECTED;
-      break;
-    case SC_EVENT_SEND_ACK_DONE:
-      m_state = hf_wifi_state_t::HF_WIFI_STATE_CONNECTED;
-      break;
+  case SC_EVENT_GOT_SSID_PSWD:
+    m_state = hf_wifi_state_t::HF_WIFI_STATE_CONNECTED;
+    break;
+  case SC_EVENT_SEND_ACK_DONE:
+    m_state = hf_wifi_state_t::HF_WIFI_STATE_CONNECTED;
+    break;
   }
 
   if (m_event_callback) {
@@ -1241,72 +1243,72 @@ void EspWifi::handleSmartconfigEvent(int32_t event_id, void* event_data) {
 
 hf_wifi_mode_t EspWifi::ConvertFromEspMode(wifi_mode_t mode) const {
   switch (mode) {
-    case WIFI_MODE_NULL:
-      return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
-    case WIFI_MODE_STA:
-      return hf_wifi_mode_t::HF_WIFI_MODE_STATION;
-    case WIFI_MODE_AP:
-      return hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT;
-    case WIFI_MODE_APSTA:
-      return hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP;
-    default:
-      return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
+  case WIFI_MODE_NULL:
+    return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
+  case WIFI_MODE_STA:
+    return hf_wifi_mode_t::HF_WIFI_MODE_STATION;
+  case WIFI_MODE_AP:
+    return hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT;
+  case WIFI_MODE_APSTA:
+    return hf_wifi_mode_t::HF_WIFI_MODE_STATION_AP;
+  default:
+    return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
   }
 }
 
 wifi_auth_mode_t EspWifi::ConvertToEspAuthMode(hf_wifi_security_t security) const {
   switch (security) {
-    case hf_wifi_security_t::HF_WIFI_SECURITY_OPEN:
-      return WIFI_AUTH_OPEN;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WEP:
-      return WIFI_AUTH_WEP;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK:
-      return WIFI_AUTH_WPA_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK:
-      return WIFI_AUTH_WPA2_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK:
-      return WIFI_AUTH_WPA_WPA2_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE:
-      return WIFI_AUTH_WPA2_ENTERPRISE;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK:
-      return WIFI_AUTH_WPA3_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK:
-      return WIFI_AUTH_WPA2_WPA3_PSK;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE:
-      return WIFI_AUTH_WPA3_ENTERPRISE;
-    case hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK:
-      return WIFI_AUTH_WAPI_PSK;
-    default:
-      ESP_LOGW(TAG, "Unknown security type: %d, defaulting to OPEN", static_cast<int>(security));
-      return WIFI_AUTH_OPEN;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_OPEN:
+    return WIFI_AUTH_OPEN;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WEP:
+    return WIFI_AUTH_WEP;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK:
+    return WIFI_AUTH_WPA_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK:
+    return WIFI_AUTH_WPA2_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK:
+    return WIFI_AUTH_WPA_WPA2_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE:
+    return WIFI_AUTH_WPA2_ENTERPRISE;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK:
+    return WIFI_AUTH_WPA3_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK:
+    return WIFI_AUTH_WPA2_WPA3_PSK;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE:
+    return WIFI_AUTH_WPA3_ENTERPRISE;
+  case hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK:
+    return WIFI_AUTH_WAPI_PSK;
+  default:
+    ESP_LOGW(TAG, "Unknown security type: %d, defaulting to OPEN", static_cast<int>(security));
+    return WIFI_AUTH_OPEN;
   }
 }
 
 hf_wifi_security_t EspWifi::ConvertFromEspAuthMode(wifi_auth_mode_t auth_mode) const {
   switch (auth_mode) {
-    case WIFI_AUTH_OPEN:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
-    case WIFI_AUTH_WEP:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WEP;
-    case WIFI_AUTH_WPA_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK;
-    case WIFI_AUTH_WPA2_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK;
-    case WIFI_AUTH_WPA_WPA2_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK;
-    case WIFI_AUTH_WPA2_ENTERPRISE:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE;
-    case WIFI_AUTH_WPA3_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK;
-    case WIFI_AUTH_WPA2_WPA3_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK;
-    case WIFI_AUTH_WPA3_ENTERPRISE:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE;
-    case WIFI_AUTH_WAPI_PSK:
-      return hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK;
-    default:
-      ESP_LOGW(TAG, "Unknown auth mode: %d, defaulting to OPEN", auth_mode);
-      return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
+  case WIFI_AUTH_OPEN:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
+  case WIFI_AUTH_WEP:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WEP;
+  case WIFI_AUTH_WPA_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_PSK;
+  case WIFI_AUTH_WPA2_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK;
+  case WIFI_AUTH_WPA_WPA2_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA_WPA2_PSK;
+  case WIFI_AUTH_WPA2_ENTERPRISE:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_ENTERPRISE;
+  case WIFI_AUTH_WPA3_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_PSK;
+  case WIFI_AUTH_WPA2_WPA3_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_WPA3_PSK;
+  case WIFI_AUTH_WPA3_ENTERPRISE:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WPA3_ENTERPRISE;
+  case WIFI_AUTH_WAPI_PSK:
+    return hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK;
+  default:
+    ESP_LOGW(TAG, "Unknown auth mode: %d, defaulting to OPEN", auth_mode);
+    return hf_wifi_security_t::HF_WIFI_SECURITY_OPEN;
   }
 }
 
@@ -1316,26 +1318,26 @@ hf_wifi_security_t EspWifi::ConvertFromEspAuthMode(wifi_auth_mode_t auth_mode) c
 
 hf_wifi_err_t EspWifi::GetAdvancedConfig(EspWifiAdvancedConfig& config) const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
-  
+
   config = m_advanced_config;
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::SetTxPower(uint8_t power) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
-  
+
   if (power > 20) {
     return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
   }
-  
+
   int8_t power_quarter_dbm = power * 4; // Convert to 0.25dBm units
   esp_err_t err = esp_wifi_set_max_tx_power(power_quarter_dbm);
   if (err == ESP_OK) {
@@ -1346,31 +1348,31 @@ hf_wifi_err_t EspWifi::SetTxPower(uint8_t power) {
 
 int8_t EspWifi::GetTxPower() const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return -1;
   }
-  
+
   return static_cast<int8_t>(m_advanced_config.tx_power);
 }
 
 hf_wifi_err_t EspWifi::SetBandwidth(wifi_bandwidth_t bandwidth) {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
   }
-  
+
   m_advanced_config.bandwidth = bandwidth;
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
 
 wifi_bandwidth_t EspWifi::GetBandwidth() const {
   RtosLockGuard<RtosMutex> lock(m_mutex);
-  
+
   if (!m_initialized) {
     return WIFI_BW_HT20;
   }
-  
+
   return m_advanced_config.bandwidth;
 }

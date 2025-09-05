@@ -36,22 +36,22 @@ using hf_timestamp_us_t = hf_u64_t;
  *          consistent error reporting and handling.
  */
 
-#define HF_TIMER_ERR_LIST(X)                                 \
-  /* Success codes */                                        \
-  X(TIMER_SUCCESS, 0, "Success")                             \
-  /* General errors */                                       \
-  X(TIMER_ERR_FAILURE, 1, "General failure")                 \
-  X(TIMER_ERR_NOT_INITIALIZED, 2, "Not initialized")         \
-  X(TIMER_ERR_ALREADY_INITIALIZED, 3, "Already initialized") \
-  X(TIMER_ERR_INVALID_PARAMETER, 4, "Invalid parameter")     \
-  X(TIMER_ERR_NULL_POINTER, 5, "Null pointer")               \
-  X(TIMER_ERR_OUT_OF_MEMORY, 6, "Out of memory")             \
-  /* Timer specific errors */                                \
-  X(TIMER_ERR_ALREADY_RUNNING, 7, "Timer already running")   \
-  X(TIMER_ERR_NOT_RUNNING, 8, "Timer not running")           \
-  X(TIMER_ERR_INVALID_PERIOD, 9, "Invalid period")           \
-  X(TIMER_ERR_RESOURCE_BUSY, 10, "Timer resource busy")      \
-  X(TIMER_ERR_HARDWARE_FAULT, 11, "Timer hardware fault")    \
+#define HF_TIMER_ERR_LIST(X)                                                                       \
+  /* Success codes */                                                                              \
+  X(TIMER_SUCCESS, 0, "Success")                                                                   \
+  /* General errors */                                                                             \
+  X(TIMER_ERR_FAILURE, 1, "General failure")                                                       \
+  X(TIMER_ERR_NOT_INITIALIZED, 2, "Not initialized")                                               \
+  X(TIMER_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                       \
+  X(TIMER_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                           \
+  X(TIMER_ERR_NULL_POINTER, 5, "Null pointer")                                                     \
+  X(TIMER_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                   \
+  /* Timer specific errors */                                                                      \
+  X(TIMER_ERR_ALREADY_RUNNING, 7, "Timer already running")                                         \
+  X(TIMER_ERR_NOT_RUNNING, 8, "Timer not running")                                                 \
+  X(TIMER_ERR_INVALID_PERIOD, 9, "Invalid period")                                                 \
+  X(TIMER_ERR_RESOURCE_BUSY, 10, "Timer resource busy")                                            \
+  X(TIMER_ERR_HARDWARE_FAULT, 11, "Timer hardware fault")                                          \
   X(TIMER_ERR_UNSUPPORTED_OPERATION, 12, "Unsupported operation")
 
 // Generate enum class from X-macro
@@ -64,13 +64,13 @@ enum class hf_timer_err_t : hf_i32_t {
 // Generate error description function
 constexpr const char* HfTimerErrToString(hf_timer_err_t err) noexcept {
   switch (err) {
-#define X(name, value, desc) \
-  case hf_timer_err_t::name: \
+#define X(name, value, desc)                                                                       \
+  case hf_timer_err_t::name:                                                                       \
     return desc;
     HF_TIMER_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

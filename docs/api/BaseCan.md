@@ -8,7 +8,8 @@
 
 **📋 Navigation**
 
-[← Previous: BaseUart](BaseUart.md) | [Back to API Index](README.md) | [Next: BaseWifi →](BaseWifi.md)
+[← Previous: BaseUart](BaseUart.md) | [Back to API Index](README.md) | [Next: BaseWifi
+→](BaseWifi.md)
 
 </div>
 
@@ -28,7 +29,10 @@
 
 ## 🎯 **Overview**
 
-The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as the unified interface for all Controller Area Network operations in the HardFOC system. It supports both classic CAN and CAN-FD protocols, message filtering, error handling, and works across different CAN controller implementations.
+The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as the
+unified interface for all Controller Area Network operations in the HardFOC system.
+It supports both classic CAN and CAN-FD protocols, message filtering, error
+handling, and works across different CAN controller implementations.
 
 ### ✨ **Key Features**
 
@@ -44,7 +48,9 @@ The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as 
 ### 📊 **Supported Hardware**
 
 | Implementation | Hardware Type | Protocol | Speed | Features |
+
 |----------------|---------------|----------|-------|----------|
+
 | `EspCan` | ESP32-C6 Internal | CAN 2.0A/B | Up to 1 Mbps | Built-in error handling, no CAN-FD |
 
 ---
@@ -55,25 +61,25 @@ The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as 
 classDiagram
     class BaseCan {
         <<abstract>>
-        +Initialize() hf_can_err_t
-        +Deinitialize() hf_can_err_t
-        +SendMessage(message, timeout) hf_can_err_t
-        +ReceiveMessage(message, timeout) hf_can_err_t
-        +SetReceiveCallback(callback) hf_can_err_t
-        +SetAcceptanceFilter(id, mask, extended) hf_can_err_t
-        +GetStatus(status) hf_can_err_t
-        +ResetStatistics() hf_can_err_t
-        +ResetDiagnostics() hf_can_err_t
+        +Initialize() hf*can*err*t
+        +Deinitialize() hf*can*err*t
+        +SendMessage(message, timeout) hf*can*err*t
+        +ReceiveMessage(message, timeout) hf*can*err*t
+        +SetReceiveCallback(callback) hf*can*err*t
+        +SetAcceptanceFilter(id, mask, extended) hf*can*err*t
+        +GetStatus(status) hf*can*err*t
+        +ResetStatistics() hf*can*err*t
+        +ResetDiagnostics() hf*can*err*t
     }
     
     class EspCan {
         +EspCan(config)
-        +GetControllerId() uint8_t
-        +SetBaudRate(baudrate) hf_can_err_t
+        +GetControllerId() uint8*t
+        +SetBaudRate(baudrate) hf*can*err*t
     }
     
     BaseCan <|-- EspCan
-```
+```text
 
 ---
 
@@ -84,93 +90,148 @@ The CAN system uses comprehensive error codes for robust error handling:
 ### ✅ **Success Codes**
 
 | Code | Value | Description |
+
 |------|-------|-------------|
-| `CAN_SUCCESS` | 0 | ✅ Operation completed successfully |
+
+| `CAN*SUCCESS` | 0 | ✅ Operation completed successfully |
 
 ### ❌ **General Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `CAN_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
-| `CAN_ERR_NOT_INITIALIZED` | 2 | ⚠️ CAN not initialized | Call Initialize() first |
-| `CAN_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ CAN already initialized | Check initialization state |
-| `CAN_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
-| `CAN_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
-| `CAN_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
+
+| `CAN*ERR*FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
+
+| `CAN*ERR*NOT*INITIALIZED` | 2 | ⚠️ CAN not initialized | Call Initialize() first |
+
+| `CAN*ERR*ALREADY*INITIALIZED` | 3 | ⚠️ CAN already initialized | Check initialization state |
+
+| `CAN*ERR*INVALID*PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
+
+| `CAN*ERR*NULL*POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
+
+| `CAN*ERR*OUT*OF*MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
 ### 🚌 **Bus Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `CAN_ERR_BUS_OFF` | 7 | 🚫 Bus off state | Restart CAN controller |
-| `CAN_ERR_BUS_ERROR` | 8 | ❌ Bus error | Check bus wiring and termination |
-| `CAN_ERR_BUS_BUSY` | 9 | 🔄 Bus busy | Wait for bus availability |
-| `CAN_ERR_BUS_NOT_AVAILABLE` | 10 | 🚫 Bus not available | Check bus configuration |
-| `CAN_ERR_BUS_RECOVERY_FAILED` | 11 | ❌ Bus recovery failed | Restart CAN controller |
-| `CAN_ERR_BUS_ARBITRATION_LOST` | 12 | 🔄 Bus arbitration lost | Normal in multi-node systems |
+
+| `CAN*ERR*BUS*OFF` | 7 | 🚫 Bus off state | Restart CAN controller |
+
+| `CAN*ERR*BUS*ERROR` | 8 | ❌ Bus error | Check bus wiring and termination |
+
+| `CAN*ERR*BUS*BUSY` | 9 | 🔄 Bus busy | Wait for bus availability |
+
+| `CAN*ERR*BUS*NOT*AVAILABLE` | 10 | 🚫 Bus not available | Check bus configuration |
+
+| `CAN*ERR*BUS*RECOVERY*FAILED` | 11 | ❌ Bus recovery failed | Restart CAN controller |
+
+| `CAN*ERR*BUS*ARBITRATION*LOST` | 12 | 🔄 Bus arbitration lost | Normal in multi-node systems |
 
 ### 📨 **Message Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `CAN_ERR_MESSAGE_TIMEOUT` | 13 | ⏰ Message timeout | Check bus load and timing |
-| `CAN_ERR_MESSAGE_LOST` | 14 | 📤 Message lost | Check buffer sizes |
-| `CAN_ERR_MESSAGE_INVALID` | 15 | ❌ Invalid message | Check message format |
-| `CAN_ERR_MESSAGE_TOO_LONG` | 16 | 📏 Message too long | Check DLC value |
-| `CAN_ERR_MESSAGE_INVALID_ID` | 17 | 🆔 Invalid message ID | Check ID range |
-| `CAN_ERR_MESSAGE_INVALID_DLC` | 18 | 📊 Invalid DLC | Check data length |
-| `CAN_ERR_QUEUE_FULL` | 19 | 📦 Queue full | Increase queue size or process faster |
-| `CAN_ERR_QUEUE_EMPTY` | 20 | 📭 Queue empty | Check message reception |
+
+| `CAN*ERR*MESSAGE*TIMEOUT` | 13 | ⏰ Message timeout | Check bus load and timing |
+
+| `CAN*ERR*MESSAGE*LOST` | 14 | 📤 Message lost | Check buffer sizes |
+
+| `CAN*ERR*MESSAGE*INVALID` | 15 | ❌ Invalid message | Check message format |
+
+| `CAN*ERR*MESSAGE*TOO*LONG` | 16 | 📏 Message too long | Check DLC value |
+
+| `CAN*ERR*MESSAGE*INVALID*ID` | 17 | 🆔 Invalid message ID | Check ID range |
+
+| `CAN*ERR*MESSAGE*INVALID*DLC` | 18 | 📊 Invalid DLC | Check data length |
+
+| `CAN*ERR*QUEUE*FULL` | 19 | 📦 Queue full | Increase queue size or process faster |
+
+| `CAN*ERR*QUEUE*EMPTY` | 20 | 📭 Queue empty | Check message reception |
 
 ### 📤 **Transmission Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `CAN_ERR_TX_FAILED` | 21 | ❌ Transmission failed | Check bus state and wiring |
-| `CAN_ERR_TX_ABORTED` | 22 | 🚫 Transmission aborted | Check bus errors |
-| `CAN_ERR_TX_ERROR_PASSIVE` | 23 | ⚠️ Transmit error passive | Check error counters |
-| `CAN_ERR_TX_ERROR_WARNING` | 24 | ⚠️ Transmit error warning | Monitor error counters |
+
+| `CAN*ERR*TX*FAILED` | 21 | ❌ Transmission failed | Check bus state and wiring |
+
+| `CAN*ERR*TX*ABORTED` | 22 | 🚫 Transmission aborted | Check bus errors |
+
+| `CAN*ERR*TX*ERROR*PASSIVE` | 23 | ⚠️ Transmit error passive | Check error counters |
+
+| `CAN*ERR*TX*ERROR*WARNING` | 24 | ⚠️ Transmit error warning | Monitor error counters |
 
 ### 📥 **Reception Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `CAN_ERR_RX_OVERRUN` | 25 | 📈 Receive overrun | Process messages faster |
-| `CAN_ERR_RX_ERROR_PASSIVE` | 26 | ⚠️ Receive error passive | Check error counters |
-| `CAN_ERR_RX_ERROR_WARNING` | 27 | ⚠️ Receive error warning | Monitor error counters |
-| `CAN_ERR_RX_FIFO_FULL` | 28 | 📦 Receive FIFO full | Process messages faster |
+
+| `CAN*ERR*RX*OVERRUN` | 25 | 📈 Receive overrun | Process messages faster |
+
+| `CAN*ERR*RX*ERROR*PASSIVE` | 26 | ⚠️ Receive error passive | Check error counters |
+
+| `CAN*ERR*RX*ERROR*WARNING` | 27 | ⚠️ Receive error warning | Monitor error counters |
+
+| `CAN*ERR*RX*FIFO*FULL` | 28 | 📦 Receive FIFO full | Process messages faster |
 
 ### 🌐 **Hardware Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `CAN_ERR_HARDWARE_FAULT` | 29 | 💥 Hardware fault | Check power and connections |
-| `CAN_ERR_COMMUNICATION_FAILURE` | 30 | 📡 Communication failure | Check interface connections |
-| `CAN_ERR_DEVICE_NOT_RESPONDING` | 31 | 🔇 Device not responding | Check device power and address |
-| `CAN_ERR_VOLTAGE_OUT_OF_RANGE` | 32 | ⚡ Voltage out of range | Check power supply |
-| `CAN_ERR_CLOCK_ERROR` | 33 | ⏰ Clock error | Check clock configuration |
-| `CAN_ERR_TRANSCEIVER_ERROR` | 34 | 🔌 Transceiver error | Check transceiver connections |
+
+| `CAN*ERR*HARDWARE*FAULT` | 29 | 💥 Hardware fault | Check power and connections |
+
+| `CAN*ERR*COMMUNICATION*FAILURE` | 30 | 📡 Communication failure | Check interface connections |
+
+| `CAN*ERR*DEVICE*NOT*RESPONDING` | 31 | 🔇 Device not responding | Check device power and address |
+
+| `CAN*ERR*VOLTAGE*OUT*OF*RANGE` | 32 | ⚡ Voltage out of range | Check power supply |
+
+| `CAN*ERR*CLOCK*ERROR` | 33 | ⏰ Clock error | Check clock configuration |
+
+| `CAN*ERR*TRANSCEIVER*ERROR` | 34 | 🔌 Transceiver error | Check transceiver connections |
 
 ### ⚙️ **Configuration Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `CAN_ERR_INVALID_CONFIGURATION` | 35 | ⚙️ Invalid configuration | Check configuration parameters |
-| `CAN_ERR_UNSUPPORTED_OPERATION` | 36 | 🚫 Unsupported operation | Check hardware capabilities |
-| `CAN_ERR_INVALID_BAUD_RATE` | 37 | 📊 Invalid baud rate | Use supported baud rate |
-| `CAN_ERR_INVALID_CONTROLLER_ID` | 38 | 🆔 Invalid controller ID | Use valid controller ID |
-| `CAN_ERR_FILTER_ERROR` | 39 | 🔍 Filter error | Check filter configuration |
-| `CAN_ERR_FILTER_FULL` | 40 | 📦 Filter table full | Reduce number of filters |
+
+| `CAN*ERR*INVALID*CONFIGURATION` | 35 | ⚙️ Invalid configuration | Check configuration parameters |
+
+| `CAN*ERR*UNSUPPORTED*OPERATION` | 36 | 🚫 Unsupported operation | Check hardware capabilities |
+
+| `CAN*ERR*INVALID*BAUD*RATE` | 37 | 📊 Invalid baud rate | Use supported baud rate |
+
+| `CAN*ERR*INVALID*CONTROLLER*ID` | 38 | 🆔 Invalid controller ID | Use valid controller ID |
+
+| `CAN*ERR*FILTER*ERROR` | 39 | 🔍 Filter error | Check filter configuration |
+
+| `CAN*ERR*FILTER*FULL` | 40 | 📦 Filter table full | Reduce number of filters |
 
 ### 🔧 **Protocol Error Codes**
 
 | Code | Value | Description | Resolution |
+
 |------|-------|-------------|------------|
-| `CAN_ERR_STUFF_ERROR` | 41 | 🔧 Bit stuffing error | Check bus quality |
-| `CAN_ERR_FORM_ERROR` | 42 | 📋 Frame format error | Check message format |
-| `CAN_ERR_CRC_ERROR` | 43 | 🔢 CRC error | Check bus integrity |
-| `CAN_ERR_ACK_ERROR` | 44 | ✅ Acknowledgment error | Check bus termination |
-| `CAN_ERR_BIT_ERROR` | 45 | 🔌 Bit error | Check bus quality |
+
+| `CAN*ERR*STUFF*ERROR` | 41 | 🔧 Bit stuffing error | Check bus quality |
+
+| `CAN*ERR*FORM*ERROR` | 42 | 📋 Frame format error | Check message format |
+
+| `CAN*ERR*CRC*ERROR` | 43 | 🔢 CRC error | Check bus integrity |
+
+| `CAN*ERR*ACK*ERROR` | 44 | ✅ Acknowledgment error | Check bus termination |
+
+| `CAN*ERR*BIT*ERROR` | 45 | 🔌 Bit error | Check bus quality |
 
 ---
 
@@ -181,26 +242,26 @@ The CAN system uses comprehensive error codes for robust error handling:
 ```cpp
 /**
  * @brief Initialize the CAN controller
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 📝 Sets up CAN hardware, configures pins, and prepares for communication.
  * Must be called before any CAN operations.
  * 
  * @example
  * EspCan can(config);
- * if (can.Initialize() == hf_can_err_t::CAN_SUCCESS) {
+ * if (can.Initialize() == hf*can*err*t::CAN*SUCCESS) {
  *     // CAN ready for use
  * }
  */
-virtual hf_can_err_t Initialize() noexcept = 0;
+virtual hf*can*err*t Initialize() noexcept = 0;
 
 /**
  * @brief Deinitialize the CAN controller
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 🧹 Cleanly shuts down CAN hardware and releases resources.
  */
-virtual hf_can_err_t Deinitialize() noexcept = 0;
+virtual hf*can*err*t Deinitialize() noexcept = 0;
 
 /**
  * @brief Check if CAN is initialized
@@ -225,7 +286,7 @@ bool EnsureInitialized() noexcept;
  * 🔄 Automatically deinitializes CAN if currently initialized.
  */
 bool EnsureDeinitialized() noexcept;
-```
+```text
 
 ### 📨 **Message Transmission**
 
@@ -233,46 +294,47 @@ bool EnsureDeinitialized() noexcept;
 /**
  * @brief Send a CAN message
  * @param message CAN message to send
- * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
- * @return hf_can_err_t error code
+ * @param timeout*ms Timeout in milliseconds (0 = non-blocking)
+ * @return hf*can*err*t error code
  * 
  * 📤 Transmits a CAN message with optional timeout.
  * Supports both classic CAN and CAN-FD messages.
  * 
  * @example
- * hf_can_message_t msg;
+ * hf*can*message*t msg;
  * msg.id = 0x123;
  * msg.dlc = 8;
  * msg.data[0] = 0x01;
  * msg.data[1] = 0x02;
  * // ... set other data bytes
  * 
- * hf_can_err_t result = can.SendMessage(msg, 1000);
- * if (result != hf_can_err_t::CAN_SUCCESS) {
+ * hf*can*err*t result = can.SendMessage(msg, 1000);
+ * if (result != hf*can*err*t::CAN*SUCCESS) {
  *     printf("Send failed: %s\n", HfCanErrToString(result));
  * }
  */
-virtual hf_can_err_t SendMessage(const hf_can_message_t &message, uint32_t timeout_ms = 1000) noexcept = 0;
+virtual hf*can*err*t SendMessage(const hf*can*message*t &message, uint32*t timeout*ms = 1000)
+noexcept = 0;
 
 /**
  * @brief Send multiple messages in batch
  * @param messages Array of messages to send
  * @param count Number of messages
- * @param timeout_ms Timeout in milliseconds
+ * @param timeout*ms Timeout in milliseconds
  * @return Number of messages successfully sent
  * 
  * 📦 Transmits multiple messages efficiently.
  * Returns the number of messages actually sent.
  * 
  * @example
- * hf_can_message_t messages[3];
+ * hf*can*message*t messages[3];
  * // ... populate messages
- * uint32_t sent = can.SendMessageBatch(messages, 3, 1000);
+ * uint32*t sent = can.SendMessageBatch(messages, 3, 1000);
  * printf("Sent %u of 3 messages\n", sent);
  */
-virtual uint32_t SendMessageBatch(const hf_can_message_t *messages, uint32_t count,
-                                uint32_t timeout_ms = 1000) noexcept;
-```
+virtual uint32*t SendMessageBatch(const hf*can*message*t *messages, uint32*t count,
+                                uint32*t timeout*ms = 1000) noexcept;
+```text
 
 ### 📥 **Message Reception**
 
@@ -280,43 +342,44 @@ virtual uint32_t SendMessageBatch(const hf_can_message_t *messages, uint32_t cou
 /**
  * @brief Receive a CAN message
  * @param message Reference to store received message
- * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
- * @return hf_can_err_t error code
+ * @param timeout*ms Timeout in milliseconds (0 = non-blocking)
+ * @return hf*can*err*t error code
  * 
  * 📥 Receives a CAN message with optional timeout.
- * Returns CAN_ERR_QUEUE_EMPTY if no message available.
+ * Returns CAN*ERR*QUEUE*EMPTY if no message available.
  * 
  * @example
- * hf_can_message_t received_msg;
- * hf_can_err_t result = can.ReceiveMessage(received_msg, 100);
- * if (result == hf_can_err_t::CAN_SUCCESS) {
- *     printf("Received ID: 0x%03X, Data: ", received_msg.id);
- *     for (int i = 0; i < received_msg.dlc; i++) {
- *         printf("%02X ", received_msg.data[i]);
+ * hf*can*message*t received*msg;
+ * hf*can*err*t result = can.ReceiveMessage(received*msg, 100);
+ * if (result == hf*can*err*t::CAN*SUCCESS) {
+ *     printf("Received ID: 0x%03X, Data: ", received*msg.id);
+ *     for (int i = 0; i < received*msg.dlc; i++) {
+ *         printf("%02X ", received*msg.data[i]);
  *     }
  *     printf("\n");
  * }
  */
-virtual hf_can_err_t ReceiveMessage(hf_can_message_t &message, uint32_t timeout_ms = 0) noexcept = 0;
+virtual hf*can*err*t ReceiveMessage(hf*can*message*t &message, uint32*t timeout*ms = 0) noexcept =
+0;
 
 /**
  * @brief Receive multiple messages in batch
  * @param messages Array to store received messages
- * @param max_count Maximum number of messages to receive
- * @param timeout_ms Timeout in milliseconds
+ * @param max*count Maximum number of messages to receive
+ * @param timeout*ms Timeout in milliseconds
  * @return Number of messages received
  * 
  * 📦 Receives multiple messages efficiently.
  * Returns the number of messages actually received.
  * 
  * @example
- * hf_can_message_t messages[10];
- * uint32_t received = can.ReceiveMessageBatch(messages, 10, 100);
+ * hf*can*message*t messages[10];
+ * uint32*t received = can.ReceiveMessageBatch(messages, 10, 100);
  * printf("Received %u messages\n", received);
  */
-virtual uint32_t ReceiveMessageBatch(hf_can_message_t *messages, uint32_t max_count,
-                                   uint32_t timeout_ms = 100) noexcept;
-```
+virtual uint32*t ReceiveMessageBatch(hf*can*message*t *messages, uint32*t max*count,
+                                   uint32*t timeout*ms = 100) noexcept;
+```text
 
 ### 🔍 **Message Filtering**
 
@@ -326,7 +389,7 @@ virtual uint32_t ReceiveMessageBatch(hf_can_message_t *messages, uint32_t max_co
  * @param id Filter ID
  * @param mask Filter mask
  * @param extended Extended frame flag
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 🔍 Configures hardware-based message filtering.
  * Only messages matching the filter will be received.
@@ -338,17 +401,18 @@ virtual uint32_t ReceiveMessageBatch(hf_can_message_t *messages, uint32_t max_co
  * // Accept only extended frame with ID 0x18FF0000
  * can.SetAcceptanceFilter(0x18FF0000, 0x1FFFFFFF, true);
  */
-virtual hf_can_err_t SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extended = false) noexcept = 0;
+virtual hf*can*err*t SetAcceptanceFilter(uint32*t id, uint32*t mask, bool extended = false) noexcept
+= 0;
 
 /**
  * @brief Clear acceptance filter
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 🔄 Removes all acceptance filters.
  * All messages will be received.
  */
-virtual hf_can_err_t ClearAcceptanceFilter() noexcept;
-```
+virtual hf*can*err*t ClearAcceptanceFilter() noexcept;
+```text
 
 ### 📞 **Callback Management**
 
@@ -356,19 +420,19 @@ virtual hf_can_err_t ClearAcceptanceFilter() noexcept;
 /**
  * @brief Set receive callback function
  * @param callback Callback function
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 📞 Sets callback function for asynchronous message reception.
  * Callback is invoked when messages are received.
  * 
  * @example
- * void on_can_message(const hf_can_message_t &msg) {
+ * void on*can*message(const hf*can*message*t &msg) {
  *     printf("Async received ID: 0x%03X\n", msg.id);
  * }
  * 
- * can.SetReceiveCallback(on_can_message);
+ * can.SetReceiveCallback(on*can*message);
  */
-virtual hf_can_err_t SetReceiveCallback(hf_can_receive_callback_t callback) noexcept = 0;
+virtual hf*can*err*t SetReceiveCallback(hf*can*receive*callback*t callback) noexcept = 0;
 
 /**
  * @brief Clear receive callback
@@ -380,14 +444,14 @@ virtual void ClearReceiveCallback() noexcept;
 /**
  * @brief Set CAN-FD receive callback
  * @param callback CAN-FD callback function
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 📞 Sets callback for CAN-FD messages with enhanced information.
  * Only available if CAN-FD is supported by the hardware.
  * ESP32-C6 TWAI controller does not support CAN-FD.
  */
-virtual hf_can_err_t SetReceiveCallbackFD(hf_can_fd_receive_callback_t callback) noexcept;
-```
+virtual hf*can*err*t SetReceiveCallbackFD(hf*can*fd*receive*callback*t callback) noexcept;
+```text
 
 ### 🎛️ **Configuration and Status**
 
@@ -404,71 +468,71 @@ virtual bool SupportsCanFD() const noexcept;
 /**
  * @brief Enable/disable CAN-FD mode
  * @param enable Enable CAN-FD mode
- * @param data_baudrate Data phase baudrate (for CAN-FD)
+ * @param data*baudrate Data phase baudrate (for CAN-FD)
  * @return true if successful, false otherwise
  * 
  * 🚀 Configures CAN-FD mode if supported.
  * ESP32-C6 TWAI controller does not support CAN-FD - returns false.
  * Requires re-initialization to take effect.
  */
-virtual bool SetCanFDMode(bool enable, uint32_t data_baudrate = 2000000,
-                         uint32_t timeout_ms = 1000) noexcept;
+virtual bool SetCanFDMode(bool enable, uint32*t data*baudrate = 2000000,
+                         uint32*t timeout*ms = 1000) noexcept;
 
 /**
  * @brief Get CAN bus status
  * @param status Reference to store status information
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 📊 Retrieves comprehensive CAN bus status information.
  * 
  * @example
- * hf_can_status_t status;
- * if (can.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
+ * hf*can*status*t status;
+ * if (can.GetStatus(status) == hf*can*err*t::CAN*SUCCESS) {
  *     printf("TX errors: %u, RX errors: %u\n", 
- *            status.tx_error_count, status.rx_error_count);
- *     printf("Bus off: %s\n", status.bus_off ? "Yes" : "No");
+ *            status.tx*error*count, status.rx*error*count);
+ *     printf("Bus off: %s\n", status.bus*off ? "Yes" : "No");
  * }
  */
-virtual hf_can_err_t GetStatus(hf_can_status_t &status) const noexcept = 0;
-```
+virtual hf*can*err*t GetStatus(hf*can*status*t &status) const noexcept = 0;
+```text
 
 ### 📈 **Statistics and Diagnostics**
 
 ```cpp
 /**
  * @brief Reset CAN operation statistics
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 🔄 Clears all accumulated statistics counters.
  */
-virtual hf_can_err_t ResetStatistics() noexcept;
+virtual hf*can*err*t ResetStatistics() noexcept;
 
 /**
  * @brief Reset CAN diagnostic information
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 🔄 Clears diagnostic information and error counters.
  */
-virtual hf_can_err_t ResetDiagnostics() noexcept;
+virtual hf*can*err*t ResetDiagnostics() noexcept;
 
 /**
  * @brief Get CAN operation statistics
  * @param statistics Reference to store statistics data
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 📊 Retrieves comprehensive statistics about CAN operations.
  */
-virtual hf_can_err_t GetStatistics(hf_can_statistics_t &statistics) const noexcept;
+virtual hf*can*err*t GetStatistics(hf*can*statistics*t &statistics) const noexcept;
 
 /**
  * @brief Get CAN diagnostic information
  * @param diagnostics Reference to store diagnostics data
- * @return hf_can_err_t error code
+ * @return hf*can*err*t error code
  * 
  * 🔍 Retrieves diagnostic information about CAN health and status.
  */
-virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) const noexcept;
-```
+virtual hf*can*err*t GetDiagnostics(hf*can*diagnostics*t &diagnostics) const noexcept;
+```text
 
 ---
 
@@ -477,37 +541,37 @@ virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) const noe
 ### 📨 **CAN Message Structure**
 
 ```cpp
-struct hf_can_message_t {
+struct hf*can*message*t {
     // === Core CAN Message Fields ===
-    uint32_t id;     ///< Message ID (11 or 29-bit)
-    uint8_t dlc;     ///< Data length code (0-8 for classic CAN)
-    uint8_t data[8]; ///< Message data (max 8 bytes for classic CAN)
+    uint32*t id;     ///< Message ID (11 or 29-bit)
+    uint8*t dlc;     ///< Data length code (0-8 for classic CAN)
+    uint8*t data[8]; ///< Message data (max 8 bytes for classic CAN)
 
     // === Standard CAN Flags ===
-    bool is_extended;  ///< Extended ID flag (29-bit vs 11-bit)
-    bool is_rtr;       ///< Remote transmission request flag
-    bool is_ss;        ///< Single shot flag (no retransmission)
-    bool is_self;      ///< Self reception request flag
-    bool dlc_non_comp; ///< DLC is non-compliant (> 8 for classic CAN)
+    bool is*extended;  ///< Extended ID flag (29-bit vs 11-bit)
+    bool is*rtr;       ///< Remote transmission request flag
+    bool is*ss;        ///< Single shot flag (no retransmission)
+    bool is*self;      ///< Self reception request flag
+    bool dlc*non*comp; ///< DLC is non-compliant (> 8 for classic CAN)
 
     // === Metadata and Diagnostics ===
-    uint64_t timestamp_us;    ///< Precise timestamp in microseconds
-    uint32_t sequence_number; ///< Message sequence number
-    uint8_t controller_id;    ///< Originating controller ID
-    uint8_t retry_count;      ///< Number of transmission retries
-    uint8_t error_count;      ///< Associated error count
+    uint64*t timestamp*us;    ///< Precise timestamp in microseconds
+    uint32*t sequence*number; ///< Message sequence number
+    uint8*t controller*id;    ///< Originating controller ID
+    uint8*t retry*count;      ///< Number of transmission retries
+    uint8*t error*count;      ///< Associated error count
 
     // === CAN-FD Extended Fields ===
-    bool is_canfd;       ///< CAN-FD frame flag
-    bool is_brs;         ///< Bit Rate Switching flag (CAN-FD)
-    bool is_esi;         ///< Error State Indicator flag (CAN-FD)
-    uint8_t canfd_dlc;   ///< CAN-FD DLC (can be > 8)
+    bool is*canfd;       ///< CAN-FD frame flag
+    bool is*brs;         ///< Bit Rate Switching flag (CAN-FD)
+    bool is*esi;         ///< Error State Indicator flag (CAN-FD)
+    uint8*t canfd*dlc;   ///< CAN-FD DLC (can be > 8)
 
     // === Helper Methods ===
-    uint8_t GetMaxDataLength() const noexcept;  ///< Get max data length for frame type
-    bool IsValidDLC(uint8_t dlc) const noexcept;  ///< Validate DLC for frame type
-    uint8_t GetEffectiveDLC() const noexcept;  ///< Get effective DLC value
-    bool SetDLC(uint8_t dlc) noexcept;  ///< Set DLC for current frame type
+    uint8*t GetMaxDataLength() const noexcept;  ///< Get max data length for frame type
+    bool IsValidDLC(uint8*t dlc) const noexcept;  ///< Validate DLC for frame type
+    uint8*t GetEffectiveDLC() const noexcept;  ///< Get effective DLC value
+    bool SetDLC(uint8*t dlc) noexcept;  ///< Set DLC for current frame type
     void SetStandardFrame() noexcept;  ///< Set standard frame format
     void SetExtendedFrame() noexcept;  ///< Set extended frame format
     void SetDataFrame() noexcept;  ///< Set data frame (not remote)
@@ -516,97 +580,97 @@ struct hf_can_message_t {
     void SetSelfReception() noexcept;  ///< Enable self reception
     bool IsValidId() const noexcept;  ///< Validate message ID
 };
-```
+```text
 
 ### ⚙️ **CAN Configuration Structure**
 
 ```cpp
-struct hf_can_config_t {
-    hf_pin_num_t tx_pin;     ///< CAN TX pin
-    hf_pin_num_t rx_pin;     ///< CAN RX pin
-    hf_baud_rate_t baudrate; ///< CAN baudrate (bps)
-    bool loopback_mode;      ///< Enable loopback mode for testing
-    bool silent_mode;        ///< Enable silent mode (listen-only)
-    uint16_t tx_queue_size;  ///< TX queue size (implementation-dependent)
-    uint16_t rx_queue_size;  ///< RX queue size (implementation-dependent)
+struct hf*can*config*t {
+    hf*pin*num*t tx*pin;     ///< CAN TX pin
+    hf*pin*num*t rx*pin;     ///< CAN RX pin
+    hf*baud*rate*t baudrate; ///< CAN baudrate (bps)
+    bool loopback*mode;      ///< Enable loopback mode for testing
+    bool silent*mode;        ///< Enable silent mode (listen-only)
+    uint16*t tx*queue*size;  ///< TX queue size (implementation-dependent)
+    uint16*t rx*queue*size;  ///< RX queue size (implementation-dependent)
 };
-```
+```text
 
 ### 📊 **CAN Status Structure**
 
 ```cpp
-struct hf_can_status_t {
-    uint32_t tx_error_count;  ///< Transmit error counter
-    uint32_t rx_error_count;  ///< Receive error counter
-    uint32_t tx_failed_count; ///< Failed transmission count
-    uint32_t rx_missed_count; ///< Missed reception count
-    bool bus_off;             ///< Bus-off state
-    bool error_warning;       ///< Error warning state
-    bool error_passive;       ///< Error passive state
+struct hf*can*status*t {
+    uint32*t tx*error*count;  ///< Transmit error counter
+    uint32*t rx*error*count;  ///< Receive error counter
+    uint32*t tx*failed*count; ///< Failed transmission count
+    uint32*t rx*missed*count; ///< Missed reception count
+    bool bus*off;             ///< Bus-off state
+    bool error*warning;       ///< Error warning state
+    bool error*passive;       ///< Error passive state
 
     // CAN-FD specific status
-    bool canfd_enabled;        ///< CAN-FD mode is active
-    bool canfd_brs_enabled;    ///< Bit Rate Switching is enabled
-    uint32_t nominal_baudrate; ///< Nominal bit rate (arbitration phase)
-    uint32_t data_baudrate;    ///< Data bit rate (data phase for CAN-FD)
-    uint32_t canfd_tx_count;   ///< Number of CAN-FD frames transmitted
-    uint32_t canfd_rx_count;   ///< Number of CAN-FD frames received
-    uint32_t brs_tx_count;     ///< Number of BRS frames transmitted
-    uint32_t brs_rx_count;     ///< Number of BRS frames received
-    uint32_t form_errors;      ///< CAN-FD form errors
-    uint32_t stuff_errors;     ///< Stuff errors
-    uint32_t crc_errors;       ///< CRC errors
-    uint32_t bit_errors;       ///< Bit errors
-    uint32_t ack_errors;       ///< Acknowledgment errors
+    bool canfd*enabled;        ///< CAN-FD mode is active
+    bool canfd*brs*enabled;    ///< Bit Rate Switching is enabled
+    uint32*t nominal*baudrate; ///< Nominal bit rate (arbitration phase)
+    uint32*t data*baudrate;    ///< Data bit rate (data phase for CAN-FD)
+    uint32*t canfd*tx*count;   ///< Number of CAN-FD frames transmitted
+    uint32*t canfd*rx*count;   ///< Number of CAN-FD frames received
+    uint32*t brs*tx*count;     ///< Number of BRS frames transmitted
+    uint32*t brs*rx*count;     ///< Number of BRS frames received
+    uint32*t form*errors;      ///< CAN-FD form errors
+    uint32*t stuff*errors;     ///< Stuff errors
+    uint32*t crc*errors;       ///< CRC errors
+    uint32*t bit*errors;       ///< Bit errors
+    uint32*t ack*errors;       ///< Acknowledgment errors
 };
-```
+```text
 
 ### 📈 **CAN Statistics Structure**
 
 ```cpp
-struct hf_can_statistics_t {
+struct hf*can*statistics*t {
     // Message counters
-    uint64_t messages_sent;          ///< Total messages successfully sent
-    uint64_t messages_received;      ///< Total messages successfully received
-    uint64_t bytes_transmitted;      ///< Total bytes transmitted
-    uint64_t bytes_received;         ///< Total bytes received
+    uint64*t messages*sent;          ///< Total messages successfully sent
+    uint64*t messages*received;      ///< Total messages successfully received
+    uint64*t bytes*transmitted;      ///< Total bytes transmitted
+    uint64*t bytes*received;         ///< Total bytes received
     
     // Error counters
-    uint32_t send_failures;          ///< Failed send operations
-    uint32_t receive_failures;       ///< Failed receive operations
-    uint32_t bus_error_count;        ///< Total bus errors
-    uint32_t arbitration_lost_count; ///< Arbitration lost events
-    uint32_t tx_failed_count;        ///< Transmission failures
-    uint32_t bus_off_events;         ///< Bus-off occurrences
-    uint32_t error_warning_events;   ///< Error warning events
+    uint32*t send*failures;          ///< Failed send operations
+    uint32*t receive*failures;       ///< Failed receive operations
+    uint32*t bus*error*count;        ///< Total bus errors
+    uint32*t arbitration*lost*count; ///< Arbitration lost events
+    uint32*t tx*failed*count;        ///< Transmission failures
+    uint32*t bus*off*events;         ///< Bus-off occurrences
+    uint32*t error*warning*events;   ///< Error warning events
     
     // Performance metrics
-    uint64_t uptime_seconds;         ///< Total uptime in seconds
-    uint32_t last_activity_timestamp;///< Last activity timestamp
-    hf_can_err_t last_error;         ///< Last error encountered
+    uint64*t uptime*seconds;         ///< Total uptime in seconds
+    uint32*t last*activity*timestamp;///< Last activity timestamp
+    hf*can*err*t last*error;         ///< Last error encountered
     
     // Queue statistics
-    uint32_t tx_queue_peak;          ///< Peak TX queue usage
-    uint32_t rx_queue_peak;          ///< Peak RX queue usage
-    uint32_t tx_queue_overflows;     ///< TX queue overflow count
-    uint32_t rx_queue_overflows;     ///< RX queue overflow count
+    uint32*t tx*queue*peak;          ///< Peak TX queue usage
+    uint32*t rx*queue*peak;          ///< Peak RX queue usage
+    uint32*t tx*queue*overflows;     ///< TX queue overflow count
+    uint32*t rx*queue*overflows;     ///< RX queue overflow count
 };
-```
+```text
 
 ### 🔍 **CAN Diagnostics Structure**
 
 ```cpp
-struct hf_can_diagnostics_t {
-    uint32_t tx_error_count;         ///< Transmit error counter
-    uint32_t rx_error_count;         ///< Receive error counter
-    uint32_t tx_queue_peak;          ///< Peak TX queue usage
-    uint32_t rx_queue_peak;          ///< Peak RX queue usage
-    uint32_t last_error_timestamp;   ///< Timestamp of last error
-    uint32_t controller_resets;      ///< Number of controller resets
-    uint32_t bus_load_percentage;    ///< Current bus load percentage
-    float bit_error_rate;            ///< Bit error rate (errors/bits)
+struct hf*can*diagnostics*t {
+    uint32*t tx*error*count;         ///< Transmit error counter
+    uint32*t rx*error*count;         ///< Receive error counter
+    uint32*t tx*queue*peak;          ///< Peak TX queue usage
+    uint32*t rx*queue*peak;          ///< Peak RX queue usage
+    uint32*t last*error*timestamp;   ///< Timestamp of last error
+    uint32*t controller*resets;      ///< Number of controller resets
+    uint32*t bus*load*percentage;    ///< Current bus load percentage
+    float bit*error*rate;            ///< Bit error rate (errors/bits)
 };
-```
+```text
 
 ---
 
@@ -618,31 +682,31 @@ struct hf_can_diagnostics_t {
 #include "mcu/esp32/EspCan.h"
 
 // Create CAN instance
-hf_can_config_t config = {
-    .tx_pin = 5,
-    .rx_pin = 4,
+hf*can*config*t config = {
+    .tx*pin = 5,
+    .rx*pin = 4,
     .baudrate = 500000,
-    .loopback_mode = false,
-    .silent_mode = false,
-    .tx_queue_size = 10,
-    .rx_queue_size = 10
+    .loopback*mode = false,
+    .silent*mode = false,
+    .tx*queue*size = 10,
+    .rx*queue*size = 10
 };
 
 EspCan can(config);
 
 void setup() {
     // Initialize CAN
-    if (can.Initialize() == hf_can_err_t::CAN_SUCCESS) {
+    if (can.Initialize() == hf*can*err*t::CAN*SUCCESS) {
         printf("✅ CAN initialized successfully\n");
     }
 }
 
-void send_status_message() {
-    hf_can_message_t msg;
+void send*status*message() {
+    hf*can*message*t msg;
     msg.id = 0x100;  // Status message ID
     msg.dlc = 8;     // 8 bytes of data
-    msg.is_extended = false;
-    msg.is_rtr = false;
+    msg.is*extended = false;
+    msg.is*rtr = false;
     
     // Pack status data
     msg.data[0] = 0x01;  // Status byte
@@ -654,14 +718,14 @@ void send_status_message() {
     msg.data[6] = 0x07;  // Error flags
     msg.data[7] = 0x08;  // Checksum
     
-    hf_can_err_t result = can.SendMessage(msg, 1000);
-    if (result != hf_can_err_t::CAN_SUCCESS) {
+    hf*can*err*t result = can.SendMessage(msg, 1000);
+    if (result != hf*can*err*t::CAN*SUCCESS) {
         printf("❌ Send failed: %s\n", HfCanErrToString(result));
     } else {
         printf("✅ Message sent successfully\n");
     }
 }
-```
+```text
 
 ### 📥 **Message Reception**
 
@@ -670,13 +734,13 @@ void send_status_message() {
 
 EspCan can(config);
 
-void receive_messages() {
-    hf_can_message_t msg;
+void receive*messages() {
+    hf*can*message*t msg;
     
     while (true) {
-        hf_can_err_t result = can.ReceiveMessage(msg, 100);
+        hf*can*err*t result = can.ReceiveMessage(msg, 100);
         
-        if (result == hf_can_err_t::CAN_SUCCESS) {
+        if (result == hf*can*err*t::CAN*SUCCESS) {
             printf("📥 Received ID: 0x%03X, DLC: %u, Data: ", msg.id, msg.dlc);
             for (int i = 0; i < msg.dlc; i++) {
                 printf("%02X ", msg.data[i]);
@@ -686,16 +750,16 @@ void receive_messages() {
             // Process message based on ID
             switch (msg.id) {
                 case 0x100:
-                    process_status_message(msg);
+                    process*status*message(msg);
                     break;
                 case 0x200:
-                    process_command_message(msg);
+                    process*command*message(msg);
                     break;
                 default:
                     printf("⚠️ Unknown message ID: 0x%03X\n", msg.id);
                     break;
             }
-        } else if (result == hf_can_err_t::CAN_ERR_QUEUE_EMPTY) {
+        } else if (result == hf*can*err*t::CAN*ERR*QUEUE*EMPTY) {
             // No message available, continue
             continue;
         } else {
@@ -704,18 +768,18 @@ void receive_messages() {
     }
 }
 
-void process_status_message(const hf_can_message_t &msg) {
+void process*status*message(const hf*can*message*t &msg) {
     if (msg.dlc >= 8) {
-        uint8_t status = msg.data[0];
-        uint8_t temperature = msg.data[1];
-        uint8_t voltage = msg.data[2];
-        uint8_t current = msg.data[3];
+        uint8*t status = msg.data[0];
+        uint8*t temperature = msg.data[1];
+        uint8*t voltage = msg.data[2];
+        uint8*t current = msg.data[3];
         
         printf("📊 Status - Temp: %u°C, V: %uV, I: %uA\n", 
                temperature, voltage, current);
     }
 }
-```
+```text
 
 ### 🔍 **Message Filtering**
 
@@ -724,7 +788,7 @@ void process_status_message(const hf_can_message_t &msg) {
 
 EspCan can(config);
 
-void setup_filtering() {
+void setup*filtering() {
     // Initialize CAN
     can.Initialize();
     
@@ -740,17 +804,17 @@ void setup_filtering() {
     printf("✅ Message filtering configured\n");
 }
 
-void receive_filtered_messages() {
-    hf_can_message_t msg;
+void receive*filtered*messages() {
+    hf*can*message*t msg;
     
     while (true) {
-        if (can.ReceiveMessage(msg, 100) == hf_can_err_t::CAN_SUCCESS) {
+        if (can.ReceiveMessage(msg, 100) == hf*can*err*t::CAN*SUCCESS) {
             // Only filtered messages will be received
             printf("📥 Filtered message ID: 0x%03X\n", msg.id);
         }
     }
 }
-```
+```text
 
 ### 📞 **Asynchronous Reception with Callbacks**
 
@@ -760,7 +824,7 @@ void receive_filtered_messages() {
 EspCan can(config);
 
 // Callback function for received messages
-void on_can_message(const hf_can_message_t &msg) {
+void on*can*message(const hf*can*message*t &msg) {
     printf("📞 Async received ID: 0x%03X\n", msg.id);
     
     // Process message in callback context
@@ -774,25 +838,25 @@ void on_can_message(const hf_can_message_t &msg) {
     }
 }
 
-void setup_async_reception() {
+void setup*async*reception() {
     // Initialize CAN
     can.Initialize();
     
     // Set receive callback
-    can.SetReceiveCallback(on_can_message);
+    can.SetReceiveCallback(on*can*message);
     
     printf("✅ Asynchronous reception enabled\n");
 }
 
-void main_loop() {
+void main*loop() {
     while (true) {
         // Main application logic
         // Messages will be handled automatically by callback
         
-        vTaskDelay(pdMS_TO_TICKS(100));
+        vTaskDelay(pdMS*TO*TICKS(100));
     }
 }
-```
+```text
 
 ### 🚌 **Motor Control System**
 
@@ -801,66 +865,66 @@ void main_loop() {
 
 class MotorController {
 private:
-    EspCan can_;
-    uint32_t motor_id_;
+    EspCan can*;
+    uint32*t motor*id*;
     
 public:
-    MotorController(const hf_can_config_t &config, uint32_t motor_id) 
-        : can_(config), motor_id_(motor_id) {}
+    MotorController(const hf*can*config*t &config, uint32*t motor*id) 
+        : can*(config), motor*id*(motor*id) {}
     
     bool initialize() {
-        return can_.Initialize() == hf_can_err_t::CAN_SUCCESS;
+        return can*.Initialize() == hf*can*err*t::CAN*SUCCESS;
     }
     
-    void set_speed(float speed_rpm) {
-        hf_can_message_t msg;
-        msg.id = 0x200 + motor_id_;  // Command message for this motor
+    void set*speed(float speed*rpm) {
+        hf*can*message*t msg;
+        msg.id = 0x200 + motor*id*;  // Command message for this motor
         msg.dlc = 4;
-        msg.is_extended = false;
-        msg.is_rtr = false;
+        msg.is*extended = false;
+        msg.is*rtr = false;
         
         // Pack speed command
-        uint16_t speed_raw = static_cast<uint16_t>(speed_rpm);
+        uint16*t speed*raw = static*cast<uint16*t>(speed*rpm);
         msg.data[0] = 0x01;  // Command type: set speed
-        msg.data[1] = speed_raw & 0xFF;
-        msg.data[2] = (speed_raw >> 8) & 0xFF;
-        msg.data[3] = calculate_checksum(msg.data, 3);
+        msg.data[1] = speed*raw & 0xFF;
+        msg.data[2] = (speed*raw >> 8) & 0xFF;
+        msg.data[3] = calculate*checksum(msg.data, 3);
         
-        hf_can_err_t result = can_.SendMessage(msg, 1000);
-        if (result != hf_can_err_t::CAN_SUCCESS) {
+        hf*can*err*t result = can*.SendMessage(msg, 1000);
+        if (result != hf*can*err*t::CAN*SUCCESS) {
             printf("❌ Speed command failed: %s\n", HfCanErrToString(result));
         }
     }
     
-    void request_status() {
-        hf_can_message_t msg;
-        msg.id = 0x100 + motor_id_;  // Status request for this motor
+    void request*status() {
+        hf*can*message*t msg;
+        msg.id = 0x100 + motor*id*;  // Status request for this motor
         msg.dlc = 0;
-        msg.is_extended = false;
-        msg.is_rtr = true;  // Remote frame
+        msg.is*extended = false;
+        msg.is*rtr = true;  // Remote frame
         
-        can_.SendMessage(msg, 1000);
+        can*.SendMessage(msg, 1000);
     }
     
-    void monitor_status() {
-        hf_can_status_t status;
-        if (can_.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
+    void monitor*status() {
+        hf*can*status*t status;
+        if (can*.GetStatus(status) == hf*can*err*t::CAN*SUCCESS) {
             printf("📊 CAN Status - TX errors: %u, RX errors: %u, Bus off: %s\n",
-                   status.tx_error_count, status.rx_error_count,
-                   status.bus_off ? "Yes" : "No");
+                   status.tx*error*count, status.rx*error*count,
+                   status.bus*off ? "Yes" : "No");
         }
     }
     
 private:
-    uint8_t calculate_checksum(const uint8_t *data, uint8_t length) {
-        uint8_t checksum = 0;
-        for (uint8_t i = 0; i < length; i++) {
+    uint8*t calculate*checksum(const uint8*t *data, uint8*t length) {
+        uint8*t checksum = 0;
+        for (uint8*t i = 0; i < length; i++) {
             checksum ^= data[i];
         }
         return checksum;
     }
 };
-```
+```text
 
 ---
 
@@ -870,7 +934,7 @@ private:
 
 ```cpp
 // ✅ Always check initialization
-if (can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
+if (can.Initialize() != hf*can*err*t::CAN*SUCCESS) {
     printf("❌ CAN initialization failed\n");
     return false;
 }
@@ -880,11 +944,11 @@ can.SendMessage(msg, 1000);  // 1 second timeout for critical messages
 can.ReceiveMessage(msg, 100);  // 100ms timeout for non-blocking receive
 
 // ✅ Handle all error codes
-hf_can_err_t result = can.SendMessage(msg, timeout);
-if (result != hf_can_err_t::CAN_SUCCESS) {
+hf*can*err*t result = can.SendMessage(msg, timeout);
+if (result != hf*can*err*t::CAN*SUCCESS) {
     printf("⚠️ Send error: %s\n", HfCanErrToString(result));
     // Handle specific error types
-    if (result == hf_can_err_t::CAN_ERR_BUS_OFF) {
+    if (result == hf*can*err*t::CAN*ERR*BUS*OFF) {
         // Bus off - restart controller
         can.Deinitialize();
         can.Initialize();
@@ -895,16 +959,16 @@ if (result != hf_can_err_t::CAN_SUCCESS) {
 can.SetAcceptanceFilter(0x100, 0x700, false);  // Only accept status messages
 
 // ✅ Monitor bus health
-hf_can_status_t status;
-if (can.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
-    if (status.bus_off) {
+hf*can*status*t status;
+if (can.GetStatus(status) == hf*can*err*t::CAN*SUCCESS) {
+    if (status.bus*off) {
         printf("🚨 Bus off detected!\n");
     }
-    if (status.tx_error_count > 100) {
-        printf("⚠️ High TX error count: %u\n", status.tx_error_count);
+    if (status.tx*error*count > 100) {
+        printf("⚠️ High TX error count: %u\n", status.tx*error*count);
     }
 }
-```
+```text
 
 ### ❌ **Common Pitfalls**
 
@@ -913,7 +977,7 @@ if (can.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
 can.SendMessage(msg);  // May fail silently
 
 // ❌ Don't use infinite timeouts in real-time systems
-can.ReceiveMessage(msg, UINT32_MAX);  // May block forever
+can.ReceiveMessage(msg, UINT32*MAX);  // May block forever
 
 // ❌ Don't ignore error codes
 can.SendMessage(msg);  // Error handling missing
@@ -926,35 +990,35 @@ can.SendMessage(msg);  // Error handling missing
 
 // ❌ Don't ignore bus-off state
 // Bus-off requires controller restart
-```
+```text
 
 ### 🎯 **Performance Optimization**
 
 ```cpp
 // 🚀 Use batch operations for multiple messages
-hf_can_message_t messages[10];
+hf*can*message*t messages[10];
 // ... populate messages
-uint32_t sent = can.SendMessageBatch(messages, 10, 1000);
+uint32*t sent = can.SendMessageBatch(messages, 10, 1000);
 
 // 🚀 Use callbacks for high-frequency reception
-can.SetReceiveCallback(on_message);  // Non-blocking reception
+can.SetReceiveCallback(on*message);  // Non-blocking reception
 
 // 🚀 Use appropriate queue sizes
-hf_can_config_t config = {
-    .tx_queue_size = 20,  // Larger for high-frequency transmission
-    .rx_queue_size = 50   // Larger for high-frequency reception
+hf*can*config*t config = {
+    .tx*queue*size = 20,  // Larger for high-frequency transmission
+    .rx*queue*size = 50   // Larger for high-frequency reception
 };
 
 // 🚀 Use message filtering to reduce CPU load
-can.SetAcceptanceFilter(target_id, mask, extended);
+can.SetAcceptanceFilter(target*id, mask, extended);
 
 // 🚀 Monitor statistics for performance tuning
-hf_can_statistics_t stats;
+hf*can*statistics*t stats;
 can.GetStatistics(stats);
-if (stats.tx_queue_overflows > 0) {
+if (stats.tx*queue*overflows > 0) {
     printf("⚠️ TX queue overflow - increase queue size\n");
 }
-```
+```text
 
 ---
 
@@ -969,7 +1033,8 @@ if (stats.tx_queue_overflows > 0) {
 
 **📋 Navigation**
 
-[← Previous: BaseUart](BaseUart.md) | [Back to API Index](README.md) | [Next: BaseWifi →](BaseWifi.md)
+[← Previous: BaseUart](BaseUart.md) | [Back to API Index](README.md) | [Next: BaseWifi
+→](BaseWifi.md)
 
 </div>
 

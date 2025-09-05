@@ -4,7 +4,8 @@
 
 **📋 Navigation**
 
-[← Previous: HardwareTypes](HardwareTypes.md) | [Back to API Index](README.md) | [Next: BaseAdc →](BaseAdc.md)
+[← Previous: HardwareTypes](HardwareTypes.md) | [Back to API Index](README.md) | [Next: BaseAdc
+→](BaseAdc.md)
 
 </div>
 
@@ -12,7 +13,10 @@
 
 ## 🌟 Overview
 
-`BaseGpio` is the unified GPIO base class for all digital GPIO implementations in the HardFOC system. It provides a comprehensive digital GPIO abstraction that serves as the foundation for all GPIO hardware implementations.
+`BaseGpio` is the unified GPIO base class for all digital GPIO implementations in the HardFOC
+system.
+It provides a comprehensive digital GPIO abstraction that serves as the foundation for all GPIO
+hardware implementations.
 
 ## ✨ Features
 
@@ -28,107 +32,107 @@
 
 ```cpp
 #include "inc/base/BaseGpio.h"
-```
+```text
 
 ## Type Definitions
 
 ### Error Codes
 
 ```cpp
-enum class hf_gpio_err_t : hf_u8_t {
-    GPIO_SUCCESS = 0,                    // ✅ Success
-    GPIO_ERR_FAILURE = 1,                // ❌ General failure
-    GPIO_ERR_NOT_INITIALIZED = 2,        // ⚠️ Not initialized
-    GPIO_ERR_ALREADY_INITIALIZED = 3,    // ⚠️ Already initialized
-    GPIO_ERR_INVALID_PARAMETER = 4,      // 🚫 Invalid parameter
-    GPIO_ERR_NULL_POINTER = 5,           // 🚫 Null pointer
-    GPIO_ERR_OUT_OF_MEMORY = 6,          // 💾 Out of memory
-    GPIO_ERR_INVALID_PIN = 7,            // 🔍 Invalid pin
-    GPIO_ERR_PIN_NOT_FOUND = 8,          // 🔍 Pin not found
-    GPIO_ERR_PIN_NOT_CONFIGURED = 9,     // ⚙️ Pin not configured
-    GPIO_ERR_PIN_ALREADY_REGISTERED = 10, // 📝 Pin already registered
-    GPIO_ERR_PIN_ACCESS_DENIED = 11,     // 🔒 Pin access denied
-    GPIO_ERR_PIN_BUSY = 12,              // 🔄 Pin busy
-    GPIO_ERR_HARDWARE_FAULT = 13,        // 💥 Hardware fault
-    GPIO_ERR_COMMUNICATION_FAILURE = 14, // 📡 Communication failure
-    GPIO_ERR_DEVICE_NOT_RESPONDING = 15, // 🔇 Device not responding
-    GPIO_ERR_TIMEOUT = 16,               // ⏰ Timeout
-    GPIO_ERR_VOLTAGE_OUT_OF_RANGE = 17,  // ⚡ Voltage out of range
-    GPIO_ERR_INVALID_CONFIGURATION = 18, // ⚙️ Invalid configuration
-    GPIO_ERR_UNSUPPORTED_OPERATION = 19, // 🚫 Unsupported operation
-    GPIO_ERR_RESOURCE_BUSY = 20,         // 🔄 Resource busy
-    GPIO_ERR_RESOURCE_UNAVAILABLE = 21,  // 🚫 Resource unavailable
-    GPIO_ERR_READ_FAILURE = 22,          // 📖 Read failure
-    GPIO_ERR_WRITE_FAILURE = 23,         // ✍️ Write failure
-    GPIO_ERR_DIRECTION_MISMATCH = 24,    // 🔄 Direction mismatch
-    GPIO_ERR_PULL_RESISTOR_FAILURE = 25, // 🔧 Pull resistor failure
-    GPIO_ERR_INTERRUPT_NOT_SUPPORTED = 26, // ⚡ Interrupt not supported
-    GPIO_ERR_INTERRUPT_ALREADY_ENABLED = 27, // ⚡ Interrupt already enabled
-    GPIO_ERR_INTERRUPT_NOT_ENABLED = 28, // ⚡ Interrupt not enabled
-    GPIO_ERR_INTERRUPT_HANDLER_FAILED = 29, // ⚡ Interrupt handler failed
-    GPIO_ERR_SYSTEM_ERROR = 30,          // 💻 System error
-    GPIO_ERR_PERMISSION_DENIED = 31,     // 🔒 Permission denied
-    GPIO_ERR_OPERATION_ABORTED = 32,     // 🛑 Operation aborted
-    GPIO_ERR_NOT_SUPPORTED = 33,         // 🚫 Operation not supported
-    GPIO_ERR_DRIVER_ERROR = 34,          // 🔧 Driver error
-    GPIO_ERR_INVALID_STATE = 35,         // ⚠️ Invalid state
-    GPIO_ERR_INVALID_ARG = 36,           // 🚫 Invalid argument
-    GPIO_ERR_CALIBRATION_FAILURE = 37    // 🔧 Calibration failure
+enum class hf*gpio*err*t : hf*u8*t {
+    GPIO*SUCCESS = 0,                    // ✅ Success
+    GPIO*ERR*FAILURE = 1,                // ❌ General failure
+    GPIO*ERR*NOT*INITIALIZED = 2,        // ⚠️ Not initialized
+    GPIO*ERR*ALREADY*INITIALIZED = 3,    // ⚠️ Already initialized
+    GPIO*ERR*INVALID*PARAMETER = 4,      // 🚫 Invalid parameter
+    GPIO*ERR*NULL*POINTER = 5,           // 🚫 Null pointer
+    GPIO*ERR*OUT*OF*MEMORY = 6,          // 💾 Out of memory
+    GPIO*ERR*INVALID*PIN = 7,            // 🔍 Invalid pin
+    GPIO*ERR*PIN*NOT*FOUND = 8,          // 🔍 Pin not found
+    GPIO*ERR*PIN*NOT*CONFIGURED = 9,     // ⚙️ Pin not configured
+    GPIO*ERR*PIN*ALREADY*REGISTERED = 10, // 📝 Pin already registered
+    GPIO*ERR*PIN*ACCESS*DENIED = 11,     // 🔒 Pin access denied
+    GPIO*ERR*PIN*BUSY = 12,              // 🔄 Pin busy
+    GPIO*ERR*HARDWARE*FAULT = 13,        // 💥 Hardware fault
+    GPIO*ERR*COMMUNICATION*FAILURE = 14, // 📡 Communication failure
+    GPIO*ERR*DEVICE*NOT*RESPONDING = 15, // 🔇 Device not responding
+    GPIO*ERR*TIMEOUT = 16,               // ⏰ Timeout
+    GPIO*ERR*VOLTAGE*OUT*OF*RANGE = 17,  // ⚡ Voltage out of range
+    GPIO*ERR*INVALID*CONFIGURATION = 18, // ⚙️ Invalid configuration
+    GPIO*ERR*UNSUPPORTED*OPERATION = 19, // 🚫 Unsupported operation
+    GPIO*ERR*RESOURCE*BUSY = 20,         // 🔄 Resource busy
+    GPIO*ERR*RESOURCE*UNAVAILABLE = 21,  // 🚫 Resource unavailable
+    GPIO*ERR*READ*FAILURE = 22,          // 📖 Read failure
+    GPIO*ERR*WRITE*FAILURE = 23,         // ✍️ Write failure
+    GPIO*ERR*DIRECTION*MISMATCH = 24,    // 🔄 Direction mismatch
+    GPIO*ERR*PULL*RESISTOR*FAILURE = 25, // 🔧 Pull resistor failure
+    GPIO*ERR*INTERRUPT*NOT*SUPPORTED = 26, // ⚡ Interrupt not supported
+    GPIO*ERR*INTERRUPT*ALREADY*ENABLED = 27, // ⚡ Interrupt already enabled
+    GPIO*ERR*INTERRUPT*NOT*ENABLED = 28, // ⚡ Interrupt not enabled
+    GPIO*ERR*INTERRUPT*HANDLER*FAILED = 29, // ⚡ Interrupt handler failed
+    GPIO*ERR*SYSTEM*ERROR = 30,          // 💻 System error
+    GPIO*ERR*PERMISSION*DENIED = 31,     // 🔒 Permission denied
+    GPIO*ERR*OPERATION*ABORTED = 32,     // 🛑 Operation aborted
+    GPIO*ERR*NOT*SUPPORTED = 33,         // 🚫 Operation not supported
+    GPIO*ERR*DRIVER*ERROR = 34,          // 🔧 Driver error
+    GPIO*ERR*INVALID*STATE = 35,         // ⚠️ Invalid state
+    GPIO*ERR*INVALID*ARG = 36,           // 🚫 Invalid argument
+    GPIO*ERR*CALIBRATION*FAILURE = 37    // 🔧 Calibration failure
 };
-```
+```text
 
 ### State and Level Types
 
 ```cpp
-enum class hf_gpio_state_t : hf_u8_t {
-    HF_GPIO_STATE_INACTIVE = 0,   // Logical inactive state
-    HF_GPIO_STATE_ACTIVE = 1      // Logical active state
+enum class hf*gpio*state*t : hf*u8*t {
+    HF*GPIO*STATE*INACTIVE = 0,   // Logical inactive state
+    HF*GPIO*STATE*ACTIVE = 1      // Logical active state
 };
 
-enum class hf_gpio_level_t : hf_u8_t {
-    HF_GPIO_LEVEL_LOW = 0,        // Electrical low level (0V)
-    HF_GPIO_LEVEL_HIGH = 1        // Electrical high level (VCC)
+enum class hf*gpio*level*t : hf*u8*t {
+    HF*GPIO*LEVEL*LOW = 0,        // Electrical low level (0V)
+    HF*GPIO*LEVEL*HIGH = 1        // Electrical high level (VCC)
 };
 
-enum class hf_gpio_active_state_t : hf_u8_t {
-    HF_GPIO_ACTIVE_LOW = 0,       // Active state is electrical low
-    HF_GPIO_ACTIVE_HIGH = 1       // Active state is electrical high
+enum class hf*gpio*active*state*t : hf*u8*t {
+    HF*GPIO*ACTIVE*LOW = 0,       // Active state is electrical low
+    HF*GPIO*ACTIVE*HIGH = 1       // Active state is electrical high
 };
-```
+```text
 
 ### Direction and Configuration Types
 
 ```cpp
-enum class hf_gpio_direction_t : hf_u8_t {
-    HF_GPIO_DIRECTION_INPUT = 0,  // Pin configured as input
-    HF_GPIO_DIRECTION_OUTPUT = 1  // Pin configured as output
+enum class hf*gpio*direction*t : hf*u8*t {
+    HF*GPIO*DIRECTION*INPUT = 0,  // Pin configured as input
+    HF*GPIO*DIRECTION*OUTPUT = 1  // Pin configured as output
 };
 
-enum class hf_gpio_output_mode_t : hf_u8_t {
-    HF_GPIO_OUTPUT_MODE_PUSH_PULL = 0,   // Push-pull output
-    HF_GPIO_OUTPUT_MODE_OPEN_DRAIN = 1   // Open-drain output
+enum class hf*gpio*output*mode*t : hf*u8*t {
+    HF*GPIO*OUTPUT*MODE*PUSH*PULL = 0,   // Push-pull output
+    HF*GPIO*OUTPUT*MODE*OPEN*DRAIN = 1   // Open-drain output
 };
 
-enum class hf_gpio_pull_mode_t : hf_u8_t {
-    HF_GPIO_PULL_MODE_FLOATING = 0,      // No pull resistor
-    HF_GPIO_PULL_MODE_UP = 1,            // Internal pull-up resistor
-    HF_GPIO_PULL_MODE_DOWN = 2,          // Internal pull-down resistor
-    HF_GPIO_PULL_MODE_UP_DOWN = 3        // Both pull resistors
+enum class hf*gpio*pull*mode*t : hf*u8*t {
+    HF*GPIO*PULL*MODE*FLOATING = 0,      // No pull resistor
+    HF*GPIO*PULL*MODE*UP = 1,            // Internal pull-up resistor
+    HF*GPIO*PULL*MODE*DOWN = 2,          // Internal pull-down resistor
+    HF*GPIO*PULL*MODE*UP*DOWN = 3        // Both pull resistors
 };
-```
+```text
 
 ### Interrupt Types
 
 ```cpp
-enum class hf_gpio_interrupt_trigger_t : hf_u8_t {
-    HF_GPIO_INTERRUPT_TRIGGER_NONE = 0,        // No interrupt
-    HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE = 1, // Rising edge
-    HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE = 2,// Falling edge
-    HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES = 3,  // Both edges
-    HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL = 4,   // Low level
-    HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL = 5   // High level
+enum class hf*gpio*interrupt*trigger*t : hf*u8*t {
+    HF*GPIO*INTERRUPT*TRIGGER*NONE = 0,        // No interrupt
+    HF*GPIO*INTERRUPT*TRIGGER*RISING*EDGE = 1, // Rising edge
+    HF*GPIO*INTERRUPT*TRIGGER*FALLING*EDGE = 2,// Falling edge
+    HF*GPIO*INTERRUPT*TRIGGER*BOTH*EDGES = 3,  // Both edges
+    HF*GPIO*INTERRUPT*TRIGGER*LOW*LEVEL = 4,   // Low level
+    HF*GPIO*INTERRUPT*TRIGGER*HIGH*LEVEL = 5   // High level
 };
-```
+```text
 
 ## Class Interface
 
@@ -144,41 +148,41 @@ public:
     bool IsInitialized() const noexcept;
     bool EnsureInitialized() noexcept;
     bool EnsureDeinitialized() noexcept;
-    hf_pin_num_t GetPin() const noexcept;
+    hf*pin*num*t GetPin() const noexcept;
     
     // Pure virtual methods (implemented by derived classes)
     virtual bool Initialize() noexcept = 0;
     virtual bool Deinitialize() noexcept = 0;
     
     // Direction and mode control
-    virtual hf_gpio_err_t SetDirection(hf_gpio_direction_t direction) noexcept = 0;
-    virtual hf_gpio_err_t GetDirection(hf_gpio_direction_t& direction) const noexcept = 0;
+    virtual hf*gpio*err*t SetDirection(hf*gpio*direction*t direction) noexcept = 0;
+    virtual hf*gpio*err*t GetDirection(hf*gpio*direction*t& direction) const noexcept = 0;
     
     // State and level operations
-    virtual hf_gpio_err_t SetState(hf_gpio_state_t state) noexcept = 0;
-    virtual hf_gpio_err_t GetState(hf_gpio_state_t& state) const noexcept = 0;
-    virtual hf_gpio_err_t SetLevel(hf_gpio_level_t level) noexcept = 0;
-    virtual hf_gpio_err_t GetLevel(hf_gpio_level_t& level) const noexcept = 0;
+    virtual hf*gpio*err*t SetState(hf*gpio*state*t state) noexcept = 0;
+    virtual hf*gpio*err*t GetState(hf*gpio*state*t& state) const noexcept = 0;
+    virtual hf*gpio*err*t SetLevel(hf*gpio*level*t level) noexcept = 0;
+    virtual hf*gpio*err*t GetLevel(hf*gpio*level*t& level) const noexcept = 0;
     
     // Polarity configuration
-    virtual hf_gpio_err_t SetActiveState(hf_gpio_active_state_t active_state) noexcept = 0;
-    virtual hf_gpio_err_t GetActiveState(hf_gpio_active_state_t& active_state) const noexcept = 0;
+    virtual hf*gpio*err*t SetActiveState(hf*gpio*active*state*t active*state) noexcept = 0;
+    virtual hf*gpio*err*t GetActiveState(hf*gpio*active*state*t& active*state) const noexcept = 0;
     
     // Pull resistor configuration
-    virtual hf_gpio_err_t SetPullMode(hf_gpio_pull_mode_t pull_mode) noexcept = 0;
-    virtual hf_gpio_err_t GetPullMode(hf_gpio_pull_mode_t& pull_mode) const noexcept = 0;
+    virtual hf*gpio*err*t SetPullMode(hf*gpio*pull*mode*t pull*mode) noexcept = 0;
+    virtual hf*gpio*err*t GetPullMode(hf*gpio*pull*mode*t& pull*mode) const noexcept = 0;
     
     // Output mode configuration
-    virtual hf_gpio_err_t SetOutputMode(hf_gpio_output_mode_t output_mode) noexcept = 0;
-    virtual hf_gpio_err_t GetOutputMode(hf_gpio_output_mode_t& output_mode) const noexcept = 0;
+    virtual hf*gpio*err*t SetOutputMode(hf*gpio*output*mode*t output*mode) noexcept = 0;
+    virtual hf*gpio*err*t GetOutputMode(hf*gpio*output*mode*t& output*mode) const noexcept = 0;
     
     // Interrupt configuration
-    virtual hf_gpio_err_t EnableInterrupt(hf_gpio_interrupt_trigger_t trigger,
+    virtual hf*gpio*err*t EnableInterrupt(hf*gpio*interrupt*trigger*t trigger,
                                          std::function<void()> callback) noexcept = 0;
-    virtual hf_gpio_err_t DisableInterrupt() noexcept = 0;
-    virtual hf_gpio_err_t IsInterruptEnabled(bool& enabled) const noexcept = 0;
+    virtual hf*gpio*err*t DisableInterrupt() noexcept = 0;
+    virtual hf*gpio*err*t IsInterruptEnabled(bool& enabled) const noexcept = 0;
 };
-```
+```text
 
 ## Convenience Methods
 
@@ -196,7 +200,7 @@ bool SetHigh() noexcept;        // Set pin to electrical high
 bool SetLow() noexcept;         // Set pin to electrical low
 bool IsHigh() const noexcept;   // Check if pin is electrical high
 bool IsLow() const noexcept;    // Check if pin is electrical low
-```
+```text
 
 ## Usage Examples
 
@@ -206,80 +210,82 @@ bool IsLow() const noexcept;    // Check if pin is electrical low
 #include "inc/mcu/esp32/EspGpio.h"
 
 // Create output pin for LED control
-EspGpio led_pin(GPIO_NUM_2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
+EspGpio led*pin(GPIO*NUM*2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
 
 // Initialize the pin
-if (!led_pin.EnsureInitialized()) {
+if (!led*pin.EnsureInitialized()) {
     printf("Failed to initialize LED pin\n");
     return;
 }
 
 // Turn LED on and off
-led_pin.SetActive();    // Turn on LED
+led*pin.SetActive();    // Turn on LED
 vTaskDelay(1000);
-led_pin.SetInactive();  // Turn off LED
+led*pin.SetInactive();  // Turn off LED
 
 // Toggle LED state
-led_pin.Toggle();
-```
+led*pin.Toggle();
+```text
 
 ### Input Pin with Pull-up
 
 ```cpp
 // Create input pin for button
-EspGpio button_pin(GPIO_NUM_0, hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT);
+EspGpio button*pin(GPIO*NUM*0, hf*gpio*direction*t::HF*GPIO*DIRECTION*INPUT);
 
 // Initialize and configure pull-up
-button_pin.EnsureInitialized();
-button_pin.SetPullMode(hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP);
-button_pin.SetActiveState(hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW);
+button*pin.EnsureInitialized();
+button*pin.SetPullMode(hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*UP);
+button*pin.SetActiveState(hf*gpio*active*state*t::HF*GPIO*ACTIVE*LOW);
 
 // Read button state
-if (button_pin.IsActive()) {
+if (button*pin.IsActive()) {
     printf("Button is pressed\n");
 }
-```
+```text
 
 ### Interrupt Handling
 
 ```cpp
 // Interrupt callback function
-void button_interrupt_handler() {
+void button*interrupt*handler() {
     printf("Button interrupt triggered!\n");
 }
 
 // Create input pin with interrupt
-EspGpio interrupt_pin(GPIO_NUM_4, hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT);
+EspGpio interrupt*pin(GPIO*NUM*4, hf*gpio*direction*t::HF*GPIO*DIRECTION*INPUT);
 
 // Configure interrupt
-interrupt_pin.EnsureInitialized();
-interrupt_pin.SetPullMode(hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP);
-interrupt_pin.EnableInterrupt(
-    hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE,
-    button_interrupt_handler
+interrupt*pin.EnsureInitialized();
+interrupt*pin.SetPullMode(hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*UP);
+interrupt*pin.EnableInterrupt(
+    hf*gpio*interrupt*trigger*t::HF*GPIO*INTERRUPT*TRIGGER*FALLING*EDGE,
+    button*interrupt*handler
 );
-```
+```text
 
 ### Error Handling
 
 ```cpp
-hf_gpio_err_t result = gpio_pin.SetDirection(hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
-if (result != hf_gpio_err_t::GPIO_SUCCESS) {
+hf*gpio*err*t result = gpio*pin.SetDirection(hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
+if (result != hf*gpio*err*t::GPIO*SUCCESS) {
     printf("GPIO Error: %s\n", HfGpioErrToString(result));
     // Handle error appropriately
 }
-```
+```text
 
 ## Utility Functions
 
 ```cpp
 // Convert error code to string
-const char* HfGpioErrToString(hf_gpio_err_t err) noexcept;
-```
+const char* HfGpioErrToString(hf*gpio*err*t err) noexcept;
+```text
 
 ## Thread Safety
 
-The BaseGpio class is **not thread-safe**. If you need to access GPIO from multiple threads, you must provide your own synchronization mechanisms (e.g., mutexes, semaphores).
+The BaseGpio class is **not thread-safe**.
+If you need to access GPIO from multiple threads,
+you must provide your own synchronization mechanisms (e.g., mutexes, semaphores).
 
 ## Implementation Notes
 
@@ -300,8 +306,7 @@ The following concrete implementations are available:
 
 - [EspGpio API Reference](../esp_api/EspGpio.md) - ESP32-C6 implementation
 <<<<<<< Current (Your changes)
-- [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions 
-=======
+## - [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions 
 - [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions
 
 ---
@@ -310,7 +315,8 @@ The following concrete implementations are available:
 
 **📋 Navigation**
 
-[← Previous: HardwareTypes](HardwareTypes.md) | [Back to API Index](README.md) | [Next: BaseAdc →](BaseAdc.md)
+[← Previous: HardwareTypes](HardwareTypes.md) | [Back to API Index](README.md) | [Next: BaseAdc
+→](BaseAdc.md)
 
 </div> 
 >>>>>>> Incoming (Background Agent changes)

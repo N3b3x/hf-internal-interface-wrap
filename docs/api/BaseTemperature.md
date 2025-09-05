@@ -8,7 +8,8 @@
 
 **📋 Navigation**
 
-[← Previous: BaseLogger](BaseLogger.md) | [Back to API Index](README.md) | [Next: BasePeriodicTimer →](BasePeriodicTimer.md)
+[← Previous: BaseLogger](BaseLogger.md) | [Back to API Index](README.md) | [Next: BasePeriodicTimer
+→](BasePeriodicTimer.md)
 
 </div>
 
@@ -29,7 +30,10 @@
 
 ## 🎯 **Overview**
 
-The `BaseTemperature` class provides a comprehensive temperature sensing abstraction that serves as the unified interface for all thermal monitoring operations in the HardFOC system. It supports multiple sensor types, calibration, alert thresholds, and temperature unit conversions across different hardware implementations.
+The `BaseTemperature` class provides a comprehensive temperature sensing abstraction that serves as
+the unified interface for all thermal monitoring operations in the HardFOC system.
+It supports multiple sensor types, calibration, alert thresholds,
+and temperature unit conversions across different hardware implementations.
 
 ### ✨ **Key Features**
 
@@ -45,10 +49,15 @@ The `BaseTemperature` class provides a comprehensive temperature sensing abstrac
 ### 📊 **Supported Hardware**
 
 | Implementation | Sensor Type | Range | Resolution | Accuracy |
+
 |----------------|-------------|-------|------------|----------|
+
 | `EspTemperature` | ESP32-C6 Internal | -40°C to +125°C | 0.1°C | ±2°C |
+
 | `Ds18b20Temperature` | Digital OneWire | -55°C to +125°C | 0.0625°C | ±0.5°C |
+
 | `Lm35Temperature` | Analog Linear | -55°C to +150°C | 0.1°C | ±1°C |
+
 | `Ntc10kTemperature` | Analog Thermistor | -40°C to +125°C | 0.1°C | ±1°C |
 
 ---
@@ -59,43 +68,43 @@ The `BaseTemperature` class provides a comprehensive temperature sensing abstrac
 classDiagram
     class BaseTemperature {
         <<abstract>>
-        +EnsureInitialized() hf_temp_err_t
-        +ReadTemperature(float&) hf_temp_err_t
-        +ReadTemperatureF(float&) hf_temp_err_t
-        +ReadTemperatureK(float&) hf_temp_err_t
-        +SetAlertThreshold(float, hf_temp_alert_type_t) hf_temp_err_t
-        +GetSensorInfo(hf_temp_sensor_info_t&) hf_temp_err_t
-        +StartContinuousReading() hf_temp_err_t
-        +StopContinuousReading() hf_temp_err_t
+        +EnsureInitialized() hf*temp*err*t
+        +ReadTemperature(float&) hf*temp*err*t
+        +ReadTemperatureF(float&) hf*temp*err*t
+        +ReadTemperatureK(float&) hf*temp*err*t
+        +SetAlertThreshold(float, hf*temp*alert*type*t) hf*temp*err*t
+        +GetSensorInfo(hf*temp*sensor*info*t&) hf*temp*err*t
+        +StartContinuousReading() hf*temp*err*t
+        +StopContinuousReading() hf*temp*err*t
         +IsInitialized() bool
-        +GetStatistics(hf_temp_statistics_t&) hf_temp_err_t
-        #DoInitialize() hf_temp_err_t*
-        #DoReadTemperature(float&) hf_temp_err_t*
-        #DoSetAlert(float, hf_temp_alert_type_t) hf_temp_err_t*
+        +GetStatistics(hf*temp*statistics*t&) hf*temp*err*t
+        #DoInitialize() hf*temp*err*t*
+        #DoReadTemperature(float&) hf*temp*err*t*
+        #DoSetAlert(float, hf*temp*alert*type*t) hf*temp*err*t*
     }
 
     class EspTemperature {
         +EspTemperature()
-        +ReadRawTemperature(uint32_t&) hf_temp_err_t
-        +CalibrateOffset(float) hf_temp_err_t
+        +ReadRawTemperature(uint32*t&) hf*temp*err*t
+        +CalibrateOffset(float) hf*temp*err*t
     }
 
     class Ds18b20Temperature {
         +Ds18b20Temperature(BaseGpio*)
-        +SetResolution(hf_temp_resolution_t) hf_temp_err_t
-        +GetDeviceAddress(uint64_t&) hf_temp_err_t
+        +SetResolution(hf*temp*resolution*t) hf*temp*err*t
+        +GetDeviceAddress(uint64*t&) hf*temp*err*t
     }
 
     class Lm35Temperature {
-        +Lm35Temperature(BaseAdc*, hf_channel_id_t)
-        +SetSupplyVoltage(float) hf_temp_err_t
-        +CalibrateLinear(float, float) hf_temp_err_t
+        +Lm35Temperature(BaseAdc*, hf*channel*id*t)
+        +SetSupplyVoltage(float) hf*temp*err*t
+        +CalibrateLinear(float, float) hf*temp*err*t
     }
 
     BaseTemperature <|-- EspTemperature
     BaseTemperature <|-- Ds18b20Temperature
     BaseTemperature <|-- Lm35Temperature
-```
+```text
 
 ---
 
@@ -104,63 +113,72 @@ classDiagram
 ### 🚨 **Temperature Error Enumeration**
 
 ```cpp
-enum class hf_temp_err_t : hf_u32_t {
+enum class hf*temp*err*t : hf*u32*t {
     // Success codes
-    TEMP_SUCCESS = 0,
+    TEMP*SUCCESS = 0,
     
     // General errors
-    TEMP_ERR_FAILURE = 1,
-    TEMP_ERR_NOT_INITIALIZED = 2,
-    TEMP_ERR_ALREADY_INITIALIZED = 3,
-    TEMP_ERR_INVALID_PARAMETER = 4,
-    TEMP_ERR_NULL_POINTER = 5,
-    TEMP_ERR_OUT_OF_MEMORY = 6,
+    TEMP*ERR*FAILURE = 1,
+    TEMP*ERR*NOT*INITIALIZED = 2,
+    TEMP*ERR*ALREADY*INITIALIZED = 3,
+    TEMP*ERR*INVALID*PARAMETER = 4,
+    TEMP*ERR*NULL*POINTER = 5,
+    TEMP*ERR*OUT*OF*MEMORY = 6,
     
     // Sensor specific errors
-    TEMP_ERR_SENSOR_NOT_AVAILABLE = 7,
-    TEMP_ERR_SENSOR_BUSY = 8,
-    TEMP_ERR_SENSOR_DISABLED = 9,
-    TEMP_ERR_SENSOR_NOT_READY = 10,
+    TEMP*ERR*SENSOR*NOT*AVAILABLE = 7,
+    TEMP*ERR*SENSOR*BUSY = 8,
+    TEMP*ERR*SENSOR*DISABLED = 9,
+    TEMP*ERR*SENSOR*NOT*READY = 10,
     
     // Reading errors
-    TEMP_ERR_READ_FAILED = 11,
-    TEMP_ERR_READ_TIMEOUT = 12,
-    TEMP_ERR_READ_CRC_ERROR = 13,
-    TEMP_ERR_TEMPERATURE_OUT_OF_RANGE = 14,
+    TEMP*ERR*READ*FAILED = 11,
+    TEMP*ERR*READ*TIMEOUT = 12,
+    TEMP*ERR*READ*CRC*ERROR = 13,
+    TEMP*ERR*TEMPERATURE*OUT*OF*RANGE = 14,
     
     // Calibration errors
-    TEMP_ERR_CALIBRATION_FAILED = 15,
-    TEMP_ERR_CALIBRATION_INVALID = 16,
-    TEMP_ERR_CALIBRATION_NOT_AVAILABLE = 17,
+    TEMP*ERR*CALIBRATION*FAILED = 15,
+    TEMP*ERR*CALIBRATION*INVALID = 16,
+    TEMP*ERR*CALIBRATION*NOT*AVAILABLE = 17,
     
     // Alert errors
-    TEMP_ERR_ALERT_NOT_SUPPORTED = 18,
-    TEMP_ERR_ALERT_THRESHOLD_INVALID = 19,
-    TEMP_ERR_ALERT_ALREADY_SET = 20,
+    TEMP*ERR*ALERT*NOT*SUPPORTED = 18,
+    TEMP*ERR*ALERT*THRESHOLD*INVALID = 19,
+    TEMP*ERR*ALERT*ALREADY*SET = 20,
     
     // Communication errors
-    TEMP_ERR_COMMUNICATION_FAILURE = 21,
-    TEMP_ERR_DEVICE_NOT_RESPONDING = 22,
-    TEMP_ERR_BUS_ERROR = 23,
+    TEMP*ERR*COMMUNICATION*FAILURE = 21,
+    TEMP*ERR*DEVICE*NOT*RESPONDING = 22,
+    TEMP*ERR*BUS*ERROR = 23,
     
     // System errors
-    TEMP_ERR_SYSTEM_ERROR = 24,
-    TEMP_ERR_PERMISSION_DENIED = 25,
-    TEMP_ERR_OPERATION_ABORTED = 26
+    TEMP*ERR*SYSTEM*ERROR = 24,
+    TEMP*ERR*PERMISSION*DENIED = 25,
+    TEMP*ERR*OPERATION*ABORTED = 26
 };
-```
+```text
 
 ### 📊 **Error Code Categories**
 
 | Category | Range | Description |
+
 |----------|-------|-------------|
+
 | **Success** | 0 | Successful operation |
+
 | **General** | 1-6 | Basic initialization and parameter errors |
+
 | **Sensor** | 7-10 | Sensor availability and status errors |
+
 | **Reading** | 11-14 | Temperature measurement errors |
+
 | **Calibration** | 15-17 | Calibration and accuracy errors |
+
 | **Alert** | 18-20 | Temperature alert configuration errors |
+
 | **Communication** | 21-23 | Sensor communication errors |
+
 | **System** | 24-26 | System-level errors |
 
 ---
@@ -173,75 +191,75 @@ enum class hf_temp_err_t : hf_u32_t {
 ```cpp
 /**
  * @brief Ensure the temperature sensor is initialized
- * @return hf_temp_err_t Error code
+ * @return hf*temp*err*t Error code
  */
-virtual hf_temp_err_t EnsureInitialized() = 0;
+virtual hf*temp*err*t EnsureInitialized() = 0;
 
 /**
  * @brief Check if the temperature sensor is initialized
  * @return bool True if initialized
  */
 virtual bool IsInitialized() const = 0;
-```
+```text
 
 #### **Temperature Reading**
 ```cpp
 /**
  * @brief Read temperature in Celsius
- * @param temperature_c Output temperature in degrees Celsius
- * @return hf_temp_err_t Error code
+ * @param temperature*c Output temperature in degrees Celsius
+ * @return hf*temp*err*t Error code
  */
-virtual hf_temp_err_t ReadTemperature(float& temperature_c) = 0;
+virtual hf*temp*err*t ReadTemperature(float& temperature*c) = 0;
 
 /**
  * @brief Read temperature in Fahrenheit
- * @param temperature_f Output temperature in degrees Fahrenheit
- * @return hf_temp_err_t Error code
+ * @param temperature*f Output temperature in degrees Fahrenheit
+ * @return hf*temp*err*t Error code
  */
-virtual hf_temp_err_t ReadTemperatureF(float& temperature_f) = 0;
+virtual hf*temp*err*t ReadTemperatureF(float& temperature*f) = 0;
 
 /**
  * @brief Read temperature in Kelvin
- * @param temperature_k Output temperature in Kelvin
- * @return hf_temp_err_t Error code
+ * @param temperature*k Output temperature in Kelvin
+ * @return hf*temp*err*t Error code
  */
-virtual hf_temp_err_t ReadTemperatureK(float& temperature_k) = 0;
-```
+virtual hf*temp*err*t ReadTemperatureK(float& temperature*k) = 0;
+```text
 
 #### **Alert Management**
 ```cpp
 /**
  * @brief Set temperature alert threshold
- * @param threshold_c Threshold temperature in Celsius
- * @param alert_type Type of alert (high/low/both)
- * @return hf_temp_err_t Error code
+ * @param threshold*c Threshold temperature in Celsius
+ * @param alert*type Type of alert (high/low/both)
+ * @return hf*temp*err*t Error code
  */
-virtual hf_temp_err_t SetAlertThreshold(float threshold_c, 
-                                      hf_temp_alert_type_t alert_type) = 0;
+virtual hf*temp*err*t SetAlertThreshold(float threshold*c, 
+                                      hf*temp*alert*type*t alert*type) = 0;
 
 /**
  * @brief Check if alert condition is active
- * @param alert_active Output alert status
- * @return hf_temp_err_t Error code
+ * @param alert*active Output alert status
+ * @return hf*temp*err*t Error code
  */
-virtual hf_temp_err_t IsAlertActive(bool& alert_active) = 0;
-```
+virtual hf*temp*err*t IsAlertActive(bool& alert*active) = 0;
+```text
 
 #### **Continuous Monitoring**
 ```cpp
 /**
  * @brief Start continuous temperature reading
- * @param interval_ms Reading interval in milliseconds
- * @return hf_temp_err_t Error code
+ * @param interval*ms Reading interval in milliseconds
+ * @return hf*temp*err*t Error code
  */
-virtual hf_temp_err_t StartContinuousReading(hf_u32_t interval_ms = 1000) = 0;
+virtual hf*temp*err*t StartContinuousReading(hf*u32*t interval*ms = 1000) = 0;
 
 /**
  * @brief Stop continuous temperature reading
- * @return hf_temp_err_t Error code
+ * @return hf*temp*err*t Error code
  */
-virtual hf_temp_err_t StopContinuousReading() = 0;
-```
+virtual hf*temp*err*t StopContinuousReading() = 0;
+```text
 
 ---
 
@@ -250,44 +268,44 @@ virtual hf_temp_err_t StopContinuousReading() = 0;
 ### 🌡️ **Temperature Alert Types**
 
 ```cpp
-enum class hf_temp_alert_type_t : hf_u8_t {
-    TEMP_ALERT_NONE = 0,        ///< No alert
-    TEMP_ALERT_HIGH = 1,        ///< High temperature alert
-    TEMP_ALERT_LOW = 2,         ///< Low temperature alert
-    TEMP_ALERT_BOTH = 3         ///< Both high and low alerts
+enum class hf*temp*alert*type*t : hf*u8*t {
+    TEMP*ALERT*NONE = 0,        ///< No alert
+    TEMP*ALERT*HIGH = 1,        ///< High temperature alert
+    TEMP*ALERT*LOW = 2,         ///< Low temperature alert
+    TEMP*ALERT*BOTH = 3         ///< Both high and low alerts
 };
-```
+```text
 
 ### 📊 **Sensor Information**
 
 ```cpp
-struct hf_temp_sensor_info_t {
-    hf_u32_t sensor_id;                    ///< Unique sensor identifier
-    char sensor_name[32];                  ///< Sensor name string
-    float min_temperature_c;               ///< Minimum measurable temperature
-    float max_temperature_c;               ///< Maximum measurable temperature
-    float resolution_c;                    ///< Temperature resolution
-    float accuracy_c;                      ///< Temperature accuracy
-    hf_u32_t response_time_ms;             ///< Sensor response time
-    bool supports_alerts;                  ///< Alert capability
-    bool supports_continuous;              ///< Continuous reading capability
+struct hf*temp*sensor*info*t {
+    hf*u32*t sensor*id;                    ///< Unique sensor identifier
+    char sensor*name[32];                  ///< Sensor name string
+    float min*temperature*c;               ///< Minimum measurable temperature
+    float max*temperature*c;               ///< Maximum measurable temperature
+    float resolution*c;                    ///< Temperature resolution
+    float accuracy*c;                      ///< Temperature accuracy
+    hf*u32*t response*time*ms;             ///< Sensor response time
+    bool supports*alerts;                  ///< Alert capability
+    bool supports*continuous;              ///< Continuous reading capability
 };
-```
+```text
 
 ### 📈 **Temperature Statistics**
 
 ```cpp
-struct hf_temp_statistics_t {
-    hf_u32_t total_reads;                  ///< Total number of reads
-    hf_u32_t successful_reads;             ///< Successful reads count
-    hf_u32_t failed_reads;                 ///< Failed reads count
-    float min_temperature_c;               ///< Minimum recorded temperature
-    float max_temperature_c;               ///< Maximum recorded temperature
-    float avg_temperature_c;               ///< Average temperature
-    hf_u32_t last_read_time_ms;            ///< Last reading timestamp
-    hf_u32_t total_alerts_triggered;       ///< Total alerts triggered
+struct hf*temp*statistics*t {
+    hf*u32*t total*reads;                  ///< Total number of reads
+    hf*u32*t successful*reads;             ///< Successful reads count
+    hf*u32*t failed*reads;                 ///< Failed reads count
+    float min*temperature*c;               ///< Minimum recorded temperature
+    float max*temperature*c;               ///< Maximum recorded temperature
+    float avg*temperature*c;               ///< Average temperature
+    hf*u32*t last*read*time*ms;            ///< Last reading timestamp
+    hf*u32*t total*alerts*triggered;       ///< Total alerts triggered
 };
-```
+```text
 
 ---
 
@@ -322,7 +340,7 @@ static inline float CelsiusToKelvin(float celsius) {
 static inline float FahrenheitToCelsius(float fahrenheit) {
     return (fahrenheit - 32.0f) * 5.0f / 9.0f;
 }
-```
+```text
 
 ---
 
@@ -335,31 +353,31 @@ static inline float FahrenheitToCelsius(float fahrenheit) {
 
 class ThermalMonitor {
 private:
-    EspTemperature temp_sensor_;
+    EspTemperature temp*sensor*;
     
 public:
     bool initialize() {
-        return temp_sensor_.EnsureInitialized() == hf_temp_err_t::TEMP_SUCCESS;
+        return temp*sensor*.EnsureInitialized() == hf*temp*err*t::TEMP*SUCCESS;
     }
     
-    void read_temperature() {
-        float temperature_c;
+    void read*temperature() {
+        float temperature*c;
         
-        if (temp_sensor_.ReadTemperature(temperature_c) == hf_temp_err_t::TEMP_SUCCESS) {
-            printf("🌡️ Temperature: %.2f°C\n", temperature_c);
+        if (temp*sensor*.ReadTemperature(temperature*c) == hf*temp*err*t::TEMP*SUCCESS) {
+            printf("🌡️ Temperature: %.2f°C\n", temperature*c);
             
             // Convert to other units
-            float temp_f = BaseTemperature::CelsiusToFahrenheit(temperature_c);
-            float temp_k = BaseTemperature::CelsiusToKelvin(temperature_c);
+            float temp*f = BaseTemperature::CelsiusToFahrenheit(temperature*c);
+            float temp*k = BaseTemperature::CelsiusToKelvin(temperature*c);
             
-            printf("   Fahrenheit: %.2f°F\n", temp_f);
-            printf("   Kelvin: %.2f K\n", temp_k);
+            printf("   Fahrenheit: %.2f°F\n", temp*f);
+            printf("   Kelvin: %.2f K\n", temp*k);
         } else {
             printf("❌ Failed to read temperature\n");
         }
     }
 };
-```
+```text
 
 ### 🚨 **Temperature Alert System**
 
@@ -368,31 +386,31 @@ public:
 
 class TemperatureAlertSystem {
 private:
-    Ds18b20Temperature temp_sensor_;
-    bool alert_callback_registered_;
+    Ds18b20Temperature temp*sensor*;
+    bool alert*callback*registered*;
     
 public:
-    TemperatureAlertSystem(BaseGpio* one_wire_pin) 
-        : temp_sensor_(one_wire_pin)
-        , alert_callback_registered_(false) {}
+    TemperatureAlertSystem(BaseGpio* one*wire*pin) 
+        : temp*sensor*(one*wire*pin)
+        , alert*callback*registered*(false) {}
     
-    bool setup_thermal_protection() {
+    bool setup*thermal*protection() {
         // Initialize sensor
-        if (temp_sensor_.EnsureInitialized() != hf_temp_err_t::TEMP_SUCCESS) {
+        if (temp*sensor*.EnsureInitialized() != hf*temp*err*t::TEMP*SUCCESS) {
             return false;
         }
         
         // Set high temperature alert at 85°C
-        if (temp_sensor_.SetAlertThreshold(85.0f, 
-                                         hf_temp_alert_type_t::TEMP_ALERT_HIGH) 
-            != hf_temp_err_t::TEMP_SUCCESS) {
+        if (temp*sensor*.SetAlertThreshold(85.0f, 
+                                         hf*temp*alert*type*t::TEMP*ALERT*HIGH) 
+            != hf*temp*err*t::TEMP*SUCCESS) {
             return false;
         }
         
         // Set low temperature alert at -10°C
-        if (temp_sensor_.SetAlertThreshold(-10.0f, 
-                                         hf_temp_alert_type_t::TEMP_ALERT_LOW) 
-            != hf_temp_err_t::TEMP_SUCCESS) {
+        if (temp*sensor*.SetAlertThreshold(-10.0f, 
+                                         hf*temp*alert*type*t::TEMP*ALERT*LOW) 
+            != hf*temp*err*t::TEMP*SUCCESS) {
             return false;
         }
         
@@ -400,38 +418,38 @@ public:
         return true;
     }
     
-    void monitor_alerts() {
-        bool alert_active;
+    void monitor*alerts() {
+        bool alert*active;
         
-        if (temp_sensor_.IsAlertActive(alert_active) == hf_temp_err_t::TEMP_SUCCESS) {
-            if (alert_active) {
-                float current_temp;
-                temp_sensor_.ReadTemperature(current_temp);
+        if (temp*sensor*.IsAlertActive(alert*active) == hf*temp*err*t::TEMP*SUCCESS) {
+            if (alert*active) {
+                float current*temp;
+                temp*sensor*.ReadTemperature(current*temp);
                 
-                printf("🚨 TEMPERATURE ALERT: %.2f°C\n", current_temp);
+                printf("🚨 TEMPERATURE ALERT: %.2f°C\n", current*temp);
                 
                 // Implement emergency response
-                if (current_temp > 85.0f) {
+                if (current*temp > 85.0f) {
                     printf("⚠️ OVERHEATING - Shutting down system\n");
-                    emergency_shutdown();
-                } else if (current_temp < -10.0f) {
+                    emergency*shutdown();
+                } else if (current*temp < -10.0f) {
                     printf("⚠️ FREEZING - Activating heater\n");
-                    activate_heater();
+                    activate*heater();
                 }
             }
         }
     }
     
 private:
-    void emergency_shutdown() {
+    void emergency*shutdown() {
         // Implement emergency shutdown logic
     }
     
-    void activate_heater() {
+    void activate*heater() {
         // Implement heater activation logic
     }
 };
-```
+```text
 
 ### 📊 **Multi-Sensor Temperature Monitoring**
 
@@ -441,28 +459,28 @@ private:
 
 class MultiSensorTempSystem {
 private:
-    EspTemperature internal_temp_;
-    Lm35Temperature ambient_temp_;
-    Ntc10kTemperature motor_temp_;
+    EspTemperature internal*temp*;
+    Lm35Temperature ambient*temp*;
+    Ntc10kTemperature motor*temp*;
     
     struct TemperatureReading {
         float internal;
         float ambient;
         float motor;
-        hf_u32_t timestamp;
+        hf*u32*t timestamp;
     };
     
 public:
     MultiSensorTempSystem(BaseAdc* adc) 
-        : ambient_temp_(adc, ADC_CHANNEL_0)
-        , motor_temp_(adc, ADC_CHANNEL_1) {}
+        : ambient*temp*(adc, ADC*CHANNEL*0)
+        , motor*temp*(adc, ADC*CHANNEL*1) {}
     
     bool initialize() {
         bool success = true;
         
-        success &= (internal_temp_.EnsureInitialized() == hf_temp_err_t::TEMP_SUCCESS);
-        success &= (ambient_temp_.EnsureInitialized() == hf_temp_err_t::TEMP_SUCCESS);
-        success &= (motor_temp_.EnsureInitialized() == hf_temp_err_t::TEMP_SUCCESS);
+        success &= (internal*temp*.EnsureInitialized() == hf*temp*err*t::TEMP*SUCCESS);
+        success &= (ambient*temp*.EnsureInitialized() == hf*temp*err*t::TEMP*SUCCESS);
+        success &= (motor*temp*.EnsureInitialized() == hf*temp*err*t::TEMP*SUCCESS);
         
         if (success) {
             printf("🌡️ Multi-sensor temperature system initialized\n");
@@ -471,30 +489,30 @@ public:
         return success;
     }
     
-    TemperatureReading read_all_temperatures() {
+    TemperatureReading read*all*temperatures() {
         TemperatureReading reading = {};
-        reading.timestamp = esp_timer_get_time() / 1000; // Convert to ms
+        reading.timestamp = esp*timer*get*time() / 1000; // Convert to ms
         
         // Read internal temperature
-        if (internal_temp_.ReadTemperature(reading.internal) != hf_temp_err_t::TEMP_SUCCESS) {
+        if (internal*temp*.ReadTemperature(reading.internal) != hf*temp*err*t::TEMP*SUCCESS) {
             reading.internal = NAN;
         }
         
         // Read ambient temperature
-        if (ambient_temp_.ReadTemperature(reading.ambient) != hf_temp_err_t::TEMP_SUCCESS) {
+        if (ambient*temp*.ReadTemperature(reading.ambient) != hf*temp*err*t::TEMP*SUCCESS) {
             reading.ambient = NAN;
         }
         
         // Read motor temperature
-        if (motor_temp_.ReadTemperature(reading.motor) != hf_temp_err_t::TEMP_SUCCESS) {
+        if (motor*temp*.ReadTemperature(reading.motor) != hf*temp*err*t::TEMP*SUCCESS) {
             reading.motor = NAN;
         }
         
         return reading;
     }
     
-    void log_temperature_data() {
-        TemperatureReading reading = read_all_temperatures();
+    void log*temperature*data() {
+        TemperatureReading reading = read*all*temperatures();
         
         printf("📊 Temperature Report [%lu ms]:\n", reading.timestamp);
         printf("   Internal: %.2f°C\n", reading.internal);
@@ -511,16 +529,16 @@ public:
         }
     }
     
-    void start_continuous_monitoring(hf_u32_t interval_ms = 5000) {
+    void start*continuous*monitoring(hf*u32*t interval*ms = 5000) {
         // Start continuous reading on all sensors
-        internal_temp_.StartContinuousReading(interval_ms);
-        ambient_temp_.StartContinuousReading(interval_ms);
-        motor_temp_.StartContinuousReading(interval_ms);
+        internal*temp*.StartContinuousReading(interval*ms);
+        ambient*temp*.StartContinuousReading(interval*ms);
+        motor*temp*.StartContinuousReading(interval*ms);
         
-        printf("🔄 Continuous temperature monitoring started (%lu ms interval)\n", interval_ms);
+        printf("🔄 Continuous temperature monitoring started (%lu ms interval)\n", interval*ms);
     }
 };
-```
+```text
 
 ---
 
@@ -531,38 +549,38 @@ public:
 1. **🎯 Initialize Early**
    ```cpp
    // Initialize temperature sensors during system startup
-   if (temp_sensor.EnsureInitialized() != hf_temp_err_t::TEMP_SUCCESS) {
+   if (temp*sensor.EnsureInitialized() != hf*temp*err*t::TEMP*SUCCESS) {
        printf("❌ Temperature sensor initialization failed\n");
        // Handle initialization failure
    }
    ```
 
-2. **🌡️ Use Appropriate Units**
+1. **🌡️ Use Appropriate Units**
    ```cpp
    // Be consistent with temperature units
-   float temp_c;
-   temp_sensor.ReadTemperature(temp_c);  // Always in Celsius
+   float temp*c;
+   temp*sensor.ReadTemperature(temp*c);  // Always in Celsius
    
    // Convert when displaying to users
-   float temp_f = BaseTemperature::CelsiusToFahrenheit(temp_c);
-   printf("Temperature: %.1f°F\n", temp_f);
+   float temp*f = BaseTemperature::CelsiusToFahrenheit(temp*c);
+   printf("Temperature: %.1f°F\n", temp*f);
    ```
 
-3. **🚨 Implement Thermal Protection**
+1. **🚨 Implement Thermal Protection**
    ```cpp
    // Set appropriate alert thresholds
-   temp_sensor.SetAlertThreshold(85.0f, hf_temp_alert_type_t::TEMP_ALERT_HIGH);
-   temp_sensor.SetAlertThreshold(-10.0f, hf_temp_alert_type_t::TEMP_ALERT_LOW);
+   temp*sensor.SetAlertThreshold(85.0f, hf*temp*alert*type*t::TEMP*ALERT*HIGH);
+   temp*sensor.SetAlertThreshold(-10.0f, hf*temp*alert*type*t::TEMP*ALERT*LOW);
    ```
 
-4. **📊 Monitor Sensor Health**
+1. **📊 Monitor Sensor Health**
    ```cpp
    // Regularly check sensor statistics
-   hf_temp_statistics_t stats;
-   if (temp_sensor.GetStatistics(stats) == hf_temp_err_t::TEMP_SUCCESS) {
-       float success_rate = (float)stats.successful_reads / stats.total_reads;
-       if (success_rate < 0.95f) {
-           printf("⚠️ Temperature sensor reliability low: %.1f%%\n", success_rate * 100.0f);
+   hf*temp*statistics*t stats;
+   if (temp*sensor.GetStatistics(stats) == hf*temp*err*t::TEMP*SUCCESS) {
+       float success*rate = (float)stats.successful*reads / stats.total*reads;
+       if (success*rate < 0.95f) {
+           printf("⚠️ Temperature sensor reliability low: %.1f%%\n", success*rate * 100.0f);
        }
    }
    ```
@@ -572,27 +590,27 @@ public:
 1. **🚫 Not Checking Return Values**
    ```cpp
    // BAD: Ignoring error codes
-   temp_sensor.ReadTemperature(temp);
+   temp*sensor.ReadTemperature(temp);
    
    // GOOD: Always check return values
-   if (temp_sensor.ReadTemperature(temp) != hf_temp_err_t::TEMP_SUCCESS) {
+   if (temp*sensor.ReadTemperature(temp) != hf*temp*err*t::TEMP*SUCCESS) {
        // Handle error appropriately
    }
    ```
 
-2. **🚫 Using Wrong Temperature Units**
+1. **🚫 Using Wrong Temperature Units**
    ```cpp
    // BAD: Mixing temperature units
-   float temp_f;
-   temp_sensor.ReadTemperature(temp_f);  // This returns Celsius!
+   float temp*f;
+   temp*sensor.ReadTemperature(temp*f);  // This returns Celsius!
    
    // GOOD: Use correct methods for units
-   float temp_c, temp_f;
-   temp_sensor.ReadTemperature(temp_c);    // Celsius
-   temp_sensor.ReadTemperatureF(temp_f);   // Fahrenheit
+   float temp*c, temp*f;
+   temp*sensor.ReadTemperature(temp*c);    // Celsius
+   temp*sensor.ReadTemperatureF(temp*f);   // Fahrenheit
    ```
 
-3. **🚫 Ignoring Sensor Limitations**
+1. **🚫 Ignoring Sensor Limitations**
    ```cpp
    // BAD: Not checking sensor range
    if (temperature > 100.0f) {
@@ -600,9 +618,9 @@ public:
    }
    
    // GOOD: Check sensor specifications
-   hf_temp_sensor_info_t info;
-   temp_sensor.GetSensorInfo(info);
-   if (temperature > info.max_temperature_c) {
+   hf*temp*sensor*info*t info;
+   temp*sensor.GetSensorInfo(info);
+   if (temperature > info.max*temperature*c) {
        printf("⚠️ Temperature exceeds sensor range\n");
    }
    ```
@@ -612,10 +630,10 @@ public:
 1. **⚡ Use Continuous Reading for High-Frequency Monitoring**
    ```cpp
    // Start continuous reading for frequent updates
-   temp_sensor.StartContinuousReading(100);  // 100ms interval
+   temp*sensor.StartContinuousReading(100);  // 100ms interval
    ```
 
-2. **🔄 Batch Multiple Sensor Reads**
+1. **🔄 Batch Multiple Sensor Reads**
    ```cpp
    // Read multiple sensors together for efficiency
    float temps[3];
@@ -624,11 +642,11 @@ public:
    sensor3.ReadTemperature(temps[2]);
    ```
 
-3. **📊 Use Statistics for Health Monitoring**
+1. **📊 Use Statistics for Health Monitoring**
    ```cpp
    // Monitor sensor performance over time
-   hf_temp_statistics_t stats;
-   temp_sensor.GetStatistics(stats);
+   hf*temp*statistics*t stats;
+   temp*sensor.GetStatistics(stats);
    ```
 
 ---
@@ -637,7 +655,8 @@ public:
 
 **📋 Navigation**
 
-[← Previous: BaseLogger](BaseLogger.md) | [Back to API Index](README.md) | [Next: BasePeriodicTimer →](BasePeriodicTimer.md)
+[← Previous: BaseLogger](BaseLogger.md) | [Back to API Index](README.md) | [Next: BasePeriodicTimer
+→](BasePeriodicTimer.md)
 
 </div>
 

@@ -34,75 +34,75 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_ADC_ERR_LIST(X)                                                          \
-  /* Success codes */                                                               \
-  X(ADC_SUCCESS, 0, "Success")                                                      \
-  /* General errors */                                                              \
-  X(ADC_ERR_FAILURE, 1, "General failure")                                          \
-  X(ADC_ERR_NOT_INITIALIZED, 2, "Not initialized")                                  \
-  X(ADC_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                          \
-  X(ADC_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                              \
-  X(ADC_ERR_NULL_POINTER, 5, "Null pointer")                                        \
-  X(ADC_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                      \
-  /* Channel errors */                                                              \
-  X(ADC_ERR_CHANNEL_NOT_FOUND, 7, "Channel not found")                              \
-  X(ADC_ERR_CHANNEL_NOT_ENABLED, 8, "Channel not enabled")                          \
-  X(ADC_ERR_CHANNEL_NOT_CONFIGURED, 9, "Channel not configured")                    \
-  X(ADC_ERR_CHANNEL_ALREADY_REGISTERED, 10, "Channel already registered")           \
-  X(ADC_ERR_CHANNEL_READ_ERR, 11, "Channel read error")                             \
-  X(ADC_ERR_CHANNEL_WRITE_ERR, 12, "Channel write error")                           \
-  X(ADC_ERR_INVALID_CHANNEL, 13, "Invalid channel")                                 \
-  X(ADC_ERR_CHANNEL_BUSY, 14, "Channel busy")                                       \
-  /* Sampling errors */                                                             \
-  X(ADC_ERR_INVALID_SAMPLE_COUNT, 15, "Invalid sample count")                       \
-  X(ADC_ERR_SAMPLE_TIMEOUT, 16, "Sample timeout")                                   \
-  X(ADC_ERR_SAMPLE_OVERFLOW, 17, "Sample overflow")                                 \
-  X(ADC_ERR_SAMPLE_UNDERFLOW, 18, "Sample underflow")                               \
-  /* Hardware errors */                                                             \
-  X(ADC_ERR_HARDWARE_FAULT, 19, "Hardware fault")                                   \
-  X(ADC_ERR_COMMUNICATION_FAILURE, 20, "Communication failure")                     \
-  X(ADC_ERR_DEVICE_NOT_RESPONDING, 21, "Device not responding")                     \
-  X(ADC_ERR_CALIBRATION_FAILURE, 22, "Calibration failure")                         \
-  X(ADC_ERR_VOLTAGE_OUT_OF_RANGE, 23, "Voltage out of range")                       \
-  /* Configuration errors */                                                        \
-  X(ADC_ERR_INVALID_CONFIGURATION, 24, "Invalid configuration")                     \
-  X(ADC_ERR_UNSUPPORTED_OPERATION, 25, "Unsupported operation")                     \
-  X(ADC_ERR_RESOURCE_BUSY, 26, "Resource busy")                                     \
-  X(ADC_ERR_RESOURCE_UNAVAILABLE, 27, "Resource unavailable")                       \
-  /* Calibration specific errors */                                                 \
-  X(ADC_ERR_CALIBRATION_NOT_FOUND, 28, "Calibration data not found")                \
-  X(ADC_ERR_CALIBRATION_INVALID, 29, "Invalid calibration data")                    \
-  X(ADC_ERR_CALIBRATION_EXPIRED, 30, "Calibration has expired")                     \
-  X(ADC_ERR_CALIBRATION_DRIFT, 31, "Calibration drift detected")                    \
-  X(ADC_ERR_CALIBRATION_POINTS_INSUFFICIENT, 32, "Insufficient calibration points") \
-  X(ADC_ERR_CALIBRATION_POINTS_INVALID, 33, "Invalid calibration points")           \
-  X(ADC_ERR_CALIBRATION_LINEARITY_ERROR, 34, "Calibration linearity error")         \
-  X(ADC_ERR_CALIBRATION_STORAGE_FAILURE, 35, "Calibration storage failure")         \
-  X(ADC_ERR_CALIBRATION_LOAD_FAILURE, 36, "Calibration load failure")               \
-  X(ADC_ERR_CALIBRATION_VERIFICATION_FAILED, 37, "Calibration verification failed") \
-  X(ADC_ERR_CALIBRATION_TEMPERATURE_ERROR, 38, "Temperature compensation error")    \
-  X(ADC_ERR_CALIBRATION_POLYNOMIAL_ERROR, 39, "Polynomial calibration error")       \
-  /* System errors */                                                               \
-  X(ADC_ERR_SYSTEM_ERROR, 40, "System error")                                       \
-  X(ADC_ERR_PERMISSION_DENIED, 41, "Permission denied")                             \
-  X(ADC_ERR_OPERATION_ABORTED, 42, "Operation aborted")                             \
-                                                                                    \
-  /* Extended ADC errors (for ESP32 compatibility) */                               \
-  X(ADC_ERR_INITIALIZATION_FAILED, 43, "Initialization failed")                     \
-  X(ADC_ERR_INVALID_PARAM, 44, "Invalid parameter")                                 \
-  X(ADC_ERR_TIMEOUT, 45, "Operation timeout")                                       \
-  X(ADC_ERR_NOT_SUPPORTED, 46, "Not supported")                                     \
-                                                                                    \
-  /* Additional missing error codes */                                              \
-  X(ADC_ERR_INVALID_STATE, 47, "Invalid state")                                     \
-  X(ADC_ERR_DRIVER_ERROR, 48, "Driver error")                                       \
-  X(ADC_ERR_DMA_ERROR, 49, "DMA error")                                             \
-  X(ADC_ERR_FILTER_ERROR, 50, "Filter configuration error")                         \
-  X(ADC_ERR_NO_CALLBACK, 51, "No callback provided")                                \
-  X(ADC_ERR_NOT_STARTED, 52, "Operation not started")                               \
-  X(ADC_ERR_CALIBRATION, 53, "Calibration error")                                   \
-  X(ADC_ERR_BUSY, 54, "Resource busy")                                              \
-  X(ADC_ERR_HARDWARE_FAILURE, 55, "Hardware failure")                               \
+#define HF_ADC_ERR_LIST(X)                                                                         \
+  /* Success codes */                                                                              \
+  X(ADC_SUCCESS, 0, "Success")                                                                     \
+  /* General errors */                                                                             \
+  X(ADC_ERR_FAILURE, 1, "General failure")                                                         \
+  X(ADC_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
+  X(ADC_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
+  X(ADC_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
+  X(ADC_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
+  X(ADC_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
+  /* Channel errors */                                                                             \
+  X(ADC_ERR_CHANNEL_NOT_FOUND, 7, "Channel not found")                                             \
+  X(ADC_ERR_CHANNEL_NOT_ENABLED, 8, "Channel not enabled")                                         \
+  X(ADC_ERR_CHANNEL_NOT_CONFIGURED, 9, "Channel not configured")                                   \
+  X(ADC_ERR_CHANNEL_ALREADY_REGISTERED, 10, "Channel already registered")                          \
+  X(ADC_ERR_CHANNEL_READ_ERR, 11, "Channel read error")                                            \
+  X(ADC_ERR_CHANNEL_WRITE_ERR, 12, "Channel write error")                                          \
+  X(ADC_ERR_INVALID_CHANNEL, 13, "Invalid channel")                                                \
+  X(ADC_ERR_CHANNEL_BUSY, 14, "Channel busy")                                                      \
+  /* Sampling errors */                                                                            \
+  X(ADC_ERR_INVALID_SAMPLE_COUNT, 15, "Invalid sample count")                                      \
+  X(ADC_ERR_SAMPLE_TIMEOUT, 16, "Sample timeout")                                                  \
+  X(ADC_ERR_SAMPLE_OVERFLOW, 17, "Sample overflow")                                                \
+  X(ADC_ERR_SAMPLE_UNDERFLOW, 18, "Sample underflow")                                              \
+  /* Hardware errors */                                                                            \
+  X(ADC_ERR_HARDWARE_FAULT, 19, "Hardware fault")                                                  \
+  X(ADC_ERR_COMMUNICATION_FAILURE, 20, "Communication failure")                                    \
+  X(ADC_ERR_DEVICE_NOT_RESPONDING, 21, "Device not responding")                                    \
+  X(ADC_ERR_CALIBRATION_FAILURE, 22, "Calibration failure")                                        \
+  X(ADC_ERR_VOLTAGE_OUT_OF_RANGE, 23, "Voltage out of range")                                      \
+  /* Configuration errors */                                                                       \
+  X(ADC_ERR_INVALID_CONFIGURATION, 24, "Invalid configuration")                                    \
+  X(ADC_ERR_UNSUPPORTED_OPERATION, 25, "Unsupported operation")                                    \
+  X(ADC_ERR_RESOURCE_BUSY, 26, "Resource busy")                                                    \
+  X(ADC_ERR_RESOURCE_UNAVAILABLE, 27, "Resource unavailable")                                      \
+  /* Calibration specific errors */                                                                \
+  X(ADC_ERR_CALIBRATION_NOT_FOUND, 28, "Calibration data not found")                               \
+  X(ADC_ERR_CALIBRATION_INVALID, 29, "Invalid calibration data")                                   \
+  X(ADC_ERR_CALIBRATION_EXPIRED, 30, "Calibration has expired")                                    \
+  X(ADC_ERR_CALIBRATION_DRIFT, 31, "Calibration drift detected")                                   \
+  X(ADC_ERR_CALIBRATION_POINTS_INSUFFICIENT, 32, "Insufficient calibration points")                \
+  X(ADC_ERR_CALIBRATION_POINTS_INVALID, 33, "Invalid calibration points")                          \
+  X(ADC_ERR_CALIBRATION_LINEARITY_ERROR, 34, "Calibration linearity error")                        \
+  X(ADC_ERR_CALIBRATION_STORAGE_FAILURE, 35, "Calibration storage failure")                        \
+  X(ADC_ERR_CALIBRATION_LOAD_FAILURE, 36, "Calibration load failure")                              \
+  X(ADC_ERR_CALIBRATION_VERIFICATION_FAILED, 37, "Calibration verification failed")                \
+  X(ADC_ERR_CALIBRATION_TEMPERATURE_ERROR, 38, "Temperature compensation error")                   \
+  X(ADC_ERR_CALIBRATION_POLYNOMIAL_ERROR, 39, "Polynomial calibration error")                      \
+  /* System errors */                                                                              \
+  X(ADC_ERR_SYSTEM_ERROR, 40, "System error")                                                      \
+  X(ADC_ERR_PERMISSION_DENIED, 41, "Permission denied")                                            \
+  X(ADC_ERR_OPERATION_ABORTED, 42, "Operation aborted")                                            \
+                                                                                                   \
+  /* Extended ADC errors (for ESP32 compatibility) */                                              \
+  X(ADC_ERR_INITIALIZATION_FAILED, 43, "Initialization failed")                                    \
+  X(ADC_ERR_INVALID_PARAM, 44, "Invalid parameter")                                                \
+  X(ADC_ERR_TIMEOUT, 45, "Operation timeout")                                                      \
+  X(ADC_ERR_NOT_SUPPORTED, 46, "Not supported")                                                    \
+                                                                                                   \
+  /* Additional missing error codes */                                                             \
+  X(ADC_ERR_INVALID_STATE, 47, "Invalid state")                                                    \
+  X(ADC_ERR_DRIVER_ERROR, 48, "Driver error")                                                      \
+  X(ADC_ERR_DMA_ERROR, 49, "DMA error")                                                            \
+  X(ADC_ERR_FILTER_ERROR, 50, "Filter configuration error")                                        \
+  X(ADC_ERR_NO_CALLBACK, 51, "No callback provided")                                               \
+  X(ADC_ERR_NOT_STARTED, 52, "Operation not started")                                              \
+  X(ADC_ERR_CALIBRATION, 53, "Calibration error")                                                  \
+  X(ADC_ERR_BUSY, 54, "Resource busy")                                                             \
+  X(ADC_ERR_HARDWARE_FAILURE, 55, "Hardware failure")                                              \
   X(ADC_ERR_CHANNEL_DISABLED, 56, "Channel disabled")
 
 enum class hf_adc_err_t : hf_u8_t {
@@ -118,13 +118,13 @@ enum class hf_adc_err_t : hf_u8_t {
  */
 constexpr std::string_view HfAdcErrToString(hf_adc_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_adc_err_t::NAME:   \
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_adc_err_t::NAME:                                                                         \
     return DESC;
     HF_ADC_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

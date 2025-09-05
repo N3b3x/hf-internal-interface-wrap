@@ -189,7 +189,7 @@ bool EspBluetooth::IsInitialized() const {
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
 // NimBLE host task function - must be defined before Enable()
-static void ble_host_task(void *param) {
+static void ble_host_task(void* param) {
   ESP_LOGI("NimBLE_HOST", "BLE Host Task Started");
   // This function handles the NimBLE host task
   nimble_port_run(); // This function will return only when nimble_port_stop() is called.
@@ -369,124 +369,124 @@ int EspBluetooth::GapEventHandler(struct ble_gap_event* event, void* arg) {
   }
 
   switch (event->type) {
-    case BLE_GAP_EVENT_CONNECT:
-      ESP_LOGI(TAG, "BLE GAP EVENT CONNECT %s", event->connect.status == 0 ? "OK" : "FAILED");
+  case BLE_GAP_EVENT_CONNECT:
+    ESP_LOGI(TAG, "BLE GAP EVENT CONNECT %s", event->connect.status == 0 ? "OK" : "FAILED");
 
-      if (event->connect.status == 0) {
-        s_instance->m_conn_handle = event->connect.conn_handle;
-        s_instance->m_state = hf_bluetooth_state_t::HF_BLUETOOTH_STATE_CONNECTED;
+    if (event->connect.status == 0) {
+      s_instance->m_conn_handle = event->connect.conn_handle;
+      s_instance->m_state = hf_bluetooth_state_t::HF_BLUETOOTH_STATE_CONNECTED;
 
-        // Get connection descriptor
-        struct ble_gap_conn_desc desc;
-        if (ble_gap_conn_find(event->connect.conn_handle, &desc) == 0) {
-          hf_bluetooth_address_t addr;
-          ConvertBleAddr(&desc.peer_id_addr, addr);
-
-          hf_bluetooth_device_info_t device_info;
-          device_info.address = addr;
-          device_info.rssi = 0; // Will be updated later
-          device_info.is_connected = true;
-
-          MutexLockGuard lock(s_instance->m_device_mutex);
-          std::string addr_str = s_instance->AddressToString(addr);
-          s_instance->m_connected_devices[addr_str] = device_info;
-        }
-
-        s_instance->TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_SUCCESS);
-      } else {
-        s_instance->TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_FAILED);
-      }
-      break;
-
-    case BLE_GAP_EVENT_DISCONNECT:
-      ESP_LOGI(TAG, "BLE GAP EVENT DISCONNECT; reason=%d", event->disconnect.reason);
-
-      s_instance->m_conn_handle = BLE_HS_CONN_HANDLE_NONE;
-      s_instance->m_state = hf_bluetooth_state_t::HF_BLUETOOTH_STATE_ENABLED;
-
-      // Remove from connected devices
-      {
-        MutexLockGuard lock(s_instance->m_device_mutex);
+      // Get connection descriptor
+      struct ble_gap_conn_desc desc;
+      if (ble_gap_conn_find(event->connect.conn_handle, &desc) == 0) {
         hf_bluetooth_address_t addr;
-        ConvertBleAddr(&event->disconnect.conn.peer_id_addr, addr);
-        std::string addr_str = s_instance->AddressToString(addr);
-        s_instance->m_connected_devices.erase(addr_str);
-      }
-
-      s_instance->TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DISCONNECT);
-      break;
-
-    case BLE_GAP_EVENT_ADV_COMPLETE:
-      ESP_LOGI(TAG, "BLE GAP EVENT ADV_COMPLETE");
-      break;
-
-    case BLE_GAP_EVENT_DISC:
-      ESP_LOGI(TAG, "BLE GAP EVENT DISC");
-
-      // Add discovered device
-      {
-        hf_bluetooth_address_t addr;
-        ConvertBleAddr(&event->disc.addr, addr);
+        ConvertBleAddr(&desc.peer_id_addr, addr);
 
         hf_bluetooth_device_info_t device_info;
         device_info.address = addr;
-        device_info.rssi = event->disc.rssi;
-        device_info.is_connected = false;
-
-        // Extract device name from advertising data
-        const uint8_t* name_data = nullptr;
-        uint8_t name_len = 0;
-
-        if (event->disc.length_data > 0) {
-          // Parse advertising data for complete local name (type 0x09)
-          const uint8_t* data = event->disc.data;
-          uint16_t data_len = event->disc.length_data;
-
-          for (uint16_t i = 0; i < data_len;) {
-            uint8_t len = data[i];
-            if (len == 0 || i + len >= data_len)
-              break;
-
-            uint8_t type = data[i + 1];
-            if (type == 0x09) { // Complete local name
-              name_data = &data[i + 2];
-              name_len = len - 1;
-              break;
-            }
-            i += len + 1;
-          }
-        }
-
-        if (name_data && name_len > 0) {
-          device_info.name = std::string(reinterpret_cast<const char*>(name_data), name_len);
-        }
+        device_info.rssi = 0; // Will be updated later
+        device_info.is_connected = true;
 
         MutexLockGuard lock(s_instance->m_device_mutex);
+        std::string addr_str = s_instance->AddressToString(addr);
+        s_instance->m_connected_devices[addr_str] = device_info;
+      }
 
-        // Check if device already exists
-        auto it = std::find_if(s_instance->m_discovered_devices.begin(),
-                               s_instance->m_discovered_devices.end(),
-                               [&addr](const hf_bluetooth_device_info_t& dev) {
-                                 return memcmp(dev.address.addr, addr.addr, 6) == 0;
-                               });
+      s_instance->TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_SUCCESS);
+    } else {
+      s_instance->TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_FAILED);
+    }
+    break;
 
-        if (it != s_instance->m_discovered_devices.end()) {
-          // Update existing device
-          it->rssi = device_info.rssi;
-          if (!device_info.name.empty()) {
-            it->name = device_info.name;
+  case BLE_GAP_EVENT_DISCONNECT:
+    ESP_LOGI(TAG, "BLE GAP EVENT DISCONNECT; reason=%d", event->disconnect.reason);
+
+    s_instance->m_conn_handle = BLE_HS_CONN_HANDLE_NONE;
+    s_instance->m_state = hf_bluetooth_state_t::HF_BLUETOOTH_STATE_ENABLED;
+
+    // Remove from connected devices
+    {
+      MutexLockGuard lock(s_instance->m_device_mutex);
+      hf_bluetooth_address_t addr;
+      ConvertBleAddr(&event->disconnect.conn.peer_id_addr, addr);
+      std::string addr_str = s_instance->AddressToString(addr);
+      s_instance->m_connected_devices.erase(addr_str);
+    }
+
+    s_instance->TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DISCONNECT);
+    break;
+
+  case BLE_GAP_EVENT_ADV_COMPLETE:
+    ESP_LOGI(TAG, "BLE GAP EVENT ADV_COMPLETE");
+    break;
+
+  case BLE_GAP_EVENT_DISC:
+    ESP_LOGI(TAG, "BLE GAP EVENT DISC");
+
+    // Add discovered device
+    {
+      hf_bluetooth_address_t addr;
+      ConvertBleAddr(&event->disc.addr, addr);
+
+      hf_bluetooth_device_info_t device_info;
+      device_info.address = addr;
+      device_info.rssi = event->disc.rssi;
+      device_info.is_connected = false;
+
+      // Extract device name from advertising data
+      const uint8_t* name_data = nullptr;
+      uint8_t name_len = 0;
+
+      if (event->disc.length_data > 0) {
+        // Parse advertising data for complete local name (type 0x09)
+        const uint8_t* data = event->disc.data;
+        uint16_t data_len = event->disc.length_data;
+
+        for (uint16_t i = 0; i < data_len;) {
+          uint8_t len = data[i];
+          if (len == 0 || i + len >= data_len)
+            break;
+
+          uint8_t type = data[i + 1];
+          if (type == 0x09) { // Complete local name
+            name_data = &data[i + 2];
+            name_len = len - 1;
+            break;
           }
-        } else {
-          // Add new device
-          s_instance->m_discovered_devices.push_back(device_info);
+          i += len + 1;
         }
       }
 
-      s_instance->TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DEVICE_FOUND);
-      break;
+      if (name_data && name_len > 0) {
+        device_info.name = std::string(reinterpret_cast<const char*>(name_data), name_len);
+      }
 
-    default:
-      return 0;
+      MutexLockGuard lock(s_instance->m_device_mutex);
+
+      // Check if device already exists
+      auto it = std::find_if(s_instance->m_discovered_devices.begin(),
+                             s_instance->m_discovered_devices.end(),
+                             [&addr](const hf_bluetooth_device_info_t& dev) {
+                               return memcmp(dev.address.addr, addr.addr, 6) == 0;
+                             });
+
+      if (it != s_instance->m_discovered_devices.end()) {
+        // Update existing device
+        it->rssi = device_info.rssi;
+        if (!device_info.name.empty()) {
+          it->name = device_info.name;
+        }
+      } else {
+        // Add new device
+        s_instance->m_discovered_devices.push_back(device_info);
+      }
+    }
+
+    s_instance->TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DEVICE_FOUND);
+    break;
+
+  default:
+    return 0;
   }
 
   return 0;
@@ -510,14 +510,12 @@ void EspBluetooth::ConvertHfAddr(const hf_bluetooth_address_t& hf_addr, ble_addr
 
 #endif // HAS_NIMBLE_SUPPORT
 
-
-
 #if HAS_BLUEDROID_SUPPORT
 // ========== Bluedroid Implementation Functions ==========
 
 hf_bluetooth_err_t EspBluetooth::InitializeBluedroid() {
   ESP_LOGI(TAG, "Initializing Bluedroid for ESP32");
-  
+
   // Initialize NVS (required for Bluetooth)
   esp_err_t ret = nvs_flash_init();
   if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {

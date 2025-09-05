@@ -33,45 +33,45 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_UART_ERR_LIST(X)                                          \
-  /* Success codes */                                                \
-  X(UART_SUCCESS, 0, "Success")                                      \
-  /* General errors */                                               \
-  X(UART_ERR_FAILURE, 1, "General failure")                          \
-  X(UART_ERR_NOT_INITIALIZED, 2, "Not initialized")                  \
-  X(UART_ERR_ALREADY_INITIALIZED, 3, "Already initialized")          \
-  X(UART_ERR_INVALID_PARAMETER, 4, "Invalid parameter")              \
-  X(UART_ERR_NULL_POINTER, 5, "Null pointer")                        \
-  X(UART_ERR_OUT_OF_MEMORY, 6, "Out of memory")                      \
-  /* Communication errors */                                         \
-  X(UART_ERR_TIMEOUT, 7, "Operation timeout")                        \
-  X(UART_ERR_BUFFER_FULL, 8, "Buffer full")                          \
-  X(UART_ERR_BUFFER_EMPTY, 9, "Buffer empty")                        \
-  X(UART_ERR_TRANSMISSION_FAILED, 10, "Transmission failed")         \
-  X(UART_ERR_RECEPTION_FAILED, 11, "Reception failed")               \
-  /* Frame errors */                                                 \
-  X(UART_ERR_FRAME_ERROR, 12, "Frame error")                         \
-  X(UART_ERR_PARITY_ERROR, 13, "Parity error")                       \
-  X(UART_ERR_OVERRUN_ERROR, 14, "Overrun error")                     \
-  X(UART_ERR_NOISE_ERROR, 15, "Noise error")                         \
-  X(UART_ERR_BREAK_DETECTED, 16, "Break condition detected")         \
-  /* Hardware errors */                                              \
-  X(UART_ERR_HARDWARE_FAULT, 17, "Hardware fault")                   \
-  X(UART_ERR_COMMUNICATION_FAILURE, 18, "Communication failure")     \
-  X(UART_ERR_DEVICE_NOT_RESPONDING, 19, "Device not responding")     \
-  X(UART_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")       \
-  /* Configuration errors */                                         \
-  X(UART_ERR_INVALID_CONFIGURATION, 21, "Invalid configuration")     \
-  X(UART_ERR_UNSUPPORTED_OPERATION, 22, "Unsupported operation")     \
-  X(UART_ERR_INVALID_BAUD_RATE, 23, "Invalid baud rate")             \
-  X(UART_ERR_INVALID_DATA_BITS, 24, "Invalid data bits")             \
-  X(UART_ERR_INVALID_PARITY, 25, "Invalid parity")                   \
-  X(UART_ERR_INVALID_STOP_BITS, 26, "Invalid stop bits")             \
-  X(UART_ERR_PIN_CONFIGURATION_ERROR, 27, "Pin configuration error") \
-  X(UART_ERR_FLOW_CONTROL_ERROR, 28, "Flow control error")           \
-  /* System errors */                                                \
-  X(UART_ERR_SYSTEM_ERROR, 29, "System error")                       \
-  X(UART_ERR_PERMISSION_DENIED, 30, "Permission denied")             \
+#define HF_UART_ERR_LIST(X)                                                                        \
+  /* Success codes */                                                                              \
+  X(UART_SUCCESS, 0, "Success")                                                                    \
+  /* General errors */                                                                             \
+  X(UART_ERR_FAILURE, 1, "General failure")                                                        \
+  X(UART_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                \
+  X(UART_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                        \
+  X(UART_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                            \
+  X(UART_ERR_NULL_POINTER, 5, "Null pointer")                                                      \
+  X(UART_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                    \
+  /* Communication errors */                                                                       \
+  X(UART_ERR_TIMEOUT, 7, "Operation timeout")                                                      \
+  X(UART_ERR_BUFFER_FULL, 8, "Buffer full")                                                        \
+  X(UART_ERR_BUFFER_EMPTY, 9, "Buffer empty")                                                      \
+  X(UART_ERR_TRANSMISSION_FAILED, 10, "Transmission failed")                                       \
+  X(UART_ERR_RECEPTION_FAILED, 11, "Reception failed")                                             \
+  /* Frame errors */                                                                               \
+  X(UART_ERR_FRAME_ERROR, 12, "Frame error")                                                       \
+  X(UART_ERR_PARITY_ERROR, 13, "Parity error")                                                     \
+  X(UART_ERR_OVERRUN_ERROR, 14, "Overrun error")                                                   \
+  X(UART_ERR_NOISE_ERROR, 15, "Noise error")                                                       \
+  X(UART_ERR_BREAK_DETECTED, 16, "Break condition detected")                                       \
+  /* Hardware errors */                                                                            \
+  X(UART_ERR_HARDWARE_FAULT, 17, "Hardware fault")                                                 \
+  X(UART_ERR_COMMUNICATION_FAILURE, 18, "Communication failure")                                   \
+  X(UART_ERR_DEVICE_NOT_RESPONDING, 19, "Device not responding")                                   \
+  X(UART_ERR_VOLTAGE_OUT_OF_RANGE, 20, "Voltage out of range")                                     \
+  /* Configuration errors */                                                                       \
+  X(UART_ERR_INVALID_CONFIGURATION, 21, "Invalid configuration")                                   \
+  X(UART_ERR_UNSUPPORTED_OPERATION, 22, "Unsupported operation")                                   \
+  X(UART_ERR_INVALID_BAUD_RATE, 23, "Invalid baud rate")                                           \
+  X(UART_ERR_INVALID_DATA_BITS, 24, "Invalid data bits")                                           \
+  X(UART_ERR_INVALID_PARITY, 25, "Invalid parity")                                                 \
+  X(UART_ERR_INVALID_STOP_BITS, 26, "Invalid stop bits")                                           \
+  X(UART_ERR_PIN_CONFIGURATION_ERROR, 27, "Pin configuration error")                               \
+  X(UART_ERR_FLOW_CONTROL_ERROR, 28, "Flow control error")                                         \
+  /* System errors */                                                                              \
+  X(UART_ERR_SYSTEM_ERROR, 29, "System error")                                                     \
+  X(UART_ERR_PERMISSION_DENIED, 30, "Permission denied")                                           \
   X(UART_ERR_OPERATION_ABORTED, 31, "Operation aborted")
 
 enum class hf_uart_err_t : hf_u8_t {
@@ -87,13 +87,13 @@ enum class hf_uart_err_t : hf_u8_t {
  */
 constexpr std::string_view HfUartErrToString(hf_uart_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_uart_err_t::NAME:  \
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_uart_err_t::NAME:                                                                        \
     return DESC;
     HF_UART_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

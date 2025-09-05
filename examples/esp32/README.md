@@ -2,13 +2,15 @@
 
 <div align="center">
 
-![ESP32 Examples](https://img.shields.io/badge/ESP32-Examples-blue?style=for-the-badge&logo=espressif)
+![ESP32
+Examples](https://img.shields.io/badge/ESP32-Examples-blue?style=for-the-badge&logo=espressif)
 ![Build System](https://img.shields.io/badge/Build-System-green?style=for-the-badge&logo=github)
 ![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v5.5-orange?style=for-the-badge&logo=espressif)
 
 **🎯 Comprehensive Examples with Advanced Build System for HardFOC ESP32 Development**
 
-*Professional-grade examples demonstrating all HardFOC ESP32 interface capabilities with automated ESP-IDF management, structured build system, and CI/CD integration*
+*Professional-grade examples demonstrating all HardFOC ESP32 interface capabilities with automated
+ESP-IDF management, structured build system, and CI/CD integration*
 
 </div>
 
@@ -32,7 +34,9 @@
 
 ## 🎯 **Overview**
 
-The ESP32 examples directory provides comprehensive demonstrations of all HardFOC interface capabilities, featuring a sophisticated build system that automatically manages ESP-IDF versions, generates build matrices, and produces structured, parseable build outputs.
+The ESP32 examples directory provides comprehensive demonstrations of all HardFOC interface
+capabilities, featuring a sophisticated build system that automatically manages ESP-IDF versions,
+generates build matrices, and produces structured, parseable build outputs.
 
 ### 🏆 **Key Features**
 
@@ -51,23 +55,23 @@ The ESP32 examples directory provides comprehensive demonstrations of all HardFO
 
 ### **System Components**
 
-```
+```yaml
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           📁 CONFIGURATION LAYER                           │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  app_config.yml  ──┐                                                      │
+│  app*config.yml  ──┐                                                      │
 │                     │                                                      │
-│  generate_matrix.py ──┘                                                      │
+│  generate*matrix.py ──┘                                                      │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                             🔧 BUILD LAYER                                 │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  build_app.sh      ──┐                                                    │
-│  setup_common.sh     │                                                    │
-│  setup_ci.sh         │                                                    │
-│  setup_repo.sh       ──┘                                                    │
+│  build*app.sh      ──┐                                                    │
+│  setup*common.sh     │                                                    │
+│  setup*ci.sh         │                                                    │
+│  setup*repo.sh       ──┘                                                    │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
@@ -89,13 +93,14 @@ The ESP32 examples directory provides comprehensive demonstrations of all HardFO
 └─────────────────────────────────────────────────────────────────────────────┘
 
 Data Flow:
-app_config.yml → generate_matrix.py → Matrix Generation
-setup_common.sh → build_app.sh → Dynamic Build Directories → Structured Naming → Complete Artifacts → Artifact Upload
-```
+app*config.yml → generate*matrix.py → Matrix Generation
+setup*common.sh → build*app.sh → Dynamic Build Directories → Structured Naming → Complete Artifacts
+→ Artifact Upload
+```text
 
 ### **Build Process Flow**
 
-1. **Configuration Loading** - Read `app_config.yml` for build parameters
+1. **Configuration Loading** - Read `app*config.yml` for build parameters
 2. **🛡️ Smart Validation** - Validate app + build type + IDF version combination
 3. **🧠 Smart Default Selection** - Auto-select ESP-IDF version if not specified
 4. **ESP-IDF Detection** - Auto-detect or install required ESP-IDF version
@@ -108,7 +113,8 @@ setup_common.sh → build_app.sh → Dynamic Build Directories → Structured Na
 
 ## 🛡️ **Enhanced Validation System**
 
-The build system now includes comprehensive validation to prevent invalid build combinations and provide clear guidance to users.
+The build system now includes comprehensive validation to prevent invalid build combinations and
+provide clear guidance to users.
 
 ### **Validation Features**
 
@@ -119,10 +125,10 @@ The build system now includes comprehensive validation to prevent invalid build 
 
 ### **Validation Flow**
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           BUILD REQUEST                                    │
-│  app: gpio_test, build_type: Release, idf_version: (unspecified)         │
+│  app: gpio*test, build*type: Release, idf*version: (unspecified)         │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
@@ -154,14 +160,14 @@ The build system now includes comprehensive validation to prevent invalid build 
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           VALIDATION RESULT                                │
-│  ✅ VALID: gpio_test + Release + release/v5.5                            │
+│  ✅ VALID: gpio*test + Release + release/v5.5                            │
 │  → Proceed with build                                                    │
 │                                                                             │
-│  ❌ INVALID: gpio_test + Release + release/v5.4                          │
+│  ❌ INVALID: gpio*test + Release + release/v5.4                          │
 │  → Show error with valid combinations                                     │
 │  → Provide helpful next steps                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
-```
+```text
 
 **Key Optimization Points:**
 - **Early Exit**: Basic validation happens first, failing fast on invalid inputs
@@ -179,19 +185,19 @@ The build system automatically manages ESP-IDF versions without manual intervent
 
 #### **Detection Process**
 ```bash
-# 1. Check existing installations
+## 1. Check existing installations
 ~/.espressif/esp-idf-{version}/
 ~/esp/esp-idf-{version}/
 
-# 2. Auto-download if missing
+## 2. Auto-download if missing
 git clone --recursive https://github.com/espressif/esp-idf.git esp-idf-{version}
 
-# 3. Install tools and dependencies
+## 3. Install tools and dependencies
 ./install.sh
 
-# 4. Source environment
+## 4. Source environment
 source export.sh
-```
+```text
 
 #### **Supported ESP-IDF Versions**
 - **v4.4** - Legacy support for older projects
@@ -212,102 +218,103 @@ source export.sh
 The system automatically sets and manages:
 
 ```bash
-export IDF_PATH="/path/to/esp-idf-{version}"
-export PATH="$IDF_PATH/tools:$PATH"
-export ESP_IDF_VERSION="{version}"
-export IDF_TARGET="esp32c6"
-```
+export IDF*PATH="/path/to/esp-idf-{version}"
+export PATH="$IDF*PATH/tools:$PATH"
+export ESP*IDF*VERSION="{version}"
+export IDF*TARGET="esp32c6"
+```text
 
 ---
 
 ## 📁 **Project Structure**
 
-```
+```text
 examples/esp32/
 ├── 📁 components/              # Custom ESP-IDF components
 ├── 📁 main/                    # Main application source code
 │   ├── 📄 CMakeLists.txt       # App being built cmake list
 ├── 📁 scripts/                # Build and utility scripts
-│   ├── 📄 app_config.yml      # Centralized configuration
-│   ├── 📄 generate_matrix.py  # CI matrix generator
-│   ├── 📄 build_app.sh        # Main build script
-│   ├── 📄 setup_common.sh     # Shared setup functions
-│   ├── 📄 setup_ci.sh         # CI environment setup
-│   ├── 📄 setup_repo.sh       # Local development setup
-│   ├── 📄 flash_app.sh        # Flashing and monitoring
-│   └── 📄 config_loader.sh    # Configuration utilities
+│   ├── 📄 app*config.yml      # Centralized configuration
+│   ├── 📄 generate*matrix.py  # CI matrix generator
+│   ├── 📄 build*app.sh        # Main build script
+│   ├── 📄 setup*common.sh     # Shared setup functions
+│   ├── 📄 setup*ci.sh         # CI environment setup
+│   ├── 📄 setup*repo.sh       # Local development setup
+│   ├── 📄 flash*app.sh        # Flashing and monitoring
+│   └── 📄 config*loader.sh    # Configuration utilities
 ├── 📁 build-*/                # Generated build directories
-└── 📄 app_config.yml          # All possible main applications that can be built
+└── 📄 app*config.yml          # All possible main applications that can be built
 └── 📄 CMakeLists.txt          # Project Cmake list
 └── 📄 sdkconfig               # Project config (idf.py menuconfig)
 └── 📄 README.md               # This documentation
-```
+```yaml
 
 ### **Key Files Explained**
 
-#### **`app_config.yml`**
+#### **`app*config.yml`**
 Centralized configuration for all applications, build types, and ESP-IDF versions:
 
 ```yaml
 metadata:
-  idf_versions: ["release/v5.5", "release/v5.4"]
-  build_types: [["Debug", "Release"], ["Debug", "Release"]]
+  idf*versions: ["release/v5.5", "release/v5.4"]
+  build*types: [["Debug", "Release"], ["Debug", "Release"]]
   target: "esp32c6"
 
 apps:
-  gpio_test:
-    ci_enabled: true
+  gpio*test:
+    ci*enabled: true
     description: "GPIO peripheral comprehensive testing"
-    idf_versions: ["release/v5.5"]  # Override global
-    build_types: [["Debug", "Release"]]
-```
+    idf*versions: ["release/v5.5"]  # Override global
+    build*types: [["Debug", "Release"]]
+```python
 
-#### **`generate_matrix.py`**
+#### **`generate*matrix.py`**
 Python script that generates CI/CD build matrices from centralized configuration:
 
 ```bash
-# Generate full matrix (default JSON output)
-python3 scripts/generate_matrix.py
+## Generate full matrix (default JSON output)
+python3 scripts/generate*matrix.py
 
-# YAML format output
-python3 scripts/generate_matrix.py --format yaml
+## YAML format output
+python3 scripts/generate*matrix.py --format yaml
 
-# Filter for specific app
-python3 scripts/generate_matrix.py --filter gpio_test
+## Filter for specific app
+python3 scripts/generate*matrix.py --filter gpio*test
 
-# Validate configuration
-python3 scripts/generate_matrix.py --validate
+## Validate configuration
+python3 scripts/generate*matrix.py --validate
 
-# Verbose output with validation
-python3 scripts/generate_matrix.py --verbose --validate
+## Verbose output with validation
+python3 scripts/generate*matrix.py --verbose --validate
 
-# Output to file
-python3 scripts/generate_matrix.py --output matrix.json
+## Output to file
+python3 scripts/generate*matrix.py --output matrix.json
 
-# Complex combination
-python3 scripts/generate_matrix.py --filter wifi_test --validate --verbose --format yaml --output wifi_matrix.yaml
-```
+## Complex combination
+python3 scripts/generate*matrix.py --filter wifi*test --validate --verbose --format yaml --output
+wifi*matrix.yaml
+```yaml
 
 **Features:**
-- **Configuration Validation**: Validates `app_config.yml` structure and content
+- **Configuration Validation**: Validates `app*config.yml` structure and content
 - **Flexible Output**: JSON (GitHub Actions) and YAML formats
 - **App Filtering**: Filter matrix for specific applications
 - **Verbose Processing**: Detailed processing information and statistics
 - **Smart Path Detection**: Works from any directory
 - **CI Integration**: Ready for GitHub Actions, GitLab CI, and Jenkins
 
-#### **`build_app.sh`**
+#### **`build*app.sh`**
 Main build script with automatic ESP-IDF management:
 
 ```bash
-# Basic usage
-./scripts/build_app.sh <app_name> <build_type> [idf_version]
+## Basic usage
+./scripts/build*app.sh <app*name> <build*type> [idf*version]
 
-# Examples
-./scripts/build_app.sh gpio_test Release
-./scripts/build_app.sh adc_test Debug release/v5.4
-./scripts/build_app.sh wifi_test Release release/v5.5
-```
+## Examples
+./scripts/build*app.sh gpio*test Release
+./scripts/build*app.sh adc*test Debug release/v5.4
+./scripts/build*app.sh wifi*test Release release/v5.5
+```text
 
 ---
 
@@ -316,44 +323,44 @@ Main build script with automatic ESP-IDF management:
 ### **1. Initial Setup**
 
 ```bash
-# Clone the repository
+## Clone the repository
 git clone <repository-url>
 cd hf-internal-interface-wrap
 
-# Navigate to ESP32 examples
+## Navigate to ESP32 examples
 cd examples/esp32
 
-# Setup development environment
-source scripts/setup_repo.sh
-```
+## Setup development environment
+source scripts/setup*repo.sh
+```text
 
 ### **2. Build Your First Application**
 
 ```bash
-# Build GPIO test application
-./scripts/build_app.sh gpio_test Release
+## Build GPIO test application
+./scripts/build*app.sh gpio*test Release
 
-# Build ADC test with specific ESP-IDF version
-./scripts/build_app.sh adc_test Debug release/v5.4
+## Build ADC test with specific ESP-IDF version
+./scripts/build*app.sh adc*test Debug release/v5.4
 
-# Build with clean rebuild
-CLEAN=1 ./scripts/build_app.sh wifi_test Release
-# Or
-./scripts/build_app.sh wifi_test Release --clean
-```
+## Build with clean rebuild
+CLEAN=1 ./scripts/build*app.sh wifi*test Release
+## Or
+./scripts/build*app.sh wifi*test Release --clean
+```text
 
 ### **3. Flash and Monitor**
 
 ```bash
-# Flash and monitor
-./scripts/flash_app.sh flash_monitor gpio_test Release
+## Flash and monitor
+./scripts/flash*app.sh flash*monitor gpio*test Release
 
-# Flash only
-./scripts/flash_app.sh flash gpio_test Release
+## Flash only
+./scripts/flash*app.sh flash gpio*test Release
 
-# Monitor only
-./scripts/flash_app.sh monitor
-```
+## Monitor only
+./scripts/flash*app.sh monitor
+```text
 
 ---
 
@@ -361,9 +368,9 @@ CLEAN=1 ./scripts/build_app.sh wifi_test Release
 
 ### **Build Script Options**
 
-#### **`build_app.sh`**
+#### **`build*app.sh`**
 ```bash
-./scripts/build_app.sh [OPTIONS] <app_name> <build_type> [idf_version]
+./scripts/build*app.sh [OPTIONS] <app*name> <build*type> [idf*version]
 
 Options:
   -c, --clean          Clean build (remove existing build directory)
@@ -371,57 +378,57 @@ Options:
   -h, --help           Show this help message
 
 Arguments:
-  app_name             Application name from app_config.yml
-  build_type           Build type (Debug, Release)
-  idf_version          ESP-IDF version (optional, uses default if not specified)
+  app*name             Application name from app*config.yml
+  build*type           Build type (Debug, Release)
+  idf*version          ESP-IDF version (optional, uses default if not specified)
 
 Examples:
-  ./scripts/build_app.sh gpio_test Release
-  ./scripts/build_app.sh adc_test Debug release/v5.4
-  ./scripts/build_app.sh --clean wifi_test Release
-```
+  ./scripts/build*app.sh gpio*test Release
+  ./scripts/build*app.sh adc*test Debug release/v5.4
+  ./scripts/build*app.sh --clean wifi*test Release
+```text
 
-#### **`flash_app.sh`**
+#### **`flash*app.sh`**
 ```bash
-./scripts/flash_app.sh <action> [app_name] [build_type]
+./scripts/flash*app.sh <action> [app*name] [build*type]
 
 Actions:
   flash                Flash firmware only
   monitor              Monitor serial output only
-  flash_monitor        Flash and then monitor
-  flash_erase          Erase flash and flash firmware
+  flash*monitor        Flash and then monitor
+  flash*erase          Erase flash and flash firmware
 
 Examples:
-  ./scripts/flash_app.sh flash_monitor gpio_test Release
-  ./scripts/flash_app.sh monitor
-  ./scripts/flash_app.sh flash_erase adc_test Debug
-```
+  ./scripts/flash*app.sh flash*monitor gpio*test Release
+  ./scripts/flash*app.sh monitor
+  ./scripts/flash*app.sh flash*erase adc*test Debug
+```text
 
 ### **Environment Setup Scripts**
 
-#### **`setup_repo.sh` (Local Development)**
+#### **`setup*repo.sh` (Local Development)**
 ```bash
-# Setup local development environment
-source scripts/setup_repo.sh
+## Setup local development environment
+source scripts/setup*repo.sh
 
-# This script:
-# 1. Installs development tools (clang, clang-format, clang-tidy)
-# 2. Sets up ESP-IDF environment
-# 3. Configures build tools
-# 4. Exports necessary environment variables
-```
+## This script:
+## 1. Installs development tools (clang, clang-format, clang-tidy)
+## 2. Sets up ESP-IDF environment
+## 3. Configures build tools
+## 4. Exports necessary environment variables
+```text
 
-#### **`setup_ci.sh` (CI/CD Environment)**
+#### **`setup*ci.sh` (CI/CD Environment)**
 ```bash
-# Setup CI environment
-source scripts/setup_ci.sh
+## Setup CI environment
+source scripts/setup*ci.sh
 
-# This script:
-# 1. Installs CI-specific tools
-# 2. Sets up ESP-IDF environment
-# 3. Configures for automated builds
-# 4. Exports CI-specific variables
-```
+## This script:
+## 1. Installs CI-specific tools
+## 2. Sets up ESP-IDF environment
+## 3. Configures for automated builds
+## 4. Exports CI-specific variables
+```yaml
 
 ---
 
@@ -429,27 +436,27 @@ source scripts/setup_ci.sh
 
 ### **Application Configuration**
 
-Each application can be configured in `app_config.yml`:
+Each application can be configured in `app*config.yml`:
 
 ```yaml
 apps:
-  gpio_test:
-    ci_enabled: true                    # Include in CI builds
+  gpio*test:
+    ci*enabled: true                    # Include in CI builds
     description: "GPIO testing suite"   # Human-readable description
-    idf_versions: ["release/v5.5"]     # Override global IDF versions
-    build_types: [["Debug", "Release"]] # Override global build types
+    idf*versions: ["release/v5.5"]     # Override global IDF versions
+    build*types: [["Debug", "Release"]] # Override global build types
     
-  adc_test:
-    ci_enabled: true
+  adc*test:
+    ci*enabled: true
     description: "ADC peripheral testing"
     # Uses global IDF versions and build types
     
-  wifi_test:
-    ci_enabled: false                   # Exclude from CI builds
+  wifi*test:
+    ci*enabled: false                   # Exclude from CI builds
     description: "WiFi functionality testing"
-    idf_versions: ["release/v5.4"]     # Specific IDF version only
-    build_types: [["Release"]]         # Release builds only
-```
+    idf*versions: ["release/v5.4"]     # Specific IDF version only
+    build*types: [["Release"]]         # Release builds only
+```text
 
 ### **Build Configuration**
 
@@ -457,10 +464,10 @@ apps:
 ```yaml
 metadata:
   # ESP-IDF versions to support
-  idf_versions: ["release/v5.5", "release/v5.4", "release/v5.3"]
+  idf*versions: ["release/v5.5", "release/v5.4", "release/v5.3"]
   
   # Build types per IDF version (nested array)
-  build_types: [
+  build*types: [
     ["Debug", "Release"],  # For release/v5.5
     ["Debug", "Release"],  # For release/v5.4
     ["Debug"]              # For release/v5.3
@@ -470,34 +477,34 @@ metadata:
   target: "esp32c6"
   
   # Build directory pattern
-  build_directory_pattern: "build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}"
-```
+build*directory*pattern: "build-app-{app*type}-type-{build*type}-target-{target}-idf-{idf*version}"
+```text
 
 #### **CI Configuration**
 ```yaml
-ci_config:
+ci*config:
   # Exclude specific combinations
-  exclude_combinations:
-    - app_name: "wifi_test"
-      idf_version: "release/v5.3"
-      build_type: "Release"
-    - app_name: "bluetooth_test"
-      idf_version: "release/v5.4"
-      build_type: "Debug"
-```
+  exclude*combinations:
+    - app*name: "wifi*test"
+      idf*version: "release/v5.3"
+      build*type: "Release"
+    - app*name: "bluetooth*test"
+      idf*version: "release/v5.4"
+      build*type: "Debug"
+```text
 
 ### **Build Directory Naming**
 
 The system generates structured build directory names:
 
-```
-build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}
-```
+```text
+build-app-{app*type}-type-{build*type}-target-{target}-idf-{idf*version}
+```json
 
 **Examples:**
-- `build-app-gpio_test-type-Release-target-esp32c6-idf-release_v5_5`
-- `build-app-adc_test-type-Debug-target-esp32c6-idf-release_v5_4`
-- `build-app-wifi_test-type-Release-target-esp32c6-idf-release_v5_3`
+- `build-app-gpio*test-type-Release-target-esp32c6-idf-release*v5*5`
+- `build-app-adc*test-type-Debug-target-esp32c6-idf-release*v5*4`
+- `build-app-wifi*test-type-Release-target-esp32c6-idf-release*v5*3`
 
 **Benefits:**
 - ✅ **ESP-IDF Compatible** - No special characters
@@ -515,45 +522,45 @@ build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}
 Each build produces comprehensive artifacts:
 
 #### **Main Application Files**
-- **`{app_name}.bin`** - Flashable firmware binary
-- **`{app_name}.elf`** - ELF file for debugging and analysis
-- **`{app_name}.map`** - Memory layout and symbol information
-- **`{app_name}.hex`** - Intel HEX format (if enabled)
+- **`{app*name}.bin`** - Flashable firmware binary
+- **`{app*name}.elf`** - ELF file for debugging and analysis
+- **`{app*name}.map`** - Memory layout and symbol information
+- **`{app*name}.hex`** - Intel HEX format (if enabled)
 
 #### **Bootloader and System Files**
 - **`bootloader/bootloader.bin`** - ESP32 bootloader
-- **`partition_table/partition-table.bin`** - Flash partition layout
+- **`partition*table/partition-table.bin`** - Flash partition layout
 - **`sdkconfig`** - ESP-IDF configuration file
 - **`config.env`** - Environment configuration
 
 #### **Build System Files**
 - **`build.ninja`** - Ninja build system file
 - **`CMakeCache.txt`** - CMake cache
-- **`compile_commands.json`** - IDE integration
-- **`.ninja_deps`** - Build dependencies
+- **`compile*commands.json`** - IDE integration
+- **`.ninja*deps`** - Build dependencies
 
 #### **Documentation and Analysis**
-- **`project_description.json`** - Project metadata
+- **`project*description.json`** - Project metadata
 - **`size.txt`** - Memory usage analysis
-- **`ccache_stats.txt`** - Cache statistics (if enabled)
+- **`ccache*stats.txt`** - Cache statistics (if enabled)
 
 ### **Artifact Organization**
 
-```
-build-app-{app_name}-type-{build_type}-target-{target}-idf-{idf_version}/
-├── 📄 {app_name}.bin              # Main firmware
-├── 📄 {app_name}.elf              # Debug information
-├── 📄 {app_name}.map              # Memory layout
+```text
+build-app-{app*name}-type-{build*type}-target-{target}-idf-{idf*version}/
+├── 📄 {app*name}.bin              # Main firmware
+├── 📄 {app*name}.elf              # Debug information
+├── 📄 {app*name}.map              # Memory layout
 ├── 📁 bootloader/                 # Bootloader files
 │   ├── 📄 bootloader.bin
 │   └── 📄 bootloader.elf
-├── 📁 partition_table/            # Partition information
+├── 📁 partition*table/            # Partition information
 │   └── 📄 partition-table.bin
 ├── 📁 esp-idf/                    # ESP-IDF components
 ├── 📄 sdkconfig                   # Configuration
 ├── 📄 build.ninja                 # Build system
-└── 📄 compile_commands.json       # IDE integration
-```
+└── 📄 compile*commands.json       # IDE integration
+```text
 
 ---
 
@@ -570,9 +577,9 @@ name: ESP32 Component CI • Build • Size • Static Analysis
 on:
   push:
     branches: [main]
-  pull_request:
+  pull*request:
     branches: [main]
-  workflow_dispatch:
+  workflow*dispatch:
 
 jobs:
   setup-environment:     # Setup development tools
@@ -580,57 +587,57 @@ jobs:
   build:                 # Build all applications
   static-analysis:       # Code quality analysis
   workflow-lint:         # Workflow validation
-```
+```yaml
 
 #### **Matrix Generation**
-The CI automatically generates build matrices from `app_config.yml`:
+The CI automatically generates build matrices from `app*config.yml`:
 
 ```yaml
-# Generated matrix example
+## Generated matrix example
 matrix:
   include:
-    - idf_version: "release/v5.5"
-      build_type: "Debug"
-      app_name: "gpio_test"
+    - idf*version: "release/v5.5"
+      build*type: "Debug"
+      app*name: "gpio*test"
       target: "esp32c6"
-    - idf_version: "release/v5.5"
-      build_type: "Release"
-      app_name: "gpio_test"
+    - idf*version: "release/v5.5"
+      build*type: "Release"
+      app*name: "gpio*test"
       target: "esp32c6"
     # ... more combinations
-```
+```text
 
 #### **Build Process**
 ```yaml
 - name: ESP-IDF Build
   run: |
     # Source CI setup
-    source ${{ env.ESP32_PROJECT_PATH }}/scripts/setup_ci.sh
+    source ${{ env.ESP32*PROJECT*PATH }}/scripts/setup*ci.sh
     
     # Build using standard script
-    ./scripts/build_app.sh "${{ matrix.app_name }}" "${{ matrix.build_type }}" "${{ matrix.idf_version }}"
+    ./scripts/build*app.sh "${{ matrix.app*name }}" "${{ matrix.build*type }}" "${{ matrix.idf*version }}"
     
     # Capture build directory for artifacts
-    echo "build_dir=$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" >> $GITHUB_OUTPUT
-```
+    echo "build*dir=$ESP32*BUILD*APP*MOST*RECENT*DIRECTORY" >> $GITHUB*OUTPUT
+```text
 
 #### **Artifact Upload**
 ```yaml
 - name: Upload artifacts
   uses: actions/upload-artifact@v4
   with:
-    name: fw-${{ matrix.app_name }}-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
-    path: ${{ steps.build.outputs.build_dir }}
-```
+    name: fw-${{ matrix.app*name }}-${{ matrix.idf*version*docker }}-${{ matrix.build*type }}
+    path: ${{ steps.build.outputs.build*dir }}
+```text
 
 ### **CI Environment Variables**
 
 ```yaml
 env:
-  BUILD_PATH: ci_build_path
-  IDF_CCACHE_ENABLE: "1"
-  ESP32_PROJECT_PATH: examples/esp32
-```
+  BUILD*PATH: ci*build*path
+  IDF*CCACHE*ENABLE: "1"
+  ESP32*PROJECT*PATH: examples/esp32
+```text
 
 ### **Caching Strategy**
 
@@ -643,14 +650,14 @@ The CI implements intelligent caching:
     path: |
       ~/.espressif
       ~/esp
-    key: esp-idf-${{ matrix.idf_version_docker }}-${{ runner.os }}
+    key: esp-idf-${{ matrix.idf*version*docker }}-${{ runner.os }}
     
 - name: Cache ccache
   uses: actions/cache@v4
   with:
     path: ~/.ccache
-    key: ccache-${{ matrix.idf_version_docker }}-${{ matrix.build_type }}
-```
+    key: ccache-${{ matrix.idf*version*docker }}-${{ matrix.build*type }}
+```text
 
 ---
 
@@ -660,73 +667,73 @@ The CI implements intelligent caching:
 
 #### **ESP-IDF Not Found**
 ```bash
-# Error: ESP-IDF environment not found
-# Solution: The build system will auto-install ESP-IDF
+## Error: ESP-IDF environment not found
+## Solution: The build system will auto-install ESP-IDF
 
-# Manual installation if needed:
+## Manual installation if needed:
 cd ~/esp
-git clone --recursive https://github.com/espressif/esp-idf.git esp-idf-release_v5_5
-cd esp-idf-release_v5_5
+git clone --recursive https://github.com/espressif/esp-idf.git esp-idf-release*v5*5
+cd esp-idf-release*v5*5
 ./install.sh
 source export.sh
-```
+```text
 
 #### **Build Directory Issues**
 ```bash
-# Error: Invalid build directory name
-# Solution: Check app_config.yml build_directory_pattern
+## Error: Invalid build directory name
+## Solution: Check app*config.yml build*directory*pattern
 
-# Ensure pattern follows format:
-build_directory_pattern: "build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}"
-```
+## Ensure pattern follows format:
+build*directory*pattern: "build-app-{app*type}-type-{build*type}-target-{target}-idf-{idf*version}"
+```text
 
 #### **Permission Issues**
 ```bash
-# Error: Permission denied
-# Solution: Make scripts executable
+## Error: Permission denied
+## Solution: Make scripts executable
 chmod +x scripts/*.sh
 chmod +x scripts/*.py
-```
+```python
 
 #### **Python Dependencies**
 ```bash
-# Error: Module not found
-# Solution: Install required packages
+## Error: Module not found
+## Solution: Install required packages
 pip install pyyaml
 pip install esptool
-```
+```text
 
 ### **Debug Mode**
 
 Enable verbose output for debugging:
 
 ```bash
-# Verbose build
-./scripts/build_app.sh --verbose gpio_test Release
+## Verbose build
+./scripts/build*app.sh --verbose gpio*test Release
 
-# Clean rebuild
-CLEAN=1 ./scripts/build_app.sh gpio_test Release
+## Clean rebuild
+CLEAN=1 ./scripts/build*app.sh gpio*test Release
 
-# Check environment
-source scripts/setup_repo.sh
-echo $IDF_PATH
-echo $IDF_TARGET
-```
+## Check environment
+source scripts/setup*repo.sh
+echo $IDF*PATH
+echo $IDF*TARGET
+```text
 
 ### **Log Files**
 
 Build logs are available in:
 
 ```bash
-# Build log
+## Build log
 cat build-*/log/build.log
 
-# CMake log
+## CMake log
 cat build-*/CMakeFiles/CMakeOutput.log
 
-# Ninja log
-cat build-*/.ninja_log
-```
+## Ninja log
+cat build-*/.ninja*log
+```cpp
 
 ---
 
@@ -735,23 +742,40 @@ cat build-*/.ninja_log
 ### **Available Applications**
 
 | Application | Description | CI Status | IDF Versions | Build Types |
+
 |-------------|-------------|-----------|--------------|-------------|
-| `gpio_test` | GPIO peripheral comprehensive testing | ✅ Enabled | v5.5 | Debug, Release |
-| `adc_test` | ADC peripheral testing | ✅ Enabled | v5.5 | Debug, Release |
-| `uart_test` | UART communication testing | ✅ Enabled | v5.5 | Debug, Release |
-| `spi_test` | SPI interface testing | ✅ Enabled | v5.5 | Debug, Release |
-| `i2c_test` | I2C interface testing | ✅ Enabled | v5.5 | Debug, Release |
-| `pwm_test` | PWM generation testing | ✅ Enabled | v5.5 | Debug, Release |
-| `can_test` | CAN bus testing | ✅ Enabled | v5.5 | Debug, Release |
-| `pio_test` | Programmable I/O testing | ✅ Enabled | v5.5 | Debug, Release |
-| `temperature_test` | Temperature sensor testing | ✅ Enabled | v5.5 | Debug, Release |
-| `nvs_test` | Non-volatile storage testing | ✅ Enabled | v5.5 | Debug, Release |
-| `timer_test` | Timer functionality testing | ✅ Enabled | v5.5 | Debug, Release |
-| `logger_test` | Logging system testing | ✅ Enabled | v5.5 | Debug, Release |
-| `wifi_test` | WiFi functionality testing | ✅ Enabled | v5.5 | Debug, Release |
-| `bluetooth_test` | Bluetooth testing | ✅ Enabled | v5.5 | Debug, Release |
-| `utils_test` | Utility functions testing | ✅ Enabled | v5.5 | Debug, Release |
-| `ascii_art` | ASCII art generation demo | ✅ Enabled | v5.5 | Debug, Release |
+
+| `gpio*test` | GPIO peripheral comprehensive testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `adc*test` | ADC peripheral testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `uart*test` | UART communication testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `spi*test` | SPI interface testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `i2c*test` | I2C interface testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `pwm*test` | PWM generation testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `can*test` | CAN bus testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `pio*test` | Programmable I/O testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `temperature*test` | Temperature sensor testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `nvs*test` | Non-volatile storage testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `timer*test` | Timer functionality testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `logger*test` | Logging system testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `wifi*test` | WiFi functionality testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `bluetooth*test` | Bluetooth testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `utils*test` | Utility functions testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `ascii*art` | ASCII art generation demo | ✅ Enabled | v5.5 | Debug, Release |
 
 ### **Application Categories**
 
@@ -816,23 +840,23 @@ Each application includes comprehensive test documentation:
        }
    };
    
-   TEST_MAIN(NewAppTest)
+   TEST*MAIN(NewAppTest)
    ```
 
-2. **Update Configuration**
+1. **Update Configuration**
    ```yaml
-   # app_config.yml
+   # app*config.yml
    apps:
-     new_app_test:
-       ci_enabled: true
+     new*app*test:
+       ci*enabled: true
        description: "New application testing"
-       idf_versions: ["release/v5.5"]
-       build_types: [["Debug", "Release"]]
+       idf*versions: ["release/v5.5"]
+       build*types: [["Debug", "Release"]]
    ```
 
-3. **Test Build**
+1. **Test Build**
 ```bash
-   ./scripts/build_app.sh new_app_test Release
+   ./scripts/build*app.sh new*app*test Release
    ```
 
 ### **Modifying Build System**
@@ -846,7 +870,8 @@ Each application includes comprehensive test documentation:
 
 ## 📄 **License**
 
-This project is licensed under the GPL-3.0 License - see the [LICENSE](../../LICENSE) file for details.
+This project is licensed under the GPL-3.0 License - see the [LICENSE](../../LICENSE) file for
+details.
 
 ---
 
@@ -867,5 +892,3 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE](../../LIC
 *Professional-grade examples with enterprise-ready build system*
 
 </div>
-
-

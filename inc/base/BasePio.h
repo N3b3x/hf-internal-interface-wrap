@@ -32,45 +32,45 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_PIO_ERR_LIST(X)                                                \
-  /* Success codes */                                                     \
-  X(PIO_SUCCESS, 0, "Success")                                            \
-  /* General errors */                                                    \
-  X(PIO_ERR_FAILURE, 1, "General failure")                                \
-  X(PIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                        \
-  X(PIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                \
-  X(PIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                    \
-  X(PIO_ERR_NULL_POINTER, 5, "Null pointer")                              \
-  X(PIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                            \
-  /* Channel errors */                                                    \
-  X(PIO_ERR_INVALID_CHANNEL, 7, "Invalid PIO channel")                    \
-  X(PIO_ERR_CHANNEL_BUSY, 8, "Channel already in use")                    \
-  X(PIO_ERR_CHANNEL_NOT_AVAILABLE, 9, "Channel not available")            \
-  X(PIO_ERR_INSUFFICIENT_CHANNELS, 10, "Insufficient channels available") \
-  /* Timing errors */                                                     \
-  X(PIO_ERR_INVALID_RESOLUTION, 11, "Invalid time resolution")            \
-  X(PIO_ERR_RESOLUTION_TOO_HIGH, 12, "Time resolution too high")          \
-  X(PIO_ERR_RESOLUTION_TOO_LOW, 13, "Time resolution too low")            \
-  X(PIO_ERR_DURATION_TOO_LONG, 14, "Duration too long")                   \
-  X(PIO_ERR_DURATION_TOO_SHORT, 15, "Duration too short")                 \
-  /* Buffer errors */                                                     \
-  X(PIO_ERR_BUFFER_OVERFLOW, 16, "Buffer overflow")                       \
-  X(PIO_ERR_BUFFER_UNDERFLOW, 17, "Buffer underflow")                     \
-  X(PIO_ERR_BUFFER_TOO_SMALL, 18, "Buffer too small")                     \
-  X(PIO_ERR_BUFFER_TOO_LARGE, 19, "Buffer too large")                     \
-  /* Hardware errors */                                                   \
-  X(PIO_ERR_HARDWARE_FAULT, 20, "Hardware fault")                         \
-  X(PIO_ERR_COMMUNICATION_TIMEOUT, 21, "Communication timeout")           \
-  X(PIO_ERR_COMMUNICATION_FAILURE, 22, "Communication failure")           \
-  X(PIO_ERR_DEVICE_NOT_RESPONDING, 23, "Device not responding")           \
-  /* Configuration errors */                                              \
-  X(PIO_ERR_INVALID_CONFIGURATION, 24, "Invalid configuration")           \
-  X(PIO_ERR_UNSUPPORTED_OPERATION, 25, "Unsupported operation")           \
-  X(PIO_ERR_PIN_CONFLICT, 26, "Pin already in use")                       \
-  X(PIO_ERR_RESOURCE_BUSY, 27, "Resource busy")                           \
-  /* System errors */                                                     \
-  X(PIO_ERR_SYSTEM_ERROR, 28, "System error")                             \
-  X(PIO_ERR_PERMISSION_DENIED, 29, "Permission denied")                   \
+#define HF_PIO_ERR_LIST(X)                                                                         \
+  /* Success codes */                                                                              \
+  X(PIO_SUCCESS, 0, "Success")                                                                     \
+  /* General errors */                                                                             \
+  X(PIO_ERR_FAILURE, 1, "General failure")                                                         \
+  X(PIO_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
+  X(PIO_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
+  X(PIO_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
+  X(PIO_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
+  X(PIO_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
+  /* Channel errors */                                                                             \
+  X(PIO_ERR_INVALID_CHANNEL, 7, "Invalid PIO channel")                                             \
+  X(PIO_ERR_CHANNEL_BUSY, 8, "Channel already in use")                                             \
+  X(PIO_ERR_CHANNEL_NOT_AVAILABLE, 9, "Channel not available")                                     \
+  X(PIO_ERR_INSUFFICIENT_CHANNELS, 10, "Insufficient channels available")                          \
+  /* Timing errors */                                                                              \
+  X(PIO_ERR_INVALID_RESOLUTION, 11, "Invalid time resolution")                                     \
+  X(PIO_ERR_RESOLUTION_TOO_HIGH, 12, "Time resolution too high")                                   \
+  X(PIO_ERR_RESOLUTION_TOO_LOW, 13, "Time resolution too low")                                     \
+  X(PIO_ERR_DURATION_TOO_LONG, 14, "Duration too long")                                            \
+  X(PIO_ERR_DURATION_TOO_SHORT, 15, "Duration too short")                                          \
+  /* Buffer errors */                                                                              \
+  X(PIO_ERR_BUFFER_OVERFLOW, 16, "Buffer overflow")                                                \
+  X(PIO_ERR_BUFFER_UNDERFLOW, 17, "Buffer underflow")                                              \
+  X(PIO_ERR_BUFFER_TOO_SMALL, 18, "Buffer too small")                                              \
+  X(PIO_ERR_BUFFER_TOO_LARGE, 19, "Buffer too large")                                              \
+  /* Hardware errors */                                                                            \
+  X(PIO_ERR_HARDWARE_FAULT, 20, "Hardware fault")                                                  \
+  X(PIO_ERR_COMMUNICATION_TIMEOUT, 21, "Communication timeout")                                    \
+  X(PIO_ERR_COMMUNICATION_FAILURE, 22, "Communication failure")                                    \
+  X(PIO_ERR_DEVICE_NOT_RESPONDING, 23, "Device not responding")                                    \
+  /* Configuration errors */                                                                       \
+  X(PIO_ERR_INVALID_CONFIGURATION, 24, "Invalid configuration")                                    \
+  X(PIO_ERR_UNSUPPORTED_OPERATION, 25, "Unsupported operation")                                    \
+  X(PIO_ERR_PIN_CONFLICT, 26, "Pin already in use")                                                \
+  X(PIO_ERR_RESOURCE_BUSY, 27, "Resource busy")                                                    \
+  /* System errors */                                                                              \
+  X(PIO_ERR_SYSTEM_ERROR, 28, "System error")                                                      \
+  X(PIO_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
   X(PIO_ERR_OPERATION_ABORTED, 30, "Operation aborted")
 
 enum class hf_pio_err_t : hf_u8_t {
@@ -86,13 +86,13 @@ enum class hf_pio_err_t : hf_u8_t {
  */
 constexpr std::string_view HfPioErrToString(hf_pio_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_pio_err_t::NAME:   \
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_pio_err_t::NAME:                                                                         \
     return DESC;
     HF_PIO_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

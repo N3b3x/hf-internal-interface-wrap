@@ -101,22 +101,22 @@ hf_i2c_master_bus_config_t create_test_bus_config(
 
 // Macro to create test bus configuration and bus directly inline (matches replica test pattern
 // exactly)
-#define CREATE_TEST_BUS_INLINE(bus_var_name, mode_val)                                    \
-  hf_i2c_master_bus_config_t bus_config = {};                                             \
-  bus_config.i2c_port = I2C_PORT_NUM;                                                     \
-  bus_config.sda_io_num = TEST_SDA_PIN;                                                   \
-  bus_config.scl_io_num = TEST_SCL_PIN;                                                   \
-  bus_config.mode = mode_val;                                                             \
-  bus_config.trans_queue_depth = (mode_val == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? 32 : 0; \
-  bus_config.clk_source = hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT;                  \
-  bus_config.glitch_ignore_cnt = hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_7_CYCLES;   \
-  bus_config.intr_priority = 0;                                                           \
-  bus_config.flags.enable_internal_pullup = true;                                         \
-  bus_config.flags.allow_pd = false;                                                      \
-  auto bus_var_name = std::make_unique<EspI2cBus>(bus_config);                            \
-  if (!bus_var_name->Initialize()) {                                                      \
-    ESP_LOGE(TAG, "Failed to initialize I2C bus");                                        \
-    return false;                                                                         \
+#define CREATE_TEST_BUS_INLINE(bus_var_name, mode_val)                                             \
+  hf_i2c_master_bus_config_t bus_config = {};                                                      \
+  bus_config.i2c_port = I2C_PORT_NUM;                                                              \
+  bus_config.sda_io_num = TEST_SDA_PIN;                                                            \
+  bus_config.scl_io_num = TEST_SCL_PIN;                                                            \
+  bus_config.mode = mode_val;                                                                      \
+  bus_config.trans_queue_depth = (mode_val == hf_i2c_mode_t::HF_I2C_MODE_ASYNC) ? 32 : 0;          \
+  bus_config.clk_source = hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT;                           \
+  bus_config.glitch_ignore_cnt = hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_7_CYCLES;            \
+  bus_config.intr_priority = 0;                                                                    \
+  bus_config.flags.enable_internal_pullup = true;                                                  \
+  bus_config.flags.allow_pd = false;                                                               \
+  auto bus_var_name = std::make_unique<EspI2cBus>(bus_config);                                     \
+  if (!bus_var_name->Initialize()) {                                                               \
+    ESP_LOGE(TAG, "Failed to initialize I2C bus");                                                 \
+    return false;                                                                                  \
   }
 
 //=============================================================================
@@ -168,13 +168,11 @@ bool test_i2c_probe_methods_comparison() noexcept;
 // Helper functions
 bool verify_device_functionality(BaseI2c* device) noexcept;
 
-
 //=============================================================================
 // TEST FUNCTIONS IMPLEMENTATION
 //=============================================================================
 
 bool test_i2c_bus_initialization() noexcept {
-
 
   // Test 1: Basic initialization (using replica test pattern)
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
@@ -202,7 +200,6 @@ bool test_i2c_bus_initialization() noexcept {
 }
 
 bool test_i2c_bus_deinitialization() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
@@ -239,7 +236,6 @@ bool test_i2c_bus_deinitialization() noexcept {
 
 bool test_i2c_configuration_validation() noexcept {
 
-
   // Test various clock sources
   for (auto clk_src : {hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT,
                        hf_i2c_clock_source_t::HF_I2C_CLK_SRC_RC_FAST,
@@ -265,7 +261,6 @@ bool test_i2c_configuration_validation() noexcept {
 }
 
 bool test_i2c_device_creation() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
@@ -351,7 +346,6 @@ bool test_i2c_device_creation() noexcept {
 
 bool test_i2c_device_management() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
@@ -423,7 +417,6 @@ bool test_i2c_device_management() noexcept {
 
 bool test_i2c_device_probing() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
@@ -443,7 +436,6 @@ bool test_i2c_device_probing() noexcept {
 }
 
 bool test_i2c_bus_scanning() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
@@ -472,7 +464,6 @@ bool test_i2c_bus_scanning() noexcept {
 }
 
 bool test_i2c_write_operations() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
@@ -529,7 +520,6 @@ bool test_i2c_write_operations() noexcept {
 
 bool test_i2c_read_operations() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
@@ -580,7 +570,6 @@ bool test_i2c_read_operations() noexcept {
 
 bool test_i2c_write_read_operations() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
@@ -626,7 +615,6 @@ bool test_i2c_write_read_operations() noexcept {
 }
 
 bool test_i2c_error_handling() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
@@ -678,7 +666,6 @@ bool test_i2c_error_handling() noexcept {
 }
 
 bool test_i2c_timeout_handling() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
@@ -738,7 +725,6 @@ bool test_i2c_timeout_handling() noexcept {
 
 bool test_i2c_multi_device_operations() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
@@ -791,7 +777,6 @@ bool test_i2c_multi_device_operations() noexcept {
 
 bool test_i2c_clock_speeds() noexcept {
 
-
   std::vector<uint32_t> test_speeds = {
       100000, // Standard mode
       400000, // Fast mode
@@ -835,7 +820,6 @@ bool test_i2c_clock_speeds() noexcept {
 }
 
 bool test_i2c_address_modes() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
@@ -883,7 +867,6 @@ bool test_i2c_address_modes() noexcept {
 
 bool test_i2c_esp_specific_features() noexcept {
 
-
   // Test different clock sources
   for (auto clk_src : {hf_i2c_clock_source_t::HF_I2C_CLK_SRC_DEFAULT,
                        hf_i2c_clock_source_t::HF_I2C_CLK_SRC_XTAL}) {
@@ -906,7 +889,6 @@ bool test_i2c_esp_specific_features() noexcept {
 }
 
 bool test_i2c_thread_safety() noexcept {
-
 
   // This test would require multiple tasks in a real implementation
   // For now, we'll just verify the mutex protection doesn't break anything
@@ -990,7 +972,6 @@ bool test_i2c_thread_safety() noexcept {
 }
 
 bool test_i2c_performance() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus,
                          hf_i2c_mode_t::HF_I2C_MODE_SYNC) // Use sync mode for performance test
@@ -1088,7 +1069,6 @@ bool test_i2c_performance() noexcept {
 
 bool test_i2c_edge_cases() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
@@ -1126,7 +1106,6 @@ bool test_i2c_edge_cases() noexcept {
 
 bool test_i2c_power_management() noexcept {
 
-
   // Test with power down allowed
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC);
   if (!test_bus) {
@@ -1144,7 +1123,6 @@ bool test_i2c_power_management() noexcept {
 //==============================================//
 
 bool test_i2c_async_operations() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_ASYNC)
   if (!test_bus) {
@@ -1221,7 +1199,6 @@ bool test_i2c_async_operations() noexcept {
 
 bool test_i2c_async_timeout_handling() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_ASYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
@@ -1285,7 +1262,6 @@ bool test_i2c_async_timeout_handling() noexcept {
 
 bool test_i2c_async_multiple_operations() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_ASYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus");
@@ -1346,7 +1322,6 @@ bool test_i2c_async_multiple_operations() noexcept {
 }
 
 bool test_i2c_index_based_access() noexcept {
-
 
   // Create test bus
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
@@ -1584,7 +1559,6 @@ bool test_i2c_index_based_access() noexcept {
 // NEW MODE-AWARE TESTS
 bool test_i2c_sync_mode() noexcept {
 
-
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
   if (!test_bus) {
     ESP_LOGE(TAG, "Failed to create test bus for sync mode test");
@@ -1633,7 +1607,6 @@ bool test_i2c_sync_mode() noexcept {
 }
 
 bool test_i2c_async_mode() noexcept {
-
 
   CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_ASYNC)
 
@@ -1685,7 +1658,6 @@ bool test_i2c_async_mode() noexcept {
 
 bool test_i2c_mode_switching() noexcept {
 
-
   // Start with sync mode
   CREATE_TEST_BUS_INLINE(bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
 
@@ -1726,7 +1698,6 @@ bool test_i2c_mode_switching() noexcept {
 }
 
 bool test_i2c_basic_functionality() noexcept {
-
 
   // Test both modes
   for (auto mode : {hf_i2c_mode_t::HF_I2C_MODE_SYNC, hf_i2c_mode_t::HF_I2C_MODE_ASYNC}) {
@@ -1777,7 +1748,6 @@ bool test_i2c_basic_functionality() noexcept {
 
 // NEW PROBE COMPARISON TEST
 bool test_i2c_probe_methods_comparison() noexcept {
-
 
   ESP_LOGI(TAG, "This test compares ESP-IDF probe vs Custom Fast Probe timing and reliability");
   ESP_LOGI(TAG, "Set USE_CUSTOM_FAST_PROBE in EspI2c.cpp to switch between methods");
@@ -1830,8 +1800,6 @@ bool verify_device_functionality(BaseI2c* device) noexcept {
   return result != hf_i2c_err_t::I2C_ERR_FAILURE;
 }
 
-
-
 //==============================================//
 // ESP-IDF DIRECT API TEST - VERIFICATION      //
 //==============================================//
@@ -1843,7 +1811,6 @@ bool verify_device_functionality(BaseI2c* device) noexcept {
  * @note Runs in a loop with sufficient time to thoroughly test I2C operations
  */
 bool test_i2c_espidf_direct_api() noexcept {
-
 
   ESP_LOGI(TAG, "Testing I2C using ESP-IDF API directly (bypassing our wrapper)");
   ESP_LOGI(TAG, "This test runs FIRST to verify ESP-IDF I2C driver functionality");
@@ -2058,7 +2025,6 @@ bool test_i2c_espidf_direct_api() noexcept {
  */
 bool test_i2c_espidf_wrapper_replica() noexcept {
 
-
   ESP_LOGI(TAG, "Testing I2C using EspI2cBus wrapper (replicating ESP-IDF direct test)");
   ESP_LOGI(TAG, "This test runs SECOND to compare wrapper implementation with ESP-IDF direct API");
   ESP_LOGI(TAG, "If this test fails, the issue is with our wrapper implementation");
@@ -2264,7 +2230,6 @@ bool test_i2c_espidf_wrapper_replica() noexcept {
  * @note This test runs the replica test in a loop to verify stability
  */
 bool test_i2c_espidf_wrapper_replica_continuous() noexcept {
-
 
   ESP_LOGI(TAG, "Testing I2C using EspI2cBus wrapper continuously for stability");
   ESP_LOGI(TAG, "This test runs the replica test pattern in a loop to identify issues");

@@ -1905,19 +1905,19 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
   // Use channel's preferred clock source (not global PWM unit clock)
   ledc_clk_cfg_t clk_cfg = LEDC_AUTO_CLK;
   switch (clock_source) {
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-      clk_cfg = LEDC_USE_PLL_DIV_CLK; // Use PLL_F80M clock (80MHz) explicitly
-      break;
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
-      clk_cfg = LEDC_USE_XTAL_CLK;
-      break;
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
-      clk_cfg = LEDC_USE_RC_FAST_CLK;
-      break;
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT:
-    default:
-      clk_cfg = LEDC_AUTO_CLK; // Let ESP-IDF choose optimal clock
-      break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
+    clk_cfg = LEDC_USE_PLL_DIV_CLK; // Use PLL_F80M clock (80MHz) explicitly
+    break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
+    clk_cfg = LEDC_USE_XTAL_CLK;
+    break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
+    clk_cfg = LEDC_USE_RC_FAST_CLK;
+    break;
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT:
+  default:
+    clk_cfg = LEDC_AUTO_CLK; // Let ESP-IDF choose optimal clock
+    break;
   }
   timer_config.clk_cfg = clk_cfg;
 
@@ -2215,15 +2215,15 @@ hf_u32_t EspPwm::CalculateClockDivider(hf_u32_t frequency_hz,
 
 hf_u32_t EspPwm::GetSourceClockFrequency(hf_pwm_clock_source_t clock_source) const noexcept {
   switch (clock_source) {
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-      return 80000000; // 80MHz APB clock
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
-      return 40000000; // 40MHz crystal oscillator
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
-      return 17500000; // ~17.5MHz RC fast clock
-    case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT:
-    default:
-      return 80000000; // Default to APB clock
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
+    return 80000000; // 80MHz APB clock
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
+    return 40000000; // 40MHz crystal oscillator
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_RC_FAST:
+    return 17500000; // ~17.5MHz RC fast clock
+  case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_DEFAULT:
+  default:
+    return 80000000; // Default to APB clock
   }
 }
 
@@ -2535,24 +2535,24 @@ hf_i8_t EspPwm::AttemptSafeEviction(hf_u32_t frequency_hz, hf_u8_t resolution_bi
 
   // Check eviction policy
   switch (eviction_policy_) {
-    case hf_pwm_eviction_policy_t::STRICT_NO_EVICTION:
-      ESP_LOGI(TAG,
-               "Eviction denied: STRICT_NO_EVICTION policy - will not disrupt existing channels");
-      return -1;
+  case hf_pwm_eviction_policy_t::STRICT_NO_EVICTION:
+    ESP_LOGI(TAG,
+             "Eviction denied: STRICT_NO_EVICTION policy - will not disrupt existing channels");
+    return -1;
 
-    case hf_pwm_eviction_policy_t::ALLOW_EVICTION_WITH_CONSENT:
-      return AttemptEvictionWithConsent(frequency_hz, resolution_bits);
+  case hf_pwm_eviction_policy_t::ALLOW_EVICTION_WITH_CONSENT:
+    return AttemptEvictionWithConsent(frequency_hz, resolution_bits);
 
-    case hf_pwm_eviction_policy_t::ALLOW_EVICTION_NON_CRITICAL:
-      return AttemptEvictionNonCritical(frequency_hz, resolution_bits);
+  case hf_pwm_eviction_policy_t::ALLOW_EVICTION_NON_CRITICAL:
+    return AttemptEvictionNonCritical(frequency_hz, resolution_bits);
 
-    case hf_pwm_eviction_policy_t::FORCE_EVICTION:
-      ESP_LOGW(TAG, "FORCE_EVICTION policy active - attempting aggressive eviction");
-      return AttemptForceEviction(frequency_hz, resolution_bits);
+  case hf_pwm_eviction_policy_t::FORCE_EVICTION:
+    ESP_LOGW(TAG, "FORCE_EVICTION policy active - attempting aggressive eviction");
+    return AttemptForceEviction(frequency_hz, resolution_bits);
 
-    default:
-      ESP_LOGE(TAG, "Unknown eviction policy: %d", static_cast<int>(eviction_policy_));
-      return -1;
+  default:
+    ESP_LOGE(TAG, "Unknown eviction policy: %d", static_cast<int>(eviction_policy_));
+    return -1;
   }
 }
 

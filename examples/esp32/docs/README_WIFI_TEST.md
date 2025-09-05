@@ -2,7 +2,10 @@
 
 ## Overview
 
-The WiFi Comprehensive Test Suite is a thorough validation system for the ESP32-C6 WiFi implementation. It provides both interface testing and real hardware functionality testing to ensure complete WiFi operation validation.
+The WiFi Comprehensive Test Suite is a thorough validation system for the ESP32-C6 WiFi
+implementation.
+It provides both interface testing and real hardware functionality testing to ensure complete WiFi
+operation validation.
 
 ## Test Architecture
 
@@ -32,35 +35,37 @@ The test suite is organized into four main categories:
 
 ## Test Configuration
 
-Tests can be enabled/disabled by modifying the configuration flags at the top of `WifiComprehensiveTest.cpp`:
+Tests can be enabled/disabled by modifying the configuration flags at the top of
+`WifiComprehensiveTest.cpp`:
 
 ```cpp
 // Core WiFi interface tests
-static constexpr bool ENABLE_CORE_TESTS = true;         // Data structures, enums, error codes
-static constexpr bool ENABLE_INTERFACE_TESTS = true;    // Interface validation, integration
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;  // Performance, stress testing
-static constexpr bool ENABLE_FUNCTIONAL_TESTS = true;   // Real WiFi functionality tests
-```
+static constexpr bool ENABLE*CORE*TESTS = true;         // Data structures, enums, error codes
+static constexpr bool ENABLE*INTERFACE*TESTS = true;    // Interface validation, integration
+static constexpr bool ENABLE*PERFORMANCE*TESTS = true;  // Performance, stress testing
+static constexpr bool ENABLE*FUNCTIONAL*TESTS = true;   // Real WiFi functionality tests
+```text
 
 ## Running the Tests
 
 ### Build and Flash
 ```bash
 cd examples/esp32
-./scripts/build_app.sh wifi_test Release
-./scripts/flash_app.sh flash_monitor wifi_test Release
-```
+./scripts/build*app.sh wifi*test Release
+./scripts/flash*app.sh flash*monitor wifi*test Release
+```text
 
 ### Expected Output
 
-The test suite provides comprehensive logging with ASCII art banners and detailed progress information:
+The test suite provides comprehensive logging with ASCII art banners and detailed progress
+information:
 
-```
+```text
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                ESP32-C6 WIFI COMPREHENSIVE TEST SUITE                        ║
 ║                       HardFOC Internal Interface                             ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
-```
+```text
 
 ## Test Results Summary
 
@@ -102,7 +107,7 @@ The test suite provides comprehensive logging with ASCII art banners and detaile
 ### Access Point Test
 The Access Point test creates a real WiFi network that can be seen and connected to:
 
-- **Network Name**: "ESP32-C6_TestAP"
+- **Network Name**: "ESP32-C6*TestAP"
 - **MAC Address**: **:**:**:**:**:**
 - **IP Address**: 192.168.4.1 (default AP subnet)
 - **Security**: WPA2-PSK
@@ -146,9 +151,11 @@ Proper memory allocation and cleanup for all test operations.
 ## Network Interface Management
 
 ### Problem Resolution
-The WiFi implementation previously encountered `esp_netif_lwip` errors due to duplicate network interface creation. This has been **completely resolved** through:
+The WiFi implementation previously encountered `esp*netif*lwip` errors due to duplicate network
+interface creation.
+This has been **completely resolved** through:
 
-1. **Global Interface Management**: Default network interfaces (`WIFI_STA_DEF`, `WIFI_AP_DEF`) are created once and shared across all `EspWifi` instances
+1. **Global Interface Management**: Default network interfaces (`WIFI*STA*DEF`, `WIFI*AP*DEF`) are created once and shared across all `EspWifi` instances
 2. **Atomic Synchronization**: Thread-safe flags prevent race conditions during interface creation
 3. **Proper Resource Sharing**: Multiple WiFi instances can coexist without conflicts
 4. **Optimized Initialization**: Network interfaces are referenced rather than recreated
@@ -156,11 +163,11 @@ The WiFi implementation previously encountered `esp_netif_lwip` errors due to du
 ### Technical Implementation
 ```cpp
 // Global function ensures default interfaces are created only once
-static hf_wifi_err_t ensureDefaultNetifs() {
-  static std::atomic<bool> netifs_initialized{false};
+static hf*wifi*err*t ensureDefaultNetifs() {
+  static std::atomic<bool> netifs*initialized{false};
   // ... implementation details
 }
-```
+```text
 
 ## Troubleshooting
 
@@ -183,7 +190,7 @@ The test suite provides extensive debug information:
 ## Test Customization
 
 ### Adding New Tests
-1. Create a new test function following the naming convention `test_wifi_*`
+1. Create a new test function following the naming convention `test*wifi**`
 2. Add the test to the appropriate test section
 3. Update the test configuration flags if needed
 
@@ -209,4 +216,4 @@ The test suite is designed to be integrated into continuous integration pipeline
 
 - [EspWifi API Reference](../../../docs/esp_api/EspWifi.md)
 - [BaseWifi API Reference](../../../docs/api/BaseWifi.md)
-- [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp_wifi.html)
+- [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp*wifi.html)

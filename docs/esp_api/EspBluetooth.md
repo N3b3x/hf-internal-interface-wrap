@@ -12,21 +12,32 @@
 
 ## Overview
 
-This document describes the **production-ready** ESP32C6 Bluetooth Low Energy (BLE) implementation using the NimBLE stack for ESP-IDF v5.5. The implementation provides a unified Bluetooth interface with optimal support for different ESP32 variants through conditional compilation.
+This document describes the **production-ready** ESP32C6 Bluetooth Low Energy (BLE) implementation
+using the NimBLE stack for ESP-IDF v5.5.
+The implementation provides a unified Bluetooth interface with optimal support for different ESP32
+variants through conditional compilation.
 
-**✅ Status: PRODUCTION READY** - All tests passing (100% success rate), performance verified, comprehensive documentation complete.
+**✅ Status: PRODUCTION READY** - All tests passing (100% success rate), performance verified,
+comprehensive documentation complete.
 
 ## Architecture
 
 ### ESP32 Variant Support Matrix
 
 | ESP32 Variant | Bluetooth Stack | Classic BT | BLE | A2DP | SPP | Optimization |
+
 |---------------|----------------|------------|-----|------|-----|--------------|
+
 | **ESP32**     | NimBLE + Bluedroid | ✅ | ✅ | ✅ | ✅ | Full feature set |
+
 | **ESP32S3**   | NimBLE + Bluedroid | ✅ | ✅ | ✅ | ✅ | Full feature set |
+
 | **ESP32C6**   | **NimBLE** | ❌ | ✅ | ❌ | ❌ | **BLE-only optimized** |
+
 | **ESP32C3**   | Bluedroid | ❌ | ✅ | ❌ | ❌ | BLE-only |
+
 | **ESP32H2**   | Bluedroid | ❌ | ✅ | ❌ | ❌ | BLE-only |
+
 | **ESP32S2**   | None | ❌ | ❌ | ❌ | ❌ | No Bluetooth |
 
 ### ESP32C6 Specific Features
@@ -47,20 +58,20 @@ ESP32C6 uses **NimBLE** for optimal BLE performance:
 The implementation uses sophisticated conditional compilation to optimize for each ESP32 variant:
 
 ```cpp
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
+#if defined(CONFIG*IDF*TARGET*ESP32C6)
 // BLE-only with NimBLE (preferred for ESP32C6)
-#define HAS_CLASSIC_BLUETOOTH 0
-#define HAS_BLE_SUPPORT 1
-#define HAS_NIMBLE_SUPPORT 1
-#define HAS_BLUEDROID_SUPPORT 0
-#elif defined(CONFIG_IDF_TARGET_ESP32) || defined(CONFIG_IDF_TARGET_ESP32S3)
+#define HAS*CLASSIC*BLUETOOTH 0
+#define HAS*BLE*SUPPORT 1
+#define HAS*NIMBLE*SUPPORT 1
+#define HAS*BLUEDROID*SUPPORT 0
+#elif defined(CONFIG*IDF*TARGET*ESP32) || defined(CONFIG*IDF*TARGET*ESP32S3)
 // Full Classic BT + BLE support
-#define HAS_CLASSIC_BLUETOOTH 1
-#define HAS_BLE_SUPPORT 1
-#define HAS_NIMBLE_SUPPORT 1
-#define HAS_BLUEDROID_SUPPORT 1
+#define HAS*CLASSIC*BLUETOOTH 1
+#define HAS*BLE*SUPPORT 1
+#define HAS*NIMBLE*SUPPORT 1
+#define HAS*BLUEDROID*SUPPORT 1
 // ... other variants
-```
+```text
 
 ### Key Classes and Components
 
@@ -72,14 +83,14 @@ The implementation uses sophisticated conditional compilation to optimize for ea
 
 #### NimBLE Integration
 ```cpp
-#if HAS_NIMBLE_SUPPORT
+#if HAS*NIMBLE*SUPPORT
 // NimBLE-specific implementation
-static int GapEventHandler(struct ble_gap_event *event, void *arg);
-hf_bluetooth_err_t InitializeNimBLE();
-hf_bluetooth_err_t StartScanning();
+static int GapEventHandler(struct ble*gap*event *event, void *arg);
+hf*bluetooth*err*t InitializeNimBLE();
+hf*bluetooth*err*t StartScanning();
 // ... other NimBLE methods
 #endif
-```
+```text
 
 ## API Usage
 
@@ -91,65 +102,65 @@ hf_bluetooth_err_t StartScanning();
 EspBluetooth bluetooth;
 
 // Set event callback
-bluetooth.SetEventCallback(my_event_callback, nullptr);
+bluetooth.SetEventCallback(my*event*callback, nullptr);
 
 // Initialize for BLE mode (ESP32C6 only supports BLE)
-auto result = bluetooth.Initialize(hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE);
-if (result == hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
+auto result = bluetooth.Initialize(hf*bluetooth*mode*t::HF*BLUETOOTH*MODE*BLE);
+if (result == hf*bluetooth*err*t::BLUETOOTH*SUCCESS) {
     // Enable Bluetooth
     bluetooth.Enable();
 }
-```
+```text
 
 ### BLE Scanning
 
 ```cpp
 // Configure scan parameters
-hf_bluetooth_scan_config_t scan_config;
-scan_config.duration_ms = 10000;  // 10 seconds
-scan_config.type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE;
-scan_config.mode = hf_bluetooth_scan_mode_t::HF_BLUETOOTH_SCAN_MODE_LE_GENERAL;
+hf*bluetooth*scan*config*t scan*config;
+scan*config.duration*ms = 10000;  // 10 seconds
+scan*config.type = hf*bluetooth*scan*type*t::HF*BLUETOOTH*SCAN*TYPE*ACTIVE;
+scan*config.mode = hf*bluetooth*scan*mode*t::HF*BLUETOOTH*SCAN*MODE*LE*GENERAL;
 
 // Start scanning
-auto result = bluetooth.StartScan(scan_config);
+auto result = bluetooth.StartScan(scan*config);
 
 // Get discovered devices
-std::vector<hf_bluetooth_device_info_t> devices;
+std::vector<hf*bluetooth*device*info*t> devices;
 bluetooth.GetDiscoveredDevices(devices);
-```
+```text
 
 ### Device Management
 
 ```cpp
 // Get local BLE address
-hf_bluetooth_address_t local_addr;
-bluetooth.GetLocalAddress(local_addr);
+hf*bluetooth*address*t local*addr;
+bluetooth.GetLocalAddress(local*addr);
 
 // Set device name
 bluetooth.SetDeviceName("ESP32C6-MyDevice");
 
 // Check connection status
-bool connected = bluetooth.IsConnected(device_address);
-```
+bool connected = bluetooth.IsConnected(device*address);
+```text
 
 ### Event Handling
 
 ```cpp
-void bluetooth_event_callback(hf_bluetooth_event_t event, const void* data, void* context) {
+void bluetooth*event*callback(hf*bluetooth*event*t event, const void* data, void* context) {
     switch (event) {
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_ENABLED:
-        ESP_LOGI(TAG, "Bluetooth enabled");
+    case hf*bluetooth*event*t::HF*BLUETOOTH*EVENT*ENABLED:
+        ESP*LOGI(TAG, "Bluetooth enabled");
         break;
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DEVICE_FOUND:
-        ESP_LOGI(TAG, "BLE device discovered");
+    case hf*bluetooth*event*t::HF*BLUETOOTH*EVENT*DEVICE*FOUND:
+        ESP*LOGI(TAG, "BLE device discovered");
         break;
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_SUCCESS:
-        ESP_LOGI(TAG, "Device connected");
+    case hf*bluetooth*event*t::HF*BLUETOOTH*EVENT*CONNECT*SUCCESS:
+        ESP*LOGI(TAG, "Device connected");
         break;
     // ... handle other events
     }
 }
-```
+```text
 
 ## ESP32C6 Optimization Features
 
@@ -173,55 +184,56 @@ void bluetooth_event_callback(hf_bluetooth_event_t event, const void* data, void
 ### ESP-IDF Configuration (sdkconfig)
 
 ```ini
-# Enable Bluetooth
-CONFIG_BT_ENABLED=y
+## Enable Bluetooth
+CONFIG*BT*ENABLED=y
 
-# Use NimBLE for ESP32C6
-CONFIG_BT_NIMBLE_ENABLED=y
-CONFIG_BT_BLUEDROID_ENABLED=n
+## Use NimBLE for ESP32C6
+CONFIG*BT*NIMBLE*ENABLED=y
+CONFIG*BT*BLUEDROID*ENABLED=n
 
-# NimBLE role configuration
-CONFIG_BT_NIMBLE_ROLE_CENTRAL=y
-CONFIG_BT_NIMBLE_ROLE_PERIPHERAL=y
-CONFIG_BT_NIMBLE_ROLE_BROADCASTER=y
-CONFIG_BT_NIMBLE_ROLE_OBSERVER=y
+## NimBLE role configuration
+CONFIG*BT*NIMBLE*ROLE*CENTRAL=y
+CONFIG*BT*NIMBLE*ROLE*PERIPHERAL=y
+CONFIG*BT*NIMBLE*ROLE*BROADCASTER=y
+CONFIG*BT*NIMBLE*ROLE*OBSERVER=y
 
-# Optimization settings
-CONFIG_BT_NIMBLE_MAX_CONNECTIONS=4
-CONFIG_BT_NIMBLE_ATT_PREFERRED_MTU=247
-CONFIG_BT_NIMBLE_GATT_MAX_PROCS=4
+## Optimization settings
+CONFIG*BT*NIMBLE*MAX*CONNECTIONS=4
+CONFIG*BT*NIMBLE*ATT*PREFERRED*MTU=247
+CONFIG*BT*NIMBLE*GATT*MAX*PROCS=4
 
-# Memory optimization
-CONFIG_BT_NIMBLE_MEM_ALLOC_MODE_EXTERNAL=y
-CONFIG_BT_NIMBLE_MSYS1_BLOCK_COUNT=24
-```
+## Memory optimization
+CONFIG*BT*NIMBLE*MEM*ALLOC*MODE*EXTERNAL=y
+CONFIG*BT*NIMBLE*MSYS1*BLOCK*COUNT=24
+```text
 
 ### CMakeLists.txt Configuration
 
 ```cmake
-# ESP32C6 specific configuration
-if(CONFIG_IDF_TARGET_ESP32C6)
-    set(COMPONENT_REQUIRES 
-        nvs_flash
-        esp_system
+## ESP32C6 specific configuration
+if(CONFIG*IDF*TARGET*ESP32C6)
+    set(COMPONENT*REQUIRES 
+        nvs*flash
+        esp*system
         freertos
         bt
         nimble
     )
     
-    add_compile_definitions(
-        CONFIG_BT_NIMBLE_ENABLED=1
-        CONFIG_BT_NIMBLE_ROLE_PERIPHERAL=1
-        CONFIG_BT_NIMBLE_ROLE_CENTRAL=1
+    add*compile*definitions(
+        CONFIG*BT*NIMBLE*ENABLED=1
+        CONFIG*BT*NIMBLE*ROLE*PERIPHERAL=1
+        CONFIG*BT*NIMBLE*ROLE*CENTRAL=1
     )
 endif()
-```
+```cpp
 
 ## Testing
 
 ### Comprehensive Test Suite
 
-The implementation includes a comprehensive test application (`BluetoothComprehensiveTest.cpp`) that demonstrates all Bluetooth functionality with **100% test success rate**:
+The implementation includes a comprehensive test application (`BluetoothComprehensiveTest.cpp`) that
+demonstrates all Bluetooth functionality with **100% test success rate**:
 
 #### Test Results Summary
 - **Total Tests**: 5
@@ -248,53 +260,54 @@ The implementation includes a comprehensive test application (`BluetoothComprehe
 #### Running the Test
 
 ```bash
-# Build the Bluetooth test
-./scripts/build_app.sh bluetooth_test Release
+## Build the Bluetooth test
+./scripts/build*app.sh bluetooth*test Release
 
-# Flash and monitor with full output
-./scripts/flash_app.sh flash_monitor bluetooth_test Release
-```
+## Flash and monitor with full output
+./scripts/flash*app.sh flash*monitor bluetooth*test Release
+```text
 
 #### Actual Test Output (100% Success)
 
-**Note**: All MAC addresses and device names in the test output below have been anonymized for privacy and security.
+**Note**: All MAC addresses and device names in the test output below have been anonymized for
+privacy and security.
 
-```
-I (315) BT_Test: ╔══════════════════════════════════════════════════════════════════════════════╗
-I (315) BT_Test: ║                ESP32-C6 BLUETOOTH COMPREHENSIVE TEST SUITE                 ║
-I (315) BT_Test: ║                         HardFOC Internal Interface                          ║
-I (315) BT_Test: ╚══════════════════════════════════════════════════════════════════════════════╝
+```text
+I (315) BT*Test: ╔══════════════════════════════════════════════════════════════════════════════╗
+I (315) BT*Test: ║                ESP32-C6 BLUETOOTH COMPREHENSIVE TEST SUITE                 ║
+I (315) BT*Test: ║                         HardFOC Internal Interface                          ║
+I (315) BT*Test: ╚══════════════════════════════════════════════════════════════════════════════╝
 
-I (325) BT_Test: Target: esp32c6
-I (335) BT_Test: ESP-IDF Version: v5.5-dev
+I (325) BT*Test: Target: esp32c6
+I (335) BT*Test: ESP-IDF Version: v5.5-dev
 
-I (4030) BT_Test: [SUCCESS] Bluetooth initialized successfully (mode: 2)
-I (4040) BT_Test: [SUCCESS] Bluetooth enabled successfully
-I (4050) BT_Test: [SUCCESS] Local BLE address: **:**:**:**:**:**
-I (4060) BT_Test: [SUCCESS] Device name set successfully
+I (4030) BT*Test: [SUCCESS] Bluetooth initialized successfully (mode: 2)
+I (4040) BT*Test: [SUCCESS] Bluetooth enabled successfully
+I (4050) BT*Test: [SUCCESS] Local BLE address: **:**:**:**:**:**
+I (4060) BT*Test: [SUCCESS] Device name set successfully
 
-I (9070) BT_Test: [SUCCESS] Found 49 BLE devices:
-I (9125) BT_Test:   Device 1: Address: **:**:**:**:**:**, RSSI: -90 dBm
-I (9129) BT_Test:   Device 2: Address: **:**:**:**:**:**, RSSI: -75 dBm, Name: Device_Example_1
-I (9133) BT_Test:   Device 3: Address: **:**:**:**:**:**, RSSI: -77 dBm, Name: Device_Example_2
-I (9137) BT_Test:   Device 4: Address: **:**:**:**:**:**, RSSI: -86 dBm
-I (9141) BT_Test:   Device 5: Address: **:**:**:**:**:**, RSSI: -64 dBm, Name: Device_Example_3
-I (9145) BT_Test:   ... and 44 more devices
+I (9070) BT*Test: [SUCCESS] Found 49 BLE devices:
+I (9125) BT*Test:   Device 1: Address: **:**:**:**:**:**, RSSI: -90 dBm
+I (9129) BT*Test:   Device 2: Address: **:**:**:**:**:**, RSSI: -75 dBm, Name: Device*Example*1
+I (9133) BT*Test:   Device 3: Address: **:**:**:**:**:**, RSSI: -77 dBm, Name: Device*Example*2
+I (9137) BT*Test:   Device 4: Address: **:**:**:**:**:**, RSSI: -86 dBm
+I (9141) BT*Test:   Device 5: Address: **:**:**:**:**:**, RSSI: -64 dBm, Name: Device*Example*3
+I (9145) BT*Test:   ... and 44 more devices
 
-I (15064) BT_Test: === BLUETOOTH TEST SUMMARY ===
-I (15064) BT_Test: Total: 5, Passed: 5, Failed: 0, Success: 100.00%, Time: 10517.80 ms
-I (15065) BT_Test: [SUCCESS] ALL BLUETOOTH TESTS PASSED!
+I (15064) BT*Test: === BLUETOOTH TEST SUMMARY ===
+I (15064) BT*Test: Total: 5, Passed: 5, Failed: 0, Success: 100.00%, Time: 10517.80 ms
+I (15065) BT*Test: [SUCCESS] ALL BLUETOOTH TESTS PASSED!
 
-I (15570) BT_Test: Implementation Summary:
-I (15573) BT_Test: [SUCCESS] ESP32C6 BLE-only support using NimBLE
-I (15579) BT_Test: [SUCCESS] Proper conditional compilation for different ESP32 variants
-I (15587) BT_Test: [SUCCESS] Basic BLE operations (init, enable, scan, cleanup)
-I (15594) BT_Test: [SUCCESS] Device discovery and management
-I (15600) BT_Test: [SUCCESS] Event-driven architecture
-I (15604) BT_Test: [SUCCESS] Thread-safe implementation
-I (15609) BT_Test: [SUCCESS] Modern BaseBluetooth API usage
-I (15615) BT_Test: [SUCCESS] Correct callback signatures
-```
+I (15570) BT*Test: Implementation Summary:
+I (15573) BT*Test: [SUCCESS] ESP32C6 BLE-only support using NimBLE
+I (15579) BT*Test: [SUCCESS] Proper conditional compilation for different ESP32 variants
+I (15587) BT*Test: [SUCCESS] Basic BLE operations (init, enable, scan, cleanup)
+I (15594) BT*Test: [SUCCESS] Device discovery and management
+I (15600) BT*Test: [SUCCESS] Event-driven architecture
+I (15604) BT*Test: [SUCCESS] Thread-safe implementation
+I (15609) BT*Test: [SUCCESS] Modern BaseBluetooth API usage
+I (15615) BT*Test: [SUCCESS] Correct callback signatures
+```text
 
 #### Test Features Verified
 
@@ -341,52 +354,76 @@ For comprehensive Bluetooth testing, you'll need:
 ### Common Error Codes
 
 | Error Code | Description | Resolution |
+
 |------------|-------------|------------|
-| `BLUETOOTH_ERR_NOT_SUPPORTED` | Feature not supported on ESP32C6 | Use BLE-only features |
-| `BLUETOOTH_ERR_NOT_INITIALIZED` | Bluetooth not initialized | Call `Initialize()` first |
-| `BLUETOOTH_ERR_NOT_ENABLED` | Bluetooth not enabled | Call `Enable()` first |
-| `BLUETOOTH_ERR_OPERATION_FAILED` | NimBLE operation failed | Check logs for details |
-| `BLUETOOTH_ERR_HARDWARE_FAILURE` | Hardware/driver issue | Reset device |
+
+| `BLUETOOTH*ERR*NOT*SUPPORTED` | Feature not supported on ESP32C6 | Use BLE-only features |
+
+| `BLUETOOTH*ERR*NOT*INITIALIZED` | Bluetooth not initialized | Call `Initialize()` first |
+
+| `BLUETOOTH*ERR*NOT*ENABLED` | Bluetooth not enabled | Call `Enable()` first |
+
+| `BLUETOOTH*ERR*OPERATION*FAILED` | NimBLE operation failed | Check logs for details |
+
+| `BLUETOOTH*ERR*HARDWARE*FAILURE` | Hardware/driver issue | Reset device |
 
 ### Debugging
 
 Enable debug logging:
 ```cpp
 // In your main application
-esp_log_level_set("EspBluetooth", ESP_LOG_DEBUG);
-esp_log_level_set("NimBLE", ESP_LOG_DEBUG);
-```
+esp*log*level*set("EspBluetooth", ESP*LOG*DEBUG);
+esp*log*level*set("NimBLE", ESP*LOG_DEBUG);
+```text
 
 ## Performance Characteristics
 
 ### Memory Usage (ESP32C6) - Verified
 
 | Component | RAM Usage | Flash Usage | Status |
+
 |-----------|-----------|-------------|---------|
+
 | NimBLE Host | ~45 KB | ~80 KB | ✅ Verified |
+
 | EspBluetooth Class | ~2 KB | ~15 KB | ✅ Verified |
+
 | Device Management | ~1 KB per 10 devices | - | ✅ Verified |
+
 | **Total** | **~48 KB** | **~95 KB** | ✅ **Tested** |
 
 ### Power Consumption - Measured
 
 | Operation | Current Draw | Duration | Test Status |
+
 |-----------|--------------|----------|-------------|
+
 | BLE Advertising | ~15 mA | Continuous | ✅ Verified |
+
 | BLE Scanning | ~20 mA | Configurable | ✅ **49 devices discovered** |
+
 | Connected (idle) | ~5 mA | Continuous | ✅ Verified |
+
 | Deep Sleep | ~10 µA | When possible | ✅ Verified |
 
 ### Throughput - Real-world Performance
 
 | Metric | ESP32C6 Performance | Test Results |
+
 |--------|-------------------|--------------|
+
 | **Maximum MTU** | 247 bytes | ✅ Verified |
+
 | **Connection Interval** | 7.5ms - 4.0s | ✅ Verified |
+
 | **Theoretical Throughput** | ~90 KB/s | ✅ Verified |
+
 | **Practical Throughput** | ~60 KB/s | ✅ Verified |
+
 | **Device Discovery Rate** | 49 devices in 10s | ✅ **Real-world tested** |
+
 | **Initialization Time** | <1 second | ✅ **Measured: ~3s total** |
+
 | **Scan Performance** | 10+ devices/second | ✅ **Measured: 49 devices/10s** |
 
 ### Test Performance Metrics
@@ -394,12 +431,19 @@ esp_log_level_set("NimBLE", ESP_LOG_DEBUG);
 Based on comprehensive testing with **100% success rate**:
 
 | Test Category | Performance | Result |
+
 |---------------|-------------|---------|
+
 | **Initialization** | <1 second | ✅ **Sub-second startup** |
+
 | **Device Discovery** | 49 devices in 10s | ✅ **Excellent range** |
+
 | **State Management** | <100ms transitions | ✅ **Fast state changes** |
+
 | **Memory Management** | Zero leaks detected | ✅ **Clean resource handling** |
+
 | **Thread Safety** | 100% stable | ✅ **No race conditions** |
+
 | **Error Recovery** | Automatic | ✅ **Robust error handling** |
 
 ## Limitations and Known Issues
@@ -444,7 +488,10 @@ Based on comprehensive testing with **100% success rate**:
 
 ## Conclusion
 
-The ESP32C6 NimBLE implementation provides a **production-ready, robust, and highly efficient** Bluetooth Low Energy solution specifically optimized for ESP32C6 hardware. The implementation has been **comprehensively tested with 100% success rate** and is ready for deployment.
+The ESP32C6 NimBLE implementation provides a **production-ready, robust,
+and highly efficient** Bluetooth Low Energy solution specifically optimized for ESP32C6 hardware.
+The implementation has been **comprehensively tested with 100% success rate** and is ready for
+deployment.
 
 ### ✅ **Verified Production Status**
 
@@ -467,9 +514,13 @@ The ESP32C6 NimBLE implementation provides a **production-ready, robust, and hig
 
 ### 🚀 **Ready for Production Use**
 
-This implementation has been **thoroughly tested and validated** and serves as a **solid, production-ready foundation** for ESP32C6 BLE applications. The comprehensive test suite ensures reliability, and the documented performance characteristics provide clear expectations for real-world deployment.
+This implementation has been **thoroughly tested and validated** and serves as a **solid,
+production-ready foundation** for ESP32C6 BLE applications.
+The comprehensive test suite ensures reliability,
+and the documented performance characteristics provide clear expectations for real-world deployment.
 
-**Status**: ✅ **PRODUCTION READY** - All tests passing, performance verified, documentation complete.
+**Status**: ✅ **PRODUCTION READY** - All tests passing, performance verified, documentation
+complete.
 
 ---
 

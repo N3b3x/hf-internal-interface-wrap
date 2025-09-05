@@ -232,16 +232,16 @@ hf_u64_t EspPeriodicTimer::GetResolution() const noexcept {
 
 hf_timer_err_t EspPeriodicTimer::ConvertError(int platform_error) const noexcept {
   switch (platform_error) {
-    case ESP_OK:
-      return hf_timer_err_t::TIMER_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_timer_err_t::TIMER_ERR_INVALID_PARAMETER;
-    case ESP_ERR_NO_MEM:
-      return hf_timer_err_t::TIMER_ERR_OUT_OF_MEMORY;
-    case ESP_ERR_INVALID_STATE:
-      return hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING;
-    default:
-      return hf_timer_err_t::TIMER_ERR_FAILURE;
+  case ESP_OK:
+    return hf_timer_err_t::TIMER_SUCCESS;
+  case ESP_ERR_INVALID_ARG:
+    return hf_timer_err_t::TIMER_ERR_INVALID_PARAMETER;
+  case ESP_ERR_NO_MEM:
+    return hf_timer_err_t::TIMER_ERR_OUT_OF_MEMORY;
+  case ESP_ERR_INVALID_STATE:
+    return hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING;
+  default:
+    return hf_timer_err_t::TIMER_ERR_FAILURE;
   }
 }
 

@@ -43,7 +43,7 @@ extern "C" {
 #include "semphr.h"
 #include "task.h"
 #else
-#error \
+#error                                                                                             \
     "RTOS mutex implementation not available for this MCU platform. Please add support in RtosMutex.h"
 #endif
 

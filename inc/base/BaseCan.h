@@ -39,72 +39,72 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_CAN_ERR_LIST(X)                                       \
-  /* Success codes */                                            \
-  X(CAN_SUCCESS, 0, "Success")                                   \
-  /* General errors */                                           \
-  X(CAN_ERR_FAILURE, 1, "General failure")                       \
-  X(CAN_ERR_NOT_INITIALIZED, 2, "Not initialized")               \
-  X(CAN_ERR_ALREADY_INITIALIZED, 3, "Already initialized")       \
-  X(CAN_ERR_INVALID_PARAMETER, 4, "Invalid parameter")           \
-  X(CAN_ERR_NULL_POINTER, 5, "Null pointer")                     \
-  X(CAN_ERR_OUT_OF_MEMORY, 6, "Out of memory")                   \
-  /* Bus errors */                                               \
-  X(CAN_ERR_BUS_OFF, 7, "Bus off state")                         \
-  X(CAN_ERR_BUS_ERROR, 8, "Bus error")                           \
-  X(CAN_ERR_BUS_BUSY, 9, "Bus busy")                             \
-  X(CAN_ERR_BUS_NOT_AVAILABLE, 10, "Bus not available")          \
-  X(CAN_ERR_BUS_RECOVERY_FAILED, 11, "Bus recovery failed")      \
-  X(CAN_ERR_BUS_ARBITRATION_LOST, 12, "Bus arbitration lost")    \
-  /* Message errors */                                           \
-  X(CAN_ERR_MESSAGE_TIMEOUT, 13, "Message timeout")              \
-  X(CAN_ERR_MESSAGE_LOST, 14, "Message lost")                    \
-  X(CAN_ERR_MESSAGE_INVALID, 15, "Invalid message")              \
-  X(CAN_ERR_MESSAGE_TOO_LONG, 16, "Message too long")            \
-  X(CAN_ERR_MESSAGE_INVALID_ID, 17, "Invalid message ID")        \
-  X(CAN_ERR_MESSAGE_INVALID_DLC, 18, "Invalid data length code") \
-  X(CAN_ERR_QUEUE_FULL, 19, "Queue full")                        \
-  X(CAN_ERR_QUEUE_EMPTY, 20, "Queue empty")                      \
-  /* Transmission errors */                                      \
-  X(CAN_ERR_TX_FAILED, 21, "Transmission failed")                \
-  X(CAN_ERR_TX_ABORTED, 22, "Transmission aborted")              \
-  X(CAN_ERR_TX_ERROR_PASSIVE, 23, "Transmit error passive")      \
-  X(CAN_ERR_TX_ERROR_WARNING, 24, "Transmit error warning")      \
-  /* Reception errors */                                         \
-  X(CAN_ERR_RX_OVERRUN, 25, "Receive overrun")                   \
-  X(CAN_ERR_RX_ERROR_PASSIVE, 26, "Receive error passive")       \
-  X(CAN_ERR_RX_ERROR_WARNING, 27, "Receive error warning")       \
-  X(CAN_ERR_RX_FIFO_FULL, 28, "Receive FIFO full")               \
-  /* Hardware errors */                                          \
-  X(CAN_ERR_HARDWARE_FAULT, 29, "Hardware fault")                \
-  X(CAN_ERR_COMMUNICATION_FAILURE, 30, "Communication failure")  \
-  X(CAN_ERR_DEVICE_NOT_RESPONDING, 31, "Device not responding")  \
-  X(CAN_ERR_VOLTAGE_OUT_OF_RANGE, 32, "Voltage out of range")    \
-  X(CAN_ERR_CLOCK_ERROR, 33, "Clock error")                      \
-  X(CAN_ERR_TRANSCEIVER_ERROR, 34, "Transceiver error")          \
-  /* Configuration errors */                                     \
-  X(CAN_ERR_INVALID_CONFIGURATION, 35, "Invalid configuration")  \
-  X(CAN_ERR_UNSUPPORTED_OPERATION, 36, "Unsupported operation")  \
-  X(CAN_ERR_INVALID_BAUD_RATE, 37, "Invalid baud rate")          \
-  X(CAN_ERR_INVALID_CONTROLLER_ID, 38, "Invalid controller ID")  \
-  X(CAN_ERR_FILTER_ERROR, 39, "Filter error")                    \
-  X(CAN_ERR_FILTER_FULL, 40, "Filter table full")                \
-  /* Protocol errors */                                          \
-  X(CAN_ERR_STUFF_ERROR, 41, "Bit stuffing error")               \
-  X(CAN_ERR_FORM_ERROR, 42, "Frame format error")                \
-  X(CAN_ERR_CRC_ERROR, 43, "CRC error")                          \
-  X(CAN_ERR_ACK_ERROR, 44, "Acknowledgment error")               \
-  X(CAN_ERR_BIT_ERROR, 45, "Bit error")                          \
-  /* System errors */                                            \
-  X(CAN_ERR_SYSTEM_ERROR, 46, "System error")                    \
-  X(CAN_ERR_PERMISSION_DENIED, 47, "Permission denied")          \
-  X(CAN_ERR_OPERATION_ABORTED, 48, "Operation aborted")          \
-                                                                 \
-  /* Extended CAN errors (for ESP32 compatibility) */            \
-  X(CAN_ERR_FAIL, 49, "Generic failure")                         \
-  X(CAN_ERR_RESOURCE_BUSY, 50, "Resource busy")                  \
-  X(CAN_ERR_INVALID_STATE, 51, "Invalid state")                  \
-  X(CAN_ERR_NOT_SUPPORTED, 52, "Not supported")                  \
+#define HF_CAN_ERR_LIST(X)                                                                         \
+  /* Success codes */                                                                              \
+  X(CAN_SUCCESS, 0, "Success")                                                                     \
+  /* General errors */                                                                             \
+  X(CAN_ERR_FAILURE, 1, "General failure")                                                         \
+  X(CAN_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
+  X(CAN_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
+  X(CAN_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
+  X(CAN_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
+  X(CAN_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
+  /* Bus errors */                                                                                 \
+  X(CAN_ERR_BUS_OFF, 7, "Bus off state")                                                           \
+  X(CAN_ERR_BUS_ERROR, 8, "Bus error")                                                             \
+  X(CAN_ERR_BUS_BUSY, 9, "Bus busy")                                                               \
+  X(CAN_ERR_BUS_NOT_AVAILABLE, 10, "Bus not available")                                            \
+  X(CAN_ERR_BUS_RECOVERY_FAILED, 11, "Bus recovery failed")                                        \
+  X(CAN_ERR_BUS_ARBITRATION_LOST, 12, "Bus arbitration lost")                                      \
+  /* Message errors */                                                                             \
+  X(CAN_ERR_MESSAGE_TIMEOUT, 13, "Message timeout")                                                \
+  X(CAN_ERR_MESSAGE_LOST, 14, "Message lost")                                                      \
+  X(CAN_ERR_MESSAGE_INVALID, 15, "Invalid message")                                                \
+  X(CAN_ERR_MESSAGE_TOO_LONG, 16, "Message too long")                                              \
+  X(CAN_ERR_MESSAGE_INVALID_ID, 17, "Invalid message ID")                                          \
+  X(CAN_ERR_MESSAGE_INVALID_DLC, 18, "Invalid data length code")                                   \
+  X(CAN_ERR_QUEUE_FULL, 19, "Queue full")                                                          \
+  X(CAN_ERR_QUEUE_EMPTY, 20, "Queue empty")                                                        \
+  /* Transmission errors */                                                                        \
+  X(CAN_ERR_TX_FAILED, 21, "Transmission failed")                                                  \
+  X(CAN_ERR_TX_ABORTED, 22, "Transmission aborted")                                                \
+  X(CAN_ERR_TX_ERROR_PASSIVE, 23, "Transmit error passive")                                        \
+  X(CAN_ERR_TX_ERROR_WARNING, 24, "Transmit error warning")                                        \
+  /* Reception errors */                                                                           \
+  X(CAN_ERR_RX_OVERRUN, 25, "Receive overrun")                                                     \
+  X(CAN_ERR_RX_ERROR_PASSIVE, 26, "Receive error passive")                                         \
+  X(CAN_ERR_RX_ERROR_WARNING, 27, "Receive error warning")                                         \
+  X(CAN_ERR_RX_FIFO_FULL, 28, "Receive FIFO full")                                                 \
+  /* Hardware errors */                                                                            \
+  X(CAN_ERR_HARDWARE_FAULT, 29, "Hardware fault")                                                  \
+  X(CAN_ERR_COMMUNICATION_FAILURE, 30, "Communication failure")                                    \
+  X(CAN_ERR_DEVICE_NOT_RESPONDING, 31, "Device not responding")                                    \
+  X(CAN_ERR_VOLTAGE_OUT_OF_RANGE, 32, "Voltage out of range")                                      \
+  X(CAN_ERR_CLOCK_ERROR, 33, "Clock error")                                                        \
+  X(CAN_ERR_TRANSCEIVER_ERROR, 34, "Transceiver error")                                            \
+  /* Configuration errors */                                                                       \
+  X(CAN_ERR_INVALID_CONFIGURATION, 35, "Invalid configuration")                                    \
+  X(CAN_ERR_UNSUPPORTED_OPERATION, 36, "Unsupported operation")                                    \
+  X(CAN_ERR_INVALID_BAUD_RATE, 37, "Invalid baud rate")                                            \
+  X(CAN_ERR_INVALID_CONTROLLER_ID, 38, "Invalid controller ID")                                    \
+  X(CAN_ERR_FILTER_ERROR, 39, "Filter error")                                                      \
+  X(CAN_ERR_FILTER_FULL, 40, "Filter table full")                                                  \
+  /* Protocol errors */                                                                            \
+  X(CAN_ERR_STUFF_ERROR, 41, "Bit stuffing error")                                                 \
+  X(CAN_ERR_FORM_ERROR, 42, "Frame format error")                                                  \
+  X(CAN_ERR_CRC_ERROR, 43, "CRC error")                                                            \
+  X(CAN_ERR_ACK_ERROR, 44, "Acknowledgment error")                                                 \
+  X(CAN_ERR_BIT_ERROR, 45, "Bit error")                                                            \
+  /* System errors */                                                                              \
+  X(CAN_ERR_SYSTEM_ERROR, 46, "System error")                                                      \
+  X(CAN_ERR_PERMISSION_DENIED, 47, "Permission denied")                                            \
+  X(CAN_ERR_OPERATION_ABORTED, 48, "Operation aborted")                                            \
+                                                                                                   \
+  /* Extended CAN errors (for ESP32 compatibility) */                                              \
+  X(CAN_ERR_FAIL, 49, "Generic failure")                                                           \
+  X(CAN_ERR_RESOURCE_BUSY, 50, "Resource busy")                                                    \
+  X(CAN_ERR_INVALID_STATE, 51, "Invalid state")                                                    \
+  X(CAN_ERR_NOT_SUPPORTED, 52, "Not supported")                                                    \
   X(CAN_ERR_TIMEOUT_ALT, 53, "Operation timeout")
 
 enum class hf_can_err_t : hf_u8_t {
@@ -120,13 +120,13 @@ enum class hf_can_err_t : hf_u8_t {
  */
 constexpr std::string_view HfCanErrToString(hf_can_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_can_err_t::NAME:   \
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_can_err_t::NAME:                                                                         \
     return DESC;
     HF_CAN_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

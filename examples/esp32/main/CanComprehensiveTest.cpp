@@ -1375,9 +1375,8 @@ bool test_loopback_comparison() noexcept {
         if (wait_for_event(MESSAGE_RECEIVED_BIT, 1000)) {
           ESP_LOGI(TAG, "✅ External loopback: Message received successfully");
         } else {
-          ESP_LOGW(
-              TAG,
-              "⚠️  External loopback: No message received (requires CANH->120Ω->CANL loopback)");
+          ESP_LOGW(TAG, "⚠️  External loopback: No message received (requires CANH->120Ω->CANL "
+                        "loopback)");
         }
       } else {
         ESP_LOGE(TAG, "❌ External loopback: Failed to send message");

@@ -8,7 +8,8 @@
 
 **📋 Navigation**
 
-[← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature →](BaseTemperature.md)
+[← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature
+→](BaseTemperature.md)
 
 </div>
 
@@ -29,7 +30,10 @@
 
 ## 🎯 **Overview**
 
-The `BaseLogger` class provides a comprehensive logging abstraction that serves as the unified interface for all logging operations in the HardFOC system. It supports multiple log levels, configurable output destinations, thread-safe operations, performance monitoring, and works across different hardware implementations with minimal overhead.
+The `BaseLogger` class provides a comprehensive logging abstraction that serves as the unified
+interface for all logging operations in the HardFOC system.
+It supports multiple log levels, configurable output destinations, thread-safe operations,
+performance monitoring, and works across different hardware implementations with minimal overhead.
 
 ### ✨ **Key Features**
 
@@ -46,9 +50,13 @@ The `BaseLogger` class provides a comprehensive logging abstraction that serves 
 ### 📊 **Supported Hardware**
 
 | Implementation | UART | File | Memory | Network | Performance |
+
 |----------------|------|------|--------|---------|-------------|
+
 | `EspLogger` | ✅ | ✅ | ✅ | ✅ | High |
+
 | `Esp8266Logger` | ✅ | ❌ | ✅ | ✅ | Medium |
+
 | `ArmLogger` | ✅ | ✅ | ✅ | ❌ | High |
 
 ---
@@ -59,48 +67,48 @@ The `BaseLogger` class provides a comprehensive logging abstraction that serves 
 classDiagram
     class BaseLogger {
         <<abstract>>
-        +EnsureInitialized() hf_logger_err_t
-        +SetLogLevel(hf_log_level_t) hf_logger_err_t
-        +LogMessage(level, tag, format, ...) hf_logger_err_t
-        +LogError(tag, format, ...) hf_logger_err_t
-        +LogWarn(tag, format, ...) hf_logger_err_t
-        +LogInfo(tag, format, ...) hf_logger_err_t
-        +LogDebug(tag, format, ...) hf_logger_err_t
-        +LogVerbose(tag, format, ...) hf_logger_err_t
-        +AddOutput(hf_log_output_t*) hf_logger_err_t
-        +RemoveOutput(hf_log_output_t*) hf_logger_err_t
-        +FlushBuffers() hf_logger_err_t
-        +GetStatistics(hf_logger_statistics_t&) hf_logger_err_t
+        +EnsureInitialized() hf*logger*err*t
+        +SetLogLevel(hf*log*level*t) hf*logger*err*t
+        +LogMessage(level, tag, format, ...) hf*logger*err*t
+        +LogError(tag, format, ...) hf*logger*err*t
+        +LogWarn(tag, format, ...) hf*logger*err*t
+        +LogInfo(tag, format, ...) hf*logger*err*t
+        +LogDebug(tag, format, ...) hf*logger*err*t
+        +LogVerbose(tag, format, ...) hf*logger*err*t
+        +AddOutput(hf*log*output*t*) hf*logger*err*t
+        +RemoveOutput(hf*log*output*t*) hf*logger*err*t
+        +FlushBuffers() hf*logger*err*t
+        +GetStatistics(hf*logger*statistics*t&) hf*logger*err*t
         +IsInitialized() bool
-        #DoInitialize() hf_logger_err_t*
-        #DoLogMessage(level, tag, message) hf_logger_err_t*
+        #DoInitialize() hf*logger*err*t*
+        #DoLogMessage(level, tag, message) hf*logger*err*t*
     }
 
     class EspLogger {
         +EspLogger()
-        +EnableUartOutput(uart_num) hf_logger_err_t
-        +EnableFileOutput(path) hf_logger_err_t
-        +EnableNetworkOutput(host, port) hf_logger_err_t
-        +SetBufferSize(size) hf_logger_err_t
+        +EnableUartOutput(uart*num) hf*logger*err*t
+        +EnableFileOutput(path) hf*logger*err*t
+        +EnableNetworkOutput(host, port) hf*logger*err*t
+        +SetBufferSize(size) hf*logger*err*t
     }
 
     class ConsoleLogger {
         +ConsoleLogger()
-        +SetColorOutput(enable) hf_logger_err_t
-        +SetTimestampFormat(format) hf_logger_err_t
+        +SetColorOutput(enable) hf*logger*err*t
+        +SetTimestampFormat(format) hf*logger*err*t
     }
 
     class FileLogger {
         +FileLogger(filepath)
-        +SetRotationSize(size) hf_logger_err_t
-        +SetMaxFiles(count) hf_logger_err_t
-        +CompressOldLogs(enable) hf_logger_err_t
+        +SetRotationSize(size) hf*logger*err*t
+        +SetMaxFiles(count) hf*logger*err*t
+        +CompressOldLogs(enable) hf*logger*err*t
     }
 
     BaseLogger <|-- EspLogger
     BaseLogger <|-- ConsoleLogger  
     BaseLogger <|-- FileLogger
-```
+```text
 
 ---
 
@@ -109,65 +117,74 @@ classDiagram
 ### 🚨 **Logger Error Enumeration**
 
 ```cpp
-enum class hf_logger_err_t : hf_u32_t {
+enum class hf*logger*err*t : hf*u32*t {
     // Success codes
-    LOGGER_SUCCESS = 0,
+    LOGGER*SUCCESS = 0,
     
     // General errors
-    LOGGER_ERR_FAILURE = 1,
-    LOGGER_ERR_NOT_INITIALIZED = 2,
-    LOGGER_ERR_ALREADY_INITIALIZED = 3,
-    LOGGER_ERR_INVALID_PARAMETER = 4,
-    LOGGER_ERR_NULL_POINTER = 5,
-    LOGGER_ERR_OUT_OF_MEMORY = 6,
+    LOGGER*ERR*FAILURE = 1,
+    LOGGER*ERR*NOT*INITIALIZED = 2,
+    LOGGER*ERR*ALREADY*INITIALIZED = 3,
+    LOGGER*ERR*INVALID*PARAMETER = 4,
+    LOGGER*ERR*NULL*POINTER = 5,
+    LOGGER*ERR*OUT*OF*MEMORY = 6,
     
     // Output errors
-    LOGGER_ERR_OUTPUT_NOT_FOUND = 7,
-    LOGGER_ERR_OUTPUT_ALREADY_ADDED = 8,
-    LOGGER_ERR_OUTPUT_FAILURE = 9,
-    LOGGER_ERR_OUTPUT_FULL = 10,
+    LOGGER*ERR*OUTPUT*NOT*FOUND = 7,
+    LOGGER*ERR*OUTPUT*ALREADY*ADDED = 8,
+    LOGGER*ERR*OUTPUT*FAILURE = 9,
+    LOGGER*ERR*OUTPUT*FULL = 10,
     
     // Buffer errors
-    LOGGER_ERR_BUFFER_OVERFLOW = 11,
-    LOGGER_ERR_BUFFER_UNDERFLOW = 12,
-    LOGGER_ERR_BUFFER_FULL = 13,
-    LOGGER_ERR_BUFFER_EMPTY = 14,
+    LOGGER*ERR*BUFFER*OVERFLOW = 11,
+    LOGGER*ERR*BUFFER*UNDERFLOW = 12,
+    LOGGER*ERR*BUFFER*FULL = 13,
+    LOGGER*ERR*BUFFER*EMPTY = 14,
     
     // Format errors
-    LOGGER_ERR_FORMAT_ERROR = 15,
-    LOGGER_ERR_MESSAGE_TOO_LONG = 16,
-    LOGGER_ERR_INVALID_TAG = 17,
-    LOGGER_ERR_INVALID_LEVEL = 18,
+    LOGGER*ERR*FORMAT*ERROR = 15,
+    LOGGER*ERR*MESSAGE*TOO*LONG = 16,
+    LOGGER*ERR*INVALID*TAG = 17,
+    LOGGER*ERR*INVALID*LEVEL = 18,
     
     // File errors
-    LOGGER_ERR_FILE_NOT_FOUND = 19,
-    LOGGER_ERR_FILE_PERMISSION = 20,
-    LOGGER_ERR_FILE_WRITE_ERROR = 21,
-    LOGGER_ERR_DISK_FULL = 22,
+    LOGGER*ERR*FILE*NOT*FOUND = 19,
+    LOGGER*ERR*FILE*PERMISSION = 20,
+    LOGGER*ERR*FILE*WRITE*ERROR = 21,
+    LOGGER*ERR*DISK*FULL = 22,
     
     // Network errors
-    LOGGER_ERR_NETWORK_UNAVAILABLE = 23,
-    LOGGER_ERR_NETWORK_TIMEOUT = 24,
-    LOGGER_ERR_NETWORK_ERROR = 25,
+    LOGGER*ERR*NETWORK*UNAVAILABLE = 23,
+    LOGGER*ERR*NETWORK*TIMEOUT = 24,
+    LOGGER*ERR*NETWORK*ERROR = 25,
     
     // System errors
-    LOGGER_ERR_SYSTEM_ERROR = 26,
-    LOGGER_ERR_PERMISSION_DENIED = 27,
-    LOGGER_ERR_OPERATION_ABORTED = 28
+    LOGGER*ERR*SYSTEM*ERROR = 26,
+    LOGGER*ERR*PERMISSION*DENIED = 27,
+    LOGGER*ERR*OPERATION*ABORTED = 28
 };
-```
+```text
 
 ### 📊 **Error Code Categories**
 
 | Category | Range | Description |
+
 |----------|-------|-------------|
+
 | **Success** | 0 | Successful operation |
+
 | **General** | 1-6 | Basic initialization and parameter errors |
+
 | **Output** | 7-10 | Output destination errors |
+
 | **Buffer** | 11-14 | Buffer management errors |
+
 | **Format** | 15-18 | Message formatting errors |
+
 | **File** | 19-22 | File system errors |
+
 | **Network** | 23-25 | Network logging errors |
+
 | **System** | 26-28 | System-level errors |
 
 ---
@@ -180,23 +197,23 @@ enum class hf_logger_err_t : hf_u32_t {
 ```cpp
 /**
  * @brief Ensure the logger is initialized
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t EnsureInitialized() = 0;
+virtual hf*logger*err*t EnsureInitialized() = 0;
 
 /**
  * @brief Set the global log level
  * @param level Minimum log level to output
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t SetLogLevel(hf_log_level_t level) = 0;
+virtual hf*logger*err*t SetLogLevel(hf*log*level*t level) = 0;
 
 /**
  * @brief Check if logger is initialized
  * @return bool True if initialized
  */
 virtual bool IsInitialized() const = 0;
-```
+```text
 
 #### **Logging Methods**
 ```cpp
@@ -206,9 +223,9 @@ virtual bool IsInitialized() const = 0;
  * @param tag Message tag/category
  * @param format Printf-style format string
  * @param ... Format arguments
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t LogMessage(hf_log_level_t level, 
+virtual hf*logger*err*t LogMessage(hf*log*level*t level, 
                                  const char* tag,
                                  const char* format, ...) = 0;
 
@@ -217,69 +234,69 @@ virtual hf_logger_err_t LogMessage(hf_log_level_t level,
  * @param tag Message tag/category
  * @param format Printf-style format string
  * @param ... Format arguments
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t LogError(const char* tag, const char* format, ...) = 0;
+virtual hf*logger*err*t LogError(const char* tag, const char* format, ...) = 0;
 
 /**
  * @brief Log warning message
  * @param tag Message tag/category
  * @param format Printf-style format string
  * @param ... Format arguments
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t LogWarn(const char* tag, const char* format, ...) = 0;
+virtual hf*logger*err*t LogWarn(const char* tag, const char* format, ...) = 0;
 
 /**
  * @brief Log info message
  * @param tag Message tag/category
  * @param format Printf-style format string
  * @param ... Format arguments
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t LogInfo(const char* tag, const char* format, ...) = 0;
+virtual hf*logger*err*t LogInfo(const char* tag, const char* format, ...) = 0;
 
 /**
  * @brief Log debug message
  * @param tag Message tag/category
  * @param format Printf-style format string
  * @param ... Format arguments
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t LogDebug(const char* tag, const char* format, ...) = 0;
+virtual hf*logger*err*t LogDebug(const char* tag, const char* format, ...) = 0;
 
 /**
  * @brief Log verbose message
  * @param tag Message tag/category
  * @param format Printf-style format string
  * @param ... Format arguments
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t LogVerbose(const char* tag, const char* format, ...) = 0;
-```
+virtual hf*logger*err*t LogVerbose(const char* tag, const char* format, ...) = 0;
+```text
 
 #### **Output Management**
 ```cpp
 /**
  * @brief Add log output destination
  * @param output Pointer to output handler
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t AddOutput(hf_log_output_t* output) = 0;
+virtual hf*logger*err*t AddOutput(hf*log*output*t* output) = 0;
 
 /**
  * @brief Remove log output destination
  * @param output Pointer to output handler to remove
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t RemoveOutput(hf_log_output_t* output) = 0;
+virtual hf*logger*err*t RemoveOutput(hf*log*output*t* output) = 0;
 
 /**
  * @brief Flush all output buffers
- * @return hf_logger_err_t Error code
+ * @return hf*logger*err*t Error code
  */
-virtual hf_logger_err_t FlushBuffers() = 0;
-```
+virtual hf*logger*err*t FlushBuffers() = 0;
+```text
 
 ---
 
@@ -288,82 +305,82 @@ virtual hf_logger_err_t FlushBuffers() = 0;
 ### 📝 **Log Level Types**
 
 ```cpp
-enum class hf_log_level_t : hf_u8_t {
-    LOG_LEVEL_NONE = 0,     ///< No logging
-    LOG_LEVEL_ERROR = 1,    ///< Error conditions only
-    LOG_LEVEL_WARN = 2,     ///< Warning and error conditions
-    LOG_LEVEL_INFO = 3,     ///< Informational messages
-    LOG_LEVEL_DEBUG = 4,    ///< Debug information
-    LOG_LEVEL_VERBOSE = 5   ///< Detailed trace information
+enum class hf*log*level*t : hf*u8*t {
+    LOG*LEVEL*NONE = 0,     ///< No logging
+    LOG*LEVEL*ERROR = 1,    ///< Error conditions only
+    LOG*LEVEL*WARN = 2,     ///< Warning and error conditions
+    LOG*LEVEL*INFO = 3,     ///< Informational messages
+    LOG*LEVEL*DEBUG = 4,    ///< Debug information
+    LOG*LEVEL*VERBOSE = 5   ///< Detailed trace information
 };
-```
+```text
 
 ### 📤 **Output Types**
 
 ```cpp
-enum class hf_log_output_type_t : hf_u8_t {
-    LOG_OUTPUT_UART = 0,        ///< UART/Serial output
-    LOG_OUTPUT_FILE = 1,        ///< File system output
-    LOG_OUTPUT_MEMORY = 2,      ///< Memory buffer output
-    LOG_OUTPUT_NETWORK = 3,     ///< Network/UDP output
-    LOG_OUTPUT_CUSTOM = 4       ///< Custom user-defined output
+enum class hf*log*output*type*t : hf*u8*t {
+    LOG*OUTPUT*UART = 0,        ///< UART/Serial output
+    LOG*OUTPUT*FILE = 1,        ///< File system output
+    LOG*OUTPUT*MEMORY = 2,      ///< Memory buffer output
+    LOG*OUTPUT*NETWORK = 3,     ///< Network/UDP output
+    LOG*OUTPUT*CUSTOM = 4       ///< Custom user-defined output
 };
-```
+```text
 
 ### 📋 **Log Message Structure**
 
 ```cpp
-struct hf_log_message_t {
-    hf_u64_t timestamp_us;              ///< Timestamp in microseconds
-    hf_log_level_t level;               ///< Log level
+struct hf*log*message*t {
+    hf*u64*t timestamp*us;              ///< Timestamp in microseconds
+    hf*log*level*t level;               ///< Log level
     char tag[16];                       ///< Message tag/category
     char message[256];                  ///< Formatted message
-    hf_u32_t task_id;                   ///< Task/thread ID
+    hf*u32*t task*id;                   ///< Task/thread ID
     const char* file;                   ///< Source file name
-    hf_u32_t line;                      ///< Source line number
+    hf*u32*t line;                      ///< Source line number
 };
-```
+```text
 
 ### 📤 **Output Handler Interface**
 
 ```cpp
-struct hf_log_output_t {
-    hf_log_output_type_t type;          ///< Output type
-    hf_log_level_t min_level;           ///< Minimum level for this output
+struct hf*log*output*t {
+    hf*log*output*type*t type;          ///< Output type
+    hf*log*level*t min*level;           ///< Minimum level for this output
     
     /**
      * @brief Write log message to output
      * @param message Log message to write
-     * @return hf_logger_err_t Error code
+     * @return hf*logger*err*t Error code
      */
-    hf_logger_err_t (*write)(const hf_log_message_t* message);
+    hf*logger*err*t (*write)(const hf*log*message*t* message);
     
     /**
      * @brief Flush output buffer
-     * @return hf_logger_err_t Error code
+     * @return hf*logger*err*t Error code
      */
-    hf_logger_err_t (*flush)(void);
+    hf*logger*err*t (*flush)(void);
     
-    void* user_data;                    ///< User-defined data
+    void* user*data;                    ///< User-defined data
 };
-```
+```text
 
 ### 📈 **Logger Statistics**
 
 ```cpp
-struct hf_logger_statistics_t {
-    hf_u64_t total_messages;            ///< Total messages logged
-    hf_u64_t messages_by_level[6];      ///< Messages per log level
-    hf_u64_t dropped_messages;          ///< Messages dropped due to buffer full
-    hf_u64_t format_errors;             ///< Format string errors
-    hf_u64_t output_errors;             ///< Output write errors
-    hf_u32_t buffer_high_water_mark;    ///< Maximum buffer usage
-    hf_u32_t average_message_size;      ///< Average message size in bytes
-    hf_u64_t total_bytes_logged;        ///< Total bytes written
-    hf_u32_t active_outputs;            ///< Number of active outputs
-    hf_u64_t uptime_ms;                 ///< Logger uptime in milliseconds
+struct hf*logger*statistics*t {
+    hf*u64*t total*messages;            ///< Total messages logged
+    hf*u64*t messages*by*level[6];      ///< Messages per log level
+    hf*u64*t dropped*messages;          ///< Messages dropped due to buffer full
+    hf*u64*t format*errors;             ///< Format string errors
+    hf*u64*t output*errors;             ///< Output write errors
+    hf*u32*t buffer*high*water*mark;    ///< Maximum buffer usage
+    hf*u32*t average*message*size;      ///< Average message size in bytes
+    hf*u64*t total*bytes*logged;        ///< Total bytes written
+    hf*u32*t active*outputs;            ///< Number of active outputs
+    hf*u64*t uptime*ms;                 ///< Logger uptime in milliseconds
 };
-```
+```text
 
 ---
 
@@ -372,39 +389,39 @@ struct hf_logger_statistics_t {
 ### 🚨 **ERROR Level**
 Critical errors that require immediate attention:
 ```cpp
-logger.LogError("MOTOR", "Motor controller fault detected: %s", fault_description);
-logger.LogError("COMM", "CAN bus communication timeout after %d ms", timeout_ms);
-```
+logger.LogError("MOTOR", "Motor controller fault detected: %s", fault*description);
+logger.LogError("COMM", "CAN bus communication timeout after %d ms", timeout*ms);
+```text
 
 ### ⚠️ **WARN Level**
 Warning conditions that should be monitored:
 ```cpp
 logger.LogWarn("TEMP", "Temperature high: %.1f°C (limit: %.1f°C)", temp, limit);
-logger.LogWarn("MEMORY", "Low memory warning: %d bytes remaining", free_bytes);
-```
+logger.LogWarn("MEMORY", "Low memory warning: %d bytes remaining", free*bytes);
+```text
 
 ### ℹ️ **INFO Level**
 General informational messages:
 ```cpp
 logger.LogInfo("SYSTEM", "Motor controller initialized successfully");
-logger.LogInfo("NETWORK", "Connected to WiFi: %s (IP: %s)", ssid, ip_address);
-```
+logger.LogInfo("NETWORK", "Connected to WiFi: %s (IP: %s)", ssid, ip*address);
+```text
 
 ### 🔧 **DEBUG Level**
 Debug information for troubleshooting:
 ```cpp
 logger.LogDebug("ADC", "Reading channel %d: raw=%u, voltage=%.3fV", channel, raw, voltage);
 logger.LogDebug("GPIO", "Pin %d state changed: %s", pin, state ? "HIGH" : "LOW");
-```
+```text
 
 ### 📊 **VERBOSE Level**
 Detailed trace information:
 ```cpp
 logger.LogVerbose("I2C", "Transaction: addr=0x%02X, write=%d bytes, read=%d bytes", 
-                  address, write_len, read_len);
+                  address, write*len, read*len);
 logger.LogVerbose("TIMER", "Callback executed: task=%s, duration=%lu us", 
-                  task_name, duration);
-```
+                  task*name, duration);
+```text
 
 ---
 
@@ -417,112 +434,112 @@ logger.LogVerbose("TIMER", "Callback executed: task=%s, duration=%lu us",
 
 class SystemLogger {
 private:
-    EspLogger logger_;
-    bool is_initialized_;
+    EspLogger logger*;
+    bool is*initialized*;
     
 public:
-    SystemLogger() : is_initialized_(false) {}
+    SystemLogger() : is*initialized*(false) {}
     
     bool initialize() {
-        if (logger_.EnsureInitialized() != hf_logger_err_t::LOGGER_SUCCESS) {
+        if (logger*.EnsureInitialized() != hf*logger*err*t::LOGGER*SUCCESS) {
             return false;
         }
         
         // Set log level based on build configuration
         #ifdef DEBUG
-            logger_.SetLogLevel(hf_log_level_t::LOG_LEVEL_VERBOSE);
+            logger*.SetLogLevel(hf*log*level*t::LOG*LEVEL*VERBOSE);
         #else
-            logger_.SetLogLevel(hf_log_level_t::LOG_LEVEL_INFO);
+            logger*.SetLogLevel(hf*log*level*t::LOG*LEVEL*INFO);
         #endif
         
         // Enable UART output for development
-        if (logger_.EnableUartOutput(UART_NUM_0) != hf_logger_err_t::LOGGER_SUCCESS) {
+        if (logger*.EnableUartOutput(UART*NUM*0) != hf*logger*err*t::LOGGER*SUCCESS) {
             return false;
         }
         
         // Enable file output for production logging
-        if (logger_.EnableFileOutput("/spiffs/system.log") != hf_logger_err_t::LOGGER_SUCCESS) {
+        if (logger*.EnableFileOutput("/spiffs/system.log") != hf*logger*err*t::LOGGER*SUCCESS) {
             printf("Warning: File logging not available\n");
         }
         
-        is_initialized_ = true;
-        logger_.LogInfo("SYSTEM", "System logger initialized");
+        is*initialized* = true;
+        logger*.LogInfo("SYSTEM", "System logger initialized");
         
         return true;
     }
     
-    void log_system_startup() {
-        if (!is_initialized_) return;
+    void log*system*startup() {
+        if (!is*initialized*) return;
         
-        logger_.LogInfo("BOOT", "=== HardFOC Motor Controller Starting ===");
-        logger_.LogInfo("BOOT", "Firmware version: %s", get_firmware_version());
-        logger_.LogInfo("BOOT", "Build date: %s %s", __DATE__, __TIME__);
-        logger_.LogInfo("BOOT", "Free heap: %d bytes", esp_get_free_heap_size());
-        logger_.LogInfo("BOOT", "CPU frequency: %d MHz", esp_clk_cpu_freq() / 1000000);
+        logger*.LogInfo("BOOT", "=== HardFOC Motor Controller Starting ===");
+        logger*.LogInfo("BOOT", "Firmware version: %s", get*firmware*version());
+        logger*.LogInfo("BOOT", "Build date: %s %s", **DATE**, **TIME**);
+        logger*.LogInfo("BOOT", "Free heap: %d bytes", esp*get*free*heap*size());
+        logger*.LogInfo("BOOT", "CPU frequency: %d MHz", esp*clk*cpu*freq() / 1000000);
     }
     
-    void log_motor_operation(float speed, float current, float temperature) {
-        if (!is_initialized_) return;
+    void log*motor*operation(float speed, float current, float temperature) {
+        if (!is*initialized*) return;
         
-        logger_.LogDebug("MOTOR", "Speed: %.2f RPM, Current: %.2f A, Temp: %.1f°C", 
+        logger*.LogDebug("MOTOR", "Speed: %.2f RPM, Current: %.2f A, Temp: %.1f°C", 
                         speed, current, temperature);
         
         // Log warnings for abnormal conditions
         if (current > 10.0f) {
-            logger_.LogWarn("MOTOR", "High current detected: %.2f A", current);
+            logger*.LogWarn("MOTOR", "High current detected: %.2f A", current);
         }
         
         if (temperature > 80.0f) {
-            logger_.LogWarn("MOTOR", "High temperature detected: %.1f°C", temperature);
+            logger*.LogWarn("MOTOR", "High temperature detected: %.1f°C", temperature);
         }
         
         // Log errors for fault conditions
         if (temperature > 100.0f) {
-            logger_.LogError("MOTOR", "CRITICAL: Temperature overload: %.1f°C", temperature);
+            logger*.LogError("MOTOR", "CRITICAL: Temperature overload: %.1f°C", temperature);
         }
     }
     
-    void log_communication_event(const char* interface, bool success, 
+    void log*communication*event(const char* interface, bool success, 
                                 const char* details) {
-        if (!is_initialized_) return;
+        if (!is*initialized*) return;
         
         if (success) {
-            logger_.LogDebug("COMM", "%s: %s", interface, details);
+            logger*.LogDebug("COMM", "%s: %s", interface, details);
         } else {
-            logger_.LogError("COMM", "%s error: %s", interface, details);
+            logger*.LogError("COMM", "%s error: %s", interface, details);
         }
     }
     
-    void show_logger_statistics() {
-        if (!is_initialized_) return;
+    void show*logger*statistics() {
+        if (!is*initialized*) return;
         
-        hf_logger_statistics_t stats;
-        if (logger_.GetStatistics(stats) == hf_logger_err_t::LOGGER_SUCCESS) {
-            logger_.LogInfo("STATS", "=== Logger Statistics ===");
-            logger_.LogInfo("STATS", "Total messages: %llu", stats.total_messages);
-            logger_.LogInfo("STATS", "Errors: %llu, Warnings: %llu, Info: %llu",
-                           stats.messages_by_level[1], 
-                           stats.messages_by_level[2],
-                           stats.messages_by_level[3]);
-            logger_.LogInfo("STATS", "Debug: %llu, Verbose: %llu",
-                           stats.messages_by_level[4],
-                           stats.messages_by_level[5]);
-            logger_.LogInfo("STATS", "Dropped messages: %llu", stats.dropped_messages);
-            logger_.LogInfo("STATS", "Total bytes: %llu", stats.total_bytes_logged);
+        hf*logger*statistics*t stats;
+        if (logger*.GetStatistics(stats) == hf*logger*err*t::LOGGER*SUCCESS) {
+            logger*.LogInfo("STATS", "=== Logger Statistics ===");
+            logger*.LogInfo("STATS", "Total messages: %llu", stats.total*messages);
+            logger*.LogInfo("STATS", "Errors: %llu, Warnings: %llu, Info: %llu",
+                           stats.messages*by*level[1], 
+                           stats.messages*by*level[2],
+                           stats.messages*by*level[3]);
+            logger*.LogInfo("STATS", "Debug: %llu, Verbose: %llu",
+                           stats.messages*by*level[4],
+                           stats.messages*by*level[5]);
+            logger*.LogInfo("STATS", "Dropped messages: %llu", stats.dropped*messages);
+            logger*.LogInfo("STATS", "Total bytes: %llu", stats.total*bytes*logged);
             
-            if (stats.dropped_messages > 0) {
-                logger_.LogWarn("STATS", "Performance issue: %llu messages dropped", 
-                               stats.dropped_messages);
+            if (stats.dropped*messages > 0) {
+                logger*.LogWarn("STATS", "Performance issue: %llu messages dropped", 
+                               stats.dropped*messages);
             }
         }
     }
     
 private:
-    const char* get_firmware_version() {
+    const char* get*firmware*version() {
         return "1.2.3";  // This would come from build system
     }
 };
-```
+```text
 
 ### 📊 **Performance Monitoring Logger**
 
@@ -531,116 +548,116 @@ private:
 
 class PerformanceLogger {
 private:
-    EspLogger logger_;
-    hf_u64_t last_memory_check_;
-    hf_u64_t last_performance_log_;
+    EspLogger logger*;
+    hf*u64*t last*memory*check*;
+    hf*u64*t last*performance*log*;
     
 public:
     bool initialize() {
-        if (logger_.EnsureInitialized() != hf_logger_err_t::LOGGER_SUCCESS) {
+        if (logger*.EnsureInitialized() != hf*logger*err*t::LOGGER*SUCCESS) {
             return false;
         }
         
-        logger_.SetLogLevel(hf_log_level_t::LOG_LEVEL_DEBUG);
-        logger_.EnableUartOutput(UART_NUM_0);
+        logger*.SetLogLevel(hf*log*level*t::LOG*LEVEL*DEBUG);
+        logger*.EnableUartOutput(UART*NUM*0);
         
-        last_memory_check_ = esp_timer_get_time();
-        last_performance_log_ = esp_timer_get_time();
+        last*memory*check* = esp*timer*get*time();
+        last*performance*log* = esp*timer*get*time();
         
         return true;
     }
     
-    void log_function_performance(const char* function_name, 
-                                hf_u64_t start_time_us,
-                                hf_u64_t end_time_us) {
-        hf_u64_t duration_us = end_time_us - start_time_us;
+    void log*function*performance(const char* function*name, 
+                                hf*u64*t start*time*us,
+                                hf*u64*t end*time*us) {
+        hf*u64*t duration*us = end*time*us - start*time*us;
         
-        if (duration_us > 1000) {  // Log if > 1ms
-            logger_.LogWarn("PERF", "%s took %llu us (> 1ms)", function_name, duration_us);
-        } else if (duration_us > 100) {  // Log if > 100us
-            logger_.LogDebug("PERF", "%s took %llu us", function_name, duration_us);
+        if (duration*us > 1000) {  // Log if > 1ms
+            logger*.LogWarn("PERF", "%s took %llu us (> 1ms)", function*name, duration*us);
+        } else if (duration*us > 100) {  // Log if > 100us
+            logger*.LogDebug("PERF", "%s took %llu us", function*name, duration*us);
         } else {
-            logger_.LogVerbose("PERF", "%s took %llu us", function_name, duration_us);
+            logger*.LogVerbose("PERF", "%s took %llu us", function*name, duration*us);
         }
     }
     
-    void log_memory_usage() {
-        hf_u64_t now = esp_timer_get_time();
+    void log*memory*usage() {
+        hf*u64*t now = esp*timer*get*time();
         
         // Log memory usage every 5 seconds
-        if (now - last_memory_check_ >= 5000000) {
-            size_t free_heap = esp_get_free_heap_size();
-            size_t min_free_heap = esp_get_minimum_free_heap_size();
+        if (now - last*memory*check* >= 5000000) {
+            size*t free*heap = esp*get*free*heap*size();
+            size*t min*free*heap = esp*get*minimum*free*heap*size();
             
-            logger_.LogInfo("MEMORY", "Free heap: %u bytes (minimum: %u bytes)", 
-                           free_heap, min_free_heap);
+            logger*.LogInfo("MEMORY", "Free heap: %u bytes (minimum: %u bytes)", 
+                           free*heap, min*free*heap);
             
-            if (free_heap < 10000) {
-                logger_.LogError("MEMORY", "CRITICAL: Low memory condition");
-            } else if (free_heap < 50000) {
-                logger_.LogWarn("MEMORY", "Low memory warning");
+            if (free*heap < 10000) {
+                logger*.LogError("MEMORY", "CRITICAL: Low memory condition");
+            } else if (free*heap < 50000) {
+                logger*.LogWarn("MEMORY", "Low memory warning");
             }
             
-            last_memory_check_ = now;
+            last*memory*check* = now;
         }
     }
     
-    void log_task_performance() {
-        hf_u64_t now = esp_timer_get_time();
+    void log*task*performance() {
+        hf*u64*t now = esp*timer*get*time();
         
         // Log task statistics every 10 seconds
-        if (now - last_performance_log_ >= 10000000) {
-            TaskStatus_t* task_array;
-            UBaseType_t task_count = uxTaskGetNumberOfTasks();
+        if (now - last*performance*log* >= 10000000) {
+            TaskStatus*t* task*array;
+            UBaseType*t task*count = uxTaskGetNumberOfTasks();
             
-            task_array = (TaskStatus_t*)pvPortMalloc(task_count * sizeof(TaskStatus_t));
-            if (task_array != nullptr) {
-                task_count = uxTaskGetSystemState(task_array, task_count, nullptr);
+            task*array = (TaskStatus*t*)pvPortMalloc(task*count * sizeof(TaskStatus*t));
+            if (task*array != nullptr) {
+                task*count = uxTaskGetSystemState(task*array, task*count, nullptr);
                 
-                logger_.LogInfo("TASKS", "=== Task Performance ===");
-                for (UBaseType_t i = 0; i < task_count; i++) {
-                    logger_.LogInfo("TASKS", "%s: Priority=%u, Stack=%u", 
-                                   task_array[i].pcTaskName,
-                                   task_array[i].uxCurrentPriority,
-                                   task_array[i].usStackHighWaterMark);
+                logger*.LogInfo("TASKS", "=== Task Performance ===");
+                for (UBaseType*t i = 0; i < task*count; i++) {
+                    logger*.LogInfo("TASKS", "%s: Priority=%u, Stack=%u", 
+                                   task*array[i].pcTaskName,
+                                   task*array[i].uxCurrentPriority,
+                                   task*array[i].usStackHighWaterMark);
                     
-                    if (task_array[i].usStackHighWaterMark < 512) {
-                        logger_.LogWarn("TASKS", "Low stack warning for task: %s", 
-                                       task_array[i].pcTaskName);
+                    if (task*array[i].usStackHighWaterMark < 512) {
+                        logger*.LogWarn("TASKS", "Low stack warning for task: %s", 
+                                       task*array[i].pcTaskName);
                     }
                 }
                 
-                vPortFree(task_array);
+                vPortFree(task*array);
             }
             
-            last_performance_log_ = now;
+            last*performance*log* = now;
         }
     }
     
     // RAII class for automatic function timing
     class FunctionTimer {
     private:
-        PerformanceLogger* logger_;
-        const char* function_name_;
-        hf_u64_t start_time_;
+        PerformanceLogger* logger*;
+        const char* function*name*;
+        hf*u64*t start*time*;
         
     public:
-        FunctionTimer(PerformanceLogger* logger, const char* function_name)
-            : logger_(logger), function_name_(function_name) {
-            start_time_ = esp_timer_get_time();
+        FunctionTimer(PerformanceLogger* logger, const char* function*name)
+            : logger*(logger), function*name*(function*name) {
+            start*time* = esp*timer*get*time();
         }
         
         ~FunctionTimer() {
-            hf_u64_t end_time = esp_timer_get_time();
-            logger_->log_function_performance(function_name_, start_time_, end_time);
+            hf*u64*t end*time = esp*timer*get*time();
+            logger*->log*function*performance(function*name*, start*time*, end*time);
         }
     };
 };
 
 // Macro for easy function timing
-#define PERF_TIME_FUNCTION(logger) \
-    PerformanceLogger::FunctionTimer _timer(logger, __FUNCTION__)
-```
+#define PERF*TIME*FUNCTION(logger) \
+    PerformanceLogger::FunctionTimer *timer(logger, **FUNCTION**)
+```text
 
 ### 📤 **Multi-Output Logger System**
 
@@ -649,107 +666,107 @@ public:
 
 class MultiOutputLogger {
 private:
-    EspLogger logger_;
-    hf_log_output_t uart_output_;
-    hf_log_output_t file_output_;
-    hf_log_output_t network_output_;
+    EspLogger logger*;
+    hf*log*output*t uart*output*;
+    hf*log*output*t file*output*;
+    hf*log*output*t network*output*;
     
 public:
     bool initialize() {
-        if (logger_.EnsureInitialized() != hf_logger_err_t::LOGGER_SUCCESS) {
+        if (logger*.EnsureInitialized() != hf*logger*err*t::LOGGER*SUCCESS) {
             return false;
         }
         
         // Setup UART output for immediate feedback
-        setup_uart_output();
+        setup*uart*output();
         
         // Setup file output for persistent logging
-        setup_file_output();
+        setup*file*output();
         
         // Setup network output for remote monitoring
-        setup_network_output();
+        setup*network*output();
         
-        logger_.LogInfo("LOGGER", "Multi-output logger system initialized");
+        logger*.LogInfo("LOGGER", "Multi-output logger system initialized");
         return true;
     }
     
 private:
-    void setup_uart_output() {
-        uart_output_.type = hf_log_output_type_t::LOG_OUTPUT_UART;
-        uart_output_.min_level = hf_log_level_t::LOG_LEVEL_DEBUG;
-        uart_output_.write = uart_write_callback;
-        uart_output_.flush = uart_flush_callback;
-        uart_output_.user_data = this;
+    void setup*uart*output() {
+        uart*output*.type = hf*log*output*type*t::LOG*OUTPUT*UART;
+        uart*output*.min*level = hf*log*level*t::LOG*LEVEL*DEBUG;
+        uart*output*.write = uart*write*callback;
+        uart*output*.flush = uart*flush*callback;
+        uart*output*.user*data = this;
         
-        logger_.AddOutput(&uart_output_);
+        logger*.AddOutput(&uart*output*);
     }
     
-    void setup_file_output() {
-        file_output_.type = hf_log_output_type_t::LOG_OUTPUT_FILE;
-        file_output_.min_level = hf_log_level_t::LOG_LEVEL_INFO;
-        file_output_.write = file_write_callback;
-        file_output_.flush = file_flush_callback;
-        file_output_.user_data = this;
+    void setup*file*output() {
+        file*output*.type = hf*log*output*type*t::LOG*OUTPUT*FILE;
+        file*output*.min*level = hf*log*level*t::LOG*LEVEL*INFO;
+        file*output*.write = file*write*callback;
+        file*output*.flush = file*flush*callback;
+        file*output*.user*data = this;
         
-        logger_.AddOutput(&file_output_);
+        logger*.AddOutput(&file*output*);
     }
     
-    void setup_network_output() {
-        network_output_.type = hf_log_output_type_t::LOG_OUTPUT_NETWORK;
-        network_output_.min_level = hf_log_level_t::LOG_LEVEL_ERROR;  // Only errors
-        network_output_.write = network_write_callback;
-        network_output_.flush = network_flush_callback;
-        network_output_.user_data = this;
+    void setup*network*output() {
+        network*output*.type = hf*log*output*type*t::LOG*OUTPUT*NETWORK;
+        network*output*.min*level = hf*log*level*t::LOG*LEVEL*ERROR;  // Only errors
+        network*output*.write = network*write*callback;
+        network*output*.flush = network*flush*callback;
+        network*output*.user*data = this;
         
-        logger_.AddOutput(&network_output_);
+        logger*.AddOutput(&network*output*);
     }
     
-    static hf_logger_err_t uart_write_callback(const hf_log_message_t* message) {
+    static hf*logger*err*t uart*write*callback(const hf*log*message*t* message) {
         // Format timestamp
         char timestamp[32];
-        format_timestamp(message->timestamp_us, timestamp, sizeof(timestamp));
+        format*timestamp(message->timestamp*us, timestamp, sizeof(timestamp));
         
         // Add color coding based on level
-        const char* color = get_color_code(message->level);
-        const char* level_str = get_level_string(message->level);
+        const char* color = get*color*code(message->level);
+        const char* level*str = get*level*string(message->level);
         
         printf("%s[%s] %s (%s:%lu) %s: %s\033[0m\n",
                color,
                timestamp,
-               level_str,
+               level*str,
                message->file,
                message->line,
                message->tag,
                message->message);
         
-        return hf_logger_err_t::LOGGER_SUCCESS;
+        return hf*logger*err*t::LOGGER*SUCCESS;
     }
     
-    static hf_logger_err_t file_write_callback(const hf_log_message_t* message) {
-        FILE* log_file = fopen("/spiffs/system.log", "a");
-        if (log_file == nullptr) {
-            return hf_logger_err_t::LOGGER_ERR_FILE_WRITE_ERROR;
+    static hf*logger*err*t file*write*callback(const hf*log*message*t* message) {
+        FILE* log*file = fopen("/spiffs/system.log", "a");
+        if (log*file == nullptr) {
+            return hf*logger*err*t::LOGGER*ERR*FILE*WRITE*ERROR;
         }
         
         char timestamp[32];
-        format_timestamp(message->timestamp_us, timestamp, sizeof(timestamp));
+        format*timestamp(message->timestamp*us, timestamp, sizeof(timestamp));
         
-        fprintf(log_file, "[%s] %s %s: %s\n",
+        fprintf(log*file, "[%s] %s %s: %s\n",
                 timestamp,
-                get_level_string(message->level),
+                get*level*string(message->level),
                 message->tag,
                 message->message);
         
-        fclose(log_file);
-        return hf_logger_err_t::LOGGER_SUCCESS;
+        fclose(log*file);
+        return hf*logger*err*t::LOGGER*SUCCESS;
     }
     
-    static hf_logger_err_t network_write_callback(const hf_log_message_t* message) {
+    static hf*logger*err*t network*write*callback(const hf*log*message*t* message) {
         // Send critical errors to monitoring server
-        if (message->level == hf_log_level_t::LOG_LEVEL_ERROR) {
+        if (message->level == hf*log*level*t::LOG*LEVEL*ERROR) {
             // Create JSON payload
-            char json_payload[512];
-            snprintf(json_payload, sizeof(json_payload),
+            char json*payload[512];
+            snprintf(json*payload, sizeof(json*payload),
                     "{"
                     "\"timestamp\":%llu,"
                     "\"level\":\"ERROR\","
@@ -758,70 +775,70 @@ private:
                     "\"file\":\"%s\","
                     "\"line\":%lu"
                     "}",
-                    message->timestamp_us,
+                    message->timestamp*us,
                     message->tag,
                     message->message,
                     message->file,
                     message->line);
             
             // Send via UDP (implementation depends on network stack)
-            send_udp_message("log.server.com", 5140, json_payload);
+            send*udp*message("log.server.com", 5140, json*payload);
         }
         
-        return hf_logger_err_t::LOGGER_SUCCESS;
+        return hf*logger*err*t::LOGGER*SUCCESS;
     }
     
-    static hf_logger_err_t uart_flush_callback(void) {
+    static hf*logger*err*t uart*flush*callback(void) {
         fflush(stdout);
-        return hf_logger_err_t::LOGGER_SUCCESS;
+        return hf*logger*err*t::LOGGER*SUCCESS;
     }
     
-    static hf_logger_err_t file_flush_callback(void) {
+    static hf*logger*err*t file*flush*callback(void) {
         // File is closed after each write, so no flush needed
-        return hf_logger_err_t::LOGGER_SUCCESS;
+        return hf*logger*err*t::LOGGER*SUCCESS;
     }
     
-    static hf_logger_err_t network_flush_callback(void) {
+    static hf*logger*err*t network*flush*callback(void) {
         // UDP is connectionless, no flush needed
-        return hf_logger_err_t::LOGGER_SUCCESS;
+        return hf*logger*err*t::LOGGER*SUCCESS;
     }
     
-    static void format_timestamp(hf_u64_t timestamp_us, char* buffer, size_t buffer_size) {
-        hf_u64_t timestamp_ms = timestamp_us / 1000;
-        hf_u32_t seconds = timestamp_ms / 1000;
-        hf_u32_t milliseconds = timestamp_ms % 1000;
+    static void format*timestamp(hf*u64*t timestamp*us, char* buffer, size*t buffer*size) {
+        hf*u64*t timestamp*ms = timestamp*us / 1000;
+        hf*u32*t seconds = timestamp*ms / 1000;
+        hf*u32*t milliseconds = timestamp*ms % 1000;
         
-        snprintf(buffer, buffer_size, "%lu.%03lu", seconds, milliseconds);
+        snprintf(buffer, buffer*size, "%lu.%03lu", seconds, milliseconds);
     }
     
-    static const char* get_level_string(hf_log_level_t level) {
+    static const char* get*level*string(hf*log*level*t level) {
         switch (level) {
-            case hf_log_level_t::LOG_LEVEL_ERROR: return "ERROR";
-            case hf_log_level_t::LOG_LEVEL_WARN: return "WARN ";
-            case hf_log_level_t::LOG_LEVEL_INFO: return "INFO ";
-            case hf_log_level_t::LOG_LEVEL_DEBUG: return "DEBUG";
-            case hf_log_level_t::LOG_LEVEL_VERBOSE: return "VERB ";
+            case hf*log*level*t::LOG*LEVEL*ERROR: return "ERROR";
+            case hf*log*level*t::LOG*LEVEL*WARN: return "WARN ";
+            case hf*log*level*t::LOG*LEVEL*INFO: return "INFO ";
+            case hf*log*level*t::LOG*LEVEL*DEBUG: return "DEBUG";
+            case hf*log*level*t::LOG*LEVEL*VERBOSE: return "VERB ";
             default: return "UNKN ";
         }
     }
     
-    static const char* get_color_code(hf_log_level_t level) {
+    static const char* get*color*code(hf*log*level*t level) {
         switch (level) {
-            case hf_log_level_t::LOG_LEVEL_ERROR: return "\033[31m";    // Red
-            case hf_log_level_t::LOG_LEVEL_WARN: return "\033[33m";     // Yellow
-            case hf_log_level_t::LOG_LEVEL_INFO: return "\033[32m";     // Green
-            case hf_log_level_t::LOG_LEVEL_DEBUG: return "\033[36m";    // Cyan
-            case hf_log_level_t::LOG_LEVEL_VERBOSE: return "\033[37m";  // White
+            case hf*log*level*t::LOG*LEVEL*ERROR: return "\033[31m";    // Red
+            case hf*log*level*t::LOG*LEVEL*WARN: return "\033[33m";     // Yellow
+            case hf*log*level*t::LOG*LEVEL*INFO: return "\033[32m";     // Green
+            case hf*log*level*t::LOG*LEVEL*DEBUG: return "\033[36m";    // Cyan
+            case hf*log*level*t::LOG*LEVEL*VERBOSE: return "\033[37m";  // White
             default: return "\033[0m";                                  // Reset
         }
     }
     
-    static void send_udp_message(const char* host, int port, const char* message) {
+    static void send*udp*message(const char* host, int port, const char* message) {
         // UDP implementation would go here
         // This is a placeholder for actual network implementation
     }
 };
-```
+```text
 
 ---
 
@@ -841,17 +858,17 @@ private:
    logger.LogInfo("SYSTEM", "Motor controller initialized successfully");
    
    // Use DEBUG for troubleshooting information
-   logger.LogDebug("ADC", "Channel %d reading: %u", channel, raw_value);
+   logger.LogDebug("ADC", "Channel %d reading: %u", channel, raw*value);
    
    // Use VERBOSE for detailed tracing
    logger.LogVerbose("I2C", "Write transaction complete: %d bytes", count);
    ```
 
-2. **🏷️ Use Meaningful Tags**
+1. **🏷️ Use Meaningful Tags**
    ```cpp
    // GOOD: Descriptive, hierarchical tags
    logger.LogInfo("MOTOR.CTRL", "Speed set to %.2f RPM", speed);
-   logger.LogDebug("COMM.CAN", "Message received: ID=0x%03X", msg_id);
+   logger.LogDebug("COMM.CAN", "Message received: ID=0x%03X", msg*id);
    logger.LogError("SENSOR.TEMP", "Temperature sensor not responding");
    
    // BAD: Vague or inconsistent tags
@@ -859,40 +876,40 @@ private:
    logger.LogError("error", "Bad thing");
    ```
 
-3. **📊 Monitor Performance**
+1. **📊 Monitor Performance**
    ```cpp
    // Regular statistics monitoring
-   hf_logger_statistics_t stats;
+   hf*logger*statistics*t stats;
    logger.GetStatistics(stats);
    
-   if (stats.dropped_messages > 0) {
+   if (stats.dropped*messages > 0) {
        logger.LogWarn("LOGGER", "Performance issue: %llu messages dropped", 
-                     stats.dropped_messages);
+                     stats.dropped*messages);
    }
    
    // Check buffer usage
-   if (stats.buffer_high_water_mark > 80) {  // 80% usage
+   if (stats.buffer*high*water*mark > 80) {  // 80% usage
        logger.LogWarn("LOGGER", "High buffer usage: %u%%", 
-                     stats.buffer_high_water_mark);
+                     stats.buffer*high*water*mark);
    }
    ```
 
-4. **🔄 Implement Log Rotation**
+1. **🔄 Implement Log Rotation**
    ```cpp
    // For file logging, implement rotation
    class LogRotator {
    public:
-       void check_rotation() {
+       void check*rotation() {
            struct stat st;
            if (stat("/spiffs/system.log", &st) == 0) {
-               if (st.st_size > MAX_LOG_SIZE) {
-                   rotate_logs();
+               if (st.st*size > MAX*LOG*SIZE) {
+                   rotate*logs();
                }
            }
        }
        
    private:
-       void rotate_logs() {
+       void rotate*logs() {
            rename("/spiffs/system.log", "/spiffs/system.log.old");
            // Create new log file
        }
@@ -904,27 +921,27 @@ private:
 1. **🚫 Logging in ISRs or Critical Sections**
    ```cpp
    // BAD: Logging from ISR
-   void IRAM_ATTR gpio_isr_handler(void* arg) {
+   void IRAM*ATTR gpio*isr*handler(void* arg) {
        logger.LogDebug("ISR", "GPIO interrupt");  // Don't do this!
    }
    
    // GOOD: Defer logging to task context
-   void IRAM_ATTR gpio_isr_handler(void* arg) {
-       BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-       xSemaphoreGiveFromISR(gpio_semaphore, &xHigherPriorityTaskWoken);
-       portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+   void IRAM*ATTR gpio*isr*handler(void* arg) {
+       BaseType*t xHigherPriorityTaskWoken = pdFALSE;
+       xSemaphoreGiveFromISR(gpio*semaphore, &xHigherPriorityTaskWoken);
+       portYIELD*FROM*ISR(xHigherPriorityTaskWoken);
    }
    
-   void gpio_task(void* params) {
+   void gpio*task(void* params) {
        while (true) {
-           if (xSemaphoreTake(gpio_semaphore, portMAX_DELAY)) {
+           if (xSemaphoreTake(gpio*semaphore, portMAX*DELAY)) {
                logger.LogDebug("GPIO", "Interrupt processed");
            }
        }
    }
    ```
 
-2. **🚫 Excessive Verbose Logging**
+1. **🚫 Excessive Verbose Logging**
    ```cpp
    // BAD: Too much verbose logging
    for (int i = 0; i < 1000; i++) {
@@ -939,13 +956,13 @@ private:
    }
    ```
 
-3. **🚫 Not Checking Logger Errors**
+1. **🚫 Not Checking Logger Errors**
    ```cpp
    // BAD: Ignoring logger errors
    logger.LogError("CRITICAL", "System failure");
    
    // GOOD: Handle logger failures
-   if (logger.LogError("CRITICAL", "System failure") != LOGGER_SUCCESS) {
+   if (logger.LogError("CRITICAL", "System failure") != LOGGER*SUCCESS) {
        // Fallback logging method
        printf("CRITICAL ERROR: System failure\n");
    }
@@ -959,24 +976,24 @@ private:
    logger.SetBufferSize(8192);  // 8KB buffer for high-volume logging
    ```
 
-2. **📊 Batch Flush Operations**
+1. **📊 Batch Flush Operations**
    ```cpp
    // Flush periodically rather than after each message
-   void periodic_flush_task(void* params) {
+   void periodic*flush*task(void* params) {
        while (true) {
-           vTaskDelay(pdMS_TO_TICKS(1000));  // Flush every second
+           vTaskDelay(pdMS*TO*TICKS(1000));  // Flush every second
            logger.FlushBuffers();
        }
    }
    ```
 
-3. **🔍 Use Conditional Compilation**
+1. **🔍 Use Conditional Compilation**
    ```cpp
    // Remove verbose logging in production builds
-   #ifdef DEBUG_VERBOSE
-   #define LOG_VERBOSE(tag, format, ...) logger.LogVerbose(tag, format, ##__VA_ARGS__)
+   #ifdef DEBUG*VERBOSE
+   #define LOG*VERBOSE(tag, format, ...) logger.LogVerbose(tag, format, ##**VA*ARGS_*)
    #else
-   #define LOG_VERBOSE(tag, format, ...) do {} while(0)
+   #define LOG*VERBOSE(tag, format, ...) do {} while(0)
    #endif
    ```
 
@@ -986,7 +1003,8 @@ private:
 
 **📋 Navigation**
 
-[← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature →](BaseTemperature.md)
+[← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature
+→](BaseTemperature.md)
 
 </div>
 

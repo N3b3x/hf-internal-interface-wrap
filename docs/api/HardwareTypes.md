@@ -4,7 +4,8 @@
 
 **📋 Navigation**
 
-[← Previous: API Index](README.md) | [Back to API Index](README.md) | [Next: BaseGpio →](BaseGpio.md)
+[← Previous: API Index](README.md) | [Back to API Index](README.md) | [Next: BaseGpio
+→](BaseGpio.md)
 
 </div>
 
@@ -12,7 +13,9 @@
 
 ## Overview
 
-`HardwareTypes.h` defines platform-agnostic hardware type definitions for the HardFOC system. These types provide a consistent API across different hardware platforms without exposing MCU-specific implementation details.
+`HardwareTypes.h` defines platform-agnostic hardware type definitions for the HardFOC system.
+These types provide a consistent API across different hardware platforms without exposing
+MCU-specific implementation details.
 
 ## Design Philosophy
 
@@ -26,111 +29,111 @@ All base interface classes use these common types to ensure:
 
 ```cpp
 #include "inc/base/HardwareTypes.h"
-```
+```text
 
 ## Core Integer Types
 
 ### Unsigned Integer Types
 
 ```cpp
-using hf_u8_t = uint8_t;    // 8-bit unsigned (0 to 255)
-using hf_u16_t = uint16_t;  // 16-bit unsigned (0 to 65,535)
-using hf_u32_t = uint32_t;  // 32-bit unsigned (0 to 4,294,967,295)
-using hf_u64_t = uint64_t;  // 64-bit unsigned (0 to 18,446,744,073,709,551,615)
-```
+using hf*u8*t = uint8*t;    // 8-bit unsigned (0 to 255)
+using hf*u16*t = uint16*t;  // 16-bit unsigned (0 to 65,535)
+using hf*u32*t = uint32*t;  // 32-bit unsigned (0 to 4,294,967,295)
+using hf*u64*t = uint64*t;  // 64-bit unsigned (0 to 18,446,744,073,709,551,615)
+```text
 
 ### Signed Integer Types
 
 ```cpp
-using hf_i8_t = int8_t;     // 8-bit signed (-128 to 127)
-using hf_i16_t = int16_t;   // 16-bit signed (-32,768 to 32,767)
-using hf_i32_t = int32_t;   // 32-bit signed (-2,147,483,648 to 2,147,483,647)
-using hf_i64_t = int64_t;   // 64-bit signed (-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807)
-```
+using hf*i8*t = int8*t;     // 8-bit signed (-128 to 127)
+using hf*i16*t = int16*t;   // 16-bit signed (-32,768 to 32,767)
+using hf*i32*t = int32*t;   // 32-bit signed (-2,147,483,648 to 2,147,483,647)
+using hf*i64*t = int64*t; // 64-bit signed (-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807)
+```text
 
 ### Boolean Type
 
 ```cpp
-using hf_bool_t = bool;     // Platform-agnostic boolean type
-```
+using hf*bool*t = bool;     // Platform-agnostic boolean type
+```text
 
 ## Hardware-Specific Types
 
 ### GPIO Pin Types
 
 ```cpp
-using hf_pin_num_t = hf_i32_t;  // GPIO pin number type
-```
+using hf*pin*num*t = hf*i32*t;  // GPIO pin number type
+```text
 
 **Constants:**
 ```cpp
-constexpr hf_pin_num_t HF_INVALID_PIN = -1;        // Invalid/unassigned pin
-constexpr hf_pin_num_t HF_MAX_PIN_NUMBER = 255;    // Maximum supported pin number
-```
+constexpr hf*pin*num*t HF*INVALID*PIN = -1;        // Invalid/unassigned pin
+constexpr hf*pin*num*t HF*MAX*PIN*NUMBER = 255;    // Maximum supported pin number
+```text
 
 **Validation:**
 ```cpp
-constexpr bool IsValidPin(hf_pin_num_t pin) noexcept;
-```
+constexpr bool IsValidPin(hf*pin*num*t pin) noexcept;
+```text
 
 ### Port and Controller Types
 
 ```cpp
-using hf_port_num_t = hf_u32_t;  // Communication port identifier
-using hf_host_id_t = hf_u32_t;   // Host/controller identifier
-```
+using hf*port*num*t = hf*u32*t;  // Communication port identifier
+using hf*host*id*t = hf*u32*t;   // Host/controller identifier
+```text
 
 **Constants:**
 ```cpp
-constexpr hf_port_num_t HF_INVALID_PORT = std::numeric_limits<hf_port_num_t>::max();
-constexpr hf_host_id_t HF_INVALID_HOST = std::numeric_limits<hf_host_id_t>::max();
-```
+constexpr hf*port*num*t HF*INVALID*PORT = std::numeric*limits<hf*port*num*t>::max();
+constexpr hf*host*id*t HF*INVALID*HOST = std::numeric*limits<hf*host*id*t>::max();
+```text
 
 **Validation:**
 ```cpp
-constexpr bool IsValidPort(hf_port_num_t port) noexcept;
-constexpr bool IsValidHost(hf_host_id_t host) noexcept;
-```
+constexpr bool IsValidPort(hf*port*num*t port) noexcept;
+constexpr bool IsValidHost(hf*host*id*t host) noexcept;
+```text
 
 ### Channel Types
 
 ```cpp
-using hf_channel_id_t = hf_u32_t;  // ADC/PWM/DMA channel identifier
-```
+using hf*channel*id*t = hf*u32*t;  // ADC/PWM/DMA channel identifier
+```text
 
 **Constants:**
 ```cpp
-constexpr hf_channel_id_t HF_INVALID_CHANNEL = std::numeric_limits<hf_channel_id_t>::max();
-```
+constexpr hf*channel*id*t HF*INVALID*CHANNEL = std::numeric*limits<hf*channel*id*t>::max();
+```text
 
 **Validation:**
 ```cpp
-constexpr bool IsValidChannel(hf_channel_id_t channel) noexcept;
-```
+constexpr bool IsValidChannel(hf*channel*id*t channel) noexcept;
+```text
 
 ## Communication Types
 
 ### Frequency Types
 
 ```cpp
-using hf_frequency_hz_t = hf_u32_t;  // Frequency in Hz
-using hf_frequency_t = hf_frequency_hz_t;  // Backward compatibility alias
-using hf_baud_rate_t = hf_u32_t;     // UART baud rate
-```
+using hf*frequency*hz*t = hf*u32*t;  // Frequency in Hz
+using hf*frequency*t = hf*frequency*hz*t;  // Backward compatibility alias
+using hf*baud*rate*t = hf*u32*t;     // UART baud rate
+```text
 
 ### Timing Types
 
 ```cpp
-using hf_time_t = hf_u32_t;          // Time in milliseconds
-using hf_timeout_ms_t = hf_time_t;   // Timeout value in milliseconds
-```
+using hf*time*t = hf*u32*t;          // Time in milliseconds
+using hf*timeout*ms*t = hf*time*t;   // Timeout value in milliseconds
+```text
 
 **Timeout Constants:**
 ```cpp
-constexpr hf_time_t HF_TIMEOUT_DEFAULT_MS = 1000;  // Default 1 second timeout
-constexpr hf_time_t HF_TIMEOUT_NONE = 0;           // No timeout (wait indefinitely)
-constexpr hf_time_t HF_TIMEOUT_MAX = std::numeric_limits<hf_time_t>::max();  // Maximum timeout
-```
+constexpr hf*time*t HF*TIMEOUT*DEFAULT*MS = 1000;  // Default 1 second timeout
+constexpr hf*time*t HF*TIMEOUT*NONE = 0;           // No timeout (wait indefinitely)
+constexpr hf*time*t HF*TIMEOUT*MAX = std::numeric*limits<hf*time*t>::max();  // Maximum timeout
+```text
 
 ## Usage Examples
 
@@ -139,14 +142,14 @@ constexpr hf_time_t HF_TIMEOUT_MAX = std::numeric_limits<hf_time_t>::max();  // 
 ```cpp
 #include "inc/base/HardwareTypes.h"
 
-bool configure_gpio_pin(hf_pin_num_t pin) {
+bool configure*gpio*pin(hf*pin*num*t pin) {
     // Validate pin number before use
     if (!IsValidPin(pin)) {
         printf("Invalid pin number: %d\n", pin);
         return false;
     }
     
-    if (pin == HF_INVALID_PIN) {
+    if (pin == HF*INVALID*PIN) {
         printf("Pin not assigned\n");
         return false;
     }
@@ -156,17 +159,17 @@ bool configure_gpio_pin(hf_pin_num_t pin) {
     return true;
 }
 
-void test_pin_validation() {
-    configure_gpio_pin(2);    // Valid: true
-    configure_gpio_pin(-1);   // Invalid: HF_INVALID_PIN
-    configure_gpio_pin(300);  // Invalid: exceeds HF_MAX_PIN_NUMBER
+void test*pin*validation() {
+    configure*gpio*pin(2);    // Valid: true
+    configure*gpio*pin(-1);   // Invalid: HF*INVALID*PIN
+    configure*gpio*pin(300);  // Invalid: exceeds HF*MAX*PIN*NUMBER
 }
-```
+```text
 
 ### Communication Port Configuration
 
 ```cpp
-bool setup_i2c_port(hf_port_num_t port, hf_frequency_hz_t frequency) {
+bool setup*i2c*port(hf*port*num*t port, hf*frequency*hz*t frequency) {
     // Validate port
     if (!IsValidPort(port)) {
         printf("Invalid I2C port: %u\n", port);
@@ -183,31 +186,31 @@ bool setup_i2c_port(hf_port_num_t port, hf_frequency_hz_t frequency) {
     return true;
 }
 
-void test_i2c_setup() {
-    setup_i2c_port(0, 400000);           // Valid: I2C port 0 at 400kHz
-    setup_i2c_port(HF_INVALID_PORT, 400000);  // Invalid port
-    setup_i2c_port(1, 50000);            // Invalid frequency (too low)
+void test*i2c*setup() {
+    setup*i2c*port(0, 400000);           // Valid: I2C port 0 at 400kHz
+    setup*i2c*port(HF*INVALID*PORT, 400000);  // Invalid port
+    setup*i2c*port(1, 50000);            // Invalid frequency (too low)
 }
-```
+```text
 
 ### ADC Channel Management
 
 ```cpp
 class SensorManager {
 private:
-    static constexpr hf_u8_t MAX_SENSORS = 8;
-    hf_channel_id_t sensor_channels_[MAX_SENSORS];
+    static constexpr hf*u8*t MAX*SENSORS = 8;
+    hf*channel*id*t sensor*channels*[MAX*SENSORS];
     
 public:
     SensorManager() {
         // Initialize all channels as invalid
-        for (hf_u8_t i = 0; i < MAX_SENSORS; i++) {
-            sensor_channels_[i] = HF_INVALID_CHANNEL;
+        for (hf*u8*t i = 0; i < MAX*SENSORS; i++) {
+            sensor*channels*[i] = HF*INVALID*CHANNEL;
         }
     }
     
-    bool add_sensor(hf_u8_t sensor_index, hf_channel_id_t channel) {
-        if (sensor_index >= MAX_SENSORS) {
+    bool add*sensor(hf*u8*t sensor*index, hf*channel*id*t channel) {
+        if (sensor*index >= MAX*SENSORS) {
             return false;
         }
         
@@ -216,24 +219,24 @@ public:
             return false;
         }
         
-        sensor_channels_[sensor_index] = channel;
-        printf("Sensor %u assigned to ADC channel %u\n", sensor_index, channel);
+        sensor*channels*[sensor*index] = channel;
+        printf("Sensor %u assigned to ADC channel %u\n", sensor*index, channel);
         return true;
     }
     
-    hf_channel_id_t get_sensor_channel(hf_u8_t sensor_index) const {
-        if (sensor_index >= MAX_SENSORS) {
-            return HF_INVALID_CHANNEL;
+    hf*channel*id*t get*sensor*channel(hf*u8*t sensor*index) const {
+        if (sensor*index >= MAX*SENSORS) {
+            return HF*INVALID*CHANNEL;
         }
-        return sensor_channels_[sensor_index];
+        return sensor*channels*[sensor*index];
     }
     
-    bool is_sensor_configured(hf_u8_t sensor_index) const {
-        hf_channel_id_t channel = get_sensor_channel(sensor_index);
+    bool is*sensor*configured(hf*u8*t sensor*index) const {
+        hf*channel*id*t channel = get*sensor*channel(sensor*index);
         return IsValidChannel(channel);
     }
 };
-```
+```text
 
 ### Timeout Handling
 
@@ -244,98 +247,98 @@ enum class OperationResult {
     ERROR
 };
 
-OperationResult wait_for_data(hf_timeout_ms_t timeout) {
-    hf_time_t start_time = get_current_time_ms();
+OperationResult wait*for*data(hf*timeout*ms*t timeout) {
+    hf*time*t start*time = get*current*time*ms();
     
     while (true) {
-        if (data_available()) {
+        if (data*available()) {
             return OperationResult::SUCCESS;
         }
         
-        if (timeout != HF_TIMEOUT_NONE) {  // Check for timeout
-            hf_time_t elapsed = get_current_time_ms() - start_time;
+        if (timeout != HF*TIMEOUT*NONE) {  // Check for timeout
+            hf*time*t elapsed = get*current*time*ms() - start*time;
             if (elapsed >= timeout) {
                 printf("Operation timed out after %u ms\n", timeout);
                 return OperationResult::TIMEOUT;
             }
         }
         
-        vTaskDelay(pdMS_TO_TICKS(1));  // Small delay
+        vTaskDelay(pdMS*TO*TICKS(1));  // Small delay
     }
 }
 
-void test_timeout_handling() {
+void test*timeout*handling() {
     // Wait with default timeout
-    OperationResult result1 = wait_for_data(HF_TIMEOUT_DEFAULT_MS);
+    OperationResult result1 = wait*for*data(HF*TIMEOUT*DEFAULT*MS);
     
     // Wait indefinitely
-    OperationResult result2 = wait_for_data(HF_TIMEOUT_NONE);
+    OperationResult result2 = wait*for*data(HF*TIMEOUT*NONE);
     
     // Wait with custom timeout
-    OperationResult result3 = wait_for_data(500);  // 500ms timeout
+    OperationResult result3 = wait*for*data(500);  // 500ms timeout
 }
-```
+```text
 
 ### Type-Safe Configuration Structures
 
 ```cpp
 struct GpioConfig {
-    hf_pin_num_t pin;
-    hf_gpio_direction_t direction;
-    hf_gpio_active_state_t active_state;
-    hf_gpio_pull_mode_t pull_mode;
+    hf*pin*num*t pin;
+    hf*gpio*direction*t direction;
+    hf*gpio*active*state*t active*state;
+    hf*gpio*pull*mode*t pull*mode;
     
     // Constructor with validation
-    GpioConfig(hf_pin_num_t p, hf_gpio_direction_t dir, 
-               hf_gpio_active_state_t active = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
-               hf_gpio_pull_mode_t pull = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING)
-        : pin(p), direction(dir), active_state(active), pull_mode(pull) {
+    GpioConfig(hf*pin*num*t p, hf*gpio*direction*t dir, 
+               hf*gpio*active*state*t active = hf*gpio*active*state*t::HF*GPIO*ACTIVE*HIGH,
+               hf*gpio*pull*mode*t pull = hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*FLOATING)
+        : pin(p), direction(dir), active*state(active), pull*mode(pull) {
         
         if (!IsValidPin(pin)) {
-            throw std::invalid_argument("Invalid GPIO pin number");
+            throw std::invalid*argument("Invalid GPIO pin number");
         }
     }
     
-    bool is_valid() const {
+    bool is*valid() const {
         return IsValidPin(pin);
     }
 };
 
 struct I2cConfig {
-    hf_port_num_t port;
-    hf_frequency_hz_t frequency;
-    hf_timeout_ms_t timeout;
+    hf*port*num*t port;
+    hf*frequency*hz*t frequency;
+    hf*timeout*ms*t timeout;
     
-    I2cConfig(hf_port_num_t p, hf_frequency_hz_t freq, 
-              hf_timeout_ms_t to = HF_TIMEOUT_DEFAULT_MS)
+    I2cConfig(hf*port*num*t p, hf*frequency*hz*t freq, 
+              hf*timeout*ms*t to = HF*TIMEOUT*DEFAULT*MS)
         : port(p), frequency(freq), timeout(to) {
         
         if (!IsValidPort(port)) {
-            throw std::invalid_argument("Invalid I2C port");
+            throw std::invalid*argument("Invalid I2C port");
         }
     }
 };
-```
+```text
 
 ## Type Conversion Utilities
 
 ```cpp
 // Safe conversion with bounds checking
 template<typename T, typename U>
-constexpr bool safe_cast(U value, T& result) noexcept {
-    if (value < std::numeric_limits<T>::min() || 
-        value > std::numeric_limits<T>::max()) {
+constexpr bool safe*cast(U value, T& result) noexcept {
+    if (value < std::numeric*limits<T>::min() || 
+        value > std::numeric*limits<T>::max()) {
         return false;
     }
-    result = static_cast<T>(value);
+    result = static*cast<T>(value);
     return true;
 }
 
 // Example usage
-bool convert_pin_number(int input_pin, hf_pin_num_t& output_pin) {
-    return safe_cast(input_pin, output_pin) && IsValidPin(output_pin);
+bool convert*pin*number(int input*pin, hf*pin*num*t& output*pin) {
+    return safe*cast(input*pin, output*pin) && IsValidPin(output*pin);
 }
-```
+```text
 
 ## Best Practices
 
@@ -343,9 +346,9 @@ bool convert_pin_number(int input_pin, hf_pin_num_t& output_pin) {
 
 1. **Always use HardFOC types** instead of raw integer types in public APIs
 2. **Validate inputs** using the provided validation functions
-3. **Use constants** instead of magic numbers (e.g., `HF_INVALID_PIN` vs `-1`)
+3. **Use constants** instead of magic numbers (e.g., `HF*INVALID*PIN` vs `-1`)
 4. **Check for invalid values** before performing operations
-5. **Use appropriate sized types** for the data range (e.g., `hf_u8_t` for small counts)
+5. **Use appropriate sized types** for the data range (e.g., `hf*u8*t` for small counts)
 
 ### Performance Considerations
 
@@ -377,6 +380,7 @@ bool convert_pin_number(int input_pin, hf_pin_num_t& output_pin) {
 
 **📋 Navigation**
 
-[← Previous: API Index](README.md) | [Back to API Index](README.md) | [Next: BaseGpio →](BaseGpio.md)
+[← Previous: API Index](README.md) | [Back to API Index](README.md) | [Next: BaseGpio
+→](BaseGpio.md)
 
 </div>

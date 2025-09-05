@@ -40,41 +40,41 @@ static constexpr bool ENABLE_MANAGEMENT_TESTS = true; // State management, clean
 // Event callback function for Bluetooth events
 void bluetooth_event_callback(hf_bluetooth_event_t event, void* event_data) noexcept {
   switch (event) {
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_ENABLED:
-      ESP_LOGI(TAG, "[SUCCESS] Bluetooth enabled successfully");
-      break;
+  case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_ENABLED:
+    ESP_LOGI(TAG, "[SUCCESS] Bluetooth enabled successfully");
+    break;
 
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DISABLED:
-      ESP_LOGI(TAG, "[INFO] Bluetooth disabled");
-      break;
+  case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DISABLED:
+    ESP_LOGI(TAG, "[INFO] Bluetooth disabled");
+    break;
 
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_SCAN_START:
-      ESP_LOGI(TAG, "[INFO] BLE scan started");
-      break;
+  case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_SCAN_START:
+    ESP_LOGI(TAG, "[INFO] BLE scan started");
+    break;
 
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_SCAN_STOP:
-      ESP_LOGI(TAG, "[INFO] BLE scan stopped");
-      break;
+  case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_SCAN_STOP:
+    ESP_LOGI(TAG, "[INFO] BLE scan stopped");
+    break;
 
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DEVICE_FOUND:
-      ESP_LOGI(TAG, "[INFO] BLE device discovered");
-      break;
+  case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DEVICE_FOUND:
+    ESP_LOGI(TAG, "[INFO] BLE device discovered");
+    break;
 
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_SUCCESS:
-      ESP_LOGI(TAG, "[SUCCESS] Device connected successfully");
-      break;
+  case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_SUCCESS:
+    ESP_LOGI(TAG, "[SUCCESS] Device connected successfully");
+    break;
 
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_FAILED:
-      ESP_LOGW(TAG, "[FAILED] Device connection failed");
-      break;
+  case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_CONNECT_FAILED:
+    ESP_LOGW(TAG, "[FAILED] Device connection failed");
+    break;
 
-    case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DISCONNECT:
-      ESP_LOGI(TAG, "[INFO] Device disconnected");
-      break;
+  case hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_DISCONNECT:
+    ESP_LOGI(TAG, "[INFO] Device disconnected");
+    break;
 
-    default:
-      ESP_LOGI(TAG, "[INFO] Bluetooth event: %d", static_cast<int>(event));
-      break;
+  default:
+    ESP_LOGI(TAG, "[INFO] Bluetooth event: %d", static_cast<int>(event));
+    break;
   }
 }
 
@@ -334,14 +334,14 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("initialization", test_bluetooth_initialization, 8192, 1);
       RUN_TEST_IN_TASK("basic_operations", test_bluetooth_basic_operations, 8192, 1);
       vTaskDelay(pdMS_TO_TICKS(500)); // Delay to ensure output is captured
-      );
+  );
 
   RUN_TEST_SECTION_IF_ENABLED(ENABLE_SCANNING_TESTS, "BLUETOOTH SCANNING TESTS",
                               // Scanning tests
                               ESP_LOGI(TAG, "Running Bluetooth scanning tests...");
                               RUN_TEST_IN_TASK("scanning", test_bluetooth_scanning, 8192, 1);
                               vTaskDelay(pdMS_TO_TICKS(500)); // Delay to ensure output is captured
-                              );
+  );
 
   RUN_TEST_SECTION_IF_ENABLED(
       ENABLE_MANAGEMENT_TESTS, "BLUETOOTH MANAGEMENT TESTS",
@@ -350,11 +350,11 @@ extern "C" void app_main(void) {
       RUN_TEST_IN_TASK("state_management", test_bluetooth_state_management, 8192, 1);
       RUN_TEST_IN_TASK("cleanup", test_bluetooth_cleanup, 8192, 1);
       vTaskDelay(pdMS_TO_TICKS(500)); // Delay to ensure output is captured
-      );
+  );
 
   // Add delay to ensure all output is captured
   vTaskDelay(pdMS_TO_TICKS(500));
-  
+
   print_test_summary(g_test_results, "BLUETOOTH", TAG);
 
   // Add delay to ensure summary is captured
@@ -373,7 +373,7 @@ extern "C" void app_main(void) {
     ESP_LOGI(TAG, "[SUCCESS] Modern BaseBluetooth API usage");
     ESP_LOGI(TAG, "[SUCCESS] Correct callback signatures");
     ESP_LOGI(TAG, "==================================================");
-    
+
     // Add delay to ensure all success messages are captured
     vTaskDelay(pdMS_TO_TICKS(1000));
   } else {

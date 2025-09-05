@@ -2,8 +2,10 @@
 
 <div align="center">
 
-![ESP32 Tests](https://img.shields.io/badge/ESP32-Test%20Documentation-blue?style=for-the-badge&logo=espressif)
-![Test Coverage](https://img.shields.io/badge/Coverage-Comprehensive-green?style=for-the-badge&logo=testing-library)
+![ESP32
+Tests](https://img.shields.io/badge/ESP32-Test%20Documentation-blue?style=for-the-badge&logo=espressif)
+![Test
+Coverage](https://img.shields.io/badge/Coverage-Comprehensive-green?style=for-the-badge&logo=testing-library)
 ![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v5.5-orange?style=for-the-badge&logo=espressif)
 
 **🎯 Comprehensive Test Documentation for HardFOC ESP32 Interface Wrapper**
@@ -26,7 +28,10 @@
 
 ## 🎯 **Overview**
 
-This directory contains comprehensive test documentation for all HardFOC ESP32 interface wrapper implementations. Each test suite validates hardware functionality, error handling, and performance characteristics of the respective peripheral interfaces.
+This directory contains comprehensive test documentation for all HardFOC ESP32 interface wrapper
+implementations.
+Each test suite validates hardware functionality, error handling,
+and performance characteristics of the respective peripheral interfaces.
 
 ### 🏆 **Key Features**
 
@@ -69,21 +74,50 @@ This directory contains comprehensive test documentation for all HardFOC ESP32 i
 ## 📋 **Test Documentation**
 
 | **Test Suite** | **Hardware** | **Key Features** | **Status** |
+
 |----------------|--------------|------------------|------------|
-| [**GPIO Test**](README_GPIO_TEST.md) | ESP32-C6 GPIO | Digital I/O, interrupts, pull resistors | ✅ Complete |
-| [**ADC Test**](README_ADC_TEST.md) | ESP32-C6 ADC | Multi-channel, calibration, voltage conversion | ✅ Complete |
-| [**PWM Test**](README_PWM_TEST.md) | ESP32-C6 LEDC | Multi-channel, frequency control, duty cycle | ✅ Complete |
-| [**PIO Test**](README_PIO_TEST.md) | ESP32-C6 PIO | Custom protocols, precise timing, encoding | ✅ Complete |
-| [**UART Test**](README_UART_TESTING.md) | ESP32-C6 UART | Async I/O, flow control, configurable parameters | ✅ Complete |
-| [**SPI Test**](README_SPI_TEST.md) | ESP32-C6 SPI | Full-duplex, configurable modes, DMA support | ✅ Complete |
-| [**I2C Test**](README_I2C_TEST.md) | ESP32-C6 I2C | Master mode, device scanning, error recovery | ✅ Complete |
-| [**CAN Test**](README_CAN_TEST.md) | ESP32-C6 + SN65 | Standard/Extended frames, filtering, error handling | ✅ Complete |
-| [**WiFi Test**](README_WIFI_TEST.md) | ESP32-C6 WiFi | Wireless networking, connectivity, security | ✅ Complete |
-| [**NVS Test**](README_NVS_TEST.md) | ESP32-C6 NVS | Non-volatile storage, data persistence | ✅ Complete |
-| [**Temperature Test**](README_TEMPERATURE_TEST.md) | ESP32-C6 Temp | Thermal monitoring, calibration | ✅ Complete |
-| [**Logger Test**](README_LOGGER_TEST.md) | ESP32-C6 Logger | Logging system, debug output, levels | ✅ Complete |
-| [**ASCII Art Test**](README_ASCII_ART_TEST.md) | ESP32-C6 | ASCII art generation, display testing | ✅ Complete |
-| [**DOG Test**](README_DOG_TEST.md) | ESP32-C6 + Display | Display on Glass testing, graphics | ✅ Complete |
+
+| [**GPIO Test**](README_GPIO_TEST.md) | ESP32-C6 GPIO | Digital I/O, interrupts, pull resistors |
+| ✅ Complete |
+
+| [**ADC Test**](README_ADC_TEST.md) | ESP32-C6 ADC | Multi-channel, calibration, voltage |
+| conversion | ✅ Complete |
+
+| [**PWM Test**](README_PWM_TEST.md) | ESP32-C6 LEDC | Multi-channel, frequency control, duty |
+| cycle | ✅ Complete |
+
+| [**PIO Test**](README_PIO_TEST.md) | ESP32-C6 PIO | Custom protocols, precise timing, |
+| encoding | ✅ Complete |
+
+| [**UART Test**](README_UART_TESTING.md) | ESP32-C6 UART | Async I/O, flow control, configurable |
+| parameters | ✅ Complete |
+
+| [**SPI Test**](README_SPI_TEST.md) | ESP32-C6 SPI | Full-duplex, configurable modes, DMA |
+| support | ✅ Complete |
+
+| [**I2C Test**](README_I2C_TEST.md) | ESP32-C6 I2C | Master mode, device scanning, error |
+| recovery | ✅ Complete |
+
+| [**CAN Test**](README_CAN_TEST.md) | ESP32-C6 + SN65 | Standard/Extended frames, filtering, |
+| error handling | ✅ Complete |
+
+| [**WiFi Test**](README_WIFI_TEST.md) | ESP32-C6 WiFi | Wireless networking, connectivity, |
+| security | ✅ Complete |
+
+| [**NVS Test**](README_NVS_TEST.md) | ESP32-C6 NVS | Non-volatile storage, data |
+| persistence | ✅ Complete |
+
+| [**Temperature Test**](README_TEMPERATURE_TEST.md) | ESP32-C6 Temp | Thermal monitoring, |
+| calibration | ✅ Complete |
+
+| [**Logger Test**](README_LOGGER_TEST.md) | ESP32-C6 Logger | Logging system, debug output, |
+| levels | ✅ Complete |
+
+| [**ASCII Art Test**](README_ASCII_ART_TEST.md) | ESP32-C6 | ASCII art generation, display testing |
+| ✅ Complete |
+
+| [**DOG Test**](README_DOG_TEST.md) | ESP32-C6 + Display | Display on Glass testing, graphics |
+| ✅ Complete |
 
 ---
 
@@ -96,19 +130,19 @@ This directory contains comprehensive test documentation for all HardFOC ESP32 i
    cd examples/esp32
    ```
 
-2. **Build and run specific test**:
+1. **Build and run specific test**:
    ```bash
    # Build CAN test
-   idf.py -DAPP_NAME=can_test build flash monitor
+   idf.py -DAPP*NAME=can*test build flash monitor
    
    # Build GPIO test
-   idf.py -DAPP_NAME=gpio_test build flash monitor
+   idf.py -DAPP*NAME=gpio*test build flash monitor
    ```
 
-3. **Run all tests**:
+1. **Run all tests**:
    ```bash
    # Build all test applications
-   ./scripts/build_all_tests.sh
+   ./scripts/build*all*tests.sh
    ```
 
 ### **Test Configuration**

@@ -2,13 +2,14 @@
  * @file WifiComprehensiveTest.cpp
  * @brief Comprehensive WiFi testing suite for ESP32-C6 DevKit-M-1 with ESP-IDF v5.5f
  *
- * This test suite provides both interface testing and functional testing of the EspWifi implementation:
- * 
+ * This test suite provides both interface testing and functional testing of the EspWifi
+ * implementation:
+ *
  * INTERFACE TESTS (Default - ENABLED):
  * - Class structure, data types, and interface validation
  * - No actual WiFi hardware operations
  * - Safe for CI/CD and development environments
- * 
+ *
  * FUNCTIONAL TESTS (Default - ENABLED):
  * - Real WiFi hardware operations using EspWifi library
  * - Access Point creation (visible on phones/computers)
@@ -16,9 +17,9 @@
  * - Station mode connection attempts
  * - Power management and advanced features
  * - Event handling and callbacks
- * 
+ *
  * To enable functional tests, set ENABLE_FUNCTIONAL_TESTS = true
- * 
+ *
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
@@ -38,10 +39,10 @@ static TestResults g_test_results;
 // Enable/disable specific test categories by setting to true or false
 
 // Core WiFi interface tests
-static constexpr bool ENABLE_CORE_TESTS = true;         // Data structures, enums, error codes
-static constexpr bool ENABLE_INTERFACE_TESTS = true;    // Interface validation, integration
-static constexpr bool ENABLE_PERFORMANCE_TESTS = true;  // Performance, stress testing
-static constexpr bool ENABLE_FUNCTIONAL_TESTS = true;   // Real WiFi functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;        // Data structures, enums, error codes
+static constexpr bool ENABLE_INTERFACE_TESTS = true;   // Interface validation, integration
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true; // Performance, stress testing
+static constexpr bool ENABLE_FUNCTIONAL_TESTS = true;  // Real WiFi functionality tests
 
 //==============================================================================
 // WIFI INTERFACE AND DATA STRUCTURE TESTS
@@ -334,7 +335,7 @@ bool test_wifi_initialization() noexcept {
 
   // Create WiFi instance
   EspWifi wifi;
-  
+
   // Test initialization
   hf_wifi_err_t err = wifi.Initialize(hf_wifi_mode_t::HF_WIFI_MODE_STATION);
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
@@ -378,11 +379,12 @@ bool test_wifi_access_point_creation() noexcept {
   ESP_LOGI(TAG, "Testing Access Point creation and management...");
 
   EspWifi wifi;
-  
+
   // Initialize in AP mode
   hf_wifi_err_t err = wifi.Initialize(hf_wifi_mode_t::HF_WIFI_MODE_ACCESS_POINT);
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to initialize WiFi in AP mode: %s", std::string(HfWifiErrToString(err)).c_str());
+    ESP_LOGE(TAG, "Failed to initialize WiFi in AP mode: %s",
+             std::string(HfWifiErrToString(err)).c_str());
     return false;
   }
 
@@ -431,13 +433,13 @@ bool test_wifi_access_point_creation() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "AP MAC Address: %02X:%02X:%02X:%02X:%02X:%02X", 
-           ap_mac[0], ap_mac[1], ap_mac[2], ap_mac[3], ap_mac[4], ap_mac[5]);
-  
+  ESP_LOGI(TAG, "AP MAC Address: %02X:%02X:%02X:%02X:%02X:%02X", ap_mac[0], ap_mac[1], ap_mac[2],
+           ap_mac[3], ap_mac[4], ap_mac[5]);
+
   // Keep AP running for 15 seconds so you can see it on your phone
   ESP_LOGI(TAG, "Access Point 'ESP32-C6_TestAP' is now running for 15 seconds...");
   ESP_LOGI(TAG, "Refresh your phone's WiFi list to see the network!");
-  
+
   // Use a shorter delay to avoid test timeout
   vTaskDelay(pdMS_TO_TICKS(15000)); // 15 seconds
 
@@ -461,11 +463,12 @@ bool test_wifi_network_scanning() noexcept {
   ESP_LOGI(TAG, "Testing network scanning functionality...");
 
   EspWifi wifi;
-  
+
   // Initialize in station mode
   hf_wifi_err_t err = wifi.Initialize(hf_wifi_mode_t::HF_WIFI_MODE_STATION);
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to initialize WiFi in station mode: %s", std::string(HfWifiErrToString(err)).c_str());
+    ESP_LOGE(TAG, "Failed to initialize WiFi in station mode: %s",
+             std::string(HfWifiErrToString(err)).c_str());
     return false;
   }
 
@@ -503,8 +506,8 @@ bool test_wifi_network_scanning() noexcept {
   ESP_LOGI(TAG, "Found %zu networks:", networks.size());
   for (size_t i = 0; i < networks.size() && i < 10; i++) { // Show first 10
     const auto& network = networks[i];
-    ESP_LOGI(TAG, "  %zu. SSID: '%s', RSSI: %d dBm, Channel: %d, Security: %d", 
-             i + 1, network.ssid.c_str(), network.rssi, network.channel, 
+    ESP_LOGI(TAG, "  %zu. SSID: '%s', RSSI: %d dBm, Channel: %d, Security: %d", i + 1,
+             network.ssid.c_str(), network.rssi, network.channel,
              static_cast<int>(network.security));
   }
 
@@ -520,11 +523,12 @@ bool test_wifi_station_connection() noexcept {
   ESP_LOGI(TAG, "Testing station mode connection (will attempt to connect to test network)...");
 
   EspWifi wifi;
-  
+
   // Initialize in station mode
   hf_wifi_err_t err = wifi.Initialize(hf_wifi_mode_t::HF_WIFI_MODE_STATION);
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to initialize WiFi in station mode: %s", std::string(HfWifiErrToString(err)).c_str());
+    ESP_LOGE(TAG, "Failed to initialize WiFi in station mode: %s",
+             std::string(HfWifiErrToString(err)).c_str());
     return false;
   }
 
@@ -533,8 +537,8 @@ bool test_wifi_station_connection() noexcept {
   sta_config.ssid = "TestNetwork_ESP32";
   sta_config.password = "testpassword123";
   sta_config.bssid_set = false;
-  sta_config.channel = 0; // Any channel
-  sta_config.scan_method = 0; // Fast scan
+  sta_config.channel = 0;        // Any channel
+  sta_config.scan_method = 0;    // Fast scan
   sta_config.sort_method = true; // Sort by signal strength
   sta_config.threshold_rssi = 70;
   sta_config.threshold_authmode = hf_wifi_security_t::HF_WIFI_SECURITY_WPA2_PSK;
@@ -548,28 +552,27 @@ bool test_wifi_station_connection() noexcept {
   // Attempt to connect (will likely fail, but tests the functionality)
   ESP_LOGI(TAG, "Attempting to connect to '%s'...", sta_config.ssid.c_str());
   err = wifi.Connect(10000); // 10 second timeout
-  
+
   if (err == hf_wifi_err_t::WIFI_SUCCESS) {
     ESP_LOGI(TAG, "Successfully connected to network!");
-    
+
     // Get connection info
     std::string connected_ssid = wifi.GetConnectedSsid();
     int8_t rssi = wifi.GetRssi();
     uint8_t channel = wifi.GetChannel();
-    
+
     ESP_LOGI(TAG, "Connected to: %s", connected_ssid.c_str());
     ESP_LOGI(TAG, "RSSI: %d dBm", rssi);
     ESP_LOGI(TAG, "Channel: %d", channel);
-    
+
     // Get IP info
     hf_wifi_ip_info_t ip_info;
     err = wifi.GetIpInfo(ip_info);
     if (err == hf_wifi_err_t::WIFI_SUCCESS) {
-      ESP_LOGI(TAG, "IP: %d.%d.%d.%d", 
-               (ip_info.ip >> 0) & 0xFF, (ip_info.ip >> 8) & 0xFF,
+      ESP_LOGI(TAG, "IP: %d.%d.%d.%d", (ip_info.ip >> 0) & 0xFF, (ip_info.ip >> 8) & 0xFF,
                (ip_info.ip >> 16) & 0xFF, (ip_info.ip >> 24) & 0xFF);
     }
-    
+
     // Disconnect
     err = wifi.Disconnect();
     if (err != hf_wifi_err_t::WIFI_SUCCESS) {
@@ -588,7 +591,7 @@ bool test_wifi_power_management() noexcept {
   ESP_LOGI(TAG, "Testing WiFi power management features...");
 
   EspWifi wifi;
-  
+
   // Initialize WiFi
   hf_wifi_err_t err = wifi.Initialize(hf_wifi_mode_t::HF_WIFI_MODE_STATION);
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
@@ -630,9 +633,8 @@ bool test_wifi_power_management() noexcept {
     return false;
   }
 
-  ESP_LOGI(TAG, "Station MAC: %02X:%02X:%02X:%02X:%02X:%02X", 
-           current_mac[0], current_mac[1], current_mac[2], 
-           current_mac[3], current_mac[4], current_mac[5]);
+  ESP_LOGI(TAG, "Station MAC: %02X:%02X:%02X:%02X:%02X:%02X", current_mac[0], current_mac[1],
+           current_mac[2], current_mac[3], current_mac[4], current_mac[5]);
 
   ESP_LOGI(TAG, "[SUCCESS] Power management test successful");
   return true;
@@ -642,7 +644,7 @@ bool test_wifi_advanced_features() noexcept {
   ESP_LOGI(TAG, "Testing WiFi advanced features...");
 
   EspWifi wifi;
-  
+
   // Initialize with advanced configuration
   EspWifiAdvancedConfig advanced_config;
   advanced_config.enable_power_save = true;
@@ -663,10 +665,11 @@ bool test_wifi_advanced_features() noexcept {
 
   // Create WiFi with advanced config
   EspWifi advanced_wifi(&advanced_config);
-  
+
   hf_wifi_err_t err = advanced_wifi.Initialize(hf_wifi_mode_t::HF_WIFI_MODE_STATION);
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to initialize advanced WiFi: %s", std::string(HfWifiErrToString(err)).c_str());
+    ESP_LOGE(TAG, "Failed to initialize advanced WiFi: %s",
+             std::string(HfWifiErrToString(err)).c_str());
     return false;
   }
 
@@ -679,9 +682,12 @@ bool test_wifi_advanced_features() noexcept {
   }
 
   ESP_LOGI(TAG, "Advanced config - TX Power: %d dBm", retrieved_config.tx_power);
-  ESP_LOGI(TAG, "Advanced config - Power Save: %s", retrieved_config.enable_power_save ? "Enabled" : "Disabled");
-  ESP_LOGI(TAG, "Advanced config - A-MPDU RX: %s", retrieved_config.enable_ampdu_rx ? "Enabled" : "Disabled");
-  ESP_LOGI(TAG, "Advanced config - A-MPDU TX: %s", retrieved_config.enable_ampdu_tx ? "Enabled" : "Disabled");
+  ESP_LOGI(TAG, "Advanced config - Power Save: %s",
+           retrieved_config.enable_power_save ? "Enabled" : "Disabled");
+  ESP_LOGI(TAG, "Advanced config - A-MPDU RX: %s",
+           retrieved_config.enable_ampdu_rx ? "Enabled" : "Disabled");
+  ESP_LOGI(TAG, "Advanced config - A-MPDU TX: %s",
+           retrieved_config.enable_ampdu_tx ? "Enabled" : "Disabled");
 
   // Test TX power setting
   err = advanced_wifi.SetTxPower(18); // 18 dBm
@@ -711,7 +717,7 @@ bool test_wifi_event_handling() noexcept {
   ESP_LOGI(TAG, "Testing WiFi event handling...");
 
   EspWifi wifi;
-  
+
   // Initialize WiFi
   hf_wifi_err_t err = wifi.Initialize(hf_wifi_mode_t::HF_WIFI_MODE_STATION);
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
@@ -728,7 +734,8 @@ bool test_wifi_event_handling() noexcept {
 
   err = wifi.RegisterEventCallback(callback);
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to register event callback: %s", std::string(HfWifiErrToString(err)).c_str());
+    ESP_LOGE(TAG, "Failed to register event callback: %s",
+             std::string(HfWifiErrToString(err)).c_str());
     return false;
   }
 
@@ -745,7 +752,8 @@ bool test_wifi_event_handling() noexcept {
   // Unregister callback
   err = wifi.UnregisterEventCallback();
   if (err != hf_wifi_err_t::WIFI_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to unregister event callback: %s", std::string(HfWifiErrToString(err)).c_str());
+    ESP_LOGE(TAG, "Failed to unregister event callback: %s",
+             std::string(HfWifiErrToString(err)).c_str());
     return false;
   }
 
@@ -815,15 +823,11 @@ extern "C" void app_main(void) {
   // Print final summary
   print_test_summary(g_test_results, "WIFI", TAG);
 
-  ESP_LOGI(TAG,"\n");
-  ESP_LOGI(TAG,
-           "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, 
-           "║                   WIFI COMPREHENSIVE TEST SUITE COMPLETE                     ║");
-  ESP_LOGI(TAG,
-           "║                         HardFOC Internal Interface                           ║");
-  ESP_LOGI(TAG, 
-           "╚══════════════════════════════════════════════════════════════════════════════╝");
+  ESP_LOGI(TAG, "\n");
+  ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
+  ESP_LOGI(TAG, "║                   WIFI COMPREHENSIVE TEST SUITE COMPLETE                     ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
+  ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
   ESP_LOGI(TAG, "\n");
 
   // Keep the system running

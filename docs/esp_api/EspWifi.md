@@ -4,7 +4,8 @@
 
 **📋 Navigation**
 
-[← Previous: EspCan](EspCan.md) | [Back to ESP API Index](README.md) | [Next: EspBluetooth →](EspBluetooth.md)
+[← Previous: EspCan](EspCan.md) | [Back to ESP API Index](README.md) | [Next: EspBluetooth
+→](EspBluetooth.md)
 
 </div>
 
@@ -12,7 +13,10 @@
 
 ## Overview
 
-`EspWifi` is the ESP32-C6 implementation of the `BaseWifi` interface, providing comprehensive WiFi functionality specifically optimized for ESP32-C6 microcontrollers running ESP-IDF v5.5+. It offers both basic and advanced WiFi features with hardware-specific optimizations.
+`EspWifi` is the ESP32-C6 implementation of the `BaseWifi` interface,
+providing comprehensive WiFi functionality specifically optimized for ESP32-C6 microcontrollers
+running ESP-IDF v5.5+.
+It offers both basic and advanced WiFi features with hardware-specific optimizations.
 
 ## Features
 
@@ -30,7 +34,7 @@
 
 ```cpp
 #include "inc/mcu/esp32/EspWifi.h"
-```
+```text
 
 ## Class Definition
 
@@ -39,9 +43,9 @@ class EspWifi : public BaseWifi {
 public:
     // Constructor with full configuration
     explicit EspWifi(
-        hf_wifi_mode_t mode = hf_wifi_mode_t::HF_WIFI_MODE_STATION,
-        hf_wifi_band_t band = hf_wifi_band_t::HF_WIFI_BAND_2_4GHZ,
-        hf_wifi_power_t tx_power = hf_wifi_power_t::HF_WIFI_POWER_19_5_DBM
+        hf*wifi*mode*t mode = hf*wifi*mode*t::HF*WIFI*MODE*STATION,
+        hf*wifi*band*t band = hf*wifi*band*t::HF*WIFI*BAND*2*4GHZ,
+        hf*wifi*power*t tx*power = hf*wifi*power*t::HF*WIFI*POWER*19*5*DBM
     ) noexcept;
 
     // Destructor
@@ -54,24 +58,24 @@ public:
     const char* GetDescription() const noexcept override;
 
     // WiFi operations
-    hf_wifi_err_t Connect(const hf_wifi_config_t& config) noexcept override;
-    hf_wifi_err_t Disconnect() noexcept override;
-    hf_wifi_err_t IsConnected(bool* connected) const noexcept override;
-    hf_wifi_err_t GetConnectionInfo(hf_wifi_connection_info_t& info) noexcept override;
+    hf*wifi*err*t Connect(const hf*wifi*config*t& config) noexcept override;
+    hf*wifi*err*t Disconnect() noexcept override;
+    hf*wifi*err*t IsConnected(bool* connected) const noexcept override;
+    hf*wifi*err*t GetConnectionInfo(hf*wifi*connection*info*t& info) noexcept override;
 
     // Access Point operations
-    hf_wifi_err_t StartAccessPoint(const hf_wifi_ap_config_t& config) noexcept override;
-    hf_wifi_err_t StopAccessPoint() noexcept override;
-    hf_wifi_err_t GetAccessPointInfo(hf_wifi_ap_info_t& info) noexcept override;
+    hf*wifi*err*t StartAccessPoint(const hf*wifi*ap*config*t& config) noexcept override;
+    hf*wifi*err*t StopAccessPoint() noexcept override;
+    hf*wifi*err*t GetAccessPointInfo(hf*wifi*ap*info*t& info) noexcept override;
 
     // Advanced features
-    hf_wifi_err_t ScanNetworks(hf_wifi_scan_result_t* results, hf_size_t max_results, hf_size_t* found_count) noexcept override;
-    hf_wifi_err_t SetPowerSaveMode(hf_wifi_power_save_mode_t mode) noexcept override;
-    hf_wifi_err_t GetPowerSaveMode(hf_wifi_power_save_mode_t* mode) const noexcept override;
-    hf_wifi_err_t SetTxPower(hf_wifi_power_t power) noexcept override;
-    hf_wifi_err_t GetTxPower(hf_wifi_power_t* power) const noexcept override;
+    hf*wifi*err*t ScanNetworks(hf*wifi*scan*result*t* results, hf*size*t max*results, hf*size*t* found*count) noexcept override;
+    hf*wifi*err*t SetPowerSaveMode(hf*wifi*power*save*mode*t mode) noexcept override;
+    hf*wifi*err*t GetPowerSaveMode(hf*wifi*power*save*mode*t* mode) const noexcept override;
+    hf*wifi*err*t SetTxPower(hf*wifi*power*t power) noexcept override;
+    hf*wifi*err*t GetTxPower(hf*wifi*power*t* power) const noexcept override;
 };
-```
+```text
 
 ## Usage Examples
 
@@ -81,7 +85,7 @@ public:
 #include "inc/mcu/esp32/EspWifi.h"
 
 // Create WiFi instance
-EspWifi wifi(HF_WIFI_MODE_STATION);
+EspWifi wifi(HF*WIFI*MODE*STATION);
 
 // Initialize
 if (!wifi.Initialize()) {
@@ -90,13 +94,13 @@ if (!wifi.Initialize()) {
 }
 
 // Configure and connect
-hf_wifi_config_t config;
+hf*wifi*config*t config;
 strcpy(config.ssid, "MyNetwork");
 strcpy(config.password, "MyPassword");
-config.security = HF_WIFI_SECURITY_WPA2_PSK;
+config.security = HF*WIFI*SECURITY*WPA2*PSK;
 
-hf_wifi_err_t err = wifi.Connect(config);
-if (err != HF_WIFI_ERR_OK) {
+hf*wifi*err*t err = wifi.Connect(config);
+if (err != HF*WIFI*ERR*OK) {
     printf("Failed to connect: %d\n", err);
     return;
 }
@@ -104,25 +108,25 @@ if (err != HF_WIFI_ERR_OK) {
 // Check connection status
 bool connected;
 err = wifi.IsConnected(&connected);
-if (err == HF_WIFI_ERR_OK && connected) {
+if (err == HF*WIFI*ERR*OK && connected) {
     printf("Connected to WiFi\n");
     
     // Get connection info
-    hf_wifi_connection_info_t info;
+    hf*wifi*connection*info*t info;
     err = wifi.GetConnectionInfo(info);
-    if (err == HF_WIFI_ERR_OK) {
+    if (err == HF*WIFI*ERR*OK) {
         printf("SSID: %s\n", info.ssid);
         printf("RSSI: %d dBm\n", info.rssi);
         printf("Channel: %d\n", info.channel);
     }
 }
-```
+```text
 
 ### Access Point Mode
 
 ```cpp
 // Create WiFi instance in AP mode
-EspWifi wifi(HF_WIFI_MODE_ACCESS_POINT);
+EspWifi wifi(HF*WIFI*MODE*ACCESS*POINT);
 
 // Initialize
 if (!wifi.Initialize()) {
@@ -131,54 +135,54 @@ if (!wifi.Initialize()) {
 }
 
 // Configure and start access point
-hf_wifi_ap_config_t ap_config;
-strcpy(ap_config.ssid, "MyESP32AP");
-strcpy(ap_config.password, "MyPassword");
-ap_config.security = HF_WIFI_SECURITY_WPA2_PSK;
-ap_config.channel = 6;
-ap_config.max_connections = 4;
+hf*wifi*ap*config*t ap*config;
+strcpy(ap*config.ssid, "MyESP32AP");
+strcpy(ap*config.password, "MyPassword");
+ap*config.security = HF*WIFI*SECURITY*WPA2*PSK;
+ap*config.channel = 6;
+ap*config.max*connections = 4;
 
-hf_wifi_err_t err = wifi.StartAccessPoint(ap_config);
-if (err != HF_WIFI_ERR_OK) {
+hf*wifi*err*t err = wifi.StartAccessPoint(ap*config);
+if (err != HF*WIFI*ERR*OK) {
     printf("Failed to start AP: %d\n", err);
     return;
 }
 
-printf("Access Point started: %s\n", ap_config.ssid);
-```
+printf("Access Point started: %s\n", ap*config.ssid);
+```text
 
 ### Network Scanning
 
 ```cpp
 // Scan for available networks
-hf_wifi_scan_result_t results[20];
-hf_size_t found_count;
+hf*wifi*scan*result*t results[20];
+hf*size*t found*count;
 
-hf_wifi_err_t err = wifi.ScanNetworks(results, 20, &found_count);
-if (err == HF_WIFI_ERR_OK) {
-    printf("Found %zu networks:\n", found_count);
-    for (hf_size_t i = 0; i < found_count; i++) {
+hf*wifi*err*t err = wifi.ScanNetworks(results, 20, &found*count);
+if (err == HF*WIFI*ERR*OK) {
+    printf("Found %zu networks:\n", found*count);
+    for (hf*size*t i = 0; i < found*count; i++) {
         printf("  %s (RSSI: %d, Channel: %d, Security: %d)\n",
                results[i].ssid, results[i].rssi, results[i].channel, results[i].security);
     }
 }
-```
+```text
 
 ### Power Management
 
 ```cpp
 // Set power save mode
-hf_wifi_err_t err = wifi.SetPowerSaveMode(HF_WIFI_POWER_SAVE_MODEM);
-if (err != HF_WIFI_ERR_OK) {
+hf*wifi*err*t err = wifi.SetPowerSaveMode(HF*WIFI*POWER*SAVE*MODEM);
+if (err != HF*WIFI*ERR*OK) {
     printf("Failed to set power save mode: %d\n", err);
 }
 
 // Set transmit power
-err = wifi.SetTxPower(HF_WIFI_POWER_19_5_DBM);
-if (err != HF_WIFI_ERR_OK) {
+err = wifi.SetTxPower(HF*WIFI*POWER*19*5*DBM);
+if (err != HF*WIFI*ERR*OK) {
     printf("Failed to set TX power: %d\n", err);
 }
-```
+```text
 
 ## ESP32-C6 Specific Features
 
@@ -202,14 +206,14 @@ Multiple power save modes optimized for different use cases.
 
 The `EspWifi` class provides comprehensive error handling with specific error codes:
 
-- `HF_WIFI_ERR_OK` - Operation successful
-- `HF_WIFI_ERR_INVALID_ARG` - Invalid parameter
-- `HF_WIFI_ERR_NOT_INITIALIZED` - WiFi not initialized
-- `HF_WIFI_ERR_TIMEOUT` - Operation timeout
-- `HF_WIFI_ERR_CONNECTION_FAILED` - Connection failed
-- `HF_WIFI_ERR_AUTH_FAILED` - Authentication failed
-- `HF_WIFI_ERR_NOT_FOUND` - Network not found
-- `HF_WIFI_ERR_ALREADY_CONNECTED` - Already connected
+- `HF*WIFI*ERR*OK` - Operation successful
+- `HF*WIFI*ERR*INVALID*ARG` - Invalid parameter
+- `HF*WIFI*ERR*NOT*INITIALIZED` - WiFi not initialized
+- `HF*WIFI*ERR*TIMEOUT` - Operation timeout
+- `HF*WIFI*ERR*CONNECTION*FAILED` - Connection failed
+- `HF*WIFI*ERR*AUTH*FAILED` - Authentication failed
+- `HF*WIFI*ERR*NOT*FOUND` - Network not found
+- `HF*WIFI*ERR*ALREADY*CONNECTED` - Already connected
 
 ## Performance Considerations
 
@@ -220,7 +224,8 @@ The `EspWifi` class provides comprehensive error handling with specific error co
 
 ## Test Results
 
-The `EspWifi` implementation has been thoroughly tested with a comprehensive test suite that validates both interface functionality and real hardware operations.
+The `EspWifi` implementation has been thoroughly tested with a comprehensive test suite that
+validates both interface functionality and real hardware operations.
 
 ### Test Summary
 - **Total Tests**: 14
@@ -248,7 +253,7 @@ The `EspWifi` implementation has been thoroughly tested with a comprehensive tes
 
 #### Functional Tests (7 tests)
 - **WiFi Initialization Test** - Tests initialization, mode switching, and deinitialization
-- **Access Point Creation Test** - Creates real AP "ESP32-C6_TestAP" for 15 seconds (visible on phones)
+- **Access Point Creation Test** - Creates real AP "ESP32-C6*TestAP" for 15 seconds (visible on phones)
 - **Network Scanning Test** - Scans and finds real networks in environment
 - **Station Connection Test** - Tests connection attempts and timeout handling
 - **Power Management Test** - Tests power save modes and MAC address retrieval
@@ -260,7 +265,7 @@ The `EspWifi` implementation has been thoroughly tested with a comprehensive tes
 The functional tests demonstrate actual WiFi hardware operations:
 
 #### Access Point Test Results
-- **Network Name**: "ESP32-C6_TestAP"
+- **Network Name**: "ESP32-C6*TestAP"
 - **MAC Address**: **:**:**:**:**:** (example: E4:B3:23:8E:6B:35)
 - **IP Address**: 192.168.4.1 (default AP subnet)
 - **Security**: WPA2-PSK
@@ -285,7 +290,7 @@ Successfully found 2 real networks:
 
 - [BaseWifi API Reference](../api/BaseWifi.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
-- [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp_wifi.html) - ESP-IDF documentation
+- [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp*wifi.html) - ESP-IDF documentation
 
 ---
 
@@ -293,6 +298,7 @@ Successfully found 2 real networks:
 
 **📋 Navigation**
 
-[← Previous: EspCan](EspCan.md) | [Back to ESP API Index](README.md) | [Next: EspBluetooth →](EspBluetooth.md)
+[← Previous: EspCan](EspCan.md) | [Back to ESP API Index](README.md) | [Next: EspBluetooth
+→](EspBluetooth.md)
 
 </div>

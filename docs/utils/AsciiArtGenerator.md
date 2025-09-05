@@ -4,7 +4,8 @@
 
 **📋 Navigation**
 
-[← Previous: DigitalOutputGuard](DigitalOutputGuard.md) | [Back to Utils Index](README.md) | [Next: Utils Index](README.md)
+[← Previous: DigitalOutputGuard](DigitalOutputGuard.md) | [Back to Utils Index](README.md) | [Next:
+Utils Index](README.md)
 
 </div>
 
@@ -12,7 +13,9 @@
 
 ## Overview
 
-`AsciiArtGenerator` is a utility class that converts text strings into large ASCII art characters. It provides a simple interface for generating stylized text that can be used in console output, logging, and user interfaces to enhance visual presentation.
+`AsciiArtGenerator` is a utility class that converts text strings into large ASCII art characters.
+It provides a simple interface for generating stylized text that can be used in console output,
+logging, and user interfaces to enhance visual presentation.
 
 ## Features
 
@@ -27,7 +30,7 @@
 
 ```cpp
 #include "utils/AsciiArtGenerator.h"
-```
+```text
 
 ## Class Definition
 
@@ -42,7 +45,7 @@ public:
     std::string Generate(const std::string& input) const noexcept;
     
     // Custom character management
-    void AddCustomCharacter(char character, const std::vector<std::string>& art_lines) noexcept;
+    void AddCustomCharacter(char character, const std::vector<std::string>& art*lines) noexcept;
     void RemoveCustomCharacter(char character) noexcept;
     void ClearCustomCharacters() noexcept;
     
@@ -51,10 +54,10 @@ public:
     std::string GetSupportedCharacters() const noexcept;
 
 private:
-    std::map<char, std::vector<std::string>> custom_characters_;
+    std::map<char, std::vector<std::string>> custom*characters*;
     std::vector<std::string> GetCharacterArt(char character) const noexcept;
 };
-```
+```bash
 
 ## Built-in Character Set
 
@@ -63,7 +66,7 @@ The `AsciiArtGenerator` includes a comprehensive set of ASCII art characters:
 - **Letters**: A-Z (uppercase only)
 - **Numbers**: 0-9
 - **Symbols**: ! @ # $ % ^ & * ( ) [ ] { } | \ / ; : ' " < > ` ~
-- **Punctuation**: . , ? - _ = +
+- **Punctuation**: . , ? - * = +
 
 Each character is represented as a 6-line ASCII art pattern with consistent width and height.
 
@@ -78,17 +81,17 @@ Each character is represented as a 6-line ASCII art pattern with consistent widt
 AsciiArtGenerator generator;
 
 // Generate ASCII art for text
-std::string hello_art = generator.Generate("HELLO");
-printf("%s\n", hello_art.c_str());
+std::string hello*art = generator.Generate("HELLO");
+printf("%s\n", hello*art.c*str());
 
 // Generate ASCII art for numbers
-std::string number_art = generator.Generate("123");
-printf("%s\n", number_art.c_str());
+std::string number*art = generator.Generate("123");
+printf("%s\n", number*art.c*str());
 
 // Generate ASCII art for mixed content
-std::string mixed_art = generator.Generate("ESP32-C6");
-printf("%s\n", mixed_art.c_str());
-```
+std::string mixed*art = generator.Generate("ESP32-C6");
+printf("%s\n", mixed*art.c*str());
+```text
 
 ### Custom Character Management
 
@@ -96,27 +99,27 @@ printf("%s\n", mixed_art.c_str());
 AsciiArtGenerator generator;
 
 // Add custom character
-std::vector<std::string> custom_char = {
-    "  ___  ",
+std::vector<std::string> custom*char = {
+    "  ***  ",
     " /   \\ ",
     "|     |",
     "|     |",
-    " \\___/ ",
+    " \\***/ ",
     "       "
 };
 
-generator.AddCustomCharacter('@', custom_char);
+generator.AddCustomCharacter('@', custom*char);
 
 // Generate text with custom character
-std::string custom_art = generator.Generate("TEST@");
-printf("%s\n", custom_art.c_str());
+std::string custom*art = generator.Generate("TEST@");
+printf("%s\n", custom*art.c*str());
 
 // Remove custom character
 generator.RemoveCustomCharacter('@');
 
 // Clear all custom characters
 generator.ClearCustomCharacters();
-```
+```text
 
 ### Character Support Validation
 
@@ -136,8 +139,8 @@ if (generator.IsCharacterSupported('€')) {
 
 // Get list of supported characters
 std::string supported = generator.GetSupportedCharacters();
-printf("Supported characters: %s\n", supported.c_str());
-```
+printf("Supported characters: %s\n", supported.c*str());
+```text
 
 ### Integration with Logging
 
@@ -152,94 +155,94 @@ logger.EnsureInitialized();
 
 // Generate ASCII art banner
 std::string banner = generator.Generate("SYSTEM STARTUP");
-logger.Log(hf_log_level_t::LOG_INFO, "APP", "ASCII Art Banner:\n%s", banner.c_str());
+logger.Log(hf*log*level*t::LOG*INFO, "APP", "ASCII Art Banner:\n%s", banner.c*str());
 
 // Generate test results
 std::string result = generator.Generate("SUCCESS");
-logger.Log(hf_log_level_t::LOG_INFO, "TEST", "Test Result:\n%s", result.c_str());
-```
+logger.Log(hf*log*level*t::LOG*INFO, "TEST", "Test Result:\n%s", result.c*str());
+```text
 
 ### Complete Example
 
 ```cpp
 #include "utils/AsciiArtGenerator.h"
 
-void print_test_header() {
+void print*test*header() {
     AsciiArtGenerator generator;
     
     // Print main header
     std::string header = generator.Generate("ESP32-C6 ADC TEST");
-    printf("%s\n", header.c_str());
+    printf("%s\n", header.c*str());
     
     // Print section header
     std::string section = generator.Generate("HARDWARE VALIDATION");
-    printf("%s\n", section.c_str());
+    printf("%s\n", section.c*str());
     
     // Print info
     std::string info = generator.Generate("CONNECTING TO ESP32-C6");
-    printf("%s\n", info.c_str());
+    printf("%s\n", info.c*str());
 }
 
-void print_test_results(bool success) {
+void print*test*results(bool success) {
     AsciiArtGenerator generator;
     
     if (success) {
-        std::string success_msg = generator.Generate("SUCCESS");
-        printf("%s\n", success_msg.c_str());
+        std::string success*msg = generator.Generate("SUCCESS");
+        printf("%s\n", success*msg.c*str());
         
         std::string passed = generator.Generate("ALL TESTS PASSED");
-        printf("%s\n", passed.c_str());
+        printf("%s\n", passed.c*str());
     } else {
-        std::string error_msg = generator.Generate("ERROR");
-        printf("%s\n", error_msg.c_str());
+        std::string error*msg = generator.Generate("ERROR");
+        printf("%s\n", error*msg.c*str());
         
         std::string failed = generator.Generate("TESTS FAILED");
-        printf("%s\n", failed.c_str());
+        printf("%s\n", failed.c*str());
     }
 }
-```
+```text
 
 ## ASCII Art Examples
 
 ### Letter Example (A)
-```
-  ___   
- / _ \  
-/ /_\ \ 
-|  _  | 
+```text
+  __*   
+ / * \  
+/ /*\ \ 
+|  *  | 
 | | | | 
-\_| |_/ 
-```
+\*| |*/ 
+```text
 
 ### Number Example (1)
-```
- __   
+```text
+ _*   
 /  |  
 `| |  
  | |  
-_| |_ 
-\___/ 
-```
+*| |* 
+\*_*/ 
+```text
 
 ### Symbol Example (!)
-```
- _  
+```text
+ *  
 | | 
 | | 
 | | 
-|_| 
-(_) 
-```
+|*| 
+(*) 
+```text
 
 ### Word Example (HELLO)
-```
- _   _  _      _      _        _  
+```text
+ *   *  *      *      *        *  
 | | | || |    | |    | |      | | 
-| |_| || |    | |    | |      | | 
-|  _  || |    | |    | |      | | 
-| | | || |____| |____| |____  | | 
-\_| |_/\_____/\_____/\_____/  \_/ 
-```
+| |*| || |    | |    | |      | | 
+|  *  || |    | |    | |      | | 
+| | | || |_***| |****| |****  | | 
+\*| |*/\*_***/\*****/\**__*/  \*/ 
+```text
 
 ## Performance Characteristics
 
@@ -258,21 +261,21 @@ The `AsciiArtGenerator` can be extended with custom characters by adding them at
 AsciiArtGenerator generator;
 
 // Add custom character with 6-line ASCII art
-std::vector<std::string> custom_char = {
-    "  ___  ",  // Line 1
+std::vector<std::string> custom*char = {
+    "  ***  ",  // Line 1
     " /   \\ ",  // Line 2
     "|     |",  // Line 3
     "|     |",  // Line 4
-    " \\___/ ",  // Line 5
+    " \\***/ ",  // Line 5
     "       "   // Line 6
 };
 
-generator.AddCustomCharacter('@', custom_char);
+generator.AddCustomCharacter('@', custom*char);
 
 // Now '@' can be used in text generation
-std::string email_art = generator.Generate("TEST@EXAMPLE");
-printf("%s\n", email_art.c_str());
-```
+std::string email*art = generator.Generate("TEST@EXAMPLE");
+printf("%s\n", email*art.c*str());
+```text
 
 ### Custom Character Requirements
 
@@ -286,16 +289,13 @@ printf("%s\n", email_art.c_str());
 - **[EspLogger API Reference](../esp_api/EspLogger.md)** - Logging integration
 - **[DigitalOutputGuard Documentation](DigitalOutputGuard.md)** - Other utility classes
 - **[Utils Overview](README.md)** - Complete utilities documentation
-<<<<<<< Current (Your changes)
-=======
-
----
-
+## # <<<<<<< Current (Your changes)
 <div align="center">
 
 **📋 Navigation**
 
-[← Previous: DigitalOutputGuard](DigitalOutputGuard.md) | [Back to Utils Index](README.md) | [Next: Utils Index](README.md)
+[← Previous: DigitalOutputGuard](DigitalOutputGuard.md) | [Back to Utils Index](README.md) | [Next:
+Utils Index](README.md)
 
 </div>
 >>>>>>> Incoming (Background Agent changes)

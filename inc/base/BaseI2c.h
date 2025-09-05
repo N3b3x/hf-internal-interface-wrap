@@ -33,46 +33,46 @@
  *          consistent error reporting and handling.
  */
 
-#define HF_I2C_ERR_LIST(X)                                          \
-  /* Success codes */                                               \
-  X(I2C_SUCCESS, 0, "Success")                                      \
-  /* General errors */                                              \
-  X(I2C_ERR_FAILURE, 1, "General failure")                          \
-  X(I2C_ERR_NOT_INITIALIZED, 2, "Not initialized")                  \
-  X(I2C_ERR_ALREADY_INITIALIZED, 3, "Already initialized")          \
-  X(I2C_ERR_INVALID_PARAMETER, 4, "Invalid parameter")              \
-  X(I2C_ERR_NULL_POINTER, 5, "Null pointer")                        \
-  X(I2C_ERR_OUT_OF_MEMORY, 6, "Out of memory")                      \
-  /* Bus errors */                                                  \
-  X(I2C_ERR_BUS_BUSY, 7, "Bus busy")                                \
-  X(I2C_ERR_BUS_ERROR, 8, "Bus error")                              \
-  X(I2C_ERR_BUS_ARBITRATION_LOST, 9, "Arbitration lost")            \
-  X(I2C_ERR_BUS_NOT_AVAILABLE, 10, "Bus not available")             \
-  X(I2C_ERR_BUS_TIMEOUT, 11, "Bus timeout")                         \
-  /* Device errors */                                               \
-  X(I2C_ERR_DEVICE_NOT_FOUND, 12, "Device not found")               \
-  X(I2C_ERR_DEVICE_NACK, 13, "Device NACK")                         \
-  X(I2C_ERR_DEVICE_NOT_RESPONDING, 14, "Device not responding")     \
-  X(I2C_ERR_INVALID_ADDRESS, 15, "Invalid device address")          \
-  /* Data errors */                                                 \
-  X(I2C_ERR_DATA_TOO_LONG, 16, "Data too long")                     \
-  X(I2C_ERR_READ_FAILURE, 17, "Read failure")                       \
-  X(I2C_ERR_WRITE_FAILURE, 18, "Write failure")                     \
-  X(I2C_ERR_TIMEOUT, 19, "Operation timeout")                       \
-  /* Hardware errors */                                             \
-  X(I2C_ERR_HARDWARE_FAULT, 20, "Hardware fault")                   \
-  X(I2C_ERR_COMMUNICATION_FAILURE, 21, "Communication failure")     \
-  X(I2C_ERR_VOLTAGE_OUT_OF_RANGE, 22, "Voltage out of range")       \
-  X(I2C_ERR_CLOCK_STRETCH_TIMEOUT, 23, "Clock stretch timeout")     \
-  /* Configuration errors */                                        \
-  X(I2C_ERR_INVALID_CONFIGURATION, 24, "Invalid configuration")     \
-  X(I2C_ERR_UNSUPPORTED_OPERATION, 25, "Unsupported operation")     \
-  X(I2C_ERR_INVALID_CLOCK_SPEED, 26, "Invalid clock speed")         \
-  X(I2C_ERR_PIN_CONFIGURATION_ERROR, 27, "Pin configuration error") \
-  /* System errors */                                               \
-  X(I2C_ERR_SYSTEM_ERROR, 28, "System error")                       \
-  X(I2C_ERR_PERMISSION_DENIED, 29, "Permission denied")             \
-  X(I2C_ERR_OPERATION_ABORTED, 30, "Operation aborted")             \
+#define HF_I2C_ERR_LIST(X)                                                                         \
+  /* Success codes */                                                                              \
+  X(I2C_SUCCESS, 0, "Success")                                                                     \
+  /* General errors */                                                                             \
+  X(I2C_ERR_FAILURE, 1, "General failure")                                                         \
+  X(I2C_ERR_NOT_INITIALIZED, 2, "Not initialized")                                                 \
+  X(I2C_ERR_ALREADY_INITIALIZED, 3, "Already initialized")                                         \
+  X(I2C_ERR_INVALID_PARAMETER, 4, "Invalid parameter")                                             \
+  X(I2C_ERR_NULL_POINTER, 5, "Null pointer")                                                       \
+  X(I2C_ERR_OUT_OF_MEMORY, 6, "Out of memory")                                                     \
+  /* Bus errors */                                                                                 \
+  X(I2C_ERR_BUS_BUSY, 7, "Bus busy")                                                               \
+  X(I2C_ERR_BUS_ERROR, 8, "Bus error")                                                             \
+  X(I2C_ERR_BUS_ARBITRATION_LOST, 9, "Arbitration lost")                                           \
+  X(I2C_ERR_BUS_NOT_AVAILABLE, 10, "Bus not available")                                            \
+  X(I2C_ERR_BUS_TIMEOUT, 11, "Bus timeout")                                                        \
+  /* Device errors */                                                                              \
+  X(I2C_ERR_DEVICE_NOT_FOUND, 12, "Device not found")                                              \
+  X(I2C_ERR_DEVICE_NACK, 13, "Device NACK")                                                        \
+  X(I2C_ERR_DEVICE_NOT_RESPONDING, 14, "Device not responding")                                    \
+  X(I2C_ERR_INVALID_ADDRESS, 15, "Invalid device address")                                         \
+  /* Data errors */                                                                                \
+  X(I2C_ERR_DATA_TOO_LONG, 16, "Data too long")                                                    \
+  X(I2C_ERR_READ_FAILURE, 17, "Read failure")                                                      \
+  X(I2C_ERR_WRITE_FAILURE, 18, "Write failure")                                                    \
+  X(I2C_ERR_TIMEOUT, 19, "Operation timeout")                                                      \
+  /* Hardware errors */                                                                            \
+  X(I2C_ERR_HARDWARE_FAULT, 20, "Hardware fault")                                                  \
+  X(I2C_ERR_COMMUNICATION_FAILURE, 21, "Communication failure")                                    \
+  X(I2C_ERR_VOLTAGE_OUT_OF_RANGE, 22, "Voltage out of range")                                      \
+  X(I2C_ERR_CLOCK_STRETCH_TIMEOUT, 23, "Clock stretch timeout")                                    \
+  /* Configuration errors */                                                                       \
+  X(I2C_ERR_INVALID_CONFIGURATION, 24, "Invalid configuration")                                    \
+  X(I2C_ERR_UNSUPPORTED_OPERATION, 25, "Unsupported operation")                                    \
+  X(I2C_ERR_INVALID_CLOCK_SPEED, 26, "Invalid clock speed")                                        \
+  X(I2C_ERR_PIN_CONFIGURATION_ERROR, 27, "Pin configuration error")                                \
+  /* System errors */                                                                              \
+  X(I2C_ERR_SYSTEM_ERROR, 28, "System error")                                                      \
+  X(I2C_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
+  X(I2C_ERR_OPERATION_ABORTED, 30, "Operation aborted")                                            \
   X(I2C_ERR_INVALID_STATE, 31, "Invalid state")
 
 enum class hf_i2c_err_t : hf_u8_t {
@@ -88,13 +88,13 @@ enum class hf_i2c_err_t : hf_u8_t {
  */
 constexpr std::string_view HfI2CErrToString(hf_i2c_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_i2c_err_t::NAME:   \
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_i2c_err_t::NAME:                                                                         \
     return DESC;
     HF_I2C_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 

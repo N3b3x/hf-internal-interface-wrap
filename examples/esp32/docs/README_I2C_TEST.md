@@ -2,7 +2,9 @@
 
 ## Overview
 
-This directory contains the comprehensive I2C test suite (`I2cComprehensiveTest.cpp`) for the ESP32 implementation. For complete documentation including test details, API reference, and usage examples, see:
+This directory contains the comprehensive I2C test suite (`I2cComprehensiveTest.cpp`) for the ESP32
+implementation.
+For complete documentation including test details, API reference, and usage examples, see:
 
 **📖 Complete I2C Documentation**
 
@@ -15,15 +17,15 @@ This directory contains the comprehensive I2C test suite (`I2cComprehensiveTest.
 ### Running the Tests
 
 ```bash
-# From project root
+## From project root
 cd examples/esp32
 
-# Build the I2C test suite
-./scripts/build_example.sh i2c_test Release
+## Build the I2C test suite
+./scripts/build*example.sh i2c*test Release
 
-# Flash and monitor
-./scripts/flash_example.sh i2c_test Release flash_monitor
-```
+## Flash and monitor
+./scripts/flash*example.sh i2c*test Release flash*monitor
+```text
 
 ### Test Categories (24 Total)
 
@@ -61,7 +63,7 @@ The comprehensive test suite includes:
 
 ### Expected Output
 
-```
+```text
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                    ESP32-C6 I2C COMPREHENSIVE TEST SUITE                    ║
 ║                         HardFOC Internal Interface                          ║
@@ -74,13 +76,12 @@ The comprehensive test suite includes:
 
 // ... 24 test categories ...
 
-Test Summary: I2C
-===============
+## Test Summary: I2C
 Tests Run: 24
 Passed: 24  
 Failed: 0
 Success Rate: 100.00%
-```
+```text
 
 ### Hardware Requirements
 
@@ -96,19 +97,19 @@ The test suite uses these default configurations:
 
 ```cpp
 // GPIO pins
-static constexpr hf_pin_num_t TEST_SDA_PIN = 21;
-static constexpr hf_pin_num_t TEST_SCL_PIN = 22;
+static constexpr hf*pin*num*t TEST*SDA*PIN = 21;
+static constexpr hf*pin*num*t TEST*SCL*PIN = 22;
 
 // Test device addresses
-static constexpr uint16_t TEST_DEVICE_ADDR_1 = 0x48; // Common device
-static constexpr uint16_t TEST_DEVICE_ADDR_2 = 0x50; // EEPROM
-static constexpr uint16_t NONEXISTENT_ADDR = 0x7E;   // Non-existent
+static constexpr uint16*t TEST*DEVICE*ADDR*1 = 0x48; // Common device
+static constexpr uint16*t TEST*DEVICE*ADDR*2 = 0x50; // EEPROM
+static constexpr uint16*t NONEXISTENT*ADDR = 0x7E;   // Non-existent
 
 // Clock frequencies  
-static constexpr uint32_t STANDARD_FREQ = 100000;    // 100kHz
-static constexpr uint32_t FAST_FREQ = 400000;        // 400kHz
-static constexpr uint32_t FAST_PLUS_FREQ = 1000000;  // 1MHz
-```
+static constexpr uint32*t STANDARD*FREQ = 100000;    // 100kHz
+static constexpr uint32*t FAST*FREQ = 400000;        // 400kHz
+static constexpr uint32*t FAST*PLUS*FREQ = 1000000;  // 1MHz
+```text
 
 ## For Complete Documentation
 

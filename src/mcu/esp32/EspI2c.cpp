@@ -60,20 +60,20 @@ static const char* TAG = "EspI2c";
 
 const char* HfI2COperationToString(hf_i2c_operation_t op) noexcept {
   switch (op) {
-    case hf_i2c_operation_t::HF_I2C_OP_WRITE:
-      return "Write";
-    case hf_i2c_operation_t::HF_I2C_OP_READ:
-      return "Read";
-    case hf_i2c_operation_t::HF_I2C_OP_WRITE_READ:
-      return "WriteRead";
-    case hf_i2c_operation_t::HF_I2C_OP_WRITE_ASYNC:
-      return "WriteAsync";
-    case hf_i2c_operation_t::HF_I2C_OP_READ_ASYNC:
-      return "ReadAsync";
-    case hf_i2c_operation_t::HF_I2C_OP_WRITE_READ_ASYNC:
-      return "WriteReadAsync";
-    default:
-      return "Unknown";
+  case hf_i2c_operation_t::HF_I2C_OP_WRITE:
+    return "Write";
+  case hf_i2c_operation_t::HF_I2C_OP_READ:
+    return "Read";
+  case hf_i2c_operation_t::HF_I2C_OP_WRITE_READ:
+    return "WriteRead";
+  case hf_i2c_operation_t::HF_I2C_OP_WRITE_ASYNC:
+    return "WriteAsync";
+  case hf_i2c_operation_t::HF_I2C_OP_READ_ASYNC:
+    return "ReadAsync";
+  case hf_i2c_operation_t::HF_I2C_OP_WRITE_READ_ASYNC:
+    return "WriteReadAsync";
+  default:
+    return "Unknown";
   }
 }
 
@@ -815,22 +815,22 @@ bool EspI2cBus::ClearAllDevices() noexcept {
 
 hf_i2c_err_t EspI2cBus::ConvertEspError(esp_err_t esp_error) const noexcept {
   switch (esp_error) {
-    case ESP_OK:
-      return hf_i2c_err_t::I2C_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
-    case ESP_ERR_TIMEOUT:
-      return hf_i2c_err_t::I2C_ERR_TIMEOUT;
-    case ESP_ERR_NOT_FOUND:
-      return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
-    case ESP_ERR_NO_MEM:
-      return hf_i2c_err_t::I2C_ERR_OUT_OF_MEMORY;
-    case ESP_ERR_INVALID_STATE:
-      return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
-    case ESP_FAIL:
-      return hf_i2c_err_t::I2C_ERR_FAILURE;
-    default:
-      return hf_i2c_err_t::I2C_ERR_FAILURE;
+  case ESP_OK:
+    return hf_i2c_err_t::I2C_SUCCESS;
+  case ESP_ERR_INVALID_ARG:
+    return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
+  case ESP_ERR_TIMEOUT:
+    return hf_i2c_err_t::I2C_ERR_TIMEOUT;
+  case ESP_ERR_NOT_FOUND:
+    return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
+  case ESP_ERR_NO_MEM:
+    return hf_i2c_err_t::I2C_ERR_OUT_OF_MEMORY;
+  case ESP_ERR_INVALID_STATE:
+    return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
+  case ESP_FAIL:
+    return hf_i2c_err_t::I2C_ERR_FAILURE;
+  default:
+    return hf_i2c_err_t::I2C_ERR_FAILURE;
   }
 }
 
@@ -1749,27 +1749,27 @@ void EspI2cDevice::UpdateStatistics(bool success, size_t bytes_transferred,
 // Enhanced error tracking method for specific error types
 void EspI2cDevice::UpdateErrorStatistics(hf_i2c_err_t error_code) noexcept {
   switch (error_code) {
-    case hf_i2c_err_t::I2C_ERR_TIMEOUT:
-      statistics_.timeout_count++;
-      // Timeouts can indicate clock stretching or device not responding
-      diagnostics_.clock_stretching_events++;
-      break;
-    case hf_i2c_err_t::I2C_ERR_DEVICE_NACK:
-      statistics_.nack_errors++;
-      break;
-    case hf_i2c_err_t::I2C_ERR_BUS_ERROR:
-      statistics_.bus_errors++;
-      break;
-    case hf_i2c_err_t::I2C_ERR_BUS_ARBITRATION_LOST:
-      statistics_.arbitration_lost_count++;
-      break;
-    case hf_i2c_err_t::I2C_ERR_CLOCK_STRETCH_TIMEOUT:
-      statistics_.clock_stretch_timeouts++;
-      diagnostics_.clock_stretching_events++;
-      break;
-    default:
-      // General error - already counted in failed_transactions
-      break;
+  case hf_i2c_err_t::I2C_ERR_TIMEOUT:
+    statistics_.timeout_count++;
+    // Timeouts can indicate clock stretching or device not responding
+    diagnostics_.clock_stretching_events++;
+    break;
+  case hf_i2c_err_t::I2C_ERR_DEVICE_NACK:
+    statistics_.nack_errors++;
+    break;
+  case hf_i2c_err_t::I2C_ERR_BUS_ERROR:
+    statistics_.bus_errors++;
+    break;
+  case hf_i2c_err_t::I2C_ERR_BUS_ARBITRATION_LOST:
+    statistics_.arbitration_lost_count++;
+    break;
+  case hf_i2c_err_t::I2C_ERR_CLOCK_STRETCH_TIMEOUT:
+    statistics_.clock_stretch_timeouts++;
+    diagnostics_.clock_stretching_events++;
+    break;
+  default:
+    // General error - already counted in failed_transactions
+    break;
   }
 }
 
@@ -1782,31 +1782,31 @@ void EspI2cDevice::UpdateErrorRecoveryAttempt() noexcept {
 
 hf_i2c_err_t EspI2cDevice::ConvertEspError(esp_err_t esp_error) const noexcept {
   switch (esp_error) {
-    case ESP_OK:
-      return hf_i2c_err_t::I2C_SUCCESS;
-    case ESP_ERR_INVALID_ARG:
-      return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
-    case ESP_ERR_TIMEOUT:
-      return hf_i2c_err_t::I2C_ERR_TIMEOUT;
-    case ESP_ERR_NOT_FOUND:
-      return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
-    case ESP_ERR_NO_MEM:
-      return hf_i2c_err_t::I2C_ERR_OUT_OF_MEMORY;
-    case ESP_ERR_INVALID_STATE:
-      return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
-    case ESP_ERR_INVALID_SIZE:
-      return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
-    case ESP_ERR_NOT_SUPPORTED:
-      return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
-    case ESP_ERR_INVALID_RESPONSE:
-      return hf_i2c_err_t::I2C_ERR_DEVICE_NACK;
-    case ESP_ERR_INVALID_CRC:
-      return hf_i2c_err_t::I2C_ERR_COMMUNICATION_FAILURE;
-    case ESP_ERR_WIFI_BASE:
-      return hf_i2c_err_t::I2C_ERR_SYSTEM_ERROR;
-    case ESP_FAIL:
-    default:
-      return hf_i2c_err_t::I2C_ERR_FAILURE;
+  case ESP_OK:
+    return hf_i2c_err_t::I2C_SUCCESS;
+  case ESP_ERR_INVALID_ARG:
+    return hf_i2c_err_t::I2C_ERR_INVALID_PARAMETER;
+  case ESP_ERR_TIMEOUT:
+    return hf_i2c_err_t::I2C_ERR_TIMEOUT;
+  case ESP_ERR_NOT_FOUND:
+    return hf_i2c_err_t::I2C_ERR_DEVICE_NOT_FOUND;
+  case ESP_ERR_NO_MEM:
+    return hf_i2c_err_t::I2C_ERR_OUT_OF_MEMORY;
+  case ESP_ERR_INVALID_STATE:
+    return hf_i2c_err_t::I2C_ERR_INVALID_STATE;
+  case ESP_ERR_INVALID_SIZE:
+    return hf_i2c_err_t::I2C_ERR_DATA_TOO_LONG;
+  case ESP_ERR_NOT_SUPPORTED:
+    return hf_i2c_err_t::I2C_ERR_UNSUPPORTED_OPERATION;
+  case ESP_ERR_INVALID_RESPONSE:
+    return hf_i2c_err_t::I2C_ERR_DEVICE_NACK;
+  case ESP_ERR_INVALID_CRC:
+    return hf_i2c_err_t::I2C_ERR_COMMUNICATION_FAILURE;
+  case ESP_ERR_WIFI_BASE:
+    return hf_i2c_err_t::I2C_ERR_SYSTEM_ERROR;
+  case ESP_FAIL:
+  default:
+    return hf_i2c_err_t::I2C_ERR_FAILURE;
   }
 }
 
@@ -1839,38 +1839,38 @@ bool EspI2cDevice::InternalAsyncCallback(i2c_master_dev_handle_t i2c_dev,
 
   if (evt_data) {
     switch (evt_data->event) {
-      case I2C_EVENT_DONE:
-        // Transaction completed successfully
-        result = hf_i2c_err_t::I2C_SUCCESS;
-        // For ESP32-C6, we need to determine bytes transferred based on operation type
-        // Since ESP-IDF doesn't provide this in event data, we'll use the operation tracking
-        if (device->current_op_type_ == hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE) {
-          bytes_transferred = device->last_write_length_;
-        } else if (device->current_op_type_ == hf_i2c_transaction_type_t::HF_I2C_TRANS_READ) {
-          bytes_transferred = device->last_read_length_;
-        } else if (device->current_op_type_ == hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE_READ) {
-          bytes_transferred = device->last_write_length_ + device->last_read_length_;
-        }
-        break;
+    case I2C_EVENT_DONE:
+      // Transaction completed successfully
+      result = hf_i2c_err_t::I2C_SUCCESS;
+      // For ESP32-C6, we need to determine bytes transferred based on operation type
+      // Since ESP-IDF doesn't provide this in event data, we'll use the operation tracking
+      if (device->current_op_type_ == hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE) {
+        bytes_transferred = device->last_write_length_;
+      } else if (device->current_op_type_ == hf_i2c_transaction_type_t::HF_I2C_TRANS_READ) {
+        bytes_transferred = device->last_read_length_;
+      } else if (device->current_op_type_ == hf_i2c_transaction_type_t::HF_I2C_TRANS_WRITE_READ) {
+        bytes_transferred = device->last_write_length_ + device->last_read_length_;
+      }
+      break;
 
-      case I2C_EVENT_NACK:
-        // No ACK received - transaction failed
-        result = hf_i2c_err_t::I2C_ERR_DEVICE_NACK;
-        break;
+    case I2C_EVENT_NACK:
+      // No ACK received - transaction failed
+      result = hf_i2c_err_t::I2C_ERR_DEVICE_NACK;
+      break;
 
-      case I2C_EVENT_TIMEOUT:
-        // Transaction timed out
-        result = hf_i2c_err_t::I2C_ERR_TIMEOUT;
-        break;
+    case I2C_EVENT_TIMEOUT:
+      // Transaction timed out
+      result = hf_i2c_err_t::I2C_ERR_TIMEOUT;
+      break;
 
-      case I2C_EVENT_ALIVE:
-        // Bus is alive but transaction not complete yet
-        return false; // Don't complete yet
+    case I2C_EVENT_ALIVE:
+      // Bus is alive but transaction not complete yet
+      return false; // Don't complete yet
 
-      default:
-        // Unknown event - assume failure
-        result = hf_i2c_err_t::I2C_ERR_FAILURE;
-        break;
+    default:
+      // Unknown event - assume failure
+      result = hf_i2c_err_t::I2C_ERR_FAILURE;
+      break;
     }
   } else {
     // No event data - assume failure

@@ -2,11 +2,18 @@
 
 ## Overview
 
-The NVS Comprehensive Test Suite provides extensive validation of the `EspNvs` class for ESP32-C6 platforms using ESP-IDF v5.5+. This test suite demonstrates complete Non-Volatile Storage functionality, data persistence, error handling, and performance optimization with a focus on embedded environments using `noexcept` functions.
+The NVS Comprehensive Test Suite provides extensive validation of the `EspNvs` class for ESP32-C6
+platforms using ESP-IDF v5.5+.
+This test suite demonstrates complete Non-Volatile Storage functionality, data persistence,
+error handling,
+and performance optimization with a focus on embedded environments using `noexcept` functions.
 
 **✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware**
 
-The comprehensive test suite provides full coverage of the `EspNvs` class, testing all methods, error conditions, edge cases, and boundary conditions. The tests are designed to run without exceptions and without RTTI, making them suitable for embedded environments.
+The comprehensive test suite provides full coverage of the `EspNvs` class, testing all methods,
+error conditions, edge cases, and boundary conditions.
+The tests are designed to run without exceptions and without RTTI,
+making them suitable for embedded environments.
 
 ## Test Coverage
 
@@ -88,51 +95,52 @@ The test suite covers:
 
 ### Prerequisites
 ```bash
-# ESP-IDF v5.5+ installation required
-. $IDF_PATH/export.sh
+## ESP-IDF v5.5+ installation required
+. $IDF*PATH/export.sh
 
-# Set target platform
-export IDF_TARGET=esp32c6
-```
+## Set target platform
+export IDF*TARGET=esp32c6
+```text
 
 ### Quick Start
 ```bash
-# Navigate to examples directory
+## Navigate to examples directory
 cd examples/esp32
 
-# Build NVS test
-idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Release
+## Build NVS test
+idf.py build -DEXAMPLE*TYPE=nvs*test -DBUILD*TYPE=Release
 
-# Flash and monitor
+## Flash and monitor
 idf.py -p /dev/ttyUSB0 flash monitor
-```
+```text
 
 ### Alternative Build Methods
 
 #### Using Build Scripts (Recommended)
 ```bash
-# Source ESP-IDF environment
+## Source ESP-IDF environment
 source /path/to/esp-idf/export.sh
 
-# Build with optimization
-./build_example.sh nvs_test Release
+## Build with optimization
+./build*example.sh nvs*test Release
 
-# Flash to device
-idf.py -B build_nvs_test_Release flash monitor
-```
+## Flash to device
+idf.py -B build*nvs*test*Release flash monitor
+```text
 
 #### Debug Build for Development
 ```bash
-# Build with debug symbols and verbose output
-idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Debug
+## Build with debug symbols and verbose output
+idf.py build -DEXAMPLE*TYPE=nvs*test -DBUILD*TYPE=Debug
 
-# Run with detailed logging
+## Run with detailed logging
 idf.py -p /dev/ttyUSB0 flash monitor
-```
+```text
 
 ## Running the Test
 
-Once flashed, the test will automatically start and run through all test cases. The output will show:
+Once flashed, the test will automatically start and run through all test cases.
+The output will show:
 
 - Progress for each test case
 - Pass/fail status for each test
@@ -141,22 +149,22 @@ Once flashed, the test will automatically start and run through all test cases. 
 
 ### Expected Output
 
-```
+```text
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                    ESP32-C6 NVS COMPREHENSIVE TEST SUITE                     ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║ Running: test_nvs_initialization                                            ║
+║ Running: test*nvs*initialization                                            ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
-[SUCCESS] PASSED: test_nvs_initialization (XX.XX ms)
+[SUCCESS] PASSED: test*nvs*initialization (XX.XX ms)
 
 ... (more tests) ...
 
 === NVS TEST SUMMARY ===
 Total: 10, Passed: 10, Failed: 0, Success: 100.00%, Time: XXX.XX ms
 [SUCCESS] ALL NVS TESTS PASSED!
-```
+```text
 
 ## Troubleshooting
 
@@ -198,4 +206,4 @@ The test framework in `TestFramework.h` provides:
 - The test suite is designed to be self-contained and requires no external dependencies
 - All tests use the `noexcept` specifier to ensure no exceptions are thrown
 - The code is compatible with C++17 standard
-- Thread safety is enabled by default (HF_THREAD_SAFE=1)
+- Thread safety is enabled by default (HF*THREAD_SAFE=1)

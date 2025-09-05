@@ -1,6 +1,8 @@
 # 🤝 Contributing to HardFOC Internal Interface Wrapper
 
-Thank you for your interest in contributing to the HardFOC Internal Interface Wrapper! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to the HardFOC Internal
+Interface Wrapper! This document provides guidelines and information for
+contributors.
 
 ## 📋 **Code Standards**
 
@@ -10,16 +12,22 @@ Thank you for your interest in contributing to the HardFOC Internal Interface Wr
 - **Consistent Naming** - Follow the established naming conventions:
   - Classes: `PascalCase` (e.g., `EspGpio`, `BaseTemperature`)
   - Functions: `PascalCase` (e.g., `EnsureInitialized`, `ReadChannelV`)
-  - Variables: `snake_case_` with trailing underscore for members (e.g., `motor_enable_`, `current_sensor_`)
-  - Constants: `UPPER_SNAKE_CASE` (e.g., `ADC_CHANNEL_0`)
-  - Types: `hf_` prefix with `_t` suffix (e.g., `hf_gpio_err_t`, `hf_pin_num_t`)
+  - Variables: `snake*case*` with trailing underscore for members (e.g., `motor*enable*`, `current*sensor*`)
+  - Constants: `UPPER*SNAKE*CASE` (e.g., `ADC*CHANNEL*0`)
+  - Types: `hf*` prefix with `*t` suffix (e.g., `hf*gpio*err*t`, `hf*pin*num*t`)
 
 ### 🏗️ **Architecture Guidelines**
-- **Inherit from Base Classes** - All hardware implementations must inherit from their respective base classes
-- **Lazy Initialization** - Use the `EnsureInitialized()` pattern for resource allocation
-- **Comprehensive Error Handling** - All functions must return appropriate error codes
-- **Thread Safety** - Consider thread safety implications and document any limitations
-- **Platform Agnostic Types** - Use HardFOC type system (`hf_u32_t`, `hf_pin_num_t`, etc.)
+
+- **Inherit from Base Classes** - All hardware implementations must
+  inherit from their respective base classes
+- **Lazy Initialization** - Use the `EnsureInitialized()` pattern for
+  resource allocation
+- **Comprehensive Error Handling** - All functions must return
+  appropriate error codes
+- **Thread Safety** - Consider thread safety implications and document
+  any limitations
+- **Platform Agnostic Types** - Use HardFOC type system
+  (`hf*u32*t`, `hf*pin*num_t`, etc.)
 
 ## 🧪 **Testing**
 
@@ -58,7 +66,8 @@ When reporting bugs, please include:
 
 When proposing new features:
 
-1. **HardFOC Use Case** - Describe the specific HardFOC motor controller board use case
+1. **HardFOC Use Case** - Describe the specific HardFOC motor
+   controller board use case
 2. **Technical Specification** - Provide detailed technical requirements
 3. **API Design** - Propose the interface design following established patterns
 4. **Implementation Plan** - Outline the implementation approach
@@ -85,10 +94,6 @@ When proposing new features:
 
 ---
 
-<div align="center">
-
-**🚀 Thank You for Contributing to HardFOC!**
-
-*Your contributions help make HardFOC motor controller boards more accessible and powerful for everyone*
-
-</div>
+## 🚀 Thank You for Contributing to HardFOC
+Your contributions help make HardFOC motor controller boards more
+accessible and powerful for everyone.

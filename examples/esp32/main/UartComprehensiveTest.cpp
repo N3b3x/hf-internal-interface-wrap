@@ -106,29 +106,29 @@ bool uart_event_callback(const hf_uart_event_t* event, void* user_data) noexcept
     const char* event_type_name = "UNKNOWN";
 
     switch (event->type) {
-      case hf_uart_event_type_t::HF_UART_DATA:
-        event_type_name = "DATA";
-        break;
-      case hf_uart_event_type_t::HF_UART_FIFO_OVF:
-        event_type_name = "FIFO_OVF";
-        break;
-      case hf_uart_event_type_t::HF_UART_BUFFER_FULL:
-        event_type_name = "BUFFER_FULL";
-        break;
-      case hf_uart_event_type_t::HF_UART_BREAK:
-        event_type_name = "BREAK";
-        break;
-      case hf_uart_event_type_t::HF_UART_PARITY_ERR:
-        event_type_name = "PARITY_ERR";
-        break;
-      case hf_uart_event_type_t::HF_UART_FRAME_ERR:
-        event_type_name = "FRAME_ERR";
-        break;
-      case hf_uart_event_type_t::HF_UART_PATTERN_DET:
-        event_type_name = "PATTERN_DET";
-        break;
-      default:
-        break;
+    case hf_uart_event_type_t::HF_UART_DATA:
+      event_type_name = "DATA";
+      break;
+    case hf_uart_event_type_t::HF_UART_FIFO_OVF:
+      event_type_name = "FIFO_OVF";
+      break;
+    case hf_uart_event_type_t::HF_UART_BUFFER_FULL:
+      event_type_name = "BUFFER_FULL";
+      break;
+    case hf_uart_event_type_t::HF_UART_BREAK:
+      event_type_name = "BREAK";
+      break;
+    case hf_uart_event_type_t::HF_UART_PARITY_ERR:
+      event_type_name = "PARITY_ERR";
+      break;
+    case hf_uart_event_type_t::HF_UART_FRAME_ERR:
+      event_type_name = "FRAME_ERR";
+      break;
+    case hf_uart_event_type_t::HF_UART_PATTERN_DET:
+      event_type_name = "PATTERN_DET";
+      break;
+    default:
+      break;
     }
 
     ESP_LOGI(TAG, "Event callback triggered: %s (size: %zu)", event_type_name, event->size);
@@ -174,63 +174,63 @@ static void user_uart_event_task(void* arg) noexcept {
   while (!g_stop_event_task) {
     if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
       switch (event.type) {
-        case UART_DATA:
-          ESP_LOGI(TAG, "USER TASK: Data event - %zu bytes available", event.size);
-          g_event_callback_triggered = true;
-          break;
+      case UART_DATA:
+        ESP_LOGI(TAG, "USER TASK: Data event - %zu bytes available", event.size);
+        g_event_callback_triggered = true;
+        break;
 
-        case UART_PATTERN_DET:
-          ESP_LOGI(TAG, "USER TASK: Pattern detected!");
-          g_pattern_detected = true;
+      case UART_PATTERN_DET:
+        ESP_LOGI(TAG, "USER TASK: Pattern detected!");
+        g_pattern_detected = true;
 
-          // Pop pattern position immediately (ESP-IDF v5.5 best practice)
-          g_pattern_position = uart->PopPatternPosition();
-          ESP_LOGI(TAG, "Pattern position: %d", g_pattern_position);
+        // Pop pattern position immediately (ESP-IDF v5.5 best practice)
+        g_pattern_position = uart->PopPatternPosition();
+        ESP_LOGI(TAG, "Pattern position: %d", g_pattern_position);
 
-          if (g_pattern_position >= 0) {
-            // Read exactly up to pattern position + 1 (including delimiter)
-            int bytes_to_read = g_pattern_position + 1;
-            int bytes_read = uart_read_bytes(static_cast<uart_port_t>(uart->GetPort()), data_buffer,
-                                             bytes_to_read, pdMS_TO_TICKS(100));
-            if (bytes_read > 0) {
-              ESP_LOGI(TAG, "Read %d bytes up to pattern", bytes_read);
-              // Null terminate and log the data
-              if (bytes_read < 256) {
-                data_buffer[bytes_read] = '\0';
-                ESP_LOGI(TAG, "Pattern data: %s", (char*)data_buffer);
-              }
+        if (g_pattern_position >= 0) {
+          // Read exactly up to pattern position + 1 (including delimiter)
+          int bytes_to_read = g_pattern_position + 1;
+          int bytes_read = uart_read_bytes(static_cast<uart_port_t>(uart->GetPort()), data_buffer,
+                                           bytes_to_read, pdMS_TO_TICKS(100));
+          if (bytes_read > 0) {
+            ESP_LOGI(TAG, "Read %d bytes up to pattern", bytes_read);
+            // Null terminate and log the data
+            if (bytes_read < 256) {
+              data_buffer[bytes_read] = '\0';
+              ESP_LOGI(TAG, "Pattern data: %s", (char*)data_buffer);
             }
           }
-          break;
+        }
+        break;
 
-        case UART_BREAK:
-          ESP_LOGI(TAG, "USER TASK: Break detected");
-          g_break_callback_triggered = true;
-          break;
+      case UART_BREAK:
+        ESP_LOGI(TAG, "USER TASK: Break detected");
+        g_break_callback_triggered = true;
+        break;
 
-        case UART_FIFO_OVF:
-          ESP_LOGW(TAG, "USER TASK: RX FIFO overflow");
-          uart_flush_input(static_cast<uart_port_t>(uart->GetPort()));
-          xQueueReset(event_queue);
-          break;
+      case UART_FIFO_OVF:
+        ESP_LOGW(TAG, "USER TASK: RX FIFO overflow");
+        uart_flush_input(static_cast<uart_port_t>(uart->GetPort()));
+        xQueueReset(event_queue);
+        break;
 
-        case UART_BUFFER_FULL:
-          ESP_LOGW(TAG, "USER TASK: Ring buffer full");
-          uart_flush_input(static_cast<uart_port_t>(uart->GetPort()));
-          xQueueReset(event_queue);
-          break;
+      case UART_BUFFER_FULL:
+        ESP_LOGW(TAG, "USER TASK: Ring buffer full");
+        uart_flush_input(static_cast<uart_port_t>(uart->GetPort()));
+        xQueueReset(event_queue);
+        break;
 
-        case UART_PARITY_ERR:
-          ESP_LOGW(TAG, "USER TASK: Parity error");
-          break;
+      case UART_PARITY_ERR:
+        ESP_LOGW(TAG, "USER TASK: Parity error");
+        break;
 
-        case UART_FRAME_ERR:
-          ESP_LOGW(TAG, "USER TASK: Frame error");
-          break;
+      case UART_FRAME_ERR:
+        ESP_LOGW(TAG, "USER TASK: Frame error");
+        break;
 
-        default:
-          ESP_LOGD(TAG, "USER TASK: Unknown event type: %d", event.type);
-          break;
+      default:
+        ESP_LOGD(TAG, "USER TASK: Unknown event type: %d", event.type);
+        break;
       }
     }
   }
@@ -629,54 +629,54 @@ bool test_uart_pattern_detection() noexcept {
   while ((esp_timer_get_time() - start_time) < timeout_us && pattern_count < expected_patterns) {
     if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
       switch (event.type) {
-        case UART_DATA:
-          data_events++;
-          ESP_LOGI(TAG, "UART_DATA event - size: %zu", event.size);
-          // Read data to clear buffer and allow pattern detection
-          uart->Read(read_buffer, sizeof(read_buffer), 100);
-          break;
+      case UART_DATA:
+        data_events++;
+        ESP_LOGI(TAG, "UART_DATA event - size: %zu", event.size);
+        // Read data to clear buffer and allow pattern detection
+        uart->Read(read_buffer, sizeof(read_buffer), 100);
+        break;
 
-        case UART_PATTERN_DET: {
-          ESP_LOGI(TAG, "UART_PATTERN_DET event received!");
-          int pattern_pos = uart->PopPatternPosition();
-          if (pattern_pos >= 0) {
-            pattern_count++;
-            ESP_LOGI(TAG, "Pattern %d detected at position: %d", pattern_count, pattern_pos);
-          }
-          break;
+      case UART_PATTERN_DET: {
+        ESP_LOGI(TAG, "UART_PATTERN_DET event received!");
+        int pattern_pos = uart->PopPatternPosition();
+        if (pattern_pos >= 0) {
+          pattern_count++;
+          ESP_LOGI(TAG, "Pattern %d detected at position: %d", pattern_count, pattern_pos);
         }
+        break;
+      }
 
-        case UART_FIFO_OVF:
-        case UART_BUFFER_FULL:
-          ESP_LOGW(TAG, "Buffer overflow - clearing");
-          uart->FlushRx();
-          uart->ResetEventQueue();
-          break;
+      case UART_FIFO_OVF:
+      case UART_BUFFER_FULL:
+        ESP_LOGW(TAG, "Buffer overflow - clearing");
+        uart->FlushRx();
+        uart->ResetEventQueue();
+        break;
 
-        case UART_BREAK:
-          ESP_LOGD(TAG, "UART_BREAK event");
-          break;
+      case UART_BREAK:
+        ESP_LOGD(TAG, "UART_BREAK event");
+        break;
 
-        case UART_FRAME_ERR:
-          ESP_LOGD(TAG, "UART_FRAME_ERR event");
-          break;
+      case UART_FRAME_ERR:
+        ESP_LOGD(TAG, "UART_FRAME_ERR event");
+        break;
 
-        case UART_PARITY_ERR:
-          ESP_LOGD(TAG, "UART_PARITY_ERR event");
-          break;
+      case UART_PARITY_ERR:
+        ESP_LOGD(TAG, "UART_PARITY_ERR event");
+        break;
 
-        case UART_DATA_BREAK:
-          ESP_LOGD(TAG, "UART_DATA_BREAK event");
-          break;
+      case UART_DATA_BREAK:
+        ESP_LOGD(TAG, "UART_DATA_BREAK event");
+        break;
 
-        case UART_WAKEUP:
-          ESP_LOGD(TAG, "UART_WAKEUP event");
-          break;
+      case UART_WAKEUP:
+        ESP_LOGD(TAG, "UART_WAKEUP event");
+        break;
 
-        case UART_EVENT_MAX:
-        default:
-          ESP_LOGD(TAG, "Other event type: %d", event.type);
-          break;
+      case UART_EVENT_MAX:
+      default:
+        ESP_LOGD(TAG, "Other event type: %d", event.type);
+        break;
       }
     }
 
@@ -747,54 +747,54 @@ bool test_uart_pattern_detection() noexcept {
          at_pattern_count < expected_at_patterns) {
     if (xQueueReceive(event_queue, &event, pdMS_TO_TICKS(100))) {
       switch (event.type) {
-        case UART_DATA:
-          data_events++;
-          ESP_LOGI(TAG, "UART_DATA event - size: %zu", event.size);
-          // Read data to clear buffer
-          uart->Read(read_buffer, sizeof(read_buffer), 100);
-          break;
+      case UART_DATA:
+        data_events++;
+        ESP_LOGI(TAG, "UART_DATA event - size: %zu", event.size);
+        // Read data to clear buffer
+        uart->Read(read_buffer, sizeof(read_buffer), 100);
+        break;
 
-        case UART_PATTERN_DET: {
-          ESP_LOGI(TAG, "UART_PATTERN_DET event received for +++!");
-          int pattern_pos = uart->PopPatternPosition();
-          if (pattern_pos >= 0) {
-            at_pattern_count++;
-            ESP_LOGI(TAG, "AT Pattern %d detected at position: %d", at_pattern_count, pattern_pos);
-          }
-          break;
+      case UART_PATTERN_DET: {
+        ESP_LOGI(TAG, "UART_PATTERN_DET event received for +++!");
+        int pattern_pos = uart->PopPatternPosition();
+        if (pattern_pos >= 0) {
+          at_pattern_count++;
+          ESP_LOGI(TAG, "AT Pattern %d detected at position: %d", at_pattern_count, pattern_pos);
         }
+        break;
+      }
 
-        case UART_FIFO_OVF:
-        case UART_BUFFER_FULL:
-          ESP_LOGW(TAG, "Buffer overflow - clearing");
-          uart->FlushRx();
-          uart->ResetEventQueue();
-          break;
+      case UART_FIFO_OVF:
+      case UART_BUFFER_FULL:
+        ESP_LOGW(TAG, "Buffer overflow - clearing");
+        uart->FlushRx();
+        uart->ResetEventQueue();
+        break;
 
-        case UART_BREAK:
-          ESP_LOGD(TAG, "UART_BREAK event");
-          break;
+      case UART_BREAK:
+        ESP_LOGD(TAG, "UART_BREAK event");
+        break;
 
-        case UART_FRAME_ERR:
-          ESP_LOGD(TAG, "UART_FRAME_ERR event");
-          break;
+      case UART_FRAME_ERR:
+        ESP_LOGD(TAG, "UART_FRAME_ERR event");
+        break;
 
-        case UART_PARITY_ERR:
-          ESP_LOGD(TAG, "UART_PARITY_ERR event");
-          break;
+      case UART_PARITY_ERR:
+        ESP_LOGD(TAG, "UART_PARITY_ERR event");
+        break;
 
-        case UART_DATA_BREAK:
-          ESP_LOGD(TAG, "UART_DATA_BREAK event");
-          break;
+      case UART_DATA_BREAK:
+        ESP_LOGD(TAG, "UART_DATA_BREAK event");
+        break;
 
-        case UART_WAKEUP:
-          ESP_LOGD(TAG, "UART_WAKEUP event");
-          break;
+      case UART_WAKEUP:
+        ESP_LOGD(TAG, "UART_WAKEUP event");
+        break;
 
-        case UART_EVENT_MAX:
-        default:
-          ESP_LOGD(TAG, "Other event type: %d", event.type);
-          break;
+      case UART_EVENT_MAX:
+      default:
+        ESP_LOGD(TAG, "Other event type: %d", event.type);
+        break;
       }
     }
 
@@ -1724,109 +1724,109 @@ bool test_uart_event_driven_pattern_detection() noexcept {
       events_received++;
 
       switch (event.type) {
-        case UART_DATA: {
-          data_events++;
-          ESP_LOGI(TAG, "UART_DATA event received - size: %zu", event.size);
+      case UART_DATA: {
+        data_events++;
+        ESP_LOGI(TAG, "UART_DATA event received - size: %zu", event.size);
 
-          // Read the data to clear the buffer and trigger more events
-          uint8_t read_buffer[256];
-          hf_uart_err_t read_result = uart->Read(read_buffer, sizeof(read_buffer), 100);
-          if (read_result == hf_uart_err_t::UART_SUCCESS) {
-            ESP_LOGI(TAG, "Read data from UART buffer successfully");
-          }
-          // Add small delay to prevent overwhelming the system
-          vTaskDelay(pdMS_TO_TICKS(20));
-          break;
+        // Read the data to clear the buffer and trigger more events
+        uint8_t read_buffer[256];
+        hf_uart_err_t read_result = uart->Read(read_buffer, sizeof(read_buffer), 100);
+        if (read_result == hf_uart_err_t::UART_SUCCESS) {
+          ESP_LOGI(TAG, "Read data from UART buffer successfully");
         }
+        // Add small delay to prevent overwhelming the system
+        vTaskDelay(pdMS_TO_TICKS(20));
+        break;
+      }
 
-        case UART_PATTERN_DET: {
-          pattern_events++;
-          ESP_LOGI(TAG, "UART_PATTERN_DET event received!");
+      case UART_PATTERN_DET: {
+        pattern_events++;
+        ESP_LOGI(TAG, "UART_PATTERN_DET event received!");
 
-          // Get pattern position
-          pattern_position = uart->PopPatternPosition();
-          if (pattern_position >= 0) {
-            pattern_detected = true;
-            ESP_LOGI(TAG, "Pattern detected at position: %d", pattern_position);
+        // Get pattern position
+        pattern_position = uart->PopPatternPosition();
+        if (pattern_position >= 0) {
+          pattern_detected = true;
+          ESP_LOGI(TAG, "Pattern detected at position: %d", pattern_position);
 
-            // Read data up to and including the pattern
-            int read_len = pattern_position + 1; // Include the pattern character
-            uint8_t pattern_buffer[256];
+          // Read data up to and including the pattern
+          int read_len = pattern_position + 1; // Include the pattern character
+          uint8_t pattern_buffer[256];
 
-            // Check available data before reading
-            size_t buffered_len = 0;
-            esp_err_t len_result = uart_get_buffered_data_len(
-                static_cast<uart_port_t>(uart->GetPort()), &buffered_len);
+          // Check available data before reading
+          size_t buffered_len = 0;
+          esp_err_t len_result =
+              uart_get_buffered_data_len(static_cast<uart_port_t>(uart->GetPort()), &buffered_len);
 
-            if (len_result == ESP_OK) {
-              ESP_LOGI(TAG, "Buffered data length: %zu, reading up to: %d", buffered_len, read_len);
+          if (len_result == ESP_OK) {
+            ESP_LOGI(TAG, "Buffered data length: %zu, reading up to: %d", buffered_len, read_len);
 
-              if (read_len > static_cast<int>(buffered_len)) {
-                ESP_LOGW(TAG, "Adjusting read length from %d to %zu (available data)", read_len,
-                         buffered_len);
-                read_len = static_cast<int>(buffered_len);
-              }
-
-              hf_uart_err_t read_result = uart->Read(pattern_buffer, read_len, 100);
-              if (read_result == hf_uart_err_t::UART_SUCCESS) {
-                ESP_LOGI(TAG, "Pattern data read successfully");
-              }
+            if (read_len > static_cast<int>(buffered_len)) {
+              ESP_LOGW(TAG, "Adjusting read length from %d to %zu (available data)", read_len,
+                       buffered_len);
+              read_len = static_cast<int>(buffered_len);
             }
-          } else {
-            ESP_LOGE(TAG, "Failed to get pattern position");
+
+            hf_uart_err_t read_result = uart->Read(pattern_buffer, read_len, 100);
+            if (read_result == hf_uart_err_t::UART_SUCCESS) {
+              ESP_LOGI(TAG, "Pattern data read successfully");
+            }
           }
-          break;
+        } else {
+          ESP_LOGE(TAG, "Failed to get pattern position");
         }
+        break;
+      }
 
-        case UART_FIFO_OVF: {
-          ESP_LOGW(TAG, "UART_FIFO_OVF event - clearing buffer");
-          uart->FlushRx();
-          xQueueReset(event_queue);
-          break;
-        }
+      case UART_FIFO_OVF: {
+        ESP_LOGW(TAG, "UART_FIFO_OVF event - clearing buffer");
+        uart->FlushRx();
+        xQueueReset(event_queue);
+        break;
+      }
 
-        case UART_BUFFER_FULL: {
-          ESP_LOGW(TAG, "UART_BUFFER_FULL event - clearing buffer");
-          uart->FlushRx();
-          xQueueReset(event_queue);
-          break;
-        }
+      case UART_BUFFER_FULL: {
+        ESP_LOGW(TAG, "UART_BUFFER_FULL event - clearing buffer");
+        uart->FlushRx();
+        xQueueReset(event_queue);
+        break;
+      }
 
-        case UART_BREAK: {
-          ESP_LOGI(TAG, "UART_BREAK event received");
-          break;
-        }
+      case UART_BREAK: {
+        ESP_LOGI(TAG, "UART_BREAK event received");
+        break;
+      }
 
-        case UART_PARITY_ERR: {
-          ESP_LOGW(TAG, "UART_PARITY_ERR event received");
-          break;
-        }
+      case UART_PARITY_ERR: {
+        ESP_LOGW(TAG, "UART_PARITY_ERR event received");
+        break;
+      }
 
-        case UART_FRAME_ERR: {
-          ESP_LOGW(TAG, "UART_FRAME_ERR event received");
-          break;
-        }
+      case UART_FRAME_ERR: {
+        ESP_LOGW(TAG, "UART_FRAME_ERR event received");
+        break;
+      }
 
-        case UART_DATA_BREAK: {
-          ESP_LOGI(TAG, "UART_DATA_BREAK event received");
-          break;
-        }
+      case UART_DATA_BREAK: {
+        ESP_LOGI(TAG, "UART_DATA_BREAK event received");
+        break;
+      }
 
-        case UART_WAKEUP: {
-          ESP_LOGI(TAG, "UART_WAKEUP event received");
-          break;
-        }
+      case UART_WAKEUP: {
+        ESP_LOGI(TAG, "UART_WAKEUP event received");
+        break;
+      }
 
-        case UART_EVENT_MAX: {
-          ESP_LOGW(TAG, "UART_EVENT_MAX event received (should not happen)");
-          break;
-        }
+      case UART_EVENT_MAX: {
+        ESP_LOGW(TAG, "UART_EVENT_MAX event received (should not happen)");
+        break;
+      }
 
-        default: {
-          other_events++;
-          ESP_LOGD(TAG, "Unknown UART event type: %d", event.type);
-          break;
-        }
+      default: {
+        other_events++;
+        ESP_LOGD(TAG, "Unknown UART event type: %d", event.type);
+        break;
+      }
       }
 
       // Check if we've received enough pattern events

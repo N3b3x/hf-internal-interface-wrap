@@ -1,6 +1,7 @@
 # ESP32-C6 GPIO Comprehensive Test Suite
 
-This directory contains a comprehensive testing suite specifically designed for the EspGpio class on ESP32-C6 DevKit-M-1 hardware using ESP-IDF v5.5+.
+This directory contains a comprehensive testing suite specifically designed for the EspGpio class on
+ESP32-C6 DevKit-M-1 hardware using ESP-IDF v5.5+.
 
 ## Overview
 
@@ -33,7 +34,7 @@ The GPIO test suite provides thorough validation of all GPIO functionalities inc
 
 The test suite uses the following safe pins on ESP32-C6 DevKit-M-1:
 
-```
+```text
 Safe Test Pins:
 ┌─────────────────────────────────────┐
 │ Function            │ GPIO Pin      │
@@ -60,7 +61,7 @@ Pins to Avoid:
 │ GPIO 12, 13         │ USB-JTAG      │
 │ GPIO 24-30          │ SPI Flash     │
 └─────────────────────┴───────────────┘
-```
+```text
 
 ### Optional Physical Connections
 
@@ -72,28 +73,28 @@ For complete loopback testing, connect:
 ### Build Commands
 
 ```bash
-# Build GPIO test suite (Release)
-idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release
+## Build GPIO test suite (Release)
+idf.py build -DEXAMPLE*TYPE=gpio*test -DBUILD*TYPE=Release
 
-# Build GPIO test suite (Debug)
-idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Debug
+## Build GPIO test suite (Debug)
+idf.py build -DEXAMPLE*TYPE=gpio*test -DBUILD*TYPE=Debug
 
-# Flash and monitor
-idf.py flash monitor -DEXAMPLE_TYPE=gpio_test
-```
+## Flash and monitor
+idf.py flash monitor -DEXAMPLE*TYPE=gpio*test
+```text
 
 ### CI Pipeline
 
 The GPIO test is integrated into the CI pipeline:
 
 ```yaml
-# In .github/workflows/esp32-component-ci.yml
-example_type: [comprehensive, ascii_art, nimble_test, gpio_test]
-```
+## In .github/workflows/esp32-component-ci.yml
+example*type: [comprehensive, ascii*art, nimble*test, gpio*test]
+```text
 
 Build artifacts are available as:
-- `fw-gpio_test-release-v5.5-Release`
-- `fw-gpio_test-release-v5.5-Debug`
+- `fw-gpio*test-release-v5.5-Release`
+- `fw-gpio*test-release-v5.5-Debug`
 
 ## Test Categories
 
@@ -131,7 +132,7 @@ Build artifacts are available as:
 
 ## Expected Output
 
-```
+```text
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                    ESP32-C6 GPIO COMPREHENSIVE TEST SUITE                   ║
 ║                         HardFOC Internal Interface                          ║
@@ -143,9 +144,9 @@ Build artifacts are available as:
 
 Starting comprehensive GPIO testing...
 
-✅ PASSED: test_basic_gpio_functionality (15.23 ms)
-✅ PASSED: test_gpio_initialization_and_configuration (22.45 ms)
-✅ PASSED: test_gpio_input_output_operations (18.67 ms)
+✅ PASSED: test*basic*gpio*functionality (15.23 ms)
+✅ PASSED: test*gpio*initialization*and*configuration (22.45 ms)
+✅ PASSED: test*gpio*input*output*operations (18.67 ms)
 ...
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
@@ -159,7 +160,7 @@ Starting comprehensive GPIO testing...
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 🎉 ALL GPIO TESTS PASSED! 🎉
-```
+```text
 
 ## Development Notes
 
@@ -169,26 +170,26 @@ To add a new test function:
 
 1. **Declare the function:**
    ```cpp
-   bool test_my_new_functionality();
+   bool test*my*new*functionality();
    ```
 
-2. **Implement the test:**
+1. **Implement the test:**
    ```cpp
-   bool test_my_new_functionality() {
-     ESP_LOGI(TAG, "=== Testing My New Functionality ===");
+   bool test*my*new*functionality() {
+     ESP*LOGI(TAG, "=== Testing My New Functionality ===");
      try {
        // Test implementation
        return true;
      } catch (const std::exception& e) {
-       ESP_LOGE(TAG, "Exception: %s", e.what());
+       ESP*LOGE(TAG, "Exception: %s", e.what());
        return false;
      }
    }
    ```
 
-3. **Add to test execution:**
+1. **Add to test execution:**
    ```cpp
-   RUN_TEST(test_my_new_functionality);
+   RUN*TEST(test*my*new*functionality);
    ```
 
 ### Test Patterns
@@ -207,17 +208,17 @@ For debugging individual tests:
 
 1. **Enable debug build:**
    ```bash
-   idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Debug
+   idf.py build -DEXAMPLE*TYPE=gpio*test -DBUILD*TYPE=Debug
    ```
 
-2. **Add debug prints:**
+1. **Add debug prints:**
    ```cpp
-   ESP_LOGD(TAG, "Debug info: %d", value);
+   ESP*LOGD(TAG, "Debug info: %d", value);
    ```
 
-3. **Use specific pin for debugging:**
+1. **Use specific pin for debugging:**
    ```cpp
-   static constexpr hf_pin_num_t DEBUG_PIN = 22;
+   static constexpr hf*pin*num*t DEBUG_PIN = 22;
    ```
 
 ## Integration with Main Project

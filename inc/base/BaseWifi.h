@@ -44,34 +44,34 @@
  * @details X-macro pattern for comprehensive error enumeration. Each entry contains:
  *          X(NAME, VALUE, DESCRIPTION)
  */
-#define HF_WIFI_ERR_LIST(X)                                             \
-  /* Success codes */                                                   \
-  X(WIFI_SUCCESS, 0, "Success")                                         \
-                                                                        \
-  /* General errors */                                                  \
-  X(WIFI_ERR_FAILURE, 1, "General failure")                             \
-  X(WIFI_ERR_INVALID_PARAM, 2, "Invalid parameter")                     \
-  X(WIFI_ERR_NOT_INITIALIZED, 3, "WiFi not initialized")                \
-  X(WIFI_ERR_ALREADY_INITIALIZED, 4, "WiFi already initialized")        \
-  X(WIFI_ERR_NOT_CONNECTED, 5, "WiFi not connected")                    \
-  X(WIFI_ERR_ALREADY_CONNECTED, 6, "WiFi already connected")            \
-  X(WIFI_ERR_CONNECTION_FAILED, 7, "Connection failed")                 \
-  X(WIFI_ERR_DISCONNECTION_FAILED, 8, "Disconnection failed")           \
-  X(WIFI_ERR_SCAN_FAILED, 9, "Network scan failed")                     \
-  X(WIFI_ERR_AP_START_FAILED, 10, "Access Point start failed")          \
-  X(WIFI_ERR_AP_STOP_FAILED, 11, "Access Point stop failed")            \
-  X(WIFI_ERR_TIMEOUT, 12, "Operation timeout")                          \
-  X(WIFI_ERR_NO_MEMORY, 13, "Insufficient memory")                      \
-  X(WIFI_ERR_INVALID_SSID, 14, "Invalid SSID")                          \
-  X(WIFI_ERR_INVALID_PASSWORD, 15, "Invalid password")                  \
-  X(WIFI_ERR_WEAK_SIGNAL, 16, "Weak signal strength")                   \
-  X(WIFI_ERR_AUTHENTICATION_FAILED, 17, "Authentication failed")        \
-  X(WIFI_ERR_ASSOCIATION_FAILED, 18, "Association failed")              \
-  X(WIFI_ERR_HANDSHAKE_FAILED, 19, "4-way handshake failed")            \
-  X(WIFI_ERR_INIT_FAILED, 20, "WiFi initialization failed")             \
-  X(WIFI_ERR_CONFIG_INVALID, 21, "Invalid configuration")               \
-  X(WIFI_ERR_ENTERPRISE_FAILED, 22, "Enterprise authentication failed") \
-  X(WIFI_ERR_WPA3_NOT_SUPPORTED, 23, "WPA3 not supported")              \
+#define HF_WIFI_ERR_LIST(X)                                                                        \
+  /* Success codes */                                                                              \
+  X(WIFI_SUCCESS, 0, "Success")                                                                    \
+                                                                                                   \
+  /* General errors */                                                                             \
+  X(WIFI_ERR_FAILURE, 1, "General failure")                                                        \
+  X(WIFI_ERR_INVALID_PARAM, 2, "Invalid parameter")                                                \
+  X(WIFI_ERR_NOT_INITIALIZED, 3, "WiFi not initialized")                                           \
+  X(WIFI_ERR_ALREADY_INITIALIZED, 4, "WiFi already initialized")                                   \
+  X(WIFI_ERR_NOT_CONNECTED, 5, "WiFi not connected")                                               \
+  X(WIFI_ERR_ALREADY_CONNECTED, 6, "WiFi already connected")                                       \
+  X(WIFI_ERR_CONNECTION_FAILED, 7, "Connection failed")                                            \
+  X(WIFI_ERR_DISCONNECTION_FAILED, 8, "Disconnection failed")                                      \
+  X(WIFI_ERR_SCAN_FAILED, 9, "Network scan failed")                                                \
+  X(WIFI_ERR_AP_START_FAILED, 10, "Access Point start failed")                                     \
+  X(WIFI_ERR_AP_STOP_FAILED, 11, "Access Point stop failed")                                       \
+  X(WIFI_ERR_TIMEOUT, 12, "Operation timeout")                                                     \
+  X(WIFI_ERR_NO_MEMORY, 13, "Insufficient memory")                                                 \
+  X(WIFI_ERR_INVALID_SSID, 14, "Invalid SSID")                                                     \
+  X(WIFI_ERR_INVALID_PASSWORD, 15, "Invalid password")                                             \
+  X(WIFI_ERR_WEAK_SIGNAL, 16, "Weak signal strength")                                              \
+  X(WIFI_ERR_AUTHENTICATION_FAILED, 17, "Authentication failed")                                   \
+  X(WIFI_ERR_ASSOCIATION_FAILED, 18, "Association failed")                                         \
+  X(WIFI_ERR_HANDSHAKE_FAILED, 19, "4-way handshake failed")                                       \
+  X(WIFI_ERR_INIT_FAILED, 20, "WiFi initialization failed")                                        \
+  X(WIFI_ERR_CONFIG_INVALID, 21, "Invalid configuration")                                          \
+  X(WIFI_ERR_ENTERPRISE_FAILED, 22, "Enterprise authentication failed")                            \
+  X(WIFI_ERR_WPA3_NOT_SUPPORTED, 23, "WPA3 not supported")                                         \
   X(WIFI_ERR_MESH_FAILED, 24, "Mesh operation failed")
 
 /**
@@ -90,13 +90,13 @@ enum class hf_wifi_err_t : hf_u8_t { HF_WIFI_ERR_LIST(X) };
  */
 constexpr std::string_view HfWifiErrToString(hf_wifi_err_t err) noexcept {
   switch (err) {
-#define X(NAME, VALUE, DESC) \
-  case hf_wifi_err_t::NAME:  \
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_wifi_err_t::NAME:                                                                        \
     return DESC;
     HF_WIFI_ERR_LIST(X)
 #undef X
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 }
 
@@ -504,13 +504,13 @@ protected:
  * @brief Helper function to convert error enum to string
  */
 inline std::string_view BaseWifi::GetErrorString(hf_wifi_err_t error) {
-#define X(name, value, desc) \
-  case hf_wifi_err_t::name:  \
+#define X(name, value, desc)                                                                       \
+  case hf_wifi_err_t::name:                                                                        \
     return desc;
   switch (error) {
     HF_WIFI_ERR_LIST(X)
-    default:
-      return "Unknown error";
+  default:
+    return "Unknown error";
   }
 #undef X
 }
