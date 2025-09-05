@@ -19,7 +19,7 @@
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#-architecture)
+- [🏗️ **Architecture**](#-multi-mcu-architecture)
 - [🔧 **Type System**](#-type-system)
 - [✨ **Key Features**](#-key-features)
 - [🔌 **Supported Hardware**](#-supported-hardware)
@@ -27,7 +27,6 @@
 - [📋 **API Reference**](#-api-reference)
 - [🚀 **Quick Start**](#-quick-start)
 - [📊 **Examples**](#-examples)
-- [🔧 **Building**](#-building)
 - [🤝 **Contributing**](#-contributing)
 - [📄 **License**](#-license)
 
@@ -566,6 +565,6 @@ The GPL-3.0 license ensures that improvements to the multi-MCU wrapper remain op
 
 **📞 Support**
 
-[💬 GitHub Discussions](../../discussions) | [🐛 Issue Tracker](../../issues) | [📧 Multi-MCU Support](mailto:support@hardfoc.com)
+[💬 GitHub Discussions](https://github.com/hardfoc/hf-internal-interface-wrap/discussions) | [🐛 Issue Tracker](https://github.com/hardfoc/hf-internal-interface-wrap/issues) | [📧 Multi-MCU Support](mailto:support@hardfoc.com)
 
 </div>
