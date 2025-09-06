@@ -140,12 +140,12 @@ provide clear guidance to users.
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        SMART DEFAULT SELECTION                             │
-│  • Only if basic validation passes                                       │
-│  • Check app-specific IDF versions                                       │
-│  • Find first version supporting requested build type                     │
-│  • Fallback to global defaults if needed                                 │
-│  • Result: release/v5.5                                                  │
+│                        SMART DEFAULT SELECTION                              │
+│  • Only if basic validation passes                                          │
+│  • Check app-specific IDF versions                                          │
+│  • Find first version supporting requested build type                       │
+│  • Fallback to global defaults if needed                                    │
+│  • Result: release/v5.5                                                     │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
