@@ -404,7 +404,7 @@ Multiple threads can safely call ADC methods simultaneously.
 - **[BaseAdc API Reference](../api/BaseAdc.md)** - Base class interface
 - **[EspTypes_ADC.h](../../inc/mcu/esp32/utils/EspTypes_ADC.h)** - Type definitions and utilities
 - **[ADC Test Suite](../../examples/esp32/docs/README_ADC_TEST.md)** - Comprehensive testing documentation
-- **[ESP-IDF ADC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/adc.html)** - ESP-IDF documentation
+- **[ESP-IDF ADC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/adc.html)** - ESP-IDF docs
 
 ---
 

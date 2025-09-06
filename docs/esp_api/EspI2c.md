@@ -155,7 +155,7 @@ failure modes:
 
 - [BaseI2c API Reference](../api/BaseI2c.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
-- [ESP-IDF I2C Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/i2c.html) - ESP-IDF documentation
+- [ESP-IDF I2C Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/i2c.html) - ESP-IDF docs
 
 ---
 

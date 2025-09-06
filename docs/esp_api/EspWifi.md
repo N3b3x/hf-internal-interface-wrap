@@ -290,7 +290,7 @@ Successfully found 2 real networks:
 
 - [BaseWifi API Reference](../api/BaseWifi.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
-- [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp_wifi.html) - ESP-IDF documentation
+- [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp_wifi.html) - ESP-IDF docs
 
 ---
 

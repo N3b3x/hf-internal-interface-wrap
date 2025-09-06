@@ -523,11 +523,11 @@ void RealTimeTask() {
 
 |---------------------|--------------|--------------|----------------|
 
-| **Dynamic (Heap)** | Flexible systems | Easy to use, unlimited objects | Runtime allocation, fragmentation risk |
+| **Dynamic (Heap)** | Flexible systems | Easy to use, unlimited objects | Runtime allocation, fragmentation |
 
-| **Static Pool** | Known hardware count | Deterministic memory, no fragmentation | Fixed object count, more setup code |
+| **Static Pool** | Known hardware count | Deterministic memory, no fragmentation | Fixed object count, more setup |
 
-| **Pre-allocated** | Real-time systems | Constructor-based, automatic cleanup | Compile-time hardware definition |
+| **Pre-allocated** | Real-time systems | Constructor-based, automatic cleanup | Compile-time definition |
 
 **When to Use Each:**
 - **Dynamic**: Prototyping, flexible configurations, plenty of RAM

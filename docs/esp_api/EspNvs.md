@@ -277,7 +277,7 @@ The `EspNvs` class provides comprehensive error handling with specific error cod
 
 - [BaseNvs API Reference](../api/BaseNvs.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
-- [ESP-IDF NVS Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/storage/nvs_flash.html) - ESP-IDF documentation
+- [ESP-IDF NVS Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/storage/nvs_flash.html) - ESP-IDF docs
 
 ---
 

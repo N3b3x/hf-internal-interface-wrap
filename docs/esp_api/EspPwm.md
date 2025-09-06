@@ -216,7 +216,7 @@ The `EspPwm` class provides comprehensive error handling with specific error cod
 
 - [BasePwm API Reference](../api/BasePwm.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
-- [ESP-IDF LEDC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/ledc.html) - ESP-IDF documentation
+- [ESP-IDF LEDC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/ledc.html) - ESP-IDF docs
 
 ---
 

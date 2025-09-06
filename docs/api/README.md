@@ -96,33 +96,33 @@ The HardFOC Interface provides abstract base classes for all major hardware peri
 
 |-------|---------|--------------|-------------------|
 
-| **[BaseAdc](BaseAdc.md)** | Analog-to-Digital Conversion | Multi-channel, calibration, voltage conversion | Sensor reading, current sensing, voltage monitoring |
+| **[BaseAdc](BaseAdc.md)** | Analog-to-Digital Conversion | Multi-channel, calibration | Sensor reading, current sensing |
 
-| **[BaseGpio](BaseGpio.md)** | Digital I/O Control | Dynamic direction, interrupts, polarity control | Status LEDs, switches, relay control, digital sensors |
+| **[BaseGpio](BaseGpio.md)** | Digital I/O Control | Dynamic direction, interrupts | Status LEDs, switches, relay control |
 
-| **BaseI2c** | I2C Bus Communication | Device scanning, register access, clock stretching | EEPROM, sensors, display controllers, RTC modules |
+| **BaseI2c** | I2C Bus Communication | Device scanning, register access | EEPROM, sensors, display controllers |
 
-| **BaseNvs** | Non-Volatile Storage | Key-value storage, namespaces, encryption | Configuration storage, calibration data, logs |
+| **BaseNvs** | Non-Volatile Storage | Key-value storage, namespaces | Configuration storage, calibration data |
 
-| **BasePeriodicTimer** | High-Precision Timing | Microsecond resolution, callbacks, period control | Control loops, sampling, event timing |
+| **BasePeriodicTimer** | High-Precision Timing | Microsecond resolution, callbacks | Control loops, sampling, event timing |
 
-| **BasePio** | Programmable I/O | Precise timing, symbol transmission, custom protocols | WS2812 LEDs, IR communication, stepper control |
+| **BasePio** | Programmable I/O | Precise timing, symbol transmission | WS2812 LEDs, IR communication |
 
-| **BasePwm** | Pulse Width Modulation | Multi-channel, frequency control, dead-time | Motor control, LED dimming, power conversion |
+| **BasePwm** | Pulse Width Modulation | Multi-channel, frequency control | Motor control, LED dimming |
 
-| **BaseSpi** | SPI Bus Communication | Full-duplex transfers, chip select, DMA support | Flash memory, ADCs, display controllers |
+| **BaseSpi** | SPI Bus Communication | Full-duplex transfers, chip select | Flash memory, ADCs, display controllers |
 
-| **BaseUart** | Serial Communication | Flow control, buffering, printf support | Debug output, GPS modules, wireless modules |
+| **BaseUart** | Serial Communication | Flow control, buffering, printf support | Debug output, GPS modules |
 
-| **BaseCan** | CAN Bus Communication | Message filtering, error handling, CAN-FD support | Motor control, vehicle systems, industrial networks |
+| **BaseCan** | CAN Bus Communication | Message filtering, error handling | Motor control, vehicle systems |
 
-| **BaseWifi** | WiFi Communication | Station/AP modes, security, mesh networking | IoT connectivity, remote monitoring |
+| **BaseWifi** | WiFi Communication | Station/AP modes, security | IoT connectivity, remote monitoring |
 
-| **BaseBluetooth** | Bluetooth Communication | Classic & BLE, pairing, service discovery | Mobile apps, wireless sensors |
+| **BaseBluetooth** | Bluetooth Communication | Classic & BLE, pairing | Mobile apps, wireless sensors |
 
-| **BaseTemperature** | Temperature Sensing | Multi-sensor support, calibration, thermal protection | System monitoring, safety protection |
+| **BaseTemperature** | Temperature Sensing | Multi-sensor support, calibration | System monitoring, safety protection |
 
-| **BaseLogger** | System Logging | Multi-level logging, multiple outputs | Debugging, diagnostics, system monitoring |
+| **BaseLogger** | System Logging | Multi-level logging, multiple outputs | Debugging, diagnostics |
 
 ---
 
@@ -142,7 +142,7 @@ ESP32-C6 specific implementations with optimized features:
 
 | **EspI2c** | BaseI2c | Clock stretching, multi-master | 📝 In Progress |
 
-| **[EspSpi](../esp_api/EspSpi.md)** | BaseSpi | Full-duplex, DMA support, IOMUX optimization | ✅ Complete |
+| **[EspSpi](../esp_api/EspSpi.md)** | BaseSpi | Full-duplex, DMA support | ✅ Complete |
 
 | **EspUart** | BaseUart | Hardware flow control | 📝 In Progress |
 

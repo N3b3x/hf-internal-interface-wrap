@@ -90,15 +90,15 @@ These implementations offer performance, power efficiency, and feature support.
 
 | **[EspPio](EspPio.md)** | BasePio | RMT peripheral, custom protocols | ✅ Complete | ✅ Ready |
 
-| **[EspAdc](EspAdc.md)** | BaseAdc | One-shot, continuous, monitors, calibration | ✅ Complete | ✅ Ready |
+| **[EspAdc](EspAdc.md)** | BaseAdc | One-shot, continuous, monitors | ✅ Complete | ✅ Ready |
 
-| **[EspPwm](EspPwm.md)** | BasePwm | LEDC controller, fade effects, high resolution | ✅ Complete | ✅ Ready |
+| **[EspPwm](EspPwm.md)** | BasePwm | LEDC controller, fade effects | ✅ Complete | ✅ Ready |
 
 | **[EspI2c](EspI2c.md)** | BaseI2c | Bus-device architecture, multi-master | ✅ Complete | ✅ Ready |
 
-| **[EspUart](EspUart.md)** | BaseUart | Hardware flow control, DMA, pattern detection | ✅ Complete | ✅ Ready |
+| **[EspUart](EspUart.md)** | BaseUart | Hardware flow control, DMA | ✅ Complete | ✅ Ready |
 
-| **[EspNvs](EspNvs.md)** | BaseNvs | Encryption, wear leveling, namespace management | ✅ Complete | ✅ Ready |
+| **[EspNvs](EspNvs.md)** | BaseNvs | Encryption, wear leveling | ✅ Complete | ✅ Ready |
 
 | **[EspPeriodicTimer](EspPeriodicTimer.md)** | BasePeriodicTimer | High precision, microsecond resolution | ✅ Complete | ✅ Ready |
 

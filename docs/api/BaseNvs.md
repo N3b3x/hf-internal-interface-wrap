@@ -151,13 +151,13 @@ The NVS system uses comprehensive error codes for robust error handling:
 
 | `NVS_ERR_DECRYPTION_FAILED` | 16 | 🔓 Decryption operation failed | Check encryption keys |
 
-| `NVS_ERR_ENCRYPTION_NOT_CONFIGURED` | 17 | ⚙️ Encryption not configured | Configure encryption first |
+| `NVS_ERR_ENCRYPTION_NOT_CONFIGURED` | 17 | ⚙️ Encryption not configured | Configure encryption |
 
-| `NVS_ERR_ENCRYPTION_NOT_SUPPORTED` | 18 | 🚫 Encryption not supported | Use different storage type |
+| `NVS_ERR_ENCRYPTION_NOT_SUPPORTED` | 18 | 🚫 Encryption not supported | Use different storage |
 
 | `NVS_ERR_KEY_PARTITION_CORRUPTED` | 19 | 💥 Key partition corrupted | Re-initialize encryption |
 
-| `NVS_ERR_WRONG_ENCRYPTION_SCHEME` | 20 | 🔐 Wrong encryption scheme | Use correct encryption method |
+| `NVS_ERR_WRONG_ENCRYPTION_SCHEME` | 20 | 🔐 Wrong encryption scheme | Use correct encryption |
 
 ### 🔧 **System Error Codes**
 

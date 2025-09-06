@@ -335,7 +335,7 @@ For comprehensive Bluetooth testing, you'll need:
 - **Professional Tools**: Use dedicated BLE analyzers for detailed protocol analysis
 
 #### 🔗 **BLE Peripheral Testing**
-- **Connect Another BLE Device**: Test connection functionality with smartphones, tablets, or other ESP32 devices
+- **Connect Another BLE Device**: Test connection functionality with smartphones, tablets, or ESP32 devices
 - **GATT Services**: Test GATT service discovery and characteristic access
 - **Data Transfer**: Test bidirectional data communication
 
