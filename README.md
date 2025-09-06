@@ -57,7 +57,7 @@ led->SetHigh();
 
 // Same code works on ESP32, STM32, or any supported MCU
 // The factory handles MCU-specific implementation selection
-```text
+```
 
 ---
 
@@ -95,7 +95,7 @@ led->SetHigh();
     │
     └── nrf/                            # Nordic nRF (future)
         └── ...                        # nRF implementations
-```text
+```
 
 ### **Abstraction Benefits**
 
@@ -118,7 +118,7 @@ public:
         speed_control->SetDutyCycle(speed_percent);
     }
 };
-```text
+```
 
 #### **2. External Driver Support**
 The base classes can be extended for external chips:
@@ -134,7 +134,7 @@ public:
         // Send PWM command to DRV8302 via SPI/I2C
     }
 };
-```text
+```
 
 ---
 
@@ -239,7 +239,7 @@ public:
         HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_RESET);
     }
 };
-```text
+```
 
 ---
 
@@ -290,7 +290,7 @@ void setup() {
         vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
-```text
+```
 
 ---
 
@@ -314,7 +314,7 @@ enum class hf_gpio_state_t {
     LOW = 0,
     HIGH = 1
 };
-```text
+```
 
 #### **Error Handling**
 ```cpp
@@ -330,7 +330,7 @@ hf_gpio_err_t result = gpio->Configure(GPIO_MODE_OUTPUT);
 if (result != hf_gpio_err_t::SUCCESS) {
     Logger::GetInstance().LogError("GPIO configuration failed");
 }
-```text
+```
 
 #### **Factory Pattern**
 
@@ -364,7 +364,7 @@ BaseGpio* GpioFactory::Create(hf_u8_t pin, gpio_mode_t mode) {
 // Application code - same across all MCUs
 BaseGpio* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);
 BaseGpio* button = GpioFactory::CreateWithInterrupt(GPIO_PIN_0, button_callback);
-```text
+```
 
 **Static Allocation Alternative:**
 
@@ -452,7 +452,7 @@ public:
         if (current_adc) current_adc->~BaseAdc();
     }
 };
-```text
+```
 
 **Usage Comparison:**
 
@@ -515,7 +515,7 @@ void RealTimeTask() {
         vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
-```text
+```
 
 **Memory Allocation Benefits:**
 
@@ -576,7 +576,7 @@ public:
         // nRF: UART0 on P0.06/P0.08
     }
 };
-```text
+```
 
 ---
 
@@ -667,7 +667,7 @@ void ControlMotor() {
     
     Logger::GetInstance().LogInfo("Motor current: %d mA", current_ma);
 }
-```text
+```
 
 #### **Multi-Peripheral Application**
 ```cpp
@@ -750,7 +750,7 @@ public:
 HardFOCController controller;
 controller.Initialize();
 controller.RunMotor(50);  // 50% speed
-```text
+```
 
 #### **External Sensor Integration**
 ```cpp
@@ -783,7 +783,7 @@ public:
                                      internal_celsius, external_celsius, external_raw);
     }
 };
-```text
+```
 
 ---
 
