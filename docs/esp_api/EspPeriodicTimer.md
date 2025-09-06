@@ -32,7 +32,7 @@ It offers both basic and advanced timer features with hardware-specific optimiza
 
 ```cpp
 #include "inc/mcu/esp32/EspPeriodicTimer.h"
-```text
+```
 
 ## Class Definition
 
@@ -73,7 +73,7 @@ public:
     hf_timer_err_t SetAutoReload(bool auto_reload) noexcept override;
     hf_timer_err_t GetAutoReload(bool* auto_reload) const noexcept override;
 };
-```text
+```
 
 ## Usage Examples
 
@@ -110,7 +110,7 @@ err = timer.Stop();
 if (err == HF_TIMER_ERR_OK) {
     printf("Timer stopped\n");
 }
-```text
+```
 
 ### Timer with Callback
 
@@ -157,7 +157,7 @@ vTaskDelay(pdMS_TO_TICKS(5000)); // 5 seconds
 // Stop timer
 timer.Stop();
 printf("Callback data: %d\n", callback_data);
-```text
+```
 
 ### Multiple Timers
 
@@ -190,7 +190,7 @@ vTaskDelay(pdMS_TO_TICKS(3000)); // 3 seconds
 timer1.Stop();
 timer2.Stop();
 timer3.Stop();
-```text
+```
 
 ### High Precision Timing
 
@@ -223,7 +223,7 @@ err = timer.GetCount(&count);
 if (err == HF_TIMER_ERR_OK) {
     printf("Current timer count: %llu\n", count);
 }
-```text
+```
 
 ### Timer Configuration
 
@@ -259,7 +259,7 @@ err = timer.Reset();
 if (err == HF_TIMER_ERR_OK) {
     printf("Timer reset\n");
 }
-```text
+```
 
 ## ESP32-C6 Specific Features
 

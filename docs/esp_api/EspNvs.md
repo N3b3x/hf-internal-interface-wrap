@@ -32,7 +32,7 @@ It offers both basic and advanced NVS features with hardware-specific optimizati
 
 ```cpp
 #include "inc/mcu/esp32/EspNvs.h"
-```text
+```
 
 ## Class Definition
 
@@ -75,7 +75,7 @@ public:
     hf_nvs_err_t GetUsedEntries(hf_size_t* used_entries) const noexcept override;
     hf_nvs_err_t GetFreeEntries(hf_size_t* free_entries) const noexcept override;
 };
-```text
+```
 
 ## Usage Examples
 
@@ -108,7 +108,7 @@ if (err == HF_NVS_ERR_OK) {
 } else if (err == HF_NVS_ERR_NOT_FOUND) {
     printf("Device name not found\n");
 }
-```text
+```
 
 ### Numeric Data Storage
 
@@ -140,7 +140,7 @@ if (nvs.GetU32("total_runtime", &total_runtime) == HF_NVS_ERR_OK) {
 if (nvs.GetU64("unique_id", &unique_id) == HF_NVS_ERR_OK) {
     printf("Unique ID: 0x%016llX\n", unique_id);
 }
-```text
+```
 
 ### Binary Data Storage
 
@@ -172,7 +172,7 @@ if (err == HF_NVS_ERR_OK) {
     printf("  Calibration factor: %u\n", retrieved_config.calibration_factor);
     printf("  Offset: %.2f\n", retrieved_config.offset);
 }
-```text
+```
 
 ### Configuration Management
 
@@ -208,7 +208,7 @@ if (err != HF_NVS_ERR_OK) {
 }
 
 printf("Configuration saved successfully\n");
-```text
+```
 
 ### Data Management
 
@@ -233,7 +233,7 @@ if (err == HF_NVS_ERR_OK) {
 // if (err == HF_NVS_ERR_OK) {
 //     printf("All data erased\n");
 // }
-```text
+```
 
 ## ESP32-C6 Specific Features
 

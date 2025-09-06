@@ -34,7 +34,7 @@ It offers both basic and advanced WiFi features with hardware-specific optimizat
 
 ```cpp
 #include "inc/mcu/esp32/EspWifi.h"
-```text
+```
 
 ## Class Definition
 
@@ -75,7 +75,7 @@ public:
     hf_wifi_err_t SetTxPower(hf_wifi_power_t power) noexcept override;
     hf_wifi_err_t GetTxPower(hf_wifi_power_t* power) const noexcept override;
 };
-```text
+```
 
 ## Usage Examples
 
@@ -120,7 +120,7 @@ if (err == HF_WIFI_ERR_OK && connected) {
         printf("Channel: %d\n", info.channel);
     }
 }
-```text
+```
 
 ### Access Point Mode
 
@@ -149,7 +149,7 @@ if (err != HF_WIFI_ERR_OK) {
 }
 
 printf("Access Point started: %s\n", ap_config.ssid);
-```text
+```
 
 ### Network Scanning
 
@@ -166,7 +166,7 @@ if (err == HF_WIFI_ERR_OK) {
                results[i].ssid, results[i].rssi, results[i].channel, results[i].security);
     }
 }
-```text
+```
 
 ### Power Management
 
@@ -182,7 +182,7 @@ err = wifi.SetTxPower(HF_WIFI_POWER_19_5_DBM);
 if (err != HF_WIFI_ERR_OK) {
     printf("Failed to set TX power: %d\n", err);
 }
-```text
+```
 
 ## ESP32-C6 Specific Features
 

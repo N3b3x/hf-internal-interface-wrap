@@ -33,7 +33,7 @@ and comprehensive connection management.
 
 ```cpp
 #include "inc/base/BaseWifi.h"
-```text
+```
 
 ## 🎯 Type Definitions
 
@@ -67,7 +67,7 @@ enum class hf_wifi_err_t : hf_u8_t {
     WIFI_ERR_WPA3_NOT_SUPPORTED = 23,   // 🔒 WPA3 not supported
     WIFI_ERR_MESH_FAILED = 24           // 🕸️ Mesh operation failed
 };
-```text
+```
 
 ### 🌐 WiFi Modes
 
@@ -78,7 +78,7 @@ enum class hf_wifi_mode_t : hf_u8_t {
     WIFI_MODE_AP = 2,       // 🔥 Access Point mode
     WIFI_MODE_APSTA = 3     // 🔄 Combined AP+STA mode
 };
-```text
+```
 
 ### 🔒 Security Types
 
@@ -93,7 +93,7 @@ enum class hf_wifi_security_t : hf_u8_t {
     WIFI_AUTH_WPA3_PSK = 6,     // 🛡️ WPA3-PSK (latest)
     WIFI_AUTH_WPA2_WPA3_PSK = 7 // 🛡️ WPA2/WPA3-PSK mixed
 };
-```text
+```
 
 ### 📊 Event Types
 
@@ -111,7 +111,7 @@ enum class hf_wifi_event_t : hf_u8_t {
     WIFI_EVENT_AP_STA_DISCONNECTED = 9, // 👤 Client disconnected from AP
     WIFI_EVENT_SCAN_DONE = 10       // 🔍 Network scan completed
 };
-```text
+```
 
 ### ⚙️ Configuration Structures
 
@@ -150,7 +150,7 @@ struct hf_wifi_scan_result_t {
     uint32_t phy_11n:1;           // 📊 802.11n support
     uint32_t wps:1;               // 🔧 WPS support
 };
-```text
+```
 
 ## 🏗️ Class Interface
 
@@ -197,7 +197,7 @@ public:
     virtual hf_wifi_err_t SetPowerSaveMode(hf_wifi_power_save_t mode) = 0;
     virtual hf_wifi_power_save_t GetPowerSaveMode() const = 0;
 };
-```text
+```
 
 ## 🎯 Core Methods
 
@@ -205,7 +205,7 @@ public:
 
 ```cpp
 hf_wifi_err_t Initialize(hf_wifi_mode_t mode);
-```text
+```
 **Purpose:** 🚀 Initialize WiFi subsystem with specified mode  
 **Parameters:** WiFi operating mode (STA, AP, or APSTA)  
 **Returns:** Error code indicating success or failure
@@ -217,7 +217,7 @@ hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config);
 hf_wifi_err_t ConnectStation(hf_timeout_ms_t timeout_ms = 0);
 hf_wifi_err_t DisconnectStation();
 bool IsStationConnected() const;
-```text
+```
 **Purpose:** 📡 Connect to existing WiFi networks as a client  
 **Parameters:** Network credentials, timeout values  
 **Returns:** Connection status and error codes
@@ -229,7 +229,7 @@ hf_wifi_err_t ConfigureAP(const hf_wifi_ap_config_t& config);
 hf_wifi_err_t StartAP();
 hf_wifi_err_t StopAP();
 bool IsAPStarted() const;
-```text
+```
 **Purpose:** 🔥 Create and manage WiFi hotspots  
 **Parameters:** AP configuration (SSID, password, security)  
 **Returns:** AP status and error codes
@@ -240,7 +240,7 @@ bool IsAPStarted() const;
 hf_wifi_err_t StartScan(const hf_wifi_scan_config_t& config = {});
 hf_wifi_err_t GetScanResults(hf_wifi_scan_result_t* results, uint16_t& count);
 bool IsScanInProgress() const;
-```text
+```
 **Purpose:** 🔍 Discover and analyze available WiFi networks  
 **Parameters:** Scan configuration and result buffers  
 **Returns:** Available networks with signal strength and security info
@@ -422,7 +422,7 @@ void wifi_client_demo() {
         client.disconnect();
     }
 }
-```text
+```
 
 ### 🔥 WiFi Access Point (Hotspot) Mode
 
@@ -601,7 +601,7 @@ void wifi_hotspot_demo() {
         hotspot.stop_hotspot();
     }
 }
-```text
+```
 
 ### 🔍 WiFi Network Scanner
 
@@ -800,7 +800,7 @@ void wifi_scanner_demo() {
         printf("❌ Network scan failed\n");
     }
 }
-```text
+```
 
 ## 🏎️ Performance Considerations
 
@@ -845,7 +845,7 @@ wifi.SetEventCallback([](hf_wifi_event_t event, void* data) {
         printf("🔒 Security: Connection lost - investigating...\n");
     }
 });
-```text
+```
 
 ## 🧵 Thread Safety
 

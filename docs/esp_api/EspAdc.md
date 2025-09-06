@@ -32,7 +32,7 @@ continuous sampling modes, calibration, filtering, and threshold monitoring.
 
 ```cpp
 #include "mcu/esp32/EspAdc.h"
-```text
+```
 
 ## Class Definition
 
@@ -104,7 +104,7 @@ public:
     hf_adc_err_t GetDiagnostics(hf_adc_diagnostics_t& diagnostics) noexcept override;
     hf_adc_err_t ResetStatistics() noexcept override;
 };
-```text
+```
 
 ## Configuration Structures
 
@@ -119,7 +119,7 @@ struct hf_adc_unit_config_t {
     hf_adc_continuous_config_t continuous_config;   // Continuous mode settings
     hf_adc_calibration_config_t calibration_config; // Calibration settings
 };
-```text
+```
 
 ### Channel Configuration
 
@@ -130,7 +130,7 @@ struct hf_adc_channel_config_t {
     hf_adc_bitwidth_t bitwidth;  // Resolution for this channel
     bool enabled;                // Channel enable flag
 };
-```text
+```
 
 ### Continuous Mode Configuration
 
@@ -141,7 +141,7 @@ struct hf_adc_continuous_config_t {
     uint32_t max_store_frames;    // Maximum frames to store (1-8)
     bool flush_pool;              // Flush pool flag
 };
-```text
+```
 
 ## Usage Examples
 
@@ -175,7 +175,7 @@ hf_adc_err_t result = adc.ReadChannelV(0, voltage);
 if (result == hf_adc_err_t::ADC_SUCCESS) {
     printf("Channel 0 voltage: %.3f V\n", voltage);
 }
-```text
+```
 
 ### Multi-Channel Reading with Averaging
 
@@ -210,7 +210,7 @@ result = adc.ReadChannelV(0, averaged_voltage, 10, 5);  // 10 samples, 5ms betwe
 if (result == hf_adc_err_t::ADC_SUCCESS) {
     printf("Averaged voltage: %.3f V\n", averaged_voltage);
 }
-```text
+```
 
 ### Continuous Mode with Callback
 
@@ -272,7 +272,7 @@ while (true) {
 
 // Stop continuous mode
 adc.StopContinuous();
-```text
+```
 
 ### Threshold Monitoring
 
@@ -310,7 +310,7 @@ adc.SetMonitorEnabled(0, true);
 
 // Start continuous mode with monitoring
 adc.StartContinuous();
-```text
+```
 
 ### Calibration and Precise Measurements
 
@@ -335,7 +335,7 @@ if (adc.IsCalibrationAvailable(hf_adc_atten_t::ATTEN_DB_12)) {
         printf("Calibrated voltage: %u mV\n", calibrated_voltage_mv);
     }
 }
-```text
+```
 
 ## ESP32 Variant Specifications
 

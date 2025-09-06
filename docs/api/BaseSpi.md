@@ -84,7 +84,7 @@ classDiagram
     }
     
     BaseSpi <|-- EspSpi
-```text
+```
 
 ---
 
@@ -222,7 +222,7 @@ virtual hf_spi_err_t Deinitialize() noexcept = 0;
  * 🔄 Automatically initializes SPI if not already initialized.
  */
 bool EnsureInitialized() noexcept;
-```text
+```
 
 ### ⚙️ **Device Configuration**
 
@@ -248,7 +248,7 @@ bool EnsureInitialized() noexcept;
  */
 virtual hf_spi_err_t ConfigureDevice(uint8_t device_id,
                                    const hf_spi_device_config_t &config) noexcept = 0;
-```text
+```
 
 ### 🔄 **Data Transfer Methods**
 
@@ -306,7 +306,7 @@ virtual hf_spi_err_t Transmit(uint8_t device_id, const uint8_t *data,
  */
 virtual hf_spi_err_t Receive(uint8_t device_id, uint8_t *data,
                            size_t length) noexcept = 0;
-```text
+```
 
 ### 📊 **Status and Capabilities**
 
@@ -330,7 +330,7 @@ virtual hf_spi_err_t GetDeviceStatus(uint8_t device_id,
  * 📋 Retrieves hardware capabilities and limitations.
  */
 virtual hf_spi_err_t GetCapabilities(hf_spi_capabilities_t &capabilities) const noexcept = 0;
-```text
+```
 
 ---
 
@@ -349,7 +349,7 @@ struct hf_spi_device_config_t {
     uint32_t timeout_ms;             ///< Transfer timeout in milliseconds
     bool use_dma;                    ///< Use DMA for transfers
 };
-```text
+```
 
 ### 📊 **Device Status**
 
@@ -364,7 +364,7 @@ struct hf_spi_device_status_t {
     hf_spi_err_t last_error;    ///< Last error that occurred
     uint32_t timestamp_us;      ///< Timestamp of last operation
 };
-```text
+```
 
 ### 📋 **SPI Capabilities**
 
@@ -379,7 +379,7 @@ struct hf_spi_capabilities_t {
     bool supports_quad_spi;        ///< Supports quad SPI
     uint32_t max_transfer_size;    ///< Maximum transfer size in bytes
 };
-```text
+```
 
 ### 📈 **SPI Statistics**
 
@@ -396,7 +396,7 @@ struct hf_spi_statistics_t {
     uint32_t timeout_errors;       ///< Timeout errors
     uint32_t communication_errors; ///< Communication errors
 };
-```text
+```
 
 ---
 
@@ -496,7 +496,7 @@ public:
         // rx_data automatically cleaned up when going out of scope
     }
 };
-```text
+```
 
 ### 🖥️ **Display Control**
 
@@ -625,7 +625,7 @@ public:
         send_data(color_data, 2);
     }
 };
-```text
+```
 
 ### 💾 **Memory Access**
 
@@ -761,7 +761,7 @@ public:
         }
     }
 };
-```text
+```
 
 ---
 
@@ -808,7 +808,7 @@ if (spi.GetDeviceStatus(device_id, status) == hf_spi_err_t::SPI_SUCCESS) {
         return;
     }
 }
-```text
+```
 
 ### ❌ **Common Pitfalls**
 
@@ -830,7 +830,7 @@ spi.ConfigureDevice(99, config);  // Invalid device
 
 // ❌ Don't forget to handle CS pin manually when needed
 // Some devices require manual CS control
-```text
+```
 
 ### 🎯 **Performance Optimization**
 
@@ -855,7 +855,7 @@ spi.ConfigureDevice(99, config);  // Invalid device
 // 🚀 Use appropriate timeout values
 // Short timeouts for fast devices
 // Longer timeouts for slow devices
-```text
+```
 
 ---
 

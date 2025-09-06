@@ -31,7 +31,7 @@ It offers both basic and advanced I2C features with hardware-specific optimizati
 
 ```cpp
 #include "inc/mcu/esp32/EspI2c.h"
-```text
+```
 
 ## Class Definition
 
@@ -67,7 +67,7 @@ public:
     hf_i2c_err_t GetFrequency(hf_i2c_freq_t* frequency) const noexcept override;
     hf_i2c_err_t ScanBus(hf_u8_t* device_addresses, hf_size_t max_devices, hf_size_t* found_count) noexcept override;
 };
-```text
+```
 
 ## Usage Examples
 
@@ -99,7 +99,7 @@ if (err == HF_I2C_ERR_OK) {
     printf("Read data: %02X %02X %02X %02X\n", 
            read_data[0], read_data[1], read_data[2], read_data[3]);
 }
-```text
+```
 
 ### Bus Scanning
 
@@ -115,7 +115,7 @@ if (err == HF_I2C_ERR_OK) {
         printf("  Device at address 0x%02X\n", devices[i]);
     }
 }
-```text
+```
 
 ## ESP32-C6 Specific Features
 

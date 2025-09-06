@@ -104,7 +104,7 @@ classDiagram
     BaseTemperature <|-- EspTemperature
     BaseTemperature <|-- Ds18b20Temperature
     BaseTemperature <|-- Lm35Temperature
-```text
+```
 
 ---
 
@@ -157,7 +157,7 @@ enum class hf_temp_err_t : hf_u32_t {
     TEMP_ERR_PERMISSION_DENIED = 25,
     TEMP_ERR_OPERATION_ABORTED = 26
 };
-```text
+```
 
 ### 📊 **Error Code Categories**
 
@@ -200,7 +200,7 @@ virtual hf_temp_err_t EnsureInitialized() = 0;
  * @return bool True if initialized
  */
 virtual bool IsInitialized() const = 0;
-```text
+```
 
 #### **Temperature Reading**
 ```cpp
@@ -224,7 +224,7 @@ virtual hf_temp_err_t ReadTemperatureF(float& temperature_f) = 0;
  * @return hf_temp_err_t Error code
  */
 virtual hf_temp_err_t ReadTemperatureK(float& temperature_k) = 0;
-```text
+```
 
 #### **Alert Management**
 ```cpp
@@ -243,7 +243,7 @@ virtual hf_temp_err_t SetAlertThreshold(float threshold_c,
  * @return hf_temp_err_t Error code
  */
 virtual hf_temp_err_t IsAlertActive(bool& alert_active) = 0;
-```text
+```
 
 #### **Continuous Monitoring**
 ```cpp
@@ -259,7 +259,7 @@ virtual hf_temp_err_t StartContinuousReading(hf_u32_t interval_ms = 1000) = 0;
  * @return hf_temp_err_t Error code
  */
 virtual hf_temp_err_t StopContinuousReading() = 0;
-```text
+```
 
 ---
 
@@ -274,7 +274,7 @@ enum class hf_temp_alert_type_t : hf_u8_t {
     TEMP_ALERT_LOW = 2,         ///< Low temperature alert
     TEMP_ALERT_BOTH = 3         ///< Both high and low alerts
 };
-```text
+```
 
 ### 📊 **Sensor Information**
 
@@ -290,7 +290,7 @@ struct hf_temp_sensor_info_t {
     bool supports_alerts;                  ///< Alert capability
     bool supports_continuous;              ///< Continuous reading capability
 };
-```text
+```
 
 ### 📈 **Temperature Statistics**
 
@@ -305,7 +305,7 @@ struct hf_temp_statistics_t {
     hf_u32_t last_read_time_ms;            ///< Last reading timestamp
     hf_u32_t total_alerts_triggered;       ///< Total alerts triggered
 };
-```text
+```
 
 ---
 
@@ -340,7 +340,7 @@ static inline float CelsiusToKelvin(float celsius) {
 static inline float FahrenheitToCelsius(float fahrenheit) {
     return (fahrenheit - 32.0f) * 5.0f / 9.0f;
 }
-```text
+```
 
 ---
 
@@ -377,7 +377,7 @@ public:
         }
     }
 };
-```text
+```
 
 ### 🚨 **Temperature Alert System**
 
@@ -449,7 +449,7 @@ private:
         // Implement heater activation logic
     }
 };
-```text
+```
 
 ### 📊 **Multi-Sensor Temperature Monitoring**
 
@@ -538,7 +538,7 @@ public:
         printf("🔄 Continuous temperature monitoring started (%lu ms interval)\n", interval_ms);
     }
 };
-```text
+```
 
 ---
 

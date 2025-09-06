@@ -83,7 +83,7 @@ classDiagram
     }
     
     BasePeriodicTimer <|-- EspPeriodicTimer
-```text
+```
 
 ---
 
@@ -180,7 +180,7 @@ bool IsInitialized() const noexcept;
  * ❓ Query running status without side effects.
  */
 bool IsRunning() const noexcept;
-```text
+```
 
 ### ⏰ **Timer Control Methods**
 
@@ -242,7 +242,7 @@ virtual hf_timer_err_t SetPeriod(uint64_t period_us) noexcept = 0;
  * }
  */
 virtual hf_timer_err_t GetPeriod(uint64_t &period_us) noexcept = 0;
-```text
+```
 
 ### 📞 **Callback Management**
 
@@ -280,7 +280,7 @@ void *GetUserData() const noexcept;
  * ✅ Checks if a callback function has been set.
  */
 bool HasValidCallback() const noexcept;
-```text
+```
 
 ### 📊 **Information Methods**
 
@@ -316,7 +316,7 @@ virtual uint64_t GetMaxPeriod() const noexcept = 0;
  * 📊 Returns the timer resolution (minimum time increment).
  */
 virtual uint64_t GetResolution() const noexcept = 0;
-```text
+```
 
 ### 📈 **Statistics and Diagnostics**
 
@@ -382,7 +382,7 @@ virtual hf_timer_err_t GetStatistics(hf_timer_statistics_t &statistics) const no
  * 🔍 Retrieves diagnostic information about timer health and status.
  */
 virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept;
-```text
+```
 
 ---
 
@@ -392,7 +392,7 @@ virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const
 
 ```cpp
 using hf_timer_callback_t = std::function<void(void *user_data)>;
-```text
+```
 
 ### 📈 **Timer Statistics Structure**
 
@@ -407,7 +407,7 @@ struct hf_timer_statistics_t {
     uint32_t minCallbackTimeUs;    ///< Minimum callback execution time
     uint64_t totalRunningTimeUs;   ///< Total running time in microseconds
 };
-```text
+```
 
 ### 🔍 **Timer Diagnostics Structure**
 
@@ -422,7 +422,7 @@ struct hf_timer_diagnostics_t {
     uint64_t currentPeriodUs;      ///< Current timer period in microseconds
     uint64_t timerResolutionUs;    ///< Timer resolution in microseconds
 };
-```text
+```
 
 ### 📊 **Timer Stats Structure**
 
@@ -435,7 +435,7 @@ struct hf_timer_stats_t {
     hf_timer_err_t last_error;     ///< Last error encountered
     hf_timestamp_us_t last_start_us; ///< Timestamp of last start
 };
-```text
+```
 
 ---
 
@@ -495,7 +495,7 @@ void print_timer_info() {
     printf("  Initialized: %s\n", timer.IsInitialized() ? "Yes" : "No");
     printf("  Running: %s\n", timer.IsRunning() ? "Yes" : "No");
 }
-```text
+```
 
 ### 🔄 **Control Loop Timer**
 
@@ -616,7 +616,7 @@ void control_loop_example() {
     vTaskDelay(pdMS_TO_TICKS(5000));  // Wait 5 seconds
     controller.stop();
 }
-```text
+```
 
 ### 📊 **High-Frequency Sampling Timer**
 
@@ -749,7 +749,7 @@ void sampling_example() {
     // Print results
     sampler.print_statistics();
 }
-```text
+```
 
 ### 🔄 **Dynamic Period Timer**
 
@@ -879,7 +879,7 @@ void adaptive_timer_example() {
     
     timer.stop();
 }
-```text
+```
 
 ---
 
@@ -930,7 +930,7 @@ if (timer.GetStats(callback_count, missed_callbacks, last_error) == hf_timer_err
         printf("⚠️ Missed callbacks detected: %llu\n", missed_callbacks);
     }
 }
-```text
+```
 
 ### ❌ **Common Pitfalls**
 
@@ -955,7 +955,7 @@ timer.Start(period);  // No callback set
 
 // ❌ Don't forget to stop timer
 // Always stop timer when done
-```text
+```
 
 ### 🎯 **Performance Optimization**
 
@@ -980,7 +980,7 @@ timer.Start(period);  // No callback set
 // 🚀 Consider timer priority
 // High-priority timers for critical operations
 // Lower priority for non-critical operations
-```text
+```
 
 ---
 

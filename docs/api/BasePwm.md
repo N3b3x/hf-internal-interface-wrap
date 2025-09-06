@@ -32,7 +32,7 @@ and other PWM applications with comprehensive multi-channel support.
 
 ```cpp
 #include "inc/base/BasePwm.h"
-```text
+```
 
 ## 🎯 Type Definitions
 
@@ -66,7 +66,7 @@ enum class hf_pwm_err_t : hf_u32_t {
     PWM_ERR_INVALID_DEVICE_ID = 23,     // 🆔 Invalid device ID
     PWM_ERR_UNSUPPORTED_OPERATION = 24  // 🚫 Unsupported operation
 };
-```text
+```
 
 ### 📊 Statistics Structure
 
@@ -79,7 +79,7 @@ struct hf_pwm_statistics_t {
     hf_u32_t channel_enables_count;     // ✅ Total channel enable operations
     hf_u32_t channel_disables_count;    // ❌ Total channel disable operations
 };
-```text
+```
 
 ## 🏗️ Class Interface
 
@@ -117,7 +117,7 @@ virtual float GetDutyCycle(hf_channel_id_t channel_id) const noexcept = 0;
     virtual hf_pwm_err_t GetStatistics(hf_pwm_statistics_t& stats) const noexcept = 0;
     virtual hf_pwm_err_t ResetStatistics() noexcept = 0;
 };
-```text
+```
 
 ## 🎯 Core Methods
 
@@ -125,7 +125,7 @@ virtual float GetDutyCycle(hf_channel_id_t channel_id) const noexcept = 0;
 
 ```cpp
 bool EnsureInitialized() noexcept;
-```text
+```
 **Purpose:** 🚀 Lazy initialization - automatically initializes PWM if not already done  
 **Returns:** `true` if successful, `false` on failure  
 **Usage:** Call before any PWM operations
@@ -136,7 +136,7 @@ bool EnsureInitialized() noexcept;
 hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept;
 hf_pwm_err_t DisableChannel(hf_channel_id_t channel_id) noexcept;
 bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept;
-```text
+```
 **Purpose:** 🎛️ Enable/disable individual PWM channels  
 **Parameters:** Channel ID (0-based indexing)  
 **Returns:** Error code or boolean status
@@ -146,7 +146,7 @@ bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept;
 ```cpp
 hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_percent) noexcept;
 hf_pwm_err_t GetDutyCycle(hf_channel_id_t channel_id, float& duty_percent) const noexcept;
-```text
+```
 **Purpose:** 🎯 Set/get PWM duty cycle as percentage (0.0 - 100.0)  
 **Parameters:** 
 - `channel_id` - Target PWM channel
@@ -157,7 +157,7 @@ hf_pwm_err_t GetDutyCycle(hf_channel_id_t channel_id, float& duty_percent) const
 ```cpp
 hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency) noexcept;
 hf_pwm_err_t GetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t& frequency) const noexcept;
-```text
+```
 **Purpose:** ⚡ Set/get PWM frequency in Hz  
 **Parameters:**
 - `channel_id` - Target PWM channel  
@@ -170,7 +170,7 @@ hf_pwm_err_t StartFade(hf_channel_id_t channel_id, float target_duty_percent,
                       hf_time_t fade_time_ms) noexcept;
 hf_pwm_err_t StopFade(hf_channel_id_t channel_id) noexcept;
 bool IsFading(hf_channel_id_t channel_id) const noexcept;
-```text
+```
 **Purpose:** 🌅 Smooth transitions between duty cycle values  
 **Parameters:**
 - `target_duty_percent` - Target duty cycle (0.0 - 100.0)
@@ -232,7 +232,7 @@ void motor_control_demo() {
     // 🛑 Stop motor
     set_motor_speed(0.0f);
 }
-```text
+```
 
 ### 💡 LED Dimming with Fade Effects
 
@@ -308,7 +308,7 @@ public:
         return led_pwm*.IsFading(channel*);
     }
 };
-```text
+```
 
 ### 🎵 Multi-Channel RGB LED Control
 
@@ -421,7 +421,7 @@ public:
         rgb_pwm*.StartFade(BLUE_CHANNEL, 100.0f, 2000);
     }
 };
-```text
+```
 
 ### 🤖 Servo Motor Control
 
@@ -518,7 +518,7 @@ public:
         set_angle(90.0f);
     }
 };
-```text
+```
 
 ## 📊 Performance and Diagnostics
 
@@ -539,7 +539,7 @@ void monitor_pwm_performance(BasePwm& pwm) {
         printf("   ⚠️ Total Errors: %u\n", stats.error_count);
     }
 }
-```text
+```
 
 ## 🛡️ Error Handling Best Practices
 
@@ -577,7 +577,7 @@ hf_pwm_err_t safe_set_duty_cycle(BasePwm& pwm, hf_channel_id_t channel, float du
     // 🎛️ Set duty cycle
     return pwm.SetDutyCycle(channel, duty);
 }
-```text
+```
 
 ## 🏎️ Performance Considerations
 

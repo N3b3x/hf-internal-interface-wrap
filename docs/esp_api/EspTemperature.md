@@ -34,7 +34,7 @@ threshold monitoring, and continuous monitoring.
 
 ```cpp
 #include "mcu/esp32/EspTemperature.h"
-```text
+```
 
 ## Class Definition
 
@@ -80,7 +80,7 @@ public:
     hf_temperature_err_t RunSelfTest() noexcept override;
     bool IsHealthy() const noexcept override;
 };
-```text
+```
 
 ## Configuration Structure
 
@@ -97,7 +97,7 @@ struct hf_temperature_config_t {
     hf_temperature_threshold_callback_t callback; // Threshold callback function
     void* user_data;                             // User data for callbacks
 };
-```text
+```
 
 ## Usage Examples
 
@@ -124,7 +124,7 @@ hf_temperature_err_t result = temp_sensor.ReadTemperature(temperature);
 if (result == hf_temperature_err_t::TEMPERATURE_SUCCESS) {
     printf("Current temperature: %.2f°C\n", temperature);
 }
-```text
+```
 
 ### Threshold Monitoring
 
@@ -150,7 +150,7 @@ temp_sensor.EnsureInitialized();
 
 // Set threshold callback
 temp_sensor.SetThresholdCallback(temperature_threshold_callback, nullptr);
-```text
+```
 
 ### Continuous Monitoring
 
@@ -176,7 +176,7 @@ if (temp_sensor.IsContinuousMonitoringActive()) {
 
 // Stop monitoring when done
 temp_sensor.StopContinuousMonitoring();
-```text
+```
 
 ### Power Management
 
@@ -196,7 +196,7 @@ temp_sensor.ExitSleepMode();
 // Read temperature after waking up
 float temperature;
 temp_sensor.ReadTemperature(temperature);
-```text
+```
 
 ### Diagnostics and Health Monitoring
 
@@ -227,7 +227,7 @@ hf_temperature_diagnostics_t diagnostics;
 temp_sensor.GetDiagnostics(diagnostics);
 printf("Last error: %d\n", diagnostics.last_error_code);
 printf("Consecutive errors: %u\n", diagnostics.consecutive_errors);
-```text
+```
 
 ## Temperature Ranges
 

@@ -32,7 +32,7 @@ It offers both basic and advanced GPIO features with hardware-specific optimizat
 
 ```cpp
 #include "inc/mcu/esp32/EspGpio.h"
-```text
+```
 
 ## Class Definition
 
@@ -76,7 +76,7 @@ public:
     // GPIO pin mapping
     gpio_num_t GetEspGpioNum() const noexcept;
 };
-```text
+```
 
 ## ESP32-C6 Specific Types
 
@@ -89,7 +89,7 @@ enum class hf_gpio_drive_cap_t : hf_u8_t {
     HF_GPIO_DRIVE_CAP_STRONG = 2,   // ~20mA drive strength
     HF_GPIO_DRIVE_CAP_STRONGEST = 3 // ~40mA drive strength
 };
-```text
+```
 
 ### Slew Rate
 
@@ -98,7 +98,7 @@ enum class hf_gpio_slew_rate_t : hf_u8_t {
     HF_GPIO_SLEW_RATE_SLOW = 0,     // Slower edge transitions, less EMI
     HF_GPIO_SLEW_RATE_FAST = 1      // Faster edge transitions, more EMI
 };
-```text
+```
 
 ## Constructor Parameters
 
@@ -142,7 +142,7 @@ void blink_led() {
     led_pin.SetInactive();  // Turn off
     vTaskDelay(pdMS_TO_TICKS(500));
 }
-```text
+```
 
 ### Button Input with Interrupt
 
@@ -198,7 +198,7 @@ void check_button() {
         }
     }
 }
-```text
+```
 
 ### High-Performance Digital Output
 
@@ -227,7 +227,7 @@ void generate_step_pulses(int num_steps, int delay_us) {
         esp_rom_delay_us(delay_us);
     }
 }
-```text
+```
 
 ### Open-Drain Communication Bus
 
@@ -262,7 +262,7 @@ void send_start_condition() {
     vTaskDelay(pdMS_TO_TICKS(1));
     scl_pin.SetActive();    // Pull SCL low
 }
-```text
+```
 
 ### Multi-Pin Control System
 
@@ -333,7 +333,7 @@ public:
         printf("Emergency stop activated\n");
     }
 };
-```text
+```
 
 ## ESP32-C6 Pin Mapping
 
@@ -400,7 +400,7 @@ wake_pin.EnsureInitialized();
 
 // Configure as wake source
 esp_sleep_enable_ext0_wakeup(GPIO_NUM_0, 0);  // Wake on low level
-```text
+```
 
 ### Performance Optimization
 
@@ -410,7 +410,7 @@ gpio_num_t esp_pin = gpio_pin.GetEspGpioNum();
 
 // Use direct ESP-IDF calls for maximum speed (if needed)
 gpio_set_level(esp_pin, 1);  // Direct register access
-```text
+```
 
 ## Error Handling
 
@@ -429,7 +429,7 @@ Use appropriate synchronization when accessing from multiple tasks.
 
 ## Implementation Notes
 
-- **Lazy Initialization**: Hardware configuration occurs only when `Initialize()` or `EnsureInitialized()` is called
+- **Lazy Initialization**: Hardware configuration occurs only when `Initialize()` or `EnsureInitialized()` is called, `(empty constructors)
 - **ISR Compatibility**: Interrupt callbacks must be marked with `IRAM_ATTR` for proper execution
 - **Memory Efficiency**: Minimal RAM usage with static configuration
 - **Performance**: Optimized for real-time motor control applications

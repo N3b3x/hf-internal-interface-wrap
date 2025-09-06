@@ -32,7 +32,7 @@ It offers both basic and advanced PWM features with hardware-specific optimizati
 
 ```cpp
 #include "inc/mcu/esp32/EspPwm.h"
-```text
+```
 
 ## Class Definition
 
@@ -73,7 +73,7 @@ public:
     hf_pwm_err_t FadeStop() noexcept override;
     hf_pwm_err_t IsFading(bool* fading) const noexcept override;
 };
-```text
+```
 
 ## Usage Examples
 
@@ -106,7 +106,7 @@ if (err != HF_PWM_ERR_OK) {
 }
 
 printf("PWM started with 50%% duty cycle\n");
-```text
+```
 
 ### Frequency Control
 
@@ -120,7 +120,7 @@ for (int i = 0; i < 5; i++) {
         vTaskDelay(pdMS_TO_TICKS(1000)); // Wait 1 second
     }
 }
-```text
+```
 
 ### Fade Effects
 
@@ -146,7 +146,7 @@ printf("Fade completed\n");
 
 // Fade out from 100% to 0% over 1 second
 err = pwm.FadeStart(0.0f, 1000);
-```text
+```
 
 ### Multiple PWM Channels
 
@@ -171,7 +171,7 @@ pwm3.SetDutyCycle(75.0f);  // 75%
 pwm1.Start();
 pwm2.Start();
 pwm3.Start();
-```text
+```
 
 ## ESP32-C6 Specific Features
 

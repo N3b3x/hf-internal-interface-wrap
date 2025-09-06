@@ -70,7 +70,7 @@ The HardFOC Interface follows a **layered abstraction pattern**:
 ├─────────────────────────────────────┤
 │           Hardware Layer            │
 └─────────────────────────────────────┘
-```text
+```
 
 ### **Core Components**
 
@@ -182,7 +182,7 @@ using hf_pin_num_t = hf_i32_t;
 using hf_channel_id_t = hf_u32_t;
 using hf_frequency_hz_t = hf_u32_t;
 using hf_time_t = hf_u32_t;
-```text
+```
 
 ---
 
@@ -198,7 +198,7 @@ using hf_time_t = hf_u32_t;
 // Platform implementations
 #include "inc/mcu/esp32/EspAdc.h"
 #include "inc/mcu/esp32/EspGpio.h"
-```text
+```
 
 ### **2. Create Hardware Instances**
 
@@ -206,7 +206,7 @@ using hf_time_t = hf_u32_t;
 // Use platform-specific implementations
 EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
 EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
-```text
+```
 
 ### **3. Initialize and Use**
 
@@ -224,7 +224,7 @@ if (adc.ReadChannelV(0, voltage) == hf_adc_err_t::ADC_SUCCESS) {
 if (voltage > 3.0f) {
     led_pin.SetActive();
 }
-```text
+```
 
 ### **4. Error Handling**
 
@@ -234,7 +234,7 @@ if (result != hf_adc_err_t::ADC_SUCCESS) {
     printf("ADC Error: %s\n", HfAdcErrToString(result));
     // Handle error appropriately
 }
-```text
+```
 
 ---
 
@@ -280,7 +280,7 @@ public:
         return (voltage - 2.5f) / 0.1f;  // Convert to current (A)
     }
 };
-```text
+```
 
 ### **Sensor Network**
 
@@ -321,7 +321,7 @@ public:
         return voltage * 100.0f;  // Convert to PSI
     }
 };
-```text
+```
 
 ---
 

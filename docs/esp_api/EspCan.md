@@ -33,7 +33,7 @@ It offers both basic and advanced CAN features with hardware-specific optimizati
 
 ```cpp
 #include "inc/mcu/esp32/EspCan.h"
-```text
+```
 
 ## Class Definition
 
@@ -70,7 +70,7 @@ public:
     hf_can_err_t ClearFilters() noexcept override;
     hf_can_err_t GetErrorCounters(hf_can_error_counters_t& counters) noexcept override;
 };
-```text
+```
 
 ## Usage Examples
 
@@ -112,7 +112,7 @@ if (err == HF_CAN_ERR_OK) {
     }
     printf("\n");
 }
-```text
+```
 
 ### Message Filtering
 
@@ -127,7 +127,7 @@ hf_can_err_t err = can.SetFilter(filter);
 if (err != HF_CAN_ERR_OK) {
     printf("Failed to set filter: %d\n", err);
 }
-```text
+```
 
 ### Error Monitoring
 
@@ -142,7 +142,7 @@ if (err == HF_CAN_ERR_OK) {
     printf("  RX Error Count: %u\n", counters.rx_error_count);
     printf("  Bus Off Count: %u\n", counters.bus_off_count);
 }
-```text
+```
 
 ## ESP32-C6 Specific Features
 

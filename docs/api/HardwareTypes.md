@@ -29,7 +29,7 @@ All base interface classes use these common types to ensure:
 
 ```cpp
 #include "inc/base/HardwareTypes.h"
-```text
+```
 
 ## Core Integer Types
 
@@ -40,7 +40,7 @@ using hf_u8_t = uint8_t;    // 8-bit unsigned (0 to 255)
 using hf_u16_t = uint16_t;  // 16-bit unsigned (0 to 65,535)
 using hf_u32_t = uint32_t;  // 32-bit unsigned (0 to 4,294,967,295)
 using hf_u64_t = uint64_t;  // 64-bit unsigned (0 to 18,446,744,073,709,551,615)
-```text
+```
 
 ### Signed Integer Types
 
@@ -49,13 +49,13 @@ using hf_i8_t = int8_t;     // 8-bit signed (-128 to 127)
 using hf_i16_t = int16_t;   // 16-bit signed (-32,768 to 32,767)
 using hf_i32_t = int32_t;   // 32-bit signed (-2,147,483,648 to 2,147,483,647)
 using hf_i64_t = int64_t; // 64-bit signed (-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807)
-```text
+```
 
 ### Boolean Type
 
 ```cpp
 using hf_bool_t = bool;     // Platform-agnostic boolean type
-```text
+```
 
 ## Hardware-Specific Types
 
@@ -63,53 +63,53 @@ using hf_bool_t = bool;     // Platform-agnostic boolean type
 
 ```cpp
 using hf_pin_num_t = hf_i32_t;  // GPIO pin number type
-```text
+```
 
 **Constants:**
 ```cpp
 constexpr hf_pin_num_t HF_INVALID_PIN = -1;        // Invalid/unassigned pin
 constexpr hf_pin_num_t HF_MAX_PIN_NUMBER = 255;    // Maximum supported pin number
-```text
+```
 
 **Validation:**
 ```cpp
 constexpr bool IsValidPin(hf_pin_num_t pin) noexcept;
-```text
+```
 
 ### Port and Controller Types
 
 ```cpp
 using hf_port_num_t = hf_u32_t;  // Communication port identifier
 using hf_host_id_t = hf_u32_t;   // Host/controller identifier
-```text
+```
 
 **Constants:**
 ```cpp
 constexpr hf_port_num_t HF_INVALID_PORT = std::numeric_limits<hf_port_num_t>::max();
 constexpr hf_host_id_t HF_INVALID_HOST = std::numeric_limits<hf_host_id_t>::max();
-```text
+```
 
 **Validation:**
 ```cpp
 constexpr bool IsValidPort(hf_port_num_t port) noexcept;
 constexpr bool IsValidHost(hf_host_id_t host) noexcept;
-```text
+```
 
 ### Channel Types
 
 ```cpp
 using hf_channel_id_t = hf_u32_t;  // ADC/PWM/DMA channel identifier
-```text
+```
 
 **Constants:**
 ```cpp
 constexpr hf_channel_id_t HF_INVALID_CHANNEL = std::numeric_limits<hf_channel_id_t>::max();
-```text
+```
 
 **Validation:**
 ```cpp
 constexpr bool IsValidChannel(hf_channel_id_t channel) noexcept;
-```text
+```
 
 ## Communication Types
 
@@ -119,21 +119,21 @@ constexpr bool IsValidChannel(hf_channel_id_t channel) noexcept;
 using hf_frequency_hz_t = hf_u32_t;  // Frequency in Hz
 using hf_frequency_t = hf_frequency_hz_t;  // Backward compatibility alias
 using hf_baud_rate_t = hf_u32_t;     // UART baud rate
-```text
+```
 
 ### Timing Types
 
 ```cpp
 using hf_time_t = hf_u32_t;          // Time in milliseconds
 using hf_timeout_ms_t = hf_time_t;   // Timeout value in milliseconds
-```text
+```
 
 **Timeout Constants:**
 ```cpp
 constexpr hf_time_t HF_TIMEOUT_DEFAULT_MS = 1000;  // Default 1 second timeout
 constexpr hf_time_t HF_TIMEOUT_NONE = 0;           // No timeout (wait indefinitely)
 constexpr hf_time_t HF_TIMEOUT_MAX = std::numeric_limits<hf_time_t>::max();  // Maximum timeout
-```text
+```
 
 ## Usage Examples
 
@@ -164,7 +164,7 @@ void test_pin_validation() {
     configure_gpio_pin(-1);   // Invalid: HF_INVALID_PIN
     configure_gpio_pin(300);  // Invalid: exceeds HF_MAX_PIN_NUMBER
 }
-```text
+```
 
 ### Communication Port Configuration
 
@@ -191,7 +191,7 @@ void test_i2c_setup() {
     setup_i2c_port(HF_INVALID_PORT, 400000);  // Invalid port
     setup_i2c_port(1, 50000);            // Invalid frequency (too low)
 }
-```text
+```
 
 ### ADC Channel Management
 
@@ -236,7 +236,7 @@ public:
         return IsValidChannel(channel);
     }
 };
-```text
+```
 
 ### Timeout Handling
 
@@ -277,7 +277,7 @@ void test_timeout_handling() {
     // Wait with custom timeout
     OperationResult result3 = wait_for_data(500);  // 500ms timeout
 }
-```text
+```
 
 ### Type-Safe Configuration Structures
 
@@ -318,7 +318,7 @@ struct I2cConfig {
         }
     }
 };
-```text
+```
 
 ## Type Conversion Utilities
 
@@ -338,7 +338,7 @@ constexpr bool safe_cast(U value, T& result) noexcept {
 bool convert_pin_number(int input_pin, hf_pin_num_t& output_pin) {
     return safe_cast(input_pin, output_pin) && IsValidPin(output_pin);
 }
-```text
+```
 
 ## Best Practices
 

@@ -108,7 +108,7 @@ classDiagram
     BaseLogger <|-- EspLogger
     BaseLogger <|-- ConsoleLogger  
     BaseLogger <|-- FileLogger
-```text
+```
 
 ---
 
@@ -163,7 +163,7 @@ enum class hf_logger_err_t : hf_u32_t {
     LOGGER_ERR_PERMISSION_DENIED = 27,
     LOGGER_ERR_OPERATION_ABORTED = 28
 };
-```text
+```
 
 ### 📊 **Error Code Categories**
 
@@ -213,7 +213,7 @@ virtual hf_logger_err_t SetLogLevel(hf_log_level_t level) = 0;
  * @return bool True if initialized
  */
 virtual bool IsInitialized() const = 0;
-```text
+```
 
 #### **Logging Methods**
 ```cpp
@@ -273,7 +273,7 @@ virtual hf_logger_err_t LogDebug(const char* tag, const char* format, ...) = 0;
  * @return hf_logger_err_t Error code
  */
 virtual hf_logger_err_t LogVerbose(const char* tag, const char* format, ...) = 0;
-```text
+```
 
 #### **Output Management**
 ```cpp
@@ -296,7 +296,7 @@ virtual hf_logger_err_t RemoveOutput(hf_log_output_t* output) = 0;
  * @return hf_logger_err_t Error code
  */
 virtual hf_logger_err_t FlushBuffers() = 0;
-```text
+```
 
 ---
 
@@ -313,7 +313,7 @@ enum class hf_log_level_t : hf_u8_t {
     LOG_LEVEL_DEBUG = 4,    ///< Debug information
     LOG_LEVEL_VERBOSE = 5   ///< Detailed trace information
 };
-```text
+```
 
 ### 📤 **Output Types**
 
@@ -325,7 +325,7 @@ enum class hf_log_output_type_t : hf_u8_t {
     LOG_OUTPUT_NETWORK = 3,     ///< Network/UDP output
     LOG_OUTPUT_CUSTOM = 4       ///< Custom user-defined output
 };
-```text
+```
 
 ### 📋 **Log Message Structure**
 
@@ -339,7 +339,7 @@ struct hf_log_message_t {
     const char* file;                   ///< Source file name
     hf_u32_t line;                      ///< Source line number
 };
-```text
+```
 
 ### 📤 **Output Handler Interface**
 
@@ -363,7 +363,7 @@ struct hf_log_output_t {
     
     void* user_data;                    ///< User-defined data
 };
-```text
+```
 
 ### 📈 **Logger Statistics**
 
@@ -380,7 +380,7 @@ struct hf_logger_statistics_t {
     hf_u32_t active_outputs;            ///< Number of active outputs
     hf_u64_t uptime_ms;                 ///< Logger uptime in milliseconds
 };
-```text
+```
 
 ---
 
@@ -391,28 +391,28 @@ Critical errors that require immediate attention:
 ```cpp
 logger.LogError("MOTOR", "Motor controller fault detected: %s", fault_description);
 logger.LogError("COMM", "CAN bus communication timeout after %d ms", timeout_ms);
-```text
+```
 
 ### ⚠️ **WARN Level**
 Warning conditions that should be monitored:
 ```cpp
 logger.LogWarn("TEMP", "Temperature high: %.1f°C (limit: %.1f°C)", temp, limit);
 logger.LogWarn("MEMORY", "Low memory warning: %d bytes remaining", free_bytes);
-```text
+```
 
 ### ℹ️ **INFO Level**
 General informational messages:
 ```cpp
 logger.LogInfo("SYSTEM", "Motor controller initialized successfully");
 logger.LogInfo("NETWORK", "Connected to WiFi: %s (IP: %s)", ssid, ip_address);
-```text
+```
 
 ### 🔧 **DEBUG Level**
 Debug information for troubleshooting:
 ```cpp
 logger.LogDebug("ADC", "Reading channel %d: raw=%u, voltage=%.3fV", channel, raw, voltage);
 logger.LogDebug("GPIO", "Pin %d state changed: %s", pin, state ? "HIGH" : "LOW");
-```text
+```
 
 ### 📊 **VERBOSE Level**
 Detailed trace information:
@@ -421,7 +421,7 @@ logger.LogVerbose("I2C", "Transaction: addr=0x%02X, write=%d bytes, read=%d byte
                   address, write_len, read_len);
 logger.LogVerbose("TIMER", "Callback executed: task=%s, duration=%lu us", 
                   task_name, duration);
-```text
+```
 
 ---
 
@@ -539,7 +539,7 @@ private:
         return "1.2.3";  // This would come from build system
     }
 };
-```text
+```
 
 ### 📊 **Performance Monitoring Logger**
 
@@ -657,7 +657,7 @@ public:
 // Macro for easy function timing
 #define PERF_TIME_FUNCTION(logger) \
     PerformanceLogger::FunctionTimer *timer(logger, **FUNCTION**)
-```text
+```
 
 ### 📤 **Multi-Output Logger System**
 
@@ -838,7 +838,7 @@ private:
         // This is a placeholder for actual network implementation
     }
 };
-```text
+```
 
 ---
 

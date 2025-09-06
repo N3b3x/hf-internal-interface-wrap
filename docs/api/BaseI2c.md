@@ -32,7 +32,7 @@ and other I2C peripherals with comprehensive error handling and device managemen
 
 ```cpp
 #include "inc/base/BaseI2c.h"
-```text
+```
 
 ## 🎯 Type Definitions
 
@@ -72,7 +72,7 @@ enum class hf_i2c_err_t : hf_u8_t {
     I2C_ERR_PERMISSION_DENIED = 29,     // 🔒 Permission denied
     I2C_ERR_OPERATION_ABORTED = 30      // 🛑 Operation aborted
 };
-```text
+```
 
 ### 📊 Statistics Structure
 
@@ -89,7 +89,7 @@ struct hf_i2c_statistics_t {
     hf_u32_t bytes_received;            // 📥 Total bytes received
     hf_u32_t average_transaction_time_us; // ⏱️ Average transaction time
 };
-```text
+```
 
 ### 🩺 Diagnostics Structure
 
@@ -108,7 +108,7 @@ struct hf_i2c_diagnostics_t {
     hf_u32_t clock_stretching_events;   // 🕐 Clock stretching events
     hf_u32_t active_device_count;       // 📟 Active device count
 };
-```text
+```
 
 ## 🏗️ Class Interface
 
@@ -158,7 +158,7 @@ public:
     virtual hf_i2c_err_t ResetStatistics() noexcept = 0;
     virtual hf_i2c_err_t ResetDiagnostics() noexcept = 0;
 };
-```text
+```
 
 ## 🎯 Core Methods
 
@@ -166,7 +166,7 @@ public:
 
 ```cpp
 bool EnsureInitialized() noexcept;
-```text
+```
 **Purpose:** 🚀 Lazy initialization - automatically initializes I2C if not already done  
 **Returns:** `true` if successful, `false` on failure  
 **Usage:** Call before any I2C operations
@@ -181,7 +181,7 @@ hf_i2c_err_t Read(hf_u8_t* data, hf_u16_t length,
 hf_i2c_err_t WriteRead(const hf_u8_t* write_data, hf_u16_t write_length,
                       hf_u8_t* read_data, hf_u16_t read_length,
                       hf_timeout_ms_t timeout_ms = HF_TIMEOUT_DEFAULT_MS) noexcept;
-```text
+```
 **Purpose:** 📤📥 Basic I2C read/write operations  
 **Parameters:** Data buffers, lengths, and optional timeout  
 **Returns:** Error code indicating success or failure
@@ -193,7 +193,7 @@ hf_i2c_err_t WriteRegister(hf_u8_t register_address, hf_u8_t value,
                           hf_timeout_ms_t timeout_ms = HF_TIMEOUT_DEFAULT_MS) noexcept;
 hf_i2c_err_t ReadRegister(hf_u8_t register_address, hf_u8_t& value,
                          hf_timeout_ms_t timeout_ms = HF_TIMEOUT_DEFAULT_MS) noexcept;
-```text
+```
 **Purpose:** 📋 Convenient register read/write for sensor devices  
 **Parameters:** Register address, data value, optional timeout  
 **Returns:** Error code indicating success or failure
@@ -204,7 +204,7 @@ hf_i2c_err_t ReadRegister(hf_u8_t register_address, hf_u8_t& value,
 bool IsDevicePresent(hf_timeout_ms_t timeout_ms = HF_TIMEOUT_DEFAULT_MS) noexcept;
 hf_u8_t GetDeviceAddress() const noexcept;
 hf_frequency_hz_t GetClockSpeed() const noexcept;
-```text
+```
 **Purpose:** 🔍 Device detection and configuration query  
 **Returns:** Device presence, address, or clock speed information
 
@@ -272,7 +272,7 @@ public:
         return sensor*.IsDevicePresent(100);  // 100ms timeout
     }
 };
-```text
+```
 
 ### 📟 OLED Display (SSD1306)
 
@@ -371,7 +371,7 @@ public:
         display*.Write(pixel_data, sizeof(pixel_data));
     }
 };
-```text
+```
 
 ### 💾 EEPROM Memory (24C256)
 
@@ -512,7 +512,7 @@ public:
         return true;
     }
 };
-```text
+```
 
 ### 🔍 I2C Bus Scanner
 
@@ -579,7 +579,7 @@ private:
         printf("   0x76, 0x77: BMP280 Pressure Sensor\n");
     }
 };
-```text
+```
 
 ## 📊 Performance and Diagnostics
 
@@ -625,7 +625,7 @@ void monitor_i2c_health(BaseI2c& device) {
         }
     }
 }
-```text
+```
 
 ## 🛡️ Error Handling Best Practices
 
@@ -672,7 +672,7 @@ hf_i2c_err_t safe_i2c_read_with_retry(BaseI2c& device, hf_u8_t reg, hf_u8_t& val
     printf("❌ I2C operation failed after %d retries\n", max_retries);
     return hf_i2c_err_t::I2C_ERR_TIMEOUT;
 }
-```text
+```
 
 ## 🏎️ Performance Considerations
 

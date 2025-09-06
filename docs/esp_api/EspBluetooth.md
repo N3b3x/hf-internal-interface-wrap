@@ -71,7 +71,7 @@ The implementation uses sophisticated conditional compilation to optimize for ea
 #define HAS_NIMBLE_SUPPORT 1
 #define HAS_BLUEDROID_SUPPORT 1
 // ... other variants
-```text
+```
 
 ### Key Classes and Components
 
@@ -90,7 +90,7 @@ hf_bluetooth_err_t InitializeNimBLE();
 hf_bluetooth_err_t StartScanning();
 // ... other NimBLE methods
 #endif
-```text
+```
 
 ## API Usage
 
@@ -110,7 +110,7 @@ if (result == hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
     // Enable Bluetooth
     bluetooth.Enable();
 }
-```text
+```
 
 ### BLE Scanning
 
@@ -127,7 +127,7 @@ auto result = bluetooth.StartScan(scan_config);
 // Get discovered devices
 std::vector<hf_bluetooth_device_info_t> devices;
 bluetooth.GetDiscoveredDevices(devices);
-```text
+```
 
 ### Device Management
 
@@ -141,7 +141,7 @@ bluetooth.SetDeviceName("ESP32C6-MyDevice");
 
 // Check connection status
 bool connected = bluetooth.IsConnected(device_address);
-```text
+```
 
 ### Event Handling
 
@@ -160,7 +160,7 @@ void bluetooth_event_callback(hf_bluetooth_event_t event, const void* data, void
     // ... handle other events
     }
 }
-```text
+```
 
 ## ESP32C6 Optimization Features
 
@@ -205,7 +205,7 @@ CONFIG_BT_NIMBLE_GATT_MAX_PROCS=4
 ## Memory optimization
 CONFIG_BT_NIMBLE_MEM_ALLOC_MODE_EXTERNAL=y
 CONFIG_BT_NIMBLE_MSYS1_BLOCK_COUNT=24
-```text
+```
 
 ### CMakeLists.txt Configuration
 
@@ -265,7 +265,7 @@ demonstrates all Bluetooth functionality with **100% test success rate**:
 
 ## Flash and monitor with full output
 ./scripts/flash_app.sh flash_monitor bluetooth_test Release
-```text
+```
 
 #### Actual Test Output (100% Success)
 
@@ -307,7 +307,7 @@ I (15600) BT_Test: [SUCCESS] Event-driven architecture
 I (15604) BT_Test: [SUCCESS] Thread-safe implementation
 I (15609) BT_Test: [SUCCESS] Modern BaseBluetooth API usage
 I (15615) BT_Test: [SUCCESS] Correct callback signatures
-```text
+```
 
 #### Test Features Verified
 
@@ -374,7 +374,7 @@ Enable debug logging:
 // In your main application
 esp_log_level_set("EspBluetooth", ESP_LOG_DEBUG);
 esp_log_level_set("NimBLE", ESP_LOG_DEBUG);
-```text
+```
 
 ## Performance Characteristics
 

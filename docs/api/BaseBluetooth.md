@@ -97,7 +97,7 @@ classDiagram
 
     BaseBluetooth <|-- Esp32C6Bluetooth
     BaseBluetooth <|-- NrfBluetooth
-```text
+```
 
 ---
 
@@ -161,7 +161,7 @@ enum class hf_bt_err_t : hf_u32_t {
     BT_ERR_PERMISSION_DENIED = 34,
     BT_ERR_OPERATION_ABORTED = 35
 };
-```text
+```
 
 ### 📊 **Error Code Categories**
 
@@ -213,7 +213,7 @@ virtual hf_bt_err_t SetMode(hf_bt_mode_t mode) = 0;
  * @return bool True if initialized
  */
 virtual bool IsInitialized() const = 0;
-```text
+```
 
 #### **Device Discovery**
 ```cpp
@@ -240,7 +240,7 @@ virtual hf_bt_err_t StopDiscovery() = 0;
 virtual hf_bt_err_t GetDiscoveredDevices(hf_bt_device_t* devices,
                                        hf_u32_t max_devices,
                                        hf_u32_t& actual_count) = 0;
-```text
+```
 
 #### **Connection Management**
 ```cpp
@@ -268,7 +268,7 @@ virtual hf_bt_err_t DisconnectDevice(hf_u32_t connection_id) = 0;
  */
 virtual hf_bt_err_t IsDeviceConnected(hf_u32_t connection_id,
                                     bool& is_connected) = 0;
-```text
+```
 
 #### **Data Transfer**
 ```cpp
@@ -295,7 +295,7 @@ virtual hf_bt_err_t ReceiveData(hf_u32_t connection_id,
                               hf_u8_t* data,
                               hf_u32_t buffer_size,
                               hf_u32_t& received_size) = 0;
-```text
+```
 
 ---
 
@@ -310,7 +310,7 @@ enum class hf_bt_mode_t : hf_u8_t {
     BT_MODE_BLE = 2,                ///< BLE only
     BT_MODE_DUAL = 3                ///< Both Classic and BLE
 };
-```text
+```
 
 ### 📱 **Device Information**
 
@@ -325,7 +325,7 @@ struct hf_bt_device_t {
     bool is_bonded;                         ///< Bonding status
     hf_u32_t last_seen_time_ms;             ///< Last discovery time
 };
-```text
+```
 
 ### 🔐 **Security Configuration**
 
@@ -338,7 +338,7 @@ struct hf_bt_security_config_t {
     hf_u32_t passkey;                       ///< Static passkey (if used)
     hf_bt_io_capabilities_t io_cap;         ///< I/O capabilities for pairing
 };
-```text
+```
 
 ### 📈 **Bluetooth Statistics**
 
@@ -355,7 +355,7 @@ struct hf_bt_statistics_t {
     hf_u32_t devices_discovered;            ///< Total devices discovered
     hf_u32_t active_connections;            ///< Currently active connections
 };
-```text
+```
 
 ---
 
@@ -378,7 +378,7 @@ hf_bt_classic_config_t classic_config = {
     .profiles = BT_PROFILE_SPP | BT_PROFILE_A2DP
 };
 bluetooth.SetClassicConfig(classic_config);
-```text
+```
 
 ### 📡 **Bluetooth Low Energy (BLE)**
 
@@ -398,7 +398,7 @@ hf_ble_config_t ble_config = {
     .supervision_timeout_ms = 4000
 };
 bluetooth.SetBleConfig(ble_config);
-```text
+```
 
 ### 🔄 **Dual Mode**
 
@@ -407,7 +407,7 @@ Dual mode enables both Classic and BLE simultaneously:
 ```cpp
 // Enable dual mode
 bluetooth.SetMode(hf_bt_mode_t::BT_MODE_DUAL);
-```text
+```
 
 ---
 
@@ -472,7 +472,7 @@ public:
                temperature, humidity);
     }
 };
-```text
+```
 
 ### 🔗 **Classic Bluetooth Serial Bridge**
 
@@ -581,7 +581,7 @@ private:
         }
     }
 };
-```text
+```
 
 ### 🔍 **Device Scanner & Manager**
 
@@ -690,7 +690,7 @@ private:
                device.is_bonded ? "(Bonded)" : "");
     }
 };
-```text
+```
 
 ---
 

@@ -27,7 +27,7 @@ operation, averaging, and comprehensive error handling.
 
 ```cpp
 #include "inc/base/BaseAdc.h"
-```text
+```
 
 ## Type Definitions
 
@@ -82,7 +82,7 @@ enum class hf_adc_err_t : hf_u8_t {
     ADC_ERR_HARDWARE_FAILURE = 55,           // 💥 Hardware failure
     ADC_ERR_CHANNEL_DISABLED = 56            // ⚠️ Channel disabled
 };
-```text
+```
 
 ## Class Interface
 
@@ -126,7 +126,7 @@ public:
                                              hf_u8_t numOfSamplesToAvg = 1,
                                              hf_time_t timeBetweenSamples = 0) noexcept = 0;
 };
-```text
+```
 
 ## Reading Methods
 
@@ -137,7 +137,7 @@ hf_adc_err_t ReadChannelV(hf_channel_id_t channel_id,
                          float& channel_reading_v,
                          hf_u8_t numOfSamplesToAvg = 1,
                          hf_time_t timeBetweenSamples = 0) noexcept;
-```text
+```
 
 **Parameters:**
 
@@ -155,7 +155,7 @@ hf_adc_err_t ReadChannelCount(hf_channel_id_t channel_id,
                              hf_u32_t& channel_reading_count,
                              hf_u8_t numOfSamplesToAvg = 1,
                              hf_time_t timeBetweenSamples = 0) noexcept;
-```text
+```
 
 **Parameters:**
 
@@ -174,7 +174,7 @@ hf_adc_err_t ReadChannelCountAndV(hf_channel_id_t channel_id,
                                  float& channel_reading_v,
                                  hf_u8_t numOfSamplesToAvg = 1,
                                  hf_time_t timeBetweenSamples = 0) noexcept;
-```text
+```
 
 Reads both raw count and calibrated voltage in a single operation for
 efficiency.
@@ -203,7 +203,7 @@ if (result == hf_adc_err_t::ADC_SUCCESS) {
 } else {
     printf("ADC Error: %s\n", HfAdcErrToString(result));
 }
-```text
+```
 
 ### Multi-Sample Averaging
 
@@ -214,7 +214,7 @@ hf_adc_err_t result = adc.ReadChannelV(0, voltage, 10, 5);  // 10 samples, 5ms b
 if (result == hf_adc_err_t::ADC_SUCCESS) {
     printf("Averaged voltage: %.3f V\n", voltage);
 }
-```text
+```
 
 ### Raw Count Reading
 
@@ -225,7 +225,7 @@ hf_adc_err_t result = adc.ReadChannelCount(0, raw_count);
 if (result == hf_adc_err_t::ADC_SUCCESS) {
     printf("Raw ADC count: %u\n", raw_count);
 }
-```text
+```
 
 ### Combined Reading
 
@@ -237,7 +237,7 @@ hf_adc_err_t result = adc.ReadChannelCountAndV(0, raw_count, voltage);
 if (result == hf_adc_err_t::ADC_SUCCESS) {
     printf("Raw: %u, Voltage: %.3f V\n", raw_count, voltage);
 }
-```text
+```
 
 ### Multi-Channel Sensor Reading
 
@@ -286,7 +286,7 @@ public:
         return true;
     }
 };
-```text
+```
 
 ### Error Handling Best Practices
 
@@ -327,14 +327,14 @@ hf_adc_err_t read_sensor_with_retry(BaseAdc& adc, hf_channel_id_t channel, float
     printf("ADC read failed after %d retries\n", max_retries);
     return hf_adc_err_t::ADC_ERR_TIMEOUT;
 }
-```text
+```
 
 ## Utility Functions
 
 ```cpp
 // Convert error code to string
 const char* HfAdcErrToString(hf_adc_err_t err) noexcept;
-```text
+```
 
 ## Performance Considerations
 

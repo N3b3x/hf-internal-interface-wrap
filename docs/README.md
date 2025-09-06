@@ -56,7 +56,7 @@ with **STM32** and additional MCUs planned for future releases.
 
 The wrapper follows a multi-layered architecture supporting multiple MCU platforms:
 
-```text
+```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                           🎯 Application Layer                                  │
 ├─────────────────────────────────────────────────────────────────────────────────┤
@@ -142,13 +142,13 @@ The wrapper follows a multi-layered architecture supporting multiple MCU platfor
 │  │ BT Radio    │  │ BT Radio    │  │             │  │             │             │
 │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘             │
 └─────────────────────────────────────────────────────────────────────────────────┘
-```text
+```
 
 ### 🔄 **Interface Inheritance Pattern**
 
 All interfaces follow a consistent inheritance pattern across MCU platforms:
 
-```text
+```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                           🏛️ Base Interface (Abstract)                          │
 ├─────────────────────────────────────────────────────────────────────────────────┤
@@ -181,7 +181,7 @@ All interfaces follow a consistent inheritance pattern across MCU platforms:
 │  │             │  │             │  │             │                              │                 
 │  └─────────────┘  └─────────────┘  └─────────────┘                              │                 
 └─────────────────────────────────────────────────────────────────────────────────┘
-```text
+```
 
 ---
 
@@ -202,7 +202,7 @@ using hf_i8_t = int8_t;     // 8-bit signed
 using hf_i16_t = int16_t;   // 16-bit signed
 using hf_i32_t = int32_t;   // 32-bit signed
 using hf_i64_t = int64_t;   // 64-bit signed
-```text
+```
 
 ### 🏭 **Hardware Abstraction Types**
 
@@ -219,7 +219,7 @@ using hf_current_ma_t = hf_u32_t;       // Current in milliamps
 using hf_temperature_c_t = hf_i32_t;    // Temperature in Celsius (scaled by 100)
 using hf_speed_rpm_t = hf_u32_t;        // Motor speed in RPM
 using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
-```text
+```
 
 📖 **Complete Documentation**: [HardwareTypes API Reference](api/HardwareTypes.md)
 
@@ -479,7 +479,7 @@ idf_component_register(
 
 ## For STM32 projects (future)
 ## Add to your CMakeLists.txt or project configuration
-```text
+```
 
 ### 🎯 **Basic Multi-MCU GPIO Example**
 
@@ -515,7 +515,7 @@ void app_main() {
 // #include "inc/mcu/stm32/StmGpio.h"
 // StmGpio led_pin(GPIO_PIN_5, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 // ... same API, different implementation
-```text
+```
 
 ### 📊 **Basic Multi-MCU ADC Example**
 
@@ -551,7 +551,7 @@ void read_sensors() {
 // #include "inc/mcu/stm32/StmAdc.h"
 // StmAdc adc(ADC1, ADC_CHANNEL_0);
 // ... same API, different implementation
-```text
+```
 
 ---
 

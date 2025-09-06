@@ -32,7 +32,7 @@ It offers both basic and advanced UART features with hardware-specific optimizat
 
 ```cpp
 #include "inc/mcu/esp32/EspUart.h"
-```text
+```
 
 ## Class Definition
 
@@ -75,7 +75,7 @@ public:
     hf_uart_err_t SetInterruptCallback(hf_uart_interrupt_callback_t callback, void* user_data) noexcept override;
     hf_uart_err_t ClearInterruptCallback() noexcept override;
 };
-```text
+```
 
 ## Usage Examples
 
@@ -109,7 +109,7 @@ if (err == HF_UART_ERR_OK) {
 } else if (err == HF_UART_ERR_TIMEOUT) {
     printf("Read timeout\n");
 }
-```text
+```
 
 ### Binary Data Transfer
 
@@ -133,7 +133,7 @@ if (err == HF_UART_ERR_OK) {
     }
     printf("\n");
 }
-```text
+```
 
 ### Flow Control
 
@@ -159,7 +159,7 @@ if (err == HF_UART_ERR_OK) {
         }
     }
 }
-```text
+```
 
 ### Interrupt-based Communication
 
@@ -190,7 +190,7 @@ if (err != HF_UART_ERR_OK) {
 
 // Enable interrupt-based communication
 // The callback will be called when data is available or transmission is complete
-```text
+```
 
 ### Multiple UART Ports
 
@@ -212,7 +212,7 @@ uart2.SetBaudRate(9600);
 // Send data on both ports
 uart1.WriteString("Port 1 message\n");
 uart2.WriteString("Port 2 message\n");
-```text
+```
 
 ## ESP32-C6 Specific Features
 

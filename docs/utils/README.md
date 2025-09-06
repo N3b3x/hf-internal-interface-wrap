@@ -69,7 +69,7 @@ The HardFOC Utilities follow a **utility-first design pattern**:
 ├─────────────────────────────────────┤
 │           Hardware Layer            │
 └─────────────────────────────────────┘
-```text
+```
 
 ### **Core Components**
 
@@ -144,7 +144,7 @@ EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
     }
     // GPIO automatically set inactive when guard goes out of scope
 }
-```text
+```
 
 ### **With Platform Implementations**
 
@@ -176,7 +176,7 @@ public:
         // Motor automatically disabled when guard goes out of scope
     }
 };
-```text
+```
 
 ---
 
@@ -190,7 +190,7 @@ public:
 
 // Include platform implementations
 #include "inc/mcu/esp32/EspGpio.h"
-```text
+```
 
 ### **2. Create Hardware Instances**
 
@@ -198,7 +198,7 @@ public:
 // Create GPIO instance
 EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 led_pin.EnsureInitialized();
-```text
+```
 
 ### **3. Use Utility Classes**
 
@@ -215,7 +215,7 @@ led_pin.EnsureInitialized();
     // ... perform operations ...
     
 } // GPIO automatically set inactive when guard goes out of scope
-```text
+```
 
 ### **4. Error Handling**
 
@@ -236,7 +236,7 @@ if (!guard.IsValid()) {
     }
     return;
 }
-```text
+```
 
 ---
 
@@ -277,7 +277,7 @@ public:
         // LED automatically turned off when guard goes out of scope
     }
 };
-```text
+```
 
 ### **Motor Control with Safety**
 
@@ -319,7 +319,7 @@ public:
         motor_pwm*.SetDutyCycle(0, 0.0f);
     }
 };
-```text
+```
 
 ### **Multi-Threaded Safety**
 
@@ -350,7 +350,7 @@ void setup_led_tasks() {
     xTaskCreate(led_task, "led_task_1", 2048, NULL, 1, NULL);
     xTaskCreate(led_task, "led_task_2", 2048, NULL, 1, NULL);
 }
-```text
+```
 
 ---
 

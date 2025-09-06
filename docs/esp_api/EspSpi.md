@@ -100,7 +100,7 @@ The EspSpi library follows a two-tier architecture:
 │ + Deinitialize() : bool                                         │
 │ + Transfer() : hf_spi_err_t                                    │
 └─────────────────────────────────────────────────────────────────┘
-```text
+```
 
 ### **Design Principles**
 
@@ -120,7 +120,7 @@ The main SPI bus controller that manages the ESP-IDF SPI host and multiple devic
 #### **Constructor**
 ```cpp
 EspSpiBus(const hf_spi_bus_config_t& config) noexcept
-```text
+```
 
 #### **Key Methods**
 ```cpp
@@ -130,7 +130,7 @@ int CreateDevice(const hf_spi_device_config_t& config);  // Create device wrappe
 bool RemoveDevice(int device_id);              // Remove device from bus
 BaseSpi* GetDevice(int device_id);            // Get device by ID
 bool IsInitialized() const noexcept;          // Check initialization status
-```text
+```
 
 ### **EspSpiDevice**
 
@@ -139,7 +139,7 @@ Represents a single SPI device on the bus, implementing the `BaseSpi` interface.
 #### **Constructor**
 ```cpp
 EspSpiDevice(EspSpiBus* parent, const hf_spi_device_config_t& config)
-```text
+```
 
 #### **Key Methods**
 ```cpp
@@ -151,7 +151,7 @@ hf_spi_err_t Transmit(const uint8_t* data, size_t length,
                       uint32_t timeout_ms) override;
 hf_spi_err_t Receive(uint8_t* data, size_t length, 
                      uint32_t timeout_ms) override;
-```text
+```
 
 ---
 
@@ -170,7 +170,7 @@ typedef struct {
     bool use_iomux;                  // Use IOMUX for maximum performance
     uint32_t timeout_ms;             // Bus timeout in milliseconds
 } hf_spi_bus_config_t;
-```text
+```
 
 ### **Device Configuration (`hf_spi_device_config_t`)**
 
@@ -187,7 +187,7 @@ typedef struct {
     uint32_t cs_ena_posttrans;       // CS hold time (in SPI clock cycles)
     hf_spi_clock_source_t clock_source; // Clock source selection
 } hf_spi_device_config_t;
-```text
+```
 
 ### **Clock Sources**
 
@@ -271,7 +271,7 @@ if (result == hf_spi_err_t::SPI_SUCCESS) {
 } else {
     ESP_LOGE(TAG, "Transfer failed: %s", HfSpiErrToString(result).data());
 }
-```text
+```
 
 ### **Multi-Device Setup**
 
@@ -299,7 +299,7 @@ device2->Initialize();
 // Use devices independently
 device1->Transfer(tx_data1, rx_data1, 4, 1000);
 device2->Transfer(tx_data2, rx_data2, 8, 1000);
-```text
+```
 
 ### **Advanced Configuration**
 
@@ -316,7 +316,7 @@ fast_device_config.dummy_bits = 8;             // 8 dummy bits
 fast_device_config.cs_ena_pretrans = 2;        // 2 clock cycles setup
 fast_device_config.cs_ena_posttrans = 2;       // 2 clock cycles hold
 fast_device_config.clock_source = hf_spi_clock_source_t::PLL_F80M_CLK;
-```text
+```
 
 ---
 
@@ -386,7 +386,7 @@ uint64_t end_time = esp_timer_get_time();
 uint64_t transfer_time = end_time - start_time;
 
 ESP_LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer_time);
-```text
+```
 
 ---
 

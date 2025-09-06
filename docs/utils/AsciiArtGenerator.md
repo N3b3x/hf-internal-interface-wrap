@@ -30,7 +30,7 @@ logging, and user interfaces to enhance visual presentation.
 
 ```cpp
 #include "utils/AsciiArtGenerator.h"
-```text
+```
 
 ## Class Definition
 
@@ -91,7 +91,7 @@ printf("%s\n", number_art.c_str());
 // Generate ASCII art for mixed content
 std::string mixed_art = generator.Generate("ESP32-C6");
 printf("%s\n", mixed_art.c_str());
-```text
+```
 
 ### Custom Character Management
 
@@ -119,7 +119,7 @@ generator.RemoveCustomCharacter('@');
 
 // Clear all custom characters
 generator.ClearCustomCharacters();
-```text
+```
 
 ### Character Support Validation
 
@@ -140,7 +140,7 @@ if (generator.IsCharacterSupported('€')) {
 // Get list of supported characters
 std::string supported = generator.GetSupportedCharacters();
 printf("Supported characters: %s\n", supported.c_str());
-```text
+```
 
 ### Integration with Logging
 
@@ -160,7 +160,7 @@ logger.Log(hf_log_level_t::LOG_INFO, "APP", "ASCII Art Banner:\n%s", banner.c_st
 // Generate test results
 std::string result = generator.Generate("SUCCESS");
 logger.Log(hf_log_level_t::LOG_INFO, "TEST", "Test Result:\n%s", result.c_str());
-```text
+```
 
 ### Complete Example
 
@@ -200,7 +200,7 @@ void print_test_results(bool success) {
         printf("%s\n", failed.c_str());
     }
 }
-```text
+```
 
 ## ASCII Art Examples
 
@@ -212,7 +212,7 @@ void print_test_results(bool success) {
 |  *  | 
 | | | | 
 \*| |*/ 
-```text
+```
 
 ### Number Example (1)
 ```text
@@ -222,7 +222,7 @@ void print_test_results(bool success) {
  | |  
 *| |* 
 \*_*/ 
-```text
+```
 
 ### Symbol Example (!)
 ```text
@@ -232,7 +232,7 @@ void print_test_results(bool success) {
 | | 
 |*| 
 (*) 
-```text
+```
 
 ### Word Example (HELLO)
 ```text
@@ -242,7 +242,7 @@ void print_test_results(bool success) {
 |  *  || |    | |    | |      | | 
 | | | || |_***| |****| |****  | | 
 \*| |*/\*_***/\*****/\**__*/  \*/ 
-```text
+```
 
 ## Performance Characteristics
 
@@ -275,7 +275,7 @@ generator.AddCustomCharacter('@', custom_char);
 // Now '@' can be used in text generation
 std::string email_art = generator.Generate("TEST@EXAMPLE");
 printf("%s\n", email_art.c_str());
-```text
+```
 
 ### Custom Character Requirements
 

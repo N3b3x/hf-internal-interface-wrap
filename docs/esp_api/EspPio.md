@@ -65,7 +65,7 @@ public:
     size_t GetMaxSymbolCount() const noexcept;
     bool ValidatePioSystem() noexcept;
 };
-```text
+```
 
 ## Constructor and Destructor
 
@@ -78,7 +78,7 @@ Creates a new EspPio instance.
 **Example:**
 ```cpp
 EspPio pio;  // Default construction
-```text
+```
 
 ### ~EspPio()
 
@@ -103,7 +103,7 @@ hf_pio_err_t result = pio.Initialize();
 if (result != hf_pio_err_t::PIO_SUCCESS) {
     ESP_LOGE(TAG, "PIO initialization failed: %s", HfPioErrToString(result).data());
 }
-```text
+```
 
 ### Deinitialize()
 
@@ -140,7 +140,7 @@ config.polarity = hf_pio_polarity_t::Normal;
 config.idle_state = hf_pio_idle_state_t::Low;
 
 hf_pio_err_t result = pio.ConfigureChannel(tx_channel, config);
-```text
+```
 
 ### Transmit()
 
@@ -166,7 +166,7 @@ hf_pio_symbol_t rgb_symbols[] = {
 hf_pio_err_t result = pio.Transmit(tx_channel, rgb_symbols, 
                                    sizeof(rgb_symbols) / sizeof(rgb_symbols[0]), 
                                    false);  // Async transmission
-```text
+```
 
 ### StartReceive() / StopReceive()
 
@@ -194,7 +194,7 @@ hf_pio_err_t result = pio.StartReceive(rx_channel, rx_buffer, 64, 5000);  // 5ms
 size_t symbols_received;
 result = pio.StopReceive(rx_channel, symbols_received);
 ESP_LOGI(TAG, "Received %zu symbols", symbols_received);
-```text
+```
 
 ## Channel-Specific Callback Management
 
@@ -210,7 +210,7 @@ Sets a transmission completion callback for a specific channel.
 **Callback Signature:**
 ```cpp
 void callback(hf_u8_t channel_id, size_t symbols_sent, void* user_data);
-```text
+```
 
 **Example:**
 ```cpp
@@ -221,7 +221,7 @@ void OnWS2812Complete(hf_u8_t channel_id, size_t symbols_sent, void* user_data) 
 
 const char* led_context = "Built-in RGB";
 pio.SetTransmitCallback(tx_channel, OnWS2812Complete, const_cast<char*>(led_context));
-```text
+```
 
 ### SetReceiveCallback()
 
@@ -231,7 +231,7 @@ Sets a reception completion callback for a specific channel.
 ```cpp
 void callback(hf_u8_t channel_id, const hf_pio_symbol_t* symbols, 
               size_t symbol_count, void* user_data);
-```text
+```
 
 ### SetErrorCallback()
 
@@ -240,7 +240,7 @@ Sets an error callback for a specific channel.
 **Callback Signature:**
 ```cpp
 void callback(hf_u8_t channel_id, hf_pio_err_t error, void* user_data);
-```text
+```
 
 ### ClearChannelCallbacks()
 
@@ -268,7 +268,7 @@ Configures carrier modulation for IR protocols.
 ```cpp
 // Configure 38kHz IR carrier with 33% duty cycle
 pio.ConfigureCarrier(tx_channel, 38000, 0.33f);
-```text
+```
 
 ### ConfigureAdvancedRmt()
 
@@ -284,7 +284,7 @@ Configures advanced RMT channel settings.
 ```cpp
 // Configure for high-throughput DMA operation
 pio.ConfigureAdvancedRmt(tx_channel, 256, true, 8);
-```text
+```
 
 ### TransmitRawRmtSymbols()
 
@@ -336,7 +336,7 @@ hf_pio_capabilities_t caps;
 pio.GetCapabilities(caps);
 ESP_LOGI(TAG, "Max channels: %d, Min resolution: %u Hz, Max resolution: %u Hz", 
          caps.max_channels, caps.min_resolution_ns, caps.max_resolution_ns);
-```text
+```
 
 ### ValidatePioSystem()
 
@@ -356,7 +356,7 @@ Gets the appropriate TX channel for the current ESP32 variant.
 
 ```cpp
 inline constexpr int8_t HfRmtGetTxChannel(uint8_t index) noexcept;
-```text
+```
 
 **Parameters:**
 - `index`: Channel index (0-based within available TX channels)
@@ -369,7 +369,7 @@ Gets the appropriate RX channel for the current ESP32 variant.
 
 ```cpp
 inline constexpr int8_t HfRmtGetRxChannel(uint8_t index) noexcept;
-```text
+```
 
 ### HfRmtIsChannelValidForDirection()
 
@@ -378,7 +378,7 @@ Validates if a channel is valid for a specific direction on the current ESP32 va
 ```cpp
 inline constexpr bool HfRmtIsChannelValidForDirection(uint8_t channel_id, 
                                                      hf_pio_direction_t direction) noexcept;
-```text
+```
 
 ### HfRmtGetVariantName()
 
@@ -386,7 +386,7 @@ Returns the name of the current ESP32 variant.
 
 ```cpp
 inline constexpr const char* HfRmtGetVariantName() noexcept;
-```text
+```
 
 ## Error Handling
 
@@ -398,7 +398,7 @@ hf_pio_err_t result = pio.ConfigureChannel(channel_id, config);
 if (result != hf_pio_err_t::PIO_SUCCESS) {
     ESP_LOGE(TAG, "Configuration failed: %s", HfPioErrToString(result).data());
 }
-```text
+```
 
 ## Thread Safety
 
@@ -478,7 +478,7 @@ void set_led_color(uint8_t red, uint8_t green, uint8_t blue) {
     
     pio.Transmit(led_channel, symbols, 24, false);  // Async transmission
 }
-```text
+```
 
 ## See Also
 

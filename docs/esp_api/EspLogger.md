@@ -32,7 +32,7 @@ offering comprehensive logging capabilities with performance monitoring and mult
 
 ```cpp
 #include "mcu/esp32/EspLogger.h"
-```text
+```
 
 ## Class Definition
 
@@ -76,7 +76,7 @@ public:
     hf_logger_err_t EnableEspLogV2(bool enable) noexcept;
     bool IsEspLogV2Enabled() const noexcept;
 };
-```text
+```
 
 ## Configuration Structure
 
@@ -93,7 +93,7 @@ struct hf_logger_config_t {
     char file_config[128];                       // File output configuration
     char network_config[128];                    // Network output configuration
 };
-```text
+```
 
 ## Usage Examples
 
@@ -119,7 +119,7 @@ if (!logger.EnsureInitialized()) {
 logger.Log(hf_log_level_t::LOG_INFO, "APP", "Application started");
 logger.Log(hf_log_level_t::LOG_ERROR, "APP", "Error occurred: %d", error_code);
 logger.Log(hf_log_level_t::LOG_DEBUG, "APP", "Debug info: %s", debug_string);
-```text
+```
 
 ### Tag-Based Logging
 
@@ -136,7 +136,7 @@ logger.SetTagLevel("NETWORK", hf_log_level_t::LOG_WARN);
 logger.Log(hf_log_level_t::LOG_INFO, "APP", "Application initialized");
 logger.Log(hf_log_level_t::LOG_DEBUG, "SENSOR", "Sensor reading: %.2f", sensor_value);
 logger.Log(hf_log_level_t::LOG_WARN, "NETWORK", "Network timeout");
-```text
+```
 
 ### Multi-Output Logging
 
@@ -156,7 +156,7 @@ logger.AddOutput(hf_logger_output_t::OUTPUT_NETWORK, "udp://192.168.1.100:514");
 
 // Log to all outputs
 logger.Log(hf_log_level_t::LOG_INFO, "APP", "Multi-output logging active");
-```text
+```
 
 ### Performance Monitoring
 
@@ -187,7 +187,7 @@ hf_logger_diagnostics_t diagnostics;
 logger.GetDiagnostics(diagnostics);
 printf("Last error: %d\n", diagnostics.last_error_code);
 printf("Memory usage: %u bytes\n", diagnostics.memory_usage_bytes);
-```text
+```
 
 ### ESP-IDF Integration
 
@@ -210,7 +210,7 @@ ESP_LOGD("APP", "Debug info: %s", debug_string);
 if (logger.IsEspLogV2Enabled()) {
     printf("ESP-IDF Log V2 is enabled\n");
 }
-```text
+```
 
 ### Dynamic Level Control
 
@@ -235,7 +235,7 @@ logger.Log(hf_log_level_t::LOG_DEBUG, "DEBUG", "Debug info");
 hf_log_level_t global_level = logger.GetLevel();
 hf_log_level_t critical_level = logger.GetTagLevel("CRITICAL");
 printf("Global level: %d, Critical level: %d\n", global_level, critical_level);
-```text
+```
 
 ## Log Levels
 

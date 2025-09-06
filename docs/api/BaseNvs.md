@@ -85,7 +85,7 @@ classDiagram
     }
     
     BaseNvs <|-- EspNvs
-```text
+```
 
 ---
 
@@ -230,7 +230,7 @@ bool EnsureInitialized();
  * 🔄 Automatically deinitializes NVS if currently initialized.
  */
 bool EnsureDeinitialized();
-```text
+```
 
 ### 🔢 **Integer Storage Methods**
 
@@ -270,7 +270,7 @@ virtual hf_nvs_err_t SetU32(const char *key, uint32_t value) noexcept = 0;
  * }
  */
 virtual hf_nvs_err_t GetU32(const char *key, uint32_t &value) noexcept = 0;
-```text
+```
 
 ### 📝 **String Storage Methods**
 
@@ -311,7 +311,7 @@ virtual hf_nvs_err_t SetString(const char *key, const char *value) noexcept = 0;
  */
 virtual hf_nvs_err_t GetString(const char *key, char *buffer, size_t buffer_size,
                              size_t *actual_size = nullptr) noexcept = 0;
-```text
+```
 
 ### 📦 **Binary Blob Storage Methods**
 
@@ -358,7 +358,7 @@ virtual hf_nvs_err_t SetBlob(const char *key, const void *data, size_t data_size
  */
 virtual hf_nvs_err_t GetBlob(const char *key, void *buffer, size_t buffer_size,
                            size_t *actual_size = nullptr) noexcept = 0;
-```text
+```
 
 ### 🗑️ **Data Management Methods**
 
@@ -408,7 +408,7 @@ virtual hf_nvs_err_t EraseAll() noexcept = 0;
  * }
  */
 virtual hf_nvs_err_t GetSize(const char *key, size_t &size) noexcept = 0;
-```text
+```
 
 ### 📊 **Information Methods**
 
@@ -428,7 +428,7 @@ virtual size_t GetMaxKeyLength() const noexcept = 0;
  * 📊 Returns the maximum allowed value size for this storage.
  */
 virtual size_t GetMaxValueSize() const noexcept = 0;
-```text
+```
 
 ### 📈 **Statistics and Diagnostics**
 
@@ -466,7 +466,7 @@ virtual hf_nvs_err_t GetStatistics(hf_nvs_statistics_t &statistics) const noexce
  * 🔍 Retrieves diagnostic information about NVS health and status.
  */
 virtual hf_nvs_err_t GetDiagnostics(hf_nvs_diagnostics_t &diagnostics) const noexcept;
-```text
+```
 
 ---
 
@@ -489,7 +489,7 @@ struct hf_nvs_statistics_t {
     uint32_t bytes_written;         ///< Total bytes written
     uint32_t bytes_read;            ///< Total bytes read
 };
-```text
+```
 
 ### 🔍 **NVS Diagnostics Structure**
 
@@ -500,7 +500,7 @@ struct hf_nvs_diagnostics_t {
     bool storage_healthy;           ///< Storage health status
     uint32_t system_uptime_ms;      ///< System uptime in milliseconds
 };
-```text
+```
 
 ---
 
@@ -611,7 +611,7 @@ struct DeviceConfig {
     std::string device_name;
     uint32_t baud_rate;
 };
-```text
+```
 
 ### 📊 **Calibration Data Storage**
 
@@ -707,7 +707,7 @@ struct AdcCalibration {
     uint32_t calibration_date;
     uint16_t checksum;
 };
-```text
+```
 
 ### 📝 **Log Storage**
 
@@ -801,7 +801,7 @@ public:
         return log_index*;
     }
 };
-```text
+```
 
 ### 🔐 **Encrypted Storage (ESP32)**
 
@@ -879,7 +879,7 @@ public:
         printf("🗑️ Credentials cleared\n");
     }
 };
-```text
+```
 
 ---
 
@@ -938,7 +938,7 @@ if (nvs.GetStatistics(stats) == hf_nvs_err_t::NVS_SUCCESS) {
         printf("⚠️ High NVS failure rate detected\n");
     }
 }
-```text
+```
 
 ### ❌ **Common Pitfalls**
 
@@ -961,7 +961,7 @@ nvs.SetString("password", "secret");  // Use encrypted storage
 
 // ❌ Don't ignore storage capacity
 // Check available space before large writes
-```text
+```
 
 ### 🎯 **Performance Optimization**
 
@@ -993,7 +993,7 @@ if (stats.bytes_written > max_storage_bytes) {
 // 🚀 Implement data validation
 // Use checksums for data integrity
 // Validate data ranges and formats
-```text
+```
 
 ---
 

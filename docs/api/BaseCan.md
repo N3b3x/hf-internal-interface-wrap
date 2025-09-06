@@ -79,7 +79,7 @@ classDiagram
     }
     
     BaseCan <|-- EspCan
-```text
+```
 
 ---
 
@@ -286,7 +286,7 @@ bool EnsureInitialized() noexcept;
  * 🔄 Automatically deinitializes CAN if currently initialized.
  */
 bool EnsureDeinitialized() noexcept;
-```text
+```
 
 ### 📨 **Message Transmission**
 
@@ -334,7 +334,7 @@ noexcept = 0;
  */
 virtual uint32_t SendMessageBatch(const hf_can_message_t *messages, uint32_t count,
                                 uint32_t timeout_ms = 1000) noexcept;
-```text
+```
 
 ### 📥 **Message Reception**
 
@@ -379,7 +379,7 @@ virtual hf_can_err_t ReceiveMessage(hf_can_message_t &message, uint32_t timeout_
  */
 virtual uint32_t ReceiveMessageBatch(hf_can_message_t *messages, uint32_t max_count,
                                    uint32_t timeout_ms = 100) noexcept;
-```text
+```
 
 ### 🔍 **Message Filtering**
 
@@ -412,7 +412,7 @@ virtual hf_can_err_t SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extend
  * All messages will be received.
  */
 virtual hf_can_err_t ClearAcceptanceFilter() noexcept;
-```text
+```
 
 ### 📞 **Callback Management**
 
@@ -451,7 +451,7 @@ virtual void ClearReceiveCallback() noexcept;
  * ESP32-C6 TWAI controller does not support CAN-FD.
  */
 virtual hf_can_err_t SetReceiveCallbackFD(hf_can_fd_receive_callback_t callback) noexcept;
-```text
+```
 
 ### 🎛️ **Configuration and Status**
 
@@ -494,7 +494,7 @@ virtual bool SetCanFDMode(bool enable, uint32_t data_baudrate = 2000000,
  * }
  */
 virtual hf_can_err_t GetStatus(hf_can_status_t &status) const noexcept = 0;
-```text
+```
 
 ### 📈 **Statistics and Diagnostics**
 
@@ -532,7 +532,7 @@ virtual hf_can_err_t GetStatistics(hf_can_statistics_t &statistics) const noexce
  * 🔍 Retrieves diagnostic information about CAN health and status.
  */
 virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) const noexcept;
-```text
+```
 
 ---
 
@@ -580,7 +580,7 @@ struct hf_can_message_t {
     void SetSelfReception() noexcept;  ///< Enable self reception
     bool IsValidId() const noexcept;  ///< Validate message ID
 };
-```text
+```
 
 ### ⚙️ **CAN Configuration Structure**
 
@@ -594,7 +594,7 @@ struct hf_can_config_t {
     uint16_t tx_queue_size;  ///< TX queue size (implementation-dependent)
     uint16_t rx_queue_size;  ///< RX queue size (implementation-dependent)
 };
-```text
+```
 
 ### 📊 **CAN Status Structure**
 
@@ -623,7 +623,7 @@ struct hf_can_status_t {
     uint32_t bit_errors;       ///< Bit errors
     uint32_t ack_errors;       ///< Acknowledgment errors
 };
-```text
+```
 
 ### 📈 **CAN Statistics Structure**
 
@@ -655,7 +655,7 @@ struct hf_can_statistics_t {
     uint32_t tx_queue_overflows;     ///< TX queue overflow count
     uint32_t rx_queue_overflows;     ///< RX queue overflow count
 };
-```text
+```
 
 ### 🔍 **CAN Diagnostics Structure**
 
@@ -670,7 +670,7 @@ struct hf_can_diagnostics_t {
     uint32_t bus_load_percentage;    ///< Current bus load percentage
     float bit_error_rate;            ///< Bit error rate (errors/bits)
 };
-```text
+```
 
 ---
 
@@ -725,7 +725,7 @@ void send_status_message() {
         printf("✅ Message sent successfully\n");
     }
 }
-```text
+```
 
 ### 📥 **Message Reception**
 
@@ -779,7 +779,7 @@ void process_status_message(const hf_can_message_t &msg) {
                temperature, voltage, current);
     }
 }
-```text
+```
 
 ### 🔍 **Message Filtering**
 
@@ -814,7 +814,7 @@ void receive_filtered_messages() {
         }
     }
 }
-```text
+```
 
 ### 📞 **Asynchronous Reception with Callbacks**
 
@@ -856,7 +856,7 @@ void main_loop() {
         vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
-```text
+```
 
 ### 🚌 **Motor Control System**
 
@@ -924,7 +924,7 @@ private:
         return checksum;
     }
 };
-```text
+```
 
 ---
 
@@ -968,7 +968,7 @@ if (can.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
         printf("⚠️ High TX error count: %u\n", status.tx_error_count);
     }
 }
-```text
+```
 
 ### ❌ **Common Pitfalls**
 
@@ -990,7 +990,7 @@ can.SendMessage(msg);  // Error handling missing
 
 // ❌ Don't ignore bus-off state
 // Bus-off requires controller restart
-```text
+```
 
 ### 🎯 **Performance Optimization**
 
@@ -1018,7 +1018,7 @@ can.GetStatistics(stats);
 if (stats.tx_queue_overflows > 0) {
     printf("⚠️ TX queue overflow - increase queue size\n");
 }
-```text
+```
 
 ---
 

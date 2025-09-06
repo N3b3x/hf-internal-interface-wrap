@@ -44,14 +44,14 @@ public:
     hf_gpio_err_t SetInactive() noexcept;
     [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
 };
-```text
+```
 
 ## Constructor Details
 
 ### Reference Constructor
 ```cpp
 explicit DigitalOutputGuard(BaseGpio& gpio, bool ensure_output_mode = true) noexcept;
-```text
+```
 - **Parameters**:
   - `gpio`: Reference to the BaseGpio instance to manage
   - `ensure_output_mode`: If true, automatically switch to output mode (default: true)
@@ -60,7 +60,7 @@ explicit DigitalOutputGuard(BaseGpio& gpio, bool ensure_output_mode = true) noex
 ### Pointer Constructor
 ```cpp
 explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode = true) noexcept;
-```text
+```
 - **Parameters**:
   - `gpio`: Pointer to the BaseGpio instance to manage (must not be null)
   - `ensure_output_mode`: If true, automatically switch to output mode (default: true)
@@ -70,7 +70,7 @@ explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode = true) noex
 
 ```cpp
 ~DigitalOutputGuard() noexcept;
-```text
+```
 - **Behavior**: Automatically sets the associated GPIO to inactive state
 - **Note**: Does not change the pin direction to preserve configuration
 
@@ -79,14 +79,14 @@ explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode = true) noex
 ### State Validation
 ```cpp
 [[nodiscard]] bool IsValid() const noexcept;
-```text
+```
 - **Returns**: `true` if the guard was successfully initialized, `false` otherwise
 - **Use Case**: Check if the guard is in a valid state before use
 
 ### Error Handling
 ```cpp
 [[nodiscard]] hf_gpio_err_t GetLastError() const noexcept;
-```text
+```
 - **Returns**: The last error code from guard operations
 - **Use Case**: Diagnose initialization or operation failures
 
@@ -94,7 +94,7 @@ explicit DigitalOutputGuard(BaseGpio* gpio, bool ensure_output_mode = true) noex
 ```cpp
 hf_gpio_err_t SetActive() noexcept;
 hf_gpio_err_t SetInactive() noexcept;
-```text
+```
 - **Returns**: `hf_gpio_err_t::GPIO_SUCCESS` if successful, error code otherwise
 - **Use Case**: Manual control while the guard is active
 - **Note**: The destructor will still set the pin inactive when the guard goes out of scope
@@ -102,7 +102,7 @@ hf_gpio_err_t SetInactive() noexcept;
 ### State Query
 ```cpp
 [[nodiscard]] hf_gpio_state_t GetCurrentState() const noexcept;
-```text
+```
 - **Returns**: Current GPIO state (Active or Inactive)
 - **Use Case**: Check the current state of the managed GPIO
 
@@ -122,7 +122,7 @@ hf_gpio_err_t SetInactive() noexcept;
     // ... perform operations ...
     
 } // GPIO automatically set inactive when guard goes out of scope
-```text
+```
 
 ### Manual State Control
 ```cpp
@@ -138,7 +138,7 @@ guard.SetActive();    // Turn back on
 // ... more operations ...
 
 // GPIO will be automatically set inactive when guard is destroyed
-```text
+```
 
 ### Pointer-based Usage
 ```cpp
@@ -163,7 +163,7 @@ if (!gpio_ptr->EnsureInitialized()) {
 } // Guard ensures GPIO is set inactive
 
 delete gpio_ptr;
-```text
+```
 
 ### Move Semantics
 ```cpp
@@ -179,7 +179,7 @@ DigitalOutputGuard guard2 = std::move(guard1);
 
 // Use guard2
 guard2.SetActive();
-```text
+```
 
 ## Error Handling
 
@@ -212,7 +212,7 @@ if (!guard.IsValid()) {
     }
     return;
 }
-```text
+```
 
 ## Performance Characteristics
 

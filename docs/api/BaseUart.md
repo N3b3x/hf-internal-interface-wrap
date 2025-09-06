@@ -84,7 +84,7 @@ classDiagram
     }
     
     BaseUart <|-- EspUart
-```text
+```
 
 ---
 
@@ -210,7 +210,7 @@ virtual hf_uart_err_t Deinitialize() noexcept = 0;
  * 🔄 Automatically initializes UART if not already initialized.
  */
 bool EnsureInitialized() noexcept;
-```text
+```
 
 ### ⚙️ **Configuration Methods**
 
@@ -245,7 +245,7 @@ virtual hf_uart_err_t Configure(const hf_uart_config_t &config) noexcept = 0;
  * 📊 Retrieves the current UART configuration.
  */
 virtual hf_uart_err_t GetConfiguration(hf_uart_config_t &config) const noexcept = 0;
-```text
+```
 
 ### 📤 **Transmission Methods**
 
@@ -288,7 +288,7 @@ virtual hf_uart_err_t Transmit(const uint8_t *data, size_t length,
  * 📊 Returns the number of bytes that can be transmitted without blocking.
  */
 virtual size_t GetTransmitSpace() const noexcept = 0;
-```text
+```
 
 ### 📥 **Reception Methods**
 
@@ -338,7 +338,7 @@ virtual size_t GetReceiveSpace() const noexcept = 0;
  * 🧹 Clears all data in the receive buffer.
  */
 virtual hf_uart_err_t FlushReceive() noexcept = 0;
-```text
+```
 
 ### 📊 **Status and Capabilities**
 
@@ -360,7 +360,7 @@ virtual hf_uart_err_t GetStatus(hf_uart_status_t &status) const noexcept = 0;
  * 📋 Retrieves hardware capabilities and limitations.
  */
 virtual hf_uart_err_t GetCapabilities(hf_uart_capabilities_t &capabilities) const noexcept = 0;
-```text
+```
 
 ---
 
@@ -384,7 +384,7 @@ struct hf_uart_config_t {
     size_t rx_buffer_size;                 ///< Receive buffer size
     size_t tx_buffer_size;                 ///< Transmit buffer size
 };
-```text
+```
 
 ### 📊 **UART Status**
 
@@ -400,7 +400,7 @@ struct hf_uart_status_t {
     hf_uart_err_t last_error;   ///< Last error that occurred
     uint32_t timestamp_us;      ///< Timestamp of last operation
 };
-```text
+```
 
 ### 📋 **UART Capabilities**
 
@@ -417,7 +417,7 @@ struct hf_uart_capabilities_t {
     size_t max_buffer_size;         ///< Maximum buffer size
     uint32_t max_timeout_ms;        ///< Maximum timeout value
 };
-```text
+```
 
 ### 📈 **UART Statistics**
 
@@ -438,7 +438,7 @@ struct hf_uart_statistics_t {
     uint32_t max_transmit_time_us;  ///< Maximum transmit time
     uint32_t min_transmit_time_us;  ///< Minimum transmit time
 };
-```text
+```
 
 ---
 
@@ -536,7 +536,7 @@ public:
         }
     }
 };
-```text
+```
 
 ### 🗺️ **GPS Communication**
 
@@ -657,7 +657,7 @@ public:
         }
     }
 };
-```text
+```
 
 ### 🔵 **Bluetooth Communication**
 
@@ -758,7 +758,7 @@ public:
         }
     }
 };
-```text
+```
 
 ### 🏭 **Modbus RTU Communication**
 
@@ -910,7 +910,7 @@ private:
         return crc;
     }
 };
-```text
+```
 
 ---
 
@@ -958,7 +958,7 @@ if (uart.GetStatistics(stats) == hf_uart_err_t::UART_SUCCESS) {
         printf("⚠️ High frame error rate detected\n");
     }
 }
-```text
+```
 
 ### ❌ **Common Pitfalls**
 
@@ -980,7 +980,7 @@ uart.Transmit(data, length);  // May fail silently
 
 // ❌ Don't assume all data formats are supported
 // Check capabilities before using specific formats
-```text
+```
 
 ### 🎯 **Performance Optimization**
 
@@ -1004,7 +1004,7 @@ config.use_dma = (transfer_size > 64);  // Use DMA for transfers > 64 bytes
 
 // 🚀 Use flow control when needed
 // Prevents buffer overflows in high-speed communication
-```text
+```
 
 ---
 

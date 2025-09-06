@@ -32,7 +32,7 @@ hardware implementations.
 
 ```cpp
 #include "inc/base/BaseGpio.h"
-```text
+```
 
 ## Type Definitions
 
@@ -79,7 +79,7 @@ enum class hf_gpio_err_t : hf_u8_t {
     GPIO_ERR_INVALID_ARG = 36,           // 🚫 Invalid argument
     GPIO_ERR_CALIBRATION_FAILURE = 37    // 🔧 Calibration failure
 };
-```text
+```
 
 ### State and Level Types
 
@@ -98,7 +98,7 @@ enum class hf_gpio_active_state_t : hf_u8_t {
     HF_GPIO_ACTIVE_LOW = 0,       // Active state is electrical low
     HF_GPIO_ACTIVE_HIGH = 1       // Active state is electrical high
 };
-```text
+```
 
 ### Direction and Configuration Types
 
@@ -119,7 +119,7 @@ enum class hf_gpio_pull_mode_t : hf_u8_t {
     HF_GPIO_PULL_MODE_DOWN = 2,          // Internal pull-down resistor
     HF_GPIO_PULL_MODE_UP_DOWN = 3        // Both pull resistors
 };
-```text
+```
 
 ### Interrupt Types
 
@@ -132,7 +132,7 @@ enum class hf_gpio_interrupt_trigger_t : hf_u8_t {
     HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL = 4,   // Low level
     HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL = 5   // High level
 };
-```text
+```
 
 ## Class Interface
 
@@ -182,7 +182,7 @@ public:
     virtual hf_gpio_err_t DisableInterrupt() noexcept = 0;
     virtual hf_gpio_err_t IsInterruptEnabled(bool& enabled) const noexcept = 0;
 };
-```text
+```
 
 ## Convenience Methods
 
@@ -200,7 +200,7 @@ bool SetHigh() noexcept;        // Set pin to electrical high
 bool SetLow() noexcept;         // Set pin to electrical low
 bool IsHigh() const noexcept;   // Check if pin is electrical high
 bool IsLow() const noexcept;    // Check if pin is electrical low
-```text
+```
 
 ## Usage Examples
 
@@ -225,7 +225,7 @@ led_pin.SetInactive();  // Turn off LED
 
 // Toggle LED state
 led_pin.Toggle();
-```text
+```
 
 ### Input Pin with Pull-up
 
@@ -242,7 +242,7 @@ button_pin.SetActiveState(hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW);
 if (button_pin.IsActive()) {
     printf("Button is pressed\n");
 }
-```text
+```
 
 ### Interrupt Handling
 
@@ -262,7 +262,7 @@ interrupt_pin.EnableInterrupt(
     hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE,
     button_interrupt_handler
 );
-```text
+```
 
 ### Error Handling
 
@@ -272,14 +272,14 @@ if (result != hf_gpio_err_t::GPIO_SUCCESS) {
     printf("GPIO Error: %s\n", HfGpioErrToString(result));
     // Handle error appropriately
 }
-```text
+```
 
 ## Utility Functions
 
 ```cpp
 // Convert error code to string
 const char* HfGpioErrToString(hf_gpio_err_t err) noexcept;
-```text
+```
 
 ## Thread Safety
 

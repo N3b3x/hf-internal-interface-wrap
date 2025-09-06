@@ -90,7 +90,7 @@ classDiagram
     }
     
     BasePio <|-- EspPio
-```text
+```
 
 ---
 
@@ -252,7 +252,7 @@ virtual hf_pio_err_t Deinitialize() noexcept = 0;
  * 🔄 Automatically initializes PIO if not already initialized.
  */
 bool EnsureInitialized() noexcept;
-```text
+```
 
 ### ⚙️ **Channel Configuration**
 
@@ -278,7 +278,7 @@ bool EnsureInitialized() noexcept;
  */
 virtual hf_pio_err_t ConfigureChannel(uint8_t channel_id,
                                     const hf_pio_channel_config_t &config) noexcept = 0;
-```text
+```
 
 ### 📤 **Transmission Methods**
 
@@ -306,7 +306,7 @@ virtual hf_pio_err_t ConfigureChannel(uint8_t channel_id,
  */
 virtual hf_pio_err_t Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols,
                             size_t symbol_count, bool wait_completion = false) noexcept = 0;
-```text
+```
 
 ### 📥 **Reception Methods**
 
@@ -338,7 +338,7 @@ virtual hf_pio_err_t StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer,
  * ⏹️ Stops reception and returns the count of symbols received.
  */
 virtual hf_pio_err_t StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept = 0;
-```text
+```
 
 ### 📊 **Status and Capabilities**
 
@@ -371,7 +371,7 @@ virtual hf_pio_err_t GetChannelStatus(uint8_t channel_id,
  * 📋 Retrieves hardware capabilities and limitations.
  */
 virtual hf_pio_err_t GetCapabilities(hf_pio_capabilities_t &capabilities) const noexcept = 0;
-```text
+```
 
 ### 🔄 **Callback Management**
 
@@ -412,7 +412,7 @@ virtual void SetErrorCallback(hf_pio_error_callback_t callback,
  * 🧹 Removes all registered callbacks.
  */
 virtual void ClearCallbacks() noexcept = 0;
-```text
+```
 
 ---
 
@@ -430,7 +430,7 @@ struct hf_pio_channel_config_t {
     uint32_t timeout_us;            ///< Operation timeout in microseconds
     size_t buffer_size;             ///< Buffer size for symbols/durations
 };
-```text
+```
 
 ### 📈 **PIO Symbol**
 
@@ -439,7 +439,7 @@ struct hf_pio_symbol_t {
     uint32_t duration; ///< Duration in resolution units
     bool level;        ///< Signal level (true = high, false = low)
 };
-```text
+```
 
 ### 📊 **Channel Status**
 
@@ -454,7 +454,7 @@ struct hf_pio_channel_status_t {
     hf_pio_err_t last_error;  ///< Last error that occurred
     uint32_t timestamp_us;    ///< Timestamp of last operation
 };
-```text
+```
 
 ### 📋 **PIO Capabilities**
 
@@ -469,7 +469,7 @@ struct hf_pio_capabilities_t {
     bool supports_loopback;      ///< Supports loopback mode
     bool supports_carrier;       ///< Supports carrier modulation
 };
-```text
+```
 
 ### 📈 **PIO Statistics**
 
@@ -489,7 +489,7 @@ struct hf_pio_statistics_t {
     uint32_t timingErrors;          ///< Number of timing errors
     uint32_t bufferOverflows;       ///< Number of buffer overflows
 };
-```text
+```
 
 ---
 
@@ -558,7 +558,7 @@ public:
         }
     }
 };
-```text
+```
 
 ### 📡 **IR Signal Transmission**
 
@@ -657,7 +657,7 @@ public:
         pio*.Transmit(0, symbols.data(), symbols.size(), true);
     }
 };
-```text
+```
 
 ### 🔄 **Stepper Motor Control**
 
@@ -712,7 +712,7 @@ public:
         printf("Speed: %.1f RPM, Delay: %u μs\n", rpm, delay_us);
     }
 };
-```text
+```
 
 ### 📡 **IR Signal Reception**
 
@@ -794,7 +794,7 @@ private:
         }
     }
 };
-```text
+```
 
 ---
 
@@ -855,7 +855,7 @@ if (pio.GetChannelStatus(channel_id, status) == hf_pio_err_t::PIO_SUCCESS) {
         printf("⏳ Channel %u is busy\n", channel_id);
     }
 }
-```text
+```
 
 ### ❌ **Common Pitfalls**
 
@@ -879,7 +879,7 @@ hf_pio_symbol_t huge_buffer[10000];  // May exceed hardware limits
 // ❌ Don't forget to stop reception
 pio.StartReceive(0, buffer, 64);
 // Missing: pio.StopReceive(0, count);
-```text
+```
 
 ### 🎯 **Performance Optimization**
 
@@ -903,7 +903,7 @@ hf_pio_symbol_t optimized[] = {
 
 // 🚀 Use appropriate idle states
 // Match idle state to protocol requirements
-```text
+```
 
 ---
 

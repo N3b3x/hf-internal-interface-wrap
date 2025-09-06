@@ -64,7 +64,7 @@ These implementations offer performance, power efficiency, and feature support.
 ├─────────────────────────────────────────────────────────┤
 │                ESP32-C6 Hardware Layer                 │
 └─────────────────────────────────────────────────────────┘
-```text
+```
 
 ### **Design Principles**
 
