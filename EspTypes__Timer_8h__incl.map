@@ -1,0 +1,21 @@
+<map id="inc/mcu/esp32/utils/EspTypes_Timer.h" name="inc/mcu/esp32/utils/EspTypes_Timer.h">
+<area shape="rect" id="Node000001" title="ESP32 timer type definitions for hardware abstraction." alt="" coords="240,5,388,45"/>
+<area shape="rect" id="Node000002" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="177,93,310,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="299,47,265,85,261,81,295,44"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,167,140,192"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="262,48,214,69,166,96,126,127,94,158,90,155,123,123,163,91,212,64,260,43"/>
+<area shape="rect" id="Node000008" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="334,93,435,119"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="333,44,367,81,363,85,329,47"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="459,93,558,119"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="362,43,468,86,466,91,360,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="165,167,322,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="246,119,246,153,241,153,241,119"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="217,121,114,164,112,159,215,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="226,240,293,265"/>
+<area shape="poly" id="edge7_Node000002_Node000005" title=" " alt="" coords="276,116,309,135,324,149,336,166,340,186,331,205,315,221,296,235,293,231,312,217,327,202,335,185,332,168,320,153,306,140,274,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="397,167,463,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="274,116,388,159,386,164,272,121"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="104,190,217,233,215,237,102,195"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="43,240,102,265"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="75,192,75,226,70,226,70,192"/>
+</map>

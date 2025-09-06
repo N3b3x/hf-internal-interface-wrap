@@ -1,0 +1,7 @@
+<map id="inc/mcu/esp32/EspWifi.h" name="inc/mcu/esp32/EspWifi.h">
+<area shape="rect" id="Node000001" title="Advanced ESP32 implementation of the unified BaseWifi class with ESP&#45;IDF v5.5+ features." alt="" coords="131,5,311,31"/>
+<area shape="rect" id="Node000002" href="$WifiComprehensiveTest_8cpp.html" title="Comprehensive WiFi testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with ESP&#45;IDF v5.5f." alt="" coords="5,79,212,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,41,137,81,134,76,191,36"/>
+<area shape="rect" id="Node000003" href="$EspWifi_8cpp.html" title="Advanced ESP32 implementation of the unified BaseWifi class with ESP&#45;IDF v5.5+ features." alt="" coords="237,86,431,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="250,36,319,84,316,88,247,41"/>
+</map>

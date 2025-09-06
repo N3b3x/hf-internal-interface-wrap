@@ -1,0 +1,5 @@
+<map id="EspCan" name="EspCan">
+<area shape="rect" id="Node000001" title="ESP32 CAN (TWAI) implementation using ESP&#45;IDF v5.5+ node&#45;based API." alt="" coords="9,79,80,104"/>
+<area shape="rect" id="Node000002" href="$classBaseCan.html" title="Abstract base class defining the unified CAN bus API." alt="" coords="5,5,84,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="47,44,47,79,42,79,42,44"/>
+</map>

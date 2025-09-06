@@ -1,0 +1,10 @@
+<map id="inc/base/BaseWifi.h" name="inc/base/BaseWifi.h">
+<area shape="rect" id="Node000001" title="Unified WiFi base class for all WiFi implementations." alt="" coords="98,5,247,31"/>
+<area shape="rect" id="Node000002" href="$WifiComprehensiveTest_8cpp.html" title="Comprehensive WiFi testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with ESP&#45;IDF v5.5f." alt="" coords="5,152,212,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,44,138,80,124,118,115,152,110,151,119,116,133,78,154,41"/>
+<area shape="rect" id="Node000003" href="$EspWifi_8h.html" title="Advanced ESP32 implementation of the unified BaseWifi class with ESP&#45;IDF v5.5+ features." alt="" coords="147,79,327,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,39,228,77,224,80,190,43"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="208,114,141,154,138,150,205,109"/>
+<area shape="rect" id="Node000004" href="$EspWifi_8cpp.html" title="Advanced ESP32 implementation of the unified BaseWifi class with ESP&#45;IDF v5.5+ features." alt="" coords="237,159,431,185"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="263,111,321,157,318,161,260,115"/>
+</map>
