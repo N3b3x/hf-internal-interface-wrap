@@ -429,6 +429,7 @@ Use appropriate synchronization when accessing from multiple tasks.
 
 ## Implementation Notes
 
+<!-- markdownlint-disable-next-line MD013 -->
 - **Lazy Initialization**: Hardware configuration occurs only when `Initialize()` or `EnsureInitialized()` is called
 - **ISR Compatibility**: Interrupt callbacks must be marked with `IRAM_ATTR` for proper execution
 - **Memory Efficiency**: Minimal RAM usage with static configuration
@@ -438,6 +439,7 @@ Use appropriate synchronization when accessing from multiple tasks.
 
 - [BaseGpio API Reference](../api/BaseGpio.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
+<!-- markdownlint-disable-next-line MD013 -->
 - [ESP-IDF GPIO Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/gpio.html) - ESP-IDF docs
 
 ---

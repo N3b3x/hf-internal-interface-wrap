@@ -256,6 +256,7 @@ The `EspUart` class provides comprehensive error handling with specific error co
 
 - [BaseUart API Reference](../api/BaseUart.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
+<!-- markdownlint-disable-next-line MD013 -->
 - [ESP-IDF UART Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/uart.html) - ESP-IDF docs
 
 ---

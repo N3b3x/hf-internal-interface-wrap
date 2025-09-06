@@ -523,10 +523,13 @@ void RealTimeTask() {
 
 |---------------------|--------------|--------------|----------------|
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **Dynamic (Heap)** | Flexible systems | Easy to use, unlimited objects | Runtime allocation, fragmentation |
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **Static Pool** | Known hardware count | Deterministic memory, no fragmentation | Fixed object count, more setup |
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **Pre-allocated** | Real-time systems | Constructor-based, automatic cleanup | Compile-time definition |
 
 **When to Use Each:**

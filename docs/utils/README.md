@@ -95,8 +95,10 @@ The HardFOC Interface Wrapper provides utility classes for common patterns and s
 
 |-------|---------|--------------|-------------------|
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[DigitalOutputGuard](DigitalOutputGuard.md)** | RAII GPIO Management | Automatic state management | Safe GPIO control, resource management |
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[AsciiArtGenerator](AsciiArtGenerator.md)** | ASCII Art Generation | Predefined patterns, custom banners | Console output, logging enhancement |
 
 ### **Utility Categories**

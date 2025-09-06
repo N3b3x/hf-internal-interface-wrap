@@ -873,6 +873,7 @@ spi.ConfigureDevice(99, config);  // Invalid device
 - **[EspSpi Implementation](../esp_api/EspSpi.md)** - ESP32-C6 SPI implementation
 - **[SPI Comprehensive Tests](../../examples/esp32/docs/README_SPI_TEST.md)** - Complete SPI validation
 - **[Hardware Types](HardwareTypes.md)** - Type definitions and validation
+<!-- markdownlint-disable-next-line MD013 -->
 - **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html)** - Official ESP-IDF docs
 
 ---

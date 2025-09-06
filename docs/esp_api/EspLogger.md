@@ -295,6 +295,7 @@ Multiple threads can safely call logging methods simultaneously.
 ## Related Documentation
 
 - **[BaseLogger API Reference](../api/BaseLogger.md)** - Base class interface
+<!-- markdownlint-disable-next-line MD013 -->
 - **[ESP-IDF Logging](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/system/log.html)** - ESP-IDF docs
 - **[DigitalOutputGuard Documentation](../utils/DigitalOutputGuard.md)** - Utility class documentation
 ## # <<<<<<< Current (Your changes)

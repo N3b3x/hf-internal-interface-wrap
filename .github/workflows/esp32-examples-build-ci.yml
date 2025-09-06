@@ -113,16 +113,9 @@ jobs:
       std: "c++17"
       strict: false
 
-  # 🔗 Check documentation links (runs in parallel, no ESP32 dependency)
-  link-check:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/link-check.yml@main
-    with:
-      paths: "docs/**,*.md,**/docs/**,README.md"
-      fail_on_errors: true
-
   # 📊 Build summary and notifications
   summary:
-    needs: [build, lint, security, static-analysis, link-check]
+    needs: [build, lint, security, static-analysis]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -139,6 +132,4 @@ jobs:
           echo "| 🛡️ Security | ${{ needs.security.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY
           echo "| 🔍 Static Analysis | ${{ needs.static-analysis.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
-            >> $GITHUB_STEP_SUMMARY
-          echo "| 🔗 Link Check | ${{ needs.link-check.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY

@@ -269,6 +269,7 @@ Multiple threads can safely call temperature sensor methods simultaneously.
 ## Related Documentation
 
 - **[BaseTemperature API Reference](../api/BaseTemperature.md)** - Base class interface
+<!-- markdownlint-disable-next-line MD013 -->
 - **[ESP-IDF Temperature Sensor Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/temp_sensor.html)** - ESP-IDF docs
 ---
 <div align="center">

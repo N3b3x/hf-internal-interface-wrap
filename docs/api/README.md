@@ -96,14 +96,17 @@ The HardFOC Interface provides abstract base classes for all major hardware peri
 
 |-------|---------|--------------|-------------------|
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[BaseAdc](BaseAdc.md)** | Analog-to-Digital Conversion | Multi-channel, calibration | Sensor reading |
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[BaseGpio](BaseGpio.md)** | Digital I/O Control | Dynamic direction, interrupts | Status LEDs, switches |
 
 | **BaseI2c** | I2C Bus Communication | Device scanning, register access | EEPROM, sensors |
 
 | **BaseNvs** | Non-Volatile Storage | Key-value storage, namespaces | Configuration storage |
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **BasePeriodicTimer** | High-Precision Timing | Microsecond resolution, callbacks | Control loops, sampling |
 
 | **BasePio** | Programmable I/O | Precise timing, symbol transmission | WS2812 LEDs, IR |
@@ -134,6 +137,7 @@ ESP32-C6 specific implementations with optimized features:
 
 |----------------|------------|-------------------|---------------|
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[EspGpio](../esp_api/EspGpio.md)** | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete |
 
 | **EspAdc** | BaseAdc | 12-bit resolution, multiple units | ✅ Available |

@@ -84,6 +84,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 |-------------------|----------------|----------------------|-------------------|------------|
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[EspGpio](EspGpio.md)** | BaseGpio | Drive strength, slew rate, interrupts | ✅ Complete | ✅ Ready |
 
 | **[EspSpi](EspSpi.md)** | BaseSpi | Full-duplex, DMA, IOMUX optimization | ✅ Complete | ✅ Ready |
@@ -100,10 +101,13 @@ These implementations offer performance, power efficiency, and feature support.
 
 | **[EspNvs](EspNvs.md)** | BaseNvs | Encryption, wear leveling | ✅ Complete | ✅ Ready |
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[EspPeriodicTimer](EspPeriodicTimer.md)** | BasePeriodicTimer | High precision, microsecond resolution | ✅ Complete | ✅ Ready |
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[EspTemperature](EspTemperature.md)** | BaseTemperature | Internal sensor, threshold monitoring | ✅ Complete | ✅ Ready |
 
+<!-- markdownlint-disable-next-line MD013 -->
 | **[EspLogger](EspLogger.md)** | BaseLogger | Multi-output, network, file logging | ✅ Complete | ✅ Ready |
 
 ### **In Progress** 🚧

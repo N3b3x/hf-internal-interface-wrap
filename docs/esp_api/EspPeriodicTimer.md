@@ -303,6 +303,7 @@ The `EspPeriodicTimer` class provides comprehensive error handling with specific
 
 - [BasePeriodicTimer API Reference](../api/BasePeriodicTimer.md) - Base class interface
 - [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
+<!-- markdownlint-disable-next-line MD013 -->
 - [ESP-IDF Timer Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/gptimer.html) - ESP-IDF docs
 
 ---

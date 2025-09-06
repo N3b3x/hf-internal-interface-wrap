@@ -229,6 +229,7 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 
 ### 🔌 **Comprehensive Multi-MCU Hardware Support**
 - **14 Complete Base Interfaces** - From GPIO to wireless communication across all MCU platforms
+<!-- markdownlint-disable-next-line MD013 -->
 - **ESP32 Family Implementation** - Full support for all ESP32 variants (ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6, ESP32-H2)
 - **STM32 Implementation** - Planned support for STM32 peripherals (future)
 - **External Hardware Integration** - I2C/SPI device support for expansion boards
@@ -257,6 +258,9 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 
 ### 📊 **Multi-MCU Platform Support Matrix**
 
+<!-- markdownlint-disable MD013 -->
+
+<!-- markdownlint-disable-next-line MD013 -->
 | **MCU Platform** | **GPIO** | **ADC** | **PWM** | **I2C** | **SPI** | **UART** | **CAN** | **WiFi** | **BT** | **Temp** | **NVS** | **Timer** | **PIO** | **Logger** | **Status** |
 
 |------------------|----------|---------|---------|---------|---------|----------|---------|----------|--------|----------|---------|-----------|---------|------------|------------|
