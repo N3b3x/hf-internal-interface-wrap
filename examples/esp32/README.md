@@ -150,10 +150,10 @@ provide clear guidance to users.
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        FINAL COMBINATION VALIDATION                        │
-│  • Single comprehensive check (no redundant individual validations)       │
-│  • Functions remain standalone-safe for independent sourcing              │
-│  • Check combination constraints                                         │
+│                        FINAL COMBINATION VALIDATION                         │
+│  • Single comprehensive check (no redundant individual validations)         │
+│  • Functions remain standalone-safe for independent sourcing                │
+│  • Check combination constraints                                            │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
