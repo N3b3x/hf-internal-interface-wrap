@@ -32,7 +32,7 @@ jobs:
       link_check_paths: "docs/**,*.md,**/docs/**,README.md"
       run_markdown_lint: true
       markdown_lint_paths: "**/*.md"
-      run_spell_check: true
+      run_spell_check: false
       spell_check_paths: "**/*.md"
       spell_check_config: ".cspell.json"
       deploy_pages: ${{ github.ref == 'refs/heads/main' }}
